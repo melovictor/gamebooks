@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.FightingFantasy.REBEL_PLANET" id="ff18Id" />
+
+  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="ff18Info" c:id-ref="ff18Id" p:coverPath="resources/ff18/cover.jpg" p:resourceDir="ff18"
+    p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="18" p:series-ref="ffTitle"
+    p:title="Rebel Planet" p:characterHandler-ref="ffCharacterHandler" p:commandResolvers-ref="ff18CommandResolvers" p:unfinished="true" p:hidden="true">
+    <property name="contents">
+      <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="ff18enemies.xml" c:items="ff18items.xml" c:paragraphs="ff18content.xml" />
+    </property>
+    <property name="contentSpecification">
+      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="false" p:characterBackpackSize="6" />
+    </property>
+  </bean>
+
+  <util:list id="ff18ProficientEnemiey" value-type="java.lang.String">
+    <value>16</value>
+  </util:list>
+
+  <bean class="hu.zagor.gamebooks.content.command.fight.subresolver.Ff18FightCommandBasicSubResolver" id="ff18FightCommandBasicSubResolver" p:proficientEnemies-ref="ff18ProficientEnemiey" />
+  <util:map key-type="java.lang.String" value-type="hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResolver" id="ff18FightSubResolvers">
+    <entry key="basic" value-ref="ff18FightCommandBasicSubResolver" />
+    <entry key="ally" value-ref="fightCommandAllySubResolver" />
+    <entry key="custom">
+      <bean class="hu.zagor.gamebooks.content.command.fight.subresolver.Ff18FightCommandCustomSubResolver" />
+    </entry>
+  </util:map>
+  <bean class="hu.zagor.gamebooks.content.command.fight.FightCommandResolver" id="ff18FightCommandResolver" p:subResolvers-ref="ff18FightSubResolvers" />
+
+  <bean id="ff18CommandResolvers" c:mapA-ref="ffCommandResolvers" c:mapB-ref="ff18ExtraCommandResolvers" factory-method="merge" class="hu.zagor.gamebooks.support.spring.MapMerger" />
+  <util:map id="ff18ExtraCommandResolvers" key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver">
+    <entry key="hu.zagor.gamebooks.content.command.fight.FightCommand" value-ref="ff18FightCommandResolver" />
+  </util:map>
+  
+  
+</beans>
