@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant static-field="hu.zagor.gamebooks.support.bookids.hungarian.KalandJatekKockazat.A_HOBOSZORKANY_BARLANGJAI" id="kjk8Id" />
+
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="kjk8Info" c:id-ref="kjk8Id" p:coverPath="resources/ff9/cover.jpg" p:resourceDir="ff9"
+    p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="huLocale" p:position="8" p:series-ref="kjkTitle"
+    p:title="A Hóboszorkány barlangjai" p:characterHandler-ref="ffCharacterHandler" p:commandResolvers-ref="ffCommandResolvers">
+    <property name="contents">
+      <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="kjk8enemies.xml" c:items="kjk8items.xml" c:paragraphs="kjk8content.xml" />
+    </property>
+    <property name="contentSpecification">
+      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="false" />
+    </property>
+  </bean>
+
+  <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor" id="kjk8Help" p:info-ref="kjk8Info"  scope="prototype">
+    <property name="sections">
+      <util:list>
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="intro" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="howToFight" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="ssl" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="battle" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="battleFlow7" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="fleeing" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="multiBattleSimple" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="luck" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="luckInBattle" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="resetSsl" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="resetSkill" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="resetStamina" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="resetLuck" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="equipmentPotions" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="cotsw" p:jsp="advice" />
+      </util:list>
+    </property>
+    <property name="params">
+      <util:map>
+        <entry key="stdHelp_howToFight" value="Harc a szörnyekkel" />
+        <entry key="stdHelp_hasLantern" value="true" />
+        <entry key="stdHelp_hasFood" value="true" />
+        <entry key="stdHelp_foodAmount" value="tíz" />
+        <entry key="stdHelp_potionAmount" value="két" />
+        <entry key="stdHelp_potionAmountTimes" value="kétszer" />
+        <entry key="stdHelp_hasPotions" value="true" />
+      </util:map>
+    </property>
+  </bean>
+
+</beans>
