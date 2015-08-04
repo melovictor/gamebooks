@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+  
+  <definition name="rawWelcome" extends="gamebookContent">
+    <put-attribute name="gamebook.content" value="/WEB-INF/tiles/ruleset/raw/welcome.jsp" cascade="true" />
+    <put-attribute name="gamebook.charpagebar" value="/WEB-INF/tiles/basic/empty.jsp" cascade="true"  />
+    <put-attribute name="page.menu" value="/WEB-INF/tiles/ruleset/raw/menu.jsp" cascade="true"/>
+  </definition>
+  <definition name="rawSection" extends="gamebookContent">
+    <put-attribute name="gamebook.content" value="/WEB-INF/tiles/ruleset/raw/section.jsp" cascade="true" />
+    <put-attribute name="gamebook.charpagebar" value="/WEB-INF/tiles/ruleset/raw/charpage.jsp" cascade="true" />
+    <put-attribute name="page.menu" value="/WEB-INF/tiles/ruleset/raw/menu.jsp" cascade="true"/>
+  </definition>
+  
+  <definition name="rawCharPage" template="/WEB-INF/tiles/ruleset/raw/charpage.jsp" />
+  
+  <definition name="rawUserInputCommand" extends="rawSection">
+    <put-attribute name="gamebook.command" value="/WEB-INF/tiles/ruleset/raw/userInput.jsp" cascade="true" />
+  </definition>
+  
+  <definition name="rawRandom" extends="rawSection">
+    <put-attribute name="gamebook.command" value="/WEB-INF/tiles/ruleset/raw/random.jsp" cascade="true" />
+  </definition>
+  
+
+</tiles-definitions>

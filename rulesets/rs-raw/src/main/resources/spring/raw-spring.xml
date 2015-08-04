@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant id="cspTitle" static-field="hu.zagor.gamebooks.support.bookids.hungarian.Csillagproba.TITLE" />
+  <util:constant id="vkmTitle" static-field="hu.zagor.gamebooks.support.bookids.hungarian.ValasszKalandotMagadnak.TITLE" />
+  <util:constant id="vkmwdTitle" static-field="hu.zagor.gamebooks.support.bookids.hungarian.ValasszKalandotMagadnakWaltDisney.TITLE" />
+
+  <util:constant id="scTitle" static-field="hu.zagor.gamebooks.support.bookids.english.StarChallenge.TITLE" />
+  <util:constant id="cyoaTitle" static-field="hu.zagor.gamebooks.support.bookids.english.ChooseYourOwnAdventure.TITLE" />
+  <util:constant id="cyoawdTitle" static-field="hu.zagor.gamebooks.support.bookids.english.ChooseYourOwnAdventureWaltDisney.TITLE" />
+  <util:constant id="cyoarTitle" static-field="hu.zagor.gamebooks.support.bookids.english.ChooseYourOwnAdventureReissue.TITLE" />
+
+  <util:constant id="soloTitle" static-field="hu.zagor.gamebooks.support.bookids.hungarian.Solo.TITLE" />
+
+  <util:constant id="nykTitle" static-field="hu.zagor.gamebooks.support.bookids.hungarian.Nyomkereso.TITLE" />
+  <util:constant id="stTitle" static-field="hu.zagor.gamebooks.support.bookids.english.Storytrails.TITLE" />
+
+  <util:constant id="egylanyTitle" static-field="hu.zagor.gamebooks.support.bookids.hungarian.EgyLany.TITLE" />
+  <util:constant id="agirlTitle" static-field="hu.zagor.gamebooks.support.bookids.english.AGirl.TITLE" />
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.DefaultBookParagraphTransformer" id="rawRuleBookParagraphTransformer" p:paragraphDataTransformer-ref="rawRuleBookParagraphDataTransformer" />
+  <bean class="hu.zagor.gamebooks.raw.section.RawRuleBookParagraphDataTransformer" id="rawRuleBookParagraphDataTransformer" parent="abstractBookParagraphDataTransformer" />
+  <bean class="hu.zagor.gamebooks.raw.item.RawRuleBookItemTransformer" id="rawRuleBookItemTransformer" />
+
+  <bean class="hu.zagor.gamebooks.raw.section.RawRuleBookParagraphResolver" id="rawRuleBookParagraphResolver" />
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.RandomTransformer" id="rawRandomTransformer" p:randomTransformers-ref="rawRandomTransformers" />
+  <bean class="hu.zagor.gamebooks.content.command.random.RandomCommandResolver" id="randomCommandResolver" />
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.random.RandomLabelTransformer" id="rawRandomLabelTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.random.RandomAfterTransformer" id="rawRandomAfterTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.random.RandomResultTransformer" id="rawRandomResultTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.random.RandomResultElseTransformer" id="rawRandomResultElseTransformer" />
+
+  <util:map id="rawRandomTransformers">
+    <entry key="after" value-ref="rawRandomAfterTransformer" />
+    <entry key="label" value-ref="rawRandomLabelTransformer" />
+    <entry key="result" value-ref="rawRandomResultTransformer" />
+    <entry key="resultElse" value-ref="rawRandomResultElseTransformer" />
+    <entry key="even">
+      <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.random.RandomEvenOddTransformer" c:remainder="0" />
+    </entry>
+    <entry key="odd">
+      <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.random.RandomEvenOddTransformer" c:remainder="1" />
+    </entry>
+  </util:map>
+
+  <bean class="hu.zagor.gamebooks.domain.BookContentTransformers" id="defaultRawContentTransformers" c:paragraphTransformer-ref="rawRuleBookParagraphTransformer"
+    c:itemTransformer-ref="rawRuleBookItemTransformer">
+    <constructor-arg name="enemyTransformer">
+      <null />
+    </constructor-arg>
+  </bean>
+
+  <bean class="hu.zagor.gamebooks.raw.mvc.book.section.service.RawBookSectionHandlingService" id="rawSectionHandlingService" />
+
+  <bean class="hu.zagor.gamebooks.character.handler.CharacterHandler" id="rawCharacterHandler" name="tmCharacterHandler" scope="prototype">
+    <property name="itemHandler">
+      <bean class="hu.zagor.gamebooks.character.handler.item.DefaultCharacterItemHandler" scope="prototype" />
+    </property>
+    <property name="paragraphHandler">
+      <bean class="hu.zagor.gamebooks.character.handler.paragraph.DefaultCharacterParagraphHandler" scope="prototype" />
+    </property>
+    <property name="interactionHandler">
+      <bean class="hu.zagor.gamebooks.character.handler.userinteraction.DefaultUserInteractionHandler" scope="prototype" />
+    </property>
+  </bean>
+
+</beans>
