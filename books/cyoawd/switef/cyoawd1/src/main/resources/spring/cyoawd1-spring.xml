@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.ChooseYourOwnAdventureWaltDisney.SNOW_WHITE_IN_THE_ENCHANTED_FOREST" id="cyoawd1Id" />
+
+  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="cyoawd1Info" c:id-ref="cyoawd1Id" p:coverPath="resources/cyoawd1/cover.jpg" p:resourceDir="cyoawd1"
+    p:contentTransformers-ref="defaultRawContentTransformers" p:paragraphResolver-ref="rawRuleBookParagraphResolver" p:locale-ref="enLocale" p:position="1" p:series-ref="cyoawdTitle"
+    p:title="Snow White in the Enchanted Forest" p:characterHandler-ref="rawCharacterHandler" p:commandResolvers-ref="rawCommandResolvers" p:hidden="true">
+    <property name="contents">
+      <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="" c:items="" c:paragraphs="cyoawd1content.xml" />
+    </property>
+    <property name="contentSpecification">
+      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="false" p:mapAvailable="false" />
+    </property>
+  </bean>
+
+</beans>
