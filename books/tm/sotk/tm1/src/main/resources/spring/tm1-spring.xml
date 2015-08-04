@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.TimeMachine.SECRET_OF_THE_KNIGHTS" id="tm1Id" />
+
+  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="tm1Info" c:id-ref="tm1Id" p:coverPath="resources/tm1/cover.jpg" p:resourceDir="tm1"
+    p:contentTransformers-ref="defaultTmContentTransformers" p:paragraphResolver-ref="tmRuleBookParagraphResolver" p:locale-ref="enLocale" p:position="1" p:series-ref="tmTitle" p:title="Secret of the Knights" p:characterHandler-ref="tmCharacterHandler">
+    <property name="contents">
+      <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="" c:items="tm1items.xml" c:paragraphs="tm1content.xml" />
+    </property>
+    <property name="contentSpecification">
+      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="true" />
+    </property>
+  </bean>
+
+</beans>
