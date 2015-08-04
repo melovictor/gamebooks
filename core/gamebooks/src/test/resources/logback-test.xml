@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://zagor.hu/xsd/logback.xsd">
+  <property resource="configuration-dev.properties" />
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} %-5level %4line. %logger{60}.%method\(\) - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="SEPARATED_DEV" class="ch.qos.logback.classic.sift.SiftingAppender">
+    <discriminator>
+      <key>userid</key>
+      <defaultValue>base</defaultValue>
+    </discriminator>
+    <sift>
+      <appender name="MYAPPLI_${userid}_SEPARATED_DEV" class="ch.qos.logback.core.FileAppender">
+        <file>${directory.logs.dev}/log-${userid}.log</file>
+        <append>true</append>
+        <encoder>
+          <pattern>%d{HH:mm:ss.SSS} %-5level %4line. %logger{60}.%method\(\) - %msg%n</pattern>
+        </encoder>
+      </appender>
+    </sift>
+  </appender>
+
+  <logger name="org.apache" level="ERROR"/>
+  <logger name="hu.zagor.gamebooks.support.messages" level="ERROR"/>
+  <logger name="org.springframework" level="INFO"/>
+  <logger name="org.springframework.web.servlet.DispatcherServlet" level="INFO"/>
+  <root level="debug">
+    <appender-ref ref="SEPARATED_DEV" />
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>

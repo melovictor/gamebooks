@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <bean class="hu.zagor.gamebooks.mvc.settings.domain.SettingGroup" p:groupPositionIndex="0" p:groupNameKey="page.settings.global.title">
+    <property name="settingEntries">
+      <list>
+        <!-- <bean class="hu.zagor.gamebooks.mvc.settings.domain.CheckboxSettingEntry" p:settingNameKey="page.settings.global.sectionsVisible.title" p:settingKey="global.sectionsVisible" 
+          p:defaultState="true" /> -->
+        <bean class="hu.zagor.gamebooks.mvc.settings.domain.CheckboxListSettingEntry" p:settingNameKey="page.settings.global.sectionsVisible.title">
+          <property name="subEntries">
+            <list>
+              <bean class="hu.zagor.gamebooks.mvc.settings.domain.SettingEntrySub" p:titleKey="page.settings.global.sectionsVisible.top" p:optionKey="global.sectionsVisible.top"
+                p:defaultEntry="true" />
+              <bean class="hu.zagor.gamebooks.mvc.settings.domain.SettingEntrySub" p:titleKey="page.settings.global.sectionsVisible.choice" p:optionKey="global.sectionsVisible.choice"
+                p:defaultEntry="false" />
+            </list>
+          </property>
+        </bean>
+        <bean class="hu.zagor.gamebooks.mvc.settings.domain.RadioSettingEntry" p:settingNameKey="page.settings.global.imageTypeOrder.title" p:settingKey="global.imageTypeOrder">
+          <property name="subEntries">
+            <list>
+              <bean class="hu.zagor.gamebooks.mvc.settings.domain.SettingEntrySub" p:titleKey="page.settings.global.imageTypeOrder.bwFirst" p:defaultEntry="true" p:optionKey="bwFirst" />
+              <bean class="hu.zagor.gamebooks.mvc.settings.domain.SettingEntrySub" p:titleKey="page.settings.global.imageTypeOrder.colFirst" p:optionKey="colFirst" />
+            </list>
+          </property>
+        </bean>
+      </list>
+    </property>
+  </bean>
+
+  <bean class="hu.zagor.gamebooks.mvc.settings.domain.SettingGroup" p:groupPositionIndex="-100" p:groupNameKey="page.settings.dev.title" p:adminOnly="true">
+    <property name="settingEntries">
+      <list>
+        <bean class="hu.zagor.gamebooks.mvc.settings.domain.CheckboxSettingEntry" p:settingNameKey="page.settings.dev.informativeSections" p:defaultState="false"
+          p:settingKey="dev.informativeSections" />
+      </list>
+    </property>
+  </bean>
+
+  <bean name="orderedSettingSet" class="java.util.TreeSet">
+    <constructor-arg ref="settingGroupComparator" type="java.util.Comparator"></constructor-arg>
+  </bean>
+  <bean id="settingGroupComparator" class="hu.zagor.gamebooks.mvc.settings.domain.SettingGroupComparator" />
+
+  <util:map id="settingEntryExtractors" key-type="java.lang.Class" value-type="hu.zagor.gamebooks.mvc.settings.service.SettingDefaultValueExtractor">
+    <entry key="hu.zagor.gamebooks.mvc.settings.domain.CheckboxSettingEntry">
+      <bean class="hu.zagor.gamebooks.mvc.settings.service.CheckboxSettingEntryDefaultValueExtractor" />
+    </entry>
+    <entry key="hu.zagor.gamebooks.mvc.settings.domain.RadioSettingEntry">
+      <bean class="hu.zagor.gamebooks.mvc.settings.service.RadioSettingEntryDefaultValueExtractor" />
+    </entry>
+    <entry key="hu.zagor.gamebooks.mvc.settings.domain.CheckboxListSettingEntry">
+      <bean class="hu.zagor.gamebooks.mvc.settings.service.CheckboxListSettingEntryDefaultValueExtractor" />
+    </entry>
+  </util:map>
+
+
+  <bean class="hu.zagor.gamebooks.player.settings.DefaultUserSettingsHandler" id="defaultUserSettingsHandler" />
+  <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+    <property name="staticMethod" value="hu.zagor.gamebooks.filters.LocaleSwitchingFilter.setSettingsHandler" />
+    <property name="arguments">
+      <list>
+        <ref bean="defaultUserSettingsHandler" />
+      </list>
+    </property>
+  </bean>
+
+</beans>
+

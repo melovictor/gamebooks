@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.springframework.org/schema/beans"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant id="enLocale" static-field="hu.zagor.gamebooks.support.bookids.Locales.ENGLISH" />
+  <util:constant id="huLocale" static-field="hu.zagor.gamebooks.support.bookids.Locales.HUNGARIAN" />
+  <util:constant id="ptptLocale" static-field="hu.zagor.gamebooks.support.bookids.Locales.PORTUGESE" />
+  <util:constant id="ptbrLocale" static-field="hu.zagor.gamebooks.support.bookids.Locales.PORTUGESE_BRAZILIAN" />
+
+  <bean class="hu.zagor.gamebooks.domain.SupportedLanguage" c:localeCode="en" c:selfName="English" />
+  <bean class="hu.zagor.gamebooks.domain.SupportedLanguage" c:localeCode="hu" c:selfName="Magyar" />
+  
+  <beans profile="dev">
+    <bean class="hu.zagor.gamebooks.domain.SupportedLanguage" c:localeCode="pt" c:countryCode="pt" c:selfName="Portugueses" />
+    <bean class="hu.zagor.gamebooks.domain.SupportedLanguage" c:localeCode="pt" c:countryCode="br" c:selfName="Brasileiro" />
+  </beans>
+
+</beans>

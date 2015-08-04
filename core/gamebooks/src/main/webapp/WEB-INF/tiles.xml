@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+  <definition name="main" template="/WEB-INF/tiles/basic/main.jsp">
+  </definition>
+
+  <definition name="login" extends="main">
+    <put-attribute name="page.content" value="/WEB-INF/tiles/login/login.jsp" cascade="true" />
+    <put-attribute name="page.menu" value="/WEB-INF/tiles/login/loginMenu.jsp" cascade="true" />
+  </definition>
+
+  <definition name="booklist" extends="main">
+    <put-attribute name="page.menu" value="/WEB-INF/tiles/booklist/bookListMenu.jsp" cascade="true" />
+    <put-attribute name="page.content" value="/WEB-INF/tiles/booklist/bookList.jsp" cascade="true" />
+  </definition>
+
+  <definition name="settings" extends="main">
+    <put-attribute name="page.menu" value="/WEB-INF/tiles/settings/settingsMenu.jsp" cascade="true" />
+    <put-attribute name="page.content" value="/WEB-INF/tiles/settings/settings.jsp" cascade="true" />
+  </definition>
+
+  <definition name="logs" extends="main">
+    <put-attribute name="page.menu" value="/WEB-INF/tiles/logs/logsMenu.jsp" cascade="true" />
+    <put-attribute name="page.content" value="/WEB-INF/tiles/logs/logs.jsp" cascade="true" />
+  </definition>
+
+  <definition name="rules" extends="main">
+    <put-attribute name="page.menu" value="/WEB-INF/tiles/rules/rulesMenu.jsp" cascade="true" />
+    <put-attribute name="page.content" value="/WEB-INF/tiles/rules/rules.jsp" cascade="true" />
+  </definition>
+  <definition name="bookRule" extends="main">
+    <put-attribute name="page.menu" value="/WEB-INF/tiles/rules/rulesMenu.jsp" cascade="true" />
+    <put-attribute name="page.content" value="/WEB-INF/tiles/rules/bookRule.jsp" cascade="true" />
+  </definition>
+
+  <definition name="book" extends="main">
+    <put-attribute name="page.content" value="/WEB-INF/tiles/books/book.jsp" cascade="true" />
+  </definition>
+
+  <definition name="gamebookContent" extends="main">
+    <put-attribute name="page.content" value="/WEB-INF/tiles/books/gamebook.jsp" cascade="true" />
+    <put-attribute name="gamebook.command" value="" cascade="true" />
+  </definition>
+
+  <definition name="bookError" extends="gamebookContent">
+    <put-attribute name="gamebook.content" value="/WEB-INF/tiles/books/bookError.jsp" cascade="true" />
+    <put-attribute name="page.menu" value="/WEB-INF/tiles/books/errorSidebar.jsp" cascade="true" />
+    <put-attribute name="gamebook.charpagebar" value="/WEB-INF/tiles/basic/empty.jsp" cascade="true" />
+  </definition>
+
+
+
+
+</tiles-definitions>

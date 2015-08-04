@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+  xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xmlns:p="http://www.springframework.org/schema/p" xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+  <bean class="hu.zagor.gamebooks.books.contentstorage.CachedBookContentStorage" id="cachedBookContentStorage" c:bookContentLoader-ref="resourceBookContentLoader" />
+  <bean class="hu.zagor.gamebooks.books.contentstorage.ResourceBookContentLoader" id="resourceBookContentLoader" c:xmlParser-ref="domXmlParser" />
+  <bean class="hu.zagor.gamebooks.books.contentstorage.domain.BookEntryStorage" id="bookEntryStorage" scope="prototype" c:bookId="null" c:items="null" c:paragraphs="null" c:enemies="null" />
+
+  <!--   <bean class="hu.zagor.gamebooks.books.saving.SerializingGameStateHandler" id="serializingGameStateHandler" /> -->
+  <bean class="hu.zagor.gamebooks.books.saving.XmlGameStateHandler" id="xmlGameStateHandler" />
+</beans>

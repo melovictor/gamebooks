@@ -1,0 +1,102 @@
+package hu.zagor.gamebooks.filters;
+
+import hu.zagor.gamebooks.PageAddresses;
+import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
+import hu.zagor.gamebooks.mdc.DefaultMdcHandler;
+import hu.zagor.gamebooks.mdc.MdcHandler;
+import hu.zagor.gamebooks.player.PlayerUser;
+
+import java.io.IOException;
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Filter for redirecting users not logged in to the login page.
+ * @author Tamas_Szekeres
+ */
+public class AuthorizationFilter extends AbstractHttpFilter {
+
+    public static final String LAST_PAGE_BEFORE_REDIRECT = "lastPageBeforeRedirect";
+    private final Logger logger = LoggerFactory.getLogger(AuthorizationFilter.class);
+    private List<String> alloweds;
+    private String resourceDir;
+    private String to;
+    private final MdcHandler mdcHandler = new DefaultMdcHandler();
+
+    @Override
+    public void init(final FilterConfig filterConfig) throws ServletException {
+        to = filterConfig.getInitParameter("redirectTo");
+        resourceDir = filterConfig.getInitParameter("resourceDirectory");
+        alloweds = new ArrayList<>();
+        final String fromsString = filterConfig.getInitParameter("redirectAlloweds");
+        if (fromsString == null || to == null || resourceDir == null) {
+            throw new IllegalStateException(MessageFormat.format("please set the redirectFroms, redirectTo and resourceDirectory init parameters for the {0} filter",
+                filterConfig.getFilterName()));
+        }
+        final String[] splittedFromsString = fromsString.split(",\\s*");
+        for (final String fromString : splittedFromsString) {
+            alloweds.add(filterConfig.getServletContext().getContextPath() + fromString);
+        }
+    }
+
+    @Override
+    protected void doFilterHttp(final HttpServletRequest request, final HttpServletResponse response, final FilterChain chain) throws IOException, ServletException {
+        final HttpSessionWrapper httpSessionWrapper = new HttpSessionWrapper(request.getSession());
+        final PlayerUser player = httpSessionWrapper.getPlayer();
+        if (shouldRedirect(request, player)) {
+            mdcHandler.cleanUserId(request.getSession());
+            String lastPageUrl = request.getRequestURI();
+            getLogger().error("Unknown user tried to access page {}; redirecting him to login page.", lastPageUrl);
+            final String queryString = request.getQueryString();
+            if (queryString != null) {
+                lastPageUrl += '?' + queryString;
+            }
+            if (lastPageUrl != null) {
+                request.getSession().setAttribute(LAST_PAGE_BEFORE_REDIRECT, lastPageUrl);
+                if (lastPageUrl.replace(request.getContextPath(), "").indexOf("/", 1) > 0) {
+                    response.sendRedirect("../" + PageAddresses.LOGIN);
+                } else {
+                    response.sendRedirect(PageAddresses.LOGIN);
+                }
+            } else {
+                response.sendRedirect(PageAddresses.LOGIN);
+            }
+        } else {
+            try {
+                mdcHandler.provideUserId(request.getSession());
+                chain.doFilter(request, response);
+            } catch (final Throwable ex) {
+                logger.error("Exception bubbled up:", ex);
+                throw ex;
+            }
+        }
+
+    }
+
+    private boolean shouldRedirect(final HttpServletRequest request, final PlayerUser player) {
+        return (notAllowedUri(request) && notResourceUri(request)) && player == null;
+    }
+
+    private boolean notResourceUri(final HttpServletRequest request) {
+        return !request.getRequestURI().contains(resourceDir);
+    }
+
+    private boolean notAllowedUri(final HttpServletRequest request) {
+        final String requestUri = request.getRequestURI();
+        boolean allowedPath = false;
+        for (final String allowedUrl : alloweds) {
+            allowedPath |= requestUri.startsWith(allowedUrl);
+        }
+        return !allowedPath;
+    }
+}

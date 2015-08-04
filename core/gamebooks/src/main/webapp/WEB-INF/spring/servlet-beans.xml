@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p" xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+  <bean class="hu.zagor.gamebooks.support.logging.LoggerInjector" id="beanPostProcessor" />
+
+
+  <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" p:cookieName="lang">
+  </bean>
+
+
+  <bean id="tilesConfig" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+    <property name="definitions">
+      <list>
+        <value>/WEB-INF/tiles*.xml</value>
+        <value>classpath*:/WEB-INF/tiles*.xml</value>
+      </list>
+    </property>
+  </bean>
+
+  <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" id="tilesViewResolver">
+    <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+  </bean>
+
+  <bean class="org.springframework.core.io.support.PathMatchingResourcePatternResolver" id="resourcePatternResolver" />
+
+  <bean class="hu.zagor.gamebooks.support.messages.ReloadableWildcardSupportingResourceBundleMessageSource" name="messageSource"
+    p:defaultEncoding="UTF-8">
+    <constructor-arg ref="resourcePatternResolver" />
+  </bean>
+
+
+  <beans profile="dev">
+    <bean id="watchServiceIoHandler" class="hu.zagor.gamebooks.dispatcher.WatchServiceIoHandler" />
+    <bean class="hu.zagor.gamebooks.dispatcher.JarFileResourcesExtractor" p:ioHandler-ref="watchServiceIoHandler">
+      <property name="eventHandler">
+          <bean class="hu.zagor.gamebooks.dispatcher.WatchServiceEventHandler" p:ioHandler-ref="watchServiceIoHandler" />
+      </property>
+    </bean>
+  </beans>
+
+</beans>
