@@ -1,0 +1,2422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd">
+  <p id="back_cover">
+    <text>[p]Egy falut kell megszabadítanod a gonosz varázsló, Anakendis üzelmeitől. Át kell verekedned magad egy szörnyekkel teli barlangrendszeren, hogy elpusztíthasd a romlott mágust és hatalmának forrását – a Sötét Krónikákat.[/p]</text>
+    <next id="generate" />
+  </p>
+  <p id="generate" display="Karakter létrehozása">
+    <text>
+      [p][span class="ffAttribute"]Ügyesség[/span]: [span id="ffSkill"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+      [p][span class="ffAttribute"]Életerő[/span]: [span id="ffStamina"]dobj két kockával és adj 12-t a dobott számhoz[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+      [p][span class="ffAttribute"]Szerencse[/span]: [span id="ffLuck"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+      [p]Válassz egy italt:
+      [select id="ffDefaultPotion"]
+      [option value="2001" selected="selected"]Ügyesség Itala[/option]
+      [option value="2002"]Erő Itala[/option]
+      [option value="2003"]Szerencse Itala[/option]
+      [/select]
+      [/p]
+      [button data-generator-button="ff"]Karakter létrehozása[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="Háttértörténet">
+    <text>
+        [p class="inlineImage"][img src="resources/wm6/0.jpg" /][/p]
+        [p]Kalandozó vagy, erős és bátor, akinek eltökélt célja a gonosz elleni küzdelem. Épp Fangba tartasz, hogy egy barátodat látogasd meg, mikor áthaladsz Kokhíd falván, ahol a település elöljárója fogad. Az általában csendes kis helység most csak úgy pezseg, a legtöbb lakó arcán félelem és aggodalom ül. Megkérdezed a férfit, mi a probléma. [/p]
+        [p]– Nem messze innét terül el egy barlangrendszer, melyben a pletykák szerint Anakendis és gonosz szolgái élnek. Azt beszélik, egy könyvből, Anakendis Sötét Krónikáiból nyeri a hatalmát. Néhány napja a tiszteletre méltó Traskannd vezetésével egy kalandozó csapat hatolt be a barlangrendszerbe, hogy megpróbálják megcáfolni ezeket a mendemondákat. Másnap visszatért egy falka vérszomjas kopó kíséretében, korábbi társai levágott fejével az övén. Kijelentette, hogy immáron ő is Anakendis egyik szolgája. „Minden héten két szüzet kell küldenetek mesteremnek, különben az ördög ebei fogják feldúlni a várost.” Ezután szabadjára eresztette a kutyákat, akik végeztek két emberrel és rengeteg lábasjószággal, mielőtt távoztak volna. [/p]
+        [p]– Könyörgöm, bátor kalandozó, menj el a barlangokba, és pusztítsd el Anakendist és Sötét Krónikáit. Busásan megjutalmaznánk. Csak ekkor lesz békés kis falunknak ismét nyugodalma. [/p]
+        [p]Az elöljárótól annyit még megtudsz, hogy át kell kelned egy feneketlen szakadékon, hogy elérd a varázslót. Másnap az egész falu összegyűlik, hogy búcsút vegyen tőled, mikor nekivágsz a hosszú útnak, mely a barlangrendszer bejáratához vezet…[/p]
+    </text>
+    <gatherItem id="defWpn" />
+    <gatherItem id="1001" />
+    <gatherItem id="2000" amount="5" />
+    <add amount="20" to="gold" />
+    <next id="1"></next>
+  </p>
+  <p id="1">
+    <text>
+        [p]A barlanghoz vezető út egy teljes napot és éjszakát igénybe vesz, és mire elérsz a bejárathoz, már új hajnal virrad. A nyílás sötéten, komoran tátong előtted, a széleit borostyán futja be. Odabenn semmit nem látsz. Mély levegőt veszel, meggyújtod lámpásodat és belépsz.[/p]
+        [p]Egy durván megmunkált falú sziklavájatra bukkansz, mely északi irányba halad. A falakról vízcseppek potyognak. Pár méter megtétele után a folyosó kettéágazik.[/p]
+    </text>
+    <next id="34">Ha a bal oldali járaton akarsz továbbhaladni</next>
+    <next id="7">Ha a jobb oldaliban folytatnád az utad</next>
+  </p>
+  <p id="2a" display="2">
+    <text>
+        [p]A hitvány Homokpolip holtan hever előtted, neked azonban még mindig el kellene jutnod a szemben lévő ajtóig.[/p]
+    </text>
+    <next id="144">Ha a Mágikus Kötél segítségével akarod megtenni a hátralévő utat is</next>
+    <next id="51a">Ha a táv maradék részét gyalog szeretnéd megtenni</next>
+  </p>
+  <p id="2b" display="2">
+    <text>
+        [p]A hitvány Homokpolip holtan hever előtted, neked azonban még mindig el kellene jutnod a szemben lévő ajtóig.[/p]
+    </text>
+    <next id="51b"></next>
+  </p>
+  <p id="3">
+    <text>
+        [p]Folytatod az utat északi irányba. A járat hamarosan kettéágazik.[/p]
+    </text>
+    <next id="195">Hogyha balra akarsz menni</next>
+    <next id="113">Ha jobbra</next>
+  </p>
+  <p id="4">
+    <text>
+        [p]Elbeszélgetsz az öreggel, és hamarosan kiderül, hogy ő sem szívleli Anakendist. Ami azt illeti, ő egy másik varázsló, méghozzá elég hatalmas, akit a gonosz mágus lehajított ebbe a kútba, és olyan átokkal sújtott, melynek eredményeképp képtelenné vált saját magára alkalmazni a varázslatait. Sok sikert kíván küldetésedhez és átad egy tárgyat is. Egy kis [span class="takeItem" data-id="3002" data-amount="1"]Seprű[/span] az, ami állítása szerint nagyon gyorsan tud repülni, és ha ráülsz, téged is bárhová eljuttat. Megköszönöd az ajándékot, a következő pillanatban pedig a fenti szobában találod magad a kút és a szikla társaságában. Elhagyod a helyiséget. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot ezért a találkozásért. Hogyha éhes vagy, most ehetsz.[/p]
+    </text>
+    <canEat />
+    <add amount="1" to="luck" />
+    <next id="89"></next>
+  </p>
+  <p id="5">
+    <text>
+        [p]A szeméthalom átkutatását folytatva egy takaró alatt rábukkansz egy fejszére. Alaposabban megvizsgálva rájössz, hogy eléggé rossz állapotban van – sokkal rosszabban, mint jelenlegi fegyvered –, így itt hagyod.[/p]
+    </text>
+    <next id="149"></next>
+  </p>
+  <p id="6">
+    <text>
+        [p]Ahogy felemeled az Amulettet, a férfi elsápad, hátrálni kezd előled. Előre lépsz és rátámadsz, amíg még az ijedtség legyengíti. Küzdj meg vele![/p]
+    </text>
+    <fight type="single">
+      <enemy id="25" />
+    </fight>
+    <next id="168"></next>
+  </p>
+  <p id="7">
+    <text>
+        [p]A járat egy vastag faajtóban ér véget. Hallgatózni próbálsz, de nem hallasz semmit. A kilincset lenyomva azonban megállapítod, hogy nincsen bezárva. Belépve egy teremben találod magad, melyben két további ajtót látsz, egyet az északi, egy másikat a nyugati falon. Egy alkóv is felkelti a figyelmedet a keleti oldalon.[/p]
+    </text>
+    <next id="190">Hogyha ez utóbbit vennéd alaposabban szemügyre</next>
+    <next id="82">Ha nyugati irányban távoznál a helyiségből</next>
+    <next id="71">Ha észak felé mennél ki</next>
+  </p>
+  <p id="7b" display="7">
+    <text>
+        [p]A járat egy vastag faajtóban ér véget. Hallgatózni próbálsz, de nem hallasz semmit. A kilincset lenyomva azonban megállapítod, hogy nincsen bezárva. Belépve egy teremben találod magad, melyben két további ajtót látsz, egyet az északi, egy másikat a nyugati falon. Egy alkóv is felkelti a figyelmedet a keleti oldalon.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="190">Hogyha ez utóbbit vennéd alaposabban szemügyre</next>
+    <next id="82">Ha nyugati irányban távoznál a helyiségből</next>
+    <next id="71">Ha észak felé mennél ki</next>
+  </p>
+  <p id="8">
+    <text>
+        [p]A kunyhó bőrrel egymáshoz kötött ágakból áll, belülről pedig meglepően nagynak tűnik. De sajnos teljesen üres. Átkutatod, de a keresés eredménytelenül zárul, így távozol.[/p]
+    </text>
+    <itemCheck type="section" id="97">
+      <have>
+        <text>
+            [p]Elindulsz az ajtóhoz vezető ösvényen.[/p]
+        </text>
+        <next id="49"></next>
+      </have>
+      <dontHave>
+        <next id="97">Ha a szomszédos kunyhóban is körülnéznél</next>
+        <next id="49">Hogyha a másik ösvényen mennél végig az ajtóhoz</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="9">
+    <text>
+        [p]Egy kis szobába érkeztél, melyben csupán három, ámde igen csábító láda pihen. Mit teszel?[/p]
+    </text>
+    <itemCheck type="section" id="158">
+      <dontHave>
+        <next id="158">Felnyitod az első ládát?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="163">
+      <dontHave>
+        <next id="163">Felnyitod a második ládát?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="26">
+      <dontHave>
+        <next id="26">Felnyitod a harmadik ládát?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="86">Elhagyod a szobát?</next>
+  </p>
+  <p id="10">
+    <text>
+        [p]Előtted a járat egy nagy szobává szélesedik, az út közepét azonban egy hatalmas szobor állja el, amit mintha áttetsző kristályból faragtak volna ki. Eleinte mozdulatlannak tűnik, ám ahogy közeledsz feléje, feléd fordul. Az egyetlen út itt vezet tovább.[/p]
+    </text>
+    <itemCheck type="item" id="3005">
+      <have>
+        <next id="181"></next>
+      </have>
+      <dontHave>
+        <next id="155"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="11">
+    <text>
+        [p]Immáron a hálóban vagy, ami átszeli a szakadékot. Csábítóan közel már a kijárat, ám hogy elérd, előbb le kell jutnod annak aljára, át kell menned a túloldalára és a kijárathoz kell ugranod.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <test against="skill">
+          <success>
+            <next id="77"></next>
+          </success>
+          <failure>
+            <next id="42"></next>
+          </failure>
+        </test>
+      </success>
+      <failure>
+        <test against="skill">
+          <success>
+            <next id="42"></next>
+          </success>
+          <failure>
+            <next id="94"></next>
+          </failure>
+        </test>
+      </failure>
+    </test>
+  </p>
+  <p id="12">
+    <text>
+        [p]Sajnos, ahogy próbálod elkerülni a lángoló falat, megcsúszol, és fejjel előre belezuhansz. Csúnyán megégeted magad – vesztesz 5 [span class="ffAttribute"]ÉLETERŐ[/span] és 1 [span class="ffAttribute"]ÜGYESSÉG[/span] pontot. Ha még életben vagy, feltápászkodsz és a kacagó Traskannd felé fordulsz. Rátámadsz.[/p]
+    </text>
+    <add amount="-5" to="stamina" />
+    <add amount="-1" to="skill" />
+    <next id="193"></next>
+  </p>
+  <p id="13">
+    <text>
+        [p]Külön-külön küzdj meg a három szörnyeteggel.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="16" />
+      <enemy id="17" />
+      <enemy id="18" />
+    </fight>
+    <next id="99"></next>
+  </p>
+  <p id="14">
+    <text>
+        [p]A férfit kicsit meglepi a támadásod, de ennek ellenére felemeli a fejszéjét és rád támad.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="6" />
+    </fight>
+    <next id="91"></next>
+  </p>
+  <p id="15">
+    <text>
+        [p]A kémény elég keskeny, de így is sikerül különösebb probléma nélkül felérned a tetejére. Ahogy kitekintesz belőle, egy szoba képe tárul eléd. Egy széket látsz, melyben egy kis Ördög ücsörög. A lény, amint észrevesz téged, csettint egyet az ujjával. A következő pillanatban pedig eltűnnek a létráról a fokok![/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="109"></next>
+      </success>
+      <failure>
+        <next id="133"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="16">
+    <empty />
+  </p>
+  <p id="17">
+    <text>
+        [p]A ládán két zár van. Melyik kombinációt választod?[/p]
+    </text>
+    <itemCheck type="items" id="3010 and 3001">
+      <have>
+        <next id="200">Gyémánt és Rubin</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="items" id="3001 and 3008">
+      <have>
+        <next id="135">Rubin és Smaragd</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="items" id="3008 and 3010">
+      <have>
+        <next id="156">Smaragd és Gyémánt</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="18">
+    <text>
+        [p]Az ajtón túl induló folyosó hosszan halad észak felé, majd egy elágazáshoz ér. A becsatlakozó másik út visszafelé vezet, nagyjából arra, amerről érkeztél, így az eredeti irányt tartva tudsz tovább haladni.[/p]
+    </text>
+    <next id="10"></next>
+  </p>
+  <p id="19">
+    <text>
+        [p]Első ránézésre a gyűrű közönséges ékszernek tűnik, ám alaposabban megvizsgálva hat apró fogat találsz a belső felén. Ez egy Parazitagyűrű! Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot, amiért erre sikerült rájönnöd. Visszateszed a mágikus élősködőt a ládába.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <itemCheck type="section" id="26">
+      <have>
+        <itemCheck type="section" id="158">
+          <have>
+            <text>
+                [p]Elhagyod a kis szobát.[/p]
+            </text>
+            <next id="86"></next>
+          </have>
+          <dontHave>
+            <next id="158">Ha most próbát tennél az első ládával</next>
+            <next id="86">Amennyiben el akarod hagyni a kis szobát</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="158">
+          <have>
+            <next id="26">Ha a harmadik láda érdekelne</next>
+            <next id="86">Amennyiben el akarod hagyni a kis szobát</next>
+          </have>
+          <dontHave>
+            <next id="158">Ha most próbát tennél az első ládával</next>
+            <next id="26">Ha a harmadik érdekelne</next>
+            <next id="86">Amennyiben el akarod hagyni a kis szobát</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="20">
+    <text>
+        [p]A doboz zárva van.[/p]
+    </text>
+    <next id="159">Ha meg akarod próbálni feltörni</next>
+    <next id="7">Ha inkább távoznál innen és az elágazáshoz visszatérve keletre folytatnád az utad</next>
+  </p>
+  <p id="21">
+    <text>
+        [p]Az Asztromanta egy Altatóvarázslatot alkalmazott rajtad.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>[p]A varázslat célt téveszt. Folytasd a harcot.[/p]</text>
+        <next id="33"></next>
+      </success>
+      <failure>
+        <text>[p]A padlóra rogysz és mély álomba merülsz.[/p]</text>
+        <next id="95"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="22">
+    <text>
+        [p class="inlineImage"][img src="resources/wm6/22.jpg" /][/p]
+        [p]A teremtmény egy Zombi, ami téged támad! Küzdj meg vele.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="7" />
+    </fight>
+    <next id="45"></next>
+  </p>
+  <p id="23">
+    <text>
+        [p]A folyosó néhány méteren át északnak vezet, majd két ajtóhoz ér, melyek egymással szemben állnak, kétoldalt a falban.[/p]
+    </text>
+    <next id="50">Ha nem foglalkozol velük, csak egyszerűen továbbhaladsz</next>
+    <next id="36">Ha a keletin akarsz benyitni</next>
+    <next id="102">Hogyha a nyugatin</next>
+  </p>
+  <p id="23b" display="23">
+    <text>
+        [p]A folyosó néhány méteren át északnak vezet, majd két ajtóhoz ér, melyek egymással szemben állnak, kétoldalt a falban.[/p]
+    </text>
+    <itemCheck type="section" id="102">
+      <have>
+        <text>[p]Egyszerűen továbbhaladsz.[/p]</text>
+        <next id="50"></next>
+      </have>
+      <dontHave>
+        <next id="50">Ha egyszerűen továbbhaladsz</next>
+        <next id="102">Ha benyitsz a nyugatin</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="24">
+    <text>
+        [p]Úgy érzed, kényes kérdést tettél fel a fickónak. – Nem tudom… Nem igazán… Nem akarok erről beszélni – mondja némi habozás után az Ebmester.[/p]
+    </text>
+    <next id="29">Ha tovább próbálsz puhatolózni</next>
+    <next id="73">Ha inkább Anakendisről kérdeznél</next>
+    <next id="148">Ha a Krónikákról</next>
+    <next id="151">Ha megköszönöd a segítségét és elhagyod a szobáját</next>
+  </p>
+  <p id="25">
+    <text>
+        [p]A [span class="takeItem" data-id="3012" data-amount="1"]ruha[/span] igen drága anyagból készült, ám egy csepp mágia sincs benne.[/p]
+    </text>
+    <next id="149"></next>
+  </p>
+  <p id="26">
+    <text>
+        [p]A láda zárva van.[/p]
+    </text>
+    <next id="41">Ha meg akarod próbálni felfeszíteni</next>
+    <itemCheck type="section" id="163">
+      <have>
+        <itemCheck type="section" id="158">
+          <have>
+            <next id="86">Amennyiben el akarod hagyni a kis szobát</next>
+          </have>
+          <dontHave>
+            <next id="158">Ha most próbát tennél az első ládával</next>
+            <next id="86">Amennyiben el akarod hagyni a kis szobát</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="158">
+          <have>
+            <next id="163">Ha a második láda érdekelne</next>
+            <next id="86">Amennyiben el akarod hagyni a kis szobát</next>
+          </have>
+          <dontHave>
+            <next id="158">Ha most próbát tennél az első ládával</next>
+            <next id="163">Ha a második érdekelne</next>
+            <next id="86">Amennyiben el akarod hagyni a kis szobát</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="27">
+    <text>
+        [p]Nem törődsz az aprósággal, folytatod az utat, ám úgy egy percnyi séta után érzed, hogy valami finoman megérinti a lábad. Ahogy megfordulsz, a kis teremtményt veszed észre magad mögött, ezért úgy döntesz, meghallgatod a mondanivalóját.[/p]
+    </text>
+    <next id="171"></next>
+  </p>
+  <p id="28">
+    <text>
+        [p]A Dinoszaurusz barlangját átkutatva rábukkansz egy Kötélre – méghozzá egy [span class="takeItem" data-id="3003" data-amount="1"]Mágikus Kötélre[/span]! Ez a tárgy képes magától feltekeredni bármire, elég, ha csak megparancsolod neki. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. A segítségével végül sikerül kikeveredned a veremből.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <itemCheck type="section" id="36">
+      <have>
+        <text>[p]Folytatod az utad a folyosón.[/p]</text>
+        <next id="50" pos="2"></next>
+      </have>
+      <dontHave>
+        <next id="36" pos="1">Ha most belépnél a folyosó túloldalán lévő szobába</next>
+        <next id="50" pos="2">Hogyha folytatnád az utad a folyosón</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="29">
+    <text>
+        [p]Az Ebmester feldühödik faggatózásodra. – Azt mondtam, nem akarok beszélni róla! – kiálltja, majd legnagyobb meglepetésedre előrántja a kardját és rád támad![/p]
+    </text>
+    <next id="62"></next>
+  </p>
+  <p id="30">
+    <text>
+        [p]Elindulsz a homokon át, de hamarosan süllyedni kezdesz benne. Hirtelen egy vastag csáp tör fel a mélyből – egy Homokpolip csápja! Meg kell küzdened ezzel a lénnyel, ám mivel derékig a futóhomokban csak nagy nehézségek árán tudsz mozogni, a csata időtartamára 2-vel csökkentened kell [span class="ffAttribute"]ÜGYESSÉGED[/span].[/p]
+    </text>
+    <add amount="-2" to="skill" />
+    <fight type="single">
+      <enemy id="14" />
+      <win>
+        <add amount="2" to="skill" />
+      </win>
+    </fight>
+    <next id="2b"></next>
+  </p>
+  <p id="31">
+    <text>
+        [p]A szakadék túloldaláról továbbvezető járat egy kis helyiségbe vezet, melyben ajtók vannak az északi, a keleti és a nyugati falon, és a szobának a közepén egy kis márványtalapzat áll.[/p]
+    </text>
+    <next id="111">Ha ezt vizsgálnád meg közelebbről</next>
+    <next id="43">Ha keleti irányba hagynád el a termet</next>
+    <next id="84">Ha északnak mennél</next>
+    <next id="72">Hogyha a nyugati ajtót választanád</next>
+  </p>
+  <p id="32">
+    <text>
+        [p]A faliszőnyeg egy izmos embert ábrázol, akit egy falka farkas vagy kutya követ, és aki villámokat szór egy menekülő seregre.[/p]
+    </text>
+    <next id="184">Ha most megvizsgálnád az íróasztalt is</next>
+    <next id="105">Ha távoznál a helyiségből</next>
+  </p>
+  <p id="33">
+    <text>[p]Küzdj meg az alakkal![/p]</text>
+    <fight type="single">
+      <enemy id="4" />
+      <win>
+        <itemCheck type="enemy" id="4">
+          <have>
+            <next id="56"></next>
+          </have>
+          <dontHave>
+            <text>[p]Elhagyod a termet.[/p]</text>
+            <loseItem id="4001" />
+            <next id="96">Ha északi irányba folytatnád az utad</next>
+            <next id="71">Ha visszatérnél az előző szobába és onnan mennél tovább északra</next>
+          </dontHave>
+        </itemCheck>
+      </win>
+    </fight>
+  </p>
+  <p id="34">
+    <text>
+        [p]A járat egy igen hűvös barlangüregbe vezet. Jégcsapok lógnak a plafonról, a padlót csúszós, fekete jégréteg borítja.[/p]
+    </text>
+    <next id="93">Ha alaposabban is körül akarsz nézni idebenn</next>
+    <next id="126">Ha távoznál innen</next>
+  </p>
+  <p id="35">
+    <text>
+        [p]Felhúzod a csizmákat. Elég kényelmesek. Ahogy körbesétálsz, úgy érzed, mintha sokkal ruganyosabban járnál. Rátaláltál a Szökkenő Csizmára. Ennek a lábbelinek a segítségével óriási távolságokat is képes leszel átugrani, ráadásul [span class="ffAttribute"]ÜGYESSÉGED[/span] is javítja 1 ponttal (akár a [em]Kezdeti[/em] érték fölé is!).[/p]
+    </text>
+    <gatherItem id="3007" />
+    <next id="112"></next>
+  </p>
+  <p id="36">
+    <text>
+        [p]Az ajtó egy nagyobb helyiségbe nyílik, melynek nincsen másik kijárata. A szoba közepén egy embert látsz, kezében fejszével, körülötte pedig, a polcokon vagy a plafonról lógva rengeteg élelmet.[/p]
+    </text>
+    <next id="134">Ha megszólítod a férfit</next>
+    <next id="14">Ha rátámadsz</next>
+    <next id="23b">Ha gyorsan távozol innét</next>
+  </p>
+  <p id="37">
+    <text>
+        [p]Az ajtó egy kis terembe nyílik, melyben egyetlen fekete láda áll csupán. Két zárt látsz rajta – valószínűleg ebben rejtőzik a Sötét Krónikák![/p]
+    </text>
+    <itemCheck type="items" id="(3001 and 3008) or (3001 and 3010) or (3008 and 3010)">
+      <have>
+        <next id="58">Ha megpróbálod bezúzni a láda tetejét</next>
+        <next id="17">Ha a nálad lévő kulcsokat próbálod meg használni</next>
+      </have>
+      <dontHave>
+        <text>[p]Nincs nálad két kulcs, amikkel próbát tehetnél, így megpróbálod bezúzni a láda tetejét.[/p]</text>
+        <next id="58b"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="38">
+    <itemCheck type="items" id="3005 or 3003">
+      <have>
+        <text>
+            [p]Mit próbálsz meg ellene használni?[/p]
+        </text>
+        <itemCheck type="item" id="3005">
+          <have>
+            <next id="6" pos="1">Egy ezüst amulettet?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <next id="152" pos="2">Egy Mágikus Kötelet, melynek megparancsolod, hogy kötözze   meg  a férfit?</next>
+          </have>
+        </itemCheck>
+        <next id="83" pos="3">A fegyveredet?</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Semelyik tárgyad sem tűnik hatásosnak az alak ellen. Meg kell támadnod a varázslót.[/p]
+        </text>
+        <next id="83"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="39">
+    <text>
+        [p]A szekrényben több fekete köpenyt is látsz.[/p]
+    </text>
+    <next id="140">Ha ki akarod venni az egyiket, hogy felpróbáld</next>
+    <next id="149">Hogyha nem érdekelnek</next>
+  </p>
+  <p id="40">
+    <text>
+        [p]Az aljnövényzet igen sűrű, és nem jutsz túl messzire. Megfordulsz, hogy visszamenj az ösvényre, de már nem igazán tudsz mozogni. Lábaiddal sikerült belegabalyodnod egy kúszónövénybe, és most ki kell verekedned magad belőle.[/p]
+        [p]A növény minden körben automatikusan sebez rajtad 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot, még akkor is, hogyha egyébként a te Támadóerőd lenne a nagyobb.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="9" />
+      <win>
+        <text>
+            [p]El kell döntened, merre folytatod az utad.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="101">Amennyiben a balra haladó ösvényen mennél tovább</next>
+    <next id="49">Ha a jobb oldalin, mely az ajtóhoz vezet</next>
+  </p>
+  <p id="41">
+    <text>
+        [p]Bármennyire is erőlködsz, nem bírsz sem a fedéllel, sem magával a zárral.[/p]
+    </text>
+    <next id="153">Ha nyers erődet használva megpróbálnád egyszerűen csak bezúzni a láda tetejét</next>
+    <next id="9">Ha inkább feladod a próbálkozást</next>
+  </p>
+  <p id="42">
+    <text>
+        [p]Nem sikerül olyan jól az ugrás, mint szeretted volna, így nem is tudsz rendesen megkapaszkodnod a hálóban. Majdnem kificamodik a karod a rántástól – vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot –, de épp csak sikerül elkerülnöd a csúfos véget. Biztonságba húzod magad, a maradék távolságot pedig egy ugrással teszed meg.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="31"></next>
+  </p>
+  <p id="43">
+    <text>
+        [p]Az ajtó mögött egy rövid járat indul, ami végül egy teremben ér véget, melyben egy férfi áll. Gúnyosan mosolyog rád, majd Traskanndként, Anakendis szolgájaként mutatkozik be. A szoba egyszerű berendezését egy íróasztal és egy faliszőnyeg alkotja, a szemközti falon pedig egy ajtót látsz, ami továbbvezet innen.[/p]
+    </text>
+    <next id="183">Ha beszélni próbálsz a férfival</next>
+    <next id="193">Ha rátámadsz</next>
+    <next id="63">Ha megpróbálsz kereket oldani</next>
+  </p>
+  <p id="44">
+    <text>
+        [p]A földön fekve teljesen ki vagy szolgáltatva a varázsló következő támadásának, a félelmetes villámgömb pedig 8 [span class="ffAttribute"]ÉLETERŐ[/span] pontos sebet ejt rajtad. Anakendis ismét rád támad.[/p]
+    </text>
+    <add amount="-8" to="stamina" />
+    <next id="83"></next>
+  </p>
+  <p id="45">
+    <text>
+        [p]A szörnyű teremtmény holtan hever a lábad előtt. Átkutatod az alkóvot, de semmit nem találsz odabenn, így hát távozol a szobából.[/p]
+    </text>
+    <next id="108"></next>
+  </p>
+  <p id="46">
+    <text>
+        [p]A járat egy idő után északi irányba fordul, majd elhalad egy ajtó mellett, melyet a keleti falba ágyaztak.[/p]
+    </text>
+    <next id="154">Ha ki akarod ezt nyitni</next>
+    <next id="50">Hogyha folytatnád az utat egyenesen</next>
+  </p>
+  <p id="47">
+    <text>
+        [p]Csapásodnak nincs nagy hatása Anakendis ellen, a barikád azonban egy időre eltűnik. Kihasználod a kínálkozó lehetőséget és folytatod a harcot.[/p]
+    </text>
+    <changeEnemy attribute="fleeAtRound" id="24" set="1000000000" />
+    <fight type="single">
+      <enemy id="24" />
+    </fight>
+    <next id="168"></next>
+  </p>
+  <p id="48">
+    <text>
+        [p]Az ajtón át egy egyszerűen berendezett hálószobába érkezel. Amint felbukkansz, az ágyban heverő alak felemelkedik. A férfi feketébe van öltözve, oldalán egy kard lóg.[/p]
+    </text>
+    <next id="62">Ha megtámadod</next>
+    <next id="161">Ha megpróbálsz beszédbe elegyedni vele</next>
+  </p>
+  <p id="49">
+    <text>
+        [p]Az ajtó zárva van.[/p]
+    </text>
+    <next id="128" pos="1">Ha megpróbálod nekifutásból betörni</next>
+    <itemCheck type="section" id="101">
+      <dontHave>
+        <next id="101" pos="2">Ha inkább a másik csapást vizsgálnád meg közelebbről</next>
+      </dontHave>
+    </itemCheck>
+    <next id="50" pos="3">Ha elhagynád a helyiséget</next>
+  </p>
+  <p id="50">
+    <text>
+        [p]A járat végül egy kereszteződésben ér véget. Úgy döntesz, az észak felé továbbhaladó folyosón folytatod az utadat. Mielőtt azonban elindulnál, az egyik járatban egy apró lény jelenik meg, ami követni kezd téged.[/p]
+    </text>
+    <next id="27">Ha nem foglalkozol vele</next>
+    <next id="98">Ha felé fordulsz és rátámadsz</next>
+  </p>
+  <p id="51a" display="51">
+    <text>
+        [p]Esetlenül, egyre süllyedve a homokban haladsz előre. Már majdnem eléred a szoba túlvégét, amikor lábad beleakad valami keménybe, ami a homok alatt hever. Ahogy alaposabban megnézed, megállapítod, hogy egy vastag kötél az.[/p]
+    </text>
+    <loseItem id="3003" />
+    <next id="144">Ha hagyod, ahol van, és sietve távozol</next>
+    <next id="122">Ha meghúzod</next>
+  </p>
+  <p id="51b" display="51">
+    <text>
+        [p]Esetlenül, egyre süllyedve a homokban haladsz előre. Már majdnem eléred a szoba túlvégét, amikor lábad beleakad valami keménybe, ami a homok alatt hever. Ahogy alaposabban megnézed, megállapítod, hogy egy vastag kötél az.[/p]
+    </text>
+    <next id="144">Ha hagyod, ahol van, és sietve távozol</next>
+    <next id="122">Ha meghúzod</next>
+  </p>
+  <p id="52">
+    <text>
+        [p]Granzork próbál rábeszélni, hogy gondold meg magad, te azonban eltökélt vagy. Egyre dühösebb lesz, majd hirtelen két méteresre fúvódik fel és rád támad! Küzdj meg vele.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="3" />
+      <win>
+        <text>
+            [p]Ha akarsz, most ehetsz.[/p]
+        </text>
+      </win>
+    </fight>
+    <canEat />
+    <next id="141">Ha megnéznéd, mi van az ajtó túloldalán</next>
+    <next id="132">Ha az északi folyosón folytatnád az utat</next>
+    <next id="3">Hogyha visszatérnél az előző járathoz és ott mennél tovább egyenesen</next>
+  </p>
+  <p id="53">
+    <text>
+        [p]Felpattansz a Seprűre és biztonságban átrepülsz a túloldalra, a kijárathoz.[/p]
+    </text>
+    <next id="144"></next>
+  </p>
+  <p id="54">
+    <text>
+        [p]Most, hogy végeztél az Erdődémonnal, már ehetsz, ha akarsz. A kunyhót átkutatva [span class="takeItem" data-id="gold" data-amount="5"]5 Aranytallérra[/span] lelsz, továbbá egy pár Kék Szaténkesztyűre.[/p]
+    </text>
+    <canEat />
+    <next id="65" pos="1">Hogyha fel akarod ezeket próbálni</next>
+    <itemCheck type="section" id="8">
+      <dontHave>
+        <next id="8" pos="2">Ha a szomszédos kunyhóban akarsz körülnézni</next>
+      </dontHave>
+    </itemCheck>
+    <next id="49" pos="3">Ha a másik ösvényt követnéd az ajtóig</next>
+  </p>
+  <p id="55">
+    <text>
+        [p]A doboz teteje felpattan. Egy rubinból kifaragott [span class="takeItem" data-id="3001" data-amount="1"]Kulcsot[/span] találsz benne, mely bíbor színű selyempárnán pihen. Gyorsan zsebre vágod majd elhagyod a barlangot. Visszasétálsz az elágazáshoz, ahol a jobb oldali járatban folytatod az utat.[/p]
+    </text>
+    <next id="7"></next>
+  </p>
+  <p id="56">
+    <itemCheck type="section" id="131">
+      <have>
+        <random>
+          <result max="3" min="1">
+            <next id="160"></next>
+          </result>
+          <result max="6" min="4">
+            <next id="21"></next>
+          </result>
+        </random>
+      </have>
+      <dontHave>
+        <random>
+          <result max="2" min="1">
+            <next id="160"></next>
+          </result>
+          <result max="4" min="3">
+            <next id="21"></next>
+          </result>
+          <result max="6" min="5">
+            <next id="131"></next>
+          </result>
+        </random>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="57">
+    <text>
+        [p]Az ajtóhoz szaladnál, de egy kőfal csapódik le a keretben, elzárva előtted az utat, te pedig egyenesen belerohansz, és egy ideig csak csillagokat látsz. Ahogy látásod kitisztul, Anakendis kardja jelenik meg előtted, amint a nyakad felé hasít… Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="58">
+    <text>
+        [p]Felemeled kardodat, ám miközben kezdenél lesújtani rá, egy sötétségből álló sugár csap ki belőle, egyenesen a testedbe.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]A nyaláb nem talál el. Úgy döntesz, inkább megpróbálod a nálad lévő kulcsokkal kinyitni a ládát.[/p]
+        </text>
+        <next id="17"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A nyaláb telibe talál és végez veled.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="58b" display="58">
+    <text>
+        [p]Felemeled kardodat, ám miközben kezdenél lesújtani rá, egy sötétségből álló sugár csap ki belőle, egyenesen a testedbe.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]A nyaláb nem talál el.[/p]
+            [p]Elkeseredetten a földre roskadsz, hogy ilyen messzire eljutottál, és mégis elbuktál. Ha legközelebb bejutsz a barlangba, keress kulcsokat![/p]
+        </text>
+      </success>
+      <failure>
+        <text>
+            [p]A nyaláb telibe talál és végez veled.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="59">
+    <text>
+        [p]Ahogy a férfi felé szaladsz, a varázsló kimond néhány szót, és egy masszív jégfal jelenik meg, pont az orrod előtt. Egyenesen belerohansz – vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Az öreg egy újabb szavára az egész eltűnik. Úgy döntesz, inkább megszólítod.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="4"></next>
+  </p>
+  <p id="60">
+    <text>
+        [p]Elmondod a Zombinak, hogy csupán kíváncsiságodat akartad kielégíteni. – A kő megmozdításának büntetése halál. Az ítéletet azonnal végrehajtom – mondja a síron túli teremtmény hörgő, és vérfagyasztó hangján. Azzal kilép az alkóvból és rád támad.[/p]
+    </text>
+    <next id="22"></next>
+  </p>
+  <p id="61">
+    <text>
+        [p]Kinyitod a fiókot. Különféle szeméttel van tele, a halom tetején azonban megpillantasz egy bőr fejpántot, melyet gyémánt alakú vörös minták díszítenek.[/p]
+    </text>
+    <next id="68">Ha fel akarod próbálni</next>
+    <next id="5">Ha inkább folytatod a keresést</next>
+  </p>
+  <p id="62">
+    <text>
+        [p]A férfi rád veti magát.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="19" />
+    </fight>
+    <next id="67"></next>
+  </p>
+  <p id="63">
+    <text>
+        [p]Az ajtó felé indulsz, ám egy tűzfal tör elő a padlóból – te pedig egyenesen felé tartasz![/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="197"></next>
+      </success>
+      <failure>
+        <next id="12"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="64">
+    <text>
+        [p]Valahogyan át kell jutnod a szakadékon.
+    </text>
+    <itemCheck type="items" id="3002 or 3003 or 3007">
+      <have>
+        <text> A legkézenfekvőbb megoldás az lenne, ha a fal mellé támasztott három fadeszkát használnád fel, de ezen kívül felszerelési tárgyaid közül is válogathatsz.[/p]</text>
+        <next id="178">Ha a deszkákkal próbálkozol</next>
+        <itemCheck type="item" id="3002">
+          <have>
+            <next id="114">Ha a Repülő Seprűvel</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <next id="182">Ha a Mágikus Kötéllel</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3007">
+          <have>
+            <next id="137">Ha a Szökkenő Csizmával</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text> Az egyetlen megoldásnak az tűnik, ha a fal mellé támasztott három fadeszkát használod fel.[/p]</text>
+        <next id="178"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="65">
+    <text>
+        [p]Felhúzod a Kesztyűt. Remekül illik a kezedre. A következő pillanatban azonban a szatén összezsugorodik és szorítani kezd. Rettenetesen fáj a kézfejed, de képtelen vagy megszabadulni a kellemetlen ruhadarabtól. Vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] és 1 [span class="ffAttribute"]ÜGYESSÉG[/span] pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <gatherItem id="3009" />
+    <itemCheck type="section" id="8">
+      <have>
+        <text>
+            [p]Elindulsz az ajtóhoz vezető ösvényen.[/p]
+        </text>
+        <next id="49"></next>
+      </have>
+      <dontHave>
+        <next id="8">Ha most szétnéznél a szomszédos kunyhóban is</next>
+        <next id="49">Ha a másik ösvényen indulnál el, mely az ajtóhoz vezet</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="66">
+    <text>
+        [p]A csontváz kopott selyemköpenyt visel, és egy pár tökéletes állapotban maradt bőrcsizmát.[/p]
+    </text>
+    <next id="35">Hogyha fel akarod ezeket próbálni</next>
+    <next id="112">Ha nem</next>
+  </p>
+  <p id="67">
+    <text>
+        [p]Átkutatod a szobát, de semmi érdekeset nem találsz benne. Átvágsz a halott kopók termén és visszatérsz a talapzatos barlangüregbe.[/p]
+    </text>
+    <next id="151"></next>
+  </p>
+  <p id="68">
+    <text>
+        [p]A fejpánt elég nagy, ám ahogy felveszed, megfeszül, hogy tökéletesen passzoljon rád. [em]Kezdeti[/em] [span class="ffAttribute"]SZERENCSÉD[/span] megnövelheted 1-el, és a Jelenlegit is visszaállíthatod erre az értékre. Folytatod a fiók átkutatását.[/p]
+    </text>
+    <add amount="1" to="initialLuck" />
+    <add amount="99" to="luck" />
+    <next id="5"></next>
+  </p>
+  <p id="69">
+    <text>
+        [p]Ebben a Körben Traskannd nem a kardjával támad rád, nem is próbálja kivédeni a csapásod (automatikusan eltalálod), hanem ujja hegyéből lő rád egy lángnyelvet.[/p]
+    </text>
+    <changeEnemy attribute="fleeAtRound" id="20" set="1000000000" />
+    <changeEnemy attribute="stamina" change="-2" id="20" />
+    <random>
+      <result max="1" min="1">
+        <add amount="-1" to="stamina" />
+        <text>[p]Vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot</text>
+      </result>
+      <result max="2" min="2">
+        <add amount="-2" to="stamina" />
+        <text>[p]Vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot</text>
+      </result>
+      <result max="3" min="3">
+        <add amount="-3" to="stamina" />
+        <text>[p]Vesztesz 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot</text>
+      </result>
+      <result max="4" min="4">
+        <add amount="-4" to="stamina" />
+        <text>[p]Vesztesz 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot</text>
+      </result>
+      <result max="5" min="5">
+        <add amount="-5" to="stamina" />
+        <text>[p]Vesztesz 5 [span class="ffAttribute"]ÉLETERŐ[/span] pontot</text>
+      </result>
+      <result max="6" min="6">
+        <add amount="-6" to="stamina" />
+        <text>[p]Vesztesz 6 [span class="ffAttribute"]ÉLETERŐ[/span] pontot</text>
+      </result>
+      <after>
+        <text>[/p]</text>
+        <fight type="single">
+          <enemy id="20" />
+        </fight>
+      </after>
+    </random>
+    <next id="194"></next>
+  </p>
+  <p id="70">
+    <text>
+        [p]Az ajtó egy keskeny szobába nyílik. Nem látsz másik bejáratot. Sem semmi mást. A falakat mindkét oldalon hatalmas burkolókövek építik fel, melyek között két olyan is van, ami meglazult és könnyen mozdítható. Valamivel szemmagasság felett egy kis lyukat is észreveszel.[/p]
+    </text>
+    <itemCheck type="section" id="170">
+      <dontHave>
+        <next id="170" pos="1">Ha ezt vizsgálnád meg közelebbről</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="104">
+      <dontHave>
+        <next id="104" pos="2">Ha a déli kődarabot mozdítanád meg</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="130">
+      <dontHave>
+        <next id="130" pos="3">Ha az északit</next>
+      </dontHave>
+    </itemCheck>
+    <next id="108" pos="4">Ha távoznál és folytatnád az utad a folyosón</next>
+  </p>
+  <p id="71">
+    <text>
+        [p]A járat egy ideig északi irányba halad, végül egy elágazáshoz ér.[/p]
+    </text>
+    <next id="23">Ha tovább mennél egyenesen</next>
+    <next id="121">Ha keletre fordulnál</next>
+    <next id="46">Ha a nyugati irány a szimpatikus</next>
+  </p>
+  <p id="72">
+    <text>
+        [p]Ahogy kinyitod az ajtót, egy száj jelenik meg rajta, mely mély, mennydörgésszerű hangon szól hozzád. – Óvakodj, botor ember! Anakendis lakhelyére lépsz be, melyből még senki nem tért vissza élve! – Nem szentelsz túl nagy jelentőséget a kijelentésnek, folytatod az utad a járatban.[/p]
+    </text>
+    <next id="106"></next>
+  </p>
+  <p id="73">
+    <text>
+        [p]A férfi bólint. Elmondja, hogy amint belépsz Anakendis termébe, onnan nincs menekvés, így hát óvakodnod kell, továbbá hogy a nyugati ajtón át juthatsz el hozzá, míg Traskannd lakhelyét keletre találod.[/p]
+    </text>
+    <next id="174">Ha tovább kérdezősködsz Anakendisről</next>
+    <next id="73b">Ha megköszönöd az információt és visszatérsz a talapzatos helyiségbe</next>
+  </p>
+  <p id="73b" display="73">
+    <text>
+        [p]A férfi bólint. Elmondja, hogy amint belépsz Anakendis termébe, onnan nincs menekvés, így hát óvakodnod kell, továbbá hogy a nyugati ajtón át juthatsz el hozzá, míg Traskannd lakhelyét keletre találod.[/p]
+        [p]Megköszönöd az információt és visszatérsz a talapzatos helyiségbe.[/p]
+    </text>
+    <itemCheck type="section" id="43">
+      <have>
+        <text>
+            [p]Úgy döntesz, nyugatra indulsz.[/p]
+        </text>
+        <next id="72"></next>
+      </have>
+      <dontHave>
+        <next id="43">Amennyiben itt keletre mennél</next>
+        <next id="72">Ha nyugatra</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="74">
+    <text>
+        [p]Az apró Ördög holtan esik össze előtted. A termet átkutatva egy apró [span class="takeItem" data-id="3006" data-amount="1"]Ékköves Gyűrűre[/span] bukkansz, mely 5 Aranytallért ér. A lejutáshoz a padló szélébe kapaszkodva leereszted magad, amennyire csak karod engedi, majd a maradék, rövid távolságnál ugrasz. Ha akarsz, most ehetsz is.[/p]
+    </text>
+    <canEat />
+    <next id="112"></next>
+  </p>
+  <p id="75">
+    <text>
+        [p]Felteszel néhány kérdést a barlangrendszerről, ám nem válaszol. Rájössz, hogy túl sokat kotyogtál el küldetésedről, a férfi pedig meglendíti fejszéjét és rád támad. Küzdj meg vele![/p]
+    </text>
+    <fight type="single">
+      <enemy id="6" />
+    </fight>
+    <next id="91"></next>
+  </p>
+  <p id="76">
+    <text>
+        [p]Végignézed a képeket, melyek mindegyike különféle borzalmas kínzási módozatokat ábrázol – olyanokat, melyek nézegetésében Traskannd örömét lelhette szabadidejében. Az egyik előtt állva azonban egy kis, fehér, szellemszerű kezet látsz lerepülni a vászonról, mely azonnal torkon ragad téged! Küzdj meg vele a szokásos módon![/p]
+    </text>
+    <fight type="single">
+      <enemy id="22" />
+      <win>
+        <itemCheck type="enemy" id="22">
+          <have>
+            <text>
+                [p]A kéz megfojt téged.[/p]
+            </text>
+            <death />
+          </have>
+          <dontHave>
+            <next id="149"></next>
+          </dontHave>
+        </itemCheck>
+      </win>
+    </fight>
+  </p>
+  <p id="77">
+    <text>
+        [p]Sikeresen eljutsz a háló túloldalára, ahonnan már csak egy könnyű ugrás a kijárat. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="31"></next>
+  </p>
+  <p id="78">
+    <text>
+        [p]Maga a kút nem túl érdekes. A túloldalán találsz egy táblát, melyre a következő szöveg van írva: „Werdana kútja.”[/p]
+    </text>
+    <next id="169">Ha most a vödörben leereszkedsz</next>
+    <next id="125">Ha a követ vizsgálnád meg közelebbről</next>
+    <next id="89">Ha távoznál innen</next>
+  </p>
+  <p id="79">
+    <text>
+        [p]A dárda arcodat találja el. Eleinte nem érzel fájdalmat, ám hamarosan rájössz, hogy a fegyver egy olyan mágiával volt átitatva, mely most szívja ki belőled a vért![/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <add amount="-1" to="stamina" />
+        <text>[p]Vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot</text>
+      </result>
+      <result max="2" min="2">
+        <add amount="-2" to="stamina" />
+        <text>[p]Vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot</text>
+      </result>
+      <result max="3" min="3">
+        <add amount="-3" to="stamina" />
+        <text>[p]Vesztesz 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot</text>
+      </result>
+      <result max="4" min="4">
+        <add amount="-4" to="stamina" />
+        <text>[p]Vesztesz 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot</text>
+      </result>
+      <result max="5" min="5">
+        <add amount="-5" to="stamina" />
+        <text>[p]Vesztesz 5 [span class="ffAttribute"]ÉLETERŐ[/span] pontot</text>
+      </result>
+      <result max="6" min="6">
+        <add amount="-6" to="stamina" />
+        <text>[p]Vesztesz 6 [span class="ffAttribute"]ÉLETERŐ[/span] pontot</text>
+      </result>
+      <after>
+        <text>, mielőtt kihúznád magadból a lövedéket. De legalább sikerült megszerezned az Amulettet.[/p]</text>
+      </after>
+    </random>
+    <gatherItem id="3005" />
+    <next id="70"></next>
+  </p>
+  <p id="80">
+    <text>
+        [p]Harcolj![/p]
+    </text>
+    <fight type="single">
+      <enemy id="1" />
+    </fight>
+    <next id="189"></next>
+  </p>
+  <p id="81">
+    <text>
+        [p]Visszatérsz a járatba.[/p]
+    </text>
+    <next id="96">Ha most a balra induló alagútban folytatnád az utad</next>
+    <next id="71">Hogyha visszatérnél az első szobába és onnan haladnál tovább északi irányba.</next>
+  </p>
+  <p id="82">
+    <text>
+        [p]A járat egy ideig nyugatnak tart, azután északnak fordul. Hamarosan egy leágazáshoz érsz, mely bal kéz felé folytatódik.[/p]
+    </text>
+    <next id="120">Ha erre indulnál</next>
+    <next id="96">Ha továbbra is egyenesen mennél tovább</next>
+  </p>
+  <p id="83">
+    <text>
+        [p]Ellenfeled készen áll támadásodra, és előhúzza saját kardját. Tapasztalt kardforgató, kemény csata elé nézel.[/p]
+    </text>
+    <itemCheck type="items" id="1002">
+      <have>
+        <fight type="single">
+          <enemy id="24" />
+        </fight>
+        <next id="92"></next>
+      </have>
+      <dontHave>
+        <fight type="single">
+          <enemy id="23" />
+          <winRound enemy="23" subsequentCount="1">
+            <interrupt />
+          </winRound>
+        </fight>
+        <next id="115"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="84">
+    <text>
+        [p]Lenyomod az ajtó kilincsét, de zárva találod. Az ajtólaphoz tapasztva a füledet csoszogások, szipogások és morgások hangjai szűrődnek át, valószínűleg többen is vannak a túloldalt.[/p]
+    </text>
+    <next id="177" pos="1">Ha megpróbálod betörni az ajtót</next>
+    <next id="72" pos="2">Ha a nyugati ajtóval próbálkoznál</next>
+    <itemCheck type="section" id="43">
+      <dontHave>
+        <next id="43" pos="3">Ha a keletivel</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="85">
+    <text>
+        [p]Miután végzel a két kis lénnyel, folytatod a rejtekhelyükül szolgáló csonthalom átkutatását, és végül rábukkansz egy hosszúkás dobozra. Könnyedén felnyílik, és egy fenséges, ragyogó [span class="takeItem" data-id="1002" data-amount="1"]kardot[/span] emelsz ki belőle, mely minden valószínűség szerint mágikus hatalommal bír. Ha magaddal akarod vinni a fegyvert, a régit itt kell hagynod, az új azonban remek munka, mely 1-el megnöveli [span class="ffAttribute"]ÜGYESSÉGED[/span]. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. Ha akarsz, most ehetsz is.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <canEat />
+    <next id="18"></next>
+  </p>
+  <p id="86">
+    <text>
+        [p]Elhagyod a kis szobát, az erdős termen visszatérsz a folyosóra és folytatod az utad észak felé.[/p]
+    </text>
+    <next id="50"></next>
+  </p>
+  <p id="87">
+    <text>
+        [p]A férfi egy ideig emészti a hallottakat, majd hűvösen feléd fordul. – Engem erről nem értesítettek – mondja, azzal harcra készen felemeli a fejszéjét.[/p]
+    </text>
+    <next id="14">Ha megküzdesz vele</next>
+    <next id="87b">Ha elmenekülsz előle</next>
+  </p>
+  <p id="87b" display="87">
+    <text>
+        [p]A férfi egy ideig emészti a hallottakat, majd hűvösen feléd fordul. – Engem erről nem értesítettek – mondja, azzal harcra készen felemeli a fejszéjét.[/p]
+        [p]Menekülőre fogod a dolgot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <itemCheck type="section" id="102">
+      <have>
+        <text>[p]A folyosón folytatod az utad.[/p]</text>
+        <next id="50"></next>
+      </have>
+      <dontHave>
+        <next id="102">Ha most a szemben lévő ajtón nyitnál be</next>
+        <next id="50">Ha a folyosón folytatnád az utad</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="88">
+    <text>
+        [p]A fickó elégedetten végigmér, leereszti fejszéjét és int, hogy nyugodtan nézz körbe.[/p]
+    </text>
+    <next id="14">Ha most rá akarsz támadni</next>
+    <next id="88b">Ha nem akarsz</next>
+  </p>
+  <p id="88b" display="88">
+    <text>
+        [p]A fickó elégedetten végigmér, leereszti fejszéjét és int, hogy nyugodtan nézz körbe.[/p]
+        [p]Körbenézel. Találsz egy szép nagy szelet [span class="takeItem" data-id="3004" data-amount="1"]Nyers Húst[/span], ami hasznosnak ígérkezik, és amit magaddal vihetsz. Ezután elhagyod a termet.[/p]
+    </text>
+    <itemCheck type="section" id="102">
+      <have>
+        <text>[p]A folyosón folytatod az utad.[/p]</text>
+        <next id="50"></next>
+      </have>
+      <dontHave>
+        <next id="102">Ha most a szemben lévő ajtón nyitnál be</next>
+        <next id="50">Ha a folyosón folytatnád az utad</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="89">
+    <text>
+        [p]Elhagyod a szobát. Visszafelé menet ismét elhaladsz a nyugati folyosó mellett.[/p]
+    </text>
+    <itemCheck type="section" id="120">
+      <have>
+        <text>[p]Visszatérsz a három ajtós szobába, majd onnan továbbmész észak felé.[/p]</text>
+        <next id="71"></next>
+      </have>
+      <dontHave>
+        <next id="120">Ha kíváncsi vagy rá, mit rejt</next>
+        <next id="71">Ha visszatérnél a három ajtós szobába, majd onnan mennél tovább észak felé</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="90">
+    <text>
+        [p]A polcon több kötetet is látsz, ezek nagy része azonban vagy szakadt, vagy megégett. Csupán két olyat találsz, ami még aránylag épen maradt.[/p]
+    </text>
+    <next id="107">Az egyik címe „A Barlangok Titkai” – ha ebbe akarsz belenézni</next>
+    <next id="164">A másik címe „Anakendis Élete” – ha ezt futnád át</next>
+  </p>
+  <p id="91">
+    <text>
+        [p]Letörlöd kardod pengéjéről a vért és átkutatod a barlangot. A legkülönfélébb ételekre sikerül rábukkannod. A legígéretesebbnek egy nagy darab [span class="takeItem" data-id="3004" data-amount="1"]Nyers Hús[/span] tűnik, amit magaddal is viszel.[/p]
+    </text>
+    <next id="172" pos="1">Ha most gyorsan meg is kóstolnád</next>
+    <itemCheck type="section" id="102">
+      <dontHave>
+        <next id="102" pos="2">Ha nem, és a szobát elhagyva a folyosón lévő másik ajtón néznél be</next>
+      </dontHave>
+    </itemCheck>
+    <next id="50" pos="3">Ha folytatnád az utat a járatban</next>
+  </p>
+  <p id="92">
+    <text>
+        [p]Anakendis hirtelen elhátrál előled. Int a kezével és különös nyelven motyogni kezd. A következő pillanatban egy tűzgyűrű kel életre körülötte, mely beborítja testét, csak a feje látszik ki az akadály fölött. Kardoddal immáron képtelen vagy elérni. Mit teszel?[/p]
+    </text>
+    <next id="100">Megpróbálsz átugrani     az akadály fölött?</next>
+    <next id="57">Megpróbálsz elmenekülni?</next>
+    <next id="47">Kardoddal a lángokra csapsz?</next>
+  </p>
+  <p id="93">
+    <text>
+        [p]Beljebb lépsz a terembe és kutatni kezdesz. Ahogy elhaladsz néhány nagyobb állójégcsap mellett, egy hatalmas, fehér, pikkelyes, emberszerű alakkal találod szemben magad – egy Jégharcos! Most még elmenekülhetsz (ne feledkezz meg az ezzel járó büntetésről!), ha visszaszaladsz az előző elágazáshoz.[/p]
+    </text>
+    <next id="7b">Amennyiben így tennél</next>
+    <next id="80">Hogyha nem, és inkább megküzdenél vele</next>
+  </p>
+  <p id="94">
+    <text>
+        [p]Ahogy elindulsz a túloldal felé, megcsúszik a kezed a hálón és leesel. Mikor az aljához érsz, sikerül ugyan egy karral megkapaszkodnod, de elég gyorsan elfárad a kezed, és sikoltva a feneketlen mélységbe zuhansz… Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="95">
+    <text>
+        [p]Az Altatóvarázslat telibe talál, te pedig hortyogva esel össze. Mikor felébredsz, Kokhíd mellett találod magad, egy domboldalban, felszerelési tárgyak nélkül. Viszszatérhetsz a falu elöljárójához, hogy új vértet és kardot kérj tőle, ám minden más tárgyat le kell húznod magadtól.[/p]
+    </text>
+    <loseItem id="2000" amount="10" />
+    <loseItem id="2001" />
+    <loseItem id="2002" />
+    <loseItem id="2003" />
+    <loseItem id="2004" />
+    <loseItem id="3001" />
+    <loseItem id="3002" />
+    <add amount="-20" to="gold" />
+    <next id="1"></next>
+  </p>
+  <p id="96">
+    <text>
+        [p]A keskeny folyosó egy kis, négyzet alakú szobává szélesedik, melyből nem látsz másik kijáratot. Az egyik sarkában egy kis kerekes kút áll. A kötél fel van húzva, végére egy szép nagy vödröt erősítettek – elég nagyot ahhoz, hogy kényelmesen beleállhass és leereszkedhess. A szoba padlóján egy szikladarabot is látsz, ami földöntúli fénnyel lüktet.[/p]
+    </text>
+    <next id="169">Hogyha leereszkednél a kútba</next>
+    <next id="78">Ha előbb megvizsgálnád azt</next>
+    <next id="125">Ha a szikladarabot akarod jobban szemügyre venni</next>
+    <next id="89">Ha távozol a szobából</next>
+  </p>
+  <p id="97">
+    <text>
+        [p]Ahogy belépsz a kunyhó ajtaján, egyből egy különös teremtménnyel – egy Erdődémonnal – találod szembe magad. A fenevad azonnal rád támad.[/p]
+        [p]A lény gyorsan elállja a kijáratot, így nem menekülhetsz el előle.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="10" />
+    </fight>
+    <next id="54"></next>
+  </p>
+  <p id="98">
+    <text>
+        [p]Kardodat a kis teremtmény felé lendíted, ám az felsikolt és elmenekül. Most, hogy rádöbbensz, nem jelent rád veszélyt, hüvelyébe dugod a kardodat és úgy döntesz, meghallgatod a mondandóját.[/p]
+    </text>
+    <next id="171"></next>
+  </p>
+  <p id="99">
+    <text>
+        [p]A kutyák tetemeit félrerugdosva átvizsgálod a barlangot, de semmi hasznosat nem találsz, így távozol.[/p]
+    </text>
+    <next id="48">Hogyha az északi ajtón át távozol</next>
+    <next id="151">Ha a délin át mennél vissza az előző terembe</next>
+  </p>
+  <p id="100">
+    <text>
+        [p]Felugrasz a közeli asztalra és a tűzakadályon át a férfi feje felé ugrasz. Sikerül megrúgnod (vonj le 2-t az [span class="ffAttribute"]ÉLETEREJÉBŐL[/span]), és a barikád is eltűnik. Azonban te is elég rosszul érkezel, ellenfelednek sikerül még előtted összeszednie magát és így bevinnie egy találatot – vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Folytasd a harcot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <changeEnemy attribute="stamina" id="24" change="-2" />
+    <changeEnemy attribute="fleeAtRound" id="24" set="1000000000" />
+    <fight type="single">
+      <enemy id="24" />
+    </fight>
+    <next id="168"></next>
+  </p>
+  <p id="101">
+    <text>
+        [p]Az ösvény némi kanyargás után egy kis, fűvel benőtt tisztáson ér véget, melyen két kis kunyhó áll.[/p]
+    </text>
+    <next id="97">Ha az első, nagyobbik építményben néznél körül</next>
+    <next id="8">Ha a másodikban</next>
+    <next id="49">Ha nem érdekelnek a házikók, és inkább átmennél az ajtóhoz vezető útra</next>
+  </p>
+  <p id="102">
+    <text>
+        [p]Az ajtó könnyedén nyílik, a mögötte lévő szoba azonban üres. A szemben lévő falnál egy felfelé vezető lépcsősort látsz.[/p]
+    </text>
+    <next id="165" pos="1">Ha meg akarod nézni, hová vezet</next>
+    <itemCheck type="section" id="36">
+      <dontHave>
+        <next id="36" pos="2">Ha a folyosó túloldalán lévő ajtón nyitnál be</next>
+      </dontHave>
+    </itemCheck>
+    <next id="50" pos="3">Ha a folyosón mennél tovább északi irányba</next>
+  </p>
+  <p id="103">
+    <text>
+        [p]Ahogy fegyvered átvágja a kis madarat, az felrobban! Vére a kardod pengéjére fröccsen, és rádöbbensz, hogy az egy erősen maró sav! Szerencsére a benne lévő mágia ellenáll ennek, így gond nélkül bele tudod törölni az ágyba. Úgy döntesz, magadra öltöd a köpenyt.[/p]
+    </text>
+    <next id="25"></next>
+  </p>
+  <p id="104">
+    <text>
+        [p]Nagy erőfeszítésedbe kerül megmozdítani a kődarabot. Amikor sikerül, egy alkóvot találsz mögötte, melyben egy ember falfehér teteme áll. Legalábbis tetemnek nézed, amíg a feje feléd nem fordul![/p]
+    </text>
+    <next id="22">Ha meg akarod támadni</next>
+    <next id="136">Ha megpróbálsz beszélni vele</next>
+    <next id="70">Ha gyorsan vissza akarod tolni a fedőkövet</next>
+  </p>
+  <p id="105">
+    <text>
+        [p]Mielőtt távozol a szobából, ehetsz. Utána azonban el kell döntened, merre mész tovább.[/p]
+    </text>
+    <canEat />
+    <next id="138">Ha ugyanarra távoznál, amerről idejöttél</next>
+    <next id="149">Ha a másik ajtón lépnél be</next>
+  </p>
+  <p id="106">
+    <text>
+        [p]A barlangalagút feketére van festve. Nyugati irányba halad, végül egy újabb ajtóban ér véget. Hallgatózol, de semmi nesz nem szűrődik ki a túloldaláról, úgyhogy benyitsz rajta. Egy terembe lépsz, melynek északi falán látsz egy kijáratot. Egy fekete köpenyes alak áll előtted, akiben egyből felismered Anakendist. A férfi arcán gonosz mosoly ül, és gúnyosan megszólít. – Üdvözöllek, kalandozó. Látom, sikerült eljutnod a Belső Szentélybe. Nem számít, innen nem fogsz továbbjutni.[/p]
+    </text>
+    <next id="83">Ha azonnal rátámadsz az alakra</next>
+    <next id="38">Ha előbb átnézed a hátizsákod, hátha találsz benne valamit, ami hasznodra válhat</next>
+    <next id="57">Ha megpróbálsz elmenekülni</next>
+  </p>
+  <p id="107">
+    <text>
+        [p]Gyorsan végigfutod a művet, és sikerül kiderítened, hogy a katakombák elég sokat zsugorodtak kivájásuk óta. A szöveg szerint Anakendis lakhelye valahol egy feneketlen verem túloldalán található, amin egy szinte láthatatlan háló segítségével lehet átjutni. Nagyjából ez minden, ami hasznos benne.[/p]
+    </text>
+    <next id="112"></next>
+  </p>
+  <p id="108">
+    <text>
+        [p]A járat egy ideig észak felé tart, eközben pedig elhalad egy ajtó mellett, ami a keleti falban áll.[/p]
+    </text>
+    <next id="112">Ha be akarsz rajta nyitni</next>
+    <next id="50">Hogyha folytatni akarod az utad a járatban</next>
+  </p>
+  <p id="109">
+    <text>
+        [p]Épp csak sikerül elkapnod a padló szélét, így sikerül felhúznod magad. Az Ördög felpattan ülőhelyéről és rád veti magát.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="8" />
+    </fight>
+    <next id="74"></next>
+  </p>
+  <p id="110">
+    <text>
+        [p]Csapásod nyomán a kis madár hirtelen felrobban! Vére végigfolyik a kardod pengéjén, melyből sziszegő hang tör elő. Rémülten döbbensz rá, hogy a lény vére savas, mely épp most emészti fel fegyveredet! Többé már nem használhatod ezt, így kénytelen vagy újabb harci eszköz után nézni.[/p]
+    </text>
+    <loseItem id="1001" />
+    <next id="162"></next>
+  </p>
+  <p id="111">
+    <text>
+        [p]A talapzatot közelebbről szemügyre véve egy apró kart találsz, amit meghúzol. Egyik oldalán kinyílik egy kis üreg takarólapja. Régen itt talán egy ékszert tartottak, vagy valami más értékes tárgyat, most azonban teljesen üres. Az ajtók egyikével kell szerencsét próbálnod.[/p]
+    </text>
+    <next id="84">Északra indulsz?</next>
+    <next id="43">Keletre mész?</next>
+    <next id="72">Nyugatra nézel szét?</next>
+  </p>
+  <p id="112">
+    <text>
+        [p]Az ajtó könnyedén kinyílik, és egy igen kényelmesen berendezett társalgóba vezet. A nyugati falon egy hatalmas kandallót látsz, előtte pedig egy széket, melyen egy csontváz ücsörög. A közelben van egy könyvespolc is. Mit teszel?[/p]
+    </text>
+    <itemCheck type="section" id="147">
+      <dontHave>
+        <next id="147" pos="1">Megvizsgálod a kandallót?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="90">
+      <dontHave>
+        <next id="90" pos="2">Végignézed    a könyvespolcot?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="66">
+      <dontHave>
+        <next id="66" pos="3">A csontvázhoz lépsz?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="50" pos="4">Elhagyod a szobát?</next>
+  </p>
+  <p id="113">
+    <text>
+        [p]Az alagút egy ajtónál ér véget, mely be van ugyan ragadva, de egy határozott lökéssel sikerül jobb belátásra bírnod. Szélesre tárul, egy óriási barlangüreget fedve fel előtted. A bejárattal szemben meglátod az innen továbbvezető járatot, aminek a közelében egy nagy halom csont és rothadó hús hever.[/p]
+    </text>
+    <next id="142">Hogyha meg akarod ezt vizsgálni</next>
+    <next id="18">Ha inkább egyenesen átvágsz a helyiségen</next>
+  </p>
+  <p id="114">
+    <text>
+        [p]Felpattansz a Seprűre és átrepülsz a szakadék felett. Épp mikor már elérnéd a túloldalt, nekiütközöl valaminek – egy hálónak, amit a semmi fölé feszítettek ki.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>[p]Sikerül megkapaszkodnod benne.[/p]</text>
+        <next id="11"></next>
+      </success>
+      <failure>
+        <next id="42"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="115">
+    <text>
+        [p]Anakendist kizárólag mágikus fegyverrel lehet megsebezni a benne lakozó hatalmas gonosz miatt. Miután nem ilyen fegyvert használsz, képtelen leszel legyőzni a varázslót, így jobban teszed, ha menekülőre fogod a dolgot.[/p]
+    </text>
+    <next id="57"></next>
+  </p>
+  <p id="116">
+    <text>
+        [p]A verem fala idelenn elég egyenetlen, ám miután úgy három métert mászol rajta, egészen simává válik – itt sajnos nem fogsz tudni kijutni. Lassal leereszkedsz.[/p]
+    </text>
+    <next id="117">Ha északi irányba indulsz el</next>
+    <next id="146">Ha dél felé mennél</next>
+  </p>
+  <p id="117">
+    <text>
+        [p]A járat keleti irányba fordul, majd délnek, ezután újra keletnek, végül szűkülni kezd, és egy falba fut bele.[/p]
+    </text>
+    <next id="139">Ha megpróbálod átkutatni valamilyen titkos járat után</next>
+    <next id="146">Ha visszatérsz a veremhez és a másik irányba indulsz el</next>
+  </p>
+  <p id="118">
+    <text>
+        [p]A hang egyre türelmetlenebbé válik. – Most akkor lejössz, vagy nem? Ha nem, kérlek, ne vesztegesd tovább az időmet, és menj a dolgodra.[/p]
+    </text>
+    <next id="169">Ha leereszkedsz a kútba</next>
+    <next id="89">Ha távozol</next>
+  </p>
+  <p id="119">
+    <random>
+      <result max="3" min="1">
+        <text>
+            [p]A Zombi nem hisz neked, és máris rád támad.[/p]
+        </text>
+        <next id="22"></next>
+      </result>
+      <result max="6" min="4">
+        <text>
+            [p]A Zombi elbizonytalanodik, tétovázik, és így elég időt biztosít számodra ahhoz, hogy a helyére told a fedőkövet. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
+        </text>
+        <add amount="1" to="luck" />
+        <next id="70"></next>
+      </result>
+    </random>
+  </p>
+  <p id="120">
+    <text>
+        [p]A járat nyugati irányba halad, és végül egy kicsiny dolgozószobába torkollik. Egy üres könyvespolcot látsz idebenn, meg egy íróasztalt, mely ígéretesebbnek tűnik.[/p]
+    </text>
+    <next id="191">Ha úgy döntesz, hogy átvizsgálod</next>
+    <next id="81">Ha nem akarod ezzel vesztegetni az időt és távoznál a helyiségből</next>
+  </p>
+  <p id="121">
+    <text>
+        [p]Az alagút elég hosszan halad egyenesen, majd észak felé fordul. A fordulóban egy ajtót látsz, melyre két szót írtak fel vérrel: „Maradj kinn.”[/p]
+    </text>
+    <next id="70">Ha be akarsz nyitni</next>
+    <next id="108">Ha az alagútban folytatnád az utat</next>
+  </p>
+  <p id="122">
+    <text>
+        [p]A kötél elég súlyos, és a rengeteg homok is eléggé megnehezíti a dolgodat, de végül sikerül kihalásznod a dobozt, melyet a túlsó végéhez rögzítettek.
+    </text>
+    <itemCheck type="section" id="198">
+      <have>
+        <text>Semmit nem találsz benne, így elhajítod és a kijárathoz mész.[/p]</text>
+      </have>
+      <dontHave>
+        <text>Egy [span class="takeItem" data-id="3010" data-amount="1"]gyémántból kifaragott Kulcsot[/span] találsz benne, amit zsebre is raksz.[/p]</text>
+      </dontHave>
+    </itemCheck>
+    <next id="144"></next>
+  </p>
+  <p id="123">
+    <text>
+        [p class="inlineImage"][img src="resources/wm6/123.jpg" /][/p]
+        [p]A két Járószáj egyszerre támad rád.[/p]
+        [p]Ha akarsz, Elmenekülhetsz, ekkor azonban mindkét lény beléd harap, és 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot vesztesz.[/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="12" />
+      <enemy id="13" />
+      <fleeing after="0" />
+      <flee>
+        <next id="18"></next>
+      </flee>
+      <win>
+        <next id="85"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="124">
+    <text>
+        [p]A férfi igen elégedettnek tűnik, hogy ennyi mindenben tud segíteni neked, úgyhogy biztos vagy benne, hogy Anakendis igen rosszul bánt vele az elmúlt évek során. Megtudod tőle, hogy a Krónikákat le kell hajítani abba a szakadékba, amelyen idefele jövet átkeltél. Megköszönöd a fickó segítségét és a halott kutyák tetemein átgázolva visszatérsz a talapzatos szobába.[/p]
+    </text>
+    <next id="151"></next>
+  </p>
+  <p id="125">
+    <text>
+        [p]A kődarab egyre fényesebben lüktet, ahogy vizsgálod, de semmi különöset nem tapasztalsz vele kapcsolatban.[/p]
+    </text>
+    <next id="192">Ha meg akarod érinteni</next>
+    <next id="169">Hogyha leereszkednél a kútba</next>
+    <next id="78">Ha előbb megvizsgálnád azt</next>
+    <next id="89">Ha távozol a szobából</next>
+  </p>
+  <p id="126">
+    <text>
+        [p]Megfordulsz, hogy elhagyd a barlangot, ám ekkor egy óriási jégtömböt veszel észre, ami egyenesen a fejed felé repül a levegőben! Félreugrasz, hogy elkerüld.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>[p]Sikerül félreugranod. Ahogy megfordulsz, meglátod a támadásért felelős lényt. Egy magas, fehér, pikkelyes humanoid az: egy Jégharcos! Nincs választásod, nem tudsz elmenekülni, így kénytelen leszel megküzdeni vele.[/p]</text>
+      </success>
+      <failure>
+        <text>[p]Telibe talál, 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontnyi sebesülést okozva. Ahogy megfordulsz, meglátod a támadásért felelős lényt. Egy magas, fehér, pikkelyes humanoid az: egy Jégharcos! Nincs választásod, nem tudsz elmenekülni, így kénytelen leszel megküzdeni vele.[/p]</text>
+        <add amount="-3" to="stamina" />
+      </failure>
+    </test>
+    <next id="80"></next>
+  </p>
+  <p id="127">
+    <empty />
+  </p>
+  <p id="128">
+    <text>
+        [p]Vállal az ajtónak rontasz, és hangos robajjal sikerül is bejutnod rajta. Egy másik szobába érkezel.[/p]
+    </text>
+    <next id="9"></next>
+  </p>
+  <p id="129">
+    <text>
+        [p]Kardod pengéjét a fedél alá helyezve próbálod felfeszíteni, és hamarosan célt érsz – a zár kiszakad, a tető felcsapódik. A ládában két apró tárgyat találsz: egy [span class="takeItem" data-id="3008" data-amount="1"]Smaragdkulcsot[/span] és egy kis Aranygyűrűt.[/p]
+    </text>
+    <next id="175">Ha az ujjadra akarod húzni a gyűrűt</next>
+    <next id="19">Hogyha előbb alaposabban megvizsgálnád</next>
+    <next id="9">Ha nem foglalkozol vele, zsebre vágod a kulcsot és a másik két láda felé fordítod a figyelmed</next>
+  </p>
+  <p id="130">
+    <text>
+        [p]A burkolókő nagy nehezen elmozdul, és egy kis alkóvot fed fel maga mögött, melyben egy rothadó tetem áll. Megbököd a kardoddal, de legnagyobb megkönnyebbülésedre a dolog nem moccan. Nyakában azonban egy Ezüst Amulett lóg, amit ha akarsz, magadhoz vehetsz.[/p]
+    </text>
+    <next id="150">Amennyiben így tennél</next>
+    <next id="70">Ha visszatolod a fedőkövet a helyére</next>
+  </p>
+  <p id="131">
+    <text>
+        [p]Az Asztromanta Sötétségvarázslatot bocsájtott rád. Mostantól kezdve a harc idejére Támadóerődet 2-vel kell csökkentened, mert szinte semmit nem látsz magad körül. A varázslat csak rád van hatással, ellenfeled ezért levonás nélkül folytathatja a küzdelmet. Folytasd a harcot.[/p]
+    </text>
+    <gatherItem id="4001" />
+    <next id="33"></next>
+  </p>
+  <p id="132">
+    <text>
+        [p]A járat északi irányba halad, de egyre kisebbre zsugorodik, míg végül már csak mászni tudsz benne. Egy kis ajtóhoz érkezel, amit zárva találsz. Ezen a szűk helyen nem tudod betörni, így visszatérsz a korábban látott ajtóhoz.[/p]
+    </text>
+    <itemCheck type="section" id="141">
+      <have>
+        <text>[p]Továbbmész, egészen addig a járatig, amiben először találkoztál Granzorkkal, és ott folytatod az utat.[/p]</text>
+        <next id="3"></next>
+      </have>
+      <dontHave>
+        <next id="141">Ha bekukucskálnál rajta</next>
+        <next id="3">Ha tovább mennél, egészen addig a járatig, amiben először találkoztál Granzorkkal, és ott folytatnád az utat</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="133">
+    <text>
+        [p]Kétségbeesetten próbálsz megkapaszkodni a padló szélében, de nem sikerül biztos fogást találnod, így visszazuhansz a kandalló aljába – vesztesz 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Hallod, amint a gonosz kis lény kárörvendően felkacag odafenn.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <next id="112"></next>
+  </p>
+  <p id="134">
+    <text>
+        [p]Az ember elég zsémbes, alig tudsz belőle egy-két értelmes mondatot kihúzni. Hirtelen megkérdezi, mit keresel itt.[/p]
+    </text>
+    <next id="75">Ha elereszted a kérdését a füled mellett, és a barlangról kezdesz kérdezősködni</next>
+    <next id="187"> Ha azt mondod, élelmiszer-ellenőr vagy</next>
+    <next id="88">Ha azt, hogy ételt szeretnél</next>
+  </p>
+  <p id="135">
+    <text>
+        [p]A zárba próbálod a kulcsokat. Legnagyobb örömödre mindkettő elfordul! A láda fedele felemelkedik, benne pedig egy kis, fekete könyvecskét találsz, melynek címét domború aranybetűkkel rakták ki: „Anakendis Sötét Krónikái.” Kiveszed a könyvet a ládából és visszatérsz a szakadékhoz, ahol a feneketlen mélybe hajítod. [/p]
+        [p]Kokhíd békés falva most már biztonságban van mindenféle fenyegetéstől. Visszatértedkor a település elöljárója hősként üdvözöl. – Mindannyiunkat megmentettél – mondja. – Hatalmas jutalomra számíthatsz, a legnagyobb kincsekre, amiket Kokhíd lakosai csak fel tudnak ajánlani. – A férfi átad neked egy ládikát, melyben több száz Aranytallér, ékszer és drágakő lapul. [/p]
+        [p]– Örökké szívesen fogadunk itt, megmentőnk. – A falusiak ujjongani kezdenek, te pedig kiélvezed mindazt a jót, amit ezek a szörnyű végzettől megmentett, egyszerű emberek nyújtani tudnak…[/p]
+    </text>
+    <victory />
+  </p>
+  <p id="136">
+    <text>
+        [p]Próbálsz szóba elegyedni a Zombival, de az elég unalmas beszélgetőpartnernek bizonyul. – Megzavarták hosszú alvásom – ismételgeti újra meg újra. Aztán hirtelen megkérdezi tőled, miért mozdítottad el a követ. Mit teszel?[/p]
+    </text>
+    <next id="22">Azonnal rátámadsz?</next>
+    <next id="60">Azt válaszolod, hogy mert kíváncsi    voltál?</next>
+    <next id="119">Azt, hogy mert parancsot    követtél?</next>
+  </p>
+  <p id="137">
+    <text>
+        [p]A Csizma segítségével könnyedén elrugaszkodsz és a túloldalon lévő kijárat felé veted magad. Épp amikor már elérnéd, valami keménybe ütközöl, és rájössz, hogy valaki egy hálót vetett ki a mélység fölé.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Sikerül megkapaszkodnod benne.[/p]
+        </text>
+        <next id="11"></next>
+      </success>
+      <failure>
+        <test against="luck">
+          <success>
+            <next id="42"></next>
+          </success>
+          <failure>
+            <next id="94"></next>
+          </failure>
+        </test>
+      </failure>
+    </test>
+  </p>
+  <p id="138">
+    <text>
+        [p]Visszatérsz a talapzatos helyiségbe.[/p]
+    </text>
+    <itemCheck type="section" id="84">
+      <have>
+        <text>
+            [p]Úgy döntesz, a nyugati ajtón lépsz be.[/p]
+        </text>
+        <next id="72"></next>
+      </have>
+      <dontHave>
+        <next id="84">Hogyha most az északi ajtón lépnél be</next>
+        <next id="72">Ha a nyugatin nyitnál be</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="139">
+    <text>
+        [p]Rálelsz egy olyan falszakaszra, ami kopogásodra a többitől eltérően üregesen kong, és kis szöszölés után sikerül belöknöd. Egy nagyon kis barlangban találod magad, amiről egy gyors keresés után megállapítod, hogy teljesen üres. A déli falán azonban van egy ajtó.[/p]
+    </text>
+    <next id="186">Hogyha ezen mennél tovább</next>
+    <next id="146">Ha visszamennél a veremhez, és ott a másik irányba indulnál el</next>
+  </p>
+  <p id="140">
+    <text>
+        [p]Kiemelsz egy köpenyt, hogy felvedd, ám hirtelen egy kis, kövér, zöld madárka repül ki belőle és támad rád csőrével. Ez egy Denrec! Küzdj meg vele.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="21" />
+    </fight>
+    <itemCheck type="items" id="1002">
+      <have>
+        <next id="103"></next>
+      </have>
+      <dontHave>
+        <next id="110"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="141">
+    <text>
+        [p]Az ajtóba vágott ablakon betekintve egy szobát látsz magad előtt. A padló nagyjából egy méterrel lehet lesüllyesztve, és tele van felfelé álló, hegyes tüskékkel! Ha ide beléptél volna, az a biztos halálodat jelentette volna. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot a felfedezésért.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="3">Ha most visszatérsz az eredeti alagútba, és ott mennél tovább észak felé</next>
+    <next id="132">Ha az innen induló szűkebb járatban folytatnád az utad</next>
+  </p>
+  <p id="142">
+    <text>
+        [p]Megvizsgálod a csonthalmot, ám mielőtt messzemenő következtetésekig juthatnál, egy közeli hang vonja magára a figyelmedet. A rothadó húshalom alól két Járószáj tör elő. Ezek apró, rózsaszín, golyó alakú lények két apró lábbal és egy hatalmas szájjal. Rád támadnak.[/p]
+    </text>
+    <next id="123"></next>
+  </p>
+  <p id="143">
+    <text>
+        [p class="inlineImage"][img src="resources/wm6/143.jpg" /][/p]
+        [p]A negyedik Kör végére a másik két fenevad egyike végez a falatozással és rád támad.
+    </text>
+    <itemCheck type="enemy" id="15">
+      <have>
+        <changeEnemy attribute="fleeAtRound" id="15" set="1000000000" />
+        <text>
+            Egyszerre kell megküzdened mindkettejükkel.[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [/p]
+        </text>
+      </dontHave>
+      <after>
+        <fight type="single">
+          <enemy id="15" />
+          <enemy id="17" />
+          <win>
+            <text>
+                [p]Amint mindkét ebbel végzel, a harmadik társuk is rád veti magát.[/p]
+            </text>
+            <fight type="single">
+              <enemy id="18" />
+            </fight>
+            <next id="99"></next>
+          </win>
+        </fight>
+      </after>
+    </itemCheck>
+  </p>
+  <p id="144">
+    <text>
+        [p]A szobából egy északi irányba tartó folyosóra érkezel, melyen elég sokáig haladsz. Végül egy elágazáshoz érsz, ahol egy másik út csatlakozik a tiédbe. Mivel ez nagyjából abba az irányba vezet vissza, amerről érkeztél, továbbra is tartod az irányt.[/p]
+    </text>
+    <next id="10"></next>
+  </p>
+  <p id="145">
+    <text>
+        [p]Visszatérsz a vödörhöz, amely idehozott, de szomorúan tapasztalod, hogy az már felhúzta magát! Magad mögül hallod az öreg nevetését, ezért úgy döntesz, beszélsz vele.[/p]
+    </text>
+    <next id="4"></next>
+  </p>
+  <p id="146">
+    <text>
+        [p]A járat egy ideig dél felé halad, aztán balra kanyarodik és egy nagyon nagy üregbe fut be. Belépsz. Úgy tűnik, valamilyen lény vackolta be ide magát. Megfordulsz, hogy távozz, mielőtt a teremtmény előkerülne, ám közted és az alagút bejárata között sajnos már ott magasodik a szörnyeteg, meghiúsítva minden szökési kísérletet! Egy Dinoszaurusz az, amivel meg kell küzdened.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="5" />
+    </fight>
+    <next id="28"></next>
+  </p>
+  <p id="147">
+    <text>
+        [p]Mivel a kandalló eléggé szokványosnak tűnik, csak tessék-lássék módjára vizsgálod meg. Azonban ahogy a belsejébe pillantasz, a kéményben legnagyobb meglepetésedre egy felfelé vezető létrára bukkansz! A magasból egy fáklya remegő fénye világít le.[/p]
+    </text>
+    <next id="15">Ha fel akarsz itt mászni</next>
+    <next id="112">Ha nem</next>
+  </p>
+  <p id="148">
+    <text>
+        [p]Az Ebmester gondolkodik egy ideig, majd elmondja, hogy a Krónikákat egy kis dobozban tartják, melynek kinyitásához két kulcsra van szükség, melyek mindegyikét egy-egy drágakőből faragták ki. Abban biztos, hogy az egyik zárhoz egy Rubinkulcsra van szükség, de hogy a másik mivel nyílik, azt nem tudja.[/p]
+    </text>
+    <next id="124">Ha tovább kérdezősködnél a Krónikákról</next>
+    <next id="151">Ha megköszönöd a segítségét és visszatérsz a talapzatos szobába</next>
+  </p>
+  <p id="149">
+    <text>
+        [p]Az ajtó mögötti járat déli irányba indul, majd keletnek fordul, végül egy szobába nyílik, mely leginkább egy hálóhelyiségnek tűnik. Egy hatalmas ágyat látsz benne, mellette egy ruhásszekrényt. Festmények lógnak a falról, az ajtó mellett pedig egy kis fiókos láda áll. Mit teszel?[/p]
+    </text>
+    <itemCheck type="section" id="157">
+      <dontHave>
+        <next id="157" pos="1">Megvizsgálod az ágyat?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="39">
+      <dontHave>
+        <next id="39" pos="2">Kinyitod a ruhásszekrényt?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="76">
+      <dontHave>
+        <next id="76" pos="3">Megnézed a festményeket?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="61">
+      <dontHave>
+        <next id="61" pos="4">Átkutatod a fiókokat?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="138" pos="5">Távozol, és visszamész a talapzatos terembe?</next>
+  </p>
+  <p id="150">
+    <text>
+        [p]Amint leemeled az Amulettet a tetem nyakából, az alkóv oldalából egy apró dárda röppen elő.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Sikerült elkerülnöd a kis fegyvert.[/p]
+        </text>
+        <gatherItem id="3005" />
+        <next id="70"></next>
+      </success>
+      <failure>
+        <next id="79"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="151">
+    <text>
+        [p]Visszatérsz a talapzatos szobába.[/p]
+    </text>
+    <itemCheck type="section" id="43">
+      <have>
+        <text>[p]Úgy döntesz, a nyugati ajtóval próbálkozol.[/p]</text>
+        <next id="72"></next>
+      </have>
+      <dontHave>
+        <next id="43">Ha most a keleti ajtóval próbálkoznál</next>
+        <next id="72">Ha a nyugatival</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="152">
+    <text>
+        [p]Anakendis felé hajítod a Kötelet, ráparancsolva, hogy kösse magát a férfira. Első ránézésre úgy tűnik, sikerült a terved, a következőben azonban a varázsló köddé válik! Egy pillanattal később újra megjelenik, ez alkalommal azonban már a köteléken kívül! Megragadja a Kötelet és erősen megrántja, te pedig elterülsz a padlón.[/p]
+    </text>
+    <loseItem id="3003" />
+    <next id="44"></next>
+  </p>
+  <p id="153">
+    <text>
+        [p]Újra és újra a ládába döföd kardodat, ám az nem nyílik. Zavartan vizsgálod meg közelebbről is a furcsa tárgyat, és csak ekkor döbbensz rá, hogy az egész egyetlen tömör fafaragvány! Így nem csoda, hogy nem tudtad kinyitni.[/p]
+    </text>
+    <itemCheck type="section" id="163">
+      <have>
+        <itemCheck type="section" id="158">
+          <have>
+            <text>
+                [p]Elhagyod a kis szobát.[/p]
+            </text>
+            <next id="86"></next>
+          </have>
+          <dontHave>
+            <next id="158">Ha most próbát tennél az első ládával</next>
+            <next id="86">Amennyiben el akarod hagyni a kis szobát</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="158">
+          <have>
+            <next id="163">Ha a második láda érdekelne</next>
+            <next id="86">Amennyiben el akarod hagyni a kis szobát</next>
+          </have>
+          <dontHave>
+            <next id="158">Ha most próbát tennél az első ládával</next>
+            <next id="163">Ha a második érdekelne</next>
+            <next id="86">Amennyiben el akarod hagyni a kis szobát</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="154">
+    <text>
+        [p]Az ajtó egy hatalmas terembe nyílik. Napfény süt be a plafonon, egy szép nagy lyukon át, ami beragyogja a szobát betöltő fákat. Innen egy csapás indul, ami hamarosan kettéágazik.[/p]
+    </text>
+    <next id="49">A jobb oldali egy ajtóhoz vezet, amin benyithatsz – ha így tennél</next>
+    <next id="101">A bal oldali elkanyarodik a szemed elől – ha ezt követnéd</next>
+    <next id="40">Ha nem tetszenek ezek az ösvények és inkább átvágnál a fák között</next>
+  </p>
+  <p id="155">
+    <text>
+        [p]Ahogy egyre közelebb érsz, rájössz, hogy a terem valójában egy szakadék – valószínűleg ugyanaz, mint amiről a falusi elöljáró is mesélt! Ám hogy elérd, előbb meg kell küzdened a Szoborral.[/p]
+        [p]Kemény bőre miatt sikeres ütéseid is csak 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontnyi sebet okoznak ellenfelednek. Nem tudsz elmenekülni előle.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="11" />
+      <win>
+        <text>
+            [p]Megkerülöd a szobor maradványait és belépsz a terembe, melyről azonnal kiderül, hogy valójában nem is szoba, hanem egy hatalmas szakadék – az, amelyikről a falusi elöljáró is beszélt! Át kell kelned rajta.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="64"></next>
+  </p>
+  <p id="156">
+    <text>
+        [p]Az egyik kulcs elfordul ugyan, a másik azonban nem. A láda tetejéről hirtelen valami folyadék lövell ki, egyenesen az arcodba![/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]A folyadék szerencsére elkerüli az arcodat.[/p]
+        </text>
+        <itemCheck type="item" id="3001">
+          <have>
+            <text>
+                [p]Egy másik kulcskombinációval kell próbálkoznod.[/p]
+            </text>
+            <next id="17"></next>
+          </have>
+          <dontHave>
+            <text>
+                [p]A földre rogysz és zokogni kezdesz, hogy ilyen messzire jutottál és mégis elbuktál. Legközelebb kutass másik kulcsok után, miközben a barlangot járod![/p]
+            </text>
+          </dontHave>
+        </itemCheck>
+      </success>
+      <failure>
+        <text>
+            [p]Eltalál, és kénytelen vagy rájönni, hogy az anyag sav… kalandod itt véget ér.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="157">
+    <text>
+        [p]Alaposan átkutatod az ágyat, de csak egyetlen [span class="takeItem" data-id="gold" data-amount="1"]Aranytallérra[/span] sikerül rálelned, amit zsebre is vágsz.[/p]
+    </text>
+    <next id="149"></next>
+  </p>
+  <p id="158">
+    <text>
+        [p]A láda nincs lezárva, és könnyedén felnyílik. Odabenn azonban csupán [span class="takeItem" data-id="gold" data-amount="10"]10 Aranytallért[/span] találsz. Végigtapogatod, hátha rábukkansz valami rejtett rekeszre, de keresésed eredménytelenül zárul.[/p]
+    </text>
+    <itemCheck type="section" id="26">
+      <have>
+        <itemCheck type="section" id="163">
+          <have>
+            <text>
+                [p]Távozol a szobából.[/p]
+            </text>
+            <next id="86"></next>
+          </have>
+          <dontHave>
+            <next id="163">Ha most próbát tennél a második ládával</next>
+            <next id="86">Hogyha több nem érdekel, és inkább távoznál a szobából</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="163">
+          <have>
+            <next id="26">Ha a harmadik ládával kísérleteznél</next>
+            <next id="86">Hogyha több nem érdekel, és inkább távoznál a szobából</next>
+          </have>
+          <dontHave>
+            <next id="163">Ha most próbát tennél a második ládával</next>
+            <next id="26">Ha a harmadikkal kísérleteznél</next>
+            <next id="86">Hogyha több nem érdekel, és inkább távoznál a szobából</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="159">
+    <test against="skill">
+      <success>
+        <next id="55"></next>
+      </success>
+      <failure>
+        <text>[p]Nem sikerült kinyitnod, így visszatérsz az elágazáshoz, ahol a jobb oldali járatban folytatod az utadat.[/p]</text>
+        <next id="7"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="160">
+    <text>
+        [p]Az Asztromanta int a kezével, mire egy tűzgolyó röppen ki belőle feléd.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>[p]Nem talál el. Folytasd a harcot.[/p]</text>
+      </success>
+      <failure>
+        <text>[p]Telibe talál és 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot vesztesz. Folytasd a harcot.[/p]</text>
+        <add amount="-4" to="stamina" />
+      </failure>
+    </test>
+    <next id="33"></next>
+  </p>
+  <p id="161">
+    <text>
+        [p]Elbeszélgetsz a férfival, aki Ebmesterként mutatkozik be neked. Megtudod, hogy egykoron ő is Kokhíd lakója volt, de már jó régen fogságba esett. Gyűlöli Anakendist, de nem elég erős ahhoz, hogy kitörhessen innen. Azonban szívesen ellát bármilyen információval, amire szükséged lehet. Miről kérdezed?[/p]
+    </text>
+    <next id="73">Anakendisről?</next>
+    <next id="148">A Sötét Krónikákról?</next>
+    <next id="24">Traskanndról?</next>
+  </p>
+  <p id="162">
+    <text>
+        [p]Mivel elvesztetted a kardod, átkutatod a helyiséget egy új fegyver után. A fiókos szekrényt átkutatva végül rábukkansz egy [span class="takeItem" data-id="1003" data-amount="1"]fejszére[/span]. Messze nem olyan jó, mint az előző volt, így használatkor 1-el csökkentened kell az [span class="ffAttribute"]ÜGYESSÉGEDET[/span]. Úgy döntesz, távozol innen, még mielőtt újabb bajba kerülnél.[/p]
+    </text>
+    <next id="138"></next>
+  </p>
+  <p id="163">
+    <text>
+        [p]Megpróbálod felnyitni a ládát, de az zárva van.[/p]
+    </text>
+    <next id="129">Ha megkísérled felfeszíteni rajta a zárt</next>
+    <next id="9">Ha nem</next>
+  </p>
+  <p id="164">
+    <text>
+        [p]A könyv Anakendis életének különböző hátborzongató epizódjait taglalja igen nagy részletességgel, ám ami a legérdekesebb benne, az az, hogy az idők során akkora hatalomra tett szert, hogy mostanra a közönséges fegyverek számára sebezhetetlenné vált. Visszahelyezed a művet a polcra. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot ezért a felfedezésért.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="112"></next>
+  </p>
+  <p id="165">
+    <text>
+        [p]Elindulsz fölfelé. Már az út háromnegyedénél jársz, mikor a fokok elfordulnak a talpad alatt, te pedig egyenesen egy egészen mostanáig rejtett verembe esel. Csúnyán megütöd magad – vesztesz 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Körbenézel, hogy felmérd a környezeted, és megállapítod, hogy egy elég mély üregbe pottyantál, melyből északi és déli irányba vezet tovább egy-egy járat.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <next id="116">Ha megpróbálsz kimászni innen</next>
+    <next id="117">Ha észak felé indulsz el</next>
+    <next id="146">Ha dél felé</next>
+  </p>
+  <p id="166">
+    <text>
+        [p]Egy ideig gondolkodik, majd legnagyobb megkönnyebbülésedre úgy dönt, hogy igaz lehet, amit mondasz. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="88"></next>
+  </p>
+  <p id="167">
+    <text>
+        [p]A terembe hajítod a húst, mely a padlón toccsan. A két közelebbi állat azonnal ráveti magát, a harmadik azonban úgy dönt, hogy te ízletesebb falat leszel. Meg kell küzdened vele.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="15" />
+      <win min="4">
+        <next id="143"></next>
+      </win>
+      <win max="3">
+        <next id="188"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="168">
+    <text>
+        [p]Kiváló! Végeztél a gonosz varázslóval, Kokhíd pedig ismét biztonságban van. Azonban Sötét Krónikáit még mindig meg kell semmisítened, különben valamelyik szolgája folytathatja az uralkodást. A szoba északi ajtaján át távozol innen.[/p]
+    </text>
+    <next id="37"></next>
+  </p>
+  <p id="169">
+    <text>
+        [p]Ahogy belelépsz a vödörbe, az magától ereszkedni kezd! Megrémülsz, és megpróbálsz kilépni belőle, de már túl késő. Pár másodperc múlva megállsz a levegőben, majd megbillen a csöbör, te pedig kalimpálva egy barlang bejárata elé pottyansz. Feltápászkodsz, majd elindulsz előre. A járat végül egy szobába ér, ahol egy székben ülve egy öreg, bokaláncot viselő férfit találsz.[/p]
+    </text>
+    <next id="4">Ha megszólítod</next>
+    <next id="59">Ha rátámadsz</next>
+    <next id="145">Ha visszatérsz a vödörhöz és megpróbálsz valahogy visszajutni</next>
+  </p>
+  <p id="170">
+    <text>
+        [p]A lyukban semmit nem látsz, így óvatosan beleteszed a kezedet. Apró szúrást érzel, majd forróság önti el az egész karod. Ahogy kirántod, egy apró pókot veszel észre az ujjad hegyén, és bár azonnal agyontaposod, a mérge sajnos már benned van. Vonj le magadtól 2 [span class="ffAttribute"]ÜGYESSÉG[/span] pontot.[/p]
+    </text>
+    <add amount="-2" to="skill" />
+    <random diceConfig="2d6">
+      <result max="2" min="2">
+        <text>[p]Vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="-2" to="stamina" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]Vesztesz 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="-3" to="stamina" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Vesztesz 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="-4" to="stamina" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Vesztesz 5 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="-5" to="stamina" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Vesztesz 6 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="-6" to="stamina" />
+      </result>
+      <result max="7" min="7">
+        <text>[p]Vesztesz 7 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="-7" to="stamina" />
+      </result>
+      <result max="8" min="8">
+        <text>[p]Vesztesz 8 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="-8" to="stamina" />
+      </result>
+      <result max="9" min="9">
+        <text>[p]Vesztesz 9 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="-9" to="stamina" />
+      </result>
+      <result max="10" min="10">
+        <text>[p]Vesztesz 10 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="-10" to="stamina" />
+      </result>
+      <result max="11" min="11">
+        <text>[p]Vesztesz 11 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="-11" to="stamina" />
+      </result>
+      <result max="12" min="12">
+        <text>[p]Vesztesz 12 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="-12" to="stamina" />
+      </result>
+    </random>
+    <next id="70"></next>
+  </p>
+  <p id="171">
+    <text>
+        [p]Az apró teremtmény Granzorkként mutatkozik be, és elmondja, hogy ő Anakendis egyik szolgája. Közli veled, hogy mestere figyelemmel követi az utadat, és hajlandó felajánlani, hogy itt és most megküzdjetek; csak követned kell őt, ha élni akarsz ezzel a lehetőséggel. Nos, elfogadod?[/p]
+    </text>
+    <next id="176">Hogyha igen</next>
+    <next id="3">Ha nem, és folytatnád az utad a járatban</next>
+    <next id="179">Amennyiben visszautasítod a lehetőséget, ám távolról, titokban mégis követnéd a furcsa kis lényt, hogy megtudd, hová megy</next>
+  </p>
+  <p id="172">
+    <text>
+        [p]Beleharapsz a húsba. Mivel nyers, eléggé rágósnak találod, de attól még igen ízletes. Hátizsákodba teszed és távozol.[/p]
+    </text>
+    <itemCheck type="section" id="102">
+      <have>
+        <text>[p]Északnak indulsz tovább.[/p]</text>
+        <next id="50"></next>
+      </have>
+      <dontHave>
+        <next id="102">Ha a szemben lévő ajtón nyitnál be</next>
+        <next id="50">Ha északnak indulnál</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="173">
+    <text>
+        [p]Mély levegőt veszel és Granzork felé fordulsz, az apróságnak azonban már csak hűlt helyét találod. Kinyitod az ajtót és belépsz rajta. Túl későn jössz rá, hogy ez valójában csapda, hogy a padlót fémtüskék borítják, ráadásul majdnem egy méter mélyen, és már nem tudsz mit tenni az ellen, hogy előre ne ess. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="174">
+    <text>
+        [p]Egy ideig gondolkodik, majd kijelenti, hogy semmi mást nem tud mondani. Megköszönöd a segítségét és távozol.[/p]
+    </text>
+    <next id="151"></next>
+  </p>
+  <p id="175">
+    <text>
+        [p]Felhúzod a gyűrűt, de semmi nem történik. Ahogy folytatod a láda átkutatását, egyre gyengébbnek kezded érezni magad. Mikor a kezedre téved a tekinteted, rémülten veszed észre, hogy az ékszer felpuffadt a magába szívott véredtől – egy Parazitagyűrűt sikerült az ujjadra húznod! Gyorsan lerántod, de már így is elég sok vért vesztettél – vond le jelenlegi [span class="ffAttribute"]ÉLETERŐ[/span] pontjaid negyedét. Vesztesz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot is.[/p]
+    </text>
+    <add amount="-1" to="luck" />
+    <next id="9"></next>
+  </p>
+  <p id="176">
+    <text>
+        [p]Egy kis rejtekajtón át követed Granzorkot, aki végigvezet egy hosszú, északnyugat felé vezető folyosón. Végül, ahogy a járat éppen északi irányba fordulna, egy ajtóhoz értek. A kis teremtmény azt állítja, hogy ennek a túloldalán vár rád Anakendis.[/p]
+    </text>
+    <next id="173">Ha belépsz</next>
+    <next id="52">Ha meggondoltad magad, és ezt a lénnyel is közlöd</next>
+  </p>
+  <p id="177">
+    <text>
+        [p]Válladdal az ajtónak rontasz, és bár elsőre nem jársz sikerrel, második nekifutásra sikerül bejutnod.[/p]
+    </text>
+    <next id="185"></next>
+  </p>
+  <p id="178">
+    <text>
+        [p]Felemeled az egyik palánkot és kitolod a szakadék fölé. Már majdnem eléred a túloldalt, amikor valami akadályba ütközöl. Rájössz, hogy egy háló van a semmi fölött kifeszítve. Finoman ráfekteted a léc túlsó végét és óvatosan elindulsz. Már majdnem átérsz, amikor a deszka megcsúszik, és a mélybe zuhan. Megpróbálsz előre rugaszkodni, hogy megkapaszkodj valamiben.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Sikerül megkapaszkodnod benne.[/p]
+        </text>
+        <next id="11"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Kicsúszik a kezeid közül.[/p]
+        </text>
+        <next id="42"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="179">
+    <text>
+        [p]Folytatod az utad a járatban, ám amint Granzork eltűnik, sarkon fordulsz, és lopakodva követni kezded. Átmegy egy kis titkos ajtón, ami egy északnyugati folyosóba vezet. Végül egy rácsos ablakú ajtóhoz érkezel. A lény egy észak felé vezető, sokkal kisebb járat irányába távozik.[/p]
+    </text>
+    <next id="141">Ha benézel az ablakon</next>
+    <next id="132">Ha a fura teremtmény után indulsz</next>
+  </p>
+  <p id="180">
+    <text>
+        [p class="inlineImage"][img src="resources/wm6/180.jpg" /][/p]
+        [p]Kicsúszik a kötél a kezedből, és derékig a homokba süllyedsz. A futóhomokból felbukkan előtted a csáp rémisztő tulajdonosa – egy Homokpolip! Küzdj meg vele.[/p]
+        [p]Mivel jelenlegi helyzetedben nehezen tudsz mozogni, csökkentsd 2-vel [span class="ffAttribute"]ÜGYESSÉGED[/span] az összecsapás időtartamára.[/p]
+    </text>
+    <add amount="-2" to="skill" />
+    <fight type="single">
+      <enemy id="14" />
+      <win>
+        <add amount="2" to="skill" />
+      </win>
+    </fight>
+    <next id="2a"></next>
+  </p>
+  <p id="181">
+    <text>
+        [p]Felemeled az Ezüst Amulettet a szobor előtt, mely azonnal megdermed. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. Megkerülöd és belépsz a terembe, melyről azonnal kiderül, hogy valójában nem is szoba, hanem egy hatalmas szakadék – az, amelyikről a falusi elöljáró is beszélt! Át kell kelned rajta.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="64"></next>
+  </p>
+  <p id="182">
+    <text>
+        [p]Megparancsolod a Kötélnek, hogy rögzítse magát az egyik olyan kiálló sziklához, ami a szakadék túloldalán hever. Ehelyett azonban egy hálóhoz rögzül, ami a mélység közepén, a kijárathoz közel feszül a levegőben. Könnyedén átlendülsz, majd biztonságban felmászol rá.[/p]
+    </text>
+    <next id="11"></next>
+  </p>
+  <p id="183">
+    <text>
+        [p]Megpróbálsz szót érteni Traskanndal, előhozni a régi énjét, Anakendis hatalma azonban túlságosan erős. A férfi rád támad. Még van időd elmenekülni.[/p]
+    </text>
+    <next id="63">Ha megpróbálkozol ezzel</next>
+    <next id="193">Ha szembeszállsz vele</next>
+  </p>
+  <p id="184">
+    <text>
+        [p]Az asztal fiókjainak nagy része vagy zárva van, vagy üres, az egyikben azonban az Ördögkopók irányításával kapcsolatos iratokat találsz, és valamit egy „Ebmester” nevű fickóról. Széttéped ezeket, majd elhagyod a szobát.[/p]
+    </text>
+    <next id="105"></next>
+  </p>
+  <p id="185">
+    <text>
+        [p]Az ajtón át egy terembe jutsz, melyből a szemközti falon vezet tovább egy újabb ajtó. Ennek közelében három hatalmas kutyát veszel észre – három Ördögkopót![/p]
+    </text>
+    <itemCheck type="item" id="3004">
+      <have>
+        <next id="167">Ha némi nyers húst akarsz feléjükhajítani, hogy így eltereld a figyelmüket</next>
+        <next id="13">Ha meg akarsz küzdeni velük</next>
+        <next id="151">Ha nem akarsz megküzdeni velük, és inkább kihátrálnál, majd becsapnád magad mögött az ajtót</next>
+      </have>
+      <dontHave>
+        <next id="13">Ha meg akarsz küzdeni velük</next>
+        <next id="151">Ha nem akarsz megküzdeni velük, és inkább kihátrálnál, majd becsapnád magad mögött az ajtót</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="186">
+    <text>
+        [p]Az ajtó mögött egy rövid járat húzódik, ami egy ideig déli irányba halad, és ami egy újabb zsákutcában ér véget. Hamar rátalálsz az itteni titkos átjáróra, amin keresztül egy nagyobb barlangban bukkansz elő. Nyugati irányba látsz egy járatot, mely érzésed szerint a veremből dél felé vezető alagúthoz csatlakozik. A helyiség közepén egy óriási Dinoszauruszt látsz. A lény a levegőbe szagol, majd feléd fordul. Nagyon úgy tűnik, hogy észrevett. Meg kell küzdened vele.[/p]
+        [p]Most nem menekülhetsz el.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="5" />
+    </fight>
+    <next id="28"></next>
+  </p>
+  <p id="187">
+    <text>
+        [p]A férfi elgondolkodik.[/p]
+    </text>
+    <random>
+      <result max="3" min="1">
+        <next id="166"></next>
+      </result>
+      <result max="6" min="4">
+        <next id="87"></next>
+      </result>
+    </random>
+  </p>
+  <p id="188">
+    <text>
+        [p]Végzel az első Ördögkopóval, mielőtt társai végeznének a falatozással, és sikerül a déli ajtón át távoznod, még mielőtt figyelmüket feléd fordítanák.[/p]
+    </text>
+    <next id="151"></next>
+  </p>
+  <p id="189">
+    <text>
+        [p]Végzel ellenfeleddel és átkutatod a barlangot. Rejtekhelyén egy kis, aranylevelekkel díszített dobozra bukkansz.[/p]
+    </text>
+    <next id="20">Ha megpróbálod kinyitni</next>
+    <next id="7">Ha nem, és inkább visszatérnél az elágazáshoz, hogy keleti irányba folytasd az utad</next>
+  </p>
+  <p id="190">
+    <text>
+        [p]Az alkóv tiszta és üres, a közepén azonban egy harangkötelet látsz lógni.[/p]
+    </text>
+    <next id="199">Hogyha meg akarod húzni</next>
+    <next id="71">Ha az északi ajtón át távoznál</next>
+    <next id="82">Ha nyugatra mennél</next>
+  </p>
+  <p id="191">
+    <text>
+        [p]Megvizsgálod az íróasztalt. A tetején egy halom papír alá rejtve rábukkansz egy üvegre az [span class="takeItem" data-id="2004" data-amount="1"]Életerő Italából[/span]. Ahogy felemeled, éles fájdalom hasít a lábadba. Letekintve egy csúnya vágást látsz rajta – vesztesz 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Előre nézve egy vékony alakon akad meg a szemed, aki egy kardot tart a kezében. Nem egy átlagos emberrel állsz szemben, hanem egy Asztromantával![/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <next id="33"></next>
+  </p>
+  <p id="192">
+    <text>
+        [p]– Igen? – szólal meg egy hang a semmiből, amint tenyered a szikla felületéhez ér. – Ki az? Kérlek, áruld el a neved. – Megmondod neki, a hang pedig megkér, hogy jöjj le.[/p]
+    </text>
+    <next id="118">Ha tovább próbálsz beszélni hozzá</next>
+    <next id="169">Ha leereszkedsz a kútba, mert úgy érzed, ezt kéri</next>
+    <next id="89">Ha távozol a szobából</next>
+  </p>
+  <p id="193">
+    <text>
+        [p]Küzdj meg az egykori falusival.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="20" />
+      <fleeing after="0" />
+      <flee>
+        <next id="63"></next>
+      </flee>
+      <win>
+        <next id="69"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="194">
+    <text>
+        [p]Sajnálkozva lököd el az útból Traskannd tetemét, hisz a férfi valójában nem volt önmaga, Anakendis irányítása alatt állt. Most már nyugodtan szétnézhetsz a teremben.[/p]
+    </text>
+    <next id="184">Ha az íróasztalt akarod megnézni közelebbről</next>
+    <next id="32">Ha a faliszőnyeget vizsgálnád meg</next>
+  </p>
+  <p id="195">
+    <text>
+        [p]A járat egy ajtóhoz vezet. Ennek kinyitása elég nehézkes, de hamarosan rájössz miért: a mögötte fekvő szoba tele van vörös homokkal, aminek egy része nekifeszült, és ezt is meg kellett mozdítanod. A terem túloldalán látod, hogy vezet tovább út, de hogy odajuss, át kell gázolnod a homokon.[/p]
+    </text>
+    <next id="198">Ha először közelebbről megnéznéd az anyagot, legalábbis azt a részét, ami a lábad előtt terül el</next>
+    <next id="195b">Ha nem akarod erre vesztegetni az időd</next>
+  </p>
+  <p id="195b" display="195">
+    <text>
+        [p]A járat egy ajtóhoz vezet. Ennek kinyitása elég nehézkes, de hamarosan rájössz miért: a mögötte fekvő szoba tele van vörös homokkal, aminek egy része nekifeszült, és ezt is meg kellett mozdítanod. A terem túloldalán látod, hogy vezet tovább út, de hogy odajuss, át kell gázolnod a homokon.[/p]
+        [p]El kell döntened, pontosan hogyan is kelj át rajta.[/p]
+    </text>
+    <itemCheck type="items" id="3002 or 3003">
+      <have>
+        <itemCheck type="item" id="3002">
+          <have>
+            <next id="53" pos="1">Egy Seprűvel repülsz át    felette?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <next id="196" pos="2">Egy Mágikus Kötéllel    lendülsz át rajta?</next>
+          </have>
+        </itemCheck>
+        <next id="30" pos="3">Egyszerűen átgázolsz rajta?</next>
+      </have>
+      <dontHave>
+        <text>[p]Nem látsz más lehetőséget, mint hogy egyszerűen átgázolj rajta.[/p]</text>
+        <next id="30"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="196">
+    <text>
+        [p]A plafonhoz rögzíted a kötelet és a kijárat felé lendülsz. Félúton jársz, mikor egy hatalmas, zöld csáp tör fel a homokból és talál el téged, mikor épp pályád legaljánál jársz. Vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <test against="luck">
+      <success>
+        <text>[p]Sikerül megtartanod magad, és így biztonságban eljutsz a túloldalra.[/p]</text>
+        <next id="144"></next>
+      </success>
+      <failure>
+        <next id="180"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="197">
+    <text>
+        [p]Becsúszol, elkapod az éppen melletted lévő asztallábat és így sikerül elkerülnöd a lángokat. Ezután Traskannd felé fordulsz.[/p]
+    </text>
+    <next id="193"></next>
+  </p>
+  <p id="198">
+    <text>
+        [p]A homokban kotorászva egy kis dobozra bukkansz. A teteje könnyedén felnyílik, a belsejében pedig egy kis, [span class="takeItem" data-id="3010" data-amount="1"]gyémántból faragott Kulcsra[/span] bukkansz. Ezt követően el kell döntened, hogyan juss át a túloldalra.[/p]
+    </text>
+    <itemCheck type="items" id="3002 or 3003">
+      <have>
+        <itemCheck type="item" id="3002">
+          <have>
+            <next id="53" pos="1">Egy Seprűvel repülsz át    felette?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <next id="196" pos="2">Egy Mágikus Kötéllel    lendülsz át rajta?</next>
+          </have>
+        </itemCheck>
+        <next id="30" pos="3">Egyszerűen átgázolsz a homokon?</next>
+      </have>
+      <dontHave>
+        <text>[p]Nem látsz más lehetőséget, mint hogy egyszerűen átgázolj a homokon.[/p]</text>
+        <next id="30"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="199">
+    <text>
+        [p]Meghúzod a kötelet, mire valahonnan a közelből egy harang kondulását hallod meg. Megfeszülsz. Az ajtók egyike sem nyílik ki, ám ahogy a szobát fürkészed, egy egyre növekvő horpadást látsz meg az alkóv falán. Egyre terebélyesedik, míg végül fel nem szakad, egy rémisztő, rákszerű teremtményt fedve fel előtted – egy Makrát! Meg kell küzdened vele.[/p]
+        [p]A lény hatalmas ollói elég súlyos sebeket okoznak, így a szokásos 2 helyett 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot vesztesz minden sikeres támadása nyomán.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="2" />
+      <win>
+        <text>[p]Most ehetsz, ha akarsz.[/p]</text>
+      </win>
+    </fight>
+    <canEat />
+    <next id="71">Amennyiben mindezek után az északi ajtón át távoznál</next>
+    <next id="82">Ha a nyugati a szimpatikusabb</next>
+  </p>
+  <p id="200">
+    <text>
+        [p]Belepróbálod a kulcsokat. Az egyik elfordul, ám ahogy próbálnád a másikat is elfordítani, két apró dárda csapódik a kezedbe. Látásod elhomályosul, és rájössz, hogy a lövedékek halálos mérget juttattak szervezetedbe… Kalandod itt véget ér. Legközelebb próbálkozz másik kulcskombinációval, mikor ideérsz.[/p]
+    </text>
+    <death />
+  </p>
+</content>

@@ -1,0 +1,2412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd">
+  <p id="back_cover">
+    <text>[p]You are requested to save a village from the evil attentions of the wizard Anakendis; you have to brave the terrors of a monster-infested cave system and destroy both Anakendis and the source of his power – the Dark Chronicles.[/p]</text>
+    <next id="generate" />
+  </p>
+  <p id="generate" display="Generate character">
+    <text>
+        [p][span class="ffAttribute"]Skill[/span]: [span id="ffSkill"]roll one die and add 6 to this number[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Stamina[/span]: [span id="ffStamina"]roll two dice and add 12 to this number[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Luck[/span]: [span id="ffLuck"]roll one die and add 6 to this number[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p]Choose a bottle of magical potion:
+          [select id="ffDefaultPotion"]
+              [option value="2001" selected="selected"]Potion of Skill[/option]
+              [option value="2002"]Potion of Strength[/option]
+              [option value="2003"]Potion of Fortune[/option]
+          [/select]
+        [/p]
+        [button data-generator-button="ff"]Create character[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="Background">
+    <text>
+        [p class="inlineImage"][img src="resources/wm6/0.jpg" /][/p]
+        [p]You are an adventurer, strong and courageous, dedicated to the slaying of evil. While travelling to visit a friend in Fang, you pass through the town of Kokbridge and are met by the village headman. The normally quiet village is very active and many of the villagers appear frightened and worried. You ask the headman what is wrong.[/p]
+        [p]“Not far from here,” he says, “lies a small system of caves rumoured to be the home of the evil Anakendis and his minions,. Anakendis is said to get his powers through an evil book, the Dark Chronicles of Anakendis. A few days ago, a group of adventurers led by the honourable       Traskannd       entered       the caves to try and disprove these rumours. After one day Traskannd returned, followed by a pack of savage hounds and wearing a belt with the heads of his companions hanging from it! He told us he was now a servant of Anakendis. ‘You must deliver two maidens weekly to my master,’ he said, ‘or the devil hounds will come to ravage this town.’ He then set free the hounds and they killed two people and many animals before departing.[/p]
+        [p]“I beg of you, brave adventurer, enter these caves to destroy Anakendis and his Dark Chronicles. You will be well rewarded. Only then will our fair village rest easily again.”[/p]
+        [p]The headman tells you he knows only that you must cross a bottomless chasm to reach Anakendis. The next day, the whole village comes out to see you go as you set out on the long trek up to the caves of Anakendis …[/p]
+    </text>
+    <gatherItem id="defWpn" />
+    <gatherItem id="1001" />
+    <gatherItem id="2000" amount="5" />
+    <add amount="20" to="gold" />
+    <next id="1"></next>
+  </p>
+  <p id="1">
+    <text>
+        [p]The journey up to the caves takes one day and one night, and the sun is just rising as you face the cave entrance. It looms before you, dark and gloomy, with ivy growing around the edges. You can see nothing within. Taking a deep breath, you light your lantern and enter.[/p]
+        [p]Inside,   the   cave   becomes   an   irregular rock passageway heading north. Water drips continuously from the walls. After a few yards, the passageway splits.[/p]
+    </text>
+    <next id="34">Do you take the left-hand fork</next>
+    <next id="7">Or the right-hand one</next>
+  </p>
+  <p id="2a" display="2">
+    <text>
+        [p]The vile sand squid lies dead in the sand, but you still have to get across to the door on the other side of the room.[/p]
+    </text>
+    <next id="144">If you want to use the magic rope swing across the rest of the distance</next>
+    <next id="51a">If you want to walk the rest of the way</next>
+  </p>
+  <p id="2b" display="2">
+    <text>
+        [p]The vile sand squid lies dead in the sand, but you still have to get across to the door on the other side of the room.[/p]
+    </text>
+    <next id="51b"></next>
+  </p>
+  <p id="3">
+    <text>
+        [p]You continue up the passageway northwards.   Soon,   it   splits   into   two.[/p]
+    </text>
+    <next id="195">To   go left</next>
+    <next id="113">To go right</next>
+  </p>
+  <p id="4">
+    <text>
+        [p]After talking to the man for a short time, you discover he is no friend of Anakendis; indeed, he is a powerful wizard whom Anakendis threw down this well and left unable to use his magic on himself. He wishes you good luck in your mission and hands you an object. It is a small [span class="takeItem" data-id="3002" data-amount="1"]broom[/span], which says the wizard, allows you to fly at high speed when you sit upon it. You thank the wizard and find yourself back in the room with the well and the stone. You leave the room. Add 1 [span class="ffAttribute"]LUCK[/span] point for your good fortune. If you are hungry, you may eat Provisions here.[/p]
+    </text>
+    <canEat />
+    <add amount="1" to="luck" />
+    <next id="89"></next>
+  </p>
+  <p id="5">
+    <text>
+        [p]Rummaging through the junk in the desk drawer under the headband you overturn a blanket and find an axe. Examining it you find it is of an inferior quality to your own  sword   and you decide to leave it alone.[/p]
+    </text>
+    <next id="149"></next>
+  </p>
+  <p id="6">
+    <text>
+        [p]You hold up the amulet in front of Anakendis’ face. He sees it and turns pale, backing away. You move forward to attack him while he is weakened. Resolve the battle:[/p]
+    </text>
+    <fight type="single">
+      <enemy id="25" />
+    </fight>
+    <next id="168"></next>
+  </p>
+  <p id="7">
+    <text>
+        [p]The passageway ends at a thick wooden door. You listen but can hear nothing and, trying the door, you find it is unlocked. Going in, you enter a large room with a door in the north wall and a    door    in    the    west    wall.    The    room appears empty, although there is a small alcove in the east wall.[/p]
+    </text>
+    <next id="190">You can examine this further if you want</next>
+    <next id="82">Or can leave the room by the west door</next>
+    <next id="71">Or the north door</next>
+  </p>
+  <p id="7b" display="7">
+    <text>
+        [p]The passageway ends at a thick wooden door. You listen but can hear nothing and, trying the door, you find it is unlocked. Going in, you enter a large room with a door in the north wall and a    door    in    the    west    wall.    The    room appears empty, although there is a small alcove in the east wall.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="190">You can examine this further if you want</next>
+    <next id="82">Or can leave the room by the west door</next>
+    <next id="71">Or the north door</next>
+  </p>
+  <p id="8">
+    <text>
+        [p]The hut is made of twigs lashed together with leather, and inside it is surprisingly large. However, it is empty. You search it but find nothing, so you leave. [/p]
+    </text>
+    <itemCheck type="section" id="97">
+      <have>
+        <text>
+            [p]You go down the path to the door at the other end.[/p]
+        </text>
+        <next id="49"></next>
+      </have>
+      <dontHave>
+        <next id="97">You can now examine the other hut</next>
+        <next id="49">Or go down the path to the door at the other end</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="9">
+    <text>
+        [p]You  have  entered   a  small  room,  containing    only    three    chests.    These    look very tempting! You can:[/p]
+    </text>
+    <itemCheck type="section" id="158">
+      <dontHave>
+        <next id="158">Open the first chest</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="163">
+      <dontHave>
+        <next id="163">Open the second chest</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="26">
+      <dontHave>
+        <next id="26">Open the third chest</next>
+      </dontHave>
+    </itemCheck>
+    <next id="86">Leave the room</next>
+  </p>
+  <p id="10">
+    <text>
+        [p]Ahead of you, you see the passageway opening out into a large room. Between you and this room, however, is a large statue which appears to have been carved out of one huge translucent crystal. It looks inanimate but, as you approach it, it turns to face you. The only way through is past the statue![/p]
+    </text>
+    <itemCheck type="item" id="3005">
+      <have>
+        <next id="181"></next>
+      </have>
+      <dontHave>
+        <next id="155"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="11">
+    <text>
+        [p]You are now on the net that spans the chasm. The exit is invitingly close, but to reach it you will have to reach the bottom of the net, cross to the other side then leap to the exit.[/p]
+    </text>
+    <test against="skill" success="lower">
+      <success>
+        <test against="skill" success="lower">
+          <success>
+            <next id="77"></next>
+          </success>
+          <failure>
+            <next id="42"></next>
+          </failure>
+        </test>
+      </success>
+      <failure>
+        <test against="skill" success="lower">
+          <success>
+            <next id="42"></next>
+          </success>
+          <failure>
+            <next id="94"></next>
+          </failure>
+        </test>
+      </failure>
+    </test>
+  </p>
+  <p id="12">
+    <text>
+        [p]Unfortunately, as you try to avoid the fire, you slip and hit it. You are severely scorched. Lose 5 [span class="ffAttribute"]STAMINA[/span] points and 1 [span class="ffAttribute"]SKILL[/span] point. If you are still alive, you pick yourself up to see Traskannd looking at you, laughing. You attack him.[/p]
+    </text>
+    <add amount="-5" to="stamina" />
+    <add amount="-1" to="skill" />
+    <next id="193"></next>
+  </p>
+  <p id="13">
+    <text>
+        [p]Fight   the   three   devil   hounds   one   at   a time:[/p]
+    </text>
+    <fight type="single">
+      <enemy id="16" />
+      <enemy id="17" />
+      <enemy id="18" />
+    </fight>
+    <next id="99"></next>
+  </p>
+  <p id="14">
+    <text>
+        [p]The   man   is   a   little   surprised   by   your charge    but    lifts    his    axe    and    attacks nevertheless.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="6" />
+    </fight>
+    <next id="91"></next>
+  </p>
+  <p id="15">
+    <text>
+        [p]The chimney is narrow but you get to the top of the ladder without much trouble. Peering over the edge, you see a small room. Sitting on a chair is a small   creature,    an    Imp.    He    looks round and, seeing you, clicks his fingers. Suddenly, the ladder you are standing on has no rungs![/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="109"></next>
+      </success>
+      <failure>
+        <next id="133"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="16">
+    <empty />
+  </p>
+  <p id="17">
+    <text>
+        [p]The   chest   has   two   locks. Which combination do you try?[/p]
+    </text>
+    <itemCheck type="items" id="3010 and 3001">
+      <have>
+        <next id="135">Diamond and ruby</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="items" id="3001 and 3008">
+      <have>
+        <next id="200">Ruby and emerald</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="items" id="3008 and 3010">
+      <have>
+        <next id="156">Diamond and emerald</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="18">
+    <text>
+        [p]The passage    beyond    the    door    leads north for quite a way, then meets another passage going back the way you came. You ignore it and carry on northwards.[/p]
+    </text>
+    <next id="10"></next>
+  </p>
+  <p id="19">
+    <text>
+        [p]The ring appears normal at first but, as you look closer, you notice six small teeth around the inside and realise the ring is in fact a Ring Leech! Add 1 [span class="ffAttribute"]LUCK[/span] point for your discovery. You put the ‘ring’ down.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <itemCheck type="section" id="26">
+      <have>
+        <itemCheck type="section" id="158">
+          <have>
+            <text>
+                [p]You leave the room.[/p]
+            </text>
+            <next id="86"></next>
+          </have>
+          <dontHave>
+            <next id="158">If you want to open the first chest</next>
+            <next id="86">If if you want to leave the room</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="158">
+          <have>
+            <next id="26">If you want to open the third chest</next>
+            <next id="86">If if you want to leave the room</next>
+          </have>
+          <dontHave>
+            <next id="158">If you want to open the first chest</next>
+            <next id="26">If you want to open the third chest</next>
+            <next id="86">If you want to leave the room</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="20">
+    <text>
+        [p]The box  is  locked.[/p]
+    </text>
+    <next id="159">You  can  try to  prise the lock open</next>
+    <next id="7">Or you can leave the room, going back to the junction and taking the right-hand fork</next>
+  </p>
+  <p id="21">
+    <text>
+        [p]The astromancer has cast a sleep spell.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>[p]The spell power just misses you. Continue the battle.[/p]</text>
+        <next id="33"></next>
+      </success>
+      <failure>
+        <text>[p]You collapse into a deep sleep.[/p]</text>
+        <next id="95"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="22">
+    <text>
+        [p class="inlineImage"][img src="resources/wm6/22.jpg" /][/p]
+        [p]The    creature    is    a     Zombie and it attacks! Resolve the battle:[/p]
+    </text>
+    <fight type="single">
+      <enemy id="7" />
+    </fight>
+    <next id="45"></next>
+  </p>
+  <p id="23">
+    <text>
+        [p]The corridor leads northwards a few yards, then reaches two doors set in the corridor wall, one opposite the other.[/p]
+    </text>
+    <next id="50">You can ignore both of them and carry on up the corridor if you wish</next>
+    <next id="36">Or can try the east door</next>
+    <next id="102">Or the west door</next>
+  </p>
+  <p id="23b" display="23">
+    <text>
+        [p]The corridor leads northwards a few yards, then reaches two doors set in the corridor wall, one opposite the other.[/p]
+    </text>
+    <itemCheck type="section" id="102">
+      <have>
+        <text>[p]You carry on up the corridor.[/p]</text>
+        <next id="50"></next>
+      </have>
+      <dontHave>
+        <next id="50">You can carry on up the corridor if you wish</next>
+        <next id="102">Or open the west door</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="24">
+    <text>
+        [p]You seem to have hit a sore point. The hound-master hesitates, then says, “I don’t know … I’m not rea … I don’t want to talk about it.”[/p]
+    </text>
+    <next id="29">Do you pursue the enquiry further</next>
+    <next id="73">Ask about Anakendis</next>
+    <next id="148">Ask about the Chronicles</next>
+    <next id="151">Or thank him for his information and leave the room</next>
+  </p>
+  <p id="25">
+    <text>
+        [p]The [span class="takeItem" data-id="3012" data-amount="1"]cloak[/span] is made of a very expensive-looking material but it is not magical in any way.[/p]
+    </text>
+    <next id="149"></next>
+  </p>
+  <p id="26">
+    <text>
+        [p]The   chest   is   locked.[/p]
+    </text>
+    <next id="41">To   prise   it   open</next>
+    <itemCheck type="section" id="163">
+      <have>
+        <itemCheck type="section" id="158">
+          <have>
+            <next id="86">If you want to leave the room</next>
+          </have>
+          <dontHave>
+            <next id="158">If you want to open the first chest</next>
+            <next id="86">If if you want to leave the room</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="158">
+          <have>
+            <next id="163">If you want to open the second chest</next>
+            <next id="86">If if you want to leave the room</next>
+          </have>
+          <dontHave>
+            <next id="158">If you want to open the first chest</next>
+            <next id="163">If you want to open the second chest</next>
+            <next id="86">If you want to leave the room</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="27">
+    <text>
+        [p]You ignore the little creature and walk on, but a minute later there is a gentle tap on you leg. Turning round you see the little creature behind you, and decide to hear what it has to say.[/p]
+    </text>
+    <next id="171"></next>
+  </p>
+  <p id="28">
+    <text>
+        [p]Searching the dinosaur cave you find a rope – a [span class="takeItem" data-id="3003" data-amount="1"]magic rope[/span], in fact! This rope will move and tie itself to things at your command. Add 1 [span class="ffAttribute"]LUCK[/span] point. You use this rope to climb out of the pit.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <itemCheck type="section" id="36">
+      <have>
+        <text>[p]You go up the corridor.[/p]</text>
+        <next id="50" pos="2"></next>
+      </have>
+      <dontHave>
+        <next id="36">You may enter the room across the corridor</next>
+        <next id="50">Or go up the corridor</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="29">
+    <text>
+        [p]The hound-master gets angry at your continued questions. “I said I didn’t want to talk about it!” he shouts. Then, to your surprise, he draws his sword and attacks![/p]
+    </text>
+    <next id="62"></next>
+  </p>
+  <p id="30">
+    <text>
+        [p]You start to make your way across the sand but after a short while you start to sink into it. Suddenly, a thick tentacle shoots up—it belongs to a Sand Squid! You must fight it, but deduct two points from your [span class="ffAttribute"]SKILL[/span] due to the sand hampering you up to your waist:[/p]
+    </text>
+    <add amount="-2" to="skill" />
+    <fight type="single">
+      <enemy id="14" />
+      <win>
+        <add amount="2" to="skill" />
+      </win>
+    </fight>
+    <next id="2b"></next>
+  </p>
+  <p id="31">
+    <text>
+        [p]The passage leading away from the chasm leads into a small room with doors in the north, west and east walls. In the centre is a small marble pedestal.[/p]
+    </text>
+    <next id="111">You may examine this</next>
+    <next id="43">Or leave through the east door</next>
+    <next id="84">The north door</next>
+    <next id="72">Or the west door</next>
+  </p>
+  <p id="32">
+    <text>
+        [p]The tapestry depicts a powerful-looking human, followed by a huge pack of wolves or hounds, casting a lightning bolt over the heads of a fleeing army. It is not magical in any way.[/p]
+    </text>
+    <next id="184">You can now examine the desk</next>
+    <next id="105">Or leave the room</next>
+  </p>
+  <p id="33">
+    <text>[p]Resolve this battle:[/p]</text>
+    <fight type="single">
+      <enemy id="4" />
+      <win>
+        <itemCheck type="enemy" id="4">
+          <have>
+            <next id="56"></next>
+          </have>
+          <dontHave>
+            <text>[p]You leave the room.[/p]</text>
+            <loseItem id="4001" />
+            <next id="96">To turn north up the passage</next>
+            <next id="71">To go back to the first room and go north</next>
+          </dontHave>
+        </itemCheck>
+      </win>
+    </fight>
+  </p>
+  <p id="34">
+    <text>
+        [p]The passageway leads to a cave that is very cold. Icicles hang from the ceiling and the floor is slippery with black ice.[/p]
+    </text>
+    <next id="93">To examine the cave</next>
+    <next id="126">To leave</next>
+  </p>
+  <p id="35">
+    <text>
+        [p]You put the boots on. They feel quite comfortable. As you move off, you feel a new spring in your step. These are magical Boots of Springing – they enable you to jump great distances and add 1 point to your [span class="ffAttribute"]SKILL[/span] (can increase it over the original level) due to the added agility.[/p]
+    </text>
+    <gatherItem id="3007" />
+    <next id="112"></next>
+  </p>
+  <p id="36">
+    <text>
+        [p]The door leads to a fairly large room with no other doors. Within it stands a man carrying an axe. All around him are large amounts of food lying on shelves or hanging from the ceiling.[/p]
+    </text>
+    <next id="134">Do you talk to the man</next>
+    <next id="14">Attack him</next>
+    <next id="23b">Or quickly leave the room</next>
+  </p>
+  <p id="37">
+    <text>
+        [p]The door opens into a small room with no furnishings except a small black chest. It has two locks – this must be the chest containing the Dark Chronicles![/p]
+    </text>
+    <itemCheck type="items" id="(3001 and 3008) or (3001 and 3010) or (3008 and 3010)">
+      <have>
+        <next id="17">You may try some keys in the locks</next>
+        <next id="58">Or try to break the chest open</next>
+      </have>
+      <dontHave>
+        <text>[p]You don't have two keys to try them in the lock so you decide to try to break the chest open.[/p]</text>
+        <next id="58b"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="38">
+    <itemCheck type="items" id="3005 or 3003">
+      <have>
+        <text>
+            [p]What do you use?[/p]
+        </text>
+        <itemCheck type="item" id="3005">
+          <have>
+            <next id="6" pos="1">A silver amulet?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <next id="152" pos="2">A magic rope, commanding it to wrap around him?</next>
+          </have>
+        </itemCheck>
+        <next id="83" pos="3">Your weapon?</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]None of your objects seem to have any use. You have to attack Anakendis.[/p]
+        </text>
+        <next id="83"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="39">
+    <text>
+        [p]Within the wardrobe hang several black cloaks.[/p]
+    </text>
+    <next id="140">You can take one out to put it on if you wish</next>
+    <next id="149">Or you can ignore them</next>
+  </p>
+  <p id="40">
+    <text>
+        [p]The undergrowth is very thick and you cannot get very far. You turn round to come back out but cannot move; your feet are caught in some creepers which have wrapped round them! These creepers drain 2 [span class="ffAttribute"]STAMINA[/span] points per round. You must roll your and their Attack Strength in the normal way, but it does damage automatically – you only wound them if your attack strength is greater than theirs.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="9" />
+    </fight>
+    <next id="101">You may leave up the left path</next>
+    <next id="49">Or the path leading to the door</next>
+  </p>
+  <p id="41">
+    <text>
+        [p]Try as you might, you cannot get the chest to open or the lock to turn.[/p]
+    </text>
+    <next id="153">You can try brute force if you wish, by smashing the chest</next>
+    <next id="9">Or you can give it up</next>
+  </p>
+  <p id="42">
+    <text>
+        [p]You slip and lose your grip on the net, but just manage to hang on, almost ripping your arm out of its socket in the process – lose 1 [span class="ffAttribute"]STAMINA[/span] point. You climb up the other side of the net and leap the small distance to the exit on the far side.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="31"></next>
+  </p>
+  <p id="43">
+    <text>
+        [p]The door leads to a short passage which opens out into a room. Standing within is a man. He smiles mockingly at you and introduces himself as Traskannd, servant of Anakendis. Also in the room is a desk, a tapestry and another exit opposite the one you entered by.[/p]
+    </text>
+    <next id="183">You may now talk to Traskannd</next>
+    <next id="193">Attack him</next>
+    <next id="63">Or try to escape from the room</next>
+  </p>
+  <p id="44">
+    <text>
+        [p]Lying on the ground you are defenceless against Anakendis’ next attack, and you are seared by a fearsome bolt of lightning – lose 8 [span class="ffAttribute"]STAMINA[/span] points. Anakendis attacks again.[/p]
+    </text>
+    <add amount="-8" to="stamina" />
+    <next id="83"></next>
+  </p>
+  <p id="45">
+    <text>
+        [p]The   horrible   creature   lies   dead   at   your feet. You search the alcove but find nothing, so you leave.[/p]
+    </text>
+    <next id="108"></next>
+  </p>
+  <p id="46">
+    <text>
+        [p]The passageway curves round to the north after a little while, then passes a door in the east wall.[/p]
+    </text>
+    <next id="154">To open this</next>
+    <next id="50">To continue up the passageway</next>
+  </p>
+  <p id="47">
+    <text>
+        [p]Your sword has little effect against Anakendis himself, but his barrier disappears momentarily. You charge him and continue the fight.[/p]
+    </text>
+    <changeEnemy attribute="fleeAtRound" id="24" set="1000000000" />
+    <fight type="single">
+      <enemy id="24" />
+    </fight>
+    <next id="168"></next>
+  </p>
+  <p id="48">
+    <text>
+        [p]You open the door and enter a room which appears to be a bed chamber, frugally furnished. The occupant who lies on the bed, gets up at your entrance. He is dressed all in black and carries a sword.[/p]
+    </text>
+    <next id="62">You can attack him</next>
+    <next id="161">Or try to talk to him</next>
+  </p>
+  <p id="49">
+    <text>
+        [p]The door is locked.[/p]
+    </text>
+    <next id="128" pos="1">You can try to barge it down</next>
+    <itemCheck type="section" id="101">
+      <dontHave>
+        <next id="101" pos="2">Or ignore it and examine the other path</next>
+      </dontHave>
+    </itemCheck>
+    <next id="50" pos="3">Or leave the room</next>
+  </p>
+  <p id="50">
+    <text>
+        [p]The passage eventually ends at a crossroads, and you take the corridor leading northwards. However, out of one of the other passages comes a small creature who starts to follow you.[/p]
+    </text>
+    <next id="27">You can ignore it</next>
+    <next id="98">Or turn round and attack it</next>
+  </p>
+  <p id="51a" display="51">
+    <text>
+        [p]Awkwardly, and continually sinking in the sand, you make your way across the sand. Almost at the exit, you catch your foot on something buried within the sand and, taking a look, you see it is a thick rope.[/p]
+    </text>
+    <loseItem id="3003" />
+    <next id="144">You can ignore this to get to the exit</next>
+    <next id="122">Or pull it</next>
+  </p>
+  <p id="51b" display="51">
+    <text>
+        [p]Awkwardly, and continually sinking in the sand, you make your way across the sand. Almost at the exit, you catch your foot on something buried within the sand and, taking a look, you see it is a thick rope.[/p]
+    </text>
+    <next id="144">You can ignore this to get to the exit</next>
+    <next id="122">Or pull it</next>
+  </p>
+  <p id="52">
+    <text>
+        [p]Granzork tries to persuade you to change your mind, but you are adamant. He gets more and more angry with you, then suddenly grows to about seven feet tall and attacks! Resolve the battle:[/p]
+    </text>
+    <fight type="single">
+      <enemy id="3" />
+      <win>
+        <text>
+            [p]You may eat Provisions here if you wish.[/p]
+        </text>
+      </win>
+    </fight>
+    <canEat />
+    <next id="141">You  may  look   in   the   door</next>
+    <next id="132">Go up the passage</next>
+    <next id="3">Or return to the place where you met Granzork and continue up the passage</next>
+  </p>
+  <p id="53">
+    <text>
+        [p]You   get   on   your   broom   and   fly   safely across  to  the  exit  on  the  far  side.[/p]
+    </text>
+    <next id="144"></next>
+  </p>
+  <p id="54">
+    <text>
+        [p]Having killed the Forest Demon, you may now eat provisions if you wish. You search the hut and find [span class="takeItem" data-id="gold" data-amount="5"]5 Gold Pieces[/span] and a pair of blue satin gloves.[/p]
+    </text>
+    <next id="65" pos="1">To put on the gloves</next>
+    <itemCheck type="section" id="8">
+      <dontHave>
+        <next id="8" pos="2">To search the second hut</next>
+      </dontHave>
+    </itemCheck>
+    <next id="49" pos="3">To go down the other path</next>
+  </p>
+  <p id="55">
+    <text>
+        [p]The box flicks open. Inside, a [span class="takeItem" data-id="3001" data-amount="1"]key[/span] carved out of pure ruby rests on a purple velvet cushion. You pocket the key, and leave   the cave, returning to the junction and taking the right-hand fork.[/p]
+    </text>
+    <next id="7"></next>
+  </p>
+  <p id="56">
+    <itemCheck type="section" id="131">
+      <have>
+        <random>
+          <result max="3" min="1">
+            <next id="160"></next>
+          </result>
+          <result max="6" min="4">
+            <next id="21"></next>
+          </result>
+        </random>
+      </have>
+      <dontHave>
+        <random>
+          <result max="2" min="1">
+            <next id="160"></next>
+          </result>
+          <result max="4" min="3">
+            <next id="21"></next>
+          </result>
+          <result max="6" min="5">
+            <next id="131"></next>
+          </result>
+        </random>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="57">
+    <text>
+        [p]You run for the door but a stone wall slams down. You run into it, dazing yourself. As your vision clears, you see Anakendis’ sword coming down upon your neck … your adventure is over.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="58b" display="58">
+    <text>
+        [p]You lift up your sword, but as you bring it down, a ray of pure darkness is fired at you from the chest.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]The ray misses you.[/p]
+            [p]You sit down despondently after getting so far. Look for keys next time you enter the caves![/p]
+        </text>
+      </success>
+      <failure>
+        <text>
+            [p]The ray hits you and kills you.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="58">
+    <text>
+        [p]You lift up your sword, but as you bring it down, a ray of pure darkness is fired at you from the chest.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]The ray misses you. You decide to try to open the chest with your keys.[/p]
+        </text>
+        <next id="17"></next>
+      </success>
+      <failure>
+        <text>
+            [p]The ray hits you and kills you.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="59">
+    <text>
+        [p]As you run at him, the wizard speaks a few words and a wall of solid ice comes into existence before you! You run into it – lose 1 [span class="ffAttribute"]STAMINA[/span] point. He says another word and it disappears again. You decide to talk to the man.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="4"></next>
+  </p>
+  <p id="60">
+    <text>
+        [p]You     make     the     excuse     about     your curiosity,  but  the  zombie  speaks  to  you in     a     deathly,     gurgling     voice:     “The punishment    for    moving    the    stone    is death. Sentence will be immediate.” It moves out of the alcove and attacks.[/p]
+    </text>
+    <next id="22"></next>
+  </p>
+  <p id="61">
+    <text>
+        [p]You open the drawer. It is full of junk, but lying on top of the pile is a leather headband decorated with a red diamond pattern.[/p]
+    </text>
+    <next id="68">You can put it on if you wish</next>
+    <next id="5">Or you may continue the search of the junk pile</next>
+  </p>
+  <p id="62">
+    <text>
+        [p]The man attacks:[/p]
+    </text>
+    <fight type="single">
+      <enemy id="19" />
+    </fight>
+    <next id="67"></next>
+  </p>
+  <p id="63">
+    <text>
+        [p]You run for the door, but a wall of fire springs out of the ground – you are heading straight for it![/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="197"></next>
+      </success>
+      <failure>
+        <next id="12"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="64">
+    <text>
+        [p]You need to get through the chasm.
+    </text>
+    <itemCheck type="items" id="3002 or 3003 or 3007">
+      <have>
+        <text> To   cross   the   chasm   you   may   use   three planks   of   wood   that   rest   on   the   wall, or you may use something from your backpack.[/p]</text>
+        <next id="178">To go for the planks</next>
+        <itemCheck type="item" id="3002">
+          <have>
+            <next id="114">To use the Broom of Flying</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <next id="182">To use the Magic Rope</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3007">
+          <have>
+            <next id="137">To use the Bookts of Springing</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text> The only way to do that seems to be the three planks of wood that   rest   on   the   wall.[/p]</text>
+        <next id="178"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="65">
+    <text>
+        [p]You slip the gloves on. They are a good fit. Suddenly the satin constricts around your hand and begins to squeeze! They cause great pain and you cannot take them off. Lose 2 [span class="ffAttribute"]STAMINA[/span] and 1 [span class="ffAttribute"]SKILL[/span] point due to the pain.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <gatherItem id="3009" />
+    <itemCheck type="section" id="8">
+      <have>
+        <text>
+            [p]You take the other path.[/p]
+        </text>
+        <next id="49"></next>
+      </have>
+      <dontHave>
+        <next id="8">You may now examine the second hut</next>
+        <next id="49">Or take the other path</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="66">
+    <text>
+        [p]The skeleton is wearing a tattered silk robe and a pair of intact leather boots.[/p]
+    </text>
+    <next id="35">You can take these and put them on</next>
+    <next id="112">Or can ignore them</next>
+  </p>
+  <p id="67">
+    <text>
+        [p]You search the hound-master’s chamber but find nothing of interest. You leave through the chamber with the dead hounds and back to the pedestal room.[/p]
+    </text>
+    <next id="151"></next>
+  </p>
+  <p id="68">
+    <text>
+        [p]The   headband   fits   quite   badly   but   as you put it on it tightens to fit perfectly around your head. Your [span class="ffAttribute"]LUCK[/span] is increased to its original level plus 1 point. It can still be drained as a result of testing your [span class="ffAttribute"]LUCK[/span]. You continue to search the drawer.[/p]
+    </text>
+    <add amount="1" to="initialLuck" />
+    <add amount="99" to="luck" />
+    <next id="5"></next>
+  </p>
+  <p id="69">
+    <text>
+        [p]This round, Traskannd does not attack with his sword, or make any attempt to defend himself from your blow (you wound him automatically) but suddenly a tongue of flame bursts from his fingers.[/p]
+    </text>
+    <changeEnemy attribute="fleeAtRound" id="20" set="1000000000" />
+    <changeEnemy attribute="stamina" change="-2" id="20" />
+    <random>
+      <result max="1" min="1">
+        <add amount="-1" to="stamina" />
+        <text>[p]His fiery touch causes 1 [span class="ffAttribute"]STAMINA[/span] loss</text>
+      </result>
+      <result max="2" min="2">
+        <add amount="-2" to="stamina" />
+        <text>[p]His fiery touch causes 2 [span class="ffAttribute"]STAMINA[/span] loss</text>
+      </result>
+      <result max="3" min="3">
+        <add amount="-3" to="stamina" />
+        <text>[p]His fiery touch causes 3 [span class="ffAttribute"]STAMINA[/span] loss</text>
+      </result>
+      <result max="4" min="4">
+        <add amount="-4" to="stamina" />
+        <text>[p]His fiery touch causes 4 [span class="ffAttribute"]STAMINA[/span] loss</text>
+      </result>
+      <result max="5" min="5">
+        <add amount="-5" to="stamina" />
+        <text>[p]His fiery touch causes 5 [span class="ffAttribute"]STAMINA[/span] loss</text>
+      </result>
+      <result max="6" min="6">
+        <add amount="-6" to="stamina" />
+        <text>[p]His fiery touch causes 6 [span class="ffAttribute"]STAMINA[/span] loss</text>
+      </result>
+      <after>
+        <text>.[/p]</text>
+        <fight type="single">
+          <enemy id="20" />
+        </fight>
+      </after>
+    </random>
+    <next id="194"></next>
+  </p>
+  <p id="70">
+    <text>
+        [p]You go through the door into a long thin room with no other exits. It is empty. You see that the walls are made of huge capstones and on either side of the room, one of the caps tone s ha s come loose and could be moved. Also, on one wall just above eye level is a small hole.[/p]
+    </text>
+    <itemCheck type="section" id="170">
+      <dontHave>
+        <next id="170" pos="1">You can examine this hole further</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="104">
+      <dontHave>
+        <next id="104" pos="2">You can try to move the southern capstone</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="130">
+      <dontHave>
+        <next id="130" pos="3">You can the northern one</next>
+      </dontHave>
+    </itemCheck>
+    <next id="108" pos="4">You can leave this room and continue northwards</next>
+  </p>
+  <p id="71">
+    <text>
+        [p]The    passageway   travels   northwards   for some    time,    then    reaches    a    crossroads.[/p]
+    </text>
+    <next id="23">You   may   go   north</next>
+    <next id="121">East</next>
+    <next id="46">Or west</next>
+  </p>
+  <p id="72">
+    <text>
+        [p]As you open the door, a mouth appears on it and starts to speak in a deep, booming voice: “Beware, foolish human! You are entering the lair of Anakendis, from which none return alive!” Undaunted by this, you continue into the passageway.[/p]
+    </text>
+    <next id="106"></next>
+  </p>
+  <p id="73">
+    <text>
+        [p]The man nods. He tells you that once you have entered Anakendis’ lair, you cannot escape, so beware! He tells you that Traskannd lairs behind the eastern door, and Anakendis behind the western.[/p]
+    </text>
+    <next id="174">You may enquire further about Anakendis</next>
+    <next id="73b">Or thank him for his information and leave</next>
+  </p>
+  <p id="73b" display="73">
+    <text>
+        [p]The man nods. He tells you that once you have entered Anakendis’ lair, you cannot escape, so beware! He tells you that Traskannd lairs behind the eastern door, and Anakendis behind the western.[/p]
+        [p]You thank him for his information and leave. You return back to the pedestal room.[/p]
+    </text>
+    <itemCheck type="section" id="43">
+      <have>
+        <text>
+            [p]You decide to go west.[/p]
+        </text>
+        <next id="72"></next>
+      </have>
+      <dontHave>
+        <next id="43">You may go east</next>
+        <next id="72">Or west</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="74">
+    <text>
+        [p]The  little  imp  falls  dead.  You  search  its chamber   and   find   a   small   [span class="takeItem" data-id="3006" data-amount="1"]jewelled   ring[/span] worth   5   Gold   Pieces.   To   get   down   the chimney   you   hang   from   the   edge   and drop the small distance to the ground. You may eat provisions here if you wish.[/p]
+    </text>
+    <canEat />
+    <next id="112"></next>
+  </p>
+  <p id="75">
+    <text>
+        [p]You ask him a few questions about the caves, but he does not answer. You realise you have spoken too much about your mission, and he swings his axe and attacks you. Resolve the battle:[/p]
+    </text>
+    <fight type="single">
+      <enemy id="6" />
+    </fight>
+    <next id="91"></next>
+  </p>
+  <p id="76">
+    <text>
+        [p]You examine the paintings, which depict various horrible tortures – presumably the sort of things Traskannd enjoyed looking at in his leisure time. As you stand before one, however, a small, white, ghostly hand shoots out and grabs you round the neck! Fight it in the normal way.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="22" />
+      <win>
+        <itemCheck type="enemy" id="22">
+          <have>
+            <text>
+                [p]The hand strangles you, you're dead.[/p]
+            </text>
+            <death />
+          </have>
+          <dontHave>
+            <next id="149"></next>
+          </dontHave>
+        </itemCheck>
+      </win>
+    </fight>
+  </p>
+  <p id="77">
+    <text>
+        [p]You   successfully   manoeuvre   yourself   to the other side of the net, and from there can easily jump to the other exit. Add 1 [span class="ffAttribute"]LUCK[/span] point.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="31"></next>
+  </p>
+  <p id="78">
+    <text>
+        [p]The well itself seems unspectacular. On the other side of the well is a sign reading ‘The Well of Werdna’.[/p]
+    </text>
+    <next id="169">You may now travel down the well via the bucket</next>
+    <next id="125">Examine the stone</next>
+    <next id="89">Or leave the room</next>
+  </p>
+  <p id="79">
+    <text>
+        [p]The dart hits you in the side of the face. It causes no pain at first, but then you realise that your blood is pouring from the end, pulled out by the magic of the dart![/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <add amount="-1" to="stamina" />
+        <text>[p]You lose 1 [span class="ffAttribute"]STAMINA[/span] point</text>
+      </result>
+      <result max="2" min="2">
+        <add amount="-2" to="stamina" />
+        <text>[p]You lose 2 [span class="ffAttribute"]STAMINA[/span] points</text>
+      </result>
+      <result max="3" min="3">
+        <add amount="-3" to="stamina" />
+        <text>[p]You lose 3 [span class="ffAttribute"]STAMINA[/span] points</text>
+      </result>
+      <result max="4" min="4">
+        <add amount="-4" to="stamina" />
+        <text>[p]You lose 4 [span class="ffAttribute"]STAMINA[/span] points</text>
+      </result>
+      <result max="5" min="5">
+        <add amount="-5" to="stamina" />
+        <text>[p]You lose 5 [span class="ffAttribute"]STAMINA[/span] points</text>
+      </result>
+      <result max="6" min="6">
+        <add amount="-6" to="stamina" />
+        <text>[p]You lose 6 [span class="ffAttribute"]STAMINA[/span] points</text>
+      </result>
+      <after>
+        <text> before you can pull the dart out. You take the amulet anyway.[/p]</text>
+      </after>
+    </random>
+    <gatherItem id="3005" />
+    <next id="70"></next>
+  </p>
+  <p id="80">
+    <text>
+        [p]Resolve this battle:[/p]
+    </text>
+    <fight type="single">
+      <enemy id="1" />
+    </fight>
+    <next id="189"></next>
+  </p>
+  <p id="81">
+    <text>
+        [p]You   go    back    to    the    passageway.[/p]
+    </text>
+    <next id="96">You   may turn   northwards</next>
+    <next id="71">Or return to the original room and take the north door</next>
+  </p>
+  <p id="82">
+    <text>
+        [p]The passage goes west for a short while, then turns north. After a little way further a passage turns off to the west.[/p]
+    </text>
+    <next id="120">To take that</next>
+    <next id="96">To continue northwards</next>
+  </p>
+  <p id="83">
+    <text>
+        [p]Anakendis  is  ready  for  your  assault  and draws his own  sword.  He is a powerful fighter   and   you   are   going   to   have   a tough battle on your hands.[/p]
+    </text>
+    <itemCheck type="items" id="1002">
+      <have>
+        <fight type="single">
+          <enemy id="24" />
+        </fight>
+        <next id="92"></next>
+      </have>
+      <dontHave>
+        <fight type="single">
+          <enemy id="23" />
+          <winRound enemy="23" subsequentCount="1">
+            <interrupt />
+          </winRound>
+        </fight>
+        <next id="115"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="84">
+    <text>
+        [p]You try the door, but it is locked. Listening at it, you can hear the sound of several creatures moving about, snuffling and growling.[/p]
+    </text>
+    <next id="177" pos="1">You can try to break the door down</next>
+    <next id="72" pos="2">Or may choose the western door</next>
+    <itemCheck type="section" id="43">
+      <dontHave>
+        <next id="43" pos="3">Or the eastern door</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="85">
+    <text>
+        [p]After killing the creatures, you continue your search of the bones that they were hiding in, and uncover a long box. It opens easily to reveal a magnificent, glowing [span class="takeItem" data-id="1002" data-amount="1"]sword[/span] resting within. If you take the sword, you will have to leave your old one behind, but the new sword will add 1 point to your [span class="ffAttribute"]SKILL[/span] – this can increase it above its original value. Add 1 [span class="ffAttribute"]LUCK[/span] point. You may eat Provisions here if you wish.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <canEat />
+    <next id="18"></next>
+  </p>
+  <p id="86">
+    <text>
+        [p]You   leave   the   room,   making   your   way back   to   the   corridor   through   the   forest room. Back in the corridor, you continue northwards.[/p]
+    </text>
+    <next id="50"></next>
+  </p>
+  <p id="87">
+    <text>
+        [p]He thinks about this statement for a few moments, then looks at you coldly. “I wasn’t notified of this”, he says, then lifts up his axe in readiness for attack.[/p]
+    </text>
+    <next id="14">You can fight him</next>
+    <next id="87b">Or you can escape from him</next>
+  </p>
+  <p id="87b" display="87">
+    <text>
+        [p]He thinks about this statement for a few moments, then looks at you coldly. “I wasn’t notified of this”, he says, then lifts up his axe in readiness for attack.[/p]
+        [p]You escape.[/p]
+    </text>
+    <itemCheck type="section" id="102">
+      <have>
+        <text>[p]You continue up the corridor.[/p]</text>
+        <next id="50"></next>
+      </have>
+      <dontHave>
+        <next id="102">You can enter the other room</next>
+        <next id="50">Or continue up the corridor</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="88">
+    <text>
+        [p]He looks quite pleased, and steps back to let you look around, dropping his axe.[/p]
+    </text>
+    <next id="14">If you want to attack him now</next>
+    <next id="88b">If not</next>
+  </p>
+  <p id="88b" display="88">
+    <text>
+        [p]He looks quite pleased, and steps back to let you look around, dropping his axe.[/p]
+        [p]You look around. You see a large piece of [span class="takeItem" data-id="3004" data-amount="1"]raw meat[/span] that could be useful, and you can take this if you want to. After this you leave the room.[/p]
+    </text>
+    <itemCheck type="section" id="102">
+      <have>
+        <text>[p]You continue up the corridor.[/p]</text>
+        <next id="50"></next>
+      </have>
+      <dontHave>
+        <next id="102">You can enter the other room</next>
+        <next id="50">Or continue up the corridor</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="89">
+    <text>
+        [p]You leave the room.[/p]
+    </text>
+    <itemCheck type="section" id="120">
+      <have>
+        <text>[p]You continue back to the first room and take the northern door.[/p]</text>
+          <next id="71"></next>
+      </have>
+      <dontHave>
+        <next id="120">You may take the west fork if you haven’t done already</next>
+        <next id="71">Or continue back to the first room and take the northern door</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="90">
+    <text>
+        [p]The bookcase holds several books but most of them are torn or burnt. Two appear in relatively good condition.[/p]
+    </text>
+    <next id="107">Do you look at the book entitled ‘Secrets of the Caves’</next>
+    <next id="164">Or the one called ‘Life of Anakendis’</next>
+  </p>
+  <p id="91">
+    <text>
+        [p]You wipe the blood off your sword and search the cave. You find several types of food. Most promising is large slab of [span class="takeItem" data-id="3004" data-amount="1"]raw meat[/span] which you take.[/p]
+    </text>
+    <next id="172" pos="1">You can take a bite of this if you wish</next>
+    <itemCheck type="section" id="102">
+      <dontHave>
+        <next id="102" pos="2">Otherwise, you can leave the room and may enter the door across the passage</next>
+      </dontHave>
+    </itemCheck>
+    <next id="50" pos="3">Or go northwards up the corridor</next>
+  </p>
+  <p id="92">
+    <text>
+        [p]Anakendis suddenly backs off. He waves his hands and whispers some words in a strange tongue. Instantly, a circle of fire springs up around him, cloaking his body, with only his head showing above the flames. Your sword cannot reach him. Do you:[/p]
+    </text>
+    <next id="100">Try to leap the barrier?</next>
+    <next id="57">Try to escape?</next>
+    <next id="47">Slice at the barrier with your sword?</next>
+  </p>
+  <p id="93">
+    <text>
+        [p]You move about the room. Passing a group of large icicles, you suddenly find yourself faced by a large, white, scaly humanoid standing well over seven feet tall – an Ice Warrior! You can try to escape if you wish (remember the penalty) by returning to the junction and taking the right-hand fork.[/p]
+    </text>
+    <next id="80">If you want to fight it</next>
+    <next id="7b">If you want to flee</next>
+  </p>
+  <p id="94">
+    <text>
+        [p]As you start to cross to the other side, your hand loses its grip on the net, and you fall. Right at the bottom of the net you manage to hang on with one hand, but you cannot hold on for long and you fall screaming into the depths of the bottomless chasm … your adventure is over.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="95">
+    <text>
+        [p]The sleep spell hits you, and you collapse, snoring. When you awake, you find yourself on a hillside by Kok-bridge, bereft of all possessions. You may return to the headman and get armour and a sword, but anything you found has been taken from you.[/p]
+    </text>
+    <loseItem id="2000" amount="10" />
+    <loseItem id="2001" />
+    <loseItem id="2002" />
+    <loseItem id="2003" />
+    <loseItem id="2004" />
+    <loseItem id="3001" />
+    <loseItem id="3002" />
+    <add amount="-20" to="gold" />
+    <next id="1"></next>
+  </p>
+  <p id="96">
+    <text>
+        [p]The narrow passageway widens into a small, square room with no other exits. In one corner is a well. A frame over it holds a rope, from which hangs a bucket which is large enough for you to stand in and travel down. Also in the room is a small boulder resting on the floor, which pulses with an unearthly orange glow.[/p]
+    </text>
+    <next id="169">To travel down into the well</next>
+    <next id="78">To examine the well further</next>
+    <next id="125">To examine the boulder</next>
+    <next id="89">To leave the room</next>
+  </p>
+  <p id="97">
+    <text>
+        [p]You    enter    the    hut,    and    immediately find    yourself    confronted    by    a    strange looking      creature      –      a      Forest Demon! It attacks.[/p]
+        [p]It is blocking the exit, so you cannot escape the combat.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="10" />
+    </fight>
+    <next id="54"></next>
+  </p>
+  <p id="98">
+    <text>
+        [p]You swing your sword at the little creature, but it squeals and runs away. Realising that it means you no harm, you sheath your sword and decide to listen to what it has to say.[/p]
+    </text>
+    <next id="171"></next>
+  </p>
+  <p id="99">
+    <text>
+        [p]Kicking   the   dead   devil   hounds   out   of the way,  you examine the cave but  find nothing.   You   leave   the   room.[/p]
+    </text>
+    <next id="48">You   may   leave   through   the   north   door</next>
+    <next id="151">Or   the   south   door</next>
+  </p>
+  <p id="100">
+    <text>
+        [p]You leap on a nearby table and launch yourself at his head, over the fire barrier. You knock him down (deduct 2 points from Anakendis’ [span class="ffAttribute"]STAMINA[/span]) and the barrier disappears. You are, however, knocked over yourself, and Anakendis gets up before you and wounds you for 2 [span class="ffAttribute"]STAMINA[/span] points. Continue the battle.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <changeEnemy attribute="stamina" id="24" change="-2" />
+    <changeEnemy attribute="fleeAtRound" id="24" set="1000000000" />
+    <fight type="single">
+      <enemy id="24" />
+    </fight>
+    <next id="168"></next>
+  </p>
+  <p id="101">
+    <text>
+        [p]The path curves and ends in a small clearing. Within it are two small huts, nestling in the undergrowth.[/p]
+    </text>
+    <next id="97">You can examine the first, larger hut</next>
+    <next id="8">The second hut</next>
+    <next id="49">Or you can ignore both of them and take the other path, leading down to a door</next>
+  </p>
+  <p id="102">
+    <text>
+        [p]The door opens easily and you enter a room which appears empty. Leading up from the other side of the room is a flight of stairs.[/p]
+    </text>
+    <next id="165" pos="1">You can take these if you wish</next>
+    <itemCheck type="section" id="36">
+      <dontHave>
+        <next id="36" pos="2">Or leave the room and take the opposite door if you haven’t already</next>
+      </dontHave>
+    </itemCheck>
+    <next id="50" pos="3">Or continue up the corridor</next>
+  </p>
+  <p id="103">
+    <text>
+        [p]You slice the denrec with your sword, and it suddenly explodes! Its blood spatters on your sword, and you realise it is acid! Fortunately, the magic of your sword resists the acid and you wipe it off on the bed. You decide now to put the cloak on.[/p]
+    </text>
+    <next id="25"></next>
+  </p>
+  <p id="104">
+    <text>
+        [p]With great effort, you shift the capstone. It reveals an alcove. Standing within it is a deathly pale human corpse.[/p]
+    </text>
+    <next id="22">At least, it seems to be a corpse, but the head swivels round to look at you! You may attack it</next>
+    <next id="136">Or try to talk to the thing</next>
+    <next id="70">Or push the capstone back quickly</next>
+  </p>
+  <p id="105">
+    <text>
+        [p]Before you leave the room you may eat. Afterwards you must decide which way you want to continue.[/p]
+    </text>
+    <canEat />
+    <next id="138">You   can   leave   the   room   by   the   door you   came   through</next>
+    <next id="149">Or   the other   door</next>
+  </p>
+  <p id="106">
+    <text>
+        [p]The passageway beyond the door is painted black. It heads westward, then ends at another door. You listen but hear nothing, so you open the door, to reveal another room with a door in the northern wall. Standing there is a man swathed in a black cloak who you recognise immediately as Anakendis. He grins a wicked grin at you, and says mockingly “Welcome, adventurer. I see you have penetrated to my Inner Sanctum. No matter; you will get no further.”[/p]
+    </text>
+    <next id="83">Do you attack him immediately</next>
+    <next id="38">Look through your backpack for something to use</next>
+    <next id="57">Or try to escape</next>
+  </p>
+  <p id="107">
+    <text>
+        [p]You look through the book, and discover that the catacombs have shrunk considerably since they were first exca-vated. It says that Anakendis himself lairs across a bottomless chasm. This chasm can be crossed because a net, almost invisible, spans it. This net must be reached, then crossed. That is about all it tells you.[/p]
+    </text>
+    <next id="112"></next>
+  </p>
+  <p id="108">
+    <text>
+        [p]The passageway continues northwards, and after a short time reaches another door in the east wall.[/p]
+    </text>
+    <next id="112">To open this</next>
+    <next id="50">If you want to continue up the passageway</next>
+  </p>
+  <p id="109">
+    <text>
+        [p]You just manage to grab the edge of the floor,   and   haul   yourself   up.   The   imp suddenly leaps at you and attacks.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="8" />
+    </fight>
+    <next id="74"></next>
+  </p>
+  <p id="110">
+    <text>
+        [p]As you hit it, the denrec suddenly explodes! Its blood seeps down your sword, and you hear a fizzing sound. With a shock of horror you realise the denrec’s blood is acidic, and your sword is being eaten away! You can no longer use this weapon and must find another one.[/p]
+    </text>
+    <loseItem id="1001" />
+    <next id="162"></next>
+  </p>
+  <p id="111">
+    <text>
+        [p]Examining the pedestal you detect a small lever, which you pull. A small flap drops open to reveal a tiny space, which perhaps once held a jewel or some other valuable object. It is now, however, empty. You will have to try one of the doors:[/p]
+    </text>
+    <next id="84">North door</next>
+    <next id="43">East door</next>
+    <next id="72">West door</next>
+  </p>
+  <p id="112">
+    <text>
+        [p]The door opens easily to reveal a room which seems to be a comfortable lounge. On the west wall is a large fireplace and in front of this is a chair, with a skeleton slumped on it. There is also a bookcase nearby. You may now:[/p]
+    </text>
+    <itemCheck type="section" id="147">
+      <dontHave>
+        <next id="147">Examine the fireplace</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="90">
+      <dontHave>
+        <next id="90">Look at the bookcase</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="66">
+      <dontHave>
+        <next id="66">Examine the skeleton</next>
+      </dontHave>
+    </itemCheck>
+    <next id="50">Leave the room</next>
+  </p>
+  <p id="113">
+    <text>
+        [p]The door is jammed but yields to a good push; it swings open, depositing you in a large cave. Near the door on the opposite side to the entrance is a pile of bones and rotting meat.[/p]
+    </text>
+    <next id="142">To examine this</next>
+    <next id="18">To pass straight through the room</next>
+  </p>
+  <p id="114">
+    <text>
+        [p]You sit on the broom and fly off across the chasm. Just as you come within reaching distance of the exit on the other side you hit something – you realise it is a net slung across the chasm.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>[p]You hang on to the net.[/p]</text>
+        <next id="11"></next>
+      </success>
+      <failure>
+        <next id="42"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="115">
+    <text>
+        [p]Anakendis is vulnerable only to magical weapons, due to his intensely evil nature. Since you are not using a magical weapon, you will not be able to wound Anakendis and you had better try to escape.[/p]
+    </text>
+    <next id="57"></next>
+  </p>
+  <p id="116">
+    <text>
+        [p]The walls of the pit are quite rough at the bottom, but after climbing about ten feet the walls become very smooth and are unclimbable. You slowly descend the walls.[/p]
+    </text>
+    <next id="117">You can now either go north</next>
+    <next id="146">Or south</next>
+  </p>
+  <p id="117">
+    <text>
+        [p]The passageway turns east, then south, then east again before narrowing and coming eventually to a blank wall.[/p]
+    </text>
+    <next id="139">You may search this wall for secret passages</next>
+    <next id="146">Or return to the pit and take the southern passage</next>
+  </p>
+  <p id="118">
+    <text>
+        [p]The voice is getting impatient. “Are you coming down or not? If not, kindly do not waste any more time and go about your own business.”[/p]
+    </text>
+    <next id="169">Do you go down the well</next>
+    <next id="89">Or leave the room</next>
+  </p>
+  <p id="119">
+    <random>
+      <result max="3" min="1">
+        <text>
+            [p]The zombie does not believe you and attacks.[/p]
+        </text>
+        <next id="22"></next>
+      </result>
+      <result max="6" min="4">
+        <text>
+            [p]It’s not sure and hesitates, giving you time to replace the capstone. Add 1 [span class="ffAttribute"]LUCK[/span] point[/p]
+        </text>
+        <add amount="1" to="luck" />
+        <next id="70"></next>
+      </result>
+    </random>
+  </p>
+  <p id="120">
+    <text>
+        [p]The passage leads westwards and opens out after a short time into a small study. There is an empty bookcase, and a desk which looks much more promising.[/p]
+    </text>
+    <next id="191">You can examine this if you want</next>
+    <next id="81">Or decide not to bother and leave the room</next>
+  </p>
+  <p id="121">
+    <text>
+        [p]The passage heads east for quite a while, then turns north. On the corner is a thick wooden door. Written on the door in blood are two words; ‘Keep Out’.[/p]
+    </text>
+    <next id="70">To open it</next>
+    <next id="108">To continue up the passageway</next>
+  </p>
+  <p id="122">
+    <text>
+        [p]The rope is heavy and its movement is hampered by the sand, but after much sweating and heaving you find the other end. Attached to it is a box.
+    </text>
+    <itemCheck type="section" id="198">
+      <have>
+        <text>This box will be empty, so you ignore it and reach the exit.[/p]</text>
+      </have>
+      <dontHave>
+        <text>When opened, the box reveals a [span class="takeItem" data-id="3010" data-amount="1"]key[/span] carved out of a solid diamond, which you pocket.[/p]</text>
+      </dontHave>
+    </itemCheck>
+    <next id="144"></next>
+  </p>
+  <p id="123">
+    <text>
+        [p class="inlineImage"][img src="resources/wm6/123.jpg" /][/p]
+        [p]The two Walking Mouths attack at the same time.[/p]
+        [p]You may escape in the normal way, but both Walking Mouths bite at you before you leave, so you lose 4 [span class="ffAttribute"]STAMINA[/span] points.[/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="12" />
+      <enemy id="13" />
+      <fleeing after="0" />
+      <flee>
+        <next id="18"></next>
+      </flee>
+      <win>
+        <next id="85"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="124">
+    <text>
+        [p]The hound-master seems quite pleased to tell you all this information and you realise Anakendis must have treated him very badly over the years. He tells you that the Chronicles must be cast into the Chasm which you have crossed. You thank him for his information and leave, past the dead hounds into the pedestal room.[/p]
+    </text>
+    <next id="151"></next>
+  </p>
+  <p id="125">
+    <text>
+        [p]As you examine the stone, it pulses brighter but reveals no secrets to you.[/p]
+    </text>
+    <next id="192">To touch the stone</next>
+    <next id="169">To travel down into the well</next>
+    <next id="78">To examine the well further</next>
+    <next id="89">To leave the room</next>
+  </p>
+  <p id="126">
+    <text>
+        [p]You turn round to leave the cave, but suddenly a large block of ice comes flying out at your head! You leap to avoid it.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>[p]It misses you. Turning round, you see the creature who threw the ice. It is a tall, white, scaly humanoid: an Ice Warrior!   You   have   no   chance   to escape and must fight.[/p]</text>
+      </success>
+      <failure>
+        <text>[p]It hits you and you lose 3 [span class="ffAttribute"]STAMINA[/span] points. Turning round, you see the creature who threw the ice. It is a tall, white, scaly humanoid: an Ice Warrior!   You   have   no   chance   to escape and must fight.[/p]</text>
+        <add amount="-3" to="stamina" />
+      </failure>
+    </test>
+    <next id="80"></next>
+  </p>
+  <p id="127">
+    <empty />
+  </p>
+  <p id="128">
+    <text>
+        [p]You    throw    your    shoulder    against    the door,   and   it   bursts   open   with   a   crash. You  enter   the   room   beyond   it.[/p]
+    </text>
+    <next id="9"></next>
+  </p>
+  <p id="129">
+    <text>
+        [p]You place your sword under the lid and lever it upwards. The lid flies open easily. Within the chest are two small objects – an [span class="takeItem" data-id="3008" data-amount="1"]emerald key[/span], which you pocket, and a small golden ring.[/p]
+    </text>
+    <next id="175">You can put this ring on</next>
+    <next id="19">Or examine it further</next>
+    <next id="9">If you do neither of these, pocket the key and choose another chest</next>
+  </p>
+  <p id="130">
+    <text>
+        [p]The capstone moves after a great effort on your part, revealing behind it a small alcove. Standing within it is a rotting corpse. You prod it with your sword, but to your relief it is inanimate. Hanging around its neck is a silver amulet, which you can take.[/p]
+    </text>
+    <next id="150">If you want to take it</next>
+    <next id="70">If you want to replace the capstone</next>
+  </p>
+  <p id="131">
+    <text>
+        [p]The    astromancer    has    cast    a    darkness spell.   From   now   on,   all   your   rolls   for Attack   Strength    must    be reduced by 2, because you cannot see as well in the dark. The astromancer can see in the dark – do not give this penalty to him![/p]
+    </text>
+    <gatherItem id="4001" />
+    <next id="33"></next>
+  </p>
+  <p id="132">
+    <text>
+        [p]The passage leans north but gets narrower and narrower until you are reduced to a crawl. The passage eventually ends at a small door which you try, but find locked. There is no way you can break it down in this small place, so you return to the door with the barred window.[/p]
+    </text>
+    <itemCheck type="section" id="141">
+      <have>
+        <text>[p]You return to the place where you met Granzork and go north.[/p]</text>
+        <next id="3"></next>
+      </have>
+      <dontHave>
+        <next id="141">You can look through the door if you wish</next>
+        <next id="3">Or return to the place where you met Granzork and go north</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="133">
+    <text>
+        [p]You try desperately to reach the edge, but don’t quite make it and fall awkwardly to the bottom, losing 4 [span class="ffAttribute"]STAMINA[/span] points. You hear the imp laughing at the top of the ladder.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <next id="112"></next>
+  </p>
+  <p id="134">
+    <text>
+        [p]The    man    is    fairly    bad-tempered    and you   aren’t   going   to   get   much   out   of him. He suddenly asks you why you are here.[/p]
+    </text>
+    <next id="75">Do you ignore his question and ask him about the caves</next>
+    <next id="187">Or answer it by saying you are a food inspector</next>
+    <next id="88">Or that you have come to choose some food</next>
+  </p>
+  <p id="135">
+    <text>
+        [p]You try the keys. One of them turns, but as you try to make the other turn, two small darts shoot into your hand. You can feel your vision clouding and realise the darts have injected a deadly poison … Your adventure is over. Try a different combination of keys next time you get here![/p]
+    </text>
+    <death />
+  </p>
+  <p id="136">
+    <text>
+        [p]You try to talk to the zombie but he keeps repeating the words ‘My long sleep has been disturbed.’ Suddenly he asks you why you moved the stone.[/p]
+    </text>
+    <next id="22">You may attack the thing now</next>
+    <next id="60">You can answer that you wanted to see</next>
+    <next id="119">You can say you were under orders to move it</next>
+  </p>
+  <p id="137">
+    <text>
+        [p]Using the boots, you leap across towards the exit on the far side of the chasm. Just as you get within touching distance of it, you hit something and realise it is a net, slung across the chasm.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]You hang on.[/p]
+        </text>
+        <next id="11"></next>
+      </success>
+      <failure>
+        <test against="luck">
+          <success>
+            <next id="42"></next>
+          </success>
+          <failure>
+            <next id="94"></next>
+          </failure>
+        </test>
+      </failure>
+    </test>
+  </p>
+  <p id="138">
+    <text>
+        [p]You go back to the room with the pedestal.[/p]
+    </text>
+    <itemCheck type="section" id="84">
+      <have>
+        <text>
+            [p]You decide to continue west.[/p]
+        </text>
+        <next id="72"></next>
+      </have>
+      <dontHave>
+        <next id="84">You   may now try the north door</next>
+        <next id="72">Or the west door</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="139">
+    <text>
+        [p]You discover a section of the wall which sounds more hollow than the rest, and push it open. It leads to a very small cave which you examine, and find nothing except a door in the south wall.[/p]
+    </text>
+    <next id="186">If you enter</next>
+    <next id="146">If you leave the way you came, returning to the pit and going south</next>
+  </p>
+  <p id="140">
+    <text>
+        [p]You move a cloak to put it on, but suddenly a small, fat, green bird flies out and starts flapping around you, pecking! It is a Denrec! Resolve the combat:[/p]
+    </text>
+    <fight type="single">
+      <enemy id="21" />
+    </fight>
+    <itemCheck type="items" id="1001">
+      <have>
+        <next id="110"></next>
+      </have>
+      <dontHave>
+        <next id="103"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="141">
+    <text>
+        [p]Looking   through   the   barred   window   in the  door,   you   find   yourself  looking  into a room. The floor of this room is about three feet below the level of the door and is full of sharp spikes! Stepping into the room would have meant certain death. Add 1 [span class="ffAttribute"]LUCK[/span] point for your discovery.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="3">You may now return to the original passage and go north</next>
+    <next id="132">Or try to go up the smaller passage</next>
+  </p>
+  <p id="142">
+    <text>
+        [p]You examine the large pile of bones but before you get very far, you are alerted by a sound nearby. Bursting out of the rotting meat are two WALKING MOUTHS. These are small, pink globular creatures with two small, stumpy legs and huge mouths. They attack.[/p]
+    </text>
+    <next id="123"></next>
+  </p>
+  <p id="143">
+    <text>
+        [p class="inlineImage"][img src="resources/wm6/143.jpg" /][/p]
+        [p]When you reach the fourth round of combat, one of the devil hounds finishes its meal and attacks!
+    </text>
+    <itemCheck type="enemy" id="15">
+      <have>
+        <changeEnemy attribute="fleeAtRound" id="15" set="1000000000" />
+        <text>
+            You must fight them both at once.[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [/p]
+        </text>
+      </dontHave>
+      <after>
+        <fight type="single">
+          <enemy id="15" />
+          <enemy id="17" />
+          <win>
+            <text>
+                [p]Once the two devil hounds are killed, the third one attacks.[/p]
+            </text>
+            <fight type="single">
+              <enemy id="18" />
+            </fight>
+            <next id="99"></next>
+          </win>
+        </fight>
+      </after>
+    </itemCheck>
+  </p>
+  <p id="144">
+    <text>
+        [p]You reach the exit on the other side of the room. It leads to a passage heading northwards for a long way. Eventually it reaches a junction with another passage heading back the way you came. You ignore this and continue northwards.[/p]
+    </text>
+    <next id="10"></next>
+  </p>
+  <p id="145">
+    <text>
+        [p]You return to the bucket that brought you down, and find that it has winched itself back to the top! You can hear the old man behind you, laughing, and you decide to talk to him.[/p]
+    </text>
+    <next id="4"></next>
+  </p>
+  <p id="146">
+    <text>
+        [p]The passageway leads south, then turns east. After a short time, it opens into a very large cave. You enter it. It seems to be the lair of some sort of creature. You turn round to leave and find the creature blocking the exit, and all hope of escape! It is a Dinosaur, and you must fight it.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="5" />
+    </fight>
+    <next id="28"></next>
+  </p>
+  <p id="147">
+    <text>
+        [p]You give the fireplace no more than a cursory examination as it appears uninteresting. As you examine the chimney, however, to your surprise you notice a ladder leading up it! Looking up, you see torchlight flickering at the top.[/p]
+    </text>
+    <next id="15">Do you climb this ladder?</next>
+    <next id="112">Do you not?</next>
+  </p>
+  <p id="148">
+    <text>
+        [p]The hound-master thinks a moment, then says the Chronicles are kept in a small box with two locks. These locks, he says, open to keys, each carved out of one gem. He knows that one lock will yield to a ruby key, but he knows not what the other lock opens to.[/p]
+    </text>
+    <next id="124">You may ask him further about the Chronicles</next>
+    <next id="151">Or thank him for his information and return to the pedestal room</next>
+  </p>
+  <p id="149">
+    <text>
+        [p]The passageway leads south, then turns east, then opens into a room. The room looks like a bedchamber. There is a large bed, with a wardrobe next to it. Paintings hang on the walls and there is a small chest of drawers by the door. You can now:[/p]
+    </text>
+    <itemCheck type="section" id="157">
+      <dontHave>
+        <next id="157" pos="1">Examine the bed</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="39">
+      <dontHave>
+        <next id="39" pos="2">Open the wardrobe</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="76">
+      <dontHave>
+        <next id="76" pos="3">Look at the paintings</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="61">
+      <dontHave>
+        <next id="61" pos="4">Examine the drawers</next>
+      </dontHave>
+    </itemCheck>
+    <next id="138" pos="5">Return to the pedestal room</next>
+  </p>
+  <p id="150">
+    <text>
+        [p]You slip the amulet off the neck of the corpse, but out of the side of the alcove comes a small dart.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]You have avoided the dart.[/p]
+        </text>
+        <gatherItem id="3005" />
+        <next id="70"></next>
+      </success>
+      <failure>
+        <next id="79"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="151">
+    <text>
+        [p]You are back   in   the    pedestal    room.[/p]
+    </text>
+    <itemCheck type="section" id="43">
+      <have>
+        <text>[p]You decide to take the west door.[/p]</text>
+        <next id="72"></next>
+      </have>
+      <dontHave>
+        <next id="43">You   may now   take  the   east   door</next>
+        <next id="72">Or the west door</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="152">
+    <text>
+        [p]You throw your rope at Anakendis, intending to entwine him in its coils. The rope snakes around him and it seems as though you will succeed, but suddenly Anakendis disappears! He reappears after a moment, but this time outside the coils! Grasping the rope, he gives a good pull and you fall to the floor.[/p]
+    </text>
+    <loseItem id="3003" />
+    <next id="44"></next>
+  </p>
+  <p id="153">
+    <text>
+        [p]You smash your sword against the chest again and again but it holds fast. Puzzled, you examine the chest and discover it is just a solid block of wood! No wonder you couldn’t get in.[/p]
+    </text>
+    <itemCheck type="section" id="163">
+      <have>
+        <itemCheck type="section" id="158">
+          <have>
+            <text>
+                [p]You leave the room.[/p]
+            </text>
+            <next id="86"></next>
+          </have>
+          <dontHave>
+            <next id="158">If you want to open the first chest</next>
+            <next id="86">If if you want to leave the room</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="158">
+          <have>
+            <next id="163">If you want to open the second chest</next>
+            <next id="86">If if you want to leave the room</next>
+          </have>
+          <dontHave>
+            <next id="158">If you want to open the first chest</next>
+            <next id="163">If you want to open the second chest</next>
+            <next id="86">If you want to leave the room</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="154">
+    <text>
+        [p]The door opens easily and leads to a vast room. Sunlight shines in through a sizeable hole in the roof, and, fed by this, the room is full of trees. A path leads off from the door and forks after a short time.[/p]
+    </text>
+    <next id="49">The right fork leads to a door which you may go and try</next>
+    <next id="101">The left fork curves away out of sight which you may also take</next>
+    <next id="40">If you distrust the paths you may try and penetrate into the trees</next>
+  </p>
+  <p id="155">
+    <text>
+        [p]As you approach the statue you realise that the ‘room’ beyond is actually a chasm – probably the chasm that the headman told you about! To reach it, however, the statue must be fought.[/p]
+        [p]Any wounds you inflict on it deduct only 1 [span class="ffAttribute"]STAMINA[/span] point due to the hardness of its skin. There is no escaping from this battle.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="11" />
+      <win>
+        <text>
+            [p]Beyond the statue, you can see the ‘room’ is in reality a large chasm – the chasm the headman told you about! It must be crossed.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="64"></next>
+  </p>
+  <p id="156">
+    <text>
+        [p]One of the keys turns, but the other does not. Suddenly, a liquid is squirted out of the top of the chest at your face![/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Luckily the liquid misses your face.[/p]
+        </text>
+        <itemCheck type="item" id="3001">
+          <have>
+            <text>
+                [p]Try another combination of keys.[/p]
+            </text>
+            <next id="17"></next>
+          </have>
+          <dontHave>
+            <text>
+                [p]You sit and weep after getting so far. Look for different keys next time you enter the caves![/p]
+            </text>
+          </dontHave>
+        </itemCheck>
+      </success>
+      <failure>
+        <text>
+            [p]It hits you and you discover it is acid … your adventure is over.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="157">
+    <text>
+        [p]You examine the bed but all you find is a   [span class="takeItem" data-id="gold" data-amount="1"]Gold   Piece[/span]   which   you   pocket.[/p]
+    </text>
+    <next id="149"></next>
+  </p>
+  <p id="158">
+    <text>
+        [p]The chest is not locked, and opens easily. All that is within, however, are [span class="takeItem" data-id="gold" data-amount="10"]ten Gold Pieces[/span]. You search the chest for hidden compartments but find none.[/p]
+    </text>
+    <itemCheck type="section" id="26">
+      <have>
+        <itemCheck type="section" id="163">
+          <have>
+            <text>
+                [p]You leave the room.[/p]
+            </text>
+            <next id="86"></next>
+          </have>
+          <dontHave>
+            <next id="163">If you want to open the second chest</next>
+            <next id="86">If if you want to leave the room</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="163">
+          <have>
+            <next id="26">If you want to open the third chest</next>
+            <next id="86">If if you want to leave the room</next>
+          </have>
+          <dontHave>
+            <next id="163">If you want to open the second chest</next>
+            <next id="26">If you want to open the third chest</next>
+            <next id="86">If you want to leave the room</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <next id="86"></next>
+  </p>
+  <p id="159">
+    <test against="skill">
+      <success>
+        <next id="55"></next>
+      </success>
+      <failure>
+        <text>[p]You have failed so you return to the junction and take the right-hand fork.[/p]</text>
+        <next id="7"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="160">
+    <text>
+        [p]The astromancer waves his hands and a bolt of fire comes shooting at you.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>[p]It misses. Continue the battle.[/p]</text>
+      </success>
+      <failure>
+        <text>[p]It hits you. Lose 4 [span class="ffAttribute"]STAMINA[/span] points. Continue the battle.[/p]</text>
+        <add amount="-4" to="stamina" />
+      </failure>
+    </test>
+    <next id="33"></next>
+  </p>
+  <p id="161">
+    <text>
+        [p]You talk to the man for a while, and he introduces himself as the HOUND-MASTER. You discover that he used to be an inhabitant of Kokbridge who was captured some time ago. He hates Anakendis but cannot find the strength to break free. He will, however, give you any information you need. Do you ask him about:[/p]
+    </text>
+    <next id="73">Anakendis?</next>
+    <next id="148">The Dark Chronicles?</next>
+    <next id="24">Or Traskannd?</next>
+  </p>
+  <p id="162">
+    <text>
+        [p]Having lost your sword, you search the room for another weapon. Looking through the chest of drawers, you find an [span class="takeItem" data-id="1003" data-amount="1"]axe[/span]. This is of inferior quality to your previous weapon, and you must deduct 1 [span class="ffAttribute"]SKILL[/span] point while you use it. You return to the pedestal room.[/p]
+    </text>
+    <next id="138"></next>
+  </p>
+  <p id="163">
+    <text>
+        [p]You   try   to   open   the   chest   but   it   is locked.[/p]
+    </text>
+    <next id="129">You   can   try   to   prise   it   open</next>
+    <next id="9">Or leave the chest alone</next>
+  </p>
+  <p id="164">
+    <text>
+        [p]The book relates various grisly details about the life of Anakendis, but most interesting is the fact that Anakendis has grown very powerful, and is now immune to blows from all non-magical weapons. You replace the book in the rack and may add 1 [span class="ffAttribute"]LUCK[/span] point for the information.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="112"></next>
+  </p>
+  <p id="165">
+    <text>
+        [p]You start to climb up the stairs. When you are about three-quarters of the way up, the stairs suddenly revolve around a central pivot, and deposit you in the pit that they were hiding. You bruise yourself badly – lose 3 [span class="ffAttribute"]STAMINA[/span] points. Taking stock of your surroundings, you discover you are in a deep pit. Passages lead north and south.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <next id="116">You may try to climb out of the pit</next>
+    <next id="117">Leave on the path leading north</next>
+    <next id="146">Or south</next>
+  </p>
+  <p id="166">
+    <text>
+        [p]He   thinks  about   this  for   a   bit,   then   to your relief decides it could be true. Add 1 [span class="ffAttribute"]LUCK[/span] point.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="88"></next>
+  </p>
+  <p id="167">
+    <text>
+        [p]You   throw   the   meat   into   the   chamber. The two devil hounds it lands nearest to start   devouring   it,   but   the   third   decides that you look tastier. You must fight it:[/p]
+    </text>
+    <fight type="single">
+      <enemy id="15" />
+      <win min="4">
+        <next id="143"></next>
+      </win>
+      <win max="3">
+        <next id="188"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="168">
+    <text>
+        [p]Well done! You have defeated the evil Anakendis, and Kokbridge is safe for the moment. However, his Dark Chronicles must still be destroyed, or one of his minions could take over his regime. You leave through the door on the far side of the room.[/p]
+    </text>
+    <next id="37"></next>
+  </p>
+  <p id="169">
+    <text>
+        [p]As you step into the bucket, it starts to move down of its own accord! Alarmed, you try to get out, but it is too late. After a few seconds, the bucket stops and tips, unceremoniously dumping you by a cave entrance. Picking yourself up, you walk into the cave and come out in a room. Sitting in a chair there is an old man. You notice, to your surprise, a chain around his ankles.[/p]
+    </text>
+    <next id="4">You may talk to the man</next>
+    <next id="59">Attack him</next>
+    <next id="145">Or return to the bucket and attempt to go upwards</next>
+  </p>
+  <p id="170">
+    <text>
+        [p]You can see nothing in the hole, so you tentatively place your hand inside. Too late, there is a small prick, and you feel a fire running up your hand. Snatching it out, you see a small spider sitting on your hand. You kill it, but its venom has already been injected! Lose 2 [span class="ffAttribute"]SKILL[/span] points![/p]
+    </text>
+    <add amount="-2" to="skill" />
+    <random diceConfig="2d6">
+      <result max="2" min="2">
+        <text>[p]Lose 2 [span class="ffAttribute"]STAMINA[/span] points.[/p]</text>
+        <add amount="-2" to="stamina" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]Lose 3 [span class="ffAttribute"]STAMINA[/span] points.[/p]</text>
+        <add amount="-3" to="stamina" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Lose 4 [span class="ffAttribute"]STAMINA[/span] points.[/p]</text>
+        <add amount="-4" to="stamina" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Lose 5 [span class="ffAttribute"]STAMINA[/span] points.[/p]</text>
+        <add amount="-5" to="stamina" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Lose 6 [span class="ffAttribute"]STAMINA[/span] points.[/p]</text>
+        <add amount="-6" to="stamina" />
+      </result>
+      <result max="7" min="7">
+        <text>[p]Lose 7 [span class="ffAttribute"]STAMINA[/span] points.[/p]</text>
+        <add amount="-7" to="stamina" />
+      </result>
+      <result max="8" min="8">
+        <text>[p]Lose 8 [span class="ffAttribute"]STAMINA[/span] points.[/p]</text>
+        <add amount="-8" to="stamina" />
+      </result>
+      <result max="9" min="9">
+        <text>[p]Lose 9 [span class="ffAttribute"]STAMINA[/span] points.[/p]</text>
+        <add amount="-9" to="stamina" />
+      </result>
+      <result max="10" min="10">
+        <text>[p]Lose 10 [span class="ffAttribute"]STAMINA[/span] points.[/p]</text>
+        <add amount="-10" to="stamina" />
+      </result>
+      <result max="11" min="11">
+        <text>[p]Lose 11 [span class="ffAttribute"]STAMINA[/span] points.[/p]</text>
+        <add amount="-11" to="stamina" />
+      </result>
+      <result max="12" min="12">
+        <text>[p]Lose 12 [span class="ffAttribute"]STAMINA[/span] points.[/p]</text>
+        <add amount="-12" to="stamina" />
+      </result>
+    </random>
+    <next id="70"></next>
+  </p>
+  <p id="171">
+    <text>
+        [p]The little creature introduces himself as Granzork, a servant of Anakendis. He tells you that his master has been watching your progress and is prepared to offer you the chance to confront him here and now. Granzork tells you to follow him if you accept the offer. Do you accept?[/p]
+    </text>
+    <next id="176">If so</next>
+    <next id="3">If you want to continue   up   the   passageway</next>
+    <next id="179">If you wish to decline Granzork’s offer but follow him anyway, secretly and at a distance, to see where he goes</next>
+  </p>
+  <p id="172">
+    <text>
+        [p]You take a bite of the meat. It is a bit tough because it is raw, but is good stuff nevertheless. You take it and leave the room.[/p]
+    </text>
+    <itemCheck type="section" id="102">
+      <have>
+        <text>[p]You carry on north.[/p]</text>
+        <next id="50"></next>
+      </have>
+      <dontHave>
+        <next id="102">You may now enter the room across the corridor if you haven’t done so already</next>
+        <next id="50">Or go north</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="173">
+    <text>[p]You  take  a  deep breath  and turn  round to   look   at   Granzork,   but   he   has   gone. You    push    the    door    open    and    step inside,    but    your    feet    meet    empty    air and you fall … too late you realise this is a trap, and the floor of this room is not stone, but metal spikes! Your adventure is over.[/p]</text>
+    <death />
+  </p>
+  <p id="174">
+    <text>
+        [p]He   thinks   for   a   moment,   then   declares he   knows   nothing   else.   You   thank   him for   his   information   and   return   to   the pedestal room.[/p]
+    </text>
+    <next id="151"></next>
+  </p>
+  <p id="175">
+    <text>
+        [p]You slip the ring on, but nothing happens. You continue with your search of the chest, but start to feel weak. You look at your ring and see it bloated with blood – it is not a ring at all, but a RING LEECH! You rip it off, but it has drained   so   much   blood   you   have   lost 25% of the [span class="ffAttribute"]STAMINA[/span] you had left! Lose 1 [span class="ffAttribute"]LUCK[/span] point for your bad luck as well.[/p]
+    </text>
+    <add amount="-1" to="luck" />
+    <next id="9"></next>
+  </p>
+  <p id="176">
+    <text>
+        [p]You follow Granzork through a small secret door in the side of the passage. It leads to a long tunnel heading northwest, then it ends at a door, with a much smaller passage heading north. Granzork motions to the door, telling you Anakendis is within.[/p]
+    </text>
+    <next id="173">Do you enter</next>
+    <next id="52">Or have second thoughts and tell Granzork that you have changed your mind</next>
+  </p>
+  <p id="177">
+    <text>
+        [p]You    throw    your    shoulder    against    the door,     and     it     opens     at     the     second attempt. You go through.[/p]
+    </text>
+    <next id="185"></next>
+  </p>
+  <p id="178">
+    <text>
+        [p]You pick up a plank and start to push it over the chasm. Near to the other side, you hit an obstruction, and realise it is a net, slung across the chasm. Gently, you lay the plank on the net and gingerly walk across. Just as you are nearly there, the end of the plank slips off the net and plunges into the chasm. You take a flying leap at the net.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]You grab onto the net.[/p]
+        </text>
+        <next id="11"></next>
+      </success>
+      <failure>
+        <text>
+            [p]You fail to get a decent grip.[/p]
+        </text>
+        <next id="42"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="179">
+    <text>
+        [p]You turn to continue up the passage, but as Granzork leaves, you turn round and follow him stealthily. He goes through a small secret door which leads to a tunnel heading north-west. Eventually it ends at a door with a barred window. Granzork disappears up a much smaller passage to the north.[/p]
+    </text>
+    <next id="141">You may now either look through the window</next>
+    <next id="132">Or try to follow Granzork up the passage</next>
+  </p>
+  <p id="180">
+    <text>
+        [p class="inlineImage"][img src="resources/wm6/180.jpg" /][/p]
+        [p]You lose your grip on the rope and fall into the sand up to your waist. Rising up out of the sand in front of you is the horrible owner of the tentacle – a Sand Squid! Resolve the combat![/p]
+        [p]As you are hampered by the sand, decrease your [span class="ffAttribute"]SKILL[/span] by 2 points for this battle.[/p]
+    </text>
+    <add amount="-2" to="skill" />
+    <fight type="single">
+      <enemy id="14" />
+      <win>
+        <add amount="2" to="skill" />
+      </win>
+    </fight>
+    <next id="2a"></next>
+  </p>
+  <p id="181">
+    <text>
+        [p]You hold up the amulet in front of the statue and it becomes motionless. Add 1 [span class="ffAttribute"]LUCK[/span] point. Beyond it, you can see the ‘room’ is in reality a large chasm – the chasm the headman told you about! It must be crossed.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="64"></next>
+  </p>
+  <p id="182">
+    <text>
+        [p]You   command   the   rope   to   attach   itself to a protuberance on the other side of the chasm, but near to the exit on the far side it ties itself around what appears to be a net hanging across the chasm. You swing across and reach the net safely.[/p]
+    </text>
+    <next id="11"></next>
+  </p>
+  <p id="183">
+    <text>
+        [p]You attempt to talk to Traskannd, to retrieve his old personality, but the will of Anakendis is too strong. He attacks. You will have time to try and escape if you wish.[/p]
+    </text>
+    <next id="63">If you want to try to escape</next>
+    <next id="193">If you want to defend yourself</next>
+  </p>
+  <p id="184">
+    <text>
+        [p]Most of the desk drawers are locked or empty, but one contains some papers dealing with the devil hounds and a person called the ‘hound-master’. You tear the papers up and leave the room.[/p]
+    </text>
+    <next id="105"></next>
+  </p>
+  <p id="185">
+    <text>
+        [p]You go through the door and enter a room with another door at the far end. Near this door stand three huge hounds – they are Devil Hounds![/p]
+    </text>
+    <itemCheck type="item" id="3004">
+      <have>
+        <next id="167">If you want to throw at them some raw meat to distract them</next>
+        <next id="13">If you want to walk in and fight them</next>
+        <next id="151">If you don’t relish the prospect of taking on three of them, you shut the door and try another one</next>
+      </have>
+      <dontHave>
+        <next id="13">You may walk in and fight them</next>
+        <next id="151">Or if you don’t relish the prospect of taking on three of them, you may shut the door and try another one</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="186">
+    <text>
+        [p]The door opens to reveal a short passage leading south to a dead end. You find another secret door here, however, and push it open to reveal a cave. There is one other exit to the west, which you presume leads to the passage heading south from the pit. Standing in the cave is a huge Dinosaur. It sniffs the air, then notices you. You must fight it.[/p]
+        [p]You    cannot    escape    the    fight.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="5" />
+    </fight>
+    <next id="28"></next>
+  </p>
+  <p id="187">
+    <text>
+        [p]The  man  thinks.[/p]
+    </text>
+    <random>
+      <result max="3" min="1">
+        <next id="166"></next>
+      </result>
+      <result max="6" min="4">
+        <next id="87"></next>
+      </result>
+    </random>
+  </p>
+  <p id="188">
+    <text>
+        [p]You finish the first devil hound off before the other two finish their meal, and manage to sneak out of the southern door before they turn their interest back to you.[/p]
+    </text>
+    <next id="151"></next>
+  </p>
+  <p id="189">
+    <text>
+        [p]You kill the Ice Warrior and search the cave. In the place where it was hiding you find a small box, decorated with gold leaf.[/p]
+    </text>
+    <next id="20">You can try and open this</next>
+    <next id="7">If you do not want to try, you leave the cave and return to the junction, this time taking the right-hand fork</next>
+  </p>
+  <p id="190">
+    <text>
+        [p]The alcove is clean and bare. Hanging in the centre, however, is a bell rope. You can pull it if you want, or leave the room.[/p]
+    </text>
+    <next id="199">If you want to pull it</next>
+    <next id="71">If you want to leave through the north door</next>
+    <next id="82">If you want to leave through the west door</next>
+  </p>
+  <p id="191">
+    <text>
+        [p]You examine the desk. Resting on the top under a pile of paper is a [span class="takeItem" data-id="2004" data-amount="1"]potion of strength[/span]. As you pick it up, however, you feel a pain in your thigh and look down to see a gash – lose 4 [span class="ffAttribute"]STAMINA[/span] points. You look up again and see a thin human with a sword. This is no ordinary person, however, but an Astromancer![/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <next id="33"></next>
+  </p>
+  <p id="192">
+    <text>
+        [p]You touch the stone and a voice speaks, as if from nowhere. ‘Yes? Who is that? Kindly give your name.’ You give your name and the voice asks you to come down.[/p]
+    </text>
+    <next id="118">Do you try and speak to the voice further</next>
+    <next id="169">Go down the well as it seems to be asking you to do</next>
+    <next id="89">Or leave the room</next>
+  </p>
+  <p id="193">
+    <text>
+        [p]Resolve this battle:[/p]
+    </text>
+    <fight type="single">
+      <enemy id="20" />
+      <fleeing after="0" />
+      <flee>
+        <next id="63"></next>
+      </flee>
+      <win>
+        <next id="69"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="194">
+    <text>
+        [p]You push Traskannd’s dead body out of the way, feeling sorry for him, as all his actions were controlled by Anaken-dis. Now you are free to examine the room.[/p]
+    </text>
+    <next id="184">Do you examine the desk</next>
+    <next id="32">Or the tapestry</next>
+  </p>
+  <p id="195">
+    <text>
+        [p]The passage leads to a door which opens with an effort, because the room is full of red sand and some of this has drifted against the door. There is an exit on the other side. To reach this you will have to cross the sand.[/p]
+    </text>
+    <next id="198">To examine the sand at your feet</next>
+    <next id="195b">To simply cross the sand</next>
+  </p>
+  <p id="195b" display="195">
+    <text>
+        [p]The passage leads to a door which opens with an effort, because the room is full of red sand and some of this has drifted against the door. There is an exit on the other side. To reach this you will have to cross the sand.[/p]
+        [p]You need to decide how to cross.[/p]
+    </text>
+    <itemCheck type="items" id="3002 or 3003">
+      <have>
+        <itemCheck type="item" id="3002">
+          <have>
+            <next id="53" pos="1">Fly over it on a broom?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <next id="196" pos="2">Swing across it on a magic rope?</next>
+          </have>
+        </itemCheck>
+        <next id="30" pos="3">Simply walk across it?</next>
+      </have>
+      <dontHave>
+        <text>[p]You do not see any other way than to simply walk across it.[/p]</text>
+        <next id="30"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="196">
+    <text>
+        [p]You attach the rope to the roof and swing across to the exit. Halfway across, a huge, green tentacle shoots out of the sand and hits you on the low point of your swing. Lose 2 [span class="ffAttribute"]STAMINA[/span] points.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <test against="luck">
+      <success>
+        <text>[p]You hang on and swing safely to the far side.[/p]</text>
+        <next id="144"></next>
+      </success>
+      <failure>
+        <next id="180"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="197">
+    <text>
+        [p]You   skid,   grab   a   table   leg,   and   just manage    to    avoid    the    fire.    You    turn round to face Traskannd.[/p]
+    </text>
+    <next id="193"></next>
+  </p>
+  <p id="198">
+    <text>
+        [p]You rummage in the sand and uncover a small box. This opens easily and reveals a [span class="takeItem" data-id="3010" data-amount="1"]small key[/span], made out of one diamond. After this you need to decide how to cross.[/p]
+    </text>
+    <itemCheck type="items" id="3002 or 3003">
+      <have>
+        <itemCheck type="item" id="3002">
+          <have>
+            <next id="53" pos="1">Fly over it on a broom?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <next id="196" pos="2">Swing across it on a magic rope?</next>
+          </have>
+        </itemCheck>
+        <next id="30" pos="3">Simply walk across the sand?</next>
+      </have>
+      <dontHave>
+        <text>[p]You do not see any other way than to simply walk across the sand.[/p]</text>
+        <next id="30"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="199">
+    <text>
+        [p]You pull the bell-rope and a bell rings very loudly not so far away. You tense yourself. Nothing appears through either of the doors, but as you scan the room you notice the wall in the alcove beginning to bulge outwards. The bulge grows, and suddenly bursts open to reveal a terrifying crab-like creature – a Macra! Resolve the battle.[/p]
+        [p]The wounds inflicted by the huge claws of the Macra are so terrible you must deduct 3 [span class="ffAttribute"]STAMINA[/span] points instead of the usual 2.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="2" />
+      <win>
+        <text>[p]You may eat Provisions here.[/p]</text>
+      </win>
+    </fight>
+    <canEat />
+    <next id="71">You may leave through the north door</next>
+    <next id="82">Or the west door</next>
+  </p>
+  <p id="200">
+    <text>
+        [p]You try the keys. To your delight, both of them turn! The lid of the chest lifts to reveal a small black book with the title embossed on the cover in gold leaf: ‘The Dark Chronicles of Anakendis’. You take the book out of its case and return to the chasm, where you cast the evil tome into the bottomless depths.[/p]
+        [p]The peaceful village of Kokbridge is now safe from all threat. You return there a hero, to be greeted by the village headman. “You have saved us,” he says. “To you I offer great prizes and treasures, the best that we, the people of Kokbridge, can offer.” He hands you a case containing hundreds of gold pieces, and precious jewelry and gems. “You will be forever welcome in our village. We salute you.” The villagers begin to cheer, and you bathe in the glory of the people you have just saved the people from a grisly end …[/p]
+    </text>
+    <victory />
+  </p>
+</content>
