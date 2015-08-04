@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+
+  <util:constant id="kjkTitle" static-field="hu.zagor.gamebooks.support.bookids.hungarian.KalandJatekKockazat.TITLE" />
+  <util:constant id="kjkzTitle" static-field="hu.zagor.gamebooks.support.bookids.hungarian.KalandJatekKockazatZagor.TITLE" />
+  <util:constant id="kjkzfTitle" static-field="hu.zagor.gamebooks.support.bookids.hungarian.KalandJatekKockazatZagorJatekfuzetek.TITLE" />
+  <util:constant id="fhTitle" static-field="hu.zagor.gamebooks.support.bookids.hungarian.FantaziaHarcos.TITLE" />
+
+  <util:constant id="ffTitle" static-field="hu.zagor.gamebooks.support.bookids.english.FightingFantasy.TITLE" />
+  <util:constant id="wmTitle" static-field="hu.zagor.gamebooks.support.bookids.english.Warlock.TITLE" />
+
+  <util:constant id="afpTitle" static-field="hu.zagor.gamebooks.support.bookids.portugese.AventurasFantasticas.TITLE" />
+  <util:constant id="afbTitle" static-field="hu.zagor.gamebooks.support.bookids.brazilian.AventurasFantasticas.TITLE" />
+
+  <bean class="hu.zagor.gamebooks.content.FfParagraphData" id="ffParagraphData" scope="prototype" p:choices-ref="defaultChoiceSet" />
+  <bean class="hu.zagor.gamebooks.ff.character.FfCharacter" id="ffCharacter" scope="prototype" />
+
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.AddTransformer" id="ffAddTransformer" />
+
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.AttributeTestTransformer" id="ffAttributeTestTransformer" p:attributeTestTransformers-ref="ffAttributeTestTransformers" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.attributetest.AttributeTestLabelTransformer" id="attributeTestLabelTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.attributetest.AttributeTestSuccessTransformer" id="attributeTestSuccessTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.attributetest.AttributeTestFailureTransformer" id="attributeTestFailureTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.attributetest.AttributeTestFailureEvenTransformer" id="attributeTestFailureEvenTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.attributetest.AttributeTestFailureOddTransformer" id="attributeTestFailureOddTransformer" />
+
+  <util:map id="ffAttributeTestTransformers">
+    <entry key="label" value-ref="attributeTestLabelTransformer" />
+    <entry key="success" value-ref="attributeTestSuccessTransformer" />
+    <entry key="failure" value-ref="attributeTestFailureTransformer" />
+    <entry key="failureEven" value-ref="attributeTestFailureEvenTransformer" />
+    <entry key="failureOdd" value-ref="attributeTestFailureOddTransformer" />
+  </util:map>
+
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.FightTransformer" id="ffFightTransformer" p:fightTransformers-ref="ffFightTransformers" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightEnemyTransformer" id="fightEnemyTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightAllyTransformer" id="fightAllyTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightWinTransformer" id="fightWinTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightFleeTransformer" id="fightFleeTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightFleeingTransformer" id="fightFleeingTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightLoseRoundTransformer" id="fightLoseRoundTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightNotWinRoundTransformer" id="fightNotWinRoundTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightAnyRoundTransformer" id="fightAnyRoundTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightWinRoundTransformer" id="fightWinRoundTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightLoseTransformer" id="fightLoseTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightAfterRoundTransformer" id="fightAfterRoundTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightBeforeRoundTransformer" id="fightBeforeRoundTransformer" />
+
+  <util:map id="ffFightTransformers">
+    <entry key="enemy" value-ref="fightEnemyTransformer" />
+    <entry key="ally" value-ref="fightAllyTransformer" />
+    <entry key="win" value-ref="fightWinTransformer" />
+    <entry key="flee" value-ref="fightFleeTransformer" />
+    <entry key="fleeing" value-ref="fightFleeingTransformer" />
+    <entry key="lose" value-ref="fightLoseTransformer" />
+    <entry key="notWinRound" value-ref="fightNotWinRoundTransformer" />
+    <entry key="anyRound" value-ref="fightAnyRoundTransformer" />
+    <entry key="loseRound" value-ref="fightLoseRoundTransformer" />
+    <entry key="winRound" value-ref="fightWinRoundTransformer" />
+    <entry key="afterRound" value-ref="fightAfterRoundTransformer" />
+    <entry key="beforeRound" value-ref="fightBeforeRoundTransformer" />
+  </util:map>
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.market.MarketSaleLabelTransformer" id="marketSaleLabelTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.market.MarketPurchaseLabelTransformer" id="marketPurchaseLabelTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.market.MarketSaleTransformer" id="marketSaleTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.market.MarketPurchaseTransformer" id="marketPurchaseTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.market.MarketAfterTransformer" id="marketAfterTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.market.MarketEmptyHandedTransformer" id="marketEmptyHandedTransformer" />
+  <util:map id="ffMarketTransformers">
+    <entry key="purchaseLabel" value-ref="marketPurchaseLabelTransformer" />
+    <entry key="saleLabel" value-ref="marketSaleLabelTransformer" />
+    <entry key="after" value-ref="marketAfterTransformer" />
+    <entry key="sale" value-ref="marketSaleTransformer" />
+    <entry key="purchase" value-ref="marketPurchaseTransformer" />
+    <entry key="emptyHanded" value-ref="marketEmptyHandedTransformer" />
+  </util:map>
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.InterruptTransformer" id="ffInterruptTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.ChangeEnemyTransformer" id="ffChangeEnemyTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.ChangeItemTransformer" id="ffChangeItemTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.LoseBattleRoundTransformer" id="ffLoseBattleRoundTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.MarketTransformer" id="ffMarketTransformer" p:marketTransformers-ref="ffMarketTransformers" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.CanEatTransformer" id="ffCanEatTransformer" />
+
+  <util:map id="ffExtraTransformers">
+    <entry key="add" value-ref="ffAddTransformer" />
+    <entry key="test" value-ref="ffAttributeTestTransformer" />
+    <entry key="fight" value-ref="ffFightTransformer" />
+    <entry key="interrupt" value-ref="ffInterruptTransformer" />
+    <entry key="changeEnemy" value-ref="ffChangeEnemyTransformer" />
+    <entry key="changeItem" value-ref="ffChangeItemTransformer" />
+    <entry key="loseBattleRound" value-ref="ffLoseBattleRoundTransformer" />
+    <entry key="market" value-ref="ffMarketTransformer" />
+    <entry key="canEat" value-ref="ffCanEatTransformer" />
+  </util:map>
+  <bean id="ffStubTransformers" factory-bean="stubTransformerMerger" factory-method="merge">
+    <constructor-arg index="0" ref="commonStubTransformers" />
+    <constructor-arg index="1" ref="ffExtraTransformers" />
+  </bean>
+
+
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.DefaultBookParagraphTransformer" id="ffRuleBookParagraphTransformer" p:paragraphDataTransformer-ref="ffRuleBookParagraphDataTransformer" />
+  <bean class="hu.zagor.gamebooks.ff.section.FfRuleBookParagraphDataTransformer" id="ffRuleBookParagraphDataTransformer" parent="abstractBookParagraphDataTransformer"
+    p:stubTransformers-ref="ffStubTransformers" />
+  <bean class="hu.zagor.gamebooks.ff.item.FfRuleBookItemTransformer" id="ffRuleBookItemTransformer" />
+  <bean class="hu.zagor.gamebooks.ff.enemy.FfRuleBookEnemyTransformer" id="ffRuleBookEnemyTransformer" />
+
+  <bean class="hu.zagor.gamebooks.ff.section.FfRuleBookParagraphResolver" id="ffRuleBookParagraphResolverL" p:attributeTestDefaultSuccessTypes-ref="ffDefaultAttributeL" />
+  <bean class="hu.zagor.gamebooks.ff.section.FfRuleBookParagraphResolver" id="ffRuleBookParagraphResolverLe" p:attributeTestDefaultSuccessTypes-ref="ffDefaultAttributeLe" />
+
+  <util:constant static-field="hu.zagor.gamebooks.content.command.attributetest.AttributeTestSuccessType.lower" id="attribTestSuccessTypeLower" />
+  <util:constant static-field="hu.zagor.gamebooks.content.command.attributetest.AttributeTestSuccessType.lowerEquals" id="attribTestSuccessTypeLowerEquals" />
+
+  <util:map id="ffDefaultAttributeLe">
+    <entry key="skill" value-ref="attribTestSuccessTypeLowerEquals" />
+    <entry key="luck" value-ref="attribTestSuccessTypeLowerEquals" />
+  </util:map>
+  <util:map id="ffDefaultAttributeL">
+    <entry key="skill" value-ref="attribTestSuccessTypeLower" />
+    <entry key="luck" value-ref="attribTestSuccessTypeLowerEquals" />
+  </util:map>
+
+  <bean class="hu.zagor.gamebooks.domain.BookContentTransformers" id="defaultFfContentTransformers" c:paragraphTransformer-ref="ffRuleBookParagraphTransformer"
+    c:itemTransformer-ref="ffRuleBookItemTransformer" c:enemyTransformer-ref="ffRuleBookEnemyTransformer" />
+
+
+  <bean class="hu.zagor.gamebooks.ff.mvc.book.section.service.FfBookSectionHandlingService" id="ffSectionHandlingService" />
+
+
+  <bean class="hu.zagor.gamebooks.ff.mvc.book.newgame.service.DefaultFfCharacterGenerator" id="defaultFfCharacterGenerator" />
+  <bean class="hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler" id="ffCharacterItemHandler" />
+  <bean class="hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler" id="ffAttributeHandler" />
+  <bean class="hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler" id="ffUserInteractionHandler" />
+  <bean class="hu.zagor.gamebooks.character.handler.enemy.FfEnemyHandler" id="ffEnemyHandler" />
+
+
+  <bean class="hu.zagor.gamebooks.character.handler.FfCharacterHandler" id="ffCharacterHandler" parent="rawCharacterHandler" scope="prototype" p:battleLuckTestParameters-ref="defaultBattleLuckTestParameters">
+    <property name="itemHandler" ref="ffCharacterItemHandler" />
+    <property name="characterGenerator" ref="defaultFfCharacterGenerator" />
+    <property name="attributeHandler" ref="ffAttributeHandler" />
+    <property name="interactionHandler" ref="ffUserInteractionHandler" />
+    <property name="enemyHandler" ref="ffEnemyHandler" />
+  </bean>
+
+  <bean class="hu.zagor.gamebooks.character.handler.luck.BattleLuckTestParameters" name="defaultBattleLuckTestParameters" c:luckyAttackAddition="2" c:luckyDefenseDeduction="1"
+    c:unluckyAttackDeduction="1" c:unluckyDefenseAddition="1" />
+
+
+
+
+
+  <util:map key-type="hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult" value-type="hu.zagor.gamebooks.content.command.fight.stat.StatisticsProvider" id="fightResultStatProviderMap">
+    <entry key="WIN" value-ref="winStatisticsProvider" />
+    <entry key="LOSE" value-ref="loseStatisticsProvider" />
+    <entry key="NOT_WIN" value-ref="notWinStatisticsProvider" />
+    <entry key="TIE" value-ref="tieStatisticsProvider" />
+    <entry key="IDLE" value-ref="idleStatisticsProvider" />
+    <entry key="NOT_IDLE" value-ref="notIdleStatisticsProvider" />
+    <entry key="ALL" value-ref="allStatisticsProvider" />
+  </util:map>
+
+  <bean class="hu.zagor.gamebooks.content.command.fight.FightCommandRoundEventResolver" p:statProviders-ref="fightResultStatProviderMap" />
+
+
+  <bean class="hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommandResolver" id="attributeTestCommandResolver" />
+
+  <bean class="hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandAllySubResolver" id="fightCommandAllySubResolver" />
+  <bean class="hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandBasicSubResolver" id="fightCommandBasicSubResolver" />
+  <bean class="hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSupportedSubResolver" id="fightCommandSupportedSubResolver" />
+
+  <util:map key-type="java.lang.String" value-type="hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResolver" id="fightSubResolvers">
+    <entry key="basic" value-ref="fightCommandBasicSubResolver" />
+    <entry key="ally" value-ref="fightCommandAllySubResolver" />
+    <entry key="supported" value-ref="fightCommandSupportedSubResolver" />
+  </util:map>
+
+  <bean class="hu.zagor.gamebooks.content.command.fight.FightCommandResolver" id="fightCommandResolver" p:subResolvers-ref="fightSubResolvers" />
+
+  <bean class="hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommandResolver" id="changeEnemyCommandResolver" />
+  <bean class="hu.zagor.gamebooks.content.command.changeitem.ChangeItemCommandResolver" id="changeItemCommandResolver" />
+
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckAttributeCommand" id="ffItemCheckAttributeCommand" />
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckValueCommand" id="ffItemCheckValueCommand" />
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckEnemyCommand" id="ffItemCheckEnemyCommand" />
+
+  <util:map id="ffItemCheckStubCommands" key-type="hu.zagor.gamebooks.content.command.itemcheck.CheckType" value-type="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckStubCommand">
+    <entry key="section" value-ref="itemCheckSectionCommand" />
+    <entry key="item" value-ref="itemCheckItemCommand" />
+    <entry key="items" value-ref="itemCheckItemsCommand" />
+    <entry key="enemy" value-ref="ffItemCheckEnemyCommand" />
+    <entry key="skill" value-ref="ffItemCheckAttributeCommand" />
+    <entry key="stamina" value-ref="ffItemCheckAttributeCommand" />
+    <entry key="fear" value-ref="ffItemCheckAttributeCommand" />
+    <entry key="faith" value-ref="ffItemCheckAttributeCommand" />
+    <entry key="gold" value-ref="ffItemCheckAttributeCommand" />
+    <entry key="value" value-ref="ffItemCheckValueCommand" />
+  </util:map>
+
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommandResolver" id="ffItemCheckCommandResolver" p:stubCommands-ref="ffItemCheckStubCommands" />
+  <bean class="hu.zagor.gamebooks.content.command.market.MarketCommandResolver" id="marketCommandResolver" />
+
+  <util:map key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver" id="ffCommandResolvers">
+    <entry key="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommand" value-ref="ffItemCheckCommandResolver" />
+    <entry key="hu.zagor.gamebooks.content.command.userinput.UserInputCommand" value-ref="userInputCommandResolver" />
+    <entry key="hu.zagor.gamebooks.content.command.random.RandomCommand" value-ref="randomCommandResolver" />
+    <entry key="hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand" value-ref="attributeTestCommandResolver" />
+    <entry key="hu.zagor.gamebooks.content.command.fight.FightCommand" value-ref="fightCommandResolver" />
+    <entry key="hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommand" value-ref="changeEnemyCommandResolver" />
+    <entry key="hu.zagor.gamebooks.content.command.changeitem.ChangeItemCommand" value-ref="changeItemCommandResolver" />
+    <entry key="hu.zagor.gamebooks.content.command.market.MarketCommand" value-ref="marketCommandResolver" />
+  </util:map>
+
+  <bean class="hu.zagor.gamebooks.content.command.fight.FightBoundingCommandResolver">
+    <property name="boundingResolvers">
+      <util:map>
+        <entry key="hu.zagor.gamebooks.content.command.random.RandomCommand" value-ref="randomCommandResolver" />
+        <entry key="hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand" value-ref="attributeTestCommandResolver" />
+      </util:map>
+    </property>
+  </bean>
+
+</beans>

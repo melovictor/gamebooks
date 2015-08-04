@@ -1,0 +1,211 @@
+p.ffSmallImage {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+p.ffSmallImage img {
+  max-width: 400px;
+  max-height: 200px;
+}
+
+div#ffGamebookContent .inlineImage img {
+  max-width: 500px;
+  max-height: 670px;
+}
+
+p.sectionTitle {
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 25px;
+}
+
+.ffBackCoverTitle {
+  text-align: center;
+  font-weight: bold;
+}
+
+.ffMainAttribute {
+  text-transform: uppercase;
+  display: block;
+}
+
+.ffInitialMainAttribute {
+  font-style: italic;
+}
+
+div.ffMainAttribute3, div.ffMainAttribute4 {
+  width: 295px;
+  display: inline-block;
+  border: 2px solid black;
+  margin-bottom: 20px;
+  padding: 5px;
+  min-height: 100px;
+  float: left;
+  margin-right: 5px;
+}
+
+div.ffMainAttribute4 {
+  width: 218px;
+  margin-right: 3px;
+}
+
+.ffEquipmentFullWidth {
+  padding: 5px;
+  width: 923px;
+  border: 2px black solid;
+  min-height: 100px;
+  clear: both;
+}
+
+#ffMenu {
+  display: inline-block;
+}
+
+#ffMenu #inventory {
+  display: none;
+}
+
+div.ffMainAttributeValue {
+  font-size: 39px;
+  margin: 12px 0;
+}
+
+.ffDice {
+  height: 21px;
+}
+
+.ffChoiceHidden {
+  display: none;
+}
+
+[data-generator-button] {
+  margin-bottom: 10px;
+}
+
+span[data-enemy-id] {
+  display: inline-block;
+  width: 210px;
+  text-align: right;
+}
+
+span.skillTitle {
+  margin-left: 210px;
+}
+
+span[data-enemy-skill], span[data-enemy-stamina], span[data-enemy-luck],
+  span.staminaTitle, span.skillTitle, span.luckTitle {
+  display: inline-block;
+  width: 90px;
+  text-align: center;
+}
+
+span[data-enemy-selected=true] {
+  font-weight: bold;
+}
+
+span[data-enemy-selected=false], [data-item-provision], [data-item-potion]
+  {
+  cursor: pointer;
+}
+
+#ffEnemyList, #ffLuckSettings {
+  width: 400px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#ffAttackButton {
+  margin-top: 15px;
+  margin-left: 218px;
+}
+
+.ffAttributeTestLabel, .ffRandomLabel {
+  text-align: center;
+}
+
+[data-item-removable="false"] {
+  font-style: italic;
+}
+
+[data-item-equippable="true"] {
+  cursor: pointer;
+}
+
+#ffDefaultPotion, #ffDefaultPotion[disabled] {
+  background-color: transparent;
+  color: black;
+  border: none;
+  font-size: 16px;
+  font-family: Garamond, 'Times New Roman', Courier, serif;
+}
+
+#preFightItems [data-item-id] {
+  color: rgb(156, 13, 14);
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+[data-items][data-offer-for-replacement] [data-item-id]:not([data-item-removable="false"]) {
+  color: rgb(156, 13, 14);
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#marketContent {
+  display: none;
+}
+
+[data-with-market] {
+  display: none;
+}
+
+.marketAvailable [data-with-market] {
+  display: inherit;
+}
+
+[data-market] #marketContent {
+  display: block;
+}
+
+#marketContent [data-id] {
+  display: inline-block;
+  width: 200px;
+}
+
+#marketContent [data-id]:not([data-stock='0']) span {
+  color: rgb(156, 13, 14);
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#marketContent .row:hover {
+  background-color: rgba(255, 166, 6, 0.3);
+}
+
+button[data-market-close] {
+  margin-top: 20px;
+}
+
+.ffAttribute {
+  text-transform: lowercase;
+  font-variant: small-caps;
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#preFightItems {
+  margin-top: 25px;
+  padding-bottom: 5px;
+}
+
+
+div.step {
+  display: none;
+}
+div.step[data-step="1"] {
+  display: block;
+}

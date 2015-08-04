@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="ffGamebookContent" extends="main">
+    <put-attribute name="page.content" value="/WEB-INF/tiles/ruleset/ff/gamebook.jsp" cascade="true" />
+    <put-attribute name="gamebook.command" value="" cascade="true" />
+  </definition>
+
+  <definition name="ffWelcome" extends="ffGamebookContent">
+    <put-attribute name="gamebook.content" value="/WEB-INF/tiles/ruleset/ff/welcome.jsp" cascade="true" />
+    <put-attribute name="gamebook.charpagebar" value="/WEB-INF/tiles/basic/empty.jsp" cascade="true" />
+    <put-attribute name="page.menu" value="/WEB-INF/tiles/ruleset/raw/menu.jsp" cascade="true"/>
+  </definition>
+  <definition name="ffSection.*" extends="ffGamebookContent">
+    <put-attribute name="gamebook.content" value="/WEB-INF/tiles/ruleset/ff/section.jsp" cascade="true" />
+    <put-attribute name="gamebook.charpagebar" value="/WEB-INF/tiles/ruleset/ff/{1}/charpage.jsp" cascade="true" />
+    <put-attribute name="page.menu" value="/WEB-INF/tiles/ruleset/raw/menu.jsp" cascade="true"/>
+  </definition>
+
+  <definition name="ffCharPage.*" template="/WEB-INF/tiles/ruleset/ff/{1}/charpage.jsp" />
+
+  <definition name="ffUserInputCommand.*" extends="ffSection.{1}">
+    <put-attribute name="gamebook.command" value="/WEB-INF/tiles/ruleset/ff/userInput.jsp" cascade="true" />
+  </definition>
+
+  <definition name="ffAttributeTest.*" extends="ffSection.{1}">
+    <put-attribute name="gamebook.command" value="/WEB-INF/tiles/ruleset/ff/attributeTest.jsp" cascade="true" />
+  </definition>
+
+  <definition name="ffRandom.*" extends="ffSection.{1}">
+    <put-attribute name="gamebook.command" value="/WEB-INF/tiles/ruleset/ff/random.jsp" cascade="true" />
+  </definition>
+
+  <definition name="ffFight*.*" extends="ffSection.{2}">
+    <put-attribute name="gamebook.command" value="/WEB-INF/tiles/ruleset/ff/fight/{1}.jsp" cascade="true" />
+  </definition>
+
+  <definition name="ffMarket.*" extends="ffSection.{1}">
+    <put-attribute name="gamebook.command" value="/WEB-INF/tiles/ruleset/ff/market.jsp" cascade="true" />
+  </definition>
+
+</tiles-definitions>
