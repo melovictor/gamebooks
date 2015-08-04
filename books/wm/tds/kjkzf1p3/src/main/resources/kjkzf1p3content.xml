@@ -1,0 +1,2207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd">
+  <p id="back_cover">
+    <text>[p]Egy igazi kalandozónak, bármekkora vagyonra is tegyen szert, sosincs maradása. Hisz nem a gazdagság az, amit keres, a hírnév vagy a hatalom, hanem a kaland, az izgalom, az életveszély. Te sem vagy kivétel. És mikor egy tekercsre bukkansz a sivatag kellős közepén, mely egy rég elveszett, értékes kincsről beszél, nincs maradásod, a keresésére indulsz.[/p]</text>
+    <next id="generate" />
+  </p>
+  <p id="generate" display="Karakter létrehozása">
+    <text>
+      [p][span class="ffAttribute"]Ügyesség[/span]: [span id="ffSkill"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+      [p][span class="ffAttribute"]Életerő[/span]: [span id="ffStamina"]dobj két kockával és adj 12-t a dobott számhoz[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+      [p][span class="ffAttribute"]Szerencse[/span]: [span id="ffLuck"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+      [p]Válassz egy italt:
+      [select id="ffDefaultPotion"]
+      [option value="2001" selected="selected"]Ügyesség Itala[/option]
+      [option value="2002"]Erő Itala[/option]
+      [option value="2003"]Szerencse Itala[/option]
+      [/select]
+      [/p]
+      [button data-generator-button="ff"]Karakter létrehozása[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="Háttértörténet">
+    <text>
+      [p]Réges régen, egy messzi-messzi tájon egy Shanhara nevű dervis pap rálelt egy nagy és gyönyörű gyémántra. Annyira szépséges volt, hogy a világ minden tájáról érkeztek kalandozók és szerencsevadászok, csak hogy megpróbálják elrabolni – egyikük sem járt sikerrel. A gyémánt – melyet a Shanhara Köve néven is ismertek – egy barlangban pihent, és olyan veszedelmes csapdák védték, melyek mindegyikén senki nem volt képes átjutni. A barlang helyét egy idő után elfeledték, és végül már csak a Dervisek Elveszett Barlangjának legendája maradt meg az emberek emlékezetében. Most azonban ráleltél egy tekercsre, mely utasít, hogy keresd meg Shanhara Kövét. Vajon sikerrel jársz, vagy elbuksz?[/p]
+    </text>
+    <gatherItem id="defWpn" />
+    <gatherItem id="1001" />
+    <gatherItem id="2000" amount="5" />
+    <next id="1"></next>
+  </p>
+  <p id="1">
+    <text>
+          [p]Sűrű porfelhő emelkedik fel a domboldal kiszáradt talajáról, miközben lecsúszol róla. Egy nagyobb, lapos sziklaszirtre érkezel. Szép kilátás nyílik innen Alasiyan városára, ami a fenséges Ikernap Sivatag szélénél terül el. Kora délután van, a napok teljes erejükkel tűznek le rád. Óvatosan leülsz a földre és lehúzod poros csizmádat. Hirtelen újra felegyenesedsz – valami hegyeset találtál a földben. Először azt gondolod, az egyik közeli bokor tüskéje lehet az, de miután ásol egy kicsit, kiderül, hogy egy tőr csúcsába ültél bele. Folytatod a keresését, és hamarosan újabb tárgyak bukkannak elő: csontok és egy vért, melyeket jó állapotban őrzött meg a sivatag száraz szélfúvása, és egy kis faláda, melyen a Félszemű Jakor név áll. Felfeszíted a fedelét, és [span class="takeItem" data-id="gold" data-amount="20"]20 Aranytallért[/span], továbbá egy régi pergamentekercset találsz benne, melyen apró, barna, elnyújtott betűs írás áll. Lassan és óvatosan olvasod el a szöveget, és a döbbenettől szóhoz sem tudsz jutni.[/p]
+          [p class="inlineImage"][img src="resources/wm4/1.jpg" /][/p]
+      </text>
+    <next id="107">Ha kutatni kezdesz a szövegben említett Ital után</next>
+    <next id="81">Amennyiben nem foglalkozol vele, és inkább a városba mész</next>
+  </p>
+  <p id="2">
+    <text>
+        [p]A magaslat nem túl széles, de úgy tűnik, kettéosztja a sivatagot. Egyenetlen, homokos utat követsz, ami levezet a gerincről, egyenesen a homokdűnék közé. Rendkívül meleg van – de melyik sivatagban nincs? Hirtelen hangok ütik meg a füled a következő bucka túloldaláról.[/p]
+    </text>
+    <next id="38"></next>
+  </p>
+  <p id="3">
+    <text>
+        [p]Óvatosan elhúzod a sátorlapot és belépsz. Két újabb, félig macska, félig ember teremtményt pillantasz meg odabenn, akik rád támadnak, amint észrevesznek.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="26" />
+      <enemy id="27" />
+      <win>
+        <text>
+            [p]Átkutatod a holttesteket és a sátrat. [span class="takeItem" data-id="gold" data-amount="4"]4 Aranytallért[/span] és egy 10 Arany értékű [span class="takeItem" data-id="3008" data-amount="1"]Ezüst Serleget[/span] találsz.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="85" singleChoiceText="Visszatérsz a gerincre.">Ha most visszatérsz a gerincre</next>
+    <itemCheck type="section" id="55">
+      <dontHave>
+        <next id="55">Hogyha átkutatod a fekete sátrat</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="20">
+      <dontHave>
+        <next id="20">Ha a másik barnássárga sátorhoz lépnél</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="4">
+    <text>
+        [p]Ahogy belépsz a szobába, a férfi felemeli a kezét, rád mutat, és ujja hegyéből villám csap a mellkasodba. Vesztesz 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. – Végezz a behatolóval – utasítja a férfi a Hobgoblint, ami feléd indul. Ez itt igazából egy Thoul, a Troll, Hobgoblin és Ghoul borzalmas keveréke![/p]
+        [p]A lény képes megbénítani téged, ha a csata során négy sikeres támadást hajt végre ellened.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <fight type="single">
+      <enemy id="10" />
+      <loseRound enemy="10" totalCount="4">
+        <text>
+            [p]Ellenfeled megbénított, tehetetlenül nézed, amint kivégez.[/p]
+        </text>
+        <interrupt />
+      </loseRound>
+      <win>
+        <next id="30"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="5">
+    <text>
+        [p]Kisétálsz Alasiyanból. Kezd sötétedni, így találnod kell valami biztonságos helyet. Nem akarod a törvénytelen városban tölteni az éjszakát, így néhány kaptárszerű épület mellett húzod meg magad.[/p]
+    </text>
+    <itemCheck type="section" id="163">
+      <have>
+        <loseItem id="2000" amount="10" />
+      </have>
+    </itemCheck>
+    <itemCheck type="section" id="47">
+      <have>
+        <itemCheck type="gold" id="5">
+          <have>
+            <next id="71">Hogyha el akarsz látogatni a Tolvajok Tanyájára</next>
+            <next id="52">Ha inkább nyugovóra térsz</next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Nyugovóra térsz az éjszakára.[/p]
+            </text>
+            <next id="52"></next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nyugovóra térsz az éjszakára.[/p]
+        </text>
+        <next id="52"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="6">
+    <text>
+        [p]Előveszed hátizsákodból Ylaruam, a Mestermágus Üvegszemét és a segítségével végigpásztázod a vízmosást. Az árnyak közepette három sötét ruhás Nomádot látsz ólálkodni. Gondosan ügyelve rá, hogy messze elkerüld a lesben állókat, továbbmész az úton, és végül magad mögött hagyod őket. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="127"></next>
+  </p>
+  <p id="7">
+    <text>
+        [p]A folyosó oldalához veted magad, és lélegzetvisszafojtva figyeled, ahogy a hatalmas szikla centikkel az orrod előtt elgurul. Nagyon nagy szerencséd volt. A golyó folytatja pusztító menetelését, beleütközik a mögötted álló falba, majd visszaindul! [/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="200"></next>
+      </success>
+      <failure>
+        <next id="72"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="8">
+    <text>
+        [p]A helyiség meglehetősen nagy. A padlót fekete és fehér lapok borítják, a veled szemben lévő fal mentén pedig szobrok állnak, kezükben túlságosan is élethű íjakkal és nyilakkal. A terem közepén, egy állványon pihen Shanhara Köve.[/p]
+    </text>
+    <next id="84">Hogyha csak a fehér lapokra lépve próbálsz eljutni a szoba közepéig</next>
+    <next id="51">Ha csak a feketékre lépnél</next>
+  </p>
+  <p id="9">
+    <text>
+      [p]A Bronz Kulcs tökéletesen beleillik a zárba, és el is fordul. Óvatosan benyitsz az ajtón. Odabenn egy hosszú folyosót veszel észre, mely egy felfelé vezető kőlépcsősorban
+      végződik. A falon egy ajtót látsz. Hallgatózol. A túloldalról érdes nevetés és hamis éneklés hangjai szűrődnek át.[/p]
+    </text>
+    <next id="166">Ha kinyitod az ajtót</next>
+    <next id="45">Ha felmész az emeletre</next>
+  </p>
+  <p id="10">
+    <text>
+        [p]Csupasz pengével esel végső ellenfelednek, Kuperannak, a Tűzóriásnak, a Homok Fejedelmének. Szörnyen erős, vigyázz vele![/p]
+    </text>
+    <fight type="single">
+      <enemy id="44" />
+      <win>
+        <text>
+            [p]Ismét Griffined nyergébe pattansz.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="182"></next>
+  </p>
+  <p id="11">
+    <text>
+        [p]Tisztára törlöd kardodat. Adj 2-t [span class="ffAttribute"]SZERENCSE[/span] pontjaidhoz a győzelemért. Ha akarsz, most ehetsz. Ezután ismét fölmászhatsz a gerincre, hogy ott folytasd utad. A másik lehetőséged, hogy átkutatod a sátrakat.[/p]
+    </text>
+    <add amount="2" to="stamina" />
+    <canEat />
+    <next id="85">Ha felmászol a gerincre</next>
+    <next id="55">Ha a fekete sátorban néznél körül</next>
+    <next id="3">Ha az első barnássárgában</next>
+    <next id="20">Hogyha a másodikban</next>
+  </p>
+  <p id="12">
+    <text>
+        [p]A legkülönbözőbb szörnyeket látod idelenn: Nomádok, Bogármedvék, Goblinok, Hobgoblinok, macskaszerű humanoidok és egyéb borzalmas teremtmények gyűltek öszsze. Az egyik sarokban egy hatalmas bronzszobor áll. – Üdvözöllek, idegen – harsan fel egy hang. – Kuperan vagyok, a Homok Fejedelme. – Ahogy oldalra fordulsz, egy élő Óriással találod magad szembe, aki egy kőszéken ül. Váratlanul megragad az egyik Bogármedve Őr, és előre vonszol téged.[/p]
+    </text>
+    <next id="42"></next>
+  </p>
+  <p id="13">
+    <text>
+        [p]Az Ikernap Sivatag csillogó, barna homokjában menetelsz a könnyebbik úton. A talaj nem túl szilárd, és többször is bokáig sülylyedsz. A szél úgy süvít, mint egy fenevad, ami az utolsó perceit rúgja, de nem akarja kilehelni a lelkét. Hamarosan már azt kívánod, bár Alasiyanban maradtál volna. Majd a következő dűnék mögül hangokat hallasz.[/p]
+    </text>
+    <next id="38"></next>
+  </p>
+  <p id="14">
+    <text>
+        [p]A dombok felé veszed az irányt. Az út nehéz, de legalább a szél fúj. Hirtelen rémisztő vijjogás tölti be a levegőt, és ahogy hátra fordulsz, egy Óriás Karvalyt látsz feléd közeledni![/p]
+        [p class="inlineImage"][img src="resources/wm4/14.jpg" /][/p]
+    </text>
+    <random>
+      <result max="5" min="1">
+        <next id="122"></next>
+      </result>
+      <result max="6" min="6">
+        <next id="176"></next>
+      </result>
+    </random>
+  </p>
+  <p id="15">
+    <text>
+        [p]Magad mögött hagyod a teret és folytatod a sétát. Hamarosan eléred Alasiyan külvárosi részét. Az út jobb oldalán az egyik épületen egy táblát látsz, melyen az „Egy Biztos Fal Fogadó” felirat díszeleg.[/p]
+    </text>
+    <next id="77">Ha be szeretnél lépni</next>
+    <next id="5">Ha inkább elhagynád Alasiyant</next>
+  </p>
+  <p id="16">
+    <text>
+        [p]Összeszeded a dolgaidat – ha szedtél, akkor Gyémántokat is –, és a levegőbe szökkensz. Első ugrásod egy kis sziklaszegélyre juttat téged, a második pedig a szikla tetejére. Megvárod, míg az Ölyv ismét elhagyja a fészkét, ezután óvatosan újra megközelíted.[/p]
+    </text>
+    <next id="63"></next>
+  </p>
+  <p id="17">
+    <text>
+        [p]Üdvözlöd a karaván vezetőjét. Ők szerencsére törvénytisztelő kereskedők, akiket tucatnyi fegyveres védelmez. Ha akarsz, most ehetsz. Megkérdezed a férfiakat, mit tudnak Shanhara Kövéről. – Jobb lenne, ha a Hegyi Remetét kérdeznéd erről – szól egyikük –, bár amennyire tudom, a fickó teljesen őrült.[/p]
+    </text>
+    <canEat />
+    <next id="14">Ha megköszönöd a kereskedők segítségét és letérsz az útról, hogy a dombok felé folytasd a keresést</next>
+    <next id="109">Ha úgy gondolod, hogy be akarnak csapni, ezért rájuk akarsz támadni</next>
+  </p>
+  <p id="18">
+    <text>
+        [p]Poros utcákon sétálsz végig. Végül egy széles, nyílt térre érkezel, melynek közepén egy kút áll. Ha akarsz, leülhetsz a szélén lévő lépcsőkre és ehetsz. A tér egyik oldalán egy, a többinél jóval nagyobb épület áll, bejárata mellett két bőrvértet viselő Hobgoblin áll őrt.[/p]
+    </text>
+    <canEat />
+    <next id="146">Hogyha oda akarsz menni és szemügyre szeretnéd venni</next>
+    <next id="15">Ha úgy gondolod, jobban jársz, ha nem foglalkozol vele</next>
+  </p>
+  <p id="19">
+    <text>
+        [p]Kuperan dühösen felordít, és valamit suttog a Sárkánya fülébe. A hatalmas bestia szélesre tátja a száját és egy villámgömböt lő ki, egyenesen feléd. Griffineddel együtt a talajra hullotok. Egyikőtök sem mozdul többé. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="20">
+    <text>
+        [p]Félretolod a sátorlapot, és belépsz. Odabenn egy újabb, félig ember, félig macska teremtménnyel találod magad szemben. A férfi rád vicsorog és kimereszti karmait.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="28" />
+      <win>
+        <text>
+            [p]Egy 15 Aranytallér értékű [span class="takeItem" data-id="3007" data-amount="1"]Rongyszőnyegre[/span] bukkansz.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="85" singleChoiceText="Visszatérsz a gerincre.">Ha most visszatérsz a gerincre</next>
+    <itemCheck type="section" id="55">
+      <dontHave>
+        <next id="55">Hogyha átkutatod a fekete sátrat</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="3">
+      <dontHave>
+        <next id="3">Ha inkább a másik barnássárgához lépnél</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="21">
+    <text>
+        [p]Túlságosan messzire jutottál ahhoz, hogy most, az utolsó akadály előtt csak úgy feladd. Kiveszel egy tárgyat a hátizsákodból, és ahogy lekapod róla Shanhara kövét, úgy gyorsan a helyére teszed a cserének szánt dolgot.[/p]
+        [div data-market=""][/div]
+    </text>
+    <market mustGiveUp="1">
+      <sale price="0" stock="1" id="1001" />
+      <sale price="0" stock="1" id="1002" />
+      <sale price="0" stock="1" id="1003" />
+      <sale price="0" stock="1" id="1004" />
+      <sale price="0" stock="1" id="2000" />
+      <sale price="0" stock="1" id="2001" />
+      <sale price="0" stock="1" id="2002" />
+      <sale price="0" stock="1" id="2003" />
+      <sale price="0" stock="1" id="3001" />
+      <sale price="0" stock="1" id="3002" />
+      <sale price="0" stock="1" id="3003" />
+      <sale price="0" stock="1" id="3004" />
+      <sale price="0" stock="1" id="3005" />
+      <sale price="0" stock="1" id="3006" />
+      <sale price="0" stock="1" id="3007" />
+      <sale price="0" stock="1" id="3008" />
+      <sale price="0" stock="1" id="3009" />
+      <sale price="0" stock="1" id="3010" />
+      <sale price="0" stock="1" id="3011" />
+      <sale price="0" stock="1" id="3012" />
+      <sale price="0" stock="1" id="3013" />
+      <sale price="0" stock="1" id="3014" />
+      <after>
+        <gatherItem id="3015" />
+      </after>
+    </market>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Sikerül kijutnod a teremből anélkül, hogy bekapcsolódna egy csapda.[/p]
+        </text>
+        <next id="48"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Vészjósló kattogásokat hallasz, és egy fal ereszkedik le a bejárat helyén, örökre a terembe zárva téged. Kalandod itt véget ér.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="22">
+    <text>
+        [p]Ahogy a különös csapat felé közeledsz, az egyikük hozzád lép. Az Ikernap tetoválását viseli. – Üdvözöllek, idegen – szólít meg a Nomád. – Amint látod, van egy kis problémánk. Nem tudjuk rávenni a Homokmászónkat, hogy idefenn maradjon. Segítenél rajtunk?[/p]
+    </text>
+    <next id="64">Ha megpróbálsz segíteni a sivatag lakóinak</next>
+    <next id="97">Ha inkább a különös teremtménnyel próbálnál meg beszélni</next>
+  </p>
+  <p id="23">
+    <text>
+        [p class="inlineImage"][img src="resources/wm4/23.jpg" /][/p]
+        [p]Óvatosan lépsz be. A vaskapu borzalmas nyikorgás kíséretében csapódik be mögötted! A sötétből két hatalmas, szőrös, lemezvértet viselő, goblinszerű bestia lép elő, kezükben csatafejszékkel.[/p]
+    </text>
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="132"></next>
+      </have>
+      <dontHave>
+        <fight type="single">
+          <enemy id="32" />
+          <enemy id="33" />
+        </fight>
+        <next id="189"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="24">
+    <text>
+        [p]Fél óra elteltével visszatér az egyik Városi Őr, és a fiatal férfival együtt szabadon enged. Felvezet a lépcsőn, az írnok visszaadja hátizsákodat, majd a székbe nyomnak, ahol kénytelen vagy válaszolni néhány, személyeddel kapcsolatos kérdésükre. Ha akarsz, most elfogyaszthatsz egy adag élelmet. Varázsitalodat elkobozzák, éppen ahogy a másik alak megjósolta. Vesztesz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. Mikor az írnok végzett, szabadon távozhatsz.[/p]
+    </text>
+    <hideItem id="2001" />
+    <hideItem id="2002" />
+    <hideItem id="2003" />
+    <canEat />
+    <add amount="-1" to="luck" />
+    <next id="59"></next>
+  </p>
+  <p id="25">
+    <text>
+        [p]Lázasan kutatsz a fészekben a Dervisek Elveszett Barlangjának térképe után, mikor egy hatalmas szárny csapkodása miatt kénytelen vagy félbehagyni munkádat. Visszatért az anyamadár – egy Óriás Ölyv![/p]
+    </text>
+    <fight type="single">
+      <enemy id="46" />
+      <win>
+        <next id="63"></next>
+      </win>
+      <loseRound enemy="46" totalCount="3">
+        <interrupt />
+        <next id="91"></next>
+      </loseRound>
+    </fight>
+  </p>
+  <p id="26">
+    <text>
+        [p]A tűzbe nyúlsz a tőrért. A lángok sajnos valódiak, és az égés miatt 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot vesztesz, de sikerül kikapnod a fegyvert. A nyelét macska formára faragták ki, és ékkövekkel borították be. Ez a Dervisölő Tőrök egyike. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot.[alt][/alt][/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <gatherItem id="1004" />
+    <next id="85" singleChoiceText=" Kisétálsz a sátorból és visszamászol a gerincre, hogy ott folytasd az utad.">Ha most kisétálsz a sátorból és visszamászol a gerincre, hogy ott folytasd az utad</next>
+    <itemCheck type="section" id="3">
+      <dontHave>
+        <next id="3">Ha az első barnássárga sátrat kutatnád át</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="20">
+      <dontHave>
+        <next id="20">Ha a második barnássárga sátrat kutatnád át</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="27">
+    <text>
+        [p]Átlendülsz a kötélen – az azonban kirojtosodott, és elszakad a súlyod alatt. Zuhanni kezdesz![/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Sikerül megkapaszkodnod a gödör szélében, úgyhogy gyorsan felhúzod magad, majd folytatod a menekülést.[/p]
+        </text>
+        <next id="79"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Semmit sem tehetsz, hogy megakadályozd a halálesést. Kalandod itt véget ér.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="28">
+    <text>
+        [p]Megpróbálsz újból elaludni, de képtelen vagy az Éjghoul bűzlő teteme mellett pihenni, így felkelsz, és egy verembe húzod. Ha akarsz, ehetsz, mielőtt ismét megkísérelnéd az alvást – ami végül sikerül is. Másnap kora délelőtt ébredsz.[/p]
+    </text>
+    <canEat />
+    <next id="57"></next>
+  </p>
+  <p id="29">
+    <text>
+        [p]Nem bízol az ég természetes fényében, úgyhogy megkerülöd a foltot, és a túloldalon folytatod az utad. Egy mély veremhez érkezel. Egy kötél lóg le a barlang plafonjáról, épp olyan magasságban, hogy kényelmesen elérhesd.[/p]
+    </text>
+    <itemCheck type="item" id="3011">
+      <have>
+        <next id="174"></next>
+      </have>
+      <dontHave>
+        <next id="124">Ha megpróbálod átugrani a vermet</next>
+        <next id="102">Ha a kötélen próbálsz meg átlendülni</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="30">
+    <text>
+        [p]A férfit meglepi győzelmed. Gumpas néven mutatkozik be, ő Alasiyan Mágus-Kormányzója. Aztán zengő nevetés közepette ismét rád mutat, a következő pillanatban pedig egy tűzgolyó indul feléd.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]A lövedék elvét téged.[/p]
+        </text>
+      </success>
+      <failure>
+        <text>
+            [p]A lövedék telibe talál és 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontnyi sebet okoz neked.[/p]
+        </text>
+        <add amount="-4" to="stamina" />
+      </failure>
+    </test>
+    <itemCheck type="item" id="1002">
+      <have>
+        <next id="156"></next>
+      </have>
+      <dontHave>
+        <next id="36"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="31">
+    <text>
+        [p]Jó három métereset ugrasz, és máris kint vagy a veremből! Te is megdöbbensz a teljesítményeden – úgy tűnik, sikerült szert tenned az Ugrás Csizmájára! Nyersz 2 [span class="ffAttribute"]SZERENCSE[/span] pontot. Ám még mindig igen rossz a helyzeted.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <next id="171">Ha felugrasz a Goblinok Griffinjére</next>
+    <next id="54">Hogyha elég bátornak érzed magad ahhoz, hogy inkább a Tűzóriás Kék Sárkányát vedd célba</next>
+  </p>
+  <p id="32">
+    <text>
+        [p]Bár erősen figyelsz és hallgatózol gyanús hangok után, mégis sikerül három Nomádnak meglepnie, akik fúvócsövekkel felszerelve ugranak eléd, és apró nyílvesszőket lőnek ki rád.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <test against="luck">
+          <success>
+            <test against="luck">
+              <success>
+                <next id="105"></next>
+              </success>
+              <failure>
+                <next id="86"></next>
+              </failure>
+            </test>
+          </success>
+          <failure>
+            <next id="86"></next>
+          </failure>
+        </test>
+      </success>
+      <failure>
+        <next id="86"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="33">
+    <text>
+        [p]A fal ijesztő döngéssel csapódik neki a padlónak – de te már a megfelelő oldalán vagy. Vidáman mész tovább a pókhálók felé. Vészjósló morajt hallasz, és a következő pillanatban egy hatalmas kőgolyót pillantasz meg, ami utat tör magának köztük, majd átgurul a fényen, egyenesen feléd! A járat oldalának veted magad. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="7"></next>
+      </success>
+      <failure>
+        <next id="168"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="34">
+    <text>
+        [p]– Áhá! – kiállt örömittasan a Goblin. – Végre rád találtam, Irhanyúzó! – Egy pillanatra elhallgat, amíg előhúz egy kardot gyilkos fegyvereket tartalmazó övéről, és hevesen rád támad. A csata során 2-vel növeld meg ellenfeled Támadóerejét, mivel az teljesen őrült.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="12" />
+      <win>
+        <text>
+            [p]Úgy döntesz, hogy elhagyod a fogadót.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="5"></next>
+  </p>
+  <p id="35">
+    <text>
+        [p]Miközben hátasod irányításával bajlódsz, a másik lény, hátán a két Goblin íjásszal, melléd repül. A kis mitugrászok nyílveszszőkkel kezdik lőni a Griffinedet, ezek közül pedig több is eltalálja. Szerencsétlen állat veled és potyautasoddal együtt visítva a verem oldalába csapódik, ahol belevájja karmait a homokba. Ekkor magához tér az Ork![/p]
+    </text>
+    <itemCheck type="item" id="3011">
+      <have>
+        <next id="106"></next>
+      </have>
+      <dontHave>
+        <next id="117"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="36">
+    <text>
+        [p]A Mágus-Kormányzó kimond néhány szót, azzal eltűnik. Csak gonosz nevetéséből tudod, hogy még mindig a szobában van. A csata során 2-vel le kell csökkentened a Támadóerődet a láthatatlanság miatt![/p]
+    </text>
+    <gatherItem id="4001" />
+    <fight type="single">
+      <enemy id="11" />
+      <win>
+        <loseItem id="4001" />
+      </win>
+    </fight>
+    <next id="139"></next>
+  </p>
+  <p id="37">
+    <text>
+        [p]A Kék Sárkány lassan elrepül – vissza a kastély irányába! A Griffinnel együtt az Ikernap Sivatag száraz pusztái felé veszitek az irányt, messze magatok mögött hagyva a Földdémon száját. Végül hátasod túlságosan elfárad ahhoz, hogy folytassa a repülést, ezért leszáll a homokba, te pedig lemászol a nyergéből. Küldetésedet azonban folytatnod kell![/p]
+    </text>
+    <next id="188"></next>
+  </p>
+  <p id="38">
+    <text>
+        [p]Döbbenetes látvány tárul a szemed elé. A homokdűne túloldalán legalább tíz, sötét ruhába öltözött Nomád áll, épp olyanok, mint az, amelyikkel Alasiyanban találkoztál. Egy hatalmas, százlábúra emlékeztető, legalább öt méter hosszú teremtménnyel küzdenek, ami próbálja beásni magát a homokba.[/p]
+    </text>
+    <next id="22">Ha segíteni akarsz a Nomádoknak</next>
+    <next id="62">Ha folytatni akarod utad a sivatagban</next>
+  </p>
+  <p id="39">
+    <text>
+        [p]Előveszed hátizsákodból a Zsák Homokot, és ahogy lekapod az állványról Shanhara Kövét, úgy gyorsan a helyére teszed azt. Feszülten vársz egy kicsit, de semmi nem történik. Nyersz 2 [span class="ffAttribute"]SZERENCSE[/span] pontot. Ezután, továbbra is csak a fehér lapokra lépve, nagyon óvatosan távozol a poros helyiségből, és visszaindulsz a bejárathoz.[/p]
+    </text>
+    <gatherItem id="3015" />
+    <loseItem id="3014" />
+    <add amount="2" to="luck" />
+    <next id="48"></next>
+  </p>
+  <p id="40">
+    <text>
+        [p]Lecsúszol a gerincről és áthaladsz a hőfalon, ami közted és a sátrak közt áll. Hamarosan meg is pillantod őket, nem sokkal később pedig rajtad ütnek. Védd magad![/p]
+    </text>
+    <fight type="single">
+      <enemy id="23" />
+      <enemy id="24" />
+      <enemy id="25" />
+      <fleeing />
+      <flee>
+        <next id="85"></next>
+      </flee>
+      <win>
+        <next id="11"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="41">
+    <text>
+        [p]Még időben ugrasz el a lény elől, és sikerül elmenekülnöd (ne feledkezz meg az ezzel járó büntetésről). A közelben húzódó sötét sírok közt sikerül leráznod üldöződet. Mikor visszatérsz táborhelyedre, azt kifosztva találod – az Éjghoul felfalta minden élelmedet. Vesztesz 2 [span class="ffAttribute"]SZERENCSE[/span] pontot. Nyugtalanul fekszel le ismét aludni, és másnap reggel ébredsz.[/p]
+    </text>
+    <add amount="-2" to="luck" />
+    <add amount="-2" to="stamina" />
+    <loseItem id="2000" amount="10" />
+    <next id="57"></next>
+  </p>
+  <p id="42">
+    <text>
+        [p class="inlineImage"][img src="resources/wm4/42.jpg" /][/p]
+        [p]A jelek szerint az Óriást Kuperannak hívják. Vörös bőre, éjfekete haja és szakálla van. Bronz vértet visel. Egy Tűzóriásba botlottál bele! Gonosz tekintetű, lemezvértes Ork Zsoldos törpül el mellette, oldalán karddal, hátán íjjal és nyílvesszőkkel. Mit teszel?[/p]
+    </text>
+    <itemCheck type="item" id="1002">
+      <have>
+        <next id="177" pos="1">Elhajítasz egy Mágikus Dobókést, ha van nálad?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="145" pos="2">Előhúzol egy Gázkapszulát, és fenyegetőzni kezdesz, hogy elhajítod?</next>
+      </have>
+    </itemCheck>
+    <next id="82" pos="3">Előhúzod kardodat?</next>
+  </p>
+  <p id="43">
+    <text>
+        [p]Könnyedén követed a Homokmászó nyomait. Felmászol egy enyhe emelkedőn, végül elérsz valamit, amit akár útnak is lehet nevezni. Kocsikerekek hangját hallod, úgyhogy felsietsz a szomszédos homokdűnére, hogy onnan vehesd szemügyre a szekér utasait. Három hüllőt és több másik lényt látsz közeledni.[/p]
+    </text>
+    <next id="133" pos="1">Ha rejtve maradsz</next>
+    <next id="154" pos="2">Ha eléjük mész</next>
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="198" pos="3">Ha egy Gázkapszulát dobsz feléjük</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="44">
+    <text>
+        [p]– Na most – kezdi a férfi, és elővesz egy agyagkorsót, amin három nagyobbacska luk tátong. – Ebben a korsóban három rekesz található. Az egyikben egy skorpió ül. Te beteszed a kezedet az egyik lyukon. Ha a lény nem szúr meg, akkor válaszolok minden kérdésedre. – Melyik lyukba teszed be a kezed?[/p]
+    </text>
+    <next id="114">Ha az elsőbe</next>
+    <next id="152">Ha a másodikba</next>
+    <next id="138">Ha a harmadikba</next>
+  </p>
+  <p id="45">
+    <text>
+        [p]Óvatosan felfelé indulsz a lépcsősoron. Ahogy felérsz, szemben a falban egy ajtót találsz. Összeszeded a bátorságodat és lenyomod a kilincset. Lassan benyitsz. Odabenn egy hosszú asztal áll, melynek túlsó végénél egy elég nagydarab, díszes ruhájú ember ül, oldalán egy Hobgoblinnal.[/p]
+    </text>
+    <next id="15">Ha be akarod csapni magad után az ajtót, majd futásnak erednél</next>
+    <next id="4">Ha belépnél a szobába</next>
+  </p>
+  <p id="46">
+    <text>
+        [p]Óvatosan belépsz a Dervisek Elveszett Barlangjába, majd meggyújtod lámpásod. Vastag por és pókháló borít mindent. Ahogy lassan haladsz előre, rémülten veszed észre a két Karolópókot, amik a homályból másznak elő.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="49" />
+      <enemy id="50" />
+    </fight>
+    <next id="74"></next>
+  </p>
+  <p id="47">
+    <text>
+        [p]Beszélgetésetek során a férfinak feltűnik, hogy nagyon keseregsz a Bájitalod elvesztése felett. Felajánlja tolvaj-szolgálatait, és azt ígéri, 5 Aranytallérért cserébe hajlandó visszalopni neked. – Ha érdekel az ajánlatom – mondja –, legyél ma este a Tolvajok Tanyájában. – A hír felvidít, és úgy döntesz, letelepedsz, és vársz, hogy az Őrök érted jöjjenek. Nagyjából fél óra múlva meg is jelennek.[/p]
+    </text>
+    <next id="24"></next>
+  </p>
+  <p id="48">
+    <text>
+        [p]A bejárat felé haladsz a folyosón, míg ismét el nem éred a mély vermet. Épp azon töprengsz, hogy most ugorj vagy lendülj, mikor borzalmas csikorgó hangokat hallasz a túloldalról kiszűrődni. Gyorsan kell cselekedned.[/p]
+    </text>
+    <itemCheck type="item" id="3011">
+      <have>
+        <text>
+            [p]Az Ugrás Csizmájával gond nélkül átjutsz a túloldalra.[/p]
+        </text>
+        <next id="79"></next>
+      </have>
+      <dontHave>
+        <next id="27">Ha átlendülni akarsz a verem fölött</next>
+        <next id="67">Ha ugranál</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="49">
+    <text>
+        [p]Megfordítod hátasodat, hogy szembeszállj a Tűzóriás erőivel. A Sárkány hátán az egyik Ork előhúzza kardját, majd a közel nyolc méteres magasságból egyenesen a madarad hátára ugrik![/p]
+        [p]Mivel fegyvertelen vagy, 3-al csökkentened kell Támadóerődet.[/p]
+    </text>
+    <fight type="single" forceWeapon="defWpn">
+      <enemy id="38" />
+      <winRound enemy="38" totalCount="2">
+        <interrupt />
+      </winRound>
+    </fight>
+    <next id="142"></next>
+  </p>
+  <p id="50">
+    <text>
+        [p]Épp időben gurulsz félre – és ejted a homokba a Varázsló Szemét. Vesztesz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. Támadód egy félig macska, félig ember teremtmény és Harci Macskája, akit máris támadásra uszít.[/p]
+    </text>
+    <add amount="-1" to="luck" />
+    <loseItem id="3004" />
+    <fight type="single">
+      <enemy id="18" />
+      <enemy id="19" />
+    </fight>
+    <next id="89"></next>
+  </p>
+  <p id="51">
+    <text>
+        [p]Átszeled a szobát, mindig csak a fekete lapokra lépve. Ahogy így teszel, a szobrok feléd fordulnak talapzataikon, a levegőt pedig megtölti a nyílvesszők füttyének ismerős hangja. Hat lövedék áll ki mellkasodból. Összegörnyedsz, majd elterülsz a poros teremben, figyelmeztetésül a hozzád hasonló, bolond kalandozók számára. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="52">
+    <text>
+        [p]Álomba merülsz, ám hamarosan felriadsz, mikor sziszegő hangot hallasz, és érzed, hogy valami a lábadhoz dörzsölődik. Felpattansz – ám ekkor észreveszed, hogy csak egy macska talált rád. A következő pillanatban egy fura alak borít árnyékba. Ahogy ráemeled tekintetedet, egy élő tetem bontakozik ki a hold sápadt fényében, melynek csontjairól rothadó húscafatok lógnak. Egy Éjghoul áll előtted.[/p]
+    </text>
+    <next id="41">Hogyha Elmenekülnél</next>
+    <next id="52b">Ha megküzdesz a teremtménnyel</next>
+  </p>
+  <p id="52b" display="52">
+    <text>
+        [p]Álomba merülsz, ám hamarosan felriadsz, mikor sziszegő hangot hallasz, és érzed, hogy valami a lábadhoz dörzsölődik. Felpattansz – ám ekkor észreveszed, hogy csak egy macska talált rád. A következő pillanatban egy fura alak borít árnyékba. Ahogy ráemeled tekintetedet, egy élő tetem bontakozik ki a hold sápadt fényében, melynek csontjairól rothadó húscafatok lógnak. Egy Éjghoul áll előtted.[/p]
+        [p]Ellenfeled képes rá, hogy megbénítson téged, hogyha sikerül négyszer eltalálnia a csata során.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="17" />
+      <loseRound enemy="17" totalCount="4">
+        <interrupt />
+        <text>
+            [p]Ellenfeled megbénít, te pedig tétlenül nézed, ahogy végez veled.[/p]
+        </text>
+        <death />
+      </loseRound>
+      <win>
+        <next id="28"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="53">
+    <text>
+        [p]Ahogy a teremtményhez beszélsz, a gyűrűben lévő erő hatni kezd, a körülötted álló Nomádok pedig döbbenten nézik, ahogy a hatalmas vadállat szelíden engedelmeskedik neked. – Szép munka, idegen – kiálltja a melletted álló. – Kérlek, fogadd el szerény ajándékunkat. – Egy erszényt nyújt át neked, melyben [span class="takeItem" data-id="gold" data-amount="5"]5 Aranytallér[/span] lapul. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="62">Ha a nyílt sivatag felé indulsz</next>
+    <next id="43">Ha a Homokmászó nyomát követed vissza</next>
+  </p>
+  <p id="54">
+    <text>
+        [p]Griffineddel a Sárkány mellé repülsz, ahol a Tűzóriás dühösen rohamra küldi alattvalóit. Előhúzod a kardod.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="39" />
+      <enemy id="40" />
+      <enemy id="41" />
+    </fight>
+    <itemCheck type="section" id="171">
+      <have>
+        <next id="10"></next>
+      </have>
+      <dontHave>
+        <next id="180"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="55">
+    <text>
+        [p]A sátorban senkit nem találsz, a közepén azonban tűz lobog! A füst egy kis lyukon át jut ki, amit a ponyva tetejébe vágtak, ám így is igen meleg és fülledt a levegő idebenn. A tűzrakás közepén egy tőr áll, amit jól láthatóan nem fognak a lángok.[/p]
+    </text>
+    <next id="26">Hogyha a fegyverért nyúlsz</next>
+    <next id="85">Ha kisétálsz a sátorból, majd visszamászol a gerincre, hogy ott folytasd az utat</next>
+    <itemCheck type="section" id="3">
+      <dontHave>
+        <next id="3">Ha az első barnássárga sátrat kutatnád át</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="20">
+      <dontHave>
+        <next id="20">Ha a második barnássárga sátrat kutatnád át</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="56">
+    <text>
+        [p]Egyenesen a fényfoltba lépsz. Ahogy ezt teszed, a barlang falaiból két sorban kihegyezett cövekek ugranak elő, melyek azonnal átlyukasztanak. Rothadó tetemed hosszú ideig marad feltűzve, figyelmeztetésül a hozzád hasonló, bolond kalandozók számára. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="57">
+    <text>
+        [p]Az ikernapok kíméletlenül sütnek, ahogy a sivatagba indulsz – ha a Nomád Kereskedő megátkozott, ne feledkezz meg annak következményeiről. Az alapján, amit Alasiyanban megtudtál, ez a sivatag elég kicsi. A legnagyobb veszélyforrás, hogy könnyen eltéved benne az ember. Ezt észben tartva döntöd el, merre indulj tovább.[/p]
+    </text>
+    <next id="13">Hogyha a lapos területek felé mennél</next>
+    <next id="187">Ha jobban vonz az enyhe emelkedő</next>
+  </p>
+  <p id="58">
+    <text>
+        [p]A fal ijesztő döngéssel csapódik neki a padlónak – és te sajnos a rossz oldalán vagy. Próbálod csapkodni, de még megkarcolni sem sikerül az anyagát. Arra kárhoztattál, hogy egy zárt ajtónak vetett háttal, verembe lógó lábbal üldögélj – és ki tudja, milyen borzalmas teremtmények másznak majd elő ez utóbbi mélyéről? Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="59">
+    <text>
+      [p]Alasiyan utcáit járva figyeled a lakókat, amint napi ügyeiket intézik. Észreveszel egy kisebb tömeget, és hozzájuk lépsz, hogy megtudd, mi történik ott. Egy alacsony,
+      köpcös, sötét
+      ruhát és az Ikernap tetoválását hordó Nomádot látsz a csődület közepén, aki hihetetlen történeteket mesél a sivatagi életről.[/p]
+    </text>
+    <next id="173">Hogyha közelebb mész, hogy te is meghallgasd a meséjét</next>
+    <next id="18">Ha továbbállsz</next>
+  </p>
+  <p id="60">
+    <text>
+        [p]A Sárkány és a Griffinek megállnak egy hatalmas veremnél, majd körözni kezdenek. Ahogy lepillantasz, az aljában egy óriási szájat veszel észre, melyből egy nyelv kígyózik elő. – Készülj fel a Földdémonnal való találkozásodra! – kiáltja az Óriás. Griffined lebukik és megpróbál lerázni a hátáról. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="162"></next>
+      </success>
+      <failure>
+        <next id="199"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="61">
+    <text>
+        [p class="inlineImage"][img src="resources/wm4/23.jpg" /][/p]
+        [p]Az Üvegszemen át figyeled egy ideig a terepet. Három sátrat sikerül kivenned odalenn, melyek egyikéből füst száll felfelé. Odakinn két félig ember, félig macska teremtményt látsz, akik egy jókora, vöröses színű macskával „játszanak.” Annyira elmerülsz a jelenetben, hogy észre sem veszed, hogy egy bunkósbot emelkedik a levegőbe. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="50"></next>
+      </success>
+      <failure>
+        <next id="144"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="62">
+    <text>
+        [p]Csak mész és mész, előre a sivatag halott pusztaságába. A forró homok csizmád talpán keresztül is égeti a lábadat. Véletlenül valami fehér, kemény dologba rúgsz bele – egy pórul járt állat koponyája az. Körülötted porördögök forognak. Gyengének érzed magad, képzelődni kezdesz, végül a homokba rogysz. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="63">
+    <text>
+        [p]Felsétálsz a fészekben, majd ügyelve rá, hogy ne sértsd meg a három tojást, kutatni kezdesz. Végül rábukkansz egy pergamendarabra, amit a fészek oldalába fontak bele. Örömmel állapítod meg, hogy ez tényleg az a térkép, amit keresel. Pontosan követve az utasításait több tüskebokor mellett is elhaladsz, mire eléred a barlang bejáratát.[/p]
+    </text>
+    <gatherItem id="3016" />
+    <next id="159"></next>
+  </p>
+  <p id="64">
+    <text>
+        [p]Biztonságba helyezed a hátizsákod, majd csatlakozol a hatalmas szörnyeteg láncával küszködő Nomádokhoz. A lény továbbra is vergődik és próbál feldönteni mindannyiótokat, hogy az Ikernap Sivatag végtelen dűnéi közé szökhessen. [/p]
+    </text>
+    <test against="stamina" success="lower">
+      <success>
+        <next id="181"></next>
+      </success>
+      <failure>
+        <next id="103"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="65">
+    <text>
+        [p]A barlang szájához lépsz. Odakinn kezd sötétedni. Micsoda nap – reggel majdnem megetetnek egy Földdémonnal, este pedig már egy Remete vendégel meg! Letelepszel a földre. Ha akarsz, most ehetsz, ám ha így teszel, csak 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot nyersz vissza, mivel a lakomádat meg kell osztanod az öreggel. Végül álomba merülsz, és másnap reggel ébredsz.[/p]
+    </text>
+    <canEat />
+    <next id="150"></next>
+  </p>
+  <p id="66">
+    <text>
+      [p]Levezetnek egy lépcsősoron és egy kicsi, mocskos, homokkőfalú cellába zárnak be. – Üdv – köszönt egy Elfin-szerű fiatal férfi. – Téged miért hoztak be? – Rosszkedvűen elmeséled neki a
+      történeted, mire a másik felnevet. – Ó, ne aggódj, nagyjából fél órán belül szabadon fognak engedni. A Varázsitalt persze nem kapod vissza. Mindig ezt csinálják.[/p]
+    </text>
+    <next id="24">Ha vársz, hogy kieresszenek</next>
+    <next id="88">Amennyiben megkérdeznéd cellatársad, miért kobozzák el ezeket az Italokat</next>
+  </p>
+  <p id="67">
+    <text>
+        [p]Nem akarsz rendszert csinálni a mély vermek átugrálásából, különösen akkor nem, amikor még egy hátizsák is húz lefelé.[/p]
+    </text>
+    <next id="67a">Ha minden felszereléseddel együtt akarsz átugrani</next>
+    <next id="67b">Ha a Gyémánton kívül mindent hátrahagysz</next>
+  </p>
+  <p id="67a" display="67">
+    <text>
+        [p]Nem akarsz rendszert csinálni a mély vermek átugrálásából, különösen akkor nem, amikor még egy hátizsák is húz lefelé.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Éppen sikerül elérned a túloldalt.[/p]
+        </text>
+        <next id="79"></next>
+      </success>
+      <failure>
+        <next id="191"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="67b" display="67">
+    <text>
+        [p]Nem akarsz rendszert csinálni a mély vermek átugrálásából, különösen akkor nem, amikor még egy hátizsák is húz lefelé.[/p]
+        [p]Ledobsz mindent, így biztos lehetsz benne, hogy sikerülni fog az ugrás.[/p]
+    </text>
+    <loseItem id="1001" />
+    <loseItem id="1002" />
+    <loseItem id="1003" />
+    <loseItem id="1004" />
+    <loseItem id="2000" />
+    <loseItem id="2001" />
+    <loseItem id="2002" />
+    <loseItem id="2003" />
+    <loseItem id="3001" />
+    <loseItem id="3002" />
+    <loseItem id="3003" />
+    <loseItem id="3004" />
+    <loseItem id="3005" />
+    <loseItem id="3006" />
+    <loseItem id="3007" />
+    <loseItem id="3008" />
+    <loseItem id="3009" />
+    <loseItem id="3010" />
+    <loseItem id="3011" />
+    <loseItem id="3012" />
+    <loseItem id="3013" />
+    <loseItem id="3014" />
+    <next id="79"></next>
+  </p>
+  <p id="68">
+    <text>
+        [p]– Nesze, pattanj fel a Griffinedre – morog az egyik macskaszerű humanoid. Felmászol hátasodra, majd kísérőd is elhelyezkedik a sajátján. Egymás mellett repültök, a te madaradat is ő irányítja. Hamarosan egy harmadik lény is csatlakozik a menethez, két Goblinnal a hátán, akiket Kuperan és udvartartásának néhány másik tagja követ egy Kék Sárkányon utazva![/p]
+    </text>
+    <next id="157">Hogyha leugrasz a Griffinről, egyenesen a sivatag homokjába</next>
+    <next id="60">Ha nyugton maradsz és megvárod, mi fog történni</next>
+  </p>
+  <p id="69">
+    <text>
+        [p]Követed a Nomádokat egy sziklával körülölelt területre, és azt hiszed, sikerült csapdába ejtened őket, mikor három társuk is előkerül. Egy hálót hajítanak rád, amiből nem tudsz kivergődni. A lények átkutatják hátizsákodat.[/p]
+    </text>
+    <test against="luck">
+      <label>[em]Tedd próbára[/em] [span class="ffAttribute"]SZERENCSÉD[/span] minden nálad lévő tárgyra!</label>
+      <success>
+        <text>
+            [p]A találkozás miatt vesztesz 3 [span class="ffAttribute"]SZERENCSE[/span] pontot. Végül sikerül kiszabadítanod magad, és folytatod az utad.[/p]
+        </text>
+        <add amount="-2" to="luck" />
+      </success>
+      <failure>
+        <text>
+            [p]A találkozás miatt vesztesz 3 [span class="ffAttribute"]SZERENCSE[/span] pontot. Végül sikerül kiszabadítanod magad, és folytatod az utad.[/p]
+        </text>
+        <add amount="-2" to="luck" />
+      </failure>
+    </test>
+    <next id="127"></next>
+  </p>
+  <p id="70">
+    <text>
+        [p]A Nomád Kereskedő apró mosollyal a száján előhúz egy méretes ládát, és felnyitja, hogy megmutassa portékáját. Mit szeretnél venni tőle?[/p]
+        [p]A Gázkapszulákat úgy tervezték, hogy valakire vagy valamire lehessen hajítani. Becsapódáskor összetörnek, és a bennük lévő gáz a levegőbe kerül. Annyit vehetsz ezekből, amennyit csak szeretnél.[/p]
+        [p]Az Üvegszem igazi kincs 5 Aranytallérért! Egy Ylaruam nevű, rég meghalt alasiyani Mestermágus készítette, és mikor átnézel rajta, sokkal tisztábban ki tudod venni a távolban lévő tárgyakat – pont mintha egy távcsövet használnál![/p]
+        [p]A kard varázserejű, és a Rézhegyi Törpék szakértelmét dicséri. Amikor ezzel a fegyverrel küzdesz, 1-el megnövelheted Támadóerődet.[/p]
+        [p]A Kés egy mágikus Dobókés, amit bármely harc bármelyik körében elhajíthatsz. A fegyver ilyenkor automatikusan 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot sebez az ellenfeleden. Csak egyszer tudod használni.[/p]
+        [div data-market=""][/div]
+    </text>
+    <market>
+      <sale price="3" stock="10" id="3003" />
+      <sale price="5" stock="1" id="3004" />
+      <sale price="10" stock="1" id="1003" />
+      <sale price="7" stock="1" id="1002" />
+      <after>
+        <itemCheck type="item" id="3004">
+          <have>
+            <text>
+                [p]Az üvegszem remek vásár, nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
+            </text>
+            <add amount="1" to="luck" />
+          </have>
+        </itemCheck>
+        <itemCheck type="gold" id="20">
+          <have>
+            <next id="163"></next>
+          </have>
+          <dontHave>
+            <next id="18"></next>
+          </dontHave>
+        </itemCheck>
+      </after>
+    </market>
+  </p>
+  <p id="71">
+    <text>
+        [p]Könnyedén megtalálod a Tolvajok Tanyáját, cellatársad pedig már ott vár rád. – Sajnos csak éjszaka tudok dolgozni – magyarázza neked. Gyorsan elvezet az írnok irodájába, és utasít, hogy állj őrt. Hamarosan vissza is ér, a Varázsitaloddal együtt! Kifizeted neki az 5 Aranytallért, majd búcsút veszel tőle. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
+    </text>
+    <add amount="-5" to="gold" />
+    <add amount="1" to="luck" />
+    <unhideItem id="2001" />
+    <unhideItem id="2002" />
+    <unhideItem id="2003" />
+    <next id="125"></next>
+  </p>
+  <p id="72">
+    <text>
+        [p]Olyan gyorsan rohansz, ahogy csak lábaid vinni bírnak, a sziklagolyó azonban gyorsabb nálad. Hiába hajt a kétségbeesés is, utolér téged, és gond nélkül kilapít. Belepasszíroz a folyosó padlójába, és porrá őrli Shanhara mesés Kövét. A csapda ugyan elpusztította azt, amit őrizni volt hivatott, de megfogta a tolvajt is. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="73">
+    <text>
+        [p]A két Goblin sikítva zuhan le a Griffin hátáról, te pedig hamarosan uralmad alá hajtod hátasukat. Most már elő tudod rántani az Orktól megszerzett kardot.[/p]
+    </text>
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="80" pos="1"></next>
+      </have>
+      <dontHave>
+        <next id="19" pos="2">Ha elrepülsz a sivatag szíve felé</next>
+        <next id="54" pos="3">Ha a Kék Sárkányon lévő lényekre támadnál</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="74">
+    <text>
+        [p]Beljebb hatolsz a barlangba, míg végül egy olyan részhez nem érsz, ahol a nap fénye behatol a plafonban lévő lyukon át és megvilágítja a talajt.[/p]
+    </text>
+    <next id="56">Ha egyenesen átsétálsz a fényfolton</next>
+    <next id="29">Ha bizalmatlan vagy, és inkább megkerülnéd ezt a területet</next>
+  </p>
+  <p id="75">
+    <text>
+        [p]A Hobgoblinok észrevesznek téged, és előhúzzák kardjukat. Egyikük egy súlyos csontot hajít feléd.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Ellenfeled célt téveszt.[/p]
+        </text>
+      </success>
+      <failure>
+        <text>
+            [p]Ellenfeled telibe talál téged – vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+      </failure>
+    </test>
+    <fight type="single">
+      <enemy id="6" />
+      <enemy id="7" />
+      <enemy id="8" />
+      <enemy id="9" />
+      <fleeing />
+      <flee>
+        <next id="192"></next>
+      </flee>
+      <win>
+        <next id="101"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="76">
+    <text>
+        [p]Mindkét nyílvessző mellétrafál, te azonban nem jutsz messzire, mivel a szörnyek félig sas, félig oroszlán repülő hátasaikon egész nap utánad kutatnak. Végül feladják a keresést, te pedig felkészülsz, hogy gyalog járd be Kuperan, a Tűzóriás homokbirodalmát. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="113"></next>
+      </success>
+      <failure>
+        <next id="62"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="77">
+    <text>
+        [p class="inlineImage"][img src="resources/wm4/77.jpg" /][/p]
+        [p]Belépsz a fogadóba. Sötét, zajos helyiségben találod magad, amit betölt a füst. A vendégek eléggé durva alakok, ezt akkor állapítod meg, amikor egy Goblin repül el a füled mellett, és kenődik fel a falra. Megpillantod a bárpultot, ami fölött egy tábla lóg, rajta a „Humanoidokat Szívesen Látunk” felirattal.[/p]
+    </text>
+    <next id="100">Ha a pulthoz akarsz lépni</next>
+    <next id="83">Ha inkább egy asztalhoz ülnél le egymagadban</next>
+  </p>
+  <p id="78">
+    <text>
+        [p]A kastélyszerű épülethez mész. Vastag, fekete agyagfala van, amit durva vaspántokkal erősítettek meg. Jókora vaskapui tárva-nyitva állnak. A távolban egy sakál szomorú üvöltése hallatszik.[/p]
+    </text>
+    <next id="23">Ha meggyújtod lámpásodat és belépsz</next>
+    <next id="99">Ha inkább magad mögött hagyod ezt az ijesztő helyet és a sziklák között alszol</next>
+  </p>
+  <p id="79">
+    <text>
+        [p]Átjutottál a veszedelmes verem bejárathoz közelebbi oldalára – ám az alatt az idő alatt, amíg átkeltél rajta, a kijáratot elzáró fal már majdnem teljesen lecsukódott. Megpróbálsz átcsúszni alatta, hogy a túlfelére juss. [/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="33"></next>
+      </success>
+      <failure>
+        <next id="58"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="80">
+    <text>
+        [p]A Kék Sárkány felé hajítod a Gázkapszulát, ami a bestiának ütközik, széttörik, és mérgező gázzal árasztja el a lényt, ami fulladozni kezd. A következő pillanatban megbillen, és utasait – Kuperannal együtt – a Földdémon szájába ejti. Nyersz 3 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
+    </text>
+    <add amount="3" to="luck" />
+    <loseItem id="3003" />
+    <next id="37"></next>
+  </p>
+  <p id="81">
+    <text>
+        [p]Az Alasiyanba vezető út nagyjából tizenöt percig tart gyalog, de legalább végig lejt a talaj. A város agyagos-téglás házak összevisszasága, és még fala sincs, erre ugyanis elég ritkák a rablóbandák. Azonban ennek ellenére is találsz pár nagyobb épületet. A Városőrség néhány tagja hozzád lép, és követelik, hogy átkutathassák a hátizsákod.[/p]
+    </text>
+    <itemCheck type="item" id="3002">
+      <have>
+        <next id="158"></next>
+      </have>
+      <dontHave>
+        <next id="130">Ha hagyod, hogy megnézzék a táskád</next>
+        <next id="94">Ha nem engeded nekik</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="82">
+    <text>
+        [p]– Áhá! – kiállt az Óriás. – Egy kardforgató tisztelt meg minket a jelenlétével! Én már rég felhagytam a harccal… Talus! – Erre a bronzszobor leugrik alapjáról és rád támad.[/p]
+        [p]Hogyha ellenfeled egymás után háromszor eltalál, átölel, és addig szorít, amíg ki nem leheled a lelked. Ezen kívül minden sikeres találatodkor te is vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot, a lénynek ugyanis folyékony tűz folyik az ereiben.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="35" />
+      <loseRound enemy="35" subsequentCount="3">
+        <text>
+            [p]Ellenfeled átölel, és addig szorít, amíg ki nem leheled a lelked.[/p]
+        </text>
+        <interrupt />
+      </loseRound>
+      <win>
+        <next id="121"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="83">
+    <text>
+        [p]Leülsz az egyik asztalhoz. Ha akarsz, most ehetsz, miközben a szobában lévő részeg teremtmények bohóckodását figyeled. Egy tetőtől talpig vasba öltözött Goblin lép az asztalodhoz. – Irhanyúzó Snurd? – kérdezi. Mit válaszolsz?[/p]
+    </text>
+    <canEat />
+    <next id="34">Ha igent</next>
+    <next id="151">Ha nemet</next>
+  </p>
+  <p id="84">
+    <text>
+        [p]Csupán a fehér lapokra lépkedve eljutsz a szoba közepére. Eléred az állványt, melyen Shanhara Nagy Köve nyugszik, de semmi nem történik. Az íjászszobrok továbbra is mozdulatlanul állnak. Alaposan megvizsgálod a tartót, és sikerül megállapítanod, hogy csapda őrzi. Úgy véled, akkor lép működésbe, amikor a tetejére nehezedő nyomás elkezd csökkenni, és bármit is aktiváljon, az a valami valószínűleg sikeresen meg fogja akadályozni, hogy bármilyen módon elhagyd ezt a helyiséget.[/p]
+    </text>
+    <itemCheck type="item" id="3014">
+      <have>
+        <next id="39"></next>
+      </have>
+      <dontHave>
+        <next id="21"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="85">
+    <text>
+        [p]Már egy ideje a gerincen sétálsz, mikor végül elérsz egy lejtősebb területre, ami egy útnak is beillő ösvényhez vezet. Kocsikerekek hangja üti meg a füled, úgyhogy fedezékbe húzódsz, és onnan veszed szemügyre a szekér utasait. Három hüllőt és több másik lényt látsz közeledni.[/p]
+        [p class="inlineImage"][img src="resources/wm4/85.jpg" /][/p]
+    </text>
+    <next id="133">Ha rejtve maradsz</next>
+    <next id="154">Ha eléjük mész</next>
+    <next id="198">Ha egy Gázkapszulát dobsz feléjük</next>
+  </p>
+  <p id="86">
+    <text>
+        [p]Tested izmai megfeszülnek, ahogy a méreg végigfut az ereidben. Öntudatlanul roskadsz a talajra. Mikor felébredsz, három felszerelési tárgyadnak csak a hűlt helyét találod. Vesztesz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. Dühösen folytatod az utad.[/p]
+    </text>
+    <add amount="-1" to="luck" />
+    <loseItem id="1001,1002,1003,1004,2000,2001,2002,2003,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010" amount="3" />
+    <next id="127"></next>
+  </p>
+  <p id="87">
+    <text>
+        [p]A sarokba lopakodsz, ahol a szobor áll. Valóban bronzból készült, és pont úgy néz ki, mint Kuperan, kivéve a mágikus szimbólumot, ami a homlokát díszíti. Túl későn döbbensz rá, hogy egy Gólem előtt állsz.[/p]
+        [p]A csata zaja hamar felébreszti Kuperan korcs követőit, akik vihogva figyelik a küzdelmet. Valahányszor eltalálod ellenfeled, 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot vesztesz a folyékony tűz miatt, ami az ereiben folyik.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="36" />
+      <loseRound enemy="36" totalCount="2">
+        <interrupt />
+        <next id="190"></next>
+      </loseRound>
+      <win>
+        <next id="121"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="88">
+    <text>
+      [p]– Nem tudom pontosan – vallja be a fiatal –, de szerintem biztos köze lehet ahhoz, hogy Alasiyan kormányzója – legalábbis a pletykák szerint – mágikus hatalommal rendelkezik. Igen – tűnődik –, valamikor régen több adag Élethosszabbító Italom is volt. [/p]
+      [p]– Mennyi idős vagy? – kérdezed. [/p]
+      [p]– Ó, már 379 esztendős – nevet a „fiatal.” [/p]  
+    </text>
+    <next id="47">Ha folytatnád a beszélgetést</next>
+    <next id="24">Amennyiben csöndben várnád ki azt a fél órát, amíg az Őr visszatér</next>
+  </p>
+  <p id="89">
+    <text>
+        [p]Ellenfelednél rálelsz az [span class="takeItem" data-id="3005" data-amount="1"]Állatirányítás Gyűrűjére[/span] és egy pár [span class="takeItem" data-id="3006" data-amount="1"]Harci Vaskaromra[/span], ezeken kívül azonban semmi használhatót nem találsz nála. Ha akarsz, most ehetsz.[/p]
+    </text>
+    <canEat />
+    <next id="40">Ha ezek után a hőfüggöny mögött húzódó sátrak felé veszed az irányt</next>
+    <next id="85">Ha követed a gerincen futó utat</next>
+    <next id="2">Amenynyiben leereszkedsz a vonulat túloldalán</next>
+  </p>
+  <p id="90">
+    <text>
+        [p]– Hazudsz! – morog fenyegetően a Hobgoblin. – Ma nincsenek találkozó! – Kénytelen vagy megküzdeni a teremtménnyel.[p]
+    </text>
+    <fight type="single">
+      <enemy id="4" />
+      <enemy id="5" />
+      <fleeing />
+      <flee>
+        <next id="15"></next>
+      </flee>
+      <win>
+        <next id="184"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="91">
+    <text>
+        [p]Az Ölyv óriási szárnyaival megcsap téged – vesztesz 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot, ráadásul le is repülsz a szirtről, egyenesen a Gyémántok Völgye felé. Szerencsére puha homokon érsz földet félúton, onnan pedig aránylag könynyen le tudsz ereszkedni.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <next id="155"></next>
+  </p>
+  <p id="92">
+    <text>
+        [p]Megpróbálsz kimászni a Gyémántok Völgyének falán, de próbálkozásod nem jár sikerrel. Újra megcsúszol a meredek sziklafalon – vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Nincs más választásod, kénytelen vagy megvárni, hátha történik valami.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="143"></next>
+  </p>
+  <p id="93">
+    <text>
+        [p]A nyílvesszők beleállnak a hátadba, te pedig a homokba buksz. Az Ork hozzád lép és a vállára hajít. A kevésbé válogatósakra fenséges lakoma vár ma este. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="94">
+    <text>
+        [p]– Te is csak egy bajkeverő vagy, mi? – vigyorog az egyik férfi. Előhúzzák kardjukat, és te is követed a példájukat.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="1" />
+      <enemy id="2" />
+      <win>
+        <text>
+            [p]Belépsz Alasiyanba.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="59"></next>
+  </p>
+  <p id="95">
+    <text>
+        [p]Folytatod a mászást a domboldalban. Hirtelen hangos morajlás hangja üti meg a füledet, és ahogy felpillantasz, egy kisebb kőomlást veszel észre, ami egyenesen feléd tart.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Sikerül visszaérned a barlanghoz.[/p]
+        </text>
+        <next id="119"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A sziklagörgeteg maga alá temet – kalandod itt véget ér.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="96">
+    <text>
+        [p]A macskalény megsebez téged – vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. A csata megkezdődik.[/p]
+        [p]Mivel fegyvertelen vagy, a csata során 3-mal csökkentened kell Támadóerődet.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <fight type="single" forceWeapon="defWpn">
+      <enemy id="37" />
+    </fight>
+    <next id="194"></next>
+  </p>
+  <p id="97">
+    <text>
+        [p]A Nomádok értetlen tekintetétől kísérve a Homokmászóhoz lépsz, és megpróbálod kicsalogatni a homokból.[/p]
+    </text>
+    <itemCheck type="item" id="3005">
+      <have>
+        <next id="53"></next>
+      </have>
+      <dontHave>
+        <next id="175"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="98">
+    <text>
+        [p]Súlyos felszerelésed ellenére is sikerül átérned a túloldalra – bár nem sokon múlt, hogy le ne zuhanj. Megkönnyebbülten felsóhajtasz, majd folytatod utadat egy nagy terembe, mely Shanhara mesés Kövének ad otthont.[/p]
+    </text>
+    <next id="8"></next>
+  </p>
+  <p id="99">
+    <text>
+        [p]Letelepedsz aludni a sziklák közé, de hideg van. Soha nem gondoltad volna, hogy a sivatagban ennyire fagyos lehet az idő.[/p]
+    </text>
+    <itemCheck type="item" id="3007">
+      <have>
+        <text>
+            [p]Szorosan betakarózol a szőnyegbe.[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [p]Elég kellemetlen éjszaka elé nézel – vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+      </dontHave>
+    </itemCheck>
+    <next id="148"></next>
+  </p>
+  <p id="100">
+    <text>
+        [p]Egy pohár fűszeres ital 3 Aranytallérba kerül.
+    </text>
+    <itemCheck type="gold" id="3">
+      <have>
+        <text>
+            Kifizeted a pénzt – adj 1-et az [span class="ffAttribute"]ÉLETERŐDHÖZ[/span] –, majd eldöntöd, hová akarsz ülni.[/p]
+        </text>
+        <add amount="1" to="stamina" />
+        <add amount="-3" to="gold" />
+        <next id="118">Ha a bárpult a szimpatikusabb</next>
+        <next id="83">Ha inkább egy asztal mellé telepednél le egymagadban</next>
+      </have>
+      <dontHave>
+        <text>
+            Mivel nincs ennyi pénzed, kénytelen vagy elhagyni a fogadót.[/p]
+        </text>
+        <next id="5"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="101">
+    <text>
+        [p]Átkutatod a Hobgoblinok tetemeit. Késeken, csontokon és mocskos rongyokon kívül nem sok mindent találsz. Az asztal alatt azonban rálelsz egy dobozra, melyben [span class="takeItem" data-id="gold" data-amount="4"]4 Aranytallér[/span] lapul.[/p]
+    </text>
+    <next id="15">Ha most elhagyod a házat és folytatod az utad</next>
+    <next id="45">Ha felmész a lépcsősoron</next>
+  </p>
+  <p id="102">
+    <text>
+        [p]Vannak ugyan kétségeid a kötéllel kapcsolatban, de azért úgy döntesz, teszel vele egy próbát. Óriási megkönnyebbülésedre nem szakad el, és gond nélkül átjutsz a túloldalra. Folytatod utadat, míg végül a terembe nem érsz, melyben ott pihen Shanhara mesés Köve.[/p]
+    </text>
+    <next id="8"></next>
+  </p>
+  <p id="103">
+    <text>
+        [p]Együttes erőfeszítéseitek ellenére is meglóg a Homokmászó. – Na, erről ennyit – sóhajt fel az egyik Nomád. – De köszönjük a segítségedet, utazó. Kövesd a nyomát, és nem esik majd bántódásod.[/p]
+    </text>
+    <next id="62">Ha nem foglalkozol a férfi figyelmeztetésével, és a sivatag belseje felé veszed az irányt</next>
+    <next id="43">Ha megszívlelve a tanácsot a lény útját követnéd vissza</next>
+  </p>
+  <p id="104">
+    <text>
+        [p]Úgy véled, sikerült megalapoznod tekintélyedet, és mély álomba merülsz. Egy Kobold és egy Nomád közt hortyogva nem veszed észre az Ork Zsoldost, aki a sötétben halálra döf. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="105">
+    <text>
+        [p]Mikor a Nomádok látják, hogy a vesszőik célt tévesztettek, a sziklák közé menekülnek.[/p]
+    </text>
+    <next id="69">Ha dühödben utánuk eredsz</next>
+    <next id="127">Hogyha csak megcsóválod a fejed és folytatod utadat a vízmosáson át</next>
+  </p>
+  <p id="106">
+    <text>
+        [p]Az Ork azonnal felméri veszedelmes helyzeteteket és egyetlen ugrással a levegőben terem – majd döbbenten felkiált, és egyenesen a Földdémon szájába zuhan.[/p]
+    </text>
+    <next id="31">Ha te is megpróbálsz kiugrani a veremből</next>
+    <next id="116">Hogyha inkább hátasodba próbálsz megkapaszkodni</next>
+  </p>
+  <p id="107">
+    <text>
+        [p]Némi nehézség árán sikerül visszamásznod a valamivel fentebb húzódó sziklás területre, majd nekilátsz a szurdokok falainak átvizsgálásának – és végül rábukkansz a [span class="takeItem" data-id="3002" data-amount="1"]Mágikus Italra[/span]. Oldalára a már ismerős kézírással az „Emberirányítás” szót jegyezték fel. Egy adagnyi folyadék van az üvegben. Hirtelen sziszegő hangot hallasz.[/p]
+    </text>
+    <next id="112"></next>
+  </p>
+  <p id="108">
+    <text>
+        [p]Előre rohansz és az Ölyv lábához kötöd magad a Kötéllel. Épp időben fejezed be a műveletet, a madár ugyanis hamarosan felemelkedik a levegőbe, a kígyókkal a csőrében. Eléritek a völgy tetejét, ahol gyorsan kioldozod magad és megvárod, míg a bestia elrepül. Ezután újra a fészekhez lépsz.[/p]
+    </text>
+    <next id="63"></next>
+  </p>
+  <p id="109">
+    <text>
+        [p]– Ha ez a hála a segítségünkért… – mondja lefitymálóan az egyik kereskedő, majd az őrökért kiált. A tizenkét megtermett, láncinges, fegyveres férfi bekerít és kegyetlenül lemészárol. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="110">
+    <text>
+        [p]Átlépsz halott ellenfeleid teteme felett – nyersz 1 [span class="ffAttribute"]ÜGYESSÉG[/span] és 2 [span class="ffAttribute"]SZERENCSE[/span] pontot a győzelemért. A szekér többi utasát négy ember és egy Goblin képezi, akiket egymáshoz láncoltak, mint a rabszolgákat. Valószínűleg azok is voltak. Kiszabadítod őket, majd átkutatod a kocsit. Ennek eredményeképp némi [span class="takeItem" data-id="3010" data-amount="1"]Rothadt Gyümölcsöt[/span], [span class="takeItem" data-id="3001" data-amount="1"]Kéz- és Lábbilincseket[/span] és [span class="takeItem" data-id="3009" data-amount="1"]Köteleket[/span] találsz.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <add amount="1" to="skill" />
+    <next id="126">Hogyha folytatod utadat</next>
+    <next id="149">Ha előbb megpróbálsz némi információt szerezni az egykori raboktól</next>
+  </p>
+  <p id="111">
+    <test against="skill">
+      <success>
+        <text>
+            [p]Sikerül úgy felöltöznöd, hogy nem esel le hátasodról – írj fel magadnak 1 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
+        </text>
+        <add amount="1" to="luck" />
+        <gatherItem id="3011" />
+        <gatherItem id="1001" />
+        <next id="35"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Elveszted az egyensúlyod és a tátott szájba zuhansz. Kalandod itt véget ér.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="112">
+    <text>
+        [p]Valami beleharap a csuklódba (vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot). Eszedbe jut az Őrre vonatkozó figyelmeztetés, ezért gyorsan elkapod a kezed, de szerencsére csak egy kis zöld gyík az – az Őr valószínűleg már meghalt vagy elkóborolt az idők folyamán –, így nyugodtan folytatod az utat a város felé.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="81"></next>
+  </p>
+  <p id="113">
+    <text>
+        [p]Eltévedsz az Ikernap Sivatagában! Elfogy a vized, megromlik az élelmed. Szerencsére belebotlasz egy kereskedőkaravánba, ami Alasiyan felé tart. Felajánlják neked, hogy 5 Aranytallérért cserébe velük tarthatsz. Ha elérkezel a városba, talán újra megpróbálkozhatsz az úttal…[/p]
+    </text>
+    <death />
+  </p>
+  <p id="114">
+    <text>
+        [p]Óvatosan a lyukba helyezed a kezed… és nem érzed a csípést. – Kiváló – kiált fel a Remete. – Nem tudom pontosan, merre találhatod a Dervisek Elveszett Barlangját, de azt igen, hogy az odavezető térkép egy fészekben van, ami a Gyémántok Völgyére tekint. –[/p]
+    </text>
+    <next id="65"></next>
+  </p>
+  <p id="115">
+    <text>
+        [p]Nagyon óvatosan becsukod magad mögött az ajtót, és sikerül kiosonnod a házból anélkül, hogy bárki is észrevenne. Odakinn majdnem felbuksz a halott őrökben, így megfelelő helyzetbe állítod őket, majd folytatod utadat a térre.[/p]
+    </text>
+    <next id="15"></next>
+  </p>
+  <p id="116">
+    <text>
+        [p]Hiába próbálsz megkapaszkodni a csúszós homokban, egyre közelebb kerülsz a verem aljához. A Griffin végül kileheli a lelkét, és mindketten az örökké éhes Földdémon állkapcsai közt végzitek. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="117">
+    <text>
+        [p]Az Ork azon nyomban felméri veszedelmes helyzeteteket és egyetlen ugrással a verem három méter magasan lévő tetejénél terem. Ezután egy gonosz kacaj kíséretében magatokra hagy titeket. Lassan lecsúsztok a folyton éhes Földdémon állkapcsai közé. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="118">
+    <text>
+        [p]Egy hiéna képű teremtmény lép hozzád a pult mellé, és megszólít. – Az a fickó nem kedvel téged – mondja, majd egy vészjósló külsejű Gyíkemberre mutat. Közömbösen visszafordulsz az italod felé. – Ha jobban belegondolok – folytatja –, én sem kedvellek téged.[/p]
+    </text>
+    <next id="5">Hogyha lelépsz</next>
+    <next id="135">Ha rátámadsz</next>
+  </p>
+  <p id="119">
+    <text>
+        [p class="inlineImage"][img src="resources/wm4/119.jpg" /][/p]
+        [p]Belépsz a barlangba. Egy jó ideig minden csendes, aztán jajszó hallatszik, és egy öregember ugrik elő a sötétből. [/p]
+        [p]– Maga a Remete? – kérdezed tőle. [/p]
+        [p]– Pontosan – válaszol. Shanhara Kövéről kezdesz érdeklődni, ő azonban alá akar vetni téged a Skorpió Próbájának.[/p]
+    </text>
+    <next id="44">Ha vállalod a próbát</next>
+    <next id="165">Ha inkább sarkon fordulnál, és magad mögött hagynád ezt az őrültet</next>
+  </p>
+  <p id="120">
+    <empty />
+  </p>
+  <p id="121">
+    <text>
+        [p]Mosolyogva hátra lépsz – nyersz 3 [span class="ffAttribute"]SZERENCSE[/span] pontot. Az Óriás feldühödik, és megparancsolja őreinek, hogy fogjanak el. – Holnap – fenyeget – téged fogunk feláldozni a Földdémonnak! – A kastély alatti börtöncellákhoz vonszolnak.[/p]
+    </text>
+    <add amount="3" to="luck" />
+    <next id="153"></next>
+  </p>
+  <p id="122">
+    <text>
+        [p]Az Óriás Karvaly karma felhasítja az arcodat – vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Előhúzod kardodat és megküzdesz váratlan támadóddal.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <fight type="single">
+      <enemy id="45" />
+      <fleeing />
+      <flee>
+        <next id="160"></next>
+      </flee>
+      <win>
+        <next id="131"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="123">
+    <text>
+        [p]Épp ahogy elfordulsz a hőfüggöny irányából, egy félig ember, félig macska teremtménnyel találod szemközt magad, ami egy vicsorgó Harci Macskán lovagol![/p]
+    </text>
+    <fight type="single">
+      <enemy id="21" />
+      <enemy id="22" />
+    </fight>
+    <next id="89"></next>
+  </p>
+  <p id="124">
+    <text>
+        [p]Úgy döntesz, nem bízol meg a kötélben, úgyhogy megpróbálsz átugrani a verem fölött. Pechedre bőrvérted és felszerelésed eléggé súlyos. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="98"></next>
+      </success>
+      <failure>
+        <next id="191"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="125">
+    <text>
+        [p]Szerzeményeddel együtt sietve elhagyod a bűntény helyszínét. Visszatérsz a különös, kaptárszerű épületekhez, majd letelepedsz. Ha akarsz, ehetsz, mielőtt lefekszel aludni.[/p]
+    </text>
+    <canEat />
+    <next id="52"></next>
+  </p>
+  <p id="126">
+    <text>
+        [p]Folytatod az utad, míg el nem érsz egy vízmosást. Kora este felé jár az idő, az árnyak kezdenek megnyúlni, te pedig kitartóan haladsz tovább, és közben leselkedő rablók és banditák nyomait fürkészed.[/p]
+    </text>
+    <itemCheck type="item" id="3004">
+      <have>
+        <next id="6"></next>
+      </have>
+      <dontHave>
+        <next id="32"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="127">
+    <text>
+        [p class="inlineImage"][img src="resources/wm4/127.jpg" /][/p]
+        [p]Leszáll az éjszaka. Az út egy széles, de alacsony épülethez vezet, ami leginkább egy különös kastélyra emlékeztet.[/p]
+    </text>
+    <itemCheck type="item" id="4011">
+      <have>
+        <text>
+            [p]Mivel Alasiyan elhagyása óta nem ettél semmit, vesztesz 5 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
+        </text>
+        <add amount="-5" to="stamina" />
+      </have>
+    </itemCheck>
+    <next id="78">Ha fel akarsz oda menni</next>
+    <next id="99">Ha az éjszakát inkább a sziklák között töltenéd</next>
+  </p>
+  <p id="128">
+    <empty />
+  </p>
+  <p id="129">
+    <text>
+        [p]Elugrasz őröd, egy macskaszerű teremtmény elől és a sivatag felé veszed az irányt. A bestiák felől üvöltések hangját hallod. Az Ork lekapja hátáról az íjat, és két nyílvesszőt lő ki feléd. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="76"></next>
+      </success>
+      <failure>
+        <next id="93"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="130">
+    <text>
+      [p]Átadod a két őrnek a hátizsákod, akik hoszszasan keresgélni kezdenek benne, miközben egymás közt motyognak, és a fejüket rázzák. – Az élelemmel nincs semmi gond – mondja végül az
+      egyikük –, erről azonban a mesternek kell döntenie. – Azzal kiemeli zsákodból a Varázsitalodat. – Kérem jöjjön velünk az irodába.[/p]
+    </text>
+    <next id="179">Hogyha hajlandó vagy velük tartani</next>
+    <next id="94">Ha nem</next>
+  </p>
+  <p id="131">
+    <text>
+        [p]Felsétálsz a dombok közé. Végül rábukkansz egy barlangra, ami az egyik nagyobb bucka oldalából nyílik, és aminek bejárata előtt egy hatalmas szikla áll. Itt ehetsz, ha szeretnél.[/p]
+    </text>
+    <canEat />
+    <next id="119">Amennyiben most úgy döntesz, hogy lámpást gyújtasz és belépsz a barlangba</next>
+    <next id="95">Ha folytatod a mászást</next>
+  </p>
+  <p id="132">
+    <text>
+        [p]Előveszel egy Gázkapszulát és ellenfeleid felé hajítod. A Kapszula felrobban, és mérgező gázzal árasztja el a lényeket, akik elejtik csatafejszéiket és torkukhoz kapva a földre rogynak. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. Elsétálsz a halott őrök mellett.[/p]
+    </text>
+    <loseItem id="3003" />
+    <add amount="1" to="luck" />
+    <next id="189"></next>
+  </p>
+  <p id="133">
+    <text>
+        [p]A magasból figyeled, ahogy a kocsi eldöcög előtted. Ha akarsz, most ehetsz. Mikor a lények már messze járnak, leereszkedsz az útra, és rövid gondolkodás után elindulsz arra, amerről a jármű érkezett.[/p]
+    </text>
+    <canEat />
+    <next id="126"></next>
+  </p>
+  <p id="134">
+    <empty />
+  </p>
+  <p id="135">
+    <text>
+        [p]A két rosszindulatú teremtmény szinte magán kívül van az örömtől, mikor meglátják, hogy előhúzod a kardodat. Harcolj![/p]
+    </text>
+    <fight type="single">
+      <enemy id="13" />
+      <enemy id="14" />
+      <win>
+        <text>
+            [p]Úgy döntesz, hogy elhagyod a fogadót.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="5"></next>
+  </p>
+  <p id="136">
+    <text>
+        [p class="inlineImage"][img src="resources/wm4/136.jpg" /][/p]
+        [p]Előre lépsz. A férfi dacosan megpörgeti a kardját. Küzdj meg vele![/p]
+    </text>
+    <fight type="single">
+      <enemy id="48" />
+    </fight>
+    <next id="147">Ha átkutatnád a holttestet</next>
+    <next id="46">Ha azonnal belépnél a barlangba</next>
+  </p>
+  <p id="137">
+    <text>
+        [p]Egész éjszaka dolgozol a szökésen – az alváshiány miatt vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot –, de nem jutsz semmire, ugyanis a falak és az ajtó is tömör sziklából épültek. Reggel az őrök érted jönnek.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="183"></next>
+  </p>
+  <p id="138">
+    <text>
+        [p]Óvatosan a lyukba helyezed a kezed… és nem érzed a csípést. – Kiváló – kiált fel a Remete. – Nem tudom pontosan, merre találhatod meg a Dervisek Elveszett Barlangját, de azt igen, hogy az odavezető térkép egy fészekben van, ami a Gyémántok Völgyére tekint. –[/p]
+    </text>
+    <next id="65"></next>
+  </p>
+  <p id="139">
+    <text>
+        [p]Most, hogy meghalt, a Mágus-Kormányzó teste ismét láthatóvá válik. Gyorsan átkutatod őt is és a helyiséget is. [span class="takeItem" data-id="gold" data-amount="25"]25 Aranytallért[/span] találsz. Hihetetlen győzelmedért 1 [span class="ffAttribute"]ÜGYESSÉG[/span], 2 [span class="ffAttribute"]ÉLETERŐ[/span] és 1 [span class="ffAttribute"]SZERENCSE[/span] pontot kapsz. Ha akarsz, most ehetsz is, mielőtt elhagynád a házat.[/p]
+    </text>
+    <canEat />
+    <add amount="2" to="stamina" />
+    <add amount="1" to="luck" />
+    <add amount="1" to="skill" />
+    <next id="15"></next>
+  </p>
+  <p id="140">
+    <text>
+        [p]Egy ideig követed a nyomot, és nemsokára egy hat kocsiból álló karaván tűnik fel előtted.[/p]
+    </text>
+    <next id="17">Ha találkozni akarsz velük</next>
+    <next id="62">Ha elkerülnéd őket, és a sivatag szíve felé folytatnád az utat</next>
+  </p>
+  <p id="141">
+    <text>
+        [p]Előhúzod a kardodat, a Nomád pedig dühödten felsikolt. Küzdj meg vele![/p]
+        [p]Ha a harc rosszul alakul, elmenekülhetsz.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="3" />
+      <fleeing />
+      <win>
+        <text>
+            [p][span class="takeItem" data-id="gold" data-amount="7"]7 Aranytallért[/span]találsz a fickónál.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="18"></next>
+  </p>
+  <p id="142">
+    <text>
+        [p]Sikerül kiütnöd az Ork Zsoldost, és visszatérsz a Griffin irányítása jelentette problémához.[/p]
+    </text>
+    <next id="111">Ha magadévá akarod tenni egykori ellenfeled csizmáját és kardját</next>
+    <next id="35">Ha inkább próbálsz nem leesni megvadult hátasodról</next>
+  </p>
+  <p id="143">
+    <text>
+        [p class="inlineImage"][img src="resources/wm4/143.jpg" /][/p]
+        [p]Miközben egyhelyben üldögélsz, sziszegő hangot hallasz, amitől kiráz a hideg. Ahogy körbenézel, semmit nem látsz. Ez megismétlődik még néhányszor, míg végül elő nem húzod a kardod – ekkor bukkannak csak elő a kövek mögül a zaj forrása.[/p]
+        [p]Valahányszor eltalálnak ellenfeleid, a mérgező harapásuk miatt a szokásos 2 helyett 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot vesztesz.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="47" />
+    </fight>
+    <next id="164"></next>
+  </p>
+  <p id="144">
+    <text>
+        [p]A husáng lecsap a fejedre, és kiüt – vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Mikor magadhoz térsz, rájössz, hogy minden Aranytallérodat ellopták – vesztesz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. Hogyha akarsz, itt ehetsz némi élelmet.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-100" to="gold" />
+    <add amount="-1" to="luck" />
+    <canEat />
+    <next id="85">Ha a gerincen folytatod az utadat</next>
+    <next id="40">Ha inkább a lent látott sátrak felé indulnál</next>
+  </p>
+  <p id="145">
+    <text>
+        [p]A Tűzóriás rettegve hátrál el előled. Az őrök sem mernek egy őrült közelébe menni. – Megtisztelnél bennünket, ha itt töltenéd az éjszakát – motyogja Kuperan. Kihasználod helyzeti előnyödet, és faggatni kezded a lényt küldetéseddel kapcsolatban. Az Óriás nem túl lelkes, de amíg nálad van a Gázkapszula, nincs sok választása. Elmondja, hogy nem tudja, merre találhatnád meg a Dervisek Elveszett Barlangját, ám a vén Dombi Remete talán igen. Felnevetsz, és elteszed a Gázkapszulát. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. Mivel odakint már leszállt az éj, a szörnyek lassan aludni térnek.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="169"></next>
+  </p>
+  <p id="146">
+    <text>
+        [p]Átvágsz a téren és a ház hatalmas kőajtaja felé indulsz. A két Hobgoblin elállja utadat. – Nincs bemenet Kormányzó találkozója nélkül! – morogja a magasabbik.[/p]
+    </text>
+    <next id="90">Ha azt hazudod az őrnek, hogy kértél időpontot</next>
+    <next id="170">Ha bevallod, hogy nem</next>
+  </p>
+  <p id="147">
+    <text>
+        [p data-item-choice="dervishItems" data-max-choice="2"]A halottat átvizsgálva [span class="takeItem" data-id="gold" data-amount="3" data-group="dervishItems"]3 Aranytallért[/span], egy [span class="takeItem" data-id="3013" data-amount="1" data-group="dervishItems"]Ezüstfeszületet[/span] és egy [span class="takeItem" data-id="3014" data-amount="1" data-group="dervishItems"]Zsák Homokot[/span] találsz. Ezek közül maximum két tárgyat tarthatsz meg, a harmadikat mindenképp itt kell hagynod. Miután eldöntötted, melyeket szeretnéd magaddal vinni, belépsz a barlangba.[/p]
+    </text>
+    <next id="46"></next>
+  </p>
+  <p id="148">
+    <text>
+        [p]Úgy tűnik, arra vagy kárhoztatva, hogy egyetlen nyugodt éjszakád se legyen a kalandod során! Mikor már majdnem elalszol, egy éhes Sziklabéka bukkan fel előtted.[/p]
+        [/p]Minden Harci Körben dobj egy kockával. Hogyha az eredmény 1, 2 vagy 3, a kört a szokásos módon vezesd le. Ellenkező esetben ellenfeled köréd tekeri hosszú nyelvét, és beléd harap – vesztesz 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="20" />
+      <beforeRound>
+        <random diceConfig="1d6">
+          <result max="6" min="4">
+            <loseBattleRound />
+            <add amount="-2" to="stamina" />
+          </result>
+        </random>
+      </beforeRound>
+    </fight>
+    <next id="193"></next>
+  </p>
+  <p id="149">
+    <text>
+        [p]Megkérdezed, mit tudnak újdonsült barátaid mondani Shanhara Kövéről, ám egyikük sem hallott róla korábban. Az egyik ember, egy idős férfi azt tanácsolja, hogy kérd ki Kuperan, a Tűzóriás tanácsát – már hogyha élve át tudsz jutni kastélyán és udvaroncain![/p]
+    </text>
+    <next id="126"></next>
+  </p>
+  <p id="150">
+    <text>
+        [p]A vén Remete jókívánságokkal búcsúzik tőled – nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. Lejössz a dombról és a férfi útmutatását követve elindulsz a hatalmas fészek irányába. Óvatosan közelíted meg; és valóban rá is bukkansz, ráadásul három tojást is találsz benne. [/p]
+    </text>
+    <add amount="1" to="luck" />
+    <test against="luck">
+      <success>
+        <next id="63"></next>
+      </success>
+      <failure>
+        <next id="25"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="151">
+    <text>
+        [p]A Goblin dühösen összevonja a szemöldökét. – Hol van az az átkozott sivatagi patkány?! Elevenen fogom megnyúzni! – Azzal magadra hagy. Felsóhajtasz, a továbbiakban pedig azzal töltöd az idődet, hogy próbálod elkerülni a vitatkozókat, és a beszélgetőket hallgatod. Végül úgy döntesz, hogy elhagyod a fogadót.[/p]
+    </text>
+    <next id="5"></next>
+  </p>
+  <p id="152">
+    <text>
+        [p]Behelyezed a kezed a lyukba, majd egy éles szúrást érzel. Gyorsan kirántod – de már késő. Rosszul választottál. A földre rogysz. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="153">
+    <text>
+        [p]A cella sötét és poros. Az őrök elvették fegyveredet, hátizsákod azonban még mindig nálad van, így ha szeretnél, most ehetsz.[/p]
+    </text>
+    <canEat />
+    <loseItem id="1001" />
+    <loseItem id="1002" />
+    <loseItem id="1003" />
+    <loseItem id="1004" />
+    <next id="172">Ha lefekszel aludni</next>
+    <next id="137">Ha megpróbálsz kiszabadulni</next>
+  </p>
+  <p id="154">
+    <text>
+        [p]Az útra lépsz, és üdvözlöd a hajtót. Három Gyíkember kászálódik le a járműről, akik egyből rád támadnak.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="29" />
+      <enemy id="30" />
+      <enemy id="31" />
+      <fleeing />
+      <flee>
+        <next id="126"></next>
+      </flee>
+      <win>
+        <next id="110"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="155">
+    <text>
+        [p]Egy kicsit szédülve érsz földet a Gyémántok Völgyének talaján. A helyet határoló falak elég meredeknek tűnnek. Ám ami a legjobban meglep, az az, hogy a völgyben nem kövek, hanem [span class="takeItem" data-id="3012" data-amount="1"]Gyémántrögök[/span] hevernek szanaszét. Összesen 100 Aranytallér értékű drágakövet tudsz összeszedni, ha ezt akarod tenni. Ha szeretnél, ehetsz is.[/p]
+    </text>
+    <canEat />
+    <itemCheck type="item" id="3011">
+      <have>
+        <next id="16" pos="1"></next>
+      </have>
+      <dontHave>
+        <next id="92" pos="2">Hogyha megpróbálsz kimászni a völgyből</next>
+        <next id="143" pos="3">Ha inkább vársz, és meglátod, mi történik</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="156">
+    <text>
+        [p]Elhajítod a kést. Végigsuhan az asztal felett, majd hirtelen megáll a férfi előtt, mintha egy láthatatlan erőtérbe ütközött volna. Vesztesz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. A Kormányzó előhúz egy tőrt és feléd fordul.[/p]
+    </text>
+    <add amount="-1" to="luck" />
+    <loseItem id="1002" />
+    <next id="36"></next>
+  </p>
+  <p id="157">
+    <text>
+        [p]Leugrasz a lény hátáról, viszont túl magasan vagytok. Összezúzott halomban, kitört nyakkal landolsz egy kisebb homokdomb tetején. Kuperan dühösen felüvölt, és úgy dönt, hogy az őröket áldozza fel helyetted a Földdémonnak. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="158">
+    <text>
+        [p]Mielőtt az őrök megállíthatnának, előveszed az Emberirányítás Italát, amit a sziklahasadékban találtál és felhajtod a maradékát. [/p]
+        [p]– Megállj! – kiáltja az egyik őr. – Mégis mit csinál?[/p]
+        [p]– Nem akarják átkutatni a hátizsákomat – mondod nekik –, és nyugodtan továbbmehetek. – A két férfi ostobán összenéz, majd hagyják, hogy elsétálj mellettük. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="59"></next>
+  </p>
+  <p id="159">
+    <text>
+        [p]A bejárat előtt egy Dervis áll őrt. Úgy tűnik, nem mindenki számára volt olyan elveszett ez a barlang! Meg kell támadnod a férfit, hogy bejuthass.[/p]
+    </text>
+    <itemCheck type="item" id="1004">
+      <have>
+        <next id="178"></next>
+      </have>
+      <dontHave>
+        <next id="136"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="160">
+    <text>
+        [p]Addig szaladsz, amíg rá nem bukkansz egy olyan hasadékra a sziklák közt, amiben el tudnál bújni a Karvaly elől. A madárnak azonban még itt is sikerül egy újabb sebet ejtenie rajtad – vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Végül azonban belátja, hogy nem fog tudni egyben kiszedni, úgyhogy elrepül.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="131"></next>
+  </p>
+  <p id="161">
+    <text>
+        [p]Három bőrvértes Gyíkembert találsz, továbbá négy embert és egy Goblint, akiket egymáshoz kötöztek. Rálelsz még némi [span class="takeItem" data-id="3010" data-amount="1"]Rothadt Gyümölcsre[/span], pár [span class="takeItem" data-id="3001" data-amount="1"]Kéz- és Lábbilincsre[/span] és néhány [span class="takeItem" data-id="3009" data-amount="1"]Kötélre[/span] is. Elteszed, amit akarsz.[/p]
+    </text>
+    <next id="126"></next>
+  </p>
+  <p id="162">
+    <text>
+        [p]Kétségbeesetten próbálsz megkapaszkodni a teremtményben. Végül sikerül megragadnod a Griffin szárnyát, és visszahúzod magad a hátára, a nyeregbe. A macskaszerű humanoid feléd fordítja hátasát, és megrohamoz. [/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="185"></next>
+      </success>
+      <failure>
+        <next id="96"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="163">
+    <text>
+        [p]A Nomád vigyora lelohad arcáról. – Átok rád, te sivatagi patkány! Rothadjon meg minden élelmed a sivatagban! – És így is fog történni. Mikor majd elhagyod Alasiyant, húzd le minden élelmedet. Vesztesz 3 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
+    </text>
+    <add amount="-3" to="luck" />
+    <next id="141">Ha a dühös Nomádra akarsz támadni</next>
+    <next id="18">Ha továbbállnál</next>
+  </p>
+  <p id="164">
+    <text>
+        [p]Miközben elhátrálsz a halott kígyóktól, az Óriás Ölyv leereszkedik, hogy felkapja a tetemeket. Hirtelen merész ötleted támad: talán meg tudnál kapaszkodni a madár lábában![/p]
+    </text>
+    <itemCheck type="item" id="3009">
+      <have>
+        <next id="108"></next>
+      </have>
+      <dontHave>
+        <next id="196"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="165">
+    <text>
+        [p]Bármit is hozzon a sors, nem akarsz részt venni a Skorpió Próbáján, úgyhogy búcsút mondasz az öregembernek, majd távozol, és folytatod utad az Ikernap Sivatagban. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="113"></next>
+      </success>
+      <failure>
+        <next id="62"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="166">
+    <text>
+      [p]Az ajtó kinyílik, mögötte egy csupasz falú szoba tűnik fel. Látsz egy asztalt is, székekkel és négy megtermett Hobgoblinnal.[/p]
+    </text>
+    <next id="75">Ha rájuk akarsz támadni</next>
+    <next id="166b">Ha megpróbálsz feltűnés nélkül távozni</next>
+  </p>
+  <p id="166b" display="166">
+    <text>
+        [p]Az ajtó kinyílik, mögötte egy csupasz falú szoba tűnik fel. Látsz egy asztalt is, székekkel és négy megtermett Hobgoblinnal.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="115"></next>
+      </success>
+      <failure>
+        <next id="75"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="167">
+    <text>
+        [p]Karddal a kezedben Kuperan felé osonsz, aki a sziklaszékében alszik. Pechedre felbuksz egy alvó Gyíkemberben, aki felébred, a zaj pedig, amit az ezt követő csata során csaptok, mindenki mást is felriaszt.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="34" />
+    </fight>
+    <next id="82"></next>
+  </p>
+  <p id="168">
+    <text>
+        [p]Nem sikerül időben elkotródnod a kőgolyó útjából! Átgurul rajtad; a folyosó padlójának lök, téged kilapít, Shanhara mesés Kövét pedig porrá őrli. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="169">
+    <text>
+        [p]Hogy töltöd el az éjszakát?[/p]
+    </text>
+    <next id="104">Ha a szörnyek között térsz nyugovóra</next>
+    <next id="87">Ha ébren akarsz maradni, és a bronzszobrot vizsgálod meg</next>
+    <next id="167">Ha megpróbálsz álmában végezni Kuperannal</next>
+  </p>
+  <p id="170">
+    <text>
+        [p]– Akkor el innét, ne vesztegesd az időm – morog dühösen a Hobgoblin.[/p]
+    </text>
+    <next id="15">Ha távoznál</next>
+    <next id="197">Ha rátámadsz az arcátlan lényre</next>
+  </p>
+  <p id="171">
+    <text>
+        [p class="inlineImage"][img src="resources/wm4/171.jpg" /][/p]
+        [p]Könnyedén átugrasz a Goblinok hátasára. A két lény átkozódni kezd – ilyen rövid távolságon nem tudják íjaikat használni. Nincs időd előrántani az Orktól szerzett kardot, ám mivel mindannyian fegyvertelenül harcoltok, nem kell csökkentened Támadóerődet.[/p]
+    </text>
+    <gatherItem id="4002" />
+    <fight type="single" forceWeapon="defWpn">
+      <enemy id="42" />
+      <enemy id="43" />
+      <win>
+        <loseItem id="4002" />
+      </win>
+    </fight>
+    <next id="73"></next>
+  </p>
+  <p id="172">
+    <text>
+        [p]A kemény kőpadló és a sötétben folyamatosan kaparászó Pokolpatkányok – akik felfalják egy adag élelmedet – ellenére is jót alszol. Másnap reggel érted jönnek az őrök.[/p]
+    </text>
+    <next id="183"></next>
+  </p>
+  <p id="173">
+    <text>
+      [p]Közeledtedre a Nomád elhallgat. – Ó, már látom, világot látott ember vagy – mondja. [/p]
+      [p]– Merre tartasz? Csak nem az Ikernap Sivatagba? Akkor jobban tennéd, hogyha vásárolnál tőlem pár értékes tárgyat. – Így teszel?[/p]
+    </text>
+    <next id="70">Ha érdekel, mit tud felajánlani számodra</next>
+    <next id="18">Amennyiben továbbállnál</next>
+  </p>
+  <p id="174">
+    <text>
+        [p]Gond nélkül átszeled a mély vermet, és folytatod az utad. Végül egy boltíves kapuhoz érsz. Áthaladsz alatta, és egy széles, tágas teremben találod magad, melyben ott pihen a nagy és gyönyörű Shanhara Köve.[/p]
+    </text>
+    <next id="8"></next>
+  </p>
+  <p id="175">
+    <text>
+        [p]A hatalmas Homokmászó csak még mélyebbre ássa magát a talajba. A Nomádok undorodva tekintenek rád. Vesztesz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. Úgy döntesz, távozol.[/p]
+    </text>
+    <next id="62">Ha a nyílt sivatag felé indulsz</next>
+    <next id="43">Ha a szörnyeteg jól látható nyomát követed vissza</next>
+  </p>
+  <p id="176">
+    <text>
+        [p]Az Óriás Karvaly karmai közé kap és meszszire visz. Kardod már az első pillanatban kiesik a kezedből. Mikor földet értek, a madár fészkében találod magad, kicsinyei társaságában. Az apróságok pedig akkorák, mint egy közönséges felnőtt ragadozó madár. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="177">
+    <text>
+        [p]Dobásod hibátlan – a fegyver azonban lepattan Kuperan remek páncéljáról. – Holnap – mondja dörgő hangon az Óriás, miközben őrei lefognak téged – téged fogunk feláldozni a Földdémonnak! – A kastély mélyén húzódó börtönök egyikébe cipelnek.[/p]
+    </text>
+    <next id="153"></next>
+  </p>
+  <p id="178">
+    <text>
+        [p]Teszel előre egy lépést. A Dervis dacosan megpörgeti a kardját. Tőröd hirtelen kiugrik övedből, egyenesen a férfi mellkasába csapódik és azonnal végez vele. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="147">Ha átkutatod ellenfeledet</next>
+    <next id="46">Hogyha inkább belépsz a barlangba</next>
+  </p>
+  <p id="179">
+    <text>
+      [p]A két őr elveszi a hátizsákodat, majd átvezetnek Alasiyanon, és végül egy alacsony, boltíves ajtajú épület előtt állnak meg. Odabenn egy idős írnok ül egy harmadik katona
+      társaságában. Csak egy pillantást vet rád és bűnös Bájitalodra, és azon nyomban dönt. [/p]
+      [p]– Vigyétek a fogdába! – mondja a két beosztottjának. Próbálsz ugyan kiszabadulni, de nincs esélyed, elvezetnek.[/p]
+    </text>
+    <next id="66"></next>
+  </p>
+  <p id="180">
+    <text>
+        [p]A Goblinok Griffinje feléd repül, a két íjász pedig nyílvesszőkkel tűzdel tele. Kuperan gonoszul felröhög, miközben te a Földdémon tátongó szája felé zuhansz. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="181">
+    <text>
+        [p]Együttes erőfeszítéseiteknek köszönhetően sikerül felülkerekednetek a Homokmászón. – Köszönjük, utazó – mondja a Nomád, és átnyújt egy erszényt, melyben [span class="takeItem" data-id="gold" data-amount="5"]5 Aranytallér[/span] lapul. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. – Ne menj a sivatag szíve felé – teszi hozzá búcsúzóul.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="62">Ha a figyelmeztetés ellenére is arra vennéd az irányt</next>
+    <next id="43">Ha megszívleled a tanácsát, és a Homokmászó jól látható nyomát követve folytatod utadat egy emelkedőn</next>
+  </p>
+  <p id="182">
+    <text>
+        [p]Most, hogy már minden ellenfeled halott, a Griffinnel a sivatag szíve felé veszitek az irányt. Ám ahogy távoztok, a Kék Sárkány egy villámgömböt lehel felétek.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>[p]A lövedék mellé megy.[/p]</text>
+        <next id="37"></next>
+      </success>
+      <failure>
+        <text>[p]A gömb eltalál, és mindkettőtökkel végez – kalandod itt véget ér.[/p]</text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="183">
+    <text>
+        [p]Kirángatnak a celládból és az Ikernap Sivatag ragyogó napsütésébe vezetnek. Egy falkányi félig sas, félig oroszlán lény repked a levegőben, a földön pedig egy csapat válogatott őr vár rád.[/p]
+    </text>
+    <next id="129">Ha megpróbálsz most elmenekülni, amíg még van rá lehetőséged</next>
+    <next id="68">Ha nyugodtan lépkedsz tovább</next>
+  </p>
+  <p id="184">
+    <text>
+      [p]Átkutatod a két teremtményt, és egy Bronz Kulcsra bukkansz. Ezután megpróbálsz benyitni a ház ajtaján, de az zárva van. Talán az előbb talált kulccsal ki tudnád nyitni…[/p]
+    </text>
+    <next id="9">Ha belepróbálod a zárba</next>
+    <next id="15">Ha inkább távoznál</next>
+  </p>
+  <p id="185">
+    <text>
+        [p]Ahogy elsuhantok egymás mellett, kirántod a macskalényt a nyergéből, aki sikoltozva lezuhan a Földdémon szájába, Griffinje pedig a sivatag felé veszi az irányt.[/p]
+    </text>
+    <next id="19">Ha követni akarod a repülő teremtményt</next>
+    <next id="49">Ha nem</next>
+  </p>
+  <p id="186">
+    <empty />
+  </p>
+  <p id="187">
+    <text>
+        [p]Az „enyhe” emelkedőn vezető út fárasztó és nehézkes. Mikor felérsz a tetejére, odalenn néhány sátrat veszel észre, melyek között mintha emberek sürgölődnének, ám a remegő hőfüggönyön át nem tudod pontosan kivenni, mit csinálnak.[/p]
+    </text>
+    <itemCheck type="item" id="3004">
+      <have>
+        <next id="61"></next>
+      </have>
+      <dontHave>
+        <next id="123"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="188">
+    <text>
+        [p]A nap nagyobbik részét gyaloglással töltöd. Késő délután végre feltűnik néhány domb az északi láthatáron.[/p]
+    </text>
+    <next id="14">Ha ezek felé indulnál</next>
+    <next id="140">Ha azon az ösvényszerűségen folytatnád az utad, amit eddig is követtél</next>
+  </p>
+  <p id="189">
+    <text>
+        [p]Folytatod az utad a folyosón, míg végül egy boltíves átjáróhoz nem érsz, melynek teteje felett két fáklya ég. Túloldalán egy lépcsősor vezet lefelé. Kiáltások, nevetés és különböző nyelveken folyó beszélgetés hangjai szűrődnek fel. Komoran lépsz át a kőív alatt, és indulsz el a lépcsőkön.[/p]
+    </text>
+    <next id="12"></next>
+  </p>
+  <p id="190">
+    <text>
+        [p]A Bronzgólem kegyetlenül képen töröl, Kuperan pedig, aki már felébredt, felnevet. – Nahát, Talus-szal játszol? Akkor holnap téged ajánlunk majd fel a Földdémonnak! – Az őrök hozzád lépnek és leráncigálnak a kastély alatt húzódó tömlöcök egyikébe.[/p]
+    </text>
+    <next id="153"></next>
+  </p>
+  <p id="191">
+    <text>
+        [p]Felszerelésed súlyosnak bizonyul, túlságosan lehúz ahhoz, hogy át tudj ugrani a túloldalra. A félelemtől üvöltve zuhansz lefelé a verembe. Nem éled túl a földet érést. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="192">
+    <text>
+        [p]Kirohansz a házból, nyomodban a Hobgoblinokkal. Dühük csak még magasabbra hág, mikor megpillantják halott társaikat a bejárat mellett. Szerencsére sikerül leráznod őket a téren, és nyugodtan tudod folytatni utadat. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="15"></next>
+  </p>
+  <p id="193">
+    <text>
+        [p]Végzel a Sziklabékával. Ha akarsz, ehetsz, mielőtt ismét nyugovóra térnél. Másnap reggel ébredsz, és a kastélyra ügyet sem vetve nekivágsz a sivatagnak. [/p]
+    </text>
+    <canEat />
+    <test against="luck">
+      <success>
+        <next id="113"></next>
+      </success>
+      <failure>
+        <next id="62"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="194">
+    <text>
+        [p]A Lauper leesik hátasáról és sikoltozva a Földdémon szájába zuhan, Griffinje pedig a sivatag felé veszi az irányt.[/p]
+    </text>
+    <next id="19">Ha saját hátasodat is távozásra buzdítod</next>
+    <next id="49">Ha nem</next>
+  </p>
+  <p id="195">
+    <empty />
+  </p>
+  <p id="196">
+    <text>
+        [p]Előre rohansz és elkapod az Ölyv lábát. Épp időben, ugyanis a madár, csőrében a halott kígyókkal, már fel is szállt. Ahogy a lény emelkedik, úgy kezd el csúszni a te kezed is. Hamarosan elveszted a kapaszkodód, és a talajba csapódsz. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="197">
+    <text>
+        [p]Ahogy mindketten előhúzzátok a kardjaitokat, a második Hobgoblin is csatlakozik a dulakodáshoz![/p]
+        [p class="inlineImage"][img src="resources/wm4/197.jpg" /][/p]
+    </text>
+    <fight type="single">
+      <enemy id="15" />
+      <enemy id="16" />
+      <fleeing />
+      <flee>
+        <next id="15"></next>
+      </flee>
+      <win>
+        <next id="184"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="198">
+    <text>
+        [p]Elhajítod a Gázkapszulát, ami becsapódáskor felrobban, mérgező gázzal borítva be a járgányt és annak minden utasát. Vesztesz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot ezért a gyáva támadásért. Vársz még egy kicsit, hogy biztosan mindenki meghaljon és a méreg is eloszoljon, aztán leereszkedsz az úthoz.[/p]
+    </text>
+    <loseItem id="3003" />
+    <add amount="-1" to="luck" />
+    <next id="126">Ha egyből folytatnád az utadat</next>
+    <next id="161">Ha előbb átkutatnád a szekeret</next>
+  </p>
+  <p id="199">
+    <text>
+        [p]Hátasod könnyedén levet a hátáról, te pedig tehetetlenül zuhansz le, egyenesen a Földdémon tátogó szájába. A Kék Sárkányon ülők ujjongani és nevetni kezdenek, végül a Tűzóriás hazaparancsolja az egész karavánt. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="200">
+    <text>
+        [p]Erőd utolsó morzsáit is összeszedve rohansz a fénykör felé az alagút végén. Nem sokkal a szikla előtt éred el a bejáratot. Gyorsan oldalra ugrasz, a következő pillanatban pedig dübörögve kiront a golyó is, ami a domboldalban folytatja a tüskés bozótok kipréselését. Hátadat a forró sziklának támasztva, megkönnyebbülten felsóhajtasz. Lelkesen előhúzod Shanhara mesés Gyémántját a zsebedből, és az Ikernapok fénye felé fordítod. Az ezernyi fénypontocska szikrázása semmihez nem fogható. Végül magad mellé teszed, és szemed a sivatagra, Alasiyan irányába emeled. Sikerrel jártál. Hamarosan felállsz, leporolod magad, felemeled Shanhara Kövét és lefelé indulsz a domboldalon, újabb kalandot keresve.[/p]
+    </text>
+    <victory />
+  </p>
+</content>
