@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.TextTransformer" id="textTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.ChoiceTransformer" id="choiceTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.GatherItemTransformer" id="gatherItemTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.LoseItemTransformer" id="loseItemTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.HideItemTransformer" id="hideItemTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.UnhideItemTransformer" id="unhideItemTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.ItemCheckTransformer" id="itemCheckTransformer" p:stubs-ref="itemCheckCommandStubTransformers" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.UserInputTransformer" id="userInputTransformer" p:userInputTransformers-ref="userInputTransformers" />
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.itemcheck.ItemCheckHaveTransformer" id="itemCheckHaveTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.itemcheck.ItemCheckDontHaveTransformer" id="itemCheckDontHaveTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.itemcheck.ItemCheckHaveEquippedTransformer" id="itemCheckHaveEquippedTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.itemcheck.ItemCheckAfterTransformer" id="itemCheckAfterTransformer" />
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.RewardTransformer" id="rewardTransformer" />
+
+  <util:map id="itemCheckCommandStubTransformers">
+    <entry key="have" value-ref="itemCheckHaveTransformer" />
+    <entry key="dontHave" value-ref="itemCheckDontHaveTransformer" />
+    <entry key="haveEquipped" value-ref="itemCheckHaveEquippedTransformer" />
+    <entry key="after" value-ref="itemCheckAfterTransformer" />
+  </util:map>
+
+  <util:map id="commonStubTransformers">
+    <entry key="text" value-ref="textTransformer" />
+    <entry key="next" value-ref="choiceTransformer" />
+    <entry key="gatherItem" value-ref="gatherItemTransformer" />
+    <entry key="loseItem" value-ref="loseItemTransformer" />
+    <entry key="hideItem" value-ref="hideItemTransformer" />
+    <entry key="unhideItem" value-ref="unhideItemTransformer" />
+    <entry key="itemCheck" value-ref="itemCheckTransformer" />
+    <entry key="userInput" value-ref="userInputTransformer" />
+    <entry key="reward" value-ref="rewardTransformer" />
+    <entry key="random" value-ref="rawRandomTransformer" />
+  </util:map>
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.StubTransformerMerger" id="stubTransformerMerger" />
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.userinput.DefaultUserInputStubTransformer" id="userInputNumericTransformer" p:responseTransformers-ref="userInputNumericResponseTransformers" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.userinput.DefaultUserInputStubTransformer" id="userInputTextualTransformer" p:responseTransformers-ref="userInputTextualResponseTransformers" />
+
+  <util:map id="userInputTransformers">
+    <entry key="text" value-ref="userInputTextualTransformer" />
+    <entry key="number" value-ref="userInputNumericTransformer" />
+  </util:map>
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.userinput.response.UserInputResponseLabelTransformer" id="userInputResponseLabelTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.userinput.response.UserInputResponseTextualResultTransformer" id="userInputResponseTextualResultTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.userinput.response.UserInputResponseTextualResultElseTransformer" id="userInputResponseTextualResultElseTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.userinput.response.UserInputResponseNumericResultTransformer" id="userInputResponseNumericResultTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.userinput.response.UserInputResponseNumericResultElseTransformer" id="userInputResponseNumericResultElseTransformer" />
+
+  <util:map id="userInputTextualResponseTransformers">
+    <entry key="label" value-ref="userInputResponseLabelTransformer" />
+    <entry key="result" value-ref="userInputResponseTextualResultTransformer" />
+    <entry key="resultElse" value-ref="userInputResponseTextualResultElseTransformer" />
+  </util:map>
+
+  <util:map id="userInputNumericResponseTransformers">
+    <entry key="label" value-ref="userInputResponseLabelTransformer" />
+    <entry key="result" value-ref="userInputResponseNumericResultTransformer" />
+    <entry key="resultElse" value-ref="userInputResponseNumericResultElseTransformer" />
+  </util:map>
+
+
+
+  <util:list value-type="java.lang.String" id="irrelevantNodeNames">
+    <value>#text</value>
+    <value>#comment</value>
+    <value>death</value>
+    <value>victory</value>
+    <value>empty</value>
+  </util:list>
+
+
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckItemCommand" id="itemCheckItemCommand" />
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckItemsCommand" id="itemCheckItemsCommand" />
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckSectionCommand" id="itemCheckSectionCommand" />
+
+  <util:map id="itemCheckStubCommands" key-type="hu.zagor.gamebooks.content.command.itemcheck.CheckType" value-type="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckStubCommand">
+    <entry key="section" value-ref="itemCheckSectionCommand" />
+    <entry key="item" value-ref="itemCheckItemCommand" />
+    <entry key="items" value-ref="itemCheckItemsCommand" />
+  </util:map>
+
+  <bean abstract="true" id="abstractBookParagraphDataTransformer">
+    <property name="stubTransformers" ref="commonStubTransformers" />
+  </bean>
+
+
+  <bean class="hu.zagor.gamebooks.content.choice.ChoicePositionComparator" id="choicePosComparator" />
+  <bean class="hu.zagor.gamebooks.content.choice.DefaultChoiceSet" scope="prototype" id="defaultChoiceSet">
+    <constructor-arg index="0" type="java.util.Comparator" ref="choicePosComparator" />
+  </bean>
+
+  <bean class="hu.zagor.gamebooks.content.ParagraphData" id="paragraphData" scope="prototype" p:choices-ref="defaultChoiceSet" />
+
+  <bean class="hu.zagor.gamebooks.books.saving.xml.DefaultXmlNodeWriter" id="xmlNodeWriter" scope="prototype" init-method="openWriter">
+    <constructor-arg ref="outputFactory"></constructor-arg>
+    <constructor-arg ref="eventFactory"></constructor-arg>
+  </bean>
+
+  <bean class="javax.xml.stream.XMLOutputFactory" factory-method="newInstance" id="outputFactory" />
+  <bean class="javax.xml.stream.XMLEventFactory" factory-method="newInstance" id="eventFactory" />
+  <bean class="javax.xml.parsers.DocumentBuilderFactory" factory-method="newInstance" id="documentBuilderFactory" />
+  <bean class="java.io.StringReader" scope="prototype" id="stringReader" />
+  <bean class="org.xml.sax.InputSource" scope="prototype" id="inputSource" />
+
+
+  <bean class="java.io.File" id="file" scope="prototype" />
+  <bean class="java.net.URL" id="url" scope="prototype" />
+  <bean class="hu.zagor.gamebooks.support.scanner.Scanner" id="scanner" scope="prototype" />
+  <bean class="hu.zagor.gamebooks.support.writer.Writer" id="writer" scope="prototype" />
+
+
+  <bean class="hu.zagor.gamebooks.books.random.DefaultRandomNumberGenerator" c:defaultDiceSide="6" name="d6RandomGenerator d6" />
+  <bean class="hu.zagor.gamebooks.books.random.DefaultRandomNumberGenerator" c:defaultDiceSide="10" name="d10RandomGenerator d10" />
+
+
+
+  <bean class="hu.zagor.gamebooks.content.dice.DiceConfiguration" id="dice1d6" c:diceNumber="1" c:minValue="1" c:maxValue="6" />
+  <bean class="hu.zagor.gamebooks.content.dice.DiceConfiguration" id="dice1d5" c:diceNumber="1" c:minValue="1" c:maxValue="5" />
+  <bean class="hu.zagor.gamebooks.content.dice.DiceConfiguration" id="dice1d4" c:diceNumber="1" c:minValue="1" c:maxValue="4" />
+  <bean class="hu.zagor.gamebooks.content.dice.DiceConfiguration" id="dice2d6" c:diceNumber="2" c:minValue="1" c:maxValue="6" />
+  <bean class="hu.zagor.gamebooks.content.dice.DiceConfiguration" id="dice3d6" c:diceNumber="3" c:minValue="1" c:maxValue="6" />
+  <bean class="hu.zagor.gamebooks.content.dice.DiceConfiguration" id="dice4d6" c:diceNumber="4" c:minValue="1" c:maxValue="6" />
+
+
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommandResolver" id="itemCheckCommandResolver" p:stubCommands-ref="itemCheckStubCommands" />
+  <bean class="hu.zagor.gamebooks.content.command.userinput.UserInputCommandResolver" id="userInputCommandResolver" />
+
+  <util:map key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver" id="rawCommandResolvers">
+    <entry key="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommand" value-ref="itemCheckCommandResolver" />
+    <entry key="hu.zagor.gamebooks.content.command.userinput.UserInputCommand" value-ref="userInputCommandResolver" />
+    <entry key="hu.zagor.gamebooks.content.command.random.RandomCommand" value-ref="randomCommandResolver" />
+  </util:map>
+  <bean name="tmCommandResolvers" parent="rawCommandResolvers" />
+
+
+  <beans profile="dev">
+    <bean class="hu.zagor.gamebooks.directory.domain.DirectoryDescriptor" c:saveGameDirectory="${directory.savegame.dev}" c:logFilesDirectory="${directory.logs.dev}" />
+  </beans>
+  <beans profile="!dev">
+    <bean class="hu.zagor.gamebooks.directory.domain.DirectoryDescriptor" c:saveGameDirectory="${directory.savegame.prod}" c:logFilesDirectory="${directory.logs.prod}" />
+  </beans>
+
+
+</beans>
+
