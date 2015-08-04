@@ -1,0 +1,2013 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd">
+  <p id="back_cover">
+    <text>[p]You have been captured by Elves and wrongly accused of murdering the Elf Chief. In order to prove your innocence, you must enter the deadly Dungeon of Justice and emerge with a sacred Golden Idol, hidden somewhere within the underground labyrinth.[/p]</text>
+    <next id="generate" />
+  </p>
+  <p id="generate" display="Generate character">
+    <text>
+        [p][span class="ffAttribute"]Skill[/span]: [span id="ffSkill"]roll one die and add 6 to this number[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Stamina[/span]: [span id="ffStamina"]roll two dice and add 12 to this number[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Luck[/span]: [span id="ffLuck"]roll one die and add 6 to this number[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p]Choose a bottle of magical potion:
+          [select id="ffDefaultPotion"]
+              [option value="2001" selected="selected"]Potion of Skill[/option]
+              [option value="2002"]Potion of Strength[/option]
+              [option value="2003"]Potion of Fortune[/option]
+          [/select]
+        [/p]
+        [button data-generator-button="ff"]Create character[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="Background">
+    <text>
+        [p]The Desert of Skulls lies directly south of Oyster Bay, and some fifty miles across country. It is a very hot, dangerous and unpleasant place, but you must cross it, for south of the desert lies the large, prosperous town of Sapphire City, famous for its gemstone mines.[/p]
+        [p]You have been attracted by the fabulous wealth that is constantly available to any warrior willing to carry gems or money from one town to another. But the work is not without danger.[/p]
+        [p]As you approach the desert, you hear cries for help from the bushes that line the path. On investigating, you just have time to see an ugly Goblin plunge a dagger into the heart of an obviously important Elf, who slumps to the ground.[/p]
+        [p]You burst on to the scene, meaning to catch the Goblin, but you trip and, seeing you, he escapes into the undergrowth.[/p]
+        [p]You stand and look at the Elf, now very dead. He appears to be the Chief of some Elvan tribe, and in his hand he grasps a large blue diamond. Suddenly you hear a crashing in the bushes! Expecting it to be the Goblin returning, you draw your sword, but instead of the Goblin, you find yourself surrounded by a group of twenty to thirty Elves, all with their bows and arrows pointing at your heart. One steps forward and solemnly speaks.[/p]
+        [p]‘Human!’ he says. ‘You have been found with a sword in your hand and the body of my father, the Chief of our tribe, lying murdered at your feet.’[/p]
+        [p]You realize that they believe it to be your doing. Your protests are silenced as the Elf speaks again: ‘You will be taken to the Dungeon of Justice.’ He turns and walks away, and you are forced by the Elves to follow. From the talk among your guards, you learn that the dungeon is a secret place where criminals are taken for trial. Before each ‘trial’, a small Golden Idol is hidden in the labyrinth to be found by the ‘criminal’. If he does not find it, he is considered guilty, but if he finds it and brings it out with him, he is presumed to be innocent, and is set free.[/p]
+        [p]The trees thin out, and the procession halts at the base of a huge tree. The Chief’s son mumbles a few words, and a section of the trunk opens, revealing the entrance to the dungeon …[/p]
+    </text>
+    <gatherItem id="defWpn" />
+    <gatherItem id="1001" />
+    <gatherItem id="2000" amount="5" />
+    <gatherItem id="3007" />
+    <gatherItem id="3003" />
+    <add amount="20" to="gold" />
+    <next id="1"></next>
+  </p>
+  <p id="1">
+    <text>
+        [p class="inlineImage"][img src="resources/wm5/1.jpg" /][/p]
+        [p]You are pushed down into the tunnel below, and the light from above is cut off as the door closes. Your only illumination from now on will be from torches, which are fixed on the walls. As your eyes get used to the gloom, you see that the tunnel heads north. With a sigh at the injustice of it all, you set off in that direction.[/p]
+    </text>
+    <next id="41"></next>
+  </p>
+  <p id="2">
+    <text>
+        [p]You jump into the river, but the current is very strong. You try to stay afloat, but find it increasingly difficult.[/p]
+    </text>
+    <next id="148"></next>
+  </p>
+  <p id="3">
+    <text>
+        [p]As you cross the floor, carefully avoiding the trip-wires, you reach out for the Idol. Suddenly it disappears! You hear an ominous rumble from above and, looking up, you see a huge slab of rock falling towards you. Your bones are crushed to powder under the enormous weight. Your adventure ends here![/p]
+    </text>
+    <death />
+  </p>
+  <p id="4">
+    <text>
+        [p]The rope is very rotten, and you are barely halfway down when it snaps … Your adventure ends here![/p]
+    </text>
+    <death />
+  </p>
+  <p id="5">
+    <text>
+        [p]The door opens on to a large room with another door in the north wall. A rope hangs on a hook beside that door. There seem to be no traps, so you cross the room and take down the rope. You try the door but it is locked.[/p]
+    </text>
+    <itemCheck type="item" id="3008">
+      <have>
+        <next id="110"></next>
+      </have>
+      <dontHave>
+        <text>[p]You must leave and head north again.[/p]</text>
+        <next id="14"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="6">
+    <text>
+        [p]The door opens on to a tunnel, leading to the west. You follow it until you arrive at a junction.[/p]
+    </text>
+    <next id="172">If you want to head north</next>
+    <next id="168">If you want to keep going west</next>
+  </p>
+  <p id="7">
+    <text>
+        [p]When you eventually reach the bottom, you can see nothing. By feeling along the wall, you find that the tunnel heads east.[/p]
+    </text>
+    <next id="165">If you want to feel your way east, in total darkness</next>
+    <next id="96">If you would rather return to the top and head north</next>
+  </p>
+  <p id="8">
+    <text>
+        [p]The darts bury themselves deep in your leg. They were tipped with a very effective poison.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <text>[p]Lose 1 stamina point.[/p]</text>
+        <add amount="-1" to="stamina" />
+      </result>
+      <result max="2" min="2">
+        <text>[p]Lose 2 stamina points.[/p]</text>
+        <add amount="-2" to="stamina" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]Lose 3 stamina points.[/p]</text>
+        <add amount="-3" to="stamina" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Lose 4 stamina points.[/p]</text>
+        <add amount="-4" to="stamina" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Lose 5 stamina points.[/p]</text>
+        <add amount="-5" to="stamina" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Lose 6 stamina points.[/p]</text>
+        <add amount="-6" to="stamina" />
+      </result>
+    </random>
+    <next id="65"></next>
+  </p>
+  <p id="9">
+    <text>
+        [p]You hurry past the body of the dead beast and make your way rapidly to the north passage.[/p]
+    </text>
+    <next id="52"></next>
+  </p>
+  <p id="10">
+    <text>
+        [p]The door creaks open to reveal a room, hardly more than a widening of the passage, which is separated along its length into two sections. One section seems to be a cell, cut off by metal bars. The other half of the room merely gives access to a door in the north wall. Inside the sparsely furnished cell is the tattered figure of a man. The prisoner glares at you and makes threatening movements towards you. You suspect that he would be prepared to give you information in return for his release.[/p]
+    </text>
+    <next id="149">If you wish to talk to him</next>
+    <next id="24">If you would feel safer with him out of the way and want to kill him by leaning into the cell and impaling him on the point of your sword</next>
+  </p>
+  <p id="11">
+    <text>
+        [p]You reach the end and find nothing.[/p]
+    </text>
+    <next id="38">If you wish to search further</next>
+    <next id="31">If you want to return to the junction and head east</next>
+  </p>
+  <p id="12">
+    <text>
+        [p]You wrap the cape around yourself, but to your surprise nothing happens. Since you feel a little chilly, you keep the cape on. It is the Cape of Levitation, though you do not know this.[/p]
+    </text>
+    <gatherItem id="3002" />
+    <itemCheck type="section" id="119">
+      <have>
+        <itemCheck type="section" id="71">
+          <have>
+            <text>[p]You leave the room and continue your journey to the north.[/p]</text>
+            <next id="80"></next>
+          </have>
+          <dontHave>
+            <next id="71" pos="2">You may drink the liquid</next>
+            <next id="80" pos="3">Alternatively, you may leave the room and continue your journey to the north</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="71">
+          <have>
+            <next id="119" pos="1">You may try on the ring</next>
+            <next id="80" pos="3">Alternatively, you may leave the room and continue your journey to the north</next>
+          </have>
+          <dontHave>
+            <next id="119" pos="1">You may try on the ring</next>
+            <next id="71" pos="2">Or drink the liquid</next>
+            <next id="80" pos="3">Alternatively, you may leave the room and continue your journey to the north</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="13">
+    <text>
+        [p]You place the golden key in the lock, but it does not fit. You have no other choice but to ram it with your shoulder.[/p]
+    </text>
+    <next id="196"></next>
+  </p>
+  <p id="14">
+    <text>
+        [p]As you head north, you pass a junction, but you ignore the route to the west and continue on your way.[/p]
+    </text>
+    <next id="67"></next>
+  </p>
+  <p id="15">
+    <text>
+        [p]The current is too strong and you are swept downstream under a bridge. You see a huge boulder ahead and you try to grab it.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="92"></next>
+      </success>
+      <failure>
+        <next id="132"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="16">
+    <text>
+        [p]As you walk along, you fail to see a man-trap in your way. You step on to it and it cuts deeply into your leg. Lose 2 [span class="ffAttribute"]STAMINA[/span] points. Further along you find another junction. You decide against continuing east or going south, so you go north.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="195"></next>
+  </p>
+  <p id="17">
+    <text>
+        [p]You plunge your sword into his heart, but not without a pang of guilt at his tormented expression. Lose 1 [span class="ffAttribute"]LUCK[/span] point. There is nothing else of value in the room, so you leave by the north door.[/p]
+    </text>
+    <add amount="-1" to="luck" />
+    <next id="180"></next>
+  </p>
+  <p id="18">
+    <text>
+        [p class="inlineImage"][img src="resources/wm5/18.jpg" /][/p]
+        [p]As soon as you step into the room, you realize with horror that you should have glanced upwards first. Clinging to the roof is a gigantic spider, watching you with its many eyes. Swinging beside it hang four silken cocoons, and your heart sickens as you realize that these are other humans, a Dwarf and an Elf captured by the Spider, and only waiting to be consumed. The Spider drops noiselessly to the ground, its fangs reaching greedily towards you.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="7" />
+      <win>
+        <next id="94"></next>
+      </win>
+      <lose>
+        <text>[p]You will get a silken overcoat.[/p]</text>
+      </lose>
+    </fight>
+  </p>
+  <p id="19">
+    <text>
+        [p]Your efforts to get back on to firm ground seem futile, but with one last desperate attempt, you fling yourself towards the ground.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="176"></next>
+      </success>
+      <failure>
+        <next id="151"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="20">
+    <text>
+        [p]The tunnel ends in a heavy door, which is locked not with a key, but with a series of dials for which you need a combination. If you have the combination, add together all three figures, and turn to that number.[/p]
+    </text>
+    <itemCheck type="section" id="50">
+      <have>
+        <userInput type="text">
+          <label>What is the first number of the combination?</label>
+          <result text="15">
+            <userInput type="text">
+              <label>What is the second number of the combination?</label>
+              <result text="10">
+                <userInput type="text">
+                  <label>What is the third number of the combination?</label>
+                  <result text="22">
+                    <next id="47"></next>
+                  </result>
+                  <resultElse>
+                    <text>[p]You don't remember the combination so you must return to the sandy beach and make another choice.[/p]</text>
+                    <next id="76"></next>
+                  </resultElse>
+                </userInput>
+              </result>
+              <resultElse>
+                <text>[p]You don't remember the combination so you must return to the sandy beach and make another choice.[/p]</text>
+                <next id="76"></next>
+              </resultElse>
+            </userInput>
+          </result>
+          <resultElse>
+            <text>[p]You don't remember the combination so you must return to the sandy beach and make another choice.[/p]</text>
+            <next id="76"></next>
+          </resultElse>
+        </userInput>
+      </have>
+      <dontHave>
+        <text>[p]You don't have the combination so you must return to the sandy beach and make another choice.[/p]</text>
+        <next id="76"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="21">
+    <text>
+        [p]The crossbow was aligned perfectly, and you don't stand a chance. The bolt buries itself deep in your neck, severing the spinal cord and pinning your inert body to the wall. Your adventure ends here![/p]
+    </text>
+    <death />
+  </p>
+  <p id="22">
+    <text>
+        [p class="inlineImage"][img src="resources/wm5/22.jpg" /][/p]
+        [p]The door opens into a small room. In one corner lies a huge dog-like creature in a basket. On the far side is a door, with a brass key hanging enticingly on a nail beside it.[/p]
+    </text>
+    <next id="81">If you want to cross quietly to the other door</next>
+    <next id="108">If you would feel safer by closing the door and not risking waking the dog, returning to the junction and heading north</next>
+  </p>
+  <p id="23">
+    <text>
+        [p]Suddenly, the cape stirs around you and seems to fill with air; to your surprise, you find yourself lifted from the floor. You are moved gently forward and deposited softly at the foot of the cliff. As soon as your feet touch the floor, the cape deflates and hangs from your shoulders just like any ordinary garment.[/p]
+    </text>
+    <next id="27"></next>
+  </p>
+  <p id="24">
+    <text>
+        [p]You push your sword through the bars at him, and he jumps back in terror. You do it again, and this time with more force. It pierces his throat, and blood drips down the blade on to your hand. He stares at you uncomprehendingly and slides down the wall to a sitting position. As his head stumps forward, you withdraw your sword and clean it and your blood-stained hands. You decide to keep heading north, and leave by that door.[/p]
+    </text>
+    <next id="72"></next>
+  </p>
+  <p id="25">
+    <text>
+        [p]You reach the other side without incident, and leave through the north passage.[/p]
+    </text>
+    <next id="52"></next>
+  </p>
+  <p id="26">
+    <text>
+        [p]Before you are hundreds of Elves, all with their bows strung, and the arrows pointing at you. The son of the dead Chief steps forward and looks at the old man. The old man gives an almost imperceptible shake of the head. The Elf smiles grimly. ‘Guilty!’ he declares, and the last thing you hear is the whistling of a hundred arrows flying towards you. Your adventure ends here![/p]
+    </text>
+    <death />
+  </p>
+  <p id="27">
+    <text>
+        [p class="inlineImage"][img src="resources/wm5/27.jpg" /][/p]
+        [p]You are standing on the floor of a huge chasm eaten deep into the ground by a fast-flowing river. You look for a way to cross, but can only see a small, insecure, rather rotten-looking bridge. As you approach it, you can see that it is in the process of being eaten, even as you watch, by giant two-headed termites, whose red eyes   contrast   horribly   with   their   bloated white bodies. Any one of these could give you a nasty double bite. If you hurry, you may be able to cross the bridge before it is too far gone to support you.[/p]
+    </text>
+    <next id="40">If you try to cross it</next>
+    <next id="2">If you decide to dive into the swift river and attempt to swim for it</next>
+  </p>
+  <p id="28">
+    <text>
+        [p]After a while you reach another junction. You ignore the way to the south and head north.[/p]
+    </text>
+    <next id="67"></next>
+  </p>
+  <p id="29">
+    <text>
+        [p]This   tunnel   joins   up   with   a   north–south passageway.    You    decide    to    turn    north instead of south.[/p]
+    </text>
+    <next id="69"></next>
+  </p>
+  <p id="30">
+    <text>
+        [p]The passage starts out heading west, but soon there is a turn to the north. You finally come upon a door in the east wall.[/p]
+    </text>
+    <next id="124">If you wish to open it</next>
+    <next id="129">If you wish to carry on towards the north</next>
+  </p>
+  <p id="31">
+    <text>
+        [p]You walk along the tunnel, but it ends at a junction. You turn your back on the way south, and head north.[/p]
+    </text>
+    <next id="99"></next>
+  </p>
+  <p id="32">
+    <text>
+        [p]You decide to leave the room without any further delay. You close the door and head east.[/p]
+    </text>
+    <next id="16"></next>
+  </p>
+  <p id="33">
+    <text>
+        [p]The tunnel winds about, but always heads north. Soon a door appears in the right-hand wall.[/p]
+    </text>
+    <next id="5">If you wish to try the handle</next>
+    <next id="14">If you would prefer to leave the door and continue north</next>
+  </p>
+  <p id="34">
+    <text>
+        [p]The phial smells strongly of mint.[/p]
+    </text>
+    <next id="102">If you wish to drink it</next>
+    <next id="169">If you want to leave it where it is</next>
+  </p>
+  <p id="35">
+    <text>
+        [p]You claw desperately at the wall, in a futile attempt to halt your headlong flight to doom. As you approach the end of the chute, you hear the crackling of flames, and have a horrific sight of the inferno. Your impetus launches you out into space, and as you fall into the fire, the intense heat vaporizes you into a small puff of smoke. Your adventure ends here![/p]
+    </text>
+    <death />
+  </p>
+  <p id="36">
+    <text>
+        [p]You find nothing, so you leave by the north door.[/p]
+    </text>
+    <next id="98"></next>
+  </p>
+  <p id="37">
+    <text>
+        [p]As you search through the rubble, you stub your toe against a piece of iron. Clearing the mess from around it reveals the outline of a heavy trapdoor, set into the floor. Whether it is so rusted as to be inoperable is hard to say. Nevertheless you try to pull it up.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="199"></next>
+      </success>
+      <failure>
+        <next id="130"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="38">
+    <text>
+        [p]You will have to search the dead end.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="114"></next>
+      </success>
+      <failure>
+        <next id="55"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="39">
+    <text>
+        [p class="inlineImage"][img src="resources/wm5/39.jpg" /][/p]
+        [p]As you enter the room, you see that it is the most civilized so far. The walls are lined with wooden panels, and instead of the endless torches, it is lit by a soft light, glowing from a large shining ball, which hovers magically over a table in the centre of the room. Sitting at the table, you can make out the bent figure of another human. As you close the door behind you, he rises and holds out both hands in welcome. His voice, when he speaks, is thin and wavering, and you realize that he is very, very old. ‘Have you found the Idol?’ he asks.[/p]
+    </text>
+    <itemCheck type="item" id="3011">
+      <have>
+        <next id="91">If you want to hand him the idol</next>
+        <next id="77">If you do not trust him, and want to attack him</next>
+      </have>
+      <dontHave>
+        <next id="131">If you admit that you do not have the idol</next>
+        <next id="77">If you do not trust him, and want to attack him</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="40">
+    <text>
+        [p]As you walk on to the termite-ridden construction, it creaks and groans. With each step, a little more crumbles away, until it is hanging by a single rope, which supports only one plank.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="60"></next>
+      </success>
+      <failure>
+        <next id="75"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="41">
+    <text>
+        [p]The tunnel, though twisting and turning, keeps steadily to the north, until suddenly, as you turn a corner, you almost collide with a man dressed in black robes. He is holding a dagger in front of him, and the expression on his face is one of terror! You realize that there is another man on trial, and that you are both searching for the Idol. He jumps at you, obviously intending to kill you. You must fight him.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="1" />
+    </fight>
+    <next id="85"></next>
+  </p>
+  <p id="42">
+    <text>
+        [p]The passageway continues to open out until you find yourself in a huge cavern. On every side there are stalagmites and stalactites; some of them are joined into massive columns, behind which any number of horrors may be lurking. You feel a persistent draught flowing through the cavern, and realize that it is caused by the fast-flowing waters of a dangerous-looking river. You look upwards, and your eyes follow the lines of the stalactites until they disappear into the limitless blackness above. Some way downstream you perceive the outline of a small insecure-looking bridge.[/p]
+    </text>
+    <next id="27"></next>
+  </p>
+  <p id="43">
+    <text>
+        [p]The cape suddenly fills out, and stops you falling. For a second you hang motionless in mid-air. You peer down, but cannot see the bottom. You are surprised and thankful when the cape deposits you gently back in the doorway. With a sigh of relief you head north again.[/p]
+    </text>
+    <next id="68"></next>
+  </p>
+  <p id="44">
+    <text>
+        [p]With amazing foresight, you suspected that this was a trick, and jumped aside, leaving the darts to fall harmlessly to the floor.[/p]
+    </text>
+    <next id="65"></next>
+  </p>
+  <p id="45">
+    <empty />
+  </p>
+  <p id="46">
+    <text>
+        [p]The [span class="takeItem" data-id="3009" data-amount="1"]ruby[/span] is very valuable. You thread your way back through the spikes to the junction.[/p]
+    </text>
+    <next id="184"></next>
+  </p>
+  <p id="47">
+    <text>
+        [p class="inlineImage"][img src="resources/wm5/47.jpg" /][/p]
+        [p]You approach the door and, taking the vast lock in your hand, twist the dials until you have put in the combination. As the last tumbler falls, the door opens to reveal a room lined with shelves full of books. It is a library, and on the central reading-desk three books lie open. If you have time, you can read them.[/p]
+    </text>
+    <next id="59">To read the red book</next>
+    <next id="104">To read the blue book</next>
+    <next id="88">To read the green book</next>
+    <next id="10">If you cannot read, and decide to leave by the north door</next>
+  </p>
+  <p id="48">
+    <text>
+        [p]You reach to the bottom without mishap.[/p]
+    </text>
+    <next id="27"></next>
+  </p>
+  <p id="49">
+    <text>
+        [p]The herb has magical powers of healing and good fortune. Add 4 [span class="ffAttribute"]STAMINA[/span] points. Your [span class="ffAttribute"]LUCK[/span] score will never be less than 6. You leave by the north door.[/p]
+    </text>
+    <add amount="4" to="stamina" />
+    <next id="152"></next>
+  </p>
+  <p id="50">
+    <text>
+        [p]You search the body and find [span class="takeItem" data-id="gold" data-amount="2"]2 Gold Pieces[/span] and a slip of parchment with three numbers inscribed on it. You have no idea what they represent, but suspect that they may be a combination for a lock, possibly where the Idol is hidden. You must memorize them, in case you lose the parchment. They are 15, 10, 22. Follow the passage north.[/p]
+    </text>
+    <next id="143"></next>
+  </p>
+  <p id="51">
+    <text>
+        [p]The door opens into a small room which appears to hold nothing more sinister than a layer of rubble across the floor. As you walk further into the room you become aware of a fetid smell, and a high-pitched squeaking sound, which gets louder and angrier, until with a hiss and a squeal, two enormous Bats detach themselves from the corners and swoop down towards you. You just have time, as you duck, to see their snarling fangs ready to tear at your throat.[/p]
+    </text>
+    <next id="80">If you wish to back out quickly, slam the door and head north</next>
+    <next id="140">If you want to fight these horrible creatures</next>
+  </p>
+  <p id="52">
+    <text>
+        [p]The passage turns sharply east. Following the tunnel, you reach a door.[/p]
+    </text>
+    <next id="90">If you want to open the door</next>
+    <next id="16">If you want to continue eastwards</next>
+  </p>
+  <p id="53">
+    <text>
+        [p]The beach seems to be deserted, and you search carelessly, so that the small purple crab hidden in the sand is easily able to pinch you. Lose 2 [span class="ffAttribute"]STAMINA[/span] points. You may leave here by any of the three doors.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="87">To take the north door</next>
+    <next id="6">To take the west door</next>
+    <next id="111">To take the east door</next>
+  </p>
+  <p id="54">
+    <text>
+        [p]As you fall you hit your knee most painfully. Lose 2 [span class="ffAttribute"]STAMINA[/span] points.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="27"></next>
+  </p>
+  <p id="55">
+    <text>
+        [p]You find nothing. You return to the junction and head east.[/p]
+    </text>
+    <next id="31"></next>
+  </p>
+  <p id="56">
+    <text>
+        [p]As you step out of the passageway, you are awed by the sight which meets your eyes. You are standing on a narrow ledge about halfway down the face of a cliff, which forms one side of an enormous chasm. The glint of moving water tells you that at the foot of this gorge runs a river. You see to your right a passageway and a flight of steps leading to the bottom. You see it is the only way forward, and begin to descend carefully.[/p]
+    </text>
+    <next id="27"></next>
+  </p>
+  <p id="57">
+    <text>
+        [p]You come upon an alcove, carved out of the wall, in which you see three small bottles. The first is a bottle of clear liquid, with no real smell. The second contains a golden-coloured fluid, which smells slightly sweet, and the third has in it a pale green syrup which smells sour and acrid.[/p]
+    </text>
+    <next id="139">If you want to drink the first bottle</next>
+    <next id="150">If you want to drink the second bottle</next>
+    <next id="197">If you want to drink the third bottle</next>
+    <next id="29">If you dare not drink any of them, but continue east</next>
+  </p>
+  <p id="58">
+    <text>
+        [p]As you step into the room, the section of floor on which you are standing falls away.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="176"></next>
+      </success>
+      <failure>
+        <next id="19"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="59">
+    <text>
+        [p]You pick up the red book, and peruse its contents, hoping that it will give you a clue to the way out of the dungeon. Unfortunately, it is written in ancient Elven and you cannot understand one rune of it.[/p]
+    </text>
+    <itemCheck type="section" id="88">
+      <have>
+        <itemCheck type="section" id="104">
+          <have>
+            <text>[p]You leave the room via the north door.</text>
+            <next id="10"></next>
+          </have>
+          <dontHave>
+            <next id="104">You may now try the blue book</next>
+            <next id="10">Or leave the room via the north door</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="104">
+          <have>
+            <next id="88">You may now try the green book</next>
+            <next id="10">Or leave the room via the north door</next>
+          </have>
+          <dontHave>
+            <next id="104">You may now try the blue book</next>
+            <next id="88">The green book</next>
+            <next id="10">Or leave the room via the north door</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="60">
+    <text>
+        [p]The bridge stays intact just long enough for you to reach the far bank. As you step off, it collapses.[/p]
+    </text>
+    <next id="76"></next>
+  </p>
+  <p id="61">
+    <text>
+        [p]Edging your way around the body of the monstrous Galon, whose bird-like claws are still stretching and contracting as though to tear you apart even in death, you search the room for a way out. As you look you become aware of a creeping stench of decay, which fills the air. You turn to look at the Birdman, and are in time to see his leathery wings disappear under a mass of wriggling maggots; in seconds, all that remains are the hollow bones. As soon as there is no further food for them, they begin to advance towards you, and you realize that you are in deadly danger. You must find a way out, as they are between you and the door.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="109"></next>
+      </success>
+      <failure>
+        <next id="175"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="62">
+    <text>
+        [p]You realize that you cannot get down the cliff, and must return to the junction.[/p]
+    </text>
+    <next id="95"></next>
+  </p>
+  <p id="63">
+    <text>
+        [p]When you stumbled, you lost two items from your backpack. Lose 1 [span class="ffAttribute"]LUCK[/span] point and leave through the northern passageway.[/p]
+    </text>
+    <loseItem id="2000,2001,2002,2003,3005,3006,3008,3009,3010,3011" amount="2" />
+    <add amount="-1" to="luck" />
+    <next id="52"></next>
+  </p>
+  <p id="64">
+    <text>
+        [p]As you jump down, your backpack catches and you are momentarily unbalanced as you land on the floor.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="117"></next>
+      </success>
+      <failure>
+        <next id="186"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="65">
+    <text>
+        [p]The door opens on to a damp passage. It starts at the door, and runs east before it turns north. You set off along the tunnel.[/p]
+    </text>
+    <next id="84"></next>
+  </p>
+  <p id="66">
+    <text>
+        [p class="inlineImage"][img src="resources/wm5/66.jpg" /][/p]
+        [p]You come to a flight of stairs and are just about to start down them, when a noise behind you alerts you to danger. Whirling around, you find yourself face to face with a short, thickset man, whose ugly face breaks into a hideous grin. From behind his back he produces a morning star, and with a battle-cry   like   the   fabled   Banshee,   he   whirls   it round his head and scores a hit on your arm. Lose 1 [span class="ffAttribute"]STAMINA[/span] point. You have to fight him.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <fight type="single">
+      <enemy id="12" />
+      <win>
+        <text>[p]You continue down the northerly direction.[/p]</text>
+      </win>
+    </fight>
+    <next id="118"></next>
+  </p>
+  <p id="67">
+    <text>
+        [p]Soon the tunnel opens out rapidly, and you are confronted by a magnificent view. You are on a ledge halfway up a huge cliff in an underground gorge. There seems to be no way down and you dare not retrace your steps.[/p]
+    </text>
+    <itemCheck type="item" id="3002">
+      <haveEquipped>
+        <next id="105"></next>
+      </haveEquipped>
+      <have>
+        <next id="86"></next>
+      </have>
+      <dontHave>
+        <next id="86"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="68">
+    <text>
+        [p]Soon the tunnel turns to the right, and you see that it heads east for some way. There seems to be nothing in the way, so you follow it.[/p]
+    </text>
+    <next id="137"></next>
+  </p>
+  <p id="69">
+    <text>
+        [p]You come to a side-passage leading east. The way ahead of you seems to come to an abrupt end, or maybe a sharp corner.[/p]
+    </text>
+    <next id="31">If you want to take the side-passage to the east</next>
+    <next id="11">If you want to go further north to investigate the end of the tunnel</next>
+  </p>
+  <p id="70">
+    <text>
+        [p]The door opens into a small room. As you stand in the doorway you see, reflected in the flickering light of the torches, a glint of purest crimson light. It is a huge ruby, and you would be rich for ever if you could take it out of the dungeon with you.[/p]
+    </text>
+    <next id="18">If you wish to walk over to the gem and pick it up</next>
+    <next id="106">If you think it would be better to leave it (after all, it will be quite heavy)</next>
+  </p>
+  <p id="71">
+    <text>
+        [p]You put the phial to your lips and drink its contents. You are surprised to find it is tasteless, but you feel refreshed. It was a phial of Holy Water, blessed by an ancient Druid. In all future battles you may add 1 to your Attack Strength. Add 1 [span class="ffAttribute"]LUCK[/span] point.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <gatherItem id="4001" />
+    <itemCheck type="section" id="119">
+      <have>
+        <itemCheck type="section" id="12">
+          <have>
+            <text>[p]You leave the room and continue your journey to the north.[/p]</text>
+            <next id="80"></next>
+          </have>
+          <dontHave>
+            <next id="12" pos="2">You may try on the cape</next>
+            <next id="80" pos="3">Alternatively, you may leave the room and continue your journey to the north</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="12">
+          <have>
+            <next id="119" pos="1">You may try on the ring</next>
+            <next id="80" pos="3">Alternatively, you may leave the room and continue your journey to the north</next>
+          </have>
+          <dontHave>
+            <next id="119" pos="1">You may try on the ring</next>
+            <next id="12" pos="2">Or you may try on the cape</next>
+            <next id="80" pos="3">Alternatively, you may leave the room and continue your journey to the north</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="72">
+    <text>
+        [p]The door opens on to yet another tunnel. This time it seems to run from east to west. You really need to head north, but will have to try another direction and see where it leads. You turn to the west and, rather to your relief, arrive at a crossroads. Thankfully you turn north and continue.[/p]
+    </text>
+    <next id="195"></next>
+  </p>
+  <p id="73">
+    <text>
+        [p]Still heading west, you see that the tunnel ends in a fall of rock. There is no way you can get through without pick and spade. As you are about to turn to retrace your steps, a patch of deeper darkness shows you the entrance to another small passageway, heading north.[/p]
+    </text>
+    <next id="174"></next>
+  </p>
+  <p id="74">
+    <text>
+        [p]Stepping over the bodies of the Mud Dragons, you hurry along the ledge, with rather less care than you should. For one heart-stopping moment, you teeter on the edge of the mud well, as your ankle turns on a stone. With one convulsive heave you throw yourself forward and reach a firmer footing.[/p]
+    </text>
+    <next id="63"></next>
+  </p>
+  <p id="75">
+    <text>
+        [p]Your weight is too much for the frail structure, and it crumbles away beneath your feet. You fall into the water, and must swim for your life. The current is very powerful.[/p]
+    </text>
+    <next id="148"></next>
+  </p>
+  <p id="76">
+    <text>
+        [p]You find yourself on a sandy beach, shaped like a half-moon. The cliff wall behind you forms a large alcove, in which there are three doors. You have the choice of leaving the beach by any of the doors, or of searching the beach first, to see if there are any jewels or alluvial gold deposits in the sandy soil.[/p]
+    </text>
+    <next id="87" pos="1">If you want to leave by the north door</next>
+    <next id="6" pos="2">If you want to leave by the west door</next>
+    <itemCheck type="section" id="111">
+      <dontHave>
+        <next id="111" pos="3">If you want to leave by the east door</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="53">
+      <dontHave>
+        <next id="53" pos="4">If you want to search the beach</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="77">
+    <text>
+        [p]Before you even have time to draw your sword, the old man holds up his right hand. His smile fades, and his voice, suddenly much stronger, echoes in your head, though his lips do not move. ‘Do not consider attempting to harm me. My powers are great, and I can make you even as a pillar in the Great Hall, of solid stone.’[/p]
+    </text>
+    <next id="135" pos="1">If you wish to ignore the warning and continue your attack</next>
+    <itemCheck type="item" id="3011">
+      <have>
+        <next id="91" pos="2">If you hand him the Idol</next>
+        <next id="131" pos="3">If you do not want to admit to having it</next>
+      </have>
+      <dontHave>
+        <next id="131" pos="3">If you admit that you do not have it</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="78">
+    <text>
+        [p]The crossbow has been slightly misaligned, and instead of it dealing you a death blow to the head or neck, it merely buries itself deep into your left shoulder. It could be worse, but you lose 4 [span class="ffAttribute"]STAMINA[/span] points. You wrench it out and staunch the flow of blood with a strip torn from your tunic. Cursing loudly, you set off towards the north, the only way left to you.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <next id="89"></next>
+  </p>
+  <p id="79">
+    <text>
+        [p]The passage, which heads east, is very narrow and dark, and there is an opening on your left which heads north.[/p]
+    </text>
+    <next id="141">If you wish to turn along this new passage</next>
+    <next id="122">If you wish to continue east</next>
+  </p>
+  <p id="80">
+    <text>
+        [p]You go north and, after struggling over the uneven terrain for a while, you come across a junction. As the floor of this tunnel to the west looks even worse than the one you are already in, you continue on your way.[/p]
+    </text>
+    <next id="89"></next>
+  </p>
+  <p id="81">
+    <text>
+        [p]You are creeping as quietly as you can across the room, when your sword clinks against a stone, making a sharp ringing noise.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="97"></next>
+      </success>
+      <failure>
+        <next id="138"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="82">
+    <text>
+        [p]You have hacked off the head of the Mud Dragon, and it lies before you on the pathway, blocking your way. You dare not touch it to heave it out of the way into the mud, for the tentacles across its eyebrows are still glowing with the strange green glow that you had noticed before. Using your sword as a lever, you roll it to the brink of the ledge, where once more, in a final agony of death, it begins to swell. You rush past it before it blocks the way again, and hear its ultimate deflation as it hisses its way to extinction behind you.[/p]
+    </text>
+    <next id="52"></next>
+  </p>
+  <p id="83">
+    <text>
+        [p]The old face before you crumples with relief. He opens a secret compartment in the wall, and takes out a skin pouch. He tips the contents on to your outstretched hand – [span class="takeItem" data-id="gold" data-amount="27"]27 Gold Pieces[/span] and a [span class="takeItem" data-id="3010" data-amount="1"]diamond[/span]. You secrete them in your backpack.[/p]
+    </text>
+    <next id="180">If you wish to leave now, by the door in the north wall</next>
+    <next id="17">If you decide to betray his trust and kill him</next>
+  </p>
+  <p id="84">
+    <text>
+        [p]On your left you see a massive oaken door, heavily studded with iron bolts, with a handle, shaped like an enormous bird, in the middle of it. Surely such a door could guard the Idol![/p]
+    </text>
+    <next id="157">If you wish to open it</next>
+    <next id="125">If you think it all too obvious and would rather carry on your way to the north</next>
+  </p>
+  <p id="85">
+    <text>
+        [p]All the thief was carrying were [span class="takeItem" data-id="gold" data-amount="3"]3 Gold Pieces[/span] and a mouldy piece of fruit, triangular in shape. You have never seen one like it before, but suspect that it may be the legendary fruit of longevity, the Xentos. You would risk eating it, if it were not in such poor condition, but you decide to leave it, and head north again. Soon you come to a fork in the road.[/p]
+    </text>
+    <next id="108">You can go north</next>
+    <next id="147">Or you can fork left towards the west</next>
+  </p>
+  <p id="86">
+    <text>
+        [p]As you look about, you notice a rope tied to a large rock. The rope does not look new, and you cannot see how far down the cliff it reaches, but it seems to be the only way down.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="190"></next>
+      </success>
+      <failure>
+        <next id="4"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="87">
+    <text>
+        [p]The tunnel is sealed off completely by a large iron-studded door. You try the handle, but it is locked. You look through the vast keyhole, but can see little. Placing your ear to the keyhole, you hear a rustling of feathers and a whistling sigh.[/p]
+    </text>
+    <itemCheck type="item" id="3008">
+      <have>
+        <next id="13"></next>
+      </have>
+      <dontHave>
+        <next id="121"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="88">
+    <text>
+        [p]The green book is handwritten, and seems to be a diary of some sort. As you look at the last entry, you realize with a start that your own name is inscribed there. It is the daily record of criminals submitted for trial. At least there is not yet a verdict written in. You realize too that there is no other person following you, in search of the Idol, but that the day before you entered the dungeon a thief was committed for trial. His verdict is already in the book … guilty! If you have not already done so, you may read the red book and the blue book, or leave through the north door.[/p]
+    </text>
+    <itemCheck type="section" id="104">
+      <have>
+        <itemCheck type="section" id="59">
+          <have>
+            <text>[p]You leave the library.[/p]</text>
+            <next id="10"></next>
+          </have>
+          <dontHave>
+            <next id="59">To read the red book</next>
+            <next id="10">To leave the library</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="59">
+          <have>
+            <next id="104">To read the blue book</next>
+            <next id="10">To leave the library</next>
+          </have>
+          <dontHave>
+            <next id="59">To read the red book</next>
+            <next id="104">To read the blue book</next>
+            <next id="10">To leave the library</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="89">
+    <text>
+        [p]The tunnel slopes sharply uphill, and you become very tired. Your concentration flags, and you fail to notice the loose slab in the floor ahead of you. You trip and fall. As you fall, your shield becomes wedged into a crack in the wall; it buckles as you prise it loose. In all future battles with this damaged shield, you lose 2 points from your Attack Strength. You carry on, grumbling, and eventually arrive at a junction.[/p]
+    </text>
+    <loseItem id="3003" />
+    <gatherItem id="3004" />
+    <next id="95">If you want to go west</next>
+    <next id="127">If you want to continue north</next>
+  </p>
+  <p id="90">
+    <text>
+        [p]You push open the door, and face total darkness.[/p]
+    </text>
+    <itemCheck type="item" id="3001">
+      <haveEquipped>
+        <next id="134" pos="1">If you want to feel your way in</next>
+      </haveEquipped>
+      <have>
+        <next id="58" pos="1">If you want to feel your way in</next>
+      </have>
+      <dontHave>
+        <next id="58" pos="1">If you want to feel your way in</next>
+      </dontHave>
+    </itemCheck>
+    <next id="154" pos="2">If you want to leave it alone</next>
+  </p>
+  <p id="91">
+    <text>
+        [p]You take the Idol from your backpack and, giving it a rub on your sleeve, hold it out to the old man. He takes it from you, and places it casually in a desk drawer, not even bothering to lock it. He beckons you to follow him, and leads the way up a long, circular staircase. The top of the stairs opens out into a wide platform, and you feel the sunlight on your face and the breeze in your hair for the first time in what seems like a twelvemonth.[/p]
+    </text>
+    <next id="200"></next>
+  </p>
+  <p id="92">
+    <text>
+        [p]You grab the rock and rest for a moment, while the water tries to tear you away from your precarious hold. You haul yourself up clear of the water and, as you lie panting on the hard rock, a glint of gold catches your eye. You crawl forward, and to your joy discover the small [span class="takeItem" data-id="3011" data-amount="1"]Golden Idol[/span] for which you have been searching, lying in a niche in the rock! Forgetting your fatigue, you remove it, and leap from the rock to the other bank.[/p]
+    </text>
+    <next id="76"></next>
+  </p>
+  <p id="93">
+    <text>
+        [p]You are halfway down the rope, when you hear a monstrous cry. You look up to see a huge bird peering down at you from his perch high up on the cliff. With one flap of his colossal wings, he soars far out over the river and back  towards  you.  You  can  feel your palms sweating with fear. Your hands leave the rope and you fall towards the floor. With a triumphant squawk, the bird plucks you from mid-air, rises towards his nest and you feel yourself falling down … down … to where two hideous half-grown chicks are waiting for their next meal. You are torn limb from limb, and swallowed greedily. Your adventure ends here.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="94">
+    <text>
+        [p]You have entangled the great insect in its own silken web. Grasping the [span class="takeItem" data-id="3009" data-amount="1"]ruby[/span], you have to reach the door. You cannot get out of this room full of silken tombs fast enough! The huge bulk of the Spider, covered in its sticky silk,   lies   before   you.   You   must   clamber across it, and the feel of the gluey mass sickens you. When you get to the door, you roll in the dust, to cover the stickiness. You are filthy and tired. Leave this place and head north.[/p]
+    </text>
+    <next id="106"></next>
+  </p>
+  <p id="95">
+    <text>
+        [p]You go for some way west down a sloping passage, until you reach another junction. Head north, ignoring this southern passage.[/p]
+    </text>
+    <next id="153"></next>
+  </p>
+  <p id="96">
+    <text>
+        [p class="inlineImage"][img src="resources/wm5/96.jpg" /][/p]
+        [p]Around a bend in the tunnel you see a strange, unearthly radiance. The light seems to pulsate and change colour, as you watch its reflections on the wall of the tunnel ahead of you. You proceed with great caution, and round the bend you come upon a weird scene. Three very small figures, dressed in fine silver cloaks which float around them as they move, are performing a ritual dance around the source of light. As the colours change, it throws reflections on mirrors hung all around the walls of the cavern, and the scintillating points of light shimmer back and forth until your brain feels as if it is spinning in your skull. The light comes from a great crystal set on a tall plinth, but you cannot decide what type of gem it is. There is no time for speculation, however, as an incautious movement is reflected a thousandfold from the mirrored wall, and the creatures turn with a shriek of rage and hurl themselves angrily upon you. You must fight them as one creature.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="5" />
+    </fight>
+    <next id="191"></next>
+  </p>
+  <p id="97">
+    <text>
+        [p]Your hand flies to the hilt of your sword and muffles it. The dog stirs, but does not awaken. Your heart pounding in your chest, you reach the other side safely, take down the [span class="takeItem" data-id="3005" data-amount="1"]key[/span], open the door silently and slam it behind you. As you lock it again you hear terrifying snarls, and splintering wood as the dog hurls itself time and time again against the other side of the door.[/p]
+    </text>
+    <next id="30"></next>
+  </p>
+  <p id="98">
+    <text>
+        [p]The door is locked, but your key fits it. As you turn it, two darts fly out of a hole in the door.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="44"></next>
+      </success>
+      <failure>
+        <next id="8"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="99">
+    <text>
+        [p]The feeble light of the torches reveals a heavy grille in the right-hand wall. It is locked, and however hard you look, you can see nothing beyond it.[/p]
+    </text>
+    <itemCheck type="item" id="3005">
+      <have>
+        <next id="159">If you want to open it with the brass key</next>
+        <next id="68">If you do not wish to open the cage-like gate, but carry on north</next>
+      </have>
+      <dontHave>
+        <text>[p]You carry on north.[/p]</text>
+        <next id="68"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="100">
+    <text>
+        [p]The creature lies dead before you; the trailing streams of saliva from his slavering jaws are already soaking into the dusty floor. His [span class="takeItem" data-id="3006" data-amount="1"]claws[/span] are of solid gold; you tear them one by one from the huge paws and pocket them. Take the [span class="takeItem" data-id="3005" data-amount="1"]key[/span] from beside the door and leave.[/p]
+    </text>
+    <next id="30"></next>
+  </p>
+  <p id="101">
+    <text>
+        [p]The surface of the mud begins to rise in the centre, and a massive bubble of gas bursts with a dull phut. As the surface begins to settle, small points of green light flicker across it. Next, the points of light appear to be on stalks, which grow from the mud, getting longer by the minute. Eventually, with a massive heave, a Mud Dragon rises from the depths! It lies half submerged in the glutinous mess. The green lights you now see to be tentacles across its eyebrows, and they range round like antennae, until with one accord they all are pointing at you. The vast mouth opens, allowing a cloud of evil-smelling gas to escape, and the monster begins to gasp in air. As it does so, it swells. Bigger and bigger it grows, until you feel that it must fill all the chamber. You must fight it. You draw your sword, which suddenly seems inadequate in the face of such power.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="16" />
+    </fight>
+    <next id="82"></next>
+  </p>
+  <p id="102">
+    <text>
+        [p]When you have drunk the refreshing liquid in the phial, you are amazed at how much better you feel. It was a small dose of the Elixir of Fortune. Restore all your [span class="ffAttribute"]LUCK[/span] points and raise your Initial [span class="ffAttribute"]LUCK[/span] score by 1. You head north again.[/p]
+    </text>
+    <add amount="1" to="initialLuck" />
+    <add amount="99" to="luck" />
+    <next id="169"></next>
+  </p>
+  <p id="103">
+    <text>
+        [p]Although the water is deep and fast, you find you have the strength to swim downstream, and reach the far bank much lower down. You clamber out and make your way back to the spot opposite the bridge, where you pick up the path again.[/p]
+    </text>
+    <next id="76"></next>
+  </p>
+  <p id="104">
+    <text>
+        [p]The blue book is a book of maps, and although all the names are written in Elvan, you recognize the terrain as being Analand. It becomes obvious to you that this is an up-to-date record of all the towns and cities and, even more important, of the location of mines where precious gems and metals are to be found. If you could take this with you to the surface, your job as courier would in future be infinitely safer and more profitable. You put the book into an inside pocket.[/p]
+    </text>
+    <gatherItem id="3012" />
+    <itemCheck type="section" id="88">
+      <have>
+        <itemCheck type="section" id="59">
+          <have>
+            <text>[p]You simply leave via the north door.[/p]</text>
+            <next id="10"></next>
+          </have>
+          <dontHave>
+            <next id="59">You may read the red book</next>
+            <next id="10">Or simply leave via the north door</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="59">
+          <have>
+            <next id="88">You may read the green book</next>
+            <next id="10">Or simply leave via the north door</next>
+          </have>
+          <dontHave>
+            <next id="59">You may read the red book</next>
+            <next id="88">Or the green book</next>
+            <next id="10">Or simply leave via the north door</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="105">
+    <text>
+        [p]To your utter amazement, you feel the cape fill out, and you are lifted off your feet. You float slowly to the ground and land gently. You are hardly able to believe your good fortune.[/p]
+    </text>
+    <next id="27"></next>
+  </p>
+  <p id="106">
+    <text>
+        [p]The passage wends its way north until you reach another junction.[/p]
+    </text>
+    <next id="179">If you would like to turn east</next>
+    <next id="153">If you prefer to continue as you are</next>
+  </p>
+  <p id="107">
+    <text>
+        [p class="inlineImage"][img src="resources/wm5/107.jpg" /][/p]
+        [p]Hearing the sound of voices from the other side of the door you open it very cautiously. Peering round it, you see two Orcs chattering to each other. Hoping that they will be indifferent to you, you attempt to pass, but they draw their swords, and you must fight them one at a time.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="8" />
+      <enemy id="9" />
+    </fight>
+    <next id="198"></next>
+  </p>
+  <p id="108">
+    <text>
+        [p]Following the passage north, you have the opportunity to take a passage to the east.[/p]
+    </text>
+    <next id="146">If you wish to continue north</next>
+    <next id="79">If you want a change of direction</next>
+  </p>
+  <p id="109">
+    <text>
+        [p]You back away from the maggots, until your outstretched hands touch the north wall. You turn and try to find a foothold above floor-level. There is a tiny ledge about half a metre above the ground. Reaching up for a handhold, you grasp a knob of rock, and step on to the ledge. You almost lose your grip, as the whole section on which you are perched swivels into the wall, taking you with it. You find you are outside the room, in a tunnel leading north. Breathing a sigh of relief, you step off the wall, and head north. You come to a crossroads. You continue north.[/p]
+    </text>
+    <next id="195"></next>
+  </p>
+  <p id="110">
+    <text>
+        [p]The key fits and the door opens on to a tunnel going north. The passageway turns sharply to the right and then turns north once more. As you turn the second corner, you find yourself face to face with a mirror, which completely blocks the way. Your own reflection stands staring back at you. Suddenly, and to your total amazement, the image steps out of the magical mirror, draws its sword and attacks you! As it is your replica, use your own amount of SKIL L points for it, but the change from two dimensions to three has tired it, so its [span class="ffAttribute"]STAMINA[/span] is 2 below yours. This is one of your hardest fights and you are not sure that you can win either way. It can obviously kill you, but you are not sure that killing it won’t be the same as committing suicide.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="13" />
+    </fight>
+    <next id="128"></next>
+  </p>
+  <p id="111">
+    <text>
+        [p]The tunnel becomes narrower, and you are finding it quite a struggle to get through. Now the ceiling slopes sharply downwards, and you have to bend down and eventually crawl. You can see a little way ahead of you, through the now very small passageway.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>[p]You find a handy chunk of loose rock and batter at the walls, until you break through to a wider passage.[/p]</text>
+        <next id="20"></next>
+      </success>
+      <failure>
+        <next id="116"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="112">
+    <text>
+        [p]As you walk forward, you hear a noise. You stop to listen: there are shuffling footsteps approaching. There is nowhere to hide and you stand with sword drawn, expecting a monster to appear. Instead an old man comes into view. Seeing your sword, he quickly croaks, ‘Spare me! I am an old and helpless felon who has escaped his cell.’ You sheathe your sword and he explains to you that he has lived here for many years, since he was admitted to the Dungeon of Justice as a young man. During a fight with a monster he was severely wounded, and although he escaped with his life, he lost his weapons, and was unable to continue his journey. He had lain in hiding for a long time, and was now too old to try to reach the upper world, where he would surely die without the Idol to uphold his innocence. He preferred to stay where he was, in endless night, eating only what he could beg from other travellers. As he talks, he decides to make one more attempt to find a way out, and he asks you the way back to the entrance.[/p]
+    </text>
+    <next id="187">If you wish to tell him the right way</next>
+    <next id="156">If you wish to tell him the wrong way</next>
+  </p>
+  <p id="113">
+    <text>
+        [p]As you shake him, his eyes flicker open, and when he sees you, they fill with terror. ‘No, no! Don’t kill me,’ he pleads.[/p]
+    </text>
+    <next id="17">‘If you let me live, I will give you all the money I have hidden!’ If you wish to kill him</next>
+    <next id="83">If you agree to the deal</next>
+  </p>
+  <p id="114">
+    <text>
+        [p]As you search, you begin to tire; you sit on a large square stone to rest. As soon as your full weight falls on the rock, there is a grating noise and a section of the far wall slides open. You leap to your feet, all tiredness forgotten, and step through.[/p]
+    </text>
+    <next id="177"></next>
+  </p>
+  <p id="115">
+    <text>[p]You plunge down into the pit, bracing yourself for the jar to your feet as you reach the bottom. You have fallen quite a way before it dawns on you that there is no bottom. A feeling of weightlessness comes over you, and you continue to fall … and fall … and fall … Your adventure ends here![/p]</text>
+    <death />
+  </p>
+  <p id="116">
+    <text>
+        [p]Your backpack has become firmly wedged in the ever-narrowing passageway. There is no way you can wriggle out of the backpack and, try as you will, you cannot free it. You lie for a moment before making a renewed effort, and then make one last attempt. There is a low rumbling noise, and the air is filled with dust, as a section of the roof behind you falls into the tunnel. You are now entombed in total darkness. You know that you will not suffocate, as there is a cool breeze playing over your face from the narrow crack in the walls ahead of you. The prospect of a lingering death from thirst and starvation stares you in the face, and you begin to pray for a further roof fall to put you out of your misery. Your adventure ends here.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="117">
+    <text>
+        [p]You manage to roll on to your side, so minimizing injury. Lose 1 [span class="ffAttribute"]STAMINA[/span] point. You waste no time, and set off to the north.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="126"></next>
+  </p>
+  <p id="118">
+    <text>
+        [p]You enter a room with three exits, one you have just come from, one opposite you, and one immediately beside where you stand, which presumably returns in the general direction from which you have come, though possibly on another level.[/p]
+    </text>
+    <next id="145"></next>
+  </p>
+  <p id="119">
+    <text>
+        [p]As you put on the ring, you experience a fierce burning sensation in your finger. Lose 1 [span class="ffAttribute"]LUCK[/span] point and 2 [span class="ffAttribute"]STAMINA[/span] points. You try to take it off, but the more you pull at it, the smaller it seems to grow. It is the Ring of Skill, but has been cursed by an ancient crone and the skill properties have been partially neutralized.[/p]
+    </text>
+    <gatherItem id="3001" />
+    <itemCheck type="section" id="12">
+      <have>
+        <itemCheck type="section" id="71">
+          <have>
+            <text>[p]You leave the room and continue your journey to the north.[/p]</text>
+            <next id="80"></next>
+          </have>
+          <dontHave>
+            <next id="71" pos="2">You may drink the liquid</next>
+            <next id="80" pos="3">Alternatively, you may leave the room and continue your journey to the north</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="71">
+          <have>
+            <next id="12" pos="1">You may try on the cape</next>
+            <next id="80" pos="3">Alternatively, you may leave the room and continue your journey to the north</next>
+          </have>
+          <dontHave>
+            <next id="12" pos="1">You may try on the cape</next>
+            <next id="71" pos="2">Or drink the liquid</next>
+            <next id="80" pos="3">Alternatively, you may leave the room and continue your journey to the north</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="120">
+    <text>
+        [p class="inlineImage"][img src="resources/wm5/120.jpg" /][/p]
+        [p]As you open the door, you are amazed to see a glittering Golden Idol on a tall pedestal! It tallies with the description of the Idol you seek. To reach it, you must cross the room, the floor of which is criss-crossed by many trip-wires, each connected to loaded crossbows set around the wall at chest height.[/p]
+    </text>
+    <next id="3">If you want to step between the wires and get the Idol</next>
+    <next id="28">If you think that it is too risky, close the door and carry on east</next>
+  </p>
+  <p id="121">
+    <text>
+        [p]You have no option but to barge the door with your shoulder. It will not be easy as the studs are long and sharp.[/p]
+    </text>
+    <next id="196"></next>
+  </p>
+  <p id="122">
+    <text>
+        [p]The tunnel travels east for a while, before eventually turning north. As you approach the bend, you see a pulsating light reflected on the wall ahead. Carefully, you move forward.[/p]
+    </text>
+    <next id="144"></next>
+  </p>
+  <p id="123">
+    <text>
+        [p]You wriggle into the hole, and begin to descend the chute. The temperature rises swiftly, and you realize your mistake. You are heading for an underground furnace. Tongues of fire leap towards you. You try to scramble back up the slope.[/p]
+    </text>
+    <next id="35"></next>
+  </p>
+  <p id="124">
+    <text>
+        [p]This door opens into a room which is completely empty. In the floor is a large hole. You approach the edge of the hole, and peer down. It is not very deep; you can see the bottom, and what appears to be a passage leading north from the floor of the hole.[/p]
+    </text>
+    <next id="129">If you wish to leave the room and head north on this level</next>
+    <next id="64">If you want to jump into the hole and try the lower level</next>
+  </p>
+  <p id="125">
+    <text>
+        [p]You arrive at the foot of a long flight of steps. Walking up them is not as exhausting as you had feared. Add 1 [span class="ffAttribute"]LUCK[/span] point.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="142"></next>
+  </p>
+  <p id="126">
+    <text>
+        [p]The tunnel continues north, but ahead of you there is a fork; the right-hand passage slopes downhill so steeply that there are roughly cut steps in the floor.[/p]
+    </text>
+    <next id="155">If you want to follow the steps to the east</next>
+    <next id="118">If you wish to stay on this level and go north</next>
+  </p>
+  <p id="127">
+    <text>
+        [p]The passage widens and soon opens on to a ledge which runs east to west along the face of a high cliff. It is as well that you were not travelling too fast, or you would have fallen headlong over the edge. You lie flat and look over. A long way below, you can see a small bridge spanning a fast river. Backing away from the drop, to look upwards, you can see nothing but darkness. There is no means of getting to the bottom, and the ledge narrows on either side of you to nothing.[/p]
+    </text>
+    <itemCheck type="item" id="3002">
+      <haveEquipped>
+        <next id="23"></next>
+      </haveEquipped>
+      <have>
+        <next id="62"></next>
+      </have>
+      <dontHave>
+        <next id="62"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="128">
+    <text>
+        [p]You still live! Tired as you are, you smash the mirror with the hilt of your sword. There will be no more antagonists from that source. You step through the hole in the mirror to find a tunnel going north. Suddenly, you find yourself on a narrow ledge, halfway down a tall cliff. The roof of the cavern disappears above you into impenetrable gloom. Below, you can see a river, running from east to west, spanned by a narrow bridge. There is no visible way down, but you notice a metal ring set into the rock. You fasten your rope to it and begin to climb down the cliff.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="48"></next>
+      </success>
+      <failure>
+        <next id="93"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="129">
+    <text>
+        [p]You shortly come to another junction.[/p]
+    </text>
+    <next id="112">If you wish to head east</next>
+    <next id="66">If you wish to continue north</next>
+  </p>
+  <p id="130">
+    <text>
+        [p]You tug at the handle with all your might, but cannot move it even one millimetre. You must give up and continue on your way to the north.[/p]
+    </text>
+    <next id="80"></next>
+  </p>
+  <p id="131">
+    <text>
+        [p]You tell him that you do not have it. His face is expressionless, as he says, ‘Very well. Follow me.’ He turns and leads the way up a spiral staircase. You have no choice but to go after him. The steps end on a platform, and what a joy it is to feel the sun and the wind on your face again for the first time in what seems like a year.[/p]
+    </text>
+    <next id="26"></next>
+  </p>
+  <p id="132">
+    <text>
+        [p]You are swept on past the rock and, try as you will, you cannot grasp it. You try to swim with the current in the hope that you will be swept ashore, but as you hurtle towards the western wall of the cavern, you realize that the river disappears into a narrow tunnel. If you stay on the surface you will be dashed against the roof of the tunnel. You take a deep breath and dive. You are swept away down the tunnel, never to surface again. Your adventure ends here.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="133">
+    <text>
+        [p]You smash the lock with your sword and pull open the gate of the cage. ‘You are free. Now tell me quickly, where is the …’ The man, with an alacrity amazing in one so skeletal, jumps at you and wrests your sword from your grasp. He plunges it into your belly, disembowelling you with a neat twist of the wrist. You should never have trusted a criminal. Your adventure ends here … messily![/p]
+    </text>
+    <death />
+  </p>
+  <p id="134">
+    <text>
+        [p]There is still some magic in the ring, and it gives you the sense to look for traps before you search the room. You feel a barely perceptible hairline crack in the stone floor. You decide not to risk it.[/p]
+    </text>
+    <next id="154"></next>
+  </p>
+  <p id="135">
+    <text>
+        [p]You laugh at the thought that such an old, frail man could harm you, when you have survived so many dangers. With a cry of anger you raise your sword, intending to remove his head with one blow. The old man points to your feet, and they at once become as heavy as lead. It is impossible to move them! As you exert every muscle, your thighs stiffen, your back hardens, and your upraised arm becomes rigid. Halted in mid-stroke, you remain looking in horror, as the old man approaches you. He stretches out a bony knuckle, and raps your face. You feel nothing, but hear the chink of metal on stone, as his rings rattle against your nose. Frantic to escape, you draw in a last breath before your heart petrifies. Your adventure ends here![/p]
+    </text>
+    <death />
+  </p>
+  <p id="136">
+    <text>
+        [p]You return to the junction. The door through which you came is ahead of you. You cannot go that way, so you must turn north.[/p]
+    </text>
+    <next id="172"></next>
+  </p>
+  <p id="137">
+    <text>
+        [p]After some time of wandering through the tunnels, you are beginning to despair, but suddenly a door appears in the north wall.[/p]
+    </text>
+    <next id="120">If you would like to open it</next>
+    <next id="28">If you want to continue eastwards</next>
+  </p>
+  <p id="138">
+    <text>
+        [p]You clutch at your sword, but it is too late. The animal has heard you, and awakens. As you stare in horror, you see first one, then two long, mean-looking snouts lift to sniff the air. This is not merely a dog, or even a wolf, it is the terrible Xlaia, which you thought had been extinct for a hundred years. You leap to the wall, for you need to protect your back, and stand with your sword at the ready. The Xlaia bounds snarling from its basket. From both the curling lips protrude yellow fangs, still stained with the blood of its last meal. Hanging in long slimy strings from its mouth is frothy saliva which tells you that here is a rabid animal! If only you had water with which to terrify him like the rabid animals you have met in the upper world. Weaving from side to side, he comes towards you. You have to fight him![/p]
+    </text>
+    <fight type="single">
+      <enemy id="4" />
+    </fight>
+    <next id="100"></next>
+  </p>
+  <p id="139">
+    <text>
+        [p]As you drain the bottle of colourless, odourless liquid, you at once feel refreshed (gain 1 [span class="ffAttribute"]STAMINA[/span] point).[/p]
+    </text>
+    <add amount="1" to="stamina" />
+    <itemCheck type="section" id="150">
+      <have>
+        <itemCheck type="section" id="197">
+          <have>
+            <text>[p]You continue on your way east.[/p]</text>
+            <next id="29"></next>
+          </have>
+          <dontHave>
+            <next id="197">If you want to drink the third bottle</next>
+            <next id="29">If you want to continue on your way east</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="197">
+          <have>
+            <next id="150">If you want to drink the second bottle</next>
+            <next id="29">If you want to continue on your way east</next>
+          </have>
+          <dontHave>
+            <next id="150">If you want to drink the second bottle</next>
+            <next id="197">Or the third bottle</next>
+            <next id="29">If you want to continue on your way east</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="140">
+    <text>
+        [p]You stand your ground as the two Bats sweep down towards you. How can you hope to fight them with only your sword? You must try to attract them to another part of the room. Perhaps if you threw your shield into the air, they would mistake it for another prey. Whatever you do, you will have to fight them one at a time.[/p]
+        [p]You may Escape after the first Attack Round.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="2" />
+      <enemy id="3" />
+      <fleeing after="1" />
+      <flee>
+        <text>[p]You run out of the door and head north.[/p]</text>
+        <next id="80"></next>
+      </flee>
+      <win>
+        <next id="160"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="141">
+    <text>
+        [p]The passage soon ends at a door.[/p]
+    </text>
+    <next id="107">If you wish to open it and pass through</next>
+    <next id="122">If you cannot face what may be behind it, and would rather go to the junction again and head east</next>
+  </p>
+  <p id="142">
+    <text>
+        [p]The stairs come to an end. The passageway widens and there in front of you is an awesome sight. The passage has ended in a wide ledge, halfway up the wall of a huge cavern. You cautiously approach the edge and peer over. From where the ledge narrows at one end, a flight of steps, hewn from the living rock, descends to the cave floor, hundreds of fee) below. At the bottom runs a fast-flowing river, and you realize that to reach it you will have to zigzag your way down the steps, which are open to the elements. So vast is this cavern that it produces its own atmosphere, and clouds are gathering above you, from which bolts of lightning are flashing. It is the only way down, and you have to take great care. When you reach the bottom.[/p]
+    </text>
+    <next id="27"></next>
+  </p>
+  <p id="143">
+    <text>
+        [p]You see a door in the east wall. It is securely locked, and much too sturdy to give way to force.[/p]
+    </text>
+    <itemCheck type="item" id="3005">
+      <have>
+        <next id="70"></next>
+      </have>
+      <dontHave>
+        <text>[p]You will have to continue to the north.[/p]</text>
+        <next id="106"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="144">
+    <text>
+        [p]Suddenly, as you are halfway to the light, the ground beneath you gives way. Your caution pays off, as you are able to step back before you fall. Closer inspection reveals it to be a small round pit in the middle of the passageway. A rickety ladder runs down the side, but you cannot see the bottom.[/p]
+    </text>
+    <next id="7">If you wish to explore the pit</next>
+    <next id="96">If you want to jump over it, and see what is the source of the light</next>
+  </p>
+  <p id="145">
+    <text>
+        [p]In the centre of the room is a glittering pile of [span class="takeItem" data-id="gold" data-amount="30"]30 Gold Pieces[/span]. Watching carefully for a trap, you put them in your pockets.[/p]
+    </text>
+    <next id="36">If you wish to search the corners of the room for more</next>
+    <next id="98">If you wish to leave by the north door</next>
+  </p>
+  <p id="146">
+    <text>
+        [p]You soon come to a door in the western wall. As you run your hands over it looking for the handle, you discern a faint cross carved in the wood.[/p]
+    </text>
+    <next id="51">If you wish to open the door</next>
+    <next id="80">If you wish to press on northwards</next>
+  </p>
+  <p id="147">
+    <text>
+        [p]The passageway ends at a door.[/p]
+    </text>
+    <next id="22">If you wish to open it</next>
+    <next id="108">If you wish to return to the junction and head north</next>
+  </p>
+  <p id="148">
+    <text>
+        [p]You almost drown, but persevere.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="103"></next>
+      </success>
+      <failure>
+        <next id="15"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="149">
+    <text>
+        [p]You ask the prisoner if he would be willing to exchange his freedom for information. His eyes light up and he readily agrees. ‘I can tell you where to find the largest ruby you ever saw,’ he tells you. ‘But you must let me out first.’[/p]
+    </text>
+    <next id="133">If you want to set him free</next>
+    <next id="24">If you would rather kill him</next>
+    <next id="72">If you leave him as he is, and open the north door</next>
+  </p>
+  <p id="150">
+    <text>
+        [p]You place the bottle to your lips, and wait while the dark golden liquid drains into your mouth. It is delicious, and you scrape the bottle with your finger to get the last drop. The passageway begins to spin around you, and you fall to the floor. It was a Sleeping Potion, and you lie unconscious and vulnerable to any danger or thief that might chance upon you. It is several hours before you come round, and you still feel tired, though your head is now perfectly clear. In all future battles lose 1 point from your Attack Strength for your tiredness.[/p]
+    </text>
+    <gatherItem id="4002" />
+    <itemCheck type="section" id="139">
+      <have>
+        <itemCheck type="section" id="197">
+          <have>
+            <text>[p]You continue on your way east.[/p]</text>
+            <next id="29"></next>
+          </have>
+          <dontHave>
+            <next id="197">If you want to drink the third bottle</next>
+            <next id="29">If you want to continue on your way east</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="197">
+          <have>
+            <next id="139">If you want to drink from the first bottle</next>
+            <next id="29">If you want to continue on your way east</next>
+          </have>
+          <dontHave>
+            <next id="139">If you want to drink from the first bottle</next>
+            <next id="197">Or the third bottle</next>
+            <next id="29">If you want to continue on your way east</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="151">
+    <text>
+        [p]Your attempts to reach solid ground again are futile, and you stand on the slab of rock which carried you down some thirty metres below the level of the passages. As you worry about what to do to get out, you realize that the floor of the well in which you stand is beginning to fill up with semi-liquid sand. It settles around your feet, and then your knees, and by the time it reaches your chest, your arms are pinioned to your sides. You are being crushed by the dreadful pressure all around you! Within five minutes, you are buried completely. Your adventure ends here.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="152">
+    <text>
+        [p]The passageway you enter is very narrow, but you manage to squeeze your way through to the north. You pass a junction on your left, but keep to this tunnel.[/p]
+    </text>
+    <next id="99"></next>
+  </p>
+  <p id="153">
+    <text>
+        [p class="inlineImage"][img src="resources/wm5/153.jpg" /][/p]
+        [p]The passage begins to widen, and cracks and fissures appear in the walls. There is a rattling noise, and out of the cavity jump two strange creatures. They are obviously denizens of the underworld, and they are completely white, with vicious pink eyes. They are covered from head to tail in long, dangerous spines, which rattle as they move. They turn their backs on you, and you think that they are as afraid of you as you are of them, and that they will run away. Not at all! These are poisonous porcupines, and they are preparing to fire their lethal spines at you. Fight them one at a time.[/p]
+        [p]As the spines of the porcupines are so venomous, each time one of them wins a round, lose 3 [span class="ffAttribute"]STAMINA[/span] points.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="10" />
+      <enemy id="11" />
+    </fight>
+    <next id="42"></next>
+  </p>
+  <p id="154">
+    <text>
+        [p]You   close   the   door,   and   start again eastwards.[/p]
+    </text>
+    <next id="16"></next>
+  </p>
+  <p id="155">
+    <text>
+        [p]The slope is very steep, and you have gone a good way down it, when the steps stop, and the passageway veers round to the left. The steps were tiring, and you are paying less than your usual attention when, with a cry and a jump, a dirty, fat Hobgoblin sets himself before you. He watches you with his crossed eyes, one of purple and one of green. His clothes are filthy and torn, but the sword in his hand is sharp and well kept. He lumbers towards you with sword outstretched.[/p]
+        [p]You may Escape after one round.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="6" />
+      <fleeing after="1" />
+      <flee>
+        <text>[p]You run down the stairs and head north.[/p]</text>
+        <next id="143"></next>
+      </flee>
+      <win>
+        <next id="50"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="156">
+    <text>
+        [p]He looks at you coldly. ‘You are a liar!’ he says. ‘You will be punished.’ He walks past you along the passage. You wonder uneasily what he meant. You will soon find out. His story was true, but he did not tell you that his profession in the upper world – the reason he was put here – was that of a pickpocket! He has not lost his skill. You have lost 2 Provisions. Lose 1 [span class="ffAttribute"]LUCK[/span] point and continue east.[/p]
+    </text>
+    <add amount="-1" to="luck" />
+    <loseItem id="2000" amount="2" />
+    <next id="57"></next>
+  </p>
+  <p id="157">
+    <text>
+        [p class="inlineImage"][img src="resources/wm5/157.jpg" /][/p]
+        [p]The door opens on to a small, sparsely furnished room. The sound of resonant snores beats around your ears. A chair with its back to you seems to contain the source of the noise. You can see a tuft of thin grey hair sticking up over the back of it. Cautiously, you creep around the table, and look at the occupant of the chair. Lying crookedly on the hard wooden seat is an old man. There is another door in the north wall.[/p]
+    </text>
+    <next id="180">If you want to go through it</next>
+    <next id="125">If you want to continue along the other north-leading passage, the one you have come from</next>
+    <next id="166">Otherwise</next>
+  </p>
+  <p id="158">
+    <text>
+        [p class="inlineImage"][img src="resources/wm5/158.jpg" /][/p]
+        [p]As the door bursts open, you discover the source of the whistling sighs and rustling noises. Crouched low on the ground in front of you is Galon the Birdman. His leathery wings are outstretched on either side of him; the sharp claws on his knuckles are pointing towards you. You recognize his green skin at once, and know that he will try to grasp you around the neck with his sinewy arms and smother you with his wings. You draw your sword, and the sight of it excites him to a frenzy, for his lust for metal is paramount. This will be one of the hardest fights you will be called upon to undertake.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="14" />
+    </fight>
+    <next id="61"></next>
+  </p>
+  <p id="159">
+    <text>
+        [p]You turn the key in the lock of the grille. The gate does not swing open as you expect, and you have to push very hard to get it to move. After an enormous heave, it flies open. You rush headlong into the room. Horror of horrors! There is no floor, and you hurtle into a pit![/p]
+    </text>
+    <itemCheck type="item" id="3002">
+      <haveEquipped>
+        <next id="43"></next>
+      </haveEquipped>
+      <have>
+        <text>[p]You start to fall down.[/p]</text>
+        <next id="115"></next>
+      </have>
+      <dontHave>
+        <text>[p]You start to fall down.[/p]</text>
+        <next id="115"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="160">
+    <text>
+        [p]You look down at the inert figures, uglier in death than living, for their snarls are frozen on their evil snouts.[/p]
+    </text>
+    <next id="37">There seems to be little of interest in the rubble, but if you want to inspect it further</next>
+    <next id="80">If you want to return to the passage and go north</next>
+  </p>
+  <p id="161">
+    <text>
+        [p]The passage ends in a square room which is permeated by a strong smell of decaying meat. Taking up most of the floor are two dark, bubbling pools of mud. There is a narrow walkway, little more than a ledge, running along both sides of the room and leading to an opening in the opposite wall. From your feet, a very narrow causeway goes straight to the opening.[/p]
+    </text>
+    <next id="181">If you wish to walk along the right-hand wall</next>
+    <next id="193">If you want to walk along the left-hand wall</next>
+    <next id="171">If you want to take the middle path</next>
+  </p>
+  <p id="162">
+    <text>
+        [p]You regain your balance and reach for the ruby.[/p]
+    </text>
+    <next id="46"></next>
+  </p>
+  <p id="163">
+    <text>
+        [p]You follow the tunnel and almost at once come to another room. Its floor is far below the level of the entrance at which you stand and it is tiled, across the floor and to a considerable height around its circular walls, with tiles of strange interlocking shapes which seem to you to have some magical or mystical significance. The room is full to the brim with crystal-clear water and, hot and filthy as you are, you cannot resist the temptation. You remove your clothes and, sticking your sword firmly into the wooden doorway for safety, you dive into the water. After splashing happily for several minutes, and feeling greatly refreshed, you turn to climb out, and to your surprise you notice a submerged  doorway  immediately  below  the entrance. You dive down to inspect it more closely, but are unable to turn the handle, which is lucky, for if you let all the water drain away, you would not be able to climb out of the pool. There is nothing left to do here, so you dress and leave. You return to the room with the pit.[/p]
+    </text>
+    <next id="185">You may jump down into it now</next>
+    <next id="168">Or leave and head west</next>
+  </p>
+  <p id="164">
+    <text>
+        [p]As you try the handle, you feel the door being pushed towards you as if by a great weight. You realize your mistake at once, when spurts of water burst around the edges of the door. Desperately trying to re-close it, you soon recognize the impossibility of such a course, and turn to flee. The door bursts open and in the close confines of the tunnel you have no chance of escape. The full weight of the water falls upon you, drowning you instantly. Your adventure ends here.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="165">
+    <text>
+        [p]You fall awkwardly in the dark and hurt yourself. Roll one die for the number of [span class="ffAttribute"]STAMINA[/span] points you lose. [/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <text>[p]Lose 1 stamina point.[/p]</text>
+        <add amount="-1" to="stamina" />
+      </result>
+      <result max="2" min="2">
+        <text>[p]Lose 2 stamina points.[/p]</text>
+        <add amount="-2" to="stamina" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]Lose 3 stamina points.[/p]</text>
+        <add amount="-3" to="stamina" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Lose 4 stamina points.[/p]</text>
+        <add amount="-4" to="stamina" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Lose 5 stamina points.[/p]</text>
+        <add amount="-5" to="stamina" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Lose 6 stamina points.[/p]</text>
+        <add amount="-6" to="stamina" />
+      </result>
+      <after>
+        <text>
+            [p]Suddenly your out-thrust hands touch the wall. The tunnel ends in nothing. You must return. As you grope your way to a side-wall, you hear a chink of metal and, feeling around your feet, you find a small object on the floor. You take it with you, return to the ladder and climb up to the light to inspect your find. It is a small [span class="takeItem" data-id="3008" data-amount="1"]golden key[/span]. Putting it in your pocket, you head north again.[/p]
+        </text>
+      </after>
+    </random>
+    <next id="96"></next>
+  </p>
+  <p id="166">
+    <text>
+        [p]Your search of the room is thorough, but, because of the loud noise of his snores, does not wake the old man up. He looks harmless enough, but you have been mistaken in the past and let seemingly harmless adversaries live, only to regret it when they produced a hidden weapon and attacked you. Perhaps just killing him would be the best plan.[/p]
+    </text>
+    <next id="17">If you wish to do this</next>
+    <next id="113">If you want to wake him up and question him</next>
+  </p>
+  <p id="167">
+    <empty />
+  </p>
+  <p id="168">
+    <text>
+        [p]You arrive at another junction.[/p]
+    </text>
+    <itemCheck type="section" id="73">
+      <have>
+        <text>[p]You decide to go north.</text>
+        <next id="161"></next>
+      </have>
+      <dontHave>
+        <next id="161">You may go north</next>
+        <next id="73">Or keep west</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="169">
+    <text>
+        [p]At the end of the tunnel you find a small door. As you look at it, you hear a strange gurgling noise. You touch the door, and it feels strangely cold.[/p]
+    </text>
+    <next id="164">If you wish to open it</next>
+    <next id="172">If you would rather leave it</next>
+  </p>
+  <p id="170">
+    <text>
+        [p]The spike does a lot of damage. Lose 3 [span class="ffAttribute"]STAMINA[/span] points. You reach the ruby.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <next id="46"></next>
+  </p>
+  <p id="171">
+    <text>
+        [p]As you walk along the causeway, the pools of mud on either side begin to stir. Huge bubbles of gas rise and burst, almost choking you with the stench of rotten flesh.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="173"></next>
+      </success>
+      <failure>
+        <next id="182"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="172">
+    <text>
+        [p]The tunnel widens rapidly, until it achieves the proportions of a small room with the tunnel continuing on the other side. In the middle of the floor is a shallow pit.[/p]
+    </text>
+    <next id="163" pos="1">If you want to scramble across the pit, and take the far tunnel</next>
+    <itemCheck type="section" id="185">
+      <dontHave>
+        <next id="185" pos="2">If you would rather jump down into the pit</next>
+      </dontHave>
+    </itemCheck>
+    <next id="168" pos="3">If you want to leave, return to the junction and head west</next>
+  </p>
+  <p id="173">
+    <text>
+        [p]You reach the other side without incident.[/p]
+    </text>
+    <next id="52"></next>
+  </p>
+  <p id="174">
+    <text>
+        [p class="inlineImage"][img src="resources/wm5/174.jpg" /][/p]
+        [p]You emerge into a huge cavern. There, on a shelf cut out of the far wall, is a gigantic ruby, as big as a hen’s egg. Its polished facets glint in the light of the flares around the wall. It is protected by semicircles of long, sharp metal spikes-several rows of them. As you watch, they move on their sockets. One minute they are lying like the spokes of a wheel, radiating from the place where the ruby lies; the next they are swivelling round to lie along the circular lines of force. It will not be easy to make your way to the jewel, and you can go only one step at a time. The spikes are very sharp and can inflict a nasty wound.[/p]
+    </text>
+    <next id="189">If you want to try to get the ruby</next>
+    <next id="184">If you do not feel it worth the risk, you can leave and turn east</next>
+  </p>
+  <p id="175">
+    <text>
+        [p]You step back from the advancing mass of maggots, which are between you and the only exit. You slash at the leaders, and they burst with a horrifying squelch. They are at once consumed by the next rank, and you realize that you have no hope of killing them all. In desperation, you take a flying leap into the undulating mass to try to get to the door, but as your foot reaches the floor and crushes several of the creatures you slide on their slime and, with arms flailing, fall into the midst of them. You are at once bitten in a hundred places, their strong jaws tearing the flesh from your bones, biting deep into muscle and sinew. They wriggle into your nose and mouth and burrow deep towards the soft tissues of the brain. You die in agony! Your adventure ends here.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="176">
+    <text>
+        [p]You manage to get back to solid ground. You breathe a heartfelt sigh of relief.[/p]
+    </text>
+    <next id="32"></next>
+  </p>
+  <p id="177">
+    <text>
+        [p]It is a trick, and as you step through the space in the wall you trigger a loaded crossbow.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="78"></next>
+      </success>
+      <failure>
+        <next id="21"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="178">
+    <text>
+        [p]The tunnel becomes very low and narrow, and you could hardly miss the little phial of blue liquid lying on the floor.[/p]
+    </text>
+    <next id="34"></next>
+  </p>
+  <p id="179">
+    <text>
+        [p]The tunnel slopes sharply uphill, and eventually you find another junction. Looking south, you can see only a dead end. Head north once more.[/p]
+    </text>
+    <next id="127"></next>
+  </p>
+  <p id="180">
+    <text>
+        [p]The passage slopes so steeply uphill that it becomes a chimney, and the only way to get up it is to wedge your back against one wall and your feet against the other, and inch your way little by little towards the top. When you get to the top you find yourself on a long ledge. You are very tired by this effort. Lose 1 [span class="ffAttribute"]STAMINA[/span] point.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="56"></next>
+  </p>
+  <p id="181">
+    <text>
+        [p]As you walk around the pool, you notice the surface of the mud begin to stir. Huge bubbles of gas rise and burst, filling the air with the stench of rotten flesh.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="192"></next>
+      </success>
+      <failure>
+        <next id="188"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="182">
+    <text>
+        [p]Out of the mud rise the heads of a pair of Mud Dragons. The tentacles above their eyebrows glow green as they range about in search of their prey. The vast mouths open in unison, and clouds of evil-smelling gas surround you. The monsters begin to inhale air, swelling as they do so until they are twice their normal size. You draw your sword, and hope that all your [span class="ffAttribute"]LUCK[/span], [span class="ffAttribute"]STAMINA[/span] and [span class="ffAttribute"]SKILL[/span] will defend you against the peril that awaits you. You must fight both of them at the same time.[/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="17" />
+      <enemy id="18" />
+    </fight>
+    <next id="74"></next>
+  </p>
+  <p id="183">
+    <text>
+        [p]One of the swivelling spikes turns unexpectedly, piercing the skin with ease.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="194"></next>
+      </success>
+      <failure>
+        <next id="170"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="184">
+    <text>
+        [p]Heading east you come to the central junction.[/p]
+    </text>
+    <next id="161">If you want to go north</next>
+    <next id="136">If you want to carry on to the east</next>
+  </p>
+  <p id="185">
+    <text>
+        [p]You jump down into the pit, having first made certain that you will be able to get out again if necessary. As you look around, you see a low entrance under an overhanging rock. You bend almost double and look into it.[/p]
+    </text>
+    <next id="178">If you want to investigate further</next>
+    <next id="172">If you would rather return to the room</next>
+  </p>
+  <p id="186">
+    <text>
+        [p]You land heavily, spraining your ankle badly. Lose 3 STAM INA points. You set off to the north again, limping badly.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <next id="126"></next>
+  </p>
+  <p id="187">
+    <text>
+        [p]You tell the man the way you have come and he smiles at you. ‘Thank you,’ he says. ‘You have helped me, so I will help you. All I can say is: "All that glitters is not gold." There are many forms to what you seek; do not be misled by false Idols.’ So saying, he scurries past you, and disappears into the distance. Puzzled, you turn eastwards.[/p]
+    </text>
+    <next id="57"></next>
+  </p>
+  <p id="188">
+    <text>
+        [p]The surface of the mud begins to rise in the centre, and a massive bubble of gas bursts with a dull phut. As the surface begins to settle, small points of green light flicker across it. Next, the points of light appear to be on stalks, which grow out of the mud, getting longer by the minute. Eventually, with a massive heave, a Mud Dragon rises from the depths! It lies half-submerged in the glutinous mess. The green lights you now see to be tentacles across its eyebrows, and they range round you like antennae until with one accord they are all pointing at you. The vast mouth opens and releases a cloud of evil-smelling gas, and the monster begins to swell as it inhales air. You realize that you must do battle with it.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="15" />
+    </fight>
+    <next id="9"></next>
+  </p>
+  <p id="189">
+    <text>
+        [p]As you cross the floor, waiting carefully for the spikes to let you through as they rotate and sway, the tip of one spike catches your tunic, and pulls you off balance.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="162"></next>
+      </success>
+      <failure>
+        <next id="183"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="190">
+    <text>
+        [p]You almost reach the bottom when the rope runs out. You will have to drop the rest of the way. It is about two metres, but on to stony ground.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>[p]No harm comes to you, and you reach the ground safely.[/p]</text>
+        <next id="27"></next>
+      </success>
+      <failure>
+        <next id="54"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="191">
+    <text>
+        [p]You inspect the bodies of the three creatures, and find [span class="takeItem" data-id="gold" data-amount="3"]1 Gold Piece[/span] on each of them. You approach the crystal, but the beautiful pulsating light is beginning to fade, and by the time you lift it up, it is merely a chunk of worthless glass. With a curse, you hurl it to the ground, where it shatters. The only other item of interest in the cave is a round hole, about a metre across, in the wall, several metres from the floor. You drag across the plinth on which the crystal had stood, and look in. Leading downwards on a gentle slope is a smooth slide.[/p]
+    </text>
+    <next id="123">If you wish to slide down the hole</next>
+    <next id="33">If you would rather leave by the north tunnel</next>
+  </p>
+  <p id="192">
+    <text>
+        [p]You reach the other side without any trouble. Leave by the northern passage.[/p]
+    </text>
+    <next id="52"></next>
+  </p>
+  <p id="193">
+    <text>
+        [p]Walking round the pool, you see the surface stirring. Small green lights are apparently growing from the surface of the mud.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="25"></next>
+      </success>
+      <failure>
+        <next id="101"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="194">
+    <text>
+        [p]The spike does a little damage, but it is not too severe. Lose 2 STAM INA points. You reach the ruby.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="46"></next>
+  </p>
+  <p id="195">
+    <text>
+        [p]The passageway is blocked by a great oaken door, with beautifully wrought iron hinges, and a large, twisted iron handle. On either side of the door, flares in brackets on the wall give a flickering light. Nailed to the door is a parchment with writing in several languages. You scan the words until you find your own language. It reads:[/p]
+        [div class="handwritten"]If you have come this[br /]far your courage is[br /]great. Now you must[br /]live with courage or[br /]die with courage.[br /]Knock and enter.[/div]
+        [p]You knock at the door and turn the handle.[/p]
+    </text>
+    <next id="39"></next>
+  </p>
+  <p id="196">
+    <text>
+        [p]Padding your shoulder with as much loose clothing as you can, you put your head down and charge the door.[/p]
+    </text>
+    <random>
+      <result max="4" min="1">
+        <text>[p]You hurt yourself on the spikes, and lose 2 [span class="ffAttribute"]STAMINA[/span] points. You try again.[/p]</text>
+        <add amount="-2" to="stamina" />
+        <next id="196"></next>
+      </result>
+      <result max="6" min="5">
+        <text>[p]The door bursts open.[/p]</text>
+        <next id="158"></next>
+      </result>
+    </random>
+  </p>
+  <p id="197">
+    <text>
+      [p]When you have drunk the Potion you feel no different, but you have drunk the Elixir of Fortune. Every time you [em]Test your Luck[/em] from now on, add 1 point to your dice
+      roll.[/p]
+    </text>
+    <itemCheck type="section" id="139">
+      <have>
+        <itemCheck type="section" id="150">
+          <have>
+            <text>[p]You continue on your way east.[/p]</text>
+            <next id="29"></next>
+          </have>
+          <dontHave>
+            <next id="150">If you want to drink the second bottle</next>
+            <next id="29">If you want to continue on your way east</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="150">
+          <have>
+            <next id="139">If you want to drink from the first bottle</next>
+            <next id="29">If you want to continue on your way east</next>
+          </have>
+          <dontHave>
+            <next id="139">If you want to drink from the first bottle</next>
+            <next id="150">Or the second bottle</next>
+            <next id="29">If you want to continue on your way east</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="198">
+    <text>
+        [p]Altogether, the Orcs had [span class="takeItem" data-id="gold" data-amount="5"]5 Gold Pieces[/span], and one of them had a sprig of herb.[/p]
+    </text>
+    <next id="49">If you feel hungry enough, or suspect that it has special powers, and would like to eat the herb</next>
+    <next id="152">If you would prefer to leave it, and exit through the north door</next>
+  </p>
+  <p id="199">
+    <text>
+        [p]The trapdoor is very stiff, but you pull it open. Below is a small cavity with three items in it – a ring, a phial of liquid and a folded cape.[/p]
+    </text>
+    <next id="119">If you want to try on the ring</next>
+    <next id="12">If you want to try on the cape</next>
+    <next id="71">If you want to drink the liquid</next>
+    <next id="80">If you want to leave all these useful things for the next traveller, close the trapdoor and leave by the north passage</next>
+  </p>
+  <p id="200">
+    <text>
+        [p class="inlineImage"][img src="resources/wm5/200.jpg" /][/p]
+        [p]The crowd of Elves at the top looks up at you expectantly, their bows taut, and every arrow pointing at you. The Chief’s son steps up, and looks questioningly at the old man, who gives an almost imperceptible nod. His face expressionless, the Elf turns to you: ‘Human, you are deemed to be innocent and are free to go. You may keep whatever you have found in the Dungeon of Justice and be on your way.’ Dazed, you step off the platform. The Elves make way for you, as you walk between their ranks. When you come to open ground, you turn – and to your surprise, not one Elf is in sight. All that remains is the old man on the platform. He nods goodbye to you, and as you watch he disappears into shimmering light. You shrug to yourself and set off on the long walk to Sapphire City.[/p]
+    </text>
+    <victory />
+  </p>
+</content>
