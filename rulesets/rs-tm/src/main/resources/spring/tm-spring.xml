@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant id="irTitle" static-field="hu.zagor.gamebooks.support.bookids.hungarian.IdogepRegeny.TITLE" />
+  <util:constant id="tmTitle" static-field="hu.zagor.gamebooks.support.bookids.english.TimeMachine.TITLE" />
+
+  <bean class="hu.zagor.gamebooks.content.TmParagraphData" id="tmParagraphData" scope="prototype" p:choices-ref="defaultChoiceSet" />
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.HintTransformer" id="tmHintTransformer" />
+  <util:map id="tmExtraTransformers">
+    <entry key="hint" value-ref="tmHintTransformer" />
+  </util:map>
+  <bean id="tmStubTransformers" factory-bean="stubTransformerMerger" factory-method="merge">
+    <constructor-arg index="0" ref="commonStubTransformers" />
+    <constructor-arg index="1" ref="tmExtraTransformers" />
+  </bean>
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.DefaultBookParagraphTransformer" id="tmRuleBookParagraphTransformer" p:paragraphDataTransformer-ref="tmRuleBookParagraphDataTransformer" />
+  <bean class="hu.zagor.gamebooks.tm.section.TmRuleBookParagraphDataTransformer" p:stubTransformers-ref="tmStubTransformers" id="tmRuleBookParagraphDataTransformer" parent="abstractBookParagraphDataTransformer" />
+  <bean class="hu.zagor.gamebooks.raw.item.RawRuleBookItemTransformer" id="tmRuleBookItemTransformer" />
+
+  <bean class="hu.zagor.gamebooks.raw.section.RawRuleBookParagraphResolver" id="tmRuleBookParagraphResolver" />
+
+  <bean class="hu.zagor.gamebooks.domain.BookContentTransformers" id="defaultTmContentTransformers" c:paragraphTransformer-ref="tmRuleBookParagraphTransformer"
+    c:itemTransformer-ref="tmRuleBookItemTransformer">
+    <constructor-arg name="enemyTransformer">
+      <null />
+    </constructor-arg>
+  </bean>
+
+  <bean class="hu.zagor.gamebooks.tm.mvc.book.section.service.TmBookSectionHandlingService" id="tmSectionHandlingService" />
+
+</beans>
