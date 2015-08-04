@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant static-field="hu.zagor.gamebooks.support.bookids.hungarian.KalandJatekKockazat.A_KAOSZ_FELLEGVARA" id="kjk6Id" />
+
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="kjk6Info" c:id-ref="kjk6Id" p:coverPath="resources/ff2/cover.jpg" p:resourceDir="ff2"
+    p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="huLocale" p:position="6" p:series-ref="kjkTitle"
+    p:title="A Káosz Fellegvára" p:characterHandler-ref="ff2CharacterHandler" p:commandResolvers-ref="ffCommandResolvers" p:unfinished="true" p:characterBeanId="ff2Character"
+    p:characterPageDataBeanId="ff2CharacterPageData">
+    <property name="contents">
+      <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="kjk6enemies.xml" c:items="kjk6items.xml" c:paragraphs="kjk6content.xml" />
+    </property>
+    <property name="contentSpecification">
+      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="false" />
+    </property>
+    <property name="resources">
+      <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="ff2" p:jsResources="ff2" />
+    </property>
+  </bean>
+
+  <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor" id="kjk6Help" p:info-ref="kjk6Info" scope="prototype">
+    <property name="sections">
+      <util:list>
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="intro" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="howToFight" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="ssl" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="battle" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="battleFlow7" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="fleeing" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="multiBattleSimple" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="luck" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="luckInBattle" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="resetSsl" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="tcoc" p:jsp="resetSkill" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="tcoc" p:jsp="resetStamina" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="tcoc" p:jsp="resetLuck" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="tcoc" p:jsp="magic" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="tcoc" p:jsp="spells" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="equipmentPotions" />
+      </util:list>
+    </property>
+    <property name="params">
+      <util:map>
+        <entry key="stdHelp_howToFight" value="Hogyan küzdj meg a Fellegvár teremtményeivel?" />
+        <entry key="stdHelp_hasLantern" value="false" />
+        <entry key="stdHelp_hasFood" value="false" />
+        <entry key="stdHelp_hasPotions" value="false" />
+      </util:map>
+    </property>
+  </bean>
+
+</beans>

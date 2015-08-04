@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd">
+  <p id="back_cover">
+    <text>
+        [p]Hazádat, a békés Fűzfa Völgyet óriási veszély fenyegeti. A Káosz Fellegvárában élő gonosz varázsló, Rettegett Balthus le akarja igázni népedet. Te vagy az egyetlen, aki szembeszállhat vele és meghiúsíthatja gyilkos terveit, hiszen magad is kitűnő varázsló vagy, eddig még minden csatában diadalmaskodtál erőd, ügyességed és szerencséd segítségével. Most se hátrálj meg![/p]
+    </text>
+    <next id="generate" />
+  </p>
+  <p id="generate" display="Karakter létrehozása">
+    <text>
+        [div class="step" data-step="1" data-step-active]
+          [p][span class="ffAttribute"]Ügyesség[/span]: [span id="ffSkill"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+          [p][span class="ffAttribute"]Életerő[/span]: [span id="ffStamina"]dobj két kockával és adj 12-t a dobott számhoz[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+          [p][span class="ffAttribute"]Szerencse[/span]: [span id="ffLuck"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+          [p][span class="ffAttribute"]Varázslat[/span]: [span id="ffSpell"]dobj két kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+          [button data-generator-button="ff"]Karakter létrehozása[/button]
+        [/div]
+        [div class="step" data-step="2"]
+          [div]
+            Válaszd ki a varázslataidat:
+          [/div]
+          [div id="selectedSpells"]
+          [/div]
+          [ul id="availableSpells"]
+            [li data-spell="stamina"][span]Életerő Varázslat[/span][/li]
+            [li data-spell="strength"][span]Erő Varázslat[/span][/li]
+            [li data-spell="weakness"][span]Erőtlenség Varázslat[/span][/li]
+            [li data-spell="foolsGold"][span]Hamis Arany Varázslat[/span][/li]
+            [li data-spell="illusion"][span]Illúzió Varázslat[/span][/li]
+            [li data-spell="esp"][span]Különleges Érzékelő Készség Varázslat[/span][/li]
+            [li data-spell="levitation"][span]Súlytalanság Varázslat[/span][/li]
+            [li data-spell="luck"][span]Szerencse Varázslat[/span][/li]
+            [li data-spell="creatureCopy"][span]Teremtmény Hasonmás Varázslat[/span][/li]
+            [li data-spell="fire"][span]Tűz Varázslat[/span][/li]
+            [li data-spell="skill"][span]Ügyesség Varázslat[/span][/li]
+            [li data-spell="shielding"][span]Védelem Varázslat[/span][/li]
+          [/ul]
+          [input type="hidden" id="spellCodes" /]
+          [button data-generator-button="ff2"]Varázslatok kiválasztása[/button]
+        [/div]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="Háttértörténet">
+    <text>
+        [p]Fűzfa Völgy törvénytisztelő és jóságos népe közel nyolc éve fél és retteg a gonosz varázslótól, Balthustól. Retteg, mert ennek az embernek az ereje valóban rettenetes, és fél, mivel híre járt, hogy Balthus a Völgyben akarja elkezdeni hódító tervei végrehajtását.[/p]
+        [p]Egy hűséges fél-elf, akit kémkedni küldtek a Fekete Toronyba, három nappal ezelőtt vágtatva érkezett vissza a vészjósló figyelmeztetéssel. Kiderült, hogy Balthus a Sziklaszirt Hegység barlangjaiban hadsereget toborzott a Kaotikusok népéből, s arra képezi ki az újoncait, hogy három héten belül támadást intézzenek a Völgy ellen.[/p]
+        [p]Salamon, a jó király, a tettek embere volt. Még aznap küldöncöket menesztett mindenhová a Völgyben, hegy kezdődjék meg a védővonalak építése, és a férfinép jelentkezzék hadi szolgálatra. Lovasok indultak a yore-i Nagyerdőben élő fél-elfekhez azzal a felhívással, hogy alakuljon harci szövetség. Salamon király, bölcs ember lévén, azt is tudta, hogy a hír óhatatlanul eléri Yore Nagy Varázslóját, ezt a nagy hatalmú embert, aki az erdő mélyén él. A varázsló öreg ember, aki ilyen nagy csatát nem élne túl. De számos ifjú varázslót kitanított, és elképzelhető, hogy bűvtudományának egyik bátor és igyekvő követője a király és alattvalói segítségére siet.[/p]
+        [p]Nos, te vagy Yore Nagy Varázslójának kedvenc tanítványa. Az öreggel nem volt könnyű kijönni, de te mindent megtettél, hogy a lehető legtöbbet elsajátítsd a tudományából. Talán egy kicsit hebehurgyán döntöttél, amikor nyomban elindultál Salamon király udvarába. A király lelkesen fogadott, és elmagyarázta, mit tervez. Azt mondta, nem kell vérnek folynia, el lehet kerülni a csatát, feltéve, hogy Balthus ellen valaki merényletet követ el, még mielőtt a gonosz varázsló egybegyűjtené csapatát.[/p]
+        [p]A feladat, amelyet vállaltál, rendkívül veszedelmes. Balthust seregnyi visszataszító teremtmény veszi körül Fellegvárában. Bár fő fegyvered a varázslat, lesz olyan pillanat, amikor a kardodon kívül semmi nem segít, hogy életben maradj.[/p]
+        [p]Salamon király elmondta, mi a dolgod, és figyelmeztetett, milyen veszélyekkel kell számolnod. Egyetlen helyes út vezet át a Fellegváron. Ha felfedezed, melyik az, csak igen kis mértékben kockáztatod az életedet.[/p]
+        [p]De megeshet, hogy jó néhányszor nekivágsz, míg megleled a legjobb átjárót.[/p]
+        [p]Fűzfa Völgyből hosszú út vezet a Fekete Toronyhoz. A Sziklaszirt Hegység lábánál azonban a sötét háttérből lassan kirajzolódnak a Torony körvonalai…[/p]
+    </text>
+    <gatherItem id="defWpn" />
+    <gatherItem id="1001" />
+    <gatherItem id="3001" />
+    <next id="1"></next>
+  </p>
+  <p id="1">
+    <text>
+        [p]A nap lemenőben van. Miközben a szürkületből sötétség lesz, felfelé indulsz a domboldalon az éjszakai égboltra vetülő visszataszító árny felé. A Fellegvárig nem egészen egy óra az út.[/p]
+        [p]A falaktól nem messze megállsz pihenni - ez hiba, hiszen a félelmetes látvány azt sugallja, hogy innen nincs menekülés. Feláll a szőr a hátadon, amint a Torony felé pillantasz.[/p]
+        [p]De szégyelled a félelmeidet. Komor elszántsággal elindulsz a főkapu felé, ahol - ezt jól tudod - őrök várnak rád. Számba veszed a lehetőségeidet. Már gondoltál rá, hogy azt mondod, gyógynövénygyűjtő vagy, és azért jöttél, hogy meggyógyíts egy lázas őrt. Kiadhatod magad kereskedőnek, kézművesnek, talán ácsnak is. Esetleg vándornak, aki éjjeli menedéket keres.[/p]
+        [p]Amint azon töprengsz, milyen lehetőségeid vannak és mit fogsz bemesélni az őröknek, eléred a főkapuhoz vezető központi ösvényt. A függőhíd mindkét oldalán egy-egy lámpa ég.[/p]
+        [p]Amint közelebb jutsz, halk morgást hallasz, majd két torz figura lép elő a sötétből. A bal oldalinak kutyafeje van, a teste meg nagy majomra emlékeztet. Igen erős karjai vannak. A másik pontosan az ellentéte. Ennek a feje majmot, a teste nagy kutyát idéz. Ez utóbbi négy lábon közelít feléd. Néhány lépésnyire megáll, és két hátsó lábára emelkedve megszólít.[/p]
+        [p]Kinek adod ki magad?[/p]
+    </text>
+    <next id="261">Orvosnak, aki gyógynövényekkel gyógyít?</next>
+    <next id="230">Kereskedőnek?</next>
+    <next id="20">Vándornak, aki szállást kér éjszakára?</next>
+  </p>
+  <p id="20">
+    <text>
+        [p]A Majom-Kutya közli veled, hogy sötétedés után senki sem lépheti át a Torony küszöbét - máshol kell szállás után nézned.[/p]
+    </text>
+    <itemCheck type="item" id="foolsGold">
+      <have>
+        <next id="288">Ha rászánod magad, hogy megküzdj velük</next>
+        <next id="96">Ha inkább felveszel a földről egy kis szikladarabot, és Hamis Arany Varázslatot alkalmazva az ál-aranyröggel megvesztegeted őket, hegy beengedjenek</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nincs más választásod, meg kell küzdened velük.[/p]
+        </text>
+        <next id="288"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="96">
+    <text>
+        [p]Elfogadják az ajándékodat, és odaintik a kapuőrt, aki a rácsba beépített kis ajtót kinyitva beenged. Otthagyod őket, hadd marakodjanak az aranyrögön.[/p]
+    </text>
+    <loseItem id="foolsGold" />
+    <next id="251"></next>
+  </p>
+  <p id="251">
+    <text>
+        [p]Amint előremész, belépsz egy tágas, nyitott, hatalmas falakkal körülvett udvarra. Különböző fények égnek, és a félhomályban csoportokba verődve furcsa alakok jönnek-mennek. Az udvar közepén hatalmas szoborféleséget látsz - valószínűleg szökőkút lehet. Amint előretekintesz, az udvar túlsó végében észreveszel egy ajtót; úgy véled, ez tehet a Fellegvár főbejárata. Mit teszel?[/p]
+    </text>
+    <next id="222">A fal mellett óvatosan megközelíted az ajtót?</next>
+    <next id="179">Vakmerően keresztülsétálsz az udvaron?</next>
+    <next id="321">Lábujjhegyen odalopakodsz a félhomályban az egyik csoporthoz?</next>
+  </p>
+  <p id="288">
+    <text>
+        [p]A két teremtmény feléd közeledik. A Majom-Kutya támad elsőnek, majd a Kutya-Majom.[/p]
+    </text>
+    <itemCheck type="items" id="strength or levitation">
+      <have>
+        <itemCheck type="item" id="strength">
+          <have>
+            <next id="162" pos="1">Ha az Erő Varázslatot alkalmazod</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="levitation">
+          <have>
+            <next id="86" pos="2">Ha a Súlytalanság Varázslatot alkalmazod</next>
+          </have>
+        </itemCheck>
+        <next id="288b" pos="3">Ha megküzdesz velük</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Meg kell küzdened velük.[/p]
+        </text>
+        <fight type="single">
+          <enemy id="1" />
+          <enemy id="2" />
+        </fight>
+        <next id="32"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="32">
+    <text>
+        [p]Átlépsz a földön fekvő tetemeken, és a kapuhoz mész. Bekiáltasz az őrnek, és amikor közeleg, a kapumélyedés sötét szegletébe húzódsz. Megpillantja a tetemeket, és odamegy hozzájuk, hogy megnézze, mi történt velük. Ekkor a nyitott kapun át besurransz, és kulcsra zárod. Az őr kinn reked.[/p]
+    </text>
+    <next id="251"></next>
+  </p>
+  <p id="288b" display="288">
+    <text>
+        [p]A két teremtmény feléd közeledik. A Majom-Kutya támad elsőnek, majd a Kutya-Majom.[/p]
+        [p]Meg kell küzdened velük.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="1" />
+      <enemy id="2" />
+    </fight>
+    <next id="32"></next>
+  </p>
+  <p id="162">
+    <text>
+        [p]Érzed, amint erő járja át testedet. A teremtmények látják, amint izmaid kidagadnak, és a földbe gyökerezik a lábuk. Kardodat markolatánál fogva előrántod. Szerencsétlenségedre igen nehéz új erőd fölött uralkodnod, és amint nagy lendülettel kirántod a kardodat, az messzire száll és jó pár méternyire előtted landolt. A teremtmények egymásra vigyorognak és támadnak. Most puszta kézzel kell velük megküzdened, vagy ha akarod, az Erő Varázslat segítségével lerohanhatsz a hegyoldalon.[/p]
+        [p]Ha megküzdesz a teremtményekkel, egyenként tedd![/p]
+        [p]Saját hasonló pontjaid úgy működnek, mint normális körülmények között, mert szupererős vagy ugyan, de fegyvered nincsen.[/p]
+    </text>
+    <loseItem id="1001"/>
+    <fight type="single">
+    <enemy id="1"/>
+    <enemy id="2"/>
+    <win>
+    <gatherItem id="1001"/>
+        <text>
+            [p]Visszaszerzed a kardodat. Erőd ismét a megszokott lesz.[/p]
+        </text>
+    </win>
+    </fight>
+    <next id="32"></next>
+  </p>
+  <p id="86">
+    <text>
+        [p]Miután varázsoltál, a két teremtmény döbbenten figyeli, amint a levegőbe emelkedsz és a fejűk fölött elszállva átröpülsz a kapu és a Fellegvárat körülvevő fal fölött. A kapu túloldalán érsz földet, és körülnézel.[/p]
+        [p]Mostantól kezdve vigyázz! Biztosan riasztani fogják az őrséget.[/p]
+    </text>
+    <loseItem id="levitation"/>
+    <next id="251"></next>
+  </p>
+  <p id="261">
+    <text>
+        [p]A Majom-Kutya megkér, hogy mutasd meg neki a gyógynövényeidet. Szerencsédre az idevezető úton összeszedtél néhány marék gazt, amit most megmutathatsz neki. Fejét kissé oldalra hajtva a teremtmény gyanakodva mér végig. Kéri, hogy közöld vele annak az őrnek a nevét, akit meg akarsz gyógyítani. Erre nem számítottál! Gyorsan kitalálsz egy nevet, amellyel becsaphatod a teremtményt. Melyiket mondod?[/p]
+    </text>
+    <next id="81">Kylltrog</next>
+    <next id="175">Pincus</next>
+    <next id="394">Blag</next>
+  </p>
+  <p id="394">
+    <text>
+        [p]A teremtmények úgy néznek egymásra, mintha ismerősen csengene számukra a név, de mégsem tudják hová tenni. Gyorsan közlöd velük, hogy az illető az első emeleti őrségben szolgál. Vállat vonnak, végül úgy döntenek, igazat beszélsz. A Majom-Kutya odahívja a kapuőrt, aki jön és beenged.[/p]
+    </text>
+    <next id="251"></next>
+  </p>
+  <p id="175">
+    <text>
+        [p]A teremtmény sose hallotta a Pincus nevet a Fellegvárban. A Kutya-Majom buzogánnyal a kezében morogva indul el feléd.[/p]
+    </text>
+    <next id="110">Ha gyorsan más nevet választasz</next>
+    <next id="288">Ha felkészülsz, hogy megküzdj velük</next>
+  </p>
+  <p id="110">
+    <test against="luck">
+        <success>
+        <text>
+            [p]Egy másik nevet választasz, amelyik ismerősen cseng a fülüknek, és odakiáltanak a kapuőrnek, aki végül is megjelenik és beenged.[/p]
+        </text>
+        <next id="251"></next>
+        </success>
+        <failure>
+        <text>
+            [p]Ez ismét sikertelen találgatás volt, és tüzelésre kész fegyverrel közelednek feléd. Meg kell küzdened velük![/p]
+        </text>
+        <next id="288"></next>
+        </failure>
+    </test>
+  </p>
+  <p id="81">
+    <text>
+        [p]A Majom-Kutya nevetve mondja, hogy Kylltrog lusta semmirekellő, és nem érdemli meg, hogy megvédd. Megkönnyebbülten sóhajtasz fel, amikor visszamegy és odakiált a kapuőrnek. Egy pillanat múlva megjelenik a kapuőr, kinyit egy kis ajtót és beenged.[/p]
+    </text>
+    <next id="251"></next>
+  </p>
+  <p id="230">
+    <text>
+        [p]- Azért jöttél, hogy egy kis pénzt szerezz, mi? - kérdi tőled a Majom-Kutya. - Hát tulajdonképpen megoszthatod velünk a kereseted egy részét![/p]
+    </text>
+    <itemCheck type="item" id="foolsGold">
+        <have>
+        <next id="96">Ha felveszel a földről egy kis szikladarabot, és megpróbálkozol a Hamis Arany Varázslattal</next>
+        <next id="288">Ha úgy döntesz, hogy megvívsz velük</next>
+        </have>
+        <dontHave>
+        <text>
+            [p]Mivel egy fillér sincs nálad, amit odaadhatnál nekik, kénytelen vagy megküzdeni velük.[/p]
+        </text>
+        <next id="288"></next>
+        </dontHave>
+    </itemCheck>
+  </p>
+  <p id="179">
+    <text>
+        [p]Amikor a félhomályból kilépve az udvar közepe felé haladsz, éles hang kiált rád: - Állj! Ne mozdulj! - Körülnézel, de nem látsz senkit, aki megszólíthatott volna. Teszel még néhány lépést. Ismét megállásra kényszerít a titokzatos hang, majd egy nyílvessző süvít át a légen, és bal lábad mellett fúródik a földbe. Visszarohansz. Még most sem látsz senkit. Kelepcébe kerültél. Mit teszel?[/p]
+    </text>
+    <next id="378" pos="1">Óvatosan továbbmész?</next>
+    <next id="125" pos="2">Odarohansz az udvar közepén álló szoborhoz?</next>
+    <itemCheck type="item" id="shielding">
+    <have>
+    <next id="341" pos="3">Védelem Varázslatot alkalmazol önmagadra, és így mész tovább?</next>
+    </have>
+    </itemCheck>
+  </p>
+  <p id="378">
+    <text>
+        [p]Néhány lépést teszel előre, amikor egy másik nyílvessző csapódik be közvetlenül a lábad mellett. Még néhány lépés, és egy nyílvessző átszakítja bőringedet, sőt felsérti alkarodat. Még most sem látsz senkit, és azt sem tudod, honnan jönnek a nyílvesszők. Hamarosan újabb nyílvessző röpül feléd, és átfúrja a lábadat. Hangosan felordítasz - 4 ÉLETERŐ pontot vesztesz -‚ de már majdnem ott vagy a szobornál, amely védelmet nyújthat számodra. Amilyen gyorsan csak tudsz, odarohansz, és elbújsz mögötte, hogy kivárd, amíg a nyílzápor megszűnik.[/p]
+    </text>
+    <add amount="-4" to="stamina"/>
+    <next id="209"></next>
+  </p>
+  <p id="125">
+    <text>
+        [p]Amikor futásnak eredsz, ki tudja, honnan, három nyílvessző süvít el melletted.[/p]
+    </text>
+    <test against="luck">
+    <success>
+        <text>
+            [p]Nem találnak el a vesszők, és eléred a szobrot, amely mögött védelmet találsz.[/p]
+        </text>
+    </success>
+    <failure>
+        <text>
+            [p]Az egyik nyílvessző belefúródik a karodba, és 5 ÉLETERŐ pontot vesztesz, még mielőtt eléred a szobrot.[/p]
+        </text>
+        <add amount="-5" to="stamina"/>
+    </failure>
+    </test>
+    <next id="209"></next>
+  </p>
+  <p id="341">
+    <text>
+        [p]Varázsolsz egyet, és előremész. Négy vagy öt nyílvessző süvít feléd, de néhány méterre tőled megállnak a levegőben, és a földre hullanak. Eléred a szobrot.[/p]
+    </text>
+    <loseItem id="shielding"/>
+    <next id="209"></next>
+  </p>
+  <p id="209">
+    <text>
+        [p]Jól szemügyre veszed a különös építményt. Kiderül, hogy az nem szökőkút, hanem valamilyen templom. Az egyik oldalában egy ajtó van, melyet, ha akarsz, megtekinthetsz, de tovább is mehetsz a Fellegvár felé.[/p]
+    </text>
+    <next id="156">Ha tovább akarsz menni</next>
+    <next id="362">Ha az ajtót akarod megvizsgálni</next>
+  </p>
+  <p id="362">
+    <text>
+        [p]Az ajtó kinyílik, bent a kis szobát gyertyafény világítja meg. Óvatosan benézel, és különös látvány tárul a szemed elé. Egy kőoltáron, a szoba közepén három ezüstserleg áll, mindegyikben más-más színű folyadék van: az egyik átlátszó fehér, a másik piros, a harmadik tejszerű. Az oltár fölött három Gremlin formájú, apró szárnyas teremtmény röpköd izgatottan csiripelve. Időnként le-leszállnak az oltárra, és hörpintenek egy-egy kortyot a tejszerű folyadékból. Amikor az ajtó megcsikordul a sarokvasakon, a teremtmények megriadnak. Odaröppennek hozzád, hogy megnézzenek maguknak. Igencsak izgatottak.[/p]
+    </text>
+    <next id="58">Ha akarod, beléphetsz a szobába</next>
+    <next id="156">De be is csukhatod az ajtót, és folytathatod az utadat a Fellegvár felé</next>
+  </p>
+  <p id="58">
+    <text>
+        [p]Amikor belépsz, a Gremlinek izgatott szárnycsapkodásba, sipítozásba kezdenek, majd elröpülnek melletted, s kiszállnak az ajtón, bele az éjszakába. Egyedül maradsz a kehellyel. Iszol-e? Ha igen, melyik italt választod?[/p]
+    </text>
+    <next id="298">Az átlátszót?</next>
+    <next id="267">A pirosat?</next>
+    <next id="92">A tejszerűt?</next>
+    <next id="156">Ha úgy döntesz, hogy inkább távozol és továbbmész a Fellegvárba</next>
+  </p>
+  <p id="298">
+    <text>
+        [p]Amikor megfogod a serleget, a benne lévő folyadék pezsegni, gőzölögni kezd, és amint az ajkadhoz emeled, lespriccel. Biztos vagy benne, hogy meg akarod kóstolni az italt?[/p]
+    </text>
+    <next id="58">Ha nem akarod</next>
+    <next id="141">Ha elszántad rá magad</next>
+  </p>
+  <p id="141">
+    <text>
+        [p]A folyadék sós, és kiver tőle a hideg verejték. Remegni kezdesz, alig bírsz megállni a lábadon. Mégis előretámolyogsz az oltár felé, és a másik két kelyhet is lelököd a földre. A többi folyadék is kiömlik. Leroskadsz a földre - betegnek, részegnek érzed magad. Mintha csak álmodnál, egy különös, izmos kétfejű teremtményt látsz magad előtt, melynek hosszú farka és pikkelyes szürke bőre van. Kezében nagy csomó kulcsot tart. Egy egér fut át az asztalon, melynél a teremtmény ül, aki hangosan felordít… Ordítása felébreszt, és ekkor látod, hol is vagy. Összeszeded minden erődet, és megragadod a kilincset - kell egy kis friss levegő! Elhagyod a termet, pihensz egy keveset odakinn, és továbbmész a Fellegvár felé.[/p]
+    </text>
+    <next id="156"></next>
+  </p>
+  <p id="267">
+    <text>
+        [p]Amikor megmarkolod a kelyhet, a benne lévő folyadék a szemed láttára megzöldül, majd megbarnul. Szörnyen büdös, de te mégis megkóstolod. Undorral köpöd ki - iszapos vizet iszol! Vesztettél 1 SZERENCSE pontot. Elhagyod a termet, és továbbmész a Fellegvár felé.[/p]
+    </text>
+    <add amount="-1" to="luck"/>
+    <next id="156"></next>
+  </p>
+  <p id="92">
+    <text>
+        [p]A tejszerű folyadék illata édeskés. Belekortyolsz, és vihogni kezdesz! Még egy korty és, ki tudja, miért, kitör belőled a nevetés! Nem kétséges, a kis Gremlinek nagyon élvezik a dolgot. Nyertél 2 ÉLETERŐ pontot, amiért ilyen üdítő élményben volt részed. Kissé kóválygó fejjel, jókedvűen hagyod el a termet, és folytatod az utat a Fellegvár felé.[/p]
+    </text>
+    <add amount="2" to="stamina"/>
+    <next id="156"></next>
+  </p>
+  <p id="156">
+    <text>
+        [p]Amikor átvágsz a nyitott udvaron, észreveszed, hogy egy kis földhányás mentén haladsz, amely akár a Fekete Toronytól a Templomig nyúló betemetett csővezeték is lehet. Lehajolsz, hogy megvizsgáld; lehet, hogy ez egy egyszerű vakondtúrás? Amint hozzáérsz a földhányáshoz, az besüpped, és rémülten látod, hogy a földből egy rücskös, szürke csáp nyúlik elő, és a lábad köré tekeredik! [alt]Hogyan küzdesz meg ezzel a furcsa ,,valamivel''?[/alt][/p]
+    </text>
+    <next id="71" pos="1" singleChoiceText="Kardot rántasz.">Kardot rántasz?</next>
+    <itemCheck type="item" id="levitation">
+    <have>
+    <next id="284" pos="2">Súlytalanság Varázslatot alkalmazol?</next>
+    </have>
+    </itemCheck>
+    <itemCheck type="item" id="fire">
+    <have>
+    <next id="114" pos="3">Tűzvarázslatot alkalmazol?</next>
+    </have></itemCheck>
+  </p>
+  <p id="114">
+    <text>
+        [p]Rámutatsz a csáp búvóhelyére, és varázsolsz. Füstgomolyag és fénynyaláb tör fel a földön lévő lyukból. Remegés fut végig a csápon, és szerencsére elereszt szorításából. Amikor visszahúzódik a földbe, megdörzsölöd a lábadat, hogy vérkeringésed ismét elinduljon, majd továbbmész a Fellegvár főbejárata felé.[/p]
+    </text>
+    <loseItem id="fire"/>
+    <next id="218"></next>
+  </p>
+  <p id="284">
+    <text>
+        [p]Varázsolsz, és kezdesz a levegőbe emelkedni. A csáp azonban nem enged, és elviselhetetlen fájdalom hasít a lábadba. Úgy határozol, hogy visszatérsz a földre, mielőtt még kicsavarná a lábadat.[/p]
+    </text>
+    <loseItem id="levitation"/>
+    <itemCheck type="item" id="fire">
+    <have>
+    <next id="71">Vagy karddal támadsz rá</next>
+    <next id="114">Vagy Tűzvarázslatot alkalmazol</next>
+    </have>
+    <dontHave>
+        <text>
+            [p]Úgy döntesz, karddal támadsz rá.[/p]
+        </text>
+        <next id="71"></next>
+    </dontHave>
+    </itemCheck>
+  </p>
+  <p id="71">
+    <text>
+        [p]Kivont kardoddal rávágsz a csápra. A csáp nem úgy fog harcolni ellened, mint ahogyan azt általában a teremtmények teszik, hanem megpróbál behúzni abba a mély lyukba, mely körülötte tátong.[/p]
+    </text>
+    <fight type="single">
+    <enemy id="3"/>
+     <notWinRound totalCount="3">
+     <interrupt/>
+        <text>
+            [p]A teremtmény úgy győz le, hogy behúz a fészkébe, s ezzel kalandodnak vége szakad.[/p]
+        </text>
+        <death/>
+     </notWinRound>
+     <win>
+        <text>
+            [p]Lefejtheted a csápot a lábadról, és továbbmehetsz a Fekete Torony főbejáratához.[/p]
+        </text>
+     <next id="218"></next>
+     </win>
+    </fight>
+  </p>
+  <p id="218">
+    <text>
+        [p]Hatalmas faajtó előtt állsz, mely jól be van zárva.[/p]
+    </text>
+    <next id="118">Ha hármat kopogsz az őrnek</next>
+    <next id="94">Ha az Erővarázslatot alkalmazod, hogy kinyisd az ajtót</next>
+  </p>
+  
+  
+  
+  
+  
+  
+</content>

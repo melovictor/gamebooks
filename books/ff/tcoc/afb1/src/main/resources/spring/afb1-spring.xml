@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant static-field="hu.zagor.gamebooks.support.bookids.brazilian.AventurasFantasticas.A_CIDADELA_DO_CAOS" id="afb1Id" />
+
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="afb1Info" c:id-ref="afb1Id" p:coverPath="resources/ff2/cover.jpg" p:resourceDir="ff2"
+    p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="ptbrLocale" p:position="1" p:series-ref="afbTitle"
+    p:title="A cidadela do caos" p:characterHandler-ref="ff2CharacterHandler" p:commandResolvers-ref="ffCommandResolvers" p:unfinished="true" p:characterBeanId="ff2Character"
+    p:characterPageDataBeanId="ff2CharacterPageData">
+    <property name="contents">
+      <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="afb1enemies.xml" c:items="afb1items.xml" c:paragraphs="afb1content.xml" />
+    </property>
+    <property name="contentSpecification">
+      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="false" />
+    </property>
+    <property name="resources">
+      <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="ff2" p:jsResources="ff2" />
+    </property>
+  </bean>
+
+</beans>
