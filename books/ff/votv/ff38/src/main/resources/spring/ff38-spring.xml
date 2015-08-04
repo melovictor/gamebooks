@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.FightingFantasy.VAULT_OF_THE_VAMPIRE" id="ff38Id" />
+
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff38Info" c:id-ref="ff38Id" p:coverPath="resources/ff38/cover.jpg" p:resourceDir="ff38"
+  p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ff38RuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="38" p:series-ref="ffTitle"
+  p:title="Vault of the Vampire" p:characterHandler-ref="ff38CharacterHandler" p:commandResolvers-ref="ff38CommandResolvers" p:hidden="true" p:characterBeanId="ff38Character"
+  p:characterPageDataBeanId="ff38CharacterPageData">
+    <property name="contents">
+      <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="ff38enemies.xml" c:items="ff38items.xml" c:paragraphs="ff38content.xml" />
+    </property>
+    <property name="contentSpecification">
+      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="true" />
+    </property>
+  </bean>
+  
+  <bean class="hu.zagor.gamebooks.ff.ff.votv.character.handler.attribute.Ff38AttributeHandler" id="ff38AttributeHandler" />
+  <bean class="hu.zagor.gamebooks.ff.ff.votv.mvc.books.newgame.service.Ff38CharacterGenerator" id="ff38CharacterGenerator" />
+  <bean id="ff38CharacterHandler" parent="ffCharacterHandler" p:attributeHandler-ref="ff38AttributeHandler" p:characterGenerator-ref="ff38CharacterGenerator" />
+
+
+  <bean class="hu.zagor.gamebooks.ff.section.FfRuleBookParagraphResolver" id="ff38RuleBookParagraphResolverLe" p:attributeTestDefaultSuccessTypes-ref="ff38Attribute" />
+
+  <util:map id="ff38Attribute">
+    <entry key="skill" value-ref="attribTestSuccessTypeLowerEquals" />
+    <entry key="luck" value-ref="attribTestSuccessTypeLowerEquals" />
+    <entry key="faith" value-ref="attribTestSuccessTypeLowerEquals" />
+  </util:map>
+
+  <bean id="ff38CommandResolvers" c:mapA-ref="ffCommandResolvers" c:mapB-ref="ff38ExtraCommandResolvers" factory-method="merge" class="hu.zagor.gamebooks.support.spring.MapMerger" />
+  <bean class="hu.zagor.gamebooks.content.command.fight.Ff38FightCommandResolver" id="ff38FightCommandResolver" p:subResolvers-ref="fightSubResolvers">
+    <property name="boneEnemies">
+    <list>
+    <value>39</value>
+    </list>
+    </property>
+    <property name="undeadEnemies">
+    <list>
+    <value>38</value>
+    <value>40</value>
+    </list>
+    </property>
+  </bean>
+
+  <util:map id="ff38ExtraCommandResolvers" key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver">
+    <entry key="hu.zagor.gamebooks.content.command.fight.FightCommand" value-ref="ff38FightCommandResolver" />
+  </util:map>
+  
+  
+</beans>
