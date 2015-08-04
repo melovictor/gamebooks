@@ -1,0 +1,18 @@
+package hu.zagor.gamebooks.raw.sc.dod.mvc.books.section.controller;
+
+import org.testng.annotations.Test;
+
+/**
+ * Unit test for class {@link Csp2BookWelcomeController}.
+ * @author Tamas_Szekeres
+ */
+@Test
+public class Csp2BookWelcomeControllerTest {
+
+    public void testConstructor() {
+        // GIVEN
+        // WHEN
+        new Csp2BookWelcomeController().getClass();
+        // THEN
+    }
+}
