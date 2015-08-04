@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://gamebooks.zagor.hu"
+  version="1.0" xmlns="http://gamebooks.zagor.hu">
+  <xs:element name="content">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="p">
+          <xs:annotation>
+            <xs:documentation>Defines a single paragraph of the book.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="p">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element name="empty" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Defines that the given paragraph is nonexistent in the book.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence />
+          </xs:complexType>
+        </xs:element>
+        <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+      </xs:choice>
+      <xs:attribute name="id" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>Defines the name of the current paragraph.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="display" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation>The displayed name of the current paragraph. If omitted, the id will be displayed.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="descriptionGroup">
+    <xs:choice>
+      <xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Defines the text of the given paragraph.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="reward">
+        <xs:complexType>
+          <xs:attribute name="id" use="required" type="xs:string" />
+          <xs:attribute name="useSeriesId" use="optional" type="xs:boolean" default="false">
+            <xs:annotation>
+              <xs:documentation>
+                Usually the system would send out the book's own ID to the server to register the reward. By setting this property to 'true' one can force the
+                system to send out the ID of the series instead.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="next" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:annotation>
+                <xs:documentation>Defines a continuation target.</xs:documentation>
+              </xs:annotation>
+              <xs:attribute name="id" type="xs:string" use="required">
+                <xs:annotation>
+                  <xs:documentation>Defines the number of the paragraph to turn to.</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+              <xs:attribute name="pos" type="xs:integer" use="optional">
+                <xs:annotation>
+                  <xs:documentation>Defines the position of the given option element in the displayed list.</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="gatherItem" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="id" type="xs:string" use="required"></xs:attribute>
+          <xs:attribute name="amount" type="xs:integer" use="optional"></xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="loseItem" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="id" type="xs:string" use="required"></xs:attribute>
+          <xs:attribute name="amount" type="xs:integer" use="optional"></xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="victory" minOccurs="0" maxOccurs="1" />
+      <xs:element name="death" minOccurs="0" maxOccurs="1" />
+      <xs:element name="itemCheck">
+        <xs:complexType>
+          <xs:sequence minOccurs="1" maxOccurs="3">
+            <xs:element name="have" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="haveEquipped" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dontHave" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="after" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="type" use="required">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="section" />
+                <xs:enumeration value="item" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="id" type="xs:string" use="required" />
+          <xs:attribute name="have" type="xs:string" use="optional" />
+          <xs:attribute name="dontHave" type="xs:string" use="optional" />
+        </xs:complexType>
+      </xs:element>
+
+
+      <xs:element name="userInput">
+        <xs:complexType>
+          <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="label" minOccurs="1" maxOccurs="1">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:string" />
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="result" minOccurs="1" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+                <xs:attribute name="text" type="xs:string" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="resultElse" minOccurs="1" maxOccurs="1">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="type">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="text" />
+                <xs:enumeration value="number" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="hint" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+    </xs:choice>
+  </xs:group>
+</xs:schema>

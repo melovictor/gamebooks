@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://gamebooks.zagor.hu" version="1.0" xmlns="http://gamebooks.zagor.hu">
+  <xs:element name="enemies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="enemy" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="enemy">
+    <xs:complexType>
+      <xs:attribute name="id" type="xs:string" use="required" />
+      <xs:attribute name="name" type="xs:string" use="required" />
+      <xs:attribute name="commonName" type="xs:string" use="optional" />
+      <xs:attribute name="skill" type="xs:integer" use="required" />
+      <xs:attribute name="stamina" type="xs:integer" use="required" />
+      <xs:attribute name="staminaDamage" type="xs:integer" default="2" />
+      <xs:attribute name="staminaDamageWhenHit" type="xs:integer" default="0" />
+      <xs:attribute name="staminaAutoDamage" type="xs:integer" default="0" />
+      <xs:attribute name="staminaDamageWhileInactive" type="xs:integer" default="0" />
+      <xs:attribute name="skillDamage" type="xs:integer" default="0" />
+      <xs:attribute name="damageAbsorption" type="xs:integer" default="0" />
+      <xs:attribute name="damageAbsorptionEdged" type="xs:integer" default="0" />
+      <xs:attribute name="resurrectable" type="xs:boolean" default="false" />
+      <xs:attribute name="killableByNormal" type="xs:boolean" default="true" />
+      <xs:attribute name="killableByMagical" type="xs:boolean" default="true" />
+      <xs:attribute name="killableByBlessed" type="xs:boolean" default="true" />
+      <xs:attribute name="fleeAtStamina" type="xs:integer" default="0" />
+      <xs:attribute name="fleeAtRound" type="xs:integer" />
+      <xs:attribute name="same" type="xs:string" />
+      
+      <xs:attribute name="attackStrength" type="xs:integer" />
+      
+      <xs:attribute name="forceFight" type="xs:boolean" />
+      <xs:attribute name="startAtRound" type="xs:integer" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

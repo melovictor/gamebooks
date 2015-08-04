@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://gamebooks.zagor.hu" version="1.0" xmlns="http://gamebooks.zagor.hu">
+  <xs:element name="items">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="item" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="item">
+    <xs:complexType>
+      <xs:attribute name="id" type="xs:string" use="required" />
+      <xs:attribute name="name" type="xs:string" use="required" />
+
+      <xs:attribute name="type" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="common" />
+            <xs:enumeration value="info" />
+            <xs:enumeration value="shadow" />
+            <xs:enumeration value="immediate" />
+
+            <xs:enumeration value="weapon1" />
+            <xs:enumeration value="weapon2" />
+            <xs:enumeration value="shooting" />
+            <xs:enumeration value="shield" />
+            <xs:enumeration value="ring" />
+            <xs:enumeration value="necklace" />
+            <xs:enumeration value="boots" />
+            <xs:enumeration value="armour" />
+            <xs:enumeration value="helmet" />
+            <xs:enumeration value="bracelet" />
+            <xs:enumeration value="cloak" />
+            <xs:enumeration value="brooch" />
+            <xs:enumeration value="gloves" />
+            
+            <xs:enumeration value="potion" />
+            <xs:enumeration value="provision" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+
+      <xs:attribute name="weaponSubType">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="weakBlunt" />
+            <xs:enumeration value="edged" />
+            <xs:enumeration value="blunt" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+
+      <xs:attribute name="staminaDamage" type="xs:int" />
+      <xs:attribute name="skillDamage" type="xs:int" />
+      
+      <xs:attribute name="dose" type="xs:int" />
+      <xs:attribute name="price" type="xs:int" />
+
+      <xs:attribute name="addToSkill" type="xs:int" />
+      <xs:attribute name="addToStamina" type="xs:int" />
+      <xs:attribute name="addToStaminaNd6" type="xs:int" />
+      <xs:attribute name="addToLuck" type="xs:int" />
+      <xs:attribute name="addToInitialSkill" type="xs:int" />
+      <xs:attribute name="addToInitialStamina" type="xs:int" />
+      <xs:attribute name="addToInitialLuck" type="xs:int" />
+      <xs:attribute name="addToAttackStrength" type="xs:int" />
+      <xs:attribute name="backpackSize" type="xs:int" />
+
+      <xs:attribute name="magical" type="xs:boolean" default="false" />
+      <xs:attribute name="blessed" type="xs:boolean" default="false" />
+
+      <xs:attribute name="forceEquip" type="xs:boolean" default="false" />
+      <xs:attribute name="removable" type="xs:boolean" default="true" />
+
+      <xs:attribute name="actions" type="xs:integer" use="optional" default="1" />
+      
+      <xs:attribute name="preFight" type="xs:boolean" use="optional" default="false" />
+
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
