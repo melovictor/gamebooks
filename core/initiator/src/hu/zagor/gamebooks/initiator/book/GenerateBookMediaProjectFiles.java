@@ -9,7 +9,8 @@ import java.io.IOException;
 public class GenerateBookMediaProjectFiles extends AbstractGenerator {
 
     public void generate(final BookBaseData baseData) {
-        final File medRootPath = new File("d:/System/eclipse/books/" + baseData.getSeriesCode() + "/" + baseData.getTitleCode() + "/" + baseData.getTitleCode() + "-med");
+        final File medRootPath = new File("d:/System/eclipsegit/books/" + baseData.getSeriesCode() + "/" + baseData.getTitleCode() + "/" + baseData.getTitleCode()
+            + "-med");
         if (!medRootPath.exists()) {
             generateMediaProject(medRootPath, baseData);
         }

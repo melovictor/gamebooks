@@ -41,7 +41,7 @@ import java.io.IOException;
 public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
 
     public void generate(final BookBaseData baseData, final BookLangData data) {
-        final File langRootPath = new File("d:/System/eclipse/books/" + baseData.getSeriesCode() + "/" + baseData.getTitleCode() + "/" + data.getSeriesCode()
+        final File langRootPath = new File("d:/System/eclipsegit/books/" + baseData.getSeriesCode() + "/" + baseData.getTitleCode() + "/" + data.getSeriesCode()
             + data.getPosition());
         generateLanguageProject(langRootPath, baseData, data);
     }
