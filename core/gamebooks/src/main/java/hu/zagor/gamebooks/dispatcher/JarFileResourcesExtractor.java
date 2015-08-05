@@ -25,9 +25,9 @@ import org.springframework.util.StringUtils;
  */
 public final class JarFileResourcesExtractor {
 
-    @Value("${jfre.extractionOutputDir}")
+    @Value("${jfre.repositoryOutputDir}")
     private String extractionOutputDirPath;
-    @Value("${jfre.outputDir}")
+    @Value("${jfre.tomcatOutputDir}")
     private String outputDirPath;
     @Value("${jfre.rulesetDir}")
     private String rulesetDirPath;
