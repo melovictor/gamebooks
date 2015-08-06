@@ -15,7 +15,7 @@
         <spring:message code="page.footer.poweredBy" />
     </span>
     <span id="FooterCompatibility">
-        <spring:message code="page.footer.browsers" arguments="<span title=','>,</span>" />
+        <spring:message code="page.footer.browsers" />
 		<spring:message code="page.footer.resolution" /> 1280x1024
 	</span>
 </div>
