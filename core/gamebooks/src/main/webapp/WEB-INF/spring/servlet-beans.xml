@@ -33,14 +33,4 @@
     <constructor-arg ref="resourcePatternResolver" />
   </bean>
 
-
-  <beans profile="dev">
-    <bean id="watchServiceIoHandler" class="hu.zagor.gamebooks.dispatcher.WatchServiceIoHandler" />
-    <bean class="hu.zagor.gamebooks.dispatcher.JarFileResourcesExtractor" p:ioHandler-ref="watchServiceIoHandler">
-      <property name="eventHandler">
-          <bean class="hu.zagor.gamebooks.dispatcher.WatchServiceEventHandler" p:ioHandler-ref="watchServiceIoHandler" />
-      </property>
-    </bean>
-  </beans>
-
 </beans>
