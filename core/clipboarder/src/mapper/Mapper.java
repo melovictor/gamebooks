@@ -17,7 +17,7 @@ public class Mapper {
     private static final Pattern NAVIGATION = Pattern.compile("<next.*?id=\"([^\"]*)\"");
 
     public static void main(final String[] args) throws IOException {
-        final String root = "d:\\System\\eclipse\\books";
+        final String root = "d:\\System\\eclipsegit\\books";
         final String[] series = new String[]{"cyoa", "cyoar", "ff", "solo", "tm", "sc", "cyoawd", "wm", "agirl"};
         final String content = "src\\main\\resources";
 
