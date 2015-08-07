@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+<module name="Checker">
+  <property name="severity" value="error" />
+  <module name="RegexpSingleline">
+    <property name="severity" value="error"/>
+    <property name="id" value="JPSIncludeImage_Error"/>
+    <property name="format" value="img.* src=&quot;/?images/(hcom-imageversion|static)"/>
+    <property name="message" value="Use hcom:image tag for including images in JSPs"/>
+  </module>
+</module>

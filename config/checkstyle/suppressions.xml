@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC "-//Puppy Crawl//DTD Suppressions 1.1//EN" "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
+<suppressions>
+  <!-- relax rules in unit tests, we need less docs and magic numbers are commonplace in tests -->
+  <suppress checks="JavadocMethod|IllegalInstantiation|IllegalThrows|MagicNumber|ClassFanOutComplexity|ClassDataAbstractionCoupling|SuppressWarnings" files=".*Mock.*java|.*IT.java|.*Test.java|.*TestDataProvider.java" />
+  <!-- relax rules in integration tests, we need more lines in tests (in a single method and in the file as well) since both the setup and the assertation can take a lot of place -->
+  <suppress checks="FileLength|MethodLength|MethodCount" files=".*IT.java" />
+  <!-- relax rules in package info files, they are not real classes -->
+  <suppress checks="RegexpHeader" files=".*package-info.java" />
+  <!-- relax parameter numbers in Spring MVC the framework build on parameters heavily -->
+  <suppress id="ParameterNumber_Warning" files=".*Controller.java" />
+  <suppress id="ParameterNumber_Error" files=".*Controller.java" />
+
+  <!-- relax rules in FightCommand bean, I know it should be done by refactoring but since the load-save functionality relies on the bean structure the current one cannot really be changed -->
+  <suppress checks="FileLength|MethodCount" files="FightCommand.java" />
+
+  <suppress id="VisibilityModifier_Error" files="hu.zagor.gamebooks.books.AbstractTransformerTest" />
+</suppressions>
