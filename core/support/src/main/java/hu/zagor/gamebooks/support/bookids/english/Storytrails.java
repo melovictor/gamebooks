@@ -7,7 +7,7 @@ public class Storytrails {
     public static final String TITLE = "Storytrails";
 
     public static final long TERROR_IN_THE_FOURTH_DIMENSION = BASE + 2;
-    public static final long THE_EVIl_OF_MR_HAPPINESS = BASE + 3;
+    public static final long THE_EVIL_OF_MR_HAPPINESS = BASE + 3;
 
     public static final long COSNPIRACY_OF_BLOOD = BASE + 11;
 
