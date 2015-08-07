@@ -9,7 +9,6 @@ import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.CommandResolveResult;
-import hu.zagor.gamebooks.content.command.CommandResolver;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 
@@ -33,7 +32,7 @@ public class Ff5FightCommandResolverTest {
 
     private Ff5FightCommandResolver underTest;
     private IMocksControl mockControl;
-    private CommandResolver superResolver;
+    private FightCommandResolver superResolver;
     private Command commandObject;
     private ResolvationData resolvationData;
     private CommandResolveResult resolveResult;
@@ -49,7 +48,7 @@ public class Ff5FightCommandResolverTest {
     public void setUpClass() {
         mockControl = EasyMock.createStrictControl();
         underTest = new Ff5FightCommandResolver();
-        superResolver = mockControl.createMock(CommandResolver.class);
+        superResolver = mockControl.createMock(FightCommandResolver.class);
         Whitebox.setInternalState(underTest, "superResolver", superResolver);
         commandObject = mockControl.createMock(Command.class);
         character = mockControl.createMock(FfCharacter.class);
