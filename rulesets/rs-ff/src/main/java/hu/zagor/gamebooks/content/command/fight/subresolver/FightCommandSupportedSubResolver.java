@@ -7,6 +7,7 @@ import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver;
+import hu.zagor.gamebooks.content.command.fight.subresolver.domain.LuckTestSettings;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 
@@ -19,9 +20,26 @@ import java.util.List;
  */
 public class FightCommandSupportedSubResolver extends FightCommandBasicSubResolver {
 
-    private void prepareAllyLuckTest(final FightCommand command) {
-        command.setLuckOnHit(false);
-        command.setLuckOnDefense(false);
+    /**
+     * Turns off the luck settings.
+     * @param command the {@link FightCommand} object
+     * @return the previous settings
+     */
+    protected LuckTestSettings prepareAllyLuckTest(final FightCommand command) {
+        return prepareAllyLuckTest(command, new LuckTestSettings(false, false));
+    }
+
+    /**
+     * Sets the luck settings to the specified values.
+     * @param command the {@link FightCommand} object
+     * @param luckTestSettings the values to which the luck settings must be set
+     * @return the previous settings
+     */
+    protected LuckTestSettings prepareAllyLuckTest(final FightCommand command, final LuckTestSettings luckTestSettings) {
+        final LuckTestSettings originalSettings = new LuckTestSettings(command.isLuckOnHit(), command.isLuckOnDefense());
+        command.setLuckOnHit(luckTestSettings.isOnHit());
+        command.setLuckOnDefense(luckTestSettings.isOnDefense());
+        return originalSettings;
     }
 
     @Override
@@ -33,7 +51,7 @@ public class FightCommandSupportedSubResolver extends FightCommandBasicSubResolv
     protected void resolveBattlingParties(final FightCommand command, final ResolvationData resolvationData) {
         super.resolveBattlingParties(command, resolvationData);
         final List<FfEnemy> allies = collectEnemies(command.getRoundNumber(), command.getAllies(), resolvationData.getEnemies());
-        final List<FfCharacter> resolvedAllies = new ArrayList<>();
+        final List<FfAllyCharacter> resolvedAllies = new ArrayList<>();
         for (final FfEnemy ally : allies) {
             final FfAllyCharacter allyCharacter = new FfAllyCharacter(ally);
             allyCharacter.setName(ally.getName());
@@ -53,7 +71,7 @@ public class FightCommandSupportedSubResolver extends FightCommandBasicSubResolv
         final FightRoundResolver roundResolver = getBeanFactory().getBean(command.getBattleType() + "FightRoundResolver", FightRoundResolver.class);
         final FightRoundResult[] roundResults = roundResolver.resolveRound(command, resolvationData, beforeRoundResult);
         updateBattleStatistics(command, roundResults);
-        prepareAllyLuckTest(command);
+        final LuckTestSettings luckTestSettings = prepareAllyLuckTest(command);
         for (final FfCharacter ally : command.getResolvedAllies()) {
             if (!getEnemyStatusEvaluator().enemiesAreDead(command.getResolvedEnemies(), command.getRoundNumber())) {
                 final ResolvationData newResolvationData = new ResolvationData(resolvationData.getRootData(), ally, resolvationData.getEnemies(),
@@ -61,6 +79,7 @@ public class FightCommandSupportedSubResolver extends FightCommandBasicSubResolv
                 roundResolver.resolveRound(command, newResolvationData, beforeRoundResult);
             }
         }
+        prepareAllyLuckTest(command, luckTestSettings);
     }
 
 }

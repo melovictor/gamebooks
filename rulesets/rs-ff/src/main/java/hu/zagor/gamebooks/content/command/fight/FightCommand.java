@@ -10,7 +10,7 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
 import hu.zagor.gamebooks.content.command.fight.domain.WeaponReplacementData;
-import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,8 +48,8 @@ public class FightCommand extends Command {
     private FightRoundBoundingCommand beforeBounding;
 
     private boolean keepOpen;
-    private final List<FfEnemy> resolvedEnemies = new ArrayList<FfEnemy>();
-    private final List<FfCharacter> resolvedAllies = new ArrayList<FfCharacter>();
+    private final List<FfEnemy> resolvedEnemies = new ArrayList<>();
+    private final List<FfAllyCharacter> resolvedAllies = new ArrayList<>();
     private Map<String, BattleStatistics> battleStatistics = new HashMap<>();
 
     private boolean ongoing;
@@ -246,11 +246,11 @@ public class FightCommand extends Command {
         return allies;
     }
 
-    public List<FfCharacter> getResolvedAllies() {
+    public List<FfAllyCharacter> getResolvedAllies() {
         return resolvedAllies;
     }
 
-    public FfCharacter getFirstAlly() {
+    public FfAllyCharacter getFirstAlly() {
         return resolvedAllies.get(0);
     }
 

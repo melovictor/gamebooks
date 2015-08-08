@@ -29,6 +29,10 @@ public class FfAllyCharacter extends FfCharacter {
         setBackpackSize(Integer.MAX_VALUE);
     }
 
+    public String getId() {
+        return ally.getId();
+    }
+
     @Override
     public int getSkill() {
         return ally.getSkill();
