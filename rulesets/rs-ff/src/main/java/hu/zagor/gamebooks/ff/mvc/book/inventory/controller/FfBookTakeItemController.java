@@ -10,6 +10,7 @@ import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
+import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.mvc.book.inventory.controller.GenericBookTakeItemController;
 import hu.zagor.gamebooks.mvc.book.inventory.service.MarketHandler;
@@ -86,7 +87,7 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
         if (totalActions > 0) {
             paragraph.setActions(totalActions - 1);
             final Character character = wrapper.getCharacter();
-            final FfCharacterHandler characterHandler = (FfCharacterHandler) getInfo().getCharacterHandler();
+            final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
             characterHandler.getItemHandler().setItemEquipState(character, itemId, isEquipped);
             getItemInteractionRecorder().changeItemEquipState(wrapper, itemId);
         }
@@ -121,7 +122,7 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
         final Character character = wrapper.getCharacter();
         final CommandView commandView = character.getCommandView();
         if (notFighting(commandView) && canEatHere(paragraph)) {
-            final FfCharacterHandler characterHandler = (FfCharacterHandler) getInfo().getCharacterHandler();
+            final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
             final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
             final FfItem item = (FfItem) itemHandler.getItem(character, itemId);
             final int totalActions = paragraph.getActions();
@@ -135,7 +136,7 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
     }
 
     private boolean canEatHere(final Paragraph paragraph) {
-        final FfCharacterHandler characterHandler = (FfCharacterHandler) getInfo().getCharacterHandler();
+        final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
         final FfParagraphData data = (FfParagraphData) paragraph.getData();
         return characterHandler.isCanEatEverywhere() || data.isCanEat();
     }
@@ -163,7 +164,7 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
         final Paragraph paragraph = wrapper.getParagraph();
         final FfParagraphData data = (FfParagraphData) paragraph.getData();
 
-        final FfCharacterItemHandler itemHandler = (FfCharacterItemHandler) getInfo().getCharacterHandler().getItemHandler();
+        final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
 
         final Map<String, Object> result = marketHandler.handleMarketPurchase(itemId, character, data, itemHandler);
         getItemInteractionRecorder().recordItemMarketMovement(wrapper, "Sale", itemId);
@@ -194,7 +195,7 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
         final Paragraph paragraph = wrapper.getParagraph();
         final FfParagraphData data = (FfParagraphData) paragraph.getData();
 
-        final FfCharacterItemHandler itemHandler = (FfCharacterItemHandler) getInfo().getCharacterHandler().getItemHandler();
+        final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
 
         final Map<String, Object> result = marketHandler.handleMarketSell(itemId, character, data, itemHandler);
         getItemInteractionRecorder().recordItemMarketMovement(wrapper, "Purchase", itemId);
@@ -206,4 +207,8 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
         writer.close();
     }
 
+    @Override
+    public FfBookInformations getInfo() {
+        return (FfBookInformations) super.getInfo();
+    }
 }
