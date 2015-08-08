@@ -6,7 +6,7 @@ import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
-import hu.zagor.gamebooks.domain.BookInformations;
+import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.section.service.FfBookPreFightHandlingService;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
@@ -35,9 +35,9 @@ public class Ff15BookPreFightHandlingService implements FfBookPreFightHandlingSe
     private LocaleProvider localeProvider;
 
     @Override
-    public void handlePreFightItemUsage(final BookInformations info, final HttpSessionWrapper wrapper, final String itemId) {
+    public void handlePreFightItemUsage(final FfBookInformations info, final HttpSessionWrapper wrapper, final String itemId) {
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
-        final FfCharacterItemHandler itemHandler = (FfCharacterItemHandler) info.getCharacterHandler().getItemHandler();
+        final FfCharacterItemHandler itemHandler = info.getCharacterHandler().getItemHandler();
         itemHandler.removeItem(character, itemId, 1);
 
         final int[] totalDamageThrow = generator.getRandomNumber(3);
