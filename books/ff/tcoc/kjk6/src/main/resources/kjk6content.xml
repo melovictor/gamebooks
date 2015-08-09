@@ -3844,4 +3844,519 @@
     </text>
     <next id="138"></next>
   </p>
+  <p id="366">
+    <text>
+        [p]Miközben átlépkedsz rajtuk, az apró teremtmények némán figyelnek. Úgy tesznek, mint akik nagy érdeklődést mutatnak irántad. Te viszont érzed, hogy itt valami nincs egészen rendben.[/p]
+    </text>
+    <next id="140"></next>
+  </p>
+  <p id="286">
+    <text>
+        [p]Az apró teremtmények visítanak és összebújnak, amikor belépsz. Kivont karddal rohansz rájuk, de még csak nem is védekeznek! Kissé gyanúsnak találod, hogy ilyen könnyen győztél, és elindulsz a szoba túlsó végében lévő ajtó felé.[/p]
+    </text>
+    <next id="140"></next>
+  </p>
+  <p id="3">
+    <itemCheck type="items" id="3014 or 3013 or 3002">
+      <have>
+        <text>
+            [p]Mit ajánlasz fel nekik?[/p]
+        </text>
+        <itemCheck type="item" id="3014">
+          <have>
+            <next id="327">Egy Zsebszerkentyűt?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3013">
+          <have>
+            <next id="59">Egy Üvegbe zárt Pókot?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3002">
+          <have>
+            <next id="236">Egy marék Apró Bogyót?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nincs nálad semmi, amit fel tudnál ajánlani nekik.[/p]
+        </text>
+        <next id="286">Vagy kardot rántasz</next>
+        <next id="366">Vagy elindulsz a szoba végében lévő ajtó felé</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="327">
+    <text>
+        [p]Elfogadják Zsebszerkentyűdet, és vidáman játszani kezdenek vele. Miután kellőképpen lekötötted a figyelmüket, elosonsz mellettük, és a szoba végében lévő ajtóhoz mész.[/p]
+    </text>
+    <loseItem id="3014" />
+    <next id="366"></next>
+  </p>
+  <p id="59">
+    <text>
+        [p]Megriadnak az ajándékodtól, és a szoba egyik sarkába futnak, ahol elrejtőznek az ágyak alatt. Furcsállod a viselkedésüket, a földön hagyod az üveget, és elindulsz a szoba túlsó végében lévő ajtó felé.[/p]
+    </text>
+    <loseItem id="3013" />
+    <next id="140"></next>
+  </p>
+  <p id="236">
+    <text>
+        [p]Óriási lelkesedéssel elfogadják a Bogyókat, a szájukba tömködik és rágcsálják őket. Néhány másodperc múlva egymás után elalszanak. Ekkor fogod magad és odamész, hogy megvizsgáld a ládát. Amikor a tetejét felnyitod, egy csomó babát látsz benne, épp olyanokat, mint amilyenek a földön hevernek, és egyéb fajátékokat is találsz. Egyiket sem találod igazán értékesnek, így aztán elhagyod a szobát a láda mellett lévő ajtón át.[/p]
+    </text>
+    <loseItem id="3002" />
+    <next id="140"></next>
+  </p>
+  <p id="25">
+    <text>
+        [p]Az ajtó kinyílik, és egy hatalmas, kör alakú szobában találod magad. Elgondolkodva vakargatod a fejedet. A szoba közepén egy kis ,,szigetet'' látsz, melyet széles árok vesz körül. A sziget közepén egy láda áll, fémpántok zárják le. Az árok túl széles és túl mély ahhoz, hogy átugorhasd. Bent, közvetlenül az ajtó mellett egy kötelet találsz. Egy másik ajtó is nyílik a szobából, épp azzal az ajtóval szemben, amelyen bejöttél. Mit teszel?[/p]
+    </text>
+    <next id="206" pos="1">Nem veszel tudomást a ládáról, és az árkot megkerülve a másik ajtóhoz mész?</next>
+    <itemCheck type="item" id="4003">
+      <have>
+        <loseItem id="4003" />
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="strength">
+          <have>
+            <next id="133" pos="2">Erő Varázslatot alkalmazol, és átugrod az árkot?</next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <next id="239" pos="3">Felveszed a kötelet, és kiagyalsz valami tervet?</next>
+  </p>
+  <p id="133">
+    <text>
+        [p]És most Varázsolj! Frissen szerzett erőddel könnyedén átugrod az árkot, és letöröd a ládán lévő lakatot. Meglepetten látod, hogy egy jókora méretű ólomsöréten kívül nincs semmi a ládában. Gyorsan visszaugrasz az árok fölött a másik ajtóhoz, mivel a varázslat kezd megszűnni.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="206"></next>
+      </success>
+      <failure>
+        <next id="82"></next>
+      </failure>
+    </test>
+    <loseItem id="strength" />
+  </p>
+  <p id="82">
+    <text>
+        [p]Bezuhansz az árokba. Esés közben kétségbeesetten próbálsz megkapaszkodni a peremében, de nem jársz sikerrel. Bukfencezve zuhansz a mélybe, és a földhöz csapódva azonnal meghalsz. Küldetésed nem járt sikerrel, elbuktál![/p]
+    </text>
+    <death />
+  </p>
+  <p id="206">
+    <text>
+        [p]Kimész az ajtón, és egy újabb csigalépcső lábánál állsz, mely a Fekete Toronyba vezet. Miközben fölfelé mész a lépcsőn, egy kis pihenőhöz érsz, ahonnan csak egy ajtón át lehet továbbjutni. Megpróbálod kinyitni az ajtót, s az enged.[/p]
+    </text>
+    <next id="182"></next>
+  </p>
+  <p id="239">
+    <text>
+        [p]Jó ötleted támad. Lasszót csinálsz a kötélből, és a fejed fölött meglengetve megcélzod a ládát. Többszöri kísérlet után a lasszó ráesik a ládára, ekkor meghúzod a hurkot. Amint a kötelet meghúzod - a láda elmozdul. Húzol rajta még egyet, erre a láda megbillen az árok peremén, és a mélybe zuhan, de legnagyobb megdöbbenésedre a láda iszonyatos súlya téged is magával ránt![/p]
+    </text>
+    <itemCheck type="item" id="levitation">
+      <have>
+        <next id="379"></next>
+      </have>
+      <dontHave>
+        <next id="82"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="379">
+    <text>
+        [p]Elengeded a kötelet, és a levegőbe röpülsz. Amikor visszazuhansz az árok szélére, elátkozod ezt a gonosz csapdát, amelyet a hozzád hasonló mohó kalandoroknak találtak ki. Odamész a bejárattal szemközti ajtóhoz, és lenyomod a kilincset.[/p]
+    </text>
+    <loseItem id="levitation" />
+    <next id="206"></next>
+  </p>
+  <p id="104">
+    <text>
+        [p]Lenyomod a kilincset, mely enged. Az ajtó csak nehezen nyílik. Egy lakószobaszerűségbe jutsz, melyben asztalok, székek és polcok vannak, a falakon meg állatfejek. A földön puha gyapjúszőnyeg hever. Az egyik állatfej hirtelen feléd fordul és rád néz. Valamilyen kutya ez, mely hangosan ugatva figyelmeztet nemcsak téged, hanem minden cimboráját, aki hallótávolságon belül van. Miközben ezt a kutyafejet nézed, nem veszed észre, hogy a szőnyeg felemelkedik a földről és feléd repülve elsuhan a füled mellett. Épp jókor fordulsz meg, mert az egyik szék lassan magas férfivá változik. - Mit keresel itt? - mordul rád. Mit teszel?[/p]
+    </text>
+    <next id="266" pos="1">Megpróbálsz beszélni vele?</next>
+    <itemCheck type="item" id="4003">
+      <have>
+        <loseItem id="4003" />
+      </have>
+      <dontHave>
+        <next id="310" pos="2">Varázsolsz egyet?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="54" pos="3">Hátizsákodban fegyvert vagy valamilyen ajándékot keresel?</next>
+    <next id="25" pos="4">Gyorsan elhagyod a szobát, és megpróbálkozol a másik ajtóval?</next>
+  </p>
+  <p id="266">
+    <text>
+        [p]Egyáltalán nem érdekli a fecsegésed, történeteidre sem kíváncsi, és neked szegezi a kérdést, hogy milyen jogon vagy ott. Egy szempillantás alatt Kígyóvá változik, és sziszegve kúszik feléd a padlón. Ezalatt a falon lévő Kutya Fej elszakad a faltól, és feléd úszik a levegőben.[/p]
+    </text>
+    <next id="310">Ha varázsolsz ellenük</next>
+    <next id="54">Ha átkutatod a hátizsákodat, hogy keress valamit ellene</next>
+  </p>
+  <p id="310">
+    <itemCheck type="items" id="creatureCopy or illusion or esp">
+      <have>
+        <text>
+          [p]Milyen Varázslatot alkalmazol?[/p]
+      </text>
+        <itemCheck type="item" id="creatureCopy">
+          <have>
+            <next id="181">Teremtmény Hasonmás Varázslatot?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="illusion">
+          <have>
+            <next id="250">Illúzió Varázslatot?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="esp">
+          <have>
+            <next id="393">K.É.K Varázslatot?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+          [p]Egyik varázsigéd sem használható ebben a helyzetben, valami mást kell kitalálnod.[/p]
+      </text>
+        <next id="104"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="181">
+    <text>
+        [p]Miután Varázsoltál, a Repülő Szőnyeg elszáll melletted, majd legnagyobb csodálkozásodra egy ugyanolyan szőnyeg jelenik meg, és körbe-körbe kezd röpülni a szobában. Hirtelen kavarogni kezd a levegő. A Kutya-Fej lerepül a falról, és dühödten beleharap a karodba. Vesztesz 2 ÉLETERŐ pontot. A férfi, aki Kígyóvá változott, odasiklik hozzád, és meg akar marni.[/p]
+    </text>
+    <loseItem id="creatureCopy" />
+    <add amount="-2" to="stamina" />
+    <test against="luck">
+      <success>
+        <text>
+            [p]A kígyó fogai csak épp hogy felsértik a lábadat. Vesztesz további 2 ÉLETERŐ pontot. Szerencsére életben maradsz, de a seb égetően kínoz. Testedet fájdalom járja át.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="54">Vagy felajánlasz valamilyen ajándékot a hátizsákodból ellenfelednek</next>
+        <next id="25">Vagy gyorsan elhagyod a szobát a másik ajtón át</next>
+      </success>
+      <failure>
+        <text>
+            [p]Fogai mélyen belefúródnak lábadba, amely fájdalmasan lüktetni kezd. A fellobbanó fényben látod, hogy a harapás halálos. A földre rogyva kezeddel befogod a sebedet, és haláltusádban vonaglani kezdesz. Amikor a méreg hatni kezd, szédülni kezdesz, majd elveszted az eszméletedet. Megbuktál, küldetésed nem járt sikerrel.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="250">
+    <text>
+        [p]Erősen koncentrálsz, és a szemed láttára hurrikán támad fel, amely nagy pusztítást végez a szobában. Székek, könyvek és egyéb tárgyak szállnak keringve a levegőben, de téged nem ér a Varázslat. Teszel egy lépést előre. De hirtelen megállsz, amikor hangos nevetést hallasz. Belesel a szobába, és látod, hogy a Repülő Szőnyeg meg a Kutya-Fej kővé váltak. Egyikük csúfondárosan megjegyzi: - Mi, kedves kalandor, MIKek vagyunk, az illúzió mesterei! Ócska kis trükkjeiddel nem tudsz becsapni bennünket! - A férfi, aki épp Kígyóvá változott, a lábad köré tekeredik és fogait a combodba mélyeszti. A fájdalom elviselhetetlen, a földre zuhansz. Már tudod, hogy kígyóméreg végez veled. Legközelebbi kalandod során óvakodj a MIKektől! Ennek a kalandodnak itt vége szakad…[/p]
+    </text>
+    <loseItem id="illusion" />
+    <death />
+  </p>
+  <p id="393">
+    <text>
+        [p]Varázsolsz egyet, és erősen koncentrálsz az alakváltoztató teremtményekre. Alakok cikáznak előtted. Amikor szemügyre veszed őket, látod, hogy ezek a teremtmények MIKek, melyek bárkinek vagy bárminek az alakját fel tudják venni, ha akarják. Úgy látod, csöppet sem aggódnak jelenléted miatt, inkább úgy kezelnek, mint valami játékszert. Ezek a kapzsi teremtmények többnyire csak az aranyra tudnak gondolni. Talán ezt a tulajdonságukat kihasználva megmenekülhetsz.[/p]
+    </text>
+    <loseItem id="esp" />
+    <itemCheck type="gold" id="1">
+      <have>
+        <next id="27"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Mivel nincs nálad pénz, úgy érzed, jobb, ha mielőbb távozol innen, és a másik ajtóval próbálkozol.[/p]
+        </text>
+        <next id="25"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="27">
+    <text>
+        [p]Mikor az Aranytallérokat a kezedben tartod, a három fura kis teremtmény abbahagyja a hancúrozást. Lihegve nézik az aranyaidat. Egy láthatatlan kéz kiragadja a kezedből azokat, és ledobja nekik a földre. Rád néznek, és egy hang azt követeli, hogy még többet adj. Előveszed az összes Aranytallérodat, és valamennyit a szoba közepére hajítod. Ekkor a hang így szól: - Jól van, idegen, szívesen látunk itt, a MIKek otthonában! Köszönjük az ajándékodat. Ha tovább akarsz menni, lépj be a szemközti ajtón, de óvakodj a Gendzsiktől. Sok sikert kívánunk az utadon! - Nyertél 1 SZERENCSE pontot a MIKek jókívánsága folytán, és távozol a szemközti ajtón.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <add amount="-99999" to="gold" />
+    <next id="206"></next>
+  </p>
+  <p id="54">
+    <text>
+        [p]Átvizsgálod a hátizsákodat. [alt]Mit veszel elő belőle?[/alt][/p]
+    </text>
+    <itemCheck type="items" id="3005 or 3014">
+      <have>
+        <itemCheck type="item" id="3005">
+          <have>
+            <next id="287" pos="1">A Kenőcsös Tégelyt?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3014">
+          <have>
+            <next id="160" pos="2">A Zsebszerkentyűt?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="gold" id="1">
+          <dontHave>
+            <next id="104" pos="4" singleChoiceText="Nincs nálad semmi, ami érdekelhetné a lényeket."></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="gold" id="1">
+      <have>
+        <next id="27" pos="3" singleChoiceText="Néhány Aranytallért ajánlasz fel a lényeknek.">Aranytallérokat?</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="287">
+    <text>
+        [p]Felajánlod a Kenőcsös Tégelyt. Egy láthatatlan lény kiragadja a kezedből, és odaviszi az egyik állatfejhez. Láthatatlan kezek lecsavarják a tégely tetejét, és a fej beleszagol a kenőcsbe. A fej morogva fordul feléd: - Ez csak egy alkimista gyógybalzsama! Mi hasznát vehetnénk ennek? - A tégely a földre esik és összetörik. [alt]Mit teszel?[/alt][/p]
+    </text>
+    <loseItem id="3005" />
+    <itemCheck type="item" id="3014">
+      <have>
+        <itemCheck type="gold" id="1">
+          <have>
+            <next id="160">Felajánlod a Zsebszerkentyűt?</next>
+            <next id="27">Felajánlasz néhány Aranytallért?</next>
+            <next id="25">Sietve távozol, és keresel egy másik ajtót?</next>
+          </have>
+          <dontHave>
+            <next id="160">Felajánlod a Zsebszerkentyűt?</next>
+            <next id="25">Sietve távozol, és keresel egy másik ajtót?</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="gold" id="1">
+          <have>
+            <next id="27">Felajánlasz néhány Arany Tallért?</next>
+            <next id="25">Sietve távozol, és keresel egy másik ajtót?</next>
+          </have>
+          <dontHave>
+            <next id="25" singleChoiceText="Sietve távozol, és keresel egy másik ajtót"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="160">
+    <text>
+        [p]A Kutya-Fej feléd röpül, és kikapja a szerkentyűt a kezedből. Miközben vizsgálgatja, a másik két társa odamegy hozzá. Úgy látod, tetszik nekik a dolog. Míg így lekötöd a figyelmüket, átosonhatsz a szobán a hátsó ajtóhoz.[/p]
+    </text>
+    <loseItem id="3014" />
+    <next id="206"></next>
+  </p>
+  <p id="182">
+    <text>
+        [p]A szoba foglya vagy. Mintha csak varázsütésre történne, fáklyád lángja lobban egyet, majd kialszik. A szobában koromsötét van. Ki tudja, honnan, úgy érzed, mindenhonnan, gúnyos nevetgélés hangja árasztja el a szobát. - Buta kalandor - szólal meg egy másik hang, mely először sipít, aztán elmélyül: - Üdvözlünk a Gendzsik otthonában! Kár, hogy ez az utolsó szoba, amit életedben látsz… Ó, igaz is, hiszen nem látsz. Vagy igen? De mi látunk téged; ugye, testvéreim? - Mindenfelől nevetgélést hallasz. Hirtelen egy fényes szellemarc úszik feléd a levegőben. Riadtan ugrasz vissza, a földre veted magad, és iszonyú félelem kerít hatalmába. A félelem miatt vesztesz 1 ÜGYESSÉG, 2 ÉLETERŐ és 1 SZERENCSE pontot. Mit teszel?[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="skill" />
+    <add amount="-1" to="luck" />
+    <itemCheck type="item" id="fire">
+      <have>
+        <next id="85" pos="1">Tűz Varázslatot alkalmazol?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="illusion">
+      <have>
+        <next id="395" pos="2">Illúzió Varázslatot alkalmazol?</next>
+      </have>
+    </itemCheck>
+    <next id="322" pos="3">Keresel valami használható tárgyat a hátizsákodban?</next>
+    <next id="248" pos="4">Kardot rántasz?</next>
+  </p>
+  <p id="85">
+    <text>
+        [p]Miután Varázsoltál, vársz, amíg egy tűzgolyó megjelenik a fáklyád végében. A fáklya pislákoló fényében egy ajtót látsz a szoba túlsó végében, amely azonban rögtön el is tűnik. A Gendzsik megint kinevetnek, amiért hiába próbálsz túljárni az eszűkön. Hatalmas ütés éri a fejedet, és ismét a földre zuhansz. Vesztesz 2 ÉLETERŐ pontot. Mit teszel?[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <loseItem id="fire" />
+    <itemCheck type="item" id="illusion">
+      <have>
+        <itemCheck type="section" id="395">
+          <dontHave>
+            <next id="395" pos="1">Illúzió Varázslatot alkalmazol?</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+    </itemCheck>
+    <next id="322" pos="2">Előveszel valamit a hátizsákodból?</next>
+    <next id="248" pos="3">Kardot rántasz?</next>
+  </p>
+  <p id="395">
+    <text>
+        [p]Erősen koncentrálva varázsolsz, hogy azt a látszatot keltsd, mintha nagy hatalmú varázsló lennél, aki unja a csínytevéseiket. De nem történik semmi! Ismét gúnyos nevetés hallatszik minden irányból. - Mi magunk is elvarázsolt lények vagyunk - szólal meg egy hang -, csak nem olyan amatőrök, mint te! - Hirtelen ütés éri a hátad közepét, és elterülsz a szoba közepén. Vesztesz 2 ÉLETERŐ pontot.[/p]
+    </text>
+    <loseItem id="illusion" />
+    <add amount="-2" to="stamina" />
+    <next id="322" pos="1">Ha keresel valami használható dolgot a hátizsákodban</next>
+    <next id="248" pos="2">Ha kardot rántasz</next>
+    <itemCheck type="item" id="fire">
+      <have>
+        <itemCheck type="section" id="85">
+          <dontHave>
+            <next id="85" pos="3">Ha a Tűz Varázslattal próbálkozol ellenük</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="248">
+    <text>
+        [p]Csend honol a szobában. Hirtelen velőtrázó ordítás hallatszik az egyik sarokból, egy ronda arc jelenik meg a légben, és ordítva tart feléd. Hajad égnek áll, lábad majd összecsuklik alattad. Valahogy eléred az ajtót, gyorsan kitárod és kirohansz. De elfelejtetted, hogy egy magas toronyban vagy, és az erkélyen nincs védőrács… Átlendülsz az erkély peremén, és a mélybe zuhansz.[/p]
+    </text>
+    <itemCheck type="item" id="levitation">
+      <have>
+        <next id="103"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Összetörve zuhansz a torony tövébe, ahol kileheled a lelkedet…[/p]
+        </text>
+        <death />
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="103">
+    <text>
+        [p]Varázsolsz, de nem történik semmi! Egyre lejjebb és lejjebb zuhansz a Toronyból, míg végül a földhöz csapódsz. Az ijesztő teremtmények megfosztottak Varázslataidtól, és most az életerődtől is. Küldetésed nem járt sikerrel, elbuktál![/p]
+    </text>
+    <death />
+  </p>
+  <p id="322">
+    <text>
+        [p][alt]Mit veszel elő a hátizsákodból?[/alt][/p]
+    </text>
+    <itemCheck type="items" id="3013 or 3007 or 3005">
+      <have>
+        <itemCheck type="item" id="3013">
+          <have>
+            <next id="39">Az Üvegbe zárt Pókot?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3007">
+          <have>
+            <next id="168">A Bűvös Amulettet?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3005">
+          <have>
+            <next id="291">A Kenőcsös Tégelyt?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="248" singleChoiceText="Kardot kell rántanod, és meg kell küzdened velük."></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="168">
+    <text>
+        [p]Elveszed az Amulettet, és a nyakadba akasztod. A Gendzsik zihálnak. - Na eredj, idegen!- szólal meg egy hang. - Nem bántunk! Menj ki a szoba túlsó végében lévő ajtón. - Miközben e szavak elhangzanak, a szoba túlsó végében lévő ajtó kissé megvilágosodik. Odamész és kinyitod.[/p]
+    </text>
+    <next id="328"></next>
+  </p>
+  <p id="39">
+    <text>
+        [p]Amikor előveszed az Üveget, a Gendzsik felhördülnek. - Racknee! - kiáltja egy hang. - Hát visszahoztad! - Amikor ezt kimondja, egy láthatatlan kéz kikapja az Üveget a kezedből, leteszi a földre és felnyitja a tetejét. A Pók-Ember feléd fordul és rád mordul. Kardot rántasz, mert a furcsa állatember haragosan csápozik feléd. Meg kell vele küzdened.[/p]
+    </text>
+    <loseItem id="3013" />
+    <fight type="single">
+      <enemy id="22" />
+      <loseRound enemy="22" totalCount="1">
+        <interrupt />
+        <next id="208"></next>
+      </loseRound>
+      <win>
+        <text>
+            [p]Kardoddal kell megvívnod a Gendzsikkel.[/p]
+        </text>
+        <next id="248"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="208">
+    <text>
+        [p]A Pók-Ember fegyvere a harapása, mely igen mérgező. Amikor megharap, testedet átjárja a méreg, és megbénítja idegrendszeredet. Amikor felbuksz és elterülsz a földön, újra és újra támad. Az utolsó emlékképed a ronda kis arca, s szája, amellyel beléd harap. Küldetésed nem járt sikerrel; elbuktál.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="291">
+    <text>
+        [p]- Mi ez? - kérdi a szellemhang. Alkudozni kezdesz velük. Megengeded nekik, hogy elvegyék a kenőcsöt, de csak akkor, ha átengednek a szobán; egyébként semmi dolgod velük. Egy szellemkéz feléd nyúl a semmiből, és megpróbálja kikapni a kezedből a Tégelyt, de gyorsan ellököd. - Ez valóban a Gyógybalzsam - szólal meg egy halk hang. - Elfogadjuk az ajánlatodat. Hagyd ott a tégelyt, ahol állsz, és távozz azon az ajtón át! - A szoba túlsó végében lévő ajtó halványan fényleni kezd. Nem bízol meg bennük, ezért az ajtóhoz viszed a Tégelyt. Amikor az ajtóhoz érsz, odadobod nekik a Tégelyt és gyorsan kisurransz.[/p]
+    </text>
+    <loseItem id="3005" />
+    <next id="328"></next>
+  </p>
+  <p id="328">
+    <text>
+        [p]Becsukod az ajtót magad mögött, és egy újabb csigalépcső aljában találod magad, amely fölvezet a Toronyba. Amint felmész a lépcsőn, újabb erkélyhez érsz, ahonnan egyetlen ajtó vezet tovább. Lenyomod a kilincset, és az enged. Miközben nyitod az ajtót, hangos sziszegést hallasz a szobából. Belépsz, és megfagy a vér az ereidben, mert egy hatalmas, hatfejű Hidra közeledik feléd előző áldozatainak tetemei fölött! Hat kígyószerű feje feléd csap, látod ronda hegyes fogait. Elbújsz egy sarokban. Mit teszel?[/p]
+    </text>
+    <next id="67" pos="1">Kardot rántasz, és rátámadsz a teremtményre?</next>
+    <itemCheck type="item" id="creatureCopy">
+      <have>
+        <next id="143" pos="2">Teremtmény Hasonmás Varázslatot alkalmazol?</next>
+      </have>
+    </itemCheck>
+    <next id="226" pos="3">Előveszel valami használható tárgyat a hátizsákodból?</next>
+  </p>
+  <p id="143">
+    <text>
+        [p]Koncentrálsz, majd Varázsolsz. Megjelenik előtted a Hidra torzója, de ez minden. A teremtmény oly hatalmas, hogy egyetlen Varázslat nem képes teljes hasonmást létrehozni. [alt][/alt][/p]
+    </text>
+    <loseItem id="creatureCopy" />
+    <itemCheck type="item" id="creatureCopy">
+      <have>
+        <next id="360" pos="1">Ha még egy Hasonmás Varázslatot felhasználsz</next>
+      </have>
+    </itemCheck>
+    <next id="226" pos="2">Ha a hátizsákodban keressel valami alkalmas dolgot</next>
+    <next id="184" pos="3">Ha valami mással próbálkoznál</next>
+  </p>
+  <p id="360">
+    <text>
+        [p]Megismétled a Varázslatot. Félig kész Hidrád nő még egy keveset, de még mindig nem nyerte el teljes alakját. Még egy Teremtmény Hasonmás Varázslatot kell alkalmaznod ahhoz, hogy a teremtmény teljes alakot öltsön. Ha harmadszor is meg akarsz próbálkozni e Varázslattal, tedd azt, és hagyd, hogy a két Hidra megküzdjön egymással.[/p]
+    </text>
+    <loseItem id="creatureCopy" />
+    <fight type="singleAlly" resolver="ally">
+      <enemy id="23" />
+      <ally id="106" />
+      <lose>
+        <next id="184"></next>
+      </lose>
+      <win>
+        <next id="229"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="184">
+    <text>
+        [p]Mialatt a következő lépéseden gondolkodol, a Hidra közelebb jön hozzád. Fejei közül kettő feléd ugrik és beléd mar: az egyik a karodba, a másik a nyakadba. Éles fogai bőrödet áthasítva mélyen a húsodba vájnak. Mindennek vége. Küldetésed nem járt sikerrel; elbuktál.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="67">
+    <text>
+        [p]Elkezded a harcot a teremtménnyel. Az első csapásod szerencsés, hat feje közül eltalálod az egyiket. A másik öt azonban tovább támad, és legnagyobb rémületedre a lekaszabolt fej helyébe két fej nő egyszerre. Az egyik fej mélyen a karodba váj. Vesztesz 4 ÉLETERŐ pontot. A kardod itt valóban nem sokat ér.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <itemCheck type="item" id="creatureCopy">
+      <have>
+        <next id="143">Ha Teremtmény Hasonmás Varázslatot alkalmazol</next>
+        <next id="226">Ha a hátizsákodból veszel elő valamit</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Szétnézel, hátha találsz valami használhatót a zsákodban.[/p]
+        </text>
+        <next id="226"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
 </content>
