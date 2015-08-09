@@ -12,10 +12,9 @@ import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -30,11 +29,9 @@ public class Ff2BookTakeItemController extends FfBookTakeItemController {
     private static final String NORMAL_SWORD_ID = "1001";
     private static final String MAGIC_SWORD_ID = "1002";
 
-    @Autowired
-    @Qualifier("ff2SpellIds")
+    @Resource(name = "ff2SpellIds")
     private List<String> spells;
-    @Autowired
-    @Qualifier("ff2RestorationSpellIds")
+    @Resource(name = "ff2RestorationSpellIds")
     private List<String> resettingSpells;
 
     @Override
