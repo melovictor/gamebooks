@@ -3,6 +3,8 @@ package hu.zagor.gamebooks.ff.ff.tcoc.mvc.books.inventory.controller;
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
+import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
+import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -16,7 +18,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Controller for handling the item taking request to the given book.
@@ -79,5 +83,28 @@ public class Ff2BookTakeItemController extends FfBookTakeItemController {
 
     private boolean isSpell(final String itemId) {
         return spells.contains(itemId);
+    }
+
+    /**
+     * Handles acquiring a new spell in the middle of the story.
+     * @param request the {@link HttpServletRequest} object
+     * @param spellId the id of the spell to get
+     */
+    @RequestMapping("acquireNewSpell/{spellId}")
+    @ResponseBody
+    public void takeNewSpell(final HttpServletRequest request, @PathVariable("spellId") final String spellId) {
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        final FfCharacter character = (FfCharacter) wrapper.getCharacter();
+        final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
+        if (itemHandler.hasItem(character, "4005") && !itemHandler.hasItem(character, "4006", 2)) {
+            itemHandler.addItem(character, "4006", 1);
+            final FfItem spell = (FfItem) itemHandler.getItem(character, spellId);
+            if (spell == null) {
+                itemHandler.addItem(character, spellId, 1);
+            } else {
+                spell.setAmount(spell.getAmount() + 1);
+            }
+        }
+
     }
 }

@@ -26,6 +26,8 @@ public class FfAllyCharacter extends FfCharacter {
         this.ally = ally;
         setSkill(ally.getSkill());
         setInitialSkill(ally.getSkill());
+        setStamina(ally.getStamina());
+        setInitialStamina(ally.getStamina());
         setBackpackSize(Integer.MAX_VALUE);
     }
 
@@ -45,6 +47,7 @@ public class FfAllyCharacter extends FfCharacter {
 
     @Override
     public void setStamina(final int stamina) {
+        super.setStamina(stamina);
         ally.setStamina(stamina);
     }
 
@@ -69,6 +72,7 @@ public class FfAllyCharacter extends FfCharacter {
 
     @Override
     public void changeStamina(final int change) {
+        super.changeStamina(change);
         ally.setStamina(ally.getStamina() + change);
     }
 
