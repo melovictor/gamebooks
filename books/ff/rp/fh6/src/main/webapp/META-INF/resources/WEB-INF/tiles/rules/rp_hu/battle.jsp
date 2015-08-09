@@ -10,9 +10,9 @@
 
 <ol>
     <li>A harc un. körökből áll. Minden körben a küzdő felek megpróbálnak sebezni ellenfelükön.</li>
-    <li>Dobj két kockával az ellenfelednek. Add a dobáshoz az ÜGYESSÉG pontjait. Az összeg az ellenfeled támadóereje.</li>
-    <li>Dobj két kockával magadnak. Add hozzá a saját <span class="attribute">ÜGYESSÉGEDET</span>. Az összeg a te támadóerőd.</li>
-    <li>Ha a támadóerőd nagyobb, mint az ellenfélé, megsebezted őt: ugorj az 5-ös pontra. Ha az ellenfeled támadóereje nagyobb, mint a tied, ő sebzett meg téged: ugorj a 6-os pontra. Ha a két támadóerő egyenlő, kölcsönösen kivédtétek egymás támadását. Folytassátok tovább a harcot a következő körrel (2. pont).</li>
+    <li>Dobj két kockával az ellenfelednek. Add a dobáshoz az ÜGYESSÉG pontjait. Az összeg az ellenfeled Támadóereje.</li>
+    <li>Dobj két kockával magadnak. Add hozzá a saját <span class="attribute">ÜGYESSÉGEDET</span>. Az összeg a te Támadóerőd.</li>
+    <li>Ha a Támadóerőd nagyobb, mint az ellenfélé, megsebezted őt: ugorj az 5-ös pontra. Ha az ellenfeled Támadóereje nagyobb, mint a tied, ő sebzett meg téged: ugorj a 6-os pontra. Ha a két Támadóerő egyenlő, kölcsönösen kivédtétek egymás támadását. Folytassátok tovább a harcot a következő körrel (2. pont).</li>
     <li>Megsebezted az ellenfeled, vonj le 2 pontot az <span class="attribute">ÉLETEREJÉBŐL</span>. (Használhatod a <span class="attribute">SZERENCSÉDET</span> is, hogy még nagyobb sebet okozz &ndash; lejjebb részletesen leírjuk, hogyan.)</li>
     <li>Az ellenfeled eltalált, vonj le 2 pontot az <span class="attribute">ÉLETERŐDBŐL</span>. (Ismét használhatod a <span class="attribute">SZERENCSÉDET</span> &ndash; lejjebb elolvashatod, hogyan.)</li>
     <li>Jegyezd fel az <span class="attribute">ÉLETERŐ</span> pontok megváltozását. (Ha használtad a <span class="attribute">SZERENCSÉDET</span>, jegyezd fel a SZERENCSE pontok megváltozását &ndash; lásd alább.)</li>
