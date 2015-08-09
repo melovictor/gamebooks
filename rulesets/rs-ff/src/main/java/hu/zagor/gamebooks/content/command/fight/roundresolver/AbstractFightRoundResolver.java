@@ -10,7 +10,12 @@ import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.logging.LogInject;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +32,8 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
     @Autowired
     @Qualifier("d6")
     private RandomNumberGenerator generator;
+    @Autowired
+    private DiceResultRenderer diceResultRenderer;
 
     /**
      * Records the attack strength for the hero.
@@ -48,8 +55,8 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
         final FightCommandMessageList messages = dto.getMessages();
         final FfEnemy enemy = dto.getEnemy();
 
-        messages.addKey("page.ff.label.fight.single.attackStrength.enemy", new Object[]{enemy.getName(), enemyAttackStrengthValues[1], enemyAttackStrengthValues[2],
-            enemyAttackStrength});
+        final String renderedDice = diceResultRenderer.render(6, enemyAttackStrengthValues);
+        messages.addKey("page.ff.label.fight.single.attackStrength.enemy", new Object[]{enemy.getName(), renderedDice, enemyAttackStrength});
         getLogger().debug("Attack strength for {}: {}", enemy.getName(), enemyAttackStrength);
     }
 
@@ -164,4 +171,36 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
         return result;
     }
 
+    /**
+     * Calculates the attack strength for the hero.
+     * @param character the {@link FfCharacter} for which the attack strength has to be calculated
+     * @param command the {@link FightCommand} object
+     * @param attributeHandler the {@link FfAttributeHandler} object
+     * @return the calculated attack strength
+     */
+    int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
+        final int[] generatedAttackStrength = getGenerator().getRandomNumber(command.getAttackStrengthRolledDices());
+        if (command.getAttackStrengthRolledDices() > command.getAttackStrengthUsedDices()) {
+            filterActialDices(generatedAttackStrength, command.getAttackStrengthUsedDices());
+        }
+        generatedAttackStrength[0] += attributeHandler.resolveValue(character, "attackStrength");
+        return generatedAttackStrength;
+    }
+
+    private void filterActialDices(final int[] generatedAttackStrength, final int dicesToBeUsed) {
+        final List<Integer> thrownValues = new ArrayList<>();
+        for (int i = 1; i < generatedAttackStrength.length; i++) {
+            thrownValues.add(generatedAttackStrength[i]);
+        }
+        Collections.sort(thrownValues, Collections.reverseOrder());
+        int total = 0;
+        for (int i = 0; i < dicesToBeUsed; i++) {
+            total += thrownValues.get(i);
+        }
+        generatedAttackStrength[0] = total;
+    }
+
+    public DiceResultRenderer getDiceResultRenderer() {
+        return diceResultRenderer;
+    }
 }

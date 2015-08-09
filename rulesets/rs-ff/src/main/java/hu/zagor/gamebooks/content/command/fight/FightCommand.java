@@ -60,6 +60,8 @@ public class FightCommand extends Command {
     private int roundNumber;
     private boolean fleeAllowed;
     private boolean recoverDamage;
+    private int attackStrengthRolledDices = 2;
+    private int attackStrengthUsedDices = 2;
 
     private final Map<String, Integer> attackStrengths = new HashMap<String, Integer>();
 
@@ -316,6 +318,22 @@ public class FightCommand extends Command {
 
     public void setAutoLoseStamina(final int autoLoseStamina) {
         this.autoLoseStamina = autoLoseStamina;
+    }
+
+    public int getAttackStrengthRolledDices() {
+        return attackStrengthRolledDices;
+    }
+
+    public void setAttackStrengthRolledDices(final int attackStrengthRolledDices) {
+        this.attackStrengthRolledDices = attackStrengthRolledDices;
+    }
+
+    public int getAttackStrengthUsedDices() {
+        return attackStrengthUsedDices;
+    }
+
+    public void setAttackStrengthUsedDices(final int attackStrengthUsedDices) {
+        this.attackStrengthUsedDices = attackStrengthUsedDices;
     }
 
 }

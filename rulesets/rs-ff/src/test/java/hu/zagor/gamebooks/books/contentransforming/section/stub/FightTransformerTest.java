@@ -83,6 +83,8 @@ public class FightTransformerTest extends AbstractTransformerTest {
         expect(beanFactory.getBean(FightCommand.class)).andReturn(command);
         expectAttribute("type", "single");
         expectAttribute("resolver");
+        expectAttribute("attackStrengthRolledDices");
+        expectAttribute("attackStrengthUsedDices");
         expectAttribute("recoverDamage");
         expectAttribute("usableWeaponTypes");
         expectAttribute("forceWeapon", "1001");
@@ -98,6 +100,8 @@ public class FightTransformerTest extends AbstractTransformerTest {
         underTest.doTransform(parent, node, data);
         // THEN
         final FightCommand command = (FightCommand) data.getCommands().get(0);
+        Assert.assertEquals(command.getAttackStrengthRolledDices(), 2);
+        Assert.assertEquals(command.getAttackStrengthUsedDices(), 2);
         Assert.assertEquals(command.getBattleType(), "single");
         Assert.assertEquals(command.getResolver(), "basic");
         Assert.assertTrue(command.getReplacementData().getForceWeapons().contains("1001"));
@@ -111,6 +115,8 @@ public class FightTransformerTest extends AbstractTransformerTest {
         expect(beanFactory.getBean(FightCommand.class)).andReturn(command);
         expectAttribute("type", "shooting");
         expectAttribute("resolver", "shooting");
+        expectAttribute("attackStrengthRolledDices");
+        expectAttribute("attackStrengthUsedDices");
         expectAttribute("recoverDamage");
         expectAttribute("usableWeaponTypes");
         expectAttribute("forceWeapon");
@@ -126,6 +132,9 @@ public class FightTransformerTest extends AbstractTransformerTest {
         underTest.doTransform(parent, node, data);
         // THEN
         final FightCommand command = (FightCommand) data.getCommands().get(0);
+        Assert.assertEquals(command.getAttackStrengthRolledDices(), 2);
+        Assert.assertEquals(command.getAttackStrengthUsedDices(), 2);
+
         Assert.assertEquals(command.getBattleType(), "shooting");
         Assert.assertEquals(command.getResolver(), "shooting");
         Assert.assertEquals(command.getUsableWeaponTypes().size(), 1);
@@ -137,6 +146,8 @@ public class FightTransformerTest extends AbstractTransformerTest {
         expect(beanFactory.getBean(FightCommand.class)).andReturn(command);
         expectAttribute("type", "single");
         expectAttribute("resolver");
+        expectAttribute("attackStrengthRolledDices", "3");
+        expectAttribute("attackStrengthUsedDices", "3");
         expectAttribute("recoverDamage");
         expectAttribute("usableWeaponTypes");
         expectAttribute("forceWeapon");
@@ -151,6 +162,8 @@ public class FightTransformerTest extends AbstractTransformerTest {
         // WHEN
         underTest.doTransform(parent, node, data);
         // THEN
+        Assert.assertEquals(command.getAttackStrengthRolledDices(), 3);
+        Assert.assertEquals(command.getAttackStrengthUsedDices(), 3);
         Assert.assertEquals(command.getBattleType(), "single");
         Assert.assertEquals(command.getResolver(), "basic");
         Assert.assertNull(command.getReplacementData());
@@ -165,6 +178,8 @@ public class FightTransformerTest extends AbstractTransformerTest {
         expect(beanFactory.getBean(FightCommand.class)).andReturn(command);
         expectAttribute("type", "single");
         expectAttribute("resolver");
+        expectAttribute("attackStrengthRolledDices");
+        expectAttribute("attackStrengthUsedDices");
         expectAttribute("recoverDamage");
         expectAttribute("usableWeaponTypes");
         expectAttribute("forceWeapon");

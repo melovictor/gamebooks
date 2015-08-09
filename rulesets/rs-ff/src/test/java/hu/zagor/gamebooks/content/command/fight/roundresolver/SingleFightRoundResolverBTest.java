@@ -19,6 +19,7 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +41,10 @@ import org.testng.annotations.Test;
 @Test
 public class SingleFightRoundResolverBTest extends FfTextResolvingTest {
 
+    private static final int[] SELF_ATTACK_STRENGTH_ROLL = new int[]{7, 1, 6};
+    private static final String SELF_ATTACK_STRENGTH_RENDER = "Thrown values: 1, 6.";
+    private static final int[] ENEMY_ATTACK_STRENGTH_ROLL = new int[]{7, 3, 4};
+    private static final String ENEMY_ATTACK_STRENGTH_RENDER = "Thrown values: 3, 4.";
     private SingleFightRoundResolver underTest;
     private IMocksControl mockControl;
     private Logger logger;
@@ -57,6 +62,7 @@ public class SingleFightRoundResolverBTest extends FfTextResolvingTest {
     private FfAttributeHandler attributeHandler;
     private FfCharacterItemHandler itemHandler;
     private FightBeforeRoundResult beforeRoundResult;
+    private DiceResultRenderer diceResultRenderer;
 
     @BeforeClass
     public void setUpClass() {
@@ -70,6 +76,8 @@ public class SingleFightRoundResolverBTest extends FfTextResolvingTest {
         Whitebox.setInternalState(underTest, "generator", generator);
         init(mockControl, underTest);
         beforeRoundResult = new FightBeforeRoundResult();
+        diceResultRenderer = mockControl.createMock(DiceResultRenderer.class);
+        Whitebox.setInternalState(underTest, "diceResultRenderer", diceResultRenderer);
     }
 
     private void setUpResolvationData() {
@@ -127,13 +135,15 @@ public class SingleFightRoundResolverBTest extends FfTextResolvingTest {
         selectedEnemy.setKillableByNormal(false);
         selectedEnemy.setKillableByMagical(false);
         expect(interactionHandler.peekLastFightCommand(character, "enemyId")).andReturn("9");
+        expect(generator.getRandomNumber(2)).andReturn(SELF_ATTACK_STRENGTH_ROLL);
         expect(attributeHandler.resolveValue(character, "attackStrength")).andReturn(0);
-        expect(generator.getRandomNumber(2, 0)).andReturn(new int[]{7, 1, 6});
-        expect(generator.getRandomNumber(2)).andReturn(new int[]{7, 3, 4});
+        expect(generator.getRandomNumber(2)).andReturn(ENEMY_ATTACK_STRENGTH_ROLL);
         expect(attributeHandler.resolveValue(character, "skill")).andReturn(10);
-        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{1, 6, 17});
+        expect(diceResultRenderer.render(6, SELF_ATTACK_STRENGTH_ROLL)).andReturn(SELF_ATTACK_STRENGTH_RENDER);
+        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{SELF_ATTACK_STRENGTH_RENDER, 17});
         logger.debug("Attack strength for self: {}", 17);
-        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Goblin", 3, 4, 15});
+        expect(diceResultRenderer.render(6, ENEMY_ATTACK_STRENGTH_ROLL)).andReturn(ENEMY_ATTACK_STRENGTH_RENDER);
+        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Goblin", ENEMY_ATTACK_STRENGTH_RENDER, 15});
         logger.debug("Attack strength for {}: {}", "Goblin", 15);
         final FfItem weapon = new FfItem("7", "Sword", ItemType.weapon1);
         weapon.setStaminaDamage(3);
@@ -154,13 +164,15 @@ public class SingleFightRoundResolverBTest extends FfTextResolvingTest {
         selectedEnemy.setKillableByNormal(false);
         selectedEnemy.setKillableByMagical(false);
         expect(interactionHandler.peekLastFightCommand(character, "enemyId")).andReturn("9");
+        expect(generator.getRandomNumber(2)).andReturn(SELF_ATTACK_STRENGTH_ROLL);
         expect(attributeHandler.resolveValue(character, "attackStrength")).andReturn(0);
-        expect(generator.getRandomNumber(2, 0)).andReturn(new int[]{7, 1, 6});
-        expect(generator.getRandomNumber(2)).andReturn(new int[]{7, 3, 4});
+        expect(generator.getRandomNumber(2)).andReturn(ENEMY_ATTACK_STRENGTH_ROLL);
         expect(attributeHandler.resolveValue(character, "skill")).andReturn(10);
-        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{1, 6, 17});
+        expect(diceResultRenderer.render(6, SELF_ATTACK_STRENGTH_ROLL)).andReturn(SELF_ATTACK_STRENGTH_RENDER);
+        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{SELF_ATTACK_STRENGTH_RENDER, 17});
         logger.debug("Attack strength for self: {}", 17);
-        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Goblin", 3, 4, 15});
+        expect(diceResultRenderer.render(6, ENEMY_ATTACK_STRENGTH_ROLL)).andReturn(ENEMY_ATTACK_STRENGTH_RENDER);
+        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Goblin", ENEMY_ATTACK_STRENGTH_RENDER, 15});
         logger.debug("Attack strength for {}: {}", "Goblin", 15);
         final FfItem weapon = new FfItem("7", "Sword", ItemType.weapon1);
         weapon.setBlessed(true);
@@ -182,13 +194,15 @@ public class SingleFightRoundResolverBTest extends FfTextResolvingTest {
         selectedEnemy.setKillableByNormal(false);
         selectedEnemy.setKillableByBlessed(false);
         expect(interactionHandler.peekLastFightCommand(character, "enemyId")).andReturn("9");
+        expect(generator.getRandomNumber(2)).andReturn(SELF_ATTACK_STRENGTH_ROLL);
         expect(attributeHandler.resolveValue(character, "attackStrength")).andReturn(0);
-        expect(generator.getRandomNumber(2, 0)).andReturn(new int[]{7, 1, 6});
-        expect(generator.getRandomNumber(2)).andReturn(new int[]{7, 3, 4});
+        expect(generator.getRandomNumber(2)).andReturn(ENEMY_ATTACK_STRENGTH_ROLL);
         expect(attributeHandler.resolveValue(character, "skill")).andReturn(10);
-        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{1, 6, 17});
+        expect(diceResultRenderer.render(6, SELF_ATTACK_STRENGTH_ROLL)).andReturn(SELF_ATTACK_STRENGTH_RENDER);
+        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{SELF_ATTACK_STRENGTH_RENDER, 17});
         logger.debug("Attack strength for self: {}", 17);
-        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Goblin", 3, 4, 15});
+        expect(diceResultRenderer.render(6, ENEMY_ATTACK_STRENGTH_ROLL)).andReturn(ENEMY_ATTACK_STRENGTH_RENDER);
+        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Goblin", ENEMY_ATTACK_STRENGTH_RENDER, 15});
         logger.debug("Attack strength for {}: {}", "Goblin", 15);
         final FfItem weapon = new FfItem("7", "Sword", ItemType.weapon1);
         weapon.setMagical(true);
@@ -209,13 +223,15 @@ public class SingleFightRoundResolverBTest extends FfTextResolvingTest {
         command.getResolvedEnemies().addAll(enemies);
         selectedEnemy.setDamageAbsorptionEdged(1);
         expect(interactionHandler.peekLastFightCommand(character, "enemyId")).andReturn("9");
+        expect(generator.getRandomNumber(2)).andReturn(SELF_ATTACK_STRENGTH_ROLL);
         expect(attributeHandler.resolveValue(character, "attackStrength")).andReturn(0);
-        expect(generator.getRandomNumber(2, 0)).andReturn(new int[]{7, 1, 6});
-        expect(generator.getRandomNumber(2)).andReturn(new int[]{7, 3, 4});
+        expect(generator.getRandomNumber(2)).andReturn(ENEMY_ATTACK_STRENGTH_ROLL);
         expect(attributeHandler.resolveValue(character, "skill")).andReturn(10);
-        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{1, 6, 17});
+        expect(diceResultRenderer.render(6, SELF_ATTACK_STRENGTH_ROLL)).andReturn(SELF_ATTACK_STRENGTH_RENDER);
+        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{SELF_ATTACK_STRENGTH_RENDER, 17});
         logger.debug("Attack strength for self: {}", 17);
-        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Goblin", 3, 4, 15});
+        expect(diceResultRenderer.render(6, ENEMY_ATTACK_STRENGTH_ROLL)).andReturn(ENEMY_ATTACK_STRENGTH_RENDER);
+        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Goblin", ENEMY_ATTACK_STRENGTH_RENDER, 15});
         logger.debug("Attack strength for {}: {}", "Goblin", 15);
         final FfItem weapon = new FfItem("7", "Sword", ItemType.weapon1);
         weapon.setStaminaDamage(3);

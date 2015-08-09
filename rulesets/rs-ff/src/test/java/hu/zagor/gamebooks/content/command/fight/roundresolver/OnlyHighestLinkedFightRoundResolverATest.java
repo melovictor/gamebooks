@@ -19,6 +19,7 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +59,7 @@ public class OnlyHighestLinkedFightRoundResolverATest extends FfTextResolvingTes
     private FfItem selectedWeapon;
     private FfCharacterItemHandler itemHandler;
     private FightBeforeRoundResult beforeRoundResult;
+    private DiceResultRenderer diceResultRenderer;
 
     @BeforeClass
     public void setUpClass() {
@@ -89,6 +91,8 @@ public class OnlyHighestLinkedFightRoundResolverATest extends FfTextResolvingTes
         selectedWeapon.setSubType(WeaponSubType.edged);
         init(mockControl, underTest);
         beforeRoundResult = new FightBeforeRoundResult();
+        diceResultRenderer = mockControl.createMock(DiceResultRenderer.class);
+        Whitebox.setInternalState(underTest, "diceResultRenderer", diceResultRenderer);
     }
 
     @BeforeMethod
@@ -120,16 +124,22 @@ public class OnlyHighestLinkedFightRoundResolverATest extends FfTextResolvingTes
 
     public void testResolveRoundWhenDoubleAttackingEnemyTiesWithBothHitsShouldReturnTie() {
         // GIVEN
+        final int[] selfAttackStrength = new int[]{5, 1, 4};
+        expect(generator.getRandomNumber(2)).andReturn(selfAttackStrength);
         expect(attributeHandler.resolveValue(character, "attackStrength")).andReturn(0);
-        expect(generator.getRandomNumber(2, 0)).andReturn(new int[]{5, 1, 4});
-        expect(generator.getRandomNumber(2)).andReturn(new int[]{5, 2, 3});
-        expect(generator.getRandomNumber(2)).andReturn(new int[]{5, 3, 2});
+        final int[] enemyAttackStrengthA = new int[]{5, 2, 3};
+        expect(generator.getRandomNumber(2)).andReturn(enemyAttackStrengthA);
+        final int[] enemyAttackStrengthB = new int[]{5, 3, 2};
+        expect(generator.getRandomNumber(2)).andReturn(enemyAttackStrengthB);
         expect(attributeHandler.resolveValue(character, "skill")).andReturn(9);
-        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{1, 4, 14});
+        expect(diceResultRenderer.render(6, selfAttackStrength)).andReturn("Thrown value: 1, 4.");
+        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{"Thrown value: 1, 4.", 14});
         logger.debug("Attack strength for self: {}", 14);
-        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, First Head", 2, 3, 14});
+        expect(diceResultRenderer.render(6, enemyAttackStrengthA)).andReturn("Thrown value: 2, 3.");
+        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, First Head", "Thrown value: 2, 3.", 14});
         logger.debug("Attack strength for {}: {}", "Two-Headed Dog, First Head", 14);
-        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, Second Head", 3, 2, 14});
+        expect(diceResultRenderer.render(6, enemyAttackStrengthB)).andReturn("Thrown value: 3, 2.");
+        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, Second Head", "Thrown value: 3, 2.", 14});
         logger.debug("Attack strength for {}: {}", "Two-Headed Dog, Second Head", 14);
         expectText("page.ff.label.fight.single.tied", new Object[]{"Two-Headed Dog"});
         mockControl.replay();
@@ -144,16 +154,22 @@ public class OnlyHighestLinkedFightRoundResolverATest extends FfTextResolvingTes
 
     public void testResolveRoundWhenDoubleAttackingEnemyFirstLosesThenWinsAgainstUsShouldReturnLose() {
         // GIVEN
+        final int[] selfAttackStrength = new int[]{5, 1, 4};
+        expect(generator.getRandomNumber(2)).andReturn(selfAttackStrength);
         expect(attributeHandler.resolveValue(character, "attackStrength")).andReturn(0);
-        expect(generator.getRandomNumber(2, 0)).andReturn(new int[]{5, 1, 4});
-        expect(generator.getRandomNumber(2)).andReturn(new int[]{4, 1, 3});
-        expect(generator.getRandomNumber(2)).andReturn(new int[]{6, 4, 2});
+        final int[] enemyAttackStrengthA = new int[]{4, 1, 3};
+        expect(generator.getRandomNumber(2)).andReturn(enemyAttackStrengthA);
+        final int[] enemyAttackStrengthB = new int[]{6, 4, 2};
+        expect(generator.getRandomNumber(2)).andReturn(enemyAttackStrengthB);
         expect(attributeHandler.resolveValue(character, "skill")).andReturn(9);
-        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{1, 4, 14});
+        expect(diceResultRenderer.render(6, selfAttackStrength)).andReturn("Thrown value: 1, 4.");
+        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{"Thrown value: 1, 4.", 14});
         logger.debug("Attack strength for self: {}", 14);
-        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, First Head", 1, 3, 13});
+        expect(diceResultRenderer.render(6, enemyAttackStrengthA)).andReturn("Thrown value: 1, 3.");
+        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, First Head", "Thrown value: 1, 3.", 13});
         logger.debug("Attack strength for {}: {}", "Two-Headed Dog, First Head", 13);
-        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, Second Head", 4, 2, 15});
+        expect(diceResultRenderer.render(6, enemyAttackStrengthB)).andReturn("Thrown value: 4, 2.");
+        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, Second Head", "Thrown value: 4, 2.", 15});
         logger.debug("Attack strength for {}: {}", "Two-Headed Dog, Second Head", 15);
         character.changeStamina(-2);
         character.changeSkill(0);
@@ -170,16 +186,22 @@ public class OnlyHighestLinkedFightRoundResolverATest extends FfTextResolvingTes
 
     public void testResolveRoundWhenDoubleAttackingEnemyFirstTiesThenLosesAgainstUsShouldReturnTie() {
         // GIVEN
+        final int[] selfAttackStrength = new int[]{5, 1, 4};
+        expect(generator.getRandomNumber(2)).andReturn(selfAttackStrength);
         expect(attributeHandler.resolveValue(character, "attackStrength")).andReturn(0);
-        expect(generator.getRandomNumber(2, 0)).andReturn(new int[]{5, 1, 4});
-        expect(generator.getRandomNumber(2)).andReturn(new int[]{5, 2, 3});
-        expect(generator.getRandomNumber(2)).andReturn(new int[]{4, 2, 2});
+        final int[] enemyAttackStrengthA = new int[]{5, 2, 3};
+        expect(generator.getRandomNumber(2)).andReturn(enemyAttackStrengthA);
+        final int[] enemyAttackStrengthB = new int[]{4, 2, 2};
+        expect(generator.getRandomNumber(2)).andReturn(enemyAttackStrengthB);
         expect(attributeHandler.resolveValue(character, "skill")).andReturn(9);
-        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{1, 4, 14});
+        expect(diceResultRenderer.render(6, selfAttackStrength)).andReturn("Thrown value: 1, 4.");
+        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{"Thrown value: 1, 4.", 14});
         logger.debug("Attack strength for self: {}", 14);
-        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, First Head", 2, 3, 14});
+        expect(diceResultRenderer.render(6, enemyAttackStrengthA)).andReturn("Thrown value: 2, 3.");
+        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, First Head", "Thrown value: 2, 3.", 14});
         logger.debug("Attack strength for {}: {}", "Two-Headed Dog, First Head", 14);
-        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, Second Head", 2, 2, 13});
+        expect(diceResultRenderer.render(6, enemyAttackStrengthB)).andReturn("Thrown value: 2, 2.");
+        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, Second Head", "Thrown value: 2, 2.", 13});
         logger.debug("Attack strength for {}: {}", "Two-Headed Dog, Second Head", 13);
         expectText("page.ff.label.fight.single.tied", new Object[]{"Two-Headed Dog"});
         mockControl.replay();
@@ -194,16 +216,22 @@ public class OnlyHighestLinkedFightRoundResolverATest extends FfTextResolvingTes
 
     public void testResolveRoundWhenDoubleAttackingEnemyFirstLosesThenTiesAgainstUsShouldReturnTie() {
         // GIVEN
+        final int[] selfAttackStrength = new int[]{5, 1, 4};
+        expect(generator.getRandomNumber(2)).andReturn(selfAttackStrength);
         expect(attributeHandler.resolveValue(character, "attackStrength")).andReturn(0);
-        expect(generator.getRandomNumber(2, 0)).andReturn(new int[]{5, 1, 4});
-        expect(generator.getRandomNumber(2)).andReturn(new int[]{4, 2, 2});
-        expect(generator.getRandomNumber(2)).andReturn(new int[]{5, 2, 3});
+        final int[] enemyAttackStrengthA = new int[]{4, 2, 2};
+        expect(generator.getRandomNumber(2)).andReturn(enemyAttackStrengthA);
+        final int[] enemyAttackStrengthB = new int[]{5, 2, 3};
+        expect(generator.getRandomNumber(2)).andReturn(enemyAttackStrengthB);
         expect(attributeHandler.resolveValue(character, "skill")).andReturn(9);
-        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{1, 4, 14});
+        expect(diceResultRenderer.render(6, selfAttackStrength)).andReturn("Thrown value: 1, 4.");
+        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{"Thrown value: 1, 4.", 14});
         logger.debug("Attack strength for self: {}", 14);
-        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, First Head", 2, 2, 13});
+        expect(diceResultRenderer.render(6, enemyAttackStrengthA)).andReturn("Thrown value: 2, 2.");
+        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, First Head", "Thrown value: 2, 2.", 13});
         logger.debug("Attack strength for {}: {}", "Two-Headed Dog, First Head", 13);
-        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, Second Head", 2, 3, 14});
+        expect(diceResultRenderer.render(6, enemyAttackStrengthB)).andReturn("Thrown value: 2, 3.");
+        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, Second Head", "Thrown value: 2, 3.", 14});
         logger.debug("Attack strength for {}: {}", "Two-Headed Dog, Second Head", 14);
         expectText("page.ff.label.fight.single.tied", new Object[]{"Two-Headed Dog"});
         mockControl.replay();
@@ -218,16 +246,22 @@ public class OnlyHighestLinkedFightRoundResolverATest extends FfTextResolvingTes
 
     public void testResolveRoundWhenDoubleAttackingEnemyLosesWithBothHitsShouldReturnWin() {
         // GIVEN
+        final int[] selfAttackStrength = new int[]{5, 1, 4};
+        expect(generator.getRandomNumber(2)).andReturn(selfAttackStrength);
         expect(attributeHandler.resolveValue(character, "attackStrength")).andReturn(0);
-        expect(generator.getRandomNumber(2, 0)).andReturn(new int[]{5, 1, 4});
-        expect(generator.getRandomNumber(2)).andReturn(new int[]{2, 1, 1});
-        expect(generator.getRandomNumber(2)).andReturn(new int[]{3, 1, 2});
+        final int[] enemyAttackStrengthA = new int[]{2, 1, 1};
+        expect(generator.getRandomNumber(2)).andReturn(enemyAttackStrengthA);
+        final int[] enemyAttackStrengthB = new int[]{3, 1, 2};
+        expect(generator.getRandomNumber(2)).andReturn(enemyAttackStrengthB);
         expect(attributeHandler.resolveValue(character, "skill")).andReturn(9);
-        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{1, 4, 14});
+        expect(diceResultRenderer.render(6, selfAttackStrength)).andReturn("Thrown value: 1, 4.");
+        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{"Thrown value: 1, 4.", 14});
         logger.debug("Attack strength for self: {}", 14);
-        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, First Head", 1, 1, 11});
+        expect(diceResultRenderer.render(6, enemyAttackStrengthA)).andReturn("Thrown value: 1, 1.");
+        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, First Head", "Thrown value: 1, 1.", 11});
         logger.debug("Attack strength for {}: {}", "Two-Headed Dog, First Head", 11);
-        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, Second Head", 1, 2, 12});
+        expect(diceResultRenderer.render(6, enemyAttackStrengthB)).andReturn("Thrown value: 1, 2.");
+        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, Second Head", "Thrown value: 1, 2.", 12});
         logger.debug("Attack strength for {}: {}", "Two-Headed Dog, Second Head", 12);
         expect(itemHandler.getEquippedWeapon(character)).andReturn(selectedWeapon);
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Two-Headed Dog"});

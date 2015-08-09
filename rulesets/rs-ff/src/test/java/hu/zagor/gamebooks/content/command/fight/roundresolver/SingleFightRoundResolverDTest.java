@@ -17,6 +17,7 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +56,7 @@ public class SingleFightRoundResolverDTest extends FfTextResolvingTest {
     private FfCharacterItemHandler itemHandler;
     private BattleLuckTestParameters battleLuckTestParameters;
     private FightBeforeRoundResult beforeRoundResult;
+    private DiceResultRenderer diceResultRenderer;
 
     @BeforeClass
     public void setUpClass() {
@@ -68,6 +70,8 @@ public class SingleFightRoundResolverDTest extends FfTextResolvingTest {
         Whitebox.setInternalState(underTest, "generator", generator);
         init(mockControl, underTest);
         beforeRoundResult = new FightBeforeRoundResult();
+        diceResultRenderer = mockControl.createMock(DiceResultRenderer.class);
+        Whitebox.setInternalState(underTest, "diceResultRenderer", diceResultRenderer);
     }
 
     private void setUpResolvationData() {
@@ -123,13 +127,17 @@ public class SingleFightRoundResolverDTest extends FfTextResolvingTest {
         enemies.add(selectedEnemy);
         command.getResolvedEnemies().addAll(enemies);
         expect(interactionHandler.peekLastFightCommand(character, "enemyId")).andReturn("9");
+        final int[] selfAttackStrength = new int[]{2, 1, 1};
+        expect(generator.getRandomNumber(2)).andReturn(selfAttackStrength);
         expect(attributeHandler.resolveValue(character, "attackStrength")).andReturn(0);
-        expect(generator.getRandomNumber(2, 0)).andReturn(new int[]{2, 1, 1});
-        expect(generator.getRandomNumber(2)).andReturn(new int[]{7, 3, 4});
+        final int[] enemyAttackStrength = new int[]{7, 3, 4};
+        expect(generator.getRandomNumber(2)).andReturn(enemyAttackStrength);
         expect(attributeHandler.resolveValue(character, "skill")).andReturn(10);
-        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{1, 1, 12});
+        expect(diceResultRenderer.render(6, selfAttackStrength)).andReturn("Thrown values: 1, 1.");
+        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{"Thrown values: 1, 1.", 12});
         logger.debug("Attack strength for self: {}", 12);
-        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Goblin", 3, 4, 15});
+        expect(diceResultRenderer.render(6, enemyAttackStrength)).andReturn("Thrown values: 3, 4.");
+        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Goblin", "Thrown values: 3, 4.", 15});
         logger.debug("Attack strength for {}: {}", "Goblin", 15);
         expect(character.getStoneSkin()).andReturn(0);
         character.changeStamina(-2);
@@ -156,13 +164,17 @@ public class SingleFightRoundResolverDTest extends FfTextResolvingTest {
         enemies.add(selectedEnemy);
         command.getResolvedEnemies().addAll(enemies);
         expect(interactionHandler.peekLastFightCommand(character, "enemyId")).andReturn("9");
+        final int[] selfAttackStrength = new int[]{2, 1, 1};
+        expect(generator.getRandomNumber(2)).andReturn(selfAttackStrength);
         expect(attributeHandler.resolveValue(character, "attackStrength")).andReturn(0);
-        expect(generator.getRandomNumber(2, 0)).andReturn(new int[]{2, 1, 1});
-        expect(generator.getRandomNumber(2)).andReturn(new int[]{7, 3, 4});
+        final int[] enemyAttackStrength = new int[]{7, 3, 4};
+        expect(generator.getRandomNumber(2)).andReturn(enemyAttackStrength);
         expect(attributeHandler.resolveValue(character, "skill")).andReturn(10);
-        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{1, 1, 12});
+        expect(diceResultRenderer.render(6, selfAttackStrength)).andReturn("Thrown values: 1, 1.");
+        expectText("page.ff.label.fight.single.attackStrength.self", new Object[]{"Thrown values: 1, 1.", 12});
         logger.debug("Attack strength for self: {}", 12);
-        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Goblin", 3, 4, 15});
+        expect(diceResultRenderer.render(6, enemyAttackStrength)).andReturn("Thrown values: 3, 4.");
+        expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Goblin", "Thrown values: 3, 4.", 15});
         logger.debug("Attack strength for {}: {}", "Goblin", 15);
         expect(character.getStoneSkin()).andReturn(0);
         character.changeStamina(-2);
