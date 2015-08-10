@@ -41,7 +41,7 @@ public class OnlyHighestLinkedFightRoundResolver extends AbstractFightRoundResol
 
         final FightDataDto dto = new FightDataDto(referenceEnemy, messages, resolvationData, command.getUsableWeaponTypes());
 
-        final int[] selfAttackStrengthValues = getGenerator().getRandomNumber(2, attributeHandler.resolveValue(character, "attackStrength"));
+        final int[] selfAttackStrengthValues = getSelfAttackStrength(character, command, attributeHandler);
         final Map<String, int[]> enemiesAttackStrengthValues = getEnemiesAttackValues(enemies);
         final int selfAttackStrength = attributeHandler.resolveValue(character, "skill") + selfAttackStrengthValues[0];
         final Map<String, Integer> enemiesAttackStrength = getEnemiesAttackStrengths(enemies, enemiesAttackStrengthValues);
@@ -170,7 +170,8 @@ public class OnlyHighestLinkedFightRoundResolver extends AbstractFightRoundResol
     @Override
     protected void recordAttachStrength(final FightCommandMessageList messages, final int[] selfAttackStrengthValues, final int selfAttackStrength,
         final FfCharacter character) {
-        messages.addKey("page.ff.label.fight.single.attackStrength.self", new Object[]{selfAttackStrengthValues[1], selfAttackStrengthValues[2], selfAttackStrength});
+        final String renderedDice = getDiceResultRenderer().render(6, selfAttackStrengthValues);
+        messages.addKey("page.ff.label.fight.single.attackStrength.self", new Object[]{renderedDice, selfAttackStrength});
         getLogger().debug("Attack strength for self: {}", selfAttackStrength);
     }
 

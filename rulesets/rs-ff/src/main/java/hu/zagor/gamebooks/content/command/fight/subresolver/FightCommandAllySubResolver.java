@@ -46,7 +46,7 @@ public class FightCommandAllySubResolver extends AbstractFightCommandSubResolver
     protected void resolveBattlingParties(final FightCommand command, final ResolvationData resolvationData) {
         super.resolveBattlingParties(command, resolvationData);
         final List<FfEnemy> allies = collectEnemies(command.getRoundNumber(), command.getAllies(), resolvationData.getEnemies());
-        final List<FfCharacter> resolvedAllies = new ArrayList<>();
+        final List<FfAllyCharacter> resolvedAllies = new ArrayList<>();
         for (final FfEnemy ally : allies) {
             final FfAllyCharacter allyCharacter = new FfAllyCharacter(ally);
             allyCharacter.setName(ally.getName());

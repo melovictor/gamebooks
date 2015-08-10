@@ -30,14 +30,14 @@ public class Ff18BookTakeItemController extends FfBookTakeItemController {
         if ("2001".equals(itemId)) {
             final FfCharacter character = (FfCharacter) getWrapper(request).getCharacter();
             character.changeStamina(FRUIT_HEALING);
-            final FfCharacterHandler characterHandler = (FfCharacterHandler) getInfo().getCharacterHandler();
+            final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
             characterHandler.getAttributeHandler().handleModification(character, "gold", -FRUIT_PRICE);
             characterHandler.getItemHandler().addItem(character, "4001", 1);
             takenItems = 1;
         } else if ("2002".equals(itemId)) {
             final FfCharacter character = (FfCharacter) getWrapper(request).getCharacter();
             character.changeStamina(POTION_HEALING);
-            final FfCharacterHandler characterHandler = (FfCharacterHandler) getInfo().getCharacterHandler();
+            final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
             characterHandler.getAttributeHandler().handleModification(character, "gold", -POTION_PRICE);
             takenItems = 1;
         } else {

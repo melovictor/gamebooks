@@ -10,7 +10,7 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
 import hu.zagor.gamebooks.content.command.fight.domain.WeaponReplacementData;
-import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,8 +48,8 @@ public class FightCommand extends Command {
     private FightRoundBoundingCommand beforeBounding;
 
     private boolean keepOpen;
-    private final List<FfEnemy> resolvedEnemies = new ArrayList<FfEnemy>();
-    private final List<FfCharacter> resolvedAllies = new ArrayList<FfCharacter>();
+    private final List<FfEnemy> resolvedEnemies = new ArrayList<>();
+    private final List<FfAllyCharacter> resolvedAllies = new ArrayList<>();
     private Map<String, BattleStatistics> battleStatistics = new HashMap<>();
 
     private boolean ongoing;
@@ -60,6 +60,8 @@ public class FightCommand extends Command {
     private int roundNumber;
     private boolean fleeAllowed;
     private boolean recoverDamage;
+    private int attackStrengthRolledDices = 2;
+    private int attackStrengthUsedDices = 2;
 
     private final Map<String, Integer> attackStrengths = new HashMap<String, Integer>();
 
@@ -246,11 +248,11 @@ public class FightCommand extends Command {
         return allies;
     }
 
-    public List<FfCharacter> getResolvedAllies() {
+    public List<FfAllyCharacter> getResolvedAllies() {
         return resolvedAllies;
     }
 
-    public FfCharacter getFirstAlly() {
+    public FfAllyCharacter getFirstAlly() {
         return resolvedAllies.get(0);
     }
 
@@ -316,6 +318,22 @@ public class FightCommand extends Command {
 
     public void setAutoLoseStamina(final int autoLoseStamina) {
         this.autoLoseStamina = autoLoseStamina;
+    }
+
+    public int getAttackStrengthRolledDices() {
+        return attackStrengthRolledDices;
+    }
+
+    public void setAttackStrengthRolledDices(final int attackStrengthRolledDices) {
+        this.attackStrengthRolledDices = attackStrengthRolledDices;
+    }
+
+    public int getAttackStrengthUsedDices() {
+        return attackStrengthUsedDices;
+    }
+
+    public void setAttackStrengthUsedDices(final int attackStrengthUsedDices) {
+        this.attackStrengthUsedDices = attackStrengthUsedDices;
     }
 
 }

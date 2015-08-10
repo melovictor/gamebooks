@@ -48,7 +48,7 @@ public class Ff38BookTakeItemController extends FfBookTakeItemController {
         final Paragraph paragraph = wrapper.getParagraph();
         final String id = paragraph.getId();
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
-        final FfCharacterHandler characterHandler = (FfCharacterHandler) getInfo().getCharacterHandler();
+        final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
         final CharacterItemHandler itemHandler = characterHandler.getItemHandler();
         String response = null;
 

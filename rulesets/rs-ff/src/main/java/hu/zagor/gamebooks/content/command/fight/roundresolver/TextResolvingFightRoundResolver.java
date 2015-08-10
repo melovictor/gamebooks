@@ -6,8 +6,6 @@ import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.AbstractFig
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightMessageLine;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
 
-import java.util.Locale;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.HierarchicalMessageSource;
 
@@ -28,19 +26,6 @@ public abstract class TextResolvingFightRoundResolver implements FightRoundResol
      */
     protected void getFleeTextResourceList(final FightCommandMessageList messages) {
         messages.addKey("page.ff.label.fight.flee");
-    }
-
-    /**
-     * Resolves a single message key with the provided parameters.
-     * @param key the text key to use
-     * @param params the parameters to use
-     * @return the resolved text
-     * @deprecated this method should not be used anymore, the message list should be used directly for message resolving
-     */
-    @Deprecated
-    protected String resolveText(final String key, final Object[] params) {
-        final Locale locale = localeProvider.getLocale();
-        return messageSource.getMessage(key, params, locale);
     }
 
     /**

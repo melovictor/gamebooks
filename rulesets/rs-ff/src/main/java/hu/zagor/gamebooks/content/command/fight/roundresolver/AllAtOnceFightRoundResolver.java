@@ -38,7 +38,7 @@ public class AllAtOnceFightRoundResolver extends SingleFightRoundResolver {
             if (enemy.getStamina() > 0) {
                 final FightDataDto dto = new FightDataDto(enemy, messages, resolvationData, command.getUsableWeaponTypes());
                 final boolean isSelectedEnemy = enemy.getId().equals(enemyId);
-                final int[] selfAttackStrengthValues = getGenerator().getRandomNumber(2, attributeHandler.resolveValue(character, "attackStrength"));
+                final int[] selfAttackStrengthValues = getSelfAttackStrength(character, command, attributeHandler);
                 final int[] enemyAttackStrengthValues = getEnemyAttackStrength(enemy);
                 final int selfAttackStrength = attributeHandler.resolveValue(character, "skill") + selfAttackStrengthValues[0];
                 final int enemyAttackStrength = enemy.getSkill() + enemyAttackStrengthValues[0];

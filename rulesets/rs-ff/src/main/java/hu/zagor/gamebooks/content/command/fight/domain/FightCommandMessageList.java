@@ -145,8 +145,15 @@ public class FightCommandMessageList implements List<String> {
 
     @Override
     public boolean add(final String e) {
+        ensureIndexCorrectness();
         selectedMessages.add(index, e);
         return true;
+    }
+
+    private void ensureIndexCorrectness() {
+        if (index > selectedMessages.size()) {
+            index = selectedMessages.size();
+        }
     }
 
     /**
@@ -170,6 +177,7 @@ public class FightCommandMessageList implements List<String> {
         Assert.state(localeProvider != null, "A locale provider has to be specified for text key resolvation.");
         Assert.state(messageSource != null, "A message source has to be specified for text key resolvation.");
         final Locale locale = localeProvider.getLocale();
+        ensureIndexCorrectness();
         selectedMessages.add(index++, messageSource.getMessage(key, args, locale));
         return true;
     }

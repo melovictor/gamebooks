@@ -30,7 +30,7 @@ public class Ff10BookTakeItemController extends FfBookTakeItemController {
         if ("5007".equals(itemId) || "5008".equals(itemId)) {
             final HttpSessionWrapper wrapper = getWrapper(request);
             final FfCharacter character = (FfCharacter) wrapper.getCharacter();
-            final FfCharacterHandler characterHandler = (FfCharacterHandler) getInfo().getCharacterHandler();
+            final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
             final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
             attributeHandler.handleModification(character, "fear", WINE_FEAR_MODIFICATION);
         }

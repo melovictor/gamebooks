@@ -28,12 +28,14 @@ public class Mapper {
         for (final String serie : series) {
             final File serieDir = new File(root, serie);
             for (final File bookDir : serieDir.listFiles()) {
-                for (final File instDir : bookDir.listFiles()) {
-                    if (!instDir.getName().endsWith("med")) {
-                        final File xmlDir = new File(instDir, content);
-                        for (final File contentFile : xmlDir.listFiles()) {
-                            if (contentFile.getName().endsWith("content.xml") && contentFile.lastModified() > lastWeek) {
-                                createMap(contentFile);
+                if (bookDir.isDirectory()) {
+                    for (final File instDir : bookDir.listFiles()) {
+                        if (!instDir.getName().endsWith("med")) {
+                            final File xmlDir = new File(instDir, content);
+                            for (final File contentFile : xmlDir.listFiles()) {
+                                if (contentFile.getName().endsWith("content.xml") && contentFile.lastModified() > lastWeek) {
+                                    createMap(contentFile);
+                                }
                             }
                         }
                     }

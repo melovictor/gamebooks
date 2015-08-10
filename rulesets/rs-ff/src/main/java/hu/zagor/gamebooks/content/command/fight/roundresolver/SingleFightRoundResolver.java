@@ -42,7 +42,7 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
                 if (beforeRoundResult.isLoseBattle()) {
                     doLoseFight(command, result, enemyIdx, dto);
                 } else {
-                    final int[] selfAttackStrengthValues = getGenerator().getRandomNumber(2, attributeHandler.resolveValue(character, "attackStrength"));
+                    final int[] selfAttackStrengthValues = getSelfAttackStrength(character, command, attributeHandler);
                     final int[] enemyAttackStrengthValues = getEnemyAttackStrength(enemy);
                     final int selfAttackStrength = attributeHandler.resolveValue(character, "skill") + selfAttackStrengthValues[0];
                     final int enemyAttackStrength = enemy.getSkill() + enemyAttackStrengthValues[0];
@@ -228,7 +228,8 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
     @Override
     protected void recordAttachStrength(final FightCommandMessageList messages, final int[] selfAttackStrengthValues, final int selfAttackStrength,
         final FfCharacter character) {
-        messages.addKey("page.ff.label.fight.single.attackStrength.self", new Object[]{selfAttackStrengthValues[1], selfAttackStrengthValues[2], selfAttackStrength});
+        final String renderedDice = getDiceResultRenderer().render(6, selfAttackStrengthValues);
+        messages.addKey("page.ff.label.fight.single.attackStrength.self", new Object[]{renderedDice, selfAttackStrength});
         getLogger().debug("Attack strength for self: {}", selfAttackStrength);
     }
 
