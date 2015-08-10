@@ -313,31 +313,43 @@ correndo em volta da árvore, agitando as espadas na sua direção. Não há alt
   </p>
   <p id="12">
     <text>
-        [p]Néhány perc múlva közeledő léptek zaját hallod a lépcső felől. Kinyílik az ajtó, és egy férfi lép a szobába, akin nincs egyéb, csupán egy törülköző a pocakja körül. Látod, amint ledobja magáról a törülközőt és nagyot sóhajtva óvatosan belemerül a vízbe.[/p]
+        [p]Passados alguns minutos, você ouve passos que vêm descendo o corredor. A porta se abre, e um
+homem entra no aposento, usando como única vestimenta uma toalha enrolada em volta de seu
+estômago gordo. Você observa enquanto ele deixa cair a toalha e se abaixa lentamente na banheira
+com um suspiro alto. Se quiser surpreendê-lo, desembainhando a espada e falando" Ahá!" bem alto,
+vá para 176. Se preferir se esgueirar para fora do aposento de volta para o corredor enquanto ele
+submerge, vá para 383.
+
+        Néhány perc múlva közeledő léptek zaját hallod a lépcső felől. Kinyílik az ajtó, és egy férfi lép a szobába, akin nincs egyéb, csupán egy törülköző a pocakja körül. Látod, amint ledobja magáról a törülközőt és nagyot sóhajtva óvatosan belemerül a vízbe.[/p]
     </text>
-    <next id="176">Ha kirántod a kardodat és hangos ,,Aha!’’ kiáltással rátörsz</next>
-    <next id="383">Ha inkább szép csendben kiosonsz a szobából és visszamész a folyosón, amíg ő a vízben áztatja magát</next>
+    <next id="176">Se quiser surpreendê-lo, desembainhando a espada e falando" Ahá!" bem alto</next>
+    <next id="383">Se preferir se esgueirar para fora do aposento de volta para o corredor enquanto ele
+submerge</next>
   </p>
   <p id="13">
     <text>
-        [p]Amikor jobban megnézed a skorpiót, látod, hogy az egy melltű. Úgy döntesz, hogy bőrzubbonyodra tűzöd. A melltűnek gyógyító varázsereje van: bármilyen csata után azonnal 1 ponttal növeli [span class="ffAttribute"]ÉLETERŐ[/span] pontjaid számát.[/p]
-        [p]Most mit fogsz csinálni?[/p]
+        [p]Ao inspecionar o escorpião, você vê que é um broche. Você decide pô-lo na sua túnica de couro. O
+broche possui propriedades curativas mágicas: depois de qualquer batalha, o broche imediatamente
+recuperará 1 ponto de [span class="ffAttribute"]ENERGIA[/span] para o seu total.[/p]
+        [p]O que você fará em seguida?[/p]
     </text>
     <gatherItem id="3006" />
     <itemCheck type="section" id="273">
       <have>
-        <next id="80" pos="2">Ha felmész a lépcsőn</next>
+        <next id="80" pos="2">Subir as escadas</next>
       </have>
       <dontHave>
-        <next id="273" pos="1">Ha felveszed az aranyskorpiót</next>
-        <next id="80" pos="2">Ha nem nyúlsz hozzá, hanem inkább felmész a lépcsőn</next>
+        <next id="273" pos="1">Pegar o escorpião dourado</next>
+        <next id="80" pos="2">Se preferir ignorá-lo, poderá subir as escadas</next>
       </dontHave>
     </itemCheck>
-    <next id="334" pos="3">Ha kimész a házból és északnak indulsz tovább</next>
+    <next id="334" pos="3">Sair da casa e seguir para o norte</next>
   </p>
   <p id="14">
     <text>
-        [p]Amint letépsz egy virágot, megzizzennek a levelek. Három állat formájú bokor elválik a gyökereitől, és feléd tart.[/p]
+        [p]Logo que você pega uma das flores, ouve o barulho de folhas em movimento. Três das cercas
+vegetais com forma de animais se desenraizaram e estão se aproximando de você. Você tem um
+Anel de Fogo?[/p]
     </text>
     <gatherItem id="3042" />
     <reward id="lotus" />
@@ -355,22 +367,26 @@ correndo em volta da árvore, agitando as espadas na sua direção. Não há alt
   </p>
   <p id="15">
     <text>
-        [p]Átlépsz a kígyókon, és odarohansz az ajtóhoz.[/p]
+        [p]Você salta por cima das serpentes e corre para a porta.[/p]
     </text>
     <test against="luck">
       <success>
-        <text>[p]Biztonságban eljutsz az ajtóig.[/p]</text>
+        <text>[p]Você teve sorte e chegou até a porta em segurança.[/p]</text>
         <next id="75"></next>
       </success>
       <failure>
-        <text>[p]Az egyik kígyónak sikerül megmarnia a lábadat.[/p]</text>
+        <text>[p]Você não teve sorte e uma das serpentes dá um bote e
+morde a sua perna.[/p]</text>
         <next id="298"></next>
       </failure>
     </test>
   </p>
   <p id="16">
     <text>
-        [p]A zsákban [span class="takeItem" data-id="gold" data-amount="12"]12 Aranytallért[/span] találsz. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot! Sietve elhagyod a házat, még mielőtt a tulajdonos rájönne, hogy nem az vagy, akinek kiadtad magad. Elindulsz északnak az Istálló utcán.[/p]
+        [p]A bolsa contém [span class="takeItem" data-id="gold" data-amount="12"]12 Peças de Ouro[/span]. 
+Some 1 ponto de [span class="ffAttribute"]SORTE[/span]. Você sai da casa rapidamente, antes
+que o proprietário descubra que você não é quem você diz ser. Você então segue adiante para o
+norte, ao longo da Rua do Estábulo.[/p]
     </text>
     <add amount="1" to="luck" />
     <next id="333"></next>
@@ -378,26 +394,27 @@ correndo em volta da árvore, agitando as espadas na sua direção. Não há alt
   <p id="17">
     <text>
         [p class="inlineImage"][img src="resources/ff5/17.jpg" /][/p]
-        [p]Amint mész a keskeny utcán, egy toprongyos öregembert pillantasz meg, aki a kanális tetején ül. Fejét két öklére támasztja, és nagyon szerencsétlennek látszik.[/p]
+        [p]Caminhando pela rua estreita, você vê um homem usando trapos esfarrapados sentado na sarjeta.
+Tem a cabeça enfiada nas mãos e a aparência totalmente miserável.[/p]
     </text>
-    <next id="331">Ha meg akarsz állni és beszédbe akarsz elegyedni vele</next>
-    <next id="161">Ha inkább tovább folytatod az utadat kelet felé</next>
+    <next id="331">Se quiser parar para falar com ele.</next>
+    <next id="161">Se preferir continuar a caminhar para o oeste.</next>
   </p>
   <p id="18">
     <text>
-        [p]Figyelmesen célzol, és elhajítod a késedet az élen haladó Csavargó felé.[/p]
+        [p]Você mira cuidadosamente e lança a faca no vagabundo da frente. Jogue dois dados.[/p]
     </text>
     <loseItem id="3022" />
     <test against="skill">
       <success>
         <text>
-            [p]A kés mélyen beleáll a csavargó testébe s az holtan esik össze.[/p]
+            [p]A faca penetra profundamente no peito do vagabundo, fazendo com que ele interrompa seus passos e caia morto.[/p]
         </text>
         <next id="102"></next>
       </success>
       <failure>
         <text>
-            [p]A kés elszáll a csavargó mellett, és így mindhárom csavargóval meg kell küzdened a kardod segítségével.[/p]
+            [p]a faca passa voando pelo alvo, e você terá que lutar contra os três vagabundos com sua espada.[/p]
         </text>
         <next id="225"></next>
       </failure>
@@ -405,29 +422,35 @@ correndo em volta da árvore, agitando as espadas na sua direção. Não há alt
   </p>
   <p id="19">
     <text>
-        [p]A hajítódárdák hegye mérgezett. Vesztesz 4 [span class="ffAttribute"]ÉLETERŐ[/span] és 1 [span class="ffAttribute"]ÜGYESSÉG[/span] pontot![/p]
+        [p]Os dardos têm a ponta envenenada. Você perde 4 pontos de [span class="ffAttribute"]ENERGIA[/span] e 1 ponto de
+[span class="ffAttribute"]HABILIDADE[/span].[/p]
     </text>
     <add amount="-4" to="stamina" />
     <add amount="-1" to="skill" />
-    <next id="340">Ha ismét megpróbálod feltörni a zárat</next>
-    <next id="60">Ha inkább kimész a szobából és felmész a csigalépcsőn a következő szintre</next>
+    <next id="340">Continuar a tentar abrir a fechadura.</next>
+    <next id="60">Sair do aposento e subir as escadas para o andar de cima.</next>
   </p>
   <p id="20">
     <text>
-        [p]A kalóz zsebében egy darabka száraz kenyéren kívül semmi egyebet nem találsz. Otthagyod a férfit, és nekiállsz, hogy átkutasd a hajó fedélzetén lévő faládákat és hordókat.[/p]
+        [p]Os bolsos do pirata contêm apenas um pedaço de pão azedo. Você o larga para começar a
+examinaras caixas de madeira e os barris no convés do navio.[/p]
     </text>
     <next id="84"></next>
   </p>
   <p id="21">
     <text>
-        [p]Felnézel, s látod, hogy a csigalépcső fölvezet egészen a torony tetejébe. Megállsz az első szinten, és odamész az ajtóhoz. Egy nagy szobába nyitsz be, amelyben kényelmes, megvetett ágyat látsz.[/p]
+        [p]Olhando para cima, você vê que a escada continua direto até o topo da torre. Você pára no primeiro
+andar e anda pelo patamar até uma porta. A porta abre para um aposento grande, onde há uma cama
+feita bem confortável.[/p]
     </text>
-    <next id="288">Ha becsukod magad mögött az ajtót és nyugovóra térsz</next>
-    <next id="77">Ha inkább továbbmész, hogy felderítsd, mi van még a toronyban</next>
+    <next id="288">Trancar a porta e dormir essa noite ali.</next>
+    <next id="77">Explorar a torre mais adiante.</next>
   </p>
   <p id="22">
     <text>
-        [p]Amikor leülsz az asztalhoz, a Goblinok abbahagyják a veszekedést, és hűvösen rád néznek. Ragyás képükön gyűlölet látszik. Hirtelen felpattannak, és kardot rántanak. Egyenként kell megküzdened velük.[/p]
+        [p]Quando você se senta à mesa, os GOBLINS param de discutir e olham friamente para você. Você
+vê o ódio em seus rostos pardos cheios de verrugas. De repente, eles se levantam e desembainham
+suas espadas. Você terá que lutar com um de cada vez.[/p]
     </text>
     <fight type="single">
       <enemy id="14" />
@@ -437,7 +460,8 @@ correndo em volta da árvore, agitando as espadas na sua direção. Não há alt
   </p>
   <p id="23">
     <text>
-        [p]A férfi megragadja a bunkóbotot, amely a széke mögött lóg, és rád támad. A férfi erős, de nem igazán jó harcos.[/p]
+        [p]O homem pega uma clava de madeira atrás de uma cadeira e se prepara para lutar contra você. Ele é
+forte, mas não é bom de luta.[/p]
     </text>
     <fight type="single">
       <enemy id="24" />
@@ -446,64 +470,98 @@ correndo em volta da árvore, agitando as espadas na sua direção. Não há alt
   </p>
   <p id="24">
     <text>
-        [p]Az utca bal oldalán egy másik üzletet veszel észre. A kirakaton lévő vasrácstól nem látod, mit is árulnak odabent. Lenyomod a kilincset, mely enged.[/p]
+        [p]Há uma outra loja do lado esquerdo da rua. Uma grade de ferro na janela impede que você veja que
+tipo de loja é. Você tenta a maçaneta da porta e ela gira. Se quiser entrar na loja, vá para 336. Se
+quiser continuar para o oeste, sem olhar para a loja, vá para 196.[/p]
     </text>
-    <next id="336">Ha be akarsz menni az üzletbe</next>
-    <next id="196">Ha inkább továbbmész nyugat felé, anélkül, hogy benéznél a boltba</next>
+    <next id="336">Entrar na loja.</next>
+    <next id="196">Continuar para o oeste, sem olhar para a loja.</next>
   </p>
   <p id="25">
     <text>
-        [p]Egy istállóban vagy, ahol egy meztelen felsőtestű férfi koszos fehér kötényben szorgoskodik a nyílt tűznél. Vörösen izzó vasat emel ki éppen kesztyűs kezével a lángokból, és az üllőn egy kalapáccsal patkó formájúra ütögeti. Homlokáról csorog a verejték a kemény munka közben. Mit teszel?[/p]
+        [p]Você logo se dá conta de que está em um estábulo ao ver um homem grande, de peito nu, usando
+um avental branco imundo, trabalhando junto a um fogo. Ele pega uma barra de ferro incandescente
+do fogo com sua mão protegida por luva e principia a martelá-la para que pegue a forma de uma
+ferradura na sua bigorna. O suor se derrama da sua testa enquanto ele labuta com o martelo.Você:[/p]
     </text>
-    <next id="169">Szóba elegyedsz a kovácsmesterrel?</next>
-    <next id="323">Kardoddal rátámadsz?</next>
-    <next id="115">Hagyod, hadd tegye a dolgát, és továbbmész északnak?</next>
+    <next id="169">Começa a conversar com o ferreiro?</next>
+    <next id="323">Ataca-o com sua espada?</next>
+    <next id="115">Deixa-o com suas ocupações e continua para o norte?</next>
   </p>
   <p id="26">
     <text>
-        [p]Kardodat visszadugod a hüvelyébe, és végignézel a bámészkodók csoportján. Miután tanúi voltak remek kardforgató-tudományodnak, szép nyugodtan visszamennek a helyükre. Már senki nem akar ujjat húzni veled. A kocsmáros bocsánatot kér tőled, amiért olyan barátságtalanul viselkedett veled, és meghív a bárpulthoz egy italra. Megkérdezed, nem tudja-e, hol találod meg Nikodémuszt. A kocsmáros összehúzza szemöldökét, és fürkésző pillantást vet rád, majd így szól: – Nem tudom, mit akarsz attól a ravasz vén varázslótól. Nem barátkozik az senkivel, egymagában él egy kis kunyhóban, az Éneklő híd tövében. Menj északnak, végig a Piac utcán, vágj át a piactéren, míg el nem jutsz egy hídhoz, mely a Macskahal folyón ível át, és a város régi negyedébe meg a kikötőbe vezet. Nikodémusz azonban biztosan nem fog szóba állni veled, és elég varázslatot ismer ahhoz, hogy a legrámenősebbeket is távol tudja tartani a kunyhójától. – Miután figyelmezteted a kocsmárost, hogy máskor ne legyen olyan barátságtalan az idegenekkel, kimész a kocsmából, és folytatod az utadat északnak.[/p]
+        [p]Você embainha a sua espada e olha à sua volta par ao círculo de espectadores. Tendo testemunhado
+sua excelente técnica de espadachim, cada um deles volta em silêncio para sua mesa, não querendo
+provocá-lo mais. O estalajadeiro se desculpa por sua falta de amabilidade e convida você a se sentar
+no bar e desfrutar de uma bebida por conta dele. Você pergunta se ele sabe do paradeiro de
+Nicodemus. O estalajadeiro franze a testa e olha para você de forma inquisitiva. Depois, diz: "Não
+sei o que você quer com aquele velho mágico manhoso. Ele não quer conversa com ninguém e mora
+sozinho em uma cabana pequena embaixo da Ponte Cantora. Vá andando sempre para o norte pela
+Rua do Mercado, atravesse a área do mercado e você chegará a uma ponte que liga as margens do
+Rio Peixe-Gato e leva à parte velha da cidade e ao porto. Nicodemus não vai falar com você e ele
+conhece mágica suficiente para manter longe de sua porta mesmo os mais valentes." Você diz ao
+estalajadeiro para não ser tão descortês com estranhos da próxima vez, e sai da taverna para se
+dirigir ao norte.[/p]
     </text>
     <next id="296"></next>
   </p>
   <p id="27">
     <text>
         [p class="inlineImage"][img src="resources/ff5/27.jpg" /][/p]
-        [p]Egy apró, ablaktalan szobába jutsz, ahol gyertyafény világít. A szobában nincs más, csak egy asztal és két szék. Egy fekete palástot és parányi papi sapkát viselő férfi áll a sarokban. Mosolyogva fogad, és hív, hogy ülj le az asztalhoz. Leül veled szemben, és az asztalon lévő hat koponya tetejére egy-egy fehér pirulát helyez, majd így szól: – Az előtted lévő hat pirula közül az egyik halálos méreg, a másik öt veszélytelen. Válassz egyet, és nyeld le. Ha életben maradsz, kapsz tőlem 20 Aranytallért. Ha meghalsz, az összes vagyonodat én tartom meg.[/p]
+        [p]Você entra em um pequeno aposento iluminado à luz de vela e sem janelas. Ele está vazio, a não ser
+por uma mesa e duas cadeiras. Um homem usando um capuz-apertado e roupas pretas está de pé em
+um dos cantos. Ele sorri e pede que você se sente à mesa. Ele se senta à sua frente e, depois de pôr
+seis pílulas sobre seis caveiras na mesa, olha para você e diz: “Uma das pílulas à sua frente é
+veneno mortal, as outras são inofensivas. Engula uma à sua escolha. Se você viver, eu lhe darei 20
+Peças de Ouro.[/p]
     </text>
-    <next id="223">Ha részt akarsz venni ebben az ördögi játékban</next>
-    <next id="165">Ha inkább kimész ebből a szobából és visszasétálsz a sikátoron a Gyertya utcáig</next>
+    <next id="223">Participar deste jogo fatal</next>
+    <next id="165">Sair do aposento e andar de volta pela alameda para a Rua da
+Vela.</next>
   </p>
   <p id="28">
     <text>
-        [p]Miközben az Óriás Patkányokkal csatáztál, olyan érzésed volt, mintha valaki vagy valami a közeledben guggolna a sötétben.[/p]
+        [p]Enquanto você estava lutando com as Ratazanas Gigantes, teve a impressão de ter visto alguém ou
+alguma coisa esgueirar-se nas sombras à sua frente.[/p]
     </text>
-    <next id="265">Ha továbbmész a csatornában északnak</next>
-    <next id="104">Ha inkább megfordulsz és visszamész a kijárati nyíláshoz</next>
+    <next id="265">Continuar na direção norte pelo túnel.</next>
+    <next id="104">Dar meia volta e caminhar de novo para o bueiro de entrada.</next>
   </p>
   <p id="29">
     <text>
-        [p]Lekuporodsz a matracra, és azon töröd a fejed, vajon mit is csinálj.[/p]
+        [p]Você se acocora no colchão e pensa no que fazer em seguida.[/p]
     </text>
-    <next id="143">Ha betegséget színlelve odavágod a vödröt a rácshoz, hogy magadra vond az őrök figyelmét</next>
-    <next id="230">Ha inkább átvizsgálod a cellát abban a reményben, hátha találsz valamilyen rejtett kijáratot</next>
+    <next id="143">Fingir que está doente e jogar o balde de ferro de encontro às barras da cela para atrair a atenção dos guardas.</next>
+    <next id="230">Inspecionar a cela em detalhe, na esperança de encontrar um caminho de fuga secreto.</next>
   </p>
   <p id="30">
     <text>
-        [p]A Torony utcán menve csakhamar egy útkereszteződéshez érsz. Úgy döntesz, hogy az észak-déli irányban futó Istálló utcán mész tovább északnak.[/p]
+        [p]A Rua da Torre logo termina em um cruzamento, onde encontra a Rua do Estábulo, pela qual você
+pode ir para o norte ou para o sul. Você resolve ir para o norte.[/p]
     </text>
     <next id="76"></next>
   </p>
   <p id="31">
     <text>
         [p class="inlineImage"][img src="resources/ff5/31.jpg" /][/p]
-        [p]Egy fahidat pillantasz meg magad előtt, mely egy koszos folyón ível át. Fekete vize telis-tele van a tenger felé hömpölygő mindenféle szeméttel, és megborzongsz, amikor egy emberi kar úszik el előtted. A hidat tartó pillérek és oszlopok a magasba nyúlnak, és a tetejükbe szúrva emberek és más élőlények koponyáit látod. A híd szerkezetén átsüvöltő szél iszonyúan zúg, mintha a halott lelkek kiáltanának segítségért. Ott, ahol állsz, szinte észrevétlenül ereszkedik le egy keskeny kis lépcsősor a híd aljába. Az északi part felől egy féllábú ember közeledik feléd, hátán egy zsákot cipelve.[/p]
+        [p]À sua frente, há uma ponte de madeira que se estende sobre um rio sujo. Muito lixo desce flutuando
+na direção do mar sobre sua superfície escura, e você fica chocado ao ver uma mão humana
+passando à sua frente. As colunas de sustentação da ponte se erguem bem acima dela, e você vê
+caveiras, humanas e não humanas, amarradas nelas. O vento faz um barulho lúgubre, assobiando
+entre as estruturas da ponte, lembrando almas torturadas que gritassem por ajuda. Quase encoberto
+no campo visual, há um pequeno lance de escadas que desce para baixo da ponte a partir do lugar
+onde você está. Um homem de uma perna só, carregando um saco, está atravessando a ponte, vindo
+da margem norte. Se quiser , vá para 329. Se quiser esperar para falar com o
+homem, vá para 364.[/p]
     </text>
-    <next id="329">Ha le akarsz menni a lépcsőn</next>
-    <next id="364">Ha inkább a zsákot cipelő emberrel akarnál beszélni</next>
+    <next id="329">Descer as escadas.</next>
+    <next id="364">Esperar para falar com o homem</next>
   </p>
   <p id="32">
     <text>
-        [p]Mielőtt odaérnél az ajtóhoz, a Kígyókirálynő kinyújtja a nyakát, és a nyakadba mar – vesztesz 4 [span class="ffAttribute"]ÉLETERŐ[/span] és 1 [span class="ffAttribute"]ÜGYESSÉG[/span] pontot! Ha még mindig életben vagy, kardot rántasz, és megtámadod a Kígyókirálynőt.[/p]
+        [p]Antes de você chegar à porta, a Rainha Serpente estica o corpo e morde você no pescoço, causando
+a perda de 4 pontos de [span class="ffAttribute"]ENERGIA[/span] e 1 ponto de [span class="ffAttribute"]HABLIDADE[/span]. Se você ainda estiver vivo, puxa a
+espada para atacar a Rainha Serpente.[/p]
     </text>
     <add amount="-4" to="stamina" />
     <add amount="-1" to="skill" />
@@ -511,41 +569,53 @@ correndo em volta da árvore, agitando as espadas na sua direção. Não há alt
   </p>
   <p id="33">
     <text>
-        [p]Azt mondod az őrnek, hogy néhány ezüstserleget szeretnél eladni, amit Silvertonban loptál a kocsmában, és ha megmondja neked, hol tudnád a legjobban értékesíteni árudat, egy Aranytallér üti a markát. Az őr gyanakvó pillantást vet rád, és így szól: – Hadd nézzem meg előbb azokat a serlegeket, vedd csak elő a hátizsákodból! – Mit teszel?[/p]
+        [p]Você diz ao guarda que gostaria de vender uns cálices de Prata que roubou de uma taverna em
+Silverton, e que você pagará uma Peça de Ouro pela informação de onde vender pelo melhor preço.
+O guarda olha para você desconfiado, dizendo: “Deixe-me ver estes cálices na sua mochila antes de
+deixar você entrar.” Você:[/p]
     </text>
-    <next id="381">Azt mondod neki, hogy a serlegeket megátkozták, és csakis egy varázsló vizsgálhatja meg azokat?</next>
-    <next id="291">Megpróbálsz elfutni mellette és berohanni a főutcába?</next>
-    <next id="49">Gyorsan rátámadsz a kardoddal?</next>
+    <next id="381">Dirá que você sabe que os cálices são Amaldiçoados e
+que só devem ser examinados por um mago?</next>
+    <next id="291">Tentará passar correndo pelo guarda e chegar à ma principal?</next>
+    <next id="49">Atacará o guarda rapidamente com sua espada?</next>
   </p>
   <p id="34">
     <text>
-        [p]A hintó dübörögve száguld el melletted, és látod, amint a kocsis teljes erővel ösztökéli a négy lovat, mintha az élete függne tőle. Ahogy a kerékdübörgés hangja a távolba vész, ismét kilépsz az utcára, és folytatod utadat nyugat felé.[/p]
+        [p]A carruagem passa com estrondo, e você vê que o cocheiro está forçando os cavalos a correr, como
+se a sua própria vida dependesse disso. Quando o ruído da carruagem vai sumindo na distância,
+você sai para a rua e continua na direção oeste.[/p]
     </text>
     <next id="171"></next>
   </p>
   <p id="35">
     <text>
-        [p]Belököd a szolgát az ajtón, majd belédöföd a kardodat. Legnagyobb meglepetésedre kardod nem sebzi meg. A szolga lassan elindul feléd, s megpróbál hozzád érni csontos, korhadt kezével. Megragadja a karodat, de sikerül ellöknöd magadtól. Ahol megfogott, mintha megégett volna a karod, s mégis rothadt hús szagát érzed. Vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot! Rájössz, hogy aki előtted áll, az nem más, mint egy Lélekrabló, Csontos Zanbar egyik hűséges szolgája. Amint előrenyújtott két kezével ismét elindul feléd, gyorsan végiggondolod, mit is kell tenned.
+        [p]Você empurra o homem pela porta e crava a espada nele. Para sua grande surpresa, ele não parece
+afetado com o ferimento. Lentamente, ele avança na sua direção, tentando tocar a sua pele com suas
+mãos de esqueleto decompostas. Ele agarra seu braço, mas você consegue chutá-lo para longe. Fica
+no seu braço uma marca, como se fosse uma queimadura, mas que solta um cheiro nauseabundo de
+carne podre. Você perde 2 pontos de [span class="ffAttribute"]ENERGIA[/span]. Então, você compreende que está diante de um
+Caçador de Espíritos, um dos servidores fiéis de Zanbar Bone. Enquanto ele avança novamente na
+sua direção com os braços estendidos, você tenta se lembrar do que deve fazer.
     </text>
     <add amount="-2" to="stamina" />
     <itemCheck type="items" id="3037 or 3016">
       <have>
-        <text>Mit teszel?[/p]</text>
-        <next id="189" pos="1">Rálősz az ezüst nyílvesszővel?</next>
+        <text>Você:[/p]</text>
+        <next id="189" pos="1">Disparará a seta de prata nele?</next>
         <itemCheck type="item" id="3037">
           <have>
-            <next id="305" pos="2">Felé tartod a tükrödet, hogy megpillantsa önmagát?</next>
+            <next id="305" pos="2">Refletirá seu olhar em um espelho?</next>
           </have>
         </itemCheck>
         <itemCheck type="item" id="3016">
           <have>
-            <next id="382" pos="3">Rávillantod a Jéggyűrűdet?</next>
+            <next id="382" pos="3">Disparará seu Anel de Gelo nele?</next>
           </have>
         </itemCheck>
       </have>
       <dontHave>
         <text>
-            Úgy döntesz, rálősz az ezüst nyílvesszővel.[/p]
+            Você decide disparar a seta de prata nele.[/p]
         </text>
         <next id="189"></next>
       </dontHave>
@@ -553,7 +623,8 @@ correndo em volta da árvore, agitando as espadas na sua direção. Não há alt
   </p>
   <p id="36">
     <text>
-        [p]A férfi a pultra támaszkodva közli veled, hogy a Láthatatlanság Gyűrűje 10 Aranytallérba, a Tűzgyűrű 8 Aranytallérba, a Jéggyűrű pedig 7 Aranytallérba kerül.[/p]
+        [p]O homem se debruça sobre o balcão e lhe diz que um Anel de Invisibilidade custa 10 Peças de
+Ouro, um Anel de Fogo custa 8 Peças de Ouro, e um Anel de Gelo custa 7 Peças de Ouro.[/p]
         [div data-market=""][/div]
     </text>
     <market>
@@ -561,14 +632,18 @@ correndo em volta da árvore, agitando as espadas na sua direção. Não há alt
       <sale price="8" stock="1" id="3015" />
       <sale price="7" stock="1" id="3016" />
       <after>
-        <text>[p]Elbúcsúzol a férfitól, majd miután a gyűrűt az ujjadra húztad, kilépsz az üzletből, s folytatod utadat nyugat felé.[/p]</text>
+        <text>[p]Se você
+quiser comprar um dos anéis, faça o necessário desconto na sua Folha de Aventuras. Dizendo adeus
+ao homem, você põe o anel no dedo e sai da loja para se dirigir para o oeste.[/p]</text>
       </after>
     </market>
     <next id="196"></next>
   </p>
   <p id="37">
     <text>
-        [p]A férfi megpengeti a lantját, és vidám dalba kezd, amely rólad szól, és a jószerencsédről – valóban képes rá, hogy szerencsét hozzon neked! Nyersz 2 [span class="ffAttribute"]SZERENCSE[/span] pontot. Továbbmész a következő bódéig.[/p]
+        [p]O homem dedilha sua lira e canta uma canção alegre, toda sobre você e a sua sorte - ele realmente
+tem o poder de fazê-lo ter sorte. Acrescente 2 pontos de [span class="ffAttribute"]SORTE[/span] e siga adiante para a próxima
+barraca.[/p]
     </text>
     <add amount="2" to="luck" />
     <add amount="-3" to="gold" />
@@ -576,70 +651,94 @@ correndo em volta da árvore, agitando as espadas na sua direção. Não há alt
   </p>
   <p id="38">
     <text>
-        [p]Az egyik férfi belenyúl zöld zakójának zsebébe, és elővesz egy vékony [span class="takeItem" data-id="3018" data-amount="1"]ezüst karperecet[/span]. Mikor átadja neked, látod, hogy egy rovar képe van belevésve. A férfi elmagyarázza neked, hogy a karperecnek akkora a varázsereje, hogy akár az óriásrovarokat is képes megölni. Felhúzod a karodra, és kimész a kocsmából. Ismét északnak indulsz tovább.[/p]
+        [p]Um dos homens põe a mão no bolso interno de seu casaco verde e tira uma [span class="takeItem" data-id="3018" data-amount="1"]fina pulseira de prata[/span].
+Ele a entrega a você, que repara no perfil de um inseto gravado na sua superfície. O homem explica
+que a pulseira do inseto tem o poder de matar mesmo insetos gigantes. Depois de colocar a pulseira
+no pulso, você sai da taverna e se dirige de novo para o norte.[/p]
     </text>
     <next id="296"></next>
   </p>
   <p id="39">
     <text>
-        [p]Kinyitod a hátizsákodat, és úgy teszel, mintha az ezüsttárgyat keresnéd. A Kígyókirálynő egyre idegesebbé és türelmetlenebbé válik. Nem tudsz mit kitalálni, és pánikba esel.[/p]
+        [p]Você abre sua mochila e finge procurar o objeto de prata. A Rainha Serpente começa a ficar
+inquieta, e você nota que sua impaciência aumenta cada vez mais. Você não consegue pensar em
+um bom plano e começa a entrar em pânico. Se quiser correr para a porta da frente, volte para 32.
+Se quiser desembainhar a espada para atacar a Rainha Serpente, vá para 249.[/p]
     </text>
-    <next id="32">Ha oda akarsz futni a bejárati ajtóhoz</next>
-    <next id="249">Ha kardot rántasz és rátámadsz a Kígyókirálynőre</next>
+    <next id="32">Correr para a porta da frente.</next>
+    <next id="249">Desembainhar a espada para atacar a Rainha Serpente.</next>
   </p>
   <p id="40">
     <text>
         [p class="inlineImage"][img src="resources/ff5/40.jpg" /][/p]
-        [p]A fal tetejéről látod, hogy az egy csapat barna lényt vesz körül, akik valami furcsa játékot játszanak botokkal és bőrlabdával. Az egyik teremtmény épp beleütött a labdába, és most a másik csapat játékosa felé rohan, aki egy zsákon áll. Azonnal rájössz, hogy ezek a lények a Base-ek, akik kedvenc játékukat, a Baseballt játsszák.[/p]
+        [p]Do alto da muralha, você vê que ela circunda um grupo de criaturas de cor marrom, jogando algum
+tipo de jogo com um taco de madeira e uma pequena bola de couro. Uma das criaturas acabou de
+bater na bola e está correndo na direção de uma criatura que tem o pé em um saco de couro e
+pertence ao outro time. Você se dá conta de que estas criaturas são Beises jogando seu jogo
+favorito, Beisebol. Se quiser , vá para 168. Se preferir , vá para 91.[/p]
     </text>
-    <next id="168">Ha megkéred őket, hogy beállhass közéjük játszani</next>
-    <next id="91">Ha inkább lemész a lépcsőn a falról és az útkereszteződéshez visszatérve tovább folytatod az utadat nyugatnak a Kikötő utcán</next>
+    <next id="168">Pedir para entrar no jogo.</next>
+    <next id="91">Descer a muralha de volta, retornar ao cruzamento e se dirigir para o oeste, descendo a Rua do Porto.</next>
   </p>
   <p id="41">
     <text>
-        [p]A két őr, aki lefogott, egymásra néz, majd mindketten kérdőn harmadik társukra pillantanak. Az bólint, mire a két őr elereszt. Amikor átnyújtod neki a 15 Aranytallért, szúrós szemmel néz rád, és így szól: – Ha Azzur nagyúr megtudja, hogy engedély nélkül tartózkodsz a városban, halál fia vagy! Ami pedig Nikodémuszt illeti, őt keresd meg egyedül! – Visszafogod magad, nehogy kardot ránts, majd megfordulsz, és belépsz a városba.[/p]
+        [p]Os dois guardas que estão segurando você se entreolham e depois consultam o outro guarda para
+chegar a uma decisão. Ele faz um sinal com a cabeça e eles soltam você. Quando você paga a ele as
+15 Peças de Ouro, ele olha para você de modo penetrante, dizendo: "Se Lord Azzur descobrir que
+você está na cidade sem um passe, vai se arrepender de ter nascido. Se eu fosse você, arrumaria um.
+E quanto a Nicodemus, ache-o sozinho." Reprimindo seu impulso de puxar a espada, você se vira e
+caminha para o interior da cidade.[/p]
     </text>
     <add amount="-15" to="gold" />
     <next id="74"></next>
   </p>
   <p id="42">
     <text>
-        [p]Közlöd a férfival, hogy az összeget, amit kér, nem áll módodban kifizetni. Vállat von, és így szól: – Oké, de van-e akkor valami élelmed a számomra? – Kinyitod a hátizsákodat, és a férfi kiveszi belőle az összes megmaradt Élelmedet. Ezután nekiáll kiönteni és megformázni az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Türelmesen vársz, míg elkészül vele. Miközben átnyújtja neked a kész fegyvert, csak annyit mond, hogy ezzel biztosan célba találsz. Megköszönöd a fáradozását, és kilépsz az üzletből. Az utcán ismét keletnek mész tovább.[/p]
+        [p]Você diz ao homem que não pode pagar o preço que ele está pedindo. Ele sacode os ombros e diz:
+"Bom, você tem alguma comida?" Você abre sua mochila, e ele leva todas as Provisões que lhe
+restam. Ele então começa a fundir a sua flecha de prata, e você espera pacientemente que ele a faça.
+Finalmente, ele a entrega a você e assegura que ela será precisa no disparo. Você agradece pelo
+trabalho que ele teve e sai da loja. Do lado de fora, você parte novamente na direção leste.[/p]
     </text>
     <loseItem id="2000" amount="10" />
     <next id="100"></next>
   </p>
   <p id="43">
     <text>
-        [p]Amikor a serleg tüzes parázzsá válik a kezedben, felordítasz a fájdalomtól. Iszonyúan megégsz. Vesztesz 2 [span class="ffAttribute"]ÜGYESSÉG[/span] és 2 [span class="ffAttribute"]SZERENCSE[/span] pontot![/p]
+        [p]Você grita de dor quando a taça se transforma em um carvão incandescente na sua mão, e fica
+seriamente queimado, perdendo 2 pontos de [span class="ffAttribute"]HABILIDADE[/span] e 2 pontos de [span class="ffAttribute"]SZERENCSE[/span].[/p]
     </text>
     <itemCheck type="section" id="175">
       <dontHave>
-        <next id="175" pos="1">Ha felemeled az A jelzésű serleget</next>
+        <next id="175" pos="1">Erguer a taça A.</next>
       </dontHave>
     </itemCheck>
     <itemCheck type="section" id="209">
       <dontHave>
-        <next id="209" pos="2">Ha felemeled a B jelzésű serleget</next>
+        <next id="209" pos="2">Erguer a taça B.</next>
       </dontHave>
     </itemCheck>
-    <next id="107" pos="3">Ha átmész a boltíves átjárón</next>
-    <next id="60" pos="4">Ha felmész a lépcsőn</next>
+    <next id="107" pos="3">caminhar pela passagem em arco.</next>
+    <next id="60" pos="4">Subir as escadas.</next>
   </p>
   <p id="44">
     <text>
-        [p]Három jól megtermett, tüskés buzogánnyal felfegyverzett férfi állja el az utadat. Mindegyikük homlokán egy-egy tetovált piros csillagot látsz. Csavargók ezek, akik ki akarnak rabolni.[/p]
+        [p]De pé, em linha perpendicular à rua, há três homens, cada um deles armado com uma clava de
+ponta afiada. Você repara que os três possuem uma estrela vermelha tatuada na testa. São
+vagabundos cuja intenção é roubar você.[/p]
     </text>
     <itemCheck type="item" id="3022">
       <have>
         <text>
-            [p]Talán sikerül az egyiket leszúrnod a hajítókéseddel, mielőtt még odaérnének hozzád.[/p]
+            [p]Se você tiver uma Faca de Lançamento, poderá se livrar de
+um deles antes que eles cheguem a você.[/p]
         </text>
         <next id="18"></next>
       </have>
       <dontHave>
         <text>
-            [p]Mind a hárommal meg kell küzdened a kardod segítségével.[/p]
+            [p]Se não tiver, você terá que enfrentar todos
+três com sua espada.[/p]
         </text>
         <next id="225"></next>
       </dontHave>
@@ -647,71 +746,91 @@ correndo em volta da árvore, agitando as espadas na sua direção. Não há alt
   </p>
   <p id="45">
     <text>
-        [p]Az üveggömb darabokra törik a macskaköves úton. Amint a füst a levegővel érintkezik, aranyszínűvé változik, és szárnyas sisak alakját ölti fel. A sisak megszilárdul, a kövezeten fekszik a napfényben szikrázva. Életedben nem láttál még ehhez fogható remek sisakot![/p]
+        [p]A bola de vidro se parte com o impacto na rua calçada de pedra. Em contato com o ar, a fumaça
+passa a ter uma coloração dourada e começa a tomar a forma de um elmo com asas. O elmo se
+solidifica e pousa na rua, faiscando sob a luz do sol.[/p]
     </text>
-    <next id="376">Ha a fejedre akarod tenni</next>
-    <next id="161">Ha inkább ott hagyod, ahol van és továbbmész keletnek</next>
+    <next id="376">Colocá-lo em sua cabeça.</next>
+    <next id="161">Se preferir deixá-lo onde está e partir para
+o leste de novo.</next>
   </p>
   <p id="46">
     <text>
-        [p]A kovácsmester elteszi a pénzedet, és odamegy az egyik sarokban lévő szénabálákhoz. Az egyiket felemeli, s alatta megpillantod a [span class="takeItem" data-id="3041" data-amount="1"]páncélruhát[/span]. Hozzád fordulva így szól a kovács: – Mindent el kell itt rejteni! Senkiben sem bízhatsz meg! – A ruha kitűnően illik rád remek munka. Nyersz 2 [span class="ffAttribute"]ÜGYESSÉG[/span] pontot! Új szerzeményeddel távozol az istállóból, és folytatod utadat északnak.[/p]
+        [p]O ferreiro pega o seu dinheiro e caminha na direção de uns fardos de feno no canto. Ele levanta um
+deles e, embaixo disso, você vê a [span class="takeItem" data-id="3041" data-amount="1"]cota de malha de aço[/span]. Ele se vira para você e diz: "É preciso
+esconder tudo neste lugar. Não se pode confiar em ninguém." A cota serve perfeitamente em você, e
+a qualidade do trabalho é excelente. Acrescente 2 pontos de [span class="ffAttribute"]HABILIDADE[/span]. Você sai dos estábulos
+com sua armadura nova e continua para o norte.[/p]
     </text>
     <add amount="-20" to="gold" />
     <next id="115"></next>
   </p>
   <p id="47">
-    <text>[p]A villám belecsap a melledbe, és elterülsz a földön. Vesztesz 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot! Ha még mindig életben vagy, a kövér ember nevetésben tör ki. Lehet, hogy már nem is figyel oda rád? Úgy döntesz, hogy hason fekvő helyzetedből hozzávágod a kardodat.[/p]</text>
+    <text>[p]O dardo-relâmpago estoura em seu peito e atira você ao chão. Você perde 3 pontos de ENERGIA.
+Se ainda estiver vivo, você verá o homem gordo às gargalhadas. Talvez ele não esteja em guarda?
+Você resolve jogar sua espada nele da posição tombada em que se encontra.</text>
     <add amount="-3" to="stamina" />
     <test against="skill">
       <success>
-        <text>[p]A kard áthatol a férfi mellén, aki azonnal szörnyethal.[/p]</text>
+        <text>[p]A espada rasga o peito do homem e o mata.[/p]</text>
         <next id="313"></next>
       </success>
       <failure>
-        <text>[p]A kard elszáll mellette, és csörömpölve leesik a márványpadlóra.[/p]</text>
+        <text>[p]A espada voa,passando por ele, e retine ao cair no chão de mármore.[/p]</text>
         <next id="81"></next>
       </failure>
     </test>
   </p>
   <p id="48">
     <text>
-        [p]Az akna oldalához vaslétrát erősítettek, melyen le lehet menni egy alagútba. Lent sötét van, és igen kellemetlen szag terjeng a levegőben.[/p]
+        [p]Há uma escada de ferro presa à borda de um bueiro de entrada que desce para o túnel lá embaixo.
+Está escuro, e um cheiro muito desagradável sobe do fundo.[/p]
     </text>
-    <next id="321">Ha lemászol a létrán</next>
-    <next id="205">Ha inkább visszateszed az akna tetejét a helyére</next>
+    <next id="321">Descer pela escada.</next>
+    <next id="205">Repor a tampa do bueiro no lugar e continuar para o leste.</next>
   </p>
   <p id="49">
     <text>
-        [p]Amikor előrántod a kardodat, az őr jobbra lép, és megpróbálja megkongatni az őrbódé falán lévő kicsiny harangot.[/p]
+        [p]Quando você desembainha a sua espada, o guarda salta para a direita e tenta fazer soar um pequeno
+sino na parede da guarita.[/p]
     </text>
     <test against="luck">
       <success>
-        <text>[p]Az őr nem éri el a harangot, és káromkodva neked támad a lándzsájával.[/p]</text>
+        <text>[p]Você teve sorte, ele não alcança o sino, solta um palavrão e
+se volta para lutar com você com sua lança.[/p]</text>
         <next id="10"></next>
       </success>
       <failure>
-        <text>[p]Az őr eléri a harangot, és sikerül megkondítania, mielőtt neked rontana a lándzsájával.[/p]</text>
+        <text>[p]Você não teve sorte, ele consegue
+apanhar o sino e faze-lo soar bem alto antes de se voltar para lutar contra você com sua lança.[/p]</text>
         <next id="311"></next>
       </failure>
     </test>
   </p>
   <p id="50">
     <text>
-        [p]A lépcsőn lejutsz a hajó rakodóterébe, mely teljesen üres. Innen egy folyosó vezet tovább, melynek végében két csukott ajtó van. Odamész az ajtóhoz, és hallgatózni kezdesz. A bal oldali ajtó mögül hangos horkolást hallasz. A jobb oldali ajtó mögött csönd van.[/p]
+        [p]As escadas levam para o compartimento de carga do navio, embaixo. Está vazio. Do outro lado, um
+corredor conduz do compartimento de carga para duas portas fechadas. Você caminha ao longo do
+corredor e escuta junto às portas. Na porta da esquerda, você ouve alguém roncando alto. Da porta à
+sua direita, não vem som algum. Se quiser , vá para 271. Se preferir tentar
+a da direita, vá para 232.[/p]
     </text>
-    <next id="271">Ha be akarsz nyitni a bal oldali ajtón</next>
-    <next id="232">Ha a jobb oldali ajtón akarsz benyitni</next>
+    <next id="271">Abrir a porta da esquerda.</next>
+    <next id="232">Tentar a da direita.</next>
   </p>
   <p id="51">
     <text>
-        [p]Odamész az öreghez, és fölsegíted. Igen hálás neked, és meghív egy italra a közeli kocsmába.[/p]
+        [p]Você caminha até o velho e o ajuda a levantar-se. Ele fica muito agradecido e se oferece para pagar
+uma bebida para você em uma taberna próxima. Se quiser ir , vá para 325. Se preferir
+, vá para 348.[/p]
     </text>
-    <next id="325">Ha elfogadod a meghívását</next>
-    <next id="348">Ha inkább továbbmész utadon</next>
+    <next id="325">Tomar a bebida.</next>
+    <next id="348">Continuar sua busca.</next>
   </p>
   <p id="52">
     <text>
-        [p]A következő bódéban egy fiatalember fegyvereket és a hozzájuk tartozó felszerelést kínálja. Portékáinak árát krétával egy palatáblára írta ki.[/p]
+        [p]Há, atrás da barraca seguinte, um jovem vendendo armas e itens de equipamento. Os.preços de suas
+mercadorias estão escritos a giz em uma lousa:[/p]
         [div data-market=""][/div]
     </text>
     <market>
@@ -722,7 +841,7 @@ correndo em volta da árvore, agitando as espadas na sua direção. Não há alt
       <sale price="3" stock="1" id="3002" />
       <after>
         <text>
-            [p]Folytatod utadat északnak.[/p]
+            [p]Você segue para o norte.[/p]
         </text>
       </after>
     </market>
@@ -730,44 +849,50 @@ correndo em volta da árvore, agitando as espadas na sua direção. Não há alt
   </p>
   <p id="53">
     <text>
-        [p]A boltíves átjáró előtt lévő selyemfüggöny hirtelen szétlibben, és egy furcsa teremtmény lép a szobába. Kígyófeje van, mely különös módon ül egy pazar ruhába öltözött fiatal nő torzóján. A kígyó szája kinyílik, és egy villás végű nyelv pattan ki rajta, majd visszahúzódik, miközben a Kígyókirálynő így szól: – Ne próbálj meg becsapni engem! Jól tudom, hogy az a gaz Borryman soha nem küldene nekem virágot! Milyen ezüstből készült ajándékot hoztál nekem?[/p]
+        [p]As cortinas de seda diante da passagem em arco são puxadas para o lado, e uma estranha criatura
+entra no aposento. Tem uma cabeça de serpente, que se encaixa estranhamente sobre o corpo de
+uma mulher jovem, usando um vestido suntuoso. Sua boca se abre, e uma língua bifurcada move-se
+para frente e para trás, enquanto a Rainha Serpente diz: "Não tente me enganar, sei que aquele
+cafajeste do Borryman nunca manda flores. Que presente de prata você me trouxe?" Se você tiver
+algum objeto de prata na sua mochila que quiser dar à Rainha Serpente, vá para 328. Se não tiver
+um objeto de prata que queira ceder, volte para 39.[/p]
     </text>
     <itemCheck type="item" id="3006">
       <have>
-        <next id="328a" pos="10">Ha átadnád neki az Ezüst skorpiót</next>
+        <next id="328a" pos="10">Doar escorpião prateado</next>
       </have>
     </itemCheck>
     <itemCheck type="item" id="3018">
       <have>
-        <next id="328f" pos="15">Ha átadnád neki az Ezüst rovarkarperecet</next>
+        <next id="328f" pos="15">Doar fina pulseira de prata</next>
       </have>
     </itemCheck>
     <itemCheck type="item" id="3027">
       <have>
-        <next id="328b" pos="20">Ha átadnád neki az Ezüstfurulyát</next>
+        <next id="328b" pos="20">Doar flauta de prata</next>
       </have>
     </itemCheck>
     <itemCheck type="item" id="3033">
       <have>
-        <next id="328c" pos="30">Ha átadnád neki az egyik Ezüstpoharat</next>
+        <next id="328c" pos="30">Doar taça de prata</next>
       </have>
     </itemCheck>
     <itemCheck type="item" id="3034">
       <have>
-        <next id="328d" pos="40">Ha átadnád neki az Ezüstserleget</next>
+        <next id="328d" pos="40">Doar ??? Ezüstserleget</next>
       </have>
     </itemCheck>
     <itemCheck type="item" id="3035">
       <have>
-        <next id="328e" pos="50">Ha átadnád neki az Ezüstkanalat</next>
+        <next id="328e" pos="50">Doar colher de prata</next>
       </have>
     </itemCheck>
     <itemCheck type="items" id="3006 or 3018 or 3027 or 3033 or 3034 or 3035">
       <have>
-        <next id="39" pos="60">Ha nincs olyan ezüsttárgyad, amitől szívesen megválnál</next>
+        <next id="39" pos="60">Se não tiver um objeto de prata que queira ceder.</next>
       </have>
       <dontHave>
-        <text>[p]Pechedre nincs nálad semmi, ami ezüstből készült volna.[/p]</text>
+        <text>[p]Se não tiver um objeto de prata que queira ceder.[/p]</text>
         <next id="39"></next>
       </dontHave>
     </itemCheck>
