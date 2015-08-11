@@ -7,6 +7,7 @@ import hu.zagor.gamebooks.support.logging.LogInject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.springframework.util.Assert;
@@ -21,8 +22,8 @@ import org.w3c.dom.NodeList;
 public class DefaultBookParagraphTransformer extends AbstractTransformer implements BookParagraphTransformer {
 
     private static final String ID_ATTRIBUTE_NAME = "id";
-    private static final String PARAGRAPH_ELEMENT_NAME = "p";
     private static final String DISPLAY_ID_ATTRIBUTE_NAME = "display";
+    private Set<String> validSectionTags;
 
     private BookParagraphDataTransformer paragraphDataTransformer;
 
@@ -77,7 +78,7 @@ public class DefaultBookParagraphTransformer extends AbstractTransformer impleme
     }
 
     private boolean isParagraph(final Node childNode) {
-        return PARAGRAPH_ELEMENT_NAME.equals(childNode.getNodeName());
+        return validSectionTags.contains(childNode.getNodeName());
     }
 
     private Paragraph parseParagraph(final Node node) {
@@ -93,6 +94,10 @@ public class DefaultBookParagraphTransformer extends AbstractTransformer impleme
 
     public void setParagraphDataTransformer(final BookParagraphDataTransformer paragraphDataTransformer) {
         this.paragraphDataTransformer = paragraphDataTransformer;
+    }
+
+    public void setValidSectionTags(final Set<String> validSectionTags) {
+        this.validSectionTags = validSectionTags;
     }
 
 }

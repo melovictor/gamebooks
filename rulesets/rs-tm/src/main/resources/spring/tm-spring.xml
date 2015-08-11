@@ -18,7 +18,8 @@
     <constructor-arg index="1" ref="tmExtraTransformers" />
   </bean>
 
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.DefaultBookParagraphTransformer" id="tmRuleBookParagraphTransformer" p:paragraphDataTransformer-ref="tmRuleBookParagraphDataTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.DefaultBookParagraphTransformer" id="tmRuleBookParagraphTransformer" p:paragraphDataTransformer-ref="tmRuleBookParagraphDataTransformer"
+    p:validSectionTags-ref="validSectionTagNames" />
   <bean class="hu.zagor.gamebooks.tm.section.TmRuleBookParagraphDataTransformer" p:stubTransformers-ref="tmStubTransformers" id="tmRuleBookParagraphDataTransformer" parent="abstractBookParagraphDataTransformer" />
   <bean class="hu.zagor.gamebooks.raw.item.RawRuleBookItemTransformer" id="tmRuleBookItemTransformer" />
 
