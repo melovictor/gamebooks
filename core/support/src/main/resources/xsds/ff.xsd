@@ -133,44 +133,55 @@
       </xs:simpleType>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="sectionOptions">
+    <xs:choice>
+      <xs:element name="empty" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Defines that the given paragraph is nonexistent in the book.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+    </xs:choice>
+    <xs:attribute name="id" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>Defines the name of the current paragraph.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="display" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>The displayed name of the current paragraph. If omitted, the id will be displayed.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="actions" type="xs:integer" use="optional" default="2147483647" />
+  </xs:complexType>
+
 
   <xs:element name="content">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="1" maxOccurs="unbounded" ref="p">
+      <xs:choice>
+        <xs:element minOccurs="1" maxOccurs="unbounded" name="p" type="sectionOptions">
           <xs:annotation>
             <xs:documentation>Defines a single paragraph of the book.</xs:documentation>
           </xs:annotation>
         </xs:element>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="p">
-    <xs:complexType>
-      <xs:choice>
-        <xs:element name="empty" minOccurs="1" maxOccurs="1">
+        <xs:element minOccurs="1" maxOccurs="unbounded" name="s" type="sectionOptions">
           <xs:annotation>
-            <xs:documentation>Defines that the given paragraph is nonexistent in the book.</xs:documentation>
+            <xs:documentation>Defines a single paragraph of the book.</xs:documentation>
           </xs:annotation>
-          <xs:complexType>
-            <xs:sequence />
-          </xs:complexType>
         </xs:element>
-        <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+        <xs:element minOccurs="1" maxOccurs="unbounded" name="section" type="sectionOptions">
+          <xs:annotation>
+            <xs:documentation>Defines a single paragraph of the book.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
       </xs:choice>
-      <xs:attribute name="id" type="xs:string" use="required">
-        <xs:annotation>
-          <xs:documentation>Defines the name of the current paragraph.</xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="display" type="xs:string" use="optional">
-        <xs:annotation>
-          <xs:documentation>The displayed name of the current paragraph. If omitted, the id will be displayed.</xs:documentation>
-        </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="actions" type="xs:integer" use="optional" default="2147483647" />
     </xs:complexType>
   </xs:element>
+  
+  
   <xs:group name="descriptionGroup">
     <xs:choice>
       <xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1">
