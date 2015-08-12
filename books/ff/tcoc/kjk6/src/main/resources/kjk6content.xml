@@ -155,11 +155,13 @@
         [p]Ha megküzdesz a teremtményekkel, egyenként tedd![/p]
         [p]Saját hasonló pontjaid úgy működnek, mint normális körülmények között, mert szupererős vagy ugyan, de fegyvered nincsen.[/p]
     </text>
+    <changeItem attribute="skill" id="defWpn" set="0" />
     <loseItem id="1001" />
     <fight type="single">
       <enemy id="1" />
       <enemy id="2" />
       <win>
+        <changeItem attribute="skill" id="defWpn" set="-3" />
         <gatherItem id="1001" />
         <text>
             [p]Visszaszerzed a kardodat. Erőd ismét a megszokott lesz.[/p]
@@ -1535,7 +1537,7 @@
     <text>
         [p]Körbetapogatod a szikla belsejét, és egyszer csak egy emelőkar találsz. Ahogy meghúzod, a sziklafal egy része beomlik, és kicsiny, keskeny nyílás keletkezik. Átmászol rajta, és egy folyosón találod magadat. A folyosón balra egy ajtót látsz, és úgy döntesz, megnézed.[/p]
     </text>
-    <next id="249"></next>
+    <next id="243"></next>
   </p>
   <p id="249">
     <text>
@@ -4231,18 +4233,18 @@
   </p>
   <p id="322">
     <text>
-        [p][alt]Mit veszel elő a hátizsákodból?[/alt][/p]
+        [p][alt]Mit veszel elő?[/alt][/p]
     </text>
     <itemCheck type="items" id="3013 or 3007 or 3005">
       <have>
         <itemCheck type="item" id="3013">
           <have>
-            <next id="39"  singleChoiceText="Előveszed a zsákodból az Üvegbe zárt Pókot.">Az Üvegbe zárt Pókot?</next>
+            <next id="39" singleChoiceText="Előveszed a zsákodból az Üvegbe zárt Pókot.">Az Üvegbe zárt Pókot?</next>
           </have>
         </itemCheck>
         <itemCheck type="item" id="3007">
           <have>
-            <next id="168" singleChoiceText="Előveszed a zsákodból a Bűvös Amulettet.">A Bűvös Amulettet?</next>
+            <next id="168" singleChoiceText="Leveszed a nyakadból a Bűvös Amulettet.">A Bűvös Amulettet?</next>
           </have>
         </itemCheck>
         <itemCheck type="item" id="3005">
@@ -4358,5 +4360,1016 @@
         <next id="226"></next>
       </dontHave>
     </itemCheck>
+  </p>
+  <p id="229">
+    <text>
+        [p]Becsapod magad mögött az ajtót. Egy rövid, keskeny, kanyargós folyosón mész tovább, s egy újabb lépcsőfeljáróhoz érsz, mely a Fellegvár csúcsába vezet fel. A falon feliratot látsz: ,,ÁLLJ! Innen csak Rettegett Balthus engedélyével lehet továbbmenni!'' Érzed, hogy lassan célhoz érsz. Óvatosan felmész a lépcsőn a következő szintre, és a Fellegvár harangtornyában találod magad. Előtted vastag vasajtó. Lenyomod a kilincset, de az ajtó zárva van. Felemelsz egy kis fedőlapot, és alatta kis rugós zárat látsz. Ez titkos számzár, s csak az tudja kinyitni, aki ismeri a kombinációt.[/p]
+    </text>
+    <itemCheck type="section" id="238">
+      <have>
+        <userInput type="text">
+          <label>Mi a számkombináció?</label>
+          <result text="217">
+            <next id="217"></next>
+          </result>
+          <resultElse>
+            <itemCheck type="item" id="strength">
+              <have>
+                <text>
+                    [p]Nem emlékszel a számkombinációra, valami mással kell próbálkoznod.[/p]
+                </text>
+                <next id="50">Megpróbálhatod betörni az ajtót</next>
+                <next id="164">Vagy megkísérelhetsz Erővarázslatot alkalmazni</next>
+              </have>
+              <dontHave>
+                <text>
+                    [p]Nem emlékszel a számkombinációra, így kénytelen vagy megpróbálni betörni az ajtót.[/p]
+                </text>
+                <next id="50"></next>
+              </dontHave>
+            </itemCheck>
+          </resultElse>
+        </userInput>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="strength">
+          <have>
+            <text>
+                [p]Te nem ismered a számkombinációt, így valami mással kell próbálkoznod.[/p]
+            </text>
+            <next id="50">Megpróbálhatod betörni az ajtót</next>
+            <next id="164">Vagy megkísérelhetsz Erővarázslatot alkalmazni</next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Te nem ismered a számkombinációt, így kénytelen vagy megpróbálni betörni az ajtót.[/p]
+            </text>
+            <next id="50"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="226">
+    <text>
+        [p][alt]Melyik tárgyat próbálod meg használni?[/alt][/p]
+    </text>
+    <itemCheck type="item" id="3006">
+      <have>
+        <next id="312" singleChoiceText="Úgy döntesz, az Ezüst Tükröt próbálod meg használni ellene.">Az Ezüst Tükröt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3016">
+      <have>
+        <next id="37" singleChoiceText="Úgy döntesz, az Arany Prémet próbálod meg használni ellene.">Az Arany Prémet?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3014">
+      <have>
+        <next id="384" singleChoiceText="Úgy döntesz, a Zsebszerkentyűt próbálod meg használni ellene.">A Zsebszerkentyűt?</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="37">
+    <text>
+        [p]Előhúzod a bőrt, és a teremtmény hangosan felszisszen. Minden feje hátrahúzódik, de továbbra is figyel. A szoba túlsó végében van egy ajtó; lassan elindulsz felé. A szoba közepén jársz, amikor egy fej ugrik eléd, és kikapja a kezedből a Prémet. De ahelyett, hogy megtámadna, a Hidra visszahúzódik a sarokba. Óvatosan elindulsz az ajtó felé.[/p]
+    </text>
+    <loseItem id="3016" />
+    <next id="229"></next>
+  </p>
+  <p id="312">
+    <text>
+        [p]Magasra emeled a Tükröt. Nem sok hatással van a teremtményre, mely egyre közeledik. Az egyik feje előrenyúlik, és kiüti a kezedből a Tükröt, amely a földre esik és darabokra törik.[/p]
+    </text>
+    <loseItem id="3006" />
+    <next id="184"></next>
+  </p>
+  <p id="384">
+    <text>
+        [p]Miközben a szerkentyűvel játszadozol, hirtelen egy hosszú, vékony kötél tekeredik elő a nyeléből. Elhatározod, hogy hurkot vetsz a kötéllel a teremtmény nyakára. Meglendíted a kötelet.[/p]
+    </text>
+    <random>
+      <result max="5" min="5">
+        <next id="252a"></next>
+      </result>
+      <result max="6" min="6">
+        <next id="252b"></next>
+      </result>
+      <result max="1" min="1">
+        <next id="107a"></next>
+      </result>
+      <result max="2" min="2">
+        <next id="107b"></next>
+      </result>
+      <result max="3" min="3">
+        <next id="107c"></next>
+      </result>
+      <result max="4" min="4">
+        <next id="107d"></next>
+      </result>
+    </random>
+  </p>
+  <p id="252a" display="252">
+    <text>
+        [p]5 fejet ejtettél foglyul! Szeretnének kiszabadulni a hurok szorításából. Hirtelen mozdulattal kikapja a kezedből a Szerkentyűt, de a lasszó így is kellőképpen lefoglalja a teremtményt ahhoz, hogy egy ugrással a szoba túlsó végében lévő ajtónál teremhess.[/p]
+    </text>
+    <loseItem id="3014" />
+    <next id="229"></next>
+  </p>
+  <p id="252b" display="252">
+    <text>
+        [p]6 fejet ejtettél foglyul! Szeretnének kiszabadulni a hurok szorításából. Hirtelen mozdulattal kikapja a kezedből a Szerkentyűt, de a lasszó így is kellőképpen lefoglalja a teremtményt ahhoz, hogy egy ugrással a szoba túlsó végében lévő ajtónál teremhess.[/p]
+    </text>
+    <loseItem id="3014" />
+    <next id="229"></next>
+  </p>
+  <p id="107a" display="107">
+    <text>
+        [p]A hurokban 1 fejet számlálsz meg. A fejek szabadulni akarnak, de a teremtmény egyre csak közeledik. Pánikba esel, nem tudod, mit tegyél.[/p]
+    </text>
+    <next id="184"></next>
+  </p>
+  <p id="107b" display="107">
+    <text>
+        [p]A hurokban 2 fejet számlálsz meg. A fejek szabadulni akarnak, de a teremtmény egyre csak közeledik. Pánikba esel, nem tudod, mit tegyél.[/p]
+    </text>
+    <next id="184"></next>
+  </p>
+  <p id="107c" display="107">
+    <text>
+        [p]A hurokban 3 fejet számlálsz meg. A fejek szabadulni akarnak, de a teremtmény egyre csak közeledik. Pánikba esel, nem tudod, mit tegyél.[/p]
+    </text>
+    <next id="184"></next>
+  </p>
+  <p id="107d" display="107">
+    <text>
+        [p]A hurokban 4 fejet számlálsz meg. A fejek szabadulni akarnak, de a teremtmény egyre csak közeledik. Pánikba esel, nem tudod, mit tegyél.[/p]
+    </text>
+    <next id="184"></next>
+  </p>
+  <p id="50">
+    <text>
+        [p]Az ajtó igen erős fémből készült, nem lehet betörni. Térdre rogysz. Ilyen messzire jutottál el, s most elbuksz. Képtelen vagy továbbmenni, ezért újra neki kell vágnod az útnak: ezúttal azonban más lépéseket kelt választanod.
+    </text>
+    <itemCheck type="item" id="levitation">
+      <have>
+        <text>
+            A Súlytalanság Varázslatot alkalmazva könnyedén kijutsz a Fellegvárból.
+        </text>
+      </have>
+      <after>
+        <text>
+            Holnap este újra kell próbálkoznod…[/p]
+        </text>
+      </after>
+    </itemCheck>
+  </p>
+  <p id="164">
+    <text>
+        [p]Az ajtó igen erős fémből készült, nem lehet betörni. Térdre rogysz. Ilyen messzire jutottál el, s most elbuksz. Képtelen vagy továbbmenni, ezért újra neki kell vágnod az útnak: ezúttal azonban más lépéseket kelt választanod.
+    </text>
+    <itemCheck type="item" id="levitation">
+      <have>
+        <text>
+            A Súlytalanság Varázslatot alkalmazva könnyedén kijutsz a Fellegvárból.
+        </text>
+      </have>
+      <after>
+        <text>
+            Holnap este újra kell próbálkoznod…[/p]
+        </text>
+      </after>
+    </itemCheck>
+  </p>
+  <p id="217">
+    <text>
+        [p]Olyan óvatosan nyomod le a kilincset, ahogy csak tudod, mivel fogalmad sincs, mi vár rád odabent. Lassan kinyílik az ajtó, és bemész a sötét szobába, amelyet egyetlen pislákoló fáklya fénye világít meg. Megfagy benned a vér, amikor egy pontosan a torkod felé szálló háromágú szigonyt veszel észre! Egy szempillantás alatt kell eldöntened, hogy mitévő legyél. [alt]Mit teszel?[/alt][/p]
+    </text>
+    <itemCheck type="item" id="shielding">
+      <have>
+        <next id="293" pos="1">Azonnal Védelem Varázslatot alkalmazol?</next>
+      </have>
+    </itemCheck>
+    <next id="57" pos="2" singleChoiceText="Megpróbálsz gyorsan félreugrani a szigony elől.">Megpróbálsz gyorsan félreugrani a szigony elől?</next>
+  </p>
+  <p id="293">
+    <text>
+        [p]Varázslatod egy pillanat alatt megállítja a levegőben a Szigonyt, amely már veszedelmesen közel volt a nyakadhoz. A Szigony a földre hullik.[/p]
+    </text>
+    <loseItem id="shielding" />
+    <next id="374"></next>
+  </p>
+  <p id="57">
+    <test against="luck">
+      <success>
+        <next id="150"></next>
+      </success>
+      <failure>
+        <next id="233"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="233">
+    <text>
+        [p]Sikerült kivédened a Szigony két ágát, de a harmadik a válladba fúródik. Szerencsédre nem a kardforgató karod sérült meg. Megmarkolod a szigony szárát, és kihúzod a válladból, miközben ordítasz a fájdalomtól. Vesztesz 5 ÉLETERŐ pontot, amiért megsebesültél.[/p]
+    </text>
+    <add amount="-5" to="stamina" />
+    <next id="374"></next>
+  </p>
+  <p id="150">
+    <text>
+        [p]Gyorsan lehajolsz, hogy kivédd a Szigonyt. Elkerüli a nyakadat, de felsérti a homlokodat. Vesztesz 2 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="374"></next>
+  </p>
+  <p id="374">
+    <text>
+        [p]Amikor magadhoz térsz az első ijedségből, körülpillantasz a szobában. Szemmel láthatólag afféle Katonai Főhadiszálláson vagy. A falakon térképek és régi idők tábornokainak portréi lógnak. Az egyik sarokban lévő könyvespolcon száz és száz bőrkötésű könyv sorakozik. Díszes függönyök takarják az ablakokat. Az egyik falat teljes hosszában eltakaró szekrényben veszedelmes alakú és méretű lándzsák és kardok tömege sorakozik. A szoba közepén egy makett, melyet azonnal fölismersz: Fűzfa Völgyet ábrázolja. Miniatűr seregek tömege látható rajta. Ez nem más, mint szülőhazád lerohanásának terve! Háttal az asztalnak támaszkodva maga Rettegett Balthus áll és mereven néz! Alakja félelmetes. Két méternél jóval magasabb, bivalyerős, széles a válla, izmos a karja. Harci bőröltözékében, széles, díszes csuklószorítójával inkább katonának, semmint varázslónak nézed. - Szemtelen paraszt! - kiált rád dörgő hangon. - Azt hiszed, hogy versenyre kelhetsz velem, Rettegett Balthusszal? - Miközben ezt mondja, csettint egyet az ujjával, és a hátad mögül morgást hallasz. Megfordulsz, és látod, hogy egy fura alakú teremtmény cammog feléd. Szőrös teste és négy karja van, s mindegyik kar veszedelmes kampós karomban végződik. Miközben feléd közeledik, hatalmasakat fújtat. - Fogadok, hogy a nyomába sem jöhetsz a Karomvadnak! - mondja nevetve Balthus. [alt]Mit teszel?[/alt][/p]
+    </text>
+    <next id="30" pos="1" singleChoiceText="Kardot rántasz, hogy megvédd magad.">Kardot rántasz, hogy megvédd magad?</next>
+    <itemCheck type="item" id="shielding">
+      <have>
+        <next id="109" pos="2">Védelem Varázslatot alkalmazol?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="weakness">
+      <have>
+        <next id="158" pos="3">Erőtlenség Varázslatot alkalmazol?</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="158">
+    <text>
+        [p]A vadállat nyöszörög, amikor megérinti a varázslat. Hatalmas súlya most valóban nagy teher a számára, mert nem rendelkezik megszokott erejével. Összecsuklik, s még arra sem képes, hogy a földről felemelkedjék. Odalépsz, és kardoddal átdöföd a mellét. A szerencsétlenül járt teremtmény holtan fekszik a lábaidnál.[/p]
+    </text>
+    <loseItem id="weakness" />
+    <next id="77"></next>
+  </p>
+  <p id="109">
+    <text>
+        [p]A teremtmény nekifeszül Védelem Varázslatod pajzsának. Riadtan látod, hogy olyan erős, hogy átszakítja! Máris rád veti magát, és most kardot kell rántanod![/p]
+    </text>
+    <loseItem id="shielding" />
+    <next id="30"></next>
+  </p>
+  <p id="30">
+    <text>
+        [p]A vadállat roppant erős. Kardot rántasz, és kezdetét veszi a harc.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="24" />
+      <winRound enemy="24" totalCount="4">
+        <interrupt />
+      </winRound>
+    </fight>
+    <next id="241"></next>
+  </p>
+  <p id="241">
+    <text>
+        [p]Hatalmas ütést mérsz a teremtményre, ám legnagyobb rémületedre a kard pengéje belegabalyodik a teremtmény hosszú hajába. Megpróbálod kihúzni, de rávág a kardodra, mely kirepül a kezedből, és a szoba túlsó végében ér földet. Védtelen vagy.[/p]
+    </text>
+    <hideItem id="1001" />
+    <hideItem id="1002" />
+    <itemCheck type="item" id="strength">
+      <have>
+        <next id="241a">Ha puszta kézzel harcolsz tovább</next>
+        <next id="241b">Ha Erő Varázslatot használnál a csata folytatásához</next>
+      </have>
+      <dontHave>
+        <fight type="single">
+          <enemy id="24" />
+          <win>
+            <text>
+                [p]Visszaszerzed a kardodat.[/p]
+            </text>
+            <unhideItem id="1001" />
+            <unhideItem id="1002" />
+          </win>
+        </fight>
+        <next id="77"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="241a" display="241">
+    <text>
+        [p]Hatalmas ütést mérsz a teremtményre, ám legnagyobb rémületedre a kard pengéje belegabalyodik a teremtmény hosszú hajába. Megpróbálod kihúzni, de rávág a kardodra, mely kirepül a kezedből, és a szoba túlsó végében ér földet. Védtelen vagy.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="24" />
+      <win>
+        <text>
+            [p]Visszaszerzed a kardodat.[/p]
+        </text>
+        <unhideItem id="1001" />
+        <unhideItem id="1002" />
+      </win>
+    </fight>
+    <next id="77"></next>
+  </p>
+  <p id="241b" display="241">
+    <text>
+        [p]Hatalmas ütést mérsz a teremtményre, ám legnagyobb rémületedre a kard pengéje belegabalyodik a teremtmény hosszú hajába. Megpróbálod kihúzni, de rávág a kardodra, mely kirepül a kezedből, és a szoba túlsó végében ér földet. Védtelen vagy.[/p]
+        [p]Elmondasz egy Erő Varázslatot, így levonás nélkül folytathatod a pusztakezes küzdelmet.[/p]
+    </text>
+    <loseItem id="strength" />
+    <changeItem attribute="skill" id="defWpn" set="0" />
+    <fight type="single">
+      <enemy id="24" />
+      <win>
+        <text>
+            [p]Visszaszerzed a kardodat.[/p]
+        </text>
+        <changeItem attribute="skill" id="defWpn" set="-3" />
+        <unhideItem id="1001" />
+        <unhideItem id="1002" />
+      </win>
+    </fight>
+    <next id="77"></next>
+  </p>
+  <p id="77">
+    <text>
+        [p]Rettegett Balthus meglepetten nézi győzelmedet. - Úgy! - kiált fel. - Azt hiszed, erősebb vagy, mint a többiek, mi? - Cselekedj gyorsan! [alt]Varázsolj ellene! Melyik varázslatot alkalmazod?[/alt][/p]
+    </text>
+    <itemCheck type="item" id="esp">
+      <have>
+        <next id="187" pos="1">A K.É.K. Varázslatot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="fire">
+      <have>
+        <next id="46" pos="2">A Tűzvarázslatot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="creatureCopy">
+      <have>
+        <next id="349" pos="3">A Teremtmény Hasonmás Varázslatot?</next>
+      </have>
+    </itemCheck>
+    <next id="351" pos="4" singleChoiceText="Mivel varázsolni nem tudsz, karddal kell megküzdened Rettegettel.">Egyiket sem, és inkább kardot rántasz?</next>
+  </p>
+  <p id="355">
+    <empty />
+  </p>
+  <p id="187">
+    <text>
+        [p]Erősen koncentrálsz a varázsló gondolataira. Képek és szavak villannak át az agyadon. Néhány másodperccel később már nincs semmi. Feltekintesz Rettegett Balthusra, aki így kiált rád: - Ne próbáld meg kifürkészni Rettegett Balthus gondolatait! - Újra erősen összpontosítasz, de eredménytelenül, mert Balthus ellenáll a Varázslatodnak. Egy másodpercig elgondolkozol a kapott képeken: egy táblázat a harci terepasztal alatt… egy hangos reccsenés keltette rémület… egy vakító fény… egy gyűrű Balthus ujján… egy borotvaéles kard… és te magad…[/p]
+        [p]Rettegett Balthus magában dünnyög, miközben a szeme sarkából téged figyel. Egyik karját felemeli és meredten nézi. Aztán rád néz. Karját előre-hátra, majd egyre gyorsabban jobbra-balra lendíti a levegőben. Aztán nagyot csap az asztalra. Te a földre zuhansz - nem a meglepetéstől, hanem azért, mert a föld vadul rengeni kezd alattad. Az egész szoba úgy inog, mintegy hajó a viharban. Habár Balthus szilárdan áll a lábán és lassan elindul feléd, te egyáltalán nem vagy képes lábra állni. [alt]Az egyetlen esélyed, hogy Varázsolj, ha egyáltalán maradt még Varázslatod. Melyik varázslatot választod?[/alt][/p]
+    </text>
+    <loseItem id="esp" />
+    <itemCheck type="items" id="levitation or illusion">
+      <have>
+        <itemCheck type="item" id="levitation">
+          <have>
+            <next id="279" singleChoiceText="Az egyetlen esélyed, hogy elmondd a Súlytalanság Varázslatot.">A Súlytalanság Varázslatot?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="illusion">
+          <have>
+            <next id="314" singleChoiceText="Az egyetlen esélyed, hogy elmondd az Illúzió Varázslatot.">Az Illúzió Varázslatot?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="115" singleChoiceText=" "></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="314">
+    <text>
+        [p]Erősen koncentrálsz, hogy azt a látszatot keltsd, mintha a varázsló mozgó szobában lenne. Illúzió Varázslatot alkalmazol, de semmi sem történik, nem tudsz kellő erővel koncentrálni. Rettegett Balthus már-már elér.[/p]
+    </text>
+    <loseItem id="illusion" />
+    <next id="373"></next>
+  </p>
+  <p id="115">
+    <text>
+        [p]Helyzeted nem jó. Rettegett Balthus egyre közelebb jön hozzád, és már-már elér.[/p]
+    </text>
+    <next id="373"></next>
+  </p>
+  <p id="279">
+    <text>
+        [p]Felrepülsz a levegőbe. Csak úgy remeg a szoba, de te könnyedén, szabadon repkedsz. Oda repülhetsz a szobában, ahová akarsz![/p]
+    </text>
+    <loseItem id="levitation" />
+    <next id="44">A fegyverszekrényhez repülsz?</next>
+    <next id="318">Gyorsan elrejtőzöl a varázsló mögött?</next>
+    <next id="78">Kirepülsz az ablakon?</next>
+    <next id="335">Az asztal alá repülsz?</next>
+  </p>
+  <p id="78">
+    <text>
+        [p]Szemével követ, amint az ablakhoz mész. Pupillái elfehérednek. Hátraveti a fejét, szemét egy pillanatra behunyja és felsóhajt. Fejét hirtelen előrehajtja, és csillogó ezüst színűvé változott szemével rád pillant! Hipnotizál a tekintetével, gyorsan kell cselekedned. Mit teszel?[/p]
+    </text>
+    <next id="324">Elbújsz az egyik függöny mögött?</next>
+    <next id="124">Lerántod az egyik függönyt, és ráborítod a fejére?</next>
+    <next id="277">Átkutatod a hátizsákodat, hogy megnézd, nincs-e benne valami használható?</next>
+  </p>
+  <p id="46">
+    <text>
+        [p]Előrelendíted a karodat, és a varázsló alatt tévő padlóra mutatsz. Füst és lángnyelvek csapnak föl a földről. Rettegett Balthus ijedten hátaugrik, és szemét lehunyja, úgy összpontosít. Amikor kinyitja, a tűz a pupillái között lobog, és Balthus elindul az általad életre keltett lángok felé. Feléd hajít egy marék lángoló földet.[/p]
+    </text>
+    <loseItem id="fire" />
+    <next id="195">Ha lehajolsz, hogy elkerüld</next>
+    <next id="74">Ha elugrasz az útból</next>
+  </p>
+  <p id="74">
+    <text>
+        [p]Amikor elugrasz, a varázsló tekintete követ - és a tűzgolyója is utánad repül! A melleden talál el, és ledönt a lábadról. Ez 4 ÉLETERŐ pontodba kerül. Ellentámadást indíthatsz: varázsolhatsz valami mást.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <next id="377"></next>
+  </p>
+  <p id="195">
+    <text>
+        [p]Balthus követ a tekintetével, amikor lehajolsz, de eltakar a terepasztal. Az apró tűzgolyó belehasít a levegőbe, de elzúg a fejed fölött. Gyorsan varázsolhatsz valami mást.[/p]
+    </text>
+    <next id="377"></next>
+  </p>
+  <p id="351">
+    <text>
+        [p]Amint kivont karddal közeledsz felé, a varázsló egy görbe handzsárt húz ki az öve mögül. - Helyes - mondja kárörvendően -‚ boldogan végzek veled fegyverrel! - E szavakat kimondva átugrik az asztalon, és feléd közelít. A harc élethalálharc lesz:[/p]
+    </text>
+    <fight type="single">
+      <enemy id="25" />
+    </fight>
+    <next id="400"></next>
+  </p>
+  <p id="400">
+    <text>
+        [p]Rettegett Balthus a lábaidnál hever - kilehelte a lelkét! Küldetésednek eleget tettél! Fűzfa Völgy megmenekült a támadásától. Gondoskodni akarsz róla, hogy terve végleg meghiúsuljon, ezért leszakítod a függönyöket, és lesöpröd velük az asztalt, ahol csatatervének makettje áll. Egy gyertya lángjával meggyújtod az egyik függöny szélét. Amikor a lángok elérik az asztalt, már a menekülésre gondolsz.
+    </text>
+    <itemCheck type="item" id="levitation">
+      <have>
+        <loseItem id="levitation" />
+        <text>
+            Alkalmazod a Súlytalanság Varázslatod és az ablakon kirepülve biztonságosan leszállsz a földre. Innentől kezdve ügyességedre és leleményességedre kell hagyatkoznod, hogy menekülés közben elkerüld a Fellegvár őreinek figyelmét és a többi veszélyt. De ez már egy másik történet…[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            Ügyességedre és leleményességedre kell hagyatkoznod, hogy menekülés közben elkerüld a Fellegvár őreinek figyelmét és a többi veszélyt. De ez már egy másik történet…[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <victory />
+  </p>
+  <p id="349">
+    <text>
+        [p]Rettegett Balthus hasonmása előtted áll. Az eredeti Balthus felvonja az egyik szemöldökét. - Támadj! - parancsolod a hasonmásnak, amely elindul a szoba közepe felé. A varázslótól körülbelül kétméternyire megáll, és arcát tenyerébe temeti, majd feltekint, megfordul, és elindul feléd! A varázsló felnevet. - Ketten is játszhatják ezt a játékot! - mondja Balthus. Erősen koncentrálsz, és akaratoddal visszakényszeríted a hasonmást a varázslóhoz. Az hirtelen megáll, és parancsodra visszafordul. Ez így megy néhány pillanatig, amikor rájössz, hogy mindketten irányítani tudjátok a teremtményt, de csak bizonyos határok között. Ide-oda jár köztetek, mígnem a Varázslat kezd elmúlni róla. Fokozatosan eltűnik a szemetek elől. Az erős koncentrálástól igencsak kimerültél. Látod, amint Rettegett Balthus felemeli mindkét karját, majd nagyot csap az asztalra. Vajon most mit varázsol?[/p]
+    </text>
+    <loseItem id="creatureCopy" />
+    <next id="157"></next>
+  </p>
+  <p id="157">
+    <text>
+        [p]A varázsló felordít fájdalmában, és a fejet fogva hátat fordít neked. Előrerohansz, és ekkor feléd fordul. Levegő után kapkodsz! Mar nem a varázslót latod, hanem egy ráncos bőrű, gonosz arcú boszorkányt, akivé átváltozott, s akinek a haja sziszegő kígyók tekergő sokasága.[/p]
+    </text>
+    <next id="199">Ha megtámadod</next>
+    <next id="232">Ha gyorsan hátrálsz</next>
+  </p>
+  <p id="199">
+    <text>
+        [p]A varázsló Gorgonná változott, egy különösen veszélyes teremtménnyé, aki képes kővé változtatni azt, akire ránéz. Amikor előredöfsz, mereven az arcába bámulsz. Ekkor Varázslata hatni kezd. Végtagjaid megmerevednek. A földre zuhansz. Lassan elveszted az eszméletedet, ahogy kővé válsz és halott szoborként heversz Rettegett Balthus lábai előtt… Küldetésed nem járt sikerrel; elbuktál.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="232">
+    <text>
+        [p]Rémülten hátrálsz az undorító teremtmény elől. Az elbeszélésekből, melyeket gyerekkorodban hallottál, tudod, hogy egy Gorgonnal állsz szemben! [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="111"></next>
+      </success>
+      <failure>
+        <next id="72"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="72">
+    <text>
+        [p]A szerencse nincs veled. Elég volt egyetlen pillantást vetned a kígyófejű teremtményre, hogy sorsod megpecsételődjék. Kínodban felordítasz, amikor érzed, hogy végtagjaid elnehezülnek és mozdulni is alig bírsz. Amikor a Gorgon rád veti merev tekintetét, elveszted az egyensúlyodat - és a földre zuhansz. Megkövült tested összetörik, és apró darabokban fekszik Rettegett Balthus lábai előtt. Küldetésed nem járt sikerrel.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="111">
+    <text>
+        [p]Sikerült elfordítanod a tekintetedet a teremtményről, és most visszamész a sarokba, ahol kezeddel eltakarod az arcodat. De vajon mit tehetsz?[/p]
+    </text>
+    <itemCheck type="item" id="3006">
+      <have>
+        <next id="347"></next>
+      </have>
+      <dontHave>
+        <next id="153"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="153">
+    <text>
+        [p]Tehetetlen vagy a Gorgonnal szemben. Leroskadsz a sarokba, míg a varázsló behívja az őröket, akik perceken belül megjelennek. Karon ragadnak, és kivezetnek a szobából. Vezérük utasításra vár. - Kivégezni a parasztot! - hangzik a válasz. Küldetésed nem járt sikerrel, elbuktál.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="347">
+    <text>
+        [p]A Gorgon felordít, amikor megpillantja a Tükröt. Megpróbálod tetőtől talpig szemügyre venni a teremtményt. A Gorgon azonban eltűnt, és helyette Ismét Rettegett Balthus áll előtted.[/p]
+    </text>
+    <next id="12"></next>
+  </p>
+  <p id="12">
+    <text>
+        [p]Előtted áll és nehezen kapkodja a levegőt. A Varázslat szemmel láthatóan kifárasztotta. Ezt a tényt felhasználhatod a következőkre:[/p]
+    </text>
+    <next id="274">Odaugrasz a fegyverszekrényhez</next>
+    <next id="335">Beugrasz az asztal alá</next>
+    <next id="78">Odarohansz az ablakhoz</next>
+  </p>
+  <p id="377">
+    <text>
+        [p]Összeszeded magad és koncentrálsz. [alt]Mi lesz a következő lépésed?[/alt][/p]
+    </text>
+    <itemCheck type="item" id="illusion">
+      <have>
+        <next id="332" pos="1">Illúzió Varázslat?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="weakness">
+      <have>
+        <next id="113" pos="2">Erőtlenség Varázslat?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="esp">
+      <have>
+        <next id="320" pos="3">K.É.K. Varázslat?</next>
+      </have>
+    </itemCheck>
+    <next id="355" pos="4" singleChoiceText="Előrántod a kardodat.">Előrántod a kardodat?</next>
+  </p>
+  <p id="332">
+    <text>
+        [p]Rettegett Balthusnak leesik az álla, amikor a szeme láttára átváltozol. Tested hatalmasra nő, erőd megsokszorozódik. Bőröd színe mélyvörössé válik, és homlokod feszes bőrét szarvak döfik át. Fogaid feketék, tűhegyesek, és villás nyelved fenyegetően sziszeg felé. Tűz Démon alakjában állsz előtte, és felkapod a földről a Szigonyt. A varázsló riadtan fordul el tőled.[/p]
+    </text>
+    <loseItem id="illusion" />
+    <next id="80">Ha ráugrasz az asztal fölött</next>
+    <next id="48">Ha felszólítod, hogy vonja vissza hódító terveit és adja meg magát</next>
+  </p>
+  <p id="80">
+    <text>
+        [p]Amikor átugrod az asztalt, a varázsló megpördül a saját tengelye körül. Megbotlasz, és elvágódsz a földön, amikor látod, hogy nálad sokkal veszedelmesebb teremtménnyé változott. Arca - gonosz boszorkányé, haja kígyók tömege, melyek tekeredve sziszegnek feléd.[/p]
+    </text>
+    <next id="199">Ha folytatod ellene a küzdelmet</next>
+    <next id="232">Ha meghátrálsz</next>
+  </p>
+  <p id="48">
+    <text>
+        [p]- Soha - ordítja a varázsló, miközben előpördül a félhomályból, hogy szembeszálljon veled. Most te reszketsz a félelemtől, mert látod, hogy ő is alakot változtatott - olyan teremtménnyé változott, amely megállíthatja még a Tűz Démonát is. Rettegett Balthus ronda boszorkányarcot öltött, haja nyüzsgő, izgő-mozgó, sziszegő kígyók tömege.[/p]
+    </text>
+    <next id="232">Ha meghátrálsz e teremtmény elől</next>
+    <next id="199">Ha szigonyoddal ráveted magad</next>
+  </p>
+  <p id="113">
+    <text>
+        [p]Erőtlenség Varázslatot alkalmazol a varázslóval szemben. Megáll és rád néz. Arckifejezése fájdalmassá válik, és remegni kezd a válla. Valami szörnyű belső nyugtalanság lesz úrrá rajta.[/p]
+    </text>
+    <loseItem id="weakness" />
+    <next id="388">Ha megvárod, mi történik</next>
+    <next id="145">Ha kardot rántasz és rátámadsz</next>
+  </p>
+  <p id="388">
+    <text>
+        [p]Teste megfeszül az erőlködéstől. Néhány pillanat alatt visszanyeri a nyugalmát, és ismét rád néz. - Erőtlenség! - mondja gúnyolódva. - Csak nem gondolod, hogy Erőtlenség Varázslattal legyőzhetsz engem? - S valóban visszaveri a Varázslatot, és ellentámadásra készül.[/p]
+    </text>
+    <next id="157"></next>
+  </p>
+  <p id="145">
+    <text>
+        [p]Kardot rántasz, és az asztalt átugorva odapattansz hozzá. Ő ezalatt szemmel láthatóan azon igyekszik, hogy legyőzze Erőtlenség Varázslatodat… vagy mégsem? Arcát tenyerébe temetve elfordul tőled.[/p]
+    </text>
+    <next id="80"></next>
+  </p>
+  <p id="320">
+    <text>
+        [p]Erősen összpontosítasz, de bárhogy is akarod, egyetlen gondolatát sem tudod ellesni - ellenáll a Varázslatodnak! [alt][/alt][/p]
+    </text>
+    <itemCheck type="item" id="illusion">
+      <have>
+        <next id="332" pos="1">Megpróbálkozhatsz az Illúzió Varázslattal</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="weakness">
+      <have>
+        <next id="113" pos="2">Erőtlenség Varázslatot használhatsz</next>
+      </have>
+    </itemCheck>
+    <next id="351" pos="3" singleChoiceText="Kardot rántasz, hogy megtámadd.">Vagy kardot ránthatsz, hogy megtámadd</next>
+  </p>
+  <p id="274">
+    <text>
+        [p]A fegyverszekrény zárva van, de könnyűszerrel be lehet törni. A szekrényben különböző kardok, dárdák sorakoznak.[/p]
+    </text>
+    <next id="353">Ha letöröd a lakatot és választasz egy fegyvert</next>
+    <next id="277">Ha a hátizsákodban keresel egy megfelelő tárgyat</next>
+  </p>
+  <p id="353">
+    <text>
+        [p]Sok szörnyű fegyver van a szekrényben, de neked leginkább egy kék pengéjű kard szúr szemet. Amint Rettegett Balthus meglátja, hogy ezt a fegyvert veszed el, dühödten tör ki: - Ne nyúlj ahhoz a fegyverhez! - ordítja. De későn szól, a kard már a kezedben van. - Nos, legyen - mondja, majd övéből egy handzsárt húz elő, és elindul feléd. A harc, már tudod, élethalálharc lesz.[/p]
+        [p]Új fegyvered egy varázskard, mely két ponttal növeli TÁMADÓERŐD kockadobással megállapított számát.[/p]
+    </text>
+    <gatherItem id="1003" />
+    <fight type="single">
+      <enemy id="25" />
+    </fight>
+    <next id="400"></next>
+  </p>
+  <p id="277">
+    <itemCheck type="items" id="3013 or 3014 or 3002">
+      <have>
+        <text>
+            [p]A Fellegvárba vezető utad során számos tárgyra tettél szert. [alt]Melyikkel rendelkezel az alább felsoroltak közül? Melyiket fogod használni?[/alt][/p]
+        </text>
+        <itemCheck type="item" id="3013">
+          <have>
+            <next id="330" pos="1" singleChoiceText="Ebben a helyzetben azonban csak az Üvegbe zárt Pók tűnik bíztatónak.">Az Üvegbe zárt Pókot?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3014">
+          <have>
+            <next id="315" pos="2" singleChoiceText="Ebben a helyzetben azonban csak a Zsebszerkentyű tűnik bíztatónak.">A Zsebszerkentyűt?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3002">
+          <have>
+            <next id="76" pos="3" singleChoiceText="Ebben a helyzetben azonban csak a kis bogyók tűnnek bíztatónak.">A Kis Bogyókat?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            [p]A Fellegvárba vezető utad során egyetlen itt használható tárgyra sem tettél szert. Valami mást kell kitalálnod.[/p]
+        </text>
+        <next id="119" pos="4"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="119">
+    <text>
+        [p]Szembefordulsz a hatalmas varázslóval, de nyoma vész! Hátranézel, és látod, hogy támadásra készen áll mögötted, éles tőrrel a kezében. Megpróbálsz elugrani, de már késő… A tőr markolatig mélyed a hátadba… Küldetésed nem járt sikerrel, elbuktál.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="315">
+    <text>
+        [p]Rettegett Balthus mélyen elgondolkodik, míg te a Zsebszerkentyűvel játszadozol. Megnyomsz rajta egy gombot, erre csillogó fény jelenik meg, és akkorára nyúlik meg, mintegy kard éle. Ez a Nap-Kard, mely 4 ponttal növeli ÜGYESSÉG pontjaid számát, amikor ezzel a karddal harcolsz. Szembefordulsz a varázslóval, aki most egy Varázslatra koncentrál.[/p]
+    </text>
+    <gatherItem id="1004" />
+    <next id="191"></next>
+  </p>
+  <p id="76">
+    <text>
+        [p]Miközben előveszed a Bogyókat a hátizsákodból, Rettegett Balthus varázslással van elfoglalva. Felnéz, és kitör belőle a nevetés. - Álombogyók! - kiáltja. - Mire vársz, mit tegyek? Dugjam őket a számba? - Csettint egyet az ujjával, és a varázslata megelevenedik.[/p]
+    </text>
+    <next id="191"></next>
+  </p>
+  <p id="191">
+    <text>
+        [p]Levegő után kapkodsz, amikor a Varázslat testet ölt előtted. Tökéletes hasonmásod áll előtted éppúgy felfegyverezve, mint te. A varázsló parancsára hasonmásod rád támad, és meg kell küzdened vele. ÜGYESSÉG és ÉLETERŐ pontjai a te hasonló pontjaiddal egyeznek meg. Egyetlen előnyöd lehet vele szemben: felhasználhatod a SZERENCSÉDET arra, hogy nagyobb kárt tegyél benne, vagy hogy minimális sebet kapj - hasonmásod itt nem alkalmazhatja a SZERENCSÉT.[/p]
+    </text>
+    <itemCheck type="stamina" id="1">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="1" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="2">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="2" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="3">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="3" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="4">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="4" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="5">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="5" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="6">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="6" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="7">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="7" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="8">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="8" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="9">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="9" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="10">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="10" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="11">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="11" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="12">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="12" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="13">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="13" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="14">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="14" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="15">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="15" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="16">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="16" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="17">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="17" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="18">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="18" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="19">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="19" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="20">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="20" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="21">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="21" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="22">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="22" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="23">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="23" />
+      </have>
+    </itemCheck>
+    <itemCheck type="stamina" id="24">
+      <have>
+        <changeEnemy attribute="stamina" id="25" set="24" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="1">
+      <have>
+        <changeEnemy attribute="skill" id="25" set="1" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="2">
+      <have>
+        <changeEnemy attribute="skill" id="25" set="2" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="3">
+      <have>
+        <changeEnemy attribute="skill" id="25" set="3" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="4">
+      <have>
+        <changeEnemy attribute="skill" id="25" set="4" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="5">
+      <have>
+        <changeEnemy attribute="skill" id="25" set="5" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="6">
+      <have>
+        <changeEnemy attribute="skill" id="25" set="6" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="7">
+      <have>
+        <changeEnemy attribute="skill" id="25" set="7" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="8">
+      <have>
+        <changeEnemy attribute="skill" id="25" set="8" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="9">
+      <have>
+        <changeEnemy attribute="skill" id="25" set="9" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="10">
+      <have>
+        <changeEnemy attribute="skill" id="25" set="10" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="11">
+      <have>
+        <changeEnemy attribute="skill" id="25" set="11" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="12">
+      <have>
+        <changeEnemy attribute="skill" id="25" set="12" />
+      </have>
+    </itemCheck>
+    <fight type="single">
+      <enemy id="26" />
+    </fight>
+    <next id="119"></next>
+  </p>
+  <p id="330">
+    <text>
+        [p]A varázsló rémülten ordít fel, amikor előveszed az Üveget. Ekkor arra gondolsz, hogy ez a piciny teremtmény hasznos segítőtársad lehet, ezért kinyitod az üveg száját, és kiengeded. A varázsló arckifejezése azonban megváltozik, ravaszul elmosolyodik, és látod, hogy a kis Pók-ember nem Balthus felé megy, hanem feléd! Meg kell küzdened vele![/p]
+    </text>
+    <fight type="single">
+      <enemy id="22" />
+      <loseRound enemy="22" totalCount="1">
+        <interrupt />
+        <next id="208b"></next>
+      </loseRound>
+      <win>
+        <next id="119"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="208b" display="208">
+    <text>
+        [p]A Pók-Ember fegyvere a harapása, mely igen mérgező. Amikor megharap, testedet átjárja a méreg, és megbénítja idegrendszeredet. Amikor felbuksz és elterülsz a földön, újra és újra támad. Az utolsó emlékképed a ronda kis arca, s szája, amellyel beléd harap. Küldetésed nem járt sikerrel; elbuktál.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="373">
+    <text>
+        [p]Rettegett Balthus letérdel mögéd. Kezével megragadja az egyik csuklódat, és érzed hatalmas testi erejét, amely valószínűleg ugyanolyan nagy, mint varázsereje. - Paraszt - mondja -, valóban méltó ellenfél vagy. Erőd túltesz számos varázsló erején. Szégyen ilyen tehetséget veszni hagyni. Megölhetnélek, ha akarnálak, de ajánlhatok neked helyette mást. Csatlakozz hozzám, hogy együtt igázzuk le Fűzfa Völgyet. Ha legyőzzük őket, te lehetsz a helytartójuk. Mi a válaszod?[/p]
+    </text>
+    <next id="148">Soha! Nem fordulok a saját népem ellen!</next>
+    <next id="256">Elfogadom az ajánlatodat. (Be akarod csapni, ha szabadon enged.)</next>
+    <next id="358">Rettegett Balthus, te gonosz féreg! Még nem győztél le! (Újabb Varázslatot akarsz ellene alkalmazni.)</next>
+  </p>
+  <p id="148">
+    <text>
+        [p]A Varázsló megvetően így szól: - Azokat okold a halálodért, akik erre az útra küldtek! - E szavak kíséretében előhúzza tőrét az övéből, és melledbe döfi. Küldetésed nem járt sikerrel, elbuktál.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="256">
+    <text>
+        [p]A varázsló elmosolyodik. - Velem tarthatsz - mondja nevetve. - Előbb azonban meg kell bizonyosodnom őszinte hűségedről! - A homlokodra teszi a kezét. Lehunyt szemmel koncentrál. Érzed, hogy akaratod elhagy. Harcos kedved elszáll. Néhány pillanat múlva leveszi rólad a kezét, szabadon állsz előtte.[/p]
+    </text>
+    <next id="65">Ha leborulsz előtte, mint mestered előtt</next>
+    <next id="155">Ha kardot rántasz és keresztüldöföd</next>
+  </p>
+  <p id="65">
+    <text>
+        [p]Térdre rogysz előtte, és meghajolsz. Most már valóban ő a te urad. Küldetésed itt véget ér, megbuktál![/p]
+    </text>
+    <death />
+  </p>
+  <p id="155">
+    <text>
+        [p]Megragadod a markolatot és kirántod a kardodat. De nem támadsz rá a varázslóra. Akaratod arra kényszerít, hogy felajánld neki fegyveredet, s ezt meg is teszed.[/p]
+    </text>
+    <next id="65"></next>
+  </p>
+  <p id="358">
+    <text>
+        [p]Sajnos nem vagy abban a helyzetben, hogy üres fenyegetőzésekbe bocsátkozz. A varázsló csak hangosan nevet, és még erősebben szorít. Azt javasolja, hogy gondold meg a dolgot, vagy a biztos halál vár rád.[/p]
+    </text>
+    <next id="148">Ha továbbra is semmibe veszed az ajánlatát, mert nem akarod elárulni honfitársaidat</next>
+    <next id="256">Ha beleegyezel, hogy ő uralkodjon fölötted</next>
+  </p>
+  <p id="44">
+    <text>
+        [p]A szoba már nem mozog, és a földre veted magad. A fegyverszekrény zárva van, de te letörheted a lakatot, vagy előveheted a hátizsákodat, és kereshetsz benne olyan fegyvert, amit használhatsz. Mit teszel?[/p]
+    </text>
+    <next id="353">Választasz a szekrényből egy fegyvert?</next>
+    <next id="277">Előveszel a hátizsákodból egy tárgyat?</next>
+  </p>
+  <p id="318">
+    <text>
+        [p]A varázslón a szellemi kimerültség jeleit veszed észre, és nem mozdul elég gyorsan, amikor a háta mögé kerülsz. Észreveszed, hogy nagy rubinköves aranygyűrűt visel jobb keze mutatóujján.[/p]
+    </text>
+    <next id="381">Ha megpróbálod lehúzni a gyűrűt az ujjáról</next>
+    <next id="117">Ha fürgén kardot rántasz</next>
+    <next id="277">Ha átkutatod a hátizsákodat, hogy valami használható tárgyat keress benne</next>
+  </p>
+  <p id="381">
+    <test against="luck">
+      <success>
+        <text>
+            [p]Lehúzod a gyűrűjét és a kezedben tartod. Lépéseddel ellentámadásra készteted Rettegett Balthust, aki kardot ránt és rád támad.[/p]
+        </text>
+        <next id="337a"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A gyűrű odaragad a kezéhez, és nem jön le. Lépéseddel ellentámadásra készteted Rettegett Balthust, aki kardot ránt és rád támad.[/p]
+        </text>
+        <next id="337b"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="337a" display="337">
+    <text>
+        [p]A varázsló legalább olyan kardforgató, mint amilyen nagy mágus. Küzdj meg vele.[/p]
+        [p]Rettegett a Kardforgatás Gyűrűjét viselte, így most valamivel könnyebb dolgod lesz vele.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="25a" />
+    </fight>
+    <next id="400"></next>
+  </p>
+  <p id="337b" display="337">
+    <text>
+        [p]A varázsló legalább olyan kardforgató, mint amilyen nagy mágus. Küzdj meg vele.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="25" />
+    </fight>
+    <next id="400"></next>
+  </p>
+  <p id="117">
+    <text>
+        [p]Amikor előrántod a fegyveredet, a varázsló is ezt teszi. Túl közel vagytok egymáshoz ahhoz, hogy bármelyikőtök is varázsolni tudjon, így aztán kénytelen vagy megvívni vele életed legnehezebb csatáját.[/p]
+    </text>
+    <next id="337"></next>
+  </p>
+  <p id="335">
+    <text>
+        [p]Az asztal alatt lévő titkos fiók kissé nyitva van, és egy [span class="takeItem" data-id="3017" data-amount="1"]pergamen kézirattekercs[/span] lóg ki belőle. Kihúzod a tekercset a fiókból, és ruhád redőibe rejted. De hallod, hogy Balthus mormol valamit az orra alatt. Varázsigét! De vajon melyiket? És mit tudsz ellene tenni? Hirtelen körberohan az asztal körül, és futás közben megérinti annak minden oldalát. Amikor hozzáér az asztalhoz, az reccsenő hanggal válaszol.[/p]
+    </text>
+    <next id="342"></next>
+  </p>
+  <p id="342">
+    <text>
+        [p]A Varázsló hátralép az asztaltól, és nevetve így szól: - No, most megvagy, paraszt! - Óvatosan előmászol az asztal alól. Azaz csak előmásznál, mert akárhogy is próbálkozol, az asztal szélénél nem jutsz kijjebb. A varázsló láthatatlan falakat varázsolt az asztal köré, melyek fogva tartanak! Mindent megpróbálsz, de a falakat képtelen vagy áttörni! Mostantól fogva a foglya vagy. Küldetésed nem járt sikerrel; elbuktál…[/p]
+    </text>
+    <death />
+  </p>
+  <p id="324">
+    <text>
+        [p]- Nem rejtőzhetsz el előlem! - ordítja. Ez valóban igaz, és rájössz, hogy veszélybe kerülhetsz, amíg nem láthatod.[/p]
+    </text>
+    <next id="369"></next>
+  </p>
+  <p id="369">
+    <text>
+        [p]Meg kell nézned, hogy mit csinál. Amikor megpróbálsz belesni a függöny mögé, az, mintha csak a szél fújná, köréd tekeredik - pedig nem is fúj a szél. A függöny szorosan körülfog. Hiába harcolsz ellene, teljesen beborít, nyakad, fejed köré tekeredik, és már-már alig kapsz levegőt. Még mindig hadakozol ellene, de mindhiába. Egyre gyengülsz, és tudod, ha elveszted az eszméletedet, ő nyeri meg a csatát. De nem tehetsz semmit. Véged van… Küldetésed nem járt sikerrel, elbuktál.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="124">
+    <text>
+        [p]Amint lehullik a függöny, nappali fény árasztja el a szobát. Rájössz, hogy teljesen elvesztetted az időérzékedet, mióta beléptél a Fellegvárba. A napsütés nagy megkönnyebbülés számodra a sötétség birodalmában eltöltött sok-sok óra után. Egy tompa puffanás hangjára ellenfeled felé fordulsz. A földön fekszik elterülve. Amikor odalépsz hozzá, velőtrázó ordítást hallat! - A függöny!… Te őrült!… - zihálja elfúló, haldokló hangon. A nappali fény, amit beengedtél a szobába, szemmel láthatóan rohamosan csökkenti az erejét, és elkeseredetten próbál a félhomályba kúszni. De túl gyenge ahhoz, hogy messzire jusson - s arccal a földre bukik.[/p]
+    </text>
+    <next id="400"></next>
+  </p>
+  <p id="258">
+    <empty />
   </p>
 </content>
