@@ -18,7 +18,7 @@ public class Mapper {
 
     public static void main(final String[] args) throws IOException {
         final String root = "d:\\System\\eclipsegit\\books";
-        final String[] series = new String[]{"cyoa", "cyoar", "ff", "solo", "tm", "sc", "cyoawd", "wm", "agirl"};
+        final String[] series = new String[]{"cyoa", "ff", "solo", "tm", "sc", "wm"};
         final String content = "src\\main\\resources";
 
         final GregorianCalendar calendar = new GregorianCalendar();
@@ -27,14 +27,18 @@ public class Mapper {
 
         for (final String serie : series) {
             final File serieDir = new File(root, serie);
-            for (final File bookDir : serieDir.listFiles()) {
-                if (bookDir.isDirectory()) {
-                    for (final File instDir : bookDir.listFiles()) {
-                        if (!instDir.getName().endsWith("med")) {
-                            final File xmlDir = new File(instDir, content);
-                            for (final File contentFile : xmlDir.listFiles()) {
-                                if (contentFile.getName().endsWith("content.xml") && contentFile.lastModified() > lastWeek) {
-                                    createMap(contentFile);
+            if (serieDir.isDirectory()) {
+                for (final File bookDir : serieDir.listFiles()) {
+                    if (bookDir.isDirectory()) {
+                        for (final File instDir : bookDir.listFiles()) {
+                            if (!instDir.getName().endsWith("med")) {
+                                final File xmlDir = new File(instDir, content);
+                                if (xmlDir.isDirectory()) {
+                                    for (final File contentFile : xmlDir.listFiles()) {
+                                        if (contentFile.getName().endsWith("content.xml") && contentFile.lastModified() > lastWeek) {
+                                            createMap(contentFile);
+                                        }
+                                    }
                                 }
                             }
                         }
