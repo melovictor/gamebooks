@@ -7,8 +7,10 @@ import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
@@ -72,6 +74,11 @@ public class DefaultBookParagraphTransformerTest extends AbstractTransformerTest
         Whitebox.setInternalState(underTest, "irrelevantNodeNames", irrelevantNodeNames);
         Whitebox.setInternalState(underTest, "logger", logger);
         underTest.setParagraphDataTransformer(paragraphDataTransformer);
+        final Set<String> validTags = new HashSet<String>();
+        validTags.add("p");
+        validTags.add("s");
+        validTags.add("section");
+        underTest.setValidSectionTags(validTags);
 
         mockControl.reset();
     }

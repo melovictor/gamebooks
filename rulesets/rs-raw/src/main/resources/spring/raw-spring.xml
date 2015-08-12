@@ -21,7 +21,14 @@
   <util:constant id="egylanyTitle" static-field="hu.zagor.gamebooks.support.bookids.hungarian.EgyLany.TITLE" />
   <util:constant id="agirlTitle" static-field="hu.zagor.gamebooks.support.bookids.english.AGirl.TITLE" />
 
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.DefaultBookParagraphTransformer" id="rawRuleBookParagraphTransformer" p:paragraphDataTransformer-ref="rawRuleBookParagraphDataTransformer" />
+  <util:set value-type="java.lang.String" id="validSectionTagNames">
+    <value>p</value>
+    <value>s</value>
+    <value>section</value>
+  </util:set>
+
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.DefaultBookParagraphTransformer" id="rawRuleBookParagraphTransformer" p:paragraphDataTransformer-ref="rawRuleBookParagraphDataTransformer"
+    p:validSectionTags-ref="validSectionTagNames" />
   <bean class="hu.zagor.gamebooks.raw.section.RawRuleBookParagraphDataTransformer" id="rawRuleBookParagraphDataTransformer" parent="abstractBookParagraphDataTransformer" />
   <bean class="hu.zagor.gamebooks.raw.item.RawRuleBookItemTransformer" id="rawRuleBookItemTransformer" />
 

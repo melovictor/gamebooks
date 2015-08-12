@@ -108,7 +108,8 @@
 
 
 
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.DefaultBookParagraphTransformer" id="ffRuleBookParagraphTransformer" p:paragraphDataTransformer-ref="ffRuleBookParagraphDataTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.DefaultBookParagraphTransformer" id="ffRuleBookParagraphTransformer" p:paragraphDataTransformer-ref="ffRuleBookParagraphDataTransformer"
+    p:validSectionTags-ref="validSectionTagNames" />
   <bean class="hu.zagor.gamebooks.ff.section.FfRuleBookParagraphDataTransformer" id="ffRuleBookParagraphDataTransformer" parent="abstractBookParagraphDataTransformer"
     p:stubTransformers-ref="ffStubTransformers" />
   <bean class="hu.zagor.gamebooks.ff.item.FfRuleBookItemTransformer" id="ffRuleBookItemTransformer" />
