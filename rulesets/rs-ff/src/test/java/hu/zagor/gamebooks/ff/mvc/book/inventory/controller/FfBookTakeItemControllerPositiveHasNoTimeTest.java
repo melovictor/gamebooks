@@ -14,7 +14,6 @@ import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.service.FfMarketHandler;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
-import hu.zagor.gamebooks.support.writer.Converter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -50,7 +49,6 @@ public class FfBookTakeItemControllerPositiveHasNoTimeTest {
     private Paragraph paragraph;
     private FfParagraphData data;
     private FfMarketHandler marketHandler;
-    private Converter converter;
     private FfItem item;
     private ItemInteractionRecorder itemInteractionRecorder;
 
@@ -73,13 +71,11 @@ public class FfBookTakeItemControllerPositiveHasNoTimeTest {
         commandView = mockControl.createMock(CommandView.class);
         marketHandler = mockControl.createMock(FfMarketHandler.class);
         item = mockControl.createMock(FfItem.class);
-        converter = mockControl.createMock(Converter.class);
         itemInteractionRecorder = mockControl.createMock(ItemInteractionRecorder.class);
         info = new FfBookInformations(9L);
         info.setCharacterHandler(characterHandler);
         Whitebox.setInternalState(underTest, "info", info);
         Whitebox.setInternalState(underTest, "marketHandler", marketHandler);
-        Whitebox.setInternalState(underTest, "converter", converter);
         Whitebox.setInternalState(underTest, "itemInteractionRecorder", itemInteractionRecorder);
         underTest.setBeanFactory(beanFactory);
     }

@@ -12,16 +12,12 @@ import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
 import hu.zagor.gamebooks.raw.mvc.book.newgame.controller.RawBookNewGameController;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -59,14 +55,11 @@ public class FfBookNewGameController extends RawBookNewGameController {
     /**
      * Handles the generation of the new character.
      * @param request the {@link HttpServletRequest} object
-     * @param response the {@link HttpServletResponse} stream
-     * @throws IOException when an error occurs during the writing into the output stream
+     * @return the compiled object
      */
-    @RequestMapping(value = PageAddresses.BOOK_NEW + "/" + PageAddresses.BOOK_GENERATE_CHARACTER, produces = "application/json; charset=utf-8")
+    @RequestMapping(value = PageAddresses.BOOK_NEW + "/" + PageAddresses.BOOK_GENERATE_CHARACTER, produces = "application/json")
     @ResponseBody
-    public void generateCharacter(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
-        response.setContentType("application/json; charset=utf-8");
-
+    public Map<String, Object> generateCharacter(final HttpServletRequest request) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
         final CharacterGenerator characterGenerator = getInfo().getCharacterHandler().getCharacterGenerator();
@@ -74,10 +67,7 @@ public class FfBookNewGameController extends RawBookNewGameController {
 
         initializeItems(request.getParameterMap(), character);
 
-        final PrintWriter writer = response.getWriter();
-        final String jsonString = JSONObject.toJSONString(result);
-        writer.write(jsonString);
-        writer.close();
+        return result;
     }
 
     /**

@@ -14,21 +14,18 @@ import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.service.FfMarketHandler;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
-import hu.zagor.gamebooks.support.writer.Converter;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -55,12 +52,8 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
     private FfAttributeHandler attributeHandler;
     private Paragraph paragraph;
     private FfParagraphData data;
-    private HttpServletResponse response;
     private FfMarketHandler marketHandler;
     private Map<String, Object> resultMap;
-    private PrintWriter writer;
-    private String jsonResponse;
-    private Converter converter;
     private FfItem item;
     private ItemInteractionRecorder itemInteractionRecorder;
 
@@ -69,7 +62,6 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         mockControl = EasyMock.createStrictControl();
         underTest = new FfBookTakeItemController();
         request = mockControl.createMock(HttpServletRequest.class);
-        response = mockControl.createMock(HttpServletResponse.class);
         session = mockControl.createMock(HttpSession.class);
         beanFactory = mockControl.createMock(BeanFactory.class);
         wrapper = mockControl.createMock(HttpSessionWrapper.class);
@@ -83,17 +75,13 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         data = mockControl.createMock(FfParagraphData.class);
         commandView = mockControl.createMock(CommandView.class);
         marketHandler = mockControl.createMock(FfMarketHandler.class);
-        writer = mockControl.createMock(PrintWriter.class);
         itemInteractionRecorder = mockControl.createMock(ItemInteractionRecorder.class);
-        jsonResponse = "jsonified hashmap";
         item = mockControl.createMock(FfItem.class);
         resultMap = new HashMap<>();
-        converter = mockControl.createMock(Converter.class);
         info = new FfBookInformations(9L);
         info.setCharacterHandler(characterHandler);
         Whitebox.setInternalState(underTest, "info", info);
         Whitebox.setInternalState(underTest, "marketHandler", marketHandler);
-        Whitebox.setInternalState(underTest, "converter", converter);
         Whitebox.setInternalState(underTest, "itemInteractionRecorder", itemInteractionRecorder);
         underTest.setBeanFactory(beanFactory);
     }
@@ -249,7 +237,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         // THEN
     }
 
-    public void testHandleMarketBuyWhenInputDataIsCorrectShouldCallMarketHandler() throws IOException {
+    public void testHandleMarketBuyWhenInputDataIsCorrectShouldCallMarketHandler() {
         // GIVEN
         expect(request.getSession()).andReturn(session);
         expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
@@ -259,18 +247,14 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         expect(paragraph.getData()).andReturn(data);
         expect(marketHandler.handleMarketPurchase("3001", character, data, itemHandler)).andReturn(resultMap);
         itemInteractionRecorder.recordItemMarketMovement(wrapper, "Sale", "3001");
-        response.setContentType("application/json; charset=utf-8");
-        expect(response.getWriter()).andReturn(writer);
-        expect(converter.toJsonString(resultMap)).andReturn(jsonResponse);
-        writer.write(jsonResponse);
-        writer.close();
         mockControl.replay();
         // WHEN
-        underTest.handleMarketBuy(request, response, "3001");
+        final Map<String, Object> response = underTest.handleMarketBuy(request, "3001");
         // THEN
+        Assert.assertSame(response, resultMap);
     }
 
-    public void testHandleMarketSellWhenInputDataIsCorrectShouldCallMarketHandler() throws IOException {
+    public void testHandleMarketSellWhenInputDataIsCorrectShouldCallMarketHandler() {
         // GIVEN
         expect(request.getSession()).andReturn(session);
         expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
@@ -280,15 +264,11 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         expect(paragraph.getData()).andReturn(data);
         expect(marketHandler.handleMarketSell("3001", character, data, itemHandler)).andReturn(resultMap);
         itemInteractionRecorder.recordItemMarketMovement(wrapper, "Purchase", "3001");
-        response.setContentType("application/json; charset=utf-8");
-        expect(response.getWriter()).andReturn(writer);
-        expect(converter.toJsonString(resultMap)).andReturn(jsonResponse);
-        writer.write(jsonResponse);
-        writer.close();
         mockControl.replay();
         // WHEN
-        underTest.handleMarketSell(request, response, "3001");
+        final Map<String, Object> returned = underTest.handleMarketSell(request, "3001");
         // THEN
+        Assert.assertSame(returned, resultMap);
     }
 
     @AfterMethod

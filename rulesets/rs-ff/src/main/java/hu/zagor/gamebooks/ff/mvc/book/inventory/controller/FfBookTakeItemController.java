@@ -14,14 +14,10 @@ import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.mvc.book.inventory.controller.GenericBookTakeItemController;
 import hu.zagor.gamebooks.mvc.book.inventory.service.MarketHandler;
-import hu.zagor.gamebooks.support.writer.Converter;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
@@ -37,8 +33,6 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
 
     @Autowired
     private MarketHandler marketHandler;
-    @Autowired
-    private Converter converter;
 
     @Override
     protected int doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
@@ -148,13 +142,12 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
     /**
      * Method for buying an item in the market.
      * @param request the {@link HttpServletRequest}
-     * @param response the {@link HttpServletResponse}
      * @param itemId the id of the item to buy
-     * @throws IOException when a problem occurs while writing the output
+     * @return the response for taking the item
      */
     @RequestMapping(value = PageAddresses.BOOK_MARKET_BUY + "/{id}")
     @ResponseBody
-    public void handleMarketBuy(final HttpServletRequest request, final HttpServletResponse response, @PathVariable("id") final String itemId) throws IOException {
+    public Map<String, Object> handleMarketBuy(final HttpServletRequest request, @PathVariable("id") final String itemId) {
         Assert.notNull(itemId, "The parameter 'itemId' cannot be null!");
         Assert.isTrue(itemId.length() > 0, "The parameter 'itemId' cannot be empty!");
 
@@ -169,23 +162,18 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
         final Map<String, Object> result = marketHandler.handleMarketPurchase(itemId, character, data, itemHandler);
         getItemInteractionRecorder().recordItemMarketMovement(wrapper, "Sale", itemId);
 
-        response.setContentType("application/json; charset=utf-8");
-        final PrintWriter writer = response.getWriter();
-        final String jsonString = converter.toJsonString(result);
-        writer.write(jsonString);
-        writer.close();
+        return result;
     }
 
     /**
      * Method for selling an item in the market.
      * @param request the {@link HttpServletRequest}
-     * @param response the {@link HttpServletResponse}
      * @param itemId the id of the item to buy
-     * @throws IOException when a problem occurs while writing the output
+     * @return the data about the sale
      */
     @RequestMapping(value = PageAddresses.BOOK_MARKET_SELL + "/{id}")
     @ResponseBody
-    public void handleMarketSell(final HttpServletRequest request, final HttpServletResponse response, @PathVariable("id") final String itemId) throws IOException {
+    public Map<String, Object> handleMarketSell(final HttpServletRequest request, @PathVariable("id") final String itemId) {
         Assert.notNull(itemId, "The parameter 'itemId' cannot be null!");
         Assert.isTrue(itemId.length() > 0, "The parameter 'itemId' cannot be empty!");
 
@@ -200,11 +188,7 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
         final Map<String, Object> result = marketHandler.handleMarketSell(itemId, character, data, itemHandler);
         getItemInteractionRecorder().recordItemMarketMovement(wrapper, "Purchase", itemId);
 
-        response.setContentType("application/json; charset=utf-8");
-        final PrintWriter writer = response.getWriter();
-        final String jsonString = converter.toJsonString(result);
-        writer.write(jsonString);
-        writer.close();
+        return result;
     }
 
     @Override

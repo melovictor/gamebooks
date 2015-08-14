@@ -1,9 +1,6 @@
 package hu.zagor.gamebooks.ff.mvc.book.inventory.controller;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
@@ -22,14 +19,12 @@ public class FfBookTakeItemControllerNegativeTest {
     private FfBookTakeItemController underTest;
     private IMocksControl mockControl;
     private HttpServletRequest request;
-    private HttpServletResponse response;
 
     @BeforeClass
     public void setUpClass() {
         mockControl = EasyMock.createStrictControl();
         underTest = new FfBookTakeItemController();
         request = mockControl.createMock(HttpServletRequest.class);
-        response = mockControl.createMock(HttpServletResponse.class);
     }
 
     @BeforeMethod
@@ -74,38 +69,38 @@ public class FfBookTakeItemControllerNegativeTest {
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void testHandleMarketBuyWhenItemIdIsNullShouldThrowException() throws IOException {
+    public void testHandleMarketBuyWhenItemIdIsNullShouldThrowException() {
         // GIVEN
         mockControl.replay();
         // WHEN
-        underTest.handleMarketBuy(request, response, null);
+        underTest.handleMarketBuy(request, null);
         // THEN throws exception
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void testHandleMarketBuyWhenItemIdEmptyNullShouldThrowException() throws IOException {
+    public void testHandleMarketBuyWhenItemIdEmptyNullShouldThrowException() {
         // GIVEN
         mockControl.replay();
         // WHEN
-        underTest.handleMarketBuy(request, response, "");
+        underTest.handleMarketBuy(request, "");
         // THEN throws exception
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void testHandleMarketSellWhenItemIdIsNullShouldThrowException() throws IOException {
+    public void testHandleMarketSellWhenItemIdIsNullShouldThrowException() {
         // GIVEN
         mockControl.replay();
         // WHEN
-        underTest.handleMarketSell(request, response, null);
+        underTest.handleMarketSell(request, null);
         // THEN throws exception
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void testHandleMarketSellWhenItemIdEmptyNullShouldThrowException() throws IOException {
+    public void testHandleMarketSellWhenItemIdEmptyNullShouldThrowException() {
         // GIVEN
         mockControl.replay();
         // WHEN
-        underTest.handleMarketSell(request, response, "");
+        underTest.handleMarketSell(request, "");
         // THEN throws exception
     }
 
