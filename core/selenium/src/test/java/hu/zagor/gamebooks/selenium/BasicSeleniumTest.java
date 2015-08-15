@@ -92,8 +92,14 @@ public class BasicSeleniumTest {
         getTestPack();
         this.bookCode = bookCode;
         final By bookSelector = By.cssSelector("[data-bookId='" + bookId + "']");
-        final WebElement bookElement = driver.findElement(bookSelector);
-        final String bookUrl = bookElement.getAttribute("href");
+        String bookUrl = null;
+        while (bookUrl == null) {
+            try {
+                final WebElement bookElement = driver.findElement(bookSelector);
+                bookUrl = bookElement.getAttribute("href");
+            } catch (final NoSuchElementException ex) {
+            }
+        }
         driver.get(bookUrl);
         goToPosition("new");
     }
@@ -122,15 +128,19 @@ public class BasicSeleniumTest {
     }
 
     private void verifyBrokenImages(final String choicePosition, final String choiceSection) {
-        final List<WebElement> allImages = eventFiringWebDriver.findElement(By.id(getMainContentId())).findElements(By.tagName("img"));
-        final String script = "return (typeof arguments[0].naturalWidth!=\"undefined\" && arguments[0].naturalWidth>0)";
-        for (final WebElement image : allImages) {
-            final Object imgStatus = eventFiringWebDriver.executeScript(script, image);
-            if (imgStatus.equals(false)) {
-                final String currentImageUrl = image.getAttribute("src");
-                throw new IllegalStateException("The image '" + currentImageUrl + "' is broken in choice position '" + choicePosition + "', choice section '"
-                    + choiceSection + "'.");
+        try {
+            final List<WebElement> allImages = eventFiringWebDriver.findElement(By.id(getMainContentId())).findElements(By.tagName("img"));
+            final String script = "return (typeof arguments[0].naturalWidth!=\"undefined\" && arguments[0].naturalWidth>0)";
+            for (final WebElement image : allImages) {
+                final Object imgStatus = eventFiringWebDriver.executeScript(script, image);
+                if (imgStatus.equals(false)) {
+                    final String currentImageUrl = image.getAttribute("src");
+                    throw new IllegalStateException("The image '" + currentImageUrl + "' is broken in choice position '" + choicePosition + "', choice section '"
+                        + choiceSection + "'.");
+                }
             }
+        } catch (final StaleElementReferenceException exception) {
+            verifyBrokenImages(choicePosition, choiceSection);
         }
     }
 
