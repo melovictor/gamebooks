@@ -2693,11 +2693,11 @@
         [p]Megveregetik a hátadat, és örömmel üdvözölnek. Egy sötét bőrű, inas teremtmény groggal teli korsót nyom a markodba. Egy szuszra kiiszod. Még egy korsóval kapsz. Nyersz 2 ÉLETERŐ pontot, mert az ital felfrissít. Ekkor meghívnak, hogy játssz velük. Melyik játékban veszel részt?[/p]
     </text>
     <add amount="2" to="stamina" />
-    <next id="365start">A Tőr Játékban?</next>
+    <next id="365s">A Tőr Játékban?</next>
     <next id="278">A Robbanó Kő Játékban?</next>
     <next id="171">A Hat Csákány Játékban?</next>
   </p>
-  <p id="365start" display="365">
+  <p id="365s" display="365">
     <text>
         [p]Veszedelmes hazárdjátékot választottál, melyet a legtöbb királyságban betiltottak. De mivel ezt választottad, legalább egyszer játszanod kell. Persze ha akarod, akár többször is játszhatod. Játékmestered egy varázslótanonc, aki arra az esetre, ha nyernél, néhány díjat választott ki neked. Ha te nyersz, a következők közül választhatsz: plusz két Varázslat (a könyv elején lévő listáról válassz), 50 Aranytallér vagy egy Bűvös Mellvért (ennek birtokában 2 pontot hozzáadhatsz a saját Támadóerődhöz, amikor ezt kockadobással állapítod meg).[/p]
         [p]A játék a következő: hat tőr fekszik az asztalon. Az egyik valódi, míg a többi rugóval működő kellék, mely nem okoz sérülést. A többi teremtmény egyikével játszol a szobában, és csak egyikőtök marad életben a játék végén. Választanod kell egyet a tőrök közül, és a saját mellkasodba kell döfnöd. Ha a tőr valódi, elbúcsúzhatsz az életedtől. Ha a tőr csak kellék, úgy vissza kell dobnod a többi közé.[/p]
@@ -2709,23 +2709,23 @@
             Most, miután tudod a játék szabályait, azt is tudnod kell, hogy csupán akkor maradhatsz ki a játékból, ha Illúzió Varázslatot alkalmazol. Egyébként játszanod kell.[/p]
         </text>
         <next id="9">Ha Illúzió Varázslattal nyernél</next>
-        <next id="365round">Ha belevágnál a játékba</next>
+        <next id="365r">Ha belevágnál a játékba</next>
       </have>
       <dontHave>
         <text>
             Játszanod kell.[/p]
         </text>
-        <next id="365round"></next>
+        <next id="365r"></next>
       </dontHave>
     </itemCheck>
   </p>
-  <p id="365round" display="365">
+  <p id="365r" display="365">
     <random diceConfig="1d6">
       <result max="6" min="6">
         <text>
             [p]Ellenfeled szíven döfte magát. Te nyertél.[/p]
         </text>
-        <next id="365end"></next>
+        <next id="365e"></next>
       </result>
       <resultElse>
         <text>
@@ -2742,7 +2742,7 @@
             <text>
                 [p]Egy rugós tőrt választottál, életben maradtál. Új kör következik.[/p]
             </text>
-            <next id="365round"></next>
+            <next id="365r"></next>
           </resultElse>
         </random>
       </resultElse>
@@ -2750,7 +2750,7 @@
     <loseItem id="4006" amount="2" />
     <loseItem id="4005" />
   </p>
-  <p id="365end" display="365">
+  <p id="365e" display="365">
     <text>
         [p data-item-choice="pickOne" data-max-choice="1"]A játékmester eléd teszi a díjakat. A következők közül választhatsz: plusz [span class="takeItem" data-id="4005" data-amount="1" data-group="pickOne" data-max-take="1" data-pick-spells="2"]két Varázslat[/span], [span class="takeItem" data-id="gold" data-amount="50" data-group="pickOne" data-max-take="1"]50 Aranytallér[/span] vagy egy [span class="takeItem" data-id="3009" data-amount="1" data-group="pickOne" data-max-take="1"]Bűvös Mellvért[/span].[/p]
 
@@ -2771,7 +2771,7 @@
           [li data-spell="shielding"][span]Védelem Varázslat[/span][/li]
         [/ul]
     </text>
-    <next id="365start">Ha újra játszani akarsz</next>
+    <next id="365s">Ha újra játszani akarsz</next>
     <next id="171">A játék után vagy átmész a Hat Csákány Játékra</next>
     <next id="278">Vagy a Robbanó Kő Játékra</next>
     <next id="31">Vagy elbúcsúzhatsz a ,,barátaidtól'', és elhagyhatod a szobát</next>
@@ -5395,7 +5395,7 @@
             <text>
                 [p]Ehhez a játékhoz legalább 1 Aranytallérra van szükséged. Mivel nincs nálad pénz, kénytelen vagy elhagyni az asztalt.[/p]
             </text>
-            <next id="365start">Ha a Tőr Játékkal akarsz szerencsét próbálni</next>
+            <next id="365s">Ha a Tőr Játékkal akarsz szerencsét próbálni</next>
             <next id="278">Ha a Robbanó Kő Játékkal</next>
             <next id="31">Ha már unod a játékokat</next>
           </dontHave>
@@ -5418,7 +5418,7 @@
             [/div]
             [p]Ezt a játékot addig játszhatod, ameddig akarod, illetve amíg van pénzed.[/p]
         </text>
-        <next id="365start">Ha a Tőr Játékkal akarsz szerencsét próbálni</next>
+        <next id="365s">Ha a Tőr Játékkal akarsz szerencsét próbálni</next>
         <next id="278">Ha a Robbanó Kő Játékkal</next>
         <next id="31">Ha már unod a játékokat</next>
       </have>
@@ -5472,13 +5472,13 @@
         <gatherItem id="42787" />
       </result>
     </random>
-    <next id="278round"></next>
+    <next id="278r"></next>
   </p>
-  <p id="278round" display="278">
-    <next id="278round" pos="1"></next>
+  <p id="278r" display="278">
+    <next id="278r" pos="1"></next>
     <next id="278" pos="2">Ha újra játszani szeretnél</next>
     <next id="171" pos="3">Ha Hat Csákányt játsszanál</next>
-    <next id="365start" pos="4">Ha a Tőr Játékot próbálnád ki</next>
+    <next id="365s" pos="4">Ha a Tőr Játékot próbálnád ki</next>
     <next id="31" pos="5">Ha elhagyod a játéktermet</next>
   </p>
 </content>
