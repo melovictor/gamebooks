@@ -1,6 +1,8 @@
 package hu.zagor.gamebooks.ff.ff.tcoc.mvc.books.section.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
+import hu.zagor.gamebooks.character.enemy.FfEnemy;
+import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -70,6 +72,12 @@ public class Ff2BookSectionController extends FfBookSectionController {
         final String paragraphId = paragraph.getId();
         if ("278round".equals(paragraphId)) {
             runeStones.playRound((FfCharacter) wrapper.getCharacter(), getInfo().getCharacterHandler(), paragraph);
+        } else if ("191".equals(paragraphId)) {
+            final FfCharacter character = (FfCharacter) wrapper.getCharacter();
+            final FfAttributeHandler attributeHandler = getInfo().getCharacterHandler().getAttributeHandler();
+            final FfEnemy enemy = (FfEnemy) wrapper.getEnemies().get("26");
+            enemy.setStamina(attributeHandler.resolveValue(character, "stamina"));
+            enemy.setSkill(attributeHandler.resolveValue(character, "skill"));
         }
     }
 }
