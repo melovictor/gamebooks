@@ -5424,6 +5424,61 @@
       </have>
     </itemCheck>
   </p>
-
-
+  <p id="278">
+    <text>
+        [p]A Robbanó Kő veszélyes játék, de sokat lehet nyerni vele. Mielőtt a játék elkezdődne, a Játékmester, aki varázslótanonc, megbűvöl egy követ, mely hamarosan felrobban. A játékosok körben állnak, és egymásnak dobálják a követ. Amikor a kő felrobban, az a játékos, akinek éppen a kezében van a kő, kiesik a játékból, és csúnyán összeégett kézzel távozik! A megmaradt játékosok új Robbanó Követ kapnak, amelyet egymásnak dobálhatnak. A játék addig tart, amíg egyetlen játékos marad. A nézők fogadhatnak a játékosokra, de mielőtt fogadnának, le kell tenniük 3 Aranytallért, amit hozzáadnak a díj összegéhez. Ebben a játékban 36 Arany Tallért nyerhetsz, de ez azzal a kockázattal jár, hogy megégetheted a kezedet.[/p]
+    </text>
+    <loseItem id="42782" />
+    <loseItem id="42783" />
+    <loseItem id="42784" />
+    <loseItem id="42785" />
+    <loseItem id="42786" />
+    <loseItem id="42787" />
+    <random diceConfig="1d6">
+      <result max="1" min="1">
+        <text>
+            [p]Ketten fogjátok játsszani a játékot.[/p]
+        </text>
+        <gatherItem id="42782" />
+      </result>
+      <result max="2" min="2">
+        <text>
+            [p]Hárman fogjátok játsszani a játékot.[/p]
+        </text>
+        <gatherItem id="42783" />
+      </result>
+      <result max="3" min="3">
+        <text>
+            [p]Négyen fogjátok játsszani a játékot.[/p]
+        </text>
+        <gatherItem id="42784" />
+      </result>
+      <result max="4" min="4">
+        <text>
+            [p]Öten fogjátok játsszani a játékot.[/p]
+        </text>
+        <gatherItem id="42785" />
+      </result>
+      <result max="5" min="5">
+        <text>
+            [p]Hatan fogjátok játsszani a játékot.[/p]
+        </text>
+        <gatherItem id="42786" />
+      </result>
+      <result max="6" min="6">
+        <text>
+            [p]Heten fogjátok játsszani a játékot.[/p]
+        </text>
+        <gatherItem id="42787" />
+      </result>
+    </random>
+    <next id="278round"></next>
+  </p>
+  <p id="278round" display="278">
+    <next id="278round" pos="1"></next>
+    <next id="278" pos="2">Ha újra játszani szeretnél</next>
+    <next id="171" pos="3">Ha Hat Csákányt játsszanál</next>
+    <next id="365start" pos="4">Ha a Tőr Játékot próbálnád ki</next>
+    <next id="31" pos="5">Ha elhagyod a játéktermet</next>
+  </p>
 </content>
