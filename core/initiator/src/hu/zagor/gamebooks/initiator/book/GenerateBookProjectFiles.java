@@ -11,6 +11,7 @@ public class GenerateBookProjectFiles extends AbstractGenerator {
 
     public void generateBookProjectFiles(final BookBaseData baseData, final List<BookLangData> books) {
         for (final BookLangData data : books) {
+            System.out.println("Start generating book " + data.getTitle());
             if (data.isGeneratable()) {
                 data.init(baseData);
                 generateFiles(baseData, data);

@@ -31,10 +31,10 @@ import java.io.IOException;
 public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
 
     public void generate(final BookBaseData baseData, final BookLangData data) {
-        final File langRootPath = new File("d:/System/eclipsegit/books/" + baseData.getSeriesCode() + "/language-" + baseData.getSeriesCodeCapital());
+        final File langRootPath = new File("d:/System/eclipsegit/books/" + baseData.getSeriesCode() + "/language-" + baseData.getCollectorName());
         generateLanguageProject(langRootPath, baseData, data);
 
-        final File presRootPath = new File("d:/System/eclipsegit/books/" + baseData.getSeriesCode() + "/presentation-" + baseData.getSeriesCodeCapital());
+        final File presRootPath = new File("d:/System/eclipsegit/books/" + baseData.getSeriesCode() + "/presentation-" + baseData.getCollectorName());
         generatePresentationProject(presRootPath, baseData, data);
     }
 
