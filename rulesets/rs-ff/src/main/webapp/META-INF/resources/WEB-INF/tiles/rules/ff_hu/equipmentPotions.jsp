@@ -11,10 +11,9 @@ Tárgyaidat mindenkor jegyezd be, a <em>Kalandlapodon</em> lévő ,,Felszerelés
 
 	<p>Az <span class="attribute">ÜGYESSÉG</span> Itala &ndash; kezdeti értékére állítja <span class="attribute">ÜGYESSÉG</span> pontjaidat.</p>
 	<p>Az <span class="attribute">ERŐ</span> Itala &ndash; kezdeti értékére állítja <span class="attribute">ÉLETERŐ</span> pontjaidat.</p>
-	<p>A <span class="attribute">SZERENCSE</span> Itala &ndash; kezdeti értékére állítja <span class="attribute">SZERENCSE</span> pontjaidat és 1 ponttal növeli induló <span class="attribute">SZERENCSÉDET</span>.</p>
+	<p>A <span class="attribute">SZERENCSE</span> Itala &ndash; kezdeti értékére állítja <span class="attribute">SZERENCSE</span> pontjaidat és 1 ponttal növeli <em>Kezdeti</em> <span class="attribute">SZERENCSÉDET</span>.</p>
 
-	<p>Kalandjaid során bármikor kortyolhatsz a magaddal vitt italból (kivéve, amikor csatában állsz). Egyetlen üveg ezen italok bármelyikéből visszaállítja <span class="attribute">ÜGYESSÉGEDET</span>, <span class="attribute">ÉLETERŐDET</span> vagy <span class="attribute">SZERENCSÉDET</span> kezdeti értékére (és a <span class="attribute">SZERENCSE</span> Itala 1 ponttal növeli kezdeti <span class="attribute">SZERENCSÉDET</span>).</p>
+	<p>Kalandjaid során bármikor kortyolhatsz a magaddal vitt italból (kivéve, amikor csatában állsz). Egyetlen adag ezen italok bármelyikéből visszaállítja <span class="attribute">ÜGYESSÉGEDET</span>, <span class="attribute">ÉLETERŐDET</span> vagy <span class="attribute">SZERENCSÉDET</span> <em>Kezdeti</em> értékére (és a <span class="attribute">SZERENCSE</span> Itala 1 ponttal növeli <em>Kezdeti</em> <span class="attribute">SZERENCSÉDET</span>).</p>
 	<p>Minden üveg ${stdHelp_potionAmount} adagnyi varázsitalt tartalmaz, tehát ${stdHelp_potionAmountTimes} élhetsz vele kalandjaid során. Jegyezd fel a <em>Kalandlapon</em>, ha felhasználtad.</p>
 	<p>Azt se feledd, hogy csak a három ital egyikét viheted magaddal utadra. Válassz tehát bölcsen!</p>
 </c:if>
-

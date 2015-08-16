@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd">
+  <p id="back_cover">
+    <text>
+        [p class="ffBackCoverTitle"]Könyv és játék az, amit a kezedben tartasz. A főhős TE vagy.[/p]
+        [p]A Tűz-sziget kegyetlen Gyíkemberei által elrabolt Osztriga-öbölbeli fiatalemberekre zord rabszolgasors, éhezés és halál vár. Új főnökük a veszedelmes, őrült Gyíkkirály feketemágiával és gonosz varázslattal tartja fogva őket birodalmában. Te vagy az egyetlen, aki megmentheti a szenvedéstől a foglyokat, csak az a kérdés, van-e hozzá elég bátorságod. [/p]
+        [p]TE döntöd el, mikor, melyik utat választod, milyen csellel kerülsz ki a csapdákból, melyik teremtménnyel csapsz össze.[/p]
+    </text>
+    <next id="generate" />
+  </p>
+  <p id="generate" display="Karakter létrehozása">
+    <text>
+        [p][span class="ffAttribute"]Ügyesség[/span]: [span id="ffSkill"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Életerő[/span]: [span id="ffStamina"]dobj két kockával és adj 12-t a dobott számhoz[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Szerencse[/span]: [span id="ffLuck"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p]Válassz egy italt:
+          [select id="ffDefaultPotion"]
+              [option value="2001" selected="selected"]Ügyesség Itala[/option]
+              [option value="2002"]Erő Itala[/option]
+              [option value="2003"]Szerencse Itala[/option]
+          [/select]
+        [/p]
+        [button data-generator-button="ff"]Karakter létrehozása[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="Háttértörténet">
+    <text>
+        [p]Az Osztriga-öböl nyugodt kis halászfalu úgy harminc kilométernyire a hírhedt Feketehomok Kikötőtől délre, a tengerpart mentén. Mivel ez a hely egy hosszú félsziget végében található, melyet csupán egy meredek, kanyargós ösvényen lehet elérni, a halászok és asszonyaik arra kényszerültek, hogy az egyszerű emberek életét éljék itt, távol az ország szörnyekkel és varázslatokkal teli életétől.[/p]
+        [p]Fangtól déli irányban elindulva úgy döntesz, hogy néhány napos pihenőt tartasz, és mivel nem ismersz nyugalmasabb helyet az Osztriga-öbölnél, lovadat gyorsabb ügetésre ösztökéled a part mentén.[/p]
+        [p]A faluban lakik régi barátod, Mungo, akit évek óta nem láttál. Két nap múlva egy sziklaszirthez érsz, ahonnan rálátni az Osztriga-öbölre. Gyönyörű, napfényes reggel van, körös-körül minden nyugodt. Azóta, hogy utoljára itt jártál, semmi sem változott. A kőházak kis csoportja a sziklák lába és a móló közé ágyazódott be, ahol tucatnyi halászhajó ring a vízen. Leszállsz a lovadról, elindulsz a kanyargós ösvényen, le a faluba. Először síró asszonyokkal találkozol. Amint közelebb akarsz menni hozzájuk, férfiak ugranak elő a házakból, és feléd tartanak. Egyikük régi jó barátod, Mungo. Széltől cserzett arca haragos. Meglepetten néz rád, de nem köszönt. Elmeséli, milyen szomorúság érte a faluját.[/p]
+        [p]Mivel nincs aranyuk, sem egyéb kincsük, az Osztriga-öböl lakói soha nem érdekelték igazán a külső támadókat. Néhány hete azonban, amikor a férfiak kint voltak a vízen, a Tűzszigeti Gyíkemberek zsákmányul ejtették néhány hajójukat, és több fiatalembert elraboltak. Mungo szerint a foglyok biztosan a Tűz-szigeten raboskodnak, és vasra verve dolgoznak az aranybányában. Az emberrablás óta két ember őrködik a faluban, míg a többiek halásznak. Ennek ellenére a Gyíkemberek ma reggel ismét támadtak, lefegyverezték az őröket, és magukkal vittek még egy csapat fiatalembert. Mungo közli veled, hogy nekivág a tengernek, egyedül megy a Tűz-szigetre, mivel a többiek félnek. Némán figyel, amíg el nem mosolyodsz és azt nem mondod neki, hogy vele tartasz. Hátba vereget, és hálája jeléül kezet ráz veled. A szegény halászfalu lakói egy pillanatra elfelejtik a bánatukat, és köréd sereglenek, hogy köszönetet mondjanak neked. Mungo ezután meghív, hogy vacsorázz vele, és pihenj egy keveset, mert az út a Tűz-szigetre órákig tar majd. A fenséges lakoma közben, ahol főtt homárt és salátát szolgálnak fel nektek, megbeszélitek a haditervet.[/p]
+        [p]Mungo elmondja, nem hiszi, hogy laknának emberek a Tűz-szigeten, bár ismeretei elég hiányosak. Amit tud, az mind a partvidék többi településének halászai között terjengő szóbeszéd. Azt is tudni vélik, hogy a Tűz-sziget annak idején börtönsziget volt, amelyet fizetett Gyíkemberek őriztek. Az Olaf herceg eléggé hiábavaló kísérlete volt annak érdekében, hogy megszabadítsa országát a nemkívánatos elemektől. A jó herceg azonban hamarosan rájött, hogy egyszerűbb lenne áttelepíteni hűséges alattvalóit a Tűz-szigetre, és a szárazföldön hagyni a gazembereket - ugyanis túl sok volt belőlük. Feladta hát eredeti tervét, és felszámolta a börtöntelepet. Amikor a Gyíkemberek nem kaptak fizetést, bosszút álltak a foglyokon, és a sziget egy királynak kikiáltott Gyíkember-börtönőr rémuralma alá került. A foglyoknak megparancsolták, hogy kutassanak arany után a föld mélyében a Gyíkkirály számára. Éheztették őket, és kegyetlenül bántak velük. Sokan közülük meghaltak, és ez lehet az oka, hogy a Gyíkkirály most újabb rabszolgák után küldi az embereit. Tudni vélik azt is, hogy a király, hatalmát megerősítendő, voodoo-val (törzsi varázslatokkal) és fekete mágiával kezdett foglalkozni. Genetikai kísérleteket is folytat, hogy kifejlesszen egy új Gyíkember-fajt, amely legyőzhetetlen lesz. A legtöbb kísérlet azonban balul sült el. Torzszülöttek láttak napvilágot, és veszélyes folyadékok kerültek a csatornarendszerbe. Ez rettenetes következményekkel járt. A sziget növényzete és állatvilága megváltozott: emberevő növények és óriás szörnyek fejlődtek ki. Néhány fogolynak sikerült tutajon elmenekülnie a szigetről - ezeket a halászok mentették meg és vitték ki a szárazföldre. De hogy mi történt az elmúlt néhány év során, azt senki sem tudja. A minapi támadásokig a Tűz-szigetről már-már meg is feledkeztek. Kétséges, hogy sikerül-e megölnöd a Gyíkkirályt és megmentened az elrabolt áldozatokat, de meg kell próbálnod a lehetetlent.[/p]
+        [p]Felállsz, és lesétálsz Mungóval a kikötőbe, ahol beszálltok barátod kis halászbárkájába. Eloldod a csónakot, és az éljenző tömeget nézve azon gondolkozol, vajon visszatérsz-e ide valaha is?[/p]
+    </text>
+    <gatherItem id="defWpn" />
+    <gatherItem id="1001" />
+    <gatherItem id="2000" amount="10" />
+    <gatherItem id="3001" />
+    <gatherItem id="3002" />
+    <next id="1"></next>
+  </p>
+  <p id="1">
+    <text>
+        [p]Nem múltak el nyomtalanul azok az évek, amelyeket Mungo az Osztriga-öböl halászai között töltött - bátor hajós vált belőle. Ügyesen felhúzza a vitorlát, és nyugat felé kormányozza a kis bárkát az ezüstkék tengeren. A szárazföld hamarosan elmarad mögöttetek a távolban. Hátradőlsz a fedélzeten, és nyugodtan sütkérezel a délutáni napsütésben. A bárka fara felől éles füttyentést hallasz, mintha a kormánylapát csikorogna - Mungo füttyentett egy sirálynak. A régi szép időkre gondolsz, amelyeket Mungóval töltöttél, ezzel a jókedvű, mindig segítőkész baráttal. Hinni sem akarod, hogy annyi rossz van azon a földön, ahol olyan ember él, mint Mungo. Ahogy múlnak az órák, beszélgetéssel és nevetgéléssel próbálod meg elhessegetni a közelgő veszélyt. Mungo mindig is nagy mesélő hírében állt, most is arról kezd beszélni neked, milyen is volt az, amikor az apja vándorcirkusszal járta a vidéket.[/p]
+        [p]- Hatalmas ember volt, akár egy hegy - mondja nevetve -, a nézőközösségért mindenre képes volt. Trollokkal birkózott, engedte, hogy elefántok tapossanak rá, sőt még a Gyilkos Méhnek is hagyta, hogy megcsípje! Kemény fickó volt; végül is északon lelte halálát. A cirkusszal Fangban léptek fel a Bajnokok Próbája ünnepségein, és az apám elhatározta, hogy ő is benevez. Elindult a Halállabirintusban, ahonnan sajnos sohasem került elő. Túl öreg volt már az ilyesmihez, de nem akadt senki, aki ezt megmondta volna neki. De hát végül is megpróbálta![/p]
+        [p]Mungo már éppen belekezdene a következő történetbe, de felugrik, és torkaszakadtából elordítja magát:[/p]
+        [p]- Föld![/p]
+        [p]Úgy hangzik ez, mintha egy hajó legénységével akarná közölni az örömhírt. Oda nézel, ahová a barátod mutat, és a távolban a Tűz-szigetet pillantod meg. Hatalmas zöld párnaként lebeg a víz színén, amelyből egy hegy nyúlik a magasba. Lágyan gomolygó füst száll fel a tetejéből. Tűzhányó ez, és haragosan kitörni készül.[/p]
+        [p]Mungo a bárkát egy keskeny kis öbölbe irányítja a sziget keleti csücskében, abban reménykedve, hogy meg tud bújni a magas sziklák között. Mindketten felveszitek a hátizsákotokat, és kiugrotok a bárkából, hogy elinduljatok felkutatni a Gyíkkirályt.[/p]
+    </text>
+    <next id="24">Ha végig akarod cserkészni a balra lévő parti sziklákat a kis öbölben</next>
+    <next id="33">Ha át akarsz mászni a jobbra magasodó parti sziklákon az öböl másik oldalára</next>
+  </p>
+  <p id="24">
+    <text>
+        [p]Egykettőre az aranysárga homokparton teremsz. Néhány szikla áll ki a tengerből, és a part végében egy kis fehér kőházikót pillantasz meg. Elhagyatottnak látszik. A teteje beszakadt, a ház roskadozik. A homokban cikcakkban egymást keresztező hosszú nyomokat fedezel fel.[/p]
+    </text>
+    <next id="211">Ha a part mentén el akarsz menni a házhoz</next>
+    <next id="33">Ha inkább visszamászol a sziklákon az öbölbe, és azon át a parton keresztül a másik öbölbe</next>
+  </p>
+  <p id="33">
+    <text>
+        [p]Hamarosan eléred a tengerpartot, de amint meglátod, mi történik ott, gyorsan visszaugrasz a sziklák mögé. Hat Kalózt láttok egy evezős csónak körül, amelyet valószínűleg ők húztak partra. Ránézel Mungóra, és megbeszélitek, mit tegyetek.[/p]
+    </text>
+    <next id="340">Ha meg akarjátok támadni a Kalózokat</next>
+    <next id="24">Ha inkább visszamentek az öbölbe, majd onnan a tengerparton át a másik kis öbölbe</next>
+  </p>
+  <p id="221">
+    <text>
+        [p]Annak a helynek a közelében, ahol az Óriás Sárkánylégy fekszik összezsugorodva, kagyló alakú gombát veszel észre, amely egy korhadó fatönkhöz tapadt.[/p]
+    </text>
+    <next id="385">Ha enni akarsz a gombából</next>
+    <next id="224">Ha inkább ismét felkerekedsz és nekivágsz a dzsungelnak</next>
+  </p>
+  <p id="385">
+    <text>
+        [p]Kinyújtod a kezedet, leszakítasz egy gombát, kagylókalapja kinyílik, és egy csomó spóra lövell az arcodba. Viszketni kezd tőle a bőröd, és tele lesz kiütéssel. A viszketéstől már a szemedet is alig bírod nyitva tartani. Mit teszel?[/p]
+    </text>
+    <next id="290">Semmit, abban reménykedve, hogy majdcsak elmúlik?</next>
+    <next id="143">Bedörzsölöd az arcodat a melletted lévő bokor leveleivel?</next>
+    <next id="110">Megeszed a gombát?</next>
+  </p>
+  <p id="110">
+    <text>
+        [p]Nemcsak a bőröd nem bírja elviselni a gomba spóráit; a gyomrod is háborog. Iszonyatosan rosszul érzed magad, ugyanis a gomba, amit megettél, mérges volt. Veszítesz 3 Életerő és 1 Szerencse pontot. Ha még mindig életben vagy, lassan egyre jobban érzed magad, és ismét nekivágsz a dzsungelnak.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <add amount="-1" to="luck" />
+    <next id="224"></next>
+  </p>
+  <p id="143">
+    <text>
+        [p]Letépsz néhány levelet a tölcsér alakú növényről, és dühösen megdörzsölöd vele feldagadt arcodat. Azonnal megkönnyebbülsz, a viszketés szerencsére elmúlik.[/p]
+    </text>
+    <next id="110">Ha még mindig meg akarod enni a gombát</next>
+    <next id="224">Ha inkább továbbmész a dzsungelban</next>
+  </p>
+  <p id="290">
+    <text>
+        [p]A viszketés szinte elviselhetetlen. Nem tudsz mást csinálni, vakarod az arcodon lévő ragyákat. Veszítesz 1 Életerő és 1 Szerencse pontot![/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <add amount="-1" to="luck" />
+    <next id="143">Ha a melletted lévő bokor leveleivel be akarod dörzsölni az arcodat</next>
+    <next id="110">Ha megpróbálod megenni a gombát</next>
+  </p>
+  <p id="224">
+    <text>
+        [p]Úgy döntesz, hogy eléggé eltávolodtál északnyugatra a Fejvadászok falujától; már nem kell tartanod tőlük. Így aztán egyenesen átvágsz a dzsungelen nyugati irányba. Alig teszel meg egy rövidke utat, amikor meglepetten látod, hogy teljesen kopár tisztáshoz értél. Hatalmas zöld kristály fekszik a tisztás közepén, és izzó meleget áraszt. Mit teszel?[/p]
+    </text>
+    <next id="71">Megkerülöd a kristályt, és folytatod az utadat nyugat felé?</next>
+    <next id="232">Megérinted a kristályt?</next>
+    <next id="370">Megpróbálsz lepattintani egy darabot a kristályból a kardoddal?</next>
+  </p>
+  <p id="232">
+    <text>
+        [p]Lassan, izgatottan érinted meg az izzó kristályt. Forróság árad szét a testedben, igen nagy erőt érzel magadban. Nyersz 3 Életerő pontot, mert a kristály regeneráló hatással van rád.[/p]
+    </text>
+    <add amount="3" to="stamina" />
+    <itemCheck type="section" id="370">
+      <have>
+        <text>
+            [p]Úgy döntesz, elhagyod a tisztást és folytatod az utadat a dzsungelen át nyugatra.[/p]
+        </text>
+        <next id="71"></next>
+      </have>
+      <dontHave>
+        <next id="370">Ha most lepattintasz a kardoddal egy darabot a kristályból</next>
+        <next id="71">Ha elhagyod a tisztást, és folytatod az utadat a dzsungelen át nyugatra</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="370">
+    <text>
+        [p]Meglendíted a kardodat, és hatalmasat csapsz vele a sziklára. Megrémülsz, amikor látod, hogy a penge kettétörik és csak egy csonka karddarab marad a kezedben. Veszítesz 2 Ügyesség pontot![/p]
+    </text>
+    <loseItem id="1001" />
+    <gatherItem id="1002" />
+    <itemCheck type="section" id="232">
+      <have>
+        <text>
+            [p]Úgy döntesz, elhagyod a tisztást és nyugat felé, a dzsungelen át folytatod az utadat.[/p]
+        </text>
+        <next id="71"></next>
+      </have>
+      <dontHave>
+        <next id="232">Ha most megérinted a kristályt</next>
+        <next id="71">Ha elhagyod a tisztást, és nyugat felé, a dzsungelen át folytathatod az utadat</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="340">
+    <text>
+        [p]Kirántod a kardodat, és lerohansz a partra, remélve, hogy a kalózok nem vesznek észre. Kettőt sikerül ledöfnöd, mielőtt előránthatnák a késüket, de a másik két kalózzal meg kell vívnod.[/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="1" />
+      <enemy id="2" />
+    </fight>
+    <next id="61"></next>
+  </p>
+  <p id="61">
+    <text>
+        [p]Körülnézel, és látod, hogy Mungó az utolsó kalózzal, a kapitánnyal csap össze! De mielőtt a segítségére siethetnél, a kapitány hirtelen előrelendül, és átdöfi szegény Mungó mellét. Az gyötrelmesen feljajdul, majd összeesik. A kapitány feléd fordul, arcán torz mosoly ül, mely a bal orcáján végighúzódó hosszú fekete sebhelytől származik. Rátámadsz a kapitányra, hogy bosszút állj Mungón.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="3" />
+    </fight>
+    <next id="165"></next>
+  </p>
+  <p id="165">
+    <text>
+        [p]Mungo körül a homok vörös a vértől. Letérdelsz mellé, és óvatosan a karodba emeled a fejét. Kissé kinyitja a szemét. Bár haldoklik, halványan elmosolyodik. Suttogva így szól: - Hát elfogtuk őket, de mi hasznom belőle? Fogadd meg, hogy elkapod a Gyíkkirályt! Ugye megfogadod? - Ekkor lecsukódik a szeme, és holtan esik össze. A parton, a szikla tövében temeted el, és sírját a homokba szúrt kardjával jelölöd meg. Keskeny kis ösvényt veszel észre, amely a szikla oldalában visz fel a csúcsra, majd visszanézel, és megpillantod a ládát a parton.[/p]
+    </text>
+    <next id="200">Ha úgy döntesz, hogy felmész az ösvényen</next>
+    <next id="398">Ha inkább kinyitod a ládát</next>
+  </p>
+  <p id="398">
+    <text>
+        [p]Kinyitod a ládát, és meglepetten látod, hogy vasrudak vannak benne! A kapitány valószínűleg becsapta a legénységet, amikor elhitette velük, hogy kincset ásnak el. Az igazi kincs biztosan még mindig a hajó fedélzetén van, bár nem sok hasznát veheti már. Úgy döntesz, hogy egy [span class="takeItem" data-id="3003" data-amount="1"]vasrudat[/span] elteszel a hátizsákodba. A kis ösvényen felkapaszkodsz a sziklára.[/p]
+    </text>
+    <next id="200"></next>
+  </p>
+  <p id="71">
+    <text>
+        [p]Miközben nagy zajjal vágsz utat magadnak a buja növények között, nem veszed észre, hogy hat Pigmeus figyel fel rád, és követni kezd. Gyűrűbe zárnak, még mielőtt megpillantanád őket, és fúvócsövükkel célba veszik testedet.[/p]
+    </text>
+    <next id="276">Ha beszélni akarsz velük</next>
+    <next id="359">Ha inkább harcolni akarsz ellenük</next>
+  </p>
+  <p id="200">
+    <text>
+        [p]Fölfelé indulsz a keskeny ösvényen és alaposan kifulladsz, mire felérsz. Iszol egy korty vizet a kulacsodból, és megállapítod, hogy nemsokára gondjaid lesznek az ivóvízzel a szigeten. Nyugat felé nézve megpillantod a fák mögül kimagasló alvó tűzhányó félelmetes körvonalait, de életnek semmi jelét nem tapasztalod - bár hallod a madarak és rovarok kakofonikus zenéjét. Az egyre sötétebb alkonyatban elhatározod, hogy letáborozol az egyik szikla tövében. Nem alszol valami jól, és a nap első sugaraira felébredsz. Máris elindulsz. Egyenesen nyugat felé tartasz, bemész a fák közé.[/p]
+    </text>
+    <next id="391"></next>
+  </p>
+  <p id="359">
+    <text>
+        [p]Alig teszel meg két lépést, amikor a Pigmeusok szájukhoz emelik fúvócsövüket, és hat nyilat lőnek ki rád.[/p]
+    </text>
+    <random diceConfig="1d6">
+      <result max="1" min="1">
+        <text>[p]Egy nyílvessző fúródott a testedbe, vesztesz 1 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-1" to="stamina" />
+      </result>
+      <result max="2" min="2">
+        <text>[p]Két nyílvessző fúródott a testedbe, vesztesz 2 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-2" to="stamina" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]Három nyílvessző fúródott a testedbe, vesztesz 3 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-3" to="stamina" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Négy nyílvessző fúródott a testedbe, vesztesz 4 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-4" to="stamina" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Öt nyílvessző fúródott a testedbe, vesztesz 5 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-5" to="stamina" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Hat nyílvessző fúródott a testedbe, vesztesz 6 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-6" to="stamina" />
+      </result>
+    </random>
+    <next id="373"></next>
+  </p>
+  <p id="373">
+    <text>
+        [p]A nyílvesszők hegyét a Pigmeusok altató folyadékba mártották, úgyhogy eszméletlenül zuhansz a földre. Amikor felébredsz, a Pigmeusok már sehol sincsenek. Kardod még mindig a kezedben van, de a hátizsákod üres. Az összes Felszerelési Tárgyad és Élelmed eltűnt! Veszítesz 2 Szerencse pontot! A Pigmeusokat átkozva ismét nyugat felé indulsz.[/p]
+    </text>
+    <loseItem id="1001"/>
+    <loseItem id="1002"/>
+    <loseItem id="3002"/>
+    <loseItem id="3003"/>
+    <loseItem id="2000" amount="10"/>
+    <loseItem id="2001"/>
+    <loseItem id="2002"/>
+    <loseItem id="2003"/>
+    <add amount="-2" to="stamina"/>
+    <next id="7"></next>
+  </p>
+  <p id="211">
+    <text>
+        [p]Félúton a házhoz váratlanul észreveszed, hogy a parton hatalmas homokhalom kezd a levegőbe emelkedni. Ebből hat nagy tüskés láb és egy pár olló bukkan elő, majd hatalmas rákpáncél jelenik meg: az ijesztő méretű Óriásrák tornyosul előtted. A Rák végigrohan a homokon, és egyik ollójával megragadja Mungót. Barátod fájdalmasan felordít, de hiába minden, képtelen kiszabadulni a satuszerű ollók fogságából.[/p]
+    </text>
+    <next id="182">Ha segíteni akarsz Mungónak</next>
+    <next id="307">Ha inkább visszarohansz a kőházba</next>
+  </p>
+  <p id="182">
+    <text>
+        [p]Kivont karddal rárontasz az Óriásrákra. Az kiereszti szorításából Mungót, hogy így mindkét ollójával rád támadjon.[/p]
+    </text>
+    <fight type="single">
+    <enemy id="4"/>
+    </fight>
+    <next id="366"></next>
+  </p>
+  <p id="307">
+    <text>
+        [p]Elkeseredett igyekezetedben, hogy elmenekülj az Óriásrák elől, nem számolsz a homokkal, amelyen átfutsz. Hirtelen nedves és puha lesz a lábad alatt, ráadásul süppedni kezdesz. Futóhomokra tévedtél, és miközben menekülni próbálsz, egyre mélyebbre süppedsz. Rémülten ordítani kezdesz, mert a homok már a nyakadig ér. Utolsó pillantásoddal Mungót látod, akit épp elnyel az Óriásrák.[/p]
+    </text>
+    <death/>
+  </p>
+  <p id="366">
+    <text>
+        [p]Letérdelsz Mungo összezúzott teste mellé, és óvatosan a karodra fekteted a fejét. Résnyire nyitja a szemét. Bár haldoklik, halványan elmosolyodik. Suttogva így szól: - Látod, barátom, az én utam itt véget ér. Nagy hasznomat vetted, mondhatom. Fogadd meg, hagy megölöd a Gyíkkirályt. Ugye megteszed? - Lecsukódik a szeme, és holtan omlik a karjaidba. A parton temeted el egy szikla tövében, és sírját a homokba szúrt kardjával jelölöd, meg. Elszántabban, mint valaha, elindulsz a kőház felé.[/p]
+    </text>
+    <next id="198"></next>
+  </p>
+  <p id="198">
+    <text>
+        [p]Az elhagyatott ház telis-tele van ócska bútorral, törött cserépedénnyel és mindenféle rongyos ruhával. Elrúgod a szőnyeget, és egy fogantyút veszel észre a padlóban - csapóajtót találtál.[/p]
+    </text>
+    <next id="267">Ha fel akarod emelni a csapóajtót</next>
+    <next id="152">Ha inkább úgy döntesz, hogy elhagyod a házat</next>
+  </p>
+  <p id="267">
+    <text>
+        [p]Meghúzod a fogantyút és fölemeled a csapóajtót. Alatta egy kis üregben egy faládát találsz. Kiemeled, és leteszed a földre. A fedele viasszal van lezárva.[/p]
+    </text>
+    <next id="354">Ha ki akarod nyitni a ládát</next>
+    <next id="152">Ha inkább úgy döntesz, hogy elhagyod a házat</next>
+  </p>
+  <p id="354">
+    <text>
+        [p]A láda fedele könnyen nyílik. Egy bedugaszolt cserépkancsót találsz benne, meg egy cédulát, melyre ezt írta valaki: ,,Sok évvel ezelőtt jöttem a Tűz-szigetre, hogy itt nyugalmat találjak. De amióta a Gyíkember betette ide a lábát, nem élhetek itt tovább. Most visszamegyek a szárazföldre. Sok mérgező növény és bokor van a szigeten; egyetlen karcolásuk megölhet. Idd meg a kancsóban lévő italt, ez védettséget biztosít ellenük. Minden jót kívánok neked. bármi hozott is a szigetre. Isten áldjon. Baskin.''[/p]
+    </text>
+    <next id="238">Ha meg akarod inni a kancsóban lévő italt</next>
+    <next id="152">Ha inkább ügy döntesz, hogy azonnal elhagyod a házat</next>
+  </p>
+  <p id="238">
+    <text>
+        [p]Az ital ánizsízű és tejfehér. Az utolsó cseppig kiiszod, de nem érzel semmit, így csak sejtheted, hogy megvéd utad során. Leteszed a kancsót, és kilépsz a házból.[/p]
+    </text>
+    <next id="152"></next>
+  </p>
+  <p id="152">
+    <text>
+        [p]A ház mögött keskeny kis ösvény vezet fel a sziklához. Elindulsz felfelé, s mire felérsz, jól kifulladsz. Nagyot húzol a kulacsodból, és megállapítod, hogy nemsokára fogytán lesz az ivóvized. Nyugat felé nézel, és a fák mögött, ijesztően közel, az alvó tűzhányót pillantod meg. Életnek semmi jelét nem tapasztalod - tisztán hallod a madarak csivitelését és a bogarak zümmögését. A rohamosan leereszkedő szürkületben úgy döntesz, letáborozol éjszakára az egyik szikla tövében. Nem alszol valami jól, s a nap első sugarainak fényére azonnal felébredsz. Máris útnak indulsz. Elhatározod, hogy egyenesen nyugati irányba mész, a fák felé.[/p]
+    </text>
+    <next id="391"></next>
+  </p>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</content>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.FightingFantasy.ISLAND_OF_THE_LIZARD_KING" id="ff7Id" />
+
+  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="ff7Info" c:id-ref="ff7Id" p:coverPath="resources/ff7/cover.jpg" p:resourceDir="ff7"
+    p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="7" p:series-ref="ffTitle" p:title="Island of the Lizard King" p:characterHandler-ref="ffCharacterHandler" p:commandResolvers-ref="ffCommandResolvers" p:unfinished="true">
+    <property name="contents">
+      <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="ff7enemies.xml" c:items="ff7items.xml" c:paragraphs="ff7content.xml" />
+    </property>
+    <property name="contentSpecification">
+      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="false" />
+    </property>
+  </bean>
+
+</beans>
