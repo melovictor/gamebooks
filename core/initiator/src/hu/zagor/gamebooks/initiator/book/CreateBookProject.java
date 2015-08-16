@@ -22,7 +22,8 @@ public class CreateBookProject {
         baseData.setSeriesCode("ff");
         baseData.setTitleCode("cot");
         baseData.setPosition(5);
-        baseData.setCollectorCode("ff"); // currently cyoa, ff, sc, solo6 st, tm
+        baseData.setCollectorCode("ff");
+        baseData.setCollectorName("fightingfantasy");
         baseData.setRuleset("ff");
         baseData.setHasEnemies(true);
         baseData.setHasInventory(true);

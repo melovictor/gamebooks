@@ -13,7 +13,6 @@ import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getLoadControllerTest;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getNewGameController;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getNewGameControllerTest;
-import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getRebelXml;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getSaveController;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getSaveControllerTest;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getSectionController;
@@ -23,15 +22,6 @@ import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getTakeItemControllerTest;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getWelcomeController;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getWelcomeControllerTest;
-import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectSettingsContents.getCheckstyleContent;
-import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectSettingsContents.getClasspathContent;
-import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectSettingsContents.getComponentContent;
-import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectSettingsContents.getFacetContent;
-import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectSettingsContents.getJdtContent;
-import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectSettingsContents.getM2eContent;
-import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectSettingsContents.getPomContent;
-import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectSettingsContents.getProjectContent;
-import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectSettingsContents.getValidationPreferences;
 import hu.zagor.gamebooks.initiator.AbstractGenerator;
 import hu.zagor.gamebooks.initiator.Console;
 
@@ -41,39 +31,20 @@ import java.io.IOException;
 public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
 
     public void generate(final BookBaseData baseData, final BookLangData data) {
-        final File langRootPath = new File("d:/System/eclipsegit/books/" + baseData.getSeriesCode() + "/" + baseData.getTitleCode() + "/" + data.getSeriesCode()
-            + data.getPosition());
+        final File langRootPath = new File("d:/System/eclipsegit/books/" + baseData.getSeriesCode() + "/language-" + baseData.getSeriesCodeCapital());
         generateLanguageProject(langRootPath, baseData, data);
+
+        final File presRootPath = new File("d:/System/eclipsegit/books/" + baseData.getSeriesCode() + "/presentation-" + baseData.getSeriesCodeCapital());
+        generatePresentationProject(presRootPath, baseData, data);
     }
 
-    private void generateLanguageProject(final File langRootPath, final BookBaseData baseData, final BookLangData data) {
+    private void generatePresentationProject(final File rootPath, final BookBaseData baseData, final BookLangData data) {
         final Console console = Console.getConsole();
         try {
-
-            createFile(langRootPath, "pom.xml", getPomContent(baseData, data));
-            createFile(langRootPath, ".project", getProjectContent(data));
-            createFile(langRootPath, ".classpath", getClasspathContent());
-            createFile(langRootPath, ".checkstyle", getCheckstyleContent());
-
-            createFile(langRootPath, ".settings", "org.eclipse.wst.common.component", getComponentContent(data));
-            createFile(langRootPath, ".settings", "org.eclipse.jdt.core.prefs", getJdtContent());
-            createFile(langRootPath, ".settings", "org.eclipse.m2e.core.prefs", getM2eContent());
-            createFile(langRootPath, ".settings", "org.eclipse.wst.validation.prefs", getValidationPreferences());
-            createFile(langRootPath, ".settings", "org.eclipse.wst.common.project.facet.core.xml", getFacetContent());
-
-            final File resourceDir = new File(langRootPath, "src/main/resources");
-            createFile(resourceDir, data.getSeriesCode() + data.getPosition() + "content.xml", getContentFile(baseData));
-            if (baseData.hasItems()) {
-                createFile(resourceDir, data.getSeriesCode() + data.getPosition() + "items.xml", getItemsFile(baseData));
-            }
-            if (baseData.hasEnemies()) {
-                createFile(resourceDir, data.getSeriesCode() + data.getPosition() + "enemies.xml", getEnemiesFile(baseData));
-            }
+            final File resourceDir = new File(rootPath, "src/main/resources");
             createFile(resourceDir, "spring", data.getSeriesCode() + data.getPosition() + "-spring.xml", getSpringFile(baseData, data));
-            createDir(resourceDir, baseData.getSeriesCode() + baseData.getPosition() + data.getLang());
-            createFile(resourceDir, "rebel.xml", getRebelXml(baseData, data));
 
-            final File codeDir = new File(langRootPath, "src/main/java/hu/zagor/gamebooks/" + baseData.getRuleset() + "/" + baseData.getSeriesCode() + "/"
+            final File codeDir = new File(rootPath, "src/main/java/hu/zagor/gamebooks/" + baseData.getRuleset() + "/" + baseData.getSeriesCode() + "/"
                 + baseData.getTitleCode() + "/mvc/books/");
             createFile(codeDir, "exception/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookExceptionController.java",
                 getExceptionController(baseData, data));
@@ -91,7 +62,7 @@ public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
             createFile(codeDir, "section/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookWelcomeController.java",
                 getWelcomeController(baseData, data));
 
-            final File testCodeDir = new File(langRootPath, "src/test/java/hu/zagor/gamebooks/" + baseData.getRuleset() + "/" + baseData.getSeriesCode() + "/"
+            final File testCodeDir = new File(rootPath, "src/test/java/hu/zagor/gamebooks/" + baseData.getRuleset() + "/" + baseData.getSeriesCode() + "/"
                 + baseData.getTitleCode() + "/mvc/books/");
             createFile(testCodeDir, "exception/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookExceptionControllerTest.java",
                 getExceptionControllerTest(baseData, data));
@@ -112,8 +83,27 @@ public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
             createFile(testCodeDir, "section/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookWelcomeControllerTest.java",
                 getWelcomeControllerTest(baseData, data));
 
+        } catch (final IOException exception) {
+            console.print("Failed to create all necessary files.");
+            exception.printStackTrace(System.out);
+        }
+    }
+
+    private void generateLanguageProject(final File langRootPath, final BookBaseData baseData, final BookLangData data) {
+        final Console console = Console.getConsole();
+        try {
+
+            final File resourceDir = new File(langRootPath, "src/main/resources");
+            createFile(resourceDir, data.getSeriesCode() + data.getPosition() + "content.xml", getContentFile(baseData));
+            if (baseData.hasItems()) {
+                createFile(resourceDir, data.getSeriesCode() + data.getPosition() + "items.xml", getItemsFile(baseData));
+            }
+            if (baseData.hasEnemies()) {
+                createFile(resourceDir, data.getSeriesCode() + data.getPosition() + "enemies.xml", getEnemiesFile(baseData));
+            }
+
             createDir(resourceDir, "messages");
-            createFile(resourceDir, "messages", "messages-" + data.getSeriesCode() + data.getPosition() + "_" + data.getLang() + ".properties", "");
+            createFile(resourceDir, "messages", "messages-" + baseData.getSeriesCode() + baseData.getPosition() + "_" + data.getLang() + ".properties", "");
 
         } catch (final IOException exception) {
             console.print("Failed to create all necessary files.");

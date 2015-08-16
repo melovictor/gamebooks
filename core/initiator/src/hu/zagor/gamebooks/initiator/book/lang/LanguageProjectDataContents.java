@@ -422,10 +422,4 @@ public class LanguageProjectDataContents {
             + "BookWelcomeController().getClass();\r\n" + "        // THEN\r\n" + "    }\r\n" + "}\r\n";
     }
 
-    public static String getRebelXml(final BookBaseData baseData, final BookLangData data) {
-        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n"
-            + "<application xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.zeroturnaround.com\" xsi:schemaLocation=\"http://www.zeroturnaround.com http://www.zeroturnaround.com/alderaan/rebel-2_0.xsd\">\r\n"
-            + "\r\n" + "    <classpath>\r\n" + "        <dir name=\"${rebel.workspace.path}/books/" + baseData.getSeriesCode() + "/" + baseData.getTitleCode() + "/"
-            + data.getSeriesCode() + data.getPosition() + "/target/classes\">\r\n" + "        </dir>\r\n" + "    </classpath>\r\n" + "\r\n" + "</application>\r\n";
-    }
 }

@@ -12,6 +12,7 @@ public class BookBaseData {
     private boolean hasInventory;
     private String defaultSkillTestType;
     private String collectorCode;
+    private String collectorName;
     private boolean mediaProject;
 
     public String getSeriesCode() {
@@ -112,6 +113,14 @@ public class BookBaseData {
 
     public boolean hasMediaProject() {
         return mediaProject;
+    }
+
+    public String getCollectorName() {
+        return collectorName;
+    }
+
+    public void setCollectorName(final String collectorName) {
+        this.collectorName = collectorName;
     }
 
 }
