@@ -32,11 +32,20 @@ public class Ff2BookTakeItemController extends FfBookTakeItemController {
 
     private static final String NORMAL_SWORD_ID = "1001";
     private static final String MAGIC_SWORD_ID = "1002";
+    private static final String SPELL_POTION_ID = "2001";
 
     @Resource(name = "ff2SpellIds")
     private List<String> spells;
     @Resource(name = "ff2RestorationSpellIds")
     private List<String> resettingSpells;
+
+    @Override
+    protected int doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
+        if (MAGIC_SWORD_ID.equals(itemId)) {
+            dropNormalSword(request);
+        }
+        return super.doHandleItemTake(request, itemId, amount);
+    }
 
     @Override
     protected String doHandleConsumeItem(final HttpServletRequest request, final String itemId) {
@@ -47,12 +56,21 @@ public class Ff2BookTakeItemController extends FfBookTakeItemController {
             }
             response = null;
         } else {
-            if (MAGIC_SWORD_ID.equals(itemId)) {
-                dropNormalSword(request);
+            if (SPELL_POTION_ID.equals(itemId) && !isFighting(request)) {
+                drinkPotion(request);
             }
             response = super.doHandleConsumeItem(request, itemId);
         }
         return response;
+    }
+
+    private void drinkPotion(final HttpServletRequest request) {
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        final Ff2Character character = (Ff2Character) wrapper.getCharacter();
+        final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
+        final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
+        itemHandler.addItem(character, character.getLastSpellCast(), 1);
+        character.setLastSpellCast(null);
     }
 
     private void dropNormalSword(final HttpServletRequest request) {
@@ -68,6 +86,7 @@ public class Ff2BookTakeItemController extends FfBookTakeItemController {
         final int attributeChange = attributeHandler.resolveValue(character, spellId) / 2;
         attributeHandler.handleModification(character, spellId, attributeChange);
         getInfo().getCharacterHandler().getItemHandler().removeItem(character, spellId, 1);
+        character.setLastSpellCast(spellId);
     }
 
     private boolean isFighting(final HttpServletRequest request) {

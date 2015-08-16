@@ -80,6 +80,9 @@ public class FfAttributeHandler {
         if (character.getLuck() < 0) {
             character.setLuck(0);
         }
+        if (character.getGold() < 0) {
+            character.setGold(0);
+        }
     }
 
     /**

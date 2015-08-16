@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 public class Ff2Character extends FfCharacter {
 
     private int initialSpell;
+    private String lastSpellCast;
 
     public int getInitialSpell() {
         return initialSpell;
@@ -21,6 +22,14 @@ public class Ff2Character extends FfCharacter {
 
     public void setInitialSpell(final int initialSpell) {
         this.initialSpell = initialSpell;
+    }
+
+    public String getLastSpellCast() {
+        return lastSpellCast;
+    }
+
+    public void setLastSpellCast(final String lastSpellCast) {
+        this.lastSpellCast = lastSpellCast;
     }
 
 }

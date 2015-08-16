@@ -19,12 +19,13 @@
             <div data-items="true">
                 <c:set var="isFirst" value="true" />
                 <c:forEach var="item" items="${charEquipments.spells}"><c:if test="${!isFirst}">,</c:if>
-                   <c:set var="isFirst" value="false" />
-                   ${item.amount}&nbsp;x&nbsp;<span data-item-id="${item.id}" data-item-provision>${item.name}</span></c:forEach>
+                    <c:set var="isFirst" value="false" />
+                    ${item.amount}&nbsp;x&nbsp;<span data-item-id="${item.id}" data-item-provision>${item.name}</span></c:forEach>
             </div>
         </div>
 
-       <tiles:insertTemplate template="../charpage/eq.jsp" />
-       <tiles:insertTemplate template="../charpage/notes.jsp" />
+        <c:set var="equipmentIncludesPotions" value="true" scope="request" />
+        <tiles:insertTemplate template="../charpage/eq.jsp" />
+        <tiles:insertTemplate template="../charpage/notes.jsp" />
     </div>
 </c:if>

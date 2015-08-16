@@ -4,8 +4,10 @@ import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.content.Paragraph;
+import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.ff.tcoc.character.Ff2Character;
 import hu.zagor.gamebooks.ff.ff.tcoc.mvc.books.section.domain.SixPickBets;
 import hu.zagor.gamebooks.ff.ff.tcoc.mvc.books.section.domain.SixPickResult;
 import hu.zagor.gamebooks.ff.ff.tcoc.mvc.books.section.service.RunestonesGame;
@@ -14,6 +16,9 @@ import hu.zagor.gamebooks.ff.mvc.book.section.controller.FfBookSectionController
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
 
+import java.util.List;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +38,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + FightingFantasy.THE_CITADEL_OF_CHAOS)
 public class Ff2BookSectionController extends FfBookSectionController {
 
+    @Resource(name = "ff2SpellIds")
+    private List<String> spellIds;
     @Autowired
     private SixPickGame sixPick;
     @Autowired
@@ -69,15 +76,28 @@ public class Ff2BookSectionController extends FfBookSectionController {
 
     @Override
     protected void handleCustomSections(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+        final Ff2Character character = (Ff2Character) wrapper.getCharacter();
+        character.setLastSpellCast(getSpellUsed(paragraph));
+
         final String paragraphId = paragraph.getId();
         if ("278round".equals(paragraphId)) {
             runeStones.playRound((FfCharacter) wrapper.getCharacter(), getInfo().getCharacterHandler(), paragraph);
         } else if ("191".equals(paragraphId)) {
-            final FfCharacter character = (FfCharacter) wrapper.getCharacter();
             final FfAttributeHandler attributeHandler = getInfo().getCharacterHandler().getAttributeHandler();
             final FfEnemy enemy = (FfEnemy) wrapper.getEnemies().get("26");
             enemy.setStamina(attributeHandler.resolveValue(character, "stamina"));
             enemy.setSkill(attributeHandler.resolveValue(character, "skill"));
         }
+    }
+
+    private String getSpellUsed(final Paragraph paragraph) {
+        String spellId = null;
+        final List<GatheredLostItem> lostItems = paragraph.getData().getLostItems();
+        for (final GatheredLostItem lostItem : lostItems) {
+            if (spellIds.contains(lostItem.getId())) {
+                spellId = lostItem.getId();
+            }
+        }
+        return spellId;
     }
 }
