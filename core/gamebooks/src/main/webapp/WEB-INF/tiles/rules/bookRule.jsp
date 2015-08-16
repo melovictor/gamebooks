@@ -6,6 +6,6 @@
   <h1 class="bookTitle"><spring:message code="page.rules.bookTitle" arguments="${helpDescriptor.info.title}" /></h1>
 
   <c:forEach var="section" items="${helpDescriptor.sections}">
-    <jsp:include page="${section.location}_${locale}/${section.jsp}.jsp" />
+    <jsp:include page="${section.location}/${section.jsp}.jsp" />
   </c:forEach>
 </div>
