@@ -355,8 +355,6 @@ public class HuHouseOfHellST extends BasicFfSeleniumTest {
         verifyPosition(0, 181);
         goToPosition(0, 181);
         verifyAttributes("fear", 10);
-        verifyPosition(0, 109);
-
     }
 
     public void testDeathByDemon() {
