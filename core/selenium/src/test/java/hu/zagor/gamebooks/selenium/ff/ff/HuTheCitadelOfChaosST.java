@@ -16,7 +16,7 @@ public class HuTheCitadelOfChaosST extends BasicFfSeleniumTest {
 
     @BeforeClass
     public void setUpClass() {
-        startBook("990162006", "kjk1");
+        startBook("990162006", "kjk6");
     }
 
     public void testHappyPath() {
