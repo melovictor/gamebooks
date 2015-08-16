@@ -1,14 +1,18 @@
 <%@page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<h2><span class="attribute">ÉLETERŐ</span> és <span class="attribute">ÉLELEM</span></h2>
-
-<p><span class="attribute">ÉLETERŐ</span> pontjaid sokszor fognak változni kalandjaid során, amint megküzdesz a szörnyekkel és elvállalsz lelkesítő feladatokat. Ahogy célodhoz közeledsz, <span class="attribute">ÉLETERŐ</span> pontjaidnak száma veszélyesen lecsökkenhet, és a csaták különösen kockázatossá válnak, ezért légy óvatos!</p>
+<h2><spring:message code="page.ff.rules.resetStamina.title" /></h2>
+<spring:message code="page.ff.rules.resetStamina.text.intro" />
 
 <c:if test="${stdHelp_hasFood}">
-    <p>Hátizsákodban ${stdHelp_foodAmount} étkezésre elegendő élelmiszer van. Bármikor megállhatsz pihenni és enni, kivéve csata közben. Minden étkezés 4 pontot ad <span class="attribute">ÉLETERŐ</span> pontjaidhoz, és 1 ponttal csökkenti Élelmiszer-tartalékodat. A <em>Kalandlapon</em> külön Élelmiszer-készlet négyzet van, hogy feljegyezd, mennyit fogyasztottál. Ne feledd, hogy hosszú utat kell megtenned, ezért bölcsen használd fel élelmiszeredet!</p>
+    <spring:message code="page.ff.rules.resetStamina.text.startWithFood" arguments="${stdHelp_foodAmount}" />
 </c:if>
 <c:if test="${!stdHelp_hasFood}">
-    <p>Ellentétben a többi Kaland, Játék, Kockázat könyvvel, most Élelmiszerkészlet nélkül kezded meg kalandjaidat, azonban a játék során lehetőséged lesz rá, hogy különböző módon növeld <span class="attribute">ÉLETERŐDET</span>.</p>
+    <spring:message code="page.ff.rules.resetStamina.text.startWithoutFood" />
 </c:if>
 
-<p>Azt se feledd, hogy <span class="attribute">ÉLETERŐ</span> pontjaid száma sohasem lépheti túl <em>Kezdeti</em> értékét, kivéve, ha egy adott oldalon ezt az utasítást kaptad.<c:if test="${stdHelp_hasPotions}"> Az <span class="attribute">ERŐ</span> Italának megivásával (lásd odébb) bármikor kezdeti értékére állíthatod vissza <span class="attribute">ÉLETERŐDET</span>.</c:if></p>
+<c:set var="resetStaminaClosingKey" value="page.ff.rules.resetStamina.text.closing" />
+<c:if test="${stdHelp_hasPotions}">
+    <c:set var="resetStaminaClosingKey" value="page.ff.rules.resetStamina.text.closing.potions" />
+</c:if>
+<spring:message code="${resetStaminaClosingKey}" />

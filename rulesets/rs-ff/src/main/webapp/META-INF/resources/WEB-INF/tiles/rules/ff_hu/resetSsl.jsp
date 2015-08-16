@@ -1,2 +1,3 @@
 <%@page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
-<h2>AZ <span class="attribute">ÜGYESSÉG</span>, <span class="attribute">ÉLETERŐ</span> ÉS <span class="attribute">SZERENCSE</span> KEZDETI ÉRTÉKRE TÖRTÉNŐ VISSZAÁLLÍTÁSA</h2>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<h2><spring:message code="page.ff.rules.resetSsl.title" /></h2>

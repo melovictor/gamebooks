@@ -1,8 +1,4 @@
 <%@page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
-<h3>A <span class="attribute">SZERENCSE</span> használata csatában</h3>
-
-<p>A könyv bizonyos oldalain felszólítunk, hogy Tedd próbára <span class="attribute">SZERENCSÉD</span>, és közöljük, hogy <span class="attribute">SZERENCSÉD</span> volt vagy sem. A csatákban azonban mindig te döntesz, hogy a <span class="attribute">SZERENCSÉD</span> segítségével megpróbálsz-e komolyabb sebet ejteni azon a teremtményen, amelyet épp megsebeztél, vagy annak a sebnek a hatását csökkenteni, amelyet a teremtménytől kaptál.</p>
-<p>Ha te sebezted meg a teremtményt, a fent leírt módon Tedd próbára a <span class="attribute">SZERENCSÉD</span>. Ha szerencsés vagy, komoly sebet ejtettél rajta, 2 külön pontot levonhatsz a teremtmény <span class="attribute">ÉLETEREJÉBŐL</span>. Azonban, ha balszerencsés vagy, a seb puszta karcolás, 1 pontot vissza kell adnod ellenfeled <span class="attribute">ÉLETERŐ</span> pontjaihoz. (A szabályos 2 pont levonás helyett most csak 1 pontot vonsz le.)</p>
-<p>Ha a teremtmény sebzett meg téged, azért teszed próbára <span class="attribute">SZERENCSÉDET</span>, hogy csökkentsd a sebet. Ha <span class="attribute">SZERENCSÉD</span> van, sikerült elkerülnöd a teljes csapást. 1 pontot visszaadsz magadnak (2 pontos kár helyett csak 1 pontos kár keletkezett <span class="attribute">ÉLETERŐDBEN</span>), Ha nem voltál <span class="attribute">SZERENCSÉS</span>, komolyabb találat ért. 1 plusz <span class="attribute">ÉLETERŐ</span> pontot vonjál le magadtól.</p>
-<p>Ne feledd, hogy minden alkalommal le kell vonnod 1 pontot adott <span class="attribute">SZERENCSE</span> pontszámodból, ahányszor Próbára teszed <span class="attribute">SZERENCSÉD</span>!</p>
-
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<h3><spring:message code="page.ff.rules.luckInBattle.title" /></h3>
+<spring:message code="page.ff.rules.luckInBattle.text" />

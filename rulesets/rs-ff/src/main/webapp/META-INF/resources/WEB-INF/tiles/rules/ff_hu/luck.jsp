@@ -1,6 +1,4 @@
 <%@page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
-<h2><span class="attribute">SZERENCSE</span></h2>
-
-<p>Kalandjaid során, akár csatában, akár olyan helyzetekben, amikor a <span class="attribute">SZERENCSE</span> dönthet sorsod alakulásában (az erre vonatkozó utasítást az adott oldalakon megtalálod), a <span class="attribute">SZERENCSÉDRE</span> is számíthatsz, hogy az események kimenetele számodra kedvező legyen. De vigyázz! A <span class="attribute">SZERENCSÉRE</span> számítani kockázatos, és ha balszerencsés vagy, az eredmény végzetes lehet.</p>
-<p><span class="attribute">SZERENCSÉDET</span> a következő módon teheted próbára. Dobj két kockával. Ha a kapott szám nem nagyobb, mint a jelenlegi <span class="attribute">SZERENCSE</span> pontszámod, az eredmény kedvező. Ha magasabb számot dobsz, mint a jelenlegi <span class="attribute">SZERENCSE</span> pontszámod, balszerencséd volt, és vállald következményeit.</p>
-<p>Úgy hívjuk ezt, hogy Tedd próbára <span class="attribute">SZERENCSÉD</span>. Minden alkalommal, amikor próbára teszed <span class="attribute">SZERENCSÉDET</span>, 1 pontot le kell vonnod <span class="attribute">SZERENCSE</span> pontjaidból. Így hamar rájössz, hogy a <span class="attribute">SZERENCSÉRE</span> hagyatkozni kockázatos vállalkozás!</p>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<h2><spring:message code="page.ff.rules.luck.title" /></h2>
+<spring:message code="page.ff.rules.luck.text" />
