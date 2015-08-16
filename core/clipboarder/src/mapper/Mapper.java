@@ -29,16 +29,12 @@ public class Mapper {
             final File serieDir = new File(root, serie);
             if (serieDir.isDirectory()) {
                 for (final File bookDir : serieDir.listFiles()) {
-                    if (bookDir.isDirectory()) {
-                        for (final File instDir : bookDir.listFiles()) {
-                            if (!instDir.getName().endsWith("med")) {
-                                final File xmlDir = new File(instDir, content);
-                                if (xmlDir.isDirectory()) {
-                                    for (final File contentFile : xmlDir.listFiles()) {
-                                        if (contentFile.getName().endsWith("content.xml") && contentFile.lastModified() > lastWeek) {
-                                            createMap(contentFile);
-                                        }
-                                    }
+                    if (bookDir.isDirectory() && bookDir.getName().startsWith("language")) {
+                        final File xmlDir = new File(bookDir, content);
+                        if (xmlDir.isDirectory()) {
+                            for (final File contentFile : xmlDir.listFiles()) {
+                                if (contentFile.getName().endsWith("content.xml") && contentFile.lastModified() > lastWeek) {
+                                    createMap(contentFile);
                                 }
                             }
                         }
