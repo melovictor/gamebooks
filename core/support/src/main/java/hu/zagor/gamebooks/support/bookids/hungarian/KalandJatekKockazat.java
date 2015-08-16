@@ -18,8 +18,8 @@ public class KalandJatekKockazat {
     public static final long A_HALALTALIZMAN = BASE + 10;
     public static final long A_REMULET_UTVESZTOJE = BASE + 11;
     public static final long TOLVAJOK_VAROSA = BASE + 12;
-    public static final long AZ_ELATKOZOTT_HAZ = BASE + 13;
-    public static final long A_SZAMURAJ_KARDJA = BASE + 14;
+    public static final long A_SZAMURAJ_KARDJA = BASE + 13;
+    public static final long AZ_ELATKOZOTT_HAZ = BASE + 14;
     public static final long A_PUSZTITAS_MASZKJAI = BASE + 15;
     public static final long A_VEGZET_ERDEJE = BASE + 16;
     public static final long A_VARAZSLO_KRIPTAJA = BASE + 17;
