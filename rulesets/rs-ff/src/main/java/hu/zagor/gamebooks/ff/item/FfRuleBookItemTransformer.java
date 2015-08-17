@@ -46,5 +46,6 @@ public class FfRuleBookItemTransformer extends AbstractBookItemTransformer {
             item.getEquipInfo().setEquipped(true);
         }
         item.getEquipInfo().setRemovable(extractBooleanAttribute(node, "removable", true));
+        item.setDescription(extractAttribute(node, "description"));
     }
 }

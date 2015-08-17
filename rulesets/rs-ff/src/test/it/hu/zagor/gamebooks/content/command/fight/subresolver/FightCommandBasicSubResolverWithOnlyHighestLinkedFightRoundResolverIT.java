@@ -196,6 +196,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         characterHandler.setBattleLuckTestParameters(battleLuckTestParameters);
 
         info = new FfBookInformations(1L);
+        info.setResourceDir("ff3");
         info.setCharacterHandler(characterHandler);
 
         resolvationData = new ResolvationData(rootData, character, enemies, info);
@@ -212,7 +213,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
         getMessageList().switchToRoundMessages();
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expect(generator.getRandomNumber(2)).andReturn(TW43);
         expect(generator.getRandomNumber(2)).andReturn(TW16);
         expect(generator.getRandomNumber(2)).andReturn(TW25);
@@ -244,7 +245,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
         getMessageList().switchToRoundMessages();
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expect(generator.getRandomNumber(2)).andReturn(TW43);
         expect(generator.getRandomNumber(2)).andReturn(TW15);
         expect(generator.getRandomNumber(2)).andReturn(TW25);
@@ -276,7 +277,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
         getMessageList().switchToRoundMessages();
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expect(generator.getRandomNumber(2)).andReturn(TW43);
         expect(generator.getRandomNumber(2)).andReturn(TW16);
         expect(generator.getRandomNumber(2)).andReturn(TW15);
@@ -308,7 +309,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
         getMessageList().switchToRoundMessages();
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expect(generator.getRandomNumber(2)).andReturn(TW43);
         expect(generator.getRandomNumber(2)).andReturn(TW14);
         expect(generator.getRandomNumber(2)).andReturn(TW15);
@@ -340,7 +341,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
         getMessageList().switchToRoundMessages();
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expect(generator.getRandomNumber(2)).andReturn(TW43);
         expect(generator.getRandomNumber(2)).andReturn(TW44);
         expect(generator.getRandomNumber(2)).andReturn(TW15);
@@ -372,7 +373,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
         getMessageList().switchToRoundMessages();
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expect(generator.getRandomNumber(2)).andReturn(TW41);
         expect(generator.getRandomNumber(2)).andReturn(TW44);
         expect(generator.getRandomNumber(2)).andReturn(TW15);
@@ -406,7 +407,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
         getMessageList().switchToRoundMessages();
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expect(generator.getRandomNumber(2)).andReturn(TW41);
         expect(generator.getRandomNumber(2)).andReturn(TW44);
         expect(generator.getRandomNumber(2)).andReturn(TW15);
@@ -445,7 +446,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
         getMessageList().switchToRoundMessages();
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expect(generator.getRandomNumber(2)).andReturn(TW41);
         expect(generator.getRandomNumber(2)).andReturn(TW44);
         expect(generator.getRandomNumber(2)).andReturn(TW15);
@@ -484,7 +485,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
         getMessageList().switchToRoundMessages();
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expect(generator.getRandomNumber(2)).andReturn(TW43);
         expect(generator.getRandomNumber(2)).andReturn(TW14);
         expect(generator.getRandomNumber(2)).andReturn(TW15);
@@ -524,7 +525,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
         getMessageList().switchToRoundMessages();
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expect(generator.getRandomNumber(2)).andReturn(TW43);
         expect(generator.getRandomNumber(2)).andReturn(TW14);
         expect(generator.getRandomNumber(2)).andReturn(TW15);
@@ -565,7 +566,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
         getMessageList().switchToRoundMessages();
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expect(generator.getRandomNumber(2)).andReturn(TW43);
         expect(generator.getRandomNumber(2)).andReturn(TW14);
         expect(generator.getRandomNumber(2)).andReturn(TW15);
@@ -601,7 +602,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
         getMessageList().switchToRoundMessages();
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expect(generator.getRandomNumber(2)).andReturn(TW43);
         expect(generator.getRandomNumber(2)).andReturn(TW14);
         expect(generator.getRandomNumber(2)).andReturn(TW15);
@@ -637,7 +638,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
         getMessageList().switchToRoundMessages();
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expect(generator.getRandomNumber(2)).andReturn(TW43);
         expect(generator.getRandomNumber(2)).andReturn(TW14);
         expect(generator.getRandomNumber(2)).andReturn(TW15);
@@ -673,7 +674,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
         getMessageList().switchToRoundMessages();
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expect(generator.getRandomNumber(2)).andReturn(TW43);
         expect(generator.getRandomNumber(2)).andReturn(TW14);
         expect(generator.getRandomNumber(2)).andReturn(TW15);
@@ -709,7 +710,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
         getMessageList().switchToRoundMessages();
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expect(generator.getRandomNumber(2)).andReturn(TW43);
         expect(generator.getRandomNumber(2)).andReturn(TW14);
         expect(generator.getRandomNumber(2)).andReturn(TW15);
@@ -744,7 +745,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
         getMessageList().switchToRoundMessages();
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expect(generator.getRandomNumber(2)).andReturn(TW43);
         expect(generator.getRandomNumber(2)).andReturn(TW14);
         expect(generator.getRandomNumber(2)).andReturn(TW15);
@@ -774,7 +775,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
     public void testDoResolveWhenInSingleBattleFleeingFromTwoEnemiesShouldBothHitFinalAttack() {
         // GIVEN
         interactionHandler.setFightCommand(character, FightCommand.FLEEING);
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        getRoundResolver();
         expectText("page.ff.label.fight.flee");
         expectText("page.ff.label.fight.single.flee", new Object[]{"Two-Headed Dog"});
         expectText("page.ff.label.fight.single.flee", new Object[]{"Two-Headed Dog"});
@@ -788,6 +789,11 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         Assert.assertEquals(enemyB.getStamina(), 9);
         Assert.assertFalse(command.isOngoing());
         Assert.assertFalse(command.isKeepOpen());
+    }
+
+    private void getRoundResolver() {
+        expect(beanFactory.containsBean("singleff3FightRoundResolver")).andReturn(true);
+        expect(beanFactory.getBean("singleff3FightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
     }
 
     @AfterMethod

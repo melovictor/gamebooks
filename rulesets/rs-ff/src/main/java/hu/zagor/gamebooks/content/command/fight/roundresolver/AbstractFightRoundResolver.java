@@ -158,7 +158,7 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
      * @param enemy the enemy for which to roll attack strength
      * @return the rolled values in the usual format
      */
-    protected int[] getEnemyAttackStrength(final FfEnemy enemy) {
+    int[] getEnemyAttackStrength(final FfEnemy enemy) {
         int[] result;
 
         if (enemy.getAttackStrength() > 0) {
@@ -169,6 +169,17 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
         }
 
         return result;
+    }
+
+    /**
+     * Rolls the attack strength for the enemies, taking into account if a specific enemy always needs to have a given attack strength.
+     * @param enemy the enemy for which to roll attack strength
+     * @param command the {@link FightCommand} object
+     * @return the rolled values in the usual format
+     */
+    int[] getEnemyAttackStrength(final FfEnemy enemy, final FightCommand command) {
+        command.getClass();
+        return getEnemyAttackStrength(enemy);
     }
 
     /**

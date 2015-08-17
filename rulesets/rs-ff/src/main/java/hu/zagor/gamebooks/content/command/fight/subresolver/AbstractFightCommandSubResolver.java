@@ -118,8 +118,19 @@ public abstract class AbstractFightCommandSubResolver implements FightCommandSub
     private void handleFleeing(final FightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
         resolveList.add(command.getFlee());
         command.setOngoing(false);
-        final FightRoundResolver roundResolver = beanFactory.getBean(command.getBattleType() + "FightRoundResolver", FightRoundResolver.class);
+        final FightRoundResolver roundResolver = getRoundResolver(command, resolvationData.getInfo().getResourceDir());
         roundResolver.resolveFlee(command, resolvationData);
+    }
+
+    private FightRoundResolver getRoundResolver(final FightCommand command, final String resDir) {
+        final String specificName = command.getBattleType() + resDir + "FightRoundResolver";
+        FightRoundResolver roundResolver;
+        if (beanFactory.containsBean(specificName)) {
+            roundResolver = beanFactory.getBean(specificName, FightRoundResolver.class);
+        } else {
+            roundResolver = beanFactory.getBean(command.getBattleType() + "FightRoundResolver", FightRoundResolver.class);
+        }
+        return roundResolver;
     }
 
     /**
@@ -197,7 +208,7 @@ public abstract class AbstractFightCommandSubResolver implements FightCommandSub
 
     void executeBattle(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         command.setKeepOpen(true);
-        final FightRoundResolver roundResolver = beanFactory.getBean(command.getBattleType() + "FightRoundResolver", FightRoundResolver.class);
+        final FightRoundResolver roundResolver = getRoundResolver(command, resolvationData.getInfo().getResourceDir());
         final FightRoundResult[] roundResults = roundResolver.resolveRound(command, resolvationData, beforeRoundResult);
         updateBattleStatistics(command, roundResults);
     }

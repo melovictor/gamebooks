@@ -130,6 +130,7 @@ public class FfRuleBookItemTransformerTest extends AbstractTransformerTest {
         expectAttribute("forceEquip", forceEquip);
 
         expectAttribute("removable");
+        expectAttribute("description");
     }
 
     @AfterMethod

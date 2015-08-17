@@ -18,6 +18,7 @@ public class Item implements TrueCloneable {
     private WeaponSubType subType;
     private EquipInfo equipInfo;
     private int backpackSize = 1;
+    private String description;
 
     /**
      * Constructor for the deserializer.
@@ -116,6 +117,14 @@ public class Item implements TrueCloneable {
 
     public void setBackpackSize(final int backpackSize) {
         this.backpackSize = backpackSize;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(final String description) {
+        this.description = description;
     }
 
 }
