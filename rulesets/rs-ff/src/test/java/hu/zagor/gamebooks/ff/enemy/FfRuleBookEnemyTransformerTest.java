@@ -107,7 +107,6 @@ public class FfRuleBookEnemyTransformerTest extends AbstractTransformerTest {
         expectAttribute("fleeAtStamina");
         expectAttribute("fleeAtRound");
         expectAttribute("same");
-        expectAttribute("forceFight");
         expectAttribute("startAtRound");
     }
 

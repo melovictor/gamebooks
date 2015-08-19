@@ -17,6 +17,7 @@ public class GatheredLostItem implements TrueCloneable {
     private final String id;
     private final int amount;
     private final int dose;
+    private final boolean unequippedOnly;
 
     /**
      * Default constructor for the deserializer.
@@ -25,6 +26,7 @@ public class GatheredLostItem implements TrueCloneable {
         id = "";
         amount = 0;
         dose = 0;
+        unequippedOnly = false;
     }
 
     /**
@@ -32,8 +34,9 @@ public class GatheredLostItem implements TrueCloneable {
      * @param id the id of the item that has been gathered or lost, cannot be null
      * @param amount the amount of the given item that has been gathered or lost, must be positive
      * @param dose the number of doses to lose
+     * @param unequippedOnly true if only unequipped items are to be considered during the removal, false when all
      */
-    public GatheredLostItem(final String id, final int amount, final int dose) {
+    public GatheredLostItem(final String id, final int amount, final int dose, final boolean unequippedOnly) {
         Assert.notNull(id, "The parameter 'id' cannot be null!");
         Assert.isTrue(id.length() > 0, "The parameter 'id' cannot be empty!");
         Assert.isTrue((amount > 0 && dose == 0) || (amount == 0 && dose > 0), "The parameter 'amount' or 'dose' must be positive, the other one must be zero!");
@@ -41,6 +44,7 @@ public class GatheredLostItem implements TrueCloneable {
         this.id = id;
         this.amount = amount;
         this.dose = dose;
+        this.unequippedOnly = unequippedOnly;
     }
 
     public String getId() {
@@ -58,5 +62,9 @@ public class GatheredLostItem implements TrueCloneable {
 
     public int getDose() {
         return dose;
+    }
+
+    public boolean isUnequippedOnly() {
+        return unequippedOnly;
     }
 }

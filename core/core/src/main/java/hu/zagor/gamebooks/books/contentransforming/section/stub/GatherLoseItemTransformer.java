@@ -19,7 +19,8 @@ public abstract class GatherLoseItemTransformer extends AbstractStubTransformer 
         final String id = extractAttribute(node, "id");
         final int amount = extractIntegerAttribute(node, "amount", 1);
         final int dose = extractIntegerAttribute(node, "dose", 0);
-        return (GatheredLostItem) getBeanFactory().getBean("gatheredLostItem", id, amount, dose);
+        final boolean unequippedOnly = extractBooleanAttribute(node, "unequippedOnly", false);
+        return (GatheredLostItem) getBeanFactory().getBean("gatheredLostItem", id, amount, dose, unequippedOnly);
     }
 
 }

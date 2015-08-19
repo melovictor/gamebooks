@@ -22,14 +22,11 @@
 
 </div>
 <div id="ffEnemyList">
-    <c:set var="hasForced" value="false" />
-	<c:forEach var="enemy" items="${fightCommand.resolvedEnemies}">
+    <c:set var="forcedOrder" value="${fightCommand.forceOrder}" />
+	<c:forEach var="enemy" items="${fightCommand.resolvedEnemies}" varStatus="status">
 	    <br />
         <c:if test="${enemy.stamina > 0}">
-            <span data-enemy-id="${enemy.id}" data-enemy-name data-enemy-selected="${hasForced && !enemy.forced ? 'disabled' : (param.id == enemy.id || firstEnemy ? 'true' : 'false')}" data-enemy-forced="${enemy.forced}">${enemy.name}</span>
-            <c:if test="${enemy.forced}">
-                <c:set var="hasForced" value="true" />
-            </c:if>
+            <span data-enemy-id="${enemy.id}" data-enemy-name data-enemy-selected="${forcedOrder ? (status.first ? 'true' : 'disabled') : (param.id == enemy.id || firstEnemy)}" data-enemy-forced="${forcedOrder && status.first}">${enemy.name}</span>
         </c:if>
         <c:if test="${enemy.stamina <= 0}">
            <span data-enemy-id="${enemy.id}" data-enemy-name>${enemy.name}</span>

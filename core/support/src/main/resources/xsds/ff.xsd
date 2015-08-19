@@ -263,6 +263,7 @@
               </xs:documentation>
             </xs:annotation>
           </xs:attribute>
+          <xs:attribute name="unequippedOnly" type="xs:boolean" use="optional" default="false" />
         </xs:complexType>
       </xs:element>
       <xs:element name="hideItem" minOccurs="0" maxOccurs="unbounded">
@@ -582,6 +583,14 @@
           <xs:attribute name="forceWeapon" use="optional" type="xs:string" />
           <xs:attribute name="attackStrengthRolledDices" use="optional" type="xs:integer" default="2" />
           <xs:attribute name="attackStrengthUsedDices" use="optional" type="xs:integer" default="2" />
+          <xs:attribute name="forceOrder" use="optional" type="xs:boolean" default="false">
+            <xs:annotation>
+              <xs:documentation>
+                Force the order in which we must fight the enemies to be the same as the order in which they appear in the list.
+                Default is false.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
           <xs:attribute name="type" use="required">
             <xs:simpleType>
               <xs:union>

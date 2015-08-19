@@ -83,6 +83,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         expect(beanFactory.getBean(FightCommand.class)).andReturn(command);
         expectAttribute("type", "single");
         expectAttribute("resolver");
+        expectAttribute("forceOrder");
         expectAttribute("attackStrengthRolledDices");
         expectAttribute("attackStrengthUsedDices");
         expectAttribute("recoverDamage");
@@ -115,6 +116,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         expect(beanFactory.getBean(FightCommand.class)).andReturn(command);
         expectAttribute("type", "shooting");
         expectAttribute("resolver", "shooting");
+        expectAttribute("forceOrder");
         expectAttribute("attackStrengthRolledDices");
         expectAttribute("attackStrengthUsedDices");
         expectAttribute("recoverDamage");
@@ -146,6 +148,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         expect(beanFactory.getBean(FightCommand.class)).andReturn(command);
         expectAttribute("type", "single");
         expectAttribute("resolver");
+        expectAttribute("forceOrder");
         expectAttribute("attackStrengthRolledDices", "3");
         expectAttribute("attackStrengthUsedDices", "3");
         expectAttribute("recoverDamage");
@@ -178,6 +181,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         expect(beanFactory.getBean(FightCommand.class)).andReturn(command);
         expectAttribute("type", "single");
         expectAttribute("resolver");
+        expectAttribute("forceOrder");
         expectAttribute("attackStrengthRolledDices");
         expectAttribute("attackStrengthUsedDices");
         expectAttribute("recoverDamage");

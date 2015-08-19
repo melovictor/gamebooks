@@ -1542,7 +1542,7 @@
         [p]Mindegyik Fordulóban 3 pontot le kell vonnod Támadóerődből, mivel puszta kézzel harcolsz.[/p]
     </text>
     <gatherItem id="4001" amount="3" />
-    <fight type="single">
+    <fight type="single" forceWeapon="defWpn">
       <enemy id="24" />
       <winRound enemy="24" totalCount="2">
         <interrupt />
@@ -1612,21 +1612,163 @@
   </p>
   <p id="309">
     <text>
-        [p]Mindkét Gyíkember háttal áll, amikor rájuk támadsz. Az egyiket le tudod mészárolni, mielőtt észrevennék a támadást, de a másikkal meg kell küzdened![/p]
+        [p]Mindkét Gyíkember háttal áll, amikor rájuk támadsz. Az egyiket le tudod ütni a kardod markolatával, mielőtt észrevennék a támadást, de a másikkal meg kell küzdened![/p]
     </text>
     <fight type="single">
       <enemy id="25" />
     </fight>
     <next id="368"></next>
   </p>
-
-
-
-
-
-
-
-
-
-
+  <p id="368">
+    <text>
+        [p]Gyorsan átkutatod a Gyíkemberek tetemét. Egyikük zsebében [span class="takeItem" data-id="3015" data-amount="1"]három vaskulcsot[/span] találsz, amit zsebre vágsz. Nem vesztegeted tovább az időt, elindulsz, hogy megkeresd a foglyokat.[/p]
+    </text>
+    <next id="147"></next>
+  </p>
+  <p id="163">
+    <text>
+        [p]A Gyíkemberek észrevesznek, és gyorsan reagálnak. Mindkettőjükkel egyszerre kell megküzdened.[/p]
+    </text>
+    <fight type="allAtOnce">
+    <enemy id="26"/>
+    <enemy id="27"/>
+    </fight>
+    <next id="368"></next>
+  </p>
+  <p id="43">
+    <text>
+        [p]A Gyíkemberek észrevesznek és gyorsan reagálnak. Mindkettőjükkel egyszerre kell megküzdened.[/p]
+    </text>
+     <fight type="allAtOnce" forceOrder="true">
+    <enemy id="26"/>
+    <enemy id="27"/>
+    <winRound enemy="27" totalCount="2">
+    <interrupt/>
+    </winRound>
+    </fight>
+    <next id="284"></next>
+  </p>
+  <p id="284">
+    <text>
+        [p]Odamész a sebesült Gyíkemberhez, és felszólítod, hogy adja meg magát. Eldobja a kardját és a korbácsát, kétrét görnyed előtted, majd erősen zihálva a földre bukik. Két karját a háta mögött összekötözöd a korbácsával, és betuszkolod a kunyhóba. Követeled, hogy mondja meg, hol van a bánya. Elárulja, hogy a bánya bejárata nincs messze; körülbelül száz méterre található a kunyhó mögött. Odakötözöd a Gyíkembert egy oszlophoz és a kunyhót elhagyva elindulsz, hogy megkeresd a bányát.[/p]
+    </text>
+    <next id="147"></next>
+  </p>
+  <p id="241">
+    <text>
+        [p]Mindkét Gyíkember háttal áll, amikor rájuk veted magad. Az egyiket sikerül leütnöd a kardod markolatával, úgyhogy ez el is veszti az eszméletét, de a másikkal meg kell küzdened.[/p]
+    </text>
+    <fight type="single">
+    <enemy id="25"/>
+    </fight>
+    <next id="189"></next>
+  </p>
+  <p id="189">
+    <text>
+        [p]Mielőtt az eszméletét vesztett Gyíkember magához térne, átkutatod a zsebeit. [span class="takeItem" data-id="3015" data-amount="1"]Három vaskulcsot[/span] találsz. Magadhoz veszed és zsebre vágod őket. Ezután hátrakötöd mindkét kezét, és behúzod a kunyhóba. Amint magához tér, követeled, hogy árulja el, mit tud a fogoly bányászokról? Elmondja, hogy a bánya bejárata nincs messze - vagy százméternyire van a kunyhók mögött. Kikötöd a Gyíkembert egy póznához, és elhagyod a kunyhót, hogy megkeresd a bányákat.[/p]
+    </text>
+    <next id="147"></next>
+  </p>
+  <p id="28">
+    <text>
+        [p]A vágat egyszer csak elágazik.[/p]
+    </text>
+    <next id="226">Ha balra indulsz</next>
+    <next id="101">Ha egyenesen előre folytatod ez utadat</next>
+  </p>
+  <p id="101">
+    <text>
+        [p]Egy oldalára dőlt fakerekű kézikocsit teszel észre a vágat közepén. Teljesen elállja az utadat. Kicsiny, összetört csontváz fekszik mellette, valószínűleg egy Törpéé. A vágatból kerek fúrólyuk nyílik. Arra gondolsz, vajon nem a Sziklahernyó támadta-e meg a szegény Törpét. A vágat hosszú, nem látod a végét, de életnek semmi nyomát nem tapasztalod.[/p]
+    </text>
+    <next id="10">Ha be akarsz mászni a fúrólyukba</next>
+    <next id="321">Ha a kézikocsin átmászva folytatod az utadat a vágatban</next>
+  </p>
+  <p id="10">
+    <text>
+        [p]Olyan sötét van a fúrólyukban, hogy még a kinyújtott kezedet sem látod.[/p]
+    </text>
+    <next id="34">Ha továbbra is erre akarsz lefelé kúszni</next>
+    <next id="321">Ha inkább visszafordulsz és a vájatban mész tovább a kézikocsi mellett elhaladva</next>
+  </p>
+  <p id="34">
+    <text>
+        [p]Tovább kúszol lefelé a vágatban, de csakhamar rájössz, hogy az nem vezet sehová. Alig van hely, hogy megfordulj, így aztán fejedet két lábad közé dugva hátrabukfencezel. Visszamászol a fúrólyukon, ahonnan szabadon eléred a fővágatot. Amikor azonban a fúrólyukban hátrabukfenceztél, valami kiesett a hátizsákodból. 1 Szerencse pontot vesztesz. Kimászol a fúrólyukból, és balra fordulsz a vágatban.[/p]
+    </text>
+    <loseItem id="3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3015,2000,2001,2002,2003" amount="1" unequippedOnly="true"/>
+    <add amount="-1" to="luck"/>
+    <next id="321"></next>
+  </p>
+  <p id="321">
+    <text>
+        [p]A vágat egy elágazásba torkollik.[/p]
+    </text>
+    <next id="19">Ha balra akarsz fordulni</next>
+    <next id="39">Ha jobbra akarsz menni</next>
+  </p>
+  <p id="19">
+    <text>
+        [p]A vágatnak ez a része olyan, mintha rég nem használták volna. A mennyezetet tartó gerendák megrepedeztek, és úgy látod, életveszélyesek. Egy függőlegesen lefelé haladó tárna széléhez érsz, mely mögött nem sokkal véget ér a vágat. Nincs létra, amelyen lemászhatnál.[/p]
+    </text>
+    <itemCheck type="item" id="3012">
+    <haveEquipped>
+    <next id="392"></next>
+    </haveEquipped>
+    <have>
+    <next id="246"></next>
+    </have>
+    <dontHave>
+    <next id="246"></next>
+    </dontHave>
+    </itemCheck>
+  </p>
+  <p id="392">
+    <text>
+        [p]Hirtelen átvillan az agyadon az a gondolat, hagy talán a csizma, amit a lábadon viselsz, varázserejű lehet. Talpadat a falhoz nyomod, és megpróbálsz rajta felmenni. Csodák csodájára sikerül! A Mindentmászó Varázscsizma van a lábadon! Nyersz 1 Szerencse pontot! Lemászol a falról, és kissé félénken odalépsz a tárna széléhez. Furcsa érzés merőlegesen lemenni a falon, mint egy légy. A tárna mély, de végül is leérsz az aljára. Lent koromsötét van. Végigtapogatod a falat, de nem találsz semmilyen vágatot, ami kivezetne belőle. Már éppen visszaindulnál a tárna oldalfalán, amikor belebotlasz valamibe. Lehajolsz, és egy kard élét tapintod ki. Visszamész a vágatba, ahol megvizsgálod legújabb szerzeményedet. A fáklyák sárga fénye gyönyörűen megmunkált [span class="takeItem" data-id="1003" data-amount="1"]kardot[/span] világít meg. Nyersz 2 Ügyesség pontot! Ledobod a tárnába a régi kardodat, és visszatérsz az elágazáshoz.[/p]
+    </text>
+    <add amount="1" to="luck"/>
+    <next id="135"></next>
+  </p>
+  <p id="135">
+    <text>
+        [p]Merre mész tovább a kereszteződéstől?[/p]
+    </text>
+    <next id="39">Ha egyenesen előre</next>
+    <next id="361">Ha jobbra</next>
+  </p>
+  <p id="39">
+    <text>
+        [p]A vágat aljában kókusz nagyságú szikladarabok hevernek. A felületük meglepően sima. Némelyik mintha mozogna kissé, de te arra gyanakszol, hogy ez nem más, mint a fény és az árnyék játéka. Ekkor aztán az egyik szikladarab életre kel, és parányi lábain feléd iramodik. Hasító fájdalmat érzel lábadban, mintha éles fogak vájtak volna a húsodba. 1 Életerő pontot veszítesz. Rémülten veszed észre, hogy Grannituszok, tatuhoz hasonló gonosz emberevő állatok vettek körül.[/p]
+    </text>
+    <add amount="-1" to="stamina"/>
+    <itemCheck type="section" id="145">
+    <have>
+    <next id="207"></next>
+    </have>
+    <dontHave>
+    <next id="25"></next>
+    </dontHave>
+    </itemCheck>
+  </p>
+  <p id="207">
+    <text>
+        [p]A Grannitusz hirtelen elereszti a lábszáradat, és a földre zuhansz. Jókorát rúgsz belé, és nézed, mint száll el a vágaton lefelé. A Csörgőkígyó mérge ölte meg, ami a szervezetedben elraktározódott. A többi Grannitusz észreveszi, hogy mi történt, és gyorsan visszahúzódik a vágat falának sötét mélyedéseibe.[/p]
+    </text>
+    <itemCheck type="item" id="3013">
+    <have>
+    <next id="371"></next>
+    </have>
+    <dontHave>
+    <next id="192"></next>
+    </dontHave>
+    </itemCheck>
+  </p>
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </content>

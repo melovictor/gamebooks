@@ -53,10 +53,10 @@ public class FfRuleBookParagraphResolverTest {
         logger = mockControl.createMock(Logger.class);
         Whitebox.setInternalState(underTest, "logger", logger);
 
-        eqWpn = new GatheredLostItem("equippedWeapon", 1, 0);
-        normalItem = new GatheredLostItem("3005", 1, 0);
-        doseFromNormalItem = new GatheredLostItem("3005", 0, 1);
-        doseFromPotion = new GatheredLostItem("2003", 0, 1);
+        eqWpn = new GatheredLostItem("equippedWeapon", 1, 0, false);
+        normalItem = new GatheredLostItem("3005", 1, 0, false);
+        doseFromNormalItem = new GatheredLostItem("3005", 0, 1, false);
+        doseFromPotion = new GatheredLostItem("2003", 0, 1, false);
     }
 
     @BeforeMethod
@@ -86,7 +86,7 @@ public class FfRuleBookParagraphResolverTest {
         lostItems.add(normalItem);
         expect(paragraphData.getLostItems()).andReturn(lostItems);
         logger.debug("Lost item {}", "3005");
-        itemHandler.removeItem(character, "3005", 1);
+        itemHandler.removeItem(character, normalItem);
         expect(paragraphData.getLostItems()).andReturn(lostItems);
         mockControl.replay();
         // WHEN

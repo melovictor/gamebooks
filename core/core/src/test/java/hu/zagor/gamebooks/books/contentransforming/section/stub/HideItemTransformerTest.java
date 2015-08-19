@@ -37,7 +37,7 @@ public class HideItemTransformerTest extends AbstractTransformerTest {
         parent = mockControl.createMock(BookParagraphDataTransformer.class);
         beanFactory = mockControl.createMock(BeanFactory.class);
         underTest.setBeanFactory(beanFactory);
-        glItem = new GatheredLostItem("3001", 1, 0);
+        glItem = new GatheredLostItem("3001", 1, 0, false);
     }
 
     @BeforeMethod
@@ -50,7 +50,8 @@ public class HideItemTransformerTest extends AbstractTransformerTest {
         expectAttribute("id", "3001");
         expectAttribute("amount");
         expectAttribute("dose");
-        expect(beanFactory.getBean("gatheredLostItem", "3001", 1, 0)).andReturn(glItem);
+        expectAttribute("unequippedOnly");
+        expect(beanFactory.getBean("gatheredLostItem", "3001", 1, 0, false)).andReturn(glItem);
         data.addHiddenItem(glItem);
         mockControl.replay();
         // WHEN

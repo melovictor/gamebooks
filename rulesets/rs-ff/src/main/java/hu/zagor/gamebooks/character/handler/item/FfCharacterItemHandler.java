@@ -7,6 +7,7 @@ import hu.zagor.gamebooks.character.item.EquipInfo;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
+import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 
 import java.util.Arrays;
@@ -31,6 +32,12 @@ public class FfCharacterItemHandler extends DefaultCharacterItemHandler {
     @Override
     public void removeItem(final Character character, final String itemId, final int amount) {
         super.removeItem(character, itemId, amount);
+        getEquippedWeapon((FfCharacter) character);
+    }
+
+    @Override
+    public void removeItem(final Character character, final GatheredLostItem item) {
+        super.removeItem(character, item);
         getEquippedWeapon((FfCharacter) character);
     }
 

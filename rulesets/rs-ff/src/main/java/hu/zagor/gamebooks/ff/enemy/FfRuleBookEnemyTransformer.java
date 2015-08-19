@@ -86,7 +86,6 @@ public class FfRuleBookEnemyTransformer extends AbstractTransformer implements B
         enemy.setFleeAtStamina(extractIntegerAttribute(node, "fleeAtStamina", 0));
         enemy.setFleeAtRound(extractIntegerAttribute(node, "fleeAtRound", Integer.MAX_VALUE));
         enemy.setAlterId(extractAttribute(node, "same"));
-        enemy.setForced(extractBooleanAttribute(node, "forceFight", false));
         enemy.setStartAtRound(extractIntegerAttribute(node, "startAtRound", 1));
 
         return enemy;

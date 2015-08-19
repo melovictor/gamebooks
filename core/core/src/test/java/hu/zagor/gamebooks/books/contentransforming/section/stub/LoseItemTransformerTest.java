@@ -85,8 +85,8 @@ public class LoseItemTransformerTest extends AbstractTransformerTest {
         expectAttribute("id", ID);
         expectAttribute("amount", AMOUNT_STRING);
         expectAttribute("dose");
-
-        expect(beanFactory.getBean("gatheredLostItem", ID, AMOUNT, 0)).andReturn(gatheredLostItem);
+        expectAttribute("unequippedOnly");
+        expect(beanFactory.getBean("gatheredLostItem", ID, AMOUNT, 0, false)).andReturn(gatheredLostItem);
 
         data.addLostItem(gatheredLostItem);
 
@@ -102,8 +102,8 @@ public class LoseItemTransformerTest extends AbstractTransformerTest {
         expectAttribute("id", ID);
         expectAttribute("amount");
         expectAttribute("dose");
-
-        expect(beanFactory.getBean("gatheredLostItem", ID, 1, 0)).andReturn(gatheredLostItem);
+        expectAttribute("unequippedOnly");
+        expect(beanFactory.getBean("gatheredLostItem", ID, 1, 0, false)).andReturn(gatheredLostItem);
 
         data.addLostItem(gatheredLostItem);
 

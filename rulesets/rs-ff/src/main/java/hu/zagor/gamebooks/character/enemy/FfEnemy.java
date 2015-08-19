@@ -1,9 +1,12 @@
 package hu.zagor.gamebooks.character.enemy;
 
+import hu.zagor.gamebooks.books.saving.domain.IgnoreField;
+
 /**
  * Enemy object for the Fighting Fantasy ruleset.
  * @author Tamas_Szekeres
  */
+@IgnoreField("forced")
 public class FfEnemy extends Enemy {
 
     private String commonName;
@@ -32,7 +35,6 @@ public class FfEnemy extends Enemy {
 
     private String alterId;
     private FfEnemy alterEgo;
-    private boolean forced;
     private int startAtRound;
 
     public int getSkill() {
@@ -216,14 +218,6 @@ public class FfEnemy extends Enemy {
 
     public void setStartAtRound(final int startAtRound) {
         this.startAtRound = startAtRound;
-    }
-
-    public boolean isForced() {
-        return forced;
-    }
-
-    public void setForced(final boolean forced) {
-        this.forced = forced;
     }
 
     public int getAttackStrength() {

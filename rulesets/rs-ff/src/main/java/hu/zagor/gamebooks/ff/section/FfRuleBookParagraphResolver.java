@@ -76,7 +76,7 @@ public class FfRuleBookParagraphResolver extends RawRuleBookParagraphResolver {
                         itemHandler.removeItem(character, item.getId(), 1);
                     }
                 } else {
-                    itemHandler.removeItem(character, item.getId(), item.getAmount());
+                    itemHandler.removeItem(character, item);
                 }
             }
         }

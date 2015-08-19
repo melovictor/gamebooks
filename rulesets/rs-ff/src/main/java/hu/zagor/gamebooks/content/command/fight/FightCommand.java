@@ -68,6 +68,7 @@ public class FightCommand extends Command {
     private WeaponReplacementData replacementData;
 
     private List<ItemType> usableWeaponTypes;
+    private boolean forceOrder;
 
     @Autowired
     private FightCommandMessageList messages;
@@ -334,6 +335,14 @@ public class FightCommand extends Command {
 
     public void setAttackStrengthUsedDices(final int attackStrengthUsedDices) {
         this.attackStrengthUsedDices = attackStrengthUsedDices;
+    }
+
+    public boolean isForceOrder() {
+        return forceOrder;
+    }
+
+    public void setForceOrder(final boolean forceOrder) {
+        this.forceOrder = forceOrder;
     }
 
 }

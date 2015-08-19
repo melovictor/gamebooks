@@ -17,7 +17,7 @@ public class GatheredLostItemTest {
     public void testConstructorWhenIdIsNullShouldThrowException() {
         // GIVEN
         // WHEN
-        new GatheredLostItem(null, TEST_AMOUNT, 0).getClass();
+        new GatheredLostItem(null, TEST_AMOUNT, 0, false).getClass();
         // THEN throws exception
     }
 
@@ -25,7 +25,7 @@ public class GatheredLostItemTest {
     public void testConstructorWhenIdIsEmptyShouldThrowException() {
         // GIVEN
         // WHEN
-        new GatheredLostItem("", TEST_AMOUNT, 0).getClass();
+        new GatheredLostItem("", TEST_AMOUNT, 0, false).getClass();
         // THEN throws exception
     }
 
@@ -33,7 +33,7 @@ public class GatheredLostItemTest {
     public void testConstructorWhenAmountAndDoseAreZeroShouldThrowException() {
         // GIVEN
         // WHEN
-        new GatheredLostItem(ID, 0, 0).getClass();
+        new GatheredLostItem(ID, 0, 0, false).getClass();
         // THEN throws exception
     }
 
@@ -41,7 +41,7 @@ public class GatheredLostItemTest {
     public void testConstructorWhenAmountIsNegativeShouldThrowException() {
         // GIVEN
         // WHEN
-        new GatheredLostItem(ID, -TEST_AMOUNT, 1).getClass();
+        new GatheredLostItem(ID, -TEST_AMOUNT, 1, false).getClass();
         // THEN throws exception
     }
 
@@ -57,7 +57,7 @@ public class GatheredLostItemTest {
 
     public void testGetIdShouldReturnId() {
         // GIVEN
-        final GatheredLostItem underTest = new GatheredLostItem(ID, TEST_AMOUNT, 0);
+        final GatheredLostItem underTest = new GatheredLostItem(ID, TEST_AMOUNT, 0, false);
         // WHEN
         final String returned = underTest.getId();
         // THEN
@@ -66,7 +66,7 @@ public class GatheredLostItemTest {
 
     public void testGetAmountShouldReturnAmount() {
         // GIVEN
-        final GatheredLostItem underTest = new GatheredLostItem(ID, TEST_AMOUNT, 0);
+        final GatheredLostItem underTest = new GatheredLostItem(ID, TEST_AMOUNT, 0, false);
         // WHEN
         final int returned = underTest.getAmount();
         // THEN
@@ -75,7 +75,7 @@ public class GatheredLostItemTest {
 
     public void testGetDoseShouldReturnDose() {
         // GIVEN
-        final GatheredLostItem underTest = new GatheredLostItem(ID, 0, 3);
+        final GatheredLostItem underTest = new GatheredLostItem(ID, 0, 3, false);
         // WHEN
         final int returned = underTest.getDose();
         // THEN
@@ -84,7 +84,7 @@ public class GatheredLostItemTest {
 
     public void testCloneShouldReturnClonedItem() throws CloneNotSupportedException {
         // GIVEN
-        final GatheredLostItem underTest = new GatheredLostItem(ID, TEST_AMOUNT, 0);
+        final GatheredLostItem underTest = new GatheredLostItem(ID, TEST_AMOUNT, 0, false);
         // WHEN
         final GatheredLostItem returned = underTest.clone();
         // THEN

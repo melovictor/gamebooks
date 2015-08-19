@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.books.saving.xml;
 
 import hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper;
-import hu.zagor.gamebooks.books.saving.xml.exception.UnknownFieldTypeException;
 import hu.zagor.gamebooks.support.logging.LogInject;
 import hu.zagor.gamebooks.support.logging.LoggerInjector;
 
@@ -43,6 +42,8 @@ public class DefaultXmlGameStateLoader implements XmlGameStateLoader, BeanFactor
     private DocumentBuilderFactory builderFactory;
     @Autowired
     private LoggerInjector loggerInjector;
+    @Autowired
+    private ClassFieldFilter classFieldFilter;
 
     @Override
     public Object load(final String content) {
@@ -67,7 +68,7 @@ public class DefaultXmlGameStateLoader implements XmlGameStateLoader, BeanFactor
         return namedItem == null ? null : namedItem.getNodeValue();
     }
 
-    private void initInstance(final Object parsed, final Node objectNode) throws ReflectiveOperationException, UnknownFieldTypeException {
+    private void initInstance(final Object parsed, final Node objectNode) throws Exception {
         final NodeList childNodes = objectNode.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             final Node childNode = childNodes.item(i);
@@ -77,10 +78,10 @@ public class DefaultXmlGameStateLoader implements XmlGameStateLoader, BeanFactor
         }
     }
 
-    private void populateField(final Object parsed, final Node fieldNode) throws ReflectiveOperationException, UnknownFieldTypeException {
+    private void populateField(final Object parsed, final Node fieldNode) throws Exception {
         final String nodeName = fieldNode.getNodeName();
         final Field field = getDeclaredField(parsed.getClass(), nodeName);
-        if (field == null) {
+        if (field == null && classFieldFilter.isIgnorableField(parsed, nodeName)) {
             throw new NoSuchFieldException("The field '" + nodeName + "' doesn't exists.");
         }
         final Object fieldObject = getFieldObjectFromNode(fieldNode);
@@ -91,7 +92,7 @@ public class DefaultXmlGameStateLoader implements XmlGameStateLoader, BeanFactor
         return ReflectionUtils.findField(klass, nodeName);
     }
 
-    private Object getFieldObjectFromNode(final Node fieldNode) throws ReflectiveOperationException, UnknownFieldTypeException {
+    private Object getFieldObjectFromNode(final Node fieldNode) throws Exception {
         Object fieldObject;
         if (TRUE.equals(getAttributeValue(fieldNode, "isNull"))) {
             fieldObject = null;
@@ -126,7 +127,7 @@ public class DefaultXmlGameStateLoader implements XmlGameStateLoader, BeanFactor
     }
 
     @SuppressWarnings("unchecked")
-    private Object getMap(final String className, final Node fieldNode) throws ReflectiveOperationException, UnknownFieldTypeException {
+    private Object getMap(final String className, final Node fieldNode) throws Exception {
         final Map<Object, Object> map = (Map<Object, Object>) this.getInstance(className);
 
         final NodeList childNodes = fieldNode.getChildNodes();
@@ -142,7 +143,7 @@ public class DefaultXmlGameStateLoader implements XmlGameStateLoader, BeanFactor
         return map;
     }
 
-    private Object getNode(final Node node, final String string) throws ReflectiveOperationException, UnknownFieldTypeException {
+    private Object getNode(final Node node, final String string) throws Exception {
         Object parsedObject = null;
         final NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
@@ -154,7 +155,7 @@ public class DefaultXmlGameStateLoader implements XmlGameStateLoader, BeanFactor
         return parsedObject;
     }
 
-    private Object getList(final String className, final Node fieldNode) throws ReflectiveOperationException, UnknownFieldTypeException {
+    private Object getList(final String className, final Node fieldNode) throws Exception {
         @SuppressWarnings("unchecked")
         final Collection<Object> list = (Collection<Object>) this.getInstance(className);
 
@@ -170,7 +171,7 @@ public class DefaultXmlGameStateLoader implements XmlGameStateLoader, BeanFactor
         return list;
     }
 
-    private Object getSimpleType(final String className, final Node fieldNode) throws UnknownFieldTypeException, UnknownFieldTypeException {
+    private Object getSimpleType(final String className, final Node fieldNode) throws Exception {
         final Node valueNode = fieldNode.getChildNodes().item(0);
         final String nodeValue = valueNode == null ? "" : valueNode.getNodeValue();
         Object parsedValue = null;
@@ -185,20 +186,22 @@ public class DefaultXmlGameStateLoader implements XmlGameStateLoader, BeanFactor
         } else if ("java.lang.Boolean".equals(className)) {
             parsedValue = Boolean.valueOf(nodeValue);
         } else {
-            throw new UnknownFieldTypeException(className);
+            classFieldFilter.raiseFieldException(className);
         }
         return parsedValue;
     }
 
     private void setField(final Object parsed, final Field field, final Object parsedValue) throws ReflectiveOperationException {
-        if (parsedValue == null || ClassUtils.isAssignable(field.getType(), parsedValue.getClass())) {
-            field.setAccessible(true);
-            field.set(parsed, parsedValue);
-            field.setAccessible(false);
-        } else {
-            final String setterName = "set" + field.getName().substring(0, 1).toUpperCase() + field.getName().substring(1);
-            final Method setterMethod = ReflectionUtils.findMethod(parsed.getClass(), setterName, parsedValue.getClass());
-            setterMethod.invoke(parsed, parsedValue);
+        if (field != null) {
+            if (parsedValue == null || ClassUtils.isAssignable(field.getType(), parsedValue.getClass())) {
+                field.setAccessible(true);
+                field.set(parsed, parsedValue);
+                field.setAccessible(false);
+            } else {
+                final String setterName = "set" + field.getName().substring(0, 1).toUpperCase() + field.getName().substring(1);
+                final Method setterMethod = ReflectionUtils.findMethod(parsed.getClass(), setterName, parsedValue.getClass());
+                setterMethod.invoke(parsed, parsedValue);
+            }
         }
     }
 

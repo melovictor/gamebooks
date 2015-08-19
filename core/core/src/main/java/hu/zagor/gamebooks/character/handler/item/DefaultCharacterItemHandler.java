@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.ItemFactory;
 import hu.zagor.gamebooks.character.item.EquipInfo;
 import hu.zagor.gamebooks.character.item.Item;
+import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -83,14 +84,23 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
     }
 
     @Override
+    public void removeItem(final Character character, final GatheredLostItem item) {
+        removeItem(character, item.getId(), item.getAmount(), item.isUnequippedOnly());
+    }
+
+    @Override
     public void removeItem(final Character character, final String itemId, final int amount) {
+        removeItem(character, itemId, amount, false);
+    }
+
+    private void removeItem(final Character character, final String itemId, final int amount, final boolean unequippedOnly) {
         Assert.notNull(character, CHARACTER_NOT_NULL);
         Assert.notNull(itemId, ITEMID_NOT_NULL);
         Assert.isTrue(amount > 0, ITEMID_POSITIVE);
 
         final List<Item> equipment = character.getEquipment();
         if (isItemList(itemId)) {
-            final List<String> availableItems = collectAvailableItems(itemId, equipment);
+            final List<String> availableItems = collectAvailableItems(itemId, equipment, unequippedOnly);
             for (int i = 0; i < amount; i++) {
                 if (availableItems.size() > 0) {
                     final String randomElement = getRandomElement(availableItems);
@@ -120,13 +130,13 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
         return availableItems.remove(rnd);
     }
 
-    private List<String> collectAvailableItems(final String itemId, final List<Item> equipment) {
+    private List<String> collectAvailableItems(final String itemId, final List<Item> equipment, final boolean unequippedOnly) {
         final List<String> availableItems = new ArrayList<String>();
 
         final List<String> itemsToLookFor = Arrays.asList(itemId.split(","));
         for (final Item item : equipment) {
             final String equipmentId = item.getId();
-            if (itemsToLookFor.contains(equipmentId)) {
+            if (itemsToLookFor.contains(equipmentId) && (!item.getEquipInfo().isEquippable() && !item.getEquipInfo().isEquipped() || !unequippedOnly)) {
                 availableItems.add(equipmentId);
             }
         }
