@@ -67,6 +67,14 @@
       </list>
     </property>
   </bean>
+  <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+    <property name="staticMethod" value="hu.zagor.gamebooks.filters.LocaleVerificationFilter.setSettingsHandler" />
+    <property name="arguments">
+      <list>
+        <ref bean="defaultUserSettingsHandler" />
+      </list>
+    </property>
+  </bean>
 
 </beans>
 
