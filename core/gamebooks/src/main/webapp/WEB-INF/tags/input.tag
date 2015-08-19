@@ -7,4 +7,4 @@
 <%@attribute name="type" required="false" %>
 
 <label><spring:message code="${label}" /></label>
-<form:input path="${name}" type="${type}" id="${id}" />
+<form:input path="${name}" type="${type}" id="${id}" autocomplete="${type == 'password' ? 'off' : 'on' }" />
