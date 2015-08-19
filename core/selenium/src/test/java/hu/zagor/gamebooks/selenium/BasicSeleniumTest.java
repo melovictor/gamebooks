@@ -185,7 +185,7 @@ public class BasicSeleniumTest {
 
     protected void verifyImage(final String imageName) {
         try {
-            Assert.assertTrue(driver.findElement(By.className("inlineImage")).findElement(By.tagName("img")).getAttribute("src").contains(imageName));
+            Assert.assertTrue(waitAndFindElement(".inlineImage").findElement(By.tagName("img")).getAttribute("src").contains(imageName));
         } catch (final NoSuchElementException exception) {
             throw new NoSuchElementException("Couldn't verify the existence of image '" + imageName + "'.", exception);
         }
@@ -237,7 +237,7 @@ public class BasicSeleniumTest {
 
     protected void verifyTakeableItem(final String itemId) {
         try {
-            driver.findElement(By.cssSelector(".takeItem[data-id=\"" + itemId + "\"]"));
+            waitAndFindElement(".takeItem[data-id=\"" + itemId + "\"]");
         } catch (final NoSuchElementException exception) {
             throw new NoSuchElementException("Failed to verify the presence of takeable item '" + itemId + "'.", exception);
         }
@@ -257,7 +257,7 @@ public class BasicSeleniumTest {
     }
 
     protected void verifyText(final String text) {
-        Assert.assertTrue(driver.findElement(By.id(getMainContentId())).getText().contains(text));
+        Assert.assertTrue(waitAndFindElement("#" + getMainContentId()).getText().contains(text));
     }
 
     private void flushMapInfo() {
