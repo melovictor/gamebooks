@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.filters;
 
+import hu.zagor.gamebooks.filters.wrapper.ErrorClosedownPreventingResponseWrapper;
 import hu.zagor.gamebooks.filters.wrapper.SessionStealingRequestWrapper;
 
 import java.io.IOException;
@@ -20,7 +21,13 @@ public class SessionFilter extends AbstractHttpFilter {
     protected void doFilterHttp(final HttpServletRequest request, final HttpServletResponse response, final FilterChain chain) throws IOException, ServletException {
 
         final HttpServletRequestWrapper requestWrapper = new SessionStealingRequestWrapper(request);
+        final ErrorClosedownPreventingResponseWrapper responseWrapper = new ErrorClosedownPreventingResponseWrapper(response);
         response.setHeader("X-Frame-Options", "DENY");
-        chain.doFilter(requestWrapper, response);
+        chain.doFilter(requestWrapper, responseWrapper);
+        if (responseWrapper.isStatusCode(HttpServletResponse.SC_NOT_FOUND)) {
+            responseWrapper.sendRedirect("../booklist");
+        } else {
+            responseWrapper.approveSendError();
+        }
     }
 }
