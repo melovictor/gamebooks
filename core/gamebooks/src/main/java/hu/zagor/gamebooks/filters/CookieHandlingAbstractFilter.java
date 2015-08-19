@@ -56,9 +56,15 @@ public abstract class CookieHandlingAbstractFilter extends AbstractHttpFilter {
             settingsHandler.saveSettings(player);
         }
 
-        response.addCookie(new Cookie(LOGIN_LANG_KEY, nextLanguage));
-        response.addCookie(new Cookie(LANG_KEY, nextLanguage));
+        response.addCookie(getCookie(LOGIN_LANG_KEY, nextLanguage));
+        response.addCookie(getCookie(LANG_KEY, nextLanguage));
         response.sendRedirect(request.getRequestURI());
+    }
+
+    private Cookie getCookie(final String key, final String value) {
+        final Cookie cookie = new Cookie(key, value);
+        cookie.setHttpOnly(true);
+        return cookie;
     }
 
     /**

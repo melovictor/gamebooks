@@ -93,9 +93,15 @@ public class LoginController {
 
     private String setLanguageCookie(final HttpServletRequest request, final HttpServletResponse response, final boolean isTesting) {
         final String locale = request.getLocale().getLanguage();
-        response.addCookie(new Cookie(LocaleSwitchingFilter.LANG_KEY, locale));
-        response.addCookie(new Cookie(LocaleSwitchingFilter.LOGIN_LANG_KEY, "true"));
+        response.addCookie(getCookie(LocaleSwitchingFilter.LANG_KEY, locale));
+        response.addCookie(getCookie(LocaleSwitchingFilter.LOGIN_LANG_KEY, "true"));
         return "redirect:" + (isTesting ? PageAddresses.TEST_LOGIN : PageAddresses.LOGIN);
+    }
+
+    private Cookie getCookie(final String key, final String value) {
+        final Cookie cookie = new Cookie(key, value);
+        cookie.setHttpOnly(true);
+        return cookie;
     }
 
     private boolean missingLanguageCookie(final HttpServletRequest request) {

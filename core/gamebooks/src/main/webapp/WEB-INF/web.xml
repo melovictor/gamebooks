@@ -5,7 +5,11 @@
     <param-value>WEB-INF/spring/servlet-context.xml</param-value>
   </context-param>
 
-
+  <session-config>
+    <cookie-config>
+      <http-only>true</http-only>
+    </cookie-config>
+  </session-config>
 
   <filter>
     <filter-name>SessionFilter</filter-name>
