@@ -10,7 +10,7 @@ public class LoginData {
 
     private String username;
     private String password;
-    private String guid;
+    private String csrfToken;
 
     public String getUsername() {
         return username;
@@ -28,12 +28,12 @@ public class LoginData {
         this.password = password;
     }
 
-    public String getGuid() {
-        return guid;
+    public String getCsrfToken() {
+        return csrfToken;
     }
 
-    public void setGuid(final String guid) {
-        this.guid = guid;
+    public void setCsrfToken(final String csrfToken) {
+        this.csrfToken = csrfToken;
     }
 
 }

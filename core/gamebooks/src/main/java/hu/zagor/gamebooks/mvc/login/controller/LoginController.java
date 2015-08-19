@@ -23,9 +23,10 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.web.csrf.CsrfToken;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -52,6 +53,8 @@ public class LoginController {
     private MdcHandler mdcHandler;
     @Autowired
     private EnvironmentDetector environmentDetector;
+    @Autowired
+    private CsrfTokenRepository csrfTokenRepository;
 
     /**
      * Shows the user the login page.
@@ -86,6 +89,9 @@ public class LoginController {
             result = setLanguageCookie(request, response, isTesting);
         } else {
             model.addAttribute("pageTitle", "page.title");
+            final CsrfToken generateToken = csrfTokenRepository.generateToken(request);
+            csrfTokenRepository.saveToken(generateToken, request, response);
+            model.addAttribute("_csrf", generateToken);
             result = chekcUserLogin(model, session);
         }
         return result;
@@ -145,29 +151,6 @@ public class LoginController {
     }
 
     /**
-     * Shows the user the login page.
-     * @param model the data model for the page
-     * @param request the http request
-     * @param guid the session ID received from the caller server to be used for user identification
-     * @return the login page
-     */
-    @RequestMapping(value = PageAddresses.LOGIN + "/{guid}", method = RequestMethod.GET)
-    public String loginWithGui(final Model model, final HttpServletRequest request, @PathVariable("guid") final String guid) {
-        final LoginData data = new LoginData();
-        data.setGuid(guid);
-        model.addAttribute("loginData", data);
-        final String loginResult = loginPost(model, data, request);
-        final String tile;
-        if (loginResult.contains(":")) {
-            tile = "redirect:../" + PageAddresses.BOOK_LIST;
-        } else {
-            tile = "redirect:../" + PageAddresses.LOGIN;
-        }
-        model.addAttribute("loginError", "");
-        return tile;
-    }
-
-    /**
      * If the login name and password are valid, logs the user in, otherwise sends him back to the main page.
      * @param data the bean containing the field's contents
      * @param model the page's model
@@ -176,24 +159,32 @@ public class LoginController {
      */
     @RequestMapping(value = PageAddresses.LOGIN, method = RequestMethod.POST)
     public String loginPost(final Model model, final LoginData data, final HttpServletRequest request) {
-        final LoginResult loginResult = login.doLogin(data);
         final HttpSession session = request.getSession();
-
         String nextPage;
-        if (loginResult.isSuccessful()) {
-            final String mdcUserId = loginResult.getId() + "-" + new Date().getTime();
-            mdcHandler.setUserId(mdcUserId, request.getSession());
-            logger.info("User '{}' logged in successfully.", data.getUsername());
-            final PlayerUser playerUser = new PlayerUser(loginResult.getId(), data.getUsername(), loginResult.isAdmin());
-            playerUser.getSettings().putAll(defaultSettingsHandler.getDefaultSettings());
-            userSettingsHandler.loadSettings(playerUser);
-            session.setAttribute(ControllerAddresses.USER_STORE_KEY, playerUser);
-            session.setMaxInactiveInterval(USER_SESSION_TTL);
-            nextPage = "redirect:" + PageAddresses.BOOK_LIST;
+        final CsrfToken expectedToken = csrfTokenRepository.loadToken(request);
+        if (expectedToken.getToken().equals(data.getCsrfToken())) {
+            final LoginResult loginResult = login.doLogin(data);
+            if (loginResult.isSuccessful()) {
+                final String mdcUserId = loginResult.getId() + "-" + new Date().getTime();
+                mdcHandler.setUserId(mdcUserId, request.getSession());
+                logger.info("User '{}' logged in successfully.", data.getUsername());
+                final PlayerUser playerUser = new PlayerUser(loginResult.getId(), data.getUsername(), loginResult.isAdmin());
+                playerUser.getSettings().putAll(defaultSettingsHandler.getDefaultSettings());
+                userSettingsHandler.loadSettings(playerUser);
+                session.setAttribute(ControllerAddresses.USER_STORE_KEY, playerUser);
+                session.setMaxInactiveInterval(USER_SESSION_TTL);
+                nextPage = "redirect:" + PageAddresses.BOOK_LIST;
+            } else {
+                logger.warn("User '{}' tried to log in with invalid password!", data.getUsername());
+                session.setAttribute(ControllerAddresses.USER_STORE_KEY, null);
+                model.addAttribute("loginError", loginResult.getMessage());
+                data.setPassword("");
+                nextPage = PageAddresses.LOGIN;
+            }
         } else {
-            logger.warn("User '{}' tried to log in with invalid password!", data.getUsername());
+            logger.warn("User '{}' tried to log in with invalid token!", data.getUsername());
             session.setAttribute(ControllerAddresses.USER_STORE_KEY, null);
-            model.addAttribute("loginError", loginResult.getMessage());
+            model.addAttribute("loginError", "page.login.invalid.token");
             data.setPassword("");
             nextPage = PageAddresses.LOGIN;
         }

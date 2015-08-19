@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Controller for handling the item taking request to the given book.
@@ -110,7 +109,6 @@ public class Ff2BookTakeItemController extends FfBookTakeItemController {
      * @param spellId the id of the spell to get
      */
     @RequestMapping("acquireNewSpell/{spellId}")
-    @ResponseBody
     public void takeNewSpell(final HttpServletRequest request, @PathVariable("spellId") final String spellId) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();

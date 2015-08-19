@@ -81,7 +81,7 @@ public class DefaultXmlGameStateLoader implements XmlGameStateLoader, BeanFactor
     private void populateField(final Object parsed, final Node fieldNode) throws Exception {
         final String nodeName = fieldNode.getNodeName();
         final Field field = getDeclaredField(parsed.getClass(), nodeName);
-        if (field == null && classFieldFilter.isIgnorableField(parsed, nodeName)) {
+        if (field == null && !classFieldFilter.isIgnorableField(parsed, nodeName)) {
             throw new NoSuchFieldException("The field '" + nodeName + "' doesn't exists.");
         }
         final Object fieldObject = getFieldObjectFromNode(fieldNode);

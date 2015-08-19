@@ -70,13 +70,8 @@ public class ZagorLoginFacade implements LoginFacade {
     }
 
     private String assemblePostData(final LoginData data) throws IOException {
-        String part;
-        if (data.getUsername() != null) {
-            part = communcator.compilePostData("username", data.getUsername(), null);
-            part = communcator.compilePostData("password", data.getPassword(), part);
-        } else {
-            part = communcator.compilePostData("guid", data.getGuid(), null);
-        }
+        String part = communcator.compilePostData("username", data.getUsername(), null);
+        part = communcator.compilePostData("password", data.getPassword(), part);
         return part;
     }
 }

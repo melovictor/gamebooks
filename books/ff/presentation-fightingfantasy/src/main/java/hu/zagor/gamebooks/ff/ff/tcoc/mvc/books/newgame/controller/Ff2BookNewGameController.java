@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Controller for handling the new game requests to the given book.
@@ -29,7 +28,6 @@ public class Ff2BookNewGameController extends FfBookNewGameController {
      * @param spells the spells selected by the user
      */
     @RequestMapping(value = PageAddresses.BOOK_NEW + "/" + PageAddresses.BOOK_GENERATE_CHARACTER + "2")
-    @ResponseBody
     public void handleGenerate2(final HttpSession session, @RequestParam final String spells) {
         final HttpSessionWrapper wrapper = getWrapper(session);
         final Ff2Character character = (Ff2Character) wrapper.getCharacter();
