@@ -1,6 +1,5 @@
 package hu.zagor.gamebooks.mvc.logout.controller;
 
-import hu.zagor.gamebooks.ControllerAddresses;
 import hu.zagor.gamebooks.mdc.MdcHandler;
 import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
 
@@ -47,8 +46,7 @@ public class LogoutControllerTest {
 
     public void testLoginGetShouldCleanUserStore() {
         // GIVEN
-        session.setAttribute(ControllerAddresses.USER_STORE_KEY, null);
-        mdcHandler.cleanUserId(session);
+        session.invalidate();
         environmentDetector.setSeleniumTesting(false);
         mockControl.replay();
         // WHEN

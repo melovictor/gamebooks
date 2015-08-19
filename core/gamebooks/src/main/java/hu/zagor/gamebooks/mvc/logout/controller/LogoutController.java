@@ -1,6 +1,5 @@
 package hu.zagor.gamebooks.mvc.logout.controller;
 
-import hu.zagor.gamebooks.ControllerAddresses;
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.mdc.MdcHandler;
 import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
@@ -30,8 +29,7 @@ public class LogoutController {
      */
     @RequestMapping(value = PageAddresses.LOGOUT)
     public String loginGet(final HttpSession session) {
-        session.setAttribute(ControllerAddresses.USER_STORE_KEY, null);
-        mdcHandler.cleanUserId(session);
+        session.invalidate();
         environmentDetector.setSeleniumTesting(false);
         return "redirect:" + PageAddresses.LOGIN;
     }
