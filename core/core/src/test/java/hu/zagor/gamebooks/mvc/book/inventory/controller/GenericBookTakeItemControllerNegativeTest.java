@@ -110,7 +110,7 @@ public class GenericBookTakeItemControllerNegativeTest {
         expect(request.getSession()).andReturn(session);
         expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(sessionWrapper);
         sessionWrapper.setRequest(request);
-        expect(beanFactory.getBean("gatheredLostItem", ITEM_ID, AMOUNT, 0)).andReturn(glItem);
+        expect(beanFactory.getBean("gatheredLostItem", ITEM_ID, AMOUNT, 0, false)).andReturn(glItem);
         expect(request.getSession()).andReturn(session);
         expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(sessionWrapper);
         sessionWrapper.setRequest(request);

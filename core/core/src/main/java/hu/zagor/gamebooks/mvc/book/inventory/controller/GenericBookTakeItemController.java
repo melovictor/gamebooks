@@ -77,7 +77,7 @@ public class GenericBookTakeItemController extends AbstractRequestWrappingContro
     }
 
     private GatheredLostItem getGatheredLostItem(final String itemId, final int amount) {
-        return (GatheredLostItem) getBeanFactory().getBean("gatheredLostItem", itemId, amount, 0);
+        return (GatheredLostItem) getBeanFactory().getBean("gatheredLostItem", itemId, amount, 0, false);
     }
 
     /**
