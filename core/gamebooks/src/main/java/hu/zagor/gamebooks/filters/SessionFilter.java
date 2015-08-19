@@ -20,6 +20,7 @@ public class SessionFilter extends AbstractHttpFilter {
     protected void doFilterHttp(final HttpServletRequest request, final HttpServletResponse response, final FilterChain chain) throws IOException, ServletException {
 
         final HttpServletRequestWrapper requestWrapper = new SessionStealingRequestWrapper(request);
+        response.setHeader("X-Frame-Options", "DENY");
         chain.doFilter(requestWrapper, response);
     }
 }
