@@ -282,5 +282,5 @@ $(function() {
 	$("a[href]").on("click", allowNavigation);
 	$("#MainContent a[href]:not([data-no-multi-navigation])").on("click", preventMultipleNavigation);
 	$("#userInputSection input").focus();
-	$(document).tooltip();
+	$("span[title], div[title]").tooltip();
 });
