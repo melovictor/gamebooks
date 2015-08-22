@@ -17,7 +17,6 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -73,7 +72,8 @@ public class BasicSeleniumTest {
         final EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(driver);
         final WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.manage().window().setPosition(new Point(-1920 + i * 960, 0));
-        driver.manage().window().setSize(new Dimension(960, 1080));
+        driver.manage().window().maximize();
+        // driver.manage().window().setSize(new Dimension(1920, 1080));
         fill("#adventurerName", "gnome");
         fill("#adventurerPassphrase", "firefox");
         click("#loginSubmitButton");
