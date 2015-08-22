@@ -46,6 +46,7 @@ public class HuTheRingsOfKetherST extends BasicFfSeleniumTest {
         verifyPosition(0, 304);
         verifyPosition(1, 265);
         goToPosition(0, 304);
+        sleep(200);
         verifyPosition(0, 80);
         goToPosition(0, 80);
         verifyPosition(0, 41);
@@ -335,6 +336,7 @@ public class HuTheRingsOfKetherST extends BasicFfSeleniumTest {
         verifyPosition(1, 50);
         verifyAttributes("gold", "5 000");
         goToPosition(0, 275);
+        sleep(500);
         verifyAttributes("gold", "4 500");
         verifyPosition(0, 216);
         verifyPosition(1, 138);

@@ -49,6 +49,7 @@ public class BasicFfSeleniumTest extends BasicSeleniumTest {
     protected void attackEnemy(final String enemyId) {
         noJumpChoicesAvailable();
         click("[data-enemy-id='" + enemyId + "'][data-enemy-name]");
+        sleep(100);
         click("[data-attack='ff']");
     }
 

@@ -347,7 +347,7 @@ public class BasicSeleniumTest {
     public void tearDownMethod() {
         noJumpChoicesAvailable();
         verifyBrokenImages("closing", "closing");
-        driver.findElement(By.id("restartBook")).click();
+        waitAndFindElement("#restartBook").click();
     }
 
     @AfterClass

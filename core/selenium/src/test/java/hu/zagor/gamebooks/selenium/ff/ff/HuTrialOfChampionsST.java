@@ -900,6 +900,7 @@ public class HuTrialOfChampionsST extends BasicFfSeleniumTest {
         goToPosition(0, 70);
         verifyPosition(0, 328);
         goToPosition(0, 328);
+        sleep(100);
         verifyPosition(0, 27);
         verifyPosition(1, 152);
         verifyPosition(2, 229);

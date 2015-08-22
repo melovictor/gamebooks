@@ -939,6 +939,7 @@ public class HuVaultOfTheVampireST extends BasicFfSeleniumTest {
         prepareLuckSettings(false, false, false);
         attackEnemy("34");
         consumeItem("2000");
+        sleep(500);
         consumeItem("2000");
         goToPosition(2, 135);
         doAttributeCheck();
@@ -1585,8 +1586,11 @@ public class HuVaultOfTheVampireST extends BasicFfSeleniumTest {
         prepareLuckSettings(false, false, false);
         attackEnemy("28");
         consumeItem("2000");
+        sleep(500);
         consumeItem("2001");
+        sleep(500);
         consumeItem("2001");
+        sleep(500);
         consumeItem("2000");
         goToPosition(0, 55);
         verifyPosition(0, 123);
