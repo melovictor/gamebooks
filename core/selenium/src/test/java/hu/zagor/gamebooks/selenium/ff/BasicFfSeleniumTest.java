@@ -109,7 +109,7 @@ public class BasicFfSeleniumTest extends BasicSeleniumTest {
     }
 
     protected void consumeItem(final String itemId) {
-        waitAndFindElement("#inventory").findElement(By.cssSelector("[data-item-id='" + itemId + "']")).click();
+        waitAndFindElement("#inventory [data-item-id='" + itemId + "']").click();
     }
 
     protected void verifyAttributes(final String attributeName, final int attributeValue) {
