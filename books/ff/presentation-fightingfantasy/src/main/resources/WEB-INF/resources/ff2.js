@@ -20,7 +20,7 @@ var ff2 = (function() {
 			accept : "application/json; charset=utf-8",
 			contentType : "application/json; charset=utf-8",
 			dataType : "json",
-			success : function(data) {
+			complete : function(data) {
 				$("[data-spell] span").unbind("click");
 				$("#choiceWrapper").show();
 				$("[data-generator-button='ff2']").hide();
