@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -37,6 +38,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class LoginController {
 
+    private static final int FURTHER_TRY_LOCKOUT = 3;
+    private static final int MIN_TRY_LOCKOUT = 5;
     private static final int GUEST_SESSION_TTL = 5 * 60;
     private static final int USER_SESSION_TTL = 4 * 60 * 60;
 
@@ -65,7 +68,7 @@ public class LoginController {
      */
     @RequestMapping(value = PageAddresses.LOGIN, method = RequestMethod.GET)
     public String loginGet(final Model model, final HttpServletRequest request, final HttpServletResponse response) {
-        return doLogin(model, request, response, false);
+        return doPrepare(model, request, response, false);
     }
 
     /**
@@ -77,10 +80,10 @@ public class LoginController {
      */
     @RequestMapping(value = PageAddresses.TEST_LOGIN, method = RequestMethod.GET)
     public String testLoginGet(final Model model, final HttpServletRequest request, final HttpServletResponse response) {
-        return doLogin(model, request, response, true);
+        return doPrepare(model, request, response, true);
     }
 
-    private String doLogin(final Model model, final HttpServletRequest request, final HttpServletResponse response, final boolean isTesting) {
+    private String doPrepare(final Model model, final HttpServletRequest request, final HttpServletResponse response, final boolean isTesting) {
         String result;
         final HttpSession session = request.getSession();
         session.setMaxInactiveInterval(GUEST_SESSION_TTL);
@@ -89,12 +92,17 @@ public class LoginController {
             result = setLanguageCookie(request, response, isTesting);
         } else {
             model.addAttribute("pageTitle", "page.title");
-            final CsrfToken generateToken = csrfTokenRepository.generateToken(request);
-            csrfTokenRepository.saveToken(generateToken, request, response);
-            model.addAttribute("_csrf", generateToken);
+            newToken(model, request);
             result = chekcUserLogin(model, session);
         }
+        setTiming(model, session);
         return result;
+    }
+
+    private void newToken(final Model model, final HttpServletRequest request) {
+        final CsrfToken generateToken = csrfTokenRepository.generateToken(request);
+        csrfTokenRepository.saveToken(generateToken, request, null);
+        model.addAttribute("_csrf", generateToken);
     }
 
     private String setLanguageCookie(final HttpServletRequest request, final HttpServletResponse response, final boolean isTesting) {
@@ -165,36 +173,92 @@ public class LoginController {
         if (expectedToken.getToken().equals(data.getCsrfToken())) {
             final LoginResult loginResult = login.doLogin(data);
             if (loginResult.isSuccessful()) {
-                final String mdcUserId = loginResult.getId() + "-" + new Date().getTime();
-                mdcHandler.setUserId(mdcUserId, request.getSession());
-                logger.info("User '{}' logged in successfully.", data.getUsername());
-                final PlayerUser playerUser = new PlayerUser(loginResult.getId(), data.getUsername(), loginResult.isAdmin());
-                playerUser.getSettings().putAll(defaultSettingsHandler.getDefaultSettings());
-                userSettingsHandler.loadSettings(playerUser);
-                session.setAttribute(ControllerAddresses.USER_STORE_KEY, playerUser);
-                session.setMaxInactiveInterval(USER_SESSION_TTL);
-                nextPage = "redirect:" + PageAddresses.BOOK_LIST;
+                nextPage = executeLogin(data, request, session, loginResult);
             } else {
-                logger.warn("User '{}' tried to log in with invalid password!", data.getUsername());
-                session.setAttribute(ControllerAddresses.USER_STORE_KEY, null);
-                model.addAttribute("loginError", loginResult.getMessage());
-                data.setPassword("");
-                nextPage = PageAddresses.LOGIN;
+                nextPage = reportWrongLogin(model, data, session, loginResult);
             }
         } else {
-            logger.warn("User '{}' tried to log in with invalid token!", data.getUsername());
-            session.setAttribute(ControllerAddresses.USER_STORE_KEY, null);
-            model.addAttribute("loginError", "page.login.invalid.token");
-            data.setPassword("");
-            nextPage = PageAddresses.LOGIN;
+            nextPage = reportWrongToken(model, data, session);
         }
-
+        newToken(model, request);
         model.addAttribute("pageTitle", "page.title");
+        setTiming(model, session);
+        return nextPage;
+    }
+
+    private String reportWrongLogin(final Model model, final LoginData data, final HttpSession session, final LoginResult loginResult) {
+        logger.warn("User '{}' tried to log in with invalid password!", data.getUsername());
+        session.setAttribute(ControllerAddresses.USER_STORE_KEY, null);
+        model.addAttribute("loginError", loginResult.getMessage());
+        data.setPassword("");
+        guessPrevention(session);
+        return PageAddresses.LOGIN;
+    }
+
+    private void guessPrevention(final HttpSession session) {
+        final int totalTries = getTotalTries(session);
+        logger.warn("Total failed login attempts: {}.", totalTries);
+        if (totalTries >= MIN_TRY_LOCKOUT) {
+            if (totalTries == MIN_TRY_LOCKOUT) {
+                final int timeoutInMinutes = 1;
+                setTimeout(session, timeoutInMinutes);
+            } else {
+                if ((totalTries - MIN_TRY_LOCKOUT) % FURTHER_TRY_LOCKOUT == 0) {
+                    final int lastTimeout = (int) session.getAttribute("timeout");
+                    final int nextTimeout = lastTimeout * 5;
+                    setTimeout(session, nextTimeout);
+                }
+            }
+        }
+    }
+
+    private void setTimeout(final HttpSession session, final int nextTimeout) {
+        session.setAttribute("timeout", nextTimeout);
+        session.setAttribute("loginPrevention", DateTime.now().plusMinutes(nextTimeout).getMillis());
+    }
+
+    private int getTotalTries(final HttpSession session) {
+        Integer totalTries = (Integer) session.getAttribute("totalTries");
+        if (totalTries == null) {
+            totalTries = 1;
+        } else {
+            totalTries++;
+        }
+        session.setAttribute("totalTries", totalTries);
+        return totalTries;
+    }
+
+    private String executeLogin(final LoginData data, final HttpServletRequest request, final HttpSession session, final LoginResult loginResult) {
+        String nextPage;
+        final String mdcUserId = loginResult.getId() + "-" + new Date().getTime();
+        mdcHandler.setUserId(mdcUserId, request.getSession());
+        logger.info("User '{}' logged in successfully.", data.getUsername());
+        final PlayerUser playerUser = new PlayerUser(loginResult.getId(), data.getUsername(), loginResult.isAdmin());
+        playerUser.getSettings().putAll(defaultSettingsHandler.getDefaultSettings());
+        userSettingsHandler.loadSettings(playerUser);
+        session.setAttribute(ControllerAddresses.USER_STORE_KEY, playerUser);
+        session.setMaxInactiveInterval(USER_SESSION_TTL);
+        nextPage = "redirect:" + PageAddresses.BOOK_LIST;
+        return nextPage;
+    }
+
+    private String reportWrongToken(final Model model, final LoginData data, final HttpSession session) {
+        String nextPage;
+        logger.warn("User '{}' tried to log in with invalid token!", data.getUsername());
+        session.setAttribute(ControllerAddresses.USER_STORE_KEY, null);
+        model.addAttribute("loginError", "page.login.invalid.token");
+        data.setPassword("");
+        nextPage = PageAddresses.LOGIN;
         return nextPage;
     }
 
     public void setLogin(final LoginFacade login) {
         this.login = login;
+    }
+
+    private void setTiming(final Model model, final HttpSession session) {
+        model.addAttribute("currentTime", DateTime.now().getMillis());
+        model.addAttribute("loginPrevention", session.getAttribute("loginPrevention"));
     }
 
 }

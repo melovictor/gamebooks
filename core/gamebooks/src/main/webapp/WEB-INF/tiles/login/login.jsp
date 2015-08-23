@@ -11,11 +11,18 @@
         </l:smallbox>
     </c:if>
 
-	<l:smallbox>
-		<l:input label="page.login.username" name="username" id="adventurerName" />
-		<l:input label="page.login.password" name="password" id="adventurerPassphrase" type="password" />
-		<input type="hidden" name="csrfToken" value="${_csrf.token}" />
-		<input type="submit" id="loginSubmitButton"
-			value="<spring:message code="page.login.submit" />" />
-	</l:smallbox>
+    <c:if test="${empty loginPrevention || currentTime >= loginPrevention}">
+		<l:smallbox>
+			<l:input label="page.login.username" name="username" id="adventurerName" />
+			<l:input label="page.login.password" name="password" id="adventurerPassphrase" type="password" />
+			<input type="hidden" name="csrfToken" value="${_csrf.token}" />
+			<input type="submit" id="loginSubmitButton"
+				value="<spring:message code="page.login.submit" />" />
+		</l:smallbox>
+	</c:if>
+	<c:if test="${not empty loginPrevention && currentTime < loginPrevention}">
+        <l:smallbox className="errorMessage">
+            <spring:message code="page.login.invalid.loginBlock" />
+        </l:smallbox>
+	</c:if>
 </form:form>
