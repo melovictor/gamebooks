@@ -15,7 +15,13 @@ public class DummyLoginFacade implements LoginFacade {
 
     @Override
     public LoginResult doLogin(final LoginData data) {
-        return dummyUsers.get(data.getUsername());
+        LoginResult loginResult = dummyUsers.get(data.getUsername());
+        if (loginResult == null) {
+            loginResult = new LoginResult();
+            loginResult.setSuccessful(false);
+            loginResult.setMessage("page.login.invalid.username.password");
+        }
+        return loginResult;
     }
 
     public void setDummyUsers(final Map<String, LoginResult> dummyUsers) {
