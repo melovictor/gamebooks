@@ -2627,26 +2627,1171 @@
         </fight>
       </dontHave>
     </itemCheck>
+    <next id="65"></next>
   </p>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <p id="65">
+    <text>
+        [p]Újra útnak indulsz, hogy mielőbb megtaláld a Sámánt. Ahogy mész, csomókba kötött füvet látsz, és ebből arra következtetsz, hogy akit keresel, már nem lehet messze. Kíváncsi vagy, vajon tudja-e, hogy itt jársz. Megállsz és körülnézel. Életnek semmi nyoma, csupán egy döglött sirály fekszik jobbra egy sziklán.[/p]
+    </text>
+    <itemCheck type="section" id="72">
+      <have>
+        <next id="89"></next>
+      </have>
+      <dontHave>
+        <next id="365"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="89">
+    <text>
+        [p]Odamész a sirályhoz, és kihúzol egy [span class="takeItem" data-id="3019" data-amount="1"]tollat[/span] a szárnyából. Hátizsákodból egy darab spárgát veszel elő, s ezzel kötöd a tollat hátul a hajadhoz. Óvatosan, kissé szorongva mész tovább.[/p]
+    </text>
+    <next id="269"></next>
+  </p>
+  <p id="365">
+    <text>
+        [p]A Sámánnak nyoma sincs, úgyhogy továbbmész a tűzhányó irányában, amerre az ösztönöd visz.[/p]
+    </text>
+    <next id="269"></next>
+  </p>
+  <p id="269">
+    <text>
+        [p]Félúton, a hegy oldalában, bal kéz felől egy barlang bejáratát veszed észre, melynek félkör alakban elhelyezkedő köveit sikító színűre festették, és mindegyiknek a tetejére egy koponyát tettek.[/p]
+    </text>
+    <next id="59">Ha fel akarsz mászni a barlanghoz</next>
+    <next id="303">Ha inkább továbbmész a tűzhányó irányába</next>
+  </p>
+  <p id="59">
+    <text>
+        [p]Amint mászol felfelé a hegyen, belebotlasz egy rejtett zsinórba, melyet két kis szikla között feszítettek ki. A sziklák elmozdulnak, és a hegy oldalán végiggördülve figyelmeztetik a barlang lakóját a hívatlan látogató jelenlétére. Egy ádáz tekintetű Barlangi Nő jelenik meg a barlang bejáratánál. Testét állatszőrök fedik, kezében egy dárda meg egy kőbalta van. Előrelép, és feléd hajítja a dárdát. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="108"></next>
+      </success>
+      <failure>
+        <next id="255"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="255">
+    <text>
+        [p]Leversz néhány meglazult szikladarabot, amikor megpróbálsz elugrani a dárda elől, de sajnos az fájdalmasan fúródik bele a combodba. 3 Életerő pontot veszítesz! A Barlangi Nő elégedetten kiált fel, és bunkósbotját lengetve rohan le a dombról. Összeszorított foggal kihúzod a dárdát a combodból, majd előrántod a kardodat, hogy védd magad.[/p]
+        [p]Lábsérülésed miatt minden egyes Fordulóban 2-vel kell csökkentened a Támadóerődet.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <gatherItem id="4001" amount="2" />
+    <fight type="single">
+      <enemy id="42" />
+      <win>
+        <loseItem id="4001" amount="2" />
+      </win>
+    </fight>
+    <next id="79"></next>
+  </p>
+  <p id="79">
+    <text>
+        [p]Felmész a dombtetőre, és belépsz a barlangba. Rothadó élelmiszer bűze és izzadságszag terjeng a levegőben. Néhány tárgy hever szanaszét a földön, mintha szemét volna. Már épp elhagyni készülsz a barlangot, amikor egy Barlangi Nő ágya mögött egy kis zugban kicsinyke agyagtálat teszel észre. Az agyagtálban vörös por van. Mit teszel?[/p]
+    </text>
+    <next id="332">Rákensz belőle az arcodra?</next>
+    <next id="97">Lenyelsz belőle egy keveset?</next>
+    <next id="17">Nem nyúlsz hozzá, és kimész a barlangból?</next>
+  </p>
+  <p id="332">
+    <text>
+        [p]A por nemcsak szép, de varázsereje is van. Egy varázslóé volt, akit arra kényszerítettek, hogy a Gyíkkirály rabszolgája legyen, de mielőtt a varázsló lement volna a bányába, elhajította a port tartalmazó üvegcsét, remélve, hogy valaki majdcsak megtalálja. A Barlangi Nő találta meg, de csak annyit tett, hogy a port az üvegből egy kis agyagtálkába öntötte át. A por megvéd minden olyan embertől vagy élőlénytől, aki az akaratodat szeretné irányítani. Nyersz 2 Szerencse pontot! A barlangban nincs egyéb figyelemre méltó dolog, úgyhogy továbbmész.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <next id="17"></next>
+  </p>
+  <p id="97">
+    <text>
+        [p]A port szinte lehetetlen lenyelni. Beszippantasz egy keveset, és köhögni kezdesz. Úgy érzed, ég a tüdőd. Veszítesz 2 Életerő pontot és 1 Szerencse pontot. Végül a fájdalom megszűnik. Mit teszel?[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="luck" />
+    <next id="332">Rákensz egy kevés port az arcodra?</next>
+    <next id="17">Vagy ott hagyod a port a barlangban és távozol?</next>
+  </p>
+  <p id="17">
+    <text>
+        [p]Lefelé indulsz a dombról és balra fordulsz, a tűzhányó irányába.[/p]
+    </text>
+    <next id="303"></next>
+  </p>
+  <p id="303">
+    <text>
+        [p]Végre elérsz a tűzhányó tövébe, de a Sámánnak még híre-hamva sincs. Felnézel, és egy hatalmas fekete hegyet látsz, amelynek csúcsa az egekbe nyúlik. Arra gondolsz, vajon mikor fog ismét kitörni a vulkán, hamutengert és forró lávazuhatagot okádva. Elhessegeted ezeket a gondolatokat, és eldöntöd, merre menj.[/p]
+    </text>
+    <next id="178">Ha egyenesen indulsz el a hegyen fölfelé</next>
+    <next id="355">Ha inkább a tűzhányó tövében mész körbe</next>
+  </p>
+  <p id="355">
+    <text>
+        [p]Menet közben erős kénszagot érzel a levegőben. Hamarosan hatalmas, sűrű sárga iszappal teli tóhoz érsz. Felszínéről kellemetlen cuppogós hangot adó, nagy gázbuborékok törnek elő. A tó iszapja igen meleg lehet; csak úgy forr körülötte a levegő. Egy kövekből és botokból készült furcsa fészekben két óriási tojást fedezel fel, amelyek jól fejlett dinnyéhez hasonlítanak. A héjuk sárga, rücskös. Elképzelni sem tudod, miféle szerzet rakhatta le ide, a kénes tó partjára a tojásait, hogy kikeltse őket.[/p]
+    </text>
+    <next id="48">Ha közelebbről akarnád megszemlélni a tojásokat</next>
+    <next id="178">Ha inkább felmászol a tűzhányó tetejére</next>
+  </p>
+  <p id="48">
+    <text>
+        [p]Amikor lehajolsz, hogy megnézed a furcsa tojásokat, az egyik eltörik. Színtelen, nyúlós folyadék buggyan ki belőle, majd egy lyuk támad a héjban. Tűhegyes fogú, hosszú állkapocs jelenik meg a nyílásban, melyet parányi, sötétzöld, szem nélküli fej követ. A vadállat beleszimatol a levegőbe, majd ösztönösen a torkodnak ugrik. Szerencsétlenségedre épp egy szörnyű fenevad fészkébe botlottál bele: a Borotvafogú arra termett, hogy más élőlényeket elpusztítson.[/p]
+    </text>
+    <itemCheck type="item" id="3009">
+      <haveEquipped>
+        <next id="56"></next>
+      </haveEquipped>
+      <have>
+        <next id="304"></next>
+      </have>
+      <dontHave>
+        <next id="304"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="304">
+    <text>
+        [p]Éles fogak vájnak a nyakadba: a ravasz Borotvafogú őrjöngve támad rád, hogy megöljön. Veszítesz 2 Életerő pontot! Ha még mindig életben vagy, kardoddal megpróbálod levágni magadról a szörnyű teremtményt.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <fight type="single">
+      <enemy id="43" />
+    </fight>
+    <next id="20"></next>
+  </p>
+  <p id="56">
+    <text>
+        [p]Elfordítod a fejedet, amikor rád támad a Borotvafogú, amely így sisakod nyakvédőjén fennakad. Visszaugrik, te pedig kardot rántasz, hogy ledöfd a gonosz teremtményt.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="43" />
+    </fight>
+    <next id="20"></next>
+  </p>
+  <p id="20">
+    <text>
+        [p]Csizmáddal széttaposod a másik tojást, mielőtt elindulnál felfelé a tűzhányó oldalában, mert a kénmedencén nem tudsz keresztülmenni.[/p]
+    </text>
+    <next id="178"></next>
+  </p>
+  <p id="178">
+    <text>
+        [p]Egy kis magaslaton, tükörfényesre csiszolt kövek gyűrűjében, különböző tárgyak láthatók: egy karkötő, egy agyagbaba, egy vékony korsó meg egy csont, hogy csak néhányat említsünk az ott heverő dolgok közül. Ezek valószínűleg a Sámánnak szánt adományok.[/p]
+    </text>
+    <next id="233">Ha te is szeretnél itt elhelyezni valamilyen tárgyat</next>
+    <next id="306">Ha inkább elvennél valamit a tárgyak közül</next>
+  </p>
+  <p id="306">
+    <text>
+        [p]Amint a kőgyűrű fölé nyúlsz, olyan fájdalmat érzel, mintha egy kocsikerék küllői kapták volna be a kezedet. Visszarántod, de látod, hogy az teljesen deformálódott.[/p]
+    </text>
+    <random>
+      <result max="5" min="1">
+        <next id="277"></next>
+      </result>
+      <result max="6" min="6">
+        <next id="263"></next>
+      </result>
+    </random>
+  </p>
+  <p id="263">
+    <text>
+        [p]Tudtad, hogy a kardforgató karodat nem szabad beledugnod a kőgyűrűbe, így aztán sérült kezed nem okoz különösebb gondot. Veszítesz 1 Ügyesség pontot! Kelletlenül belehajítod a kőgyűrűbe Felszerelési Tárgyaid egyikét, és várod, mi történik.[/p]
+    </text>
+    <add amount="-1" to="skill" />
+    <next id="233"></next>
+  </p>
+  <p id="277">
+    <text>
+        [p]A kardfogó kezed sérült meg. 3 Ügyesség pontot veszítettél! Vonakodva bár, de mégis bedobsz egy tárgyat a kőgyűrűbe, és várod, hogy mi történik.[/p]
+    </text>
+    <add amount="-3" to="skill" />
+    <next id="233"></next>
+  </p>
+  <p id="233">
+    <text>
+        [p]Melyik tárgyadat hajítod bele a kőgyűrűbe?[/p]
+    </text>
+    <itemCheck type="item" id="2000">
+      <have>
+        <next id="233a">Egy adag élelmedet?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="2001">
+      <have>
+        <next id="233b">Az Ügyesség Italát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="2002">
+      <have>
+        <next id="233c">Az Erő Italát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="2003">
+      <have>
+        <next id="233d">A Szerencse Italát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3002">
+      <have>
+        <next id="233f">A lámpásod?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="233g">A vasrudat?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3004">
+      <have>
+        <next id="233h">A dárdát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3005">
+      <have>
+        <next id="233i">A csontamulettet?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3006">
+      <have>
+        <next id="233j">A drótdarabot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3007">
+      <have>
+        <next id="233k">A kisbaltát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3008">
+      <have>
+        <next id="233l">A kötéltekercset?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3009">
+      <have>
+        <next id="233m">Sog Sisakját?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3010">
+      <have>
+        <next id="233n">Az aranyrögöt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3011">
+      <have>
+        <next id="233o">A figyelmeztető cédulát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3012">
+      <have>
+        <next id="233p">A csizmádat?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3013">
+      <have>
+        <next id="233q">A Feneketlen Zsákot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3015">
+      <have>
+        <next id="233s">A vaskulcsokat?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3016">
+      <have>
+        <next id="233t">A vadászkürtöt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3017">
+      <have>
+        <next id="233u">A kővé dermedt Grannituszt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3018">
+      <have>
+        <next id="233v">A rézsípot?</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="233a" display="233">
+    <loseItem id="2000" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233b" display="233">
+    <loseItem id="2001" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233c" display="233">
+    <loseItem id="2002" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233d" display="233">
+    <loseItem id="2003" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233f" display="233">
+    <loseItem id="3002" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233g" display="233">
+    <loseItem id="3003" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233h" display="233">
+    <loseItem id="3004" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233i" display="233">
+    <loseItem id="3005" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233j" display="233">
+    <loseItem id="3006" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233k" display="233">
+    <loseItem id="3007" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233l" display="233">
+    <loseItem id="3008" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233m" display="233">
+    <loseItem id="3009" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233n" display="233">
+    <loseItem id="3010" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233o" display="233">
+    <loseItem id="3011" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233p" display="233">
+    <loseItem id="3012" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233q" display="233">
+    <loseItem id="3013" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233s" display="233">
+    <loseItem id="3015" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233t" display="233">
+    <loseItem id="3016" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233u" display="233">
+    <loseItem id="3017" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="233v" display="233">
+    <loseItem id="3018" />
+    <text>[p]Hirtelen vörösen izzani kezd egy sor kő, és mutatja a tűzhányó oldalában felfelé vezető utat. Úgy döntesz, hogy követed a vörös kövek vonalát.[/p]</text>
+    <next id="249"></next>
+  </p>
+  <p id="249">
+    <text>
+        [p]Az egyik szikla mögül hirtelen egy férfi feje bukkan elő; a haját szirtes gyöngyök és tollak díszítik. Óvatosan lép elő a rejtekhelyéről. Az egyik kezében tolldíszes bot van, a másikban meg két állatcsont. Ő a sziget varázslója, a Sámán, akit keresel![/p]
+    </text>
+    <itemCheck type="item" id="3019">
+      <have>
+        <next id="199"></next>
+      </have>
+      <dontHave>
+        <next id="176"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="176">
+    <text>
+        [p]A Sámán megrázza tollakkal díszített botját, mely kereplő hangot ad. Ellenségnek tart, mert nem adtad jelét baráti érzelmeidnek. Mit teszel?[/p]
+    </text>
+    <next id="324">Megpróbálsz beszélni vele?</next>
+    <next id="129">Megpróbálod kiütni a kezéből a tollas végű botot?</next>
+    <next id="157">Karddal támadsz rá?</next>
+  </p>
+  <p id="324">
+    <text>
+        [p]Közlöd a Sámánnal, hogy nem ellenségesek a szándékaid; segítségért jöttél hozzá. Hűvösen végigmér, és így szól: - Miért nincs toll a hajadban, ha barát vagy?[/p]
+    </text>
+    <next id="225">Ha meg akarod mondani neki, hogy volt tollad, csak elvesztetted</next>
+    <next id="208">Ha azt akarod mondani, hogy nem gondoltál rá, hogy még fontos lehet számodra a toll</next>
+  </p>
+  <p id="225">
+    <text>
+        [p]A Sámán résnyire szűkült szemmel rád kiált: - Hazug! - Hirtelen remegni kezd a föld, és hatalmas szakadék nyílik meg alattad. Gőz csap fel belőle, leforrázza a lábadat. Vesztesz 3 Életerő pontot. Bocsánatot kérsz a Sámántól, amiért hazudtál neki, és megmagyarázod, hogy csak azért tetted, hogy elnyerd a barátságát. Nem tudtad, hogy a toll az ő békeszimbóluma. A Sámán morogva megérinti botjával a lábadat, s a fájdalom azonnal elmúlik.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <next id="301"></next>
+  </p>
+  <p id="208">
+    <text>
+        [p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának. Mit ajánlasz fel a sámánnak?[/p]
+    </text>
+    <itemCheck type="item" id="2000">
+      <have>
+        <next id="208a">Egy adag élelmedet?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="2001">
+      <have>
+        <next id="208b">Az Ügyesség Italát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="2002">
+      <have>
+        <next id="208c">Az Erő Italát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="2003">
+      <have>
+        <next id="208d">A Szerencse Italát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3002">
+      <have>
+        <next id="208f">A lámpásod?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="208g">A vasrudat?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3004">
+      <have>
+        <next id="208h">A dárdát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3005">
+      <have>
+        <next id="208i">A csontamulettet?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3006">
+      <have>
+        <next id="208j">A drótdarabot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3007">
+      <have>
+        <next id="208k">A kisbaltát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3008">
+      <have>
+        <next id="208l">A kötéltekercset?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3009">
+      <have>
+        <next id="208m">Sog Sisakját?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3010">
+      <have>
+        <next id="208n">Az aranyrögöt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3011">
+      <have>
+        <next id="208o">A figyelmeztető cédulát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3012">
+      <have>
+        <next id="208p">A csizmádat?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3013">
+      <have>
+        <next id="208q">A Feneketlen Zsákot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3015">
+      <have>
+        <next id="208s">A vaskulcsokat?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3016">
+      <have>
+        <next id="208t">A vadászkürtöt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3017">
+      <have>
+        <next id="208u">A kővé dermedt Grannituszt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3018">
+      <have>
+        <next id="208v">A rézsípot?</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="208a" display="208">
+    <loseItem id="2000" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208b" display="208">
+    <loseItem id="2001" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208c" display="208">
+    <loseItem id="2002" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208d" display="208">
+    <loseItem id="2003" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208f" display="208">
+    <loseItem id="3002" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208g" display="208">
+    <loseItem id="3003" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208h" display="208">
+    <loseItem id="3004" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208i" display="208">
+    <loseItem id="3005" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208j" display="208">
+    <loseItem id="3006" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208k" display="208">
+    <loseItem id="3007" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208l" display="208">
+    <loseItem id="3008" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208m" display="208">
+    <loseItem id="3009" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208n" display="208">
+    <loseItem id="3010" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208o" display="208">
+    <loseItem id="3011" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208p" display="208">
+    <loseItem id="3012" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208q" display="208">
+    <loseItem id="3013" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208s" display="208">
+    <loseItem id="3015" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208t" display="208">
+    <loseItem id="3016" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208u" display="208">
+    <loseItem id="3017" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="208v" display="208">
+    <loseItem id="3018" />
+    <text>[p]Bizalmatlanul néz rád, mondván, hogy észre kellett volna venned figyelmeztető jelzését a vízből. De helyrehozhatod a hibát, és ismét barátok lehettek, ha a hajában lévő tollért cserébe felajánlasz neki valamit a hátizsákodból. Nincs más megoldás, eleget kell tenned a Sámán kívánságának.[/p][p]Miután a tollat a hajadba tűzted, a Sámán hajlandó meghallgatni.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301">
+    <text>
+        [p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának. Mit adsz neki?[/p]
+    </text>
+    <itemCheck type="item" id="2000">
+      <have>
+        <next id="301a">Egy adag élelmedet?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="2001">
+      <have>
+        <next id="301b">Az Ügyesség Italát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="2002">
+      <have>
+        <next id="301c">Az Erő Italát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="2003">
+      <have>
+        <next id="301d">A Szerencse Italát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3002">
+      <have>
+        <next id="301f">A lámpásod?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="301g">A vasrudat?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3004">
+      <have>
+        <next id="301h">A dárdát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3005">
+      <have>
+        <next id="301i">A csontamulettet?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3006">
+      <have>
+        <next id="301j">A drótdarabot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3007">
+      <have>
+        <next id="301k">A kisbaltát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3008">
+      <have>
+        <next id="301l">A kötéltekercset?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3009">
+      <have>
+        <next id="301m">Sog Sisakját?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3010">
+      <have>
+        <next id="301n">Az aranyrögöt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3011">
+      <have>
+        <next id="301o">A figyelmeztető cédulát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3012">
+      <have>
+        <next id="301p">A csizmádat?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3013">
+      <have>
+        <next id="301q">A Feneketlen Zsákot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3015">
+      <have>
+        <next id="301s">A vaskulcsokat?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3016">
+      <have>
+        <next id="301t">A vadászkürtöt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3017">
+      <have>
+        <next id="301u">A kővé dermedt Grannituszt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3018">
+      <have>
+        <next id="301v">A rézsípot?</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="301a" display="301">
+    <loseItem id="2000" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301b" display="301">
+    <loseItem id="2001" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301c" display="301">
+    <loseItem id="2002" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301d" display="301">
+    <loseItem id="2003" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301f" display="301">
+    <loseItem id="3002" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301g" display="301">
+    <loseItem id="3003" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301h" display="301">
+    <loseItem id="3004" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301i" display="301">
+    <loseItem id="3005" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301j" display="301">
+    <loseItem id="3006" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301k" display="301">
+    <loseItem id="3007" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301l" display="301">
+    <loseItem id="3008" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301m" display="301">
+    <loseItem id="3009" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301n" display="301">
+    <loseItem id="3010" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301o" display="301">
+    <loseItem id="3011" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301p" display="301">
+    <loseItem id="3012" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301q" display="301">
+    <loseItem id="3013" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301s" display="301">
+    <loseItem id="3015" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301t" display="301">
+    <loseItem id="3016" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301u" display="301">
+    <loseItem id="3017" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="301v" display="301">
+    <loseItem id="3018" />
+    <text>[p]Bár a Sámán rosszul beszél anyanyelveden, mégis úgy látod, ragyogóan megért mindent, amit mondasz neki, de mielőtt meghallgatna, ragaszkodik hozzá, hogy tűzz a hajadba egy tollat. Saját tolldíszéből ajánl fel egyet, amit a hajából vesz ki, és kéri, hogy adj érte valamit cserébe. Nincs más választásod, eleget kell tenned az óhajának.[/p][p]Végül elmosolyodik, és várja, hogy beszélj.[/p]</text>
+    <next id="199"></next>
+  </p>
+  <p id="199">
+    <text>
+        [p]A Sámán figyelmesen végighallgatja, amit a Gyíkkirályról és a vele kapcsolatos tervedről elmondasz. Szeretnéd megtudni azt is, miként ölhetnéd meg a parazita Goncsongot, hogy ezáltal csökkentsd a király erejét. A Sámán nagyot ugrik a Goncsong név hallatán. Nyilvánvalóan fogalma sem volt róla, hogy akár egy is akad belőle a szigeten. Akadozó nyelvvel közli, hogy elárulja neked a varázstitkokat, de ezt ki kell érdemelned, bármily nemes is a küldetésed. A próba fájdalmas lesz és nehéz.[/p]
+    </text>
+    <next id="397">Ha elfogadod a Sámán feltételeit</next>
+    <next id="237">Ha nem akarod elsajátítani a Sámán tudományát, és anélkül akarsz a Gyíkkirállyal megküzdeni</next>
+  </p>
+  <p id="108">
+    <text>
+        [p]A dárda elzúg a fejed mellett, és nagyot koppanva landol az egyik sziklán. A Barlangi Nő mérgesen felmordul, és bunkósbotjával rád ront.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="42" />
+    </fight>
+    <next id="79"></next>
+  </p>
+  <p id="157">
+    <text>
+        [p]Végzetes tévedés volt, hogy megtámadtad a hatalmas varázslót. Egy kicsiny dal, mely ajkáról száll föl, kardodat tekergő kígyóvá változtatja. A kígyó a karodra csavarodik. Felordítasz fájdalmadban, és megpróbálod lerázni az állatot. Igyekezeted azonban hiábavalónak bizonyul, mert a kígyó mérge szinte azonnal végez veled.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="129">
+    <text>
+        [p]Elveszed a botot a varázslótól, de abban a pillanatban, amikor megérinted, tüzes vasrúddá változik. Veszítesz 2 Életerő, 1 Ügyesség és 1 Szerencse pontot, amiért oly meggondolatlanul rátámadtál a Sámánra. Eldobod a vasrudat, és még mindig nem akarod elhinni, hogy mi történt.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="skill" />
+    <add amount="-1" to="luck" />
+    <next id="324">Ha beszélni akarsz a Sámánnal</next>
+    <next id="157">Ha inkább megtámadod a kardoddal</next>
+  </p>
+  <p id="237">
+    <text>
+        [p]A Sámán vállat von, aztán felszólít, hogy azonnal távozz. Délkeleti irányba mutat, és azt mondja, hogy a fogolytábor arra van. Megfordulsz, és a tűzhányó oldalában lemész, hogy felkutasd a Gyíkkirály birodalmát.[/p]
+    </text>
+    <next id="168"></next>
+  </p>
+  <p id="397">
+    <itemCheck type="item" id="4003" amount="3">
+      <have>
+        <text>
+            [p]Kiálltad mindhárom próbát.[/p]
+        </text>
+        <next id="214"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="4003">
+          <have>
+            <text>
+                [p]A Sámán megkérdezi, melyiket választod következőnek.[/p]
+            </text>
+          </have>
+          <dontHave>
+            <text>
+                [p]A Sámán közli veled, hogy három próbának kell megfelelned a hat közül. Megkérdezi, melyiket választod elsőnek.[/p]
+            </text>
+          </dontHave>
+        </itemCheck>
+        <itemCheck type="section" id="2">
+          <dontHave>
+            <next id="2" pos="1">A Szerencse próbáját?</next>
+          </dontHave>
+        </itemCheck>
+        <itemCheck type="section" id="75">
+          <dontHave>
+            <next id="75" pos="2">A Félelem próbáját?</next>
+          </dontHave>
+        </itemCheck>
+        <itemCheck type="section" id="151">
+          <dontHave>
+            <next id="151" pos="3">A Fájdalom próbáját?</next>
+          </dontHave>
+        </itemCheck>
+        <itemCheck type="section" id="183">
+          <dontHave>
+            <next id="183" pos="4">Az Átalakulás próbáját?</next>
+          </dontHave>
+        </itemCheck>
+        <itemCheck type="section" id="220">
+          <dontHave>
+            <next id="220" pos="5">Az Erő próbáját?</next>
+          </dontHave>
+        </itemCheck>
+        <itemCheck type="section" id="335">
+          <dontHave>
+            <next id="335" pos="6">Az Ügyesség próbáját?</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+
+  </p>
+  <p id="2">
+    <text>
+        [p]A Sámán három dióhéjat tesz le eléd a földre, és közli, hogy az egyik alatt egy gyöngyszemet rejtett el. Meg kell mondanod, melyik alatt van. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="358"></next>
+      </success>
+      <failure>
+        <next id="326"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="326">
+    <text>
+        [p]Rámutatsz az első dióhéjra. A Sámán fölemeli, de nincs alatta semmi. Megbuktál a próbán, és a Sámán nem fogja elárulni neked a titkát. Délkelet felé mutatva közli veled, hogy a fogolytábor arra van, és a Goncsonggal az ő segítsége nélkül, egyedül kell megbirkóznod. Sarkon fordulsz, és elindulsz lefelé a tűzhányó oldalában, hogy megkeresd a Gyíkkirály erődítményét.[/p]
+    </text>
+    <next id="168"></next>
+  </p>
+  <p id="358">
+    <text>
+        [p]Rámutatsz a középső dióhéjra. A Sámán fölemeli, és megkönnyebbülten látod, hogy egy üveggyöngy fekszik alatta. A próbán megfeleltél![/p]
+    </text>
+    <gatherItem id="4003" />
+    <next id="397"></next>
+  </p>
+  <p id="75">
+    <text>
+        [p]A Sámán odalép hozzád, és ujjával megérinti a fejedet. Szörnyű, riasztó alakok jelennek meg előtted. Olyan valóságosnak hatnak, hogy szinte ordítani szeretnél fájdalmadban. Van az arcodon piros por?[/p]
+    </text>
+    <itemCheck type="section" id="332">
+      <have>
+        <next id="155"></next>
+      </have>
+      <dontHave>
+        <next id="131"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="131">
+    <text>
+        [p]Nem vagy ura az akaratodnak, és üvölteni kezdesz. Megbuktál a próbán! A Sámán ezek után nem árulja el neked a titkát. A gonosz, úgy látszik, eltűnik, és a Sámán délkeleti irányba mutat, mondván, hogy arra van a fogolytábor, továbbá közli, hogy a Goncsongot egyedül, az ő segítsége nélkül kell legyőznöd. Megfordulsz és elindulsz lefelé a tűzhányó oldalában, hogy megtaláld a Gyíkkirály erődítményét.[/p]
+    </text>
+    <next id="168"></next>
+  </p>
+  <p id="155">
+    <text>
+        [p]A vörös por mágikus ereje segít, hogy ura légy önmagadnak. Lassan-lassan túljutsz a borzalmakon. Kiálltad a próbát![/p]
+    </text>
+    <gatherItem id="4003" />
+    <next id="397"></next>
+  </p>
+  <p id="151">
+    <text>
+        [p]A Sámán átnyújtja neked a két csontot, és megkér, hogy fogj egyet-egyet a jobb és bal kezedbe. Izmaid megfeszülnek, és úgy érzed, belülről majd szétfeszít valami, mindjárt szétrobbansz, és iszonyatos fájdalom kínoz.[/p]
+    </text>
+    <next id="67">Ha könyörögni kezdesz a Sámánnak, hogy szabadítson meg a fájdalomtól</next>
+    <next id="125">Ha inkább összeszorított foggal tűröd a fájdalmat</next>
+  </p>
+  <p id="67">
+    <text>
+        [p]A Sámán elveszi tőled a csontokat, és fájdalmad azonnal megszűnik. A próbán azonban megbuktál, és a Sámán nem fogja elárulni neked titkát. Int, hogy indulj el délkeleti irányba, és közli veled, hogy a fogolytábor arra van, valamint azt is, hogy a Goncsonggal az ő segítsége nélkül kell megküzdened. Megfordulsz, és elindulsz lefelé a tűzhányó oldalában, a Gyíkkirály erődítményéhez.[/p]
+    </text>
+    <next id="168"></next>
+  </p>
+  <p id="125">
+    <text>
+        [p]Majdnem belehalsz a fájdalomba, amikor a Sámán odalép hozzád, és elveszi tőled a csontokat. Kiálltad a próbát![/p]
+    </text>
+    <gatherItem id="4003" />
+    <next id="397"></next>
+  </p>
+  <p id="183">
+    <text>
+        [p]A Sámán rád csap a botjával, ettől testedet kukacok lepik el. A szádban és a füledben nyüzsögnek.[/p]
+    </text>
+    <itemCheck type="item" id="3014">
+      <haveEquipped>
+        <next id="64"></next>
+      </haveEquipped>
+      <have>
+        <next id="283"></next>
+      </have>
+      <dontHave>
+        <next id="283"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="64">
+    <text>
+        [p]Bár te ezt nem tudod, az Ügyetlenség Gyűrűjének van haszna is. Aki viseli, annak segít átlátni az illúziókon. A kukacok eltűnnek a szemed elől, a Sámán varázslata megtörik. Kiálltad a próbát![/p]
+    </text>
+    <gatherItem id="4003" />
+    <next id="397"></next>
+  </p>
+  <p id="283">
+    <text>
+        [p]Nem bírod a megpróbáltatást, ezért intesz a Sámánnak, hogy hagyja abba. Megbuktál a próbán, így a Sámán nem fogja megosztani veled a titkát. Délkeleti irányba mutat, azt állítja, hogy a fogolytábor arra van, továbbá közli veled, hogy a Goncsonggal egyedül kell megbirkóznod. Megfordulsz, és lefelé indulsz a tűzhányó oldalában, hogy megkeresd a Gyíkkirály erődítményét.[/p]
+    </text>
+    <next id="168"></next>
+  </p>
+  <p id="220">
+    <text>
+        [p]A Sámán rámutat a sziklatömbre, és kéri, hogy emeld azt föl. Két karoddal átölelve fölemeled.[/p]
+    </text>
+    <test against="stamina">
+      <success>
+        <next id="98"></next>
+      </success>
+      <failure>
+        <next id="369"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="369">
+    <text>
+        [p]A szikla túl nehéz, hogy felemeld. Fel kell adnod a küzdelmet! Megbuktál a próbán, a Sámán így nem osztja meg veled a titkát! Délkelet felé mutat, mondván, hogy a fogolytábor arra van, és közli veled, hogy a Goncsonggal az ő segítsége nélkül kell megküzdened. Sarkon fordulsz, és lefelé indulsz a tűzhányó oldalában, hogy megkeresd a Gyíkkirály erődítményét.[/p]
+    </text>
+    <next id="168"></next>
+  </p>
+  <p id="98">
+    <text>
+        [p]Lassan, de biztosan fölemeled a hatalmas szikladarabot a földről. A Sámán jelt ad, hogy leteheted. Elégedett az erőddel. Kiálltad a próbát![/p]
+    </text>
+    <gatherItem id="4003" />
+    <next id="397"></next>
+  </p>
+  <p id="335">
+    <text>
+        [p]A Sámán átnyújt neked egy tőrt, és azt mondja, próbáld meg vele eltalálni a narancsot, amit a szikla tetejére tett.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="93"></next>
+      </success>
+      <failure>
+        <next id="320"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="320">
+    <text>
+        [p]Gondosan célzol, és elhajítod a tőrt. Szerencsétlenségedre az épp a narancs fölött száll el. Megbuktál a próbán, és a Sámán most már nem árulja el neked a titkát. Délkelet felé mutat, és közli, hogy a fogolytábor arra van, majd figyelmeztet: a Goncsonggal az ő segítsége nélkül kell megküzdened. Megfordulsz, és elindulsz lefelé a tűzhányó oldalában, hogy megkeresd a Gyíkkirály erődítményét.[/p]
+    </text>
+    <next id="168"></next>
+  </p>
+  <p id="93">
+    <text>
+        [p]Célzol, és elhajítod a tőrt. Az elröpül, és egyenesen beleáll a narancsba, amely legurul a szikláról. Kiálltad a próbát![/p]
+    </text>
+    <gatherItem id="4003" />
+    <next id="397"></next>
+  </p>
+  <p id="214">
+    <text>
+        [p]A Sámán örül, hogy most már elárulhatja neked a titkát. Tekintetét a magasba emeli, s széttárt karral, mozdulatlanul áll. Teljes transzban van, amikor elmeséli neked, hogyan is néz ki a parazita Goncsong. Olyan, mint egy aratópók, és csupán a fullánkja mélyed bele a gazdája - jelen esetben a Gyíkkirály - agyába. Ahhoz, hogy valaki megölje, először is a fullánkját kell megsemmisíteni, különben képes és átugrik a támadójára, hogy új gazdát találjon. De amíg irányítása alatt tartja a Gyíkkirályt, az szinte legyőzhetetlen, és az egyszerű fegyverek nem tehetnek kárt benne. Csupán a lángpallos képes a Goncsong gazdáját megsebesíteni. A Gyíkkirály maga is használ ilyen fegyvert, vagyis egy olyan varázskardot, amit bármikor rozsdás késsé változtathat. Ezt aztán senki nem akarja ellopni. A lángpallos birtokában és a Goncsong irányítása alatt a Gyíkkirály halálos ellenfél. Csak egyetlenegy teremtmény képes megijeszteni - a majom! A Gyíkemberek velük született majomfrászban élnek, s ezt még a Goncsong ereje se tudja legyőzni. A Sámán lassan magához tér a transzból, és délkelet felé mutatva közli, hogy a fogolytelep arra van. Elköszönsz tőle, és lemész a tűzhányó aljába, hogy onnan menj tovább a Gyíkkirály erődítménye felé.[/p]
+    </text>
+    <next id="168"></next>
+  </p>
+  <p id="168">
+    <text>
+        [p]Gyorsan haladsz délkelet felé, abban a reményben, hogy foglyokkal találkozol: a kiszabadított foglyokkal. Hamarosan egy szakadék széléhez érsz, amely túl széles ahhoz, hogy átugord. Kelet felé veszed az utadat, s dühöngsz, amiért időt veszítesz. Egy kőhidat látsz magad előtt, mely összeköti a szakadék két peremét, de egy felfegyverzett Hobgoblin áll őrt mellette. Mit teszel?[/p]
+    </text>
+    <next id="127" pos="1">Megpróbálsz valamilyen csellel átjutni a kőhídon?</next>
+    <itemCheck type="item" id="3010">
+      <have>
+        <next id="252" pos="2">Felajánlasz a Hobgoblinnak egy aranyrögöt, hogy átengedjen?</next>
+      </have>
+    </itemCheck>
+    <next id="328" pos="3">Megtámadod a kardoddal?</next>
+  </p>
+  <p id="252">
+    <text>
+        [p]A Hobgoblin szeme felcsillan az aranyrög láttán. Máris a markát tartja, mohón várva, hogy megvesztegesd. Az aranyrögöt a kezébe nyomod, és átmész a kőhídon a szakadék túloldalára.[/p]
+    </text>
+    <loseItem id="3010" />
+    <next id="139"></next>
+  </p>
+  <p id="127">
+    <text>
+        [p]A Hobgoblin természetesen elég buta ahhoz, hogy elhiggye: te a Gyíkkirály egyik őre vagy. Neked szegezi a dárdáját, és mély hangján a következőt kérdi: - Jelszó? - Mit válaszolsz?[/p]
+    </text>
+    <next id="193">Tessék?</next>
+    <next id="120">Goncsong</next>
+    <next id="287">Tűz-sziget</next>
+  </p>
+  <p id="193">
+    <text>
+        [p]A Hobgoblin bután rád mereszti a szemét és így szól: - Igen, helyes a válasz; a „Tessék'' a jelszó. Átkelhetsz a hídon. - Félreáll az útból, te pedig gyorsan átmész a szakadék túloldalára.[/p]
+    </text>
+    <next id="139"></next>
+  </p>
+  <p id="120">
+    <text>
+        [p]A „Goncsong'' név hallatán a Hobgoblint félelem tölti el. Rémülten felordít, és rád szegezi a dárdáját. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="62"></next>
+      </success>
+      <failure>
+        <next id="240"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="240">
+    <text>
+        [p]A dárda átdöfi a válladat, és a földre rogysz. Veszítesz 2 Életerő és 1 Ügyesség pontot. A Hobgoblin pánikszerűen elmenekül, ahelyett hogy végezne veled. Amikor már olyan jól érzed magad, hogy lábra tudsz állni, átmész a kőhídon a szakadék túloldalára.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="skill" />
+    <next id="139"></next>
+  </p>
+  <p id="62">
+    <text>
+        [p]A dárda elzúg melletted, és a Hobgoblin pánikszerűen elmenekül. Átmész a hídon, a szakadék másik oldalára.[/p]
+    </text>
+    <next id="139"></next>
+  </p>
+  <p id="139">
+    <text>
+        [p]Ismét elindulsz délkeleti irányba a homokon és sziklákon át. Egyszer csak egy dinosaurushoz hasonló paripa hátán lovagló, állig felfegyverzett hüllő állja el az utadat. Egy mutáns Gyíkemberrel van dolgod, aki egy Styracosaurus hátán közelít feléd. A Gyíkember ügetésbe kezd, s rád támad.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="44" />
+    </fight>
+    <next id="95"></next>
+  </p>
+  <p id="287">
+    <text>
+        [p]Elég sokáig tart, míg a Hobgoblin rájön, hogy rossz jelszót mondtál. Végül leesik neki a tantusz, és neked szegezi a dárdáját.[/p]
+    </text>
+    <next id="328"></next>
+  </p>
+  <p id="328">
+    <text>
+        [p]Gyorsan kirántod a kardodat, és odaugrasz a Hobgoblinhoz.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="45" />
+    </fight>
+    <next id="338"></next>
+  </p>
 </content>
