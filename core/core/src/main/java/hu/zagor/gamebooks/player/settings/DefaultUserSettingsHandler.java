@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.player.settings;
 import hu.zagor.gamebooks.directory.DirectoryProvider;
 import hu.zagor.gamebooks.player.PlayerSettings;
 import hu.zagor.gamebooks.player.PlayerUser;
-import hu.zagor.gamebooks.support.logging.LogInject;
 import hu.zagor.gamebooks.support.scanner.Scanner;
 import hu.zagor.gamebooks.support.writer.Writer;
 
@@ -13,6 +12,7 @@ import java.io.IOException;
 import java.util.Map.Entry;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -28,8 +28,7 @@ public class DefaultUserSettingsHandler implements UserSettingsHandler, BeanFact
     private static final String UTF_8 = "UTF-8";
     private static final String SETTINGS_PROPERTIES = "settings.properties";
     private static final String PLAYER_NOT_NULL = "The parameter 'player' cannot be null!";
-    @LogInject
-    private Logger logger;
+    private final Logger logger = LoggerFactory.getLogger(DefaultUserSettingsHandler.class);
     private BeanFactory beanFactory;
     @Autowired
     private DirectoryProvider directoryProvider;
