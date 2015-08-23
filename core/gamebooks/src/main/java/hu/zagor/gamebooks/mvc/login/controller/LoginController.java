@@ -170,7 +170,7 @@ public class LoginController {
         final HttpSession session = request.getSession();
         String nextPage;
         final CsrfToken expectedToken = csrfTokenRepository.loadToken(request);
-        if (expectedToken.getToken().equals(data.getCsrfToken())) {
+        if (expectedToken != null && expectedToken.getToken().equals(data.getCsrfToken())) {
             final LoginResult loginResult = login.doLogin(data);
             if (loginResult.isSuccessful()) {
                 nextPage = executeLogin(data, request, session, loginResult);

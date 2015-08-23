@@ -26,7 +26,7 @@ public class ZagorServerCommunicator implements ServerCommunicator, BeanFactoryA
     @Override
     public String compilePostData(final String key, final Object value, final String previousData) throws IOException {
         String postDataFragment = null;
-        postDataFragment = URLEncoder.encode(key, UTF_8_ENCODING) + "=" + URLEncoder.encode(value.toString(), UTF_8_ENCODING);
+        postDataFragment = URLEncoder.encode(key, UTF_8_ENCODING) + "=" + URLEncoder.encode(value == null ? "" : value.toString(), UTF_8_ENCODING);
         String finalPostData;
         if (previousData == null) {
             finalPostData = postDataFragment;
