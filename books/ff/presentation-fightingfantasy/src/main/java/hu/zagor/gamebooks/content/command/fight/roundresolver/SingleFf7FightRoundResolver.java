@@ -16,23 +16,27 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component("singleff7FightRoundResolver")
-public class Single7FightRoundResolver extends SingleFightRoundResolver {
+public class SingleFf7FightRoundResolver extends SingleFightRoundResolver {
 
     private static final String MARKER_ENEMY_ID = "999";
-    private static final int[] FIRST_ROUND_SELF_ROLL = new int[]{12, 6, 6};
-    private static final int[] FIRST_ROUND_ENEMY_ROLL = new int[]{2, 1, 1};
+    private static final int[] MAX_ROLL = new int[]{12, 6, 6};
+    private static final int[] MIN_ROLL = new int[]{2, 1, 1};
 
     @Override
     int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
         int[] selfAttackStrength;
 
         if (command.getRoundNumber() == 1 && hasSogHelmet(character.getEquipment())) {
-            selfAttackStrength = FIRST_ROUND_SELF_ROLL;
+            selfAttackStrength = MAX_ROLL;
             final RoundEvent e = new RoundEvent();
             e.setEnemyId(MARKER_ENEMY_ID);
             command.getRoundEvents().add(e);
         } else {
-            selfAttackStrength = super.getSelfAttackStrength(character, command, attributeHandler);
+            if (command.getRoundNumber() == 1 && "41".equals(command.getEnemies().get(0))) {
+                selfAttackStrength = MIN_ROLL;
+            } else {
+                selfAttackStrength = super.getSelfAttackStrength(character, command, attributeHandler);
+            }
         }
 
         return selfAttackStrength;
@@ -52,10 +56,14 @@ public class Single7FightRoundResolver extends SingleFightRoundResolver {
     public int[] getEnemyAttackStrength(final FfEnemy enemy, final FightCommand command) {
         int[] enemyAttackStrength;
 
-        if (command.getRoundNumber() == 1 && MARKER_ENEMY_ID.equals(command.getRoundEvents().get(0).getEnemyId())) {
-            enemyAttackStrength = FIRST_ROUND_ENEMY_ROLL;
+        if (command.getRoundNumber() == 1 && !command.getRoundEvents().isEmpty() && MARKER_ENEMY_ID.equals(command.getRoundEvents().get(0).getEnemyId())) {
+            enemyAttackStrength = MIN_ROLL;
         } else {
-            enemyAttackStrength = super.getEnemyAttackStrength(enemy, command);
+            if (command.getRoundNumber() == 1 && "41".equals(command.getEnemies().get(0))) {
+                enemyAttackStrength = MAX_ROLL;
+            } else {
+                enemyAttackStrength = super.getEnemyAttackStrength(enemy, command);
+            }
         }
 
         return enemyAttackStrength;

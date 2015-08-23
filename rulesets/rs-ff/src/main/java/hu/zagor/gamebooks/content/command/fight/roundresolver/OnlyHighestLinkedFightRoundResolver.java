@@ -42,7 +42,7 @@ public class OnlyHighestLinkedFightRoundResolver extends AbstractFightRoundResol
         final FightDataDto dto = new FightDataDto(referenceEnemy, messages, resolvationData, command.getUsableWeaponTypes());
 
         final int[] selfAttackStrengthValues = getSelfAttackStrength(character, command, attributeHandler);
-        final Map<String, int[]> enemiesAttackStrengthValues = getEnemiesAttackValues(enemies);
+        final Map<String, int[]> enemiesAttackStrengthValues = getEnemiesAttackValues(enemies, command);
         final int selfAttackStrength = attributeHandler.resolveValue(character, "skill") + selfAttackStrengthValues[0];
         final Map<String, Integer> enemiesAttackStrength = getEnemiesAttackStrengths(enemies, enemiesAttackStrengthValues);
         recordAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
@@ -66,10 +66,10 @@ public class OnlyHighestLinkedFightRoundResolver extends AbstractFightRoundResol
         return result;
     }
 
-    private Map<String, int[]> getEnemiesAttackValues(final List<FfEnemy> enemies) {
+    private Map<String, int[]> getEnemiesAttackValues(final List<FfEnemy> enemies, final FightCommand command) {
         final Map<String, int[]> enemyAttackValues = new HashMap<>();
         for (final FfEnemy enemy : enemies) {
-            enemyAttackValues.put(enemy.getId(), getEnemyAttackStrength(enemy));
+            enemyAttackValues.put(enemy.getId(), getEnemyAttackStrength(enemy, command));
         }
         return enemyAttackValues;
     }
