@@ -136,7 +136,7 @@
   </p>
   <p id="13">
     <text>
-        [p]A szürkületben nem veszed észre a Mérges Pókot, amint a banánfa törzsén mászik lefelé. Rátenyerelsz dagadt, szőrös testére, és még mielőtt ráeszmélnél mi történt, a pók megmar. Vesztesz 3 [span class="ffAttribute"]Életerő[/span] pontot. A sokkhatástól összecsuklasz.[/p]
+        [p]A szürkületben nem veszed észre a Mérges Pókot, amint a banánfa törzsén mászik lefelé. Rátenyerelsz dagadt, szőrös testére, és még mielőtt ráeszmélnél mi történt, a pók megmar. Vesztesz 3 [span class="ffAttribute"]Életerő[/span] pontot. A sokkhatástól megcsúszik a kezed.[/p]
     </text>
     <add amount="-3" to="stamina" />
     <test against="skill">
@@ -992,7 +992,7 @@
   </p>
   <p id="94">
     <text>
-        [p]A csizma épp jó a lábadra. Körbefutsz benne, de semmi sem történik veled, így hát úgy döntesz, hogy inkább nem kell. [alt]Ha még nem tetted volna:[/alt][/p]
+        [p]A csizma épp jó a lábadra. Körbefutsz benne, de semmi sem történik veled, így hát úgy döntesz, hogy inkább magadon hagyod. [alt]Ha még nem tetted volna:[/alt][/p]
     </text>
     <gatherItem id="3012" />
     <itemCheck type="section" id="311">
@@ -1610,10 +1610,10 @@
   </p>
   <p id="156">
     <text>
-        [p]Bár már közel jártál a halálhoz, mégis sikerült legyőznöd a kígyó mérgét. A méreg azonban igencsak legyengített. Végül is visszanyered az eszméletedet és kipihened magad, de veszítesz 5 [span class="ffAttribute"]Ügyesség[/span] és 4 [span class="ffAttribute"]Életerő[/span] pontot.[/p]
+        [p]Bár már közel jártál a halálhoz, mégis sikerült legyőznöd a kígyó mérgét. A méreg azonban igencsak legyengített. Végül is visszanyered az eszméletedet és kipihened magad, de [span class="ffAttribute"]Ügyesség[/span] pontjaid 5-re, míg [span class="ffAttribute"]Életerő[/span] pontjaid 4-re csökkennek.[/p]
     </text>
-    <add amount="-4" to="stamina" />
-    <add amount="-5" to="skill" />
+    <add amount="-4" to="stamina" type="set" />
+    <add amount="-5" to="skill" type="set" />
     <next id="5">Ha ki akarod piszkálni a Csörgőkígyót a kardoddal</next>
     <next id="119">Ha inkább óvatosan leereszkedsz a szurdokba és egyenesen nyugati irányba mész</next>
   </p>
@@ -1694,7 +1694,7 @@
   </p>
   <p id="161">
     <text>
-        [p]Felöltöd a Gyíkember páncélját, hogy álcázd magad, a Törpéket pedig libasorba állítod, hagy azt a látszatot keltsék, mintha össze lennének láncolva. Mosolyogva csapkodsz a levegőbe a korbáccsal, és hajtod a Törpéket a vágaton lefelé. Követed őket a végeláthatatlan alagutakban, egyre lejjebb, a bánya mélyébe. Ahogy elhaladsz egy másik vágatrendszer mellett, egy Gyíkembert pillantasz meg, amint feléd tart. [/p]
+        [p]Felöltöd a Gyíkember köpenyét, hogy álcázd magad, a Törpéket pedig libasorba állítod, hagy azt a látszatot keltsék, mintha össze lennének láncolva. Mosolyogva csapkodsz a levegőbe a korbáccsal, és hajtod a Törpéket a vágaton lefelé. Követed őket a végeláthatatlan alagutakban, egyre lejjebb, a bánya mélyébe. Ahogy elhaladsz egy másik vágatrendszer mellett, egy Gyíkembert pillantasz meg, amint feléd tart. [/p]
     </text>
     <test against="luck">
       <success>
@@ -1808,11 +1808,11 @@
         [p]Hamarosan visszajutsz egy újabb elágazáshoz.[/p]
     </text>
     <next id="383">Ha továbbra is egyenesen előre akarsz menni</next>
-    <next id="4">Ha jobbra akarsz fordulni</next>
+    <next id="4">Ha balra akarsz fordulni</next>
   </p>
   <p id="173">
     <text>
-        [p]A Törpe kegyelemért könyörög, amint a Gyíkember a földre rogy.[/p]
+        [p]A Törpe örömében felkiált, amint a Gyíkember a földre rogy.[/p]
     </text>
     <itemCheck type="item" id="3006">
       <have>
@@ -2124,7 +2124,7 @@
   </p>
   <p id="207">
     <text>
-        [p]A Grannitusz hirtelen elereszti a lábszáradat, és a földre zuhansz. Jókorát rúgsz belé, és nézed, mint száll el a vágaton lefelé. A Csörgőkígyó mérge ölte meg, ami a szervezetedben elraktározódott. A többi Grannitusz észreveszi, hogy mi történt, és gyorsan visszahúzódik a vágat falának sötét mélyedéseibe.[/p]
+        [p]A Grannitusz hirtelen elereszti a lábszáradat, és a földre zuhan. Jókorát rúgsz belé, és nézed, mint száll el a vágaton lefelé. A Csörgőkígyó mérge ölte meg, ami a szervezetedben elraktározódott. A többi Grannitusz észreveszi, hogy mi történt, és gyorsan visszahúzódik a vágat falának sötét mélyedéseibe.[/p]
     </text>
     <itemCheck type="item" id="3013">
       <have>
@@ -2805,7 +2805,7 @@
   </p>
   <p id="236">
     <text>
-        [p]Kibírhatatlanul viszket a sok csípés, láznak még sincs semmi nyoma. Visszaugrasz a tutajra, és ismét folytatod az utat a folyón felfelé.[/p]
+        [p]Kibírhatatlanul viszket a sok csípés, de láznak szerencsére nyoma sincs. Visszaugrasz a tutajra, és ismét folytatod az utat a folyón felfelé.[/p]
     </text>
     <next id="379"></next>
   </p>
@@ -2979,7 +2979,7 @@
   </p>
   <p id="257">
     <text>
-        [p]Terved csődöt mond! A vízsugár olyan erővel zúdul rád, hogy kiveri kezedből a varázszsákot, ami elsüllyed. A tutajod kettétörik, és a vízfüggöny mögül meghallod a Víziszörny gurgulázó kacaját. Levegőért kapkodsz a víz alatt. Minden erődet összeszedve megpróbálsz kiúszni a partra.[/p]
+        [p]Terved csődöt mond! A vízsugár olyan erővel zúdul rád, hogy kiveri kezedből a varázszsákot, ami elsüllyed. A tutajod kettétörik, és a vízfüggöny mögül meghallod a Vízelementál gurgulázó kacaját. Levegőért kapkodsz a víz alatt. Minden erődet összeszedve megpróbálsz kiúszni a partra.[/p]
     </text>
     <loseItem id="3013" />
     <test against="skill">
@@ -2993,7 +2993,7 @@
   </p>
   <p id="258">
     <text>
-        [p]Bár a bokor leveleinek hegye mérgezett, mégsem sérülsz meg. Továbbmész, és tudod, hogy iszonyatos veszedelmet kerültél el.[/p]
+        [p]Bár a bokor leveleinek hegye mérgezett, mégsem sérülsz meg. Továbbmész, és fogalmad sincs róla, hogy milyen iszonyatos veszedelmet kerültél el.[/p]
     </text>
     <next id="291"></next>
   </p>
@@ -3088,7 +3088,7 @@
   </p>
   <p id="270">
     <text>
-        [p]Elhatározod, hogy megtámadod a Gyíkembereket. Abban reménykedsz, hogy élve megúszod az összecsapást, és ki tudsz majd szedni belőlük valamit. Csöndben kikúszol a fák rejtekéből egészen a kunyhó sarkáig. Körülnézel, és észreveszed, hogy a Gyíkemberek még mindig beszélgetnek. Kivont karddal rájuk rontasz, remélve, hogy meg tudod lepni őket.[/p]
+        [p]Elhatározod, hogy megtámadod a Gyíkembereket. Abban reménykedsz, hogy legalább az egyiket élve tudod elfogni, és ki tudsz majd szedni belőlük valamit. Csöndben kikúszol a fák rejtekéből egészen a kunyhó sarkáig. Körülnézel, és észreveszed, hogy a Gyíkemberek még mindig beszélgetnek. Kivont karddal rájuk rontasz, remélve, hogy meg tudod lepni őket.[/p]
     </text>
     <test against="luck">
       <success>
@@ -3908,7 +3908,7 @@
         [p]A tamtam hangja egyre erősödik, ahogy befelé haladsz a sűrű dzsungelban. Énekhangok és mély, dübörgő zaj üti meg a füledet. A lehető leghalkabban lopakodsz előre, amíg egy kis tisztáshoz nem érsz. A tisztás szélén körben bambuszkunyhók állnak. A tisztás közepén tizenkét Fejvadászt látsz, akik egy oszlophoz kikötött félmeztelen férfit vesznek körül. Az egyik Fejvadász, akinek az arcát és a fejét díszes maszk fedi, előrelép és karját a magasba emeli. A tamtamszó hirtelen elhallgat. Ekkor egy nő csontkést nyújt át neki – a Fejvadászok készen állnak, hogy új trófeát szerezzenek maguknak! Túl sokan vannak ahhoz, hogy megtámadd őket, egyedül tehetetlen vagy. Egyféleképpen tudnád elterelni a Fejvadászok figyelmét, de ez veszélyes.[/p]
     </text>
     <next id="171">Ha az előtted lobogó tábortűzből kiragadsz egy égő fahusángot, és felgyújtasz vele néhány kunyhót</next>
-    <next id="113">Ha inkább visszahúzódsz a dzsungelba és kelet felé mész tovább</next>
+    <next id="113">Ha inkább visszahúzódsz a dzsungelba és nyugat felé mész tovább</next>
   </p>
   <p id="338">
     <text>
@@ -3962,8 +3962,9 @@
   </p>
   <p id="343">
     <text>
-        [p]A lány sírni kezd, és hirtelen bűntudatot érzel, amiért megölted a Tigrisét. Meg akarnád vigasztalni, de a lány gazellagyorsasággal elfut tőled, fel a hegyre. Visszadugod a kardodat a hüvelyébe, és leereszkedsz a völgybe, hogy csatlakozz a kiszabadított foglyokhoz.[/p]
+        [p]A lány sírni kezd, és hirtelen bűntudatot érzel, amiért megölted a Tigrisét. Meg akarnád vigasztalni, de a lány gazellagyorsasággal elfut tőled, fel a hegyre. Vesztesz 2 [span class="ffAttribute"]Szerencse[/span] pontot Visszadugod a kardodat a hüvelyébe, és leereszkedsz a völgybe, hogy csatlakozz a kiszabadított foglyokhoz.[/p]
     </text>
+    <add amount="-2" to="luck"/>
     <next id="279"></next>
   </p>
   <p id="344">
@@ -4472,7 +4473,7 @@
         </itemCheck>
         <itemCheck type="section" id="183">
           <dontHave>
-            <next id="183" pos="4">Az Átalakulás próbáját?</next>
+            <next id="183" pos="4">Az Undor próbáját?</next>
           </dontHave>
         </itemCheck>
         <itemCheck type="section" id="220">
@@ -4496,7 +4497,7 @@
   </p>
   <p id="399">
     <text>
-        [p]A fa ágáról kitömött zsák lóg le egy kötélen.[/p]
+        [p]Egy fa ágán kitömött zsákot veszel észre, mely egy kötélen lóg le.[/p]
     </text>
     <next id="282">Ha le akarod vágni a zsákot</next>
     <next id="27">Ha inkább továbbmész</next>
