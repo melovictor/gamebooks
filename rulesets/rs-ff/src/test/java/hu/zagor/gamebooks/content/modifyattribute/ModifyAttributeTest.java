@@ -21,7 +21,7 @@ public class ModifyAttributeTest {
 
     public void testCloneShouldReturnObjectWithSameValues() throws CloneNotSupportedException {
         // GIVEN
-        final ModifyAttribute underTest = new ModifyAttribute("skill", 3);
+        final ModifyAttribute underTest = new ModifyAttribute("skill", 3, ModifyAttributeType.change);
         // WHEN
         final ModifyAttribute returned = underTest.clone();
         // THEN

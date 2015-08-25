@@ -15,6 +15,7 @@ public class ModifyAttribute implements Serializable, Cloneable {
 
     private String attribute;
     private int amount;
+    private ModifyAttributeType type;
 
     /**
      * Default constructor for the serializer.
@@ -22,16 +23,19 @@ public class ModifyAttribute implements Serializable, Cloneable {
     ModifyAttribute() {
         attribute = "";
         amount = 0;
+        type = ModifyAttributeType.change;
     }
 
     /**
      * Basic constructor setting the name of the attribute and the amount of the modification.
      * @param attribute the attribute to change
      * @param amount the amount by which to change the attribute
+     * @param type the type of the {@link ModifyAttribute} object
      */
-    public ModifyAttribute(final String attribute, final int amount) {
+    public ModifyAttribute(final String attribute, final int amount, final ModifyAttributeType type) {
         this.attribute = attribute;
         this.amount = amount;
+        this.type = type;
     }
 
     public int getAmount() {
@@ -53,5 +57,13 @@ public class ModifyAttribute implements Serializable, Cloneable {
     @Override
     public ModifyAttribute clone() throws CloneNotSupportedException {
         return (ModifyAttribute) super.clone();
+    }
+
+    public ModifyAttributeType getType() {
+        return type;
+    }
+
+    public void setType(final ModifyAttributeType type) {
+        this.type = type;
     }
 }

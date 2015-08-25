@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.character.handler.attribute;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute;
+import hu.zagor.gamebooks.content.modifyattribute.ModifyAttributeType;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 
 import org.easymock.EasyMock;
@@ -127,7 +128,7 @@ public class FfAttributeHandlerTest {
 
     public void testHandleModificationWhenCharacterHasFieldShouldModifyItAccordingly() {
         // GIVEN
-        final ModifyAttribute modAttrib = new ModifyAttribute("skill", 1);
+        final ModifyAttribute modAttrib = new ModifyAttribute("skill", 1, ModifyAttributeType.change);
         mockControl.replay();
         // WHEN
         underTest.handleModification(character, modAttrib);
@@ -175,7 +176,7 @@ public class FfAttributeHandlerTest {
 
     public void testHandleModificationWhenCharacterHasFieldThatShouldBeRaisedAboveInitialValueShouldModifyItAccordingly() {
         // GIVEN
-        final ModifyAttribute modAttrib = new ModifyAttribute("skill", 9);
+        final ModifyAttribute modAttrib = new ModifyAttribute("skill", 9, ModifyAttributeType.change);
         mockControl.replay();
         // WHEN
         underTest.handleModification(character, modAttrib);
