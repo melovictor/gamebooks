@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Ff7-specific single fight round resolver.
+ * Ff7-specific all-at-once fight round resolver.
  * @author Tamas_Szekeres
  */
-@Component("singleff7FightRoundResolver")
-public class SingleFf7FightRoundResolver extends SingleFightRoundResolver {
+@Component("allAtOnceff7FightRoundResolver")
+public class AllAtOnceFf7FightRoundResolver extends AllAtOnceFightRoundResolver {
 
     @Autowired
     private Ff7SpecialAttackStrengthGenerator attackStrengthGenerator;
