@@ -43,7 +43,7 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
                     doLoseFight(command, result, enemyIdx, dto);
                 } else {
                     final int[] selfAttackStrengthValues = getSelfAttackStrength(character, command, attributeHandler);
-                    final int[] enemyAttackStrengthValues = getEnemyAttackStrength(enemy);
+                    final int[] enemyAttackStrengthValues = getEnemyAttackStrength(enemy, command);
                     final int selfAttackStrength = attributeHandler.resolveValue(character, "skill") + selfAttackStrengthValues[0];
                     final int enemyAttackStrength = enemy.getSkill() + enemyAttackStrengthValues[0];
                     command.getAttackStrengths().put(enemy.getId(), enemyAttackStrength);

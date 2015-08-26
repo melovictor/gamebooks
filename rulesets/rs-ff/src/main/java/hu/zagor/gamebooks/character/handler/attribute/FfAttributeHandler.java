@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.character.handler.attribute;
 
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute;
+import hu.zagor.gamebooks.content.modifyattribute.ModifyAttributeType;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.support.logging.LogInject;
@@ -36,7 +37,7 @@ public class FfAttributeHandler {
         Assert.notNull(modAttr, "The parameter 'modAttr' cannot be null!");
         final String attribute = modAttr.getAttribute();
         final int amount = modAttr.getAmount();
-        handleModification(character, attribute, amount);
+        handleModification(character, attribute, amount, modAttr.getType());
     }
 
     /**
@@ -46,6 +47,17 @@ public class FfAttributeHandler {
      * @param amount the amount by which the attribute has to be modified
      */
     public void handleModification(final FfCharacter character, final String attribute, final int amount) {
+        handleModification(character, attribute, amount, ModifyAttributeType.change);
+    }
+
+    /**
+     * Executes the modification requested.
+     * @param character the {@link FfCharacter} on which the modification has to be executed
+     * @param attribute the attribute that has to be modified
+     * @param amount the amount by which the attribute has to be modified
+     * @param type the modification type
+     */
+    public void handleModification(final FfCharacter character, final String attribute, final int amount, final ModifyAttributeType type) {
         Assert.notNull(character, "The parameter 'character' cannot be null!");
         Assert.notNull(attribute, "The parameter 'attribute' cannot be null!");
         try {
@@ -54,7 +66,11 @@ public class FfAttributeHandler {
                 throw new NoSuchFieldException();
             }
             field.setAccessible(true);
-            ReflectionUtils.setField(field, character, field.getInt(character) + amount);
+            if (type == ModifyAttributeType.change) {
+                ReflectionUtils.setField(field, character, field.getInt(character) + amount);
+            } else {
+                ReflectionUtils.setField(field, character, +amount);
+            }
             field.setAccessible(false);
         } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException ex) {
             logger.error("Failed to alter field '{}' on object type '{}'.", attribute, character.getClass().toString());

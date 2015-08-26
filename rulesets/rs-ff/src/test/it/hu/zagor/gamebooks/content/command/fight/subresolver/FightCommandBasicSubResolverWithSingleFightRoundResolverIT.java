@@ -45,6 +45,7 @@ import hu.zagor.gamebooks.content.command.random.RandomCommandResolver;
 import hu.zagor.gamebooks.content.command.random.RandomResult;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute;
+import hu.zagor.gamebooks.content.modifyattribute.ModifyAttributeType;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -324,7 +325,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         interruptingRandom.addResult(interruptingResult);
         interruptingRandom.setDiceConfig("dice1d6");
 
-        reduceStamina = new ModifyAttribute("stamina", -1);
+        reduceStamina = new ModifyAttribute("stamina", -1, ModifyAttributeType.change);
 
         damagingRandom = new FfParagraphData();
         damagingRandom.setText("The Orc breathed fire at you.");
@@ -402,7 +403,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         smallDamagingRandom.setChoices(choiceSet);
         smallDamagingRandom.setBeanFactory(beanFactory);
         smallDamagingRandom.setText("The Orc hit you with acid causing 1 STAMINA point of damage.");
-        smallDamagingRandom.addModifyAttributes(new ModifyAttribute("stamina", -1));
+        smallDamagingRandom.addModifyAttributes(new ModifyAttribute("stamina", -1, ModifyAttributeType.change));
         randomResult.setParagraphData(smallDamagingRandom);
         afterBoundingRandom.addResult(randomResult);
 

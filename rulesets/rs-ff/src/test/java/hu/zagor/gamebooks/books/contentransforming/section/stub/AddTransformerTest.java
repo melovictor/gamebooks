@@ -5,6 +5,7 @@ import hu.zagor.gamebooks.books.AbstractTransformerTest;
 import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTransformer;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute;
+import hu.zagor.gamebooks.content.modifyattribute.ModifyAttributeType;
 
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
@@ -37,7 +38,7 @@ public class AddTransformerTest extends AbstractTransformerTest {
         node = mockControl.createMock(Node.class);
         parent = mockControl.createMock(BookParagraphDataTransformer.class);
         data = mockControl.createMock(FfParagraphData.class);
-        modifyAttrib = new ModifyAttribute("stamina", 9);
+        modifyAttrib = new ModifyAttribute("stamina", 9, ModifyAttributeType.change);
         nodeMap = mockControl.createMock(NamedNodeMap.class);
         nodeValue = mockControl.createMock(Node.class);
 
@@ -49,8 +50,9 @@ public class AddTransformerTest extends AbstractTransformerTest {
         // GIVEN
         expectAttribute("to", "stamina");
         expectAttribute("amount", "9");
+        expectAttribute("type");
 
-        expect(beanFactory.getBean("ffModifyAttribute", "stamina", 9)).andReturn(modifyAttrib);
+        expect(beanFactory.getBean("ffModifyAttribute", "stamina", 9, ModifyAttributeType.change)).andReturn(modifyAttrib);
         data.addModifyAttributes(modifyAttrib);
 
         mockControl.replay();
