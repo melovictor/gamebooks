@@ -18,9 +18,12 @@ emocionante e cheia de magia. Você decide os caminhos a seguir, e que perigos e
   </section>
   <section id="generate" display="Criando seu personagem">
     <text>
-        [p][span class="ffAttribute"]Habilidade[/span]: [span id="ffSkill"]jogue um dado e acrescente 6 a este número[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
-        [p][span class="ffAttribute"]Energia[/span]: [span id="ffStamina"]jogue dois dados e some 12 ao número obtido[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
-        [p][span class="ffAttribute"]Sorte[/span]: [span id="ffLuck"]jogue um dado e some 6 a este número[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Habilidade[/span]: [span id="ffSkill"]jogue um dado e acrescente 6 a este
+         número[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Energia[/span]: [span id="ffStamina"]jogue dois dados e some 12 ao número
+         obtido[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Sorte[/span]: [span id="ffLuck"]jogue um dado e some 6 a este número
+        [img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
         [p]Escolha uma garrafa de qualquer uma das seguintes poções para levar:
           [select id="ffDefaultPotion"]
               [option value="2001" selected="selected"]Uma Poção da Habilidade[/option]
@@ -1059,21 +1062,23 @@ não, saia da loja e continue para o oeste.[/p]
   </section>
   <section id="67">
     <text>
-        [p]A nő izgatott hangon szól ki a függöny mögül: – Ó, kíváncsi vagyok, vajon melyik kedvesem küldött nekem virágot? Meg tudja mondani, ki küldte?[/p]
+        [p]A voz da mulher parece excitada ao falar através das cortinas: "Oh, fico imaginando quem será a
+gracinha que me mandou flores? Você pode me dizer quem as enviou?"[/p]
     </text>
-    <next id="195">Ha mondasz neki egy nevet</next>
-    <next id="79">Ha azt mondod neki, hogy nem tudod, ki küldte</next>
+    <next id="195">Se quiser dizer a ela um nome</next>
+    <next id="79">Se quiser dizer a ela que não sabe quem as mandou</next>
   </section>
   <section id="68">
     <text>
-        [p]A leves íze undorító.[/p]
+        [p]A sopa tem um gosto absolutamente intragável.[/p]
     </text>
-    <next id="380">Ha mégis lenyeled</next>
-    <next id="262">Ha inkább kiköpöd</next>
+    <next id="380">Se quiser engoli-la</next>
+    <next id="262">Se quiser cuspir fora</next>
   </section>
   <section id="69">
     <text>
-        [p]Amikor az őrök megpróbálnak elvonszolni, minden erőddel igyekszel kiszabadulni a szorításukból.[/p]
+        [p]Justamente quando os guardas estão a prestes a levá-lo embora, você tenta com todas as suas forças
+livrar seus braços do domínio deles.[/p]
     </text>
     <test against="skill">
       <success>
@@ -1081,7 +1086,7 @@ não, saia da loja e continue para o oeste.[/p]
       </success>
       <failure>
         <text>
-            [p]Képtelen vagy kiszabadulni a karmaikból, és elvezetnek, miközben küzdesz ellenük, ahogy csak bírsz.[/p]
+            [p]Você não consegue se libertar e é conduzido para fora, lutando violentamente.[/p]
         </text>
         <next id="151"></next>
       </failure>
@@ -1089,20 +1094,29 @@ não, saia da loja e continue para o oeste.[/p]
   </section>
   <section id="70">
     <text>
-        [p]Amint hozzáérsz a ládához, az eltűnik a szemed elől. Kacagást hallasz a hátad mögül, s a tükörben megpillantod egy fekete palástot viselő zöld, áttetsző szemű csontváz undorító tükörképét. A csontváz koponyájának tetején aranykorona ül. Megfordulsz, de már késő! Csontos Zanbar csontváz keze megérint, és máris kioltja életedet. Mostantól fogva te is élőholt szolgái közé tartozol.[/p]
+        [p]Quando você chega junto à arca, ela desaparece diante de seus olhos. Você ouve uma risada atrás de
+você e, subitamente, vê no espelho a apavorante imagem refletida de um esqueleto vestido de negro,
+com olhos verdes transparentes, usando uma coroa de ouro sobre a caveira. Você volta-se, mas é
+tarde demais. Os dedos de esqueleto de Zanbar Bone estão tocando a sua carne e sugando a sua
+vida. Você agora é um dos seus servidores mortos-vivos.[/p]
     </text>
     <death />
   </section>
   <section id="71">
     <text>
-        [p]Az Ogre szobájában iszonyú a felfordulás, tele van eldobált ételmaradékkal, szeméttel. Mintha évek óta nem takarítottak volna itt. Átgázolsz a szeméthalmon, és egy lakkozott faládát találsz, melynek tetején gyöngyházberakásos fogantyú van. A ládát lakatra zárták, a kulcsot viszont sehol nem találod.[/p]
+        [p]O aposento do Ogro está em tremenda confusão, cheio de objetos de todo tipo espalhados. Ao que
+parece, não é arrumado há anos. Remexendo em meio ao rebotalho, você encontra uma caixa de
+madeira polida com uma alça feita de conchas brancas incrustada na tampa. A caixa está trancada, e
+você não consegue encontrar a chave para abri-la.[/p]
     </text>
-    <next id="324">Ha szét akarod zúzni a ládát a kardoddal</next>
-    <next id="282">Ha kimész a házból és tovább folytatod az utadat északnak anélkül, hogy megpróbálnád kinyitni a ládát</next>
+    <next id="324">Se quiser arrebentá-la com sua espada</next>
+    <next id="282">Se quiser sair da casa e seguir para o norte, sem tentar abrir a caixa</next>
   </section>
   <section id="72">
     <text>
-        [p]Amikor lehajolsz, hogy segíts a sérült kisfiún, az hirtelen megfordul, és a kezében megvillan egy tőr fényes éle. A kisfiú valójában egy tolvaj Goblin, és meg kell vele küzdened az életedért.[/p]
+        [p]Ao se inclinar para ajudar o menino ferido, ele súbitamente rola sobre si mesmo, e você vê a lâmina
+brilhante de um punhal diante de seus olhos. O menino é, na realidade, um GOBLIN ladrão, e você
+terá que lutar pela sua vida.[/p]
     </text>
     <fight type="single">
       <enemy id="23" />
@@ -1111,8 +1125,12 @@ não, saia da loja e continue para o oeste.[/p]
   </section>
   <section id="73">
     <text>
-        [p]Kardot rántasz, és máris készen állsz, hogy harcba szállj a Trollokkal. Szemmel láthatólag hálásak neked, mert lehetővé teszed számukra, hogy kedvenc sportjuknak hódoljanak – az emberölésnek. Harci bárdjukat lengetve közelednek feléd. Savanyúhas fogait vicsorgatva így szól: – Engedj, Kövérorr – hagyd, hogy én bánjak el ezzel a kutyával! – Egyenként küzdj meg velük.[/p]
-        [p]Ha akarsz, Elmenekülhetsz, miután megölted Savanyúhast és pajzsodat hozzávágtad Kövérorrhoz.[/p]
+        [p]Você desembainha a sua espada e fica pronto para lutar contra os Trolls. Eles parecem felizes
+porque você vai lhes dar uma chance de praticar seu amado esporte de matar seres humanos, e
+avançam na sua direção, brandindo suas achas de batalha. Barriga Azeda rosna e diz: "Fique de
+lado, Nariz Gordo – deixe eu tratar desse cachorro sozinho." Lute com um de cada vez.[/p]
+        [p]Você poderá Fugir depois de matar Barriga Azeda, jogando seu
+escudo em Nariz Gordo e correndo pela Rua do Moinho.[/p]
     </text>
     <fight type="single">
       <enemy id="44" />
@@ -1122,10 +1140,10 @@ não, saia da loja e continue para o oeste.[/p]
           <fleeing after="0" />
           <flee>
             <text>
-                [p]Rohanva indulsz el nyugatnak a Malom utcán.[/p]
+                [p]Você .[/p]
             </text>
             <loseItem id="3021" />
-            <next id="239"></next>
+            <next id="239">Você está correndo pela Rua do Moinho</next>
           </flee>
           <win>
             <next id="110"></next>
@@ -1136,42 +1154,56 @@ não, saia da loja e continue para o oeste.[/p]
   </section>
   <section id="74">
     <text>
-        [p]Amint belépsz a főkapun, eléd tárulnak a kikötőváros macskaköves keskeny utcácskái. Ezeket az utcákat rozoga, öreg házak szegélyezik, melynek felső szintje életveszélyesen csüng alá. Mit teszel?[/p]
+        [p]Através dos portões principais, você vê que as ruas cheias de lixo do porto são estreitas e com
+calçamento de pedra. Construções velhas e decrépitas se alinham bem unto uma da outra, com seus
+sobrados pairando ameaçadoramente. Você pode:[/p]
     </text>
-    <next id="95">Nyugatnak mész, végig a Kulcs utcán?</next>
-    <next id="116">Északnak indulsz el a Piac utcán?</next>
-    <next id="17">Keletnek mész le az Óra utcán?</next>
+    <next id="95">Ir para o oeste, descendo a Rua da Chave</next>
+    <next id="116">Dirigir-se para o norte, pela Rua do Mercado</next>
+    <next id="17">Ir para o leste, descendo a Rua do Relógio</next>
   </section>
   <section id="75">
     <text>
-        [p]Kint elállt az eső, és ismét útnak indulhatsz északnak.[/p]
+        [p]Lá fora, a chuva parou, e você parte de novo para o norte.[/p]
     </text>
     <next id="31"></next>
   </section>
   <section id="76">
     <text>
-        [p]Bal kéz felől deszkából épült nagy istállót látsz a házak mögött. Az istálló előtti cölöpnél két ló áll kikötve. Az istálló lapos tetején füst száll fel a csavart kéményből.[/p]
+        [p]À sua esquerda, você vê um grande celeiro de madeira recuado em relação às casas. Há dois cavalos
+amarrados do lado de fora do celeiro, e a fumaça sobe de uma chaminé torta no alto de seu telhado
+baixo e plano.[/p]
     </text>
-    <next id="25">Ha be akarsz menni az istállóba</next>
-    <next id="115">Ha inkább továbbmész északnak</next>
+    <next id="25">Se quiser atravessar as portas do celeiro</next>
+    <next id="115">Se preferir continuar para o
+norte</next>
   </section>
   <section id="77">
     <text>
-        [p]Nyugodtan visszamész a lépcsőhöz, és felmész a második szintre. Itt ismét egy ajtót találsz a lépcsőfordulóban.[/p]
+        [p]Você anda silenciosamente de volta para a escadaria e sobe para o segundo andar. Novamente, há
+uma porta no fim do patamar.[/p]
     </text>
-    <next id="292">Ha ki akarod nyitni az ajtót</next>
-    <next id="310">Ha felmész a harmadik szintre</next>
+    <next id="292">Se quiser abrir a porta</next>
+    <next id="310">Se quiser subir para o terceiro andar</next>
   </section>
   <section id="78">
     <text>
-        [p]Néhány száz méteren át az utca a rakparton vezet, majd egy útkereszteződéshez érsz.[/p]
+        [p]A rua segue para o norte, ao longo da beira do cais, por algumas centenas de metros, antes de
+chegar a um cruzamento.[/p]
     </text>
-    <next id="256">Ha továbbmész északnak a Kikötő utcán</next>
-    <next id="216">Ha inkább keletnek mész a Facipő utcán</next>
+    <next id="256">Se você quiser continuar para o norte pela Rua do Porto</next>
+    <next id="216">Se preferir caminhar para o leste pela Rua do Tamanco</next>
   </section>
   <section id="79">
     <text>
-        [p]A boltíves átjáró előtt lévő selyemfüggöny hirtelen szétlibben, és egy furcsa teremtmény lép a szobába. Kígyófeje van, mely különös módon ül egy pazar ruhába öltözött fiatal nő torzóján. Kinyitja a száját, s egy villás végű kígyónyelv pattan ki rajta, majd visszahúzódik, amint a Kígyókirálynő rád ripakodik: – Ne hazudj nekem, te gazember! Orgyilkos vagy, és azért jöttél, hogy megölj engem! De te fogsz meghalni! – A Kígyókirálynő hirtelen odakap a szájával a nyakadhoz, és beléd mar. Vesztesz 4 [span class="ffAttribute"]ÉLETERŐ[/span] és 1 [span class="ffAttribute"]ÜGYESSÉG[/span] pontot! Kardoddal védd meg magad![/p]
+        [p]As cortinas de seda diante da passagem em arco são repentinamente puxadas para o lado, e uma
+estranha criatura entra no aposento. Possui uma cabeça de cobra, que se encaixa curiosamente sobre
+um corpo de mulher jovem, usando um vestido suntuoso. Sua boca se abre, e uma língua bipartida
+mexe-separa trás e para adiante enquanto a RAINHA SERPENTE desafia você, dizendo: "Não
+minta para mim, patife. Não-há dúvida de que você é um Assassino que veio aqui para me matar.
+Mas você morrerá no meu lugar!" Subitamente, a Rainha Serpente estende seu pescoço e morde
+você no pescoço. Você perde 1 ponto de HABILIDADE e 4 pontos de ENERGIA. Se você ainda
+estiver vivo, desembainhe a sua espada para se defender.[/p]
     </text>
     <add amount="-4" to="stamina" />
     <add amount="-1" to="skill" />
@@ -1183,7 +1215,10 @@ não, saia da loja e continue para o oeste.[/p]
   <section id="80">
     <text>
         [p class="inlineImage"][img src="resources/ff5/80.jpg" /][/p]
-        [p]A lépcsők egy újabb, pirosra festett falú szobába vezetnek. Az asztalnál egy hosszú orrú, mélyvörös színű, pikkelyes bőrű, különös teremtmény ül. Szájában éles, kilógó fogak sorakoznak, melyek között ki-be mozog hosszú, rózsaszín nyelve. A teremtmény felemeli a fejét, és rád mereszti a szemét.[/p]
+        [p]As escadas conduzem a um pequeno aposento, mais uma vez pintado de vermelho. Há uma estranha
+criatura sentada em uma mesa, com um focinho comprido e uma pele de escamas vermelhas de tom
+vivo. De suas mandíbulas projetam-se filas de dentes aguçados, e uma língua comprida e rósea
+move-se rapidamente entre eles. Você está usando um broche de escorpião?[/p]
     </text>
     <itemCheck type="item" id="3005">
       <haveEquipped>
@@ -1209,29 +1244,41 @@ não, saia da loja e continue para o oeste.[/p]
   </section>
   <section id="81">
     <text>
-        [p]A férfi még hangosabban kezd nevetni, és kigúnyol, amiért meg akartad ölni. Felpattansz, és kardodat felkapva odarohansz a bejárati ajtóhoz. A férfi ekkor egy újabb villámot lövell rád.[/p]
+        [p]O homem ri mais alto ainda e ironiza sua tentativa de matá-lo. Você resolve pular de pé e dar um
+pique na direção da porta da frente, recolhendo sua espada enquanto corre. O homem vê o que você
+está fazendo e dispara mais um dardo-relâmpago na sua direção. Teste sua Sorte.[/p]
     </text>
     <test against="luck">
       <success>
-        <text>[p]A villám nem talál el, és sikerül kinyitnod az ajtót, ahonnan északnak futsz tovább az utcán.[/p]</text>
+        <text>[p]Você teve sorte, o dardo-relâmpago não pega em você, que consegue abrir a porta e correr para o norte, subindo a rua.[/p]</text>
         <next id="304"></next>
       </success>
       <failure>
-        <text>[p]A villám belevág a hátadba, és felordítasz a fájdalomtól.[/p]</text>
+        <text>[p]Você não teve sorte, o dardo-relâmpago atinge suas costas, e você grita de dor.[/p]</text>
         <next id="243"></next>
       </failure>
     </test>
   </section>
   <section id="82">
     <text>
-        [p]Mielőtt a Boszorkány végigmondaná a varázsigét, belenyúlsz a hátizsákodba, és előhúzod belőle a bájitalt tartalmazó üveget. Gyorsan kiiszod a benne lévő folyadékot, mely azonnal hat. A Boszorkány még mindig gonosz varázsszavait mormolja, de te már nem hallod. Már biztonságban vagy, így hát kardot rántasz, és odalépsz hozzá. Megragadod csapzott haját, és levágsz egy [span class="takeItem" data-id="3036" data-amount="1"]tincset[/span]. Vonaglani, rúgni és köpködni kezd. Egészen közelről látod a friss vért a szája körül – minden bizonnyal már nem tudta kivárni, hogy meg is főzze a patkányokat, melyeket megölt. Undorodsz ugyan, de mégis örülsz, hogy megszerezted az egyik olyan tárgyat, amelyre szükséged lesz majd ahhoz, hogy megsemmisítsd az Éj Hercegét. A Boszorkányt belelököd a szennyvízcsatornába, és visszamész a bejárati nyíláshoz.[/p]
+        [p]Antes que a Bruxa possa completar seu feitiço, você mexe em sua mochila e tira a garrafa que
+contém a poção. Você engole o líquido e sente seus efeitos imediatamente. A Bruxa ainda está
+vociferando seu sortilégio vil, mas você não a ouve mais. Livre do mal que ela poderia causar, você
+desembainha a sua espada e avança. Você segura a cabeça da velha pelos cabelos emaranhados e
+corta um chumaço. Ela se contorce, cospe e desfere pontapés. Agora, mais de perto, você pode ver
+que há sangue fresco no rosto dela - sem dúvida ela não conseguiu esperar para cozinhar algumas
+das ratazanas que tinha matado. Apesar de seu nojo, você fica satisfeito por ter obtido um dos
+objetos necessários para derrotar o Príncipe da Noite. Você joga a Bruxa no esgoto e caminha de
+volta para o bueiro de entrada.[/p]
     </text>
     <loseItem id="3026" />
     <next id="104"></next>
   </section>
   <section id="83">
     <text>
-        [p]Szerencsédre a köcsögben az van, amit a címke mond, de azért a keverék hatását nem lehet előre megjósolni.[/p]
+        [p]Felizmente, o conteúdo do vidro é exatamente o que diz o rótulo, embora seja impossível prever a
+força da mistura. Jogue um dado. O número obtido é o número de pontos de ENERGIA que serão
+recuperados.[/p]
     </text>
     <random>
       <result max="1" min="1">
@@ -1259,104 +1306,185 @@ não, saia da loja e continue para o oeste.[/p]
         <add amount="6" to="stamina" />
       </result>
     </random>
-    <next id="322">Ha folytatni akarod az üzletben a kutatást</next>
-    <next id="93">Ha inkább kimész az üzletből és továbbmész északnak</next>
+    <next id="322">Se quiser continuar a vasculhar a loja</next>
+    <next id="93">Se preferir sair da loja para seguir para o norte</next>
   </section>
   <section id="84">
     <text>
-        [p]A hordókban rothadt gyümölcs van, a ládákban béklyók és lábvasak. Lehetséges, hogy ez rabszolgakereskedő-hajó. A fedélzeten nem találsz semmi érdekeset, aminek hasznát vehetnéd.[/p]
+        [p]Todos os barris contêm frutos podres, e todas as caixas contêm algemas e ferros para os pés. Talvez
+este seja um navio mercador de escravos. Não há nada mais no convés que seja de seu interesse.[/p]
     </text>
-    <next id="50">Ha odamész a fedélzeten lévő kabinhoz és lemész a lépcsőn a hajófenékbe</next>
-    <next id="78">Ha inkább elhagyod a hajót és visszamenve a hajó mellett balra fordulsz északnak a Kikötő utcába</next>
+    <next id="50">Se quiser caminhar até a cabine do convés para descer as escadas para os conveses inferiores</next>
+    <next id="78">Se preferir sair do navio, caminhe de volta ao longo do quebra-mar, vire à esquerda e siga
+para o norte pela Rua do Porto</next>
   </section>
   <section id="85a" display="85">
     <text>
-        [p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]
+        [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
     </text>
     <add amount="-10" to="gold" />
     <next id="100"></next>
   </section>
   <section id="85o" display="85">
     <text>
-        [p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]
+        [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
     </text>
     <loseItem id="2001" />
     <next id="100"></next>
   </section>
   <section id="85p" display="85">
     <text>
-        [p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]
+        [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
     </text>
     <loseItem id="2002" />
     <next id="100"></next>
   </section>
   <section id="85q" display="85">
-    <text>[p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]</text>
+    <text>
+            [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
+    </text>
     <loseItem id="2003" />
     <next id="100"></next>
   </section>
   <section id="85b" display="85">
-    <text>[p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]</text>
+    <text>
+            [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
+    </text>
     <loseItem id="3005" />
     <next id="100"></next>
   </section>
   <section id="85c" display="85">
-    <text>[p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]</text>
+    <text>
+            [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
+    </text>
     <loseItem id="3006" />
     <next id="100"></next>
   </section>
   <section id="85d" display="85">
-    <text>[p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]</text>
+    <text>
+            [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
+    </text>
     <loseItem id="3010" />
     <next id="100"></next>
   </section>
   <section id="85e" display="85">
-    <text>[p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]</text>
+    <text>
+            [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
+    </text>
     <loseItem id="3011" />
     <next id="100"></next>
   </section>
   <section id="85f" display="85">
-    <text>[p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]</text>
+    <text>
+            [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
+    </text>
     <loseItem id="3012" />
     <next id="100"></next>
   </section>
   <section id="85g" display="85">
-    <text>[p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]</text>
+    <text>
+            [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
+    </text>
     <loseItem id="3014" />
     <next id="100"></next>
   </section>
   <section id="85h" display="85">
-    <text>[p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]</text>
+    <text>
+            [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
+    </text>
     <loseItem id="3015" />
     <next id="100"></next>
   </section>
   <section id="85i" display="85">
-    <text>[p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]</text>
+    <text>
+            [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
+    </text>
     <loseItem id="3016" />
     <next id="100"></next>
   </section>
   <section id="85j" display="85">
-    <text>[p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]</text>
+    <text>
+            [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
+    </text>
     <loseItem id="3017" />
     <next id="100"></next>
   </section>
   <section id="85k" display="85">
-    <text>[p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]</text>
+    <text>
+            [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
+    </text>
     <loseItem id="3018" />
     <next id="100"></next>
   </section>
   <section id="85l" display="85">
-    <text>[p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]</text>
+    <text>
+            [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
+    </text>
     <loseItem id="3019" />
     <next id="100"></next>
   </section>
   <section id="85m" display="85">
-    <text>[p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]</text>
+    <text>
+            [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
+    </text>
     <loseItem id="3021" />
     <next id="100"></next>
   </section>
   <section id="85n" display="85">
-    <text>[p]Fizetsz az ezüstmívesnek, és türelmesen vársz, míg elkészíti számodra az [span class="takeItem" data-id="3040" data-amount="1"]ezüst nyílvesszőt[/span]. Végül elkészül vele, és biztosít afelől, hogy halálpontosan célba találsz vele. Megköszönöd a fáradozását, és kimész a boltból. Az utcán ismét keletnek folytatod az utadat.[/p]</text>
+    <text>
+            [p]Você paga o ourives e espera pacientemente enquanto ele faz uma 
+[span class="takeItem" data-id="3040" data-amount="1"]flecha de prata[/span] para você.
+Finalmente, ele a entrega a você e assegura que ela será absolutamente precisa ao ser disparada.
+Você o agradece por seu trabalho e sai da loja. Lá fora, você parte mais uma vez para o leste.[/p]
+    </text>
     <loseItem id="3026" />
     <next id="100"></next>
   </section>
