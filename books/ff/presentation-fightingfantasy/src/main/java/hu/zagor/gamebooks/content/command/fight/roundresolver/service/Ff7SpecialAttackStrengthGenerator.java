@@ -23,6 +23,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Ff7SpecialAttackStrengthGenerator {
 
+    private static final String SURPRISING_HILL_TROLL = "41";
+    private static final String SOGS_HELMET = "3009";
     private static final int[] MAX_ROLL = new int[]{12, 6, 6};
     private static final int[] MIN_ROLL = new int[]{2, 1, 1};
     private static final int SOG_CONFUSION_ROLL_TARGET = 14;
@@ -68,7 +70,7 @@ public class Ff7SpecialAttackStrengthGenerator {
                     selfAttackStrength = MAX_ROLL;
                 }
                 addMarker(command, MARKER_SOG_ACTIVE);
-            } else if ("41".equals(command.getEnemies().get(0))) {
+            } else if (SURPRISING_HILL_TROLL.equals(command.getEnemies().get(0))) {
                 selfAttackStrength = MIN_ROLL;
             }
         }
@@ -105,7 +107,7 @@ public class Ff7SpecialAttackStrengthGenerator {
                 enemyAttackStrength = MIN_ROLL;
             } else if (potionOfConfusionActive) {
                 enemyAttackStrength = MAX_ROLL;
-            } else if ("41".equals(command.getEnemies().get(0))) {
+            } else if (SURPRISING_HILL_TROLL.equals(command.getEnemies().get(0))) {
                 enemyAttackStrength = MAX_ROLL;
             }
         }
@@ -126,7 +128,7 @@ public class Ff7SpecialAttackStrengthGenerator {
         boolean hasHelmet = false;
 
         for (final Item item : equipment) {
-            hasHelmet |= "3009".equals(item.getId()) && item.getEquipInfo().isEquipped();
+            hasHelmet |= SOGS_HELMET.equals(item.getId()) && item.getEquipInfo().isEquipped();
         }
 
         return hasHelmet;

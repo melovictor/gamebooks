@@ -148,10 +148,12 @@ public class RawBookSectionControllerPositiveBTest {
         setUpNewParagraph();
         setUpModel();
         expect(newParagraph.getData()).andReturn(data);
+        expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getEnemies()).andReturn(enemies);
         expect(wrapper.getPlayer()).andReturn(player);
         paragraphResolver.resolve(anyObject(ResolvationData.class), eq(newParagraph));
         newParagraph.calculateValidEvents();
+        expect(wrapper.getCharacter()).andReturn(character);
         expect(beanFactory.getBean("rawCharacterPageData", character)).andReturn(charPageData);
         expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
         expect(sectionHandlingService.handleSection(model, wrapper, newParagraph, info)).andReturn("done");
@@ -189,6 +191,7 @@ public class RawBookSectionControllerPositiveBTest {
         expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
         wrapper.setRequest(request);
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
+        expect(wrapper.getPlayer()).andReturn(player);
         logger.debug("Handling paragraph {} for book.", id);
         expect(request.getSession()).andReturn(session);
         expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
@@ -203,7 +206,6 @@ public class RawBookSectionControllerPositiveBTest {
     private void setUpNewParagraph() {
         expect(newParagraph.getId()).andReturn("10");
         paragraphHandler.addParagraph(character, "10");
-        expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getPlayer()).andReturn(player);
         expect(newParagraph.getId()).andReturn("10");
     }

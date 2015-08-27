@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.content.command.itemcheck;
 
-import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.character.handler.CharacterHandler;
+import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.enemy.FfEnemyHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
@@ -13,10 +12,10 @@ import hu.zagor.gamebooks.content.ParagraphData;
 public class ItemCheckEnemyCommand implements ItemCheckStubCommand {
 
     @Override
-    public ParagraphData resolve(final ItemCheckCommand parent, final Character character, final CharacterHandler characterHandler) {
+    public ParagraphData resolve(final ItemCheckCommand parent, final ResolvationData resolvationData) {
         final ParagraphData toResolve;
 
-        final FfCharacterHandler ffCharacterHandler = (FfCharacterHandler) characterHandler;
+        final FfCharacterHandler ffCharacterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final FfEnemyHandler enemyHandler = ffCharacterHandler.getEnemyHandler();
         final String id = parent.getId();
         if (enemyHandler.isEnemyAlive(id)) {

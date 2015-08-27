@@ -2,7 +2,7 @@ package hu.zagor.gamebooks.content.command.fight;
 
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
-import hu.zagor.gamebooks.character.enemy.Enemy;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
@@ -45,7 +45,6 @@ public class FightCommandResolverNegativeTest {
     private FightCommandSubResolver resolver;
     private ParagraphData rootData;
     private FfCharacter character;
-    private Map<String, Enemy> enemies;
     private BookInformations info;
     private CharacterHandler characterHandler;
     private FfUserInteractionHandler interactionHandler;
@@ -93,7 +92,8 @@ public class FightCommandResolverNegativeTest {
         command.setResolver("simpleResolver");
         command.setOngoing(true);
         Whitebox.setInternalState(command, "messages", messages);
-        resolvationData = new ResolvationData(rootData, character, enemies, info);
+        rootData = mockControl.createMock(ParagraphData.class);
+        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).build();
 
         forceWeapons = new ArrayList<>();
         forceWeapons.add("1001");

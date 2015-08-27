@@ -101,7 +101,7 @@ public class Ff18BookTakeItemControllerTest {
         expect(itemHandler.resolveItem(itemId)).andReturn(item);
         expect(item.getActions()).andReturn(1);
         expectWrapper();
-        expect(beanFactory.getBean("gatheredLostItem", itemId, amount, 0)).andReturn(glItem);
+        expect(beanFactory.getBean("gatheredLostItem", itemId, amount, 0, false)).andReturn(glItem);
         expectWrapper();
         expect(wrapper.getPlayer()).andReturn(playerUser);
         expect(wrapper.getParagraph()).andReturn(paragraph);

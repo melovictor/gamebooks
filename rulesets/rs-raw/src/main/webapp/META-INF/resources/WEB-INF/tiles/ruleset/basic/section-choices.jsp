@@ -5,7 +5,8 @@
 	<ul>
 		<c:forEach var="choice" items="${paragraph.data.choices}">
 			<li>
-			    <a href="${informativeSections ? 's-' : ''}${informativeSections ? choice.id : choice.position}">
+                <c:set var="linkPrefix"><c:if test="${informativeSections}">s-${choice.id}|</c:if></c:set>
+			    <a href="${linkPrefix}${choice.position}">
 			        <c:choose>
 						<c:when test="${not empty choice.text}">
                             ${choice.text}

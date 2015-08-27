@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.content.command.fight.subresolver;
 
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
@@ -110,7 +111,7 @@ public abstract class AbstractFightCommandSubResolver implements FightCommandSub
         final Character oldCharacter = resolvationData.getCharacter();
         ResolvationData battlingResolvationData = resolvationData;
         if (newCharacter != oldCharacter) {
-            battlingResolvationData = new ResolvationData(resolvationData.getRootData(), newCharacter, resolvationData.getEnemies(), resolvationData.getInfo());
+            battlingResolvationData = DefaultResolvationDataBuilder.builder().usingResolvationData(resolvationData).withCharacter(newCharacter).build();
         }
         return battlingResolvationData;
     }

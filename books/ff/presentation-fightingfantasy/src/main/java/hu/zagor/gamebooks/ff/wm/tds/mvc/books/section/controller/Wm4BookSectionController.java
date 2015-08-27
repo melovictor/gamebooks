@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.ff.wm.tds.mvc.books.section.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand;
@@ -62,7 +63,8 @@ public class Wm4BookSectionController extends FfBookSectionController {
             final FfCharacter character = (FfCharacter) wrapper.getCharacter();
             final Iterator<Item> itemIterator = getInfo().getCharacterHandler().getItemHandler().getItemIterator(character);
             final LyingAttributeTestCommand command = setUpCommand();
-            final ResolvationData resolvationData = new ResolvationData(null, character, null, getInfo());
+            final ResolvationData resolvationData = DefaultResolvationDataBuilder.builder().withRootData(paragraph.getData()).withBookInformations(getInfo())
+                .withCharacter(character).build();
             final Locale locale = localeProvider.getLocale();
             final StringBuilder builder = new StringBuilder("[p class='wm4HideNexPar']");
             final List<String> messages = new ArrayList<>();

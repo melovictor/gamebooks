@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.content.command.itemcheck;
 
-import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.character.handler.CharacterHandler;
+import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.ParagraphData;
 
@@ -16,10 +15,10 @@ import org.mvel2.MVEL;
 public class ItemCheckItemsCommand implements ItemCheckStubCommand {
 
     @Override
-    public ParagraphData resolve(final ItemCheckCommand parent, final Character character, final CharacterHandler characterHandler) {
+    public ParagraphData resolve(final ItemCheckCommand parent, final ResolvationData resolvationData) {
         ParagraphData toResolve;
         final String expression = parent.getId();
-        final boolean hasItem = resolveComplexItemCheckExpression(character.getEquipment(), expression);
+        final boolean hasItem = resolveComplexItemCheckExpression(resolvationData.getCharacter().getEquipment(), expression);
 
         if (hasItem) {
             toResolve = parent.getHave();

@@ -15,25 +15,12 @@ import java.util.Map;
  */
 public class ResolvationData {
 
-    private final ParagraphData rootData;
-    private final Character character;
-    private final Map<String, Enemy> enemies;
-    private final BookInformations info;
+    private ParagraphData rootData;
+    private BookInformations info;
+    private Character character;
+    private Map<String, Enemy> enemies;
     private PlayerUser playerUser;
-
-    /**
-     * Basic constructor.
-     * @param rootData the root {@link ParagraphData} for a given section
-     * @param character the {@link Character} in the book
-     * @param enemies the current enemies
-     * @param info the {@link BookInformations} object
-     */
-    public ResolvationData(final ParagraphData rootData, final Character character, final Map<String, Enemy> enemies, final BookInformations info) {
-        this.rootData = rootData;
-        this.character = character;
-        this.enemies = enemies;
-        this.info = info;
-    }
+    private Integer position;
 
     public ParagraphData getRootData() {
         return rootData;
@@ -61,6 +48,30 @@ public class ResolvationData {
 
     public void setPlayerUser(final PlayerUser playerUser) {
         this.playerUser = playerUser;
+    }
+
+    public void setRootData(final ParagraphData rootData) {
+        this.rootData = rootData;
+    }
+
+    public void setCharacter(final Character character) {
+        this.character = character;
+    }
+
+    public void setEnemies(final Map<String, Enemy> enemies) {
+        this.enemies = enemies;
+    }
+
+    public void setInfo(final BookInformations info) {
+        this.info = info;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void setPosition(final Integer position) {
+        this.position = position;
     }
 
 }

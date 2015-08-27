@@ -14,5 +14,6 @@ public enum CheckType {
     fear,
     faith,
     gold,
-    value
+    value,
+    pos
 }

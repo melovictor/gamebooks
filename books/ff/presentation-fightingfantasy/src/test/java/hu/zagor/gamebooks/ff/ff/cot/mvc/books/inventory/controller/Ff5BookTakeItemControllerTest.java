@@ -125,7 +125,7 @@ public class Ff5BookTakeItemControllerTest {
         expect(itemHandler.resolveItem(itemId)).andReturn(item);
         expect(item.getActions()).andReturn(1);
         expectWrapper();
-        expect(beanFactory.getBean("gatheredLostItem", itemId, 1, 0)).andReturn(glItem);
+        expect(beanFactory.getBean("gatheredLostItem", itemId, 1, 0, false)).andReturn(glItem);
         expectWrapper();
         expect(wrapper.getPlayer()).andReturn(player);
         expect(wrapper.getParagraph()).andReturn(paragraph);

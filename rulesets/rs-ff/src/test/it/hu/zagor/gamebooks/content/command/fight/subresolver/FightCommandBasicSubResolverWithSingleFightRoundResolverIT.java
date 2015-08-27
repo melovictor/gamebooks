@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.content.command.fight.subresolver;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
@@ -305,7 +306,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         info.setParagraphResolver(paragraphResolver);
         info.setResourceDir("ff3");
 
-        resolvationData = new ResolvationData(rootData, character, enemies, info);
+        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).withEnemies(enemies).build();
 
         fleeData = new FightFleeData();
         fleeData.setAfterRound(3);

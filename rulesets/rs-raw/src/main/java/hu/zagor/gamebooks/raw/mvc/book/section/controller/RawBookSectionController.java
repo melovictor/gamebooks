@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.books.contentstorage.domain.BookParagraphConstants;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.DefaultUserInteractionHandler;
 import hu.zagor.gamebooks.content.Paragraph;
@@ -97,18 +98,21 @@ public class RawBookSectionController extends GenericBookSectionController imple
         final Paragraph previousParagraph = wrapper.getParagraph();
 
         final Paragraph paragraph;
+        Integer position = null;
         if (sectionIdentifier == null) {
             paragraph = previousParagraph;
             clearAnchorPoints(paragraph);
         } else {
-            final String paragraphId = obtainParagraphId(sectionIdentifier, previousParagraph);
+            final Choice choice = obtainChoice(sectionIdentifier, previousParagraph, wrapper.getPlayer());
+            position = choice.getPosition();
+            final String paragraphId = choice.getId();
             getLogger().debug("Handling paragraph {} for book.", paragraphId);
             paragraph = loadSection(paragraphId, request);
             getInfo().getCharacterHandler().getParagraphHandler().addParagraph(wrapper.getCharacter(), paragraph.getId());
         }
 
         handleCustomSections(model, wrapper, sectionIdentifier, paragraph);
-        final String bookPage = doHandleSection(model, wrapper, paragraph);
+        final String bookPage = doHandleSection(model, wrapper, paragraph, position);
         wrapper.setModel(model);
         navigationRecorder.recordNavigation(wrapper, sectionIdentifier, previousParagraph, paragraph);
         addResources(model);
@@ -151,33 +155,42 @@ public class RawBookSectionController extends GenericBookSectionController imple
         paragraph.getData().setText(text.replaceAll("<a id=[\"'][^\"']*[\"']><\\/a>", ""));
     }
 
-    private String obtainParagraphId(final String sectionIdentifier, final Paragraph previousParagraph) {
-        String paragraphId;
+    private Choice obtainChoice(final String sectionIdentifier, final Paragraph previousParagraph, final PlayerUser player) {
+        Choice choice;
 
-        try {
+        if (sectionIdentifier.startsWith("s-")) {
+            final String[] sectionPieces = sectionIdentifier.substring(2).split("\\|");
+            final String sectionId = sectionPieces[0];
+            final Integer position = sectionPieces.length == 2 ? Integer.parseInt(sectionPieces[1]) : null;
+            final ChoiceSet choices = previousParagraph.getData().getChoices();
+            choice = position == null ? choices.getChoiceById(sectionId) : choices.getChoiceByPosition(position);
+            if (choice == null) {
+                if (!player.isAdmin()) {
+                    getLogger().debug("Player tried to navigate to illegal section {}.", sectionId);
+                    throw new InvalidStepChoiceException(previousParagraph.getId(), sectionId);
+                }
+                choice = new Choice(sectionId, null, -1, null);
+            }
+        } else {
             final int position = Integer.valueOf(sectionIdentifier);
-            final Choice choice = previousParagraph.getData().getChoices().getChoiceByPosition(position);
+            choice = previousParagraph.getData().getChoices().getChoiceByPosition(position);
             if (choice == null) {
                 getLogger().debug("Player tried to navigate to illegal position {}.", position);
                 throw new InvalidStepChoiceException(previousParagraph.getId(), position);
             }
-            paragraphId = choice.getId();
-        } catch (final NumberFormatException ex) {
-            paragraphId = sectionIdentifier.substring(2);
         }
-        return paragraphId;
+        return choice;
     }
 
     @Override
     protected void handleCustomSections(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
     }
 
-    private String doHandleSection(final Model model, final HttpSessionWrapper wrapper, final Paragraph paragraph) {
-        final Character c = wrapper.getCharacter();
+    private String doHandleSection(final Model model, final HttpSessionWrapper wrapper, final Paragraph paragraph, final Integer position) {
         final PlayerUser player = wrapper.getPlayer();
         setUpSectionDisplayOptions(paragraph, model, player);
         model.addAttribute("bookInfo", getInfo());
-        return processSectionChange(model, wrapper, paragraph, c);
+        return processSectionChange(model, wrapper, paragraph, position);
     }
 
     /**
@@ -201,16 +214,17 @@ public class RawBookSectionController extends GenericBookSectionController imple
         interactionHandler.setUserInputTime(character, form.getElapsedTime());
         interactionRecorder.recordUserResponse(wrapper, form.getResponseText(), form.getForcedTime() == 0 ? form.getElapsedTime() : form.getForcedTime());
         addResources(model);
-        return processSectionChange(model, wrapper, paragraph, character);
+        return processSectionChange(model, wrapper, paragraph, null);
     }
 
-    private String processSectionChange(final Model model, final HttpSessionWrapper wrapper, final Paragraph paragraph, final Character c) {
+    private String processSectionChange(final Model model, final HttpSessionWrapper wrapper, final Paragraph paragraph, final Integer position) {
         final BookInformations info = getInfo();
-        final ResolvationData resolvationData = new ResolvationData(paragraph.getData(), c, wrapper.getEnemies(), info);
-        resolvationData.setPlayerUser(wrapper.getPlayer());
+        final ResolvationData resolvationData = DefaultResolvationDataBuilder.builder().withRootData(paragraph.getData()).withBookInformations(info)
+            .usingWrapper(wrapper).withPosition(position).build();
+
         info.getParagraphResolver().resolve(resolvationData, paragraph);
         paragraph.calculateValidEvents();
-        model.addAttribute("charEquipments", getCharacterPageData(c, info.getCharacterHandler()));
+        model.addAttribute("charEquipments", getCharacterPageData(wrapper.getCharacter(), info.getCharacterHandler()));
         final String bookPageName = sectionHandlingService.handleSection(model, wrapper, paragraph, getInfo());
         resolveSingleChoice(paragraph.getData());
         resolveChoiceDisplayNames(paragraph);

@@ -1,6 +1,7 @@
 package hu.zagor.gamebooks.content.command.changeenemy;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 
@@ -38,7 +39,7 @@ public class ChangeEnemyCommandResolverTest {
         enemy = new FfEnemy();
         enemies.put("26a", enemy);
         enemy.setSkill(7);
-        resolvationData = new ResolvationData(null, null, enemies, null);
+        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(null).withBookInformations(null).withCharacter(null).withEnemies(enemies).build();
         command.setId("26a");
         command.setAttribute("skill");
     }

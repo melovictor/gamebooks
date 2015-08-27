@@ -2,9 +2,12 @@ package hu.zagor.gamebooks.content.command.itemcheck;
 
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.Character;
+import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
+import hu.zagor.gamebooks.domain.BookInformations;
 
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
@@ -29,6 +32,7 @@ public class ItemCheckItemCommandTest {
     private ParagraphData data;
     private CharacterHandler characterHandler;
     private CharacterItemHandler itemHandler;
+    private BookInformations info;
 
     @BeforeClass
     public void setUpClass() {
@@ -39,6 +43,8 @@ public class ItemCheckItemCommandTest {
         characterHandler = new CharacterHandler();
         itemHandler = mockControl.createMock(CharacterItemHandler.class);
         characterHandler.setItemHandler(itemHandler);
+        info = new BookInformations(1L);
+        info.setCharacterHandler(characterHandler);
     }
 
     @BeforeMethod
@@ -55,7 +61,7 @@ public class ItemCheckItemCommandTest {
         expect(parent.getHaveEquipped()).andReturn(data);
         mockControl.replay();
         // WHEN
-        final ParagraphData returned = underTest.resolve(parent, character, characterHandler);
+        final ParagraphData returned = underTest.resolve(parent, getResolvationData());
         // THEN
         Assert.assertSame(returned, data);
     }
@@ -69,7 +75,7 @@ public class ItemCheckItemCommandTest {
         expect(parent.getHave()).andReturn(data);
         mockControl.replay();
         // WHEN
-        final ParagraphData returned = underTest.resolve(parent, character, characterHandler);
+        final ParagraphData returned = underTest.resolve(parent, getResolvationData());
         // THEN
         Assert.assertSame(returned, data);
     }
@@ -82,7 +88,7 @@ public class ItemCheckItemCommandTest {
         expect(parent.getHave()).andReturn(data);
         mockControl.replay();
         // WHEN
-        final ParagraphData returned = underTest.resolve(parent, character, characterHandler);
+        final ParagraphData returned = underTest.resolve(parent, getResolvationData());
         // THEN
         Assert.assertSame(returned, data);
     }
@@ -96,9 +102,13 @@ public class ItemCheckItemCommandTest {
         expect(parent.getDontHave()).andReturn(data);
         mockControl.replay();
         // WHEN
-        final ParagraphData returned = underTest.resolve(parent, character, characterHandler);
+        final ParagraphData returned = underTest.resolve(parent, getResolvationData());
         // THEN
         Assert.assertSame(returned, data);
+    }
+
+    private ResolvationData getResolvationData() {
+        return DefaultResolvationDataBuilder.builder().withRootData(null).withBookInformations(info).withCharacter(character).build();
     }
 
     @AfterMethod

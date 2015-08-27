@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.content.command.fight.subresolver;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
@@ -72,7 +73,7 @@ public class Ff18FightCommandBasicSubResolverBTest {
         interactionHandler = mockControl.createMock(FfUserInteractionHandler.class);
         characterHandler.setInteractionHandler(interactionHandler);
         info.setCharacterHandler(characterHandler);
-        resolvationData = new ResolvationData(rootData, character, enemies, info);
+        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).withEnemies(enemies).build();
         superResolver = mockControl.createMock(FightCommandBasicSubResolver.class);
         Whitebox.setInternalState(underTest, "superResolver", superResolver);
         itemHandler = mockControl.createMock(FfCharacterItemHandler.class);

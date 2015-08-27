@@ -1,6 +1,7 @@
 package hu.zagor.gamebooks.content.command.fight.subresolver;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
@@ -74,8 +75,7 @@ public class FightCommandSupportedSubResolver extends FightCommandBasicSubResolv
         final LuckTestSettings luckTestSettings = prepareAllyLuckTest(command);
         for (final FfCharacter ally : command.getResolvedAllies()) {
             if (!getEnemyStatusEvaluator().enemiesAreDead(command.getResolvedEnemies(), command.getRoundNumber())) {
-                final ResolvationData newResolvationData = new ResolvationData(resolvationData.getRootData(), ally, resolvationData.getEnemies(),
-                    resolvationData.getInfo());
+                final ResolvationData newResolvationData = DefaultResolvationDataBuilder.builder().usingResolvationData(resolvationData).withCharacter(ally).build();
                 roundResolver.resolveRound(command, newResolvationData, beforeRoundResult);
             }
         }

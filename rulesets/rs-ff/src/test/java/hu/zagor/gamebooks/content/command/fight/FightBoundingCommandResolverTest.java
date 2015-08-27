@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.content.command.fight;
 
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.SilentCapableResolver;
@@ -46,7 +47,7 @@ public class FightBoundingCommandResolverTest {
     public void setUpClass() {
         mockControl = EasyMock.createStrictControl();
         underTest = new FightBoundingCommandResolver();
-        resolvationData = new ResolvationData(null, null, null, null);
+        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(null).withBookInformations(null).withCharacter(null).build();
         randomResolver = mockControl.createMock(RandomCommandResolver.class);
         paragraphList = new ArrayList<>();
         command = new FightCommand();

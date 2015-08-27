@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.content.command.fight.roundresolver;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
@@ -80,7 +81,7 @@ public class OnlyHighestLinkedFightRoundResolverBTest extends FfTextResolvingTes
         attributeHandler = mockControl.createMock(FfAttributeHandler.class);
         characterHandler.setAttributeHandler(attributeHandler);
         info.setCharacterHandler(characterHandler);
-        resolvationData = new ResolvationData(rootData, character, null, info);
+        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).build();
         generator = mockControl.createMock(RandomNumberGenerator.class);
         logger = mockControl.createMock(Logger.class);
         Whitebox.setInternalState(underTest, "generator", generator);

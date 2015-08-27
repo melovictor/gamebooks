@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.content.command.fight.subresolver;
 
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
@@ -75,7 +76,7 @@ public class Ff18FightCommandCustomSubResolverTest {
             .createMock(mockControl);
         character = mockControl.createMock(FfCharacter.class);
         info = new FfBookInformations(1L);
-        resolvationData = new ResolvationData(rootData, character, enemies, info);
+        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).withEnemies(enemies).build();
         command = mockControl.createMock(FightCommand.class);
         characterHandler = new FfCharacterHandler();
         interactionHandler = mockControl.createMock(FfUserInteractionHandler.class);

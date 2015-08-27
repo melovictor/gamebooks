@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.content.command.fight;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
@@ -83,7 +84,7 @@ public class Ff38FightCommandResolverCTest {
         enemies = new HashMap<>();
         rootData = new ParagraphData();
         rootData.setText("");
-        resolvationData = new ResolvationData(rootData, character, enemies, info);
+        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).withEnemies(enemies).build();
         messages = mockControl.createMock(FightCommandMessageList.class);
         underTest.setBoneEnemies(Arrays.asList("39"));
         underTest.setUndeadEnemies(Arrays.asList("38", "40"));

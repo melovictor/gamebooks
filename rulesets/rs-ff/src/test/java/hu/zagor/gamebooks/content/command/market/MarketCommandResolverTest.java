@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.content.command.market;
 
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
@@ -82,7 +83,7 @@ public class MarketCommandResolverTest {
 
         info.setCharacterHandler(characterHandler);
 
-        resolvationData = new ResolvationData(rootData, character, null, info);
+        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).build();
     }
 
     @BeforeMethod

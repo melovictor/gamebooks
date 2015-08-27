@@ -4,6 +4,7 @@ import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.DefaultUserInteractionHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
@@ -62,7 +63,7 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
         info = new BookInformations(9);
         rootData = new ParagraphData();
         character = mockControl.createMock(Character.class);
-        resolvationData = new ResolvationData(rootData, character, null, info);
+        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).build();
         result = new RandomResult();
         result.setMin(2);
         result.setMax(3);

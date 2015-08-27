@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.content.command.userinput;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.DefaultUserInteractionHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
@@ -85,7 +86,7 @@ public class UserInputCommandResolverTest {
     @BeforeMethod
     public void setUpMethod() {
         command = new UserInputCommand();
-        resolvationData = new ResolvationData(rootDataElement, character, null, info);
+        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootDataElement).withBookInformations(info).withCharacter(character).build();
         mockControl.reset();
     }
 
@@ -96,7 +97,7 @@ public class UserInputCommandResolverTest {
         command.addResponse(specificResponse);
         mockControl.replay();
         // WHEN
-        underTest.resolve(command, new ResolvationData(null, character, null, info));
+        underTest.resolve(command, DefaultResolvationDataBuilder.builder().withRootData(null).withBookInformations(info).withCharacter(character).build());
         // THEN throws exception
     }
 
@@ -107,7 +108,7 @@ public class UserInputCommandResolverTest {
         command.addResponse(specificResponse);
         mockControl.replay();
         // WHEN
-        underTest.resolve(command, new ResolvationData(rootDataElement, null, null, info));
+        underTest.resolve(command, DefaultResolvationDataBuilder.builder().withRootData(rootDataElement).withBookInformations(info).withCharacter(null).build());
         // THEN throws exception
     }
 
@@ -118,7 +119,7 @@ public class UserInputCommandResolverTest {
         command.addResponse(specificResponse);
         mockControl.replay();
         // WHEN
-        underTest.resolve(command, new ResolvationData(rootDataElement, character, null, null));
+        underTest.resolve(command, DefaultResolvationDataBuilder.builder().withRootData(rootDataElement).withBookInformations(null).withCharacter(character).build());
         // THEN throws exception
     }
 

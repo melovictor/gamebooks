@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.content.command.fight.roundresolver;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
@@ -87,7 +88,7 @@ public class SingleFightRoundResolverATest extends FfTextResolvingTest {
         info.setCharacterHandler(characterHandler);
         character = mockControl.createMock(FfCharacter.class);
         rootData = new FfParagraphData();
-        resolvationData = new ResolvationData(rootData, character, null, info);
+        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).build();
     }
 
     private void setUpEnemy() {

@@ -1,7 +1,7 @@
 package hu.zagor.gamebooks.content.command.itemcheck;
 
 import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.character.handler.CharacterHandler;
+import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -13,12 +13,12 @@ import hu.zagor.gamebooks.ff.character.FfCharacter;
 public class ItemCheckAttributeCommand implements ItemCheckStubCommand {
 
     @Override
-    public ParagraphData resolve(final ItemCheckCommand parent, final Character character, final CharacterHandler characterHandlerObject) {
-        final FfCharacterHandler characterHandler = (FfCharacterHandler) characterHandlerObject;
+    public ParagraphData resolve(final ItemCheckCommand parent, final ResolvationData resolvationData) {
+        final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         ParagraphData toResolve;
 
         final String attribute = parent.getCheckType().toString();
-        if (getAttributeValue(character, characterHandler, attribute) >= Integer.parseInt(parent.getId())) {
+        if (getAttributeValue(resolvationData.getCharacter(), characterHandler, attribute) >= Integer.parseInt(parent.getId())) {
             toResolve = parent.getHave();
         } else {
             toResolve = parent.getDontHave();

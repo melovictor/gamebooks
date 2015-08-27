@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.content.command.fight;
 
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
@@ -60,7 +61,7 @@ public class Ff5FightCommandResolverTest {
         attributeHandler = mockControl.createMock(FfAttributeHandler.class);
         characterHandler.setAttributeHandler(attributeHandler);
         info.setCharacterHandler(characterHandler);
-        resolvationData = new ResolvationData(rootData, character, enemies, info);
+        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).withEnemies(enemies).build();
     }
 
     @BeforeMethod

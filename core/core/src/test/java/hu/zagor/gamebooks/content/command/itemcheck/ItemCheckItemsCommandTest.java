@@ -2,10 +2,13 @@ package hu.zagor.gamebooks.content.command.itemcheck;
 
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.Character;
+import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.ParagraphData;
+import hu.zagor.gamebooks.domain.BookInformations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +35,7 @@ public class ItemCheckItemsCommandTest {
     private CharacterHandler characterHandler;
     private ParagraphData have;
     private ParagraphData dontHave;
+    private BookInformations info;
 
     @BeforeClass
     public void setUpClass() {
@@ -46,6 +50,8 @@ public class ItemCheckItemsCommandTest {
         parent.setDontHave(dontHave);
         parent.setCheckType(CheckType.items);
         parent.setId("1001 and 1002");
+        info = new BookInformations(1L);
+        info.setCharacterHandler(characterHandler);
     }
 
     @BeforeMethod
@@ -61,7 +67,7 @@ public class ItemCheckItemsCommandTest {
         expect(character.getEquipment()).andReturn(equipment);
         mockControl.replay();
         // WHEN
-        final ParagraphData returned = underTest.resolve(parent, character, characterHandler);
+        final ParagraphData returned = underTest.resolve(parent, getResolvationData());
         // THEN
         Assert.assertEquals(returned, have);
     }
@@ -73,9 +79,13 @@ public class ItemCheckItemsCommandTest {
         expect(character.getEquipment()).andReturn(equipment);
         mockControl.replay();
         // WHEN
-        final ParagraphData returned = underTest.resolve(parent, character, characterHandler);
+        final ParagraphData returned = underTest.resolve(parent, getResolvationData());
         // THEN
         Assert.assertEquals(returned, dontHave);
+    }
+
+    private ResolvationData getResolvationData() {
+        return DefaultResolvationDataBuilder.builder().withRootData(null).withBookInformations(info).withCharacter(character).build();
     }
 
     @AfterMethod

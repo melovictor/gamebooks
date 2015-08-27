@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.content.command.itemcheck;
 
-import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.character.handler.CharacterHandler;
+import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.content.ParagraphData;
 
 /**
@@ -11,10 +10,10 @@ import hu.zagor.gamebooks.content.ParagraphData;
 public class ItemCheckSectionCommand implements ItemCheckStubCommand {
 
     @Override
-    public ParagraphData resolve(final ItemCheckCommand parent, final Character character, final CharacterHandler characterHandler) {
+    public ParagraphData resolve(final ItemCheckCommand parent, final ResolvationData resolvationData) {
         ParagraphData toResolve;
 
-        if (characterHandler.getParagraphHandler().visitedParagraph(character, parent.getId())) {
+        if (resolvationData.getCharacterHandler().getParagraphHandler().visitedParagraph(resolvationData.getCharacter(), parent.getId())) {
             toResolve = parent.getHave();
         } else {
             toResolve = parent.getDontHave();

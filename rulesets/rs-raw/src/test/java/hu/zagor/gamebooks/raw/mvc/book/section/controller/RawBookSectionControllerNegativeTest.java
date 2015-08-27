@@ -10,6 +10,7 @@ import hu.zagor.gamebooks.content.choice.DefaultChoiceSet;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.exception.InvalidStepChoiceException;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
+import hu.zagor.gamebooks.player.PlayerUser;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -51,6 +52,8 @@ public class RawBookSectionControllerNegativeTest {
     private ChoiceSet choicesExtra;
     private Choice choiceWithExtra;
 
+    private PlayerUser player;
+
     @BeforeClass
     public void setUpClass() {
         mockControl = EasyMock.createStrictControl();
@@ -64,7 +67,7 @@ public class RawBookSectionControllerNegativeTest {
         logger = mockControl.createMock(Logger.class);
         data = new ParagraphData();
         oldParagraph.setData(data);
-
+        player = mockControl.createMock(PlayerUser.class);
         underTest = new RawBookSectionController(sectionHandlingService);
         underTest.setBeanFactory(beanFactory);
         Whitebox.setInternalState(underTest, "logger", logger);
@@ -94,6 +97,7 @@ public class RawBookSectionControllerNegativeTest {
         expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
         wrapper.setRequest(request);
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
+        expect(wrapper.getPlayer()).andReturn(player);
         logger.debug("Player tried to navigate to illegal position {}.", 7);
         mockControl.replay();
         // WHEN

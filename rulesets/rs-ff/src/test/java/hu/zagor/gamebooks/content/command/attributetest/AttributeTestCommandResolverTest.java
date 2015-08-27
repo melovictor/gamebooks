@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.content.command.attributetest;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
@@ -81,7 +82,7 @@ public class AttributeTestCommandResolverTest extends FfTextResolvingTest {
 
         characterHandler.setInteractionHandler(interactionHandler);
 
-        resolvationData = new ResolvationData(rootData, character, null, info);
+        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).build();
 
         underTest = new AttributeTestCommandResolver();
         Whitebox.setInternalState(underTest, "generator", generator);

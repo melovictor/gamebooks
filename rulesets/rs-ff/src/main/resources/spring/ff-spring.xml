@@ -193,6 +193,7 @@
 
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckAttributeCommand" id="ffItemCheckAttributeCommand" />
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckValueCommand" id="ffItemCheckValueCommand" />
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckPosCommand" id="ffItemCheckPosCommand" />
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckEnemyCommand" id="ffItemCheckEnemyCommand" />
 
   <util:map id="ffItemCheckStubCommands" key-type="hu.zagor.gamebooks.content.command.itemcheck.CheckType" value-type="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckStubCommand">
@@ -206,6 +207,7 @@
     <entry key="faith" value-ref="ffItemCheckAttributeCommand" />
     <entry key="gold" value-ref="ffItemCheckAttributeCommand" />
     <entry key="value" value-ref="ffItemCheckValueCommand" />
+    <entry key="pos" value-ref="ffItemCheckPosCommand" />
   </util:map>
 
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommandResolver" id="ffItemCheckCommandResolver" p:stubCommands-ref="ffItemCheckStubCommands" />

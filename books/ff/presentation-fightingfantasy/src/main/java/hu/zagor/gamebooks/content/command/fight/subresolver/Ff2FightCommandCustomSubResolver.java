@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.content.command.fight.subresolver;
 
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
@@ -87,8 +88,7 @@ public class Ff2FightCommandCustomSubResolver extends FightCommandSupportedSubRe
             messages.addKey("page.ff2.fight.tallAttacksShort");
             final LuckTestSettings luckTestSettings = prepareAllyLuckTest(command);
             if (!getEnemyStatusEvaluator().enemiesAreDead(resolvedEnemies, command.getRoundNumber())) {
-                final ResolvationData newResolvationData = new ResolvationData(resolvationData.getRootData(), ally, resolvationData.getEnemies(),
-                    resolvationData.getInfo());
+                final ResolvationData newResolvationData = DefaultResolvationDataBuilder.builder().usingResolvationData(resolvationData).withCharacter(ally).build();
                 superAlliedResolver.resolveRound(command, newResolvationData, beforeRoundResult);
             }
             prepareAllyLuckTest(command, luckTestSettings);

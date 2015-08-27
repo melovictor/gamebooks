@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.content.command.itemcheck;
 
-import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.character.handler.CharacterHandler;
+import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.content.ParagraphData;
 
 /**
@@ -13,9 +12,8 @@ public interface ItemCheckStubCommand {
     /**
      * Resolves a {@link ParagraphData} for a certain check-type.
      * @param parent the parent {@link ItemCheckCommand} object
-     * @param character the {@link Character}
-     * @param characterHandler the {@link CharacterHandler} item
+     * @param resolvationData the {@link ResolvationData} item
      * @return the resolved {@link ParagraphData}
      */
-    ParagraphData resolve(final ItemCheckCommand parent, final Character character, final CharacterHandler characterHandler);
+    ParagraphData resolve(final ItemCheckCommand parent, ResolvationData resolvationData);
 }

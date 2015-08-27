@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.content.command.itemcheck;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CommandResolveResult;
@@ -53,7 +54,7 @@ public class ItemCheckCommandResolverTest {
         characterHandler = new CharacterHandler();
         info = new BookInformations(11L);
         info.setCharacterHandler(characterHandler);
-        resolvationData = new ResolvationData(rootDataElement, character, null, info);
+        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootDataElement).withBookInformations(info).withCharacter(character).build();
         underTest = new ItemCheckCommandResolver();
     }
 
@@ -66,35 +67,13 @@ public class ItemCheckCommandResolverTest {
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void testResolveWhenRootDataElementIsNullShouldThrowException() {
+    public void testResolveWhenResolvationDataIsNullShouldThrowException() {
         // GIVEN
         command.setCheckType(CHECK_TYPE);
         underTest.setStubCommands(stubCommands);
         mockControl.replay();
         // WHEN
-        underTest.resolve(command, new ResolvationData(null, character, null, info));
-        // THEN throws exception
-    }
-
-    @Test(expectedExceptions = IllegalArgumentException.class)
-    public void testResolveWhenCharacterIsNullShouldThrowException() {
-        // GIVEN
-        command.setCheckType(CHECK_TYPE);
-        underTest.setStubCommands(stubCommands);
-        mockControl.replay();
-        // WHEN
-        underTest.resolve(command, new ResolvationData(rootDataElement, null, null, info));
-        // THEN throws exception
-    }
-
-    @Test(expectedExceptions = IllegalArgumentException.class)
-    public void testResolveWhenCharacterHandlerIsNullShouldThrowException() {
-        // GIVEN
-        command.setCheckType(CHECK_TYPE);
-        underTest.setStubCommands(stubCommands);
-        mockControl.replay();
-        // WHEN
-        underTest.resolve(command, new ResolvationData(rootDataElement, character, null, null));
+        underTest.resolve(command, null);
         // THEN throws exception
     }
 
@@ -134,7 +113,7 @@ public class ItemCheckCommandResolverTest {
         // GIVEN
         command.setCheckType(CHECK_TYPE);
         underTest.setStubCommands(stubCommands);
-        expect(itemCheckStubCommand.resolve(command, character, characterHandler)).andReturn(resolvedData);
+        expect(itemCheckStubCommand.resolve(command, resolvationData)).andReturn(resolvedData);
         mockControl.replay();
         // WHEN
         final CommandResolveResult returned = underTest.resolve(command, resolvationData);
@@ -149,7 +128,7 @@ public class ItemCheckCommandResolverTest {
         // GIVEN
         command.setCheckType(CHECK_TYPE);
         underTest.setStubCommands(stubCommands);
-        expect(itemCheckStubCommand.resolve(command, character, characterHandler)).andReturn(null);
+        expect(itemCheckStubCommand.resolve(command, resolvationData)).andReturn(null);
         mockControl.replay();
         // WHEN
         final CommandResolveResult returned = underTest.resolve(command, resolvationData);
@@ -163,7 +142,7 @@ public class ItemCheckCommandResolverTest {
         // GIVEN
         command.setCheckType(CHECK_TYPE);
         underTest.setStubCommands(stubCommands);
-        expect(itemCheckStubCommand.resolve(command, character, characterHandler)).andReturn(resolvedData);
+        expect(itemCheckStubCommand.resolve(command, resolvationData)).andReturn(resolvedData);
         command.setAfter(afterData);
         mockControl.replay();
         // WHEN

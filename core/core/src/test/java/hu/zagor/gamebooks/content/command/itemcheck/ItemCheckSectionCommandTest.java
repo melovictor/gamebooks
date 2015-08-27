@@ -2,9 +2,12 @@ package hu.zagor.gamebooks.content.command.itemcheck;
 
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.Character;
+import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.paragraph.CharacterParagraphHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
+import hu.zagor.gamebooks.domain.BookInformations;
 
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
@@ -29,6 +32,7 @@ public class ItemCheckSectionCommandTest {
     private ParagraphData data;
     private CharacterHandler characterHandler;
     private CharacterParagraphHandler paragraphHandler;
+    private BookInformations info;
 
     @BeforeClass
     public void setUpClass() {
@@ -38,6 +42,8 @@ public class ItemCheckSectionCommandTest {
         characterHandler = new CharacterHandler();
         paragraphHandler = mockControl.createMock(CharacterParagraphHandler.class);
         characterHandler.setParagraphHandler(paragraphHandler);
+        info = new BookInformations(1L);
+        info.setCharacterHandler(characterHandler);
     }
 
     @BeforeMethod
@@ -54,7 +60,7 @@ public class ItemCheckSectionCommandTest {
         expect(parent.getHave()).andReturn(data);
         mockControl.replay();
         // WHEN
-        final ParagraphData returned = underTest.resolve(parent, character, characterHandler);
+        final ParagraphData returned = underTest.resolve(parent, getResolvationData());
         // THEN
         Assert.assertSame(returned, data);
     }
@@ -66,9 +72,13 @@ public class ItemCheckSectionCommandTest {
         expect(parent.getDontHave()).andReturn(data);
         mockControl.replay();
         // WHEN
-        final ParagraphData returned = underTest.resolve(parent, character, characterHandler);
+        final ParagraphData returned = underTest.resolve(parent, getResolvationData());
         // THEN
         Assert.assertSame(returned, data);
+    }
+
+    private ResolvationData getResolvationData() {
+        return DefaultResolvationDataBuilder.builder().withRootData(null).withBookInformations(info).withCharacter(character).build();
     }
 
     @AfterMethod

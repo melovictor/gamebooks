@@ -1,8 +1,6 @@
 package hu.zagor.gamebooks.content.command.itemcheck;
 
-import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
-import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CommandResolveResult;
 import hu.zagor.gamebooks.content.command.TypeAwareCommandResolver;
@@ -32,20 +30,13 @@ public class ItemCheckCommandResolver extends TypeAwareCommandResolver<ItemCheck
     public List<ParagraphData> doResolve(final ItemCheckCommand command, final ResolvationData resolvationData) {
         Assert.notNull(resolvationData, "The parameter 'resolvationData' cannot be null!");
 
-        final ParagraphData rootDataElement = resolvationData.getRootData();
-        final Character character = resolvationData.getCharacter();
-        final CharacterHandler characterHandler = resolvationData.getCharacterHandler();
-
-        Assert.notNull(rootDataElement, "The parameter 'rootDataElement' cannot be null!");
-        Assert.notNull(character, "The parameter 'character' cannot be null!");
-        Assert.notNull(characterHandler, "The parameter 'characterHandler' cannot be null!");
         Assert.state(stubCommands != null, "The field 'stubCommands' must be set!");
         Assert.state(command.getCheckType() != null, "The field 'stubCommands' must be set!");
 
         ParagraphData toResolve;
         final ItemCheckStubCommand stubCommand = stubCommands.get(command.getCheckType());
         if (stubCommand != null) {
-            toResolve = stubCommand.resolve(command, character, characterHandler);
+            toResolve = stubCommand.resolve(command, resolvationData);
         } else {
             throw new UnsupportedOperationException("Unknown checking type '" + command.getCheckType().toString() + "'.");
         }

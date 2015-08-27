@@ -5,6 +5,7 @@ import static org.easymock.EasyMock.eq;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.content.ParagraphData;
@@ -60,7 +61,7 @@ public class Custom18FightRoundResolverTest {
         command = mockControl.createMock(FightCommand.class);
         messageList = mockControl.createMock(FightCommandMessageList.class);
         character = mockControl.createMock(FfCharacter.class);
-        resolvationData = new ResolvationData(rootData, character, enemies, info);
+        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).withEnemies(enemies).build();
         generator = mockControl.createMock(RandomNumberGenerator.class);
         diceResultRenderer = mockControl.createMock(DiceResultRenderer.class);
         superResolver = mockControl.createMock(SingleFightRoundResolver.class);
