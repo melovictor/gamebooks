@@ -2622,9 +2622,9 @@
     </text>
     <add amount="2" to="stamina" />
     <gatherItem id="3043" />
-    <next id="201a">Ha a boszorkányhajat és a fekete gyöngyöt akarod összekeverni</next>
-    <next id="201b">Ha a boszorkányhajat és a lótuszvirágot akarod összekeverni</next>
-    <next id="201c">Ha a fekete gyöngyöt és a lótuszvirágot akarod összekeverni</next>
+    <next id="201a" pos="1">Ha a boszorkányhajat és a fekete gyöngyöt akarod összekeverni</next>
+    <next id="201a" pos="2">Ha a boszorkányhajat és a lótuszvirágot akarod összekeverni</next>
+    <next id="201a" pos="3">Ha a fekete gyöngyöt és a lótuszvirágot akarod összekeverni</next>
   </p>
   <p id="201a" display="201">
     <text>
@@ -2633,143 +2633,25 @@
         [p]Káromkodva vágod földhöz az üzenetet. Százszor is végiggondolod, mit csinálj, mielőtt döntenél. Végül úgy határozol, hogy egy lapos kő tetején porrá zúzod az általad kiválasztott két alkotórészt.[/p]
         [p]A boszorkányhaj és fekete gyöngy zúzalékát beleteszed egy bőrerszénybe, s reménykedsz, hogy jól választottál. Ismét útnak indulsz, de a környezet egyre barátságtalanabbá válik, a fák göcsörtösek, satnyák, egyetlen madár hangját sem hallani minden valószínűség szerint már az Éj Hercegének birodalmában jársz! Jobbra a bokrok hirtelen megzörrennek, és röfögő hang üti meg a füledet. Egy kíváncsi szörny az, aki a szagodra figyelt fel.[/p]
     </text>
-    <loseItem id="3036" />
-    <loseItem id="3039" />
+    <itemCheck type="pos" id="1">
+      <have>
+        <loseItem id="3039" />
+        <loseItem id="3036" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="2">
+      <have>
+        <loseItem id="3042" />
+        <loseItem id="3036" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="3">
+      <have>
+        <loseItem id="3039" />
+        <loseItem id="3042" />
+      </have>
+    </itemCheck>
     <gatherItem id="3045" />
-    <random>
-      <result max="1" min="1">
-        <text>[p]Egy Ork jelent meg. A szokásos módon küzdj meg vele![/p]</text>
-        <fight type="single">
-          <enemy id="46" />
-          <win>
-            <next id="283"></next>
-          </win>
-        </fight>
-      </result>
-      <result max="2" min="2">
-        <text>[p]Egy Óriáskígyó jelent meg. A szokásos módon küzdj meg vele![/p]</text>
-        <fight type="single">
-          <enemy id="47" />
-          <win>
-            <next id="283"></next>
-          </win>
-        </fight>
-      </result>
-      <result max="3" min="3">
-        <text>[p]Egy Farkas jelent meg. A szokásos módon küzdj meg vele![/p]</text>
-        <fight type="single">
-          <enemy id="48" />
-          <win>
-            <next id="283"></next>
-          </win>
-        </fight>
-      </result>
-      <result max="4" min="4">
-        <text>[p]Egy Pigmeus jelent meg. A szokásos módon küzdj meg vele![/p]</text>
-        <fight type="single">
-          <enemy id="49" />
-          <win>
-            <next id="283"></next>
-          </win>
-        </fight>
-      </result>
-      <result max="5" min="5">
-        <text>[p]Egy Majomember jelent meg. A szokásos módon küzdj meg vele![/p]</text>
-        <fight type="single">
-          <enemy id="50" />
-          <win>
-            <next id="312"></next>
-          </win>
-        </fight>
-      </result>
-      <result max="6" min="6">
-        <text>[p]Egy Barlangi Troll jelent meg. A szokásos módon küzdj meg vele![/p]</text>
-        <fight type="single">
-          <enemy id="51" />
-          <win>
-            <next id="283"></next>
-          </win>
-        </fight>
-      </result>
-    </random>
-  </p>
-  <p id="201b" display="201">
-    <text>
-        [p]Nikodémusz térképét követve nekivágsz a hosszú útnak fel északra, az Éj Hercegének, Csontos Zanbarnak őrökkel védett várába. Erdőkön, mezőkön visz az utad. Pihensz egy keveset a barátságos vidéken, és magadba szívod az üde, friss, illatos levegőt. Alkonyatkor úgy döntesz, hogy egy hatalmas szilfa tövében pihensz meg. Gombás nyúlpörköltet főzöl magadnak, mielőtt aludni térnél (nyersz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot!). Reggel keresel egy tiszafát, majd miután egyik ágát levágod, íjat készítesz belőle magadnak, melyből majd az ezüst nyílvesszőt kilőheted. Épp kipróbálod az íjadat, amikor hirtelen egy fehér galambot veszel észre az egyik faágon. A lábához picinyke papírdarabot erősítettek, s hagyja, hogy elvedd. A következő üzenet áll rajta:[/p]
-        [p][em]Drága barátom![br /]Attól tartok, már túl öreg vagyok ahhoz, hogy bárkinek is hasznára lehessek. Sajnálom, hogy tévesen tájékoztattalak arról, milyen tárgyakra van szükséged ahhoz, hogy megöld Csontos Zanbart. Az általam megadott három tárgy közül csupán kettő kell, de már nem emlékszem, melyik az a kettő. Azt javaslom, próbáld ki a Boszorkány haját és a fekete gyöngyöt együtt, vagy a Boszorkány haját és a lótuszvirágot együtt, vagy a fekete gyöngyöt és a lótuszvirágot együtt. Bocsáss meg.[br /]Sok szerencsét.[br /]N.[/em][/p]
-        [p]Káromkodva vágod földhöz az üzenetet. Százszor is végiggondolod, mit csinálj, mielőtt döntenél. Végül úgy határozol, hogy egy lapos kő tetején porrá zúzod az általad kiválasztott két alkotórészt.[/p]
-        [p]A boszorkányhaj és lótuszvirág zúzalékát beleteszed egy bőrerszénybe, s reménykedsz, hogy jól választottál. Ismét útnak indulsz, de a környezet egyre barátságtalanabbá válik, a fák göcsörtösek, satnyák, egyetlen madár hangját sem hallani minden valószínűség szerint már az Éj Hercegének birodalmában jársz! Jobbra a bokrok hirtelen megzörrennek, és röfögő hang üti meg a füledet. Egy kíváncsi szörny az, aki a szagodra figyelt fel.[/p]
-    </text>
-    <loseItem id="3036" />
-    <loseItem id="3042" />
-    <gatherItem id="3046" />
-    <random>
-      <result max="1" min="1">
-        <text>[p]Egy Ork jelent meg. A szokásos módon küzdj meg vele![/p]</text>
-        <fight type="single">
-          <enemy id="46" />
-          <win>
-            <next id="283"></next>
-          </win>
-        </fight>
-      </result>
-      <result max="2" min="2">
-        <text>[p]Egy Óriáskígyó jelent meg. A szokásos módon küzdj meg vele![/p]</text>
-        <fight type="single">
-          <enemy id="47" />
-          <win>
-            <next id="283"></next>
-          </win>
-        </fight>
-      </result>
-      <result max="3" min="3">
-        <text>[p]Egy Farkas jelent meg. A szokásos módon küzdj meg vele![/p]</text>
-        <fight type="single">
-          <enemy id="48" />
-          <win>
-            <next id="283"></next>
-          </win>
-        </fight>
-      </result>
-      <result max="4" min="4">
-        <text>[p]Egy Pigmeus jelent meg. A szokásos módon küzdj meg vele![/p]</text>
-        <fight type="single">
-          <enemy id="49" />
-          <win>
-            <next id="283"></next>
-          </win>
-        </fight>
-      </result>
-      <result max="5" min="5">
-        <text>[p]Egy Majomember jelent meg. A szokásos módon küzdj meg vele![/p]</text>
-        <fight type="single">
-          <enemy id="50" />
-          <win>
-            <next id="312"></next>
-          </win>
-        </fight>
-      </result>
-      <result max="6" min="6">
-        <text>[p]Egy Barlangi Troll jelent meg. A szokásos módon küzdj meg vele![/p]</text>
-        <fight type="single">
-          <enemy id="51" />
-          <win>
-            <next id="283"></next>
-          </win>
-        </fight>
-      </result>
-    </random>
-  </p>
-  <p id="201c" display="201">
-    <text>
-        [p]Nikodémusz térképét követve nekivágsz a hosszú útnak fel északra, az Éj Hercegének, Csontos Zanbarnak őrökkel védett várába. Erdőkön, mezőkön visz az utad. Pihensz egy keveset a barátságos vidéken, és magadba szívod az üde, friss, illatos levegőt. Alkonyatkor úgy döntesz, hogy egy hatalmas szilfa tövében pihensz meg. Gombás nyúlpörköltet főzöl magadnak, mielőtt aludni térnél (nyersz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot!). Reggel keresel egy tiszafát, majd miután egyik ágát levágod, íjat készítesz belőle magadnak, melyből majd az ezüst nyílvesszőt kilőheted. Épp kipróbálod az íjadat, amikor hirtelen egy fehér galambot veszel észre az egyik faágon. A lábához picinyke papírdarabot erősítettek, s hagyja, hogy elvedd. A következő üzenet áll rajta:[/p]
-        [p][em]Drága barátom![br /]Attól tartok, már túl öreg vagyok ahhoz, hogy bárkinek is hasznára lehessek. Sajnálom, hogy tévesen tájékoztattalak arról, milyen tárgyakra van szükséged ahhoz, hogy megöld Csontos Zanbart. Az általam megadott három tárgy közül csupán kettő kell, de már nem emlékszem, melyik az a kettő. Azt javaslom, próbáld ki a Boszorkány haját és a fekete gyöngyöt együtt, vagy a Boszorkány haját és a lótuszvirágot együtt, vagy a fekete gyöngyöt és a lótuszvirágot együtt. Bocsáss meg.[br /]Sok szerencsét.[br /]N.[/em][/p]
-        [p]Káromkodva vágod földhöz az üzenetet. Százszor is végiggondolod, mit csinálj, mielőtt döntenél. Végül úgy határozol, hogy egy lapos kő tetején porrá zúzod az általad kiválasztott két alkotórészt.[/p]
-        [p]A fekete gyöngy és lótuszvirág zúzalékát beleteszed egy bőrerszénybe, s reménykedsz, hogy jól választottál. Ismét útnak indulsz, de a környezet egyre barátságtalanabbá válik, a fák göcsörtösek, satnyák, egyetlen madár hangját sem hallani minden valószínűség szerint már az Éj Hercegének birodalmában jársz! Jobbra a bokrok hirtelen megzörrennek, és röfögő hang üti meg a füledet. Egy kíváncsi szörny az, aki a szagodra figyelt fel.[/p]
-    </text>
-    <loseItem id="3042" />
-    <loseItem id="3039" />
-    <gatherItem id="3047" />
     <random>
       <result max="1" min="1">
         <text>[p]Egy Ork jelent meg. A szokásos módon küzdj meg vele![/p]</text>
