@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
- * Character page data object for FF10.
+ * Character page data object for FF38.
  * @author Tamas_Szekeres
  */
 @Component("ff38CharacterPageData")
