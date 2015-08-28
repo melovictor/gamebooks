@@ -723,6 +723,7 @@
     <text>
         [p]Találsz egy elhagyatott pontot a kerítésen, itt felrakod a hátadra a rakétákat, és lenyomod az indítógombot. A masina köhög egyet, és csöndben marad. A második indításra szerencsére beindul. Lángcsóva csap ki a rakétákból, és piheként felemelkedsz a tíz méter magas kerítés fölé – itt azonban ismét csődöt mond a készülék! A földinél nagyobb gravitáció durván a földhöz ken.[/p]
     </text>
+    <reward id="jetpack" />
     <test against="luck">
       <success>
         <next id="359"></next>
@@ -1799,6 +1800,7 @@
     <text>
         [p]A középpontban, ahol a növény törzse található, a levegő áporodott, de legalább meleg. De mi történik? Az indák, miután középre csábítottak, szorosan összefonódnak, és elzárják a kijáratot. Ezenközben néhány inda előrekúszik, és megpróbálják megragadni a kezeidet és a lábaidat. Ez a növény tökéletesen alkalmazkodott a halmunsi életformához: a meleg nemcsak öt magát tartja életben, de magához vonzza az élőlényeket is, melyek aztán csapdába esnek, és a növény áldozataivá válnak. Az éjszakai pihenésedet kénytelen vagy azzal tölteni, hogy ezzel a Zababokorral küzdesz. Minden egyes körben dobj két kockával. Ha az eredmény 1--6, a zababokor 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot sebzett rajtad. Ha az eredmény 7--12, te sebeztél rajta 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
     </text>
+    <reward id="bush" />
     <fight type="custom" resolver="custom">
       <enemy id="40" />
     </fight>
@@ -1921,6 +1923,7 @@
         [p]–  A portás halott! – mondod gyorsan. – De nem... azazhogy nem én... szóval...[/p]
         [p]–  Gyilkos! – kiáltja az egyik őr. – Most tetten értünk! – Az őrök elektromos korbácsaikat lóbálva feléd indulnak. Ez itt most nem a magyarázkodás pillanata – meg kell küzdened velük. A recepciós pult mögött jó pozícióban vagy, így egyszerre csak egy Őr tud rád támadni, és a szűk helyen nem tudják használni tüskés farkukat.[/p]
     </text>
+    <reward id="button" />
     <fight type="single">
       <enemy id="3" />
       <enemy id="4" />
@@ -2633,6 +2636,7 @@
           <success>
             <test against="luck">
               <success>
+                <reward id="smuggler" />
                 <next id="96"></next>
               </success>
               <failure>
@@ -3851,6 +3855,7 @@
     </text>
     <itemCheck type="item" id="1002">
       <have>
+        <reward id="phaser" />
         <itemCheck type="item" id="3018">
           <have>
             <next id="86">Ha a fotongránátot használod</next>
@@ -4243,6 +4248,11 @@
           [p]Miközben fizetsz, az arkád antennái integetnek és villognak, nyilván őrömében. Elteszed a vásárolt tárgyat anti-gravitációs hátizsákodba, és megkérdezed, merre vezet az út a Fissziós Chipbe.[/p]
           [p]A válasz titokzatos: – Mindegyik a növekedés és az élet forrása; együttesen eszméletük áthatja a galaxist. Az általad keresett klub soha nem látott árnyékot a déli oldalán. – Na, ez tipikus déli arkád beszédstílus. Ráadásul a könnyebbik fajta, mivel a tulaj, látván, hogy ember vagy, nyilván egyszerűbben fogalmazott.[/p]
         </text>
+        <itemCheck type="item" id="3006">
+          <have>
+            <reward id="manicurer" />
+          </have>
+        </itemCheck>
         <userInput type="text">
           <label>Miről beszélhet az alak, melyik szám kapcsolódik a Fissziós Chip helyéhez?</label>
           <result text="5">
