@@ -15,6 +15,7 @@ public class BookLangData {
     private boolean hasEnemies;
 
     private boolean generatable;
+    private boolean hidden;
 
     public String getSeriesCode() {
         return seriesCode;
@@ -139,6 +140,14 @@ public class BookLangData {
 
     public void setGeneratable(final boolean generatable) {
         this.generatable = generatable;
+    }
+
+    public void setHidden(final boolean hidden) {
+        this.hidden = hidden;
+    }
+
+    public boolean isHidden() {
+        return hidden;
     }
 
 }

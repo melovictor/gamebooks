@@ -119,7 +119,9 @@ public class LanguageProjectDataContents {
             + baseData.getRuleset()
             + "CharacterHandler\" p:commandResolvers-ref=\""
             + baseData.getRuleset()
-            + "CommandResolvers\" p:unfinished=\"true\">\r\n"
+            + "CommandResolvers\" p:unfinished=\"true\""
+            + (data.isHidden() ? " p:hidden=\"true\"" : "")
+            + ">\r\n"
             + "    <property name=\"contents\">\r\n"
             + "      <bean class=\"hu.zagor.gamebooks.domain.BookContentFiles\" c:enemies=\""
             + data.getEnemiesFileName()
@@ -131,7 +133,9 @@ public class LanguageProjectDataContents {
             + "    </property>\r\n"
             + "    <property name=\"contentSpecification\">\r\n"
             + "      <bean class=\"hu.zagor.gamebooks.domain.BookContentSpecification\" p:inventoryAvailable=\""
-            + baseData.hasInventory() + "\" p:mapAvailable=\"" + baseData.hasMap() + "\" />\r\n" + "    </property>\r\n" + "  </bean>\r\n" + "\r\n" + "</beans>\r\n";
+            + baseData.hasInventory()
+            + "\" p:mapAvailable=\""
+            + baseData.hasMap() + "\" />\r\n" + "    </property>\r\n" + "  </bean>\r\n" + "\r\n" + "</beans>\r\n";
     }
 
     public static String getContentFile(final BookBaseData data) {

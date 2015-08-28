@@ -59,6 +59,7 @@ public class CreateBookProject {
 
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
+        data.setHidden(true);
         data.setBookId("FightingFantasy.THE_CITADEL_OF_CHAOS");
         data.setLang("en");
         data.setTitle("The Citadel of Chaos");
