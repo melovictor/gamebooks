@@ -9,6 +9,6 @@
          </span>
      </h2>
      <div id="mapDialog" class="popupMap" title="${bookInfo.title}">
-       <img src="resources/${bookInfo.resourceDir}/map.jpg" />
+       <img src="resources/${bookInfo.resourceDir}/${not empty customMapId ? customMapId : 'map' }.jpg" />
      </div>
 </c:if>

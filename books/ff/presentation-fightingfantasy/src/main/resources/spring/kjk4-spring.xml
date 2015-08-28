@@ -8,7 +8,7 @@
 
   <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="kjk4Info" c:id-ref="kjk4Id" p:coverPath="resources/ff7/cover.jpg" p:resourceDir="ff7"
     p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="huLocale" p:position="4" p:series-ref="kjkTitle"
-    p:title="A Gyíkkirály szigete" p:characterHandler-ref="ff7CharacterHandler" p:commandResolvers-ref="ffCommandResolvers" p:unfinished="true">
+    p:title="A Gyíkkirály szigete" p:characterHandler-ref="ff7CharacterHandler" p:commandResolvers-ref="ffCommandResolvers" p:unfinished="true" p:characterPageDataBeanId="ff7CharacterPageData">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="kjk4enemies.xml" c:items="kjk4items.xml" c:paragraphs="kjk4content.xml" />
     </property>
