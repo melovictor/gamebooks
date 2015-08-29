@@ -1,11 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
 <content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd">
   <p id="back_cover">
-    <text>[p][/p]</text>
-    <next id="background"/>
+    <text>[p]Titokzatos múltú kalandozó vagy egy világban, ahol az évszakok nem az idővel változnak, hanem a hellyel. A Tél Földjén találkozol a haldoklóval, akinek utolsó szavai hírnévvel és gazdagsággal kecsegtetnek. Csupán annyit kell tenned, hogy megtalálod a mesés Lebegő Várost és megmentesz egy Törpét, akinek rossz szokása, hogy hagyja magát elrabolni. De vajon tényleg jól értelmezted ezeket a szavakat…?[/p]</text>
+    <next id="generate" />
   </p>
-  <p id="background" display="">
-    <text>[p][/p]</text>
+  <p id="generate" display="Karakter létrehozása">
+    <text>
+      [p][span class="ffAttribute"]Ügyesség[/span]: [span id="ffSkill"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+      [p][span class="ffAttribute"]Életerő[/span]: [span id="ffStamina"]dobj két kockával és adj 12-t a dobott számhoz[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+      [p][span class="ffAttribute"]Szerencse[/span]: [span id="ffLuck"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+      [p]Válassz egy italt:
+        [select id="ffDefaultPotion"]
+          [option value="2001" selected="selected"]Ügyesség Itala[/option]
+          [option value="2002"]Erő Itala[/option]
+          [option value="2003"]Szerencse Itala[/option]
+        [/select]
+      [/p]
+      [button data-generator-button="ff"]Karakter létrehozása[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="Háttértörténet">
+    <text>
+        [p]E világban, melybe születtél, nincsenek évszakok, csupán területek, melyekben örök nyár és tél uralkodik, és a köztük húzódó árnyékos helyek. És te – ki tudja, honnan érkeztél? – magányosan kóborolsz mindenfelé, ahová éppen a legendák útja sodor.[/p]
+        [p]Ezen a napon épp a Télhozó folyó felsőbb szakaszánál található egyik gyönyörű, sziklás völgyben jársz. Élvezed a ragyogó, tavaszi napsütést, mely arcodat simogatja és élettel tölti meg tagjaidat, mikor a kora reggel nyugodt békéjét kiáltások és sikolyok hangja hasítja ketté. Előhúzod a kardodat és végigrohansz a kanyargó folyóparton, miközben a mindenhol ott lábatlankodó kisebb sziklák miatt zúgolódsz, hisz csak egyetlen rossz lépés kell, és máris kibicsaklott a bokád. Végül lihegve bukkansz elő egy füves földnyúlvány mögül, éppen időben ahhoz, hogy megpillantsd a hatalmas madarat, mely elfelé igyekszik az északi égen.[/p]
+        [p]Mészárlás nyomait látod magad előtt. Egy függönyös gyaloghintó hever felborítva egy hatalmas szikla mellett, a hordozók testei szanaszét hevernek. Nem messze, egy kusza halomban fekszenek az őrök maradványai. Az egyik fi ckó megremeg, ahogy közelebb lépsz hozzá, és alig érthető mormolás hagyja el haldokló ajkait. Közelebb hajolsz hozzá, és épp csak sikerül kivenned utolsó szavait. – Karon Törpéje… legdrágább… a Sas… Lebegő Város… – Ezek után végleg elhallgat, tekintete üresen mered a semmibe. Elgondolkodva felegyenesedsz. Az elmúlt évek során Karon úr Törpéjének története kedvelt esti mesévé vált. Az ifjú Karon, miközben a messzi északon, az örök tél birodalmában kalandozott, egy óriási sasfészekre bukkant, melyben egy pucér, vacogó Törpe hevert. A fi ckó elmondta, hogy a nőstény Glangan Sas elrabolta és arra kényszerítette, hogy míg az vadászik, tartsa melegen a tojásait. Megpróbált elmenekülni, a madár azonban ismét elfogta és elvette a ruháit, mondván hogy így a fészekben életben maradhat, de ha megpróbálna ismét megszökni, akkor bizonyosan halálra fagyna. Nem volt hát meglepő, hogy ezek után úgy tett, ahogy kérték.[/p]
+        [p]Karon felöltöztette a Törpét, majd biztonságba vitte. Hálából az udvari bolondjává szegődött, és a tavaszi földek egyik legszebb ékévé vált.[/p]
+        [p]Arra a következtetésre jutsz, hogy a Sas bizonyára ismét elragadta a szerencsétlen fl ótást, és biztos vagy benne, hogy Karon gazdagon megjutalmazná azt, aki épségben visszajuttatja hozzá szolgáját. Hallottad már a mesés Lebegő Város történetét, mely az örök tél birodalmának hegyei között húzódik, így észak felé fordulsz, hogy a madár nyomába eredj.[/p]
+    </text>
+    <gatherItem id="defWpn" />
+    <gatherItem id="1001" />
+    <gatherItem id="2000" amount="5"/>
+    <gatherItem id="3001" />
+    <gatherItem id="3002" />
+    <add amount="20" to="gold" />
     <next id="1"></next>
   </p>
+  <p id="1">
+    <text>
+        [p]Hosszú és fáradtságos út után mélyen a fagyos, északi hegyek közé kerültél. Egy hatalmas, fekete sziklának támaszkodsz, hogy pihenj egy kicsit és felmérd a környezetedet. A tavaszt már régen magad mögött hagytad, a hegyeket fehér hótakaró borítja. A levegő hideg, csípős szél hozza feléd a még cudarabb időjárás ígéretét. Válaszúthoz érkeztél. Előtted, a hegyek között egy szurdok vezet végig, ami szinte láthatatlan a jeges köd csápjai mögött. Balodon egy sötét, baljós gleccser húzódik a fekete, fenyegető ég alatt. Jobbodon egy elhagyatott fakunyhót látsz.[/p]
+    </text>
+    <next id="189">Hogyha menedék reményében belépsz ide</next>
+    <next id="42">Ha a hegyek közt lévő szurdok felé indulnál</next>
+    <next id="74">Ha nyugatra mennél, a gleccserhez</next>
+  </p>
+  <p id="189">
+    <text>
+        [p]A havon át utat törsz magadnak a kunyhóhoz. Belököd az ajtót és belépsz. Örülsz, hogy végre megszabadultál a széltől. Miután szemed hozzászokott a homályhoz, látod, hogy a kis házikó padlóját hó és jég borítja, és hogy a veled szemben lévő falra egy rozsdás, tüskés szigonyt akasztottak, melynek végéről hosszú kötél lóg.[/p]
+    </text>
+    <next id="103">Ha távozol az épületből és visszatérsz a sziklához</next>
+    <next id="68">Ha a szigonyhoz lépnél, hogy magadhoz vedd</next>
+  </p>
+  <p id="68">
+    <text>
+        [p]Ahogy az épület közepére lépsz, a jeges talaj beszakad alattad, és érzed, ahogy egy verembe kezdesz zuhanni. Kétségbeesetten kapsz a nyílás széle felé. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="175"></next>
+      </success>
+      <failure>
+        <next id="199"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="199">
+    <text>
+        [p]Ujjaid lecsúsznak a verem széléről, te pedig a mélybe zuhansz. Vesztesz 2 ÉLETERŐ és 1 ÜGYESSÉG pontot. Három ragyogó, kék szemet látsz, amint rád merednek a sötétben, és csattogó állkapcsok zaja üti meg a füledet. Rájössz, hogy egy Medvekapó vermébe estél, és felkészülsz, hogy megvédd magad a kegyetlen teremtménnyel szemben – amíg ugyanis életben van, addig nem fogsz tudni kimászni a veremből.[/p]
+    </text>
+    <add amount="-2" to="stamina"/>
+    <add amount="-1" to="skill"/>
+    <fight type="single">
+    <enemy id="1"/>
+    </fight>
+    <next id="70"></next>
+  </p>
+  <p id="70">
+    <text>
+        [p]A Medvekapó holtan hever a lábad előtt. Óvatosan szétnézel a veremben, de csupán 2 Aranytallért sikerül találnod, egy öreg fülvédőt és egy kígyóbőrnek tűnő valamit. Ezek közül bármit eltehetsz, amit csak szeretnél.[/p]
+    </text>
+    <next id="103">Ha ezek után visszatérsz a sziklához</next>
+    <next id="43">Hogyha magadhoz veszed a szigonyt</next>
+  </p>
+  <p id="103">
+    <text>
+        [p]Ismét a szikla mellett állsz.[/p]
+    </text>
+    <itemCheck type="section" id="189">
+<dontHave>
+    <next id="189" pos="1">Ha benéznél a kunyhóba</next>
+</dontHave>    
+    </itemCheck>
+    <next id="74" pos="2">Ha nyugatra indulsz, a gleccser irányába</next>
+    <next id="42" pos="3">Ha a hegyek közt lévő rés felé mennél</next>
+  </p>
+  <p id="175">
+    <text>
+        [p]Ujjaiddal sikerül fogást találnod a verem szélénél, így meg tudsz kapaszkodni. Lassan felhúzod magad a lyuk szélére és egy-két pillanatig lihegve heversz a padlón.[/p]
+    </text>
+    <next id="103">Ha most távozol a kunyhóból és visszamész a sziklához</next>
+    <next id="24">Ha inkább megvizsgálod, mi van a verem mélyében</next>
+  </p>
+  <p id="24">
+    <text>
+        [p]A lyuk szélénél lepillantva rájössz, micsoda szerencséd van, hogy nem zuhantál le. Az épület egy Medvekapó odúja. Ez a fagyos puszták egyik kegyetlen vadásza, aki óvatlan áldozatokat vár. Még most is hallod, amint a hatalmas fenevad odalenn nyáladzik, arra várva, hogy leess a verembe, majd szétszaggathassa testedet és felfalhassa húsodat.[/p]
+    </text>
+    <next id="103">Ha most távozol az épületből és visszamész a sziklához</next>
+    <next id="96">Ha rátámadsz a Medvekapóra, remélve, hogy sikerül valami használhatóra bukkannod a rejtekhelyén</next>
+    <next id="122">Ha megkerülöd a vermet és a szigonyhoz lépsz</next>
+  </p>
+  <p id="96">
+    <text>
+        [p]Amint a Medvekapó csöpögő nyállal, csattogó állkapoccsal előmászik verméből, te előhúzod a kardodat. Gyorsan kell rátámadnod.[/p]
+    </text>
+    <fight type="single">
+    <enemy id="1"/>
+    <fleeing after="0"/>
+    <flee>
+    <next id="103"></next>
+    </flee>
+    <win>
+    <next id="70"></next>
+    </win>
+    </fight>
+  </p>
+  <p id="122">
+    <text>
+        [p]Ahogy megkerülöd a vermet, a Medvekapó hirtelen előugrik búvóhelyéről és beleharap kardforgató karodba. Fegyvered a földre hullik, te pedig tehetetlenül, védtelenül nézed végig, ahogy mocskos pofájával a torkodba mar. Kalandod itt véget ér.[/p]
+    </text>
+    <death/>
+  </p>
+  <p id="42">
+    <text>
+        [p]Eltökélten menetelsz észak felé, át a bakancsodba kapó hófúváson.[/p]
+    </text>
+    <next id="18"></next>
+  </p>
+  <p id="43">
+    <text>
+        [p]Ahogy a [span class="takeItem" data-id="3003" data-amount="1"]szigonyhoz[/span] érsz, az megremeg és lepereg róla a rozsda. A rubidusz tüzes ragyogása fénylik fel – ez a világ legértékesebb féme, mely tulajdonosának gondolataira képes felmelegedni. Adj 2-t SZERENCSE pontjaidhoz. A találkozás sikeres kimenetelének örömétől eltelve lépsz ki az épületből, és térsz vissza a sziklához.[/p]
+    </text>
+    <add amount="2" to="luck"/>
+    <next id="103"></next>
+  </p>
+  <p id="74">
+    <text>
+        [p]Elérsz a gleccserhez és felmászol jeges felszínére. Ezután északra fordulva követni kezded.[/p]
+    </text>
+    <next id="184"></next>
+  </p>
+  <p id="184">
+    <text>
+        [p]A gleccser felszínét feltorlódott jégtömbök szaggatják meg, és mindenfelé elszórt szikladarabok állnak, melyek eléggé megnehezítik a haladást. Erős szél fúj körülötted, te pedig egyre jobban kifáradsz. Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina"/>
+    <next id="31"></next>
+  </p>
+  <p id="31">
+    <text>
+        [p]Hirtelen a lábad alatt beomlik a jég, te pedig a fáradtságtól majdnem belezuhansz. Az utolsó pillanatban azonban sikerül elkerülnöd ezt a szörnyű véget.[/p]
+    </text>
+    <next id="190"></next>
+  </p>
+  <p id="190">
+    <text>
+        [p]A lyuk szélén letekintve egy sötét valamit veszel észre, ami egy sziklakiszögellésen hever, valamivel lejjebb.[/p]
+    </text>
+    <next id="29" pos="1">Ha megpróbálsz lemászni, hogy megszerezd</next>
+    <itemCheck type="item" id="3003">
+    <have>
+    <next id="173" pos="2">Ha a szigonnyal próbálnád megkaparintani</next>
+    </have>
+    </itemCheck>
+    <next id="56" pos="3">Ha nem foglalkozol vele, átugrasz a hasadékon és folytatod az utadat</next>
+  </p>
+  <p id="56">
+    <text>
+        [p]A gleccser felszínén elszórt kövek egyre na-gyobbakká válnak, végül úgy érzed, mintha egy sziklaerdőben sétálnál. A kövek recseg-nek-ropognak a hidegben, és több ágyúdörrenés-szerű hangot is hallasz, ahogy néhány közülük egyszerűen ketté reped. Meggyorsítod lépteid, hogy mielőbb kijuss erről a veszedelmes helyről.[/p]
+    </text>
+    <next id="145"></next>
+  </p>
+  <p id="145">
+    <text>
+        [p]Hirtelen egy különösen nagy szikladarabot pillantasz meg, ami egyenesen feléd gurul a lejtőn, és ahogy megáll, eltorlaszolja előtted az utat.[/p]
+    </text>
+    <next id="35">Ha megpróbálod megkerülni</next>
+    <next id="162">Ha közelebbről szeretnéd megvizsgálni azt</next>
+  </p>
+  <p id="162">
+    <text>
+        [p]Miközben a szikla felé közeledsz, egy hatalmas, darabos kar nyúl ki belőle és átölel téged. Nem tudsz elmenekülni előle.[/p]
+    </text>
+    <next id="69">Ha megpróbálod kivágni magad szorult helyzetedből</next>
+    <next id="177">Amennyiben nyugodtan vársz, hogy kiderüljön, mi kapott el</next>
+  </p>
+  <p id="177">
+    <text>
+        [p]A szikla a szemed láttára változik át egy hatalmas, darabos testű alakká. Egy Tornakk áll előtted, egy női szellem, ami kövekben lakozik. Egyetlen szemét rád mereszti, majd felkuncog. – Nos, apróság, mit tehetek érted? – kérdezi.[/p]
+    </text>
+    <next id="159">Ha bízol benne és beszámolsz neki küldetésedről</next>
+    <next id="14">Ha megköszönöd a felajánlását, de elutasítod azt, mondván nincs szükséged segítségre</next>
+  </p>
+  <p id="159">
+    <text>
+        [p]A Tornakk fi gyelmesen végighallgatja mondandódat, ám nagyon úgy tűnik, nem hisz abban, hogy képes lennél egymagadban végrehajtani a feladatot, amire vállalkoztál. – Egy dolgot azért elmondok neked – mondja. – Ha rátalálsz a Törpére, óvakodj tőle. Nem biztos, hogy az, aminek első ránézésre gondolod. – Ennél többet azonban nem hajlandó mondani, így megköszönöd neki homályos jó tanácsát és folytatod az utadat.[/p]
+    </text>
+    <next id="14"></next>
+  </p>
+  <p id="14">
+    <text>
+        [p]A gleccser egy idő múlva nyugat felé kezd el fordulni. Messze az északi láthatáron egy fekete csíkot látsz, és úgy döntesz, e felé veszed az irányt.[/p]
+    </text>
+    <next id="148"></next>
+  </p>
+  <p id="69">
+    <text>
+        [p]Kardoddal a karra csapsz. A szikla a következő pillanatban egy hatalmas, torz, félszemű nővé változik át. Ez egy Tornakk, egy különös szellem, ami kövekben él. Feldühítetted, és most kénytelen leszel megküzdeni vele. A csata nehéznek ígérkezik, ugyanis ellenfeled bőre épp oly kemény, mint a szikla, melyben él. Minden Harci Körben, amit megnyersz, dobj egy kockával, hogy megtudd, milyen hatása van csapásodnak. Ha az eredmény 4, vagy nagyobb, ütésed nem okoz sebesülést a lénynek, csak a karodat rántod meg. Ha 3-at, vagy annál kevesebbet dobsz, sikerül áthatolnod kemény bőrén – és ez olyasvalami, ami általában nem történik meg vele, és amit nem is tud egykönnyen elviselni. Ilyenkor 3 ÉLETERŐ pontot vonhatsz le tőle.[/p]
+    </text>
+    <fight type="single">
+    <enemy id="2"/>
+    </fight>
+    <next id="72"></next>
+  </p>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </content>
