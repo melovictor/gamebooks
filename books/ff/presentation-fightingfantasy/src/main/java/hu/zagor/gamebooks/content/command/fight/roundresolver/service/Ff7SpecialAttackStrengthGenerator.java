@@ -6,6 +6,7 @@ import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
+import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
@@ -81,6 +82,7 @@ public class Ff7SpecialAttackStrengthGenerator {
     private void addMarker(final FightCommand command, final String marker) {
         final RoundEvent e = new RoundEvent();
         e.setEnemyId(marker);
+        e.setRoundResult(FightRoundResult.TIE);
         command.getRoundEvents().add(e);
     }
 

@@ -111,6 +111,7 @@ public class BasicFfSeleniumTest extends BasicSeleniumTest {
 
     protected void consumeItem(final String itemId) {
         waitAndFindElement("#inventory [data-item-id='" + itemId + "']").click();
+        sleep(500);
     }
 
     protected void verifyAttributes(final String attributeName, final int attributeValue) {

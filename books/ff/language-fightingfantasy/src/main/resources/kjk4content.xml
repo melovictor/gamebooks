@@ -282,6 +282,11 @@
     <text>
         [p]Közeledik az este, a nap fokozatosan lenyugszik a láthatáron. Olyan, mintha egy nagy vörös léggömb tűnne el a szemed elől a tűzhányó tövében. Rózsaszín és vörös napsugarak jelennek meg az égbolton, és hamarosan ezer és ezer apró rovar hangjától lesz zajos a környék. Úgy döntesz, hogy két bokor között letáborozol, s abban reménykedsz, hogy kellőképpen rejtve leszel itt az esetleges éjszakai ragadozók elől. [/p]
     </text>
+    <itemCheck type="pos" id="4">
+      <have>
+        <gatherItem id="2004" />
+      </have>
+    </itemCheck>
     <test against="luck">
       <success>
         <next id="388"></next>
@@ -801,7 +806,7 @@
   </p>
   <p id="75">
     <text>
-        [p]A Sámán odalép hozzád, és ujjával megérinti a fejedet. Szörnyű, riasztó alakok jelennek meg előtted. Olyan valóságosnak hatnak, hogy szinte ordítani szeretnél fájdalmadban. Van az arcodon piros por?[/p]
+        [p]A Sámán odalép hozzád, és ujjával megérinti a fejedet. Szörnyű, riasztó alakok jelennek meg előtted. Olyan valóságosnak hatnak, hogy szinte ordítani szeretnél fájdalmadban.[/p]
     </text>
     <itemCheck type="section" id="332">
       <have>
@@ -1612,8 +1617,8 @@
     <text>
         [p]Bár már közel jártál a halálhoz, mégis sikerült legyőznöd a kígyó mérgét. A méreg azonban igencsak legyengített. Végül is visszanyered az eszméletedet és kipihened magad, de [span class="ffAttribute"]Ügyesség[/span] pontjaid 5-re, míg [span class="ffAttribute"]Életerő[/span] pontjaid 4-re csökkennek.[/p]
     </text>
-    <add amount="-4" to="stamina" type="set" />
-    <add amount="-5" to="skill" type="set" />
+    <add amount="4" to="stamina" type="set" />
+    <add amount="5" to="skill" type="set" />
     <next id="5">Ha ki akarod piszkálni a Csörgőkígyót a kardoddal</next>
     <next id="119">Ha inkább óvatosan leereszkedsz a szurdokba és egyenesen nyugati irányba mész</next>
   </p>
@@ -3222,7 +3227,7 @@
         [p]Óvatosan nyitod ki a zsák száját; hátha mérges kígyó van benne, de meglepetten tapasztalod, hogy élelmet rejt: lépes mézet, búzalepényt és gyümölcsöt.[/p]
     </text>
     <next id="116">Ha meg akarod enni az élelmet</next>
-    <next id="27">Ha nem eszed meg, hanem inkább elteszed későbbre, és továbbmész</next>
+    <next id="27" pos="4">Ha nem eszed meg, hanem inkább elteszed későbbre, és továbbmész</next>
   </p>
   <p id="283">
     <text>
