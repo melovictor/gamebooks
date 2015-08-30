@@ -1,11 +1,1802 @@
 <?xml version="1.0" encoding="utf-8"?>
 <content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd">
   <p id="back_cover">
-    <text>[p][/p]</text>
-    <next id="background"/>
+    <text>[p]Miután elhagytad a Lebegő Várost, eleged lesz a Tél Földjéből és vissza kívánsz térni otthonodba, a Nyár Földjére. Az út azonban az Őszön, a Változások Földjén vezet át. A szóbeszéd szerint a növények szokatlanul gyorsan nőnek itt, és életük könnyen végződhet gyors virágzással majd halállal. A viharok is nagy veszélyt jelentenek mindazokra, akik neki mernek vágni a tájnak. Te mindezek ellenére elindulsz az Őszbe.[/p]</text>
+    <next id="generate" />
   </p>
-  <p id="background" display="">
-    <text>[p][/p]</text>
+  <p id="generate" display="Karakter létrehozása">
+    <text>
+      [p][span class="ffAttribute"]Ügyesség[/span]: [span id="ffSkill"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+      [p][span class="ffAttribute"]Életerő[/span]: [span id="ffStamina"]dobj két kockával és adj 12-t a dobott számhoz[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+      [p][span class="ffAttribute"]Szerencse[/span]: [span id="ffLuck"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+      [p]Válassz egy italt:
+        [select id="ffDefaultPotion"]
+          [option value="2001" selected="selected"]Ügyesség Itala[/option]
+          [option value="2002"]Erő Itala[/option]
+          [option value="2003"]Szerencse Itala[/option]
+        [/select]
+      [/p]
+      [button data-generator-button="ff"]Karakter létrehozása[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="Háttértörténet">
+    <text>
+        [p]E világban, melybe születtél, nincsenek évszakok, csupán területek, melyekben örök nyár és, tél uralkodik, és a köztük húzódó árnyékos helyek. És te – ki tudja, honnan érkeztél? – magányosan kóborolsz mindenfelé, ahová éppen a legendák útja sodor.[/p]
+        [p]Rég magad mögött hagytad már a Tél Földjét és a Lebegő Várost, és már belefáradtál a havas pusztaságban kóborlásba. Félig ösztönösen fordultál hazafelé, a napos Nyári Területek irányába, ahol korábban oly boldogan éltél. A lábad alatt eltűnő, hosszú mérföldeket elfeledtetik a napos dombok, fodrozódó vizű tavak, csillogó folyók és kék egek emlékei. Majd akkor pihensz, amikor odaérsz, ígéred magadnak, csupán át kell kelned az Őszön…[/p]
+        [p]A Tél határán állsz, zöld völgy terül el előtted, melyet erdők vesznek körbe. A délutáni napban végtelenül békésnek látszik, de tudod, hogy különös hely ez, melyet úgy is ismernek – nem is ok nélkül –, mint a Változások Földje.[/p]
+        [p]A Nyári és Téli területek határán húzódik az örök Ősz. De a levelek nem hullhatnak állandóan – néha nőniük is kell, és a történetek, melyek ezekről szólnak, eléggé felkavaróak. Azt is beszélik, hogy az itteni növények mások, hogy néhány rövid óra alatt képesek kisarjadni, virágzani, magot hozni és meghalni, és hogy a szél úgy zenél ezekkel, mint egy vándor énekes a lantjával. A Nyárból érkező meleg szelektől mind kivirul és növekedni kezd, ám a fagyos Téli fuvallatok hatására elhullnak vagy visszamenekülnek rügy alakjukba. És mikor a szelek kavarogni kezdenek, az egész erdő hullámzik és vonaglik a ragyogó, színes virágszirmoktól és növénytakarótól, melyek kinyílnak és bezáródnak, megnőnek és összetöpörödnek. Ezt csak úgy hívják, a „Változás”, és mindenki rettegi. Amikor megtörténik, egyetlen utazó sincs biztonságban. Ha pedig vihar kerekedik…[/p]
+        [p]Vállat vonsz. Bármit is mondjanak a mesék, át kell itt kelned, ha haza akarsz jutni. Eltökélten lépkedsz végig völgyön és beveted magad az Ősz árnyas mélyébe.[/p]
+    </text>
+    <gatherItem id="defWpn" />
+    <gatherItem id="1001" />
+    <gatherItem id="2000" amount="5" />
+    <gatherItem id="3001" />
+    <gatherItem id="3002" />
+    <add amount="20" to="gold" />
     <next id="1"></next>
+  </p>
+  <p id="1">
+    <text>
+        [p]Maga az erdő nyugodt, körülötted azonban suttogás, zizegés hallatszik, mintha csak apró lények nevetgélnének és futkorásznának apró lábaikon. Hátadon feláll a szőr, és olyan kellemetlen érzés kerít hatalmába, mintha láthatatlan szemek figyelnének téged. Tisztában vagy vele, hogy a hangok itt teljesen általánosak, valahogy mégis érzed: nem vagy egyedül. Már rég megtanultad, hogy bízz éles ösztöneidben, így óvatosan előhúzod kardodat és lábujjhegyen haladsz tovább – lépteid azonban még így is olyanok, mint az ágyúlövések az ezernyi ősz során leesett avartól és száraz ágtól.[/p]
+        [p]Megállsz és elgondolkodsz azon, mi tévő légy.[/p]
+    </text>
+    <next id="54">Ha egyszerűen vállat vonsz és bátran kilépsz, mondván hagy halljon mindenki, aki hallani szeretne</next>
+    <next id="41">Ha inkább még óvatosabban kezdenél lépkedni, tudva, hogy zajos haladásoddal könnyedén magadra vonhatod egy nagyobb lény figyelmét, ami esetleg a közeledben ólálkodik</next>
+    <next id="139">Ha ezek egyike sem szimpatikus, talán az lenne a legjobb, ha visszafordulnál és keresnél egy olyan utat az erdőn át, ami jobban megfelel az igényeidnek</next>
+  </p>
+  <p id="2">
+    <text>
+        [p]Döbbenten, elámulva figyeled a fészek belsejét, melyet arany, ékszerek és finom szövésű szőnyegek borítanak! Ahogy körbetekintesz e királyi otthonban, egy gyönyörű nő kel fel székéről és fut feléd, üdvözlésre előre nyújtott kezekkel.[/p]
+        [p]– Üdvözöllek! – kiáltja, azzal átölel téged, mint egy rég nem látott barátot. Érintése gyógyító hatású: minden betegséged azonnal elmúlik. Állítsd vissza [span class="ffAttribute"]ÉLETERŐD[/span], [span class="ffAttribute"]ÜGYESSÉGED[/span] és [span class="ffAttribute"]SZERENCSÉD[/span] a [em]Kezdeti[/em] értékeikre. [alt]Hálából átnyújtasz a nőnek egy ajándékot. Mi lesz az?[/alt][/p]
+    </text>
+    <add amount="24" to="stamina" />
+    <add amount="12" to="skill" />
+    <add amount="12" to="luck" />
+    <itemCheck type="item" id="3009">
+      <have>
+        <next id="66" pos="1">Némi gyémánt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3007">
+      <have>
+        <next id="193" pos="2">Egy fog?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3014">
+      <have>
+        <next id="6" pos="3">Egy korona?</next>
+      </have>
+    </itemCheck>
+    <next id="180" pos="4" singleChoiceText="Hálából szeretnél adni a nőnek valami ajándékot, de semmi nincs nálad, ami erre megfelelő lenne.">Semmi?</next>
+  </p>
+  <p id="3">
+    <text>
+        [p]Magad előtt lóbálva a medált átvágsz a tisztáson, mintha maga a halál üldözne téged, és közben minden pillanatban arra számítasz, hogy megérzed a szívedet összeszorító, jeges érintését. Pár pillanat elteltével azonban a túloldalon húzódó bokrok között találod magad.[/p]
+    </text>
+    <next id="187"></next>
+  </p>
+  <p id="4">
+    <text>
+        [p]Az egyik fej boldogan kezd csámcsogni a finom falaton. Sikerült felkeltened az eb étvágyát![/p]
+    </text>
+    <loseItem id="2006" />
+    <next id="81"></next>
+  </p>
+  <p id="5">
+    <text>
+        [p]A Fachan összerogyott teste előtted hever az úton. Ám miközben figyeled, látod, amint semmivé halványul és csupán [span class="takeItem" data-id="3006" data-amount="1"]husángja[/span] és [span class="takeItem" data-id="3003" data-amount="1"]köpenye[/span] marad hátra utána. Ezek bármelyikét elteheted, ha szeretnéd.[/p]
+    </text>
+    <next id="115"></next>
+  </p>
+  <p id="6">
+    <text>
+        [p]A nő rosszallóan tekint az ajándékodra, majd undorodva a padlóra hajítja azt.[/p]
+    </text>
+    <loseItem id="3014" />
+    <next id="166"></next>
+  </p>
+  <p id="7">
+    <text>
+        [p]A Moha Hajadon szomorúan felsóhajt. – Hát legyen – mondja. – Oly sok évszázada várok már egy olyan harcosra, mint te vagy, hogy eljöjjön hozzám. Várhatok még egyet. Fújd hát meg kürtödet, bátor kalandozóm![/p]
+        [p]Ajkadhoz emeled a kürtöt és nagy levegőt veszel.[/p]
+    </text>
+    <next id="49"></next>
+  </p>
+  <p id="8">
+    <text>
+        [p]Kilépsz az ajtón és ismét a vihar szívében találod magad, mely az egész erdőben tombol.[/p]
+    </text>
+    <next id="144"></next>
+  </p>
+  <p id="9">
+    <text>
+        [p]A Barnusok ellenszenvvel méregetnek téged. Nem csak hogy elrontottad a mókájukat azzal, hogy nem léptél bele a hálójukba, még türelmesebbnek is bizonyultál náluk. Egy ideig bámulnak téged nagy, barna szemeikkel, majd egy csapatként megindulnak az irányodba.[/p]
+    </text>
+    <next id="85">Ha fegyvert ragadsz és felkészülsz a küzdelemre</next>
+    <next id="95">Ha egyszerűen csak megveted a lábad</next>
+  </p>
+  <p id="10">
+    <text>
+        [p]A kanyon fala hangos dübörgéssel nyílik fel riadt tekinteted előtt. Mögötte egy hatalmas barlangüreg bejáratát pillantod meg! Óvatosan szétnézel odabenn, de nagyon sötét van, és csak pár méterig látsz. Összegyűjtöd minden bátorságod és belépsz, ám ahogy füledet földöntúli morgás tölti be, megtorpansz. Egy sokfejű kutya magasodik föléd, ami úgy tekint le rád, mintha valami undorító féreg lennél.[/p]
+        [p]– Add ide a kulcsot! – kiáltja a bestia. Ahogy hátratántorodsz és ismét a napfénybe érkezel, rádöbbensz, hogy esélytelen lennél, ha meg kellene küzdened ezzel a fenevaddal. Mit próbálsz felajánlani neki?[/p]
+    </text>
+    <itemCheck type="item" id="3014">
+      <have>
+        <next id="71" pos="1">Egy koronát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3009">
+      <have>
+        <next id="12" pos="2">Gyémántokat?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="2004">
+      <have>
+        <next id="106" pos="3">Fokhagymát?</next>
+      </have>
+    </itemCheck>
+    <next id="100" pos="4">Aranyat?</next>
+    <itemCheck type="item" id="2006">
+      <have>
+        <next id="4" pos="5">Sonkát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3005">
+      <have>
+        <next id="185" pos="6">Egy gömböt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3012">
+      <have>
+        <next id="46" pos="7">Egy medált?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3011">
+      <have>
+        <next id="164" pos="8">Egy korsónyit a [em]Minden Bajnak Meggyógyítójá[/em]ból?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3013">
+      <have>
+        <next id="42" pos="9">Egy rubint?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="88" pos="10">Ha magadra kapnád a köpenyed</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3015">
+      <have>
+        <next id="17" pos="11">Ha felvennéd a vörös csuklyát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3010">
+      <have>
+        <next id="49" pos="12">Ha megfújnád a kürtödet</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="11">
+    <text>
+        [p]Végül, miután sikerült átverekedned magad a gyomorforgató erdőn, egy hatalmas, gömb alakú, madárfészeknek látszó építményre bukkansz, melyet mintha ágakból és mohákból fontak volna. A kis házikó a fák között lapul, nem messze az úttól.[/p]
+    </text>
+    <next id="197">Ha arra indulsz, remélve, hogy menedékre lelhetsz benne</next>
+    <next id="148">Ha inkább elmennél mellette</next>
+  </p>
+  <p id="12">
+    <text>
+        [p]A lény lepillant a gyémántokra, majd felemeli a fejét és gúnyosan vonyítani kezd.[/p]
+    </text>
+    <loseItem id="3009" />
+    <next id="81"></next>
+  </p>
+  <p id="13">
+    <text>
+        [p]A világ egy pillanat alatt megváltozik. A tisztás immáron borzalmas kinézetű női alakoktól nyüzsög, akik köpenybe és kámzsába burkolóznak. A lények, amiket látsz, Gwyllionok, ördögien gonosz lelkek, akik utazókra és kalandozókra támadnak rá, hogy ellopják a lelküket. Halálos veszélyben vagy.[/p]
+    </text>
+    <itemCheck type="item" id="3008">
+      <have>
+        <next id="50"></next>
+      </have>
+      <dontHave>
+        <next id="174"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="14">
+    <text>
+        [p]Szemeid elkerekednek a meglepetéstől! Egy [span class="takeItem" data-id="3013" data-amount="1"]rubin[/span], mely vörös, mint a frissen ontott vér, lapul mélyen a fában. Azonnal benyúlsz a nyíláson és kikapod belőle. A fa megremeg és metsző, kínkeserves üvöltés tör elő belőle, mely lassan elhalkul a lágy szellőben.[/p]
+    </text>
+    <next id="178"></next>
+  </p>
+  <p id="15">
+    <text>
+        [p]Vaksötét van a folyosóban.[/p]
+    </text>
+    <itemCheck type="item" id="3004">
+      <have>
+        <text>
+            [p]Hogyan akarod használni a pamutgombolyagot?[/p]
+        </text>
+        <next id="43">Ha elkezded letekerni, hogy jelezze számodra a visszautat a bejárat irányába</next>
+        <next id="120">Ha egyelőre magadnál tartanád, mondván később még hasznos lehet</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Kalandod itt véget ér, ugyanis nincs semmid, ami vezethetne téged. Hamarosan teljesen eltévedsz a kanyargó labirintusban és soha többé nem látod meg a napfényt.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="16">
+    <text>
+        [p]Gyorsan előrántod a kardodat. Épp időben, ugyanis ebben a pillanatban toppan elő egy Fachan félelmetes alakja a fák közül. A lénynek egyetlen szeme van, egy visszeres lába és egy hatalmas, szőrös karja, mely a mellkasa közepéből nőtt ki! Hatalmas fahusángot tart a kezében, ruházata pedig egyetlen köpenyből áll csak, amit sodort tollakból fontak.[/p]
+        [p]A különös teremtmény feléd ugrál, majd az út szélén megtorpan. Rájössz, hogy valamiért fél rálépni.[/p]
+    </text>
+    <next id="103">Ha kihasználod a tétovázását és rátámadsz</next>
+    <next id="194">Ha maradsz, ahol vagy, és megvárod, hogy közelebb jöjjön hozzád</next>
+  </p>
+  <p id="17">
+    <text>
+        [p]A csuklya láthatatlanná tesz téged – az óriás eb éles szaglása elől azonban nem rejt el.[/p]
+    </text>
+    <next id="81"></next>
+  </p>
+  <p id="18">
+    <text>
+        [p]Ahogy egy nagyobb széllöket csapódik neked, térdre rogysz. A kavargó szélelementál gonoszul felkacag és föléd tornyosul. Egy Mazzamarieddu áll előtted, egy széltündér, ami a legendák szerint csak akkor utazhat, amikor egy meggyilkolt ember kiontott vérét látja. A megtestesült halált látva magad előtt kétségbeesetten a kardod után kapsz.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="159"></next>
+      </success>
+      <failure>
+        <next id="38"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="19">
+    <itemCheck type="item" id="4001">
+      <have>
+        <text>
+            [p]Az étel most nem tesz valami jót. A növények folyamatos tekergőzése hamarosan elviselhetetlenné válik, és elhányod magad. Vesztesz 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
+        </text>
+        <add amount="-3" to="stamina" />
+      </have>
+      <after>
+        <text>
+            [p]Végül, miután sikerült átverekedned magad a gyomorforgató erdőn, egy hatalmas, gömb alakú, madárfészeknek látszó építményre bukkansz, melyet mintha ágakból és mohákból fontak volna. A kis házikó a fák között lapul, nem messze az úttól.[/p]
+        </text>
+        <next id="197">Ha arra indulsz, remélve, hogy menedékre lelhetsz benne</next>
+        <next id="148">Ha inkább elmennél mellette</next>
+      </after>
+    </itemCheck>
+  </p>
+  <p id="20">
+    <text>
+        [p]Egymagad maradtál – és tapasztalatból tudod, hogy nem vagy valami kellemes társaság. Magányodban nincs más választásod, minthogy mélyen magadba szállj és eltöprengj tetteiden, míg elegendő bölcsességet nem szedsz össze ahhoz, hogy ismét a világra térhess. Kalandod hosszú, nagyon hosszú időre félbe szakad.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="21">
+    <text>
+        [p]Döbbenetes módon rábukkantál a gonosz Gwyllionok legyőzésének egyetlen módjára! Visszanyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. Hátborzongató suttogás és suhogás közepette árnyas alakjuk ködszerű páraoszloppá olvad össze, ami felszívódik a tiszta, kék ég felé.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="116"></next>
+  </p>
+  <p id="22">
+    <text>
+        [p]Rájössz, hogy vendéglátód végzett veled, így megköszönöd a nő segítségét. Ezután egy udvarias meghajlás kíséretében távozol a kunyhójából.[/p]
+    </text>
+    <next id="168"></next>
+  </p>
+  <p id="23">
+    <text>
+        [p]Szemed megakad valami fénylő tárgyon a fa egyik üregében.[/p]
+    </text>
+    <next id="14">Ha érte próbálsz nyúlni</next>
+    <next id="128">Ha inkább elmész mellette és visszatérsz az erdőbe</next>
+  </p>
+  <p id="24">
+    <text>
+        [p]Természetesen félsz, de összeszorítod fogaidat és úgy várod az égető érzést, ahogy a fém homlokodhoz ér. Legnagyobb megdöbbenésedre azonban egyáltalán nem érzel fájdalmat. Épp ellenkezőleg, a vasdarab érintése csodálatosan felfrissít, mintha erő és új élet áradna szét tagjaidban! Felpillantasz az asszonyra, és megdöbbenve tapasztalod, hogy már nem a ráncos, öreg arcot látod magad előtt, hanem egy gyönyörű, fiatal nőét.[/p]
+        [p]– Udvariasságodért és bátorságodért cserébe, utazó, neked adományoztam az Igaz Látás Jelét – mondja. – Mostantól olyannak látod majd a dolgokat, amilyenek azok valójában, és ami rejtve van, az megmutatkozik majd előtted. – Ezután maga mögé nyúl és elővesz egy kis [span class="takeItem" data-id="3010" data-amount="1"]kürtöt[/span]. – Fújd meg ezt, ha majd segítségre lesz szükséged – mondja –, és biztos lehetsz benne, hogy segítséget fogsz kapni.[/p]
+    </text>
+    <next id="22"></next>
+  </p>
+  <p id="25">
+    <text>
+        [p]A szél erősödni kezd, lágy szellő suhan át lassan a fák és az aljnövényzet között. Meleg, a Nyár édes földjének irányából érkezett. A virágok körülötted mindenfelé kivirulnak és növekedni kezdenek – néhány rövid pillanat elteltével az erdő életre kel és a szivárvány színeiben kezd pompázni! Végre elérte a Tavasz a Változások Földjét.[/p]
+    </text>
+    <next id="160"></next>
+  </p>
+  <p id="26">
+    <text>
+        [p]Odabenn sötét van, a levegő dohos és mintha kőszénkátrány szagát éreznéd valahonnét. A hományon át épp csak ki tudsz venni egy halovány derengést a távolban.[/p]
+    </text>
+    <next id="102">Ha megpróbálsz elbotorkálni ennek forrásáig</next>
+    <next id="93">Ha inkább távozol erről a hátborzongató helyről</next>
+  </p>
+  <p id="27">
+    <text>
+        [p]A fájdalomtól görnyedten bicegsz végig az erdőn. Bokádban a fájdalom lépésről lépésre erősödik, és karod is folyamatosan kínoz.[/p]
+    </text>
+    <next id="25"></next>
+  </p>
+  <p id="28">
+    <text>
+        [p data-item-choice="foods" data-max-choice="2"]Búcsút intesz a Barnusoknak és elteszed az élelmet, amit összekészítettek neked (egy nagy darab [span class="takeItem" data-id="2006" data-amount="1" data-group="foods"]sonkát[/span], [span class="takeItem" data-id="2004" data-amount="1" data-group="foods"]fokhagymákat[/span] és [span class="takeItem" data-id="2005" data-amount="1" data-group="foods"]vöröshagymákat[/span], melyek 2 étkezésre elegendőek). A metsző szagú zöldségeket ugyan gyanakvással figyeled, de azért megköszönöd őket. Végül barátságuk jeleként neked ajándékozzák egy apró, finoman faragott [span class="takeItem" data-id="3008" data-amount="1"]tőrüket[/span]. Kivezetnek a falu határába és csacsogva elköszönnek tőled.[/p]
+    </text>
+    <next id="92"></next>
+  </p>
+  <p id="29">
+    <text>
+        [p]Letérsz az erdei ösvényről – és szembetalálod magad egy rémisztő Fachannal, mely a fák közül tör elő. Egyetlen szeme van, egy vézna lába és egy hatalmas, szőrös keze, mely a mellkasa közepéből nyúlik elő! Hatalmas bunkósbotot forgat a kezében, vállán egy torz tollakból szőtt köpeny lebeg. Egyet ugrik, és már rád is támad.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="1" />
+    </fight>
+    <next id="189"></next>
+  </p>
+  <p id="30">
+    <text>
+        [p]Kardforgató karod használhatatlanul lóg az oldaladon, és ami még rosszabb, másik kezed messze nem elég erős ahhoz, hogy kinyissa a ládát. Vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Megfordulsz és dühösen távozol.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="75"></next>
+  </p>
+  <p id="31">
+    <text>
+        [p]A szél lassan erősödni kezd és meleg levegőt hoz magával a Nyár Földjéről. Körülötted a szemed láttára kezdenek el nőni a növények. Levelek sarjadnak és színpompás virágok nyílnak ki minden irányba. A Tavasz elérte a Változások Földjét![/p]
+    </text>
+    <next id="175"></next>
+  </p>
+  <p id="32">
+    <text>
+        [p]Meg kell küzdened ellenfeleddel.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="3" />
+    </fight>
+    <next id="84"></next>
+  </p>
+  <p id="33">
+    <text>
+        [p]A falakat polcok és szekrények szegélyezik, a szarufába vert kampókon idegen dolgok lógnak. Mit vizsgálsz meg közelebbről?[/p]
+    </text>
+    <next id="162">A szekrényeket?</next>
+    <next id="141">A lógó tárgyakat?</next>
+    <next id="96">A polcokat?</next>
+    <next id="64">Semmit, és inkább elhagyod a kunyhót?</next>
+  </p>
+  <p id="34">
+    <text>
+        [p]Séta közben a szél felerősödik és egyszerre minden irányból fújni kezd. A következő pillanatban pedig már a nyakadban liheg a Változás! A növények kivirágzanak, majd ismét rüggyé zsugorodnak vissza, a fák hajladozni kezdenek, a lombok kizöldellnek majd elsárgulnak. Az egész olyan különös és észveszejtő, hogy kezdesz rosszul lenni a látványtól, a körülötted változó, hullámzó, lüktető élővilágtól.[/p]
+    </text>
+    <next id="114"></next>
+  </p>
+  <p id="35">
+    <text>
+        [p]A Barnusok intenek, hogy kövesd őket. Egy pillanatig tétovázol, nem vagy biztos a szándékaikat illetően, a lények pedig fenyegetően már körbe is vesznek téged.[/p]
+    </text>
+    <next id="85">Ha megküzdesz velük</next>
+    <next id="68">Ha inkább békésen velük tartasz</next>
+  </p>
+  <p id="36">
+    <test against="luck">
+      <success>
+        <next id="61"></next>
+      </success>
+      <failure>
+        <next id="145"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="37">
+    <text>
+        [p]Séta közben a Nyár békés földjéről álmodozol – az aranyló napfényben fürdő dombokról, a smaragdzöld színben pompázó mezőkről, melyek a völgyek oldalában ereszkednek le egészen a tiszta, kék vizű tavak partjáig. Végtelen béke áraszt el, mert tudod, hogy hamarosan elérkezel az örök Nyár birodalmába.[/p]
+    </text>
+    <next id="44"></next>
+  </p>
+  <p id="38">
+    <text>
+        [p]Megragadod kardod markolatát és felkészülsz a csatára.[/p]
+        [p]Gyengeségednek köszönhetően a lény minden sikeres támadásával 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot sebez rajtad.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="21" />
+    </fight>
+    <next id="112"></next>
+  </p>
+  <p id="39">
+    <text>
+        [p]A tisztás borzalmas női alakoktól hemzseg, akik félelmetes, csuklyás köpenyeket viselnek. Az előtted lévő szörnyetegek Gwyllionok, gonosz lelkek, akik a hozzád hasonló utazókra vadásznak. Halálos veszélyben vagy, mert nem sok olyan fegyver létezik, mely ártani lenne képes nekik – és a kardod biztosan nem tartozik ezek közé! Döntsd el gyorsan, mivel támadnál rájuk.[/p]
+    </text>
+    <itemCheck type="item" id="3011">
+      <have>
+        <next id="164" pos="10">Mindent gyógyító varázsitallal?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3010">
+      <have>
+        <next id="147" pos="20">Kürttel?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3008">
+      <have>
+        <next id="21" pos="30">Késsel?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3012">
+      <have>
+        <next id="191" pos="40">Medállal?</next>
+      </have>
+      <haveEquipped>
+        <next id="191" pos="40">Medállal?</next>
+      </haveEquipped>
+    </itemCheck>
+  </p>
+  <p id="40">
+    <text>
+        [p]Odabenn meleg és nedves a levegő. Elég sötét van, csak a fal repedésein átszűrődő kósza fénynyalábok adnak némi világosságot. Egy hihetetlenül vénséges asszonyt látsz, akit tetőtől talpig beborít a szürkés-zöldes moha és zuzmó. Amint megpillant, felkel, hogy üdvözöljön. Széles mosoly ül ki arcára, mely kivillantja agyarszerűen csúcsos fogait is.[/p]
+    </text>
+    <next id="138" pos="1">Ha te is barátságosan üdvözlöd a nőt</next>
+    <itemCheck type="item" id="3007">
+      <have>
+        <next id="177" pos="2">Hogyha inkább kardot rántasz és rátámadsz</next>
+      </have>
+      <dontHave>
+        <next id="32" pos="2">Hogyha inkább kardot rántasz és rátámadsz</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="41">
+    <text>
+        [p]Elővigyázatosságod meghozza gyümölcsét: épp mielőtt belelépnél, egy háló körvonalát pillantod meg, melyet nagy halom lehullott levél alá rejtettek. Gyorsan elhátrálsz a közeléből és körbepillantasz, attól tartva, hogy valaki lesben áll a közelben.[/p]
+    </text>
+    <next id="51">Ha elrejtőzöl, remélve, hogy így találkozhatsz majd a csapdát állítóval</next>
+    <next id="37">Ha óvatosan megkerülöd a hálót és folytatod az utad</next>
+  </p>
+  <p id="42">
+    <text>
+        [p]Bolond! Tényleg úgy hiszed, hogy egy meggyilkolt fa Szívvérével elűzheted magadtól a gonoszt? Megérdemled a sorsot, ami rád vár.[/p]
+    </text>
+    <loseItem id="3013" />
+    <next id="81"></next>
+  </p>
+  <p id="43">
+    <text>
+        [p]A fonal egyszerűen használhatatlan, mert folyamatosan összegabalyodik és elszakad az éles sziklákon. Túl későn jut eszedbe, mit is mondott neked a Moha Hajadon: hogy [em]előrefelé[/em] fogja mutatni majd az utat![/p]
+    </text>
+    <itemCheck type="item" id="3010">
+      <have>
+        <text>
+            [p]Nincs más választásod, kénytelen vagy megfújni a kürtöt.[/p]
+        </text>
+        <next id="49"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Életed végéig ezekben a járatokban kell vándorolnod – kalandod itt véget ér.[/p]
+        </text>
+        <death />
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="44">
+    <text>
+        [p]Hirtelen előbukkansz a fák közül egy napsütötte tisztásra, gondolataid pedig egyből visszatérnek a jelenbe. A rét szélesen húzódik az erdő közepén. Fű borítja, a közepén pedig egy sziklát látsz, melynek közepébe valaki egy lyukat fúrt.[/p]
+    </text>
+    <next id="98">Ha közelebbről is megvizsgálod ezt a különös képződményt</next>
+    <next id="181">Ha inkább egyenesen átvágsz a tisztáson</next>
+  </p>
+  <p id="45">
+    <text>
+        [p]A sok megpróbáltatástól kimerülten megpróbálod kizárni a kint tomboló vihar hangjait és lefekszel aludni.[/p]
+    </text>
+    <next id="140"></next>
+  </p>
+  <p id="46">
+    <text>
+        [p]Amint a kutya rád tekint, a medál porrá omlik a kezedben.[/p]
+    </text>
+    <loseItem id="3012" />
+    <next id="81"></next>
+  </p>
+  <p id="47">
+    <text>
+        [p]Apró lények futnak elő a fák közül, rejtekhelyeikről. Csupán feleolyan magasak, mint te vagy, barna ruhát viselnek és bozontos szakállat. A Barnusok mindettől függetlenül félelmetes ellenfeleknek látszanak. Az egyik felpillant rád, majd egyetlen mozdulattal elvágja a kötelet, ami a hálót – és benne téged is – a levegőben tartja. Hangos csattanással terülsz el a földön. Vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="35"></next>
+  </p>
+  <p id="48">
+    <text>
+        [p]A nő alakja megváltozik; elhalványul, átlátszó lesz, miközben föléd magasodik.[/p]
+        [p]– Féreg! – kiáltja. – Hogy mered ily módon megsérteni otthonomat?! – Éles, sikoltó hang kíséretében az árny beborít téged, és érzed, ahogy valami éles szakítja fel a torkodat. Ezután minden elsötétül.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="49">
+    <text>
+        [p]Belefújsz a kürtbe. Hosszú, tiszta, átható hang tör elő a túlvégéből, ami még azután is hosszan vízhangszik, hogy elemelted a szádtól. Válasz érkezik a hívásra, paták dobogásai dübörögnek a levegőben, melyek egyre közelebb érnek hozzád. A Vad Vadászat tagjai végül őrjöngő üvöltés közepette robbannak elő közeledben a semmiből, lángoló ebekkel és agancsos ménekkel közelednek feléd. Az egyik lovas lenyúl és megragad fekete bőrkesztyűjével, maga mögé emel és ismét az ég felé emelkedik, hogy csatlakozzon a vonyító ebekhez.[/p]
+        [p]A földöntúli menet végigvágtázik az égen, míg el nem éri a Nyár földjét. A csapat ekkor ismét a föld felé fordul, titokzatos megmentőd pedig füves folyópartra tesz le téged. Ezután ismét a magasba fordítja különös hátasát és csatlakozik a Vadászathoz. Épen és egészségesen visszatértél hát a Nyár földjére, ahol békében eltöltheted életed hátralévő részét – de soha nem fognak rád hősies kalandozóként emlékezni.[/p]
+    </text>
+    <victory />
+  </p>
+  <p id="50">
+    <text>
+        [p]Gyorsan előkapod tőrödet, ám legnagyobb rémületedre látod, ahogy annak pengéje elsorvad és porrá omlik szét. A Barnusok tőre csupán akkor hatásos a gonosz lények ellen, ha barátian adták át azokat – te viszont loptad a tiedet![/p]
+    </text>
+    <loseItem id="3008" />
+    <next id="195"></next>
+  </p>
+  <p id="51">
+    <text>
+        [p]Úgy tűnik, aki felállította a csapdát, az legalább olyan türelmes, mint te. Végül azonban apró alakok bukkannak elő a fák közül.[/p]
+    </text>
+    <next id="199">Ha felkészülsz rá, hogy rájuk támadj</next>
+    <next id="109">Ha inkább rejtve maradsz</next>
+  </p>
+  <p id="52">
+    <text>
+        [p]A banya alakja megváltozik, vonásai elhalványulnak, teste sötétbe borul és föléd magasodik. – Gyáva! Pondró! – kiáltja éles hangon. Fülsüketítő zajjal ereszkedik rád az árnyszerű alak. Érzed, amint torkodat valami éles hasítja ketté, és végleg elsötétül körülötted a világ.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="53">
+    <text>
+        [p]Az ősi hely nem tartogat számodra további kellemetlen meglepetéseket. Úgy döntesz, letelepedsz, hogy végre kicsit kipihend magad. Visszanyersz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Pár órányi pihenés után végre elég frissnek érzed magad ahhoz, hogy folytasd az utad.[/p]
+    </text>
+    <add amount="2" to="stamina" />
+    <next id="179"></next>
+  </p>
+  <p id="54">
+    <text>
+        [p]A következő pillanatban öt méter magasban találod magad a talaj felett, tehetetlenül, egy hálóban.[/p]
+    </text>
+    <next id="47"></next>
+  </p>
+  <p id="55">
+    <text>
+        [p]A Moha Hajadon magához húz téged és émelyítő csókot nyom arcodra üdvözlésképp.[/p]
+        [p]– Üdvözöllek, gyermekem! – köszönt. Érintése gyógyító erejű, és döbbenten látod, hogy sebeid egy pillanat alatt begyógyulnak. (Állítsd vissza [span class="ffAttribute"]ÉLETERŐ[/span] pontjaidat a [em]Kezdeti[/em] értékükre.) Miután magadhoz tértél a hirtelen gyógyulás okozta szédülésből, a nő megkérdi, segítségére lennél-e a munkájában, vagy inkább nyugovóra térnél.[/p]
+    </text>
+    <add amount="24" to="stamina" />
+    <next id="124">Ha felajánlod neki szolgálataidat</next>
+    <next id="167">Ha inkább lepihennél</next>
+  </p>
+  <p id="56">
+    <text>
+        [p]Mivel a lény teljes egészében levegőből áll, fegyvered nem sok kárt tesz benne.[/p]
+        [p]Valahányszor eltalálod az elementált, a szokásos 2 helyett csupán 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot vonhatsz le tőle.[/p]
+    </text>
+    <fight type="single" forceWeapon="1001">
+      <enemy id="22" />
+    </fight>
+    <next id="152"></next>
+  </p>
+  <p id="57">
+    <text>
+        [p]Még soha senki nem végzett a hatalmas Rőtsipkással! Nyersz 2 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <random>
+      <result max="1" min="1">
+        <text>[p]Nyersz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="1" to="stamina" />
+      </result>
+      <result max="2" min="2">
+        <text>[p]Nyersz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="2" to="stamina" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]Nyersz 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="3" to="stamina" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Nyersz 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="4" to="stamina" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Nyersz 5 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="5" to="stamina" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Nyersz 6 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]</text>
+        <add amount="6" to="stamina" />
+      </result>
+      <after>
+        <text>
+            [p]A borzalmas lény halálakor felszabaduló vad, nyers mágia valami csoda folytán egy másik helyre szállít téged. Az ég elmosódik feletted, a levegő elhomályosodik körülötted és érzed, ahogy sebesen suhansz valamerre. Pislogsz – és kiélesedik a szemed előtt a táj.[/p]
+        </text>
+        <random>
+          <result max="1" min="1">
+            <next id="134"></next>
+          </result>
+          <result max="2" min="2">
+            <next id="54"></next>
+          </result>
+          <result max="3" min="3">
+            <next id="153"></next>
+          </result>
+          <result max="4" min="4">
+            <next id="140"></next>
+          </result>
+          <result max="5" min="5">
+            <next id="70"></next>
+          </result>
+          <result max="6" min="6">
+            <next id="101"></next>
+          </result>
+        </random>
+      </after>
+    </random>
+  </p>
+  <p id="58">
+    <text>
+        [p]Amennyire csak tudod, átvizsgálod ezt a különös helyet. A szokásos háztartási eszközökön és bútorokon kívül nem sok mindent találsz, az egyik sarokban azonban megpillantasz egy érdekesnek tűnő ládát.[/p]
+    </text>
+    <next id="107" pos="1">Ha ki akarod ezt nyitni a kardoddal</next>
+    <itemCheck type="item" id="3006">
+      <have>
+        <next id="111" pos="2">Ha a husángot használnád hozzá</next>
+      </have>
+    </itemCheck>
+    <next id="45" pos="3">Ha nem akarod bántani</next>
+  </p>
+  <p id="59">
+    <text>
+        [p]Rémülten tekintesz le – a talaj a lábad előtt futóhomokká változott. Szinte azonnal térdig, majd derékig süllyedsz benne. Bármenynyire is igyekszel kapálózni, a homok egyre erősebben húz lefelé, úgy szippant magába, mint egy hatalmas száj. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="60">
+    <text>
+        [p]Ahol korábban a szikla állt, ott most valami más hever, ami csillog. Egy [span class="takeItem" data-id="3014" data-amount="1"]arany korona[/span] az, melyet súlyos ékkövek díszítenek. Ha akarod, magadhoz veheted ezt a kincset. Ezután elhagyod a tisztást.[/p]
+    </text>
+    <next id="187"></next>
+  </p>
+  <p id="61">
+    <text>
+        [p]Hirtelen a Szentírás szavai buknak ki szádon szinte maguktól. A fenevad ajkát a szent szavak hallatán állatias üvöltés hagyja el, majd sarkon fordul és elmenekül. Az egyik [span class="takeItem" data-id="3007" data-amount="1"]fogát[/span] viszont hátrahagyta, amit magaddal vihetsz, ha akarsz.[/p]
+    </text>
+    <next id="89"></next>
+  </p>
+  <p id="62">
+    <text>
+        [p]Rémülten szaladsz át a tisztáson. Túloldalt a fák mintha egyre távolabb kerülnének tőled, így még jobban kezdesz rohanni. Hirtelen megbotlasz egy fűcsomóban és elterülsz a talajon. Jeges suttogások kezdenek örvényleni körületted, és érzed, ahogy borzalmas, láthatatlan kezek kezdik tapogatni a húsodat. Kínkeservesen lassan karmok marnak beléd, hogy darabokra szaggassanak… Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="63">
+    <text>
+        [p]Zavaros képek jelennek meg a szemeid előtt; felhőgomolyagok, melyek nem tompítják el a paták dobogását; a teli hold, mely különös, néma alakokra tekint le. A közelgő halál érzése kerít hatalmába, és egy, a tiedéhez igen hasonló kürt képe dereng fel. Gyorsan elfordítod a tekinteted.[/p]
+    </text>
+    <next id="87"></next>
+  </p>
+  <p id="64">
+    <text>
+        [p]Több Barnus is áll a kijáratnál. Pár pillanatig izgatottan figyelnek téged, de aztán látszólag kiábrándultan szélednek szét. Úgy tűnik, nem háborgatnak tovább, mehetsz, amerre jól esik.[/p]
+    </text>
+    <next id="76">Ha felderítenéd az apró települést</next>
+    <next id="128">Ha az utca végéből induló csapáson indulnál tovább</next>
+  </p>
+  <p id="65">
+    <text>
+        [p]A nő szemei izgatottan felvillannak.[/p]
+        [p]– Remek! – kiáltja. – Még a tiéd lehet a nagyság! – Rád bámul, kiejt néhány szót, és…[/p]
+    </text>
+    <next id="54"></next>
+  </p>
+  <p id="66">
+    <text>
+        [p]A nő egy pillanatig az ajándékodat nézi, majd undorodva a földre hajítja őket.[/p]
+    </text>
+    <loseItem id="66" />
+    <next id="166"></next>
+  </p>
+  <p id="67">
+    <text>
+        [p]Hihetetlenül kimerülve, megtört lélekkel távozol a különös fészekből és indulsz el ismét az erdőben. Céltalanul kóborolsz tovább, hagyva, hogy lábad vigyen, ahová csak szeretne.[/p]
+    </text>
+    <next id="112"></next>
+  </p>
+  <p id="68">
+    <text>
+        [p]Boldogan, amiért sikerült legyőzniük téged – elvégre a Barnusok csibész teremtmények – az erdőn át a falujukig kísérnek. Vidám kis hely ez, csinos kertekkel, melyekben tőzegből épült házikók állnak. Nyersz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. A település legutolsó épületéhez vezetnek, majd megállnak és intenek, hogy lépj be.[/p]
+    </text>
+    <add amount="1" to="stamina" />
+    <next id="129"></next>
+  </p>
+  <p id="69">
+    <text>
+        [p]Szinte teljesen kimerülsz, mikor végre elérkezel egy romos toronyhoz, ami elég magas ahhoz, hogy a teteje kibukkanjon a lombkorona fölött.[/p]
+    </text>
+    <next id="101">Ha menedék reményében belépsz ide</next>
+    <next id="144">Ha szerencsédben bízva folytatod az utad az erdőben</next>
+  </p>
+  <p id="70">
+    <text>
+        [p]Mélyen alszol, sem álom, sem élőlény nem zavar meg. Felébredsz, majd ismét alszol, a növények színpompás forgataga lényed minden részét betölti. Végül hosszú alvásod után, örömmel eltelve végleg felébredsz. A gyönyörű virágok közt állva összeszeded holmijaidat és tovább sietsz a Nyár hívogató földje felé – és ekkor lehull rólad az őrület szemfedője. Egy ingovány közepén állsz, egyes egyedül és gyorsan süllyedsz. Mikor utoljára a felszín alá süllyedsz, utolsó gondolatod az, hogy soha többé nem látod majd a napfényt.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="71">
+    <text>
+        [p]A koronának semmi hasznát nem veszed itt. A hatalmas eb ismét elüvölti magát.[/p]
+    </text>
+    <loseItem id="3014" />
+    <next id="81"></next>
+  </p>
+  <p id="72">
+    <text>
+        [p]A Moha Hajadon szomorúsággal a szemében tekint rád. – Istenemre – motyogja –, a lustaságnak is megvan a maga jutalma. – Vigasztalóan megpaskolja a kezedet. – De legalább békében élheted majd le az életed, te szegény halandó.[/p]
+        [p]Kezeivel int egyet, mire a különös fészek minden tartalmával együtt eltűnik előled, és egy pillanattal később már a Nyár Földjén állsz, régóta áhított úticélodnál. Hátralévő napjaidat békében eltöltheted majd itt – ám idő előtt fogsz meghalni, és soha nem válsz hőssé.[/p]
+    </text>
+    <victory />
+  </p>
+  <p id="73">
+    <text>
+        [p]Teljesen kimerülten vonszolod végig magad az erdőn át, és közben folyamatosan öklendezel. Túlságosan kimerült vagy már ahhoz, hogy érdekeljen, mi történik veled, de azért kitartóan mész előre. Végül egy kis tisztáson találod magad. Ahogy előre esel, egy sziklának ütközöl.[/p]
+    </text>
+    <next id="131"></next>
+  </p>
+  <p id="74">
+    <text>
+        [p]A növényzet tekergőzésétől erős rosszullét fog el. Gyorsan visszatérsz az ösvényre, ahol egy kicsit már jobban érzed magad. Ha gondolod, ehetsz egy keveset élelmedből, mielőtt folytatnád az utadat.[/p]
+    </text>
+    <next id="19"></next>
+  </p>
+  <p id="75">
+    <text>
+        [p]Kimerültséged lépésről lépésre nő, miközben az erdőn át vánszorogsz. Alig bírod nyitva tartani a szemedet, és szinte mindenben megbotlasz vagy felbuksz útközben. Hirtelen egy avarral borított kanyon bukkan fel előtted, te pedig egyenesen belesétálsz. Térded megbicsaklik és a földre esel. Gurulni kezdesz, míg végül egy szikla meg nem állít.[/p]
+    </text>
+    <next id="131"></next>
+  </p>
+  <p id="76">
+    <text>
+        [p]Egy kis fabódé, mely a fák közelében, egymagában áll, felkelti a figyelmedet.[/p]
+    </text>
+    <next id="26">Ha belépsz, hogy megtudd, mi van benne</next>
+    <next id="146">Ha inkább tovább nézelődnél</next>
+  </p>
+  <p id="77">
+    <text>
+        [p]Ellenfeled egy pillanatra alábbhagy támadásával, te pedig a kínálkozó alkalmat kihasználva oldalra hajítod a fütyköst és megpróbálod gyorsan előrántani kardodat – amit azonban éppen azután ejtesz el, hogy kihúzod hüvelyéből. [/p]
+    </text>
+    <loseItem id="3006" />
+    <test against="luck">
+      <success>
+        <next id="113"></next>
+      </success>
+      <failure>
+        <next id="142"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="78">
+    <text>
+        [p]A lyukon áttekintve döbbenetes látvány tárul a szemed elé – vad, viharos eget látsz, mely előtt agancsos méneken lovagló különös alakok vágtáznak át, és mintha a mennyek is belezengenének kürtjük dallamába. Gonosz lények repülnek előttük, és az egész világ meghúzza magát a lábuk előtt. Ahogy vezetőjük feléd fordul és szájához emel egy olyan kürtöt, mint a tied, riadtan hátra hőkölsz.[/p]
+    </text>
+    <next id="87"></next>
+  </p>
+  <p id="79">
+    <text>
+        [p]Hirtelen előbukkansz a fák közül és egy napsütötte tisztáson találod magad. A füves terület közepén egy sziklát látsz, melynek közepébe egy lyukat fúrtak.[/p]
+    </text>
+    <next id="98">Ha közelebbről is szemügyre akarod venni ezt a különös képződményt</next>
+    <next id="181">Ha inkább sietve áthaladsz a réten és a túloldalon ismét beveted magad a sűrűbe</next>
+  </p>
+  <p id="80">
+    <text>
+        [p]A fa megremeg, a következő pillanatban pedig már egy magas, zöld bőrű és kedves tekintetű nő áll a helyén. Rád mosolyog és arcon csókol (visszanyersz 2 [span class="ffAttribute"]SZERENCSE[/span] pontot). Megköszönöd neki a segítséget és tovább indulsz.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <next id="99"></next>
+  </p>
+  <p id="81">
+    <text>
+        [p]A fejek morognak és vicsorognak, és kegyetlen tűz lobban az eb szemében. Fogai hangosan csattognak és ropognak, ahogy rád veti magát és mélyen beléd mártja a fogait. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="82">
+    <text>
+        [p]A vén banya rosszalló tekintettel néz téged és matatni kezd a tűzből kilógó fém rudakkal. Egyértelmű, hogy nem akar foglalkozni veled.[/p]
+    </text>
+    <next id="33">Ha körbe akarsz nézni a kis kunyhóban</next>
+    <next id="64">Ha inkább távoznál</next>
+  </p>
+  <p id="83">
+    <text>
+        [p]A pengéjénél fogva sikerül elkapnod fegyvered, és így, hogy markolata egy keresztet formáz, a lény irányába emeled. A kis Mazzamarieddu rémülten felsikít, a következő pillanatban pedig holtan esik össze. A harc véget ér, mielőtt még igazán elkezdődött volna. Ellenfeledből csupán egy kis, [span class="takeItem" data-id="3015" data-amount="1"]vörös csuklya[/span] és [span class="takeItem" data-id="gold" data-amount="20"]20 Aranytallér[/span] marad vissza. Ezek bármelyikét elteheted, ha szeretnéd.[/p]
+    </text>
+    <next id="74"></next>
+  </p>
+  <p id="84">
+    <text>
+        [p]Megvizsgálod a különös fészket, de csak a szokásos háztartási eszközöket találod. Az egyik sarokban viszont egy ládára lelsz.[/p]
+    </text>
+    <next id="30">Ha meg akarod próbálni kinyitni</next>
+    <next id="75">Ha nem, és inkább távoznál innét</next>
+  </p>
+  <p id="85">
+    <text>
+        [p]Előhúzod a kardodat, mire a nyolc Barnus előkapja rövid tőrét. Apró lények ugyan, de vad harcosok és elég nagy túlerőben vannak – amint egyikük életét veszti, máris egy következő társa veszi át a helyét. Egyesével küzdj meg velük.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="4" />
+      <enemy id="5" />
+      <enemy id="6" />
+      <enemy id="7" />
+      <enemy id="8" />
+      <enemy id="9" />
+      <enemy id="10" />
+      <enemy id="11" />
+    </fight>
+    <next id="143"></next>
+  </p>
+  <p id="86">
+    <text>
+        [p]Odabenn meleg van, a levegő dohos, és félhomály uralkodik a helyiségben, ám úgy érzed, az üvöltő szél mintha már kilométerekkel odébb fújna, és máris kezded magad sokkal jobban érezni. A kunyhó nem üres. Egy nőt látsz idebenn, aki éppen dolgozik – sző, font, sepreget, főz, porol és varr, mindezt pedig képes valahogyan egyszerre végezni! Egy Moha Hajadonnal találkoztál össze, akit tetőtől talpig szürkés-zöldes moha és zuzmó borít. Mikor végül észrevesz téged, abbahagy mindent és üdvözlésképp előre nyújtja karját. Ahogy elmosolyodik, hegyes fogak villannak elő szájából.[/p]
+    </text>
+    <next id="55" pos="1">Ha barátságosan közelebb lépsz hozzá</next>
+    <itemCheck type="item" id="3003">
+      <haveEquipped>
+        <next id="88" pos="2">Ha rátámadsz</next>
+      </haveEquipped>
+      <have>
+        <next id="130" pos="2">Ha rátámadsz</next>
+      </have>
+      <dontHave>
+        <next id="130" pos="2">Ha rátámadsz</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="87">
+    <text>
+        [p]A riasztó látomásoktól lemerevedve eltelik pár pillanat, amíg visszazökkensz a valóságba.[/p]
+    </text>
+    <next id="39"></next>
+  </p>
+  <p id="88">
+    <text>
+        [p]A bő köpeny, amit viselsz, körbeölel téged és hirtelen érzed, amint a levegőbe emelkedsz! Egyre feljebb és feljebb kerülsz, úgy haladsz át mindenféle akadályon, mintha azok ott sem lennének. Letekintve látod az alattad elterülő erdőt, és a messzeségben a Nyár ragyogó birodalmát, melyet már soha nem fogsz elérni. Egyre magasabbra emelkedsz, végül az utolsó levegőfoszlányod is elfogy, tested pedig élettelenül lebeg tovább a világ felett…[/p]
+    </text>
+    <death />
+  </p>
+  <p id="89">
+    <text>
+        [p]Elhagyod a tornyot és folytatod utadat az erdőn át, ami mintha egy örökkévalóságig húzódna előtted. Hamarosan egy nagy, gömb alakú, fészekszerű építményhez érkezel, melyet kis ágakból és mohából készítettek. Igaz Látásod megsúgja, hogy ez egy [em]jó[/em] hely, így belépsz.[/p]
+    </text>
+    <next id="2"></next>
+  </p>
+  <p id="90">
+    <text>
+        [p]Kiválasztod az egyik kunyhót és keresel benne egy üres sarkot, ahol kényelmesen leheveredhetsz és kivárhatod, hogy elvonuljon a vihar. Odakinn süvít a szél, az éjszakád azonban békésen telik. Reggel kipihenten ébredsz. Nyersz 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
+    </text>
+    <add amount="4" to="stamina" />
+    <next id="179"></next>
+  </p>
+  <p id="91">
+    <text>
+        [p]A lények egy kis kunyhóhoz vezetnek, ahol fényűző lakomát rendeznek a számodra! A nap hátralévő részét – és az éjszaka nagyobbik felét – a szórakoztatásoddal töltik, mintha csak egy herceg lennél. Odakinn továbbra is dühöng a vihar, idebenn azonban minden meleg és barátságos. Visszanyersz 1 [span class="ffAttribute"]SZERENCSE[/span] és 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
+    </text>
+    <add amount="3" to="stamina" />
+    <add amount="1" to="luck" />
+    <next id="182"></next>
+  </p>
+  <p id="92">
+    <text>
+        [p]Egy ősi bodzafa áll őrt az út mellett. Olyan bütykös és megcsavarodott, hogy szinte már emberinek látszik.[/p]
+    </text>
+    <next id="186">Ha közelebb lépnél hozzá</next>
+    <next id="99">Ha inkább elhagynád a falut</next>
+  </p>
+  <p id="93">
+    <text>
+        [p]A bódéval szemben egy másik kis tőzegházikót veszel észre, melyet csinos kis kert vesz körül. Az itt lakó káposztát termeszt – ám igen furcsa káposztát, melyek fénylenek és ragyognak! Átmész az úton és közelebbről is megnézed őket magadnak.[/p]
+    </text>
+    <next id="198"></next>
+  </p>
+  <p id="94">
+    <text>
+        [p]Meg kell küzdened a rettegett Rőtsipkással. A nyers emberi erő nem sokat számít ellene, és egyébként is elég rossz állapotban vagy már…[/p]
+    </text>
+    <fight type="single">
+      <enemy id="23" />
+    </fight>
+    <next id="57"></next>
+  </p>
+  <p id="95">
+    <text>
+        [p]A Barnusok elvonulnak melletted és eltűnnek mögötted az erdőben, mintha ott sem lennél! Döbbenten figyeled, amint elsétálnak melletted.[/p]
+    </text>
+    <next id="169">Ha követni kezded őket</next>
+    <next id="37">Ha tovább mész az úton – kikerülve persze a hálót</next>
+  </p>
+  <p id="96">
+    <text>
+        [p]A polcokon a legkülönfélébb üvegek és korsók sorakoznak, és igen különös címkéket viselnek: [em]Elfek Lövéseinek Eltérítésére[/em], vagy [em]Nyúl Szívéből Oroszlánénak Növesztésére[/em]. Ezek egyike különösen érdekesnek tűnik számodra, mely csupán a következő feliratot tartalmazza: [span class="takeItem" data-id="3011" data-amount="1"][em]Minden Bajnak Meggyógyításá[/em]ra[/span] – ezt magadhoz is veszed, hisz a te mesterséged során egy ilyen dolog életmentőnek bizonyulhat.[/p]
+    </text>
+    <next id="162" pos="1">Ha most megvizsgálnád a szekrényeket is</next>
+    <itemCheck type="section" id="141">
+      <dontHave>
+        <next id="141" pos="2">Ha a kampóról lelógó tárgyak érdekelnének</next>
+      </dontHave>
+    </itemCheck>
+    <next id="64" pos="3">Ha inkább távoznál a kis kunyhóból</next>
+  </p>
+  <p id="97">
+    <text>
+        [p]Gether elveszi tőled a koronát és remegő kezekkel a fejére helyezi. Abban a pillanatban éles ragyogás tölti be a barlangot, mely életre kelti a csillogó sztalagmitokat és sztalaktitokat.Csodálatos zene kezd el áramlani sziklaoldalukból. A férfi feláll és kiegyenesedik – megfiatalodott![/p]
+        [p]– Köszönöm! Nagyon köszönöm! – kiáltja. – Visszaadtad királyságomat! Kérj, amit szeretnél jutalmul, és megkapod tőlem![/p]
+    </text>
+    <next id="200"></next>
+  </p>
+  <p id="98">
+    <text>
+        [p]A kő igen ősi lehet, és abban is biztos vagy, hogy a lyukat, mely áthatol rajta, nem ember kéz okozta. Ez ugyanis egy Önfúró Szikla, melyen áttekintve mágikus dolgok válnak láthatóvá. A mélyedéshez helyezed a szemedet.[/p]
+    </text>
+    <next id="13"></next>
+  </p>
+  <p id="99">
+    <text>
+        [p]Elhagyod a falut és folytatod utadat az erdőn át, közben pedig azon töprengsz, milyen békésnek tűnik körülötted minden. A nap fényesen ragyog az égen, a levegőt pedig betölti az újonnan nőtt növények körül zümmögő rovarok hangja. Egy napsütéses völgybe érkezel, melynek közepén egy nagy szikla hever. Furcsa, de egy lyukat is látsz rajta.[/p]
+    </text>
+    <next id="39">Ha megállás nélkül át akarsz kelni a kis réten</next>
+    <next id="163">Ha előbb megvizsgálnád ezt a különös természeti képződményt</next>
+  </p>
+  <p id="100">
+    <text>
+        [p]A kutya megvetően pillant rád, hisz értéktelen számára az arany.[/p]
+    </text>
+    <add amount="-1" to="gold" />
+    <next id="81"></next>
+  </p>
+  <p id="101">
+    <text>
+        [p]Ahogy átbuksz a küszöbön, gonosz kacaj üti meg a füledet. Rettegve emeled föl a tekinteted. A Rőtsipkás áll előtted. A szemei vörösek, fogai hosszúak és hegyesek, keze véres, zsíros haja pedig egészen vasveretes bakancsáig ér.[/p]
+        [p]Egyik kezében dárdát tart, a fején pedig kopott, piros színű sapkát látsz. Elcsüggedsz a látványtól, hisz tudod, hogy ennek a Barnusnak a legnagyobb örömet az okozza, ha fejfedőjét áldozata friss vérébe márthatja – és könnyen megeshetsz, hogy te leszel a következő![/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="161"></next>
+      </success>
+      <failure>
+        <next id="94"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="102">
+    <text>
+        [p]Egy gyönyörű, [span class="takeItem" data-id="3012" data-amount="1"]ékkőberakásos medál[/span] lóg a falon, ebből árad a különös ragyogás. Képtelen vagy türtőztetni magad. Leemeled, a nyakadba akasztod és a zekéd alá rejted. Ezután távozol innét.[/p]
+    </text>
+    <next id="93"></next>
+  </p>
+  <p id="103">
+    <text>
+        [p]A Fachan diadalittasan felüvölt. Azzal, hogy elhagytad a csapást, feladtad egy nagy előnyödet vele szemben. Vesztesz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. Harcolni kezdtek.[/p]
+    </text>
+    <add amount="-1" to="luck" />
+    <fight type="single">
+      <enemy id="1" />
+    </fight>
+    <next id="189"></next>
+  </p>
+  <p id="104">
+    <text>
+        [p]A szellő erősödni kezd, meleg szelet hoz a távoli Nyár földjéről, és körülötted a virágok szirmai nyiladozni kezdenek.[/p]
+    </text>
+    <next id="173"></next>
+  </p>
+  <p id="105">
+    <text>
+        [p]A föld remegni kezd, melynek középpontja épp ott van, ahol most állsz. A talaj szörnyű robajjal megnyílik a lábad alatt, te pedig egy feneketlen verembe zuhansz.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="106">
+    <text>
+        [p]Ez nem Vámpírok tanyája! Az ebet nem tántorítja el a fokhagyma. Nincs menekvés számodra – közeleg a vég…[/p]
+    </text>
+    <loseItem id="2004" />
+    <next id="81"></next>
+  </p>
+  <p id="107">
+    <text>
+        [p]Fegyvered pengéje kettétörik a láda pántján! Hangosan káromkodni kezdesz. Amíg nem találsz másik fegyvert, addig az elkövetkező harcok során 2-vel le kell majd csökkentened [span class="ffAttribute"]ÜGYESSÉGEDET[/span].[/p]
+    </text>
+    <loseItem id="1001" />
+    <itemCheck type="item" id="3006">
+      <have>
+        <next id="111" pos="1">Ha meg próbálkoznál a husánggal</next>
+        <next id="45" pos="2">Ha inkább itt hagynád a ládát</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Úgy döntesz, itt hagyod a ládát.[/p]
+        </text>
+        <next id="45"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="108">
+    <text>
+        [p]Meleg van odabenn, de sötét is. Egy nagyon öreg, és undorítóan mocskos nőt látsz a tűz mellett üldögélni.[/p]
+        [p]– Telepedj ide mellém – krákogja, miközben egy izzó piszkafával maga mellé bök.[/p]
+    </text>
+    <next id="171">Ha megteszed, amire kér</next>
+    <next id="52">Ha inkább kicsit távolabb foglalsz helyet a nőtől</next>
+  </p>
+  <p id="109">
+    <text>
+        [p]A barna ruhát viselő, kócos hajú és nagy szakállú nyolc apró ember igen fenyegetően néz ki. Hosszú kések lógnak az övükre csatolva, és néhányuk tekintetéből arra következtetsz, nem egy háborúban vettek már részt. Az előtted álló lények Barnusok, és szinte egy emberként fordulnak egyenesen a rejtekhelyed irányába![/p]
+    </text>
+    <next id="165">Ha maradsz, ahol vagy</next>
+    <next id="9">Ha bátran feléjük lépsz</next>
+  </p>
+  <p id="110">
+    <text>
+        [p]Halálosan fáradt vagy, és mikor a fák hirtelen eltűnnek, képtelen vagy megakadályozni, hogy le ne zuhanj az előtted felbukkanó, avarral borított szakadékba. Az esést végül egy szikladarab állítja meg.[/p]
+    </text>
+    <next id="131"></next>
+  </p>
+  <p id="111">
+    <text>
+        [p]A husáng, melyet átitat a gonoszság, tökéletes szerszám erre a feladatra – valaki más tulajdonának ellopása ugyanis kifejezetten gonosz cselekedet. A ládában találsz egy [span class="takeItem" data-id="3005" data-amount="1"]gömböt[/span], ami valamilyen átlátszó kristályból készült, illetve egy [span class="takeItem" data-id="3004" data-amount="1"]pamutgombolyagot[/span]. Ezek bármelyikét magaddal viheted.[/p]
+    </text>
+    <next id="45"></next>
+  </p>
+  <p id="112">
+    <text>
+        [p]Lépésről lépésre válsz egyre kimerültebbé, ahogy az erdőben haladsz. Alig bírod nyitva tartani a szemeidet, és szinte mindenben megbotlasz. Hirtelen egy avarral borított kanyon bukkan fel előtted, te pedig egyenesen belesétálsz. A térded kibicsaklik, gurulni kezdesz a talajon és végül egy nagyobb sziklánál állapodsz meg.[/p]
+    </text>
+    <next id="131"></next>
+  </p>
+  <p id="113">
+    <text>
+        [p]A pengéjénél fogva sikerül elkapnod fegyvered, és így, hogy markolata egy keresztet formáz, a lény irányába emeled. A kis Mazzamarieddu rémülten felsikít, a következő pillanatban pedig holtan esik össze. A harc véget ér, mielőtt még igazán elkezdődött volna. Ellenfeledből csupán egy kis, [span class="takeItem" data-id="3015" data-amount="1"]vörös csuklya[/span] és [span class="takeItem" data-id="gold" data-amount="20"]20 Aranytallér[/span] marad vissza. Ezek bármelyikét elteheted, ha szeretnéd.[/p]
+    </text>
+    <next id="74"></next>
+  </p>
+  <p id="114">
+    <text>
+        [p]A világ összemosódik és forogni kezd körülötted, téged pedig a hányinger kerülget. Mielőbb búvóhelyet kell találnod.[/p]
+    </text>
+    <next id="11"></next>
+  </p>
+  <p id="115">
+    <text>
+        [p]Egy elágazáshoz érkezel. Minden csendes körülötted, talán túlságosan is. Az egyetlen hang, amit hallasz, a lágy szellő suhogása a növények ágai közt, ami épp most kezdett el fújni. Melyik irányba indulsz?[/p]
+    </text>
+    <next id="31">Ha balra</next>
+    <next id="34">Ha jobbra</next>
+  </p>
+  <p id="116">
+    <text>
+        [p]Ahogy a Gwyllionok eltűnnek, boldog ének árad ki a sziklából. Riadtan megperdülsz, majd csodálkozva tekintesz a résből kiáramló, aranyló fényre. A zene mindeközben megtölti a levegőt. Ezután a kő is eltűnik, csillogva olvad bele a levegőbe. Végül magadra maradsz a csendes napfényben.[/p]
+    </text>
+    <next id="60"></next>
+  </p>
+  <p id="117">
+    <text>
+        [p]Életben vagy, de a harc eléggé legyengített. Kábán bekapsz pár falatot Élelmiszerkészletedből, hogy visszanyerd az erődet, majd odébb mászol.[/p]
+    </text>
+    <gatherItem id="4001" />
+    <next id="19"></next>
+  </p>
+  <p id="118">
+    <text>
+        [p]– Istenemre, ennél többet vártam tőled – motyogja a Moha Hajadon. Ezután néhány érthetetlen szót morog az orra elé és minden elmosódik a szemed előtt. Megdörzsölöd a szemeidet – és máris a Nyár ragyogó földjén találod magad, egy domboldalban. Biztonságban visszatértél otthonodba – bár hős az nem lett belőled…[/p]
+    </text>
+    <victory />
+  </p>
+  <p id="119">
+    <text>
+        [p]Megfordulsz – és döbbenten tapasztalod, hogy ismét az erdőbe [em]befelé[/em] nézel. Újra és újra megpróbálsz hátrapillantani, de nem sikerül. Bármerre is tekintesz, az út a rengetegbe vezet. Végül félve és zavarodottan hátrálni kezdesz – és azonnal beleütközöl egy láthatatlan erőbe, mely szorítani kezd. Úgy érzed, mintha maga a levegő szilárdult volna meg körülötted. Fuldokolni kezdesz, a fogás azonban egyre csak erősödik. Végül elájulsz.[/p]
+    </text>
+    <next id="123"></next>
+  </p>
+  <p id="120">
+    <text>
+        [p]A pamutgombolyag fényesen ragyogni kezd a kezedben. Épp ahogy a Moha Hajadon is ígérte, előrefelé vezet téged. Kanyargó és visszhangzó, véget érni nem akaró folyosókon át vándorolsz, míg végül egy ragyogó színekben fürdő álló- és lógócseppkövekkel díszített, hatalmas terembe nem érsz. Ennek közepén egy ráncos, fehér hajú öregembert látsz, aki egy korhadó székben ül. Ő Gether, a Titoktartó.[/p]
+    </text>
+    <next id="172"></next>
+  </p>
+  <p id="121">
+    <text>
+        [p]Ebben a győzelemben semmi dicsőség nem volt. Összeszoruló szívvel tekintesz végig a vérontás színhelyén, és összeszorul a szíved, mert már tudod, hogy ha udvariasabb lettél volna az öregasszonnyal, és kevésbé lettél volna kapzsi, mindez nem történt volna meg. Most már azonban nincs mit tenni, akár meg is tarthatod a rubint, és ha akarod, az egyik Barnus tőrét is magadhoz veheted.[/p]
+    </text>
+    <next id="104"></next>
+  </p>
+  <p id="122">
+    <text>
+        [p]Amilyen halkan csak tudsz, odalopakodsz a Mazzamarieddu mögé, remélve, hogy az üvöltő szél elfedi lépteid zaját. [alt]Mivel támadnál rá e különös bestiára?[/alt][/p]
+    </text>
+    <itemCheck type="item" id="3006">
+      <have>
+        <next id="56" pos="1">Ha a kardoddal</next>
+        <itemCheck type="item" id="3003">
+          <haveEquipped>
+            <next id="88">Ha a husánggal</next>
+          </haveEquipped>
+          <have>
+            <next id="132" pos="2">Ha a husánggal</next>
+          </have>
+          <dontHave>
+            <next id="132" pos="2">Ha a husánggal</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="56" singleChoiceText="Kardodat előrántva rátámadsz a bestiára."></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="123">
+    <text>
+        [p]Kábán és zavartan térsz magadhoz. Testedet kék és zöld foltok borítják. Vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Óvatosan lábra kecmeregsz, eltökélten, hogy nem próbálsz meg ismét visszafordulni. Lemondóan indulsz el a csapáson. Szellő kerekedik valahol a távolban, mely a Nyár földjének meleg levegőjét hozza feléd, körülötted pedig a virágok elkezdenek kinyílni. Eljött a Tavasz a Változások Földjére.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="137"></next>
+  </p>
+  <p id="124">
+    <text>
+        [p]Még soha életedben nem dolgoztál ilyen keményen! Portörlés, fényezés, súrolás, stoppolás… ilyen, és ehhez hasonló feladatokat kell csinálnod. És mégis, minél tovább tart a munka, annál jobban érzed magad! Mire a vihar elvonul, teljesen felfrissülsz. Reggeli közben a Moha Hajadon megtöri a csendet, beszélni kezd.[/p]
+        [p]– Gyermekem – kezdi –, olyan embernek látszol, aki hatalmas dolgokat lenne képes véghez vinni, ám nem tettél meg mindent, amit tehettél volna ezen a helyen. Mihez szeretnél most kezdeni? Ha akarod, haza tudlak küldeni, vagy visszajuttathatlak az időben korábbra, hogy eddigi döntéseidet felülvizsgálhasd. Ezen kívül némi tanáccsal is szolgálhatok a további utadra. Nos, mit szeretnél, hogyan segítsek rajtad?[/p]
+    </text>
+    <next id="72">Ha azt akarod, hogy hazaküldjön</next>
+    <next id="65">Ha vissza szeretnél menni az időben</next>
+    <next id="135">Ha a tanácsát kérnéd</next>
+  </p>
+  <p id="125">
+    <text>
+        [p]Ahogy átbuksz a küszöbön, gonosz kacaj üti meg a füledet. Rettegve emeled föl a tekinteted. A Rőtsipkás áll előtted. A szemei vörösek, fogai hosszúak és hegyesek, keze véres, zsíros haja pedig egészen vasveretes bakancsáig ér.[/p]
+        [p]Kezében dárdát tart, a fején pedig kopott, piros színű sapkát látsz. Elcsüggedsz a látványtól, hisz tudod, hogy ennek a Barnusnak a legnagyobb örömet az okozza, ha fejfedőjét áldozata friss vérébe márthatja – és könnyen megeshetsz, hogy te leszel a következő! Meg kell küzdened vele.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="20" />
+    </fight>
+    <next id="36"></next>
+  </p>
+  <p id="126">
+    <text>
+        [p]Eskütételedet követően a Moha Hajadon átnyújt neked egy tiszta [span class="takeItem" data-id="3005" data-amount="1"]kristálygömböt[/span] és egy [span class="takeItem" data-id="3004" data-amount="1"]pamutgombolyagot[/span].[/p]
+        [p]– A gömb a kulcs – mondja –, a fonál pedig a vezetőd lesz, ha bölcsen használod fel. A nevem Lina. Jól jegyezd meg a betűit, mert segítségedre lesznek majd. A titok az, hogy Gethert kell megkeresned, a titok őrzőjét. Indulj hát, gyermekem, áldásom kísérjen utadon.[/p]
+        [p]Gondolataidba merülve térsz vissza az erdőben futó ösvényhez. Nem is igazán figyelsz rá, merre tartasz. Egy idő után végül elérkezel egy levelekkel borított kanyonba, melynek közepén egy kőoszlop áll.[/p]
+    </text>
+    <next id="153"></next>
+  </p>
+  <p id="127">
+    <text>
+        [p]Az út az erdőn át mintha soha nem akarna véget érni, és egyre jobban elkedvetlenedsz az egésztől. Egy kicsit megállsz pihenni, majd ismét útnak indulsz.[/p]
+    </text>
+    <next id="79"></next>
+  </p>
+  <p id="128">
+    <text>
+        [p]A Barnusok nem próbálnak megállítani téged. Ahogy az erdőben menetelsz, lágy szellő ébred, ami kellemes, meleg levegőt hoz a Nyár földjének irányából. Körülötted kinyílnak a rügyek és virágba borul a rengeteg. Eljött a Tavasz a Változások Földjére.[/p]
+    </text>
+    <next id="137"></next>
+  </p>
+  <p id="129">
+    <text>
+        [p]Odabenn meleg van, a levegő is elég párás. Egy visszataszítóan mocskos öregasszonyt látsz odabenn a tűzhely mellett. Rád néz, majd feléd int vörösen izzó piszkavasával. – Ülj ide mellém – krákogja.[/p]
+    </text>
+    <next id="171">Ha megteszed, amire kér</next>
+    <next id="82">Ha inkább tartod a távolságot és kicsit messzebb foglalsz helyet</next>
+  </p>
+  <p id="130">
+    <text>
+        [p]Küzdj meg a nővel.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="3" />
+    </fight>
+    <next id="58"></next>
+  </p>
+  <p id="131">
+    <text>
+        [p]Nemsokára visszanyered az eszméletedet és nagy nehezen talpra kecmeregsz. A lábad még mindig remeg, de a vihar már elvonult.[/p]
+    </text>
+    <next id="153"></next>
+  </p>
+  <p id="132">
+    <text>
+        [p]Bár a fütykös igen erőteljes fegyver, valójában átjárja a gonosz. Ahogy ütsz, elcsavarodik a kezedben és megóvja ellenfeledet. Amíg ezt használod, 1-el csökkentened kell [span class="ffAttribute"]ÜGYESSÉGEDET[/span].[/p]
+    </text>
+    <changeItem attribute="skill" id="3006" set="-1" />
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="88">Ha magadra akarod kanyarintani a köpenyedet</next>
+        <next id="132a">Ha nem</next>
+      </have>
+      <dontHave>
+        <fight type="single" forceWeapon="3006">
+          <enemy id="21" />
+          <winRound enemy="21" totalCount="4">
+            <interrupt />
+          </winRound>
+        </fight>
+        <next id="77"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="132a" display="132">
+    <text>
+        [p]Bár a fütykös igen erőteljes fegyver, valójában átjárja a gonosz. Ahogy ütsz, elcsavarodik a kezedben és megóvja ellenfeledet. Amíg ezt használod, 1-el csökkentened kell [span class="ffAttribute"]ÜGYESSÉGEDET[/span].[/p]
+    </text>
+    <fight type="single" forceWeapon="3006">
+      <enemy id="21" />
+      <winRound enemy="21" totalCount="4">
+        <interrupt />
+      </winRound>
+    </fight>
+    <next id="77"></next>
+  </p>
+  <p id="133">
+    <text>
+        [p]Mintha egyéb szerencsétlenségeid nem lennének elegek, rosszulléted tovább erősödik és öklendezni kezdesz. Vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] és 1 [span class="ffAttribute"]ÜGYESSÉG[/span] pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="skill" />
+    <next id="69"></next>
+  </p>
+  <p id="134">
+    <text>
+        [p]Ez az út szinte teljesen mentes az avartól, és sokkal kevesebb zajt csapsz. Egyenesen bevezet az erdőbe, és a fák is elkezdenek újra közelebb kúszni az ösvényhez. Hamarosan itt is megjelennek a levelek és a faágak, melyek sercegni és recsegni kezdenek a talpad alatt.[/p]
+    </text>
+    <next id="119">Ha visszafordulsz</next>
+    <next id="154">Ha inkább tovább mennél előre</next>
+  </p>
+  <p id="135">
+    <text>
+        [p]A Moha Hajadon két búcsúajándékot ad át számodra – egy tiszta [span class="takeItem" data-id="3005" data-amount="1"]kristályból készült gömböt[/span] és egy [span class="takeItem" data-id="3004" data-amount="1"]pamutgombolyagot[/span]. Szomorúan sóhajt fel, mintha sajnálná, hogy távozol.[/p]
+        [p]– Nem tehetek többet érted, minthogy azt tanácsolom, keresd fel az őrsziklát. Most pedig menj, gyermekem. – Azzal a nő kikísér a fészekből.[/p]
+    </text>
+    <next id="153"></next>
+  </p>
+  <p id="136">
+    <text>
+        [p]– Megölted a Zöld Asszonyunkat! – mondja az egyik.[/p]
+        [p]– Kitépted Őrzőnk szívét – szól a második. – Ezért meg kell halnod.[/p]
+        [p]A nyolc Barnus felemeli a fegyverét. Egyesével küzdj meg velük![/p]
+    </text>
+    <fight type="single">
+      <enemy id="12" />
+      <enemy id="13" />
+      <enemy id="14" />
+      <enemy id="15" />
+      <enemy id="16" />
+      <enemy id="17" />
+      <enemy id="18" />
+      <enemy id="19" />
+    </fight>
+    <next id="121"></next>
+  </p>
+  <p id="137">
+    <text>
+        [p]Miközben mész, a szél tovább erősödik és minden irányból fújni kezd – megkezdődik a Változás! Rügyek nyílnak ki virággá, majd zsugorodnak újra össze, lengedeznek a fák, és a himbálózó mozgástól egyszerre elfog a tengeri betegség. Elveszted az irányérzékedet is, térdre rogysz, köhögni és öklendezni kezdesz.[/p]
+    </text>
+    <next id="158">Ha megpróbálsz tovább haladni</next>
+    <next id="70">Ha inkább maradsz, ahol vagy és eltakart arccal próbálod átvészelni a közelgő vihart</next>
+  </p>
+  <p id="138">
+    <text>
+        [p]A nő ölelése minden betegségedet és sebedet meggyógyítja – állítsd vissza képességeidet a [em]Kezdeti[/em] értékükre. Alaposan végigmér, a végére már kezded elég kényelmetlenül érezni magadat tekintete alatt, és zavartan elfordulsz.[/p]
+        [p]– Gyermekem – szólít meg végül –, látom, hogy még nem tettél meg mindent e helyen, amit kellett volna. Mit kérnél tőlem? Hazajuttathatlak, vagy visszaforgathatom az időt, hogy megváltoztathasd döntéseidet. De ha kívánod, tovább is küldhetlek utadon azzal a kis segítséggel, amit adni tudok.[/p]
+    </text>
+    <add amount="24" to="stamina" />
+    <add amount="12" to="skill" />
+    <add amount="12" to="luck" />
+    <next id="118">Ha azt kéred, hogy juttasson haza</next>
+    <next id="65">Ha azt, hogy forgassa vissza az időt</next>
+    <next id="135">Ha azt, hogy segítsen</next>
+  </p>
+  <p id="139">
+    <text>
+        [p]Ágak recsegnek a talpad alatt, ahogy elhagyod a sűrű erdőt és visszatérsz a völgybe. Hatalmas megkönnyebbülés, hogy kijutottál végre az alacsony fák közül. A válladat melegítő napfény és a fejed felett csiripelő pacsirták kíséretében lépdelsz végig a nyílt terepen. Végül megpillantasz egy nyílást a fák között, és úgy döntesz, arra fordulsz.[/p]
+    </text>
+    <next id="134"></next>
+  </p>
+  <p id="140">
+    <text>
+        [p]Mikor felébredsz, gyengének érzed magad. Minden tagod csak úgy sajog, végtagjaid is teljesen elzsibbadtak és nem is igazán akarnak működni. Kezeidre letekintve pedig elszörnyedve veszed észre, hogy csontosak, torzak lettek – egy öreg kezei! Odaszaladsz egy tükörhöz, ami a falon lóg – és tényleg! Egyetlen éjszaka alatt megvénültél! Vesztesz 3 [span class="ffAttribute"]ÜGYESSÉG[/span] és 6 [span class="ffAttribute"]ÉLETERŐ[/span] pontot (a [em]Kezdeti[/em] értékeket is le kell ennyivel csökkentened!).[/p]
+    </text>
+    <add amount="-6" to="stamina" />
+    <add amount="-3" to="skill" />
+    <add amount="-3" to="initialSkill" />
+    <add amount="-6" to="initialStamina" />
+    <next id="67"></next>
+  </p>
+  <p id="141">
+    <text>
+        [p]A tárgyak valójában spárgára fűzött [span class="takeItem" data-id="2004" data-amount="1"]fokhagymák[/span] és [span class="takeItem" data-id="2005" data-amount="1"]vöröshagymák[/span]. Ha akarod, ezek közül eltehetsz valamennyit – összesen 2 étkezésre elegendő mennyiséget.[/p]
+    </text>
+    <itemCheck type="section" id="96">
+      <dontHave>
+        <next id="96" pos="1">Ha most megnéznéd a polcokat is</next>
+      </dontHave>
+    </itemCheck>
+    <next id="162" pos="2">Ha a szekrényekre vetnél egy pillantást</next>
+    <next id="64" pos="3">Ha elhagynád a kunyhót</next>
+  </p>
+  <p id="142">
+    <text>
+        [p]Megragadod kardod markolatát és felkészülsz rá, hogy megküzdj a Mazzamariedduval. Mivel azonban ellenfeled jórészt levegőből áll, még a legélesebb penge sem tesz benne nagy kárt.[/p]
+    </text>
+    <changeEnemy attribute="damageAbsorption" id="21" set="1" />
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="88">Ha magadra akarod most venni a köpenyed</next>
+        <next id="142a">Ha nem</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Folytatnod kell a harcot a kis bestiával, azonban ne feledd, hogy minden sikeres ütésed csak 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontos sebet okoz neki.[/p]
+        </text>
+        <fight type="single">
+          <enemy id="12" />
+        </fight>
+        <next id="117"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="142a" display="142">
+    <text>
+        [p]Megragadod kardod markolatát és felkészülsz rá, hogy megküzdj a Mazzamariedduval. Mivel azonban ellenfeled jórészt levegőből áll, még a legélesebb penge sem tesz benne nagy kárt.[/p]
+        [p]Folytatnod kell a harcot a kis bestiával, azonban ne feledd, hogy minden sikeres ütésed csak 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontos sebet okoz neki.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="12" />
+    </fight>
+    <next id="117"></next>
+  </p>
+  <p id="143">
+    <text>
+        [p]Kegyetlenül kicsavart végtagú testek hevernek szanaszét az erdő talaján. Elszomorít a tudat, hogy oly sokukkal kellett végezned, és eltöprengsz azon, vajon fenyegetést jelentettek-e egyáltalán. Utólag visszatekintve már nem vagy ebben olyan biztos. (Vesztesz 2 [span class="ffAttribute"]SZERENCSE[/span] pontot.) Megrázod a fejed és folytatod az utad. Azonban mielőtt ismét útra kelnél, ha akarod, magadhoz veheted az egyik Barnus [span class="takeItem" data-id="3008" data-amount="1"]tőrét[/span].[/p]
+    </text>
+    <add amount="-2" to="luck" />
+    <next id="127"></next>
+  </p>
+  <p id="144">
+    <text>
+        [p]Már majdnem teljesen kimerülsz, mikor végre megpillantasz egy hatalmas, gömb alakú, leginkább fészekre hasonlító építményt, melyet ágakból és mohából építettek.[/p]
+    </text>
+    <next id="86">Ha megállsz és közelebbről is megnézed</next>
+    <next id="110">Ha inkább elmész mellette</next>
+  </p>
+  <p id="145">
+    <text>
+        [p]Megbotlasz, és az utolsó dolog, amit látsz, az ellenfeled kegyetlen dárdája, amivel feléd bök…[/p]
+    </text>
+    <death />
+  </p>
+  <p id="146">
+    <text>
+        [p]Egy ősöreg, rücskös és tekergőző bodzafa áll a kis falun átfutó utca végében, mely már-már emberi vonásokkal is rendelkezik. Ez igen érdekesnek ígérkezik, úgyhogy közelebb lépsz hozzá.[/p]
+    </text>
+    <next id="23"></next>
+  </p>
+  <p id="147">
+    <text>
+        [p]Istenekre! Ez az egyetlen eset, amikor a kürt nem lehet segítségedre, mert a néma Gwyllionok elszívják a hangját! Fagyos pászmák nyúlnak ki érted és elsötétül előtted a világ…[/p]
+    </text>
+    <death />
+  </p>
+  <p id="148">
+    <text>
+        [p]Ahogy tovább tántorogsz előre, a kavargó világ végül legyőzi szervezetedet és elhányod magad. Vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="73"></next>
+  </p>
+  <p id="149">
+    <text>
+        [p]Lihegve lépsz egyet… Az ösvény másmilyennek tűnik, és azon töprengsz, vajon milyen mélyen járhatsz az erdőben. Ahogy körbe nézel, kénytelen vagy megállapítani, hogy eltévedtél. Vesztesz 1 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
+    </text>
+    <add amount="-1" to="luck" />
+    <next id="115"></next>
+  </p>
+  <p id="150">
+    <text>
+        [p]Hirtelen feltűnik, hogy a szél üvöltő hangja hangosabbá vált. Örvénylő szélcsomót pillantasz meg magad előtt, ami emberhez hasonló alakot öltött. Nem törődve a veszéllyel, amit a furcsa valami jelenthet, elkezdesz felé botladozni.[/p]
+    </text>
+    <next id="18"></next>
+  </p>
+  <p id="151">
+    <text>
+        [p]– Lépj be – hangzik fel bentről egy vén, rekedt hang. Engedelmeskedsz.[/p]
+    </text>
+    <next id="108"></next>
+  </p>
+  <p id="152">
+    <text>
+        [p]Ellenfeled minden előjel nélkül hatalmas csapást visz be neked, mellyel kiveri a fegyvert a kezedből. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="83"></next>
+      </success>
+      <failure>
+        <next id="190"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="153">
+    <text>
+        [p]Egy hatalmas sziklaoszlop előtt állsz. Ahogy alaposabban megnézed, látod, hogy egyik oldalára nagy gonddal négy égi betűt véstek. Ujjadat végighúzva rajtuk el kell döntened, hogy melyiket próbálod megnyomni.[/p]
+    </text>
+    <next id="105">Az A-t?</next>
+    <next id="59">Az I-t?</next>
+    <next id="188">Az L-et?</next>
+    <next id="10">A Z-t?</next>
+  </p>
+  <p id="154">
+    <text>
+        [p]Az ösvény keskenyedni kezd, a távolban pedig különös, puffanó zajokra leszel figyelmes, melyek mintha egyre közelebbről érkeznének.[/p]
+    </text>
+    <next id="29">Ha meg akarod nézni, mi lehet az</next>
+    <next id="16">Ha inkább megállsz és várakozni kezdesz</next>
+  </p>
+  <p id="155">
+    <text>
+        [p]Miután összevertek, a Barnusok végül magadra hagynak az erdőben. Egész testedet kék és zöld foltok tarkítják, és az egyik bokád is kibicsaklott. Kardforgató karod egyszerre lüktet a fájdalomtól, és érződik mégis bénának – talán még el is tört. Vesztesz 4 [span class="ffAttribute"]ÉLETERŐ[/span] és 1 [span class="ffAttribute"]ÜGYESSÉG[/span] pontot. Segítségre van szükséged, méghozzá gyorsan.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <add amount="-1" to="skill" />
+    <next id="27"></next>
+  </p>
+  <p id="156">
+    <text>
+        [p]A szél üvöltésébe új hang vegyül, a tekergő fák között egy kis, örvénylő levegő- és párapamacsot pillantasz meg. Egy Mazzamarieddu az, egy levegőtündér, ami csak olyankor utazhat, ha egy meggyilkolt ember kiontott vérét látja. Egyelőre háttal áll neked, és tudod, hogy aránylag biztonságban vagy, amíg az úton maradsz.[/p]
+    </text>
+    <next id="114">Ha nem törődsz a kis teremtménnyel</next>
+    <next id="122">Ha elhagyod az ösvényt és lesből rátámadsz a lényre</next>
+  </p>
+  <p id="157">
+    <text>
+        [p]A Barnusok falva vidám kis település, melyben kunyhók és szépen gondozott kertek sorakoznak egymás mellett. Miközben végigsétálsz a főutcán, egy nagyobb házikóhoz érkezel, ami az összes többi fölé magasodik. Ahogy körbe nézel, úgy látod, az ittenieket a legkevésbé sem érdekli jelenléted, ezért úgy döntesz, hogy belépsz ide.[/p]
+    </text>
+    <next id="170">Ha mindenre felkészülve előhúzod a kardodat, mielőtt belépnél</next>
+    <next id="151">Ha inkább bekopogsz és megvárod, amíg beinvitálnak</next>
+  </p>
+  <p id="158">
+    <text>
+        [p]Erőt veszel magadon és átküzdöd magad a szélben vadul csapkodó ágak közt. Csak halványan jut el tudatodig, hogy letértél az ösvényről, és egyre rosszabbul érzed magad. Vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="150"></next>
+  </p>
+  <p id="159">
+    <text>
+        [p]Megragadod kardod pengéjét és markolatával fölfelé a lény felé emeled. Mikor a Mazzamarieddu megpillantja az immáron keresztet formázó fegyveredet, fájdalmasan felsikolt és holtan rogyik össze, majd eltűnik. Csupán [span class="takeItem" data-id="gold" data-amount="20"]20 Aranytallér[/span] és egy kopott, [span class="takeItem" data-id="3015" data-amount="1"]vörös csuklya[/span] marad utána. Ezek közül bármit magadhoz vehetsz.[/p]
+    </text>
+    <next id="112"></next>
+  </p>
+  <p id="160">
+    <text>
+        [p]A szelek azonban még erősebbé válnak és minden irányból csapkodni kezdenek – és a Változás már a nyakadba is szakad! A rügyek folyamatos duzzadása-összezsugorodása és a fák hajladozása együtt olyan látvány, melytől tengeri beteg leszel és a hányinger kezd kerülgetni.[/p]
+    </text>
+    <next id="133"></next>
+  </p>
+  <p id="161">
+    <text>
+        [p]Hiábavalóan igyekszel előrántani a kardodat. Ahogy a Rőtsipkás dárdája a szíved felé lendül, a Szentírás szavai buknak ki szádon szinte maguktól. A fenevad ajkát állatias üvöltés hagyja el, majd semmivé foszlik. Csupán egyik hosszú [span class="takeItem" data-id="3007" data-amount="1"]foga[/span] marad hátra utána. Ha akarod, ezt magadhoz veheted.[/p]
+    </text>
+    <next id="192"></next>
+  </p>
+  <p id="162">
+    <text>
+        [p]Kinyitod az egyik szekrény ajtaját. Meglepve tapasztalod, hogy a belseje sokkal nagyobb, mint amire számítottál, ráadásul igen sötét. Hirtelen valami erősen megtaszít. Beesel a feketeségbe és hallod, amint mögötted becsapódik az ajtó.[/p]
+    </text>
+    <next id="20"></next>
+  </p>
+  <p id="163">
+    <text>
+        [p]A kőben lévő lyuk nem ember keze munkája. Egy Önfúró Szikla áll előtted, melyről tudod, hogy ha áttekintesz a rajta lévő résen, akkor mágikus dolgok válnak láthatóvá számodra.[/p]
+    </text>
+    <itemCheck type="section" id="24">
+      <have>
+        <next id="78"></next>
+      </have>
+      <dontHave>
+        <next id="63"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="164">
+    <text>
+        [p]Az ital valóban mindent meggyógyít! Hiszen egy halálos méreg, és amint kihúzod az üvegcse dugóját, sorsod megpecsételődik… Másodperceken belül halott vagy.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="165">
+    <text>
+        [p]A Barnusok feléd ugranak és előrángatnak rejtekhelyedről, közben pedig botokkal, kövekkel és saját ökleikkel püfölnek. Nincs esélyed rá, hogy védekezz, a támadásuk túl hirtelen kezdődött, és meglepően heves.[/p]
+    </text>
+    <next id="155"></next>
+  </p>
+  <p id="166">
+    <text>
+        [p]Szakadó hang hallatszik, amint a Tér és Idő anyaga széthasad! Erőteljes csapást érzel mely áthajít téged a Nyár földjére. Végre haza érkeztél – de csupasz vagy, és ezt a szégyent soha nem fogod tudni lemosni magadról. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="167">
+    <text>
+        [p]A nő egy kis szalmaágyhoz vezet téged, ami a tűz mellett hever, és int, hogy pihenj le. Hálásan heveredsz le és merülsz mély álomba.[/p]
+    </text>
+    <next id="140"></next>
+  </p>
+  <p id="168">
+    <text>
+        [p]Mikor kilépsz, több Barnust látsz, akik odakinn várakoznak. Egy pillanatig izgatottan állnak előtted, majd ujjongani kezdenek, mikor megpillantják homlokodon a Jelet.[/p]
+    </text>
+    <next id="91"></next>
+  </p>
+  <p id="169">
+    <text>
+        [p]A Barnusok az erdőn át a falujukba vonulnak, te pedig a környező sűrű aljnövényzet közelében maradsz és onnan kezdesz figyelni. A kis település elég békésnek látszik.[/p]
+    </text>
+    <next id="157">Ha belépsz</next>
+    <next id="139">Ha inkább visszafordulsz</next>
+  </p>
+  <p id="170">
+    <text>
+        [p]A sötét kunyhóban undorító kinézetű, mocskos és igen öreg asszony ül. Ahogy belépsz a helyiségbe, feláll.[/p]
+    </text>
+    <next id="48"></next>
+  </p>
+  <p id="171">
+    <text>
+        [p]A nő rád mosolyog, undorító, sárga fogakat villantva fel. Ezután előhúz egy forró billogot a tűzből.[/p]
+        [p]– Mondd, idegen. Bátor vagy? – kérdi tőled. Az vagy?[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="24"></next>
+      </success>
+      <failure>
+        <next id="184"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="172">
+    <text>
+        [p]Közeledtedre a férfi felpillant.[/p]
+        [p]– Végre! – kiált fel. – Oly hosszú, oly hosszú idő után! Nálad van a koronám? A dalkoronám?[/p]
+    </text>
+    <itemCheck type="item" id="3014">
+      <have>
+        <next id="97"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="3010">
+          <have>
+            <text>
+                [p]Mikor közlöd vele, hogy nincs nálad, a férfi csalódottan elfordul tőled. Kénytelen vagy megfújni a kürtödet, mert innen nincs számodra más kiút.[/p]
+            </text>
+            <next id="49"></next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Mikor közlöd vele, hogy nincs nálad, a férfi csalódottan elfordul tőled. Innen nincs számodra kiút.[/p]
+            </text>
+            <death />
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="173">
+    <text>
+        [p]A szél lágy cirógatásától elálmosodsz.[/p]
+    </text>
+    <next id="90">Ha visszatérnél a faluba, hogy az egyik kunyhóba lepihenj</next>
+    <next id="137">Ha folytatod az utad</next>
+  </p>
+  <p id="174">
+    <text>
+        [p]Miután elfordulsz a sziklától, már nem látod a Gwyllionokat, de érzed a lényükből áradó jeges pamacsokat, amik egyre közelebb kúsznak hozzád.[/p]
+    </text>
+    <next id="195"></next>
+  </p>
+  <p id="175">
+    <text>
+        [p]A szél azonban tovább erősödik és minden irányból fújni kezd – a Változás megkezdődött! Ahogy a virágok gyors egymásutánban nyílnak ki, majd csukódnak össze, ahogy a fák hajlongani kezdenek, összeszorul a gyomrod és tengeribetegség lesz úrrá rajtad. Azonban eltökélten tekintesz előre, az útra, ami az egyetlen stabil pontnak tűnik ezen az őrült helyen. Előre botorkálsz…[/p]
+    </text>
+    <next id="156"></next>
+  </p>
+  <p id="176">
+    <text>
+        [p]Ahogy átrohansz a tisztáson, arra számítasz, hogy a láthatatlan halál bármelyik pillanatban magával ragad. Mielőtt azonban feleszmélhetnél, már ismét az erdőben vagy, a csapáson, amit lélekszakadva követsz, míg teljesen ki nem fáradsz.[/p]
+    </text>
+    <next id="149"></next>
+  </p>
+  <p id="177">
+    <text>
+        [p]A fog sebezhetetlenné tesz a közönséges fegyverekkel szemben, a Moha Hajadon nem árthat neked, így könnyedén végzel vele.[/p]
+    </text>
+    <next id="84"></next>
+  </p>
+  <p id="178">
+    <text>
+        [p]A drágakőre tekintesz és eláraszt a boldogság. Vörösebb, mint bármi más, amit korábban láttál, a szépsége egyenesen megbabonáz. Mikor végül felpillantasz szerzeményedről, meglepve tapasztalod, hogy egy kisebb csapatnyi Barnus gyűlt köréd. Szemeikből sugárzik a gyász, és valami mást is megpillantasz bennük. A halálodat.[/p]
+    </text>
+    <next id="136"></next>
+  </p>
+  <p id="179">
+    <text>
+        [p]Kicsit merev háttal, fájós tagokkal folytatod utadat, míg el nem érsz egy hatalmas, gömb alakú, leginkább fészekre emlékeztető épületet, melyet ágakból és mohából építettek.[/p]
+    </text>
+    <next id="40">Ha megállsz és belépsz ide</next>
+    <next id="110">Ha inkább elsétálsz mellette</next>
+  </p>
+  <p id="180">
+    <text>
+        [p]A nő sértődötten ellép tőled. – Nem. Sem a hálát, sem az udvariasságot nem ismered – motyogja.[/p]
+    </text>
+    <next id="166"></next>
+  </p>
+  <p id="181">
+    <text>
+        [p]Ahogy átvágsz a tisztáson, úgy érzed, mintha valami megfoghatatlan dolog feléd nyúlna. Bár erről neked fogalmad sincs, Gwyllionok kísértenek itt. Ezek ocsmány női lelkek, akik feltartóztatják az utazókat. Rémséges kezek fognak le és láthatatlan karmok hasítják fel húsodat. Kalandod itt véget ér…[/p]
+    </text>
+    <death />
+  </p>
+  <p id="182">
+    <text>
+        [p]Másnap a Barnusok körbevezetnek a falujukban. Csodás dolgokat mutatnak meg neked; mágikus kerteket és megbűvölt növényeket. Az egyik káposztasor levelein esőcseppek helyett [span class="takeItem" data-id="3009" data-amount="1"]gyémántok[/span] csillognak! (Eltehetsz ezekből néhányat, amikor épp senki nem figyel rád.) A virágok szinte csilingelnek, ahogy elhaladsz mellettük, és a messzi Nyár földjéről suttognak, amitől fellobban benned a vágy, hogy mielőbb hazaindulj.[/p]
+    </text>
+    <next id="28"></next>
+  </p>
+  <p id="183">
+    <text>
+        [p]Egészen mostanáig az volt a leghőbb vágyad, hogy visszatérhess a Nyár földjére. A Moha Hajadon nagyot sóhajt.[/p]
+        [p]– Istenemre, békés életed lesz, de szíved vágyát, a dicsőséget és hírnevet soha nem szerzed meg. Fújd meg hát kürtödet.[/p]
+        [p]Engedelmeskedsz a nő kérésének, ajkadhoz emeled a kürtöt és erősen belefújsz.[/p]
+    </text>
+    <next id="49"></next>
+  </p>
+  <p id="184">
+    <text>
+        [p]Ahogy a lángoló fém közeledik a homlokodhoz, összerándulsz, így a jelnek csupán a fele érint téged, az öregasszony pedig jól hallhatóan felsóhajt.[/p]
+        [p]– Ha nyugton maradtál volna, idegen, megkaptad volna az Igaz Látás Jelét. Így viszont nem tudom bizonyosan megmondani, mi lesz a hatása – lehetséges, hogy ami rejtve van, megmutatkozik majd előtted, de az is lehet, hogy nem.[/p]
+        [p]Az asszonyra tekintve döbbenten veszed észre, hogy az alakja egy vénséges banya és egy gyönyörű nő között váltakozik folyamatosan. Kezébe veszi a kezedet és vigasztalóan megpaskolja.[/p]
+        [p]– Látom, hogy az ajándék egy részét megkaptad – mondja. Ezután maga mögé nyúl és elővesz egy kis [span class="takeItem" data-id="3010" data-amount="1"]kürtöt[/span]. – Fújd ezt meg, ha szükséged lesz rá – mondja –, és biztos lehetsz benne, hogy segítséget fogsz kapni.[/p]
+    </text>
+    <next id="22"></next>
+  </p>
+  <p id="185">
+    <text>
+        [p]A kutya elfogadja a gömböt és tisztelettudóan lehajtja a fejeit. – Lépj be, barátom – morogja feléd. Te pedig így teszel.[/p]
+    </text>
+    <loseItem id="3005" />
+    <next id="15"></next>
+  </p>
+  <p id="186">
+    <text>
+        [p]A fa ágai remegni kezdenek, ahogy közelebb lépsz, és mikor megérinted, vibrálni kezd, és megváltozik az alakja.[/p]
+    </text>
+    <next id="80">Ha vársz, hogy megtudd, mi történik vele</next>
+    <next id="99">Ha inkább máris elhagyod a falut</next>
+  </p>
+  <p id="187">
+    <text>
+        [p]Folytatod utadat az erdőn át. Hamarosan egy öreg, romos toronyhoz érkezel, mely a fák között mered a magasba. Előtted egy ajtó áll.[/p]
+    </text>
+    <next id="125">Ha belépsz</next>
+    <next id="89">Ha inkább továbbállsz</next>
+  </p>
+  <p id="188">
+    <text>
+        [p]Vészjósló remegés fut végig a tájon, ami egyre erősödik, és végül fülsüketítő szűköléssé alakul. Különös mágikus recsegés hangzik fel a sziklából, és hirtelen egy energianyaláb lő ki belőle, mely rögtön ropogósra süt téged.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="189">
+    <text>
+        [p]A bestia teste előtted hever, de a szemed láttára kezd eltűnni. Csak [span class="takeItem" data-id="3006" data-amount="1"]fütyköse[/span] és [span class="takeItem" data-id="3003" data-amount="1"]köpenye[/span] marad utána. Ezek bármelyikét elteheted. Ezután visszatérsz az útra.[/p]
+    </text>
+    <next id="115"></next>
+  </p>
+  <p id="190">
+    <text>
+        [p]Miközben a kardod után próbálsz kapni, a Mazzamarieddu már utol is ér. Fogai a torkodba mélyednek. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="191">
+    <text>
+        [p]Felemeled a medált, mire a Gwyllionok megtorpannak. Ügyes húzás volt ez a részedről, így nyertél egy kevés időt.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="3"></next>
+      </success>
+      <failure>
+        <next id="62"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="192">
+    <text>
+        [p]Mit teszel ezek után?[/p]
+    </text>
+    <next id="8">Ha elhagyod ezt a rémséges tornyot</next>
+    <next id="53">Ha inkább itt maradsz és kivárod a vihar végét</next>
+  </p>
+  <p id="193">
+    <text>
+        [p]– Bölcsességgel is rendelkezel, nem csak az Igaz Látással – mondja a nő. – Mert ez a fog megvédi viselőjét minden fegyvertől. Minden másom megvan: gazdagság, hatalom. Ez azonban még nem az enyém. Köszönöm neked.[/p]
+        [p]Egy ideig elgondolkodva figyel téged. – Az Igazság Jele lebeg körülötted, szemeidben pedig dicsőség ragyog. A Moha Hajadon vagyok, és sok ajándékkal rendelkezem. Két dolgot adhatok neked ezek közül, de neked kell választanod, melyiket kéred. A leghőbb vágyadat teljesítsem, vagy szíved kívánságát?[/p]
+    </text>
+    <loseItem id="3007" />
+    <next id="183">A leghőbb vágyadat?</next>
+    <next id="196">A szíved kívánságát?</next>
+  </p>
+  <p id="194">
+    <text>
+        [p]A Fachant a jelek szerint eléggé megzavarja szokatlan taktikád. Egy ideig habozik, végül azonban heves vérmérséklete győzedelmeskedik józan esze fölött és az útra ugrik. Abban a pillanatban összerogyik – úgy tűnik, a csapás elszívja az erejét! Kihasználod a kínálkozó lehetőséget és rátámadsz a bestiára.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="2" />
+    </fight>
+    <next id="5"></next>
+  </p>
+  <p id="195">
+    <text>
+        [p]A kardod hatástalan a túlvilági Gwyllionok ellen. Egyetlen reményed maradt csupán, hogy átszaladj a tisztáson és reménykedj benne, hogy időben eljutsz a túloldalára. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="176"></next>
+      </success>
+      <failure>
+        <next id="62"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="196">
+    <text>
+        [p]– Jól választottál – kiált fel boldogan a Moha Hajadon. – Tudtam, hogy tiszta szívű vagy! Van egy feladat, mely nagyobb minden eddig teljesítettnél.[/p]
+        [p]Szinte megbabonázva hallgatod a nő szavait, miközben a világ határának széleit határoló hatalmas hegyekről mesél, és a világmindenség titkairól, melyek a legendák szerint ezeken túl húzódnak. Azt is elmondja, hogy mostanáig senki nem bukkant rá az útra, mely átvezetne a csúcsok közt.[/p]
+        [p]– Mert magasak, mint a csillagok, és senki meg nem mászhatja őket. Én azonban ismerem egy titok titkát.[/p]
+        [p]– Hajlandó vagy ezt magaddal hordozni? Mielőtt elmondanám neked, meg kell esküdnöd rá, hogy teljesíted e küldetést, vagy belehalsz a próbálkozásba.[/p]
+    </text>
+    <next id="126">Ha a szavadat adod</next>
+    <next id="7">Ha inkább kitartasz azon kívánságod mellett, hogy visszatérj a Nyár birodalmába</next>
+  </p>
+  <p id="197">
+    <text>
+        [p]Felemeled a rongyos bőrdarabot, ami az ajtót helyettesíti és belépsz a házikóba.[/p]
+    </text>
+    <next id="86"></next>
+  </p>
+  <p id="198">
+    <text>
+        [p]A közönséges káposzták levelein általában esőcseppek szoktak összegyűlni. Ezen azonban apró [span class="takeItem" data-id="3009" data-amount="1"]gyémántdarabkákat[/span] veszel észre! Ha szeretnél, néhányat magadhoz vehetsz.[/p]
+    </text>
+    <next id="146"></next>
+  </p>
+  <p id="199">
+    <text>
+        [p]A lények mindannyian barna ruhát viselnek, bozontos szakálluk és hosszú hajuk van. Ezek Barnusok, apró emberek, akik méreteik ellenére is kemény ellenfeleknek bizonyulhatnak. Nyolcan vannak.[/p]
+    </text>
+    <next id="85"></next>
+  </p>
+  <p id="200">
+    <text>
+        [p]Beszámolsz Gethernek a küldetésről, mellyel a Moha Hajadon bízott meg. A férfi némán, gondolataiba mélyedve áll előtted. Végül rád néz és bólint.[/p]
+        [p]– Valóban úgy vélem, hogy ez a tudás neked lett szánva – mondja. – Igaz, hogy egyetlen ember sem tud átkelni a Tél hegyein, melyek a világ körüli falat alkotják. Azonban van egy út, mely ezek alatt vezet át – de hogy mi van rajtuk túl, azt meg nem mondhatom. Annyit azonban tudok, hogy aki a Világ Szélére akarna utazni, annak előbb fel kell keresnie Stupát az Elveszett Földön. Az Elveszett Föld pedig – legalábbis a szóbeszéd szerint – a Télen túl terül el. Ha oda tartasz, az utad itt kezdődik, királyságom barlangjaiban. És hajlandó vagyok megmutatni neked, pontosan hol.[/p]
+        [p]A férfi rád mosolyog, majd a válladra teszi a kezét. – Előbb azonban, barátom, ünnepeljünk és vigadjunk, mert visszatértem és megszabadult a birodalmam.[/p]
+    </text>
+    <victory />
   </p>
 </content>
