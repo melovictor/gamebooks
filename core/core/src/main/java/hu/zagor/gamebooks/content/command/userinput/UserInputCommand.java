@@ -23,6 +23,7 @@ public class UserInputCommand extends Command {
     private String label;
     private List<UserInputResponse> responses = new ArrayList<>();
     private boolean ongoing;
+    private String type;
 
     public String getLabel() {
         return label;
@@ -44,6 +45,7 @@ public class UserInputCommand extends Command {
     public CommandView getCommandView(final String rulesetPrefix) {
         final Map<String, Object> model = new HashMap<>();
         model.put("userInputLabel", label);
+        model.put("responseType", type);
 
         if (ongoing) {
             hideChoices(model);
@@ -80,5 +82,13 @@ public class UserInputCommand extends Command {
 
     public void setOngoing(final boolean ongoing) {
         this.ongoing = ongoing;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(final String type) {
+        this.type = type;
     }
 }

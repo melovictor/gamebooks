@@ -20,8 +20,8 @@ public class UserInputResponseNumericResultTransformer extends AbstractUserInput
     }
 
     private UserInputResponse parseNumericResponse(final BookParagraphDataTransformer parent, final Node node, final ChoicePositionCounter positionCounter) {
-        final Integer min = extractIntegerAttribute(node, "min");
-        final Integer max = extractIntegerAttribute(node, "max");
+        final Integer min = extractIntegerAttribute(node, "minResponse");
+        final Integer max = extractIntegerAttribute(node, "maxResponse");
         final UserInputNumericResponse response = (UserInputNumericResponse) getBeanFactory().getBean("userInputNumericResponse", min, max);
         extractResponseTimeAttributes(node, response);
         return parseResponseContent(parent, node, response, positionCounter);

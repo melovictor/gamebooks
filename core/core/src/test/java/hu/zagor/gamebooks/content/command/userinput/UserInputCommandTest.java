@@ -55,22 +55,7 @@ public class UserInputCommandTest {
         // GIVEN
         final String label = "user input command label";
         underTest.setLabel(label);
-        mockControl.replay();
-        // WHEN
-        final CommandView returned = underTest.getCommandView("raw");
-        // THEN
-        Assert.assertEquals(returned.getViewName(), "rawUserInputCommand");
-        final Map<String, Object> model = returned.getModel();
-        Assert.assertEquals(model.size(), 1);
-        Assert.assertTrue(model.containsKey("userInputLabel"));
-        Assert.assertEquals(model.get("userInputLabel"), label);
-    }
-
-    public void testGetCommandViewWhenOngoingShouldReturnProperlySetCommandViewWithHiddenChoices() {
-        // GIVEN
-        final String label = "user input command label";
-        underTest.setLabel(label);
-        underTest.setOngoing(true);
+        underTest.setType("text");
         mockControl.replay();
         // WHEN
         final CommandView returned = underTest.getCommandView("raw");
@@ -80,8 +65,29 @@ public class UserInputCommandTest {
         Assert.assertEquals(model.size(), 2);
         Assert.assertTrue(model.containsKey("userInputLabel"));
         Assert.assertEquals(model.get("userInputLabel"), label);
+        Assert.assertTrue(model.containsKey("responseType"));
+        Assert.assertEquals(model.get("responseType"), "text");
+    }
+
+    public void testGetCommandViewWhenOngoingShouldReturnProperlySetCommandViewWithHiddenChoices() {
+        // GIVEN
+        final String label = "user input command label";
+        underTest.setLabel(label);
+        underTest.setOngoing(true);
+        underTest.setType("number");
+        mockControl.replay();
+        // WHEN
+        final CommandView returned = underTest.getCommandView("raw");
+        // THEN
+        Assert.assertEquals(returned.getViewName(), "rawUserInputCommand");
+        final Map<String, Object> model = returned.getModel();
+        Assert.assertEquals(model.size(), 3);
+        Assert.assertTrue(model.containsKey("userInputLabel"));
+        Assert.assertEquals(model.get("userInputLabel"), label);
         Assert.assertTrue(model.containsKey("ffChoiceHidden"));
         Assert.assertEquals(model.get("ffChoiceHidden"), true);
+        Assert.assertTrue(model.containsKey("responseType"));
+        Assert.assertEquals(model.get("responseType"), "number");
     }
 
     public void testCloneShouldReturnClonedObject() throws CloneNotSupportedException {

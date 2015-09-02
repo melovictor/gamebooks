@@ -29,6 +29,7 @@ public class UserInputTransformer extends AbstractStubTransformer {
     private Command parseUserInput(final BookParagraphDataTransformer parent, final Node node, final ChoicePositionCounter positionCounter) {
         final UserInputCommand command = getBeanFactory().getBean(UserInputCommand.class);
         final String type = extractAttribute(node, "type");
+        command.setType(type);
         final CommandSubTransformer<UserInputCommand> transformer = userInputTransformers.get(type);
         if (transformer == null) {
             throw new UnsupportedOperationException(type);

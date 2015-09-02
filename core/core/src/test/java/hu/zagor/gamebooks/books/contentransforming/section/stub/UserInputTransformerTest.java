@@ -109,6 +109,7 @@ public class UserInputTransformerTest extends AbstractTransformerTest {
         expect(beanFactory.getBean(UserInputCommand.class)).andReturn(userInputCommand);
 
         expectAttribute("type", TYPE);
+        userInputCommand.setType("text");
 
         mockControl.replay();
         // WHEN
@@ -125,6 +126,7 @@ public class UserInputTransformerTest extends AbstractTransformerTest {
         expect(beanFactory.getBean(UserInputCommand.class)).andReturn(userInputCommand);
 
         expectAttribute("type", TYPE);
+        userInputCommand.setType("text");
 
         userInputTransformer.transform(parent, node, userInputCommand, positionCounter);
         data.addCommand(userInputCommand);
