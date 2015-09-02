@@ -32,10 +32,10 @@ public class SingleWm8FightRoundResolver extends SingleFightRoundResolver {
             final FightCommandMessageList messages = command.getMessages();
             String result;
             if (randomNumber[0] > TORNAKK_STONE_SKIL) {
-                result = "damage";
+                result = "defense";
             } else {
                 super.damageEnemy(command, dto);
-                result = "defense";
+                result = "damage";
             }
             messages.addKey("page.wm8.label.fight.tornakk." + result, renderer.render(generator.getDefaultDiceSide(), randomNumber));
         } else {
