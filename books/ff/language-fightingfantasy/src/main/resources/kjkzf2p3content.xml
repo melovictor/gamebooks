@@ -1,11 +1,764 @@
 <?xml version="1.0" encoding="utf-8"?>
 <content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd">
   <p id="back_cover">
-    <text>[p][/p]</text>
-    <next id="background"/>
+    <text>[p]Miután eltöltöttél némi időt Gether társaságában, úgy döntesz, ideje elvégezned a feladatot, amit a Moha Hajadon bízott rád. Kalandozóként bölcsességed, erőd, kitartásod és ügyességed nem egy veszedelmes kalandon segített már át a múltban. És mikor ebbe is belekezdesz, ismét szükséged lesz mindezen tulajdonságaidra.[/p]</text>
+    <next id="generate" />
   </p>
-  <p id="background" display="">
-    <text>[p][/p]</text>
+  <p id="generate" display="Karakter létrehozása">
+    <text>
+      [p][span class="ffAttribute"]Ügyesség[/span]: [span id="ffSkill"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+      [p][span class="ffAttribute"]Életerő[/span]: [span id="ffStamina"]dobj két kockával és adj 12-t a dobott számhoz[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+      [p][span class="ffAttribute"]Szerencse[/span]: [span id="ffLuck"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+      [p][span class="ffAttribute"]Bölcsesség[/span]: [span id="ffWisdom"]dobj egy kockával és felezd meg az eredményt[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+      [p]Válassz egy italt:
+        [select id="ffDefaultPotion"]
+          [option value="2001" selected="selected"]Ügyesség Itala[/option]
+          [option value="2002"]Erő Itala[/option]
+          [option value="2003"]Szerencse Itala[/option]
+        [/select]
+      [/p]
+      [button data-generator-button="ff"]Karakter létrehozása[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="Háttértörténet">
+    <text>
+        [p class="inlineImage"][img src="resources/pt14/0.jpg" /][/p]
+        [p]Az univerzum csendes sarkaiban, ahol a tér és idő örvényei találkoznak és egymásba gabalyodva folynak tovább, a létezés forgatagában minden lehetséges és minden lehetőség nyitva áll előtted, ha rendelkezel a kulccsal - bár jelenleg nem tudod, miféle kulcsot kellene keresned. A Síkföldeken vagy, egy világban, melyen az évszakok nem az idő múlásával változnak, hanem a hellyel. Örök nyarak és végtelen telek és a köztük húzódó árnyas területek uralják otthonod. És mindezt égig érő hegyek gyűrűje zárja össze, melyek túloldalán az űrbe vesző, feneketlen szakadék vár csak az óvatlanra. Ezen a földön járod a kalandozók magányos útját és küzdesz meg különös teremtményekkel. Átkeltél már az Ősz különös birodalmán, ahol a Sors különös feladatot bízott rád: meg kell találnod a mindenség titkát, mely valahol a világodat körbevevő hegyek túloldalán rejlik, vagy meg kell halnod a próbálkozásban.[/p]
+        [p]Bejártad már a hegyek lábát uraló jeges pusztákat és átkeltél a különös erdőn, melynek csak kevesen mernek nekivágni. Hatalmas vagyont szedtél össze, és nagy hírnevet szereztél magadnak. Sokfelé ismernek. De mindez nem elég…[/p]
+        [p]Egy kőszékben ülsz, az Alsó Királyság urának és jó barátodnak, Gethernek csillogó cseppkövekkel díszített tróntermében. A férfi veled szemben foglal helyet, könyökeit pedig a köztetek álló sziklaasztalon nyugtatja. Ujjai egy arany serlegen játszanak, tekintete a semmibe mered. - Nem tudom, mi mást mondhatnék még neked - mondja összevont szemöldökkel. - Csak annyit látok, hogy minden vagyonod és hírneved ellenére is nehéz a szíved. Te mit tennél?[/p]
+        [p]Régi beszélgetés ez. Valóban, te mit tennél? Az igazság az, hogy unatkozol. Azt hitted, hogy a hatalom és gazdagság majd boldoggá, elégedetté tesz, de te csak a miattuk a vállaidra zuhanó kötelességeket érzed mindezekből, melyek a földhöz láncolnak. Valamikor régen azt gondoltad, mindez elég lesz számodra, most már azonban ott motoszkál a fejedben a kellemetlen gondolat, hogy valódi otthonod valójában a nyílt országút, és legnagyobb kincseid a hátizsákod és kardod.[/p]
+        [p]Gether felsóhajt. - Folytatnod kell a kalandozást. - Bólintasz, hisz benned is éppen ezek a gondolatok fogalmazódtak meg. - De nem a saját magad gyarapodásáért - folytatja -, hisz mi olyan van, amit már ne szereztél volna meg? Van azonban valami… - Hangja fokozatosan lehalkul, végül motyogássá válik. - Elég veszélyes, és nagy árat kellhet fi zetned érte. - Gondolkodik még egy kicsit, majd ruhája ujjából elővesz egy kis dobozt. Kinyitja és eléd helyezi. A belsejét mélykék színű selyem borítja. Három kis, kör alakú mélyedést látsz benne, és egy negyediket, melynek azonban kulcs alakja van. - Ez a hatalom köveinek, a Sariram nyughelye, melyekből ősi birodalmam hatalma eredt. A kulcs őrzi a titkot, melyet keresel. Meg kell keresned, majd pedig visszajuttatnod ezeket méltó nyughelyükre. Annyit elárulhatok neked, hogy az Elveszett Föld Sztúpájában bukkanhatsz majd rájuk, és hogy utad itt kezdődik, királyságom barlangjaiban. Meg is mutatom neked, honnan kell indulnod.[/p]
+        [p]Ennél több noszogatásra nincs is szükséged. Miközben összeszeded felszerelésed és élelmedet, Gether elmondja, hogy utad a Mélyvilágon át fog vezetni, a fenti földeket délen szegélyező hegyek alatt. - Az utolsó segítséget, amit adhatok számodra, egy bölcs vénasszonytól hallottam még évekkel ezelőtt. „Keresd az Elveszett Földet a szivárványon túl, ott lelsz majd rá a Sztúpára.” Nekem ez nem mond semmit, és biztos vagyok benne, hogy egyelőre neked sem. De ha eltökélt vagy - márpedig úgy hiszem, hogy az vagy - a kulcs megtalálásában, ideje indulnod.[/p]
+    </text>
+    <gatherItem id="defWpn" />
+    <gatherItem id="1001" />
+    <gatherItem id="2000" amount="5" />
+    <gatherItem id="3001" />
+    <gatherItem id="3002" />
+    <gatherItem id="3007" />
+    <add amount="20" to="gold" />
     <next id="1"></next>
   </p>
+  <p id="1">
+    <text>
+        [p]Gether királyságának kapujában állsz. A férfi melletted áll, ő vezetett téged ide tucatnyi kanyargós, évszázados porral fedett járaton át. Az ajtó ősi szerkezet, vasból készült és olyan rúnák és különös vésetek borítják, melyekhez még csak hasonlót sem láttál eddigi életed során. Barátod egy furcsa kis kulcsot emel le övláncáról, kinyitja a kaput és szélesre tárja előtted. Állott, dohos levegő csap meg a túloldalt elterülő sötétség irányából, mire lámpásod lángja megremeg.[/p]
+        [p]- Itt az út, melyet mágia itat át - mondja. - Ég veled, barátom, és sok szerencsét. - Belépsz a homályba, mire az ajtó csengő hangon becsapódik mögötted.[/p]
+    </text>
+    <next id="24"></next>
+  </p>
+  <p id="24">
+    <text>
+        [p]Dél felé haladsz, míg egy T elágazáshoz nem érkezel. Balra és jobbra egyaránt lefelé vezető újabb járatok indulnak. Köztük a sziklafalban egy sima - opálnak látszó - felületet látsz, mely közeledtedre ragyogó, tejfehér színnel izzik fel. Kongó hang hangzik fel körülötted a levegőben. – Senki nem léphet be a Mélyvilágba, csak egy másik parancsára. És mindenkinek esküdnie kell, hogy előbb bölcsességet keres ilyen küldetés során. Megesküszöl?[/p]
+    </text>
+    <next id="44">Ha igen</next>
+    <next id="130">Ha nem</next>
+  </p>
+  <p id="130">
+    <text>
+        [p]Ha valaha elgondolkodtál volna azon, vajon milyen érzés sültkrumplinak lenni, most megtaláltad a módját annak, hogy ezt kiderítsd. Tűzsugár csap ki az opál falból, mely szénné égeti testedet.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="44">
+    <text>
+        [p]– Jól van – mondja a hang. – Menj hát, barátom, és fújd ezt meg, ha szükségét találod. – Egy [span class="takeItem" data-id="3003" data-amount="1"]ezüstberakásos kürt[/span] jelenik meg előtted a talajon.[/p]
+    </text>
+    <next id="55">Ha most balra indulnál el, keleti irányba</next>
+    <next id="39">Ha jobbra, nyugat felé</next>
+  </p>
+  <p id="55">
+    <text>
+        [p]Lámpásod fénye ellenére is úgy érzed, egyre sűrűsödik körülötted a sötétség, előtted sztalaktitok és sztalagmitok nyúlnak ki a padlóból és a plafonból, mintha csak gonosz, vigyorgó fogak lennének.[/p]
+        [p]Vészjósló morajlás hangzik fel a hátad mögött, és egy hatalmas sziklatömb ereszkedik le, teljesen elzárva a visszafelé vezető utat. Nincs más választásod, előre kell továbbindulnod.[/p]
+    </text>
+    <next id="154"></next>
+  </p>
+  <p id="154">
+    <text>
+        [p]Az alagút hamarosan élesen jobbra kanyarodik és déli irányba halad tovább. A levegő itt még dohosabb, mint eddig volt, és hamarosan fojtogatóvá, már-már szirupszerűvé válik. Meleg és párás, szinte mocskosnak érzed, és minden lépésed egyre nehezebb lesz, mintha ólmot kötöttek volna rád. Még lámpásod fénye is halványodni kezd, és mikor kiáltásra nyitod a szád, egyetlen hang sem jön ki belőle. Újabb elágazáshoz érkezel. Mit teszel?[/p]
+    </text>
+    <next id="115">Nyugat felé fordulsz?</next>
+    <next id="190">Dél felé folytatod az utad, át egy súlyos kőajtón?</next>
+  </p>
+  <p id="115">
+    <text>
+        [p]A gonosz köd feloszlik, és hamarosan ismét hűs, tiszta levegőt szívsz tüdődbe. Boldogan szippantasz belőle nagyokat, mintha csak édes bor lenne.[/p]
+        [p]A járat élesen balra fordul, a jobb oldali falon pedig valami halvány ragyogás hívja fel magára a fi gyelmedet: egy különös, vésett minta veri vissza tompán a fényt.[/p]
+    </text>
+    <itemCheck type="item" id="3004">
+      <haveEquipped>
+        <next id="110"></next>
+      </haveEquipped>
+      <have>
+        <next id="110"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Dél felé folytatod az utadat.[/p]
+        </text>
+        <next id="64"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="110">
+    <text>
+        [p]A dombormű mintája hasonlít a karodon lévő csuklópántéhoz, ezért egymáshoz illeszted őket – mire a fal egy része felemelkedik, felfedve egy kis rejtett kamrát. Mit teszel?[/p]
+    </text>
+    <next id="124">Belépsz?</next>
+    <next id="25">Folytatod az utadat dél felé?</next>
+  </p>
+  <p id="124">
+    <text>
+        [p]Ahogy belépsz, tompa puffanást hallasz a hátad mögül. Riadtan perdülsz meg, de már csak a csupasz sziklafalat látod a nyílás helyén. A bejáratnak nyoma sem maradt! Csillogó pára száll fel a terem faláról, mely feléd lebeg és teljesen beborít. Alakokat látsz megjelenni a párában egy-egy pillanatra, melyek mintha megérintenének, ápolnának. Valami megérinti a nyakadat: egy arany gyűrű az, egy hatalmas, vörös rubinnal, melyet bőr szíjra kötöttek.[/p]
+        [p]Ezután mindent elsöprő boldogság árasztja el érzékeidet. Becsukod a szemed és a padlóra ereszkedsz. Sokkal, sokkal később ébredsz fel. Ahogy lassan lábra állsz, a fejed is fokozatosan kitisztul a mindent elárasztó érzéstől. Körbenézve megpillantasz egy boltívet, ami a terem nyugati falából nyílik. Átlépsz alatta és lassan lefelé indulsz, végig egy folyosón, ami hamarosan előbb délnek fordul, aztán vissza nyugat felé. Csendes léptekkel haladsz át a suttogó, színes ködfoszlányokon. Délnek fordulsz és tovább menetelsz, ezúttal fölfelé. Mikor azonban egy nagy, kör alakú barlanghoz érsz, annak is a felső részéhez, megtorpansz.[/p]
+        [p]Miközben azon töprengsz, mi tévő légy, valaki más dönt helyetted, ugyanis a sziklás szirt, melyen állsz, szétporlad a lábad alatt… te pedig zuhanni, gurulni, csúszni kezdesz a lenti verem irányába.[/p]
+    </text>
+    <next id="169"></next>
+  </p>
+  <p id="39">
+    <text>
+        [p]Az alagút egyenesen fut tovább egy ideig, majd meredeken lejteni kezd és dél felé fordul. Ezután enyhe emelkedőbe megy át. Magas oszlopok és sötét kamrák mellett haladsz el, lámpásod fénye élettel tölti meg a falba ágyazott apró kristályokat, tüzes ékköveket, melyek talán még soha nem láttak napfényt, ragyogó színkavalkádot festenek a falakra. A járat egy kis barlangba érkezik, melyből három további járat indul el. A nyugati fölfelé indul, a keleti és a déli pedig lefelé kezdenek ereszkedni. Melyiken indulsz el?[/p]
+    </text>
+    <next id="170">A nyugatin?</next>
+    <next id="127">A keletin?</next>
+    <next id="183">A délin?</next>
+  </p>
+  <p id="170">
+    <text>
+        [p]A nyugat felé futó járat lassan, de biztosan emelkedik felfelé – lehet, hogy a felszín felé tartasz?[/p]
+    </text>
+    <next id="90">Ha továbbra is ebbe az irányba mennél</next>
+    <next id="145">Ha inkább visszafordulnál</next>
+  </p>
+  <p id="90">
+    <text>
+        [p]Fény csillanását látod elölről beszűrődni. Hamarosan egy zöldellő, hegyi völgyben bukkansz elő. Ragyogóan süt rád a nap, körülötted minden irányba hófödte hegycsúcsok merednek az égre. Visszanézel az alagút szájához – de csak a zöld domboldalt látod. Csapdába estél, és míg levegőt lélegzel, nem szabadulsz.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="145">
+    <text>
+        [p]Visszamész a kis barlangüregbe. Merre indulsz most?[/p]
+    </text>
+    <next id="183">Délre?</next>
+    <next id="127">Keletre?</next>
+  </p>
+  <p id="183">
+    <text>
+        [p]A déli alagút egy ideig egyenesen lefelé vezet, majd cikázni és erősen lejteni kezd – megcsúszol és elveszted lámpásodat. Különös szag csapja meg az orrodat: ropogós téli reggel fagya és hava keveredik a kén erős szagával. A levegőt vörös izzás árasztja el.[/p]
+    </text>
+    <loseItem id="3007" />
+    <next id="18">Ha tovább mennél dél felé</next>
+    <next id="170">Ha visszatérnél a kis barlangba és inkább nyugatnak fordulnál</next>
+    <next id="127">Ha kelet felé néznél el</next>
+  </p>
+  <p id="18">
+    <text>
+        [p]Nem sokat haladtál tovább dél felé, mikor megállsz és rácsodálkozol a barlang hatalmas méreteire, melybe most beléptél. Akkora, hogy nem is látod a túlsó végét, de még csak meg sem tudod tippelni, milyen nagy lehet. Bal oldaladon véget nem érő, fagyos sivatag terül el óriási hegyekkel és a sötétbe burkolózó plafon felé nyúló jégcsúcsokkal, melyek a vörös, rózsaszín és narancs árnyalataiban játszanak, mintha egy sarkvidéki naplemente fényeit látnád. Ezek a színek azonban nem természetes fény eredményei, hanem a hasadék másik oldalán tomboló tüzekéi: olvadt lángok dombjai, folyói és tavai terülnek el több kilométer hosszan – egy lángba borult birodalom.[/p]
+        [p]A tűz és jég között alaktalan szurdok húzódik véget nem érően, melyet lassan kavargó köd tölt be. Alakok és színek kavalkádja ez, melyek csak jönnek és mennek, olyan gyorsan szökkennek életre, amilyen gyorsan utána el is tűnnek. Amit látsz, az a Ginnungagap, a Tátongó Örvény, a Mágikus Megtévesztés Mezsgyéje, ahol világok születnek és pusztulnak el. Elég bátor vagy ahhoz, hogy lelépj a széléről és elindulj az alaktalan köd felé? A tűz birodalmán biztosan nem fogsz tudni átkelni.[/p]
+    </text>
+    <next id="198">Ha igen</next>
+    <next id="83">Ha inkább azon a keskeny peremen mennél tovább, ami keletre indul, és ami magasan a jégvilág felett folytatódik</next>
+  </p>
+  <p id="198">
+    <text>
+        [p]Elérsz végül a Ginnungagap szélére és belepillantasz. Örvénylő pára hömpölyög a hasadékban, melynek mélyéről különös hangok hívogatnak, csábítanak suttogva. Összeszeded minden bátorságodat és teszel egy lépést.[/p]
+    </text>
+    <next id="163"></next>
+  </p>
+  <p id="163">
+    <text>
+        [p]Pislogsz, amint a valóság megremeg és megváltozik. Úgy érzed, mintha lágyan és könnyedén ereszkednél le a hasadékban. Végül egy szigetre érkezel, mely egy holdfényben fürdő tó közepén terül el. Úgy tippelsz, félúton lehetsz a mesés szakadékban. A levegő meleg, balzsamos és különféle fűszerek és növények illatától terhes. Valahonnét furulyaszó hallatszik. Kezded nagyon fáradtnak érezni magad. Mit teszel?[/p]
+    </text>
+    <next id="50">Leheveredsz pihenni?</next>
+    <next id="96">Körbejárod a szigetet?</next>
+    <next id="149">Beveted magad a tóba?</next>
+  </p>
+  <p id="149">
+    <text>
+        [p]Ahogy a hideg víz arcodnak csapódik és magadhoz térít, megremeg az illúzió és elhalványul – te pedig a szurdokban találod magad, a levegőben, amint lefelé zuhansz, a mélyben lévő éles sziklák felé…[/p]
+    </text>
+    <death />
+  </p>
+  <p id="50">
+    <text>
+        [p]Nincs számodra pihenés. A következő pillanatban, mintha csak álmodnál, azt veszed észre, hogy sétálsz. Dél felé haladsz, át a szigeten, egészen egy barlang bejáratáig.[/p]
+        [p]Úgy látod, mintha anyagtalanul belépnél a földalatti, jól megvilágított terembe, melynek végében egy hatalmas trón áll, egy nagy halom fegyver, a kettő között pedig füstölgő tábortűz maradványai. Mit teszel?[/p]
+    </text>
+    <next id="30">Leülsz a trónra?</next>
+    <next id="136">Megnézed a fegyvereket?</next>
+  </p>
+  <p id="30">
+    <text>
+        [p]Amint leülsz, érzed, hogy tested a levegőbe emelkedik - és rájössz, hogy valójában maga a trón az, ami felemel téged! Gyorsan leugrasz róla és a padlóra érkezel, biztonságban, közben pedig fi gyeled, amint az ülőhely folytatja az emelkedést, és végül a plafonba fúródik. Ekkor döbbensz csak rá, hogy egy másik veszély is fenyeget.[/p]
+    </text>
+    <next id="36"></next>
+  </p>
+  <p id="136">
+    <text>
+        [p]Két fegyverre fi gyelsz fel. Melyiket teszed el?[/p]
+    </text>
+    <next id="174">Az íjat és hozzá tartozó nyílvesszőket?</next>
+    <next id="54">A buzogányt?</next>
+  </p>
+  <p id="54">
+    <text>
+        [p]Övedbe dugod a buzogányt.[/p]
+    </text>
+    <gatherItem id="1002" />
+    <next id="36"></next>
+  </p>
+  <p id="174">
+    <text>
+        [p]Az íj és a nyilak remek munkák, erős anyagból készültek.[/p]
+    </text>
+    <gatherItem id="3005" />
+    <next id="36"></next>
+  </p>
+  <p id="190">
+    <text>
+        [p]Az ajtó némán nyílik ki előtted, majd bezáródik a hátad mögött. A levegő itt még nedvesebb. Lámpásod fényében különös, lágyan foszforeszkáló gazokat látsz, melyek a falakon, plafonon és padlón kapaszkodnak. Nyálka csepeg zöld és bíbor színű szárukról, a húsos indáikon duzzadó zsákok tompa pukkanással szakadnak fel talpad alatt. Hamarosan átható bűz tölti meg a járatot.[/p]
+        [p]Jobb oldaladon egy nagyobb halom gyom zöldes fényt áraszt magából. Mit teszel?[/p]
+    </text>
+    <next id="49">Közelebbről is megvizsgálod?</next>
+    <next id="147">Amilyen gyorsan csak tudsz, továbbállsz?</next>
+  </p>
+  <p id="49">
+    <text>
+        [p]Tiszta libabőrös leszel, ahogy óvatosan széthúzod a nyálkás szárakat. Orrfacsaró bűz áramlik feléd a növények közül. Kezedet mélyen a ragyogó massza közepébe nyomod – és hideg fémet tapintasz ki alatta. Egy különös, kovácsolt [span class="takeItem" data-id="3004" data-amount="1"]ezüst csuklópántot[/span] húzol ki belőle, melynek felszínét érdekes dombormű díszíti. Magadra csatolod új szerzeményedet és tovább indulsz déli irányba.[/p]
+    </text>
+    <next id="147"></next>
+  </p>
+  <p id="147">
+    <text>
+        [p]A gőzök lassan felhígulnak, végül teljesen eltűnnek a levegőből. Ezután egy nyugat felé futó folyosóra bukkansz, mely a tiedhez csatlakozik. Mit teszel?[/p]
+    </text>
+    <next id="80">Jobbra fordulsz és az új járatban folytatod az utat?</next>
+    <next id="19">Dél felé haladsz tovább?</next>
+  </p>
+  <p id="19">
+    <text>
+        [p]Itt a kripta bűze szennyezi be a levegőt, mely a rothadás betegesen édes szagát és ízét hagyja maga után. Több oldalkamra felé futó járatot is látsz, de mikor bepillantasz az egyikbe, öklendezve tántorogsz hátra: számolatlanul hevernek odabenn a nevenincs holttestek koporsóban vagy anélkül, csak a földre hajítva, egészben és megcsonkítva is.[/p]
+    </text>
+    <next id="77"></next>
+  </p>
+  <p id="77">
+    <text>
+        [p]Ahogy próbálod nem elhányni magad a bűztől, különös jelenet játszódik le az elmédben. Olyan, mintha csak álmodnál, de érzed, hogy a múlt, vagy talán épp a jövő képei azok, melyek a fejedben megjelennek. Egy kísértetszerű isten szólítja meg a holtakat, hogy keljenek életre és támadjanak rád. A tetemek mereven kimásznak szétszórt koporsóikból, és maradék ruhájukba vagy vértjükbe burkolózva, nyughatatlanul megindulnak feléd.[/p]
+    </text>
+    <next id="43"></next>
+  </p>
+  <p id="43">
+    <text>
+        [p]A látomás hirtelen szertefoszlik, te pedig visszatérsz a valóságba. Nem tudod, mit jelent pontosan az, amit láttál, úgyhogy biztos ami biztos, megszaporázod lépteidet. Lehetséges, hogy épp most pecsételődött meg a sorsod?[/p]
+    </text>
+    <next id="75"></next>
+  </p>
+  <p id="75">
+    <text>
+        [p]Az alagút élesen jobbra kanyarodik és nyugatnak fut tovább. A levegő kitisztul, az ősi dohosság szinte már fi nomnak tűnik a tetemek bűze után. Hamarosan egy T elágazáshoz érkezel. A déli járat irányából valami ínycsiklandozó illat árad felét, míg az északi sötét és néma. Merre indulsz?[/p]
+    </text>
+    <next id="117">Délnek?</next>
+    <next id="56">Északnak?</next>
+  </p>
+  <p id="117">
+    <text>
+        [p]A járat egy gyengén megvilágított, almafákkal teli helyiségbe vezet. Az aranyló gyümölcsök, melyek aranysárga levelek közül kandikálnak ki, igazán fi nom illatot árasztanak magukból.[/p]
+    </text>
+    <next id="91">Ha meg akarod kóstolni az egyiket</next>
+    <next id="56">Ha inkább ellenállsz a kísértésnek, visszafordulsz és észak felé folytatod az utadat</next>
+  </p>
+  <p id="56">
+    <text>
+        [p]Észak felé követed a járatot, ami végül egy súlyos kőajtóban ér véget. Érintésedre azonnal kitárul, és egy kelet-nyugati alagútban találod magad. A jobbodon egy másik kaput látsz, ami éppen ugyanúgy néz ki, mint az, amin most léptél át – és ami közben hangtalanul becsukódott mögötted.[/p]
+    </text>
+    <next id="11"></next>
+  </p>
+  <p id="11">
+    <text>
+        [p]Megpróbálod belökni mindkét ajtót, de egyik sem moccan, így más választás híján nyugat felé indulsz. A járatból végül egy másik alagút indul el északi irányba, azonban egyenesen is folytatódik még egy ideig, ez az ág azonban zsákutcába torkollik – a falon pedig egy repedést pillantasz meg nagyjából két és fél méteres magasságban, amin talán még át is férnél. Mit teszel?[/p]
+    </text>
+    <next id="57">Felmászol a résbe, hogy megtudd, hová vezet?</next>
+    <next id="20">Követed az északi alagutat?</next>
+  </p>
+  <p id="57">
+    <text>
+        [p]Felmászol a repedéshez és a keskeny falon egyensúlyozva kipillantasz a túloldalt elterülő sötétbe. A magasba emeled lámpásod, remélve, hogy jobban be tudod így világítani a területet – lábad azonban megcsúszik, te pedig előre buksz az ismeretlen feketeségbe.[/p]
+    </text>
+    <next id="112"></next>
+  </p>
+  <p id="112">
+    <text>
+        [p]Csonttörő puffanással érkezel, amitől kiszakad tüdődből a levegő. Lámpásod viszont valami csodával határos módon talpra érkezett és még mindig fényesen ragyog.[/p]
+    </text>
+    <next id="169"></next>
+  </p>
+  <p id="169">
+    <text>
+        [p]Egy nagy barlangban találod magad, melyből egy keskeny folyosó indul nyugati irányba. A déli falon, nagyjából derék magasságban egy kis falmélyedést látsz, fölötte a veszélyt jelző rúnát, a nyílás körül pedig vastag pókhálókat. Mit teszel?[/p]
+    </text>
+    <next id="116">Oldalra húzod a hálót és bepillantasz?</next>
+    <next id="52">Elindulsz nyugati folyosón?</next>
+  </p>
+  <p id="116">
+    <text>
+        [p]Szánalmas, gyenge csipogást hallasz, miközben oldalra tolod a ragadós hálót. Mögötte, a mélyedésben egy kis, ketrecbe zárt madárkát pillantasz meg. Csőre és karmai alapján arra tippelsz, valamilyen ragadozó kicsinye lehet. Óvatosan felemeled a ketrecet és kiereszted a csibét – az azonban legnagyobb meglepetésedre hátizsákodra ugrik és kényelmesen elhelyezkedik. Mivel más kiutat nem látsz, nyugatnak indulsz.[/p]
+    </text>
+    <next id="52"></next>
+  </p>
+  <p id="25">
+    <text>
+        [p]Ahogy elfordulsz a teremtől, a fal tompa puffanás kíséretében ismét becsukódik mögötted, te pedig tovább indulsz dél felé.[/p]
+    </text>
+    <next id="64"></next>
+  </p>
+  <p id="64">
+    <text>
+        [p]Egy elágazáshoz érkezel. Merre indulsz?[/p]
+    </text>
+    <next id="171">Ha balra, kelet felé</next>
+    <next id="16">Ha tovább mennél délre, felfelé</next>
+  </p>
+  <p id="16">
+    <text>
+        [p]A járat lassan emelkedik és fokozatosan elkeskenyedik, végül teljesen összezáródik. A fal felső részén azonban rábukkansz egy repedésre, mely épp elég nagy ahhoz, hogy át tudd magad préselni rajta.[/p]
+    </text>
+    <next id="94">Ha így tennél</next>
+    <next id="171">Ha inkább visszafordulnál és a keleti alagúton indulnál tovább</next>
+  </p>
+  <p id="94">
+    <text>
+        [p]Nagy nehezen áttuszkolod magad a résen – de mikor a túlvégén kiérsz, kiderül, hogy a levegőben lógsz! Vadul kapálózni kezdesz valamilyen fogódzkodó után, de semmit nem találsz. Lezuhansz a sötétségbe.[/p]
+    </text>
+    <next id="17"></next>
+  </p>
+  <p id="17">
+    <text>
+        [p]Szerencsére a zuhanás nem tart hosszan, nincs három méteres, így pár karcolással megúszod a dolgot. Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="72"></next>
+  </p>
+  <p id="72">
+    <text>
+        [p]A folyosót keleti és déli irányba egy-egy súlyos kőajtó zárja le, melyeket nem tudsz kinyitni. Nyugat felé vagy kénytelen továbbindulni. Az alagút végül egy zsákutcában ér véget, de csak az után, hogy egy újabb szakasz indult ki belőle észak felé. A nyugati falon egy újabb, nagyobb repedést látsz, nagyjából két és fél méteres magasságban. Mit teszel?[/p]
+    </text>
+    <next id="57">Átmászol a repedésen?</next>
+    <next id="20">Követed az északi járatot?</next>
+  </p>
+  <p id="20">
+    <text>
+        [p]A folyosó hosszú, a fala simára van faragva. Lámpásod lángja kísértetiesen remeg és különös árnyakat vet a falra. A hűs levegő meg sem rezdül. Elhaladsz egy súlyos fa ajtó mellett, mely a bal oldaladon áll. Mikor megpróbálsz benyitni rajta, meg sem moccan, a túloldalán azonban megváltozik a járat fala, sokkal durvább faragásúvá válik, mintha az élő sziklából vájták volna ki emberkéz segítsége nélkül, és apró, csillogó kristályok sokasága jelenik meg rajta. A levegő is melegebbé válik.[/p]
+    </text>
+    <next id="28"></next>
+  </p>
+  <p id="28">
+    <text>
+        [p]Előtted a járat be van omolva, ám közeledtedre morajló zaj hangzik fel valahonnan, és egy nagy sziklalap húzódik oldalra. Egy keleti irányba induló folyosót fed fel, amit függő- és állócseppkövek határolnak, melyek gonosz, vigyorgó fogakként csillognak lámpásod fényében. Ahogy közéjük lépsz, a falszakasz hangos robaj kíséretében becsukódik. Bármennyire is igyekszel, nem tudod ismét kinyílásra bírni, ezért kelet felé indulsz.[/p]
+    </text>
+    <next id="12"></next>
+  </p>
+  <p id="12">
+    <text>
+        [p]A járat jobbra kanyarodik és déli irányba indul tovább. A levegő sűrűbbé és bűzösebbé válik, kaparni kezdi a torkodat. Egy kis járat fut bele a tiedbe nyugati irányból, épp ott, ahol a déli egy nehéz kőajtóban véget ér, melyet minden igyekezeted ellenére sem tudsz kinyitni.[/p]
+    </text>
+    <next id="115"></next>
+  </p>
+  <p id="171">
+    <text>
+        [p]A folyosó egyenesen halad, végig vaksötétben, először vízszintesen, aztán szépen, lassan lejteni kezd, egyre meredekebben. Lábad végül megcsúszik a tükörsima padlón. Kétségbeesetten próbálod valahogy megállítani magad, de nincs mibe kapaszkodnod, és egyre gyorsabban és gyorsabban siklasz lefelé a csúszdán. A levegő melegedni kezd, és vörös, egyre világosodó fényt pillantasz meg a mélyből felszűrődni. Végül, mikor a hőség és a ragyogás már-már elviselhetetlenné válik, vége szakad a folyosónak és egy lyukon át egy hatalmas barlangüregbe érkezel, melynek alját lángtenger és olvadt láva alkotja. Az utolsó dolog, amit égő szemeid megpillantanak, egy óriási szalamandra lobogó teste, ami egy sziklán üldögél és két másik szerencsétlent sütöget. Sorsod megpecsételődött.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="91">
+    <text>
+        [p]Az alma semmihez sem hasonlítható, amit eddig kóstoltál. Ehhez képest minden más gyümölcs íze olyan, mint a hamu. Elégedettség érzése tölt el, olyan, mintha több lennél egyszerű halandónál, ezt leszámítva azonban semmilyen különleges hatása nincs rád. Elhagyod a termet és északi irányba távozol.[/p]
+    </text>
+    <next id="56"></next>
+  </p>
+  <p id="127">
+    <text>
+        [p]A keleti folyosó lágyan ereszkedik lefelé, a levegő fokozatosan melegedni kezd, a falak sokszínű kristályok szórt fényében játszanak. A közelben csobogó patak hangját hallod, és ahogy egyre lejjebb ereszkedsz, a hang is egyre erősödik. Végül egy hatalmas barlang egyik falánál bukkansz elő, melynek pontos méreteit elfedi a mindent beborító sötétség. Egy folyó szeli át az üreg alját, mely felett egy kecses ívű hidat látsz csillogni lámpásod fényében. Élő kristályok hullámzanak és zuhannak le vízesésként a láthatatlan magasból a feneketlen mélységbe, miközben ezernyi színnel vetítik be az üreget. Most már érted, miért szeretik a törpék annyira a világ földalatti részeit. Lehetséges, hogy minden kristályoszlopnak és -függönynek saját hangja is van, melyeket a fém érintése ébreszthet fel? Mit teszel?[/p]
+    </text>
+    <next id="177">Előhúzod a kardodat, hogy kiderítsd?</next>
+    <next id="93">A hídon át tovább mész keleti irányba?</next>
+  </p>
+  <p id="177">
+    <text>
+        [p]Ahogy fegyvered pengéje hozzáér az első óriáskristályhoz, egyetlen tiszta hang csendül fel, tisztábban, mint a legtökéletesebben öntött harangból, és végigvisszhangzik a barlangban. Újabb és újabb kristályokat csapsz meg, míg végül már hangok szimfóniája zengi be a barlangot, melyek más kristályokról visszhangzanak és a testedet is kikezdik. A remegés csontig hatol, végül öntudatlanul terülsz el a talajon. Vesztesz 2 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="70"></next>
+  </p>
+  <p id="93">
+    <text>
+        [p]A híd magasan ível át a bugyogó folyó felett, a végtelen ürességben visszhangzó csobogása kíséri lépteidet. Az építmény túlsó végénél egy újabb járat indul, ami egyből bele is veti magát a sziklákba, és ahogy haladsz előre, a víz hangja lassan elhal a távolban. Végül egy faajtóhoz érsz, melyen sem kilincset, sem pedig zárat nem látsz. Próbálod belökni és kihúzni, de nem jársz sikerrel. Kénytelen vagy visszatérni a korábbi elágazáshoz.[/p]
+    </text>
+    <next id="177">Ha a hidas üregben megállnál játszani a kristályokkal</next>
+    <next id="141">Ha nem</next>
+  </p>
+  <p id="70">
+    <text>
+        [p]Azonban nem a talajon fekszel. A levegőben suhansz, széttárt végtagokkal, míg végül a lágy víz fel nem emel. Nem kell úsznod, a langyos áramlás magától is visz téged dél felé. Végül teljesen magadhoz térsz és végiggondolod veszedelmes helyzetedet. Dél felé haladsz, mintha a lágy szél szállítana arra. Az áramlás azonban fokozatosan erősödik és a víz is egyre hidegebbé válik. Úgyhogy a keleti partra úszol és könnyedén kimászol belőle.[/p]
+        [p]Erős, jeges szél fúj, melytől vacogni kezdesz. Nem látsz mást magad előtt, csak vékony hóréteget és alattomos jégfoltokat. És egy könnyedén kivehető utat, amin óvatosan el is indulsz kelet felé.[/p]
+    </text>
+    <next id="193"></next>
+  </p>
+  <p id="193">
+    <text>
+        [p]Előre indulsz, keleti irányba. A talaj továbbra is sziklás a talpad alatt, és teljesen üres, a fény sápadt és egyhangú. Végül egy jókora szakadékhoz érkezel, aminek túloldalán egy hosszú fal fut észak-déli irányba. Egy híd ível át mindkettő felett.[/p]
+    </text>
+    <next id="10"></next>
+  </p>
+  <p id="10">
+    <text>
+        [p]Ahogy éppen lelépnél a híd túlsó végéről, egy gyönyörű hajadon lép elő a mellvéd mögött álló őrhelyéről, és csillogó karddal az oldalán rád kiált. - Megállj! Ki vagy te, hogy ily dübögő léptekkel haladj végig a Visszhangzó Hídon? A lábad több zajt csap, mint háromszáz holté! Hogy kerültél ide?[/p]
+        [p]A rémülettől elakad a szavad, mert most már tudod, hogy elérkeztél az alvilágba. Modgud áll előtted, a Pokol királyságának kapuőre, a holtak rettegett istennője. Élőként érkeztél meg a kárhozottak földjére. Mit teszel?[/p]
+    </text>
+    <next id="123">A hajadonra támadsz, remélve, hogy így elnyerheted szabadulásodat?</next>
+    <next id="137">Beszámolsz neki a küldetésedről?</next>
+    <next id="35">Bevallod neki, hogy véletlenül keveredtél ide?</next>
+  </p>
+  <p id="123">
+    <text>
+        [p]Küzdj meg Modguddal.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="1" />
+    </fight>
+    <next id="133"></next>
+  </p>
+  <p id="133">
+    <text>
+        [p]Modgud teste holtában is épp olyan gyönyörű, mint élőként volt. Egy hatalmas [span class="takeItem" data-id="3006" data-amount="1"]smaragdgyűrűt[/span] látsz az ujján csillogni a fakó fényben, melyet magadhoz vehetsz, ha akarsz.[/p]
+    </text>
+    <next id="33"></next>
+  </p>
+  <p id="33">
+    <text>
+        [p]Elfordulsz a híd és a hajadon felől és egy alig látható salakutat kezdesz követni, ami dél felé halad, egyenesen egy keresztbe futó, komor sziklafal irányába. Mikor eléred ezt, egy kis barlangra bukkansz, ami lefelé indul, a földbe.[/p]
+    </text>
+    <next id="41"></next>
+  </p>
+  <p id="83">
+    <text>
+        [p]A párkány igen keskeny. Hálás vagy, amiért a tűz földje bevilágítja az utadat. Centiről centire haladsz csak a vékony peremen, és közben végig a sziklafalba kapaszkodsz, mint egy bogár. Lassan araszolsz kelet felé, végül azonban eléred a pontot, ahol az út délnek fordul. Innentől pedig még óvatosabban haladsz magasan a jég birodalma felett. Hirtelen a sziklafal omladozni kezd a lábad alatt, te pedig sietve keresel valami kapaszkodót, hogy le ne zuhanj. Látod, hogy csak pár métert kellene megtenned, és ott ismét biztonságban lennél.[/p]
+    </text>
+    <next id="22">Ha megpróbálsz nagy lendületet venni és odaugrani</next>
+    <next id="95">Ha fölfelé kezdenél mászni</next>
+    <next id="51">Ha megfújnád a kürtödet</next>
+  </p>
+  <p id="51">
+    <text>
+        [p]Paták dobogása tölti be a levegőt, és a körülötted örvénylő ködből egy csapat harcos vágtat ki tüzes lovakon. Vezetőjük zord tekintetű, de úgy néz ki, mint egy isten. Páncélba és állatbőrökbe vannak öltözve, és bár látni nem látod, de úgy érzed, mintha alakjuk emberből állatba változna, majd vissza. Köréd gyűlnek. – Ki szólaltatta meg a kürtöt? – kiáltják. – Csak nem a nyakunkon van Surt? Hol a csata, melyhez csatlakoznunk kell? – Vöröslő arccal megpróbálod elmondani nekik, hogy sehol nem dúl a harc, csak neked van szükséged a segítségükre szorult helyzetedben. Hangod azonban gyengének hallik még saját füled számára is. A harcosok szigorú tekintete alatt végül elhallgatsz és leszeged a fejed.[/p]
+        [p]– Ezért idéztél minket ide? – üvölti a vezetőjük. – Na szép! – Azzal előre nyúl és súlyos csapást mér a fejedre. Ettől majdnem lezuhansz a szikláról. Vesztesz 2 ÉLETERŐ és 1 ÜGYESSÉG pontot. A lovasok sarkon fordulnak és elvágtatnak, ott hagyva téged szorult helyzetedben.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="skill" />
+    <next id="95">Ha felfelé kezdesz mászni</next>
+    <next id="22">Ha megpróbálsz oldalra lendülve kijutni innen</next>
+  </p>
+  <p id="95">
+    <text>
+        [p]A sziklafal szinte teljesen sima, gyakorlatilag csak ujjaid hegyével tudsz kapaszkodót találni. A mászás több, mint megerőltető. Vesztesz 3 ÉLETERŐ pontot. Izzadtság kezd folyni homlokodon, és mikor ujjaid is benedvesednek, rájössz, hogy ha nem jutsz hamarosan biztonságba, akkor le fogsz zuhanni a lenti mélységbe.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <next id="46"></next>
+  </p>
+  <p id="46">
+    <text>
+        [p]Végül rábukkansz egy kis nyúlványra, mely egy kis barlang száját jelzi. Itt végre kimerülten megpihensz.[/p]
+    </text>
+    <next id="114">Ha visszafordulnál és lemásznál a falon</next>
+    <next id="21">Ha az üregben néznél szét</next>
+  </p>
+  <p id="21">
+    <text>
+        [p]A tűz földjének vörös lángolása lassan semmivé foszlik mögötted, miközben az üreg, mely sokkal inkább hasonlít egy járatra, kelet felé fordul és nedves, hűvös alagúttá válik. Ráadásul hamarosan élesen lejteni kezd. Kellemetlen szag tölti meg a levegőt, ami lépésről lépésre erősödik. Egy újabb kanyar után már dél felé haladsz, és messze előre fényt vélsz felfedezni.[/p]
+    </text>
+    <itemCheck type="item" id="3007">
+      <have>
+        <next id="192">Ha szeretnéd eloltani a lámpásod, hogy láthatatlanul közelítsd meg azt a valamit, ami vár rád</next>
+        <next id="101">Ha égve akarod hagyni</next>
+      </have>
+      <dontHave>
+        <next id="192"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="192">
+    <text>
+        [p]Lábujjhegyen lopakodsz előre, majd egy jókora kolomp mellett bepillantasz a megvilágított barlangba. Egy kis olajlámpást látsz egy sziklatálalón, amit koszos kőtányérok, csontmaradványok és rothadó ételmaradékok borítanak be. Az egyik sarokban hatalmas kőágy áll, benne pedig egy halom szőrme alatt egy alaktalan test. A helyiség túloldalán egy alagút vezet tovább délnek. Mit teszel?[/p]
+    </text>
+    <next id="164">Átlopakodsz a barlangon?</next>
+    <next id="14">Csendben körbe nézel, remélve, hogy rátalálsz valami értékesre?</next>
+    <next id="32">Kolompolsz?</next>
+  </p>
+  <p id="101">
+    <text>
+        [p]Ilyen a te szerencséd! Lámpásod még egy utolsót lobban, aztán kialszik: kifogyott belőle az olaj. De talán itt majd találsz belőle.[/p]
+    </text>
+    <next id="192"></next>
+  </p>
+  <p id="164">
+    <text>
+        [p]Biztonságban átjutsz a barlangon és eléred a túloldali folyosót. Ekkor azonban tudatosul benned, hogy semmilyen módon nem tudsz ismét életet csiholni lámpásodba. Két választásod maradt.[/p]
+    </text>
+    <next id="153">Ha sötétben folytatod az utat</next>
+    <next id="73">Ha visszafordulnál, és megpróbálnál fényt szerezni a barlangüregből</next>
+  </p>
+  <p id="153">
+    <text>
+        [p]Vakon araszolsz végig a járatban, közben több laza kőben is majdnem felbuksz, és a nyálkásabb területekre lépve is kis híján elcsúszol. Végül eltűnik a fal a kezed alól. Egy másik folyosóhoz érkeztél, mely keleti irányba ágazik le a tiedből.[/p]
+    </text>
+    <next id="143">Ha erre folytatnád az utad</next>
+    <next id="65">Ha inkább egyenesen mennél tovább</next>
+  </p>
+  <p id="65">
+    <text>
+        [p]Hamarosan megbánod elhamarkodott döntésedet – már ameddig erre lehetőséged lesz. Egy hatalmas szakadék keresztezi az utadat, a vaksötétben azonban egészen addig nem veszed észre, amíg egyik lépésednél el nem tűnik a talpad alól a talaj és zuhanni nem kezdesz. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="143">
+    <text>
+        [p]Az új járat előbb lassan kezd el lejteni, aztán egyre meredekebbé válik. Közben pedig meg is fordul, így hamarosan már nyugat felé haladsz. A kövek itt sem valami stabilak, egyre több erőfeszítésedbe kerül, hogy ne bukj fel. Végül azonban megtörténik az elkerülhetetlen: lábad kicsúszik alólad, te pedig irányíthatatlanul lefelé kezdesz szánkázni. Szerencsédre egy szürke alagútszájon át nagy halom hóba érkezel.[/p]
+        [p]Köpködve kászálódsz ki a vastag hótakaróból és körbenézel. Abban a hóvilágban találod magad, amit odafentről is láttál. A Ginnungagap túloldalán lángoló pokol fénye haloványnak tűnik a távolban, a sok jég és a hideg levegő miatt sokat veszít az erejéből.[/p]
+    </text>
+    <next id="185"></next>
+  </p>
+  <p id="14">
+    <text>
+        [p]Amilyen halkan csak tudsz, a tálalóhoz lopakodsz. Semmi érdekeset nem találsz. Hirtelen mozgást hallasz a hátad mögül, úgyhogy gyorsan megperdülsz. Egy vén, görnyedt hátú Trollt látsz, ami az ágyától közeledik feléd. – Vacsora! – kuncog fel, majd feléd kap.[/p]
+    </text>
+    <next id="38">Ha elugrasz előle és menekülőre fogod a dolgot</next>
+    <next id="140">Ha maradsz és megküzdesz vele</next>
+  </p>
+  <p id="52">
+    <text>
+        [p]A járat lefelé ereszkedik, és ahogy haladsz előre, úgy válik egyre meredekebbé. Felszíne tükörsima, és bár minden fi gyelmedet arra fordítod, hogy fel ne bukj, lábad végül mégis megcsúszik, te pedig apró kavicsok és egyéb törmelékek zápora közepette lefelé kezdesz szánkázni. Egy nyíláson át végül kirepülsz az alagútba és egy, a mélyben hömpölygő fekete folyóba csobbansz. Lámpásod azonnal kialszik, neked azonban sikerül nagy nehézségek árán a felszín felett tartanod a fejedet.[/p]
+    </text>
+    <itemCheck type="section" id="116">
+      <have>
+        <next id="84"></next>
+      </have>
+      <dontHave>
+        <next id="9"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="9">
+    <text>
+        [p]A habzó áradat magával ragad, semmit sem tehetsz ellene. A víz hideg, mint a halál, és ahogy tested ledermed, úgy vergődésed is alább hagy. Lassan a felszín alá süllyedsz és elsötétül előtted a világ.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="84">
+    <text>
+        [p]Az ég elsötétül fölötted, miközben a vízben kapálózol, és feltekintve egy hatalmas ragadozómadarat pillantasz meg, amint épp feléd ereszkedik. Csőrét nagyra tátja, dühödt rikoltást hallat és feléd mereszti éles karmait. Úgy tűnik, itt a vég.[/p]
+    </text>
+    <next id="105"></next>
+  </p>
+  <p id="105">
+    <text>
+        [p]Legnagyobb döbbenetedre és megkönnyebbülésedre a félelmetes lény egyszerűen megragad és kiemel a vízből. A kicsinye, ami eddig zsákodon üldögélt, most leugrik és az arcod előtt kezd el röpködni, míg a nagyobb lágyan búg. Úgy tűnik, sikerült összehoznod a családot, és ezért hálából magasan a folyó felett visznek téged. A vízből alattad immáron csupán egy vékony, ezüstszál látszik. Két oldalán a talaj sziklás és nem túl bizalomgerjesztő. Egy ideig így repültök dél felé, végül azonban az óriás madár leszáll a földre és letesz téged a keleti parton. Ezután egyetlen hatalmas szárnycsapással a levegőbe röppen és kicsinyével együtt magadra hagy. Feltápászkodsz. Szerencsére semmi bajod nem lett az utazástól, de ez nem változtat azon a tényen, hogy itt állsz egy szürke, komor hely kellős közepén, teljesen elveszve.[/p]
+    </text>
+    <next id="193"></next>
+  </p>
+  <p id="80">
+    <text>
+        [p]Különös, suttogásszerű zajok hangzanak fel a sötétből: a hátad mögött egy ajtó csattanását hallod – meg már nem fordulhatsz. Fénypontok villannak fel előtted, te pedig megdörzsölöd a szemed, hogy megszabadulj a káprázattól – csakhogy ezek nagyon is valóságosak. Egy Garmmal nézel farkasszemet, az egyik pokoli ebbel, ami az alvilágot őrzi. Pofájából mérgező nyál csöpög, szemei vörösen izzanak: azért jött, hogy úrnőjének sötét birodalmába rántson magával. Meg kell küzdened vele.[/p]
+    </text>
+    <fight type="single">
+    <enemy id="2"/>
+    </fight>
+    <next id="8"></next>
+  </p>
+  <p id="8">
+    <text>
+        [p]Ahogy a Gram teteme fölött állsz, az néhány másodperc alatt bűzös, nyúlos folyadékká oszlik szét, mely sisteregni kezd és hányingerkeltő gázokat ereszt a levegőbe, végül pedig semmivé foszlik. Egy újabb ajtót látsz magad előtt, mely elzárja a nyugat felé vezető alagutat. Óvatosan megkerülöd a helyet, ahol ellenfeled teste semmivé foszlott. Köze-ledtedre a különös ajtó oldalra csúszik és felfedi előtted a nyugati járat folytatását. Egy ideig erre mész, végül azonban a folyosó élesen észak felé fordul. Nem messze onnan azonban egy újabb nyugati leágazást veszel észre, mely hamarosan zsákutcában ér véget. A falon két és fél méteres magasságban egy nagy repedés húzódik. Megállsz és végiggondolod, merre menj tovább.[/p]
+    </text>
+    <next id="57">Ha úgy döntesz, hogy a nyugati folyosó végén lévő rést néznéd meg, hogy merre vezet</next>
+    <next id="20">Ha inkább továbbra is északnak tartanál</next>
+  </p>
+  <p id="96">
+    <text>
+        [p]Virágok és fák erős illata uralja a meleg levegőt. Átvágsz a gazdag növényzeten, míg végül el nem érsz egy kis csúcshoz, ami a sziget közepén emelkedik. Ennek déli oldalán egy barlangnyílásra bukkansz. Mit teszel?[/p]
+    </text>
+    <next id="173">Lemész és körbenézel a barlangban?</next>
+    <next id="182">Visszatérsz a partra?</next>
+  </p>
+  <p id="173">
+    <text>
+        [p]A kis, csipkés csúcs déli oldalán lesétálsz a barlangnyílásig és óvatosan belépsz. Az üreg falaiból lágy fény árad, a közepén pedig egy üst áll, melyet valamilyen folyadék tölt meg. Egy dárda hever mellette, a kettő közt pedig egy ronda, pucér Törpe ül, aki a körmét rágja, szája sarkából pedig nyál csorog. A háta mögött egy nyílást látsz a falon, mely mögül fény szűrődik ki. Mit teszel?[/p]
+    </text>
+    <next id="89" pos="1">Rátámadsz a Törpére?</next>
+    <next id="68" pos="2">Magadhoz veszed a dárdát?</next>
+    <itemCheck type="section" id="85">
+    <have>
+    <next id="187" pos="3">Beleiszol az üstben lévő folyadékba?</next>
+    </have>
+    <dontHave>
+    <next id="79" pos="3">Beleiszol az üstben lévő folyadékba?</next>
+    </dontHave>
+    </itemCheck>
+    <next id="26" pos="4">Nem nyúlsz semmihez, csak megkerülöd a terem közepén lévőket és a szemközti nyíláson át távozol?</next>
+  </p>
+  <p id="26">
+    <text>
+        [p]Ellenállás nélkül eljutsz a barlang túloldalára, átlépsz a nyíláson és lefelé indulsz egy rövid, dél felé haladó folyosóban. A fény forrása most már egyértelműen látható: egy nagy, jól megvilágított terembe érkezel. Ennek végében egy hatalmas trón áll egy halom fegyver és egy tábortűz füstölgő maradványai között. Mit teszel?[/p]
+    </text>
+    <next id="30">Leülsz a trónra?</next>
+    <next id="136">Megvizsgálod a fegyvereket?</next>
+  </p>
+  <p id="29">
+  <empty/>
+  </p>
+  <p id="79">
+    <text>
+        [p]A Törpe nem próbál megakadályozni abban, hogy igyál az üst tartalmából, a folyadék azonban tűzként égeti torkodat. Az anyag halálos méreg minden halandó számára. Kalandod itt véget ér.[/p]
+    </text>
+    <death/>
+  </p>
+  <p id="187">
+    <text>
+        [p]Valamikor régen a Törpék megalkották Nagy Kvazírt, a Bölcset, az istenek tanácsadóját. Mások azonban megölték őt és mézsört főztek a véréből. Mindenki, aki iszik ebből, hasonló bölcsességre tesz szert. Most már te is ezek közé tartozol. Kapsz 2 BÖLCSESSÉG pontot.[/p]
+    </text>
+    <add amount="2" to="wisdom"/>
+    <next id="26"></next>
+  </p>
+  <p id="22">
+    <text>
+        [p]Amilyen mélyre csak tudod, bedugod ujjadat a sziklafal repedéseibe és oldalra lendíted a lábaidat. Lábujjaiddal épp csak eléred a párkány peremét, de sikerül megkapaszkodnod egy kiálló sziklában. Lihegve rakod kezeidet centiről centire, minden lehetséges kapaszkodót kihasználva, de végül sikerül elérned a túloldalt. Vesztesz 2 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina"/>
+    <next id="120"></next>
+  </p>
+  <p id="120">
+    <text>
+        [p]A perem hátralévő részén baj nélkül sikerül végigmenned előbb délre, majd vissza nyugat felé. A párkány itt már fokozatosan ereszkedik lefelé, míg el nem éri a jégvilág havas szintjét.[/p]
+    </text>
+    <next id="166">Ha most nyugati irányba mész tovább, a Ginnungagap felé</next>
+    <next id="109">Ha délre indulnál, a jég birodalmába</next>
+  </p>
+  <p id="166">
+    <text>
+        [p]Úgy érzed, órák óta baktatsz előre és törsz utat magadnak a vastag hó-takaróban, miközben a nyugaton lángoló őrtüzet követed, mely mintha ugyanolyan távol lenne tőled, mint eddig is. Havazni kezd, ami még nehezebbé teszi számodra az előre haladást – vesztesz 2 ÉLETERŐ pontot. Végül azonban eléred a Ginnungagap hatalmas hasadékát, és szinte öntudatlanul belelépsz kavargó ködébe.[/p]
+    </text>
+    <add amount="-2" to="stamina"/>
+    <next id="76"></next>
+  </p>
+  <p id="76">
+    <text>
+        [p]Fényhullámok ölelnek és átlátszó szellők cirógatják arcodat. Gyönyörű lények jönnek-mennek a szemeid előtt, madarak énekét hallod láthatatlan fákon.[/p]
+        [p]Lassan három dolog kristályosodik ki előtted a nagy zavarból: egy arany alma, egy arany kard és egy arany köcsög, mely csordultig van töltve tejjel. Melyiket veszed magadhoz?[/p]
+    </text>
+    <next id="85">Az almát?</next>
+    <next id="176">A kardot?</next>
+    <next id="138">A tejet?</next>
+  </p>
+  <p id="85">
+    <text>
+        [p]Ahogy kézbe veszed a gyümölcsöt, a kard elhalványodik. Édes illatú alma ez, és képtelen vagy ellenállni neki: beleharapsz. Hirtelen elszáll tagjaidból a fáradtság. Minden korábban elvesztett ÉLETERŐ pontodat visszakapod. Ez ugyanis a fi atalság almája, amit ennek a földnek az urai termesztenek, hogy halhatatlanságukat biztosítsák önmaguk számára. Te azonban nem vagy isten, mint az itt lakók, ezért rád kicsit másképp hat a gyümölcs: többé tesz, mint egy egyszerű halandó. A gyümölcs mágikus hatalma erős védelmet ad számodra, mely minden soron következő csatában érvényesülni fog: valahányszor eltalálnak ellenfeleid, 1 ponttal lecsökkentheted majd az általuk okozott sebesülést.[/p]
+    </text>
+    <add amount="24" to="stamina"/>
+    <add amount="1" to="damageProtection"/>
+    <next id="138">Ha most magadhoz vennéd a köcsögöt is</next>
+    <next id="163">Ha ott akarod hagyni</next>
+  </p>
+  <p id="176">
+    <text>
+        [p]A kard furcsán nehéznek látszik, de jól ki van egyensúlyozva, és gyönyörűen néz ki. Miközben próbaképp csapsz vele néhányat, az arany alma elhalványul.[/p]
+    </text>
+    <gatherItem id="1003"/>
+    <next id="138">Hogyha most magadhoz akarod venni a köcsögöt is</next>
+    <next id="163">Ha ott hagynád, ahol van</next>
+  </p>
+  <p id="138">
+    <text>
+        [p]Magadhoz veszed a köcsögöt és belekóstolsz a tejbe – a köd pedig szétoszlik. Semmit sem látsz magad alatt, sem pedig felett. Próbálsz megmozdulni, de képtelen vagy rá. Sötét felhő gyülekezik a láthatáron, mely egyre sebesebben közeledik feléd és dagad hatalmasra. Szemeket pillantasz meg bennük, és fogakat, melyek nagyobbak, mint egy-egy hegy.[alt][/alt][/p]
+    </text>
+    <itemCheck type="item" id="3008">
+    <have>
+    <next id="191" pos="1" singleChoiceText="Előveszed a láncot a hátizsákodból.">Ha a láncodat akarod használni</next>
+    </have>
+    </itemCheck>
+    <itemCheck type="item" id="3009">
+    <have>
+    <next id="150" pos="2" singleChoiceText="Kézbe veszed Miollnirt.">Ha Miollnirt vennéd elő</next>
+    </have>
+    </itemCheck>
+    <itemCheck type="item" id="3003">
+    <have>
+    <next id="27" pos="3" singleChoiceText="Belefújsz a kürtbe.">Ha megfújnád a kürtödet</next>
+    </have>
+    </itemCheck>
+    <itemCheck type="items" id="3008 or 3009 or 3003">
+    <dontHave>
+    <next id="121" pos="4"></next>
+    </dontHave>
+    </itemCheck>
+  </p>
+  <p id="121">
+    <text>
+        [p]Tehetetlenül fi gyeled, ahogy a felhő magára ölti a félelmetes Fenrisfarkas alakját. Hatalmas állkapcsai bezáródnak körülötted. Elnyel a sötétség.[/p]
+    </text>
+    <death/>
+  </p>
+  <p id="142">
+    <text>
+        [p]Ahogy lábad a hídhoz ér, a farkas nőni kezd, felmordul és elszakítja béklyóját. Sötétség áramlik ki a szájából és alávaló lények bukkannak fel hegyi búvóhelyeikről, melyek a híd felé kezdenek rohanni. A farkas felmordul, mire a szivárvány talapzata megremeg és repedések jelennek meg rajta. Surt hordái vérfagyasztó csatakiáltással vetik magukat bele a harcba. A híd íve széttörik, darabjai a földre hullanak. Elérkezett a Ragnarok napja![/p]
+    </text>
+    <death/>
+  </p>
+  <p id="141">
+    <text>
+        [p]Merre mennél tovább?[/p]
+    </text>
+    <next id="170">Nyugatnak?</next>
+    <next id="183">Délnek?</next>
+  </p>
+  <p id="109">
+    <text>
+        [p]Órákon át haladsz délnek a vörös színben fürdő hóban. Nemsokára annyira elfáradsz, hogy már nem igazán látsz tisztán. Vesztesz 2 ÉLETERŐ pontot. Végül egy jókora, leginkább épülethez hasonlító valamihez érkezel, melynek a teljes északi oldala nyitva áll. Mit teszel?[/p]
+    </text>
+    <add amount="-2" to="stamina"/>
+    <next id="178">Belépsz ide, hogy pihenj egy kicsit?</next>
+    <next id="159">Most indulsz el nyugat felé, a Ginnungagap irányába?</next>
+  </p>
+  <p id="178">
+    <text>
+        [p]Belépsz az épületbe. Nem látsz benne bútort, csupán több sötét folyosót, melyek dél felé indulnak a csarnokból. Ahogy letelepedsz az egyik fal mellett, hogy aludj egy kicsit, megrázkódik a talaj és az egész épület remegni kezd. Hangos üvöltés tölti meg a levegőt.[/p]
+        [p]Rettegve kezdesz az egyik oldalsó folyosó felé rohanni. Melyiket választod?[/p]
+    </text>
+    <next id="106">Az egyik baloldalit?</next>
+    <next id="78">Az egyik jobboldalit?</next>
+  </p>
+  <p id="78">
+    <text>
+        [p]A földrengés folyton a falnak és padlónak veti a testedet. A végén már minden tagod fáj, kék és zöld foltok borítják be testedet. Vesztesz 3 ÉLETERŐ pontot. Végül azonban sikerült kijutnod az épületből.[/p]
+    </text>
+    <add amount="-3" to="stamina"/>
+    <next id="162"></next>
+  </p>
+  <p id="106">
+    <text>
+        [p]Kezed hirtelen egy [span class="takeItem" data-id="3010" data-amount="1"]bőrdarabhoz[/span] ér, mire a rengés megszűnik – legalábbis számodra, mert bár te semmit nem érzel belőle, látod, ahogy az épület tovább remeg. A bőrt alaposabban megnézve látod, hogy egy öv az, ezért gyorsan a derekadra csatolod. Amíg ezt viseled, sokkal erősebb leszel: ellenfeleid 1-el kevesebb pontot sebeznek rajtad, te azonban 1-el többet őrajtuk.[/p]
+        [p]Lefekszel aludni. Visszanyersz 2 ÉLETERŐ pontot. Mikor felébredsz, frissen és kalandra készen elhagyod az épületet.[/p]
+    </text>
+    <add amount="2" to="stamina"/>
+    <next id="162"></next>
+  </p>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </content>

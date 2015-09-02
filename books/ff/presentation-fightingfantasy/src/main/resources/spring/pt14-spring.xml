@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
-  xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:c="http://www.springframework.org/schema/c"
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.Proteus.IN_SEARCH_OF_THE_LOST_LAND" id="pt14Id" />
 
   <bean class="hu.zagor.gamebooks.domain.BookInformations" id="pt14Info" c:id-ref="pt14Id" p:coverPath="resources/pt14/cover.jpg" p:resourceDir="pt14"
-    p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="14" p:series-ref="ptTitle" p:title="In Search of the Lost Land" p:characterHandler-ref="ffCharacterHandler" p:commandResolvers-ref="ffCommandResolvers" p:unfinished="true" p:hidden="true">
+    p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="14" p:series-ref="ptTitle"
+    p:title="In Search of the Lost Land" p:characterHandler-ref="pt14CharacterHandler" p:commandResolvers-ref="ffCommandResolvers" p:unfinished="true" p:hidden="true"
+    p:characterBeanId="pt14Character" p:characterPageDataBeanId="pt14CharacterPageData">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="pt14enemies.xml" c:items="pt14items.xml" c:paragraphs="pt14content.xml" />
     </property>
@@ -15,5 +17,8 @@
       <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="false" />
     </property>
   </bean>
+
+  <bean class="hu.zagor.gamebooks.ff.pt.isotll.mvc.books.newgame.service.Pt14CharacterGenerator" id="pt14CharacterGenerator" />
+  <bean class="hu.zagor.gamebooks.character.handler.FfCharacterHandler" parent="ffCharacterHandler" p:characterGenerator-ref="pt14CharacterGenerator" id="pt14CharacterHandler" />
 
 </beans>
