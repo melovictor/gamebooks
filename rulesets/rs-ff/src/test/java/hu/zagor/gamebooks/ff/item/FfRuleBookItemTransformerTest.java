@@ -108,6 +108,8 @@ public class FfRuleBookItemTransformerTest extends AbstractTransformerTest {
         expectAttribute("backpackSize");
         expectAttribute("staminaDamage");
         expectAttribute("skillDamage");
+        expectAttribute("baseStaminaDamage");
+        expectAttribute("damageProtection");
 
         expectAttribute("dose");
         expectAttribute("price");
