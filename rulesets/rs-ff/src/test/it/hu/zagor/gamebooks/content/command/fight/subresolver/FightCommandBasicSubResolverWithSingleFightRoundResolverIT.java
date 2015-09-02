@@ -278,6 +278,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         enemies.put("2", enemyB);
 
         attributeHandler = new FfAttributeHandler();
+        Whitebox.setInternalState(attributeHandler, "logger", logger);
 
         interactionHandler = new FfUserInteractionHandler();
         interactionHandler.setFightCommand(character, FightCommand.ATTACKING);
@@ -453,6 +454,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -481,6 +483,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -509,6 +512,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW46)).andReturn("Thrown values: 4, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 4, 6.", 18});
         logger.debug("Attack strength for {}: {}", "Orc", 18);
+        logger.error("Cannot resolve property '{}'.", "initialDamageProtection");
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -567,6 +571,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW46)).andReturn("Thrown values: 4, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 4, 6.", 18});
         logger.debug("Attack strength for {}: {}", "Orc", 18);
+        logger.error("Cannot resolve property '{}'.", "initialDamageProtection");
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -754,6 +759,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -783,6 +789,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Orc"});
         mockControl.replay();
@@ -813,6 +820,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -845,6 +853,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -878,6 +887,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -907,6 +917,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -938,6 +949,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -973,6 +985,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -1009,6 +1022,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -1058,6 +1072,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -1114,6 +1129,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -1147,6 +1163,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -1178,6 +1195,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -1207,6 +1225,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -1240,6 +1259,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -1276,6 +1296,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 19});
         logger.debug("Attack strength for {}: {}", "Orc", 19);
+        logger.error("Cannot resolve property '{}'.", "initialDamageProtection");
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -1305,6 +1326,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -1336,6 +1358,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -1365,6 +1388,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         getMessageList().switchToPostRoundMessages();
         expect(getMessageList().getLocale()).andReturn(getLocale());
@@ -1402,6 +1426,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         getMessageList().switchToPostRoundMessages();
         expect(getMessageList().getLocale()).andReturn(getLocale());
@@ -1447,6 +1472,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -1477,6 +1503,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(beanFactory.getBean(ChoiceSet.class)).andReturn(choiceSet);
         getMessageList().switchToRoundMessages();
         getRoundResolver();
+        logger.error("Cannot resolve property '{}'.", "initialDamageProtection");
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -1509,6 +1536,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -1543,6 +1571,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -1578,6 +1607,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         mockControl.replay();
         // WHEN
@@ -1609,6 +1639,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         getMessageList().switchToPostRoundMessages();
         expect(getMessageList().getLocale()).andReturn(getLocale());
@@ -1646,6 +1677,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         getMessageList().switchToPostRoundMessages();
         expect(getMessageList().getLocale()).andReturn(getLocale());
@@ -1686,6 +1718,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         getMessageList().switchToPostRoundMessages();
         expect(getMessageList().getLocale()).andReturn(getLocale());
@@ -1733,6 +1766,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW16)).andReturn("Thrown values: 1, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 1, 6.", 15});
         logger.debug("Attack strength for {}: {}", "Orc", 15);
+        logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
         getMessageList().switchToPostRoundMessages();
         expect(getMessageList().getLocale()).andReturn(getLocale());
@@ -1777,6 +1811,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         expect(diceResultRenderer.render(6, TW46)).andReturn("Thrown values: 4, 6.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Orc", "Thrown values: 4, 6.", 18});
         logger.debug("Attack strength for {}: {}", "Orc", 18);
+        logger.error("Cannot resolve property '{}'.", "initialDamageProtection");
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Orc"});
         getMessageList().switchToPostRoundMessages();
         expect(getMessageList().getLocale()).andReturn(getLocale());

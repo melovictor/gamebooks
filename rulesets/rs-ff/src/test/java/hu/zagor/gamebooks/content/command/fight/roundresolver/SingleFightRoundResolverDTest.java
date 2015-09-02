@@ -141,6 +141,7 @@ public class SingleFightRoundResolverDTest extends FfTextResolvingTest {
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Goblin", "Thrown values: 3, 4.", 15});
         logger.debug("Attack strength for {}: {}", "Goblin", 15);
         expect(character.getStoneSkin()).andReturn(0);
+        expect(attributeHandler.resolveValue(character, "damageProtection")).andReturn(0);
         character.changeStamina(-2);
         character.changeSkill(0);
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Goblin"});
@@ -178,6 +179,7 @@ public class SingleFightRoundResolverDTest extends FfTextResolvingTest {
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Goblin", "Thrown values: 3, 4.", 15});
         logger.debug("Attack strength for {}: {}", "Goblin", 15);
         expect(character.getStoneSkin()).andReturn(0);
+        expect(attributeHandler.resolveValue(character, "damageProtection")).andReturn(0);
         character.changeStamina(-2);
         character.changeSkill(0);
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Goblin"});

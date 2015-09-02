@@ -24,6 +24,9 @@ public class FfRuleBookItemTransformer extends AbstractBookItemTransformer {
         item.setStaminaDamage(extractIntegerAttribute(node, "staminaDamage", 2));
         item.setSkillDamage(extractIntegerAttribute(node, "skillDamage", 0));
 
+        item.setBaseStaminaDamage(extractIntegerAttribute(node, "baseStaminaDamage", 0));
+        item.setDamageProtection(extractIntegerAttribute(node, "damageProtection", 0));
+
         item.setDose(extractIntegerAttribute(node, "dose", 1));
         item.setPrice(extractIntegerAttribute(node, "price", 0));
 

@@ -179,6 +179,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         enemies.put("2", enemyB);
 
         attributeHandler = new FfAttributeHandler();
+        Whitebox.setInternalState(attributeHandler, "logger", logger);
 
         interactionHandler = new FfUserInteractionHandler();
         interactionHandler.setFightCommand(character, FightCommand.ATTACKING);
@@ -355,6 +356,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         expect(diceResultRenderer.render(6, TW15)).andReturn("Thrown values: 1, 5.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, Second Head", "Thrown values: 1, 5.", 14});
         logger.debug("Attack strength for {}: {}", "Two-Headed Dog, Second Head", 14);
+        logger.error("Cannot resolve property '{}'.", "initialDamageProtection");
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Two-Headed Dog"});
         mockControl.replay();
         // WHEN
@@ -387,6 +389,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         expect(diceResultRenderer.render(6, TW15)).andReturn("Thrown values: 1, 5.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, Second Head", "Thrown values: 1, 5.", 14});
         logger.debug("Attack strength for {}: {}", "Two-Headed Dog, Second Head", 14);
+        logger.error("Cannot resolve property '{}'.", "initialDamageProtection");
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Two-Headed Dog"});
         mockControl.replay();
         // WHEN
@@ -421,6 +424,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         expect(diceResultRenderer.render(6, TW15)).andReturn("Thrown values: 1, 5.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, Second Head", "Thrown values: 1, 5.", 14});
         logger.debug("Attack strength for {}: {}", "Two-Headed Dog, Second Head", 14);
+        logger.error("Cannot resolve property '{}'.", "initialDamageProtection");
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Two-Headed Dog"});
         expect(generator.getRandomNumber(2)).andReturn(new int[]{12, 6, 6});
         expectText("page.ff.label.fight.luck.roll", new Object[]{6, 6, 12});
@@ -460,6 +464,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         expect(diceResultRenderer.render(6, TW15)).andReturn("Thrown values: 1, 5.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, Second Head", "Thrown values: 1, 5.", 14});
         logger.debug("Attack strength for {}: {}", "Two-Headed Dog, Second Head", 14);
+        logger.error("Cannot resolve property '{}'.", "initialDamageProtection");
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Two-Headed Dog"});
         expect(generator.getRandomNumber(2)).andReturn(new int[]{2, 1, 1});
         expectText("page.ff.label.fight.luck.roll", new Object[]{1, 1, 2});

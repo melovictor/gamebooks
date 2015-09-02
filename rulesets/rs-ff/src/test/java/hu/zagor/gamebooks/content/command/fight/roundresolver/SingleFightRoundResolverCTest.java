@@ -149,6 +149,7 @@ public class SingleFightRoundResolverCTest extends FfTextResolvingTest {
         weapon.setStaminaDamage(3);
         weapon.setSubType(WeaponSubType.weakBlunt);
         expect(itemHandler.getEquippedWeapon(character)).andReturn(weapon);
+        expect(attributeHandler.resolveValue(character, "baseStaminaDamage")).andReturn(0);
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Goblin"});
         mockControl.replay();
         // WHEN
@@ -178,6 +179,7 @@ public class SingleFightRoundResolverCTest extends FfTextResolvingTest {
         final FfItem weapon = new FfItem("7", "Sword", ItemType.weapon1);
         weapon.setStaminaDamage(2);
         expect(itemHandler.getEquippedWeapon(character)).andReturn(weapon);
+        expect(attributeHandler.resolveValue(character, "baseStaminaDamage")).andReturn(0);
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Goblin"});
 
         expect(generator.getRandomNumber(2)).andReturn(new int[]{4, 1, 3});
@@ -215,6 +217,7 @@ public class SingleFightRoundResolverCTest extends FfTextResolvingTest {
         final FfItem weapon = new FfItem("7", "Sword", ItemType.weapon1);
         weapon.setStaminaDamage(2);
         expect(itemHandler.getEquippedWeapon(character)).andReturn(weapon);
+        expect(attributeHandler.resolveValue(character, "baseStaminaDamage")).andReturn(0);
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Goblin"});
 
         expect(generator.getRandomNumber(2)).andReturn(new int[]{11, 5, 6});
@@ -251,7 +254,8 @@ public class SingleFightRoundResolverCTest extends FfTextResolvingTest {
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Goblin", ENEMY_ATTACK_STRENGTH_RENDER, 15});
         logger.debug("Attack strength for {}: {}", "Goblin", 15);
         expect(character.getStoneSkin()).andReturn(0);
-        character.changeStamina(-2);
+        expect(attributeHandler.resolveValue(character, "damageProtection")).andReturn(1);
+        character.changeStamina(-1);
         character.changeSkill(0);
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Goblin"});
         expect(generator.getRandomNumber(2)).andReturn(new int[]{11, 5, 6});

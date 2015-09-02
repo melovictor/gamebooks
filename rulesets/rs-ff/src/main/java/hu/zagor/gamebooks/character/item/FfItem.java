@@ -27,6 +27,8 @@ public class FfItem extends Item {
     private int price;
 
     private int actions;
+    private int damageProtection;
+    private int baseStaminaDamage;
 
     /**
      * Default constructor for the serializer.
@@ -177,6 +179,22 @@ public class FfItem extends Item {
 
     public void setPreFight(final boolean preFight) {
         this.preFight = preFight;
+    }
+
+    public int getDamageProtection() {
+        return damageProtection;
+    }
+
+    public void setDamageProtection(final int damageProtection) {
+        this.damageProtection = damageProtection;
+    }
+
+    public int getBaseStaminaDamage() {
+        return baseStaminaDamage;
+    }
+
+    public void setBaseStaminaDamage(final int baseStaminaDamage) {
+        this.baseStaminaDamage = baseStaminaDamage;
     }
 
 }

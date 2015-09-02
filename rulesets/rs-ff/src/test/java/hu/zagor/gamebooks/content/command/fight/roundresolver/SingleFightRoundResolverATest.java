@@ -235,6 +235,7 @@ public class SingleFightRoundResolverATest extends FfTextResolvingTest {
         weapon.setSkillDamage(0);
         weapon.setStaminaDamage(3);
         expect(itemHandler.getEquippedWeapon(character)).andReturn(weapon);
+        expect(attributeHandler.resolveValue(character, "baseStaminaDamage")).andReturn(0);
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Goblin"});
         mockControl.replay();
         // WHEN

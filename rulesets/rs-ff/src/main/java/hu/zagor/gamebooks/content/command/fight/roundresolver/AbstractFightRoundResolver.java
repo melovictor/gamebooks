@@ -68,7 +68,7 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
         final FfCharacter character = dto.getCharacter();
         final FfEnemy enemy = dto.getEnemy();
 
-        character.changeStamina(-enemy.getStaminaDamage());
+        character.changeStamina(Math.min(0, -enemy.getStaminaDamage() + dto.getCharacterHandler().getAttributeHandler().resolveValue(character, "damageProtection")));
         character.changeSkill(-enemy.getSkillDamage());
         resolveDefeatMessage(dto);
     }

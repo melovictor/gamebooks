@@ -179,6 +179,7 @@ public class SingleFightRoundResolverBTest extends FfTextResolvingTest {
         weapon.setBlessed(true);
         weapon.setStaminaDamage(3);
         expect(itemHandler.getEquippedWeapon(character)).andReturn(weapon).times(2);
+        expect(attributeHandler.resolveValue(character, "baseStaminaDamage")).andReturn(0);
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Goblin"});
         mockControl.replay();
         // WHEN
@@ -209,6 +210,7 @@ public class SingleFightRoundResolverBTest extends FfTextResolvingTest {
         weapon.setMagical(true);
         weapon.setStaminaDamage(3);
         expect(itemHandler.getEquippedWeapon(character)).andReturn(weapon).times(2);
+        expect(attributeHandler.resolveValue(character, "baseStaminaDamage")).andReturn(0);
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Goblin"});
         mockControl.replay();
         // WHEN
@@ -238,6 +240,7 @@ public class SingleFightRoundResolverBTest extends FfTextResolvingTest {
         weapon.setStaminaDamage(3);
         weapon.setSubType(WeaponSubType.edged);
         expect(itemHandler.getEquippedWeapon(character)).andReturn(weapon);
+        expect(attributeHandler.resolveValue(character, "baseStaminaDamage")).andReturn(0);
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Goblin"});
         mockControl.replay();
         // WHEN

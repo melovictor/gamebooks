@@ -172,6 +172,7 @@ public class OnlyHighestLinkedFightRoundResolverATest extends FfTextResolvingTes
         expect(diceResultRenderer.render(6, enemyAttackStrengthB)).andReturn("Thrown value: 4, 2.");
         expectText("page.ff.label.fight.single.attackStrength.enemy", new Object[]{"Two-Headed Dog, Second Head", "Thrown value: 4, 2.", 15});
         logger.debug("Attack strength for {}: {}", "Two-Headed Dog, Second Head", 15);
+        expect(attributeHandler.resolveValue(character, "damageProtection")).andReturn(0);
         character.changeStamina(-2);
         character.changeSkill(0);
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Two-Headed Dog"});

@@ -21,6 +21,8 @@ public class FfCharacter extends Character {
     private final int initialAttackStrength = Integer.MAX_VALUE;
 
     private int gold;
+    private int damageProtection;
+    private int baseStaminaDamage;
 
     public int getSkill() {
         return skill;
@@ -128,5 +130,21 @@ public class FfCharacter extends Character {
 
     public String getName() {
         return null;
+    }
+
+    public int getDamageProtection() {
+        return damageProtection;
+    }
+
+    public void setDamageProtection(final int damageProtection) {
+        this.damageProtection = damageProtection;
+    }
+
+    public int getBaseStaminaDamage() {
+        return baseStaminaDamage;
+    }
+
+    public void setBaseStaminaDamage(final int baseStaminaDamage) {
+        this.baseStaminaDamage = baseStaminaDamage;
     }
 }

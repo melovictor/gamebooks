@@ -151,7 +151,7 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
         final FfEnemy enemy = dto.getEnemy();
         final FfItem selectedWeapon = dto.getSelectedWeapon();
 
-        int weaponStaminaDamage = selectedWeapon.getStaminaDamage();
+        int weaponStaminaDamage = selectedWeapon.getStaminaDamage() + dto.getAttributeHandler().resolveValue(dto.getCharacter(), "baseStaminaDamage");
         weaponStaminaDamage -= enemy.getDamageAbsorption();
         final WeaponSubType subType = selectedWeapon.getSubType();
         if (subType == WeaponSubType.edged || subType == WeaponSubType.weakBlunt) {
