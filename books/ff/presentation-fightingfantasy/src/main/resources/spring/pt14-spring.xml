@@ -16,6 +16,9 @@
     <property name="contentSpecification">
       <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="false" />
     </property>
+    <property name="resources">
+      <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="pt14" p:jsResources="pt14" />
+    </property>
   </bean>
 
   <bean class="hu.zagor.gamebooks.ff.pt.isotll.mvc.books.newgame.service.Pt14CharacterGenerator" id="pt14CharacterGenerator" />

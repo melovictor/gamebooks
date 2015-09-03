@@ -6,6 +6,7 @@ import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
+import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.ItemType;
@@ -53,6 +54,7 @@ public class AllAtOnce18FightRoundResolverTest {
     private FfItem weapon;
     private FightRoundBoundingCommand afterBounding;
     private List<Command> commandsList;
+    private FfAttributeHandler attributeHandler;
 
     @BeforeClass
     public void setUpClass() {
@@ -67,6 +69,8 @@ public class AllAtOnce18FightRoundResolverTest {
         characterHandler = new FfCharacterHandler();
         itemHandler = mockControl.createMock(FfCharacterItemHandler.class);
         characterHandler.setItemHandler(itemHandler);
+        attributeHandler = mockControl.createMock(FfAttributeHandler.class);
+        characterHandler.setAttributeHandler(attributeHandler);
         info.setCharacterHandler(characterHandler);
         resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).withEnemies(enemies).build();
         dto = new FightDataDto(enemy, messages, resolvationData, usableWeaponTypes);
@@ -89,6 +93,7 @@ public class AllAtOnce18FightRoundResolverTest {
         expect(enemy.isKillableByNormal()).andReturn(true);
         expect(itemHandler.getEquippedWeapon(character)).andReturn(weapon);
         expect(weapon.getStaminaDamage()).andReturn(2);
+        expect(attributeHandler.resolveValue(character, "baseStaminaDamage")).andReturn(0);
         expect(enemy.getDamageAbsorption()).andReturn(0);
         expect(weapon.getSubType()).andReturn(WeaponSubType.edged);
         expect(enemy.getDamageAbsorptionEdged()).andReturn(0);
@@ -114,6 +119,7 @@ public class AllAtOnce18FightRoundResolverTest {
         expect(enemy.isKillableByNormal()).andReturn(true);
         expect(itemHandler.getEquippedWeapon(character)).andReturn(weapon);
         expect(weapon.getStaminaDamage()).andReturn(2);
+        expect(attributeHandler.resolveValue(character, "baseStaminaDamage")).andReturn(0);
         expect(enemy.getDamageAbsorption()).andReturn(0);
         expect(weapon.getSubType()).andReturn(WeaponSubType.edged);
         expect(enemy.getDamageAbsorptionEdged()).andReturn(0);
@@ -140,6 +146,7 @@ public class AllAtOnce18FightRoundResolverTest {
         expect(enemy.isKillableByNormal()).andReturn(true);
         expect(itemHandler.getEquippedWeapon(character)).andReturn(weapon);
         expect(weapon.getStaminaDamage()).andReturn(2);
+        expect(attributeHandler.resolveValue(character, "baseStaminaDamage")).andReturn(0);
         expect(enemy.getDamageAbsorption()).andReturn(0);
         expect(weapon.getSubType()).andReturn(WeaponSubType.edged);
         expect(enemy.getDamageAbsorptionEdged()).andReturn(0);

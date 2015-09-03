@@ -130,7 +130,11 @@ public class Paragraph extends EscapingData implements TrueCloneable {
         return validMoves.contains(paragraphId);
     }
 
-    void addValidMove(final String paragraphId) {
+    /**
+     * Adds a new section id as a valid id to navigate from the current section.
+     * @param paragraphId the id of the paragraph
+     */
+    public void addValidMove(final String paragraphId) {
         validMoves.add(paragraphId);
     }
 
