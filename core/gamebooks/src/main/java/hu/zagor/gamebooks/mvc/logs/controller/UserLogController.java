@@ -39,7 +39,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserLogController extends AbstractRequestWrappingController {
 
     private static final int FULL_FILE_SIZE = 3;
-    private static final SimpleDateFormat SDF = new SimpleDateFormat("YYYY. MMMM dd. HH:mm:ss.S");
     private static final Pattern USERNAME = Pattern.compile("User '(.*)' logged in successfully.");
     private static final Map<String, String> USER_NAMES = new HashMap<>();
 
@@ -55,6 +54,7 @@ public class UserLogController extends AbstractRequestWrappingController {
     @RequestMapping(value = PageAddresses.LOGS)
     public String listDirectories(final Model model, final HttpServletRequest request) {
         final HttpSessionWrapper wrapper = getWrapper(request);
+        final SimpleDateFormat sdf = new SimpleDateFormat("YYYY. MMMM dd. HH:mm:ss.S");
         String target;
         if (!wrapper.getPlayer().isAdmin()) {
             target = "redirect:" + PageAddresses.BOOK_LIST;
@@ -65,7 +65,7 @@ public class UserLogController extends AbstractRequestWrappingController {
             final File logFiles = (File) getBeanFactory().getBean("file", logDir);
             if (logFiles.exists()) {
                 for (final File file : logFiles.listFiles()) {
-                    processFile(container, archivedContainer, file);
+                    processFile(container, archivedContainer, file, sdf);
                 }
             }
             model.addAttribute("logFiles", container);
@@ -78,10 +78,10 @@ public class UserLogController extends AbstractRequestWrappingController {
         return target;
     }
 
-    private void processFile(final LogFileContainer container, final Set<String> archivedContainer, final File file) {
+    private void processFile(final LogFileContainer container, final Set<String> archivedContainer, final File file, final SimpleDateFormat sdf) {
         if (file.isFile() && file.canRead()) {
             if (file.getName().endsWith(".log")) {
-                processLogFile(container, file);
+                processLogFile(container, file, sdf);
             } else if (file.getName().endsWith(".zip")) {
                 processArchiveFile(archivedContainer, file);
             }
@@ -93,7 +93,7 @@ public class UserLogController extends AbstractRequestWrappingController {
         archivedContainer.add(fileName);
     }
 
-    private void processLogFile(final LogFileContainer container, final File file) {
+    private void processLogFile(final LogFileContainer container, final File file, final SimpleDateFormat sdf) {
         final String fileName = file.getName().replace(".log", "");
         final String[] filePieces = fileName.split("-");
         if (filePieces.length == FULL_FILE_SIZE) {
@@ -108,7 +108,7 @@ public class UserLogController extends AbstractRequestWrappingController {
             logFileData.setTimestamp(filePieces[2]);
             final Date loginDate = new Date();
             loginDate.setTime(Long.parseLong(logFileData.getTimestamp()));
-            logFileData.setLoginDateTime(SDF.format(loginDate));
+            logFileData.setLoginDateTime(sdf.format(loginDate));
             container.add(logFileData);
         }
     }

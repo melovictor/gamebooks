@@ -17,7 +17,6 @@ import java.util.TreeSet;
 public class LogFileContainer {
 
     private static final int WINDOW = -7;
-    private static final SimpleDateFormat SDF_SIMPLE = new SimpleDateFormat("YYYY.MM.dd.");
 
     private final Map<String, LogFileContainerB> dateBasedMap = new HashMap<>();
     private final Set<LogFileContainerB> byDate = new TreeSet<>(Collections.reverseOrder());
@@ -42,7 +41,7 @@ public class LogFileContainer {
     public void add(final LogFileData data) {
         final long loginStamp = Long.parseLong(data.getTimestamp());
         if (limit < loginStamp) {
-            final String date = SDF_SIMPLE.format(new Date(loginStamp));
+            final String date = new SimpleDateFormat("YYYY.MM.dd.").format(new Date(loginStamp));
             LogFileContainerB containerB = dateBasedMap.get(date);
             if (containerB == null) {
                 containerB = new LogFileContainerB(date);
