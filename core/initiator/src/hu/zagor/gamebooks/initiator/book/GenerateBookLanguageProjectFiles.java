@@ -2,8 +2,6 @@ package hu.zagor.gamebooks.initiator.book;
 
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getContentFile;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getEnemiesFile;
-import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getExceptionController;
-import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getExceptionControllerTest;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getImageController;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getImageControllerTest;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getInventoryController;
@@ -46,8 +44,6 @@ public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
 
             final File codeDir = new File(rootPath, "src/main/java/hu/zagor/gamebooks/" + baseData.getRuleset() + "/" + baseData.getSeriesCode() + "/"
                 + baseData.getTitleCode() + "/mvc/books/");
-            createFile(codeDir, "exception/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookExceptionController.java",
-                getExceptionController(baseData, data));
             createFile(codeDir, "image/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookImageController.java", getImageController(baseData, data));
             createFile(codeDir, "inventory/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookInventoryController.java",
                 getInventoryController(baseData, data));
@@ -64,8 +60,6 @@ public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
 
             final File testCodeDir = new File(rootPath, "src/test/java/hu/zagor/gamebooks/" + baseData.getRuleset() + "/" + baseData.getSeriesCode() + "/"
                 + baseData.getTitleCode() + "/mvc/books/");
-            createFile(testCodeDir, "exception/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookExceptionControllerTest.java",
-                getExceptionControllerTest(baseData, data));
             createFile(testCodeDir, "image/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookImageControllerTest.java",
                 getImageControllerTest(baseData, data));
             createFile(testCodeDir, "inventory/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookInventoryControllerTest.java",

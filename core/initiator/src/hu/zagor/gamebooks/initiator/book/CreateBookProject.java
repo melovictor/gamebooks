@@ -20,8 +20,8 @@ public class CreateBookProject {
     private BookBaseData getBaseData() {
 
         baseData.setSeriesCode("ff");
-        baseData.setTitleCode("cot");
-        baseData.setPosition(5);
+        baseData.setTitleCode("twofm");
+        baseData.setPosition(1);
         baseData.setCollectorCode("ff");
         baseData.setCollectorName("fightingfantasy");
         baseData.setRuleset("ff");
@@ -38,10 +38,10 @@ public class CreateBookProject {
     private BookLangData getSotkPtBr(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setSeriesCode("afb");
-        data.setPosition(1);
-        data.setBookId("AventurasFantasticas.A_CIDADE_DOS_LADROES");
+        data.setPosition(2);
+        data.setBookId("AventurasFantasticas.O_FEITICEIRO_DA_MONTANHA_DE_FOGO");
         data.setLang("pt_BR");
-        data.setTitle("A cidadela do caos");
+        data.setTitle("O feiticeiro da montanha de fogo");
         data.setGeneratable(shouldBeGenerated);
         return data;
     }
@@ -49,10 +49,10 @@ public class CreateBookProject {
     private BookLangData getSotkHu(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setSeriesCode("kjk");
-        data.setPosition(6);
-        data.setBookId("KalandJatekKockazat.A_KAOSZ_FELLEGVARA");
+        data.setPosition(2);
+        data.setBookId("KalandJatekKockazat.A_TUZHEGY_VARAZSLOJA");
         data.setLang("hu");
-        data.setTitle("A Káosz Fellegvára");
+        data.setTitle("A Tűzhegy varázslója");
         data.setGeneratable(shouldBeGenerated);
         return data;
     }
@@ -60,9 +60,9 @@ public class CreateBookProject {
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setHidden(true);
-        data.setBookId("FightingFantasy.THE_CITADEL_OF_CHAOS");
+        data.setBookId("FightingFantasy.THE_WARLOCK_OF_FIRETOP_MOUNTAIN");
         data.setLang("en");
-        data.setTitle("The Citadel of Chaos");
+        data.setTitle("The Warlock of Firetop Mountain");
         data.setGeneratable(shouldBeGenerated);
         return data;
     }
