@@ -726,9 +726,9 @@
     <text>
         [p]A Fekete Elf sovány és toprongyos. Megkérdi, vajon vendég vagy-e vagy kalandor. Azt válaszolod, hogy vendég vagy, és azért jöttél, hogy megvizsgáld híres Borospincéjének a borát. Némi büszkeséggel megmutatja neked a borosüvegeket, melyeket ura, Rettenetes Balthus számára őriz itt. Azt állítja, hogy közülük néhány varázserővel bír. Felajánlja, hogy kóstold meg a borát. Melyiket kóstolod meg?[/p]
     </text>
-    <next id="120">A Vörösbort?</next>
-    <next id="163">A Fehérbort?</next>
-    <next id="334">A Rosét?</next>
+    <next id="120">A vörösbort?</next>
+    <next id="163">A fehérbort?</next>
+    <next id="334">A rosét?</next>
     <next id="95">Visszautasítod az ajánlatát és továbbmész?</next>
   </p>
   <p id="57">
@@ -783,6 +783,7 @@
     <text>
         [p]Miután harcképtelenné tetted a Vízköpő Sárkányt, úgy döntesz, hogy megnézed, mi van a teremtmény szobortalapzatában.[/p]
     </text>
+    <reward id="gargoyle" />
     <test against="luck">
       <success>
         <text>
@@ -1144,6 +1145,7 @@
     <text>
         [p]A tejszerű folyadék illata édeskés. Belekortyolsz, és vihogni kezdesz! Még egy korty és, ki tudja, miért, kitör belőled a nevetés! Nem kétséges, a kis Gremlinek nagyon élvezik a dolgot. Nyertél 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot, amiért ilyen üdítő élményben volt részed. Kissé kóválygó fejjel, jókedvűen hagyod el a termet, és folytatod az utat a Fellegvár felé.[/p]
     </text>
+    <reward id="gobwhite" />
     <add amount="2" to="stamina" />
     <next id="156"></next>
   </p>
@@ -1458,6 +1460,7 @@
     <text>
         [p]Megkóstolod a bort és bólintasz. Zamata valóban felüdít. Kortyolsz még egyet, és érzed, hogy kissé elbódulsz. Nyersz 2 [span class="ffAttribute"]ÉLETERŐ[/span] és 3 [span class="ffAttribute"]SZERENCSE[/span] pontot, amiért ily remek italra leltél. Köszönetet mondasz az Elfnek, és továbbmész.[/p]
     </text>
+    <reward id="redwine" />
     <add amount="2" to="stamina" />
     <add amount="3" to="luck" />
     <next id="95"></next>
@@ -1499,6 +1502,7 @@
     <text>
         [p]Amint lehullik a függöny, nappali fény árasztja el a szobát. Rájössz, hogy teljesen elvesztetted az időérzékedet, mióta beléptél a Fellegvárba. A napsütés nagy megkönnyebbülés számodra a sötétség birodalmában eltöltött sok-sok óra után. Egy tompa puffanás hangjára ellenfeled felé fordulsz. A földön fekszik elterülve. Amikor odalépsz hozzá, velőtrázó ordítást hallat! – A függöny!… Te őrült!… – zihálja elfúló, haldokló hangon. A nappali fény, amit beengedtél a szobába, szemmel láthatóan rohamosan csökkenti az erejét, és elkeseredetten próbál a félhomályba kúszni. De túl gyenge ahhoz, hogy messzire jusson – s arccal a földre bukik.[/p]
     </text>
+    <reward id="windowligh" />
     <next id="400"></next>
   </p>
   <p id="125">
@@ -2716,6 +2720,7 @@
     <text>
         [p]A Gólem tökéletes hasonmása jelenik meg előtted. Megparancsolod neki, hogy támadja meg a valódi Gólemet, aki már csaknem föléd tornyosul. Döntsd a két Gólem közötti harcot.[/p]
     </text>
+    <reward id="golem" />
     <fight type="singleAlly" resolver="ally">
       <enemy id="16" />
       <ally id="103" />
@@ -3392,8 +3397,8 @@
     <text>
         [p]Az üvegekben és rekeszekben száz meg száz különböző fajta bor van. Nem egy közülük rendkívül régi és értékes. A szoba egyik sarkában egy asztal áll borkóstoláshoz megterítve, két üveggel és poharakkal. [/p]
     </text>
-    <next id="24">Ha a Vörösbort kóstolod meg</next>
-    <next id="105">Ha a Fehéret</next>
+    <next id="24">Ha a vörösbort kóstolod meg</next>
+    <next id="105">Ha a fehéret</next>
     <next id="242b">Ha egyiket sem kóstolod meg és továbbmész</next>
   </p>
   <p id="242b" display="242">
@@ -3532,6 +3537,7 @@
     <text>
         [p]5 fejet ejtettél foglyul! Szeretnének kiszabadulni a hurok szorításából. Hirtelen mozdulattal kikapja a kezedből a Szerkentyűt, de a lasszó így is kellőképpen lefoglalja a teremtményt ahhoz, hogy egy ugrással a szoba túlsó végében lévő ajtónál teremhess.[/p]
     </text>
+    <reward id="lassoed" />
     <loseItem id="3014" />
     <next id="229"></next>
   </p>
@@ -3539,6 +3545,7 @@
     <text>
         [p]6 fejet ejtettél foglyul! Szeretnének kiszabadulni a hurok szorításából. Hirtelen mozdulattal kikapja a kezedből a Szerkentyűt, de a lasszó így is kellőképpen lefoglalja a teremtményt ahhoz, hogy egy ugrással a szoba túlsó végében lévő ajtónál teremhess.[/p]
     </text>
+    <reward id="lassoed" />
     <loseItem id="3014" />
     <next id="229"></next>
   </p>
@@ -3670,6 +3677,7 @@
     <text>
         [p]Amikor megmarkolod a kelyhet, a benne lévő folyadék a szemed láttára megzöldül, majd megbarnul. Szörnyen büdös, de te mégis megkóstolod. Undorral köpöd ki – iszapos vizet iszol! Vesztettél 1 [span class="ffAttribute"]SZERENCSE[/span] pontot. Elhagyod a termet, és továbbmész a Fellegvár felé.[/p]
     </text>
+    <reward id="gobred" />
     <add amount="-1" to="luck" />
     <next id="156"></next>
   </p>
@@ -4140,6 +4148,7 @@
     <text>
         [p]Amikor megfogod a serleget, a benne lévő folyadék pezsegni, gőzölögni kezd, és amint az ajkadhoz emeled, lespriccel. Biztos vagy benne, hogy meg akarod kóstolni az italt?[/p]
     </text>
+    <reward id="gobblue" />
     <next id="58">Ha nem akarod</next>
     <next id="141">Ha elszántad rá magad</next>
   </p>
@@ -4211,6 +4220,7 @@
         [p]A Gólem egyre közelebb jön, és te karddal támadsz rá. Kardod azonban csupán a követ éri, s hangosan megcsörren rajta. Neked kell eldöntened a Csata kimenetelét. Vonj le magadtól 1 [span class="ffAttribute"]ÜGYESSÉG[/span] pontot a csata idejére.[/p]
     </text>
     <add amount="-1" to="skill" />
+    <reward id="golem" />
     <fight type="single">
       <enemy id="16" />
       <win>
@@ -5112,6 +5122,7 @@
     <text>
         [p]Az öreg ereje kezd visszatérni, amint az Életerő Varázslat hatni kezd. Elmondja, hogy fejbe verték a kegyetlen Gendzsik, akik örömüket lelik az ilyen gazságban. A Fellegvárra tereled a szót. Az Öreg hirtelen megremeg a fájdalomtól. Szeme összeszűkül, előreveti magát, és éles fogait a karodba mélyeszti. Vonj le 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
     </text>
+    <reward id="madman" />
     <add amount="-2" to="stamina" />
     <loseItem id="stamina" />
     <next id="333">Ha elkergeted a kardoddal</next>
