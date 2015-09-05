@@ -62,17 +62,6 @@ public class LanguageProjectDataContents {
         return parentImport;
     }
 
-    public static String getExceptionController(final BookBaseData baseData, final BookLangData data) {
-        return "package hu.zagor.gamebooks." + baseData.getRuleset() + "." + baseData.getSeriesCode() + "." + baseData.getTitleCode()
-            + ".mvc.books.exception.controller;\r\n" + "\r\n" + "import hu.zagor.gamebooks.PageAddresses;\r\n"
-            + getParentImport(baseData, data, "exception", "Exception", "Generic") + "import hu.zagor.gamebooks.support.bookids." + data.getFullLang() + "."
-            + data.getBookIdDomain() + ";\r\n" + "\r\n" + "import org.springframework.stereotype.Controller;\r\n"
-            + "import org.springframework.web.bind.annotation.RequestMapping;\r\n" + "\r\n" + "/**\r\n"
-            + " * Controller for handling the exceptions to the given book.\r\n" + " * @author Tamas_Szekeres\r\n" + " *\r\n" + " */\r\n" + "@Controller\r\n"
-            + "@RequestMapping(value = PageAddresses.BOOK_PAGE + \"/\" + " + data.getBookId() + ")\r\n" + "public class " + data.getSeriesCodeCapital()
-            + data.getPosition() + "BookExceptionController extends " + getParentClassPrefix(baseData, data, "Generic") + "BookExceptionController {\r\n" + "}\r\n";
-    }
-
     public static String getSpringFile(final BookBaseData baseData, final BookLangData data) {
         return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n"
             + "<beans xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.springframework.org/schema/beans\" xmlns:p=\"http://www.springframework.org/schema/p\"\r\n"
@@ -270,15 +259,6 @@ public class LanguageProjectDataContents {
     }
 
     // ************************
-
-    public static String getExceptionControllerTest(final BookBaseData baseData, final BookLangData data) {
-        return "package hu.zagor.gamebooks." + baseData.getRuleset() + "." + baseData.getSeriesCode() + "." + baseData.getTitleCode()
-            + ".mvc.books.exception.controller;\r\n" + "\r\n" + "import org.testng.annotations.Test;\r\n" + "\r\n" + "/**\r\n" + " * Unit test for class {@link "
-            + data.getSeriesCodeCapital() + data.getPosition() + "BookExceptionController}.\r\n" + " * @author Tamas_Szekeres\r\n" + " */\r\n" + "@Test\r\n"
-            + "public class " + data.getSeriesCodeCapital() + data.getPosition() + "BookExceptionControllerTest {\r\n" + "\r\n"
-            + "    public void testConstructor() {\r\n" + "        // GIVEN\r\n" + "        // WHEN\r\n" + "        new " + data.getSeriesCodeCapital()
-            + data.getPosition() + "BookExceptionController().getClass();\r\n" + "        // THEN\r\n" + "    }\r\n" + "\r\n" + "}\r\n";
-    }
 
     public static String getImageControllerTest(final BookBaseData baseData, final BookLangData data) {
         String tic;
