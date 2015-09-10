@@ -123,4 +123,8 @@ public class BookBaseData {
         this.collectorName = collectorName;
     }
 
+    public String getBookInfoPrefix() {
+        return "ff".equals(seriesCode) ? "Ff" : "";
+    }
+
 }

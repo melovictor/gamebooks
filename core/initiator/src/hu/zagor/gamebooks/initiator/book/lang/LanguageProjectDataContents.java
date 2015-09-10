@@ -77,7 +77,9 @@ public class LanguageProjectDataContents {
             + data.getPosition()
             + "Id\" />\r\n"
             + "\r\n"
-            + "  <bean class=\"hu.zagor.gamebooks.domain.BookInformations\" id=\""
+            + "  <bean class=\"hu.zagor.gamebooks.domain."
+            + baseData.getBookInfoPrefix()
+            + "BookInformations\" id=\""
             + data.getSeriesCode()
             + data.getPosition()
             + "Info\" c:id-ref=\""
