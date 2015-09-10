@@ -1,11 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
 <content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd">
   <p id="back_cover">
-    <text>[p][/p]</text>
-    <next id="background"/>
+    <text>[p]A Tűzhegy mélyében, egy lezárt ládában rejtegeti a gonosz Varázsló a kincseit. Hogy megszerezzed, meg kell találnod az egyetlen helyes utat a Varázsló által kiépített útvesztőben. Sokszor kerülsz csapdába, vagy találkozol olyan természetfeletti lényekkel, akikkel meg kell küzdened.[/p]</text>
+    <next id="generate"/>
   </p>
-  <p id="background" display="">
-    <text>[p][/p]</text>
+  <p id="generate" display="Karakter létrehozása">
+    <text>
+        [p][span class="ffAttribute"]Ügyesség[/span]: [span id="ffSkill"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Életerő[/span]: [span id="ffStamina"]dobj két kockával és adj 12-t a dobott számhoz[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Szerencse[/span]: [span id="ffLuck"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p]Válassz egy italt:
+          [select id="ffDefaultPotion"]
+              [option value="2001" selected="selected"]Ügyesség Itala[/option]
+              [option value="2002"]Erő Itala[/option]
+              [option value="2003"]Szerencse Itala[/option]
+          [/select]
+        [/p]
+        [button data-generator-button="ff"]Karakter létrehozása[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="Háttértörténet">
+    <text>
+        [p]Csak egy vakmerő kalandor vágna bele egy ilyen veszélyes vállalkozásba - mint ez a kincskeresés - anélkül, hogy előtte ne próbálna meg minden lehetségeset megtudni a hegyről és a kincsről. Mielőtt elmennél a Tűzhegy birodalmába, néhány napot egy környékbeli falu lakosai között töltesz vagy kétnapnyi járásra a hegytől. Mivel rokonszenves vagy nekik, könnyen kapcsolatba kerülsz a helyi parasztokkal. Bár sokféle történetet mesélnek el neked a titokzatos Varázslóról és rejtekhelyéről, egyáltalán nem vagy benne biztos, hogy a történetek mindegyike, vagy akár csak egy is, valóban igaz-e. A falusiak sok kalandvágyó embert láttak már a hegyhez vezető úton, de közülük csak nagyon kevesen tértek vissza. Most már biztosan tudod, hogy az előtted álló Út különösen veszedelmes lesz. Azok közül, akik vissza- jutottak a faluba, még senki sem kísérelte meg, hogy visszamerészkedjen a hegyhez.[/p]
+        [p]Úgy érzed, elképzelhető, hogy valóban létezik a Varázsló, és hogy a kincseit egy pompás ládában rejtegeti, és melynek kulcsait különféle lények őrzik az útvesztőben. A Varázsló hatalmas mágikus erővel rendelkezik. Egyesek szerint fiatal, mások szerint Öreg. Néhányan úgy vélik, erejét egy csomag bűvös kártyából meríti, mások azt vallják, hatalmát a kezén viselt fekete selyemkesztyű adja.[/p]
+        [p]A hegy gyomrába vezető bejáratot egy csapat bibircsókos arcú Goblin őrzi. Ezeket a buta teremtményeket nem érdekli más, csak az eszem-iszom. Továbbjutva, a belső kamrákban már jóval félelmetesebb lények vannak. Ahhoz, hogy a belső termekbe el lehessen jutni, át kell kelni egy folyón. A kompszolgálat rendszeres, de a révész ingyen nem visz át, úgyhogy néhány aranyat félre kell tenned, ha át akarsz kelni a folyón. A helyiek azt is tanácsolják, hogy vezess térképet kóborlásaidról, mert enélkül reménytelenül el fogsz tévedni a hegy belsejében.[/p]
+        [p]Mikor az indulás napja elérkezik, az egész falu apraja-nagyja megjelenik, hogy szerencsés utat kívánjon neked. Nem egy nőnek - fiatalnak, öregnek egyaránt - könny csillog a szemében. Nem tudsz szabadulni a gondolattól, hogy ezek a részvét könnyei, s olyan szemekben csillognak, melyeket tán sohasem látsz viszont...[/p]
+    </text>
+    <gatherItem id="defWpn" />
+    <gatherItem id="1001" />
+    <gatherItem id="2000" amount="10" />
+    <gatherItem id="3001" />
     <next id="1"></next>
   </p>
+  <p id="1">
+    <text>
+        [p]Véget ért a kétnapi gyaloglás. Kihúzod hüvelyéből a kardodat, a földre fekteted, és megkönnyebbülten felsóhajtasz, amint leülsz, hogy a mohalepte sziklának dőlve pihenj egy percet. Kinyújtózol, megdörzsölöd szemedet, és végül felpillantasz.[/p]
+        [p]Már maga a hegy is fenyegetőnek látszik. A meredek hegyoldal olyan előtted, mintha egy hatalmas óriás karmai marcangolták volna szét. Éles sziklák, kőszirtek meredeznek belőle szinte természetellenes módon. A hegy tetejét hátborzongatóan furcsa vörös színű valami borítja - talán egy különös növény -‚ melynek színéről kapta nevét a hegy. Lehet, hogy soha senki sem fogja megtudni pontosan, mi is az, ami ott nő, mert felmászni a csúcsra egészen biztosan lehetetlen.[/p]
+        [p]A titok megfejtése rád vár. A tisztással szemben egy barlang bejárata sötétlik. Felemeled a kardod, a lábadhoz támasztod, és számba veszed, milyen veszélyek leselkedhetnek rád, ha továbbmész. De aztán eltökélten a hüvelyébe lököd a kardod, és nekivágsz a barlangnak.[/p]
+        [p]Mereven belebámulsz a homályba, és sötét, nyálkás falakat pillantasz meg. A lábad előtti kőpadlón pocsolyákba folyik össze a víz. A levegő hűvös és nyirkos. Meggyújtod a lámpásodat, és óvatosan bemerészkedsz a sötétségbe. Pókhálók súrolják arcodat, apró lábak surranó lépéseit hallod - valószínűleg patkányok. Nekivágsz a barlangnak. Néhány méter után egy elágazáshoz érsz.[/p]
+    </text>
+    <next id="71">Ha nyugat felé indulsz</next>
+    <next id="278">Ha kelet felé</next>
+  </p>
+  <p id="71">
+    <text>
+        [p]Jobbra egy benyíló van az észak felé vezető úton. Óvatosan megközelíted a sarkon lévő őrhelyet, belesel, és egy különös, Goblin-szerű teremtményt pillantasz meg, amint bőrruhájában őrhelyén szunyókál. Megpróbálsz lábujjhegyen elsurranni mellette.[/p]
+    </text>
+    <test against="luck">
+        <success>
+        <text>
+            [p]Nem ébred fel, hangosan horkol továbbra is.[/p]
+        </text>
+        <next id="301"></next>
+        </success>
+        <failure>
+        <text>
+            [p]A következő lépésnél valami megcsikordul a talpad alatt, és az őr szemei felpattannak.[/p]
+        </text>
+        <next id="248"></next>
+        </failure>
+    </test>
+  </p>
+  <p id="278">
+    <text>
+        [p]Az átjáró hamarosan véget ér egy lelakatolt faajtónál. Hallgatózol, de nem hallasz semmit.[/p]
+    </text>
+    <next id="156">Ha megpróbálod az ajtót erővel betaszítani</next>
+    <next id="92">Ha megfordulsz, és visszamész az elágazáshoz</next>
+  </p>
+  <p id="156">
+    <text>
+        [p]Megpróbálod válladdal betaszítani az ajtót.[/p]
+    </text>
+    <test against="skill">
+    <success>
+        <text>
+            [p]Sikerült betörnöd.[/p]
+        </text>
+        <next id="343"></next>
+    </success>
+    <failure>
+        <text>
+            [p]Megdörzsölöd felhorzsolódott válladat, és úgy döntesz, nem próbálkozol többet.[/p]
+        </text>
+        <next id="92"></next>
+    </failure>
+    </test>
+  </p>
+  <p id="92">
+    <text>
+        [p]Visszaértél a folyosón az elágazáshoz. Balra nézel, ahol meglátod a távoli homályba vesző barlangbejáratot, és egyenesen továbbmész.[/p]
+    </text>
+    <next id="71"></next>
+  </p>
+  <p id="343">
+    <text>
+        [p]Az ajtó kiszakad, és te fejjel előre zuhansz be a szobába. A szíved a torkodban kezd el dobogni, amikor észreveszed, nem a padlóra zuhansz, hanem valamiféle kútba. Szerencsére a kút nem különösebben mély, alig kétméternyire talajt érsz. 1 ÉLETERŐ pontot veszítesz a horzsolásaid miatt, de kimászol, és továbbmész nyugat felé.[/p]
+    </text>
+    <add amount="-1" to="stamina"/>
+    <next id="92"></next>
+  </p>
+  <p id="248">
+    <text>
+        [p]A teremtmény, amit most felébresztettél, egy Ork! Feltápászkodik a földről, és elfordul, hogy megragadjon egy kötelet, mely valószínűleg a riasztóharangot kondítja meg. Gyorsan rá kell támadnod![/p]
+    </text>
+    <fight type="single">
+    <enemy id="1"/>
+    </fight>
+    <next id="301"></next>
+  </p>
+  <p id="301">
+    <text>
+        [p]A folyosó nyugati oldalán, tőled balra egy durván faragott faajtó áll, mely mögül reszelős hang szűrődik ki, olyan, mintha valaki bent hortyogna.[/p]
+    </text>
+    <next id="82">Ha kinyitod az ajtót</next>
+    <next id="208">Ha továbbhaladsz északnak</next>
+  </p>
+  <p id="82">
+    <text>
+        [p]Az ajtó kinyílik, és egy kicsi, büdös odú tárul a szemed elé. A szoba közepén egy roskatag faasztal éli, rajta égő gyertya, alatta egy kicsi faládika. A szoba egyik távoli sarkában egy szalmamatracon egy alacsony, zömök, csúnya bibircsókos arcú teremtmény alszik. Ugyanabból a fajtából való, akit alva találtál az őrhelyen. Nyilván ő az éjszakai szolgálatban lévő őr.[/p]
+    </text>
+    <next id="208">Ha visszatérsz a folyosóra, és haladsz tovább észak felé</next>
+    <next id="82a">Ha bekúszol a szobába, és megpróbálod megszerezni a ládikát, anélkül hogy felébresztenéd őrzőjét</next>
+  </p>
+  <p id="82a" display="82">
+    <text>
+        [p]Az ajtó kinyílik, és egy kicsi, büdös odú tárul a szemed elé. A szoba közepén egy roskatag faasztal éli, rajta égő gyertya, alatta egy kicsi faládika. A szoba egyik távoli sarkában egy szalmamatracon egy alacsony, zömök, csúnya bibircsókos arcú teremtmény alszik. Ugyanabból a fajtából való, akit alva találtál az őrhelyen. Nyilván ő az éjszakai szolgálatban lévő őr.[/p]
+    </text>
+    <test against="luck">
+    <success>
+    <next id="147"></next>
+    </success>
+    <failure>
+    <next id="33"></next>
+    </failure>
+    </test>
+  </p>
+  <p id="33">
+    <text>
+        [p]Az alvó teremtmény riadtan felébred. Felugrik és rád ront, de fegyvertelen. Kardoddal le tudnád győzni, de éles fogai gonoszul villognak.[/p]
+    </text>
+    <next id="320">Elmenekülhetsz az ajtón keresztül</next>
+    <next id="33a">Vagy megállhatsz, és megküzdhetesz a rád támadó Orkkal</next>
+  </p>
+  <p id="33a" display="33">
+    <text>
+        [p]Az alvó teremtmény riadtan felébred. Felugrik és rád ront, de fegyvertelen. Kardoddal le tudnád győzni, de éles fogai gonoszul villognak.[/p]
+    </text>
+        <fight type="single">
+    <enemy id="2"/>
+        <win>
+        <text>
+            [p]Elveheted a ládikát.[/p]
+        </text>
+        </win>
+    </fight>
+    <next id="147"></next>
+  </p>
+  <p id="320">
+    <text>
+        [p]Kirohansz a szobából, és becsapod magad mögött az ajtót. Észak felé indulsz, és valamivel távolabb egy hasonló ajtó mellett haladsz el.[/p]
+    </text>
+    <next id="363"></next>
+  </p>
+  <p id="363">
+    <text>
+        [p]Továbbhaladva az úton jobbra egy hasonló ajtót találsz. Megállsz előtte, és bentről vérfagyasztó éneket hallasz![/p]
+    </text>
+    <next id="370">Ha bemész a szobába, hogy kiderítsd e hangok kibocsátóját</next>
+    <next id="42">Ha továbbmész</next>
+  </p>
+  <p id="147">
+    <text>
+        [p]Kilépsz a szobából, és a folyosón kinyitod a ládikát. Egyetlen [span class="takeItem" data-id="gold" data-amount="1"]Aranytallért[/span] találsz benne, és egy kisegeret, nyilván ez volt ellenfeled kedvenc háziállata. Megtartod az aranyat és szabadon ereszted az egeret, amely apró léptekkel elrohan. 2 Szerencse pontot kaptál.[/p]
+    </text>
+    <add amount="2" to="luck"/>
+    <next id="208"></next>
+  </p>
+  <p id="208">
+    <text>
+        [p]A nyugati fal mellett haladó úton távolabb meglátsz egy újabb ajtót. Hallgatózol, de nem hallasz semmit.[/p]
+    </text>
+    <next id="397">Ha megpróbálod az ajtót kinyitni</next>
+    <next id="363">Ha továbbmész észak felé</next>
+  </p>
+  <p id="397">
+    <text>
+        [p]Az ajtó kinyílik, és egy kis szoba tárul eléd. Padlója kőből van, falai mocskosak, a levegő áporodott. A helyiség közepén összetákolt faasztal, rajta egy gyertya világít. Az asztal alatt egy kis doboz. A szemben lévő sarokban egy szalmazsák.[/p]
+    </text>
+    <next id="240">Ha kinyitod a dobozt</next>
+    <next id="363">Ha távozol a szobából</next>
+  </p>
+  <p id="240">
+    <text>
+        [p]A doboz könnyű, de valami csörög benne. Felemeled a fedelét, és egy kicsi Kígyó pattan ki belőle, egyenest a csuklódnak támad. Meg kell küzdened vele![/p]
+    </text>
+    <next id="145"></next>
+  </p>
+  
+  
+  
+  
+  
 </content>
