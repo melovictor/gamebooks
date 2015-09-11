@@ -27,6 +27,7 @@ public class SingleFf1FightRoundResolver extends SingleFightRoundResolver {
             }
         }
         super.damageSelf(dto);
+        character.setDamageProtection(0);
     }
 
     private boolean shieldBlocksDamage(final FightDataDto dto) {
