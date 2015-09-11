@@ -2,7 +2,7 @@
 <content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd">
   <p id="back_cover">
     <text>[p]A Tűzhegy mélyében, egy lezárt ládában rejtegeti a gonosz Varázsló a kincseit. Hogy megszerezzed, meg kell találnod az egyetlen helyes utat a Varázsló által kiépített útvesztőben. Sokszor kerülsz csapdába, vagy találkozol olyan természetfeletti lényekkel, akikkel meg kell küzdened.[/p]</text>
-    <next id="generate"/>
+    <next id="generate" />
   </p>
   <p id="generate" display="Karakter létrehozása">
     <text>
@@ -48,18 +48,18 @@
         [p]Jobbra egy benyíló van az észak felé vezető úton. Óvatosan megközelíted a sarkon lévő őrhelyet, belesel, és egy különös, Goblin-szerű teremtményt pillantasz meg, amint bőrruhájában őrhelyén szunyókál. Megpróbálsz lábujjhegyen elsurranni mellette.[/p]
     </text>
     <test against="luck">
-        <success>
+      <success>
         <text>
             [p]Nem ébred fel, hangosan horkol továbbra is.[/p]
         </text>
         <next id="301"></next>
-        </success>
-        <failure>
+      </success>
+      <failure>
         <text>
             [p]A következő lépésnél valami megcsikordul a talpad alatt, és az őr szemei felpattannak.[/p]
         </text>
         <next id="248"></next>
-        </failure>
+      </failure>
     </test>
   </p>
   <p id="278">
@@ -74,18 +74,18 @@
         [p]Megpróbálod válladdal betaszítani az ajtót.[/p]
     </text>
     <test against="skill">
-    <success>
+      <success>
         <text>
             [p]Sikerült betörnöd.[/p]
         </text>
         <next id="343"></next>
-    </success>
-    <failure>
+      </success>
+      <failure>
         <text>
             [p]Megdörzsölöd felhorzsolódott válladat, és úgy döntesz, nem próbálkozol többet.[/p]
         </text>
         <next id="92"></next>
-    </failure>
+      </failure>
     </test>
   </p>
   <p id="92">
@@ -98,7 +98,7 @@
     <text>
         [p]Az ajtó kiszakad, és te fejjel előre zuhansz be a szobába. A szíved a torkodban kezd el dobogni, amikor észreveszed, nem a padlóra zuhansz, hanem valamiféle kútba. Szerencsére a kút nem különösebben mély, alig kétméternyire talajt érsz. 1 ÉLETERŐ pontot veszítesz a horzsolásaid miatt, de kimászol, és továbbmész nyugat felé.[/p]
     </text>
-    <add amount="-1" to="stamina"/>
+    <add amount="-1" to="stamina" />
     <next id="92"></next>
   </p>
   <p id="248">
@@ -106,7 +106,7 @@
         [p]A teremtmény, amit most felébresztettél, egy Ork! Feltápászkodik a földről, és elfordul, hogy megragadjon egy kötelet, mely valószínűleg a riasztóharangot kondítja meg. Gyorsan rá kell támadnod![/p]
     </text>
     <fight type="single">
-    <enemy id="1"/>
+      <enemy id="1" />
     </fight>
     <next id="301"></next>
   </p>
@@ -129,12 +129,12 @@
         [p]Az ajtó kinyílik, és egy kicsi, büdös odú tárul a szemed elé. A szoba közepén egy roskatag faasztal éli, rajta égő gyertya, alatta egy kicsi faládika. A szoba egyik távoli sarkában egy szalmamatracon egy alacsony, zömök, csúnya bibircsókos arcú teremtmény alszik. Ugyanabból a fajtából való, akit alva találtál az őrhelyen. Nyilván ő az éjszakai szolgálatban lévő őr.[/p]
     </text>
     <test against="luck">
-    <success>
-    <next id="147"></next>
-    </success>
-    <failure>
-    <next id="33"></next>
-    </failure>
+      <success>
+        <next id="147"></next>
+      </success>
+      <failure>
+        <next id="33"></next>
+      </failure>
     </test>
   </p>
   <p id="33">
@@ -148,13 +148,13 @@
     <text>
         [p]Az alvó teremtmény riadtan felébred. Felugrik és rád ront, de fegyvertelen. Kardoddal le tudnád győzni, de éles fogai gonoszul villognak.[/p]
     </text>
-        <fight type="single">
-    <enemy id="2"/>
-        <win>
+    <fight type="single">
+      <enemy id="2" />
+      <win>
         <text>
             [p]Elveheted a ládikát.[/p]
         </text>
-        </win>
+      </win>
     </fight>
     <next id="147"></next>
   </p>
@@ -175,7 +175,7 @@
     <text>
         [p]Kilépsz a szobából, és a folyosón kinyitod a ládikát. Egyetlen [span class="takeItem" data-id="gold" data-amount="1"]Aranytallért[/span] találsz benne, és egy kisegeret, nyilván ez volt ellenfeled kedvenc háziállata. Megtartod az aranyat és szabadon ereszted az egeret, amely apró léptekkel elrohan. 2 Szerencse pontot kaptál.[/p]
     </text>
-    <add amount="2" to="luck"/>
+    <add amount="2" to="luck" />
     <next id="208"></next>
   </p>
   <p id="208">
@@ -198,9 +198,360 @@
     </text>
     <next id="145"></next>
   </p>
-  
-  
-  
-  
-  
+  <p id="145">
+    <text>
+        [p]Míg a Kígyóval harcoltál, a doboz a földre esett, és egy [span class="takeItem" data-id="3002" data-amount="1"]bronzszínű kulcs[/span] hullott ki belőle. A kulcsra a 99-es számot vésték. Magaddal viheted a kulcsot, és indulhatsz tovább. Szerencse pontjaidhoz adjál 1-et.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="363"></next>
+  </p>
+  <p id="370">
+    <text>
+        [p]Az ajtó kinyílik, és egy kis, rendetlen, piszkos szoba tárul eléd. Az egyik sarokban szalmazsák hever. A helyiség közepén faasztal, rajta gyertya, reszkető fénye bevilágítja a szobát. Az asztal alatt egy apró doboz. Az asztal körül két bibircsókos bőrű, bőrpáncélt viselő kicsi lény ül. Valami grogfélét iszogatnak. Érkezésedkor feltápászkodnak, de mozgásukon látszik, rettenetesen berúgtak.[/p]
+    </text>
+    <next id="116">Ha kivont karddal rájuk veted magad</next>
+    <next id="42">Ha gyorsan becsapod az ajtót és visszaszaladsz a folyosóra</next>
+  </p>
+  <p id="116">
+    <text>
+        [p]Két részeg Orkkal nézel szembe. Belépéseddel nyilvánvalóan felriasztottad őket, s amilyen gyorsan csak tudnak, a fegyverük után kapnak. Egymás után kell rájuk támadnod. Amikor kockavetéssel meghatározod Támadóerődet, részegségük miatt minden Fordulóban hozzáadhatsz 1-1 pontot a dobott számhoz.[/p]
+    </text>
+    <gatherItem id="4001" />
+    <fight type="single">
+      <enemy id="4" />
+      <enemy id="5" />
+      <win>
+        <loseItem id="4001" />
+        <next id="378"></next>
+      </win>
+      <fleeing />
+      <flee>
+        <loseItem id="4001" />
+        <next id="42"></next>
+      </flee>
+    </fight>
+  </p>
+  <p id="378">
+    <text>
+        [p]Véres kardodat a matracba törlöd. A zöld vér nyálkás foltot hagy a szalmán. Az asztalhoz mész, és fintorogva lépkedsz át a testeken, ezeknek a lényeknek rém büdös szaguk van. Felkapod a dobozt az asztal alól, hogy megvizsgáld. Durva vasalású kis faládika, fedelén egy réz névtábla, melyre a Farrigo Di Maggio nevet vésték.[/p]
+    </text>
+    <next id="296">Kinyithatod a dobozt</next>
+    <next id="42">De úgy is dönthetsz, hogy itt hagyod és távozol</next>
+  </p>
+  <p id="296">
+    <text>
+        [p]A dobozban egy kicsi, bőrkötéses könyvet találsz. Címe szerint: A beste Sárkányok legyőzetésének módozatai - ez a sárkányok elleni harc kézikönyve. Kinyitod, és olvasni kezded. Szerencsére anyanyelveden írták, valószínűleg ezért nem értették meg az Orkok, különben jobban őrizték volna ezt a kincset. A könyvet Farrigo Di Maggio írta kézírással, apró betűkkel. Életmű ez a könyv, melyből megtudod, hogyan alkotta meg Di Maggio a Sárkányok Tüze elleni varázsigét, mellyel a gonosz teremtményeket le lehet győzni. Kiderül, hogy élete utolsó éveiben a szerző ugyan tökéletesítette e varázsigét, de mire elkészült vele, már túl öreg volt ahhoz, hogy hasznát vegye. Így aztán könyvét bezárta egy ládába, és elrejtette a Tűzhegy gyomrában, mivel attól tartott, rossz kezekbe kerül. Az utolsó oldalon ezt olvasod:[/p]
+        [p]Lassan, halkan mondod magadnak ezeket a szavakat. Hirtelen az oldalakból fény csap ki, és amint az kihuny, már semmi sincs a lapokon. Még egyszer elismétled magadban a varázsigét, hogy megtanuld, majd távozol.[/p]
+    </text>
+    <next id="42"></next>
+  </p>
+  <p id="42">
+    <text>
+        [p]Végül a folyosó egy hármas elágazásba torkollik.[/p]
+    </text>
+    <next id="257">Mehetsz nyugatnak</next>
+    <next id="113">Vagy keletnek</next>
+  </p>
+  <p id="257">
+    <text>
+        [p]A folyosó néhány méteren keresztül egyenesen halad, azután egy faajtó zárja le. Hallgatózol az ajtónál, és dühös kiabálást hallasz belülről.[/p]
+    </text>
+    <next id="168">Ha megvizsgálod, mi az</next>
+    <next id="293">Ha inkább visszafordulsz</next>
+  </p>
+  <p id="168">
+    <text>
+        [p]Az ajtó egy hatalmas terembe nyílik. Az óriási szék és a masszív asztal azt sugallja, hogy magasabb rangú valaki vagy valami használja a szobát. Egy ládát pillantasz meg a szoba közepén. Az egyik sarokban egy ember nagyságú bibircsókos lény áll, mellette ugyanabból a fajtából egy kisebb teremtmény. Korbáccsal a kezében az Ork Törzsfőnök ütlegeli szolgáját, aki a földön fetrengve nyöszörög. Mit csinálsz?[/p]
+    </text>
+    <next id="372">Rátámadsz mindkettőre?</next>
+    <next id="65">A Törzsfőnökre sújtasz, abban a reményben, hogy a szolgája majd neked fog segíteni a harcban?</next>
+    <next id="293">Távozol, és visszamész az elágazáshoz?</next>
+  </p>
+  <p id="65">
+    <text>
+        [p]Amint rátámadsz az Ork Törzsfőnökre, szolgája felragad egy nehéz fabunkót, és beleveti magát a verekedésbe. De legnagyobb megdöbbenésedre rád támad! A hálátlan, hitvány féreg![/p]
+    </text>
+    <next id="293a">Látva ezt, visszamenekülhetsz a folyosóra</next>
+    <next id="372">Vagy folytathatod a küzdelmet</next>
+  </p>
+  <p id="293">
+    <text>
+        [p]Visszaérkezel az útelágazáshoz, és mész egyenesen tovább kelet felé.[/p]
+    </text>
+    <next id="113"></next>
+  </p>
+  <p id="293a" display="293">
+    <text>
+        [p]Menekülés közben a két Ork még eltalál. Vesztesz 4 ÉLETERŐ pontot.[/p]
+        [p]Visszaérkezel az útelágazáshoz, és mész egyenesen tovább kelet felé.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <next id="113"></next>
+  </p>
+  <p id="372">
+    <text>
+        [p]A csata elkezdődik![/p]
+        [p]Küzdj meg velük, egymás után![/p]
+    </text>
+    <fight type="single">
+      <enemy id="6" />
+      <enemy id="7" />
+    </fight>
+    <next id="21"></next>
+  </p>
+  <p id="21">
+    <text>
+        [p]A halott Orkok testéből patakzó zöld vér undorító szagot áraszt. Megkerülöd a holttesteket, és megvizsgálod a ládát. Nem lesz könnyű kinyitni - erős tölgyfából és vasból készült, és szilárdan le van lakatolva.[/p]
+    </text>
+    <next id="339">Megpróbálhatod lefeszíteni a lakatot a kardoddal</next>
+    <next id="293">Vagy otthagyod a ládát, és átmész a nyitott ajtón</next>
+  </p>
+  <p id="339">
+    <text>
+        [p]A lakat elröpül, és néhány méternyire ér földet. Felemeled a nehéz fedelet, és szemed tágra nyílik, amint megpillantod, micsoda aranyló ragyogás árad belőle. Jó csomó aranypénz van benne. Az egyik sarkában kicsi, fekete üveg fekszik, valami folyadék van benne. A ládában van még egy selyemkesztyű is. De amint a kincseket bámulod, halk kattanást hallasz, és összerándulsz a fájdalomtól, amint egy kicsi hajítódárda vágódik a gyomrodba.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <text>[p]Vesztesz 1 ÉLETERŐ pontot a dárda hegyén lévő méreg miatt.[/p]</text>
+        <add amount="-1" to="stamina" />
+      </result>
+      <result max="2" min="2">
+        <text>[p]Vesztesz 2 ÉLETERŐ pontot a dárda hegyén lévő méreg miatt.[/p]</text>
+        <add amount="-2" to="stamina" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]Vesztesz 3 ÉLETERŐ pontot a dárda hegyén lévő méreg miatt.[/p]</text>
+        <add amount="-3" to="stamina" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Vesztesz 4 ÉLETERŐ pontot a dárda hegyén lévő méreg miatt.[/p]</text>
+        <add amount="-4" to="stamina" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Vesztesz 5 ÉLETERŐ pontot a dárda hegyén lévő méreg miatt.[/p]</text>
+        <add amount="-5" to="stamina" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Vesztesz 6 ÉLETERŐ pontot a dárda hegyén lévő méreg miatt.[/p]</text>
+        <add amount="-6" to="stamina" />
+      </result>
+    </random>
+    <next id="201"></next>
+  </p>
+  <p id="201">
+    <text>
+        [p]A padlóra hanyatlasz. Kihúzod a dárdát a testedből, és bekötöd a sebet. Ez kissé enyhíti fájdalmadat, de még mindig gyengének érzed magad. Nem törődsz ezzel, és megpróbálod jobban megvizsgálni, mit is rejt a láda. Ha így döntesz, egyél előbb Élelmiszerkészletedből. [span class="takeItem" data-id="gold" data-amount="25"]Huszonöt Aranytallért[/span] találsz, és egy üveget, melynek címkéjén ez áll: a [span class="takeItem" data-id="3003" data-amount="1"]Láthatatlanság Itala[/span]. Csak egy alkalomra elegendő mennyiség van benne. A [span class="takeItem" data-id="3004" data-amount="1"]kesztyű[/span] továbbra is rejtély marad. Bármelyik talált tárgyat, akár az összeset is magaddal viheted hátizsákodban.[/p]
+    </text>
+    <canEat />
+    <next id="293"></next>
+  </p>
+  <p id="113">
+    <text>
+        [p]A folyosó újabb elágazáshoz érkezett.[/p]
+    </text>
+    <next id="285">Mehetsz észak felé</next>
+    <next id="78">Vagy folytathatod utadat keletnek</next>
+  </p>
+  <p id="285">
+    <text>
+        [p]Az út jobb oldalán (keletre) egy sokat használt ajtót pillantasz meg. Füledet a kulcslyukra téve hallgatózol, és hallod, hogy egy ember bent segítségért kiáltozik.[/p]
+    </text>
+    <next id="213">Ha kinyitod az ajtót</next>
+    <next id="314">Ha továbbmész</next>
+  </p>
+  <p id="213">
+    <text>
+        [p]Az ajtó zárva van. Megrohamozod[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="36"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Az ajtó zárva marad, és 1 ÉLETERŐ pontot veszítettél, mivel felhorzsoltad a vállad, és tovább kell menned az úton.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+        <next id="314"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="36">
+    <text>
+        [p]Feltöröd a bezárt ajtót, és émelyítő bűz csapja meg az orrodat. A szobában a padlót csontok, rothadó növényzet és nyálkás iszap fedi. Egy rongyokba burkolózott, torzonborz hajú öregember rohan feléd rikoltozva. A szakálla hosszú és ősz, kezében egy régi, fából készült széklábat lóbál. Lehet, hogy őrült, de az is lehet, hogy ez valamiféle csapda![/p]
+    </text>
+    <next id="263">Ha rákiáltasz, és megpróbálod lecsillapítani</next>
+    <next id="353">Ha kardot rántasz és nekitámadsz</next>
+  </p>
+  <p id="263">
+    <text>
+        [p]Rákiáltasz, amilyen erősen csak tudsz: Öreg, megszabadultál! Azonnal abbahagyja az üvöltést. Abban a minutában megáll, a padlóra zuhan, és hangosan zokogni kezd. Beszélgetsz vele, mert abban bízol, felfed néhányat a hegy titkaiból. Az Öreg fokozatosan összeszedi magát, és hálálkodni kezd. Belefog történetének elbeszélésébe. Sok évvel ezelőtt, ugyanúgy, mint most te, ő is belevágott a kalandba, a Varázsló kincsének felkutatásába. Az Orkok elfogták, és egy magányos cellába vetették, ahol úgy tartották, mint valamiféle kedvenc háziállatukat. Megkérdezed, nem akar-e társadul szegődni a továbbiakban, de egyetlen vágya, hogy kiszabadulva innen viszontlássa a külső világot. Útmutatást kérsz tőle, de azt mondja, nagyon keveset tud. Azt tanácsolja, tartsd tiszteletben a révészt, s ha az út végét lezáró vaskaput akarod kinyitni, akkor a falon lévő fogantyúk közül a jobb oldalit kell meghúznod. Azt is megtudod tőle, hogy a Csónakház kulcsait egy férfi és egy kutya őrzi. Kezet ráztok, kiléptek, és útjaitok különválnak. 1 Szerencse pontot kapsz.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="314"></next>
+  </p>
+  <p id="314">
+    <text>
+        [p]Távolabb az úton, a keleti falban egy ajtót veszel észre. Erősen figyelsz, de semmi sem szűrődik ki.[/p]
+    </text>
+    <next id="223">Ha kinyitod az ajtót, hogy átkutasd a szobát</next>
+    <next id="300">Ha inkább folytatod az utadat</next>
+  </p>
+  <p id="223">
+    <text>
+        [p]Az ajtót erősen bezárták.[/p]
+    </text>
+    <next id="53">Ha megpróbálod erőnek erejével felfeszíteni</next>
+    <next id="300">Ha folytatod utadat tovább a folyosón</next>
+  </p>
+  <p id="53">
+    <text>
+        [p]Nekirontasz az ajtónak, és megpróbálod válladdal betaszítani.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <text>
+            [p]Az ajtó kinyílik.[/p]
+        </text>
+        <next id="155"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Az ajtó megremeg, de nem mozdul, te viszont fájdalmadban összegörnyedsz, mert az ajtó nagyon kemény. Elveszítesz 1 ÉLETERŐ pontot. Tovább kell menj a folyosón.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+        <next id="300"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="155">
+    <text>
+        [p]Az ajtó hosszában kettészakad, szétfeszegeted a léceket, hogy bejuss. Az egyik falon egy fáklya ég, és egy kis fegyverraktárat világít meg lángja. A raktárban kardok, pajzsok, sisakok, tőrök, mellvértek és hasonlók hevernek. Átvizsgálod a fegyverzetet, de semmi olyat sem találsz, ami felül tudná múlni saját kardodat. De azért egy kör alakú [span class="replaceItem" data-id="3005" data-amount="1"]vaspajzson[/span] megakad a tekinteted, talán a közepén lévő arany félhold miatt. Felemeled, kipróbálod, hogyan áll a kezedben. Ha magaddal akarod vinni, megteheted, segítségedre lehet a csatában, ki tudja védeni azokat a sebeket, amelyeket különféle lények ejtenek rajtad. A továbbiakban, ha egy teremtmény megsebez - miközben ezt a pajzsot használod -‚ dobhatsz egy kockával. Ha 6-ost dobsz, a lény a szokásos 2 pont helyett csak 1 pontnyi sebet ejtett rajtad. Ha valami egyéb ok miatt az ellenfeled csak 1 pontos sebet okoz neked, szerencsés 6-os dobásod ezt semlegesíti, nem sérültél meg. Mivel azonban a pajzs nehéz, Felszerelésed egy tárgyát itt kell hagynod helyette. Távozol a szobából, és továbbhaladsz a folyosón.[/p]
+    </text>
+    <next id="300"></next>
+  </p>
+  <p id="300">
+    <text>
+        [p]Az út keleti oldalán egy újabb ajtót veszel észre, mely fémből készült. Ennél hallgatózva gyötrelmes sikolyok hangját hallod kiszűrődni.[/p]
+    </text>
+    <next id="102">Ha megpróbálod kinyitni az ajtót</next>
+    <next id="303">Ha úgy döntesz, hogy erről a szobáról tudomást sem veszel, és mész tovább a folyosón</next>
+  </p>
+  <p id="102">
+    <text>
+        [p]Az ajtó kinyílik, nem volt bezárva. Az előtted lévő helyiség egy kis kínzókamrának látszik, a falakon körben különféle kínzóeszközök lógnak. A kamra közepén két apró, púpos hátú teremtmény pokoli módon kínoz egy Törpét, akit a csuklóinál fogva egy, a mennyezetből kiálló horogra akasztottak. A két púpos gonoszul döfködi, szurkálja kardjával a Törpét. Az áldozat még egy utolsót sikít, majd elhallgat, szemei lecsukódnak. Kínzói elégedetlenül morognak, és mérgesen rád pillantanak, mintha a te hibád lenne, hogy a Törpe kiszenvedett. Gyorsan kell cselekedned. Mit teszel?[/p]
+    </text>
+    <next id="303">Hirtelen becsapod az ajtót, és folytatod utadat a folyosón?</next>
+    <next id="19">Kardot rántasz, és megküzdesz velük?</next>
+    <next id="68">A Törpéhez lépsz, és kardoddal te is beledöfsz a testébe, miközben, hogy becsapd a púpos kínzómestereket, gonoszul felkacagsz?</next>
+  </p>
+  <p id="68">
+    <text>
+        [p]A két Goblin kínzómester egymásra pillant, majd rád néz. Valamit karattyolnak egymás között, mutatják neked, hogy várj egy kicsit, míg ők elmennek a következő Törpéért, akire még nagyobb kínzás vár. Eltűnnek a szobából, és te levágod köteleiről a Törpét, aki, mint sejtetted, már meghalt. Úgy döntesz, legjobb, ha távozol, és folytatod utadat észak felé, felfelé.[/p]
+    </text>
+    <next id="303"></next>
+  </p>
+  <p id="19">
+    <text>
+        [p]Ezt a két gonosz teremtményt Goblinnak hívják. Egyenként támadnak rád.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="8" />
+      <enemy id="9" />
+    </fight>
+    <next id="317"></next>
+  </p>
+  <p id="317">
+    <text>
+        [p]Levágod köteleiről a Törpét. Valóban, ahogy sejtetted, halott. Átkutatod a két Goblin zsebeit, és egy nagy darab, jó illatú [span class="takeItem" data-id="3006" data-amount="1"]sajtra[/span] bukkansz. Ha magaddal akarod vinni, tedd a hátizsákodba, és menj tovább észak felé.[/p]
+    </text>
+    <next id="303"></next>
+  </p>
+  <p id="303">
+    <text>
+        [p]Az út egy kelet-nyugati átjárónál ér véget. Egy erős vasrács zárja le, úgyhogy nem mehetsz tovább. Nincs olyan erő, amely szét tudná zúzni. A falon, tőled jobbra, két fogantyú van, és úgy tűnik, közük lehet a vasrács mozgatásához. Melyiket húzod meg?[/p]
+    </text>
+    <next id="128">A jobb oldali kart?</next>
+    <next id="243">A bal oldali kart?</next>
+  </p>
+  <p id="78">
+    <text>
+        [p]Az út egy sarokvasakon függő tömör faajtónál ér véget. Ennél hallgatózva furcsa mormogást és konyhai edények zörgését hallod. Egy biztos: az ajtó mögött többen vannak.[/p]
+    </text>
+    <next id="159">Ha be akarsz nyitni</next>
+    <next id="237">Ha inkább visszafordulsz</next>
+  </p>
+  <p id="159">
+    <text>
+        [p]Az ajtó egy hatalmas terembe nyílik, a terem valószínűleg a már előbb látott bibircsókos arcú teremtmények ebédlője. A nagy asztal körül öt Ork ül, iszogatnak, és tányérjukból patkánybendőből készült levest szürcsölgetnek. Hevesen vitatkoznak azon, hogy ki szopogathatja majd le a hatalmas üstben benn hagyott patkánycsontokat, így nem vesznek észre, amint belépsz.[/p]
+    </text>
+    <next id="365">Ha elég merész vagy, megtámadhatod őket</next>
+    <next id="159a">Ha nem, megpróbálhatsz elmenekülni</next>
+  </p>
+  <p id="159a" display="159">
+    <text>
+        [p]Az ajtó egy hatalmas terembe nyílik, a terem valószínűleg a már előbb látott bibircsókos arcú teremtmények ebédlője. A nagy asztal körül öt Ork ül, iszogatnak, és tányérjukból patkánybendőből készült levest szürcsölgetnek. Hevesen vitatkoznak azon, hogy ki szopogathatja majd le a hatalmas üstben benn hagyott patkánycsontokat, így nem vesznek észre, amint belépsz.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Kijutsz észrevétlenül.[/p]
+        </text>
+        <next id="237"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Észrevesznek, és meg kell küzdenetek.[/p]
+        </text>
+        <next id="365"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="237">
+    <text>
+        [p]Fürgén leereszkedsz az útra, és visszamész az elágazáshoz. Most északi irányba indulsz.[/p]
+    </text>
+    <next id="285"></next>
+  </p>
+  <p id="365">
+    <text>
+        [p]Az Orkok egyesével támadnak rád.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="10" />
+      <enemy id="11" />
+      <enemy id="12" />
+      <enemy id="13" />
+      <enemy id="14" />
+      <fleeing />
+      <flee>
+        <next id="237"></next>
+      </flee>
+      <win>
+        <next id="183"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="183">
+    <text>
+        [p]Átkutatod a halott Orkok testét, de zsebükben csak néhány fogat, körmöt, csontot és kést találsz. Átvizsgálod a szobában lévő szekrényeket, de csak durván megmunkált tányérokat, tálakat és kanalakat lelsz. Egyszer csak egy félméteres, vékony bőrtokra bukkansz. Büszke lehetsz győzelmedre: 1 ÜGYESSÉG és 5 ÉLETERŐ pontot szereztél vele.[/p]
+    </text>
+    <add amount="1" to="skill" />
+    <add amount="5" to="stamina" />
+    <next id="266">Ha kinyitod a tokot</next>
+    <next id="237">Ha itt hagyod és távozol</next>
+  </p>
+  <p id="266">
+    <text>
+        [p]A tok könnyedén kinyílik, és a belsejében egy pompás íjat és egy ezüst nyílvesszőt találsz. A tokon egy utasítás azt mondja: ... Örök álmot nyújt még azoknak is, akik sohasem... Az [span class="takeItem" data-id="3007" data-amount="1"]íjat és a nyílvesszőt[/span] a tokkal együtt a hátizsákodba teszed, és távozol. Ha akarsz, előtte ehetsz is Élelmiszerkészletedből. 1 Szerencse pontot nyertél.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="237"></next>
+  </p>
+  <p id="353">
+    <text>
+        [p]Hirtelen az Öreg felé szúrsz, ahogy kitárt karokkal feléd ugrik, és kardod átjárja mellét. Káromkodsz, amikor rájössz, nem is akart bántani. Vad izgatottsága pusztán annak tudható be, hogy a hosszú fogság után végre kiszabadult. Most már nem tudhatsz meg tőle semmit azokról a veszélyekről, melyek még rád leselkednek. Folytasd utadat a folyosón.[/p]
+    </text>
+    <next id="314"></next>
+  </p>
 </content>
