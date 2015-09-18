@@ -42,7 +42,6 @@ public class RandomCommandResolver extends TypeAwareCommandResolver<RandomComman
     public List<ParagraphData> resolveSilently(final Command commandObject, final ResolvationData resolvationData, final List<String> messages, final Locale locale) {
         final RandomCommand command = (RandomCommand) commandObject;
 
-        Assert.state(command.getResults().size() + (command.getResultElse() == null ? 0 : 1) > 0, "At least one result must be specified!");
         Assert.notNull(resolvationData, "The parameter 'resolvationData' cannot be null!");
 
         final List<ParagraphData> responseList = getResultParagraphData(command, messages, locale);
@@ -61,7 +60,6 @@ public class RandomCommandResolver extends TypeAwareCommandResolver<RandomComman
 
     @Override
     public List<ParagraphData> doResolve(final RandomCommand command, final ResolvationData resolvationData) {
-        Assert.state(command.getResults().size() + (command.getResultElse() == null ? 0 : 1) > 1, "At least two results must be specified!");
         Assert.notNull(resolvationData, "The parameter 'resolvationData' cannot be null!");
 
         final ParagraphData rootDataElement = resolvationData.getRootData();
