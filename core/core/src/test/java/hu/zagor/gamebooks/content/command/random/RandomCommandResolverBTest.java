@@ -97,15 +97,6 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
         mockControl.reset();
     }
 
-    @Test(expectedExceptions = IllegalStateException.class)
-    public void testResolveSilentlyWhenNoResultsAreSetShouldThrowException() {
-        // GIVEN
-        mockControl.replay();
-        // WHEN
-        underTest.resolveSilently(command, resolvationData, messages, locale);
-        // THEN throws exception
-    }
-
     public void testResolveSilentlyWhenThereIsResultMatchingTheResultIntervalShouldReturnAppropriateData() throws CloneNotSupportedException {
         // GIVEN
         command.getResults().add(result);

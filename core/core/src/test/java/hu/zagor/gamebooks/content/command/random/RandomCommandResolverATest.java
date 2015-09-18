@@ -103,15 +103,6 @@ public class RandomCommandResolverATest extends CoreTextResolvingTest {
         command.setAfter(null);
     }
 
-    @Test(expectedExceptions = IllegalStateException.class)
-    public void testDoResolveWhenNoResultAndResultElseIsSetShouldThrowException() {
-        // GIVEN
-        mockControl.replay();
-        // WHEN
-        underTest.doResolve(command, resolvationData);
-        // THEN throws exception
-    }
-
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testDoResolveWhenResolvationDataIsNullShouldThrowException() {
         // GIVEN
