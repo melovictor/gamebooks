@@ -5,7 +5,6 @@ import hu.zagor.gamebooks.books.contentstorage.domain.BookParagraphConstants;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
-import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.DefaultUserInteractionHandler;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
@@ -224,7 +223,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
 
         info.getParagraphResolver().resolve(resolvationData, paragraph);
         paragraph.calculateValidEvents();
-        model.addAttribute("charEquipments", getCharacterPageData(wrapper.getCharacter(), info.getCharacterHandler()));
+        model.addAttribute("charEquipments", getCharacterPageData(wrapper.getCharacter()));
         final String bookPageName = sectionHandlingService.handleSection(model, wrapper, paragraph, getInfo());
         resolveSingleChoice(paragraph.getData());
         resolveChoiceDisplayNames(paragraph);
@@ -262,8 +261,8 @@ public class RawBookSectionController extends GenericBookSectionController imple
     }
 
     @Override
-    public RawCharacterPageData getCharacterPageData(final Character character, final CharacterHandler handler) {
-        return (RawCharacterPageData) getBeanFactory().getBean(getInfo().getCharacterPageDataBeanId(), character);
+    public RawCharacterPageData getCharacterPageData(final Character character) {
+        return (RawCharacterPageData) getBeanFactory().getBean(getInfo().getCharacterPageDataBeanId(), character, getInfo().getCharacterHandler());
     }
 
     public UserInteractionRecorder getInteractionRecorder() {
