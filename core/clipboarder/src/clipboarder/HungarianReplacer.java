@@ -5,19 +5,20 @@ import java.util.regex.Pattern;
 
 public class HungarianReplacer implements Replacer {
 
-    private static final String TURNTO = "(?:,| –) lapozz az? ([0-9]+) ?- ?r[ace][.!]";
     private static final String BIG_TURNTO = "Lapozz az? ([0-9]+) ?- ?r[ace][.!]";
-    private final Pattern multiChoiceSectionPattern = Pattern.compile("([0-9]+)\\.\\s+(.*[?!.–]) (.*)" + TURNTO + " (.*)" + TURNTO + ".(?: (.*)" + TURNTO
-        + "){0,1}(?: (.*)" + TURNTO + "){0,1}(?: (.*)" + TURNTO + "){0,1}(?: (.*)" + TURNTO + "){0,1}(?: (.*)" + TURNTO + "){0,1}", Pattern.DOTALL);
+    private static final String TURNTO = "(?:,| –) lapozz az? ([0-9]+) ?- ?r[ace][.!]";
+
+    private static final String CHOICE_A = "(?:[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + "){0,1}";
+    private static final String CHOICE_B = "(?: (.*)" + TURNTO + "){0,1}";
+
+    private final Pattern multiChoiceSectionPattern = Pattern.compile("([0-9]+)\\.\\s+(.*[?!.–]) (.*)" + TURNTO + " (.*)" + TURNTO + "." + CHOICE_B + CHOICE_B + CHOICE_B
+        + CHOICE_B + CHOICE_B, Pattern.DOTALL);
     private final Pattern singleChoiceLikeMultiSectionPattern = Pattern.compile("([0-9]+)\\.\\s+(.*[?!….–]) (.*)" + TURNTO, Pattern.DOTALL);
     private final Pattern singleSendoffSectionPattern = Pattern.compile("([0-9]+)\\.?\\s+(.*[?!.…–]) " + BIG_TURNTO, Pattern.DOTALL);
-    private final Pattern multiChoiceListSectionPattern = Pattern.compile("([0-9]+)\\.\\s+(.*[?!.:])[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + "(?:[\\r\\n]+(.*?)[ \\t]+"
-        + BIG_TURNTO + "){0,1}(?:[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + "){0,1}(?:[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + "){0,1}(?:[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO
-        + "){0,1}(?:[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + "){0,1}(?:[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + "){0,1}(?:[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + "){0,1}",
-        Pattern.DOTALL | Pattern.COMMENTS);
-    private final Pattern multiChoiceListSectionPattern2 = Pattern.compile("([0-9]+)\\.\\s+(.*[?!.:])[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + "(?:[\\r\\n]+(.*?)[ \\t]+"
-        + BIG_TURNTO + "){0,1}(?:[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + "){0,1}(?:[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + "){0,1}(?:[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO
-        + "){0,1}(?:[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + "){0,1}(?:[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + "){0,1}(?:[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + "){0,1}");
+    private final Pattern multiChoiceListSectionPattern = Pattern.compile("([0-9]+)\\.\\s+(.*[?!.:])[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + CHOICE_A + CHOICE_A + CHOICE_A
+        + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A, Pattern.DOTALL | Pattern.COMMENTS);
+    private final Pattern multiChoiceListSectionPattern2 = Pattern.compile("([0-9]+)\\.\\s+(.*[?!.:])[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + CHOICE_A + CHOICE_A + CHOICE_A
+        + CHOICE_A + CHOICE_A + CHOICE_A);
 
     private final Pattern multiChoiceContinuousSectionPattern = Pattern
         .compile(
