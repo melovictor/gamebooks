@@ -95,7 +95,7 @@ public class HungarianReplacer implements Replacer {
             final String skill = matcher.group(2);
             final String stamina = matcher.group(3);
 
-            newContent = "<enemy id=\"XX\" name=\"" + name + "\" skill=\"" + skill + "\" stamina=\"" + stamina + "\" />";
+            newContent = "<enemy stamina=\"" + stamina + "\" skill=\"" + skill + "\" id=\"XX\" name=\"" + name + "\" />";
             System.out.println("Converted based on fitE, result:");
             System.out.println(newContent);
         }
