@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.raw.mvc.book.inventory.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.mvc.book.controller.AbstractRequestWrappingController;
@@ -47,14 +46,14 @@ public class RawBookInventoryController extends AbstractRequestWrappingControlle
         sectionHandlingService.initModel(model, player, info);
 
         final Character c = wrapper.getCharacter();
-        model.addAttribute("charEquipments", getCharacterPageData(c, info.getCharacterHandler()));
+        model.addAttribute("charEquipments", getCharacterPageData(c));
         model.addAttribute("bookInfo", info);
 
         return "rawCharPage";
     }
 
     @Override
-    public RawCharacterPageData getCharacterPageData(final Character character, final CharacterHandler handler) {
+    public RawCharacterPageData getCharacterPageData(final Character character) {
         return (RawCharacterPageData) getBeanFactory().getBean(getInfo().getCharacterPageDataBeanId(), character);
     }
 

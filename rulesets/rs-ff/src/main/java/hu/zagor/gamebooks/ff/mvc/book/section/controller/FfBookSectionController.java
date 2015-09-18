@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.ff.mvc.book.section.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
@@ -118,8 +117,8 @@ public class FfBookSectionController extends RawBookSectionController {
     }
 
     @Override
-    public FfCharacterPageData getCharacterPageData(final Character character, final CharacterHandler handler) {
-        return (FfCharacterPageData) getBeanFactory().getBean(getInfo().getCharacterPageDataBeanId(), character, handler);
+    public FfCharacterPageData getCharacterPageData(final Character character) {
+        return (FfCharacterPageData) getBeanFactory().getBean(getInfo().getCharacterPageDataBeanId(), character, getInfo().getCharacterHandler());
     }
 
     @Override

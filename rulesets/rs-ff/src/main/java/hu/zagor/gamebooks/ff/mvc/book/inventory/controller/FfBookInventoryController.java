@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.ff.mvc.book.inventory.controller;
 
 import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
 import hu.zagor.gamebooks.raw.mvc.book.inventory.controller.RawBookInventoryController;
 
@@ -24,7 +23,7 @@ public class FfBookInventoryController extends RawBookInventoryController {
     }
 
     @Override
-    public FfCharacterPageData getCharacterPageData(final Character character, final CharacterHandler handler) {
-        return (FfCharacterPageData) getBeanFactory().getBean(getInfo().getCharacterPageDataBeanId(), character, handler);
+    public FfCharacterPageData getCharacterPageData(final Character character) {
+        return (FfCharacterPageData) getBeanFactory().getBean(getInfo().getCharacterPageDataBeanId(), character, getInfo().getCharacterHandler());
     }
 }

@@ -70,7 +70,7 @@ public class RawBookNewGameController extends AbstractNewGameController implemen
         model.addAttribute("hasMap", contentSpecification.isMapAvailable());
         model.addAttribute("haveSavedGame", gameStateHandler.checkSavedGame(player.getId(), getInfo().getId()));
 
-        model.addAttribute("charEquipments", getCharacterPageData(c, characterHandler));
+        model.addAttribute("charEquipments", getCharacterPageData(c));
         model.addAttribute("bookInfo", getInfo());
 
         setUpSectionDisplayOptions(paragraph, model, player);
@@ -115,7 +115,7 @@ public class RawBookNewGameController extends AbstractNewGameController implemen
     }
 
     @Override
-    public RawCharacterPageData getCharacterPageData(final Character character, final CharacterHandler handler) {
+    public RawCharacterPageData getCharacterPageData(final Character character) {
         return (RawCharacterPageData) getBeanFactory().getBean(getInfo().getCharacterPageDataBeanId(), character);
     }
 

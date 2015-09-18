@@ -48,8 +48,8 @@ public class FfBookNewGameController extends RawBookNewGameController {
     }
 
     @Override
-    public FfCharacterPageData getCharacterPageData(final Character character, final CharacterHandler handler) {
-        return (FfCharacterPageData) getBeanFactory().getBean(getInfo().getCharacterPageDataBeanId(), character, handler);
+    public FfCharacterPageData getCharacterPageData(final Character character) {
+        return (FfCharacterPageData) getBeanFactory().getBean(getInfo().getCharacterPageDataBeanId(), character, getInfo().getCharacterHandler());
     }
 
     /**

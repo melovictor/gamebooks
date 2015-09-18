@@ -262,7 +262,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
 
     @Override
     public RawCharacterPageData getCharacterPageData(final Character character) {
-        return (RawCharacterPageData) getBeanFactory().getBean(getInfo().getCharacterPageDataBeanId(), character, getInfo().getCharacterHandler());
+        return (RawCharacterPageData) getBeanFactory().getBean(getInfo().getCharacterPageDataBeanId(), character);
     }
 
     public UserInteractionRecorder getInteractionRecorder() {

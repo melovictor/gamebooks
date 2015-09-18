@@ -62,7 +62,7 @@ public class RawBookLoadController extends GenericBookLoadController implements 
         enemies.putAll(savedEnemies);
 
         final CharacterHandler characterHandler = info.getCharacterHandler();
-        model.addAttribute("charEquipments", getCharacterPageData(character, characterHandler));
+        model.addAttribute("charEquipments", getCharacterPageData(character));
 
         setUpCharacterHandler(wrapper, characterHandler);
         wrapper.setCharacter(character);
@@ -88,7 +88,7 @@ public class RawBookLoadController extends GenericBookLoadController implements 
     }
 
     @Override
-    public RawCharacterPageData getCharacterPageData(final Character character, final CharacterHandler handler) {
+    public RawCharacterPageData getCharacterPageData(final Character character) {
         return (RawCharacterPageData) getBeanFactory().getBean(getInfo().getCharacterPageDataBeanId(), character);
     }
 
