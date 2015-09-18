@@ -12,8 +12,8 @@ import org.springframework.util.Assert;
 @Scope("prototype")
 public class UserInputNumericResponse extends UserInputResponse {
 
-    private final Integer minBound;
-    private final Integer maxBound;
+    private Integer minBound;
+    private Integer maxBound;
 
     /**
      * Default constructor that will create a fallback response.
@@ -61,6 +61,14 @@ public class UserInputNumericResponse extends UserInputResponse {
 
     Integer getMaxBound() {
         return maxBound;
+    }
+
+    public void setMinBound(final Integer minBound) {
+        this.minBound = minBound;
+    }
+
+    public void setMaxBound(final Integer maxBound) {
+        this.maxBound = maxBound;
     }
 
 }

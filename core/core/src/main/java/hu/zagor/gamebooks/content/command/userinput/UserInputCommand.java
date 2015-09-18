@@ -66,7 +66,7 @@ public class UserInputCommand extends Command {
         return cloned;
     }
 
-    List<UserInputResponse> getResponses() {
+    public List<UserInputResponse> getResponses() {
         return responses;
     }
 
