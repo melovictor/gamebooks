@@ -929,6 +929,12 @@
     <next id="178">Csak a csillag alakú csempékre lépsz?</next>
     <next id="108">Csak a kéz alakú csempékre lépve közelítesz az ajtóhoz?</next>
   </p>
+  <p id="178">
+    <text>
+        [p]Bizonytalan léptekkel átvágsz a szobán az északi falban lévő ajtó felé.[/p]
+    </text>
+    <next id="162">Kinyitod, és áthaladsz rajta</next>
+  </p>
   <p id="305">
     <test against="luck">
       <success>
@@ -964,5 +970,291 @@
         <next id="108"></next>
       </failure>
     </test>
+  </p>
+  <p id="108">
+    <text>
+        [p]Amikor a lábad hozzáér az első kéz formájú csempéhez, érzed, hogy a bokádat szinte satuba szorították, s ahogy letekintesz, megpillantasz egy kísértetiesen fehér kezet, amely megmarkolta a lábad. Küzdesz, hogy visszanyerjed egyensúlyodat, erőfeszítésedet végül is siker koronázza. Legnagyobb rémületedre a padlón rengeteg kéz formájú csempe van. Az ajtóhoz vezető úton a padlóból mindenütt szellemkezek nyúlnak feléd, kapkodnak a levegőbe. Kardot rántasz, és a kezekre sújtasz. Vívd meg a csatádat![/p]
+    </text>
+    <fight type="single">
+      <enemy id="17" />
+    </fight>
+    <next id="185"></next>
+  </p>
+  <p id="185">
+    <text>
+        [p]A kéz elsorvad, és visszahúzódik a padlóba. Ugyanakkor a többi kéz is elpusztul, lassan elenyésznek, visszabújnak a csempékbe. Elhatározod ezután, hogy csak a csillag alakú csempékre lépsz. Óvatosan átmész a szobán az északi falban lévő ajtóhoz. Az ajtó kinyílik, és te 2 Szerencse pontot kapsz.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <next id="162"></next>
+  </p>
+  <p id="162">
+    <text>
+        [p]Az út északi irányba vezet, és addig mész rajta, mígnem egy újabb elágazáshoz érsz.[/p]
+    </text>
+    <next id="23">Ha továbbhaladsz észak felé</next>
+    <next id="69">Ha nyugatnak fordulsz</next>
+  </p>
+  <p id="23">
+    <text>
+        [p]A folyosót erős ajtó zárja el előtted, és meglepődve veszed észre, hogy az ajtó aljához egy bőrpántot szegeztek. Hallgatózol, de nem hallasz semmit.[/p]
+    </text>
+    <next id="326">Ha belépsz a szobába</next>
+    <next id="229">Ha visszafordulsz az elágazáshoz</next>
+  </p>
+  <p id="326">
+    <text>
+        [p]Csupasz sziklafallal körülkerített szobába lépsz be. A szemközti falon egy aranykulcs függ. Úgy latod, másik kijárat nincs.[/p]
+    </text>
+    <next id="35">Ha odamész a kulcsért</next>
+    <next id="229">Ha inkább visszatérsz az elágazáshoz</next>
+  </p>
+  <p id="35">
+    <text>
+        [p]Amint belépsz a szobába, az ajtó becsapódik mögötted. Ahogy becsukódik, egy kattanás és sziszegés hallatszik. A mennyezet közepéből gázsugár csap ki, és a szobát fojtogató köd lepi el. Belélegzed, és köhögni kezdesz. Az ajtóra pillantasz, aztán a kulcsra.[/p]
+    </text>
+    <next id="136">Visszamész az ajtóhoz, és gyorsan Elmenekülsz?</next>
+    <next id="361">Vagy visszatartod lélegzeted, és elrohansz a kulcsért?</next>
+  </p>
+  <p id="361">
+    <text>
+        [p]Lekapod a kulcsot a szögről. Megnézed, a kulcsba a 125-ös számot vésték. De a tüdőd majd szétrobban.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <text>
+            [p]Átjutsz a szobán, eléred az ajtót.[/p]
+        </text>
+      </success>
+      <failure>
+        <text>
+            [p]Kénytelen vagy levegőt venni és mérges gázt nyelni. Ezzel 2 ÜGYESSÉG és 3 ÉLETERŐ pontot veszítesz; de közben rohansz az ajtóhoz.[/p]
+        </text>
+        <add amount="-2" to="skill" />
+        <add amount="-3" to="stamina" />
+      </failure>
+    </test>
+    <next id="136"></next>
+  </p>
+  <p id="136">
+    <text>
+        [p]Odaérsz az ajtóhoz, megbirkózol a zárral, és kitárod az ajtót. Felkiáltasz, becsapod magad mögött, és nagyokat lélegezve visszafordulsz az elágazáshoz.[/p]
+    </text>
+    <next id="229"></next>
+  </p>
+  <p id="229">
+    <text>
+        [p]Visszajutottál az elágazáshoz, és ez alkalommal jobbra fordulsz.[/p]
+    </text>
+    <next id="69"></next>
+  </p>
+  <p id="69">
+    <text>
+        [p]Az átjárótól nem messze a folyosó észak felé kanyarodik, és te egészen addig mész így, amíg egy újabb kereszteződéshez nem érsz. Ennél az elágazásnál egy sziklába vésett nyilat veszel észre, amely észak felé mutat, s elhatározod, megpróbálkozol ezzel az iránnyal.[/p]
+    </text>
+    <next id="244"></next>
+  </p>
+  <p id="244">
+    <text>
+        [p]Az út észak felé vezet, messziről már hallatszik egy föld alatti folyó csobogásának a zaja. A levegő hűvös és frissítő. Hamarosan odaérsz, ahol a folyópart kiszélesedik, és kétségbeesetten látod, semmilyen módon nem tudsz átkelni a túloldalra. Kelet felé a folyó egy sziklabarlangon folyik keresztül.[/p]
+    </text>
+    <next id="143">Leülhetsz pihenni és enni</next>
+    <next id="399">De akár azonnal folytathatod utad az egyetlen lehetséges módon: a folyóba veted magad, és úszol lefelé az áramlással</next>
+  </p>
+  <p id="143">
+    <text>
+        [p]Letelepszel a parti homokra. Amint az elemózsiád készíted, néhány méterre balra tőled valami megmozdul a homokban. A homok mozgása fokozódik, felpattansz, kardod már a markodban. Hirtelen egy hatalmas, cső alakú fej bújik ki a felszínre, tekergőzik néhányat a levegőben, és megérzi a szagodat. Az Óriás Homokhernyó puha, szelvényekre osztott teste felágaskodik és feléd hajlik. Amint lecsap rád, ott, ahol valószínűleg a feje van, egy nyílás tárul fel, tele rövid, tüskeszerű fogakkal. Meg kell küzdened ezzel a lénnyel is.[/p]
+        [p]Ha Menekülni akarsz, a harmadik Forduló után megteheted, folyóba veted magad, és úszol lefele az árral.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="18" />
+      <fleeing after="3" />
+      <flee>
+        <text>
+            [p]Elveszítettél egy adag Élelmet, amit éppen meg akartál enni.[/p]
+        </text>
+        <loseItem id="2000" />
+        <next id="399"></next>
+      </flee>
+      <win>
+        <next id="44"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="44">
+    <text>
+        [p]A csata után levegőért kapkodsz, leülsz, hogy valamennyire összeszedd magad, és végre befejezd az evést, amit elkezdtél. Végül összecsomagolod a hátizsákodat, és átgázolsz a folyón.[/p]
+    </text>
+    <loseItem id="2000" />
+    <add amount="4" to="stamina" />
+    <next id="399"></next>
+  </p>
+  <p id="399">
+    <text>
+        [p]Az áramlás erős, gyorsan sodor magával lefelé. Átúszol egy szűk nyíláson, és egy hatalmas barlangba jutsz, mindkét oldalán homokpadok. Az áramlás a déli partra sodor.[/p]
+    </text>
+    <next id="218"></next>
+  </p>
+  <p id="18">
+    <text>
+        [p]Továbbhaladsz a folyosón nyugat felé. Vagy ötven méter után az út észak felé kanyarodik. Két vagy három lépés után furcsa hangot hallasz, mintha valami szétmorzsolódna a lábad alatt.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Még sikerül gyorsan visszaugranod, mielőtt a verem kinyílna alattad. Jobban teszed, ha visszamész az elágazáshoz.[/p]
+        </text>
+        <next id="261"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Túl lassú vagy, és belezuhansz a két méter mély verembe (1 ÉLETERŐ pontot elveszítesz ezzel).[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+        <next id="348"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="261">
+    <text>
+        [p]Eléred az elágazást, és mész tovább kelet felé.[/p]
+    </text>
+    <next id="345"></next>
+  </p>
+  <p id="348">
+    <text>
+        [p]Egy kútban vagy, egy kicsit megsérültél, de szerencsére nem súlyosan. Amint lábra tudsz állni, körülnézel, és két átjárót is észreveszel. Délre a rövid út egy kis kamrába vezet, a másik folyosó északnak tart. Kissé aggaszt a zuhanás okozta seb, de még ennél is jobban az a morgás, amely a kamrából hallatszik. Mielőtt még összeszedhetnéd gondolataidat, egy hatalmas ronda fej tűnik fel a sarkon, és egy Troll kapaszkodik ki kamrájából. Bokád kificamodott, nemigen tudsz gyorsan mozogni, de a Troll már harcra kész. Szembe kell nézned a bestiával.[/p]
+    </text>
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="51">Ha meg akarod inni a Láthatatlanság Italát</next>
+        <next id="331">Ha nem</next>
+      </have>
+      <dontHave>
+        <next id="331"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="51">
+    <text>
+        [p]Felhajtod az Italt, és látod, amint a Troll arcán végigfut a döbbenet. Közeledik feléd, meg akar ragadni, de te oldalt lépsz, mire ő eredménytelenül a levegőbe markol. Kétségbeesetten csapkod, hogy a karmai közé kaparintson, de te könnyedén el tudod kerülni őt. Végül feladja a küzdelmet, és visszatér a kamrájába. Épp idejében, mivel már érzed, hogy kezdesz újra láthatóvá válni. Adj 2-t Szerencse pontjaidhoz! Mehetsz tovább előre a folyosón észak felé.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <loseItem id="3003" />
+    <next id="287"></next>
+  </p>
+  <p id="331">
+    <text>
+        [p]A lény ember nagyságú, de hosszú karjai nagyon erősnek látszanak. Küzdj meg vele![/p]
+    </text>
+    <fight type="single">
+      <enemy id="19" />
+      <win>
+        <text>
+            [p]Mehetsz tovább északra.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="287"></next>
+  </p>
+  <p id="287">
+    <text>
+        [p]Az út jócskán halad tovább, azután egy sziklába vágott lépcső aljához ér. Felkapaszkodsz rajta, és egy rozsdás sarokvasakon nyugvó faajtóhoz érsz. Fülelni kezdesz, amikor furcsa, kaparászó hangot hallasz. Megpróbálkozol az ajtónyitó gombbal, mire az ajtó csikorogva kitárul. Egy csupasz szobába lépsz, a padlót csontok borítják. A szemben lévő falból is nyílik egy ajtó. A csontokat három Óriás Patkány rágcsálja, s csak azért hagyják abba tevékenységüket, hogy rád bámuljanak belépésedkor. Mindnyájan legalább egy méter hosszúak, tépett bundájukon látszik, harcos természetűek. Meg kell küzdened velük, ha át akarsz menni a szobán, mert nem vitás, szerintük benned ízletes falatra akadtak.[/p]
+    </text>
+    <itemCheck type="item" id="3006">
+      <have>
+        <next id="32"></next>
+      </have>
+      <dontHave>
+        <next id="309"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="32">
+    <text>
+        [p]Áthajítod a sajtot a szobán a Patkányok közé, és azok tülekedni kezdenek érte. Tépik, marják egymást az élelemért. A figyelmüket így elterelve keresztülmész a szobán, és kilépsz az északi falon lévő ajtón. Jó szerencséd miatt adjál magadnak 2 Szerencse pontot.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <next id="124"></next>
+  </p>
+  <p id="124">
+    <text>
+        [p]Az ajtó egy széles folyosóra nyílik, amelyet követve nemsokára egy elágazáshoz érsz.[/p]
+    </text>
+    <next id="138">Innen mehetsz északnak</next>
+    <next id="76">Vagy keletnek</next>
+  </p>
+  <p id="309">
+    <text>
+        [p]Kardot rántasz, és várod, hogy a Patkányok rád ugorjanak. Amint vezérük vetődni készül, nagyot üvöltesz, és feléje lendülsz. Kiáltásod elijeszti a másik kettőt, néhány lépésnyit visszairamodnak. Küzdj meg a Patkányokkal, egyikkel a másik után![/p]
+    </text>
+    <fight type="single">
+      <enemy id="20" />
+      <enemy id="21" />
+      <enemy id="22" />
+      <win>
+        <text>
+            [p]Átmehetsz az északi falban lévő ajtón.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="124"></next>
+  </p>
+  <p id="76">
+    <text>
+        [p]Újabb elágazáshoz érkeztél. Egy nyíl a falon északi irányba mutat, és te úgy döntesz, követed.[/p]
+    </text>
+    <next id="244"></next>
+  </p>
+  <p id="138">
+    <text>
+        [p]A folyosó szélesedni kezd, és észreveszed, hogy egy hatalmas barlang felé közeledsz. Hangok szűrődnek feléd, úgyhogy óvatosan haladsz tovább. Amint közeledsz, egyszer csak egy óriási alakot pillantasz meg a távolban. Elfog a félelem, amint ráébredsz, hogy ez a túlméretezett emberszerűség legalább három méter magas! Bőrből készült tunikát visel, és pillanatnyilag teljesen lefoglalja az asztalon lévő vacsorája.[/p]
+        [p]A barlang legalább 100 méter átmérőjű, nyilván ez az Óriás otthona. Az egyik falnál hatalmas asztal éli, mellette két szék, az egyiken ül a monstrum. Szemmel láthatólag annyira leköti az étkezés (egy hatalmas malac), hogy aligha vesz észre. A barlang másik végében megpillantod a szalmazsákját, meg egy nagy, szőrös állatbőrt (nyilván a takarója) és egy hatalmas kőfejű kalapácsot, amelyet valószínűleg meg sem bírnál mozdítani. A barlang egyik sarkában tűz lobog, felette a mennyezeten rés tátong. Úgy tűnik, nincs más kiút a barlangból.[/p]
+    </text>
+    <next id="163">Ha megküzdesz ezzel a kegyetlen Óriással</next>
+    <next id="351">Ha visszatérsz az elágazáshoz</next>
+  </p>
+  <p id="351">
+    <text>
+        [p]Visszaértél az elágazáshoz, és keletnek fordulsz.[/p]
+    </text>
+    <next id="76"></next>
+  </p>
+  <p id="163">
+    <text>
+        [p]Kihúzod hüvelyéből kardodat, és belépsz a barlangba. Az Óriás abbahagyja az evést, beleszimatol a levegőbe. Körülnéz, megpillantja, hogy közeledsz. Hangosan felmordul, felkapja a malac gerincét, és hozzád vágja.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Elvétett. Azután felkapja a kalapácsát, hogy agyoncsapjon vele. Küzdj meg az Óriással![/p]
+            [p]Három Forduló után Elmenekülhetsz, visszafuthatsz az átjáróhoz, ahová nem tud követni.[/p]
+        </text>
+      </success>
+      <failure>
+        <text>
+            [p]Eltalál, erősen megüt a csonttal - 1 ÉLETERŐ pontot veszítesz. Azután felkapja a kalapácsát, hogy agyoncsapjon vele. Küzdj meg az Óriással![/p]
+            [p]Három Forduló után Elmenekülhetsz, visszafuthatsz az átjáróhoz, ahová nem tud követni.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+      </failure>
+    </test>
+    <fight type="single">
+      <enemy id="23" />
+      <fleeing after="3" />
+      <flee>
+        <next id="351"></next>
+      </flee>
+      <win>
+        <next id="28"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="28">
+    <text>
+        [p]A félelmetes Óriás holtan fekszik! Átkutatod a barlangját, de alig találsz valami használhatót, bár az övébe rejtett erszényben [span class="takeItem" data-id="gold" data-amount="8"]nyolc Aranytallérra[/span] lelsz. Egy kicsit aggódsz ugyan a másik szék miatt, vajon kié lehet? Úgy döntesz, ugyanazon az úton hagyod el a barlangot, mint amin jöttél. Győzelmedért 2 ÜGYESSÉG és 2 Szerencse pontot kapsz.[/p]
+    </text>
+    <add amount="2" to="skill" />
+    <add amount="2" to="luck" />
+    <next id="351"></next>
   </p>
 </content>
