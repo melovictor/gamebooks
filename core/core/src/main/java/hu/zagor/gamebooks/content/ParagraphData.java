@@ -143,7 +143,7 @@ public class ParagraphData extends EscapingData implements TrueCloneable, BeanFa
      */
     public void appendText(final String text) {
         if (text != null) {
-            this.text += text;
+            this.text += fixText(text);
         }
     }
 
