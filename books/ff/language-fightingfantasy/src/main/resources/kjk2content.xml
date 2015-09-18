@@ -308,7 +308,7 @@
   </p>
   <p id="339">
     <text>
-        [p]A lakat elröpül, és néhány méternyire ér földet. Felemeled a nehéz fedelet, és szemed tágra nyílik, amint megpillantod, micsoda aranyló ragyogás árad belőle. Jó csomó aranypénz van benne. Az egyik sarkában kicsi, fekete üveg fekszik, valami folyadék van benne. A ládában van még egy selyemkesztyű is. De amint a kincseket bámulod, halk kattanást hallasz, és összerándulsz a fájdalomtól, amint egy kicsi hajítódárda vágódik a gyomrodba.[/p]
+        [p]A lakat elröpül, és néhány méternyire ér földet. Felemeled a nehéz fedelet, és szemed tágra nyílik, amint megpillantod, micsoda aranyló ragyogás árad belőle. Jó csomó Aranytallér van benne. Az egyik sarkában kicsi, fekete üveg fekszik, valami folyadék van benne. A ládában van még egy selyemkesztyű is. De amint a kincseket bámulod, halk kattanást hallasz, és összerándulsz a fájdalomtól, amint egy kicsi hajítódárda vágódik a gyomrodba.[/p]
     </text>
     <random>
       <result max="1" min="1">
@@ -553,5 +553,416 @@
         [p]Hirtelen az Öreg felé szúrsz, ahogy kitárt karokkal feléd ugrik, és kardod átjárja mellét. Káromkodsz, amikor rájössz, nem is akart bántani. Vad izgatottsága pusztán annak tudható be, hogy a hosszú fogság után végre kiszabadult. Most már nem tudhatsz meg tőle semmit azokról a veszélyekről, melyek még rád leselkednek. Folytasd utadat a folyosón.[/p]
     </text>
     <next id="314"></next>
+  </p>
+  <p id="128">
+    <text>
+        [p]Mélységes, morajló hangot hallasz, és a föld megremeg a lábad alatt. A vasrács hangosan csikorogva lassan felemelkedik. Most már átmehetsz az elágazáshoz.[/p]
+    </text>
+    <next id="210">Ha nyugatnak indulsz</next>
+    <next id="58">Ha inkább keletnek fordulsz</next>
+  </p>
+  <p id="210">
+    <text>
+        [p]Az út rövidesen egy újabb elágazáshoz érkezik.[/p]
+    </text>
+    <next id="225">Mehetsz egyenesen tovább, nyugati irányba</next>
+    <next id="357">Vagy fordulhatsz északnak</next>
+  </p>
+  <p id="225">
+    <text>
+        [p]Az út halad tovább nyugati irányba, majd egyenesen északnak fordul. Nemsokára egy elágazáshoz érkezel, ahol egy szűk folyosó vezet nyugatnak.[/p]
+    </text>
+    <next id="77">Északi irányba tartasz?</next>
+    <next id="63">Nyugatnak fordulsz?</next>
+  </p>
+  <p id="77">
+    <text>
+        [p]Néhány métert haladsz felfelé az átjárón, és egy elágazáshoz érkezel, ahol keleti és nyugati irányba egyaránt fordulhatsz. Az északi fal sziklái között van egy kis beszögellés, lepihenhetsz, és elfogyaszthatod Élelmiszerkészleted egy részét anélkül, hogy bárki észrevenne. Ha enni akarsz, egyél.[/p]
+    </text>
+    <canEat />
+    <next id="345">Utána elindulhatsz keletnek</next>
+    <next id="18">Vagy nyugatnak</next>
+  </p>
+  <p id="345">
+    <text>
+        [p]Keleti irányban követed a folyosót, mely néhány méter után északnak fordul. Hamarosan újabb elágazáshoz érsz.[/p]
+    </text>
+    <next id="381">Mehetsz tovább egyenesen</next>
+    <next id="311">Vagy jobbra fordulva kelet felé egy úton, mely hamarosan északnak kanyarodik</next>
+  </p>
+  <p id="243">
+    <text>
+        [p]Rémülten veszed észre, hogy az az átkozott fogantyú csapda volt. Bár fogantyúnak látszott, valójában egy viasszal bevont kardpenge, ami most kegyetlenül megvágta a kezedet. Jobb vagy bal kézzel nyúltál hozzá?[/p]
+    </text>
+    <random>
+      <odd max="6" min="1">
+        <text>
+            [p]Kardforgató kezeddel értél a pengéhez, harcképességedet a seb alaposan lecsökkenti. 3 ÜGYESSÉG és 1 ÉLETERŐ pontot vesztettél.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+        <add amount="-3" to="skill" />
+      </odd>
+      <even max="6" min="1">
+        <text>
+            [p]A bal kezedet használtad, így a sérülés nem olyan zavaró. 1 ÜGYESSÉG és 2 ÉLETERŐ pontot veszítesz.[/p]
+        </text>
+        <add amount="-1" to="skill" />
+        <add amount="-2" to="stamina" />
+      </even>
+      <after>
+        <text>
+            [p]Ezek után kénytelen vagy meghúzni a jobb oldali fogantyút, különben nem juthatsz tovább! Ügyelj, melyik kezeddel nyúlsz hozzá![/p]
+        </text>
+      </after>
+    </random>
+    <next id="128"></next>
+  </p>
+  <p id="357">
+    <text>
+        [p]Az út jó darabig északnak halad, azután szélesedni kezd, és egy hatalmas, durva falú barlangba ér. Úgy látod, nem vezet rajta keresztül semmilyen folyosó.[/p]
+    </text>
+    <next id="269">Ha visszatérsz az elágazáshoz</next>
+    <next id="57">Ha belépsz a barlangba</next>
+  </p>
+  <p id="269">
+    <text>
+        [p]Visszaérsz az elágazáshoz, és nyugatnak fordulsz.[/p]
+    </text>
+    <next id="225"></next>
+  </p>
+  <p id="57">
+    <text>
+        [p]Amint belépsz a barlangba, hangos lépéseket hallasz a hátad mögött. A lépések erősen csikorognak a sziklás talajon. Meglapulsz a bejárat mellett egy sziklahasadékban. A lépések egyre hangosabbak, és egy Ogrét pillantasz meg, amint belép a barlangba. Mára magassága is fenyegető, nagyobb két méternél, valami bőrből szabott szedett-vedett öltözéket visel. Rettenetes fabunkót tart magánál. Választhatsz:[/p]
+    </text>
+    <next id="16">Megtámadod, amint belép</next>
+    <next id="2">Megpróbálsz kisurranni a barlangból úgy, hogy ne vegyen észre</next>
+    <next id="119">Megkísérled elvonni a figyelmét azzal, hogy valamit a barlang távoli sarkába hajítasz</next>
+  </p>
+  <p id="2">
+    <test against="luck">
+      <success>
+        <text>
+            [p]El tudsz menekülni anélkül, hogy felhívnád magadra az Ogre figyelmét. Óvatosan visszamászol a folyosón, egészen a keresztútig.[/p]
+        </text>
+        <next id="269"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Belerúgsz egy apró kőbe, amely végiggurul a barlangon, és elkáromkodod magad. Kihúzod hüvelyéből a kardodat arra az esetre, ha az Ogre meghallaná a zajt.[/p]
+        </text>
+        <next id="16"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="16">
+    <text>
+        [p]Miközben kirántod a kardodat, az Ogre meghall téged, és támadásba lendül.[/p]
+        [p]A második forduló után akár elmenekülhetsz visszafelé a folyosón.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="15" />
+      <fleeing after="2" />
+      <flee>
+        <next id="269"></next>
+      </flee>
+      <win>
+        <next id="50"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="50">
+    <text>
+        [p]A leütött teremtmény nagy zajjal a földre zuhan. Átkutatod az öltözetét, de nem találsz mást, csak egy kicsiny zacskót a nyakában. Ebben egy apró [span class="takeItem" data-id="3008" data-amount="1"]bronzkulcsot[/span], melybe a 9-es számot nyomták. A kulcsot magaddal viheted, ha akarod. A barlangban semmi más érték nincs, így hát távozol, visszamész az elágazáshoz.[/p]
+    </text>
+    <next id="269"></next>
+  </p>
+  <p id="119">
+    <text>
+        [p]Kinyitod a hálózsákodat, és átkutatod, hátha találsz valamit, amit átdobhatsz a barlang túlsó oldalára.[/p]
+    </text>
+    <itemCheck type="item" id="2000">
+      <have>
+        <next id="119a" pos="1">Egy adag élelmet dobsz át?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="2001">
+      <have>
+        <next id="119a" pos="2">Az Ügyesség Italát dobod át?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="2002">
+      <have>
+        <next id="119a" pos="3">Az Erő Italát dobod át?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="2003">
+      <have>
+        <next id="119a" pos="4">A Szerencse Italát dobod át?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3002">
+      <have>
+        <next id="119a" pos="5">A bronzkulcsot dobod át?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="119a" pos="6">A Láthatatlanság Italát dobod át?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3004">
+      <have>
+        <next id="119a" pos="7">A selyemkesztyűt dobod át?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3005">
+      <have>
+        <next id="119a" pos="8">A pajzsodat dobod át?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3006">
+      <have>
+        <next id="119a" pos="9">A sajtot dobod át?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3007">
+      <have>
+        <next id="119a" pos="10">Az íjat és a nyílvesszőt dobod át?</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="119a" display="119">
+    <text>
+        [p]Kinyitod a hálózsákodat, és átkutatod, hátha találsz valamit, amit átdobhatsz a barlang túlsó oldalára.[/p]
+        [p]Átdobod a tárgyat, ami nagyot csattanva földet ér. Az Ogre a zaj felé pillant, majd odamegy és körülnéz. Közben elő tudsz mászni, vissza a folyosóra, majd pedig az elágazáshoz.[/p]
+    </text>
+    <itemCheck type="pos" id="1">
+      <have>
+        <loseItem id="2000" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="2">
+      <have>
+        <loseItem id="2001" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="3">
+      <have>
+        <loseItem id="2002" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="4">
+      <have>
+        <loseItem id="2003" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="5">
+      <have>
+        <loseItem id="3002" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="6">
+      <have>
+        <loseItem id="3003" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="7">
+      <have>
+        <loseItem id="3004" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="8">
+      <have>
+        <loseItem id="3005" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="9">
+      <have>
+        <loseItem id="3006" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="10">
+      <have>
+        <loseItem id="3007" />
+      </have>
+    </itemCheck>
+    <next id="269"></next>
+  </p>
+  <p id="63">
+    <text>
+        [p]Ahogy haladsz előre, észreveszed, hogy a folyosó egyre szűkebb, egyre keskenyebb lesz. Egyszer csak megállsz, és abban a pillanatban mély, zengő kacagás harsan fel körülötted.[/p]
+    </text>
+    <next id="281">Ha továbbmész</next>
+    <next id="10">Ha visszafordulsz</next>
+  </p>
+  <p id="281">
+    <text>
+        [p]A szűk folyosóban már nem tudsz továbbmenni. Négykézlábra ereszkedsz, és mászni kezdesz, de csakhamar az út véget ér. Elhatározod, hogy visszafordulsz a fő átjáróhoz. Az elágazás felé indulsz.[/p]
+    </text>
+    <next id="10"></next>
+  </p>
+  <p id="10">
+    <text>
+        [p]Visszaérkeztél az elágazáshoz, és észak felé indulsz.[/p]
+    </text>
+    <next id="77"></next>
+  </p>
+  <p id="381">
+    <text>
+        [p]Az út egy vassal szegélyezett faajtónál ér véget. Különböző feliratok díszítik az ajtót, de egyikből sem értesz semmit. Fülelsz, de csend van.[/p]
+    </text>
+    <next id="84">Kinyithatod az ajtót</next>
+    <next id="280">Vagy visszatérsz az elágazáshoz</next>
+  </p>
+  <p id="84">
+    <text>
+        [p]Az ajtó egy kicsi, kényelmesen berendezett szobába nyílik. Egy asztal, néhány szék és egy egész falat betöltő könyvespolc van benne. Az asztal mellett egy hosszú ősz szakállú öregember ül. Vállán egy kicsi szárnyas állat kuporog, nem nagyobb hat centiméternél. Két karja és két lába van, a bőre hamuszürke. Éles, pici fehér fogai vannak, szárnyait összefonja a háta mögött. Az Öreg nem szól semmit, amikor belépsz az ajtón, de azután int, hogy üljél le az asztalhoz. Két apró, fehér tárgyat dobál a kezei között. Mit csinálsz?[/p]
+    </text>
+    <next id="204">Leülsz, ahogy mutatta?</next>
+    <next id="280">Otthagyod a szobát, és visszafordulsz az elágazáshoz?</next>
+    <next id="377">Kirántod a kardod, és megrohamozod?</next>
+  </p>
+  <p id="377">
+    <text>
+        [p]Amint kirántod a kardod, a Szárnyas Gremlin felröppen és rád támad. Az Öreg a könyvespolchoz rohan, megérint egy könyvet, és elmenekül a kitáruló rejtekajtón keresztül. De kedvenc állatkájával meg kell küzdened.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="16" />
+    </fight>
+    <next id="196"></next>
+  </p>
+  <p id="196">
+    <text>
+        [p]Átkutatod a szobát. Bármennyire keresed, nem találod a rejtett kapcsolót, mely a könyvszekrény ajtaját nyitná - az Öreg biztosan belülről zárta be. De egy asztalfiókban [span class="takeItem" data-id="gold" data-amount="5"]öt Aranytallérra[/span] bukkansz. Úgy döntesz, visszamész déli irányba, az elágazáshoz.[/p]
+    </text>
+    <next id="280"></next>
+  </p>
+  <p id="280">
+    <itemCheck type="item" id="4005">
+      <have>
+        <text>
+            [p]Nyersz 2-2 ÜGYESSÉG, ÉLETERŐ és SZERENCSE pontot, amiért sikerült megverned az Öreget.[/p]
+        </text>
+        <add amount="2" to="skill" />
+        <add amount="2" to="stamina" />
+        <add amount="2" to="luck" />
+      </have>
+      <after>
+        <text>
+            [p]Visszaérkezel az elágazáshoz, és ez alkalommal a keletre vezető utat választod, mely néhány lépés megtétele után északnak fordul.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="311"></next>
+  </p>
+  <p id="204">
+    <text>
+        [p]Az Öreg ember az asztalkánál fel sem tekint, de ördögi kis állatkája gyanakodva mered rád, és vékony, cincogó hangon csivitelni kezd. Az Öreg felmordul, és megkérdezi, nincs-e kedved fogadni vele. Mit teszel?[/p]
+    </text>
+    <itemCheck type="gold" id="1">
+      <have>
+        <next id="130" pos="1">Elfogadod az ajánlatát?</next>
+      </have>
+    </itemCheck>
+    <next id="280" pos="2">Visszautasítod és továbbmész?</next>
+    <next id="377" pos="3">Rátámadsz az Öregre?</next>
+  </p>
+  <p id="130">
+    <text>
+        [p]Az Öreg megkérdezi, mennyi legyen a tét.
+    </text>
+    <loseItem id="4002" />
+    <loseItem id="4003" />
+    <loseItem id="4004" />
+    <itemCheck type="gold" id="1">
+      <have>
+        <text>
+            Fogadhatsz egy és húsz Aranytallér közötti összegben.[/p]
+        </text>
+        <userInput type="number">
+          <label>Hány Aranytallért teszel fel?</label>
+          <result minBound="1" maxBound="20">
+            <text>
+              [p]Az Öreg odalöki neked a fehér kockákat, amikkel játszadozott, és felszólít, hogy dobj.[/p]
+          </text>
+            <random diceConfig="2d6">
+              <after>
+                <text>
+                [p]Ezt követően az Öreg dob.[/p]
+            </text>
+                <random diceConfig="2d6">
+                  <after>
+                    <next id="130">Ha megint szeretnél játsszani</next>
+                    <next id="280">Ha az ajtón keresztül visszamész az elágazáshoz</next>
+                  </after>
+                </random>
+              </after>
+            </random>
+          </result>
+          <result minBound="21" maxBound="2147483647">
+            <text>
+                [p]Az Öreg nem hajlandó ekkora összeget feltenni. Az ajtón keresztül visszamész az elágazáshoz.[/p]
+            </text>
+            <next id="280"></next>
+          </result>
+          <resultElse>
+            <text>
+                [p]Nincs nálad elég Aranytallér. Az ajtón keresztül visszamész az elágazáshoz.[/p]
+            </text>
+            <next id="280"></next>
+          </resultElse>
+        </userInput>
+      </have>
+      <dontHave>
+        <text>
+            Mivel egyetlen Aranytallérod sincs, az ajtón keresztül visszamész az elágazáshoz.[/p]
+        </text>
+        <next id="280"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="311">
+    <text>
+        [p]Az út egy ajtónál ér véget. Hallgatózol, de semmit sem hallasz. Megpróbálod elfordítani az ajtónyitó gombot, az ajtó kitárul, és egy nagy, négyszög alakú szobába lépsz. A helyiség teljesen üres, padlóját csempékből kirakott mozaik fedi. Két minta, a kéz és a csillag alakú kimagaslik a padlóból. Továbbmenni csak a szemben lévő ajtón keresztül lehet. Mit csinálsz?[/p]
+    </text>
+    <next id="305">Átmész a szobán az ajtóhoz?</next>
+    <next id="178">Csak a csillag alakú csempékre lépsz?</next>
+    <next id="108">Csak a kéz alakú csempékre lépve közelítesz az ajtóhoz?</next>
+  </p>
+  <p id="305">
+    <test against="luck">
+      <success>
+        <test against="luck">
+          <success>
+            <test against="luck">
+              <success>
+                <text>
+                    [p]Eljutsz a szemben lévő ajtóhoz, és távozhatsz.[/p]
+                </text>
+                <next id="162"></next>
+              </success>
+              <failure>
+                <text>
+                    [p]Rálépsz egy kéz alakú csempére.[/p]
+                </text>
+                <next id="108"></next>
+              </failure>
+            </test>
+          </success>
+          <failure>
+            <text>
+                [p]Rálépsz egy kéz alakú csempére.[/p]
+            </text>
+            <next id="108"></next>
+          </failure>
+        </test>
+      </success>
+      <failure>
+        <text>
+            [p]Rálépsz egy kéz alakú csempére.[/p]
+        </text>
+        <next id="108"></next>
+      </failure>
+    </test>
   </p>
 </content>
