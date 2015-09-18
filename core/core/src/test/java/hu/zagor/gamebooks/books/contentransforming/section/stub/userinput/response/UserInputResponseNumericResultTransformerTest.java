@@ -98,8 +98,8 @@ public class UserInputResponseNumericResultTransformerTest extends AbstractTrans
 
     public void testTransformShouldParseTextAndCreateResponseIntoParent() {
         // GIVEN
-        expectAttribute("minResponse", MIN);
-        expectAttribute("maxResponse", MAX);
+        expectAttribute("minBound", MIN);
+        expectAttribute("maxBound", MAX);
         expect(beanFactory.getBean("userInputNumericResponse", MIN_INT, MAX_INT)).andReturn(response);
 
         expectAttribute("minResponse");
