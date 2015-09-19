@@ -2,8 +2,10 @@ package hu.zagor.gamebooks.ff.ff.twofm.mvc.books.section.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
+import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.Paragraph;
+import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand;
 import hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommand;
 import hu.zagor.gamebooks.content.command.random.RandomCommand;
 import hu.zagor.gamebooks.content.command.userinput.UserInputCommand;
@@ -49,12 +51,20 @@ public class Ff1BookSectionController extends FfBookSectionController {
 
     @Override
     protected void handleCustomSections(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
-        if (OLD_MAN_DICING.equals(paragraph.getId()) && hasNoBets(wrapper)) {
+        final String id = paragraph.getId();
+        if (OLD_MAN_DICING.equals(id) && hasNoBets(wrapper)) {
             final ItemCheckCommand itemCheckCommand = (ItemCheckCommand) wrapper.getParagraph().getData().getCommands().get(0);
             final UserInputCommand userInputCommand = (UserInputCommand) itemCheckCommand.getHave().getCommands().get(0);
             final UserInputNumericResponse userInputResponse = (UserInputNumericResponse) userInputCommand.getResponses().get(0);
             final FfCharacter character = (FfCharacter) wrapper.getCharacter();
             userInputResponse.setMaxBound(Math.min(character.getGold(), MAX_BET));
+        } else if ("55".equals(id)) {
+            final FfCharacter character = (FfCharacter) wrapper.getCharacter();
+            final FfAttributeHandler attributeHandler = getInfo().getCharacterHandler().getAttributeHandler();
+            final int stamina = attributeHandler.resolveValue(character, "stamina");
+            final int luck = attributeHandler.resolveValue(character, "luck");
+            final AttributeTestCommand testCommand = (AttributeTestCommand) wrapper.getParagraph().getData().getCommands().get(0);
+            testCommand.setAgainstNumeric(Math.min(stamina, luck));
         }
     }
 
