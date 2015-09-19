@@ -67,7 +67,6 @@ var inventory = (function() {
 		var loseId = $(this).data("item-id");
 		
 		inventoryAnimationOngoing = false;
-		hideInventory();
 		takeItemCall("replace/" + loseId + "/" + gatherId + "/" + amount, $itemToGather, amount);
 		$itemToGather = null;
 	}
