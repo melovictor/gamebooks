@@ -2126,4 +2126,620 @@
     </text>
     <next id="214"></next>
   </p>
+  <p id="214">
+    <text>
+        [p]A sziklába faragott arc észak felől nézve sima és nedvesen fénylő. Különféle színárnyalatokban mohafélék nőnek rajta. Félelmetes csend van, amit csak az alattad hömpölygő folyó halk csobbanásai törnek meg. Három lehetőséged van: egy út vezet északnyugatnak, egy hatalmas gerendákból ácsolt ajtó áll előtted, pontosan a sziklába faragott arc közepén, a folyó mentén pedig egy másik út vezet keletnek.[/p]
+    </text>
+    <next id="271">Ha az északnyugati úton indulsz el</next>
+    <next id="104">Ha benyitsz az ajtón</next>
+    <next id="99">Ha a folyóparton mész végig keletnek</next>
+  </p>
+  <p id="271">
+    <text>
+        [p]A rövid út szűkülni kezd, és néhány méterrel később egy ajtónyílásnál ér véget.[/p]
+    </text>
+    <next id="336">Ha be akarsz menni az ajtón</next>
+    <next id="214">Ha úgy döntesz, hogy inkább visszamész a folyóhoz</next>
+  </p>
+  <p id="336">
+    <text>
+        [p]Egy kicsi, büdös szobában vagy. Két ajtót látsz, az egyik nyugatra vezet, a másik, amin beléptél, délre. A helyiségben szétszórva bútorok, legtöbbjüket régi csónakok deszkáiból tákolták össze. A szobában semmi értékes nincs, kivéve egy a falon függő kulcscsomót. Egy evezős csónak feléből készített padon egy öreg, rongyos ruházatú ember fekszik hanyatt, és hangosan hortyog. Mellette rosszindulatúnak látszó, barna kutya hever. A szemei vörösek, fogai feketék. Belépéseddel felriasztottad, most gyanakodva méreget. Mélyről jövő morgás hallatszik torkából. Választhatsz:[/p]
+    </text>
+    <next id="66">Kilopakodsz a szobából a déli kijáraton?</next>
+    <next id="172">Hangosan becsapod az ajtót magad mögött, s zavartan köhécselsz, hogy az Öreget felébreszd?</next>
+    <next id="249">Kirántott karddal átszökkensz a szobán, hogy ledöfd a kutyát?</next>
+  </p>
+  <p id="249">
+    <text>
+        [p]Ahogy megmoccansz, a kutya támadásba lendül. Rettenetes fekete fogai a torkodat célozzák. Kétméternyire lehet, mikor a szájából lángnyelvet fúj, egyenest az arcodba! Még épp idejében hajolsz le, de most már nem kerülheted el a küzdelmet.[/p]
+        [p]Rendes támadásán kívül, minden egyes Fordulóban (a kutya tüzes lehelete miatt) dobj egy kockával! Ha 1-et vagy 2-t dobsz, megperzselődsz, és 1 ÉLETERŐ pontot veszítesz. Ha nagyobbat dobsz, kikerülted a lángnyelvet. A tűz ellen használhatod a Szerencsédet. Elmenekülni egyedül a déli ajtón keresztül lehet.[/p]
+        [p]Az Öreg figyeli a küzdelmet, de egyelőre nem mozdul.[/p] 
+    </text>
+    <fight type="single">
+      <enemy id="35" />
+      <afterRound canUseLuck="true">
+        <random>
+          <result max="2" min="1">
+            <text>A kutya tüzes lehelete eltalált.</text>
+            <add amount="-1" to="stamina" />
+          </result>
+        </random>
+      </afterRound>
+      <fleeing />
+      <flee>
+        <next id="66"></next>
+      </flee>
+      <win>
+        <text>
+            [p]1 Szerencse pontot nyersz, amiért sikerült végezned a bestiával. Ha akarsz, elmenekülhetsz a déli ajtón keresztül de ekkor nem lesz rá lehetőséged, hogy bármit is magaddal vigyél.[/p]
+        </text>
+        <add amount="1" to="luck" />
+        <next id="66">Ha elmenekülsz</next>
+        <next id="304">Ha maradni akarsz</next>
+      </win>
+    </fight>
+  </p>
+  <p id="304">
+    <text>
+        [p]Az Öreg megdühödik rád, mert megölted a kutyáját. Szeme elszürkül a haragtól. Lassan felemelkedik ültéből, s ahogy feláll, alakja nőni kezd. Előtted változik át. Arcát és karját szőr lepi el, orra megnyúlik, kutyaszerűvé válik. Fogai tűhegyesek lesznek. Ez egy Farkasember, és feléd közeledik. Elmenekülni csak a mögötted lévő ajtón tudsz, déli irányba.[/p]
+    </text>
+    <next id="66">Ha elmenekülsz előle</next>
+    <next id="304a">Ha megküzdesz vele</next>
+  </p>
+  <p id="304a" display="304">
+    <text>
+        [p]Az Öreg megdühödik rád, mert megölted a kutyáját. Szeme elszürkül a haragtól. Lassan felemelkedik ültéből, s ahogy feláll, alakja nőni kezd. Előtted változik át. Arcát és karját szőr lepi el, orra megnyúlik, kutyaszerűvé válik. Fogai tűhegyesek lesznek. Ez egy Farkasember, és feléd közeledik. Elmenekülni csak a mögötted lévő ajtón tudsz, déli irányba.[/p]
+        [p]Meg kell vele küzdened.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="36" />
+    </fight>
+    <next id="203"></next>
+  </p>
+  <p id="203">
+    <text>
+        [p]Adj magadnak 1 Szerencse pontot, amiért legyőzted a Farkasembert. Megpihenhetsz, és ehetsz valamit, ha akarsz. Körülnézel a szobában, de semmi olyat nem látsz, ami a hasznodra lehetne. Bár egy kulcscsomó érdekesnek látszik, főleg az a kulcs, amelybe a Csónakház feliratot vésték. Egyik kulcs sincs megszámozva. Magaddal viheted a [span class="takeItem" data-id="3019" data-amount="1"]kulcsokat[/span], ha akarod, és már indulhatsz is.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <canEat />
+    <next id="38">Ha a nyugati ajtón mész ki</next>
+    <next id="66">Ha a keletin</next>
+  </p>
+  <p id="38">
+    <text>
+        [p]Kinyitod az ajtót, és rábukkansz a Farkasember éléskamrájára. Mindenféle csontok és rothadó húscafatok hevernek szanaszét. A szag émelyítő, de egy korsóban [span class="takeItem" data-id="2000" data-amount="2"]ecetben eltett tojásokat[/span] találsz, ami szinte ínyencségnek mondható. Ha magaddal viszed, két étkezésre elegendő lesz. Visszatérsz az előző helyiségbe, és ott a déli ajtón át távozol.[/p]
+    </text>
+    <next id="66"></next>
+  </p>
+  <p id="66">
+    <text>
+        [p]Az ajtó kinyílik, és egy olyan úton találod magad, mely újra visszavezet a folyópartra. Tehát ismét a folyónál vagy.[/p]
+    </text>
+    <next id="104">Ha megpróbálkozol átjutni azon az ajtón, mely a kőből faragott arc közepén nyílik</next>
+    <next id="99">Ha elindulsz lefelé azon az úton, amely a parton halad kelet felé</next>
+  </p>
+  <p id="99">
+    <text>
+        [p]Az út továbbhalad kelet felé. Valamivel előtted egy erősnek látszó ajtó zárja le a folyosót. Odalépsz, hogy megvizsgáld.[/p]
+    </text>
+    <next id="383"></next>
+  </p>
+  <p id="383">
+    <text>
+        [p]A bejárat felett felirat: Csónakház. Az ajtó erősen be van zárva, de egy kis rácsos ablakon bepillanthatsz. Egy csomó Csontváz-embert veszel észre, valami csónakszerűséget építenek. Gyors, rángatózó mozdulatokkal dolgoznak, mozgásuk akár egy rovar.[/p]
+    </text>
+    <itemCheck type="item" id="3019">
+      <have>
+        <next id="80"></next>
+      </have>
+      <dontHave>
+        <next id="264">Ha megpróbálod betörni az ajtót</next>
+        <next id="129">Ha visszafordulsz a folyópartra másik útvonalat keresni</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="129">
+    <text>
+        [p]Visszajutottál a folyópartra, és ügy döntesz, megpróbálkozol az ajtóval, mely a sziklából faragott arc közepén nyílik.[/p]
+    </text>
+    <next id="104"></next>
+  </p>
+  <p id="264">
+    <text>
+        [p]Egyszerűen nincs rá mód, hogy erővel felnyisd az ajtót, tömör tölgyfából készült és legalább húsz centi vastag. Kardforgató kezed megsérül a kísérletnél - 1 ÜGYESSÉG pontot veszítesz. Vissza kell térned a folyópartra, és újra kell próbálkoznod.[/p]
+    </text>
+    <add amount="-1" to="skill" />
+    <next id="129"></next>
+  </p>
+  <p id="80">
+    <text>
+        [p]A kulcs pontosan beleillik a zárba, és nyitja az ajtót. Egy hatalmas csónaktárolóban találod magad. Különféle csónakok félig vagy teljesen elkészülve hevernek körös-körül. A mögötted lévő ajtón kívül van még egy bejárat az északi falban. Amint belépsz, a Csontvázak abbahagyják munkájukat, felemelik csontos nyakukon ülő fejüket, és rád tekintenek. Fapallókat és kalapácsokat kapnak fel, és feléd nyomulnak. Összesen öten vannak. Mit csinálsz?[/p]
+    </text>
+    <next id="129">Idegesen mosolyogva visszahátrálsz a folyosóra?</next>
+    <next id="123">Azt mondod, hogy csónakot vásárolni jöttél?</next>
+    <next id="195">Azt állítod, te vagy az új főnökük, és visszaparancsolod őket munkájukhoz?</next>
+    <next id="140">Kirántod kardod, és felkészülsz a küzdelemre?</next>
+  </p>
+  <p id="172">
+    <text>
+        [p]Az Öreg ember hirtelen kinyitja a szemét. Meglát, és felkapja a padja mellé támasztott félbetört evezőlapátot. Megmondod, hogy nem akarod bántani, de továbbra is résen áll, gyanakodva méreget. Bár elég ártalmatlannak látszik, a kutyája még veszélyes lehet. Az Öreg cipőfűzői nincsenek befűzve. Mit csinálsz?[/p]
+    </text>
+    <next id="249">Kirántott karddal a kutyára támadsz?</next>
+    <next id="141">Megpróbálsz néhány kérdést feltenni az Öregnek, amivel megkönnyítheted kutatásodat?</next>
+    <next id="165">Megmondod neki, hogy lógnak a cipőfűzői?</next>
+  </p>
+  <p id="165">
+    <text>
+        [p]Az Öreg hálálkodik, és félénken befűzi a cipőit. Közlöd vele, hogy semmiféle veszélyt nem jelentesz számára, lecsillapodik, és visszaparancsolja a kutyáját. Elmondja, hogy ezen a területen át vezet az egyetlen út, amely a belső termek felé visz. Néhány évvel ezelőtt egy különösen nagy tavaszi hóolvadás miatt a folyó felduzzadt, és elvágta őket a külvilágtól. Az itt élők szinte kivétel nélkül éhen pusztultak. Zagor, mivel tudta, hogy védelemre van szüksége a külvilággal szemben, megátkozta a területet. Azok a teremtmények, amelyek túlélték az éhezést, az Örökéltű Lények, most az átjáróknál őrködnek. Elkezd felőled érdeklődni. Mit teszel?[/p]
+    </text>
+    <next id="141">Őszinte vagy, és megmondod kutatásod célját?</next>
+    <next id="66">Megköszönöd a beszélgetést, és a déli ajtón át távozol?</next>
+    <next id="249">Megpróbálod hirtelen felkapni a kulcsokat, és kirohansz a legközelebbi ajtón?</next>
+  </p>
+  <p id="141">
+    <text>
+        [p]Amint az Öreg megtudja, hogy a kincset keresed, mérges lesz, és azt mondja, távozz tőle, neki semmi köze kincsvadászokhoz. Kutyája is érzi dühét, és fenyegetően vicsorog rád.[/p]
+    </text>
+    <next id="66">Ha elmosolyodsz, elköszönsz tőle, és távozol a déli ajtón keresztül</next>
+    <next id="111">Ha ott maradsz és megpróbálod lecsillapítani</next>
+  </p>
+  <p id="111">
+    <text>
+        [p]Nem tudod megbékíteni. Amint szorongva átvágsz a szobán, odakiált a kutyájának.[/p]
+    </text>
+    <next id="249"></next>
+  </p>
+  <p id="123">
+    <text>
+        [p]Elhiszik-e neked, hogy valóban csónakot akarsz vásárolni? A Csontvázak meglehetősen együgyűek, úgyhogy dobj egy kockával.[/p]
+    </text>
+    <random>
+      <result max="3" min="1">
+        <text>
+            [p]Hisznek neked, és mindannyian kirohannak az északi ajtón keresztül, egyedül hagyva téged a Csónakházban. Adj 2-t a Szerencse pontjaidhoz.[/p]
+        </text>
+        <add amount="2" to="luck" />
+        <next id="184"></next>
+      </result>
+      <result max="5" min="4">
+        <text>
+            [p]Nem bizonyosak a dologban. Maguk közül kettőt elküldenek (az északi ajtón át távoznak), de a másik három kezdetleges fegyverével a kezében éberen figyel.[/p]
+        </text>
+        <next id="164"></next>
+      </result>
+      <result max="6" min="6">
+        <text>
+            [p]Egyáltalán nem hisznek neked, és egyre közelednek feléd.[/p]
+        </text>
+        <next id="140"></next>
+      </result>
+    </random>
+  </p>
+  <p id="184">
+    <text>
+        [p]Egyedül vagy a Csónakházban, és van némi időd, hogy átkutasd, mielőtt a Csontvázak visszatérnének. Ahogy kutatni kezdesz, zajt hallasz az északi ajtó mögül.[/p]
+    </text>
+    <next id="322">Ha megnézed a fiókokat</next>
+    <next id="34">Ha átvizsgálod a Csontvázak szerszámait</next>
+  </p>
+  <p id="322">
+    <text>
+        [p]A fiókok szögekkel, szegecsekkel, különféle fúrófejekkel és alkatrészekkel vannak tele. Az egyikben egy [span class="replaceItem" data-id="3020" data-amount="1"]rézszínű kulcsot[/span] lelsz, a 66-os számot vésték bele. Felkelti érdeklődésedet. Megtarthatod, ha Felszerelésed valamelyik darabját itt hagyod helyette. Északról a zaj kezd erősödni. Az északi ajtóhoz lépsz, hogy megtudd, mi az.[/p]
+    </text>
+    <next id="96"></next>
+  </p>
+  <p id="34">
+    <text>
+        [p]Átvizsgálod a szerszámokat, amelyeket találtál: egy [span class="takeItem" data-id="3021" data-amount="1"]fakalapács[/span] keményfa fejjel és egy színtiszta [span class="takeItem" data-id="3022" data-amount="1"]ezüstből készült véső[/span]. Megtarthatod bármelyiket, ha hajlandó vagy jelenlegi felszerelésed egy darabját itt hagyni helyette. A zaj az északi ajtó felől egyre hangosabbá válik, te felpattansz, hogy kiderítsd, mi az.[/p]
+    </text>
+    <next id="96"></next>
+  </p>
+  <p id="140">
+    <text>
+        [p]A Csontvázak közelednek, és te visszahátrálsz az ajtóhoz. A Vezér halad elöl, mögötte ketten, utánuk megint ketten jönnek. Úgy döntesz, megküzdesz velük. Először a Vezérrel kell összecsapnod.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="37" />
+      <win>
+        <text>
+            [p]Megmérkőzhetsz a párokkal is. Ezek tagjai már egyszerre támadnak rád.[/p]
+        </text>
+        <fight type="twoByTwo">
+          <enemy id="38" />
+          <enemy id="39" />
+          <enemy id="40" />
+          <enemy id="41" />
+          <enemy id="1" />
+          <enemy id="2" />
+        </fight>
+      </win>
+    </fight>
+    <next id="395"></next>
+  </p>
+  <p id="395">
+    <text>
+        [p]Átlépdelsz a földön heverő csontokon, hogy alaposabban is megnézd a Csónakházat. A szerteszét hányódó szerszámok közül felemelsz néhányat, és tanulmányozod. Kalapácsok, szögek, vésők és hasonlók - egészen közönségeseknek látszanak. Robajló hang hallatszik az északi ajtó mögül, de marad annyi időd, hogy valamit átkutass, mielőtt cselekedni kellene.[/p]
+    </text>
+    <next id="322">Ha megnézed a fiókokat és a helyiség zegzugait</next>
+    <next id="34">Ha még egyszer, alaposan átvizsgálod a szerszámokat</next>
+  </p>
+  <p id="164">
+    <text>
+        [p]Rádöbbensz, hogy az előbbi két Csontváz hamarosan visszatér, és kiderül, csak blöfföltél. Gyorsan kell cselekedned.[/p]
+    </text>
+    <next id="129">Ha sietve visszavonulsz és eltűnsz a hátad mögött lévő ajtón keresztül</next>
+    <next id="236">Ha kardot rántasz és rárohansz a szobában maradt Csontvázakra</next>
+  </p>
+  <p id="236">
+    <text>
+        [p]A csata elkezdődik. A Csontvázak egyesével tárnádnak rád:[/p]
+    </text>
+    <fight type="single">
+      <enemy id="38" />
+      <enemy id="39" />
+      <enemy id="42" />
+    </fight>
+    <next id="395"></next>
+  </p>
+  <p id="195">
+    <text>
+        [p]Ez a mese, figyelembe véve, hogy aligha találkozhatnak élő emberrel, elég hihetetlennek tűnik. De a Csontvázak meglehetősen tompa agyúak, te ezt tudod, ezért is próbálkoztál meg vele.[/p]
+    </text>
+    <random>
+      <result max="2" min="1">
+        <text>
+            [p]Nem hisznek neked, és tovább közelednek.[/p]
+        </text>
+        <next id="140"></next>
+      </result>
+      <result max="4" min="3">
+        <text>
+            [p]Nem bizonyosak a dologban, kettőt maguk közül elküldenek, ezek az északi ajtón át távoznak, a többiek sakkban tartanak fegyvereikkel.[/p]
+        </text>
+        <next id="164"></next>
+      </result>
+      <result max="6" min="5">
+        <text>
+            [p]Beveszik a mesédet, és mindnyájan visszatérjenek munkájukhoz. 2 Szerencse pontot nyertél![/p]
+        </text>
+        <add amount="2" to="luck" />
+        <next id="9"></next>
+      </result>
+    </random>
+  </p>
+  <p id="9">
+    <text>
+        [p]Meghökkensz, hogy a blöff milyen jól sikerült, és elhatározod, hogy továbbra is próbára teszed a szerencsédet. Ha akarod, megvizsgálhatod a Csontvázak szerszámait, vagy úgy tehetsz, mintha keresnél valamit, miközben átkutathatod a különféle asztalok, padok fiókjait. Zajt hallasz az északi ajtó mögül, és tudod, hogy sietned kell![/p]
+    </text>
+    <next id="34">Ha a szerszámokra vagy kíváncsi</next>
+    <next id="322">Ha a fiókokat kutatod át</next>
+  </p>
+  <p id="96">
+    <text>
+        [p]Az ajtó egy rövid, talán tizenöt méter hosszú folyosóra nyílik. Mindkét végén egy-egy ajtó van. Rájössz, mi is volt a zaj. Újabb Csontvázak érkeznek. Karddal a kezében négy Csontváz rohan feléd. Úgy tűnik, még nem vettek észre, s te megpillantasz egy kis bemélyedést a falban, mely remek búvóhelynek látszik. Megpróbálsz elrejtőzni.[/p]
+    </text>
+    <next id="374"></next>
+  </p>
+  <p id="374">
+    <text>
+        [p]A Csontvázak nem vesznek észre, és eltűnnek a Csónakházba vezető ajtó mögött. Megkönnyebbülten felsóhajtasz, és elindulsz a folyosó északi végén lévő ajtóhoz. Mielőtt útra kelsz, ehetsz, ha akarsz, s adj 2 pontot Szerencsédhez, amiért elkerülted a Csontvázakat.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <canEat />
+    <next id="207"></next>
+  </p>
+  <p id="207">
+    <text>
+        [p]Amint belépsz az ajtón, egy óriási teremben találod magad. A földön rendetlenül szétszórva mindenféle fadarabok, roncsok hevernek. Még egy ajtót fedezel fel az északi falban. Az egyik sarokban durván ácsolt faasztal áll, rajta egy ládika. Egy másik sarokban valószínűleg alszik valaki (de lehet, hogy holtan hever?), egy borzasztó külsejű, ember nagyságú teremtmény. A bőre bibircsókos, haja borzas, ujjain köröm helyett hosszú karmok.[/p]
+    </text>
+    <next id="83">Ha megpróbálsz lábujjhegyen átsurranni az északi ajtóhoz</next>
+    <next id="154">Ha az asztalhoz lopakodsz a ládikáért</next>
+  </p>
+  <p id="83">
+    <test against="luck">
+      <success>
+        <text>
+            [p]Ki tudsz jutni az északi ajtón keresztül.[/p]
+        </text>
+        <next id="360"></next>
+      </success>
+      <failure>
+        <next id="154"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="154">
+    <text>
+        [p]Megmozdulsz, erre a teremtmény szeme rögtön felpattan. Rád bámul, és lassan feltápászkodik. Nagyokat szuszogva feléd lopakodik. Nem kerülheted el a harcot.[/p]
+    </text>
+    <next id="41"></next>
+  </p>
+  <p id="41">
+    <text>
+        [p]Ő aztán valóban félelmetes ellenség. Egy hatalmas, ördögien erős Lidérc az. A küzdelem elkezdődik. Karddal a kezedben támadsz a bestiára.[/p]
+    </text>
+    <fight type="single" forceWeapon="1001,1002">
+      <enemy id="43" />
+      <winRound enemy="43">
+        <interrupt />
+      </winRound>
+    </fight>
+    <next id="310"></next>
+  </p>
+  <p id="310">
+    <text>
+        [p]Itt valami nincs rendben. Jókora csapást mértél rá, de úgy látszik, fel sem veszi a sérülést. Rájössz, ez is egy Örökéltű Lény, akit közönséges fegyverrel nem lehet megsebezni.[/p]
+    </text>
+    <next id="211"></next>
+  </p>
+  <p id="211">
+    <text>
+        [p]A Lidérceket csak színtiszta ezüstből készített fegyverrel lehet megsebezni.
+    </text>
+    <itemCheck type="item" id="3022">
+      <have>
+        <text>
+            Válassz megfelelő fegyvert, és küzdj meg ellenfeleddel. Ha akarsz, az első Fordulót követően akár el is menekülhetsz a harcból.[/p]
+        </text>
+      </have>
+      <haveEquipped>
+        <text>
+            Válassz megfelelő fegyvert, és küzdj meg ellenfeleddel. Ha akarsz, az első Fordulót követően akár el is menekülhetsz a harcból.[/p]
+        </text>
+      </haveEquipped>
+      <dontHave>
+        <text>
+            Mivel neked nincs ilyened, nem fogod tudni legyőzni a bestiát, így a kézenfekvő megoldás, hogy elmenekülj a harcból.[/p]
+        </text>
+      </dontHave>
+      <after>
+        <itemCheck type="item" id="3007">
+          <have>
+            <text>
+                [p]Még egy lehetőséged van ezen túl: megpróbálkozhatsz az Örök Álmot Adó Nyílvessző használatával is.[/p]
+            </text>
+            <next id="211a">Ha fegyvert ragadsz</next>
+            <next id="211b">Ha a nyílvesszővel próbálkoznál</next>
+          </have>
+          <dontHave>
+            <fight type="single">
+              <enemy id="43" />
+              <fleeing after="1" />
+              <flee>
+                <next id="360"></next>
+              </flee>
+              <win>
+                <next id="135"></next>
+              </win>
+              <loseRound totalCount="3">
+                <interrupt />
+                <next id="24" pos="1"></next>
+              </loseRound>
+            </fight>
+          </dontHave>
+        </itemCheck>
+      </after>
+    </itemCheck>
+  </p>
+  <p id="211b" display="211">
+    <text>
+        [p]A Lidérceket csak színtiszta ezüstből készített fegyverrel lehet megsebezni.
+    </text>
+    <itemCheck type="item" id="3022">
+      <have>
+        <text>
+            Válassz megfelelő fegyvert, és küzdj meg ellenfeleddel. Ha akarsz, az első Fordulót követően akár el is menekülhetsz a harcból.[/p]
+        </text>
+      </have>
+      <haveEquipped>
+        <text>
+            Válassz megfelelő fegyvert, és küzdj meg ellenfeleddel. Ha akarsz, az első Fordulót követően akár el is menekülhetsz a harcból.[/p]
+        </text>
+      </haveEquipped>
+      <dontHave>
+        <text>
+            Mivel neked nincs ilyened, nem fogod tudni legyőzni a bestiát, így a kézenfekvő megoldás, hogy elmenekülj a harcból.[/p]
+        </text>
+      </dontHave>
+      <after>
+        <text>
+            [p]Még egy lehetőséged van ezen túl: megpróbálkozhatsz az Örök Álmot Adó Nyílvessző használatával is.[/p]
+        </text>
+        <loseItem id="3007" />
+        <test against="luck">
+          <success>
+            <text>
+                [p]Telibe találtad a Lidércet, ami azonnal kimúlik.[/p]
+            </text>
+            <next id="135"></next>
+          </success>
+          <failure>
+            <text>
+                [p]Elvéted a Lidércet. Kénytelen vagy megküzdeni vele.[/p]
+            </text>
+            <fight type="single">
+              <enemy id="43" />
+              <fleeing after="1" />
+              <flee>
+                <next id="360"></next>
+              </flee>
+              <win>
+                <next id="135"></next>
+              </win>
+              <loseRound totalCount="3">
+                <interrupt />
+                <next id="24" pos="2"></next>
+              </loseRound>
+            </fight>
+          </failure>
+        </test>
+      </after>
+    </itemCheck>
+  </p>
+  <p id="211a" display="211">
+    <text>
+        [p]A Lidérceket csak színtiszta ezüstből készített fegyverrel lehet megsebezni.
+    </text>
+    <itemCheck type="item" id="3022">
+      <have>
+        <text>
+            Válassz megfelelő fegyvert, és küzdj meg ellenfeleddel. Ha akarsz, az első Fordulót követően akár el is menekülhetsz a harcból.[/p]
+        </text>
+      </have>
+      <haveEquipped>
+        <text>
+            Válassz megfelelő fegyvert, és küzdj meg ellenfeleddel. Ha akarsz, az első Fordulót követően akár el is menekülhetsz a harcból.[/p]
+        </text>
+      </haveEquipped>
+      <dontHave>
+        <text>
+            Mivel neked nincs ilyened, nem fogod tudni legyőzni a bestiát, így a kézenfekvő megoldás, hogy elmenekülj a harcból.[/p]
+        </text>
+      </dontHave>
+      <after>
+        <text>
+            [p]Küzdj meg a Lidérccel![/p]
+        </text>
+        <fight type="single">
+          <enemy id="43" />
+          <fleeing after="1" />
+          <flee>
+            <next id="360"></next>
+          </flee>
+          <win>
+            <next id="135"></next>
+          </win>
+          <loseRound totalCount="3">
+            <interrupt />
+            <next id="24" pos="2"></next>
+          </loseRound>
+        </fight>
+      </after>
+    </itemCheck>
+  </p>
+  <p id="24">
+    <text>
+        [p]Miután harmadszor is megsebesültél, érzed, hogy erőd fogytán van. Elvesztettél 1 ÜGYESSÉG pontot. Rádöbbensz, hogy ennek az ocsmány szörnyetegnek ez is a varázserejéhez tartozik, és érzed, amint végigfut a hátadon a hideg. Folytatod a harcot, vagy menekülsz?[/p]
+    </text>
+    <add amount="-1" to="skill" />
+    <next id="211a"></next>
+  </p>
+  <p id="135">
+    <text>
+        [p]A Lidérc a szoba sarkában roskad össze. Odamész az asztalhoz, és kinyitod a ládikát. [span class="takeItem" data-id="gold" data-amount="18"]Tizennyolc Aranytallér[/span] van benne. Magaddal viheted, ha akarod. Adj 2-t Szerencse pontjaidhoz, mivel legyőzted ezt a teremtményt is. Pihenj egy kicsit, és egyél valamit. Ha készen vagy, az északi ajtón keresztül elhagyhatod a szobát.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <canEat />
+    <next id="360"></next>
+  </p>
+  <p id="360">
+    <text>
+        [p]Az ajtó nagyot dörrenve becsapódik mögötted. Egy észak felé vezető folyosón találod magad. Ezen mész egy darabig, azután az út nyugatnak kanyarodik. Kicsit később véletlenül ráakadsz egy kis nyílásra az északi falban, és úgy döntesz, átbújsz rajta.[/p]
+    </text>
+    <next id="89"></next>
+  </p>
+  <p id="89">
+    <text>
+        [p]Átmászol a nyíláson, és egy lefelé vezető szűk lépcsősor tetejénél találod magad. Óvatosan leereszkedsz a lépcsőkön.[/p]
+    </text>
+    <next id="286"></next>
+  </p>
+  <p id="104">
+    <text>
+        [p]Egy rövid, szűk átjáróban találod magad, észak felé egy ajtó van előtted. Próbálkozz meg vele.[/p]
+    </text>
+    <next id="49"></next>
+  </p>
+  <p id="49">
+    <text>
+        [p]Az ajtó csikorogva nyílik a rozsdás sarokvasakon. A szoba sötét, szemed lassan megszokja a félhomályt, amint becsukod magad mögött az ajtót. Csoszogó hangot hallasz, de még mielőtt cselekedni tudnál, egy a fejedre mért csapástól elveszíted az eszméletedet. 2 ÉLETERŐ ponttal szegényebb lettél.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="122"></next>
+  </p>
+  <p id="122">
+    <text>
+        [p]Fájdalomtól lüktető fejjel térsz magadhoz, és körülnézel. A szoba körülbelül nyolc négyzetméteres, déli és északi oldalán egy-egy ajtó van. A szoba délnyugati sarkában heversz. A szoba közepén négy férfi áll mozdulatlanul. Legalábbis férfiaknak tűnnek. Bőrük zöldesszürke. Ruhájuk cafatokra tépve lóg, és mindnyájan kifejezéstelen arccal a mennyezetet bámulják. Az első egy dorongot, a második egy kaszát, a harmadik egy bárdot, a negyedik egy csákányt tart a kezében. Egyáltalán nem vesznek tudomást rólad. [/p]
+        [p]A szobában körös-körül különféle mezei munkához használatos szerszám (vasvillák, cséphadarók, kihegyezett karók stb.), egy-két pajzs és néhány hordó található. Az északkeleti sarokban egy emberi test hever, egyik kezében kard, a másikban pajzs. Megtapogatod a fejedet, sebeket keresve, de rájössz, egyetlen sebből sem vérzel. De amint a kezedet megmozdítod, a szoba közepén álldogáló különös teremtmények feléd fordítják a tekintetüket. Mit teszel?[/p]
+    </text>
+    <next id="268">Megpróbálsz beszélni velük?</next>
+    <next id="282">Talpra ugrasz, és kardoddal rájuk támadsz?</next>
+    <next id="13">Kúszva menekülsz a déli ajtón keresztül?</next>
+  </p>
+  <p id="268">
+    <text>
+        [p]Szókincsük csupán nyögések és sóhajtások kombinációjára szorítkozik. Egyáltalán nem látszanak intelligenseknek. Ráadásul a beszélgetés pusztán arra volt jó, hogy felhívja rád a figyelmet. Megragadják a fegyverüket, és érzed, meg kell küzdened velük. Bár még az a halvány esélyed megvan, hogy el tudsz jutni addig az ajtóig, amin beléptél.[/p]
+    </text>
+    <next id="13">Ha megpróbálkozol vele</next>
+    <next id="282">Ha elszánod magad a csatára</next>
+  </p>
+  <p id="13">
+    <text>
+        [p]Megsebesültél a fejeden, szédelegsz, amint lábra állsz. A négy férfi készen áll a harcra, és libasorban, fegyverrel a kezükben feléd közelednek. Tapogatózva mászol le a falon a déli kapu irányába, de ez még akkor is kockázatos, ha sikerül elérned oda. A lábad megcsúszik a laza kavicsokon, és a földre zuhansz. Még meg sem tudod vetni a lábad, mikor ellenfeleid rád vetik magukat.[/p]
+    </text>
+    <next id="282"></next>
+  </p>
+  <p id="282">
+    <text>
+        [p]A négy, feléd csoszogó alak értelem nélküli Zombi. Üres tekintetükön látszik, tevékenységüket nem saját akaratuk irányítja. Még mindig túlságosan szédülsz ahhoz, hogy helyesen gondolkodjál, de most sietve tenned kell valamit. Az első Zombi odaér, és ütésre emeli dorongját. Meg kell küzdened vele.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="44" />
+      <win>
+        <text>
+            [p]2 Szerencse pontot nyersz, és már fordulhatsz is szembe a másik hárommal. Egyesével támadnak rád.[/p]
+        </text>
+        <add amount="2" to="luck" />
+        <fight type="single">
+          <enemy id="45" />
+          <enemy id="46" />
+          <enemy id="47" />
+        </fight>
+      </win>
+    </fight>
+    <next id="115"></next>
+  </p>
+  <p id="115">
+    <text>
+        [p]A négy szegény ördög, akiknek a holtteste a lábad előtt hever, szinte megkönnyebbültnek látszik, hogy letehette végre az élet terhét. Amint letekintesz rájuk, úgy érzed, nem te vagy az egyetlen, aki tud a halálukról. Körülnézel a szobában, és ha akarod:[/p]
+    </text>
+    <next id="95">Megvizsgálhatod a szerteszét heverő fegyvereket</next>
+    <next id="313">Odamész az északkeleti sarokban heverő holttesthez</next>
+    <next id="330">Átvizsgálod a hordókat</next>
+  </p>
+  <p id="95">
+    <text>
+        [p]A fegyverek között semmi figyelemre méltót nem találsz, valójában egyik sem látszik jobbnak a kardodnál. Amint kutatsz a törmelékek között, északi irányból tompa puffanást hallasz, melyet egy olyan sikoly követ, hogy a hideg végigszalad tőle a hátadon. Az északi ajtóhoz rohansz, hogy kiderítsd, mi az.[/p]
+    </text>
+    <next id="205"></next>
+  </p>
+  <p id="313">
+    <text>
+        [p data-item-choice="storage" data-max-choice="2"]Megvizsgálod a testet. Szegény ördög úgy járt, akárcsak te, de koponyája gyengébb lévén, összetört a bunkó csapása alatt. [span class="takeItem" data-id="3001" data-amount="1" data-group="storage"]Bőrpáncélzatot[/span] visel, amely nem jobb a tiednél. Egyik kezében [span class="takeItem" data-id="3023" data-amount="1" data-group="storage"]fából készült pajzs[/span], másikban [span class="takeItem" data-id="1003" data-amount="1" data-group="storage"]acélpengéjű kard[/span]. Zsebeiben [span class="takeItem" data-id="gold" data-amount="8" data-group="storage"]8 Aranytallér[/span], nyakában egy láncon [span class="takeItem" data-id="3022" data-amount="1" data-group="storage"]ezüstkereszt[/span]. A fent felsorolt tárgyak közül kettőt magaddal vihetsz. Jegyezd fel ezeket a Felszerelési Tárgyak rovatba. 1 Szerencse és 1 ÜGYESSÉG pontot nyertél.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <add amount="1" to="skill" />
+    <next id="221"></next>
+  </p>
+  <p id="330">
+    <text>
+        [p]A hordók áttetsző barna folyadékot tartalmaznak. Megszagolod. Rumszaga van. Megkóstolod, valóban rum. Két tenyeredet belemeríted, és nagyokat kortyolsz belőle. Eláll a lélegzeted tőle, a kutyafáját, ez aztán jó! Visszanyertél 6 ÉLETERŐ pontot, és 1-et adj hozzá a Szerencsédhez is![/p]
+    </text>
+    <add amount="6" to="stamina" />
+    <add amount="1" to="luck" />
+    <next id="81"></next>
+  </p>
+  <p id="81">
+    <text>
+        [p]Zaj riaszt fel, és arra int, hogy sürgősen hagyd el a szobát. Az északi ajtóhoz mész, hogy megvizsgáljad.[/p]
+    </text>
+    <next id="205"></next>
+  </p>
+  <p id="205">
+    <text>
+        [p]Az ajtó kinyílik, és valami sötét kriptafélében találod magad. A terem nagyon nagy. Az egyik végében egy oltár magasodik, a földön összevissza különféle koporsók fekszenek. Egy ajtó van mögötted a déli falban és egy másik a nyugatiban.[/p]
+    </text>
+    <next id="254">Átkutathatod a szobát</next>
+    <next id="380">Vagy ha túl félelmetesnek találod, a nyugati ajtón azonnal távozhatsz</next>
+  </p>
 </content>
