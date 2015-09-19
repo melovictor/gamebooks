@@ -25,7 +25,7 @@ public class AllAtOnceFightRoundResolver extends SingleFightRoundResolver {
 
     @Override
     public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
-        final List<FfEnemy> enemies = command.getResolvedEnemies();
+        final List<FfEnemy> enemies = getRoundRelevantEnemies(command);
         final FightRoundResult[] result = new FightRoundResult[enemies.size()];
         final FightCommandMessageList messages = command.getMessages();
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
@@ -61,6 +61,10 @@ public class AllAtOnceFightRoundResolver extends SingleFightRoundResolver {
             }
         }
         return result;
+    }
+
+    List<FfEnemy> getRoundRelevantEnemies(final FightCommand command) {
+        return command.getResolvedEnemies();
     }
 
 }

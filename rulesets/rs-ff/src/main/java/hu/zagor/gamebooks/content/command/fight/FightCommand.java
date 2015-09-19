@@ -69,6 +69,7 @@ public class FightCommand extends Command {
 
     private List<ItemType> usableWeaponTypes;
     private boolean forceOrder;
+    private int maxEnemiesToDisplay = Integer.MAX_VALUE;
 
     @Autowired
     private FightCommandMessageList messages;
@@ -343,6 +344,14 @@ public class FightCommand extends Command {
 
     public void setForceOrder(final boolean forceOrder) {
         this.forceOrder = forceOrder;
+    }
+
+    public int getMaxEnemiesToDisplay() {
+        return maxEnemiesToDisplay;
+    }
+
+    public void setMaxEnemiesToDisplay(final int maxEnemiesToDisplay) {
+        this.maxEnemiesToDisplay = maxEnemiesToDisplay;
     }
 
 }

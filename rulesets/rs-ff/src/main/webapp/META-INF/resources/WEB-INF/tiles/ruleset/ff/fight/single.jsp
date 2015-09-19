@@ -24,17 +24,19 @@
 <div id="ffEnemyList">
     <c:set var="forcedOrder" value="${fightCommand.forceOrder}" />
 	<c:forEach var="enemy" items="${fightCommand.resolvedEnemies}" varStatus="status">
-	    <br />
-        <c:if test="${enemy.stamina > 0}">
-            <span data-enemy-id="${enemy.id}" data-enemy-name data-enemy-selected="${forcedOrder ? (status.first ? 'true' : 'disabled') : (param.id == enemy.id || firstEnemy)}" data-enemy-forced="${forcedOrder && status.first}">${enemy.name}</span>
-        </c:if>
-        <c:if test="${enemy.stamina <= 0}">
-           <span data-enemy-id="${enemy.id}" data-enemy-name>${enemy.name}</span>
-        </c:if>
-	    <span data-enemy-id="${enemy.id}" data-enemy-skill>${enemy.skill}</span>
-	    <span data-enemy-id="${enemy.id}" data-enemy-stamina>${enemy.stamina}</span>
+	    <c:if test="${empty maxEnemiesToDisplay || status.index < maxEnemiesToDisplay}">
+	        <br />
+            <c:if test="${enemy.stamina > 0}">
+                <span data-enemy-id="${enemy.id}" data-enemy-name data-enemy-selected="${forcedOrder ? (status.first ? 'true' : 'disabled') : (param.id == enemy.id || firstEnemy)}" data-enemy-forced="${forcedOrder && status.first}">${enemy.name}</span>
+            </c:if>
+            <c:if test="${enemy.stamina <= 0}">
+               <span data-enemy-id="${enemy.id}" data-enemy-name>${enemy.name}</span>
+            </c:if>
+    	    <span data-enemy-id="${enemy.id}" data-enemy-skill>${enemy.skill}</span>
+	        <span data-enemy-id="${enemy.id}" data-enemy-stamina>${enemy.stamina}</span>
 	    
-	    <c:set var="firstEnemy" value="${firstEnemy && enemy.stamina < 1}" />
+	        <c:set var="firstEnemy" value="${firstEnemy && enemy.stamina < 1}" />
+	    </c:if>
 	</c:forEach>
 </div>
 
