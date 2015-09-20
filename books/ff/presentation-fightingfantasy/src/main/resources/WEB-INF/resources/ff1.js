@@ -1,7 +1,7 @@
 var ff1 = (function() {
 	function init() {
-		if ($("#choiceWrapper li").length) {
-			$("#failedWithKeys").show();
+		if ($("#choiceWrapper li").length == 0) {
+			$(".failedWithKeys").show();
 		}
 	}
 	
@@ -11,5 +11,5 @@ var ff1 = (function() {
 })();
 
 $(function() {
-	ff2.init();
+	ff1.init();
 });
