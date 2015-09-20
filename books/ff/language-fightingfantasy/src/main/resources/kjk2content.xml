@@ -241,6 +241,7 @@
   <p id="296">
     <text>
         [p]A dobozban egy kicsi, bőrkötéses könyvet találsz. Címe szerint: A beste Sárkányok legyőzetésének módozatai - ez a sárkányok elleni harc kézikönyve. Kinyitod, és olvasni kezded. Szerencsére anyanyelveden írták, valószínűleg ezért nem értették meg az Orkok, különben jobban őrizték volna ezt a kincset. A könyvet Farrigo Di Maggio írta kézírással, apró betűkkel. Életmű ez a könyv, melyből megtudod, hogyan alkotta meg Di Maggio a Sárkányok Tüze elleni varázsigét, mellyel a gonosz teremtményeket le lehet győzni. Kiderül, hogy élete utolsó éveiben a szerző ugyan tökéletesítette e varázsigét, de mire elkészült vele, már túl öreg volt ahhoz, hogy hasznát vegye. Így aztán könyvét bezárta egy ládába, és elrejtette a Tűzhegy gyomrában, mivel attól tartott, rossz kezekbe kerül. Az utolsó oldalon ezt olvasod:[/p]
+        [p class="inlineImage"][img src="resources/ff1/296.jpg" /][/p]
         [p]Lassan, halkan mondod magadnak ezeket a szavakat. Hirtelen az oldalakból fény csap ki, és amint az kihuny, már semmi sincs a lapokon. Még egyszer elismétled magadban a varázsigét, hogy megtanuld, majd távozol.[/p]
     </text>
     <next id="42"></next>
@@ -871,9 +872,6 @@
     <text>
         [p]Az Öreg megkérdezi, mennyi legyen a tét.
     </text>
-    <loseItem id="4002" />
-    <loseItem id="4003" />
-    <loseItem id="4004" />
     <itemCheck type="gold" id="1">
       <have>
         <text>
@@ -1017,7 +1015,7 @@
   </p>
   <p id="361">
     <text>
-        [p]Lekapod a kulcsot a szögről. Megnézed, a kulcsba a 125-ös számot vésték. De a tüdőd majd szétrobban.[/p]
+        [p]Lekapod a [span class="takeItem" data-id="3009" data-amount="1"]itemName[/span] a szögről. Megnézed, a kulcsba a 125-ös számot vésték. De a tüdőd majd szétrobban.[/p]
     </text>
     <test against="skill">
       <success>
@@ -2715,7 +2713,7 @@
   </p>
   <p id="313">
     <text>
-        [p data-item-choice="storage" data-max-choice="2"]Megvizsgálod a testet. Szegény ördög úgy járt, akárcsak te, de koponyája gyengébb lévén, összetört a bunkó csapása alatt. [span class="takeItem" data-id="3001" data-amount="1" data-group="storage"]Bőrpáncélzatot[/span] visel, amely nem jobb a tiednél. Egyik kezében [span class="takeItem" data-id="3023" data-amount="1" data-group="storage"]fából készült pajzs[/span], másikban [span class="takeItem" data-id="1003" data-amount="1" data-group="storage"]acélpengéjű kard[/span]. Zsebeiben [span class="takeItem" data-id="gold" data-amount="8" data-group="storage"]8 Aranytallér[/span], nyakában egy láncon [span class="takeItem" data-id="3022" data-amount="1" data-group="storage"]ezüstkereszt[/span]. A fent felsorolt tárgyak közül kettőt magaddal vihetsz. Jegyezd fel ezeket a Felszerelési Tárgyak rovatba. 1 Szerencse és 1 ÜGYESSÉG pontot nyertél.[/p]
+        [p data-item-choice="storage" data-max-choice="2"]Megvizsgálod a testet. Szegény ördög úgy járt, akárcsak te, de koponyája gyengébb lévén, összetört a bunkó csapása alatt. [span class="takeItem" data-id="3024" data-amount="1" data-group="storage"]Bőrpáncélzatot[/span] visel, amely nem jobb a tiednél. Egyik kezében [span class="takeItem" data-id="3023" data-amount="1" data-group="storage"]fából készült pajzs[/span], másikban [span class="takeItem" data-id="1003" data-amount="1" data-group="storage"]acélpengéjű kard[/span]. Zsebeiben [span class="takeItem" data-id="gold" data-amount="8" data-group="storage"]8 Aranytallér[/span], nyakában egy láncon [span class="takeItem" data-id="3025" data-amount="1" data-group="storage"]ezüstkereszt[/span]. A fent felsorolt tárgyak közül kettőt magaddal vihetsz. Jegyezd fel ezeket a Felszerelési Tárgyak rovatba. 1 Szerencse és 1 ÜGYESSÉG pontot nyertél.[/p]
     </text>
     <add amount="1" to="luck" />
     <add amount="1" to="skill" />
@@ -2741,5 +2739,2048 @@
     </text>
     <next id="254">Átkutathatod a szobát</next>
     <next id="380">Vagy ha túl félelmetesnek találod, a nyugati ajtón azonnal távozhatsz</next>
+  </p>
+  <p id="221">
+    <itemCheck type="item" id="3024">
+      <have>
+        <text>
+            [p]Most már új páncélzatod van, a tieddel nagyjából egyenértékű. Úgy döntesz, kidobod a régit.[/p]
+        </text>
+        <loseItem id="3001" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3023">
+      <have>
+        <text>
+            [p]A pajzs egyszerű, fából készített pajzs. Ha akarod, megtarthatod, ha nem, dobd el.[/p]
+        </text>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="1003">
+      <have>
+        <text>
+            [p]A kard egy varázskard, és segíteni fog téged a küzdelemben. Amíg ezt a fegyvert használod, megnövelheted kezdeti ÜGYESSÉG pontjaidat 2-vel. Ugyancsak 2 pontot adhatsz jelenlegi Ügyességedhez is. Szerencséd is növekedett 2 ponttal, mivel rátaláltál erre a kardra.[/p]
+        </text>
+        <add amount="2" to="luck" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4003">
+      <have>
+        <text>
+            [p]8 Aranytallérral lettél gazdagabb. További [span class="takeItem" data-id="gold" data-amount="2"]2 Aranytallért[/span] találsz a csizmákban, amelyeket végszükségre tett félre.[/p]
+        </text>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3025">
+      <have>
+        <text>
+            [p]A kereszt színtiszta ezüst, négy Aranytallért ér.[/p]
+        </text>
+      </have>
+    </itemCheck>
+    <itemCheck type="items" id="3025 or 4003 or 1003 or 3023 or 3024">
+      <dontHave>
+        <text>
+            [p]Érintetlenül hagyod a testet.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <next id="81"></next>
+  </p>
+  <p id="72">
+    <empty />
+  </p>
+  <p id="132">
+    <empty />
+  </p>
+  <p id="27">
+    <empty />
+  </p>
+  <p id="110">
+    <empty />
+  </p>
+  <p id="170">
+    <empty />
+  </p>
+  <p id="319">
+    <empty />
+  </p>
+  <p id="254">
+    <text>
+        [p]Halálos csend van. Amint a koporsók között lopódzol, egy rád hulló vízcsepp megriaszt. Az oltár díszesen faragott, és ékkövekkel van kirakva. Gyönyörűen szőtt drapériák lógnak a falról, bár néhol már foszladoznak. Három koporsó van a szobában. Egy nyikorgó hang arra késztet, hogy megfordulj, lámpásod a legnagyobb koporsóra veti fényét. A koporsó fedele emelkedni kezd! Figyeled, ahogy egy fehér arcú, magas férfi felül benne. Kinyílnak szemei, és rád néz. Nyugodt arckifejezése sötét gyűlöletbe csap át. Kinyitja száját, torkából hátborzongató sziszegés hallatszik. Fogai akár a farkasé. Int, hogy lépj közelebb. Mit csinálsz?[/p]
+    </text>
+    <next id="352">Közelítesz, ahogy kívánja?</next>
+    <next id="333">Kardot rántasz, hogy felkészülj a küzdelemre?</next>
+    <next id="279">Hátizsákodba nyúlsz valami más, támadásra alkalmas eszközt keresve?</next>
+    <next id="380">Kirohansz a nyugati ajtón?</next>
+  </p>
+  <p id="352">
+    <text>
+        [p]Közelítesz hozzá, szemét rád mereszti. Tekintetétől gyöngülni kezdesz. 1 ÉLETERŐ pontot veszítesz. Fokozatosan gyengül saját akaratod.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="74">Ha megpróbálod kihúzni a kardodat, hogy megküzdj vele</next>
+    <next id="279">Ha a zsákodban keresel valami mást, amivel megtámadhatod</next>
+  </p>
+  <p id="74">
+    <test against="luck">
+      <success>
+        <text>
+            [p]Meg tudod törni a rád szegeződő tekintetet, és felkészülsz a támadásra.[/p]
+        </text>
+        <next id="279"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A hatalma alá kerülsz, és a parancsára eldobod a kardodat.[/p]
+        </text>
+        <next id="118"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="118">
+    <text>
+        [p]Ahogy megközelíted, felemelkedik koporsójából, szétnyitja köpenyét, és alávon. Életed utolsó emlékeként éles fájdalom hasít beléd, amint hegyes fogait a nyakadba mélyeszti.[/p]
+        [p]Soha nem lett volna szabad a Vámpír szemébe nézned…[/p]
+    </text>
+    <death />
+  </p>
+  <p id="279">
+    <text>
+        [p]A teremtmény, akivel szemben állsz, egy Vámpír! A kard alig fog rajta.
+    </text>
+    <itemCheck type="item" id="3025">
+      <have>
+        <text>
+            Kereszttel sakkban tudod tartani, de el nem pusztíthatod.
+        </text>
+        <next id="380" pos="1">Ha a kereszt segítségével elmenekülsz a nyugati ajtón át</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3013">
+      <have>
+        <text>
+            [alt]Ha elhatároztad, hogy megölöd a Vámpírt, fölébe kell kerülnöd, és egy facöveket kell a szívébe döfnöd.[/alt][/p]
+        </text>
+        <next id="17" pos="2" singleChoiceText="Nehéz harcnak nézel elébe, de nincs más választásod, minthogy fölébe kerülj és egy facöveket döfj a szívébe.">Ha egy cövek segítségével végeznél vele</next>
+      </have>
+      <dontHave>
+        <text>
+            [alt]Ha elhatároztad, hogy megölöd a Vámpírt, fölébe kell kerülnöd, de még így sem garantált a győzelmed.[/alt][/p]
+        </text>
+        <next id="333" pos="2" singleChoiceText="Nehéz harcnak nézel elébe, de nincs más választásod, minthogy fölébe kerülj.">Ha megpróbálsz kardoddal végezni a vámpírral</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="380">
+    <text>
+        [p]Egy szűk, kelet-nyugati folyosón állsz. Nyugat felé nézve egy útkereszteződést látsz, és odamész.[/p]
+    </text>
+    <next id="37"></next>
+  </p>
+  <p id="17">
+    <text>
+        [p]Két cövek segítségével keresztet formálsz, azzal mész tovább a Vámpír felé, és sarokba kényszeríted. Sziszeg rád, és kapkod feléd, de nem jöhet közel hozzád. Mindazonáltal elég bonyolultnak látszik a feladat, hogy a cövekkel döfjed szíven.[/p]
+        [p]Amint haladsz előre, megbotlasz és előrezuhansz. Szerencsére a cövek a kezedből egyenesen a Vámpír felé repül, és belehasít a sikoltozó szörnyeteg testébe.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]A cövek pontosan átütötte a Vámpír szívét. Megkeresheted a Vámpír kincsét.[/p]
+        </text>
+        <next id="327"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A cövek csak súrolta a szörnyeteget, dühösen rád támad, keresztülzavar a szobán a nyugati ajtó felé.[/p]
+        </text>
+        <changeEnemy attribute="stamina" id="48" change="-3" />
+        <next id="380">Vagy elmenekülsz az ajtón át</next>
+        <next id="144">Vagy tovább küzdesz vele</next>
+      </failure>
+    </test>
+  </p>
+  <p id="144">
+    <text>
+        [p]A lény rád mered. Pillantásával elkapja tekinteted, és érzed, hogy mostantól fogva képtelen vagy bármit is csinálni. Hívólag int a fejével. Lassan közeledsz feléje. Rád parancsol, hogy dobd el a cöveket. Amint lenézel a cövekre, hirtelen hatalmas akaraterőt érzel magadban. Közvetlen közelről a szörny felé hajítod a cöveket.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="101"></next>
+      </success>
+      <failure>
+        <next id="217"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="101">
+    <text>
+        [p]Szerencsés hajításod váratlanul éri a Vámpírt, aki sikoltozik fájdalmában, ahogy a facövek átveri a szívét. Odaugrasz, és még mélyebbre nyomod testébe a cöveket. Halálsikolya egyre gyengül, élettelen teste a földre omlik.[/p]
+    </text>
+    <next id="327"></next>
+  </p>
+  <p id="217">
+    <text>
+        [p]A cövek épp csak egy kicsivel suhan el a Vámpír feje mellett. Míg figyeled, célba találsz-e, ismét belenézel a szemébe. Hívogatóan újból közelebb int magához. Akaratodat elveszted.[/p]
+    </text>
+    <next id="118"></next>
+  </p>
+  <p id="333">
+    <text>
+        [p]Ahogy a kardoddal a lényre sújtasz, kinyúl, és puszta kézzel megragadja a pengét. Fegyvered majdnem teljesen hatástalan a teremtmény rettenetes erejével szemben. Rádöbbensz erre, és pánikba esel. De tovább kell küzdened.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="48" />
+      <win>
+        <next id="327"></next>
+      </win>
+      <fleeing after="6" />
+      <flee>
+        <next id="333a"></next>
+      </flee>
+    </fight>
+  </p>
+  <p id="333a" display="333">
+    <text>
+        [p]Ahogy a kardoddal a lényre sújtasz, kinyúl, és puszta kézzel megragadja a pengét. Fegyvered majdnem teljesen hatástalan a teremtmény rettenetes erejével szemben. Rádöbbensz erre, és pánikba esel. De tovább kell küzdened.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Elmenekülhetsz a nyugati ajtón keresztül.[/p]
+        </text>
+        <next id="380" pos="0"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Folytatnod kell a küzdelmet, további hat Fordulón át, mielőtt megpróbálkozhatnál újból Elmenekülni.[/p]
+        </text>
+        <next id="333" pos="2"></next>
+        <next id="224" pos="3"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="224">
+    <text>
+        [p]Szemeddel követed a lény mozdulatait, egyszer csak belepillantasz átható tekintetébe. Nézése megigéz, és amint int, hogy lépj közelebb, érzed, hogy saját akaratod elsorvad.[/p]
+    </text>
+    <next id="118"></next>
+  </p>
+  <p id="327">
+    <text>
+        [p]A földön heverő test a szemed láttára kezd el öregedni. Az arca ötvennek látszik, azután kilencvennek, majd száznál is jóval idősebbnek. Bőre szétfoszlik, szeme kifejezéstelenné válik. Valami megmozdul a teremtmény mellkasán. Ahogy a Vámpír maradványai elenyésznek, egy kicsi fekete arc tör ki a mellkasából. Olyan, mint egy apró, sötét cickány, de amint kiszabadítja magát és szétnyitja szárnyait, rájössz, hogy denevér. Rásuhintasz, de elrebben, és belevész a sötétségbe.[/p]
+        [p]Gyorsan átkutatod az egész termet (ne feledd, van még néhány koporsó itt). Találsz [span class="takeItem" data-id="gold" data-amount="30"]harminc Aranytallért[/span], egy [span class="takeItem" data-id="3026" data-amount="1"]könyvet[/span] és egy [span class="replaceItem" data-id="3014" data-amount="1"]Y alakú fadarabot[/span]. Magaddal viheted ezeket a tárgyakat, ha jelenlegi Felszerelésedből itt hagysz egy tárgyat.[/p]
+        [p]A nyugati ajtón át távozhatsz. Ha éhes vagy, egyél Élelmiszerkészletedből, s adj 3-at Szerencse pontjaidhoz a Vámpír legyőzése miatt.[/p]
+    </text>
+    <add amount="3" to="luck" />
+    <next id="380"></next>
+  </p>
+  <p id="37">
+    <text>
+        [p]Egy útkereszteződésnél állsz.[/p]
+    </text>
+    <next id="366">Elindulhatsz észak felé</next>
+    <next id="11">Nyugatnak</next>
+    <next id="277">Vagy déli irányba</next>
+  </p>
+  <p id="277">
+    <text>
+        [p]Egy rövidke átjáróban vagy, az út tőled néhány méterre zsákutcába torkollik.[/p]
+    </text>
+    <next id="146">Kereshetsz titkos átjárókat</next>
+    <next id="366">Vagy ha akarsz, visszatérhetsz az útkereszteződéshez, ahol vagy az előtted lévő utat követed észak felé</next>
+    <next id="11">Vagy nyugatnak fordulsz</next>
+  </p>
+  <p id="146">
+    <text>
+        [p]Nem találsz titkos átjárókat.[/p]
+    </text>
+    <next id="366">Visszamész a kereszteződéshez, és folytathatod utadat vagy északnak</next>
+    <next id="11">Vagy nyugatnak</next>
+  </p>
+  <p id="11">
+    <text>
+        [p]Követed a folyosót nyugat felé, amikor az egy kanyarral hirtelen dél felé fordul. Közvetlenül a forduló előtt megpillantasz egy útjelző táblát, melyen ez áll: Építési terület. Előtted egy lépcső vezet lefelé. Eddig még csak három lépcsőfok készült el. Egy csomó lapát, csákány és egyéb szerszám hever szanaszét a lépcsők mellett, de amint befordulsz a saroknál, hirtelen mozgásba lendülnek, és lázasan dolgoznak a lépcsőkön. Nézed, hogy a különféle szerszámok hogyan ásnak és kalapálnak, mintha láthatatlan munkások dolgoznának velük. Zümmögő énekszót hallasz, amely egyre erősödik, és felismered a Törpék indulóját: „Hej-hó, hej-hó, hej dalolni jó...'' Amint állsz és nézelődsz, elkezdesz kuncogni, a látvány egészen szórakoztató. Leülsz, és tovább figyelsz, sőt még beszélgetni is sikerül némelyik mágikus szerszámmal.[/p]
+        [p]Míg pihensz, 2 ÉLETERŐ és 1 ÜGYESSÉG pontot szerzel. Azután visszamész a folyosóra az útkereszteződéshez.[/p]
+    </text>
+    <add amount="2" to="stamina" />
+    <add amount="1" to="skill" />
+    <next id="366">Elindulhatsz észak felé</next>
+    <next id="250">Vagy déli irányba</next>
+  </p>
+  <p id="366">
+    <text>
+        [p]Haladsz tovább az észak felé tartó úton. Jó néhány méter után az út egy éles kanyart vesz keletnek. Mész tovább keletnek, mígnem egy szűk átjáróhoz érsz az út északi oldalán.[/p]
+    </text>
+    <next id="89">Ha átmész rajta</next>
+    <next id="62">Ha inkább kelet felé folytatod az utadat</next>
+  </p>
+  <p id="62">
+    <text>
+        [p]Folytatod az utadat kelet felé. Vagy harminc méter megtétele után az út délnek kanyarodik. Követed a kanyarulatot, s végül egy hatalmas páncélozott ajtó állja utadat.[/p]
+    </text>
+    <next id="6">Ha ki akarod nyitni</next>
+    <next id="89">Ha inkább visszamész a folyosóra és átbújsz a szűk hasadékon</next>
+  </p>
+  <p id="6">
+    <text>
+        [p]Az ajtó hatalmas és szilárd, kilincs nincsen rajta. Nekirontasz, de mindhiába. Az ajtó meg sem moccan. Úgy döntesz, hogy feladod, és azon a nyíláson mész keresztül, amely mellett a kelet-nyugati átjáróhelynél haladtál el előbb.[/p]
+    </text>
+    <next id="89"></next>
+  </p>
+  <p id="250">
+    <text>
+        [p]Egy rövid folyosón vagy, amely néhány méterrel előtted zsákutcába torkollik. Átvizsgálod a sziklafalat, de nem látsz sehol átjárót. Visszamész az útkereszteződéshez, és ez alkalommal egyenesen északnak indulsz.[/p]
+    </text>
+    <next id="366"></next>
+  </p>
+  <p id="286">
+    <text>
+        [p]A szűk lépcsősort a sziklába vájták, vagy húsz lépcsőfok vezet lefele. Aljában az út egy hatalmas nyitott terembe vezet. A helyiség rothadó hús szagától bűzlik. A szag olyan rettenetes, hogy legszívesebben visszafordulnál. Átkutathatod a tetemeket, vagy lábujjhegyen átsurranhatsz a termen. Mit fogsz csinálni?[/p]
+    </text>
+    <next id="294">Átkutatod az első tetemet?</next>
+    <next id="275">Átkutatod a második tetemet?</next>
+    <next id="148">Átkutatod a harmadik tetemet?</next>
+    <next id="107">Lábujjhegyen átosonsz a szobán?</next>
+  </p>
+  <p id="294">
+    <text>
+        [p][span class="takeItem" data-id="gold" data-amount="5"]5 Aranytallért[/span] találsz a holttest zsebeiben. A leletért 1 Szerencse pontot kapsz. [alt]Most, ha akarod:[/alt][/p]
+    </text>
+    <add amount="1" to="luck" />
+    <itemCheck type="section" id="275">
+      <dontHave>
+        <next id="275" pos="1">Átkutathatod a második holttestet</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="148">
+      <dontHave>
+        <next id="148" pos="2">Átkutathatod a harmadik holttestet</next>
+      </dontHave>
+    </itemCheck>
+    <next id="107" pos="3" singleChoiceText="Mész tovább észak felé, és lábujjhegyen átvágsz a szobán.">Továbbmehetsz észak felé, lábujjhegyen átvágva a szobán</next>
+  </p>
+  <p id="275">
+    <text>
+        [p]Ahogy mész tovább a második testhez, véletlenül megrúgod a földön heverő harmadik holttestet. Szemei felpattannak, gyorsan felül, éles körmével feléd suhint.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]A lény elhibázza a csapást.[/p]
+        </text>
+      </success>
+      <failure>
+        <text>
+            [p]A lény megragad a lábadnál fogva, és 1 ÉLETERŐ pontnyit pusztít rajtad.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+      </failure>
+    </test>
+    <next id="230"></next>
+  </p>
+  <p id="230">
+    <text>
+        [p]A lény, akivel szembekerültél, egy foszladozó testű ember. Szemei gyorsan cikáznak ide-oda, téged figyelve. Hosszú nyelve szisszenő hanggal csapódik ki a szájából. Fogai és körmei élesek, és úgy tűnik, egyáltalán nem tart fegyvereidtől. Egy Ghoullal állsz szemben![/p]
+        [p]Még az a képessége is megvan, hogy ha négyszer meg tud sebezni a küzdelem során, megbénít téged. Óvakodj ettől![/p]
+    </text>
+    <fight type="single">
+      <enemy id="49" />
+      <loseRound enemy="49" totalCount="4">
+        <interrupt />
+        <text>
+            [p]A Ghoul vidáman körültáncolja a testedet, majd a földön heverők mellé fektet. Hasra fordít, és fogait a hátsó feledbe mélyeszti. Ritkán kap táplálékul friss húst.[/p]
+            [p]Kalandod itt véget ért.[/p]
+        </text>
+        <death />
+      </loseRound>
+      <lose>
+        <text>
+            [p]A Ghoul vidáman körültáncolja a testedet, majd a földön heverők mellé fektet. Hasra fordít, és fogait a hátsó feledbe mélyeszti. Ritkán kap táplálékul friss húst.[/p]
+            [p]Kalandod itt véget ért.[/p]
+        </text>
+      </lose>
+      <win>
+        <next id="390"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="64">
+    <empty />
+  </p>
+  <p id="390">
+    <text>
+        [p]A Ghoul rángatózva meghal lábaid előtt. Átkutatód a testét de csak jelentéktelen dolgokat lelsz. Többek között egy pár [span class="takeItem" data-id="3027" data-amount="1"]fülbevaló[/span] (1 Aranytallér értékű) is van az egyik zsebében. Ezt magaddal viheted.
+    </text>
+    <itemCheck type="section" id="294">
+      <dontHave>
+        <text>
+            Az első holttestet is átkutatva [span class="takeItem" data-id="gold" data-amount="5"]5 Aranytallért[/span] találsz a zsebében, ez is a tied lehet. Megállhatsz egy kicsit pihenni és enni. 2 Szerencse pontot kapsz, amiért megölted a Ghoult.[alt][/alt][/p]
+        </text>
+      </dontHave>
+      <have>
+        <text>
+            Megállhatsz egy kicsit pihenni és enni. 2 Szerencse pontot kapsz, amiért megölted a Ghoult.[alt][/alt][/p]
+        </text>
+      </have>
+    </itemCheck>
+    <add amount="2" to="luck" />
+    <canEat />
+    <next id="120" pos="1" singleChoiceText=" Ezek után továbbmész északnak.">Ezek után mehetsz tovább északnak</next>
+    <itemCheck type="section" id="393">
+      <dontHave>
+        <next id="393" pos="2">Vagy átkutathatod a második holttestet</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="393">
+    <text>
+        [p]Átkutatod a zsebeit ennek a halottnak is, és [span class="takeItem" data-id="gold" data-amount="8"]8 Aranytallért[/span] találsz, meg egy folyadékkal teli üveget és egy régi pergamendarabot. Ezeket magaddal viheted.[/p]
+    </text>
+    <next id="212">Elolvasod most a pergament?</next>
+    <next id="369">Vagy a folyadékkal próbálkozol?</next>
+  </p>
+  <p id="369">
+    <text>
+        [p]Lenyelsz egy keveset a folyadékból.[/p]
+    </text>
+    <next id="109"></next>
+  </p>
+  <p id="109">
+    <text>
+        [p]Sima, ízetlen folyadék, de amint iszod, szinte izzani kezdesz tőle. Fantasztikusan jól érzed magad, s közben mintha egy kicsit becsípnél. Önbizalmad megnő, kimerültséged pedig eltűnik. Az üveg Szentelt Vizet tartalmaz, melyet Kaynlesh-Ma főpap áldott meg. Visszaállította Életerődet, majdnem teljesen. ÉLETERŐ pontjaidat növeld meg annyival, hogy kezdeti ÉLETERŐ pontszámodnál 2-vel legyen kevesebb. (Ha jelenlegi pontszámod ennél magasabb, hagyd úgy, hisz így is elég erős vagy[/p]
+        [p]Adj mostani ÜGYESSÉG pontjaidhoz annyit, hogy a kezdetinél csak 1 ponttal legyen kevesebb. Ezért az igazán szerencsés leletért Szerencse pontjaidhoz is hozzáadhatsz 4-et.[/p]
+    </text>
+    <add amount="4" to="luck" />
+    <itemCheck type="section" id="212">
+      <have>
+        <text>
+            [p]Elhagyod a szobát északi irányban.[/p]
+        </text>
+        <next id="212"></next>
+      </have>
+      <dontHave>
+        <next id="120">Ha egyáltalán nem érdekel a pergamen tartalma, és elhagyod a szobát északi irányban</next>
+        <next id="212">Ha meg akarod vizsgálni</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="120">
+    <text>
+        [p]Elhagyod a termet, lesétálsz egy rövid szakaszon, odaérsz egy felfelé kanyarodó lépcsőhöz. Megmászod a lépcsőket, és egy átjáróhoz érkezel.[/p]
+    </text>
+    <next id="197"></next>
+  </p>
+  <p id="212">
+    <text>
+        [p]A pergamen meglehetősen kopott, majdnem teljesen olvashatatlan. Valamiféle térkép az, címe szerint Zagor Útvesztője. Aligha veheted hasznát, bár az egyik, északra nyíló szobánál ezt olvashatod „.ESZ.LY”, egy keleti tájolásúnál pedig azt, hogy „K.S ..BE..K”.[/p]
+        [p]Összehajtod a [span class="takeItem" data-id="3028" data-amount="1"]térképet[/span], és zsebre vágod.[/p]
+    </text>
+    <itemCheck type="section" id="369">
+      <have>
+        <text>
+            [p]Folytatod utadat észak felé.[/p]
+        </text>
+        <next id="120"></next>
+      </have>
+      <dontHave>
+        <next id="369">Ha megkóstolod a folyadékot</next>
+        <next id="120">Ha folytatod utadat észak felé</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="197">
+    <text>
+        [p]Felérsz a lépcsősor tetejére, az út élesen kelet felé kanyarodik. Megállsz, hogy tájékozódni tudjál, amikor csikorgó hangot hallasz a mögötted lévő sziklafal felől. Ahhoz még idejében fordulsz meg, hogy lásd: egy nehéz vasrostély zuhan le, és elzárja a visszafelé vezető utat. Már csak előre mehetsz! Mit teszel?[/p]
+    </text>
+    <next id="48">Továbbmész egyenesen előre?</next>
+    <next id="295">Rejtekajtókat keresve a falakat vizsgálod meg?</next>
+  </p>
+  <p id="295">
+    <text>
+        [p]Titkos átjárót vagy ajtót keresve végigtapogatod, végigkopogtatod a sziklafalat. Az okozott zaj visszaverődik a labirintus falairól. A föld alatti világ számtalan különféle teremtménye kóborol szabadon az útvesztőben, és a szörnyek valamelyike felfigyel a zajra.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <fight type="single">
+          <enemy id="91" />
+        </fight>
+      </result>
+      <result max="2" min="2">
+        <fight type="single">
+          <enemy id="92" />
+        </fight>
+      </result>
+      <result max="3" min="3">
+        <fight type="single">
+          <enemy id="93" />
+        </fight>
+      </result>
+      <result max="4" min="4">
+        <fight type="single">
+          <enemy id="94" />
+        </fight>
+      </result>
+      <result max="5" min="5">
+        <fight type="single">
+          <enemy id="95" />
+        </fight>
+      </result>
+      <result max="6" min="6">
+        <fight type="single">
+          <enemy id="96" />
+        </fight>
+      </result>
+    </random>
+    <next id="48"></next>
+  </p>
+  <p id="48">
+    <text>
+        [p]Egy kelet-nyugat irányú folyosón vagy. Ha keletre indulsz, a következő saroknál észak felé kell fordulnod.[/p]
+    </text>
+    <next id="391">Ha erre indulsz</next>
+    <next id="60">Ha nyugatnak mész</next>
+  </p>
+  <p id="391">
+    <text>
+        [p]Egy észak-déli folyosó déli végénél vagy. Észak felé nézve egy utat látsz, a keleti falról vezet lefele. Mit teszel?[/p]
+    </text>
+    <next id="52">Felkapaszkodsz ezen az úton?</next>
+    <next id="362">Útközben észak felé megpróbálsz titkos átjárókat keresni?</next>
+    <next id="48">Délnek indulsz, azután a kanyart követve nyugatra mész?</next>
+  </p>
+  <p id="362">
+    <text>
+        [p]Ahogy a falakat tapogatod, az út mentén, a nyugati falban egy rejtekajtó tárul fel előtted.[/p]
+    </text>
+    <next id="177"></next>
+  </p>
+  <p id="107">
+    <text>
+        [p]Lábujjhegyen végiglopódzol a szobán, aztán fel egy szűk lépcsőn. Ez egy folyosóra vezet. Na, ezt könnyen megúsztam! - gondolod, majd töprengeni kezdesz, nem lett volna-e érdemes átkutatni a testeket.[/p]
+    </text>
+    <next id="148">Visszamehetsz, hogy ezt megtedd - a harmadikkal kezded</next>
+    <next id="197">De tovább is indulhatsz</next>
+  </p>
+  <p id="60">
+    <text>
+        [p]Továbbmész a folyosón, de hamar észreveszed, hogy az út nyugat felé hatalmas vasráccsal van lezárva. Vissza kell menned oda, ahonnan jöttél.[/p]
+    </text>
+    <next id="48"></next>
+  </p>
+  <p id="177">
+    <text>
+        [p]Egy észak-dél irányú úton állsz. Észak felé tekintesz, messze egy keletnek vezető út látszik. A délre menő út egy idő múlva nyugatnak kanyarodik.  A nyugati falon éppen előtted egy rejtekajtót pillantasz meg.[/p]
+    </text>
+    <next id="52">Ha akarod, átkutathatod a keleti folyosót</next>
+    <next id="391">Mehetsz ennek az útnak a déli végéig</next>
+    <next id="175">Ha akarsz, benyithatsz a rejtekajtón</next>
+  </p>
+  <p id="175">
+    <text>
+        [p]Egy szűk folyosón vagy. Mögötted egy rejtekajtó nyílik keletre. Előtted útkereszteződés.[/p]
+    </text>
+    <next id="177">Ha belépsz az ajtón</next>
+    <next id="267">Ha a keresztúthoz mész</next>
+  </p>
+  <p id="267">
+    <text>
+        [p]Egy útkereszteződésnél állsz.[/p]
+    </text>
+    <next id="312">Északra tartasz?</next>
+    <next id="246">Délre mész?</next>
+    <next id="79">Nyugatra indulsz?</next>
+    <next id="349">Keletre fordulsz?</next>
+  </p>
+  <p id="349">
+    <text>
+        [p]Néhány métert lefelé haladsz a folyosón, és zsákutcába kerülsz.[/p]
+    </text>
+    <next id="267">Vagy visszafordulsz az útkereszteződéshez</next>
+    <next id="30">Vagy átkutatod a zsákutca végét</next>
+  </p>
+  <p id="30">
+    <text>
+        [p]Egy meglazult kődarab elmozdul, ás láthatóvá tesz egy kötelet, mely a szikláról lóg le.[/p]
+    </text>
+    <next id="267">Ha úgy érzed, okosabb nem hozzányúlni, visszafordulhatsz a keresztúthoz</next>
+    <next id="67">Ha a kötelet meghúzod</next>
+  </p>
+  <p id="67">
+    <text>
+        [p]Meghúzod a kötelet, erre kinyílik egy csapóajtó, és láthatóvá tesz egy utat, amely az észak-déli folyosóhoz vezet.[/p]
+    </text>
+    <next id="267">Ha visszafordulsz a keresztúthoz</next>
+    <next id="177">Ha átmész a titkos ajtón</next>
+  </p>
+  <p id="79">
+    <text>
+        [p]A folyosó előtted zsákutcába torkollik.[/p]
+    </text>
+    <next id="137">Megpróbálhatsz titkos átjárókat keresni</next>
+    <next id="267">De vissza is mehetsz az elágazáshoz</next>
+  </p>
+  <p id="137">
+    <text>
+        [p]Nem találsz egyetlen titkos átjárót sem, de amint megnyomod a falat, egy kattanást hallasz. Szédelegni kezdesz, és a földre zuhansz. Amikor magadhoz térsz, ismeretlen helyen találod magad.[/p]
+    </text>
+    <next id="354"></next>
+  </p>
+  <p id="148">
+    <text>
+        [p]Átkutatod a testet, és megpróbálsz nem rátekinteni oszlásnak induló, szürke arcára. Hátraugrasz, amint a holttest hirtelen rád mereszti szemét. Épp az utolsó pillanatban kerülöd el a gonosz vágást, amit hosszú, éles körmei hasítottak volna rajtad. Felpattan, és megjelenik arcán a szadisták jellegzetes torz mosolya.[/p]
+    </text>
+    <next id="230"></next>
+  </p>
+  <p id="52">
+    <text>
+        [p]A keletre vezető folyosó végén egy észak-dél irányú elágazásnál állsz.[/p]
+    </text>
+    <next id="391">Mehetsz délnek</next>
+    <next id="362">Kereshetsz titkos átjárókat ugyanezen a déli úton</next>
+    <next id="354">Választhatod az északra menő utat</next>
+    <next id="234">Kutathatsz a titkos átjárók után az északi úton</next>
+    <next id="291">De tarthatsz keletnek is</next>
+  </p>
+  <p id="354">
+    <text>
+        [p]Egy útkanyarulatnál állsz, ahonnan nyugatra és délre egyaránt indulhatsz.[/p]
+    </text>
+    <next id="308">Ha nyugatra indulsz</next>
+    <next id="52">Ha délnek tartasz</next>
+    <next id="14">Ha titkos átjárók után kutatsz a nyugatra vezető úton</next>
+    <next id="234">Ha titkos átjárókat keresel a délre tartó úton</next>
+  </p>
+  <p id="291">
+    <text>
+        [p]Egy kelet-nyugati folyosó közepén állsz. Keletre zsákutca van. Nyugatra egy már ismerős útelágazás nyílik. Egy másik, egészen rövidke átjáró észak felé kanyarodik, és egy hatalmas faajtóhoz vezet.[/p]
+    </text>
+    <next id="315">Ha akarod, átvizsgálhatod a keleti zsákutcát</next>
+    <next id="52">Ha nyugat felé indulsz</next>
+    <next id="227">Ha ki akarod nyitni az északi ajtót</next>
+  </p>
+  <p id="315">
+    <text>
+        [p]Úgy látszik, a zsákutcában nincsenek titkos átjárók, de ha akarod, ezt még egyszer ellenőrizheted.[/p]
+    </text>
+    <next id="306">Ha így tennél</next>
+    <next id="291">Ha nem akarod újra ellenőrizni</next>
+  </p>
+  <p id="306">
+    <text>
+        [p]Még mindig nem találsz titkos átjárókat. De amint mész tovább lefelé a folyosón, egy lény körvonalait pillantod meg.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <fight type="single">
+          <enemy id="91" />
+        </fight>
+      </result>
+      <result max="2" min="2">
+        <fight type="single">
+          <enemy id="92" />
+        </fight>
+      </result>
+      <result max="3" min="3">
+        <fight type="single">
+          <enemy id="93" />
+        </fight>
+      </result>
+      <result max="4" min="4">
+        <fight type="single">
+          <enemy id="94" />
+        </fight>
+      </result>
+      <result max="5" min="5">
+        <fight type="single">
+          <enemy id="95" />
+        </fight>
+      </result>
+      <result max="6" min="6">
+        <fight type="single">
+          <enemy id="96" />
+        </fight>
+      </result>
+    </random>
+    <next id="291"></next>
+  </p>
+  <p id="227">
+    <itemCheck type="item" id="4004">
+      <have>
+        <text>
+            [p]Az ajtó kinyílik, és te belépsz egy kicsi, füstös szobába. Bent egy faasztalt látsz, és négy széket, ettől eltekintve azonban üres. Úgy döntesz, távozol innen.[/p]
+        </text>
+        <next id="291"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Az ajtó kinyílik, és te belépsz egy kicsi, füstös szobába. Bent egy faasztal mellett négy apró emberke üldögél. Talán egy méter magasak, de szemmel láthatóan mindnyájan felnőttek. Bőrük cserzett, szakálluk hosszú és bozontos. Szitkozódnak, nevetgélnek és tréfálkoznak kártyázás közben. Hanyatt dőlnek apró székükben, és hosszú agyagpipából eregetik a füstöt. Az asztalon maréknyi rézpénz és négy korsó sör. Ahogy belépsz, mulatságuk félbeszakad. Résen vannak, de nem látszanak túl veszélyesnek. Egyikük feláll, és megjegyzést tesz hiányos neveltetéseddel kapcsolatban, miszerint még csak nem is kopogtattál az ajtón belépés előtt. A többiek egyetértően bólogatnak. Mit csinálsz?[/p]
+        </text>
+        <next id="131">Beszélgetni kezdesz velük, és elnézed nekik a kioktatást?</next>
+        <next id="291">Magyarázkodsz, meghajolsz és távozol?</next>
+        <next id="100">Megkérdezed, beszállhatsz-e kártyázni?</next>
+        <next id="20">Kardot rántasz, és megtámadod vezérüket?</next>
+        <gatherItem id="4004" />
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="20">
+    <text>
+        [p]A csetepaté elkezdődik. Te karddal, ők fejszével vannak felfegyverezve. Egyenként rontanak rád.[/p]
+        [p]Ha a küzdelem rosszul alakul, elmenekülhetsz az ajtón keresztül.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="50" />
+      <enemy id="51" />
+      <enemy id="52" />
+      <enemy id="53" />
+      <fleeing />
+      <flee>
+        <next id="291"></next>
+      </flee>
+      <win>
+        <next id="376"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="376">
+    <text>
+        [p]Összeszedheted az asztalon lévő összes rézpénzt. [span class="takeItem" data-id="gold" data-amount="4"]Négy Aranytallért[/span] érnek! Most már nyugodtan távozhatsz. Pihenj és harapj valamit, mielőtt továbbmész, persze csak ha akarod! 3 Szerencse pontot nyertél.[/p]
+    </text>
+    <add amount="3" to="luck" />
+    <canEat />
+    <next id="291"></next>
+  </p>
+  <p id="131">
+    <text>
+        [p]Különféle dolgokról beszélgettek, és úgy tűnik, igyekeznek nagyon barátságosak lenni veled. Magányosan élnek a labirintusban a sok gonosz teremtmény között, és örülnek, ha olyan valakivel beszélgethetnek, aki a törvényes külvilágból érkezik. Közlik, hogy Zagor Útvesztőjében vagy, és az egyetlen kiút, ha továbbmész, egyre mélyebbre a Labirintusban. Azt mondják, a legbiztosabb út, amint elhagyod a szobát, ha jobbra fordulsz, azután megint jobbra, balra, azután egyenesen, azután... És itt egy kicsit elbizonytalanodva bevallják, hogy nem teljesen biztosak a dologban.[/p]
+        [p]Ha akarod, elfogyaszthatsz itt egy adagnyit Élelmiszerkészletedből, de ebben az esetben meg kell osztanod velük táplálékodat, és így a szokásos ÉLETERŐ pontoknak csak a felét kapod. Végül elköszönsz tőlük, és távozol.[/p]
+    </text>
+    <canEat />
+    <next id="291"></next>
+  </p>
+  <p id="100">
+    <text>
+        [p]Tétovázás nélkül beleegyeznek, hogy beszállj a játékba. Amint kártyáztok és beszélgettek, egészen feloldódnak, végül mindannyian nagyokat nevettek, miközben az egyik történet követi a másikat.[/p]
+        [p]Teljesen ártalmatlannak látszanak.[/p]
+    </text>
+    <next id="346">Ha tisztességesen akarsz játszani</next>
+    <next id="91">Ha megpróbálsz csalni</next>
+  </p>
+  <p id="91">
+    <test against="luck">
+      <success>
+        <text>
+            [p]Nem derül ki, hogy csaltál.[/p]
+        </text>
+        <random diceConfig="2d6">
+          <result max="2" min="2">
+            <text>[p]2 Aranytallért nyertél.[/p]</text>
+            <add amount="2" to="gold" />
+          </result>
+          <result max="3" min="3">
+            <text>[p]3 Aranytallért nyertél.[/p]</text>
+            <add amount="3" to="gold" />
+          </result>
+          <result max="4" min="4">
+            <text>[p]4 Aranytallért nyertél.[/p]</text>
+            <add amount="4" to="gold" />
+          </result>
+          <result max="5" min="5">
+            <text>[p]5 Aranytallért nyertél.[/p]</text>
+            <add amount="5" to="gold" />
+          </result>
+          <result max="6" min="6">
+            <text>[p]6 Aranytallért nyertél.[/p]</text>
+            <add amount="6" to="gold" />
+          </result>
+          <result max="7" min="7">
+            <text>[p]7 Aranytallért nyertél.[/p]</text>
+            <add amount="7" to="gold" />
+          </result>
+          <result max="8" min="8">
+            <text>[p]8 Aranytallért nyertél.[/p]</text>
+            <add amount="8" to="gold" />
+          </result>
+          <result max="9" min="9">
+            <text>[p]9 Aranytallért nyertél.[/p]</text>
+            <add amount="9" to="gold" />
+          </result>
+          <result max="10" min="10">
+            <text>[p]10 Aranytallért nyertél.[/p]</text>
+            <add amount="10" to="gold" />
+          </result>
+          <result max="11" min="11">
+            <text>[p]11 Aranytallért nyertél.[/p]</text>
+            <add amount="11" to="gold" />
+          </result>
+          <result max="12" min="12">
+            <text>[p]12 Aranytallért nyertél.[/p]</text>
+            <add amount="12" to="gold" />
+          </result>
+        </random>
+        <next id="131"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A négy Törpe észreveszi, amint a kártyapakli aljáról osztasz, felkapják a szék mögé támasztott bárdjukat, és rád rontanak.[/p]
+        </text>
+        <next id="20"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="346">
+    <text>
+        [p]A kártyaszerencse lehet veled és ellened is.[/p]
+    </text>
+    <next id="346a">Ha a tudásodban bízol</next>
+    <next id="346b">Ha a Szerencse Istennőjéhez fordulsz</next>
+  </p>
+  <p id="346a" display="346">
+    <text>
+        [p]A kártyaszerencse lehet veled és ellened is.[/p]
+    </text>
+    <random diceConfig="2d6">
+      <result max="2" min="2">
+        <text>[p]2 Aranytallért vesztettél.[/p]</text>
+        <add amount="-2" to="gold" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]4 Aranytallért vesztettél.[/p]</text>
+        <add amount="-4" to="gold" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]6 Aranytallért vesztettél.[/p]</text>
+        <add amount="-6" to="gold" />
+      </result>
+      <result max="8" min="8">
+        <text>[p]8 Aranytallért vesztettél.[/p]</text>
+        <add amount="-8" to="gold" />
+      </result>
+      <result max="10" min="10">
+        <text>[p]10 Aranytallért vesztettél.[/p]</text>
+        <add amount="-10" to="gold" />
+      </result>
+      <result max="12" min="12">
+        <text>[p]12 Aranytallért vesztettél.[/p]</text>
+        <add amount="-12" to="gold" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]3 Aranytallért nyertél. Kapsz 2 SZERENCSE pontot is.[/p]</text>
+        <add amount="3" to="gold" />
+        <add amount="2" to="luck" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]5 Aranytallért nyertél. Kapsz 2 SZERENCSE pontot is.[/p]</text>
+        <add amount="5" to="gold" />
+        <add amount="2" to="luck" />
+      </result>
+      <result max="7" min="7">
+        <text>[p]7 Aranytallért nyertél. Kapsz 2 SZERENCSE pontot is.[/p]</text>
+        <add amount="7" to="gold" />
+        <add amount="2" to="luck" />
+      </result>
+      <result max="9" min="9">
+        <text>[p]9 Aranytallért nyertél. Kapsz 2 SZERENCSE pontot is.[/p]</text>
+        <add amount="9" to="gold" />
+        <add amount="2" to="luck" />
+      </result>
+      <result max="11" min="11">
+        <text>[p]11 Aranytallért nyertél. Kapsz 2 SZERENCSE pontot is.[/p]</text>
+        <add amount="11" to="gold" />
+        <add amount="2" to="luck" />
+      </result>
+    </random>
+    <next id="131"></next>
+  </p>
+  <p id="346b" display="346">
+    <text>
+        [p]A kártyaszerencse lehet veled és ellened is.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <random diceConfig="2d6">
+          <result max="2" min="2">
+            <text>[p]2 Aranytallért nyertél.[/p]</text>
+            <add amount="2" to="gold" />
+          </result>
+          <result max="3" min="3">
+            <text>[p]3 Aranytallért nyertél.[/p]</text>
+            <add amount="3" to="gold" />
+          </result>
+          <result max="4" min="4">
+            <text>[p]4 Aranytallért nyertél.[/p]</text>
+            <add amount="4" to="gold" />
+          </result>
+          <result max="5" min="5">
+            <text>[p]5 Aranytallért nyertél.[/p]</text>
+            <add amount="5" to="gold" />
+          </result>
+          <result max="6" min="6">
+            <text>[p]6 Aranytallért nyertél.[/p]</text>
+            <add amount="6" to="gold" />
+          </result>
+          <result max="7" min="7">
+            <text>[p]7 Aranytallért nyertél.[/p]</text>
+            <add amount="7" to="gold" />
+          </result>
+          <result max="8" min="8">
+            <text>[p]8 Aranytallért nyertél.[/p]</text>
+            <add amount="8" to="gold" />
+          </result>
+          <result max="9" min="9">
+            <text>[p]9 Aranytallért nyertél.[/p]</text>
+            <add amount="9" to="gold" />
+          </result>
+          <result max="10" min="10">
+            <text>[p]10 Aranytallért nyertél.[/p]</text>
+            <add amount="10" to="gold" />
+          </result>
+          <result max="11" min="11">
+            <text>[p]11 Aranytallért nyertél.[/p]</text>
+            <add amount="11" to="gold" />
+          </result>
+          <result max="12" min="12">
+            <text>[p]12 Aranytallért nyertél.[/p]</text>
+            <add amount="12" to="gold" />
+          </result>
+          <after>
+            <text>
+                [p]Kapsz 2 SZERENCSE pontot is.[/p]
+            </text>
+            <add amount="2" to="luck" />
+          </after>
+        </random>
+      </success>
+      <failure>
+        <random diceConfig="2d6">
+          <result max="2" min="2">
+            <text>[p]2 Aranytallért vesztettél.[/p]</text>
+            <add amount="-2" to="gold" />
+          </result>
+          <result max="3" min="3">
+            <text>[p]3 Aranytallért vesztettél.[/p]</text>
+            <add amount="-3" to="gold" />
+          </result>
+          <result max="4" min="4">
+            <text>[p]4 Aranytallért vesztettél.[/p]</text>
+            <add amount="-4" to="gold" />
+          </result>
+          <result max="5" min="5">
+            <text>[p]5 Aranytallért vesztettél.[/p]</text>
+            <add amount="-5" to="gold" />
+          </result>
+          <result max="6" min="6">
+            <text>[p]6 Aranytallért vesztettél.[/p]</text>
+            <add amount="-6" to="gold" />
+          </result>
+          <result max="7" min="7">
+            <text>[p]7 Aranytallért vesztettél.[/p]</text>
+            <add amount="-7" to="gold" />
+          </result>
+          <result max="8" min="8">
+            <text>[p]8 Aranytallért vesztettél.[/p]</text>
+            <add amount="-8" to="gold" />
+          </result>
+          <result max="9" min="9">
+            <text>[p]9 Aranytallért vesztettél.[/p]</text>
+            <add amount="-9" to="gold" />
+          </result>
+          <result max="10" min="10">
+            <text>[p]10 Aranytallért vesztettél.[/p]</text>
+            <add amount="-10" to="gold" />
+          </result>
+          <result max="11" min="11">
+            <text>[p]11 Aranytallért vesztettél.[/p]</text>
+            <add amount="-11" to="gold" />
+          </result>
+          <result max="12" min="12">
+            <text>[p]12 Aranytallért vesztettél.[/p]</text>
+            <add amount="-12" to="gold" />
+          </result>
+        </random>
+      </failure>
+    </test>
+    <next id="131"></next>
+  </p>
+  <p id="312">
+    <text>
+        [p]Egy hosszú, szűk folyosót követsz, amelyik északnak halad, azután nyugatnak fordul, majd megint északnak, és végül egy útkereszteződésnél találod magad.[/p]
+    </text>
+    <next id="308"></next>
+  </p>
+  <p id="308">
+    <text>
+        [p]Egy útkereszteződésnél állsz. Az út csak néhány méteren át tart nyugatnak, utána északnak fordul. Északi irányban az utat egy ajtó zárja le. Kelet felé az út továbbhalad, de végül délnek fordul. Déli irányban egyenesen haladhatsz, ameddig a szem ellát. Merre indulsz?[/p]
+    </text>
+    <next id="187">Nyugatnak?</next>
+    <next id="54">Északra?</next>
+    <next id="160">Délre?</next>
+    <next id="354">Keletre?</next>
+  </p>
+  <p id="160">
+    <text>
+        [p]Egy hosszú, szűk folyosón haladsz előbb délnek, azután keletnek, majd újra délnek, végül egy keresztúthoz érsz.[/p]
+    </text>
+    <next id="267"></next>
+  </p>
+  <p id="234">
+    <text>
+        [p]Titkos átjárót vagy ajtót keresve végigtapogatod, végigkopogtatod a sziklafalat. Az okozott zaj visszaverődik a labirintus falairól. A föld alatti világ számtalan különféle teremtménye kóborol szabadon az útvesztőben, és a szörnyek valamelyike felfigyel a zajra.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <fight type="single">
+          <enemy id="91" />
+        </fight>
+      </result>
+      <result max="2" min="2">
+        <fight type="single">
+          <enemy id="92" />
+        </fight>
+      </result>
+      <result max="3" min="3">
+        <fight type="single">
+          <enemy id="93" />
+        </fight>
+      </result>
+      <result max="4" min="4">
+        <fight type="single">
+          <enemy id="94" />
+        </fight>
+      </result>
+      <result max="5" min="5">
+        <fight type="single">
+          <enemy id="95" />
+        </fight>
+      </result>
+      <result max="6" min="6">
+        <fight type="single">
+          <enemy id="96" />
+        </fight>
+      </result>
+    </random>
+    <next id="43"></next>
+  </p>
+  <p id="43">
+    <text>
+        [p]Egy észak-dél irányú elágazásnál vagy.[/p]
+    </text>
+    <next id="354">Ha északnak mész</next>
+    <next id="52">Ha dél felé</next>
+  </p>
+  <p id="14">
+    <text>
+        [p]Titkos átjárót vagy ajtót keresve végigtapogatod, végigkopogtatod a sziklafalat. Az okozott zaj visszaverődik a labirintus falairól. A föld alatti világ számtalan különféle teremtménye kóborol szabadon az útvesztőben, és a szörnyek valamelyike felfigyel a zajra.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <fight type="single">
+          <enemy id="91" />
+        </fight>
+      </result>
+      <result max="2" min="2">
+        <fight type="single">
+          <enemy id="92" />
+        </fight>
+      </result>
+      <result max="3" min="3">
+        <fight type="single">
+          <enemy id="93" />
+        </fight>
+      </result>
+      <result max="4" min="4">
+        <fight type="single">
+          <enemy id="94" />
+        </fight>
+      </result>
+      <result max="5" min="5">
+        <fight type="single">
+          <enemy id="95" />
+        </fight>
+      </result>
+      <result max="6" min="6">
+        <fight type="single">
+          <enemy id="96" />
+        </fight>
+      </result>
+    </random>
+    <next id="117"></next>
+  </p>
+  <p id="117">
+    <text>
+        [p]Egy kelet-nyugat irányú átjáróban vagy.[/p]
+    </text>
+    <next id="354">Ha keletnek fordulsz</next>
+    <next id="308">Ha inkább nyugatnak mész</next>
+  </p>
+  <p id="187">
+    <text>
+        [p]Egy útkanyarulat közepén állsz. Észak felé zsákutcába jutsz.[/p]
+    </text>
+    <next id="171">Ha megvizsgálod</next>
+    <next id="308">Ha kelet felé mész</next>
+  </p>
+  <p id="171">
+    <text>
+        [p]Egy észak-dél irányú rövidke út északi végénél vagy, zsákutcába kerültél.[/p]
+    </text>
+    <next id="337">Ha átkutatod a falakat</next>
+    <next id="187">Ha visszamész déli irányba</next>
+  </p>
+  <p id="337">
+    <text>
+        [p]Nem találsz titkos átjárókat, de amint a falakat tapogatod, egy kattanást hallasz. Elszédülsz és a földre rogysz. Amikor magadhoz térsz, a környezet különösnek tűnik.[/p]
+    </text>
+    <next id="267"></next>
+  </p>
+  <p id="54">
+    <text>
+        [p]Egy észak-déli irányú átjáró északi végénél állsz egy ajtó előtt.[/p]
+    </text>
+    <next id="179">Ha be akarsz menni rajta</next>
+    <next id="308">Ha délnek indulsz</next>
+  </p>
+  <p id="179">
+    <itemCheck type="item" id="4006">
+      <have>
+        <text>
+            [p]Egy hatalmas, négyszög alakú terembe jutottál. A földön szanaszéjjel törött cserépdarabok hevernek. Egy nagyméretű agyagedény azonban érintetlen és tiszta, átlátszó folyadék van benne. A helyiség ettől eltekintve üres. Úgy döntesz, távozol innen.[/p]
+        </text>
+        <next id="54"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Egy hatalmas, négyszög alakú terembe jutottál. A földön szanaszéjjel törött cserépdarabok hevernek. Egy nagyméretű agyagedény azonban érintetlen és tiszta, átlátszó folyadék van benne. Egy teli tál aranypénz van mellette. Miután beléptél, az ajtó becsapódik mögötted, sarkon fordulsz, és egy különös, félig ember, félig bika alakú teremtményt pillantasz meg, amint rád bámul. Egy Minotaurusz közeledik óvatosan feléd![/p]
+            [p]Lehajtja fejét, szarvaival célba veszi a mellkasodat, és rohamra lendül. Meg kell küzdened vele![/p]
+            [p]Három Forduló után igyekszel az ajtó közelébe manőverezni, hogy szükség esetén Elmenekülhess.[/p]
+        </text>
+        <fight type="single">
+          <enemy id="54" />
+          <win>
+            <gatherItem id="4006" />
+            <next id="258"></next>
+          </win>
+          <fleeing after="3" />
+          <flee>
+            <next id="54"></next>
+          </flee>
+        </fight>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="258">
+    <text>
+        [p]Átválogatod a törött cserépdarabokat, de semmi érdekes nincs köztük. A folyadék kinézésre, szagra és ízre víznek látszik. Az Aranytallér-kupacról kiderül, hogy csalás. [span class="takeItem" data-id="gold" data-amount="8"]Nyolc igazi Aranytallért[/span] találsz a halom tetején (ezeket magaddal viheted), de az alatta lévők csupán festett hamisítványok. Ahogy hozzáérsz a vázához, az lecsúszik és eltörik. Egy [span class="takeItem" data-id="3029" data-amount="1"]vörös színű kulcs[/span] kerül elő, melyet az edény dupla fenekébe rejtettek. Magaddal viheted a kulcsot, melyre a 111-es számot vésték. Pihenhetsz, és ehetsz elemózsiádból, ha akarsz. 2 Szerencse pontot kapsz, amiért legyőzted a Minotauruszt, végül távozol.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <next id="54"></next>
+  </p>
+  <p id="246">
+    <text>
+        [p]Elindulsz délnek egy köves út mentén. Nyugatnak kanyarodik, azután délnek, azután megint nyugatnak, és egyszer csak egy hármas útkereszteződésnél találod magad.[/p]
+    </text>
+    <next id="329">Indulhatsz északnak</next>
+    <next id="180">Tarthatsz nyugat felé</next>
+    <next id="70">Visszamehetsz keletre</next>
+  </p>
+  <p id="180">
+    <text>
+        [p]Az út előbb nyugatnak tart, azután délnek fordul. Végül meg kell állnod, zsákutcába kerültél.[/p]
+    </text>
+    <next id="70">Ha visszamész a hármas elágazáshoz, indulhatsz keletnek</next>
+    <next id="329">Északnak</next>
+    <next id="22">Vagy átkutathatod a zsákutcát</next>
+  </p>
+  <p id="22">
+    <text>
+        [p]Körültapogatózol titkos ajtók után kutatva, de nem találsz egyet sem. Megállsz, hogy eltöprengj helyzeteden, amikor a mennyezetről gázsugár csap le rád sziszegve. Köhögsz és visszatartod lélegzeted, de nem tudod kitisztítani a tüdőd, térdre csuklasz. Forogni kezd veled a világ, és öntudatlan állapotban a padlóra zuhansz. Mikor magadhoz térsz és körülnézel, ismeretlen helyen találod magad.[/p]
+    </text>
+    <next id="4"></next>
+  </p>
+  <p id="70">
+    <text>
+        [p]Követed a nagy macskakövekkel bontott folyosót keletnek, azután északnak, majd újra keletnek, végül északnak fordulsz, míg végre egy elágazáshoz érsz.[/p]
+    </text>
+    <next id="267"></next>
+  </p>
+  <p id="4">
+    <text>
+        [p]Egy észak-dél irányú folyosón találod magad.[/p]
+    </text>
+    <next id="46">Ha északnak indulsz, ahonnan egy idő után kelet felé kanyarodik el az út</next>
+    <next id="332">Ha dél felé veszed az utad, ahonnan szintén keletnek visz az út, néhány méter megtétele után</next>
+  </p>
+  <p id="329">
+    <text>
+        [p]Nekiindulsz, és egy észak-déli átjáró közepén találod magadat. Az út nyugati falán egy ajtó van, vele szemben egy út keletre vezet. Északra, néhány méternyire egy ajtót veszel észre. Déli irányban egy elágazást látsz. Melyiket választod?[/p]
+    </text>
+    <next id="157">A nyugati falban lévő ajtót?</next>
+    <next id="392">Az ajtót északi irányban?</next>
+    <next id="299">Keletre indulsz?</next>
+    <next id="238">Délre mész?</next>
+  </p>
+  <p id="238">
+    <text>
+        [p]Hármas útkereszteződéshez érkeztél.[/p]
+    </text>
+    <next id="70">Ha keletnek tartasz</next>
+    <next id="180">Ha nyugatra mész</next>
+    <next id="329">Ha északra indulsz</next>
+  </p>
+  <p id="299">
+    <text>
+        [p]Az út egy darabig keletnek halad, de azután északnak fordul. Sokáig mész ebben az irányban.[/p]
+    </text>
+    <next id="260">Ha akarsz, az út mentén kereshetsz titkos átjárókat</next>
+    <next id="359">Vagy egyszerűen folytathatod utad tovább észak felé</next>
+  </p>
+  <p id="260">
+    <text>
+        [p]Nem találsz titkos átjárót.[/p]
+    </text>
+    <next id="359">Ha észak felé haladsz</next>
+    <next id="329">Ha délnek mész</next>
+  </p>
+  <p id="359">
+    <text>
+        [p]Útkereszteződésnél állsz.[/p]
+    </text>
+    <next id="190">Északra indulsz?</next>
+    <next id="385">Nyugatra mész?</next>
+    <next id="94">Délre tartasz?</next>
+    <next id="121">Keletre fordulsz?</next>
+  </p>
+  <p id="190">
+    <text>
+        [p]Egy észak-dél irányú szűk folyosón vagy. Észak felé az út zsákutcába torkollik.[/p]
+    </text>
+    <next id="167">Megvizsgálhatod ezt</next>
+    <next id="359">Vagy feladod és visszamész a kereszteződéshez</next>
+  </p>
+  <p id="167">
+    <text>
+        [p]Egy titkos ajtóra bukkansz. Ha benyitsz, egy kettős átjáró metszéspontjában találod magad. Észak felé egy rövid idő után zsákutcába jutsz, kelet felé pedig a folyosó egy útkereszteződéshez vezet.[/p]
+    </text>
+    <next id="187">Ha át akarsz haladni a titkos ajtón, megteheted</next>
+    <next id="359">De úgy is dönthetsz, hogy nem lépsz be rajta, bezárod az ajtót, és visszamész az úton az elágazásig</next>
+  </p>
+  <p id="94">
+    <text>
+        [p]Mész tovább a folyosón, amely egyenesen délnek tart, azután nyugatnak kanyarodik. Néhány méter után egy hármas elágazáshoz érkezel.[/p]
+    </text>
+    <next id="260">Ha útközben megpróbálkozol titkos átjárók keresésével</next>
+    <next id="329">Ha egyenesen a kereszteződés felé haladsz</next>
+  </p>
+  <p id="121">
+    <text>
+        [p]A folyosó néhány méteren keresztül keletnek tart, azután délnek kanyarodik, majd újra keletnek, és hirtelen véget ér.[/p]
+    </text>
+    <next id="103">Ha átvizsgálod a zsákutcát, ahova kerültél</next>
+    <next id="359">Ha visszamész az elágazáshoz</next>
+  </p>
+  <p id="103">
+    <text>
+        [p]Érzed, amint egy kő megmozdul, és mögötte egy fogantyút találsz.[/p]
+    </text>
+    <next id="252">Ha meghúzod a kart</next>
+    <next id="359">Ha inkább visszamész a keresztúthoz</next>
+  </p>
+  <p id="252">
+    <text>
+        [p]Meghúzod a fogantyút, mire nagy nyikorgással megmozdul előtted a sziklafal és a lábad előtt lévő talaj. Mintha csak egy hatalmas forgóasztalon lennél, megfordulsz tengelyed körül, és végül ott állsz a sziklafal túlsó oldalán egy észak-déli folyosón.[/p]
+    </text>
+    <next id="312">Ha északnak mész</next>
+    <next id="226">Ha délnek</next>
+  </p>
+  <p id="157">
+    <text>
+        [p]Az ajtó egy kelet-nyugati irányú átjáróba nyílik, amely néhány méter után észak felé kanyarodik.[/p]
+    </text>
+    <next id="4">Ha erre indulsz el</next>
+    <next id="329">Ha nem akarsz keresztülmenni az ajtón</next>
+  </p>
+  <p id="46">
+    <text>
+        [p]Egy rövid kelet-nyugat irányú elágazásnál állsz, kelet felé egy ajtó zárja el az utat. Nyugat felé néhány méter után déli irányba kanyarodik az út.[/p]
+    </text>
+    <next id="206">Ha átmész az ajtón</next>
+    <next id="4">Ha a kanyar felé veszed utadat</next>
+  </p>
+  <p id="332">
+    <text>
+        [p]Egy kelet-nyugat irányú folyosó keleti végénél állsz, utadat egy ajtó zárja el. Nyugat felé nézve az út északnak kanyarodik.[/p]
+    </text>
+    <next id="329">Ha akarsz, átmehetsz az ajtón</next>
+    <next id="4">Indulhatsz nyugat fele is</next>
+  </p>
+  <p id="392">
+    <text>
+        [p]Egy észak-déli folyosón vagy. Északra az út egy nagy faajtón vezet át.[/p]
+    </text>
+    <next id="206">Ha erre mész</next>
+    <next id="329">De mehetsz délnek is</next>
+  </p>
+  <p id="206">
+    <text>
+        [p]Belépsz egy hatalmas, négyszögletű szobába. Közepén egy ősz hajú Öreg ember üldögél egy íróasztalnál, mely papírokkal és különféle pergamenekkel van borítva. Az Öreg kezében hosszú lúdtoll. A falak a padlótól a mennyezetig be vannak polcozva, rajtuk könyvek ezrei sorakoznak. Belépsz, és az Öreg felpillant. Vajon felismer-e téged?[/p]
+    </text>
+    <itemCheck type="item" id="4007">
+      <have>
+        <next id="284"></next>
+      </have>
+      <dontHave>
+        <gatherItem id="4007" />
+        <next id="341"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="341">
+    <text>
+        [p]Belépsz a szobába, és az öregember rád mered.[/p]
+    </text>
+    <next id="46">Mentegetőzhetsz, próbálod elmagyarázni, hogy eltévesztetted az utat, és távozhatsz a nyugati ajtón</next>
+    <next id="392">Vagy a déli ajtón</next>
+    <next id="220">Esetleg megpróbálkozhatsz udvariasan elbeszélgetni vele</next>
+    <next id="191">Vagy követelheted, hogy válaszoljon kérdéseidre</next>
+  </p>
+  <p id="220">
+    <text>
+        [p]Felbőszül vidámságod láttán. Két kezét meglengeti a levegőben, néhány különös szótagot mormol, azután rád mutat. Érzed, hogy a fejed kóvályogni kezd, és elveszíted az eszméletedet. Amikor magadhoz térsz, egy zsákutcában vagy.[/p]
+    </text>
+    <next id="171"></next>
+  </p>
+  <p id="284">
+    <text>
+        [p]Már megint te vagy? - szól az Útvesztő Irányítója, nyilván dühös, amiért háborgatod. - Zavarsz az összpontosításban. Takarodj innen! - Elkezded magyarázni, hogy csupán egy tévedés miatt kerültél újra ide, de ahogy kinyitod a szád, az Öreg egyetlen fagyos pillantása hallgatásra késztet. Úgy döntesz, ráhagyod.[/p]
+    </text>
+    <next id="46">Távozhatsz a nyugati ajtón</next>
+    <next id="392">Vagy a délin</next>
+  </p>
+  <p id="191">
+    <text>
+        [p]Sikoltozva bújik be az asztal mögé. Rettentően megijedt agresszív viselkedésedtől. Vékony, vinnyogó hangon magyarázza, hogy ő csupán Zagor Labirintusának megbízott felügyelője. Beszélsz hozzá, és újfent megnyugtatod, nem esik bántódása. Végül kimerészkedik a pult mögül. Leül, s amint bizalma visszatér, furcsa dolog történik. Egyre határozottabb és magabiztosabb lesz. Egy könyv felé fordul, ujjával rámutat, s a könyv magától lecsusszan a polcról, odaszáll elé az asztalra. Rá kell ébredned, valamiféle varázslóval van dolgod, még az is lehet, ő a Labirintus Ura, és személyesen jött, hogy felderítse, ki is vagy. Megkérded, merre vezet kifelé az út a Labirintusból. - Menj ki a déli ajtón - mondja -‚ jobb kéz felől van egy ajtó, menj el mellette egészen addig, amíg tudsz. Ott fordulj balra. Haladj át az első útkereszteződésen, majd a következőnél fordulj balra.[/p]
+    </text>
+    <next id="308">Ha megfogadod a tanácsát, távozol a déli ajtón keresztül, és elmész a második útkereszteződésig</next>
+    <next id="392">Ha a déli ajtón lépsz ki, de utána a saját fejed után mész</next>
+    <next id="46">Ha a nyugati ajtón mész ki</next>
+  </p>
+  <p id="385">
+    <text>
+        [p]Néhány lépést teszel nyugat felé, azután az út északnak kanyarodik. Kicsivel odébb egy elágazáshoz érsz. Északi irányban az út hamarosan zsákutcába torkollik.[/p]
+    </text>
+    <next id="114">Mehetsz dél felé</next>
+    <next id="297">Vagy nyugatnak</next>
+    <next id="398">Vagy északi irányba</next>
+  </p>
+  <p id="398">
+    <text>
+        [p]Körültapogatod a sziklafalat az út végén. Egy kő elmozdul, és egy gomb tűnik elő, rajta egy karika.[/p]
+    </text>
+    <next id="364">Ha megnyomod a gombot</next>
+    <next id="12">Ha meghúzod a karikát</next>
+  </p>
+  <p id="364">
+    <text>
+        [p]Amint megnyomod a gombot, a kicsiny kőajtó kinyílik. Gyorsan kell döntened, mert az ajtó egy percen belül magától becsapódik.[/p]
+    </text>
+    <next id="256">Ha úgy döntesz, hogy inkább továbbmész az útkereszteződéshez</next>
+    <next id="373">Ha bemész az ajtón</next>
+  </p>
+  <p id="12">
+    <text>
+        [p]Amint meghúzod az ajtónyitó gombot, fülsiketítő csengő-bongó hang tölti be a folyosót. Kétségbeesetten becsapod az ajtót, hogy a riasztó elhallgasson, de az már megtette a dolgát. Hallod a lábdobogást, amint feléd rohan valaki a folyosón.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <fight type="single">
+          <enemy id="91" />
+        </fight>
+      </result>
+      <result max="2" min="2">
+        <fight type="single">
+          <enemy id="92" />
+        </fight>
+      </result>
+      <result max="3" min="3">
+        <fight type="single">
+          <enemy id="93" />
+        </fight>
+      </result>
+      <result max="4" min="4">
+        <fight type="single">
+          <enemy id="94" />
+        </fight>
+      </result>
+      <result max="5" min="5">
+        <fight type="single">
+          <enemy id="95" />
+        </fight>
+      </result>
+      <result max="6" min="6">
+        <fight type="single">
+          <enemy id="96" />
+        </fight>
+      </result>
+    </random>
+    <next id="256">Ha visszafordulsz az elágazáshoz</next>
+    <next id="364">Ha megpróbálod megnyomni az ajtónyitó gombot</next>
+  </p>
+  <p id="256">
+    <text>
+        [p]Egy útkereszteződésnél vagy. Északi irányba az út hamarosan zsákutcába torkollik.[/p]
+    </text>
+    <next id="398">Mehetsz észak felé</next>
+    <next id="297">Indulhatsz nyugatnak</next>
+    <next id="114">Vagy délnek</next>
+  </p>
+  <p id="114">
+    <text>
+        [p]Az út dél felé halad, azután keletnek fordul, végül egy kereszteződésnél véget ér.[/p]
+    </text>
+    <next id="359"></next>
+  </p>
+  <p id="297">
+    <text>
+        [p]Egy kelet-nyugat irányú folyosón vagy, mindkét végén T alakú elágazás.[/p]
+    </text>
+    <next id="150">Ha nyugat felé mész</next>
+    <next id="256">Ha keletnek indulsz</next>
+  </p>
+  <p id="150">
+    <text>
+        [p]Egy elágazásnál vagy, az út háromfelé vezet.[/p]
+    </text>
+    <next id="222">Északnak fordulsz?</next>
+    <next id="297">Keletnek indulsz?</next>
+    <next id="133">Délre tartasz?</next>
+  </p>
+  <p id="133">
+    <text>
+        [p]Egy észak-dél irányú folyosón vagy, amely zsákutcában végződik. Épp a sziklafalat tanulmányozod, hogy van-e rajta valami érdekes, amikor egy meglazult szikladarab felülről a fejedre zuhan. Bár az ütés nem volt különösebben erős, érzed, hogy szédülsz. Igyekszel az öntudatodnál maradni, de képtelen vagy rá. A földre zuhansz. Amikor kinyitod a szemedet, egy elágazásnál találod magad.[/p]
+    </text>
+    <next id="52"></next>
+  </p>
+  <p id="222">
+    <text>
+        [p]Egy hosszú folyosón haladsz előre, az út éles hajtűkanyarral ér véget. Egy kelet-nyugati irányú folyosó mentén kelet felé egy keresztúthoz érsz.[/p]
+    </text>
+    <next id="85"></next>
+  </p>
+  <p id="85">
+    <text>
+        [p]Keresztúthoz érkeztél.[/p]
+    </text>
+    <next id="106">Ha északnak mész</next>
+    <next id="373">Ha délnek mész</next>
+    <next id="318">Ha keletnek mész</next>
+    <next id="59">Ha nyugatnak mész</next>
+  </p>
+  <p id="373">
+    <text>
+        [p]Egy észak-déli átjáró déli végénél vagy egy zsákutcában. Ha elindulsz észak felé, egy útkereszteződéshez fogsz érni.[/p]
+    </text>
+    <next id="85"></next>
+  </p>
+  <p id="59">
+    <text>
+        [p]Már jó ideje nyugat felé haladsz, aztán az út észak felé tesz egy hajtűkanyart, majd egyenesen déli irányba tart, végül egy háromirányú elágazáshoz ér.[/p]
+    </text>
+    <next id="150"></next>
+  </p>
+  <p id="226">
+    <text>
+        [p]Csak rövid ideig mész délnek, mert egy keresztúthoz érkezel.[/p]
+    </text>
+    <next id="267"></next>
+  </p>
+  <p id="318">
+    <text>
+        [p]Az átjáró zsákutcában ér véget.[/p]
+    </text>
+    <next id="85">Visszatérhetsz az elágazáshoz</next>
+    <next id="228">Vagy kereshetsz titkos átjárókat</next>
+  </p>
+  <p id="228">
+    <text>
+        [p]Nem találsz titkos átjárókat. Óvatos vagy, és nem csapsz túl nagy zajt, nehogy magadra vond valami kóbor lény figyelmét. Megállsz és hallgatózol, de csend van. Visszatérsz a keresztúthoz.[/p]
+    </text>
+    <next id="85"></next>
+  </p>
+  <p id="106">
+    <text>
+        [p]A folyosó már jó ideje észak felé halad. Ha akarod, megpihenhetsz útközben, s elfogyaszthatod Élelmiszerkészleted egy adagját. Az út később nyugatra kanyarodik és szűkülni kezd. Egy kis sziklaboltívhez érsz, le kell görnyedned, hogy átférj alatta. A boltív másik oldalán megállsz, és körülnézel. Hatalmas barlangba jutottál, a vége távoli homályba vész. A barlang egy részét természetes fény világítja meg, mely egy, a tetején lévő lyukon sugárzik be. Semerre sem látsz kijáratot. [/p]
+        [p]Amint körülvilágítasz lámpásoddal, morajlást hallasz. Fakó fény parázslik fel a sötétségben. Hirtelen egy lángcsóva csap fel a barlang mélyéből, hajszálnyira kerül el téged, és leperzseli a falon burjánzó mohákat. Földre veted magad, és felpillantasz. Egy hatalmas Sárkány oson a sötétségből feléd. Orrcimpáiból füst gomolyog. Pikkelyes vörös bőre olajosan fénylik. A bestia lehet vagy tizenöt méter hosszú! [alt]Hogyan akarod megtámadni a Sárkányt?[/alt][/p]
+    </text>
+    <next id="152" pos="1" singleChoiceText="Kardot rántasz, és felkészülsz a támadásra.">Kardot rántasz, és felkészülsz a támadásra?</next>
+    <itemCheck type="section" id="296">
+      <have>
+        <next id="26" pos="2">Hirtelen végiggondolod, mi mást is tehetnél a Sárkány ellen?</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="126">
+    <empty />
+  </p>
+  <p id="26">
+    <text>
+        [p]Eszedbe jut Di Maggio kicsi, bőrkötéses könyve, és halkan elmondod a benne található varázsigét. Hangosan rákiáltasz a Sárkányra, mire ő feltápászkodik. Felkapja a fejét, és gyanakvóan bámul rád. Egy követ hajítasz a fejéhez, de a szikla visszapattan az orráról. A bestia mérgesen felhördül, nagyokat zihál, a torkából morajló hang hallatszik. A Sárkány nagyot fúj, és a fogai között egy újabb tűzgolyó kezd növekedni. Már felkészültél erre, és amikor a lángoló gömb felbukkan a szájában, rákiáltasz.[/p]
+        [p class="handwritten"]„Ekil Erif[br/]
+        Ekam Erif[br/]
+        Erif Erif[br/]
+        Di Maggio”[/p]
+        [p]A tűzgolyó szétpukkad. A Sárkány kétségbeesett üvöltés közben próbálja lerázni orráról a lángokat. De a tüzet nem tudja eloltani, fájdalmában sikoltozva megfordul, és fejét rázva beleveti magát a sötétségbe.[/p]
+    </text>
+    <next id="371"></next>
+  </p>
+  <p id="371">
+    <text>
+        [p]Jelenleg biztonságban vagy, átvizsgálod a barlangot, és találsz egy utat, amely továbbmegy nyugat felé. Ehetsz és pihenhetsz is, mielőtt folytatnád utadat. 3 Szerencse pontot kapsz a Sárkány legyőzéséért.[/p]
+    </text>
+    <canEat />
+    <add amount="3" to="luck" />
+    <next id="274"></next>
+  </p>
+  <p id="152">
+    <text>
+        [p]Küzdjél meg a Sárkánnyal![/p]
+    </text>
+    <fight type="single">
+      <enemy id="55" />
+    </fight>
+    <next id="371"></next>
+  </p>
+  <p id="274">
+    <text>
+        [p]Egy hosszú, szűk folyosón át távozol a barlangból. Pár száz méter után egy hatalmas, fából készült ajtóhoz érsz, amely egy kissé nyitva van. Jobban kinyitod, és bedugod a fejed, hogy megtudd, mi is van benn a szobában. Egy apró öregember üldögél egy asztalnál, és egy csomag kártyával játszadozik. Teljesen ártalmatlan, jótét léleknek látszik ősz szakállával és hajával. Mit fogsz csinálni?[/p]
+    </text>
+    <next id="324">Kardot rántva berontasz az ajtón, hogy meglepjed az Öreget?</next>
+    <next id="356">Kopogsz az ajtón, belepsz, és udvariasan üdvözlöd?</next>
+    <next id="98">Négykézlábra ereszkedve megpróbálsz észrevétlenül bemászni a szobába?</next>
+  </p>
+  <p id="356">
+    <text>
+        [p]Az öregember rád néz, fogadja köszönésedet, és hellyel kínál. Leülsz az asztalhoz, és észreveszed, merőn bámul. Tekintete hipnotikussá válik, de még idejében észleled, és elkapod a szemed róla. Szólásra nyitja száját, és meglepetésedre egy aggastyán hangja helyett egy erőteljes férfihangot visszhangzik a szoba, úgy, mintha maguk a falak szólaltak volna meg. Újra az öregre nézel, és látod) amint a szemed láttára alakul át. Termete megnő, cafatokká szakadt rongyai aranyból és bársonyból készült palásttá válnak. Fekete szemét rád emeli. Már várt rád...[/p]
+    </text>
+    <next id="358"></next>
+  </p>
+  <p id="358">
+    <text>
+        [p]Ebben a csatában szükséged lesz erőd és ravaszságod minden tartalékára. Ellenfeled eltűnt, és most a szoba túlsó végében bukkan fel egy ajtó előtt, amin két lakat van. Hogyan közelíted meg?[/p]
+    </text>
+    <next id="142">Kardodat szorosan megmarkolva előrenyomulsz?</next>
+    <next id="105">Átnézed Felszerelésed, valami más fegyvert keresve?</next>
+    <next id="389">Körülnézel a szobában, támadásra vagy védekezésre alkalmas eszközt kutatván?</next>
+  </p>
+  <p id="98">
+    <text>
+        [p]Amint bekúszol a szobába, egy hang dörren rád: - Légy üdvözölve, bajnok! Már vártam rád.[/p]
+        [p]Megállsz, körülnézel és feltápászkodsz. A kis öregember teljesen megváltozott. Már nem olyan öreg, egyáltalán nem ősz, és tiszteletet parancsoló magasságúra nőtt. A szeme álnok és fekete, tekintete könyörtelen.[/p]
+    </text>
+    <next id="358"></next>
+  </p>
+  <p id="324">
+    <text>
+        [p]Amint berobbansz az ajtón, az Öreg rád néz, de a legkevésbé sem zavartatja magát. Hirtelen eltűnik, majd újra megjelenik. Amint sarkon fordulsz, hogy szemmel tartsd, felkacag, de nem egy öregember reszketeg hangján, ez egy sokkal fiatalabb férfi zengő kacaja. Újfent eltűnik, és egy másik sarokban jelenik meg, rád bámul, és gonosz kacagásával gúnyol téged. Épp idejében fordulsz meg, hogy lásd, újra eltűnik. Ez alkalommal a levegőben jelenik meg feletted, és lassan ereszkedik le rád. Ahogy közeledik, elborzadsz a nézésétől.[/p]
+    </text>
+    <next id="358"></next>
+  </p>
+  <p id="142">
+    <text>
+        [p]Zúgó hangon felkiált: - Szegény bolond! Valóban azt hitted, hogy hitvány fegyvereddel szembeszegülhetsz az én erőmmel? (Te közben eltökélten támadsz.) Ha verekedni akarsz, hát verekedjünk meg, Idegen, de számodra ez lesz az utolsó küzdelem! - és ezekkel a szavakkal eltűnik, majd megjelenik a hátad mögött. Megperdülsz, hogy szembekerülj vele, és a harc elkezdődik. De ez a csata élethalálharc. Most nem lehet elmenekülni.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="56" />
+    </fight>
+    <next id="396"></next>
+  </p>
+  <p id="396">
+    <text>
+        [p]Legyőzted a Varázslót, már közel vagy célodhoz. Az ajtóhoz lépsz, amin két lakat lóg. Kulcsok nincsenek sehol.[/p]
+    </text>
+    <itemCheck type="items"
+      id="(3002 and (3008 or 3009 or 3011 or 3020 or 3029)) or (3008 and (3009 or 3011 or 3020 or 3029)) or (3009 and (3011 or 3020 or 3029)) or (3011 and (3020 or 3029)) or (3020 and 3029)">
+      <have>
+        <text>
+            [p]Visszamész a hátizsákodhoz két kulcsért és a lakatokba illeszted őket. Elfordulnak, kinyitod az ajtót, és körülpillantasz.[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [p]Megkíséreled betörni az ajtót, de ez fel fogja emészteni szinte teljes Életerődet. Vonj le 5-öt Életerődből, és lépj be a szobába.[/p]
+        </text>
+        <add amount="-5" to="stamina" />
+      </dontHave>
+    </itemCheck>
+    <next id="242"></next>
+  </p>
+  <p id="389">
+    <test against="luck">
+      <success>
+        <next id="289"></next>
+      </success>
+      <failure>
+        <next id="112"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="112">
+    <text>
+        [p]Semmit sem látsz a szobában, ami a küzdelem során a hasznodra lehetne. Mit teszel?[/p]
+    </text>
+    <next id="142">Kirántod a kardodat, és fogcsikorgatva támadásba lendülsz?</next>
+    <next id="105">Átkutatod a hátizsákodat valami használható fegyverért?</next>
+  </p>
+  <p id="289">
+    <text>
+        [p]Őrjöngve nézel körül a szobában, de semmit sem látsz, ami a segítségedre lehetne. Tekinteted hirtelen megállapodik egy csomag kártyán, amivel az Öreg akkor játszadozott, amikor beléptél. Eszedbe jutnak azok a szóbeszédek és történetek, melyeket a falusiak meséltek neked! A Varázsló ereje, a kártyáiban rejlik. A Varázsló is észreveszi érdeklődésed a pakli kártya iránt, és mindketten az asztal felé rohantok. Te érsz oda előbb. - Hagyd békén azokat! - sikoltja - vagy kivívod magad ellen legsötétebb haragomat! - Te hátralépsz, és lámpásod lángjával meggyújtod az egyik lapot. A Varázsló vadul felkiált, és elkezd könyörögni, hogy ne nyúlj a kártyákhoz. Az egyik lapot a másik után gyújtod meg, miközben a Varázsló alakja fogyni kezd. Amint az utolsó kártya is elhamvadt, egy megtört ember áll előtted. - A könyvem! - hörgi, miközben megpróbálja a szemközti falban lévő ajtót kinyitni. Karddal a kezedben odarohansz, és rátámadsz. Küzdj meg vele![/p]
+    </text>
+    <fight type="single">
+      <enemy id="57" />
+    </fight>
+    <next id="396"></next>
+  </p>
+  <p id="105">
+    <text>
+        [p]Átkutatod a hátizsákodat[alt]. Mit próbálsz meg használni?[/alt][/p]
+    </text>
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="39" pos="1">A Láthatatlanság Italát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3010">
+      <have>
+        <next id="382" pos="2">A Küklopsz Szemét?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3006">
+      <have>
+        <next id="368" pos="3">Egy darab sajtot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3007">
+      <have>
+        <next id="194" pos="4">Egy íjat ezüstnyíllal?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3014">
+      <have>
+        <next id="215" pos="5">Egy Y alakú fadarabot?</next>
+      </have>
+    </itemCheck>
+    <next id="142" pos="6" singleChoiceText=", de nem találsz benne semmi használhatót. Kirántod a kardodat, és fogcsikorgatva támadásba lendülsz.">Semmit, inkább kirántod a kardodat, és fogcsikorgatva támadásba lendülsz?</next>
+  </p>
+  <p id="194">
+    <text>
+        [p]Meghúzod az íjat, és lősz, de kétségbeesve látod, hogy a nyílvessző, amely egyenesen felé száll, néhány centiméterrel a mellkasa előtt megáll és a padlóra hull. Ellenfeled felnéz, és gonosz, kárörvendő vigyorral pillant rád. Mit teszel?[/p]
+    </text>
+    <loseItem id="3007" />
+    <next id="142">Kardot rántasz, és támadásba lendülsz?</next>
+    <next id="105">Megpróbálsz hátizsákodból valami más fegyvert választani?</next>
+  </p>
+  <p id="215">
+    <text>
+        [p]Hátizsákodba nyúlsz az Y alakú fáért, és megdöbbenve látod, hogy kettéhasadt, kalandjaid során eltörött. Mit csinálsz?[/p]
+    </text>
+    <loseItem id="3014" amount="5" />
+    <next id="142">Kardot rántasz és támadásra lendülsz?</next>
+    <next id="105">Megpróbálsz valami mást keresni a hátizsákban?</next>
+  </p>
+  <p id="368">
+    <text>
+        [p]A Varázsló kacagása visszhangzik a teremben. - Majd elválik, kettőnk közül ki az egér! - kiáltja, és kezét a levegőbe emeli. Pattint egyet az ujjával, s tenyeréből kék lángcsóva csap le rád. 3 ÉLETERŐ pontot veszítesz. Valami mást kell megpróbálnod.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <next id="142">Kardot rántasz és rátámadsz?</next>
+    <next id="105">Keresel egy alkalmas eszközt a hátizsákodban?</next>
+  </p>
+  <p id="382">
+    <text>
+        [p]Felmutatod a Küklopsz Szemét, s a drágakő tompán izzani kezd. Rámutatsz a kővel, mire a Varázsló sikoltozni kezd. Egy sarokba hátrál, mikor az ékkő egy fénysugarat lövell ki. Ahogy a fény rávetődik ellenfeledre, az a földre hanyatlik, és figyelemre méltó változáson megy keresztül. Zsugorodni kezd, és a szemed láttára öregszik meg. Bőre ráncossá válik, majd megrepedezik, hamarosan csak egy alaktalan kupac marad a testéből. Néhány perc múlva a drágakő izzása abbamarad. Most már megközelíted az élettelen rongycsomót, mindössze ennyi maradt belőle.[/p]
+    </text>
+    <next id="396"></next>
+  </p>
+  <p id="39">
+    <text>
+        [p]Ellenfeled megdöbbenve veszi észre, hogy eltűntél előle, de azért szeméhez emeli kezét, és pillantásával alaposan átkutatja a szobát. Érzi jelenlétedet, de nem tudja megállapítani, pontosan hol vagy. Kihúzod kardod, és rátámadsz. Elrántja a fejét, és beleszimatol a levegőbe. Távolról kell megküzdened vele, mert ha kezét rád teszi, láthatatlanságod már nem jelent tovább előnyt.[/p]
+        [p]Amíg láthatatlan maradsz, 2 pontot adhatsz hozzá kockával vetett Támadóerődhöz.[/p]
+        [p]Minden sikeres támadásod 3 pontnyit pusztít a Varázsló Életerejéből, mivel ő nem láthat téged, és így nem tudja magát megfelelően védeni.[/p]
+        [p]Minden alkalommal, ha sebet ejt rajtad, dobj egy kockával. Ha a szám páratlan, „átlagos sebesülés” ért, ha sikerült 6-ost dobnod, kivédted a csapást, és nem sebesültél meg, ha 2-t vagy 4-et dobsz, csak 1 pont értékű sebesülés ért.[/p]
+        [p]Elhatározod, hogy megküzdesz vele.[/p]
+    </text>
+    <loseItem id="3003" />
+    <gatherItem id="4001" amount="2" />
+    <fight type="single">
+      <enemy id="58" />
+    </fight>
+    <next id="396"></next>
+  </p>
+  <p id="242">
+    <text>
+        [p]Az ajtó kinyílik, és egy kicsi, homályos kamra tárul a szemed elé. A falakon arany- és ezüstcsipkékkel gondosan díszített függönyök lógnak. Az egyik sarokban magányos lángnyelv lobog, fényét a középen álló alacsony asztalra veti, amin hatalmas láda fekszik. Odalépsz, hogy megvizsgáld, de váratlanul, körös-körül, mindenfelől (de mégsem meghatározható helyről) titokzatos hang csap fel, és betölti a szobát. Olyan, mint a gyülekező viharfelhők között felharsanó mennydörgés.[/p]
+        [p]Megközelíted a ládát, és látod, hogy három zár tartja szorosan lezárva. Ahogy közelítesz, a hang egyre erősödik. Mit teszel?[/p]
+    </text>
+    <next id="379">Kardoddal rácsapsz a ládára, és megpróbálod széthasítani, hogy kinyíljon?</next>
+    <next id="139">Átkutatod a felszerelésedet, hátha találsz olyan kulcsokat, melyek nyitják a zárakat?</next>
+  </p>
+  <p id="379">
+    <text>
+        [p]Nekikészülsz, hogy a ládára sújts, miközben a mennydörgő zaj egyre erősödik. A magasba emeled a kardod, de amint a penge megközelíti a dobozt, egy hangrobbanás süketít meg. A helyiség egyik sarkából villám csap ki, átcikázik a levegőn, egyenest a kardmarkolatnak, s te döbbenten támolyogsz keresztül a szobán.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Kardod darabokban hever ugyan a földön, de sikerült elengedned a markolatot, mielőtt a villám belecsapott volna. Kereshetsz kulcsokat a hátizsákodban.[/p]
+        </text>
+        <loseItem id="equippedWeapon" />
+        <next id="139"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Elszenesedett maradványaid egy kis fekete körvonalat képeznek a padlón. Legközelebb meg ne próbálj rácsapni a ládára![/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="139">
+    <text>
+        [p]Kalandozásod során különféle kulcsokra akadtál, néhányat magadhoz vettél belőlük. Most három kulcsot is kipróbálhatsz, hogy nyitják-e a ládán lévő zárakat.[/p]
+        [p class="failedWithKeys"]Kalandod itt véget ér. Leülsz a ládára, és sírva fakadsz, hogy újra át kell kutatnod az egész hegyet a kulcsokért.[/p]
+    </text>
+    <itemCheck type="section" id="174">
+      <dontHave>
+        <itemCheck type="items" id="3002 and 3008 and 320">
+          <have>
+            <next id="174">Ha a 9-es, 66-os és 99-es kulcsokkal próbálkoznál</next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="186">
+      <dontHave>
+        <itemCheck type="items" id="3008 and (3011 or 3029) and 3020">
+          <have>
+            <next id="186">Ha a 9-es, 66-os és 111-es kulcsokkal próbálkoznál</next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="200">
+      <dontHave>
+        <itemCheck type="items" id="3008 and 3009 and 3020">
+          <have>
+            <next id="200">Ha a 9-es, 66-os és 125-ös kulcsokkal próbálkoznál</next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="219">
+      <dontHave>
+        <itemCheck type="items" id="3002 and 3008 and (3011 or 3029)">
+          <have>
+            <next id="219">Ha a 9-es, 99-es és 111-es kulcsokkal próbálkoznál</next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="233">
+      <dontHave>
+        <itemCheck type="items" id="3002 and 3008 and 3009">
+          <have>
+            <next id="233">Ha a 9-es, 99-es és 125-ös kulcsokkal próbálkoznál</next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="231">
+      <dontHave>
+        <itemCheck type="items" id="3011 and 3029 and 3008">
+          <have>
+            <next id="231">Ha a 9-es és a két 111-es kulccsal próbálkoznál</next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="245">
+      <dontHave>
+        <itemCheck type="items" id="3008 and 3009 and (3011 or 3029)">
+          <have>
+            <next id="245">Ha a 9-es, 111-es és 125-ös kulcsokkal próbálkoznál</next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="276">
+      <dontHave>
+        <itemCheck type="items" id="3002 and 3020 and (3011 or 3029)">
+          <have>
+            <next id="276">Ha a 66-os, 99-es és 111-es kulcsokkal próbálkoznál</next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="290">
+      <dontHave>
+        <itemCheck type="items" id="3002 and 3009 and 3020">
+          <have>
+            <next id="290">Ha a 66-os, 99-es és 125-ös kulcsokkal próbálkoznál</next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="288">
+      <dontHave>
+        <itemCheck type="items" id="3011 and 3029 and 3020">
+          <have>
+            <next id="288">Ha a 66-os és a két 111-es kulccsal próbálkoznál</next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="302">
+      <dontHave>
+        <itemCheck type="items" id="3009 and (3011 or 3029) and 3020">
+          <have>
+            <next id="302">Ha a 66-os, 111-es és 125-ös kulcsokkal próbálkoznál</next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="321">
+      <dontHave>
+        <itemCheck type="items" id="3011 and 3029 and 3002">
+          <have>
+            <next id="321">Ha a 99-es és a két 111-es kulccsal próbálkoznál</next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="335">
+      <dontHave>
+        <itemCheck type="items" id="3002 and 3009 and (3011 or 3029)">
+          <have>
+            <next id="335">Ha a 99-es, 111-es és 125-ös kulcsokkal próbálkoznál</next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="347">
+      <dontHave>
+        <itemCheck type="items" id="3011 and 3029 and 3009">
+          <have>
+            <next id="347">Ha a két 111-es és a 125-ös kulccsal próbálkoznál</next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="198">
+    <empty />
+  </p>
+  <p id="233">
+    <text>
+        [p]Az egyik kulcs nyitja a zárat, a másik kettőt viszont nem tudod elfordítani. Amint erőlködsz, kétszer halkan kattan valami, azután sivító hang hallatszik, és a láda két kis dárdát lő ki rád. Hátraugrasz, hogy elkerüljed őket, de bevered a fejed a mögötted lévő falba és öntudatlanul a földre zuhansz.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]A hajítódárdák elkerülnek, és zúgó fejjel magadhoz térsz, de 2 ÉLETERŐ pontot vesztesz.[/p]
+            [p]Megpróbálkozhatsz újabb kulcskombinációkkal (ne feledd, csak egy kulcsod volt jó).[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="139"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A dárdák eltalálnak, és sohasem nyered vissza eszméletedet.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="186">
+    <text>
+        [p]Az egyik kulcs nyitja a zárat, a másik kettőt viszont nem tudod elfordítani. Amint erőlködsz, kétszer halkan kattan valami, azután sivító hang hallatszik, és a láda két kis dárdát lő ki rád. Hátraugrasz, hogy elkerüljed őket, de bevered a fejed a mögötted lévő falba és öntudatlanul a földre zuhansz.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]A hajítódárdák elkerülnek, és zúgó fejjel magadhoz térsz, de 2 ÉLETERŐ pontot vesztesz.[/p]
+            [p]Megpróbálkozhatsz újabb kulcskombinációkkal (ne feledd, csak egy kulcsod volt jó).[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="139"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A dárdák eltalálnak, és sohasem nyered vissza eszméletedet.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="302">
+    <text>
+        [p]Az egyik kulcs nyitja a zárat, a másik kettőt viszont nem tudod elfordítani. Amint erőlködsz, kétszer halkan kattan valami, azután sivító hang hallatszik, és a láda két kis dárdát lő ki rád. Hátraugrasz, hogy elkerüljed őket, de bevered a fejed a mögötted lévő falba és öntudatlanul a földre zuhansz.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]A hajítódárdák elkerülnek, és zúgó fejjel magadhoz térsz, de 2 ÉLETERŐ pontot vesztesz.[/p]
+            [p]Megpróbálkozhatsz újabb kulcskombinációkkal (ne feledd, csak egy kulcsod volt jó).[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="139"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A dárdák eltalálnak, és sohasem nyered vissza eszméletedet.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="245">
+    <text>
+        [p]Az egyik kulcs nyitja a zárat, a másik kettőt viszont nem tudod elfordítani. Amint erőlködsz, kétszer halkan kattan valami, azután sivító hang hallatszik, és a láda két kis dárdát lő ki rád. Hátraugrasz, hogy elkerüljed őket, de bevered a fejed a mögötted lévő falba és öntudatlanul a földre zuhansz.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]A hajítódárdák elkerülnek, és zúgó fejjel magadhoz térsz, de 2 ÉLETERŐ pontot vesztesz.[/p]
+            [p]Megpróbálkozhatsz újabb kulcskombinációkkal (ne feledd, csak egy kulcsod volt jó).[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="139"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A dárdák eltalálnak, és sohasem nyered vissza eszméletedet.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="290">
+    <text>
+        [p]Az egyik kulcs nyitja a zárat, a másik kettőt viszont nem tudod elfordítani. Amint erőlködsz, kétszer halkan kattan valami, azután sivító hang hallatszik, és a láda két kis dárdát lő ki rád. Hátraugrasz, hogy elkerüljed őket, de bevered a fejed a mögötted lévő falba és öntudatlanul a földre zuhansz.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]A hajítódárdák elkerülnek, és zúgó fejjel magadhoz térsz, de 2 ÉLETERŐ pontot vesztesz.[/p]
+            [p]Megpróbálkozhatsz újabb kulcskombinációkkal (ne feledd, csak egy kulcsod volt jó).[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="139"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A dárdák eltalálnak, és sohasem nyered vissza eszméletedet.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="174">
+    <text>
+        [p]Az egyik kulcs nyitja a zárat, a másik kettőt viszont nem tudod elfordítani. Amint erőlködsz, kétszer halkan kattan valami, azután sivító hang hallatszik, és a láda két kis dárdát lő ki rád. Hátraugrasz, hogy elkerüljed őket, de bevered a fejed a mögötted lévő falba és öntudatlanul a földre zuhansz.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]A hajítódárdák elkerülnek, és zúgó fejjel magadhoz térsz, de 2 ÉLETERŐ pontot vesztesz.[/p]
+            [p]Megpróbálkozhatsz újabb kulcskombinációkkal (ne feledd, csak egy kulcsod volt jó).[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="139"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A dárdák eltalálnak, és sohasem nyered vissza eszméletedet.[/p]
+        </text>
+        <death />
+      </failure>
+    </test>
+  </p>
+  <p id="182">
+    <empty />
+  </p>
+  <p id="219">
+    <text>
+        [p]Két kulcs pontosan beleillik a zárakba, de a harmadik nem. Alig tudsz félreugrani, amikor a ládából áttetsző folyadék lövell ki. Alig hibázott el, de még így is veszítesz 2 ÉLETERŐ pontot, mivel a folyadék mérges gőzt bocsát ki magából, amitől köhögsz és fulladozol.[/p]
+        [p]Visszalépsz a ládához, és egy másik hármas kulcskombinációval próbálkozol meg.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="139"></next>
+  </p>
+  <p id="288">
+    <text>
+        [p]Két kulcs pontosan beleillik a zárakba, de a harmadik nem. Alig tudsz félreugrani, amikor a ládából áttetsző folyadék lövell ki. Alig hibázott el, de még így is veszítesz 2 ÉLETERŐ pontot, mivel a folyadék mérges gőzt bocsát ki magából, amitől köhögsz és fulladozol.[/p]
+        [p]Visszalépsz a ládához, és egy másik hármas kulcskombinációval próbálkozol meg.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="139"></next>
+  </p>
+  <p id="347">
+    <text>
+        [p]Két kulcs pontosan beleillik a zárakba, de a harmadik nem. Alig tudsz félreugrani, amikor a ládából áttetsző folyadék lövell ki. Alig hibázott el, de még így is veszítesz 2 ÉLETERŐ pontot, mivel a folyadék mérges gőzt bocsát ki magából, amitől köhögsz és fulladozol.[/p]
+        [p]Visszalépsz a ládához, és egy másik hármas kulcskombinációval próbálkozol meg.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="139"></next>
+  </p>
+  <p id="231">
+    <text>
+        [p]Két kulcs pontosan beleillik a zárakba, de a harmadik nem. Alig tudsz félreugrani, amikor a ládából áttetsző folyadék lövell ki. Alig hibázott el, de még így is veszítesz 2 ÉLETERŐ pontot, mivel a folyadék mérges gőzt bocsát ki magából, amitől köhögsz és fulladozol.[/p]
+        [p]Visszalépsz a ládához, és egy másik hármas kulcskombinációval próbálkozol meg.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="139"></next>
+  </p>
+  <p id="276">
+    <text>
+        [p]Két kulcs pontosan beleillik a zárakba, de a harmadik nem. Alig tudsz félreugrani, amikor a ládából áttetsző folyadék lövell ki. Alig hibázott el, de még így is veszítesz 2 ÉLETERŐ pontot, mivel a folyadék mérges gőzt bocsát ki magából, amitől köhögsz és fulladozol.[/p]
+        [p]Visszalépsz a ládához, és egy másik hármas kulcskombinációval próbálkozol meg.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="139"></next>
+  </p>
+  <p id="335">
+    <text>
+        [p]Két kulcs pontosan beleillik a zárakba, de a harmadik nem. Alig tudsz félreugrani, amikor a ládából áttetsző folyadék lövell ki. Alig hibázott el, de még így is veszítesz 2 ÉLETERŐ pontot, mivel a folyadék mérges gőzt bocsát ki magából, amitől köhögsz és fulladozol.[/p]
+        [p]Visszalépsz a ládához, és egy másik hármas kulcskombinációval próbálkozol meg.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="139"></next>
+  </p>
+  <p id="321">
+    <text>
+        [p]Az összes kulcsot, az egyiket a másik után bedugod a zárakba, és amint elfordítod őket, halk kattanást hallasz. Valamennyit jól helyezted be! Amint az utolsó kulcs is megfordul, engedni kezd a láda fedele, és felemelheted.[/p]
+    </text>
+    <next id="400"></next>
+  </p>
+  <p id="169">
+    <empty />
+  </p>
+  <p id="400">
+    <text>
+        [p]Kincskeresésed véget ért.[/p]
+        [p]A Tűzhegy Varázsiója nincs többé, és mostantól tied minden kincse. Legalább ezer arany, ékszerek, gyémántok, rubinok és gyöngyök vannak a ládában. Ezek alá rejtve megleled a Varázsló bűbájos könyvét, és a lapokat forgatva rájössz, ez a kötet egymagában sokkal értékesebb, mint az összes kincs. A Tűzhegy összes titka, teremtménye a te uralmad alá került a könyv utasításai szerint.[/p]
+        [p]Ez a könyv végtelen hatalmat biztosít számodra, a faluba vezető utad immár biztonságos. De ha akarod, akár itt is maradhatsz a Tűzhegy Új uraként…[/p]
+    </text>
+    <victory />
+  </p>
+  <p id="200">
+    <text>
+        [p]Kipróbálod a kulcsokat, de egyik sem fordul el. Épp a harmadikkal kísérletezel, amikor kis csappantyúk kattannak, és utolsó emléked, amit észlelsz, hogy fájdalom hasít a testedbe. Három apró hajítódárda fúródik beléd. Gyorsan ható méreg van mindegyik hegyén. Kalandod itt véget ért.[/p]
+        [p]Nehogy még egyszer ezt a kulcskombinációt használd, ha legközelebb erre tévedsz![/p]
+    </text>
+    <death />
+  </p>
+  <p id="387">
+    <empty />
   </p>
 </content>

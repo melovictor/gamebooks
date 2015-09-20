@@ -35,6 +35,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + FightingFantasy.THE_WARLOCK_OF_FIRETOP_MOUNTAIN)
 public class Ff1BookSectionController extends FfBookSectionController {
 
+    private static final int CHOICE_VAMPIRE_GAZE = 3;
+    private static final int CHOICE_CONTINUE_FIGHT = 2;
+    private static final int VAMPIRE_GAZE_BOUNDARY = 11;
     private static final int MAX_BET = 20;
     private static final String OLD_MAN_DICING = "130";
     private static final String OUR_ROLL = "ourRoll";
@@ -65,6 +68,21 @@ public class Ff1BookSectionController extends FfBookSectionController {
             final int luck = attributeHandler.resolveValue(character, "luck");
             final AttributeTestCommand testCommand = (AttributeTestCommand) wrapper.getParagraph().getData().getCommands().get(0);
             testCommand.setAgainstNumeric(Math.min(stamina, luck));
+        } else if ("109".equals(id)) {
+            final FfCharacter character = (FfCharacter) wrapper.getCharacter();
+            final FfAttributeHandler attributeHandler = getInfo().getCharacterHandler().getAttributeHandler();
+            final int stamina = attributeHandler.resolveValue(character, "stamina");
+            final int initStamina = attributeHandler.resolveValue(character, "initialStamina");
+            gain(character, "stamina", initStamina - 2 - stamina, attributeHandler);
+            final int skill = attributeHandler.resolveValue(character, "skill");
+            final int initSkill = attributeHandler.resolveValue(character, "initialSkill");
+            gain(character, "skill", initSkill - 1 - skill, attributeHandler);
+        }
+    }
+
+    private void gain(final FfCharacter character, final String attribute, final int change, final FfAttributeHandler attributeHandler) {
+        if (change > 0) {
+            attributeHandler.handleModification(character, attribute, change);
         }
     }
 
@@ -149,5 +167,24 @@ public class Ff1BookSectionController extends FfBookSectionController {
         } catch (final NumberFormatException ex) {
             getLogger().warn("User provided invalid amount '{}' as the bet. Game will be finished.", form.getResponseText());
         }
+    }
+
+    @Override
+    public String handleAttributeTest(final Model model, final HttpServletRequest request) {
+        final Paragraph paragraph = getWrapper(request).getParagraph();
+        final AttributeTestCommand testCommand = (AttributeTestCommand) paragraph.getData().getCommands().get(0);
+
+        final String testResult = super.handleAttributeTest(model, request);
+
+        if ("333a".equals(paragraph.getId())) {
+            final int result = testCommand.getResult();
+            if (result >= VAMPIRE_GAZE_BOUNDARY) {
+                paragraph.getData().getChoices().removeByPosition(CHOICE_CONTINUE_FIGHT);
+            } else {
+                paragraph.getData().getChoices().removeByPosition(CHOICE_VAMPIRE_GAZE);
+            }
+        }
+
+        return testResult;
     }
 }

@@ -1,6 +1,8 @@
 package hu.zagor.gamebooks.ff.ff.twofm.mvc.books.inventory.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
+import hu.zagor.gamebooks.content.Paragraph;
+import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + FightingFantasy.THE_WARLOCK_OF_FIRETOP_MOUNTAIN)
 public class Ff1BookTakeItemController extends FfBookTakeItemController {
 
+    private static final int FOOD_EFFECT_REDUCTION = -2;
     private static final int CANDLE_PRICE = 20;
 
     @Override
@@ -33,9 +36,26 @@ public class Ff1BookTakeItemController extends FfBookTakeItemController {
                 takenAmount = 0;
             }
         } else {
+            if ("gold".equals(itemId) && "313".equals(getWrapper(request).getParagraph().getId())) {
+                getInfo().getCharacterHandler().getItemHandler().addItem(getWrapper(request).getCharacter(), "4003", 1);
+            }
             takenAmount = super.doHandleItemTake(request, itemId, amount);
         }
 
         return takenAmount;
+    }
+
+    @Override
+    protected String doHandleConsumeItem(final HttpServletRequest request, final String itemId) {
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        final Paragraph paragraph = wrapper.getParagraph();
+        final String result = super.doHandleConsumeItem(request, itemId);
+
+        if ("131".equals(paragraph.getId()) && "2000".equals(itemId)) {
+            final FfCharacter character = (FfCharacter) wrapper.getCharacter();
+            character.changeStamina(FOOD_EFFECT_REDUCTION);
+        }
+
+        return result;
     }
 }

@@ -1,6 +1,5 @@
 package hu.zagor.gamebooks.content.command.fight.roundresolver;
 
-import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
@@ -13,9 +12,8 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component("singleff1FightRoundResolver")
-public class SingleFf1FightRoundResolver extends SingleFightRoundResolver {
+public class TwoByTwoFf1FightRoundResolver extends TwoByTwoFightRoundResolver {
 
-    private static final int DAMAGE_AVOIDED = 6;
     private static final int SHIELD_BLOCKS = 6;
 
     @Override
@@ -28,26 +26,8 @@ public class SingleFf1FightRoundResolver extends SingleFightRoundResolver {
                 character.setDamageProtection(1);
             }
         }
-
-        if ("58".equals(dto.getEnemy().getId())) {
-            recalculateWarlocksDamage(dto);
-        }
-
         super.damageSelf(dto);
         character.setDamageProtection(0);
-    }
-
-    private void recalculateWarlocksDamage(final FightDataDto dto) {
-        final FfEnemy enemy = dto.getEnemy();
-        enemy.setStaminaDamage(2);
-
-        final int[] throwResult = getGenerator().getRandomNumber(1);
-        if (throwResult[0] == DAMAGE_AVOIDED) {
-            enemy.setStaminaDamage(0);
-        } else if (throwResult[0] % 2 == 0) {
-            enemy.setStaminaDamage(1);
-        }
-        dto.getMessages().addKey("page.ff.label.random.after", getDiceResultRenderer().render(getGenerator().getDefaultDiceSide(), throwResult), throwResult[0]);
     }
 
     private boolean shieldBlocksDamage(final FightDataDto dto) {
