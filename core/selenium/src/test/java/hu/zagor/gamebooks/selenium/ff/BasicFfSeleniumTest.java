@@ -127,4 +127,10 @@ public class BasicFfSeleniumTest extends BasicSeleniumTest {
             throw new IllegalStateException("Expected attribute '" + attributeName + "' to be '" + expectedValue + "', found '" + actualValue + "'.");
         }
     }
+
+    protected void replaceItem(final String itemToTake, final String itemToGiveUp) {
+        click(".replaceItem[data-id=\"" + itemToTake + "\"]");
+        applyItem(itemToGiveUp);
+    }
+
 }

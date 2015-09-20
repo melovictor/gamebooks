@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * Ff1-specific single fight round resolver.
  * @author Tamas_Szekeres
  */
-@Component("singleff1FightRoundResolver")
+@Component("twoByTwoff1FightRoundResolver")
 public class TwoByTwoFf1FightRoundResolver extends TwoByTwoFightRoundResolver {
 
     private static final int SHIELD_BLOCKS = 6;

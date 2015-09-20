@@ -57,7 +57,7 @@ public class SingleFf1FightRoundResolver extends SingleFightRoundResolver {
         successfulBlock = result[0] == SHIELD_BLOCKS;
         final FightCommandMessageList messages = dto.getMessages();
         messages.addKey("page.ff.label.random.after", getDiceResultRenderer().render(getGenerator().getDefaultDiceSide(), result), result[0]);
-        messages.addKey("page.ff1.label.shield." + successfulBlock);
+        messages.addKey("page.ff1.label.shield." + successfulBlock, dto.getEnemy().getName());
 
         return successfulBlock;
     }
