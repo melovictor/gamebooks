@@ -43,4 +43,11 @@ public class DefaultItemInteractionRecorder extends AbstractPlaybackEventRecorde
             add(wrapper, "marketing(\"" + transactionType + "\", \"" + itemId + "\");\n");
         }
     }
+
+    @Override
+    public void recordItemReplacing(final HttpSessionWrapper wrapper, final String newItemId, final String oldItemId) {
+        if (environmentDetector.isRecordState()) {
+            add(wrapper, "replaceItem(\"" + newItemId + "\", \"" + oldItemId + "\");\n");
+        }
+    }
 }

@@ -37,4 +37,12 @@ public interface ItemInteractionRecorder {
      */
     void recordItemMarketMovement(HttpSessionWrapper wrapper, String transactionType, String itemId);
 
+    /**
+     * Records the replacement of an item.
+     * @param wrapper the {@link HttpSessionWrapper} object
+     * @param newItemId the ID of the new item
+     * @param oldItemId the ID of the old item
+     */
+    void recordItemReplacing(HttpSessionWrapper wrapper, String newItemId, String oldItemId);
+
 }

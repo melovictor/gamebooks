@@ -127,6 +127,8 @@ public class GenericBookTakeItemController extends AbstractRequestWrappingContro
     protected String doHandleItemReplace(final HttpServletRequest request, final String oldItemId, final String newItemId, final int amount) {
         final HttpSessionWrapper wrapper = getWrapper(request);
 
+        itemInteractionRecorder.recordItemReplacing(wrapper, newItemId, oldItemId);
+
         final GatheredLostItem glNewItem = getGatheredLostItem(newItemId, amount);
 
         final CharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();

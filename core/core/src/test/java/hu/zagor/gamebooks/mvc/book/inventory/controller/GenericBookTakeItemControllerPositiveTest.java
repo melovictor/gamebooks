@@ -164,6 +164,7 @@ public class GenericBookTakeItemControllerPositiveTest {
         expect(request.getSession()).andReturn(session);
         expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(sessionWrapper);
         sessionWrapper.setRequest(request);
+        itemInteractionRecorder.recordItemReplacing(sessionWrapper, "1002", "1001");
         expect(beanFactory.getBean("gatheredLostItem", "1002", 1, 0, false)).andReturn(glItem);
         expect(sessionWrapper.getCharacter()).andReturn(character);
         expect(itemHandler.hasItem(character, "1001")).andReturn(false);
@@ -180,6 +181,7 @@ public class GenericBookTakeItemControllerPositiveTest {
         expect(request.getSession()).andReturn(session);
         expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(sessionWrapper);
         sessionWrapper.setRequest(request);
+        itemInteractionRecorder.recordItemReplacing(sessionWrapper, "1002", "1001");
         expect(beanFactory.getBean("gatheredLostItem", "1002", 1, 0, false)).andReturn(glItem);
         expect(sessionWrapper.getCharacter()).andReturn(character);
         expect(itemHandler.hasItem(character, "1001")).andReturn(true);
