@@ -74,6 +74,24 @@ public class UserInputNumericResponseTest {
         Assert.assertTrue(returned);
     }
 
+    public void testSetMinBoundShouldChangeMinBound() {
+        // GIVEN
+        final UserInputNumericResponse underTest = new UserInputNumericResponse(MIN_BOUND, MAX_BOUND);
+        // WHEN
+        underTest.setMinBound(3);
+        // THEN
+        Assert.assertEquals(underTest.getMinBound().intValue(), 3);
+    }
+
+    public void testSetMaxBoundShouldChangeMaxBound() {
+        // GIVEN
+        final UserInputNumericResponse underTest = new UserInputNumericResponse(MIN_BOUND, MAX_BOUND);
+        // WHEN
+        underTest.setMaxBound(8);
+        // THEN
+        Assert.assertEquals(underTest.getMaxBound().intValue(), 8);
+    }
+
     public void testMatchesWhenAnswerIsAboveAcceptableRangeShouldReturnFalse() {
         // GIVEN
         final UserInputNumericResponse underTest = new UserInputNumericResponse(MIN_BOUND, MAX_BOUND);

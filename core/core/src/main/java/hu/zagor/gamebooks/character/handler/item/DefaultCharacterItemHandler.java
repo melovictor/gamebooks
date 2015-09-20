@@ -109,18 +109,20 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
             }
         } else {
             for (int i = 0; i < amount; i++) {
-                returnSinglePiece(itemId, equipment);
+                returnSinglePiece(itemId, equipment, unequippedOnly);
             }
         }
     }
 
-    private void returnSinglePiece(final String itemId, final List<Item> equipment) {
+    private void returnSinglePiece(final String itemId, final List<Item> equipment, final boolean unequippedOnly) {
         final Item item = getItem(equipment, itemId);
         if (item != null) {
-            if (item.getAmount() > 1) {
-                item.setAmount(item.getAmount() - 1);
-            } else {
-                equipment.remove(item);
+            if (!unequippedOnly || !item.getEquipInfo().isEquippable() || !item.getEquipInfo().isEquipped()) {
+                if (item.getAmount() > 1) {
+                    item.setAmount(item.getAmount() - 1);
+                } else {
+                    equipment.remove(item);
+                }
             }
         }
     }
@@ -136,7 +138,7 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
         final List<String> itemsToLookFor = Arrays.asList(itemId.split(","));
         for (final Item item : equipment) {
             final String equipmentId = item.getId();
-            if (itemsToLookFor.contains(equipmentId) && (!item.getEquipInfo().isEquippable() && !item.getEquipInfo().isEquipped() || !unequippedOnly)) {
+            if (itemsToLookFor.contains(equipmentId) && (!unequippedOnly || !item.getEquipInfo().isEquippable() || !item.getEquipInfo().isEquipped())) {
                 availableItems.add(equipmentId);
             }
         }

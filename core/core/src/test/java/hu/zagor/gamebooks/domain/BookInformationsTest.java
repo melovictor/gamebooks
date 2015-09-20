@@ -148,4 +148,13 @@ public class BookInformationsTest {
         // THEN
         Assert.assertTrue(returned < 0);
     }
+
+    public void testCharacterBeanIdShouldSetCharacterBeanId() {
+        // GIVEN
+        // WHEN
+        underTest.setCharacterBeanId("ffCharacter");
+        // THEN
+        Assert.assertEquals(underTest.getCharacterBeanId(), "ffCharacter");
+    }
+
 }

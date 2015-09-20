@@ -27,4 +27,59 @@ public class SupportedLanguageTest {
         // THEN
         Assert.assertEquals(returned, "English");
     }
+
+    public void testGetCountryCodeWhenNoCountryCodeWasSpecifiedShouldReturnNull() {
+        // GIVEN
+        final SupportedLanguage underTest = new SupportedLanguage("pt", "Português");
+        // WHEN
+        final String returned = underTest.getCountryCode();
+        // THEN
+        Assert.assertNull(returned);
+    }
+
+    public void testGetCountryCodeWhenCountryCodeWasSpecifiedShouldReturnCountryCode() {
+        // GIVEN
+        final SupportedLanguage underTest = new SupportedLanguage("pt", "br", "Português");
+        // WHEN
+        final String returned = underTest.getCountryCode();
+        // THEN
+        Assert.assertEquals(returned, "br");
+    }
+
+    public void testFlagCodeWhenCountryCodeIsEmptyShouldReturnLocaleCodeOnly() {
+        // GIVEN
+        final SupportedLanguage underTest = new SupportedLanguage("pt", "Português");
+        // WHEN
+        final String returned = underTest.getFlagCode();
+        // THEN
+        Assert.assertEquals(returned, "pt");
+    }
+
+    public void testFlagCodeWhenCountryCodeIsNotEmptyShouldReturnLocaleAndCountryCode() {
+        // GIVEN
+        final SupportedLanguage underTest = new SupportedLanguage("pt", "br", "Português");
+        // WHEN
+        final String returned = underTest.getFlagCode();
+        // THEN
+        Assert.assertEquals(returned, "pt-br");
+    }
+
+    public void testLocaleFormatWhenCountryCodeIsEmptyShouldReturnLocaleCodeOnly() {
+        // GIVEN
+        final SupportedLanguage underTest = new SupportedLanguage("pt", "Português");
+        // WHEN
+        final String returned = underTest.getLocaleFormat();
+        // THEN
+        Assert.assertEquals(returned, "pt");
+    }
+
+    public void testLocaleFormatWhenCountryCodeIsNotEmptyShouldReturnLocaleAndCountryCode() {
+        // GIVEN
+        final SupportedLanguage underTest = new SupportedLanguage("pt", "br", "Português");
+        // WHEN
+        final String returned = underTest.getLocaleFormat();
+        // THEN
+        Assert.assertEquals(returned, "pt_br");
+    }
+
 }

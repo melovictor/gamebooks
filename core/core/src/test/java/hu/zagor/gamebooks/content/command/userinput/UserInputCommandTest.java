@@ -67,6 +67,7 @@ public class UserInputCommandTest {
         Assert.assertEquals(model.get("userInputLabel"), label);
         Assert.assertTrue(model.containsKey("responseType"));
         Assert.assertEquals(model.get("responseType"), "text");
+        Assert.assertEquals(underTest.getType(), "text");
     }
 
     public void testGetCommandViewWhenOngoingShouldReturnProperlySetCommandViewWithHiddenChoices() {
@@ -88,6 +89,7 @@ public class UserInputCommandTest {
         Assert.assertEquals(model.get("ffChoiceHidden"), true);
         Assert.assertTrue(model.containsKey("responseType"));
         Assert.assertEquals(model.get("responseType"), "number");
+        Assert.assertEquals(underTest.getType(), "number");
     }
 
     public void testCloneShouldReturnClonedObject() throws CloneNotSupportedException {

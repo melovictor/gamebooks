@@ -54,6 +54,15 @@ public class DefaultItemInteractionRecorderTest {
         // THEN
     }
 
+    public void testRecordItemReplacingWhenNotInRecordStateShouldDoNothing() {
+        // GIVEN
+        expect(environmentDetector.isRecordState()).andReturn(false);
+        mockControl.replay();
+        // WHEN
+        underTest.recordItemReplacing(wrapper, ITEM_ID, "1020");
+        // THEN
+    }
+
     public void testRecordItemConsumptionWhenNotInRecordStateShouldDoNothing() {
         // GIVEN
         expect(environmentDetector.isRecordState()).andReturn(false);
@@ -130,6 +139,19 @@ public class DefaultItemInteractionRecorderTest {
         mockControl.replay();
         // WHEN
         underTest.recordItemMarketMovement(wrapper, "sell", ITEM_ID);
+        // THEN
+    }
+
+    public void testRecordItemReplacingWhenInRecordStateShouldRecordEvent() {
+        // GIVEN
+        expect(environmentDetector.isRecordState()).andReturn(true);
+        expect(wrapper.getCharacter()).andReturn(character);
+        expect(character.getNotes()).andReturn(notes);
+        expect(notes.getNote()).andReturn("setUpGame();\n");
+        character.setNotes("setUpGame();\nreplaceItem(\"1010\", \"1020\");\n");
+        mockControl.replay();
+        // WHEN
+        underTest.recordItemReplacing(wrapper, ITEM_ID, "1020");
         // THEN
     }
 

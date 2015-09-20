@@ -52,4 +52,13 @@ public class ImageLocationTest {
         // THEN throws exception
     }
 
+    public void testGetFullDirLocaleShouldReturnDirNameWithLanguageAndCountry() {
+        // GIVEN
+        final ImageLocation underTest = new ImageLocation(DIR, FILE, new Locale("pt", "br"));
+        // WHEN
+        final String returned = underTest.getFullDirLocale();
+        // THEN
+        Assert.assertEquals(returned, "dirNamept_BR");
+    }
+
 }

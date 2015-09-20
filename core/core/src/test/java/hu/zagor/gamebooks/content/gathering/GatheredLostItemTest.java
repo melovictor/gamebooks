@@ -93,4 +93,30 @@ public class GatheredLostItemTest {
         Assert.assertEquals(returned.getDose(), 0);
     }
 
+    public void testIsUnequippedOnlyWhenUnequippedOnlyShouldReturnTrue() {
+        // GIVEN
+        final GatheredLostItem underTest = new GatheredLostItem(ID, TEST_AMOUNT, 0, true);
+        // WHEN
+        final boolean returned = underTest.isUnequippedOnly();
+        // THEN
+        Assert.assertTrue(returned);
+    }
+
+    public void testIsUnequippedOnlyWhenNotUnequippedOnlyShouldReturnFalse() {
+        // GIVEN
+        final GatheredLostItem underTest = new GatheredLostItem(ID, TEST_AMOUNT, 0, false);
+        // WHEN
+        final boolean returned = underTest.isUnequippedOnly();
+        // THEN
+        Assert.assertFalse(returned);
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testConstructorWhenBothAmountAndDoseIsPositiveShouldThrowException() {
+        // GIVEN
+        // WHEN
+        new GatheredLostItem("2003", TEST_AMOUNT, TEST_AMOUNT, false).getClass();
+        // THEN throws exception
+    }
+
 }

@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 @Test
 public class ItemTest {
 
+    private static final String DESCRIPTION = "description of the item";
     private static final int NON_ITEM_OBJECT = 99;
     private static final String OTHER_ID = "3002";
     private static final String ID = "3001";
@@ -60,6 +61,14 @@ public class ItemTest {
         underTest.setSubType(WeaponSubType.blunt);
         // THEN
         Assert.assertEquals(underTest.getSubType(), WeaponSubType.blunt);
+    }
+
+    public void testGetDescriptionShouldReturnWhatWasSet() {
+        // GIVEN
+        // WHEN
+        underTest.setDescription(DESCRIPTION);
+        // THEN
+        Assert.assertEquals(underTest.getDescription(), DESCRIPTION);
     }
 
     public void testGetAmountShouldReturnWhatWasSet() {

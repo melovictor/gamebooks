@@ -7,7 +7,6 @@ import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 
 import java.util.Iterator;
-import java.util.List;
 
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
@@ -55,41 +54,6 @@ public class DefaultCharacterItemHandlerPositiveTest {
         character = new Character();
         character.setBackpackSize(99);
         mockControl.reset();
-    }
-
-    public void testRemoveItemWhenAnItemIsAddedThenRemovedShouldNotContainIt() {
-        // GIVEN
-        expect(itemFactory.resolveItem(ITEM_ID)).andReturn(nonEquippableItem);
-        mockControl.replay();
-        // WHEN
-        underTest.addItem(character, ITEM_ID, 1);
-        underTest.removeItem(character, ITEM_ID, 1);
-        final boolean hasItem = underTest.hasItem(character, ITEM_ID);
-        // THEN
-        Assert.assertFalse(hasItem);
-    }
-
-    public void testRemoveItemWhenAnItemIsAddedThenMoreIsRemovedShouldNotContainIt() {
-        // GIVEN
-        expect(itemFactory.resolveItem(ITEM_ID)).andReturn(nonEquippableItem);
-        mockControl.replay();
-        // WHEN
-        underTest.addItem(character, ITEM_ID, 1);
-        underTest.removeItem(character, ITEM_ID, 3);
-        final boolean hasItem = underTest.hasItem(character, ITEM_ID);
-        // THEN
-        Assert.assertFalse(hasItem);
-    }
-
-    public void testRemoveItemWhenItemsAreAddedThenOneIsRemovedShouldContainIt() {
-        // GIVEN
-        expect(itemFactory.resolveItem(ITEM_ID)).andReturn(nonEquippableItem);
-        mockControl.replay();
-        // WHEN
-        underTest.addItem(character, ITEM_ID, 3);
-        underTest.removeItem(character, ITEM_ID, 1);
-        // THEN
-        Assert.assertTrue(underTest.hasItem(character, ITEM_ID));
     }
 
     public void testHasItemWhenItemIsNotInEquipmentShouldReturnFalse() {
@@ -178,35 +142,6 @@ public class DefaultCharacterItemHandlerPositiveTest {
         final boolean hasItem = underTest.hasItem(character, ITEM_ID, 3);
         // THEN
         Assert.assertTrue(hasItem);
-    }
-
-    public void testRemoveItemWhenAnItemListIsRemovedWhereBothElementsAreAvailableShouldRemoveRandomElement() {
-        // GIVEN
-        final List<Item> equipment = character.getEquipment();
-        final Item sword = new Item("1001", "Sword", ItemType.weapon1);
-        final Item dagger = new Item("1002", "Dagger", ItemType.weapon1);
-        equipment.add(sword);
-        equipment.add(dagger);
-        mockControl.replay();
-        // WHEN
-        underTest.removeItem(character, "1001,1002", 1);
-        // THEN
-        Assert.assertTrue(equipment.contains(sword) || equipment.contains(dagger));
-        Assert.assertFalse(equipment.contains(sword) && equipment.contains(dagger));
-    }
-
-    public void testRemoveItemWhenAnItemListIsRemovedWhenOnlyOneElementIsAvailableShouldRemoveAvailableElement() {
-        // GIVEN
-        final List<Item> equipment = character.getEquipment();
-        final Item sword = new Item("1001", "Sword", ItemType.weapon1);
-        final Item provision = new Item("2000", "Provision", ItemType.provision);
-        equipment.add(sword);
-        equipment.add(provision);
-        mockControl.replay();
-        // WHEN
-        underTest.removeItem(character, "1001,1002", 2);
-        // THEN
-        Assert.assertFalse(equipment.contains(sword));
     }
 
     public void testResolveItemShouldResolveItemIdFromFactory() {
