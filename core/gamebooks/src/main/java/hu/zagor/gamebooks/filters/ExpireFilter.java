@@ -34,6 +34,7 @@ public class ExpireFilter extends AbstractHttpFilter {
         extensionBasedExpiration.put("js", MONTH);
 
         extensionBasedExpiration.put("jpg", YEAR);
+        extensionBasedExpiration.put("gif", YEAR);
         extensionBasedExpiration.put("png", YEAR);
         extensionBasedExpiration.put("jpeg", YEAR);
 
