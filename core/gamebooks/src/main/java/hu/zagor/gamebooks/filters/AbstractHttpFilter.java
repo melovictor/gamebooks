@@ -1,6 +1,7 @@
 package hu.zagor.gamebooks.filters;
 
 import java.io.IOException;
+import java.net.SocketException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -23,14 +24,22 @@ public abstract class AbstractHttpFilter implements Filter {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
-    public final void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain chain) throws IOException, ServletException {
-        if (!(request instanceof HttpServletRequest)) {
+    public final void doFilter(final ServletRequest servletRequest, final ServletResponse response, final FilterChain chain) throws IOException, ServletException {
+        if (!(servletRequest instanceof HttpServletRequest)) {
             throw new IllegalArgumentException("this filter only supports HttpServletRequests");
         }
         if (!(response instanceof HttpServletResponse)) {
             throw new IllegalArgumentException("this filter only supports HttpServletResponses");
         }
-        doFilterHttp((HttpServletRequest) request, (HttpServletResponse) response, chain);
+
+        try {
+            final HttpServletRequest request = (HttpServletRequest) servletRequest;
+            doFilterHttp(request, (HttpServletResponse) response, chain);
+        } catch (final IOException exception) {
+            if (!(exception.getCause() instanceof SocketException)) {
+                throw exception;
+            }
+        }
     }
 
     @Override

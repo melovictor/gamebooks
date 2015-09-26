@@ -71,9 +71,9 @@ public class ColorFirstImageLookupStrategyTest {
 
     public void testGetImageResourcesFromDirWhenFileIsCoverShouldCheckAmongCommonImagesOnly() throws IOException {
         // GIVEN
-        logger.debug("Looking for common image...");
+        logger.trace("Looking for common image...");
         final String resourcePath = "classpath*:/" + DIR + "/" + COVER_NAME + ".jpg";
-        logger.debug("Looking for image as {}", resourcePath);
+        logger.trace("Looking for image as {}", resourcePath);
         expect(applicationContext.getResources(resourcePath)).andReturn(FILLED_ARRAY);
         mockControl.replay();
         // WHEN
@@ -84,9 +84,9 @@ public class ColorFirstImageLookupStrategyTest {
 
     public void testGetImageResourcesFromDirWhenFileIsAmongBwShouldCheckAmongBwImagesOnly() throws IOException {
         // GIVEN
-        logger.debug("Looking for coloured image...");
+        logger.trace("Looking for coloured image...");
         final String resourcePath = "classpath*:/" + DIR + "/c-" + FILE_NAME + ".jpg";
-        logger.debug("Looking for image as {}", resourcePath);
+        logger.trace("Looking for image as {}", resourcePath);
         expect(applicationContext.getResources(resourcePath)).andReturn(FILLED_ARRAY);
         mockControl.replay();
         // WHEN
@@ -97,14 +97,14 @@ public class ColorFirstImageLookupStrategyTest {
 
     public void testGetImageResourcesFromDirWhenFileIsAmongColorShouldCheckAmongBwAndColorImagesOnly() throws IOException {
         // GIVEN
-        logger.debug("Looking for coloured image...");
+        logger.trace("Looking for coloured image...");
         String resourcePath = "classpath*:/" + DIR + "/c-" + FILE_NAME + ".jpg";
-        logger.debug("Looking for image as {}", resourcePath);
+        logger.trace("Looking for image as {}", resourcePath);
         expect(applicationContext.getResources(resourcePath)).andReturn(EMPTY_ARRAY);
 
-        logger.debug("Looking for black and white image...");
+        logger.trace("Looking for black and white image...");
         resourcePath = "classpath*:/" + DIR + "/b-" + FILE_NAME + ".jpg";
-        logger.debug("Looking for image as {}", resourcePath);
+        logger.trace("Looking for image as {}", resourcePath);
         expect(applicationContext.getResources(resourcePath)).andReturn(FILLED_ARRAY);
         mockControl.replay();
         // WHEN
@@ -115,19 +115,19 @@ public class ColorFirstImageLookupStrategyTest {
 
     public void testGetImageResourcesFromDirWhenFileIsAmongCommonShouldCheckAmongAllImages() throws IOException {
         // GIVEN
-        logger.debug("Looking for coloured image...");
+        logger.trace("Looking for coloured image...");
         String resourcePath = "classpath*:/" + DIR + "/c-" + FILE_NAME + ".jpg";
-        logger.debug("Looking for image as {}", resourcePath);
+        logger.trace("Looking for image as {}", resourcePath);
         expect(applicationContext.getResources(resourcePath)).andReturn(EMPTY_ARRAY);
 
-        logger.debug("Looking for black and white image...");
+        logger.trace("Looking for black and white image...");
         resourcePath = "classpath*:/" + DIR + "/b-" + FILE_NAME + ".jpg";
-        logger.debug("Looking for image as {}", resourcePath);
+        logger.trace("Looking for image as {}", resourcePath);
         expect(applicationContext.getResources(resourcePath)).andReturn(EMPTY_ARRAY);
 
-        logger.debug("Looking for common image...");
+        logger.trace("Looking for common image...");
         resourcePath = "classpath*:/" + DIR + "/" + FILE_NAME + ".jpg";
-        logger.debug("Looking for image as {}", resourcePath);
+        logger.trace("Looking for image as {}", resourcePath);
         expect(applicationContext.getResources(resourcePath)).andReturn(FILLED_ARRAY);
         mockControl.replay();
         // WHEN
@@ -138,19 +138,19 @@ public class ColorFirstImageLookupStrategyTest {
 
     public void testGetImageResourcesFromDirWhenFileIsNotAvailableShouldReturnEmptyResources() throws IOException {
         // GIVEN
-        logger.debug("Looking for coloured image...");
+        logger.trace("Looking for coloured image...");
         String resourcePath = "classpath*:/" + DIR + "/c-" + FILE_NAME + ".jpg";
-        logger.debug("Looking for image as {}", resourcePath);
+        logger.trace("Looking for image as {}", resourcePath);
         expect(applicationContext.getResources(resourcePath)).andReturn(EMPTY_ARRAY);
 
-        logger.debug("Looking for black and white image...");
+        logger.trace("Looking for black and white image...");
         resourcePath = "classpath*:/" + DIR + "/b-" + FILE_NAME + ".jpg";
-        logger.debug("Looking for image as {}", resourcePath);
+        logger.trace("Looking for image as {}", resourcePath);
         expect(applicationContext.getResources(resourcePath)).andReturn(EMPTY_ARRAY);
 
-        logger.debug("Looking for common image...");
+        logger.trace("Looking for common image...");
         resourcePath = "classpath*:/" + DIR + "/" + FILE_NAME + ".jpg";
-        logger.debug("Looking for image as {}", resourcePath);
+        logger.trace("Looking for image as {}", resourcePath);
         expect(applicationContext.getResources(resourcePath)).andReturn(EMPTY_ARRAY);
         mockControl.replay();
         // WHEN

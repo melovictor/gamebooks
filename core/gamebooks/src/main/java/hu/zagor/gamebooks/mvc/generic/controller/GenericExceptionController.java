@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.mvc.generic.controller;
 
+import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.mvc.login.domain.LoginData;
 
 import org.springframework.beans.InvalidPropertyException;
@@ -22,7 +23,7 @@ public class GenericExceptionController {
     public String invalidPropertyException(final InvalidPropertyException exception) {
         String newView;
         if (exception.getBeanClass() == LoginData.class) {
-            newView = "redirect:login";
+            newView = "redirect:" + PageAddresses.LOGIN;
         } else {
             throw exception;
         }

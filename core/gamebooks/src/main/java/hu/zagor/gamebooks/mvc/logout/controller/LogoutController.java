@@ -1,11 +1,15 @@
 package hu.zagor.gamebooks.mvc.logout.controller;
 
+import hu.zagor.gamebooks.ControllerAddresses;
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.mdc.MdcHandler;
+import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
+import hu.zagor.gamebooks.support.logging.LogInject;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LogoutController {
 
+    @LogInject
+    private Logger logger;
     @Autowired
     private MdcHandler mdcHandler;
     @Autowired
@@ -29,6 +35,7 @@ public class LogoutController {
      */
     @RequestMapping(value = PageAddresses.LOGOUT)
     public String loginGet(final HttpSession session) {
+        logger.info("Logging out user '{}'.", ((PlayerUser) session.getAttribute(ControllerAddresses.USER_STORE_KEY)).getUsername());
         session.invalidate();
         environmentDetector.setSeleniumTesting(false);
         return "redirect:" + PageAddresses.LOGIN;

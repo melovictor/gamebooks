@@ -80,6 +80,7 @@ public class ExpireFilter extends AbstractHttpFilter {
             final long expiry = new Date().getTime() + expiration;
             response.setDateHeader("Expires", expiry);
             response.setHeader("Cache-Control", "max-age=" + (expiration / MILLISEC));
+            response.setHeader("resource", "resource");
         }
     }
 }

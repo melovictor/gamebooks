@@ -29,7 +29,7 @@ public abstract class AbstractImageLookupStrategy implements ApplicationContextA
      */
     protected Resource[] doGetImage(final String dir, final String file, final String prefix) throws IOException {
         final String resourcePath = "classpath*:/" + dir + "/" + prefix + file + ".jpg";
-        logger.debug("Looking for image as {}", resourcePath);
+        logger.trace("Looking for image as {}", resourcePath);
         return applicationContext.getResources(resourcePath);
     }
 
@@ -50,7 +50,7 @@ public abstract class AbstractImageLookupStrategy implements ApplicationContextA
      * @throws IOException occurs if an I/O exception happens
      */
     protected Resource[] getColorImage(final String dir, final String file) throws IOException {
-        logger.debug("Looking for coloured image...");
+        logger.trace("Looking for coloured image...");
         return doGetImage(dir, file, "c-");
     }
 
@@ -62,7 +62,7 @@ public abstract class AbstractImageLookupStrategy implements ApplicationContextA
      * @throws IOException occurs if an I/O exception happens
      */
     protected Resource[] getBwImage(final String dir, final String file) throws IOException {
-        logger.debug("Looking for black and white image...");
+        logger.trace("Looking for black and white image...");
         return doGetImage(dir, file, "b-");
     }
 
@@ -74,7 +74,7 @@ public abstract class AbstractImageLookupStrategy implements ApplicationContextA
      * @throws IOException occurs if an I/O exception happens
      */
     protected Resource[] getCommonImage(final String dir, final String file) throws IOException {
-        logger.debug("Looking for common image...");
+        logger.trace("Looking for common image...");
         return doGetImage(dir, file, "");
     }
 

@@ -1,6 +1,8 @@
 package hu.zagor.gamebooks.mvc.logout.controller;
 
+import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.mdc.MdcHandler;
+import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
 
 import javax.servlet.http.HttpSession;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
+import org.slf4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -27,6 +30,8 @@ public class LogoutControllerTest {
     private HttpSession session;
     private MdcHandler mdcHandler;
     private EnvironmentDetector environmentDetector;
+    private PlayerUser user;
+    private Logger logger;
 
     @BeforeClass
     public void setUpClass() {
@@ -37,6 +42,9 @@ public class LogoutControllerTest {
         underTest = new LogoutController();
         Whitebox.setInternalState(underTest, "mdcHandler", mdcHandler);
         Whitebox.setInternalState(underTest, "environmentDetector", environmentDetector);
+        user = new PlayerUser(3, "FireFoX", true);
+        logger = mockControl.createMock(Logger.class);
+        Whitebox.setInternalState(underTest, "logger", logger);
     }
 
     @BeforeMethod
@@ -46,6 +54,8 @@ public class LogoutControllerTest {
 
     public void testLoginGetShouldCleanUserStore() {
         // GIVEN
+        expect(session.getAttribute("user")).andReturn(user);
+        logger.info("Logging out user '{}'.", "FireFoX");
         session.invalidate();
         environmentDetector.setSeleniumTesting(false);
         mockControl.replay();

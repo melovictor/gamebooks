@@ -14,6 +14,7 @@ import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
 import hu.zagor.gamebooks.support.logging.LogInject;
 
 import java.util.Date;
+import java.util.Enumeration;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -85,6 +86,7 @@ public class LoginController {
 
     private String doPrepare(final Model model, final HttpServletRequest request, final HttpServletResponse response, final boolean isTesting) {
         String result;
+        logHeaders(request);
         final HttpSession session = request.getSession();
         session.setMaxInactiveInterval(GUEST_SESSION_TTL);
         environmentDetector.setSeleniumTesting(isTesting);
@@ -233,6 +235,7 @@ public class LoginController {
         final String mdcUserId = loginResult.getId() + "-" + new Date().getTime();
         mdcHandler.setUserId(mdcUserId, request.getSession());
         logger.info("User '{}' logged in successfully.", data.getUsername());
+        logHeaders(request);
         final PlayerUser playerUser = new PlayerUser(loginResult.getId(), data.getUsername(), loginResult.isAdmin());
         playerUser.getSettings().putAll(defaultSettingsHandler.getDefaultSettings());
         userSettingsHandler.loadSettings(playerUser);
@@ -240,6 +243,15 @@ public class LoginController {
         session.setMaxInactiveInterval(USER_SESSION_TTL);
         nextPage = "redirect:" + PageAddresses.BOOK_LIST;
         return nextPage;
+    }
+
+    private void logHeaders(final HttpServletRequest request) {
+        final Enumeration<String> headerNames = request.getHeaderNames();
+        while (headerNames.hasMoreElements()) {
+            final String name = headerNames.nextElement();
+            final String value = request.getHeader(name);
+            logger.info("'{}': '{}'", name, value);
+        }
     }
 
     private String reportWrongToken(final Model model, final LoginData data, final HttpSession session) {
