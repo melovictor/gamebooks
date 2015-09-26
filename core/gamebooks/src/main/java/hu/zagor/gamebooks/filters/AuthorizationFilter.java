@@ -9,11 +9,13 @@ import hu.zagor.gamebooks.player.PlayerUser;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -74,6 +76,9 @@ public class AuthorizationFilter extends AbstractHttpFilter {
         } else {
             try {
                 mdcHandler.provideUserId(request.getSession());
+                if (response.getHeader("resource") == null) {
+                    logRequestInfo(request);
+                }
                 chain.doFilter(request, response);
             } catch (final Throwable ex) {
                 logger.error("Exception bubbled up:", ex);
@@ -98,5 +103,28 @@ public class AuthorizationFilter extends AbstractHttpFilter {
             allowedPath |= requestUri.startsWith(allowedUrl);
         }
         return !allowedPath;
+    }
+
+    private void logRequestInfo(final HttpServletRequest request) {
+        final Logger logger = getLogger();
+        logger.info("Requested url: '{}'", request.getRequestURL().toString());
+
+        final Enumeration<String> attributeNames = request.getAttributeNames();
+        while (attributeNames.hasMoreElements()) {
+            final String name = attributeNames.nextElement();
+            final Object value = request.getAttribute(name);
+            logger.info("Attribute '{}': '{}'.", name, value);
+        }
+
+        final Enumeration<String> parameterNames = request.getParameterNames();
+        while (parameterNames.hasMoreElements()) {
+            final String name = parameterNames.nextElement();
+            final Object value = "password".equals(name) ? "******************" : request.getParameter(name);
+            logger.info("Parameter '{}': '{}'.", name, value);
+        }
+
+        for (final Cookie cookie : request.getCookies()) {
+            logger.info("Cookie '{}': '{}'.", cookie.getName(), cookie.getValue());
+        }
     }
 }
