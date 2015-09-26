@@ -8,6 +8,7 @@ import java.util.Enumeration;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
@@ -52,6 +53,10 @@ public class SessionFilter extends AbstractHttpFilter {
             final String name = parameterNames.nextElement();
             final Object value = "password".equals(name) ? "******************" : request.getParameter(name);
             logger.info("Parameter '{}': '{}'.", name, value);
+        }
+
+        for (final Cookie cookie : request.getCookies()) {
+            logger.info("Cookie '{}': '{}'.", cookie.getName(), cookie.getValue());
         }
     }
 }

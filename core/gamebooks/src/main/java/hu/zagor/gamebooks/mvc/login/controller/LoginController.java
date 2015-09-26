@@ -104,6 +104,7 @@ public class LoginController {
     private void newToken(final Model model, final HttpServletRequest request) {
         final CsrfToken generateToken = csrfTokenRepository.generateToken(request);
         csrfTokenRepository.saveToken(generateToken, request, null);
+        logger.info("Generated token for user to log in with: '{}'.", generateToken.getToken());
         model.addAttribute("_csrf", generateToken);
     }
 
@@ -180,7 +181,7 @@ public class LoginController {
                 nextPage = reportWrongLogin(model, data, session, loginResult);
             }
         } else {
-            nextPage = reportWrongToken(model, data, session);
+            nextPage = reportWrongToken(model, data, session, expectedToken);
         }
         newToken(model, request);
         model.addAttribute("pageTitle", "page.title");
@@ -254,14 +255,13 @@ public class LoginController {
         }
     }
 
-    private String reportWrongToken(final Model model, final LoginData data, final HttpSession session) {
-        String nextPage;
-        logger.warn("User '{}' tried to log in with invalid token!", data.getUsername());
+    private String reportWrongToken(final Model model, final LoginData data, final HttpSession session, final CsrfToken expectedToken) {
+        logger.warn("User '{}' tried to log in with invalid token! Actual: '{}', expected: '{}'.", data.getUsername(), data.getCsrfToken(), expectedToken == null ? null
+            : expectedToken.getToken());
         session.setAttribute(ControllerAddresses.USER_STORE_KEY, null);
         model.addAttribute("loginError", "page.login.invalid.token");
         data.setPassword("");
-        nextPage = PageAddresses.LOGIN;
-        return nextPage;
+        return PageAddresses.LOGIN;
     }
 
     public void setLogin(final LoginFacade login) {
