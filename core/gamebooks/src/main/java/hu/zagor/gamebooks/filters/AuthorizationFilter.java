@@ -123,8 +123,10 @@ public class AuthorizationFilter extends AbstractHttpFilter {
             logger.info("Parameter '{}': '{}'.", name, value);
         }
 
-        for (final Cookie cookie : request.getCookies()) {
-            logger.info("Cookie '{}': '{}'.", cookie.getName(), cookie.getValue());
+        if (request.getCookies() != null) {
+            for (final Cookie cookie : request.getCookies()) {
+                logger.info("Cookie '{}': '{}'.", cookie.getName(), cookie.getValue());
+            }
         }
     }
 }
