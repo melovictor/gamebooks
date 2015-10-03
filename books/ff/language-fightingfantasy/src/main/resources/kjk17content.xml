@@ -296,12 +296,35 @@
     <text>
         [p]A kardod hegyével felemeled a láda fedelét, és hátrahőkölsz. Két jól megtermett patkány ugrik ki a ládából, és rád ront. Egy kardcsapással az egyiket két darabra hasítod, de a másik gyorsan a lábad felé kap a karmaival.[/p]
     </text>
-    <itemCheck type="item" id="3003">
-      <have>
+    <itemCheck type="item" id="3004">
+      <haveEquipped>
         <next id="192"></next>
+      </haveEquipped>
+      <have>
+        <itemCheck type="item" id="3003">
+          <haveEquipped>
+            <next id="192"></next>
+          </haveEquipped>
+          <have>
+            <next id="312"></next>
+          </have>
+          <dontHave>
+            <next id="312"></next>
+          </dontHave>
+        </itemCheck>
       </have>
       <dontHave>
-        <next id="312"></next>
+        <itemCheck type="item" id="3003">
+          <haveEquipped>
+            <next id="192"></next>
+          </haveEquipped>
+          <have>
+            <next id="312"></next>
+          </have>
+          <dontHave>
+            <next id="312"></next>
+          </dontHave>
+        </itemCheck>
       </dontHave>
     </itemCheck>
   </p>
@@ -689,8 +712,8 @@
     <text>
         [p]Túljuttok egy apró dombocskán, és észreveszel egy nyílást, mely egy alagút bejáratának tűnik. Izgatottan kiáltasz Borrinak, hogy ereszkedjetek le, s ő azon nyomban kiengedi a levegőt a léggömbből. Szépen szálltok lefelé, miközben Borri figyelmeztet, hogy kapaszkodj meg erősen a földet érésig. A kosár puffanva csapódik a földnek, fölborul, de senki nem sérül meg. Jókedvűek vagytok és nevettek, miközben megpróbáltok kigabalyodni egymásból. Felgöngyölitek az üres léggömböt, és a kosárral együtt elrejtitek az alagút bejáratánál. – Reméljük, az a Gargantis nem csupán legenda – szólal meg Symm –, bár a későbbiekben még megbánhatom ezt a kijelentést! – Kivont karddal és meggyújtott fáklyákkal, melyeket magatokkal hoztatok, elindultok befelé a lejtős alagúton. Öt perc elteltével egy elágazáshoz érkeztek.[/p]
     </text>
-    <next id="222">Ha jobbra akartok menni</next>
-    <next id="90">Ha balra akartok továbbhaladni</next>
+    <next id="90">Ha jobbra akartok menni</next>
+    <next id="222">Ha balra akartok továbbhaladni</next>
   </p>
   <p id="60">
     <text>
@@ -959,7 +982,7 @@
         <next id="367" pos="2">Ha eltöröd a gömböt</next>
       </dontHave>
     </itemCheck>
-    <next id="386" pos="3">Ha kimeész a barlangból</next>
+    <next id="386" pos="3">Ha kimész a barlangból</next>
   </p>
   <p id="81">
     <text>
@@ -3901,7 +3924,7 @@
         [p]Kifeszíted a rekeszt a kardoddal, és két páncélöltözéket találsz benne, de egyetlen sisakot sem. Mit teszel?[/p]
     </text>
     <next id="380">Fölpróbálod a páncélruhát?</next>
-    <next id="328">Fölpróbálod a láncinget?</next>
+    <next id="328">Fölpróbálod a láncvértet?</next>
     <next id="235">Otthagyod mindkettőt, és visszamész a lovadhoz?</next>
   </p>
   <p id="296">
@@ -4290,7 +4313,7 @@
   </p>
   <p id="328">
     <text>
-        [p]A páncélruha jól illik rád, és nem akadályoz a mozgásban. Nyersz 1 [span class="ffAttribute"]Ügyesség[/span] pontot! Sajnos nem veszed hasznát a páncélruhának, így visszasétálsz a lovadhoz.[/p]
+        [p]A láncvért jól illik rád, és nem akadályoz a mozgásban. Nyersz 1 [span class="ffAttribute"]Ügyesség[/span] pontot! Sajnos nem veszed hasznát a páncélruhának, így visszasétálsz a lovadhoz.[/p]
     </text>
     <gatherItem id="3004" />
     <loseItem id="3001" />
@@ -4918,7 +4941,7 @@
   </p>
   <p id="380">
     <text>
-        [p]A páncélruha jól illik rád, és meglepően könnyű. Nyersz 1 [span class="ffAttribute"]Ügyesség[/span] pontot. A páncél korábbi tulajdonosa azonban egy gonosz úr volt, aki miután életét kioltotta egy orgyilkos kése, megátkozta a páncélt, akárki legyen is a viselője a jövőben. Vesztesz 3 S[span class="ffAttribute"]szerencse[/span] pontot. Semmi hasznát nem veszed a láncingnek, így visszasétálsz a lovadhoz.[/p]
+        [p]A páncélruha jól illik rád, és meglepően könnyű. Nyersz 1 [span class="ffAttribute"]Ügyesség[/span] pontot. A páncél korábbi tulajdonosa azonban egy gonosz úr volt, aki miután életét kioltotta egy orgyilkos kése, megátkozta a páncélt, akárki legyen is a viselője a jövőben. Vesztesz 3 [span class="ffAttribute"]szerencse[/span] pontot. Semmi hasznát nem veszed a láncvértnek, így visszasétálsz a lovadhoz.[/p]
     </text>
     <add amount="-3" to="luck" />
     <gatherItem id="3003" />

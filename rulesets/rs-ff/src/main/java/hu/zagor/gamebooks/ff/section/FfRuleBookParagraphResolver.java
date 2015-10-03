@@ -67,13 +67,15 @@ public class FfRuleBookParagraphResolver extends RawRuleBookParagraphResolver {
             } else {
                 if (item.getDose() > 0) {
                     final FfItem toLose = (FfItem) itemHandler.getItem(character, item.getId());
-                    if (toLose.getItemType() != ItemType.potion) {
-                        throw new IllegalArgumentException("Trying to lose '" + item.getDose() + "' doses from non-potion item '" + toLose.getName() + "'.");
-                    }
-                    if (toLose.getDose() > item.getDose()) {
-                        toLose.setDose(toLose.getDose() - item.getDose());
-                    } else {
-                        itemHandler.removeItem(character, item.getId(), 1);
+                    if (toLose != null) {
+                        if (toLose.getItemType() != ItemType.potion) {
+                            throw new IllegalArgumentException("Trying to lose '" + item.getDose() + "' doses from non-potion item '" + toLose.getName() + "'.");
+                        }
+                        if (toLose.getDose() > item.getDose()) {
+                            toLose.setDose(toLose.getDose() - item.getDose());
+                        } else {
+                            itemHandler.removeItem(character, item.getId(), 1);
+                        }
                     }
                 } else {
                     itemHandler.removeItem(character, item);

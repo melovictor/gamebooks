@@ -431,9 +431,9 @@ public class HuCryptOfTheSorcererST extends BasicFfSeleniumTest {
         goToPosition(1, 135);
         doAttributeCheck();
         goToPosition(0, 59);
-        verifyPosition(0, 222);
-        verifyPosition(1, 90);
-        goToPosition(1, 90);
+        verifyPosition(0, 90);
+        verifyPosition(1, 222);
+        goToPosition(0, 90);
         prepareLuckSettings(false, false, false);
         attackEnemy("35");
         prepareLuckSettings(false, false, false);
@@ -1370,9 +1370,9 @@ public class HuCryptOfTheSorcererST extends BasicFfSeleniumTest {
         goToPosition(1, 135);
         doAttributeCheck();
         goToPosition(0, 59);
-        verifyPosition(0, 222);
-        verifyPosition(1, 90);
-        goToPosition(1, 90);
+        verifyPosition(0, 90);
+        verifyPosition(1, 222);
+        goToPosition(0, 90);
         prepareLuckSettings(false, false, false);
         attackEnemy("35");
         prepareLuckSettings(false, false, false);
@@ -1984,9 +1984,9 @@ public class HuCryptOfTheSorcererST extends BasicFfSeleniumTest {
         goToPosition(1, 135);
         doAttributeCheck();
         goToPosition(0, 59);
-        verifyPosition(0, 222);
-        verifyPosition(1, 90);
-        goToPosition(1, 90);
+        verifyPosition(0, 90);
+        verifyPosition(1, 222);
+        goToPosition(0, 90);
         prepareLuckSettings(false, false, false);
         attackEnemy("35");
         prepareLuckSettings(false, false, false);
