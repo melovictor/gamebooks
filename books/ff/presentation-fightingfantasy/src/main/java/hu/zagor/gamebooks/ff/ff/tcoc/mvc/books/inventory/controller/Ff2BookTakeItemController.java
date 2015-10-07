@@ -69,7 +69,9 @@ public class Ff2BookTakeItemController extends FfBookTakeItemController {
         final Ff2Character character = (Ff2Character) wrapper.getCharacter();
         final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
         final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
-        itemHandler.addItem(character, character.getLastSpellCast(), 1);
+        if (character.getLastSpellCast() != null) {
+            itemHandler.addItem(character, character.getLastSpellCast(), 1);
+        }
         character.setLastSpellCast(null);
     }
 
