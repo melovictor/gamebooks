@@ -21,7 +21,6 @@ public class ChangeItemCommandResolver extends TypeAwareCommandResolver<ChangeIt
     @Override
     protected List<ParagraphData> doResolve(final ChangeItemCommand command, final ResolvationData resolvationData) {
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
-        character.getEquipment();
         final FfCharacterItemHandler itemHandler = (FfCharacterItemHandler) resolvationData.getCharacterHandler().getItemHandler();
         final FfItem item = (FfItem) itemHandler.getItem(character, command.getId());
         if (item != null) {
