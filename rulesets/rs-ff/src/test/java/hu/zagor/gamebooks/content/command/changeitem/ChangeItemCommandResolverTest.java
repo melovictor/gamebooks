@@ -44,7 +44,7 @@ public class ChangeItemCommandResolverTest {
     public void setUpClass() {
         mockControl = EasyMock.createStrictControl();
         underTest = new ChangeItemCommandResolver();
-        command = mockControl.createMock(ChangeItemCommand.class);
+        command = new ChangeItemCommand();
         resolvationData = new ResolvationData();
         character = mockControl.createMock(FfCharacter.class);
         resolvationData.setCharacter(character);
@@ -54,17 +54,20 @@ public class ChangeItemCommandResolverTest {
         characterHandler.setItemHandler(itemHandler);
         info.setCharacterHandler(characterHandler);
         resolvationData.setInfo(info);
+        command.setId(ITEM_ID);
+        command.setAttribute("attackStrength");
     }
 
     @BeforeMethod
     public void setUpMethod() {
+        command.setChangeValue(null);
+        command.setNewValue(null);
         item = new FfItem(ITEM_ID, "Sword", ItemType.weapon1);
         mockControl.reset();
     }
 
     public void testDoResolveWhenCharacterDoesNotHaveItemInQuestionShouldDoNothing() {
         // GIVEN
-        expect(command.getId()).andReturn(ITEM_ID);
         expect(itemHandler.getItem(character, ITEM_ID)).andReturn(null);
         mockControl.replay();
         // WHEN
@@ -75,10 +78,8 @@ public class ChangeItemCommandResolverTest {
 
     public void testDoResolveWhenNewValueIsSetShouldSetNewValueToField() {
         // GIVEN
-        expect(command.getId()).andReturn(ITEM_ID);
+        command.setNewValue(3);
         expect(itemHandler.getItem(character, ITEM_ID)).andReturn(item);
-        expect(command.getAttribute()).andReturn("attackStrength");
-        expect(command.getNewValue()).andReturn(3);
         mockControl.replay();
         // WHEN
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
@@ -89,12 +90,9 @@ public class ChangeItemCommandResolverTest {
 
     public void testDoResolveWhenChangedAmountIsSetShouldChangeFieldByAmount() {
         // GIVEN
+        command.setChangeValue(-1);
         item.setAttackStrength(3);
-        expect(command.getId()).andReturn(ITEM_ID);
         expect(itemHandler.getItem(character, ITEM_ID)).andReturn(item);
-        expect(command.getAttribute()).andReturn("attackStrength");
-        expect(command.getNewValue()).andReturn(null);
-        expect(command.getChangeValue()).andReturn(-1);
         mockControl.replay();
         // WHEN
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
