@@ -24,15 +24,17 @@ public class ChangeItemCommandResolver extends TypeAwareCommandResolver<ChangeIt
         character.getEquipment();
         final FfCharacterItemHandler itemHandler = (FfCharacterItemHandler) resolvationData.getCharacterHandler().getItemHandler();
         final FfItem item = (FfItem) itemHandler.getItem(character, command.getId());
-        final Field field = ReflectionUtils.findField(FfItem.class, command.getAttribute());
-        ReflectionUtils.makeAccessible(field);
-        final Integer newValue = command.getNewValue();
-        if (newValue != null) {
-            ReflectionUtils.setField(field, item, newValue);
-        } else {
-            int fieldValue = (int) ReflectionUtils.getField(field, item);
-            fieldValue += command.getChangeValue();
-            ReflectionUtils.setField(field, item, fieldValue);
+        if (item != null) {
+            final Field field = ReflectionUtils.findField(FfItem.class, command.getAttribute());
+            ReflectionUtils.makeAccessible(field);
+            final Integer newValue = command.getNewValue();
+            if (newValue != null) {
+                ReflectionUtils.setField(field, item, newValue);
+            } else {
+                int fieldValue = (int) ReflectionUtils.getField(field, item);
+                fieldValue += command.getChangeValue();
+                ReflectionUtils.setField(field, item, fieldValue);
+            }
         }
         return null;
     }
