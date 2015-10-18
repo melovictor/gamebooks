@@ -255,7 +255,7 @@ var raw = (function() {
 var gameMenu = (function() {
 	function saveGame() {
 		$.ajax({
-			url : "save"
+			url : "s/save"
 		});
 	}
 
