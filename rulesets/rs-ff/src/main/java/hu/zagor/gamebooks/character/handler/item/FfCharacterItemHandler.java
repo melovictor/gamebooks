@@ -99,7 +99,7 @@ public class FfCharacterItemHandler extends DefaultCharacterItemHandler {
         for (final Item itemObject : character.getEquipment()) {
             final FfItem item = (FfItem) itemObject;
             if (validWeaponTypes.contains(item.getItemType())) {
-                if (defaultWeapon(item)) {
+                if (isDefaultWeapon(item)) {
                     defaultWeapon = item;
                 } else if (isEquipped(item)) {
                     equippedWeapon = item;
@@ -109,10 +109,17 @@ public class FfCharacterItemHandler extends DefaultCharacterItemHandler {
             }
         }
         final FfItem actualEquippedWeapon = equippedWeapon != null ? equippedWeapon : firstWeapon == null ? defaultWeapon : firstWeapon;
+        equipUnequipWeapons(defaultWeapon, actualEquippedWeapon);
+        return actualEquippedWeapon;
+    }
+
+    private void equipUnequipWeapons(final FfItem defaultWeapon, final FfItem actualEquippedWeapon) {
         if (actualEquippedWeapon != null) {
             actualEquippedWeapon.getEquipInfo().setEquipped(true);
         }
-        return actualEquippedWeapon;
+        if (actualEquippedWeapon != defaultWeapon && defaultWeapon != null) {
+            defaultWeapon.getEquipInfo().setEquipped(false);
+        }
     }
 
     /**
@@ -220,7 +227,7 @@ public class FfCharacterItemHandler extends DefaultCharacterItemHandler {
         return totalNonRemovable;
     }
 
-    private boolean defaultWeapon(final FfItem item) {
+    private boolean isDefaultWeapon(final FfItem item) {
         return "defWpn".equals(item.getId());
     }
 
