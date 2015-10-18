@@ -5,9 +5,7 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
-import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 
 import java.util.List;
 
@@ -17,8 +15,6 @@ import java.util.List;
  */
 public class Ff10FightCommandBasicSubResolver extends FightCommandBasicSubResolver {
 
-    private static final int GHOUL_KILLING_BLOW = 4;
-
     private static final String ATTACK_STRENGTH_MALLUS_2 = "4001";
 
     private static final int HUNCHBACK_INITIALIZATION_ROUND = 0;
@@ -26,7 +22,6 @@ public class Ff10FightCommandBasicSubResolver extends FightCommandBasicSubResolv
     private static final int DANISH_DOG_AS_MALLUS_ROUND = 4;
 
     private static final String HUNCHBACK = "18";
-    private static final String GHOUL = "26";
 
     @Override
     public List<ParagraphData> doResolve(final FightCommand command, final ResolvationData resolvationData) {
@@ -35,21 +30,6 @@ public class Ff10FightCommandBasicSubResolver extends FightCommandBasicSubResolv
         final int roundNumber = command.getRoundNumber();
         handleHunchbackBattleInterruption(command, roundNumber);
         handleDanishDogAttackStrengthMallus(resolvationData, roundNumber);
-
-        if (GHOUL.equals(command.getEnemies().get(0))) {
-            final BattleStatistics battleStatistics = command.getBattleStatistics(GHOUL);
-            final ParagraphData rootData = resolvationData.getRootData();
-            final ChoiceSet choices = rootData.getChoices();
-            if (battleStatistics.getTotalLose() >= GHOUL_KILLING_BLOW) {
-                choices.removeByPosition(2);
-            } else {
-                final FfEnemy ffEnemy = command.getResolvedEnemies().get(0);
-                if (ffEnemy.getStamina() <= 0) {
-                    choices.removeByPosition(1);
-                }
-            }
-
-        }
 
         return doResolve;
     }
