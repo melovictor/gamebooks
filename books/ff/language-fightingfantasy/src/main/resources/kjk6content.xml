@@ -2718,17 +2718,25 @@
   </p>
   <p id="190">
     <text>
-        [p]A Gólem tökéletes hasonmása jelenik meg előtted. Megparancsolod neki, hogy támadja meg a valódi Gólemet, aki már csaknem föléd tornyosul. Döntsd a két Gólem közötti harcot.[/p]
+        [p]A Gólem tökéletes hasonmása jelenik meg előtted. Megparancsolod neki, hogy támadja meg a valódi Gólemet, aki már csaknem föléd tornyosul. Döntsd el a két Gólem közötti harcot.[/p]
     </text>
-    <reward id="golem" />
     <fight type="singleAlly" resolver="ally">
       <enemy id="16" />
       <ally id="103" />
       <lose>
+        <text>
+            [p]A másolatod elesett, így kénytelen vagy magad befejezni a csatát a bestiával.[/p]
+        </text>
         <fight type="single">
           <enemy id="16" />
+          <win>
+            <reward id="golem" />
+          </win>
         </fight>
       </lose>
+      <win>
+        <reward id="golem" />
+      </win>
     </fight>
     <next id="147"></next>
   </p>
@@ -3633,8 +3641,11 @@
       <enemy id="12" />
       <ally id="102" />
       <lose>
+        <text>
+            [p]A másolatod elesett, így kénytelen vagy magad befejezni a csatát a bestiával.[/p]
+        </text>
         <fight type="single">
-          <enemy id="11" />
+          <enemy id="12" />
         </fight>
       </lose>
     </fight>
@@ -3783,7 +3794,11 @@
     </text>
     <fight type="singleAlly" resolver="ally">
       <enemy id="17" />
+      <ally id="104" />
       <lose>
+        <text>
+            [p]A másolatod elesett, így kénytelen vagy magad befejezni a csatát a bestiával.[/p]
+        </text>
         <fight type="single">
           <enemy id="17" />
         </fight>
@@ -4220,11 +4235,11 @@
         [p]A Gólem egyre közelebb jön, és te karddal támadsz rá. Kardod azonban csupán a követ éri, s hangosan megcsörren rajta. Neked kell eldöntened a Csata kimenetelét. Vonj le magadtól 1 [span class="ffAttribute"]ÜGYESSÉG[/span] pontot a csata idejére.[/p]
     </text>
     <add amount="-1" to="skill" />
-    <reward id="golem" />
     <fight type="single">
       <enemy id="16" />
       <win>
         <add amount="1" to="skill" />
+        <reward id="golem" />
       </win>
     </fight>
     <next id="147"></next>
@@ -4839,7 +4854,25 @@
   </p>
   <p id="360">
     <text>
-        [p]Megismétled a Varázslatot. Félig kész Hidrád nő még egy keveset, de még mindig nem nyerte el teljes alakját. Még egy Teremtmény Hasonmás Varázslatot kell alkalmaznod ahhoz, hogy a teremtmény teljes alakot öltsön. Ha harmadszor is meg akarsz próbálkozni e Varázslattal, tedd azt, és hagyd, hogy a két Hidra megküzdjön egymással.[/p]
+        [p]Megismétled a Varázslatot. Félig kész Hidrád nő még egy keveset, de még mindig nem nyerte el teljes alakját. Még egy Teremtmény Hasonmás Varázslatot kell alkalmaznod ahhoz, hogy a teremtmény teljes alakot öltsön.[/p]
+    </text>
+    <loseItem id="creatureCopy" />
+    <itemCheck type="item" id="creatureCopy">
+      <have>
+        <next id="360a">Ha harmadszor is meg akarsz próbálkozni e Varázslattal</next>
+        <next id="184">Ha nem</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nincs elegendő varázslatod ahhoz, hogy megalkosd a teljes hasonmást, döntened kell, mit tegyél.[/p]
+        </text>
+        <next id="184"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="360a" display="360">
+    <text>
+        [p]Megismétled a Varázslatot. Félig kész Hidrád nő még egy keveset, de még mindig nem nyerte el teljes alakját. Még egy Teremtmény Hasonmás Varázslatot kell alkalmaznod ahhoz, hogy a teremtmény teljes alakot öltsön. Harmadszor is megpróbálkozol e Varázslattal, és hagyod, hogy a két Hidra megküzdjön egymással.[/p]
     </text>
     <loseItem id="creatureCopy" />
     <fight type="singleAlly" resolver="ally">

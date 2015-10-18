@@ -989,7 +989,6 @@
         [p]Körülbelül egy órával később csuklyás alak lép ki a hasadékból szakadozott, fekete palástban, kezében fekete pálcával. Az alak jobbra-balra tekint, és észreveszed, hogy egy koponya rejtőzik a csuklya alatt, melyben izzó, vörös szemek ülnek. – Egy Démoni Szolga – suttogod. – A kardom hegyére tűzöm. – Mivel nem érez veszélyt, a Démoni Szolga térdre borul, és elkezdi rituális hajlongását, kántálását. Kihasználod az alkalmat, és rátámadsz a kardoddal. Hidegvérrel védi ki az ütésedet puszta kézzel, és meglep földöntúli ereje.[/p]
         [p]Küzdj meg a Szolgával a szokásos módon.[/p]
     </text>
-    <reward id="demonic" />
     <itemCheck type="item" id="3025">
       <have>
         <test against="skill">
@@ -1004,7 +1003,11 @@
                     [p]A Démoni Szolgát mozgató varázslat megtörik, és nem marad más belőle, csupán egy halom csont.[/p]
                 </text>
                 <interrupt />
+                <reward id="demonic" />
               </winRound>
+              <win>
+                <reward id="demonic" />
+              </win>
             </fight>
           </success>
           <failure>
@@ -1023,7 +1026,11 @@
                 [p]A Démoni Szolgát mozgató varázslat megtörik, és nem marad más belőle, csupán egy halom csont.[/p]
             </text>
             <interrupt />
+            <reward id="demonic" />
           </winRound>
+          <win>
+            <reward id="demonic" />
+          </win>
         </fight>
       </dontHave>
     </itemCheck>
@@ -1754,7 +1761,6 @@
     <text>
         [p]Lecsúszol a verem falán, és egyenesen beletérdelsz a bűzölgő nyálkába. A rettenetes Gargantis igen nagyra nőtt, és nem érsz a hasánál feljebb. Félelmetes ereje van, és a bőre olyan vastag, akár egy páncél.[/p]
     </text>
-    <reward id="gargant" />
     <itemCheck type="item" id="3025">
       <have>
         <test against="skill">
@@ -1764,6 +1770,9 @@
             </text>
             <fight type="single">
               <enemy id="38" />
+              <win>
+                <reward id="gargant" />
+              </win>
             </fight>
           </success>
           <failure>
@@ -1777,6 +1786,9 @@
       <dontHave>
         <fight type="single">
           <enemy id="38" />
+          <win>
+            <reward id="gargant" />
+          </win>
         </fight>
       </dontHave>
     </itemCheck>

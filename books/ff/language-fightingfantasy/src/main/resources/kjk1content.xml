@@ -466,9 +466,11 @@
     <text>
         [p]Kikiáltasz a Törpének, hogy kész vagy megküzdeni a Minotaurusszal. A faajtó lassan felemelkedik, és látod, amint a félelmetes félig ember, félig bika bestia az arénába lép. Gőz csap ki orrlyukából, ahogyan haragra gerjesztve magát támadásra készül. Meglóbálva kétfejű fejszéjét, hirtelen megindul feléd.[/p]
     </text>
-    <reward id="mino" />
     <fight type="single">
       <enemy id="17" />
+      <win>
+        <reward id="mino" />
+      </win>
     </fight>
     <next id="163"></next>
   </p>
@@ -1401,7 +1403,6 @@
         [p class="inlineImage"][img src="resources/ff6/143.jpg" /][/p]
         [p]Felkiáltasz a Törpének, hogy eressze be a Skorpiót, mert kész vagy megküzdeni vele. A faajtó lassan felemelkedik, és egy hatalmas fura, fekete Skorpió mászik be alatta a szobába. Kihúzod a kardod, és készen állsz, hogy megküzdj a gonosz teremtmény vastag ollóival és kivédd halálos szúrását.[/p]
     </text>
-    <reward id="skorpio" />
     <fight type="allAtOnce">
       <enemy id="16a" />
       <enemy id="16b" />
@@ -1410,6 +1411,7 @@
       </flee>
       <win>
         <next id="163"></next>
+        <reward id="skorpio" />
       </win>
     </fight>
   </p>
