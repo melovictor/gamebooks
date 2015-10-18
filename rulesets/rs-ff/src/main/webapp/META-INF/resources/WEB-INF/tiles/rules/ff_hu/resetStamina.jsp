@@ -5,7 +5,14 @@
 <p><span class="attribute">ÉLETERŐ</span> pontjaid sokszor fognak változni kalandjaid során, amint megküzdesz a szörnyekkel és elvállalsz lelkesítő feladatokat. Ahogy célodhoz közeledsz, <span class="attribute">ÉLETERŐ</span> pontjaidnak száma veszélyesen lecsökkenhet, és a csaták különösen kockázatossá válnak, ezért légy óvatos!</p>
 
 <c:if test="${stdHelp_hasFood}">
-    <p>Hátizsákodban ${stdHelp_foodAmount} étkezésre elegendő élelmiszer van. Bármikor megállhatsz pihenni és enni, kivéve csata közben. Minden étkezés 4 pontot ad <span class="attribute">ÉLETERŐ</span> pontjaidhoz, és 1 ponttal csökkenti Élelmiszer-tartalékodat. A <em>Kalandlapon</em> külön Élelmiszer-készlet négyzet van, hogy feljegyezd, mennyit fogyasztottál. Ne feledd, hogy hosszú utat kell megtenned, ezért bölcsen használd fel élelmiszeredet!</p>
+    <p>Hátizsákodban ${stdHelp_foodAmount} étkezésre elegendő élelmiszer van.
+    <c:if test="${stdHelp_canEatAlways}">
+        Bármikor megállhatsz pihenni és enni, kivéve csata közben.
+    </c:if>
+    <c:if test="${!stdHelp_canEatAlways}">
+        Csak olyankor állhatsz meg pihenni és enni, amikor a szöveg erre kifejezetten lehetőséget ad.
+    </c:if>
+    Minden étkezés 4 pontot ad <span class="attribute">ÉLETERŐ</span> pontjaidhoz, és 1 ponttal csökkenti Élelmiszer-tartalékodat. A <em>Kalandlapon</em> külön Élelmiszer-készlet négyzet van, hogy feljegyezd, mennyit fogyasztottál. Ne feledd, hogy hosszú utat kell megtenned, ezért bölcsen használd fel élelmiszeredet!</p>
 </c:if>
 <c:if test="${!stdHelp_hasFood}">
     <p>Ellentétben a többi Kaland, Játék, Kockázat könyvvel, most Élelmiszerkészlet nélkül kezded meg kalandjaidat, azonban a játék során lehetőséged lesz rá, hogy különböző módon növeld <span class="attribute">ÉLETERŐDET</span>.</p>
