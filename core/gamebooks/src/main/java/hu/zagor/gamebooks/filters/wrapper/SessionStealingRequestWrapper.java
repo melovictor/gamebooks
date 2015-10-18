@@ -5,12 +5,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * {@link HttpServletRequestWrapper} to avoid session stealing.
  * @author Tamas_Szekeres
- *
  */
 public class SessionStealingRequestWrapper extends HttpServletRequestWrapper {
+
+    private final Logger logger;
 
     /**
      * Basic constructor that wraps the request.
@@ -18,6 +22,7 @@ public class SessionStealingRequestWrapper extends HttpServletRequestWrapper {
      */
     public SessionStealingRequestWrapper(final HttpServletRequest request) {
         super(request);
+        logger = LoggerFactory.getLogger(SessionStealingRequestWrapper.class);
     }
 
     @Override
@@ -31,6 +36,7 @@ public class SessionStealingRequestWrapper extends HttpServletRequestWrapper {
 
             final String storedRemoteIp = (String) currentSession.getAttribute("remoteIp");
             if (!remoteIp.equals(storedRemoteIp)) {
+                logger.error("RemoteIp changed, invalidating session. Old value: '" + storedRemoteIp + "'. Current value: '" + remoteIp + "'.");
                 shouldCreate = true;
             }
 
