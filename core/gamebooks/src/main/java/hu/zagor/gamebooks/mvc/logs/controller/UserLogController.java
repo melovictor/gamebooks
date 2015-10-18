@@ -144,6 +144,8 @@ public class UserLogController extends AbstractRequestWrappingController {
         final File fileLocation = (File) getBeanFactory().getBean("file", directoryProvider.getLogFileDirectory(), file);
         if ("zip".equals(extension)) {
             response.setHeader("Content-Disposition", "inline; filename=" + fileLocation.getName());
+        } else {
+            response.setContentType("text/plain; charset=utf-8");
         }
         IOUtils.copy(new FileInputStream(fileLocation), response.getOutputStream());
     }
