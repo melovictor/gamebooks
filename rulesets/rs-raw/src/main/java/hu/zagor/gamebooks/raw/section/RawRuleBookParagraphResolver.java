@@ -58,6 +58,8 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
         final Reward reward = subData.getReward();
         if (reward != null) {
             try {
+                logger.info("Fetching reward '{}' for book '{}' for player '{}'.", reward.getId(), resolvationData.getInfo().getTitle(), resolvationData.getPlayerUser()
+                    .getUsername());
                 final String data = assemblePostData(resolvationData, reward);
                 final URLConnection connection = communicator.connect("http://zagor.hu/recordreward.php");
                 communicator.sendRequest(connection, data);
