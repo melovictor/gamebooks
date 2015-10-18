@@ -1,8 +1,10 @@
 package hu.zagor.gamebooks.mvc.logs.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
+import hu.zagor.gamebooks.books.bookinfo.BookInformationFetcher;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.directory.DirectoryProvider;
+import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.mvc.book.controller.AbstractRequestWrappingController;
 import hu.zagor.gamebooks.mvc.logs.domain.LogFileContainer;
 import hu.zagor.gamebooks.mvc.logs.domain.LogFileData;
@@ -51,6 +53,8 @@ public class UserLogController extends AbstractRequestWrappingController {
 
     @Autowired
     private DirectoryProvider directoryProvider;
+    @Autowired
+    private BookInformationFetcher infoFetcher;
 
     /**
      * Displays the opening log page with all the available log files.
@@ -115,6 +119,8 @@ public class UserLogController extends AbstractRequestWrappingController {
             logFileData.setUserName(userName);
             if (filePieces.length == BOOK_FILE_SIZE) {
                 logFileData.setBookId(filePieces[BOOK_ID_BOOK]);
+                final BookInformations info = infoFetcher.getInfoById(logFileData.getBookId());
+                logFileData.setBookName(info.getTitle());
             }
             final Date loginDate = new Date();
             loginDate.setTime(Long.parseLong(logFileData.getTimestamp()));

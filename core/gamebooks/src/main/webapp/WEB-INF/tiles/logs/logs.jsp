@@ -19,7 +19,7 @@
         <c:if test="${not empty log.bookId}">
             <c:url var="logUrl" value="logs/log-${log.userId}-${log.timestamp}-${log.bookId}.log/log" />
         </c:if>
-        <a href="${logUrl}">${log.loginDateTime}<c:if test="${not empty log.bookId}"> / ${log.bookId }</c:if></a><br />
+        <a href="${logUrl}">${log.loginDateTime}<c:if test="${not empty log.bookId}"> / ${log.bookName }</c:if></a><br />
       </c:forEach>
     </c:forEach>
   </c:forEach>
