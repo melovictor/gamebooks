@@ -10,6 +10,7 @@ public class LogFileData implements Comparable<LogFileData> {
     private String userId;
     private String userName;
     private String loginDateTime;
+    private String bookId;
 
     public String getTimestamp() {
         return timestamp;
@@ -49,7 +50,23 @@ public class LogFileData implements Comparable<LogFileData> {
 
     @Override
     public int compareTo(final LogFileData o) {
-        return timestamp.compareTo(o.timestamp);
+        int compareResult = timestamp.compareTo(o.timestamp);
+        if (compareResult == 0) {
+            if (bookId == null) {
+                compareResult = o.bookId == null ? 0 : -1;
+            } else {
+                compareResult = o.bookId == null ? 1 : bookId.compareTo(o.bookId);
+            }
+        }
+        return compareResult;
+    }
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(final String bookId) {
+        this.bookId = bookId;
     }
 
 }

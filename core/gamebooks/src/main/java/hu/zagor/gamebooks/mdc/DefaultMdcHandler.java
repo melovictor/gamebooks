@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 /**
  * Default implementation of the {@link MdcHandler} interface.
@@ -22,12 +23,13 @@ public class DefaultMdcHandler implements MdcHandler {
     }
 
     @Override
-    public void provideUserId(final HttpSession session) {
+    public void provideUserId(final HttpSession session, final String bookId) {
         final String userId = (String) session.getAttribute(SESSION_KEY);
         if (userId == null) {
             MDC.remove(MDC_KEY);
         } else {
-            MDC.put(MDC_KEY, userId);
+            final String finalId = userId + (StringUtils.isEmpty(bookId) ? "" : "-" + bookId);
+            MDC.put(MDC_KEY, finalId);
         }
     }
 

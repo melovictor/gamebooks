@@ -8,7 +8,7 @@
     </encoder>
   </appender>
 
-  <appender name="SEPARATED_DEV" class="ch.qos.logback.classic.sift.SiftingAppender">
+  <appender name="SEPARATED_DEV" class="hu.zagor.gamebooks.support.logging.TimeBasedRollingSiftingAppender">
     <discriminator>
       <key>userid</key>
       <defaultValue>base</defaultValue>

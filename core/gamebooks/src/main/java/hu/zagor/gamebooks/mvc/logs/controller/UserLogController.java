@@ -38,7 +38,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class UserLogController extends AbstractRequestWrappingController {
 
-    private static final int FULL_FILE_SIZE = 3;
+    private static final int BOOK_ID_BOOK = 3;
+    private static final int TIMESTAMP_IDX = 2;
+    private static final int USER_ID_IDX = 1;
+
+    private static final int BASE_FILE_SIZE = 2;
+    private static final int GENERIC_FILE_SIZE = 3;
+    private static final int BOOK_FILE_SIZE = 4;
+
     private static final Pattern USERNAME = Pattern.compile("User '(.*)' logged in successfully.");
     private static final Map<String, String> USER_NAMES = new HashMap<>();
 
@@ -96,26 +103,41 @@ public class UserLogController extends AbstractRequestWrappingController {
     private void processLogFile(final LogFileContainer container, final File file, final SimpleDateFormat sdf) {
         final String fileName = file.getName().replace(".log", "");
         final String[] filePieces = fileName.split("-");
-        if (filePieces.length == FULL_FILE_SIZE) {
+        if (filePieces.length >= GENERIC_FILE_SIZE) {
             final LogFileData logFileData = new LogFileData();
-            final String userId = filePieces[1];
+            final String userId = filePieces[USER_ID_IDX];
             String userName = USER_NAMES.get(userId);
-            if (userName == null) {
-                userName = provideUserName(userId, file);
-            }
             logFileData.setUserId(userId);
+            logFileData.setTimestamp(filePieces[TIMESTAMP_IDX]);
+            if (userName == null) {
+                userName = provideUserName(userId, logFileData);
+            }
             logFileData.setUserName(userName);
-            logFileData.setTimestamp(filePieces[2]);
+            if (filePieces.length == BOOK_FILE_SIZE) {
+                logFileData.setBookId(filePieces[BOOK_ID_BOOK]);
+            }
             final Date loginDate = new Date();
             loginDate.setTime(Long.parseLong(logFileData.getTimestamp()));
             logFileData.setLoginDateTime(sdf.format(loginDate));
             container.add(logFileData);
+        } else if (filePieces.length == BASE_FILE_SIZE) {
+            final LogFileData logFileData = new LogFileData();
+            final String timestamp = filePieces[1].replace("base", "0");
+            logFileData.setTimestamp(timestamp.substring(1));
+            logFileData.setLoginDateTime(formatTimestamp(timestamp, sdf));
+            container.addBase(logFileData);
         }
     }
 
-    private String provideUserName(final String userId, final File file) {
-        final String userName = getUserNameFromLog(file);
+    private String formatTimestamp(final String timestamp, final SimpleDateFormat sdf) {
+        final Date loginDate = new Date();
+        loginDate.setTime(Long.parseLong(timestamp));
+        return sdf.format(loginDate);
+    }
 
+    private String provideUserName(final String userId, final LogFileData logFileData) {
+        final File file = new File(directoryProvider.getLogFileDirectory(), "log-" + logFileData.getUserId() + "-" + logFileData.getTimestamp() + ".log");
+        final String userName = getUserNameFromLog(file);
         USER_NAMES.put(userId, userName);
         return userName;
     }

@@ -17,9 +17,10 @@ public interface MdcHandler {
 
     /**
      * Provides a user id for the MDC from the {@link HttpSession}.
-     * @param session the session that has the user id attribute set
+     * @param session the {@link HttpSession} object
+     * @param bookId the ID of the book, or null if not working with a book
      */
-    void provideUserId(HttpSession session);
+    void provideUserId(HttpSession session, String bookId);
 
     /**
      * Clears the currently set user id both from MDC and from the {@link HttpSession}.

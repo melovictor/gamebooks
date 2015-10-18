@@ -21,6 +21,7 @@ public class LogFileContainer {
     private final Map<String, LogFileContainerB> dateBasedMap = new HashMap<>();
     private final Set<LogFileContainerB> byDate = new TreeSet<>(Collections.reverseOrder());
     private final long limit;
+    private final Set<LogFileData> base = new TreeSet<>();
 
     /**
      * Default constructor.
@@ -50,6 +51,18 @@ public class LogFileContainer {
             }
             containerB.add(data);
         }
+    }
+
+    /**
+     * Adds a new base log file to the container.
+     * @param logFileData the new file
+     */
+    public void addBase(final LogFileData logFileData) {
+        base.add(logFileData);
+    }
+
+    public Set<LogFileData> getBase() {
+        return base;
     }
 
     public Set<LogFileContainerB> getByDate() {

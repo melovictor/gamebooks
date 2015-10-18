@@ -14,7 +14,7 @@ public class LogFilenameFilter implements FilenameFilter {
 
     @Override
     public boolean accept(final File dir, final String name) {
-        return name.endsWith(".log") && !"log-base.log".equals(name);
+        return name.endsWith(".log");
     }
 
 }

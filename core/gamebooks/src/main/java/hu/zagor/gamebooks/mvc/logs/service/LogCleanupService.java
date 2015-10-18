@@ -38,7 +38,7 @@ public class LogCleanupService {
     private DirectoryProvider directoryProvider;
 
     /**
-     * Method that runs every time at midnight to zip up all the logs that are older than a week.
+     * Method that runs every time at 02:10 to zip up all the logs that are older than a week.
      */
     @Scheduled(cron = "0 10 2 * * *")
     public void clearUpLogs() {

@@ -28,7 +28,9 @@ import org.slf4j.LoggerFactory;
  */
 public class AuthorizationFilter extends AbstractHttpFilter {
 
-    public static final String LAST_PAGE_BEFORE_REDIRECT = "lastPageBeforeRedirect";
+    private static final int REQUEST_URL_PREFIX_LENGTH = (PageAddresses.ROOT_CONTEXT + PageAddresses.BOOK_PAGE).length() + 1;
+    private static final String LAST_PAGE_BEFORE_REDIRECT = "lastPageBeforeRedirect";
+
     private final Logger logger = LoggerFactory.getLogger(AuthorizationFilter.class);
     private List<String> alloweds;
     private String resourceDir;
@@ -71,7 +73,7 @@ public class AuthorizationFilter extends AbstractHttpFilter {
             }
         } else {
             try {
-                mdcHandler.provideUserId(request.getSession());
+                mdcHandler.provideUserId(request.getSession(), fetchBookId(request.getRequestURI()));
                 if (response.getHeader("resource") == null) {
                     logRequestInfo(request);
                 }
@@ -82,6 +84,17 @@ public class AuthorizationFilter extends AbstractHttpFilter {
             }
         }
 
+    }
+
+    private String fetchBookId(final String requestUri) {
+        String bookId = null;
+        if (requestUri.startsWith(PageAddresses.ROOT_CONTEXT + PageAddresses.BOOK_PAGE + "/")) {
+            bookId = requestUri.substring(REQUEST_URL_PREFIX_LENGTH, requestUri.indexOf("/", REQUEST_URL_PREFIX_LENGTH));
+            if (!bookId.matches("[0-9]+")) {
+                bookId = null;
+            }
+        }
+        return bookId;
     }
 
     private boolean shouldRedirect(final HttpServletRequest request, final PlayerUser player) {

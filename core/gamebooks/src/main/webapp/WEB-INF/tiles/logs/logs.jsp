@@ -5,8 +5,10 @@
 <div id="accessLogs">
 
   <h1><spring:message code="page.logs.baseLog" /></h1>
-  <c:url var="logUrl" value="/logs/log-base.log/log" />
-  <a href="${logUrl}"><spring:message code="page.logs.baseLog" /></a><br />
+  <c:forEach var="log" items="${logFiles.base}">
+    <c:url var="logUrl" value="/logs/log-base${log.timestamp}.log/log" />
+    <a href="${logUrl}">${log.loginDateTime}</a><br />
+  </c:forEach>
 
   <c:forEach items="${logFiles.byDate}" var="byDate">
     <h1>${byDate.date}</h1>
@@ -14,7 +16,10 @@
       <h2>${byUser.userId}</h2>
       <c:forEach items="${byUser}" var="log">
         <c:url var="logUrl" value="logs/log-${log.userId}-${log.timestamp}.log/log" />
-        <a href="${logUrl}">${log.loginDateTime}</a><br />
+        <c:if test="${not empty log.bookId}">
+            <c:url var="logUrl" value="logs/log-${log.userId}-${log.timestamp}-${log.bookId}.log/log" />
+        </c:if>
+        <a href="${logUrl}">${log.loginDateTime}<c:if test="${not empty log.bookId}"> / ${log.bookId }</c:if></a><br />
       </c:forEach>
     </c:forEach>
   </c:forEach>
