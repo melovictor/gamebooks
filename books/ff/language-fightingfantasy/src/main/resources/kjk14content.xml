@@ -567,15 +567,27 @@
         [p class="inlineImage"][img src="resources/ff10/56.jpg" /][/p]
         [p]Amikor elkezdtek harcolni, csak akkor látod, hogy nincs is kétrét görnyedve, hanem Púpos! Küzdj meg vele![/p]
     </text>
-    <fight type="single">
-      <enemy id="18" />
-    </fight>
     <itemCheck type="section" id="399">
       <have>
+        <fight type="single">
+          <enemy id="18" />
+          <anyRound enemy="18" totalCount="3">
+            <interrupt />
+          </anyRound>
+        </fight>
         <next id="138"></next>
       </have>
       <dontHave>
-        <next id="164"></next>
+        <fight type="single">
+          <enemy id="18" />
+          <anyRound enemy="18" totalCount="3">
+            <text>
+                [p]A földre taszítod a Púpost, és dühödten belerúgsz, még mielőtt magához térne. Vonj le tőle még 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot, és folytasd a küzdelmet.[/p]
+            </text>
+            <changeEnemy attribute="stamina" id="18" change="-2" />
+          </anyRound>
+        </fight>
+        <next id="116"></next>
       </dontHave>
     </itemCheck>
   </p>
@@ -872,6 +884,9 @@
     <fight type="single">
       <enemy id="21" />
       <enemy id="22" />
+      <anyRound totalCount="4">
+      <loseItem id="4001"/>
+      </anyRound>
     </fight>
     <next id="383"></next>
   </p>
