@@ -197,12 +197,13 @@ public class BasicSeleniumTest {
             verifiedSections.add(choicePosition + "|" + choiceSection);
             String choiceId = "";
             WebElement element = null;
-            while (StringUtils.isEmpty(choiceId)) {
+            while (StringUtils.isEmpty(choiceId) || !choiceId.endsWith("(" + choiceSection + ")")) {
                 try {
                     element = waitAndFindElement("#choice a[href='" + choicePosition + "']");
                     choiceId = element.getText().trim();
                 } catch (final StaleElementReferenceException ex) {
                 }
+                sleep(200);
             }
             Assert.assertTrue(choiceId.endsWith("(" + choiceSection + ")"), "Section " + choiceSection + " is not filed at position " + choicePosition
                 + ", we have found '" + choiceId + "' instead!");
