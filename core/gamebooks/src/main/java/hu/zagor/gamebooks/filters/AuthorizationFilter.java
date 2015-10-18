@@ -65,11 +65,7 @@ public class AuthorizationFilter extends AbstractHttpFilter {
             }
             if (lastPageUrl != null) {
                 request.getSession().setAttribute(LAST_PAGE_BEFORE_REDIRECT, lastPageUrl);
-                if (lastPageUrl.replace(request.getContextPath(), "").indexOf("/", 1) > 0) {
-                    response.sendRedirect("../" + PageAddresses.LOGIN);
-                } else {
-                    response.sendRedirect(PageAddresses.LOGIN);
-                }
+                response.sendRedirect(PageAddresses.ROOT_CONTEXT + PageAddresses.LOGIN);
             } else {
                 response.sendRedirect(PageAddresses.LOGIN);
             }

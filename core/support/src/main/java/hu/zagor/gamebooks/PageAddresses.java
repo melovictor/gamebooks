@@ -6,6 +6,8 @@ package hu.zagor.gamebooks;
  */
 public final class PageAddresses {
 
+    public static final String ROOT_CONTEXT = "/gamebooks/";
+
     public static final String LOGIN = "login";
     public static final String TEST_LOGIN = "testLogin";
     public static final String LOGOUT = "logout";
