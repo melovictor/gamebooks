@@ -12,7 +12,6 @@ import hu.zagor.gamebooks.support.logging.LogInject;
 import java.util.Set;
 import java.util.TreeSet;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -36,27 +35,11 @@ public class RulesController extends LanguageAwareController implements Applicat
     @LogInject
     private Logger logger;
     @Autowired
-    private HelpDescriptor[] helpDescriptors;
-    @Autowired
     private LocaleProvider localeProvider;
 
-    private Set<HelpSeriesBooks> series;
     private ApplicationContext applicationContext;
     @Autowired
     private EnvironmentDetector environmentDetector;
-
-    /**
-     * Initialization method for setting up the available help descriptors at startup time, so they won't have to be collected again later.
-     */
-    @Override
-    @PostConstruct
-    public void init() {
-        series = new TreeSet<HelpSeriesBooks>();
-
-        for (final HelpDescriptor descriptor : fetchHelpDescriptors()) {
-            addNewDescriptor(series, descriptor);
-        }
-    }
 
     /**
      * Handles the displaying of the main rules list with all available books sorted by series.
@@ -66,15 +49,22 @@ public class RulesController extends LanguageAwareController implements Applicat
      */
     @RequestMapping(value = PageAddresses.RULES, method = RequestMethod.GET)
     public String displayRulesMainScreen(final Model model, final HttpServletRequest request) {
-        if (environmentDetector.isDevelopment()) {
-            init();
-        }
+        final Set<HelpSeriesBooks> series = getHelps();
         initializeLanguages(model, request);
         model.addAttribute("pageTitle", "page.title");
         model.addAttribute("series", series);
         model.addAttribute("locale", localeProvider.getLocale().getLanguage());
 
         return "rules";
+    }
+
+    private Set<HelpSeriesBooks> getHelps() {
+        final Set<HelpSeriesBooks> series = new TreeSet<HelpSeriesBooks>();
+
+        for (final HelpDescriptor descriptor : fetchHelpDescriptors()) {
+            addNewDescriptor(series, descriptor);
+        }
+        return series;
     }
 
     private void addNewDescriptor(final Set<HelpSeriesBooks> series, final HelpDescriptor descriptor) {
@@ -123,7 +113,7 @@ public class RulesController extends LanguageAwareController implements Applicat
     }
 
     private HelpDescriptor[] fetchHelpDescriptors() {
-        return environmentDetector.isDevelopment() ? applicationContext.getBeansOfType(HelpDescriptor.class).values().toArray(new HelpDescriptor[]{}) : helpDescriptors;
+        return applicationContext.getBeansOfType(HelpDescriptor.class).values().toArray(new HelpDescriptor[]{});
     }
 
     @Override
