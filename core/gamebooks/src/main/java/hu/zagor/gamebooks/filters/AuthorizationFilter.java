@@ -11,6 +11,8 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -28,8 +30,8 @@ import org.slf4j.LoggerFactory;
  */
 public class AuthorizationFilter extends AbstractHttpFilter {
 
-    private static final int REQUEST_URL_PREFIX_LENGTH = (PageAddresses.ROOT_CONTEXT + PageAddresses.BOOK_PAGE).length() + 1;
     private static final String LAST_PAGE_BEFORE_REDIRECT = "lastPageBeforeRedirect";
+    private static final Pattern BOOK_ID_PATTERN = Pattern.compile("\\/gamebooks\\/book\\/([0-9]+)\\/(?!resources)");
 
     private final Logger logger = LoggerFactory.getLogger(AuthorizationFilter.class);
     private List<String> alloweds;
@@ -88,11 +90,9 @@ public class AuthorizationFilter extends AbstractHttpFilter {
 
     private String fetchBookId(final String requestUri) {
         String bookId = null;
-        if (requestUri.startsWith(PageAddresses.ROOT_CONTEXT + PageAddresses.BOOK_PAGE + "/")) {
-            bookId = requestUri.substring(REQUEST_URL_PREFIX_LENGTH, requestUri.indexOf("/", REQUEST_URL_PREFIX_LENGTH));
-            if (!bookId.matches("[0-9]+")) {
-                bookId = null;
-            }
+        final Matcher matcher = BOOK_ID_PATTERN.matcher(requestUri);
+        if (matcher.find()) {
+            bookId = matcher.group(1);
         }
         return bookId;
     }
