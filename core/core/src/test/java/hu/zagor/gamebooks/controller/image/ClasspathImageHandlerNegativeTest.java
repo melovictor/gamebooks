@@ -3,6 +3,10 @@ package hu.zagor.gamebooks.controller.image;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import hu.zagor.gamebooks.controller.domain.ImageLocation;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
+import hu.zagor.gamebooks.support.stream.IoUtilsWrapper;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,20 +15,13 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import org.apache.commons.io.IOUtils;
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
-import org.powermock.api.easymock.PowerMock;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.testng.PowerMockObjectFactory;
-import org.powermock.reflect.Whitebox;
+import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.springframework.core.io.Resource;
-import org.testng.IObjectFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.ObjectFactory;
 import org.testng.annotations.Test;
 
 /**
@@ -32,46 +29,41 @@ import org.testng.annotations.Test;
  * @author Tamas_Szekeres
  */
 @Test
-@PrepareForTest(IOUtils.class)
 public class ClasspathImageHandlerNegativeTest {
 
     private static final String HU = "hu";
     private static final String FILE = "fileName";
     private static final String DIR = "dirName";
+    @UnderTest
     private ClasspathImageHandler underTest;
+    @MockControl
     private IMocksControl mockControl;
+    @Inject
     private Logger logger;
+    @Mock
     private OutputStream response;
+    @Mock
     private ImageLocation imageLocation;
     private Locale locale;
+    @Mock
     private ImageLookupStrategy strategy;
+    @Mock
     private Resource resource;
+    @Mock
     private InputStream inputStream;
-
-    @ObjectFactory
-    public IObjectFactory getObjectFactory() {
-        return new PowerMockObjectFactory();
-    }
+    @Inject
+    private IoUtilsWrapper ioUtilsWrapper;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        logger = mockControl.createMock(Logger.class);
-        response = mockControl.createMock(OutputStream.class);
-        imageLocation = mockControl.createMock(ImageLocation.class);
-        strategy = mockControl.createMock(ImageLookupStrategy.class);
-        resource = mockControl.createMock(Resource.class);
-        inputStream = mockControl.createMock(InputStream.class);
         locale = new Locale(HU);
     }
 
     @BeforeMethod
     public void setUpMethod() {
-        underTest = new ClasspathImageHandler();
         final Map<ImageLookupStrategyType, ImageLookupStrategy> lookupStrategies = new HashMap<ImageLookupStrategyType, ImageLookupStrategy>();
         lookupStrategies.put(ImageLookupStrategyType.BW_COLOR, strategy);
         underTest.setLookupStrategies(lookupStrategies);
-        Whitebox.setInternalState(underTest, "logger", logger);
         mockControl.reset();
     }
 
@@ -116,10 +108,8 @@ public class ClasspathImageHandlerNegativeTest {
         expect(strategy.getImageResourcesFromDir(DIR, FILE)).andReturn(new Resource[]{resource});
 
         expect(resource.getInputStream()).andReturn(inputStream);
-        PowerMock.mockStatic(IOUtils.class);
-        expect(IOUtils.copy(inputStream, response)).andThrow(new IOException());
+        expect(ioUtilsWrapper.copy(inputStream, response)).andThrow(new IOException());
         inputStream.close();
-        PowerMock.replay(IOUtils.class);
         mockControl.replay();
         // WHEN
         underTest.handleImage(response, imageLocation, ImageLookupStrategyType.BW_COLOR, false);
@@ -140,11 +130,9 @@ public class ClasspathImageHandlerNegativeTest {
         expect(strategy.getImageResourcesFromDir(DIR, FILE)).andReturn(new Resource[]{resource});
 
         expect(resource.getInputStream()).andReturn(inputStream);
-        PowerMock.mockStatic(IOUtils.class);
-        expect(IOUtils.copy(inputStream, response)).andThrow(new IOException());
+        expect(ioUtilsWrapper.copy(inputStream, response)).andThrow(new IOException());
         inputStream.close();
         expectLastCall().andThrow(new IOException());
-        PowerMock.replay(IOUtils.class);
         mockControl.replay();
         // WHEN
         underTest.handleImage(response, imageLocation, ImageLookupStrategyType.BW_COLOR, false);
@@ -165,7 +153,6 @@ public class ClasspathImageHandlerNegativeTest {
         expect(strategy.getImageResourcesFromDir(DIR, FILE)).andReturn(new Resource[]{resource});
 
         expect(resource.getInputStream()).andThrow(new IOException());
-        PowerMock.replay(IOUtils.class);
         mockControl.replay();
         // WHEN
         underTest.handleImage(response, imageLocation, ImageLookupStrategyType.BW_COLOR, false);
@@ -186,11 +173,9 @@ public class ClasspathImageHandlerNegativeTest {
         expect(strategy.getImageResourcesFromDir(DIR, FILE)).andReturn(new Resource[]{resource});
 
         expect(resource.getInputStream()).andReturn(inputStream);
-        PowerMock.mockStatic(IOUtils.class);
-        expect(IOUtils.copy(inputStream, response)).andReturn(1000);
+        expect(ioUtilsWrapper.copy(inputStream, response)).andReturn(1000);
         inputStream.close();
         expectLastCall().andThrow(new IOException());
-        PowerMock.replay(IOUtils.class);
         mockControl.replay();
         // WHEN
         underTest.handleImage(response, imageLocation, ImageLookupStrategyType.BW_COLOR, false);
@@ -211,9 +196,7 @@ public class ClasspathImageHandlerNegativeTest {
         expect(strategy.getImageResourcesFromDir(DIR, FILE)).andReturn(new Resource[]{resource});
 
         expect(resource.getInputStream()).andReturn(null);
-        PowerMock.mockStatic(IOUtils.class);
-        expect(IOUtils.copy((InputStream) null, response)).andThrow(new IOException());
-        PowerMock.replay(IOUtils.class);
+        expect(ioUtilsWrapper.copy((InputStream) null, response)).andThrow(new IOException());
         mockControl.replay();
         // WHEN
         underTest.handleImage(response, imageLocation, ImageLookupStrategyType.BW_COLOR, false);

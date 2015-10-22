@@ -11,9 +11,9 @@ import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.player.PlayerUser;
-import hu.zagor.gamebooks.support.mock.EasyMockAnnotations;
-import hu.zagor.gamebooks.support.mock.Inject;
-import hu.zagor.gamebooks.support.mock.UnderTest;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 
 import java.util.Map;
 
@@ -43,7 +43,7 @@ public class GenericBookSaveControllerTest {
 
     @UnderTest
     private GenericBookSaveController underTest;
-
+    @MockControl
     private IMocksControl mockControl;
     private BookInformations info;
     @Mock
@@ -72,7 +72,6 @@ public class GenericBookSaveControllerTest {
 
     @BeforeClass
     public void setUpClass() {
-        EasyMockAnnotations.initialize(this);
         info = new BookInformations(BOOK_ID);
         Whitebox.setInternalState(underTest, "info", info);
     }

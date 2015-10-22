@@ -7,6 +7,7 @@ import hu.zagor.gamebooks.books.saving.xml.exception.WriterAlreadyClosedExceptio
 import hu.zagor.gamebooks.books.saving.xml.exception.WriterAlreadyOpenedException;
 import hu.zagor.gamebooks.books.saving.xml.exception.WriterNotYetClosedException;
 import hu.zagor.gamebooks.books.saving.xml.exception.WriterNotYetOpenedException;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
@@ -18,10 +19,9 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.EndDocument;
 import javax.xml.stream.events.StartDocument;
 
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -37,22 +37,18 @@ public class DefaultXmlNodeWriterNegativeTest {
     private static final String TYPE = "java.lang.String";
 
     private DefaultXmlNodeWriter underTest;
+    @MockControl
     private IMocksControl mockControl;
+    @Mock
     private XMLOutputFactory outputFactory;
+    @Mock
     private XMLEventFactory eventFactory;
+    @Mock
     private XMLEventWriter eventWriter;
+    @Mock
     private StartDocument startDocument;
+    @Mock
     private EndDocument endDocument;
-
-    @BeforeClass
-    public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        outputFactory = mockControl.createMock(XMLOutputFactory.class);
-        eventFactory = mockControl.createMock(XMLEventFactory.class);
-        eventWriter = mockControl.createMock(XMLEventWriter.class);
-        startDocument = mockControl.createMock(StartDocument.class);
-        endDocument = mockControl.createMock(EndDocument.class);
-    }
 
     @BeforeMethod
     public void setUpMethod() {

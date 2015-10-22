@@ -1,4 +1,4 @@
-package hu.zagor.gamebooks.support.mock;
+package hu.zagor.gamebooks.support.mock.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -11,6 +11,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -23,13 +24,14 @@ public class DomXmlParser implements XmlParser {
 
     @LogInject
     private Logger logger;
+    @Autowired
+    private DocumentBuilderFactory builderFactory;
 
     @Override
     public Document getXmlFileContent(final InputStream inputStream) {
         Assert.notNull(inputStream, "The parameter 'inputStream' cannot be null!");
         Document document = null;
         try {
-            final DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             final DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
             document = documentBuilder.parse(inputStream);
         } catch (final ParserConfigurationException parserConfigurationException) {

@@ -24,7 +24,7 @@ public class DefaultItemFactory implements ItemFactory {
      * @param info the {@link BookInformations} bean to use later for getting the item storage
      */
     public DefaultItemFactory(final BookInformations info) {
-        Assert.notNull(info, "The parameter 'storage' cannot be null!");
+        Assert.notNull(info, "The parameter 'info' cannot be null!");
         this.info = info;
     }
 

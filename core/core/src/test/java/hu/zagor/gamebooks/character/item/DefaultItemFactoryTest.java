@@ -5,13 +5,14 @@ import hu.zagor.gamebooks.books.contentstorage.domain.BookItemStorage;
 import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.exception.InvalidItemException;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
+import org.easymock.Mock;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -24,26 +25,24 @@ public class DefaultItemFactoryTest {
 
     private static final String ITEM_ID = "3001";
     private DefaultItemFactory underTest;
+    @MockControl
     private IMocksControl mockControl;
+    @Mock
     private BookItemStorage bookItemStorage;
+    @Mock
     private Item item;
     private BookInformations info;
+    @Inject
     private BookContentInitializer contentInitializer;
 
-    @BeforeClass
-    public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-
+    @UnderTest
+    public DefaultItemFactory getUnderTest() {
         info = new BookInformations(21L);
-        bookItemStorage = mockControl.createMock(BookItemStorage.class);
-        item = mockControl.createMock(Item.class);
-        contentInitializer = mockControl.createMock(BookContentInitializer.class);
+        return new DefaultItemFactory(info);
     }
 
     @BeforeMethod
     public void setUpMethod() {
-        underTest = new DefaultItemFactory(info);
-        Whitebox.setInternalState(underTest, "contentInitializer", contentInitializer);
         mockControl.reset();
     }
 

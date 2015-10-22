@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.controller.ImageHandler;
 import hu.zagor.gamebooks.controller.domain.ImageLocation;
 import hu.zagor.gamebooks.support.logging.LogInject;
+import hu.zagor.gamebooks.support.stream.IoUtilsWrapper;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,7 +12,6 @@ import java.io.OutputStream;
 import java.util.Locale;
 import java.util.Map;
 
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -33,6 +33,8 @@ public class ClasspathImageHandler implements ImageHandler {
     @Autowired
     @Qualifier("d6")
     private RandomNumberGenerator generator;
+    @Autowired
+    private IoUtilsWrapper ioUtilsWrapper;
 
     @Override
     public void handleImage(final OutputStream response, final ImageLocation imageLocation, final ImageLookupStrategyType strategyType, final boolean randomImage)
@@ -44,7 +46,7 @@ public class ClasspathImageHandler implements ImageHandler {
         final Resource requestedResource = getImage(imageLocation, strategyType, randomImage);
         if (requestedResource != null) {
             try (InputStream resourceInputStream = requestedResource.getInputStream()) {
-                IOUtils.copy(resourceInputStream, response);
+                ioUtilsWrapper.copy(resourceInputStream, response);
             }
         } else {
             logger.warn("Couldn't find requested image.");
