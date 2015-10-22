@@ -13,9 +13,7 @@ import hu.zagor.gamebooks.support.scanner.Scanner;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -27,6 +25,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,6 +51,9 @@ public class UserLogController extends AbstractRequestWrappingController {
     private static final Pattern USERNAME = Pattern.compile("User '(.*)' logged in successfully.");
     private static final Map<String, String> USER_NAMES = new HashMap<>();
 
+    private static final DateTimeFormatter SHORT_FORMAT = DateTimeFormat.forPattern("YYYY. MMMM d.");
+    private static final DateTimeFormatter LONG_FORMAT = DateTimeFormat.forPattern("YYYY. MMMM d. HH:mm:ss");
+
     @Autowired
     private DirectoryProvider directoryProvider;
     @Autowired
@@ -65,7 +68,6 @@ public class UserLogController extends AbstractRequestWrappingController {
     @RequestMapping(value = PageAddresses.LOGS)
     public String listDirectories(final Model model, final HttpServletRequest request) {
         final HttpSessionWrapper wrapper = getWrapper(request);
-        final SimpleDateFormat sdf = new SimpleDateFormat("YYYY. MMMM dd. HH:mm:ss.S");
         String target;
         if (!wrapper.getPlayer().isAdmin()) {
             target = "redirect:" + PageAddresses.BOOK_LIST;
@@ -76,7 +78,7 @@ public class UserLogController extends AbstractRequestWrappingController {
             final File logFiles = (File) getBeanFactory().getBean("file", logDir);
             if (logFiles.exists()) {
                 for (final File file : logFiles.listFiles()) {
-                    processFile(container, archivedContainer, file, sdf);
+                    processFile(container, archivedContainer, file);
                 }
             }
             model.addAttribute("logFiles", container);
@@ -89,10 +91,10 @@ public class UserLogController extends AbstractRequestWrappingController {
         return target;
     }
 
-    private void processFile(final LogFileContainer container, final Set<String> archivedContainer, final File file, final SimpleDateFormat sdf) {
+    private void processFile(final LogFileContainer container, final Set<String> archivedContainer, final File file) {
         if (file.isFile() && file.canRead()) {
             if (file.getName().endsWith(".log")) {
-                processLogFile(container, file, sdf);
+                processLogFile(container, file);
             } else if (file.getName().endsWith(".zip")) {
                 processArchiveFile(archivedContainer, file);
             }
@@ -104,41 +106,46 @@ public class UserLogController extends AbstractRequestWrappingController {
         archivedContainer.add(fileName);
     }
 
-    private void processLogFile(final LogFileContainer container, final File file, final SimpleDateFormat sdf) {
+    private void processLogFile(final LogFileContainer container, final File file) {
         final String fileName = file.getName().replace(".log", "");
         final String[] filePieces = fileName.split("-");
+
+        final LogFileData logFileData = new LogFileData();
+        String formattedTime = null;
+
         if (filePieces.length >= GENERIC_FILE_SIZE) {
-            final LogFileData logFileData = new LogFileData();
             final String userId = filePieces[USER_ID_IDX];
-            String userName = USER_NAMES.get(userId);
             logFileData.setUserId(userId);
+            logFileData.setUserName(getUsername(logFileData, userId));
             logFileData.setTimestamp(filePieces[TIMESTAMP_IDX]);
-            if (userName == null) {
-                userName = provideUserName(userId, logFileData);
-            }
-            logFileData.setUserName(userName);
-            if (filePieces.length == BOOK_FILE_SIZE) {
-                logFileData.setBookId(filePieces[BOOK_ID_BOOK]);
-                final BookInformations info = infoFetcher.getInfoById(logFileData.getBookId());
-                logFileData.setBookName(info.getTitle());
-            }
-            final Date loginDate = new Date();
-            loginDate.setTime(Long.parseLong(logFileData.getTimestamp()));
-            logFileData.setLoginDateTime(sdf.format(loginDate));
+            setBookInformation(filePieces, logFileData);
+            formattedTime = LONG_FORMAT.print(Long.parseLong(logFileData.getTimestamp()));
             container.add(logFileData);
         } else if (filePieces.length == BASE_FILE_SIZE) {
-            final LogFileData logFileData = new LogFileData();
             final String timestamp = filePieces[1].replace("base", "0");
             logFileData.setTimestamp(timestamp.substring(1));
-            logFileData.setLoginDateTime(formatTimestamp(timestamp, sdf));
+            formattedTime = SHORT_FORMAT.print(Long.parseLong(timestamp));
             container.addBase(logFileData);
+        }
+        logFileData.setSize(file.length());
+        logFileData.setLoginDateTime(formattedTime);
+
+    }
+
+    private void setBookInformation(final String[] filePieces, final LogFileData logFileData) {
+        if (filePieces.length == BOOK_FILE_SIZE) {
+            logFileData.setBookId(filePieces[BOOK_ID_BOOK]);
+            final BookInformations info = infoFetcher.getInfoById(logFileData.getBookId());
+            logFileData.setBookName(info.getTitle());
         }
     }
 
-    private String formatTimestamp(final String timestamp, final SimpleDateFormat sdf) {
-        final Date loginDate = new Date();
-        loginDate.setTime(Long.parseLong(timestamp));
-        return sdf.format(loginDate);
+    private String getUsername(final LogFileData logFileData, final String userId) {
+        String userName = USER_NAMES.get(userId);
+        if (userName == null) {
+            userName = provideUserName(userId, logFileData);
+        }
+        return userName;
     }
 
     private String provideUserName(final String userId, final LogFileData logFileData) {

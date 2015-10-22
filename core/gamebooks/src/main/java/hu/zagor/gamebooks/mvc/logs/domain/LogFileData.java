@@ -12,6 +12,7 @@ public class LogFileData implements Comparable<LogFileData> {
     private String loginDateTime;
     private String bookId;
     private String bookName;
+    private long size;
 
     public String getTimestamp() {
         return timestamp;
@@ -76,6 +77,14 @@ public class LogFileData implements Comparable<LogFileData> {
 
     public void setBookName(final String bookName) {
         this.bookName = bookName;
+    }
+
+    public long getSize() {
+        return size;
+    }
+
+    public void setSize(final long size) {
+        this.size = size;
     }
 
 }
