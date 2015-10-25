@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
+import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -116,10 +117,10 @@ public class UserLogController extends AbstractRequestWrappingController {
         if (filePieces.length >= GENERIC_FILE_SIZE) {
             final String userId = filePieces[USER_ID_IDX];
             logFileData.setUserId(userId);
-            logFileData.setUserName(getUsername(logFileData, userId));
             logFileData.setTimestamp(filePieces[TIMESTAMP_IDX]);
+            logFileData.setUserName(getUsername(logFileData, userId));
             setBookInformation(filePieces, logFileData);
-            formattedTime = LONG_FORMAT.print(Long.parseLong(logFileData.getTimestamp()));
+            formattedTime = LONG_FORMAT.withZone(DateTimeZone.forID("Europe/Budapest")).print(Long.parseLong(logFileData.getTimestamp()));
             container.add(logFileData);
         } else if (filePieces.length == BASE_FILE_SIZE) {
             final String timestamp = filePieces[1].replace("base", "0");
