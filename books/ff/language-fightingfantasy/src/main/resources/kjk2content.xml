@@ -354,6 +354,7 @@
         [p]A festmények férfiportrékat ábrázolnak. Borsózik a hátad, amint a nyugati falon lévő festmény névtábláját olvasod. A kép Zagort, a Varázslót ábrázolja, akinek a kincsét hajszolod. Végigméred a portrét, és rádöbbensz, félelmetes ellenféllel kerültél szembe. Az az érzésed támad, mintha valaki figyelne, és észreveszed, hogy szúrós tekintetek követik minden lépésedet. Úgy érzed, a kép magához szív téged, és félni kezdesz. Elvesztettél 1 [span class="ffAttribute"]ÜGYESSÉG[/span] pontot. Van annyi bátorságod, hogy megpróbálj megküzdeni a Varázslóval?[/p]
     </text>
     <add amount="-1" to="skill" />
+    <reward id="painting" />
     <next id="90" pos="10">Ha nincs, és azonnal távozol az északi ajtón keresztül</next>
     <next id="340" pos="20">Ha inkáb átkutatod a felszerelésed egy olyan fegyverért, amelyet a Varázsló ereje ellen fel tudsz használni</next>
   </p>
@@ -972,7 +973,7 @@
         </text>
       </after>
     </itemCheck>
-    <canEat/>
+    <canEat />
     <next id="253"></next>
   </p>
   <p id="91">
@@ -1887,6 +1888,9 @@
     </text>
     <fight type="single">
       <enemy id="55" />
+      <win>
+        <reward id="dragon" />
+      </win>
     </fight>
     <next id="371"></next>
   </p>
@@ -1909,6 +1913,7 @@
         [p class="inlineImage"][img src="resources/ff1/155.jpg" /][/p]
         [p]Az ajtó hosszában kettészakad, szétfeszegeted a léceket, hogy bejuss. Az egyik falon egy fáklya ég, és egy kis fegyverraktárat világít meg lángja. A raktárban kardok, pajzsok, sisakok, tőrök, mellvértek és hasonlók hevernek. Átvizsgálod a fegyverzetet, de semmi olyat sem találsz, ami felül tudná múlni saját kardodat. De azért egy kör alakú [span class="replaceItem" data-id="3005" data-amount="1"]vaspajzson[/span] megakad a tekinteted, talán a közepén lévő arany félhold miatt. Felemeled, kipróbálod, hogyan áll a kezedben. Ha magaddal akarod vinni, megteheted, segítségedre lehet a csatában, ki tudja védeni azokat a sebeket, amelyeket különféle lények ejtenek rajtad. A továbbiakban, ha egy teremtmény megsebez – miközben ezt a pajzsot használod –, dobhatsz egy kockával. Ha 6-ost dobsz, a lény a szokásos 2 pont helyett csak 1 pontnyi sebet ejtett rajtad. Ha valami egyéb ok miatt az ellenfeled csak 1 pontos sebet okoz neked, szerencsés 6-os dobásod ezt semlegesíti, nem sérültél meg. Mivel azonban a pajzs nehéz, Felszerelésed egy tárgyát itt kell hagynod helyette. Távozol a szobából, és továbbhaladsz a folyosón.[/p]
     </text>
+    <reward id="shield" />
     <next id="300"></next>
   </p>
   <p id="156">
@@ -1945,6 +1950,7 @@
     <fight type="single">
       <enemy id="34" />
       <win>
+        <reward id="piranha" />
         <text>
             [p]Sikerül kievickélni a vízből, a partra rogysz pihenni. Elfogyaszthatod élelmiszerkészleted egy részét is.[/p]
         </text>
@@ -2378,6 +2384,7 @@
         [p]Felpróbálod a sisakot. Pont jó a fejedre. Hirtelen égető fájdalom sugárzik át homlokodon. Nem tudsz világosan gondolkozni. Ez egy elátkozott sisak, és akárhogy szeretnéd, nem bírod levenni. 1 [span class="ffAttribute"]ÜGYESSÉG[/span] pontot veszítesz. A fájdalom hamarosan alábbhagy, de a sisaktól nem tudsz megszabadulni. Visszatámolyogsz az elágazásig, miközben kétségbeesetten próbálod összeszedni magad.[/p]
     </text>
     <gatherItem id="3017" />
+    <reward id="helmet" />
     <next id="87"></next>
   </p>
   <p id="203">
@@ -2835,6 +2842,7 @@
         </text>
       </lose>
       <win>
+        <reward id="ghoul" />
         <next id="390"></next>
       </win>
     </fight>
@@ -2959,7 +2967,7 @@
         [p]A doboz könnyű, de valami csörög benne. Felemeled a fedelét, és egy kicsi Kígyó pattan ki belőle, egyenest a csuklódnak támad. Meg kell küzdened vele![/p]
     </text>
     <fight type="single">
-    <enemy id="3"/>
+      <enemy id="3" />
     </fight>
     <next id="145"></next>
   </p>
@@ -3079,6 +3087,7 @@
         <next id="66"></next>
       </flee>
       <win>
+        <reward id="dog" />
         <text>
             [p]1 [span class="ffAttribute"]Szerencse[/span] pontot nyersz, amiért sikerült végezned a bestiával. Ha akarsz, elmenekülhetsz a déli ajtón keresztül de ekkor nem lesz rá lehetőséged, hogy bármit is magaddal vigyél.[/p]
         </text>
@@ -3846,6 +3855,7 @@
     <text>
         [p]Levágod köteleiről a Törpét. Valóban, ahogy sejtetted, halott. Átkutatod a két Goblin zsebeit, és egy nagy darab, jó illatú [span class="takeItem" data-id="3006" data-amount="1"]sajtra[/span] bukkansz. Ha magaddal akarod vinni, tedd a hátizsákodba, és menj tovább észak felé.[/p]
     </text>
+    <reward id="cheese" />
     <next id="303"></next>
   </p>
   <p id="318">
@@ -3894,6 +3904,7 @@
         [p]Fejedre helyezed a sisakot. Éppen jó rá. Valami elkezd izzani benned, és ez az izzás elárasztja egész testedet. Úgy érzed, olyan erős és mindenekelőtt olyan magabiztos vagy, mint még soha. A sisak varázserővel van megáldva, s ezentúl, amikor kockavetéssel meghatározod Támadóerődet, 1 ponttal mindig többet számolj, egészen addig, amíg a sisak a fejeden van. Visszatérsz az elágazáshoz.[/p]
     </text>
     <gatherItem id="3018" />
+    <reward id="ironhelm" />
     <next id="87"></next>
   </p>
   <p id="326">
@@ -4346,6 +4357,7 @@
         <fight type="single">
           <enemy id="33" />
           <win>
+            <reward id="piranha" />
             <text>
                 [p]Végre partra úszhatsz. Ehetsz Élelmiszeredből, és szerencsédért visszakapsz 1 [span class="ffAttribute"]Szerencse[/span] pontot.[/p]
             </text>
@@ -4362,6 +4374,7 @@
             <fight type="single">
               <enemy id="32" />
               <win>
+                <reward id="piranha" />
                 <text>
                     [p]Végre partra úszhatsz. Ehetsz Élelmiszeredből.[/p]
                 </text>
@@ -4375,6 +4388,7 @@
             <fight type="single">
               <enemy id="33" />
               <win>
+                <reward id="piranha" />
                 <text>
                     [p]Végre partra úszhatsz. Ehetsz Élelmiszeredből, és szerencsédért visszakapsz 1 [span class="ffAttribute"]Szerencse[/span] pontot.[/p]
                 </text>
