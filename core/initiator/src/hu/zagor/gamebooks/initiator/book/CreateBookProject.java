@@ -10,7 +10,7 @@ public class CreateBookProject {
 
         books.add(getSotkEn(true));
         books.add(getSotkHu(true));
-        books.add(getSotkPtBr(true));
+        books.add(getSotkPtBr(false));
 
         new GenerateBookProjectFiles().generateBookProjectFiles(getBaseData(), books);
     }
@@ -20,8 +20,8 @@ public class CreateBookProject {
     private BookBaseData getBaseData() {
 
         baseData.setSeriesCode("ff");
-        baseData.setTitleCode("twofm");
-        baseData.setPosition(1);
+        baseData.setTitleCode("mom");
+        baseData.setPosition(23);
         baseData.setCollectorCode("ff");
         baseData.setCollectorName("fightingfantasy");
         baseData.setRuleset("ff");
@@ -31,6 +31,7 @@ public class CreateBookProject {
         baseData.setHasMap(false);
         baseData.setMediaProject(true);
         baseData.setDefaultSkillTestType("Le"); // Le: lower or equal; L: lower; if neither, should be empty!
+        baseData.setCharPageRequired(true);
 
         return baseData;
     }
@@ -49,10 +50,10 @@ public class CreateBookProject {
     private BookLangData getSotkHu(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setSeriesCode("kjk");
-        data.setPosition(2);
-        data.setBookId("KalandJatekKockazat.A_TUZHEGY_VARAZSLOJA");
+        data.setPosition(15);
+        data.setBookId("KalandJatekKockazat.A_PUSZTITAS_MASZKJAI");
         data.setLang("hu");
-        data.setTitle("A Tűzhegy varázslója");
+        data.setTitle("A Pusztítás Maszkjai");
         data.setGeneratable(shouldBeGenerated);
         return data;
     }
@@ -60,9 +61,9 @@ public class CreateBookProject {
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setHidden(true);
-        data.setBookId("FightingFantasy.THE_WARLOCK_OF_FIRETOP_MOUNTAIN");
+        data.setBookId("FightingFantasy.MASKS_OF_MAYHEM");
         data.setLang("en");
-        data.setTitle("The Warlock of Firetop Mountain");
+        data.setTitle("Masks of Mayhem");
         data.setGeneratable(shouldBeGenerated);
         return data;
     }

@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd">
+  <p id="back_cover">
+    <text>
+        [p class="ffBackCoverTitle"]Könyv és játék az, amit a kezedben tartasz. A főhős TE vagy. [/p]
+        [p]Krill Garnash varázslónője, a gonosz Morgana arra készül, hogy szabadon engedje a pusztító maszkokkal felruházott, roppant hatalommal rendelkező rettegett Gólemeket. Csak TE vagy rá képes, hogy megtaláld és elpusztítsd Morganát. Utadon számtalan veszély leselkedik Rád, de ha elég erős, ügyes és szerencsés vagy, megmentheted a pusztulástól városodat, a virágzó, gazdag Ariont. [/p]
+        [p]TE döntöd el, mikor, melyik utat választod, milyen csellel kerülsz ki a csapdákból, melyik teremtménnyel csapsz össze.[/p]
+    </text>
+    <next id="generate" />
+  </p>
+  <p id="generate" display="Karakter létrehozása">
+    <text>
+        [p][span class="ffAttribute"]Ügyesség[/span]: [span id="ffSkill"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Életerő[/span]: [span id="ffStamina"]dobj két kockával és adj 12-t a dobott számhoz[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Szerencse[/span]: [span id="ffLuck"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p]Válassz egy italt:
+          [select id="ffDefaultPotion"]
+              [option value="2001" selected="selected"]Ügyesség Itala[/option]
+              [option value="2002"]Erő Itala[/option]
+              [option value="2003"]Szerencse Itala[/option]
+          [/select]
+        [/p]
+        [button data-generator-button="ff"]Karakter létrehozása[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="Háttértörténet">
+    <text>
+        [p]A Khul északkeleti részében lévő Arion királyság nemes és igazságos uralkodója vagy. Néped boldog, a földek virágoznak, országodat azonban veszély fenyegeti.[/p]
+        [p]Egy napon udvari varázslód, Ifor Tynin hívat. Bár te vagy az uralkodó, mágikus tudománya veled egyenlő rangra emelte. Közösen kormányozzátok ugyan az országot, de te mindig gyanakvással szemlélted mindazokat, akik a varázslás mesterségével foglalkoznak.[/p]
+        [p]Ifor Tynin rögtön a tárgyra tér. - Biztosan hallottál már Morganáról, a varázslónőről, aki az északi hegyekben, a Krill Garnash öt csúcsa közt tanyázik. Asztráltestemben eljutottam hozzá, és kilestem, milyen gonosz terveket sző. Van a világon tizenkét szimbólum, tizenkét pecsét, mely hatalmat biztosít mindenek fölött. Ezeket mi, mágusok már régóta ismerjük, hisz enélkül nem tudnánk elősegíteni a világ fejlődését Annak ellenére, hogy a Vének Tanácsa a Morganákhoz hasonlóknak nem szolgáltatja ki a pecsétek titkát, ő mégis tudomást szerzett róluk. Eleddig tizenegy maszkot készített, tizenegy pecséttel és élettelen Kőgólemek fejére illesztette azokat. Már csak a tizenkettedikre van szüksége, mely összekapcsolja a többit és erőt ad nekik. Ettől fogva hatalma lesz minden élő és élettelen teremtmény fölött - és rászabadítja a világra a Gólemeit. Azoknak pedig semmi és senki nem tud majd ellenállni, hisz rajtuk a pecsét. Élőholt teremtményeivel romlást hoz majd a világra, mert a maszkokat a pusztítás erejével ruházta fel, és már csak az utolsóra van szüksége, hogy hatalma teljes legyen. Meg kell ölnöd Morganát! Az ország nemesszívű uralkodója és legdicsőbb harcosa vagy. Csak te járhatsz sikerrel![/p]
+        [p]- De hát miért nem tesz valamit ellene a Vének Tanácsa? - vágsz közbe.[/p]
+        [p]Válasza zord: - Egy ilyen hatalmas mágikus ütközetben olyan erők szabadulnak el, melyek nagyobb pusztítást okozhatnak, mint maguk a Gólemek. Csak egy hozzád hasonló tiszta szívű harcos képes a mi mágikus tudományunknak ellenszegülni, akár gonosz a varázslat, akár jó. Tehát rád van szükség, hogy tervünk sikerüljön.[/p]
+        [p]Szavai nyomán rémület és kíváncsiság tölt el. Gyorsan fölkészülsz, és másnap korán reggel nekivágsz az útnak.[/p]
+    </text>
+    <gatherItem id="defWpn" />
+    <gatherItem id="1001" />
+    <gatherItem id="2000" amount="10" />
+    <gatherItem id="3001" />
+    <gatherItem id="3004" />
+    <next id="1"></next>
+  </p>
+  <p id="1">
+    <text>
+        [p class="inlineImage"][img src="resources/ff23/1.jpg" /][/p]
+        [p]Indulás előtt a fegyvertárba mész. Biztoskezű Kevin, az öregedő fegyverkovács mindig is jó barátod volt. Most is a te kardodat élesíti, és a [span class="takeItem" data-id="3002" data-amount="1"]sisakodat[/span] fényesíti különös, egyszerű masináján. Ez a sisak apáról fiúra szállt Arion uralkodói közt, és a legenda szerint, ha valaha is gonosz kézbe kerülne, káosz és romlás sújtaná a várost.[/p]
+        [p]Amint a sisakot a fejedre illeszted, és kardodat az övedre csatolod, Kevin, mintha csak attól tartana, hogy valaki meghallja, odasúgja neked: - Felség, Fakóvölgy ura, Hever vára felé indulj. Krill Garnashban a gonosz vár rád, de Hevernek van egy kürtje, amelynek a hangja rémületet kelt minden gonosz szívben. Ezért hát azt mondom, keresd fel Hevert és szerezd meg tőle a kürtöt.[/p]
+        [p]Ezzel elfordul, és te elindulsz Arion kövezett utcáin az északi kapu - a Koponyák kapuja felé.[/p]
+    </text>
+    <next id="53"></next>
+  </p>
+  <p id="53">
+    <text>
+        [p]Biztoskezű Kevin tanácsa értékesnek tűnik. Nem messze, Ariontól északra fekszik a hatalmas Holt tó, annak északi partján pedig Fakóvölgy. Ha onnan észak-északkeletnek tartasz a Dárdanyél síkságon át, és keletről kerülöd meg a Gonosz Mocsarat, a dombokon és hegyeken át könnyen elérheted célodat, a Krill Garnash öt hófödte felhőkbe vesző csúcsát. Néhány napi könnyű út után - közben gyakran találtál bővizű forrást és élelmet, így nem kellett az Élelmiszerkészletedből fogyasztanod - eléred a Holt tó déli partját. Tudomásod szerint ez a civilizáció pereme. Ezen túl Arion népe már nem ismeri a járást. A Holt tavon emberemlékezet óta nem kelt át senki. Az emberek úgy tartják, hogy a tó mélye elmondhatatlan rémségeket rejt, és a tó titokzatos és különös áramlatai a nyugodt, mozdulatlan vizet hirtelen örvényekké és toronymagas hullámokká változtatják. Mindazonáltal a legrövidebb út a tavon át vezet.[/p]
+    </text>
+    <next id="109">Ha hős harcosként tutajt építesz, és áthajózol a tavon</next>
+    <next id="245">Ha megkerülöd keletről, a dombokon át</next>
+    <next id="21">Ha nyugatról kerülöd meg a tavat az Affen erdőn át</next>
+  </p>
+  <p id="109">
+    <text>
+        [p]Mire elkészül a tutajod, leszáll az éj. Különös, hogy amikor vízre bocsátod, a tó felszíne nem fodrozódik, és a hold csillogó korongja sem tükröződik a vízen. Alig evezel száz métert, amikor öt vaskos, erős csáp megfog, és örökre leránt a mélybe.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="245">
+    <text>
+        [p]Utad először dombok közt vezet. Apró állatok surrannak a fűben és a sóska között. A köztük álló néhány fát a szél eltorzította a hosszú évtizedek alatt. Ha akarsz, eltehetsz egy kis [span class="takeItem" data-id="3003" data-amount="1"]sóskát[/span] a hátizsákodba. A nap lassan lebukik a tó túlpartját borító erdő mögé, miközben északnak mész utadon.[/p]
+    </text>
+    <next id="230">Ha letáborozol itt a tóparton</next>
+    <next id="303">Ha folytatod utadat az egyre sűrűsödő sötétben</next>
+  </p>
+  <p id="230">
+    <text>
+        [p]Nincs elég fa, hogy tüzet rakj, hiába van nálad kova és acél. Elrágcsálsz néhány nyers bogyót, és kulacsod vizével csillapítod szomjadat.[/p]
+    </text>
+    <next id="39">Ha újratöltöd a kulacsodat a tó vizével</next>
+    <next id="76">Ha rögtön aludni térsz</next>
+  </p>
+  <p id="303">
+    <text>
+        [p]Az éjszaka leszállt, és a kövér hold az égre emelkedett. Mikor egy alacsonyabb domb tetejére érsz, nem messze, lent a völgyben tábortüzet pillantasz meg. Két emberszerű alakot látsz a tűz körül, de innen nem tudod megállapítani, melyik fajhoz tartoznak.[/p]
+    </text>
+    <next id="89">Ha odamész a tűzhöz, hogy közelebbről megnézd őket</next>
+    <next id="186">Ha elkerülöd ezt a területet és folytatod az utat</next>
+  </p>
+  <p id="39">
+    <text>
+        [p]Lefekszel a parton, és kulacsodat a vízbe meríted. Először úgy látod, minden rendben van, de majd legközelebb, ha inni akarsz, felfedezed, hogy a víz poshadt, és a kulacs is szétrohadt tőle. Amíg nem találsz egy másik kulacsot, az Élelmed csak 3 ÉLETERŐ pontot ér a szokásos 4 helyett. Nyugodtan hajtod álomra a fejedet, hisz még nem tudsz róla, milyen balszerencse ért.[/p]
+    </text>
+    <changeItem attribute="stamina" id="2000" set="3" />
+    <loseItem id="3004" />
+    <next id="76"></next>
+  </p>
+  <p id="76">
+    <text>
+        [p]Olyan mélyen alszol, mintha mit se törődnél a világ dolgaival. Hajnalban azonban valami megzavarja a tó sima víztükrét. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="135"></next>
+      </success>
+      <failure>
+        <next id="280"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="280">
+    <text>
+        [p]Nem ébredsz föl, amikor öt nyálkás csáp tekeredik köréd és a Kraken hatalmas szájába húz. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="135">
+    <text>
+        [p]Álmaid hirtelen megváltoznak, és felriadsz. - Kevin! Ne! - sikoltod. De rémálmod emléke nyomban elhalványul, amikor a holdfényben meglátod, hogy a Kraken nyálkás csápjai feléd kígyóznak a tóból.[/p]
+    </text>
+    <next id="183">Ha elfutsz</next>
+    <next id="307">Ha harcolsz</next>
+  </p>
+  <p id="183">
+    <text>
+        [p]A nagy sietségben kiejtesz néhány adag Élelmet a hátizsákodból.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <text>[p]1 adag élelmet vesztettél el.[/p]</text>
+        <loseItem id="2000" amount="1" />
+      </result>
+      <result max="2" min="2">
+        <text>[p]2 adag élelmet vesztettél el.[/p]</text>
+        <loseItem id="2000" amount="2" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]3 adag élelmet vesztettél el.[/p]</text>
+        <loseItem id="2000" amount="3" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]4 adag élelmet vesztettél el.[/p]</text>
+        <loseItem id="2000" amount="4" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]5 adag élelmet vesztettél el.[/p]</text>
+        <loseItem id="2000" amount="5" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]6 adag élelmet vesztettél el.[/p]</text>
+        <loseItem id="2000" amount="6" />
+      </result>
+      <after>
+        <text>
+            [p]Lassan lenyugszik a hold, és te a sötétben mész tovább, magad sem tudod, hogy merre. Hajnalban pára száll fel a tóról, tovább rontva a helyzetet. Vesztesz 1 ÉLETERŐ pontot, mert nem aludtál.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+      </after>
+    </random>
+    <next id="108"></next>
+  </p>
+  <p id="108">
+    <text>
+        [p]Tétován állsz a párába borult tó partján.[/p]
+    </text>
+    <next id="27">Ha megvárod, míg a köd eloszlik</next>
+    <next id="138">Ha rá se hederítesz és továbbmész</next>
+  </p>
+  <p id="307">
+    <text>
+        [p]A Kraken félelmetes feje és rémes, csattogó állkapcsa is kibukik a vízből az öt csáp mögött.[/p]
+    </text>
+    <next id="157">Ha közelebb mész hozzá, bár tudod, milyen veszélyesek a csápjai, de abban reménykedsz, hogy egyetlen csapással végezhetsz a szörnnyel</next>
+    <next id="330">Ha inkább nekitámadsz a csápjainak</next>
+  </p>
+  <p id="157">
+    <test against="skill">
+      <success>
+        <next id="12"></next>
+      </success>
+      <failure>
+        <next id="216"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="216">
+    <text>
+        [p]Erőfeszítésed csak fölidegesítette a szörnyet, és az egyik csápjával lesújt rád. Kiveri a kardot a kezedből, és mielőtt visszaszerezhetnéd, máris a Kraken szájában vagy. A tó savas vize még a csontjaidat is feloldja.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="12">
+    <text>
+        [p]Keresztüldöföd a kardoddal a Kraken kemény szarupáncélját és lágy belső részeit. A szörny végzetes sebet kapott, de haláltusájában összevissza csapkod, és a csápjai eltalálnak. Vesztesz 2 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="85"></next>
+  </p>
+  <p id="85">
+    <text>
+        [p]Lihegve rogysz le a nehéz harc után. Legnagyobb csodálkozásodra egyszer csak észreveszed, hogy egy kísértetsereg közelít feléd a tavon át. Legalább negyvenen lehetnek, és letűnt korok szakadozott páncéljait viselik. Azonnal talpra ugrasz. Bár a testük áttetsző, elég erősek lehetnek ahhoz, hogy komoly sebeket ejtsenek rajtad. Míg azon töprengsz, mit is kéne tenni, egyikük a partra lép. Életében hosszú hajú, komor, de nemes vonású férfi lehetett. - Ne félj - suttogja kísérteties hangon. - Nagy szolgálatot tettél nekünk. A Kraken halálával mi, egykori áldozatai, most végre megszabadulunk a kísértés gyötrelmeitől. De tudjuk, mivel tartozunk neked. Mielőtt végső nyugalomra térnénk az alvilágba, egyszer segítünk küldetésedben. Azt tanácsolom, hogy csak a legvégső esetben hívj minket. Ha a nevemet kiáltod, azonnal ott termünk. Csak annyit kell mondanod: Galrin. - Ezzel a kísértethad eltűnik. Kapsz 2 SZERENCSE pontot. Úgy döntesz, nem töltesz több időt a tóparton, hanem továbbindulsz északkeletnek, a dombokon át. Hajnalra azonban sűrű köd lepi be a tájat, és nemsokára teljesen eltévedsz.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <next id="108"></next>
+  </p>
+  <p id="330">
+    <text>
+        [p]A csápok kettesével sújtanak le rád. Az első csáp ellen minden alkalommal a szokásos módon határozd meg a Támadóerődet, és dobókockával határozd meg a másik csáp Támadóerejét is. Ha a másik csáp Támadóereje nagyobb a tiednél, megsebzett. Ha kisebb vagy ugyanannyi, akkor sem sebezted meg, csupán kivédted a támadást. Ha levágtad az első csápot, a másodikkal harcolsz a szokott módon, majd a harmadik támad rád szabadon, és így tovább, amíg mindet le nem győzöd... ha egyáltalán eljutsz odáig.[/p]
+        [p]Bármikor elmenekülhetsz, de a csápok további 2 ÉLETERŐ pontot sebeznek rajtad, amíg összekapkodod a felszerelésedet és menekülsz.[/p]
+    </text>
+    <fight type="alwaysTwo">
+      <enemy id="1" />
+      <enemy id="2" />
+      <enemy id="3" />
+      <enemy id="4" />
+      <enemy id="5" />
+      <fleeing />
+      <flee>
+        <next id="183"></next>
+      </flee>
+      <win>
+        <next id="85"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="89">
+    <text>
+        [p]Megbotlasz egy kőben, és legurulsz a lejtőn. A tűztől nem messze szerencsésen landolsz.[/p]
+    </text>
+    <next id="254"></next>
+  </p>
+  <p id="186">
+    <text>
+        [p]Ahogy megfordulsz, hogy továbbmenj, belelépsz egy ürgelyukba, kificamítod a bokádat, vesztesz 1 ÜGYESSÉG pontot, és a földre rogysz. A kardod markolata egy kőnek csapódik. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="337"></next>
+      </success>
+      <failure>
+        <next id="310"></next>
+      </failure>
+    </test>
+    <add amount="-1" to="skill" />
+  </p>
+  <p id="310">
+    <text>
+        [p]A sisakod leesik, és legurul a lejtőn. Sikerül visszaszerezni, de a lendületed továbbragad.[/p]
+    </text>
+    <next id="89"></next>
+  </p>
+  <p id="337">
+    <text>
+        [p]A táborozók, akárkik legyenek is, nem hallanak meg, és te folytatod utad az éjszakában. Vesztesz 2 ÉLETERŐ pontot, mert nem aludtál. Hajnalban sűrű pára száll fel a tóról, és már nem tudod, merre jársz.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="108"></next>
+  </p>
+  <p id="254">
+    <text>
+        [p]Két Feketeszívű vadász táborába botlottál. A Feketeszívűek népe gonosz - átmenet az Orkok és a Sötét Elfek között. Eddig úgy tudtad, hogy ezek nagyon ritka teremtmények, kipusztultak az ősöd, Véresbaltájú Brendan által vezetett Nagy Háborúban. Most belebotlottál kettőbe, akik valószínűleg egy közeli faluból jöttek s éppolyan gonosznak látszanak, amilyennek a legendák alapján képzelted őket. Gyorsan magukhoz térnek a felbukkanásod okozta meglepetésből, recés élű handzsárt ragadnak, és óvatosan, két oldalról közelednek feléd.[/p]
+        [p]Egyszerre kell megküzdened velük.[/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="6" />
+      <enemy id="7" />
+    </fight>
+    <next id="269">Ha itt maradsz a táborukban</next>
+    <next id="367">Ha gyorsan eliszkolsz erről a környékről</next>
+  </p>
+  <p id="269">
+    <text>
+        [p]Az éjszaka békésen telik el, hajnalban ébredsz. A tóról felszálló pára egyre sűrűbb ködöt képez, mely rátelepszik a környező dombokra. Varjak jönnek, hogy a halott vadászok szemét kivájják. A napfényben észreveszed a Feketeszívűek hátizsákjait, melyeket egy tövises rekettyebokor alá rejtettek. Találsz bennük egy erős kötelet és két medvebőrt. A prémeket inkább itt hagyod, mert csak fölösleges súlyt jelentenének, de a [span class="takeItem" data-id="3005" data-amount="1"]kötelet[/span] magadhoz veszed. Aztán folytatod az utat, de a sűrű ködben hamarosan teljesen eltévedsz.[/p]
+    </text>
+    <next id="108"></next>
+  </p>
+  <p id="367">
+    <text>
+        [p]Az aljnövényzetből feltörő hirtelen zaj megijeszt, és te hanyatt-homlok menekülsz, mintha csak egy egész csapat Feketeszívű harcos üldözne.[/p]
+    </text>
+    <next id="183"></next>
+  </p>
+  <p id="21">
+    <text>
+        [p]Nemsokára eléred az első fákat. Ahogy a tőled jobbra lévő tó mentén egyre beljebb mész az erdőbe, az örökzöld fák mind öregebbek és magasabbak, a végén már sötétzöld tetőt vonnak az út fölé. A fák között csak elvétve tör át a nap sugara. Később ezek a fények is elhalnak, ahogy északnak mész veszélyes utadon - közeleg az éjszaka.[/p]
+    </text>
+    <next id="316">Ha letáborozol itt a tóparton</next>
+    <next id="79">Ha a tópart közelébe mész, ahol kisebb fákat és egy ösvényt is találsz</next>
+    <next id="171">Ha bemész a nyugat felé elterülő erdő sűrűjébe</next>
+  </p>
+  <p id="242">
+    <empty />
+  </p>
+  <p id="316">
+    <text>
+        [p]Van elég száraz fa a környéken. Kova és acél segítségével tüzet gyújtasz, és nemsokára vidáman lobog a tábortüzed. Elrágcsálsz néhány mogyorót, és vizet iszol rá a kulacsodból.[/p]
+    </text>
+    <next id="67">Ha megtöltöd a kulacsodat a tó vizével</next>
+    <next id="226">Ha rögtön aludni térsz</next>
+  </p>
+  <p id="67">
+    <text>
+        [p]Lefekszel a parton, és kulacsodat a vízbe meríted. Először úgy látod, minden rendben van, de majd legközelebb, ha inni akarsz, fölfedezed, hogy a víz poshadt volt, és a kulacs is szétrohadt tőle. Amíg nem találsz egy másik kulacsot, az Élelmed csak 3 ÉLETERŐ pontot ér a szokásos 4 helyett. Nyugodtan hajtod álomra a fejedet, hisz még nem tudod, milyen balszerencse ért.[/p]
+    </text>
+    <loseItem id="3004" />
+    <changeItem attribute="stamina" id="2000" set="3" />
+    <next id="226"></next>
+  </p>
+  <p id="226">
+    <text>
+        [p]Mélyen alszol, mintha semmi dolgod nem lenne ezen a világon. A csöndes hajnalon valami megborzolja a tó nyugodt felszínét. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="257"></next>
+      </success>
+      <failure>
+        <next id="280"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="257">
+    <text>
+        [p]Álmaid hirtelen megváltoznak, és sikoltva ébredsz. - Kevin! Ne! - Ébren azonban valami sokkal szörnyűbbet látsz, mint a legfélelmetesebb rémálmodban. A Kraken öt nyálkás csápja kígyózik feléd a tóból. A legközelebbit félreütöd egy parázsló ággal, így egy kis időt nyersz.[/p]
+    </text>
+    <next id="361">Ha elfutsz</next>
+    <next id="322">Ha kardot rántasz és szembenézel a Krakennel</next>
+  </p>
+  <p id="361">
+    <text>
+        [p]A nagy sietségben kiejtesz néhány adag Élelmet a hátizsákodból.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <text>[p]1 adag élelmet vesztettél el.[/p]</text>
+        <loseItem id="2000" amount="1" />
+      </result>
+      <result max="2" min="2">
+        <text>[p]2 adag élelmet vesztettél el.[/p]</text>
+        <loseItem id="2000" amount="2" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]3 adag élelmet vesztettél el.[/p]</text>
+        <loseItem id="2000" amount="3" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]4 adag élelmet vesztettél el.[/p]</text>
+        <loseItem id="2000" amount="4" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]5 adag élelmet vesztettél el.[/p]</text>
+        <loseItem id="2000" amount="5" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]6 adag élelmet vesztettél el.[/p]</text>
+        <loseItem id="2000" amount="6" />
+      </result>
+      <after>
+        <text>
+            [p]A hold lassan lenyugszik, és te a koromsötét erdőben botorkálsz, csak találgatva, merre kell menned, mígnem pirkadni kezd, és a tóról felszálló pára is jelzi a hajnal közeledtét. Vesztesz 1 ÉLETERŐ pontot, mert nem aludtál.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+      </after>
+    </random>
+    <next id="398">Ha leheveredsz egy fa tövébe pihenni</next>
+    <next id="171">Ha folytatod az utat</next>
+  </p>
+  <p id="322">
+    <text>
+        [p]A Kraken tátott szájú, kísérteties feje kiemelkedik a vízből a csápok mögött, de látszik, hogy fél a tűztől és tisztes távolban marad. A csápjaival kell megküzdened.[/p]
+    </text>
+    <next id="379">Ha pusztán a karoddal harcolsz</next>
+    <next id="207">Ha megpróbálsz felkapni a tűzből egy égő ágat, hogy azt forgasd a bal kezedben, míg jobboddal a karddal hadonászol</next>
+  </p>
+  <p id="379">
+    <text>
+        [p]Egy fának veted a hátadat, és a tábortűz védelmében egyesével küzdesz meg a csápokkal, amelyek megpróbálnak köréd tekeredni és a Kraken tátongó szájába húzni.[/p]
+        [p]Bármikor elmenekülhetsz, de a csápok további 2 ÉLETERŐ pontot sebeznek rajtad, amíg összekapkodod a felszerelésedet és menekülsz.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="1" />
+      <enemy id="2" />
+      <enemy id="3" />
+      <enemy id="4" />
+      <enemy id="5" />
+      <fleeing />
+      <flee>
+        <next id="361"></next>
+      </flee>
+      <win>
+        <next id="346"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="346">
+    <text>
+        [p]Lihegve rogysz le a nehéz harc után. Legnagyobb csodálkozásodra hirtelen egy kísértetsereget pillantasz meg, amely a tavon át feléd közeleg. Talán negyvenen lehetnek, és letűnt korok páncéljait viselik. A sereg zömén már csak ruháik foszlányai lógnak. Azonnal talpra ugrasz. Bár testük áttetsző, ahhoz azért elég szilárd anyagból vannak, hogy komoly sebeket ejtsenek rajtad. Míg azon töprengsz, mit is kéne tenni, egyikük a partra lép. Életében hosszú hajú, komor, de nemes vonású férfi lehetett. - Ne félj! - suttogja kísérteties hangon. - Nagy szolgálatot tettél nekünk. A Kraken halálával mi, egykori áldozatai most végre megszabadulunk a kísértés gyötrelmétől. Tudjuk, mivel tartozunk neked. Mielőtt végső nyugalomra térnénk az alvilágba, egyszer segítünk küldetésedben. Azt tanácsolom neked, hogy csak a legvégső esetben hívj bennünket. Ha a nevemet kiáltod, azonnal ott termünk. Csak annyit kell mondanod: Galrin. - Ezzel a kísértethad eltűnik. Kapsz 2 SZERENCSE pontot.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <next id="385"></next>
+  </p>
+  <p id="385">
+    <text>
+        [p]Úgy döntesz, nem vesztegetsz több időt a tóparton, és elindulsz északnak, majd kissé nyugatnak fordulsz a sötét erdőben, míg végül már nem tudod, merre jársz. A pirkadat és a tóról fölszálló pára jelzi a hajnal közeledtét.[/p]
+    </text>
+    <next id="398">Ha lepihensz egy fa tövében</next>
+    <next id="171">Ha továbbmész</next>
+  </p>
+  <p id="171">
+    <text>
+        [p]Összevissza kanyarogsz az aljnövényzet közt, de szerencsére nem ütközöl akadályba. Minden átmenet nélkül, hirtelen fény villan néhány fán. Egy Spriggen banda táborába csöppentél - azonnal felismered őket gyermekkorod rémmeséinek leírásából. Ezek a visszataszítóan csúnya tündérek nem örökölték rokonaik jó szívét. Gyáva tolvajok, akik legszívesebben öregasszonyokat rabolnak ki, de még számodra is veszélyes ellenfelek lehetnek, mert képesek normális méretük többszörösére nőni. Hatan vannak, de ha legyőzöd az első kettőt, a többi elfut. Gyáva ellenfeleid egyenként támadnak rád.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="8" />
+      <enemy id="9" />
+    </fight>
+    <next id="106"></next>
+  </p>
+  <p id="106">
+    <text>
+        [p]A Spriggenek mindenüket hátrahagyva menekülnek. Találsz náluk [span class="takeItem" data-id="gold" data-amount="10"]10 Aranytallért[/span] és egy nagy [span class="takeItem" data-id="3006" data-amount="1"]gránátgyűrűt[/span]. Nyilvánvaló, hogy ez egy tolvajbanda volt. Úgy döntesz, hogy az éjszaka hátralévő részét a Spriggenek barátságos fényű mágikus lámpái alatt töltöd el, amelyek ugyan a napfénynél eltűnnek, de legalább addig is távol tartják a vadállatokat. Reggelig eseménytelenül telik az idő. Pirkadatkor a fák közt szállongó hajnali párában két utat találsz.[/p]
+    </text>
+    <next id="398">Ha az északkelet felé tartó úton indulsz el</next>
+    <next id="115">Ha északnyugat felé indulsz</next>
+  </p>
+  <p id="79">
+    <text>
+        [p]A part egyre ingoványosabb.[/p]
+    </text>
+    <next id="171">Ha bemész balra az erdőbe</next>
+    <next id="97">Ha a parton mész tovább</next>
+  </p>
+  <p id="97">
+    <text>
+        [p]Az iszapos talajon igen nehezen haladsz - ez 2 ÉLETERŐ pontodba kerül. Szerencsére az ingovány nem tart sokáig.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="316">Ha most megpihensz az éjszaka hátralévő részére</next>
+    <next id="234">Ha folytatod utadat a part mentén</next>
+  </p>
+  <p id="234">
+    <text>
+        [p]A keleti égbolt lassan derengeni kezd, a tóról pedig nehéz pára száll föl, jelezve, hogy közel a hajnal. Vesztesz 2 ÉLETERŐ pontot, mert nem aludtál. Egy patakhoz érsz, amely a tóba ömlik. A ködben és a sötétben nem láthatod, milyen széles, de több méter is lehet. Viszont elég lassú és nem is túl mély, már amennyire ezt a partról meglehet állapítani.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="274">Ha átkelsz rajta</next>
+    <next id="294">Ha elindulsz a parton felfelé, hátha ott keskenyebb lesz és majd ott kelsz át</next>
+  </p>
+  <p id="27">
+    <text>
+        [p]A dermesztő, hideg köd a csontodig hatol. Mozogsz, igyekszel melegen tartani magad, de így is vesztesz 2 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="362"></next>
+  </p>
+  <p id="362">
+    <text>
+        [p]Amint a köd oszlani kezd, épületeket pillantasz meg az alant elterülő sekély völgyben. Sietve beugrasz egy nagyobb kő mögé. Amikor ki mersz kémlelni a fedezékedből, látod, hogy egy elhagyatott bánya omladozó maradványai közé kerültél. Az épületek láthatóan lakatlanok. Azok legalábbis nem laknak bennük, akik építették őket.[/p]
+    </text>
+    <next id="181">Ha közelebbről megvizsgálod őket</next>
+    <next id="343">Ha elkerülöd ezt a környéket</next>
+  </p>
+  <p id="181">
+    <text>
+        [p]Merre nézel szét?[/p]
+    </text>
+    <next id="36">Ha megvizsgálod a tárnát</next>
+    <next id="212">Ha a beomlott tetejű házat nézed meg</next>
+    <next id="107">Ha az épnek látszó kunyhót</next>
+  </p>
+  <p id="36">
+    <text>
+        [p]Lenézel a tárnába, ahol kőbe ágyazott létrát látsz. Odalenn sötét van, és dohszag csapja meg az orrodat. Lemész?[/p]
+    </text>
+    <next id="343" pos="1">Ha nem, és inkább továbbindulsz</next>
+    <next id="289" pos="2">Ha lemászol a létrán</next>
+    <itemCheck type="item" id="3005">
+      <have>
+        <next id="225" pos="3">Ha odakötöd a kötelet egy biztonságosnak tűnő gerendához, és leereszkedsz</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="225">
+    <text>
+        [p]Amint leérsz az aljára, a gerenda elreped, és a köteled leesik. Ez azt jelenti, hogy erre már nem tudsz visszamászni. De megvan a köteled, épen, egészben. Mikor fölnézel, látod, hogy a létra alsó fokai hiányoznak és az akna túl széles, a fala túl sima ahhoz, hogy megmászhasd. Nincs hát kiút, hacsak nem találsz valahogy kijáratot az alagutakon át. A levegő dohos, a falakat moha és penész borítja, a plafonról pedig nedvesség csöpög le kis tócsákba. A járat két irányba vezet.[/p]
+    </text>
+    <next id="237">Ha nyugatnak indulsz</next>
+    <next id="213">Ha keletnek</next>
+  </p>
+  <p id="289">
+    <text>
+        [p]A létrán sokáig nyugodtan mész lefelé. Kisvártatva csöpögést hallasz lentről, és egyre erősödik a dohos, pállott szag. Ebből tudod, hogy közeledsz az akna aljához. A nagy nedvességtől viszont a létrafokok is síkossá válnak, aztán elfogynak. Lenézel, és meglátod az akna alját, de nem tudod megállapítani, milyen mélyen lehet. Az akna viszont elég széles, és ha most itt lemászol, valószínűleg nem tudsz újra kimászni.[/p]
+    </text>
+    <next id="175">Ha visszamászol</next>
+    <next id="54">Ha leugrasz</next>
+  </p>
+  <p id="54">
+    <test against="luck">
+      <success>
+        <next id="124"></next>
+      </success>
+      <failure>
+        <next id="18"></next>
+      </failure>
+    </test>
+  </p>
+
+
+
+</content>
