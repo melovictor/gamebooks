@@ -390,4 +390,10 @@ public class LanguageProjectDataContents {
             + "BookWelcomeController().getClass();\r\n" + "        // THEN\r\n" + "    }\r\n" + "}\r\n";
     }
 
+    public static String getCharPage() {
+        return "<%@page pageEncoding=\"utf-8\" contentType=\"text/html; charset=utf-8\"%>\r\n"
+            + "<%@taglib uri=\"http://tiles.apache.org/tags-tiles\" prefix=\"tiles\"%>\r\n" + "\r\n"
+            + "<tiles:insertTemplate template=\"../charpage/charpage-basic.jsp\" />\r\n";
+    }
+
 }

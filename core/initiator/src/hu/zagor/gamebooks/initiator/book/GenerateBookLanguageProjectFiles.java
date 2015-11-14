@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.initiator.book;
 
+import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getCharPage;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getContentFile;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getEnemiesFile;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getImageController;
@@ -25,6 +26,18 @@ import java.io.File;
 import java.io.IOException;
 
 public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
+
+    public void generate(final BookBaseData baseData) {
+        final File charPageLocation = new File("c:/springsource/eclipsegit/books/" + baseData.getCollectorCode() + "/presentation-" + baseData.getCollectorName()
+            + "/src/main/webapp/META-INF/resources/WEB-INF/tiles/ruleset/" + baseData.getCollectorCode() + "/" + baseData.getCollectorCode() + baseData.getPosition());
+        try {
+            createFile(charPageLocation, "charpage.jsp", getCharPage());
+        } catch (final IOException exception) {
+            final Console console = Console.getConsole();
+            console.print("Failed to create all necessary files.");
+            exception.printStackTrace(System.out);
+        }
+    }
 
     public void generate(final BookBaseData baseData, final BookLangData data) {
         final File langRootPath = new File("c:/springsource/eclipsegit/books/" + baseData.getCollectorCode() + "/language-" + baseData.getCollectorName());

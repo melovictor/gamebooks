@@ -11,24 +11,23 @@ public class GenerateBookProjectFiles extends AbstractGenerator {
     private final GenerateBookMediaProjectFiles medGenerator = new GenerateBookMediaProjectFiles();
 
     public void generateBookProjectFiles(final BookBaseData baseData, final List<BookLangData> books) {
-        boolean verificationFailed = false;
         System.out.println("Verifying abbreviation availability for book(s).");
 
         final File rootPath = new File("c:/springsource/eclipsegit/books/" + baseData.getCollectorCode() + "/presentation-" + baseData.getCollectorName());
         final File codeDir = new File(rootPath, "src/main/java/hu/zagor/gamebooks/" + baseData.getRuleset() + "/" + baseData.getSeriesCode() + "/"
             + baseData.getTitleCode() + "/mvc/books/");
         if (codeDir.exists()) {
-            verificationFailed = true;
             System.out.println("Verification failed. No code will be generated.");
-        }
-
-        if (!verificationFailed) {
+        } else {
             for (final BookLangData data : books) {
                 System.out.println("Start generating book " + data.getTitle());
                 if (data.isGeneratable()) {
                     data.init(baseData);
                     generateFiles(baseData, data);
                 }
+            }
+            if (baseData.isCharPageRequired()) {
+                langGenerator.generate(baseData);
             }
         }
     }

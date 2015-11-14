@@ -14,6 +14,7 @@ public class BookBaseData {
     private String collectorCode;
     private String collectorName;
     private boolean mediaProject;
+    private boolean charPageRequired;
 
     public String getSeriesCode() {
         return seriesCode;
@@ -125,6 +126,14 @@ public class BookBaseData {
 
     public String getBookInfoPrefix() {
         return "ff".equals(seriesCode) ? "Ff" : "";
+    }
+
+    public boolean isCharPageRequired() {
+        return charPageRequired;
+    }
+
+    public void setCharPageRequired(final boolean charPageRequired) {
+        this.charPageRequired = charPageRequired;
     }
 
 }
