@@ -1,6 +1,7 @@
 package hu.zagor.gamebooks.support.mock;
 
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -38,6 +39,8 @@ public class InitializingMockFieldCallback implements FieldCallback {
         if (underTest == null) {
             if (field.isAnnotationPresent(Mock.class)) {
                 injectOnTest(field);
+            } else if (field.isAnnotationPresent(Instance.class)) {
+                instantiateOnTest(field);
             }
         } else {
             if (field.isAnnotationPresent(Inject.class)) {
@@ -46,6 +49,15 @@ public class InitializingMockFieldCallback implements FieldCallback {
                     Whitebox.setInternalState(underTest, field.getName(), mock);
                 }
             }
+        }
+    }
+
+    private void instantiateOnTest(final Field field) throws IllegalAccessException {
+        try {
+            final Object instance = field.getType().newInstance();
+            Whitebox.setInternalState(testInstance, field.getName(), instance);
+        } catch (final InstantiationException e) {
+            throw new IllegalAccessException(e.getMessage());
         }
     }
 
