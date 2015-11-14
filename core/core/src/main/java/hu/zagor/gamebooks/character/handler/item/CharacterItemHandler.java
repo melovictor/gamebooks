@@ -7,6 +7,7 @@ import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.exception.InvalidItemException;
 
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Interface for doing generic item-related queries in a {@link Character}.
@@ -79,12 +80,20 @@ public interface CharacterItemHandler {
     Item resolveItem(String itemId);
 
     /**
-     * Returns the item with the specified id if the provided character has that item with himself.
+     * Returns the first item with the specified id if the provided character has that item with himself.
      * @param character the {@link Character} on which we must act
      * @param itemId the id of the item to obtain
      * @return the item if the character has it, or null, if it doesn't have it
      */
     Item getItem(Character character, String itemId);
+
+    /**
+     * Returns all of the the items with the specified id if the provided character has that item with himself.
+     * @param character the {@link Character} on which we must act
+     * @param itemId the id of the items to obtain
+     * @return the list containing all relevant items
+     */
+    List<Item> getItems(Character character, String itemId);
 
     /**
      * Returns an iterator that can go through all the items.

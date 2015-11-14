@@ -160,6 +160,11 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
         return getItem(character.getEquipment(), itemId);
     }
 
+    @Override
+    public List<Item> getItems(final Character character, final String itemId) {
+        return getItems(character.getEquipment(), itemId);
+    }
+
     /**
      * Gets an existing item from an equipment list based on itemId.
      * @param equipment the list of equipment
@@ -167,13 +172,23 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
      * @return the item
      */
     protected Item getItem(final List<Item> equipment, final String itemId) {
-        Item found = null;
+        final List<Item> items = getItems(equipment, itemId);
+        return items.isEmpty() ? null : items.get(0);
+    }
+
+    /**
+     * Gets a list of existing items from an equipment list based on itemId.
+     * @param equipment the list of equipment
+     * @param itemId the id of the item
+     * @return the items
+     */
+    protected List<Item> getItems(final List<Item> equipment, final String itemId) {
+        final List<Item> found = new ArrayList<>();
         final Iterator<Item> iterator = equipment.iterator();
         while (iterator.hasNext()) {
             final Item item = iterator.next();
             if (itemId.equals(item.getId())) {
-                found = item;
-                break;
+                found.add(item);
             }
         }
         return found;

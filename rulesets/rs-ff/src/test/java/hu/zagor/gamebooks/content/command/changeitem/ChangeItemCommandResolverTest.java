@@ -2,20 +2,24 @@ package hu.zagor.gamebooks.content.command.changeitem;
 
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
-import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
-import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
+import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -30,27 +34,29 @@ import org.testng.annotations.Test;
 public class ChangeItemCommandResolverTest {
 
     private static final String ITEM_ID = "1005";
+    @UnderTest
     private ChangeItemCommandResolver underTest;
+    @MockControl
     private IMocksControl mockControl;
+    @Instance
     private ChangeItemCommand command;
+    @Instance
     private ResolvationData resolvationData;
+    @Mock
     private FfCharacter character;
     private BookInformations info;
-    private CharacterHandler characterHandler;
-    private CharacterItemHandler itemHandler;
+    @Instance
+    private FfCharacterHandler characterHandler;
+    @Mock
+    private FfCharacterItemHandler itemHandler;
     private FfItem item;
+    private FfItem itemB;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        underTest = new ChangeItemCommandResolver();
         command = new ChangeItemCommand();
-        resolvationData = new ResolvationData();
-        character = mockControl.createMock(FfCharacter.class);
         resolvationData.setCharacter(character);
         info = new BookInformations(3L);
-        characterHandler = new FfCharacterHandler();
-        itemHandler = mockControl.createMock(FfCharacterItemHandler.class);
         characterHandler.setItemHandler(itemHandler);
         info.setCharacterHandler(characterHandler);
         resolvationData.setInfo(info);
@@ -63,12 +69,13 @@ public class ChangeItemCommandResolverTest {
         command.setChangeValue(null);
         command.setNewValue(null);
         item = new FfItem(ITEM_ID, "Sword", ItemType.weapon1);
+        itemB = new FfItem(ITEM_ID, "Sword", ItemType.weapon1);
         mockControl.reset();
     }
 
     public void testDoResolveWhenCharacterDoesNotHaveItemInQuestionShouldDoNothing() {
         // GIVEN
-        expect(itemHandler.getItem(character, ITEM_ID)).andReturn(null);
+        expect(itemHandler.getItems(character, ITEM_ID)).andReturn(new ArrayList<Item>());
         mockControl.replay();
         // WHEN
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
@@ -79,7 +86,7 @@ public class ChangeItemCommandResolverTest {
     public void testDoResolveWhenNewValueIsSetShouldSetNewValueToField() {
         // GIVEN
         command.setNewValue(3);
-        expect(itemHandler.getItem(character, ITEM_ID)).andReturn(item);
+        expect(itemHandler.getItems(character, ITEM_ID)).andReturn(Arrays.asList((Item) item));
         mockControl.replay();
         // WHEN
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
@@ -92,13 +99,28 @@ public class ChangeItemCommandResolverTest {
         // GIVEN
         command.setChangeValue(-1);
         item.setAttackStrength(3);
-        expect(itemHandler.getItem(character, ITEM_ID)).andReturn(item);
+        expect(itemHandler.getItems(character, ITEM_ID)).andReturn(Arrays.asList((Item) item));
         mockControl.replay();
         // WHEN
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
         // THEN
         Assert.assertNull(returned);
         Assert.assertEquals(item.getAttackStrength(), 2);
+    }
+
+    public void testDoResolveWhenChangedAmountIsSetForMultipleItemsShouldChangeFieldByAmountForAllItems() {
+        // GIVEN
+        command.setChangeValue(-1);
+        item.setAttackStrength(3);
+        itemB.setAttackStrength(3);
+        expect(itemHandler.getItems(character, ITEM_ID)).andReturn(Arrays.asList((Item) item, (Item) itemB));
+        mockControl.replay();
+        // WHEN
+        final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
+        // THEN
+        Assert.assertNull(returned);
+        Assert.assertEquals(item.getAttackStrength(), 2);
+        Assert.assertEquals(itemB.getAttackStrength(), 2);
     }
 
     @AfterMethod

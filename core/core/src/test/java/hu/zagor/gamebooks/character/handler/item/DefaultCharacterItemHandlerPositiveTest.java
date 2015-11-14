@@ -5,10 +5,13 @@ import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.ItemFactory;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 
 import java.util.Iterator;
+import java.util.List;
 
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
 import org.testng.Assert;
@@ -26,8 +29,11 @@ public class DefaultCharacterItemHandlerPositiveTest {
 
     private static final String ITEM_ID = "3001";
     private static final String ITEM_ID_B = "3002";
-    private CharacterItemHandler underTest;
+    @UnderTest
+    private DefaultCharacterItemHandler underTest;
+    @MockControl
     private IMocksControl mockControl;
+    @Inject
     private ItemFactory itemFactory;
     private Character character;
     private Item nonEquippableItem;
@@ -37,9 +43,6 @@ public class DefaultCharacterItemHandlerPositiveTest {
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        mockControl.createMock(ItemFactory.class);
-        itemFactory = mockControl.createMock(ItemFactory.class);
         nonEquippableItemB = new Item(ITEM_ID_B, "item", ItemType.common);
         nonEquippableItem = new Item(ITEM_ID, "item", ItemType.common);
         equippableEquippedItem = new Item(ITEM_ID, "item", ItemType.weapon1);
@@ -49,8 +52,6 @@ public class DefaultCharacterItemHandlerPositiveTest {
 
     @BeforeMethod
     public void setUpMethod() {
-        underTest = new DefaultCharacterItemHandler();
-        underTest.setItemFactory(itemFactory);
         character = new Character();
         character.setBackpackSize(99);
         mockControl.reset();
@@ -171,6 +172,41 @@ public class DefaultCharacterItemHandlerPositiveTest {
         final Item returned = underTest.getItem(character, equippableEquippedItem.getId());
         // THEN
         Assert.assertSame(returned, equippableEquippedItem);
+    }
+
+    public void testGetItemsWhenCharacterDoesNotHaveItemShouldReturnEmptyList() {
+        // GIVEN
+        mockControl.replay();
+        // WHEN
+        final List<Item> returned = underTest.getItems(character, ITEM_ID);
+        // THEN
+        Assert.assertTrue(returned.isEmpty());
+    }
+
+    public void testGetItemsWhenCharacterHasSingleItemShouldReturnListWithOneElement() {
+        // GIVEN
+        character.getEquipment().add(equippableEquippedItem);
+        character.getEquipment().add(nonEquippableItemB);
+        mockControl.replay();
+        // WHEN
+        final List<Item> returned = underTest.getItems(character, ITEM_ID);
+        // THEN
+        Assert.assertEquals(returned.size(), 1);
+        Assert.assertSame(returned.get(0), equippableEquippedItem);
+    }
+
+    public void testGetItemsWhenCharacterHasMultipleItemShouldReturnListWithMultipleElement() {
+        // GIVEN
+        character.getEquipment().add(equippableEquippedItem);
+        character.getEquipment().add(nonEquippableItemB);
+        character.getEquipment().add(equippableNonEquippedItem);
+        mockControl.replay();
+        // WHEN
+        final List<Item> returned = underTest.getItems(character, ITEM_ID);
+        // THEN
+        Assert.assertEquals(returned.size(), 2);
+        Assert.assertSame(returned.get(0), equippableEquippedItem);
+        Assert.assertSame(returned.get(1), equippableNonEquippedItem);
     }
 
     public void testGetItemIteratorShouldReturnIteratorForEquipment() {

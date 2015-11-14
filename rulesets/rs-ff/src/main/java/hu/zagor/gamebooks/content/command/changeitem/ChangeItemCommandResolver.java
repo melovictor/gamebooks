@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.content.command.changeitem;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
+import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.TypeAwareCommandResolver;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -22,8 +23,8 @@ public class ChangeItemCommandResolver extends TypeAwareCommandResolver<ChangeIt
     protected List<ParagraphData> doResolve(final ChangeItemCommand command, final ResolvationData resolvationData) {
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final FfCharacterItemHandler itemHandler = (FfCharacterItemHandler) resolvationData.getCharacterHandler().getItemHandler();
-        final FfItem item = (FfItem) itemHandler.getItem(character, command.getId());
-        if (item != null) {
+        final List<Item> items = itemHandler.getItems(character, command.getId());
+        for (final Item item : items) {
             final Field field = ReflectionUtils.findField(FfItem.class, command.getAttribute());
             ReflectionUtils.makeAccessible(field);
             final Integer newValue = command.getNewValue();
