@@ -186,16 +186,6 @@ public class LanguageProjectDataContents {
             + data.getPosition() + "BookWelcomeController extends " + getParentClassPrefix(baseData, data, "Generic") + "BookWelcomeController {\r\n" + "}\r\n";
     }
 
-    public static String getSaveController(final BookBaseData baseData, final BookLangData data) {
-        return "package hu.zagor.gamebooks." + baseData.getRuleset() + "." + baseData.getSeriesCode() + "." + baseData.getTitleCode() + ".mvc.books.save.controller;\r\n"
-            + "\r\n" + "import hu.zagor.gamebooks.PageAddresses;\r\n" + getParentImport(baseData, data, "save", "Save", null)
-            + "import hu.zagor.gamebooks.support.bookids." + data.getFullLang() + "." + data.getBookIdDomain() + ";\r\n" + "\r\n"
-            + "import org.springframework.stereotype.Controller;\r\n" + "import org.springframework.web.bind.annotation.RequestMapping;\r\n" + "\r\n" + "/**\r\n"
-            + " * Controller for handling the save request to the given book.\r\n" + " * @author Tamas_Szekeres\r\n" + " *\r\n" + " */\r\n" + "@Controller\r\n"
-            + "@RequestMapping(value = PageAddresses.BOOK_PAGE + \"/\" + " + data.getBookId() + ")\r\n" + "public class " + data.getSeriesCodeCapital()
-            + data.getPosition() + "BookSaveController extends " + getParentClassPrefix(baseData, data, null) + "BookSaveController {\r\n" + "}\r\n";
-    }
-
     public static String getNewGameController(final BookBaseData baseData, final BookLangData data) {
         return "package hu.zagor.gamebooks." + baseData.getRuleset() + "." + baseData.getSeriesCode() + "." + baseData.getTitleCode()
             + ".mvc.books.newgame.controller;\r\n" + "\r\n" + "import hu.zagor.gamebooks.PageAddresses;\r\n"
@@ -369,14 +359,6 @@ public class LanguageProjectDataContents {
                 + data.getPosition() + "BookNewGameController().getClass();\r\n" + "        // THEN\r\n" + "    }\r\n" + "}\r\n";
         }
         return controllerContent;
-    }
-
-    public static String getSaveControllerTest(final BookBaseData baseData, final BookLangData data) {
-        return "package hu.zagor.gamebooks." + baseData.getRuleset() + "." + baseData.getSeriesCode() + "." + baseData.getTitleCode() + ".mvc.books.save.controller;\r\n"
-            + "\r\n" + "import org.testng.annotations.Test;\r\n" + "\r\n" + "/**\r\n" + " * Unit test for class {@link " + data.getSeriesCodeCapital()
-            + data.getPosition() + "BookSaveController}.\r\n" + " * @author Tamas_Szekeres\r\n" + " */\r\n" + "@Test\r\n" + "public class " + data.getSeriesCodeCapital()
-            + data.getPosition() + "BookSaveControllerTest {\r\n" + "\r\n" + "    public void testConstructor() {\r\n" + "        // GIVEN\r\n" + "        // WHEN\r\n"
-            + "        new " + data.getSeriesCodeCapital() + data.getPosition() + "BookSaveController().getClass();\r\n" + "        // THEN\r\n" + "    }\r\n" + "}\r\n";
     }
 
     public static String getSectionControllerTest(final BookBaseData baseData, final BookLangData data) {

@@ -15,7 +15,7 @@ public class CreateCollectorProject extends AbstractGenerator {
         console.print("Please set the name of the collection: ");
         final String collectionName = console.readLine();
 
-        final File baseDir = new File("d:/System/eclipsegit/books/collector/" + collectionName);
+        final File baseDir = new File("c:/springsource/eclipsegit/books/collector/" + collectionName);
         baseDir.mkdirs();
 
         try {
@@ -42,7 +42,7 @@ public class CreateCollectorProject extends AbstractGenerator {
     }
 
     private void updateSeriesCollector(final String collectionName) throws IOException {
-        final File pom = new File("d:\\System\\eclipse\\books\\collector\\series-collector\\pom.xml");
+        final File pom = new File("c:\\springsource\\eclipsegit\\books\\collector\\series-collector\\pom.xml");
         final Scanner pomScanner = new Scanner(pom);
         pomScanner.useDelimiter("/z");
         String fileContent = pomScanner.next();

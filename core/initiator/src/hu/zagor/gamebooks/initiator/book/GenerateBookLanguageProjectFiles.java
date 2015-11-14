@@ -11,8 +11,6 @@ import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getLoadControllerTest;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getNewGameController;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getNewGameControllerTest;
-import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getSaveController;
-import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getSaveControllerTest;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getSectionController;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getSectionControllerTest;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getSpringFile;
@@ -29,10 +27,10 @@ import java.io.IOException;
 public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
 
     public void generate(final BookBaseData baseData, final BookLangData data) {
-        final File langRootPath = new File("d:/System/eclipsegit/books/" + baseData.getCollectorCode() + "/language-" + baseData.getCollectorName());
+        final File langRootPath = new File("c:/springsource/eclipsegit/books/" + baseData.getCollectorCode() + "/language-" + baseData.getCollectorName());
         generateLanguageProject(langRootPath, baseData, data);
 
-        final File presRootPath = new File("d:/System/eclipsegit/books/" + baseData.getCollectorCode() + "/presentation-" + baseData.getCollectorName());
+        final File presRootPath = new File("c:/springsource/eclipsegit/books/" + baseData.getCollectorCode() + "/presentation-" + baseData.getCollectorName());
         generatePresentationProject(presRootPath, baseData, data);
     }
 
@@ -52,7 +50,6 @@ public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
             createFile(codeDir, "load/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookLoadController.java", getLoadController(baseData, data));
             createFile(codeDir, "newgame/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookNewGameController.java",
                 getNewGameController(baseData, data));
-            createFile(codeDir, "save/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookSaveController.java", getSaveController(baseData, data));
             createFile(codeDir, "section/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookSectionController.java",
                 getSectionController(baseData, data));
             createFile(codeDir, "section/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookWelcomeController.java",
@@ -70,8 +67,6 @@ public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
                 getLoadControllerTest(baseData, data));
             createFile(testCodeDir, "newgame/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookNewGameControllerTest.java",
                 getNewGameControllerTest(baseData, data));
-            createFile(testCodeDir, "save/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookSaveControllerTest.java",
-                getSaveControllerTest(baseData, data));
             createFile(testCodeDir, "section/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookSectionControllerTest.java",
                 getSectionControllerTest(baseData, data));
             createFile(testCodeDir, "section/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookWelcomeControllerTest.java",
