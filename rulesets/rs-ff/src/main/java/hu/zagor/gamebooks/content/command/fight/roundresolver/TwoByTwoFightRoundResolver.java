@@ -12,8 +12,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 /**
- * Resolver for a single fight round where there is either a single enemy, multiple enemies that must be handled as a single opponent or multiple enemies that must be fought one by
- * one.
+ * Resolver for a single fight round where there are multiple enemies which must be fogught two-by-two, the next pair always waiting for both parties from the previous pair to die.
  * @author Tamas_Szekeres
  */
 @Component("twoByTwoFightRoundResolver")
@@ -59,7 +58,7 @@ public class TwoByTwoFightRoundResolver extends AllAtOnceFightRoundResolver {
         return resolvedEnemies;
     }
 
-    private void filterResolvedEnemies(final List<FfEnemy> resolvedEnemies, final List<String> enemies) {
+    void filterResolvedEnemies(final List<FfEnemy> resolvedEnemies, final List<String> enemies) {
         final FfEnemy enemyA = resolvedEnemies.get(0);
         final FfEnemy enemyB = resolvedEnemies.size() > 1 ? resolvedEnemies.get(1) : null;
         resolvedEnemies.clear();
