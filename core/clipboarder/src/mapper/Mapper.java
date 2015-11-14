@@ -17,12 +17,12 @@ public class Mapper {
     private static final Pattern NAVIGATION = Pattern.compile("<next.*?id=\"([^\"]*)\"");
 
     public static void main(final String[] args) throws IOException {
-        final String root = "d:\\System\\eclipsegit\\books";
+        final String root = "c:\\springsource\\eclipsegit\\books";
         final String[] series = new String[]{"cyoa", "ff", "solo", "tm", "sc", "wm"};
         final String content = "src\\main\\resources";
 
         final GregorianCalendar calendar = new GregorianCalendar();
-        calendar.add(GregorianCalendar.DAY_OF_WEEK, -2);
+        calendar.add(GregorianCalendar.HOUR, -8);
         final long lastWeek = calendar.getTime().getTime();
 
         for (final String serie : series) {
