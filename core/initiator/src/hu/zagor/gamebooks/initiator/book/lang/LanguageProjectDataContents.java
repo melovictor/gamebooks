@@ -5,38 +5,6 @@ import hu.zagor.gamebooks.initiator.book.BookLangData;
 
 public class LanguageProjectDataContents {
 
-    public static String getImageController(final BookBaseData baseData, final BookLangData data) {
-        String extendedClass;
-        if ("ff".equals(baseData.getRuleset())) {
-            extendedClass = null;
-        } else {
-            extendedClass = "Generic";
-        }
-
-        String tic;
-        tic = "package hu.zagor.gamebooks." + baseData.getRuleset() + "." + baseData.getSeriesCode() + "." + baseData.getTitleCode() + ".mvc.books.image.controller;\r\n";
-        tic += "\r\n";
-        tic += "import hu.zagor.gamebooks.PageAddresses;\r\n";
-        tic += getParentImport(baseData, data, "image", "Image", extendedClass);
-        tic += "import hu.zagor.gamebooks.support.bookids." + data.getFullLang() + "." + data.getBookIdDomain() + ";\r\n";
-        tic += "\r\n";
-        tic += "import org.springframework.stereotype.Controller;\r\n";
-        tic += "import org.springframework.web.bind.annotation.RequestMapping;\r\n";
-        tic += "\r\n";
-        tic += "/**\r\n";
-        tic += " * Controller for handling the image request to the given book.\r\n";
-        tic += " * @author Tamas_Szekeres\r\n";
-        tic += " *\r\n";
-        tic += " */\r\n";
-        tic += "@Controller\r\n";
-        tic += "@RequestMapping(value = PageAddresses.BOOK_PAGE + \"/\" + " + data.getBookId() + ")\r\n";
-        tic += "public class " + data.getSeriesCodeCapital() + data.getPosition() + "BookImageController extends " + getParentClassPrefix(baseData, data, extendedClass)
-            + "BookImageController {\r\n";
-        tic += "}\r\n";
-
-        return tic;
-    }
-
     private static String getParentClassPrefix(final BookBaseData baseData, final BookLangData data, final String prefix) {
         String parentClassPrefix;
         if (baseData.getSeriesCode().equals(data.getSeriesCode())) {
@@ -251,29 +219,6 @@ public class LanguageProjectDataContents {
     }
 
     // ************************
-
-    public static String getImageControllerTest(final BookBaseData baseData, final BookLangData data) {
-        String tic;
-        tic = "package hu.zagor.gamebooks." + baseData.getRuleset() + "." + baseData.getSeriesCode() + "." + baseData.getTitleCode() + ".mvc.books.image.controller;\r\n";
-        tic += "\r\n";
-        tic += "import org.testng.annotations.Test;\r\n";
-        tic += "\r\n";
-        tic += "/**\r\n";
-        tic += " * Unit test for class {@link " + data.getSeriesCodeCapital() + data.getPosition() + "BookImageController}.\r\n";
-        tic += " * @author Tamas_Szekeres\r\n";
-        tic += " */\r\n";
-        tic += "@Test\r\n";
-        tic += "public class " + data.getSeriesCodeCapital() + data.getPosition() + "BookImageControllerTest {\r\n";
-        tic += "\r\n";
-        tic += "    public void testConstructor() {\r\n";
-        tic += "        // GIVEN\r\n";
-        tic += "        // WHEN\r\n";
-        tic += "        new " + data.getSeriesCodeCapital() + data.getPosition() + "BookImageController().getClass();\r\n";
-        tic += "        // THEN\r\n";
-        tic += "    }\r\n";
-        tic += "}\r\n";
-        return tic;
-    }
 
     public static String getInventoryControllerTest(final BookBaseData baseData, final BookLangData data) {
         return "package hu.zagor.gamebooks." + baseData.getRuleset() + "." + baseData.getSeriesCode() + "." + baseData.getTitleCode()

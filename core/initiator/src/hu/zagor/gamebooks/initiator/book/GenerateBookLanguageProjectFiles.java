@@ -3,8 +3,6 @@ package hu.zagor.gamebooks.initiator.book;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getCharPage;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getContentFile;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getEnemiesFile;
-import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getImageController;
-import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getImageControllerTest;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getInventoryController;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getInventoryControllerTest;
 import static hu.zagor.gamebooks.initiator.book.lang.LanguageProjectDataContents.getItemsFile;
@@ -55,7 +53,6 @@ public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
 
             final File codeDir = new File(rootPath, "src/main/java/hu/zagor/gamebooks/" + baseData.getRuleset() + "/" + baseData.getSeriesCode() + "/"
                 + baseData.getTitleCode() + "/mvc/books/");
-            createFile(codeDir, "image/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookImageController.java", getImageController(baseData, data));
             createFile(codeDir, "inventory/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookInventoryController.java",
                 getInventoryController(baseData, data));
             createFile(codeDir, "inventory/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookTakeItemController.java",
@@ -70,8 +67,6 @@ public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
 
             final File testCodeDir = new File(rootPath, "src/test/java/hu/zagor/gamebooks/" + baseData.getRuleset() + "/" + baseData.getSeriesCode() + "/"
                 + baseData.getTitleCode() + "/mvc/books/");
-            createFile(testCodeDir, "image/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookImageControllerTest.java",
-                getImageControllerTest(baseData, data));
             createFile(testCodeDir, "inventory/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookInventoryControllerTest.java",
                 getInventoryControllerTest(baseData, data));
             createFile(testCodeDir, "inventory/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookTakeItemControllerTest.java",
