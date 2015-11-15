@@ -6,6 +6,9 @@ import hu.zagor.gamebooks.controller.domain.ImageLocation;
 import hu.zagor.gamebooks.controller.image.ImageLookupStrategyType;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.player.PlayerUser;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -15,8 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -30,37 +33,34 @@ import org.testng.annotations.Test;
 @Test
 public class FfBookImageControllerTest {
 
+    @UnderTest
     private FfBookImageController underTest;
+    @MockControl
     private IMocksControl mockControl;
+    @Inject
     private ImageHandler imageHandler;
+    @Mock
     private HttpServletRequest request;
+    @Mock
     private HttpServletResponse response;
+    @Inject
     private BeanFactory beanFactory;
     private Locale locale;
+    @Mock
     private HttpSession session;
+    @Mock
     private HttpSessionWrapper wrapper;
+    @Mock
     private ServletOutputStream outputStream;
     private ImageLocation imageLocation;
     private PlayerUser player;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        imageHandler = mockControl.createMock(ImageHandler.class);
-        request = mockControl.createMock(HttpServletRequest.class);
-        response = mockControl.createMock(HttpServletResponse.class);
-        beanFactory = mockControl.createMock(BeanFactory.class);
         locale = Locale.GERMAN;
-        session = mockControl.createMock(HttpSession.class);
-        outputStream = mockControl.createMock(ServletOutputStream.class);
         imageLocation = new ImageLocation("ff21", "small*", locale);
         player = new PlayerUser(11, "FireFoX", false);
         player.getSettings().setImageTypeOrder("bwFirst");
-        wrapper = mockControl.createMock(HttpSessionWrapper.class);
-
-        underTest = new FfBookImageController();
-        underTest.setImageHandler(imageHandler);
-        underTest.setBeanFactory(beanFactory);
     }
 
     @BeforeMethod
