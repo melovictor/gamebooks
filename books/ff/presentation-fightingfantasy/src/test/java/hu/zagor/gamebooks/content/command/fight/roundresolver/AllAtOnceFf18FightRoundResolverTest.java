@@ -31,13 +31,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- * Unit test for class {@link AllAtOnce18FightRoundResolver}.
+ * Unit test for class {@link AllAtOnceFf18FightRoundResolver}.
  * @author Tamas_Szekeres
  */
 @Test
-public class AllAtOnce18FightRoundResolverTest {
+public class AllAtOnceFf18FightRoundResolverTest {
 
-    private AllAtOnce18FightRoundResolver underTest;
+    private AllAtOnceFf18FightRoundResolver underTest;
     private IMocksControl mockControl;
     private FightCommand command;
     private FightDataDto dto;
@@ -60,7 +60,7 @@ public class AllAtOnce18FightRoundResolverTest {
     public void setUpClass() {
         mockControl = EasyMock.createStrictControl();
         setUpClassUnchecked();
-        underTest = new AllAtOnce18FightRoundResolver();
+        underTest = new AllAtOnceFf18FightRoundResolver();
         command = mockControl.createMock(FightCommand.class);
         enemy = mockControl.createMock(FfEnemy.class);
         messages = mockControl.createMock(FightCommandMessageList.class);

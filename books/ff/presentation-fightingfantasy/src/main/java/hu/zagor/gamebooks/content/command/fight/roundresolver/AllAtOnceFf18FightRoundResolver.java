@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
  * Ff18-specific all-at-once fight round resolver.
  * @author Tamas_Szekeres
  */
-@Component("allAtOnce18FightRoundResolver")
-public class AllAtOnce18FightRoundResolver extends AllAtOnceFightRoundResolver {
+@Component("allAtOnceff18FightRoundResolver")
+public class AllAtOnceFf18FightRoundResolver extends AllAtOnceFightRoundResolver {
 
     @Override
     protected void damageEnemy(final FightCommand command, final FightDataDto dto) {
