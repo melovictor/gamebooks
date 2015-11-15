@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.mvc.book.image.controller;
 
+import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.controller.ImageHandler;
 import hu.zagor.gamebooks.controller.domain.ImageLocation;
 import hu.zagor.gamebooks.controller.image.ImageLookupStrategyType;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Class for handling the retrieval of the images in the book.
  * @author Tamas_Szekeres
  */
+@Controller
+@RequestMapping(value = PageAddresses.BOOK_PAGE + "/{bookId}/resources/{dir}")
 public class GenericBookImageController extends AbstractRequestWrappingController {
 
     @Autowired
@@ -37,7 +41,7 @@ public class GenericBookImageController extends AbstractRequestWrappingControlle
      * @param locale the current locale
      * @throws IOException when an I/O error occurs
      */
-    @RequestMapping(value = "resources/{dir}/{file}")
+    @RequestMapping(value = "{file}")
     public void handleImage(final HttpServletRequest request, final HttpServletResponse response, @PathVariable("dir") final String dir,
         @PathVariable("file") final String file, final Locale locale) throws IOException {
         Assert.notNull(dir, "The parameter 'dir' cannot be null!");
