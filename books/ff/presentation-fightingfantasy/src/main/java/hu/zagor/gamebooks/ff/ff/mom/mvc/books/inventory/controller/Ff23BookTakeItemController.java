@@ -48,14 +48,19 @@ public class Ff23BookTakeItemController extends FfBookTakeItemController {
         }
 
         int takeItemResult = 0;
+        final HttpSessionWrapper wrapper = getWrapper(request);
         if ("4003".equals(itemId)) {
-            final HttpSessionWrapper wrapper = getWrapper(request);
             final FfCharacter character = (FfCharacter) wrapper.getCharacter();
             if (character.getGold() > 0) {
                 character.setGold(character.getGold() - 1);
                 getInfo().getCharacterHandler().getAttributeHandler().handleModification(character, "stamina", 2);
                 takeItemResult = 1;
             }
+        } else if ("gold".equals(itemId) && "304".equals(wrapper.getParagraph().getId())) {
+            takeItemResult = 2;
+            final FfCharacter character = (FfCharacter) wrapper.getCharacter();
+            character.setGold(character.getGold() + 2);
+            character.changeStamina(-1);
         } else {
             takeItemResult = super.doHandleItemTake(request, itemId, amount);
         }

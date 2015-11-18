@@ -1684,12 +1684,12 @@
         [p]A szobád az északkeleti toronyban van, lőrésszerű ablakából egész Fakóvölgy látszik, sőt még a Dárdanyél Síkság széle is. Az őr az ajtó előtt áll, míg lerámolod a felszerelésedet és a sisakodat (a biztonság kedvéért a kardodat magadnál tartod). Úgy-ahogy rendbe szeded magad. Mikor végzel, mozgolódást hallasz a folyosóról. Amikor kinyitod az ajtót, egy Törpe Ork épp akkor húzza ki a tőrét a halott őrből. Kardot rántasz, és az Orkra támadsz. Ellenfeled kicsi, de rendkívül ügyes. Elhajol csapásaid elől, és villámgyorsan támad.[/p]
     </text>
     <fight type="single">
-    <enemy id="16"/>
-    <win>
+      <enemy id="16" />
+      <win>
         <text>
             [p]Két Forduló után mindketten halljátok a futva közeledő katonák csizmáinak csattogását. Az Ork egy pillanat alatt eltűnik egy sarok mögött.[/p]
         </text>
-    </win>
+      </win>
     </fight>
     <next id="8">Ha követed</next>
     <next id="111">Ha megvárod az erősítést</next>
@@ -1704,7 +1704,7 @@
     <text>
         [p]A katonák nem ismernek téged, te pedig karddal a kezedben ott állsz a társuk holtteste fölött. Ez kissé gyanús nekik. Belöknek a szobába, és őrt állítanak az ajtó elé, míg elmennek, hogy jelentsék az esetet. Körülnézel és látod, hogy a sisakod eltűnt, és egy kötél lóg az ablakból. A tolvaj vagy tolvajok, akik feltehetőleg az Ork társai, erre menekülhettek.[/p]
     </text>
-    <loseItem id="3002"/>
+    <loseItem id="3002" />
     <next id="166">Ha összeszeded a felszerelésedet és azonnal a nyomukba eredsz</next>
     <next id="377">Ha segítségért kiáltasz</next>
     <next id="342">Ha megvárod a fejleményeket</next>
@@ -1713,7 +1713,7 @@
     <text>
         [p]Az őrök még mindig gyanakszanak, úgy gondolják, valami trükkel próbálkozol. Ezért inkább a biztonság kedvéért leütnek. Vesztesz 3 ÉLETERŐ pontot. Egy idő után magadhoz térsz.[/p]
     </text>
-    <add amount="-3" to="stamina"/>
+    <add amount="-3" to="stamina" />
     <next id="342"></next>
   </p>
   <p id="342">
@@ -1727,12 +1727,12 @@
         [p]Éjszaka igen nehéz követni a tolvajok nyomát, még akkor is, ha a hold fenn van, de azért haladsz valamennyit. Hajnalra eléred a Dárdanyél Síkság szélét, és északnak tartasz. A magas fűben könnyű követni a tolvajokat: a letaposott fűcsomók jelzik, merre mentek. Kisvártatva maguk a tolvajok is feltűnnek a távolban, fejük és válluk kiemelkedik a fűből.[/p]
     </text>
     <itemCheck type="section" id="342 or 137">
-    <have>
-    <next id="14"></next>
-    </have>
-    <dontHave>
-    <next id="356"></next>
-    </dontHave>
+      <have>
+        <next id="14"></next>
+      </have>
+      <dontHave>
+        <next id="356"></next>
+      </dontHave>
     </itemCheck>
   </p>
   <p id="42">
@@ -1746,7 +1746,7 @@
     <text>
         [p]- Nem számít, nem számít - nevet Hever. - Ha így akarsz asztalhoz ülni, ám legyen. - A lakoma alatta régi kultúrákról beszélgettek, de neked folyton az motoszkál a fejedben, hogyan kéne elkérned Hevertől a kürtjét. Mikor befejezitek az evést (visszanyersz 4 ÉLETERŐ pontot), Hever meghív a saját lakosztályába, hogy hallgasd meg a vár dalnokát. A sok bortól már ólomnehezek a tagjaid. A pihentető álom nemcsak hogy jólesne, de egyenesen szükséges.[/p]
     </text>
-    <add amount="4" to="stamina"/>
+    <add amount="4" to="stamina" />
     <next id="26">Ha udvariasan visszautasítod Hever meghívását, és azt kéred, hogy vezessenek a szobádba</next>
     <next id="184">Ha elfogadod az ajánlatát</next>
   </p>
@@ -1754,8 +1754,8 @@
     <text>
         [p]Az étel igen laktató (visszakapsz 4 ÉLETERŐ pontot); de az őr rossz hírrel tér vissza. A szobádban Törpe Orkok támadták meg, és leütötték. Mikor magához tért, a sisakod nem volt sehol, a tolvajoknak pedig nyoma veszett. Azonnal ráparancsolsz, hogy vezessen a szobádba, míg Hever összeállít egy felderítő csapatot. A szobádban nyitva találod az ablakot, a párkányról pedig egy kötél lóg le. Az ablakodból lemászva az Orkok sietve a várfalon kívülre kerültek.[/p]
     </text>
-    <loseItem id="3002"/>
-    <add amount="-4" to="stamina"/>
+    <loseItem id="3002" />
+    <add amount="-4" to="stamina" />
     <next id="166">Ha fogod a felszerelésedet és a kötélen lemászva tüstént a tolvajok üldözésére indulsz</next>
     <next id="137">Ha megvárod Hevert</next>
   </p>
@@ -1782,21 +1782,21 @@
     <text>
         [p]A dalnok egy ideig tétovázik, de aztán csak előad egy szórakoztató kis történetet az utadról Arionból Fakóvölgybe. A vége egészen magával ragadó: egy jogarról és országalmáról dalol, melyek hatalmat adnak, ha igaz uralkodó birtokába jutnak. Mire énekét befejezi, úgy érzed, hogy küldetésed csak akkor lesz sikeres, ha nálad van ez a mágikus jogar és országalma. Kapsz 1 SZERENCSE pontot. Nemsokára nyugovóra térsz.[/p]
     </text>
-    <add amount="1" to="stamina"/>
+    <add amount="1" to="stamina" />
     <next id="26"></next>
   </p>
   <p id="26">
     <text>
         [p]Hosszan és mélyen alszol (kapsz 2 ÉLETERŐ pontot). Reggel frissen ébredsz, és eltökélt szándékod, hogy elkéred Hevertől a kürtjét. A magánlakosztályában találsz rá. Eddig barátságosnak és megbízhatónak bizonyult, ezért elmeséled neki küldetésedet, és elmondod, milyen értékes segítség lenne számodra, ha megkaphatnád híres kürtjét. Hever egy darabig csöndben töpreng, aztán megszólal: - Nem biztos, hogy egy ilyen veszélyes küldetésről hazatérsz, még ha a kürt veled van is. Akkor pedig soha nem látom viszont a kürtömet. Mivel ez uralkodói hatalmam jele és védelmezője, ha neked adom, valami értékes dolgot kérek cserébe.[/p]
     </text>
-    <add amount="2" to="stamina"/>
+    <add amount="2" to="stamina" />
     <itemCheck type="item" id="3007">
-    <have>
-    <next id="58"></next>
-    </have>
-    <dontHave>
-    <next id="149"></next>
-    </dontHave>
+      <have>
+        <next id="58"></next>
+      </have>
+      <dontHave>
+        <next id="149"></next>
+      </dontHave>
     </itemCheck>
   </p>
   <p id="58">
@@ -1810,25 +1810,25 @@
         [p]Nem túl nehéz feladat megállítani a tolvajokat. Hat Törpe Orkkal álltok szemben, akiket kifejezetten lopásra tenyésztettek ki. Dühösen néznek rád. - Légy átkozott, amiért másokat is hoztál! - sziszegi a vezetőjük. - Téged akarunk, nem a vacak sisakodat! - Ezzel tőrt rám, és neked támad, míg a többi Ork társaiddal küzd.[/p]
     </text>
     <fight type="single">
-    <enemy id="17"/>
+      <enemy id="17" />
     </fight>
     <itemCheck type="enemy" id="17">
-    <have>
-    <next id="129"></next>
-    </have>
-    <dontHave>
-    <next id="268"></next>
-    </dontHave>
+      <have>
+        <next id="129"></next>
+      </have>
+      <dontHave>
+        <next id="268"></next>
+      </dontHave>
     </itemCheck>
   </p>
   <p id="129">
     <text>
         [p]Az egyik Törpe Ork legyőzte ellenfelét, és most ellened fordul. Egyszerre kell megküzdened a kettővel.[/p]
     </text>
-    <changeEnemy attribute="fleeAtRound" id="17" set="2147483647"/>
+    <changeEnemy attribute="fleeAtRound" id="17" set="2147483647" />
     <fight type="allAtOnce">
-    <enemy id="17"/>
-    <enemy id="18"/>
+      <enemy id="17" />
+      <enemy id="18" />
     </fight>
     <next id="268"></next>
   </p>
@@ -1850,12 +1850,12 @@
         [p]Azon töprengsz, vajon miért hagytak a tolvajok ennyire feltűnő nyomokat. A kötél, a széles csapás - mintha csak azt akarnák, hogy utolérd őket.[/p]
     </text>
     <itemCheck type="item" id="1002">
-    <have>
-    <next id="220"></next>
-    </have>
-    <dontHave>
-    <next id="252"></next>
-    </dontHave>
+      <have>
+        <next id="220"></next>
+      </have>
+      <dontHave>
+        <next id="252"></next>
+      </dontHave>
     </itemCheck>
   </p>
   <p id="220">
@@ -1863,13 +1863,13 @@
         [p]Néhány pontos lövéstől a hat ellenfélből csak kettő marad, de a tegezed kiürült (később visszaszerezheted a nyilaidat). Az utolsó két Törpe Orkkal szemben kell megküzdened. Szerencsére a magas fűben különváltak, ezért egyszerre csak eggyel kell harcolnod. Az első tőrt ránt, és vicsorogva támad rád: - Téged akarunk, nem a vacak sisakodat! - ordítja.[/p]
     </text>
     <fight type="single">
-    <enemy id="19"/>
-    <enemy id="18"/>
-    <win>
+      <enemy id="19" />
+      <enemy id="18" />
+      <win>
         <text>
             [p]Legyőzted őket, és visszaszerezted a [span class="takeItem" data-id="3002" data-amount="1"]sisakodat[/span] is.[/p]
         </text>
-    </win>
+      </win>
     </fight>
     <next id="321">Visszaindulhatsz Fakóvölgybe</next>
     <next id="20">Vagy hagyhatod Hever kürtjét, és elindulhatsz északnak, a Krill Garnash felé</next>
@@ -1891,7 +1891,7 @@
     <text>
         [p]Gyávaságodért vesztesz 2 SZERENCSE pontot. Nincs más választásod, el kell hagynod Fakóvölgyet.[/p]
     </text>
-    <add amount="-2" to="luck"/>
+    <add amount="-2" to="luck" />
     <next id="384"></next>
   </p>
   <p id="384">
@@ -1905,17 +1905,17 @@
     <text>
         [p]A halállal végleg megtörik Kevin hősies ellenállása, és a belé költözött gonosz szellem átveszi teste irányítását. Talpra ugrik, és áthatolhatatlan mágikus erőteret varázsol kettőtök köré. Te azonban közel voltál Heverhez, ezért ő is az erőtérbe került, és segít téged a harcban. A szellem egy kilencfarkú, tüzes korbácsot pattogtatva, gonosz mosollyal indul feléd, és Heverre rá se hederít. Valahányszor megnyersz egy Fordulót, vedd úgy, hogy Hever is megsebezte ezt a gonosz lényt, és ezért az 3 ÉLETERŐ pontot veszít, a szokásos 2 helyett. Nem tudod megölni ezt a démont, de ha legyőzöd, azzal visszakényszeríted az alvilágba, és Kevin békében nyugodhat.[/p]
     </text>
-    <changeItem attribute="staminaDamage" id="1001" set="3"/>
-    <changeItem attribute="staminaDamage" id="1003" set="3"/>
+    <changeItem attribute="staminaDamage" id="1001" set="3" />
+    <changeItem attribute="staminaDamage" id="1003" set="3" />
     <fight type="single">
-    <enemy id="20"/>
-    <win>
+      <enemy id="20" />
+      <win>
         <text>
             [p]A mágikus erőtér eltűnik.[/p]
         </text>
-    <changeItem attribute="staminaDamage" id="1001" set="2"/>
-    <changeItem attribute="staminaDamage" id="1003" set="2"/>
-    </win>
+        <changeItem attribute="staminaDamage" id="1001" set="2" />
+        <changeItem attribute="staminaDamage" id="1003" set="2" />
+      </win>
     </fight>
     <next id="132"></next>
   </p>
@@ -1924,11 +1924,12 @@
         [p]A halállal végleg megtörik Kevin hősies ellenállása, és a belé költözött gonosz szellem átveszi a teste irányítását. Talpra ugrik, és áthatolhatatlan mágikus erőteret varázsol kettőtök köré, így Hever és a katonái nem lehetnek a segítségedre. A szellem gonosz mosollyal egy kilencfarkú, tüzes korbácsot pattogtatva indul el feléd. Nem tudod megölni ezt a démont, de ha legyőzöd, azzal visszakényszeríted az alvilágba, és Kevin békében nyugodhat.[/p]
     </text>
     <fight type="single">
-    <enemy id="20"/>
-    <win>
+      <enemy id="20" />
+      <win>
         <text>
             [p]A mágikus erőtér eltűnik.[/p]
-        </text></win>
+        </text>
+      </win>
     </fight>
     <next id="132"></next>
   </p>
@@ -1965,7 +1966,7 @@
     <text>
         [p]Megszégyenülten térsz vissza az erdő szélére, ahol Hever vára falusi elöljárókkal. A kék ég, a szellőben lobogó zászlók és a daloló pacsirták, mintha mind a kudarcodról beszélnének. Hever állja a szavát, és nem adja neked a kürtöt. Visszakísér a várába. Miközben összekészülsz az induláshoz, ételt hozat neked a konyháról. Visszanyersz 2 ÉLETERŐ pontot.[/p]
     </text>
-    <add amount="2" to="stamina"/>
+    <add amount="2" to="stamina" />
     <next id="384"></next>
   </p>
   <p id="262">
@@ -1979,55 +1980,275 @@
         [p]A hatalmas Kardfogú Tigris nyáladzó pofával ugrik elő a bokrokból, és egyenesen a kutyák közé veti magát. A lándzsáddal kell megküzdened vele.[/p]
     </text>
     <random>
-    <result max="1" min="1"><text>[p]1 ÉLETERŐ pontot veszít a bestia.[/p]</text><changeEnemy id="21" attribute="stamina" change="-1" /></result>
-    <result max="2" min="2"><text>[p]2 ÉLETERŐ pontot veszít a bestia.[/p]</text><changeEnemy id="21" change="-2" attribute="stamina"/></result>
-    <result max="3" min="3"><text>[p]3 ÉLETERŐ pontot veszít a bestia.[/p]</text><changeEnemy id="21" change="-3" attribute="stamina"/></result>
-    <result max="4" min="4"><text>[p]4 ÉLETERŐ pontot veszít a bestia.[/p]</text><changeEnemy id="21" change="-4" attribute="stamina"/></result>
-    <result max="5" min="5"><text>[p]5 ÉLETERŐ és 1 ÜGYESSÉG pontot veszít a bestia.[/p]</text><changeEnemy id="21" change="-5" attribute="stamina"/> <changeEnemy id="21" change="-1" attribute="skill"/>  </result>
-    <result max="6" min="6"><text>[p]6 ÉLETERŐ és 1 ÜGYESSÉG pontot veszít a bestia.[/p]</text><changeEnemy id="21" change="-6" attribute="stamina"/><changeEnemy id="21" change="-1" attribute="skill"/></result>
-    <after>
+      <result max="1" min="1">
+        <text>[p]1 ÉLETERŐ pontot veszít a bestia.[/p]</text>
+        <changeEnemy id="21" attribute="stamina" change="-1" />
+      </result>
+      <result max="2" min="2">
+        <text>[p]2 ÉLETERŐ pontot veszít a bestia.[/p]</text>
+        <changeEnemy id="21" change="-2" attribute="stamina" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]3 ÉLETERŐ pontot veszít a bestia.[/p]</text>
+        <changeEnemy id="21" change="-3" attribute="stamina" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]4 ÉLETERŐ pontot veszít a bestia.[/p]</text>
+        <changeEnemy id="21" change="-4" attribute="stamina" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]5 ÉLETERŐ és 1 ÜGYESSÉG pontot veszít a bestia.[/p]</text>
+        <changeEnemy id="21" change="-5" attribute="stamina" />
+        <changeEnemy id="21" change="-1" attribute="skill" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]6 ÉLETERŐ és 1 ÜGYESSÉG pontot veszít a bestia.[/p]</text>
+        <changeEnemy id="21" change="-6" attribute="stamina" />
+        <changeEnemy id="21" change="-1" attribute="skill" />
+      </result>
+      <after>
         <text>
             [p]Ezt követően neked kell megküzdened vele. Ha az ÉLETERŐD pontszáma már nagyon alacsony és úgy gondolod, hogy Hever Kürtje nem ér ennyit, elmenekülhetsz.[/p]
         </text>
-    </after>
+      </after>
     </random>
     <fight type="single" forceWeapon="1004,1003,1001">
-    <enemy id="21"/>
-    <fleeing/>
-    <flee>
-    <next id="177"></next>
-    </flee>
-    <win>
-    <itemCheck type="enemy" id="21">
-    <have>
-    <next id="348"></next>
-    </have>
-    <dontHave>
-    <next id="333"></next>
-    </dontHave>
-    </itemCheck>
-    </win>
+      <enemy id="21" />
+      <fleeing />
+      <flee>
+        <next id="177"></next>
+      </flee>
+      <win>
+        <itemCheck type="enemy" id="21">
+          <have>
+            <next id="348"></next>
+          </have>
+          <dontHave>
+            <next id="333"></next>
+          </dontHave>
+        </itemCheck>
+      </win>
     </fight>
   </p>
   <p id="348">
     <text>
         [p]Mancsa erőteljes csapásával a Tigris úgy töri szét a lándzsádat, mintha az egy szalmaszál volna. A kardoddal kell megküzdened vele. Folytasd a harcot, de ahányszor csak a Tigris eltalál, 4 ÉLETERŐ pontot sebez a szokásos 2 helyett.[/p]
     </text>
-    <loseItem id="1004"/>
-    <changeEnemy attribute="staminaDamage" id="21" set="4"/>
-    <changeEnemy attribute="fleeAtRound" id="21" set="2147483647"/>
+    <loseItem id="1004" />
+    <changeEnemy attribute="staminaDamage" id="21" set="4" />
+    <changeEnemy attribute="fleeAtRound" id="21" set="2147483647" />
     <next id="371"></next>
   </p>
   <p id="333">
     <text>
         [p]Úgy döntesz, elteszed a [span class="takeItem" data-id="3015" data-amount="1"]Tigris fogait[/span] ennek a hatalmas küzdelemnek az emlékére. Aztán visszatérsz az erdő szélére Heverhez és a falusi elöljárókhoz. A kék ég, a szélben lobogó zászlók és a csicsergő pacsirták még jobb kedvre derítenek. Hever elégedett a győzelmeddel. - Érdemesnek bizonyultál arra, hogy viseld Hever Kürtjét - mondja. - Térjünk vissza a váramba és ünnepeljünk. - Kapsz 2 SZERENCSE pontot. Az ünnepség még másnap hajnalban is tart. Folyik a méz- és naspolyabor. Nehéz estéd volt, mert az összes előkelőség meg akarta hallgatni a történetedet, és meg akarta köszönni hőstettedet. Kapsz 3 ÉLETERŐ pontot. Miközben összekészülsz az induláshoz, Hever átnyújtja a [span class="takeItem" data-id="3016" data-amount="1"]kürtöt[/span]. Éppolyan, akár egy közönséges kosszarv, de Yachartól, a Szarvas Démontól származik, innen mágikus hatalma minden démoni és haladó gonosz fölött. A nyakadba akasztod, hogy a kardodhoz hasonlóan ez is mindig kéznél legyen. Ha belefújsz a kürtbe, levonhatsz 1-et ellenfeled ÜGYESSÉGÉBŐL, hacsak a könyv másként nem utasít.[/p]
     </text>
-    <add amount="2" to="luck"/>
-    <add amount="3" to="stamina"/>
+    <add amount="2" to="luck" />
+    <add amount="3" to="stamina" />
     <next id="384"></next>
   </p>
-  
-  
-  
-  
+  <p id="202">
+    <text>
+        [p]Nem kell sokáig várnod, míg egy nagy vörös hangya elvonul előtted. Rövidesen már tucatnyit látsz belőlük. Fölismered őket - ezek a Kincses Hangyák. Nevüket onnan kapták, hogy mindenféle csillogó csecsebecsét halmoznak föl a hangyabolyban. Elég nagyok (az előbb négyen egy döglött mezei egeret cipeltek), és a csípésük fájdalmas. Mindkét irányban nagy a forgalom, de általában a délnyugatnak tartó hangyák cipelnek valamit, úgyhogy valószínűleg arrafelé lesz a hangyaboly. Erős a kísértés, hogy megnézd a hangyabolyt, vajon van-e ott valami értékes dolog, de ezek az állatok képesek kilométereket megtenni, és a délnyugati irány nem a legkedvezőbb a számodra.[/p]
+    </text>
+    <next id="105">Ha mégis elindulsz arra</next>
+    <next id="91">Ha vársz még itt, hátha az egyik hangya erre hoz valami értékeset</next>
+    <next id="140">Ha nem törődsz velük, és továbbmész északnak</next>
+  </p>
+  <p id="91">
+    <text>
+        [p]Amíg vársz, annyira elvonja a figyelmedet a hangyaösvény, hogy alig veszel észre egy mérgeskígyót, amely a fű között lassan mögéd siklik. Az utolsó pillanatban fordulsz hátra, és megpillantod a Köpködő Viperát, amely savat köp a szemedbe. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="255"></next>
+      </success>
+      <failure>
+        <next id="41"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="255">
+    <text>
+        [p]Csak néhány csepp sav fröccsen a szemedbe. Vonj le magadtól 2 ÜGYESSÉG pontot erre a harcra.[/p]
+    </text>
+    <add amount="-2" to="skill" />
+    <fight type="single">
+      <enemy id="22" />
+      <win>
+        <add amount="2" to="skill" />
+      </win>
+    </fight>
+    <next id="277">Ha tovább vársz a hangyaösvénynél</next>
+    <next id="140">Ha folytatod az utat északnak</next>
+  </p>
+  <p id="277">
+    <text>
+        [p]Addig vársz, míg a nap vöröslő korongja lenyugszik, de egy hangya sem hoz egy rozsdás szögnél értékesebbet. Vesztesz 1 SZERENCSE pontot. Úgy döntesz, hogy véget vetsz ennek a céltalan ácsorgásnak, és továbbindulsz északnak.[/p]
+    </text>
+    <add amount="-1" to="luck" />
+    <next id="140"></next>
+  </p>
+  <p id="41">
+    <text>
+        [p]A sav telibe találja a szemed, és átmenetileg megvakulsz. Vonj le magadtól 5 ÜGYESSÉG pontot erre a harcra.[/p]
+    </text>
+    <add amount="-5" to="skill" />
+    <fight type="single">
+      <enemy id="22" />
+      <win>
+        <text>
+            [p]Ha legyőzted, vársz, amíg a sav hatása elmúlik, és visszanyered a látásodat. ÜGYESSÉGED így is maradandóan csökken 1 ponttal.[/p]
+        </text>
+        <add amount="4" to="skill" />
+      </win>
+    </fight>
+    <next id="277">Ha továbbra is ott vársz a hangyaösvénynél</next>
+    <next id="140">Ha tovább mész északnak</next>
+  </p>
+  <p id="105">
+    <text>
+        [p]Néhány óra elteltével a hangyaforgalom nem lett élénkebb, nincs jele a hangyabolynak, és semmit sem vittek erre, ami értékesebb volna egy rozsdás szögnél.[/p]
+    </text>
+    <next id="304">Ha tovább mész</next>
+    <next id="140">Ha elindulsz észak felé</next>
+  </p>
+  <p id="304">
+    <text>
+        [p]Kitartásod elnyeri jutalmát. A magas fű közt egy tisztásra lelsz, ahol hatalmas hangyavár áll. Oldalán akkora lyukak tátonganak, mint az öklöd, és a sok hangya csak úgy özönlik ki és be. Kardoddal széttúrod a bolyt, de így a hangyáknak esélyt adsz arra, hogy rád másszanak és megcsípjenek. [span class="takeItem" data-id="gold" data-amount="10"]10 Aranytallért[/span] érő kincset tudsz összeszedni, de minden második Aranytallér után vesztesz 1 ÉLETERŐ pontot. Szedj össze annyi Aranytallért, amennyit akarsz, aztán indulj északnak.[/p]
+    </text>
+    <next id="140"></next>
+  </p>
+  <p id="140">
+    <text>
+        [p]Leszáll az éj, és a füves síkságnak még mindig se vége, se hossza.[/p]
+    </text>
+    <next id="2">Ha helyet csinálsz magadnak a fűben és álomra hajtod a fejedet</next>
+    <next id="34">Ha továbbmész</next>
+  </p>
+  <p id="2">
+    <text>
+        [p]Az éjjel egerek másznak a hátizsákodba, és felfalnak 2 adagot az Élelmiszerkészletedből. Napkeltekor továbbindulsz északnak, és egy nap múlva a füves síkság széléhez érsz. Ingoványos vidék terül el előtted, itt-ott elszórt cserjék, egy-egy magányos szikla, meg számtalan patak és folyó. Éjjeli pihenőd után tovább folytatod az utat.[/p]
+    </text>
+    <loseItem id="2000" amount="-2" />
+    <itemCheck type="section" id="105">
+      <have>
+        <next id="291"></next>
+      </have>
+      <dontHave>
+        <next id="350"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="34">
+    <text>
+        [p]Meg kell enned egy adagot az Élelmiszerkészletedből, hogy pótold az erődet. Egész éjszaka gyalogolsz, míg eléred a füves síkság szélét. Előtted ingoványos vidék terül el. Itt-ott cserjét és sziklákat látsz, meg csörgedező patakokat, melyek vizén meg-megcsillan a hajnali nap. Megpihensz egy kissé, aztán folytatod utadat.[/p]
+    </text>
+    <loseItem id="2000" />
+    <itemCheck type="section" id="105">
+      <have>
+        <next id="291"></next>
+      </have>
+      <dontHave>
+        <next id="350"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="68">
+    <empty />
+  </p>
+  <p id="291">
+    <text>
+        [p]Északkeletnek egyenes út vezet innen a Krill Garnash felé.[/p]
+    </text>
+    <next id="55">Ha arra indulsz</next>
+    <next id="243">Ha északnak folytatod utad</next>
+  </p>
+  <p id="350">
+    <text>
+        [p]Északnak egyenes út vezet pontosan a Krill Garnash felé.[/p]
+    </text>
+    <next id="236">Ha arra indulsz</next>
+    <next id="55">Ha inkább északnyugatnak mész</next>
+  </p>
+  <p id="80a" display="80">
+    <text>
+        [p]Az alkimista néhány áruja felkelti az érdeklődésedet. A Szerencse Itala 3 Aranytallérért - visszaállítja a SZERENCSÉDET - a kezdeti értékre. Gyógyital 5 Aranytallérért - visszaad 6 ÉLETERŐ pontot (használhatod most vagy később). Pillanatnyi Láthatatlanság Köpenye, 10 Aranytallérért. Fagykenőcs, mely megvéd a hidegtől, 5 Aranytallérért. A Fürgeség Csizmája, 6 Aranytallérért. Vásárold meg, amit akarsz és tudsz.[/p]
+    </text>
+    <market>
+      <sale price="3" stock="1" id="2004" />
+      <sale price="5" stock="1" id="2005" />
+      <sale price="10" stock="1" id="3017" />
+      <sale price="5" stock="1" id="3018" />
+      <sale price="6" stock="1" id="3019" />
+    </market>
+    <next id="397"></next>
+  </p>
+  <p id="80b" display="80">
+    <text>
+        [p]Az alkimista néhány áruja felkelti az érdeklődésedet. A Szerencse Itala 3 Aranytallérért - visszaállítja a SZERENCSÉDET - a kezdeti értékre. Gyógyital 5 Aranytallérért - visszaad 6 ÉLETERŐ pontot (használhatod most vagy később). Pillanatnyi Láthatatlanság Köpenye, 10 Aranytallérért. Fagykenőcs, mely megvéd a hidegtől, 5 Aranytallérért. A Fürgeség Csizmája, 6 Aranytallérért. Vásárold meg, amit akarsz és tudsz.[/p]
+    </text>
+    <market>
+      <sale price="3" stock="1" id="2004" />
+      <sale price="5" stock="1" id="2005" />
+      <sale price="10" stock="1" id="3017" />
+      <sale price="5" stock="1" id="3018" />
+      <sale price="6" stock="1" id="3019" />
+    </market>
+    <next id="357"></next>
+  </p>
+  <p id="236">
+    <text>
+        [p]Jó darabon nem ütközöl semmilyen akadályba: a patakok elég sekélyek, hogy átgázolj rajtuk, vagy elég keskenyek, hogy átugord őket. A tájat mindenfelé hanga és áfonyabokrok borítják, és ez néha megnehezíti a haladást. Nemsokára különös látványban lesz részed. Egy tarkabarkára festett, bivaly húzta ekhós szekér közeleg keletről. A bakon robusztus öregember ül, a gyeplő lazán lóg a kezében. Úgy tűnik, nem nagyon érdekli, merre megy a szekere. A szekér oldalára erősített edények és lábosok hangosan csörömpölnek. A ponyván felirat: ,,Canches - Alkimista és Kereskedő''. Odaszólsz neki, erre Canches azonnal megállítja a bivalyt. Az állat tüstént legelni kezdi a füvet. Canches felajánlja neked néhány portékáját.[/p]
+    </text>
+    <itemCheck type="gold" id="1">
+      <have>
+        <next id="80a">Ha meg akarod nézni, mit tud adni</next>
+        <next id="397">Ha továbbmész északnak</next>
+        <next id="185">Ha megtámadod, hogy utána kirabold</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Mivel nincs pénzed, csak elbeszélgetsz vele egy kicsit.[/p]
+        </text>
+        <next id="397">Ha továbbmész északnak</next>
+        <next id="185">Ha megtámadod, hogy utána kirabold</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="397">
+    <text>
+        [p]Egyik este, amikor épp azon gondolkozol, hol pihenj meg éjszakára, egy hatalmas sziklára lelsz, amelybe a szél boltíves beugrót vájt.[/p]
+    </text>
+    <next id="179">Ha a beugró védelmében töltöd az éjszakát</next>
+    <next id="77">Ha más helyet keresel</next>
+  </p>
+  <p id="323">
+    <text>
+        [p]Jó darabig nem ütközöl akadályba, a patakok elég sekélyek ahhoz, hogy átgázolj rajtuk, vagy elég keskenyek, hogy átugord őket. A tájat hanga és áfonyabokrok borítják, ez néha megnehezíti a haladást. (Viszont az áfonya nagyon finom.) Miután elhagytad a füves síkságot, rá két napra, délután különös látványban lesz részed. Egy tarkabarkára festett, bivaly húzta ekhós szekér közeleg keletről. A bakon robusztus termetű öreg ül, a gyeplő lazán lóg a kezében, úgy tűnik, nem nagyon érdekli, merre megy a szekere. A szekér oldalára erősített edények és lábosok hangosan csörömpölnek. A ponyván felirat: "Canches - Alkimista és Kereskedő". Odaszólsz neki. Canches azonnal megállítja a bivalyt, amely rögtön egy nagy fűcsomót kezd el rágcsálni. Canches felajánlja neked néhány portékáját.[/p]
+    </text>
+    <itemCheck type="gold" id="1">
+      <have>
+        <next id="80b">Ha meg akarod nézni, mit tud adni</next>
+        <next id="375">Ha továbbmész északkeletnek</next>
+        <next id="185">Ha megtámadod, hogy utána kirabold</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Mivel nincs pénzed, csak elbeszélgetsz vele egy kicsit.[/p]
+        </text>
+        <next id="375">Ha továbbmész északkeletnek</next>
+        <next id="185">Ha megtámadod, hogy utána kirabold</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="185">
+    <text>
+        [p]Mit gondolsz, hogyan marad életben az alkimista ezen a veszélyes vidéken? Amint erőszakos szándékod nyilvánvalóvá válik, semmivé változtat. A bivaly továbbra is unottan bámul maga elé.[/p]
+    </text>
+    <death />
+  </p>
+
+
+
 </content>
