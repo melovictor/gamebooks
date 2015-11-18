@@ -22,7 +22,7 @@ public class Mapper {
         final String content = "src\\main\\resources";
 
         final GregorianCalendar calendar = new GregorianCalendar();
-        calendar.add(GregorianCalendar.HOUR, -8);
+        calendar.add(GregorianCalendar.DATE, -2);
         final long lastWeek = calendar.getTime().getTime();
 
         for (final String serie : series) {
