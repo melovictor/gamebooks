@@ -14,6 +14,15 @@
     <property name="contentSpecification">
       <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="false" />
     </property>
+    <property name="resources">
+      <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="ff23" p:jsResources="ff23" />
+    </property>
   </bean>
+  
+  <bean class="hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.service.Ff23BookPreFightHandlingService" id="ff23BookPreFightHandlingService" />
+  
+  <util:list id="hornResistantEnemies">
+    <value>1</value>
+  </util:list>
 
 </beans>

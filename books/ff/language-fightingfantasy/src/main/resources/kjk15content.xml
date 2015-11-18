@@ -1538,4 +1538,496 @@
     <next id="305">Ha egy falun mész át</next>
     <next id="396">Ha elkerülöd a falut és egy szántáson vágsz át</next>
   </p>
+  <p id="305">
+    <text>
+        [p]Kevés ember van az utcán. Egy öregasszony, aki kosarat fon a háza előtt, gyanakodva nézeget, a kovács pedig - hatalmas ember, jó néhány liternyi Troll-vér csörgedezhet az ereiben - abbahagyja a munkáját, amíg a közelben vagy.[/p]
+    </text>
+    <next id="99">Ha bemész a fogadóba</next>
+    <next id="152">Ha olyan súlyosak a sebeid, hogy megkérdezed a kovácstól, merre lakik a legközelebbi javasasszony</next>
+  </p>
+  <p id="99">
+    <text>
+        [p]1 Aranytallérért vehetsz [span class="takeItem" data-id="4003" data-amount="1"]ételt és italt[/span], s ezzel visszakapsz 2 ÉLETERŐ pontot. Egyél, ha akarsz, aztán indulj tovább a faluból.[/p]
+    </text>
+    <next id="24"></next>
+  </p>
+  <p id="24">
+    <text>
+        [p]Merre indulsz tovább?[/p]
+    </text>
+    <next id="312">Ha az úton mész tovább</next>
+    <next id="396">Ha visszafordulsz, hogy átvágj a korábban látott szántáson</next>
+  </p>
+  <p id="152">
+    <text>
+        [p]Eléred a javasasszony házát. Ő azonban azt mondja, hogy csak sóskából tud olyan erős főzetet készíteni, mely segít rajtad.
+    </text>
+    <itemCheck type="item" id="3003">
+      <have>
+        <text>
+            Szerencsére van nálad sóska, és a főzettől visszakapsz 4 ÉLETERŐ pontot. Ezután továbbállsz a faluból.[/p]
+        </text>
+        <loseItem id="3003" />
+        <add amount="4" to="stamina" />
+      </have>
+      <dontHave>
+        <text>
+            Sajnos nincs nálad sóska, így, továbbállsz a faluból, arra számítva, hogy majd Hever vendégül lát.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <next id="24"></next>
+  </p>
+  <p id="396">
+    <text>
+        [p]Mikor eléred a mező túlsó szélét, megállsz, hogy lepucold a nehéz sarat a csizmádról. Mikor felnézel, egy parasztot látsz, aki ingerülten mered rád, mellette két kalagariai Tarajoshátú vicsorog. Ezek az intelligens gyilkosok félig kutyák, félig farkasok. Nem kétséges, hogy könnyen végezhetnél mindhármukkal, de nem akarod Hevert megbántani azzal, hogy rátámadsz az alattvalóira, ezért amikor a paraszt gorombán rád rivall, amiért letapostad frissen bevetett földjét, felajánlod, hogy megtéríted a kárát. [alt]Mit adsz neki?[/alt][/p]
+    </text>
+    <itemCheck type="gold" id="2">
+      <have>
+        <next id="299" pos="1">2 Aranytallért?</next>
+      </have>
+      <dontHave>
+        <itemCheck type="items" id="3013 or 3008">
+          <dontHave>
+            <next id="266" singleChoiceText="Sajnos azonban nincs nálad semmi, amit neki tudnál adni."></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="3013">
+      <have>
+        <next id="66" pos="2">Cholumbara szobrát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3008">
+      <have>
+        <next id="205" pos="3">Egy rézrögöt?</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="66">
+    <text>
+        [p]A paraszt nagyon örül az ajándékodnak. - Ez több, mint ellenszolgáltatás - mondja. - Ha Cholumbara jelen van, sokkal jobb lesz a termés. - Örülsz, hogy ilyen nehéz helyzetből ilyen könnyen kivágtad magad, és nem kell tovább cipelned a szobrot. Nyersz 1 SZERENCSE pontot. Elindulsz a várkapu felé.[/p]
+    </text>
+    <loseItem id="3013" />
+    <add amount="1" to="luck" />
+    <next id="78"></next>
+  </p>
+  <p id="205">
+    <text>
+        [p]A paraszt hangosan felkacag: - Mire használhatnám én ezt az ócskaságot? - kérdezi, és a sövény közé hajítja a rézrögöt.[/p]
+    </text>
+    <loseItem id="3008" />
+    <next id="396"></next>
+  </p>
+  <p id="299">
+    <text>
+        [p]A paraszt morog egy kicsit, de elfogadja a pénzt, és átenged a földjén. A várkapu felé indulsz.[/p]
+    </text>
+    <add amount="-2" to="gold" />
+    <next id="78"></next>
+  </p>
+  <p id="266">
+    <text>
+        [p]Felajánlod, hogy arcod verejtékével fizetsz neki. A paraszt beleegyezik, és a disznóólhoz vezet, amely szerinte már évek óta nem volt kitakarítva. Ez lenne a feladatod. Vesztesz 2 ÉLETERŐ pontot a munkától és 1 SZERENCSE pontot a megaláztatástól. Mikor végzel, elindulsz a várkapu felé.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="luck" />
+    <next id="78"></next>
+  </p>
+  <p id="78">
+    <text>
+        [p]Beesteledik, mire a kapuhoz érsz. Két Törpe őr áll eléd. Megkérdezik, mi dolgod itt, majd egy díszes várószobába vezetnek. Az egyik kisvártatva visszatér. - Hever nagyúr vacsorázik - közli -, és arra kér, hogy tarts vele.[/p]
+    </text>
+    <next id="42">Ha elfogadod a meghívást és egyenesen odamész</next>
+    <next id="120">Ha előbb azt kéred, hogy vezessenek a szobádba</next>
+  </p>
+  <p id="312">
+    <text>
+        [p]Két falusi jön oda melléd. Látszik rajtuk az ital hatása (a helyi naspolyasör igen erős). Közrefognak, úgy sétálnak és beszélgetnek, mintha te ott se lennél. - Ni, egy idegen - mondja az egyik. - Aha! Ki nem állhatom az idegeneket - feleli a másik. - Én se. - Akkor csináljuk ki. - Nem akarod Hevert megbántani, hogy fegyverrel támadsz az alattvalóira, de meg kell védened magad a két gyilkos ellen. Félreteszed a fegyveredet, felgyűröd az inged ujját és az ökölvívás nemes sportjának hódolsz.[/p]
+    </text>
+    <random>
+      <result max="2" min="1">
+        <text>
+            [p]Megütöttek, vonj le magadtól 1 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+        <next id="312"></next>
+      </result>
+      <result max="4" min="3">
+        <text>
+            [p]Elkerülted az ütéseiket, de ők is kivédték a tiédet.[/p]
+        </text>
+        <next id="312"></next>
+      </result>
+      <result max="6" min="5">
+        <text>
+            [p]Bevittél egy ütést.[/p]
+        </text>
+        <gatherItem id="4004" />
+        <itemCheck type="item" id="4004" amount="3">
+          <have>
+            <text>
+                [p]Támadóid elfutnak, és te továbbmehetsz a várkapu felé.[/p]
+            </text>
+            <next id="78"></next>
+          </have>
+          <dontHave>
+            <next id="312"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+    </random>
+  </p>
+  <p id="120">
+    <text>
+        [p]A szobád az északkeleti toronyban van, lőrésszerű ablakából egész Fakóvölgy látszik, sőt még a Dárdanyél Síkság széle is. Az őr az ajtó előtt áll, míg lerámolod a felszerelésedet és a sisakodat (a biztonság kedvéért a kardodat magadnál tartod). Úgy-ahogy rendbe szeded magad. Mikor végzel, mozgolódást hallasz a folyosóról. Amikor kinyitod az ajtót, egy Törpe Ork épp akkor húzza ki a tőrét a halott őrből. Kardot rántasz, és az Orkra támadsz. Ellenfeled kicsi, de rendkívül ügyes. Elhajol csapásaid elől, és villámgyorsan támad.[/p]
+    </text>
+    <fight type="single">
+    <enemy id="16"/>
+    <win>
+        <text>
+            [p]Két Forduló után mindketten halljátok a futva közeledő katonák csizmáinak csattogását. Az Ork egy pillanat alatt eltűnik egy sarok mögött.[/p]
+        </text>
+    </win>
+    </fight>
+    <next id="8">Ha követed</next>
+    <next id="111">Ha megvárod az erősítést</next>
+  </p>
+  <p id="8">
+    <text>
+        [p]Sehol sem látod az Orkot. Hamarosan rájössz, hogy könnyen eltévedhetsz a vár folyosóinak és lépcsőinek útvesztőjében, ezért inkább visszatérsz a szobádba. Néhány őrt találsz ott. Elesett társukat vizsgálják, és gyanakvóan néznek rád.[/p]
+    </text>
+    <next id="111"></next>
+  </p>
+  <p id="111">
+    <text>
+        [p]A katonák nem ismernek téged, te pedig karddal a kezedben ott állsz a társuk holtteste fölött. Ez kissé gyanús nekik. Belöknek a szobába, és őrt állítanak az ajtó elé, míg elmennek, hogy jelentsék az esetet. Körülnézel és látod, hogy a sisakod eltűnt, és egy kötél lóg az ablakból. A tolvaj vagy tolvajok, akik feltehetőleg az Ork társai, erre menekülhettek.[/p]
+    </text>
+    <loseItem id="3002"/>
+    <next id="166">Ha összeszeded a felszerelésedet és azonnal a nyomukba eredsz</next>
+    <next id="377">Ha segítségért kiáltasz</next>
+    <next id="342">Ha megvárod a fejleményeket</next>
+  </p>
+  <p id="377">
+    <text>
+        [p]Az őrök még mindig gyanakszanak, úgy gondolják, valami trükkel próbálkozol. Ezért inkább a biztonság kedvéért leütnek. Vesztesz 3 ÉLETERŐ pontot. Egy idő után magadhoz térsz.[/p]
+    </text>
+    <add amount="-3" to="stamina"/>
+    <next id="342"></next>
+  </p>
+  <p id="342">
+    <text>
+        [p]Kisvártatva maga Hever lép be a szobába. Körülötte katonák, készen arra, hogy a legapróbb gyanús mozdulatra megtámadjanak. Hever hatalmas termetű, fekete szakállas, heves vérmérsékletű ember. Elmondod neki, mi történt, és közlöd, hogy te, mint Arion uralkodója nem ilyen bánásmódhoz szoktál. Hever megkér, hogy mondd el, milyen volt az ellopott sisak. Eleget teszel kérésének. Megkönnyebbült sóhajjal lép hozzád és átölel. - Isten hozott, testvér! - dörgi öblös hangján -, Ifor Tynin egy sassal üzente meg a jöttödet. Hát, hogyan segíthetnék neked? - Megmutatod neki a kötelet. Hever gyorsan összeszed egy keresőcsapatot (veled együtt hat fő), és a tolvajok nyomába eredtek.[/p]
+    </text>
+    <next id="166"></next>
+  </p>
+  <p id="166">
+    <text>
+        [p]Éjszaka igen nehéz követni a tolvajok nyomát, még akkor is, ha a hold fenn van, de azért haladsz valamennyit. Hajnalra eléred a Dárdanyél Síkság szélét, és északnak tartasz. A magas fűben könnyű követni a tolvajokat: a letaposott fűcsomók jelzik, merre mentek. Kisvártatva maguk a tolvajok is feltűnnek a távolban, fejük és válluk kiemelkedik a fűből.[/p]
+    </text>
+    <itemCheck type="section" id="342 or 137">
+    <have>
+    <next id="14"></next>
+    </have>
+    <dontHave>
+    <next id="356"></next>
+    </dontHave>
+    </itemCheck>
+  </p>
+  <p id="42">
+    <text>
+        [p]Belépsz a lovagterembe. Az asztalok körül igen vegyes társaságot találsz. Emberek és Elfek ülnek egymás mellett. Madáremberek Törpe Harcosokkal adomáznak, még egy barátságos Óriást is látsz, aki épp egy fél sült ökröt majszol. Magasan a tömeg fölött ül Hever, a várúr, aki egyaránt kedveli a haragot és a vidámságot. Az uralkodói asztalhoz vezetnek, ahol Hever jobbján egy számodra fenntartott szék vár. - Üdvözöllek, bátyámuram - dörgi Hever. - Azt hiszem, szólíthatlak így. Foglalj helyet, és erre a néhány órára, amit köztünk töltesz, felejtsd el fárasztó utad nehézségeit. Miért nem viteted a szobádba a hátizsákodat?[/p]
+    </text>
+    <next id="71">Ha megengeded, hogy a szolga, aki idáig kísért, a kardod kivételével minden csomagodat a szobádba vigye</next>
+    <next id="389">Ha nem engeded meg</next>
+  </p>
+  <p id="389">
+    <text>
+        [p]- Nem számít, nem számít - nevet Hever. - Ha így akarsz asztalhoz ülni, ám legyen. - A lakoma alatta régi kultúrákról beszélgettek, de neked folyton az motoszkál a fejedben, hogyan kéne elkérned Hevertől a kürtjét. Mikor befejezitek az evést (visszanyersz 4 ÉLETERŐ pontot), Hever meghív a saját lakosztályába, hogy hallgasd meg a vár dalnokát. A sok bortól már ólomnehezek a tagjaid. A pihentető álom nemcsak hogy jólesne, de egyenesen szükséges.[/p]
+    </text>
+    <add amount="4" to="stamina"/>
+    <next id="26">Ha udvariasan visszautasítod Hever meghívását, és azt kéred, hogy vezessenek a szobádba</next>
+    <next id="184">Ha elfogadod az ajánlatát</next>
+  </p>
+  <p id="71">
+    <text>
+        [p]Az étel igen laktató (visszakapsz 4 ÉLETERŐ pontot); de az őr rossz hírrel tér vissza. A szobádban Törpe Orkok támadták meg, és leütötték. Mikor magához tért, a sisakod nem volt sehol, a tolvajoknak pedig nyoma veszett. Azonnal ráparancsolsz, hogy vezessen a szobádba, míg Hever összeállít egy felderítő csapatot. A szobádban nyitva találod az ablakot, a párkányról pedig egy kötél lóg le. Az ablakodból lemászva az Orkok sietve a várfalon kívülre kerültek.[/p]
+    </text>
+    <loseItem id="3002"/>
+    <add amount="-4" to="stamina"/>
+    <next id="166">Ha fogod a felszerelésedet és a kötélen lemászva tüstént a tolvajok üldözésére indulsz</next>
+    <next id="137">Ha megvárod Hevert</next>
+  </p>
+  <p id="137">
+    <text>
+        [p]Hever jön be a szobába. Te rögtön megmutatod neki a kötelet. Közli, hogy egy ötfős kereső csapat vár az udvaron. - Tudom, milyen fontos az a sisak a családodnak - teszi hozzá. - Ifor Tynin értesített a jöttödről. Egy sassal küldött üzenetet, és megírta, hogy a sisak az ismertetőjeled. - Csatlakozol a katonákhoz, és a tolvajok nyomába eredtek.[/p]
+    </text>
+    <next id="166"></next>
+  </p>
+  <p id="184">
+    <text>
+        [p]Heverrel jól elbeszélgettek az asztalnál, aztán csatlakozik hozzátok a dalnok. A fiatalember homlokán a dalnokok hagyományos jele látható, így aztán bármerre vezessen is az útja, mindig kedves vendégként fogadják. Elmond néhány régi mesét, de döbbenten látod, hogy nem igazán tehetséges. Kérdőn nézel Heverre, aki súgva ad gyors magyarázatot: - Ez a legény az előző dalnokom tanítványa, aki a legjobb volt ezen a vidéken. Néhány hónappal ezelőtt azonban dalnokomat elrabolták, és azóta sem hallottunk felőle. Azért ez a fiú is fejlődik. Bármilyen meséből dalt tud komponálni. - Ez elég természetes, hiszen dalnok. Hever vendégeként engedélyt kapsz rá, hogy megkérd a dalnokot: énekeljen neked valamit. Udvariatlanság lenne ezt a lehetőséget elutasítani. Mit akarsz hallani?[/p]
+    </text>
+    <next id="296">Ha Pyke és a Tűzróka régi históriáját</next>
+    <next id="232">Ha egy dalt Fakóvölgyben tett látogatásodról</next>
+  </p>
+  <p id="296">
+    <text>
+        [p]A dalnok elég ügyesen teljesíti a kérésedet, de kifelejti azt a részt, ahol Pyke a Sikító sziget Sárkánygyíkjával küzd meg, és a végén ölyvvé változtatja, nem sassá. Röviddel később aludni térsz.[/p]
+    </text>
+    <next id="26"></next>
+  </p>
+  <p id="232">
+    <text>
+        [p]A dalnok egy ideig tétovázik, de aztán csak előad egy szórakoztató kis történetet az utadról Arionból Fakóvölgybe. A vége egészen magával ragadó: egy jogarról és országalmáról dalol, melyek hatalmat adnak, ha igaz uralkodó birtokába jutnak. Mire énekét befejezi, úgy érzed, hogy küldetésed csak akkor lesz sikeres, ha nálad van ez a mágikus jogar és országalma. Kapsz 1 SZERENCSE pontot. Nemsokára nyugovóra térsz.[/p]
+    </text>
+    <add amount="1" to="stamina"/>
+    <next id="26"></next>
+  </p>
+  <p id="26">
+    <text>
+        [p]Hosszan és mélyen alszol (kapsz 2 ÉLETERŐ pontot). Reggel frissen ébredsz, és eltökélt szándékod, hogy elkéred Hevertől a kürtjét. A magánlakosztályában találsz rá. Eddig barátságosnak és megbízhatónak bizonyult, ezért elmeséled neki küldetésedet, és elmondod, milyen értékes segítség lenne számodra, ha megkaphatnád híres kürtjét. Hever egy darabig csöndben töpreng, aztán megszólal: - Nem biztos, hogy egy ilyen veszélyes küldetésről hazatérsz, még ha a kürt veled van is. Akkor pedig soha nem látom viszont a kürtömet. Mivel ez uralkodói hatalmam jele és védelmezője, ha neked adom, valami értékes dolgot kérek cserébe.[/p]
+    </text>
+    <add amount="2" to="stamina"/>
+    <itemCheck type="item" id="3007">
+    <have>
+    <next id="58"></next>
+    </have>
+    <dontHave>
+    <next id="149"></next>
+    </dontHave>
+    </itemCheck>
+  </p>
+  <p id="58">
+    <text>
+        [p]Átadod a kristálytükröt Hevernek. Elveszi, majd mikor felismeri, arra gondol, milyen bolond vagy gonosz módon juthattál hozzá. Elkomorul. Aztán feléd fordítja a tükröt.[/p]
+    </text>
+    <next id="209"></next>
+  </p>
+  <p id="14">
+    <text>
+        [p]Nem túl nehéz feladat megállítani a tolvajokat. Hat Törpe Orkkal álltok szemben, akiket kifejezetten lopásra tenyésztettek ki. Dühösen néznek rád. - Légy átkozott, amiért másokat is hoztál! - sziszegi a vezetőjük. - Téged akarunk, nem a vacak sisakodat! - Ezzel tőrt rám, és neked támad, míg a többi Ork társaiddal küzd.[/p]
+    </text>
+    <fight type="single">
+    <enemy id="17"/>
+    </fight>
+    <itemCheck type="enemy" id="17">
+    <have>
+    <next id="129"></next>
+    </have>
+    <dontHave>
+    <next id="268"></next>
+    </dontHave>
+    </itemCheck>
+  </p>
+  <p id="129">
+    <text>
+        [p]Az egyik Törpe Ork legyőzte ellenfelét, és most ellened fordul. Egyszerre kell megküzdened a kettővel.[/p]
+    </text>
+    <changeEnemy attribute="fleeAtRound" id="17" set="2147483647"/>
+    <fight type="allAtOnce">
+    <enemy id="17"/>
+    <enemy id="18"/>
+    </fight>
+    <next id="268"></next>
+  </p>
+  <p id="268">
+    <text>
+        [p]Három társad maradt életben, az Orkok pedig mindannyian elpusztultak. Visszaveszed a [span class="takeItem" data-id="3002" data-amount="1"]sisakodat[/span], és elindultok visszafelé Fakóvölgybe. Közben meg-megpihentek az úton.[/p]
+    </text>
+    <next id="321"></next>
+  </p>
+  <p id="321">
+    <text>
+        [p]Mikor visszaérsz Fakóvölgybe, és megjelensz Hever előtt a sisakoddal, belátja, hogy az vagy, akinek mondtad magad - Arion uralkodója. A gondolataid már a kürt körül járnak, és azt fontolgatod, vajon hogyan kérd el tőle, de most sokkal égetőbb kérdéseket vitattok meg. Honnan tudták a tolvajok, hegy itt vagy? Hogyan kaptak üzenetet és kitől? Végül is Hever azt javasolja , hallgasd meg a dalnokát, hátha az majd feledteti veled a gondjaidat.[/p]
+    </text>
+    <next id="184">Ha elfogadod az ajánlatát</next>
+    <next id="26">Ha aludni térsz</next>
+  </p>
+  <p id="356">
+    <text>
+        [p]Azon töprengsz, vajon miért hagytak a tolvajok ennyire feltűnő nyomokat. A kötél, a széles csapás - mintha csak azt akarnák, hogy utolérd őket.[/p]
+    </text>
+    <itemCheck type="item" id="1002">
+    <have>
+    <next id="220"></next>
+    </have>
+    <dontHave>
+    <next id="252"></next>
+    </dontHave>
+    </itemCheck>
+  </p>
+  <p id="220">
+    <text>
+        [p]Néhány pontos lövéstől a hat ellenfélből csak kettő marad, de a tegezed kiürült (később visszaszerezheted a nyilaidat). Az utolsó két Törpe Orkkal szemben kell megküzdened. Szerencsére a magas fűben különváltak, ezért egyszerre csak eggyel kell harcolnod. Az első tőrt ránt, és vicsorogva támad rád: - Téged akarunk, nem a vacak sisakodat! - ordítja.[/p]
+    </text>
+    <fight type="single">
+    <enemy id="19"/>
+    <enemy id="18"/>
+    <win>
+        <text>
+            [p]Legyőzted őket, és visszaszerezted a [span class="takeItem" data-id="3002" data-amount="1"]sisakodat[/span] is.[/p]
+        </text>
+    </win>
+    </fight>
+    <next id="321">Visszaindulhatsz Fakóvölgybe</next>
+    <next id="20">Vagy hagyhatod Hever kürtjét, és elindulhatsz északnak, a Krill Garnash felé</next>
+  </p>
+  <p id="252">
+    <text>
+        [p]Nem vagy ellenfél a hat Törpe Orknak, akiket követtél. Hagyják, hogy utolérd őket, aztán bekerítenek, majd gonosz pengéik megvillannak a reggeli nap fényében. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="149">
+    <text>
+        [p]- Semmi értékem sincs, amit felajánlhatnék neked - csak saját magam - mondod egyszerűen. Hever egy pillanatra elgondolkodik. - Rendben van - mondja végül. - Valamiben a segítségemre lehetnél. Él egy különösen nagy Kardfogú Tigris az Affen erdőben. Néha egészen Fakóvölgyig merészkedik, és megtizedeli a nyájaimat meg az embereimet. Ha megszabadítod a vidéket ettől a fenevadtól, neked adom a kürtömet. Nem lesz könnyű dolgod: a Tigrist nagyon nehéz megközelíteni, és ha sarokba szorították, igen veszélyes ellenfél.[/p]
+    </text>
+    <next id="240">Ha elfogadod az ajánlatát</next>
+    <next id="83">Ha nem</next>
+  </p>
+  <p id="83">
+    <text>
+        [p]Gyávaságodért vesztesz 2 SZERENCSE pontot. Nincs más választásod, el kell hagynod Fakóvölgyet.[/p]
+    </text>
+    <add amount="-2" to="luck"/>
+    <next id="384"></next>
+  </p>
+  <p id="384">
+    <text>
+        [p]Már épp elindulnál Hevertől, amikor egy vérző, sebesült alak tör át az őrök közt, és arccal előrebukva a földre zuhan előtted. Gyengéden megfordítod, és csak nehezen ismered fel benne arioni fegyverkovácsodat, Biztoskezű Kevint. Alig él. Felrepedt ajkai közt hatalmas erőfeszítéssel préseli a szavakat, mintha csak a halállal vagy valami még rosszabbal küszködne. - Felség... megpróbáltam... fekete mágia... ne add fel... - Aztán hörögve kileheli a lelkét. Talpra ugrasz.[/p]
+    </text>
+    <next id="93">Ha odamész Heverhez, hogy megvitasd vele a történteket</next>
+    <next id="281">Ha Kevin mellett maradsz és eltöprengsz azon, amit mondott</next>
+  </p>
+  <p id="93">
+    <text>
+        [p]A halállal végleg megtörik Kevin hősies ellenállása, és a belé költözött gonosz szellem átveszi teste irányítását. Talpra ugrik, és áthatolhatatlan mágikus erőteret varázsol kettőtök köré. Te azonban közel voltál Heverhez, ezért ő is az erőtérbe került, és segít téged a harcban. A szellem egy kilencfarkú, tüzes korbácsot pattogtatva, gonosz mosollyal indul feléd, és Heverre rá se hederít. Valahányszor megnyersz egy Fordulót, vedd úgy, hogy Hever is megsebezte ezt a gonosz lényt, és ezért az 3 ÉLETERŐ pontot veszít, a szokásos 2 helyett. Nem tudod megölni ezt a démont, de ha legyőzöd, azzal visszakényszeríted az alvilágba, és Kevin békében nyugodhat.[/p]
+    </text>
+    <changeItem attribute="staminaDamage" id="1001" set="3"/>
+    <changeItem attribute="staminaDamage" id="1003" set="3"/>
+    <fight type="single">
+    <enemy id="20"/>
+    <win>
+        <text>
+            [p]A mágikus erőtér eltűnik.[/p]
+        </text>
+    <changeItem attribute="staminaDamage" id="1001" set="2"/>
+    <changeItem attribute="staminaDamage" id="1003" set="2"/>
+    </win>
+    </fight>
+    <next id="132"></next>
+  </p>
+  <p id="281">
+    <text>
+        [p]A halállal végleg megtörik Kevin hősies ellenállása, és a belé költözött gonosz szellem átveszi a teste irányítását. Talpra ugrik, és áthatolhatatlan mágikus erőteret varázsol kettőtök köré, így Hever és a katonái nem lehetnek a segítségedre. A szellem gonosz mosollyal egy kilencfarkú, tüzes korbácsot pattogtatva indul el feléd. Nem tudod megölni ezt a démont, de ha legyőzöd, azzal visszakényszeríted az alvilágba, és Kevin békében nyugodhat.[/p]
+    </text>
+    <fight type="single">
+    <enemy id="20"/>
+    <win>
+        <text>
+            [p]A mágikus erőtér eltűnik.[/p]
+        </text></win>
+    </fight>
+    <next id="132"></next>
+  </p>
+  <p id="132">
+    <text>
+        [p]Elkerülhetetlen, hogy válaszolj Hever néhány kérdésére, de fogalmad sincs, milyen aljas árulás állhat e mögött az eset mögött. Ezt követően búcsút veszel Fakóvölgytől. Hever bőségesen ellát, kapsz [span class="takeItem" data-id="2000" data-amount="10"]10 adag élelmet[/span], egy új hátizsákot és egy [span class="takeItem" data-id="3004" data-amount="1"]kulacsot[/span].[/p]
+    </text>
+    <next id="20"></next>
+  </p>
+  <p id="20">
+    <text>
+        [p]Félnapi utad során, a Dárdanyél Síkság embermagas füvén át semmilyen érdekfeszítő esemény nem történt, csak az, hogy tüsszentettél néhányat a virágportól. A táj egyhangú - csupa fű mindenütt. Ám egyszer csak aprócska ösvényt fedezel fel. Nem túl széles, alig egyarasznyi, nehéz is követni a fűcsomók között, de határozottan és egyenesen vezet délnyugatról északkeletre.[/p]
+    </text>
+    <next id="140">Ha ügyet sem vetve rá továbbindulsz északnak</next>
+    <next id="202">Ha megállsz mellette és vársz</next>
+  </p>
+  <p id="240">
+    <text>
+        [p]Hever ad egy [span class="takeItem" data-id="1004" data-amount="1"]vadászlándzsát[/span] meg egy falka kutyát, és ő maga vezet az Affen erdőhöz, ahol a Tigris rejtőzik. Alább az erdő térképét látod.[/p]
+        [p]A kutyákkal az E12-nél lépsz be, a Tigris az E4-en rejtőzik. Jelezd a saját utadat és a Tigris haladását a térképen. Minden fordulóban dobj egy kockával a kutyáidnak és egy kockával a Tigrisnek. Minthogy nem egyszerre dobsz, lehet, hogy a dobás után a kutyáid megtalálják a Tigrist, még mielőtt az dobhatna.[/p]
+        [p]Nyolc dobással kell elkapnod a Tigrist.[/p]
+        [div id="ff23HuntProcession"]
+          [div id="ff23HuntMapContainer"]
+              [img id="ff23HuntMap" src="resources/ff23/240.jpg" /][img id="ff23Tiger" src="resources/ff23/tiger.png" class="gE g4" /][img id="ff23Dog" src="resources/ff23/dog.png" class="gE g12" /]
+          [/div]
+          [div id="ff23HuntReport"][/div][button id="ff23HuntTrigger"]Dobás[/button]
+        [/div]
+    </text>
+    <next id="177" pos="1"></next>
+    <next id="371" pos="2"></next>
+    <next id="262" pos="3"></next>
+  </p>
+  <p id="177">
+    <text>
+        [p]Megszégyenülten térsz vissza az erdő szélére, ahol Hever vára falusi elöljárókkal. A kék ég, a szellőben lobogó zászlók és a daloló pacsirták, mintha mind a kudarcodról beszélnének. Hever állja a szavát, és nem adja neked a kürtöt. Visszakísér a várába. Miközben összekészülsz az induláshoz, ételt hozat neked a konyháról. Visszanyersz 2 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="2" to="stamina"/>
+    <next id="384"></next>
+  </p>
+  <p id="262">
+    <text>
+        [p]Hever egyik udvari vadásza itt állított csapdát a múlt héten. A kutyák ösztönösen elkerülik (akár a Tigris), de te beleesel és a verem aljából kimeredő hegyes karók átszúrják a testedet. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="371">
+    <text>
+        [p]A hatalmas Kardfogú Tigris nyáladzó pofával ugrik elő a bokrokból, és egyenesen a kutyák közé veti magát. A lándzsáddal kell megküzdened vele.[/p]
+    </text>
+    <random>
+    <result max="1" min="1"><text>[p]1 ÉLETERŐ pontot veszít a bestia.[/p]</text><changeEnemy id="21" attribute="stamina" change="-1" /></result>
+    <result max="2" min="2"><text>[p]2 ÉLETERŐ pontot veszít a bestia.[/p]</text><changeEnemy id="21" change="-2" attribute="stamina"/></result>
+    <result max="3" min="3"><text>[p]3 ÉLETERŐ pontot veszít a bestia.[/p]</text><changeEnemy id="21" change="-3" attribute="stamina"/></result>
+    <result max="4" min="4"><text>[p]4 ÉLETERŐ pontot veszít a bestia.[/p]</text><changeEnemy id="21" change="-4" attribute="stamina"/></result>
+    <result max="5" min="5"><text>[p]5 ÉLETERŐ és 1 ÜGYESSÉG pontot veszít a bestia.[/p]</text><changeEnemy id="21" change="-5" attribute="stamina"/> <changeEnemy id="21" change="-1" attribute="skill"/>  </result>
+    <result max="6" min="6"><text>[p]6 ÉLETERŐ és 1 ÜGYESSÉG pontot veszít a bestia.[/p]</text><changeEnemy id="21" change="-6" attribute="stamina"/><changeEnemy id="21" change="-1" attribute="skill"/></result>
+    <after>
+        <text>
+            [p]Ezt követően neked kell megküzdened vele. Ha az ÉLETERŐD pontszáma már nagyon alacsony és úgy gondolod, hogy Hever Kürtje nem ér ennyit, elmenekülhetsz.[/p]
+        </text>
+    </after>
+    </random>
+    <fight type="single" forceWeapon="1004,1003,1001">
+    <enemy id="21"/>
+    <fleeing/>
+    <flee>
+    <next id="177"></next>
+    </flee>
+    <win>
+    <itemCheck type="enemy" id="21">
+    <have>
+    <next id="348"></next>
+    </have>
+    <dontHave>
+    <next id="333"></next>
+    </dontHave>
+    </itemCheck>
+    </win>
+    </fight>
+  </p>
+  <p id="348">
+    <text>
+        [p]Mancsa erőteljes csapásával a Tigris úgy töri szét a lándzsádat, mintha az egy szalmaszál volna. A kardoddal kell megküzdened vele. Folytasd a harcot, de ahányszor csak a Tigris eltalál, 4 ÉLETERŐ pontot sebez a szokásos 2 helyett.[/p]
+    </text>
+    <loseItem id="1004"/>
+    <changeEnemy attribute="staminaDamage" id="21" set="4"/>
+    <changeEnemy attribute="fleeAtRound" id="21" set="2147483647"/>
+    <next id="371"></next>
+  </p>
+  <p id="333">
+    <text>
+        [p]Úgy döntesz, elteszed a [span class="takeItem" data-id="3015" data-amount="1"]Tigris fogait[/span] ennek a hatalmas küzdelemnek az emlékére. Aztán visszatérsz az erdő szélére Heverhez és a falusi elöljárókhoz. A kék ég, a szélben lobogó zászlók és a csicsergő pacsirták még jobb kedvre derítenek. Hever elégedett a győzelmeddel. - Érdemesnek bizonyultál arra, hogy viseld Hever Kürtjét - mondja. - Térjünk vissza a váramba és ünnepeljünk. - Kapsz 2 SZERENCSE pontot. Az ünnepség még másnap hajnalban is tart. Folyik a méz- és naspolyabor. Nehéz estéd volt, mert az összes előkelőség meg akarta hallgatni a történetedet, és meg akarta köszönni hőstettedet. Kapsz 3 ÉLETERŐ pontot. Miközben összekészülsz az induláshoz, Hever átnyújtja a [span class="takeItem" data-id="3016" data-amount="1"]kürtöt[/span]. Éppolyan, akár egy közönséges kosszarv, de Yachartól, a Szarvas Démontól származik, innen mágikus hatalma minden démoni és haladó gonosz fölött. A nyakadba akasztod, hogy a kardodhoz hasonlóan ez is mindig kéznél legyen. Ha belefújsz a kürtbe, levonhatsz 1-et ellenfeled ÜGYESSÉGÉBŐL, hacsak a könyv másként nem utasít.[/p]
+    </text>
+    <add amount="2" to="luck"/>
+    <add amount="3" to="stamina"/>
+    <next id="384"></next>
+  </p>
+  
+  
+  
+  
 </content>

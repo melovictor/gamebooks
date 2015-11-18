@@ -5,6 +5,8 @@ import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.Item;
+import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
+import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
 
@@ -23,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + FightingFantasy.MASKS_OF_MAYHEM)
 public class Ff23BookTakeItemController extends FfBookTakeItemController {
 
-    private static final String FLASK = "3014";
+    private static final String FLASK = "3004";
     private static final int PROVISION_STAMINA_BONUS = 4;
     private static final int AMOUNT = 10;
     private static final String NOT_EATEN_FLAG = "4002";
@@ -44,7 +46,21 @@ public class Ff23BookTakeItemController extends FfBookTakeItemController {
         if (FLASK.equals(itemId)) {
             resetProvisions(request);
         }
-        return super.doHandleItemTake(request, itemId, amount);
+
+        int takeItemResult = 0;
+        if ("4003".equals(itemId)) {
+            final HttpSessionWrapper wrapper = getWrapper(request);
+            final FfCharacter character = (FfCharacter) wrapper.getCharacter();
+            if (character.getGold() > 0) {
+                character.setGold(character.getGold() - 1);
+                getInfo().getCharacterHandler().getAttributeHandler().handleModification(character, "stamina", 2);
+                takeItemResult = 1;
+            }
+        } else {
+            takeItemResult = super.doHandleItemTake(request, itemId, amount);
+        }
+
+        return takeItemResult;
     }
 
     private void resetProvisions(final HttpServletRequest request) {

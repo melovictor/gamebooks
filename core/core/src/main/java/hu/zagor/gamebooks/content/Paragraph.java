@@ -138,6 +138,13 @@ public class Paragraph extends EscapingData implements TrueCloneable {
         validMoves.add(paragraphId);
     }
 
+    /**
+     * Clears all currently selected valid moves.
+     */
+    public void clearValidMoves() {
+        validMoves.clear();
+    }
+
     public void setData(final ParagraphData data) {
         this.data = data;
     }
