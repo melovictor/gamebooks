@@ -1,11 +1,13 @@
 package hu.zagor.gamebooks.content.command.fight;
 
+import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.item.EquipInfo;
 import hu.zagor.gamebooks.character.item.FfItem;
+import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CommandResolveResult;
 import hu.zagor.gamebooks.content.command.TypeAwareCommandResolver;
@@ -13,6 +15,7 @@ import hu.zagor.gamebooks.content.command.fight.domain.WeaponReplacementData;
 import hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResolver;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -33,9 +36,21 @@ public class FightCommandResolver extends TypeAwareCommandResolver<FightCommand>
         final List<ParagraphData> resolveList = doResolve(command, resolvationData);
         result.setResolveList(resolveList);
         result.setFinished(!command.isOngoing());
+        if (result.isFinished()) {
+            resetPreFightItems(resolvationData);
+        }
         applyBattleMessages(resolvationData.getRootData(), command);
         handleBattleDamageRecovery(command, resolvationData);
         return result;
+    }
+
+    private void resetPreFightItems(final ResolvationData resolvationData) {
+        final Character character = resolvationData.getCharacter();
+        final Iterator<Item> itemIterator = resolvationData.getCharacterHandler().getItemHandler().getItemIterator(character);
+        while (itemIterator.hasNext()) {
+            final FfItem item = (FfItem) itemIterator.next();
+            item.setUsedInPreFight(false);
+        }
     }
 
     private void handleBattleDamageRecovery(final FightCommand command, final ResolvationData resolvationData) {

@@ -22,6 +22,7 @@ public class FfItem extends Item {
     private boolean magical;
 
     private boolean preFight;
+    private boolean usedInPreFight;
 
     private int dose;
     private int price;
@@ -195,6 +196,14 @@ public class FfItem extends Item {
 
     public void setBaseStaminaDamage(final int baseStaminaDamage) {
         this.baseStaminaDamage = baseStaminaDamage;
+    }
+
+    public boolean isUsedInPreFight() {
+        return usedInPreFight;
+    }
+
+    public void setUsedInPreFight(final boolean usedInPreFight) {
+        this.usedInPreFight = usedInPreFight;
     }
 
 }

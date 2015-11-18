@@ -2,7 +2,9 @@ package hu.zagor.gamebooks.ff.mvc.book.section.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.Character;
+import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
+import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
@@ -137,8 +139,14 @@ public class FfBookSectionController extends RawBookSectionController {
      */
     @RequestMapping(value = PageAddresses.PRE_FIGHT_ITEM_USAGE)
     public String preFightHandler(final Model model, final HttpServletRequest request, @RequestParam("id") final String itemId) {
-        getBeanFactory().getBean(fetchBookIdByReflection() + "BookPreFightHandlingService", FfBookPreFightHandlingService.class).handlePreFightItemUsage(getInfo(),
-            getWrapper(request), itemId);
+        final FfBookInformations info = getInfo();
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        getBeanFactory().getBean(fetchBookIdByReflection() + "BookPreFightHandlingService", FfBookPreFightHandlingService.class).handlePreFightItemUsage(info, wrapper,
+            itemId);
+        final Character character = wrapper.getCharacter();
+        final FfCharacterItemHandler itemHandler = info.getCharacterHandler().getItemHandler();
+        final FfItem preFightItem = (FfItem) itemHandler.getItem(character, itemId);
+        preFightItem.setUsedInPreFight(true);
         return super.handleSection(model, request, null);
     }
 

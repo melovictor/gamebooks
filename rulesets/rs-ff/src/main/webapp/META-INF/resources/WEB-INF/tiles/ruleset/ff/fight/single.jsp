@@ -55,7 +55,9 @@
     <div id="preFightItems">
 	    <spring:message code="page.ff.label.fight.preFightItems" />
 	    <c:forEach items="${charEquipments.preFightItems}" var="item" varStatus="loop">
+	        <c:if test="${!item.usedInPreFight}">
 	        <span data-item-id="${item.id}">${item.name}</span><c:if test="${!loop.last}">, </c:if>
+	        </c:if>
 	    </c:forEach>
     </div>
 </c:if>

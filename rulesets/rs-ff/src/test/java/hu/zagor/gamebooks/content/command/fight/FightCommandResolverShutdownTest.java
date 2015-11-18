@@ -3,11 +3,11 @@ package hu.zagor.gamebooks.content.command.fight;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
-import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
+import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CommandResolveResult;
@@ -17,15 +17,19 @@ import hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResol
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.easymock.EasyMock;
 import org.easymock.IAnswer;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -40,51 +44,49 @@ import org.testng.annotations.Test;
 @Test
 public class FightCommandResolverShutdownTest {
 
+    @UnderTest
     private FightCommandResolver underTest;
+    @MockControl
     private IMocksControl mockControl;
     private FightCommand command;
     private ResolvationData resolvationData;
     private Map<String, FightCommandSubResolver> subResolvers;
+    @Mock
     private FightCommandSubResolver resolver;
+    @Mock
     private ParagraphData rootData;
+    @Instance
     private FfCharacter character;
     private BookInformations info;
-    private CharacterHandler characterHandler;
+    @Instance
+    private FfCharacterHandler characterHandler;
+    @Mock
     private FfUserInteractionHandler interactionHandler;
+    @Mock
     private FfCharacterItemHandler itemHandler;
+    @Instance
     private WeaponReplacementData replacementData;
     private List<String> forceWeapons;
     private FfItem forcedWeapon;
     private FfItem nonForcedWeapon;
     private List<ParagraphData> resolveList;
+    @Instance
     private FightCommandMessageList messages;
+    @Mock
+    private Iterator<Item> itemIterator;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-
-        resolver = mockControl.createMock(FightCommandSubResolver.class);
-        interactionHandler = mockControl.createMock(FfUserInteractionHandler.class);
-        itemHandler = mockControl.createMock(FfCharacterItemHandler.class);
-
-        characterHandler = new FfCharacterHandler();
         characterHandler.setInteractionHandler(interactionHandler);
         characterHandler.setItemHandler(itemHandler);
 
-        character = new FfCharacter();
         info = new FfBookInformations(9L);
         info.setCharacterHandler(characterHandler);
-        rootData = mockControl.createMock(ParagraphData.class);
-
-        messages = new FightCommandMessageList();
 
         subResolvers = new HashMap<>();
         subResolvers.put("simpleResolver", resolver);
 
-        underTest = new FightCommandResolver();
         underTest.setSubResolvers(subResolvers);
-
-        replacementData = new WeaponReplacementData();
 
         resolveList = new ArrayList<>();
         resolveList.add(mockControl.createMock(ParagraphData.class));
@@ -115,6 +117,8 @@ public class FightCommandResolverShutdownTest {
         command.increaseBattleRound();
         command.setOngoing(false);
         expect(resolver.doResolve(command, resolvationData)).andAnswer(new MessageAddingAnswer());
+        expect(itemHandler.getItemIterator(character)).andReturn(itemIterator);
+        expect(itemIterator.hasNext()).andReturn(false);
         expect(rootData.getText()).andReturn("<p>Original text.</p>");
         rootData.setText("<p>Original text.</p><p>Round 1.<br />\nThe Orc is dead.</p>");
         mockControl.replay();
@@ -124,6 +128,29 @@ public class FightCommandResolverShutdownTest {
         Assert.assertTrue(returned.isFinished());
         Assert.assertFalse(command.isOngoing());
         Assert.assertSame(returned.getResolveList(), resolveList);
+    }
+
+    public void testResolveWhenBattleIsDoneAndHasItemsShouldResetUsedInPreFightFlags() {
+        // GIVEN
+        forcedWeapon.setUsedInPreFight(true);
+        command.increaseBattleRound();
+        command.increaseBattleRound();
+        command.setOngoing(false);
+        expect(resolver.doResolve(command, resolvationData)).andAnswer(new MessageAddingAnswer());
+        expect(itemHandler.getItemIterator(character)).andReturn(itemIterator);
+        expect(itemIterator.hasNext()).andReturn(true);
+        expect(itemIterator.next()).andReturn(forcedWeapon);
+        expect(itemIterator.hasNext()).andReturn(false);
+        expect(rootData.getText()).andReturn("<p>Original text.</p>");
+        rootData.setText("<p>Original text.</p><p>Round 1.<br />\nThe Orc is dead.</p>");
+        mockControl.replay();
+        // WHEN
+        final CommandResolveResult returned = underTest.resolve(command, resolvationData);
+        // THEN
+        Assert.assertTrue(returned.isFinished());
+        Assert.assertFalse(command.isOngoing());
+        Assert.assertSame(returned.getResolveList(), resolveList);
+        Assert.assertFalse(forcedWeapon.isUsedInPreFight());
     }
 
     public void testResolveWhenBattleIsDoneAndReplacementDataIsAvailableWhichRefersToTheCurrentWeaponShouldReleaseTheWeapon() {
@@ -138,6 +165,8 @@ public class FightCommandResolverShutdownTest {
         expect(resolver.doResolve(command, resolvationData)).andAnswer(new MessageAddingAnswer());
         expect(itemHandler.getEquippedWeapon(character)).andReturn(forcedWeapon);
         itemHandler.setItemEquipState(character, "1001", true);
+        expect(itemHandler.getItemIterator(character)).andReturn(itemIterator);
+        expect(itemIterator.hasNext()).andReturn(false);
         expect(rootData.getText()).andReturn("<p>Original text.</p>");
         rootData.setText("<p>Original text.</p><p>Round 1.<br />\nThe Orc is dead.</p>");
         mockControl.replay();
@@ -163,6 +192,8 @@ public class FightCommandResolverShutdownTest {
         expect(resolver.doResolve(command, resolvationData)).andAnswer(new MessageAddingAnswer());
         expect(itemHandler.getEquippedWeapon(character)).andReturn(forcedWeapon);
         itemHandler.setItemEquipState(character, "1002", true);
+        expect(itemHandler.getItemIterator(character)).andReturn(itemIterator);
+        expect(itemIterator.hasNext()).andReturn(false);
         expect(rootData.getText()).andReturn("<p>Original text.</p>");
         rootData.setText("<p>Original text.</p><p>Round 1.<br />\nThe Orc is dead.</p>");
         mockControl.replay();
@@ -188,6 +219,8 @@ public class FightCommandResolverShutdownTest {
         expect(resolver.doResolve(command, resolvationData)).andAnswer(new MessageAddingAnswer());
         expect(itemHandler.getEquippedWeapon(character)).andReturn(forcedWeapon);
         itemHandler.setItemEquipState(character, "1001", true);
+        expect(itemHandler.getItemIterator(character)).andReturn(itemIterator);
+        expect(itemIterator.hasNext()).andReturn(false);
         expect(rootData.getText()).andReturn("<p>Original text.</p>");
         rootData.setText("<p>Original text.</p><p>Round 1.<br />\nThe Orc is dead.</p>");
         mockControl.replay();
