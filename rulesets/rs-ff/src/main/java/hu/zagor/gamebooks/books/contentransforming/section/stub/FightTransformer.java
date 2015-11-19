@@ -48,6 +48,7 @@ public class FightTransformer extends AbstractStubTransformer {
             replacementData.setForceWeapons(Arrays.asList(forceWeapon.split(",")));
             fightCommand.setReplacementData(replacementData);
         }
+        fightCommand.setPreFightAvailable(extractBooleanAttribute(node, "preFight", true));
 
         final NodeList childNodes = node.getChildNodes();
         final int count = childNodes.getLength();

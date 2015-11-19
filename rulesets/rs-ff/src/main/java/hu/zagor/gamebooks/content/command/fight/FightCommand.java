@@ -63,6 +63,8 @@ public class FightCommand extends Command {
     private int attackStrengthRolledDices = 2;
     private int attackStrengthUsedDices = 2;
 
+    private boolean preFightAvailable = true;
+
     private final Map<String, Integer> attackStrengths = new HashMap<String, Integer>();
 
     private WeaponReplacementData replacementData;
@@ -352,6 +354,14 @@ public class FightCommand extends Command {
 
     public void setMaxEnemiesToDisplay(final int maxEnemiesToDisplay) {
         this.maxEnemiesToDisplay = maxEnemiesToDisplay;
+    }
+
+    public boolean isPreFightAvailable() {
+        return preFightAvailable;
+    }
+
+    public void setPreFightAvailable(final boolean preFightAvailable) {
+        this.preFightAvailable = preFightAvailable;
     }
 
 }

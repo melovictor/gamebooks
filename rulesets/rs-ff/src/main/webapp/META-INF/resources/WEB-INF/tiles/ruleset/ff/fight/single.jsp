@@ -51,7 +51,7 @@
     </div>
 </c:if>
 
-<c:if test="${not empty charEquipments.preFightItems && fightCommand.roundNumber == 0}">
+<c:if test="${not empty charEquipments.preFightItems && fightCommand.roundNumber == 0 && fightCommand.preFightAvailable}">
     <div id="preFightItems">
 	    <spring:message code="page.ff.label.fight.preFightItems" />
 	    <c:forEach items="${charEquipments.preFightItems}" var="item" varStatus="loop">
