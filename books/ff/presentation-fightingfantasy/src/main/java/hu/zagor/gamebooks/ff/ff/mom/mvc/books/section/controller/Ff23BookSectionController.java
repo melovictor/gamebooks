@@ -2,12 +2,15 @@ package hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.content.Paragraph;
+import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.domain.HuntRoundResult;
 import hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.service.HuntService;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.FfBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
+
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -55,6 +59,18 @@ public class Ff23BookSectionController extends FfBookSectionController {
     @ResponseBody
     public HuntRoundResult handleHuntRound(final HttpServletRequest request) {
         return huntService.playRound(getWrapper(request), getInfo());
+    }
+
+    @Override
+    public String handleFight(final Model model, final HttpServletRequest request, @RequestParam("id") final String enemyId,
+        @RequestParam("hit") final Boolean luckOnHit, @RequestParam("def") final Boolean luckOnDefense, @RequestParam("oth") final Boolean luckOnOther) {
+        if ("27".equals(enemyId) || "28".equals(enemyId)) {
+            final FightCommand fightCommand = (FightCommand) getWrapper(request).getParagraph().getData().getCommands().get(0);
+            final List<String> enemies = fightCommand.getEnemies();
+            enemies.add(enemies.remove(0));
+        }
+        final String handleFight = super.handleFight(model, request, enemyId, luckOnHit, luckOnDefense, luckOnOther);
+        return handleFight;
     }
 
 }
