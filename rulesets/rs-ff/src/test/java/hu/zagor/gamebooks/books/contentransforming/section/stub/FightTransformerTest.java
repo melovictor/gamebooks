@@ -10,14 +10,18 @@ import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
@@ -36,37 +40,35 @@ import org.w3c.dom.NodeList;
 @Test
 public class FightTransformerTest extends AbstractTransformerTest {
 
+    @UnderTest
     private FightTransformer underTest;
+    @MockControl
     private IMocksControl mockControl;
+    @Instance
     private ParagraphData data;
+    @Mock
     private BookParagraphDataTransformer parent;
+    @Mock
     private ChoicePositionCounter positionCounter;
     private Map<String, CommandSubTransformer<FightCommand>> fightTransformers;
+    @Mock
     private CommandSubTransformer<FightCommand> subTransformer;
+    @Inject
     private BeanFactory beanFactory;
+    @Instance
     private FightCommand command;
 
-    @SuppressWarnings("unchecked")
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
         node = mockControl.createMock(Node.class);
         nodeMap = mockControl.createMock(NamedNodeMap.class);
         nodeValue = mockControl.createMock(Node.class);
         nodeList = mockControl.createMock(NodeList.class);
-        parent = mockControl.createMock(BookParagraphDataTransformer.class);
-        positionCounter = mockControl.createMock(ChoicePositionCounter.class);
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        data = new ParagraphData();
         data.setPositionCounter(positionCounter);
 
-        underTest = new FightTransformer();
-        command = new FightCommand();
         final List<String> irrelevantNodes = new ArrayList<>();
         irrelevantNodes.add("#text");
         Whitebox.setInternalState(underTest, "irrelevantNodeNames", irrelevantNodes);
-        underTest.setBeanFactory(beanFactory);
-        subTransformer = mockControl.createMock(CommandSubTransformer.class);
         fightTransformers = new HashMap<String, CommandSubTransformer<FightCommand>>();
         fightTransformers.put("enemy", subTransformer);
         underTest.setFightTransformers(fightTransformers);
@@ -89,6 +91,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         expectAttribute("recoverDamage");
         expectAttribute("usableWeaponTypes");
         expectAttribute("forceWeapon", "1001");
+        expectAttribute("preFight");
         expect(node.getChildNodes()).andReturn(nodeList);
         expect(nodeList.getLength()).andReturn(2);
         expect(nodeList.item(0)).andReturn(nodeValue);
@@ -109,6 +112,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         Assert.assertEquals(command.getUsableWeaponTypes().size(), 2);
         Assert.assertTrue(command.getUsableWeaponTypes().contains(ItemType.weapon1));
         Assert.assertTrue(command.getUsableWeaponTypes().contains(ItemType.weapon2));
+        Assert.assertTrue(command.isPreFightAvailable());
     }
 
     public void testDoTransformWhenFightTypeIsShootingShouldAutoGenerateShootingWeaponType() {
@@ -122,6 +126,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         expectAttribute("recoverDamage");
         expectAttribute("usableWeaponTypes");
         expectAttribute("forceWeapon");
+        expectAttribute("preFight", "false");
         expect(node.getChildNodes()).andReturn(nodeList);
         expect(nodeList.getLength()).andReturn(2);
         expect(nodeList.item(0)).andReturn(nodeValue);
@@ -136,7 +141,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         final FightCommand command = (FightCommand) data.getCommands().get(0);
         Assert.assertEquals(command.getAttackStrengthRolledDices(), 2);
         Assert.assertEquals(command.getAttackStrengthUsedDices(), 2);
-
+        Assert.assertFalse(command.isPreFightAvailable());
         Assert.assertEquals(command.getBattleType(), "shooting");
         Assert.assertEquals(command.getResolver(), "shooting");
         Assert.assertEquals(command.getUsableWeaponTypes().size(), 1);
@@ -154,6 +159,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         expectAttribute("recoverDamage");
         expectAttribute("usableWeaponTypes");
         expectAttribute("forceWeapon");
+        expectAttribute("preFight");
         expect(node.getChildNodes()).andReturn(nodeList);
         expect(nodeList.getLength()).andReturn(2);
         expect(nodeList.item(0)).andReturn(nodeValue);
@@ -173,6 +179,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         Assert.assertEquals(command.getUsableWeaponTypes().size(), 2);
         Assert.assertTrue(command.getUsableWeaponTypes().contains(ItemType.weapon1));
         Assert.assertTrue(command.getUsableWeaponTypes().contains(ItemType.weapon2));
+        Assert.assertTrue(command.isPreFightAvailable());
     }
 
     @Test(expectedExceptions = UnsupportedOperationException.class)
@@ -187,6 +194,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         expectAttribute("recoverDamage");
         expectAttribute("usableWeaponTypes");
         expectAttribute("forceWeapon");
+        expectAttribute("preFight");
         expect(node.getChildNodes()).andReturn(nodeList);
         expect(nodeList.getLength()).andReturn(2);
         expect(nodeList.item(0)).andReturn(nodeValue);
