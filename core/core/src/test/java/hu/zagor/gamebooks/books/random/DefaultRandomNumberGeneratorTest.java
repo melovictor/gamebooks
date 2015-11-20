@@ -86,6 +86,7 @@ public class DefaultRandomNumberGeneratorTest {
         }
         // THEN
         for (int i = 1; i <= 6; i++) {
+            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
             resultSet.remove(i);
         }
         Assert.assertEquals(resultSet.size(), 0);
@@ -102,6 +103,7 @@ public class DefaultRandomNumberGeneratorTest {
         }
         // THEN
         for (int i = 2; i <= 12; i++) {
+            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
             resultSet.remove(i);
         }
         Assert.assertEquals(resultSet.size(), 0);
@@ -118,6 +120,7 @@ public class DefaultRandomNumberGeneratorTest {
         }
         // THEN
         for (int i = 7; i <= 17; i++) {
+            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
             resultSet.remove(i);
         }
         Assert.assertEquals(resultSet.size(), 0);
@@ -134,6 +137,7 @@ public class DefaultRandomNumberGeneratorTest {
         }
         // THEN
         for (int i = -1; i <= 5; i++) {
+            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
             resultSet.remove(i);
         }
         Assert.assertEquals(resultSet.size(), 0);
@@ -150,6 +154,7 @@ public class DefaultRandomNumberGeneratorTest {
         }
         // THEN
         for (int i = 1; i <= 1; i++) {
+            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
             resultSet.remove(i);
         }
         Assert.assertEquals(resultSet.size(), 0);
@@ -167,6 +172,7 @@ public class DefaultRandomNumberGeneratorTest {
         }
         // THEN
         for (int i = 1; i <= 6; i++) {
+            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
             resultSet.remove(i);
         }
         Assert.assertEquals(resultSet.size(), 0);
@@ -184,6 +190,7 @@ public class DefaultRandomNumberGeneratorTest {
         }
         // THEN
         for (int i = 2; i <= 12; i++) {
+            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
             resultSet.remove(i);
         }
         Assert.assertEquals(resultSet.size(), 0);
@@ -201,6 +208,7 @@ public class DefaultRandomNumberGeneratorTest {
         }
         // THEN
         for (int i = 0; i <= 9; i++) {
+            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
             resultSet.remove(i);
         }
         Assert.assertEquals(resultSet.size(), 0);
@@ -218,6 +226,7 @@ public class DefaultRandomNumberGeneratorTest {
         }
         // THEN
         for (int i = 7; i <= 16; i++) {
+            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
             resultSet.remove(i);
         }
         Assert.assertEquals(resultSet.size(), 0);

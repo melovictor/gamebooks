@@ -64,21 +64,22 @@ public class DefaultRandomNumberGenerator implements RandomNumberGenerator, Repl
 
     @Override
     public int[] getRandomNumber(final DiceConfiguration configuration, final int addition) {
-        Assert.notNull(configuration, "The parameter 'configuration' cannot be null!");
-        final int diceNumber = configuration.getDiceNumber();
-        final int[] result = new int[diceNumber + 1];
-
-        final int minValue = configuration.getMinValue();
-        result[0] = addition;
-        final int multiplier = configuration.getMaxValue() - minValue + 1;
-
-        for (int i = 0; i < diceNumber; i++) {
-            final int rnd = getNextValue(multiplier - 1) + minValue;
-            result[i + 1] += rnd;
-            result[0] += rnd;
-        }
-
-        return result;
+        return getRandomNumber(configuration.getDiceNumber(), configuration.getMaxValue() - configuration.getMinValue() + 1, addition + configuration.getMinValue() - 1);
+        // Assert.notNull(configuration, "The parameter 'configuration' cannot be null!");
+        // final int diceNumber = configuration.getDiceNumber();
+        // final int[] result = new int[diceNumber + 1];
+        //
+        // final int minValue = configuration.getMinValue();
+        // result[0] = addition;
+        // final int multiplier = configuration.getMaxValue() - minValue + 1;
+        //
+        // for (int i = 0; i < diceNumber; i++) {
+        // final int rnd = getNextValue(multiplier - 1) + minValue;
+        // result[i + 1] += rnd;
+        // result[0] += rnd;
+        // }
+        //
+        // return result;
     }
 
     private int getNextValue(final int diceSide) {
