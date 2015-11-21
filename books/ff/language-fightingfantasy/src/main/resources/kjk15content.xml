@@ -2292,6 +2292,7 @@
     <text>
         [p]Amint hozzáérsz a lándzsához, odaragad a kezed. Egy alak ölt testet melletted: maga Morgana! - Csodás! - kiáltja. - Örülök, hogy úton vagy felém. Minden a tervünk szerint halad. Ne aggódj, nem öllek meg; még nem. Csak egy kis ízelítőt adok a hatalmamból! - A varázslónő égnek emeli a kezét, s megátkoz (vesztesz 2 SZERENCSE pontot). Aztán Morgana eltűnik, és végre el tudod engedni a lándzsát. Mérgedben a térdeden töröd ketté a nyelét.[/p]
     </text>
+    <gatherItem id="4011" />
     <add amount="-2" to="luck" />
     <next id="56">Ha továbbmész északnak a falun át</next>
     <next id="323">Ha a falut magad mögött hagyva észak- keletnek indulsz</next>
@@ -2499,6 +2500,7 @@
     <text>
         [p]Azon az éjjelen Morgana jelenik meg álmodban. - Csodás! - kiáltja. - Örülök, hogy úton vagy felém. Minden a tervünk szerint halad. Ne aggódj, nem öllek meg; még nem. Csak egy kis ízelítőt adok a hatalmamból! - A látomás égnek emeli mindkét kezét, és megátkoz - vesztesz 2 SZERENCSE pontot. Fölriadsz álmodból, de mintha nyitott szemmel is őt látnád, amint gonoszul kacagva távolodik.[/p]
     </text>
+    <gatherItem id="4011" />
     <add amount="-2" to="luck" />
     <next id="77"></next>
   </p>
@@ -3818,7 +3820,6 @@
     <text>
         [p]Amint fölemeled a jogart és az országalmát, csillogó ajtó jelenik meg a tölgyek közt, és belépsz rajta. Vashtival, a Kortalannal találod szembe magad. Amikor felismer, méltóságteljesen bólint. - Jó, hogy idejöttél - kezdi. - Sok veszélyt kell még legyőznöd, de a segítségem nélkül nem járhat sikerrel a küldetésed. Én nem mehettem el hozzád, bárhogy akartam is. Egykoron - a ti gondolkodásotok szerint évszázadokkal ezelőtt - elhagytam ezt az időtlen világot, de hatalmas démonok támadtak rám. A harc során elvesztettem azt, amivel újra elhagyhatnám ezt a világot. Tudod-e vajon, mire gondolok? Ha igen, lapozz arra a számra, amely annak a könyvnek az oldalszáma volt, ahonnan ezt tudod.[/p]
     </text>
-    <!-- 208 -->
     <itemCheck type="section" id="215">
       <have>
         <userInput type="number">
@@ -4097,5 +4098,604 @@
         <next id="233"></next>
       </result>
     </random>
+  </p>
+  <p id="233">
+    <text>
+        [p]A búvóhelyedről hallod üldözőid hangját, de nem találnak rád. Közben addig dörzsölöd a köteledet a vízmosás éles széléhez, amíg le nem szakad. Mikor úgy érzed, tiszta a levegő, kimászol a vízmosásból. Vesztesz 3 ÉLETERŐ pontot, amiért olyan sokáig feküdtél a dermesztő hóban.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <next id="250"></next>
+  </p>
+  <p id="250">
+    <text>
+        [p]Mikor továbbindulsz a Krill Garnash felé, sehol sem látod a távoli alakot, aki tudtán kívül a szabadságot adta neked. Két nap múlva már fölötted tornyosul a Krill Garnash öt felhőfödte csúcsa, mint valami hatalmas, gonosz rém. Innen két ösvény vezet tovább.[/p]
+    </text>
+    <next id="284">Ha a nyugatin indulsz el</next>
+    <next id="142">Ha a keletin</next>
+  </p>
+  <p id="146">
+    <text>
+        [p]Foglyul ejtőid hamarosan rád találnak. Nyilvánvalóan úgy döntöttek, nem érsz annyit, amennyit bajlódniuk kell veled, ezér lándzsáikkal megölnek. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="142">
+    <text>
+        [p]Ahogy mész az utadon, hirtelen egy jókora hógolyót látsz legurulni a keleti lejtőn. A nagyra dagadt hógolyó csak a hegy lábánál áll meg, éppen előtted. Aztán legnagyobb meglepetésedre szétesik. Hóbocs lép ki belőle. Ez az együgyű lény a Jeti mutációja, még akkorka agya sincs, mint a Jetinek. Biztosan megbotlott, és legurult a hegyoldalon. Néhány pillanatig bizonytalanul bámul rád, aztán úgy dönt, valószínűleg ehető vagy.[/p]
+    </text>
+    <itemCheck type="item" id="3017">
+      <have>
+        <next id="267" pos="10">Ha a Pillanatnyi Láthatatlanság Köpenyével kerülnéd el a harcot</next>
+        <next id="142a" pos="11">Ha megküzdenél vele</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Meg kell védened magad.[/p]
+        </text>
+        <itemCheck type="item" id="3016">
+          <have>
+            <text>
+                [p]Mivel a Hóbocs nem gonosz, csak fölöttébb ostoba, Hever Kürtje semmi hatással nincs rá.[/p]
+            </text>
+          </have>
+        </itemCheck>
+        <fight type="single">
+          <enemy id="37" />
+          <win>
+            <itemCheck type="item" id="4010">
+              <have>
+                <next id="267"></next>
+              </have>
+              <dontHave>
+                <changeEnemy attribute="fleeAtStamina" id="37" set="0" />
+                <gatherItem id="4010" />
+                <next id="392"></next>
+              </dontHave>
+            </itemCheck>
+          </win>
+        </fight>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="142a" display="142">
+    <text>
+        [p]Ahogy mész az utadon, hirtelen egy jókora hógolyót látsz legurulni a keleti lejtőn. A nagyra dagadt hógolyó csak a hegy lábánál áll meg, éppen előtted. Aztán legnagyobb meglepetésedre szétesik. Hóbocs lép ki belőle. Ez az együgyű lény a Jeti mutációja, még akkorka agya sincs, mint a Jetinek. Biztosan megbotlott, és legurult a hegyoldalon. Néhány pillanatig bizonytalanul bámul rád, aztán úgy dönt, valószínűleg ehető vagy.[/p]
+        [p]Meg kell védened magad.[/p]
+    </text>
+    <itemCheck type="item" id="3016">
+      <have>
+        <text>
+            [p]Mivel a Hóbocs nem gonosz, csak fölöttébb ostoba, Hever Kürtje semmi hatással nincs rá.[/p]
+        </text>
+      </have>
+    </itemCheck>
+    <fight type="single">
+      <enemy id="37" />
+      <win>
+        <itemCheck type="item" id="4010">
+          <have>
+            <next id="267"></next>
+          </have>
+          <dontHave>
+            <changeEnemy attribute="fleeAtStamina" id="37" set="0" />
+            <gatherItem id="4010" />
+            <next id="392"></next>
+          </dontHave>
+        </itemCheck>
+      </win>
+    </fight>
+  </p>
+  <p id="392">
+    <text>
+        [p]Mivel a Hóbocsnak nincs említésre méltó agya, igen hosszú időt vesz igénybe, míg fölfogja a fájdalmat. Kihúzod a kardodat az oldalából, és várod, hogy legalább egy kicsit lelassuljon, ezért teljesen váratlanul ér, amikor hatalmas karmokban végződő mancsa lecsap rád. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="182"></next>
+      </success>
+      <failure>
+        <next id="60"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="60">
+    <text>
+        [p]A teremtmény karmai a karodba mélyednek. Vesztesz 1 ÜGYESSÉG és 2 ÉLETERŐ pontot. Folytasd a harcot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="skill" />
+    <next id="142a"></next>
+  </p>
+  <p id="182">
+    <text>
+        [p]Szerencsére egy közeli fáról lehulló hó az utolsó pillanatban megzavarja a teremtményt, és karmai csak egy karcolást ejtenek rajtad. Vesztesz 1 ÉLETERŐ pontot. Folytasd a harcot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="142a"></next>
+  </p>
+  <p id="267">
+    <text>
+        [p]Az ösvény, amelyen mész, kanyarogva vezet egészen egy másik ösvényig. Morgana csak egy utat hagy szabadon az erődje felé. Amint elindulsz, hogy megmászd a Krill Garnash lejtőit, olyan érzésed támad, hogy ezt az utat őrzik. Nem tévedsz. Egy Jégsárkány viharzik ki a barlangjából, és orrlikaiból jeget okádva feléd száll.[/p]
+    </text>
+    <itemCheck type="pos" id="10">
+      <have>
+        <loseItem id="3017" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3017">
+      <have>
+        <next id="46">Ha használni kívánod a Pillanatnyi Láthatatlanság Köpenyét</next>
+        <next id="241">Ha nem</next>
+      </have>
+      <dontHave>
+        <next id="241"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="46">
+    <text>
+        [p]Gyorsan felöltöd a Köpenyt. Annyi időre nem tesz láthatatlanná, hogy elmenekülj, de így sokkal hatékonyabban támadhatod meg a Sárkányt. Miután azonban kétszer eltaláltad, és így 4 ÉLETERŐ pontot sebeztél rajta, kimelegszel. Ettől kis párafelhő képződik körülötted a hideg levegőben. Mostantól a Sárkány látja, merre vagy, de még így is előnyöd van vele szemben.[/p]
+    </text>
+    <loseItem id="3017" />
+    <fight type="single">
+      <enemy id="38" />
+      <win>
+        <text>
+            [p]Mire legyőzöd, a Köpeny elveszti mágikus erejét.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="204">Ha átkutatod a Sárkány barlangját</next>
+    <next id="298">Ha egyenesen a Krill Garnash felé indulsz</next>
+  </p>
+  <p id="241">
+    <text>
+        [p]Igazán veszélyes ellenféllel kerültél szembe.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="39" />
+    </fight>
+    <next id="204">Átkutathatod a barlangját</next>
+    <next id="298">Vagy rögtön továbbindulhatsz a Krill Garnash felé</next>
+  </p>
+  <p id="204">
+    <text>
+        [p]Mikor eléred a Sárkány barlangját, látod, hogy az nem túl mély. Persze minek is egy Jégsárkánynak védekezni a hideg ellen? A barlang vége elkeskenyedik. Átpréseled magad a repedésen, és kijutsz egy párkányra, amely elég széles ahhoz, hogy végigmenj rajta. Kisvártatva egy alagút szájához érsz.[/p]
+    </text>
+    <next id="256"></next>
+  </p>
+  <p id="256">
+    <text>
+        [p]Bizonyára ez Morgana birodalmának bejárata. Hosszú folyosó nyúlik a félhomályba, a falakat lobogó fáklyák világítják meg. Összeszeded minden bátorságodat, és belépsz. A fáklyák nem sokat segítenek a dermesztő hideg elűzésében, és látsz ugyan, de nem tudsz megszabadulni a sötétség érzésétől, mert itt Morgana az úr, az ő szíve pedig hideg és sötét. A folyosó nemsokára három ajtó előtt ér véget. Az ajtók egymás mellett vannak a barlang északi falában. Melyiken nyitsz be?[/p]
+    </text>
+    <next id="32">Ha a középső faajtón</next>
+    <next id="119">Ha a kőajtón</next>
+    <next id="290">Ha a vasajtón</next>
+  </p>
+  <p id="119">
+    <text>
+        [p]Az ajtó kivágódik, és te elpusztulsz. Olyan gyorsan ér a halál, hogy azt sem éred, mi történt. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="290">
+    <text>
+        [p]Amint megérinted az ajtót, hosszú, hegyes tüskék csapódnak ki belőle, és az ajtó feléd lendülve kivágódik. Dobj egy kockával![/p]
+    </text>
+    <random>
+      <result max="4" min="1">
+        <next id="65"></next>
+      </result>
+      <result max="6" min="5">
+        <next id="366"></next>
+      </result>
+    </random>
+  </p>
+  <p id="65">
+    <text>
+        [p]A szöges ajtó a falhoz présel, és kiszorítja belőled a lelket. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="298">
+    <text>
+        [p]Morgana védelmét részben maga a hegy biztosítja. Az az út, amelyen eddig a Krill Garnash felé jöttél, egy hosszú gleccserhez vezet, ez pedig elég meredek ahhoz, hagy a haladást, vagy inkább mászást igen veszélyessé tegye.[/p]
+    </text>
+    <itemCheck type="item" id="3009">
+      <have>
+        <next id="395"></next>
+      </have>
+      <dontHave>
+        <next id="96"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="395">
+    <text>
+        [p]A csákány segítségével könnyebben felmászhatsz a gleccseren. Biztonságban fölérsz a tetejére, ahol egy barlang bejáratánál találod magad.[/p]
+    </text>
+    <next id="256"></next>
+  </p>
+  <p id="96">
+    <text>
+        [p]Már elég magasan vagy a gleccseren, mikor megcsúszol és visszagurulsz a lejtőn.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="339"></next>
+      </success>
+      <failure>
+        <next id="35"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="339">
+    <text>
+        [p]Sikerül fogódzókat találnod a jégfalban, és így nem zuhansz akkorát. Vesztesz 2 ÉLETERŐ pontot. Úgy döntesz, hogy inkább a Sárkány barlangját vizsgálod át, és nem kockáztatod meg újra a gleccsert.[/p]
+    </text>
+    <next id="204"></next>
+  </p>
+  <p id="35">
+    <text>
+        [p]Az eséstől súlyosan megsérültél.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <text>[p]Vesztesz 2 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-2" to="stamina" />
+      </result>
+      <result max="2" min="2">
+        <text>[p]Vesztesz 3 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-3" to="stamina" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]Vesztesz 4 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-4" to="stamina" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Vesztesz 5 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-5" to="stamina" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Vesztesz 6 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-6" to="stamina" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Vesztesz 7 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-7" to="stamina" />
+      </result>
+      <after>
+        <text>
+            [p]Úgy döntesz, inkább a Sárkány barlangját vizsgálod meg, nem vágsz neki újból a gleccsernek.[/p]
+        </text>
+      </after>
+    </random>
+    <next id="204"></next>
+  </p>
+  <p id="284">
+    <text>
+        [p]A nyugati ösvény keskeny, és mindenütt hó borítja.[/p]
+    </text>
+    <itemCheck type="item" id="3024">
+      <have>
+        <next id="123"></next>
+      </have>
+      <dontHave>
+        <next id="142">Ha meggondolod magad és visszamész a másik ösvényre</next>
+        <next id="123">Ha ezen az úton mész tovább</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="123">
+    <text>
+        [p]Körülbelül az út háromnegyedénél tarthatsz, amikor a hó egyszer csak örvényleni kezd a lábad alatt. Biztosan felzavartál egy Chiont, amely a hó alatt aludt és ez most a felszínre jön. Ezek a hatalmas, féregszerű lények körkörös mozgásukkal örvényt kavarnak a hóban, és beszippantják áldozatukat.[/p]
+    </text>
+    <itemCheck type="item" id="3024">
+      <haveEquipped>
+        <next id="198"></next>
+      </haveEquipped>
+      <have>
+        <itemCheck type="item" id="3019">
+          <haveEquipped>
+            <next id="198"></next>
+          </haveEquipped>
+          <have>
+            <next id="363"></next>
+          </have>
+          <dontHave>
+            <next id="363"></next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="3019">
+          <haveEquipped>
+            <next id="198"></next>
+          </haveEquipped>
+          <have>
+            <next id="363"></next>
+          </have>
+          <dontHave>
+            <next id="363"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="363">
+    <text>
+        [p]Beleesel a Chion csapdájába, és képtelen vagy kimászni az omladozó hófalakon. A Chion gyorsan elnyel. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="198">
+    <text>
+        [p]Nagy nehezen kijutsz a hóörvényből, éppen amikor a Chion feje kibukkan a hó közül. Szélesre tátott szájában jól látható két sor tűhegyes foga. Azonnal észrevesz, és rád támad. Nincs időd, hogy bármit is előkapj a hátizsákodból.[/p]
+    </text>
+    <fight type="single" preFight="false">
+      <enemy id="40" />
+    </fight>
+    <next id="267"></next>
+  </p>
+  <p id="366">
+    <text>
+        [p]Épp időben ugrasz hátra, hogy elkerüld az ajtót.[/p]
+    </text>
+    <itemCheck type="stamina" id="11">
+      <have>
+        <next id="354" pos="1">Ha elindulsz befelé a sötét folyosón</next>
+      </have>
+      <dontHave>
+        <next id="153" pos="1">Ha elindulsz befelé a sötét folyosón</next>
+      </dontHave>
+    </itemCheck>
+    <next id="119" pos="2">Ha a kőajtón nyitsz be</next>
+    <next id="32" pos="3">Ha a faajtón nyitsz be</next>
+  </p>
+  <p id="131">
+    <empty />
+  </p>
+  <p id="354">
+    <text>
+        [p]Még képes vagy hideg fejjel mérlegelni. Kiveszel egy fáklyát a falikarból, és előrevilágítasz. Helyesen cselekedtél, mert látod, hogy a padlót és a falakat mindenfelé hegyes kövek borítják. A különféle elhullott állatok csontváza arra utal, hogy a kövek mérgezettek lehetnek. Erre nem jutsz tovább.[/p]
+    </text>
+    <next id="119">Ha megpróbálkozol a kőajtóval</next>
+    <next id="32">Ha a faajtóval</next>
+  </p>
+  <p id="153">
+    <text>
+        [p]Így legyengülve nem tudsz elég tisztán gondolkodni, és csak bemész a sötétbe. Persze nem veszed észre a padlót és a falakat borító éles, méreggel bekent sziklákat. Rá is lépsz az egyikre. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="32">
+    <text>
+        [p]Megnyikordulnak a rozsdás zsanérok, és az ajtó kinyílik - szerencsédre odabenn semmilyen veszély nem fenyeget. Miközben fölfelé mész a folyosón, patkányok kaparászását hallod, de ügyet sem vetsz rájuk. Egyetlen út áll előtted - egyenesen előre. Csak erre figyelsz. A folyosó azonban egy idő után elágazik, mint a kígyó nyelve.[/p]
+    </text>
+    <itemCheck type="item" id="3016">
+      <have>
+        <next id="335" pos="1">Ha balra mész</next>
+      </have>
+      <dontHave>
+        <next id="72" pos="1">Ha balra mész</next>
+      </dontHave>
+    </itemCheck>
+    <next id="224" pos="2">Ha jobbra</next>
+  </p>
+  <p id="19">
+    <empty />
+  </p>
+  <p id="224">
+    <text>
+        [p]A falakra erősített fáklyák egyre ritkábbak, végül teljesen elfogynak. Visszamész az utolsóhoz és leveszed, de természetellenesen erős szél kerekedik, elfújja a fáklyád lángját, aztán elül.[/p]
+    </text>
+    <next id="49" pos="1">Ha ezen az alagúton folytatod az utadat</next>
+    <itemCheck type="item" id="3016">
+      <have>
+        <next id="335" pos="2">Ha visszatérsz és az előző irányba mész</next>
+      </have>
+      <dontHave>
+        <next id="72" pos="2">Ha visszatérsz és az előző irányba mész</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="72">
+    <text>
+        [p]Jobb kéz felől egy mellékfolyosó nyílik.[/p]
+    </text>
+    <next id="369">Ha ezen indulsz el</next>
+    <next id="170">Ha egyenesen továbbmész</next>
+  </p>
+  <p id="335">
+    <text>
+        [p]Csontvázkezek nyúlnak ki a falból, néhányról még nem foszlott le teljesen a hús. A kürt után nyúlnak, amit még mindig a nyakadban hordasz. Megpróbálják elkapni a lábadat, hogy eless. A kardoddal kell utat törnöd ezen a rémséges folyosón.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="41" />
+    </fight>
+    <next id="72"></next>
+  </p>
+  <p id="49">
+    <text>
+        [p]A gyenge légmozgásból megérzed, hogy balról egy folyosó nyílik.[/p]
+    </text>
+    <next id="306">Ha balra fordulsz ezen az oldalfolyosón</next>
+    <next id="16">Ha tovább mész</next>
+  </p>
+  <p id="306">
+    <text>
+        [p]Az oldalfolyosó nem túl hosszú, és egy T elágazásban végződik. Tudod, hogy ha balra fordulnál, csak távolodnál a célodtól, ezért jobbra fordulsz.[/p]
+    </text>
+    <next id="170"></next>
+  </p>
+  <p id="170">
+    <text>
+        [p]Sokszor néztél már farkasszemet a halállal, amíg eddig eljutottál, de Morgana mindenen túltesz. Nehéz vasrács zuhan le előtted és mögötted, majd két halálos mérgeskígyó csúszik elő a fal repedéseiből. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="16">
+    <text>
+        [p]Egy nagyobb barlanghoz érsz, amit nem világít meg fáklyafény.[/p]
+    </text>
+    <next id="59">Ha bemész</next>
+    <next id="306">Ha inkább visszamész az elágazáshoz</next>
+  </p>
+  <p id="59">
+    <text>
+        [p]Tizenegy óriási alak közelít a sötétben. Egyikük fáklyát gyújt, és a fellobbanó fényben megpillantod a tizenegy Gólemet, amelyek körülvesznek. Nincs időd, hogy bármit is előkapj a hátizsákodból.
+    </text>
+    <itemCheck type="item" id="4001">
+      <have>
+        <text>
+            Végső kétségbeesésedben Galrin nevét kiáltod.[/p]
+        </text>
+        <next id="100"></next>
+      </have>
+      <dontHave>
+        <text>
+            A szörnyetegek széttépnek, és kalandod itt véget ér.[/p]
+        </text>
+        <death />
+      </dontHave>
+    </itemCheck>
+    <death />
+  </p>
+  <p id="100">
+    <text>
+        [p]A kísértetsereg megjelenik, és te hátralépsz: hagyod, hogy tegyék a dolgukat. Gyorsan végeznek. Galrin tiszteleg, aztán a többiekkel együtt örökre eltűnik ebből a világból. Folytathatod az utat. Hamarosan kiderül, hogy a Gólemek terme csak Morgana tróntermének előcsarnoka volt. Hatalmas barlangba lépsz be. Középen maga Morgana ül fekete kőtrónusán. - Azt hiszed, elpusztítottad a szolgáimat? - sikoltja feléd. - Te bolond! Bármikor csinálhatok még többet! - A trónhoz ugrasz, hogy örökre elhallgattasd.[/p]
+    </text>
+    <next id="295"></next>
+  </p>
+  <p id="369">
+    <text>
+        [p]A folyosó nem túl hosszú, és egy T elágazásban ér véget. Tudod, hogy ha jobbra fordulnál, csak távolodnál a célodtól, ezért balra mész.[/p]
+    </text>
+    <next id="16"></next>
+  </p>
+  <p id="295">
+    <text>
+        [p]Magával Morganával állsz most szemben. Annyira biztos a győzelmében, hogy gúnyos vigyorral fogad. - A sötétség erőire! - kiáltja. - Tökéletes! Itt vagy, ahogy akartuk. - Aztán leugrik a trónusáról, és rád támad. Teste törékeny, de mágikus ereje jól ellensúlyozza a testi erő hiányát. Akárhányszor megsebzed, csak 1 ÉLETERŐ pont sebet ejtesz rajta (vagy 2-t, ha SZERENCSÉS vagy).[/p]
+    </text>
+    <itemCheck type="item" id="3017">
+      <have>
+        <text>
+            [p]A Pillanatnyi Láthatatlanság Köpenye a legcsekélyebb mértékben sem véd meg egy ilyen hatalmas varázslótól.[/p]
+        </text>
+      </have>
+    </itemCheck>
+    <fight type="single">
+      <enemy id="42" />
+    </fight>
+    <itemCheck type="item" id="4011">
+      <have>
+        <itemCheck type="section" id="22">
+          <have>
+            <next id="258"></next>
+          </have>
+          <dontHave>
+            <next id="136"></next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="22">
+          <have>
+            <next id="258"></next>
+          </have>
+          <dontHave>
+            <next id="347"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="4">
+    <empty />
+  </p>
+  <p id="81">
+    <empty />
+  </p>
+  <p id="347">
+    <text>
+        [p]Abban a pillanatban, ahogy Morgana holtan esik össze, egy ismeretlen támadó hátulról ledöf. A csodálkozást az arcodra ragasztja a halál. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="136">
+    <text>
+        [p]Mikor először találkoztál Morganával, azt mondta: ,,a tervünk''. Azóta is ezen rágódsz. Most meg ezt mondja: ,,Idejöttél, ahogy akartuk!'' Míg ezen a rejtélyen töprengsz, egy észrevétlen ellenfél hátulról ledöf. Kalandod itt véget ér![/p]
+    </text>
+    <death />
+  </p>
+  <p id="258">
+    <text>
+        [p]Kezd összeállni a kép; rájössz, hogy a küldetésed csapda: eszedbe jut Morgana, aki úgy beszélt a tervéről, mintha valaki más is segített volna benne: no meg itt van Kevin aljas meggyilkolása. Már jó ideje ezen rágódsz.[/p]
+    </text>
+    <userInput type="text">
+      <label>Hogy hívják az illetőt, akire gyanakodsz?</label>
+      <result text="Ifor Tynin">
+        <next id="40"></next>
+      </result>
+      <resultElse>
+        <next id="347"></next>
+      </resultElse>
+    </userInput>
+  </p>
+  <p id="40">
+    <text>
+        [p]Amint a varázslónő a földre rogy, megpördülsz és szembefordulsz az árulóval, aki magasra emelt tőrével épp hátba akar döfni. Szitkozódik éles eszed miatt, aztán rád támad.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="43" />
+    </fight>
+    <next id="400"></next>
+  </p>
+  <p id="400">
+    <text>
+        [p]Győztél! A Pusztítás Maszkjai nem hoznak romlást a világra - legalábbis nem a te életedben...[/p]
+    </text>
+    <victory />
+  </p>
+  <p id="282">
+    <text>
+        [p]Kardot rántasz, és előrelépsz. A hótalpak, bár megkönnyítik a hosszú utazásokat, harc közben nagyon zavaróak. Egyszerre kell megküzdened velük, de ha az egyik ellen megnyersz egy Fordulót, az a következő Fordulóban képtelen lesz támadni, és te a másikkal a szokott módon harcolsz.[/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="44" />
+      <enemy id="45" />
+    </fight>
+    <fight type="single">
+      <enemy id="44" />
+      <enemy id="45" />
+      <win>
+        <text>
+            [p]Elvihetsz egy pár [span class="takeItem" data-id="3024" data-amount="1"]hótalpat[/span], ha akarsz.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="173"></next>
+  </p>
+  <p id="207">
+    <text>
+        [p]Egy fának veted a hátadat, előtted pedig a tábortűz lobog, ezért egyszerre csak egy csáppal kell megküzdened. Amikor újabb csáp nyúlik feléd, mindig felragadsz egy égő ágat a tűzből. Dobj egy kockával! Ha 1-et vagy 2-t dobtál, sikerült felkapnod az ágat, de a nagy sietségben megégeted magad; vesztesz 1 ÉLETERŐ pontot! Ha 3-at vagy 4-et dobsz, az ág kialszik, mielőtt használhatnád. Ha 5-öt vagy 6-ot dobsz, sikerül felkapnod az ágat, és minden megnyert Fordulóban 3 ÉLETERŐ pontot szerzel a szokásos 2 helyett.[/p]
+        [p]Bármikor elmenekülhetsz.[/p]
+    </text>
+    <fight type="single" forceOrder="true">
+      <enemy id="46" />
+      <enemy id="47" />
+      <enemy id="48" />
+      <enemy id="49" />
+      <enemy id="50" />
+      <fleeing />
+      <flee>
+        <changeItem attribute="staminaDamage" id="1001" set="2" />
+        <next id="361"></next>
+      </flee>
+      <win>
+        <changeItem attribute="staminaDamage" id="1001" set="2" />
+        <next id="346"></next>
+      </win>
+    </fight>
   </p>
 </content>

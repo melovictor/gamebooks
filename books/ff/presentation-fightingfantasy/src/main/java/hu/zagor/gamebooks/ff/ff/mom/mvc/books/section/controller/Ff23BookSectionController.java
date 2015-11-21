@@ -1,8 +1,12 @@
 package hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
+import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
+import hu.zagor.gamebooks.content.command.fight.subresolver.enemystatus.EnemyStatusEvaluator;
+import hu.zagor.gamebooks.content.commandlist.CommandList;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.domain.HuntRoundResult;
 import hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.service.HuntService;
@@ -33,6 +37,8 @@ public class Ff23BookSectionController extends FfBookSectionController {
 
     @Autowired
     private HuntService huntService;
+    @Autowired
+    private EnemyStatusEvaluator enemyStatusEvaluator;
 
     /**
      * Constructor expecting the {@link SectionHandlingService} bean.
@@ -64,13 +70,61 @@ public class Ff23BookSectionController extends FfBookSectionController {
     @Override
     public String handleFight(final Model model, final HttpServletRequest request, @RequestParam("id") final String enemyId,
         @RequestParam("hit") final Boolean luckOnHit, @RequestParam("def") final Boolean luckOnDefense, @RequestParam("oth") final Boolean luckOnOther) {
+
+        final FightCommand fightCommand = (FightCommand) getWrapper(request).getParagraph().getData().getCommands().get(0);
         if ("27".equals(enemyId) || "28".equals(enemyId)) {
-            final FightCommand fightCommand = (FightCommand) getWrapper(request).getParagraph().getData().getCommands().get(0);
             final List<String> enemies = fightCommand.getEnemies();
             enemies.add(enemies.remove(0));
         }
         final String handleFight = super.handleFight(model, request, enemyId, luckOnHit, luckOnDefense, luckOnOther);
+
+        if ("44".equals(enemyId) || "45".equals(enemyId)) {
+            handleTribesmanSwitching(fightCommand, request, enemyId);
+        }
+
         return handleFight;
+    }
+
+    private void handleTribesmanSwitching(final FightCommand fightCommand, final HttpServletRequest request, final String enemyId) {
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        final List<String> enemies = fightCommand.getEnemies();
+        final List<FfEnemy> resolvedEnemies = fightCommand.getResolvedEnemies();
+        resetEnemies(wrapper, enemies, resolvedEnemies);
+        if (enemies.size() == 2) {
+            final BattleStatistics battleStatistics = fightCommand.getBattleStatistics(enemyId);
+            if (battleStatistics.getSubsequentWin() > 0) {
+                // This one won't fight the next round
+                enemies.remove(enemyId);
+                for (final FfEnemy enemy : resolvedEnemies) {
+                    if (enemyId.equals(enemy.getId())) {
+                        resolvedEnemies.remove(enemy);
+                        break;
+                    }
+                }
+            }
+        }
+        final CommandList commands = wrapper.getParagraph().getData().getCommands();
+        if (commands.size() == 1) {
+            final FightCommand singleFightCommand = (FightCommand) commands.get(0);
+            for (int i = 0; i < fightCommand.getRoundNumber(); i++) {
+                singleFightCommand.increaseBattleRound();
+            }
+        }
+    }
+
+    private void resetEnemies(final HttpSessionWrapper wrapper, final List<String> enemies, final List<FfEnemy> resolvedEnemies) {
+        enemies.clear();
+        resolvedEnemies.clear();
+        addEnemy(wrapper, enemies, resolvedEnemies, "44");
+        addEnemy(wrapper, enemies, resolvedEnemies, "45");
+    }
+
+    private void addEnemy(final HttpSessionWrapper wrapper, final List<String> enemies, final List<FfEnemy> resolvedEnemies, final String enemyId) {
+        final FfEnemy enemy = (FfEnemy) wrapper.getEnemies().get(enemyId);
+        if (enemyStatusEvaluator.isAlive(enemy)) {
+            enemies.add(enemyId);
+            resolvedEnemies.add(enemy);
+        }
     }
 
 }
