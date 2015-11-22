@@ -36,7 +36,7 @@ public class DefaultItemFactoryTest {
     private BookContentInitializer contentInitializer;
 
     @UnderTest
-    public DefaultItemFactory getUnderTest() {
+    public DefaultItemFactory underTest() {
         info = new BookInformations(21L);
         return new DefaultItemFactory(info);
     }

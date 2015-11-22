@@ -46,12 +46,13 @@ public class Ff23BookTakeItemController extends FfBookTakeItemController {
 
     @Override
     protected int doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
+        final HttpSessionWrapper wrapper = getWrapper(request);
+
         if (FLASK.equals(itemId)) {
-            resetProvisions(request);
+            resetProvisions(wrapper);
         }
 
         int takeItemResult = 0;
-        final HttpSessionWrapper wrapper = getWrapper(request);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
         if ("4003".equals(itemId)) {
             if (character.getGold() > 0) {
@@ -79,8 +80,8 @@ public class Ff23BookTakeItemController extends FfBookTakeItemController {
         return takeItemResult;
     }
 
-    private void resetProvisions(final HttpServletRequest request) {
-        final Character character = getWrapper(request).getCharacter();
+    private void resetProvisions(final HttpSessionWrapper wrapper) {
+        final Character character = wrapper.getCharacter();
         final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
         final List<Item> items = itemHandler.getItems(character, PROVISION);
         for (final Item item : items) {

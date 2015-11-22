@@ -13,7 +13,6 @@ import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
 import hu.zagor.gamebooks.ff.mvc.book.section.service.FfBookPreFightHandlingService;
 import hu.zagor.gamebooks.mvc.book.section.controller.GenericBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
-import hu.zagor.gamebooks.raw.mvc.book.section.controller.RawBookSectionController;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -25,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Generic section selection controller for Fighting Fantasy books.
  * @author Tamas_Szekeres
  */
-public class FfBookSectionController extends RawBookSectionController {
+public class FfBookSectionController extends AbstractFfBookSectionController {
 
     /**
      * Basic constructor that expects the spring id of the book's bean and passes it down to the {@link GenericBookSectionController}.
@@ -61,6 +60,7 @@ public class FfBookSectionController extends RawBookSectionController {
     public String handleFight(final Model model, final HttpServletRequest request, @RequestParam("id") final String enemyId,
         @RequestParam("hit") final Boolean luckOnHit, @RequestParam("def") final Boolean luckOnDefense, @RequestParam("oth") final Boolean luckOnOther) {
         final HttpSessionWrapper wrapper = getWrapper(request);
+        handleBeforeFight(wrapper, enemyId);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
 
         final FfUserInteractionHandler interactionHandler = getInfo().getCharacterHandler().getInteractionHandler();
@@ -73,7 +73,19 @@ public class FfBookSectionController extends RawBookSectionController {
         getInteractionRecorder().prepareFightCommand(wrapper, luckOnHit, luckOnDefense, luckOnOther);
         getInteractionRecorder().recordFightCommand(wrapper, enemyId);
 
-        return super.handleSection(model, request, null);
+        final String handleSection = super.handleSection(model, request, null);
+
+        handleAfterFight(wrapper, enemyId);
+
+        return handleSection;
+    }
+
+    @Override
+    protected void handleBeforeFight(final HttpSessionWrapper wrapper, final String enemyId) {
+    }
+
+    @Override
+    protected void handleAfterFight(final HttpSessionWrapper wrapper, final String enemyId) {
     }
 
     /**

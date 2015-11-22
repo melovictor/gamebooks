@@ -20,12 +20,15 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component("singleff23FightRoundResolver")
-public class SingleFf23FightRoundResolver extends SingleFightRoundResolver {
+public class SingleFf23FightRoundResolver implements FightRoundResolver {
 
     private static final int DAMAGE_WITHOUT_BRANCH = 2;
     private static final int DAMAGE_WITH_BRANCH = 3;
     private static final int ROLL_PICK_BRANCH_LOWER_LIMIT = 4;
     private static final int ROLL_BURN_SELF_UPPER_LIMIT = 3;
+    @Autowired
+    @Qualifier("singleFightRoundResolver")
+    private FightRoundResolver superResolver;
     @Autowired
     @Qualifier("d6")
     private RandomNumberGenerator generator;
@@ -40,9 +43,9 @@ public class SingleFf23FightRoundResolver extends SingleFightRoundResolver {
 
         final String enemyId = interactionHandler.peekLastFightCommand(character, "enemyId");
         if ("46".equals(enemyId) || "47".equals(enemyId) || "48".equals(enemyId) || "49".equals(enemyId) || "50".equals(enemyId)) {
-            final FightCommandMessageList messages = command.getMessages();
             final String lastEnemyId = interactionHandler.peekLastFightCommand(character, "lastEnemyId");
             if (lastEnemyId == null || !lastEnemyId.equals(enemyId)) {
+                final FightCommandMessageList messages = command.getMessages();
                 interactionHandler.setFightCommand(character, "lastEnemyId", enemyId);
 
                 final int[] randomNumber = generator.getRandomNumber(1);
@@ -63,7 +66,12 @@ public class SingleFf23FightRoundResolver extends SingleFightRoundResolver {
             }
         }
 
-        return super.resolveRound(command, resolvationData, beforeRoundResult);
+        return superResolver.resolveRound(command, resolvationData, beforeRoundResult);
+    }
+
+    @Override
+    public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
+        superResolver.resolveFlee(command, resolvationData);
     }
 
 }
