@@ -453,7 +453,7 @@
     <text>
         [p]A domb északi oldalán versz tábort. Éjjel leesik az első hó.[/p]
     </text>
-    <itemCheck type="item" id="3021 or 3022">
+    <itemCheck type="item" id="3021 or 3018">
       <have>
         <next id="344"></next>
       </have>
@@ -578,6 +578,7 @@
     <fight type="single">
       <enemy id="38" />
       <win>
+        <reward id="icedragon" />
         <text>
             [p]Mire legyőzöd, a Köpeny elveszti mágikus erejét.[/p]
         </text>
@@ -1040,6 +1041,7 @@
     <text>
         [p]Semmi mást nem tudsz kiszedni belőle, de amíg kérdezgeted, bemegy a házba, és egy halom ronggyal tér vissza, amit feléd nyújt. Mikor szétnyitod a rongyokat, egy csodás [span class="takeItem" data-id="3014" data-amount="1"]jogart[/span] találsz benne. Bár vasból készült, igen régi lehet, és uralkodói hatalmat sugároz. Megkérdeznéd a férfitól, hogy mi ez, de az ájultan rogy a földre. Miközben elteszed a jogart, rúnákat fedezel fel rajta. A szöveg nagyjából így szól: ,,Csak egyetlen uralkodó lehet''. Úgy döntesz, továbbmész.[/p]
     </text>
+    <reward id="scepter" />
     <next id="231"></next>
   </p>
   <p id="93">
@@ -1196,6 +1198,7 @@
     <text>
         [p]A Spriggenek mindenüket hátrahagyva menekülnek. Találsz náluk [span class="takeItem" data-id="gold" data-amount="10"]10 Aranytallért[/span] és egy nagy [span class="takeItem" data-id="3006" data-amount="1"]gránátgyűrűt[/span]. Nyilvánvaló, hogy ez egy tolvajbanda volt. Úgy döntesz, hogy az éjszaka hátralévő részét a Spriggenek barátságos fényű mágikus lámpái alatt töltöd el, amelyek ugyan a napfénynél eltűnnek, de legalább addig is távol tartják a vadállatokat. Reggelig eseménytelenül telik az idő. Pirkadatkor a fák közt szállongó hajnali párában két utat találsz.[/p]
     </text>
+    <reward id="ring" />
     <next id="398">Ha az északkelet felé tartó úton indulsz el</next>
     <next id="115">Ha északnyugat felé indulsz</next>
   </p>
@@ -1975,6 +1978,7 @@
     <text>
         [p]A csontváz üres szemgödreiben hideg fény villan, de nem támad ellened. Elveszed az [span class="takeItem" data-id="3023" data-amount="1"]országalmát[/span], és kiúszol az északi partra. Mikor letörlöd róla az iszapot, a következő szöveget fedezed fel rajta. ,,Az uralkodó hatalmának huszonegy a száma.'' Elteszed az országalmát a hátizsákodba, és megmászod a sziklát. Mikor fölérsz, felméred a helyzeted. Úgy gondolod, elég sokáig jöttél nyugatra, így most a rettegett, Gonosz Mocsár északra fekszik, a Krill Garnash hegylánca pedig északkeletre húzódik. Tudod, hogy jobb elkerülni a Mocsarat, ha lehet.[/p]
     </text>
+    <reward id="orb" />
     <next id="357">Ha ennek ellenére északnak mész egy darabon</next>
     <next id="374">Ha északkeletnek indulsz</next>
   </p>
@@ -3028,6 +3032,9 @@
     </text>
     <fight type="single">
       <enemy id="39" />
+      <win>
+        <reward id="icedragon" />
+      </win>
     </fight>
     <next id="204">Átkutathatod a barlangját</next>
     <next id="298">Vagy rögtön továbbindulhatsz a Krill Garnash felé</next>
@@ -3553,6 +3560,9 @@
     </itemCheck>
     <fight type="single">
       <enemy id="42" />
+      <win>
+        <reward id="morgana" />
+      </win>
     </fight>
     <itemCheck type="item" id="4011">
       <have>
@@ -4083,7 +4093,7 @@
         <text>
             [p]A fagykenőcs
         </text>
-        <loseItem id="3022" />
+        <loseItem id="3018" />
       </dontHave>
       <after>
         <text>
@@ -4372,6 +4382,7 @@
         <next id="177"></next>
       </flee>
       <win>
+        <reward id="sabret" />
         <itemCheck type="enemy" id="21">
           <have>
             <next id="348"></next>
