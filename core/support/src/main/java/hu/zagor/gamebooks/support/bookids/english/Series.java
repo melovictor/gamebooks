@@ -15,6 +15,7 @@ public final class Series {
 
     public static final long FIGHTING_FANTASY = BASE + 828 * SERIES_MULTIPLIER;
     public static final long FIGHTING_FANTAZINE = BASE + 339 * SERIES_MULTIPLIER;
+    public static final long SORCERY = BASE + 568 * SERIES_MULTIPLIER;
 
     public static final long PROTEUS = BASE + 552 * SERIES_MULTIPLIER;
 
