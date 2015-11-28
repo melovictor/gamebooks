@@ -10,6 +10,7 @@ import hu.zagor.gamebooks.mvc.login.facade.LoginFacade;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.player.settings.DefaultSettingsHandler;
 import hu.zagor.gamebooks.player.settings.UserSettingsHandler;
+import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
 import hu.zagor.gamebooks.support.logging.LogInject;
 
 import java.util.Date;
@@ -24,17 +25,16 @@ import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.web.csrf.CsrfToken;
-import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Controller for handling the login page.
+ * Controller for handling the login page on dev environment.
  * @author Tamas_Szekeres
  */
-public class LoginController {
+public class DevLoginController {
 
     private static final int FURTHER_TRY_LOCKOUT = 3;
     private static final int MIN_TRY_LOCKOUT = 5;
@@ -53,44 +53,59 @@ public class LoginController {
     @Autowired
     private MdcHandler mdcHandler;
     @Autowired
-    private CsrfTokenRepository csrfTokenRepository;
+    private EnvironmentDetector environmentDetector;
+    @Value("${login.username}")
+    private String defaultUsername;
 
     /**
      * Shows the user the login page.
      * @param model the data model for the page
      * @param request the http request
-     * @param response the http response
      * @return the login page
      */
     @RequestMapping(value = PageAddresses.LOGIN, method = RequestMethod.GET)
-    public String loginGet(final Model model, final HttpServletRequest request, final HttpServletResponse response) {
+    public String loginGet(final Model model, final HttpServletRequest request) {
+        final LoginData data = new LoginData();
+        data.setUsername(defaultUsername);
+        data.setCsrfToken("null");
+        model.addAttribute("loginData", data);
+        return loginPost(model, data, request);
+    }
+
+    /**
+     * Shows the user the login page for testing.
+     * @param model the data model for the page
+     * @param request the http request
+     * @param response the http response
+     * @return the login page
+     */
+    @RequestMapping(value = PageAddresses.TEST_LOGIN, method = RequestMethod.GET)
+    public String testLoginGet(final Model model, final HttpServletRequest request, final HttpServletResponse response) {
+        return doPrepare(model, request, response, true);
+    }
+
+    private String doPrepare(final Model model, final HttpServletRequest request, final HttpServletResponse response, final boolean isTesting) {
+        String result;
         logHeaders(request);
         final HttpSession session = request.getSession();
         session.setMaxInactiveInterval(GUEST_SESSION_TTL);
-        String result;
+        environmentDetector.setSeleniumTesting(isTesting);
         if (missingLanguageCookie(request)) {
-            result = setLanguageCookie(request, response);
+            result = setLanguageCookie(request, response, isTesting);
         } else {
             model.addAttribute("pageTitle", "page.title");
-            newToken(model, request);
+            model.addAttribute("csrfToken", "null");
             result = chekcUserLogin(model, session);
         }
         setTiming(model, session);
         return result;
     }
 
-    private void newToken(final Model model, final HttpServletRequest request) {
-        final CsrfToken generateToken = csrfTokenRepository.generateToken(request);
-        csrfTokenRepository.saveToken(generateToken, request, null);
-        logger.info("Generated token for user to log in with: '{}'.", generateToken.getToken());
-        model.addAttribute("csrfToken", generateToken.getToken());
-    }
-
-    private String setLanguageCookie(final HttpServletRequest request, final HttpServletResponse response) {
+    private String setLanguageCookie(final HttpServletRequest request, final HttpServletResponse response, final boolean isTesting) {
         final String locale = request.getLocale().getLanguage();
         response.addCookie(getCookie(LocaleSwitchingFilter.LANG_KEY, locale));
         response.addCookie(getCookie(LocaleSwitchingFilter.LOGIN_LANG_KEY, "true"));
-        return "redirect:" + PageAddresses.LOGIN;
+        return "redirect:" + (isTesting ? PageAddresses.TEST_LOGIN : PageAddresses.LOGIN);
     }
 
     private Cookie getCookie(final String key, final String value) {
@@ -150,19 +165,14 @@ public class LoginController {
     public String loginPost(final Model model, final LoginData data, final HttpServletRequest request) {
         final HttpSession session = request.getSession();
         String nextPage;
-        final CsrfToken expectedToken = csrfTokenRepository.loadToken(request);
-        if (expectedToken != null && expectedToken.getToken().equals(data.getCsrfToken())) {
-            final LoginResult loginResult = login.doLogin(data);
-            if (loginResult.isSuccessful()) {
-                nextPage = executeLogin(data, request, session, loginResult);
-            } else {
-                nextPage = reportWrongLogin(model, data, session, loginResult);
-            }
+        final LoginResult loginResult = login.doLogin(data);
+        if (loginResult.isSuccessful()) {
+            nextPage = executeLogin(data, request, session, loginResult);
         } else {
-            nextPage = reportWrongToken(model, data, session, expectedToken);
+            nextPage = reportWrongLogin(model, data, session, loginResult);
         }
-        newToken(model, request);
         model.addAttribute("pageTitle", "page.title");
+        model.addAttribute("csrfToken", "null");
         setTiming(model, session);
         return nextPage;
     }
@@ -231,15 +241,6 @@ public class LoginController {
             final String value = request.getHeader(name);
             logger.info("'{}': '{}'", name, value);
         }
-    }
-
-    private String reportWrongToken(final Model model, final LoginData data, final HttpSession session, final CsrfToken expectedToken) {
-        logger.warn("User '{}' tried to log in with invalid token! Actual: '{}', expected: '{}'.", data.getUsername(), data.getCsrfToken(), expectedToken == null ? null
-            : expectedToken.getToken());
-        session.setAttribute(ControllerAddresses.USER_STORE_KEY, null);
-        model.addAttribute("loginError", "page.login.invalid.token");
-        data.setPassword("");
-        return PageAddresses.LOGIN;
     }
 
     public void setLogin(final LoginFacade login) {
