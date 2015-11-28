@@ -15,7 +15,7 @@
 		<l:smallbox>
 			<l:input label="page.login.username" name="username" id="adventurerName" />
 			<l:input label="page.login.password" name="password" id="adventurerPassphrase" type="password" />
-			<input type="hidden" name="csrfToken" value="${_csrf}" />
+			<input type="hidden" name="csrfToken" value="${csrfToken}" />
 			<input type="submit" id="loginSubmitButton"
 				value="<spring:message code="page.login.submit" />" />
 		</l:smallbox>

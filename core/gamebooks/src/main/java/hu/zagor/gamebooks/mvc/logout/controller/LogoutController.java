@@ -35,7 +35,12 @@ public class LogoutController {
      */
     @RequestMapping(value = PageAddresses.LOGOUT)
     public String loginGet(final HttpSession session) {
-        logger.info("Logging out user '{}'.", ((PlayerUser) session.getAttribute(ControllerAddresses.USER_STORE_KEY)).getUsername());
+        final PlayerUser playerUser = (PlayerUser) session.getAttribute(ControllerAddresses.USER_STORE_KEY);
+        if (playerUser == null) {
+            logger.info("Logging out when no user is available.");
+        } else {
+            logger.info("Logging out user '{}'.", playerUser.getUsername());
+        }
         session.invalidate();
         environmentDetector.setSeleniumTesting(false);
         return "redirect:" + PageAddresses.LOGIN;

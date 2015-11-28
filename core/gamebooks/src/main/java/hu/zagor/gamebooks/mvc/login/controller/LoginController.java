@@ -86,7 +86,7 @@ public class LoginController {
         model.addAttribute("csrfToken", generateToken.getToken());
     }
 
-    private String setLanguageCookie(final HttpServletRequest request, final HttpServletResponse response) {
+    String setLanguageCookie(final HttpServletRequest request, final HttpServletResponse response) {
         final String locale = request.getLocale().getLanguage();
         response.addCookie(getCookie(LocaleSwitchingFilter.LANG_KEY, locale));
         response.addCookie(getCookie(LocaleSwitchingFilter.LOGIN_LANG_KEY, "true"));
@@ -99,11 +99,11 @@ public class LoginController {
         return cookie;
     }
 
-    private boolean missingLanguageCookie(final HttpServletRequest request) {
+    boolean missingLanguageCookie(final HttpServletRequest request) {
         return getCookie(LocaleSwitchingFilter.LANG_KEY, request) == null;
     }
 
-    private String chekcUserLogin(final Model model, final HttpSession session) {
+    String chekcUserLogin(final Model model, final HttpSession session) {
         String result;
         if (session.getAttribute(ControllerAddresses.USER_STORE_KEY) == null) {
             logger.info("Displaying login screen.");
@@ -224,7 +224,7 @@ public class LoginController {
         return nextPage;
     }
 
-    private void logHeaders(final HttpServletRequest request) {
+    void logHeaders(final HttpServletRequest request) {
         final Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()) {
             final String name = headerNames.nextElement();
@@ -246,9 +246,13 @@ public class LoginController {
         this.login = login;
     }
 
-    private void setTiming(final Model model, final HttpSession session) {
+    void setTiming(final Model model, final HttpSession session) {
         model.addAttribute("currentTime", DateTime.now().getMillis());
         model.addAttribute("loginPrevention", session.getAttribute("loginPrevention"));
+    }
+
+    CsrfTokenRepository getCsrfTokenRepository() {
+        return csrfTokenRepository;
     }
 
 }
