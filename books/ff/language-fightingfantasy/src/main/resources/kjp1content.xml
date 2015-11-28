@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd">
+  <p id="back_cover">
+    <text>
+        [p]Ebben a remek kikapcsolódást nyújtó Jackson-Livingstone paródiában egy híres kalandozó szerepét játszhatod el, akit egész Lioniában jól ismernek. Királyod, Oroszlánszagú Richard azzal [/p]
+        [p]a feladattal bízott meg, hogy számolj le Darmol Purgosszal, a Scr-bvng hegy tetején élő gonosz mágussal, az első számú közellenséggel. A feladatot eredetileg Oroszlánszagú Richardnak kellett volna végrehajtania, de ő úgy gondolta, sokkal kellemesebb a fűtött trónteremben ugráltatnia az alattvalóit, mint mindenféle veszélynek kitennie magát. [/p]
+        [p]Némi jókedvre, egy ceruzára, egy radírra, és két dobókockára lesz szükséged a játékhoz. [/p]
+        [p]Rengeteg veszélyen kell átvágnod magad, rekeszizmaid óriási próbatételnek lesznek kitéve. [/p]
+        [p]A siker egyáltalán nem garantált, ugyanis a gonosz szerző mindent megtett annak érdekében, hogy valamilyen módon elhalálozz, mielőtt elvégezhetnéd a feladatod.[/p]
+    </text>
+    <next id="generate" />
+  </p>
+  <p id="generate" display="Karakter létrehozása">
+    <text>
+        [p][span class="ffAttribute"]Ügyesség[/span]: [span id="ffSkill"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Életerő[/span]: [span id="ffStamina"]dobj két kockával és adj 12-t a dobott számhoz[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Szerencse[/span]: [span id="ffLuck"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p]Válassz egy italt:
+          [select id="ffDefaultPotion"]
+              [option value="2001" selected="selected"]Ügyesség Itala[/option]
+              [option value="2002"]Erő Itala[/option]
+              [option value="2003"]Szerencse Itala[/option]
+          [/select]
+        [/p]
+        [button data-generator-button="ff"]Karakter létrehozása[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="Háttér">
+    <text>
+        [p]A félelmetes Scr-bvng hegy tetején lakó mágus már eddig is sok borsot tört Liónia lakóinak orra alá. Ezt különösen a gnóm lakosok találták sérelmesnek, mert nekik ugyebár ebből extra adag jutott. Darmol Purgos legújabban pedig azt vette a fejébe, hogy mesterséges szörnyeket tenyészt ki, és ezzel az irtóztató hadsereggel leigázza az egész világot. Királyotok, a rettenthetetlen Oroszlánszagú Richárd eddig még elnézte a mágus csínytevéseit (könnyen tehette, hisz mindössze csak békés rablótámadásokról, néhány tucat fős, apró mészárlásokról, valamint a nagykereskedelmi mennyiséget még el nem érő számú békává változtatásról volt szó), de hát egyszer minden pohár betelik. Ezért döntött úgy a király és tanácsa, hogy le kell számolni a gonosszal. A tanács még gyorsan azt is eldöntötte, hogy kit érjen ez a megtiszteltetés (mármint ki legyen a feladat végrehajtója, mert az akció áldozatának kitüntető szerepét Darmol Purgosnak kell majd magára vállalnia), és a döntés eredményéről értesítettek téged. És mit gondolsz, miért éppen téged?[/p]
+        [p]Eltaláltad! Te leszel az a bátor önként jelentkező, aki a veszélyeknek fittyet hányva (ezt csak képletesen kell érteni), ha kell, az életét is feláldozva elvégzi ezt a kitüntető és nemes feladatot. - Hogy az a szentséges...! - gondoltad magadban, amikor ezt meghallottad, de aztán eszedbe jutott a a múltkori kis malőr a szomszédos Vacakóriában, amikor a sárkány helyett a megmentendő királylány fejét vágtad le hét remekbe szabott csapással (olyan rosszul lehetett látni abban az átkozott füstben!), ami miatt Vacakória királya, II. Totojász vérdíjat tűzött ki a fejedre, és most nincs nyugtod sehol Lióniában.[/p]
+        [p]Kénytelen leszel ezzel a hőstettel kiköszörülni valahogy a becsületeden esett csorbát. Tudod, hogy II. Totojász biztosan meg fog bocsátani, ha legyőzöd a varázslót, mert ők ketten különösen rossz viszonyban vannak egymással. A kémeitektől tudod, hogy az utóbbi években Darmol Purgos nem csak borsot, de néha tárkonyfüvet, sőt szalmiákos ampullákat is tört II. Totojász orra alá.[/p]
+        [p]- Felséges királyom, egy életem, egy halálom, én a hegyet megpróbálom! - vágod ki, és katonásan összecsapod a bokádat a király előtt, amitől sajnos lepattan az egyik sarkantyúd. Utána diadalmasan körülnézel. A jelenettől a teremben lévők szemeiben könnyek jelennek meg. „Mindig megható, ha egy hős feláldozza az életét a hazájáért”, gondolod, mert nem veszed észre, hogy a könnycseppeket a nagy nehezen elfojtott röhögés csalta az emberek szemébe. A király végigmér:[/p]
+        [p]- Nos, fiam, te lennél az? Hmmm. Nem hittem volna, hogy akad az országomban egy olyan hü... hős, aki elvállalja ezt a feladatot. - mondja, és atyaian megveregeti a válladat. Aztán az udvartartása felé fordul: - Jól nézzétek meg ezt az embert, és vegyetek róla példát! Ekkora nagy... hőst rég nem hordott hátán Liónia földje! - A sarokban két fegyveres a pajzsa mögé hajtja a fejét, úgy röhög.[/p]
+        [p]- És tudod-e, fiam, milyen rettenetes, vérszopó szörnyek laknak odafent a hegyen? Tudod, hány, de hány bátor harcosnak vette már fejét a gonosz?[/p]
+        [p]- Igen? - kérdezed szemmel láthatóan kínosan érintve. - No, és felség, nem lehetne esetleg...[/p]
+        [p]- Tudtam, hogy bátor hősünknek nem száll inába a bátorsága a veszélyek hallatán sem! - fordul ismét a hallgatóság felé a király. Az államminiszter arca meg-megrándul. A főkancellár egy teniszlabdát gyömöszöl a szájába.[/p]
+        [p]- És tudod-e fiam, hány, de hány szörnyűbbnél szörnyűbb kínzószerszám vár rád odafent? - Csettint egyet, mire néhány apród vonul be a trónterembe.[/p]
+        [p]- A hüvelykszorító! Borzalmas! - szólal meg az egyik.[/p]
+        [p]- A spanyolcsizma! Irtózatos! - vágja rá a másik.[/p]
+        [p]- A vasszűz! Félelmetes! - így a harmadik.[/p]
+        [p]- A sarokreszelő! Rémisztő![/p]
+        [p]- A gerincsorvasztó![/p]
+        [p]- A béltekerintő![/p]
+        [p]- A fülcimpalyukasztó![/p]
+        [p]- A nyakszorító![/p]
+        [p]- A nyelvtörő![/p]
+        [p]- A lábnyújtó![/p]
+        [p]- A gyümölcscentrifuga![/p]
+        [p]- Hülye![/p]
+        [p]- A csigolyapukkasztó![/p]
+        [p]- A hajsütővas![/p]
+        [p]- A szemfelszedő![/p]
+        [p]- Elég, fiúk! - vág közbe a király, és egy intésére az apródok ismét eltűnnek. A háttérben a palotaőrség katonái halkan nyüszítve a földön fetrengenek már. - Nos, vállalod-e így is?[/p]
+        [p]- Hát, most, hogy így rákérdezett, felség, én inkább...[/p]
+        [p]- Helyes! Erre számítottam! Menj, és keresd meg az öreg Corvinust, ő majd ellát a megfelelő tanácsokkal. - A király cinkosan rád hunyorít. - És most lapozz![/p]
+        [p]- De felség - szól közbe az udvarmester -, ez nem az ön szövege![/p]
+        [p]- Mit számít az - feleli a király -, a fejezet végén úgyis ki fogják írni még egyszer.[/p]
+        [p]Meghajolsz, és magadban halkan káromkodva távozol a trónteremből. Felkeresed az öreg Corvinust, az ország legöregebb és legbölcsebb öreg bölcsét, aki ellát [span class="takeItem" data-id="3001" data-amount="1"]jótanácsokkal[/span]. Utána oldaladra csatolod a kardodat, amelyet Liónia legjobb kovácsmestere készített, és nekivágsz az éjszakának.[/p]
+    </text>
+    <gatherItem id="defWpn" />
+    <gatherItem id="1001" />
+    <gatherItem id="2000" amount="4" />
+    <next id="1"></next>
+  </p>
+</content>
