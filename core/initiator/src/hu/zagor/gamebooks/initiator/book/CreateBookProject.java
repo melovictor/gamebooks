@@ -8,8 +8,8 @@ public class CreateBookProject {
     public void create() {
         final List<BookLangData> books = new ArrayList<>();
 
-        books.add(getSotkEn(true));
         books.add(getSotkHu(true));
+        books.add(getSotkEn(true));
         books.add(getSotkPtBr(false));
 
         new GenerateBookProjectFiles().generateBookProjectFiles(getBaseData(), books);
@@ -19,18 +19,18 @@ public class CreateBookProject {
 
     private BookBaseData getBaseData() {
 
-        baseData.setSeriesCode("ff");
-        baseData.setTitleCode("mom");
-        baseData.setPosition(23);
+        baseData.setSeriesCode("sor"); // ff, pt, wm, fff, sor
+        baseData.setTitleCode("tsh");
+        baseData.setPosition(1);
         baseData.setCollectorCode("ff");
         baseData.setCollectorName("fightingfantasy");
         baseData.setRuleset("ff");
         baseData.setHasEnemies(true);
         baseData.setHasInventory(true);
         baseData.setHasItems(true);
-        baseData.setHasMap(false);
+        baseData.setHasMap(true);
         baseData.setMediaProject(true);
-        baseData.setDefaultSkillTestType("Le"); // Le: lower or equal; L: lower; if neither, should be empty!
+        baseData.setDefaultSkillTestType("L"); // Le: lower or equal; L: lower; if neither, should be empty!
         baseData.setCharPageRequired(true);
 
         return baseData;
@@ -49,11 +49,11 @@ public class CreateBookProject {
 
     private BookLangData getSotkHu(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
-        data.setSeriesCode("kjk");
-        data.setPosition(15);
-        data.setBookId("KalandJatekKockazat.A_PUSZTITAS_MASZKJAI");
+        data.setSeriesCode("kjv");
+        data.setPosition(1);
+        data.setBookId("KalandJatekVarazslat.A_SHAMUTANTI_DOMBOK");
         data.setLang("hu");
-        data.setTitle("A Pusztítás Maszkjai");
+        data.setTitle("A Shamutanti dombok");
         data.setGeneratable(shouldBeGenerated);
         return data;
     }
@@ -61,9 +61,9 @@ public class CreateBookProject {
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setHidden(true);
-        data.setBookId("FightingFantasy.MASKS_OF_MAYHEM");
+        data.setBookId("Sorcery.THE_SHAMUTANTI_HILLS");
         data.setLang("en");
-        data.setTitle("Masks of Mayhem");
+        data.setTitle("The Shamutanti Hills");
         data.setGeneratable(shouldBeGenerated);
         return data;
     }

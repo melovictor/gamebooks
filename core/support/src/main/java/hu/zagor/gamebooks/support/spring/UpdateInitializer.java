@@ -35,4 +35,5 @@ public class UpdateInitializer {
             communicator.receiveResponse(connection);
         }
     }
+
 }

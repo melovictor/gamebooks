@@ -125,7 +125,7 @@ public class BookBaseData {
     }
 
     public String getBookInfoPrefix() {
-        return "ff".equals(seriesCode) ? "Ff" : "";
+        return ("ff".equals(seriesCode) || "sor".equals(seriesCode) || "kjp".equals(seriesCode)) ? "Ff" : "";
     }
 
     public boolean isCharPageRequired() {
