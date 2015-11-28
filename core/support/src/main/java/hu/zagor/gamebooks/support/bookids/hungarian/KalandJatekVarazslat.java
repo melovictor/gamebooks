@@ -8,6 +8,6 @@ public class KalandJatekVarazslat {
 
     public static final long A_SHAMUTANTI_DOMBOK = BASE + 1;
     public static final long KHARE_A_CSAPDAK_KIKOTOVAROSA = BASE + 2;
-    public static final long A_HET_SARKANYKIGYO = BASE + 3;
+    public static final long HET_SARKANYKIGYO = BASE + 3;
     public static final long KIRALYOK_KORONAJA = BASE + 4;
 }
