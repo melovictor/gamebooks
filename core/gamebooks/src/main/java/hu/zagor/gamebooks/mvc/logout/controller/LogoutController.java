@@ -1,18 +1,17 @@
 package hu.zagor.gamebooks.mvc.logout.controller;
 
-import hu.zagor.gamebooks.ControllerAddresses;
-import hu.zagor.gamebooks.PageAddresses;
-import hu.zagor.gamebooks.mdc.MdcHandler;
-import hu.zagor.gamebooks.player.PlayerUser;
-import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
-import hu.zagor.gamebooks.support.logging.LogInject;
-
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import hu.zagor.gamebooks.ControllerAddresses;
+import hu.zagor.gamebooks.PageAddresses;
+import hu.zagor.gamebooks.player.PlayerUser;
+import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
+import hu.zagor.gamebooks.support.logging.LogInject;
 
 /**
  * Controller for handling the logout page.
@@ -23,8 +22,6 @@ public class LogoutController {
 
     @LogInject
     private Logger logger;
-    @Autowired
-    private MdcHandler mdcHandler;
     @Autowired
     private EnvironmentDetector environmentDetector;
 

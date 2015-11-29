@@ -1,5 +1,10 @@
 package hu.zagor.gamebooks.content.command.fight.subresolver;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
@@ -12,13 +17,6 @@ import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-import hu.zagor.gamebooks.support.locale.LocaleProvider;
-
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.HierarchicalMessageSource;
 
 /**
  * FF18-specific decorator of {@link FightCommandBasicSubResolver}.
@@ -29,10 +27,6 @@ public class Ff18FightCommandBasicSubResolver implements FightCommandSubResolver
     private static final int DIRTY_TRICK = 3;
     private static final int SUDDEN_KILL_ROLL = 6;
     private List<String> proficientEnemies;
-    @Autowired
-    private HierarchicalMessageSource source;
-    @Autowired
-    private LocaleProvider localeProvider;
     @Autowired
     @Qualifier("d6RandomGenerator")
     private RandomNumberGenerator generator;

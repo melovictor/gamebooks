@@ -1,13 +1,5 @@
 package hu.zagor.gamebooks.mvc.bookselection.controller;
 
-import hu.zagor.gamebooks.ControllerAddresses;
-import hu.zagor.gamebooks.PageAddresses;
-import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
-import hu.zagor.gamebooks.domain.SupportedLanguage;
-import hu.zagor.gamebooks.mvc.bookselection.facade.BookListFacade;
-import hu.zagor.gamebooks.mvc.generic.controller.LanguageAwareController;
-import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import hu.zagor.gamebooks.ControllerAddresses;
+import hu.zagor.gamebooks.PageAddresses;
+import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
+import hu.zagor.gamebooks.mvc.bookselection.facade.BookListFacade;
+import hu.zagor.gamebooks.mvc.generic.controller.LanguageAwareController;
+import hu.zagor.gamebooks.support.logging.LogInject;
+
 /**
  * Controller for handling the book selection page.
  * @author Tamas_Szekeres
@@ -26,8 +25,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class BookSelectionController extends LanguageAwareController {
 
-    @Autowired
-    private SupportedLanguage[] availableLanguages;
     @Autowired
     private BookListFacade bookListFacade;
     @LogInject
@@ -65,9 +62,5 @@ public class BookSelectionController extends LanguageAwareController {
 
     public void setLogger(final Logger logger) {
         this.logger = logger;
-    }
-
-    public void setAvailableLanguages(final SupportedLanguage[] availableLanguages) {
-        this.availableLanguages = availableLanguages;
     }
 }

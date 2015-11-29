@@ -1,14 +1,5 @@
 package hu.zagor.gamebooks.mvc.rules.controller;
 
-import hu.zagor.gamebooks.PageAddresses;
-import hu.zagor.gamebooks.domain.BookInformations;
-import hu.zagor.gamebooks.mvc.generic.controller.LanguageAwareController;
-import hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor;
-import hu.zagor.gamebooks.mvc.rules.domain.HelpSeriesBooks;
-import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
-import hu.zagor.gamebooks.support.locale.LocaleProvider;
-import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -25,6 +16,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import hu.zagor.gamebooks.PageAddresses;
+import hu.zagor.gamebooks.domain.BookInformations;
+import hu.zagor.gamebooks.mvc.generic.controller.LanguageAwareController;
+import hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor;
+import hu.zagor.gamebooks.mvc.rules.domain.HelpSeriesBooks;
+import hu.zagor.gamebooks.support.locale.LocaleProvider;
+import hu.zagor.gamebooks.support.logging.LogInject;
+
 /**
  * Controller for handling the rules page.
  * @author Tamas_Szekeres
@@ -38,8 +37,6 @@ public class RulesController extends LanguageAwareController implements Applicat
     private LocaleProvider localeProvider;
 
     private ApplicationContext applicationContext;
-    @Autowired
-    private EnvironmentDetector environmentDetector;
 
     /**
      * Handles the displaying of the main rules list with all available books sorted by series.
