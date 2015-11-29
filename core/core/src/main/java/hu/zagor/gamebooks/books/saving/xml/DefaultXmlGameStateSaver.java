@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.books.saving.xml;
 
 import hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
@@ -14,9 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-
 import javax.xml.stream.XMLStreamException;
-
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -33,8 +30,7 @@ public class DefaultXmlGameStateSaver implements XmlGameStateSaver, BeanFactoryA
     private static final String MAP_ENTRY = "mapEntry";
     private static final String VALUE = "value";
     private static final String CLASS = "class";
-    @LogInject
-    private Logger logger;
+    @LogInject private Logger logger;
     private BeanFactory beanFactory;
 
     @Override
@@ -59,7 +55,7 @@ public class DefaultXmlGameStateSaver implements XmlGameStateSaver, BeanFactoryA
         final Class<?> clazz = object.getClass();
         writer.openNode(objectName);
         writer.addAttribute(CLASS, clazz.getName());
-        logger.trace("Saving class " + clazz.getName());
+        logger.debug("Saving class " + clazz.getName());
 
         final Field[] fields = getAllFields(clazz);
         AccessibleObject.setAccessible(fields, true);
@@ -68,7 +64,7 @@ public class DefaultXmlGameStateSaver implements XmlGameStateSaver, BeanFactoryA
                 final String fieldName = field.getName();
                 final Object fieldValue = field.get(object);
 
-                logger.trace("Saving field '" + fieldName + "' with value '" + fieldValue + "'.");
+                logger.debug("Saving field '" + fieldName + "' with value '" + fieldValue + "'.");
                 saveField(writer, fieldName, fieldValue);
             }
         }
