@@ -1,12 +1,9 @@
 package hu.zagor.gamebooks.mvc.logout.controller;
 
 import static org.easymock.EasyMock.expect;
-import hu.zagor.gamebooks.mdc.MdcHandler;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
-
 import javax.servlet.http.HttpSession;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -28,7 +25,6 @@ public class LogoutControllerTest {
 
     private IMocksControl mockControl;
     private HttpSession session;
-    private MdcHandler mdcHandler;
     private EnvironmentDetector environmentDetector;
     private PlayerUser user;
     private Logger logger;
@@ -37,10 +33,8 @@ public class LogoutControllerTest {
     public void setUpClass() {
         mockControl = EasyMock.createStrictControl();
         session = mockControl.createMock(HttpSession.class);
-        mdcHandler = mockControl.createMock(MdcHandler.class);
         environmentDetector = mockControl.createMock(EnvironmentDetector.class);
         underTest = new LogoutController();
-        Whitebox.setInternalState(underTest, "mdcHandler", mdcHandler);
         Whitebox.setInternalState(underTest, "environmentDetector", environmentDetector);
         user = new PlayerUser(3, "FireFoX", true);
         logger = mockControl.createMock(Logger.class);

@@ -6,11 +6,10 @@ import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
-
 import java.util.Locale;
-
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
+import org.powermock.reflect.exceptions.FieldNotFoundException;
 import org.springframework.context.HierarchicalMessageSource;
 
 /**
@@ -25,13 +24,17 @@ public abstract class FfItTextResolvingTest {
     private FightCommandMessageList messageList;
 
     public void init(final IMocksControl mockControl, final Object underTest) {
-        if (messageSource == null) {
-            messageSource = mockControl.createMock(HierarchicalMessageSource.class);
-            localeProvider = mockControl.createMock(LocaleProvider.class);
-            messageList = mockControl.createMock(FightCommandMessageList.class);
+        messageList = mockControl.createMock(FightCommandMessageList.class);
+        try {
+            Whitebox.getField(underTest.getClass(), "messageSource");
+            if (messageSource == null) {
+                messageSource = mockControl.createMock(HierarchicalMessageSource.class);
+                localeProvider = mockControl.createMock(LocaleProvider.class);
+            }
+            Whitebox.setInternalState(underTest, "messageSource", messageSource);
+            Whitebox.setInternalState(underTest, "localeProvider", localeProvider);
+        } catch (final FieldNotFoundException ex) {
         }
-        Whitebox.setInternalState(underTest, "messageSource", messageSource);
-        Whitebox.setInternalState(underTest, "localeProvider", localeProvider);
     }
 
     public void init(final FightCommand command) {
