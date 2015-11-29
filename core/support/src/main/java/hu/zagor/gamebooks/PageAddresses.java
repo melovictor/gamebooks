@@ -38,6 +38,7 @@ public final class PageAddresses {
     public static final String BOOK_MARKET_SELL = "sellItem";
     public static final String BOOK_MARKET_CLOSE = "marketClose";
     public static final String RULES = "rules";
+    public static final String BOOK_PURCHASE_ITEM = "purchase";
 
     private PageAddresses() {
     }

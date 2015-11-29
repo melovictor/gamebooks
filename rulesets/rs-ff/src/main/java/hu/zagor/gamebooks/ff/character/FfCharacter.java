@@ -1,11 +1,15 @@
 package hu.zagor.gamebooks.ff.character;
 
 import hu.zagor.gamebooks.character.Character;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 /**
  * Player character for Fighting Fantasy ruleset.
  * @author Tamas_Szekeres
  */
+@Component("ffCharacter")
+@Scope("prototype")
 public class FfCharacter extends Character {
 
     private boolean initialized;

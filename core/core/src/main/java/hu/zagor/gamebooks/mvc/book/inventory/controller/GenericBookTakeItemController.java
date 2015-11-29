@@ -8,17 +8,18 @@ import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.mvc.book.controller.AbstractRequestWrappingController;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.ReplaceItemData;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemData;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -27,28 +28,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 public class GenericBookTakeItemController extends AbstractRequestWrappingController {
 
-    @LogInject
-    private Logger logger;
-    @Autowired
-    private ItemInteractionRecorder itemInteractionRecorder;
-    @Autowired
-    private BookContentInitializer contentInitializer;
+    @LogInject private Logger logger;
+    @Autowired private ItemInteractionRecorder itemInteractionRecorder;
+    @Autowired private BookContentInitializer contentInitializer;
 
     /**
      * Method for handling the acquiring of items through the displayed text.
      * @param request the http request
-     * @param itemId the id of the item to take
-     * @param amount the amount of the item to take
+     * @param data the {@link TakeItemData} containing the incoming parameters
      * @return the amount of items successfully taken
      */
-    @RequestMapping(value = PageAddresses.BOOK_TAKE_ITEM + "/{id}/{amount}")
+    @RequestMapping(value = PageAddresses.BOOK_TAKE_ITEM, consumes = "application/json", method = RequestMethod.POST)
     @ResponseBody
-    public String handleItemTake(final HttpServletRequest request, @PathVariable("id") final String itemId, @PathVariable("amount") final int amount) {
-        Assert.notNull(itemId, "The parameter 'itemId' cannot be null!");
-        Assert.isTrue(itemId.length() > 0, "The parameter 'itemId' cannot be empty!");
-        Assert.isTrue(amount > 0, "The parameter 'amount' must be positive!");
+    public int handleItemTake(final HttpServletRequest request, @RequestBody final TakeItemData data) {
+        Assert.notNull(data.getItemId(), "The parameter 'itemId' cannot be null!");
+        Assert.isTrue(data.getItemId().length() > 0, "The parameter 'itemId' cannot be empty!");
+        Assert.isTrue(data.getAmount() > 0, "The parameter 'amount' must be positive!");
 
-        return String.valueOf(doHandleItemTake(request, itemId, amount));
+        return doHandleItemTake(request, data.getItemId(), data.getAmount());
     }
 
     /**
@@ -98,22 +95,19 @@ public class GenericBookTakeItemController extends AbstractRequestWrappingContro
     /**
      * Method for handling the replacement of items through the displayed text.
      * @param request the http request
-     * @param oldItemId the id of the item to lose
-     * @param newItemId the id of the item to take
-     * @param amount the amount of the item to take
+     * @param data the {@link ReplaceItemData} object containing the incoming parameters
      * @return the amount of items successfully taken
      */
-    @RequestMapping(value = PageAddresses.BOOK_REPLACE_ITEM + "/{oldId}/{newId}/{amount}")
+    @RequestMapping(value = PageAddresses.BOOK_REPLACE_ITEM, consumes = "application/json", method = RequestMethod.POST)
     @ResponseBody
-    public final String handleItemReplace(final HttpServletRequest request, @PathVariable("oldId") final String oldItemId, @PathVariable("newId") final String newItemId,
-        @PathVariable("amount") final int amount) {
-        Assert.notNull(oldItemId, "The parameter 'oldItemId' cannot be null!");
-        Assert.isTrue(!oldItemId.isEmpty(), "The parameter 'newItemId' cannot be empty!");
-        Assert.notNull(newItemId, "The parameter 'itemId' cannot be null!");
-        Assert.isTrue(!newItemId.isEmpty(), "The parameter 'newItemId' cannot be empty!");
-        Assert.isTrue(amount > 0, "The parameter 'amount' must be positive!");
+    public final String handleItemReplace(final HttpServletRequest request, @RequestBody final ReplaceItemData data) {
+        Assert.notNull(data.getLoseId(), "The parameter 'oldItemId' cannot be null!");
+        Assert.isTrue(!data.getLoseId().isEmpty(), "The parameter 'newItemId' cannot be empty!");
+        Assert.notNull(data.getGatherId(), "The parameter 'itemId' cannot be null!");
+        Assert.isTrue(!data.getGatherId().isEmpty(), "The parameter 'newItemId' cannot be empty!");
+        Assert.isTrue(data.getAmount() > 0, "The parameter 'amount' must be positive!");
 
-        return doHandleItemReplace(request, oldItemId, newItemId, amount);
+        return doHandleItemReplace(request, data.getLoseId(), data.getGatherId(), data.getAmount());
     }
 
     /**

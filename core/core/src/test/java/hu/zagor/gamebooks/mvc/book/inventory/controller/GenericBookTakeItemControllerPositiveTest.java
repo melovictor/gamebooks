@@ -9,14 +9,18 @@ import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.ReplaceItemData;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemData;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
@@ -36,53 +40,43 @@ public class GenericBookTakeItemControllerPositiveTest {
     private static final String ITEM_ID = "3001";
     private static final int AMOUNT = 5;
     private static final int TAKEN_AMOUNT = 3;
-    private GenericBookTakeItemController underTest;
-    private IMocksControl mockControl;
+    @UnderTest private GenericBookTakeItemController underTest;
+    @MockControl private IMocksControl mockControl;
     private BookInformations info;
-    private HttpServletRequest request;
-    private HttpSession session;
-    private BeanFactory beanFactory;
-    private HttpSessionWrapper sessionWrapper;
-    private GatheredLostItem glItem;
-    private PlayerUser playerUser;
-    private Paragraph paragraph;
-    private Logger logger;
-    private BookContentInitializer contentInitializer;
-    private Character character;
-    private CharacterHandler characterHandler;
-    private CharacterItemHandler itemHandler;
-    private ItemInteractionRecorder itemInteractionRecorder;
+    @Mock private HttpServletRequest request;
+    @Mock private HttpSession session;
+    @Inject private BeanFactory beanFactory;
+    @Mock private HttpSessionWrapper sessionWrapper;
+    @Mock private GatheredLostItem glItem;
+    @Mock private PlayerUser playerUser;
+    @Mock private Paragraph paragraph;
+    @Inject private Logger logger;
+    @Inject private BookContentInitializer contentInitializer;
+    @Instance private Character character;
+    @Instance private CharacterHandler characterHandler;
+    @Mock private CharacterItemHandler itemHandler;
+    @Inject private ItemInteractionRecorder itemInteractionRecorder;
+    @Instance private TakeItemData takeData;
+    @Instance private ReplaceItemData replaceData;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        request = mockControl.createMock(HttpServletRequest.class);
-        session = mockControl.createMock(HttpSession.class);
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        sessionWrapper = mockControl.createMock(HttpSessionWrapper.class);
-        glItem = mockControl.createMock(GatheredLostItem.class);
-        playerUser = mockControl.createMock(PlayerUser.class);
-        paragraph = mockControl.createMock(Paragraph.class);
-        logger = mockControl.createMock(Logger.class);
-        contentInitializer = mockControl.createMock(BookContentInitializer.class);
-        character = new Character();
-        characterHandler = new CharacterHandler();
-        itemHandler = mockControl.createMock(CharacterItemHandler.class);
         characterHandler.setItemHandler(itemHandler);
-        itemInteractionRecorder = mockControl.createMock(ItemInteractionRecorder.class);
 
         info = new BookInformations(1L);
         info.setCharacterHandler(characterHandler);
+        Whitebox.setInternalState(underTest, "info", info);
+
+        takeData.setAmount(AMOUNT);
+        takeData.setItemId(ITEM_ID);
+
+        replaceData.setLoseId("1001");
+        replaceData.setGatherId("1002");
+        replaceData.setAmount(1);
     }
 
     @BeforeMethod
     public void setUpMethod() {
-        underTest = new GenericBookTakeItemController();
-        Whitebox.setInternalState(underTest, "logger", logger);
-        Whitebox.setInternalState(underTest, "contentInitializer", contentInitializer);
-        underTest.setBeanFactory(beanFactory);
-        Whitebox.setInternalState(underTest, "itemInteractionRecorder", itemInteractionRecorder);
-        Whitebox.setInternalState(underTest, "info", info);
         mockControl.reset();
     }
 
@@ -106,9 +100,9 @@ public class GenericBookTakeItemControllerPositiveTest {
         itemInteractionRecorder.recordItemTaking(sessionWrapper, ITEM_ID);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.handleItemTake(request, ITEM_ID, AMOUNT);
+        final int returned = underTest.handleItemTake(request, takeData);
         // THEN
-        Assert.assertEquals(returned, String.valueOf(AMOUNT));
+        Assert.assertEquals(returned, AMOUNT);
     }
 
     public void testHandleItemTakeWhenNoItemsAreTakenShouldNotRemoveAnyItems() {
@@ -129,9 +123,9 @@ public class GenericBookTakeItemControllerPositiveTest {
         itemInteractionRecorder.recordItemTaking(sessionWrapper, ITEM_ID);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.handleItemTake(request, ITEM_ID, AMOUNT);
+        final int returned = underTest.handleItemTake(request, takeData);
         // THEN
-        Assert.assertEquals(returned, String.valueOf(0));
+        Assert.assertEquals(returned, 0);
     }
 
     public void testHandleItemTakeWhenSomeItemsTakenShouldRemoveOnlyTakenItems() {
@@ -154,9 +148,9 @@ public class GenericBookTakeItemControllerPositiveTest {
         itemInteractionRecorder.recordItemTaking(sessionWrapper, ITEM_ID);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.handleItemTake(request, ITEM_ID, AMOUNT);
+        final int returned = underTest.handleItemTake(request, takeData);
         // THEN
-        Assert.assertEquals(returned, String.valueOf(TAKEN_AMOUNT));
+        Assert.assertEquals(returned, TAKEN_AMOUNT);
     }
 
     public void testHandleItemReplaceWhenCharacterDoesNotHaveReplacementItemShouldReturnZero() {
@@ -171,7 +165,7 @@ public class GenericBookTakeItemControllerPositiveTest {
         logger.debug("User doesn't have item {}.", "1001");
         mockControl.replay();
         // WHEN
-        final String returned = underTest.handleItemReplace(request, "1001", "1002", 1);
+        final String returned = underTest.handleItemReplace(request, replaceData);
         // THEN
         Assert.assertEquals(returned, "0");
     }
@@ -201,7 +195,7 @@ public class GenericBookTakeItemControllerPositiveTest {
 
         mockControl.replay();
         // WHEN
-        final String returned = underTest.handleItemReplace(request, "1001", "1002", 1);
+        final String returned = underTest.handleItemReplace(request, replaceData);
         // THEN
         Assert.assertEquals(returned, "1");
     }

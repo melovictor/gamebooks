@@ -12,17 +12,17 @@ import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.TakePurchaseItemData;
 import hu.zagor.gamebooks.mvc.book.inventory.controller.GenericBookTakeItemController;
 import hu.zagor.gamebooks.mvc.book.inventory.service.MarketHandler;
-
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -31,8 +31,28 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 public class FfBookTakeItemController extends GenericBookTakeItemController {
 
-    @Autowired
-    private MarketHandler marketHandler;
+    @Autowired private MarketHandler marketHandler;
+
+    /**
+     * Method for handling the acquiring of items through the displayed text.
+     * @param request the http request
+     * @param data the {@link TakePurchaseItemData} containing the incoming parameters
+     * @return the amount of items successfully taken
+     */
+    @RequestMapping(value = PageAddresses.BOOK_PURCHASE_ITEM, consumes = "application/json", method = RequestMethod.POST)
+    @ResponseBody
+    public int handleItemTake(final HttpServletRequest request, @RequestBody final TakePurchaseItemData data) {
+        Assert.isTrue(data.getPrice() == 0 || data.getAmount() == 1, "When the item to take has a price, only a single piece of it can be taken.");
+        final FfCharacter character = (FfCharacter) getWrapper(request).getCharacter();
+        int takeItemResult;
+        if (data.getPrice() > 0 && character.getGold() < data.getPrice()) {
+            takeItemResult = 0;
+        } else {
+            takeItemResult = super.handleItemTake(request, data);
+            character.setGold(character.getGold() - takeItemResult * data.getPrice());
+        }
+        return takeItemResult;
+    }
 
     @Override
     protected int doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {

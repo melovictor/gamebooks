@@ -21,16 +21,14 @@ import hu.zagor.gamebooks.raw.mvc.book.controller.CharacterPageDisplayingControl
 import hu.zagor.gamebooks.raw.mvc.book.section.domain.UserInputResponseForm;
 import hu.zagor.gamebooks.recording.NavigationRecorder;
 import hu.zagor.gamebooks.recording.UserInteractionRecorder;
-
 import java.io.UnsupportedEncodingException;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Generic section selection controller for books with no rule system.
@@ -38,10 +36,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 public class RawBookSectionController extends GenericBookSectionController implements CharacterPageDisplayingController {
 
-    @Autowired
-    private NavigationRecorder navigationRecorder;
-    @Autowired
-    private UserInteractionRecorder interactionRecorder;
+    @Autowired private NavigationRecorder navigationRecorder;
+    @Autowired private UserInteractionRecorder interactionRecorder;
 
     private final SectionHandlingService sectionHandlingService;
 
@@ -89,7 +85,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
      * @param sectionIdentifier the requested section's identifier
      * @return the book page's name
      */
-    @RequestMapping(value = "{position}")
+    @RequestMapping(value = "{position}", method = RequestMethod.GET)
     public String handleSection(final Model model, final HttpServletRequest request, @PathVariable("position") final String sectionIdentifier) {
         getLogger().debug("Handling choice request '{}' for book.", sectionIdentifier);
 
@@ -218,8 +214,8 @@ public class RawBookSectionController extends GenericBookSectionController imple
 
     private String processSectionChange(final Model model, final HttpSessionWrapper wrapper, final Paragraph paragraph, final Integer position) {
         final BookInformations info = getInfo();
-        final ResolvationData resolvationData = DefaultResolvationDataBuilder.builder().withRootData(paragraph.getData()).withBookInformations(info)
-            .usingWrapper(wrapper).withPosition(position).build();
+        final ResolvationData resolvationData = DefaultResolvationDataBuilder.builder().withRootData(paragraph.getData()).withBookInformations(info).usingWrapper(wrapper)
+            .withPosition(position).build();
 
         info.getParagraphResolver().resolve(resolvationData, paragraph);
         paragraph.calculateValidEvents();

@@ -65,25 +65,38 @@ var inventory = (function() {
 			amount = 1;
 		}
 		var loseId = $(this).data("item-id");
+		var data = {
+				loseId : loseId,
+				gatherId : gatherId,
+				amount : amount
+		}
 		
 		inventoryAnimationOngoing = false;
-		takeItemCall("replace/" + loseId + "/" + gatherId + "/" + amount, $itemToGather, amount);
+		takeItemCall("replace", $itemToGather, amount, data);
 		$itemToGather = null;
 	}
 	
-	function takeItem() {
-		var that = $(this);
+	function takeItem(event, url, baseData) {
+		var that = $(event.target);
 		var id = that.data("id");
 		var amount = that.data("amount");
 		if (!amount) {
 			amount = 1;
 		}
+		var data = baseData ? baseData : {};
+		data.itemId = id;
+		data.amount = amount;
 
-		takeItemCall("take/" + id + "/" + amount, that, amount);
+		takeItemCall(url ? url : "take", that, amount, data);
 	}
-	function takeItemCall(url, that, amount) {
+	function takeItemCall(url, that, amount, data) {
 		$.ajax({
-			url : url
+			url : url,
+			data : JSON.stringify(data),
+			method : "POST",
+			contentType : "application/json; charset=utf-8",
+			accept : "application/json; charset=utf-8",
+			dataType : "json"
 		}).done(function(totalTaken) {
 			if (amount == totalTaken) {
 				unbind(that);
@@ -108,8 +121,7 @@ var inventory = (function() {
 		}
 	}
 	function unbind(elem) {
-		elem.removeClass("takeItem");
-		elem.removeClass("replaceItem");
+		elem.removeAttr("class");
 		elem.unbind("click");
 	}
 

@@ -19,9 +19,9 @@ var battle = (function() {
 
 
 var ff = (function() {
-	function sendGenerationRequest() {
+	function sendGenerationRequest(event, baseData) {
 		var $defPotion = $("#ffDefaultPotion");
-		var data = {};
+		var data = baseData ? baseData : {};
 		if ($defPotion) {
 			$defPotion.attr("disabled", "disabled");
 			data.potion = $defPotion.val();
@@ -39,11 +39,12 @@ var ff = (function() {
 					$("#" + key).html(value);
 				});
 				$("#choiceWrapper").show();
-				$("[data-generator-button='ff'], .ffDice").hide();
+				$("[data-generator-button], .ffDice").hide();
 				inventory.loadInventory();
 				$("[data-step='1']").trigger("stepFinished", data);
 			}
 		});
+		$("[data-generator-button]").attr("disabled", "disabled");
 	}
 
 	function attributeTest() {
@@ -74,6 +75,22 @@ var ff = (function() {
 		attack : attack,
 		useBeforeFight : useBeforeFight,
 		flee : flee
+	};
+})();
+
+var ffInventory = (function() {
+	function purchaseItem(event) {
+		var gold = parseInt($("[data-attribute-gold]").text());
+		var price = parseInt($(this).data("price"));
+		if (gold < price) {
+			// TODO: give feedback to user
+		} else {
+			inventory.takeItem(event, "purchase", { price : price });
+		}
+	}
+
+	return {
+		purchaseItem : purchaseItem
 	};
 })();
 
@@ -191,6 +208,7 @@ $(function() {
 		.on("click", "#marketForSale [data-id]:not([data-stock='0'])", market.buy)
 		.on("click", "#marketForPurchase [data-id]:not([data-stock='0'])", market.sell)
 		.on("click", "[data-market-close]", market.close);
+	$(".purchaseItem").on("click", ffInventory.purchaseItem);
 	
 	battle.init();
 });

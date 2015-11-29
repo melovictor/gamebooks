@@ -8,13 +8,11 @@ import hu.zagor.gamebooks.content.commandlist.CommandList;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.content.reward.Reward;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -27,7 +25,7 @@ import org.springframework.util.Assert;
 public class ParagraphData extends EscapingData implements TrueCloneable, BeanFactoryAware {
 
     private static final Pattern TAKEN_ITEM_PATTERN = Pattern
-        .compile("(<span(?=[^>]+class=\"(?:take|replace)Item\")(?=[^>]+data-id=\"([^\"]+)\")(?=[^>]+data-amount=\"(\\d+)\")[^>]+>)([^<]+)</span>");
+        .compile("(<span(?=[^>]+class=\"(?:take|replace|purchase)Item\")(?=[^>]+data-id=\"([^\"]+)\")(?=[^>]+data-amount=\"(\\d+)\")[^>]+>)([^<]+)</span>");
 
     private static final int LINK_OPENING_TAG_GROUP = 1;
     private static final int ITEM_ID_GROUP = 2;
@@ -36,8 +34,7 @@ public class ParagraphData extends EscapingData implements TrueCloneable, BeanFa
 
     private static final String DATA_AMOUNT_FORMAT = "data-amount=\"%d\"";
 
-    @LogInject
-    private Logger logger;
+    @LogInject private Logger logger;
     private transient ChoicePositionCounter positionCounter;
     private String text = "";
     private ChoiceSet choices;
