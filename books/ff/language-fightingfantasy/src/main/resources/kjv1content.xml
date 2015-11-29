@@ -1,11 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
 <content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd">
   <p id="back_cover">
-    <text>[p][/p]</text>
-    <next id="background"/>
+    <text>
+        [p]A Királyok Koronáját keresed, amelyet Mampang fővarázslója ellopott hazád, a virágzó Analand uralkodójától, és a varázskorona nélkül pusztulás fenyegeti országodat és népedet. Utad során először a Shamutanti dombok közé érkezel, ahol gonosz teremtmények, vérszomjas szörnyek lesnek rád arra várva, hogy csapdájukba ess. Vajon képes leszel-e arra, hogy biztonságban átkelj a dombokon, avagy belebuksz küldetésedbe…?[/p]
+    </text>
+    <next id="generate" />
   </p>
-  <p id="background" display="">
-    <text>[p][/p]</text>
+  <p id="generate" display="Karakter létrehozása">
+    <text>
+        [p]
+            Kaszt:
+            [input type="radio" name="caste" value="0" checked="checked" id="warriorCaste"] [label for="warriorCaste"]Harcos[/label]
+            [input type="radio" name="caste" value="1" id="wizardCaste"] [label for="wizardCaste"]Varázsló[/label]
+        [/p]
+        [input type="hidden" id="skillValue0" value="6-ot" /]
+        [input type="hidden" id="skillValue1" value="4-et" /]
+        [p][span class="ffAttribute"]Ügyesség[/span]: [span id="ffSkill"]dobj egy kockával és adj [span id="skillAddition"]6-ot[/span] a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Életerő[/span]: [span id="ffStamina"]dobj két kockával és adj 12-t a dobott számhoz[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Szerencse[/span]: [span id="ffLuck"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [button data-generator-button="sor"]Karakter létrehozása[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="A Királyok Koronájának legendája">
+    <text>
+        [p]Sok-sok évszázaddal ezelőtt, a Sötétség Korszakában, amikor a világnak szinte egyetlen pontját sem fedezték még fel, apró civilizációs fészkek léteztek csupán, melyeknek saját kultúrájuk és fajuk volt. Az egyik ilyen régió Kakhabad volt, egy sörét vidék a világ végén.[/p]
+        [p]Bár számos hadvezér megkísérelte, Kakhabadot soha senkinek nem sikerült kormányoznia. A Zanzunu Csúcsokon túli civilizáltabb területekről elűzött gonosz teremtmények tömkelege szivárgott be fokozatosan Kakhabadba, és ez a vidék csakhamar elnyerte a Világvégi Féregverem elnevezést.[/p]
+        [p]Amikor Chalanna, Femphrey nagy reformere megtalálta a Királyok Koronáját, a már felfedezett többi világrészen rend és civilizáció lett úrrá. E korona segítségével Chalanna lett a keleti földrész legnagyobb birodalmának uralkodója. Ennek a varázskoronának misztikus hatalma volt, birtokosát természetfölötti kormányzói és igazságtevői hatalommal ruházta föl. Chalanna azonban nem hódítani akart, hanem Femphreyvel szövetséges, békés városállamokat kívánt létrehozni. Ezért aztán mesés Koronáját bölcsen a szomszédos királyságok uralkodóinak adta át sorban, és annak segítségével ezek a földek is egytől egyig felvirágoztak.[/p]
+        [p]Fontos tervet dolgozott ki. Minden uralkodó négy évre kapja meg a Királyok Koronáját, ezalatt rendet teremt országában, és csatlakozik Femphrey szövetségeseinek egyre nagyobb táborához. A Korona segítségével eleddig Vaskövesd, Lendleland, Gallantana és Brice királyságai virágoztak fel, szinte egyik pillanatról a másikra. Ismeretlen jelenség volt e vidékeken a háborúk minden neme.[/p]
+        [p]Így került a Korona színpompás ceremónia közepette Analand királyának kezébe, és ettől a naptól kezdve Analand óriási fejlődésnek indult. Senki sem tudta, miként képes a Királyok Koronája ily magasra emelni egy nemzetet. Némelyek ezt isteni erőknek tulajdonították, mások az ész erejét emlegették. Egy dolog azonban nem volt kétséges: az eredmény. Minden jól ment Analandban, mígnem leszállt a Fekete Hold éjszakája.[/p]
+        [p]Elsőnek a király vette észre, hogy a Korona eltűnt. Azon a csillagtalan éjszakán a Koronát Xameni Madáremberek ragadták fel, és Kakhabad zord, törvényt nem ismerő vidékein ár Mampang felé röpítették. Baklandból jött a hír, hogy a Koronát Mampang fővarázslójának vitték el, aki arra vágyott, hogy ő lehessen Kakhabad uralkodója. Bár Kakhabad veszélyes vidék volt, ez a hit egymagában sokkal nagyobb veszélyt jelentett a környező királyságokra. Kakhabadban nem léteztek törvények, hadsereg sem volt, az országot belső bajai, viszályai teljesen lefoglalták. A Királyok Koronájának segítségével Kakhabad a Femphreyi Szövetség valamennyi tagjának veszedelmes ellenségévé válhatott volna.[/p]
+        [p]A Királyok Koronájának eltűnése után Analand elvesztette mindazokat a javakat és jótéteményeket, melyeket a korona biztosított neki a két év alatt. A jog, a rend és az erkölcs hanyatlásnak indult. A királyban egyre inkább megrendült népe bizalma. A szomszédos területekről kíváncsian lesték, mi történik a határaikon túli vidékkel. Még olyan hangok is hallatszottak, hogy támadják meg Analandot.[/p]
+        [p]Már csak egyetlenegy remény maradt. Valakinek - minthogy a hadsereg soha nem lesz képes a feladat teljesítésére - el kell mennie Mampangba, és vissza kell szereznie a Királyok Koronáját. Csak akkor szűnik meg az Analandot sújtó árok, ha ez az illető épségben visszatér a Koronával. Önként jelentkeztél erre a feladatra, küldetésed világos. El kell jutnod Kakhabadba, Mampang erődjébe, és meg kell találnod a Koronát![/p]
+    </text>
+    <gatherItem id="defWpn" />
+    <gatherItem id="1001" />
+    <gatherItem id="2000" amount="2" />
+    <gatherItem id="4000" />
+    <add amount="20" to="gold" />
     <next id="1"></next>
   </p>
+  <p id="1">
+    <text>
+        [p class="inlineImage"][img src="resources/sor1/1.jpg" /][/p]
+        [p]Pirkadatkor ébredsz. Felöltözöl, majd kenyeret és kecsketejet reggelizel, és összeszedelődzködsz. Kint az Előretolt Helyőrség tagjai nyüzsögnek, a fehérnép mosni megy, meg az őrök ebédjét elkészíteni a napi őrszolgálat végére.[/p]
+        [p]Kandi szemek figyelnek, amint kibújsz kunyhódból és elindulsz a Shamutanti Fal felé. A határőrség emberei tisztában vannak küldetéseddel, és jóindulatú mosollyal arcukon, tisztes távolból, kisebb csapatba verődve kísérnek.[/p]
+        [p]Feltárul előtted a Cantopani Kapu. Ez a kapu - melyet állandóan szemmel tartanak a Felderítő harcosok, akiket teleszkopikus látásuk okán helyeztek erre a posztra - az utolsó Analand és Kakhabad között. Még egyszer átvizsgálod a hátizsákodat. Miután meggyőződtél róla, hogy semmid sem hiányzik, biccentesz a Felderítő őrmester felé, aki még egyszer utoljára kiles a kapu tetején lévő kémlelőn, majd jelzi, hogy szabad az út. Az őrmester parancsot ad, hogy húzzák el a tolózárat. A kapu kinyílik előtted, és megpillantod a Shamutanti dombok lábát, utad első állomását.[/p]
+        [p]A Felderítő őrmester odapattan hozzád, és kezet ráz veled. - Nem kívánok neked jó utat, hiszen az előtted álló út minden lesz, csak jó nem. Kakhabad gonosz, elátkozott hely. De ezt te magad is tudod. Indulj el ezen a kis ösvényen Cantopani felé, mely kereskedők - főleg csalók és tolvajok - lakta település, és körülbelül egy óra múlva ott is leszel. Cantopaniból három út vezet Birritantin át Kharéba, a Jabaji folyó melletti kikötővárosba. Kharét elhagyva keresztül kell menned az ismeretlen Bakföldön. Az a hír járja, hogy a Bakföldön a nappalokat és az éjszakákat nem a nap szabályozza, hanem valamiféle természetfeletti erők; azt is vésd jól az eszedbe, hogy Kharét elhagyva minden lépésedet figyelni fogják![/p]
+        [p]Figyelmeztetése nem lelkesít túlságosan, de így folytatja:[/p]
+        [p]- Figyelemmel kísértem előkészületeidet, és meg kell hagyni, valóban rátermett bajnok vagy. Szerencse és siker kísérjen utadon. Analand szerető népével együtt gondolatban veled leszek. Libra istennő segítségével tán sikerül majd megszabadítani királyságunkat a bennünket gyötrő átoktól és a végső összeomlástól.[/p]
+        [p]Kezet rázol vele, megköszönöd jókívánságait, és elindulsz a kapu felé. Mindenre elszántan lépsz át rajta. A téged figyelő nép arcáról az irántad érzett bizalom és reménykedés olvasható le. Integetsz nekik, majd megfordulsz, és elindulsz a dombok felé. A hajnali levegő friss, és a felkelő nap sugarai gyönyörűre festik a környező dombokat, melyek mögött ott rejtőzik a gonosz birodalma.[/p]
+        [p]Határozott léptekkel vágsz neki az ösvénynek. Kalandod elkezdődött![/p]
+    </text>
+    <next id="178"></next>
+  </p>
+  <p id="178">
+    <text>
+        [p]Az ösvény vad cserjés közt kanyarog. A vidék teljesen elhagyatott, és a síri csöndet néha-néha csupán egy-egy varjú károgása töri meg. A madarak meg-megállnak fölötted a levegőben, mintha csak ellenőriznének utadon, s jelenlétük szorongással tölt el. Egy kisebb dombon áthaladva lenézel, és látod, hogy az ösvény a Shamutanti dombok lábánál egy kicsiny településhez vezet. Miközben a falucska közelébe érsz, a hangokból és zajokból arra következtet, hogy lakói otthon vannak. Minthogy az ösvény keresztülvezet a falun, nincs más választásod, arra kell átmenned.[/p]
+        [p]Ahogy elhaladsz a zsúptetős, kerek agyagviskók között, a sötét ajtónyílásokból szemek merednek rád, és lesik minden mozdulatodat. Az egyik kunyhóból hirtelen egy falusi férfi jön oda hozzád. Vagy másfél méter magas, zömök, vállas ember, csupán egy szakadt nadrág van rajta. Tekintete vad, hosszú vörös haja és szakálla csupa kóc. - Megállj, idegen! - kiáltja. - Mit keresel itt Cantopaniban? - Mit felelsz neki?[/p]
+    </text>
+    <next id="264">Azt, hogy kereskedő vagy?</next>
+    <next id="33">Megkéred, hogy igazítson útba?</next>
+    <next id="198">Azt, hogy éhes vagy, és Élelemre van szükséged?</next>
+  </p>
+  <p id="33">
+    <text>
+        [p]Közlöd vele, hogy Kharéba igyekszel és szeretnéd, ha útba igazítana. - Én még sohasem hagytam el a falut - mondja a férfi -, de két út is vezet arra. 2 Aranytallérért meghallhatod a tanácsomat.[/p]
+    </text>
+    <next id="225">Ha elfogadod az ajánlatát</next>
+    <next id="81">Ha nem fogadod el az ajánlatát és továbbmész</next>
+  </p>
+  <p id="225">
+    <text>
+        [p]A pénzt elteszi az övén lévő erszénybe. - A lenti út az Elvinek Völgyén át vezet - mondja -, és ha nem vagy járatos az Elvinek világában, akik agyafúrt varázslók, jobb, ha nem arra mész tovább. A fönti út a Schanker bányák mellett visz a dombokon át. - Felnevet, majd hozzáteszi: - De légy résen, ha ezt az utat választod! Menj egyenesen Kristatantiba. Egy-két nap alatt odaérsz, mert a Shamutanti dombok falvaiban, tisztelet a kivételnek, nem nézik jó szemmel az idegeneket. Kristatantiban legalább találsz majd szállást és élelmet. Utad során azonban őrizkedj a Fekete Lótusztól - édes aromája mérgező! - Megköszönöd a tanácsát, és továbbmész.[/p]
+    </text>
+    <add amount="-2" to="gold" />
+    <next id="81"></next>
+  </p>
+  <p id="198">
+    <text>
+        [p]Előremutat és közli, hogy kissé távolabb, jobb kéz felől lesz egy fogadó.[/p]
+        [p]Rájössz a játék egyik alapszabályára, amelyet egyébként a saját károdon tudnál csak megtanulni. Ez a kaland napokra van felosztva, és minden egyes napon egy adag Élelmet kell elfogyasztanod, máskülönben ÉLETERŐ pontokat fogsz veszteni a hiányos táplálkozás miatt. Választhatsz majd, hogy a saját hátizsákodban lévő Élelmiszeredből fogyasztasz-e, vagy a helyi fogadókban veszel Élelmet a nap folyamán. Ha egy napig Élelem nélkül maradsz, szenvedni fogsz. Ha az éj leszáll, választhatsz: vagy lefekszel aludni, vagy folytatod az utadat. Ha nem alszol, szintén ÉLETERŐ pontokat fogsz veszteni, mert másnap fáradt leszel, viszont ha alszol, ÉLETERŐD feltöltődik.[/p]
+        [p]Mindenképpen nagyon körültekintően kell majd megválasztanod táplálkozásod helyét és idejét, mert előfordul majd, hogy egy látszólag biztonságos hely, melyet erre a célra választasz ki, veszedelmet rejt![/p]
+        [p]Továbbmész, amerre a falusi irányított.[/p]
+    </text>
+    <next id="257"></next>
+  </p>
+  <p id="264">
+    <text>
+        [p]Mordul egyet, majd int, hogy kövesd, és átvezet a falu egy nagy kunyhóba. A kunyhóban, amely valami raktárhelyiség lehet, még a kísérődnél is pufókabb ember ül egy asztal mögött. A falusi közli a dagival, hogy üzletet szeretnél vele kötni, majd otthagy a kövér emberrel, aki hellyel kínál. A kereskedő a lenti tárgyakat kínálja eladásra.[/p]
+    </text>
+    <itemCheck type="section" id="107">
+      <dontHave>
+        <next id="107" pos="1">Gyógyfűfőzet</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="214">
+      <dontHave>
+        <next id="214" pos="2">Éles pallos</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="22">
+      <dontHave>
+        <next id="22" pos="3">Furulya</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="141">
+      <dontHave>
+        <next id="141" pos="4">Balta, különös jelekkel</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="5">
+      <dontHave>
+        <next id="5" pos="5">Egy zsák fog</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="60">
+      <dontHave>
+        <next id="60" pos="6">Ékszer</next>
+      </dontHave>
+    </itemCheck>
+    <next id="163" pos="7">Ha a fentiek közül egyik sem érdekel</next>
+  </p>
+  <p id="107">
+    <text>
+        [p]Az italért 4 Aranytallért kér tőled, és nem enged az árból. Ha meg akarod venni tőle, fizesd ki a kért összeget, és tedd el a [span class="purchaseItem" data-id="3001" data-amount="1" data-price="4"]palackot[/span]. Ha akarod, el is utasíthatod az ajánlatát.[/p]
+    </text>
+    <next id="280"></next>
+  </p>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </content>
