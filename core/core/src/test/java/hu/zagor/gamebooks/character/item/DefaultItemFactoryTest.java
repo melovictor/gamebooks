@@ -8,9 +8,9 @@ import hu.zagor.gamebooks.exception.InvalidItemException;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
+import org.slf4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -25,19 +25,17 @@ public class DefaultItemFactoryTest {
 
     private static final String ITEM_ID = "3001";
     private DefaultItemFactory underTest;
-    @MockControl
-    private IMocksControl mockControl;
-    @Mock
-    private BookItemStorage bookItemStorage;
-    @Mock
-    private Item item;
+    @MockControl private IMocksControl mockControl;
+    @Mock private BookItemStorage bookItemStorage;
+    @Mock private Item item;
     private BookInformations info;
-    @Inject
-    private BookContentInitializer contentInitializer;
+    @Inject private BookContentInitializer contentInitializer;
+    @Inject private Logger logger;
 
     @UnderTest
     public DefaultItemFactory underTest() {
         info = new BookInformations(21L);
+        info.setTitle("Book title");
         return new DefaultItemFactory(info);
     }
 
@@ -75,6 +73,7 @@ public class DefaultItemFactoryTest {
 
     public void testResolveItemWhenItemIdIsSetProperlyShouldCallStorage() {
         // GIVEN
+        logger.debug("Loading item {} from storage for book {} ({}).", ITEM_ID, "Book title", 21L);
         expect(contentInitializer.getItemStorage(info)).andReturn(bookItemStorage);
         expect(bookItemStorage.getItem(ITEM_ID)).andReturn(item);
         mockControl.replay();
@@ -87,6 +86,7 @@ public class DefaultItemFactoryTest {
     @Test(expectedExceptions = InvalidItemException.class)
     public void testResolveItemWhenResolvedItemIsNullShouldThrowException() {
         // GIVEN
+        logger.debug("Loading item {} from storage for book {} ({}).", ITEM_ID, "Book title", 21L);
         expect(contentInitializer.getItemStorage(info)).andReturn(bookItemStorage);
         expect(bookItemStorage.getItem(ITEM_ID)).andReturn(null);
         mockControl.replay();

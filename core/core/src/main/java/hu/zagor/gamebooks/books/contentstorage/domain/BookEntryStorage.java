@@ -6,11 +6,9 @@ import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.TrueCloneable;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import org.slf4j.Logger;
 import org.springframework.util.Assert;
 
@@ -20,8 +18,7 @@ import org.springframework.util.Assert;
  */
 public class BookEntryStorage implements BookItemStorage {
 
-    @LogInject
-    private Logger logger;
+    @LogInject private Logger logger;
     private long lastAccess = System.currentTimeMillis();
 
     private final long bookId;
@@ -67,6 +64,7 @@ public class BookEntryStorage implements BookItemStorage {
     @SuppressWarnings("unchecked")
     private <T extends TrueCloneable> T getObject(final String id, final String idName, final String name, final Map<String, T> collection) {
         Assert.notNull(id, "Parameter '" + idName + "' cannot be null!");
+        logger.debug("Fetching {} {} from book {}.", name, id, bookId);
         lastAccess = System.currentTimeMillis();
         T result = null;
         if (collection != null) {
@@ -74,10 +72,10 @@ public class BookEntryStorage implements BookItemStorage {
                 try {
                     result = (T) collection.get(id).clone();
                 } catch (final CloneNotSupportedException e) {
-                    logger.error("Failed to clone {} '{}' from book '{}'!", name, id, String.valueOf(bookId));
+                    logger.error("Failed to clone {} '{}' from book '{}'!", name, id, bookId);
                 }
             } else {
-                logger.error("Cannot find {} with id '{}' in book '{}'!", name, id, String.valueOf(bookId));
+                logger.error("Cannot find {} with id '{}' in book '{}'!", name, id, bookId);
             }
         }
         return result;

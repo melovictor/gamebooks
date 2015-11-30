@@ -7,22 +7,20 @@ import hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithEnum;
 import hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt;
 import hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithList;
 import hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithNull;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.xml.stream.XMLStreamException;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
+import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -32,24 +30,11 @@ import org.testng.annotations.Test;
  */
 @Test
 public class DefaultXmlGameStateSaverTest {
-
-    private DefaultXmlGameStateSaver underTest;
-    private Logger logger;
-    private IMocksControl mockControl;
-    private BeanFactory beanFactory;
-    private DefaultXmlNodeWriter writer;
-
-    @BeforeClass
-    public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        logger = mockControl.createMock(Logger.class);
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        writer = mockControl.createMock(DefaultXmlNodeWriter.class);
-
-        underTest = new DefaultXmlGameStateSaver();
-        Whitebox.setInternalState(underTest, "logger", logger);
-        underTest.setBeanFactory(beanFactory);
-    }
+    @UnderTest private DefaultXmlGameStateSaver underTest;
+    @Inject private Logger logger;
+    @MockControl private IMocksControl mockControl;
+    @Inject private BeanFactory beanFactory;
+    @Mock private DefaultXmlNodeWriter writer;
 
     @BeforeMethod
     public void setUpMethod() {
@@ -105,9 +90,9 @@ public class DefaultXmlGameStateSaverTest {
 
         writer.openNode("value");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt");
-        logger.trace("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt");
+        logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt");
 
-        logger.trace("Saving field 'intField' with value '1534'.");
+        logger.debug("Saving field 'intField' with value '1534'.");
         writer.createSimpleNode("intField", "1534", "java.lang.Integer");
         writer.closeNode("value");
 
@@ -139,8 +124,8 @@ public class DefaultXmlGameStateSaverTest {
 
         writer.openNode("value");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithList");
-        logger.trace("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithList");
-        logger.trace("Saving field 'elements' with value '[apple, pear]'.");
+        logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithList");
+        logger.debug("Saving field 'elements' with value '[apple, pear]'.");
 
         writer.openNode("elements");
         writer.addAttribute("class", "java.util.ArrayList");
@@ -178,9 +163,9 @@ public class DefaultXmlGameStateSaverTest {
 
         writer.openNode("value");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithEnum");
-        logger.trace("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithEnum");
+        logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithEnum");
 
-        logger.trace("Saving field 'enumField' with value 'KIWI'.");
+        logger.debug("Saving field 'enumField' with value 'KIWI'.");
 
         writer.openNode("enumField");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleEnum");
@@ -217,9 +202,9 @@ public class DefaultXmlGameStateSaverTest {
 
         writer.openNode("value");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithNull");
-        logger.trace("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithNull");
+        logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithNull");
 
-        logger.trace("Saving field 'nullField' with value 'null'.");
+        logger.debug("Saving field 'nullField' with value 'null'.");
 
         writer.createSimpleNode("nullField");
 
@@ -259,8 +244,8 @@ public class DefaultXmlGameStateSaverTest {
 
         writer.openNode("mainObject");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper");
-        logger.trace("Saving class hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper");
-        logger.trace(startsWith("Saving field 'element' with value '{"));
+        logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper");
+        logger.debug(startsWith("Saving field 'element' with value '{"));
 
         writer.openNode("element");
         writer.addAttribute("class", "java.util.HashMap");

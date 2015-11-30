@@ -8,12 +8,11 @@ import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import java.util.Iterator;
 import java.util.List;
-
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
+import org.slf4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -29,17 +28,15 @@ public class DefaultCharacterItemHandlerPositiveTest {
 
     private static final String ITEM_ID = "3001";
     private static final String ITEM_ID_B = "3002";
-    @UnderTest
-    private DefaultCharacterItemHandler underTest;
-    @MockControl
-    private IMocksControl mockControl;
-    @Inject
-    private ItemFactory itemFactory;
+    @UnderTest private DefaultCharacterItemHandler underTest;
+    @MockControl private IMocksControl mockControl;
+    @Inject private ItemFactory itemFactory;
     private Character character;
     private Item nonEquippableItem;
     private Item nonEquippableItemB;
     private Item equippableEquippedItem;
     private Item equippableNonEquippedItem;
+    @Inject private Logger logger;
 
     @BeforeClass
     public void setUpClass() {
@@ -59,6 +56,7 @@ public class DefaultCharacterItemHandlerPositiveTest {
 
     public void testHasItemWhenItemIsNotInEquipmentShouldReturnFalse() {
         // GIVEN
+        logger.debug("Resolving item {} for addition.", ITEM_ID);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(nonEquippableItem);
         mockControl.replay();
         // WHEN
@@ -71,12 +69,13 @@ public class DefaultCharacterItemHandlerPositiveTest {
     public void testSetItemFactoryWhenItemFactoryIsAlreadySetShouldReplaceIt() {
         // GIVEN
         final ItemFactory factory = mockControl.createMock(ItemFactory.class);
-        underTest.setItemFactory(factory);
+        Whitebox.setInternalState(underTest, "itemFactory", factory);
         mockControl.replay();
         // WHEN
         final ItemFactory returned = Whitebox.getInternalState(underTest, "itemFactory");
         // THEN
         Assert.assertSame(returned, factory);
+        Whitebox.setInternalState(underTest, "itemFactory", itemFactory);
     }
 
     public void testHasEquippedItemWhenIdIsNotAvailableShouldReturnFalse() {
@@ -90,7 +89,9 @@ public class DefaultCharacterItemHandlerPositiveTest {
 
     public void testHasEquippedItemWhenItemIsEquippableAndNotEquippedShouldReturnFalse() {
         // GIVEN
+        logger.debug("Resolving item {} for addition.", ITEM_ID_B);
         expect(itemFactory.resolveItem(ITEM_ID_B)).andReturn(nonEquippableItemB);
+        logger.debug("Resolving item {} for addition.", ITEM_ID);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(equippableNonEquippedItem);
         mockControl.replay();
         // WHEN
@@ -103,6 +104,7 @@ public class DefaultCharacterItemHandlerPositiveTest {
 
     public void testHasEquippedItemWhenItemIsEquippableAndIsEquippedShouldReturnTrue() {
         // GIVEN
+        logger.debug("Resolving item {} for addition.", ITEM_ID);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(equippableEquippedItem);
         mockControl.replay();
         // WHEN
@@ -114,6 +116,7 @@ public class DefaultCharacterItemHandlerPositiveTest {
 
     public void testHasEquippedItemWhenItemIsNotEquippableShouldReturnFalse() {
         // GIVEN
+        logger.debug("Resolving item {} for addition.", ITEM_ID);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(nonEquippableItem);
         mockControl.replay();
         // WHEN
@@ -125,6 +128,7 @@ public class DefaultCharacterItemHandlerPositiveTest {
 
     public void testHasItemWhenThreeItemsNeededButOnlyTwoAreAvailableShouldReturnFalse() {
         // GIVEN
+        logger.debug("Resolving item {} for addition.", ITEM_ID);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(nonEquippableItem);
         mockControl.replay();
         // WHEN
@@ -136,6 +140,7 @@ public class DefaultCharacterItemHandlerPositiveTest {
 
     public void testHasItemWhenThreeItemsNeededAndFourAreAvailableShouldReturnTrue() {
         // GIVEN
+        logger.debug("Resolving item {} for addition.", ITEM_ID);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(nonEquippableItem);
         mockControl.replay();
         // WHEN
@@ -147,6 +152,7 @@ public class DefaultCharacterItemHandlerPositiveTest {
 
     public void testResolveItemShouldResolveItemIdFromFactory() {
         // GIVEN
+        logger.debug("Resolving item {} for addition.", ITEM_ID);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(equippableEquippedItem);
         mockControl.replay();
         // WHEN

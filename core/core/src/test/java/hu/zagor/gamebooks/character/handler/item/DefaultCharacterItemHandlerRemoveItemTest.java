@@ -6,11 +6,12 @@ import hu.zagor.gamebooks.character.ItemFactory;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.List;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.slf4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -25,20 +26,18 @@ import org.testng.annotations.Test;
 public class DefaultCharacterItemHandlerRemoveItemTest {
 
     private static final String ITEM_ID = "3001";
-    private CharacterItemHandler underTest;
-    private IMocksControl mockControl;
-    private ItemFactory itemFactory;
+    @UnderTest private DefaultCharacterItemHandler underTest;
+    @MockControl private IMocksControl mockControl;
+    @Inject private ItemFactory itemFactory;
     private Character character;
     private Item nonEquippableItem;
     private Item equippableEquippedItem;
     private Item equippableNonEquippedItem;
     private Item nonEquippableItemStack;
+    @Inject private Logger logger;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        mockControl.createMock(ItemFactory.class);
-        itemFactory = mockControl.createMock(ItemFactory.class);
         nonEquippableItem = new Item(ITEM_ID, "item", ItemType.common);
         nonEquippableItemStack = new Item(ITEM_ID, "item", ItemType.common);
         equippableEquippedItem = new Item(ITEM_ID, "item", ItemType.weapon1);
@@ -48,8 +47,6 @@ public class DefaultCharacterItemHandlerRemoveItemTest {
 
     @BeforeMethod
     public void setUpMethod() {
-        underTest = new DefaultCharacterItemHandler();
-        underTest.setItemFactory(itemFactory);
         character = new Character();
         character.setBackpackSize(99);
         nonEquippableItemStack.setAmount(4);
@@ -58,6 +55,7 @@ public class DefaultCharacterItemHandlerRemoveItemTest {
 
     public void testRemoveItemWhenAnItemIsAddedThenRemovedShouldNotContainIt() {
         // GIVEN
+        logger.debug("Resolving item {} for addition.", ITEM_ID);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(nonEquippableItem);
         mockControl.replay();
         // WHEN
@@ -70,6 +68,7 @@ public class DefaultCharacterItemHandlerRemoveItemTest {
 
     public void testRemoveItemWhenAnEquippedItemIsBeingRemovedInNonEquippedOnlyModeShouldContainIt() {
         // GIVEN
+        logger.debug("Resolving item {} for addition.", ITEM_ID);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(this.equippableEquippedItem);
         mockControl.replay();
         // WHEN
@@ -82,6 +81,7 @@ public class DefaultCharacterItemHandlerRemoveItemTest {
 
     public void testRemoveItemWhenANonEquippedItemIsBeingRemovedInNonEquippedOnlyModeShouldNotContainIt() {
         // GIVEN
+        logger.debug("Resolving item {} for addition.", ITEM_ID);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(this.equippableNonEquippedItem);
         mockControl.replay();
         // WHEN
@@ -94,6 +94,7 @@ public class DefaultCharacterItemHandlerRemoveItemTest {
 
     public void testRemoveItemWhenANonEquippableItemIsBeingRemovedInNonEquippedOnlyModeShouldNotContainIt() {
         // GIVEN
+        logger.debug("Resolving item {} for addition.", ITEM_ID);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(this.nonEquippableItemStack);
         mockControl.replay();
         // WHEN
@@ -107,6 +108,7 @@ public class DefaultCharacterItemHandlerRemoveItemTest {
 
     public void testRemoveItemWhenAnItemIsAddedThenMoreIsRemovedShouldNotContainIt() {
         // GIVEN
+        logger.debug("Resolving item {} for addition.", ITEM_ID);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(nonEquippableItem);
         mockControl.replay();
         // WHEN
@@ -119,6 +121,7 @@ public class DefaultCharacterItemHandlerRemoveItemTest {
 
     public void testRemoveItemWhenItemsAreAddedThenOneIsRemovedShouldContainIt() {
         // GIVEN
+        logger.debug("Resolving item {} for addition.", ITEM_ID);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(nonEquippableItem);
         mockControl.replay();
         // WHEN

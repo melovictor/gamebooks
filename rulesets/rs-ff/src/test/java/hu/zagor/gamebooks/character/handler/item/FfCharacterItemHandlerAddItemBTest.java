@@ -5,13 +5,13 @@ import hu.zagor.gamebooks.character.ItemFactory;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
-import org.easymock.EasyMock;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
+import org.slf4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -21,22 +21,14 @@ import org.testng.annotations.Test;
  */
 @Test
 public class FfCharacterItemHandlerAddItemBTest {
-
-    private FfCharacterItemHandler underTest;
-    private IMocksControl mockControl;
+    @UnderTest private FfCharacterItemHandler underTest;
+    @MockControl private IMocksControl mockControl;
     private FfCharacter character;
-    private ItemFactory itemFactory;
+    @Inject private ItemFactory itemFactory;
+    @Inject private Logger logger;
     private FfItem eSword;
     private FfItem eBroadsword;
     private FfItem dShield;
-
-    @BeforeClass
-    public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        itemFactory = mockControl.createMock(ItemFactory.class);
-        underTest = new FfCharacterItemHandler();
-        Whitebox.setInternalState(underTest, "itemFactory", itemFactory);
-    }
 
     @BeforeMethod
     public void setUpMethod() {
@@ -55,6 +47,7 @@ public class FfCharacterItemHandlerAddItemBTest {
         // GIVEN
         character.getEquipment().add(eSword);
         character.getEquipment().add(dShield);
+        logger.debug("Resolving item {} for addition.", eBroadsword.getId());
         expect(itemFactory.resolveItem(eBroadsword.getId())).andReturn(eBroadsword);
         mockControl.replay();
         // WHEN
@@ -72,6 +65,7 @@ public class FfCharacterItemHandlerAddItemBTest {
     public void testAddItemWhenOneHandedEquippedSwordAddedWhenTwoHandedSwordIsEquippedShouldRemoveTwoHandedSword() {
         // GIVEN
         character.getEquipment().add(eBroadsword);
+        logger.debug("Resolving item {} for addition.", eSword.getId());
         expect(itemFactory.resolveItem(eSword.getId())).andReturn(eSword);
         mockControl.replay();
         // WHEN

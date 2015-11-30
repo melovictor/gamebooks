@@ -4,12 +4,14 @@ import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.Paragraph;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.testng.Assert;
@@ -32,13 +34,13 @@ public class BookEntryStorageTest {
     private static final String EXISTENT_ELEMENT_DISPLAY = "1002a";
 
     private BookEntryStorage underTest;
-    private Logger logger;
-    private IMocksControl mockControl;
-    private Paragraph paragraph;
-    private Paragraph clonedParagraph;
-    private Item item;
-    private Item clonedItem;
-    private Enemy enemy;
+    @Inject private Logger logger;
+    @MockControl private IMocksControl mockControl;
+    @Mock private Paragraph paragraph;
+    @Mock private Paragraph clonedParagraph;
+    @Mock private Item item;
+    @Mock private Item clonedItem;
+    @Instance private Enemy enemy;
 
     private final Map<String, Paragraph> paragraphs = new HashMap<>();
     private final Map<String, Item> items = new HashMap<>();
@@ -46,23 +48,16 @@ public class BookEntryStorageTest {
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        logger = mockControl.createMock(Logger.class);
-        paragraph = mockControl.createMock(Paragraph.class);
-        item = mockControl.createMock(Item.class);
-        clonedParagraph = mockControl.createMock(Paragraph.class);
-        clonedItem = mockControl.createMock(Item.class);
-
-        enemy = new Enemy();
         enemy.setId("111");
         enemy.setName("enemy");
+    }
 
+    @UnderTest
+    public BookEntryStorage underTest() {
         paragraphs.put(EXISTENT_ELEMENT_ID, paragraph);
         items.put(EXISTENT_ELEMENT_ID, item);
         enemies.put(EXISTENT_ELEMENT_ID, enemy);
-
-        underTest = new BookEntryStorage(BOOK_ID, paragraphs, items, enemies);
-        Whitebox.setInternalState(underTest, "logger", logger);
+        return new BookEntryStorage(BOOK_ID, paragraphs, items, enemies);
     }
 
     @BeforeMethod
@@ -110,6 +105,8 @@ public class BookEntryStorageTest {
     public void testGetItemWhenItemsNotSetShouldReturnNull() {
         // GIVEN
         final BookEntryStorage underTest = new BookEntryStorage(BOOK_ID, paragraphs, null, null);
+        Whitebox.setInternalState(underTest, "logger", logger);
+        logger.debug("Fetching {} {} from book {}.", "item", EXISTENT_ELEMENT_ID, BOOK_ID);
         mockControl.replay();
         // WHEN
         final Item returned = underTest.getItem(EXISTENT_ELEMENT_ID);
@@ -120,6 +117,8 @@ public class BookEntryStorageTest {
     public void testGetEnemyWhenEnemiesNotSetShouldReturnNull() {
         // GIVEN
         final BookEntryStorage underTest = new BookEntryStorage(BOOK_ID, paragraphs, null, null);
+        Whitebox.setInternalState(underTest, "logger", logger);
+        logger.debug("Fetching {} {} from book {}.", "enemy", EXISTENT_ELEMENT_ID, BOOK_ID);
         mockControl.replay();
         // WHEN
         final Enemy returned = underTest.getEnemy(EXISTENT_ELEMENT_ID);
@@ -129,7 +128,8 @@ public class BookEntryStorageTest {
 
     public void testGetItemWhenItemNotPresentInStorageShouldReturnNull() {
         // GIVEN
-        logger.error("Cannot find {} with id '{}' in book '{}'!", "item", NONEXISTENT_ELEMENT_ID, String.valueOf(BOOK_ID));
+        logger.debug("Fetching {} {} from book {}.", "item", NONEXISTENT_ELEMENT_ID, BOOK_ID);
+        logger.error("Cannot find {} with id '{}' in book '{}'!", "item", NONEXISTENT_ELEMENT_ID, BOOK_ID);
         mockControl.replay();
         // WHEN
         final Item returned = underTest.getItem(NONEXISTENT_ELEMENT_ID);
@@ -139,7 +139,8 @@ public class BookEntryStorageTest {
 
     public void testGetEnemyWhenEnemyNotPresentInStorageShouldReturnNull() {
         // GIVEN
-        logger.error("Cannot find {} with id '{}' in book '{}'!", "enemy", NONEXISTENT_ELEMENT_ID, String.valueOf(BOOK_ID));
+        logger.debug("Fetching {} {} from book {}.", "enemy", NONEXISTENT_ELEMENT_ID, BOOK_ID);
+        logger.error("Cannot find {} with id '{}' in book '{}'!", "enemy", NONEXISTENT_ELEMENT_ID, BOOK_ID);
         mockControl.replay();
         // WHEN
         final Enemy returned = underTest.getEnemy(NONEXISTENT_ELEMENT_ID);
@@ -149,6 +150,7 @@ public class BookEntryStorageTest {
 
     public void testGetItemWhenItemInStorageShouldReturnClonedItem() throws CloneNotSupportedException {
         // GIVEN
+        logger.debug("Fetching {} {} from book {}.", "item", EXISTENT_ELEMENT_ID, BOOK_ID);
         expect(item.clone()).andReturn(clonedItem);
         mockControl.replay();
         // WHEN
@@ -159,6 +161,7 @@ public class BookEntryStorageTest {
 
     public void testGetEnemyWhenEnemyInStorageShouldReturnClonedEnemy() {
         // GIVEN
+        logger.debug("Fetching {} {} from book {}.", "enemy", EXISTENT_ELEMENT_ID, BOOK_ID);
         mockControl.replay();
         // WHEN
         final Enemy returned = underTest.getEnemy(EXISTENT_ELEMENT_ID);
@@ -169,8 +172,9 @@ public class BookEntryStorageTest {
 
     public void testGetItemWhenItemInStorageButCloneFailsShouldReturnNull() throws CloneNotSupportedException {
         // GIVEN
+        logger.debug("Fetching {} {} from book {}.", "item", EXISTENT_ELEMENT_ID, BOOK_ID);
         expect(item.clone()).andThrow(new CloneNotSupportedException());
-        logger.error("Failed to clone {} '{}' from book '{}'!", "item", EXISTENT_ELEMENT_ID, String.valueOf(BOOK_ID));
+        logger.error("Failed to clone {} '{}' from book '{}'!", "item", EXISTENT_ELEMENT_ID, BOOK_ID);
         mockControl.replay();
         // WHEN
         final Item returned = underTest.getItem(EXISTENT_ELEMENT_ID);
@@ -180,6 +184,7 @@ public class BookEntryStorageTest {
 
     public void testGetParagraphWhenParagraphIdExistsShouldReturnClonedParagraph() throws CloneNotSupportedException {
         // GIVEN
+        logger.debug("Fetching {} {} from book {}.", "paragraph", EXISTENT_ELEMENT_ID, BOOK_ID);
         expect(paragraph.clone()).andReturn(clonedParagraph);
         mockControl.replay();
         // WHEN
@@ -190,8 +195,9 @@ public class BookEntryStorageTest {
 
     public void testGetParagraphWhenParagraphIdExistsButCloningFailsShouldReturnNull() throws CloneNotSupportedException {
         // GIVEN
+        logger.debug("Fetching {} {} from book {}.", "paragraph", EXISTENT_ELEMENT_ID, BOOK_ID);
         expect(paragraph.clone()).andThrow(new CloneNotSupportedException());
-        logger.error("Failed to clone {} '{}' from book '{}'!", "paragraph", EXISTENT_ELEMENT_ID, String.valueOf(BOOK_ID));
+        logger.error("Failed to clone {} '{}' from book '{}'!", "paragraph", EXISTENT_ELEMENT_ID, BOOK_ID);
         mockControl.replay();
         // WHEN
         final Paragraph returned = underTest.getParagraph(EXISTENT_ELEMENT_ID);
@@ -201,7 +207,8 @@ public class BookEntryStorageTest {
 
     public void testGetParagraphWhenParagraphIdDoesNotExistsShouldReturnNull() {
         // GIVEN
-        logger.error("Cannot find {} with id '{}' in book '{}'!", "paragraph", NONEXISTENT_ELEMENT_ID, String.valueOf(BOOK_ID));
+        logger.debug("Fetching {} {} from book {}.", "paragraph", NONEXISTENT_ELEMENT_ID, BOOK_ID);
+        logger.error("Cannot find {} with id '{}' in book '{}'!", "paragraph", NONEXISTENT_ELEMENT_ID, BOOK_ID);
         mockControl.replay();
         // WHEN
         final Paragraph returned = underTest.getParagraph(NONEXISTENT_ELEMENT_ID);
@@ -213,6 +220,7 @@ public class BookEntryStorageTest {
         // GIVEN
         final long before = underTest.getLastAccess();
         final long now = System.currentTimeMillis();
+        logger.debug("Fetching {} {} from book {}.", "paragraph", EXISTENT_ELEMENT_ID, BOOK_ID);
         expect(paragraph.clone()).andReturn(clonedParagraph);
         mockControl.replay();
         underTest.getParagraph(EXISTENT_ELEMENT_ID);

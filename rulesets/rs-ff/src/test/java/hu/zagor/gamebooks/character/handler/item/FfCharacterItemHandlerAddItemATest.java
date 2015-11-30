@@ -5,13 +5,13 @@ import hu.zagor.gamebooks.character.ItemFactory;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
-import org.easymock.EasyMock;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
+import org.slf4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -21,11 +21,11 @@ import org.testng.annotations.Test;
  */
 @Test
 public class FfCharacterItemHandlerAddItemATest {
-
-    private FfCharacterItemHandler underTest;
-    private IMocksControl mockControl;
+    @UnderTest private FfCharacterItemHandler underTest;
+    @MockControl private IMocksControl mockControl;
     private FfCharacter character;
-    private ItemFactory itemFactory;
+    @Inject private ItemFactory itemFactory;
+    @Inject private Logger logger;
     private FfItem eSword;
     private FfItem ecSword;
     private FfItem dDagger;
@@ -40,14 +40,6 @@ public class FfCharacterItemHandlerAddItemATest {
     private FfItem eRingD;
     private FfItem ecRingE;
     private FfItem eShield;
-
-    @BeforeClass
-    public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        itemFactory = mockControl.createMock(ItemFactory.class);
-        underTest = new FfCharacterItemHandler();
-        Whitebox.setInternalState(underTest, "itemFactory", itemFactory);
-    }
 
     @BeforeMethod
     public void setUpMethod() {
@@ -84,6 +76,7 @@ public class FfCharacterItemHandlerAddItemATest {
 
     public void testAddItemWhenCharacterIsGivenACommonItemShouldBeAddedToTheEquipmentList() {
         // GIVEN
+        logger.debug("Resolving item {} for addition.", cDice.getId());
         expect(itemFactory.resolveItem(cDice.getId())).andReturn(cDice);
         mockControl.replay();
         // WHEN
@@ -96,6 +89,7 @@ public class FfCharacterItemHandlerAddItemATest {
     public void testAddItemWhenCharacterIsGivenAOneHandedUnequippedWeaponWhenHeHasAnEquippedOneShouldBeAddedToTheEquipmentList() {
         // GIVEN
         character.getEquipment().add(eSword);
+        logger.debug("Resolving item {} for addition.", dDagger.getId());
         expect(itemFactory.resolveItem(dDagger.getId())).andReturn(dDagger);
         mockControl.replay();
         // WHEN
@@ -112,6 +106,7 @@ public class FfCharacterItemHandlerAddItemATest {
         // GIVEN
         character.getEquipment().add(cDice);
         character.getEquipment().add(eSword);
+        logger.debug("Resolving item {} for addition.", eSpear.getId());
         expect(itemFactory.resolveItem(eSpear.getId())).andReturn(eSpear);
         mockControl.replay();
         // WHEN
@@ -128,6 +123,7 @@ public class FfCharacterItemHandlerAddItemATest {
     public void testAddItemWhenCharacterIsGivenAOneHandedEquippedWeaponWhenHeDoesNotHaveAnEquippedOneShouldBeAddedToTheEquipmentList() {
         // GIVEN
         character.getEquipment().add(dDagger);
+        logger.debug("Resolving item {} for addition.", eSpear.getId());
         expect(itemFactory.resolveItem(eSpear.getId())).andReturn(eSpear);
         mockControl.replay();
         // WHEN
@@ -143,6 +139,7 @@ public class FfCharacterItemHandlerAddItemATest {
     public void testAddItemWhenCharacterIsGivenAOneHandedNonEquippedWeaponWhenHeDoesNotHaveAnEquippedOneShouldBeAddedToTheEquipmentList() {
         // GIVEN
         character.getEquipment().add(dDagger);
+        logger.debug("Resolving item {} for addition.", dWarhammer.getId());
         expect(itemFactory.resolveItem(dWarhammer.getId())).andReturn(dWarhammer);
         mockControl.replay();
         // WHEN
@@ -157,6 +154,7 @@ public class FfCharacterItemHandlerAddItemATest {
 
     public void testAddItemWhenCharacterIsGivenAnUnequippedRingWheHeDoesNotHaveOneShouldRingBeAdded() {
         // GIVEN
+        logger.debug("Resolving item {} for addition.", dRingA.getId());
         expect(itemFactory.resolveItem(dRingA.getId())).andReturn(dRingA);
         mockControl.replay();
         // WHEN
@@ -171,6 +169,7 @@ public class FfCharacterItemHandlerAddItemATest {
         // GIVEN
         character.getEquipment().add(eRingB);
         character.getEquipment().add(eRingC);
+        logger.debug("Resolving item {} for addition.", dRingA.getId());
         expect(itemFactory.resolveItem(dRingA.getId())).andReturn(dRingA);
         mockControl.replay();
         // WHEN
@@ -189,6 +188,7 @@ public class FfCharacterItemHandlerAddItemATest {
         // GIVEN
         character.getEquipment().add(eRingB);
         character.getEquipment().add(eRingC);
+        logger.debug("Resolving item {} for addition.", eRingD.getId());
         expect(itemFactory.resolveItem(eRingD.getId())).andReturn(eRingD);
         mockControl.replay();
         // WHEN
@@ -207,6 +207,7 @@ public class FfCharacterItemHandlerAddItemATest {
         // GIVEN
         character.getEquipment().add(ecRingE);
         character.getEquipment().add(ecRingE);
+        logger.debug("Resolving item {} for addition.", eRingD.getId());
         expect(itemFactory.resolveItem(eRingD.getId())).andReturn(eRingD);
         mockControl.replay();
         // WHEN
@@ -225,6 +226,7 @@ public class FfCharacterItemHandlerAddItemATest {
         // GIVEN
         character.getEquipment().add(eRingB);
         character.getEquipment().add(ecRingE);
+        logger.debug("Resolving item {} for addition.", eRingD.getId());
         expect(itemFactory.resolveItem(eRingD.getId())).andReturn(eRingD);
         mockControl.replay();
         // WHEN
@@ -243,6 +245,7 @@ public class FfCharacterItemHandlerAddItemATest {
         // GIVEN
         character.getEquipment().add(eSword);
         character.getEquipment().add(eShield);
+        logger.debug("Resolving item {} for addition.", eBroadsword.getId());
         expect(itemFactory.resolveItem(eBroadsword.getId())).andReturn(eBroadsword);
         mockControl.replay();
         // WHEN
@@ -262,6 +265,7 @@ public class FfCharacterItemHandlerAddItemATest {
         character.getEquipment().add(ecSword);
         character.getEquipment().add(eShield);
         character.getEquipment().add(eRingC);
+        logger.debug("Resolving item {} for addition.", eBroadsword.getId());
         expect(itemFactory.resolveItem(eBroadsword.getId())).andReturn(eBroadsword);
         mockControl.replay();
         // WHEN

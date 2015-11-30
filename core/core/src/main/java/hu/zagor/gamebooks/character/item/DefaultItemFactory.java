@@ -5,7 +5,8 @@ import hu.zagor.gamebooks.character.ItemFactory;
 import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.exception.InvalidItemException;
-
+import hu.zagor.gamebooks.support.logging.LogInject;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
@@ -16,8 +17,8 @@ import org.springframework.util.Assert;
 public class DefaultItemFactory implements ItemFactory {
 
     private final BookInformations info;
-    @Autowired
-    private BookContentInitializer contentInitializer;
+    @Autowired private BookContentInitializer contentInitializer;
+    @LogInject private Logger logger;
 
     /**
      * Basic constructor.
@@ -32,6 +33,7 @@ public class DefaultItemFactory implements ItemFactory {
     public Item resolveItem(final String itemId) {
         Assert.notNull(itemId, "The parameter 'itemId' cannot be null!");
         Assert.isTrue(itemId.length() > 0, "The parameter 'itemId' cannot be empty!");
+        logger.debug("Loading item {} from storage for book {} ({}).", itemId, info.getTitle(), info.getId());
         final BookItemStorage storage = contentInitializer.getItemStorage(info);
         final Item item = storage.getItem(itemId);
         if (item == null) {

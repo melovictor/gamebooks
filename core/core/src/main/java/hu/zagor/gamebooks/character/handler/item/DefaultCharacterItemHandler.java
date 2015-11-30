@@ -5,12 +5,12 @@ import hu.zagor.gamebooks.character.ItemFactory;
 import hu.zagor.gamebooks.character.item.EquipInfo;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
-
+import hu.zagor.gamebooks.support.logging.LogInject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-
+import org.slf4j.Logger;
 import org.springframework.util.Assert;
 
 /**
@@ -27,10 +27,12 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
      * The item factory instance to use for item instance creation.
      */
     private ItemFactory itemFactory;
+    @LogInject private Logger logger;
 
     @Override
     public void setItemFactory(final ItemFactory itemFactory) {
         Assert.notNull(itemFactory);
+        logger.debug("Setting new item factory to DefaultCharacterItemHandler.");
         this.itemFactory = itemFactory;
     }
 
@@ -40,7 +42,9 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
         Assert.notNull(itemId, ITEMID_NOT_NULL);
         Assert.isTrue(amount > 0, ITEMID_POSITIVE);
 
-        return addItem(character, itemFactory.resolveItem(itemId), amount);
+        logger.debug("Resolving item {} for addition.", itemId);
+        final Item resolvedItem = itemFactory.resolveItem(itemId);
+        return addItem(character, resolvedItem, amount);
     }
 
     /**
@@ -152,6 +156,7 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
 
     @Override
     public Item resolveItem(final String itemId) {
+        logger.debug("Resolving item {} for addition.", itemId);
         return itemFactory.resolveItem(itemId);
     }
 
