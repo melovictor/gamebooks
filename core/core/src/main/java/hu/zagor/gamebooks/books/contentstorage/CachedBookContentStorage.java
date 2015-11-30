@@ -7,11 +7,9 @@ import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
@@ -26,13 +24,11 @@ public class CachedBookContentStorage implements BookContentStorage {
     private static final String ITEMID_NOT_NULL = "Parameter 'itemId' can not be null!";
     private static final String INFO_NOT_NULL = "Parameter 'info' can not be null!";
     private static final String BOOKINFO_NOT_NULL = "Parameter 'bookInfo' can not be null!";
-    @LogInject
-    private Logger logger;
+    @LogInject private Logger logger;
     private final Map<Long, SoftReference<BookItemStorage>> storage = new HashMap<>();
     private final BookContentLoader bookContentLoader;
 
-    @Autowired
-    private EnvironmentDetector environmentDetector;
+    @Autowired private EnvironmentDetector environmentDetector;
 
     /**
      * Basic constructor that creates a new {@link CachedBookContentStorage} with the given {@link BookContentLoader} bean to actually load data from the resource files.
@@ -69,6 +65,7 @@ public class CachedBookContentStorage implements BookContentStorage {
         final BookItemStorage storageEntry = getBookEntry(info);
         if (storageEntry != null) {
             item = storageEntry.getItem(itemId);
+            logger.debug("Found item {}: '{}' in book {}.", itemId, item.getName(), info.getId());
         } else {
             logger.error("Cannot load items for book '{}'!", info.getTitle());
         }

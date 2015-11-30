@@ -8,9 +8,13 @@ import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
-
-import org.easymock.EasyMock;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
+import java.lang.ref.SoftReference;
+import java.util.HashMap;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.testng.Assert;
@@ -29,25 +33,18 @@ public class CachedBookContentStoragePositiveTest {
     private static final String ID = "10";
     private static final String TITLE = "title";
     private CachedBookContentStorage underTest;
-    private IMocksControl mockControl;
-    private BookContentLoader bookContentLoader;
-    private Logger logger;
+    @MockControl private IMocksControl mockControl;
+    @Mock private BookContentLoader bookContentLoader;
+    @Inject private Logger logger;
     private BookInformations bookInfo;
-    private BookItemStorage entryStorage;
-    private Paragraph paragraph;
+    @Mock private BookItemStorage entryStorage;
+    @Mock private Paragraph paragraph;
     private Item item;
     private Enemy enemy;
-    private EnvironmentDetector environmentDetector;
+    @Inject private EnvironmentDetector environmentDetector;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        bookContentLoader = mockControl.createMock(BookContentLoader.class);
-        logger = mockControl.createMock(Logger.class);
-        entryStorage = mockControl.createMock(BookItemStorage.class);
-        paragraph = mockControl.createMock(Paragraph.class);
-        environmentDetector = mockControl.createMock(EnvironmentDetector.class);
-
         item = new Item("111", "item", ItemType.common);
         enemy = new Enemy();
 
@@ -55,11 +52,14 @@ public class CachedBookContentStoragePositiveTest {
         bookInfo.setTitle(TITLE);
     }
 
+    @UnderTest
+    public Object underTest() {
+        return new CachedBookContentStorage(bookContentLoader);
+    }
+
     @BeforeMethod
     public void setUpMethod() {
-        underTest = new CachedBookContentStorage(bookContentLoader);
-        Whitebox.setInternalState(underTest, "logger", logger);
-        Whitebox.setInternalState(underTest, "environmentDetector", environmentDetector);
+        Whitebox.setInternalState(underTest, "storage", new HashMap<Long, SoftReference<BookItemStorage>>());
         mockControl.reset();
     }
 
@@ -142,6 +142,7 @@ public class CachedBookContentStoragePositiveTest {
         logger.info("Cannot find cached content for book '{}', loading it from file.", TITLE);
         expect(bookContentLoader.loadBookContent(bookInfo)).andReturn(entryStorage);
         expect(entryStorage.getItem(ID)).andReturn(item);
+        logger.debug("Found item {}: '{}' in book {}.", ID, "item", 1L);
         mockControl.replay();
         // WHEN
         final Item returned = underTest.getBookItem(bookInfo, ID);
