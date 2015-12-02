@@ -26,9 +26,11 @@
   </c:forEach>
   
   <h1><spring:message code="page.logs.archivedLogs" /></h1>
-  <c:forEach items="${archivedLogFiles}" var="log">
-	  <c:url var="logUrl" value="/logs/archive.${log}.zip/zip" />
-	  <a href="${logUrl}">${log}</a><br />
-  </c:forEach>  
+  <div id="logArchives">
+	  <c:forEach items="${archivedLogFiles}" var="log">
+		  <c:url var="logUrl" value="/logs/archive.${log}.zip/zip" />
+		  <a href="${logUrl}">${log}</a>
+	  </c:forEach>  
+  </div>
   
 </div>
