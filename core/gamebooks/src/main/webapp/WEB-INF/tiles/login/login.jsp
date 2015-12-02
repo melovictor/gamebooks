@@ -5,9 +5,9 @@
 
 <c:url var="loginPage" value="/login" />
 <form:form commandName="loginData" method="post" action="${loginPage}" id="regform" name="regform">
-	<c:if test="${not empty loginError}">
+	<c:if test="${not empty sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message}">
         <l:smallbox className="errorMessage">
-            <spring:message code="${loginError}" />
+            <spring:message code="${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message}" />
         </l:smallbox>
     </c:if>
 
@@ -15,7 +15,7 @@
 		<l:smallbox>
 			<l:input label="page.login.username" name="username" id="adventurerName" />
 			<l:input label="page.login.password" name="password" id="adventurerPassphrase" type="password" />
-			<input type="hidden" name="csrfToken" value="${csrfToken}" />
+			<input type="hidden" name="_csrf" value="${_csrf.token}" />
 			<input type="submit" id="loginSubmitButton"
 				value="<spring:message code="page.login.submit" />" />
 		</l:smallbox>

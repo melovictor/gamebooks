@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.mvc.settings.controller;
 import static org.easymock.EasyMock.capture;
 import static org.easymock.EasyMock.eq;
 import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.newCapture;
 import hu.zagor.gamebooks.books.random.DefaultRandomNumberGenerator;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.SupportedLanguage;
@@ -12,20 +13,20 @@ import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.player.settings.DefaultSettingsHandler;
 import hu.zagor.gamebooks.player.settings.UserSettingsHandler;
 import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.easymock.Capture;
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
@@ -42,64 +43,39 @@ import org.testng.annotations.Test;
  */
 @Test
 public class UserSettingsControllerTest {
-
-    private UserSettingsController underTest;
-    private IMocksControl mockControl;
-    private Logger logger;
-    private UserSettingsHandler settingsHandler;
-    private DefaultSettingsHandler defaultSettingsHandler;
-    private HttpServletRequest request;
-    private BeanFactory beanFactory;
-    private Model model;
+    @UnderTest private UserSettingsController underTest;
+    @MockControl private IMocksControl mockControl;
+    @Inject private Logger logger;
+    @Inject private UserSettingsHandler userSettingsHandler;
+    @Inject private DefaultSettingsHandler defaultSettingsHandler;
+    @Mock private HttpServletRequest request;
+    @Inject private BeanFactory beanFactory;
+    @Mock private Model model;
     private SupportedLanguage[] availableLanguages;
     private Cookie[] cookies;
-    private Cookie cookie;
+    @Mock private Cookie cookie;
     private SortedSet<SettingGroup> settings;
     private Map<String, String> defaultSettings;
-    private HttpSession session;
-    private HttpSessionWrapper wrapper;
+    @Mock private HttpSession session;
+    @Mock private HttpSessionWrapper wrapper;
     private PlayerUser player;
-    private EnvironmentDetector environmentDetector;
+    @Inject private EnvironmentDetector environmentDetector;
     private Map<String, String[]> parameterMap;
-    private DefaultRandomNumberGenerator generator6;
-    private DefaultRandomNumberGenerator generator10;
+    @Inject private DefaultRandomNumberGenerator generator6;
+    @Inject private DefaultRandomNumberGenerator generator10;
     private List<Integer> list6;
     private List<Integer> list10;
 
-    @SuppressWarnings("unchecked")
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        logger = mockControl.createMock(Logger.class);
-        settingsHandler = mockControl.createMock(UserSettingsHandler.class);
-        defaultSettingsHandler = mockControl.createMock(DefaultSettingsHandler.class);
-        request = mockControl.createMock(HttpServletRequest.class);
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        model = mockControl.createMock(Model.class);
         availableLanguages = new SupportedLanguage[]{};
-        cookie = mockControl.createMock(Cookie.class);
         cookies = new Cookie[]{cookie, cookie};
         settings = new TreeSet<>();
         defaultSettings = new HashMap<>();
-        session = mockControl.createMock(HttpSession.class);
-        wrapper = mockControl.createMock(HttpSessionWrapper.class);
         player = new PlayerUser(10, "FireFoX", true);
         parameterMap = new HashMap<>();
-        environmentDetector = mockControl.createMock(EnvironmentDetector.class);
-        generator6 = mockControl.createMock(DefaultRandomNumberGenerator.class);
-        generator10 = mockControl.createMock(DefaultRandomNumberGenerator.class);
-        list6 = mockControl.createMock(List.class);
-        list10 = mockControl.createMock(List.class);
 
-        underTest = new UserSettingsController();
-        underTest.setBeanFactory(beanFactory);
-        Whitebox.setInternalState(underTest, "logger", logger);
-        Whitebox.setInternalState(underTest, "userSettingsHandler", settingsHandler);
-        Whitebox.setInternalState(underTest, "defaultSettingsHandler", defaultSettingsHandler);
         Whitebox.setInternalState(underTest, "availableLanguages", availableLanguages);
-        Whitebox.setInternalState(underTest, "environmentDetector", environmentDetector);
-        Whitebox.setInternalState(underTest, "generator6", generator6);
-        Whitebox.setInternalState(underTest, "generator10", generator10);
 
         defaultSettings.put("default.setting.1", "default.setting.1.value");
         defaultSettings.put("default.setting.2", "default.setting.2.value");
@@ -158,7 +134,7 @@ public class UserSettingsControllerTest {
         parameterMap.put("default.setting.1", new String[]{"default.setting.1.playervalue"});
         parameterMap.put("default.setting.2", new String[]{"default.setting.2.playervalue"});
         parameterMap.put("default.setting.3", new String[]{"default.setting.3.playervalue"});
-        settingsHandler.saveSettings(player);
+        userSettingsHandler.saveSettings(player);
         expect(model.addAttribute("availableLanguages", availableLanguages)).andReturn(model);
         expect(request.getCookies()).andReturn(cookies);
         expect(cookie.getName()).andReturn("something");
@@ -188,7 +164,7 @@ public class UserSettingsControllerTest {
     }
 
     private Capture<HashMap<String, String>> setUpModel(final boolean recordState) {
-        final Capture<HashMap<String, String>> capturer = new Capture<>();
+        final Capture<HashMap<String, String>> capturer = newCapture();
         expect(model.addAttribute(eq("userSettings"), capture(capturer))).andReturn(model);
         expect(model.addAttribute("player", player)).andReturn(model);
         expect(model.addAttribute("pageTitle", "page.title")).andReturn(model);

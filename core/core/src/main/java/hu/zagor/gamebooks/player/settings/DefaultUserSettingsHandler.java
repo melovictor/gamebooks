@@ -51,9 +51,9 @@ public class DefaultUserSettingsHandler implements UserSettingsHandler, BeanFact
         } catch (final BeansException exception) {
             final Throwable rootCause = exception.getMostSpecificCause();
             if (rootCause instanceof FileNotFoundException) {
-                logger.info("User '{}' doesn't have settings file at the moment.", player.getUsername());
+                logger.info("User '{}' doesn't have settings file at the moment.", player.getPrincipal());
             } else {
-                logger.error("Loading settings file for user '{}' failed.", player.getUsername(), exception);
+                logger.error("Loading settings file for user '{}' failed.", player.getPrincipal(), exception);
             }
         }
     }
@@ -74,7 +74,7 @@ public class DefaultUserSettingsHandler implements UserSettingsHandler, BeanFact
                 writer.write(entry.getKey() + "=" + entry.getValue() + "\n");
             }
         } catch (final IOException exception) {
-            logger.error("Failed to save settings for user {}!", player.getUsername(), exception);
+            logger.error("Failed to save settings for user {}!", player.getPrincipal(), exception);
         }
 
         writer.close();

@@ -16,10 +16,15 @@ var menu = (function() {
 	function updateSelection() {
 		$("#languageSelectionSelected").html($("#languageSelectionOptions .languageSelected").html());
 	}
+	
+	function logout() {
+		$("#logoutForm").submit();
+	}
 
 	return {
 		updateLanguage : updateLanguage,
-		updateSelection : updateSelection
+		updateSelection : updateSelection,
+		logout : logout
 	};
 })();
 
@@ -66,4 +71,5 @@ $(function() {
 	menu.updateSelection();
 	settings.initialize($("input[data-settings-checkbox]"));
 	$("#adventurerName").focus();
+	$("#logout").on("click", menu.logout);
 });

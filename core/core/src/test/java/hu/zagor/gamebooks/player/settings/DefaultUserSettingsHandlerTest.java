@@ -4,23 +4,24 @@ import static org.easymock.EasyMock.anyObject;
 import static org.easymock.EasyMock.capture;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.newCapture;
 import hu.zagor.gamebooks.directory.DirectoryProvider;
 import hu.zagor.gamebooks.player.PlayerSettings;
 import hu.zagor.gamebooks.player.PlayerUser;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import hu.zagor.gamebooks.support.scanner.Scanner;
 import hu.zagor.gamebooks.support.writer.Writer;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
-
 import org.easymock.Capture;
 import org.easymock.CaptureType;
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
+import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanCreationException;
@@ -40,35 +41,21 @@ public class DefaultUserSettingsHandlerTest {
 
     private static final String LOCATION = "d:/prod/";
     private static final String PLAYER_USERNAME = "FireFoX";
-    private IMocksControl mockControl;
-    private DefaultUserSettingsHandler underTest;
-    private Logger logger;
-    private BeanFactory beanFactory;
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private DefaultUserSettingsHandler underTest;
+    @Inject private Logger logger;
+    @Inject private BeanFactory beanFactory;
     private PlayerUser player;
     private PlayerSettings settings;
-    private Scanner scanner;
-    private Writer writer;
-    private DirectoryProvider directoryProvider;
-    private File location;
+    @Mock private Scanner scanner;
+    @Mock private Writer writer;
+    @Inject private DirectoryProvider directoryProvider;
+    @Mock private File location;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        underTest = new DefaultUserSettingsHandler();
-
-        logger = mockControl.createMock(Logger.class);
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        scanner = mockControl.createMock(Scanner.class);
-        writer = mockControl.createMock(Writer.class);
-
         player = new PlayerUser(29, PLAYER_USERNAME, false);
         settings = player.getSettings();
-        directoryProvider = mockControl.createMock(DirectoryProvider.class);
-        location = mockControl.createMock(File.class);
-
-        Whitebox.setInternalState(underTest, "logger", logger);
-        Whitebox.setInternalState(underTest, "directoryProvider", directoryProvider);
-        underTest.setBeanFactory(beanFactory);
     }
 
     @BeforeMethod
@@ -159,7 +146,7 @@ public class DefaultUserSettingsHandlerTest {
         expect(location.exists()).andReturn(true);
         expect(beanFactory.getBean("file", location, "settings.properties")).andReturn(location);
         expect(beanFactory.getBean("writer", location, "UTF-8")).andReturn(writer);
-        final Capture<String> savedElement = new Capture<String>(CaptureType.ALL);
+        final Capture<String> savedElement = newCapture(CaptureType.ALL);
         writer.write(capture(savedElement));
         writer.write(capture(savedElement));
         writer.write(capture(savedElement));

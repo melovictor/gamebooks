@@ -1,8 +1,8 @@
 package hu.zagor.gamebooks.books;
 
 import static org.easymock.EasyMock.expect;
-
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -12,11 +12,10 @@ import org.w3c.dom.NodeList;
  * @author Tamas_Szekeres
  */
 public abstract class AbstractTransformerTest {
-
-    public Node node;
-    public NamedNodeMap nodeMap;
-    public Node nodeValue;
-    public NodeList nodeList;
+    @Mock public Node node;
+    @Mock public NamedNodeMap nodeMap;
+    @Mock public Node nodeValue;
+    @Mock public NodeList nodeList;
 
     public void init(final IMocksControl mockControl) {
         node = mockControl.createMock(Node.class);

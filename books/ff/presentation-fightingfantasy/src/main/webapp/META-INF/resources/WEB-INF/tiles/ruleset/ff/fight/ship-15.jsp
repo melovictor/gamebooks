@@ -11,7 +11,7 @@
     </span>
 	
 	<div>
-	    <span data-enemy-id="0">${user.username}</span>
+	    <span data-enemy-id="0">${user.principal}</span>
 	    <span data-enemy-skill>${charEquipments.ship.weaponStrength}</span>
 	    <span data-enemy-stamina>${charEquipments.ship.shield}</span>
 	</div>

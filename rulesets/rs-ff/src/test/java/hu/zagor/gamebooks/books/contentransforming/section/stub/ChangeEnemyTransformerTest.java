@@ -1,21 +1,20 @@
 package hu.zagor.gamebooks.books.contentransforming.section.stub;
 
 import static org.easymock.EasyMock.capture;
+import static org.easymock.EasyMock.newCapture;
 import hu.zagor.gamebooks.books.AbstractTransformerTest;
 import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTransformer;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommand;
-
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.Capture;
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
 
 /**
  * Unit test for class {@link ChangeEnemyTransformer}.
@@ -23,23 +22,10 @@ import org.w3c.dom.Node;
  */
 @Test
 public class ChangeEnemyTransformerTest extends AbstractTransformerTest {
-
-    private ChangeEnemyTransformer underTest;
-    private IMocksControl mockControl;
-    private FfParagraphData data;
-    private BookParagraphDataTransformer parent;
-
-    @BeforeClass
-    public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        node = mockControl.createMock(Node.class);
-        parent = mockControl.createMock(BookParagraphDataTransformer.class);
-        data = mockControl.createMock(FfParagraphData.class);
-        nodeMap = mockControl.createMock(NamedNodeMap.class);
-        nodeValue = mockControl.createMock(Node.class);
-
-        underTest = new ChangeEnemyTransformer();
-    }
+    @UnderTest private ChangeEnemyTransformer underTest;
+    @MockControl private IMocksControl mockControl;
+    @Mock private FfParagraphData data;
+    @Mock private BookParagraphDataTransformer parent;
 
     @BeforeMethod
     public void setUpMethod() {
@@ -52,7 +38,7 @@ public class ChangeEnemyTransformerTest extends AbstractTransformerTest {
         expectAttribute("attribute", "stamina");
         expectAttribute("set", "9");
         expectAttribute("change");
-        final Capture<ChangeEnemyCommand> capture = new Capture<>();
+        final Capture<ChangeEnemyCommand> capture = newCapture();
         data.addEnemyModifyAttributes(capture(capture));
         mockControl.replay();
         // WHEN
@@ -71,7 +57,7 @@ public class ChangeEnemyTransformerTest extends AbstractTransformerTest {
         expectAttribute("attribute", "stamina");
         expectAttribute("set");
         expectAttribute("change", "-2");
-        final Capture<ChangeEnemyCommand> capture = new Capture<>();
+        final Capture<ChangeEnemyCommand> capture = newCapture();
         data.addEnemyModifyAttributes(capture(capture));
         mockControl.replay();
         // WHEN

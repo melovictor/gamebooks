@@ -3,8 +3,12 @@
 <c:url var="logoutUrl" value="/logout" />
 <div>
 	<spring:message code="page.menu.logged.in.as"
-		arguments="${user.username},<a href='${logoutUrl}' id='logout'>,</a>" />
+		arguments="${user.principal},<a id='logout'>,</a>" />
+	
 </div>
+<form id="logoutForm" action="${logoutUrl}" method="POST">
+    <input type="hidden" name="_csrf" value="${_csrf.token}" />
+</form>
 
 <div id="languageSelection">
 	<div id="languageSelectionMain">

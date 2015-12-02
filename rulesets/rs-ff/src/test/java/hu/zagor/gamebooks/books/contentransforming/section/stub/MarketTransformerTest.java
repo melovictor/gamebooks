@@ -2,22 +2,23 @@ package hu.zagor.gamebooks.books.contentransforming.section.stub;
 
 import static org.easymock.EasyMock.capture;
 import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.newCapture;
 import hu.zagor.gamebooks.books.AbstractTransformerTest;
 import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTransformer;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.market.MarketCommand;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.Capture;
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.w3c.dom.Node;
 
 /**
  * Unit test for class {@link MarketTransformer}.
@@ -25,27 +26,12 @@ import org.w3c.dom.Node;
  */
 @Test
 public class MarketTransformerTest extends AbstractTransformerTest {
-
-    private IMocksControl mockControl;
-    private MarketTransformer underTest;
-    private BeanFactory beanFactory;
-    private BookParagraphDataTransformer parent;
-    private FfParagraphData data;
-    private ChoicePositionCounter counter;
-
-    @BeforeClass
-    public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        init(mockControl);
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        node = mockControl.createMock(Node.class);
-        parent = mockControl.createMock(BookParagraphDataTransformer.class);
-        data = mockControl.createMock(FfParagraphData.class);
-        counter = mockControl.createMock(ChoicePositionCounter.class);
-
-        underTest = new MarketTransformer();
-        underTest.setBeanFactory(beanFactory);
-    }
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private MarketTransformer underTest;
+    @Inject private BeanFactory beanFactory;
+    @Mock private BookParagraphDataTransformer parent;
+    @Mock private FfParagraphData data;
+    @Mock private ChoicePositionCounter counter;
 
     @BeforeMethod
     public void setUpMethod() {
@@ -65,7 +51,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
     public void testWhenNoGiveUpAmountIsSetAndTransformationSucceedsShouldTransformProperly() {
         // GIVEN
         expect(data.getText()).andReturn("Some text. [div data-market=\"\"][/div]");
-        final Capture<MarketCommand> capture = new Capture<>();
+        final Capture<MarketCommand> capture = newCapture();
         data.addCommand(capture(capture));
         expectAttribute("currencySimple");
         expectAttribute("currencyMultiple");
@@ -91,7 +77,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
     public void testWhenGiveUpAmountIsSetAndTransformationSucceedsShouldTransformProperly() {
         // GIVEN
         expect(data.getText()).andReturn("Some text. [div data-market=\"\"][/div]");
-        final Capture<MarketCommand> capture = new Capture<>();
+        final Capture<MarketCommand> capture = newCapture();
         data.addCommand(capture(capture));
         expectAttribute("currencySimple");
         expectAttribute("currencyMultiple");

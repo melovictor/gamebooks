@@ -1,77 +1,77 @@
 package hu.zagor.gamebooks.mvc.login.facade;
 
+import static hu.zagor.gamebooks.player.PlayerUser.ADMIN;
+import static hu.zagor.gamebooks.player.PlayerUser.USER;
 import hu.zagor.gamebooks.connectivity.ServerCommunicator;
-import hu.zagor.gamebooks.mvc.login.domain.LoginData;
-import hu.zagor.gamebooks.mvc.login.domain.LoginResult;
+import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.net.URLConnection;
 import java.net.UnknownHostException;
-
+import java.util.Arrays;
+import java.util.Collection;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationServiceException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
 
 /**
  * Default implementation of the {@link LoginFacade} interface.
  * @author Tamas_Szekeres
  */
-public class ZagorLoginFacade implements LoginFacade {
+public class ZagorLoginFacade extends AbstractLoginFacade {
 
-    @LogInject
-    private Logger logger;
-    @Autowired
-    private ServerCommunicator communcator;
+    @LogInject private Logger logger;
+    @Autowired private ServerCommunicator communcator;
 
     @Override
-    public LoginResult doLogin(final LoginData data) {
-        final LoginResult result = new LoginResult();
-        String response = null;
+    public Authentication authenticate(final Authentication authentication) throws AuthenticationException {
 
         try {
-            final String postData = assemblePostData(data);
+            final String postData = assemblePostData(authentication);
             final URLConnection connection = communcator.connect("http://zagor.hu/remotelogin.php");
             communcator.sendRequest(connection, postData);
-            response = communcator.receiveResponse(connection);
-            analizeResponse(data, result, response);
+            final String response = communcator.receiveResponse(connection);
+            analizeResponse(authentication, response);
+            final Authentication result = null;
+            return result;
         } catch (final SocketTimeoutException e) {
-            result.setMessage("page.login.zagor.server.slow");
+            throw new AuthenticationServiceException("page.login.zagor.server.slow");
         } catch (final FileNotFoundException e) {
-            result.setMessage("page.login.zagor.server.nofile");
+            throw new AuthenticationServiceException("page.login.zagor.server.nofile");
         } catch (final UnknownHostException e) {
-            result.setMessage("page.login.zagor.server.nohost");
+            throw new AuthenticationServiceException("page.login.zagor.server.nohost");
         } catch (final IOException e) {
-            result.setSuccessful(false);
-            result.setMessage("page.login.zagor.server.unknown");
+            throw new AuthenticationServiceException("page.login.zagor.server.unknown");
         }
-
-        return result;
     }
 
-    private void analizeResponse(final LoginData data, final LoginResult result, final String response) {
+    private Authentication analizeResponse(final Authentication authentication, final String response) {
         if (response == null) {
-            result.setSuccessful(false);
-            result.setMessage("page.login.invalid.username.password");
-        } else {
-            result.setSuccessful(true);
-
-            if (data.getUsername() == null) {
-                final String[] pieces = response.split("\\|");
-                result.setAdmin(Integer.parseInt(pieces[0]) == 1);
-                result.setId(Integer.parseInt(pieces[1]));
-                data.setUsername(pieces[2]);
-            } else {
-                result.setAdmin(Integer.parseInt(response.substring(0, 1)) == 1);
-                result.setId(Integer.parseInt(response.substring(1)));
-            }
+            throw new BadCredentialsException("page.login.invalid.username.password");
         }
+        final boolean isAdmin = Integer.parseInt(response.substring(0, 1)) == 1;
+        final int id = Integer.parseInt(response.substring(1));
+
+        Collection<? extends GrantedAuthority> authorities;
+        if (isAdmin) {
+            authorities = Arrays.asList(USER, ADMIN);
+        } else {
+            authorities = Arrays.asList(USER);
+        }
+
+        return new PlayerUser(id, authentication.getPrincipal(), authorities);
     }
 
-    private String assemblePostData(final LoginData data) throws IOException {
-        String part = communcator.compilePostData("username", data.getUsername(), null);
-        part = communcator.compilePostData("password", data.getPassword(), part);
+    private String assemblePostData(final Authentication authentication) throws IOException {
+        String part = communcator.compilePostData("username", authentication.getPrincipal(), null);
+        part = communcator.compilePostData("password", authentication.getCredentials(), part);
         return part;
     }
+
 }

@@ -14,7 +14,7 @@
     </span>
 	
 	<div>
-	    <span data-enemy-id="0">${user.username}</span>
+	    <span data-enemy-id="0">${user.principal}</span>
 	    <span data-enemy-skill>${charEquipments.skill}</span>
 	    <span data-enemy-stamina>${charEquipments.stamina}</span>
 	    <span data-enemy-luck>${charEquipments.luck}</span>

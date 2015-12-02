@@ -1,38 +1,49 @@
 package hu.zagor.gamebooks.player;
 
+import java.util.Arrays;
+import java.util.Collection;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.util.Assert;
 
 /**
  * Bean for storing data about the player itself.
  * @author Tamas_Szekeres
  */
-public class PlayerUser {
+public class PlayerUser extends UsernamePasswordAuthenticationToken {
+    public static final GrantedAuthority USER = new SimpleGrantedAuthority("USER");
+    public static final GrantedAuthority ADMIN = new SimpleGrantedAuthority("ADMIN");
 
     private final int id;
-    private final String username;
-    private final boolean admin;
     private final PlayerSettings settings = new PlayerSettings();
 
     /**
-     * Basic constructor that stores the name of the user and it's admin status.
+     * Creates a new {@link PlayerUser} that also acts as the {@link Authentication} object.
+     * @param principal the login name of the user
+     * @param authorities the granted authorities for the user
      * @param id the id of the user
-     * @param username the name of the user, cannot be null
-     * @param admin true if the user is an admin and is allowed to cheat, false otherwise
      */
-    public PlayerUser(final int id, final String username, final boolean admin) {
-        Assert.notNull(username, "The parameter 'username' cannot be null!");
-        Assert.isTrue(id > 0, "The parameter 'id' must be positive!");
+    public PlayerUser(final int id, final Object principal, final Collection<? extends GrantedAuthority> authorities) {
+        super(principal, null, authorities);
         this.id = id;
-        this.username = username;
-        this.admin = admin;
     }
 
-    public String getUsername() {
-        return username;
+    /**
+     * Creates a new {@link PlayerUser} for testing purposes. Should not be used in live code.
+     * @param id the id of the user
+     * @param principal the login name of the user
+     * @param isAdmin true if the user should be admin, false otherwise
+     */
+    public PlayerUser(final int id, final String principal, final boolean isAdmin) {
+        this(id, principal, isAdmin ? Arrays.asList(USER, ADMIN) : Arrays.asList(USER));
+        Assert.notNull(principal, "The parameter 'principal' cannot be null!");
+        Assert.isTrue(id > 0, "The parameter 'id' must be positive!");
     }
 
     public boolean isAdmin() {
-        return admin;
+        return this.getAuthorities().contains(ADMIN);
     }
 
     public int getId() {
