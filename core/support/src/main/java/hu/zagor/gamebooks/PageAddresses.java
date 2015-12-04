@@ -10,7 +10,6 @@ public final class PageAddresses {
 
     public static final String LOGIN = "login";
     public static final String TEST_LOGIN = "testLogin";
-    public static final String LOGOUT = "logoutSuccessful";
     public static final String BOOK_LIST = "booklist";
     public static final String BOOK_PAGE = "book";
 
