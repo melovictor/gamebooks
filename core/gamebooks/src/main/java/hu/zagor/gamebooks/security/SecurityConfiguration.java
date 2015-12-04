@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.security;
 
+import hu.zagor.gamebooks.mvc.logout.handler.ResettingLogoutHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,7 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired @Qualifier("activeLoginFacade") private AuthenticationProvider authenticationProvider;
+    @Autowired private ResettingLogoutHandler logoutHandler;
 
     /**
      * Configures the global spring security.
@@ -35,6 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         final ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry allowAccessToResources = requestAuthorizator.antMatchers("/resources/**")
             .permitAll();
         final ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry disallowOtherAccess = allowAccessToResources.anyRequest().authenticated();
-        disallowOtherAccess.and().formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccessful", true).permitAll();
+        disallowOtherAccess.and().formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccessful", true).permitAll().and().logout().addLogoutHandler(logoutHandler)
+            .logoutSuccessUrl("/login").permitAll();
     }
 }
