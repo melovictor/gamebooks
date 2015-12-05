@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.security;
 
+import hu.zagor.gamebooks.mvc.login.service.LoginFailureHandler;
 import hu.zagor.gamebooks.mvc.logout.handler.ResettingLogoutHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,7 +10,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 /**
  * Class for setting up the spring security.
@@ -20,6 +21,8 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired @Qualifier("activeLoginFacade") private AuthenticationProvider authenticationProvider;
     @Autowired private ResettingLogoutHandler logoutHandler;
+    @Autowired private LoginFailureHandler loginResultHandler;
+    @Autowired @Qualifier("csrfAccessDeniedHandler") private AccessDeniedHandler accessDeniedHandler;
 
     /**
      * Configures the global spring security.
@@ -33,11 +36,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
-        final ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry requestAuthorizator = http.authorizeRequests();
-        final ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry allowAccessToResources = requestAuthorizator.antMatchers("/resources/**")
-            .permitAll();
-        final ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry disallowOtherAccess = allowAccessToResources.anyRequest().authenticated();
-        disallowOtherAccess.and().formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccessful", true).permitAll().and().logout().addLogoutHandler(logoutHandler)
-            .logoutSuccessUrl("/login").permitAll();
+        final HttpSecurity basic = http.authorizeRequests().antMatchers("/resources/**").permitAll().anyRequest().authenticated().and();
+        final HttpSecurity login = basic.formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccessful", true).failureHandler(loginResultHandler).permitAll().and();
+        final HttpSecurity logout = login.logout().addLogoutHandler(logoutHandler).logoutSuccessUrl("/login").permitAll().and();
+        logout.exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
+
 }
