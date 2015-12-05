@@ -5,6 +5,7 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
+import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
@@ -15,10 +16,8 @@ import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
@@ -36,35 +35,21 @@ import org.testng.annotations.Test;
 @Test
 public class Ff23BookTakeItemControllerConsumeItemTest {
 
-    @MockControl
-    private IMocksControl mockControl;
-    @UnderTest
-    private Ff23BookTakeItemController underTest;
-    @Mock
-    private HttpServletRequest request;
-    @Mock
-    private HttpSession session;
-    @Inject
-    private BeanFactory beanFactory;
-    @Mock
-    private HttpSessionWrapper wrapper;
-    @Inject
-    private ItemInteractionRecorder itemInteractionRecorder;
-    @Mock
-    private Paragraph paragraph;
-    @Mock
-    private FfCharacter character;
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private Ff23BookTakeItemController underTest;
+    @Mock private HttpServletRequest request;
+    @Mock private HttpSession session;
+    @Inject private BeanFactory beanFactory;
+    @Mock private HttpSessionWrapper wrapper;
+    @Inject private ItemInteractionRecorder itemInteractionRecorder;
+    @Mock private Paragraph paragraph;
+    @Mock private FfCharacter character;
     private FfBookInformations info;
-    @Instance
-    private FfCharacterHandler characterHandler;
-    @Mock
-    private FfParagraphData data;
-    @Mock
-    private FfCharacterItemHandler itemHandler;
-    @Mock
-    private FfItem item;
-    @Mock
-    private FfAttributeHandler attributeHandler;
+    @Instance private FfCharacterHandler characterHandler;
+    @Mock private FfParagraphData data;
+    @Mock private FfCharacterItemHandler itemHandler;
+    @Mock private FfItem item;
+    @Mock private FfAttributeHandler attributeHandler;
 
     @BeforeClass
     public void setUpClass() {
@@ -83,39 +68,48 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
 
     public void testDoHandleConsumeItemWhenNormalItemShouldConsumeNormally() {
         // GIVEN
-        expectConsumeItemNormally("2002");
+        final String itemId = "2002";
+        expectWrapper();
+        itemInteractionRecorder.recordItemConsumption(wrapper, itemId);
+        expect(wrapper.getParagraph()).andReturn(paragraph);
+        expect(wrapper.getCharacter()).andReturn(character);
+        expect(character.getCommandView()).andReturn(null);
+        expect(itemHandler.getItem(character, itemId)).andReturn(item);
+        expect(item.getItemType()).andReturn(ItemType.potion);
+        expect(paragraph.getActions()).andReturn(10);
+        expect(item.getActions()).andReturn(1);
+        paragraph.setActions(9);
+        itemHandler.consumeItem(character, itemId, attributeHandler);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(request, "2002");
+        final String returned = underTest.doHandleConsumeItem(request, itemId);
         // THEN
         Assert.assertNull(returned);
     }
 
     public void testDoHandleConsumeItemWhenProvisionShouldRemoveNotEatenFlagAndConsumeNormally() {
         // GIVEN
+        final String itemId = "2000";
         expectWrapper();
         expect(wrapper.getCharacter()).andReturn(character);
         itemHandler.removeItem(character, "4002", 10);
-        expectConsumeItemNormally("2000");
-        mockControl.replay();
-        // WHEN
-        final String returned = underTest.doHandleConsumeItem(request, "2000");
-        // THEN
-        Assert.assertNull(returned);
-    }
-
-    private void expectConsumeItemNormally(final String itemId) {
         expectWrapper();
         itemInteractionRecorder.recordItemConsumption(wrapper, itemId);
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(null);
-        expect(paragraph.getData()).andReturn(data);
         expect(itemHandler.getItem(character, itemId)).andReturn(item);
+        expect(item.getItemType()).andReturn(ItemType.provision);
+        expect(paragraph.getData()).andReturn(data);
         expect(paragraph.getActions()).andReturn(10);
         expect(item.getActions()).andReturn(1);
         paragraph.setActions(9);
         itemHandler.consumeItem(character, itemId, attributeHandler);
+        mockControl.replay();
+        // WHEN
+        final String returned = underTest.doHandleConsumeItem(request, itemId);
+        // THEN
+        Assert.assertNull(returned);
     }
 
     private void expectWrapper() {

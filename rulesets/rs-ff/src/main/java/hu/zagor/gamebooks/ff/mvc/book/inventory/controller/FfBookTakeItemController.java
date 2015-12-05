@@ -6,6 +6,7 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
+import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.command.CommandView;
@@ -42,14 +43,13 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
     @RequestMapping(value = PageAddresses.BOOK_PURCHASE_ITEM, consumes = "application/json", method = RequestMethod.POST)
     @ResponseBody
     public int handleItemTake(final HttpServletRequest request, @RequestBody final TakePurchaseItemData data) {
-        Assert.isTrue(data.getPrice() == 0 || data.getAmount() == 1, "When the item to take has a price, only a single piece of it can be taken.");
         final FfCharacter character = (FfCharacter) getWrapper(request).getCharacter();
         int takeItemResult;
         if (data.getPrice() > 0 && character.getGold() < data.getPrice()) {
             takeItemResult = 0;
         } else {
             takeItemResult = super.handleItemTake(request, data);
-            character.setGold(character.getGold() - takeItemResult * data.getPrice());
+            character.setGold(character.getGold() - Math.min(takeItemResult, 1) * data.getPrice());
         }
         return takeItemResult;
     }
@@ -135,18 +135,24 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
         final Paragraph paragraph = wrapper.getParagraph();
         final Character character = wrapper.getCharacter();
         final CommandView commandView = character.getCommandView();
-        if (notFighting(commandView) && canEatHere(paragraph)) {
-            final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
-            final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
-            final FfItem item = (FfItem) itemHandler.getItem(character, itemId);
-            final int totalActions = paragraph.getActions();
-            final int consumeTime = item.getActions();
-            if (totalActions >= consumeTime) {
-                paragraph.setActions(totalActions - consumeTime);
-                itemHandler.consumeItem((FfCharacter) character, itemId, characterHandler.getAttributeHandler());
+        final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
+        final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
+        final FfItem item = (FfItem) itemHandler.getItem(character, itemId);
+        if (notFighting(commandView)) {
+            if (!isFood(item) || canEatHere(paragraph)) {
+                final int totalActions = paragraph.getActions();
+                final int consumeTime = item.getActions();
+                if (totalActions >= consumeTime) {
+                    paragraph.setActions(totalActions - consumeTime);
+                    itemHandler.consumeItem((FfCharacter) character, itemId, characterHandler.getAttributeHandler());
+                }
             }
         }
         return null;
+    }
+
+    private boolean isFood(final FfItem item) {
+        return item.getItemType() == ItemType.provision;
     }
 
     private boolean canEatHere(final Paragraph paragraph) {

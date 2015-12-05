@@ -5,18 +5,21 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
+import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
@@ -31,45 +34,28 @@ import org.testng.annotations.Test;
  */
 @Test
 public class Ff38BookTakeItemControllerATest {
-
-    private Ff38BookTakeItemController underTest;
-    private IMocksControl mockControl;
-    private BeanFactory beanFactory;
-    private HttpServletRequest request;
-    private HttpSession session;
-    private HttpSessionWrapper wrapper;
-    private Paragraph paragraph;
-    private FfCharacter character;
+    @UnderTest private Ff38BookTakeItemController underTest;
+    @MockControl private IMocksControl mockControl;
+    @Inject private BeanFactory beanFactory;
+    @Mock private HttpServletRequest request;
+    @Mock private HttpSession session;
+    @Mock private HttpSessionWrapper wrapper;
+    @Mock private Paragraph paragraph;
+    @Mock private FfCharacter character;
     private FfBookInformations info;
-    private FfCharacterHandler characterHandler;
-    private FfCharacterItemHandler itemHandler;
-    private FfParagraphData paragraphData;
-    private FfItem item;
-    private FfAttributeHandler attributeHandler;
-    private ItemInteractionRecorder itemInteractionRecorder;
+    @Instance private FfCharacterHandler characterHandler;
+    @Mock private FfCharacterItemHandler itemHandler;
+    @Mock private FfParagraphData paragraphData;
+    @Mock private FfItem item;
+    @Mock private FfAttributeHandler attributeHandler;
+    @Inject private ItemInteractionRecorder itemInteractionRecorder;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        underTest = new Ff38BookTakeItemController();
-        itemInteractionRecorder = mockControl.createMock(ItemInteractionRecorder.class);
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        underTest.setBeanFactory(beanFactory);
-        request = mockControl.createMock(HttpServletRequest.class);
-        wrapper = mockControl.createMock(HttpSessionWrapper.class);
-        session = mockControl.createMock(HttpSession.class);
-        paragraph = mockControl.createMock(Paragraph.class);
-        character = mockControl.createMock(FfCharacter.class);
         info = new FfBookInformations(1L);
-        characterHandler = new FfCharacterHandler();
-        itemHandler = mockControl.createMock(FfCharacterItemHandler.class);
         characterHandler.setItemHandler(itemHandler);
         info.setCharacterHandler(characterHandler);
         Whitebox.setInternalState(underTest, "info", info);
-        Whitebox.setInternalState(underTest, "itemInteractionRecorder", itemInteractionRecorder);
-        paragraphData = mockControl.createMock(FfParagraphData.class);
-        item = mockControl.createMock(FfItem.class);
-        attributeHandler = mockControl.createMock(FfAttributeHandler.class);
         characterHandler.setAttributeHandler(attributeHandler);
         characterHandler.setCanEatEverywhere(true);
     }
@@ -77,14 +63,6 @@ public class Ff38BookTakeItemControllerATest {
     @BeforeMethod
     public void setUpMethod() {
         mockControl.reset();
-    }
-
-    public void testConstructor() {
-        // GIVEN
-        mockControl.replay();
-        // WHEN
-        underTest.getClass();
-        // THEN
     }
 
     public void testDoHandleConsumeItemWhenGhostIsInRoomShouldNotBeAbleToConsumeAnything() {
@@ -121,7 +99,7 @@ public class Ff38BookTakeItemControllerATest {
         expect(wrapper.getCharacter()).andReturn(character);
         expect(itemHandler.hasItem(character, "4021")).andReturn(false);
         expect(itemHandler.addItem(character, "4021", 1)).andReturn(1);
-        consumeItem(meal);
+        consumeProvision(meal);
         mockControl.replay();
         // WHEN
         final String returned = underTest.doHandleConsumeItem(request, meal);
@@ -136,7 +114,7 @@ public class Ff38BookTakeItemControllerATest {
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("63");
         expect(wrapper.getCharacter()).andReturn(character);
-        consumeItem(meal);
+        consumePotion(meal);
         mockControl.replay();
         // WHEN
         final String returned = underTest.doHandleConsumeItem(request, meal);
@@ -151,7 +129,7 @@ public class Ff38BookTakeItemControllerATest {
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("100");
         expect(wrapper.getCharacter()).andReturn(character);
-        consumeItem(meal);
+        consumeProvision(meal);
         mockControl.replay();
         // WHEN
         final String returned = underTest.doHandleConsumeItem(request, meal);
@@ -252,18 +230,33 @@ public class Ff38BookTakeItemControllerATest {
         Assert.assertNull(returned);
     }
 
-    private void consumeItem(final String consumeId) {
+    private void consumeProvision(final String consumeId) {
+        preConsume(consumeId);
+        expect(item.getItemType()).andReturn(ItemType.provision);
+        expect(paragraph.getData()).andReturn(paragraphData);
+        postConsume(consumeId);
+    }
+
+    private void consumePotion(final String consumeId) {
+        preConsume(consumeId);
+        expect(item.getItemType()).andReturn(ItemType.potion);
+        postConsume(consumeId);
+    }
+
+    private void postConsume(final String consumeId) {
+        expect(paragraph.getActions()).andReturn(9);
+        expect(item.getActions()).andReturn(1);
+        paragraph.setActions(8);
+        itemHandler.consumeItem(character, consumeId, attributeHandler);
+    }
+
+    private void preConsume(final String consumeId) {
         expectWrapper();
         itemInteractionRecorder.recordItemConsumption(wrapper, consumeId);
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(null);
-        expect(paragraph.getData()).andReturn(paragraphData);
         expect(itemHandler.getItem(character, consumeId)).andReturn(item);
-        expect(paragraph.getActions()).andReturn(9);
-        expect(item.getActions()).andReturn(1);
-        paragraph.setActions(8);
-        itemHandler.consumeItem(character, consumeId, attributeHandler);
     }
 
     private void expectWrapper() {

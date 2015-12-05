@@ -13,11 +13,13 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.mvc.book.inventory.service.FfMarketHandler;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.easymock.IMocksControl;
@@ -34,7 +36,7 @@ import org.testng.annotations.Test;
  * @author Tamas_Szekeres
  */
 @Test
-public class FfBookTakeItemControllerPositiveHasNoTimeTest {
+public class FfBookTakeItemControllerPositiveNotProvisionTest {
     @UnderTest private FfBookTakeItemController underTest;
     @MockControl private IMocksControl mockControl;
     @Mock private HttpServletRequest request;
@@ -49,6 +51,8 @@ public class FfBookTakeItemControllerPositiveHasNoTimeTest {
     @Mock private FfAttributeHandler attributeHandler;
     @Mock private Paragraph paragraph;
     @Mock private FfParagraphData data;
+    @Inject private FfMarketHandler marketHandler;
+    @Instance private Map<String, Object> resultMap;
     @Mock private FfItem item;
     @Inject private ItemInteractionRecorder itemInteractionRecorder;
 
@@ -67,37 +71,24 @@ public class FfBookTakeItemControllerPositiveHasNoTimeTest {
         mockControl.reset();
     }
 
-    public void testHandleItemStateChangeWhenHasNoTimeShouldDoNothing() {
+    public void testHandleConsumeItemWhenNoEventIsOngoingAndWeAreDrinkingShouldConsumeItem() {
         // GIVEN
         expect(request.getSession()).andReturn(session);
         expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
         wrapper.setRequest(request);
-        expect(wrapper.getParagraph()).andReturn(paragraph);
-        expect(paragraph.getActions()).andReturn(0);
-        mockControl.replay();
-        // WHEN
-        underTest.handleItemStateChange(request, "3009", true);
-        // THEN
-    }
-
-    public void testHandleConsumeItemWhenLuckTestingAndCanEatButHasNoTimeShouldNotConsumeItem() {
-        // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
-        itemInteractionRecorder.recordItemConsumption(wrapper, "2000");
+        itemInteractionRecorder.recordItemConsumption(wrapper, "2001");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
-        expect(character.getCommandView()).andReturn(commandView);
-        expect(itemHandler.getItem(character, "2000")).andReturn(item);
-        expect(commandView.getViewName()).andReturn("ffAttributeTest").times(2);
-        expect(item.getItemType()).andReturn(ItemType.provision);
-        expect(paragraph.getData()).andReturn(data);
-        expect(paragraph.getActions()).andReturn(0);
+        expect(character.getCommandView()).andReturn(null);
+        expect(itemHandler.getItem(character, "2001")).andReturn(item);
+        expect(item.getItemType()).andReturn(ItemType.potion);
+        expect(paragraph.getActions()).andReturn(10);
         expect(item.getActions()).andReturn(1);
+        paragraph.setActions(9);
+        itemHandler.consumeItem(character, "2001", attributeHandler);
         mockControl.replay();
         // WHEN
-        underTest.handleConsumeItem(request, "2000");
+        underTest.handleConsumeItem(request, "2001");
         // THEN
     }
 
