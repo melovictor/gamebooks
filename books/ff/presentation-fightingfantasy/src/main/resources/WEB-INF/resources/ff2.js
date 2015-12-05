@@ -8,6 +8,7 @@ var ff2 = (function() {
 		$("[data-step='2']").show();
 		$("#choiceWrapper").hide();
 		maxSpells = data.ffSpellNumeric;
+		$("[data-generator-button='ff2']").removeAttr("disabled").show();
 	}
 	function finalizeCharacter() {
 		var data = {
@@ -28,6 +29,7 @@ var ff2 = (function() {
 				inventory.loadInventory();
 			}
 		});
+		$("[data-generator-button='ff2']").attr("disabled", "disabled").show();
 	}
 	function selectSpell() {
 		if (maxSpells > selectedSpells) {
