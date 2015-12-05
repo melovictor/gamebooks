@@ -4,7 +4,6 @@ import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTran
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
-
 import org.w3c.dom.Node;
 
 /**
@@ -19,6 +18,15 @@ public class ChoiceTransformer extends AbstractStubTransformer {
     @Override
     protected void doTransform(final BookParagraphDataTransformer parent, final Node node, final ParagraphData data) {
         final Choice choice = parseChoice(data.getPositionCounter(), node);
+        addChoice(data, choice);
+    }
+
+    /**
+     * Adds the parsed {@link Choice} object to the {@link ParagraphData} object.
+     * @param data the {@link ParagraphData} object into which the parsed {@link Choice} object must be added
+     * @param choice the {@link Choice} object to add
+     */
+    protected void addChoice(final ParagraphData data, final Choice choice) {
         data.addChoice(choice);
     }
 
