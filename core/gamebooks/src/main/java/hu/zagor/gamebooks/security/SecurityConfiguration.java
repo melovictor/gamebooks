@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 
 /**
  * Class for setting up the spring security.
@@ -23,6 +24,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired private ResettingLogoutHandler logoutHandler;
     @Autowired private LoginFailureHandler loginResultHandler;
     @Autowired @Qualifier("csrfAccessDeniedHandler") private AccessDeniedHandler accessDeniedHandler;
+    @Autowired @Qualifier("csrfSecurityRequestMatcher") private RequestMatcher requestMatcher;
 
     /**
      * Configures the global spring security.
@@ -37,7 +39,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         final HttpSecurity basic = http.authorizeRequests().antMatchers("/resources/**").permitAll().anyRequest().authenticated().and();
-        final HttpSecurity login = basic.formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccessful", true).failureHandler(loginResultHandler).permitAll().and();
+        final HttpSecurity csrf = basic.csrf().requireCsrfProtectionMatcher(requestMatcher).and();
+        final HttpSecurity login = csrf.formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccessful", true).failureHandler(loginResultHandler).permitAll().and();
         final HttpSecurity logout = login.logout().addLogoutHandler(logoutHandler).logoutSuccessUrl("/login").permitAll().and();
         logout.exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
