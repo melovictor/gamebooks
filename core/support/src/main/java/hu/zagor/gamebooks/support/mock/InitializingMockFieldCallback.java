@@ -2,11 +2,16 @@ package hu.zagor.gamebooks.support.mock;
 
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
@@ -18,6 +23,8 @@ import org.springframework.util.ReflectionUtils.FieldCallback;
  * @author Tamas_Szekeres
  */
 public class InitializingMockFieldCallback implements FieldCallback {
+
+    private final List<Class<?>> collections = Arrays.asList((Class<?>) HashMap.class, TreeMap.class, ArrayList.class, HashSet.class, TreeSet.class);
 
     private Object underTest;
     private final Object testInstance;
@@ -54,11 +61,47 @@ public class InitializingMockFieldCallback implements FieldCallback {
 
     private void instantiateOnTest(final Field field) throws IllegalAccessException {
         try {
-            final Object instance = field.getType().newInstance();
+            final Object instance;
+            if (isCollection(field)) {
+                instance = instantiateCollection(field);
+            } else {
+                instance = field.getType().newInstance();
+            }
+            if (instance == null) {
+                throw new IllegalStateException("Couldn't inject any objects into the field " + field.getName() + " with type " + field.getType() + ".");
+            }
             Whitebox.setInternalState(testInstance, field.getName(), instance);
         } catch (final InstantiationException e) {
-            throw new IllegalAccessException(e.getMessage());
+            throw new IllegalAccessException(e.getClass() + ": " + e.getMessage());
         }
+    }
+
+    private Object instantiateCollection(final Field field) throws InstantiationException, IllegalAccessException {
+        Object instance = null;
+        final Instance annotation = field.getAnnotation(Instance.class);
+        if (annotation.type() == Object.class) {
+            for (final Class<?> clazz : collections) {
+                if (isAssignable(field, clazz)) {
+                    instance = clazz.newInstance();
+                }
+            }
+        } else {
+            instance = annotation.type().newInstance();
+        }
+        return instance;
+    }
+
+    private boolean isAssignable(final Field field, final Class<?> clazz) {
+        return field.getType().isAssignableFrom(clazz);
+    }
+
+    private boolean isCollection(final Field field) {
+        boolean isCollection = false;
+        for (final Class<?> clazz : collections) {
+            isCollection |= isAssignable(field, clazz);
+        }
+
+        return isCollection;
     }
 
     private Object injectOnTest(final Field field) {

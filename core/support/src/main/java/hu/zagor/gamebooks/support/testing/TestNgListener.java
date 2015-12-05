@@ -1,6 +1,6 @@
 package hu.zagor.gamebooks.support.testing;
 
-import hu.zagor.gamebooks.support.mock.EasyMockAnnotations;
+import hu.zagor.gamebooks.support.mock.MockAnnotationInitializer;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -42,7 +42,7 @@ public class TestNgListener implements ITestListener {
         for (final ITestNGMethod method : context.getAllTestMethods()) {
             final Object instance = method.getInstance();
             if (!instances.contains(instance)) {
-                EasyMockAnnotations.initialize(instance);
+                MockAnnotationInitializer.initialize(instance);
                 instances.add(instance);
             }
         }

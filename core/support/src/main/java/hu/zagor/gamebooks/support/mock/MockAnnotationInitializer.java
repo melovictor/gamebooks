@@ -15,13 +15,13 @@ import org.springframework.util.ReflectionUtils;
  * Automatically prepares unit tests with the underTest, mock control, mocks and injections using annotations on the fields and/or methods.
  * @author Tamas_Szekeres
  */
-public final class EasyMockAnnotations {
+public final class MockAnnotationInitializer {
 
     private Object testInstance;
     private Object underTest;
     private IMocksControl mockControl;
 
-    private EasyMockAnnotations() {
+    private MockAnnotationInitializer() {
     }
 
     /**
@@ -30,7 +30,7 @@ public final class EasyMockAnnotations {
      */
     public static void initialize(final Object testInstance) {
         try {
-            new EasyMockAnnotations().doInitialize(testInstance);
+            new MockAnnotationInitializer().doInitialize(testInstance);
         } catch (ReflectiveOperationException | IllegalArgumentException e) {
             throw new RuntimeException("Failed to initialize the test instance.", e);
         }
