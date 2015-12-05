@@ -1,10 +1,7 @@
 package hu.zagor.gamebooks.books.saving.xml;
 
 import hu.zagor.gamebooks.books.saving.domain.IgnoreField;
-import hu.zagor.gamebooks.books.saving.xml.exception.UnknownFieldTypeException;
-
 import java.util.Arrays;
-
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,11 +19,6 @@ public class DefaultClassFieldFilter implements ClassFieldFilter {
             ignorableField = Arrays.asList(ignoreField.value().split(",")).contains(nodeName);
         }
         return ignorableField;
-    }
-
-    @Override
-    public void raiseFieldException(final String className) throws UnknownFieldTypeException {
-        throw new UnknownFieldTypeException(className);
     }
 
 }

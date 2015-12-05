@@ -13,16 +13,15 @@ import hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithNull;
 import hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithNumbers;
 import hu.zagor.gamebooks.books.saving.xml.input.SimpleEnum;
 import hu.zagor.gamebooks.support.logging.LoggerInjector;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.io.Serializable;
 import java.io.StringReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
@@ -41,27 +40,17 @@ import org.xml.sax.SAXException;
  */
 @Test
 public class DefaultXmlGameStateLoaderPackATest {
-
-    private DefaultXmlGameStateLoader underTest;
-    private IMocksControl mockControl;
-    private Logger logger;
-    private AutowireCapableBeanFactory beanFactory;
+    @UnderTest private DefaultXmlGameStateLoader underTest;
+    @MockControl private IMocksControl mockControl;
+    @Inject private Logger logger;
+    @Inject private AutowireCapableBeanFactory beanFactory;
     private DocumentBuilderFactory builderFactory;
-    private LoggerInjector loggerInjector;
+    @Inject private LoggerInjector loggerInjector;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        logger = mockControl.createMock(Logger.class);
-        beanFactory = mockControl.createMock(AutowireCapableBeanFactory.class);
         builderFactory = DocumentBuilderFactory.newInstance();
-        loggerInjector = mockControl.createMock(LoggerInjector.class);
-
-        underTest = new DefaultXmlGameStateLoader();
-        Whitebox.setInternalState(underTest, "logger", logger);
-        underTest.setBeanFactory(beanFactory);
         Whitebox.setInternalState(underTest, "builderFactory", builderFactory);
-        Whitebox.setInternalState(underTest, "loggerInjector", loggerInjector);
     }
 
     @BeforeMethod
@@ -77,11 +66,11 @@ public class DefaultXmlGameStateLoaderPackATest {
         prepareForCreation(input, 2);
         mockControl.replay();
         // WHEN
-        final Object loadedObject = underTest.load(input);
+        final Object returned = underTest.load(input);
         // THEN
-        Assert.assertTrue(loadedObject instanceof HashMap);
+        Assert.assertTrue(returned instanceof HashMap);
         @SuppressWarnings("unchecked")
-        final Map<String, Serializable> loadedMap = (HashMap<String, Serializable>) loadedObject;
+        final Map<String, Serializable> loadedMap = (HashMap<String, Serializable>) returned;
         Assert.assertTrue(loadedMap.containsKey("note"));
         Assert.assertEquals(loadedMap.get("note"), "I am a note here and everywhere.");
     }
@@ -95,11 +84,11 @@ public class DefaultXmlGameStateLoaderPackATest {
         prepareForCreation(input, 3);
         mockControl.replay();
         // WHEN
-        final Object loadedObject = underTest.load(input);
+        final Object returned = underTest.load(input);
         // THEN
-        Assert.assertTrue(loadedObject instanceof HashMap);
+        Assert.assertTrue(returned instanceof HashMap);
         @SuppressWarnings("unchecked")
-        final Map<String, Serializable> loadedMap = (HashMap<String, Serializable>) loadedObject;
+        final Map<String, Serializable> loadedMap = (HashMap<String, Serializable>) returned;
         Assert.assertTrue(loadedMap.containsKey("fieldWithNumber"));
         final Serializable serializable = loadedMap.get("fieldWithNumber");
         Assert.assertTrue(serializable instanceof SimpleClassWithInt);
@@ -118,11 +107,11 @@ public class DefaultXmlGameStateLoaderPackATest {
         prepareForCreation(input, 3);
         mockControl.replay();
         // WHEN
-        final Object loadedObject = underTest.load(input);
+        final Object returned = underTest.load(input);
         // THEN
-        Assert.assertTrue(loadedObject instanceof HashMap);
+        Assert.assertTrue(returned instanceof HashMap);
         @SuppressWarnings("unchecked")
-        final Map<String, Serializable> loadedMap = (HashMap<String, Serializable>) loadedObject;
+        final Map<String, Serializable> loadedMap = (HashMap<String, Serializable>) returned;
         Assert.assertTrue(loadedMap.containsKey("fieldWithNumbers"));
         final Serializable serializable = loadedMap.get("fieldWithNumbers");
         Assert.assertTrue(serializable instanceof SimpleClassWithNumbers);
@@ -145,11 +134,11 @@ public class DefaultXmlGameStateLoaderPackATest {
         beanFactory.autowireBean(anyObject(String[].class));
         mockControl.replay();
         // WHEN
-        final Object loadedObject = underTest.load(input);
+        final Object returned = underTest.load(input);
         // THEN
-        Assert.assertTrue(loadedObject instanceof HashMap);
+        Assert.assertTrue(returned instanceof HashMap);
         @SuppressWarnings("unchecked")
-        final Map<String, Serializable> loadedMap = (HashMap<String, Serializable>) loadedObject;
+        final Map<String, Serializable> loadedMap = (HashMap<String, Serializable>) returned;
         Assert.assertTrue(loadedMap.containsKey("fieldWithList"));
         final Serializable serializable = loadedMap.get("fieldWithList");
         Assert.assertTrue(serializable instanceof SimpleClassWithList);
@@ -170,11 +159,11 @@ public class DefaultXmlGameStateLoaderPackATest {
         prepareForCreation(input, 3);
         mockControl.replay();
         // WHEN
-        final Object loadedObject = underTest.load(input);
+        final Object returned = underTest.load(input);
         // THEN
-        Assert.assertTrue(loadedObject instanceof HashMap);
+        Assert.assertTrue(returned instanceof HashMap);
         @SuppressWarnings("unchecked")
-        final Map<String, Serializable> loadedMap = (HashMap<String, Serializable>) loadedObject;
+        final Map<String, Serializable> loadedMap = (HashMap<String, Serializable>) returned;
         Assert.assertTrue(loadedMap.containsKey("fieldWithEnum"));
         final Serializable serializable = loadedMap.get("fieldWithEnum");
         Assert.assertTrue(serializable instanceof SimpleClassWithEnum);
@@ -192,11 +181,11 @@ public class DefaultXmlGameStateLoaderPackATest {
         prepareForCreation(input, 3);
         mockControl.replay();
         // WHEN
-        final Object loadedObject = underTest.load(input);
+        final Object returned = underTest.load(input);
         // THEN
-        Assert.assertTrue(loadedObject instanceof HashMap);
+        Assert.assertTrue(returned instanceof HashMap);
         @SuppressWarnings("unchecked")
-        final Map<String, Serializable> loadedMap = (HashMap<String, Serializable>) loadedObject;
+        final Map<String, Serializable> loadedMap = (HashMap<String, Serializable>) returned;
         Assert.assertTrue(loadedMap.containsKey("fieldWithEnum"));
         final Serializable serializable = loadedMap.get("fieldWithEnum");
         Assert.assertTrue(serializable instanceof SimpleClassWithEnum);
@@ -213,11 +202,11 @@ public class DefaultXmlGameStateLoaderPackATest {
         prepareForCreation(input, 3);
         mockControl.replay();
         // WHEN
-        final Object loadedObject = underTest.load(input);
+        final Object returned = underTest.load(input);
         // THEN
-        Assert.assertTrue(loadedObject instanceof HashMap);
+        Assert.assertTrue(returned instanceof HashMap);
         @SuppressWarnings("unchecked")
-        final Map<String, Serializable> loadedMap = (HashMap<String, Serializable>) loadedObject;
+        final Map<String, Serializable> loadedMap = (HashMap<String, Serializable>) returned;
         Assert.assertTrue(loadedMap.containsKey("fieldWithNull"));
         final Serializable serializable = loadedMap.get("fieldWithNull");
         Assert.assertTrue(serializable instanceof SimpleClassWithNull);
@@ -235,9 +224,9 @@ public class DefaultXmlGameStateLoaderPackATest {
         logger.error(eq("Failed to load saved game, the deserializer threw an exception."), anyObject(SAXException.class));
         mockControl.replay();
         // WHEN
-        final Object loadedObject = underTest.load(input);
+        final Object returned = underTest.load(input);
         // THEN
-        Assert.assertNull(loadedObject);
+        Assert.assertNull(returned);
     }
 
     public void testLoadWhenInputContainsClassWithWrongNumberShouldReturnNull() {
@@ -250,9 +239,9 @@ public class DefaultXmlGameStateLoaderPackATest {
         logger.error(eq("Failed to load saved game, the deserializer threw an exception."), anyObject(UnknownFieldTypeException.class));
         mockControl.replay();
         // WHEN
-        final Object loadedObject = underTest.load(input);
+        final Object returned = underTest.load(input);
         // THEN
-        Assert.assertNull(loadedObject);
+        Assert.assertNull(returned);
     }
 
     private void prepareForCreation(final String input, final int repetition) {

@@ -4,14 +4,17 @@ import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.contentstorage.domain.BookParagraphConstants;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.domain.BookInformations;
+import hu.zagor.gamebooks.domain.ResourceInformation;
 import hu.zagor.gamebooks.mvc.book.controller.domain.StaticResourceDescriptor;
 import hu.zagor.gamebooks.player.PlayerSettings;
 import hu.zagor.gamebooks.player.PlayerUser;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.Map;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.ui.ExtendedModelMap;
@@ -28,30 +31,33 @@ import org.testng.annotations.Test;
  */
 @Test
 public class AbstractSectionDisplayingControllerTest {
-
-    private final TestSectionDisplayingController underTest = new TestSectionDisplayingController();
-    private Model model;
-    private IMocksControl mockControl;
-    private Map<String, Object> modelMap;
-    private BeanFactory beanFactory;
-    private StaticResourceDescriptor descriptor;
+    private AbstractSectionDisplayingController underTest;
+    @Mock private Model model;
+    @MockControl private IMocksControl mockControl;
+    @Mock private Map<String, Object> modelMap;
+    @Inject private BeanFactory beanFactory;
+    @Instance private StaticResourceDescriptor descriptor;
     private BookInformations info;
+    @Instance private ResourceInformation emptyResourceInfo;
+    @Instance private ResourceInformation filledResourceInfo;
 
-    @SuppressWarnings("unchecked")
+    @UnderTest
+    public Object underTest() {
+        return new AbstractSectionDisplayingController() {
+        };
+    }
+
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        model = mockControl.createMock(Model.class);
-        modelMap = mockControl.createMock(Map.class);
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        descriptor = new StaticResourceDescriptor();
         info = new BookInformations(1L);
-        underTest.setBeanFactory(beanFactory);
         Whitebox.setInternalState(underTest, "info", info);
+        filledResourceInfo.setCssResources("raw,ff,ff15");
+        filledResourceInfo.setJsResources("raw,ff,ff15");
     }
 
     @BeforeMethod
     public void setUpMethod() {
+        info.setResources(emptyResourceInfo);
         mockControl.reset();
     }
 
@@ -117,7 +123,35 @@ public class AbstractSectionDisplayingControllerTest {
         Assert.assertEquals(modelMap.get("informativeSections"), false);
     }
 
-    public void testAddJsResourceShouldAddResourceToStaticResourceDescriptor() {
+    public void testAddJsResourceWhenInfoContainsNullResourcesShouldAddResourceToStaticResourceDescriptor() {
+        // GIVEN
+        info.setResources(null);
+        expect(model.asMap()).andReturn(modelMap);
+        expect(modelMap.get("resources")).andReturn(null);
+        expect(beanFactory.getBean(StaticResourceDescriptor.class)).andReturn(descriptor);
+        expect(model.addAttribute("resources", descriptor)).andReturn(model);
+        mockControl.replay();
+        // WHEN
+        underTest.addJsResource(model, "bze");
+        // THEN
+        Assert.assertTrue(descriptor.getJs().contains("bze.js"));
+        Assert.assertEquals(descriptor.getJs().size(), 1);
+    }
+
+    public void testAddCssResourceWhenInfoContainsNullResourcesShouldAddResourceToStaticResourceDescriptor() {
+        // GIVEN
+        info.setResources(null);
+        expect(model.asMap()).andReturn(modelMap);
+        expect(modelMap.get("resources")).andReturn(descriptor);
+        mockControl.replay();
+        // WHEN
+        underTest.addCssResource(model, "bze");
+        // THEN
+        Assert.assertTrue(descriptor.getCss().contains("bze.css"));
+        Assert.assertEquals(descriptor.getCss().size(), 1);
+    }
+
+    public void testAddJsResourceWhenInfoContainsNoResourcesShouldAddResourceToStaticResourceDescriptor() {
         // GIVEN
         expect(model.asMap()).andReturn(modelMap);
         expect(modelMap.get("resources")).andReturn(null);
@@ -128,9 +162,10 @@ public class AbstractSectionDisplayingControllerTest {
         underTest.addJsResource(model, "bze");
         // THEN
         Assert.assertTrue(descriptor.getJs().contains("bze.js"));
+        Assert.assertEquals(descriptor.getJs().size(), 1);
     }
 
-    public void testAddCssResourceShouldAddResourceToStaticResourceDescriptor() {
+    public void testAddCssResourceWhenInfoContainsNoResourcesShouldAddResourceToStaticResourceDescriptor() {
         // GIVEN
         expect(model.asMap()).andReturn(modelMap);
         expect(modelMap.get("resources")).andReturn(descriptor);
@@ -139,6 +174,41 @@ public class AbstractSectionDisplayingControllerTest {
         underTest.addCssResource(model, "bze");
         // THEN
         Assert.assertTrue(descriptor.getCss().contains("bze.css"));
+        Assert.assertEquals(descriptor.getCss().size(), 1);
+    }
+
+    public void testAddJsResourceWhenInfoContainsResourcesShouldAddResourcesToStaticResourceDescriptor() {
+        // GIVEN
+        info.setResources(filledResourceInfo);
+        expect(model.asMap()).andReturn(modelMap);
+        expect(modelMap.get("resources")).andReturn(null);
+        expect(beanFactory.getBean(StaticResourceDescriptor.class)).andReturn(descriptor);
+        expect(model.addAttribute("resources", descriptor)).andReturn(model);
+        mockControl.replay();
+        // WHEN
+        underTest.addJsResource(model, "bze");
+        // THEN
+        Assert.assertTrue(descriptor.getJs().contains("bze.js"));
+        Assert.assertTrue(descriptor.getJs().contains("raw.js"));
+        Assert.assertTrue(descriptor.getJs().contains("ff.js"));
+        Assert.assertTrue(descriptor.getJs().contains("ff15.js"));
+        Assert.assertEquals(descriptor.getJs().size(), 4);
+    }
+
+    public void testAddCssResourceWhenInfoContainsResourcesShouldAddResourceToStaticResourceDescriptor() {
+        // GIVEN
+        info.setResources(filledResourceInfo);
+        expect(model.asMap()).andReturn(modelMap);
+        expect(modelMap.get("resources")).andReturn(descriptor);
+        mockControl.replay();
+        // WHEN
+        underTest.addCssResource(model, "bze");
+        // THEN
+        Assert.assertTrue(descriptor.getCss().contains("bze.css"));
+        Assert.assertTrue(descriptor.getCss().contains("raw.css"));
+        Assert.assertTrue(descriptor.getCss().contains("ff.css"));
+        Assert.assertTrue(descriptor.getCss().contains("ff15.css"));
+        Assert.assertEquals(descriptor.getCss().size(), 4);
     }
 
     @AfterMethod
@@ -146,7 +216,4 @@ public class AbstractSectionDisplayingControllerTest {
         mockControl.verify();
     }
 
-    private class TestSectionDisplayingController extends AbstractSectionDisplayingController {
-
-    }
 }

@@ -3,21 +3,19 @@ package hu.zagor.gamebooks.books.saving.xml;
 import static org.easymock.EasyMock.anyObject;
 import static org.easymock.EasyMock.eq;
 import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.EasyMock.isNull;
 import static org.easymock.EasyMock.startsWith;
 import hu.zagor.gamebooks.books.saving.xml.exception.UnknownFieldTypeException;
 import hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithNumbers;
 import hu.zagor.gamebooks.support.logging.LoggerInjector;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.io.Serializable;
 import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
@@ -35,30 +33,18 @@ import org.xml.sax.InputSource;
  */
 @Test
 public class DefaultXmlGameStateLoaderPackBTest {
-
-    private DefaultXmlGameStateLoader underTest;
-    private IMocksControl mockControl;
-    private Logger logger;
-    private AutowireCapableBeanFactory beanFactory;
+    @UnderTest private DefaultXmlGameStateLoader underTest;
+    @MockControl private IMocksControl mockControl;
+    @Inject private Logger logger;
+    @Inject private AutowireCapableBeanFactory beanFactory;
     private DocumentBuilderFactory builderFactory;
-    private LoggerInjector loggerInjector;
-    private ClassFieldFilter classFieldFilter;
+    @Inject private LoggerInjector loggerInjector;
+    @Inject private ClassFieldFilter classFieldFilter;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        logger = mockControl.createMock(Logger.class);
-        beanFactory = mockControl.createMock(AutowireCapableBeanFactory.class);
         builderFactory = DocumentBuilderFactory.newInstance();
-        loggerInjector = mockControl.createMock(LoggerInjector.class);
-        classFieldFilter = mockControl.createMock(ClassFieldFilter.class);
-
-        underTest = new DefaultXmlGameStateLoader();
-        Whitebox.setInternalState(underTest, "logger", logger);
-        underTest.setBeanFactory(beanFactory);
         Whitebox.setInternalState(underTest, "builderFactory", builderFactory);
-        Whitebox.setInternalState(underTest, "loggerInjector", loggerInjector);
-        Whitebox.setInternalState(underTest, "classFieldFilter", classFieldFilter);
     }
 
     @BeforeMethod
@@ -119,15 +105,27 @@ public class DefaultXmlGameStateLoaderPackBTest {
         Assert.assertEquals(actual.getLongField(), 96L);
     }
 
-    public void testLoadWhenNonHandledSimpleTypeIsSetShouldReturnNull() throws UnknownFieldTypeException {
+    public void testLoadWhenNonHandledSimpleTypeIsSetShouldReturnNull() {
         // GIVEN
         final String input = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "<mainObject class=\"hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper\">"
             + "<element class=\"java.util.HashMap\" isMap=\"true\">" + "<mapEntry>" + "<key class=\"java.lang.Byte\">fieldWithNumbers</key>"
             + "<value class=\"hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithNumbers\">" + "<intBadField class=\"java.lang.Integer\">0</intBadField>"
             + "</value>" + "</mapEntry>" + "</element>" + "</mainObject>";
         prepareForCreation(input, 2);
-        classFieldFilter.raiseFieldException("java.lang.Byte");
-        expectLastCall().andThrow(new UnknownFieldTypeException("java.lang.Byte"));
+        logger.error(eq("Failed to load saved game, the deserializer threw an exception."), anyObject(UnknownFieldTypeException.class));
+        mockControl.replay();
+        // WHEN
+        final Object returned = underTest.load(input);
+        // THEN
+        Assert.assertNull(returned);
+    }
+
+    public void testLoadWhenInputContainsObjectShouldReturnNull() {
+        // GIVEN
+        final String input = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "<mainObject class=\"hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper\">"
+            + "<element class=\"java.util.HashMap\" isMap=\"true\">" + "<mapEntry>" + "<key class=\"java.lang.String\">note</key>"
+            + "<value class=\"java.lang.Object\">I am a note here and everywhere.</value>" + "</mapEntry>" + "</element>" + "</mainObject>";
+        prepareForCreation(input, 2);
         logger.error(eq("Failed to load saved game, the deserializer threw an exception."), anyObject(UnknownFieldTypeException.class));
         mockControl.replay();
         // WHEN

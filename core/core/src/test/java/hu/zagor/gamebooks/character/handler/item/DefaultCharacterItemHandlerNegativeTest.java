@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.character.handler.item;
 
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.ItemFactory;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.annotations.AfterMethod;
@@ -167,6 +166,15 @@ public class DefaultCharacterItemHandlerNegativeTest {
         mockControl.replay();
         // WHEN
         underTest.hasItem(null, ITEM_ID);
+        // THEN throws exception
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testSetItemFactoryWhenFactoryIsNullShouldThrowException() {
+        // GIVEN
+        mockControl.replay();
+        // WHEN
+        underTest.setItemFactory(null);
         // THEN throws exception
     }
 

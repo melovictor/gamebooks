@@ -18,7 +18,7 @@ import javax.xml.stream.XMLStreamException;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.slf4j.Logger;
-import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -33,7 +33,7 @@ public class DefaultXmlGameStateSaverTest {
     @UnderTest private DefaultXmlGameStateSaver underTest;
     @Inject private Logger logger;
     @MockControl private IMocksControl mockControl;
-    @Inject private BeanFactory beanFactory;
+    @Inject private AutowireCapableBeanFactory beanFactory;
     @Mock private DefaultXmlNodeWriter writer;
 
     @BeforeMethod

@@ -227,6 +227,17 @@ public class DefaultCharacterItemHandlerPositiveTest {
         Assert.assertFalse(returned.hasNext());
     }
 
+    public void testSetItemFactoryWhenFactoryIsNotNullShouldLogAndSetItem() {
+        // GIVEN
+        logger.debug("Setting new item factory to DefaultCharacterItemHandler.");
+        final ItemFactory newItemFactory = mockControl.createMock(ItemFactory.class);
+        mockControl.replay();
+        // WHEN
+        underTest.setItemFactory(newItemFactory);
+        // THEN
+        Assert.assertSame(Whitebox.getInternalState(underTest, "itemFactory"), newItemFactory);
+    }
+
     @AfterMethod
     public void tearDownMethod() {
         mockControl.verify();

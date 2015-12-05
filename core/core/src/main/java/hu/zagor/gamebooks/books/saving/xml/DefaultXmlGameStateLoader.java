@@ -1,23 +1,17 @@
 package hu.zagor.gamebooks.books.saving.xml;
 
 import hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper;
-import hu.zagor.gamebooks.support.logging.LogInject;
+import hu.zagor.gamebooks.books.saving.xml.exception.UnknownFieldTypeException;
 import hu.zagor.gamebooks.support.logging.LoggerInjector;
-
 import java.io.StringReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Map;
-
 import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.slf4j.Logger;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.ReflectionUtils;
@@ -31,26 +25,21 @@ import org.xml.sax.InputSource;
  * @author Tamas_Szekeres
  */
 @Component
-public class DefaultXmlGameStateLoader implements XmlGameStateLoader, BeanFactoryAware {
+public class DefaultXmlGameStateLoader extends AbstractGameStateHandler implements XmlGameStateLoader {
 
     private static final String TRUE = "true";
     private static final String VALUE = "value";
-    @LogInject
-    private Logger logger;
-    private AutowireCapableBeanFactory beanFactory;
-    @Autowired
-    private DocumentBuilderFactory builderFactory;
-    @Autowired
-    private LoggerInjector loggerInjector;
-    @Autowired
-    private ClassFieldFilter classFieldFilter;
+
+    @Autowired private DocumentBuilderFactory builderFactory;
+    @Autowired private LoggerInjector loggerInjector;
+    @Autowired private ClassFieldFilter classFieldFilter;
 
     @Override
     public Object load(final String content) {
         Object parsed = null;
         try {
-            final StringReader stringReader = (StringReader) beanFactory.getBean("stringReader", content);
-            final InputSource inputSource = (InputSource) beanFactory.getBean("inputSource", stringReader);
+            final StringReader stringReader = (StringReader) getBeanFactory().getBean("stringReader", content);
+            final InputSource inputSource = (InputSource) getBeanFactory().getBean("inputSource", stringReader);
             final Document document = builderFactory.newDocumentBuilder().parse(inputSource);
 
             final Node mainObjectNode = document.getDocumentElement();
@@ -58,7 +47,7 @@ public class DefaultXmlGameStateLoader implements XmlGameStateLoader, BeanFactor
             initInstance(wrapper, mainObjectNode);
             parsed = wrapper.getElement();
         } catch (final Exception exception) {
-            logger.error("Failed to load saved game, the deserializer threw an exception.", exception);
+            getLogger().error("Failed to load saved game, the deserializer threw an exception.", exception);
         }
         return parsed;
     }
@@ -166,7 +155,7 @@ public class DefaultXmlGameStateLoader implements XmlGameStateLoader, BeanFactor
                 list.add(getFieldObjectFromNode(childNode));
             }
         }
-        beanFactory.autowireBean(list);
+        getBeanFactory().autowireBean(list);
 
         return list;
     }
@@ -186,7 +175,7 @@ public class DefaultXmlGameStateLoader implements XmlGameStateLoader, BeanFactor
         } else if ("java.lang.Boolean".equals(className)) {
             parsedValue = Boolean.valueOf(nodeValue);
         } else {
-            classFieldFilter.raiseFieldException(className);
+            throw new UnknownFieldTypeException(className);
         }
         return parsedValue;
     }
@@ -210,13 +199,13 @@ public class DefaultXmlGameStateLoader implements XmlGameStateLoader, BeanFactor
     }
 
     private Object getInstance(final String className) throws ReflectiveOperationException {
-        logger.debug("Creating new instance of class " + className);
+        getLogger().debug("Creating new instance of class " + className);
         final Class<?> clazz = Class.forName(className);
         final Constructor<?> defaultConstructor;
         try {
             defaultConstructor = clazz.getDeclaredConstructor();
         } catch (final ReflectiveOperationException ex) {
-            logger.error("Failed to grab default constructor for class '{}'.", className);
+            getLogger().error("Failed to grab default constructor for class '{}'.", className);
             throw ex;
         }
         defaultConstructor.setAccessible(true);
@@ -224,17 +213,12 @@ public class DefaultXmlGameStateLoader implements XmlGameStateLoader, BeanFactor
         defaultConstructor.setAccessible(false);
 
         if (createdInstance instanceof BeanFactoryAware) {
-            ((BeanFactoryAware) createdInstance).setBeanFactory(beanFactory);
+            ((BeanFactoryAware) createdInstance).setBeanFactory(getBeanFactory());
         }
         loggerInjector.postProcessBeforeInitialization(createdInstance, null);
 
         return createdInstance;
 
-    }
-
-    @Override
-    public void setBeanFactory(final BeanFactory beanFactory) {
-        this.beanFactory = (AutowireCapableBeanFactory) beanFactory;
     }
 
 }

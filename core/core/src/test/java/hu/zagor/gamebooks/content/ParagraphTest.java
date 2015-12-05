@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.content;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -247,6 +246,16 @@ public class ParagraphTest {
         final int returned = underTest.getActions();
         // THEN
         Assert.assertEquals(returned, 11);
+    }
+
+    public void testClearValidMovesWhenCalledShouldNotRemainPreviouslySetValidMoves() {
+        // GIVEN
+        underTest.addValidMove(PARAGRAP_ID);
+        mockControl.replay();
+        // WHEN
+        underTest.clearValidMoves();
+        // THEN
+        Assert.assertFalse(underTest.isValidMove(PARAGRAP_ID));
     }
 
     @AfterMethod

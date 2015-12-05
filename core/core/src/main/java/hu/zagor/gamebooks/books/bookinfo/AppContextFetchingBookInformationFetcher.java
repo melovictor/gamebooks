@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.books.bookinfo;
 
 import hu.zagor.gamebooks.domain.BookInformations;
-
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;

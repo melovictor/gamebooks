@@ -1,7 +1,5 @@
 package hu.zagor.gamebooks.books.saving.xml;
 
-import hu.zagor.gamebooks.books.saving.xml.exception.UnknownFieldTypeException;
-
 import java.lang.reflect.Field;
 
 /**
@@ -17,12 +15,5 @@ public interface ClassFieldFilter {
      * @return true if the field is not required, false if it is
      */
     boolean isIgnorableField(Object instance, String nodeName);
-
-    /**
-     * Raises a {@link UnknownFieldTypeException} for the specific class.
-     * @param className the type of the field that is unknown for us
-     * @throws UnknownFieldTypeException the raised exception itself
-     */
-    void raiseFieldException(String className) throws UnknownFieldTypeException;
 
 }

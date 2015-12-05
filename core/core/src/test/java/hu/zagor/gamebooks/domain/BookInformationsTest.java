@@ -3,11 +3,9 @@ package hu.zagor.gamebooks.domain;
 import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphResolver;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.CommandResolver;
-
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -155,6 +153,14 @@ public class BookInformationsTest {
         underTest.setCharacterBeanId("ffCharacter");
         // THEN
         Assert.assertEquals(underTest.getCharacterBeanId(), "ffCharacter");
+    }
+
+    public void testCharacterPageDataBeanIdShouldSetCharacterPageDataBeanId() {
+        // GIVEN
+        // WHEN
+        underTest.setCharacterPageDataBeanId("ffCharacterPageData");
+        // THEN
+        Assert.assertEquals(underTest.getCharacterPageDataBeanId(), "ffCharacterPageData");
     }
 
 }

@@ -14,9 +14,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import javax.xml.stream.XMLStreamException;
-import org.slf4j.Logger;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
@@ -25,13 +22,11 @@ import org.springframework.util.Assert;
  * @author Tamas_Szekeres
  */
 @Component
-public class DefaultXmlGameStateSaver implements XmlGameStateSaver, BeanFactoryAware {
+public class DefaultXmlGameStateSaver extends AbstractGameStateHandler implements XmlGameStateSaver {
 
     private static final String MAP_ENTRY = "mapEntry";
     private static final String VALUE = "value";
     private static final String CLASS = "class";
-    @LogInject private Logger logger;
-    private BeanFactory beanFactory;
 
     @Override
     public String save(final Object object) {
@@ -39,14 +34,14 @@ public class DefaultXmlGameStateSaver implements XmlGameStateSaver, BeanFactoryA
 
         String content = null;
         try {
-            final XmlNodeWriter writer = beanFactory.getBean(DefaultXmlNodeWriter.class);
+            final XmlNodeWriter writer = getBeanFactory().getBean(DefaultXmlNodeWriter.class);
 
             saveFields(writer, new SavedGameMapWrapper(object), "mainObject");
 
             writer.closeWriter();
             content = writer.getContent();
         } catch (final XMLStreamException | IllegalArgumentException | IllegalAccessException | UnsupportedEncodingException exception) {
-            logger.error("Failed to save game, the serializer threw an exception.", exception);
+            getLogger().error("Failed to save game, the serializer threw an exception.", exception);
         }
         return content;
     }
@@ -55,7 +50,7 @@ public class DefaultXmlGameStateSaver implements XmlGameStateSaver, BeanFactoryA
         final Class<?> clazz = object.getClass();
         writer.openNode(objectName);
         writer.addAttribute(CLASS, clazz.getName());
-        logger.debug("Saving class " + clazz.getName());
+        getLogger().debug("Saving class " + clazz.getName());
 
         final Field[] fields = getAllFields(clazz);
         AccessibleObject.setAccessible(fields, true);
@@ -64,7 +59,7 @@ public class DefaultXmlGameStateSaver implements XmlGameStateSaver, BeanFactoryA
                 final String fieldName = field.getName();
                 final Object fieldValue = field.get(object);
 
-                logger.debug("Saving field '" + fieldName + "' with value '" + fieldValue + "'.");
+                getLogger().debug("Saving field '" + fieldName + "' with value '" + fieldValue + "'.");
                 saveField(writer, fieldName, fieldValue);
             }
         }
@@ -178,11 +173,6 @@ public class DefaultXmlGameStateSaver implements XmlGameStateSaver, BeanFactoryA
     private boolean isSimpleValue(final Class<?> fieldType) {
         final String fieldTypeName = fieldType.getName();
         return fieldTypeName.startsWith("java.lang.");
-    }
-
-    @Override
-    public void setBeanFactory(final BeanFactory beanFactory) {
-        this.beanFactory = beanFactory;
     }
 
 }
