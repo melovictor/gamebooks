@@ -160,7 +160,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
             final ChoiceSet choices = previousParagraph.getData().getChoices();
             choice = position == null ? choices.getChoiceById(sectionId) : choices.getChoiceByPosition(position);
             if (choice == null) {
-                if (!player.isAdmin()) {
+                if (!player.isTester()) {
                     getLogger().debug("Player tried to navigate to illegal section {}.", sectionId);
                     throw new InvalidStepChoiceException(previousParagraph.getId(), sectionId);
                 }

@@ -16,7 +16,6 @@ import hu.zagor.gamebooks.exception.InvalidGatheredItemException;
 import hu.zagor.gamebooks.exception.InvalidStepChoiceException;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -31,8 +30,7 @@ public class DefaultBookContentInitializer implements BookContentInitializer, Be
 
     private static final String INFO_NOT_NULL = "The parameter 'info' cannot be null!";
     private static final String PLAYER_NOT_NULL = "The parameter 'player' cannot be null!";
-    @LogInject
-    private Logger logger;
+    @LogInject private Logger logger;
     private final BookContentStorage storage;
     private final GameStateHandler gameStateHandler;
     private BeanFactory beanFactory;
@@ -86,7 +84,7 @@ public class DefaultBookContentInitializer implements BookContentInitializer, Be
             checkNewParagraphValidity(previousParagraph, paragraphId);
         } catch (final InvalidStepChoiceException exception) {
             logger.debug("Player tried to navigate to illegal section {}.", paragraphId);
-            if (!player.isAdmin()) {
+            if (!player.isTester()) {
                 throw exception;
             }
         }
