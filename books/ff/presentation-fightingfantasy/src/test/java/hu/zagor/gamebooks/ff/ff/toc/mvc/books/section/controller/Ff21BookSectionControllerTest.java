@@ -8,7 +8,6 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -77,7 +76,7 @@ public class Ff21BookSectionControllerTest {
         // GIVEN
         mockControl.replay();
         // WHEN
-        new Ff21BookSectionController(sectionHandler).handleCustomSections(model, wrapper, null, null);
+        new Ff21BookSectionController(sectionHandler).handleCustomSectionsPre(model, wrapper, null, null);
         // THEN
     }
 
@@ -89,7 +88,7 @@ public class Ff21BookSectionControllerTest {
         final Ff21BookSectionController underTest = new Ff21BookSectionController(sectionHandler);
         Whitebox.setInternalState(underTest, "info", info);
         // WHEN
-        underTest.handleCustomSections(model, wrapper, "333", null);
+        underTest.handleCustomSectionsPre(model, wrapper, "333", null);
         // THEN
     }
 
@@ -102,7 +101,7 @@ public class Ff21BookSectionControllerTest {
         final Ff21BookSectionController underTest = new Ff21BookSectionController(sectionHandler);
         Whitebox.setInternalState(underTest, "info", info);
         // WHEN
-        underTest.handleCustomSections(model, wrapper, "333", null);
+        underTest.handleCustomSectionsPre(model, wrapper, "333", null);
         // THEN
     }
 

@@ -12,7 +12,6 @@ import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.ff.cot.mvc.books.section.service.BallThrowChallenge;
 import hu.zagor.gamebooks.ff.ff.cot.mvc.books.section.service.WhoThrowsHigherService;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -86,7 +85,7 @@ public class Ff5BookSectionControllerTest {
         expect(paragraph.getId()).andReturn(sectionId).times(2);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSections(model, wrapper, sectionIdentifier, paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
         // THEN
     }
 
@@ -104,7 +103,7 @@ public class Ff5BookSectionControllerTest {
         whoThrowsHigher.playGame(character, data);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSections(model, wrapper, sectionIdentifier, paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
         // THEN
     }
 
@@ -122,7 +121,7 @@ public class Ff5BookSectionControllerTest {
         whoThrowsHigher.playGame(character, data);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSections(model, wrapper, sectionIdentifier, paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
         // THEN
     }
 
@@ -139,7 +138,7 @@ public class Ff5BookSectionControllerTest {
         whoThrowsHigher.playGame(character, data);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSections(model, wrapper, sectionIdentifier, paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
         // THEN
     }
 
@@ -155,7 +154,7 @@ public class Ff5BookSectionControllerTest {
         whoThrowsHigher.playGame(character, data);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSections(model, wrapper, sectionIdentifier, paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
         // THEN
     }
 
@@ -169,7 +168,7 @@ public class Ff5BookSectionControllerTest {
         ballThrowChallenge.playGame(character, data);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSections(model, wrapper, sectionIdentifier, paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
         // THEN
     }
 

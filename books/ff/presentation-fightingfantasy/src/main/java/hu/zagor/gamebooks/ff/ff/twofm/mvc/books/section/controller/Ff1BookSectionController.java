@@ -16,11 +16,8 @@ import hu.zagor.gamebooks.ff.mvc.book.section.controller.FfBookSectionController
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.raw.mvc.book.section.domain.UserInputResponseForm;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
-
 import java.io.UnsupportedEncodingException;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -53,7 +50,7 @@ public class Ff1BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSections(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
         final String id = paragraph.getId();
         if (OLD_MAN_DICING.equals(id) && hasNoBets(wrapper)) {
             final ItemCheckCommand itemCheckCommand = (ItemCheckCommand) wrapper.getParagraph().getData().getCommands().get(0);

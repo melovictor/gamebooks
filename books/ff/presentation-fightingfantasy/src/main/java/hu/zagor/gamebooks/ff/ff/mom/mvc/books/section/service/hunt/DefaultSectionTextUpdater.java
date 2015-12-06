@@ -28,7 +28,7 @@ public class DefaultSectionTextUpdater implements SectionTextUpdater {
         text = text.replaceAll("dog.png\" class=\"g[A-H] g[0-9]{1,2}\" \\/>", "dog.png\" class=\"" + positionManipulator.cssClassFromPosition(result.getDogPosition())
             + "\" />");
         if (result.isHuntFinished()) {
-            text += "<input type='hidden' id='ff23HuntFinished' value='" + result.getNextSectionId() + "' />";
+            text += "<input type='hidden' id='ff23HuntFinished' value='" + result.getNextSectionPos() + "' />";
         }
         data.setText(text);
     }

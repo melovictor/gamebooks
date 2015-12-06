@@ -10,7 +10,6 @@ import hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.domain.HuntRoundResult;
 import hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.service.hunt.PieceMover;
 import hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.service.hunt.PositionManipulator;
 import hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.service.hunt.SectionTextUpdater;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -22,16 +21,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class HuntService {
 
-    @Autowired
-    @Qualifier("dogPieceMover")
-    private PieceMover dogPieceMover;
-    @Autowired
-    @Qualifier("tigerPieceMover")
-    private PieceMover tigerPieceMover;
-    @Autowired
-    private PositionManipulator positionManipulator;
-    @Autowired
-    private SectionTextUpdater sectionTextUpdater;
+    @Autowired @Qualifier("dogPieceMover") private PieceMover dogPieceMover;
+    @Autowired @Qualifier("tigerPieceMover") private PieceMover tigerPieceMover;
+    @Autowired private PositionManipulator positionManipulator;
+    @Autowired private SectionTextUpdater sectionTextUpdater;
 
     /**
      * Plays a single round of the hunt.
@@ -57,14 +50,18 @@ public class HuntService {
 
         positionManipulator.verifyPositions(result, currentRound);
         positionManipulator.saveData(character, interactionHandler, currentRound, result);
-        Paragraph paragraph = wrapper.getParagraph();
+        final Paragraph paragraph = wrapper.getParagraph();
         sectionTextUpdater.updateParagraphContent(paragraph, result);
 
         if (result.isHuntFinished()) {
-            paragraph.addValidMove(result.getNextSectionId());
+            paragraph.addValidMove(resolvePosToId(paragraph, result.getNextSectionPos()));
         }
 
         return result;
+    }
+
+    private String resolvePosToId(final Paragraph paragraph, final String nextSectionPos) {
+        return paragraph.getData().getChoices().getChoiceByPosition(Integer.parseInt(nextSectionPos)).getId();
     }
 
 }

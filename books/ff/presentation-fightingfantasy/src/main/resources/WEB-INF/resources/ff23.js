@@ -25,7 +25,8 @@ var ff23HuntTrigger = (function() {
 				$("#ff23Tiger").attr("class", convertPosition(json.tigerPosition));
 				$("#ff23Dog").attr("class", convertPosition(json.dogPosition));
 				if (json.huntFinished) {
-					$("#choice li a:not([href^='s-" + json.nextSectionId + "'])").parent().remove();
+					debugger;
+					$("#choice li a:not([href$='" + json.nextSectionPos + "'])").parent().remove();
 					$("#choice").show();
 					$("#ff23HuntTrigger").remove();
 				}

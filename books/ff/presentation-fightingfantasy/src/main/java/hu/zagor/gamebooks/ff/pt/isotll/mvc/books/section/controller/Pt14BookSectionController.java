@@ -11,9 +11,7 @@ import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.FfBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.Proteus;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -39,7 +37,7 @@ public class Pt14BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSections(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
         final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
         final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();

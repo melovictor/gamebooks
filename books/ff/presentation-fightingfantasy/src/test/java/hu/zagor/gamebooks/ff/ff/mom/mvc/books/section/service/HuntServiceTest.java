@@ -8,6 +8,9 @@ import static org.easymock.EasyMock.getCurrentArguments;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.Paragraph;
+import hu.zagor.gamebooks.content.ParagraphData;
+import hu.zagor.gamebooks.content.choice.Choice;
+import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -19,7 +22,6 @@ import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import org.easymock.IAnswer;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
@@ -35,29 +37,21 @@ import org.testng.annotations.Test;
 @Test
 public class HuntServiceTest {
 
-    @MockControl
-    private IMocksControl mockControl;
-    @UnderTest
-    private HuntService underTest;
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private HuntService underTest;
     private FfBookInformations info;
-    @Mock
-    private HttpSessionWrapper wrapper;
-    @Mock
-    private FfCharacter character;
-    @Instance
-    private FfCharacterHandler characterHandler;
-    @Mock
-    private FfUserInteractionHandler interactionHandler;
-    @Inject
-    private PieceMover dogPieceMover;
-    @Inject
-    private PieceMover tigerPieceMover;
-    @Inject
-    private PositionManipulator positionManipulator;
-    @Inject
-    private SectionTextUpdater sectionTextUpdater;
-    @Mock
-    private Paragraph paragraph;
+    @Mock private HttpSessionWrapper wrapper;
+    @Mock private FfCharacter character;
+    @Instance private FfCharacterHandler characterHandler;
+    @Mock private FfUserInteractionHandler interactionHandler;
+    @Inject private PieceMover dogPieceMover;
+    @Inject private PieceMover tigerPieceMover;
+    @Inject private PositionManipulator positionManipulator;
+    @Inject private SectionTextUpdater sectionTextUpdater;
+    @Mock private Paragraph paragraph;
+    @Mock private ParagraphData data;
+    @Mock private ChoiceSet choiceSet;
+    @Mock private Choice choice;
 
     @BeforeClass
     public void setUpClass() {
@@ -122,7 +116,7 @@ public class HuntServiceTest {
             public Object answer() throws Throwable {
                 final HuntRoundResult roundResult = (HuntRoundResult) getCurrentArguments()[0];
                 roundResult.setHuntFinished(true);
-                roundResult.setNextSectionId("112");
+                roundResult.setNextSectionPos("2");
                 return null;
             }
 
@@ -130,7 +124,11 @@ public class HuntServiceTest {
         positionManipulator.saveData(eq(character), eq(interactionHandler), eq(roundNumber), anyObject(HuntRoundResult.class));
         expect(wrapper.getParagraph()).andReturn(paragraph);
         sectionTextUpdater.updateParagraphContent(eq(paragraph), anyObject(HuntRoundResult.class));
-        paragraph.addValidMove("112");
+        expect(paragraph.getData()).andReturn(data);
+        expect(data.getChoices()).andReturn(choiceSet);
+        expect(choiceSet.getChoiceByPosition(2)).andReturn(choice);
+        expect(choice.getId()).andReturn("371");
+        paragraph.addValidMove("371");
         mockControl.replay();
         // WHEN
         underTest.playRound(wrapper, info);

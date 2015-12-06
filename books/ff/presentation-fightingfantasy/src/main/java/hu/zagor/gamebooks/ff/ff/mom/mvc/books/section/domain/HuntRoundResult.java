@@ -10,7 +10,7 @@ public class HuntRoundResult {
     private String tigerPosition;
     private boolean huntFinished;
     private String roundMessage;
-    private String nextSectionId;
+    private String nextSectionPos;
 
     public String getDogPosition() {
         return dogPosition;
@@ -44,12 +44,12 @@ public class HuntRoundResult {
         this.roundMessage = roundMessage;
     }
 
-    public String getNextSectionId() {
-        return nextSectionId;
+    public String getNextSectionPos() {
+        return nextSectionPos;
     }
 
-    public void setNextSectionId(final String nextSectionId) {
-        this.nextSectionId = nextSectionId;
+    public void setNextSectionPos(final String nextSectionId) {
+        this.nextSectionPos = nextSectionId;
     }
 
 }

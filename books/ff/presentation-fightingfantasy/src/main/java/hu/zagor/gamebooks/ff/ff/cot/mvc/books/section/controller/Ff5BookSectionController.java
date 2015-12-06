@@ -10,7 +10,6 @@ import hu.zagor.gamebooks.ff.ff.cot.mvc.books.section.service.WhoThrowsHigherSer
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.FfBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -25,10 +24,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + FightingFantasy.CITY_OF_THIEVES)
 public class Ff5BookSectionController extends FfBookSectionController {
 
-    @Autowired
-    private WhoThrowsHigherService whoThrowsHigher;
-    @Autowired
-    private BallThrowChallenge ballThrowChallenge;
+    @Autowired private WhoThrowsHigherService whoThrowsHigher;
+    @Autowired private BallThrowChallenge ballThrowChallenge;
 
     /**
      * Constructor expecting the {@link SectionHandlingService} bean.
@@ -40,7 +37,7 @@ public class Ff5BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSections(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
         if (isWhoThrowsHigher(paragraph)) {
             handleWhoThrowsHigher(wrapper);
         } else if (throwTheBall(paragraph)) {

@@ -15,12 +15,9 @@ import hu.zagor.gamebooks.ff.ff.tcoc.mvc.books.section.service.SixPickGame;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.FfBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
-
 import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -38,12 +35,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + FightingFantasy.THE_CITADEL_OF_CHAOS)
 public class Ff2BookSectionController extends FfBookSectionController {
 
-    @Resource(name = "ff2SpellIds")
-    private List<String> spellIds;
-    @Autowired
-    private SixPickGame sixPick;
-    @Autowired
-    private RunestonesGame runeStones;
+    @Resource(name = "ff2SpellIds") private List<String> spellIds;
+    @Autowired private SixPickGame sixPick;
+    @Autowired private RunestonesGame runeStones;
 
     /**
      * Constructor expecting the {@link SectionHandlingService} bean.
@@ -75,7 +69,7 @@ public class Ff2BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSections(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
         final Ff2Character character = (Ff2Character) wrapper.getCharacter();
         character.setLastSpellCast(getSpellUsed(paragraph));
 

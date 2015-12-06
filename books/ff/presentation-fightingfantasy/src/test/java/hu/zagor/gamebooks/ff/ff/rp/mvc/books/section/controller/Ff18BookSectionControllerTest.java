@@ -8,7 +8,6 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -72,7 +71,7 @@ public class Ff18BookSectionControllerTest {
         expect(paragraph.getId()).andReturn("100");
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSections(model, wrapper, "100", paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, "100", paragraph);
         // THEN
     }
 
@@ -84,7 +83,7 @@ public class Ff18BookSectionControllerTest {
         attributeHandler.handleModification(character, "stamina", 2);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSections(model, wrapper, "374", paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, "374", paragraph);
         // THEN
     }
 
@@ -96,7 +95,7 @@ public class Ff18BookSectionControllerTest {
         attributeHandler.handleModification(character, "stamina", 2);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSections(model, wrapper, "191", paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, "191", paragraph);
         // THEN
     }
 
@@ -108,7 +107,7 @@ public class Ff18BookSectionControllerTest {
         attributeHandler.handleModification(character, "stamina", 2);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSections(model, wrapper, "78", paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, "78", paragraph);
         // THEN
     }
 

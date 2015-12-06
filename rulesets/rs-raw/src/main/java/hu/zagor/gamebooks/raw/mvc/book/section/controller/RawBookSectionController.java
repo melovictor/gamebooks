@@ -106,7 +106,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
             getInfo().getCharacterHandler().getParagraphHandler().addParagraph(wrapper.getCharacter(), paragraph.getId());
         }
 
-        handleCustomSections(model, wrapper, sectionIdentifier, paragraph);
+        handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
         final String bookPage = doHandleSection(model, wrapper, paragraph, position);
         wrapper.setModel(model);
         navigationRecorder.recordNavigation(wrapper, sectionIdentifier, previousParagraph, paragraph);
@@ -178,7 +178,11 @@ public class RawBookSectionController extends GenericBookSectionController imple
     }
 
     @Override
-    protected void handleCustomSections(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    }
+
+    @Override
+    protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
     }
 
     private String doHandleSection(final Model model, final HttpSessionWrapper wrapper, final Paragraph paragraph, final Integer position) {

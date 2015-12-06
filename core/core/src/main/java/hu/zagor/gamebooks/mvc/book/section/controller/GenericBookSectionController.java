@@ -6,9 +6,7 @@ import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.mvc.book.controller.AbstractSectionDisplayingController;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -20,12 +18,9 @@ import org.springframework.util.Assert;
  */
 public abstract class GenericBookSectionController extends AbstractSectionDisplayingController {
 
-    @LogInject
-    private Logger logger;
-    @Autowired
-    private BookContentInitializer contentInitializer;
-    @Autowired
-    private GameStateHandler gameStateHandler;
+    @LogInject private Logger logger;
+    @Autowired private BookContentInitializer contentInitializer;
+    @Autowired private GameStateHandler gameStateHandler;
 
     /**
      * Loads the paragraph content belonging to the given id.
@@ -42,13 +37,22 @@ public abstract class GenericBookSectionController extends AbstractSectionDispla
     }
 
     /**
-     * Does custom section handling in the books.
+     * Does custom section handling in the books before the actual handler flow.
      * @param model the {@link Model}
      * @param wrapper the {@link HttpSessionWrapper}
      * @param sectionIdentifier the section identifier which was requested by the user
      * @param paragraph the new {@link Paragraph} object
      */
-    protected abstract void handleCustomSections(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph);
+    protected abstract void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph);
+
+    /**
+     * Does custom section handling in the books after the actual handler flow.
+     * @param model the {@link Model}
+     * @param wrapper the {@link HttpSessionWrapper}
+     * @param sectionIdentifier the section identifier which was requested by the user
+     * @param paragraph the new {@link Paragraph} object
+     */
+    protected abstract void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph);
 
     public Logger getLogger() {
         return logger;

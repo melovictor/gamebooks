@@ -19,14 +19,11 @@ import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
@@ -47,51 +44,29 @@ import org.testng.annotations.Test;
 public class Ff23BookSectionControllerTest {
 
     private Ff23BookSectionController underTest;
-    @MockControl
-    private IMocksControl mockControl;
-    @Mock
-    private SectionHandlingService sectionHandlingService;
-    @Mock
-    private Paragraph paragraph;
-    @Mock
-    private HttpSessionWrapper wrapper;
-    @Mock
-    private Model model;
-    @Mock
-    private HttpServletRequest request;
-    @Mock
-    private HuntRoundResult huntRoundResult;
-    @Mock
-    private HttpSession session;
-    @Inject
-    private BeanFactory beanFactory;
-    @Inject
-    private HuntService huntService;
+    @MockControl private IMocksControl mockControl;
+    @Mock private SectionHandlingService sectionHandlingService;
+    @Mock private Paragraph paragraph;
+    @Mock private HttpSessionWrapper wrapper;
+    @Mock private Model model;
+    @Mock private HttpServletRequest request;
+    @Mock private HuntRoundResult huntRoundResult;
+    @Mock private HttpSession session;
+    @Inject private BeanFactory beanFactory;
+    @Inject private HuntService huntService;
     private FfBookInformations info;
-    @Mock
-    private ParagraphData data;
-    @Mock
-    private CommandList commands;
-    @Mock
-    private FightCommand fightCommand;
-    @Mock
-    private FfCharacter character;
-    @Mock
-    private List<String> enemies;
-    @Mock
-    private List<FfEnemy> resolvedEnemies;
-    @Mock
-    private Map<String, Enemy> enemyMap;
-    @Mock
-    private FfEnemy enemy;
-    @Inject
-    private EnemyStatusEvaluator enemyStatusEvaluator;
-    @Mock
-    private FightCommand singleFightCommand;
-    @Mock
-    private BattleStatistics battleStatistics;
-    @Mock
-    private FfEnemy enemyB;
+    @Mock private ParagraphData data;
+    @Mock private CommandList commands;
+    @Mock private FightCommand fightCommand;
+    @Mock private FfCharacter character;
+    @Mock private List<String> enemies;
+    @Mock private List<FfEnemy> resolvedEnemies;
+    @Mock private Map<String, Enemy> enemyMap;
+    @Mock private FfEnemy enemy;
+    @Inject private EnemyStatusEvaluator enemyStatusEvaluator;
+    @Mock private FightCommand singleFightCommand;
+    @Mock private BattleStatistics battleStatistics;
+    @Mock private FfEnemy enemyB;
 
     @BeforeClass
     public void setUpClass() {
@@ -124,7 +99,7 @@ public class Ff23BookSectionControllerTest {
         paragraph.clearValidMoves();
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSections(model, wrapper, "240", paragraph);
+        underTest.handleCustomSectionsPost(model, wrapper, "240", paragraph);
         // THEN
     }
 
@@ -133,7 +108,7 @@ public class Ff23BookSectionControllerTest {
         expect(paragraph.getId()).andReturn("160");
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSections(model, wrapper, null, paragraph);
+        underTest.handleCustomSectionsPost(model, wrapper, null, paragraph);
         // THEN
     }
 

@@ -5,7 +5,6 @@ import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHan
 import hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.domain.HuntRoundResult;
 import hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.domain.MapPosition;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.HierarchicalMessageSource;
 import org.springframework.stereotype.Component;
@@ -21,9 +20,9 @@ public class DefaultPositionManipulator implements PositionManipulator {
     private static final String DOG_POSITION = "dogPosition";
     private static final String TIGER_POSITION = "tigerPosition";
 
-    private static final String SECTION_TIGER_FOUND = "371";
-    private static final String SECTION_TRAP = "262";
-    private static final String SECTION_TIGER_FLED = "177";
+    private static final String SECTION_TIGER_FOUND = "2";
+    private static final String SECTION_TRAP = "3";
+    private static final String SECTION_TIGER_FLED = "1";
 
     private static final int MAX_ROUNDS = 16;
     private static final int Y_MAX = 12;
@@ -31,30 +30,28 @@ public class DefaultPositionManipulator implements PositionManipulator {
     private static final int X_MAX = 8;
     private static final int X_MIN = 1;
 
-    @Autowired
-    private HierarchicalMessageSource messageSource;
-    @Autowired
-    private LocaleProvider localeProvider;
+    @Autowired private HierarchicalMessageSource messageSource;
+    @Autowired private LocaleProvider localeProvider;
 
     @Override
     public void verifyPositions(final HuntRoundResult result, final int currentRound) {
         if ("C9".equals(result.getDogPosition())) {
             result.setHuntFinished(true);
-            result.setNextSectionId(SECTION_TRAP);
+            result.setNextSectionPos(SECTION_TRAP);
         } else if (tigerCaughtUpWith(result)) {
             result.setHuntFinished(true);
-            result.setNextSectionId(SECTION_TIGER_FOUND);
+            result.setNextSectionPos(SECTION_TIGER_FOUND);
         } else if (outOfMap(result.getTigerPosition())) {
             result.setHuntFinished(true);
-            result.setNextSectionId(SECTION_TIGER_FLED);
+            result.setNextSectionPos(SECTION_TIGER_FLED);
             result.setRoundMessage(result.getRoundMessage() + resolveTextKey("page.ff23.hunt.tiger.fled"));
         } else if (outOfMap(result.getDogPosition())) {
             result.setHuntFinished(true);
-            result.setNextSectionId(SECTION_TIGER_FLED);
+            result.setNextSectionPos(SECTION_TIGER_FLED);
             result.setRoundMessage(result.getRoundMessage() + resolveTextKey("page.ff23.hunt.dog.lost"));
         } else if (currentRound >= MAX_ROUNDS) {
             result.setHuntFinished(true);
-            result.setNextSectionId(SECTION_TIGER_FLED);
+            result.setNextSectionPos(SECTION_TIGER_FLED);
             result.setRoundMessage(result.getRoundMessage() + resolveTextKey("page.ff23.hunt.tiger.timeout"));
         }
     }

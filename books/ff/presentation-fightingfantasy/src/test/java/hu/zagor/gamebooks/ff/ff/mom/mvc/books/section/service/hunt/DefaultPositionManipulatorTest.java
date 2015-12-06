@@ -8,9 +8,7 @@ import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import java.util.Locale;
-
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.springframework.context.HierarchicalMessageSource;
@@ -27,20 +25,13 @@ import org.testng.annotations.Test;
 @Test
 public class DefaultPositionManipulatorTest {
 
-    @MockControl
-    private IMocksControl mockControl;
-    @UnderTest
-    private DefaultPositionManipulator underTest;
-    @Inject
-    private HierarchicalMessageSource messageSource;
-    @Inject
-    private LocaleProvider localeProvider;
-    @Mock
-    private Character character;
-    @Mock
-    private FfUserInteractionHandler interactionHandler;
-    @Mock
-    private HuntRoundResult result;
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private DefaultPositionManipulator underTest;
+    @Inject private HierarchicalMessageSource messageSource;
+    @Inject private LocaleProvider localeProvider;
+    @Mock private Character character;
+    @Mock private FfUserInteractionHandler interactionHandler;
+    @Mock private HuntRoundResult result;
 
     @BeforeMethod
     public void setUpMethod() {
@@ -99,7 +90,7 @@ public class DefaultPositionManipulatorTest {
         // GIVEN
         expect(result.getDogPosition()).andReturn("C9");
         result.setHuntFinished(true);
-        result.setNextSectionId("262");
+        result.setNextSectionPos("3");
         mockControl.replay();
         // WHEN
         underTest.verifyPositions(result, 4);
@@ -112,7 +103,7 @@ public class DefaultPositionManipulatorTest {
         expect(result.getDogPosition()).andReturn(dogPosition).times(2);
         expect(result.getTigerPosition()).andReturn("B11");
         result.setHuntFinished(true);
-        result.setNextSectionId("371");
+        result.setNextSectionPos("2");
         mockControl.replay();
         // WHEN
         underTest.verifyPositions(result, 4);
@@ -130,7 +121,7 @@ public class DefaultPositionManipulatorTest {
         expect(result.getDogPosition()).andReturn("D6").times(2);
         expect(result.getTigerPosition()).andReturn(tigerPosition).times(2);
         result.setHuntFinished(true);
-        result.setNextSectionId("177");
+        result.setNextSectionPos("1");
         expect(result.getRoundMessage()).andReturn("Tiger rolled 3.<br />");
         expect(localeProvider.getLocale()).andReturn(Locale.ENGLISH);
         expect(messageSource.getMessage("page.ff23.hunt.tiger.fled", null, Locale.ENGLISH)).andReturn("Tiger fled.");
@@ -148,7 +139,7 @@ public class DefaultPositionManipulatorTest {
         expect(result.getTigerPosition()).andReturn("D6").times(2);
         expect(result.getDogPosition()).andReturn(dogPosition);
         result.setHuntFinished(true);
-        result.setNextSectionId("177");
+        result.setNextSectionPos("1");
         expect(result.getRoundMessage()).andReturn("Dog rolled 3.<br />");
         expect(localeProvider.getLocale()).andReturn(Locale.ENGLISH);
         expect(messageSource.getMessage("page.ff23.hunt.dog.lost", null, Locale.ENGLISH)).andReturn("Dog lost.");
@@ -170,7 +161,7 @@ public class DefaultPositionManipulatorTest {
         expect(result.getTigerPosition()).andReturn("D6").times(2);
         expect(result.getDogPosition()).andReturn("B12");
         result.setHuntFinished(true);
-        result.setNextSectionId("177");
+        result.setNextSectionPos("1");
         expect(result.getRoundMessage()).andReturn("Dog rolled 3.<br />");
         expect(localeProvider.getLocale()).andReturn(Locale.ENGLISH);
         expect(messageSource.getMessage("page.ff23.hunt.tiger.timeout", null, Locale.ENGLISH)).andReturn("Tiger survived.");

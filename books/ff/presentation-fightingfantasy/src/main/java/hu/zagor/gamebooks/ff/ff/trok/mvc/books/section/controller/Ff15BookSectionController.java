@@ -9,7 +9,6 @@ import hu.zagor.gamebooks.ff.ff.trok.character.domain.Ff15ShipAttributes;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.FfBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -37,12 +36,12 @@ public class Ff15BookSectionController extends FfBookSectionController {
     protected void prepareFight(final HttpSessionWrapper wrapper) {
         super.prepareFight(wrapper);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
-        getInfo().getCharacterHandler().getInteractionHandler()
-            .setFightCommand(character, "missile", String.valueOf("true".equals(wrapper.getRequest().getParameter("missile"))));
+        getInfo().getCharacterHandler().getInteractionHandler().setFightCommand(character, "missile",
+            String.valueOf("true".equals(wrapper.getRequest().getParameter("missile"))));
     }
 
     @Override
-    protected void handleCustomSections(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
         final Ff15Character character = (Ff15Character) wrapper.getCharacter();
         final Ff15ShipAttributes shipAttributes = character.getShipAttributes();
 
@@ -60,7 +59,7 @@ public class Ff15BookSectionController extends FfBookSectionController {
             shipAttributes.setShield(shipAttributes.getShield());
             shipAttributes.setWeaponStrength(shipAttributes.getWeaponStrength());
         }
-        super.handleCustomSections(model, wrapper, sectionIdentifier, paragraph);
+        super.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
     }
 
 }

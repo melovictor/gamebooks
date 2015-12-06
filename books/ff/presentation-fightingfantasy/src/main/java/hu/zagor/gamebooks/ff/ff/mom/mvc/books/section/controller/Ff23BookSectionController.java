@@ -14,12 +14,9 @@ import hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.service.HuntService;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.FfBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
-
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -36,10 +33,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + FightingFantasy.MASKS_OF_MAYHEM)
 public class Ff23BookSectionController extends FfBookSectionController {
 
-    @Autowired
-    private HuntService huntService;
-    @Autowired
-    private EnemyStatusEvaluator enemyStatusEvaluator;
+    @Autowired private HuntService huntService;
+    @Autowired private EnemyStatusEvaluator enemyStatusEvaluator;
 
     /**
      * Constructor expecting the {@link SectionHandlingService} bean.
@@ -51,7 +46,7 @@ public class Ff23BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSections(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
         if ("240".equals(paragraph.getId())) {
             paragraph.clearValidMoves();
         }
