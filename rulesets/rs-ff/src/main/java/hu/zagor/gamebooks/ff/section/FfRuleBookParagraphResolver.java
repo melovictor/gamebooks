@@ -18,7 +18,6 @@ import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.raw.section.RawRuleBookParagraphResolver;
-
 import java.util.List;
 import java.util.Map;
 
@@ -99,7 +98,7 @@ public class FfRuleBookParagraphResolver extends RawRuleBookParagraphResolver {
     }
 
     @Override
-    protected String getRulesetPrefix() {
+    public String getRulesetPrefix() {
         return "ff";
     }
 }

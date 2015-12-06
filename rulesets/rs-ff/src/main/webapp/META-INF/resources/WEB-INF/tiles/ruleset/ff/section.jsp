@@ -12,7 +12,7 @@
 
 <div class="hr"></div>
 
-<tiles:insertTemplate template="section-choices.jsp" />
+<tiles:insertTemplate template="../${bookInfo.paragraphResolver.rulesetPrefix}/section-choices.jsp" />
 
 <tiles:insertAttribute name="gamebook.command" />
 

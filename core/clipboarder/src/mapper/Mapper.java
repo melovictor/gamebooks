@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 public class Mapper {
 
     private static final Pattern SECTIONS = Pattern.compile("<p id=\"([a-zA-Z_0-9*]+)\"(.*?)<\\/p>");
-    private static final Pattern NAVIGATION = Pattern.compile("<next.*?id=\"([^\"]*)\"");
+    private static final Pattern NAVIGATION = Pattern.compile("<(?:next|spell).*?id=\"([^\"]*)\"");
 
     public static void main(final String[] args) throws IOException {
         final String root = "c:\\springsource\\eclipsegit\\books";

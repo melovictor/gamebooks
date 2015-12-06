@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.content;
 import hu.zagor.gamebooks.content.choice.Choice;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.util.Assert;
 
 /**
  * Extended paragraph data for Fighting Fantasy books.
@@ -26,6 +27,15 @@ public class SorParagraphData extends FfParagraphData {
      */
     public void addSpellChoice(final Choice choice) {
         spellChoices.add(choice);
+    }
+
+    /**
+     * Adds new spell choices for the current data.
+     * @param spellChoices the {@link Choice} objects to add, shouldn't be null
+     */
+    public void addSpellChoices(final List<Choice> spellChoices) {
+        Assert.notNull(spellChoices, "The parameter 'spellChoices' cannot be null!");
+        this.spellChoices.addAll(spellChoices);
     }
 
 }

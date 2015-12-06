@@ -18,15 +18,6 @@ public class ChoiceTransformer extends AbstractStubTransformer {
     @Override
     protected void doTransform(final BookParagraphDataTransformer parent, final Node node, final ParagraphData data) {
         final Choice choice = parseChoice(data.getPositionCounter(), node);
-        addChoice(data, choice);
-    }
-
-    /**
-     * Adds the parsed {@link Choice} object to the {@link ParagraphData} object.
-     * @param data the {@link ParagraphData} object into which the parsed {@link Choice} object must be added
-     * @param choice the {@link Choice} object to add
-     */
-    protected void addChoice(final ParagraphData data, final Choice choice) {
         data.addChoice(choice);
     }
 
