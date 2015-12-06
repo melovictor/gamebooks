@@ -5,7 +5,7 @@
     <div id="sectionNumber" data-id="${paragraph.id}">${paragraph.displayId}</div>
 </c:if>
 
-<c:if test="${!user.admin}">
+<c:if test="${!user.tester}">
 	<script type="text/javascript">
 		preventBack("<spring:message code="page.book.warning.dontgoback" />");
 	</script>
