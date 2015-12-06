@@ -15,6 +15,7 @@ import org.springframework.util.Assert;
 public class PlayerUser extends UsernamePasswordAuthenticationToken {
     public static final GrantedAuthority USER = new SimpleGrantedAuthority("USER");
     public static final GrantedAuthority ADMIN = new SimpleGrantedAuthority("ADMIN");
+    public static final GrantedAuthority TEST = new SimpleGrantedAuthority("TEST");
 
     private final int id;
     private final PlayerSettings settings = new PlayerSettings();
@@ -37,13 +38,17 @@ public class PlayerUser extends UsernamePasswordAuthenticationToken {
      * @param isAdmin true if the user should be admin, false otherwise
      */
     public PlayerUser(final int id, final String principal, final boolean isAdmin) {
-        this(id, principal, isAdmin ? Arrays.asList(USER, ADMIN) : Arrays.asList(USER));
+        this(id, principal, isAdmin ? Arrays.asList(USER, TEST, ADMIN) : Arrays.asList(USER));
         Assert.notNull(principal, "The parameter 'principal' cannot be null!");
         Assert.isTrue(id > 0, "The parameter 'id' must be positive!");
     }
 
     public boolean isAdmin() {
-        return this.getAuthorities().contains(ADMIN);
+        return getAuthorities().contains(ADMIN);
+    }
+
+    public boolean isTester() {
+        return getAuthorities().contains(TEST);
     }
 
     public int getId() {

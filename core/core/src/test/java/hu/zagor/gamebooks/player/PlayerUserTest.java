@@ -46,6 +46,7 @@ public class PlayerUserTest {
         Assert.assertEquals(returned.getId(), ID);
         Assert.assertEquals(returned.getPrincipal(), NAME);
         Assert.assertEquals(returned.isAdmin(), ADMIN);
+        Assert.assertEquals(returned.isTester(), ADMIN);
     }
 
 }

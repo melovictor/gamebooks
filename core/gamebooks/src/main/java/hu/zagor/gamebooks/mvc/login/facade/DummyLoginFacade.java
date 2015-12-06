@@ -1,6 +1,7 @@
 package hu.zagor.gamebooks.mvc.login.facade;
 
 import static hu.zagor.gamebooks.player.PlayerUser.ADMIN;
+import static hu.zagor.gamebooks.player.PlayerUser.TEST;
 import static hu.zagor.gamebooks.player.PlayerUser.USER;
 import hu.zagor.gamebooks.mvc.login.domain.LoginResult;
 import hu.zagor.gamebooks.player.PlayerUser;
@@ -28,7 +29,7 @@ public class DummyLoginFacade extends AbstractLoginFacade {
         if (loginResult == null) {
             throw new BadCredentialsException("page.login.invalid.username.password");
         }
-        return new PlayerUser(loginResult.getId(), authentication.getPrincipal(), Arrays.asList(USER, ADMIN));
+        return new PlayerUser(loginResult.getId(), authentication.getPrincipal(), Arrays.asList(USER, TEST, ADMIN));
     }
 
 }
