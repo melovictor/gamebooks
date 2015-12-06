@@ -14,9 +14,7 @@ public class ContentSorter {
     private static final Pattern SECTIONS = Pattern.compile("(<p id=\"([^\"]+)\".*?<\\/p>)", Pattern.DOTALL);
 
     public String tryMap(final String content) {
-        if (content.startsWith("<?xml version=\"1.0\" encoding=\"utf-8\"?>")
-            && content
-            .contains("<content xmlns=\"http://gamebooks.zagor.hu\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd\">")) {
+        if (isXml(content) && (isFf(content) || isSorcery(content))) {
             try {
                 return sortSections(content);
             } catch (final Exception ex) {
@@ -26,7 +24,22 @@ public class ContentSorter {
         return null;
     }
 
+    private boolean isSorcery(final String content) {
+        return content.contains(
+            "<content xmlns=\"http://gamebooks.zagor.hu\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://gamebooks.zagor.hu http://zagor.hu/xsd/sor.xsd\">");
+    }
+
+    private boolean isFf(final String content) {
+        return content.contains(
+            "<content xmlns=\"http://gamebooks.zagor.hu\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd\">");
+    }
+
+    private boolean isXml(final String content) {
+        return content.startsWith("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+    }
+
     private String sortSections(final String content) {
+        final boolean ff = content.contains("ff.xsd");
         final Map<String, String> sections = new HashMap<>();
         final List<String> sectionIds = new ArrayList<>();
 
@@ -53,8 +66,9 @@ public class ContentSorter {
         });
 
         final StringBuilder builder = new StringBuilder();
-        builder
-        .append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<content xmlns=\"http://gamebooks.zagor.hu\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd\">");
+        builder.append(
+            "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<content xmlns=\"http://gamebooks.zagor.hu\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://gamebooks.zagor.hu http://zagor.hu/xsd/"
+                + (ff ? "ff" : "sor") + ".xsd\">");
 
         appendSection(sections, builder, "back_cover", 1, 0);
         appendSection(sections, builder, "generate", 1, 0);
