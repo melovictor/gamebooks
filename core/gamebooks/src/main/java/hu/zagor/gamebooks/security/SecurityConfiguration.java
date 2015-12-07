@@ -25,6 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired private LoginFailureHandler loginResultHandler;
     @Autowired @Qualifier("csrfAccessDeniedHandler") private AccessDeniedHandler accessDeniedHandler;
     @Autowired @Qualifier("csrfSecurityRequestMatcher") private RequestMatcher requestMatcher;
+    @Autowired(required = false) private SpringConfigBasedRememberMeService rememberMeServices;
 
     /**
      * Configures the global spring security.
@@ -38,11 +39,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
-        final HttpSecurity basic = http.authorizeRequests().antMatchers("/resources/**").permitAll().anyRequest().authenticated().and();
-        final HttpSecurity csrf = basic.csrf().requireCsrfProtectionMatcher(requestMatcher).and();
-        final HttpSecurity login = csrf.formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccessful", true).failureHandler(loginResultHandler).permitAll().and();
-        final HttpSecurity logout = login.logout().addLogoutHandler(logoutHandler).logoutSuccessUrl("/login").permitAll().and();
-        logout.exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+        http.authorizeRequests().antMatchers("/resources/**").permitAll().anyRequest().authenticated();
+        http.csrf().requireCsrfProtectionMatcher(requestMatcher);
+        http.formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccessful", true).failureHandler(loginResultHandler).permitAll();
+        http.logout().addLogoutHandler(logoutHandler).logoutSuccessUrl("/login").permitAll();
+        http.exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+        if (rememberMeServices != null) {
+            http.rememberMe().rememberMeServices(rememberMeServices).authenticationSuccessHandler(loginResultHandler);
+        }
     }
 
 }

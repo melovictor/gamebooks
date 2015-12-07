@@ -32,4 +32,8 @@ public class DummyLoginFacade extends AbstractLoginFacade {
         return new PlayerUser(loginResult.getId(), authentication.getPrincipal(), Arrays.asList(USER, TEST, ADMIN));
     }
 
+    @Override
+    public boolean supports(final Class<?> authentication) {
+        return true;
+    }
 }

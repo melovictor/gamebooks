@@ -19,6 +19,7 @@
         <bean class="hu.zagor.gamebooks.mvc.login.domain.LoginResult" p:admin="false" p:id="168" p:successful="true" />
       </entry>
     </util:map>
+    <bean class="hu.zagor.gamebooks.security.SpringConfigBasedRememberMeService" />
   </beans>
   <beans profile="!dev">
     <bean class="hu.zagor.gamebooks.mvc.login.facade.ZagorLoginFacade" id="activeLoginFacade" />
