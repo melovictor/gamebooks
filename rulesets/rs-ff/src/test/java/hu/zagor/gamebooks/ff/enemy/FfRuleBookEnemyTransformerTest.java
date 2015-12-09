@@ -5,11 +5,9 @@ import hu.zagor.gamebooks.books.AbstractTransformerTest;
 import hu.zagor.gamebooks.books.contentransforming.section.XmlTransformationException;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -93,6 +91,7 @@ public class FfRuleBookEnemyTransformerTest extends AbstractTransformerTest {
         expectAttribute("skill", "5");
         expectAttribute("stamina", "7");
         expectAttribute("attackStrength", "0");
+        expectAttribute("attackStrengthBonus", "0");
         expectAttribute("staminaDamage");
         expectAttribute("staminaDamageWhenHit");
         expectAttribute("staminaAutoDamage");

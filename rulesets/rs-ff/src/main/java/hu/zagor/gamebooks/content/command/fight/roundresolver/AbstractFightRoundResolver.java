@@ -12,11 +12,9 @@ import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDt
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,15 +23,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * Abstract class containing some useful actions for resolving rounds.
  * @author Tamas_Szekeres
  */
-public abstract class AbstractFightRoundResolver extends TextResolvingFightRoundResolver {
+public abstract class AbstractFightRoundResolver extends TextResolvingFightRoundResolver implements EnemyAttackStrengthResolver {
 
-    @LogInject
-    private Logger logger;
-    @Autowired
-    @Qualifier("d6")
-    private RandomNumberGenerator generator;
-    @Autowired
-    private DiceResultRenderer diceResultRenderer;
+    @LogInject private Logger logger;
+    @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
+    @Autowired private DiceResultRenderer diceResultRenderer;
 
     /**
      * Records the attack strength for the hero.
@@ -153,7 +147,8 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
         return generator;
     }
 
-    private int[] getEnemyAttackStrength(final FfEnemy enemy) {
+    @Override
+    public int[] getEnemyAttackStrength(final FfEnemy enemy, final FightCommand command) {
         int[] result;
 
         if (enemy.getAttackStrength() > 0) {
@@ -161,20 +156,10 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
             result = new int[]{enemy.getAttackStrength() - enemy.getSkill(), firstRoll, enemy.getAttackStrength() - enemy.getSkill() - firstRoll};
         } else {
             result = getGenerator().getRandomNumber(2);
+            result[0] += enemy.getAttackStrengthBonus();
         }
 
         return result;
-    }
-
-    /**
-     * Rolls the attack strength for the enemies, taking into account if a specific enemy always needs to have a given attack strength.
-     * @param enemy the enemy for which to roll attack strength
-     * @param command the {@link FightCommand} object
-     * @return the rolled values in the usual format
-     */
-    int[] getEnemyAttackStrength(final FfEnemy enemy, final FightCommand command) {
-        command.getClass();
-        return getEnemyAttackStrength(enemy);
     }
 
     /**

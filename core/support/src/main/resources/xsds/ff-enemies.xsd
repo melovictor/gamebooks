@@ -28,9 +28,16 @@
       <xs:attribute name="fleeAtStamina" type="xs:integer" default="0" />
       <xs:attribute name="fleeAtRound" type="xs:integer" />
       <xs:attribute name="same" type="xs:string" />
-      
-      <xs:attribute name="attackStrength" type="xs:integer" />
-      
+
+      <xs:attribute name="attackStrength" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>
+            If this value is set, it ensures that the result of the roll will be this amount.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="attackStrengthBonus" type="xs:integer" />
+
       <xs:attribute name="startAtRound" type="xs:integer" />
     </xs:complexType>
   </xs:element>

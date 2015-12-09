@@ -6,10 +6,8 @@ import hu.zagor.gamebooks.books.contentransforming.section.XmlTransformationExce
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import org.slf4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -21,8 +19,7 @@ import org.w3c.dom.NodeList;
  */
 public class FfRuleBookEnemyTransformer extends AbstractTransformer implements BookEnemyTransformer {
 
-    @LogInject
-    private Logger logger;
+    @LogInject private Logger logger;
 
     @Override
     public Map<String, Enemy> transformEnemies(final Document document) throws XmlTransformationException {
@@ -72,6 +69,7 @@ public class FfRuleBookEnemyTransformer extends AbstractTransformer implements B
         enemy.setInitialSkill(skill);
         enemy.setInitialStamina(stamina);
         enemy.setAttackStrength(extractIntegerAttribute(node, "attackStrength", 0));
+        enemy.setAttackStrengthBonus(extractIntegerAttribute(node, "attackStrengthBonus", 0));
         enemy.setStaminaDamage(extractIntegerAttribute(node, "staminaDamage", 2));
         enemy.setStaminaDamageWhenHit(extractIntegerAttribute(node, "staminaDamageWhenHit", 0));
         enemy.setStaminaAutoDamage(extractIntegerAttribute(node, "staminaAutoDamage", 0));
