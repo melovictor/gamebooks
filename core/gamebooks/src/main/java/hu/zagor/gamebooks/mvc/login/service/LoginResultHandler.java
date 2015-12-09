@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component
-public class LoginFailureHandler implements AuthenticationFailureHandler, AuthenticationSuccessHandler {
+public class LoginResultHandler implements AuthenticationFailureHandler, AuthenticationSuccessHandler {
 
     @Autowired private LoginAttemptOverviewService loginAttemptService;
 
