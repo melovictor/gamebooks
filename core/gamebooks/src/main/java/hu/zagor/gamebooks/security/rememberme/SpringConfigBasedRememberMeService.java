@@ -1,4 +1,4 @@
-package hu.zagor.gamebooks.security;
+package hu.zagor.gamebooks.security.rememberme;
 
 import static hu.zagor.gamebooks.player.PlayerUser.ADMIN;
 import static hu.zagor.gamebooks.player.PlayerUser.TEST;

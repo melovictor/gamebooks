@@ -1,4 +1,4 @@
-package hu.zagor.gamebooks.security;
+package hu.zagor.gamebooks.security.rememberme;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

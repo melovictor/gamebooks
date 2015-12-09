@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.security;
 
 import hu.zagor.gamebooks.mvc.login.service.LoginResultHandler;
 import hu.zagor.gamebooks.mvc.logout.handler.ResettingLogoutHandler;
+import hu.zagor.gamebooks.security.rememberme.SpringConfigBasedRememberMeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
