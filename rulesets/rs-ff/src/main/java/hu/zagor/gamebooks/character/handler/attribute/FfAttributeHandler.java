@@ -6,15 +6,15 @@ import hu.zagor.gamebooks.content.modifyattribute.ModifyAttributeType;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.mvel2.MVEL;
 import org.slf4j.Logger;
 import org.springframework.util.Assert;
 import org.springframework.util.ReflectionUtils;
+import org.springframework.util.StringUtils;
 
 /**
  * Class for handling the attributes of a Fighting Fantasy character.
@@ -24,8 +24,7 @@ public class FfAttributeHandler {
 
     private static final Pattern RESOLVE_PROPERTIES = Pattern.compile("([a-zA-Z]+)");
 
-    @LogInject
-    private Logger logger;
+    @LogInject private Logger logger;
 
     /**
      * Executes the modification requested by the {@link ModifyAttribute} object.
@@ -157,12 +156,10 @@ public class FfAttributeHandler {
     }
 
     private int getFieldValue(final Object object, final String property, final boolean triggerException) throws IllegalArgumentException, ReflectiveOperationException {
-        final Field field = ReflectionUtils.findField(object.getClass(), property);
+        final Method getter = ReflectionUtils.findMethod(object.getClass(), "get" + StringUtils.capitalize(property));
         int value = 0;
-        if (field != null) {
-            field.setAccessible(true);
-            value = field.getInt(object);
-            field.setAccessible(false);
+        if (getter != null) {
+            value = (int) getter.invoke(object);
         } else if (triggerException) {
             throw new NoSuchFieldException();
         }
