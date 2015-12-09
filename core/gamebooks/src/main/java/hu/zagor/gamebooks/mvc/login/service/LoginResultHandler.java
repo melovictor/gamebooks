@@ -26,12 +26,12 @@ public class LoginResultHandler implements AuthenticationFailureHandler, Authent
         throws IOException {
         loginAttemptService.loginFailed(request.getRemoteAddr());
         request.getSession().setAttribute(WebAttributes.AUTHENTICATION_EXCEPTION, exception);
-        response.sendRedirect("login");
+        response.sendRedirect(request.getContextPath() + "/login");
     }
 
     @Override
     public void onAuthenticationSuccess(final HttpServletRequest request, final HttpServletResponse response, final Authentication authentication)
         throws IOException, ServletException {
-        response.sendRedirect("loginSuccessful");
+        response.sendRedirect(request.getContextPath() + "/loginSuccessful");
     }
 }
