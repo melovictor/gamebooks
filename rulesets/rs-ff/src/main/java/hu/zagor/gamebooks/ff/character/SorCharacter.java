@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.ff.character;
 
+import hu.zagor.gamebooks.character.item.Item;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -29,4 +30,29 @@ public class SorCharacter extends FfCharacter {
         this.usedLibra = usedLibra;
     }
 
+    @Override
+    public int getSkill() {
+        int skill = super.getSkill();
+        if (shouldDouble()) {
+            skill *= 2;
+        }
+        return skill;
+    }
+
+    @Override
+    public int getInitialSkill() {
+        int initialSkill = super.getInitialSkill();
+        if (shouldDouble()) {
+            initialSkill *= 2;
+        }
+        return initialSkill;
+    }
+
+    private boolean shouldDouble() {
+        boolean hasDoubleValue = false;
+        for (final Item item : getEquipment()) {
+            hasDoubleValue |= "4003".equals(item.getId());
+        }
+        return hasDoubleValue;
+    }
 }
