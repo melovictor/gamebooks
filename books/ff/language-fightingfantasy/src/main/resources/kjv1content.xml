@@ -36,7 +36,8 @@
     <gatherItem id="defWpn" />
     <gatherItem id="1001" />
     <gatherItem id="2000" amount="2" />
-    <gatherItem id="4000" />
+    <gatherItem id="4101" />
+    <gatherItem id="4103" />
     <add amount="20" to="gold" />
     <next id="1"></next>
   </p>
@@ -92,13 +93,13 @@
     <text>
         [p]Leülsz falatozni, és közben gyönyörködsz a környező dombok szépségében.
     </text>
-    <itemCheck type="item" id="4000">
+    <itemCheck type="item" id="4101">
       <have>
         <text>
             Kapsz 2 ÉLETERŐ pontot.[/p]
         </text>
         <loseItem id="2000" />
-        <loseItem id="4000" />
+        <loseItem id="4101" />
         <add amount="2" to="stamina" />
       </have>
       <dontHave>
@@ -141,7 +142,16 @@
   </p>
   <!-- 23 -->
   <!-- 24 -->
-  <!-- 25 -->
+  <p id="25">
+    <text>
+        [p]Istennődhöz fohászkodsz - de az a füle botját sem mozgatja! Újra megpróbálod, de csak nem hallgat meg. Nem sokkal később foglyul ejtőid kizavarnak ketrecedből, és egy hatalmas üst felé lökdösnek, amely a tűz fölött melegszik. Hárman felragadnak, és beledobnak az üstben lévő vízbe, mely már kellemetlenül meleg…[/p]
+        [p]És akkor bekövetkezik a csoda…[/p]
+        [p]Sötét fellegek bontják be a tábor fölötti égboltot. Egészen alacsonyan, közvetlenül a fejed fölött trópusi esőt zúdítanak le rád, mely kioltja a tüzet és lehűti ,,fürdővizedet''. Kötelékeid meglazulnak, és most már sikerül kiugranod az üstből. Libra nem hagyott cserben. Amint a Fejvadászok észreveszik, hogy valami természetfeletti jelenség megy végbe, azonnal bemenekülnek a környező erdőbe. Ez egyszer megmenekültél, de ebben a kalandodban többé nem kérheted Libra segítségét! Mindaddig nem hallgatja meg kérő szavadat, amíg el nem éred Kharé városát.[/p]
+        [p]Összeszeded a holmidat, és beveted magad az erdőbe.[/p]
+    </text>
+    <loseItem id="4103" />
+    <next id="254"></next>
+  </p>
   <!-- 26 -->
   <!-- 27 -->
   <!-- 28 -->
@@ -151,7 +161,7 @@
     <text>
         [p]Egy napja hagytad el Analandot.[/p]
     </text>
-    <itemCheck type="item" id="4000">
+    <itemCheck type="item" id="4101">
       <have>
         <text>
             [p]Szörnyen éhes vagy, és vesztesz 3 ÉLETERŐ pontot![/p]
@@ -159,7 +169,7 @@
         <add amount="-3" to="stamina" />
       </have>
       <dontHave>
-        <gatherItem id="4000" />
+        <gatherItem id="4101" />
       </dontHave>
     </itemCheck>
     <next id="246"></next>
@@ -178,9 +188,27 @@
   <!-- 37 -->
   <!-- 38 -->
   <!-- 39 -->
-  <!-- 40 -->
+  <p id="40">
+    <text>
+        [p]Óvatosan mész lefelé az ösvényen, vigyázva, nehogy rálépj akár egyetlen száraz gallyra is.[/p]
+    </text>
+    <itemCheck type="item" id="2000">
+      <have>
+        <next id="180">Ha meg akarsz itt állni, hogy egyél egy keveset</next>
+        <next id="133">Ha inkább továbbmész</next>
+      </have>
+      <dontHave>
+        <next id="133"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 41 -->
-  <!-- 42 -->
+  <p id="42">
+    <text>
+        [p]Odamész a falu közepén égő tábortűzhöz, és elkiáltod magad. A válasz síri csönd. Mialatt valami életjelre vársz, szorongani kezdesz. De már késő, a lángok feléd csapnak. Hiába küzdesz, elveszted az eszméletedet, és elterülsz a földön.[/p]
+    </text>
+    <next id="279"></next>
+  </p>
   <p id="43">
     <empty />
   </p>
@@ -232,7 +260,12 @@
   <!-- 67 -->
   <!-- 68 -->
   <!-- 69 -->
-  <!-- 70 -->
+  <p id="70">
+    <text>
+        [p]Menekülni próbálsz a lábad alatt megnyíló csapdából, de már késő. Legalább három métert zuhansz, majd eszméletlenül terülsz el a mélyben.[/p]
+    </text>
+    <next id="139"></next>
+  </p>
   <!-- 71 -->
   <p id="72">
     <empty />
@@ -244,7 +277,7 @@
     <text>
         [p]A patakparton, a sziklák között jó kis búvóhelyet találsz, és letelepszel éjszakára.
     </text>
-    <itemCheck type="items" id="4000 and 2000">
+    <itemCheck type="items" id="4101 and 2000">
       <have>
         <changeItem attribute="stamina" id="2000" set="2" />
         <canEat />
@@ -265,7 +298,13 @@
   <!-- 77 -->
   <!-- 78 -->
   <!-- 79 -->
-  <!-- 80 -->
+  <p id="80">
+    <text>
+        [p]Óvatosan bemész a faluba, és körbejárod a házakat, de egy teremtett lelket sem találsz. A tábortűz lobog, mellette egy halomban fatuskók sorakoznak.[/p]
+    </text>
+    <next id="189">Ha körülnézel a kunyhókban</next>
+    <next id="42">Ha elkiáltod magad, hátha előbújik valaki</next>
+  </p>
   <p id="81">
     <text>
         [p]A fönti főúton indulsz el, mely keresztülvisz a falun. Egy helyütt, egy kis fogadóban ételt kínálnak eladásra.[/p]
@@ -287,7 +326,12 @@
   <!-- 86 -->
   <!-- 87 -->
   <!-- 88 -->
-  <!-- 89 -->
+  <p id="89">
+    <text>
+        [p]Épp jókor ugrasz el, mert a lábad alatt csapda volt. Hátranézel, és egy tátongó, mély vermet látsz, amelybe majdnem belezuhantál.[/p]
+    </text>
+    <next id="170"></next>
+  </p>
   <!-- 90 -->
   <p id="91">
     <text>
@@ -325,7 +369,7 @@
     <text>
         [p]A banditák morogva rád támadnak.[/p]
     </text>
-    <itemCheck type="item" id="4001">
+    <itemCheck type="item" id="4102">
       <have>
         <spell name="ERŐ" id="288" />
         <spell name="TÁN" id="308" />
@@ -370,7 +414,20 @@
   <!-- 109 -->
   <!-- 110 -->
   <!-- 111 -->
-  <!-- 112 -->
+  <p id="112">
+    <text>
+        [p]A kis ember egyre csak vezet tovább, és csakhamar elérkeztek a Fejvadászok táborába. Nagy nyugtalanság támad, amikor megjelenik veled a település központjában. Egy csomó helybéli sietve tölt meg vízzel egy hatalmas üstöt, és azt a tűz fölé helyezi - most még nem tulajdonítasz ennek jelentőséget! Időközben téged bezárnak egy erős bambuszketrecbe, és őrt állítanak melléd.[/p]
+    </text>
+    <itemCheck type="item" id="4103">
+      <have>
+        <next id="25">Ha Librához fohászkodsz segítségért</next>
+        <next id="242">Ha nem</next>
+      </have>
+      <dontHave>
+        <next id="242"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="113">
     <text>
         [p]A teremtmény felpattan a levegőbe, amikor üdvözlöd, és óvatosan közelebb megy hozzád. Amikor látja, hogy nincs szándékodban megtámadni, kéri, hogy kísérd el őt a társaihoz.[/p]
@@ -386,7 +443,7 @@
     </text>
     <add amount="2" to="stamina" />
     <add amount="-1" to="gold" />
-    <loseItem id="4000" />
+    <loseItem id="4101" />
     <next id="131"></next>
   </p>
   <!-- 117 -->
@@ -443,7 +500,7 @@
     <text>
         [p]Egy Óriás Denevérbe futottál bele.[/p]
     </text>
-    <itemCheck type="item" id="4001">
+    <itemCheck type="item" id="4102">
       <have>
         <spell name="RAN" id="396a" />
         <spell name="GUM" id="421a" />
@@ -475,7 +532,7 @@
     <text>
         [p]Egy Farkaskopóba futottál bele.[/p]
     </text>
-    <itemCheck type="item" id="4001">
+    <itemCheck type="item" id="4102">
       <have>
         <spell name="RAN" id="396b" />
         <spell name="GUM" id="421b" />
@@ -507,7 +564,7 @@
     <text>
         [p]Egy Farkasemberbe futottál bele.[/p]
     </text>
-    <itemCheck type="item" id="4001">
+    <itemCheck type="item" id="4102">
       <have>
         <spell name="RAN" id="396c" />
         <spell name="GUM" id="421c" />
@@ -707,18 +764,47 @@
     </text>
     <next id="183"></next>
   </p>
-  <!-- 132 -->
-  <!-- 133 -->
+  <p id="132">
+    <text>
+        [p]Elengedik a kezedet, és hagyják, hogy varázsolj nekik.[/p]
+    </text>
+    <spell name="TIL" id="353" />
+    <spell name="JAP" id="376" />
+    <spell name="KIN" id="292" />
+    <spell name="GOB" id="401" />
+    <spell name="HAT" id="316" />
+    <next id="218">Ha ezek közül egyiket sem ismered</next>
+  </p>
+  <p id="133">
+    <text>
+        [p]Óvatosan mész az ösvényen, ahol az aljnövényzet egyre bujábbá válik. Hirtelen megreccsen egy ág a lábad alatt.[/p]
+    </text>
+    <next id="133a">Ha megeresztesz egy fohászt Sindlához</next>
+    <next id="70">Ha nem akarsz a Szerencse Istennőjéhez fohászkodni</next>
+  </p>
+  <p id="133a" display="133">
+    <text>
+        [p]Óvatosan mész az ösvényen, ahol az aljnövényzet egyre bujábbá válik. Hirtelen megreccsen egy ág a lábad alatt.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="89"></next>
+      </success>
+      <failure>
+        <next id="70"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 134 -->
   <!-- 135 -->
   <p id="136">
-    <itemCheck type="item" id="4000">
+    <itemCheck type="item" id="4101">
       <have>
         <text>
             [p]Nyersz 2 ÉLETERŐ pontot.
         </text>
         <loseItem id="2000" />
-        <loseItem id="4000" />
+        <loseItem id="4101" />
         <add amount="2" to="stamina" />
       </have>
       <dontHave>
@@ -738,7 +824,30 @@
   </p>
   <!-- 137 -->
   <!-- 138 -->
-  <!-- 139 -->
+  <p id="139">
+    <text>
+        [p]Amikor visszanyered az eszméletedet, látod, hogy mindkét kezed és lábad meg van kötözve. A téged körülvevő fekete bőrű Fejvadászok izgatott karattyolása halálfélelemmel tölt el.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Megpróbálhatsz varázsolni.[/p]
+        </text>
+        <spell name="RIS" id="357" />
+        <spell name="KIN" id="406" />
+        <spell name="MEL" id="333" />
+        <spell name="TIL" id="450" />
+        <spell name="WIK" id="379" />
+        <next id="112">Ha megvárod, hogy mit szándékoznak veled csinálni</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Jobb híján megvárod, hogy mit szándékoznak veled csinálni.[/p]
+        </text>
+        <next id="112"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 140 -->
   <p id="141">
     <text>
@@ -801,7 +910,7 @@
   <!-- 146 -->
   <!-- 147 -->
   <p id="148">
-    <itemCheck type="item" id="4000">
+    <itemCheck type="item" id="4101">
       <have>
         <text>
             [p]Iszonyúan éhes vagy, és le kell vonnod magadtól 3 ÉLETERŐ pontot, amiért egész nap étlen-szomjan vándorolsz.[/p]
@@ -809,7 +918,7 @@
         <add amount="-3" to="stamina" />
       </have>
       <dontHave>
-        <gatherItem id="4000" />
+        <gatherItem id="4101" />
       </dontHave>
       <after>
         <text>
@@ -866,7 +975,12 @@
     <next id="210"></next>
   </p>
   <!-- 169 -->
-  <!-- 170 -->
+  <p id="170">
+    <text>
+        [p]Örömöd nem tart sokáig, ugyanis a következő lépésnél a lábad kiold egy szerkezetet. Ennek következtében három, éles karókkal teletűzdelt pózna csapódik fel előtted. Karóba húz ez az ördögi szerkezet, és utad itt véget ér! Fejed nemsokára ott fog díszelegni a többi karóba húzott fej között, melyeket az imént hagytál el…[/p]
+    </text>
+    <death />
+  </p>
   <!-- 171 -->
   <!-- 172 -->
   <!-- 173 -->
@@ -884,7 +998,13 @@
     <next id="198">Azt, hogy éhes vagy, és Élelemre van szükséged?</next>
   </p>
   <!-- 179 -->
-  <!-- 180 -->
+  <p id="180">
+    <text>
+        [p]Letelepszel egy kis tisztáson, és hátizsákodból előveszed az Élelmedet. Éberen figyelsz a környező zajokra, és megriadsz, amikor a közeledben egy csapat erdei sirály röppen fel a levegőbe.[/p]
+    </text>
+    <next id="133">Ha akarod, összerámolhatod a hátizsákodat, és folytathatod az utadat</next>
+    <next id="272">De maradhatsz is, és folytathatod a táplálkozást</next>
+  </p>
   <!-- 181 -->
   <!-- 182 -->
   <p id="183">
@@ -917,7 +1037,12 @@
   <!-- 193 -->
   <!-- 194 -->
   <!-- 195 -->
-  <!-- 196 -->
+  <p id="196">
+    <text>
+        [p]Óvatos léptekkel elhagyod a falut, és legalább egy órán át fölfelé mész a folyó mentén.[/p]
+    </text>
+    <next id="231"></next>
+  </p>
   <!-- 197 -->
   <p id="198">
     <text>
@@ -943,7 +1068,7 @@
         [p]Amikor a teremtmény észreveszi, hogy nem tágítasz, övéből előrántja rövid kardját. Egyenesen rád veti magát a levegőből, és fegyverével a karod felé sújt. Olyan villámgyorsan történik mindez, hogy mire észhez térsz, éles kardja 1 ÉLETERŐ pontot sebez a karodon. Megküzdhetsz az apró Elvinnel, de a harc időtartamára - gyorsasága miatt - 2 ponttal növeld a dobókockával megállapított Támadóerejét.[/p]
     </text>
     <add amount="-1" to="stamina" />
-    <itemCheck type="item" id="4001">
+    <itemCheck type="item" id="4102">
       <have>
         <spell name="MEL" id="405" />
         <spell name="ZEL" id="294" />
@@ -977,7 +1102,13 @@
   <!-- 206 -->
   <!-- 207 -->
   <!-- 208 -->
-  <!-- 209 -->
+  <p id="209">
+    <text>
+        [p]A folyó menti ösvényen haladsz mindaddig, míg néhány óra múlva egy éles kanyarhoz nem érsz. A kanyarból kitekintve zsúpfedeles kunyhókat látsz, amelyek lobogó tábortüzet vesznek körül, de a falu felől egyetlen hangot sem hallasz.[/p]
+    </text>
+    <next id="80">Ha továbbmész a faluba</next>
+    <next id="156">Ha inkább letérsz az ösvényről és fölkapaszkodsz a dombokra, hogy messze elkerüld a falut</next>
+  </p>
   <p id="210">
     <text>
         [p]Vagy két-három órán át haladsz a kanyargós ösvényen föl a domboldalon. Csakhamar hűvös lesz, a nap is lenyugszik, egyre nehezebben látsz már. Telihold van ugyan, és az bevilágítja majd a környéket, ha később egészen besötétedne.[/p]
@@ -1071,7 +1202,12 @@
   <!-- 239 -->
   <!-- 240 -->
   <!-- 241 -->
-  <!-- 242 -->
+  <p id="242">
+    <text>
+        [p]Röviddel később két Fejvadász jön vissza érted, és kilökdös a ketrecből. Odavonszolnak az üsthöz, melyben már jócskán forr a víz, és ekkor egy hatalmas ütés éri a fejedet. Eszméletlenül rogysz össze, és már soha többet nem térsz magadhoz. A helybélieknek finom, friss hús jut ma este…[/p]
+    </text>
+    <death />
+  </p>
   <!-- 243 -->
   <!-- 244 -->
   <!-- 245 -->
@@ -1091,7 +1227,31 @@
   <!-- 251 -->
   <!-- 252 -->
   <!-- 253 -->
-  <!-- 254 -->
+  <p id="254">
+    <text>
+        [p]Félve rohansz be az erdőbe, hátha a zűrzavar hangjaira felfigyeltek más teremtmények is. Vagy egy fél órát futsz, amikor megállsz, hogy kifújd magad. Ekkor veszed csak észre, hogy eltévedtél. Merre mész tovább?[/p]
+    </text>
+    <random>
+      <result max="2" min="1">
+        <text>
+            [p]Továbbmész fel a dombon, míg egy ösvényhez nem érsz.[/p]
+        </text>
+        <next id="68"></next>
+      </result>
+      <result max="4" min="3">
+        <text>
+            [p]Folytatod az utadat ugyanarra, amerre eddig is mentél, egészen egy ösvényig.[/p]
+        </text>
+        <next id="13"></next>
+      </result>
+      <result max="6" min="5">
+        <text>
+            [p]Lefelé mész a dombról, mindaddig, míg egy jól kitaposott ösvényhez nem érsz.[/p]
+        </text>
+        <next id="98"></next>
+      </result>
+    </random>
+  </p>
   <!-- 255 -->
   <!-- 256 -->
   <p id="257">
@@ -1191,7 +1351,12 @@
     <next id="9"></next>
   </p>
   <!-- 271 -->
-  <!-- 272 -->
+  <p id="272">
+    <text>
+        [p]Amikor a kenyeredbe beleharapsz, éles fájdalom hasít a lábadba, és megfordulsz. Nem messze, egy fa tetején egy Fejvadászt pillantasz meg, aki fúvócsövét leeresztve téged néz. Szédülni kezdesz, és csakhamar meghalsz a testedben felszívódó méregtől. Fejed nemsokára ott díszeleg majd a többi között karóba húzva, az utolsó elágazásnál…[/p]
+    </text>
+    <death />
+  </p>
   <!-- 273 -->
   <p id="274">
     <empty />
@@ -1200,7 +1365,21 @@
   <!-- 276 -->
   <!-- 277 -->
   <!-- 278 -->
-  <!-- 279 -->
+  <p id="279">
+    <text>
+        [p]Amikor felébredsz, egy kunyhóban találod magad. Mindkét kezed és lábad meg van kötözve. Amikor az ajtónál lévő teremtmény megpillantja, hogy megmoccansz, talpra szökken, azaz a levegőbe, és onnan szemlél figyelmesen. Őröd ember formájú ugyan, de alacsony és vékony. Az Elvinek fogságában vagy![/p]
+        [p]Az Elvinek pajzán teremtmények, inkább csak huncutok, és nem gonoszok. Szeretik a csínytevést és viccelődést. Csakhamar többen összecsődülnek a szobádban. Megkérdik, nem mágus vagy-e, és ha igen, megkérnek, hogy mutass be nekik néhány trükköt.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <next id="132">Ha bemutatsz néhány trükköt</next>
+        <next id="218">Ha nem</next>
+      </have>
+      <dontHave>
+        <next id="218"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="280">
     <itemCheck type="item" id="4002" amount="3">
       <have>
@@ -1328,7 +1507,13 @@
   <!-- 289 -->
   <!-- 290 -->
   <!-- 291 -->
-  <!-- 292 -->
+  <p id="292">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Összpontosítod a figyelmedet, és szemed lassan megpihen a kunyhó sarkában lévő hatalmas sziklatömbön. A szikla a szemük előtt válik egy halom csillogó kinccsé. A lélegzetük is eláll, amikor megpillantják a semmiből támadt sok ékszert, aranyat, ezüstöt és drágakövet. Izgatottan súgnak össze, és boldogan feléd mutogatnak. Egyikük megpróbálja megérinteni a kincseket, de abban a pillanatban eltünteted a varázslatot. Az Elvineket teljesen lenyűgözi varázstudományod, és visszaadják a hátizsákodat, majd azt is megengedik, hogy elhagyd a falujukat.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="196"></next>
+  </p>
   <!-- 293 -->
   <p id="294">
     <text>
@@ -1378,7 +1563,13 @@
   <!-- 313 -->
   <!-- 314 -->
   <!-- 315 -->
-  <!-- 316 -->
+  <p id="316">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot a varázslásért. Nem önmagaddal végzed ezúttal a varázslatot, hanem az egyik Elvinnel, aki szerinted az Elvinek vezére lehet. Társai izgatottan lesik, miként lesz a szemük előtt hat példány a vezérükből! A vezér felnevet - azaz mind a hat vezér nevet -, s ez igen szórakoztató látvány. Csakhamar az összes Elvin nevetésben tör ki, és a vezér, alteregóival együtt, kezet nyújt társainak. Az Elvinek közül öten természetesen csak a levegővel fognak kezet. A varázslat csakhamar megszűnik, és a teremtmények, miközben gratulálnak neked, visszaadják hátizsákodat, és utadra engednek. Elhagyhatod a falut.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="196"></next>
+  </p>
   <!-- 317 -->
   <!-- 318 -->
   <!-- 319 -->
@@ -1401,7 +1592,13 @@
   <!-- 330 -->
   <!-- 331 -->
   <!-- 332 -->
-  <!-- 333 -->
+  <p id="333">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot! Varázslatod mit sem ér. Mindaddig nem varázsolhatsz, amíg a kezed meg van kötözve! Fölösleges volt az igyekezeted![/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <next id="112"></next>
+  </p>
   <!-- 334 -->
   <!-- 335 -->
   <!-- 336 -->
@@ -1427,7 +1624,13 @@
   <!-- 350 -->
   <!-- 351 -->
   <!-- 352 -->
-  <!-- 353 -->
+  <p id="353">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot! Megpróbálsz varázsolni, de varázslatod nem működik, mert nem rendelkezel az ehhez szükséges tárggyal. Az Elvinekre nem vagy hatással, és gyorsan újra megkötözik a kezedet, csakhogy ezúttal sokkal szorosabban és fájdalmasabban. Újabb ÉLETERŐ pontot vesztesz.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="218"></next>
+  </p>
   <!-- 354 -->
   <!-- 355 -->
   <p id="356">
@@ -1466,7 +1669,13 @@
       </failure>
     </test>
   </p>
-  <!-- 357 -->
+  <p id="357">
+    <text>
+        [p]Vesztesz 3 ÉLETERŐ pontot! Nincs ilyen varázslat. Valójában rájössz, hogy egyáltalán nem tudsz varázsolni, hiszen mindkét kezed meg van kötözve. Emlékezz erre a későbbiek során![/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <next id="112"></next>
+  </p>
   <!-- 358 -->
   <!-- 359 -->
   <!-- 360 -->
@@ -1491,7 +1700,13 @@
   <!-- 373 -->
   <!-- 374 -->
   <!-- 375 -->
-  <!-- 376 -->
+  <p id="376">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat, és az Elvinekre nincs hatással sikertelen próbálkozásod. Ismét megkötözik a kezedet, csakhogy ezúttal sokkal szorosabban, úgy, hogy szinte fáj.[/p]
+    </text>
+    <add amount="-5" to="stamina" />
+    <next id="218"></next>
+  </p>
   <!-- 377 -->
   <p id="378">
     <text>
@@ -1500,7 +1715,13 @@
     <add amount="-4" to="stamina" />
     <next id="203"></next>
   </p>
-  <!-- 379 -->
+  <p id="379">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat. Valójában nem is varázsolhatsz, hisz mindkét kezed meg van kötözve. Emlékezz erre legközelebb.[/p]
+    </text>
+    <add amount="-5" to="stamina" />
+    <next id="112"></next>
+  </p>
   <!-- 380 -->
   <!-- 381 -->
   <!-- 382 -->
@@ -1542,7 +1763,25 @@
   <!-- 398 -->
   <!-- 399 -->
   <!-- 400 -->
-  <!-- 401 -->
+  <p id="401">
+    <itemCheck type="item" id="3201">
+      <have>
+        <text>
+            [p]Rávarázsolsz egy Goblinfogra (vesztesz 1 ÉLETERŐ pontot), és az az Elvinek szeme láttára Goblinná változik. Kezdetben nyugtalanul szemlélnek - nem szeretik a Goblinokat -, de aztán, mikor látják, hogy tökéletesen ura vagy teremtményednek, kissé megnyugszanak. Ha akarod, a Goblin táncol, fejen áll, sőt énekel is (bár ez élénk tiltakozást vált ki az Elvinekből, mert a Goblinok énekelnek a leghamisabban). Záróakkordként megparancsolod a Goblinnak, hogy hajoljon meg az Elvinek előtt, és csókolja meg a csizmájukat. Amikor a Goblin eltűnik, az Elvinek gratulálnak neked. Kellemes társalgás után visszaadják a hátizsákodat, és megengedik, hogy folytasd az utadat.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+        <loseItem id="3201" />
+        <next id="196"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nincs nálad a varázslathoz szükséges tárgy. Fölösleges az igyekezeted, varázslatod nem működik, és nincs hatással az Elvinekre. Kezedet összekötözik, és dühösen beléd rúgnak (vesztesz 1 ÉLETERŐ pontot).[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+        <next id="218"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 402 -->
   <!-- 403 -->
   <!-- 404 -->
@@ -1553,7 +1792,13 @@
     <add amount="-4" to="stamina" />
     <next id="121"></next>
   </p>
-  <!-- 406 -->
+  <p id="406">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Egy fontos szabályt fogsz most megtanulni: mindaddig nem varázsolhatsz, amíg a kezed meg van kötözve! Fölösleges volt az igyekezeted.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="112"></next>
+  </p>
   <!-- 407 -->
   <!-- 408 -->
   <!-- 409 -->
@@ -1676,7 +1921,13 @@
     </itemCheck>
   </p>
   <!-- 449 -->
-  <!-- 450 -->
+  <p id="450">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot. Ezt a varázslatot nem alkalmazhatod, mert nincs a birtokodban az ehhez szükséges tárgy. Valójában egyáltalán nem is tudsz varázsolni mindaddig, amíg mindkét kezed meg van kötözve. Emlékezz erre a későbbiek során.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="112"></next>
+  </p>
   <!-- 451 -->
   <!-- 452 -->
   <p id="453a" display="453">
