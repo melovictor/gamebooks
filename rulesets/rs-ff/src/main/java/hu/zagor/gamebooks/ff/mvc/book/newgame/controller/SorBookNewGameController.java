@@ -14,7 +14,7 @@ public class SorBookNewGameController extends FfBookNewGameController {
         final Map<String, Object> results = super.generateCharacter(request);
         final SorCharacter character = (SorCharacter) getWrapper(request).getCharacter();
         if (character.isWizard()) {
-            getInfo().getCharacterHandler().getItemHandler().addItem(character, "4001", 1);
+            getInfo().getCharacterHandler().getItemHandler().addItem(character, "4102", 1);
         }
         return results;
     }

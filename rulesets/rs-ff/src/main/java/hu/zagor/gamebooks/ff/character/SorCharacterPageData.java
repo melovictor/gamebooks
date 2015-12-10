@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 @Component("sorCharacterPageData")
 @Scope("prototype")
 public class SorCharacterPageData extends FfCharacterPageData {
+    private final boolean usedLibra;
+
     /**
      * Bean for storing data to display on the character page for Fighting Fantasy ruleset.
      * @param character the character
@@ -18,6 +20,11 @@ public class SorCharacterPageData extends FfCharacterPageData {
      */
     public SorCharacterPageData(final SorCharacter character, final FfCharacterHandler handler) {
         super(character, handler);
+        usedLibra = character.isUsedLibra();
+    }
+
+    public boolean isUsedLibra() {
+        return usedLibra;
     }
 
 }

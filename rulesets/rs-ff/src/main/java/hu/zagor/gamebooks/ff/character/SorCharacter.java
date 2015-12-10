@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 public class SorCharacter extends FfCharacter {
     private boolean wizard;
-    private boolean usedLibra;
 
     public boolean isWizard() {
         return wizard;
@@ -20,14 +19,6 @@ public class SorCharacter extends FfCharacter {
 
     public void setWizard(final boolean wizard) {
         this.wizard = wizard;
-    }
-
-    public boolean isUsedLibra() {
-        return usedLibra;
-    }
-
-    public void setUsedLibra(final boolean usedLibra) {
-        this.usedLibra = usedLibra;
     }
 
     @Override
@@ -49,10 +40,18 @@ public class SorCharacter extends FfCharacter {
     }
 
     private boolean shouldDouble() {
-        boolean hasDoubleValue = false;
+        return hasItem("4003");
+    }
+
+    private boolean hasItem(final String itemId) {
+        boolean hasItem = false;
         for (final Item item : getEquipment()) {
-            hasDoubleValue |= "4003".equals(item.getId());
+            hasItem |= itemId.equals(item.getId());
         }
-        return hasDoubleValue;
+        return hasItem;
+    }
+
+    public boolean isUsedLibra() {
+        return !hasItem("4103");
     }
 }
