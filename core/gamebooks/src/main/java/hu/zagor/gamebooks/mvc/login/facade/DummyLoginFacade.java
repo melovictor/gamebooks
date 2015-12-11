@@ -29,7 +29,13 @@ public class DummyLoginFacade extends AbstractLoginFacade {
         if (loginResult == null) {
             throw new BadCredentialsException("page.login.invalid.username.password");
         }
-        return new PlayerUser(loginResult.getId(), authentication.getPrincipal(), Arrays.asList(USER, TEST, ADMIN));
+        PlayerUser playerUser;
+        if (loginResult.isAdmin()) {
+            playerUser = new PlayerUser(loginResult.getId(), authentication.getPrincipal(), Arrays.asList(USER, TEST, ADMIN));
+        } else {
+            playerUser = new PlayerUser(loginResult.getId(), authentication.getPrincipal(), Arrays.asList(USER));
+        }
+        return playerUser;
     }
 
     @Override
