@@ -2,14 +2,12 @@ package hu.zagor.gamebooks.mvc.logs.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.books.bookinfo.BookInformationFetcher;
-import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.directory.DirectoryProvider;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.mvc.book.controller.AbstractRequestWrappingController;
 import hu.zagor.gamebooks.mvc.logs.domain.LogFileContainer;
 import hu.zagor.gamebooks.mvc.logs.domain.LogFileData;
 import hu.zagor.gamebooks.support.scanner.Scanner;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,15 +18,13 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.io.IOUtils;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +35,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Tamas_Szekeres
  */
 @Controller
+@PreAuthorize("hasRole('ADMIN')")
 public class UserLogController extends AbstractRequestWrappingController {
 
     private static final int BOOK_ID_BOOK = 3;
@@ -55,41 +52,31 @@ public class UserLogController extends AbstractRequestWrappingController {
     private static final DateTimeFormatter SHORT_FORMAT = DateTimeFormat.forPattern("YYYY. MMMM d.");
     private static final DateTimeFormatter LONG_FORMAT = DateTimeFormat.forPattern("YYYY. MMMM d. HH:mm:ss");
 
-    @Autowired
-    private DirectoryProvider directoryProvider;
-    @Autowired
-    private BookInformationFetcher infoFetcher;
+    @Autowired private DirectoryProvider directoryProvider;
+    @Autowired private BookInformationFetcher infoFetcher;
 
     /**
      * Displays the opening log page with all the available log files.
      * @param model the {@link Model}
-     * @param request the {@link HttpServletRequest} bean
      * @return the target page's identifier
      */
     @RequestMapping(value = PageAddresses.LOGS)
-    public String listDirectories(final Model model, final HttpServletRequest request) {
-        final HttpSessionWrapper wrapper = getWrapper(request);
-        String target;
-        if (!wrapper.getPlayer().isAdmin()) {
-            target = "redirect:" + PageAddresses.BOOK_LIST;
-        } else {
-            final LogFileContainer container = new LogFileContainer();
-            final Set<String> archivedContainer = new TreeSet<String>(Collections.reverseOrder());
-            final String logDir = directoryProvider.getLogFileDirectory();
-            final File logFiles = (File) getBeanFactory().getBean("file", logDir);
-            if (logFiles.exists()) {
-                for (final File file : logFiles.listFiles()) {
-                    processFile(container, archivedContainer, file);
-                }
+    public String listDirectories(final Model model) {
+        final LogFileContainer container = new LogFileContainer();
+        final Set<String> archivedContainer = new TreeSet<String>(Collections.reverseOrder());
+        final String logDir = directoryProvider.getLogFileDirectory();
+        final File logFiles = (File) getBeanFactory().getBean("file", logDir);
+        if (logFiles.exists()) {
+            for (final File file : logFiles.listFiles()) {
+                processFile(container, archivedContainer, file);
             }
-            model.addAttribute("logFiles", container);
-            model.addAttribute("archivedLogFiles", archivedContainer);
-
-            target = "logs";
         }
+        model.addAttribute("logFiles", container);
+        model.addAttribute("archivedLogFiles", archivedContainer);
+
         model.addAttribute("pageTitle", "page.title");
 
-        return target;
+        return PageAddresses.LOGS;
     }
 
     private void processFile(final LogFileContainer container, final Set<String> archivedContainer, final File file) {

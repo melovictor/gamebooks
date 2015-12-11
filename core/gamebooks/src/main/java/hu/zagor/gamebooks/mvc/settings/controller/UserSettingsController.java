@@ -10,16 +10,14 @@ import hu.zagor.gamebooks.player.settings.DefaultSettingsHandler;
 import hu.zagor.gamebooks.player.settings.UserSettingsHandler;
 import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,21 +31,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class UserSettingsController extends LanguageAwareController {
 
-    @LogInject
-    private Logger logger;
+    @LogInject private Logger logger;
 
-    @Autowired
-    private UserSettingsHandler userSettingsHandler;
-    @Autowired
-    private DefaultSettingsHandler defaultSettingsHandler;
-    @Autowired
-    private EnvironmentDetector environmentDetector;
-    @Autowired
-    @Qualifier("d6")
-    private ReplayingNumberGenerator generator6;
-    @Autowired
-    @Qualifier("d10")
-    private ReplayingNumberGenerator generator10;
+    @Autowired private UserSettingsHandler userSettingsHandler;
+    @Autowired private DefaultSettingsHandler defaultSettingsHandler;
+    @Autowired private EnvironmentDetector environmentDetector;
+    @Autowired @Qualifier("d6") private ReplayingNumberGenerator generator6;
+    @Autowired @Qualifier("d10") private ReplayingNumberGenerator generator10;
 
     /**
      * Method for displaying the settings screen.
@@ -114,21 +104,18 @@ public class UserSettingsController extends LanguageAwareController {
      * @return the new settings screen
      */
     @RequestMapping(value = PageAddresses.SETTINGS + "/recording/{command}", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ADMIN')")
     public String setUpRecordingSettings(final HttpServletRequest request, final Model model, @PathVariable("command") final int command) {
-        final HttpSessionWrapper wrapper = getWrapper(request);
-        final PlayerUser player = wrapper.getPlayer();
-        if (player.isAdmin()) {
-            switch (command) {
-            case 1:
-                environmentDetector.setRecordState(true);
-                generator6.getThrownResults().clear();
-                generator10.getThrownResults().clear();
-                break;
-            case 0:
-                environmentDetector.setRecordState(false);
-                break;
-            default:
-            }
+        switch (command) {
+        case 1:
+            environmentDetector.setRecordState(true);
+            generator6.getThrownResults().clear();
+            generator10.getThrownResults().clear();
+            break;
+        case 0:
+            environmentDetector.setRecordState(false);
+            break;
+        default:
         }
         return displaySettingsScreen(model, request);
     }
