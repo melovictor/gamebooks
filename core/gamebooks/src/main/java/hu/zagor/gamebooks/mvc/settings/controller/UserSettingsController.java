@@ -104,7 +104,7 @@ public class UserSettingsController extends LanguageAwareController {
      * @return the new settings screen
      */
     @RequestMapping(value = PageAddresses.SETTINGS + "/recording/{command}", method = RequestMethod.GET)
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String setUpRecordingSettings(final HttpServletRequest request, final Model model, @PathVariable("command") final int command) {
         switch (command) {
         case 1:

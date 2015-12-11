@@ -6,11 +6,15 @@ package hu.zagor.gamebooks;
  */
 public final class PageAddresses {
 
-    public static final String ROOT_CONTEXT = "/gamebooks/";
-
     public static final String LOGIN = "login";
     public static final String TEST_LOGIN = "testLogin";
+
     public static final String BOOK_LIST = "booklist";
+    public static final String SETTINGS = "settings";
+    public static final String RULES = "rules";
+    public static final String LOGS = "logs";
+    public static final String PING = "ping";
+
     public static final String BOOK_PAGE = "book";
 
     public static final String BOOK_WELCOME = "welcome";
@@ -24,19 +28,17 @@ public final class PageAddresses {
     public static final String BOOK_INVENTORY = "inventory";
 
     public static final String BOOK_USER_RESPONSE = "userInputResponse";
-    public static final String SETTINGS = "settings";
     public static final String BOOK_GENERATE_CHARACTER = "generate";
     public static final String ATTRIBUTE_TEST = "attributeTest";
     public static final String RANDOM = "random";
     public static final String FIGHT = "attack";
     public static final String PRE_FIGHT_ITEM_USAGE = "preFight";
-    public static final String LOGS = "logs";
+
     public static final String FLEE = "flee";
     public static final String BOOK_CONSUME_ITEM = "consume";
     public static final String BOOK_MARKET_BUY = "buyItem";
     public static final String BOOK_MARKET_SELL = "sellItem";
     public static final String BOOK_MARKET_CLOSE = "marketClose";
-    public static final String RULES = "rules";
     public static final String BOOK_PURCHASE_ITEM = "purchase";
 
     private PageAddresses() {

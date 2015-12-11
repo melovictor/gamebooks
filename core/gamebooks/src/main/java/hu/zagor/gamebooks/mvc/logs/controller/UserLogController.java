@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Tamas_Szekeres
  */
 @Controller
-@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class UserLogController extends AbstractRequestWrappingController {
 
     private static final int BOOK_ID_BOOK = 3;
