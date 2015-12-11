@@ -7,7 +7,7 @@
   <sec:global-method-security pre-post-annotations="enabled" />
 
   <bean class="com.google.common.cache.CacheBuilder" factory-method="newBuilder" id="cacheBuilder" />
-  <bean id="csrfAccessDeniedHandler" class="hu.zagor.gamebooks.security.CsrfAccessDeniedHandler" />
+  <bean id="gamebooksAccessDeniedHandler" class="hu.zagor.gamebooks.security.GamebooksAccessDeniedHandler" />
 
   <beans profile="dev">
     <bean class="hu.zagor.gamebooks.mvc.login.facade.DummyLoginFacade" id="activeLoginFacade" p:dummyUsers-ref="dummyUserMap" />
