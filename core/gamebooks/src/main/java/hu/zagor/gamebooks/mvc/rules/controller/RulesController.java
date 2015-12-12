@@ -1,21 +1,5 @@
 package hu.zagor.gamebooks.mvc.rules.controller;
 
-import java.util.Set;
-import java.util.TreeSet;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.slf4j.Logger;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.mvc.generic.controller.LanguageAwareController;
@@ -23,18 +7,31 @@ import hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor;
 import hu.zagor.gamebooks.mvc.rules.domain.HelpSeriesBooks;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import hu.zagor.gamebooks.support.logging.LogInject;
+import java.util.Set;
+import java.util.TreeSet;
+import javax.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Controller for handling the rules page.
  * @author Tamas_Szekeres
  */
+@Lazy
 @Controller
 public class RulesController extends LanguageAwareController implements ApplicationContextAware {
 
-    @LogInject
-    private Logger logger;
-    @Autowired
-    private LocaleProvider localeProvider;
+    @LogInject private Logger logger;
+    @Autowired private LocaleProvider localeProvider;
 
     private ApplicationContext applicationContext;
 

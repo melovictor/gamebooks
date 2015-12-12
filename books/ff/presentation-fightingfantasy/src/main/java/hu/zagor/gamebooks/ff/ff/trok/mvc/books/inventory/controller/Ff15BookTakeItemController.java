@@ -5,9 +5,8 @@ import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
-
 import javax.servlet.http.HttpServletRequest;
-
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Controller for handling the item taking request to the given book.
  * @author Tamas_Szekeres
  */
+@Lazy
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + FightingFantasy.THE_RINGS_OF_KETHER)
 public class Ff15BookTakeItemController extends FfBookTakeItemController {

@@ -8,9 +8,8 @@ import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
 import hu.zagor.gamebooks.support.bookids.english.Warlock;
-
 import javax.servlet.http.HttpServletRequest;
-
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Controller for handling the item taking request to the given book.
  * @author Tamas_Szekeres
  */
+@Lazy
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + Warlock.THE_FLOATING_CITY)
 public class Wm8BookTakeItemController extends FfBookTakeItemController {

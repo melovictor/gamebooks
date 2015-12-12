@@ -133,7 +133,7 @@ public class LanguageProjectDataContents {
             + "import hu.zagor.gamebooks.support.bookids." + data.getFullLang() + "." + data.getBookIdDomain() + ";\r\n" + "\r\n"
             + "import org.springframework.beans.factory.annotation.Autowired;\r\n" + "import org.springframework.beans.factory.annotation.Qualifier;\r\n"
             + "import org.springframework.stereotype.Controller;\r\n" + "import org.springframework.web.bind.annotation.RequestMapping;\r\n" + "\r\n" + "/**\r\n"
-            + " * Controller for handling the section changes in the given book.\r\n" + " * @author Tamas_Szekeres\r\n" + " *\r\n" + " */\r\n" + "@Controller\r\n"
+            + " * Controller for handling the section changes in the given book.\r\n" + " * @author Tamas_Szekeres\r\n" + " *\r\n" + " */\r\n" + "@Lazy @Controller\r\n"
             + "@RequestMapping(value = PageAddresses.BOOK_PAGE + \"/\" + " + data.getBookId() + ")\r\n" + "public class " + data.getSeriesCodeCapital()
             + data.getPosition() + "BookSectionController extends " + getParentClassPrefix(baseData, data, null) + "BookSectionController {\r\n" + "    /**\r\n"
             + "     * Constructor expecting the {@link SectionHandlingService} bean.\r\n"
@@ -149,7 +149,7 @@ public class LanguageProjectDataContents {
             + getParentImport(baseData, data, "section", "Welcome", "Generic") + "import hu.zagor.gamebooks.support.bookids." + data.getFullLang() + "."
             + data.getBookIdDomain() + ";\r\n" + "\r\n" + "import org.springframework.stereotype.Controller;\r\n"
             + "import org.springframework.web.bind.annotation.RequestMapping;\r\n" + "\r\n" + "/**\r\n"
-            + " * Controller for handling the welcome requests to the given book.\r\n" + " * @author Tamas_Szekeres\r\n" + " *\r\n" + " */\r\n" + "@Controller\r\n"
+            + " * Controller for handling the welcome requests to the given book.\r\n" + " * @author Tamas_Szekeres\r\n" + " *\r\n" + " */\r\n" + "@Lazy @Controller\r\n"
             + "@RequestMapping(value = PageAddresses.BOOK_PAGE + \"/\" + " + data.getBookId() + ")\r\n" + "public class " + data.getSeriesCodeCapital()
             + data.getPosition() + "BookWelcomeController extends " + getParentClassPrefix(baseData, data, "Generic") + "BookWelcomeController {\r\n" + "}\r\n";
     }
@@ -160,7 +160,7 @@ public class LanguageProjectDataContents {
             + getParentImport(baseData, data, "newgame", "NewGame", null) + "import hu.zagor.gamebooks.support.bookids." + data.getFullLang() + "."
             + data.getBookIdDomain() + ";\r\n" + "\r\n" + "import org.springframework.stereotype.Controller;\r\n"
             + "import org.springframework.web.bind.annotation.RequestMapping;\r\n" + "\r\n" + "/**\r\n"
-            + " * Controller for handling the new game requests to the given book.\r\n" + " * @author Tamas_Szekeres\r\n" + " *\r\n" + " */\r\n" + "@Controller\r\n"
+            + " * Controller for handling the new game requests to the given book.\r\n" + " * @author Tamas_Szekeres\r\n" + " *\r\n" + " */\r\n" + "@Lazy @Controller\r\n"
             + "@RequestMapping(value = PageAddresses.BOOK_PAGE + \"/\" + " + data.getBookId() + ")\r\n" + "public class " + data.getSeriesCodeCapital()
             + data.getPosition() + "BookNewGameController extends " + getParentClassPrefix(baseData, data, null) + "BookNewGameController {\r\n" + "}\r\n";
     }
@@ -172,7 +172,7 @@ public class LanguageProjectDataContents {
             + ";\r\n" + "\r\n" + "import org.springframework.beans.factory.annotation.Autowired;\r\n"
             + "import org.springframework.beans.factory.annotation.Qualifier;\r\n" + "import org.springframework.stereotype.Controller;\r\n"
             + "import org.springframework.web.bind.annotation.RequestMapping;\r\n" + "\r\n" + "/**\r\n"
-            + " * Controller for handling the load request to the given book.\r\n" + " * @author Tamas_Szekeres\r\n" + " *\r\n" + " */\r\n" + "@Controller\r\n"
+            + " * Controller for handling the load request to the given book.\r\n" + " * @author Tamas_Szekeres\r\n" + " *\r\n" + " */\r\n" + "@Lazy @Controller\r\n"
             + "@RequestMapping(value = PageAddresses.BOOK_PAGE + \"/\" + " + data.getBookId() + ")\r\n" + "public class " + data.getSeriesCodeCapital()
             + data.getPosition() + "BookLoadController extends " + getParentClassPrefix(baseData, data, null) + "BookLoadController {\r\n" + "    /**\r\n"
             + "     * Constructor expecting the {@link SectionHandlingService} bean.\r\n"
@@ -188,7 +188,7 @@ public class LanguageProjectDataContents {
             + getParentImport(baseData, data, "inventory", "Inventory", null) + "import hu.zagor.gamebooks.support.bookids." + data.getFullLang() + "."
             + data.getBookIdDomain() + ";\r\n" + "\r\n" + "import org.springframework.stereotype.Controller;\r\n"
             + "import org.springframework.web.bind.annotation.RequestMapping;\r\n" + "\r\n" + "/**\r\n"
-            + " * Controller for handling the inventory list request to the given book.\r\n" + " * @author Tamas_Szekeres\r\n" + " *\r\n" + " */\r\n" + "@Controller\r\n"
+            + " * Controller for handling the inventory list request to the given book.\r\n" + " * @author Tamas_Szekeres\r\n" + " *\r\n" + " */\r\n" + "@Lazy @Controller\r\n"
             + "@RequestMapping(value = PageAddresses.BOOK_PAGE + \"/\" + " + data.getBookId() + ")\r\n" + "public class " + data.getSeriesCodeCapital()
             + data.getPosition() + "BookInventoryController extends " + getParentClassPrefix(baseData, data, null) + "BookInventoryController {\r\n" + "}\r\n";
     }
@@ -210,7 +210,7 @@ public class LanguageProjectDataContents {
         tic += " * @author Tamas_Szekeres\r\n";
         tic += " *\r\n";
         tic += " */\r\n";
-        tic += "@Controller\r\n";
+        tic += "@Lazy @Controller\r\n";
         tic += "@RequestMapping(value = PageAddresses.BOOK_PAGE + \"/\" + " + data.getBookId() + ")\r\n";
         tic += "public class " + data.getSeriesCodeCapital() + data.getPosition() + "BookTakeItemController extends " + getParentClassPrefix(baseData, data, null)
             + "BookTakeItemController {\r\n";

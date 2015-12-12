@@ -2,8 +2,8 @@ package hu.zagor.gamebooks.mvc.generic.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.mvc.login.domain.LoginData;
-
 import org.springframework.beans.InvalidPropertyException;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
  * Global exception handler for some specific use cases.
  * @author Tamas_Szekeres
  */
+@Lazy
 @ControllerAdvice
 public class GenericExceptionController {
 

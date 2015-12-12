@@ -7,10 +7,9 @@ import hu.zagor.gamebooks.books.saving.GameStateHandler;
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.mvc.book.controller.AbstractRequestWrappingController;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,13 +20,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Class for handling the saving of the state of a given book.
  * @author Tamas_Szekeres
  */
+@Lazy
 @Controller
 public class GenericBookSaveController extends AbstractRequestWrappingController {
 
-    @Autowired
-    private GameStateHandler gameStateHandler;
-    @Autowired
-    private BookInformationFetcher fetcher;
+    @Autowired private GameStateHandler gameStateHandler;
+    @Autowired private BookInformationFetcher fetcher;
 
     /**
      * Handles the saving of the current game state.

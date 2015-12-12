@@ -14,17 +14,15 @@ import hu.zagor.gamebooks.ff.wm.tds.content.command.attributetest.LyingAttribute
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.Warlock;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.HierarchicalMessageSource;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,17 +31,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Controller for handling the section changes in the given book.
  * @author Tamas_Szekeres
  */
+@Lazy
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + Warlock.THE_DERVISH_STONE)
 public class Wm4BookSectionController extends FfBookSectionController {
 
     private static final String NOMAD_ROBBERY = "69";
-    @Autowired
-    private AttributeTestCommandResolver attribTester;
-    @Autowired
-    private LocaleProvider localeProvider;
-    @Autowired
-    private HierarchicalMessageSource messageSource;
+    @Autowired private AttributeTestCommandResolver attribTester;
+    @Autowired private LocaleProvider localeProvider;
+    @Autowired private HierarchicalMessageSource messageSource;
 
     /**
      * Constructor expecting the {@link SectionHandlingService} bean.

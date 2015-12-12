@@ -1,6 +1,7 @@
 package hu.zagor.gamebooks.mvc.generic.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Controller for handling the welcome and random pages.
  * @author Tamas_Szekeres
  */
+@Lazy
 @Controller
 public class BasicController {
 

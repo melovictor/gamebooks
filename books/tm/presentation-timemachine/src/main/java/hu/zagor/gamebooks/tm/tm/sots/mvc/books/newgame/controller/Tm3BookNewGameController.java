@@ -6,7 +6,7 @@ import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.support.bookids.english.TimeMachine;
 import hu.zagor.gamebooks.tm.mvc.book.newgame.controller.TmBookNewGameController;
-
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Controller for handling the new game requests to the given book.
  * @author Tamas_Szekeres
  */
+@Lazy
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + TimeMachine.SWORD_OF_THE_SAMURAI)
 public class Tm3BookNewGameController extends TmBookNewGameController {

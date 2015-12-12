@@ -11,12 +11,10 @@ import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.ff.tcoc.character.Ff2Character;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
-
 import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Controller for handling the item taking request to the given book.
  * @author Tamas_Szekeres
  */
+@Lazy
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + FightingFantasy.THE_CITADEL_OF_CHAOS)
 public class Ff2BookTakeItemController extends FfBookTakeItemController {
@@ -34,10 +33,8 @@ public class Ff2BookTakeItemController extends FfBookTakeItemController {
     private static final String MAGIC_SWORD_ID = "1002";
     private static final String SPELL_POTION_ID = "2001";
 
-    @Resource(name = "ff2SpellIds")
-    private List<String> spells;
-    @Resource(name = "ff2RestorationSpellIds")
-    private List<String> resettingSpells;
+    @Resource(name = "ff2SpellIds") private List<String> spells;
+    @Resource(name = "ff2RestorationSpellIds") private List<String> resettingSpells;
 
     @Override
     protected int doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
