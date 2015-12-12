@@ -50,7 +50,7 @@ public class UserLogController extends AbstractRequestWrappingController {
     private static final Map<String, String> USER_NAMES = new HashMap<>();
 
     private static final DateTimeFormatter SHORT_FORMAT = DateTimeFormat.forPattern("YYYY. MMMM d.");
-    private static final DateTimeFormatter LONG_FORMAT = DateTimeFormat.forPattern("YYYY. MMMM d. HH:mm:ss");
+    private static final DateTimeFormatter LONG_FORMAT = DateTimeFormat.forPattern("YYYY. MMMM d. HH:mm:ss").withZone(DateTimeZone.forID("Europe/Budapest"));
 
     @Autowired private DirectoryProvider directoryProvider;
     @Autowired private BookInformationFetcher infoFetcher;
@@ -107,7 +107,7 @@ public class UserLogController extends AbstractRequestWrappingController {
             logFileData.setTimestamp(filePieces[TIMESTAMP_IDX]);
             logFileData.setUserName(getUsername(logFileData, userId));
             setBookInformation(filePieces, logFileData);
-            formattedTime = LONG_FORMAT.withZone(DateTimeZone.forID("Europe/Budapest")).print(Long.parseLong(logFileData.getTimestamp()));
+            formattedTime = LONG_FORMAT.print(Long.parseLong(logFileData.getTimestamp()));
             container.add(logFileData);
         } else if (filePieces.length == BASE_FILE_SIZE) {
             final String timestamp = filePieces[1].replace("base", "0");
