@@ -36,64 +36,18 @@ public class LanguageProjectDataContents {
             + "  xmlns:util=\"http://www.springframework.org/schema/util\" xmlns:c=\"http://www.springframework.org/schema/c\"\r\n"
             + "  xsi:schemaLocation=\"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd\r\n"
             + "        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd\">\r\n" + "\r\n"
-            + "  <util:constant static-field=\"hu.zagor.gamebooks.support.bookids."
-            + data.getFullLang()
-            + "."
-            + data.getBookId()
-            + "\" id=\""
-            + data.getSeriesCode()
-            + data.getPosition()
-            + "Id\" />\r\n"
-            + "\r\n"
-            + "  <bean class=\"hu.zagor.gamebooks.domain."
-            + baseData.getBookInfoPrefix()
-            + "BookInformations\" id=\""
-            + data.getSeriesCode()
-            + data.getPosition()
-            + "Info\" c:id-ref=\""
-            + data.getSeriesCode()
-            + data.getPosition()
-            + "Id\" p:coverPath=\"resources/"
-            + baseData.getSeriesCode()
-            + baseData.getPosition()
-            + "/cover.jpg\" p:resourceDir=\""
-            + baseData.getSeriesCode()
-            + baseData.getPosition()
-            + "\"\r\n"
-            + "    p:contentTransformers-ref=\"default"
-            + baseData.getRulesetCapital()
-            + "ContentTransformers\" p:paragraphResolver-ref=\""
-            + baseData.getRuleset()
-            + "RuleBookParagraphResolver"
-            + baseData.getDefaultSkillTestType()
-            + "\" p:locale-ref=\""
-            + data.getCompactLang()
-            + "Locale\" p:position=\""
-            + data.getActualPosition()
-            + "\" p:series-ref=\""
-            + data.getSeriesCode()
-            + "Title\" p:title=\""
-            + data.getTitle()
-            + "\" p:characterHandler-ref=\""
-            + baseData.getRuleset()
-            + "CharacterHandler\" p:commandResolvers-ref=\""
-            + baseData.getRuleset()
-            + "CommandResolvers\" p:unfinished=\"true\""
-            + (data.isHidden() ? " p:hidden=\"true\"" : "")
-            + ">\r\n"
-            + "    <property name=\"contents\">\r\n"
-            + "      <bean class=\"hu.zagor.gamebooks.domain.BookContentFiles\" c:enemies=\""
-            + data.getEnemiesFileName()
-            + "\" c:items=\""
-            + data.getItemsFileName()
-            + "\" c:paragraphs=\""
-            + data.getContentFileName()
-            + "\" />\r\n"
-            + "    </property>\r\n"
-            + "    <property name=\"contentSpecification\">\r\n"
-            + "      <bean class=\"hu.zagor.gamebooks.domain.BookContentSpecification\" p:inventoryAvailable=\""
-            + baseData.hasInventory()
-            + "\" p:mapAvailable=\""
+            + "  <util:constant static-field=\"hu.zagor.gamebooks.support.bookids." + data.getFullLang() + "." + data.getBookId() + "\" id=\"" + data.getSeriesCode()
+            + data.getPosition() + "Id\" />\r\n" + "\r\n" + "  <bean class=\"hu.zagor.gamebooks.domain." + baseData.getBookInfoPrefix() + "BookInformations\" id=\""
+            + data.getSeriesCode() + data.getPosition() + "Info\" c:id-ref=\"" + data.getSeriesCode() + data.getPosition() + "Id\" p:coverPath=\"resources/"
+            + baseData.getSeriesCode() + baseData.getPosition() + "/cover.jpg\" p:resourceDir=\"" + baseData.getSeriesCode() + baseData.getPosition() + "\"\r\n"
+            + "    p:contentTransformers-ref=\"default" + baseData.getRulesetCapital() + "ContentTransformers\" p:paragraphResolver-ref=\"" + baseData.getRuleset()
+            + "RuleBookParagraphResolver" + baseData.getDefaultSkillTestType() + "\" p:locale-ref=\"" + data.getCompactLang() + "Locale\" p:position=\""
+            + data.getActualPosition() + "\" p:series-ref=\"" + data.getSeriesCode() + "Title\" p:title=\"" + data.getTitle() + "\" p:characterHandler-ref=\""
+            + baseData.getRuleset() + "CharacterHandler\" p:commandResolvers-ref=\"" + baseData.getRuleset() + "CommandResolvers\" p:unfinished=\"true\""
+            + (data.isHidden() ? " p:hidden=\"true\"" : "") + ">\r\n" + "    <property name=\"contents\">\r\n"
+            + "      <bean class=\"hu.zagor.gamebooks.domain.BookContentFiles\" c:enemies=\"" + data.getEnemiesFileName() + "\" c:items=\"" + data.getItemsFileName()
+            + "\" c:paragraphs=\"" + data.getContentFileName() + "\" />\r\n" + "    </property>\r\n" + "    <property name=\"contentSpecification\">\r\n"
+            + "      <bean class=\"hu.zagor.gamebooks.domain.BookContentSpecification\" p:inventoryAvailable=\"" + baseData.hasInventory() + "\" p:mapAvailable=\""
             + baseData.hasMap() + "\" />\r\n" + "    </property>\r\n" + "  </bean>\r\n" + "\r\n" + "</beans>\r\n";
     }
 
@@ -156,10 +110,9 @@ public class LanguageProjectDataContents {
 
     public static String getNewGameController(final BookBaseData baseData, final BookLangData data) {
         return "package hu.zagor.gamebooks." + baseData.getRuleset() + "." + baseData.getSeriesCode() + "." + baseData.getTitleCode()
-            + ".mvc.books.newgame.controller;\r\n" + "\r\n" + "import hu.zagor.gamebooks.PageAddresses;\r\n"
-            + getParentImport(baseData, data, "newgame", "NewGame", null) + "import hu.zagor.gamebooks.support.bookids." + data.getFullLang() + "."
-            + data.getBookIdDomain() + ";\r\n" + "\r\n" + "import org.springframework.stereotype.Controller;\r\n"
-            + "import org.springframework.web.bind.annotation.RequestMapping;\r\n" + "\r\n" + "/**\r\n"
+            + ".mvc.books.newgame.controller;\r\n" + "\r\n" + "import hu.zagor.gamebooks.PageAddresses;\r\n" + getParentImport(baseData, data, "newgame", "NewGame", null)
+            + "import hu.zagor.gamebooks.support.bookids." + data.getFullLang() + "." + data.getBookIdDomain() + ";\r\n" + "\r\n"
+            + "import org.springframework.stereotype.Controller;\r\n" + "import org.springframework.web.bind.annotation.RequestMapping;\r\n" + "\r\n" + "/**\r\n"
             + " * Controller for handling the new game requests to the given book.\r\n" + " * @author Tamas_Szekeres\r\n" + " *\r\n" + " */\r\n" + "@Controller\r\n"
             + "@RequestMapping(value = PageAddresses.BOOK_PAGE + \"/\" + " + data.getBookId() + ")\r\n" + "public class " + data.getSeriesCodeCapital()
             + data.getPosition() + "BookNewGameController extends " + getParentClassPrefix(baseData, data, null) + "BookNewGameController {\r\n" + "}\r\n";
@@ -180,17 +133,6 @@ public class LanguageProjectDataContents {
             + data.getSeriesCodeCapital() + data.getPosition() + "BookLoadController(@Qualifier(\"" + baseData.getRuleset()
             + "SectionHandlingService\") final SectionHandlingService sectionHandlingService) {\r\n" + "        super(sectionHandlingService);\r\n" + "    }\r\n"
             + "}\r\n";
-    }
-
-    public static String getInventoryController(final BookBaseData baseData, final BookLangData data) {
-        return "package hu.zagor.gamebooks." + baseData.getRuleset() + "." + baseData.getSeriesCode() + "." + baseData.getTitleCode()
-            + ".mvc.books.inventory.controller;\r\n" + "\r\n" + "import hu.zagor.gamebooks.PageAddresses;\r\n"
-            + getParentImport(baseData, data, "inventory", "Inventory", null) + "import hu.zagor.gamebooks.support.bookids." + data.getFullLang() + "."
-            + data.getBookIdDomain() + ";\r\n" + "\r\n" + "import org.springframework.stereotype.Controller;\r\n"
-            + "import org.springframework.web.bind.annotation.RequestMapping;\r\n" + "\r\n" + "/**\r\n"
-            + " * Controller for handling the inventory list request to the given book.\r\n" + " * @author Tamas_Szekeres\r\n" + " *\r\n" + " */\r\n" + "@Controller\r\n"
-            + "@RequestMapping(value = PageAddresses.BOOK_PAGE + \"/\" + " + data.getBookId() + ")\r\n" + "public class " + data.getSeriesCodeCapital()
-            + data.getPosition() + "BookInventoryController extends " + getParentClassPrefix(baseData, data, null) + "BookInventoryController {\r\n" + "}\r\n";
     }
 
     public static String getTakeItemController(final BookBaseData baseData, final BookLangData data) {
@@ -220,23 +162,13 @@ public class LanguageProjectDataContents {
 
     // ************************
 
-    public static String getInventoryControllerTest(final BookBaseData baseData, final BookLangData data) {
-        return "package hu.zagor.gamebooks." + baseData.getRuleset() + "." + baseData.getSeriesCode() + "." + baseData.getTitleCode()
-            + ".mvc.books.inventory.controller;\r\n" + "\r\n" + "import org.testng.annotations.Test;\r\n" + "\r\n" + "/**\r\n" + " * Unit test for class {@link "
-            + data.getSeriesCodeCapital() + data.getPosition() + "BookInventoryController}.\r\n" + " * @author Tamas_Szekeres\r\n" + " */\r\n" + "@Test\r\n"
-            + "public class " + data.getSeriesCodeCapital() + data.getPosition() + "BookInventoryControllerTest {\r\n" + "\r\n"
-            + "    public void testConstructor() {\r\n" + "        // GIVEN\r\n" + "        // WHEN\r\n" + "        new " + data.getSeriesCodeCapital()
-            + data.getPosition() + "BookInventoryController().getClass();\r\n" + "        // THEN\r\n" + "    }\r\n" + "}\r\n";
-
-    }
-
     public static String getTakeItemControllerTest(final BookBaseData baseData, final BookLangData data) {
         return "package hu.zagor.gamebooks." + baseData.getRuleset() + "." + baseData.getSeriesCode() + "." + baseData.getTitleCode()
             + ".mvc.books.inventory.controller;\r\n" + "\r\n" + "import org.testng.annotations.Test;\r\n" + "\r\n" + "/**\r\n" + " * Unit test for class {@link "
             + data.getSeriesCodeCapital() + data.getPosition() + "BookTakeItemController}.\r\n" + " * @author Tamas_Szekeres\r\n" + " */\r\n" + "@Test\r\n"
-            + "public class " + data.getSeriesCodeCapital() + data.getPosition() + "BookTakeItemControllerTest {\r\n" + "\r\n"
-            + "    public void testConstructor() {\r\n" + "        // GIVEN\r\n" + "        // WHEN\r\n" + "        new " + data.getSeriesCodeCapital()
-            + data.getPosition() + "BookTakeItemController().getClass();\r\n" + "        // THEN\r\n" + "    }\r\n" + "}\r\n";
+            + "public class " + data.getSeriesCodeCapital() + data.getPosition() + "BookTakeItemControllerTest {\r\n" + "\r\n" + "    public void testConstructor() {\r\n"
+            + "        // GIVEN\r\n" + "        // WHEN\r\n" + "        new " + data.getSeriesCodeCapital() + data.getPosition()
+            + "BookTakeItemController().getClass();\r\n" + "        // THEN\r\n" + "    }\r\n" + "}\r\n";
     }
 
     public static String getLoadControllerTest(final BookBaseData baseData, final BookLangData data) {
@@ -249,24 +181,23 @@ public class LanguageProjectDataContents {
             + "    private SectionHandlingService sectionHandler;\r\n" + "\r\n" + "    @BeforeClass\r\n" + "    public void setUpClass() {\r\n"
             + "        mockControl = EasyMock.createStrictControl();\r\n" + "        sectionHandler = mockControl.createMock(SectionHandlingService.class);\r\n"
             + "    }\r\n" + "\r\n" + "    @BeforeMethod\r\n" + "    public void setUpMethod() {\r\n" + "        mockControl.reset();\r\n" + "    }\r\n" + "\r\n"
-            + "    @Test(expectedExceptions = IllegalArgumentException.class)\r\n"
-            + "    public void testConstructorWhenSectionHandlerIsNullShouldThrowException() {\r\n" + "        // GIVEN\r\n" + "        mockControl.replay();\r\n"
-            + "        // WHEN\r\n" + "        new " + data.getSeriesCodeCapital() + data.getPosition() + "BookLoadController(null).getClass();\r\n"
-            + "        // THEN throws exception\r\n" + "    }\r\n" + "\r\n" + "    public void testConstructorWhenSectionHandlerProvidedShouldCreateObject() {\r\n"
+            + "    @Test(expectedExceptions = IllegalArgumentException.class)\r\n" + "    public void testConstructorWhenSectionHandlerIsNullShouldThrowException() {\r\n"
             + "        // GIVEN\r\n" + "        mockControl.replay();\r\n" + "        // WHEN\r\n" + "        new " + data.getSeriesCodeCapital() + data.getPosition()
-            + "BookLoadController(sectionHandler).getClass();\r\n" + "        // THEN\r\n" + "    }\r\n" + "\r\n" + "    @AfterMethod\r\n"
-            + "    public void tearDownMethod() {\r\n" + "        mockControl.verify();\r\n" + "    }\r\n" + "}\r\n";
+            + "BookLoadController(null).getClass();\r\n" + "        // THEN throws exception\r\n" + "    }\r\n" + "\r\n"
+            + "    public void testConstructorWhenSectionHandlerProvidedShouldCreateObject() {\r\n" + "        // GIVEN\r\n" + "        mockControl.replay();\r\n"
+            + "        // WHEN\r\n" + "        new " + data.getSeriesCodeCapital() + data.getPosition() + "BookLoadController(sectionHandler).getClass();\r\n"
+            + "        // THEN\r\n" + "    }\r\n" + "\r\n" + "    @AfterMethod\r\n" + "    public void tearDownMethod() {\r\n" + "        mockControl.verify();\r\n"
+            + "    }\r\n" + "}\r\n";
     }
 
     public static String getNewGameControllerTest(final BookBaseData baseData, final BookLangData data) {
         String controllerContent;
         if ("tm".equals(data.getSeriesCode())) {
             controllerContent = "package hu.zagor.gamebooks." + baseData.getRuleset() + "." + baseData.getSeriesCode() + "." + baseData.getTitleCode()
-                + ".mvc.books.newgame.controller;\r\n" + "\r\n" + "import static org.easymock.EasyMock.expect;\r\n"
-                + "import hu.zagor.gamebooks.character.Character;\r\n" + "import hu.zagor.gamebooks.character.handler.CharacterHandler;\r\n"
-                + "import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;\r\n" + "import hu.zagor.gamebooks.domain.BookInformations;\r\n" + "\r\n"
-                + "import java.util.Locale;\r\n" + "\r\n" + "import org.easymock.EasyMock;\r\n" + "import org.easymock.IMocksControl;\r\n"
-                + "import org.powermock.reflect.Whitebox;\r\n" + "import org.springframework.beans.factory.BeanFactory;\r\n"
+                + ".mvc.books.newgame.controller;\r\n" + "\r\n" + "import static org.easymock.EasyMock.expect;\r\n" + "import hu.zagor.gamebooks.character.Character;\r\n"
+                + "import hu.zagor.gamebooks.character.handler.CharacterHandler;\r\n" + "import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;\r\n"
+                + "import hu.zagor.gamebooks.domain.BookInformations;\r\n" + "\r\n" + "import java.util.Locale;\r\n" + "\r\n" + "import org.easymock.EasyMock;\r\n"
+                + "import org.easymock.IMocksControl;\r\n" + "import org.powermock.reflect.Whitebox;\r\n" + "import org.springframework.beans.factory.BeanFactory;\r\n"
                 + "import org.springframework.context.ApplicationContext;\r\n" + "import org.testng.Assert;\r\n" + "import org.testng.annotations.AfterMethod;\r\n"
                 + "import org.testng.annotations.BeforeClass;\r\n" + "import org.testng.annotations.BeforeMethod;\r\n" + "import org.testng.annotations.Test;\r\n"
                 + "\r\n" + "/**\r\n" + " * Unit test for class {@link " + data.getSeriesCodeCapital() + data.getPosition() + "BookNewGameController}.\r\n"
@@ -280,9 +211,9 @@ public class LanguageProjectDataContents {
                 + "        beanFactory = mockControl.createMock(BeanFactory.class);\r\n"
                 + "        applicationContext = mockControl.createMock(ApplicationContext.class);\r\n"
                 + "        itemHandler = mockControl.createMock(CharacterItemHandler.class);\r\n" + "\r\n" + "        characterHandler = new CharacterHandler();\r\n"
-                + "        characterHandler.setItemHandler(itemHandler);\r\n" + "\r\n" + "        info = new BookInformations(1L);\r\n"
-                + "        info.setResourceDir(\"" + data.getSeriesCode() + data.getPosition() + "\");\r\n" + "        info.setCharacterHandler(characterHandler);\r\n"
-                + "\r\n" + "        underTest = new Ir1BookNewGameController();\r\n" + "        underTest.setBeanFactory(beanFactory);\r\n"
+                + "        characterHandler.setItemHandler(itemHandler);\r\n" + "\r\n" + "        info = new BookInformations(1L);\r\n" + "        info.setResourceDir(\""
+                + data.getSeriesCode() + data.getPosition() + "\");\r\n" + "        info.setCharacterHandler(characterHandler);\r\n" + "\r\n"
+                + "        underTest = new Ir1BookNewGameController();\r\n" + "        underTest.setBeanFactory(beanFactory);\r\n"
                 + "        underTest.setApplicationContext(applicationContext);\r\n" + "        Whitebox.setInternalState(underTest, \"info\", info);\r\n" + "    }\r\n"
                 + "\r\n" + "    @BeforeMethod\r\n" + "    public void setUpMethod() {\r\n" + "        character = new Character();\r\n"
                 + "        mockControl.reset();\r\n" + "    }\r\n" + "\r\n" + "    @Test(expectedExceptions = IllegalArgumentException.class)\r\n"
@@ -292,9 +223,9 @@ public class LanguageProjectDataContents {
                 + "        expect(beanFactory.getBean(\"character\")).andReturn(character);\r\n" + "        expect(applicationContext.getMessage(\""
                 + data.getSeriesCode() + data.getPosition() + ".databank\", null, locale)).andReturn(DATA_BANK_STRING);\r\n"
                 + "        expect(itemHandler.addItem(character, \"1001\", 1)).andReturn(1);\r\n" + "        mockControl.replay();\r\n" + "        // WHEN\r\n"
-                + "        final Character returned = underTest.getCharacter(locale);\r\n" + "        // THEN\r\n"
-                + "        Assert.assertSame(returned, character);\r\n" + "        Assert.assertEquals(returned.getNotes(), DATA_BANK_STRING);\r\n" + "    }\r\n"
-                + "\r\n" + "    @AfterMethod\r\n" + "    public void tearDownMethod() {\r\n" + "        mockControl.verify();\r\n" + "    }\r\n" + "\r\n" + "}\r\n";
+                + "        final Character returned = underTest.getCharacter(locale);\r\n" + "        // THEN\r\n" + "        Assert.assertSame(returned, character);\r\n"
+                + "        Assert.assertEquals(returned.getNotes(), DATA_BANK_STRING);\r\n" + "    }\r\n" + "\r\n" + "    @AfterMethod\r\n"
+                + "    public void tearDownMethod() {\r\n" + "        mockControl.verify();\r\n" + "    }\r\n" + "\r\n" + "}\r\n";
         } else {
             controllerContent = "package hu.zagor.gamebooks." + baseData.getRuleset() + "." + baseData.getSeriesCode() + "." + baseData.getTitleCode()
                 + ".mvc.books.newgame.controller;\r\n" + "\r\n" + "import org.testng.annotations.Test;\r\n" + "\r\n" + "/**\r\n" + " * Unit test for class {@link "
@@ -317,13 +248,13 @@ public class LanguageProjectDataContents {
             + "\r\n" + "    @BeforeClass\r\n" + "    public void setUpClass() {\r\n" + "        mockControl = EasyMock.createStrictControl();\r\n"
             + "        sectionHandler = mockControl.createMock(SectionHandlingService.class);\r\n" + "    }\r\n" + "\r\n" + "    @BeforeMethod\r\n"
             + "    public void setUpMethod() {\r\n" + "        mockControl.reset();\r\n" + "    }\r\n" + "\r\n"
-            + "    @Test(expectedExceptions = IllegalArgumentException.class)\r\n"
-            + "    public void testConstructorWhenSectionHandlerIsNullShouldThrowException() {\r\n" + "        // GIVEN\r\n" + "        mockControl.replay();\r\n"
-            + "        // WHEN\r\n" + "        new " + data.getSeriesCodeCapital() + data.getPosition() + "BookSectionController(null).getClass();\r\n"
-            + "        // THEN throws exception\r\n" + "    }\r\n" + "\r\n" + "    public void testConstructorWhenSectionHandlerProvidedShouldCreateObject() {\r\n"
+            + "    @Test(expectedExceptions = IllegalArgumentException.class)\r\n" + "    public void testConstructorWhenSectionHandlerIsNullShouldThrowException() {\r\n"
             + "        // GIVEN\r\n" + "        mockControl.replay();\r\n" + "        // WHEN\r\n" + "        new " + data.getSeriesCodeCapital() + data.getPosition()
-            + "BookSectionController(sectionHandler).getClass();\r\n" + "        // THEN\r\n" + "    }\r\n" + "\r\n" + "    @AfterMethod\r\n"
-            + "    public void tearDownMethod() {\r\n" + "        mockControl.verify();\r\n" + "    }\r\n" + "}\r\n";
+            + "BookSectionController(null).getClass();\r\n" + "        // THEN throws exception\r\n" + "    }\r\n" + "\r\n"
+            + "    public void testConstructorWhenSectionHandlerProvidedShouldCreateObject() {\r\n" + "        // GIVEN\r\n" + "        mockControl.replay();\r\n"
+            + "        // WHEN\r\n" + "        new " + data.getSeriesCodeCapital() + data.getPosition() + "BookSectionController(sectionHandler).getClass();\r\n"
+            + "        // THEN\r\n" + "    }\r\n" + "\r\n" + "    @AfterMethod\r\n" + "    public void tearDownMethod() {\r\n" + "        mockControl.verify();\r\n"
+            + "    }\r\n" + "}\r\n";
     }
 
     public static String getWelcomeControllerTest(final BookBaseData baseData, final BookLangData data) {
