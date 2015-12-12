@@ -770,6 +770,9 @@
         <text>
             [p]A barlang előtt küzdesz meg vele, ahol a sötétség nem csökkenti az [span class="ffAttribute"]ÜGYESSÉGEDET[/span].[/p]
         </text>
+        <fight type="single">
+          <enemy id="13" />
+        </fight>
       </after>
     </random>
     <next id="222"></next>
@@ -2036,8 +2039,7 @@
             <next id="336" pos="2">Ha otthagyod és folytatod az utat</next>
           </have>
           <dontHave>
-            <next id="336"
-              singleChoiceText="Nincs nálad semmi, amit odaadnál a nőnek, ráadásul nem is vagy biztos benne, hogy az, amit ez az öregasszony mondhat, nem vezet félre, ezért inkább itthagyod, és folytatod az utat."></next>
+            <next id="336" singleChoiceText="Nincs nálad semmi, amit odaadnál a nőnek, ráadásul nem is vagy biztos benne, hogy az, amit ez az öregasszony mondhat, nem vezet félre, ezért inkább itthagyod, és folytatod az utat."></next>
           </dontHave>
         </itemCheck>
       </dontHave>
@@ -4134,7 +4136,7 @@
     <loseItem id="1004" />
     <changeEnemy attribute="staminaDamage" id="21" set="4" />
     <changeEnemy attribute="fleeAtRound" id="21" set="2147483647" />
-    <next id="371"></next>
+    <next id="371a"></next>
   </p>
   <p id="349">
     <text>
@@ -4382,15 +4384,31 @@
         <next id="177"></next>
       </flee>
       <win>
-        <reward id="sabret" />
         <itemCheck type="enemy" id="21">
           <have>
+            <reward id="sabret" />
             <next id="348"></next>
           </have>
           <dontHave>
             <next id="333"></next>
           </dontHave>
         </itemCheck>
+      </win>
+    </fight>
+  </p>
+  <p id="371a" display="371">
+    <text>
+        [p]A hatalmas Kardfogú Tigris nyáladzó pofával ugrik elő a bokrokból, és egyenesen a kutyák közé veti magát. A lándzsáddal kell megküzdened vele.[/p]
+    </text>
+    <fight type="single" forceWeapon="1004,1003,1001">
+      <enemy id="21" />
+      <fleeing />
+      <flee>
+        <next id="177"></next>
+      </flee>
+      <win>
+        <reward id="sabret" />
+        <next id="333"></next>
       </win>
     </fight>
   </p>
@@ -4604,8 +4622,8 @@
       </have>
       <dontHave>
         <text>
-                [p]A fák titokzatosan csillognak a lemenő nap fényében, de semmi sem történik. Folytatod az utat.[/p]
-            </text>
+            [p]A fák titokzatosan csillognak a lemenő nap fényében, de semmi sem történik. Folytatod az utat.[/p]
+        </text>
         <next id="37"></next>
       </dontHave>
     </itemCheck>
