@@ -11,7 +11,7 @@ var inventory = (function() {
 	var dialogContent;
 	function loadInventory(shouldShow) {
 		$.ajax({
-			url : "inventory"
+			url : "s/inventory"
 		}).done(function(response) {
 			var inventoryVisible = isInventoryVisible();
 			$("#gamebookCharacterPageWrapper").html(response);
@@ -169,7 +169,7 @@ var inventory = (function() {
 		var notesText = dialog.find("textarea").val();
 		dialogContent = notesText;
 		$.ajax({
-			url : "inventory/notes",
+			url : "s/inventory/notes",
 			data : {
 				notes : notesText
 			},

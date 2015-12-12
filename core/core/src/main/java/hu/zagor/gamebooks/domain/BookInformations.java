@@ -4,7 +4,7 @@ import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphResolver
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.CommandResolver;
-
+import hu.zagor.gamebooks.support.bookids.english.Series;
 import java.util.Locale;
 import java.util.Map;
 
@@ -209,6 +209,10 @@ public class BookInformations implements Comparable<BookInformations> {
 
     public void setResources(final ResourceInformation resources) {
         this.resources = resources;
+    }
+
+    public Long getSeriesId() {
+        return id / Series.SERIES_MULTIPLIER;
     }
 
 }
