@@ -7,8 +7,9 @@ import hu.zagor.gamebooks.ff.ff.tcoc.character.Ff2Character;
 import hu.zagor.gamebooks.ff.ff.tcoc.mvc.books.newgame.service.Ff2CharacterGenerator;
 import hu.zagor.gamebooks.ff.mvc.book.newgame.controller.FfBookNewGameController;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
+
 import javax.servlet.http.HttpSession;
-import org.springframework.context.annotation.Lazy;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Controller for handling the new game requests to the given book.
  * @author Tamas_Szekeres
  */
-@Lazy
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + FightingFantasy.THE_CITADEL_OF_CHAOS)
 public class Ff2BookNewGameController extends FfBookNewGameController {

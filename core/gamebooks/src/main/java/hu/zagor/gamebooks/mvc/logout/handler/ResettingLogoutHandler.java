@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,6 @@ import org.springframework.stereotype.Controller;
  * Controller for handling the logout page.
  * @author Tamas_Szekeres
  */
-@Lazy
 @Controller
 public class ResettingLogoutHandler implements LogoutHandler {
     @LogInject private Logger logger;

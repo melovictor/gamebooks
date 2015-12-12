@@ -4,17 +4,17 @@ import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.raw.mvc.book.load.controller.RawBookLoadController;
 import hu.zagor.gamebooks.support.bookids.english.Storytrails;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Controller for handling the load request to the given book.
  * @author Tamas_Szekeres
+ *
  */
-@Lazy
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + Storytrails.THE_EVIL_OF_MR_HAPPINESS)
 public class St3BookLoadController extends RawBookLoadController {
