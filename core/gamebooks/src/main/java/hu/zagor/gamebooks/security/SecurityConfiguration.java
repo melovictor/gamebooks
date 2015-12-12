@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.security;
 
 import hu.zagor.gamebooks.mvc.login.service.LoginResultHandler;
 import hu.zagor.gamebooks.mvc.logout.handler.ResettingLogoutHandler;
-import hu.zagor.gamebooks.security.rememberme.SpringConfigBasedRememberMeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -11,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
 /**
@@ -25,7 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired private LoginResultHandler loginResultHandler;
     @Autowired private AccessDeniedHandler accessDeniedHandler;
     @Autowired private RequestMatcher requestMatcher;
-    @Autowired private SpringConfigBasedRememberMeService rememberMeService;
+    @Autowired private RememberMeServices rememberMeService;
 
     /**
      * Configures the global spring security.
