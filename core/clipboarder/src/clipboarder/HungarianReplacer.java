@@ -11,29 +11,30 @@ public class HungarianReplacer implements Replacer {
     private static final String CHOICE_A = "(?:[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + "){0,1}";
     private static final String CHOICE_B = "(?: (.*)" + TURNTO + "){0,1}";
 
-    private final Pattern multiChoiceSectionPattern = Pattern.compile("([0-9]+)\\.\\s+(.*[?!.–]) (.*)" + TURNTO + " (.*)" + TURNTO + "." + CHOICE_B + CHOICE_B + CHOICE_B
-        + CHOICE_B + CHOICE_B, Pattern.DOTALL);
+    private final Pattern multiChoiceSectionPattern = Pattern
+        .compile("([0-9]+)\\.\\s+(.*[?!.–]) (.*)" + TURNTO + " (.*)" + TURNTO + "." + CHOICE_B + CHOICE_B + CHOICE_B + CHOICE_B + CHOICE_B, Pattern.DOTALL);
     private final Pattern singleChoiceLikeMultiSectionPattern = Pattern.compile("([0-9]+)\\.\\s+(.*[?!….–]) (.*)" + TURNTO, Pattern.DOTALL);
     private final Pattern singleSendoffSectionPattern = Pattern.compile("([0-9]+)\\.?\\s+(.*[?!.…–]) " + BIG_TURNTO, Pattern.DOTALL);
-    private final Pattern multiChoiceListSectionPattern = Pattern.compile("([0-9]+)\\.\\s+(.*[?!.:])[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + CHOICE_A + CHOICE_A + CHOICE_A
-        + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A, Pattern.DOTALL | Pattern.COMMENTS);
-    private final Pattern multiChoiceListSectionPattern2 = Pattern.compile("([0-9]+)\\.\\s+(.*[?!.:])[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + CHOICE_A + CHOICE_A + CHOICE_A
-        + CHOICE_A + CHOICE_A + CHOICE_A);
+    private final Pattern multiChoiceListSectionPattern = Pattern.compile(
+        "([0-9]+)\\.\\s+(.*[?!.:])[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A,
+        Pattern.DOTALL | Pattern.COMMENTS);
+    private final Pattern multiChoiceListSectionPattern2 = Pattern
+        .compile("([0-9]+)\\.\\s+(.*[?!.:])[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A);
 
-    private final Pattern multiChoiceContinuousSectionPattern = Pattern
-        .compile(
-            "([0-9]+)\\.\\s+(.*?[?!.])\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!](?:\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]){0,1}",
-            Pattern.DOTALL | Pattern.COMMENTS);
+    private final Pattern multiChoiceContinuousSectionPattern = Pattern.compile(
+        "([0-9]+)\\.\\s+(.*?[?!.])\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!](?:\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]){0,1}",
+        Pattern.DOTALL | Pattern.COMMENTS);
 
-    private final Pattern mcX = Pattern
-        .compile(
-            "([0-9]*)\\.\\s+(.*?[.?!])\\s+([^.?!]*), lapozz az? ([0-9]*)-r..(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}",
-            Pattern.DOTALL);
+    private final Pattern mcX = Pattern.compile(
+        "([0-9]*)\\.\\s+(.*?[.?!])\\s+([^.?!]*), lapozz az? ([0-9]*)-r..(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}",
+        Pattern.DOTALL);
 
     private static final String PARENTHESIS_CHOICE = "(?:([^(]*)\\(lapozz az? ([0-9]+)-r[ace]\\)[.,?]\\s*){0,1}";
     private final Pattern multiChoiceWithParenthesisedSectionCommands = Pattern.compile("([0-9]+)[\\s]+(.*[?!.])\\s+([^(]*)\\(lapozz az? ([0-9]+)-r[ace]\\),\\s*"
         + PARENTHESIS_CHOICE + PARENTHESIS_CHOICE + PARENTHESIS_CHOICE + PARENTHESIS_CHOICE + PARENTHESIS_CHOICE + PARENTHESIS_CHOICE + PARENTHESIS_CHOICE,
         Pattern.DOTALL);
+
+    private final static Pattern LOSING_STAMINA = Pattern.compile("Vesztesz ([0-9]) ÉLETERŐ pontot");
 
     private final Pattern dying = Pattern.compile("([0-9]+)\\.?\\s+(.*Kalandod (?:itt ){0,1}véget ért?\\.)");
 
@@ -66,6 +67,20 @@ public class HungarianReplacer implements Replacer {
             newContent = fitE(content);
         }
 
+        newContent = lookForStaminaLoss(newContent);
+
+        return newContent;
+    }
+
+    private String lookForStaminaLoss(final String content) {
+        String newContent = content;
+        if (newContent != null) {
+            final Matcher matcher = LOSING_STAMINA.matcher(content);
+            if (matcher.find()) {
+                final String lostStaminaAmount = matcher.group(1);
+                newContent = newContent.replace("<next", "<add amount=\"-" + lostStaminaAmount + "\" to=\"stamina\" />\n\t<next");
+            }
+        }
         return newContent;
     }
 
