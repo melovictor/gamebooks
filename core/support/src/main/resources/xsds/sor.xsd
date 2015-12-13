@@ -393,6 +393,11 @@
           </xs:attribute>
         </xs:complexType>
       </xs:element>
+      <xs:element name="addSpell" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="amount" type="xs:integer" use="required" />
+        </xs:complexType>
+      </xs:element>
       <xs:element name="userInput" minOccurs="0" maxOccurs="unbounded">
         <xs:complexType>
           <xs:sequence minOccurs="1" maxOccurs="unbounded">

@@ -35,15 +35,19 @@ public class FfRuleBookParagraphResolver extends RawRuleBookParagraphResolver {
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final FfParagraphData subData = (FfParagraphData) genericSubData;
 
+        handleAttributeModifiers(character, characterHandler, subData);
+
+        executeImmediateCommands(resolvationData, subData.getImmediateCommands().forwardsIterator());
+
+        super.resolveCommands(resolvationData, genericSubData, mainCommandIterator);
+    }
+
+    void handleAttributeModifiers(final FfCharacter character, final FfCharacterHandler characterHandler, final FfParagraphData subData) {
         final List<ModifyAttribute> modifyAttributes = subData.getModifyAttributes();
         for (final ModifyAttribute modAttr : modifyAttributes) {
             characterHandler.getAttributeHandler().handleModification(character, modAttr);
         }
         modifyAttributes.clear();
-
-        executeImmediateCommands(resolvationData, subData.getImmediateCommands().forwardsIterator());
-
-        super.resolveCommands(resolvationData, genericSubData, mainCommandIterator);
     }
 
     private void executeImmediateCommands(final ResolvationData resolvationData, final CommandListIterator commandIterator) {
