@@ -10,11 +10,13 @@
         <spring:message code="page.ff.attribute.stamina" />
     </span>
     
-    <div>
-        <span data-enemy-id="0">${fightCommand.firstAlly.name}</span>
-        <span data-enemy-skill>${fightCommand.firstAlly.skill}</span>
-        <span data-enemy-stamina>${fightCommand.firstAlly.stamina}</span>
-    </div>
+    <c:forEach items="${fightCommand.resolvedAllies}" var="ally">
+	    <div>
+	        <span data-enemy-id="0">${ally.name}</span>
+	        <span data-enemy-skill>${ally.skill}</span>
+	        <span data-enemy-stamina>${ally.stamina}</span>
+	    </div>
+    </c:forEach>
     <c:forEach var="enemy" items="${fightCommand.resolvedEnemies}">
         <br />
         <c:if test="${enemy.stamina > 0}">

@@ -20,11 +20,9 @@ import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver
 import hu.zagor.gamebooks.content.command.fight.subresolver.autolose.AutoLoseHandler;
 import hu.zagor.gamebooks.content.command.fight.subresolver.enemystatus.EnemyStatusEvaluator;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,16 +34,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 public abstract class AbstractFightCommandSubResolver implements FightCommandSubResolver, BeanFactoryAware {
 
     private BeanFactory beanFactory;
-    @Autowired
-    private FightCommandRoundEventResolver roundEventResolver;
-    @Autowired
-    private FightBoundingCommandResolver fightBoundingCommandResolver;
-    @Autowired
-    private FightCommandBeforeEventResolver beforeEventResolver;
-    @Autowired
-    private AutoLoseHandler autoLoseHandler;
-    @Autowired
-    private EnemyStatusEvaluator enemyStatusEvaluator;
+    @Autowired private FightCommandRoundEventResolver roundEventResolver;
+    @Autowired private FightBoundingCommandResolver fightBoundingCommandResolver;
+    @Autowired private FightCommandBeforeEventResolver beforeEventResolver;
+    @Autowired private AutoLoseHandler autoLoseHandler;
+    @Autowired private EnemyStatusEvaluator enemyStatusEvaluator;
 
     @Override
     public List<ParagraphData> doResolve(final FightCommand command, final ResolvationData resolvationData) {

@@ -1,6 +1,7 @@
 package hu.zagor.gamebooks.content.command.fight.subresolver;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
@@ -12,14 +13,13 @@ import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommand;
 import hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommandResolver;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.commandlist.CommandList;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -28,8 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class FightCommandAllySubResolver extends AbstractFightCommandSubResolver {
 
-    @Autowired
-    private ChangeEnemyCommandResolver changeEnemyResolver;
+    @Autowired private ChangeEnemyCommandResolver changeEnemyResolver;
 
     @Override
     protected void prepareLuckTest(final FightCommand command, final FfCharacter character, final FfUserInteractionHandler interactionHandler) {
@@ -39,7 +38,16 @@ public class FightCommandAllySubResolver extends AbstractFightCommandSubResolver
 
     @Override
     protected FfCharacter resolveCharacter(final FightCommand command, final ResolvationData resolvationData) {
-        return command.getResolvedAllies().get(0);
+        final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
+        final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
+
+        FfAllyCharacter liveAlly = null;
+        for (final FfAllyCharacter ally : command.getResolvedAllies()) {
+            if (liveAlly == null || !attributeHandler.isAlive(liveAlly)) {
+                liveAlly = ally;
+            }
+        }
+        return liveAlly;
     }
 
     @Override
@@ -81,9 +89,37 @@ public class FightCommandAllySubResolver extends AbstractFightCommandSubResolver
             }
         }
 
-        final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
-        final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
-        final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
-        return attributeHandler.isAlive(character);
+        boolean isAlive = false;
+        final FightCommand fightCommand = (FightCommand) resolvationData.getRootData().getCommands().get(0);
+        for (final FfAllyCharacter ally : fightCommand.getResolvedAllies()) {
+            isAlive |= ally.getStamina() > 0;
+        }
+        return isAlive;
     }
+
+    @Override
+    void executeBattle(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+        if (command.getResolvedAllies().size() > 1) {
+            for (final FfAllyCharacter ally : command.getResolvedAllies()) {
+                if (isAnyAlive(command.getResolvedEnemies())) {
+                    super.executeBattle(command, provideNewResolvationData(resolvationData, ally), beforeRoundResult);
+                }
+            }
+        } else {
+            super.executeBattle(command, resolvationData, beforeRoundResult);
+        }
+    }
+
+    private boolean isAnyAlive(final List<FfEnemy> resolvedEnemies) {
+        boolean isAnyAlive = false;
+        for (final FfEnemy enemy : resolvedEnemies) {
+            isAnyAlive |= enemy.getStamina() > 0;
+        }
+        return isAnyAlive;
+    }
+
+    private ResolvationData provideNewResolvationData(final ResolvationData resolvationData, final FfAllyCharacter ally) {
+        return DefaultResolvationDataBuilder.builder().usingResolvationData(resolvationData).withCharacter(ally).build();
+    }
+
 }

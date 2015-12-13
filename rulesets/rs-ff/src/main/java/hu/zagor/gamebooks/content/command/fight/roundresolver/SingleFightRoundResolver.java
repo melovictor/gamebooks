@@ -13,9 +13,7 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.List;
-
 import org.springframework.stereotype.Component;
 
 /**
@@ -76,7 +74,7 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
         resolveTieMessage(dto);
     }
 
-    private void doLoseFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
+    void doLoseFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
         result[enemyIdx] = FightRoundResult.LOSE;
         if (noStoneSkinAvailable(dto)) {
             damageSelf(dto);

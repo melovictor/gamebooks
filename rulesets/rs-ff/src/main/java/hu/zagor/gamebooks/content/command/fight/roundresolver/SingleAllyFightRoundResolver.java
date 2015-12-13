@@ -1,11 +1,12 @@
 package hu.zagor.gamebooks.content.command.fight.roundresolver;
 
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
+import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
+import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import org.springframework.stereotype.Component;
 
 /**
@@ -50,6 +51,18 @@ public class SingleAllyFightRoundResolver extends SingleFightRoundResolver {
         final String renderedDice = getDiceResultRenderer().render(6, selfAttackStrengthValues);
         messages.addKey("page.ff.label.fight.single.attackStrength.ally", new Object[]{renderedDice, selfAttackStrength, getName(character)});
         getLogger().debug("Attack strength for self: {}", selfAttackStrength);
+    }
+
+    @Override
+    void doLoseFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
+        final FfAllyCharacter firstAlly = command.getFirstAlly();
+        final FfCharacter character = dto.getCharacter();
+
+        if (firstAlly == character) {
+            super.doLoseFight(command, result, enemyIdx, dto);
+        } else {
+            dto.getMessages().addKey("page.ff.label.fight.single.failedAttack.ally", new Object[]{dto.getEnemy().getName(), character.getName()});
+        }
     }
 
 }
