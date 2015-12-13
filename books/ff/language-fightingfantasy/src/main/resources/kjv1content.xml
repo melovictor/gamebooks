@@ -59,6 +59,7 @@
     <text>
         [p]Kardot rántasz, és szinte ugyanabban a pillanatban sziszegő hangot hallasz: egy kétfarkú KÍGYÓ jelenik meg előtted. Egyik farka a karod köré csavarodik, és egyetlen csapással a földre teper. Vesztesz 1 ÉLETERŐ pontot! Feltápászkodsz, és harcba szállsz a teremtménnyel. Küzdj meg vele.[/p]
     </text>
+    <add amount="-1" to="stamina" />
     <fight type="single">
       <enemy id="4" />
       <win>
@@ -215,12 +216,12 @@
         [p]Miközben a magas fűben gyalogolsz, körülbelül fél óra múlva elérkezel a folyó felső szakaszához. Távol vagy a várostól, melyet igyekeztél messze elkerülni. Úgy érzed, hogy hátizsákod jóval könnyebb, mint előzőleg volt, és leteszed, hogy átvizsgáld. Mikor kinyitod és belenézel, látod, hogy két tárgy hiányzik belőle! Miközben elveszett tárgyaid után kutatsz, a fű feléd hajol, és megpróbál rátekeredni zsákodra, övedre és csizmádra.[/p]
         [p]Ekkor rájössz, hogy a Csenőfűben sétálsz, mely meglopja az erre áthaladókat. Két tárgyadat örökre elvesztetted itt.[/p]
     </text>
-    <itemCheck type="items" id="2000 or 2001 or 3001 or 3002 or 3003 or 3004 or 3005 or 3006 or 3007 or 3008 or 3009">
+    <itemCheck type="items" id="2000 or 2001 or 3001 or 3002 or 3003 or 3004 or 3005 or 3006 or 3007 or 3008 or 3009 or 3201 or 3202 or 3203 or 3204 or 3205 or 1003">
       <have>
-        <loseItem id="2000,2001,3001,3002,3003,3004,3005,3006,3007,3008,3009" amount="1" />
-        <itemCheck type="items" id="2000 or 2001 or 3001 or 3002 or 3003 or 3004 or 3005 or 3006 or 3007 or 3008 or 3009">
+        <loseItem id="2000,2001,3001,3002,3003,3004,3005,3006,3007,3008,3009,3201,3202,3203,3204,3205,1003" amount="1" />
+        <itemCheck type="items" id="2000 or 2001 or 3001 or 3002 or 3003 or 3004 or 3005 or 3006 or 3007 or 3008 or 3009 or 3201 or 3202 or 3203 or 3204 or 3205 or 1003">
           <have>
-            <loseItem id="2000,2001,3001,3002,3003,3004,3005,3006,3007,3008,3009" amount="1" />
+            <loseItem id="2000,2001,3001,3002,3003,3004,3005,3006,3007,3008,3009,3201,3202,3203,3204,3205,1003" amount="1" />
           </have>
           <dontHave>
             <add amount="-1" to="gold" />
@@ -276,7 +277,12 @@
   <!-- 47 -->
   <!-- 48 -->
   <!-- 49 -->
-  <!-- 50 -->
+  <p id="50">
+    <text>
+        [p]A teremtmény nyakában egy [span class="takeItem" data-id="3010" data-amount="1"]lánc[/span] lóg, amely felkelti az érdeklődésedet. Zöld drágakövek díszítik, és eléggé értékesnek látszik. Elteheted, ha akarod, de utána jobb, ha elhagyod a falut.[/p]
+    </text>
+    <next id="196"></next>
+  </p>
   <!-- 51 -->
   <p id="52">
     <text>
@@ -297,9 +303,9 @@
     <text>
         [p]Amint sietve mész a fűben, egyszer csak megbotlasz valami kis zsákban. Lehajolsz, hogy megnézd, mi az, és akkor látod, hogy egy [span class="takeItem" data-id="gold" data-amount="12"]12 Aranytallért[/span] tartalmazó pénzeszsák! Hátizsákodba teszed, ám ugyanakkor észreveszed, hogy egy tárgyadat elvesztetted. Miközben a hátizsákodban kutatsz elveszett tárgyaid után, észreveszed, hogy a fű hömpölyögve elindul feléd, és rácsavarodik felszerelésedre! A Csenőfű kellős közepén állsz, és ha nem vigyázol, mindent ellop a hátizsákodból, amit csak akar. Most, hogy tudod, mire számíthatsz, értékeidre vigyázva mész tovább utadon.[/p]
     </text>
-    <itemCheck type="items" id="2000 or 2001 or 3001 or 3002 or 3003 or 3004 or 3005 or 3006 or 3007 or 3008">
+    <itemCheck type="items" id="2000 or 2001 or 3001 or 3002 or 3003 or 3004 or 3005 or 3006 or 3007 or 3008 or 3201 or 3202 or 3203 or 3204 or 3205 or 1003">
       <have>
-        <loseItem id="2000,2001,3001,3002,3003,3004,3005,3006,3007,3008" amount="1" />
+        <loseItem id="2000,2001,3001,3002,3003,3004,3005,3006,3007,3008,3201,3202,3203,3204,3205,1003" amount="1" />
       </have>
       <dontHave>
         <add amount="-1" to="gold" />
@@ -832,7 +838,14 @@
       </result>
     </random>
   </p>
-  <!-- 124 -->
+  <p id="124">
+    <text>
+        [p]- Nem menekülhetsz Mananka Szellemétől! - ordítja az arc. - Küldetésedet átok sújtja! - Látod, amint a füstfelhő összeáll és visszakúszik a dobozba. Eltűnődsz a Szellem átkán, de nem sokat tehetsz. Míg meg nem szabadulsz ettől az átoktól, ÉLETERŐD ezt alaposan megsínyli. Ha bármilyen oknál fogva, kivéve, amikor varázsolsz, ÉLETERŐ pontot vesztesz, 1 plusz ÉLETERŐ pontot is le kell vonnod magadtól. Megpróbálhatsz megszabadulni az átoktól, de míg ezt teszed, sokkal jobban ki vagy téve a különféle veszedelmeknek. Most már elhagyhatod a kunyhót, és folytathatod az utadat.[/p]
+    </text>
+    <gatherItem id="5001" />
+    <add amount="-1" to="damageProtection" />
+    <next id="196"></next>
+  </p>
   <!-- 125 -->
   <p id="126">
     <text>
@@ -957,7 +970,12 @@
     </itemCheck>
     <next id="65"></next>
   </p>
-  <!-- 137 -->
+  <p id="137">
+    <text>
+        [p]Továbbmész a bokrok között, amikor elérsz egy pontra, ahol az aljnövényzet ritkulni kezd, és már derékig érő fűben gázolsz.[/p]
+    </text>
+    <next id="105"></next>
+  </p>
   <!-- 138 -->
   <p id="139">
     <text>
@@ -1232,7 +1250,23 @@
     </text>
     <next id="257"></next>
   </p>
-  <!-- 199 -->
+  <p id="199">
+    <text>
+        [p]A kulcs régi és rozsdás. Egy szám van beleütve. Ép hogy ki tudod olvasni rajta az 54-es számot.[/p]
+    </text>
+    <itemCheck type="section" id="251">
+      <have>
+        <text>
+            [p]Gyorsan elhagyod a falut.[/p]
+        </text>
+        <next id="196"></next>
+      </have>
+      <dontHave>
+        <next id="196">Ha gyorsan elhagydod a falut</next>
+        <next id="251">Ha megnézed az asztalon lévő másik dobozt</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="200">
     <text>
         [p]Amikor felnézel, egy méhkast látsz, amely körül méhek zsonganak.[/p]
@@ -1345,7 +1379,251 @@
     <next id="148"></next>
   </p>
   <!-- 217 -->
-  <!-- 218 -->
+  <p id="218">
+    <text>
+        [p]Elveszik a hátizsákodat, és miközben átkutatják, mindent kiszednek belőle, amit csak akarnak.[/p]
+    </text>
+    <itemCheck type="item" id="1003">
+      <have>
+        <test against="luck">
+          <success>
+            <text>[p]Glandragor baltája nem érdeki őket.[/p]</text>
+            <add amount="1" to="luck" />
+          </success>
+          <failure>
+            <text>[p]Elveszik Glandragor baltáját.[/p]</text>
+            <loseItem id="1003" />
+            <add amount="1" to="luck" />
+          </failure>
+        </test>
+      </have>
+      <haveEquipped></haveEquipped>
+    </itemCheck>
+    <itemCheck type="item" id="2000">
+      <have>
+        <test against="luck">
+          <success>
+            <text>[p]Az élelmed nem érdekli őket.[/p]</text>
+            <add amount="1" to="luck" />
+          </success>
+          <failure>
+            <text>[p]Elveszik minden élelmedet.[/p]</text>
+            <loseItem id="2000" amount="10" />
+            <add amount="1" to="luck" />
+          </failure>
+        </test>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="2001">
+      <have>
+        <test against="luck">
+          <success>
+            <text>[p]A Bugyabogyó szörp nem érdekli őket.[/p]</text>
+            <add amount="1" to="luck" />
+          </success>
+          <failure>
+            <text>[p]Elveszik a Bugyabogyó szörpöt.[/p]</text>
+            <loseItem id="2001" amount="10" />
+            <add amount="1" to="luck" />
+          </failure>
+        </test>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3001">
+      <have>
+        <test against="luck">
+          <success>
+            <text>[p]A Gyógyfűfőzet nem érdekli őket.[/p]</text>
+            <add amount="1" to="luck" />
+          </success>
+          <failure>
+            <text>[p]Elveszik a Gyógyfűfőzetet.[/p]</text>
+            <loseItem id="3001" amount="10" />
+            <add amount="1" to="luck" />
+          </failure>
+        </test>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3002">
+      <have>
+        <test against="luck">
+          <success>
+            <text>[p]A Bambuszfurulya nem érdekli őket.[/p]</text>
+            <add amount="1" to="luck" />
+          </success>
+          <failure>
+            <text>[p]Elveszik a Bambuszfurulyát.[/p]</text>
+            <loseItem id="3002" amount="10" />
+            <add amount="1" to="luck" />
+          </failure>
+        </test>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3007">
+      <have>
+        <test against="luck">
+          <success>
+            <text>[p]A Varázslatok könyvének 102. oldala nem érdekli őket.[/p]</text>
+            <add amount="1" to="luck" />
+          </success>
+          <failure>
+            <text>[p]Elveszik a Varázslatok könyvének 102. oldalát.[/p]</text>
+            <loseItem id="3007" amount="10" />
+            <add amount="1" to="luck" />
+          </failure>
+        </test>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3008">
+      <have>
+        <test against="luck">
+          <success>
+            <text>[p]A Méhviasz nem érdekli őket.[/p]</text>
+            <add amount="1" to="luck" />
+          </success>
+          <failure>
+            <text>[p]Elveszik a Méhviaszt.[/p]</text>
+            <loseItem id="3008" amount="10" />
+            <add amount="1" to="luck" />
+          </failure>
+        </test>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3009">
+      <have>
+        <test against="luck">
+          <success>
+            <text>[p]A Kis medalion nem érdekli őket.[/p]</text>
+            <add amount="1" to="luck" />
+          </success>
+          <failure>
+            <text>[p]Elveszik a Kis medaliont.[/p]</text>
+            <loseItem id="3009" amount="10" />
+            <add amount="1" to="luck" />
+          </failure>
+        </test>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3010">
+      <have>
+        <test against="luck">
+          <success>
+            <text>[p]A Zöld drágaköves lánc nem érdekli őket.[/p]</text>
+            <add amount="1" to="luck" />
+          </success>
+          <failure>
+            <text>[p]Elveszik a Zöld drágaköves láncot.[/p]</text>
+            <loseItem id="3010" amount="10" />
+            <add amount="1" to="luck" />
+          </failure>
+        </test>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3201">
+      <have>
+        <test against="luck">
+          <success>
+            <text>[p]A Goblinfogak nem érdeklik őket.[/p]</text>
+            <add amount="1" to="luck" />
+          </success>
+          <failure>
+            <text>[p]Elveszik a Goblinfogakat.[/p]</text>
+            <loseItem id="3201" amount="10" />
+            <add amount="1" to="luck" />
+          </failure>
+        </test>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3202">
+      <have>
+        <test against="luck">
+          <success>
+            <text>[p]A Majomfogak nem érdeklik őket.[/p]</text>
+            <add amount="1" to="luck" />
+          </success>
+          <failure>
+            <text>[p]Elveszik a Majomfogakat.[/p]</text>
+            <loseItem id="3202" amount="10" />
+            <add amount="1" to="luck" />
+          </failure>
+        </test>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3203">
+      <have>
+        <test against="luck">
+          <success>
+            <text>[p]A Halálkutyafogak nem érdeklik őket.[/p]</text>
+            <add amount="1" to="luck" />
+          </success>
+          <failure>
+            <text>[p]Elveszik a Halálkutyafogakat.[/p]</text>
+            <loseItem id="3203" amount="10" />
+            <add amount="1" to="luck" />
+          </failure>
+        </test>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3204">
+      <have>
+        <test against="luck">
+          <success>
+            <text>[p]A Ragadozómacska fogak nem érdeklik őket.[/p]</text>
+            <add amount="1" to="luck" />
+          </success>
+          <failure>
+            <text>[p]Elveszik a Ragadozómacska fogakat.[/p]</text>
+            <loseItem id="3204" amount="10" />
+            <add amount="1" to="luck" />
+          </failure>
+        </test>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3205">
+      <have>
+        <test against="luck">
+          <success>
+            <text>[p]Az Óriásfog nem érdekli őket.[/p]</text>
+            <add amount="1" to="luck" />
+          </success>
+          <failure>
+            <text>[p]Elveszik az Óriásfogat.[/p]</text>
+            <loseItem id="3205" amount="10" />
+            <add amount="1" to="luck" />
+          </failure>
+        </test>
+      </have>
+    </itemCheck>
+    <itemCheck type="gold" id="1">
+      <have>
+        <test against="luck">
+          <success>
+            <add amount="1" to="luck" />
+            <text>
+                [p]Az Aranytallérjaid nem érdeklik őket.[/p]
+                [p]Miután ezzel végeznek, elengednek, mert látják, hogy nem vagy igazán veszélyes, és elhagyhatod a falut.[/p]
+            </text>
+            <next id="196"></next>
+          </success>
+          <failure>
+            <text>
+                [p]Elveszik az összes Aranytallérodat.[/p]
+                [p]Miután ezzel végeznek, elengednek, mert látják, hogy nem vagy igazán veszélyes, és elhagyhatod a falut.[/p]
+            </text>
+            <add amount="-99" to="gold" />
+            <add amount="1" to="luck" />
+            <next id="196"></next>
+          </failure>
+        </test>
+      </have>
+      <dontHave>
+        <text>
+            [p]Miután ezzel végeznek, elengednek, mert látják, hogy nem vagy igazán veszélyes, és elhagyhatod a falut.[/p]
+        </text>
+        <next id="196"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 219 -->
   <!-- 220 -->
   <!-- 221 -->
@@ -1422,7 +1700,30 @@
     <empty />
   </p>
   <!-- 250 -->
-  <!-- 251 -->
+  <p id="251">
+    <text>
+        [p]A doboz üres, de amikor jobban megnézed, látod, hogy füst száll fel a mélyéből. A füstfelhőből egy sovány, elfszerű arc rajzolódik ki. Kővé dermedsz, amikor hirtelen kinyílik a szeme. Tekintetét mélyen beléd fúrja, úgy, hogy mozdulni sem bírsz. - Idegen - nyílik szóra a száj -, olyan erőkkel kezdesz ki, amelyeket nem ismersz! Tisztában vagyok küldetéseddel, és csak annyit mondhatok, hogy semmiképpen sem fogja siker koronázni.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Melyik varázslatot alkalmazod?[/p]
+        </text>
+        <spell name="KÖD" id="455" />
+        <spell name="VAR" id="403" />
+        <spell name="RIS" id="293" />
+        <spell name="RAN" id="377" />
+        <spell name="GAK" id="354" />
+        <next id="124">Ha inkább megpróbálsz kimenekülni a szobából</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Megpróbálsz kimenekülni a szobából.[/p]
+        </text>
+        <next id="124"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 252 -->
   <!-- 253 -->
   <p id="254">
@@ -1459,7 +1760,129 @@
     <next id="116">Ha leülsz és eszel</next>
     <next id="131">Ha nem eszel, csak folytatni kívánod folytatni az utadat</next>
   </p>
-  <!-- 258 -->
+  <p id="258">
+    <text>
+        [p]Felpattintod a láda tetejét, és ijedten hőkölsz hátra. A ládában 5 Aranytallért és egy kulcsot látsz, de azt egy gonosz Skorpió vigyázza. Megpróbálhatod kivenni vagy az Aranyakat vagy a kulcsot - de csakis egyenként teheted (az Aranytallérokat is egyenként!).[/p]
+    </text>
+    <next id="258a" pos="1">Ha kivennéd a kulcsot</next>
+    <next id="258b" pos="2">Ha kivennél egy Aranytallért</next>
+    <itemCheck type="section" id="251">
+      <dontHave>
+        <next id="251" pos="3">Ha megnéznéd a másik ládát</next>
+      </dontHave>
+    </itemCheck>
+    <next id="196" pos="4">Ha elhagyod a falut</next>
+  </p>
+  <p id="258a" display="258">
+    <text>
+        [p]Felpattintod a láda tetejét, és ijedten hőkölsz hátra. A ládában 5 Aranytallért és egy kulcsot látsz, de azt egy gonosz Skorpió vigyázza. Megpróbálhatod kivenni vagy az Aranyakat vagy a kulcsot - de csakis egyenként teheted (az Aranytallérokat is egyenként!).[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Sikerül baj nélkül kiragadnod a [span class="takeItem" data-id="3011" data-amount="1"]kulcsot[/span].[/p]
+        </text>
+        <itemCheck type="item" id="4007" amount="5">
+          <have>
+            <next id="199"></next>
+          </have>
+          <dontHave>
+            <next id="258b" pos="3">Ha elvennél egy Aranytallért</next>
+            <itemCheck type="section" id="251">
+              <dontHave>
+                <next id="251" pos="2">Ha megnéznéd a másik dobozt</next>
+              </dontHave>
+            </itemCheck>
+            <next id="196" pos="3">Ha elhagyod a falut</next>
+          </dontHave>
+        </itemCheck>
+      </success>
+      <failure>
+        <text>
+            [p]Megmar a Skorpió, és elveszted ÉLETERŐ pontjaid felét.[/p]
+        </text>
+        <gatherItem id="4006" />
+        <next id="258a" pos="1">Ha újra megpróbálod elvenni a kulcsot</next>
+        <itemCheck type="section" id="251">
+          <dontHave>
+            <next id="251" pos="2">Ha megnéznéd a másik dobozt</next>
+          </dontHave>
+        </itemCheck>
+        <next id="196" pos="3">Ha elhagyod a falut</next>
+      </failure>
+    </test>
+  </p>
+  <p id="258b" display="258">
+    <text>
+        [p]Felpattintod a láda tetejét, és ijedten hőkölsz hátra. A ládában 5 Aranytallért és egy kulcsot látsz, de azt egy gonosz Skorpió vigyázza. Megpróbálhatod kivenni vagy az Aranyakat vagy a kulcsot - de csakis egyenként teheted (az Aranytallérokat is egyenként!).[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Sikerül baj nélkül kiragadnod [span class="takeItem" data-id="gold" data-amount="1"]1 Aranytallért[/span].[/p]
+        </text>
+        <gatherItem id="4007" />
+        <itemCheck type="item" id="4007" amount="5">
+          <have>
+            <itemCheck type="item" id="3011">
+              <have>
+                <next id="199"></next>
+              </have>
+              <dontHave>
+                <next id="258a" pos="2">Ha a kulcsért nyúlnál</next>
+                <itemCheck type="section" id="251">
+                  <dontHave>
+                    <next id="251" pos="3">Ha a másik dobozt néznéd meg</next>
+                  </dontHave>
+                </itemCheck>
+                <next id="196" pos="4">Ha elhagynád a falut</next>
+              </dontHave>
+            </itemCheck>
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="3011">
+              <have>
+                <next id="258b">Ha kivennél egy újabb Aranytallért</next>
+                <next id="199">Ha itt hagynád ezt a dobozt</next>
+              </have>
+              <dontHave>
+                <next id="258b" pos="1">Ha kivennél egy újabb Aranytallért</next>
+                <next id="258a" pos="2">Ha a kulcsért nyúlnál</next>
+                <itemCheck type="section" id="251">
+                  <dontHave>
+                    <next id="251" pos="3">Ha a másik dobozt néznéd meg</next>
+                  </dontHave>
+                </itemCheck>
+                <next id="196" pos="4">Ha elhagynád a falut</next>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </success>
+      <failure>
+        <text>
+            [p]Megmar a Skorpió, és elveszted ÉLETERŐ pontjaid felét.[/p]
+        </text>
+        <gatherItem id="4006" />
+        <itemCheck type="item" id="3011">
+          <have>
+            <next id="258b">Ha kivennél egy újabb Aranytallért</next>
+            <next id="199">Ha itt hagynád ezt a dobozt</next>
+          </have>
+          <dontHave>
+            <next id="258b" pos="1">Ha kivennél egy újabb Aranytallért</next>
+            <next id="258a" pos="2">Ha a kulcsért nyúlnál</next>
+            <itemCheck type="section" id="251">
+              <dontHave>
+                <next id="251" pos="3">Ha a másik dobozt néznéd meg</next>
+              </dontHave>
+            </itemCheck>
+            <next id="196" pos="4">Ha elhagynád a falut</next>
+          </dontHave>
+        </itemCheck>
+      </failure>
+    </test>
+  </p>
   <!-- 259 -->
   <!-- 260 -->
   <p id="261">
@@ -1709,7 +2132,7 @@
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot! Varázslatod hatására láthatatlan erőtér képződik körülötted. A Banditák nem bánthatnak, bárhogy is akarnának, de még csak a közeledbe sem kerülhetnek. Mikor látják, micsoda varázserőd van, azonnal visszarohannak a faluba, és hagynak továbbmenni.[/p]
     </text>
-    <add amount="-4" to="stamina" />
+    <addSpell amount="-4" />
     <next id="131"></next>
   </p>
   <!-- 289 -->
@@ -1719,15 +2142,21 @@
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot. Összpontosítod a figyelmedet, és szemed lassan megpihen a kunyhó sarkában lévő hatalmas sziklatömbön. A szikla a szemük előtt válik egy halom csillogó kinccsé. A lélegzetük is eláll, amikor megpillantják a semmiből támadt sok ékszert, aranyat, ezüstöt és drágakövet. Izgatottan súgnak össze, és boldogan feléd mutogatnak. Egyikük megpróbálja megérinteni a kincseket, de abban a pillanatban eltünteted a varázslatot. Az Elvineket teljesen lenyűgözi varázstudományod, és visszaadják a hátizsákodat, majd azt is megengedik, hogy elhagyd a falujukat.[/p]
     </text>
-    <add amount="-2" to="stamina" />
+    <addSpell amount="-2" />
     <next id="196"></next>
   </p>
-  <!-- 293 -->
+  <p id="293">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat, és a szellem nevetve nézi erőfeszítésedet.[/p]
+    </text>
+    <addSpell amount="-5" />
+    <next id="124"></next>
+  </p>
   <p id="294">
     <text>
         [p]Vonj le magadtól 5 ÉLETERŐ pontot. Nincs ilyen varázslat.[/p]
     </text>
-    <add amount="-5" to="stamina" />
+    <addSpell amount="-5" />
     <next id="203"></next>
   </p>
   <!-- 295 -->
@@ -1735,7 +2164,7 @@
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot![/p]
     </text>
-    <add amount="-1" to="stamina" />
+    <addSpell amount="-1" />
     <itemCheck type="gold" id="1">
       <have>
         <text>
@@ -1767,7 +2196,7 @@
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot![/p]
     </text>
-    <add amount="-1" to="stamina" />
+    <addSpell amount="-1" />
     <itemCheck type="item" id="3002">
       <dontHave>
         <text>
@@ -1793,21 +2222,21 @@
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
     </text>
-    <add amount="-5" to="stamina" />
+    <addSpell amount="-5" />
     <next id="275"></next>
   </p>
   <p id="315">
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
     </text>
-    <add amount="-5" to="stamina" />
+    <addSpell amount="-5" />
     <next id="74"></next>
   </p>
   <p id="316">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot a varázslásért. Nem önmagaddal végzed ezúttal a varázslatot, hanem az egyik Elvinnel, aki szerinted az Elvinek vezére lehet. Társai izgatottan lesik, miként lesz a szemük előtt hat példány a vezérükből! A vezér felnevet - azaz mind a hat vezér nevet -, s ez igen szórakoztató látvány. Csakhamar az összes Elvin nevetésben tör ki, és a vezér, alteregóival együtt, kezet nyújt társainak. Az Elvinek közül öten természetesen csak a levegővel fognak kezet. A varázslat csakhamar megszűnik, és a teremtmények, miközben gratulálnak neked, visszaadják hátizsákodat, és utadra engednek. Elhagyhatod a falut.[/p]
     </text>
-    <add amount="-2" to="stamina" />
+    <addSpell amount="-2" />
     <next id="196"></next>
   </p>
   <!-- 317 -->
@@ -1824,7 +2253,7 @@
     <text>
         [p]Nincs ilyen varázslat. Vonj le magadtól 5 ÉLETERŐ pontot.[/p]
     </text>
-    <add amount="-5" to="stamina" />
+    <addSpell amount="-5" />
     <next id="104"></next>
   </p>
   <!-- 328 -->
@@ -1836,21 +2265,21 @@
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot! Varázslatod mit sem ér. Mindaddig nem varázsolhatsz, amíg a kezed meg van kötözve! Fölösleges volt az igyekezeted![/p]
     </text>
-    <add amount="-4" to="stamina" />
+    <addSpell amount="-4" />
     <next id="112"></next>
   </p>
   <p id="334">
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
     </text>
-    <add amount="-5" to="stamina" />
+    <addSpell amount="-5" />
     <next id="275"></next>
   </p>
   <p id="335">
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot! Gyorsan varázsolsz, és ujjaddal a vadállat felé mutatsz. Ujjbegyedből villám csapódik ki, és belevágódik a Farkaskopó homlokának közepébe. Holtan terül el a földön.[/p]
     </text>
-    <add amount="-4" to="stamina" />
+    <addSpell amount="-4" />
     <next id="50"></next>
   </p>
   <!-- 336 -->
@@ -1861,7 +2290,7 @@
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
     </text>
-    <add amount="-5" to="stamina" />
+    <addSpell amount="-5" />
     <next id="231"></next>
   </p>
   <!-- 341 -->
@@ -1875,7 +2304,8 @@
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot! Varázsolsz és vársz. A Banditák is várnak, lesik, mi történik, de nem történik semmi! A varázslat nincs hatással ellenfeleidre. A Banditák rád vetik magukat, és egyikük megvágja a karodat. 2 ÉLETERŐ pont sebesülést okoz.[/p]
     </text>
-    <add amount="-6" to="stamina" />
+    <addSpell amount="-4" />
+    <add amount="-2" to="stamina" />
     <next id="104"></next>
   </p>
   <!-- 349 -->
@@ -1886,22 +2316,29 @@
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot! Megpróbálsz varázsolni, de varázslatod nem működik, mert nem rendelkezel az ehhez szükséges tárggyal. Az Elvinekre nem vagy hatással, és gyorsan újra megkötözik a kezedet, csakhogy ezúttal sokkal szorosabban és fájdalmasabban. Újabb ÉLETERŐ pontot vesztesz.[/p]
     </text>
-    <add amount="-2" to="stamina" />
+    <addSpell amount="-1" />
+    <add amount="-1" to="stamina" />
     <next id="218"></next>
   </p>
-  <!-- 354 -->
+  <p id="354">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot! - Te bolond! - kiáltja a Szellem. - Jól ismerem ezt a varázslatot. Lehet, hogy nincs Fekete Maszkod, ami ehhez a varázslathoz kell? - Nincs ilyen maszkod, és pánikszerűen megpróbálod elhagyni a házat.[/p]
+    </text>
+    <addSpell amount="-1" />
+    <next id="124"></next>
+  </p>
   <p id="355">
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot! A magasba emeled a kezedet, és megparancsolod a kígyónak, hogy eresszen el. Engedelmeskedik a parancsodnak, és visszakúszik a bokrok közé. Addig nézel utána, amíg el nem tűnik.[/p]
     </text>
-    <add amount="-4" to="stamina" />
+    <addSpell amount="-4" />
     <next id="137"></next>
   </p>
   <p id="356">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és szinte azonnal nőni kezdesz. Pillanatokon belül eredeti méreted háromszorosára nősz. Az Elvin megilletődötten néz, és nem tudja, vajon rád támadjon-e, vagy inkább elmeneküljön?[/p]
     </text>
-    <add amount="-2" to="stamina" />
+    <addSpell amount="-2" />
     <next id="356a">Ha rátámadsz</next>
     <next id="356b">Ha nem</next>
   </p>
@@ -1935,9 +2372,9 @@
   </p>
   <p id="357">
     <text>
-        [p]Vesztesz 3 ÉLETERŐ pontot! Nincs ilyen varázslat. Valójában rájössz, hogy egyáltalán nem tudsz varázsolni, hiszen mindkét kezed meg van kötözve. Emlékezz erre a későbbiek során![/p]
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat. Valójában rájössz, hogy egyáltalán nem tudsz varázsolni, hiszen mindkét kezed meg van kötözve. Emlékezz erre a későbbiek során![/p]
     </text>
-    <add amount="-3" to="stamina" />
+    <addSpell amount="-5" />
     <next id="112"></next>
   </p>
   <!-- 358 -->
@@ -1945,7 +2382,7 @@
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot! Varázsolsz és vársz. Semmi sem történik. Nem alkalmazhatod ezt a varázslatot, ha nem rendelkezel az ehhez szükséges tárggyal.[/p]
     </text>
-    <add amount="-1" to="stamina" />
+    <addSpell amount="-1" />
     <next id="85"></next>
   </p>
   <!-- 360 -->
@@ -1963,7 +2400,8 @@
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot! Olyan varázslatot választottál, amelyet mindaddig nem tudsz használni, amíg nem rendelkezel az ahhoz szükséges tárggyal. Vesztesz további 3 ÉLETERŐ pontot, mert a Banditák rád támadnak.[/p]
     </text>
-    <add amount="-4" to="stamina" />
+    <addSpell amount="-1" />
+    <add amount="-3" to="stamina" />
     <next id="104"></next>
   </p>
   <!-- 372 -->
@@ -1974,22 +2412,29 @@
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat, és az Elvinekre nincs hatással sikertelen próbálkozásod. Ismét megkötözik a kezedet, csakhogy ezúttal sokkal szorosabban, úgy, hogy szinte fáj.[/p]
     </text>
-    <add amount="-5" to="stamina" />
+    <addSpell amount="-5" />
     <next id="218"></next>
   </p>
-  <!-- 377 -->
+  <p id="377">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat, és a Szellem kinevet, mikor látja erőfeszítésedet.[/p]
+    </text>
+    <addSpell amount="-5" />
+    <next id="124"></next>
+  </p>
   <p id="378">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot! Nem alkalmazhatod ezt a varázslatot, mert nincs nálad az ehhez szükséges tárgy. Miközben azon igyekszel, hogy varázslatod sikerüljön, az Elvin ismét rád veti magát. Vesztesz újabb 3 ÉLETERŐ pontot![/p]
     </text>
-    <add amount="-4" to="stamina" />
+    <addSpell amount="-1" />
+    <add amount="-3" to="stamina" />
     <next id="203"></next>
   </p>
   <p id="379">
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat. Valójában nem is varázsolhatsz, hisz mindkét kezed meg van kötözve. Emlékezz erre legközelebb.[/p]
     </text>
-    <add amount="-5" to="stamina" />
+    <addSpell amount="-5" />
     <next id="112"></next>
   </p>
   <!-- 380 -->
@@ -1998,7 +2443,7 @@
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
     </text>
-    <add amount="-5" to="stamina" />
+    <addSpell amount="-5" />
     <next id="231"></next>
   </p>
   <!-- 383 -->
@@ -2018,21 +2463,21 @@
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
     </text>
-    <add amount="-5" to="stamina" />
+    <addSpell amount="-5" />
     <next id="123a"></next>
   </p>
   <p id="396b" display="396">
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
     </text>
-    <add amount="-5" to="stamina" />
+    <addSpell amount="-5" />
     <next id="123b"></next>
   </p>
   <p id="396c" display="396">
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
     </text>
-    <add amount="-5" to="stamina" />
+    <addSpell amount="-5" />
     <next id="123c"></next>
   </p>
   <!-- 397 -->
@@ -2045,7 +2490,7 @@
         <text>
             [p]Rávarázsolsz egy Goblinfogra (vesztesz 1 ÉLETERŐ pontot), és az az Elvinek szeme láttára Goblinná változik. Kezdetben nyugtalanul szemlélnek - nem szeretik a Goblinokat -, de aztán, mikor látják, hogy tökéletesen ura vagy teremtményednek, kissé megnyugszanak. Ha akarod, a Goblin táncol, fejen áll, sőt énekel is (bár ez élénk tiltakozást vált ki az Elvinekből, mert a Goblinok énekelnek a leghamisabban). Záróakkordként megparancsolod a Goblinnak, hogy hajoljon meg az Elvinek előtt, és csókolja meg a csizmájukat. Amikor a Goblin eltűnik, az Elvinek gratulálnak neked. Kellemes társalgás után visszaadják a hátizsákodat, és megengedik, hogy folytasd az utadat.[/p]
         </text>
-        <add amount="-1" to="stamina" />
+        <addSpell amount="-1" />
         <loseItem id="3201" />
         <next id="196"></next>
       </have>
@@ -2062,29 +2507,48 @@
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Miközben a varázslással bajlódsz, a vadállat odaugrik hozzád, és a karodba mélyeszti a fogait. Vesztesz 3 ÉLETERŐ pontot! Rántsd elő a kardodat, és küzdj meg vele.[/p]
     </text>
-    <add amount="-4" to="stamina" />
+    <addSpell amount="-1" />
+    <add amount="-3" to="stamina" />
     <next id="74a"></next>
   </p>
-  <!-- 403 -->
+  <p id="403">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és ekkor a Szellem arca eltorzul a fájdalomtól. - Vond vissza a varázslatodat! - ordítja. - Vagy magadra haragítod Manankát! - Ijesztgetése azonban hiábavaló, és az arc eltűnik a szemed elől. A füst gyorsan összeáll, és visszahúzódik a dobozba. Biztonságban vagy.[/p]
+    </text>
+    <addSpell amount="-2" />
+    <itemCheck type="section" id="258">
+      <have>
+        <text>
+            [p]Elhagyod a falut.[/p]
+        </text>
+        <next id="196"></next>
+      </have>
+      <dontHave>
+        <next id="258">Ha most megpróbálkozol a másik dobozzal</next>
+        <next id="196">Ha elhagyod a falut</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="404">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot! Nem alkalmazhatod ezt a varázslatot, mert nincs a birtokodban az ehhez szükséges tárgy. Miközben azon igyekszel, hogy varázsolj, a Kígyó megmar. Vesztesz további 2 ÉLETERŐ pontot![/p]
     </text>
-    <add amount="-3" to="stamina" />
+    <addSpell amount="-1" />
+    <add amount="-2" to="stamina" />
     <next id="275"></next>
   </p>
   <p id="405">
     <text>
         [p]Vonj le magadtól 4 ÉLETERŐ pontot! Mindkét kezedet előrelendíted, és varázsolsz: apró tűzgolyók robbannak a levegőben, és esőként zúdulnak a kis Elvinre. Sok közülük eltalálja a teremtmény szárnyát, és az Elvin égő fáklyaként hull alá a légből.[/p]
     </text>
-    <add amount="-4" to="stamina" />
+    <addSpell amount="-4" />
     <next id="121"></next>
   </p>
   <p id="406">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot! Egy fontos szabályt fogsz most megtanulni: mindaddig nem varázsolhatsz, amíg a kezed meg van kötözve! Fölösleges volt az igyekezeted.[/p]
     </text>
-    <add amount="-2" to="stamina" />
+    <addSpell amount="-2" />
     <next id="112"></next>
   </p>
   <!-- 407 -->
@@ -2092,7 +2556,7 @@
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot! Varázsolsz, és a makkzápor hirtelen eláll. Az Elvinek csodálkozva nézik, amint rád hajigált makkjaik lepattannak egy láthatatlan pajzsról. Fürgén továbbállsz, amíg még hat a varázslat.[/p]
     </text>
-    <add amount="-4" to="stamina" />
+    <addSpell amount="-4" />
     <next id="7"></next>
   </p>
   <!-- 409 -->
@@ -2111,21 +2575,24 @@
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Időközben a teremtmény rád támad, és 2 ÉLETERŐ pont sebesülést okoz neked.[/p]
     </text>
-    <add amount="-3" to="stamina" />
+    <addSpell amount="-1" />
+    <add amount="-2" to="stamina" />
     <next id="123a"></next>
   </p>
   <p id="421b" display="421">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Időközben a teremtmény rád támad, és 2 ÉLETERŐ pont sebesülést okoz neked.[/p]
     </text>
-    <add amount="-3" to="stamina" />
+    <addSpell amount="-1" />
+    <add amount="-2" to="stamina" />
     <next id="123b"></next>
   </p>
   <p id="421c" display="421">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Időközben a teremtmény rád támad, és 2 ÉLETERŐ pont sebesülést okoz neked.[/p]
     </text>
-    <add amount="-3" to="stamina" />
+    <addSpell amount="-1" />
+    <add amount="-2" to="stamina" />
     <next id="123c"></next>
   </p>
   <!-- 422 -->
@@ -2139,7 +2606,7 @@
           <result minBound="1" maxBound="1">
             <text>[p]Vesztesz 1 ÉLETERŐ pontot. A földhöz vágsz egy Goblinfogat, és varázsolsz. Megparancsolod a teremtett Goblinnak, hogy harcoljon a Farkaskopó ellen.[/p]</text>
             <loseItem id="3201" />
-            <add amount="-1" to="stamina" />
+            <addSpell amount="-1" />
             <fight type="singleAlly" resolver="ally">
               <enemy id="5" />
               <ally id="101" />
@@ -2151,7 +2618,7 @@
           <result minBound="2" maxBound="2">
             <text>[p]Vesztesz 2 ÉLETERŐ pontot. A földhöz vágsz két Goblinfogat, és varázsolsz. Megparancsolod a teremtett Goblinoknak, hogy harcoljanak a Farkaskopó ellen.[/p]</text>
             <loseItem id="3201" amount="2" />
-            <add amount="-2" to="stamina" />
+            <addSpell amount="-2" />
             <fight type="singleAlly" resolver="ally">
               <enemy id="5" />
               <ally id="101" />
@@ -2164,7 +2631,7 @@
           <result minBound="3" maxBound="3">
             <text>[p]Vesztesz 3 ÉLETERŐ pontot. A földhöz vágsz három Goblinfogat, és varázsolsz. Megparancsolod a teremtett Goblinoknak, hogy harcoljanak a Farkaskopó ellen.[/p]</text>
             <loseItem id="3201" amount="3" />
-            <add amount="-3" to="stamina" />
+            <addSpell amount="-3" />
             <fight type="singleAlly" resolver="ally">
               <enemy id="5" />
               <ally id="101" />
@@ -2178,7 +2645,7 @@
           <result minBound="4" maxBound="4">
             <text>[p]Vesztesz 4 ÉLETERŐ pontot. A földhöz vágsz négy Goblinfogat, és varázsolsz. Megparancsolod a teremtett Goblinoknak, hogy harcoljanak a Farkaskopó ellen.[/p]</text>
             <loseItem id="3201" amount="4" />
-            <add amount="-4" to="stamina" />
+            <addSpell amount="-4" />
             <fight type="singleAlly" resolver="ally">
               <enemy id="5" />
               <ally id="101" />
@@ -2193,7 +2660,7 @@
           <resultElse>
             <text>[p]Vesztesz 1 ÉLETERŐ pontot. A földhöz vágsz egy Goblinfogat, és varázsolsz. Megparancsolod a teremtett Goblinnak, hogy harcoljon a Farkaskopó ellen.[/p]</text>
             <loseItem id="3201" />
-            <add amount="-1" to="stamina" />
+            <addSpell amount="-1" />
             <fight type="singleAlly" resolver="ally">
               <enemy id="5" />
               <ally id="101" />
@@ -2221,7 +2688,7 @@
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot! A Kígyó támadásra készen áll, de arra vár, hogy megmozdulj. Nyugalom árad szét a testedben, amikor a teremtményre nézel. Kissé kifújod magad, és ekkor a Kígyó hirtelen ismét eltűnik, de megesküdnél rá, hogy mielőtt eltűnt volna, rád kacsintott. Az a valami a karodat fogja, és még mindig húz. Úgy döntesz, folytatod az utadat.[/p]
     </text>
-    <add amount="-2" to="stamina" />
+    <addSpell amount="-2" />
     <next id="94"></next>
   </p>
   <!-- 427 -->
@@ -2238,21 +2705,21 @@
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
     </text>
-    <add amount="-5" to="stamina" />
+    <addSpell amount="-5" />
     <next id="123a"></next>
   </p>
   <p id="437b" display="437">
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
     </text>
-    <add amount="-5" to="stamina" />
+    <addSpell amount="-5" />
     <next id="123b"></next>
   </p>
   <p id="437c" display="437">
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
     </text>
-    <add amount="-5" to="stamina" />
+    <addSpell amount="-5" />
     <next id="123c"></next>
   </p>
   <!-- 438 -->
@@ -2261,14 +2728,14 @@
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
     </text>
-    <add amount="-5" to="stamina" />
+    <addSpell amount="-5" />
     <next id="74"></next>
   </p>
   <p id="441">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot![/p]
     </text>
-    <add amount="-1" to="stamina" />
+    <addSpell amount="-1" />
     <itemCheck type="gold" id="1">
       <have>
         <text>
@@ -2297,7 +2764,7 @@
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot! A teremtmény megáll, és megparancsolod neki, hogy forduljon vissza az erdőbe, ahonnan jött.[/p]
     </text>
-    <add amount="-4" to="stamina" />
+    <addSpell amount="-4" />
     <itemCheck type="item" id="4004">
       <have>
         <loseItem id="4004" />
@@ -2316,7 +2783,7 @@
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot. Ezt a varázslatot nem alkalmazhatod, mert nincs a birtokodban az ehhez szükséges tárgy. Valójában egyáltalán nem is tudsz varázsolni mindaddig, amíg mindkét kezed meg van kötözve. Emlékezz erre a későbbiek során.[/p]
     </text>
-    <add amount="-1" to="stamina" />
+    <addSpell amount="-1" />
     <next id="112"></next>
   </p>
   <!-- 451 -->
@@ -2325,7 +2792,7 @@
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és háromszor akkorára nősz, mint amekkora valójában vagy. Az éjszakai lény megáll.[/p]
     </text>
-    <add amount="-2" to="stamina" />
+    <addSpell amount="-2" />
     <next id="453d">Ha rátámadsz</next>
     <next id="453e">Ha megvárod, mihez kezd</next>
   </p>
@@ -2333,7 +2800,7 @@
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és háromszor akkorára nősz, mint amekkora valójában vagy. Az éjszakai lény megáll.[/p]
     </text>
-    <add amount="-2" to="stamina" />
+    <addSpell amount="-2" />
     <next id="453f">Ha rátámadsz</next>
     <next id="453g">Ha megvárod, mihez kezd</next>
   </p>
@@ -2341,7 +2808,7 @@
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és háromszor akkorára nősz, mint amekkora valójában vagy. Az éjszakai lény megáll.[/p]
     </text>
-    <add amount="-2" to="stamina" />
+    <addSpell amount="-2" />
     <next id="453h">Ha rátámadsz</next>
     <next id="453i">Ha megvárod, mihez kezd</next>
   </p>
@@ -2461,5 +2928,13 @@
         <next id="123f"></next>
       </failure>
     </test>
+  </p>
+  <!-- 454 -->
+  <p id="455">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és a szoba sötétbe borul. A Szellem így kiált: - Nem menekülhetsz előlem, halandó! - A sötétség leple alatt azonban sikerül kisurrannod a kunyhóból. Elhagyod a falut.[/p]
+    </text>
+    <addSpell amount="-2" />
+    <next id="196"></next>
   </p>
 </content>
