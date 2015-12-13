@@ -510,7 +510,7 @@
       </dontHave>
       <after>
         <text>
-            hegyét. Fekete vércseppek fröccsennek szét a koporsó hófehér selyemhuzatára és a kezedre, te azonban nem lazítasz a szorításon. Szentségtelen sikoly tör elő a férfi szájából. A kimúló Vámpír karos kezei erősen megragadják a koporsó szélét, aztán lassan elernyednek. A test szép lassan szétporlad. A gróf végül csatlakozott a pokolban sínylődő rokonaihoz. Kapsz 2 [span class="ffAttribute"]HIT[/span] és 2 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
+            hegyét. Fekete vércseppek fröccsennek szét a koporsó hófehér selyemhuzatára és a kezedre, te azonban nem lazítasz a szorításon. Szentségtelen sikoly tör elő a férfi szájából. A kimúló Vámpír karmos kezei erősen megragadják a koporsó szélét, aztán lassan elernyednek. A test szép lassan szétporlad. A gróf végül csatlakozott a pokolban sínylődő rokonaihoz. Kapsz 2 [span class="ffAttribute"]HIT[/span] és 2 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
         </text>
       </after>
     </itemCheck>
@@ -1133,8 +1133,7 @@
         <next id="394" pos="6">A Csapásaidról, 2 Aranytallérért cserébe?</next>
       </have>
     </itemCheck>
-    <next id="47" pos="7"
-      singleChoiceText="Miután nincsen nálad semmi pénz vagy érték, amit fel tudnál ajánlani magára hagyod, és folytatod a keresést a keleti járatban a lépcsősor után, ami az emeletre vezet majd."></next>
+    <next id="47" pos="7" singleChoiceText="Miután nincsen nálad semmi pénz vagy érték, amit fel tudnál ajánlani magára hagyod, és folytatod a keresést a keleti járatban a lépcsősor után, ami az emeletre vezet majd."></next>
   </p>
   <p id="75a" display="75">
     <text>
@@ -2300,9 +2299,7 @@
         [p]Miközben ellenfeled egy sarokba próbál visszahúzódni, sikerül bevinned neki egy ütést, ezután azonban már visszatámad a dög! Küzdj meg vele.[/p]
     </text>
     <changeEnemy attribute="stamina" id="19" change="-2" />
-    <fight type="single">
-      <enemy id="19" />
-    </fight>
+    <next id="70"></next>
   </p>
   <p id="108">
     <text>
@@ -2344,6 +2341,7 @@
     <text>
         [p]Erőfalad sikeresen elzárja a gróf elől a menekülés lehetőségét! Ismét emberi alakot ölt, és dühösen morogva rád támad.[/p]
     </text>
+    <loseItem id="4213" />
     <next id="212"></next>
   </p>
   <p id="112">
@@ -5726,26 +5724,47 @@
   <p id="375">
     <text>
         [p]Átadod Guntharnak a [em]Gyógyítók Könyvé[/em]t, aki láthatóan nagyon boldog, hogy ismét a kezében foghatja a remekművet. Reiner lopta el tőle pár hónappal ezelőtt, de ő képtelen volt a keresésére indulni anélkül, hogy a gróf kémjei – patkányok és denevérek – ne loholtak volna folyton a nyomában. – Ez sokat fog segíteni a munkámban – mondja a férfi –, és még akkor is hajlandó vagyok segíteni rajtad, ha ezért Katarina megbüntet! – Elmond egy varázsigét, ami elmulasztja egyik tetszőleges Csapásod.[/p]
-        [div data-market=""][/div]
     </text>
-    <market mustGiveUp="1">
-      <purchaseLabel>Melyik Csapásodtól akarsz megszabadulni?</purchaseLabel>
-      <purchase price="0" stock="1" id="4101" />
-      <purchase price="0" stock="1" id="4102" />
-      <purchase price="0" stock="1" id="4103" />
-      <purchase price="0" stock="1" id="4104" />
-      <purchase price="0" stock="1" id="4105" />
-      <purchase price="0" stock="1" id="4106" />
-      <after>
-        <text>[alt][/alt]</text>
+    <itemCheck type="items" id="4101 or 4102 or 4103 or 4104 or 4105 or 4106">
+      <have>
+        <text>
+            [div data-market=""][/div]
+        </text>
+        <market mustGiveUp="1">
+          <purchaseLabel>Melyik Csapásodtól akarsz megszabadulni?</purchaseLabel>
+          <purchase price="0" stock="1" id="4101" />
+          <purchase price="0" stock="1" id="4102" />
+          <purchase price="0" stock="1" id="4103" />
+          <purchase price="0" stock="1" id="4104" />
+          <purchase price="0" stock="1" id="4105" />
+          <purchase price="0" stock="1" id="4106" />
+          <after>
+            <text>[alt][/alt]</text>
+            <next id="294" pos="1" singleChoiceText="[p]A lépcsőfordulóból nyugatra továbbvezető ajtóhoz mész.[/p]">Ha ezek után a lépcsőfordulóból nyugatra továbbvezető ajtóhoz mennél</next>
+            <itemCheck type="item" id="3013">
+              <have>
+                <next id="188">Ha megmutatod a férfinak a [em]Kardok Könyvét[/em]</next>
+              </have>
+            </itemCheck>
+          </after>
+        </market>
+      </have>
+      <dontHave>
         <next id="294" pos="1" singleChoiceText="[p]A lépcsőfordulóból nyugatra továbbvezető ajtóhoz mész.[/p]">Ha ezek után a lépcsőfordulóból nyugatra továbbvezető ajtóhoz mennél</next>
         <itemCheck type="item" id="3013">
           <have>
+            <next id="294">Ha ezek után a lépcsőfordulóból nyugatra továbbvezető ajtóhoz mennél</next>
             <next id="188">Ha megmutatod a férfinak a [em]Kardok Könyvét[/em]</next>
           </have>
+          <dontHave>
+            <text>
+                [p]A lépcsőfordulóból nyugatra továbbvezető ajtóhoz mész.[/p]
+            </text>
+            <next id="294" pos="1"></next>
+          </dontHave>
         </itemCheck>
-      </after>
-    </market>
+      </dontHave>
+    </itemCheck>
   </p>
   <p id="376">
     <text>
