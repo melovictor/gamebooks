@@ -23,7 +23,8 @@ public enum ItemType {
     brooch(true, 2),
     provision(false, true),
     potion(false, true),
-    gloves(true, 1);
+    gloves(true, 1),
+    curseSickness(false);
 
     static {
         weapon1.disallows = new ItemType[]{weapon2};
@@ -37,19 +38,19 @@ public enum ItemType {
     private final boolean consumable;
     private boolean invisible;
 
-    private ItemType(final boolean equipable) {
+    ItemType(final boolean equipable) {
         this(equipable, 0, false, false);
     }
 
-    private ItemType(final boolean equipable, final int maxEquipped) {
+    ItemType(final boolean equipable, final int maxEquipped) {
         this(equipable, maxEquipped, false, false);
     }
 
-    private ItemType(final boolean equipable, final boolean consumable) {
+    ItemType(final boolean equipable, final boolean consumable) {
         this(equipable, 0, consumable, false);
     }
 
-    private ItemType(final boolean equipable, final int maxEquipped, final boolean consumable, final boolean invisible) {
+    ItemType(final boolean equipable, final int maxEquipped, final boolean consumable, final boolean invisible) {
         this.equipable = equipable;
         this.maxEquipped = maxEquipped;
         this.disallows = new ItemType[]{};

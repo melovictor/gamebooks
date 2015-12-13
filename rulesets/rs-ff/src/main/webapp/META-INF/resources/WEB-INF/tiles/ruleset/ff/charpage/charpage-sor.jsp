@@ -16,10 +16,10 @@
 			<span class="ffMainAttribute"><spring:message code="page.ff.attribute.skill" /></span>
 			<span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.skill.initial" /> ${charEquipments.initialSkill}</span>
 			<div class="ffMainAttributeValue" data-attribute-skill>${charEquipments.skill}
-				<c:if test="${!charEquipments.usedLibra}">
-                    <button data-libra-reset="skill">
-                        <spring:message code="page.ff.attribute.skill.reset" />
-                    </button>
+				<c:if test="${!charEquipments.usedLibra && !charEquipments.commandActive}">
+					<button data-libra-reset="skill">
+						<spring:message code="page.ff.attribute.skill.reset" />
+					</button>
 				</c:if>
 			</div>
 		</div>
@@ -27,10 +27,10 @@
 			<span class="ffMainAttribute"><spring:message code="page.ff.attribute.stamina" /></span>
 			<span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.stamina.initial" /> ${charEquipments.initialStamina}</span>
 			<div class="ffMainAttributeValue" data-attribute-stamina>${charEquipments.stamina}
-				<c:if test="${!charEquipments.usedLibra}">
-                    <button data-libra-reset="stamina">
-                        <spring:message code="page.ff.attribute.stamina.reset" />
-                    </button>
+				<c:if test="${!charEquipments.usedLibra && !charEquipments.commandActive}">
+					<button data-libra-reset="stamina">
+						<spring:message code="page.ff.attribute.stamina.reset" />
+					</button>
 				</c:if>
 			</div>
 		</div>
@@ -38,18 +38,28 @@
 			<span class="ffMainAttribute"><spring:message code="page.ff.attribute.luck" /></span>
 			<span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.luck.initial" /> ${charEquipments.initialLuck}</span>
 			<div class="ffMainAttributeValue" data-attribute-luck>${charEquipments.luck}
-				<c:if test="${!charEquipments.usedLibra}">
+				<c:if test="${!charEquipments.usedLibra && !charEquipments.commandActive}">
 					<button data-libra-reset="luck">
-                        <spring:message code="page.ff.attribute.luck.reset" />
-                    </button>
+						<spring:message code="page.ff.attribute.luck.reset" />
+					</button>
 				</c:if>
 			</div>
 		</div>
 
-
-
 		<tiles:insertTemplate template="../charpage/gpp.jsp" />
 		<tiles:insertTemplate template="../charpage/eq.jsp" />
+
+        <c:if test="${not empty charEquipments.curses}">
+			<div class="sorCursesFullWidth" data-items="true">
+				<span class="ffMainAttribute"><spring:message code="page.sor.curseSickness" /></span>
+				<c:set var="isFirst" value="true" />
+				<c:forEach var="item" items="${charEquipments.curses}"><c:if test="${!isFirst}">,</c:if>
+					<c:set var="isFirst" value="false" />
+					<span data-item-id="${item.id}" <c:if test="${not empty item.description}"> title="${item.description}"</c:if>>${item.name}</span><!--
+				--></c:forEach>
+			</div>
+		</c:if>
+
 		<tiles:insertTemplate template="../charpage/map.jsp" />
 		<tiles:insertTemplate template="../charpage/notes.jsp" />
 	</div>
