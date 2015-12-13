@@ -78,7 +78,7 @@ public class HungarianReplacer implements Replacer {
             final Matcher matcher = LOSING_STAMINA.matcher(content);
             if (matcher.find()) {
                 final String lostStaminaAmount = matcher.group(1);
-                newContent = newContent.replace("<next", "<add amount=\"-" + lostStaminaAmount + "\" to=\"stamina\" />\n\t<next");
+                newContent = newContent.replace("<next", "<addSpell amount=\"-" + lostStaminaAmount + "\" />\n\t<next");
             }
         }
         return newContent;
