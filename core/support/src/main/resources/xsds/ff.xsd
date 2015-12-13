@@ -401,10 +401,34 @@
               <xs:complexType>
                 <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
                 <xs:attribute name="text" type="xs:string" />
-                <xs:attribute name="minResponse" type="xs:integer" use="optional" default="0" />
-                <xs:attribute name="maxResponse" type="xs:integer" use="optional" default="2147483647" />
-                <xs:attribute name="minBound" type="xs:integer" use="optional" />
-                <xs:attribute name="maxBound" type="xs:integer" use="optional" />
+                <xs:attribute name="minResponse" type="xs:integer" use="optional" default="0">
+                  <xs:annotation>
+                    <xs:documentation>
+                      The minimum amount of time that must elapse between the load of the page and the submission of the response in order to trigger this specific result.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="maxResponse" type="xs:integer" use="optional" default="2147483647">
+                  <xs:annotation>
+                    <xs:documentation>
+                      The maximum amount of time that can elapse between the load of the page and the submission of the response in order to trigger this specific result.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="minBound" type="xs:integer" use="optional">
+                  <xs:annotation>
+                    <xs:documentation>
+                      The lower bound of the user-providable amount range on which this response must react.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="maxBound" type="xs:integer" use="optional">
+                  <xs:annotation>
+                    <xs:documentation>
+                      The higher bound of the user-providable amount range on which this response must react.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
               </xs:complexType>
             </xs:element>
             <xs:element name="resultElse" minOccurs="1" maxOccurs="unbounded">
