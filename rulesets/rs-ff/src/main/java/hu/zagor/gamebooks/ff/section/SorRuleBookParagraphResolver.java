@@ -45,7 +45,7 @@ public class SorRuleBookParagraphResolver extends FfRuleBookParagraphResolver {
         for (final ModifyAttribute modAttr : spellModifyAttributes) {
             characterHandler.getAttributeHandler().handleModification(character, modAttr);
         }
-        modifyAttributes.clear();
+        spellModifyAttributes.clear();
 
     }
 
