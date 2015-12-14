@@ -7,7 +7,6 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
-import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.Command;
@@ -71,9 +70,6 @@ public class FfRuleBookParagraphResolver extends RawRuleBookParagraphResolver {
                 if (item.getDose() > 0) {
                     final FfItem toLose = (FfItem) itemHandler.getItem(character, item.getId());
                     if (toLose != null) {
-                        if (toLose.getItemType() != ItemType.potion) {
-                            throw new IllegalArgumentException("Trying to lose '" + item.getDose() + "' doses from non-potion item '" + toLose.getName() + "'.");
-                        }
                         if (toLose.getDose() > item.getDose()) {
                             toLose.setDose(toLose.getDose() - item.getDose());
                         } else {
