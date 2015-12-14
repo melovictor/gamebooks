@@ -3,15 +3,14 @@ package hu.zagor.gamebooks.content.command.userinput;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.content.command.userinput.domain.UserInputResponse;
-
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.Iterator;
 import java.util.Map;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -23,21 +22,13 @@ import org.testng.annotations.Test;
 public class UserInputCommandTest {
 
     private static final String RESPONSE = "response";
-    private IMocksControl mockControl;
-    private UserInputCommand underTest;
-    private UserInputResponse defaultResponse;
-    private UserInputResponse specificResponse;
-
-    @BeforeClass
-    public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        defaultResponse = mockControl.createMock(UserInputResponse.class);
-        specificResponse = mockControl.createMock(UserInputResponse.class);
-    }
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private UserInputCommand underTest;
+    @Mock private UserInputResponse defaultResponse;
+    @Mock private UserInputResponse specificResponse;
 
     @BeforeMethod
     public void setUpMethod() {
-        underTest = new UserInputCommand();
         mockControl.reset();
     }
 
@@ -62,11 +53,9 @@ public class UserInputCommandTest {
         // THEN
         Assert.assertEquals(returned.getViewName(), "rawUserInputCommand");
         final Map<String, Object> model = returned.getModel();
-        Assert.assertEquals(model.size(), 2);
-        Assert.assertTrue(model.containsKey("userInputLabel"));
-        Assert.assertEquals(model.get("userInputLabel"), label);
-        Assert.assertTrue(model.containsKey("responseType"));
-        Assert.assertEquals(model.get("responseType"), "text");
+        Assert.assertEquals(model.size(), 1);
+        Assert.assertTrue(model.containsKey("command"));
+        Assert.assertEquals(model.get("command"), underTest);
         Assert.assertEquals(underTest.getType(), "text");
     }
 
@@ -82,13 +71,11 @@ public class UserInputCommandTest {
         // THEN
         Assert.assertEquals(returned.getViewName(), "rawUserInputCommand");
         final Map<String, Object> model = returned.getModel();
-        Assert.assertEquals(model.size(), 3);
-        Assert.assertTrue(model.containsKey("userInputLabel"));
-        Assert.assertEquals(model.get("userInputLabel"), label);
+        Assert.assertEquals(model.size(), 2);
+        Assert.assertTrue(model.containsKey("command"));
+        Assert.assertEquals(model.get("command"), underTest);
         Assert.assertTrue(model.containsKey("ffChoiceHidden"));
         Assert.assertEquals(model.get("ffChoiceHidden"), true);
-        Assert.assertTrue(model.containsKey("responseType"));
-        Assert.assertEquals(model.get("responseType"), "number");
         Assert.assertEquals(underTest.getType(), "number");
     }
 
