@@ -1,7 +1,6 @@
-<div id="userInputSection" class="ffUserInputSection">
-    <form action="userInputResponse" method="post" id="userInputForm" autocomplete="off">
-	    <label for="responseText">${userInputLabel}</label>
-	    <input type="${responseType}" id="responseText" name="responseText" autocomplete="off" />
-        <input type="hidden" name="elapsedTime" id="elapsedTime" />
-    </form>
-</div>
+<%@page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+
+<c:set var="userInputClass" value="ffUserInputSection" scope="request" />
+<tiles:insertTemplate template="../raw/userInput.jsp" />

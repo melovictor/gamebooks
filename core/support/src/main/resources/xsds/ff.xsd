@@ -431,7 +431,7 @@
                 </xs:attribute>
               </xs:complexType>
             </xs:element>
-            <xs:element name="resultElse" minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="resultElse" minOccurs="0" maxOccurs="unbounded">
               <xs:complexType>
                 <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
                 <xs:attribute name="minResponse" type="xs:integer" use="optional" default="0" />
@@ -447,6 +447,8 @@
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
+          <xs:attribute name="min" use="optional" type="xs:integer" />
+          <xs:attribute name="max" use="optional" type="xs:integer" />
         </xs:complexType>
       </xs:element>
       <xs:element name="test" minOccurs="0" maxOccurs="unbounded" type="attributeTestType" />

@@ -3,12 +3,10 @@ package hu.zagor.gamebooks.content.command.userinput;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.content.command.userinput.domain.UserInputResponse;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -24,6 +22,8 @@ public class UserInputCommand extends Command {
     private List<UserInputResponse> responses = new ArrayList<>();
     private boolean ongoing;
     private String type;
+    private int min;
+    private int max;
 
     public String getLabel() {
         return label;
@@ -44,8 +44,7 @@ public class UserInputCommand extends Command {
     @Override
     public CommandView getCommandView(final String rulesetPrefix) {
         final Map<String, Object> model = new HashMap<>();
-        model.put("userInputLabel", label);
-        model.put("responseType", type);
+        model.put("command", this);
 
         if (ongoing) {
             hideChoices(model);
@@ -90,5 +89,21 @@ public class UserInputCommand extends Command {
 
     public void setType(final String type) {
         this.type = type;
+    }
+
+    public int getMin() {
+        return min;
+    }
+
+    public void setMin(final int min) {
+        this.min = min;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
+    public void setMax(final int max) {
+        this.max = max;
     }
 }

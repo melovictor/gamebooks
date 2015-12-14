@@ -241,11 +241,31 @@ var userInput = (function() {
 	function initialize() {
 		if ($("#userInputSection").length > 0) {
 			$("#elapsedTime").val(new Date().getTime());
-			$("#userInputForm").on("submit", function() {
-				$elapsedTimeField = $("#elapsedTime");
-				$elapsedTimeField.val(new Date().getTime() - $elapsedTimeField.val());
-				allowNavigation();
-			});
+			$("#userInputForm").on("submit", handleSubmit);
+		}
+	}
+	
+	function isValid() {
+		var $input = $("#responseText");
+		var isValid = true;
+		if ($input.attr("type") == "number") {
+			var value = parseInt($input.val());
+			var min =  parseInt($input.attr("min"));
+			var max = parseInt($input.attr("max"));
+			isValid = !isNaN(value);
+			isValid &= isNaN(min) || value >= min;
+			isValid &= isNaN(max) || value <= max;
+		}
+		return isValid;
+	}
+	
+	function handleSubmit(event) {
+		if (!isValid()) {
+			event.preventDefault();
+		} else {
+			$elapsedTimeField = $("#elapsedTime");
+			$elapsedTimeField.val(new Date().getTime() - $elapsedTimeField.val());
+			allowNavigation();
 		}
 	}
 	
@@ -292,6 +312,6 @@ $(function() {
 	
 	$("a[href]").on("click", allowNavigation);
 	$("#MainContent a[href]:not([data-no-multi-navigation])").on("click", preventMultipleNavigation);
-	$("#userInputSection input").focus();
+	$("#responseText").focus();
 	$("span[title], div[title]").tooltip();
 });
