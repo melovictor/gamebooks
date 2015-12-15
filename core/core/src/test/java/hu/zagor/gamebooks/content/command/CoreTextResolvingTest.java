@@ -4,11 +4,8 @@ import static org.easymock.EasyMock.aryEq;
 import static org.easymock.EasyMock.eq;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import java.util.Locale;
-
-import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
 import org.springframework.context.HierarchicalMessageSource;
 
 /**
@@ -18,17 +15,8 @@ import org.springframework.context.HierarchicalMessageSource;
 public abstract class CoreTextResolvingTest {
 
     private final Locale locale = Locale.ENGLISH;
-    private HierarchicalMessageSource messageSource;
-    private LocaleProvider localeProvider;
-
-    public void init(final IMocksControl mockControl, final Object underTest) {
-        if (messageSource == null) {
-            messageSource = mockControl.createMock(HierarchicalMessageSource.class);
-            localeProvider = mockControl.createMock(LocaleProvider.class);
-        }
-        Whitebox.setInternalState(underTest, "messageSource", messageSource);
-        Whitebox.setInternalState(underTest, "localeProvider", localeProvider);
-    }
+    @Inject private HierarchicalMessageSource messageSource;
+    @Inject private LocaleProvider localeProvider;
 
     public void expectText(final String key, final Object[] params, final String response) {
         expectLocale();

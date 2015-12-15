@@ -6,7 +6,6 @@ import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.random.RandomCommand;
 import hu.zagor.gamebooks.content.command.random.RandomResult;
-
 import org.w3c.dom.Node;
 
 /**
@@ -20,8 +19,8 @@ public class RandomResultTransformer extends AbstractCommandSubTransformer<Rando
 
         final RandomResult randomResult = getBeanFactory().getBean(RandomResult.class);
 
-        randomResult.setMin(Integer.valueOf(this.extractAttribute(node, "min")));
-        randomResult.setMax(Integer.valueOf(this.extractAttribute(node, "max")));
+        randomResult.setMin(extractAttribute(node, "min"));
+        randomResult.setMax(extractAttribute(node, "max"));
 
         final ParagraphData paragraphData = parent.parseParagraphData(positionCounter, node);
         randomResult.setParagraphData(paragraphData);

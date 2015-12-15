@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.content.command.random;
 
 import hu.zagor.gamebooks.content.ParagraphData;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -13,28 +12,12 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 public class RandomResult implements Cloneable {
 
-    private int min;
-    private int max;
+    private String min;
+    private String max;
     private ParagraphData paragraphData;
-
-    public int getMin() {
-        return min;
-    }
-
-    public int getMax() {
-        return max;
-    }
 
     public ParagraphData getParagraphData() {
         return paragraphData;
-    }
-
-    public void setMin(final int min) {
-        this.min = min;
-    }
-
-    public void setMax(final int max) {
-        this.max = max;
     }
 
     public void setParagraphData(final ParagraphData paragraphData) {
@@ -49,4 +32,21 @@ public class RandomResult implements Cloneable {
 
         return cloned;
     }
+
+    public String getMin() {
+        return min;
+    }
+
+    public void setMin(final String min) {
+        this.min = min;
+    }
+
+    public String getMax() {
+        return max;
+    }
+
+    public void setMax(final String max) {
+        this.max = max;
+    }
+
 }

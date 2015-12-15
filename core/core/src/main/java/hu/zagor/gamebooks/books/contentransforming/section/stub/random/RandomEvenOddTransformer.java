@@ -7,7 +7,6 @@ import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.random.RandomCommand;
 import hu.zagor.gamebooks.content.command.random.RandomResult;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import org.slf4j.Logger;
 import org.w3c.dom.Node;
 
@@ -17,8 +16,7 @@ import org.w3c.dom.Node;
  */
 public class RandomEvenOddTransformer extends AbstractCommandSubTransformer<RandomCommand> {
 
-    @LogInject
-    private Logger logger;
+    @LogInject private Logger logger;
     private final int remainder;
 
     /**
@@ -31,15 +29,15 @@ public class RandomEvenOddTransformer extends AbstractCommandSubTransformer<Rand
 
     @Override
     protected void doTransform(final BookParagraphDataTransformer parent, final Node node, final RandomCommand command, final ChoicePositionCounter positionCounter) {
-        final int min = Integer.valueOf(this.extractAttribute(node, "min"));
-        final int max = Integer.valueOf(this.extractAttribute(node, "max"));
+        final int min = Integer.valueOf(extractAttribute(node, "min"));
+        final int max = Integer.valueOf(extractAttribute(node, "max"));
         final ParagraphData paragraphData = parent.parseParagraphData(positionCounter, node);
 
         for (int i = min; i <= max; i++) {
             if (i % 2 == remainder) {
                 final RandomResult randomResult = getBeanFactory().getBean(RandomResult.class);
-                randomResult.setMin(i);
-                randomResult.setMax(i);
+                randomResult.setMin(String.valueOf(i));
+                randomResult.setMax(String.valueOf(i));
 
                 randomResult.setParagraphData(paragraphData);
                 command.addResult(randomResult);

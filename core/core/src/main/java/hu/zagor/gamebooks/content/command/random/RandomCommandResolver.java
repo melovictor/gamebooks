@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
+import hu.zagor.gamebooks.character.handler.ExpressionResolver;
 import hu.zagor.gamebooks.character.handler.userinteraction.DefaultUserInteractionHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.Command;
@@ -11,11 +12,9 @@ import hu.zagor.gamebooks.content.command.SilentCapableResolver;
 import hu.zagor.gamebooks.content.command.TypeAwareCommandResolver;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -29,14 +28,10 @@ import org.springframework.util.Assert;
  */
 public class RandomCommandResolver extends TypeAwareCommandResolver<RandomCommand> implements BeanFactoryAware, SilentCapableResolver<RandomCommand> {
 
-    @LogInject
-    private Logger logger;
-
-    @Autowired
-    @Qualifier("d6RandomGenerator")
-    private RandomNumberGenerator generator;
-
+    @LogInject private Logger logger;
+    @Autowired @Qualifier("d6RandomGenerator") private RandomNumberGenerator generator;
     private BeanFactory beanFactory;
+    @Autowired private ExpressionResolver expressionResolver;
 
     @Override
     public List<ParagraphData> resolveSilently(final Command commandObject, final ResolvationData resolvationData, final List<String> messages, final Locale locale) {
@@ -44,7 +39,7 @@ public class RandomCommandResolver extends TypeAwareCommandResolver<RandomComman
 
         Assert.notNull(resolvationData, "The parameter 'resolvationData' cannot be null!");
 
-        final List<ParagraphData> responseList = getResultParagraphData(command, messages, locale);
+        final List<ParagraphData> responseList = getResultParagraphData(command, messages, locale, resolvationData.getCharacter());
         final List<ParagraphData> clonedResponseList = new ArrayList<>();
         for (final ParagraphData data : responseList) {
             if (data != null) {
@@ -77,7 +72,7 @@ public class RandomCommandResolver extends TypeAwareCommandResolver<RandomComman
         final List<String> messages = new ArrayList<>();
         List<ParagraphData> responseList = null;
         if (interactionHandler.hasRandomResult(character)) {
-            responseList = getResultParagraphData(command, messages, locale);
+            responseList = getResultParagraphData(command, messages, locale, resolvationData.getCharacter());
             appendText(responseList.get(0), messages.get(0), true);
         } else {
             appendText(rootDataElement, command.getLabel(), false);
@@ -92,7 +87,7 @@ public class RandomCommandResolver extends TypeAwareCommandResolver<RandomComman
         }
     }
 
-    private List<ParagraphData> getResultParagraphData(final RandomCommand command, final List<String> messages, final Locale locale) {
+    private List<ParagraphData> getResultParagraphData(final RandomCommand command, final List<String> messages, final Locale locale, final Character character) {
         final List<ParagraphData> responseList = new ArrayList<>();
 
         final DiceConfiguration diceConfiguration = beanFactory.getBean(command.getDiceConfig(), DiceConfiguration.class);
@@ -109,7 +104,7 @@ public class RandomCommandResolver extends TypeAwareCommandResolver<RandomComman
 
         prepare(messages, command, locale);
         for (final RandomResult result : command.getResults()) {
-            if (result.getMin() <= diceResult && diceResult <= result.getMax()) {
+            if (expressionResolver.resolveValue(character, result.getMin()) <= diceResult && diceResult <= expressionResolver.resolveValue(character, result.getMax())) {
                 responseList.add(result.getParagraphData());
                 foundResult = true;
             }

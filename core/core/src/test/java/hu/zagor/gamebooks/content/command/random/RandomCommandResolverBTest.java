@@ -6,20 +6,21 @@ import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
+import hu.zagor.gamebooks.character.handler.ExpressionResolver;
 import hu.zagor.gamebooks.character.handler.userinteraction.DefaultUserInteractionHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CoreTextResolvingTest;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
-import java.util.ArrayList;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.List;
 import java.util.Locale;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
+import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
@@ -34,59 +35,39 @@ import org.testng.annotations.Test;
  */
 @Test
 public class RandomCommandResolverBTest extends CoreTextResolvingTest {
-
-    private RandomCommandResolver underTest;
-    private IMocksControl mockControl;
+    @UnderTest private RandomCommandResolver underTest;
+    @MockControl private IMocksControl mockControl;
     private ResolvationData resolvationData;
     private RandomCommand command;
-    private ParagraphData rootData;
-    private Character character;
+    @Instance private ParagraphData rootData;
+    @Mock private Character character;
     private BookInformations info;
-    private ParagraphData resultElse;
-    private RandomResult result;
-    private CharacterHandler characterHandler;
-    private DefaultUserInteractionHandler interactionHandler;
-    private ParagraphData resultData;
-    private BeanFactory beanFactory;
+    @Instance private ParagraphData resultElse;
+    @Instance private RandomResult result;
+    @Instance private CharacterHandler characterHandler;
+    @Mock private DefaultUserInteractionHandler interactionHandler;
+    @Mock private ParagraphData resultData;
+    @Inject private BeanFactory beanFactory;
     private DiceConfiguration diceConfig;
-    private RandomNumberGenerator generator;
-    private Logger logger;
-    private DiceResultRenderer diceRenderer;
-    private ParagraphData clonedData;
+    @Inject private RandomNumberGenerator generator;
+    @Inject private Logger logger;
+    @Inject private DiceResultRenderer diceRenderer;
+    @Mock private ParagraphData clonedData;
     private Locale locale;
-    private List<String> messages;
+    @Instance private List<String> messages;
+    @Inject private ExpressionResolver expressionResolver;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        underTest = new RandomCommandResolver();
         info = new BookInformations(9);
-        rootData = new ParagraphData();
-        character = mockControl.createMock(Character.class);
         resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).build();
-        result = new RandomResult();
-        result.setMin(2);
-        result.setMax(3);
-        resultData = mockControl.createMock(ParagraphData.class);
-        clonedData = mockControl.createMock(ParagraphData.class);
+        result.setMin("2");
+        result.setMax("3");
         result.setParagraphData(resultData);
-        resultElse = new ParagraphData();
-        characterHandler = new CharacterHandler();
         info.setCharacterHandler(characterHandler);
-        interactionHandler = mockControl.createMock(DefaultUserInteractionHandler.class);
         characterHandler.setInteractionHandler(interactionHandler);
-        init(mockControl, underTest);
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        underTest.setBeanFactory(beanFactory);
         diceConfig = new DiceConfiguration(1, 1, 6);
-        generator = mockControl.createMock(RandomNumberGenerator.class);
-        logger = mockControl.createMock(Logger.class);
-        Whitebox.setInternalState(underTest, "logger", logger);
-        Whitebox.setInternalState(underTest, "generator", generator);
-        diceRenderer = mockControl.createMock(DiceResultRenderer.class);
-        Whitebox.setInternalState(underTest, "diceRenderer", diceRenderer);
         locale = Locale.ENGLISH;
-        messages = new ArrayList<>();
     }
 
     @BeforeMethod
@@ -109,6 +90,8 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
         logger.debug("Random command generated the number '{}'.", 2);
         expect(diceRenderer.render(diceConfig, randomResult)).andReturn("_2_");
         expectTextWoLocale("page.raw.label.random.after", new Object[]{"_2_", 2}, "randomAfter");
+        expect(expressionResolver.resolveValue(character, "2")).andReturn(2);
+        expect(expressionResolver.resolveValue(character, "3")).andReturn(3);
         expect(resultData.clone()).andReturn(clonedData);
         mockControl.replay();
         // WHEN
@@ -133,6 +116,8 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
         logger.debug("Random command generated the number '{}'.", 2);
         expect(diceRenderer.render(diceConfig, randomResult)).andReturn("_2_");
         expectTextWoLocale("page.raw.label.random.after", new Object[]{"_2_", 2}, "randomAfter");
+        expect(expressionResolver.resolveValue(character, "2")).andReturn(2);
+        expect(expressionResolver.resolveValue(character, "3")).andReturn(3);
         expect(resultData.clone()).andThrow(new CloneNotSupportedException());
         logger.error("Failed to clone object '{}'.", resultData);
         mockControl.replay();
@@ -157,6 +142,8 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
         logger.debug("Random command generated the number '{}'.", 6);
         expect(diceRenderer.render(diceConfig, randomResult)).andReturn("_6_");
         expectTextWoLocale("page.raw.label.random.after", new Object[]{"_6_", 6}, "randomAfter");
+        expect(expressionResolver.resolveValue(character, "2")).andReturn(2);
+        expect(expressionResolver.resolveValue(character, "3")).andReturn(3);
         mockControl.replay();
         // WHEN
         final List<ParagraphData> returned = underTest.resolveSilently(command, resolvationData, messages, locale);

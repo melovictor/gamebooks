@@ -6,6 +6,8 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
+import hu.zagor.gamebooks.character.handler.AttributeResolvingExpressionResolver;
+import hu.zagor.gamebooks.character.handler.ExpressionResolver;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
@@ -53,11 +55,9 @@ import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.section.FfRuleBookParagraphResolver;
 import hu.zagor.gamebooks.renderer.DefaultDiceResultRenderer;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -149,6 +149,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
     private EnemyStatusEvaluator enemyStatusEvaluator;
     private AutoLoseHandler autoLoseHandler;
     private DiceResultRenderer diceResultRenderer;
+    private ExpressionResolver expressionResolver;
 
     @BeforeClass
     public void setUpClass() {
@@ -278,7 +279,11 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         enemies.put("2", enemyB);
 
         attributeHandler = new FfAttributeHandler();
+        expressionResolver = new AttributeResolvingExpressionResolver();
+        Whitebox.setInternalState(attributeHandler, "expressionResolver", expressionResolver);
         Whitebox.setInternalState(attributeHandler, "logger", logger);
+        Whitebox.setInternalState(expressionResolver, "logger", logger);
+        Whitebox.setInternalState(randomResolver, "expressionResolver", expressionResolver);
 
         interactionHandler = new FfUserInteractionHandler();
         interactionHandler.setFightCommand(character, FightCommand.ATTACKING);
@@ -319,8 +324,8 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         interruptingData.setChoices(choiceSet);
 
         interruptingResult = new RandomResult();
-        interruptingResult.setMin(1);
-        interruptingResult.setMax(2);
+        interruptingResult.setMin("1");
+        interruptingResult.setMax("2");
         interruptingResult.setParagraphData(interruptingData);
 
         interruptingRandom = new RandomCommand();
@@ -336,8 +341,8 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         damagingRandom.addModifyAttributes(reduceStamina);
 
         extraDamageCausingResult = new RandomResult();
-        extraDamageCausingResult.setMin(1);
-        extraDamageCausingResult.setMax(3);
+        extraDamageCausingResult.setMin("1");
+        extraDamageCausingResult.setMax("3");
         extraDamageCausingResult.setParagraphData(damagingRandom);
 
         extraDamageCausingRandom = new RandomCommand();
@@ -399,8 +404,8 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         afterBoundingRandom = new RandomCommand();
         afterBoundingRandom.setDiceConfig("dice1d6");
         randomResult = new RandomResult();
-        randomResult.setMin(1);
-        randomResult.setMax(3);
+        randomResult.setMin("1");
+        randomResult.setMax("3");
         smallDamagingRandom = new FfParagraphData();
         smallDamagingRandom.setChoices(choiceSet);
         smallDamagingRandom.setBeanFactory(beanFactory);

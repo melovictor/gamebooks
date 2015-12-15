@@ -6,6 +6,8 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
+import hu.zagor.gamebooks.character.handler.AttributeResolvingExpressionResolver;
+import hu.zagor.gamebooks.character.handler.ExpressionResolver;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
@@ -31,11 +33,9 @@ import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -94,6 +94,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
     private EnemyStatusEvaluator enemyStatusEvaluator;
     private AutoLoseHandler autoLoseHandler;
     private DiceResultRenderer diceResultRenderer;
+    private ExpressionResolver expressionResolver;
 
     @BeforeClass
     public void setUpClass() {
@@ -180,6 +181,9 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
 
         attributeHandler = new FfAttributeHandler();
         Whitebox.setInternalState(attributeHandler, "logger", logger);
+        expressionResolver = new AttributeResolvingExpressionResolver();
+        Whitebox.setInternalState(attributeHandler, "expressionResolver", expressionResolver);
+        Whitebox.setInternalState(expressionResolver, "logger", logger);
 
         interactionHandler = new FfUserInteractionHandler();
         interactionHandler.setFightCommand(character, FightCommand.ATTACKING);

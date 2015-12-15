@@ -1,29 +1,23 @@
 package hu.zagor.gamebooks.character.handler.attribute;
 
-import hu.zagor.gamebooks.character.item.Item;
+import hu.zagor.gamebooks.character.handler.ExpressionResolver;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttributeType;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.support.logging.LogInject;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.mvel2.MVEL;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.util.ReflectionUtils;
-import org.springframework.util.StringUtils;
 
 /**
  * Class for handling the attributes of a Fighting Fantasy character.
  * @author Tamas_Szekeres
  */
 public class FfAttributeHandler {
-
-    private static final Pattern RESOLVE_PROPERTIES = Pattern.compile("([a-zA-Z]+)");
-
+    @Autowired private ExpressionResolver expressionResolver;
     @LogInject private Logger logger;
 
     /**
@@ -107,63 +101,7 @@ public class FfAttributeHandler {
      * @return the resolved value
      */
     public int resolveValue(final FfCharacter character, final String against) {
-        String expression = against.trim();
-
-        expression = resolveAttributes(expression, character);
-        return ((Number) MVEL.eval(expression)).intValue();
-    }
-
-    private String resolveAttributes(final String expression, final FfCharacter character) {
-        final Matcher matcher = RESOLVE_PROPERTIES.matcher(expression);
-        String resolvedExpresssion = expression;
-
-        while (matcher.find()) {
-            final String property = matcher.group(1);
-            try {
-                Integer value = getFieldValue(character, property, true);
-                for (final Item item : character.getEquipment()) {
-                    value += getItemFieldValue(item, property);
-                }
-
-                if (!expression.startsWith("initial")) {
-                    int initialValue;
-                    try {
-                        initialValue = Integer.valueOf(resolveAttributes("initial" + property.substring(0, 1).toUpperCase() + property.substring(1), character));
-                    } catch (final IllegalArgumentException ex) {
-                        initialValue = Integer.MAX_VALUE;
-                    }
-                    if (initialValue < value) {
-                        value = initialValue;
-                    }
-                }
-
-                resolvedExpresssion = resolvedExpresssion.replace(property, value.toString());
-            } catch (final ReflectiveOperationException e) {
-                logger.error("Cannot resolve property '{}'.", property);
-                throw new IllegalArgumentException(e);
-            }
-        }
-
-        return resolvedExpresssion;
-    }
-
-    private int getItemFieldValue(final Item item, final String property) throws IllegalArgumentException, ReflectiveOperationException {
-        int value = 0;
-        if (item.getEquipInfo().isEquipped()) {
-            value = getFieldValue(item, property, false);
-        }
-        return value;
-    }
-
-    private int getFieldValue(final Object object, final String property, final boolean triggerException) throws IllegalArgumentException, ReflectiveOperationException {
-        final Method getter = ReflectionUtils.findMethod(object.getClass(), "get" + StringUtils.capitalize(property));
-        int value = 0;
-        if (getter != null) {
-            value = (int) getter.invoke(object);
-        } else if (triggerException) {
-            throw new NoSuchFieldException();
-        }
-        return value;
+        return expressionResolver.resolveValue(character, against);
     }
 
     /**

@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.content.command.random;
 
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.content.ParagraphData;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;
@@ -33,8 +32,8 @@ public class RandomResultTest {
     public void testCloneShouldReturnClone() throws CloneNotSupportedException {
         // GIVEN
         final RandomResult underTest = new RandomResult();
-        underTest.setMax(3);
-        underTest.setMin(1);
+        underTest.setMax("3");
+        underTest.setMin("1");
         final ParagraphData paragraphData = mockControl.createMock(ParagraphData.class);
         underTest.setParagraphData(paragraphData);
         final ParagraphData paragraphDataCloned = mockControl.createMock(ParagraphData.class);

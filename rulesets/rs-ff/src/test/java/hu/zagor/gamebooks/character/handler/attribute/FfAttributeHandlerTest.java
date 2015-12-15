@@ -1,18 +1,18 @@
 package hu.zagor.gamebooks.character.handler.attribute;
 
-import hu.zagor.gamebooks.character.item.FfItem;
-import hu.zagor.gamebooks.character.item.ItemType;
+import static org.easymock.EasyMock.expect;
+import hu.zagor.gamebooks.character.handler.ExpressionResolver;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttributeType;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
-import org.easymock.EasyMock;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -22,21 +22,11 @@ import org.testng.annotations.Test;
  */
 @Test
 public class FfAttributeHandlerTest {
-
-    private FfAttributeHandler underTest;
-    private FfCharacter character;
-    private IMocksControl mockControl;
-    private Logger logger;
-
-    @BeforeClass
-    public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        logger = mockControl.createMock(Logger.class);
-
-        underTest = new FfAttributeHandler();
-        Whitebox.setInternalState(underTest, "logger", logger);
-        character = new FfCharacter();
-    }
+    @UnderTest private FfAttributeHandler underTest;
+    @Instance private FfCharacter character;
+    @MockControl private IMocksControl mockControl;
+    @Inject private Logger logger;
+    @Inject private ExpressionResolver expressionResolver;
 
     @BeforeMethod
     public void setUpMethod() {
@@ -46,74 +36,7 @@ public class FfAttributeHandlerTest {
         character.setInitialStamina(24);
         character.setLuck(10);
         character.setInitialLuck(10);
-        character.setGold(99);
-        character.getEquipment().clear();
-
         mockControl.reset();
-    }
-
-    public void testResolveValueWhenAgainstIsSingleValueShouldReturnValue() {
-        // GIVEN
-        mockControl.replay();
-        // WHEN
-        final int returned = underTest.resolveValue(character, "9");
-        // THEN
-        Assert.assertEquals(returned, 9);
-    }
-
-    public void testResolveValueWhenAgainstIsOnlyMathematicalExpressionsShouldReturnValue() {
-        // GIVEN
-        mockControl.replay();
-        // WHEN
-        final int returned = underTest.resolveValue(character, "  9+3 -  2 * 4 / 8    +3  ");
-        // THEN
-        Assert.assertEquals(returned, 14);
-    }
-
-    public void testResolveValueWhenAgainstIsSinglePropertyShouldReturnValue() {
-        // GIVEN
-        mockControl.replay();
-        // WHEN
-        final int returned = underTest.resolveValue(character, " skill ");
-        // THEN
-        Assert.assertEquals(returned, 9);
-    }
-
-    public void testResolveValueWhenAgainstIsMixedPropertyAndMathOperatorsShouldReturnValue() {
-        // GIVEN
-        mockControl.replay();
-        // WHEN
-        final int returned = underTest.resolveValue(character, " skill + 3 ");
-        // THEN
-        Assert.assertEquals(returned, 12);
-    }
-
-    public void testResolveValueWhenAgainstIsMixedPropertyWithMaxSearchShouldReturnValue() {
-        // GIVEN
-        mockControl.replay();
-        // WHEN
-        final int returned = underTest.resolveValue(character, "skill > stamina ? skill : stamina");
-        // THEN
-        Assert.assertEquals(returned, 24);
-    }
-
-    public void testResolveValueWhenAgainstIsMoreThanOnePropertyWithMathOperatorsShouldReturnValue() {
-        // GIVEN
-        mockControl.replay();
-        // WHEN
-        final int returned = underTest.resolveValue(character, " skill + stamina ");
-        // THEN
-        Assert.assertEquals(returned, 33);
-    }
-
-    @Test(expectedExceptions = IllegalArgumentException.class)
-    public void testResolveValueWhenNonexistentAttributeUsedShouldThrowException() {
-        // GIVEN
-        logger.error("Cannot resolve property '{}'.", "fear");
-        mockControl.replay();
-        // WHEN
-        underTest.resolveValue(character, " fear + 3 ");
-        // THEN throws exception
     }
 
     @Test(expectedExceptions = RuntimeException.class)
@@ -136,44 +59,6 @@ public class FfAttributeHandlerTest {
         Assert.assertEquals(character.getSkill(), 10);
     }
 
-    public void testResolveValueWhenSkillIsRequestedWithEquippedItemWithSkillBonusButUnderInitialSkillShouldReturnTotal() {
-        // GIVEN
-        final FfItem item = new FfItem("9", "magic amulet", ItemType.necklace);
-        item.getEquipInfo().setEquipped(true);
-        item.setSkill(1);
-        character.getEquipment().add(item);
-        mockControl.replay();
-        // WHEN
-        final int returned = underTest.resolveValue(character, "skill");
-        // THEN
-        Assert.assertEquals(returned, 10);
-    }
-
-    public void testResolveValueWhenSkillIsRequestedWithUnequippedItemWithSkillBonusShouldReturnNormal() {
-        // GIVEN
-        final FfItem item = new FfItem("9", "magic amulet", ItemType.necklace);
-        item.setSkill(1);
-        character.getEquipment().add(item);
-        mockControl.replay();
-        // WHEN
-        final int returned = underTest.resolveValue(character, "skill");
-        // THEN
-        Assert.assertEquals(returned, 9);
-    }
-
-    public void testResolveValueWhenSkillIsRequestedWithEquippedItemWithSkillBonusButOverInitialSkillShouldReturnInitial() {
-        // GIVEN
-        final FfItem item = new FfItem("9", "magic amulet", ItemType.necklace);
-        item.getEquipInfo().setEquipped(true);
-        item.setSkill(9);
-        character.getEquipment().add(item);
-        mockControl.replay();
-        // WHEN
-        final int returned = underTest.resolveValue(character, "skill");
-        // THEN
-        Assert.assertEquals(returned, 12);
-    }
-
     public void testHandleModificationWhenCharacterHasFieldThatShouldBeRaisedAboveInitialValueShouldModifyItAccordingly() {
         // GIVEN
         final ModifyAttribute modAttrib = new ModifyAttribute("skill", 9, ModifyAttributeType.change);
@@ -184,18 +69,9 @@ public class FfAttributeHandlerTest {
         Assert.assertEquals(character.getSkill(), 12);
     }
 
-    public void testIsAliveWhenCharacterHasEnoughStaminaShouldReturnTrue() {
+    public void testIsAliveWhenExpressionResolverRespondsWithZeroShouldReturnFalse() {
         // GIVEN
-        mockControl.replay();
-        // WHEN
-        final boolean returned = underTest.isAlive(character);
-        // THEN
-        Assert.assertTrue(returned);
-    }
-
-    public void testIsAliveWhenCharacterHasZeroStaminaShouldReturnFalse() {
-        // GIVEN
-        character.setStamina(0);
+        expect(expressionResolver.resolveValue(character, "stamina")).andReturn(0);
         mockControl.replay();
         // WHEN
         final boolean returned = underTest.isAlive(character);
@@ -203,32 +79,14 @@ public class FfAttributeHandlerTest {
         Assert.assertFalse(returned);
     }
 
-    public void testIsAliveWhenCharacterHasZeroStaminaAndItemWithStaminaBonusShouldReturnTrue() {
+    public void testIsAliveWhenExpressionResolverRespondsWithPositiveShouldReturnTrue() {
         // GIVEN
-        character.setStamina(0);
-        final FfItem item = new FfItem("9", "magic amulet", ItemType.necklace);
-        item.getEquipInfo().setEquipped(true);
-        item.setStamina(2);
-        character.getEquipment().add(item);
+        expect(expressionResolver.resolveValue(character, "stamina")).andReturn(6);
         mockControl.replay();
         // WHEN
         final boolean returned = underTest.isAlive(character);
         // THEN
         Assert.assertTrue(returned);
-    }
-
-    public void testIsAliveWhenCharacterHasSmallStaminaButItemWithNegativeStaminaBonusShouldReturnFalse() {
-        // GIVEN
-        character.setStamina(2);
-        final FfItem item = new FfItem("9", "magic amulet", ItemType.necklace);
-        item.getEquipInfo().setEquipped(true);
-        item.setStamina(-2);
-        character.getEquipment().add(item);
-        mockControl.replay();
-        // WHEN
-        final boolean returned = underTest.isAlive(character);
-        // THEN
-        Assert.assertFalse(returned);
     }
 
     public void testHandleModificationWhenStaminaBonusTooLargeShouldSetItToInitialStamina() {
