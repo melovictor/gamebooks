@@ -11,6 +11,7 @@ public enum CheckType {
     items,
     skill,
     stamina,
+    luck,
     fear,
     faith,
     gold,
