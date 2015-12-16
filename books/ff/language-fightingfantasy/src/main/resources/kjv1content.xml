@@ -79,7 +79,13 @@
     <gatherItem id="4002" />
     <next id="280"></next>
   </p>
-  <!-- 6 -->
+  <p id="6">
+    <text>
+        [p]Miközben óvatosan lépkedsz az alagútban, por száll le az alacsony mennyezetről. Rozoga fagerendák tartják a falakat, és káromkodsz, amikor az egyik gerendában megbotlasz. Hirtelen egy halom törmelék zúdul le a mennyezetből, méghozzá pont a lábad elé, és megdermedsz, amikor meghallod a fa recsegő hangját. Beszakadt a mennyezet![/p]
+    </text>
+    <next id="66">Ha visszafordulsz és az ajtó felé futsz</next>
+    <next id="128">Ha továbbrohansz az alagútban, hogy elmenekülj az alázúduló sziklatörmelék elől</next>
+  </p>
   <p id="7">
     <text>
         [p]Gyorsan szeded a lábad, és végül sikerül messzire kerülnöd a bosszantó kis teremtményektől. A délután hátralévő részében egyfolytában az ösvényen mész tovább, míg eljutsz egy pontra, ahonnan megpillantod az ösvény végét, egy falut. Továbbmész az ösvényen.[/p]
@@ -199,7 +205,27 @@
     <next id="280"></next>
   </p>
   <!-- 23 -->
-  <!-- 24 -->
+  <p id="24">
+    <text>
+        [p]Mögötted beomlik az akna, és futásnak eredsz a sötét alagútban. Egyszer csak riadtan veszed észre, hogy a lábad alatt nincs talaj, és bezuhansz egy verembe![/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="SUD" id="290" />
+        <spell name="ZUH" id="399" />
+        <spell name="RIS" id="439" />
+        <spell name="REP" id="330" />
+        <spell name="CSA" id="424" />
+        <next id="277">Ha nem akarsz varázsolni</next>
+      </have>
+      <dontHave>
+        <next id="277"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="25">
     <text>
         [p]Istennődhöz fohászkodsz - de az a füle botját sem mozgatja! Újra megpróbálod, de csak nem hallgat meg. Nem sokkal később foglyul ejtőid kizavarnak ketrecedből, és egy hatalmas üst felé lökdösnek, amely a tűz fölött melegszik. Hárman felragadnak, és beledobnak az üstben lévő vízbe, mely már kellemetlenül meleg…[/p]
@@ -273,7 +299,13 @@
   <!-- 36 -->
   <!-- 37 -->
   <!-- 38 -->
-  <!-- 39 -->
+  <p id="39">
+    <text>
+        [p]A szoba elég nagy, és szemmel láthatólag valami raktárhelyiség lehet. Az egyik sarokban egy halom fekete sziklát látsz, mellette egy vödörben még többet, de ezek tompán csillognak a gyertya pislákoló fényében. A szoba közepén egy különös alakú masina áll - afféle prés vagy kőtörő gép -, melyet egy hatalmas Ogre működtet. Köveket hajigál be a gép egyik végén, és egy fémkart tekerve összetöri azokat. Amikor belépsz, az Ogre abbahagyja a munkát, és dühösen morogva fordul feléd.[/p]
+    </text>
+    <next id="144">Ha kirohansz a szobából, sőt a barlangból is</next>
+    <next id="285">Ha bátran szembenézel a teremtménnyel</next>
+  </p>
   <p id="40">
     <text>
         [p]Óvatosan mész lefelé az ösvényen, vigyázva, nehogy rálépj akár egyetlen száraz gallyra is.[/p]
@@ -301,7 +333,38 @@
   <!-- 44 -->
   <!-- 45 -->
   <!-- 46 -->
-  <!-- 47 -->
+  <p id="47">
+    <text>
+        [p]A Goblin megérzi, hogy támadni készülsz, és meglendíti hatalmas buzogányát. Meg kell küzdened vele.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <spell name="PÉL" id="328" />
+        <spell name="BAM" id="397" />
+        <spell name="TEL" id="309" />
+        <spell name="EME" id="438" />
+        <spell name="YAG" id="289" />
+        <next id="47a">Ha kardot rántasz</next>
+      </have>
+      <dontHave>
+        <fight type="single">
+          <enemy id="10" />
+        </fight>
+        <next id="186"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="47a" display="47">
+    <text>
+        [p]A Goblin megérzi, hogy támadni készülsz, és meglendíti hatalmas buzogányát. Meg kell küzdened vele.[/p]
+    </text>
+    <fight type="single" forceWeapon="1002,1001">
+      <enemy id="10" />
+    </fight>
+    <changeItem attribute="staminaDamage" id="1001" set="2" />
+    <changeItem attribute="staminaDamage" id="1002" set="2" />
+    <next id="186"></next>
+  </p>
   <!-- 48 -->
   <!-- 49 -->
   <p id="50">
@@ -360,7 +423,30 @@
     <next id="76">Ha tábort versz</next>
     <next id="224">Ha folytatod az utat</next>
   </p>
-  <!-- 66 -->
+  <p id="66">
+    <text>
+        [p]Az ajtó zárva van (valószínűleg biztonsági megfontolásból, hogy a bánya fenti szakaszát ezáltal elzárják a vermektől, amelyek balesetet okozhatnak - bár az itt dolgozó Goblinok élete mit sem ér). A tömör sziklafalon sem lehet átjutni.[/p]
+    </text>
+    <itemCheck type="item" id="3102">
+      <have>
+        <text>
+            [p]Varázsolhatsz.[/p]
+        </text>
+        <spell name="FUJ" id="329" />
+        <spell name="MEN" id="423" />
+        <spell name="GOP" id="310" />
+        <spell name="NYI" id="373" />
+        <spell name="DOM" id="350" />
+        <next id="228">Vagy megpróbálhatod betörni az ajtót</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Megpróbálod betörni az ajtót.[/p]
+        </text>
+        <next id="228"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 67 -->
   <p id="68">
     <text>
@@ -509,7 +595,24 @@
     </itemCheck>
   </p>
   <!-- 92 -->
-  <!-- 93 -->
+  <p id="93">
+    <test against="skill">
+      <success>
+        <text>
+            [p]sikerül betörnöd az ajtót, de le kell vonnod magadtól 1 ÉLETERŐ pontot a próbálkozásért.[/p]
+        </text>
+        <next id="39"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Nem sikerül betörnöd az ajtót, le kell vonnod magadtól 1 ÉLETERŐ pontot a próbálkozásért. Újra megpróbálkozhatsz.[/p]
+        </text>
+        <next id="39">Ha újrapróbálkoznál</next>
+        <next id="144">Ha feladod a kísérletezést, visszatérhetsz az elágazáshoz, és elhagyhatod a barlangot</next>
+      </failure>
+    </test>
+    <add amount="-1" to="stamina" />
+  </p>
   <p id="94">
     <text>
         [p]Bár erősen szorítja valami a karodat, ez mégsem akadályoz meg abban, hogy továbbmenj. Valójában sokkal könnyebben haladsz, úgy, mintha valami láthatatlan kéz vezetne rá a helyes útra. Hirtelen megritkul a lábad alatt a sűrű aljnövényzet és már egy derékig érő füves réten mész. Amikor kiérsz a növények sűrűjéből, a marok szorítása enyhül, majd végképp elenged. Nyersz 1 SZERENCSE pontot! Még mindig nem látod, hogy ki vagy mi vezetett rá a helyes útra.[/p]
@@ -591,7 +694,12 @@
   </p>
   <!-- 108 -->
   <!-- 109 -->
-  <!-- 110 -->
+  <p id="110">
+    <text>
+        [p]Nagy nehezen feltápászkodsz a földről, és körülnézel. Egy kis fénysugár szivárog be a verembe, és egy alagutat veszel észre amely a szabadba vezet. Kezed egy szőrös tárgyon pihen, amelyről először azt hiszed, valamiféle teremtmény lehet, de most a fényben látod, hogy az nem más, mint egy poros csizma. Nem messze tőle ott fekszik szőrmebéléses párja is, amit magaddal vihetsz, ha akarsz. Mindkét [span class="takeItem" data-id="3013" data-amount="1"]Borrinszőr csizmát[/span] elteszed a hátizsákodba. Végigmész az alagúton, és a bányából kijutsz az erdőbe, a dombról levezető ösvényhez.[/p]
+    </text>
+    <next id="202"></next>
+  </p>
   <!-- 111 -->
   <p id="112">
     <text>
@@ -952,7 +1060,13 @@
     <next id="95"></next>
   </p>
   <!-- 127 -->
-  <!-- 128 -->
+  <p id="128">
+    <text>
+        [p]Rohansz, ahogy csak bírsz, de hirtelen rájössz, hogy egy ismeretlen bányába futottál be, melynek egyetlen kijárata becsukódott mögötted![/p]
+    </text>
+    <next id="24">Ha beljebb mész a bányába</next>
+    <next id="66">Ha nem, visszafordulhatsz az ajtó felé</next>
+  </p>
   <!-- 129 -->
   <!-- 130 -->
   <p id="131">
@@ -1204,7 +1318,14 @@
     </text>
     <next id="231"></next>
   </p>
-  <!-- 160 -->
+  <p id="160">
+    <text>
+        [p]Istennődhöz fohászkodsz éppen, amikor az alázúduló törmelék moraja közben meghallod a nyíló ajtó nyikorgását. Épp jókor surransz ki a résen, mert az alagút felől iszonyatos dübörgés hangja üti meg a füledet.[/p]
+        [p]Libra segítségét kérted, és ez volt az egyetlen alkalom a Shamutanti dombok között, hogy ezt megtehetted. Ha azalatt az idő alatt, míg innen eljutsz Kharéba, ismét a segítségéért esedeznél, nem fog már meghallgatni. Most már csak önmagadra számíthatsz.[/p]
+    </text>
+    <loseItem id="4103" />
+    <next id="120"></next>
+  </p>
   <!-- 161 -->
   <!-- 162 -->
   <p id="163">
@@ -1309,7 +1430,13 @@
   </p>
   <!-- 184 -->
   <!-- 185 -->
-  <!-- 186 -->
+  <p id="186">
+    <text>
+        [p]A szobában nincs sok értékes holmi, de a Goblin nyakában egy [span class="takeItem" data-id="3012" data-amount="1"]ezüstkulcsot[/span] találsz, amelybe a 111-es számot vésték. Ha akarod, magadhoz veheted a kulcsot[/p]
+    </text>
+    <next id="239">Tovább folytathatod az utadat az ajtón át</next>
+    <next id="120">Vagy visszamehetsz arra, amerről jöttél</next>
+  </p>
   <!-- 187 -->
   <!-- 188 -->
   <p id="189">
@@ -1488,8 +1615,12 @@
     </text>
     <itemCheck type="item" id="4102">
       <have>
-        <next id="217a">Ha varázsolni akarsz</next>
-        <next id="217b">Ha kardoddal támadnál rájuk</next>
+        <spell name="HOP" id="428" />
+        <spell name="EME" id="407" />
+        <spell name="TÉR" id="358" />
+        <spell name="RAW" id="381" />
+        <spell name="PÉL" id="442" />
+        <next id="217a">Ha kardoddal támadnál rájuk</next>
       </have>
       <dontHave>
         <text>
@@ -1505,17 +1636,6 @@
     </itemCheck>
   </p>
   <p id="217a" display="217">
-    <text>
-        [p]Nem volt szerencséd, a Goblinok kis csoportja észrevesz, és csákánnyal támad rád.[/p]
-    </text>
-    <spell name="HOP" id="428" />
-    <spell name="EME" id="407" />
-    <spell name="TÉR" id="358" />
-    <spell name="RAW" id="381" />
-    <spell name="PÉL" id="442" />
-    <next id="217b">Ha kardot rántanál</next>
-  </p>
-  <p id="217b" display="217">
     <text>
         [p]Nem volt szerencséd, a Goblinok kis csoportja észrevesz, és csákánnyal támad rád.[/p]
         [p]Sorban küzdj meg velük.[/p]
@@ -1811,7 +1931,36 @@
   </p>
   <!-- 226 -->
   <!-- 227 -->
-  <!-- 228 -->
+  <p id="228">
+    <text>
+        [p]Minden erőddel neki kell feszülnöd az ajtónak, hogy kinyíljon.[/p]
+    </text>
+    <test against="skill" diceConfig="3d6">
+      <success>
+        <text>
+            [p]Az ajtó betörik, és elmenekülhetsz, de egy ÜGYESSÉG pontot vesztesz..[/p]
+        </text>
+        <add amount="-1" to="skill" />
+        <next id="120"></next>
+      </success>
+      <failure>
+        <itemCheck type="item" id="4103">
+          <have>
+            <text>
+                [p]Az ajtó meg sem moccan, és a barlang foglya maradsz, hacsak nem hívhatod segítségül Libra istennőt.[/p]
+            </text>
+            <next id="160"></next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Az ajtó meg sem moccan, és a barlang foglya maradsz...[/p]
+            </text>
+            <death />
+          </dontHave>
+        </itemCheck>
+      </failure>
+    </test>
+  </p>
   <!-- 229 -->
   <!-- 230 -->
   <p id="231">
@@ -1848,7 +1997,25 @@
   </p>
   <!-- 237 -->
   <!-- 238 -->
-  <!-- 239 -->
+  <p id="239">
+    <text>
+        [p]Az ajtó a jól olajozott sarokvasakon síri csöndben kinyílik, és egy koromsötét alagútban találod magad.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarod, varázsolhatsz.[/p]
+        </text>
+        <spell name="CSA" id="372" />
+        <spell name="TÁV" id="349" />
+        <spell name="FIX" id="422" />
+        <spell name="BAG" id="398" />
+        <spell name="MEN" id="454" />
+      </have>
+    </itemCheck>
+    <next id="6">Tapogatózva végigmehetsz a sötét alagúton</next>
+    <next id="120">De dönthetsz úgy is, hogy az alagút helyett inkább visszamész a szobán át az elágazáshoz</next>
+  </p>
   <!-- 240 -->
   <p id="241">
     <empty />
@@ -2123,7 +2290,30 @@
   <!-- 265 -->
   <!-- 266 -->
   <!-- 267 -->
-  <!-- 268 -->
+  <p id="268">
+    <text>
+        [p]Az ajtó zárva van.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Varázsolhatsz.[/p]
+        </text>
+        <spell name="DOM" id="351" />
+        <spell name="PAP" id="311" />
+        <spell name="FUJ" id="374" />
+        <spell name="MEN" id="449" />
+        <spell name="NYI" id="291" />
+        <next id="93">Vagy megpróbálhatod befeszíteni</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Megpróbálod befeszíteni.[/p]
+        </text>
+        <next id="93"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 269 -->
   <p id="270">
     <text>
@@ -2182,7 +2372,89 @@
     <next id="2">Ha megküzdesz vele</next>
   </p>
   <!-- 276 -->
-  <!-- 277 -->
+  <p id="277">
+    <text>
+        [p]Nem zuhansz túl mélyre, de így is megsebesülhetsz.[/p]
+    </text>
+    <itemCheck type="pos" id="3">
+      <have>
+        <random diceConfig="2d6">
+          <result max="12" min="12">
+            <text>[p]A fejedre zuhantál, kitöröd a nyakadat, és kalandod itt véget ér.[/p]</text>
+            <death />
+          </result>
+          <result min="2" max="luck - 4">
+            <text>[p]Nem sérülsz meg.[/p]</text>
+            <next id="110"></next>
+          </result>
+          <result max="luck - 3" min="luck - 3">
+            <text>[p]Vonj le magadtól 1 ÉLETERŐ pontot az elszenvedett kisebb sérülésekért.[/p]</text>
+            <add amount="-1" to="stamina" />
+          </result>
+          <result max="11" min="luck - 2">
+            <text>[p]Vonj le magadtól 3 ÉLETERŐ pontot, mert csúnyán kificamodott a karod.[/p]</text>
+            <add amount="-3" to="stamina" />
+          </result>
+        </random>
+      </have>
+      <dontHave>
+        <itemCheck type="pos" id="2">
+          <have>
+            <random diceConfig="2d6">
+              <result min="2" max="luck + 2">
+                <text>[p]Nem sérülsz meg.[/p]</text>
+                <next id="110"></next>
+              </result>
+              <result max="luck + 3" min="luck + 3">
+                <text>[p]Vonj le magadtól 1 ÉLETERŐ pontot az elszenvedett kisebb sérülésekért.[/p]</text>
+                <add amount="-1" to="stamina" />
+              </result>
+              <result max="12" min="luck + 4">
+                <text>[p]Vonj le magadtól 3 ÉLETERŐ pontot, mert csúnyán kificamodott a karod.[/p]</text>
+                <add amount="-3" to="stamina" />
+              </result>
+            </random>
+          </have>
+          <dontHave>
+            <itemCheck type="luck" id="12">
+              <have>
+                <random diceConfig="2d6">
+                  <result max="12" min="12">
+                    <text>[p]A fejedre zuhantál, kitöröd a nyakadat, és kalandod itt véget ér.[/p]</text>
+                    <death />
+                  </result>
+                  <resultElse>
+                    <text>[p]Nem sérülsz meg.[/p]</text>
+                    <next id="110"></next>
+                  </resultElse>
+                </random>
+              </have>
+              <dontHave>
+                <random diceConfig="2d6">
+                  <result max="12" min="12">
+                    <text>[p]A fejedre zuhantál, kitöröd a nyakadat, és kalandod itt véget ér.[/p]</text>
+                    <death />
+                  </result>
+                  <result min="2" max="luck - 1">
+                    <text>[p]Nem sérülsz meg.[/p]</text>
+                    <next id="110"></next>
+                  </result>
+                  <result max="luck" min="luck">
+                    <text>[p]Vonj le magadtól 1 ÉLETERŐ pontot az elszenvedett kisebb sérülésekért.[/p]</text>
+                    <add amount="-1" to="stamina" />
+                  </result>
+                  <result max="11" min="luck + 1">
+                    <text>[p]Vonj le magadtól 3 ÉLETERŐ pontot, mert csúnyán kificamodott a karod.[/p]</text>
+                    <add amount="-3" to="stamina" />
+                  </result>
+                </random>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 278 -->
   <p id="279">
     <text>
@@ -2313,7 +2585,40 @@
     <next id="31"></next>
   </p>
   <!-- 284 -->
-  <!-- 285 -->
+  <p id="285">
+    <itemCheck type="item" id="3102">
+      <have>
+        <text>
+            [p]Varázsolhatsz, ha akarsz.[/p]
+        </text>
+        <spell name="LÁP" id="400"/>
+        <spell name="FAL" id="352"/>
+        <spell name="KIL" id="331"/>
+        <spell name="ZAV" id="375"/>
+        <spell name="POR" id="312"/>
+        <next id="285a">Ha kardot rántanál</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Meg kell küzdened az Ogréval.[/p]
+        </text>
+        <fight type="single">
+        <enemy id="11"/>
+        </fight>
+        <next id="15"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="285a" display="285">
+    <text>
+        [p]Varázsolhatsz, ha akarsz.[/p]
+        [p]Meg kell küzdened az Ogréval.[/p]
+    </text>
+     <fight type="single">
+        <enemy id="11"/>
+        </fight>
+        <next id="15"></next>
+  </p>
   <!-- 286 -->
   <!-- 287 -->
   <p id="288">
@@ -2323,9 +2628,27 @@
     <addSpell amount="-4" />
     <next id="131"></next>
   </p>
-  <!-- 289 -->
-  <!-- 290 -->
-  <!-- 291 -->
+  <p id="289">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
+    </text>
+    <addSpell amount="-5" />
+    <next id="47"></next>
+  </p>
+  <p id="290">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat. Bezuhansz a verembe.[/p]
+    </text>
+    <addSpell amount="-5" />
+    <next id="277"></next>
+  </p>
+  <p id="291">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Az ajtó megremeg, és a kilincs gombja elfordul. Éberen figyeled, amint az ajtó kinyílik, és szabad utat enged a szobába.[/p]
+    </text>
+    <addSpell amount="-2" />
+    <next id="39"></next>
+  </p>
   <p id="292">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot. Összpontosítod a figyelmedet, és szemed lassan megpihen a kunyhó sarkában lévő hatalmas sziklatömbön. A szikla a szemük előtt válik egy halom csillogó kinccsé. A lélegzetük is eláll, amikor megpillantják a semmiből támadt sok ékszert, aranyat, ezüstöt és drágakövet. Izgatottan súgnak össze, és boldogan feléd mutogatnak. Egyikük megpróbálja megérinteni a kincseket, de abban a pillanatban eltünteted a varázslatot. Az Elvineket teljesen lenyűgözi varázstudományod, és visszaadják a hátizsákodat, majd azt is megengedik, hogy elhagyd a falujukat.[/p]
@@ -2481,10 +2804,36 @@
       </have>
     </itemCheck>
   </p>
-  <!-- 309 -->
-  <!-- 310 -->
-  <!-- 311 -->
-  <!-- 312 -->
+  <p id="309">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot! Varázslatod sikertelen, mert nem rendelkezel az ehhez szükséges tárggyal. A Goblin felméri a lehetőségeit, és dühödten rád támad. Vonj le magadtól újabb 3 ÉLETERŐ pontot.[/p]
+    </text>
+    <addSpell amount="-1" />
+    <add amount="-3" to="stamina" />
+    <next id="47"></next>
+  </p>
+  <p id="310">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat![/p]
+    </text>
+    <addSpell amount="-5" />
+    <next id="66"></next>
+  </p>
+  <p id="311">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat![/p]
+    </text>
+    <addSpell amount="-5" />
+    <next id="268"></next>
+  </p>
+  <p id="312">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges kőporral. Az Ogre meglendíti az öklét, és úgy képen töröl, hogy a falhoz vágódsz. Újabb 2 ÉLETERŐ pontot vesztesz.[/p]
+    </text>
+    <addSpell amount="-1" />
+    <add amount="-2" to="stamina"/>
+    <next id="285"></next>
+  </p>
   <p id="313">
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Ilyen varázslat nem létezik.[/p]
@@ -2530,10 +2879,55 @@
     <addSpell amount="-5" />
     <next id="104"></next>
   </p>
-  <!-- 328 -->
-  <!-- 329 -->
-  <!-- 330 -->
-  <!-- 331 -->
+  <p id="328">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot![/p]
+    </text>
+    <addSpell amount="-1" />
+    <itemCheck type="item" id="3008">
+      <have>
+        <text>
+            [p]Bekened méhviasszal a kardodat. Küzdj meg a Goblinnal a szokásos módon, de mindaddig, míg kardod élét a varázslat védi, megkétszerezheted a Goblinon ejtett sebeket. Egy fél adag méhviaszt elhasználtál e varázslattal.[/p]
+        </text>
+        <loseItem id="3008" amount="0" dose="1" />
+        <itemCheck type="item" id="1002">
+          <have>
+            <changeItem attribute="staminaDamage" id="1002" set="4" />
+          </have>
+          <dontHave>
+            <changeItem attribute="staminaDamage" id="1001" set="4" />
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            [p]3 plusz ÉLETERŐ pontot vesztesz, mert a Goblin rád támad.[/p]
+        </text>
+        <add amount="-3" to="stamina" />
+      </dontHave>
+    </itemCheck>
+    <next id="47a"></next>
+  </p>
+  <p id="329">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot! Elkeseredetten próbálsz meg varázsolni, minthogy nem rendelkezel az ehhez szükséges tárggyal. Miközben újra és újra elrebeged a varázsigét, rád szakad a mennyezet. Tehetetlen vagy, a törmelék örök időkre maga alá temetett…[/p]
+    </text>
+    <addSpell amount="-1" />
+  </p>
+  <p id="330">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot! Varázslatod nem fog működni, mert nem rendelkezel az ehhez szükséges Ékszerdíszes Medállal. Bezuhansz a verembe.[/p]
+    </text>
+    <addSpell amount="-1" />
+    <next id="277" pos="3"></next>
+  </p>
+  <p id="331">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
+    </text>
+    <addSpell amount="-5" />
+    <next id="285"></next>
+  </p>
   <p id="332">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot! Varázsolsz, de nem történik semmi. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Kardot kell rántanod, és azzal kell harcolnod.[/p]
@@ -2588,10 +2982,35 @@
     <add amount="-2" to="stamina" />
     <next id="104"></next>
   </p>
-  <!-- 349 -->
-  <!-- 350 -->
-  <!-- 351 -->
-  <!-- 352 -->
+  <p id="349">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Vonj le magadtól további 2 ÉLETERŐ pontot, amiért sikertelen volt a varázslatod.[/p]
+    </text>
+    <addSpell amount="-1" />
+    <add amount="-2" to="stamina" />
+    <next id="239"></next>
+  </p>
+  <p id="350">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
+    </text>
+    <addSpell amount="-5" />
+    <next id="66"></next>
+  </p>
+  <p id="351">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
+    </text>
+    <addSpell amount="-5" />
+    <next id="268"></next>
+  </p>
+  <p id="352">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot! Varázsolsz, és amikor az Ogre rád támad, valami kemény tárgyba ütközik. Az általad varázsolt láthatatlan falba ütközött. Kimenekülhetsz a szobából, amíg az Ogrét távol tartod magadtól. Miközben kifelé mész, lekaphatod az asztalról a [span class="takeItem" data-id="3014" data-amount="1"]drágakövet[/span] - az Ogre a bányában kibányászott szikladarabokból őrölt drágaköveket. Ez a drágakő 10 Aranytallért ér. Bármit vehetsz rajta, vagy cserélhetsz érte, de a visszajáró pénzt soha nem kapod meg, bármilyen olcsón is veszel valamit.[/p]
+    </text>
+    <addSpell amount="-4" />
+    <next id="144"></next>
+  </p>
   <p id="353">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot! Megpróbálsz varázsolni, de varázslatod nem működik, mert nem rendelkezel az ehhez szükséges tárggyal. Az Elvinekre nem vagy hatással, és gyorsan újra megkötözik a kezedet, csakhogy ezúttal sokkal szorosabban és fájdalmasabban. Újabb ÉLETERŐ pontot vesztesz.[/p]
@@ -2663,7 +3082,7 @@
     </text>
     <addSpell amount="-1" />
     <add amount="-2" to="stamina" />
-    <next id="217b"></next>
+    <next id="217a"></next>
   </p>
   <p id="359">
     <text>
@@ -2691,9 +3110,28 @@
     <add amount="-3" to="stamina" />
     <next id="104"></next>
   </p>
-  <!-- 372 -->
-  <!-- 373 -->
-  <!-- 374 -->
+  <p id="372">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és egyre inkább úgy érzed, hogy valamilyen veszély leselkedik rád. Egy belső hang azt súgja, hogy ne menj tovább ezen az úton. Mit teszel? Megfogadod a figyelmeztetést, és visszamész az elágazáshoz, vagy továbbmész, mit sem törődve az intő szóval?[/p]
+    </text>
+    <addSpell amount="-2" />
+    <next id="6">Ha továbbmész</next>
+    <next id="120">Ha visszafordulsz</next>
+  </p>
+  <p id="373">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és kíváncsian várod, mi történik. A hatalmas ajtó sarokvasai megnyikordulnak, és az ajtó lassan kinyílik. Épp jókor, mert még időben sikerül kisurrannod rajta, mielőtt a mennyezet leszakadna![/p]
+    </text>
+    <addSpell amount="-2" />
+    <next id="120"></next>
+  </p>
+  <p id="374">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot! Ez a varázslat nem működik, mert nem rendelkezel az ehhez szükséges tárggyal.[/p]
+    </text>
+    <addSpell amount="-1" />
+    <next id="268"></next>
+  </p>
   <!-- 375 -->
   <p id="376">
     <text>
@@ -2736,7 +3174,7 @@
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
     </text>
     <addSpell amount="-5" />
-    <next id="217a"></next>
+    <next id="217"></next>
   </p>
   <p id="382">
     <text>
@@ -2779,9 +3217,27 @@
     <addSpell amount="-5" />
     <next id="123c"></next>
   </p>
-  <!-- 397 -->
-  <!-- 398 -->
-  <!-- 399 -->
+  <p id="397">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
+    </text>
+    <addSpell amount="-5" />
+    <next id="47"></next>
+  </p>
+  <p id="398">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
+    </text>
+    <addSpell amount="-5" />
+    <next id="239"></next>
+  </p>
+  <p id="399">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Nem zuhansz tovább, lágyan lebegve érsz földet.[/p]
+    </text>
+    <addSpell amount="-2" />
+    <next id="110"></next>
+  </p>
   <!-- 400 -->
   <p id="401">
     <itemCheck type="item" id="3201">
@@ -2949,9 +3405,28 @@
     <add amount="-2" to="stamina" />
     <next id="123c"></next>
   </p>
-  <!-- 422 -->
-  <!-- 423 -->
-  <!-- 424 -->
+  <p id="422">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot! Nem alkalmazhatod ezt a varázslatot, amíg nem rendelkezel az ehhez szükséges tárggyal. Vesztesz további 2 ÉLETERŐ pontot, amiért próbálkozásod nem jár sikerrel.[/p]
+    </text>
+    <addSpell amount="-1" />
+    <add amount="-2" to="stamina" />
+    <next id="239"></next>
+  </p>
+  <p id="423">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz. Valahonnan egy hang azt súgja neked, hogy alkalmazd a NYI varázslatot, mellyel kinyithatod az ajtót. Ez az egyetlen lehetőséged, mivel nem vagy elég erős ahhoz, hogy betörd az ajtót.[/p]
+    </text>
+    <addSpell amount="-2" />
+    <next id="66"></next>
+  </p>
+  <p id="424">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Bezuhansz a verembe, de tested a levegőbe emelkedik, mielőtt földet érnél.[/p]
+    </text>
+    <addSpell amount="-2" />
+    <next id="277" pos="2"></next>
+  </p>
   <p id="425">
     <itemCheck type="item" id="3201">
       <have>
@@ -3045,15 +3520,15 @@
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat. A Goblinok gyorsan rád vetik magukat.[/p]
     </text>
     <addSpell amount="-5" />
-    <next id="424a">Ha megeresztesz egy fohászt Sindlához, hogy védjen meg a Goblinoktól</next>
-    <next id="424b">Ha nem</next>
+    <next id="428a">Ha megeresztesz egy fohászt Sindlához, hogy védjen meg a Goblinoktól</next>
+    <next id="428b">Ha nem</next>
   </p>
   <p id="428b" display="428">
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat. A Goblinok gyorsan rád vetik magukat, és 2 ÉLETERŐ pontnyi sebesülést ejtenek rajtad..[/p]
     </text>
     <add amount="-2" to="stamina" />
-    <next id="217a"></next>
+    <next id="217"></next>
   </p>
   <p id="428a" display="428">
     <text>
@@ -3072,7 +3547,7 @@
         <add amount="-2" to="stamina" />
       </failure>
     </test>
-    <next id="217a"></next>
+    <next id="217"></next>
   </p>
   <!-- 429 -->
   <!-- 430 -->
@@ -3103,8 +3578,20 @@
     <addSpell amount="-5" />
     <next id="123c"></next>
   </p>
-  <!-- 438 -->
-  <!-- 439 -->
+  <p id="438">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot! Varázsolsz, és ekkor egy villám csap ki az ujjadból, majd egyenesen belevágódik a teremtmény mellébe. Az megtántorodik, és holtan terül el a földön.[/p]
+    </text>
+    <addSpell amount="-4" />
+    <next id="186"></next>
+  </p>
+  <p id="439">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat. Bezuhansz a verembe.[/p]
+    </text>
+    <addSpell amount="-5" />
+    <next id="277"></next>
+  </p>
   <p id="440">
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
@@ -3161,7 +3648,7 @@
       </dontHave>
     </itemCheck>
     <loseItem id="3008" dose="1" amount="0" />
-    <next id="217b"></next>
+    <next id="217a"></next>
   </p>
   <!-- 443 -->
   <!-- 444 -->
@@ -3186,7 +3673,14 @@
       </have>
     </itemCheck>
   </p>
-  <!-- 449 -->
+  <p id="449">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Várod varázslat hatását, és máris hallod a belső hangot. A misztikus hang azt súgja, hogy legjobb lesz, ha messze elkerülöd ezt az ajtót és elhagyod a bányát.[/p]
+    </text>
+    <addSpell amount="-2" />
+    <next id="144">Ha megszívleled ezt a tanácsot</next>
+    <next id="268">Ha továbbmész és megpróbálkozol az ajtóval</next>
+  </p>
   <p id="450">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot. Ezt a varázslatot nem alkalmazhatod, mert nincs a birtokodban az ehhez szükséges tárgy. Valójában egyáltalán nem is tudsz varázsolni mindaddig, amíg mindkét kezed meg van kötözve. Emlékezz erre a későbbiek során.[/p]
@@ -3337,7 +3831,14 @@
       </failure>
     </test>
   </p>
-  <!-- 454 -->
+  <p id="454">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és fontolóra veszed mindkét utat. Lelked mélyén egész más dolgok zajlanak le, amikor az ajtón nézel át, és megint más, amikor a szoba felé nézel. Amikor az ajtón nézel át, homlokodat kiveri a verejték, amikor pedig a szoba felé nézel, a bejárati ajtóra, rossz érzésed elmúlik és megnyugszol.[/p]
+    </text>
+    <addSpell amount="-2" />
+    <next id="6">Ha elindulsz az ajtón át</next>
+    <next id="120">Ha visszamész a szobán át</next>
+  </p>
   <p id="455">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és a szoba sötétbe borul. A Szellem így kiált: - Nem menekülhetsz előlem, halandó! - A sötétség leple alatt azonban sikerül kisurrannod a kunyhóból. Elhagyod a falut.[/p]
