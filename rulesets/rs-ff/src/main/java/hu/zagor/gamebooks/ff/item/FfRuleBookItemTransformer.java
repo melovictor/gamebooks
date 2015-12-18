@@ -4,7 +4,6 @@ import hu.zagor.gamebooks.books.contentransforming.item.AbstractBookItemTransfor
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
-
 import org.w3c.dom.Node;
 
 /**
@@ -29,6 +28,7 @@ public class FfRuleBookItemTransformer extends AbstractBookItemTransformer {
 
         item.setDose(extractIntegerAttribute(node, "dose", 1));
         item.setPrice(extractIntegerAttribute(node, "price", 0));
+        item.setGold(extractIntegerAttribute(node, "gold", 0));
 
         item.setSkill(extractIntegerAttribute(node, "addToSkill", 0));
         item.setLuck(extractIntegerAttribute(node, "addToLuck", 0));

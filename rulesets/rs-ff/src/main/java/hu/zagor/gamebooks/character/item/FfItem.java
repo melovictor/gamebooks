@@ -26,6 +26,7 @@ public class FfItem extends Item {
 
     private int dose;
     private int price;
+    private int gold;
 
     private int actions;
     private int damageProtection;
@@ -204,6 +205,14 @@ public class FfItem extends Item {
 
     public void setUsedInPreFight(final boolean usedInPreFight) {
         this.usedInPreFight = usedInPreFight;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public void setGold(final int gold) {
+        this.gold = gold;
     }
 
 }

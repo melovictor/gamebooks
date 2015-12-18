@@ -1,6 +1,8 @@
 package hu.zagor.gamebooks.ff.character;
 
 import hu.zagor.gamebooks.character.Character;
+import hu.zagor.gamebooks.character.item.FfItem;
+import java.util.List;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -150,5 +152,10 @@ public class FfCharacter extends Character {
 
     public void setBaseStaminaDamage(final int baseStaminaDamage) {
         this.baseStaminaDamage = baseStaminaDamage;
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public List<FfItem> getFfEquipment() {
+        return (List) getEquipment();
     }
 }

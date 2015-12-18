@@ -5,7 +5,6 @@ import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttributeType;
-
 import org.springframework.util.Assert;
 import org.w3c.dom.Node;
 
@@ -26,7 +25,8 @@ public class AddTransformer extends AbstractStubTransformer {
         Assert.state(attribute != null, "The attribute 'to' must be present for this node!");
         final int amount = extractIntegerAttribute(node, "amount");
         final ModifyAttributeType type = ModifyAttributeType.valueOf(extractAttribute(node, "type", "change"));
+        final boolean goldOnly = extractBooleanAttribute(node, "goldOnly", false);
 
-        ffData.addModifyAttributes((ModifyAttribute) getBeanFactory().getBean("ffModifyAttribute", attribute, amount, type));
+        ffData.addModifyAttributes((ModifyAttribute) getBeanFactory().getBean("ffModifyAttribute", attribute, amount, type, goldOnly));
     }
 }

@@ -5,16 +5,15 @@ import hu.zagor.gamebooks.books.AbstractTransformerTest;
 import hu.zagor.gamebooks.books.contentransforming.section.XmlTransformationException;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.Item;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.Map;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
+import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.w3c.dom.Document;
@@ -25,21 +24,10 @@ import org.w3c.dom.Document;
  */
 @Test
 public class FfRuleBookItemTransformerTest extends AbstractTransformerTest {
-
-    private IMocksControl mockControl;
-    private FfRuleBookItemTransformer underTest;
-    private Logger logger;
-    private Document document;
-
-    @BeforeClass
-    public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        underTest = new FfRuleBookItemTransformer();
-        init(mockControl);
-        logger = mockControl.createMock(Logger.class);
-        Whitebox.setInternalState(underTest, "logger", logger);
-        document = mockControl.createMock(Document.class);
-    }
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private FfRuleBookItemTransformer underTest;
+    @Inject private Logger logger;
+    @Mock private Document document;
 
     @BeforeMethod
     public void setUpMethod() {
@@ -113,6 +101,7 @@ public class FfRuleBookItemTransformerTest extends AbstractTransformerTest {
 
         expectAttribute("dose");
         expectAttribute("price");
+        expectAttribute("gold");
 
         expectAttribute("addToSkill");
         expectAttribute("addToLuck");

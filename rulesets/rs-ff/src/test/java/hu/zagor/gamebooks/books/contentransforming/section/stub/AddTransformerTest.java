@@ -6,16 +6,16 @@ import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTran
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttributeType;
-
-import org.easymock.EasyMock;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
 
 /**
  * Unit test for class {@link AddTransformer}.
@@ -23,27 +23,21 @@ import org.w3c.dom.Node;
  */
 @Test
 public class AddTransformerTest extends AbstractTransformerTest {
-
-    private AddTransformer underTest;
-    private IMocksControl mockControl;
-    private BeanFactory beanFactory;
-    private BookParagraphDataTransformer parent;
-    private FfParagraphData data;
+    @UnderTest private AddTransformer underTest;
+    @MockControl private IMocksControl mockControl;
+    @Inject private BeanFactory beanFactory;
+    @Mock private BookParagraphDataTransformer parent;
+    @Mock private FfParagraphData data;
     private ModifyAttribute modifyAttrib;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        node = mockControl.createMock(Node.class);
-        parent = mockControl.createMock(BookParagraphDataTransformer.class);
-        data = mockControl.createMock(FfParagraphData.class);
         modifyAttrib = new ModifyAttribute("stamina", 9, ModifyAttributeType.change);
-        nodeMap = mockControl.createMock(NamedNodeMap.class);
-        nodeValue = mockControl.createMock(Node.class);
+    }
 
-        underTest = new AddTransformer();
-        underTest.setBeanFactory(beanFactory);
+    @BeforeMethod
+    public void setUpMethod() {
+        mockControl.reset();
     }
 
     public void testDoTransformShouldAddModifyAttributeElement() {
@@ -51,8 +45,9 @@ public class AddTransformerTest extends AbstractTransformerTest {
         expectAttribute("to", "stamina");
         expectAttribute("amount", "9");
         expectAttribute("type");
+        expectAttribute("goldOnly");
 
-        expect(beanFactory.getBean("ffModifyAttribute", "stamina", 9, ModifyAttributeType.change)).andReturn(modifyAttrib);
+        expect(beanFactory.getBean("ffModifyAttribute", "stamina", 9, ModifyAttributeType.change, false)).andReturn(modifyAttrib);
         data.addModifyAttributes(modifyAttrib);
 
         mockControl.replay();
@@ -69,11 +64,6 @@ public class AddTransformerTest extends AbstractTransformerTest {
         // WHEN
         underTest.doTransform(parent, node, data);
         // THEN throws exception
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     @AfterMethod
