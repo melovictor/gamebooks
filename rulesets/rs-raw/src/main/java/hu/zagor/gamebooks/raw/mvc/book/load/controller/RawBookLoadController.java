@@ -16,11 +16,8 @@ import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.raw.character.RawCharacterPageData;
 import hu.zagor.gamebooks.raw.mvc.book.controller.CharacterPageDisplayingController;
-
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
@@ -31,8 +28,7 @@ import org.springframework.util.Assert;
  */
 public class RawBookLoadController extends GenericBookLoadController implements CharacterPageDisplayingController {
 
-    @Autowired
-    private BookContentInitializer contentInitializer;
+    @Autowired private BookContentInitializer contentInitializer;
 
     private final SectionHandlingService sectionHandlingService;
 
@@ -56,6 +52,7 @@ public class RawBookLoadController extends GenericBookLoadController implements 
         final Character character = (Character) savedGameContainer.getElement(ControllerAddresses.CHARACTER_STORE_KEY);
         final Map<String, Enemy> savedEnemies = (Map<String, Enemy>) savedGameContainer.getElement(ControllerAddresses.ENEMY_STORE_KEY);
         final Map<String, Enemy> enemies = wrapper.getEnemies();
+        enemies.clear();
         final BookInformations info = getInfo();
         final BookItemStorage itemStorage = contentInitializer.getItemStorage(info);
         enemies.putAll(itemStorage.getEnemies());
