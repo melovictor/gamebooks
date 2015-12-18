@@ -132,8 +132,9 @@
   </p>
   <p id="10">
     <text>
-        [p]Végül az ösvény megszakad, és ott állsz az erdő szélén. Egy útjelző táblán ezt a feliratot látod: ALIANNA FELÉ, s az erdőbe mutat.[/p]
+        [p]Végül az ösvény megszakad, és ott állsz az erdő szélén. Egy útjelző táblán ezt a feliratot látod: [span class="ffAttribute"]ALIANNA FELÉ[/span], s az erdőbe mutat.[/p]
     </text>
+    <gatherItem id="4010"/>
     <next id="150">Ha bemész az erdőbe</next>
     <next id="46">Ha visszamész az útkereszteződéshez és északnak folytatod az utadat, mint korábban</next>
   </p>
@@ -305,7 +306,18 @@
     <next id="254"></next>
   </p>
   <!-- 26 -->
-  <!-- 27 -->
+  <p id="27">
+    <text>
+        [p]A híd mellett kicsiny fakunyhó áll. Amint a híd felé közelítesz, egy undorító külsejű púpos teremtmény állja el az utadat. Mély, dörgő hangon így szál hozzád:[/p]
+        [div class="handwritten"]
+          Idegen, ha bárki át akar itt menni,[br /]
+          Annak Vancass kér kérdésére kell megfelelni!
+        [/div]
+        [p]A híd őre metsző pillantást vet rád sötét szemével. Bár fizikailag sokkal gyengébb nálad, mégis az a gyanúd, hogy varázsereje van.[/p]
+    </text>
+    <next id="41">Ha megpróbálsz válaszolni a kérdéseire</next>
+    <next id="38">Ha inkább visszafordulsz és a másik ösvényen mész le a völgybe</next>
+  </p>
   <p id="28">
     <text>
         [p]Bemész a faluba. Ifjú hegylakók haladnak el melletted, és csodálkozva nézik különös öltözékedet. Az ő ruházatuk a tiédhez képest sokkal egyszerűbb, mondhatni durvább szövésű anyagból készült, hosszú hajukat a fejük tetején egy csomóba fogják össze. Minden baj nélkül bejutsz a falu központjába.[/p]
@@ -314,7 +326,13 @@
     <next id="266">Ha egy sörözőt keresel, ahol kissé megpihenhetsz</next>
   </p>
   <!-- 29 -->
-  <!-- 30 -->
+  <p id="30">
+    <text>
+        [p]Hajnalban kelsz, és elhagyod Dhumpust.[/p]
+    </text>
+    <gatherItem id="4101" />
+    <next id="208"></next>
+  </p>
   <p id="31">
     <text>
         [p]Egy napja hagytad el Analandot.[/p]
@@ -362,7 +380,13 @@
     <next id="225">Ha elfogadod az ajánlatát</next>
     <next id="81">Ha nem fogadod el az ajánlatát és továbbmész</next>
   </p>
-  <!-- 34 -->
+  <p id="34">
+    <text>
+        [p]A főúton elérsz a faluba, és megállsz egy kunyhó előtt, ahol a helybéliek egy csoportja eszik-iszik. Éppen egy nagy vita kellős közepén vannak.[/p]
+    </text>
+    <next id="86">Ha bemutatkozol nekik</next>
+    <next id="106">Ha ügyet sem vetsz rájuk és továbbmész</next>
+  </p>
   <!-- 35 -->
   <p id="36">
     <itemCheck type="item" id="4101">
@@ -405,7 +429,52 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 41 -->
+  <p id="41">
+    <text>
+        [p]A púpos kuncogva teszi fel az első kérdését:[/p]
+        [div class="handwritten"]
+          Egy boszorka él fogságban az erdőben.[br /]
+          Mi a neve, hogy hívják, mondd meg nekem!
+        [/div]
+        [p]Mit felelsz neki?[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Melyik névre tippelsz?[/p]
+        </text>
+        <next id="238">Allina?</next>
+        <next id="253">Allanna?</next>
+        <next id="143">Alianna?</next>
+      </success>
+      <failure>
+        <next id="59"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="41">
+    <text>
+        [p]A púpos kuncogva teszi fel az első kérdését:[/p]
+        [div class="handwritten"]
+          Egy boszorka él fogságban az erdőben.[br /]
+          Mi a neve, hogy hívják, mondd meg nekem!
+        [/div]
+        [p]Mit felelsz neki?[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Melyik névre tippelsz?[/p]
+        </text>
+        <next id="238">Allina?</next>
+        <next id="253">Allanna?</next>
+        <next id="143">Alianna?</next>
+      </success>
+      <failure>
+        <next id="59"></next>
+      </failure>
+    </test>
+  </p>
   <p id="42">
     <text>
         [p]Odamész a falu közepén égő tábortűzhöz, és elkiáltod magad. A válasz síri csönd. Mialatt valami életjelre vársz, szorongani kezdesz. De már késő, a lángok feléd csapnak. Hiába küzdesz, elveszted az eszméletedet, és elterülsz a földön.[/p]
@@ -588,7 +657,14 @@
     <next id="46">Ha egyenesen mész tovább</next>
     <next id="10">Ha nyugatnak folytatod az utadat</next>
   </p>
-  <!-- 59 -->
+  <p id="59">
+    <text>
+        [p]A púpos öreg a magasba emeli a kezét, és ekkor éles fájdalom hasít a testedbe. Vesztesz 2 ÉLETERŐ és 1 SZERENCSE pontot. Visszatérsz az elágazáshoz, és elindulsz a másik ösvényen.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="luck" />
+    <next id="38"></next>
+  </p>
   <p id="60">
     <text>
         [p]Az [span class="purchaseItem" data-id="3005" data-amount="1" data-price="10"]ékszer[/span] jó nagy, és igen értékesnek látszik. Patinás foglalatban van. 10 Aranytallér az ára. Ha akarod, vedd meg.[/p]
@@ -794,7 +870,13 @@
     <add amount="-3" to="stamina" />
     <next id="7"></next>
   </p>
-  <!-- 86 -->
+  <p id="86">
+    <text>
+        [p]Megállnak és szemügyre vesznek. Odahívnának magukhoz, de kissé zavarja őket a fegyvered látványa.[/p]
+    </text>
+    <next id="185">Leteheted a fegyveredet, és csatlakozhatsz hozzájuk</next>
+    <next id="106">Vagy megköszönheted a kedvességüket és továbbmehetsz</next>
+  </p>
   <p id="87">
     <text>
         [p]Még egy erszényt is kapsz tőle, melyben [span class="takeItem" data-id="gold" data-amount="7"]7 Aranytallér[/span] lapul. Elégedetten kuncog, majd amikor már éppen távoznál, a válladra teszi a kezét, és megállít. - Alianna azonban csak úgy harc nélkül nem adja oda értékes jutalmát! - mondja, és amikor megfordulsz, látod, hogy a kezével a szék fölött körözve varázsol. A szék recsegni-ropogni kezd, és vadul megmozdul. Fagólemmé változik a szemed előtt, és támadásra készen indul el feléd![/p]
@@ -1421,6 +1503,7 @@
     <text>
         [p]Most pedig elhagyhatod Kristatantit a dombról kanyarogva levezető ösvényen. Egész reggel követed az erdő bütykös fái közt tekergő ösvényt, míg végül elérsz egy tisztásra, ahonnan észak felé egy újabb ösvény indul tovább. Az útkereszteződésnél az egyik útjelző tábla egyenesen Dhumpus felé mutat, a másik nyugatnak, Alianna felé.[/p]
     </text>
+    <gatherItem id="4010"/>
     <next id="54">Ha egyenesen mész tovább</next>
     <next id="154">Ha nyugatnak tartasz</next>
   </p>
@@ -1479,7 +1562,15 @@
     </itemCheck>
     <next id="95"></next>
   </p>
-  <!-- 127 -->
+  <p id="127">
+    <text>
+        [p]Szinte egész délelőtt a kanyargós ösvényen mész a domboldalban. Ha akarod, útközben megállhatsz, és ehetsz az Élelmedből, így 2 ÉLETERŐ pontot nyersz. Dél körül egy elágazáshoz érsz. Az egyik ösvény a dombról a lankás völgybe vezet, majd onnan ismét fel egy másik dombra. A másik ösvény egy kötelekkel megerősített fahídhoz vezet, mely két dombot köt össze.[/p]
+    </text>
+    <canEat />
+    <changeEnemy attribute="stamina" id="2000" set="2" />
+    <next id="27">Ha átmész a hídon</next>
+    <next id="38">Ha a domboldalban húzódó ösvényen mész tovább lefelé</next>
+  </p>
   <p id="128">
     <text>
         [p]Rohansz, ahogy csak bírsz, de hirtelen rájössz, hogy egy ismeretlen bányába futottál be, melynek egyetlen kijárata becsukódott mögötted![/p]
@@ -1753,7 +1844,21 @@
     </test>
     <changeItem attribute="skill" id="1001" change="-1" />
   </p>
-  <!-- 143 -->
+  <p id="143">
+    <text>
+        [p]A púpos mosolyogva így szól:[/p]
+        [div class="handwritten"]
+          Válaszod igaz és helyes![br /]
+          Most pedig felelj a második kérdésre:[br /]
+          Három falun mentél eddig keresztül,[br /]
+          Melyik volt az első, a második és a harmadik?
+        [/div]
+        [p]Mit felelsz neki?[/p]
+    </text>
+    <next id="262">Cantopani, Kristatanti és Dhumpus?</next>
+    <next id="253">Kristatanti, Birritanti és Dhumpus?</next>
+    <next id="59">Cantopani, Gorretatiti és Dhumpus?</next>
+  </p>
   <p id="144">
     <text>
         [p]Ügyelve arra, nehogy a kíváncsi Goblinok észrevegyenek, kimész a bányából. [/p]
@@ -1813,6 +1918,7 @@
     <text>
         [p]Amint mész át az erdőn, csakhamar egy másik ösvény keresztezi az utadat. Mindaddig északnak mész rajta, amíg egy útkereszteződéshez nem érsz. Az az útjelző tábla, amely nyugat felé mutat, Aliannába irányít, az pedig, amelyik egyenesen előremutat, Dhumpusba.[/p]
     </text>
+    <gatherItem id="4010"/>
     <next id="154">Ha Alianna felé mész tovább</next>
     <next id="54">Ha Dhumpusba</next>
   </p>
@@ -2050,7 +2156,22 @@
     <next id="200">Ha akarod, megnézheted, mi zümmög a fák körül</next>
   </p>
   <!-- 184 -->
-  <!-- 185 -->
+  <p id="185">
+    <text>
+        [p]Leülsz, és beszédbe elegyedsz velük. Úgy látod, ők képviselik a falu lakóinak idősebb rétegét, és örülsz, hogy a sors összehozott velük (nyersz 2 SZERENCSE pontot). Étellel kínálnak, ami 1 ponttal növeli az ÉLETERŐDET. Amikor kissé közvetlenebb hangnemre váltotok, viccelődve ,,Kristatanti bohócoknak'' nevezed az ott lakókat, és ez a megjegyzésed elég rosszul sül el, mivel az egyik asztaltársad épp abból a faluból való. Dühösen pattan fel, és magyarázatot kér. Az ő területén vagytok, így nem lenne igazságos a kihívás, ezért inkább kereket oldasz. Mérgesen üldöz végig egész Dhumpuson, de nem ér utol. A falu határában felhagy az üldözéssel, és ekkor tovább folytathatod utadat - de elkeseredetten veszed észre, hogy a fogadóban hagytad a fegyveredet! Fegyver nélkül kell folytatnod az utadat, hacsak nincs egy tartalék fegyver a hátizsákodban. Ha fegyver nélkül vagy kénytelen folytatnod az utadat, 4 ÜGYESSÉG pontot le kell vonnod magadtól, amíg nem találsz helyette másikat.[/p]
+    </text>
+    <itemCheck type="item" id="1002">
+      <have>
+        <loseItem id="1002" />
+      </have>
+      <dontHave>
+        <loseItem id="1001" />
+      </dontHave>
+    </itemCheck>
+    <add amount="1" to="stamina" />
+    <add amount="2" to="luck" />
+    <next id="14"></next>
+  </p>
   <p id="186">
     <text>
         [p]A szobában nincs sok értékes holmi, de a Goblin nyakában egy [span class="takeItem" data-id="3012" data-amount="1"]ezüstkulcsot[/span] találsz, amelybe a 111-es számot vésték. Ha akarod, magadhoz veheted a kulcsot[/p]
@@ -2083,6 +2204,7 @@
         [p]Leülsz, és dadogsz valamit az időről meg a sáros utakról. Az öreg helyeslően bólogat. Végül is a csöndet hangos csevegés váltja fel, és te is beszélgetésbe elegyedsz az öreggel. Megtudod, hogy a falu végében lakik, földműveléssel foglalkozik, és elég sokat tud arról, mi zajlik Kristatantiban. Hallott róla, hogy ellopták a Királyok Koronáját, de nem nagyon érdeklik a világ dolgai. Beszélsz egy keveset magadról, majd Goblin-vicceket kezdtek mesélni egymásnak, és jókat nevettek. Az öreg végül is menni készül. - Két út vezet tovább Kristatantiból, idegen - mondja. - Az egyik Alianna háza mellett visz el - és észnél kell majd lenned, ha otthon van. A másik út felvisz a dombok tetejére, a Lea-Kihez, a nagyok birodalmába. Kísérjen utadon Sindla, a szerencse istene. - Miközben átnyújt neked egy alma formájú gyümölcsöt, melyet maga termesztett, azt mondja: - Ez majd talán segít az utadon. - Ez egy [span class="takeItem" data-id="2002" data-amount="1"]Bomba[/span] nevű igen tápláló gyümölcs, amely megduplázza a nyert ÉLETERŐ pontjaidat, ha normál táplálkozásod után elfogyasztod. Köszönetet mondasz neki, és jó éjszakát kívánva elbúcsúzol tőle.[/p]
         [p]2 SZERENCSE pontot adhatsz magadnak ezért a találkozásért.[/p]
     </text>
+    <gatherItem id="4010"/>
     <add amount="2" to="luck" />
     <next id="211">Most pedig el kell döntened, vajon a fogadóban töltöd-e az éjszakát</next>
     <next id="62">Vagy a falun túli erdőben nézel magadnak szállást</next>
@@ -2213,7 +2335,13 @@
     </fight>
     <next id="265"></next>
   </p>
-  <!-- 208 -->
+  <p id="208">
+    <text>
+        [p]A két ösvény közül az egyiken elhagyhatod a falut.[/p]
+    </text>
+    <next id="147">Az egyik felvezet a dombokra</next>
+    <next id="127">A másik le az erdőbe</next>
+  </p>
   <p id="209">
     <text>
         [p]A folyó menti ösvényen haladsz mindaddig, míg néhány óra múlva egy éles kanyarhoz nem érsz. A kanyarból kitekintve zsúpfedeles kunyhókat látsz, amelyek lobogó tábortüzet vesznek körül, de a falu felől egyetlen hangot sem hallasz.[/p]
@@ -2716,7 +2844,14 @@
     </test>
   </p>
   <!-- 237 -->
-  <!-- 238 -->
+  <p id="238">
+    <text>
+        [p]Válaszod nem helyes. A púpos meglendíti a karját, és ekkor éles fájdalom hasít a testedbe. Vesztesz 2 ÉLETERŐ és 1 SZERENCSE pontot. Visszatérsz az elágazáshoz, és elindulsz a másik ösvényen.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="luck" />
+    <next id="38"></next>
+  </p>
   <p id="239">
     <text>
         [p]Az ajtó a jól olajozott sarokvasakon síri csöndben kinyílik, és egy koromsötét alagútban találod magad.[/p]
@@ -2812,7 +2947,14 @@
   <p id="252">
     <empty />
   </p>
-  <!-- 253 -->
+  <p id="253">
+    <text>
+        [p]Válaszod nem helyes. A púpos meglendíti a karját, és ekkor éles fájdalom hasít a testedbe. Vesztesz 2 ÉLETERŐ és 1 SZERENCSE pontot. Visszatérsz az elágazáshoz, és elindulsz a másik ösvényen.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="luck" />
+    <next id="38"></next>
+  </p>
   <p id="254">
     <text>
         [p]Félve rohansz be az erdőbe, hátha a zűrzavar hangjaira felfigyeltek más teremtmények is. Vagy egy fél órát futsz, amikor megállsz, hogy kifújd magad. Ekkor veszed csak észre, hogy eltévedtél. Merre mész tovább?[/p]
@@ -2997,7 +3139,15 @@
     <loseItem id="1002,1003,2000,2001,3001,3002,3003,3004,3005,3006,3201,3202,3203,3204,3205" amount="99" />
     <next id="131"></next>
   </p>
-  <!-- 262 -->
+  <p id="262">
+    <text>
+        [p]A válaszod helyes. A púpos félreáll, átenged és szerencsés utat kíván. Elindulsz a hídon. Gyorsan szeded a lábad, mert nem tudod, nincs-e még valami a tarsolyában, ami csapdát jelenthet a számodra. De nem: ehelyett olyasmit árul el neked, aminek később majd hasznát veheted. Ravasz, vén teremtés az öreg, és jól meg kell jegyezned a szavait:[/p]
+        [div class="handwritten"]Óvakodj a barlangi démon búvóhelyének útvesztőjétől, ahol még a Medúza tekinteténél is szörnyűségesebb csapdák leselkednek a szerencsétlen utazókra, akik nem a bal oldali átjárókat használják.[/div]
+        [p]Szavain tűnődve ballagsz át a hídon. 2 SZERENCSE pont jár sikeres válaszodért A híd túloldalán az ösvényen felmész a dombtetőre, majd le a völgybe. Késő délutánra jár már.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <next id="220"></next>
+  </p>
   <!-- 263 -->
   <p id="264">
     <text>
