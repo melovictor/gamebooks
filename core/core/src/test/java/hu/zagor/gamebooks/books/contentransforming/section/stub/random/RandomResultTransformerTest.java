@@ -7,7 +7,6 @@ import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.random.RandomCommand;
 import hu.zagor.gamebooks.content.command.random.RandomResult;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.springframework.beans.factory.BeanFactory;
@@ -70,8 +69,8 @@ public class RandomResultTransformerTest extends AbstractTransformerTest {
         underTest.doTransform(parent, node, command, positionCounter);
         // THEN
         Assert.assertSame(command.getResults().get(0), randomResult);
-        Assert.assertEquals(randomResult.getMin(), 1);
-        Assert.assertEquals(randomResult.getMax(), 3);
+        Assert.assertEquals(randomResult.getMin(), "1");
+        Assert.assertEquals(randomResult.getMax(), "3");
         Assert.assertSame(randomResult.getParagraphData(), paragraphData);
     }
 
