@@ -117,12 +117,23 @@ public class Mapper {
 
     private static String getContent(final File xml) throws FileNotFoundException {
         String content = "";
+        System.out.println("Appending content from " + xml.getName());
         final Scanner scanner = new Scanner(xml, "utf-8");
         while (scanner.hasNextLine()) {
             content += scanner.nextLine();
         }
         scanner.close();
+        content += loadSecondHalf(xml);
         return content;
+    }
+
+    private static String loadSecondHalf(final File xml) throws FileNotFoundException {
+        String secondPartContent = "";
+        final File secondPart = new File(xml.getAbsolutePath().replace(".xml", "2.xml"));
+        if (secondPart.exists()) {
+            secondPartContent = getContent(secondPart);
+        }
+        return secondPartContent;
     }
 
 }
