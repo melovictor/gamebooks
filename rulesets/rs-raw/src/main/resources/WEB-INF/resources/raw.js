@@ -313,5 +313,9 @@ $(function() {
 	$("a[href]").on("click", allowNavigation);
 	$("#MainContent a[href]:not([data-no-multi-navigation])").on("click", preventMultipleNavigation);
 	$("#responseText").focus();
-	$("span[title], div[title]").tooltip();
+	$("span[title], div[title]").tooltip({
+		content: function() {
+			return $(this).attr("title");
+		}
+	});
 });
