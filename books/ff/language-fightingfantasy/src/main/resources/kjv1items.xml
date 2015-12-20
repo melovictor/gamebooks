@@ -5,10 +5,14 @@
   <item type="weapon1" id="1001" name="Kard" staminaDamage="2" weaponSubType="edged" forceEquip="true" />
   <item type="weapon1" id="1002" name="Pallos" staminaDamage="2" weaponSubType="edged" addToAttackStrength="1" />
   <item type="weapon1" id="1003" name="Glandragor baltája" staminaDamage="2" weaponSubType="edged" addToAttackStrength="-1" />
+  <item type="weapon1" id="1004" name="Kard" staminaDamage="2" weaponSubType="edged" />
+  <item type="weapon1" id="1005" name="Éles kard" staminaDamage="3" weaponSubType="edged" />
+  <!-- new swords must go into the spring config! -->
 
   <item name="Élelmiszer" id="2000" type="provision" addToStamina="4" />
   <item type="potion" id="2001" name="Bugyabogyó szörp" addToStamina="3" />
-  <item type="provision" name="Bomba" id="2002" />
+  <!-- TODO: NOT IMPLEMENTED YET!!! -->
+  <item type="provision" name="Bomba" id="2002" description="Étkezés után elfogyasztva megduplázza a nyert ÉLETERŐ pontokat" />
 
   <item type="common" id="3001" name="Gyógyfűfőzet" />
   <item type="common" id="3002" name="Bambuszfurulya" />
@@ -29,8 +33,10 @@
   <item type="common" id="3017" name="Ragasztó" />
   <item type="common" id="3018" name="Orrdugasz" />
   <item type="common" id="3019" name="Kavics" />
-  <item type="bracelet" id="3020" name="Kardvívó tudomány Ragnar Karszalagja" addToAttackStrength="2" />
+  <item type="bracelet" id="3020" name="Ragnar Kardvívótudomány-karszalagja" addToAttackStrength="2" description="Ha karddal harcolsz, 2-vel megnöveli a Támadóerődet" />
   <item type="common" id="3021" name="Háló" />
+  <item type="common" id="3022" name="Papi sapka" />
+  <item type="necklace" id="3023" name="Szerencse Talizmán" description="Szerencsepróba során 1-gyel csökkentheted a dobott értéket" />
 
   <item type="common" id="3201" name="Goblinfog" />
   <item type="common" id="3202" name="Majomfog" />
@@ -56,9 +62,13 @@
 
   <item type="shadow" id="4009" name="arrived to night fight from 108" />
   <item type="shadow" id="4010" name="saw Alianna's name" />
+  <item type="shadow" id="4011" name="already been to 201, no need to deduct stamina again" />
+  <item type="shadow" id="4012" name="we know about vik" />
 
   <!-- When removing, also needs to reset damageProtection on character -->
   <item type="curseSickness" id="5001" name="Mananka Szellemének átka" />
   <item type="curseSickness" id="5002" name="Alianna átka" addToSkill="-2" />
+  <!-- every morning -3 to stamina -->
+  <item type="curseSickness" id="5003" name="Pestis" />
 
 </items>

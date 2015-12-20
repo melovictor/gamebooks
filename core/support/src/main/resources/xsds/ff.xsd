@@ -337,8 +337,28 @@
                 <xs:enumeration value="skill" />
                 <xs:enumeration value="stamina" />
                 <xs:enumeration value="luck" />
-                <xs:enumeration value="gold" />
-                <xs:enumeration value="value" />
+                <xs:enumeration value="gold">
+                  <xs:annotation>
+                    <xs:documentation>
+                      This is the total amount of wealth we possess with regard to purchasing items. This is the total of currency and currency-substituting valuables.
+                      Since most of the time there are no currency-substituting items in the game, this is usually the same as "goldpiece".
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+                <xs:enumeration value="goldpiece">
+                  <xs:annotation>
+                    <xs:documentation>
+                      This is the hard currency we have. Only the coins themselves, nothing else. No items that can be sold, no items that are treated the same way as currencies.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
+                <xs:enumeration value="value">
+                  <xs:annotation>
+                    <xs:documentation>
+                      This is the total value of items we have. This includes hard cash, cash-substituting valuables and items that can be sold for a given price.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:enumeration>
                 <xs:enumeration value="fear" />
                 <xs:enumeration value="faith" />
                 <xs:enumeration value="pos" />
