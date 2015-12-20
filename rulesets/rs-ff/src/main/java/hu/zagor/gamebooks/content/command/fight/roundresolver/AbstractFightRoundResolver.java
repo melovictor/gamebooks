@@ -117,10 +117,12 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
                 getLogger().debug("Successful luck test ({}) while receiving damage.", luckTestTotal);
                 staminaMod = battleLuckTestParameters.getLuckyDefenseDeduction();
                 messages.addKey("page.ff.label.fight.luck.defense.success", new Object[]{enemy.getCommonName()});
+                command.setLuckOnDefenseResult(true);
             } else {
                 getLogger().debug("Unsuccessful luck test ({}) while receiving damage.", luckTestTotal);
                 staminaMod = -battleLuckTestParameters.getUnluckyDefenseAddition();
                 messages.addKey("page.ff.label.fight.luck.defense.failure", new Object[]{enemy.getCommonName()});
+                command.setLuckOnDefenseResult(false);
             }
             character.changeStamina(staminaMod);
             character.changeLuck(-1);

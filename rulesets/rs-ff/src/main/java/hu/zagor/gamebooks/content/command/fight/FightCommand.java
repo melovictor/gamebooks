@@ -11,13 +11,11 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
 import hu.zagor.gamebooks.content.command.fight.domain.WeaponReplacementData;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -73,8 +71,9 @@ public class FightCommand extends Command {
     private boolean forceOrder;
     private int maxEnemiesToDisplay = Integer.MAX_VALUE;
 
-    @Autowired
-    private FightCommandMessageList messages;
+    private Boolean luckOnDefenseResult;
+
+    @Autowired private FightCommandMessageList messages;
 
     @Override
     public FightCommand clone() throws CloneNotSupportedException {
@@ -362,6 +361,14 @@ public class FightCommand extends Command {
 
     public void setPreFightAvailable(final boolean preFightAvailable) {
         this.preFightAvailable = preFightAvailable;
+    }
+
+    public Boolean getLuckOnDefenseResult() {
+        return luckOnDefenseResult;
+    }
+
+    public void setLuckOnDefenseResult(final Boolean luckOnDefenseResult) {
+        this.luckOnDefenseResult = luckOnDefenseResult;
     }
 
 }
