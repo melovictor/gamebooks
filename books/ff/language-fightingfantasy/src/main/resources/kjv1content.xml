@@ -212,13 +212,14 @@
   </p>
   <p id="14">
     <text>
-        [p]Amikor kiérsz a faluból, nekivágsz az erdőnek. Nem messze a másik ösvénytől rátalálsz egy védett helyre. Ha letelepszel itt éjszakára, lapozz a 108-ra. Ha éjszaka is folytatod az utadat.[/p]
+        [p]Amikor kiérsz a faluból, nekivágsz az erdőnek. Nem messze a másik ösvénytől rátalálsz egy védett helyre.[/p]
     </text>
-    <next id="49"></next>
+    <next id="108">Ha letelepszel itt éjszakára</next>
+    <next id="49">Ha éjszaka is folytatod az utadat</next>
   </p>
   <p id="14a" display="14">
     <text>
-        [p]Amikor kiérsz a faluból, nekivágsz az erdőnek. Nem messze a másik ösvénytől rátalálsz egy védett helyre. Ha letelepszel itt éjszakára, lapozz a 108-ra. Ha éjszaka is folytatod az utadat.[/p]
+        [p]Amikor kiérsz a faluból, nekivágsz az erdőnek. Nem messze a másik ösvénytől rátalálsz egy védett helyre.[/p]
     </text>
     <itemCheck type="item" id="4101">
       <have>
@@ -230,7 +231,8 @@
       </dontHave>
     </itemCheck>
     <add amount="-3" to="gold" />
-    <next id="49"></next>
+    <next id="108">Ha letelepszel itt éjszakára</next>
+    <next id="49">Ha éjszaka is folytatod az utadat</next>
   </p>
   <p id="15">
     <text>
@@ -304,6 +306,7 @@
     <add amount="3" to="stamina" />
     <add amount="-4" to="gold" />
     <changeItem attribute="stamina" id="2000" set="1" />
+    <changeItem attribute="stamina" id="2002" set="1" />
     <itemCheck type="item" id="4101">
       <have>
         <add amount="2" to="stamina" />
@@ -326,12 +329,14 @@
             2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot nyersz az éjszakai pihenőért.[/p]
         </text>
         <changeItem attribute="stamina" id="2000" set="2" />
+        <changeItem attribute="stamina" id="2002" set="2" />
       </have>
       <dontHave>
         <text>
             1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot nyersz az éjszakai pihenőért.[/p]
         </text>
         <changeItem attribute="stamina" id="2000" set="1" />
+        <changeItem attribute="stamina" id="2002" set="1" />
       </dontHave>
     </itemCheck>
     <add amount="3" to="stamina" />
@@ -706,12 +711,14 @@
             Ha eszel, nyersz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Csakhamar elalszol, de három Svinn durván felébreszt. Karodat lefogva a földhöz szorítanak, majd elvezetnek a falu határában lévő kis kunyhóba.[/p]
         </text>
         <changeItem attribute="stamina" id="2000" set="2" />
+        <changeItem attribute="stamina" id="2002" set="2" />
       </have>
       <dontHave>
         <text>
             Ha eszel, nyersz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Csakhamar elalszol, de három Svinn durván felébreszt. Karodat lefogva a földhöz szorítanak, majd elvezetnek a falu határában lévő kis kunyhóba.[/p]
         </text>
         <changeItem attribute="stamina" id="2000" set="1" />
+        <changeItem attribute="stamina" id="2002" set="1" />
       </dontHave>
     </itemCheck>
     <next id="71"></next>
@@ -734,6 +741,7 @@
     </itemCheck>
     <canEat />
     <changeItem attribute="stamina" id="2000" set="1" />
+    <changeItem attribute="stamina" id="2002" set="1" />
     <next id="71"></next>
   </p>
   <p id="36">
@@ -948,12 +956,14 @@
             Ha eszel, 2 [span class="ffAttribute"]ÉLETERŐ[/span] pont jutalmat kapsz[/p]
         </text>
         <changeItem attribute="stamina" id="2000" set="2" />
+        <changeItem attribute="stamina" id="2002" set="2" />
       </have>
       <dontHave>
         <text>
             Ha eszel, 1 [span class="ffAttribute"]ÉLETERŐ[/span] pont jutalmat kapsz[/p]
         </text>
         <changeItem attribute="stamina" id="2000" set="1" />
+        <changeItem attribute="stamina" id="2002" set="1" />
       </dontHave>
       <after>
         <text>
@@ -977,6 +987,7 @@
     </text>
     <canEat />
     <changeItem attribute="stamina" id="2000" set="2" />
+    <changeItem attribute="stamina" id="2002" set="2" />
     <next id="117">Ha harcba szállsz vele</next>
     <next id="103">Ha megszólítod</next>
   </p>
@@ -1082,6 +1093,7 @@
     <add amount="-3" to="gold" />
     <canEat />
     <changeItem attribute="stamina" id="2000" set="1" />
+    <changeItem attribute="stamina" id="2002" set="1" />
     <loseItem id="4101" />
     <next id="45"></next>
   </p>
@@ -1093,9 +1105,11 @@
     <itemCheck type="item" id="4101">
       <have>
         <changeItem attribute="stamina" id="2000" set="2" />
+        <changeItem attribute="stamina" id="2002" set="2" />
       </have>
       <dontHave>
         <changeItem attribute="stamina" id="2000" set="1" />
+        <changeItem attribute="stamina" id="2002" set="1" />
       </dontHave>
     </itemCheck>
     <add amount="1" to="stamina" />
@@ -1234,12 +1248,14 @@
             (nyersz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot, ha így teszel).[/p]
         </text>
         <changeItem attribute="stamina" id="2000" set="2" />
+        <changeItem attribute="stamina" id="2002" set="2" />
       </have>
       <dontHave>
         <text>
             (nyersz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot, ha így teszel).[/p]
         </text>
         <changeItem attribute="stamina" id="2000" set="1" />
+        <changeItem attribute="stamina" id="2002" set="1" />
       </dontHave>
     </itemCheck>
     <next id="109">Ezt követően vagy lefekhetsz aludni</next>
@@ -1311,6 +1327,7 @@
     <itemCheck type="items" id="4101 and 2000">
       <have>
         <changeItem attribute="stamina" id="2000" set="2" />
+        <changeItem attribute="stamina" id="2002" set="2" />
         <canEat />
         <text>
             Ehetsz az Élelmedből – ha így teszel, nyersz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.
@@ -1761,12 +1778,14 @@
             ekkor 2 [span class="ffAttribute"]ÉLETERŐ[/span] pont jutalomban részesülsz.[/p]
         </text>
         <changeItem attribute="stamina" id="2000" set="2" />
+        <changeItem attribute="stamina" id="2002" set="2" />
       </have>
       <dontHave>
         <text>
             ekkor 1 [span class="ffAttribute"]ÉLETERŐ[/span] pont jutalomban részesülsz.[/p]
         </text>
         <changeItem attribute="stamina" id="2000" set="1" />
+        <changeItem attribute="stamina" id="2002" set="1" />
       </dontHave>
       <after>
         <text>
@@ -5019,12 +5038,14 @@
                 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot nyersz, amennyiben így teszel.
             </text>
             <changeItem attribute="stamina" id="2000" set="2" />
+            <changeItem attribute="stamina" id="2002" set="2" />
           </have>
           <dontHave>
             <text>
                 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot nyersz, amennyiben így teszel.
             </text>
             <changeItem attribute="stamina" id="2000" set="1" />
+            <changeItem attribute="stamina" id="2002" set="1" />
           </dontHave>
         </itemCheck>
       </have>
@@ -7186,7 +7207,7 @@
         <text>
             [p]Vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Hiábavaló az igyekezeted, varázslatod nem fog működni, a Farkaskopó a torkodnak ugrik, és 5 [span class="ffAttribute"]ÉLETERŐ[/span] pont sebesülést ejt rajtad. Meg kell küzdened vele.[/p]
         </text>
-        <addSpell amount="-1"/>
+        <addSpell amount="-1" />
         <add amount="-5" to="stamina" />
         <fight type="single">
           <enemy id="5" />
