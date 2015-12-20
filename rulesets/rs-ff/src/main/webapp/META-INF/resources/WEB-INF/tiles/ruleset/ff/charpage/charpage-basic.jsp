@@ -11,6 +11,7 @@
        <tiles:insertTemplate template="../charpage/ssl3.jsp" />
        <tiles:insertTemplate template="../charpage/gpp.jsp" />
        <tiles:insertTemplate template="../charpage/eq.jsp" />
+       <tiles:insertTemplate template="../charpage/shadow.jsp" />
        <tiles:insertTemplate template="../charpage/map.jsp" />
        <tiles:insertTemplate template="../charpage/notes.jsp" />
     </div>

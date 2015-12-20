@@ -60,6 +60,7 @@
 			</div>
 		</c:if>
 
+        <tiles:insertTemplate template="../charpage/shadow.jsp" />
 		<tiles:insertTemplate template="../charpage/map.jsp" />
 		<tiles:insertTemplate template="../charpage/notes.jsp" />
 	</div>
