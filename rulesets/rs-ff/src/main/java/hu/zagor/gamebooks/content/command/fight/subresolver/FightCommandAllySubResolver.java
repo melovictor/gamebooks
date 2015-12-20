@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.content.command.fight.subresolver;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
+import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
@@ -20,6 +21,7 @@ import hu.zagor.gamebooks.ff.character.FfCharacter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -66,6 +68,19 @@ public class FightCommandAllySubResolver extends AbstractFightCommandSubResolver
         }
         command.getResolvedAllies().clear();
         command.getResolvedAllies().addAll(resolvedAllies);
+
+        if (!command.isOngoing()) {
+            resurrectAllies(command.getAllies(), resolvationData.getEnemies());
+        }
+    }
+
+    private void resurrectAllies(final List<String> allies, final Map<String, Enemy> enemies) {
+        for (final String allyId : allies) {
+            final FfEnemy enemy = (FfEnemy) enemies.get(allyId);
+            if (enemy.isResurrectable()) {
+                enemy.setStamina(enemy.getInitialStamina());
+            }
+        }
     }
 
     @Override
