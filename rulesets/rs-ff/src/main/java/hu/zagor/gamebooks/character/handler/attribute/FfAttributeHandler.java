@@ -70,7 +70,7 @@ public class FfAttributeHandler {
     }
 
     private void handleGoldFieldChange(final FfCharacter character, final int amount) {
-        final GoldItemDeduction deduction = deductionCalculator.calculateDeductibleElements(character, amount);
+        final GoldItemDeduction deduction = deductionCalculator.calculateDeductibleElements(character, -amount);
         character.setGold(character.getGold() - deduction.getGold());
         final List<Item> equipment = character.getEquipment();
         for (final FfItem item : deduction.getItems()) {

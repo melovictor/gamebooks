@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
 /**
  * Default implementation of the {@link DeductionCalculator} interface.
@@ -18,6 +19,7 @@ public class DefaultDeductionCalculator implements DeductionCalculator {
 
     @Override
     public GoldItemDeduction calculateDeductibleElements(final FfCharacter character, final int amount) {
+        Assert.isTrue(amount > 0, "The amount to calculate must be bigger than zero.");
         final List<FfItem> valuables = gatherValuables(character);
         return calculateAmount(valuables, character.getGold(), amount);
     }

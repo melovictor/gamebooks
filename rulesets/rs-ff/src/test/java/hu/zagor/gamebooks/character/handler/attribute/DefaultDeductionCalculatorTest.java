@@ -109,6 +109,24 @@ public class DefaultDeductionCalculatorTest {
         Assert.assertEquals(returned.getGold(), 0);
     }
 
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testCalculateDeductibleElementsWhenAmountIsNegativeShouldThrowException() {
+        // GIVEN
+        mockControl.replay();
+        // WHEN
+        underTest.calculateDeductibleElements(character, -1);
+        // THEN throws exception
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testCalculateDeductibleElementsWhenAmountIsZeroShouldThrowException() {
+        // GIVEN
+        mockControl.replay();
+        // WHEN
+        underTest.calculateDeductibleElements(character, 0);
+        // THEN throws exception
+    }
+
     @AfterMethod
     public void tearDownMethod() {
         mockControl.verify();
