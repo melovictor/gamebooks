@@ -189,6 +189,7 @@
   <bean class="hu.zagor.gamebooks.content.command.changeitem.ChangeItemCommandResolver" id="changeItemCommandResolver" />
 
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckAttributeCommand" id="ffItemCheckAttributeCommand" />
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckGoldPiecesCommand" id="ffItemCheckGoldPiecesCommand" />
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckValueCommand" id="ffItemCheckValueCommand" />
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckPosCommand" id="ffItemCheckPosCommand" />
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckEnemyCommand" id="ffItemCheckEnemyCommand" />
@@ -205,6 +206,7 @@
     <entry key="wisdom" value-ref="ffItemCheckAttributeCommand" />
     <entry key="faith" value-ref="ffItemCheckAttributeCommand" />
     <entry key="gold" value-ref="ffItemCheckAttributeCommand" />
+    <entry key="goldpiece" value-ref="ffItemCheckGoldPiecesCommand" />
     <entry key="value" value-ref="ffItemCheckValueCommand" />
     <entry key="pos" value-ref="ffItemCheckPosCommand" />
   </util:map>
@@ -255,9 +257,21 @@
     <constructor-arg index="1" ref="sorExtraTransformers" />
   </bean>
 
+
+  <util:map id="sorExtraCommandResolvers" key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver">
+    <entry key="hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand">
+      <bean class="hu.zagor.gamebooks.content.command.attributetest.SorAttributeTestCommandResolver" />
+    </entry>
+  </util:map>
+
+  <bean id="sorCommandResolvers" c:mapA-ref="ffCommandResolvers" c:mapB-ref="sorExtraCommandResolvers" factory-method="merge" class="hu.zagor.gamebooks.support.spring.MapMerger" />
+
+
   <util:set id="sorSwordItems" value-type="java.lang.String">
     <value>1001</value>
     <value>1002</value>
+    <value>1004</value>
+    <value>1005</value>
   </util:set>
 
 

@@ -18,7 +18,7 @@ public class ItemCheckAttributeCommand implements ItemCheckStubCommand {
         ParagraphData toResolve;
 
         final String attribute = parent.getCheckType().toString();
-        if (getAttributeValue(resolvationData.getCharacter(), characterHandler, attribute) >= Integer.parseInt(parent.getId())) {
+        if (getAttributeValue((FfCharacter) resolvationData.getCharacter(), characterHandler, attribute) >= Integer.parseInt(parent.getId())) {
             toResolve = parent.getHave();
         } else {
             toResolve = parent.getDontHave();
@@ -33,8 +33,8 @@ public class ItemCheckAttributeCommand implements ItemCheckStubCommand {
      * @param attribute the name of the attribute
      * @return the numeric value of the attribute
      */
-    protected int getAttributeValue(final Character character, final FfCharacterHandler characterHandler, final String attribute) {
-        return characterHandler.getAttributeHandler().resolveValue((FfCharacter) character, attribute);
+    protected int getAttributeValue(final FfCharacter character, final FfCharacterHandler characterHandler, final String attribute) {
+        return characterHandler.getAttributeHandler().resolveValue(character, attribute);
     }
 
 }

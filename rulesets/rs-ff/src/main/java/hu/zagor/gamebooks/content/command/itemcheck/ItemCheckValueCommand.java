@@ -1,10 +1,9 @@
 package hu.zagor.gamebooks.content.command.itemcheck;
 
-import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.Item;
-
+import hu.zagor.gamebooks.ff.character.FfCharacter;
 import java.util.Iterator;
 
 /**
@@ -14,11 +13,11 @@ import java.util.Iterator;
 public class ItemCheckValueCommand extends ItemCheckAttributeCommand {
 
     @Override
-    protected int getAttributeValue(final Character character, final FfCharacterHandler characterHandler, final String attribute) {
+    protected int getAttributeValue(final FfCharacter character, final FfCharacterHandler characterHandler, final String attribute) {
         return super.getAttributeValue(character, characterHandler, "gold") + getItemsValue(character, characterHandler);
     }
 
-    private int getItemsValue(final Character character, final FfCharacterHandler characterHandler) {
+    private int getItemsValue(final FfCharacter character, final FfCharacterHandler characterHandler) {
         int totalValue = 0;
         final Iterator<Item> itemIterator = characterHandler.getItemHandler().getItemIterator(character);
         while (itemIterator.hasNext()) {
