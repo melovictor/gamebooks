@@ -8,6 +8,7 @@ import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.ExpressionResolver;
 import hu.zagor.gamebooks.character.handler.userinteraction.DefaultUserInteractionHandler;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CoreTextResolvingTest;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
@@ -55,11 +56,14 @@ public class RandomCommandResolverATest extends CoreTextResolvingTest {
     @Instance private RandomResult overlappingResult;
     @Instance private ParagraphData overlappingData;
     @Inject private ExpressionResolver expressionResolver;
+    private Paragraph paragraph;
 
     @BeforeClass
     public void setUpClass() {
         info = new BookInformations(9);
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).build();
+        paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(rootData);
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).build();
         overlappingResult.setMin("2");
         overlappingResult.setMax("2");
         overlappingData.setText("<p>Overlapping text.</p>");

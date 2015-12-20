@@ -9,6 +9,7 @@ import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHan
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CommandResolveResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
@@ -20,13 +21,11 @@ import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.IAnswer;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
@@ -44,36 +43,25 @@ import org.testng.annotations.Test;
 @Test
 public class FightCommandResolverShutdownTest {
 
-    @UnderTest
-    private FightCommandResolver underTest;
-    @MockControl
-    private IMocksControl mockControl;
+    @UnderTest private FightCommandResolver underTest;
+    @MockControl private IMocksControl mockControl;
     private FightCommand command;
     private ResolvationData resolvationData;
     private Map<String, FightCommandSubResolver> subResolvers;
-    @Mock
-    private FightCommandSubResolver resolver;
-    @Mock
-    private ParagraphData rootData;
-    @Instance
-    private FfCharacter character;
+    @Mock private FightCommandSubResolver resolver;
+    @Mock private ParagraphData rootData;
+    @Instance private FfCharacter character;
     private BookInformations info;
-    @Instance
-    private FfCharacterHandler characterHandler;
-    @Mock
-    private FfUserInteractionHandler interactionHandler;
-    @Mock
-    private FfCharacterItemHandler itemHandler;
-    @Instance
-    private WeaponReplacementData replacementData;
+    @Instance private FfCharacterHandler characterHandler;
+    @Mock private FfUserInteractionHandler interactionHandler;
+    @Mock private FfCharacterItemHandler itemHandler;
+    @Instance private WeaponReplacementData replacementData;
     private List<String> forceWeapons;
     private FfItem forcedWeapon;
     private FfItem nonForcedWeapon;
     private List<ParagraphData> resolveList;
-    @Instance
-    private FightCommandMessageList messages;
-    @Mock
-    private Iterator<Item> itemIterator;
+    @Instance private FightCommandMessageList messages;
+    @Mock private Iterator<Item> itemIterator;
 
     @BeforeClass
     public void setUpClass() {
@@ -103,7 +91,9 @@ public class FightCommandResolverShutdownTest {
         command.setOngoing(true);
         Whitebox.setInternalState(command, "messages", messages);
 
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).build();
+        final Paragraph paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(rootData);
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).build();
 
         forceWeapons = new ArrayList<>();
         forceWeapons.add("1001");

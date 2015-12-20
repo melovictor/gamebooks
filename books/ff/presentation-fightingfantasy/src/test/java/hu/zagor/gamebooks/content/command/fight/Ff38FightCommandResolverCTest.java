@@ -10,20 +10,19 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.FfParagraphData;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResolver;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.ff.votv.character.Ff38Character;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -84,7 +83,10 @@ public class Ff38FightCommandResolverCTest {
         enemies = new HashMap<>();
         rootData = new ParagraphData();
         rootData.setText("");
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).withEnemies(enemies).build();
+        final Paragraph paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(rootData);
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).withEnemies(enemies)
+            .build();
         messages = mockControl.createMock(FightCommandMessageList.class);
         underTest.setBoneEnemies(Arrays.asList("39"));
         underTest.setUndeadEnemies(Arrays.asList("38", "40"));

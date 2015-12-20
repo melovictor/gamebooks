@@ -8,6 +8,7 @@ import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.ExpressionResolver;
 import hu.zagor.gamebooks.character.handler.userinteraction.DefaultUserInteractionHandler;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CoreTextResolvingTest;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
@@ -41,6 +42,7 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
     private RandomCommand command;
     @Instance private ParagraphData rootData;
     @Mock private Character character;
+    private Paragraph paragraph;
     private BookInformations info;
     @Instance private ParagraphData resultElse;
     @Instance private RandomResult result;
@@ -60,7 +62,9 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
     @BeforeClass
     public void setUpClass() {
         info = new BookInformations(9);
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).build();
+        paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(rootData);
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).build();
         result.setMin("2");
         result.setMax("3");
         result.setParagraphData(resultData);

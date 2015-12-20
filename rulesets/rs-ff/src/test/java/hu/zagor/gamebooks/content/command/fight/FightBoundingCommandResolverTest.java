@@ -3,19 +3,18 @@ package hu.zagor.gamebooks.content.command.fight;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.SilentCapableResolver;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.random.RandomCommand;
 import hu.zagor.gamebooks.content.command.random.RandomCommandResolver;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -47,7 +46,9 @@ public class FightBoundingCommandResolverTest {
     public void setUpClass() {
         mockControl = EasyMock.createStrictControl();
         underTest = new FightBoundingCommandResolver();
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(null).withBookInformations(null).withCharacter(null).build();
+        final Paragraph paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(null);
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(null).withCharacter(null).build();
         randomResolver = mockControl.createMock(RandomCommandResolver.class);
         paragraphList = new ArrayList<>();
         command = new FightCommand();

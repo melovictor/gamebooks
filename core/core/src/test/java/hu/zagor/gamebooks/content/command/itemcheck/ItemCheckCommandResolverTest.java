@@ -5,14 +5,13 @@ import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CommandResolveResult;
 import hu.zagor.gamebooks.domain.BookInformations;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;
@@ -33,6 +32,7 @@ public class ItemCheckCommandResolverTest {
     private ItemCheckCommandResolver underTest;
     private Character character;
     private ParagraphData rootDataElement;
+    private Paragraph paragraph;
     private ParagraphData resolvedData;
     private ParagraphData afterData;
     private Map<CheckType, ItemCheckStubCommand> stubCommands;
@@ -47,6 +47,8 @@ public class ItemCheckCommandResolverTest {
         mockControl = EasyMock.createStrictControl();
         character = new Character();
         rootDataElement = mockControl.createMock(ParagraphData.class);
+        paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(rootDataElement);
         resolvedData = mockControl.createMock(ParagraphData.class);
         afterData = mockControl.createMock(ParagraphData.class);
         itemCheckStubCommand = mockControl.createMock(ItemCheckStubCommand.class);
@@ -54,7 +56,7 @@ public class ItemCheckCommandResolverTest {
         characterHandler = new CharacterHandler();
         info = new BookInformations(11L);
         info.setCharacterHandler(characterHandler);
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootDataElement).withBookInformations(info).withCharacter(character).build();
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).build();
         underTest = new ItemCheckCommandResolver();
     }
 

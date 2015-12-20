@@ -18,6 +18,7 @@ import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.character.item.WeaponSubType;
 import hu.zagor.gamebooks.content.FfParagraphData;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.fight.FightBoundingCommandResolver;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
@@ -95,6 +96,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
     private AutoLoseHandler autoLoseHandler;
     private DiceResultRenderer diceResultRenderer;
     private ExpressionResolver expressionResolver;
+    private Paragraph paragraph;
 
     @BeforeClass
     public void setUpClass() {
@@ -205,7 +207,11 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         info.setResourceDir("ff3");
         info.setCharacterHandler(characterHandler);
 
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).withEnemies(enemies).build();
+        paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(rootData);
+
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).withEnemies(enemies)
+            .build();
     }
 
     @BeforeMethod

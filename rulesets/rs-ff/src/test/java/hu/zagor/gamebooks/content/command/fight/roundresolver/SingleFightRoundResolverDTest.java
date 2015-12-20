@@ -11,6 +11,7 @@ import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.luck.BattleLuckTestParameters;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.FfParagraphData;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.command.FfTextResolvingTest;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
@@ -19,10 +20,8 @@ import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -89,7 +88,9 @@ public class SingleFightRoundResolverDTest extends FfTextResolvingTest {
         info.setCharacterHandler(characterHandler);
         character = mockControl.createMock(FfCharacter.class);
         rootData = new FfParagraphData();
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).build();
+        final Paragraph paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(rootData);
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).build();
     }
 
     private void setUpEnemy() {

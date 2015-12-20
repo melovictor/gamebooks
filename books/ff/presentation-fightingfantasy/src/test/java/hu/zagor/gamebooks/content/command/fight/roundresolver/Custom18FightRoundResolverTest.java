@@ -8,6 +8,7 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
@@ -17,10 +18,8 @@ import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDt
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -61,7 +60,10 @@ public class Custom18FightRoundResolverTest {
         command = mockControl.createMock(FightCommand.class);
         messageList = mockControl.createMock(FightCommandMessageList.class);
         character = mockControl.createMock(FfCharacter.class);
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).withEnemies(enemies).build();
+        final Paragraph paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(rootData);
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).withEnemies(enemies)
+            .build();
         generator = mockControl.createMock(RandomNumberGenerator.class);
         diceResultRenderer = mockControl.createMock(DiceResultRenderer.class);
         superResolver = mockControl.createMock(SingleFightRoundResolver.class);

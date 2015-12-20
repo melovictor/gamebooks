@@ -218,7 +218,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
 
     private String processSectionChange(final Model model, final HttpSessionWrapper wrapper, final Paragraph paragraph, final Integer position) {
         final BookInformations info = getInfo();
-        final ResolvationData resolvationData = DefaultResolvationDataBuilder.builder().withRootData(paragraph.getData()).withBookInformations(info).usingWrapper(wrapper)
+        final ResolvationData resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).usingWrapper(wrapper)
             .withPosition(position).build();
 
         info.getParagraphResolver().resolve(resolvationData, paragraph);

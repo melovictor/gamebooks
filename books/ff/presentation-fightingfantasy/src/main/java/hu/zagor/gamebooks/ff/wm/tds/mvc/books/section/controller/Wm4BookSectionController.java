@@ -14,14 +14,11 @@ import hu.zagor.gamebooks.ff.wm.tds.content.command.attributetest.LyingAttribute
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.Warlock;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.HierarchicalMessageSource;
@@ -38,12 +35,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Wm4BookSectionController extends FfBookSectionController {
 
     private static final String NOMAD_ROBBERY = "69";
-    @Autowired
-    private AttributeTestCommandResolver attribTester;
-    @Autowired
-    private LocaleProvider localeProvider;
-    @Autowired
-    private HierarchicalMessageSource messageSource;
+    @Autowired private AttributeTestCommandResolver attribTester;
+    @Autowired private LocaleProvider localeProvider;
+    @Autowired private HierarchicalMessageSource messageSource;
 
     /**
      * Constructor expecting the {@link SectionHandlingService} bean.
@@ -63,7 +57,7 @@ public class Wm4BookSectionController extends FfBookSectionController {
             final FfCharacter character = (FfCharacter) wrapper.getCharacter();
             final Iterator<Item> itemIterator = getInfo().getCharacterHandler().getItemHandler().getItemIterator(character);
             final LyingAttributeTestCommand command = setUpCommand();
-            final ResolvationData resolvationData = DefaultResolvationDataBuilder.builder().withRootData(paragraph.getData()).withBookInformations(getInfo())
+            final ResolvationData resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(getInfo())
                 .withCharacter(character).build();
             final Locale locale = localeProvider.getLocale();
             final StringBuilder builder = new StringBuilder("[p class='wm4HideNexPar']");

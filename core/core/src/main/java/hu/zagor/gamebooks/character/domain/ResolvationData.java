@@ -6,7 +6,6 @@ import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.player.PlayerUser;
-
 import java.util.Map;
 
 /**
@@ -21,6 +20,7 @@ public class ResolvationData {
     private Map<String, Enemy> enemies;
     private PlayerUser playerUser;
     private Integer position;
+    private String section;
 
     public ParagraphData getRootData() {
         return rootData;
@@ -72,6 +72,14 @@ public class ResolvationData {
 
     public void setPosition(final Integer position) {
         this.position = position;
+    }
+
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(final String section) {
+        this.section = section;
     }
 
 }

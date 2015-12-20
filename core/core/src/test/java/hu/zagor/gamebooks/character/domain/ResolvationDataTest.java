@@ -3,13 +3,12 @@ package hu.zagor.gamebooks.character.domain;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.Enemy;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.player.PlayerUser;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -23,9 +22,11 @@ public class ResolvationDataTest {
     public void testGetInfoShouldReturnInfo() {
         // GIVEN
         final ParagraphData rootData = new ParagraphData();
+        final Paragraph paragraph = new Paragraph("3", null, 15);
+        paragraph.setData(rootData);
         final Character character = new Character();
         final BookInformations info = new BookInformations(1L);
-        final ResolvationData underTest = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character)
+        final ResolvationData underTest = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character)
             .withPosition(9).build();
         // WHEN
         final BookInformations returned = underTest.getInfo();
@@ -37,10 +38,12 @@ public class ResolvationDataTest {
     public void testPositionShouldReturnPosition() {
         // GIVEN
         final ParagraphData rootData = new ParagraphData();
+        final Paragraph paragraph = new Paragraph("3", null, 15);
+        paragraph.setData(rootData);
         final Character character = new Character();
         final BookInformations info = new BookInformations(1L);
         final int position = 9;
-        final ResolvationData underTest = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character)
+        final ResolvationData underTest = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character)
             .withPosition(position).build();
         // WHEN
         final int returned = underTest.getPosition();
@@ -51,10 +54,12 @@ public class ResolvationDataTest {
     public void testGetPlayerUserShouldReturnPlayer() {
         // GIVEN
         final ParagraphData rootData = new ParagraphData();
+        final Paragraph paragraph = new Paragraph("3", null, 15);
+        paragraph.setData(rootData);
         final Character character = new Character();
         final BookInformations info = new BookInformations(1L);
         final PlayerUser player = new PlayerUser(29, "FireFoX", true);
-        final ResolvationData underTest = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character)
+        final ResolvationData underTest = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character)
             .withPlayer(player).build();
         // WHEN
         final PlayerUser returned = underTest.getPlayerUser();
@@ -65,10 +70,12 @@ public class ResolvationDataTest {
     public void testGetEnemiesShouldReturnEnemies() {
         // GIVEN
         final ParagraphData rootData = new ParagraphData();
+        final Paragraph paragraph = new Paragraph("3", null, 15);
+        paragraph.setData(rootData);
         final Character character = new Character();
         final BookInformations info = new BookInformations(1L);
         final Map<String, Enemy> enemies = new HashMap<String, Enemy>();
-        final ResolvationData underTest = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character)
+        final ResolvationData underTest = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character)
             .withEnemies(enemies).build();
         // WHEN
         final Map<String, Enemy> returned = underTest.getEnemies();
@@ -79,10 +86,12 @@ public class ResolvationDataTest {
     public void testGetPlayerUserShouldReturnSetPlayerUser() {
         // GIVEN
         final ParagraphData rootData = new ParagraphData();
+        final Paragraph paragraph = new Paragraph("3", null, 15);
+        paragraph.setData(rootData);
         final Character character = new Character();
         final BookInformations info = new BookInformations(1L);
         final Map<String, Enemy> enemies = new HashMap<String, Enemy>();
-        final ResolvationData underTest = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character)
+        final ResolvationData underTest = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character)
             .withEnemies(enemies).build();
         final PlayerUser playerUser = new PlayerUser(29, "FireFoX", true);
         underTest.setPlayerUser(playerUser);

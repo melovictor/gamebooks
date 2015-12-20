@@ -27,14 +27,11 @@ import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
@@ -58,55 +55,35 @@ public class RawBookSectionControllerPositiveATest {
     private static final String REPLACED_TEXT = "<p>This is some sample text.</p><p>This is text. Extra text. End of text.</p>";
 
     private RawBookSectionController underTest;
-    @MockControl
-    private IMocksControl mockControl;
-    @Mock
-    private SectionHandlingService sectionHandlingService;
-    @Mock
-    private Model model;
-    @Mock
-    private HttpServletRequest request;
-    @Mock
-    private HttpSession session;
-    @Mock
-    private HttpSessionWrapper wrapper;
+    @MockControl private IMocksControl mockControl;
+    @Mock private SectionHandlingService sectionHandlingService;
+    @Mock private Model model;
+    @Mock private HttpServletRequest request;
+    @Mock private HttpSession session;
+    @Mock private HttpSessionWrapper wrapper;
     private Paragraph oldParagraph;
-    @Inject
-    private BeanFactory beanFactory;
-    @Inject
-    private Logger logger;
+    @Inject private BeanFactory beanFactory;
+    @Inject private Logger logger;
     private BookInformations info;
-    @Instance
-    private CharacterHandler characterHandler;
-    @Instance
-    private Character character;
-    @Mock
-    private CharacterParagraphHandler paragraphHandler;
+    @Instance private CharacterHandler characterHandler;
+    @Instance private Character character;
+    @Mock private CharacterParagraphHandler paragraphHandler;
     private PlayerUser player;
-    @Mock
-    private BookParagraphResolver paragraphResolver;
-    @Mock
-    private Paragraph newParagraph;
-    @Mock
-    private RawCharacterPageData charPageData;
-    @Inject
-    private BookContentInitializer contentInitializer;
-    @Instance
-    private ParagraphData data;
+    @Mock private BookParagraphResolver paragraphResolver;
+    @Mock private Paragraph newParagraph;
+    @Mock private RawCharacterPageData charPageData;
+    @Inject private BookContentInitializer contentInitializer;
+    @Instance private ParagraphData data;
     private ChoiceSet choices;
     private Choice choice;
     private ChoiceSet choicesMixed;
     private ChoiceSet choicesExtra;
     private Choice choiceWithExtra;
     private Map<String, Enemy> enemies;
-    @Inject
-    private NavigationRecorder navigationRecorder;
-    @Mock
-    private Map<String, Object> modelMap;
-    @Mock
-    private StaticResourceDescriptor staticResourceDescriptor;
-    @Mock
-    private Set<String> resourceSet;
+    @Inject private NavigationRecorder navigationRecorder;
+    @Mock private Map<String, Object> modelMap;
+    @Mock private StaticResourceDescriptor staticResourceDescriptor;
+    @Mock private Set<String> resourceSet;
 
     @BeforeClass
     public void setUpClass() {
@@ -150,6 +127,7 @@ public class RawBookSectionControllerPositiveATest {
         setUpNewParagraph();
         setUpModel();
         expect(newParagraph.getData()).andReturn(data);
+        expect(newParagraph.getId()).andReturn("3");
         expectWrapper();
         paragraphResolver.resolve(anyObject(ResolvationData.class), eq(newParagraph));
         newParagraph.calculateValidEvents();
@@ -190,6 +168,7 @@ public class RawBookSectionControllerPositiveATest {
         setUpNewParagraph();
         setUpModel();
         expect(newParagraph.getData()).andReturn(data);
+        expect(newParagraph.getId()).andReturn("3");
         expectWrapper();
         paragraphResolver.resolve(anyObject(ResolvationData.class), eq(newParagraph));
         newParagraph.calculateValidEvents();
@@ -217,6 +196,7 @@ public class RawBookSectionControllerPositiveATest {
         setUpNewParagraph();
         setUpModel();
         expect(newParagraph.getData()).andReturn(data);
+        expect(newParagraph.getId()).andReturn("3");
         expectWrapper();
         paragraphResolver.resolve(anyObject(ResolvationData.class), eq(newParagraph));
         newParagraph.calculateValidEvents();

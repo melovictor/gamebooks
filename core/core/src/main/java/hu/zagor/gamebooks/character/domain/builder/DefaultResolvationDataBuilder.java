@@ -3,13 +3,11 @@ package hu.zagor.gamebooks.character.domain.builder;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.Enemy;
-import hu.zagor.gamebooks.content.ParagraphData;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.player.PlayerUser;
-
 import java.util.Map;
-
 import org.springframework.util.Assert;
 
 /**
@@ -28,13 +26,15 @@ public final class DefaultResolvationDataBuilder implements ResolvationDataBuild
      * Creates and returns a builder to use for building a {@link ResolvationData} object.
      * @return the builder
      */
-    public static ResolvationDataBuilderRootData builder() {
+    public static ResolvationDataBuilderParagraph builder() {
         return new DefaultResolvationDataBuilder();
     }
 
     @Override
-    public ResolvationDataBuilderInfo withRootData(final ParagraphData rootData) {
-        data.setRootData(rootData);
+    public ResolvationDataBuilderInfo withParagraph(final Paragraph paragraph) {
+        Assert.notNull(paragraph);
+        data.setRootData(paragraph.getData());
+        data.setSection(paragraph.getId());
         return this;
     }
 

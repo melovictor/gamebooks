@@ -10,21 +10,23 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.FfParagraphData;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CommandResolveResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.ff.votv.character.Ff38Character;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -38,53 +40,39 @@ import org.testng.annotations.Test;
  */
 @Test
 public class Ff38FightCommandResolverATest {
-
-    private IMocksControl mockControl;
-    private Ff38FightCommandResolver underTest;
-    private RandomNumberGenerator generator;
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private Ff38FightCommandResolver underTest;
+    @Inject private RandomNumberGenerator generator;
     private FightCommand command;
     private ResolvationData resolvationData;
-    private ParagraphData rootData;
-    private Ff38Character character;
-    private Map<String, Enemy> enemies;
+    @Instance private ParagraphData rootData;
+    @Mock private Ff38Character character;
+    @Instance private Map<String, Enemy> enemies;
     private BookInformations info;
-    private FfCharacterHandler characterHandler;
-    private FfUserInteractionHandler interactionHandler;
-    private FfCharacterItemHandler itemHandler;
-    private FightCommandMessageList messages;
-    private FfEnemy skull;
+    @Instance private FfCharacterHandler characterHandler;
+    @Mock private FfUserInteractionHandler interactionHandler;
+    @Mock private FfCharacterItemHandler itemHandler;
+    @Mock private FightCommandMessageList messages;
+    @Instance private FfEnemy skull;
     private Iterator<String> iterator;
-    private FfEnemy wolf;
-    private FfEnemy heydrich;
-    private FfEnemy thassalos;
-    private FfParagraphData win;
+    @Instance private FfEnemy wolf;
+    @Instance private FfEnemy heydrich;
+    @Instance private FfEnemy thassalos;
+    @Mock private FfParagraphData win;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        underTest = new Ff38FightCommandResolver();
-        generator = mockControl.createMock(RandomNumberGenerator.class);
-        Whitebox.setInternalState(underTest, "generator", generator);
-
-        character = mockControl.createMock(Ff38Character.class);
         info = new FfBookInformations(3L);
-        characterHandler = new FfCharacterHandler();
-        itemHandler = mockControl.createMock(FfCharacterItemHandler.class);
         characterHandler.setItemHandler(itemHandler);
-        interactionHandler = mockControl.createMock(FfUserInteractionHandler.class);
         characterHandler.setInteractionHandler(interactionHandler);
         info.setCharacterHandler(characterHandler);
-        enemies = new HashMap<>();
-        rootData = new ParagraphData();
         rootData.setText("");
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).withEnemies(enemies).build();
-        messages = mockControl.createMock(FightCommandMessageList.class);
+        final Paragraph paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(rootData);
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).withEnemies(enemies)
+            .build();
         underTest.setBoneEnemies(Arrays.asList("39"));
         underTest.setUndeadEnemies(Arrays.asList("38", "40"));
-        skull = new FfEnemy();
-        wolf = new FfEnemy();
-        heydrich = new FfEnemy();
-        thassalos = new FfEnemy();
         enemies.put("38", skull);
         enemies.put("7", wolf);
         enemies.put("40", heydrich);

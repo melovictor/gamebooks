@@ -11,6 +11,7 @@ import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.character.item.WeaponSubType;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
@@ -19,10 +20,8 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.annotations.AfterMethod;
@@ -72,7 +71,10 @@ public class AllAtOnceFf18FightRoundResolverTest {
         attributeHandler = mockControl.createMock(FfAttributeHandler.class);
         characterHandler.setAttributeHandler(attributeHandler);
         info.setCharacterHandler(characterHandler);
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).withEnemies(enemies).build();
+        final Paragraph paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(rootData);
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).withEnemies(enemies)
+            .build();
         dto = new FightDataDto(enemy, messages, resolvationData, usableWeaponTypes);
         weapon = mockControl.createMock(FfItem.class);
         afterBounding = mockControl.createMock(FightRoundBoundingCommand.class);

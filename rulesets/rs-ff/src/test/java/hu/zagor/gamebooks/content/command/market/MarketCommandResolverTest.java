@@ -11,15 +11,14 @@ import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.FfParagraphData;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.market.domain.MarketElement;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;
@@ -83,7 +82,9 @@ public class MarketCommandResolverTest {
 
         info.setCharacterHandler(characterHandler);
 
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).build();
+        final Paragraph paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(rootData);
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).build();
     }
 
     @BeforeMethod

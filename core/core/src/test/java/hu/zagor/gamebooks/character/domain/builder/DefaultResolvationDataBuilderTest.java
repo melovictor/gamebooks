@@ -4,6 +4,7 @@ import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.Enemy;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
@@ -27,6 +28,7 @@ public class DefaultResolvationDataBuilderTest {
     @MockControl private IMocksControl mockControl;
     @Mock private HttpSessionWrapper wrapper;
     @Mock private ParagraphData rootData;
+    @Mock private Paragraph paragraph;
     @Mock private BookInformations info;
     @Mock private Character character;
     @Mock private Map<String, Enemy> enemies;
@@ -39,12 +41,14 @@ public class DefaultResolvationDataBuilderTest {
 
     public void testBuildWhenUsingWrapperShouldCopyProperFields() {
         // GIVEN
+        expect(paragraph.getData()).andReturn(rootData);
+        expect(paragraph.getId()).andReturn("3");
         expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getEnemies()).andReturn(enemies);
         expect(wrapper.getPlayer()).andReturn(player);
         mockControl.replay();
         // WHEN
-        final ResolvationData returned = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).usingWrapper(wrapper).build();
+        final ResolvationData returned = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).usingWrapper(wrapper).build();
         // THEN
         Assert.assertSame(returned.getCharacter(), character);
         Assert.assertSame(returned.getEnemies(), enemies);

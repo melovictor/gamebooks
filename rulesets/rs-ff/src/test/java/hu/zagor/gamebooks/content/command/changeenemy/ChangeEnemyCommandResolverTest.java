@@ -4,10 +4,9 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-
+import hu.zagor.gamebooks.content.Paragraph;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;
@@ -39,7 +38,9 @@ public class ChangeEnemyCommandResolverTest {
         enemy = new FfEnemy();
         enemies.put("26a", enemy);
         enemy.setSkill(7);
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(null).withBookInformations(null).withCharacter(null).withEnemies(enemies).build();
+        final Paragraph paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(null);
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(null).withCharacter(null).withEnemies(enemies).build();
         command.setId("26a");
         command.setAttribute("skill");
     }

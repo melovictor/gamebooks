@@ -10,6 +10,7 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
@@ -17,11 +18,9 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -70,7 +69,10 @@ public class Ff18FightCommandBasicSubResolverATest {
         interactionHandler = mockControl.createMock(FfUserInteractionHandler.class);
         characterHandler.setInteractionHandler(interactionHandler);
         info.setCharacterHandler(characterHandler);
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).withEnemies(enemies).build();
+        final Paragraph paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(rootData);
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).withEnemies(enemies)
+            .build();
         superResolver = mockControl.createMock(FightCommandBasicSubResolver.class);
         Whitebox.setInternalState(underTest, "superResolver", superResolver);
         itemHandler = mockControl.createMock(FfCharacterItemHandler.class);

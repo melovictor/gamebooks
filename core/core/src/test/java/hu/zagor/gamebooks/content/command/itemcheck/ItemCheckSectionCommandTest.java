@@ -6,9 +6,9 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.paragraph.CharacterParagraphHandler;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.domain.BookInformations;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;
@@ -33,6 +33,7 @@ public class ItemCheckSectionCommandTest {
     private CharacterHandler characterHandler;
     private CharacterParagraphHandler paragraphHandler;
     private BookInformations info;
+    private Paragraph paragraph;
 
     @BeforeClass
     public void setUpClass() {
@@ -44,6 +45,8 @@ public class ItemCheckSectionCommandTest {
         characterHandler.setParagraphHandler(paragraphHandler);
         info = new BookInformations(1L);
         info.setCharacterHandler(characterHandler);
+        paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(data);
     }
 
     @BeforeMethod
@@ -78,7 +81,7 @@ public class ItemCheckSectionCommandTest {
     }
 
     private ResolvationData getResolvationData() {
-        return DefaultResolvationDataBuilder.builder().withRootData(null).withBookInformations(info).withCharacter(character).build();
+        return DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).build();
     }
 
     @AfterMethod

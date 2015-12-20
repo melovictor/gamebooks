@@ -17,6 +17,7 @@ import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHan
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.FfParagraphData;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionComparator;
 import hu.zagor.gamebooks.content.choice.ChoiceSet;
@@ -150,6 +151,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
     private AutoLoseHandler autoLoseHandler;
     private DiceResultRenderer diceResultRenderer;
     private ExpressionResolver expressionResolver;
+    private Paragraph paragraph;
 
     @BeforeClass
     public void setUpClass() {
@@ -312,7 +314,11 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         info.setParagraphResolver(paragraphResolver);
         info.setResourceDir("ff3");
 
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).withEnemies(enemies).build();
+        paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(rootData);
+
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).withEnemies(enemies)
+            .build();
 
         fleeData = new FightFleeData();
         fleeData.setAfterRound(3);

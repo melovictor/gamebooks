@@ -8,6 +8,7 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.FfParagraphData;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.command.CommandResolveResult;
 import hu.zagor.gamebooks.content.command.FfTextResolvingTest;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
@@ -16,11 +17,9 @@ import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.section.FfRuleBookParagraphResolver;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Locale;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -57,6 +56,7 @@ public class AttributeTestCommandResolverTest extends FfTextResolvingTest {
     private AttributeTestCommand command;
     private DiceConfiguration diceConfiguration;
     private DiceResultRenderer diceRenderer;
+    private Paragraph paragraph;
 
     @BeforeClass
     public void setUpClass() {
@@ -82,7 +82,9 @@ public class AttributeTestCommandResolverTest extends FfTextResolvingTest {
 
         characterHandler.setInteractionHandler(interactionHandler);
 
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).build();
+        paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(rootData);
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).build();
 
         underTest = new AttributeTestCommandResolver();
         Whitebox.setInternalState(underTest, "generator", generator);

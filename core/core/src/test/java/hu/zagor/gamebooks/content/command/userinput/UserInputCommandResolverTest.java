@@ -6,14 +6,13 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.DefaultUserInteractionHandler;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CommandResolveResult;
 import hu.zagor.gamebooks.content.command.userinput.domain.UserInputResponse;
 import hu.zagor.gamebooks.content.command.userinput.domain.UserInputTextualResponse;
 import hu.zagor.gamebooks.domain.BookInformations;
-
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;
@@ -50,6 +49,7 @@ public class UserInputCommandResolverTest {
     private BookInformations info;
     private DefaultUserInteractionHandler interactionHandler;
     private UserInputCommand command;
+    private Paragraph paragraph;
 
     @BeforeClass
     public void setUpClass() {
@@ -57,6 +57,8 @@ public class UserInputCommandResolverTest {
         defaultResponse = mockControl.createMock(UserInputResponse.class);
         specificResponse = mockControl.createMock(UserInputResponse.class);
         rootDataElement = mockControl.createMock(ParagraphData.class);
+        paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(rootDataElement);
         specificFastResponseData = mockControl.createMock(ParagraphData.class);
         specificMediumResponseData = mockControl.createMock(ParagraphData.class);
         specificSlowResponseData = mockControl.createMock(ParagraphData.class);
@@ -86,7 +88,7 @@ public class UserInputCommandResolverTest {
     @BeforeMethod
     public void setUpMethod() {
         command = new UserInputCommand();
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootDataElement).withBookInformations(info).withCharacter(character).build();
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).build();
         mockControl.reset();
     }
 
@@ -97,7 +99,7 @@ public class UserInputCommandResolverTest {
         command.addResponse(specificResponse);
         mockControl.replay();
         // WHEN
-        underTest.resolve(command, DefaultResolvationDataBuilder.builder().withRootData(null).withBookInformations(info).withCharacter(character).build());
+        underTest.resolve(command, DefaultResolvationDataBuilder.builder().withParagraph(null).withBookInformations(info).withCharacter(character).build());
         // THEN throws exception
     }
 
@@ -108,7 +110,7 @@ public class UserInputCommandResolverTest {
         command.addResponse(specificResponse);
         mockControl.replay();
         // WHEN
-        underTest.resolve(command, DefaultResolvationDataBuilder.builder().withRootData(rootDataElement).withBookInformations(info).withCharacter(null).build());
+        underTest.resolve(command, DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(null).build());
         // THEN throws exception
     }
 
@@ -119,7 +121,7 @@ public class UserInputCommandResolverTest {
         command.addResponse(specificResponse);
         mockControl.replay();
         // WHEN
-        underTest.resolve(command, DefaultResolvationDataBuilder.builder().withRootData(rootDataElement).withBookInformations(null).withCharacter(character).build());
+        underTest.resolve(command, DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(null).withCharacter(character).build());
         // THEN throws exception
     }
 

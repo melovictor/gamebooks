@@ -23,14 +23,11 @@ import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.raw.character.RawCharacterPageData;
 import hu.zagor.gamebooks.recording.NavigationRecorder;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -148,6 +145,7 @@ public class RawBookSectionControllerPositiveBTest {
         setUpNewParagraph();
         setUpModel();
         expect(newParagraph.getData()).andReturn(data);
+        expect(newParagraph.getId()).andReturn("3");
         expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getEnemies()).andReturn(enemies);
         expect(wrapper.getPlayer()).andReturn(player);

@@ -9,6 +9,7 @@ import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.ItemType;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CommandResolveResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
@@ -17,12 +18,10 @@ import hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResol
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IAnswer;
 import org.easymock.IMocksControl;
@@ -58,6 +57,7 @@ public class FightCommandResolverBuildupTest {
     private FfItem nonForcedWeapon;
     private List<ParagraphData> resolveList;
     private FightCommandMessageList messages;
+    private Paragraph paragraph;
 
     @BeforeClass
     public void setUpClass() {
@@ -100,7 +100,10 @@ public class FightCommandResolverBuildupTest {
         command.setResolver("simpleResolver");
         command.setOngoing(true);
         Whitebox.setInternalState(command, "messages", messages);
-        resolvationData = DefaultResolvationDataBuilder.builder().withRootData(rootData).withBookInformations(info).withCharacter(character).build();
+
+        paragraph = new Paragraph("3", null, 11);
+        paragraph.setData(rootData);
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).build();
 
         forceWeapons = new ArrayList<>();
         forceWeapons.add("1001");
