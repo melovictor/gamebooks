@@ -7,7 +7,7 @@
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.Sorcery.THE_SHAMUTANTI_HILLS" id="sor1Id" />
 
   <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="sor1Info" c:id-ref="sor1Id" p:coverPath="resources/sor1/cover.jpg" p:resourceDir="sor1"
-    p:contentTransformers-ref="defaultSorContentTransformers" p:paragraphResolver-ref="sorRuleBookParagraphResolverL" p:locale-ref="enLocale" p:position="1" p:series-ref="sorTitle"
+    p:contentTransformers-ref="defaultSorContentTransformers" p:paragraphResolver-ref="sor1RuleBookParagraphResolverL" p:locale-ref="enLocale" p:position="1" p:series-ref="sorTitle"
     p:title="The Shamutanti Hills" p:characterHandler-ref="sorCharacterHandler" p:commandResolvers-ref="sorCommandResolvers" p:unfinished="true" p:hidden="true" p:characterBeanId="sorCharacter"
     p:characterPageDataBeanId="sorCharacterPageData">
     <property name="contents">
@@ -17,6 +17,8 @@
       <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="true" />
     </property>
   </bean>
+  
+  <bean class="hu.zagor.gamebooks.ff.section.Sor1RuleBookParagraphResolver" id="sor1RuleBookParagraphResolverL" p:attributeTestDefaultSuccessTypes-ref="ffDefaultAttributeL" />
 
   <bean parent="ffCharacterHandler" id="sorCharacterHandler" class="hu.zagor.gamebooks.character.handler.FfCharacterHandler" p:characterGenerator-ref="sorCharacterGenerator"
     p:canEatEverywhere="false" />

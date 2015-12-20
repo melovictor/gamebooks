@@ -234,45 +234,4 @@
     </property>
   </bean>
 
-
-  <!-- Sorcery changes -->
-
-  <bean class="hu.zagor.gamebooks.ff.section.SorRuleBookParagraphDataTransformer" id="sorRuleBookParagraphDataTransformer" parent="ffRuleBookParagraphDataTransformer" p:stubTransformers-ref="sorStubTransformers" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.DefaultBookParagraphTransformer" id="sorRuleBookParagraphTransformer" p:paragraphDataTransformer-ref="sorRuleBookParagraphDataTransformer" p:validSectionTags-ref="validSectionTagNames" />
-
-  <bean class="hu.zagor.gamebooks.content.SorParagraphData" id="sorParagraphData" scope="prototype" p:choices-ref="defaultChoiceSet" />
-
-  <bean class="hu.zagor.gamebooks.domain.BookContentTransformers" id="defaultSorContentTransformers" c:paragraphTransformer-ref="sorRuleBookParagraphTransformer" c:itemTransformer-ref="ffRuleBookItemTransformer" c:enemyTransformer-ref="ffRuleBookEnemyTransformer" />
-
-  <bean class="hu.zagor.gamebooks.ff.section.SorRuleBookParagraphResolver" id="sorRuleBookParagraphResolverL" p:attributeTestDefaultSuccessTypes-ref="ffDefaultAttributeL" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.AddSpellTransformer" id="addSpellTransformer" />
-
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.SpellTransformer" id="spellTransformer" />
-  <util:map id="sorExtraTransformers">
-    <entry key="spell" value-ref="spellTransformer" />
-    <entry key="addSpell" value-ref="addSpellTransformer" />
-  </util:map>
-  <bean id="sorStubTransformers" factory-bean="stubTransformerMerger" factory-method="merge">
-    <constructor-arg index="0" ref="ffStubTransformers" />
-    <constructor-arg index="1" ref="sorExtraTransformers" />
-  </bean>
-
-
-  <util:map id="sorExtraCommandResolvers" key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver">
-    <entry key="hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand">
-      <bean class="hu.zagor.gamebooks.content.command.attributetest.SorAttributeTestCommandResolver" />
-    </entry>
-  </util:map>
-
-  <bean id="sorCommandResolvers" c:mapA-ref="ffCommandResolvers" c:mapB-ref="sorExtraCommandResolvers" factory-method="merge" class="hu.zagor.gamebooks.support.spring.MapMerger" />
-
-
-  <util:set id="sorSwordItems" value-type="java.lang.String">
-    <value>1001</value>
-    <value>1002</value>
-    <value>1004</value>
-    <value>1005</value>
-  </util:set>
-
-
 </beans>

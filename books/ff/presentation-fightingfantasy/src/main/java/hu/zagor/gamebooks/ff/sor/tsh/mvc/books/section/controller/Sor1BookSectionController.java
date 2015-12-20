@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.ff.sor.tsh.mvc.books.section.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
+import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.Paragraph;
@@ -9,6 +10,7 @@ import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightRoundBoundingCommand;
 import hu.zagor.gamebooks.content.commandlist.CommandList;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
+import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.FfBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
@@ -30,6 +32,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + Sorcery.THE_SHAMUTANTI_HILLS)
 public class Sor1BookSectionController extends FfBookSectionController {
+    private static final int ASSASSIN_STAMINA_FLEE_LIMIT = 6;
+    private static final String ASSASSIN = "17";
     private static final int TROLL_CLUMSINESS_OVER = 4;
     private static final String TROLL_ID = "16";
     private static final int INITIAL_TROLL_SKILL = 8;
@@ -50,7 +54,21 @@ public class Sor1BookSectionController extends FfBookSectionController {
         setUpRagnarsBracelet(request);
         final String fightResult = super.handleFight(model, request, enemyId, luckOnHit, luckOnDefense, luckOnOther);
         stopTrollWeaponPickUpAttempt(request, enemyId);
+        preventKillerFromGivingUp(request, enemyId);
         return fightResult;
+    }
+
+    private void preventKillerFromGivingUp(final HttpServletRequest request, final String enemyId) {
+        if (ASSASSIN.equals(enemyId)) {
+            final HttpSessionWrapper wrapper = getWrapper(request);
+            final FfCharacter character = (FfCharacter) wrapper.getCharacter();
+            final FfAttributeHandler attributeHandler = getInfo().getCharacterHandler().getAttributeHandler();
+            final int stamina = attributeHandler.resolveValue(character, "stamina");
+            if (stamina < ASSASSIN_STAMINA_FLEE_LIMIT) {
+                final FfEnemy enemy = (FfEnemy) wrapper.getEnemies().get(ASSASSIN);
+                enemy.setFleeAtStamina(0);
+            }
+        }
     }
 
     private void stopTrollWeaponPickUpAttempt(final HttpServletRequest request, final String enemyId) {
