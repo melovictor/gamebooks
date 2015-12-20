@@ -10,12 +10,11 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
+import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import hu.zagor.gamebooks.ff.mvc.book.section.service.FfBookPreFightHandlingService;
 import hu.zagor.gamebooks.mvc.book.section.controller.GenericBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,8 +56,8 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
      * @return the book page's name
      */
     @RequestMapping(value = PageAddresses.FIGHT)
-    public String handleFight(final Model model, final HttpServletRequest request, @RequestParam("id") final String enemyId,
-        @RequestParam("hit") final Boolean luckOnHit, @RequestParam("def") final Boolean luckOnDefense, @RequestParam("oth") final Boolean luckOnOther) {
+    public String handleFight(final Model model, final HttpServletRequest request, @RequestParam("id") final String enemyId, @RequestParam("hit") final Boolean luckOnHit,
+        @RequestParam("def") final Boolean luckOnDefense, @RequestParam("oth") final Boolean luckOnOther) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         handleBeforeFight(wrapper, enemyId);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
@@ -66,10 +65,10 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
         final FfUserInteractionHandler interactionHandler = getInfo().getCharacterHandler().getInteractionHandler();
 
         prepareFight(wrapper);
-        interactionHandler.setFightCommand(character, "enemyId", enemyId);
-        interactionHandler.setFightCommand(character, "luckOnHit", luckOnHit.toString());
-        interactionHandler.setFightCommand(character, "luckOnDefense", luckOnDefense.toString());
-        interactionHandler.setFightCommand(character, "luckOnOther", luckOnOther.toString());
+        interactionHandler.setFightCommand(character, LastFightCommand.ENEMY_ID, enemyId);
+        interactionHandler.setFightCommand(character, LastFightCommand.LUCK_ON_HIT, luckOnHit.toString());
+        interactionHandler.setFightCommand(character, LastFightCommand.LUCK_ON_DEFENSE, luckOnDefense.toString());
+        interactionHandler.setFightCommand(character, LastFightCommand.LUCK_ON_OTHER, luckOnOther.toString());
         getInteractionRecorder().prepareFightCommand(wrapper, luckOnHit, luckOnDefense, luckOnOther);
         getInteractionRecorder().recordFightCommand(wrapper, enemyId);
 
