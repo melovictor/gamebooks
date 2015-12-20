@@ -2360,7 +2360,14 @@
     <text>
         [p]Átnyújtod a kést a Csontok Őrzőjének. Gondosan megvizsgálja, elégedetten morog, és egy bőrszütyőt old le a nyakából. Átad egy fényesre csiszolt [span class="takeItem" data-id="3010" data-amount="1"]csontgyűrűt[/span], melybe a teliholdat vésték bele. – Megvéd téged a Farkasemberektől, úgy ám – mondja igen büszkén. – Csupán mutass rá vele a Farkasemberre, és mondd: Egy, két, há', fuss el má'! Ennyi az egész. – Megköszönöd a Csontok Őrzőjének a gyűrűt, búcsút intesz neki, és kilovagolsz a Csontok Völgyéből.[/p]
     </text>
-    <loseItem id="1003" />
+    <itemCheck type="item" id="1003">
+      <have>
+        <loseItem id="1003" />
+      </have>
+      <dontHave>
+        <loseItem id="1002" />
+      </dontHave>
+    </itemCheck>
     <next id="369"></next>
   </p>
   <p id="209">
@@ -4518,7 +4525,7 @@
     <text>
         [p]A kis ember abbahagyja a csonthajigálást, és megkérdi, miért vágsz át a földjén. Azt feleled, fontos küldetésben jársz, és az Elveszett Tavat keresed. – Én csak egy egyszerű ember vagyok, akit a Csontok Őrzőjeként ismernek – mondja szomorú hangon a kis ember. – Válogatok itt a csontok között, és némelyikükből mágikus gyűrűket faragok. Szükségem lenne egy új késre a munkámhoz. Szívesen adnék érte egy gyűrűt cserébe.[/p]
     </text>
-    <itemCheck type="items" id="1003">
+    <itemCheck type="items" id="1003 or 1002">
       <have>
         <next id="208" pos="1">Ha odaadnád a késed egy gyűrűért cserébe</next>
       </have>
