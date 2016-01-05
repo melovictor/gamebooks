@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.security;
 
+import hu.zagor.gamebooks.filters.SessionFilter;
 import hu.zagor.gamebooks.mvc.login.service.LoginResultHandler;
 import hu.zagor.gamebooks.mvc.logout.handler.ResettingLogoutHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,11 +8,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.RememberMeServices;
+import org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter;
 import org.springframework.security.web.util.matcher.RequestMatcher;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 /**
  * Class for setting up the spring security.
@@ -38,7 +42,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
+    public void init(final WebSecurity web) throws Exception {
+        super.init(web);
+    }
+
+    @Override
     protected void configure(final HttpSecurity http) throws Exception {
+        http.addFilterAfter(new CharacterEncodingFilter("UTF-8", true), WebAsyncManagerIntegrationFilter.class);
+        http.addFilterAfter(new SessionFilter(), WebAsyncManagerIntegrationFilter.class);
         http.authorizeRequests().antMatchers("/resources/**").permitAll().anyRequest().authenticated();
         http.csrf().requireCsrfProtectionMatcher(requestMatcher);
         http.formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccessful", true).failureHandler(loginResultHandler).permitAll();

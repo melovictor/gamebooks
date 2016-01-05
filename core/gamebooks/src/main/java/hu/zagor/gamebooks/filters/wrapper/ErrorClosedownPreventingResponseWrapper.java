@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.filters.wrapper;
 
 import java.io.IOException;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 
@@ -54,5 +53,12 @@ public class ErrorClosedownPreventingResponseWrapper extends HttpServletResponse
      */
     public boolean isStatusCode(final int statusCode) {
         return this.statusCode != null && this.statusCode == statusCode;
+    }
+
+    @Override
+    public void setHeader(final String name, final String value) {
+        if (!"Pragma".equals(name)) {
+            super.setHeader(name, value);
+        }
     }
 }
