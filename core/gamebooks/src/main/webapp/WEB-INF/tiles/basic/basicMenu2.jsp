@@ -6,7 +6,6 @@
 <c:url var="settingsUrl" value="/settings" />
 <c:url var="logsUrl" value="/logs" />
 <c:url var="rulesUrl" value="/rules" />
-<c:url var="zagorPingUrl" value="/ping" />
 <tiles:insertTemplate template="../basic/basicMenu.jsp" />
 <div id="pageTitle">
   <ul>
@@ -15,7 +14,6 @@
     <l:menuLink selectedId="rules" url="${rulesUrl}" labelKey="page.title.rules" />
     <c:if test="${user.admin}">
       <l:menuLink selectedId="logs" url="${logsUrl}" labelKey="page.title.logs" />
-      <l:menuLink selectedId="ping" url="${zagorPingUrl}" labelKey="page.title.zagorping" />
     </c:if>
   </ul>
 </div>
