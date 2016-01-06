@@ -39,4 +39,11 @@
   </bean>
 
 
+  <beans profile="dev">
+    <bean class="hu.zagor.gamebooks.support.environment.DevelopmentEnvironmentDetector" />
+  </beans>
+  <beans profile="!dev">
+    <bean class="hu.zagor.gamebooks.support.environment.ProductionEnvironmentDetector" />
+  </beans>
+
 </beans>
