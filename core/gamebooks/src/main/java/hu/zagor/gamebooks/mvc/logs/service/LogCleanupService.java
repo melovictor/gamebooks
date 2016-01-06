@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.mvc.logs.service;
 import hu.zagor.gamebooks.directory.DirectoryProvider;
 import hu.zagor.gamebooks.mvc.logs.service.filter.LogFilenameFilter;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -15,11 +14,11 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
-
 import org.apache.commons.io.IOUtils;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -28,14 +27,12 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component
+@Lazy(false)
 public class LogCleanupService {
 
-    @LogInject
-    private Logger logger;
-    @Autowired
-    private LogFilenameFilter logFilenameFilter;
-    @Autowired
-    private DirectoryProvider directoryProvider;
+    @LogInject private Logger logger;
+    @Autowired private LogFilenameFilter logFilenameFilter;
+    @Autowired private DirectoryProvider directoryProvider;
 
     /**
      * Method that runs every time at 02:10 to zip up all the logs that are older than a week.
