@@ -3,18 +3,11 @@ package hu.zagor.gamebooks.mvc.book.image.controller;
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.controller.ImageHandler;
 import hu.zagor.gamebooks.controller.domain.ImageLocation;
-import hu.zagor.gamebooks.controller.image.ImageLookupStrategyType;
-import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.mvc.book.controller.AbstractRequestWrappingController;
-import hu.zagor.gamebooks.player.PlayerSettings;
-
 import java.io.IOException;
 import java.util.Locale;
-
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -29,8 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/{bookId}/resources/{dir}")
 public class GenericBookImageController extends AbstractRequestWrappingController {
 
-    @Autowired
-    private ImageHandler imageHandler;
+    @Autowired private ImageHandler imageHandler;
 
     /**
      * Handles requests for images.
@@ -49,22 +41,12 @@ public class GenericBookImageController extends AbstractRequestWrappingControlle
         Assert.notNull(file, "The parameter 'file' cannot be null!");
         Assert.isTrue(file.length() > 0, "The parameter 'file' cannot be empty!");
 
-        final HttpSessionWrapper wrapper = getWrapper(request);
-        final ServletOutputStream outputStream = response.getOutputStream();
         final ImageLocation imageLocation = imageHandler.createImageLocation(dir, file, locale);
-
-        final PlayerSettings playerSettings = wrapper.getPlayer().getSettings();
-        final ImageLookupStrategyType imageLookupStrategyType = ImageLookupStrategyType.fromConfig(playerSettings.getImageTypeOrder());
-
-        imageHandler.handleImage(outputStream, imageLocation, imageLookupStrategyType, false);
+        imageHandler.handleImage(request, response, imageLocation, false);
     }
 
     public void setImageHandler(final ImageHandler imageHandler) {
         this.imageHandler = imageHandler;
-    }
-
-    protected ImageHandler getImageHandler() {
-        return imageHandler;
     }
 
 }
