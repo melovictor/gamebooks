@@ -57,7 +57,7 @@ public class UserSettingsController extends LanguageAwareController {
         model.addAttribute("userSettings", userSettings);
         model.addAttribute("player", player);
         model.addAttribute("pageTitle", "page.title");
-        model.addAttribute("recordState", environmentDetector.isRecordState());
+        model.addAttribute("environment", environmentDetector);
         model.addAttribute("nums6", generator6.getThrownResults());
         model.addAttribute("nums10", generator10.getThrownResults());
         return "settings";

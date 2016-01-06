@@ -110,8 +110,7 @@ public class UserSettingsControllerTest {
         expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
         wrapper.setRequest(request);
         expect(wrapper.getPlayer()).andReturn(player);
-        final boolean recordState = false;
-        final Capture<HashMap<String, String>> capturer = setUpModel(recordState);
+        final Capture<HashMap<String, String>> capturer = setUpModel();
         mockControl.replay();
         // WHEN
         final String returned = underTest.displaySettingsScreen(model, request);
@@ -149,8 +148,7 @@ public class UserSettingsControllerTest {
         wrapper.setRequest(request);
         expect(wrapper.getPlayer()).andReturn(player);
 
-        final boolean recordState = true;
-        final Capture<HashMap<String, String>> capturer = setUpModel(recordState);
+        final Capture<HashMap<String, String>> capturer = setUpModel();
         mockControl.replay();
         // WHEN
         final String returned = underTest.saveSettings(model, request);
@@ -163,13 +161,12 @@ public class UserSettingsControllerTest {
         Assert.assertEquals(capturedMap.get("default.setting.3"), "default.setting.3.playervalue");
     }
 
-    private Capture<HashMap<String, String>> setUpModel(final boolean recordState) {
+    private Capture<HashMap<String, String>> setUpModel() {
         final Capture<HashMap<String, String>> capturer = newCapture();
         expect(model.addAttribute(eq("userSettings"), capture(capturer))).andReturn(model);
         expect(model.addAttribute("player", player)).andReturn(model);
         expect(model.addAttribute("pageTitle", "page.title")).andReturn(model);
-        expect(environmentDetector.isRecordState()).andReturn(recordState);
-        expect(model.addAttribute("recordState", recordState)).andReturn(model);
+        expect(model.addAttribute("environment", environmentDetector)).andReturn(model);
         expect(generator6.getThrownResults()).andReturn(list6);
         expect(model.addAttribute("nums6", list6)).andReturn(model);
         expect(generator10.getThrownResults()).andReturn(list10);

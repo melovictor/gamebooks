@@ -3,10 +3,10 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="l" %>
 
 <form method="post" action="<c:url value="/settings" />">
-  <c:if test="${player.admin}">
+  <c:if test="${player.admin && environment.development}">
     <div id="settings-recording">
-        <a href="<c:url value="/settings/recording/1" />">Start recording</a> <c:if test="${recordState}">*</c:if><br />
-        <a href="<c:url value="/settings/recording/0" />">Stop recording</a>  <c:if test="${!recordState}">*</c:if><br />
+        <a href="<c:url value="/settings/recording/1" />">Start recording</a> <c:if test="${environment.recordState}">*</c:if><br />
+        <a href="<c:url value="/settings/recording/0" />">Stop recording</a>  <c:if test="${!environment.recordState}">*</c:if><br />
         <div>
             D6: setUpRandomRolls(Arrays.asList(<c:forEach items="${nums6}" var="next" varStatus="status">
                 ${next}<c:if test="${!status.last}">,</c:if>
