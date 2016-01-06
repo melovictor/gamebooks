@@ -12,7 +12,7 @@ public interface DeductionCalculator {
     /**
      * Calculate the elements to be deducted from the {@link FfCharacter} to add up to the specified amount.
      * @param character the {@link FfCharacter} whose equipment needs to be considered
-     * @param amount the amount to be reached
+     * @param amount the amount to be reached, must be positive
      * @return the bean storing the deduction information
      */
     GoldItemDeduction calculateDeductibleElements(FfCharacter character, int amount);

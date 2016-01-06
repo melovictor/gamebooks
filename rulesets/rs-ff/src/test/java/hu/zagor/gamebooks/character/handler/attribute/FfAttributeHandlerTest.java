@@ -186,7 +186,7 @@ public class FfAttributeHandlerTest {
         final GoldItemDeduction goldItemDeduction = new GoldItemDeduction();
         goldItemDeduction.setGold(3);
         goldItemDeduction.getItems().add(itemB);
-        expect(deductionCalculator.calculateDeductibleElements(character, -8)).andReturn(goldItemDeduction);
+        expect(deductionCalculator.calculateDeductibleElements(character, 8)).andReturn(goldItemDeduction);
         mockControl.replay();
         // WHEN
         underTest.handleModification(character, modAttr);
