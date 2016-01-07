@@ -20,5 +20,27 @@
     <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="sor" p:jsResources="sor" />
     </property>
   </bean>
+  
+  <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor" id="kjv1Help" p:info-ref="kjv1Info"  scope="prototype">
+    <property name="sections">
+      <util:list>
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sor" p:jsp="intro" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sor" p:jsp="beginnerAdvanced" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sor" p:jsp="howToFight" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sor" p:jsp="ssl" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sor" p:jsp="battle" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="battleFlow7" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sor" p:jsp="multiBattleSimple" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="luck" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="luckInBattle" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sor" p:jsp="resetSsl" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sor" p:jsp="resetStamina" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sor" p:jsp="resetLuck" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sor" p:jsp="wizards" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sor" p:jsp="libra" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sor" p:jsp="equipmentPotions" />
+      </util:list>
+    </property>
+  </bean>
 
 </beans>

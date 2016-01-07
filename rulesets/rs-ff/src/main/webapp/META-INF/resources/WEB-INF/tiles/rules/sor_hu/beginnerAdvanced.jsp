@@ -1,0 +1,5 @@
+<%@page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
+<h1>Játék kezdőknek és haladóknak</h1>
+
+<p>A kezdők, ha akarják, egyszerűen, varázslás nélkül kezdhetik a játékot. A karddal és egyéb harci eszközökkel folytatott harc szabályai épp olyanok itt is, mint a többi eddig megjelent Kaland-Játék-Kockázat könyvben, dobókocka segítségével és csak fegyverrel harcolsz a teremtmények ellen.</p>
+<p>A gyakorlottabb játékosok azonban valószínűleg szívesen megpróbálkoznak egy magasabb fokozatú játékkal, melyben a harckészség kissé korlátozottabb, és a leghatásosabb fegyver maga a varázslás tudománya lesz - olyan eszköz, melynél nem létezik hatásosabb! A magasabb fokozatú játékot valójában igen könnyű elsajátítani. A kezdőknek sincs okuk rá, hogy ne próbálkozzanak meg azonnal a varázslással. A varázslatokat azonban a Varázslatok Könyvéből meg kell tanulni, s ez némi időt vesz majd igénybe. Minden játékos maga dönti el, milyen módját választja a játéknak, miképp vág bele a kalandokba.</p>

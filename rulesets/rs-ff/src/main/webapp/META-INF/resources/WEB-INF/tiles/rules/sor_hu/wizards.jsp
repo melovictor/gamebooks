@@ -1,0 +1,6 @@
+<%@page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
+<h1>Varázslók: Miként használjuk a varázslatokat?</h1>
+
+<p>Ha úgy döntesz, varázsló leszel, kalandjaid során lehetőséged nyílik rá, hogy varázsolj. A varázslatok Könyvében, melyet a játékkönyv végén találsz, felsoroljuk mindazokat a varázslatokat, amelyeket Analand varázslói jól ismernek és használnak. Mielőtt kalandjaidba belevágnál, ezeket alaposan át kell tanulmányoznod. Minden varázslatnak egy hárombetűs kódja van, s arra kell törekedned, hogy minél több kódot és a hozzá tartozó varázslatot megtanuld. Minden varázslat csökkenti az <span class="attribute">ÉLETERŐDET</span>, és ha varázsolsz is, azért még külön <span class="attribute">ÉLETERŐ</span> pontot kell fizetned - ez lesz a varázslat <span class="attribute">ÁRA</span>. Az ajánlott alapvarázslatokkal gyorsan előrejutsz, viszont ezek nem igazán gazdaságosak; egy gyakorlott varázsló ezeket a varázslatokat csupán akkor fogja használni, ha ismeretlen varázslatok közül kell választania, vagy ha nem találja meg azt a tárgyat, amellyel egy kevésbé költséges varázslatot el tud végezni.</p>
+<p>A varázslatokra vonatkozó használati utasítást megtalálod a Varázslatok Könyvében.</p>
+<p>EGYET AZONBAN NE FELEDJ! Miután belekezdtél kalandodba, már nem használhatod a Varázslatok Könyvét!</p>

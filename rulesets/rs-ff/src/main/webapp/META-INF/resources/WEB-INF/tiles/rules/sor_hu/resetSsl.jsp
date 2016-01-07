@@ -1,0 +1,4 @@
+<%@page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
+<h2>AZ <span class="attribute">ÜGYESSÉG</span>, <span class="attribute">ÉLETERŐ</span> ÉS <span class="attribute">SZERENCSE</span> VISSZAÁLLÍTÁSA A KEZDETI ÉRTÉKRE</h2>
+
+<p><span class="attribute">ÜGYESSÉG</span> pontjaid nem sokat fognak változni kalandjaid során. Helyenként, egy-egy oldalon olyan utasítást találsz, hogy növeld vagy csökkentsd ÜGYESSÉG pontjaid számát. Egy Varázsfegyver növelheti <span class="attribute">ÜGYESSÉGEDET</span>, de ne feledd, hogy egyszerre csak egy ilyen fegyvert használhatsz! Nem kaphatsz 2 jutalom <span class="attribute">ÜGYESSÉG</span> pontot, amiért két Varázsfegyvered van. <span class="attribute">ÜGYESSÉG</span> pontjaid száma soha nem haladhatja meg a <em>Kezdeti</em> értéket, hacsak erre külön utasítást nem kapsz.</p>
