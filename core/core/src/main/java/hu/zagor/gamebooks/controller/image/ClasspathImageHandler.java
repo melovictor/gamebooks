@@ -67,7 +67,7 @@ public class ClasspathImageHandler implements ImageHandler, BeanFactoryAware {
                     response.addDateHeader("Last-Modified", imageLastModified);
                 }
                 response.addHeader("Content-Type", "image/" + FilenameUtils.getExtension(requestedResource.getFilename()));
-                response.setContentLengthLong(requestedResource.contentLength());
+                response.setContentLength((int) requestedResource.contentLength());
 
                 final ServletOutputStream outputStream = response.getOutputStream();
                 try (InputStream resourceInputStream = requestedResource.getInputStream()) {

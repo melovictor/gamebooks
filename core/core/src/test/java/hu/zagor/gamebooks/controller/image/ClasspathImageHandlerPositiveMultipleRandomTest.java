@@ -103,7 +103,7 @@ public class ClasspathImageHandlerPositiveMultipleRandomTest {
         expect(resource2.getFilename()).andReturn(FILE);
         response.addHeader("Content-Type", "image/jpg");
         expect(resource2.contentLength()).andReturn(7777L);
-        response.setContentLengthLong(7777L);
+        response.setContentLength(7777);
         expect(response.getOutputStream()).andReturn(outputStream);
 
         expect(resource2.getInputStream()).andReturn(inputStream);
@@ -137,7 +137,7 @@ public class ClasspathImageHandlerPositiveMultipleRandomTest {
         expect(resource2.getFilename()).andReturn(FILE);
         response.addHeader("Content-Type", "image/jpg");
         expect(resource2.contentLength()).andReturn(7777L);
-        response.setContentLengthLong(7777L);
+        response.setContentLength(7777);
         expect(response.getOutputStream()).andReturn(outputStream);
         expect(resource2.getInputStream()).andReturn(inputStream);
         expect(ioUtilsWrapper.copy(inputStream, outputStream)).andReturn(1000);

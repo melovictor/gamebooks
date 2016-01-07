@@ -92,7 +92,7 @@ public class ClasspathImageHandlerNonsenseTest {
         expect(resource.getFilename()).andReturn(FILE);
         response.addHeader("Content-Type", "image/jpg");
         expect(resource.contentLength()).andReturn(7777L);
-        response.setContentLengthLong(7777L);
+        response.setContentLength(7777);
         expect(response.getOutputStream()).andReturn(outputStream);
 
         expect(resource.getInputStream()).andReturn(null);
