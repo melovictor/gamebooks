@@ -9,6 +9,7 @@ import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import hu.zagor.gamebooks.support.stream.IoUtilsWrapper;
+import hu.zagor.gamebooks.support.url.LastModificationTimeResolver;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -61,6 +62,7 @@ public class ClasspathImageHandlerPositiveMultipleTest {
     @Mock private HttpSessionWrapper wrapper;
     @Mock private PlayerUser player;
     @Mock private PlayerSettings settings;
+    @Inject private LastModificationTimeResolver lastModificationTimeResolver;
 
     @BeforeClass
     public void setUpClass() {
@@ -173,8 +175,7 @@ public class ClasspathImageHandlerPositiveMultipleTest {
         expect(strategy.getImageResourcesFromDir(DIRLOCALE, COVER)).andReturn(new Resource[]{resource, resource2});
 
         expect(request.getDateHeader("If-Modified-Since")).andReturn(1443L);
-        expect(resource.getFile()).andReturn(file);
-        expect(file.lastModified()).andReturn(999000L);
+        expect(lastModificationTimeResolver.getLastModified(resource)).andReturn(999000L);
         response.setStatus(304);
 
         mockControl.replay();
@@ -201,12 +202,11 @@ public class ClasspathImageHandlerPositiveMultipleTest {
         expect(strategy.getImageResourcesFromDir(DIRLOCALE, COVER)).andReturn(new Resource[]{resource, resource2});
 
         expect(request.getDateHeader("If-Modified-Since")).andReturn(888L);
-        expect(resource.getFile()).andReturn(file);
-        expect(file.lastModified()).andReturn(999000L);
+        expect(lastModificationTimeResolver.getLastModified(resource)).andReturn(999000L);
         response.addDateHeader("Last-Modified", 999000L);
-        expect(file.getName()).andReturn(FILE);
+        expect(resource.getFilename()).andReturn(FILE);
         response.addHeader("Content-Type", "image/jpg");
-        expect(file.length()).andReturn(7777L);
+        expect(resource.contentLength()).andReturn(7777L);
         response.setContentLengthLong(7777L);
         expect(response.getOutputStream()).andReturn(outputStream);
 
@@ -220,18 +220,6 @@ public class ClasspathImageHandlerPositiveMultipleTest {
         Assert.assertTrue(true);
     }
 
-    private void expectResponseHeaderSetupFirst(final Resource selectedResource) throws IOException {
-        expect(request.getDateHeader("If-Modified-Since")).andReturn(-1L);
-        expect(selectedResource.getFile()).andReturn(file);
-        expect(file.lastModified()).andReturn(999L);
-        response.addDateHeader("Last-Modified", 999L);
-        expect(file.getName()).andReturn(FILE);
-        response.addHeader("Content-Type", "image/jpg");
-        expect(file.length()).andReturn(7777L);
-        response.setContentLengthLong(7777L);
-        expect(response.getOutputStream()).andReturn(outputStream);
-    }
-
     public void testCreateImageLocationWhenParametersAreProperlySetShouldCreateProperImageLocation() {
         // GIVEN
         mockControl.replay();
@@ -242,6 +230,17 @@ public class ClasspathImageHandlerPositiveMultipleTest {
         Assert.assertEquals(returned.getFile(), FILE);
         Assert.assertEquals(returned.getLocale(), locale);
         Assert.assertEquals(returned.getDirLocale(), DIR + HU);
+    }
+
+    private void expectResponseHeaderSetupFirst(final Resource selectedResource) throws IOException {
+        expect(request.getDateHeader("If-Modified-Since")).andReturn(-1L);
+        expect(lastModificationTimeResolver.getLastModified(selectedResource)).andReturn(999L);
+        response.addDateHeader("Last-Modified", 999L);
+        expect(selectedResource.getFilename()).andReturn(FILE);
+        response.addHeader("Content-Type", "image/jpg");
+        expect(selectedResource.contentLength()).andReturn(7777L);
+        response.setContentLengthLong(7777L);
+        expect(response.getOutputStream()).andReturn(outputStream);
     }
 
     private void getStrategyType() {

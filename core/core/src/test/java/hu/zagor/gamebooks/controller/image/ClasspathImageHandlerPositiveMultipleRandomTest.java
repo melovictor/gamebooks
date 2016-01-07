@@ -10,9 +10,11 @@ import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import hu.zagor.gamebooks.support.stream.IoUtilsWrapper;
+import hu.zagor.gamebooks.support.url.LastModificationTimeResolver;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -63,6 +65,8 @@ public class ClasspathImageHandlerPositiveMultipleRandomTest {
     @Mock private HttpSessionWrapper wrapper;
     @Mock private PlayerUser player;
     @Mock private PlayerSettings settings;
+    @Mock private URLConnection connection;
+    @Inject private LastModificationTimeResolver lastModificationTimeResolver;
 
     @BeforeClass
     public void setUpClass() {
@@ -94,7 +98,13 @@ public class ClasspathImageHandlerPositiveMultipleRandomTest {
         expect(strategy.getImageResourcesFromDir(DIRLOCALE, FILE)).andReturn(new Resource[]{resource, resource2});
         expect(generator.getRandomNumber(1, 2, -1)).andReturn(new int[]{1});
 
-        expectResponseHeaderSetupRandom(resource2);
+        expect(request.getDateHeader("If-Modified-Since")).andReturn(-1L);
+        expect(lastModificationTimeResolver.getLastModified(resource2)).andReturn(999L);
+        expect(resource2.getFilename()).andReturn(FILE);
+        response.addHeader("Content-Type", "image/jpg");
+        expect(resource2.contentLength()).andReturn(7777L);
+        response.setContentLengthLong(7777L);
+        expect(response.getOutputStream()).andReturn(outputStream);
 
         expect(resource2.getInputStream()).andReturn(inputStream);
         expect(ioUtilsWrapper.copy(inputStream, outputStream)).andReturn(1000);
@@ -122,16 +132,13 @@ public class ClasspathImageHandlerPositiveMultipleRandomTest {
         logger.debug("Looking in language module.");
         expect(strategy.getImageResourcesFromDir(DIRLOCALE, COVER)).andReturn(new Resource[]{resource, resource2});
         expect(generator.getRandomNumber(1, 2, -1)).andReturn(new int[]{1});
-
         expect(request.getDateHeader("If-Modified-Since")).andReturn(1442L);
-        expect(resource2.getFile()).andReturn(file);
-        expect(file.lastModified()).andReturn(999000L);
-        expect(file.getName()).andReturn(FILE);
+        expect(lastModificationTimeResolver.getLastModified(resource2)).andReturn(999000L);
+        expect(resource2.getFilename()).andReturn(FILE);
         response.addHeader("Content-Type", "image/jpg");
-        expect(file.length()).andReturn(7777L);
+        expect(resource2.contentLength()).andReturn(7777L);
         response.setContentLengthLong(7777L);
         expect(response.getOutputStream()).andReturn(outputStream);
-
         expect(resource2.getInputStream()).andReturn(inputStream);
         expect(ioUtilsWrapper.copy(inputStream, outputStream)).andReturn(1000);
         inputStream.close();
@@ -140,29 +147,6 @@ public class ClasspathImageHandlerPositiveMultipleRandomTest {
         underTest.handleImage(request, response, imageLocation, true);
         // THEN
         Assert.assertTrue(true);
-    }
-
-    private void expectResponseHeaderSetupRandom(final Resource selectedResource) throws IOException {
-        expect(request.getDateHeader("If-Modified-Since")).andReturn(-1L);
-        expect(selectedResource.getFile()).andReturn(file);
-        expect(file.lastModified()).andReturn(999L);
-        expect(file.getName()).andReturn(FILE);
-        response.addHeader("Content-Type", "image/jpg");
-        expect(file.length()).andReturn(7777L);
-        response.setContentLengthLong(7777L);
-        expect(response.getOutputStream()).andReturn(outputStream);
-    }
-
-    public void testCreateImageLocationWhenParametersAreProperlySetShouldCreateProperImageLocation() {
-        // GIVEN
-        mockControl.replay();
-        // WHEN
-        final ImageLocation returned = underTest.createImageLocation(DIR, FILE, locale);
-        // THEN
-        Assert.assertEquals(returned.getDir(), DIR);
-        Assert.assertEquals(returned.getFile(), FILE);
-        Assert.assertEquals(returned.getLocale(), locale);
-        Assert.assertEquals(returned.getDirLocale(), DIR + HU);
     }
 
     private void getStrategyType() {

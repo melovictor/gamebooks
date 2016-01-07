@@ -10,6 +10,7 @@ import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import hu.zagor.gamebooks.support.stream.IoUtilsWrapper;
+import hu.zagor.gamebooks.support.url.LastModificationTimeResolver;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -58,6 +59,7 @@ public class ClasspathImageHandlerNegativeTest {
     @Mock private HttpSessionWrapper wrapper;
     @Mock private PlayerUser player;
     @Mock private PlayerSettings settings;
+    @Inject private LastModificationTimeResolver lastModificationTimeResolver;
 
     @BeforeClass
     public void setUpClass() {
@@ -230,12 +232,11 @@ public class ClasspathImageHandlerNegativeTest {
 
     private void expectResponseHeaderSetup() throws IOException {
         expect(request.getDateHeader("If-Modified-Since")).andReturn(-1L);
-        expect(resource.getFile()).andReturn(file);
-        expect(file.lastModified()).andReturn(999L);
+        expect(lastModificationTimeResolver.getLastModified(resource)).andReturn(999L);
         response.addDateHeader("Last-Modified", 999L);
-        expect(file.getName()).andReturn(FILE);
+        expect(resource.getFilename()).andReturn(FILE);
         response.addHeader("Content-Type", "image/jpg");
-        expect(file.length()).andReturn(7777L);
+        expect(resource.contentLength()).andReturn(7777L);
         response.setContentLengthLong(7777L);
         expect(response.getOutputStream()).andReturn(outputStream);
     }

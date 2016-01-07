@@ -7,7 +7,7 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.player.PlayerSettings;
 import hu.zagor.gamebooks.support.logging.LogInject;
 import hu.zagor.gamebooks.support.stream.IoUtilsWrapper;
-import java.io.File;
+import hu.zagor.gamebooks.support.url.LastModificationTimeResolver;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -41,6 +41,7 @@ public class ClasspathImageHandler implements ImageHandler, BeanFactoryAware {
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
     @Autowired private IoUtilsWrapper ioUtilsWrapper;
     private BeanFactory beanFactory;
+    @Autowired private LastModificationTimeResolver lastModificationTimeResolver;
 
     @Override
     public void handleImage(final HttpServletRequest request, final HttpServletResponse response, final ImageLocation imageLocation, final boolean randomImage)
@@ -57,16 +58,16 @@ public class ClasspathImageHandler implements ImageHandler, BeanFactoryAware {
 
         if (requestedResource != null) {
             final long lastStoredState = request.getDateHeader("If-Modified-Since") * 1000;
-            final File file = requestedResource.getFile();
-            final long imageLastModified = file.lastModified();
+
+            final long imageLastModified = lastModificationTimeResolver.getLastModified(requestedResource);
             if (lastStoredState >= imageLastModified && !randomImage) {
                 response.setStatus(NOT_MODIFIED);
             } else {
                 if (!randomImage) {
                     response.addDateHeader("Last-Modified", imageLastModified);
                 }
-                response.addHeader("Content-Type", "image/" + FilenameUtils.getExtension(file.getName()));
-                response.setContentLengthLong(file.length());
+                response.addHeader("Content-Type", "image/" + FilenameUtils.getExtension(requestedResource.getFilename()));
+                response.setContentLengthLong(requestedResource.contentLength());
 
                 final ServletOutputStream outputStream = response.getOutputStream();
                 try (InputStream resourceInputStream = requestedResource.getInputStream()) {
