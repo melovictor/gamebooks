@@ -1,8 +1,7 @@
 package hu.zagor.gamebooks.books.contentstorage.domain;
 
 /**
- * Enum for storing constant values of special paragraph keys that has to be used in the xml descriptors as
- * well.
+ * Enum for storing constant values of special paragraph keys that has to be used in the xml descriptors as well.
  * @author Tamas_Szekeres
  */
 public enum BookParagraphConstants {
@@ -12,7 +11,7 @@ public enum BookParagraphConstants {
 
     private final String value;
 
-    private BookParagraphConstants(final String value) {
+    BookParagraphConstants(final String value) {
         this.value = value;
     }
 

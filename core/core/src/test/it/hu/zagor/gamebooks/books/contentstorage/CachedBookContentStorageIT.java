@@ -6,13 +6,11 @@ import hu.zagor.gamebooks.books.contentstorage.domain.BookItemStorage;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
-
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -111,7 +109,7 @@ public class CachedBookContentStorageIT {
 
         private final byte[] hugeField = new byte[1024 * 1024 * 300];
 
-        public HugeBookEntryStorage() {
+        HugeBookEntryStorage() {
             super(11L, getParagraphs(), null, null);
             getHugeField();
         }

@@ -8,7 +8,6 @@ import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.player.PlayerUser;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.springframework.ui.Model;
@@ -115,7 +114,7 @@ public class GenericSectionHandlingServiceTest {
 
     private class TestSectionHandlingService extends GenericSectionHandlingService {
 
-        public TestSectionHandlingService(final BookContentInitializer contentInitializer) {
+        TestSectionHandlingService(final BookContentInitializer contentInitializer) {
             super(contentInitializer);
         }
 

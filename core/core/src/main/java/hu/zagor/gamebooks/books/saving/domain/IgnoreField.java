@@ -15,6 +15,7 @@ public @interface IgnoreField {
 
     /**
      * The list of field names which can be safely ignored.
+     * @return the list of field names
      */
     String value();
 

@@ -17,7 +17,7 @@ public enum ImageLookupStrategyType {
 
     private String id;
 
-    private ImageLookupStrategyType(final String id) {
+    ImageLookupStrategyType(final String id) {
         this.id = id;
     }
 
