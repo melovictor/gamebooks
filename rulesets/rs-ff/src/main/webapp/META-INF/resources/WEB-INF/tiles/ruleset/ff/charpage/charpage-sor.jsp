@@ -37,8 +37,13 @@
 		<tiles:insertTemplate template="../charpage/gpp.jsp" />
 		<tiles:insertTemplate template="../charpage/eq.jsp" />
 
-        <c:if test="${not empty charEquipments.curses}">
+		<c:if test="${not empty charEquipments.curses}">
 			<div class="sorCursesFullWidth" data-items="true">
+				<c:if test="${!charEquipments.usedLibra && !charEquipments.commandActive}">
+					<button data-libra-curseremoval>
+						<spring:message code="page.ff.curse.reset" />
+					</button>
+				</c:if>
 				<span class="ffMainAttribute"><spring:message code="page.sor.curseSickness" /></span>
 				<c:set var="isFirst" value="true" />
 				<c:forEach var="item" items="${charEquipments.curses}"><c:if test="${!isFirst}">,</c:if>
@@ -48,7 +53,7 @@
 			</div>
 		</c:if>
 
-        <tiles:insertTemplate template="../charpage/shadow.jsp" />
+		<tiles:insertTemplate template="../charpage/shadow.jsp" />
 		<tiles:insertTemplate template="../charpage/map.jsp" />
 		<tiles:insertTemplate template="../charpage/notes.jsp" />
 	</div>

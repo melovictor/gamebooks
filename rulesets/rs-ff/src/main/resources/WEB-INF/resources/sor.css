@@ -15,6 +15,12 @@
   position: relative;
 }
 
+button[data-libra-curseremoval] {
+  float: right;
+  border: 1px solid black;
+  background: rgba(0, 100, 200, 0.3);
+}
+
 button[data-libra-reset] {
   position: absolute;
   right: 0;
@@ -25,7 +31,8 @@ button[data-libra-reset] {
   background: rgba(200, 0, 0, 0.3);
 }
 
-button[data-libra-reset][disabled] {
+button[data-libra-reset][disabled],
+button[data-libra-curseremoval][disabled] {
   background-color: rgba(200, 200, 200, 0.3);
   color: rgb(75, 75, 75);
 }
@@ -34,7 +41,12 @@ button[data-libra-reset][disabled] {
   padding: 5px;
   width: 923px;
   border: 2px black solid;
-  min-height: 100px;
   clear: both;
   margin-top: 20px;
+}
+
+.sorCursesFullWidth.removing [data-item-id] {
+  color: rgb(156, 13, 14);
+  font-weight: bold;
+  cursor: pointer;
 }

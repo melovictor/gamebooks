@@ -19,13 +19,33 @@ var sor = (function() {
 				inventory.loadInventory();
 			}
 		});
-
+	}
+	
+	var doingRemoval = false;
+	function startRemoveCurseSickness() {
+		doingRemoval = true;
+		$(".sorCursesFullWidth").addClass("removing");
+		$("[data-libra-curseremoval]").attr("disabled", "disabled");
+	}
+	function removeSpecificCurseSickness() {
+		doingRemoval = false;
+		$(".sorCursesFullWidth").removeClass("removing");
+		var curseId = $(this).data("itemId");
+		$.ajax({
+			url : "libraRemoveCurse/" + curseId,
+			type : "get",
+			success : function(data) {
+				inventory.loadInventory();
+			}
+		});
 	}
 
 	return {
 		generateCharacter : generateCharacter,
 		changeCaste : changeCaste,
-		resetAttribute : resetAttribute
+		resetAttribute : resetAttribute,
+		startRemoveCurseSickness : startRemoveCurseSickness,
+		removeSpecificCurseSickness : removeSpecificCurseSickness
 	};
 })();
 
@@ -33,6 +53,8 @@ var sor = (function() {
 $(function() {
 	$("[data-generator-button='sor']").on("click", sor.generateCharacter);
 	$("[name='caste']").on("change", sor.changeCaste);
-	$("#gamebookCharacterPageWrapper").on("click", "[data-libra-reset]", sor.resetAttribute);
+	$("#gamebookCharacterPageWrapper")
+		.on("click", "[data-libra-reset]:not([disabled])", sor.resetAttribute)
+		.on("click", "[data-libra-curseremoval]:not([disabled])", sor.startRemoveCurseSickness)
+		.on("click", ".sorCursesFullWidth.removing [data-item-id]", sor.removeSpecificCurseSickness);
 });
-

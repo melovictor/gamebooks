@@ -8,6 +8,7 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -42,6 +43,24 @@ public class SorBookTakeItemController extends FfBookTakeItemController {
             characterHandler.getAttributeHandler().handleModification(character, "stamina", MAX_AMOUNT_OF_ATTRIBUTE_RESET);
             characterHandler.getAttributeHandler().handleModification(character, "skill", MAX_AMOUNT_OF_ATTRIBUTE_RESET);
             characterHandler.getAttributeHandler().handleModification(character, "luck", MAX_AMOUNT_OF_ATTRIBUTE_RESET);
+            itemHandler.removeItem(character, "4103", 1);
+        }
+    }
+
+    /**
+     * Handles Libra removing curses and sicknesses.
+     * @param request the {@link HttpServletRequest} object
+     * @param curseId the id of the curse to remove
+     */
+    @RequestMapping("libraRemoveCurse/{curseId}")
+    @ResponseBody
+    public void handleLibraRemoveCurse(final HttpServletRequest request, @PathVariable("curseId") final String curseId) {
+        final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
+        final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        final SorCharacter character = (SorCharacter) wrapper.getCharacter();
+        if (itemHandler.hasItem(character, "4103")) {
+            itemHandler.removeItem(character, curseId, 1);
             itemHandler.removeItem(character, "4103", 1);
         }
     }
