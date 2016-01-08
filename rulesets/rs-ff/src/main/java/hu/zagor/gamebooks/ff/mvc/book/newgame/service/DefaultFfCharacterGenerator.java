@@ -6,16 +6,14 @@ import hu.zagor.gamebooks.character.handler.character.CharacterGenerator;
 import hu.zagor.gamebooks.domain.BookContentSpecification;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.util.Assert;
 
 /**
- * Default implementation of the {@link FfCharacterGenerator} interface.
+ * Implementation of the {@link CharacterGenerator} interface to be used for the Fighting Fantasy ruleset.
  * @author Tamas_Szekeres
  */
 public class DefaultFfCharacterGenerator implements CharacterGenerator {
@@ -25,11 +23,8 @@ public class DefaultFfCharacterGenerator implements CharacterGenerator {
     private static final int STAMINA_DEFAULT = 12;
     private static final int LUCK_DEFAULT = 6;
 
-    @Autowired
-    @Qualifier("d6RandomGenerator")
-    private RandomNumberGenerator rand;
-    @Autowired
-    private DiceResultRenderer diceRenderer;
+    @Autowired @Qualifier("d6RandomGenerator") private RandomNumberGenerator rand;
+    @Autowired private DiceResultRenderer diceRenderer;
 
     /**
      * Fills the default properties of a character based on the standard rules.

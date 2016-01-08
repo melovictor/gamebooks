@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
- * Default implementation of the {@link FfCharacterGenerator} interface.
+ * Implementation of the {@link CharacterGenerator} interface for the Sorcery ruleset using the default fighting fantasy character generator for common tasks.
  * @author Tamas_Szekeres
  */
 @Component("sorCharacterGenerator")
