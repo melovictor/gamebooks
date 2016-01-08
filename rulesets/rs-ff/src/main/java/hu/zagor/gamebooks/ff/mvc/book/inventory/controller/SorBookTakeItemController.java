@@ -1,11 +1,11 @@
 package hu.zagor.gamebooks.ff.mvc.book.inventory.controller;
 
-import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
-import hu.zagor.gamebooks.character.item.Item;
+import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
+import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,14 +20,11 @@ public class SorBookTakeItemController extends FfBookTakeItemController {
     private static final int REMOVED_HUNGER_MARKER_COUNT = 10;
 
     @Override
-    protected String doHandleConsumeItem(final HttpServletRequest request, final String itemId) {
-        final Character character = getWrapper(request).getCharacter();
-        final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
-        final Item item = itemHandler.getItem(character, itemId);
+    protected void consumeSelectedItem(final FfCharacter character, final FfItem item) {
         if (item.getItemType() == ItemType.provision) {
-            itemHandler.removeItem(character, "4101", REMOVED_HUNGER_MARKER_COUNT);
+            getInfo().getCharacterHandler().getItemHandler().removeItem(character, "4101", REMOVED_HUNGER_MARKER_COUNT);
         }
-        return super.doHandleConsumeItem(request, itemId);
+        super.consumeSelectedItem(character, item);
     }
 
     /**

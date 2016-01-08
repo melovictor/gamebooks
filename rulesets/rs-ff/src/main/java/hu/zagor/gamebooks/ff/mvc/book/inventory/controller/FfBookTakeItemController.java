@@ -133,10 +133,9 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
         final HttpSessionWrapper wrapper = getWrapper(request);
         getItemInteractionRecorder().recordItemConsumption(wrapper, itemId);
         final Paragraph paragraph = wrapper.getParagraph();
-        final Character character = wrapper.getCharacter();
+        final FfCharacter character = (FfCharacter) wrapper.getCharacter();
         final CommandView commandView = character.getCommandView();
-        final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
-        final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
+        final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
         final FfItem item = (FfItem) itemHandler.getItem(character, itemId);
         if (notFighting(commandView)) {
             if (!isFood(item) || canEatHere(paragraph)) {
@@ -144,11 +143,21 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
                 final int consumeTime = item.getActions();
                 if (totalActions >= consumeTime) {
                     paragraph.setActions(totalActions - consumeTime);
-                    itemHandler.consumeItem((FfCharacter) character, itemId, characterHandler.getAttributeHandler());
+                    consumeSelectedItem(character, item);
                 }
             }
         }
         return null;
+    }
+
+    /**
+     * Handles the actual consumption, assuming that it has already been established that the item in question can indeed be consumed.
+     * @param character the {@link FfCharacter} object
+     * @param item the {@link FfItem} to consume
+     */
+    protected void consumeSelectedItem(final FfCharacter character, final FfItem item) {
+        final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
+        characterHandler.getItemHandler().consumeItem(character, item.getId(), characterHandler.getAttributeHandler());
     }
 
     private boolean isFood(final FfItem item) {
