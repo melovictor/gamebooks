@@ -316,6 +316,8 @@ $(function() {
 	$("span[title], div[title]").tooltip({
 		content: function() {
 			return $(this).attr("title");
-		}
+		},
+		show: false,
+		hide: false
 	});
 });
