@@ -108,6 +108,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
 
         handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
         final String bookPage = doHandleSection(model, wrapper, paragraph, position);
+        handleCustomSectionsPost(model, wrapper, sectionIdentifier, paragraph);
         wrapper.setModel(model);
         navigationRecorder.recordNavigation(wrapper, sectionIdentifier, previousParagraph, paragraph);
         addResources(model);
