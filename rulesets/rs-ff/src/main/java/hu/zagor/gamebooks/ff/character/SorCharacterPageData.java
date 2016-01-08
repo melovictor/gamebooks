@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -28,9 +29,12 @@ public class SorCharacterPageData extends FfCharacterPageData {
         super(character, handler);
         usedLibra = character.isUsedLibra();
 
-        for (final Item item : character.getEquipment()) {
+        final Iterator<Item> itemIterator = getItems().iterator();
+        while (itemIterator.hasNext()) {
+            final Item item = itemIterator.next();
             if (item.getItemType() == ItemType.curseSickness) {
                 curses.add(item);
+                itemIterator.remove();
             }
         }
         commandActive = character.getCommandView() != null && character.getCommandView().getViewName().startsWith("sorFight");
