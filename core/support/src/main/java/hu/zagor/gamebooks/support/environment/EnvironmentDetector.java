@@ -32,7 +32,7 @@ public interface EnvironmentDetector {
 
     /**
      * Sets the record state.
-     * @param state the new record state
+     * @param recordState the new record state
      */
     void setRecordState(boolean recordState);
 

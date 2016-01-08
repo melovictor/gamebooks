@@ -25,7 +25,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 
 /**
- * Default implementation of the {@link LoginFacade} interface.
+ * Production implementation of the {@link AbstractLoginFacade} class that goes to the Zagor.hu server to authenticate the user that's trying to log in. Usable both for development
+ * and production use.
  * @author Tamas_Szekeres
  */
 public class ZagorLoginFacade extends AbstractLoginFacade {

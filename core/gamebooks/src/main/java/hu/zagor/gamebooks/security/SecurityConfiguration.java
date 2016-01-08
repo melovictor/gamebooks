@@ -34,7 +34,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     /**
      * Configures the global spring security.
      * @param auth the {@link AuthenticationManagerBuilder} object
-     * @throws Exception when error occurs with the authentication
      */
     @Autowired
     public void configureGlobalSecurity(final AuthenticationManagerBuilder auth) {

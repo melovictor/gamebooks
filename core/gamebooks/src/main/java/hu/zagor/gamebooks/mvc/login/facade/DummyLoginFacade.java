@@ -12,7 +12,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 
 /**
- * Default implementation of the {@link LoginFacade} interface.
+ * Dummy implementation of the {@link AbstractLoginFacade} class that uses a local list of possible users to log in with, without needing any network connection. It doesn't uses
+ * password authentication, only checks for the username. For development use only!
  * @author Tamas_Szekeres
  */
 public class DummyLoginFacade extends AbstractLoginFacade {

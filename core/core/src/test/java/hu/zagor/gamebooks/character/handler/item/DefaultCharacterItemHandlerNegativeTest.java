@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- * Unit test for class {@link AbstractCharacterItemHandler}.
+ * Unit test for class {@link DefaultCharacterItemHandler}.
  * @author Tamas_Szekeres
  */
 @Test

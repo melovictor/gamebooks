@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.character.handler.userinteraction;
 
 import hu.zagor.gamebooks.character.Character;
-
 import org.springframework.util.Assert;
 
 /**
@@ -75,7 +74,7 @@ public class DefaultUserInteractionHandler implements UserInteractionHandler {
 
     /**
      * Gets whether random is set at the moment.
-     * @param character the {@link FfCharacter}
+     * @param character the {@link Character}
      * @return true if the state is active, false otherwise
      */
     public boolean hasRandomResult(final Character character) {
@@ -84,7 +83,7 @@ public class DefaultUserInteractionHandler implements UserInteractionHandler {
 
     /**
      * Sets the state for random to "true".
-     * @param character the {@link FfCharacter}
+     * @param character the {@link Character}
      */
     public void setRandomResult(final Character character) {
         setInteractionState(character, RANDOM, "true");

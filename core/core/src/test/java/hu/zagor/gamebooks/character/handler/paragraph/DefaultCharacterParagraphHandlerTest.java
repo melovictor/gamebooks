@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- * Unit test for class {@link AbstractCharacterParagraphHandler}.
+ * Unit test for class {@link DefaultCharacterParagraphHandler}.
  * @author Tamas_Szekeres
  */
 @Test
