@@ -1,6 +1,8 @@
 package hu.zagor.gamebooks.ff.character;
 
 import hu.zagor.gamebooks.character.item.Item;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +13,26 @@ import org.springframework.stereotype.Component;
 @Component("sorCharacter")
 @Scope("prototype")
 public class SorCharacter extends FfCharacter {
+    private final Map<String, String> characterSaveLocations = new HashMap<>();
     private boolean wizard;
+
+    /**
+     * Default constructor that prefills the save locations.
+     */
+    public SorCharacter() {
+        characterSaveLocations.put("1-1", null); // 407
+        characterSaveLocations.put("1-195", null); // 229
+
+        characterSaveLocations.put("2-110", null); // 518
+        characterSaveLocations.put("2-254", null); // 500
+
+        characterSaveLocations.put("3-48", null); // 733
+        characterSaveLocations.put("3-136", null); // 579
+
+        characterSaveLocations.put("4-539", null); // 30
+        characterSaveLocations.put("4-102", null); // 75
+        characterSaveLocations.put("4-321", null); // 631
+    }
 
     public boolean isWizard() {
         return wizard;
@@ -53,5 +74,9 @@ public class SorCharacter extends FfCharacter {
 
     public boolean isUsedLibra() {
         return !hasItem("4103");
+    }
+
+    public Map<String, String> getCharacterSaveLocations() {
+        return characterSaveLocations;
     }
 }

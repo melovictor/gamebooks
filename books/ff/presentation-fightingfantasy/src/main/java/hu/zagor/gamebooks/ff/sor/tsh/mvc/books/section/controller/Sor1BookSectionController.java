@@ -12,7 +12,7 @@ import hu.zagor.gamebooks.content.commandlist.CommandList;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.FfBookSectionController;
+import hu.zagor.gamebooks.ff.mvc.book.section.controller.SorBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.Sorcery;
 import java.util.Set;
@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + Sorcery.THE_SHAMUTANTI_HILLS)
-public class Sor1BookSectionController extends FfBookSectionController {
+public class Sor1BookSectionController extends SorBookSectionController {
     private static final int ASSASSIN_STAMINA_FLEE_LIMIT = 6;
     private static final String ASSASSIN = "17";
     private static final int TROLL_CLUMSINESS_OVER = 4;
