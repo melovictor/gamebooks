@@ -11,10 +11,9 @@ var sor = (function() {
 	}
 	
 	function resetAttribute() {
-		var attrib = $(this).data("libraReset");
 		$("[data-libra-reset]").attr("disabled", "disabled");
 		$.ajax({
-			url : "libraReset/" + attrib,
+			url : "libraReset",
 			type : "get",
 			success : function(data) {
 				inventory.loadInventory();

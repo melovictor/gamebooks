@@ -8,7 +8,6 @@ import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
 import javax.servlet.http.HttpServletRequest;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -34,17 +33,18 @@ public class SorBookTakeItemController extends FfBookTakeItemController {
     /**
      * Handles Libra-supported attribute reset.
      * @param request the {@link HttpServletRequest} object
-     * @param attrib the attribute to reset
      */
-    @RequestMapping("libraReset/{attrib}")
+    @RequestMapping("libraReset")
     @ResponseBody
-    public void handleLibraReset(final HttpServletRequest request, @PathVariable("attrib") final String attrib) {
+    public void handleLibraReset(final HttpServletRequest request) {
         final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
         final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
         final HttpSessionWrapper wrapper = getWrapper(request);
         final SorCharacter character = (SorCharacter) wrapper.getCharacter();
         if (itemHandler.hasItem(character, "4103")) {
-            characterHandler.getAttributeHandler().handleModification(character, attrib, MAX_AMOUNT_OF_ATTRIBUTE_RESET);
+            characterHandler.getAttributeHandler().handleModification(character, "stamina", MAX_AMOUNT_OF_ATTRIBUTE_RESET);
+            characterHandler.getAttributeHandler().handleModification(character, "skill", MAX_AMOUNT_OF_ATTRIBUTE_RESET);
+            characterHandler.getAttributeHandler().handleModification(character, "luck", MAX_AMOUNT_OF_ATTRIBUTE_RESET);
             itemHandler.removeItem(character, "4103", 1);
         }
     }
