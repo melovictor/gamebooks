@@ -287,7 +287,7 @@
   <p id="20">
     <text>
         [p]A teremtmény egy Bűzös Borz, amely felemeli a farkát, amikor kardot rántasz, és szörnyű bűzt bocsát ki alóla. A bűz iszonyatos, de harcolnod kell![/p]
-        [p]A szag olyan elviselhetetlen, hogy amikor dobókockával eldöntöd a Támadóerődet, minden alkalommal 2 pontot azonnal le kell vonnod belőle.[/p]
+        [p]A szag olyan elviselhetetlen, hogy amikor dobókockával meghatározod a Támadóerődet, minden alkalommal 2 pontot azonnal le kell vonnod belőle.[/p]
     </text>
     <gatherItem id="4008" amount="2" />
     <fight type="single">
@@ -546,7 +546,7 @@
     </itemCheck>
     <itemCheck type="item" id="3013">
       <have>
-        <next id="191" pos="20">Ha a borrinszőrt csizmát</next>
+        <next id="191" pos="20">Ha a borrinbőr csizmát</next>
       </have>
     </itemCheck>
     <itemCheck type="item" id="3014">
@@ -807,19 +807,34 @@
         [/div]
         [p]Mit felelsz neki?[/p]
     </text>
-    <test against="luck">
-      <success>
-        <text>
-            [p]Melyik névre tippelsz?[/p]
-        </text>
-        <next id="238">Allina?</next>
-        <next id="253">Allanna?</next>
-        <next id="143">Alianna?</next>
-      </success>
-      <failure>
-        <next id="59"></next>
-      </failure>
-    </test>
+    <itemCheck type="item" id="4010">
+      <have>
+        <userInput type="text">
+          <label>Hogy hívják a boszorkát?</label>
+          <result text="Alianna">
+            <next id="143"></next>
+          </result>
+          <resultElse>
+            <next id="238"></next>
+          </resultElse>
+        </userInput>
+      </have>
+      <dontHave>
+        <test against="luck">
+          <success>
+            <text>
+                [p]Melyik névre tippelsz?[/p]
+            </text>
+            <next id="238">Allina?</next>
+            <next id="253">Allanna?</next>
+            <next id="143">Alianna?</next>
+          </success>
+          <failure>
+            <next id="59"></next>
+          </failure>
+        </test>
+      </dontHave>
+    </itemCheck>
   </p>
   <p id="42">
     <text>
@@ -832,7 +847,7 @@
   </p>
   <p id="44">
     <text>
-        [p]A kulcs elfordul a zárban, kinyitod a ketrec ajtaját, és kiszabadítod az öregasszonyt. – Hálával tartozom neked ezért, idegen – mondja. – És Alianna nem marad adósod![/p]
+        [p]A kulcs elfordul a zárban, kinyitod a ketrec ajtaját, és kiszabadítod a nőt. – Hálával tartozom neked ezért, idegen – mondja. – És Alianna nem marad adósod![/p]
     </text>
     <next id="248">Ha egy mágikus tárgyat kérsz tőle</next>
     <next id="122">Ha inkább olyasmit, ami segítségedre lesz harc közben</next>
@@ -1492,7 +1507,7 @@
   </p>
   <p id="90">
     <text>
-        [p]A lakat kinyílik, és az öregasszony kipattan a ketrecből. – Hálásan köszönöm, hogy kiszabadítottál, idegen! – mondja. – Alianna ezért megjutalmaz![/p]
+        [p]A lakat kinyílik, és a nő kipattan a ketrecből. – Hálásan köszönöm, hogy kiszabadítottál, idegen! – mondja. – Alianna ezért megjutalmaz![/p]
     </text>
     <next id="248">Ha jutalomként egy varázstárgyat kérsz tőle</next>
     <next id="122">Ha segítségét kéred a harcban</next>
@@ -1843,7 +1858,7 @@
   </p>
   <p id="110">
     <text>
-        [p]Nagy nehezen feltápászkodsz a földről, és körülnézel. Egy kis fénysugár szivárog be a verembe, és egy alagutat veszel észre amely a szabadba vezet. Kezed egy szőrös tárgyon pihen, amelyről először azt hiszed, valamiféle teremtmény lehet, de most a fényben látod, hogy az nem más, mint egy poros csizma. Nem messze tőle ott fekszik szőrmebéléses párja is, amit magaddal vihetsz, ha akarsz. Mindkét [span class="takeItem" data-id="3013" data-amount="1"]Borrinszőr csizmát[/span] elteszed a hátizsákodba. Végigmész az alagúton, és a bányából kijutsz az erdőbe, a dombról levezető ösvényhez.[/p]
+        [p]Nagy nehezen feltápászkodsz a földről, és körülnézel. Egy kis fénysugár szivárog be a verembe, és egy alagutat veszel észre amely a szabadba vezet. Kezed egy szőrös tárgyon pihen, amelyről először azt hiszed, valamiféle teremtmény lehet, de most a fényben látod, hogy az nem más, mint egy poros csizma. Nem messze tőle ott fekszik szőrmebéléses párja is, amit magaddal vihetsz, ha akarsz. Mindkét [span class="takeItem" data-id="3013" data-amount="1"]Borrinbőr csizmát[/span] elteszed a hátizsákodba. Végigmész az alagúton, és a bányából kijutsz az erdőbe, a dombról levezető ösvényhez.[/p]
     </text>
     <next id="202"></next>
   </p>
@@ -1887,7 +1902,7 @@
   </p>
   <p id="114a" display="114">
     <text>
-        [p]– Négy évvel ezelőtt egy hozzád hasonló vándor tévedt be hozzám – kezdi. – Ez a csirkefogó lapozgatta a könyvemet, és amikor rajtakaptam és felelősségre vontam, elszelelt, és magával vitte ezt az oldalt. Valami varázsló lehetett, olyan gyorsan tűnt el a szemem elől. Megpróbáltam az öregítő varázslatot alkalmazni ellene, de nem használt. – Megköszöni, hogy visszahoztad neki a lapot, és felajánlja, hogy megmutatja, mennyire hasznos az. Ha akarod, megszabadít a Minimó kellemetlen társaságától. Az öregasszony elenged, és ismét folytathatod az utadat.[/p]
+        [p]– Négy évvel ezelőtt egy hozzád hasonló vándor tévedt be hozzám – kezdi. – Ez a csirkefogó lapozgatta a könyvemet, és amikor rajtakaptam és felelősségre vontam, elszelelt, és magával vitte ezt az oldalt. Valami varázsló lehetett, olyan gyorsan tűnt el a szemem elől. Megpróbáltam az öregítő varázslatot alkalmazni ellene, de nem használt. – Megköszöni, hogy visszahoztad neki a lapot, és felajánlja, hogy megmutatja, mennyire hasznos az. A nő megszabadít a Minimó kellemetlen társaságától, majd elenged, és ismét folytathatod az utadat.[/p]
     </text>
     <next id="232"></next>
   </p>
@@ -2828,7 +2843,7 @@
   </p>
   <p id="150">
     <text>
-        [p]Amint mész át az erdőn, csakhamar egy másik ösvény keresztezi az utadat. Mindaddig északnak mész rajta, amíg egy útkereszteződéshez nem érsz. Az az útjelző tábla, amely nyugat felé mutat, Aliannába irányít, az pedig, amelyik egyenesen előremutat, Dhumpusba.[/p]
+        [p]Amint mész át az erdőn, csakhamar egy másik ösvény keresztezi az utadat. Mindaddig északnak mész rajta, amíg egy útkereszteződéshez nem érsz. Az az útjelző tábla, amely nyugati irányba mutat, Alianna felé irányít, az pedig, amelyik egyenesen előremutat, Dhumpusba.[/p]
     </text>
     <gatherItem id="4010" />
     <next id="154">Ha Alianna felé mész tovább</next>
@@ -3058,7 +3073,7 @@
   </p>
   <p id="170">
     <text>
-        [p]Örömöd nem tart sokáig, ugyanis a következő lépésnél a lábad kiold egy szerkezetet. Ennek következtében három, éles karókkal teletűzdelt pózna csapódik fel előtted. Karóba húz ez az ördögi szerkezet, és utad itt véget ér! Fejed nemsokára ott fog díszelegni a többi karóba húzott fej között, melyeket az imént hagytál el…[/p]
+        [p]Örömöd nem tart sokáig, ugyanis a következő lépésnél a lábad kiold egy szerkezetet. Ennek következtében három, éles karókkal teletűzdelt pózna csapódik fel előtted. Karóba húz ez az ördögi szerkezet, és utad itt véget ér! Fejed nemsokára ott fog díszelegni a többi karóba húzott fej között…[/p]
     </text>
     <death />
   </p>
@@ -3169,7 +3184,7 @@
   </p>
   <p id="185">
     <text>
-        [p]Leülsz, és beszédbe elegyedsz velük. Úgy látod, ők képviselik a falu lakóinak idősebb rétegét, és örülsz, hogy a sors összehozott velük (nyersz 2 [span class="ffAttribute"]SZERENCSE[/span] pontot). Étellel kínálnak, ami 1 ponttal növeli az [span class="ffAttribute"]ÉLETERŐDET[/span]. Amikor kissé közvetlenebb hangnemre váltotok, viccelődve ,,Kristatanti bohócoknak'' nevezed az ott lakókat, és ez a megjegyzésed elég rosszul sül el, mivel az egyik asztaltársad épp abból a faluból való. Dühösen pattan fel, és magyarázatot kér. Az ő területén vagytok, így nem lenne igazságos a kihívás, ezért inkább kereket oldasz. Mérgesen üldöz végig egész Dhumpuson, de nem ér utol. A falu határában felhagy az üldözéssel, és ekkor tovább folytathatod utadat – de elkeseredetten veszed észre, hogy a fogadóban hagytad a fegyveredet! Fegyver nélkül kell folytatnod az utadat, hacsak nincs egy tartalék fegyver a hátizsákodban. Ha fegyver nélkül vagy kénytelen folytatnod az utadat, 4 [span class="ffAttribute"]ÜGYESSÉG[/span] pontot le kell vonnod magadtól, amíg nem találsz helyette másikat.[/p]
+        [p]Leülsz, és beszédbe elegyedsz velük. Úgy látod, ők képviselik a falu lakóinak idősebb rétegét, és örülsz, hogy a sors összehozott velük (nyersz 2 [span class="ffAttribute"]SZERENCSE[/span] pontot). Étellel kínálnak, ami 1 ponttal növeli az [span class="ffAttribute"]ÉLETERŐDET[/span]. Amikor kissé közvetlenebb hangnemre váltotok, viccelődve ,,Kristatanti bohócoknak'' nevezed az ott lakókat, és ez a megjegyzésed elég rosszul sül el, mivel az egyik asztaltársad épp abból a faluból való. Dühösen pattan fel, és magyarázatot kér. Az ő területén vagytok, így nem lenne igazságos a kihívás, ezért inkább kereket oldasz. Mérgesen üldöz végig egész Dhumpuson, de nem ér utol. A falu határában felhagy az üldözéssel, és ekkor tovább folytathatod utadat – de elkeseredetten veszed észre, hogy hátrahagytad a fegyveredet! Fegyver nélkül kell folytatnod az utadat, hacsak nincs egy tartalék fegyver a hátizsákodban. Ha fegyver nélkül vagy kénytelen folytatnod az utadat, 4 [span class="ffAttribute"]ÜGYESSÉG[/span] pontot le kell vonnod magadtól, amíg nem találsz helyette másikat.[/p]
     </text>
     <itemCheck type="item" id="1002">
       <have>
@@ -3354,7 +3369,7 @@
       </have>
     </itemCheck>
     <next id="92">Ha megpróbálsz továbbállni és keresel egy fogadót</next>
-    <next id="21">Ha csak ebből a faluból mész el</next>
+    <next id="21">Ha elmész ebből a faluból</next>
   </p>
   <p id="192">
     <text>
@@ -3560,8 +3575,20 @@
   </p>
   <p id="205">
     <text>
-        [p]A Minimó hangosan visítva tűnik el a válladról. Megkönnyebbülten veszed tudomásul, hogy ismét használhatod varázstudományodat. Az öregasszony megengedi, hogy elmenj, és az ösvényen folytatod az utadat.[/p]
+        [p]A Minimó hangosan visítva tűnik el a válladról.
     </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            Megkönnyebbülten veszed tudomásul, hogy ismét használhatod varázstudományodat.
+        </text>
+      </have>
+      <after>
+        <text>
+            Az öregasszony megengedi, hogy elmenj, és az ösvényen folytatod az utadat.[/p]
+        </text>
+      </after>
+    </itemCheck>
     <gatherItem id="4014" />
     <next id="232"></next>
   </p>
@@ -5757,9 +5784,10 @@
   </p>
   <p id="346">
     <text>
-        [p]Vesztesz 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot! Varázslatod hatására egy nagy tűzgolyó terem a kezedben, és azt a vadállathoz vágod. Jól oldalba találja a Manticorét, és a teremtmény felordít fájdalmában.[/p]
+        [p]Vesztesz 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot! Varázslatod hatására egy nagy tűzgolyó terem a kezedben, és azt a vadállathoz vágod. Jól oldalba találja a Manticorét, és a teremtmény felordít fájdalmában. A bestia veszít 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
     </text>
     <addSpell amount="-4" />
+    <changeEnemy attribute="stamina" id="18" change="-4" />
     <next id="420"></next>
   </p>
   <p id="347">
@@ -6843,8 +6871,9 @@
       </have>
       <dontHave>
         <text>
-            [p]Nincs nálad a varázslathoz szükséges tárgy. Fölösleges az igyekezeted, varázslatod nem működik, és nincs hatással az Elvinekre. Kezedet összekötözik, és dühösen beléd rúgnak (vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot).[/p]
+            [p]Vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Nincs nálad a varázslathoz szükséges tárgy. Fölösleges az igyekezeted, varázslatod nem működik, és nincs hatással az Elvinekre. Kezedet összekötözik, és dühösen beléd rúgnak (vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot).[/p]
         </text>
+        <addSpell amount="-1" />
         <add amount="-1" to="stamina" />
         <next id="218"></next>
       </dontHave>
@@ -6886,7 +6915,7 @@
   </p>
   <p id="405">
     <text>
-        [p]Vonj le magadtól 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot! Mindkét kezedet előrelendíted, és varázsolsz: apró tűzgolyók robbannak a levegőben, és esőként zúdulnak a kis Elvinre. Sok közülük eltalálja a teremtmény szárnyát, és az Elvin égő fáklyaként hull alá a légből.[/p]
+        [p]Vonj le magadtól 4 [span class="ffAttribute"]ÉLETERŐ[/span] pontot! Mindkét kezedet előrelendíted, és varázsolsz: apró tűzgolyók robbannak a levegőben, és esőként zúdulnak a kis Elvinre. Sok közülük eltalálja a teremtményt, és az Elvin égő fáklyaként hull alá a légből.[/p]
     </text>
     <addSpell amount="-4" />
     <next id="121"></next>
@@ -6964,7 +6993,7 @@
   </p>
   <p id="409">
     <text>
-        [p]Vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot! Varázsolsz, hogy kinyisd a lakatot. A zár megreccsen, és egy kattanás jelzi, hogy a zár nyelve elmozdult. Végül a lakat enged, és a ketrec kinyílik. Az öregasszony megköszöni a segítségedet, és hálából ő is felajánlja a segítségét.[/p]
+        [p]Vesztesz 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot! Varázsolsz, hogy kinyisd a lakatot. A zár megreccsen, és egy kattanás jelzi, hogy a zár nyelve elmozdult. Végül a lakat enged, és a ketrec kinyílik. A nő megköszöni a segítségedet, és hálából ő is felajánlja a segítségét.[/p]
     </text>
     <addSpell amount="-2" />
     <next id="248">Ha egy varázstárgyat kérsz tőle</next>
@@ -7094,27 +7123,120 @@
   </p>
   <p id="421a" display="421">
     <text>
-        [p]Vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Időközben a teremtmény rád támad, és 2 [span class="ffAttribute"]ÉLETERŐ[/span] pont sebesülést okoz neked.[/p]
+        [p]Vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot!
     </text>
     <addSpell amount="-1" />
-    <add amount="-2" to="stamina" />
-    <next id="123a"></next>
+    <itemCheck type="item" id="3017">
+      <have>
+        <text>
+            Hozzávágod a teremtményhez a ragasztót, és varázsolsz. A bestia odaragad a földhöz; ekkor könnyedén megtámadhatod és végezhetsz vele.[/p]
+        </text>
+        <loseItem id="3017" />
+        <itemCheck type="item" id="4004">
+          <have>
+            <loseItem id="4004" />
+            <next id="31"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4005">
+          <have>
+            <loseItem id="4005" />
+            <next id="283b"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4009">
+          <have>
+            <loseItem id="4005" />
+            <next id="108b"></next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Időközben a teremtmény rád támad, és 2 [span class="ffAttribute"]ÉLETERŐ[/span] pont sebesülést okoz neked.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="123a"></next>
+      </dontHave>
+    </itemCheck>
   </p>
   <p id="421b" display="421">
     <text>
-        [p]Vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Időközben a teremtmény rád támad, és 2 [span class="ffAttribute"]ÉLETERŐ[/span] pont sebesülést okoz neked.[/p]
+        [p]Vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot!
     </text>
     <addSpell amount="-1" />
-    <add amount="-2" to="stamina" />
-    <next id="123b"></next>
+    <itemCheck type="item" id="3017">
+      <have>
+        <text>
+            Hozzávágod a teremtményhez a ragasztót, és varázsolsz. A bestia odaragad a földhöz; ekkor könnyedén megtámadhatod és végezhetsz vele.[/p]
+        </text>
+        <loseItem id="3017" />
+        <itemCheck type="item" id="4004">
+          <have>
+            <loseItem id="4004" />
+            <next id="31"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4005">
+          <have>
+            <loseItem id="4005" />
+            <next id="283b"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4009">
+          <have>
+            <loseItem id="4005" />
+            <next id="108b"></next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Időközben a teremtmény rád támad, és 2 [span class="ffAttribute"]ÉLETERŐ[/span] pont sebesülést okoz neked.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="123b"></next>
+      </dontHave>
+    </itemCheck>
   </p>
   <p id="421c" display="421">
     <text>
-        [p]Vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Időközben a teremtmény rád támad, és 2 [span class="ffAttribute"]ÉLETERŐ[/span] pont sebesülést okoz neked.[/p]
+        [p]Vesztesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot!
     </text>
     <addSpell amount="-1" />
-    <add amount="-2" to="stamina" />
-    <next id="123c"></next>
+    <itemCheck type="item" id="3017">
+      <have>
+        <text>
+            Hozzávágod a teremtményhez a ragasztót, és varázsolsz. A bestia odaragad a földhöz; ekkor könnyedén megtámadhatod és végezhetsz vele.[/p]
+        </text>
+        <loseItem id="3017" />
+        <itemCheck type="item" id="4004">
+          <have>
+            <loseItem id="4004" />
+            <next id="31"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4005">
+          <have>
+            <loseItem id="4005" />
+            <next id="283b"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4009">
+          <have>
+            <loseItem id="4005" />
+            <next id="108b"></next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Időközben a teremtmény rád támad, és 2 [span class="ffAttribute"]ÉLETERŐ[/span] pont sebesülést okoz neked.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="123c"></next>
+      </dontHave>
+    </itemCheck>
   </p>
   <p id="422">
     <text>
