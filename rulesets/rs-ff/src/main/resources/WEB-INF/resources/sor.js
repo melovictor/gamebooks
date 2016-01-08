@@ -33,6 +33,6 @@ var sor = (function() {
 $(function() {
 	$("[data-generator-button='sor']").on("click", sor.generateCharacter);
 	$("[name='caste']").on("change", sor.changeCaste);
-	$("[data-libra-reset]").on("click", sor.resetAttribute);
+	$("#gamebookCharacterPageWrapper").on("click", "[data-libra-reset]", sor.resetAttribute);
 });
 
