@@ -28,7 +28,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- * Unit test for class {@link FfBookInventoryController}.
+ * Unit test for class {@link GenericBookInventoryController}.
  * @author Tamas_Szekeres
  */
 @Test

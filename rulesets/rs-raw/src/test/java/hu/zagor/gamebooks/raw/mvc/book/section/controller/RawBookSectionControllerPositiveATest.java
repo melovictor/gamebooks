@@ -45,7 +45,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- * Unit test for class {@link FfBookSectionController}.
+ * Unit test for class {@link RawBookSectionController}.
  * @author Tamas_Szekeres
  */
 @Test
