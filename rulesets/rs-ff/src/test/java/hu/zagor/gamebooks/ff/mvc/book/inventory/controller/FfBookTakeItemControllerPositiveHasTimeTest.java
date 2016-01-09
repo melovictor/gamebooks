@@ -122,6 +122,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         expect(paragraph.getActions()).andReturn(10);
         expect(item.getActions()).andReturn(1);
         paragraph.setActions(9);
+        expect(item.getId()).andReturn("2000");
         itemHandler.consumeItem(character, "2000", attributeHandler);
         mockControl.replay();
         // WHEN
@@ -147,6 +148,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         expect(paragraph.getActions()).andReturn(10);
         expect(item.getActions()).andReturn(1);
         paragraph.setActions(9);
+        expect(item.getId()).andReturn("2000");
         itemHandler.consumeItem(character, "2000", attributeHandler);
         mockControl.replay();
         // WHEN
@@ -193,6 +195,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         expect(paragraph.getActions()).andReturn(10);
         expect(item.getActions()).andReturn(1);
         paragraph.setActions(9);
+        expect(item.getId()).andReturn("2000");
         itemHandler.consumeItem(character, "2000", attributeHandler);
         mockControl.replay();
         // WHEN
@@ -217,6 +220,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         expect(paragraph.getActions()).andReturn(10);
         expect(item.getActions()).andReturn(1);
         paragraph.setActions(9);
+        expect(item.getId()).andReturn("2000");
         itemHandler.consumeItem(character, "2000", attributeHandler);
         mockControl.replay();
         // WHEN

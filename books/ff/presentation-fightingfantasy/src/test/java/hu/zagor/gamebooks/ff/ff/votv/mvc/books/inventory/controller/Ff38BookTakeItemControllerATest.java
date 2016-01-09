@@ -247,6 +247,7 @@ public class Ff38BookTakeItemControllerATest {
         expect(paragraph.getActions()).andReturn(9);
         expect(item.getActions()).andReturn(1);
         paragraph.setActions(8);
+        expect(item.getId()).andReturn(consumeId);
         itemHandler.consumeItem(character, consumeId, attributeHandler);
     }
 

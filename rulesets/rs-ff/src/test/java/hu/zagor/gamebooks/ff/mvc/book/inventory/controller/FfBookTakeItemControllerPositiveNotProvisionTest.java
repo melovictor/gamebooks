@@ -85,6 +85,7 @@ public class FfBookTakeItemControllerPositiveNotProvisionTest {
         expect(paragraph.getActions()).andReturn(10);
         expect(item.getActions()).andReturn(1);
         paragraph.setActions(9);
+        expect(item.getId()).andReturn("2001");
         itemHandler.consumeItem(character, "2001", attributeHandler);
         mockControl.replay();
         // WHEN

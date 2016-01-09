@@ -79,6 +79,7 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
         expect(paragraph.getActions()).andReturn(10);
         expect(item.getActions()).andReturn(1);
         paragraph.setActions(9);
+        expect(item.getId()).andReturn(itemId);
         itemHandler.consumeItem(character, itemId, attributeHandler);
         mockControl.replay();
         // WHEN
@@ -104,6 +105,7 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
         expect(paragraph.getActions()).andReturn(10);
         expect(item.getActions()).andReturn(1);
         paragraph.setActions(9);
+        expect(item.getId()).andReturn(itemId);
         itemHandler.consumeItem(character, itemId, attributeHandler);
         mockControl.replay();
         // WHEN
