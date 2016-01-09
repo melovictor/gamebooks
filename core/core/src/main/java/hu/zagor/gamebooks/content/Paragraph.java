@@ -2,12 +2,10 @@ package hu.zagor.gamebooks.content;
 
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -29,8 +27,9 @@ public class Paragraph extends EscapingData implements TrueCloneable {
     private final List<String> validMoves;
     private final Map<String, Integer> validItems;
 
-    @Autowired
-    private transient ChoicePositionCounter positionCounter;
+    private final List<ProcessableItemHolder> itemsToProcess = new ArrayList<>();
+
+    @Autowired private transient ChoicePositionCounter positionCounter;
 
     Paragraph() {
         validMoves = new ArrayList<>();
@@ -159,6 +158,10 @@ public class Paragraph extends EscapingData implements TrueCloneable {
 
     public void setActions(final int actions) {
         this.actions = actions;
+    }
+
+    public List<ProcessableItemHolder> getItemsToProcess() {
+        return itemsToProcess;
     }
 
 }

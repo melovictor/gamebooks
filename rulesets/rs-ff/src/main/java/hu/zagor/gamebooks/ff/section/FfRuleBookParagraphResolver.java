@@ -29,7 +29,7 @@ public class FfRuleBookParagraphResolver extends RawRuleBookParagraphResolver {
     private Map<String, AttributeTestSuccessType> attributeTestDefaultSuccessTypes;
 
     @Override
-    protected void resolveCommands(final ResolvationData resolvationData, final ParagraphData genericSubData, final CommandListIterator mainCommandIterator) {
+    protected void resolveBasicCommands(final ResolvationData resolvationData, final ParagraphData genericSubData) {
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final FfParagraphData subData = (FfParagraphData) genericSubData;
@@ -37,8 +37,7 @@ public class FfRuleBookParagraphResolver extends RawRuleBookParagraphResolver {
         handleAttributeModifiers(character, characterHandler, subData);
 
         executeImmediateCommands(resolvationData, subData.getImmediateCommands().forwardsIterator());
-
-        super.resolveCommands(resolvationData, genericSubData, mainCommandIterator);
+        super.resolveBasicCommands(resolvationData, subData);
     }
 
     void handleAttributeModifiers(final FfCharacter character, final FfCharacterHandler characterHandler, final FfParagraphData subData) {

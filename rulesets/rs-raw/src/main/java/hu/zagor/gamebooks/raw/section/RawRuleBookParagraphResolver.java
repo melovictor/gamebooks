@@ -9,19 +9,18 @@ import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.connectivity.ServerCommunicator;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
+import hu.zagor.gamebooks.content.ProcessableItemHolder;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.CommandResolveResult;
 import hu.zagor.gamebooks.content.command.CommandResolver;
-import hu.zagor.gamebooks.content.commandlist.CommandListIterator;
+import hu.zagor.gamebooks.content.commandlist.CommandList;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.content.reward.Reward;
 import hu.zagor.gamebooks.support.bookids.english.Series;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.io.IOException;
 import java.net.URLConnection;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
@@ -32,34 +31,79 @@ import org.springframework.util.Assert;
  */
 public class RawRuleBookParagraphResolver implements BookParagraphResolver {
 
-    @LogInject
-    private Logger logger;
-    @Autowired
-    private ServerCommunicator communicator;
+    @LogInject private Logger logger;
+    @Autowired private ServerCommunicator communicator;
 
     @Override
     public void resolve(final ResolvationData resolvationData, final Paragraph paragraph) {
         Assert.notNull(paragraph, "The parameter 'paragraph' cannot be null!");
         Assert.notNull(resolvationData, "The parameter 'resolvationData' cannot be null!");
 
-        doResolveData(resolvationData, paragraph.getData(), false, null);
+        final List<ProcessableItemHolder> itemsToProcess = paragraph.getItemsToProcess();
+        boolean startBasicExecutionImmediately = true;
+        if (itemsToProcess.isEmpty()) {
+            itemsToProcess.add(new ProcessableItemHolder(paragraph.getData()));
+            startBasicExecutionImmediately = false;
+        }
+
+        resolvationData.getCharacter().setCommandView(null);
+        doResolveData(resolvationData, paragraph, startBasicExecutionImmediately);
     }
 
-    private void doResolveData(final ResolvationData resolvationData, final ParagraphData subData, final boolean shouldExecuteBasics,
-        final CommandListIterator mainCommandIterator) {
-        if (shouldExecuteBasics) {
-            executeBasics(resolvationData, subData);
+    private void doResolveData(final ResolvationData resolvationData, final Paragraph paragraph, final boolean startBasicExecutionImmediately) {
+        boolean doBasicExecution = startBasicExecutionImmediately;
+        final List<ProcessableItemHolder> itemsToProcess = paragraph.getItemsToProcess();
+        final Character character = resolvationData.getCharacter();
+
+        while (!itemsToProcess.isEmpty() && character.getCommandView() == null) {
+            final ProcessableItemHolder processableItemHolder = itemsToProcess.remove(0);
+            if (processableItemHolder.isParagraphDataHolder()) {
+                final ParagraphData paragraphData = processableItemHolder.getParagraphData();
+                if (doBasicExecution) {
+                    executeBasics(resolvationData, paragraphData);
+                } else {
+                    doBasicExecution = true;
+                }
+                resolveBasicCommands(resolvationData, paragraphData);
+                addAll(itemsToProcess, paragraphData.getCommands());
+                handleReward(resolvationData, paragraphData);
+            } else {
+                final Command command = processableItemHolder.getCommand();
+                final CommandResolveResult resolveResult = resolveComplexCommands(resolvationData, paragraph, command, character);
+                if (!resolveResult.isFinished()) {
+                    itemsToProcess.add(0, processableItemHolder);
+                }
+            }
+
         }
-        resolveCommands(resolvationData, subData, mainCommandIterator);
-        handleReward(resolvationData, subData);
+    }
+
+    private void addAll(final List<ProcessableItemHolder> itemsToProcess, final CommandList commands) {
+        int idx = 0;
+        for (final Command command : commands) {
+            if (command != null) {
+                itemsToProcess.add(idx++, new ProcessableItemHolder(command));
+            }
+        }
+    }
+
+    private void addAll(final List<ProcessableItemHolder> itemsToProcess, final List<ParagraphData> paragraphs) {
+        if (paragraphs != null) {
+            int idx = 0;
+            for (final ParagraphData data : paragraphs) {
+                if (data != null) {
+                    itemsToProcess.add(idx++, new ProcessableItemHolder(data));
+                }
+            }
+        }
     }
 
     private void handleReward(final ResolvationData resolvationData, final ParagraphData subData) {
         final Reward reward = subData.getReward();
         if (reward != null) {
             try {
-                logger.info("Fetching reward '{}' for book '{}' for player '{}'.", reward.getId(), resolvationData.getInfo().getTitle(), resolvationData.getPlayerUser()
-                    .getPrincipal());
+                logger.info("Fetching reward '{}' for book '{}' for player '{}'.", reward.getId(), resolvationData.getInfo().getTitle(),
+                    resolvationData.getPlayerUser().getPrincipal());
                 final String data = assemblePostData(resolvationData, reward);
                 final URLConnection connection = communicator.connect("http://zagor.hu/recordreward.php");
                 communicator.sendRequest(connection, data);
@@ -86,10 +130,8 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
      * Executes the more complicated commands in the ruleset.
      * @param resolvationData the resolvationData containing all relevant objects for the resolvation
      * @param subData the currently processed paragraph data
-     * @param mainCommandIterator the main command iterator to which we must add the commands from the current set, or null if this is the root {@link ParagraphData} we're
-     *        resolving
      */
-    protected void resolveCommands(final ResolvationData resolvationData, final ParagraphData subData, final CommandListIterator mainCommandIterator) {
+    protected void resolveBasicCommands(final ResolvationData resolvationData, final ParagraphData subData) {
         final Character character = resolvationData.getCharacter();
         final CharacterHandler characterHandler = resolvationData.getCharacterHandler();
 
@@ -98,12 +140,6 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
         loseItems(subData, character, itemHandler);
         handleHideUnhide(character.getEquipment(), character.getHiddenEquipment(), subData.getHiddenItems());
         handleHideUnhide(character.getHiddenEquipment(), character.getEquipment(), subData.getUnhiddenItems());
-
-        if (mainCommandIterator == null) {
-            executeCommands(resolvationData, subData.getCommands().forwardsIterator(), character);
-        } else {
-            prepareCommandsForExecutionOnRoot(subData, mainCommandIterator);
-        }
     }
 
     private void handleHideUnhide(final List<Item> sourceStore, final List<Item> targetStore, final List<GatheredLostItem> itemsToMove) {
@@ -150,36 +186,20 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
         subData.getGatheredItems().clear();
     }
 
-    private void executeCommands(final ResolvationData resolvationData, final CommandListIterator commandIterator, final Character character) {
-        while (commandIterator.hasNext()) {
-            final Command command = commandIterator.next();
-            logger.debug("Executing command {}.", command.toString());
+    private CommandResolveResult resolveComplexCommands(final ResolvationData resolvationData, final Paragraph paragraph, final Command command,
+        final Character character) {
+        logger.debug("Executing command {}.", command.toString());
 
-            final CommandResolver resolver = resolvationData.getInfo().getCommandResolvers().get(command.getClass());
+        final CommandResolver resolver = resolvationData.getInfo().getCommandResolvers().get(command.getClass());
 
-            final CommandResolveResult resolve = resolver.resolve(command, resolvationData);
-            if (!resolve.isFinished()) {
-                character.setCommandView(command.getCommandView(getRulesetPrefix()));
-            } else {
-                character.setCommandView(null);
-            }
-            final List<ParagraphData> resolveList = resolve.getResolveList();
-            if (resolveList != null) {
-                for (final ParagraphData resolvableSubData : resolve.getResolveList()) {
-                    if (resolvableSubData != null) {
-                        doResolveData(resolvationData, resolvableSubData, true, commandIterator);
-                    }
-                }
-            }
-            if (!resolve.isFinished()) {
-                break;
-            }
-            commandIterator.remove();
+        final CommandResolveResult resolve = resolver.resolve(command, resolvationData);
+        if (!resolve.isFinished()) {
+            character.setCommandView(command.getCommandView(getRulesetPrefix()));
+        } else {
+            character.setCommandView(null);
         }
-    }
-
-    private void prepareCommandsForExecutionOnRoot(final ParagraphData subData, final CommandListIterator mainCommandIterator) {
-        mainCommandIterator.add(subData.getCommands());
+        addAll(paragraph.getItemsToProcess(), resolve.getResolveList());
+        return resolve;
     }
 
     /**
