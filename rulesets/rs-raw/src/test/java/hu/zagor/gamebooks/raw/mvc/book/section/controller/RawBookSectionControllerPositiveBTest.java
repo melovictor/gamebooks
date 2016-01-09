@@ -23,13 +23,15 @@ import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.raw.character.RawCharacterPageData;
 import hu.zagor.gamebooks.recording.NavigationRecorder;
-import java.util.HashMap;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.Map;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
@@ -51,75 +53,51 @@ public class RawBookSectionControllerPositiveBTest {
     private static final String DEFAULT_TEXT_WITHOUT_ALT = "<p>This is some sample text.</p><p>This is text. This is to be replaced. End of text.</p>";
 
     private RawBookSectionController underTest;
-    private IMocksControl mockControl;
-    private SectionHandlingService sectionHandlingService;
-    private Model model;
-    private HttpServletRequest request;
-    private HttpSession session;
-    private HttpSessionWrapper wrapper;
+    @MockControl private IMocksControl mockControl;
+    @Mock private SectionHandlingService sectionHandlingService;
+    @Mock private Model model;
+    @Mock private HttpServletRequest request;
+    @Mock private HttpSessionWrapper wrapper;
     private Paragraph oldParagraph;
-    private BeanFactory beanFactory;
-    private Logger logger;
+    @Inject private BeanFactory beanFactory;
+    @Inject private Logger logger;
     private BookInformations info;
-    private CharacterHandler characterHandler;
-    private Character character;
-    private CharacterParagraphHandler paragraphHandler;
+    @Instance private CharacterHandler characterHandler;
+    @Instance private Character character;
+    @Mock private CharacterParagraphHandler paragraphHandler;
     private PlayerUser player;
-    private BookParagraphResolver paragraphResolver;
-    private Paragraph newParagraph;
-    private RawCharacterPageData charPageData;
-    private BookContentInitializer contentInitializer;
-    private ParagraphData data;
+    @Mock private BookParagraphResolver paragraphResolver;
+    @Mock private Paragraph newParagraph;
+    @Mock private RawCharacterPageData charPageData;
+    @Inject private BookContentInitializer contentInitializer;
+    @Instance private ParagraphData data;
     private ChoiceSet choices;
     private Choice choice;
     private ChoiceSet choicesMixed;
     private ChoiceSet choicesExtra;
     private Choice choiceWithExtra;
-    private Map<String, Enemy> enemies;
-    private NavigationRecorder navigationRecorder;
-    private Map<String, Object> modelMap;
-    private StaticResourceDescriptor staticResourceDescriptor;
-    private Set<String> resourceSet;
+    @Instance private Map<String, Enemy> enemies;
+    @Inject private NavigationRecorder navigationRecorder;
+    @Mock private Map<String, Object> modelMap;
+    @Mock private StaticResourceDescriptor staticResourceDescriptor;
+    @Mock private Set<String> resourceSet;
 
-    @SuppressWarnings("unchecked")
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        sectionHandlingService = mockControl.createMock(SectionHandlingService.class);
-        model = mockControl.createMock(Model.class);
-        request = mockControl.createMock(HttpServletRequest.class);
-        session = mockControl.createMock(HttpSession.class);
-        wrapper = mockControl.createMock(HttpSessionWrapper.class);
         oldParagraph = new Paragraph("9", null, Integer.MAX_VALUE);
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        logger = mockControl.createMock(Logger.class);
         info = new BookInformations(1L);
-        characterHandler = new CharacterHandler();
-        paragraphHandler = mockControl.createMock(CharacterParagraphHandler.class);
         characterHandler.setParagraphHandler(paragraphHandler);
         info.setCharacterHandler(characterHandler);
-        character = new Character();
         player = new PlayerUser(3, "FireFoX", false);
-        paragraphResolver = mockControl.createMock(BookParagraphResolver.class);
         info.setParagraphResolver(paragraphResolver);
-        newParagraph = mockControl.createMock(Paragraph.class);
-        charPageData = mockControl.createMock(RawCharacterPageData.class);
-        contentInitializer = mockControl.createMock(BookContentInitializer.class);
         player.getSettings().setImageTypeOrder("bwFirst");
-        data = new ParagraphData();
         oldParagraph.setData(data);
-        enemies = new HashMap<>();
-        navigationRecorder = mockControl.createMock(NavigationRecorder.class);
-        resourceSet = mockControl.createMock(Set.class);
-        staticResourceDescriptor = mockControl.createMock(StaticResourceDescriptor.class);
-        modelMap = mockControl.createMock(Map.class);
-
-        underTest = new RawBookSectionController(sectionHandlingService);
-        underTest.setBeanFactory(beanFactory);
-        Whitebox.setInternalState(underTest, "logger", logger);
         Whitebox.setInternalState(underTest, "info", info);
-        Whitebox.setInternalState(underTest, "contentInitializer", contentInitializer);
-        Whitebox.setInternalState(underTest, "navigationRecorder", navigationRecorder);
+    }
+
+    @UnderTest
+    public RawBookSectionController underTest() {
+        return new RawBookSectionController(sectionHandlingService);
     }
 
     @BeforeMethod
@@ -185,15 +163,11 @@ public class RawBookSectionControllerPositiveBTest {
 
     private void prepareForSwitch(final String id) {
         logger.debug("Handling choice request '{}' for book.", "s-" + id);
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(wrapper.getPlayer()).andReturn(player);
         logger.debug("Handling paragraph {} for book.", id);
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getPlayer()).andReturn(player);
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(contentInitializer.loadSection(id, player, oldParagraph, info)).andReturn(newParagraph);

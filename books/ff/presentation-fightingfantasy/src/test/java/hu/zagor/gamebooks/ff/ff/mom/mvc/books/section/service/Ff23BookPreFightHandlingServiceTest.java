@@ -11,13 +11,11 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
@@ -34,25 +32,16 @@ import org.testng.annotations.Test;
 public class Ff23BookPreFightHandlingServiceTest {
 
     private static final String HORN_ID = "3016";
-    @MockControl
-    private IMocksControl mockControl;
-    @UnderTest
-    private Ff23BookPreFightHandlingService underTest;
-    @Mock
-    private FfBookInformations info;
-    @Mock
-    private HttpSessionWrapper wrapper;
-    @Mock
-    private Paragraph paragraph;
-    @Mock
-    private ParagraphData data;
-    @Mock
-    private CommandList commands;
-    @Mock
-    private FightCommand command;
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private Ff23BookPreFightHandlingService underTest;
+    @Mock private FfBookInformations info;
+    @Mock private HttpSessionWrapper wrapper;
+    @Mock private Paragraph paragraph;
+    @Mock private ParagraphData data;
+    @Mock private CommandList commands;
+    @Mock private FightCommand command;
     private Map<String, Enemy> enemies;
-    @Mock
-    private FfEnemy enemy;
+    @Mock private FfEnemy enemy;
     private List<String> hornResistantEnemies;
 
     @BeforeClass

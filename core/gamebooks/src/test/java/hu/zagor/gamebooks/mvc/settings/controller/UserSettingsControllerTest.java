@@ -106,9 +106,7 @@ public class UserSettingsControllerTest {
         expect(defaultSettingsHandler.getOrderedSettings()).andReturn(settings);
         expect(model.addAttribute("settings", settings)).andReturn(model);
         expect(defaultSettingsHandler.getDefaultSettings()).andReturn(defaultSettings);
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getPlayer()).andReturn(player);
         final Capture<HashMap<String, String>> capturer = setUpModel();
         mockControl.replay();
@@ -126,9 +124,7 @@ public class UserSettingsControllerTest {
     public void testSaveSettingsShouldSaveSettingsAndInitializeModel() {
         // GIVEN
         expect(request.getParameterMap()).andReturn(parameterMap);
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getPlayer()).andReturn(player);
         parameterMap.put("default.setting.1", new String[]{"default.setting.1.playervalue"});
         parameterMap.put("default.setting.2", new String[]{"default.setting.2.playervalue"});
@@ -143,9 +139,7 @@ public class UserSettingsControllerTest {
         expect(defaultSettingsHandler.getOrderedSettings()).andReturn(settings);
         expect(model.addAttribute("settings", settings)).andReturn(model);
         expect(defaultSettingsHandler.getDefaultSettings()).andReturn(defaultSettings);
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getPlayer()).andReturn(player);
 
         final Capture<HashMap<String, String>> capturer = setUpModel();

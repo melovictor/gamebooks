@@ -4,14 +4,11 @@ import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import java.io.IOException;
 import java.io.InputStream;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.slf4j.Logger;
@@ -29,21 +26,13 @@ import org.xml.sax.SAXException;
 @Test
 public class DomXmlParserTest {
 
-    @UnderTest
-    private DomXmlParser underTest;
-    @MockControl
-    private IMocksControl mockControl;
-
-    @Inject
-    private DocumentBuilderFactory builderFactory;
-    @Mock
-    private DocumentBuilder documentBuilder;
-    @Mock
-    private Document document;
-    @Mock
-    private InputStream inputStream;
-    @Inject
-    private Logger logger;
+    @UnderTest private DomXmlParser underTest;
+    @MockControl private IMocksControl mockControl;
+    @Inject private DocumentBuilderFactory builderFactory;
+    @Mock private DocumentBuilder documentBuilder;
+    @Mock private Document document;
+    @Mock private InputStream inputStream;
+    @Inject private Logger logger;
 
     @BeforeMethod
     public void setUpMethod() {

@@ -14,12 +14,10 @@ import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
@@ -40,23 +38,15 @@ import org.w3c.dom.NodeList;
 @Test
 public class FightTransformerTest extends AbstractTransformerTest {
 
-    @UnderTest
-    private FightTransformer underTest;
-    @MockControl
-    private IMocksControl mockControl;
-    @Instance
-    private ParagraphData data;
-    @Mock
-    private BookParagraphDataTransformer parent;
-    @Mock
-    private ChoicePositionCounter positionCounter;
+    @UnderTest private FightTransformer underTest;
+    @MockControl private IMocksControl mockControl;
+    @Instance private ParagraphData data;
+    @Mock private BookParagraphDataTransformer parent;
+    @Mock private ChoicePositionCounter positionCounter;
     private Map<String, CommandSubTransformer<FightCommand>> fightTransformers;
-    @Mock
-    private CommandSubTransformer<FightCommand> subTransformer;
-    @Inject
-    private BeanFactory beanFactory;
-    @Instance
-    private FightCommand command;
+    @Mock private CommandSubTransformer<FightCommand> subTransformer;
+    @Inject private BeanFactory beanFactory;
+    @Instance private FightCommand command;
 
     @BeforeClass
     public void setUpClass() {

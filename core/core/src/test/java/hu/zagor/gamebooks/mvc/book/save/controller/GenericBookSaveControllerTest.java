@@ -14,12 +14,9 @@ import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
@@ -41,34 +38,21 @@ public class GenericBookSaveControllerTest {
     private static final Long BOOK_ID = 543547L;
     private static final String S_BOOK_ID = String.valueOf(BOOK_ID);
 
-    @UnderTest
-    private GenericBookSaveController underTest;
-    @MockControl
-    private IMocksControl mockControl;
+    @UnderTest private GenericBookSaveController underTest;
+    @MockControl private IMocksControl mockControl;
     private BookInformations info;
-    @Mock
-    private HttpServletRequest request;
-    @Mock
-    private PlayerUser player;
-    @Mock
-    private HttpSessionWrapper wrapper;
-    @Mock
-    private SavedGameContainer container;
-    @Mock
-    private HttpSession session;
-    @Mock
-    private Paragraph paragraph;
-    @Mock
-    private Map<String, Enemy> enemies;
-    @Mock
-    private Character character;
+    @Mock private HttpServletRequest request;
+    @Mock private PlayerUser player;
+    @Mock private HttpSessionWrapper wrapper;
+    @Mock private SavedGameContainer container;
+    @Mock private HttpSession session;
+    @Mock private Paragraph paragraph;
+    @Mock private Map<String, Enemy> enemies;
+    @Mock private Character character;
 
-    @Inject
-    private BeanFactory beanFactory;
-    @Inject
-    private BookInformationFetcher fetcher;
-    @Inject
-    private GameStateHandler gameStateHandler;
+    @Inject private BeanFactory beanFactory;
+    @Inject private BookInformationFetcher fetcher;
+    @Inject private GameStateHandler gameStateHandler;
 
     @BeforeClass
     public void setUpClass() {
@@ -101,9 +85,7 @@ public class GenericBookSaveControllerTest {
 
     public void testHandleSaveShouldSaveGame() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getPlayer()).andReturn(player);
         expect(player.getId()).andReturn(PLAYER_ID);
 

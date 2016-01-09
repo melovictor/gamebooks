@@ -13,12 +13,13 @@ import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
@@ -34,56 +35,31 @@ import org.testng.annotations.Test;
  */
 @Test
 public class Ff18BookTakeItemControllerTest {
-
-    private IMocksControl mockControl;
-    private Ff18BookTakeItemController underTest;
-    private HttpServletRequest request;
-    private HttpSession session;
-    private HttpSessionWrapper wrapper;
-    private BeanFactory beanFactory;
-    private Paragraph paragraph;
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private Ff18BookTakeItemController underTest;
+    @Mock private HttpServletRequest request;
+    @Mock private HttpSessionWrapper wrapper;
+    @Inject private BeanFactory beanFactory;
+    @Mock private Paragraph paragraph;
     private FfBookInformations info;
-    private FfCharacterHandler characterHandler;
-    private FfCharacterItemHandler itemHandler;
-    private FfItem item;
-    private Logger logger;
-
-    private PlayerUser playerUser;
-    private GatheredLostItem glItem;
-    private FfCharacter character;
-    private ItemInteractionRecorder itemInteractionRecorder;
-    private BookContentInitializer contentInitializer;
-    private FfAttributeHandler attributeHandler;
+    @Instance private FfCharacterHandler characterHandler;
+    @Mock private FfCharacterItemHandler itemHandler;
+    @Mock private FfItem item;
+    @Inject private Logger logger;
+    @Mock private PlayerUser playerUser;
+    @Mock private GatheredLostItem glItem;
+    @Mock private FfCharacter character;
+    @Inject private ItemInteractionRecorder itemInteractionRecorder;
+    @Inject private BookContentInitializer contentInitializer;
+    @Mock private FfAttributeHandler attributeHandler;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        underTest = new Ff18BookTakeItemController();
-
-        request = mockControl.createMock(HttpServletRequest.class);
-        session = mockControl.createMock(HttpSession.class);
-        wrapper = mockControl.createMock(HttpSessionWrapper.class);
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        paragraph = mockControl.createMock(Paragraph.class);
-        underTest.setBeanFactory(beanFactory);
         info = new FfBookInformations(1L);
-        characterHandler = new FfCharacterHandler();
-        itemHandler = mockControl.createMock(FfCharacterItemHandler.class);
         characterHandler.setItemHandler(itemHandler);
-        attributeHandler = mockControl.createMock(FfAttributeHandler.class);
         characterHandler.setAttributeHandler(attributeHandler);
         info.setCharacterHandler(characterHandler);
         Whitebox.setInternalState(underTest, "info", info);
-        item = mockControl.createMock(FfItem.class);
-        logger = mockControl.createMock(Logger.class);
-        Whitebox.setInternalState(underTest, "logger", logger);
-        playerUser = mockControl.createMock(PlayerUser.class);
-        glItem = mockControl.createMock(GatheredLostItem.class);
-        character = mockControl.createMock(FfCharacter.class);
-        itemInteractionRecorder = mockControl.createMock(ItemInteractionRecorder.class);
-        contentInitializer = mockControl.createMock(BookContentInitializer.class);
-        Whitebox.setInternalState(underTest, "itemInteractionRecorder", itemInteractionRecorder);
-        Whitebox.setInternalState(underTest, "contentInitializer", contentInitializer);
     }
 
     @BeforeMethod
@@ -152,9 +128,7 @@ public class Ff18BookTakeItemControllerTest {
     }
 
     private void expectWrapper() {
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
     }
 
     @AfterMethod

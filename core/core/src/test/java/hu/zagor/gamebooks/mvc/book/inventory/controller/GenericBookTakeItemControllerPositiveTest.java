@@ -82,13 +82,9 @@ public class GenericBookTakeItemControllerPositiveTest {
 
     public void testHandleItemTakeWhenAllItemsTakenShouldRemoveAllItems() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(sessionWrapper);
-        sessionWrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
         expect(beanFactory.getBean("gatheredLostItem", ITEM_ID, AMOUNT, 0, false)).andReturn(glItem);
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(sessionWrapper);
-        sessionWrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
         expect(sessionWrapper.getPlayer()).andReturn(playerUser);
         expect(sessionWrapper.getParagraph()).andReturn(paragraph);
         contentInitializer.validateItem(glItem, playerUser, paragraph, info);
@@ -107,13 +103,9 @@ public class GenericBookTakeItemControllerPositiveTest {
 
     public void testHandleItemTakeWhenNoItemsAreTakenShouldNotRemoveAnyItems() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(sessionWrapper);
-        sessionWrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
         expect(beanFactory.getBean("gatheredLostItem", ITEM_ID, AMOUNT, 0, false)).andReturn(glItem);
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(sessionWrapper);
-        sessionWrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
         expect(sessionWrapper.getPlayer()).andReturn(playerUser);
         expect(sessionWrapper.getParagraph()).andReturn(paragraph);
         contentInitializer.validateItem(glItem, playerUser, paragraph, info);
@@ -130,13 +122,9 @@ public class GenericBookTakeItemControllerPositiveTest {
 
     public void testHandleItemTakeWhenSomeItemsTakenShouldRemoveOnlyTakenItems() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(sessionWrapper);
-        sessionWrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
         expect(beanFactory.getBean("gatheredLostItem", ITEM_ID, AMOUNT, 0, false)).andReturn(glItem);
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(sessionWrapper);
-        sessionWrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
         expect(sessionWrapper.getPlayer()).andReturn(playerUser);
         expect(sessionWrapper.getParagraph()).andReturn(paragraph);
         contentInitializer.validateItem(glItem, playerUser, paragraph, info);
@@ -155,9 +143,7 @@ public class GenericBookTakeItemControllerPositiveTest {
 
     public void testHandleItemReplaceWhenCharacterDoesNotHaveReplacementItemShouldReturnZero() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(sessionWrapper);
-        sessionWrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
         itemInteractionRecorder.recordItemReplacing(sessionWrapper, "1002", "1001");
         expect(beanFactory.getBean("gatheredLostItem", "1002", 1, 0, false)).andReturn(glItem);
         expect(sessionWrapper.getCharacter()).andReturn(character);
@@ -172,17 +158,13 @@ public class GenericBookTakeItemControllerPositiveTest {
 
     public void testHandleItemReplaceWhenCharacterHasReplacementItemShouldReturnOne() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(sessionWrapper);
-        sessionWrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
         itemInteractionRecorder.recordItemReplacing(sessionWrapper, "1002", "1001");
         expect(beanFactory.getBean("gatheredLostItem", "1002", 1, 0, false)).andReturn(glItem);
         expect(sessionWrapper.getCharacter()).andReturn(character);
         expect(itemHandler.hasItem(character, "1001")).andReturn(true);
 
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(sessionWrapper);
-        sessionWrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
         expect(sessionWrapper.getPlayer()).andReturn(playerUser);
         expect(sessionWrapper.getParagraph()).andReturn(paragraph);
         contentInitializer.validateItem(glItem, playerUser, paragraph, info);

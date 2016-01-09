@@ -117,9 +117,7 @@ public class GenericBookInventoryControllerTest {
     }
 
     private void expectWrapper() {
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
     }
 
     @AfterMethod

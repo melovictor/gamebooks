@@ -151,15 +151,11 @@ public class RawBookSectionControllerPositiveATest {
     public void testHandleSectionWhenSectionIsWithChoicePositionShouldHandleSectionBasedOnPosition() {
         // GIVEN
         logger.debug("Handling choice request '{}' for book.", "1");
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(wrapper.getPlayer()).andReturn(player);
         logger.debug("Handling paragraph {} for book.", "9");
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getPlayer()).andReturn(player);
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(contentInitializer.loadSection("9", player, oldParagraph, info)).andReturn(newParagraph);
@@ -233,15 +229,11 @@ public class RawBookSectionControllerPositiveATest {
 
     private void prepareForSwitch(final String id) {
         logger.debug("Handling choice request '{}' for book.", "s-" + id);
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(wrapper.getPlayer()).andReturn(player);
         logger.debug("Handling paragraph {} for book.", id);
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getPlayer()).andReturn(player);
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(contentInitializer.loadSection(id, player, oldParagraph, info)).andReturn(newParagraph);

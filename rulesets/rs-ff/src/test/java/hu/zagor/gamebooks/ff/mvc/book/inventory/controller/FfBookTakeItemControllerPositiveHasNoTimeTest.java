@@ -69,9 +69,7 @@ public class FfBookTakeItemControllerPositiveHasNoTimeTest {
 
     public void testHandleItemStateChangeWhenHasNoTimeShouldDoNothing() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getActions()).andReturn(0);
         mockControl.replay();
@@ -82,9 +80,7 @@ public class FfBookTakeItemControllerPositiveHasNoTimeTest {
 
     public void testHandleConsumeItemWhenLuckTestingAndCanEatButHasNoTimeShouldNotConsumeItem() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         itemInteractionRecorder.recordItemConsumption(wrapper, "2000");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);

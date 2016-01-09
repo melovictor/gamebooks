@@ -19,12 +19,9 @@ import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import java.util.Arrays;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
@@ -43,43 +40,25 @@ import org.testng.annotations.Test;
 @Test
 public class Ff23BookTakeItemControllerTakeItemTest {
 
-    @MockControl
-    private IMocksControl mockControl;
-    @UnderTest
-    private Ff23BookTakeItemController underTest;
-    @Mock
-    private HttpServletRequest request;
-    @Mock
-    private HttpSession session;
-    @Inject
-    private BeanFactory beanFactory;
-    @Mock
-    private HttpSessionWrapper wrapper;
-    @Inject
-    private ItemInteractionRecorder itemInteractionRecorder;
-    @Mock
-    private Paragraph paragraph;
-    @Mock
-    private FfCharacter character;
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private Ff23BookTakeItemController underTest;
+    @Mock private HttpServletRequest request;
+    @Mock private HttpSession session;
+    @Inject private BeanFactory beanFactory;
+    @Mock private HttpSessionWrapper wrapper;
+    @Inject private ItemInteractionRecorder itemInteractionRecorder;
+    @Mock private Paragraph paragraph;
+    @Mock private FfCharacter character;
     private FfBookInformations info;
-    @Instance
-    private FfCharacterHandler characterHandler;
-    @Mock
-    private FfParagraphData data;
-    @Mock
-    private FfCharacterItemHandler itemHandler;
-    @Mock
-    private FfItem item;
-    @Mock
-    private FfAttributeHandler attributeHandler;
-    @Mock
-    private GatheredLostItem glItem;
-    @Mock
-    private PlayerUser player;
-    @Inject
-    private BookContentInitializer contentInitializer;
-    @Inject
-    private Logger logger;
+    @Instance private FfCharacterHandler characterHandler;
+    @Mock private FfParagraphData data;
+    @Mock private FfCharacterItemHandler itemHandler;
+    @Mock private FfItem item;
+    @Mock private FfAttributeHandler attributeHandler;
+    @Mock private GatheredLostItem glItem;
+    @Mock private PlayerUser player;
+    @Inject private BookContentInitializer contentInitializer;
+    @Inject private Logger logger;
 
     @BeforeClass
     public void setUpClass() {
@@ -258,9 +237,7 @@ public class Ff23BookTakeItemControllerTakeItemTest {
     }
 
     private void expectWrapper() {
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
     }
 
     @AfterMethod

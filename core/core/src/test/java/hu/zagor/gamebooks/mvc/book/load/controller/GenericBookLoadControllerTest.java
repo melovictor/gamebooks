@@ -6,10 +6,7 @@ import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.player.PlayerUser;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -37,7 +34,6 @@ public class GenericBookLoadControllerTest {
     private BookInformations info;
     private HttpServletRequest request;
     private Model model;
-    private HttpSession session;
     private BeanFactory beanFactory;
     private HttpSessionWrapper sessionWrapper;
     private GameStateHandler gameStateHandler;
@@ -49,7 +45,6 @@ public class GenericBookLoadControllerTest {
     public void setUpClass() {
         mockControl = EasyMock.createStrictControl();
         request = mockControl.createMock(HttpServletRequest.class);
-        session = mockControl.createMock(HttpSession.class);
         beanFactory = mockControl.createMock(BeanFactory.class);
         sessionWrapper = mockControl.createMock(HttpSessionWrapper.class);
         gameStateHandler = mockControl.createMock(GameStateHandler.class);
@@ -80,9 +75,7 @@ public class GenericBookLoadControllerTest {
     public void testHandleLoadWhenCalledShouldCallAbstractMethod() {
         // GIVEN
         logger.debug("GenericBookLoadController.load");
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(sessionWrapper);
-        sessionWrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
         expect(sessionWrapper.getPlayer()).andReturn(playerUser);
         expect(playerUser.getId()).andReturn(PLAYER_ID);
         expect(gameStateHandler.generateSavedGameContainer(PLAYER_ID, BOOK_ID)).andReturn(container);

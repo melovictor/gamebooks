@@ -11,11 +11,13 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.exception.InvalidStepChoiceException;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.player.PlayerUser;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
+import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.ui.Model;
@@ -34,41 +36,31 @@ public class RawBookSectionControllerNegativeTest {
     private static final String DEFAULT_TEXT = "<p>This is some sample text.</p><p>This is text. <alt>This is to be replaced.</alt> End of text.</p>";
 
     private RawBookSectionController underTest;
-    private IMocksControl mockControl;
-    private SectionHandlingService sectionHandlingService;
-    private Model model;
-    private HttpServletRequest request;
-    private HttpSession session;
-    private HttpSessionWrapper wrapper;
+    @MockControl private IMocksControl mockControl;
+    @Mock private SectionHandlingService sectionHandlingService;
+    @Mock private Model model;
+    @Mock private HttpServletRequest request;
+    @Mock private HttpSessionWrapper wrapper;
     private Paragraph oldParagraph;
-    private BeanFactory beanFactory;
-    private Logger logger;
-    private ParagraphData data;
+    @Inject private BeanFactory beanFactory;
+    @Inject private Logger logger;
+    @Instance private ParagraphData data;
     private ChoiceSet choices;
     private Choice choice;
     private ChoiceSet choicesMixed;
     private ChoiceSet choicesExtra;
     private Choice choiceWithExtra;
-
-    private PlayerUser player;
+    @Mock private PlayerUser player;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        sectionHandlingService = mockControl.createMock(SectionHandlingService.class);
-        model = mockControl.createMock(Model.class);
-        request = mockControl.createMock(HttpServletRequest.class);
-        session = mockControl.createMock(HttpSession.class);
-        wrapper = mockControl.createMock(HttpSessionWrapper.class);
         oldParagraph = new Paragraph("9", null, Integer.MAX_VALUE);
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        logger = mockControl.createMock(Logger.class);
-        data = new ParagraphData();
         oldParagraph.setData(data);
-        player = mockControl.createMock(PlayerUser.class);
-        underTest = new RawBookSectionController(sectionHandlingService);
-        underTest.setBeanFactory(beanFactory);
-        Whitebox.setInternalState(underTest, "logger", logger);
+    }
+
+    @UnderTest
+    public RawBookSectionController underTest() {
+        return new RawBookSectionController(sectionHandlingService);
     }
 
     @BeforeMethod
@@ -91,9 +83,7 @@ public class RawBookSectionControllerNegativeTest {
     public void testHandleSectionWhenSectionIsWithChoicePositionAndPositionIsInvalidShouldThrowException() {
         // GIVEN
         logger.debug("Handling choice request '{}' for book.", "7");
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(wrapper.getPlayer()).andReturn(player);
         logger.debug("Player tried to navigate to illegal position {}.", 7);

@@ -1,6 +1,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
+<c:set var="paragraphKey" value="paragraph${requestScope.bookInfo.id}" />
+<c:set var="paragraph" value="${sessionScope[paragraphKey]}" scope="request" />
+
 <c:if test="${hideTopSection}">
     <div id="sectionNumber"> &gt;&gt;&gt; &lt;&lt;&lt; </div>
 </c:if>

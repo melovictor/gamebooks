@@ -8,7 +8,6 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.player.PlayerUser;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -41,7 +40,6 @@ public class GenericBookSectionControllerTest {
     private Paragraph newParagraph;
     private Logger logger;
     private GameStateHandler gameStateHandler;
-    private HttpSession session;
 
     @BeforeClass
     public void setUpClass() {
@@ -53,7 +51,6 @@ public class GenericBookSectionControllerTest {
         request = mockControl.createMock(HttpServletRequest.class);
         oldParagraph = mockControl.createMock(Paragraph.class);
         newParagraph = mockControl.createMock(Paragraph.class);
-        session = mockControl.createMock(HttpSession.class);
         info = new BookInformations(1L);
         player = new PlayerUser(9, "FireFoX", false);
         logger = mockControl.createMock(Logger.class);
@@ -97,9 +94,7 @@ public class GenericBookSectionControllerTest {
     public void testLoadSectionWhenInputParametersAreCorrectShouldInitializeContentAndReturnParagraph() {
         // GIVEN
         Whitebox.setInternalState(underTest, "info", info);
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getPlayer()).andReturn(player);
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(contentInitializer.loadSection(PARAGRAPH_ID, player, oldParagraph, info)).andReturn(newParagraph);

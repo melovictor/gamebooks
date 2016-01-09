@@ -7,9 +7,7 @@ import hu.zagor.gamebooks.ff.ff.tcoc.character.Ff2Character;
 import hu.zagor.gamebooks.ff.ff.tcoc.mvc.books.newgame.service.Ff2CharacterGenerator;
 import hu.zagor.gamebooks.ff.mvc.book.newgame.controller.FfBookNewGameController;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
-
-import javax.servlet.http.HttpSession;
-
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,13 +23,13 @@ public class Ff2BookNewGameController extends FfBookNewGameController {
 
     /**
      * Finalizes the character generation process.
-     * @param session the {@link HttpSession} object
+     * @param request the {@link HttpServletRequest} object
      * @param spells the spells selected by the user
      */
     @RequestMapping(value = PageAddresses.BOOK_NEW + "/" + PageAddresses.BOOK_GENERATE_CHARACTER + "2")
     @ResponseBody
-    public void handleGenerate2(final HttpSession session, @RequestParam("spells") final String spells) {
-        final HttpSessionWrapper wrapper = getWrapper(session);
+    public void handleGenerate2(final HttpServletRequest request, @RequestParam("spells") final String spells) {
+        final HttpSessionWrapper wrapper = getWrapper(request);
         final Ff2Character character = (Ff2Character) wrapper.getCharacter();
         final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
         final Ff2CharacterGenerator characterGenerator = (Ff2CharacterGenerator) characterHandler.getCharacterGenerator();

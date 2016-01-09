@@ -16,13 +16,10 @@ import hu.zagor.gamebooks.mvc.book.newgame.controller.AbstractNewGameController;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.raw.character.RawCharacterPageData;
 import hu.zagor.gamebooks.raw.mvc.book.controller.CharacterPageDisplayingController;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
-import javax.servlet.http.HttpSession;
-
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
@@ -36,24 +33,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 public class RawBookNewGameController extends AbstractNewGameController implements CharacterPageDisplayingController {
 
-    @Autowired
-    private BookContentInitializer contentInitializer;
-    @Autowired
-    private GameStateHandler gameStateHandler;
+    @Autowired private BookContentInitializer contentInitializer;
+    @Autowired private GameStateHandler gameStateHandler;
 
     /**
      * Redirects the reader to the background page.
-     * @param session the http session
+     * @param request the {@link HttpServletRequest} object
      * @param model the model
      * @param locale the used locale
      * @return the redirection command
      */
     @RequestMapping(value = PageAddresses.BOOK_NEW)
-    public String handleNew(final HttpSession session, final Model model, final Locale locale) {
+    public String handleNew(final HttpServletRequest request, final Model model, final Locale locale) {
         final BookItemStorage storage = contentInitializer.getItemStorage(getInfo());
         final CharacterHandler characterHandler = getInfo().getCharacterHandler();
         final Character c = getCharacter(locale);
-        final HttpSessionWrapper wrapper = getWrapper(session);
+        final HttpSessionWrapper wrapper = getWrapper(request);
         wrapper.setCharacter(c);
         wrapper.setEnemies(storage.getEnemies());
 
@@ -86,21 +81,21 @@ public class RawBookNewGameController extends AbstractNewGameController implemen
 
     /**
      * Redirects the reader to the background page.
-     * @param session the http session
+     * @param request the {@link HttpServletRequest} object
      * @param model the model
      * @param locale the used locale
      * @param randomInit the numbers with which the random number generator should be initialized
      * @return the redirection command
      */
     @RequestMapping(value = PageAddresses.BOOK_NEW + "-{randomInit}")
-    public String handleNewWithRandomInit(final HttpSession session, final Model model, final Locale locale, @PathVariable("randomInit") final String randomInit) {
+    public String handleNewWithRandomInit(final HttpServletRequest request, final Model model, final Locale locale, @PathVariable("randomInit") final String randomInit) {
         final String[] delimitedListToStringArray = StringUtils.delimitedListToStringArray(randomInit, ",");
         final List<Integer> intValues = new ArrayList<>();
         for (final String value : delimitedListToStringArray) {
             intValues.add(Integer.valueOf(value));
         }
         getBeanFactory().getBean("d6", ReplayingNumberGenerator.class).setUpThrowResultQueue(intValues);
-        return handleNew(session, model, locale);
+        return handleNew(request, model, locale);
     }
 
     /**

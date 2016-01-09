@@ -110,13 +110,9 @@ public class GenericBookTakeItemControllerNegativeTest {
         // GIVEN
         takeData.setAmount(AMOUNT);
         takeData.setItemId(ITEM_ID);
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(sessionWrapper);
-        sessionWrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
         expect(beanFactory.getBean("gatheredLostItem", ITEM_ID, AMOUNT, 0, false)).andReturn(glItem);
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(sessionWrapper);
-        sessionWrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
         expect(sessionWrapper.getPlayer()).andReturn(playerUser);
         expect(sessionWrapper.getParagraph()).andReturn(paragraph);
         contentInitializer.validateItem(glItem, playerUser, paragraph, info);

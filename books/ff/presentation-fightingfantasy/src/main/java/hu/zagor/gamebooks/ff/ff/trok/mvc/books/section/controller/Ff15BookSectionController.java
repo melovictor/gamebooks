@@ -9,6 +9,7 @@ import hu.zagor.gamebooks.ff.ff.trok.character.domain.Ff15ShipAttributes;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.FfBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + FightingFantasy.THE_RINGS_OF_KETHER)
 public class Ff15BookSectionController extends FfBookSectionController {
+    @Autowired private HttpServletRequest request;
 
     /**
      * Constructor expecting the {@link SectionHandlingService} bean.
@@ -36,8 +38,7 @@ public class Ff15BookSectionController extends FfBookSectionController {
     protected void prepareFight(final HttpSessionWrapper wrapper) {
         super.prepareFight(wrapper);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
-        getInfo().getCharacterHandler().getInteractionHandler().setFightCommand(character, "missile",
-            String.valueOf("true".equals(wrapper.getRequest().getParameter("missile"))));
+        getInfo().getCharacterHandler().getInteractionHandler().setFightCommand(character, "missile", String.valueOf("true".equals(request.getParameter("missile"))));
     }
 
     @Override

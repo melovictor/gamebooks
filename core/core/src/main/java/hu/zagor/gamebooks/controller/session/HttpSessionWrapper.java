@@ -5,13 +5,10 @@ import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.player.PlayerUser;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
@@ -25,16 +22,19 @@ import org.springframework.util.Assert;
 @Scope("prototype")
 public class HttpSessionWrapper {
 
+    private static final int BOOK_ID_PART = 3;
+    private final HttpServletRequest request;
     private final HttpSession session;
-    private HttpServletRequest request;
+    private String bookId;
 
     /**
      * Creates a new {@link HttpSessionWrapper} around the given {@link HttpSession} bean.
-     * @param session the bean to wrap, cannot be null
+     * @param request the bean to wrap, cannot be null
      */
-    public HttpSessionWrapper(final HttpSession session) {
-        Assert.notNull(session, "The parameter 'session' cannot be null!");
-        this.session = session;
+    public HttpSessionWrapper(final HttpServletRequest request) {
+        Assert.notNull(request, "The parameter 'request' cannot be null!");
+        this.request = request;
+        session = request.getSession();
     }
 
     public PlayerUser getPlayer() {
@@ -42,7 +42,7 @@ public class HttpSessionWrapper {
     }
 
     public Character getCharacter() {
-        return (Character) session.getAttribute(ControllerAddresses.CHARACTER_STORE_KEY);
+        return (Character) session.getAttribute(ControllerAddresses.CHARACTER_STORE_KEY + getBookId());
     }
 
     /**
@@ -52,7 +52,7 @@ public class HttpSessionWrapper {
      */
     public Character setCharacter(final Character character) {
         Assert.notNull(character, "The parameter 'character' cannot be null!");
-        session.setAttribute(ControllerAddresses.CHARACTER_STORE_KEY, character);
+        session.setAttribute(ControllerAddresses.CHARACTER_STORE_KEY + getBookId(), character);
         return character;
     }
 
@@ -62,7 +62,7 @@ public class HttpSessionWrapper {
      */
     @SuppressWarnings("unchecked")
     public Map<String, Enemy> getEnemies() {
-        Map<String, Enemy> enemies = (Map<String, Enemy>) session.getAttribute(ControllerAddresses.ENEMY_STORE_KEY);
+        Map<String, Enemy> enemies = (Map<String, Enemy>) session.getAttribute(ControllerAddresses.ENEMY_STORE_KEY + getBookId());
         if (enemies == null) {
             enemies = new HashMap<>();
             setEnemies(enemies);
@@ -77,12 +77,12 @@ public class HttpSessionWrapper {
      */
     public Map<String, Enemy> setEnemies(final Map<String, Enemy> map) {
         Assert.notNull(map, "The parameter 'enemies' cannot be null!");
-        session.setAttribute(ControllerAddresses.ENEMY_STORE_KEY, map);
+        session.setAttribute(ControllerAddresses.ENEMY_STORE_KEY + getBookId(), map);
         return map;
     }
 
     public Paragraph getParagraph() {
-        return (Paragraph) session.getAttribute(ControllerAddresses.PARAGRAPH_STORE_KEY);
+        return (Paragraph) session.getAttribute(ControllerAddresses.PARAGRAPH_STORE_KEY + getBookId());
     }
 
     /**
@@ -92,7 +92,7 @@ public class HttpSessionWrapper {
      */
     public Paragraph setParagraph(final Paragraph paragraph) {
         Assert.notNull(paragraph, "The parameter 'paragraph' cannot be null!");
-        session.setAttribute(ControllerAddresses.PARAGRAPH_STORE_KEY, paragraph);
+        session.setAttribute(ControllerAddresses.PARAGRAPH_STORE_KEY + getBookId(), paragraph);
         return paragraph;
     }
 
@@ -111,12 +111,11 @@ public class HttpSessionWrapper {
         return (Model) session.getAttribute(ControllerAddresses.MODEL_STORE_KEY);
     }
 
-    public HttpServletRequest getRequest() {
-        return request;
-    }
-
-    public void setRequest(final HttpServletRequest request) {
-        this.request = request;
+    private String getBookId() {
+        if (bookId == null) {
+            bookId = request.getRequestURI().split("/")[BOOK_ID_PART];
+        }
+        return bookId;
     }
 
 }

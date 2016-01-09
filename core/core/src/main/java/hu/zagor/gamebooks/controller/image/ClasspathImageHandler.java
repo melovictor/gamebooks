@@ -134,9 +134,7 @@ public class ClasspathImageHandler implements ImageHandler, BeanFactoryAware {
     }
 
     private HttpSessionWrapper getWrapper(final HttpServletRequest request) {
-        final HttpSessionWrapper wrapper = (HttpSessionWrapper) beanFactory.getBean("httpSessionWrapper", request.getSession());
-        wrapper.setRequest(request);
-        return wrapper;
+        return (HttpSessionWrapper) beanFactory.getBean("httpSessionWrapper", request);
     }
 
     @Override

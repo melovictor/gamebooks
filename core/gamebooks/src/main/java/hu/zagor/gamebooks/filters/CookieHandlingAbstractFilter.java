@@ -4,9 +4,7 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.player.PlayerSettings;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.player.settings.UserSettingsHandler;
-
 import java.io.IOException;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -73,9 +71,7 @@ public abstract class CookieHandlingAbstractFilter extends AbstractHttpFilter {
      * @return the currently logged-in player or null if the player hasn't logged in yet in the current session
      */
     protected PlayerUser getPlayer(final HttpServletRequest request) {
-        final HttpSessionWrapper wrapper = new HttpSessionWrapper(request.getSession());
-        final PlayerUser player = wrapper.getPlayer();
-        return player;
+        return new HttpSessionWrapper(request).getPlayer();
     }
 
     public static void setSettingsHandler(final UserSettingsHandler settingsHandler) {

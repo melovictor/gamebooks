@@ -11,13 +11,9 @@ import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
 import hu.zagor.gamebooks.raw.mvc.book.newgame.controller.RawBookNewGameController;
-
 import java.util.Locale;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,8 +25,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class FfBookNewGameController extends RawBookNewGameController {
 
     @Override
-    public String handleNew(final HttpSession session, final Model model, final Locale locale) {
-        super.handleNew(session, model, locale);
+    public String handleNew(final HttpServletRequest request, final Model model, final Locale locale) {
+        super.handleNew(request, model, locale);
 
         model.addAttribute("ffChoiceClass", "ffChoiceHidden");
         addJsResource(model, "ff");

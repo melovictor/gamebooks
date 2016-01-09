@@ -9,9 +9,7 @@ import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import java.util.Locale;
-
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.springframework.context.HierarchicalMessageSource;
@@ -27,23 +25,14 @@ import org.testng.annotations.Test;
 @Test
 public class DogPieceMoverTest {
 
-    @MockControl
-    private IMocksControl mockControl;
-    @UnderTest
-    private DogPieceMover underTest;
-
-    @Mock
-    private FfCharacter character;
-    @Mock
-    private FfUserInteractionHandler interactionHandler;
-    @Mock
-    private HuntRoundResult result;
-    @Inject
-    private RandomNumberGenerator generator;
-    @Inject
-    private HierarchicalMessageSource messageSource;
-    @Inject
-    private LocaleProvider localeProvider;
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private DogPieceMover underTest;
+    @Mock private FfCharacter character;
+    @Mock private FfUserInteractionHandler interactionHandler;
+    @Mock private HuntRoundResult result;
+    @Inject private RandomNumberGenerator generator;
+    @Inject private HierarchicalMessageSource messageSource;
+    @Inject private LocaleProvider localeProvider;
 
     @BeforeMethod
     public void setUpMethod() {

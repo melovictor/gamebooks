@@ -14,7 +14,6 @@ import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.content.choice.ChoicePositionComparator;
 import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.content.choice.DefaultChoiceSet;
-import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.domain.ResourceInformation;
@@ -26,16 +25,15 @@ import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.recording.NavigationRecorder;
 import hu.zagor.gamebooks.recording.UserInteractionRecorder;
-
-import java.util.HashMap;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.Map;
 import java.util.Set;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
@@ -57,85 +55,54 @@ public class FfBookSectionControllerTest {
     private static final Boolean LUCK_ON_HIT = true;
     private static final Boolean LUCK_ON_DEFENSE = false;
     private FfBookSectionController underTest;
-    private IMocksControl mockControl;
-    private SectionHandlingService sectionHandlingService;
-    private Model model;
-    private HttpServletRequest request;
-    private HttpSession session;
-    private HttpSessionWrapper wrapper;
+    @MockControl private IMocksControl mockControl;
+    @Mock private SectionHandlingService sectionHandlingService;
+    @Mock private Model model;
+    @Mock private HttpServletRequest request;
+    @Mock private HttpSessionWrapper wrapper;
     private Paragraph oldParagraph;
-    private BeanFactory beanFactory;
-    private Logger logger;
+    @Inject private BeanFactory beanFactory;
+    @Inject private Logger logger;
     private FfBookInformations info;
-    private FfCharacterHandler characterHandler;
-    private FfCharacter character;
-    private CharacterParagraphHandler paragraphHandler;
+    @Instance private FfCharacterHandler characterHandler;
+    @Instance private FfCharacter character;
+    @Mock private CharacterParagraphHandler paragraphHandler;
     private PlayerUser player;
-    private FfRuleBookParagraphResolver paragraphResolver;
-    private FfCharacterPageData charPageData;
-    private BookContentInitializer contentInitializer;
-    private FfParagraphData oldData;
-    private Map<String, Enemy> enemies;
-    private FfUserInteractionHandler interactionHandler;
+    @Mock private FfRuleBookParagraphResolver paragraphResolver;
+    @Mock private FfCharacterPageData charPageData;
+    @Mock private FfParagraphData oldData;
+    @Instance private Map<String, Enemy> enemies;
+    @Mock private FfUserInteractionHandler interactionHandler;
     private ChoiceSet choiceSet;
-    private UserInteractionRecorder interactionRecorder;
-    private NavigationRecorder navigationRecorder;
-    private Map<String, Object> modelMap;
-    private StaticResourceDescriptor staticResourceDescriptor;
-    private Set<String> resourceSet;
-    private ResourceInformation resources;
+    @Inject private UserInteractionRecorder interactionRecorder;
+    @Inject private NavigationRecorder navigationRecorder;
+    @Mock private Map<String, Object> modelMap;
+    @Mock private StaticResourceDescriptor staticResourceDescriptor;
+    @Mock private Set<String> resourceSet;
+    @Instance private ResourceInformation resources;
 
-    @SuppressWarnings("unchecked")
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        sectionHandlingService = mockControl.createMock(SectionHandlingService.class);
-        model = mockControl.createMock(Model.class);
-        request = mockControl.createMock(HttpServletRequest.class);
-        session = mockControl.createMock(HttpSession.class);
-        wrapper = mockControl.createMock(HttpSessionWrapper.class);
         oldParagraph = new Paragraph("9", null, Integer.MAX_VALUE);
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        logger = mockControl.createMock(Logger.class);
         info = new FfBookInformations(1L);
-        resources = new ResourceInformation();
         resources.setCssResources("ff15,tm2");
         resources.setJsResources("ff15");
         info.setResources(resources);
-        characterHandler = new FfCharacterHandler();
-        interactionHandler = mockControl.createMock(FfUserInteractionHandler.class);
         characterHandler.setInteractionHandler(interactionHandler);
-        paragraphHandler = mockControl.createMock(CharacterParagraphHandler.class);
         characterHandler.setParagraphHandler(paragraphHandler);
         info.setCharacterHandler(characterHandler);
-        character = new FfCharacter();
         player = new PlayerUser(3, "FireFoX", false);
-        paragraphResolver = mockControl.createMock(FfRuleBookParagraphResolver.class);
         info.setParagraphResolver(paragraphResolver);
-        charPageData = mockControl.createMock(FfCharacterPageData.class);
-        contentInitializer = mockControl.createMock(BookContentInitializer.class);
         player.getSettings().setImageTypeOrder("bwFirst");
-        oldData = mockControl.createMock(FfParagraphData.class);
         oldParagraph.setData(oldData);
-        enemies = new HashMap<String, Enemy>();
         choiceSet = new DefaultChoiceSet(new ChoicePositionComparator());
         choiceSet.add(new Choice("100a", null, 1, null));
-        navigationRecorder = mockControl.createMock(NavigationRecorder.class);
-        interactionRecorder = mockControl.createMock(UserInteractionRecorder.class);
-        resourceSet = mockControl.createMock(Set.class);
-        staticResourceDescriptor = mockControl.createMock(StaticResourceDescriptor.class);
-        modelMap = mockControl.createMock(Map.class);
-        setUpUnderTest();
+        Whitebox.setInternalState(underTest, "info", info);
     }
 
-    private void setUpUnderTest() {
-        underTest = new FfBookSectionController(sectionHandlingService);
-        underTest.setBeanFactory(beanFactory);
-        Whitebox.setInternalState(underTest, "logger", logger);
-        Whitebox.setInternalState(underTest, "info", info);
-        Whitebox.setInternalState(underTest, "contentInitializer", contentInitializer);
-        Whitebox.setInternalState(underTest, "navigationRecorder", navigationRecorder);
-        Whitebox.setInternalState(underTest, "interactionRecorder", interactionRecorder);
+    @UnderTest
+    public FfBookSectionController underTest() {
+        return new FfBookSectionController(sectionHandlingService);
     }
 
     @BeforeMethod
@@ -241,9 +208,7 @@ public class FfBookSectionControllerTest {
     }
 
     private void expectWrapper() {
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
     }
 
     @AfterMethod

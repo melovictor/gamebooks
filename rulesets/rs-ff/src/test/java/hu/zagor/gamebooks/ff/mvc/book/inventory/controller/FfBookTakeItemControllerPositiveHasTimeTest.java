@@ -74,9 +74,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
 
     public void testHandleItemStateChangeWhenHasStateShouldRequestItemStateChange() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getActions()).andReturn(10);
         paragraph.setActions(9);
@@ -91,9 +89,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
 
     public void testHandleConsumeItemWhenFightingShouldDoNothing() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         itemInteractionRecorder.recordItemConsumption(wrapper, "2000");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
@@ -108,9 +104,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
 
     public void testHandleConsumeItemWhenLuckTestingAndCanEatEverywhereShouldConsumeItem() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         itemInteractionRecorder.recordItemConsumption(wrapper, "2000");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
@@ -133,9 +127,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
     public void testHandleConsumeItemWhenLuckTestingAndCanEatHereShouldConsumeItem() {
         // GIVEN
         characterHandler.setCanEatEverywhere(false);
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         itemInteractionRecorder.recordItemConsumption(wrapper, "2000");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
@@ -158,9 +150,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
 
     public void testHandleConsumeItemWhenLuckTestingAndCanNotEatHereShouldDoNothing() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         itemInteractionRecorder.recordItemConsumption(wrapper, "2000");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
@@ -179,9 +169,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
 
     public void testHandleConsumeItemWhenNoViewNameIsAvailableAndCanEatHereShouldConsumeItem() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         itemInteractionRecorder.recordItemConsumption(wrapper, "2000");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
@@ -205,9 +193,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
 
     public void testHandleConsumeItemWhenNoEventIsOngoingAndCanEatHereShouldConsumeItem() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         itemInteractionRecorder.recordItemConsumption(wrapper, "2000");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
@@ -230,9 +216,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
 
     public void testHandleMarketBuyWhenInputDataIsCorrectShouldCallMarketHandler() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(data);
@@ -247,9 +231,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
 
     public void testHandleMarketSellWhenInputDataIsCorrectShouldCallMarketHandler() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(data);

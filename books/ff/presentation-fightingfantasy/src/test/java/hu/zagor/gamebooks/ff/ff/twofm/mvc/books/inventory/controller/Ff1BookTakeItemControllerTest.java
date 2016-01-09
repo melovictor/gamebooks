@@ -13,10 +13,7 @@ import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -38,7 +35,6 @@ public class Ff1BookTakeItemControllerTest {
     private IMocksControl mockControl;
     private Ff1BookTakeItemController underTest;
     private HttpServletRequest request;
-    private HttpSession session;
     private BeanFactory beanFactory;
     private HttpSessionWrapper wrapper;
     private Paragraph paragraph;
@@ -79,7 +75,6 @@ public class Ff1BookTakeItemControllerTest {
         itemInteractionRecorder = mockControl.createMock(ItemInteractionRecorder.class);
         Whitebox.setInternalState(underTest, "logger", logger);
         Whitebox.setInternalState(underTest, "itemInteractionRecorder", itemInteractionRecorder);
-        session = mockControl.createMock(HttpSession.class);
         attributeHandler = mockControl.createMock(FfAttributeHandler.class);
         characterHandler.setAttributeHandler(attributeHandler);
     }
@@ -175,9 +170,7 @@ public class Ff1BookTakeItemControllerTest {
     }
 
     private void getWrapper() {
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
     }
 
 }

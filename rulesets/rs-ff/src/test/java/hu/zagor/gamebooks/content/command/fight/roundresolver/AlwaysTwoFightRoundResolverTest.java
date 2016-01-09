@@ -4,10 +4,8 @@ import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.Assert;
@@ -22,19 +20,13 @@ import org.testng.annotations.Test;
 @Test
 public class AlwaysTwoFightRoundResolverTest {
 
-    @MockControl
-    private IMocksControl mockControl;
-    @UnderTest
-    private AlwaysTwoFightRoundResolver underTest;
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private AlwaysTwoFightRoundResolver underTest;
     private List<FfEnemy> resolvedEnemies;
-    @Mock
-    private List<String> enemies;
-    @Instance
-    private FfEnemy enemyA;
-    @Instance
-    private FfEnemy enemyB;
-    @Instance
-    private FfEnemy enemyC;
+    @Mock private List<String> enemies;
+    @Instance private FfEnemy enemyA;
+    @Instance private FfEnemy enemyB;
+    @Instance private FfEnemy enemyC;
 
     @BeforeMethod
     public void setUpMethod() {

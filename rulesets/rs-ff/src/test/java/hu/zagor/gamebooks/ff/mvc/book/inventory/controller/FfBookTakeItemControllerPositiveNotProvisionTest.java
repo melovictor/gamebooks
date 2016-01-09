@@ -73,9 +73,7 @@ public class FfBookTakeItemControllerPositiveNotProvisionTest {
 
     public void testHandleConsumeItemWhenNoEventIsOngoingAndWeAreDrinkingShouldConsumeItem() {
         // GIVEN
-        expect(request.getSession()).andReturn(session);
-        expect(beanFactory.getBean("httpSessionWrapper", session)).andReturn(wrapper);
-        wrapper.setRequest(request);
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         itemInteractionRecorder.recordItemConsumption(wrapper, "2001");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);

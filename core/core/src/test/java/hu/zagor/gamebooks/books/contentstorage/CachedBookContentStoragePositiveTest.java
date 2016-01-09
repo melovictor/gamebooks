@@ -53,7 +53,7 @@ public class CachedBookContentStoragePositiveTest {
     }
 
     @UnderTest
-    public Object underTest() {
+    public CachedBookContentStorage underTest() {
         return new CachedBookContentStorage(bookContentLoader);
     }
 

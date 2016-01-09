@@ -3,7 +3,7 @@ package hu.zagor.gamebooks.tm.mvc.book.newgame.controller;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.raw.mvc.book.newgame.controller.RawBookNewGameController;
 import java.util.Locale;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 
 /**
@@ -13,8 +13,8 @@ import org.springframework.ui.Model;
 public class TmBookNewGameController extends RawBookNewGameController {
 
     @Override
-    public String handleNew(final HttpSession session, final Model model, final Locale locale) {
-        super.handleNew(session, model, locale);
+    public String handleNew(final HttpServletRequest request, final Model model, final Locale locale) {
+        super.handleNew(request, model, locale);
         addCssResource(model, "tm");
         return "tmSection";
     }

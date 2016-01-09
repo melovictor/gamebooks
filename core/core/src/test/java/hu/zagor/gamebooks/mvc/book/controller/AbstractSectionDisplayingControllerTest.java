@@ -42,7 +42,7 @@ public class AbstractSectionDisplayingControllerTest {
     @Instance private ResourceInformation filledResourceInfo;
 
     @UnderTest
-    public Object underTest() {
+    public AbstractSectionDisplayingController underTest() {
         return new AbstractSectionDisplayingController() {
         };
     }

@@ -18,7 +18,6 @@ import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.Assert;
@@ -35,36 +34,22 @@ import org.testng.annotations.Test;
 @Test
 public class SingleFf23FightRoundResolverTest {
 
-    @MockControl
-    private IMocksControl mockControl;
-    @UnderTest
-    private SingleFf23FightRoundResolver underTest;
-    @Inject
-    private FightRoundResolver superResolver;
-    @Inject
-    private RandomNumberGenerator generator;
-    @Inject
-    private DiceResultRenderer renderer;
-    @Mock
-    private FightCommand command;
-    @Instance
-    private ResolvationData resolvationData;
-    @Mock
-    private FightBeforeRoundResult beforeRoundResult;
-    @Mock
-    private FfCharacter character;
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private SingleFf23FightRoundResolver underTest;
+    @Inject private FightRoundResolver superResolver;
+    @Inject private RandomNumberGenerator generator;
+    @Inject private DiceResultRenderer renderer;
+    @Mock private FightCommand command;
+    @Instance private ResolvationData resolvationData;
+    @Mock private FightBeforeRoundResult beforeRoundResult;
+    @Mock private FfCharacter character;
     private BookInformations info;
-    @Instance
-    private CharacterHandler characterHandler;
-    @Mock
-    private FfUserInteractionHandler interactionHandler;
+    @Instance private CharacterHandler characterHandler;
+    @Mock private FfUserInteractionHandler interactionHandler;
     private FightRoundResult[] resolveResult;
-    @Mock
-    private FightCommandMessageList messages;
-    @Mock
-    private CharacterItemHandler itemHandler;
-    @Mock
-    private FfItem item;
+    @Mock private FightCommandMessageList messages;
+    @Mock private CharacterItemHandler itemHandler;
+    @Mock private FfItem item;
 
     @BeforeClass
     public void setUpClass() {

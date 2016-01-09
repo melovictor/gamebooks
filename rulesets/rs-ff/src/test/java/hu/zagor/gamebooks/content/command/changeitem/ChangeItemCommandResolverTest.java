@@ -10,14 +10,12 @@ import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.Assert;
@@ -34,21 +32,14 @@ import org.testng.annotations.Test;
 public class ChangeItemCommandResolverTest {
 
     private static final String ITEM_ID = "1005";
-    @UnderTest
-    private ChangeItemCommandResolver underTest;
-    @MockControl
-    private IMocksControl mockControl;
-    @Instance
-    private ChangeItemCommand command;
-    @Instance
-    private ResolvationData resolvationData;
-    @Mock
-    private FfCharacter character;
+    @UnderTest private ChangeItemCommandResolver underTest;
+    @MockControl private IMocksControl mockControl;
+    @Instance private ChangeItemCommand command;
+    @Instance private ResolvationData resolvationData;
+    @Mock private FfCharacter character;
     private BookInformations info;
-    @Instance
-    private FfCharacterHandler characterHandler;
-    @Mock
-    private FfCharacterItemHandler itemHandler;
+    @Instance private FfCharacterHandler characterHandler;
+    @Mock private FfCharacterItemHandler itemHandler;
     private FfItem item;
     private FfItem itemB;
 
