@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 public class SorCharacter extends FfCharacter {
     private final Map<String, String> characterSaveLocations = new HashMap<>();
     private boolean wizard;
+    private int lastEatenBonus;
 
     /**
      * Default constructor that prefills the save locations.
@@ -78,5 +79,13 @@ public class SorCharacter extends FfCharacter {
 
     public Map<String, String> getCharacterSaveLocations() {
         return characterSaveLocations;
+    }
+
+    public int getLastEatenBonus() {
+        return lastEatenBonus;
+    }
+
+    public void setLastEatenBonus(final int lastEatenBonus) {
+        this.lastEatenBonus = lastEatenBonus;
     }
 }

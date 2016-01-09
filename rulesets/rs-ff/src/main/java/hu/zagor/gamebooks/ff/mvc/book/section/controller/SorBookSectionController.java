@@ -30,6 +30,7 @@ public class SorBookSectionController extends FfBookSectionController {
     protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
         final SorCharacter character = (SorCharacter) wrapper.getCharacter();
         saveCharacterIfNecessary(character, paragraph.getId());
+        character.setLastEatenBonus(0);
     }
 
     private void saveCharacterIfNecessary(final SorCharacter character, final String sectionIdentifier) {

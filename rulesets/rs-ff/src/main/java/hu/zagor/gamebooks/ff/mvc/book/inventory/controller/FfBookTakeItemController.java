@@ -138,7 +138,7 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
         final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
         final FfItem item = (FfItem) itemHandler.getItem(character, itemId);
         if (notFighting(commandView)) {
-            if (!isFood(item) || canEatHere(paragraph)) {
+            if (itemConsumptionAllowed(paragraph, item)) {
                 final int totalActions = paragraph.getActions();
                 final int consumeTime = item.getActions();
                 if (totalActions >= consumeTime) {
@@ -148,6 +148,16 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
             }
         }
         return null;
+    }
+
+    /**
+     * Checks whether the specific item is permitted for consumption at this location.
+     * @param paragraph the {@link Paragraph} where we are
+     * @param item the {@link FfItem} to consume
+     * @return true if consumption is allowed, false otherwise
+     */
+    protected boolean itemConsumptionAllowed(final Paragraph paragraph, final FfItem item) {
+        return !isFood(item) || canEatHere(paragraph);
     }
 
     /**
