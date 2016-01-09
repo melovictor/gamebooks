@@ -6,6 +6,7 @@ public class Sorcery {
 
     public static final String TITLE = "SORCERY";
 
+    public static final long THE_SORCERY_SPELL_BOOK = BASE + 0;
     public static final long THE_SHAMUTANTI_HILLS = BASE + 1;
     public static final long KHARE_CITYPORT_OF_TRAPS = BASE + 2;
     public static final long THE_SEVEN_SERPENTS = BASE + 3;

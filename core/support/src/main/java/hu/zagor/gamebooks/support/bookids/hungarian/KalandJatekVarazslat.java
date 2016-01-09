@@ -6,6 +6,7 @@ public class KalandJatekVarazslat {
 
     public static final String TITLE = "Kaland, Játék, Varázslat";
 
+    public static final long A_VARAZSLATOK_KONYVE = BASE + 0;
     public static final long A_SHAMUTANTI_DOMBOK = BASE + 1;
     public static final long KHARE_A_CSAPDAK_KIKOTOVAROSA = BASE + 2;
     public static final long HET_SARKANYKIGYO = BASE + 3;
