@@ -2,6 +2,9 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
+  <bean parent="ffCharacterHandler" id="sorCharacterHandler" class="hu.zagor.gamebooks.character.handler.FfCharacterHandler" p:characterGenerator-ref="sorCharacterGenerator"
+    p:canEatEverywhere="false" />
+
   <bean class="hu.zagor.gamebooks.ff.section.SorRuleBookParagraphDataTransformer" id="sorRuleBookParagraphDataTransformer" parent="ffRuleBookParagraphDataTransformer" p:stubTransformers-ref="sorStubTransformers" />
   <bean class="hu.zagor.gamebooks.books.contentransforming.section.DefaultBookParagraphTransformer" id="sorRuleBookParagraphTransformer" p:paragraphDataTransformer-ref="sorRuleBookParagraphDataTransformer" p:validSectionTags-ref="validSectionTagNames" />
 
