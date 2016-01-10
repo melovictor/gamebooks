@@ -131,9 +131,7 @@ public class RawBookSectionControllerPositiveATest {
         expectWrapper();
         paragraphResolver.resolve(anyObject(ResolvationData.class), eq(newParagraph));
         newParagraph.calculateValidEvents();
-        expect(wrapper.getCharacter()).andReturn(character);
-        expect(beanFactory.getBean("rawCharacterPageData", character)).andReturn(charPageData);
-        expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
+        expectCpDataInsertion();
         expect(sectionHandlingService.handleSection(model, wrapper, newParagraph, info)).andReturn("done");
         expect(newParagraph.getData()).andReturn(data);
         expect(newParagraph.getData()).andReturn(data);
@@ -141,6 +139,7 @@ public class RawBookSectionControllerPositiveATest {
         expect(wrapper.setModel(model)).andReturn(model);
         navigationRecorder.recordNavigation(wrapper, "s-9", oldParagraph, newParagraph);
         expectResources();
+        expectCpDataInsertion();
         mockControl.replay();
         // WHEN
         final String returned = underTest.handleSection(model, request, "s-9");
@@ -168,9 +167,7 @@ public class RawBookSectionControllerPositiveATest {
         expectWrapper();
         paragraphResolver.resolve(anyObject(ResolvationData.class), eq(newParagraph));
         newParagraph.calculateValidEvents();
-        expect(wrapper.getCharacter()).andReturn(character);
-        expect(beanFactory.getBean("rawCharacterPageData", character)).andReturn(charPageData);
-        expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
+        expectCpDataInsertion();
         expect(sectionHandlingService.handleSection(model, wrapper, newParagraph, info)).andReturn("done");
         expect(newParagraph.getData()).andReturn(data);
         expect(newParagraph.getData()).andReturn(data);
@@ -178,6 +175,7 @@ public class RawBookSectionControllerPositiveATest {
         expect(wrapper.setModel(model)).andReturn(model);
         navigationRecorder.recordNavigation(wrapper, "1", oldParagraph, newParagraph);
         expectResources();
+        expectCpDataInsertion();
         mockControl.replay();
         // WHEN
         final String returned = underTest.handleSection(model, request, "1");
@@ -196,9 +194,7 @@ public class RawBookSectionControllerPositiveATest {
         expectWrapper();
         paragraphResolver.resolve(anyObject(ResolvationData.class), eq(newParagraph));
         newParagraph.calculateValidEvents();
-        expect(wrapper.getCharacter()).andReturn(character);
-        expect(beanFactory.getBean("rawCharacterPageData", character)).andReturn(charPageData);
-        expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
+        expectCpDataInsertion();
         expect(sectionHandlingService.handleSection(model, wrapper, newParagraph, info)).andReturn("done");
         expect(newParagraph.getData()).andReturn(data);
         expect(newParagraph.getData()).andReturn(data);
@@ -206,6 +202,7 @@ public class RawBookSectionControllerPositiveATest {
         expect(wrapper.setModel(model)).andReturn(model);
         navigationRecorder.recordNavigation(wrapper, "s-10", oldParagraph, newParagraph);
         expectResources();
+        expectCpDataInsertion();
         mockControl.replay();
         // WHEN
         final String returned = underTest.handleSection(model, request, "s-10");
@@ -260,6 +257,12 @@ public class RawBookSectionControllerPositiveATest {
         expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getEnemies()).andReturn(enemies);
         expect(wrapper.getPlayer()).andReturn(player);
+    }
+
+    private void expectCpDataInsertion() {
+        expect(wrapper.getCharacter()).andReturn(character);
+        expect(beanFactory.getBean("rawCharacterPageData", character)).andReturn(charPageData);
+        expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
     }
 
     @AfterMethod

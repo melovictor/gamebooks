@@ -117,7 +117,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
         wrapper.setModel(model);
         navigationRecorder.recordNavigation(wrapper, sectionIdentifier, previousParagraph, paragraph);
         addResources(model);
-
+        model.addAttribute("charEquipments", getCharacterPageData(wrapper.getCharacter()));
         return bookPage;
     }
 

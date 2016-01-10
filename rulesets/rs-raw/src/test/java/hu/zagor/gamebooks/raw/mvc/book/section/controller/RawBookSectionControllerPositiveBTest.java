@@ -129,9 +129,7 @@ public class RawBookSectionControllerPositiveBTest {
         expect(wrapper.getPlayer()).andReturn(player);
         paragraphResolver.resolve(anyObject(ResolvationData.class), eq(newParagraph));
         newParagraph.calculateValidEvents();
-        expect(wrapper.getCharacter()).andReturn(character);
-        expect(beanFactory.getBean("rawCharacterPageData", character)).andReturn(charPageData);
-        expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
+        expectCpDataInsertion();
         expect(sectionHandlingService.handleSection(model, wrapper, newParagraph, info)).andReturn("done");
         expect(newParagraph.getData()).andReturn(data);
         expect(newParagraph.getData()).andReturn(data);
@@ -140,12 +138,19 @@ public class RawBookSectionControllerPositiveBTest {
         expect(wrapper.setModel(model)).andReturn(model);
         navigationRecorder.recordNavigation(wrapper, "s-9", oldParagraph, newParagraph);
         expectResources();
+        expectCpDataInsertion();
         mockControl.replay();
         // WHEN
         final String returned = underTest.handleSection(model, request, "s-9");
         // THEN
         Assert.assertEquals(data.getText(), DEFAULT_TEXT_WITHOUT_ALT);
         Assert.assertEquals(returned, "done");
+    }
+
+    private void expectCpDataInsertion() {
+        expect(wrapper.getCharacter()).andReturn(character);
+        expect(beanFactory.getBean("rawCharacterPageData", character)).andReturn(charPageData);
+        expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
     }
 
     private void expectResources() {
