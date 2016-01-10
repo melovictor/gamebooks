@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.books.saving;
 
+import hu.zagor.gamebooks.ControllerAddresses;
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.directory.DirectoryProvider;
@@ -80,7 +81,7 @@ public abstract class AbstractGameStateHandler implements GameStateHandler, Bean
 
     private boolean saveGamePositionIsCorrect(final SavedGameContainer container, final String previousBookLastSectionId) {
         loadGame(container);
-        final Paragraph paragraph = (Paragraph) container.getElement("paragraph");
+        final Paragraph paragraph = (Paragraph) container.getElement(ControllerAddresses.PARAGRAPH_STORE_KEY);
         return previousBookLastSectionId.equals(paragraph.getId());
     }
 
