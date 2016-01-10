@@ -132,10 +132,18 @@ public class RawBookSectionController extends GenericBookSectionController imple
     protected void resolveChoiceDisplayNames(final Paragraph paragraph) {
         final ChoiceSet choices = paragraph.getData().getChoices();
         for (final Choice choice : choices) {
-            final String paragraphId = choice.getId();
-            final String paragraphDisplayId = resolveParagraphDisplayId(paragraphId);
-            choice.setDisplay(paragraphDisplayId);
+            resolveSingleChoiceDisplayName(choice);
         }
+    }
+
+    /**
+     * Resolves the display name for a single choice.
+     * @param choice the {@link Choice} to resolve the display name for
+     */
+    protected void resolveSingleChoiceDisplayName(final Choice choice) {
+        final String paragraphId = choice.getId();
+        final String paragraphDisplayId = resolveParagraphDisplayId(paragraphId);
+        choice.setDisplay(paragraphDisplayId);
     }
 
     private String resolveParagraphDisplayId(final String paragraphId) {

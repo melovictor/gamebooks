@@ -2,10 +2,13 @@ package hu.zagor.gamebooks.ff.mvc.book.section.controller;
 
 import hu.zagor.gamebooks.books.saving.xml.XmlGameStateSaver;
 import hu.zagor.gamebooks.content.Paragraph;
+import hu.zagor.gamebooks.content.SorParagraphData;
+import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
 import hu.zagor.gamebooks.mvc.book.section.controller.GenericBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -40,6 +43,17 @@ public class SorBookSectionController extends FfBookSectionController {
         if (characterSaveLocations.containsKey(identifier)) {
             final String savedCharacter = gameStateSaver.save(character);
             characterSaveLocations.put(identifier, savedCharacter);
+        }
+    }
+
+    @Override
+    protected void resolveChoiceDisplayNames(final Paragraph paragraph) {
+        super.resolveChoiceDisplayNames(paragraph);
+
+        final SorParagraphData data = (SorParagraphData) paragraph.getData();
+        final List<Choice> choices = data.getSpellChoices();
+        for (final Choice choice : choices) {
+            resolveSingleChoiceDisplayName(choice);
         }
     }
 

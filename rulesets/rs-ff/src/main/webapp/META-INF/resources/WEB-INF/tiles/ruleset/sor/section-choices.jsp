@@ -12,7 +12,7 @@
 		                <a href="${linkPrefix}${choice.position}">
 			                ${spell.text}
 			                <c:if test="${!hideChoiceSection}">
-			                    (${spell.id})
+			                    (${spell.display})
 			                </c:if>
 		                </a>
                     </div>
