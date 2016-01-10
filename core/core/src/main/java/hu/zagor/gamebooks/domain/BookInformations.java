@@ -30,6 +30,7 @@ public class BookInformations implements Comparable<BookInformations> {
     private boolean hidden;
     private boolean unfinished;
     private String helpBeanId;
+    private ContinuationData continuationData;
 
     private String characterBeanId = "character";
     private String characterPageDataBeanId = "rawCharacterPageData";
@@ -213,6 +214,14 @@ public class BookInformations implements Comparable<BookInformations> {
 
     public Long getSeriesId() {
         return id / Series.SERIES_MULTIPLIER;
+    }
+
+    public ContinuationData getContinuationData() {
+        return continuationData;
+    }
+
+    public void setContinuationData(final ContinuationData continuationData) {
+        this.continuationData = continuationData;
     }
 
 }

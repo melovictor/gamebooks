@@ -16,6 +16,10 @@
 			<c:url var="loadGameUrl" value="load" />
 			<li><a href="${loadGameUrl}"><spring:message code="page.book.welcome.load" /></a></li>
 		</c:if>
+		<c:if test="${canContinuePrevious}">
+		    <c:url var="continueGameUrl" value="loadPrevious" />
+		    <li><a href="${continueGameUrl}"><spring:message code="page.book.welcome.continue" /></a></li>
+		</c:if>
 		<c:if test="${haveRules}">
             <c:url var="rulesUrl" value="../../rules/${bookInfo.id}" />
 			<li><a href="${rulesUrl}" target="_blank" data-no-multi-navigation><spring:message code="page.book.welcome.readRules" /></a></li>

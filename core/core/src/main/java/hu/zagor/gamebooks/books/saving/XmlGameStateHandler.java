@@ -5,11 +5,9 @@ import hu.zagor.gamebooks.books.saving.xml.XmlGameStateLoader;
 import hu.zagor.gamebooks.books.saving.xml.XmlGameStateSaver;
 import hu.zagor.gamebooks.support.scanner.Scanner;
 import hu.zagor.gamebooks.support.writer.Writer;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -19,10 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class XmlGameStateHandler extends AbstractGameStateHandler {
 
     private static final String UTF_8 = "UTF-8";
-    @Autowired
-    private XmlGameStateLoader gameStateLoader;
-    @Autowired
-    private XmlGameStateSaver gameStateSaver;
+    @Autowired private XmlGameStateLoader gameStateLoader;
+    @Autowired private XmlGameStateSaver gameStateSaver;
 
     @Override
     protected void saveGameToFile(final SavedGameContainer container, final File saveFileLocation) {

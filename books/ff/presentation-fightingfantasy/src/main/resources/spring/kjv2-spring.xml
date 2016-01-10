@@ -17,6 +17,9 @@
     <property name="resources">
       <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="sor" p:jsResources="sor" />
     </property>
+    <property name="continuationData">
+      <bean class="hu.zagor.gamebooks.domain.ContinuationData" p:previousBookId="990586001" p:previousBookLastSectionId="456" />
+    </property>
   </bean>
   
   <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor" id="kjv2Help" p:info-ref="kjv2Info"  scope="prototype">

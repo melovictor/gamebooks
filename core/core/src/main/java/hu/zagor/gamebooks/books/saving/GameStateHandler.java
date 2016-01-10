@@ -1,6 +1,7 @@
 package hu.zagor.gamebooks.books.saving;
 
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
+import hu.zagor.gamebooks.domain.ContinuationData;
 
 /**
  * Interface for managing a game's state through a {@link SavedGameContainer} bean.
@@ -34,6 +35,14 @@ public interface GameStateHandler {
      * @return true, if there is a saved game, false otherwise
      */
     boolean checkSavedGame(int playerId, long bookId);
+
+    /**
+     * Checks whether there is a saved game for the given user for the book that is the prequiel for the current one.
+     * @param playerId the id of the player
+     * @param continuationData the {@link ContinuationData} object containing information about the saved game
+     * @return true, if there is a correct saved game from the previous adventure, false otherwise
+     */
+    boolean checkSavedGame(int playerId, ContinuationData continuationData);
 
     /**
      * Generates a basic {@link SavedGameContainer} from the player's and the book's id.

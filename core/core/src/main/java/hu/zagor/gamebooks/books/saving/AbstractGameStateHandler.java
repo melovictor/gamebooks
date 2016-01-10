@@ -1,12 +1,12 @@
 package hu.zagor.gamebooks.books.saving;
 
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.directory.DirectoryProvider;
+import hu.zagor.gamebooks.domain.ContinuationData;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.io.File;
 import java.util.Map;
-
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -21,12 +21,10 @@ public abstract class AbstractGameStateHandler implements GameStateHandler, Bean
 
     private static final String CONTAINER_NOT_NULL = "The parameter 'container' cannot be null!";
 
-    @LogInject
-    private Logger logger;
+    @LogInject private Logger logger;
 
     private BeanFactory beanFactory;
-    @Autowired
-    private DirectoryProvider directoryProvider;
+    @Autowired private DirectoryProvider directoryProvider;
 
     @Override
     public void loadGame(final SavedGameContainer container) {
@@ -67,6 +65,23 @@ public abstract class AbstractGameStateHandler implements GameStateHandler, Bean
     @Override
     public boolean checkSavedGame(final int playerId, final long bookId) {
         return checkSavedGame(generateSavedGameContainer(playerId, bookId));
+    }
+
+    @Override
+    public boolean checkSavedGame(final int playerId, final ContinuationData continuationData) {
+        final SavedGameContainer container = generateSavedGameContainer(playerId, continuationData.getPreviousBookId());
+        final File saveFile = getSaveFileLocation(container);
+        boolean savedGameExists = false;
+        if (saveFile.exists()) {
+            savedGameExists = saveGamePositionIsCorrect(container, continuationData.getPreviousBookLastSectionId());
+        }
+        return savedGameExists;
+    }
+
+    private boolean saveGamePositionIsCorrect(final SavedGameContainer container, final String previousBookLastSectionId) {
+        loadGame(container);
+        final Paragraph paragraph = (Paragraph) container.getElement("paragraph");
+        return previousBookLastSectionId.equals(paragraph.getId());
     }
 
     @Override

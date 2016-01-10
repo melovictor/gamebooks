@@ -12,6 +12,7 @@ import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
+import hu.zagor.gamebooks.domain.ContinuationData;
 import hu.zagor.gamebooks.exception.InvalidStepChoiceException;
 import hu.zagor.gamebooks.mvc.book.section.controller.GenericBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
@@ -66,6 +67,10 @@ public class RawBookSectionController extends GenericBookSectionController imple
         final Paragraph paragraph = loadSection(BookParagraphConstants.BACK_COVER.getValue(), request);
         paragraph.calculateValidEvents();
 
+        final ContinuationData continuationData = info.getContinuationData();
+        if (continuationData != null) {
+            model.addAttribute("canContinuePrevious", getGameStateHandler().checkSavedGame(player.getId(), continuationData));
+        }
         model.addAttribute("haveSavedGame", getGameStateHandler().checkSavedGame(player.getId(), info.getId()));
         model.addAttribute("isWelcomeScreen", true);
         model.addAttribute("haveRules", getBeanFactory().containsBean(info.getHelpBeanId()));
