@@ -21,12 +21,15 @@
 					<c:url var="logUrl" value="logs/log-${log.userId}-${log.timestamp}-${log.bookId}.log/log" />
 				</c:if>
 
+				<c:if test="${not empty log.bookId}">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&ndash;
+				</c:if>
 				<a href="${logUrl}">
 					<c:if test="${empty log.bookId}">
 						${log.loginDateTime}
 					</c:if>
 					<c:if test="${not empty log.bookId}">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&ndash; ${log.bookName}
+						${log.bookName}
 					</c:if>
 				</a> &ndash; <fmt:formatNumber value="${log.size / 1024}" maxFractionDigits="1" /> kB<br />
 			</c:forEach>
