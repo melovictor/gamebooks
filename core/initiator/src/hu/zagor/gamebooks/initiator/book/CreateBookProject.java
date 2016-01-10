@@ -20,8 +20,8 @@ public class CreateBookProject {
     private BookBaseData getBaseData() {
 
         baseData.setSeriesCode("sor"); // ff, pt, wm, fff, sor
-        baseData.setTitleCode("tsh");
-        baseData.setPosition(1);
+        baseData.setTitleCode("kcot");
+        baseData.setPosition(2);
         baseData.setCollectorCode("ff");
         baseData.setCollectorName("fightingfantasy");
         baseData.setRuleset("ff");
@@ -50,10 +50,10 @@ public class CreateBookProject {
     private BookLangData getSotkHu(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setSeriesCode("kjv");
-        data.setPosition(1);
-        data.setBookId("KalandJatekVarazslat.A_SHAMUTANTI_DOMBOK");
+        data.setPosition(2);
+        data.setBookId("KalandJatekVarazslat.KHARE_A_CSAPDAK_KIKOTOVAROSA");
         data.setLang("hu");
-        data.setTitle("A Shamutanti dombok");
+        data.setTitle("Kharé &nbsp; A Csapdák Kikötővárosa");
         data.setGeneratable(shouldBeGenerated);
         return data;
     }
@@ -61,9 +61,9 @@ public class CreateBookProject {
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setHidden(true);
-        data.setBookId("Sorcery.THE_SHAMUTANTI_HILLS");
+        data.setBookId("Sorcery.KHARE_CITYPORT_OF_TRAPS");
         data.setLang("en");
-        data.setTitle("The Shamutanti Hills");
+        data.setTitle("Khare &nbsp; Cityport of Traps");
         data.setGeneratable(shouldBeGenerated);
         return data;
     }
