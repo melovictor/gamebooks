@@ -3,10 +3,12 @@ package hu.zagor.gamebooks.mvc.book.load.controller;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.saving.GameStateHandler;
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
+import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.player.PlayerUser;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -63,6 +65,14 @@ public class GenericBookLoadControllerTest {
             @Override
             protected String doLoad(final Model model, final HttpServletRequest request, final SavedGameContainer savedGameContainer) {
                 return RETURNED;
+            }
+
+            @Override
+            protected void doLoadPrevious(final HttpServletRequest request, final HttpServletResponse response, final SavedGameContainer savedGameContainer) {
+            }
+
+            @Override
+            protected void setUpCharacterHandler(final HttpSessionWrapper wrapper, final CharacterHandler characterHandler) {
             }
         };
         Whitebox.setInternalState(underTest, "info", info);

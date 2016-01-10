@@ -18,6 +18,7 @@ import hu.zagor.gamebooks.raw.character.RawCharacterPageData;
 import hu.zagor.gamebooks.raw.mvc.book.controller.CharacterPageDisplayingController;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
@@ -73,13 +74,27 @@ public class RawBookLoadController extends GenericBookLoadController implements 
         return sectionHandlingService.handleSection(model, wrapper, paragraph, info);
     }
 
-    /**
-     * Method for setting up the {@link CharacterHandler} bean for the current run.
-     * @param wrapper the {@link HttpSessionWrapper} object
-     * @param characterHandler the {@link CharacterHandler} to set up
-     */
+    @Override
+    protected void doLoadPrevious(final HttpServletRequest request, final HttpServletResponse response, final SavedGameContainer savedGameContainer) {
+        Assert.notNull(request, "The parameter 'request' cannot be null!");
+        Assert.notNull(savedGameContainer, "The parameter 'savedGameContainer' cannot be null!");
+
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        final Character character = (Character) savedGameContainer.getElement(ControllerAddresses.CHARACTER_STORE_KEY);
+        final Map<String, Enemy> enemies = wrapper.getEnemies();
+        enemies.clear();
+        final BookInformations info = getInfo();
+        final BookItemStorage itemStorage = contentInitializer.getItemStorage(info);
+        enemies.putAll(itemStorage.getEnemies());
+
+        final CharacterHandler characterHandler = info.getCharacterHandler();
+
+        setUpCharacterHandler(wrapper, characterHandler);
+        wrapper.setCharacter(character);
+    }
+
+    @Override
     protected void setUpCharacterHandler(final HttpSessionWrapper wrapper, final CharacterHandler characterHandler) {
-        wrapper.getClass();
         final DefaultItemFactory itemFactory = (DefaultItemFactory) getBeanFactory().getBean("defaultItemFactory", getInfo());
         characterHandler.getItemHandler().setItemFactory(itemFactory);
     }

@@ -1,11 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?>
-<content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd">
+<content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/sor.xsd">
+  <!-- bakland -> bakföld bodzaszörp -> bugyabogyószörp -->
   <p id="back_cover">
-    <text>[p][/p]</text>
-    <next id="background"/>
+    <text>
+        [p]Megérkeztél Kharéba, a Csapdák Kikötővárosába, ahol minden ajtó, minden sikátor szörnyű veszélyeket - vagy váratlan segítséget rejthet. Hős harcos és bölcs varázsló vagy egy személyben, nehéz kifogni rajtad. De minden erődre, ügyességedre, szerencsédre és varázstudományodra szükséged lesz, ha túl akarod élni a rád váró rémségeket. Nem állhatsz tétlenül – vállalnod kell minden veszélyt, hogy átkelhess Kharén, és Baklandon át folytathasd az utat végcélod, Mampang, no meg a Királyok Koronája felé.[/p]
+    </text>
+    <next id="generate" />
   </p>
-  <p id="background" display="">
-    <text>[p][/p]</text>
+  <p id="generate" display="Karakter létrehozása">
+    <text>
+        [p]
+          Kaszt:
+          [input type="radio" name="caste" value="0" checked="checked" id="warriorCaste"] [label for="warriorCaste"]Harcos[/label]
+          [input type="radio" name="caste" value="1" id="wizardCaste"] [label for="wizardCaste"]Varázsló[/label]
+        [/p]
+        [input type="hidden" id="skillValue0" value="6-ot" /]
+        [input type="hidden" id="skillValue1" value="4-et" /]
+        [p][span class="ffAttribute"]Ügyesség[/span]: [span id="ffSkill"]dobj egy kockával és adj [span id="skillAddition"]6-ot[/span] a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Életerő[/span]: [span id="ffStamina"]dobj két kockával és adj 12-t a dobott számhoz[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Szerencse[/span]: [span id="ffLuck"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [button data-generator-button="sor"]Karakter létrehozása[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="A Királyok Koronájának legendája">
+    <text>
+        [p]Sok-sok évszázaddal ezelőtt, a Sötétség Korszakában, amikor a világnak szinte egyetlen pontját sem fedezték még fel, apró civilizációs fészkek léteztek csupán, melyeknek saját kultúrájuk és fajuk volt. Az egyik ilyen régió Kakhabad volt, egy sörét vidék a világ végén.[/p]
+        [p]Bár számos hadvezér megkísérelte, Kakhabadot soha senkinek nem sikerült kormányoznia. A Zanzunu Csúcsokon túli civilizáltabb területekről elűzött gonosz teremtmények tömkelege szivárgott be fokozatosan Kakhabadba, és ez a vidék csakhamar elnyerte a Világvégi Féregverem elnevezést.[/p]
+        [p]Amikor Chalanna, Femphrey nagy reformere megtalálta a Királyok Koronáját, a már felfedezett többi világrészen rend és civilizáció lett úrrá. E korona segítségével Chalanna lett a keleti földrész legnagyobb birodalmának uralkodója. Ennek a varázskoronának misztikus hatalma volt, birtokosát természetfölötti kormányzói és igazságtevői hatalommal ruházta föl. Chalanna azonban nem hódítani akart, hanem Femphreyvel szövetséges, békés városállamokat kívánt létrehozni. Ezért aztán mesés Koronáját bölcsen a szomszédos királyságok uralkodóinak adta át sorban, és annak segítségével ezek a földek is egytől egyig felvirágoztak.[/p]
+        [p]Fontos tervet dolgozott ki. Minden uralkodó négy évre kapja meg a Királyok Koronáját, ezalatt rendet teremt országában, és csatlakozik Femphrey szövetségeseinek egyre nagyobb táborához. A Korona segítségével eleddig Vaskövesd, Lendleland, Gallantana és Brice királyságai virágoztak fel, szinte egyik pillanatról a másikra. Ismeretlen jelenség volt e vidékeken a háborúk minden neme.[/p]
+        [p]Így került a Korona színpompás ceremónia közepette Analand királyának kezébe, és ettől a naptól kezdve Analand óriási fejlődésnek indult. Senki sem tudta, miként képes a Királyok Koronája ily magasra emelni egy nemzetet. Némelyek ezt isteni erőknek tulajdonították, mások az ész erejét emlegették. Egy dolog azonban nem volt kétséges: az eredmény. Minden jól ment Analandban, mígnem leszállt a Fekete Hold éjszakája.[/p]
+        [p]Elsőnek a király vette észre, hogy a Korona eltűnt. Azon a csillagtalan éjszakán a Koronát Xameni Madáremberek ragadták fel, és Kakhabad zord, törvényt nem ismerő vidékein ár Mampang felé röpítették. Bakföldről jött a hír, hogy a Koronát Mampang fővarázslójának vitték el, aki arra vágyott, hogy ő lehessen Kakhabad uralkodója. Bár Kakhabad veszélyes vidék volt, ez a hit egymagában sokkal nagyobb veszélyt jelentett a környező királyságokra. Kakhabadban nem léteztek törvények, hadsereg sem volt, az országot belső bajai, viszályai teljesen lefoglalták. A Királyok Koronájának segítségével Kakhabad a Femphreyi Szövetség valamennyi tagjának veszedelmes ellenségévé válhatott volna.[/p]
+        [p]A Királyok Koronájának eltűnése után Analand elvesztette mindazokat a javakat és jótéteményeket, melyeket a korona biztosított neki a két év alatt. A jog, a rend és az erkölcs hanyatlásnak indult. A királyban egyre inkább megrendült népe bizalma. A szomszédos területekről kíváncsian lesték, mi történik a határaikon túli vidékkel. Még olyan hangok is hallatszottak, hogy támadják meg Analandot.[/p]
+        [p]Már csak egyetlenegy remény maradt. Valakinek – minthogy a hadsereg soha nem lesz képes a feladat teljesítésére – el kell mennie Mampangba, és vissza kell szereznie a Királyok Koronáját. Csak akkor szűnik meg az Analandot sújtó árok, ha ez az illető épségben visszatér a Koronával. Önként jelentkeztél erre a feladatra, küldetésed világos. El kell jutnod Kakhabadba, Mampang erődjébe, és meg kell találnod a Koronát![/p]
+    </text>
+    <itemCheck type="item" id="defWpn">
+      <dontHave>
+        <gatherItem id="defWpn" />
+        <gatherItem id="1001" />
+        <gatherItem id="2000" amount="2" />
+        <add amount="20" to="gold" />
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="4101">
+      <dontHave>
+        <gatherItem id="4101" />
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="4103">
+      <dontHave>
+        <gatherItem id="4103" />
+      </dontHave>
+    </itemCheck>
     <next id="1"></next>
   </p>
+  <p id="1">
+    <text>
+        [p class="inlineImage"][img src="resources/sor2/1.jpg" /][/p]
+        [p]Kharé a káosz városa - Bakland kapuja.[/p]
+        [p]Alattad, a Shamutanti dombok lábánál terül el a fallal körülvett kikötő-város, melyet a hatalmas Jabaji folyó szel ketté. Lefelé igyekszel a domb-ról, és félúton megállsz, hogy tájékozódj. A legenda szerint Kharé a Jabaji folyón lévő egyetlen gázlóra épült a Lumlé tó és a tenger között. Ez azonban kevéssé hihető mese. Sokkal valószínűbb az a történet, amely szerint folyami kalózok tanyáztak itt, s arra vártak, hogy lecsaphassanak a halakkal megrakott bárkákra, melyek a Lumlé tó és a Kakhabadi-tenger között közlekedtek. Bármi volt is az ok, Kharé egyre csak terebélyesedett.[/p]
+        [p]Mire a táborból falu lett, a faluból pedig város, Kharé a baklandi és a shamutanti semmirekellők gyűjtőhelyévé vált. Gonosz, rosszindulatú teremtmények tömege lepte el a várost, akik egy cipőfűzőért is képesek voltak ölni. Ezek nem ismertek törvényt, így aztán a helyi lakosok, hogy az utcákat elözönlő bűnözőktől megvédjék magukat, bonyolult csapdarendszert agyaltak ki. Innen származik a város neve: a Csapdák Kikötővárosa.[/p]
+        [p]Úticélod jócskán Kharén túl van. Bár ezt a várost csak hírből ismered, soha nem tennéd be ide a lábadat, ahhoz azonban, hogy átkelhess a Jabaji folyón, sajnos kénytelen vagy átmenni Kharén, mert nincs más választásod. Kedvező helyről szemléled a kikötővárost körülvevő erős védőfalat. Kharét két kapu köti össze a külvilággal. Az egyik, a Déli Kapu épp veled szemben van, és ezen át lehet a városba bejutni. A másik az Északi Kapu, amelyen áthaladva Baklandba jut az ember. Az idő múlik, s az időd drága. Fürgén lerohansz a dombról, és egy óra múlva eléred a hatalmas kaput, de az be van zárva.[/p]
+    </text>
+    <itemCheck type="item" id="3024">
+      <have>
+        <next id="12" pos="1">Ha a Svinn törzsfőnöktől kapott kulcsot használnád</next>
+      </have>
+    </itemCheck>
+    <next id="178" pos="2">Ha bekopogsz az őröknek</next>
+    <itemCheck type="item" id="4102">
+      <have>
+        <spell name="BAM" id="337" />
+        <spell name="NÖV" id="496" />
+        <spell name="FUJ" id="408" />
+        <spell name="NYI" id="381" />
+        <spell name="MEL" id="474" />
+      </have>
+    </itemCheck>
+  </p>
+
+
+
+
+
+
+
+
+
+
 </content>
