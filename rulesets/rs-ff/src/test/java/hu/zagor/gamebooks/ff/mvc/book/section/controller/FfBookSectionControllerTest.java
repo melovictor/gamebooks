@@ -166,9 +166,7 @@ public class FfBookSectionControllerTest {
         expect(wrapper.getPlayer()).andReturn(player);
         paragraphResolver.resolve(anyObject(ResolvationData.class), eq(oldParagraph));
         oldData.calculateValidEvents(oldParagraph);
-        expect(wrapper.getCharacter()).andReturn(character);
-        expect(beanFactory.getBean("ffCharacterPageData", character, characterHandler)).andReturn(charPageData);
-        expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
+        expectCpDataInsertion();
         expect(sectionHandlingService.handleSection(model, wrapper, oldParagraph, info)).andReturn("done");
         expect(oldData.getChoices()).andReturn(choiceSet);
         expect(oldData.getText()).andReturn("Some text without alternate placeholder.");
@@ -178,6 +176,13 @@ public class FfBookSectionControllerTest {
         expect(wrapper.setModel(model)).andReturn(model);
         navigationRecorder.recordNavigation(wrapper, null, oldParagraph, oldParagraph);
         expectResources();
+        expectCpDataInsertion();
+    }
+
+    private void expectCpDataInsertion() {
+        expect(wrapper.getCharacter()).andReturn(character);
+        expect(beanFactory.getBean("ffCharacterPageData", character, characterHandler)).andReturn(charPageData);
+        expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
     }
 
     private void expectResources() {
