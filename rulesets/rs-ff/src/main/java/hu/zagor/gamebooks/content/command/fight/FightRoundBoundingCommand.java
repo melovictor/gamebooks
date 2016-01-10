@@ -2,12 +2,11 @@ package hu.zagor.gamebooks.content.command.fight;
 
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Bean for storing random roll-related info for battles.
+ * Bean for storing commands that are supposed to happen right before or after a specific battle round.
  * @author Tamas_Szekeres
  */
 public class FightRoundBoundingCommand extends Command {
@@ -16,10 +15,13 @@ public class FightRoundBoundingCommand extends Command {
     private int nth = 1;
     private int roundNumber;
     private List<Command> commands = new ArrayList<>();
-    private final FightCommandMessageList messages;
+    private FightCommandMessageList messages;
+
+    FightRoundBoundingCommand() {
+    }
 
     /**
-     * Basic constructor that creates a new bounding command with the originating {@link FightCommand} object inside.
+     * Basic constructor that creates a new bounding command with the originating {@link FightCommand} object's {@link FightCommandMessageList} inside.
      * @param command the {@link FightCommand} object
      */
     public FightRoundBoundingCommand(final FightCommand command) {
@@ -67,6 +69,10 @@ public class FightRoundBoundingCommand extends Command {
 
     public void setRoundNumber(final int roundNumber) {
         this.roundNumber = roundNumber;
+    }
+
+    public void setMessages(final FightCommandMessageList messages) {
+        this.messages = messages;
     }
 
 }

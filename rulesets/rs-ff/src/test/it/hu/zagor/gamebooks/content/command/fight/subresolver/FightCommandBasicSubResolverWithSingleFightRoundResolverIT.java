@@ -23,6 +23,8 @@ import hu.zagor.gamebooks.content.choice.ChoicePositionComparator;
 import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.content.choice.DefaultChoiceSet;
 import hu.zagor.gamebooks.content.command.Command;
+import hu.zagor.gamebooks.content.command.CommandExecuter;
+import hu.zagor.gamebooks.content.command.ImmediateCommandExecuter;
 import hu.zagor.gamebooks.content.command.SilentCapableResolver;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommandResolver;
@@ -146,6 +148,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
     private RandomResult randomResult;
     private FfParagraphData smallDamagingRandom;
     private Map<Class<? extends Command>, SilentCapableResolver<? extends Command>> boundingResolvers;
+    private CommandExecuter immediateCommandExecuter;
 
     private EnemyStatusEvaluator enemyStatusEvaluator;
     private AutoLoseHandler autoLoseHandler;
@@ -209,6 +212,9 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         Whitebox.setInternalState(autoLoseHandler, "enemyStatusEvaluator", enemyStatusEvaluator);
         diceResultRenderer = mockControl.createMock(DiceResultRenderer.class);
         Whitebox.setInternalState(fightRoundResolver, "diceResultRenderer", diceResultRenderer);
+        immediateCommandExecuter = new ImmediateCommandExecuter();
+        Whitebox.setInternalState(immediateCommandExecuter, "logger", logger);
+        Whitebox.setInternalState(beforeEventResolver, "immediateCommandExecuter", immediateCommandExecuter);
     }
 
     @BeforeMethod

@@ -551,6 +551,12 @@
               </xs:complexType>
             </xs:element>
             <xs:element name="beforeRound" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  This entry is mainly for altering the result of a specific round (eg. we lose it). If it is trying to do anything else, the behaviour must be properly tested to see
+                  if it is working as intended.
+                </xs:documentation>
+              </xs:annotation>
               <xs:complexType>
                 <xs:sequence minOccurs="1" maxOccurs="unbounded">
                   <xs:choice>
@@ -558,6 +564,14 @@
                     <xs:element name="test" maxOccurs="unbounded" minOccurs="0" type="attributeTestType" />
                   </xs:choice>
                 </xs:sequence>
+                <xs:attribute name="everyNth" use="optional" type="xs:integer" default="1">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Must be a non-zero, positive number to specify in which rounds the actions should be executed. Whenever the division remainder becomes 0, the
+                      action is executed.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
               </xs:complexType>
             </xs:element>
             <xs:element name="win" minOccurs="0" maxOccurs="unbounded">

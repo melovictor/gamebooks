@@ -10,16 +10,12 @@ import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.Command;
-import hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommand;
-import hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommandResolver;
+import hu.zagor.gamebooks.content.command.CommandExecuter;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
-import hu.zagor.gamebooks.content.commandlist.CommandList;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class FightCommandAllySubResolver extends AbstractFightCommandSubResolver {
 
-    @Autowired private ChangeEnemyCommandResolver changeEnemyResolver;
+    @Autowired private CommandExecuter immediateCommandExecuter;
 
     @Override
     protected void prepareLuckTest(final FightCommand command, final FfCharacter character, final FfUserInteractionHandler interactionHandler) {
@@ -87,20 +83,7 @@ public class FightCommandAllySubResolver extends AbstractFightCommandSubResolver
     protected boolean aliveAfterResolvation(final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
         if (resolveList != null) {
             for (final ParagraphData dataObject : resolveList) {
-                final FfParagraphData data = (FfParagraphData) dataObject;
-                if (data != null) {
-                    final CommandList immediateCommands = data.getImmediateCommands();
-                    if (immediateCommands != null) {
-                        final Iterator<Command> iterator = immediateCommands.iterator();
-                        while (iterator.hasNext()) {
-                            final Command commandObject = iterator.next();
-                            if (commandObject instanceof ChangeEnemyCommand) {
-                                changeEnemyResolver.resolve(commandObject, resolvationData);
-                                iterator.remove();
-                            }
-                        }
-                    }
-                }
+                immediateCommandExecuter.execute(resolvationData, (FfParagraphData) dataObject);
             }
         }
 

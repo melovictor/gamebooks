@@ -54,10 +54,7 @@ public class DefaultXmlGameStateSaverTest {
         // GIVEN
         final Map<String, Serializable> input = new HashMap<String, Serializable>();
         input.put("note", "I am a note.");
-        final String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "<mainObject class=\"hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper\">"
-            + "<element class=\"java.util.HashMap\" isMap=\"true\">" + "<mapEntry>" + "<key class=\"java.lang.String\">note</key>"
-            + "<value class=\"java.lang.String\">I am a note.</value>" + "</mapEntry>" + "</element>" + "</mainObject>";
-
+        final String expected = "response";
         expectStartMainObject();
 
         writer.openNode("mapEntry");
@@ -66,7 +63,6 @@ public class DefaultXmlGameStateSaverTest {
         writer.closeNode("mapEntry");
 
         expectEndMainObject(expected);
-
         mockControl.replay();
         // WHEN
         final String returned = underTest.save(input);
@@ -78,28 +74,58 @@ public class DefaultXmlGameStateSaverTest {
         // GIVEN
         final Map<String, Serializable> input = new HashMap<String, Serializable>();
         input.put("fieldWithNumber", new SimpleClassWithInt());
-        final String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "<mainObject class=\"hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper\">"
-            + "<element class=\"java.util.HashMap\" isMap=\"true\">" + "<mapEntry>" + "<key class=\"java.lang.String\">fieldWithNumber</key>"
-            + "<value class=\"hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt\">" + "<intField class=\"java.lang.Integer\">1534</intField>" + "</value>"
-            + "</mapEntry>" + "</element>" + "</mainObject>";
-
+        final String expected = "response";
         expectStartMainObject();
 
         writer.openNode("mapEntry");
         writer.createSimpleNode("key", "fieldWithNumber", "java.lang.String");
-
         writer.openNode("value");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt");
         logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt");
-
+        writer.addAttribute("ref", "1");
         logger.debug("Saving field 'intField' with value '1534'.");
         writer.createSimpleNode("intField", "1534", "java.lang.Integer");
         writer.closeNode("value");
-
         writer.closeNode("mapEntry");
 
         expectEndMainObject(expected);
+        mockControl.replay();
+        // WHEN
+        final String returned = underTest.save(input);
+        // THEN
+        Assert.assertEquals(returned, expected);
+    }
 
+    public void testSaveWhenInputContainsDuplicatedSimpleClassWithIntegerShouldCreateProperXmlOutput() throws UnsupportedEncodingException, XMLStreamException {
+        // GIVEN
+        final Map<String, Serializable> input = new HashMap<String, Serializable>();
+        final SimpleClassWithInt value = new SimpleClassWithInt();
+        input.put("fieldWithNumber", value);
+        input.put("otherFieldWithNumber", value);
+        final String expected = "response";
+        expectStartMainObject();
+
+        writer.openNode("mapEntry");
+        writer.createSimpleNode("key", "fieldWithNumber", "java.lang.String");
+        writer.openNode("value");
+        writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt");
+        logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt");
+        writer.addAttribute("ref", "1");
+        logger.debug("Saving field 'intField' with value '1534'.");
+        writer.createSimpleNode("intField", "1534", "java.lang.Integer");
+        writer.closeNode("value");
+        writer.closeNode("mapEntry");
+
+        writer.openNode("mapEntry");
+        writer.createSimpleNode("key", "otherFieldWithNumber", "java.lang.String");
+        writer.openNode("value");
+        writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt");
+        logger.debug("Saving class reference 1");
+        writer.addAttribute("ref", "1");
+        writer.closeNode("value");
+        writer.closeNode("mapEntry");
+
+        expectEndMainObject(expected);
         mockControl.replay();
         // WHEN
         final String returned = underTest.save(input);
@@ -111,12 +137,7 @@ public class DefaultXmlGameStateSaverTest {
         // GIVEN
         final Map<String, Serializable> input = new HashMap<String, Serializable>();
         input.put("fieldWithList", new SimpleClassWithList());
-        final String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "<mainObject class=\"hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper\">"
-            + "<element class=\"java.util.HashMap\" isMap=\"true\">" + "<mapEntry>" + "<key class=\"java.lang.String\">fieldWithList</key>"
-            + "<value class=\"hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithList\">" + "<elements class=\"java.util.ArrayList\" isList=\"true\">"
-            + "<listElement class=\"java.lang.String\">apple</listElement>" + "<listElement class=\"java.lang.String\">pear</listElement>" + "</elements>" + "</value>"
-            + "</mapEntry>" + "</element>" + "</mainObject>";
-
+        final String expected = "response";
         expectStartMainObject();
 
         writer.openNode("mapEntry");
@@ -125,6 +146,7 @@ public class DefaultXmlGameStateSaverTest {
         writer.openNode("value");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithList");
         logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithList");
+        writer.addAttribute("ref", "1");
         logger.debug("Saving field 'elements' with value '[apple, pear]'.");
 
         writer.openNode("elements");
@@ -138,7 +160,6 @@ public class DefaultXmlGameStateSaverTest {
         writer.closeNode("mapEntry");
 
         expectEndMainObject(expected);
-
         mockControl.replay();
         // WHEN
         final String returned = underTest.save(input);
@@ -150,11 +171,7 @@ public class DefaultXmlGameStateSaverTest {
         // GIVEN
         final Map<String, Serializable> input = new HashMap<String, Serializable>();
         input.put("fieldWithEnum", new SimpleClassWithEnum());
-        final String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "<mainObject class=\"hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper\">"
-            + "<element class=\"java.util.HashMap\" isMap=\"true\">" + "<mapEntry>" + "<key class=\"java.lang.String\">fieldWithEnum</key>"
-            + "<value class=\"hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithEnum\">"
-            + "<enumField class=\"hu.zagor.gamebooks.books.saving.xml.input.SimpleEnum\" isEnum=\"true\" value=\"KIWI\"></enumField>" + "</value>" + "</mapEntry>"
-            + "</element>" + "</mainObject>";
+        final String expected = "response";
 
         expectStartMainObject();
 
@@ -164,7 +181,7 @@ public class DefaultXmlGameStateSaverTest {
         writer.openNode("value");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithEnum");
         logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithEnum");
-
+        writer.addAttribute("ref", "1");
         logger.debug("Saving field 'enumField' with value 'KIWI'.");
 
         writer.openNode("enumField");
@@ -190,30 +207,21 @@ public class DefaultXmlGameStateSaverTest {
         // GIVEN
         final Map<String, Serializable> input = new HashMap<String, Serializable>();
         input.put("fieldWithNull", new SimpleClassWithNull());
-        final String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "<mainObject class=\"hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper\">"
-            + "<element class=\"java.util.HashMap\" isMap=\"true\">" + "<mapEntry>" + "<key class=\"java.lang.String\">fieldWithNull</key>"
-            + "<value class=\"hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithNull\">" + "<nullField isNull=\"true\"></nullField>" + "</value>" + "</mapEntry>"
-            + "</element>" + "</mainObject>";
-
+        final String expected = "response";
         expectStartMainObject();
 
         writer.openNode("mapEntry");
         writer.createSimpleNode("key", "fieldWithNull", "java.lang.String");
-
         writer.openNode("value");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithNull");
         logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithNull");
-
+        writer.addAttribute("ref", "1");
         logger.debug("Saving field 'nullField' with value 'null'.");
-
         writer.createSimpleNode("nullField");
-
         writer.closeNode("value");
-
         writer.closeNode("mapEntry");
 
         expectEndMainObject(expected);
-
         mockControl.replay();
         // WHEN
         final String returned = underTest.save(input);
@@ -245,6 +253,7 @@ public class DefaultXmlGameStateSaverTest {
         writer.openNode("mainObject");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper");
         logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper");
+        writer.addAttribute("ref", "0");
         logger.debug(startsWith("Saving field 'element' with value '{"));
 
         writer.openNode("element");

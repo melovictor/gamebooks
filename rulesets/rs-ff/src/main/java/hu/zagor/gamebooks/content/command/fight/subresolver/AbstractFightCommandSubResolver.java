@@ -15,6 +15,7 @@ import hu.zagor.gamebooks.content.command.fight.FightCommandRoundEventResolver;
 import hu.zagor.gamebooks.content.command.fight.FightOutcome;
 import hu.zagor.gamebooks.content.command.fight.FightRoundBoundingCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
+import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver;
 import hu.zagor.gamebooks.content.command.fight.subresolver.autolose.AutoLoseHandler;
@@ -170,7 +171,9 @@ public abstract class AbstractFightCommandSubResolver implements FightCommandSub
             final FightRoundBoundingCommand boundingCommand = command.getAfterBounding();
             if (boundingCommand != null) {
                 boundingCommand.setRoundNumber(command.getRoundNumber());
-                command.getMessages().switchToPostRoundMessages();
+                FightCommandMessageList messages = command.getMessages();
+                boundingCommand.setMessages(messages);
+                messages.switchToPostRoundMessages();
                 final List<ParagraphData> resolve = fightBoundingCommandResolver.resolve(boundingCommand, resolvationData).getResolveList();
                 if (resolve != null) {
                     resolveList.addAll(resolve);

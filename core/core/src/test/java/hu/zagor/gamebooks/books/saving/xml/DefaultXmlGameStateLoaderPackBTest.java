@@ -6,6 +6,7 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.isNull;
 import static org.easymock.EasyMock.startsWith;
 import hu.zagor.gamebooks.books.saving.xml.exception.UnknownFieldTypeException;
+import hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt;
 import hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithNumbers;
 import hu.zagor.gamebooks.support.logging.LoggerInjector;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
@@ -132,6 +133,38 @@ public class DefaultXmlGameStateLoaderPackBTest {
         final Object returned = underTest.load(input);
         // THEN
         Assert.assertNull(returned);
+    }
+
+    public void testLoadWhenInputContainsClassWithNumberAndWithReferencesShouldReturnProperMap() {
+        // GIVEN
+        final String input = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "<mainObject class=\"hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper\">"
+            + "<element class=\"java.util.HashMap\" isMap=\"true\">" + "<mapEntry>" + "<key class=\"java.lang.String\">fieldWithNumber</key>"
+            + "<value class=\"hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt\" ref=\"99\">" + "<intField class=\"java.lang.Integer\">1535</intField>"
+            + "</value>" + "</mapEntry>" + "<mapEntry>" + "<key class=\"java.lang.String\">otherFieldWithNumber</key>"
+            + "<value class=\"hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt\" ref=\"37\">" + "<intField class=\"java.lang.Integer\">11</intField>"
+            + "</value>" + "</mapEntry>" + "<mapEntry>" + "<key class=\"java.lang.String\">repeatingFieldWithNumber</key>"
+            + "<value class=\"hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt\" ref=\"99\" />" + "</mapEntry>" + "</element>" + "</mainObject>";
+        prepareForCreation(input, 4);
+        mockControl.replay();
+        // WHEN
+        final Object returned = underTest.load(input);
+        // THEN
+        Assert.assertTrue(returned instanceof HashMap);
+        @SuppressWarnings("unchecked")
+        final Map<String, Serializable> loadedMap = (HashMap<String, Serializable>) returned;
+
+        verifyClassWithNumber(loadedMap, "fieldWithNumber", 1535);
+        verifyClassWithNumber(loadedMap, "otherFieldWithNumber", 11);
+        verifyClassWithNumber(loadedMap, "repeatingFieldWithNumber", 1535);
+        Assert.assertSame(loadedMap.get("repeatingFieldWithNumber"), loadedMap.get("fieldWithNumber"));
+    }
+
+    private void verifyClassWithNumber(final Map<String, Serializable> loadedMap, final String key, final int value) {
+        Assert.assertTrue(loadedMap.containsKey(key));
+        final Serializable serializable = loadedMap.get(key);
+        Assert.assertTrue(serializable instanceof SimpleClassWithInt);
+        final SimpleClassWithInt intClass = (SimpleClassWithInt) serializable;
+        Assert.assertEquals(intClass.getIntField(), value);
     }
 
     private void prepareForCreation(final String input, final int repetition) {

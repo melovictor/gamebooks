@@ -8,6 +8,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -37,6 +38,7 @@ public class DefaultXmlGameStateLoader extends AbstractGameStateHandler implemen
     @Override
     public Object load(final String content) {
         Object parsed = null;
+        final Map<String, Object> objectCache = new HashMap<>();
         try {
             final StringReader stringReader = (StringReader) getBeanFactory().getBean("stringReader", content);
             final InputSource inputSource = (InputSource) getBeanFactory().getBean("inputSource", stringReader);
@@ -44,7 +46,7 @@ public class DefaultXmlGameStateLoader extends AbstractGameStateHandler implemen
 
             final Node mainObjectNode = document.getDocumentElement();
             final SavedGameMapWrapper wrapper = (SavedGameMapWrapper) getInstance(getAttributeValue(mainObjectNode, "class"));
-            initInstance(wrapper, mainObjectNode);
+            initInstance(wrapper, mainObjectNode, objectCache);
             parsed = wrapper.getElement();
         } catch (final Exception exception) {
             getLogger().error("Failed to load saved game, the deserializer threw an exception.", exception);
@@ -57,23 +59,23 @@ public class DefaultXmlGameStateLoader extends AbstractGameStateHandler implemen
         return namedItem == null ? null : namedItem.getNodeValue();
     }
 
-    private void initInstance(final Object parsed, final Node objectNode) throws Exception {
+    private void initInstance(final Object parsed, final Node objectNode, final Map<String, Object> objectCache) throws Exception {
         final NodeList childNodes = objectNode.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             final Node childNode = childNodes.item(i);
             if (childNode.getNodeType() == Node.ELEMENT_NODE) {
-                populateField(parsed, childNode);
+                populateField(parsed, childNode, objectCache);
             }
         }
     }
 
-    private void populateField(final Object parsed, final Node fieldNode) throws Exception {
+    private void populateField(final Object parsed, final Node fieldNode, final Map<String, Object> objectCache) throws Exception {
         final String nodeName = fieldNode.getNodeName();
         final Field field = getDeclaredField(parsed.getClass(), nodeName);
         if (field == null && !classFieldFilter.isIgnorableField(parsed, nodeName)) {
             throw new NoSuchFieldException("The field '" + nodeName + "' doesn't exists.");
         }
-        final Object fieldObject = getFieldObjectFromNode(fieldNode);
+        final Object fieldObject = getFieldObjectFromNode(fieldNode, objectCache);
         setField(parsed, field, fieldObject);
     }
 
@@ -81,7 +83,7 @@ public class DefaultXmlGameStateLoader extends AbstractGameStateHandler implemen
         return ReflectionUtils.findField(klass, nodeName);
     }
 
-    private Object getFieldObjectFromNode(final Node fieldNode) throws Exception {
+    private Object getFieldObjectFromNode(final Node fieldNode, final Map<String, Object> objectCache) throws Exception {
         Object fieldObject;
         if (TRUE.equals(getAttributeValue(fieldNode, "isNull"))) {
             fieldObject = null;
@@ -90,7 +92,10 @@ public class DefaultXmlGameStateLoader extends AbstractGameStateHandler implemen
             final boolean isMap = TRUE.equals(getAttributeValue(fieldNode, "isMap"));
             final boolean isEnum = TRUE.equals(getAttributeValue(fieldNode, "isEnum"));
             final String className = getAttributeValue(fieldNode, "class");
-            if (isEnum) {
+            final String ref = getAttributeValue(fieldNode, "ref");
+            if (objectCache.containsKey(ref)) {
+                fieldObject = objectCache.get(ref);
+            } else if (isEnum) {
                 final String enumValue = getAttributeValue(fieldNode, VALUE);
                 @SuppressWarnings({"rawtypes", "unchecked"})
                 final Class<Enum> forName = (Class<Enum>) Class.forName(className);
@@ -102,29 +107,32 @@ public class DefaultXmlGameStateLoader extends AbstractGameStateHandler implemen
             } else {
                 if (isList || isMap) {
                     if (isList) {
-                        fieldObject = getList(className, fieldNode);
+                        fieldObject = getList(className, fieldNode, objectCache);
                     } else {
-                        fieldObject = getMap(className, fieldNode);
+                        fieldObject = getMap(className, fieldNode, objectCache);
                     }
                 } else {
                     fieldObject = getInstance(getAttributeValue(fieldNode, "class"));
-                    initInstance(fieldObject, fieldNode);
+                    initInstance(fieldObject, fieldNode, objectCache);
                 }
+            }
+            if (ref != null) {
+                objectCache.put(ref, fieldObject);
             }
         }
         return fieldObject;
     }
 
     @SuppressWarnings("unchecked")
-    private Object getMap(final String className, final Node fieldNode) throws Exception {
+    private Object getMap(final String className, final Node fieldNode, final Map<String, Object> objectCache) throws Exception {
         final Map<Object, Object> map = (Map<Object, Object>) this.getInstance(className);
 
         final NodeList childNodes = fieldNode.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             final Node childNode = childNodes.item(i);
             if (childNode.getNodeType() == Node.ELEMENT_NODE) {
-                final Object key = getNode(childNode, "key");
-                final Object value = getNode(childNode, VALUE);
+                final Object key = getNode(childNode, "key", objectCache);
+                final Object value = getNode(childNode, VALUE, objectCache);
                 map.put(key, value);
             }
         }
@@ -132,19 +140,19 @@ public class DefaultXmlGameStateLoader extends AbstractGameStateHandler implemen
         return map;
     }
 
-    private Object getNode(final Node node, final String string) throws Exception {
+    private Object getNode(final Node node, final String string, final Map<String, Object> objectCache) throws Exception {
         Object parsedObject = null;
         final NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             final Node childNode = childNodes.item(i);
             if (childNode.getNodeType() == Node.ELEMENT_NODE && string.equals(childNode.getNodeName())) {
-                parsedObject = getFieldObjectFromNode(childNode);
+                parsedObject = getFieldObjectFromNode(childNode, objectCache);
             }
         }
         return parsedObject;
     }
 
-    private Object getList(final String className, final Node fieldNode) throws Exception {
+    private Object getList(final String className, final Node fieldNode, final Map<String, Object> objectCache) throws Exception {
         @SuppressWarnings("unchecked")
         final Collection<Object> list = (Collection<Object>) this.getInstance(className);
 
@@ -152,7 +160,7 @@ public class DefaultXmlGameStateLoader extends AbstractGameStateHandler implemen
         for (int i = 0; i < childNodes.getLength(); i++) {
             final Node childNode = childNodes.item(i);
             if (childNode.getNodeType() == Node.ELEMENT_NODE) {
-                list.add(getFieldObjectFromNode(childNode));
+                list.add(getFieldObjectFromNode(childNode, objectCache));
             }
         }
         getBeanFactory().autowireBean(list);

@@ -9,16 +9,15 @@ import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.Command;
-import hu.zagor.gamebooks.content.command.CommandResolver;
+import hu.zagor.gamebooks.content.command.CommandExecuter;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestSuccessType;
-import hu.zagor.gamebooks.content.commandlist.CommandListIterator;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.raw.section.RawRuleBookParagraphResolver;
 import java.util.List;
 import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Implementation of the {@link BookParagraphResolver} for the Fighting Fantasy ruleset.
@@ -27,6 +26,7 @@ import java.util.Map;
 public class FfRuleBookParagraphResolver extends RawRuleBookParagraphResolver {
 
     private Map<String, AttributeTestSuccessType> attributeTestDefaultSuccessTypes;
+    @Autowired private CommandExecuter immediateCommandExecuter;
 
     @Override
     protected void resolveBasicCommands(final ResolvationData resolvationData, final ParagraphData genericSubData) {
@@ -36,7 +36,7 @@ public class FfRuleBookParagraphResolver extends RawRuleBookParagraphResolver {
 
         handleAttributeModifiers(character, characterHandler, subData);
 
-        executeImmediateCommands(resolvationData, subData.getImmediateCommands().forwardsIterator());
+        immediateCommandExecuter.execute(resolvationData, subData);
         super.resolveBasicCommands(resolvationData, subData);
     }
 
@@ -46,15 +46,6 @@ public class FfRuleBookParagraphResolver extends RawRuleBookParagraphResolver {
             characterHandler.getAttributeHandler().handleModification(character, modAttr);
         }
         modifyAttributes.clear();
-    }
-
-    private void executeImmediateCommands(final ResolvationData resolvationData, final CommandListIterator commandIterator) {
-        while (commandIterator.hasNext()) {
-            final Command command = commandIterator.next();
-            getLogger().debug("Executing command {}.", command.toString());
-            final CommandResolver resolver = resolvationData.getInfo().getCommandResolvers().get(command.getClass());
-            resolver.resolve(command, resolvationData);
-        }
     }
 
     @Override

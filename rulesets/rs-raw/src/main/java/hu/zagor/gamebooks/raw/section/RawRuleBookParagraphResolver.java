@@ -56,7 +56,7 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
         final Character character = resolvationData.getCharacter();
 
         while (!itemsToProcess.isEmpty() && character.getCommandView() == null) {
-            final ProcessableItemHolder processableItemHolder = itemsToProcess.remove(0);
+            final ProcessableItemHolder processableItemHolder = itemsToProcess.get(0);
             if (processableItemHolder.isParagraphDataHolder()) {
                 final ParagraphData paragraphData = processableItemHolder.getParagraphData();
                 if (doBasicExecution) {
@@ -67,11 +67,12 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
                 resolveBasicCommands(resolvationData, paragraphData);
                 addAll(itemsToProcess, paragraphData.getCommands());
                 handleReward(resolvationData, paragraphData);
+                itemsToProcess.remove(processableItemHolder);
             } else {
                 final Command command = processableItemHolder.getCommand();
                 final CommandResolveResult resolveResult = resolveComplexCommands(resolvationData, paragraph, command, character);
-                if (!resolveResult.isFinished()) {
-                    itemsToProcess.add(0, processableItemHolder);
+                if (resolveResult.isFinished()) {
+                    itemsToProcess.remove(processableItemHolder);
                 }
             }
 
