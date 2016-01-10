@@ -20,6 +20,7 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -117,5 +118,15 @@ public class Sor1BookSectionController extends SorBookSectionController {
 
     private boolean isSword(final FfItem equippedWeapon) {
         return swordItemIds.contains(equippedWeapon.getId());
+    }
+
+    @Override
+    protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+        final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
+        final FfCharacter character = (FfCharacter) wrapper.getCharacter();
+        if (itemHandler.hasItem(character, "4006", 1)) {
+            itemHandler.removeItem(character, "4006", 1);
+            character.setStamina(character.getStamina() / 2);
+        }
     }
 }
