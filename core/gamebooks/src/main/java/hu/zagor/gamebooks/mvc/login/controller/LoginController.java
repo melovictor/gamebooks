@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.mvc.login.controller;
 import hu.zagor.gamebooks.ControllerAddresses;
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.filters.LocaleSwitchingFilter;
+import hu.zagor.gamebooks.mvc.login.controller.service.VersionNumberProvider;
 import hu.zagor.gamebooks.mvc.login.domain.LoginData;
 import hu.zagor.gamebooks.mvc.login.service.LoginAttemptOverviewService;
 import hu.zagor.gamebooks.support.logging.LogInject;
@@ -29,6 +30,7 @@ public class LoginController {
 
     @LogInject private Logger logger;
     @Autowired private LoginAttemptOverviewService loginAttemptService;
+    @Autowired private VersionNumberProvider version;
 
     /**
      * Shows the user the login page.
@@ -50,6 +52,7 @@ public class LoginController {
             result = chekcUserLogin(model, session);
         }
         model.addAttribute("loginBlocked", loginAttemptService.isBlocked(request.getRemoteAddr()));
+        model.addAttribute("version", version.getVersion());
         return result;
     }
 

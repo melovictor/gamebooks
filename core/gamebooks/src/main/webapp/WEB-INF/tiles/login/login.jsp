@@ -13,6 +13,8 @@
 	</c:if>
 
 	<c:if test="${!loginBlocked}">
+		<div id="version">${version}</div>
+
 		<l:smallbox>
 			<l:input label="page.login.username" name="username" id="adventurerName" />
 			<l:input label="page.login.password" name="password" id="adventurerPassphrase" type="password" />
