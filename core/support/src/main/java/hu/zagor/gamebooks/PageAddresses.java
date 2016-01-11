@@ -13,6 +13,7 @@ public final class PageAddresses {
     public static final String SETTINGS = "settings";
     public static final String RULES = "rules";
     public static final String LOGS = "logs";
+    public static final String ACKNOWLEDGEMENT = "acknowledgement";
 
     public static final String BOOK_PAGE = "book";
 

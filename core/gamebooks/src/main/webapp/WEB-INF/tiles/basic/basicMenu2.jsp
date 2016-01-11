@@ -6,6 +6,7 @@
 <c:url var="settingsUrl" value="/settings" />
 <c:url var="logsUrl" value="/logs" />
 <c:url var="rulesUrl" value="/rules" />
+<c:url var="acknowledgementUrl" value="/acknowledgement" />
 <tiles:insertTemplate template="../basic/basicMenu.jsp" />
 <div id="pageTitle">
   <ul>
@@ -15,5 +16,6 @@
     <c:if test="${user.admin}">
       <l:menuLink selectedId="logs" url="${logsUrl}" labelKey="page.title.logs" />
     </c:if>
+    <l:menuLink selectedId="acknowledgement" url="${acknowledgementUrl}" labelKey="page.title.acknowledgement" />
   </ul>
 </div>
