@@ -14,6 +14,7 @@ import hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.service.HuntService;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.FfBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -90,11 +91,18 @@ public class Ff23BookSectionController extends FfBookSectionController {
             if (battleStatistics.getSubsequentWin() > 0) {
                 // This one won't fight the next round
                 enemies.remove(enemyId);
-                for (final FfEnemy enemy : resolvedEnemies) {
+                final Iterator<FfEnemy> enemiesIterator = resolvedEnemies.iterator();
+                while (enemiesIterator.hasNext()) {
+                    final FfEnemy enemy = enemiesIterator.next();
                     if (enemyId.equals(enemy.getId())) {
-                        resolvedEnemies.remove(enemy);
+                        enemiesIterator.remove();
                     }
                 }
+                // for (final FfEnemy enemy : resolvedEnemies) {
+                // if (enemyId.equals(enemy.getId())) {
+                // resolvedEnemies.remove(enemy);
+                // }
+                // }
             }
         }
         if (commands.size() == 1) {

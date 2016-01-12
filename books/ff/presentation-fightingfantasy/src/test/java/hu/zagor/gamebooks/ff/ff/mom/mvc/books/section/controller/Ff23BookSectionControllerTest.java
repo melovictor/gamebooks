@@ -19,7 +19,7 @@ import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -67,6 +67,7 @@ public class Ff23BookSectionControllerTest {
     @Mock private FightCommand singleFightCommand;
     @Mock private BattleStatistics battleStatistics;
     @Mock private FfEnemy enemyB;
+    @Mock private Iterator<FfEnemy> iterator;
 
     @BeforeClass
     public void setUpClass() {
@@ -237,10 +238,15 @@ public class Ff23BookSectionControllerTest {
         expect(battleStatistics.getSubsequentWin()).andReturn(1);
 
         expect(enemies.remove("45")).andReturn(true);
-        expect(resolvedEnemies.iterator()).andReturn(Arrays.asList(enemy, enemyB).iterator());
+        expect(resolvedEnemies.iterator()).andReturn(iterator);
+        expect(iterator.hasNext()).andReturn(true);
+        expect(iterator.next()).andReturn(enemy);
         expect(enemy.getId()).andReturn("44");
+        expect(iterator.hasNext()).andReturn(true);
+        expect(iterator.next()).andReturn(enemyB);
         expect(enemyB.getId()).andReturn("45");
-        expect(resolvedEnemies.remove(enemyB)).andReturn(true);
+        iterator.remove();
+        expect(iterator.hasNext()).andReturn(false);
 
         expect(commands.size()).andReturn(2);
         mockControl.replay();
