@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/sor.xsd">
-  <!-- bodzaszörp -> bugyabogyószörp -->
   <p id="back_cover">
     <text>
         [p]Megérkeztél Kharéba, a Csapdák Kikötővárosába, ahol minden ajtó, minden sikátor szörnyű veszélyeket - vagy váratlan segítséget rejthet. Hős harcos és bölcs varázsló vagy egy személyben, nehéz kifogni rajtad. De minden erődre, ügyességedre, szerencsédre és varázstudományodra szükséged lesz, ha túl akarod élni a rád váró rémségeket. Nem állhatsz tétlenül – vállalnod kell minden veszélyt, hogy átkelhess Kharén, és Baklandon át folytathasd az utat végcélod, Mampang, no meg a Királyok Koronája felé.[/p]
@@ -93,11 +92,62 @@
         [p]Előveszed a kulcsot a hátizsákodból, és óvatosan bedugod a zárba. A reteszek sorban kikattannak. A kapu kissé megnyílik. Gondosan körülnézel, majd benyitsz és belesel. Nincs bent senki.[/p]
         [p]Gyorsan besurransz, és becsukod magad mögött a kaput. A fene egye meg! A kulcsot kívül hagytad a zárban! (Húzd ki a Kalandlapodról.) Lábujjhegyen odalopakodsz a kapu mögött lévő boltíves átjáróhoz, és elbújsz egy beugróban. Néma csönd van körülötted, és úgy döntesz, hogy előbújsz rejtekhelyedről. Először egy házat veszel észre a fal túloldalán, és odasettenkedsz. A kőház ablakait rácsok védik. Belesel, és látod, hogy a szoba szinte teljesen üres, csak egy pad van bent, amelyen egy öregember ül.[/p]
     </text>
-    <loseItem id="3024"/>
+    <loseItem id="3024" />
     <next id="169">Ha bemész a házba és üdvözlöd az öreget</next>
     <next id="218">Ha inkább továbbmész</next>
   </p>
-  <!-- 13 -->
+  <p id="13">
+    <text>
+        [p]Miközben támadsz, ő célba vesz, és kilövi a nyílvesszőt. Vajon eltalál-e?[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <text>
+            [p]Eltalálja a szemedet - azonnal meghalsz.[/p]
+        </text>
+        <death />
+      </result>
+      <result max="2" min="2">
+        <text>
+            [p]Mellbe lő - vesztesz 5 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-5" to="stamina" />
+      </result>
+      <result max="3" min="3">
+        <text>
+            [p]A lábadba lő - vesztesz 3 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-3" to="stamina" />
+      </result>
+      <result max="4" min="4">
+        <text>
+            [p]Megsebesíti a karodat - vesztesz 2 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+      </result>
+      <result max="5" min="5">
+        <text>
+            [p]Felsérti a csuklódat a kardforgató kezeden - vesztesz 1 ÉLETERŐ pontot és 2 ÜGYESSÉG pontot.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+        <add amount="-2" to="skill" />
+      </result>
+      <result max="6" min="6">
+        <text>
+            [p]Nem talál el.[/p]
+        </text>
+      </result>
+      <after>
+        <text>
+            [p]Küzdj meg vele.[/p]
+        </text>
+        <fight type="single">
+          <enemy id="1" />
+        </fight>
+      </after>
+    </random>
+    <next id="105"></next>
+  </p>
   <!-- 14 -->
   <!-- 15 -->
   <!-- 16 -->
@@ -110,38 +160,59 @@
         [p]Nyersz 2 ÉLETERŐ pontot, amiért
     </text>
     <itemCheck type="item" id="4101">
-    <have>
+      <have>
         <text>
             pihentél, de le kell vonnod magadtól 3 ÉLETERŐ pontot, mert tegnap nem ettél, és nagyon éhesen kelsz.
         </text>
-    </have>
-    <dontHave>
+      </have>
+      <dontHave>
         <text>
             pihentél.
         </text>
-        <add amount="2" to="stamina"/>
-    </dontHave>
-    <after>
+        <add amount="2" to="stamina" />
+      </dontHave>
+      <after>
         <text>
             Másnap kora reggel ébredsz.[/p]
             [p]Amikor felkelsz, kintről hangokat hallasz. Az őrök tértek vissza. Alighanem rájöttek, hogy nem jelentesz veszélyt a városukra, és kituszkolnak a házból az öregemberrel együtt. Kissé bódultan bukdácsoltok lefelé az úton, Kharé központja irányába. Az öreg gyorsan szedi a lábát, igyekszik lehagyni téged. Miközben figyeled, gyanú ébred benned - megállsz, és átvizsgálod a hátizsákodat. Nem kellett volna hinned a gazfickónak, ugyanis ellopta az egyik tárgyadat! Utána kiáltasz, de már jócskán lehagyott, és bekanyarodott jobbra egy elágazásnál. Futva kell utolérned.[/p]
         </text>
-        <loseItem id="2000,2001,2002,3001,3002,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022,3023,3201,3202,3203,3204,3205"/>
-    </after>
+        <loseItem id="2000,2001,2002,3001,3002,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022,3023,3201,3202,3203,3204,3205" />
+      </after>
     </itemCheck>
     <next id="81"></next>
   </p>
   <!-- 22 -->
-  <!-- 23 -->
+  <p id="23">
+    <text>
+        [p]Elindulsz fölfelé az úton a kölykök után. Rozzant házak és kunyhók szegélyezik az utat, és igencsak óvatosan haladsz. Furcsa arcú emberek bámulnak rád az ablakokból. Fönt a kanyarban egy őrcsapat jelenik meg! Villámgyorsan felméred a helyzetet, besurransz az egyik kunyhóba, és magadra zárod az ajtót. Az őrök elmennek a ház mellett, és ekkor megkönnyebbülten lélegzel fel. De hol is vagy valójában?[/p]
+        [p]Körülnézel a rozzant viskóban, és hátrahőkölsz, amikor megpillantod a három undorító arcú embert, akik téged bámulnak. A szoba iszonyúan piszkos, és egy szalmazsákon meg egy alacsony asztalkán kívül szinte nem is látsz mást benne. A három teremtmény, a három Fekete Elf kifejezéstelen arccal mered rád. Átható, édeskés szag csapja meg az orrodat, amely azonnal magyarázatot ad közönyös viselkedésükre. Valamennyien vízipipát szívnak, melyben kapadohány van. Egyikük, miután nagy nehezen összeszedi magát, felajánlja, hogy tarts velük. Mit teszel?[/p]
+    </text>
+    <next id="150">Leülsz közéjük és rápipálsz?</next>
+    <next id="213">Elnézést kérsz a zavarásért, és távozol?</next>
+    <next id="242">Megpróbálsz valamilyen információt kicsikarni belőlük?</next>
+    <next id="58">Kardot rántasz ellenük?</next>
+  </p>
   <!-- 24 -->
   <!-- 25 -->
   <!-- 26 -->
   <!-- 27 -->
-  <!-- 28 -->
+  <p id="28">
+    <text>
+        [p]Kissé följebb egy elágazáshoz érsz, ahol vagy egyenesen mész tovább, vagy balra kanyarodsz. Az elágazásban egy kunyhó áll, előtte egy csődört látsz kikötve.[/p]
+    </text>
+    <next id="300">Ha a balra nyíló utcán mész tovább</next>
+    <next id="233">Ha egyenesen mész tovább</next>
+    <next id="183">Ha odamész a lóhoz</next>
+  </p>
   <!-- 29 -->
   <!-- 30 -->
   <!-- 31 -->
-  <!-- 32 -->
+  <p id="32">
+    <text>
+        [p]A kunyhók mellett haladsz az úton, míg egy elágazáshoz érsz, ahol jobbra fordulsz.[/p]
+    </text>
+    <next id="297"></next>
+  </p>
   <!-- 33 -->
   <!-- 34 -->
   <!-- 35 -->
@@ -161,29 +232,59 @@
   <!-- 43 -->
   <!-- 44 -->
   <!-- 45 -->
-  <!-- 46 -->
+  <p id="46">
+    <text>
+        [p]Az utcákat róva csakhamar egy útelágazáshoz érsz.[/p]
+    </text>
+    <next id="131">Balra fordulhatsz</next>
+    <next id="60">Vagy jobbra</next>
+    <next id="139">Vagy egyenesen mehetsz tovább</next>
+  </p>
   <!-- 47 -->
   <!-- 48 -->
   <!-- 49 -->
   <!-- 50 -->
-  <!-- 51 -->
+  <p id="51">
+    <text>
+        [p]- Lássuk csak - mondja töprengve. - Ki is ismerheti az Északi Kapu varázsigéjének egyik sorát? Ó, igen! A következő útelágazásnál nehogy ne menj egyenesen előre. Végül pedig nehogy balra kanyarodj. Igen… Úgy hiszem, ez az. Sok szerencsét! - Nem egészen érted, mit is javasolt neked, és egyre csak ez jár a fejedben, miközben az útkereszteződéshez közeledsz. Ne feledd, az illető kényszeres hazudozó![/p]
+    </text>
+    <next id="144"></next>
+  </p>
   <!-- 52 -->
   <!-- 53 -->
   <!-- 54 -->
   <!-- 55 -->
   <!-- 56 -->
-  <!-- 57 -->
+  <p id="57">
+    <text>
+        [p]Továbbmész az úton. Kharé központja felé haladsz, ahol a házak és épületek egyre sűrűbben állnak. Az utca egyik oldalán mész. Amikor átnézel a másik oldalra, hátulról hirtelen megragad valaki, és betuszkol egy házba! Szembefordulsz a támadóddal, egy sötét bőrű, borostás képű férfival. Szemmel láthatóan meglepi az erőd. Elenged, és kezét fölemelve jelzi, hogy nem óhajt bántani. - Barátom, sajnálom, hogy megijesztettelek - mondja. - Magányos vagyok ebben a gonosz városban. Éppolyan emberi lény vagy, mint én, és korábban nem láttalak errefelé. Kérlek, ülj le velem, és beszélgessünk egy kicsit. Nem foglak bántani. - Elég barátságosnak látszik, de a szemében gonosz fény csillog, s ezért nem igazán hiszel neki. Az ő otthonában vagytok, ahol a szobában egy asztal, néhány szék meg egy tálalószekrény áll, s a falakról faliszőnyegek lógnak.[/p]
+    </text>
+    <next id="186">Ha itt maradsz nála és elbeszélgetsz vele</next>
+    <next id="173">Ha inkább továbbállsz innen</next>
+  </p>
   <!-- 58 -->
   <p id="59">
     <text>
         [p]Ravaszul mosolyogva körülnéz, nem figyeli-e valaki, majd feléd nyújtja a tenyerét, és te beledobod az érméket (vonj le magadtól 2 Aranytallért). Amikor a pénz megcsörren, hangosan köhög egyet, hogy elnyomja a hangot. Odasúgja neked, hogy várj egy percet. Rád csukja az ajtót.[/p]
     </text>
-    <add amount="-2" to="gold"/>
+    <add amount="-2" to="gold" />
     <next id="225a"></next>
   </p>
-  <!-- 60 -->
+  <p id="60">
+    <text>
+        [p]Az utcából egy újabb utca nyílik. Ha balra fordulsz rajta, eljutsz Kharé központjába. Úgy döntesz, erre mész tovább.[/p]
+    </text>
+    <next id="165"></next>
+  </p>
   <!-- 61 -->
-  <!-- 62 -->
+  <p id="62">
+    <text>
+        [p]Kissé följebb az úton egy útkereszteződéshez érsz. Balra az út hasonló kunyhók sora között halad tovább, míg jobbra valami vásárféléhez vezet el, ahol színes zászlók lengedeznek és nagy a sürgésforgás.[/p]
+    </text>
+    <next id="32">Ha balra indulsz</next>
+    <next id="322">Ha jobbra</next>
+    <next id="57">Ha egyenesen mész tovább</next>
+  </p>
   <!-- 63 -->
   <!-- 64 -->
   <!-- 65 -->
@@ -212,7 +313,13 @@
   </p>
   <!-- 82 -->
   <!-- 83 -->
-  <!-- 84 -->
+  <p id="84">
+    <text>
+        [p]Csakhamar újabb útkereszteződéshez érsz.[/p]
+    </text>
+    <next id="57">Innen vagy balra folytathatod az utadat</next>
+    <next id="322">Vagy egyenesen mehetsz tovább</next>
+  </p>
   <!-- 85 -->
   <!-- 86 -->
   <!-- 87 -->
@@ -235,30 +342,35 @@
         [p]Átvirrasztod az egész éjszakát, de egyetlen őr sem tűnik fel. Az öreg lefekszik a priccsére, és végül elalszik. 2 ÉLETERŐ pontot vesztesz, mert nem pihentél 
     </text>
     <itemCheck type="item" id="4101">
-    <have>
+      <have>
         <text>
             éjjel, és további 3 ÉLETERŐ pontot, mert tegnap nem ettél semmit.
         </text>
-        <add amount="-5" to="stamina"/>
-    </have>
-    <dontHave>
+        <add amount="-5" to="stamina" />
+      </have>
+      <dontHave>
         <text>
             éjjel.
         </text>
-    <add amount="-2" to="stamina"/>
-    </dontHave>
-    <after>
+        <add amount="-2" to="stamina" />
+      </dontHave>
+      <after>
         <text>
             [/p]
             [p]Az őrök nem sokkal napfelkelte után megjelennek. Úgy látszik, megbizonyosodtak róla, hogy nem jelentettek veszélyt a városra, így szabadon engednek az öreggel együtt. Elindultok a város felé, de az öreg meglepően fürge, és csakhamar lehagy. Még látod, amint a legközelebbi útkereszteződésnél jobbra fordul, majd eltűnik a szemed elől.[/p]
         </text>
-    </after>
+      </after>
     </itemCheck>
     <next id="81"></next>
   </p>
   <!-- 103 -->
   <!-- 104 -->
-  <!-- 105 -->
+  <p id="105">
+    <text>
+        [p]Átkutatod a gyilkos zsebeit, és [span class="takeItem" data-id="gold" data-amount="8"]8 Aranytallért[/span] találsz bennük. Nincs a szobában semmi igazán értékes dolog, csak egy ,,[span class="takeItem" data-id="3025" data-amount="1"]Méreg[/span]’’ feliratú csupor, amit elteszel. Egy másik csuporban ,,[span class="takeItem" data-id="3026" data-amount="1"]Fakéregesszencia[/span]’’ van; ezt szintén elteheted. Ezt követően elhagyod az épületet.[/p]
+    </text>
+    <next id="46"></next>
+  </p>
   <!-- 106 -->
   <!-- 107 -->
   <!-- 108 -->
@@ -273,7 +385,13 @@
   <!-- 117 -->
   <!-- 118 -->
   <!-- 119 -->
-  <!-- 120 -->
+  <p id="120">
+    <text>
+        [p]Az utcákat róva újabb elágazáshoz érsz.[/p]
+    </text>
+    <next id="60">Vagy egyenesen mész tovább</next>
+    <next id="139">Vagy letérsz balra</next>
+  </p>
   <!-- 121 -->
   <!-- 122 -->
   <!-- 123 -->
@@ -290,41 +408,153 @@
   <!-- 128 -->
   <!-- 129 -->
   <!-- 130 -->
-  <!-- 131 -->
+  <p id="131">
+    <text>
+        [p]Abból az utcából, amelyen mész, egy újabb utca nyílik. Ha jobbra fordulsz rajta, eljutsz Kharé központjába. Úgy döntesz, erre mész.[/p]
+    </text>
+    <next id="165"></next>
+  </p>
   <!-- 132 -->
-  <!-- 133 -->
+  <p id="133">
+    <text>
+        [p]Kissé följebb a kereskedők fertályára érsz, az úton, ahol fazekasok, takácsok és különböző kézművesek kínálgatják portékáikat a kunyhóik előtt.[/p]
+    </text>
+    <next id="3">Ha megállsz szemlélődni</next>
+    <next id="137">Ha továbbmész</next>
+  </p>
   <!-- 134 -->
   <!-- 135 -->
   <!-- 136 -->
-  <!-- 137 -->
-  <!-- 138 -->
-  <!-- 139 -->
+  <p id="137">
+    <text>
+        [p]Addig mész az úton, amíg egy hármas elágazáshoz nem érsz, ahonnan északnak folytatod az utadat.[/p]
+    </text>
+    <next id="191"></next>
+  </p>
+  <p id="138">
+    <text>
+        [p]Elindulsz az úton az aprócska kunyhók felé. Ahogy elhaladsz előttük, undorító teremtményeket látsz, akik napi teendőjüket végzik, közben vizsla szemmel figyelnek. Nem messze tőled, az út menti csatorna szélén egy ember fekszik a hasán. Első pillantásra úgy látod, hogy ez egy alvó koldus vagy valami hullarészeg teremtmény.[/p]
+    </text>
+    <next id="256">Ha megnézed, nincs-e szüksége némi segítségre</next>
+    <next id="239">Ha rá se hederítesz, hanem továbbmész</next>
+  </p>
+  <p id="139">
+    <text>
+        [p]Kissé följebb egy kis kápolna előtt haladsz el az utcán. A kiszüremlő hangokból arra következtetsz, hogy valamiféle találkozó zajlik odabenn.[/p]
+    </text>
+    <next id="187">Ha meg akarod nézni, mi folyik a kápolnában</next>
+    <next id="165">Ha megállás nélkül folytatod az utat</next>
+  </p>
   <!-- 140 -->
   <!-- 141 -->
   <!-- 142 -->
   <!-- 143 -->
-  <!-- 144 -->
+  <p id="144">
+    <text>
+        [p]Elérsz az útkereszteződéshez. Melyik utat választod?[/p]
+    </text>
+    <next id="165">Egyenesen mehetsz tovább</next>
+    <next id="120">Vagy jobbra fordulhatsz</next>
+  </p>
   <!-- 145 -->
   <!-- 146 -->
   <!-- 147 -->
   <!-- 148 -->
   <!-- 149 -->
-  <!-- 150 -->
+  <p id="150">
+    <text>
+        [p]Odaülsz hozzájuk a matracra. Rád vigyorognak, és kivillan sárga, ápolatlan foguk. Egy pipát nyújtanak oda neked, néhányat pöfékelsz, majd hátradőlsz. A pipa körbemegy, és csakhamar mind a négyen bambán bámultok a levegőbe. Kissé szédülni kezdesz. A Kapadohánynak azonban előre nem látható hatása van.[/p]
+    </text>
+    <gatherItem id="4017" />
+    <random>
+      <result max="1" min="1">
+        <text>
+            [p]Nyugodt, kellemes érzés hat át - nyersz 2 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="2" to="stamina" />
+        <next id="242"></next>
+      </result>
+      <result max="2" min="2">
+        <text>
+            [p]Hatalmas önbizalom áraszt el - nyersz 1 ÜGYESSÉG pontot a következő csatád idejére.[/p]
+        </text>
+        <gatherItem id="4015" />
+        <next id="242"></next>
+      </result>
+      <result max="3" min="3">
+        <text>
+            [p]Álmosnak érzed magad, és húsz percet szundítasz.[/p]
+        </text>
+        <next id="242"></next>
+      </result>
+      <result max="4" min="4">
+        <text>
+            [p]Ellenállhatatlan kényszert érzel, hogy valami ésszerűtlen dolgot tégy - adsz mindegyik Elfnek 1 Aranytallért.[/p]
+        </text>
+        <add amount="-3" to="gold" />
+        <next id="242"></next>
+      </result>
+      <result max="5" min="5">
+        <text>
+            [p]Úgy érzed, mintha megőrülnél - vonj le magadtól azonnal 1 ÉLETERŐ pontot, és csökkentsd ÜGYESSÉGEDET 1 ponttal a következő harcban.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+        <gatherItem id="4016" />
+        <next id="242"></next>
+      </result>
+      <result max="6" min="6">
+        <text>
+            [p]Erőszakoskodni kezdesz és kardot rántasz[/p]
+        </text>
+        <next id="58"></next>
+      </result>
+    </random>
+  </p>
   <!-- 151 -->
   <!-- 152 -->
-  <!-- 153 -->
+  <p id="153">
+    <text>
+        [p]Elhagyod a Törpék negyedét, és folytatod utadat. Kissé följebb az úton egy magányos, zsúpfedeles házhoz érsz. A ház előtt egy szobor áll. Egy férfit vagy ahhoz igen hasonló lényt ábrázol, melynek hosszú, vézna végtagjai vannak. Két tenyerét összetéve mintha imádkozna. Bár maga a teremtmény is különös, figyelmedet mégis a nyakában lógó aranymedál vonja magára. Úgy látod, a medál túlzottan értékes ahhoz, hogy csak úgy ott lógjon egy őrizetlen szobor nyakán. Lehetséges, hogy igen értékes, sőt mi több, lehet, hogy varázsereje van. Mit teszel?[/p]
+    </text>
+    <next id="8">Jobban szemügyre veszed a szobrot?</next>
+    <next id="27">Bemész a kunyhóba a szobor mögött nyíló ajtón?</next>
+    <next id="137">Nem engedsz a csábításnak, és továbbmész?</next>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="VAR" id="482" />
+        <spell name="TÁV" id="413" />
+        <spell name="GOB" id="359" />
+        <spell name="ERŐ" id="429" />
+        <spell name="CSA" id="472" />
+      </have>
+    </itemCheck>
+  </p>
   <!-- 154 -->
   <!-- 155 -->
   <!-- 156 -->
   <!-- 157 -->
   <!-- 158 -->
   <!-- 159 -->
-  <!-- 160 -->
+  <p id="160">
+    <text>
+        [p]Közeledsz Kharé központja felé. Itt már a házak és viskók egyre sűrűbben sorakoznak egymás mellett, és az utcák is koszosak. Különböző teremtmények ácsorognak az utcán, és lesik lépteidet.[/p]
+    </text>
+    <next id="202">Egy elágazáshoz érsz, ahol balra fordulhatsz</next>
+    <next id="165">Vagy továbbmehetsz a kikötő felé</next>
+  </p>
   <!-- 161 -->
   <!-- 162 -->
   <!-- 163 -->
   <!-- 164 -->
-  <!-- 165 -->
+  <p id="165">
+    <text>
+        [p]A közelgő éjszakát semmi kedved Kharé utcáin tölteni. Megállítasz egy nőt, és megkéred, igazítson útba a legközelebbi fogadóhoz. - Menj egyenesen a kikötő felé - mondja. - Arra találsz majd egy fogadót. De siess, idegen, mert hamarosan leszáll az éj. - Megköszönöd az útbaigazítást és továbbmész. Végül eljutsz a ,,Megfáradt Vándor'' nevű fogadóhoz, és bemész.[/p]
+    </text>
+    <next id="110"></next>
+  </p>
   <!-- 166 -->
   <!-- 167 -->
   <!-- 168 -->
@@ -337,7 +567,13 @@
   <!-- 170 -->
   <!-- 171 -->
   <!-- 172 -->
-  <!-- 173 -->
+  <p id="173">
+    <text>
+        [p]A férfi dühös lesz. - Hálátlan vándor! - kiáltja. - Nem utasíthatod vissza a vendégszeretetemet! Gyere, igyál meg velem egy korsó sört. Ha nem, soha nem jutsz ki ebből a házból![/p]
+    </text>
+    <next id="34">Ha meggondolod magad és mégis elfogadod a meghívását</next>
+    <next id="223">Ha inkább harcolsz, ha kell, csak hogy kiszabadulj innen</next>
+  </p>
   <!-- 174 -->
   <!-- 175 -->
   <!-- 176 -->
@@ -347,13 +583,13 @@
         [p]Egy nagydarab, testes fegyveres őr jelenik meg a kapuban. - Ki akar itt bejutni? - mordul rád. Azt válaszolod, hogy az apádat jöttél meglátogatni. Hamis nevet mondasz neki, és közlöd vele, hogy Dhumpusból jöttél. Megparancsolja, hogy várj, míg a felettesével beszél.[/p]
     </text>
     <itemCheck type="gold" id="2">
-    <have>
-    <next id="225b">Ha vársz, ahogy utasított</next>
-    <next id="59">Ha felajánlasz neki 2 Aranytallért, ha kérdezősködés nélkül átenged</next>
-    </have>
-    <dontHave>
+      <have>
+        <next id="225b">Ha vársz, ahogy utasított</next>
+        <next id="59">Ha felajánlasz neki 2 Aranytallért, ha kérdezősködés nélkül átenged</next>
+      </have>
+      <dontHave>
         <next id="225b"></next>
-    </dontHave>
+      </dontHave>
     </itemCheck>
   </p>
   <!-- 179 -->
@@ -368,7 +604,13 @@
   <!-- 188 -->
   <!-- 189 -->
   <!-- 190 -->
-  <!-- 191 -->
+  <p id="191">
+    <text>
+        [p]Egy útkereszteződéshez érsz.[/p]
+    </text>
+    <next id="297">Mehetsz egyenesen tovább</next>
+    <next id="84">De elkanyarodhatsz jobbra is</next>
+  </p>
   <!-- 192 -->
   <!-- 193 -->
   <!-- 194 -->
@@ -379,7 +621,13 @@
   <!-- 199 -->
   <!-- 200 -->
   <!-- 201 -->
-  <!-- 202 -->
+  <p id="202">
+    <text>
+        [p]Menet közben újabb útkereszteződéshez érsz.[/p]
+    </text>
+    <next id="131">Ha egyenesen mész tovább</next>
+    <next id="139">Ha befordulsz jobbra egy másik utcán</next>
+  </p>
   <!-- 203 -->
   <!-- 204 -->
   <!-- 205 -->
@@ -390,10 +638,34 @@
   <!-- 210 -->
   <!-- 211 -->
   <!-- 212 -->
-  <!-- 213 -->
+  <p id="213">
+    <text>
+        [p]Elhagyod a kunyhót. Az őrök eltűntek az utca végében, és így továbbmehetsz. Kissé följebb egy tó mellett haladsz el az úton. Amikor belenézel a tó vizébe, egy kő mögül parányi ezüsthalacska surran elő, és rád néz. Szájából levegőbuborékok törnek elő. Mintha beszélne hozzád. Egy Aranytallér fölött úszkál, amit minden bizonnyal valaki beleejtett a tó vizébe.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="MEN" id="456" />
+        <spell name="HOM" id="351" />
+        <spell name="TIV" id="375" />
+        <spell name="VAR" id="470" />
+        <spell name="KIN" id="338" />
+      </have>
+    </itemCheck>
+    <next id="320">Ha lehajolsz, hogy meggyőződj róla, vajon a halacska valóban beszél-e hozzád</next>
+    <next id="85">Ha elcsened az Aranytallért</next>
+    <next id="28">Ha továbbmész utadon</next>
+  </p>
   <!-- 214 -->
   <!-- 215 -->
-  <!-- 216 -->
+  <p id="216">
+    <text>
+        [p]- Ha szállást keresel éjszakára - mondja -, akkor én a te helyedben nem kanyarodnék jobbra az elágazásnál. - Megköszönöd a tanácsát, és miközben az elágazás felé mész, egyre az jár a fejedben, amit mondott. Ne feledd, kényszeres hazudozó az illető![/p]
+    </text>
+    <next id="144"></next>
+  </p>
   <!-- 217 -->
   <p id="218">
     <text>
@@ -405,7 +677,30 @@
   <!-- 220 -->
   <!-- 221 -->
   <!-- 222 -->
-  <!-- 223 -->
+  <p id="223">
+    <text>
+        [p]Távozni készülsz. A Gyilkos ekkor lekapja a falról az íját, belehelyezi a nyílvesszőt, és megcéloz vele. - Nem menekülsz a Gyilkos Vangorn elől! - mondja kárörvendőn, és meghúzza az íj húrját.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <next id="13">Ha kardot rántasz és rátámadsz</next>
+        <spell name="TIV" id="493" />
+        <spell name="NYI" id="366" />
+        <spell name="FAL" id="383" />
+        <spell name="SUD" id="509" />
+        <spell name="GUM" id="455" />
+      </have>
+      <dontHave>
+        <text>
+            [p]Kardot rántasz, és rátámadsz.[/p]
+        </text>
+        <next id="13"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 224 -->
   <p id="225a" actions="225">
     <text>
@@ -426,18 +721,44 @@
   <!-- 230 -->
   <!-- 231 -->
   <!-- 232 -->
-  <!-- 233 -->
+  <p id="233">
+    <text>
+        [p]Amint felfelé mész az úton, észreveszed, hogy a kunyhók egyre kisebbek. Az úttesten Törpék és más apró teremtmények nyüzsögnek. Megvető pillantásaikból arra következtetsz, hogy nem nagyon kedvelik az embertermetű idegeneket. Valamivel távolabb kisebb tömeg verődött össze az úton két veszekedő teremtmény körül.[/p]
+    </text>
+    <next id="149">Ha akarod, megállhatsz itt a környék vegyesboltja előtt</next>
+    <next id="153">Ha akarod, továbbmehetsz</next>
+    <next id="98">Ha meg akarod nézni, mi okozta a nézeteltérésüket</next>
+  </p>
   <!-- 234 -->
   <!-- 235 -->
   <!-- 236 -->
   <!-- 237 -->
   <!-- 238 -->
-  <!-- 239 -->
+  <p id="239">
+    <text>
+        [p]Az apró kültelki település mögött egy ócska fakerítéssel körülvett telek mellett visz el utad, ahol féltucat disznó túrja a földet. A disznóktól jókora távolságra teremtmények egy csoportját látod a tábortűz körül.[/p]
+    </text>
+    <next id="307">Ha átmászol a kerítésen és odamész hozzájuk, hogy megnézd, mit csinálnak</next>
+    <next id="62">Ha ügyet sem vetsz rájuk, és inkább továbbmész</next>
+  </p>
   <!-- 240 -->
   <!-- 241 -->
-  <!-- 242 -->
+  <p id="242">
+    <text>
+        [p]Kétségbeesetten próbálsz beszédbe elegyedni velük, de a pipázók túl kábák, és nem tudnak értékes információval szolgálni. Megkérdezed, nem ismernek-e itt a környéken egy tudóst. Bambán merednek egymásra, majd egyikük bólint, és ujjával előremutat az út felé. Nincs értelme folytatni a beszélgetést, így aztán távozol.[/p]
+    </text>
+    <next id="213"></next>
+  </p>
   <!-- 243 -->
-  <!-- 244 -->
+  <p id="244">
+    <text>
+        [p]Továbbmész az úton a kanyarban. Néhány száz méterre tőled emberek és teremtmények tömegét látod, akik elállják az utat. Számos sátrat húztak fel, melyeket színes zászlócskák díszítenek. Valami fesztiválféle színhelyére érkeztél. Úgy döntesz, megnézed, mi történik itt. Elvegyülsz a tömegben, és végigjárod a különböző események színhelyét. Egy helyütt zenészek játszanak vidám dalt egy csapat táncosnak. Másutt egy medvetáncoltató Törpét látsz. Egy sátorban felállított ring közepéről egy haramia hívogatja a vállalkozó kedvűeket, hogy vívjanak meg a bajnokával. Mit teszel?[/p]
+    </text>
+    <next id="261">A táncosokat nézed?</next>
+    <next id="269">A medvetáncoltatást nézed?</next>
+    <next id="33">Megpróbálsz kiállni a bajnok ellen?</next>
+    <next id="263">Elhagyod a fesztivál színterét?</next>
+  </p>
   <!-- 245 -->
   <!-- 246 -->
   <!-- 247 -->
@@ -459,11 +780,11 @@
         <text>
             [p]Ha akarsz, varázsolhatsz, hogy kiszabadulj.[/p]
         </text>
-        <spell name="EME" id="371"/>
-        <spell name="POP" id="504"/>
-        <spell name="FIX" id="486"/>
-        <spell name="NYI" id="432"/>
-        <spell name="FIL" id="344"/>
+        <spell name="EME" id="371" />
+        <spell name="POP" id="504" />
+        <spell name="FIX" id="486" />
+        <spell name="NYI" id="432" />
+        <spell name="FIL" id="344" />
       </have>
     </itemCheck>
     <next id="260">Ha megvárod, míg visszajönnek</next>
@@ -478,21 +799,27 @@
         [p]Egész nap vársz, de az őrök csak nem jönnek vissza. Amikor leszáll az est, enned és aludnod kell.[/p]
     </text>
     <itemCheck type="item" id="2000">
-    <have>
-    <next id="308">Ha fogyasztasz a saját Élelmedből</next>
-    <next id="333" pos="5">Ha nem</next>
-    </have>
-    <dontHave>
+      <have>
+        <next id="308">Ha fogyasztasz a saját Élelmedből</next>
+        <next id="333" pos="5">Ha nem</next>
+      </have>
+      <dontHave>
         <text>
             [p]Sajnos azonban nincs nálad élelem.[/p]
         </text>
-    <next id="333" pos="5"></next>
-    </dontHave>
+        <next id="333" pos="5"></next>
+      </dontHave>
     </itemCheck>
   </p>
   <!-- 261 -->
   <!-- 262 -->
-  <!-- 263 -->
+  <p id="263">
+    <text>
+        [p]Távozol a fesztivál színhelyéről, de amint az egyik sátor előtt elhaladsz, érdekes kiírás vonja magára a figyelmedet: SZERENCSETANYA - PRÓBÁLJ SZERENCSÉT - MINDENKI NYER - CSAK 2 ARANYTALLÉR![/p]
+    </text>
+    <next id="240">Ha meg akarod nézni, mi zajlik odabent</next>
+    <next id="160">Ha nem</next>
+  </p>
   <!-- 264 -->
   <!-- 265 -->
   <!-- 266 -->
@@ -526,15 +853,40 @@
     </text>
     <next id="254"></next>
   </p>
-  <!-- 292 -->
+  <p id="292">
+    <text>
+        [p]Elindulsz az úton a kunyhók felé. Az öreg besurrant az út bal oldalán egy nagy, koszos kunyhóba.[/p]
+    </text>
+    <next id="66">Ha akarod, utánamehetsz</next>
+    <next id="171">Vagy bemehetsz a szemközti házba, ahonnan valami érdekes szag szivárog ki az útra</next>
+    <next id="294">De ha akarod, folytathatod az utadat a kunyhók között</next>
+  </p>
   <!-- 293 -->
-  <!-- 294 -->
+  <p id="294">
+    <text>
+        [p]Föntről, az út végéből zajongó tömeg hangját hallod. Lehet, hogy valami piac vagy vásár felé tartasz éppen. Egy útelágazáshoz érsz.[/p]
+    </text>
+    <next id="244">Vagy egyenesen mész tovább</next>
+    <next id="328">Vagy balra fordulsz</next>
+  </p>
   <!-- 295 -->
   <!-- 296 -->
-  <!-- 297 -->
+  <p id="297">
+    <text>
+        [p]Belépsz Kharé központjába, ahol a házak már sűrűn egymás mellé épültek. Emberek és különféle teremtmények ólálkodnak az utcákon. Késő délután van már, és jó lesz, ha elkezdesz azon gondolkodni, vajon hol is töltöd az éjszakát. Melletted egy ifjú sétál az utcán, akivel beszélgetésbe elegyedsz. A különös fickó Slanggnak nevezi magát. Elmondja, hogy Kharé Északi Kapuja mögött lakik. Meglepő történeteket mesél az anyjáról, aki Bűzös Borz, meg arról, hogy ő maga csak patkányvelőt fogyaszt, és ő Kharé Első Főnemesének személyi szolgája. Csakhamar rájössz, hogy egy kényszeres hazudozóval van dolgod! Bármit mond, az hazugság! Végül is elértek egy útkereszteződéshez, mely közel van úticéljához. Mielőtt elbúcsúznátok, tanácsot kérhetsz tőle.[/p]
+    </text>
+    <next id="216">Ha azt kérdezed tőle, hogyan juthatsz el a legközelebbi fogadóig</next>
+    <next id="51">Ha azt kérdezed meg tőle, vajon nem tudná-e megmondani, miképp juthatsz el ahhoz az emberhez, aki ismeri az Északi Kaput nyitó varázsige egyik sorát</next>
+  </p>
   <!-- 298 -->
   <!-- 299 -->
-  <!-- 300 -->
+  <p id="300">
+    <text>
+        [p]Az út egy idő után kissé összeszűkül. Fiatal Ork kölykök lökdösődő csapata közelít feléd. Amikor megpillantanak, odarohannak hozzád, körbefognak és így könyörögnek: - Helló, adj egy Aranyat! - Tíz apró tenyér nyúlik feléd az adományt várva.[/p]
+    </text>
+    <next id="91">Ha vetsz nekik egy Aranytallért</next>
+    <next id="329">Ha nem veszel róluk tudomást, hanem továbbmész</next>
+  </p>
   <!-- 301 -->
   <!-- 302 -->
   <!-- 303 -->
@@ -543,22 +895,22 @@
   <!-- 306 -->
   <!-- 307 -->
   <p id="308">
-    
+
     <itemCheck type="item" id="2000" amount="2">
-    <have>
+      <have>
         <text>
             [p]Ehetsz egy adag ételt, és nyersz 2 ÉLETERŐ pontot. Azonban, ha eszel, ételedet meg kell osztanod az öreggel, mert ő is éhes és hasznos információval szolgált.[/p]
         </text>
         <next id="333" pos="2">Ha adsz az öregnek is enni</next>
         <next id="333" pos="5">Ha nem</next>
-    </have>
-    <dontHave>
+      </have>
+      <dontHave>
         <text>
             [p]Ehetsz egy adag ételt, de ha így teszel, ételedet meg kell osztanod az öreggel, mert ő is éhes és hasznos információval szolgált. Mivel csak 1 adag Élelmed van, azt kell vele megosztanod, és csupán 1 ÉLETERŐ pontot kapsz jutalmul.[/p]
         </text>
         <next id="333" pos="1">Ha adsz az öregnek is enni</next>
         <next id="333" pos="5">Ha nem</next>
-    </dontHave>
+      </dontHave>
     </itemCheck>
   </p>
   <!-- 309 -->
@@ -568,20 +920,56 @@
   <!-- 313 -->
   <!-- 314 -->
   <!-- 315 -->
-  <!-- 316 -->
+  <p id="316">
+    <text>
+        [p]Sikerül elszabadulnod a kölyköktől, és továbbmész az úton. Kissé följebb egy hatalmas vakolt kőház mellett haladsz el. Az épület tekintélyt sugároz.[/p]
+    </text>
+    <next id="140">Ha odamész a bejárati ajtóhoz</next>
+    <next id="208">Ha megkerülöd a házat</next>
+    <next id="133">Ha egyenesen továbbmész</next>
+  </p>
   <!-- 317 -->
   <!-- 318 -->
   <!-- 319 -->
-  <!-- 320 -->
+  <p id="320">
+    <text>
+        [p]Lehajolsz, és a füledet odateszed a víz felszínéhez. A kis ezüsthal rád köp, és egy vízcsepp hullik az arcodra. Ha a halak egyáltalán tudnak nevetni, hát megesküdnél rá, hogy ez a halacska jót kacagott rajtad! Szájából ismét buborékok szállnak fel. Valami hang is hallatszik, de a buborékok elnyomják. Mintha olyasmit mondott volna, hogy: ,,Vkdjltl.'' De vajon mit jelenthet ez? A kis hal visszaúszik a sziklamenedékébe.[/p]
+    </text>
+    <next id="28">Ha továbbmész</next>
+    <next id="85">Ha megpróbálod felvenni az érmét</next>
+  </p>
   <!-- 321 -->
-  <!-- 322 -->
+  <p id="322">
+    <text>
+        [p]Továbbmész az úton a következő útkereszteződésig. Bal kéz felől zajt hallasz, és elindulsz a kanyar felé, amerre a tömeget sejted.[/p]
+    </text>
+    <next id="244"></next>
+  </p>
   <!-- 323 -->
   <!-- 324 -->
   <!-- 325 -->
   <!-- 326 -->
   <!-- 327 -->
-  <!-- 328 -->
-  <!-- 329 -->
+  <p id="328">
+    <text>
+        [p]Csakhamar egy újabb útelágazáshoz érsz.[/p]
+    </text>
+    <next id="32">Vagy a kis házak felé veheted az utadat</next>
+    <next id="57">Vagy elmehetsz jobbra</next>
+  </p>
+  <p id="329">
+    <text>
+        [p]Amikor köréd gyűlnek, megérzed, hogy apró kezeikkel a hátizsákodat ráncigálják. Bele akarnak nyúlni, hogy megnézzék, nincs-e valami olyan értéked, amit ellophatnának. [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="316"></next>
+      </success>
+      <failure>
+        <next id="262"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 330 -->
   <!-- 331 -->
   <!-- 332 -->
@@ -590,18 +978,18 @@
         [p]Csakhamar elálmosodsz. De vajon mennyire bízhatsz meg az öregben?[/p]
     </text>
     <itemCheck type="pos" id="1">
-    <have>
-    <add amount="1" to="stamina"/>
-    <loseItem id="2000"/>
-    <loseItem id="4101"/>
-    </have>
+      <have>
+        <add amount="1" to="stamina" />
+        <loseItem id="2000" />
+        <loseItem id="4101" />
+      </have>
     </itemCheck>
     <itemCheck type="pos" id="2">
-    <have>
-    <add amount="2" to="stamina"/>
-    <loseItem id="2000" amount="2"/>
-    <loseItem id="4101"/>
-    </have>
+      <have>
+        <add amount="2" to="stamina" />
+        <loseItem id="2000" amount="2" />
+        <loseItem id="4101" />
+      </have>
     </itemCheck>
     <next id="21">Ha lefekszel a földre és aludni térsz</next>
     <next id="102">Ha az őröket várva inkább ébren maradsz és szemmel tartod a hátizsákodat</next>
@@ -650,7 +1038,13 @@
   <!-- 363 -->
   <!-- 364 -->
   <!-- 365 -->
-  <!-- 366 -->
+  <p id="366">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Varázsolsz. Vangorn mögött az ajtó kinyílik az utcára. Nem hátrál meg.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="13"></next>
+  </p>
   <!-- 367 -->
   <!-- 368 -->
   <!-- 369 -->
@@ -680,7 +1074,13 @@
     <next id="218">Ha inkább továbbmész</next>
   </p>
   <!-- 382 -->
-  <!-- 383 -->
+  <p id="383">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot! Varázslatod hatására egy láthatatlan fal emelkedik kettőtök közé. A Gyilkos kilövi a nyílvesszőjét, de az lepattan a védőfalról. - Egy Varázsló! - mondja Vangorn. - Varázslókkal nem vitázom. Elmehetsz, idegen! - Leereszti az íját, és ellép az ajtóból, hogy utat engedjen neked.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="46"></next>
+  </p>
   <!-- 384 -->
   <!-- 385 -->
   <!-- 386 -->
@@ -764,7 +1164,27 @@
   <!-- 452 -->
   <!-- 453 -->
   <!-- 454 -->
-  <!-- 455 -->
+  <p id="455">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot![/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3017">
+      <have>
+        <text>
+            [p]Hozzávágod a Gyilkoshoz a ragasztót és varázsolsz. Az üvegcse összetörik és tartalma ráfolyik ellenfeledre. Varázslatod hatására a Gyilkos keze hozzáragad az íjhoz, a lába pedig a földhöz. Most kimehetsz az ajtón.[/p]
+        </text>
+        <loseItem id="3017" />
+        <next id="46"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslatnak nincs semmiféle hatása.[/p]
+        </text>
+        <next id="13"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 456 -->
   <!-- 457 -->
   <!-- 458 -->
@@ -815,14 +1235,20 @@
   <!-- 490 -->
   <!-- 491 -->
   <!-- 492 -->
-  <!-- 493 -->
+  <p id="493">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot! Varázsolsz, és megparancsolod a férfinak, hogy tegye le a fegyverét. A Gyilkos egyre csak nevet - ez a varázslat csak az értelemmel nem rendelkező teremtményekre van hatással![/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="13"></next>
+  </p>
   <!-- 494 -->
   <!-- 495 -->
   <p id="496">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és abban a pillanatban nőni kezdesz és egyre erősebb leszel. Odalépsz a csukott Déli Kapuhoz, és megpróbálod kinyitni. Nekifeszülsz, de az meg sem moccan. Végül is visszanyered eredeti nagyságodat, de addigra benn felfigyelnek a zajra.[/p]
     </text>
-    <add amount="-2" to="stamina"/>
+    <add amount="-2" to="stamina" />
     <next id="178"></next>
   </p>
   <!-- 497 -->
@@ -836,21 +1262,32 @@
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot![/p]
     </text>
-    <add amount="-1" to="stamina"/>
+    <add amount="-1" to="stamina" />
     <itemCheck type="item" id="3019" amount="3">
-    <have>
+      <have>
         <text>
             [p]Rávarázsolsz a kavicsokra, és az ablakon lévő rácshoz vágod őket. Amint hozzáérnek, felrobbannak, és szétfeszítik a rácsot. Három kavics elegendő ahhoz, hogy kiszabadulj az öreggel együtt. (Húzd ki a kavicsokat a Kalandlapodról!) Mindketten kimásztok az ablakon, és elindultok az úton Kharéba. Az öreg igen fürge, és csakhamar lehagy.[/p]
         </text>
-        <loseItem id="3019" amount="3"/>
+        <loseItem id="3019" amount="3" />
         <next id="81"></next>
-    </have>
-    <dontHave>
+      </have>
+      <dontHave>
         <text>
             [p]Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal.[/p]
         </text>
         <next id="254"></next>
-    </dontHave>
+      </dontHave>
     </itemCheck>
+  </p>
+  <!-- 505 -->
+  <!-- 506 -->
+  <!-- 507 -->
+  <!-- 508 -->
+  <p id="509">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nem alkalmazhatod ezt a varázslatot, mert ilyen varázslat nem létezik.[/p]
+    </text>
+    <add amount="-5" to="stamina" />
+    <next id="13"></next>
   </p>
 </content>
