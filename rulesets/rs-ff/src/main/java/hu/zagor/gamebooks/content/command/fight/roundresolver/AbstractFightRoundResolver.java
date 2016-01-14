@@ -73,7 +73,7 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
      */
     protected void resolveDefeatMessage(final FightDataDto dto) {
         final FightCommandMessageList messages = dto.getMessages();
-        messages.addKey("page.ff.label.fight.single.failedDefense", new Object[]{dto.getEnemy().getName()});
+        messages.addKey("page.ff.label.fight.single.failedDefense", dto.getEnemy().getName());
     }
 
     /**

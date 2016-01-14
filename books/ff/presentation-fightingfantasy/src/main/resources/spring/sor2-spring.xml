@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
-  xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.Sorcery.KHARE_CITYPORT_OF_TRAPS" id="sor2Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="sor2Info" c:id-ref="sor2Id" p:coverPath="resources/sor2/cover.jpg" p:resourceDir="sor2"
-    p:contentTransformers-ref="defaultSorContentTransformers" p:paragraphResolver-ref="sorRuleBookParagraphResolverL" p:locale-ref="enLocale" p:position="2" p:series-ref="sorTitle" p:title="Khare &amp;dash; Cityport of Traps" p:characterHandler-ref="sorCharacterHandler" p:commandResolvers-ref="sorCommandResolvers" p:characterBeanId="sorCharacter" p:characterPageDataBeanId="sorCharacterPageData" p:unfinished="true" p:hidden="true">
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="sor2Info" c:id-ref="sor2Id" p:coverPath="resources/sor2/cover.jpg" p:resourceDir="sor2" p:contentTransformers-ref="defaultSorContentTransformers" p:paragraphResolver-ref="sorRuleBookParagraphResolverL" p:locale-ref="enLocale" p:position="2" p:series-ref="sorTitle" p:title="Khare &amp;dash; Cityport of Traps" p:characterHandler-ref="sorCharacterHandler" p:commandResolvers-ref="sorCommandResolvers" p:characterBeanId="sorCharacter" p:characterPageDataBeanId="sorCharacterPageData" p:unfinished="true" p:hidden="true">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="sor2enemies.xml" c:items="sor2items.xml" c:paragraphs="sor2content.xml" />
     </property>
@@ -15,8 +12,19 @@
       <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="true" />
     </property>
     <property name="resources">
-      <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="sor" p:jsResources="sor" />
+      <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="sor" p:jsResources="sor,sor2" />
     </property>
   </bean>
+
+  <util:set id="sor2WeedSmokerEnemies" value-type="java.lang.String">
+    <value>2</value>
+    <value>3</value>
+    <value>4</value>
+  </util:set>
+
+  <util:map key-type="java.lang.String" value-type="java.lang.String" id="flankerVisitTargets">
+    <entry key="244" value="111" />
+    <entry key="110" value="222" />
+  </util:map>
 
 </beans>

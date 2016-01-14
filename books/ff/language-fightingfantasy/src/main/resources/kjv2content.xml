@@ -59,8 +59,19 @@
         [p]Kharé a káosz városa - Bakland kapuja.[/p]
         [p]Alattad, a Shamutanti dombok lábánál terül el a fallal körülvett kikötő-város, melyet a hatalmas Jabaji folyó szel ketté. Lefelé igyekszel a domb-ról, és félúton megállsz, hogy tájékozódj. A legenda szerint Kharé a Jabaji folyón lévő egyetlen gázlóra épült a Lumlé tó és a tenger között. Ez azonban kevéssé hihető mese. Sokkal valószínűbb az a történet, amely szerint folyami kalózok tanyáztak itt, s arra vártak, hogy lecsaphassanak a halakkal megrakott bárkákra, melyek a Lumlé tó és a Kakhabadi-tenger között közlekedtek. Bármi volt is az ok, Kharé egyre csak terebélyesedett.[/p]
         [p]Mire a táborból falu lett, a faluból pedig város, Kharé a baklandi és a shamutanti semmirekellők gyűjtőhelyévé vált. Gonosz, rosszindulatú teremtmények tömege lepte el a várost, akik egy cipőfűzőért is képesek voltak ölni. Ezek nem ismertek törvényt, így aztán a helyi lakosok, hogy az utcákat elözönlő bűnözőktől megvédjék magukat, bonyolult csapdarendszert agyaltak ki. Innen származik a város neve: a Csapdák Kikötővárosa.[/p]
-        [p]Úticélod jócskán Kharén túl van. Bár ezt a várost csak hírből ismered, soha nem tennéd be ide a lábadat, ahhoz azonban, hogy átkelhess a Jabaji folyón, sajnos kénytelen vagy átmenni Kharén, mert nincs más választásod. Kedvező helyről szemléled a kikötővárost körülvevő erős védőfalat. Kharét két kapu köti össze a külvilággal. Az egyik, a Déli Kapu épp veled szemben van, és ezen át lehet a városba bejutni. A másik az Északi Kapu, amelyen áthaladva Baklandba jut az ember. Az idő múlik, s az időd drága. Fürgén lerohansz a dombról, és egy óra múlva eléred a hatalmas kaput, de az be van zárva.[/p]
     </text>
+    <itemCheck type="item" id="4013">
+      <have>
+        <text>
+            [p]Flanker, a bérgyilkos, akivel Torrepani közelében találkoztál, egy nappal előtted érkezett Kharéba. Utad során zsúfolt területeken lesz esélyed belefutni a férfiba. Ha bármikor is ilyen helyre érkezel, kattints rá erre a szóra, hogy megtudd, mit mond Flanker. A szöveg nem fog erre külön figyelmeztetni, ha nem sikerül kiszúrnod a kulcsszót, az azt jelenti, hogy nem ismerted fel.[/p]
+        </text>
+      </have>
+      <after>
+        <text>
+            [p]Úticélod jócskán Kharén túl van. Bár ezt a várost csak hírből ismered, soha nem tennéd be ide a lábadat, ahhoz azonban, hogy átkelhess a Jabaji folyón, sajnos kénytelen vagy átmenni Kharén, mert nincs más választásod. Kedvező helyről szemléled a kikötővárost körülvevő erős védőfalat. Kharét két kapu köti össze a külvilággal. Az egyik, a Déli Kapu épp veled szemben van, és ezen át lehet a városba bejutni. A másik az Északi Kapu, amelyen áthaladva Baklandba jut az ember. Az idő múlik, s az időd drága. Fürgén lerohansz a dombról, és egy óra múlva eléred a hatalmas kaput, de az be van zárva.[/p]
+        </text>
+      </after>
+    </itemCheck>
     <itemCheck type="item" id="3024">
       <have>
         <next id="12" pos="1">Ha a Svinn törzsfőnöktől kapott kulcsot használnád</next>
@@ -241,7 +252,14 @@
     <next id="139">Vagy egyenesen mehetsz tovább</next>
   </p>
   <!-- 47 -->
-  <!-- 48 -->
+  <p id="48">
+    <text>
+        [p]A pap nem tudja titkolni a csalódását. Szemmel láthatólag a kharéi embereket nem okították ki a matematika tudományára, mint ahogy azt veled tették Analandban. Ígéretének megfelelően teljesíti egy kérésedet. Megkérdezed, mit tud arról a varázsigéről, amely Kharé Északi Kapuját nyitja. - Nem ismerem a varázsige teljes szövegét - mondja -, mert annak mind a négy sorát csupán Kharé Első Főnemese tudja. Az egyik sorát azonban én is ismerem, s az így hangzik: - Nyílj ki négyre nekem tágra. - Hallgatóságát ámulatba ejti bölcsességed, és jó szerencsét kívánva bocsátanak utadra. Állítsd vissza SZERENCSE pontjaid számát a Kezdeti értékre.[/p]
+    </text>
+    <add amount="12" to="luck" />
+    <gatherItem id="4024" />
+    <next id="165"></next>
+  </p>
   <!-- 49 -->
   <!-- 50 -->
   <p id="51">
@@ -262,7 +280,18 @@
     <next id="186">Ha itt maradsz nála és elbeszélgetsz vele</next>
     <next id="173">Ha inkább továbbállsz innen</next>
   </p>
-  <!-- 58 -->
+  <p id="58">
+    <text>
+        [p]A többiek feltápászkodnak, és sután a fegyverük után nyúlnak. Küzdj meg velük egyenként.[/p]
+        [p]A kapadohány megteszi a magáét: olyanok, akár az alvajárók. Minden alkalommal, amikor valaki, aki túl sokat szívott, megsebez valakit, dobj egy kockával. Ha ez a szám páros, az ütés talált. Ha 3 vagy 5, nem talált. Ha a dobott szám 1, az ütés nem talált, a támadó saját fegyverébe dől, és 2 ÉLETERŐ pont kárt tesz önmagában.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="2" />
+      <enemy id="3" />
+      <enemy id="4" />
+    </fight>
+    <next id="251"></next>
+  </p>
   <p id="59">
     <text>
         [p]Ravaszul mosolyogva körülnéz, nem figyeli-e valaki, majd feléd nyújtja a tenyerét, és te beledobod az érméket (vonj le magadtól 2 Aranytallért). Amikor a pénz megcsörren, hangosan köhög egyet, hogy elnyomja a hangot. Odasúgja neked, hogy várj egy percet. Rád csukja az ajtót.[/p]
@@ -320,7 +349,36 @@
     <next id="57">Innen vagy balra folytathatod az utadat</next>
     <next id="322">Vagy egyenesen mehetsz tovább</next>
   </p>
-  <!-- 85 -->
+  <p id="85">
+    <text>
+        [p]A szerencsédre kell bíznod magad, ha ki akarod venni az érmét a tóból.[/p]
+    </text>
+    <next id="85a">Ha így tennél</next>
+    <next id="28">Ha nem akarod a sorsot kísérteni, és inkább távoznál innen</next>
+  </p>
+  <p id="85a" display="85">
+    <text>
+        [p]A szerencsédre kell bíznod magad, ha ki akarod venni az érmét a tóból.[/p]
+        [p]A parányi ezüsthal felháborodik azon, hogy el akarod venni az érméjét, és a vízből felbukva megharap.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Sikerül megkaparintanod az [span class="takeItem" data-id="gold" data-amount="1"]érmét[/span], de a hal így is 1 ÉLETERŐ pont sebesülést okoz a harapásával.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+        <next id="28"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Nem sikerül megkaparintanod az érmét, ráadásul a hal is 1 ÉLETERŐ pont sebesülést okoz a harapásával.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+        <next id="85a">Ha újra megpróbálkoznál ezzel</next>
+        <next id="28">Ha feladod a küzdelmet, és tovább folytatod az utadat</next>
+      </failure>
+    </test>
+  </p>
   <!-- 86 -->
   <!-- 87 -->
   <!-- 88 -->
@@ -376,7 +434,25 @@
   <!-- 108 -->
   <!-- 109 -->
   <!-- 110 -->
-  <!-- 111 -->
+  <p id="111">
+    <text>
+        [p]- Aha! Itt az én barátom és egyszersmind ellenségem! - mondja nevetve Flanker, amikor felismer. - Te is a vásárban gyönyörködsz, akárcsak én? Gyere, meséld el, mi történt veled azóta, hogy utoljára találkoztunk, jobban mondva összecsaptunk. - Elmeséled, milyen kalandokban volt részed, mióta megérkeztél Kharéba, és azt is, hogy az Északi Kaput nyitó varázsige sorait keresed. - Hm. Fogalmam sincs, tudok-e segíteni - mondja. - A barátom, az Idősebb Lortag itt lakik nem messze. Ő bölcs ember, talán tud valamit erről a varázsigéről.[/p]
+    </text>
+    <itemCheck type="item" id="4018">
+      <have>
+        <text>
+            [p]Elmondod Flankernek, hogy már jártál nála, megköszönöd a segítségét, és visszatérsz a vásár vizslatásához.[/p]
+        </text>
+        <next id="244"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Elmész Flankerral a barátjához. A Déli Kapu felé visz az úton, ahol egy takaros háznál megáll, és elbúcsúzik tőled. Egyedül mész oda a bejárati ajtóhoz.[/p]
+        </text>
+        <next id="140"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 112 -->
   <!-- 113 -->
   <!-- 114 -->
@@ -534,7 +610,13 @@
   </p>
   <!-- 154 -->
   <!-- 155 -->
-  <!-- 156 -->
+  <p id="156">
+    <text>
+        [p]A magasba emeled a kezedet, és elfogadod a kihívást. - És mondd, ki a te istened, idegen? - kérdi a pap. Megmondod neki. - Libra, az Igazságosság Istennője? Nem hallottam róla - mondja. Majd meglátod, hogy Slangg sokkal hatalmasabb istenség. Nos, lássuk, vajon a te istennőd, Libra, tud-e segíteni neked Slangg kihívásában? Ha helyesen válaszolsz a kérdésemre, kívánhatsz tőlem bármit. De ha nem tudsz válaszolni a kérdésemre, meg kell tagadnod Librát, és át kell pártolnod Slangghoz. Rendben van? - Bólintasz, és megkéred, hogy tegye fel a kérdését.[/p]
+        [p]- Az idősebb Nagylábú délnek ment, s vagy hárommérföldnyi földön zabot vetett, majd kelet felé indult, és legalább kétmérföldnyi kukoricát vetett, onnan északnak fordult, és ötmérföldnyi búzát vetett, végül délnyugatnak tartott, és négymérföldnyi lucernát vetett. Megjegyeztél mindent? Feladhatom a kérdésemet?[/p]
+    </text>
+    <next id="301"></next>
+  </p>
   <!-- 157 -->
   <!-- 158 -->
   <!-- 159 -->
@@ -600,7 +682,13 @@
   <!-- 184 -->
   <!-- 185 -->
   <!-- 186 -->
-  <!-- 187 -->
+  <p id="187">
+    <text>
+        [p]Épp akkor lépsz be a kápolnába, amikor egy asszony jön ki onnan a gyermekével. - Ő valóban szent ember - mondja a gyermek. - Salen sánta öccse tegnap jól válaszolt a kérdéseire, és azonnal meggyógyult a lába! Életében először tudott futni! - Kíváncsian lépsz be a kápolna csarnokába. A földön sok-sok felnőtt és gyermek ül. A csarnok egyik végében egy dobogóról ősz hajú, fehér köntöst viselő férfi szól az egybegyűltekhez. - Van-e valaki, aki meg akarja oldani Slangg tesztjét? - kérdi. - Aki válaszolni tud a kérdéseimre, annak istenem bármely kérését teljesíti. Ha viszont valaki nem tudja a választ, annak le kell mondania saját istenéről, és Slangg hívévé kell válnia. Slangg nem más, mint a ,,Bosszú Istene''.[/p]
+    </text>
+    <next id="156">Ha vállalod ezt a kihívást</next>
+    <next id="165">Ha nem, és inkább elhagyod a kápolnát, és folytatod az utadat</next>
+  </p>
   <!-- 188 -->
   <!-- 189 -->
   <!-- 190 -->
@@ -752,8 +840,34 @@
   <!-- 243 -->
   <p id="244">
     <text>
-        [p]Továbbmész az úton a kanyarban. Néhány száz méterre tőled emberek és teremtmények tömegét látod, akik elállják az utat. Számos sátrat húztak fel, melyeket színes zászlócskák díszítenek. Valami fesztiválféle színhelyére érkeztél. Úgy döntesz, megnézed, mi történik itt. Elvegyülsz a tömegben, és végigjárod a különböző események színhelyét. Egy helyütt zenészek játszanak vidám dalt egy csapat táncosnak. Másutt egy medvetáncoltató Törpét látsz. Egy sátorban felállított ring közepéről egy haramia hívogatja a vállalkozó kedvűeket, hogy vívjanak meg a bajnokával. Mit teszel?[/p]
+        [p]Továbbmész az úton a kanyarban. Néhány száz méterre tőled emberek és teremtmények tömegét látod, akik
     </text>
+    <itemCheck type="section" id="111">
+      <have>
+        <text>
+            zsúfolásig
+        </text>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="4013">
+          <have>
+            <text>
+                [span data-assassin]zsúfolásig[/span]
+            </text>
+          </have>
+          <dontHave>
+            <text>
+                zsúfolásig
+            </text>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+      <after>
+        <text>
+            megtöltik a teret és elállják az utat. Számos sátrat húztak fel, melyeket színes zászlócskák díszítenek. Valami fesztiválféle színhelyére érkeztél. Úgy döntesz, megnézed, mi történik itt. Elvegyülsz a tömegben, és végigjárod a különböző események színhelyét. Egy helyütt zenészek játszanak vidám dalt egy csapat táncosnak. Másutt egy medvetáncoltató Törpét látsz. Egy sátorban felállított ring közepéről egy haramia hívogatja a vállalkozó kedvűeket, hogy vívjanak meg a bajnokával. Mit teszel?[/p]
+        </text>
+      </after>
+    </itemCheck>
     <next id="261">A táncosokat nézed?</next>
     <next id="269">A medvetáncoltatást nézed?</next>
     <next id="33">Megpróbálsz kiállni a bajnok ellen?</next>
@@ -762,10 +876,24 @@
   <!-- 245 -->
   <!-- 246 -->
   <!-- 247 -->
-  <!-- 248 -->
+  <p id="248">
+    <text>
+        [p]- Hívő testvéreim! - kiáltja. - A Bosszú Istenének új híve áll előttetek! - Mint ahogy előzőleg beleegyeztél, most meg kell tagadnod Librát, és a továbbiakban Slangg istent fogod imádni. Ez azt jelenti, hogy mostantól soha többé nem fordulhatsz Librához segítségért. Kalandozásaid végeztéig magadra maradtál Kakhabadban. Eskütételed után elhagyhatod a kápolnát. Vesztesz 2 SZERENCSE pontot.[/p]
+    </text>
+    <add amount="-2" to="luck" />
+    <loseItem id="4103" />
+    <gatherItem id="4104" />
+    <next id="165"></next>
+  </p>
   <!-- 249 -->
   <!-- 250 -->
-  <!-- 251 -->
+  <p id="251">
+    <text>
+        [p]Átkutatod a zsebüket, és [span class="takeItem" data-id="gold" data-amount="5"]5 Aranytallért[/span] találsz. Megriadsz, amikor hangokat hallasz az ajtó előtt.[/p]
+    </text>
+    <next id="213">Ha megnézed, mi van ott</next>
+    <next id="305">Ha nem törődsz vele, hanem tovább kutatsz a szobában</next>
+  </p>
   <!-- 252 -->
   <!-- 253 -->
   <p id="254">
@@ -887,11 +1015,32 @@
     <next id="91">Ha vetsz nekik egy Aranytallért</next>
     <next id="329">Ha nem veszel róluk tudomást, hanem továbbmész</next>
   </p>
-  <!-- 301 -->
+  <p id="301">
+    <text>
+        [p]- A kérdés… - kezdi a pap, majd elhallgat, és lesi a tömegen a hatást. A kérdés az… Vajon melyik volt a kedvenc színe?[/p]
+        [p]Hevesen tiltakozol, mert kérdése mindennek mondható, csak tisztességesnek nem. A tömeg hangos nevetésben tör ki. Maflán vigyorogsz, amikor rájössz, hogy a szokásos beugrató kérdését tette fel neked. Pap létére igazán kiváló mókamester![/p]
+        [p]- Jól van, no, te analandi! - kezdi. Elámulsz. Vajon honnan tudja, hogy Analandból jöttél? Felteszi a kérdését: - A Nagylábúnak 6 fia van. Élete alkonyán úgy dönt, hogy vagyonát egyenlően osztja szét közöttük. 5 Aranytallért ad sorban a második legfiatalabb fiának, 13 Aranytallért ad a legidősebb fiának és 9 Aranyat a negyedik legfiatalabb fiának. Tudod-e, hogy a maradék három fia egyenként hány Aranyat kapott és összesen hány Aranytallérja volt a Nagylábúnak?[/p]
+        [p]Jól gondold meg, mit válaszolsz neki.[/p]
+    </text>
+    <userInput type="number" min="1" max="400">
+      <label>Hány Aranytallérja volt összesen a Nagylábúnak?</label>
+      <result minBound="48" maxBound="48">
+        <next id="48"></next>
+      </result>
+      <resultElse>
+        <next id="248"></next>
+      </resultElse>
+    </userInput>
+  </p>
   <!-- 302 -->
   <!-- 303 -->
   <!-- 304 -->
-  <!-- 305 -->
+  <p id="305">
+    <text>
+        [p]A matrac alatta sarokban egy fekete fából készült [span class="takeItem" data-id="3028" data-amount="1"]faragott maszkot[/span] találsz, mely a Fekete Elfek egyik imádott istenét ábrázolja. Elteheted, ha akarod. Ezenkívül semmi különöset nem találsz a szobában. Elhagyod a kunyhót.[/p]
+    </text>
+    <next id="213"></next>
+  </p>
   <!-- 306 -->
   <!-- 307 -->
   <p id="308">
@@ -1004,7 +1153,14 @@
     <add to="stamina" amount="-5" />
     <next id="1"></next>
   </p>
-  <!-- 338 -->
+  <p id="338">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázslatod hatására a tó mélyén lévő Aranytallér mellett kis kupac illúziókincs jelenik meg. A hal ügyet sem vet rá. Nem tudod, hogy a kincs a te illúzióvarázslatod eredménye-e vagy sem.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="85">Ha megpróbálod elcsenni a valódi Aranytallért</next>
+    <next id="28">Ha inkább elhagyod a tavat és továbbmész az úton</next>
+  </p>
   <!-- 339 -->
   <!-- 340 -->
   <!-- 341 -->
@@ -1023,7 +1179,27 @@
   <!-- 348 -->
   <!-- 349 -->
   <!-- 350 -->
-  <!-- 351 -->
+  <p id="351">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot![/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <itemCheck type="item" id="3027">
+      <have>
+        <text>
+            [p]Beleszórod a vízbe a homokot, és varázsolsz. A tó futóhomokkal teli mederré válik. A kis hal minden bizonnyal meg fog halni az iszapban, de neked sikerül kiemelned az [span class="takeItem" data-id="gold" data-amount="1"]Aranytallért[/span], még mielőtt az elsüllyedne. Tedd el, ha akarod. Ezután továbbmész.[/p]
+        </text>
+        <loseItem id="3025" />
+        <next id="28"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem sikerül a varázslás.[/p]
+        </text>
+        <next id="213"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 352 -->
   <!-- 353 -->
   <!-- 354 -->
@@ -1059,7 +1235,14 @@
   <!-- 372 -->
   <!-- 373 -->
   <!-- 374 -->
-  <!-- 375 -->
+  <p id="375">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot! Varázslatoddal a tóban lévő kis halat célzod meg. A kicsiny állat azonban gyorsan elúszik az útból, és a varázslat egy parányi csigát ér, amely a halacska alatt lévő kövön mászik. Ha akarod, most irányíthatod a csigát - de ez nem sok haszonnal fog járni.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="85">Ha el akarod csenni az Aranytallért</next>
+    <next id="28">Ha távozni akarsz a tó mellől</next>
+  </p>
   <!-- 376 -->
   <!-- 377 -->
   <!-- 378 -->
@@ -1185,7 +1368,15 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 456 -->
+  <p id="456">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és várod a jelzést, hogy most mit érdemes lépned. Egy belső hang azt súgja neked, hogy a hal elég rondán harap ugyan, de mégsem kell félni tőle: nem jelent igazi veszélyt.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="320">Ha akarod, behajolhatsz a halhoz a víz alá</next>
+    <next id="85">Ha megpróbálod ellopni az Aranytallért</next>
+    <next id="28">Ha elhagyod a tavat</next>
+  </p>
   <!-- 457 -->
   <!-- 458 -->
   <!-- 459 -->
@@ -1199,7 +1390,13 @@
   <!-- 467 -->
   <!-- 468 -->
   <!-- 469 -->
-  <!-- 470 -->
+  <p id="470">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és várod a jelzést, vajon varázslattal van-e dolgod, de nem történik semmi. Nincs itt semmiféle mágikus erő.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="213"></next>
+  </p>
   <!-- 471 -->
   <!-- 472 -->
   <!-- 473 -->

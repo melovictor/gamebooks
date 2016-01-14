@@ -1,0 +1,264 @@
+package hu.zagor.gamebooks.content.command.fight.roundresolver;
+
+import static org.easymock.EasyMock.expect;
+import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
+import hu.zagor.gamebooks.character.enemy.FfEnemy;
+import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
+import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
+import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
+import hu.zagor.gamebooks.character.item.FfItem;
+import hu.zagor.gamebooks.character.item.WeaponSubType;
+import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
+import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
+import hu.zagor.gamebooks.ff.character.SorCharacter;
+import hu.zagor.gamebooks.renderer.DiceResultRenderer;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
+import java.util.Set;
+import org.easymock.IMocksControl;
+import org.easymock.Mock;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+/**
+ * Unit test for class {@link SingleSor2FightRoundResolver}.
+ * @author Tamas_Szekeres
+ */
+@Test
+public class SingleSor2FightRoundResolverTest {
+
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private SingleSor2FightRoundResolver underTest;
+    @Mock private FightCommand command;
+    @Mock private FightDataDto dto;
+    @Mock private SorCharacter character;
+    @Instance private FfCharacterHandler characterHandler;
+    @Mock private FfCharacterItemHandler itemHandler;
+    @Mock private FfEnemy enemy;
+    @Mock private FightCommandMessageList messages;
+    @Mock private FfItem weapon;
+    @Mock private FfAttributeHandler attributeHandler;
+    @Instance private Set<String> weedSmokers;
+    @Inject private RandomNumberGenerator generator;
+    @Inject private DiceResultRenderer renderer;
+
+    @BeforeClass
+    public void setUpClass() {
+        characterHandler.setItemHandler(itemHandler);
+        weedSmokers.add("2");
+        weedSmokers.add("3");
+        weedSmokers.add("4");
+        underTest.setWeedSmokers(weedSmokers);
+    }
+
+    @BeforeMethod
+    public void setUpMethod() {
+        mockControl.reset();
+    }
+
+    public void testDamageEnemyWhenWeDidNotSmokeWeedShouldDamageAsUsual() {
+        // GIVEN
+        expect(dto.getCharacter()).andReturn(character);
+        expect(dto.getCharacterHandler()).andReturn(characterHandler);
+        expect(itemHandler.hasItem(character, "4017")).andReturn(false);
+        expectNormalDamageEnemy();
+        mockControl.replay();
+        // WHEN
+        underTest.damageEnemy(command, dto);
+        // THEN
+    }
+
+    @Test(dataProvider = "hitMiss246")
+    public void testDamageEnemyWhenWeDidSmokeWeedAndRolledEvenShouldDamageAsUsual(final int roll) {
+        // GIVEN
+        expect(dto.getCharacter()).andReturn(character);
+        expect(dto.getCharacterHandler()).andReturn(characterHandler);
+        expect(itemHandler.hasItem(character, "4017")).andReturn(true);
+        final int[] rollResult = new int[]{roll, roll};
+        expect(generator.getRandomNumber(1)).andReturn(rollResult);
+        expect(generator.getDefaultDiceSide()).andReturn(6);
+        expect(renderer.render(6, rollResult)).andReturn("[" + roll + "]");
+        expect(dto.getMessages()).andReturn(messages);
+        expect(messages.addKey("page.ff.label.random.after", "[" + roll + "]", roll)).andReturn(true);
+        expectNormalDamageEnemy();
+        mockControl.replay();
+        // WHEN
+        underTest.damageEnemy(command, dto);
+        // THEN
+    }
+
+    public void testDamageEnemyWhenWeDidSmokeWeedAndRolled1ShouldDamageSelf() {
+        // GIVEN
+        expect(dto.getCharacter()).andReturn(character);
+        expect(dto.getCharacterHandler()).andReturn(characterHandler);
+        expect(itemHandler.hasItem(character, "4017")).andReturn(true);
+        final int[] rollResult = new int[]{1, 1};
+        expect(generator.getRandomNumber(1)).andReturn(rollResult);
+        expect(generator.getDefaultDiceSide()).andReturn(6);
+        expect(renderer.render(6, rollResult)).andReturn("[1]");
+        expect(dto.getMessages()).andReturn(messages);
+        expect(messages.addKey("page.ff.label.random.after", "[1]", 1)).andReturn(true);
+        expect(itemHandler.getEquippedWeapon(character)).andReturn(weapon);
+        expect(weapon.getStaminaDamage()).andReturn(2);
+        character.changeStamina(-2);
+        expect(messages.addKey("page.ff.weeders.selfHitSelf", 2)).andReturn(true);
+        mockControl.replay();
+        // WHEN
+        underTest.damageEnemy(command, dto);
+        // THEN
+    }
+
+    @Test(dataProvider = "hitMiss35")
+    public void testDamageEnemyWhenWeDidSmokeWeedAndRolled3Or5ShouldDamageNothing(final int roll) {
+        // GIVEN
+        expect(dto.getCharacter()).andReturn(character);
+        expect(dto.getCharacterHandler()).andReturn(characterHandler);
+        expect(itemHandler.hasItem(character, "4017")).andReturn(true);
+        final int[] rollResult = new int[]{roll, roll};
+        expect(generator.getRandomNumber(1)).andReturn(rollResult);
+        expect(generator.getDefaultDiceSide()).andReturn(6);
+        expect(renderer.render(6, rollResult)).andReturn("[" + roll + "]");
+        expect(dto.getMessages()).andReturn(messages);
+        expect(messages.addKey("page.ff.label.random.after", "[" + roll + "]", roll)).andReturn(true);
+        expect(dto.getEnemy()).andReturn(enemy);
+        expect(enemy.getName()).andReturn("Orc");
+        expect(messages.addKey("page.ff.weeders.selfMissedHit", "Orc")).andReturn(true);
+        mockControl.replay();
+        // WHEN
+        underTest.damageEnemy(command, dto);
+        // THEN
+    }
+
+    public void testDamageSelfWhenEnemyDidNotSmokeWeedShouldDamageAsUsual() {
+        // GIVEN
+        expect(dto.getEnemy()).andReturn(enemy);
+        expect(enemy.getId()).andReturn("1");
+        expectNormalDamageSelf();
+        mockControl.replay();
+        // WHEN
+        underTest.damageSelf(dto);
+        // THEN
+    }
+
+    @Test(dataProvider = "hitMiss246")
+    public void testDamageSelfWhenEnemyDidSmokeWeedAndRollsEvenShouldDamageAsUsual(final int roll) {
+        // GIVEN
+        expect(dto.getEnemy()).andReturn(enemy);
+        expect(enemy.getId()).andReturn("2");
+        final int[] rollResult = new int[]{roll, roll};
+        expect(generator.getRandomNumber(1)).andReturn(rollResult);
+        expect(generator.getDefaultDiceSide()).andReturn(6);
+        expect(renderer.render(6, rollResult)).andReturn("[" + roll + "]");
+        expect(dto.getMessages()).andReturn(messages);
+        expect(messages.addKey("page.ff.label.random.after", "[" + roll + "]", roll)).andReturn(true);
+        expectNormalDamageSelf();
+        mockControl.replay();
+        // WHEN
+        underTest.damageSelf(dto);
+        // THEN
+    }
+
+    @Test(dataProvider = "hitMiss35")
+    public void testDamageSelfWhenEnemyDidSmokeWeedAndRolls3Or5ShouldDamageNothing(final int roll) {
+        // GIVEN
+        expect(dto.getEnemy()).andReturn(enemy);
+        expect(enemy.getId()).andReturn("2");
+        final int[] rollResult = new int[]{roll, roll};
+        expect(generator.getRandomNumber(1)).andReturn(rollResult);
+        expect(generator.getDefaultDiceSide()).andReturn(6);
+        expect(renderer.render(6, rollResult)).andReturn("[" + roll + "]");
+        expect(dto.getMessages()).andReturn(messages);
+        expect(messages.addKey("page.ff.label.random.after", "[" + roll + "]", roll)).andReturn(true);
+        expect(enemy.getName()).andReturn("Orc");
+        expect(messages.addKey("page.ff.weeders.enemyMissedHit", "Orc")).andReturn(true);
+        mockControl.replay();
+        // WHEN
+        underTest.damageSelf(dto);
+        // THEN
+    }
+
+    public void testDamageSelfWhenEnemyDidSmokeWeedAndRolls1ShouldDamageSelf() {
+        // GIVEN
+        expect(dto.getEnemy()).andReturn(enemy);
+        expect(enemy.getId()).andReturn("2");
+        final int[] rollResult = new int[]{1, 1};
+        expect(generator.getRandomNumber(1)).andReturn(rollResult);
+        expect(generator.getDefaultDiceSide()).andReturn(6);
+        expect(renderer.render(6, rollResult)).andReturn("[1]");
+        expect(dto.getMessages()).andReturn(messages);
+        expect(messages.addKey("page.ff.label.random.after", "[1]", 1)).andReturn(true);
+        expect(enemy.getStamina()).andReturn(9);
+        enemy.setStamina(7);
+        expect(enemy.getName()).andReturn("Orc");
+        expect(messages.addKey("page.ff.weeders.enemyHitSelf", "Orc")).andReturn(true);
+        mockControl.replay();
+        // WHEN
+        underTest.damageSelf(dto);
+        // THEN
+    }
+
+    @DataProvider(name = "hitMiss35")
+    public Object[][] hitMiss35() {
+        return new Object[][]{{3}, {5}};
+    }
+
+    @DataProvider(name = "hitMiss246")
+    public Object[][] hitMiss246() {
+        return new Object[][]{{2}, {4}, {6}};
+    }
+
+    private void expectNormalDamageSelf() {
+        expect(dto.getCharacter()).andReturn(character);
+        expect(dto.getEnemy()).andReturn(enemy);
+        expect(enemy.getStaminaDamage()).andReturn(2);
+        expect(dto.getAttributeHandler()).andReturn(attributeHandler);
+        expect(attributeHandler.resolveValue(character, "damageProtection")).andReturn(0);
+        character.changeStamina(-2);
+        expect(enemy.getSkillDamage()).andReturn(0);
+        character.changeSkill(0);
+        expect(dto.getMessages()).andReturn(messages);
+        expect(dto.getEnemy()).andReturn(enemy);
+        expect(enemy.getName()).andReturn("Orc");
+        expect(messages.addKey("page.ff.label.fight.single.failedDefense", "Orc")).andReturn(true);
+    }
+
+    private void expectNormalDamageEnemy() {
+        expect(dto.getEnemy()).andReturn(enemy);
+        expect(dto.getMessages()).andReturn(messages);
+        expect(dto.getEnemy()).andReturn(enemy);
+        expect(enemy.isKillableByNormal()).andReturn(true);
+        expect(dto.getEnemy()).andReturn(enemy);
+        expect(dto.getSelectedWeapon()).andReturn(weapon);
+        expect(weapon.getStaminaDamage()).andReturn(2);
+        expect(dto.getAttributeHandler()).andReturn(attributeHandler);
+        expect(dto.getCharacter()).andReturn(character);
+        expect(attributeHandler.resolveValue(character, "baseStaminaDamage")).andReturn(0);
+        expect(enemy.getDamageAbsorption()).andReturn(0);
+        expect(weapon.getSubType()).andReturn(WeaponSubType.edged);
+        expect(enemy.getDamageAbsorptionEdged()).andReturn(0);
+        expect(enemy.getStamina()).andReturn(7);
+        enemy.setStamina(5);
+        expect(enemy.getSkill()).andReturn(11);
+        expect(weapon.getSkillDamage()).andReturn(0);
+        enemy.setSkill(11);
+        expect(enemy.getStaminaDamageWhenHit()).andReturn(0);
+        expect(dto.getMessages()).andReturn(messages);
+        expect(dto.getEnemy()).andReturn(enemy);
+        expect(enemy.getStaminaDamageWhenHit()).andReturn(0);
+        expect(enemy.getName()).andReturn("Orc");
+        expect(messages.addKey("page.ff.label.fight.single.successfulAttack", "Orc")).andReturn(true);
+        expect(command.isLuckOnHit()).andReturn(false);
+    }
+
+    @AfterMethod
+    public void tearDownMethod() {
+        mockControl.verify();
+    }
+
+}

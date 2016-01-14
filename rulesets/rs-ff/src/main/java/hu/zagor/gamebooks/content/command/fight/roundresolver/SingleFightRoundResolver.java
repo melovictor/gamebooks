@@ -178,7 +178,7 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
         if (enemy.getStaminaDamageWhenHit() > 0) {
             key += ".returnDamage";
         }
-        messages.addKey(key, new Object[]{enemy.getName()});
+        messages.addKey(key, enemy.getName());
     }
 
     /**
