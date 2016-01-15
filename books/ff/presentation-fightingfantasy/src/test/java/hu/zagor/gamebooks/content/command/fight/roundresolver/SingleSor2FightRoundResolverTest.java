@@ -107,7 +107,7 @@ public class SingleSor2FightRoundResolverTest {
         expect(itemHandler.getEquippedWeapon(character)).andReturn(weapon);
         expect(weapon.getStaminaDamage()).andReturn(2);
         character.changeStamina(-2);
-        expect(messages.addKey("page.ff.weeders.selfHitSelf", 2)).andReturn(true);
+        expect(messages.addKey("page.sor2.weeders.selfHitSelf", 2)).andReturn(true);
         mockControl.replay();
         // WHEN
         underTest.damageEnemy(command, dto);
@@ -128,7 +128,7 @@ public class SingleSor2FightRoundResolverTest {
         expect(messages.addKey("page.ff.label.random.after", "[" + roll + "]", roll)).andReturn(true);
         expect(dto.getEnemy()).andReturn(enemy);
         expect(enemy.getName()).andReturn("Orc");
-        expect(messages.addKey("page.ff.weeders.selfMissedHit", "Orc")).andReturn(true);
+        expect(messages.addKey("page.sor2.weeders.selfMissedHit", "Orc")).andReturn(true);
         mockControl.replay();
         // WHEN
         underTest.damageEnemy(command, dto);
@@ -176,7 +176,7 @@ public class SingleSor2FightRoundResolverTest {
         expect(dto.getMessages()).andReturn(messages);
         expect(messages.addKey("page.ff.label.random.after", "[" + roll + "]", roll)).andReturn(true);
         expect(enemy.getName()).andReturn("Orc");
-        expect(messages.addKey("page.ff.weeders.enemyMissedHit", "Orc")).andReturn(true);
+        expect(messages.addKey("page.sor2.weeders.enemyMissedHit", "Orc")).andReturn(true);
         mockControl.replay();
         // WHEN
         underTest.damageSelf(dto);
@@ -196,7 +196,7 @@ public class SingleSor2FightRoundResolverTest {
         expect(enemy.getStamina()).andReturn(9);
         enemy.setStamina(7);
         expect(enemy.getName()).andReturn("Orc");
-        expect(messages.addKey("page.ff.weeders.enemyHitSelf", "Orc")).andReturn(true);
+        expect(messages.addKey("page.sor2.weeders.enemyHitSelf", "Orc")).andReturn(true);
         mockControl.replay();
         // WHEN
         underTest.damageSelf(dto);

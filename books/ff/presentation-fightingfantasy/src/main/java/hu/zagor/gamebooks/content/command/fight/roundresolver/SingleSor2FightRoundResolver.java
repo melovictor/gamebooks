@@ -50,9 +50,9 @@ public class SingleSor2FightRoundResolver extends SingleFightRoundResolver {
             final FfItem equippedWeapon = characterHandler.getItemHandler().getEquippedWeapon(character);
             final int staminaDamage = equippedWeapon.getStaminaDamage();
             character.changeStamina(-staminaDamage);
-            messages.addKey("page.ff.weeders.selfHitSelf", staminaDamage);
+            messages.addKey("page.sor2.weeders.selfHitSelf", staminaDamage);
         } else if (roll[0] == MISSES_ENEMY_3 || roll[0] == MISSES_ENEMY_5) {
-            messages.addKey("page.ff.weeders.selfMissedHit", dto.getEnemy().getName());
+            messages.addKey("page.sor2.weeders.selfMissedHit", dto.getEnemy().getName());
         } else {
             super.damageEnemy(command, dto);
         }
@@ -75,9 +75,9 @@ public class SingleSor2FightRoundResolver extends SingleFightRoundResolver {
         messages.addKey("page.ff.label.random.after", diceImage, roll[0]);
         if (roll[0] == DAMAGES_SELF) {
             enemy.setStamina(enemy.getStamina() - 2);
-            messages.addKey("page.ff.weeders.enemyHitSelf", enemy.getName());
+            messages.addKey("page.sor2.weeders.enemyHitSelf", enemy.getName());
         } else if (roll[0] == MISSES_ENEMY_3 || roll[0] == MISSES_ENEMY_5) {
-            messages.addKey("page.ff.weeders.enemyMissedHit", enemy.getName());
+            messages.addKey("page.sor2.weeders.enemyMissedHit", enemy.getName());
         } else {
             super.damageSelf(dto);
         }
