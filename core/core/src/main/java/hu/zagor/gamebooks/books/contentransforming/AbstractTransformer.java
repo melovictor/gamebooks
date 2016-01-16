@@ -1,9 +1,8 @@
 package hu.zagor.gamebooks.books.contentransforming;
 
+import hu.zagor.gamebooks.content.EscapingData;
 import java.util.List;
-
 import javax.annotation.Resource;
-
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.util.Assert;
@@ -11,14 +10,12 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
 /**
- * Abstract class that contains common methods to use for transforming a {@link Document} object into our
- * business domain objects.
+ * Abstract class that contains common methods to use for transforming a {@link Document} object into our business domain objects.
  * @author Tamas_Szekeres
  */
-public abstract class AbstractTransformer implements BeanFactoryAware {
+public abstract class AbstractTransformer extends EscapingData implements BeanFactoryAware {
 
-    @Resource(name = "irrelevantNodeNames")
-    private List<String> irrelevantNodeNames;
+    @Resource(name = "irrelevantNodeNames") private List<String> irrelevantNodeNames;
     private BeanFactory beanFactory;
 
     /**
@@ -81,9 +78,8 @@ public abstract class AbstractTransformer implements BeanFactoryAware {
     }
 
     /**
-     * Checks if the given node is an irrelevant node or not. A node is deemed irrelevant if it contains no
-     * information whatsoever that has any effect on the game mechanics. Such irrelevant nodes are, for
-     * example, the comment and empty nodes.
+     * Checks if the given node is an irrelevant node or not. A node is deemed irrelevant if it contains no information whatsoever that has any effect on the game mechanics. Such
+     * irrelevant nodes are, for example, the comment and empty nodes.
      * @param node the node, cannot be null
      * @return true, if the node is irrelevant, false otherwise
      */

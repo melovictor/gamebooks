@@ -14,7 +14,7 @@ public class FfRuleBookItemTransformer extends AbstractBookItemTransformer {
 
     @Override
     protected Item getItem(final String id, final String name, final ItemType itemType) {
-        return new FfItem(id, name, itemType);
+        return new FfItem(id, fixText(name), itemType);
     }
 
     @Override
@@ -49,6 +49,6 @@ public class FfRuleBookItemTransformer extends AbstractBookItemTransformer {
             item.getEquipInfo().setEquipped(true);
         }
         item.getEquipInfo().setRemovable(extractBooleanAttribute(node, "removable", true));
-        item.setDescription(extractAttribute(node, "description"));
+        item.setDescription(fixText(extractAttribute(node, "description")));
     }
 }
