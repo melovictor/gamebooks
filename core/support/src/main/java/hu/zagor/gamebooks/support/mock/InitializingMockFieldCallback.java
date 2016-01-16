@@ -55,6 +55,11 @@ public class InitializingMockFieldCallback implements FieldCallback {
                 if (!setOnUnderTest(field, mock)) {
                     Whitebox.setInternalState(underTest, field.getName(), mock);
                 }
+            } else if (field.isAnnotationPresent(Instance.class)) {
+                final Instance annotation = field.getAnnotation(Instance.class);
+                if (annotation.inject()) {
+                    Whitebox.setInternalState(underTest, field.getName(), Whitebox.getInternalState(testInstance, field.getName()));
+                }
             }
         }
     }

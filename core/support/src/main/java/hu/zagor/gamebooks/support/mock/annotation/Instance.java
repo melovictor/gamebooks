@@ -9,4 +9,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Instance {
     Class<?> type() default Object.class;
+
+    boolean inject() default false;
 }
