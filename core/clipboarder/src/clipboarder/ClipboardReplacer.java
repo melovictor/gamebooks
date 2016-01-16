@@ -5,14 +5,16 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ClipboardReplacer {
-
+    private static final Pattern IMAGE_NAME_PATTERN = Pattern.compile("b-([0-9]+)\\.jpg");
     private static final Toolkit DEFAULT_TOOLKIT = Toolkit.getDefaultToolkit();
 
     private final Replacer hunReplacer = new HungarianReplacer();
@@ -24,6 +26,8 @@ public class ClipboardReplacer {
 
     private String lastString = "";
     private final Clipboard clipboard = DEFAULT_TOOLKIT.getSystemClipboard();
+
+    private BookImageData imageData;
 
     public static void main(final String[] args) throws InterruptedException {
         final ClipboardReplacer clipboardReplacer = new ClipboardReplacer();
@@ -53,7 +57,7 @@ public class ClipboardReplacer {
                 if (!isConverted(clipboardContent) && !isProgramCode(clipboardContent)) {
                     processClipboardContent(clipboardContent);
                 } else {
-                    final String newContent = contentSorter.tryMap(clipboardContent);
+                    final String newContent = contentSorter.tryMap(clipboardContent, imageData);
                     if (newContent != null) {
                         clipboardContent = newContent;
                         lastString = clipboardContent;
@@ -64,6 +68,21 @@ public class ClipboardReplacer {
                     }
                 }
             }
+        } else {
+            @SuppressWarnings("unchecked")
+            final List<File> transferData = (List<File>) clipboard.getContents(null).getTransferData(DataFlavor.javaFileListFlavor);
+            imageData = new BookImageData();
+            imageData.setCode(transferData.get(0).getParentFile().getName());
+            for (final File file : transferData) {
+                final String filename = file.getName();
+                final Matcher matcher = IMAGE_NAME_PATTERN.matcher(filename);
+                if (matcher.matches()) {
+                    imageData.getSections().add(matcher.group(1));
+                }
+            }
+            System.out.println("Image file list initialized");
+            final StringSelection emptyString = new StringSelection("");
+            clipboard.setContents(emptyString, emptyString);
         }
     }
 
@@ -91,7 +110,7 @@ public class ClipboardReplacer {
             newContent = engReplacer.tryMap(content);
         }
         if (newContent == null) {
-            newContent = contentSorter.tryMap(content);
+            newContent = contentSorter.tryMap(content, imageData);
         }
 
         if (newContent == null) {

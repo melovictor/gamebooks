@@ -13,10 +13,10 @@ public class ContentSorter {
 
     private static final Pattern SECTIONS = Pattern.compile("(<p id=\"([^\"]+)\".*?<\\/p>)", Pattern.DOTALL);
 
-    public String tryMap(final String content) {
+    public String tryMap(final String content, final BookImageData imageData) {
         if (isXml(content) && (isFf(content) || isSorcery(content))) {
             try {
-                return sortSections(content);
+                return sortSections(content, imageData);
             } catch (final Exception ex) {
                 ex.printStackTrace();
             }
@@ -38,7 +38,7 @@ public class ContentSorter {
         return content.startsWith("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
     }
 
-    private String sortSections(final String content) {
+    private String sortSections(final String content, final BookImageData imageData) {
         final boolean ff = content.contains("ff.xsd");
         final Map<String, String> sections = new HashMap<>();
         final List<String> sectionIds = new ArrayList<>();
@@ -47,7 +47,7 @@ public class ContentSorter {
         while (matcher.find()) {
             final String id = matcher.group(2);
             final String section = matcher.group(1).trim();
-            sections.put(id, section);
+            sections.put(id, expandWithImageData(id, section, imageData));
             sectionIds.add(id);
         }
 
@@ -83,6 +83,15 @@ public class ContentSorter {
         }
         builder.append("\n</content>\n");
         return builder.toString();
+    }
+
+    private String expandWithImageData(final String id, final String section, final BookImageData imageData) {
+        String expanded = section;
+        if (imageData.getSections().contains(id) && !expanded.contains("inlineImage")) {
+            final String imageLink = "[p class=\"inlineImage\"][img src=\"resources/" + imageData.getCode() + "/" + id + ".jpg\" /][/p]";
+            expanded = expanded.replaceFirst("\\[p\\]", imageLink + "\r\n        [p]");
+        }
+        return expanded;
     }
 
     private void appendSection(final Map<String, String> sections, final StringBuilder builder, final String id, final int distance, final int lastValue) {
