@@ -97,9 +97,21 @@
     </text>
     <next id="160"></next>
   </p>
-  <!-- 6 -->
+  <p id="6">
+    <text>
+        [p]A csődör hatalmasakat szökkenve, kapálózva vágtat veled lefelé az úton. Elkeseredetten próbálsz megkapaszkodni a hátán, de hiába: levet magáról, és az út szélén landolsz. Vesztez 2 ÉLETERŐ pontot, ugyanis szerencsétlenül estél, és megütötted a válladat. Feltápászkodsz, és leporolod a ruhádat. A ló eltűnik a szemed elől egy kanyarban, te pedig elindulhatsz vissza az elágazáshoz.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="237"></next>
+  </p>
   <!-- 7 -->
-  <!-- 8 -->
+  <p id="8">
+    <text>
+        [p]Odamész a szoborhoz, mely szerinted igen tehetséges művész alkotása lehet, hiszen olyan élethű. Ekkor azonban a látványtól földbe gyökerezik a lábad - a szobor pislog egyet, és életre kel.[/p]
+        [p]A teremtmény hosszú karja egy szempillantás alatt feléd nyúl, megragad a válladnál fogva, és fölemel magához. Nagyra tátja a száját, és a nyakadba mélyeszti a fogait. Azt sem tudod, mi történt, és máris halott vagy! Kharé egyik legveszélyesebb lakójára, az Ájtatos Manóemberre bukkantál.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 9 -->
   <!-- 10 -->
   <!-- 11 -->
@@ -164,7 +176,12 @@
     </random>
     <next id="105"></next>
   </p>
-  <!-- 14 -->
+  <p id="14">
+    <text>
+        [p]A férfi végignézte harcotokat, és becsapja az ajtót, amikor végül legyőzöd a Borzas Vadat. Megpróbálod kinyitni az ajtót, de nem bírod, mert a férfi kulcsra zárta.[/p]
+    </text>
+    <next id="133"></next>
+  </p>
   <!-- 15 -->
   <!-- 16 -->
   <!-- 17 -->
@@ -211,7 +228,12 @@
   <!-- 24 -->
   <!-- 25 -->
   <!-- 26 -->
-  <!-- 27 -->
+  <p id="27">
+    <text>
+        [p]A kunyhó belsejében csontok hevernek szanaszét a földön. Bárki vagy bármi lakik is itt, az minden bizonnyal ragadozó. A csontokból ítélve ez a teremtmény különösen kedveli az emberhúst. Mivel a kunyhó valójában elhagyatott, úgy döntesz, hogy átkutatod a földön szétszórt holmikat. A szerencsétlenül járt áldozatok ruhái ott hevernek, és amikor megnézed a zsebeket, [span class="takeItem" data-id="gold" data-amount="15"]15 Aranytallérra[/span] lelsz. Találsz néhány ujjpercet is, amelyeket [span class="takeItem" data-id="3032" data-amount="1"]karpereccé[/span] fűztek össze. Elteheted azt is az Arannyal együtt. Miután meggyőződsz róla, hogy senki sincs a közelben, óvatosan elhagyod a kunyhót.[/p]
+    </text>
+    <next id="37"></next>
+  </p>
   <p id="28">
     <text>
         [p]Kissé följebb egy elágazáshoz érsz, ahol vagy egyenesen mész tovább, vagy balra kanyarodsz. Az elágazásban egy kunyhó áll, előtte egy csődört látsz kikötve.[/p]
@@ -263,7 +285,25 @@
     <next id="126">Bajba keverheted, ha leleplezed, mint csalót</next>
     <next id="291">Vagy dönthetsz úgy is, hogy inkább nyugton maradsz, és megpróbálsz vele együttműködni</next>
   </p>
-  <!-- 37 -->
+  <p id="37">
+    <text>
+        [p]Miközben távozol a kunyhóból, még egyszer ránézel a szoborra. Nem vagy benne teljesen biztos, de az az érzésed, hogy valami megváltozott rajta. Ekkor döbbensz rá, hogy valóban megváltozott. A feje megfordult, és most pontosan téged néz![/p]
+    </text>
+    <next id="55">Ha gyorsan elrohansz</next>
+    <next id="76">Ha kardot rántasz</next>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="MEN" id="492" />
+        <spell name="TEL" id="401" />
+        <spell name="FIX" id="394" />
+        <spell name="TIV" id="461" />
+        <spell name="POR" id="348" />
+      </have>
+    </itemCheck>
+  </p>
   <!-- 38 -->
   <!-- 39 -->
   <!-- 40 -->
@@ -289,7 +329,13 @@
     <gatherItem id="4024" />
     <next id="165"></next>
   </p>
-  <!-- 49 -->
+  <p id="49">
+    <text>
+        [p]Eloldod a kötőféket, és felpattansz a ló hátára. Az állat hangosan felnyerít és felágaskodik. Mielőtt még bármit tehetnél, vágtatva elindul veled azon az úton, amelyen idejöttél.[/p]
+    </text>
+    <next id="268">Erősen megkapaszkodva benne megvárhatod, hová visz</next>
+    <next id="220">Vagy megkísérelheted megállítani, hogy leszállhass a hátáról</next>
+  </p>
   <!-- 50 -->
   <p id="51">
     <text>
@@ -300,7 +346,30 @@
   <!-- 52 -->
   <!-- 53 -->
   <!-- 54 -->
-  <!-- 55 -->
+  <p id="55">
+    <text>
+        [p]Amint megmozdulsz, a szobor odapattan hozzád! Kinyújtja feléd a kezét, és megpróbál elkapni. Ez a teremtmény a szörnyűséges Ájtatos Manóember. Ha sikerül elkapnia, magához húz, és éles fogai azonnal végeznek veled, de azért megkísérelheted levágni a két karját, és így hatástalanítani.[/p]
+        [p]A szörny harceszköze a két karja: minden Forduló előtt dobj 2 kockával. Ha a dobott összeg kevesebb, mint az Ájtatos Manóember ÜGYESSÉGE, sikerül elkapnia, és nincs menekvés előle. Ha a dobott összeg ugyanannyi vagy nagyobb, mint az ő ÜGYESSÉGE, nem sikerült elkapnia - tehát dobj még egyszer, hogy megállapítsd a Támadóerődet.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="6" />
+      <beforeRound>
+        <test against="6" compactAgainst="skill" success="lower">
+          <label>[em]Tedd próbára[/em] az Ájtatos Manóember [span class="ffAttribute"]ÜGYESSÉGÉT[/span]!</label>
+          <success>
+            <text>
+                [p]Ellenfelednek sikerül elkapnia, és nincs menekvés előle.[/p]
+            </text>
+            <interrupt />
+            <death />
+          </success>
+        </test>
+      </beforeRound>
+      <win>
+        <next id="117"></next>
+      </win>
+    </fight>
+  </p>
   <!-- 56 -->
   <p id="57">
     <text>
@@ -366,7 +435,30 @@
   <!-- 73 -->
   <!-- 74 -->
   <!-- 75 -->
-  <!-- 76 -->
+  <p id="76">
+    <text>
+        [p]Előrántod a kardodat, és amint megmozdulsz, a szobor életre kel! Nyurga lábaival leugrik hozzád, miközben két kezét még mindig imádkozva szorítja össze. Villámgyorsan feléd nyúl, és megpróbál elkapni. Ez a teremtmény nem más, mint a rettenetes Ájtatos Manóember, akivel meg kell küzdened.[/p]
+        [p]Az Ájtatos Manóember ostorhoz hasonló karjait támadásra használja. Megpróbál elkapni és behúzni a szájába, ahol borotvaéles fogai garantáltan halált okoznak. Minden Forduló előtt dobj két kockával a teremtmény nevében. Ha a dobott összeg kevesebb, mint ÜGYESSÉGE, sikerült elkapnia, és biztos halál vár rád. Ha a dobott szám ugyanannyi vagy nagyobb, mint az ÜGYESSÉGE, nem tudott elkapni - dobj Támadóerőt a szokásos módon. Egyetlen lehetőséged az, ha sikerül megsebezned a karját, mert akkor képtelen lesz elkapni. (Ezért is ilyen alacsony az ÉLETEREJE.)[/p]
+    </text>
+    <fight type="single">
+      <enemy id="6" />
+      <beforeRound>
+        <test against="6" compactAgainst="skill" success="lower">
+          <label>[em]Tedd próbára[/em] az Ájtatos Manóember [span class="ffAttribute"]ÜGYESSÉGÉT[/span]!</label>
+          <success>
+            <text>
+                [p]Ellenfelednek sikerül elkapnia, és nincs menekvés előle.[/p]
+            </text>
+            <interrupt />
+            <death />
+          </success>
+        </test>
+      </beforeRound>
+      <win>
+        <next id="117"></next>
+      </win>
+    </fight>
+  </p>
   <!-- 77 -->
   <!-- 78 -->
   <!-- 79 -->
@@ -432,7 +524,46 @@
   </p>
   <!-- 93 -->
   <!-- 94 -->
-  <!-- 95 -->
+  <p id="95">
+    <text>
+        [p]A férfi hátralép, és ráparancsol a kutyájára. A Borzas Vadállat rád vicsorítja fogát, és neked ugrik.[/p]
+    </text>
+    <next id="95a">Ha felveszed a harcot</next>
+    <next id="229">Ha nem akarsz megküzdeni ezzel a vadállattal, és nem akarod haragra gerjeszteni a férfit, megkérheted, hogy parancsolja vissza Borzas Vadállatát, és ezért felajánlhatod neki a kardodat</next>
+  </p>
+  <p id="95a" display="95">
+    <text>
+        [p]A férfi hátralép, és ráparancsol a kutyájára. A Borzas Vadállat rád vicsorítja fogát, és neked ugrik.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="ELT" id="459" />
+        <spell name="KIL" id="437" />
+        <spell name="GUM" id="378" />
+        <spell name="GAK" id="500" />
+        <spell name="ZAV" id="443" />
+        <next id="95b">Ha kardoddal esnél neki a bestiának</next>
+      </have>
+      <dontHave>
+        <fight type="single">
+          <enemy id="5" />
+        </fight>
+        <next id="14"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="95b" display="95">
+    <text>
+        [p]A férfi hátralép, és ráparancsol a kutyájára. A Borzas Vadállat rád vicsorítja fogát, és neked ugrik.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="5" />
+    </fight>
+    <next id="14"></next>
+  </p>
   <!-- 96 -->
   <!-- 97 -->
   <!-- 98 -->
@@ -473,7 +604,12 @@
     </text>
     <next id="46"></next>
   </p>
-  <!-- 106 -->
+  <p id="106">
+    <text>
+        [p]A ló hatalmasat szökkenve, kapálódzva vágtat veled lefelé az úton. Nem tudod megállítani, de sikerül megkapaszkodnod benne, és nem esel le a hátáról.[/p]
+    </text>
+    <next id="268"></next>
+  </p>
   <!-- 107 -->
   <!-- 108 -->
   <!-- 109 -->
@@ -507,7 +643,13 @@
     <next id="133"></next>
   </p>
   <!-- 116 -->
-  <!-- 117 -->
+  <p id="117">
+    <text>
+        [p]Elveszed az Aranymedált a teremtménytől. A medál körülbelül 8 Aranytallért ér. (Mindent megvehetsz érte, ami nem kerül többe 8 Aranynál, de ha olyasmit veszel, aminek az ára kevesebb, mint 8 Arany, a visszajáró pénzt nem kapod meg.) A medál közepén egy ragyogó Napékszer van, amely fényesen csillog. Tedd el a hátizsákodba, írj be magadnak plusz 1 SZERENCSE pontot, amiért sikerült túlélned ezt a találkozást, aztán folytasd az utadat.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="137"></next>
+  </p>
   <!-- 118 -->
   <!-- 119 -->
   <p id="120">
@@ -530,7 +672,13 @@
     <next id="291"></next>
   </p>
   <!-- 127 -->
-  <!-- 128 -->
+  <p id="128">
+    <text>
+        [p]Az állat különös pillantással néz rád. Megpróbálod néhány kedves szóval megnyugtatni, de nem nagyon hallgat rád. Végül feladod ezt az egyoldalú társalgást. A ló elég nyugodtnak látszik.[/p]
+    </text>
+    <next id="49">Megpróbálhatsz felülni rá</next>
+    <next id="237">Ha akarod, ott is hagyhatod, és folytathatod az utadat</next>
+  </p>
   <p id="129">
     <text>
         [p]Végigzuhansz a földön, és miközben gondolatban segítségért könyörögsz, elájulsz. Kis idő múlva kinyitod a szemedet. A gyilkos ott fekszik a földön. Fogalmad sincs róla, mi történt, egy dologban azonban biztos vagy: ez istennőd műve volt! Tudnod kell azonban, hogy mindaddig nem hívhatod őt ismét segítségül, amíg el nem hagyod a kikötővárost. Magadra maradtál.[/p]
@@ -744,7 +892,14 @@
   <!-- 180 -->
   <!-- 181 -->
   <!-- 182 -->
-  <!-- 183 -->
+  <p id="183">
+    <text>
+        [p]A ló kötőfékén rángatózva, idegesen felnyerít.[/p]
+    </text>
+    <next id="128">Ha akarod, beszélhetsz hozzá</next>
+    <next id="49">Vagy felpattanhatsz a hátára</next>
+    <next id="237">Vagy ott hagyhatod, ahol van, és továbbmehetsz utadon</next>
+  </p>
   <!-- 184 -->
   <!-- 185 -->
   <p id="186">
@@ -840,7 +995,16 @@
     <loseItem id="20000" />
     <next id="160"></next>
   </p>
-  <!-- 220 -->
+  <p id="220">
+    <test against="luck">
+      <success>
+        <next id="106"></next>
+      </success>
+      <failure>
+        <next id="6"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 221 -->
   <!-- 222 -->
   <p id="223">
@@ -968,7 +1132,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 237 -->
+  <p id="237">
+    <text>
+        [p]Merre tovább?[/p]
+    </text>
+    <next id="300">Ha a bal oldali elágazáson mész tovább</next>
+    <next id="233">Ha egyenesen folytatod az utadat</next>
+  </p>
   <!-- 238 -->
   <p id="239">
     <text>
@@ -1073,7 +1243,7 @@
   </p>
   <p id="255">
     <text>
-        [p]- Ez az! - mondja gúnyolódva. - Még a saját tanítványaim is tudják, hogy nem ez a megfelelő rúna! Te jó isten, úgy érzem, sok-sok szerencsére lesz szükséged utad során! - Hangosan felnevet. Úgy döntesz, itt az idő, hogy távozz. - Mielőtt elmennél, barátom, adok neked valamit, ami majd szerencsét fog hozni, és amire igen nagy szükséged lesz. Itt van, fogadd! - Átad egy zablisztből készült kis süteményt, és azt mondja, ha megeszed a felét, biztosan szerencséd lesz. Ha utad során bármikor azt az utasítást kapod, hogy [em]Tedd próbára[/em] [span class="ffAttribute"]SZERENCSÉDET![/span], megeheted helyette süteményed felét. Ha ezt teszed, automatikusan SZERENCSÉD lesz, anélkül hogy dobnod kéne, vagy le kéne vonnod SZERENCSE pontjaidból. A sütemény két alkalomra elegendő, azaz mindkét fele egy-egy alkalomra. Megköszönöd a kedvességét, és elhagyod a házát, de előbb még magadhoz veszed a fegyveredet.[/p]
+        [p]- Ez az! - mondja gúnyolódva. - Még a saját tanítványaim is tudják, hogy nem ez a megfelelő rúna! Te jó isten, úgy érzem, sok-sok szerencsére lesz szükséged utad során! - Hangosan felnevet. Úgy döntesz, itt az idő, hogy távozz. - Mielőtt elmennél, barátom, adok neked valamit, ami majd szerencsét fog hozni, és amire igen nagy szükséged lesz. Itt van, fogadd! - Átad egy zablisztből készült kis [span class="takeItem" data-id="2003" data-amount="2"]süteményt[/span], és azt mondja, ha megeszed a felét, biztosan szerencséd lesz. Ha utad során bármikor azt az utasítást kapod, hogy [em]Tedd próbára[/em] [span class="ffAttribute"]SZERENCSÉDET[/span], megeheted közvetlenül előtte a süteményed felét. Ha ezt teszed, automatikusan SZERENCSÉD lesz a próba során, és le sem kell majd vonnod SZERENCSE pontjaidból. A sütemény két alkalomra elegendő, azaz mindkét fele egy-egy alkalomra. Megköszönöd a kedvességét, és elhagyod a házát, de előbb még magadhoz veszed a fegyveredet.[/p]
     </text>
     <next id="133"></next>
   </p>
@@ -1121,7 +1291,14 @@
   <!-- 265 -->
   <!-- 266 -->
   <!-- 267 -->
-  <!-- 268 -->
+  <p id="268">
+    <text>
+        [p]A ló elvágtat veled, s közben elkeseredetten kapaszkodsz a hátába. A úton robog le néhány elszórtan álló kunyhó felé, ahol hirtelen egy pöttömnyi, pikkelyes testű teremtmény rohan át előtte, és megállásra kényszeríti. Leereszkedsz a ló hátáról, és szerencsére sértetlenül érsz földet. A ló felnyerít és elszáguld, miközben föltápászkodsz a földről.[/p]
+    </text>
+    <next id="66">Ha odamész az utca bal oldalán lévő kunyhóhoz</next>
+    <next id="171">Ha egy másik kunyhóhoz mész oda az utca jobb oldalán</next>
+    <next id="294">Ha nem törődsz a házakkal és továbbmész</next>
+  </p>
   <!-- 269 -->
   <!-- 270 -->
   <!-- 271 -->
@@ -1435,7 +1612,13 @@
     <add to="stamina" amount="-5" />
     <next id="236"></next>
   </p>
-  <!-- 341 -->
+  <p id="341">
+    <text>
+        [p]A Goblin odamegy a kunyhóhoz, és belép. Egy perc múlva kijön, és jelzi, hogy bátran bemehetsz, semmi ok a félelemre.[/p]
+    </text>
+    <next id="27">Ha be akarsz menni a kunyhóba</next>
+    <next id="137">Ha inkább továbbmész</next>
+  </p>
   <!-- 342 -->
   <!-- 343 -->
   <p id="344">
@@ -1448,7 +1631,13 @@
   <!-- 345 -->
   <!-- 346 -->
   <!-- 347 -->
-  <!-- 348 -->
+  <p id="348">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Azt hiszed, hogy a szobor most már valóban mozdulatlan, és elindulsz felé.[/p]
+    </text>
+    <add to="stamina" amount="-1" />
+    <next id="8"></next>
+  </p>
   <!-- 349 -->
   <!-- 350 -->
   <p id="351">
@@ -1485,7 +1674,28 @@
   <!-- 356 -->
   <!-- 357 -->
   <!-- 358 -->
-  <!-- 359 -->
+  <p id="359">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3201">
+      <have>
+        <text>
+            [p]Földhöz vágod a Goblinfogat, és varázsolsz. Egy Goblin jelenik meg előtted.[/p]
+        </text>
+        <loseItem id="3201" />
+        <next id="423">Ha a Goblint odaküldöd a szoborhoz, hogy nézze meg</next>
+        <next id="341">Ha a kunyhóba küldöd be</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem történik semmi.[/p]
+        </text>
+        <next id="153"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 360 -->
   <p id="361">
     <text>
@@ -1574,7 +1784,28 @@
     </itemCheck>
   </p>
   <!-- 377 -->
-  <!-- 378 -->
+  <p id="378">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot![/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3017">
+      <have>
+        <text>
+            [p]Hozzávágod a ragasztót a Borzas Vadhoz, és varázsolsz. A teremtmény odaragad a földhöz; ekkor könnyedén megtámadhatod és végezhetsz vele.[/p]
+        </text>
+        <loseItem id="3017" />
+        <next id="14"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Ez a varázslat nem fog működni, és a teremtmény beleharap a bokádba (vesztesz 2 ÉLETERŐ pontot). Meg kell küzdened vele.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="95b"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 379 -->
   <!-- 380 -->
   <p id="381">
@@ -1609,7 +1840,13 @@
   <!-- 391 -->
   <!-- 392 -->
   <!-- 393 -->
-  <!-- 394 -->
+  <p id="394">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez Szükséges tárggyal.[/p]
+    </text>
+    <add to="stamina" amount="-1" />
+    <next id="55"></next>
+  </p>
   <!-- 395 -->
   <!-- 396 -->
   <!-- 397 -->
@@ -1622,7 +1859,26 @@
     <next id="46"></next>
   </p>
   <!-- 400 -->
-  <!-- 401 -->
+  <p id="401">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot![/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3022">
+      <have>
+        <text>
+            [p]A fejedre teszed a papi sapkát, varázsolsz, és figyelmesen várod a telepatikus üzenetet. Hirtelen megérted a szobor gondolatait! A szobor élő teremtmény, mely most akar megenni téged! Hátrálni kezdesz az ajtó felé. Mikor már jócskán eltávolodtál tőle, futásnak eredsz az út irányába.[/p]
+        </text>
+        <next id="137"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal.[/p]
+        </text>
+        <next id="55"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 402 -->
   <!-- 403 -->
   <!-- 404 -->
@@ -1646,7 +1902,14 @@
   <!-- 410 -->
   <!-- 411 -->
   <!-- 412 -->
-  <!-- 413 -->
+  <p id="413">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal.[/p]
+    </text>
+    <add to="stamina" amount="-1" />
+    <next id="8">Ha most közelebbről akarnád megszemlélni a szobrot</next>
+    <next id="27">Ha a kunyhóba szeretnél bemenni</next>
+  </p>
   <p id="414">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot. Varázsolsz, és várod a jelet, miként tudnál a legbiztonságosabban cselekedni. A sörivás kétségkívül nem a legbölcsebb dolog, de vendéglátód föléd hajol, és várja, hogy igyál. Egy szempillantás alatt az arcába löttyinted a korsó sört, és az ajtóhoz rohansz. Még mielőtt felfogná, mi történik, te már kint is vagy.[/p]
@@ -1662,13 +1925,28 @@
   <!-- 420 -->
   <!-- 421 -->
   <!-- 422 -->
-  <!-- 423 -->
+  <p id="423">
+    <text>
+        [p]Goblinod elindul a Szobor felé. A hátad mögül ekkor hangos ugatást hallasz, és megfordulsz. Semmi vész, csak egy kutya szaladt át az úton, és megugatta a járókelőket. Visszafordulsz a Szobor felé, és majd elájulsz, amikor meglátod, hogy Goblinod holtan fekszik a szobor lábánál, amely meg sem moccant![/p]
+    </text>
+    <next id="8">Ha jobban meg akarod nézni a Szobrot</next>
+    <next id="27">Ha be akarsz nézni a kunyhóba</next>
+    <next id="137">Ha gyorsan távozol innen</next>
+  </p>
   <!-- 424 -->
   <!-- 425 -->
   <!-- 426 -->
   <!-- 427 -->
   <!-- 428 -->
-  <!-- 429 -->
+  <p id="429">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot. Varázsolsz, s ekkor hirtelen egy igen erős védőgyűrű vesz körül. Mindaddig, amíg ennek hatása fennáll, nem érhet semmi veszély. Odamész a Szoborhoz. Nem történik semmi. Benézel a kunyhóba. Nincs benn semmi, leszámítva a földön lévő törmeléket. Sehol egy teremtett lélek. Hirtelen megszűnik a varázslat.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="27">Ha bemész a kunyhóba</next>
+    <next id="8">Ha odamész a Szoborhoz és leveszed a nyakában lévő medált</next>
+    <next id="137">Ha inkább továbbmész</next>
+  </p>
   <p id="430">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és várod a hatást. A gyomrod egyre jobban fáj, végül nem bírod tovább, és meghalsz. Soha többé nem fogsz már magadhoz térni. A varázslatod csupán a bűvös dolgoktól védett volna meg, ez a méreg azonban korántsem volt bűvös erejű. Küldetésedet nem tudtad teljesíteni…[/p]
@@ -1688,13 +1966,26 @@
   <!-- 434 -->
   <!-- 435 -->
   <!-- 436 -->
-  <!-- 437 -->
+  <p id="437">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
+    </text>
+    <add to="stamina" amount="-5" />
+    <next id="95a"></next>
+  </p>
   <!-- 438 -->
   <!-- 439 -->
   <!-- 440 -->
   <!-- 441 -->
   <!-- 442 -->
-  <!-- 443 -->
+  <p id="443">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és várod, milyen hatást váltasz ki a teremtményekből. (Mint tudod, ennek a varázslatnak előre nem sejthető hatása van.) A Borzas Vad dermedten megáll és rád néz. Tétován tesz néhány lépést, mintha azt próbálná eldönteni, mit is csináljon. Hirtelen rád veti magát és felöklel (vesztesz 1 ÉLETERŐ pontot). Ahelyett azonban, hogy folytatná a harcot, körbe-körbe kezd rohanni! Ha később úgy döntesz, hogy harcolsz, levonhatsz tőle 1 ÜGYESSÉG pontot, mert kissé megzavarodott.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <changeEnemy attribute="skill" id="5" change="-1" />
+    <next id="95a"></next>
+  </p>
   <p id="444">
     <text>
         [p]A fejedre teszed a kis sapkát, és varázsolsz. Erősen koncentrálsz házigazdád agyára, és szinte abban a pillanatban megvilágosodnak előtted a gondolatai. Egy biztos: azt akarja, hogy idd meg az italt, amelybe valami kábítószert tettek.[/p]
@@ -1744,9 +2035,21 @@
   </p>
   <!-- 457 -->
   <!-- 458 -->
-  <!-- 459 -->
+  <p id="459">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot! Varázsolsz, de nem történik semmi. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Miközben azon igyekszel, hogy varázsolj, a Borzas Vad odaugrik hozzád, és a lábadba mélyeszti éles fogait. Vesztesz 3 ÉLETERŐ pontot. Meg kell küzdened vele.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <next id="95b"></next>
+  </p>
   <!-- 460 -->
-  <!-- 461 -->
+  <p id="461">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot. Varázsolsz, hogy a szobor megmozduljon. Jól gondoltad! A szobor valóban élő teremtmény, és akaratodnak megfelelően elindul feléd. Megparancsolod, hogy adja át neked a nyakában lévő medált, majd menjen vissza a talapzatára, és foglalja el eredeti helyét. Utasításodnak megfelelően cselekszik.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="117"></next>
+  </p>
   <!-- 462 -->
   <!-- 463 -->
   <!-- 464 -->
@@ -1763,7 +2066,15 @@
     <next id="213"></next>
   </p>
   <!-- 471 -->
-  <!-- 472 -->
+  <p id="472">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, majd mereven nézed a kunyhót, és várod, hogy megtudd, vajon nem leselkedik-e rád odabenn csapda. A kunyhó azonban teljesen veszélytelen. A varázslatnak köszönhetően egy vészcsengő szólal meg benned, amikor a szoborra téved a tekinteted.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="27">Ha be akarsz menni a kunyhóba</next>
+    <next id="8">Ha meg akarod nézni közelebbről a szobrot</next>
+    <next id="137">Ha továbbmész</next>
+  </p>
   <!-- 473 -->
   <p id="474">
     <text>
@@ -1780,7 +2091,13 @@
   <!-- 479 -->
   <!-- 480 -->
   <!-- 481 -->
-  <!-- 482 -->
+  <p id="482">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és várod a figyelmeztetést, vajon varázslattal van-e dolgod, de hiába vársz. Nyugodtan feltételezheted, hogy semmiféle varázslat nem fog bekövetkezni.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="153"></next>
+  </p>
   <!-- 483 -->
   <p id="484">
     <text>
@@ -1815,7 +2132,14 @@
   <!-- 489 -->
   <!-- 490 -->
   <!-- 491 -->
-  <!-- 492 -->
+  <p id="492">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és várod a ,,belső tanácsot’’, merre menj, hogy a rád leselkedő veszélyt elkerüld. Mikor a varázslat működni kezd, ellenállhatatlan kényszert érzel, hogy elfuss erről a helyről.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="55">Ha követed ezt a tanácsot</next>
+    <next id="76">Ha kardot rántasz</next>
+  </p>
   <p id="493">
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot! Varázsolsz, és megparancsolod a férfinak, hogy tegye le a fegyverét. A Gyilkos egyre csak nevet - ez a varázslat csak az értelemmel nem rendelkező teremtményekre van hatással![/p]
@@ -1851,7 +2175,27 @@
     </itemCheck>
   </p>
   <!-- 499 -->
-  <!-- 500 -->
+  <p id="500">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot![/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3028">
+      <have>
+        <text>
+            [p]Az arcod elé tartod a Fekete Maszkot, és varázsolsz. A Borzas Vad rémülten felvisít, és sörtéi égnek merednek! Félelmében elájul.[/p]
+        </text>
+        <next id="14"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Ez a varázslat nem fog működni, és amíg azon igyekszel, hogy történjen valami, a teremtmény rád ront és beleharap a bokádba (vesztesz 2 ÉLETERŐ pontot).[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="95a"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 501 -->
   <!-- 502 -->
   <!-- 503 -->

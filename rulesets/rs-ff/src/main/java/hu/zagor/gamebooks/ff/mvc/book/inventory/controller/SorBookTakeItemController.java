@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author Tamas_Szekeres
  */
 public class SorBookTakeItemController extends FfBookTakeItemController {
+    private static final String HUNGER_MARKER_ID = "4101";
     private static final String LIBRA_HELP_AVAILABLE_MARKER_ID = "4103";
     private static final String BOMBA_ID = "2002";
+    private static final String LUCK_COOKIE_ID = "2003";
     private static final int MAX_AMOUNT_OF_ATTRIBUTE_RESET = 24;
     private static final int REMOVED_HUNGER_MARKER_COUNT = 10;
 
@@ -30,8 +32,10 @@ public class SorBookTakeItemController extends FfBookTakeItemController {
     @Override
     protected void consumeSelectedItem(final FfCharacter characterObject, final FfItem item) {
         final SorCharacter character = (SorCharacter) characterObject;
-        if (item.getItemType() == ItemType.provision) {
-            getInfo().getCharacterHandler().getItemHandler().removeItem(character, "4101", REMOVED_HUNGER_MARKER_COUNT);
+        if (LUCK_COOKIE_ID.equals(item.getId())) {
+            character.setLuckCookieActive(true);
+        } else if (item.getItemType() == ItemType.provision) {
+            getInfo().getCharacterHandler().getItemHandler().removeItem(character, HUNGER_MARKER_ID, REMOVED_HUNGER_MARKER_COUNT);
         }
         final SorParagraphData data = (SorParagraphData) getWrapper(request).getParagraph().getData();
         data.setCanEat(false);
@@ -94,6 +98,7 @@ public class SorBookTakeItemController extends FfBookTakeItemController {
         if (isBombaAfterEating) {
             item.setStamina(character.getLastEatenBonus());
         }
-        return (super.itemConsumptionAllowed(paragraph, item) && !isBomba) || isBombaAfterEating;
+        final boolean isLuckCookie = LUCK_COOKIE_ID.equals(item.getId());
+        return (super.itemConsumptionAllowed(paragraph, item) && !isBomba) || isBombaAfterEating || isLuckCookie;
     }
 }

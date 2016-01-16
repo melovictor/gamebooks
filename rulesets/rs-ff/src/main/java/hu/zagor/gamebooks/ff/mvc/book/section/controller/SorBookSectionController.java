@@ -36,6 +36,12 @@ public class SorBookSectionController extends FfBookSectionController {
         character.setLastEatenBonus(0);
     }
 
+    @Override
+    protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+        final SorCharacter character = (SorCharacter) wrapper.getCharacter();
+        character.setLuckCookieActive(false);
+    }
+
     private void saveCharacterIfNecessary(final SorCharacter character, final String sectionIdentifier) {
         final String bookNumber = String.valueOf(getInfo().getId() % POSITION_FOR_ONES);
         final String identifier = bookNumber + "-" + sectionIdentifier;

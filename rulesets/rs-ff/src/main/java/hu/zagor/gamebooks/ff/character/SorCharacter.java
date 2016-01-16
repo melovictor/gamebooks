@@ -16,6 +16,7 @@ public class SorCharacter extends FfCharacter {
     private final Map<String, String> characterSaveLocations = new HashMap<>();
     private boolean wizard;
     private int lastEatenBonus;
+    private boolean luckCookieActive;
 
     /**
      * Default constructor that prefills the save locations.
@@ -87,5 +88,13 @@ public class SorCharacter extends FfCharacter {
 
     public void setLastEatenBonus(final int lastEatenBonus) {
         this.lastEatenBonus = lastEatenBonus;
+    }
+
+    public boolean isLuckCookieActive() {
+        return luckCookieActive;
+    }
+
+    public void setLuckCookieActive(final boolean luckCookieActive) {
+        this.luckCookieActive = luckCookieActive;
     }
 }
