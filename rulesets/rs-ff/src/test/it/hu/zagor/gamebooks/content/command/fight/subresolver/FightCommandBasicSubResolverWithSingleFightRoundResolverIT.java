@@ -381,7 +381,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         enemyChangeCommand = new ChangeEnemyCommand();
         enemyChangeCommand.setId("1");
         enemyChangeCommand.setAttribute("stamina");
-        enemyChangeCommand.setChangeValue(3);
+        enemyChangeCommand.setChangeValue("3");
 
         battleRoundWinEnemyChangingData = new FfParagraphData();
         battleRoundWinEnemyChangingData.getImmediateCommands().add(enemyChangeCommand);

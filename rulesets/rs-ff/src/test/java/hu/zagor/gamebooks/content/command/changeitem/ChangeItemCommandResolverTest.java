@@ -88,7 +88,7 @@ public class ChangeItemCommandResolverTest {
 
     public void testDoResolveWhenChangedAmountIsSetShouldChangeFieldByAmount() {
         // GIVEN
-        command.setChangeValue(-1);
+        command.setChangeValue("-1");
         item.setAttackStrength(3);
         expect(itemHandler.getItems(character, ITEM_ID)).andReturn(Arrays.asList((Item) item));
         mockControl.replay();
@@ -101,7 +101,7 @@ public class ChangeItemCommandResolverTest {
 
     public void testDoResolveWhenChangedAmountIsSetForMultipleItemsShouldChangeFieldByAmountForAllItems() {
         // GIVEN
-        command.setChangeValue(-1);
+        command.setChangeValue("-1");
         item.setAttackStrength(3);
         itemB.setAttackStrength(3);
         expect(itemHandler.getItems(character, ITEM_ID)).andReturn(Arrays.asList((Item) item, (Item) itemB));

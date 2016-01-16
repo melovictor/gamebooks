@@ -4,7 +4,6 @@ import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTran
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommand;
-
 import org.w3c.dom.Node;
 
 /**
@@ -20,7 +19,7 @@ public class ChangeEnemyTransformer extends AbstractStubTransformer {
         final String id = extractAttribute(node, "id");
         final String attribute = extractAttribute(node, "attribute");
         final Integer set = extractIntegerAttribute(node, "set");
-        final Integer change = extractIntegerAttribute(node, "change");
+        final String change = extractAttribute(node, "change");
 
         final ChangeEnemyCommand changeEnemyCommand = new ChangeEnemyCommand();
         changeEnemyCommand.setAttribute(attribute);

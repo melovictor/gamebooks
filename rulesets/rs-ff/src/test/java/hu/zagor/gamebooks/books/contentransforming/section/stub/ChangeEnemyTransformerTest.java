@@ -67,7 +67,7 @@ public class ChangeEnemyTransformerTest extends AbstractTransformerTest {
         Assert.assertEquals(command.getId(), "29a");
         Assert.assertEquals(command.getAttribute(), "stamina");
         Assert.assertNull(command.getNewValue());
-        Assert.assertEquals(command.getChangeValue(), Integer.valueOf(-2));
+        Assert.assertEquals(command.getChangeValue(), "-2");
     }
 
     @AfterMethod

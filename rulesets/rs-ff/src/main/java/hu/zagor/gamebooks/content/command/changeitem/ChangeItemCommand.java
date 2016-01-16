@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.content.command.changeitem;
 
 import hu.zagor.gamebooks.content.command.Command;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +15,7 @@ public class ChangeItemCommand extends Command {
     private String id;
     private String attribute;
     private Integer newValue;
-    private Integer changeValue;
+    private String changeValue;
 
     public String getId() {
         return id;
@@ -42,11 +41,11 @@ public class ChangeItemCommand extends Command {
         this.newValue = newValue;
     }
 
-    public Integer getChangeValue() {
+    public String getChangeValue() {
         return changeValue;
     }
 
-    public void setChangeValue(final Integer changeValue) {
+    public void setChangeValue(final String changeValue) {
         this.changeValue = changeValue;
     }
 

@@ -37,7 +37,6 @@ public class ChangeEnemyCommandResolverTest {
         enemies = new HashMap<>();
         enemy = new FfEnemy();
         enemies.put("26a", enemy);
-        enemy.setSkill(7);
         final Paragraph paragraph = new Paragraph("3", null, 11);
         paragraph.setData(null);
         resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(null).withCharacter(null).withEnemies(enemies).build();
@@ -49,6 +48,7 @@ public class ChangeEnemyCommandResolverTest {
     public void setUpMethod() {
         command.setNewValue(null);
         command.setChangeValue(null);
+        enemy.setSkill(7);
         mockControl.reset();
     }
 
@@ -64,12 +64,32 @@ public class ChangeEnemyCommandResolverTest {
 
     public void testDoResolveWhenChangeValueIsSetShouldModifyValueForEnemy() {
         // GIVEN
-        command.setChangeValue(-1);
+        command.setChangeValue("-1");
         mockControl.replay();
         // WHEN
         underTest.doResolve(command, resolvationData);
         // THEN
         Assert.assertEquals(enemy.getSkill(), 6);
+    }
+
+    public void testDoResolveWhenChangeValueIsSetWithMultiplicationShouldModifyValueForEnemy() {
+        // GIVEN
+        command.setChangeValue("*2");
+        mockControl.replay();
+        // WHEN
+        underTest.doResolve(command, resolvationData);
+        // THEN
+        Assert.assertEquals(enemy.getSkill(), 14);
+    }
+
+    public void testDoResolveWhenChangeValueIsSetWithDivisionShouldModifyValueForEnemy() {
+        // GIVEN
+        command.setChangeValue("/2");
+        mockControl.replay();
+        // WHEN
+        underTest.doResolve(command, resolvationData);
+        // THEN
+        Assert.assertEquals(enemy.getSkill(), 3);
     }
 
     @AfterMethod

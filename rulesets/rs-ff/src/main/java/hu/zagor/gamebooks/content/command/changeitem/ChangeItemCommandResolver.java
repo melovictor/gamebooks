@@ -7,10 +7,9 @@ import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.TypeAwareCommandResolver;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.lang.reflect.Field;
 import java.util.List;
-
+import org.mvel2.MVEL;
 import org.springframework.util.ReflectionUtils;
 
 /**
@@ -32,7 +31,13 @@ public class ChangeItemCommandResolver extends TypeAwareCommandResolver<ChangeIt
                 ReflectionUtils.setField(field, item, newValue);
             } else {
                 int fieldValue = (int) ReflectionUtils.getField(field, item);
-                fieldValue += command.getChangeValue();
+                final String changeValue = command.getChangeValue();
+                try {
+                    fieldValue += Integer.parseInt(changeValue);
+                } catch (final NumberFormatException ex) {
+                    final Number result = (Number) MVEL.eval(fieldValue + changeValue);
+                    fieldValue = result.intValue();
+                }
                 ReflectionUtils.setField(field, item, fieldValue);
             }
         }
