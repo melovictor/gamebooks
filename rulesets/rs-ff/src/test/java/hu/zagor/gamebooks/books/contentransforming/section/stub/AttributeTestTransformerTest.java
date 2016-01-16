@@ -8,12 +8,10 @@ import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestSuccessType;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -95,6 +93,7 @@ public class AttributeTestTransformerTest extends AbstractTransformerTest {
         // GIVEN
         expect(beanFactory.getBean(AttributeTestCommand.class)).andReturn(command);
         expectAttribute("against", "skill");
+        expectAttribute("compactAgainst");
         expectAttribute("diceConfig");
         expectAttribute("add");
         expectAttribute("success");
@@ -116,6 +115,7 @@ public class AttributeTestTransformerTest extends AbstractTransformerTest {
         // GIVEN
         expect(beanFactory.getBean(AttributeTestCommand.class)).andReturn(command);
         expectAttribute("against", "skill");
+        expectAttribute("compactAgainst");
         expectAttribute("diceConfig");
         expectAttribute("add");
         expectAttribute("success", "badName");
@@ -130,6 +130,7 @@ public class AttributeTestTransformerTest extends AbstractTransformerTest {
         // GIVEN
         expect(beanFactory.getBean(AttributeTestCommand.class)).andReturn(command);
         expectAttribute("against", "skill");
+        expectAttribute("compactAgainst");
         expectAttribute("diceConfig");
         expectAttribute("add");
         expectAttribute("success");
@@ -165,6 +166,7 @@ public class AttributeTestTransformerTest extends AbstractTransformerTest {
         // GIVEN
         expect(beanFactory.getBean(AttributeTestCommand.class)).andReturn(command);
         expectAttribute("against", "skill");
+        expectAttribute("compactAgainst");
         expectAttribute("diceConfig", "4d6");
         expectAttribute("add");
         expectAttribute("success", "lower");

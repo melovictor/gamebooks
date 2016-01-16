@@ -16,11 +16,9 @@ import hu.zagor.gamebooks.ff.section.FfRuleBookParagraphResolver;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -33,20 +31,15 @@ import org.springframework.util.Assert;
  * Main bean for resolving an attribute (skill, luck, stamina, etc.) test command.
  * @author Tamas_Szekeres
  */
-public class AttributeTestCommandResolver extends TypeAwareCommandResolver<AttributeTestCommand> implements BeanFactoryAware, SilentCapableResolver<AttributeTestCommand> {
+public class AttributeTestCommandResolver extends TypeAwareCommandResolver<AttributeTestCommand>
+    implements BeanFactoryAware, SilentCapableResolver<AttributeTestCommand> {
 
-    @Autowired
-    @Qualifier("d6RandomGenerator")
-    private RandomNumberGenerator generator;
-    @Autowired
-    private HierarchicalMessageSource messageSource;
-    @Autowired
-    private LocaleProvider localeProvider;
-    @Autowired
-    private DiceResultRenderer diceRenderer;
+    @Autowired @Qualifier("d6RandomGenerator") private RandomNumberGenerator generator;
+    @Autowired private HierarchicalMessageSource messageSource;
+    @Autowired private LocaleProvider localeProvider;
+    @Autowired private DiceResultRenderer diceRenderer;
     private BeanFactory beanFactory;
-    @LogInject
-    private Logger logger;
+    @LogInject private Logger logger;
 
     @Override
     public List<ParagraphData> resolveSilently(final Command commandObject, final ResolvationData resolvationData, final List<String> messages, final Locale locale) {
@@ -135,8 +128,8 @@ public class AttributeTestCommandResolver extends TypeAwareCommandResolver<Attri
             final FfRuleBookParagraphResolver paragraphResolver = (FfRuleBookParagraphResolver) resolvationData.getInfo().getParagraphResolver();
             final AttributeTestSuccessType successType = paragraphResolver.getAttributeTestDefaultSuccessType(command.getAgainst());
             if (successType == null) {
-                throw new IllegalStateException("No success type was specified for the current test (" + command.getAgainst()
-                    + ") and no default success type was found either.");
+                throw new IllegalStateException(
+                    "No success type was specified for the current test (" + command.getAgainst() + ") and no default success type was found either.");
             }
             command.setSuccessType(successType);
         }
@@ -186,17 +179,28 @@ public class AttributeTestCommandResolver extends TypeAwareCommandResolver<Attri
 
     private String getComactTextResult(final AttributeTestCommand command, final Locale locale, final boolean isSuccessful) {
         final String resultMessage = messageSource.getMessage("page.ff.label.test." + (isSuccessful ? "success" : "failure"), null, locale);
-        return messageSource.getMessage("page.ff.label.test." + command.getAgainst() + ".compact", new Object[]{command.getResultString(), command.getResult(),
-            resultMessage}, locale);
+        String against = command.getCompactAgainst();
+        if (against == null) {
+            against = command.getAgainst();
+        }
+        return messageSource.getMessage("page.ff.label.test." + against + ".compact", new Object[]{command.getResultString(), command.getResult(), resultMessage},
+            locale);
     }
 
     private String getTextResult(final AttributeTestCommand attributeTestCommand, final Locale locale, final boolean isSuccessful) {
         final String resultMessage = messageSource.getMessage("page.ff.label.test." + (isSuccessful ? "success" : "failure"), null, locale);
-        return messageSource.getMessage("page.ff.label.test.after",
-            new Object[]{attributeTestCommand.getResultString(), attributeTestCommand.getResult(), resultMessage}, locale);
+        return messageSource.getMessage("page.ff.label.test.after", new Object[]{attributeTestCommand.getResultString(), attributeTestCommand.getResult(), resultMessage},
+            locale);
     }
 
-    private int resolveAgainst(final AttributeTestCommand command, final FfCharacter character, final FfCharacterHandler characterHandler) {
+    /**
+     * Returns the value against which we will execute the test.
+     * @param command the {@link AttributeTestCommand} object
+     * @param character the {@link FfCharacter} object
+     * @param characterHandler the {@link FfCharacterHandler} object
+     * @return the target number
+     */
+    protected int resolveAgainst(final AttributeTestCommand command, final FfCharacter character, final FfCharacterHandler characterHandler) {
         return characterHandler.getAttributeHandler().resolveValue(character, command.getAgainst());
     }
 

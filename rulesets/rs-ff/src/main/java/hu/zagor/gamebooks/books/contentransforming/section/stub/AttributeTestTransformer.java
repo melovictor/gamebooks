@@ -6,9 +6,7 @@ import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestSuccessType;
-
 import java.util.Map;
-
 import org.springframework.util.Assert;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -31,11 +29,13 @@ public class AttributeTestTransformer extends AbstractStubTransformer {
         final AttributeTestCommand attributeTestCommand = getBeanFactory().getBean(AttributeTestCommand.class);
 
         final String against = extractAttribute(node, "against");
+        final String compactAgainst = extractAttribute(node, "compactAgainst");
         final String configName = extractAttribute(node, "diceConfig", "2d6");
         final int amount = extractIntegerAttribute(node, "add", 0);
         final String success = extractAttribute(node, "success");
 
         attributeTestCommand.setAgainst(against);
+        attributeTestCommand.setCompactAgainst(compactAgainst);
         attributeTestCommand.setAdd(amount);
         attributeTestCommand.setConfigurationName("dice" + configName);
         if (success != null) {

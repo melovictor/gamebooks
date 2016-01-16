@@ -3,10 +3,8 @@ package hu.zagor.gamebooks.content.command.attributetest;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.CommandView;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +20,7 @@ public class AttributeTestCommand extends Command {
     private String resultString;
 
     private String against;
+    private String compactAgainst;
     private int againstNumeric;
     private int add;
     private String configurationName;
@@ -164,6 +163,14 @@ public class AttributeTestCommand extends Command {
 
     public void setCompact(final boolean compact) {
         this.compact = compact;
+    }
+
+    public String getCompactAgainst() {
+        return compactAgainst;
+    }
+
+    public void setCompactAgainst(final String compactAgainst) {
+        this.compactAgainst = compactAgainst;
     }
 
 }
