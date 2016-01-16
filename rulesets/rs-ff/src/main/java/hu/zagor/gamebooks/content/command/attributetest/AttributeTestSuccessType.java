@@ -12,6 +12,10 @@ public enum AttributeTestSuccessType {
     /**
      * The thrown value must be lower than or equal to the value being tested against.
      */
-    lowerEquals
+    lowerEquals,
+    /**
+     * The thrown value must be higher than the value being tested against.
+     */
+    higher
 
 }

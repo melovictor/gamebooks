@@ -64,7 +64,7 @@
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="attributeTestType">
-    <xs:sequence minOccurs="1" maxOccurs="3">
+    <xs:choice minOccurs="1" maxOccurs="3">
       <xs:element name="label" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:simpleContent>
@@ -112,7 +112,7 @@
           </xs:choice>
         </xs:complexType>
       </xs:element>
-    </xs:sequence>
+    </xs:choice>
     <xs:attribute name="against" use="required" type="xs:string" />
     <xs:attribute name="compactAgainst" use="optional" type="xs:string" />
     <xs:attribute name="add" use="optional" type="xs:integer" />
@@ -130,6 +130,7 @@
         <xs:restriction base="xs:string">
           <xs:enumeration value="lower" />
           <xs:enumeration value="lowerEquals" />
+          <xs:enumeration value="higher" />
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>

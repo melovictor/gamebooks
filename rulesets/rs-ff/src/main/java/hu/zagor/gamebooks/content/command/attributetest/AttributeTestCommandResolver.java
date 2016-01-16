@@ -146,14 +146,17 @@ public class AttributeTestCommandResolver extends TypeAwareCommandResolver<Attri
         command.setResultString(diceRenders);
         command.setResult(result);
         int againstNumeric = resolveAgainst(command, character, characterHandler);
-        if (command.getSuccessType() == AttributeTestSuccessType.lowerEquals) {
+        if (command.getSuccessType() != AttributeTestSuccessType.lower) {
             againstNumeric += 1;
         }
         command.setAgainstNumeric(againstNumeric);
         FfParagraphData resultData;
-        if (result < againstNumeric) {
+        boolean isSuccessful;
+        if (result < againstNumeric ^ command.getSuccessType() == AttributeTestSuccessType.higher) {
+            isSuccessful = true;
             resultData = command.getSuccess();
         } else {
+            isSuccessful = false;
             resultData = command.getFailure();
             if (resultData == null) {
                 if (result % 2 == 0) {
@@ -163,16 +166,16 @@ public class AttributeTestCommandResolver extends TypeAwareCommandResolver<Attri
                 }
             }
         }
-        messages.add(getResultMessage(command, locale, result, againstNumeric));
+        messages.add(getResultMessage(command, locale, isSuccessful));
         return resultData;
     }
 
-    private String getResultMessage(final AttributeTestCommand command, final Locale locale, final int result, final int againstNumeric) {
+    private String getResultMessage(final AttributeTestCommand command, final Locale locale, final boolean isSuccessful) {
         String textResult;
         if (command.isCompact()) {
-            textResult = getComactTextResult(command, locale, result < againstNumeric);
+            textResult = getComactTextResult(command, locale, isSuccessful);
         } else {
-            textResult = getTextResult(command, locale, result < againstNumeric);
+            textResult = getTextResult(command, locale, isSuccessful);
         }
         return textResult;
     }
