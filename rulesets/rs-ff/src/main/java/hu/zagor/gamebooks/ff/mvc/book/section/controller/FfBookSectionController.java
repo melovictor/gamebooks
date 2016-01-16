@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.ff.mvc.book.section.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
@@ -146,18 +145,21 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
      * @param model the {@link Model} object
      * @param request the {@link HttpServletRequest} item
      * @param itemId the id of the item to be used
+     * @param enemyId the id of the enemy that is currently selected
      * @return the book page's name
      */
     @RequestMapping(value = PageAddresses.PRE_FIGHT_ITEM_USAGE)
-    public String preFightHandler(final Model model, final HttpServletRequest request, @RequestParam("id") final String itemId) {
+    public String preFightHandler(final Model model, final HttpServletRequest request, @RequestParam("id") final String itemId,
+        @RequestParam("enemyId") final String enemyId) {
         final FfBookInformations info = getInfo();
         final HttpSessionWrapper wrapper = getWrapper(request);
-        getBeanFactory().getBean(fetchBookIdByReflection() + "BookPreFightHandlingService", FfBookPreFightHandlingService.class).handlePreFightItemUsage(info, wrapper,
-            itemId);
-        final Character character = wrapper.getCharacter();
-        final FfCharacterItemHandler itemHandler = info.getCharacterHandler().getItemHandler();
-        final FfItem preFightItem = (FfItem) itemHandler.getItem(character, itemId);
-        preFightItem.setUsedInPreFight(true);
+        final FfCharacter character = (FfCharacter) wrapper.getCharacter();
+        getInfo().getCharacterHandler().getInteractionHandler().setFightCommand(character, LastFightCommand.ENEMY_ID, enemyId);
+        final FfItem preFightItem = getBeanFactory().getBean(fetchBookIdByReflection() + "BookPreFightHandlingService", FfBookPreFightHandlingService.class)
+            .handlePreFightItemUsage(info, wrapper, itemId);
+        if (preFightItem != null) {
+            preFightItem.setUsedInPreFight(true);
+        }
         return super.handleSection(model, request, null);
     }
 

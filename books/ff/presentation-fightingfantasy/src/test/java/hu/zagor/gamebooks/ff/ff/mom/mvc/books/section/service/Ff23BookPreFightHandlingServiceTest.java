@@ -3,22 +3,25 @@ package hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.service;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
+import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
+import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
+import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.commandlist.CommandList;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
+import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
-import org.powermock.reflect.Whitebox;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -40,15 +43,17 @@ public class Ff23BookPreFightHandlingServiceTest {
     @Mock private ParagraphData data;
     @Mock private CommandList commands;
     @Mock private FightCommand command;
-    private Map<String, Enemy> enemies;
+    @Instance private Map<String, Enemy> enemies;
     @Mock private FfEnemy enemy;
-    private List<String> hornResistantEnemies;
+    @Instance(inject = true) private List<String> hornResistantEnemies;
+    @Instance private FfCharacterHandler characterHandler;
+    @Mock private FfCharacterItemHandler itemHandler;
+    @Mock private FfCharacter character;
+    @Mock private FfItem horn;
 
     @BeforeClass
     public void setUpClass() {
-        enemies = new HashMap<String, Enemy>();
-        hornResistantEnemies = new ArrayList<>();
-        Whitebox.setInternalState(underTest, "hornResistantEnemies", hornResistantEnemies);
+        characterHandler.setItemHandler(itemHandler);
     }
 
     @BeforeMethod
@@ -62,8 +67,9 @@ public class Ff23BookPreFightHandlingServiceTest {
         // GIVEN
         mockControl.replay();
         // WHEN
-        underTest.handlePreFightItemUsage(info, wrapper, "3001");
+        final FfItem returned = underTest.handlePreFightItemUsage(info, wrapper, "3001");
         // THEN
+        Assert.assertNull(returned);
     }
 
     public void testHandlePreFightItemUsageWhenItemIsHeversHornAndEnemyIsNotResistantToItShouldRecudeSkill() {
@@ -77,10 +83,14 @@ public class Ff23BookPreFightHandlingServiceTest {
         expect(command.getEnemies()).andReturn(Arrays.asList(new String[]{"1"}));
         expect(enemy.getSkill()).andReturn(6);
         enemy.setSkill(5);
+        expect(info.getCharacterHandler()).andReturn(characterHandler);
+        expect(wrapper.getCharacter()).andReturn(character);
+        expect(itemHandler.getItem(character, HORN_ID)).andReturn(horn);
         mockControl.replay();
         // WHEN
-        underTest.handlePreFightItemUsage(info, wrapper, HORN_ID);
+        final FfItem returned = underTest.handlePreFightItemUsage(info, wrapper, HORN_ID);
         // THEN
+        Assert.assertSame(returned, horn);
     }
 
     public void testHandlePreFightItemUsageWhenItemIsHeversHornAndEnemyIsResistantToItShouldNotRecudeSkill() {
@@ -93,10 +103,14 @@ public class Ff23BookPreFightHandlingServiceTest {
         expect(commands.get(0)).andReturn(command);
         expect(wrapper.getEnemies()).andReturn(enemies);
         expect(command.getEnemies()).andReturn(Arrays.asList(new String[]{"1"}));
+        expect(info.getCharacterHandler()).andReturn(characterHandler);
+        expect(wrapper.getCharacter()).andReturn(character);
+        expect(itemHandler.getItem(character, HORN_ID)).andReturn(horn);
         mockControl.replay();
         // WHEN
-        underTest.handlePreFightItemUsage(info, wrapper, HORN_ID);
+        final FfItem returned = underTest.handlePreFightItemUsage(info, wrapper, HORN_ID);
         // THEN
+        Assert.assertSame(returned, horn);
     }
 
     @AfterMethod

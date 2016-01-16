@@ -65,7 +65,8 @@ var ff = (function() {
 	}
 	function useBeforeFight() {
 		var itemId = $(this).data("item-id");
-		form.submit("post", "preFight?id=" + itemId, "ffEnemyList");
+		var enemyId = $("[data-enemy-selected=true]").data("enemyId");
+		form.submit("post", "preFight?id=" + itemId + "&enemyId=" + enemyId, "ffEnemyList");
 	}
 
 	return {
