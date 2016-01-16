@@ -89,7 +89,13 @@
     </itemCheck>
   </p>
   <!-- 2 -->
-  <!-- 3 -->
+  <p id="3">
+    <text>
+        [p]Elsősorban két mesterember vonja magára a figyelmedet: az egyik egy kar nélküli férfi, aki portrékat állított ki, a másik egy tűzmester, aki különböző színű díszes tüzeket mutat be. Melyikükhöz mész oda?[/p]
+    </text>
+    <next id="18">A művészhez?</next>
+    <next id="96">Vagy a tűzmesterhez?</next>
+  </p>
   <!-- 4 -->
   <p id="5">
     <text>
@@ -112,7 +118,13 @@
     </text>
     <death />
   </p>
-  <!-- 9 -->
+  <p id="9">
+    <text>
+        [p]A Lánckészítő mester műhelyével szemben lévő kunyhóból isteni illatok szállnak feléd.[/p]
+    </text>
+    <next id="171">Ha akarod, odamehetsz, és megnézheted, mi van ott</next>
+    <next id="294">Máskülönben menj tovább az úton</next>
+  </p>
   <!-- 10 -->
   <!-- 11 -->
   <p id="12">
@@ -184,8 +196,92 @@
   </p>
   <!-- 15 -->
   <!-- 16 -->
-  <!-- 17 -->
-  <!-- 18 -->
+  <p id="17">
+    <text>
+        [p]Megpróbálod utánozni a táncosok lépteit, de nem sok sikerrel. Ennek ellenére jól szórakozol, s ezért nyersz 1 ÉLETERŐ pontot. A tánc azonban csakhamar kifáraszt, annál is inkább, mivel még mindig a hátadon van a hátizsákod, és a fegyveredet is a kezedben tartod. A zene azonban csak nem akar elhallgatni. Kitartasz-e a zene végéig?[/p]
+        
+        Számold össze, hány tárgy van nálad (a fegyveredet, Élelmedet és a nálad lévő Aranyat összesen három tárgyként számold), majd dobj két kockával.
+    </text>
+    <add amount="1" to="stamina" />
+    <test against="gok" success="higher">
+      <label>Képes leszel kitartani tánc közben?</label>
+      <failure>
+        <text>
+            [p]A kimerültségtől vesztesz 1 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+        <test against="gok" success="higher">
+          <label>Képes leszel kitartani tánc közben?</label>
+          <failure>
+            <text>
+                [p]A kimerültségtől vesztesz 1 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-1" to="stamina" />
+            <test against="gok" success="higher">
+              <label>Képes leszel kitartani tánc közben?</label>
+              <failure>
+                <text>
+                    [p]A kimerültségtől vesztesz 1 ÉLETERŐ pontot.[/p]
+                </text>
+                <add amount="-1" to="stamina" />
+                <test against="gok" success="higher">
+                  <label>Képes leszel kitartani tánc közben?</label>
+                  <failure>
+                    <text>
+                        [p]A kimerültségtől vesztesz 1 ÉLETERŐ pontot.[/p]
+                    </text>
+                    <add amount="-1" to="stamina" />
+                    <test against="gok" success="higher">
+                      <label>Képes leszel kitartani tánc közben?</label>
+                      <failure>
+                        <text>
+                            [p]A kimerültségtől vesztesz 1 ÉLETERŐ pontot. Összeesel, és a tömeg kihúz a kör szélére.[/p]
+                        </text>
+                        <add amount="-1" to="stamina" />
+                      </failure>
+                      <success>
+                        <text>
+                            [p]Kitartasz a zene végéig.[/p]
+                        </text>
+                      </success>
+                    </test>
+                  </failure>
+                  <success>
+                    <text>
+                        [p]Kitartasz a zene végéig.[/p]
+                    </text>
+                  </success>
+                </test>
+              </failure>
+              <success>
+                <text>
+                    [p]Kitartasz a zene végéig.[/p]
+                </text>
+              </success>
+            </test>
+          </failure>
+          <success>
+            <text>
+                [p]Kitartasz a zene végéig.[/p]
+            </text>
+          </success>
+        </test>
+      </failure>
+      <success>
+        <text>
+            [p]Kitartasz a zene végéig.[/p]
+        </text>
+      </success>
+    </test>
+    <next id="201"></next>
+  </p>
+  <p id="18">
+    <text>
+        [p]A művész festményein Kharé különböző előkelőségei láthatók. Kíváncsian kérded, miként tud kéz nélkül festeni, mire közli veled, hogy egy olyan varázsecsettel rendelkezik, amely azt festi le, amit ő kíván. Most éppen bent a házában fest az ecset az ő utasításainak megfelelően.[/p]
+    </text>
+    <next id="176">Ha be akarsz menni a házba, hogy megnézd, mit fest éppen az ecset</next>
+    <next id="96">Ha inkább a tűzmester tüzeit kívánod megtekinteni</next>
+  </p>
   <!-- 19 -->
   <!-- 20 -->
   <p id="21">
@@ -217,6 +313,7 @@
   <!-- 22 -->
   <p id="23">
     <text>
+        [p class="inlineImage"][img src="resources/sor2/23.jpg" /][/p]
         [p]Elindulsz fölfelé az úton a kölykök után. Rozzant házak és kunyhók szegélyezik az utat, és igencsak óvatosan haladsz. Furcsa arcú emberek bámulnak rád az ablakokból. Fönt a kanyarban egy őrcsapat jelenik meg! Villámgyorsan felméred a helyzetet, besurransz az egyik kunyhóba, és magadra zárod az ajtót. Az őrök elmennek a ház mellett, és ekkor megkönnyebbülten lélegzel fel. De hol is vagy valójában?[/p]
         [p]Körülnézel a rozzant viskóban, és hátrahőkölsz, amikor megpillantod a három undorító arcú embert, akik téged bámulnak. A szoba iszonyúan piszkos, és egy szalmazsákon meg egy alacsony asztalkán kívül szinte nem is látsz mást benne. A három teremtmény, a három Fekete Elf kifejezéstelen arccal mered rád. Átható, édeskés szag csapja meg az orrodat, amely azonnal magyarázatot ad közönyös viselkedésükre. Valamennyien vízipipát szívnak, melyben kapadohány van. Egyikük, miután nagy nehezen összeszedi magát, felajánlja, hogy tarts velük. Mit teszel?[/p]
     </text>
@@ -251,7 +348,14 @@
     </text>
     <next id="297"></next>
   </p>
-  <!-- 33 -->
+  <p id="33">
+    <text>
+        [p class="inlineImage"][img src="resources/sor2/33.jpg" /][/p]
+        [p]A ringben a haramia bemutatja a vállalkozó szellemű versenyzőt. - Nos, emberek, ez itt a versenyző, a fehér sarokban! Hadd halljam, miként ünneplitek Anvart, a Barbárt! - A tömeg vadul éljenez. - A fekete sarokban Kharé nagy küzdőbajnoka, a hatalmas Koponyahasogató Ogre áll, Daddu-Ley Cagouja - Ismét éljenzés hangzik fel a tömegből, amint a hatalmas termetű, kopasz, vadállathoz hasonló férfi megjelenik a ringben. Igazi harcnak néztek elébe. A Barbár magasabb, mint az Ogre, de az Ogre karja és lába csupa izom. A tömegben az emberek fogadásokat kötnek egymással. Ha akarsz, te is fogadhatsz, de úgy is dönthetsz, hogy csak szemlélője leszel a küzdelemnek. Ha akarod, te is vállalhatod a versenyző bajnok szerepét, hisz a győztesnek 15 Arany üti a markát.[/p]
+    </text>
+    <next id="190">Ha fogadni akarsz</next>
+    <next id="234">Ha nem akarsz fogadni</next>
+  </p>
   <p id="34">
     <text>
         [p]Két korsó sörrel tér vissza, és az egyiket leteszi eléd. - Kharé központja a kikötőnél van – mondja -, de az igen veszélyes hely éjszaka. Sok útonálló settenkedik arrafelé, és orvul megtámadja az óvatlan járókelőket, majd a rabszolgahajókra viszi őket, úgyhogy jobban teszed, ha még napnyugta előtt szállás után nézel!
@@ -306,11 +410,55 @@
   </p>
   <!-- 38 -->
   <!-- 39 -->
-  <!-- 40 -->
+  <p id="40">
+    <text>
+        [p]A teremtmények a téged körülvevő tömegben dühösek, amiért nem csatlakozol hozzájuk. Lökdösni kezdenek, s te megpróbálsz ellenállni. - Miféle legény vagy te, mi? - szólal meg egy hang a hátad mögött, egy másik meg odamorogja: - Menj, má! Hisz ez csak tréfa![/p]
+    </text>
+    <next id="230">Ha továbbra sem akarsz beállni közéjük táncolni</next>
+    <next id="17">Ha viszont nem akarod magadra haragítani a tömeget</next>
+  </p>
   <!-- 41 -->
   <!-- 42 -->
-  <!-- 43 -->
-  <!-- 44 -->
+  <p id="43">
+    <text>
+        [p class="inlineImage"][img src="resources/sor2/43.jpg" /][/p]
+        [p]Körülnézel a szobában. Különböző fűszerek, zöldségek és húsok hevernek szanaszét a szoba közepén lévő asztalokon és lógnak mindenütt a falakon. Szemmel láthatólag egy konyhában vagy. A konyha végében tűz lobog a tűzhelyen, fölötte egy kondérban leves rotyog, amelynek az illata az utcán megcsapta az orrodat. A tűzhely mellett undorító külsejű teremtmény áll. Teste és lába akár az emberé, de a feje hatalmas, kocsonyaszerű massza, amely előtt szabadon úszkál a két szeme. Erről a fejről körös-körül hosszú, polipszerű csápok csüngnek le. Úgy véled, ez lehet a keze (mivel másféle keze nincs), amelyben egy merőkanalat és egy fakanalat tart. Furcsa szerzet ez a teremtmény. Ám ugyanakkor az egyik asztal alatt észreveszel egy ládát, amelyből egy papírtekercs és egy csillogó tükör kandikál ki. Vendéglátód kíváncsian várja, hogy mit akarsz.[/p]
+    </text>
+    <next id="145" pos="1">Megpróbálsz beszélni vele?</next>
+    <next id="243" pos="2">Kardot rántasz és rátámadsz?</next>
+    <itemCheck type="item" id="4102">
+      <have>
+        <next id="257" pos="3">Varázsolsz?</next>
+      </have>
+    </itemCheck>
+    <next id="294" pos="4">Kimész, és folytatod az utadat?</next>
+  </p>
+  <p id="44">
+    <text>
+        [p]Megpróbálod elkapni az ecsetet, de az minduntalan kicsusszan a kezed közül, és a festmény felé tör. Előránthatod a kardodat, és megküzdhetsz vele.[/p]
+        [p]Az ecset valójában nem támad rád: ÜGYESSÉGE csupán fürgeségében rejlik.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="8" />
+      <anyRound totalCount="5">
+        <interrupt />
+      </anyRound>
+    </fight>
+    <itemCheck type="enemy" id="8">
+      <have>
+        <text>
+            [p]Az ecset befejezi a portrét.[/p]
+        </text>
+        <next id="67"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Elhagyod a kunyhót.[/p]
+        </text>
+        <next id="137"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 45 -->
   <p id="46">
     <text>
@@ -412,11 +560,64 @@
     <next id="322">Ha jobbra</next>
     <next id="57">Ha egyenesen mész tovább</next>
   </p>
-  <!-- 63 -->
+  <p id="63">
+    <text>
+        [p]Megkönnyebbülsz, amikor Aranyadat megtalálod az erszényben. Dulakodás támad a tömegben, mert a zsebtolvaj áldozatai mindannyian a szomszédaikat gyanúsítják. Úgy döntesz, hogy távozol erről a helyről.[/p]
+    </text>
+    <next id="261">Ha odamész a táncosokhoz</next>
+    <next id="33">Ha odamész a ringhez, hogy megnézd, vajon a bajnok talált-e magának ellenfelet</next>
+    <next id="263">Ha elhagyod a fesztivál színhelyét</next>
+  </p>
   <!-- 64 -->
   <!-- 65 -->
-  <!-- 66 -->
-  <!-- 67 -->
+  <p id="66">
+    <text>
+        [p class="inlineImage"][img src="resources/sor2/66.jpg" /][/p]
+        [p]Odamész az ajtóhoz. A cégtáblán ez áll: LÁNCKÉSZÍTŐ MESTER. Az ajtó kissé nyitva van, s te belépsz. Egy lélek sincs bent, de a kunyhó mélyén egy újabb nyitott ajtót látsz. Ahová csak nézel, a szoba falait különböző hosszúságú láncok borítják, szinte alig tudsz elmenni mellettük úgy, hogy hozzájuk ne érj.[/p]
+    </text>
+    <next id="280">Ha akarod, kiálthatsz a Lánckészítőnek</next>
+    <next id="215">Vagy gyorsan körülnézhetsz a szobában, amíg egyedül vagy</next>
+  </p>
+  <p id="67">
+    <text>
+        [p]Amikor a festmény elkészül, legnagyobb meglepetésedre hasonmásod megmozdul a vásznon. A festmény meredten a szemedbe nézve mindkét kezével megragadja a vászon két szélét, elrugaszkodik és leugrik a földre. Ott áll előtted a hasonmásod! Néhány pillanatig szemeztek egymással. Ekkor egy hang szólal meg kintről - a művész azt parancsolja a festménynek, hogy támadjon rád, és vegye el a pénzedet. Küzdj meg alteregóddal (ÜGYESSÉGE és ÉLETEREJE épp olyan, mint a tiéd).[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Harc helyett varázsolhatsz is. Mivel a művész nem tudott róla, hogy varázsolni tudsz, hasonmásod nem rendelkezik varázserővel.[/p]
+        </text>
+        <spell name="KIN" id="356" />
+        <spell name="DEM" id="385" />
+        <spell name="REP" id="508" />
+        <spell name="SUD" id="364" />
+        <spell name="PÉL" id="339" />
+        <next id="67a">Ha kardot rántanál</next>
+      </have>
+      <dontHave>
+        <fight type="single">
+          <enemy id="9" />
+        </fight>
+        <next id="137"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="67a" display="67">
+    <text>
+        [p]Amikor a festmény elkészül, legnagyobb meglepetésedre hasonmásod megmozdul a vásznon. A festmény meredten a szemedbe nézve mindkét kezével megragadja a vászon két szélét, elrugaszkodik és leugrik a földre. Ott áll előtted a hasonmásod! Néhány pillanatig szemeztek egymással. Ekkor egy hang szólal meg kintről - a művész azt parancsolja a festménynek, hogy támadjon rád, és vegye el a pénzedet. Küzdj meg alteregóddal (ÜGYESSÉGE és ÉLETEREJE épp olyan, mint a tiéd).[/p]
+    </text>
+    <fight type="single">
+      <enemy id="9" />
+      <win>
+        <changeItem attribute="staminaDamage" id="1001" set="2" />
+        <changeItem attribute="staminaDamage" id="1002" set="2" />
+        <changeItem attribute="staminaDamage" id="1003" set="2" />
+        <changeItem attribute="staminaDamage" id="1004" set="2" />
+        <changeItem attribute="staminaDamage" id="1005" set="3" />
+      </win>
+    </fight>
+    <next id="137"></next>
+  </p>
   <!-- 68 -->
   <!-- 69 -->
   <!-- 70 -->
@@ -434,7 +635,12 @@
   </p>
   <!-- 73 -->
   <!-- 74 -->
-  <!-- 75 -->
+  <p id="75">
+    <text>
+        [p]Kitárod az ajtót, és fegyveredet készenlétben tartva belépsz. Az ajtó tetején azonban egy folyadékkal teli kis üvegcsét helyezett el valaki, amely az ajtó megmozdításakor lepottyant és épp a fejeden landolt. Megdörzsölöd a fejedet. Az üvegből valamiféle olajos folyadék ömlött szét a hajadon! Amikor megnézed a kezedet, látod, hogy az tele van hajjal! Ismét a fejedhez nyúlsz, és ekkor már egy egész csomó hajat húzol ki! - Úgy kell neked, te hitvány betolakodó - szólal meg kárörvendőn egy hang a kunyhó mélyéről. - Talán majd a kopaszság jó modorra fog tanítani! - Ismét a fejedhez nyúlsz, hogy megdörzsöld, s ekkor döbbenten tapasztalod, hogy teljesen kopasz vagy! Valójában a Kopaszság Főzetének hatása csak rövid ideig tart. Miután megmosod a fejedet, a hajad ismét kinő - de beletelik egy kis idő, mire a fejedet teljes egészében újra borítja a haj![/p]
+    </text>
+    <next id="43"></next>
+  </p>
   <p id="76">
     <text>
         [p]Előrántod a kardodat, és amint megmozdulsz, a szobor életre kel! Nyurga lábaival leugrik hozzád, miközben két kezét még mindig imádkozva szorítja össze. Villámgyorsan feléd nyúl, és megpróbál elkapni. Ez a teremtmény nem más, mint a rettenetes Ájtatos Manóember, akivel meg kell küzdened.[/p]
@@ -514,7 +720,12 @@
   <!-- 87 -->
   <!-- 88 -->
   <!-- 89 -->
-  <!-- 90 -->
+  <p id="90">
+    <text>
+        [p]Bekiáltasz az ajtóból, hátha van benn valaki. Egy hang válaszol: - Gyere be, barátom, de vigyázz, amikor kinyitod az ajtót! - Meglököd az ajtót, és hirtelen hátraugrasz, mert az ajtó tetejéről egy folyadékkal teli üvegcse pottyan le. Belépsz a kunyhóba.[/p]
+    </text>
+    <next id="43"></next>
+  </p>
   <!-- 91 -->
   <p id="92">
     <text>
@@ -564,7 +775,13 @@
     </fight>
     <next id="14"></next>
   </p>
-  <!-- 96 -->
+  <p id="96">
+    <text>
+        [p]Odamész a tűzmesterhez, és üdvözlöd. Mosolyogva fogad, és megkérdi, vajon érdekelnek-e a tüzei. Megmutogatja neked szebbnél szebb fehér, zöld, kék és fekete tüzek, melyeket úgy készíti el, hogy megfelelő színű speciális köveket helyez a közepükre. Elbűvölnek csodaszép tüzei, de ezeknek nem igazán tudod hasznát venni. - Nem érdekelne esetleg valamelyik speciális tüzem? - kérdi. - Bújj be, és tekintsd meg őket odabenn.[/p]
+    </text>
+    <next id="108">Ha be akarsz menni a kunyhóba</next>
+    <next id="18">Ha inkább a festő műveit néznéd meg</next>
+  </p>
   <!-- 97 -->
   <!-- 98 -->
   <!-- 99 -->
@@ -611,7 +828,25 @@
     <next id="268"></next>
   </p>
   <!-- 107 -->
-  <!-- 108 -->
+  <p id="108">
+    <text>
+        [p]Belépsz a kunyhóba. A szoba közepén, lenn a földön egy kéménylyuk alatt vadul lobog a tűz. Bár a lángok magasra csapnak, valójában alig árasztanak meleget, és amikor belenézel a tűzbe, a parázson egy faládát látsz a lángok közepén - de a tűz nem fogja! Ha ez nyugtalanít, kimehetsz a kunyhóból, és folytathatod az utadat. De kiagyalhatod azt is, hogyan nézhetnéd meg, mi rejlik a ládában.[/p]
+    </text>
+    <next id="137">Ha távozol</next>
+    <next id="130">Ha megpróbálsz bemászni a lángok közé, mivel azok egyáltalán nem melegek</next>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="FÉM" id="467" />
+        <spell name="TEL" id="420" />
+        <spell name="SÁP" id="346" />
+        <spell name="GOP" id="478" />
+        <spell name="VAR" id="453" />
+      </have>
+    </itemCheck>
+  </p>
   <!-- 109 -->
   <!-- 110 -->
   <p id="111">
@@ -686,7 +921,13 @@
     <loseItem id="4103" />
     <next id="105"></next>
   </p>
-  <!-- 130 -->
+  <p id="130">
+    <text>
+        [p]Óvatosan belépsz a tűzbe. Bár a lángok nem égetnek meg, a tűz sisteregve, szikrázva feléled. Mintha ez figyelmeztető jel lenne, a tűzmester megjelenik az ajtóban. Kimondhatatlanul mérges rád, amiért lopni akartál a ládájából, ezért szénport szór a tűzre. Felordítasz a fájdalomtól, mert a lángok átforrósodnak, és ott állsz a tüzes pokol kellős közepén! Úgy ugrasz ki a lángok közül, akár egy égő fáklya. Égési sebeid miatt 5 ÉLETERŐ pontot vesztesz. Lecsapkodod a lángokat a ruhádról, és ekkor a tűzmester fölszólít, hogy távozz.[/p]
+    </text>
+    <add amount="-5" to="stamina" />
+    <next id="137"></next>
+  </p>
   <p id="131">
     <text>
         [p]Abból az utcából, amelyen mész, egy újabb utca nyílik. Ha jobbra fordulsz rajta, eljutsz Kharé központjába. Úgy döntesz, erre mész.[/p]
@@ -741,7 +982,13 @@
     <next id="165">Egyenesen mehetsz tovább</next>
     <next id="120">Vagy jobbra fordulhatsz</next>
   </p>
-  <!-- 145 -->
+  <p id="145">
+    <text>
+        [p]A teremtmény áthajol az asztalon, és ledobja a merőkanalat meg a kanalat.[/p]
+    </text>
+    <next id="273">Ha fegyveredet ráfogva követeled, hogy adja át neked az asztal alatt lévő dobozt</next>
+    <next id="283">Ha azzal próbálod meg becsapni, hogy megkérdezed tőle, vajon vehetsz-e nála valamilyen élelmet</next>
+  </p>
   <!-- 146 -->
   <!-- 147 -->
   <!-- 148 -->
@@ -799,6 +1046,7 @@
   <!-- 152 -->
   <p id="153">
     <text>
+        [p class="inlineImage"][img src="resources/sor2/153.jpg" /][/p]
         [p]Elhagyod a Törpék negyedét, és folytatod utadat. Kissé följebb az úton egy magányos, zsúpfedeles házhoz érsz. A ház előtt egy szobor áll. Egy férfit vagy ahhoz igen hasonló lényt ábrázol, melynek hosszú, vézna végtagjai vannak. Két tenyerét összetéve mintha imádkozna. Bár maga a teremtmény is különös, figyelmedet mégis a nyakában lógó aranymedál vonja magára. Úgy látod, a medál túlzottan értékes ahhoz, hogy csak úgy ott lógjon egy őrizetlen szobor nyakán. Lehetséges, hogy igen értékes, sőt mi több, lehet, hogy varázsereje van. Mit teszel?[/p]
     </text>
     <next id="8">Jobban szemügyre veszed a szobrot?</next>
@@ -836,7 +1084,13 @@
     <next id="202">Egy elágazáshoz érsz, ahol balra fordulhatsz</next>
     <next id="165">Vagy továbbmehetsz a kikötő felé</next>
   </p>
-  <!-- 161 -->
+  <p id="161">
+    <text>
+        [p]Fogalma sincs az Északi Kaput nyitó varázsigéről, és dühös, amiért megzavartad a munkájában.[/p]
+    </text>
+    <next id="9">Most vagy kimész a kunyhóból</next>
+    <next id="119">Vagy rátámadhatsz, ha át akarod kutatni a szobáját</next>
+  </p>
   <!-- 162 -->
   <!-- 163 -->
   <!-- 164 -->
@@ -861,7 +1115,13 @@
     <next id="254"></next>
   </p>
   <!-- 170 -->
-  <!-- 171 -->
+  <p id="171">
+    <text>
+        [p]Lenyomod a kilincset. Az ajtó kinyílik, de ha akarod, jelezheted jöttödet.[/p]
+    </text>
+    <next id="90">Ha engedélyt kérsz rá, hogy beléphess az ajtón</next>
+    <next id="75">Ha hirtelen mozdulattal benyitsz és ezáltal megleped azt, aki bent tartózkodik, bárki legyen is az</next>
+  </p>
   <!-- 172 -->
   <p id="173">
     <text>
@@ -872,8 +1132,24 @@
   </p>
   <!-- 174 -->
   <!-- 175 -->
-  <!-- 176 -->
-  <!-- 177 -->
+  <p id="176">
+    <text>
+        [p class="inlineImage"][img src="resources/sor2/176.jpg" /][/p]
+        [p]Belépsz a házba, amelynek a falait a festő művei díszítik. A szoba közepe táján egy festőállványt látsz, s rajta egy neked háttal lévő képet, amelyen vadul dolgozik egy láthatatlan kéz által mozgatott ecset. Átmész a szobán a festményhez. Az ecset éppen a te hasonmásodat festi![/p]
+    </text>
+    <next id="67">Ha meg akarod várni, míg elkészül a portréd, azzal a szándékkal, hogy talán megveszed azt a művésztől</next>
+    <next id="44">Ha leállítod az ecsetet, még mielőtt mesterművét befejezné</next>
+    <next id="137">Ha kimész a kunyhóból</next>
+  </p>
+  <p id="177">
+    <text>
+        [p]Megdermedsz, amikor kezed az üres erszényt tapintja. A zsebtolvaj eliszkolt a pénzeddel. Nem maradt egy filléred sem! A tömeg egyre dühösebb lesz, és úgy döntesz, távozol innen.[/p]
+    </text>
+    <add amount="-100" to="gold" />
+    <next id="261">Ha a táncosok felé indulsz</next>
+    <next id="33">Ha megnézed, vajon a bajnok talált-e már ellenfelet magának</next>
+    <next id="263">Ha elhagyod a fesztivál színhelyét</next>
+  </p>
   <p id="178">
     <text>
         [p]Egy nagydarab, testes fegyveres őr jelenik meg a kapuban. - Ki akar itt bejutni? - mordul rád. Azt válaszolod, hogy az apádat jöttél meglátogatni. Hamis nevet mondasz neki, és közlöd vele, hogy Dhumpusból jöttél. Megparancsolja, hogy várj, míg a felettesével beszél.[/p]
@@ -911,6 +1187,7 @@
   </p>
   <p id="187">
     <text>
+        [p class="inlineImage"][img src="resources/sor2/187.jpg" /][/p]
         [p]Épp akkor lépsz be a kápolnába, amikor egy asszony jön ki onnan a gyermekével. - Ő valóban szent ember - mondja a gyermek. - Salen sánta öccse tegnap jól válaszolt a kérdéseire, és azonnal meggyógyult a lába! Életében először tudott futni! - Kíváncsian lépsz be a kápolna csarnokába. A földön sok-sok felnőtt és gyermek ül. A csarnok egyik végében egy dobogóról ősz hajú, fehér köntöst viselő férfi szól az egybegyűltekhez. - Van-e valaki, aki meg akarja oldani Slangg tesztjét? - kérdi. - Aki válaszolni tud a kérdéseimre, annak istenem bármely kérését teljesíti. Ha viszont valaki nem tudja a választ, annak le kell mondania saját istenéről, és Slangg hívévé kell válnia. Slangg nem más, mint a ,,Bosszú Istene''.[/p]
     </text>
     <next id="156">Ha vállalod ezt a kihívást</next>
@@ -918,7 +1195,22 @@
   </p>
   <!-- 188 -->
   <!-- 189 -->
-  <!-- 190 -->
+  <p id="190">
+    <text>
+        [p]Egy ember megy el melletted, akinél fogadásokat lehet kötni a bajnokságra. Megkérdezed tőle, miként lehet nála fogadni. - Szerencsésnek hiszed magad, mi? - kérdi vihogva. - Három az egyhez, ha a vállalkozó kedvű ellenfél győz, és egy a háromhoz, ha a bajnok győz. Melyikre fogadsz? Bármennyit tehetsz akár a Barbárra, akár az Ogre-ra. Minden egyes Aranyért, amivel a Barbárra fogadsz, 3 Aranyat kapsz tőle, ha a Barbár győz, de minden 3 Aranyért, amivel az Ogre-ra fogadsz, csak egyet kapsz vissza tőle, ha az Ogre győz. (Ha eltalálod, ki győz, visszakapod azt az összeget, amellyel fogadtál.) Fogadj, ha akarsz.[/p]
+        [div]
+          Kire akarsz fogadni?
+          [div]
+            [input type="radio" name="betted" value="ogre" id="ogre" /] [label for="ogre"]a bajnok Ogréra[/label]
+            [input type="radio" name="betted" value="barbarian" id="barbarian" /] [label for="barbarian"]a vállalkozó kedvű Barbárra[/label]
+            [input type="radio" name="betted" value="" id="noone" /] [label for="noone"]egyikükre sem[/label]
+          [/div]
+          [label for="bet"]Feltett Aranytallérok száma:[/label] [input disabled="disabled" type="number" min="0" max="999" name="bet" value="0" id="bet" /][br /]
+          [button id="doBet" disabled="disabled"]Fogadás megtétele[/button]
+        [/div]
+    </text>
+    <next id="234"></next>
+  </p>
   <p id="191">
     <text>
         [p]Egy útkereszteződéshez érsz.[/p]
@@ -935,7 +1227,13 @@
   <!-- 198 -->
   <!-- 199 -->
   <!-- 200 -->
-  <!-- 201 -->
+  <p id="201">
+    <text>
+        [p]Otthagyod a táncosokat.[/p]
+    </text>
+    <next id="33">Vagy a ringhez mész, hogy megnézd, vajon ki az, aki kiáll a haramia bajnokával</next>
+    <next id="263">Vagy elhagyod a fesztivál színterét</next>
+  </p>
   <p id="202">
     <text>
         [p]Menet közben újabb útkereszteződéshez érsz.[/p]
@@ -955,6 +1253,7 @@
   <!-- 212 -->
   <p id="213">
     <text>
+        [p class="inlineImage"][img src="resources/sor2/213.jpg" /][/p]
         [p]Elhagyod a kunyhót. Az őrök eltűntek az utca végében, és így továbbmehetsz. Kissé följebb egy tó mellett haladsz el az úton. Amikor belenézel a tó vizébe, egy kő mögül parányi ezüsthalacska surran elő, és rád néz. Szájából levegőbuborékok törnek elő. Mintha beszélne hozzád. Egy Aranytallér fölött úszkál, amit minden bizonnyal valaki beleejtett a tó vizébe.[/p]
     </text>
     <itemCheck type="item" id="4102">
@@ -1053,7 +1352,13 @@
     </text>
     <next id="336"></next>
   </p>
-  <!-- 230 -->
+  <p id="230">
+    <text>
+        [p]A nézők gúnyos kiabálása, sikolya közepette kiverekszed magad a táncosok közül. Egy térd gonoszul oldalba rúg, majd összeesel tőle, és 2 ÉLETERŐ pontot vesztesz. Végül sikerül kimenekülnöd a tömegből.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="201"></next>
+  </p>
   <!-- 231 -->
   <!-- 232 -->
   <p id="233">
@@ -1149,6 +1454,7 @@
   </p>
   <p id="240">
     <text>
+        [p class="inlineImage"][img src="resources/sor2/240.jpg" /][/p]
         [p]Amikor belépsz a sátorba, egy koszos, szakállas férfi fogad. - Üdv, üdv, barátom - mondja színlelt lelkesedéssel. - Nézzük csak, mit fogsz nyerni ma! Senki sem veszthet a Becsületes Hanna Szerencsesátrában! - Odavezet egy nagy, üvegezett szekrényhez. A vitrinben különböző tárgyakat látsz: ékszereket, könyveket, aranyat, erszényeket és ételeket. Egy apró Minimó csücsül a vitrinben. - 2 Aranytallérért megtudhatod, mit választ számodra az én kis állatkám![/p]
     </text>
     <next id="318">Ha szerencsét akarsz próbálni</next>
@@ -1197,7 +1503,15 @@
     <next id="33">Megpróbálsz kiállni a bajnok ellen?</next>
     <next id="263">Elhagyod a fesztivál színterét?</next>
   </p>
-  <!-- 245 -->
+  <p id="245">
+    <text>
+        [p]Az orvvadászok szedett-vedett népség. Egyáltalán nem törődnek azzal, hogy idegen vagy. Elmondasz nekik néhány történetet meg viccet, és örömmel osztják meg veled a lakomájukat. Egy hatalmas adag disznólábat kapsz, de amint lenyeled az első falatot, érzed, hogy az túl forró. Ég a gyomrod, és kezedet a hasadra szorítva kétrét görnyedsz. A forró disznósült szétégette a gyomrodat: vesztesz 1 ÉLETERŐ pontot, és egész nap nem tudsz majd enni (Ha lehetőséged nyílik az evésre, akkor sem ehetsz.) Köszönetet mondasz a tűz köré gyűlteknek, és fájdalomtól meggyötörten visszabotorkálsz az útra.[/p]
+    </text>
+    <loseItem id="4101" />
+    <add amount="-1" to="stamina" />
+    <gatherItem id="4019" />
+    <next id="62"></next>
+  </p>
   <!-- 246 -->
   <!-- 247 -->
   <p id="248">
@@ -1222,6 +1536,7 @@
   <!-- 253 -->
   <p id="254">
     <text>
+        [p class="inlineImage"][img src="resources/sor2/254.jpg" /][/p]
         [p]Bent vagy a rácsos ablakú kőházban. A fal mellett álló fapad az egyetlen bútor a szobában, amelyen egy öregember ül szakadt köntösben. Feláll, és kezét feléd nyújtva üdvözöl. Ekkor veszed csak észre, hogy hiányzik a másik keze, köpenyének bal ujja ugyanis üresen csüng a teste mellett. - Mi szél hozott ide, erre a bűnös helyre? - kérdi. Közlöd vele, hogy épp kifelé igyekszel a városból, mire bólint, és így szól: - Lefogadom, idegen, hogy varázsló vagy. Valójában ez volt az én foglalkozásom is, mielőtt a sors - a Schanker-bányák egyik Ogréjának piciny segítségével - pontot nem tett reményeim és karrierem végére. - Hiányzó karjára mutat, és még ennyit mond: - Csakis egy varázsló ismerheti azt a varázsigét, amely az Északi Kaput nyitja![/p]
         [p]Kissé zavartan nézel rá. - Ismered azt a varázsigét, ugye? - kérdi tőled, de te egyre csak kérdőn meredsz rá, s ekkor szemét tágra nyitva megrázza a fejét. - Nos, akkor jobb lesz, ha elmagyarázom… - mondja.[/p]
         [p]Elmeséli neked, hogy az Északi Kapun varázszár van, amelynek a baklandi betolakodóktól kell megvédenie a várost. Ezt a mágikus zárat csak és kizárólag egy meghatározott varázsige képes kinyitni. Csupán Kharé Első Főnemese ismeri teljes egészében ezt a varázsigét, ámbár annak négy sorát - soronként egyet-egyet - a várós négy előkelő polgára is ismeri. Ez megakadályozza őket abban, hogy egyedül, a társaik nélkül nyithassák ki a Kaput, s ez Kharé városának biztonságát jelenti. Amikor rákérdezel, kik azok az előkelő polgárok, kiderül, hogy nem sokat tud róluk. Csupán annyit hallott, hogy egyikük tudós.[/p]
@@ -1247,7 +1562,18 @@
     </text>
     <next id="133"></next>
   </p>
-  <!-- 256 -->
+  <p id="256">
+    <text>
+        [p]Odamész a földön fekvő emberhez. Szemmel láthatólag senki sem figyel fel rád az utcában. Lehajolsz hozzá. Kezedet a vállára teszed, és megrázod. Életnek semmi nyomát nem látod rajta. A karjánál fogva megfordítod a testet. Amikor az arca láthatóvá válik, döbbenten ugrasz hátra! Egy oszlófélben lévő hulla fekszik előtted! Arcáról rothadó húscafatok lógnak, rémült kiáltás hagyja el ajkadat. Miközben elfordítod a tekintetedet erről a szörnyű arcról, gonosz mosolyt veszel észre ott, ahol a száját sejted, és látod, amint a test talpra szökken! Rád veti magát, és már semmi másra nincs időd, csak arra, hogy kardot ránts, és azzal küzdj ellene.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="7" />
+      <winRound enemy="7">
+        <interrupt />
+      </winRound>
+    </fight>
+    <next id="11"></next>
+  </p>
   <!-- 257 -->
   <!-- 258 -->
   <!-- 259 -->
@@ -1268,7 +1594,14 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 261 -->
+  <p id="261">
+    <text>
+        [p]Elvegyülsz a tömegben, és nézed, mint lépkednek, hajlonganak a táncosok a zene ritmusára. A zene egyre hangosabban szól, s a tömeg ütemesen tapsol. Csodálod a táncosok ügyességét, téged is magával ragad a látvány. Már te is tapsolsz és táncolsz. Nyersz 1 ÉLETERŐ pontot, amiért ilyen jól szórakozol. A táncosok odapördülnek a tömeghez, mindenki legnagyobb gyönyörűségére megragadnak egy-egy nézőt, és magukkal viszik a táncba. Az egyik táncos épp téged ragad karon, és becipel a körbe.[/p]
+    </text>
+    <add amount="1" to="stamina" />
+    <next id="17">Ha beállsz táncolni</next>
+    <next id="40">Ha otthagyod a partneredet, mert zavarban vagy</next>
+  </p>
   <!-- 262 -->
   <p id="263">
     <text>
@@ -1299,7 +1632,20 @@
     <next id="171">Ha egy másik kunyhóhoz mész oda az utca jobb oldalán</next>
     <next id="294">Ha nem törődsz a házakkal és továbbmész</next>
   </p>
-  <!-- 269 -->
+  <p id="269">
+    <text>
+        [p class="inlineImage"][img src="resources/sor2/269.jpg" /][/p]
+        [p]A tömeg a medvetáncoltató Törpe körül csoportosul. A Törpe az egyik kezében a medve orrában lévő gyűrűhöz erősített pórázt tartja. A póráz végét rángatva arra készteti a medvét, hogy az cammogó táncot járjon. A másik kezében egy parányi síp van, mellyel vidám nótát fúj. A medve nem valami kecses táncos, és a tömeg hangosan nevetve szemléli esetlen lépteit. Néhány percig te is őt nézed. Hirtelen kiáltás hangzik fel a tömegből: - Eltűnt az aranyam! Zsebtolvaj! Vigyázz, zsebtolvaj! - A tömeg veled együtt a hang felé fordul. Egy apró termetű teremtményt pillantasz meg, aki a tömegből kiválva eltűnik az egyik sátorban. Nincs sok remény rá, hogy elfogják. Ekkor visszafordulsz a medvét táncoltató Törpe felé, de az abban a pillanatban eltűnik a szemed elől! Ez a mutatvány nem volt egyéb, mint illúzió, amely csupán azt a célt szolgálta, hogy elvonja a tömeg figyelmét, mialatt a zsebtolvaj ellopja az aranyakat. A többi teremtmény is megnézi a zsebeit, és kiderül, hogy sokan lettek a zsebtolvaj áldozatai. A te Aranyad megvan? [/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="63"></next>
+      </success>
+      <failure>
+        <next id="177"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 270 -->
   <!-- 271 -->
   <!-- 272 -->
@@ -1322,7 +1668,13 @@
     </text>
     <next id="160"></next>
   </p>
-  <!-- 280 -->
+  <p id="280">
+    <text>
+        [p]Miközben vársz, csoszogást hallasz az ajtó mögül. Végül is előbújik egy alak, és azonnal felismered benne a Lánckészítő mestert, aki nem más, mint egy Torreparriból származó, az ember-orkok családjából való Svinn. Mogorván köszönt, és megkérdezi, vajon akarsz-e láncot venni.[/p]
+    </text>
+    <next id="332">Ha kiválasztasz egy érdekesnek látszó láncot és megkérdezed, mennyibe kerül</next>
+    <next id="161">Ha megkérdezed, vajon nem tud-e segíteni neked abban, hogy megtaláld az Északi Kaput nyitó varázsigét</next>
+  </p>
   <!-- 281 -->
   <!-- 282 -->
   <!-- 283 -->
@@ -1368,6 +1720,7 @@
   <!-- 299 -->
   <p id="300">
     <text>
+        [p class="inlineImage"][img src="resources/sor2/300.jpg" /][/p]
         [p]Az út egy idő után kissé összeszűkül. Fiatal Ork kölykök lökdösődő csapata közelít feléd. Amikor megpillantanak, odarohannak hozzád, körbefognak és így könyörögnek: - Helló, adj egy Aranyat! - Tíz apró tenyér nyúlik feléd az adományt várva.[/p]
     </text>
     <next id="91">Ha vetsz nekik egy Aranytallért</next>
@@ -1400,7 +1753,28 @@
     <next id="213"></next>
   </p>
   <!-- 306 -->
-  <!-- 307 -->
+  <p id="307">
+    <text>
+        [p]Átvágsz a mezőn a tűz körül csoportosuló undorító külsejű teremtményekhez. A tűz fölött a nyárson hatalmas disznó sül, amelyet az imént szúrtak le. Ez itt alkalmas hely lehet a számodra, hogy pihenj és egyél.
+    </text>
+    <canEat />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            Ha eszel, akkor 2 ponttal növelheted ÉLETERŐDET. [/p]
+        </text>
+        <changeItem attribute="stamina" id="2000" set="2" />
+      </have>
+      <dontHave>
+        <text>
+            Ha eszel, akkor 1 ponttal növelheted ÉLETERŐDET. [/p]
+        </text>
+        <changeItem attribute="stamina" id="2000" set="1" />
+      </dontHave>
+    </itemCheck>
+    <next id="245">Odamehetsz hozzájuk, megismerkedhetsz velük, és ha a disznó már megsült, te is ehetsz az ,,ingyenételekből''</next>
+    <next id="62">Ha nem akarsz a disznósültből enni, visszamehetsz az útra, és folytathatod az utadat</next>
+  </p>
   <p id="308">
 
     <itemCheck type="item" id="2000" amount="2">
@@ -1604,7 +1978,28 @@
     <next id="85">Ha megpróbálod elcsenni a valódi Aranytallért</next>
     <next id="28">Ha inkább elhagyod a tavat és továbbmész az úton</next>
   </p>
-  <!-- 339 -->
+  <p id="339">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot![/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3008">
+      <have>
+        <text>
+            [p]Bekend a fegyveredet méhviasszal, és varázsolsz! Most meg kell küzdened a hasonmásoddal, fegyvered azonban dupla kárt fog okozni.[/p]
+        </text>
+        <changeItem attribute="staminaDamage" id="equippedWepaon" change="*2" />
+        <next id="67a"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem alkalmazhatod ezt a varázslatot, és hasonmásod méri rád az első csapást (vesztesz 2 ÉLETERŐ pontot).[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="67a"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="340">
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat, és semmi sem történik.[/p]
@@ -1629,7 +2024,13 @@
     <next id="254"></next>
   </p>
   <!-- 345 -->
-  <!-- 346 -->
+  <p id="346">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal.[/p]
+    </text>
+    <add to="stamina" amount="-1" />
+    <next id="108"></next>
+  </p>
   <!-- 347 -->
   <p id="348">
     <text>
@@ -1671,7 +2072,13 @@
     <add to="stamina" amount="-5" />
     <next id="236"></next>
   </p>
-  <!-- 356 -->
+  <p id="356">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Amikor hasonmásod közeledni kezd feléd, egy halom illúziókincset varázsolsz a lába elé. Ellenfeledet azonban egy csöppet sem érdekli a kincs, és támadásba lendül. Nincs már lehetőséged rá, hogy varázsolj. Küzdj meg vele.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="67a"></next>
+  </p>
   <!-- 357 -->
   <!-- 358 -->
   <p id="359">
@@ -1706,7 +2113,13 @@
   </p>
   <!-- 362 -->
   <!-- 363 -->
-  <!-- 364 -->
+  <p id="364">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat. A fegyvereddel kell megküzdened a hasonmásoddal. Döntsd el kettőtök harcát.[/p]
+    </text>
+    <add amount="-5" to="stamina" />
+    <next id="67a"></next>
+  </p>
   <!-- 365 -->
   <p id="366">
     <text>
@@ -1825,7 +2238,14 @@
     <next id="46"></next>
   </p>
   <!-- 384 -->
-  <!-- 385 -->
+  <p id="385">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázslatod hatására ellenfeled mozdulatai lelassulnak. Hasonmásod közömbössé válik, és képtelen odafigyelni a küzdelemre. Döntsd el kettőtök küzdelmét, de a harc időtartamára hasonmásodtól vonj le 3 ÜGYESSÉG pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <changeEnemy attribute="skill" id="9" change="-3" />
+    <next id="67a"></next>
+  </p>
   <!-- 386 -->
   <p id="387">
     <text>
@@ -1922,7 +2342,27 @@
   <!-- 417 -->
   <!-- 418 -->
   <!-- 419 -->
-  <!-- 420 -->
+  <p id="420">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot![/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3022">
+      <have>
+        <text>
+            [p]A fejedre teszed a papi sapkát és varázsolsz. Megsejted a kunyhó előtt álló tűzmester gondolatait. ,,Vajon beleesik-e ez a vándor a csapdámba?’’ - ezt forgatja az agyában. Úgy véled, azt szeretné, ha belépnél a tűzbe.[/p]
+        </text>
+        <next id="130">Ha a lángok közé lépsz</next>
+        <next id="137">Ha inkább elhagyod ezt a helyet</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Varázslatod hatástalan.[/p]
+        </text>
+        <next id="108"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 421 -->
   <!-- 422 -->
   <p id="423">
@@ -2001,7 +2441,13 @@
   <!-- 450 -->
   <!-- 451 -->
   <!-- 452 -->
-  <!-- 453 -->
+  <p id="453">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és belépsz a lángok közé. Nem érzel semmit. Kinyitod a tűz közepén álló ládát, és 10 Ezüsttallért meg egy Ezüsttükröt találsz benne. Magadhoz veszed őket, és kilépsz a lángok közül. Amint jobban megnézed kincseidet, azok a szemed láttára válnak arannyá! [span class="takeItem" data-id="gold" data-amount="10"]10 Aranytallért[/span] és egy [span class="takeItem" data-id="3036" data-amount="1"]Aranyhátú Tükröt[/span] találtál. Gyorsan a hátizsákodba rejted szerzeményedet, mert bentről egy hang szól ki hozzád: - Nos, mit gondolsz? - kérdi a hang tulajdonosa. Eszedbe jut, hogy fontolóra kellett venned a tüzet! Közlöd vele, hogy a tűz nem érdekel, megköszönöd, hogy bemutatta neked a tudományát, és elhagyod a kunyhót. Az úton lefelé mész tovább.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="137"></next>
+  </p>
   <!-- 454 -->
   <p id="455">
     <text>
@@ -2055,7 +2501,13 @@
   <!-- 464 -->
   <!-- 465 -->
   <!-- 466 -->
-  <!-- 467 -->
+  <p id="467">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot! A varázslat hatástalan, mert nem rendelkezel az ehhez szükséges tárggyal.[/p]
+    </text>
+    <add to="stamina" amount="-1" />
+    <next id="108"></next>
+  </p>
   <!-- 468 -->
   <!-- 469 -->
   <p id="470">
@@ -2087,7 +2539,13 @@
   <!-- 475 -->
   <!-- 476 -->
   <!-- 477 -->
-  <!-- 478 -->
+  <p id="478">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat. El kell hagynod a kunyhót, és tovább kell menned az utadon.[/p]
+    </text>
+    <add to="stamina" amount="-5" />
+    <next id="137"></next>
+  </p>
   <!-- 479 -->
   <!-- 480 -->
   <!-- 481 -->
@@ -2201,6 +2659,7 @@
   <!-- 503 -->
   <p id="504">
     <text>
+        [p class="inlineImage"][img src="resources/sor2/504.jpg" /][/p]
         [p]Vesztesz 1 ÉLETERŐ pontot![/p]
     </text>
     <add amount="-1" to="stamina" />
@@ -2223,7 +2682,13 @@
   <!-- 505 -->
   <!-- 506 -->
   <!-- 507 -->
-  <!-- 508 -->
+  <p id="508">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot! Varázsolsz az ellenfeled ellenében, de nem történik semmi! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges Ékszerberakásos Medállal. Mialatt varázsolni próbálsz, ellenfeled rád méri az első csapását. Vesztesz 2 ÉLETERŐ pontot. Fegyvereddel folytasd a harcot.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <next id="67a"></next>
+  </p>
   <p id="509">
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nem alkalmazhatod ezt a varázslatot, mert ilyen varázslat nem létezik.[/p]
