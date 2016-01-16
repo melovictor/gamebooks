@@ -14,6 +14,8 @@ login.username=gnome # must be present in security-beans.xml
 
 -Dspring.profiles.active=dev
 
--Drebel.workspace.path=c:\gamebooks\source # point it to the local git repo
+-Drebel.workspace.path=c:\gamebooks\source # for jrebel, point it to the local git repo
 
--Drebel.log=debug
+-Drebel.log=debug # for jrebel, and only if you want to hide a lot of useless console logs
+
+-XX:MaxPermSize=256M # if you run into memory issues, this should be good enough for the moment
