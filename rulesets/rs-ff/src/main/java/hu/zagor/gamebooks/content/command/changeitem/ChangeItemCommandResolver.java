@@ -8,6 +8,7 @@ import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.TypeAwareCommandResolver;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.List;
 import org.mvel2.MVEL;
 import org.springframework.util.ReflectionUtils;
@@ -22,7 +23,7 @@ public class ChangeItemCommandResolver extends TypeAwareCommandResolver<ChangeIt
     protected List<ParagraphData> doResolve(final ChangeItemCommand command, final ResolvationData resolvationData) {
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final FfCharacterItemHandler itemHandler = (FfCharacterItemHandler) resolvationData.getCharacterHandler().getItemHandler();
-        final List<Item> items = itemHandler.getItems(character, command.getId());
+        final List<Item> items = getItemsToChange(command, character, itemHandler);
         for (final Item item : items) {
             final Field field = ReflectionUtils.findField(FfItem.class, command.getAttribute());
             ReflectionUtils.makeAccessible(field);
@@ -42,6 +43,16 @@ public class ChangeItemCommandResolver extends TypeAwareCommandResolver<ChangeIt
             }
         }
         return null;
+    }
+
+    private List<Item> getItemsToChange(final ChangeItemCommand command, final FfCharacter character, final FfCharacterItemHandler itemHandler) {
+        List<Item> itemsToChange;
+        if ("equippedWeapon".equals(command.getId())) {
+            itemsToChange = Arrays.asList((Item) itemHandler.getEquippedWeapon(character));
+        } else {
+            itemsToChange = itemHandler.getItems(character, command.getId());
+        }
+        return itemsToChange;
     }
 
 }
