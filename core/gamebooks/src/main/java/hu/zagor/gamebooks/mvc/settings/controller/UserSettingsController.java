@@ -10,6 +10,7 @@ import hu.zagor.gamebooks.player.settings.DefaultSettingsHandler;
 import hu.zagor.gamebooks.player.settings.UserSettingsHandler;
 import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
 import hu.zagor.gamebooks.support.logging.LogInject;
+import java.lang.management.ManagementFactory;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -60,6 +61,7 @@ public class UserSettingsController extends LanguageAwareController {
         model.addAttribute("environment", environmentDetector);
         model.addAttribute("nums6", generator6.getThrownResults());
         model.addAttribute("nums10", generator10.getThrownResults());
+        model.addAttribute("memoryUsageList", ManagementFactory.getMemoryPoolMXBeans());
         return "settings";
     }
 
