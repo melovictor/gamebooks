@@ -934,6 +934,9 @@
     </fight>
     <changeItem attribute="staminaDamage" id="1001" set="2" />
     <changeItem attribute="staminaDamage" id="1002" set="2" />
+    <changeItem attribute="staminaDamage" id="1003" set="2" />
+    <changeItem attribute="staminaDamage" id="1004" set="2" />
+    <changeItem attribute="staminaDamage" id="1005" set="3" />
     <next id="186"></next>
   </p>
   <p id="48">
@@ -3765,6 +3768,9 @@
       <win>
         <changeItem attribute="staminaDamage" id="1001" set="2" />
         <changeItem attribute="staminaDamage" id="1002" set="2" />
+        <changeItem attribute="staminaDamage" id="1003" set="2" />
+        <changeItem attribute="staminaDamage" id="1004" set="2" />
+        <changeItem attribute="staminaDamage" id="1005" set="3" />
       </win>
     </fight>
     <next id="155"></next>
@@ -5608,14 +5614,7 @@
             [p]Bekened méhviasszal a kardodat. Küzdj meg a Goblinnal a szokásos módon, de mindaddig, míg kardod élét a varázslat védi, megkétszerezheted a Goblinon ejtett sebeket. Egy fél adag méhviaszt elhasználtál e varázslattal.[/p]
         </text>
         <loseItem id="3008" amount="0" dose="1" />
-        <itemCheck type="item" id="1002">
-          <have>
-            <changeItem attribute="staminaDamage" id="1002" set="4" />
-          </have>
-          <dontHave>
-            <changeItem attribute="staminaDamage" id="1001" set="4" />
-          </dontHave>
-        </itemCheck>
+        <changeItem attribute="staminaDamage" id="equippedWeapon" change="*2" />
       </have>
       <dontHave>
         <text>
@@ -7512,14 +7511,7 @@
         <text>
             [p]Méhviasszal kened be a kardod élét, és fegyvered mágikus erejű lesz. Ahányszor csak sikerül eltalálnod egy Goblint, minden alkalommal megduplázhatod a rajta ejtett sérülést.[/p]
         </text>
-        <itemCheck type="item" id="1002">
-          <have>
-            <changeItem attribute="staminaDamage" id="1002" set="4" />
-          </have>
-          <dontHave>
-            <changeItem attribute="staminaDamage" id="1001" set="4" />
-          </dontHave>
-        </itemCheck>
+        <changeItem attribute="staminaDamage" id="equippedWeapon" change="*2" />
       </have>
       <dontHave>
         <text>
