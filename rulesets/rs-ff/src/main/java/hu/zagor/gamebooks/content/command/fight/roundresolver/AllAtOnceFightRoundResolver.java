@@ -10,14 +10,11 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.List;
-
 import org.springframework.stereotype.Component;
 
 /**
- * Resolver for a single fight round where there is either a single enemy, multiple enemies that must be handled as a single opponent or multiple enemies that must be fought one by
- * one.
+ * Resolver for a single fight round where there are multiple enemies, all of which attack at the same time.
  * @author Tamas_Szekeres
  */
 @Component("allAtOnceFightRoundResolver")

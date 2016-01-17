@@ -171,7 +171,7 @@ public abstract class AbstractFightCommandSubResolver implements FightCommandSub
             final FightRoundBoundingCommand boundingCommand = command.getAfterBounding();
             if (boundingCommand != null) {
                 boundingCommand.setRoundNumber(command.getRoundNumber());
-                FightCommandMessageList messages = command.getMessages();
+                final FightCommandMessageList messages = command.getMessages();
                 boundingCommand.setMessages(messages);
                 messages.switchToPostRoundMessages();
                 final List<ParagraphData> resolve = fightBoundingCommandResolver.resolve(boundingCommand, resolvationData).getResolveList();
@@ -231,7 +231,7 @@ public abstract class AbstractFightCommandSubResolver implements FightCommandSub
         final List<FfEnemy> enemies = new ArrayList<>();
         for (final String enemyId : enemyIds) {
             final FfEnemy enemy = (FfEnemy) enemyStore.get(enemyId);
-            if (enemyStatusEvaluator.isAlive(enemy) && enemy.getStartAtRound() <= roundNumber) {
+            if (enemyStatusEvaluator.isAlive(enemy, roundNumber) && enemy.getStartAtRound() <= roundNumber) {
                 enemies.add(enemy);
                 if (enemy.getAlterId() != null) {
                     final FfEnemy alterEgo = (FfEnemy) enemyStore.get(enemy.getAlterId());

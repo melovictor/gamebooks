@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.content.command.fight.subresolver.enemystatus;
 
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-
 import java.util.List;
 
 /**
@@ -21,8 +20,9 @@ public interface EnemyStatusEvaluator {
     /**
      * Checks if a specific enemy is alive at the moment or not.
      * @param enemy the {@link FfEnemy} object to check
+     * @param roundNumber the current fight round number
      * @return true if the enemy is dead, false otherwise
      */
-    boolean isAlive(FfEnemy enemy);
+    boolean isAlive(FfEnemy enemy, int roundNumber);
 
 }

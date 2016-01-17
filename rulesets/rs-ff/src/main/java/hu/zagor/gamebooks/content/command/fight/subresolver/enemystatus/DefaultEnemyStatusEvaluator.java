@@ -1,9 +1,7 @@
 package hu.zagor.gamebooks.content.command.fight.subresolver.enemystatus;
 
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-
 import java.util.List;
-
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,9 +16,7 @@ public class DefaultEnemyStatusEvaluator implements EnemyStatusEvaluator {
         boolean enemiesDead = true;
         if (!enemies.isEmpty()) {
             for (final FfEnemy enemy : enemies) {
-                if (!enemyFled(roundNumber, enemy)) {
-                    enemiesDead &= !isAlive(enemy);
-                }
+                enemiesDead &= !isAlive(enemy, roundNumber);
             }
         }
         return enemiesDead;
@@ -31,7 +27,7 @@ public class DefaultEnemyStatusEvaluator implements EnemyStatusEvaluator {
     }
 
     @Override
-    public boolean isAlive(final FfEnemy enemy) {
-        return enemy.getStamina() > 0;
+    public boolean isAlive(final FfEnemy enemy, final int roundNumber) {
+        return enemy.getStamina() > 0 && !enemyFled(roundNumber, enemy);
     }
 }
