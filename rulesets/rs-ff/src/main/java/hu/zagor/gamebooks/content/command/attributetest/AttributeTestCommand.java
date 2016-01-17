@@ -3,7 +3,9 @@ package hu.zagor.gamebooks.content.command.attributetest;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.CommandView;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -28,8 +30,8 @@ public class AttributeTestCommand extends Command {
 
     private String label;
     private boolean compact;
-    private FfParagraphData success;
-    private FfParagraphData failure;
+    private List<SuccessFailureDataContainer> success = new ArrayList<>();
+    private List<SuccessFailureDataContainer> failure = new ArrayList<>();
     private FfParagraphData failureEven;
     private FfParagraphData failureOdd;
 
@@ -53,12 +55,20 @@ public class AttributeTestCommand extends Command {
         this.label = fixText(label);
     }
 
-    public void setSuccess(final FfParagraphData success) {
-        this.success = success;
+    /**
+     * Adds a new {@link SuccessFailureDataContainer} to the success pack.
+     * @param success the object to add
+     */
+    public void addSuccess(final SuccessFailureDataContainer success) {
+        this.success.add(success);
     }
 
-    public void setFailure(final FfParagraphData failure) {
-        this.failure = failure;
+    /**
+     * Adds a new {@link SuccessFailureDataContainer} to the failure pack.
+     * @param failure the object to add
+     */
+    public void addFailure(final SuccessFailureDataContainer failure) {
+        this.failure.add(failure);
     }
 
     @Override
@@ -89,11 +99,19 @@ public class AttributeTestCommand extends Command {
     public AttributeTestCommand clone() throws CloneNotSupportedException {
         final AttributeTestCommand cloned = (AttributeTestCommand) super.clone();
 
-        cloned.success = cloneObject(success);
-        cloned.failure = cloneObject(failure);
+        cloned.success = cloneList(success);
+        cloned.failure = cloneList(failure);
         cloned.failureEven = cloneObject(failureEven);
         cloned.failureOdd = cloneObject(failureOdd);
 
+        return cloned;
+    }
+
+    private List<SuccessFailureDataContainer> cloneList(final List<SuccessFailureDataContainer> orig) throws CloneNotSupportedException {
+        final List<SuccessFailureDataContainer> cloned = new ArrayList<>();
+        for (final SuccessFailureDataContainer container : orig) {
+            cloned.add(cloneObject(container));
+        }
         return cloned;
     }
 
@@ -109,11 +127,11 @@ public class AttributeTestCommand extends Command {
         return configurationName;
     }
 
-    public FfParagraphData getSuccess() {
+    public List<SuccessFailureDataContainer> getSuccess() {
         return success;
     }
 
-    public FfParagraphData getFailure() {
+    public List<SuccessFailureDataContainer> getFailure() {
         return failure;
     }
 

@@ -5,7 +5,7 @@ import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTran
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand;
-
+import hu.zagor.gamebooks.content.command.attributetest.SuccessFailureDataContainer;
 import org.w3c.dom.Node;
 
 /**
@@ -16,8 +16,10 @@ public class AttributeTestFailureTransformer extends AbstractCommandSubTransform
 
     @Override
     protected void doTransform(final BookParagraphDataTransformer parent, final Node node, final AttributeTestCommand command,
-            final ChoicePositionCounter positionCounter) {
-        command.setFailure((FfParagraphData) parent.parseParagraphData(positionCounter, node));
+        final ChoicePositionCounter positionCounter) {
+        final Integer rolled = extractIntegerAttribute(node, "rolled");
+        final FfParagraphData parseParagraphData = (FfParagraphData) parent.parseParagraphData(positionCounter, node);
+        command.addFailure(new SuccessFailureDataContainer(parseParagraphData, rolled));
     }
 
 }

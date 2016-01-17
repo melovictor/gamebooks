@@ -34,7 +34,7 @@ import org.springframework.util.Assert;
 public class AttributeTestCommandResolver extends TypeAwareCommandResolver<AttributeTestCommand>
     implements BeanFactoryAware, SilentCapableResolver<AttributeTestCommand> {
 
-    @Autowired @Qualifier("d6RandomGenerator") private RandomNumberGenerator generator;
+    @Qualifier("d6RandomGenerator") private RandomNumberGenerator generator;
     @Autowired private HierarchicalMessageSource messageSource;
     @Autowired private LocaleProvider localeProvider;
     @Autowired private DiceResultRenderer diceRenderer;
@@ -45,7 +45,7 @@ public class AttributeTestCommandResolver extends TypeAwareCommandResolver<Attri
     public List<ParagraphData> resolveSilently(final Command commandObject, final ResolvationData resolvationData, final List<String> messages, final Locale locale) {
         final AttributeTestCommand command = (AttributeTestCommand) commandObject;
 
-        Assert.state(command.getSuccess() != null || command.getFailure() != null || command.getFailureEven() != null || command.getFailureOdd() != null,
+        Assert.state(!command.getSuccess().isEmpty() || !command.getFailure().isEmpty() || command.getFailureEven() != null || command.getFailureOdd() != null,
             "At least one of the two outcomes (success, failure, failureEven, failureOdd) must be specified!");
         Assert.notNull(resolvationData, "The parameter 'resolvationData' cannot be null!");
 
@@ -79,8 +79,8 @@ public class AttributeTestCommandResolver extends TypeAwareCommandResolver<Attri
 
     @Override
     protected List<ParagraphData> doResolve(final AttributeTestCommand command, final ResolvationData resolvationData) {
-        Assert.state(command.getSuccess() != null, "A success outcome must be specified!");
-        Assert.state(command.getFailure() != null || (command.getFailureEven() != null && command.getFailureOdd() != null),
+        Assert.state(!command.getSuccess().isEmpty(), "A success outcome must be specified!");
+        Assert.state(!command.getFailure().isEmpty() || (command.getFailureEven() != null && command.getFailureOdd() != null),
             "Either a failure or a failureEven and failureOdd outcome must be specified!");
         Assert.notNull(resolvationData, "The parameter 'resolvationData' cannot be null!");
 
@@ -154,10 +154,10 @@ public class AttributeTestCommandResolver extends TypeAwareCommandResolver<Attri
         boolean isSuccessful;
         if (result < againstNumeric ^ command.getSuccessType() == AttributeTestSuccessType.higher) {
             isSuccessful = true;
-            resultData = command.getSuccess();
+            resultData = selectWithRoll(command.getSuccess(), result);
         } else {
             isSuccessful = false;
-            resultData = command.getFailure();
+            resultData = selectWithRoll(command.getFailure(), result);
             if (resultData == null) {
                 if (result % 2 == 0) {
                     resultData = command.getFailureEven();
@@ -168,6 +168,20 @@ public class AttributeTestCommandResolver extends TypeAwareCommandResolver<Attri
         }
         messages.add(getResultMessage(command, locale, isSuccessful));
         return resultData;
+    }
+
+    private FfParagraphData selectWithRoll(final List<SuccessFailureDataContainer> containerList, final int result) {
+        SuccessFailureDataContainer withoutRoll = null;
+        SuccessFailureDataContainer withRoll = null;
+        for (final SuccessFailureDataContainer container : containerList) {
+            if (container.getRolled() == null) {
+                withoutRoll = container;
+            } else if (container.getRolled() == result) {
+                withRoll = container;
+            }
+        }
+        final SuccessFailureDataContainer specificContainer = withRoll == null ? withoutRoll : withRoll;
+        return specificContainer == null ? null : specificContainer.getData();
     }
 
     private String getResultMessage(final AttributeTestCommand command, final Locale locale, final boolean isSuccessful) {

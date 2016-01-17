@@ -29,6 +29,7 @@ import hu.zagor.gamebooks.content.command.SilentCapableResolver;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommandResolver;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestSuccessType;
+import hu.zagor.gamebooks.content.command.attributetest.SuccessFailureDataContainer;
 import hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommand;
 import hu.zagor.gamebooks.content.command.fight.FightBoundingCommandResolver;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
@@ -407,7 +408,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         test = new AttributeTestCommand();
         test.setAgainst("skill");
         test.setConfigurationName("dice1d6");
-        test.setFailure(failingSkillTestInterruptData);
+        test.addFailure(new SuccessFailureDataContainer(failingSkillTestInterruptData, null));
 
         afterBoundingSkillTest = new FightRoundBoundingCommand(command);
         afterBoundingSkillTest.getCommands().add(test);
@@ -1468,7 +1469,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
     public void testDoResolveWhenInSingleBattleFailedSkillTestBeforeRoundResultsInRoundLoseAndTestIsSuccessfulShouldExecuteBattleRoundNormally() {
         // GIVEN
         command.setBeforeBounding(afterBoundingSkillTest);
-        test.setFailure(failingSkillTestLoseRoundData);
+        test.addFailure(new SuccessFailureDataContainer(failingSkillTestLoseRoundData, null));
 
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();
@@ -1506,7 +1507,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
     public void testDoResolveWhenInSingleBattleFailedSkillTestBeforeRoundResultsInRoundLoseAndTestIsFailureShouldAutomaticallyLoseRound() {
         // GIVEN
         command.setBeforeBounding(afterBoundingSkillTest);
-        test.setFailure(failingSkillTestLoseRoundData);
+        test.addFailure(new SuccessFailureDataContainer(failingSkillTestLoseRoundData, null));
 
         getMessageList().setRoundMessage(1);
         getMessageList().switchToPreRoundMessages();

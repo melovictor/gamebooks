@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.content.command.attributetest;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.command.AbstractCommandTest;
 import hu.zagor.gamebooks.content.command.CommandView;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;
@@ -36,8 +35,8 @@ public class AttributeTestCommandTest extends AbstractCommandTest {
         failureCloned = mockControl.createMock(FfParagraphData.class);
 
         underTest = new AttributeTestCommand();
-        underTest.setSuccess(success);
-        underTest.setFailure(failure);
+        underTest.addSuccess(new SuccessFailureDataContainer(success, null));
+        underTest.addFailure(new SuccessFailureDataContainer(failure, null));
     }
 
     @BeforeMethod
@@ -63,8 +62,8 @@ public class AttributeTestCommandTest extends AbstractCommandTest {
         // WHEN
         final AttributeTestCommand returned = underTest.clone();
         // THEN
-        Assert.assertSame(returned.getSuccess(), successCloned);
-        Assert.assertSame(returned.getFailure(), failureCloned);
+        Assert.assertSame(returned.getSuccess().get(0).getData(), successCloned);
+        Assert.assertSame(returned.getFailure().get(0).getData(), failureCloned);
     }
 
     public void testGetValidMoveShouldReturnValidMoveCode() {

@@ -124,7 +124,7 @@ public class Ff23BookSectionController extends FfBookSectionController {
 
     private void addEnemy(final Map<String, Enemy> enemyMap, final List<String> enemies, final List<FfEnemy> resolvedEnemies, final String enemyId) {
         final FfEnemy enemy = (FfEnemy) enemyMap.get(enemyId);
-        if (enemyStatusEvaluator.isAlive(enemy)) {
+        if (enemyStatusEvaluator.isAlive(enemy, 2)) {
             enemies.add(enemyId);
             resolvedEnemies.add(enemy);
         }

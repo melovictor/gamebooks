@@ -96,8 +96,8 @@ public class AttributeTestCommandResolverTest extends FfTextResolvingTest {
     @BeforeMethod
     public void setUpMethod() {
         command = new AttributeTestCommand();
-        command.setSuccess(success);
-        command.setFailure(failure);
+        command.addSuccess(new SuccessFailureDataContainer(success, null));
+        command.addFailure(new SuccessFailureDataContainer(failure, null));
         command.setAgainst("skill");
         command.setLabel("testing label");
         command.setConfigurationName("2d6");
@@ -111,7 +111,8 @@ public class AttributeTestCommandResolverTest extends FfTextResolvingTest {
     @Test(expectedExceptions = IllegalStateException.class)
     public void testResolveWhenNoSuccessIsSetUpShouldThrowException() {
         // GIVEN
-        command.setSuccess(null);
+        command.getSuccess().clear();
+        command.getFailure().clear();
         mockControl.replay();
         // WHEN
         new AttributeTestCommandResolver().resolve(command, resolvationData);
@@ -121,7 +122,8 @@ public class AttributeTestCommandResolverTest extends FfTextResolvingTest {
     @Test(expectedExceptions = IllegalStateException.class)
     public void testResolveWhenNoFailureIsSetUpShouldThrowException() {
         // GIVEN
-        command.setFailure(null);
+        command.getSuccess().clear();
+        command.getFailure().clear();
         mockControl.replay();
         // WHEN
         new AttributeTestCommandResolver().resolve(command, resolvationData);
