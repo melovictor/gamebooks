@@ -4,7 +4,7 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.Sorcery.KHARE_CITYPORT_OF_TRAPS" id="sor2Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="sor2Info" c:id-ref="sor2Id" p:coverPath="resources/sor2/cover.jpg" p:resourceDir="sor2" p:contentTransformers-ref="defaultSorContentTransformers" p:paragraphResolver-ref="sorRuleBookParagraphResolverL" p:locale-ref="enLocale" p:position="2" p:series-ref="sorTitle" p:title="Khare &amp;dash; Cityport of Traps" p:characterHandler-ref="sorCharacterHandler" p:commandResolvers-ref="sorCommandResolvers" p:characterBeanId="sorCharacter" p:characterPageDataBeanId="sorCharacterPageData" p:unfinished="true" p:hidden="true">
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="sor2Info" c:id-ref="sor2Id" p:coverPath="resources/sor2/cover.jpg" p:resourceDir="sor2" p:contentTransformers-ref="defaultSorContentTransformers" p:paragraphResolver-ref="sorRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="2" p:series-ref="sorTitle" p:title="Khare &amp;dash; Cityport of Traps" p:characterHandler-ref="sorCharacterHandler" p:commandResolvers-ref="sorCommandResolvers" p:characterBeanId="sorCharacter" p:characterPageDataBeanId="sorCharacterPageData" p:unfinished="true" p:hidden="true">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="sor2enemies.xml" c:items="sor2items.xml" c:paragraphs="sor2content.xml" />
     </property>
@@ -26,5 +26,14 @@
     <entry key="244" value="111" />
     <entry key="110" value="222" />
   </util:map>
+
+  <util:set value-type="java.lang.String" id="sor2BodyPartsEnemyIds">
+    <value>13</value>
+    <value>14</value>
+    <value>15</value>
+    <value>16</value>
+    <value>17</value>
+    <value>18</value>
+  </util:set>
 
 </beans>

@@ -126,7 +126,21 @@
     <next id="294">Máskülönben menj tovább az úton</next>
   </p>
   <!-- 10 -->
-  <!-- 11 -->
+  <p id="11a" display="11">
+    <text>
+        [p]Ütésed egyenesen az undorító élőholt teremtmény mellkasába csapódik. Az Élő Hulla megtántorodik. Bár ez az ütés minden élőlényt ledöntött volna a lábáról, ezt a szörnyeteget nem öli meg; ehelyett hat darabra szaggatja a testét. Mind a hat testrész ott kering körülötted, közben beléd mar, megkarmol, beléd rúg, neked ront. Mostantól kezdve egy fej, egy torzó, két kar és két láb ellen kell küzdened, melyek mind egyszerre támadnak.[/p]
+        [p]Minden egyes testrészt külön ellenfélnek tekints, és dobókockával állapítsd meg a Támadóerejét, majd ugyancsak dobókockával állapítsd meg a saját Támadóerődet. Minden egyes testrésztől, amelynek nagyobb a Támadóereje, mint a tiéd, egy ütést kapsz. Egy dobókockával dobj ahhoz, hogy megállapíthasd, melyik testrészt támadod meg: azt a testrészt támadd, amelyet a kocka száma megad. Ha a te Támadóerőd nagyobb, mint a megtámadott testrészé, akkor ez a testrész ezáltal játékon kívül kerül, és a következő fordulókban nem is dobsz azért, hogy megállapítsd annak Támadóerejét - viszont továbbra is szerepel a dobható testrészek sorában (tehát, ha ennek a testrésznek a számát dobod újból, akkor egy ütést elpazaroltál).[/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="13" />
+      <enemy id="14" />
+      <enemy id="15" />
+      <enemy id="16" />
+      <enemy id="17" />
+      <enemy id="18" />
+    </fight>
+    <next id="276"></next>
+  </p>
   <p id="12">
     <text>
         [p]Előveszed a kulcsot a hátizsákodból, és óvatosan bedugod a zárba. A reteszek sorban kikattannak. A kapu kissé megnyílik. Gondosan körülnézel, majd benyitsz és belesel. Nincs bent senki.[/p]
@@ -1060,6 +1074,7 @@
   <p id="149">
     <text>
         [p]A vegyesboltban sokféle áru kapható. A következő árucikkek érdekelnek (bármelyiket megveheted):[/p]
+        [div data-market=""][/div]
     </text>
     <market>
       <sale price="5" stock="1" id="3037" />
@@ -1256,7 +1271,7 @@
     <text>
         [p]Óvatosan megkerülöd a házat. Amikor az ajtóhoz közeledsz, az hirtelen kinyílik, és egy sötét köntöst viselő idősebb férfi jelenik meg előtted. Háziállata, egy tüskés bőrű, gyíkszerű teremtmény a lába körül tekereg. A férfi dühös, és követeli, hogy mondd meg, mit keresel a kertjében. Ideges vagy, és magyarázkodva azt mondod, hogy már megpróbálkoztál a bejárati ajtóval, de úgy láttad, nincs ott senki. Vajon meggyőzi-e a meséd?[/p]
     </text>
-    <test against="skill" success="lowerEquals">
+    <test against="skill">
       <success>
         <next id="53"></next>
       </success>
@@ -3090,7 +3105,14 @@
   </p>
   <!-- 433 -->
   <!-- 434 -->
-  <!-- 435 -->
+  <p id="435">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Varázsolsz. Ekkor öt képmásod jelenik meg melletted, és megzavarja a teremtményt. Ez a varázslat azonban csak és kizárólag a teremtmény Feje ellen hatásos, mert a test többi része nem rendelkezik önálló értelemmel. Ha bármelyik Fordulóban a Hulla Feje nagyobb Támadóerőt dob, mint amennyi a tied - dobj egy kockával. Ha 1-től 5-ig dobsz, a Fej az egyik hasonmásodat támadta meg. Ha 6-ot dobsz, a Fej téged talált el, és a szokásos sérülést szenveded el.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <gatherItem id="4020" />
+    <next id="11a"></next>
+  </p>
   <!-- 436 -->
   <p id="437">
     <text>
