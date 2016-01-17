@@ -63,14 +63,21 @@ public class Sor2BookSectionControllerTest {
         // GIVEN
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(commandView);
+        expect(wrapper.getCharacter()).andReturn(character);
+        expect(character.getCommandView()).andReturn(commandView);
         mockControl.replay();
         // WHEN
         underTest.handleAfterFight(wrapper, "10");
         // THEN
     }
 
-    public void testHandleAfterFightWhenFightIsOverShouldRemoveSingleBattleSkillBonuses() {
+    public void testHandleAfterFightWhenFightIsOverShouldRemoveSingleBattleSkillBonusesAndCursedChainmailGloves() {
         // GIVEN
+        expect(wrapper.getCharacter()).andReturn(character);
+        expect(character.getCommandView()).andReturn(null);
+        expect(info.getCharacterHandler()).andReturn(characterHandler);
+        itemHandler.removeItem(character, "3042", 1);
+
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(null);
         expect(info.getCharacterHandler()).andReturn(characterHandler);

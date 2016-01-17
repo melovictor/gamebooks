@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
  * @author Tamas_Szekeres
  */
 public class SorBookSectionController extends FfBookSectionController {
+    private static final String CURSED_CHAINMAIL_GLOVES = "3042";
     private static final int POSITION_FOR_ONES = 10;
     @Autowired private XmlGameStateSaver gameStateSaver;
 
@@ -40,6 +41,14 @@ public class SorBookSectionController extends FfBookSectionController {
     protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
         final SorCharacter character = (SorCharacter) wrapper.getCharacter();
         character.setLuckCookieActive(false);
+    }
+
+    @Override
+    protected void handleAfterFight(final HttpSessionWrapper wrapper, final String enemyId) {
+        final SorCharacter character = (SorCharacter) wrapper.getCharacter();
+        if (character.getCommandView() == null) {
+            getInfo().getCharacterHandler().getItemHandler().removeItem(character, CURSED_CHAINMAIL_GLOVES, 1);
+        }
     }
 
     private void saveCharacterIfNecessary(final SorCharacter character, final String sectionIdentifier) {

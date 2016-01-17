@@ -11,6 +11,8 @@ import hu.zagor.gamebooks.content.ProcessableItemHolder;
 import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand;
+import hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommand;
+import hu.zagor.gamebooks.content.command.userinput.UserInputCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.exception.InvalidStepChoiceException;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
@@ -55,6 +57,7 @@ public class Sor2BookSectionController extends SorBookSectionController {
 
     @Override
     protected void handleAfterFight(final HttpSessionWrapper wrapper, final String enemyId) {
+        super.handleAfterFight(wrapper, enemyId);
         final Character character = wrapper.getCharacter();
         if (character.getCommandView() == null) {
             final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
@@ -115,13 +118,19 @@ public class Sor2BookSectionController extends SorBookSectionController {
     @Override
     protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
         super.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
-        if (DANCER_SECTION_ID.equals(paragraph.getId())) {
+        final String sectionId = paragraph.getId();
+        if (DANCER_SECTION_ID.equals(sectionId)) {
             final List<ProcessableItemHolder> itemsToProcess = paragraph.getItemsToProcess();
             if (!itemsToProcess.isEmpty()) {
                 final AttributeTestCommand command = (AttributeTestCommand) itemsToProcess.get(0).getCommand();
                 final int itemCount = getItemCount((SorCharacter) wrapper.getCharacter());
                 command.setAgainst(String.valueOf(itemCount));
             }
+        } else if ("426".equals(sectionId)) {
+            final ItemCheckCommand itemCheckCommand = (ItemCheckCommand) paragraph.getData().getCommands().get(0);
+            final UserInputCommand userInputCommand = (UserInputCommand) itemCheckCommand.getHave().getCommands().get(0);
+            final int goblinTeethCount = getInfo().getCharacterHandler().getItemHandler().getItems(wrapper.getCharacter(), "3201").size();
+            userInputCommand.setMax(goblinTeethCount);
         }
     }
 
