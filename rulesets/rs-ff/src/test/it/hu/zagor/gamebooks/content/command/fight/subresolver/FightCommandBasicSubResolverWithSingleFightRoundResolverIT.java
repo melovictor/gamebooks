@@ -36,6 +36,7 @@ import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightCommandRoundEventResolver;
 import hu.zagor.gamebooks.content.command.fight.FightOutcome;
 import hu.zagor.gamebooks.content.command.fight.FightRoundBoundingCommand;
+import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
@@ -79,7 +80,7 @@ import org.testng.annotations.Test;
  */
 @Test
 public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends FfItTextResolvingTest {
-
+    private static final String TEXT = "This is the text in the round result.";
     private static final int[] TW16 = new int[]{7, 1, 6};
     private static final int[] TW43 = new int[]{7, 4, 3};
     private static final int[] TW46 = new int[]{10, 4, 6};
@@ -386,6 +387,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
 
         battleRoundWinEnemyChangingData = new FfParagraphData();
         battleRoundWinEnemyChangingData.getImmediateCommands().add(enemyChangeCommand);
+        battleRoundWinEnemyChangingData.setText(TEXT);
 
         battleRoundWinEnemyChangingRound = new RoundEvent();
         battleRoundWinEnemyChangingRound.setEnemyId("1");
@@ -1279,6 +1281,12 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends 
         logger.debug("Attack strength for {}: {}", "Orc", 15);
         logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
+
+        final FightCommandMessageList messages = getMessageList();
+        messages.switchToPostRoundMessages();
+        expect(messages.add(TEXT)).andReturn(true);
+        messages.switchToRoundMessages();
+
         mockControl.replay();
         // WHEN
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);

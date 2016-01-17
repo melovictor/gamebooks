@@ -5,17 +5,17 @@ import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 import hu.zagor.gamebooks.content.command.fight.domain.EventStatistics;
+import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
 import hu.zagor.gamebooks.content.command.fight.stat.StatisticsProvider;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.List;
 import java.util.Map;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -31,31 +31,24 @@ import org.testng.annotations.Test;
 public class FightCommandRoundEventResolverTest {
 
     private static final String ENEMY_ID = "9";
-    private FightCommandRoundEventResolver underTest;
-    private IMocksControl mockControl;
-    private List<ParagraphData> resolveList;
+    private static final String TEXT = "This is the text in the round result.";
+    @UnderTest private FightCommandRoundEventResolver underTest;
+    @MockControl private IMocksControl mockControl;
+    @Instance private List<ParagraphData> resolveList;
     private FightCommand command;
-    private BattleStatistics stats;
-    private Map<String, BattleStatistics> statMap;
-    private StatisticsProvider statProvider;
-    private EventStatistics eventStatistics;
-    private FfParagraphData data;
+    @Mock private BattleStatistics stats;
+    @Instance private Map<String, BattleStatistics> battleStatistics;
+    @Mock private StatisticsProvider statProvider;
+    @Mock private EventStatistics eventStatistics;
+    @Mock private FfParagraphData data;
     private RoundEvent roundEvent;
+    @Instance(inject = true) private Map<FightRoundResult, StatisticsProvider> statProviders;
+    @Mock private FightCommandMessageList messages;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        underTest = new FightCommandRoundEventResolver();
-        resolveList = new ArrayList<>();
-        stats = mockControl.createMock(BattleStatistics.class);
-        statMap = new HashMap<String, BattleStatistics>();
-        statMap.put(ENEMY_ID, stats);
-        final Map<FightRoundResult, StatisticsProvider> statProviders = new HashMap<>();
-        statProvider = mockControl.createMock(StatisticsProvider.class);
+        battleStatistics.put(ENEMY_ID, stats);
         statProviders.put(FightRoundResult.WIN, statProvider);
-        underTest.setStatProviders(statProviders);
-        eventStatistics = mockControl.createMock(EventStatistics.class);
-        data = mockControl.createMock(FfParagraphData.class);
     }
 
     @BeforeMethod
@@ -64,7 +57,8 @@ public class FightCommandRoundEventResolverTest {
         mockControl.reset();
         command = new FightCommand();
         command.setOngoing(true);
-        Whitebox.setInternalState(command, "battleStatistics", statMap);
+        Whitebox.setInternalState(command, "battleStatistics", battleStatistics);
+        Whitebox.setInternalState(command, "messages", messages);
         roundEvent = new RoundEvent();
         roundEvent.setEnemyId(ENEMY_ID);
         roundEvent.setParagraphData(data);
@@ -116,6 +110,11 @@ public class FightCommandRoundEventResolverTest {
         expect(statProvider.provideStatistics(stats, roundEvent)).andReturn(eventStatistics);
         expect(eventStatistics.getTotal()).andReturn(3);
         expect(data.isInterrupt()).andReturn(false);
+        messages.switchToPostRoundMessages();
+        expect(data.getText()).andReturn(TEXT);
+        expect(messages.add(TEXT)).andReturn(true);
+        data.setText("");
+        messages.switchToRoundMessages();
         mockControl.replay();
         // WHEN
         underTest.resolveRoundEvent(command, resolveList);
@@ -134,6 +133,11 @@ public class FightCommandRoundEventResolverTest {
         expect(eventStatistics.getTotal()).andReturn(3);
         expect(eventStatistics.getSubsequent()).andReturn(2);
         expect(data.isInterrupt()).andReturn(false);
+        messages.switchToPostRoundMessages();
+        expect(data.getText()).andReturn(TEXT);
+        expect(messages.add(TEXT)).andReturn(true);
+        data.setText("");
+        messages.switchToRoundMessages();
         mockControl.replay();
         // WHEN
         underTest.resolveRoundEvent(command, resolveList);

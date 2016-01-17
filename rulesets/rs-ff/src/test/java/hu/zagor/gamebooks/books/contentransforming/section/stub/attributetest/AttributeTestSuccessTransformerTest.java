@@ -6,15 +6,15 @@ import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTran
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand;
-
-import org.easymock.EasyMock;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.w3c.dom.Node;
 
 /**
  * Unit test for class {@link AttributeTestSuccessTransformer}.
@@ -22,34 +22,23 @@ import org.w3c.dom.Node;
  */
 @Test
 public class AttributeTestSuccessTransformerTest extends AbstractTransformerTest {
+    @UnderTest private AttributeTestSuccessTransformer underTest;
+    @MockControl private IMocksControl mockControl;
 
-    private AttributeTestSuccessTransformer underTest;
-    private IMocksControl mockControl;
-    private ChoicePositionCounter positionCounter;
-    private BookParagraphDataTransformer parent;
-    private AttributeTestCommand command;
-    private FfParagraphData data;
-
-    @BeforeClass
-    public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        positionCounter = mockControl.createMock(ChoicePositionCounter.class);
-        node = mockControl.createMock(Node.class);
-        parent = mockControl.createMock(BookParagraphDataTransformer.class);
-        command = new AttributeTestCommand();
-        data = mockControl.createMock(FfParagraphData.class);
-
-        underTest = new AttributeTestSuccessTransformer();
-    }
+    @Mock private ChoicePositionCounter positionCounter;
+    @Mock private BookParagraphDataTransformer parent;
+    @Instance private AttributeTestCommand command;
+    @Mock private FfParagraphData data;
 
     public void testDoTransformShouldTransformFailure() {
         // GIVEN
+        expectAttribute("rolled");
         expect(parent.parseParagraphData(positionCounter, node)).andReturn(data);
         mockControl.replay();
         // WHEN
         underTest.doTransform(parent, node, command, positionCounter);
         // THEN
-        Assert.assertSame(command.getSuccess(), data);
+        Assert.assertSame(command.getSuccess().get(0).getData(), data);
     }
 
     @BeforeMethod
