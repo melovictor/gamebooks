@@ -9,6 +9,7 @@ import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
+import hu.zagor.gamebooks.content.dice.DiceConfiguration;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.logging.LogInject;
@@ -154,7 +155,10 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
         int[] result;
 
         if (enemy.getAttackStrength() > 0) {
-            final int firstRoll = getGenerator().getRandomNumber(1)[0];
+            final int diff = enemy.getAttackStrength() - enemy.getSkill();
+
+            final DiceConfiguration config = new DiceConfiguration(1, Math.max(1, diff - 6), Math.min(6, diff - 1));
+            final int firstRoll = getGenerator().getRandomNumber(config)[0];
             result = new int[]{enemy.getAttackStrength() - enemy.getSkill(), firstRoll, enemy.getAttackStrength() - enemy.getSkill() - firstRoll};
         } else {
             result = getGenerator().getRandomNumber(2);
