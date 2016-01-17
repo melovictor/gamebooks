@@ -14,11 +14,9 @@ import hu.zagor.gamebooks.content.command.TypeAwareCommandResolver;
 import hu.zagor.gamebooks.content.command.fight.domain.WeaponReplacementData;
 import hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResolver;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.util.StringUtils;
 
 /**
@@ -100,8 +98,8 @@ public class FightCommandResolver extends TypeAwareCommandResolver<FightCommand>
                 replacementData.setOrigWeapon(equippedWeapon.getId());
                 if (!forceWeapon.contains(replacementData.getOrigWeapon())) {
                     if (!equippedWeapon.getEquipInfo().isRemovable()) {
-                        throw new IllegalStateException("The hero has the non-removable weapon '" + equippedWeapon.getId()
-                            + "' at this point. This should be checked by the story code!");
+                        throw new IllegalStateException(
+                            "The hero has the non-removable weapon '" + equippedWeapon.getId() + "' at this point. This should be checked by the story code!");
                     }
                     forceNewWeapon(character, itemHandler, forceWeapon);
                 }
@@ -144,10 +142,13 @@ public class FightCommandResolver extends TypeAwareCommandResolver<FightCommand>
      * @param command the {@link FightCommand} object
      */
     protected void applyBattleMessages(final ParagraphData rootData, final FightCommand command) {
-        final StringBuilder builder = new StringBuilder(rootData.getText() + "<p>");
-        builder.append(StringUtils.collectionToDelimitedString(command.getMessages(), "<br />\n"));
-        builder.append("</p>");
-        rootData.setText(builder.toString());
+        final String messages = StringUtils.collectionToDelimitedString(command.getMessages(), "<br />\n");
+        if (!messages.isEmpty()) {
+            final StringBuilder builder = new StringBuilder(rootData.getText() + "<p>");
+            builder.append(messages);
+            builder.append("</p>");
+            rootData.setText(builder.toString());
+        }
     }
 
 }
