@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.mvc.settings.controller;
 
+import static org.easymock.EasyMock.anyObject;
 import static org.easymock.EasyMock.capture;
 import static org.easymock.EasyMock.eq;
 import static org.easymock.EasyMock.expect;
@@ -165,6 +166,7 @@ public class UserSettingsControllerTest {
         expect(model.addAttribute("nums6", list6)).andReturn(model);
         expect(generator10.getThrownResults()).andReturn(list10);
         expect(model.addAttribute("nums10", list10)).andReturn(model);
+        expect(model.addAttribute(eq("memoryUsageList"), anyObject(List.class))).andReturn(model);
         return capturer;
     }
 
