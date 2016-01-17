@@ -1,12 +1,13 @@
 package hu.zagor.gamebooks.content.command.fight;
 
+import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 import hu.zagor.gamebooks.content.command.fight.domain.EventStatistics;
+import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
 import hu.zagor.gamebooks.content.command.fight.stat.StatisticsProvider;
-
 import java.util.List;
 import java.util.Map;
 
@@ -30,6 +31,14 @@ public class FightCommandRoundEventResolver {
                 ongoing &= !roundEvent.getParagraphData().isInterrupt();
                 command.setOngoing(ongoing);
                 resolveList.add(roundEvent.getParagraphData());
+                if (ongoing) {
+                    final FightCommandMessageList messages = command.getMessages();
+                    messages.switchToPostRoundMessages();
+                    final FfParagraphData paragraphData = roundEvent.getParagraphData();
+                    messages.add(paragraphData.getText());
+                    paragraphData.setText("");
+                    messages.switchToRoundMessages();
+                }
             }
         }
     }
