@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
@@ -38,8 +39,9 @@ public class Ff15BookPreFightHandlingService implements FfBookPreFightHandlingSe
         final String grenadeDamageDices = renderer.render(generator.getDefaultDiceSide(), totalDamageThrow);
         final int totalDamage = totalDamageThrow[0];
 
-        final ParagraphData data = wrapper.getParagraph().getData();
-        final FightCommand command = (FightCommand) data.getCommands().get(0);
+        final Paragraph paragraph = wrapper.getParagraph();
+        final ParagraphData data = paragraph.getData();
+        final FightCommand command = (FightCommand) paragraph.getItemsToProcess().get(0).getCommand();
         for (final FfEnemy enemy : command.getResolvedEnemies()) {
             enemy.setStamina(enemy.getStamina() - totalDamage);
         }
