@@ -199,12 +199,10 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
 
-        final Paragraph paragraph = wrapper.getParagraph();
-        final FfParagraphData data = (FfParagraphData) paragraph.getData();
-
         final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
 
-        final Map<String, Object> result = marketHandler.handleMarketPurchase(itemId, character, data, itemHandler);
+        final Map<String, Object> result = marketHandler.handleMarketPurchase(itemId, character, wrapper.getParagraph().getItemsToProcess().get(0).getCommand(),
+            itemHandler);
         getItemInteractionRecorder().recordItemMarketMovement(wrapper, "Sale", itemId);
 
         return result;
@@ -225,12 +223,9 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
 
-        final Paragraph paragraph = wrapper.getParagraph();
-        final FfParagraphData data = (FfParagraphData) paragraph.getData();
-
         final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
 
-        final Map<String, Object> result = marketHandler.handleMarketSell(itemId, character, data, itemHandler);
+        final Map<String, Object> result = marketHandler.handleMarketSell(itemId, character, wrapper.getParagraph().getItemsToProcess().get(0).getCommand(), itemHandler);
         getItemInteractionRecorder().recordItemMarketMovement(wrapper, "Purchase", itemId);
 
         return result;

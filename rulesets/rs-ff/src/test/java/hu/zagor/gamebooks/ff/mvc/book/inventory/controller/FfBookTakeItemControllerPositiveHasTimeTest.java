@@ -8,7 +8,9 @@ import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
+import hu.zagor.gamebooks.content.ProcessableItemHolder;
 import hu.zagor.gamebooks.content.command.CommandView;
+import hu.zagor.gamebooks.content.command.market.MarketCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
@@ -19,6 +21,7 @@ import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -56,6 +59,9 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
     @Instance private Map<String, Object> resultMap;
     @Mock private FfItem item;
     @Inject private ItemInteractionRecorder itemInteractionRecorder;
+    @Mock private MarketCommand marketCommand;
+    @Mock private List<ProcessableItemHolder> holderList;
+    @Mock private ProcessableItemHolder holder;
 
     @BeforeClass
     public void setUpClass() {
@@ -219,8 +225,10 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getParagraph()).andReturn(paragraph);
-        expect(paragraph.getData()).andReturn(data);
-        expect(marketHandler.handleMarketPurchase("3001", character, data, itemHandler)).andReturn(resultMap);
+        expect(paragraph.getItemsToProcess()).andReturn(holderList);
+        expect(holderList.get(0)).andReturn(holder);
+        expect(holder.getCommand()).andReturn(marketCommand);
+        expect(marketHandler.handleMarketPurchase("3001", character, marketCommand, itemHandler)).andReturn(resultMap);
         itemInteractionRecorder.recordItemMarketMovement(wrapper, "Sale", "3001");
         mockControl.replay();
         // WHEN
@@ -234,8 +242,10 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getParagraph()).andReturn(paragraph);
-        expect(paragraph.getData()).andReturn(data);
-        expect(marketHandler.handleMarketSell("3001", character, data, itemHandler)).andReturn(resultMap);
+        expect(paragraph.getItemsToProcess()).andReturn(holderList);
+        expect(holderList.get(0)).andReturn(holder);
+        expect(holder.getCommand()).andReturn(marketCommand);
+        expect(marketHandler.handleMarketSell("3001", character, marketCommand, itemHandler)).andReturn(resultMap);
         itemInteractionRecorder.recordItemMarketMovement(wrapper, "Purchase", "3001");
         mockControl.replay();
         // WHEN

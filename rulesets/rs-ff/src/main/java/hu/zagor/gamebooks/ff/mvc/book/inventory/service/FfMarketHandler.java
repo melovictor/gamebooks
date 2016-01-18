@@ -2,16 +2,14 @@ package hu.zagor.gamebooks.ff.mvc.book.inventory.service;
 
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
-import hu.zagor.gamebooks.content.ParagraphData;
+import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.market.MarketCommand;
 import hu.zagor.gamebooks.content.command.market.domain.MarketElement;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.mvc.book.inventory.service.MarketHandler;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,10 +20,11 @@ import org.springframework.stereotype.Component;
 public class FfMarketHandler implements MarketHandler {
 
     @Override
-    public Map<String, Object> handleMarketPurchase(final String itemId, final Character characterObject, final ParagraphData data, final CharacterItemHandler itemHandler) {
+    public Map<String, Object> handleMarketPurchase(final String itemId, final Character characterObject, final Command commandObject,
+        final CharacterItemHandler itemHandler) {
         final FfCharacter character = (FfCharacter) characterObject;
 
-        final MarketCommand command = (MarketCommand) data.getCommands().get(0);
+        final MarketCommand command = (MarketCommand) commandObject;
         final List<MarketElement> itemsForSale = command.getItemsForSale();
         final MarketElement toBuy = fetchItemFromList(itemId, itemsForSale);
         final Map<String, Object> result = new HashMap<>();
@@ -55,10 +54,11 @@ public class FfMarketHandler implements MarketHandler {
     }
 
     @Override
-    public Map<String, Object> handleMarketSell(final String itemId, final Character characterObject, final ParagraphData data, final CharacterItemHandler itemHandler) {
+    public Map<String, Object> handleMarketSell(final String itemId, final Character characterObject, final Command commandObject,
+        final CharacterItemHandler itemHandler) {
         final FfCharacter character = (FfCharacter) characterObject;
 
-        final MarketCommand command = (MarketCommand) data.getCommands().get(0);
+        final MarketCommand command = (MarketCommand) commandObject;
         final List<MarketElement> itemsForPurchase = command.getItemsForPurchase();
         final MarketElement toSell = fetchItemFromList(itemId, itemsForPurchase);
         final Map<String, Object> result = new HashMap<>();

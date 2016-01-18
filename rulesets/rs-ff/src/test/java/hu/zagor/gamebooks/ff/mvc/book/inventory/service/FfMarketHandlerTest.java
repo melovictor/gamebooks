@@ -2,15 +2,14 @@ package hu.zagor.gamebooks.ff.mvc.book.inventory.service;
 
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
-import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.command.market.MarketCommand;
 import hu.zagor.gamebooks.content.command.market.domain.MarketElement;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.Map;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -23,12 +22,10 @@ import org.testng.annotations.Test;
  */
 @Test
 public class FfMarketHandlerTest {
-
-    private IMocksControl mockControl;
-    private FfMarketHandler underTest;
-    private FfCharacter character;
-    private FfParagraphData data;
-    private FfCharacterItemHandler itemHandler;
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private FfMarketHandler underTest;
+    @Mock private FfCharacter character;
+    @Mock private FfCharacterItemHandler itemHandler;
     private MarketCommand command;
     private MarketElement itemA;
     private MarketElement itemB;
@@ -36,19 +33,11 @@ public class FfMarketHandlerTest {
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        underTest = new FfMarketHandler();
-
-        itemHandler = mockControl.createMock(FfCharacterItemHandler.class);
-        character = mockControl.createMock(FfCharacter.class);
     }
 
     @BeforeMethod
     public void setUpMethod() {
         command = new MarketCommand();
-
-        data = new FfParagraphData();
-        data.getCommands().add(command);
 
         itemA = getMarketElement("3001", 3, 2);
         itemB = getMarketElement("3002", 10, 1);
@@ -71,7 +60,7 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(10);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketPurchase("3001", character, data, itemHandler);
+        final Map<String, Object> returned = underTest.handleMarketPurchase("3001", character, command, itemHandler);
         // THEN
         Assert.assertEquals(returned.get("successfulTransaction"), false);
         Assert.assertEquals(returned.get("gold"), 10);
@@ -83,7 +72,7 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(2).times(2);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketPurchase("3001", character, data, itemHandler);
+        final Map<String, Object> returned = underTest.handleMarketPurchase("3001", character, command, itemHandler);
         // THEN
         Assert.assertEquals(returned.get("successfulTransaction"), false);
         Assert.assertEquals(returned.get("gold"), 2);
@@ -95,7 +84,7 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(5).times(2);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketPurchase("3003", character, data, itemHandler);
+        final Map<String, Object> returned = underTest.handleMarketPurchase("3003", character, command, itemHandler);
         // THEN
         Assert.assertEquals(returned.get("successfulTransaction"), false);
         Assert.assertEquals(returned.get("gold"), 5);
@@ -110,7 +99,7 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(2);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketPurchase("3001", character, data, itemHandler);
+        final Map<String, Object> returned = underTest.handleMarketPurchase("3001", character, command, itemHandler);
         // THEN
         Assert.assertEquals(returned.get("successfulTransaction"), true);
         Assert.assertEquals(returned.get("gold"), 2);
@@ -123,7 +112,7 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(5);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, data, itemHandler);
+        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, itemHandler);
         // THEN
         Assert.assertEquals(returned.get("successfulTransaction"), false);
         Assert.assertEquals(returned.get("gold"), 5);
@@ -139,7 +128,7 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(5);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, data, itemHandler);
+        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, itemHandler);
         // THEN
         Assert.assertEquals(returned.get("successfulTransaction"), false);
         Assert.assertEquals(returned.get("gold"), 5);
@@ -157,7 +146,7 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(5);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, data, itemHandler);
+        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, itemHandler);
         // THEN
         Assert.assertEquals(returned.get("successfulTransaction"), false);
         Assert.assertEquals(returned.get("gold"), 5);
@@ -177,7 +166,7 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(8);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, data, itemHandler);
+        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, itemHandler);
         // THEN
         Assert.assertEquals(returned.get("successfulTransaction"), true);
         Assert.assertEquals(returned.get("gold"), 8);
@@ -198,7 +187,7 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(8);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, data, itemHandler);
+        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, itemHandler);
         // THEN
         Assert.assertEquals(returned.get("successfulTransaction"), true);
         Assert.assertEquals(returned.get("gold"), 8);
@@ -220,7 +209,7 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(8);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, data, itemHandler);
+        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, itemHandler);
         // THEN
         Assert.assertEquals(returned.get("successfulTransaction"), true);
         Assert.assertEquals(returned.get("gold"), 8);
