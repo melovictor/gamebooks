@@ -141,6 +141,39 @@
     </fight>
     <next id="276"></next>
   </p>
+  <p id="11">
+    <text>
+        [p class="inlineImage"][img src="resources/sor2/11.jpg" /][/p]
+        [p]Ütésed egyenesen az undorító élőholt teremtmény mellkasába csapódik. Az Élő Hulla megtántorodik. Bár ez az ütés minden élőlényt ledöntött volna a lábáról, ezt a szörnyeteget nem öli meg; ehelyett hat darabra szaggatja a testét. Mind a hat testrész ott kering körülötted, közben beléd mar, megkarmol, beléd rúg, neked ront. Mostantól kezdve egy fej, egy torzó, két kar és két láb ellen kell küzdened, melyek mind egyszerre támadnak.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz a harc helyett.[/p]
+        </text>
+        <spell name="POP" id="441" />
+        <spell name="LÁP" id="450" />
+        <spell name="FAL" id="373" />
+        <spell name="HAT" id="435" />
+        <spell name="FEL" id="357" />
+        <next id="11a">Ha fegyvert rántasz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Minden egyes testrészt külön ellenfélnek tekints, és dobókockával állapítsd meg a Támadóerejét, majd ugyancsak dobókockával állapítsd meg a saját Támadóerődet. Minden egyes testrésztől, amelynek nagyobb a Támadóereje, mint a tiéd, egy ütést kapsz. Egy dobókockával dobj ahhoz, hogy megállapíthasd, melyik testrészt támadod meg: azt a testrészt támadd, amelyet a kocka száma megad. Ha a te Támadóerőd nagyobb, mint a megtámadott testrészé, akkor ez a testrész ezáltal játékon kívül kerül, és a következő fordulókban nem is dobsz azért, hogy megállapítsd annak Támadóerejét - viszont továbbra is szerepel a dobható testrészek sorában (tehát, ha ennek a testrésznek a számát dobod újból, akkor egy ütést elpazaroltál).[/p]
+        </text>
+        <fight type="allAtOnce">
+          <enemy id="13" />
+          <enemy id="14" />
+          <enemy id="15" />
+          <enemy id="16" />
+          <enemy id="17" />
+          <enemy id="18" />
+        </fight>
+        <next id="276"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="12">
     <text>
         [p]Előveszed a kulcsot a hátizsákodból, és óvatosan bedugod a zárba. A reteszek sorban kikattannak. A kapu kissé megnyílik. Gondosan körülnézel, majd benyitsz és belesel. Nincs bent senki.[/p]
@@ -358,7 +391,12 @@
     <next id="233">Ha egyenesen mész tovább</next>
     <next id="183">Ha odamész a lóhoz</next>
   </p>
-  <!-- 29 -->
+  <p id="29">
+    <text>
+        [p]Kinyitod a dobozt, és megnézed, mi van benne. Úgy látod, a teremtmény összes értékes holmija ott lapul. A legfigyelemreméltóbb egy aranyhátú, szépen megmunkált [span class="takeItem" data-id="3036" data-amount="1"]tükör[/span]. Találsz még egy [span class="takeItem" data-id="3045" data-amount="1"]papirusztekercset[/span], amelyen számodra ismeretlen nyelven írt szöveg olvasható. Ezt is magaddal viheted. Ezenkívül még [span class="takeItem" data-id="gold" data-amount="2"]2 Aranytallért[/span] is találsz a dobozban. Gyorsan kimész a kunyhóból.[/p]
+    </text>
+    <next id="294"></next>
+  </p>
   <!-- 30 -->
   <!-- 31 -->
   <p id="32">
@@ -829,6 +867,7 @@
   <!-- 97 -->
   <p id="98">
     <text>
+        [p class="inlineImage"][img src="resources/sor2/98.jpg" /][/p]
         [p]A kis csoportosulás előtt két parányi, egymással dulakodó teremtményt pillantasz meg. Egy Kobold meg egy Pindur csatázik egymással. A tömeg egyik fele a Pindurnak szurkol, míg a másik fele a Koboldnak. Senki sem kísérli meg, hogy beleavatkozzon a verekedésbe.[/p]
     </text>
     <itemCheck type="item" id="4102">
@@ -843,7 +882,33 @@
     <next id="153" pos="3">Ha nem törődsz a verekedőkkel, hanem továbbmész</next>
   </p>
   <!-- 99 -->
-  <!-- 100 -->
+  <p id="100">
+    <text>
+        [p]Az étel - a borzas vadvesepörkölt a spenótszerű zöldséggel - nem valami ínycsiklandó, de mosolyt erőltetsz az arcodra.
+    </text>
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            Nyersz 2 ÉLETERŐ pontot.
+        </text>
+        <add amount="2" to="stamina" />
+        <loseItem id="4101" />
+      </have>
+      <dontHave>
+        <text>
+            Nyersz 1 ÉLETERŐ pontot.
+        </text>
+        <add amount="1" to="stamina" />
+      </dontHave>
+      <after>
+        <text>
+            A teremtmény biccent neked, és felajánl egy korsó koszos löttyöt, hogy azzal öblítsd le a finom ételt. Szándékosan feldöntöd a korsót, kiömlik az ital, és vendéglátód elugrik egy rongyért, hogy feltörölje. Most itt az alkalom, hogy ellopd a dobozt.[/p]
+        </text>
+        <add amount="-5" to="gold" />
+      </after>
+    </itemCheck>
+    <next id="29"></next>
+  </p>
   <!-- 101 -->
   <p id="102">
     <text>
@@ -1928,7 +1993,17 @@
     </fight>
     <next id="11"></next>
   </p>
-  <!-- 257 -->
+  <p id="257">
+    <text>
+        [p]Melyik varázslatot választod?[/p]
+    </text>
+    <spell name="ZAV" id="417" />
+    <spell name="BAM" id="347" />
+    <spell name="BAG" id="398" />
+    <spell name="KIN" id="445" />
+    <spell name="LÁP" id="342" />
+    <next id="243">Ha egyik varázslat sem szimpatikus</next>
+  </p>
   <!-- 258 -->
   <p id="259">
     <empty />
@@ -2064,7 +2139,16 @@
   <!-- 270 -->
   <!-- 271 -->
   <!-- 272 -->
-  <!-- 273 -->
+  <p id="273">
+    <test against="skill">
+      <success>
+        <next id="313"></next>
+      </success>
+      <failure>
+        <next id="303"></next>
+      </failure>
+    </test>
+  </p>
   <p id="274">
     <text>
         [p]- Hadd lássam! - mondja. - Miből gondolod, hogy ez a helyes megoldás? - Elmagyarázod neki, hogy a többi egy dobókocka oldalait ábrázolják. Ez a hiányzó jel. - Hát persze! - helyesel. Nagyon boldog, amiért sikerült megfejtened a feladatot, és buzgón beleegyezik, hogy segít küldetésedben - A varázsige egyetlen sorát ismerem csupán - kezdi -, amely így hangzik: ,,Kaput csukó kettős zár.'' Fogalmam sincs, kik azok a városban, akik a másik három sort ismerik, csak annyit tudok, hogy mindannyian előkelő polgárok. Itt gyakran előfordul, hogy a teremtmények sokkal többet tudnak, mint az emberek, Úgyhogy ez az ajándék biztosan hasznodra lesz. - Átnyújt egy bugyellárist, melyben egy maroknyi zöld szőrféle lapul. Amikor kiveszed és megnézed, akkor látod, hogy ez egy [span class="takeItem" data-id="3034" data-amount="1"]paróka[/span], amely varázsláskor jól jön majd. Miután köszönetet mondasz neki, úgy döntesz, hogy továbbállsz, de előbb még magadhoz veszed a fegyveredet. SZERENCSE pontjaid számát állítsd vissza a Kezdeti értékre.[/p]
@@ -2074,7 +2158,13 @@
     <next id="133"></next>
   </p>
   <!-- 275 -->
-  <!-- 276 -->
+  <p id="276">
+    <text>
+        [p data-item-choice="storage" data-max-choice="1"]Hátralépsz, és a hulla testének darabjai tehetetlenül vergődnek előtted. Végül a földön egyesülnek, de a test olyan látványt nyújt, mintha kocsihajtó versenyen gázoltak volna át rajta. Az egyik szomszédos kunyhó ajtaján valaki kidugja a fejét, és magához int. Néhány Gnóm a kunyhójából nézte végig a csatát, és most mindnyájan köszönetet mondanak neked, amiért megszabadítottad környéküket attól a rémséges teremtménytől. Gyermekeik most már nyugodtan játszhatnak az utcákon.[/p]
+        [p]Hálából [span class="takeItem" data-id="gold" data-amount="5"]5 Aranytallért[/span] nyomnak a markodba, és megkérdezik, miben lehetnek a segítségedre. Elmondod, mi járatban vagy errefelé. Mindannyian egyetértenek abban, hogy előbb meg kell találnod a varázsige négy sorát, csak akkor hagyhatod el a kikötővárost. Azt tanácsolják, hogy keresd fel a város központja felé vezető úton lakó papot, aki talán segíteni tud neked. Ezenkívül felajánlanak még neked néhány tárgyat, amit majd varázsláskor használhatsz. Kaphatsz tőlük egy üveg [span class="takeItem" data-id="3033" data-amount="1" data-group="storage"]gyógyitalt[/span], vagy [span class="takeItem" data-id="3019" data-amount="3" data-group="storage"]három kis kerek kavicsot[/span] tartalmazó zacskót, vagy egy fiola [span class="takeItem" data-id="3027" data-amount="1" data-group="storage"]homokot[/span] (ritkaságszámba menő tengeri kincset). Ezek közül egyet választhatsz.[/p]
+    </text>
+    <next id="239"></next>
+  </p>
   <!-- 277 -->
   <!-- 278 -->
   <p id="279">
@@ -2098,7 +2188,51 @@
     <next id="294"></next>
   </p>
   <!-- 282 -->
-  <!-- 283 -->
+  <p id="283">
+    <text>
+        [p]A szeme összeszűkül, amikor rád néz. Tompa hangon szólal meg, és motyogni kezd valamit, amit alig értesz. Ételt kínál neked, de az 5 Aranytallérba kerül.[/p]
+    </text>
+    <itemCheck type="item" id="4019">
+      <have>
+        <text>
+            [p]Mivel korábban leforráztad a torkod, elutasítod a felajánlást.[/p]
+        </text>
+        <next id="294" pos="1">Ha távozol</next>
+        <next id="243" pos="2">Ha fegyvereddel támadsz rá</next>
+        <itemCheck type="item" id="4102">
+          <have>
+            <next id="257" pos="3">Ha varázsolni akarsz</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="gold" id="5">
+          <have>
+            <next id="100" pos="0">Ha hajlandó vagy ennyit fizetni az ételért</next>
+            <next id="294" pos="1">Ha nem, és távozol</next>
+            <next id="243" pos="2">Ha fegyvereddel támadsz rá</next>
+            <itemCheck type="item" id="4102">
+              <have>
+                <next id="257" pos="3">Ha varázsolni akarsz</next>
+              </have>
+            </itemCheck>
+          </have>
+          <dontHave>
+            <text>
+                [p]Mivel nincs ennyi pénzed, elutasítod a felajánlást.[/p]
+            </text>
+            <next id="294" pos="1">Ha távozol</next>
+            <next id="243" pos="2">Ha fegyvereddel támadsz rá</next>
+            <itemCheck type="item" id="4102">
+              <have>
+                <next id="257" pos="3">Ha varázsolni akarsz</next>
+              </have>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 284 -->
   <!-- 285 -->
   <!-- 286 -->
@@ -2191,7 +2325,20 @@
     <spell name="ALV" id="410" />
     <spell name="ANY" id="400" />
   </p>
-  <!-- 303 -->
+  <p id="303">
+    <text>
+        [p]Fenyegetésed nem nagyon izgatja a teremtményt. Egyre közeledik feléd. Meg kell támadnod.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <next id="243">Ha a fegyvereddel akarsz megküzdeni vele</next>
+        <next id="257">Ha varázsolni akarsz</next>
+      </have>
+      <dontHave>
+        <next id="243"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 304 -->
   <p id="305">
     <text>
@@ -2260,7 +2407,12 @@
     </fight>
   </p>
   <!-- 312 -->
-  <!-- 313 -->
+  <p id="313">
+    <text>
+        [p]Hangod megdöbbenti a teremtményt. Visszaoson a sarokba, és hagyja, hogy elvedd a dobozt.[/p]
+    </text>
+    <next id="29"></next>
+  </p>
   <!-- 314 -->
   <!-- 315 -->
   <p id="316">
@@ -2553,7 +2705,27 @@
     <next id="27">Ha be akarsz menni a kunyhóba</next>
     <next id="137">Ha inkább továbbmész</next>
   </p>
-  <!-- 342 -->
+  <p id="342">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot![/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="gold" id="1">
+      <have>
+        <text>
+            [p]Ha van, helyezd a tallért a csuklódra, és varázsolj. Az érme egy láthatatlan pajzsot képez. A csata időtartamára 2 pontot levonhatsz a teremtmény Támadóerejéből, mivel e pajzs védelme alatt állsz. Fegyveredért nyúlsz.[/p]
+        </text>
+        <changeEnemy attribute="attackStrengthBonus" id="12" change="-2" />
+        <add amount="-1" to="gold" />
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslatod nem működik. Fegyveredért nyúlsz.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <next id="243"></next>
+  </p>
   <!-- 343 -->
   <p id="344">
     <text>
@@ -2570,7 +2742,13 @@
     <add to="stamina" amount="-1" />
     <next id="108"></next>
   </p>
-  <!-- 347 -->
+  <p id="347">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
+    </text>
+    <add to="stamina" amount="-5" />
+    <next id="43"></next>
+  </p>
   <p id="348">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Azt hiszed, hogy a szobor most már valóban mozdulatlan, és elindulsz felé.[/p]
@@ -2624,7 +2802,13 @@
     <add amount="-2" to="stamina" />
     <next id="67a"></next>
   </p>
-  <!-- 357 -->
+  <p id="357">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot. Nem rendelkezel az ehhez a varázslathoz szükséges tárggyal, így ez a varázslat nem működik. Miközben a varázslással bajlódsz, a testrészek közel kerülnek hozzád, és rád támadnak. Vesztesz 3 ÉLETERŐ pontot.[/p]
+    </text>
+    <add to="stamina" amount="-1" />
+    <next id="11"></next>
+  </p>
   <!-- 358 -->
   <p id="359">
     <text>
@@ -2690,7 +2874,13 @@
     <next id="81"></next>
   </p>
   <!-- 372 -->
-  <!-- 373 -->
+  <p id="373">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot. Varázsolsz, és ekkor egy láthatatlan fal képződik közted meg az Élő Hulla között. A teremtmény testrészei röptükben nekivágódnak a falnak. Ez a varázslat azonban rövid életű, így a testrészek nemsokára már ismét védőfalad körül röpködnek, és támadnak.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="11"></next>
+  </p>
   <!-- 374 -->
   <p id="375">
     <text>
@@ -2871,7 +3061,13 @@
     <next id="61"></next>
   </p>
   <!-- 397 -->
-  <!-- 398 -->
+  <p id="398">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat.[/p]
+    </text>
+    <add to="stamina" amount="-5" />
+    <next id="43"></next>
+  </p>
   <p id="399">
     <text>
         [p]Eszedbe jutnak a Birritantiból való kedves Glandragor szavai. Bárcsak itt lenne az ő Vik barátja, biztosan segítene! De miközben haldokolsz, félrebeszélsz, és hangosan kimondod Vik nevét. Vangorn meghallja, odaugrik hozzád, és fölemeli a fejedet. - Ismered Viket? - kérdi. Bólintasz. Kirohan a konyhába, és egy aprócska, itallal teli csészével siet vissza. Nem tudod megakadályozni, hogy bele ne erőszakolja az italt a szádba. Kibírhatatlan fájdalmat érzel, és elájulsz, de rövidesen visszanyered az eszméletedet. Kinyitod a szemedet, és látod, hogy Vangorn egy székre ültetett, és figyelmes néz. Mosolyog, amikor magadhoz térsz, és megkérdi, honnan ismered Viket. Elmeséled neki Glandragor baltájának történetét - Vik az én fivérem - mondja erre. - Hetekkel ezelőtt láttam utoljára, de nagyon szeretem. Vik barátja az én barátom is. - Megkérdi, hogy érzed magad, és felajánl még egy korty ellenmérget. Te azonban máris jól érzed magad. Egyfolytában a bocsánatodért esedezik, amiért megmérgezett. Menni akarsz, de még megkérdezi, vajon tudna-e neked olyan segítséget nyújtani, aminek hasznát vennéd az utadon. [span class="takeItem" data-id="gold" data-amount="5"]5 Aranytallért[/span] kapsz tőle, és egy [span class="takeItem" data-id="3028" data-amount="1"]Fekete Maszkot[/span], amit majd varázsláskor alkalmazhatsz. Még egy jó tanácsot is ad: - Ha utad során egy Bronzszoborra lelnél, légy óvatos. Ezt a szobrot csupán egyetlen pontján lehet ártalmatlanná tenni. - Köszönetet mondasz neki, és távozol. Nyersz 2 SZERENCSE pontot.[/p]
@@ -2964,7 +3160,13 @@
     <next id="154"></next>
   </p>
   <!-- 416 -->
-  <!-- 417 -->
+  <p id="417">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz a Dögnyúzó ellenében, aki megáll. Elfordul tőled, és céltalanul botorkálni kezd a szobában, s közben mindenbe beleütközik. Amíg ilyen zavart, addig elveheted a ládát az asztal alól.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="29"></next>
+  </p>
   <!-- 418 -->
   <!-- 419 -->
   <p id="420">
@@ -3141,7 +3343,13 @@
     <next id="236">Ha megiszod az italt, ahogy akarja</next>
     <next id="173">Ha elnézést kérsz és távozol</next>
   </p>
-  <!-- 445 -->
+  <p id="445">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Egy kis halom aranyat varázsolsz az asztalra. A teremtmény egy ideig nézi, majd rád pillant. A viselkedéséből arra következtetsz, hogy átlát rajtad, és rájött, hogy csak illúzió, amit lát. Iszonyúan dühös, amiért így becsaptad. Elindul feléd, és ekkor a fegyveredért nyúlsz.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="243"></next>
+  </p>
   <!-- 446 -->
   <p id="447">
     <text>
@@ -3152,7 +3360,33 @@
   </p>
   <!-- 448 -->
   <!-- 449 -->
-  <!-- 450 -->
+  <p id="450">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina"/>
+    <itemCheck type="gold" id="1">
+    <have>
+        <text>
+            [p]A csuklódra helyezel egy Aranytallért, és varázsolsz. Az Aranytallér a varázslat hatására láthatatlan pajzzsá változik, mely segíteni fog a küzdelemben. Mivel a varázspajzzsal küzdesz, 2 pontot levonhatsz minden testrész Támadóerejéből.[/p]
+        </text>
+        <add amount="-1" to="gold"/>
+        <changeEnemy attribute="attackStrengthBonus" id="13" set="-2" />
+        <changeEnemy attribute="attackStrengthBonus" id="14" set="-2" />
+        <changeEnemy attribute="attackStrengthBonus" id="15" set="-2" />
+        <changeEnemy attribute="attackStrengthBonus" id="16" set="-2" />
+        <changeEnemy attribute="attackStrengthBonus" id="17" set="-2" />
+        <changeEnemy attribute="attackStrengthBonus" id="18" set="-2" />
+    </have>
+    <dontHave>
+        <text>
+            [p]Nem tudod ezt a varázslatot alkalmazni, és miközben azon igyekszel, hogy varázslatod sikerüljön, a testrészek 2 ÉLETERŐ pont kárt tesznek benned.[/p]
+        </text>
+        <add amount="-2" to="stamina"/>
+    </dontHave>
+    </itemCheck>
+    <next id="11a"></next>
+  </p>
   <!-- 451 -->
   <!-- 452 -->
   <p id="453">
