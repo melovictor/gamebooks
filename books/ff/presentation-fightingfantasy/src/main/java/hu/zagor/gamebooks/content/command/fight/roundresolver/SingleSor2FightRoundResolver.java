@@ -6,6 +6,7 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
+import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Component;
  */
 @Component("singlesor2FightRoundResolver")
 public class SingleSor2FightRoundResolver extends SingleFightRoundResolver {
+    private static final int CHAIN_MAKER_CRITICAL_STAMINA_VALUE = 5;
     private static final String WE_SMOKED_WEED = "4017";
     private static final int MISSES_ENEMY_3 = 3;
     private static final int MISSES_ENEMY_5 = 5;
@@ -80,6 +82,22 @@ public class SingleSor2FightRoundResolver extends SingleFightRoundResolver {
             messages.addKey("page.sor2.weeders.enemyMissedHit", enemy.getName());
         } else {
             super.damageSelf(dto);
+        }
+    }
+
+    @Override
+    void doTieFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
+        final FfEnemy enemy = dto.getEnemy();
+        if ("19".equals(enemy.getId())) {
+            final FfCharacter character = dto.getCharacter();
+            final int currentStamina = dto.getCharacterHandler().getAttributeHandler().resolveValue(character, "stamina");
+            if (currentStamina <= CHAIN_MAKER_CRITICAL_STAMINA_VALUE) {
+                super.doLoseFight(command, result, enemyIdx, dto);
+            } else {
+                super.doTieFight(command, result, enemyIdx, dto);
+            }
+        } else {
+            super.doTieFight(command, result, enemyIdx, dto);
         }
     }
 

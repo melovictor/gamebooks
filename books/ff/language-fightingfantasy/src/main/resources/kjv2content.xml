@@ -1011,7 +1011,43 @@
     <next id="137"></next>
   </p>
   <!-- 118 -->
-  <!-- 119 -->
+  <p id="119">
+    <text>
+        [p]A Lánckészítő mester lekap egy láncot a falról. Meglengeti a feje fölött, így közeledik feléd.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz ellene.[/p]
+        </text>
+        <spell name="PÉL" id="370" />
+        <spell name="FIX" id="345" />
+        <spell name="DEM" id="502" />
+        <spell name="RAN" id="440" />
+        <spell name="HOM" id="449" />
+        <next id="119a">Ha kardot rántasz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Ha ÉLETERŐD 5-re vagy ez alá csökken, láncai előnyt fognak jelenteni a számára. Ha ugyanakkora Támadóerőt dobsz a Lánckészítőnek is, mint amennyit magadnak, ez azt jelenti, hogy sikerült sebet ejtenie rajtad.[/p]
+        </text>
+        <fight type="single">
+          <enemy id="19" />
+        </fight>
+      </dontHave>
+    </itemCheck>
+    <next id="195"></next>
+  </p>
+  <p id="119a" display="119">
+    <text>
+        [p]A Lánckészítő mester lekap egy láncot a falról. Meglengeti a feje fölött, így közeledik feléd.[/p]
+        [p]Ha ÉLETERŐD 5-re vagy ez alá csökken, láncai előnyt fognak jelenteni a számára. Ha ugyanakkora Támadóerőt dobsz a Lánckészítőnek is, mint amennyit magadnak, ez azt jelenti, hogy sikerült sebet ejtenie rajtad.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="19" />
+    </fight>
+    <next id="195"></next>
+  </p>
   <p id="120">
     <text>
         [p]Az utcákat róva újabb elágazáshoz érsz.[/p]
@@ -1484,7 +1520,13 @@
     </text>
     <next id="95"></next>
   </p>
-  <!-- 195 -->
+  <p id="195">
+    <text>
+        [p]Átkutatod a Lánckészítő mester zsebeit, és [span class="takeItem" data-id="gold" data-amount="10"]10 Aranytallért[/span] találsz - a lánckészítés nyilvánvalóan jövedelmező foglalkozás itt Kharéban. Ezenkívül találsz a zsebében egy gondosan összehajtogatott kis [span class="takeItem" data-id="3022" data-amount="1"]papi sapkát[/span] is, amelynek későbbi varázslataid során még hasznát veheted. Miközben kifelé igyekszel, nekimész egy sötét színű láncnak, amely megtetszik neked, és elteszed a hátizsákodba. Nyersz 1 SZERENCSE pontot.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="203" pos="0"></next>
+  </p>
   <!-- 196 -->
   <!-- 197 -->
   <!-- 198 -->
@@ -2734,7 +2776,13 @@
     <add to="stamina" amount="-5" />
     <next id="254"></next>
   </p>
-  <!-- 345 -->
+  <p id="345">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot. Varázsolsz, de nem történik semmi. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Feléd lép a Lánckészítő mester, és rád vág a láncával. Vesztesz 2 ÉLETERŐ pontot. Előrántod a kardodat, készen rá, hogy megküzdj a Lánckészítővel.[/p]
+    </text>
+    <add to="stamina" amount="-3" />
+    <next id="119a"></next>
+  </p>
   <p id="346">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal.[/p]
@@ -2865,7 +2913,28 @@
     <next id="61"></next>
   </p>
   <!-- 369 -->
-  <!-- 370 -->
+  <p id="370">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3008">
+      <have>
+        <text>
+            [p]Gyorsan bekened a fegyveredet méhviasszal, és ezt követően varázsolsz vele. Ettől a varázslattól kardod borotvaéles lesz. Ahányszor sebet ejtesz a Lánckészítőn, minden alkalommal a szokásos ÉLETERŐ pont levonás dupláját vonhatod le ellenfeledtől. Küzdj meg vele.[/p]
+        </text>
+        <loseItem id="3008" dose="1" amount="0" />
+        <changeItem attribute="staminaDamage" id="equippedWeapon" change="*2" />
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem alkalmazhatod ezt a varázslatot, és további 2 ÉLETERŐ pontot kell levonnod magadtól, mert a Lánckészítő mester a láncával lenyúzza a bőrt a hátadról. Kardodat előrántva kell megküzdened vele.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+      </dontHave>
+    </itemCheck>
+    <next id="119a"></next>
+  </p>
   <p id="371">
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot. Ujjaddal az ajtó felé mutatsz, és ekkor egy villám pattan ki az ujjbegyedből. A megperzselődött ajtó kinyílik, és az öreggel kimenekültök a házból. Mindketten futva indultok el lefelé, az útkereszteződés irányába. Az öreg korához képest igen fürge, és elsőnek ér az útkereszteződéshez.[/p]
@@ -3325,7 +3394,13 @@
   </p>
   <!-- 438 -->
   <!-- 439 -->
-  <!-- 440 -->
+  <p id="440">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot. Nincs ilyen varázslat. Rántsd elő a kardodat, és küzdj meg a Lánckészítővel.[/p]
+    </text>
+    <add to="stamina" amount="-5" />
+    <next id="119a"></next>
+  </p>
   <!-- 441 -->
   <!-- 442 -->
   <p id="443">
@@ -3359,31 +3434,52 @@
     <next id="98"></next>
   </p>
   <!-- 448 -->
-  <!-- 449 -->
+  <p id="449">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3041">
+      <have>
+        <text>
+            [p]A Lánckészítő lábához veted a homokot, és varázsolsz. A Lánckészítő lába alatt megremeg a föld, és a mester elveszti az egyensúlyát. Futóhomok közepén áll, mely szép lassan elnyeli! Gyorsan leveszi a zakóját, és a futóhomokra teríti, hogy ezzel akadályozza meg a gyors süppedést. Odalépsz hozzá, kihúzod alóla a zakót, és ekkor a mestert elnyeli a homok. Az összes homokodat felhasználtad, s ezért ezt a varázslatot legközelebb csak akkor alkalmazhatod, ha ismét szert teszel némi homokra.[/p]
+        </text>
+        <loseItem id="3041" />
+        <next id="195"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem fog működni, és miközben azon fáradozol, hogy varázsolj, a Lánckészítő mester 2 ÉLETERŐ pontnyi sebet ejt rajtad. Kkardoddal küzdj meg vele.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="119a"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="450">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
     </text>
-    <add amount="-1" to="stamina"/>
+    <add amount="-1" to="stamina" />
     <itemCheck type="gold" id="1">
-    <have>
+      <have>
         <text>
             [p]A csuklódra helyezel egy Aranytallért, és varázsolsz. Az Aranytallér a varázslat hatására láthatatlan pajzzsá változik, mely segíteni fog a küzdelemben. Mivel a varázspajzzsal küzdesz, 2 pontot levonhatsz minden testrész Támadóerejéből.[/p]
         </text>
-        <add amount="-1" to="gold"/>
+        <add amount="-1" to="gold" />
         <changeEnemy attribute="attackStrengthBonus" id="13" set="-2" />
         <changeEnemy attribute="attackStrengthBonus" id="14" set="-2" />
         <changeEnemy attribute="attackStrengthBonus" id="15" set="-2" />
         <changeEnemy attribute="attackStrengthBonus" id="16" set="-2" />
         <changeEnemy attribute="attackStrengthBonus" id="17" set="-2" />
         <changeEnemy attribute="attackStrengthBonus" id="18" set="-2" />
-    </have>
-    <dontHave>
+      </have>
+      <dontHave>
         <text>
             [p]Nem tudod ezt a varázslatot alkalmazni, és miközben azon igyekszel, hogy varázslatod sikerüljön, a testrészek 2 ÉLETERŐ pont kárt tesznek benned.[/p]
         </text>
-        <add amount="-2" to="stamina"/>
-    </dontHave>
+        <add amount="-2" to="stamina" />
+      </dontHave>
     </itemCheck>
     <next id="11a"></next>
   </p>
@@ -3615,7 +3711,14 @@
     </itemCheck>
   </p>
   <!-- 501 -->
-  <!-- 502 -->
+  <p id="502">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz a Lánckészítő mester ellen. Abbahagyja a támadást, és rád mereszti a szemét. Közelebb lépsz hozzá, de mozdulatai teljesen lelassultak. Győzelmi vágya elszállt. Küzdj meg a Lánckészítővel. A varázslat miatt ÜGYESSÉG pontjainak a számát csökkentsd 5-re a harc időtartamára.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <changeEnemy attribute="skill" id="19" set="5" />
+    <next id="119a"></next>
+  </p>
   <!-- 503 -->
   <p id="504">
     <text>

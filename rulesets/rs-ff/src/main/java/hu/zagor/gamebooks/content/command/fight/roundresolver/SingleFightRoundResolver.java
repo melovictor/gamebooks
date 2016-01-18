@@ -48,7 +48,7 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
                     recordAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
                     recordAttachStrength(dto, enemyAttackStrengthValues, enemyAttackStrength);
                     if (enemyAttackStrength == selfAttackStrength) {
-                        doTieFight(result, enemyIdx, dto);
+                        doTieFight(command, result, enemyIdx, dto);
                     } else if (enemyAttackStrength > selfAttackStrength) {
                         doLoseFight(command, result, enemyIdx, dto);
                     } else {
@@ -69,7 +69,14 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
         damageEnemy(command, dto);
     }
 
-    private void doTieFight(final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
+    /**
+     * Handles the eventuality where both Attack Strengths are the same, and the hero and the enemy tie.
+     * @param command the {@link FightCommand} object
+     * @param result the {@link FightRoundResult} object
+     * @param enemyIdx the index of the enemy in the result array
+     * @param dto the {@link FightDataDto}
+     */
+    void doTieFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
         result[enemyIdx] = FightRoundResult.TIE;
         resolveTieMessage(dto);
     }
