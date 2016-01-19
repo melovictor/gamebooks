@@ -7,6 +7,7 @@ import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.Paragraph;
+import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.ProcessableItemHolder;
 import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.content.choice.ChoiceSet;
@@ -39,6 +40,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + Sorcery.KHARE_CITYPORT_OF_TRAPS)
 public class Sor2BookSectionController extends SorBookSectionController {
+    private static final int OGRE_WIN_PRICE_RATIO = 3;
     private static final int SELF_ENEMY_INITIAL_STAMINA = 99;
     private static final String SELF_ENEMY_ID = "9";
     private static final String FIGHT_WITH_SELF_ID = "67";
@@ -144,6 +146,31 @@ public class Sor2BookSectionController extends SorBookSectionController {
                 enemy.setStamina(character.getStamina());
                 enemy.setSkill(character.getSkill());
             }
+        } else if ("234b".equals(paragraph.getId())) {
+            setUpWinnings(wrapper);
+        }
+    }
+
+    private void setUpWinnings(final HttpSessionWrapper wrapper) {
+        final SorCharacter character = (SorCharacter) wrapper.getCharacter();
+        final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
+
+        final boolean betForOgre = itemHandler.hasItem(character, "4025");
+        final int betAmount = betForOgre ? itemHandler.getItems(character, "4025").size() : itemHandler.getItems(character, "4026").size();
+        int winningAmount = 0;
+        final FfEnemy ogre = (FfEnemy) wrapper.getEnemies().get("21");
+        final boolean winnerIsOgre = ogre.getStamina() > 0;
+
+        if (betForOgre && winnerIsOgre) {
+            winningAmount = betAmount + betAmount / OGRE_WIN_PRICE_RATIO;
+        } else if (!betForOgre && !winnerIsOgre) {
+            winningAmount = 2 * betAmount;
+        }
+
+        if (winningAmount > 0) {
+            character.setGold(character.getGold() + winningAmount);
+            final ParagraphData data = wrapper.getParagraph().getData();
+            data.setText(data.getText().replace("XX", String.valueOf(winningAmount)));
         }
     }
 
