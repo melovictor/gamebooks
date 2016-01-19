@@ -10,15 +10,14 @@ import hu.zagor.gamebooks.character.item.WeaponSubType;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
+import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import org.springframework.stereotype.Component;
 
 /**
@@ -161,9 +160,12 @@ public class OnlyHighestLinkedFightRoundResolver extends AbstractFightRoundResol
     @Override
     public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
         final FightCommandMessageList messages = command.getMessages();
-        getFleeTextResourceList(messages);
-        for (final FfEnemy enemy : command.getResolvedEnemies()) {
-            fleeFromEnemy(new FightDataDto(enemy, messages, resolvationData, null));
+        final FightFleeData fleeData = command.getFleeData();
+        getFleeTextResourceList(messages, fleeData);
+        if (fleeData == null || fleeData.isSufferDamage()) {
+            for (final FfEnemy enemy : command.getResolvedEnemies()) {
+                fleeFromEnemy(new FightDataDto(enemy, messages, resolvationData, null));
+            }
         }
     }
 

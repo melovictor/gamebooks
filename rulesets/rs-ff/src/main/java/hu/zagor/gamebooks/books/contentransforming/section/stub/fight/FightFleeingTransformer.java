@@ -5,7 +5,6 @@ import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTran
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
-
 import org.w3c.dom.Node;
 
 /**
@@ -19,6 +18,8 @@ public class FightFleeingTransformer extends AbstractCommandSubTransformer<Fight
         final FightFleeData fleeData = new FightFleeData();
 
         fleeData.setAfterRound(extractIntegerAttribute(node, "after", 0));
+        fleeData.setText(extractAttribute(node, "text"));
+        fleeData.setSufferDamage(extractBooleanAttribute(node, "sufferDamage", true));
 
         command.setFleeData(fleeData);
     }

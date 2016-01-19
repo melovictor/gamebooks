@@ -10,6 +10,7 @@ import hu.zagor.gamebooks.character.item.WeaponSubType;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
+import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -226,8 +227,11 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
     public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
         final FfEnemy enemy = command.getResolvedEnemies().get(0);
         final FightCommandMessageList messages = command.getMessages();
-        getFleeTextResourceList(messages);
-        fleeFromEnemy(new FightDataDto(enemy, messages, resolvationData, null));
+        final FightFleeData fleeData = command.getFleeData();
+        getFleeTextResourceList(messages, fleeData);
+        if (fleeData.isSufferDamage()) {
+            fleeFromEnemy(new FightDataDto(enemy, messages, resolvationData, null));
+        }
     }
 
     @Override

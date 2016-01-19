@@ -66,9 +66,14 @@
 	<button data-attack="ff">
 		<spring:message code="page.ff.label.fight.attack" />
 	</button>
-	<c:if test="${ffFleeAllowed}">
+	<c:if test="${fightCommand.fleeData.text}">
 		<button data-flee="ff">
-			<spring:message code="page.ff.label.fight.flee" />
+			<c:if test="${not empty fightCommand.fleeData.text}">
+				${fightCommand.fleeData.text}
+			</c:if>
+			<c:if test="${empty fightCommand.fleeText}">
+				<spring:message code="page.ff.label.fight.flee" />
+			</c:if>
 		</button>
 	</c:if>
 </div>

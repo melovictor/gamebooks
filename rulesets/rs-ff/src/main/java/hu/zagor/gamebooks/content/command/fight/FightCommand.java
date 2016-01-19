@@ -133,9 +133,6 @@ public class FightCommand extends Command {
         if (ongoing) {
             hideChoices(model);
         }
-        if (fleeAllowed) {
-            model.put("ffFleeAllowed", true);
-        }
 
         return new CommandView(rulesetPrefix + "Fight" + battleType, model);
     }
@@ -369,6 +366,10 @@ public class FightCommand extends Command {
 
     public void setLuckOnDefenseResult(final Boolean luckOnDefenseResult) {
         this.luckOnDefenseResult = luckOnDefenseResult;
+    }
+
+    public boolean isFleeAllowed() {
+        return fleeAllowed;
     }
 
 }

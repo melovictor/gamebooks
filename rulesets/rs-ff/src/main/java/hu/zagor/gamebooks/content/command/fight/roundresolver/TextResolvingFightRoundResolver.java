@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.content.command.fight.roundresolver;
 
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
+import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.AbstractFightMessageLine;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightMessageLine;
 
@@ -14,9 +15,15 @@ public abstract class TextResolvingFightRoundResolver implements FightRoundResol
     /**
      * Provides the initial list of messages for fleeing.
      * @param messages the message list
+     * @param fightFleeData the {@link FightFleeData} object containing a potential text to be printed on screen on fleeing
      */
-    protected void getFleeTextResourceList(final FightCommandMessageList messages) {
-        messages.addKey("page.ff.label.fight.flee");
+    protected void getFleeTextResourceList(final FightCommandMessageList messages, final FightFleeData fightFleeData) {
+        final String text = fightFleeData == null ? null : fightFleeData.getText();
+        if (text == null) {
+            messages.addKey("page.ff.label.fight.flee");
+        } else {
+            messages.add(text + ".");
+        }
     }
 
     /**

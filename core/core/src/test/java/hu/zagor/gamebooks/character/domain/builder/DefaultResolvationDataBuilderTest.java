@@ -41,8 +41,6 @@ public class DefaultResolvationDataBuilderTest {
 
     public void testBuildWhenUsingWrapperShouldCopyProperFields() {
         // GIVEN
-        expect(paragraph.getData()).andReturn(rootData);
-        expect(paragraph.getId()).andReturn("3");
         expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getEnemies()).andReturn(enemies);
         expect(wrapper.getPlayer()).andReturn(player);

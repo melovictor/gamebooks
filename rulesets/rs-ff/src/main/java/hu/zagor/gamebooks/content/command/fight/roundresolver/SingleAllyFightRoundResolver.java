@@ -50,7 +50,7 @@ public class SingleAllyFightRoundResolver extends SingleFightRoundResolver {
         final FfCharacter character) {
         final String renderedDice = getDiceResultRenderer().render(6, selfAttackStrengthValues);
         messages.addKey("page.ff.label.fight.single.attackStrength.ally", new Object[]{renderedDice, selfAttackStrength, getName(character)});
-        getLogger().debug("Attack strength for self: {}", selfAttackStrength);
+        getLogger().debug("Attack strength for ally: {}", selfAttackStrength);
     }
 
     @Override

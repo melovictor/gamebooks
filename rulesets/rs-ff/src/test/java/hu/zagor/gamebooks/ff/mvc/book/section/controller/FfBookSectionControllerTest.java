@@ -143,6 +143,8 @@ public class FfBookSectionControllerTest {
         interactionRecorder.prepareFightCommand(wrapper, LUCK_ON_HIT, LUCK_ON_DEFENSE, false);
         interactionRecorder.recordFightCommand(wrapper, ENEMY_ID);
         expectHandleSection();
+        expect(beanFactory.getBean("ffCharacterPageData", character, characterHandler)).andReturn(charPageData);
+        expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
         mockControl.replay();
         // WHEN
         underTest.handleFight(model, request, ENEMY_ID, LUCK_ON_HIT, LUCK_ON_DEFENSE, false);

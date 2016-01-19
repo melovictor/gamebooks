@@ -18,11 +18,9 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.SpellResult;
 import hu.zagor.gamebooks.content.command.random.RandomCommand;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -55,9 +53,7 @@ public class Ff38FightCommandResolver extends FightCommandResolver {
     private List<String> undeadEnemies;
     private List<String> boneEnemies;
 
-    @Autowired
-    @Qualifier("d6")
-    private RandomNumberGenerator generator;
+    @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
 
     @Override
     public CommandResolveResult resolve(final Command commandObject, final ResolvationData resolvationData) {
@@ -87,7 +83,7 @@ public class Ff38FightCommandResolver extends FightCommandResolver {
         handleAutoDamage(resolve, resolvationData);
         handleRegeneratingRing(command, resolve, resolvationData);
         handleKatarina(resolve, command, resolvationData);
-        applyBattleMessages(resolvationData.getRootData(), command);
+        applyBattleMessages(resolvationData.getParagraph().getData(), command);
         return resolve;
     }
 
