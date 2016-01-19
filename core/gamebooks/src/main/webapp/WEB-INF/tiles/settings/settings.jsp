@@ -5,7 +5,7 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="l" %>
 
 <form method="post" action="<c:url value="/settings" />">
-	<c:if test="${player.admin || environment.development}">
+	<c:if test="${not empty memoryUsageList}">
 		<div id="memoryUsage">
 			<table>
 				<tr>
