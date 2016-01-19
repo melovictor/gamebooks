@@ -37,7 +37,7 @@ public class FightCommandResolver extends TypeAwareCommandResolver<FightCommand>
         if (result.isFinished()) {
             resetPreFightItems(resolvationData);
         }
-        applyBattleMessages(resolvationData.getRootData(), command);
+        applyBattleMessages(resolvationData.getParagraph().getData(), command);
         handleBattleDamageRecovery(command, resolvationData);
         return result;
     }

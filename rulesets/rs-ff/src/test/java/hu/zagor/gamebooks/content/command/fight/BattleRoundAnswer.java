@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.content.command.fight;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
-
 import org.easymock.EasyMock;
 import org.easymock.IAnswer;
 
@@ -30,7 +29,7 @@ public class BattleRoundAnswer implements IAnswer<FightRoundResult[]> {
     public FightRoundResult[] answer() {
         final Object[] currentArguments = EasyMock.getCurrentArguments();
         final ResolvationData resolvationData = (ResolvationData) currentArguments[1];
-        final ParagraphData rootData = resolvationData.getRootData();
+        final ParagraphData rootData = resolvationData.getParagraph().getData();
         final String text = rootData.getText() + BATTLE_LOG;
         rootData.setText(text);
         return result;

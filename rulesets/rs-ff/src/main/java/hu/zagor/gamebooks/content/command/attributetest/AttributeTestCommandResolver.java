@@ -84,7 +84,7 @@ public class AttributeTestCommandResolver extends TypeAwareCommandResolver<Attri
             "Either a failure or a failureEven and failureOdd outcome must be specified!");
         Assert.notNull(resolvationData, "The parameter 'resolvationData' cannot be null!");
 
-        final ParagraphData rootDataElement = resolvationData.getRootData();
+        final ParagraphData rootDataElement = resolvationData.getParagraph().getData();
         final BookInformations info = resolvationData.getInfo();
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();

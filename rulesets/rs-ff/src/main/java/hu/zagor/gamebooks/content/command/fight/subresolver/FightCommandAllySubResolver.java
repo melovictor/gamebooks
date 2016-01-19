@@ -88,7 +88,7 @@ public class FightCommandAllySubResolver extends AbstractFightCommandSubResolver
         }
 
         boolean isAlive = false;
-        final FightCommand fightCommand = (FightCommand) resolvationData.getRootData().getCommands().get(0);
+        final FightCommand fightCommand = (FightCommand) resolvationData.getParagraph().getItemsToProcess().get(0).getCommand();
         for (final FfAllyCharacter ally : fightCommand.getResolvedAllies()) {
             isAlive |= ally.getStamina() > 0;
         }

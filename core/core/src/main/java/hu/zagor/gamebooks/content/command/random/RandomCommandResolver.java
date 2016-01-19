@@ -57,7 +57,7 @@ public class RandomCommandResolver extends TypeAwareCommandResolver<RandomComman
     public List<ParagraphData> doResolve(final RandomCommand command, final ResolvationData resolvationData) {
         Assert.notNull(resolvationData, "The parameter 'resolvationData' cannot be null!");
 
-        final ParagraphData rootDataElement = resolvationData.getRootData();
+        final ParagraphData rootDataElement = resolvationData.getParagraph().getData();
         final Character character = resolvationData.getCharacter();
         final CharacterHandler characterHandler = resolvationData.getCharacterHandler();
 

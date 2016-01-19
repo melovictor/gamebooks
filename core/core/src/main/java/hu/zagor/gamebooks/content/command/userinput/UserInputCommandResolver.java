@@ -7,10 +7,8 @@ import hu.zagor.gamebooks.character.handler.userinteraction.DefaultUserInteracti
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.TypeAwareCommandResolver;
 import hu.zagor.gamebooks.content.command.userinput.domain.UserInputResponse;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.util.Assert;
 
 /**
@@ -24,11 +22,10 @@ public class UserInputCommandResolver extends TypeAwareCommandResolver<UserInput
         Assert.state(command.getResponses().size() >= 2, "At least two possible responses (a default and a specific one) has to be set!");
         Assert.notNull(resolvationData, "The parameter 'resolvationData' cannot be null!");
 
-        final ParagraphData rootDataElement = resolvationData.getRootData();
         final Character character = resolvationData.getCharacter();
         final CharacterHandler characterHandler = resolvationData.getCharacterHandler();
 
-        Assert.notNull(rootDataElement, "The parameter 'rootDataElement' cannot be null!");
+        Assert.notNull(resolvationData.getParagraph(), "The parameter 'paragraph' cannot be null!");
         Assert.notNull(character, "The parameter 'character' cannot be null!");
         Assert.notNull(characterHandler, "The parameter 'characterHandler' cannot be null!");
 

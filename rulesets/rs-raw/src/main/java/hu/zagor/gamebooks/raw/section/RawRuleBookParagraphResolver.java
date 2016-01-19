@@ -217,7 +217,7 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
      * @param subData the currently processed paragraph data
      */
     protected void executeBasics(final ResolvationData resolvationData, final ParagraphData subData) {
-        final ParagraphData rootDataElement = resolvationData.getRootData();
+        final ParagraphData rootDataElement = resolvationData.getParagraph().getData();
         rootDataElement.appendText(subData.getText());
         rootDataElement.addChoices(subData.getChoices());
     }

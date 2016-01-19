@@ -14,7 +14,7 @@ public class SorRuleBookParagraphResolver extends FfRuleBookParagraphResolver {
     @Override
     protected void executeBasics(final ResolvationData resolvationData, final ParagraphData subData) {
         super.executeBasics(resolvationData, subData);
-        final SorParagraphData rootDataElement = (SorParagraphData) resolvationData.getRootData();
+        final SorParagraphData rootDataElement = (SorParagraphData) resolvationData.getParagraph().getData();
         final SorParagraphData sorSubData = (SorParagraphData) subData;
         rootDataElement.addSpellChoices(sorSubData.getSpellChoices());
     }

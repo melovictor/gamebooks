@@ -122,8 +122,6 @@ public class RawBookSectionControllerPositiveBTest {
         prepareForSwitch("9");
         setUpNewParagraph();
         setUpModel();
-        expect(newParagraph.getData()).andReturn(data);
-        expect(newParagraph.getId()).andReturn("3");
         expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getEnemies()).andReturn(enemies);
         expect(wrapper.getPlayer()).andReturn(player);

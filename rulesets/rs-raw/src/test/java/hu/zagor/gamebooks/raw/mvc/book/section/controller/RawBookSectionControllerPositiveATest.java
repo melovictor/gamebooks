@@ -126,8 +126,6 @@ public class RawBookSectionControllerPositiveATest {
         prepareForSwitch("9");
         setUpNewParagraph();
         setUpModel();
-        expect(newParagraph.getData()).andReturn(data);
-        expect(newParagraph.getId()).andReturn("3");
         expectWrapper();
         paragraphResolver.resolve(anyObject(ResolvationData.class), eq(newParagraph));
         newParagraph.calculateValidEvents();
@@ -162,8 +160,6 @@ public class RawBookSectionControllerPositiveATest {
         expect(wrapper.getCharacter()).andReturn(character);
         setUpNewParagraph();
         setUpModel();
-        expect(newParagraph.getData()).andReturn(data);
-        expect(newParagraph.getId()).andReturn("3");
         expectWrapper();
         paragraphResolver.resolve(anyObject(ResolvationData.class), eq(newParagraph));
         newParagraph.calculateValidEvents();
@@ -189,8 +185,6 @@ public class RawBookSectionControllerPositiveATest {
         prepareForSwitch("10");
         setUpNewParagraph();
         setUpModel();
-        expect(newParagraph.getData()).andReturn(data);
-        expect(newParagraph.getId()).andReturn("3");
         expectWrapper();
         paragraphResolver.resolve(anyObject(ResolvationData.class), eq(newParagraph));
         newParagraph.calculateValidEvents();

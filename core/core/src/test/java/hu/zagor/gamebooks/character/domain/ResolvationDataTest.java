@@ -109,8 +109,10 @@ public class ResolvationDataTest {
         final ParagraphData rootData = new ParagraphData();
         final Character character = new Character();
         final Character alternateCharacter = new Character();
+        final Paragraph paragraph = new Paragraph("1", null, 11);
+        paragraph.setData(rootData);
         resolvationData.setCharacter(alternateCharacter);
-        resolvationData.setRootData(rootData);
+        resolvationData.setParagraph(paragraph);
         resolvationData.setEnemies(enemies);
         resolvationData.setInfo(info);
         final ResolvationData underTest = DefaultResolvationDataBuilder.builder().usingResolvationData(resolvationData).withCharacter(character).build();
@@ -128,13 +130,15 @@ public class ResolvationDataTest {
         final ParagraphData rootData = new ParagraphData();
         final Character character = new Character();
         final Character alternateCharacter = new Character();
+        final Paragraph paragraph = new Paragraph("1", null, 11);
+        paragraph.setData(rootData);
         resolvationData.setCharacter(alternateCharacter);
-        resolvationData.setRootData(rootData);
+        resolvationData.setParagraph(paragraph);
         resolvationData.setEnemies(enemies);
         resolvationData.setInfo(info);
         final ResolvationData underTest = DefaultResolvationDataBuilder.builder().usingResolvationData(resolvationData).withCharacter(character).build();
         // WHEN
-        final ParagraphData returned = underTest.getRootData();
+        final ParagraphData returned = underTest.getParagraph().getData();
         // THEN
         Assert.assertSame(returned, rootData);
     }
@@ -147,8 +151,10 @@ public class ResolvationDataTest {
         final ParagraphData rootData = new ParagraphData();
         final Character character = new Character();
         final Character alternateCharacter = new Character();
+        final Paragraph paragraph = new Paragraph("1", null, 11);
+        paragraph.setData(rootData);
         resolvationData.setCharacter(alternateCharacter);
-        resolvationData.setRootData(rootData);
+        resolvationData.setParagraph(paragraph);
         resolvationData.setEnemies(enemies);
         resolvationData.setInfo(info);
         final ResolvationData underTest = DefaultResolvationDataBuilder.builder().usingResolvationData(resolvationData).withCharacter(character).build();
@@ -166,8 +172,10 @@ public class ResolvationDataTest {
         final ParagraphData rootData = new ParagraphData();
         final Character character = new Character();
         final Character alternateCharacter = new Character();
+        final Paragraph paragraph = new Paragraph("1", null, 11);
+        paragraph.setData(rootData);
         resolvationData.setCharacter(alternateCharacter);
-        resolvationData.setRootData(rootData);
+        resolvationData.setParagraph(paragraph);
         resolvationData.setEnemies(enemies);
         resolvationData.setInfo(info);
         final ResolvationData underTest = DefaultResolvationDataBuilder.builder().usingResolvationData(resolvationData).withCharacter(character).build();

@@ -33,8 +33,7 @@ public final class DefaultResolvationDataBuilder implements ResolvationDataBuild
     @Override
     public ResolvationDataBuilderInfo withParagraph(final Paragraph paragraph) {
         Assert.notNull(paragraph);
-        data.setRootData(paragraph.getData());
-        data.setSection(paragraph.getId());
+        data.setParagraph(paragraph);
         return this;
     }
 
@@ -47,7 +46,7 @@ public final class DefaultResolvationDataBuilder implements ResolvationDataBuild
     @Override
     public ResolvationDataBuilderCharacter usingResolvationData(final ResolvationData resolvationData) {
         Assert.notNull(resolvationData);
-        data.setRootData(resolvationData.getRootData());
+        data.setParagraph(resolvationData.getParagraph());
         data.setEnemies(resolvationData.getEnemies());
         data.setInfo(resolvationData.getInfo());
         return this;

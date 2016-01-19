@@ -3,7 +3,7 @@ package hu.zagor.gamebooks.character.domain;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
-import hu.zagor.gamebooks.content.ParagraphData;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.player.PlayerUser;
 import java.util.Map;
@@ -14,17 +14,12 @@ import java.util.Map;
  */
 public class ResolvationData {
 
-    private ParagraphData rootData;
+    private Paragraph paragraph;
     private BookInformations info;
     private Character character;
     private Map<String, Enemy> enemies;
     private PlayerUser playerUser;
     private Integer position;
-    private String section;
-
-    public ParagraphData getRootData() {
-        return rootData;
-    }
 
     public Character getCharacter() {
         return character;
@@ -50,10 +45,6 @@ public class ResolvationData {
         this.playerUser = playerUser;
     }
 
-    public void setRootData(final ParagraphData rootData) {
-        this.rootData = rootData;
-    }
-
     public void setCharacter(final Character character) {
         this.character = character;
     }
@@ -75,11 +66,15 @@ public class ResolvationData {
     }
 
     public String getSection() {
-        return section;
+        return paragraph.getId();
     }
 
-    public void setSection(final String section) {
-        this.section = section;
+    public Paragraph getParagraph() {
+        return paragraph;
+    }
+
+    public void setParagraph(final Paragraph paragraph) {
+        this.paragraph = paragraph;
     }
 
 }
