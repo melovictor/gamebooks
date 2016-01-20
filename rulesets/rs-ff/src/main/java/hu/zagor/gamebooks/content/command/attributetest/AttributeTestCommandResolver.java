@@ -34,7 +34,7 @@ import org.springframework.util.Assert;
 public class AttributeTestCommandResolver extends TypeAwareCommandResolver<AttributeTestCommand>
     implements BeanFactoryAware, SilentCapableResolver<AttributeTestCommand> {
 
-    @Qualifier("d6RandomGenerator") private RandomNumberGenerator generator;
+    @Autowired @Qualifier("d6RandomGenerator") private RandomNumberGenerator generator;
     @Autowired private HierarchicalMessageSource messageSource;
     @Autowired private LocaleProvider localeProvider;
     @Autowired private DiceResultRenderer diceRenderer;
