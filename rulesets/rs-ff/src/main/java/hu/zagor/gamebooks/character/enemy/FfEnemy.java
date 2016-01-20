@@ -22,6 +22,7 @@ public class FfEnemy extends Enemy {
     private int skillDamage;
     private int attackStrength;
     private int attackStrengthBonus;
+    private int attackStrengthDices;
 
     private int damageAbsorption;
     private int damageAbsorptionEdged;
@@ -235,6 +236,14 @@ public class FfEnemy extends Enemy {
 
     public void setAttackStrengthBonus(final int attackStrengthBonus) {
         this.attackStrengthBonus = attackStrengthBonus;
+    }
+
+    public int getAttackStrengthDices() {
+        return attackStrengthDices;
+    }
+
+    public void setAttackStrengthDices(final int attackStrengthDices) {
+        this.attackStrengthDices = attackStrengthDices;
     }
 
 }

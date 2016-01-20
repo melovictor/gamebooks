@@ -76,4 +76,8 @@ public class FfAllyCharacter extends FfCharacter {
         ally.setStamina(ally.getStamina() + change);
     }
 
+    public int getAttackStrengthDices() {
+        return ally.getAttackStrengthDices();
+    }
+
 }

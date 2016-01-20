@@ -65,4 +65,16 @@ public class SingleAllyFightRoundResolver extends SingleFightRoundResolver {
         }
     }
 
+    @Override
+    int getHeroRolledDices(final FfCharacter characterObject, final FightCommand command) {
+        final FfAllyCharacter character = (FfAllyCharacter) characterObject;
+        return character.getAttackStrengthDices();
+    }
+
+    @Override
+    int getHeroUsedDices(final FfCharacter characterObject, final FightCommand command) {
+        final FfAllyCharacter character = (FfAllyCharacter) characterObject;
+        return character.getAttackStrengthDices();
+    }
+
 }

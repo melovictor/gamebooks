@@ -161,7 +161,7 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
             final int firstRoll = getGenerator().getRandomNumber(config)[0];
             result = new int[]{enemy.getAttackStrength() - enemy.getSkill(), firstRoll, enemy.getAttackStrength() - enemy.getSkill() - firstRoll};
         } else {
-            result = getGenerator().getRandomNumber(2);
+            result = getGenerator().getRandomNumber(enemy.getAttackStrengthDices());
             result[0] += enemy.getAttackStrengthBonus();
         }
 
@@ -176,12 +176,34 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
      * @return the calculated attack strength
      */
     int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
-        final int[] generatedAttackStrength = getGenerator().getRandomNumber(command.getAttackStrengthRolledDices());
-        if (command.getAttackStrengthRolledDices() > command.getAttackStrengthUsedDices()) {
-            filterActialDices(generatedAttackStrength, command.getAttackStrengthUsedDices());
+        final int attackStrengthRolledDices = getHeroRolledDices(character, command);
+        final int attackStrengthUsedDices = getHeroUsedDices(character, command);
+        final int[] generatedAttackStrength = getGenerator().getRandomNumber(attackStrengthRolledDices);
+        if (attackStrengthRolledDices > attackStrengthUsedDices) {
+            filterActialDices(generatedAttackStrength, attackStrengthUsedDices);
         }
         generatedAttackStrength[0] += attributeHandler.resolveValue(character, "attackStrength");
         return generatedAttackStrength;
+    }
+
+    /**
+     * Returns the number of dices the hero is using for the current round, must be smaller or equal to the number of dices to be rolled.
+     * @param character the {@link FfCharacter} object
+     * @param command the {@link FightCommand} object
+     * @return the number of dices to be used
+     */
+    int getHeroUsedDices(final FfCharacter character, final FightCommand command) {
+        return command.getAttackStrengthUsedDices();
+    }
+
+    /**
+     * Returns the number of dices the hero is rolling for the current round, must be bigger or equal to the number of dices to be used.
+     * @param character the {@link FfCharacter} object
+     * @param command the {@link FightCommand} object
+     * @return the number of dices to be rolled
+     */
+    int getHeroRolledDices(final FfCharacter character, final FightCommand command) {
+        return command.getAttackStrengthRolledDices();
     }
 
     private void filterActialDices(final int[] generatedAttackStrength, final int dicesToBeUsed) {
