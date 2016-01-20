@@ -20,12 +20,14 @@ import hu.zagor.gamebooks.ff.character.SorCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.SorBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.Sorcery;
+import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.HierarchicalMessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,6 +49,8 @@ public class Sor2BookSectionController extends SorBookSectionController {
     private static final String DANCER_SECTION_ID = "17";
     private static final String MET_FLANKER_MARKER = "4013";
     @Resource(name = "flankerVisitTargets") private Map<String, String> flankerVisitTargets;
+    @Autowired private LocaleProvider localeProvider;
+    @Autowired private HierarchicalMessageSource source;
 
     /**
      * Constructor expecting the {@link SectionHandlingService} bean.
@@ -73,16 +77,23 @@ public class Sor2BookSectionController extends SorBookSectionController {
      * @param request the {@link HttpServletRequest} object
      * @param id the id of the participant we're betting for
      * @param amount the amount we bet
+     * @return the text to replace the contents of the character page with
      */
     @RequestMapping(value = "makeBet", method = RequestMethod.GET)
     @ResponseBody
-    public void handleFightBetting(final HttpServletRequest request, @RequestParam("participant") final String id, @RequestParam("value") final int amount) {
+    public String handleFightBetting(final HttpServletRequest request, @RequestParam("participant") final String id, @RequestParam("value") final int amount) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final SorCharacter character = (SorCharacter) wrapper.getCharacter();
         final int currentGold = character.getGold();
         final int bettedAmount = Math.min(amount, currentGold);
         character.setGold(currentGold - bettedAmount);
         getInfo().getCharacterHandler().getItemHandler().addItem(character, id, bettedAmount);
+
+        final String message = source.getMessage("page.sor2.betOn" + id, new Object[]{bettedAmount}, localeProvider.getLocale());
+        final ParagraphData data = wrapper.getParagraph().getData();
+        data.setText(data.getText().replaceFirst("<div class=\"betting\">[^|]*<\\/button>", "<div class=\"betting\">" + message));
+
+        return message;
     }
 
     /**

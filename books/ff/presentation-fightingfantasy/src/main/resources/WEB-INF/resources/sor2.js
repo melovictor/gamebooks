@@ -41,7 +41,8 @@ var sor2 = (function() {
 				participant : participant
 			},
 			type : "get",
-			success : function() {
+			success : function(response) {
+				$(".betting").html(response);
 				inventory.loadInventory();
 			}
 		});

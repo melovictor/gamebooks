@@ -1883,6 +1883,10 @@
         <changeEnemy attribute="staminaDamage" id="21" set="2" />
         <changeEnemy attribute="staminaDamage" id="120" set="2" />
       </anyRound>
+      <anyRound totalCount="6">
+        <changeEnemy attribute="attackStrengthDices" id="21" set="2" />
+        <changeEnemy attribute="attackStrengthDices" id="120" set="2" />
+      </anyRound>
     </fight>
     <next id="234b"></next>
   </p>
@@ -3719,7 +3723,460 @@
     <add to="stamina" amount="-5" />
     <next id="119a"></next>
   </p>
-  <!-- 441 -->
+  <p id="441">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot![/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3019">
+      <have>
+        <text>
+            [p]Varázsolsz, és kézbe veszed a kavicsaidat. A varázslat hatására minden kavics abban a pillanatban felrobban, amint a testrésszel találkozik, 1 ÉLETERŐ pont kárt tesz benne, és megbénítja azt. Annyi kavicsot használhatsz el, ahányat csak akarsz, és ahhoz a testrészhez vágod hozzá, amelyikhez akarod.[/p]
+        </text>
+        <next id="441a"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Hiába erőlködsz, a varázslat nem működik, és a darabokra hasított test részei körülötted keringenek, és 2 ÉLETERŐ pont kárt tesznek benned.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="11a"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="441a" display="441">
+    <text>
+        [p]Varázsolsz, és kézbe veszed a kavicsaidat. A varázslat hatására minden kavics abban a pillanatban felrobban, amint a testrésszel találkozik, 1 ÉLETERŐ pont kárt tesz benne, és megbénítja azt. Annyi kavicsot használhatsz el, ahányat csak akarsz, és ahhoz a testrészhez vágod hozzá, amelyikhez akarod.[/p]
+        [p]Kézbe veszel egy kavicsot. Melyik testrész felé hajítod?[/p]
+    </text>
+    <loseItem id="3019" />
+    <itemCheck type="enemy" id="13">
+      <have>
+        <next id="441b" pos="1">A Fej felé?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="enemy" id="14">
+      <have>
+        <next id="441c" pos="2">A Törzs felé?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="enemy" id="15">
+      <have>
+        <next id="441d" pos="3">A Bal Kar felé?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="enemy" id="16">
+      <have>
+        <next id="441e" pos="4">A Jobb Kar felé?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="enemy" id="17">
+      <have>
+        <next id="441f" pos="5">A Bal Láb felé?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="enemy" id="18">
+      <have>
+        <next id="441g" pos="6">A Jobb Láb felé?</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="441b" display="441">
+    <text>
+        [p]Varázsolsz, és kézbe veszed a kavicsaidat. A varázslat hatására minden kavics abban a pillanatban felrobban, amint a testrésszel találkozik, 1 ÉLETERŐ pont kárt tesz benne, és megbénítja azt. Annyi kavicsot használhatsz el, ahányat csak akarsz, és ahhoz a testrészhez vágod hozzá, amelyikhez akarod.[/p]
+        [p]Kézbe veszel egy kavicsot. Melyik testrész felé hajítod?[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <text>
+            [p]Sikerül eltalálnod a Fejet, és 1 ÉLETERŐ pontos sebesülést okozol rajta.[/p]
+        </text>
+        <changeEnemy attribute="stamina" id="13" change="-1" />
+      </success>
+      <failure>
+        <text>
+            [p]Elvéted a Fejet, a kavics nem okoz sebesülést.[/p]
+        </text>
+      </failure>
+    </test>
+    <itemCheck type="enemy" id="13">
+      <dontHave>
+        <itemCheck type="enemy" id="14">
+          <dontHave>
+            <itemCheck type="enemy" id="15">
+              <dontHave>
+                <itemCheck type="enemy" id="16">
+                  <dontHave>
+                    <itemCheck type="enemy" id="17">
+                      <dontHave>
+                        <itemCheck type="enemy" id="18">
+                          <dontHave>
+                            <gatherItem id="4029" />
+                          </dontHave>
+                        </itemCheck>
+                      </dontHave>
+                    </itemCheck>
+                  </dontHave>
+                </itemCheck>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="4029">
+      <have>
+        <text>
+            [p]Sikerült végezned az összes testrésszel.[/p]
+        </text>
+        <next id="276"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="3019">
+          <have>
+            <next id="441a">Ha újabb kavicsot akarsz elhajítani</next>
+            <next id="11a">Ha fegyvert rántasz</next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Mivel nincs több kavicsod, fegyvert rántasz.[/p]
+            </text>
+            <next id="11a"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="441c" display="441">
+    <text>
+        [p]Varázsolsz, és kézbe veszed a kavicsaidat. A varázslat hatására minden kavics abban a pillanatban felrobban, amint a testrésszel találkozik, 1 ÉLETERŐ pont kárt tesz benne, és megbénítja azt. Annyi kavicsot használhatsz el, ahányat csak akarsz, és ahhoz a testrészhez vágod hozzá, amelyikhez akarod.[/p]
+        [p]Kézbe veszel egy kavicsot. Melyik testrész felé hajítod?[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <text>
+            [p]Sikerül eltalálnod a Törzset, és 1 ÉLETERŐ pontos sebesülést okozol rajta.[/p]
+        </text>
+        <changeEnemy attribute="stamina" id="14" change="-1" />
+      </success>
+      <failure>
+        <text>
+            [p]Elvéted a Törzset, a kavics nem okoz sebesülést.[/p]
+        </text>
+      </failure>
+    </test>
+    <itemCheck type="enemy" id="13">
+      <dontHave>
+        <itemCheck type="enemy" id="14">
+          <dontHave>
+            <itemCheck type="enemy" id="15">
+              <dontHave>
+                <itemCheck type="enemy" id="16">
+                  <dontHave>
+                    <itemCheck type="enemy" id="17">
+                      <dontHave>
+                        <itemCheck type="enemy" id="18">
+                          <dontHave>
+                            <gatherItem id="4029" />
+                          </dontHave>
+                        </itemCheck>
+                      </dontHave>
+                    </itemCheck>
+                  </dontHave>
+                </itemCheck>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="4029">
+      <have>
+        <text>
+            [p]Sikerült végezned az összes testrésszel.[/p]
+        </text>
+        <next id="276"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="3019">
+          <have>
+            <next id="441a">Ha újabb kavicsot akarsz elhajítani</next>
+            <next id="11a">Ha fegyvert rántasz</next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Mivel nincs több kavicsod, fegyvert rántasz.[/p]
+            </text>
+            <next id="11a"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="441d" display="441">
+    <text>
+        [p]Varázsolsz, és kézbe veszed a kavicsaidat. A varázslat hatására minden kavics abban a pillanatban felrobban, amint a testrésszel találkozik, 1 ÉLETERŐ pont kárt tesz benne, és megbénítja azt. Annyi kavicsot használhatsz el, ahányat csak akarsz, és ahhoz a testrészhez vágod hozzá, amelyikhez akarod.[/p]
+        [p]Kézbe veszel egy kavicsot. Melyik testrész felé hajítod?[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <text>
+            [p]Sikerül eltalálnod a Bal Kart, és 1 ÉLETERŐ pontos sebesülést okozol rajta.[/p]
+        </text>
+        <changeEnemy attribute="stamina" id="15" change="-1" />
+      </success>
+      <failure>
+        <text>
+            [p]Elvéted a Bal Kart, a kavics nem okoz sebesülést.[/p]
+        </text>
+      </failure>
+    </test>
+    <itemCheck type="enemy" id="13">
+      <dontHave>
+        <itemCheck type="enemy" id="14">
+          <dontHave>
+            <itemCheck type="enemy" id="15">
+              <dontHave>
+                <itemCheck type="enemy" id="16">
+                  <dontHave>
+                    <itemCheck type="enemy" id="17">
+                      <dontHave>
+                        <itemCheck type="enemy" id="18">
+                          <dontHave>
+                            <gatherItem id="4029" />
+                          </dontHave>
+                        </itemCheck>
+                      </dontHave>
+                    </itemCheck>
+                  </dontHave>
+                </itemCheck>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="4029">
+      <have>
+        <text>
+            [p]Sikerült végezned az összes testrésszel.[/p]
+        </text>
+        <next id="276"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="3019">
+          <have>
+            <next id="441a">Ha újabb kavicsot akarsz elhajítani</next>
+            <next id="11a">Ha fegyvert rántasz</next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Mivel nincs több kavicsod, fegyvert rántasz.[/p]
+            </text>
+            <next id="11a"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="441e" display="441">
+    <text>
+        [p]Varázsolsz, és kézbe veszed a kavicsaidat. A varázslat hatására minden kavics abban a pillanatban felrobban, amint a testrésszel találkozik, 1 ÉLETERŐ pont kárt tesz benne, és megbénítja azt. Annyi kavicsot használhatsz el, ahányat csak akarsz, és ahhoz a testrészhez vágod hozzá, amelyikhez akarod.[/p]
+        [p]Kézbe veszel egy kavicsot. Melyik testrész felé hajítod?[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <text>
+            [p]Sikerül eltalálnod a Jobb Kart, és 1 ÉLETERŐ pontos sebesülést okozol rajta.[/p]
+        </text>
+        <changeEnemy attribute="stamina" id="16" change="-1" />
+      </success>
+      <failure>
+        <text>
+            [p]Elvéted a Jobb Kart, a kavics nem okoz sebesülést.[/p]
+        </text>
+      </failure>
+    </test>
+    <itemCheck type="enemy" id="13">
+      <dontHave>
+        <itemCheck type="enemy" id="14">
+          <dontHave>
+            <itemCheck type="enemy" id="15">
+              <dontHave>
+                <itemCheck type="enemy" id="16">
+                  <dontHave>
+                    <itemCheck type="enemy" id="17">
+                      <dontHave>
+                        <itemCheck type="enemy" id="18">
+                          <dontHave>
+                            <gatherItem id="4029" />
+                          </dontHave>
+                        </itemCheck>
+                      </dontHave>
+                    </itemCheck>
+                  </dontHave>
+                </itemCheck>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="4029">
+      <have>
+        <text>
+            [p]Sikerült végezned az összes testrésszel.[/p]
+        </text>
+        <next id="276"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="3019">
+          <have>
+            <next id="441a">Ha újabb kavicsot akarsz elhajítani</next>
+            <next id="11a">Ha fegyvert rántasz</next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Mivel nincs több kavicsod, fegyvert rántasz.[/p]
+            </text>
+            <next id="11a"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="441f" display="441">
+    <text>
+        [p]Varázsolsz, és kézbe veszed a kavicsaidat. A varázslat hatására minden kavics abban a pillanatban felrobban, amint a testrésszel találkozik, 1 ÉLETERŐ pont kárt tesz benne, és megbénítja azt. Annyi kavicsot használhatsz el, ahányat csak akarsz, és ahhoz a testrészhez vágod hozzá, amelyikhez akarod.[/p]
+        [p]Kézbe veszel egy kavicsot. Melyik testrész felé hajítod?[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <text>
+            [p]Sikerül eltalálnod a Bal Lábat, és 1 ÉLETERŐ pontos sebesülést okozol rajta.[/p]
+        </text>
+        <changeEnemy attribute="stamina" id="17" change="-1" />
+      </success>
+      <failure>
+        <text>
+            [p]Elvéted a Bal Lábat, a kavics nem okoz sebesülést.[/p]
+        </text>
+      </failure>
+    </test>
+    <itemCheck type="enemy" id="13">
+      <dontHave>
+        <itemCheck type="enemy" id="14">
+          <dontHave>
+            <itemCheck type="enemy" id="15">
+              <dontHave>
+                <itemCheck type="enemy" id="16">
+                  <dontHave>
+                    <itemCheck type="enemy" id="17">
+                      <dontHave>
+                        <itemCheck type="enemy" id="18">
+                          <dontHave>
+                            <gatherItem id="4029" />
+                          </dontHave>
+                        </itemCheck>
+                      </dontHave>
+                    </itemCheck>
+                  </dontHave>
+                </itemCheck>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="4029">
+      <have>
+        <text>
+            [p]Sikerült végezned az összes testrésszel.[/p]
+        </text>
+        <next id="276"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="3019">
+          <have>
+            <next id="441a">Ha újabb kavicsot akarsz elhajítani</next>
+            <next id="11a">Ha fegyvert rántasz</next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Mivel nincs több kavicsod, fegyvert rántasz.[/p]
+            </text>
+            <next id="11a"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="441g" display="441">
+    <text>
+        [p]Varázsolsz, és kézbe veszed a kavicsaidat. A varázslat hatására minden kavics abban a pillanatban felrobban, amint a testrésszel találkozik, 1 ÉLETERŐ pont kárt tesz benne, és megbénítja azt. Annyi kavicsot használhatsz el, ahányat csak akarsz, és ahhoz a testrészhez vágod hozzá, amelyikhez akarod.[/p]
+        [p]Kézbe veszel egy kavicsot. Melyik testrész felé hajítod?[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <text>
+            [p]Sikerül eltalálnod a Jobb Lábat, és 1 ÉLETERŐ pontos sebesülést okozol rajta.[/p]
+        </text>
+        <changeEnemy attribute="stamina" id="18" change="-1" />
+      </success>
+      <failure>
+        <text>
+            [p]Elvéted a Jobb Lábat, a kavics nem okoz sebesülést.[/p]
+        </text>
+      </failure>
+    </test>
+    <itemCheck type="enemy" id="13">
+      <dontHave>
+        <itemCheck type="enemy" id="14">
+          <dontHave>
+            <itemCheck type="enemy" id="15">
+              <dontHave>
+                <itemCheck type="enemy" id="16">
+                  <dontHave>
+                    <itemCheck type="enemy" id="17">
+                      <dontHave>
+                        <itemCheck type="enemy" id="18">
+                          <dontHave>
+                            <gatherItem id="4029" />
+                          </dontHave>
+                        </itemCheck>
+                      </dontHave>
+                    </itemCheck>
+                  </dontHave>
+                </itemCheck>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="4029">
+      <have>
+        <text>
+            [p]Sikerült végezned az összes testrésszel.[/p]
+        </text>
+        <next id="276"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="3019">
+          <have>
+            <next id="441a">Ha újabb kavicsot akarsz elhajítani</next>
+            <next id="11a">Ha fegyvert rántasz</next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Mivel nincs több kavicsod, fegyvert rántasz.[/p]
+            </text>
+            <next id="11a"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 442 -->
   <p id="443">
     <text>
@@ -4170,7 +4627,59 @@
   </p>
   <!-- 505 -->
   <!-- 506 -->
-  <!-- 507 -->
+  <p id="507">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot! Ezzel a varázslattal a harcban részt vevő ellenfelek bármelyikét lomhává, ügyetlenné teheted. Aki ennek a varázslatnak a hatása alatt áll, csak egy kockával dobhat (a szokásos kettő helyett), amikor a Támadóerejét állapítja meg. A varázslat 6 Fordulón át hatásos. Minthogy azonban a küzdőktől távol állva varázsolsz, fennáll a veszélye annak, hogy a két résztvevő közül nem azt éri a varázslatod, akit kiszemeltél magadnak, sőt az is előfordulhat, hogy mindkettőre hatni fog ugyanaz a varázslat! [/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <random>
+      <result max="3" min="1">
+        <itemCheck type="item" id="4025">
+          <have>
+            <text>
+                [p]Jól céloztál, varázslatod eltalálja a Barbárt.[/p]
+            </text>
+            <changeEnemy attribute="attackStrengthDices" id="120" set="1" />
+          </have>
+          <dontHave>
+            <text>
+                [p]Jól céloztál, varázslatod eltalálja az Ogrét.[/p]
+            </text>
+            <changeEnemy attribute="attackStrengthDices" id="21" set="1" />
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result max="5" min="4">
+        <itemCheck type="item" id="4025">
+          <have>
+            <text>
+                [p]Varázslatod célt téveszt, és az Ogrét kapja telibe.[/p]
+            </text>
+            <changeEnemy attribute="attackStrengthDices" id="21" set="1" />
+          </have>
+          <dontHave>
+            <text>
+                [p]Varázslatod célt téveszt, és a Barbárt kapja telibe.[/p]
+            </text>
+            <changeEnemy attribute="attackStrengthDices" id="120" set="1" />
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result max="6" min="6">
+        <text>
+            [p]A varázslat mindkét résztvevőre egyformán fog hatni![/p]
+        </text>
+        <changeEnemy attribute="attackStrengthDices" id="21" set="1" />
+        <changeEnemy attribute="attackStrengthDices" id="120" set="1" />
+      </result>
+      <after>
+        <text>
+            [p]Most pedig döntsd el kettőjük harcát.[/p]
+        </text>
+      </after>
+    </random>
+    <next id="234c"></next>
+  </p>
   <p id="508">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot! Varázsolsz az ellenfeled ellenében, de nem történik semmi! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges Ékszerberakásos Medállal. Mialatt varázsolni próbálsz, ellenfeled rád méri az első csapását. Vesztesz 2 ÉLETERŐ pontot. Fegyvereddel folytasd a harcot.[/p]
