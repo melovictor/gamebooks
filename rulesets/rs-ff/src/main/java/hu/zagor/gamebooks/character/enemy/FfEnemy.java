@@ -22,7 +22,7 @@ public class FfEnemy extends Enemy {
     private int skillDamage;
     private int attackStrength;
     private int attackStrengthBonus;
-    private int attackStrengthDices;
+    private int attackStrengthDices = 2;
 
     private int damageAbsorption;
     private int damageAbsorptionEdged;
