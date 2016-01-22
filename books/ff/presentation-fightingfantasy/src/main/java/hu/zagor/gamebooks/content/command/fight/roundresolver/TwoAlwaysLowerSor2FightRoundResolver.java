@@ -18,7 +18,7 @@ import java.util.Map;
 import org.springframework.stereotype.Component;
 
 /**
- * Resolver for a single fight round where there are twi enemies, and if at least one of them has a lower Attack Strength than us, we hit it no matter what.
+ * Resolver for a single fight round where there are two enemies, and if at least one of them has a lower Attack Strength than us, we hit it no matter what.
  * @author Tamas_Szekeres
  */
 @Component("twoAlwaysLowersor2FightRoundResolver")

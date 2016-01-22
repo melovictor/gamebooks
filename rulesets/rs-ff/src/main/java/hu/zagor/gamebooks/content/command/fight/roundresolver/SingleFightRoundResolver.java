@@ -65,7 +65,7 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
         return result;
     }
 
-    private void doWinFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
+    void doWinFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
         result[enemyIdx] = FightRoundResult.WIN;
         damageEnemy(command, dto);
     }

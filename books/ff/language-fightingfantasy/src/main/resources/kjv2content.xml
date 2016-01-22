@@ -2461,7 +2461,15 @@
     <next id="171">Vagy bemehetsz a szemközti házba, ahonnan valami érdekes szag szivárog ki az útra</next>
     <next id="294">De ha akarod, folytathatod az utadat a kunyhók között</next>
   </p>
-  <!-- 293 -->
+  <p id="293">
+    <text>
+        [p]A Kobold igen hálás, és megkérdezi, hogy viszonozhatná a segítségedet. Elmeséled, mi járatban vagy errefelé, és azt is elmondod, hogy az Északi Kaput nyitó varázsigét szeretnéd megismerni. Nem tud semmit a varázsigéről, de ajánlhat valakit, aki segíthet neked. Felpattan a levegőbe, megcsapkodja a szárnyait, és int, hogy kövesd. A parányi teremtmény Törpék házai között vezet, majd egy bozótos részen át. Végül egy újabb úthoz értek, ahol a Kobold elbúcsúzik tőled, és egy nagy, vakolt kőházra mutat. 1 SZERENCSE pontot nyersz, amiért erre a házra rátaláltál.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="140">Ha odamész a ház bejáratához</next>
+    <next id="208">Ha a ház mögé lopakodsz</next>
+    <next id="133">Ha továbbmész lefelé az úton</next>
+  </p>
   <p id="294">
     <text>
         [p]Föntről, az út végéből zajongó tömeg hangját hallod. Lehet, hogy valami piac vagy vásár felé tartasz éppen. Egy útelágazáshoz érsz.[/p]
@@ -2716,6 +2724,58 @@
     <next id="321a">Ha a Koboldéra</next>
     <next id="321b">Ha a Pinduréra</next>
   </p>
+  <p id="321a" display="321">
+    <text>
+        [p]A tömeg nem nézi jó szemmel beavatkozásodat. Választanod kell, kinek az oldalára állsz.[/p]
+        [p]Minden Fordulóban hasonlítsd össze a Támadóerődet a Kobold Támadóerejével. Kettőtök közül az lesz a fő küzdőfél a Fordulóban, akinek a Támadóereje nagyobb, arra támad a Pindur. De ha a harc másik résztvevőjének a Pindurénál szintén magasabb a Támadóereje, akkor a Pindur külön sérülést szenved.[/p]
+    </text>
+    <fight type="highestMainSupported" resolver="supported">
+      <enemy id="26" />
+      <ally id="125" />
+      <anyRound totalCount="2">
+        <interrupt />
+      </anyRound>
+    </fight>
+    <itemCheck type="enemy" id="26">
+      <have>
+        <text>
+            [p]Egy Törpe száll be a küzdelembe, s megpróbálja kiegyenlíteni az erőviszonyokat. A Törpe veled fog összecsapni, míg a másik kettő harcol, és meg kell ölnöd a Törpét, mielőtt szövetségesed segítségére sietnél.[/p]
+        </text>
+        <fight type="highestMainSupported" resolver="supported">
+          <enemy id="26" />
+          <enemy id="24" />
+          <ally id="125" />
+        </fight>
+      </have>
+    </itemCheck>
+    <next id="293"></next>
+  </p>
+  <p id="321b" display="321">
+    <text>
+        [p]A tömeg nem nézi jó szemmel beavatkozásodat. Választanod kell, kinek az oldalára állsz.[/p]
+        [p]Minden Fordulóban hasonlítsd össze a Támadóerődet a Pindur Támadóerejével. Kettőtök közül az lesz a fő küzdőfél a Fordulóban, akinek a Támadóereje nagyobb, arra támad a Kobold. De ha a harc másik résztvevőjének a Koboldénál szintén magasabb a Támadóereje, akkor a Kobold külön sérülést szenved.[/p]
+    </text>
+    <fight type="highestMainSupported" resolver="supported">
+      <enemy id="25" />
+      <ally id="126" />
+      <anyRound totalCount="2">
+        <interrupt />
+      </anyRound>
+    </fight>
+    <itemCheck type="enemy" id="25">
+      <have>
+        <text>
+            [p]Egy Törpe száll be a küzdelembe, s megpróbálja kiegyenlíteni az erőviszonyokat. A Törpe veled fog összecsapni, míg a másik kettő harcol, és meg kell ölnöd a Törpét, mielőtt szövetségesed segítségére sietnél.[/p]
+        </text>
+        <fight type="highestMainSupported" resolver="supported">
+          <enemy id="25" />
+          <enemy id="24" />
+          <ally id="126" />
+        </fight>
+      </have>
+    </itemCheck>
+    <next id="335"></next>
+  </p>
   <p id="322">
     <text>
         [p]Továbbmész az úton a következő útkereszteződésig. Bal kéz felől zajt hallasz, és elindulsz a kanyar felé, amerre a tömeget sejted.[/p]
@@ -2881,7 +2941,13 @@
     <next id="102">Ha az őröket várva inkább ébren maradsz és szemmel tartod a hátizsákodat</next>
   </p>
   <!-- 334 -->
-  <!-- 335 -->
+  <p id="335">
+    <text>
+        [p]A Pindur vinnyogó hangon köszönetet mond neked. Megkérdezi, mivel hálálhatná meg a segítségedet. Elmondod, mi járatban vagy errefelé, és megkérdezed, mit tud az Északi Kaput nyitó varázsigéről. Sajnos, semmit sem tud róla. Beszélgetés közben azonban mond valamit, aminek hasznát veheted. Elárulja, hogy egy bölcs Paptól többet is megtudhatsz erről a varázsigéről. Ha utadon itt továbbmész, rátalálsz a szentélyében, ahol ma a saját hitére akarja megtéríteni a gyülekezet tagjait. Arra is figyelmeztet, hogy vigyázz magadra Kharé központjában, különösen a dokkok vidékén, mert a Rabszolgafelhajtók gyakran portyáznak arrafelé abban a reményben, hátha sikerül elfogniuk néhány rabszolgának való fickót a hajójukra. A kedvenc fogásuk az, hogy a kiszemelt áldozatot leitatják, aztán elhurcolják a hajóra. Megköszönöd a Pindur tanácsait, és továbbmész az úton. 1 SZERENCSE pontot adhatsz magadnak a figyelmeztetésért.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="153"></next>
+  </p>
   <p id="336">
     <text>
         [p class="inlineImage"][img src="resources/sor2/336.jpg" /][/p]

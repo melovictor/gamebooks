@@ -80,4 +80,8 @@ public class FfAllyCharacter extends FfCharacter {
         return ally.getAttackStrengthDices();
     }
 
+    public FfEnemy getAlly() {
+        return ally;
+    }
+
 }
