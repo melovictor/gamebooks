@@ -12,8 +12,6 @@ import hu.zagor.gamebooks.content.ProcessableItemHolder;
 import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand;
-import hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommand;
-import hu.zagor.gamebooks.content.command.userinput.UserInputCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.exception.InvalidStepChoiceException;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
@@ -44,6 +42,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + Sorcery.KHARE_CITYPORT_OF_TRAPS)
 public class Sor2BookSectionController extends SorBookSectionController {
+    private static final String LEAVE_VLAD_GAMBLING_HALL = "39";
+    private static final String ENTER_VLAD_GAMBLING_HALL = "56";
     private static final int OGRE_WIN_PRICE_RATIO = 3;
     private static final int SELF_ENEMY_INITIAL_STAMINA = 99;
     private static final String SELF_ENEMY_ID = "9";
@@ -134,18 +134,22 @@ public class Sor2BookSectionController extends SorBookSectionController {
     protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
         super.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
         final String sectionId = paragraph.getId();
+        final SorCharacter character = (SorCharacter) wrapper.getCharacter();
         if (DANCER_SECTION_ID.equals(sectionId)) {
             final List<ProcessableItemHolder> itemsToProcess = paragraph.getItemsToProcess();
             if (!itemsToProcess.isEmpty()) {
                 final AttributeTestCommand command = (AttributeTestCommand) itemsToProcess.get(0).getCommand();
-                final int itemCount = getItemCount((SorCharacter) wrapper.getCharacter());
+                final int itemCount = getItemCount(character);
                 command.setAgainst(String.valueOf(itemCount));
             }
-        } else if ("426".equals(sectionId)) {
-            final ItemCheckCommand itemCheckCommand = (ItemCheckCommand) paragraph.getData().getCommands().get(0);
-            final UserInputCommand userInputCommand = (UserInputCommand) itemCheckCommand.getHave().getCommands().get(0);
-            final int goblinTeethCount = getInfo().getCharacterHandler().getItemHandler().getItems(wrapper.getCharacter(), "3201").size();
-            userInputCommand.setMax(goblinTeethCount);
+        } else if (ENTER_VLAD_GAMBLING_HALL.equals(sectionId)) {
+            getInfo().getCharacterHandler().getInteractionHandler().setInteractionState(character, "goldBeforeGambling", String.valueOf(character.getGold()));
+        } else if (LEAVE_VLAD_GAMBLING_HALL.equals(sectionId)) {
+            final int currentGold = character.getGold();
+            final int previousGold = Integer.valueOf(getInfo().getCharacterHandler().getInteractionHandler().getInteractionState(character, "goldBeforeGambling"));
+            if (previousGold < currentGold) {
+                getInfo().getCharacterHandler().getItemHandler().addItem(character, "4031", 1);
+            }
         }
     }
 
