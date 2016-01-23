@@ -93,7 +93,11 @@ public class Paragraph extends EscapingData implements TrueCloneable {
     }
 
     void addValidItem(final String itemId, final int amount) {
-        validItems.put(itemId, amount);
+        if (validItems.containsKey(itemId)) {
+            validItems.put(itemId, validItems.get(itemId) + amount);
+        } else {
+            validItems.put(itemId, amount);
+        }
     }
 
     /**
