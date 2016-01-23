@@ -131,4 +131,8 @@ public class Item implements TrueCloneable {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return "id: " + id + ", name: " + name + ", amount: " + amount;
+    }
 }
