@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.ff.sor.kcot.mvc.books.section.controller;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
+import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
@@ -12,6 +13,7 @@ import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
+import java.util.List;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.annotations.AfterMethod;
@@ -34,6 +36,7 @@ public class Sor2BookSectionControllerTest {
     @Inject private FfBookInformations info;
     @Instance private FfCharacterHandler characterHandler;
     @Mock private FfCharacterItemHandler itemHandler;
+    @Mock private List<Item> itemList;
 
     @BeforeClass
     public void setUpClass() {
@@ -76,13 +79,13 @@ public class Sor2BookSectionControllerTest {
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(null);
         expect(info.getCharacterHandler()).andReturn(characterHandler);
-        itemHandler.removeItem(character, "3042", 1);
+        expect(itemHandler.removeItem(character, "3042", 1)).andReturn(itemList);
 
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(null);
         expect(info.getCharacterHandler()).andReturn(characterHandler);
-        itemHandler.removeItem(character, "4015", 1);
-        itemHandler.removeItem(character, "4016", 1);
+        expect(itemHandler.removeItem(character, "4015", 1)).andReturn(itemList);
+        expect(itemHandler.removeItem(character, "4016", 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
         underTest.handleAfterFight(wrapper, "10");

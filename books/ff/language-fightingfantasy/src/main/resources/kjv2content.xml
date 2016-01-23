@@ -2234,24 +2234,22 @@
     <next id="40">Ha otthagyod a partneredet, mert zavarban vagy</next>
   </p>
   <p id="262a" display="262">
-    <text>
-        [p]Dobj egy kockával, hogy megtudd, mit akarnak ellopni tőled.[/p]
-    </text>
     <random>
       <result max="3" min="1">
         <text>
             [p]3 Aranytallért lopnak el.[/p]
         </text>
+        <gatherItem id="4030" />
         <add amount="-3" to="gold" />
       </result>
       <result max="5" min="4">
         <text>
             [p]Az összes Élelmedet elveszik.[/p]
         </text>
-        <loseItem id="2000,2002,2003" amount="99" />
+        <hideItem id="2000,2002,2003" amount="99" />
       </result>
       <result max="6" min="6">
-        <loseItem id="3001,3002,3007,3008,3009,3010,3011,3012,3014,3015,3016,3017,3018,3019,3021,3022,3023,3024,3025,3026,3027,3028,3029,3030,3031,3031,3032,3034,3035,3036,3201,3202,3203,3204,3205,2000,2001,2002,2003,3020,3023,3013" amount="1" unequippedOnly="true" />
+        <hideItem id="3001,3002,3007,3008,3009,3010,3011,3012,3014,3015,3016,3017,3018,3019,3021,3022,3023,3024,3025,3026,3027,3028,3029,3030,3031,3031,3032,3034,3035,3036,3201,3202,3203,3204,3205,2000,2001,2002,2003,3020,3023,3013" amount="1" unequippedOnly="true" />
       </result>
     </random>
     <itemCheck type="item" id="4102">
@@ -2275,7 +2273,7 @@
     <text>
         [p]Sikerül kioldaniuk a hátizsákod száját, és mindent elcsennek, majd elrohannak a zsákmánnyal. Utánuk eredsz, és meg is találod az üres hátizsákodat. Mindenedet elvesztetted![/p]
     </text>
-    <loseItem id="3001,3002,3007,3008,3009,3010,3011,3012,3014,3015,3016,3017,3018,3019,3021,3022,3023,3024,3025,3026,3027,3028,3029,3030,3031,3031,3032,3034,3035,3036,3201,3202,3203,3204,3205,2000,2001,2002,2003,3020,3023,3013" amount="999" unequippedOnly="true" />
+    <hideItem id="3001,3002,3007,3008,3009,3010,3011,3012,3014,3015,3016,3017,3018,3019,3021,3022,3023,3024,3025,3026,3027,3028,3029,3030,3031,3031,3032,3034,3035,3036,3201,3202,3203,3204,3205,2000,2001,2002,2003,3020,3023,3013" amount="999" unequippedOnly="true" />
     <itemCheck type="item" id="4102">
       <have>
         <text>
@@ -2361,8 +2359,8 @@
   <!-- 275 -->
   <p id="276">
     <text>
-        [p data-item-choice="storage" data-max-choice="1"]Hátralépsz, és a hulla testének darabjai tehetetlenül vergődnek előtted. Végül a földön egyesülnek, de a test olyan látványt nyújt, mintha kocsihajtó versenyen gázoltak volna át rajta. Az egyik szomszédos kunyhó ajtaján valaki kidugja a fejét, és magához int. Néhány Gnóm a kunyhójából nézte végig a csatát, és most mindnyájan köszönetet mondanak neked, amiért megszabadítottad környéküket attól a rémséges teremtménytől. Gyermekeik most már nyugodtan játszhatnak az utcákon.[/p]
-        [p]Hálából [span class="takeItem" data-id="gold" data-amount="5"]5 Aranytallért[/span] nyomnak a markodba, és megkérdezik, miben lehetnek a segítségedre. Elmondod, mi járatban vagy errefelé. Mindannyian egyetértenek abban, hogy előbb meg kell találnod a varázsige négy sorát, csak akkor hagyhatod el a kikötővárost. Azt tanácsolják, hogy keresd fel a város központja felé vezető úton lakó papot, aki talán segíteni tud neked. Ezenkívül felajánlanak még neked néhány tárgyat, amit majd varázsláskor használhatsz. Kaphatsz tőlük egy üveg [span class="takeItem" data-id="3001" data-amount="1" data-group="storage"]gyógyfűfőzetet[/span], vagy [span class="takeItem" data-id="3019" data-amount="3" data-group="storage"]három kis kerek kavicsot[/span] tartalmazó zacskót, vagy egy fiola [span class="takeItem" data-id="3027" data-amount="1" data-group="storage"]homokot[/span] (ritkaságszámba menő tengeri kincset). Ezek közül egyet választhatsz.[/p]
+        [p]Hátralépsz, és a hulla testének darabjai tehetetlenül vergődnek előtted. Végül a földön egyesülnek, de a test olyan látványt nyújt, mintha kocsihajtó versenyen gázoltak volna át rajta. Az egyik szomszédos kunyhó ajtaján valaki kidugja a fejét, és magához int. Néhány Gnóm a kunyhójából nézte végig a csatát, és most mindnyájan köszönetet mondanak neked, amiért megszabadítottad környéküket attól a rémséges teremtménytől. Gyermekeik most már nyugodtan játszhatnak az utcákon.[/p]
+        [p data-item-choice="storage" data-max-choice="1"]Hálából [span class="takeItem" data-id="gold" data-amount="5"]5 Aranytallért[/span] nyomnak a markodba, és megkérdezik, miben lehetnek a segítségedre. Elmondod, mi járatban vagy errefelé. Mindannyian egyetértenek abban, hogy előbb meg kell találnod a varázsige négy sorát, csak akkor hagyhatod el a kikötővárost. Azt tanácsolják, hogy keresd fel a város központja felé vezető úton lakó papot, aki talán segíteni tud neked. Ezenkívül felajánlanak még neked néhány tárgyat, amit majd varázsláskor használhatsz. Kaphatsz tőlük egy üveg [span class="takeItem" data-id="3001" data-amount="1" data-group="storage"]gyógyfűfőzetet[/span], vagy [span class="takeItem" data-id="3019" data-amount="3" data-group="storage"]három kis kerek kavicsot[/span] tartalmazó zacskót, vagy egy fiola [span class="takeItem" data-id="3027" data-amount="1" data-group="storage"]homokot[/span] (ritkaságszámba menő tengeri kincset). Ezek közül egyet választhatsz.[/p]
     </text>
     <next id="239"></next>
   </p>
@@ -4274,7 +4272,35 @@
     <add to="stamina" amount="-1" />
     <next id="98"></next>
   </p>
-  <!-- 448 -->
+  <p id="448">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot![/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3022">
+      <have>
+        <text>
+            [p]A fejedre teszed a papi sapkát, és varázsolsz! A varázslat hatására telepatikusan megérzed, merre vannak az Ork kölykök. Mindannyian más irányba futottak, de te azonnal tudod, melyikük lopta el a legértékesebb tárgyadat, és utánaveted magad. Végül utoléred, és kényszeríted, hogy adja vissza ellopott tulajdonodat. Ezt követően visszatérhetsz és folytathatod az utadat.[/p]
+        </text>
+        <itemCheck type="item" id="4030">
+          <have>
+            <add amount="1" to="gold" />
+          </have>
+          <dontHave>
+            <text>
+                [p data-item-choice="storage" data-max-choice="1"]Válaszd ki, melyik elvesztett tárgyadat akarod visszaszerezni: XXX[/p]
+            </text>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            [p]Varázslatod nem működik, és az Ork kölykök eltűnnek a szemed elől, még mielőtt a varázsigét kimondanád.[/p]
+        </text>
+        <next id="61"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="449">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -4692,7 +4718,26 @@
     </itemCheck>
   </p>
   <!-- 505 -->
-  <!-- 506 -->
+  <p id="506">
+    <text>
+        [p data-item-choice="storage" data-max-choice="6"]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz; ekkor öt hasonmásod jelenik meg, és megállásra kényszeríti az Ork kölyköket.
+    </text>
+    <itemCheck type="item" id="4030">
+      <have>
+        <text>
+            Sikerül visszaszerezned tőlük mind a 3 ellopott Aranytallérodat. Ezt követően folytathatod az utadat.[/p]
+        </text>
+        <add amount="3" to="gold" />
+      </have>
+      <dontHave>
+        <text>
+            Ha 6 vagy annál kevesebb tárgyadat lopták el, most mindet visszaszerezheted. Ha hatnál több tárgyadat lopták el, legfeljebb 6 tárgyat tudsz visszaszerezni (te választod ki, melyiket): XXX. Ezt követően folytathatod az utadat.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <add amount="-2" to="stamina" />
+    <next id="61"></next>
+  </p>
   <p id="507">
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot! Ezzel a varázslattal a harcban részt vevő ellenfelek bármelyikét lomhává, ügyetlenné teheted. Aki ennek a varázslatnak a hatása alatt áll, csak egy kockával dobhat (a szokásos kettő helyett), amikor a Támadóerejét állapítja meg. A varázslat 6 Fordulón át hatásos. Minthogy azonban a küzdőktől távol állva varázsolsz, fennáll a veszélye annak, hogy a két résztvevő közül nem azt éri a varázslatod, akit kiszemeltél magadnak, sőt az is előfordulhat, hogy mindkettőre hatni fog ugyanaz a varázslat! [/p]

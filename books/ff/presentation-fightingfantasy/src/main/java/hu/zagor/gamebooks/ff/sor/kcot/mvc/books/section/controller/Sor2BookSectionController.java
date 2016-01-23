@@ -21,8 +21,10 @@ import hu.zagor.gamebooks.ff.mvc.book.section.controller.SorBookSectionControlle
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.Sorcery;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -159,7 +161,29 @@ public class Sor2BookSectionController extends SorBookSectionController {
             }
         } else if ("234b".equals(paragraph.getId())) {
             setUpWinnings(wrapper);
+        } else if ("448".equals(paragraph.getId()) || "506".equals(paragraph.getId())) {
+            listHiddenItems(wrapper);
         }
+    }
+
+    private void listHiddenItems(final HttpSessionWrapper wrapper) {
+        final SorCharacter character = (SorCharacter) wrapper.getCharacter();
+        final Paragraph paragraph = wrapper.getParagraph();
+        final ParagraphData data = paragraph.getData();
+        final StringBuilder builder = new StringBuilder();
+
+        final Set<String> addedItems = new HashSet<>();
+        final List<Item> hiddenEquipment = character.getHiddenEquipment();
+        for (final Item item : hiddenEquipment) {
+            if (!addedItems.isEmpty()) {
+                builder.append(", ");
+            }
+            addedItems.add(item.getId());
+            builder.append("[span class=\"takeItem\" data-id=\"" + item.getId() + "\" data-amount=\"1\" data-group=\"storage\"]" + item.getName() + "[/span]");
+        }
+
+        data.setText(data.getText().replace("XXX", builder.toString()));
+        paragraph.calculateValidEvents();
     }
 
     private void setUpWinnings(final HttpSessionWrapper wrapper) {
