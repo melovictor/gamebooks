@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
-  xmlns:c="http://www.springframework.org/schema/c"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
   <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.TextTransformer" id="textTransformer" />
@@ -130,6 +128,7 @@
   <bean class="hu.zagor.gamebooks.content.dice.DiceConfiguration" id="dice2d6" c:diceNumber="2" c:minValue="1" c:maxValue="6" />
   <bean class="hu.zagor.gamebooks.content.dice.DiceConfiguration" id="dice3d6" c:diceNumber="3" c:minValue="1" c:maxValue="6" />
   <bean class="hu.zagor.gamebooks.content.dice.DiceConfiguration" id="dice4d6" c:diceNumber="4" c:minValue="1" c:maxValue="6" />
+  <bean class="hu.zagor.gamebooks.content.dice.DiceConfiguration" id="dice1d100" c:diceNumber="2" c:minValue="0" c:maxValue="9" c:adding="false" />
 
 
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommandResolver" id="itemCheckCommandResolver" p:stubCommands-ref="itemCheckStubCommands" />

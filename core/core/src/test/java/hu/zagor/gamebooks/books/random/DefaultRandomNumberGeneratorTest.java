@@ -3,12 +3,10 @@ package hu.zagor.gamebooks.books.random;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
 import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -85,11 +83,7 @@ public class DefaultRandomNumberGeneratorTest {
             resultSet.add(underTest.getRandomNumber(1)[0]);
         }
         // THEN
-        for (int i = 1; i <= 6; i++) {
-            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
-            resultSet.remove(i);
-        }
-        Assert.assertEquals(resultSet.size(), 0);
+        verify(1, 6, resultSet);
     }
 
     public void testGetRandomNumberWhenTwoDiceSixThrownWithoutAdditionShouldGenerateNumberBetweenTwoAndTwelveIncl() {
@@ -102,11 +96,7 @@ public class DefaultRandomNumberGeneratorTest {
             resultSet.add(underTest.getRandomNumber(2)[0]);
         }
         // THEN
-        for (int i = 2; i <= 12; i++) {
-            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
-            resultSet.remove(i);
-        }
-        Assert.assertEquals(resultSet.size(), 0);
+        verify(2, 12, resultSet);
     }
 
     public void testGetRandomNumberWhenTwoDiceSixPlusFiveThrownShouldGenerateNumberBetweenSevenAndSeventeenIncl() {
@@ -119,11 +109,7 @@ public class DefaultRandomNumberGeneratorTest {
             resultSet.add(underTest.getRandomNumber(2, 5)[0]);
         }
         // THEN
-        for (int i = 7; i <= 17; i++) {
-            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
-            resultSet.remove(i);
-        }
-        Assert.assertEquals(resultSet.size(), 0);
+        verify(7, 17, resultSet);
     }
 
     public void testGetRandomNumberWhenTwoDiceFourMinusThreeThrownShouldGenerateNumberBetweenMinusOneAndFiveIncl() {
@@ -136,11 +122,7 @@ public class DefaultRandomNumberGeneratorTest {
             resultSet.add(underTest.getRandomNumber(2, 4, -3)[0]);
         }
         // THEN
-        for (int i = -1; i <= 5; i++) {
-            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
-            resultSet.remove(i);
-        }
-        Assert.assertEquals(resultSet.size(), 0);
+        verify(-1, 5, resultSet);
     }
 
     public void testGetRandomNumberWhenOneDiceOneThrownShouldGenerateNumberOne() {
@@ -153,11 +135,7 @@ public class DefaultRandomNumberGeneratorTest {
             resultSet.add(underTest.getRandomNumber(1, 1, 0)[0]);
         }
         // THEN
-        for (int i = 1; i <= 1; i++) {
-            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
-            resultSet.remove(i);
-        }
-        Assert.assertEquals(resultSet.size(), 0);
+        verify(1, 1, resultSet);
     }
 
     public void testGetRandomNumberWhen1d6ConfigurationIsSetUpShouldGenerateNumbersBetweenOneAndSix() {
@@ -171,11 +149,7 @@ public class DefaultRandomNumberGeneratorTest {
             resultSet.add(underTest.getRandomNumber(diceConfiguration)[0]);
         }
         // THEN
-        for (int i = 1; i <= 6; i++) {
-            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
-            resultSet.remove(i);
-        }
-        Assert.assertEquals(resultSet.size(), 0);
+        verify(1, 6, resultSet);
     }
 
     public void testGetRandomNumberWhen2d6ConfigurationIsSetUpShouldGenerateNumbersBetweenTwoAndTwelve() {
@@ -189,11 +163,7 @@ public class DefaultRandomNumberGeneratorTest {
             resultSet.add(underTest.getRandomNumber(diceConfiguration)[0]);
         }
         // THEN
-        for (int i = 2; i <= 12; i++) {
-            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
-            resultSet.remove(i);
-        }
-        Assert.assertEquals(resultSet.size(), 0);
+        verify(2, 12, resultSet);
     }
 
     public void testGetRandomNumberWhen1d10WithZeroConfigurationIsSetUpShouldGenerateNumbersBetweenZeroAndNine() {
@@ -207,11 +177,7 @@ public class DefaultRandomNumberGeneratorTest {
             resultSet.add(underTest.getRandomNumber(diceConfiguration)[0]);
         }
         // THEN
-        for (int i = 0; i <= 9; i++) {
-            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
-            resultSet.remove(i);
-        }
-        Assert.assertEquals(resultSet.size(), 0);
+        verify(0, 9, resultSet);
     }
 
     public void testGetRandomNumberWhen1d10PlusSixWithTenConfigurationIsSetUpShouldGenerateNumbersBetweenSevenAndSixteen() {
@@ -225,11 +191,7 @@ public class DefaultRandomNumberGeneratorTest {
             resultSet.add(underTest.getRandomNumber(diceConfiguration, 6)[0]);
         }
         // THEN
-        for (int i = 7; i <= 16; i++) {
-            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
-            resultSet.remove(i);
-        }
-        Assert.assertEquals(resultSet.size(), 0);
+        verify(7, 16, resultSet);
     }
 
     public void testGetDefaultDiceSideShouldReturnDefaultDiceSide() {
@@ -288,6 +250,28 @@ public class DefaultRandomNumberGeneratorTest {
         final int[] returned = underTest.getRandomNumber(1);
         // THEN
         Assert.assertEquals(underTest.getThrownResults().get(0), Integer.valueOf(returned[1]));
+    }
+
+    public void testGetRandomNumberWhen1d100ConfigurationIsSetUpShouldGenerateNumbersBetweenOneAndHundred() {
+        // GIVEN
+        final DiceConfiguration diceConfiguration = new DiceConfiguration(2, 0, 9, false);
+        final Set<Integer> resultSet = new HashSet<>();
+        expect(environmentDetector.isRecordState()).andReturn(false).times(20000);
+        mockControl.replay();
+        // WHEN
+        for (int i = 0; i < 10000; i++) {
+            resultSet.add(underTest.getRandomNumber(diceConfiguration)[0]);
+        }
+        // THEN
+        verify(1, 100, resultSet);
+    }
+
+    private void verify(final int min, final int max, final Set<Integer> resultSet) {
+        for (int i = min; i <= max; i++) {
+            Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
+            resultSet.remove(i);
+        }
+        Assert.assertEquals(resultSet.size(), 0);
     }
 
     @AfterMethod

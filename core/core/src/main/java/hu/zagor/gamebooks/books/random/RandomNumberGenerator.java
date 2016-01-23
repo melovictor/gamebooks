@@ -14,6 +14,16 @@ public interface RandomNumberGenerator {
      * @param dicePiece the number of dices
      * @param diceSide the sides of dices
      * @param addition the number to add
+     * @param adding true, if the rolled numbers must be added together, false if they must be put one after the other
+     * @return the array of thrown numbers from position 1 and the total on position 0
+     */
+    int[] getRandomNumber(int dicePiece, int diceSide, int addition, boolean adding);
+
+    /**
+     * Generates a random dice roll.
+     * @param dicePiece the number of dices
+     * @param diceSide the sides of dices
+     * @param addition the number to add
      * @return the array of thrown numbers from position 1 and the total on position 0
      */
     int[] getRandomNumber(int dicePiece, int diceSide, int addition);
