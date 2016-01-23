@@ -8,11 +8,9 @@ import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.io.XmlParser;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
-
 import org.slf4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -20,15 +18,13 @@ import org.springframework.util.Assert;
 import org.w3c.dom.Document;
 
 /**
- * Implementation of {@link ApplicationContext} interface that loads the contents of the file from a classpath
- * resource.
+ * Implementation of {@link BookContentLoader} interface that loads the contents of the book from a classpath resource.
  * @author Tamas_Szekeres
  */
 public class ResourceBookContentLoader implements BookContentLoader, ApplicationContextAware {
 
-    private static final String CLASSPATH = "classpath*:/";
-    @LogInject
-    private Logger logger;
+    static final String CLASSPATH = "classpath*:/";
+    @LogInject private Logger logger;
     private ApplicationContext applicationContext;
     private final XmlParser xmlParser;
 
@@ -59,7 +55,7 @@ public class ResourceBookContentLoader implements BookContentLoader, Application
         return storage;
     }
 
-    private Map<String, Paragraph> loadParagraphs(final BookInformations info) throws IOException, XmlTransformationException {
+    Map<String, Paragraph> loadParagraphs(final BookInformations info) throws IOException, XmlTransformationException {
         final String paragraphLocation = info.getContents().getParagraphs();
         Map<String, Paragraph> paragraphs = null;
         try (InputStream inputStream = applicationContext.getResources(CLASSPATH + paragraphLocation)[0].getInputStream()) {
@@ -97,6 +93,14 @@ public class ResourceBookContentLoader implements BookContentLoader, Application
     @Override
     public void setApplicationContext(final ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
+    }
+
+    public ApplicationContext getApplicationContext() {
+        return applicationContext;
+    }
+
+    public XmlParser getXmlParser() {
+        return xmlParser;
     }
 
 }
