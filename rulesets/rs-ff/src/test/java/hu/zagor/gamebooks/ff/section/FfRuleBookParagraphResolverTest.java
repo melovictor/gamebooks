@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.ff.section;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
+import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -37,6 +38,7 @@ public class FfRuleBookParagraphResolverTest {
     @Inject private Logger logger;
     private GatheredLostItem normalItem;
     private GatheredLostItem doseFromPotion;
+    @Mock private List<Item> itemList;
 
     @BeforeClass
     public void setUpClass() {
@@ -58,7 +60,7 @@ public class FfRuleBookParagraphResolverTest {
         logger.debug("Lost item {}", "equippedWeapon");
         expect(itemHandler.getEquippedWeapon(character)).andReturn(item);
         expect(item.getId()).andReturn("1003");
-        itemHandler.removeItem(character, "1003", 1);
+        expect(itemHandler.removeItem(character, "1003", 1)).andReturn(itemList);
         expect(paragraphData.getLostItems()).andReturn(lostItems);
         mockControl.replay();
         // WHEN
@@ -72,7 +74,7 @@ public class FfRuleBookParagraphResolverTest {
         lostItems.add(normalItem);
         expect(paragraphData.getLostItems()).andReturn(lostItems);
         logger.debug("Lost item {}", "3005");
-        itemHandler.removeItem(character, normalItem);
+        expect(itemHandler.removeItem(character, normalItem)).andReturn(itemList);
         expect(paragraphData.getLostItems()).andReturn(lostItems);
         mockControl.replay();
         // WHEN
@@ -104,7 +106,7 @@ public class FfRuleBookParagraphResolverTest {
         logger.debug("Lost item {}", "2003");
         expect(itemHandler.getItem(character, "2003")).andReturn(item);
         expect(item.getDose()).andReturn(1);
-        itemHandler.removeItem(character, "2003", 1);
+        expect(itemHandler.removeItem(character, "2003", 1)).andReturn(itemList);
         expect(paragraphData.getLostItems()).andReturn(lostItems);
         mockControl.replay();
         // WHEN

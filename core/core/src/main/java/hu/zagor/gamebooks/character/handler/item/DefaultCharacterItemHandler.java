@@ -88,19 +88,21 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
     }
 
     @Override
-    public void removeItem(final Character character, final GatheredLostItem item) {
-        removeItem(character, item.getId(), item.getAmount(), item.isUnequippedOnly());
+    public List<Item> removeItem(final Character character, final GatheredLostItem item) {
+        return removeItem(character, item.getId(), item.getAmount(), item.isUnequippedOnly());
     }
 
     @Override
-    public void removeItem(final Character character, final String itemId, final int amount) {
-        removeItem(character, itemId, amount, false);
+    public List<Item> removeItem(final Character character, final String itemId, final int amount) {
+        return removeItem(character, itemId, amount, false);
     }
 
-    private void removeItem(final Character character, final String itemId, final int amount, final boolean unequippedOnly) {
+    private List<Item> removeItem(final Character character, final String itemId, final int amount, final boolean unequippedOnly) {
         Assert.notNull(character, CHARACTER_NOT_NULL);
         Assert.notNull(itemId, ITEMID_NOT_NULL);
         Assert.isTrue(amount > 0, ITEMID_POSITIVE);
+
+        final List<Item> removedItems = new ArrayList<>();
 
         final List<Item> equipment = character.getEquipment();
         if (isItemList(itemId)) {
@@ -108,27 +110,34 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
             for (int i = 0; i < amount; i++) {
                 if (availableItems.size() > 0) {
                     final String randomElement = getRandomElement(availableItems);
-                    equipment.remove(getItem(equipment, randomElement));
+                    final Item item = getItem(equipment, randomElement);
+                    equipment.remove(item);
+                    removedItems.add(item);
                 }
             }
         } else {
             for (int i = 0; i < amount; i++) {
-                returnSinglePiece(itemId, equipment, unequippedOnly);
+                removedItems.add(returnSinglePiece(itemId, equipment, unequippedOnly));
             }
         }
+
+        return removedItems;
     }
 
-    private void returnSinglePiece(final String itemId, final List<Item> equipment, final boolean unequippedOnly) {
-        final Item item = getItem(equipment, itemId);
+    private Item returnSinglePiece(final String itemId, final List<Item> equipment, final boolean unequippedOnly) {
+        Item item = getItem(equipment, itemId);
         if (item != null) {
             if (!unequippedOnly || !item.getEquipInfo().isEquippable() || !item.getEquipInfo().isEquipped()) {
                 if (item.getAmount() > 1) {
                     item.setAmount(item.getAmount() - 1);
+                    item = item.clone();
+                    item.setAmount(1);
                 } else {
                     equipment.remove(item);
                 }
             }
         }
+        return item;
     }
 
     private String getRandomElement(final List<String> availableItems) {

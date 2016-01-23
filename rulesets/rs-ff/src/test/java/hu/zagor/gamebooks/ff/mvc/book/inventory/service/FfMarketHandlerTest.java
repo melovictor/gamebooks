@@ -2,17 +2,18 @@ package hu.zagor.gamebooks.ff.mvc.book.inventory.service;
 
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
+import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.command.market.MarketCommand;
 import hu.zagor.gamebooks.content.command.market.domain.MarketElement;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
+import java.util.List;
 import java.util.Map;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -30,10 +31,7 @@ public class FfMarketHandlerTest {
     private MarketElement itemA;
     private MarketElement itemB;
     private MarketElement itemC;
-
-    @BeforeClass
-    public void setUpClass() {
-    }
+    @Mock private List<Item> itemList;
 
     @BeforeMethod
     public void setUpMethod() {
@@ -162,7 +160,7 @@ public class FfMarketHandlerTest {
         expect(itemHandler.hasItem(character, "3001")).andReturn(true);
         expect(character.getGold()).andReturn(5);
         character.setGold(8);
-        itemHandler.removeItem(character, "3001", 1);
+        expect(itemHandler.removeItem(character, "3001", 1)).andReturn(itemList);
         expect(character.getGold()).andReturn(8);
         mockControl.replay();
         // WHEN
@@ -183,7 +181,7 @@ public class FfMarketHandlerTest {
         expect(itemHandler.hasItem(character, "3001")).andReturn(true);
         expect(character.getGold()).andReturn(5);
         character.setGold(8);
-        itemHandler.removeItem(character, "3001", 1);
+        expect(itemHandler.removeItem(character, "3001", 1)).andReturn(itemList);
         expect(character.getGold()).andReturn(8);
         mockControl.replay();
         // WHEN
@@ -205,7 +203,7 @@ public class FfMarketHandlerTest {
         expect(itemHandler.hasItem(character, "3001")).andReturn(true);
         expect(character.getGold()).andReturn(5);
         character.setGold(8);
-        itemHandler.removeItem(character, "3001", 1);
+        expect(itemHandler.removeItem(character, "3001", 1)).andReturn(itemList);
         expect(character.getGold()).andReturn(8);
         mockControl.replay();
         // WHEN

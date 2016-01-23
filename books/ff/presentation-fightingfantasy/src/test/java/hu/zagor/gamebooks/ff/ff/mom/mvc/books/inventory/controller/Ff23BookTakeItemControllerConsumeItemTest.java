@@ -5,6 +5,7 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
+import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
@@ -16,6 +17,7 @@ import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.easymock.IMocksControl;
@@ -50,6 +52,7 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
     @Mock private FfCharacterItemHandler itemHandler;
     @Mock private FfItem item;
     @Mock private FfAttributeHandler attributeHandler;
+    @Mock private List<Item> itemList;
 
     @BeforeClass
     public void setUpClass() {
@@ -93,7 +96,7 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
         final String itemId = "2000";
         expectWrapper();
         expect(wrapper.getCharacter()).andReturn(character);
-        itemHandler.removeItem(character, "4002", 10);
+        expect(itemHandler.removeItem(character, "4002", 10)).andReturn(itemList);
         expectWrapper();
         itemInteractionRecorder.recordItemConsumption(wrapper, itemId);
         expect(wrapper.getParagraph()).andReturn(paragraph);

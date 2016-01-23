@@ -148,7 +148,7 @@ public class BookEntryStorageTest {
         Assert.assertNull(returned);
     }
 
-    public void testGetItemWhenItemInStorageShouldReturnClonedItem() throws CloneNotSupportedException {
+    public void testGetItemWhenItemInStorageShouldReturnClonedItem() {
         // GIVEN
         logger.debug("Fetching {} {} from book {}.", "item", EXISTENT_ELEMENT_ID, BOOK_ID);
         expect(item.clone()).andReturn(clonedItem);
@@ -168,18 +168,6 @@ public class BookEntryStorageTest {
         // THEN
         Assert.assertEquals(returned.getId(), enemy.getId());
         Assert.assertEquals(returned.getName(), enemy.getName());
-    }
-
-    public void testGetItemWhenItemInStorageButCloneFailsShouldReturnNull() throws CloneNotSupportedException {
-        // GIVEN
-        logger.debug("Fetching {} {} from book {}.", "item", EXISTENT_ELEMENT_ID, BOOK_ID);
-        expect(item.clone()).andThrow(new CloneNotSupportedException());
-        logger.error("Failed to clone {} '{}' from book '{}'!", "item", EXISTENT_ELEMENT_ID, BOOK_ID);
-        mockControl.replay();
-        // WHEN
-        final Item returned = underTest.getItem(EXISTENT_ELEMENT_ID);
-        // THEN
-        Assert.assertNull(returned);
     }
 
     public void testGetParagraphWhenParagraphIdExistsShouldReturnClonedParagraph() throws CloneNotSupportedException {

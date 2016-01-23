@@ -79,7 +79,7 @@ public class ItemTest {
         Assert.assertEquals(underTest.getAmount(), 9);
     }
 
-    public void testCloneShouldReturnEqualButNotSameObject() throws CloneNotSupportedException {
+    public void testCloneShouldReturnEqualButNotSameObject() {
         // GIVEN
         // WHEN
         final Item returned = underTest.clone();
@@ -117,7 +117,7 @@ public class ItemTest {
         Assert.assertTrue(returned);
     }
 
-    public void testEqualsWhenCloneProvidedShouldReturnTrue() throws CloneNotSupportedException {
+    public void testEqualsWhenCloneProvidedShouldReturnTrue() {
         // GIVEN
         // WHEN
         final boolean returned = underTest.equals(underTest.clone());
@@ -141,7 +141,7 @@ public class ItemTest {
         Assert.assertFalse(returned);
     }
 
-    public void testHashCodeShouldReturnSameForOriginalAndClonedItem() throws CloneNotSupportedException {
+    public void testHashCodeShouldReturnSameForOriginalAndClonedItem() {
         // GIVEN
         final int originalHash = underTest.hashCode();
         // WHEN

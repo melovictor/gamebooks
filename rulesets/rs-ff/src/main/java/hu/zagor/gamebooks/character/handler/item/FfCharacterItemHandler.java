@@ -9,13 +9,11 @@ import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -25,20 +23,20 @@ import org.springframework.beans.factory.annotation.Qualifier;
  */
 public class FfCharacterItemHandler extends DefaultCharacterItemHandler {
 
-    @Autowired
-    @Qualifier("d6")
-    private RandomNumberGenerator generator;
+    @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
 
     @Override
-    public void removeItem(final Character character, final String itemId, final int amount) {
-        super.removeItem(character, itemId, amount);
+    public List<Item> removeItem(final Character character, final String itemId, final int amount) {
+        final List<Item> removedItems = super.removeItem(character, itemId, amount);
         getEquippedWeapon((FfCharacter) character);
+        return removedItems;
     }
 
     @Override
-    public void removeItem(final Character character, final GatheredLostItem item) {
-        super.removeItem(character, item);
+    public List<Item> removeItem(final Character character, final GatheredLostItem item) {
+        final List<Item> removedItems = super.removeItem(character, item);
         getEquippedWeapon((FfCharacter) character);
+        return removedItems;
     }
 
     @Override

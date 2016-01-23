@@ -4,14 +4,20 @@ import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
+import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
@@ -26,53 +32,33 @@ import org.testng.annotations.Test;
  */
 @Test
 public class Ff38BookTakeItemControllerBTest {
-
-    private Ff38BookTakeItemController underTest;
-    private IMocksControl mockControl;
-    private BeanFactory beanFactory;
-    private HttpServletRequest request;
-    private HttpSessionWrapper wrapper;
-    private Paragraph paragraph;
-    private FfCharacter character;
+    @UnderTest private Ff38BookTakeItemController underTest;
+    @MockControl private IMocksControl mockControl;
+    @Inject private BeanFactory beanFactory;
+    @Mock private HttpServletRequest request;
+    @Mock private HttpSessionWrapper wrapper;
+    @Mock private Paragraph paragraph;
+    @Mock private FfCharacter character;
     private FfBookInformations info;
-    private FfCharacterHandler characterHandler;
-    private FfCharacterItemHandler itemHandler;
-    private FfAttributeHandler attributeHandler;
-    private CommandView commandView;
+    @Instance private FfCharacterHandler characterHandler;
+    @Mock private FfCharacterItemHandler itemHandler;
+    @Mock private FfAttributeHandler attributeHandler;
+    @Mock private CommandView commandView;
+    @Mock private List<Item> itemList;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        underTest = new Ff38BookTakeItemController();
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        underTest.setBeanFactory(beanFactory);
-        request = mockControl.createMock(HttpServletRequest.class);
-        wrapper = mockControl.createMock(HttpSessionWrapper.class);
-        paragraph = mockControl.createMock(Paragraph.class);
-        character = mockControl.createMock(FfCharacter.class);
         info = new FfBookInformations(1L);
-        characterHandler = new FfCharacterHandler();
-        itemHandler = mockControl.createMock(FfCharacterItemHandler.class);
         characterHandler.setItemHandler(itemHandler);
         info.setCharacterHandler(characterHandler);
         Whitebox.setInternalState(underTest, "info", info);
-        attributeHandler = mockControl.createMock(FfAttributeHandler.class);
         characterHandler.setAttributeHandler(attributeHandler);
         characterHandler.setCanEatEverywhere(true);
-        commandView = mockControl.createMock(CommandView.class);
     }
 
     @BeforeMethod
     public void setUpMethod() {
         mockControl.reset();
-    }
-
-    public void testConstructor() {
-        // GIVEN
-        mockControl.replay();
-        // WHEN
-        underTest.getClass();
-        // THEN
     }
 
     public void testDoHandleConsumeItemWhenActivatingLuckSpellWhileDoingLuckTestShouldAllowSpellActivation() {
@@ -92,7 +78,7 @@ public class Ff38BookTakeItemControllerBTest {
         expect(character.getCommandView()).andReturn(commandView);
         expect(commandView.getViewName()).andReturn("ffAttributeTest");
         character.changeLuck(3);
-        itemHandler.removeItem(character, item, 1);
+        expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
         final String returned = underTest.doHandleConsumeItem(request, item);
@@ -140,7 +126,7 @@ public class Ff38BookTakeItemControllerBTest {
         expect(character.getCommandView()).andReturn(null);
         expect(attributeHandler.resolveValue(character, "initialStamina")).andReturn(20);
         character.changeStamina(10);
-        itemHandler.removeItem(character, item, 1);
+        expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
         final String returned = underTest.doHandleConsumeItem(request, item);
@@ -187,7 +173,7 @@ public class Ff38BookTakeItemControllerBTest {
         expect(character.getCommandView()).andReturn(commandView);
         expect(commandView.getViewName()).andReturn("ffFightSingle");
         expect(itemHandler.addItem(character, "4013", 1)).andReturn(1);
-        itemHandler.removeItem(character, item, 1);
+        expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
         final String returned = underTest.doHandleConsumeItem(request, item);
@@ -212,7 +198,7 @@ public class Ff38BookTakeItemControllerBTest {
         expect(character.getCommandView()).andReturn(commandView);
         expect(commandView.getViewName()).andReturn("ffFightSingle");
         expect(itemHandler.addItem(character, "4014", 1)).andReturn(1);
-        itemHandler.removeItem(character, item, 1);
+        expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
         final String returned = underTest.doHandleConsumeItem(request, item);
@@ -237,7 +223,7 @@ public class Ff38BookTakeItemControllerBTest {
         expect(character.getCommandView()).andReturn(commandView);
         expect(commandView.getViewName()).andReturn("ffFightSingle");
         expect(itemHandler.addItem(character, "4015", 1)).andReturn(1);
-        itemHandler.removeItem(character, item, 1);
+        expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
         final String returned = underTest.doHandleConsumeItem(request, item);

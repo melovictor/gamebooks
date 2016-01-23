@@ -4,6 +4,7 @@ import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
+import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.controller.BookContentInitializer;
@@ -17,6 +18,7 @@ import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.easymock.IMocksControl;
@@ -58,6 +60,7 @@ public class GenericBookTakeItemControllerPositiveTest {
     @Inject private ItemInteractionRecorder itemInteractionRecorder;
     @Instance private TakeItemData takeData;
     @Instance private ReplaceItemData replaceData;
+    @Mock private List<Item> itemList;
 
     @BeforeClass
     public void setUpClass() {
@@ -169,7 +172,7 @@ public class GenericBookTakeItemControllerPositiveTest {
         expect(sessionWrapper.getParagraph()).andReturn(paragraph);
         contentInitializer.validateItem(glItem, playerUser, paragraph, info);
 
-        itemHandler.removeItem(character, "1001", 1);
+        expect(itemHandler.removeItem(character, "1001", 1)).andReturn(itemList);
         expect(itemHandler.addItem(character, "1002", 1)).andReturn(1);
         expect(sessionWrapper.getParagraph()).andReturn(paragraph);
         paragraph.removeValidItem("1002", 1);

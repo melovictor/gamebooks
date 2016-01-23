@@ -5,6 +5,7 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
+import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
@@ -16,6 +17,7 @@ import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.easymock.IMocksControl;
@@ -49,6 +51,7 @@ public class Ff38BookTakeItemControllerATest {
     @Mock private FfItem item;
     @Mock private FfAttributeHandler attributeHandler;
     @Inject private ItemInteractionRecorder itemInteractionRecorder;
+    @Mock private List<Item> itemList;
 
     @BeforeClass
     public void setUpClass() {
@@ -222,7 +225,7 @@ public class Ff38BookTakeItemControllerATest {
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(null);
         character.changeLuck(3);
-        itemHandler.removeItem(character, item, 1);
+        expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
         final String returned = underTest.doHandleConsumeItem(request, item);

@@ -139,7 +139,7 @@ public class FfItem extends Item {
     }
 
     @Override
-    public FfItem clone() throws CloneNotSupportedException {
+    public FfItem clone() {
         return (FfItem) super.clone();
     }
 

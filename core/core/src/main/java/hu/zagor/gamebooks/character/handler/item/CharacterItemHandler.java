@@ -5,7 +5,6 @@ import hu.zagor.gamebooks.character.ItemFactory;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.exception.InvalidItemException;
-
 import java.util.Iterator;
 import java.util.List;
 
@@ -36,15 +35,17 @@ public interface CharacterItemHandler {
      * @param character the {@link Character} on which we must act
      * @param itemId the id of the item to remove
      * @param amount the amount of the items to remove
+     * @return the list of items that were removed
      */
-    void removeItem(final Character character, final String itemId, final int amount);
+    List<Item> removeItem(final Character character, final String itemId, final int amount);
 
     /**
      * Removes the given equipment from the character's stock.
      * @param character the {@link Character} on which we must act
      * @param item the item to remove
+     * @return the list of items that were removed
      */
-    void removeItem(final Character character, GatheredLostItem item);
+    List<Item> removeItem(final Character character, GatheredLostItem item);
 
     /**
      * Checks if one piece of the equipment item identified by the given id has been collected or not.

@@ -10,6 +10,7 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
+import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
@@ -18,12 +19,14 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-import java.util.HashMap;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.List;
 import java.util.Map;
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
+import org.easymock.Mock;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -36,61 +39,37 @@ import org.testng.annotations.Test;
  */
 @Test
 public class Ff18FightCommandBasicSubResolverATest {
-
-    private Ff18FightCommandBasicSubResolver underTest;
-    private IMocksControl mockControl;
-    private FightCommand command;
+    @UnderTest private Ff18FightCommandBasicSubResolver underTest;
+    @MockControl private IMocksControl mockControl;
+    @Mock private FightCommand command;
     private ResolvationData resolvationData;
     private ParagraphData rootData;
-    private FfCharacter character;
-    private Map<String, Enemy> enemies;
+    @Mock private FfCharacter character;
+    @Mock private Map<String, Enemy> enemies;
     private FfBookInformations info;
-    private FfCharacterHandler characterHandler;
-    private FfUserInteractionHandler interactionHandler;
-    private FightCommandBasicSubResolver superResolver;
-    private List<ParagraphData> resolvedList;
-    private FfCharacterItemHandler itemHandler;
-    private FfItem weapon;
-    private BattleStatistics battleStat;
-    private RandomNumberGenerator generator;
-    private DiceResultRenderer renderer;
-    private FightCommandMessageList messageList;
-    private FfEnemy enemy;
+    @Instance private FfCharacterHandler characterHandler;
+    @Mock private FfUserInteractionHandler interactionHandler;
+    @Inject private FightCommandBasicSubResolver superResolver;
+    @Mock private List<ParagraphData> resolvedList;
+    @Mock private FfCharacterItemHandler itemHandler;
+    @Mock private FfItem weapon;
+    @Mock private BattleStatistics battleStat;
+    @Inject private RandomNumberGenerator generator;
+    @Inject private DiceResultRenderer renderer;
+    @Mock private FightCommandMessageList messageList;
+    @Mock private FfEnemy enemy;
+    @Mock private List<Item> itemList;
 
     @BeforeClass
     public void setUpClass() throws SecurityException {
-        mockControl = EasyMock.createStrictControl();
-        setUpClassUnchecked();
-        underTest = new Ff18FightCommandBasicSubResolver();
-        command = mockControl.createMock(FightCommand.class);
-        character = mockControl.createMock(FfCharacter.class);
         info = new FfBookInformations(1L);
-        characterHandler = new FfCharacterHandler();
-        interactionHandler = mockControl.createMock(FfUserInteractionHandler.class);
         characterHandler.setInteractionHandler(interactionHandler);
         info.setCharacterHandler(characterHandler);
         final Paragraph paragraph = new Paragraph("3", null, 11);
         paragraph.setData(rootData);
         resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).withEnemies(enemies)
             .build();
-        superResolver = mockControl.createMock(FightCommandBasicSubResolver.class);
-        Whitebox.setInternalState(underTest, "superResolver", superResolver);
-        itemHandler = mockControl.createMock(FfCharacterItemHandler.class);
         characterHandler.setItemHandler(itemHandler);
-        weapon = mockControl.createMock(FfItem.class);
-        battleStat = mockControl.createMock(BattleStatistics.class);
-        generator = mockControl.createMock(RandomNumberGenerator.class);
-        Whitebox.setInternalState(underTest, "generator", generator);
-        renderer = mockControl.createMock(DiceResultRenderer.class);
-        Whitebox.setInternalState(underTest, "renderer", renderer);
-        messageList = mockControl.createMock(FightCommandMessageList.class);
-        enemy = mockControl.createMock(FfEnemy.class);
-    }
-
-    @SuppressWarnings("unchecked")
-    private void setUpClassUnchecked() {
-        resolvedList = mockControl.createMock(List.class);
-        enemies = mockControl.createMock(HashMap.class);
     }
 
     @BeforeMethod
@@ -165,7 +144,7 @@ public class Ff18FightCommandBasicSubResolverATest {
         expect(itemHandler.hasItem(character, "4006")).andReturn(true);
         expect(command.getBattleStatistics("42")).andReturn(battleStat);
         expect(battleStat.getTotalLose()).andReturn(1);
-        itemHandler.removeItem(character, "4006", 1);
+        expect(itemHandler.removeItem(character, "4006", 1)).andReturn(itemList);
         final int[] randomResult = new int[]{1, 1};
         expect(generator.getRandomNumber(1)).andReturn(randomResult);
         expect(command.getMessages()).andReturn(messageList);
@@ -211,7 +190,7 @@ public class Ff18FightCommandBasicSubResolverATest {
         expect(itemHandler.hasItem(character, "4006")).andReturn(true);
         expect(command.getBattleStatistics("42")).andReturn(battleStat);
         expect(battleStat.getTotalLose()).andReturn(1);
-        itemHandler.removeItem(character, "4006", 1);
+        expect(itemHandler.removeItem(character, "4006", 1)).andReturn(itemList);
         final int[] randomResult = new int[]{5, 5};
         expect(generator.getRandomNumber(1)).andReturn(randomResult);
         expect(command.getMessages()).andReturn(messageList);
@@ -239,7 +218,7 @@ public class Ff18FightCommandBasicSubResolverATest {
         expect(interactionHandler.peekLastFightCommand(character, "enemyId")).andReturn(enemyId);
         expect(itemHandler.hasItem(character, "4006")).andReturn(false);
         expect(itemHandler.hasItem(character, "4007")).andReturn(true);
-        itemHandler.removeItem(character, "4007", 1);
+        expect(itemHandler.removeItem(character, "4007", 1)).andReturn(itemList);
         expect(itemHandler.hasItem(character, "4007")).andReturn(true);
         expect(itemHandler.getEquippedWeapon(character)).andReturn(weapon);
         expect(weapon.getId()).andReturn("1001");
@@ -260,9 +239,9 @@ public class Ff18FightCommandBasicSubResolverATest {
         expect(interactionHandler.peekLastFightCommand(character, "enemyId")).andReturn(enemyId);
         expect(itemHandler.hasItem(character, "4006")).andReturn(false);
         expect(itemHandler.hasItem(character, "4007")).andReturn(true);
-        itemHandler.removeItem(character, "4007", 1);
+        expect(itemHandler.removeItem(character, "4007", 1)).andReturn(itemList);
         expect(itemHandler.hasItem(character, "4007")).andReturn(false);
-        itemHandler.removeItem(character, "4003", 1);
+        expect(itemHandler.removeItem(character, "4003", 1)).andReturn(itemList);
         expect(itemHandler.getEquippedWeapon(character)).andReturn(weapon);
         expect(weapon.getId()).andReturn("1001");
         mockControl.replay();

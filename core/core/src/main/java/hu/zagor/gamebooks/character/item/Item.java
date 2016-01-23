@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.character.item;
 
 import hu.zagor.gamebooks.content.TrueCloneable;
-
 import org.springframework.util.Assert;
 
 /**
@@ -70,9 +69,14 @@ public class Item implements TrueCloneable {
     }
 
     @Override
-    public Item clone() throws CloneNotSupportedException {
-        final Item cloned = (Item) super.clone();
-        cloned.equipInfo = equipInfo.clone();
+    public Item clone() {
+        Item cloned;
+        try {
+            cloned = (Item) super.clone();
+            cloned.equipInfo = equipInfo.clone();
+        } catch (final CloneNotSupportedException exception) {
+            cloned = null;
+        }
         return cloned;
     }
 

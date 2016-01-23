@@ -139,11 +139,20 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
         final CharacterItemHandler itemHandler = characterHandler.getItemHandler();
         gatherItems(subData, character, itemHandler);
         loseItems(subData, character, itemHandler);
-        handleHideUnhide(character.getEquipment(), character.getHiddenEquipment(), subData.getHiddenItems());
-        handleHideUnhide(character.getHiddenEquipment(), character.getEquipment(), subData.getUnhiddenItems());
+        handleHide(character, subData.getHiddenItems(), itemHandler);
+        handleUnhide(character, subData.getUnhiddenItems());
     }
 
-    private void handleHideUnhide(final List<Item> sourceStore, final List<Item> targetStore, final List<GatheredLostItem> itemsToMove) {
+    private void handleHide(final Character character, final List<GatheredLostItem> itemsToMove, final CharacterItemHandler itemHandler) {
+        for (final GatheredLostItem glItem : itemsToMove) {
+            final List<Item> removedItems = itemHandler.removeItem(character, glItem);
+            character.getHiddenEquipment().addAll(removedItems);
+        }
+    }
+
+    private void handleUnhide(final Character character, final List<GatheredLostItem> itemsToMove) {
+        final List<Item> sourceStore = character.getHiddenEquipment();
+        final List<Item> targetStore = character.getEquipment();
         for (final GatheredLostItem glItem : itemsToMove) {
             for (int i = 0; i < glItem.getAmount(); i++) {
                 final Item item = getItem(sourceStore, glItem.getId());
@@ -158,7 +167,7 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
     private Item getItem(final List<Item> sourceStore, final String id) {
         Item selectedItem = null;
         for (final Item item : sourceStore) {
-            if (id.equals(item.getId())) {
+            if (item != null && id.equals(item.getId())) {
                 selectedItem = item;
             }
         }

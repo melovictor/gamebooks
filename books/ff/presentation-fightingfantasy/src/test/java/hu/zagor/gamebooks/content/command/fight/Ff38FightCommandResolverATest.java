@@ -9,6 +9,7 @@ import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
+import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
@@ -24,6 +25,7 @@ import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
@@ -59,6 +61,7 @@ public class Ff38FightCommandResolverATest {
     @Instance private FfEnemy heydrich;
     @Instance private FfEnemy thassalos;
     @Mock private FfParagraphData win;
+    @Mock private List<Item> itemList;
 
     @BeforeClass
     public void setUpClass() {
@@ -108,7 +111,7 @@ public class Ff38FightCommandResolverATest {
         expect(itemHandler.hasItem(character, "4014")).andReturn(true);
         expect(messages.addKey("page.ff.fight.spell.jandor.success")).andReturn(true);
         messages.switchToRoundMessages();
-        itemHandler.removeItem(character, "4014", 1);
+        expect(itemHandler.removeItem(character, "4014", 1)).andReturn(itemList);
         noWhiteWine();
         noAutoDamage();
         noRegeneratingRing();
@@ -134,7 +137,7 @@ public class Ff38FightCommandResolverATest {
         expect(itemHandler.hasItem(character, "4014")).andReturn(true);
         expect(messages.addKey("page.ff.fight.spell.jandor.failure")).andReturn(true);
         messages.switchToRoundMessages();
-        itemHandler.removeItem(character, "4014", 1);
+        expect(itemHandler.removeItem(character, "4014", 1)).andReturn(itemList);
         noWhiteWine();
         noAutoDamage();
         noRegeneratingRing();
@@ -162,7 +165,7 @@ public class Ff38FightCommandResolverATest {
         expect(messages.addKey("page.ff.fight.spell.jandor.40.true")).andReturn(true);
         expect(messages.addKey("page.ff.fight.spell.jandor.success2")).andReturn(true);
         messages.switchToRoundMessages();
-        itemHandler.removeItem(character, "4014", 1);
+        expect(itemHandler.removeItem(character, "4014", 1)).andReturn(itemList);
         noWhiteWine();
         noAutoDamage();
         noRegeneratingRing();
@@ -190,7 +193,7 @@ public class Ff38FightCommandResolverATest {
         expect(messages.addKey("page.ff.fight.spell.jandor.40.false")).andReturn(true);
         expect(messages.addKey("page.ff.fight.spell.jandor.success")).andReturn(true);
         messages.switchToRoundMessages();
-        itemHandler.removeItem(character, "4014", 1);
+        expect(itemHandler.removeItem(character, "4014", 1)).andReturn(itemList);
         noWhiteWine();
         noAutoDamage();
         noRegeneratingRing();
@@ -217,7 +220,7 @@ public class Ff38FightCommandResolverATest {
         expect(itemHandler.hasItem(character, "4015")).andReturn(true);
         expect(messages.addKey("page.ff.fight.spell.bash.success")).andReturn(true);
         messages.switchToRoundMessages();
-        itemHandler.removeItem(character, "4015", 1);
+        expect(itemHandler.removeItem(character, "4015", 1)).andReturn(itemList);
         noWhiteWine();
         expect(itemHandler.hasItem(character, "4004")).andReturn(false);
         noAutoDamage();
@@ -247,7 +250,7 @@ public class Ff38FightCommandResolverATest {
         expect(itemHandler.hasItem(character, "4015")).andReturn(true);
         expect(messages.addKey("page.ff.fight.spell.bash.failure")).andReturn(true);
         messages.switchToRoundMessages();
-        itemHandler.removeItem(character, "4015", 1);
+        expect(itemHandler.removeItem(character, "4015", 1)).andReturn(itemList);
         noWhiteWine();
         noAutoDamage();
         noRegeneratingRing();

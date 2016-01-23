@@ -7,10 +7,8 @@ import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.raw.character.RawCharacterPageData;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -23,8 +21,7 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 public class FfCharacterPageData extends RawCharacterPageData {
 
-    @LogInject
-    private Logger logger;
+    @LogInject private Logger logger;
 
     private final int skill;
     private final int stamina;
@@ -111,11 +108,7 @@ public class FfCharacterPageData extends RawCharacterPageData {
     private void addProvision(final Item item) {
         final Item foundItem = getExistingProvision(item.getId());
         if (foundItem == null) {
-            try {
-                provisions.add(item.clone());
-            } catch (final CloneNotSupportedException e) {
-                logger.error("Failed to clone item {} for the character page.", item.getId(), e);
-            }
+            provisions.add(item.clone());
         } else {
             foundItem.setAmount(foundItem.getAmount() + 1);
         }
