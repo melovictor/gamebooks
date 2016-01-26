@@ -12,6 +12,12 @@ public class SuccessFailureDataContainer implements TrueCloneable {
     private Integer rolled;
 
     /**
+     * Default constructor for the Spring deserializer.
+     */
+    SuccessFailureDataContainer() {
+    }
+
+    /**
      * Basic constructor to set all fields with.
      * @param data the {@link FfParagraphData} object
      * @param rolled the value rolled at which this data must kick in
