@@ -32,7 +32,7 @@ public class UserInputTransformer extends AbstractStubTransformer {
         command.setType(type);
         final CommandSubTransformer<UserInputCommand> transformer = userInputTransformers.get(type);
         if (transformer == null) {
-            throw new UnsupportedOperationException(type);
+            throw new UnsupportedOperationException("Cannot transform user input of type '" + type + "'.");
         }
         transformer.transform(parent, node, command, positionCounter);
         return command;
