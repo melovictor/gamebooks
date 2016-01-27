@@ -1926,7 +1926,372 @@
     <next id="156">Ha vállalod ezt a kihívást</next>
     <next id="165">Ha nem, és inkább elhagyod a kápolnát, és folytatod az utadat</next>
   </p>
-  <!-- 188 -->
+  <p id="188">
+    <text>
+        [p]Megállsz az egyik kockavető asztalnál, és érdeklődve figyeled, mit játszanak. Vagy egy tucat ember a ,,kitalálóst'' játssza. Miközben a játékot nézed, gyorsan rájössz a játékszabályra. A tét 1 Aranytallér dobásonként. A tétedet 1-6-ig bármelyik számra ráhelyezheted. Egy kockával dobnak, és ha a dobott szám megegyezik azzal a számmal, amelyikre a pénzedet tetted, 10 Aranytallér jutalom üti a markodat. Szemmel láthatólag igen kedvező az osztalék. Ha akarod, a szerencsét is segítségül hívhatod. Ilyenkor ha SZERENCSÉD van, mielőtt a játék kockával dobnál, jelöld meg bármelyik számot, amit eddig még nem választottál, és ha ez a második szám jön ki, nem kell vele törődnöd, hanem újra dobhatsz, s ezáltal is növeled az általad kiválasztott szám esélyét.[/p]
+        [p]Bármely dobásra csak egyszer tehetsz, és a SZERENCSÉDET is csupán egyszer hívhatod segítségül minden egyes tétnél. Ötször játszhatsz, ezt követően el kell hagynod a játéktermet, hiszen nem szabad megfeledkezned küldetésed valódi céljáról![/p]
+    </text>
+    <itemCheck type="goldpiece" id="1">
+      <have>
+        <next id="188a">Ha játszanál</next>
+        <next id="39">Ha elhagynád a termet</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Sajnos egyetlen Aranytallérod sincs, így kénytelen vagy elhagyni a termet.[/p]
+        </text>
+        <next id="39"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="188a" display="188">
+    <text>
+        [p]Megállsz az egyik kockavető asztalnál, és érdeklődve figyeled, mit játszanak. Vagy egy tucat ember a ,,kitalálóst'' játssza. Miközben a játékot nézed, gyorsan rájössz a játékszabályra. A tét 1 Aranytallér dobásonként. A tétedet 1-6-ig bármelyik számra ráhelyezheted. Egy kockával dobnak, és ha a dobott szám megegyezik azzal a számmal, amelyikre a pénzedet tetted, 10 Aranytallér jutalom üti a markodat. Szemmel láthatólag igen kedvező az osztalék. Ha akarod, a szerencsét is segítségül hívhatod. Ilyenkor ha SZERENCSÉD van, mielőtt a játék kockával dobnál, jelöld meg bármelyik számot, amit eddig még nem választottál, és ha ez a második szám jön ki, nem kell vele törődnöd, hanem újra dobhatsz, s ezáltal is növeled az általad kiválasztott szám esélyét.[/p]
+        [p]Bármely dobásra csak egyszer tehetsz, és a SZERENCSÉDET is csupán egyszer hívhatod segítségül minden egyes tétnél. Ötször játszhatsz, ezt követően el kell hagynod a játéktermet, hiszen nem szabad megfeledkezned küldetésed valódi céljáról![/p]
+    </text>
+    <add amount="-1" to="gold" />
+    <userInput min="1" max="6" type="number">
+      <label>Melyik számot teszed meg?</label>
+      <result minBound="1" maxBound="1">
+        <gatherItem id="4041" />
+      </result>
+      <result minBound="2" maxBound="2">
+        <gatherItem id="4042" />
+      </result>
+      <result minBound="3" maxBound="3">
+        <gatherItem id="4043" />
+      </result>
+      <result minBound="4" maxBound="4">
+        <gatherItem id="4044" />
+      </result>
+      <result minBound="5" maxBound="5">
+        <gatherItem id="4045" />
+      </result>
+      <result minBound="6" maxBound="6">
+        <gatherItem id="4046" />
+      </result>
+    </userInput>
+    <next id="188b">Ha bízol a kockában</next>
+    <next id="188c">Ha Sindla segítségét kérnéd</next>
+  </p>
+  <p id="188b" display="188">
+    <text>
+        [p]Megállsz az egyik kockavető asztalnál, és érdeklődve figyeled, mit játszanak. Vagy egy tucat ember a ,,kitalálóst'' játssza. Miközben a játékot nézed, gyorsan rájössz a játékszabályra. A tét 1 Aranytallér dobásonként. A tétedet 1-6-ig bármelyik számra ráhelyezheted. Egy kockával dobnak, és ha a dobott szám megegyezik azzal a számmal, amelyikre a pénzedet tetted, 10 Aranytallér jutalom üti a markodat. Szemmel láthatólag igen kedvező az osztalék. Ha akarod, a szerencsét is segítségül hívhatod. Ilyenkor ha SZERENCSÉD van, mielőtt a játék kockával dobnál, jelöld meg bármelyik számot, amit eddig még nem választottál, és ha ez a második szám jön ki, nem kell vele törődnöd, hanem újra dobhatsz, s ezáltal is növeled az általad kiválasztott szám esélyét.[/p]
+        [p]Bármely dobásra csak egyszer tehetsz, és a SZERENCSÉDET is csupán egyszer hívhatod segítségül minden egyes tétnél. Ötször játszhatsz, ezt követően el kell hagynod a játéktermet, hiszen nem szabad megfeledkezned küldetésed valódi céljáról![/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <itemCheck type="item" id="4041">
+          <have>
+            <text>[p]A választott számod jött ki, nyersz 10 Aranytallért.[/p]</text>
+            <add amount="10" to="gold" />
+          </have>
+          <dontHave>
+            <text>[p]Nem a választott számod jött ki, nem nyertél.[/p]</text>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result max="2" min="2">
+        <itemCheck type="item" id="4042">
+          <have>
+            <text>[p]A választott számod jött ki, nyersz 10 Aranytallért.[/p]</text>
+            <add amount="10" to="gold" />
+          </have>
+          <dontHave>
+            <text>[p]Nem a választott számod jött ki, nem nyertél.[/p]</text>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result max="3" min="3">
+        <itemCheck type="item" id="4043">
+          <have>
+            <text>[p]A választott számod jött ki, nyersz 10 Aranytallért.[/p]</text>
+            <add amount="10" to="gold" />
+          </have>
+          <dontHave>
+            <text>[p]Nem a választott számod jött ki, nem nyertél.[/p]</text>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result max="4" min="4">
+        <itemCheck type="item" id="4044">
+          <have>
+            <text>[p]A választott számod jött ki, nyersz 10 Aranytallért.[/p]</text>
+            <add amount="10" to="gold" />
+          </have>
+          <dontHave>
+            <text>[p]Nem a választott számod jött ki, nem nyertél.[/p]</text>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result max="5" min="5">
+        <itemCheck type="item" id="4045">
+          <have>
+            <text>[p]A választott számod jött ki, nyersz 10 Aranytallért.[/p]</text>
+            <add amount="10" to="gold" />
+          </have>
+          <dontHave>
+            <text>[p]Nem a választott számod jött ki, nem nyertél.[/p]</text>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result max="6" min="6">
+        <itemCheck type="item" id="4046">
+          <have>
+            <text>[p]A választott számod jött ki, nyersz 10 Aranytallért.[/p]</text>
+            <add amount="10" to="gold" />
+          </have>
+          <dontHave>
+            <text>[p]Nem a választott számod jött ki, nem nyertél.[/p]</text>
+          </dontHave>
+        </itemCheck>
+      </result>
+    </random>
+    <gatherItem id="4032" />
+    <itemCheck type="item" id="4032" amount="5">
+      <have>
+        <text>
+            [p]El kell hagynod a játéktermet, hiszen nem szabad megfeledkezned küldetésed valódi céljáról![/p]
+        </text>
+        <next id="39"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="goldpiece" id="1">
+          <have>
+            <next id="188a">Ha ismét szerencsét próbálnál</next>
+            <next id="39">Ha elhagyod a termet</next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Eljátszottad az utolsó Aranytallérodat is, így kénytelen vagy elhagyni a termet.[/p]
+            </text>
+            <next id="39"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+      <after>
+        <loseItem id="4041" />
+        <loseItem id="4042" />
+        <loseItem id="4043" />
+        <loseItem id="4044" />
+        <loseItem id="4045" />
+        <loseItem id="4046" />
+      </after>
+    </itemCheck>
+  </p>
+  <p id="188c" display="188">
+    <text>
+        [p]Megállsz az egyik kockavető asztalnál, és érdeklődve figyeled, mit játszanak. Vagy egy tucat ember a ,,kitalálóst'' játssza. Miközben a játékot nézed, gyorsan rájössz a játékszabályra. A tét 1 Aranytallér dobásonként. A tétedet 1-6-ig bármelyik számra ráhelyezheted. Egy kockával dobnak, és ha a dobott szám megegyezik azzal a számmal, amelyikre a pénzedet tetted, 10 Aranytallér jutalom üti a markodat. Szemmel láthatólag igen kedvező az osztalék. Ha akarod, a szerencsét is segítségül hívhatod. Ilyenkor ha SZERENCSÉD van, mielőtt a játék kockával dobnál, jelöld meg bármelyik számot, amit eddig még nem választottál, és ha ez a második szám jön ki, nem kell vele törődnöd, hanem újra dobhatsz, s ezáltal is növeled az általad kiválasztott szám esélyét.[/p]
+        [p]Bármely dobásra csak egyszer tehetsz, és a SZERENCSÉDET is csupán egyszer hívhatod segítségül minden egyes tétnél. Ötször játszhatsz, ezt követően el kell hagynod a játéktermet, hiszen nem szabad megfeledkezned küldetésed valódi céljáról![/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]A szerencse melléd állt.[/p]
+        </text>
+        <userInput type="number" min="1" max="6">
+          <label>Melyik számot szeretnéd kizárni a játékból?</label>
+          <result maxBound="1" minBound="1">
+            <gatherItem id="4051" />
+          </result>
+          <result maxBound="2" minBound="2">
+            <gatherItem id="4052" />
+          </result>
+          <result maxBound="3" minBound="3">
+            <gatherItem id="4053" />
+          </result>
+          <result maxBound="4" minBound="4">
+            <gatherItem id="4054" />
+          </result>
+          <result maxBound="5" minBound="5">
+            <gatherItem id="4055" />
+          </result>
+          <result maxBound="6" minBound="6">
+            <gatherItem id="4056" />
+          </result>
+        </userInput>
+        <next id="188d"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A szerencse nem állt melléd.[/p]
+        </text>
+        <next id="188b"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="188d" display="188">
+    <text>
+        [p]Megállsz az egyik kockavető asztalnál, és érdeklődve figyeled, mit játszanak. Vagy egy tucat ember a ,,kitalálóst'' játssza. Miközben a játékot nézed, gyorsan rájössz a játékszabályra. A tét 1 Aranytallér dobásonként. A tétedet 1-6-ig bármelyik számra ráhelyezheted. Egy kockával dobnak, és ha a dobott szám megegyezik azzal a számmal, amelyikre a pénzedet tetted, 10 Aranytallér jutalom üti a markodat. Szemmel láthatólag igen kedvező az osztalék. Ha akarod, a szerencsét is segítségül hívhatod. Ilyenkor ha SZERENCSÉD van, mielőtt a játék kockával dobnál, jelöld meg bármelyik számot, amit eddig még nem választottál, és ha ez a második szám jön ki, nem kell vele törődnöd, hanem újra dobhatsz, s ezáltal is növeled az általad kiválasztott szám esélyét.[/p]
+        [p]Bármely dobásra csak egyszer tehetsz, és a SZERENCSÉDET is csupán egyszer hívhatod segítségül minden egyes tétnél. Ötször játszhatsz, ezt követően el kell hagynod a játéktermet, hiszen nem szabad megfeledkezned küldetésed valódi céljáról![/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <itemCheck type="item" id="4051">
+          <have>
+            <text>[p]Mielőtt a kocka megállapodna az 1-es számon, Sindla meglöki azt, így tovább gurul.[/p]</text>
+            <gatherItem id="4033" />
+            <next id="188d"></next>
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="4041">
+              <have>
+                <text>[p]A választott számod jött ki, nyersz 10 Aranytallért.[/p]</text>
+                <add amount="10" to="gold" />
+              </have>
+              <dontHave>
+                <text>[p]Nem a választott számod jött ki, nem nyertél.[/p]</text>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result max="2" min="2">
+        <itemCheck type="item" id="4052">
+          <have>
+            <text>[p]Mielőtt a kocka megállapodna a 2-es számon, Sindla meglöki azt, így tovább gurul.[/p]</text>
+            <gatherItem id="4033" />
+            <next id="188d"></next>
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="4042">
+              <have>
+                <text>[p]A választott számod jött ki, nyersz 10 Aranytallért.[/p]</text>
+                <add amount="10" to="gold" />
+              </have>
+              <dontHave>
+                <text>[p]Nem a választott számod jött ki, nem nyertél.[/p]</text>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result max="3" min="3">
+        <itemCheck type="item" id="4053">
+          <have>
+            <text>[p]Mielőtt a kocka megállapodna a 3-as számon, Sindla meglöki azt, így tovább gurul.[/p]</text>
+            <gatherItem id="4033" />
+            <next id="188d"></next>
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="4043">
+              <have>
+                <text>[p]A választott számod jött ki, nyersz 10 Aranytallért.[/p]</text>
+                <add amount="10" to="gold" />
+              </have>
+              <dontHave>
+                <text>[p]Nem a választott számod jött ki, nem nyertél.[/p]</text>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result max="4" min="4">
+        <itemCheck type="item" id="4054">
+          <have>
+            <text>[p]Mielőtt a kocka megállapodna a 4-es számon, Sindla meglöki azt, így tovább gurul.[/p]</text>
+            <gatherItem id="4033" />
+            <next id="188d"></next>
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="4044">
+              <have>
+                <text>[p]A választott számod jött ki, nyersz 10 Aranytallért.[/p]</text>
+                <add amount="10" to="gold" />
+              </have>
+              <dontHave>
+                <text>[p]Nem a választott számod jött ki, nem nyertél.[/p]</text>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result max="5" min="5">
+        <itemCheck type="item" id="4055">
+          <have>
+            <text>[p]Mielőtt a kocka megállapodna az 5-ös számon, Sindla meglöki azt, így tovább gurul.[/p]</text>
+            <gatherItem id="4033" />
+            <next id="188d"></next>
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="4045">
+              <have>
+                <text>[p]A választott számod jött ki, nyersz 10 Aranytallért.[/p]</text>
+                <add amount="10" to="gold" />
+              </have>
+              <dontHave>
+                <text>[p]Nem a választott számod jött ki, nem nyertél.[/p]</text>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result max="6" min="6">
+        <itemCheck type="item" id="4056">
+          <have>
+            <text>[p]Mielőtt a kocka megállapodna a 6-os számon, Sindla meglöki azt, így tovább gurul.[/p]</text>
+            <gatherItem id="4033" />
+            <next id="188d"></next>
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="4046">
+              <have>
+                <text>[p]A választott számod jött ki, nyersz 10 Aranytallért.[/p]</text>
+                <add amount="10" to="gold" />
+              </have>
+              <dontHave>
+                <text>[p]Nem a választott számod jött ki, nem nyertél.[/p]</text>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </result>
+    </random>
+    <itemCheck type="item" id="4033">
+      <have>
+        <loseItem id="4033" />
+      </have>
+      <dontHave>
+        <gatherItem id="4032" />
+        <itemCheck type="item" id="4032" amount="5">
+          <have>
+            <text>
+                [p]El kell hagynod a játéktermet, hiszen nem szabad megfeledkezned küldetésed valódi céljáról![/p]
+            </text>
+            <next id="39"></next>
+          </have>
+          <dontHave>
+            <itemCheck type="goldpiece" id="1">
+              <have>
+                <next id="188a">Ha ismét szerencsét próbálnál</next>
+                <next id="39">Ha elhagyod a termet</next>
+              </have>
+              <dontHave>
+                <text>
+                    [p]Eljátszottad az utolsó Aranytallérodat is, így kénytelen vagy elhagyni a termet.[/p]
+                </text>
+                <next id="39"></next>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+          <after>
+            <loseItem id="4041" />
+            <loseItem id="4042" />
+            <loseItem id="4043" />
+            <loseItem id="4044" />
+            <loseItem id="4045" />
+            <loseItem id="4046" />
+            <loseItem id="4051" />
+            <loseItem id="4052" />
+            <loseItem id="4053" />
+            <loseItem id="4054" />
+            <loseItem id="4055" />
+            <loseItem id="4056" />
+          </after>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 189 -->
   <p id="190">
     <text>
