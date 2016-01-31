@@ -38,7 +38,7 @@ public class DefaultDeductionCalculatorTest {
         item6 = getItem(6);
         item5 = getItem(5);
         item4 = getItem(4);
-        itemnv = getItem(10, ItemType.common);
+        itemnv = getItem(11, ItemType.common);
     }
 
     private FfItem getItem(final int price) {
@@ -46,7 +46,7 @@ public class DefaultDeductionCalculatorTest {
     }
 
     private FfItem getItem(final int price, final ItemType type) {
-        final FfItem item = new FfItem("", "", type);
+        final FfItem item = new FfItem("gold" + price, "gold " + price + " - " + type, type);
         item.setGold(price);
         return item;
     }
@@ -125,6 +125,35 @@ public class DefaultDeductionCalculatorTest {
         // WHEN
         underTest.calculateDeductibleElements(character, 0);
         // THEN throws exception
+    }
+
+    public void testCalculateDeductibleElementsWhenGoldIsMoreThanTotalWealthShouldReturnEverything() {
+        // GIVEN
+        expect(character.getFfEquipment()).andReturn(new ArrayList<>(Arrays.asList(item4, itemnv, item5, item10, item6)));
+        expect(character.getGold()).andReturn(15);
+        mockControl.replay();
+        // WHEN
+        final GoldItemDeduction calculateDeductibleElements = underTest.calculateDeductibleElements(character, 9999999);
+        // THEN
+        Assert.assertEquals(calculateDeductibleElements.getGold(), 15);
+        Assert.assertEquals(calculateDeductibleElements.getItems().size(), 4);
+        Assert.assertFalse(calculateDeductibleElements.getItems().contains(itemnv));
+        Assert.assertTrue(calculateDeductibleElements.getItems().contains(item10));
+        Assert.assertTrue(calculateDeductibleElements.getItems().contains(item4));
+        Assert.assertTrue(calculateDeductibleElements.getItems().contains(item5));
+        Assert.assertTrue(calculateDeductibleElements.getItems().contains(item6));
+    }
+
+    public void testCalculateDeductibleElementsWhenGoldHasNoValuablesShouldReturnAmountToBeDeductedAsGold() {
+        // GIVEN
+        expect(character.getFfEquipment()).andReturn(new ArrayList<>(Arrays.asList(itemnv)));
+        expect(character.getGold()).andReturn(15);
+        mockControl.replay();
+        // WHEN
+        final GoldItemDeduction calculateDeductibleElements = underTest.calculateDeductibleElements(character, 3);
+        // THEN
+        Assert.assertEquals(calculateDeductibleElements.getGold(), 3);
+        Assert.assertTrue(calculateDeductibleElements.getItems().isEmpty());
     }
 
     @AfterMethod

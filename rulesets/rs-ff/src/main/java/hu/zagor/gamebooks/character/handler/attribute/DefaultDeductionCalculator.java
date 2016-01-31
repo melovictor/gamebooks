@@ -21,7 +21,27 @@ public class DefaultDeductionCalculator implements DeductionCalculator {
     public GoldItemDeduction calculateDeductibleElements(final FfCharacter character, final int amount) {
         Assert.isTrue(amount > 0, "The amount to calculate must be bigger than zero.");
         final List<FfItem> valuables = gatherValuables(character);
-        return calculateAmount(valuables, character.getGold(), amount);
+        GoldItemDeduction calculateAmount;
+        final int gold = character.getGold();
+        if (valuables.isEmpty()) {
+            calculateAmount = new GoldItemDeduction();
+            calculateAmount.setGold(amount);
+        } else if (amountMoreThanWealth(gold, valuables, amount)) {
+            calculateAmount = new GoldItemDeduction();
+            calculateAmount.setGold(gold);
+            calculateAmount.getItems().addAll(valuables);
+        } else {
+            calculateAmount = calculateAmount(valuables, gold, amount);
+        }
+        return calculateAmount;
+    }
+
+    private boolean amountMoreThanWealth(final int gold, final List<FfItem> valuables, final int amount) {
+        int totalWealth = gold;
+        for (final FfItem item : valuables) {
+            totalWealth += item.getGold();
+        }
+        return totalWealth <= amount;
     }
 
     private List<FfItem> gatherValuables(final FfCharacter character) {
