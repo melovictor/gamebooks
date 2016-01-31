@@ -3,7 +3,9 @@ package hu.zagor.gamebooks.ff.sor.kcot.mvc.books.section.controller;
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
+import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
+import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.Paragraph;
@@ -135,6 +137,9 @@ public class Sor2BookSectionController extends SorBookSectionController {
         super.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
         final String sectionId = paragraph.getId();
         final SorCharacter character = (SorCharacter) wrapper.getCharacter();
+        final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
+        final FfUserInteractionHandler interactionHandler = characterHandler.getInteractionHandler();
+        final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
         if (DANCER_SECTION_ID.equals(sectionId)) {
             final List<ProcessableItemHolder> itemsToProcess = paragraph.getItemsToProcess();
             if (!itemsToProcess.isEmpty()) {
@@ -143,12 +148,19 @@ public class Sor2BookSectionController extends SorBookSectionController {
                 command.setAgainst(String.valueOf(itemCount));
             }
         } else if (ENTER_VLAD_GAMBLING_HALL.equals(sectionId)) {
-            getInfo().getCharacterHandler().getInteractionHandler().setInteractionState(character, "goldBeforeGambling", String.valueOf(character.getGold()));
+            interactionHandler.setInteractionState(character, "goldBeforeGambling", String.valueOf(character.getGold()));
         } else if (LEAVE_VLAD_GAMBLING_HALL.equals(sectionId)) {
             final int currentGold = character.getGold();
-            final int previousGold = Integer.valueOf(getInfo().getCharacterHandler().getInteractionHandler().getInteractionState(character, "goldBeforeGambling"));
+            final int previousGold = Integer.valueOf(interactionHandler.getInteractionState(character, "goldBeforeGambling"));
             if (previousGold < currentGold) {
-                getInfo().getCharacterHandler().getItemHandler().addItem(character, "4031", 1);
+                itemHandler.addItem(character, "4031", 1);
+            }
+        } else if ("286".equals(sectionId)) {
+            if (!itemHandler.hasItem(character, "4034")) {
+                final int gold = character.getGold();
+                if (gold > 0) {
+                    itemHandler.addItem(character, "4034", gold);
+                }
             }
         }
     }
@@ -156,17 +168,24 @@ public class Sor2BookSectionController extends SorBookSectionController {
     @Override
     protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
         super.handleCustomSectionsPost(model, wrapper, sectionIdentifier, paragraph);
-        if (FIGHT_WITH_SELF_ID.equals(paragraph.getId())) {
+        final String sectionId = paragraph.getId();
+        if (FIGHT_WITH_SELF_ID.equals(sectionId)) {
             final FfEnemy enemy = (FfEnemy) wrapper.getEnemies().get(SELF_ENEMY_ID);
             if (enemy.getStamina() == SELF_ENEMY_INITIAL_STAMINA) {
                 final SorCharacter character = (SorCharacter) wrapper.getCharacter();
                 enemy.setStamina(character.getStamina());
                 enemy.setSkill(character.getSkill());
             }
-        } else if ("234b".equals(paragraph.getId())) {
+        } else if ("234b".equals(sectionId)) {
             setUpWinnings(wrapper);
-        } else if ("448".equals(paragraph.getId()) || "506".equals(paragraph.getId())) {
+        } else if ("448".equals(sectionId) || "506".equals(sectionId)) {
             listHiddenItems(wrapper);
+        } else if ("463".equals(sectionId) || "349".equals(sectionId)) {
+            final String text = paragraph.getData().getText();
+            final ParagraphData data = paragraph.getData();
+            final int totalGoldWithRedEyes = getInfo().getCharacterHandler().getItemHandler().getItems(wrapper.getCharacter(), "4034").size();
+            data.setText(text.replace("XX", String.valueOf(totalGoldWithRedEyes)));
+            paragraph.calculateValidEvents();
         }
     }
 

@@ -388,7 +388,32 @@
     <next id="242">Megpróbálsz valamilyen információt kicsikarni belőlük?</next>
     <next id="58">Kardot rántasz ellenük?</next>
   </p>
-  <!-- 24 -->
+  <p id="24">
+    <text>
+        [p]Elindulnak feléd, és te besurransz a bal oldali mellékutcába. Üldözőbe vesznek. Igen gyorsak, de meg kell próbálnod lerázni őket.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz, vagy megpróbálhatsz elfutni előlük.[/p]
+        </text>
+        <spell name="TÁN" id="489" />
+        <spell name="POR" id="458" />
+        <spell name="YOB" id="354" />
+        <spell name="BŰZ" id="407" />
+        <spell name="ELT" id="510" />
+        <next id="41">Az első utcán jobbra, majd a következőn jobbra és az elsőn balra?</next>
+        <next id="184">Az első utcán balra, majd az elsőn jobbra és a következőn jobbra?</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Merre futsz?[/p]
+        </text>
+        <next id="41">Az első utcán jobbra, majd a következőn jobbra és az elsőn balra?</next>
+        <next id="184">Az első utcán balra, majd az elsőn jobbra és a következőn jobbra?</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="25">
     <text>
         [p]A Szerencsekerék minden egyes forgatása 1 Aranytallérba kerül. A lehetséges nyeremények összege 5, 10 vagy 20 Aranytallér. Addig fizethetsz be a játékba és annyiszor játszol, ameddig nem nyersz. Miután nyertél, el kell hagynod a játéktermet.[/p]
@@ -625,7 +650,12 @@
     <next id="230">Ha továbbra sem akarsz beállni közéjük táncolni</next>
     <next id="17">Ha viszont nem akarod magadra haragítani a tömeget</next>
   </p>
-  <!-- 41 -->
+  <p id="41">
+    <text>
+        [p]Egy kunyhó előtt megállsz. Mögötted egyre hangosabb a lábdobogás. Úgy döntesz, besurransz a kunyhóba.[/p]
+    </text>
+    <next id="324"></next>
+  </p>
   <p id="42">
     <text>
         [p]Zsákutcába kerültél. Vissza kell fordulnod. Merre mész tovább?[/p]
@@ -1069,7 +1099,15 @@
   </p>
   <!-- 87 -->
   <!-- 88 -->
-  <!-- 89 -->
+  <p id="89">
+    <text>
+        [p]Kissé följebb az úton egy elágazáshoz érsz, ahonnan vagy jobbra, vagy balra mehetsz tovább. A baloldali elágazás kivezet a városból, míg a jobb oldali egy rövidke utcába torkollik, ahol egy magas épületen a következő kiírás olvasható: [span class="ffAttribute"]Vlada Játéktermei[/span]. Az útkereszteződésben egy Bronzszobor áll; a lábánál sok-sok Aranytallérral teli edényt látsz. Rögtön rájössz, hogy ez nem lehet más, csupán Kharé egyik istene, és az edényben az ő híveinek ajándéka gyűlik.[/p]
+    </text>
+    <loseItem id="4034" amount="9999" />
+    <next id="104">Ha a baloldali elágazáson mennél tovább, a városból kifelé</next>
+    <next id="56">Ha a jobb oldali elágazáson mész tovább és meglátogatod Vlada Játéktermek</next>
+    <next id="221">Ha viszont a Szobor lábánál lévő edényből csennél egy marék aranyat</next>
+  </p>
   <p id="90">
     <text>
         [p]Bekiáltasz az ajtóból, hátha van benn valaki. Egy hang válaszol: - Gyere be, barátom, de vigyázz, amikor kinyitod az ajtót! - Meglököd az ajtót, és hirtelen hátraugrasz, mert az ajtó tetejéről egy folyadékkal teli üvegcse pottyan le. Belépsz a kunyhóba.[/p]
@@ -1221,7 +1259,27 @@
     </itemCheck>
     <next id="81"></next>
   </p>
-  <!-- 103 -->
+  <p id="103">
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="GAK" id="463" />
+        <spell name="MEN" id="446" />
+        <spell name="TÜK" id="349" />
+        <spell name="KIN" id="363" />
+        <spell name="HOM" id="422" />
+        <next id="192">Ha kardot rántanál</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Kardot rántasz.[/p]
+        </text>
+        <next id="192"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 104 -->
   <p id="105">
     <text>
@@ -1410,7 +1468,12 @@
     <next id="60">Vagy egyenesen mész tovább</next>
     <next id="139">Vagy letérsz balra</next>
   </p>
-  <!-- 121 -->
+  <p id="121">
+    <text>
+        [p]Figyelmesen néznek, amint elhaladsz mellettük. Tökéletesen tisztában vannak azzal, hogy kész vagy megverekedni velük, de ez nem látszik rajtuk. Egyikük hirtelen elkiáltja magát, erre mindannyian rád támadnak. Meg kell küzdened velük![/p]
+    </text>
+    <next id="103"></next>
+  </p>
   <!-- 122 -->
   <p id="123">
     <text>
@@ -1455,7 +1518,14 @@
     </text>
     <next id="165"></next>
   </p>
-  <!-- 132 -->
+  <p id="132">
+    <text>
+        [p]Egy keskeny, kanyargós úton indulsz el, amely tele van üzletekkel és különböző árusok standjaival. Még igen korán van, és az üzletek csak egy-két óra múlva nyitnak ki, de a házak előtti sürgölődésből arra lehet következtetni, hogy a nap elkezdődött. Az egyik ablakban egy arc jelenik meg, és úgy érzed, mintha téged nézne, amint elhaladsz; ugyanakkor azt is látod, hogy az illető szeme csukva van, így nem vagy teljesen biztos benne, hogy valójában lát-e. Egy másik hasonló teremtmény az ajtónál áll és az utca kövét mossa. A vékony, nyurga teremtésnek hosszúkás az arca, és az ő szeme is csukva van. Kissé följebb fiatal férfiak állnak csapatba verődve az úton. Egyikük ,,észrevesz'', és mond valamit a többieknek. Lehet, hogy ebből baj lesz?[/p]
+    </text>
+    <next id="286">Ha továbbmész az utcán, és szívélyesen üdvözlöd őket, amikor elhaladsz mellettük</next>
+    <next id="121">Ha továbbmész, de felkészülsz rá, hogy esetleg megtámadnak</next>
+    <next id="24">Ha lemész egy mellékutcán és elkerülöd őket</next>
+  </p>
   <p id="133">
     <text>
         [p]Kissé följebb a kereskedők fertályára érsz, az úton, ahol fazekasok, takácsok és különböző kézművesek kínálgatják portékáikat a kunyhóik előtt.[/p]
@@ -1632,7 +1702,7 @@
                 [p]Az üvegcsében lévő por valójában homok. Visszadugaszolod az üvegcsét, és elteszed.[/p]
             </text>
             <loseItem id="3039" />
-            <gatherItem id="3041" />
+            <gatherItem id="3027" />
           </have>
         </itemCheck>
         <itemCheck type="item" id="3038">
@@ -1897,7 +1967,12 @@
     <next id="49">Vagy felpattanhatsz a hátára</next>
     <next id="237">Vagy ott hagyhatod, ahol van, és továbbmehetsz utadon</next>
   </p>
-  <!-- 184 -->
+  <p id="184">
+    <text>
+        [p]Az utolsó kanyarnál a szívverésed is eláll: zsákutcába kerültél. Egyre közelebbről hallod a lépteket. Amint a teremtmények bekanyarodnak a sarkon, meg kell küzdened velük.[/p]
+    </text>
+    <next id="103"></next>
+  </p>
   <p id="185">
     <text>
         [p]Talán a küzdelem befejeződött, amíg a vegyesboltban voltál.[/p]
@@ -2604,7 +2679,7 @@
             [p]Az üvegcsében lévő por valójában homok. Visszadugaszolod az üvegcsét, és elteszed.[/p]
         </text>
         <loseItem id="3039" />
-        <gatherItem id="3041" />
+        <gatherItem id="3027" />
       </have>
     </itemCheck>
     <itemCheck type="item" id="3038">
@@ -2850,7 +2925,7 @@
             [p]Az üvegcsében lévő por valójában homok. Visszadugaszolod az üvegcsét, és elteszed.[/p]
         </text>
         <loseItem id="3039" />
-        <gatherItem id="3041" />
+        <gatherItem id="3027" />
       </have>
     </itemCheck>
     <itemCheck type="item" id="3038">
@@ -3237,7 +3312,13 @@
     </text>
     <next id="239"></next>
   </p>
-  <!-- 277 -->
+  <p id="277">
+    <text>
+        [p]Gúnyolnak, hogy csinálj valamit. Rá kell kényszerítened őket, hogy adják vissza a pénzedet. Egyikük pislog egyet, amint a föld felé hajol, és mikor a szemhéja kissé szétnyílik, megpillantod a szemét - két vörösen izzó golyót![/p]
+    </text>
+    <next id="103">Ha felkészülsz, hogy megtámadd őket</next>
+    <next id="89">Ha otthagyod őket és továbbmész</next>
+  </p>
   <!-- 278 -->
   <p id="279">
     <text>
@@ -3339,7 +3420,512 @@
   </p>
   <!-- 284 -->
   <!-- 285 -->
-  <!-- 286 -->
+  <p id="286">
+    <text>
+        [p]Jót nevetnek úri modorodon. Egyikük elgáncsol, és felbuksz.
+    </text>
+    <itemCheck type="gold" id="1">
+      <have>
+        <add amount="-99999999" to="gold" goldOnly="true" />
+        <text>
+            [alt]Esés közben kinyílik a pénztárcád, és kihullanak belőle az útra az Aranyaid. A teremtmények odaugranak hozzád, hogy segítsenek felszedni az Aranytallérjaidat, de valójában az összeset a saját zsebükbe teszik el.[/alt][/p]
+        </text>
+        <itemCheck type="item" id="4034" amount="2">
+          <have>
+            <itemCheck type="item" id="4034" amount="3">
+              <have>
+                <itemCheck type="item" id="4034" amount="4">
+                  <have>
+                    <itemCheck type="item" id="4034" amount="5">
+                      <have>
+                        <itemCheck type="item" id="4034" amount="6">
+                          <have>
+                            <itemCheck type="item" id="4034" amount="7">
+                              <have>
+                                <random>
+                                  <result max="1" min="1">
+                                    <text>[p]Sikerül felkapnod az egyik Aranytallérodat.[/p]</text>
+                                    <add amount="1" to="gold" />
+                                    <loseItem id="4034" />
+                                    <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                                    <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                    <next id="89">Ha otthagyod őket és továbbmész</next>
+                                  </result>
+                                  <result max="2" min="2">
+                                    <text>[p]Sikerül felkapnod két Aranytallérodat.[/p]</text>
+                                    <add amount="2" to="gold" />
+                                    <loseItem id="4034" amount="2" />
+                                    <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                                    <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                    <next id="89">Ha otthagyod őket és továbbmész</next>
+                                  </result>
+                                  <result max="3" min="3">
+                                    <text>[p]Sikerül felkapnod három Aranytallérodat.[/p]</text>
+                                    <add amount="3" to="gold" />
+                                    <loseItem id="4034" amount="3" />
+                                    <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                                    <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                    <next id="89">Ha otthagyod őket és továbbmész</next>
+                                  </result>
+                                  <result max="4" min="4">
+                                    <text>[p]Sikerül felkapnod négy Aranytallérodat.[/p]</text>
+                                    <add amount="4" to="gold" />
+                                    <loseItem id="4034" amount="4" />
+                                    <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                                    <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                    <next id="89">Ha otthagyod őket és továbbmész</next>
+                                  </result>
+                                  <result max="5" min="5">
+                                    <text>[p]Sikerül felkapnod öt Aranytallérodat.[/p]</text>
+                                    <add amount="5" to="gold" />
+                                    <loseItem id="4034" amount="5" />
+                                    <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                                    <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                    <next id="89">Ha otthagyod őket és továbbmész</next>
+                                  </result>
+                                  <result max="6" min="6">
+                                    <text>[p]Sikerül felkapnod hat Aranytallérod.[/p]</text>
+                                    <loseItem id="4034" amount="6" />
+                                    <add amount="6" to="gold" />
+                                    <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                                    <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                    <next id="89">Ha otthagyod őket és továbbmész</next>
+                                  </result>
+                                </random>
+                              </have>
+                              <dontHave>
+                                <random>
+                                  <result max="1" min="1">
+                                    <text>[p]Sikerül felkapnod az egyik Aranytallérodat.[/p]</text>
+                                    <add amount="1" to="gold" />
+                                    <loseItem id="4034" />
+                                    <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                                    <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                    <next id="89">Ha otthagyod őket és továbbmész</next>
+                                  </result>
+                                  <result max="2" min="2">
+                                    <text>[p]Sikerül felkapnod két Aranytallérodat.[/p]</text>
+                                    <add amount="2" to="gold" />
+                                    <loseItem id="4034" amount="2" />
+                                    <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                                    <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                    <next id="89">Ha otthagyod őket és továbbmész</next>
+                                  </result>
+                                  <result max="3" min="3">
+                                    <text>[p]Sikerül felkapnod három Aranytallérodat.[/p]</text>
+                                    <add amount="3" to="gold" />
+                                    <loseItem id="4034" amount="3" />
+                                    <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                                    <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                    <next id="89">Ha otthagyod őket és továbbmész</next>
+                                  </result>
+                                  <result max="4" min="4">
+                                    <text>[p]Sikerül felkapnod négy Aranytallérodat.[/p]</text>
+                                    <add amount="4" to="gold" />
+                                    <loseItem id="4034" amount="4" />
+                                    <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                                    <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                    <next id="89">Ha otthagyod őket és továbbmész</next>
+                                  </result>
+                                  <result max="5" min="5">
+                                    <text>[p]Sikerül felkapnod öt Aranytallérodat.[/p]</text>
+                                    <add amount="5" to="gold" />
+                                    <loseItem id="4034" amount="5" />
+                                    <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                                    <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérodat</next>
+                                    <next id="89">Ha otthagyod őket és továbbmész</next>
+                                  </result>
+                                  <result max="6" min="6">
+                                    <text>[p]Sikerül felkapnod mind a hat Aranytallérod.[/p]</text>
+                                    <loseItem id="4034" amount="6" />
+                                    <add amount="6" to="gold" />
+                                    <next id="89"></next>
+                                  </result>
+                                </random>
+                              </dontHave>
+                            </itemCheck>
+                          </have>
+                          <dontHave>
+                            <random>
+                              <result max="1" min="1">
+                                <text>[p]Sikerül felkapnod az egyik Aranytallérodat.[/p]</text>
+                                <add amount="1" to="gold" />
+                                <loseItem id="4034" />
+                                <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                                <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                <next id="89">Ha otthagyod őket és továbbmész</next>
+                              </result>
+                              <result max="2" min="2">
+                                <text>[p]Sikerül felkapnod két Aranytallérodat.[/p]</text>
+                                <add amount="2" to="gold" />
+                                <loseItem id="4034" amount="2" />
+                                <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                                <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                <next id="89">Ha otthagyod őket és továbbmész</next>
+                              </result>
+                              <result max="3" min="3">
+                                <text>[p]Sikerül felkapnod három Aranytallérodat.[/p]</text>
+                                <add amount="3" to="gold" />
+                                <loseItem id="4034" amount="3" />
+                                <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                                <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                <next id="89">Ha otthagyod őket és továbbmész</next>
+                              </result>
+                              <result max="4" min="4">
+                                <text>[p]Sikerül felkapnod négy Aranytallérodat.[/p]</text>
+                                <add amount="4" to="gold" />
+                                <loseItem id="4034" amount="4" />
+                                <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                                <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérodat</next>
+                                <next id="89">Ha otthagyod őket és továbbmész</next>
+                              </result>
+                              <result max="6" min="5">
+                                <text>[p]Sikerül felkapnod mind az öt Aranytallérod.[/p]</text>
+                                <loseItem id="4034" amount="5" />
+                                <add amount="5" to="gold" />
+                                <next id="89"></next>
+                              </result>
+                            </random>
+                          </dontHave>
+                        </itemCheck>
+                      </have>
+                      <dontHave>
+                        <random>
+                          <result max="1" min="1">
+                            <text>[p]Sikerül felkapnod az egyik Aranytallérodat.[/p]</text>
+                            <add amount="1" to="gold" />
+                            <loseItem id="4034" />
+                            <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                            <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                            <next id="89">Ha otthagyod őket és továbbmész</next>
+                          </result>
+                          <result max="2" min="2">
+                            <text>[p]Sikerül felkapnod két Aranytallérodat.[/p]</text>
+                            <add amount="2" to="gold" />
+                            <loseItem id="4034" amount="2" />
+                            <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                            <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                            <next id="89">Ha otthagyod őket és továbbmész</next>
+                          </result>
+                          <result max="3" min="3">
+                            <text>[p]Sikerül felkapnod három Aranytallérodat.[/p]</text>
+                            <add amount="3" to="gold" />
+                            <loseItem id="4034" amount="3" />
+                            <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                            <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérodat</next>
+                            <next id="89">Ha otthagyod őket és továbbmész</next>
+                          </result>
+                          <result max="6" min="4">
+                            <text>[p]Sikerül felkapnod mind a négy Aranytallérod.[/p]</text>
+                            <loseItem id="4034" amount="4" />
+                            <add amount="4" to="gold" />
+                            <next id="89"></next>
+                          </result>
+                        </random>
+                      </dontHave>
+                    </itemCheck>
+                  </have>
+                  <dontHave>
+                    <random>
+                      <result max="1" min="1">
+                        <text>[p]Sikerül felkapnod az egyik Aranytallérodat.[/p]</text>
+                        <add amount="1" to="gold" />
+                        <loseItem id="4034" />
+                        <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                        <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                        <next id="89">Ha otthagyod őket és továbbmész</next>
+                      </result>
+                      <result max="2" min="2">
+                        <text>[p]Sikerül felkapnod két Aranytallérodat.[/p]</text>
+                        <add amount="2" to="gold" />
+                        <loseItem id="4034" amount="2" />
+                        <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                        <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérodat</next>
+                        <next id="89">Ha otthagyod őket és továbbmész</next>
+                      </result>
+                      <result max="6" min="3">
+                        <text>[p]Sikerül felkapnod mindhárom Aranytallérod.[/p]</text>
+                        <loseItem id="4034" amount="3" />
+                        <add amount="3" to="gold" />
+                        <next id="89"></next>
+                      </result>
+                    </random>
+                  </dontHave>
+                </itemCheck>
+              </have>
+              <dontHave>
+                <random>
+                  <result max="1" min="1">
+                    <text>[p]Sikerül felkapnod az egyik Aranytallérodat.[/p]</text>
+                    <add amount="1" to="gold" />
+                    <loseItem id="4034" />
+                    <next id="286a">Ha Sindlához fohászkodva próbálnád még több Aranytallérodat megmenteni</next>
+                    <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérodat</next>
+                    <next id="89">Ha otthagyod őket és továbbmész</next>
+                  </result>
+                  <result max="6" min="2">
+                    <text>[p]Sikerül felkapnod mindkét Aranytallérod.[/p]</text>
+                    <loseItem id="4034" amount="2" />
+                    <add amount="2" to="gold" />
+                    <next id="89"></next>
+                  </result>
+                </random>
+              </dontHave>
+            </itemCheck>
+          </have>
+          <dontHave>
+            <text>
+                [p]Szerencsére sikerül még időben felkapnod az Aranytallérodat.[/p]
+            </text>
+            <add amount="1" to="gold" />
+            <next id="89" singleChoiceText="Esés közben kinyílik a pénztárcád, és kihullik belőle az útra az egyetlen Aranytallérod. A teremtmények odaugranak hozzád, hogy segítsenek felszedni a pénzedet, de valójában a saját zsebükbe akarják eltenni."></next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            2 ÉLETERŐ pontot vesztesz, amiért felhorzsoltad a térdedet.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="89"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="286a" display="286">
+    <text>
+        [p]Jót nevetnek úri modorodon. Egyikük elgáncsol, és felbuksz. Esés közben kinyílik a pénztárcád, és kihullanak belőle az útra az Aranyaid. A teremtmények odaugranak hozzád, hogy segítsenek felszedni az Aranytallérjaidat, de valójában az összeset a saját zsebükbe teszik el.[/p]
+    </text>
+    <itemCheck type="item" id="4034" amount="2">
+      <have>
+        <itemCheck type="item" id="4034" amount="3">
+          <have>
+            <itemCheck type="item" id="4034" amount="4">
+              <have>
+                <itemCheck type="item" id="4034" amount="5">
+                  <have>
+                    <itemCheck type="item" id="4034" amount="6">
+                      <have>
+                        <itemCheck type="item" id="4034" amount="7">
+                          <have>
+                            <random>
+                              <result max="1" min="1">
+                                <text>[p]Sikerül felkapnod az egyik Aranytallérodat.[/p]</text>
+                                <add amount="1" to="gold" />
+                                <loseItem id="4034" />
+                                <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                <next id="89">Ha otthagyod őket és továbbmész</next>
+                              </result>
+                              <result max="2" min="2">
+                                <text>[p]Sikerül felkapnod két Aranytallérodat.[/p]</text>
+                                <add amount="2" to="gold" />
+                                <loseItem id="4034" amount="2" />
+                                <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                <next id="89">Ha otthagyod őket és továbbmész</next>
+                              </result>
+                              <result max="3" min="3">
+                                <text>[p]Sikerül felkapnod három Aranytallérodat.[/p]</text>
+                                <add amount="3" to="gold" />
+                                <loseItem id="4034" amount="3" />
+                                <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                <next id="89">Ha otthagyod őket és továbbmész</next>
+                              </result>
+                              <result max="4" min="4">
+                                <text>[p]Sikerül felkapnod négy Aranytallérodat.[/p]</text>
+                                <add amount="4" to="gold" />
+                                <loseItem id="4034" amount="4" />
+                                <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                <next id="89">Ha otthagyod őket és továbbmész</next>
+                              </result>
+                              <result max="5" min="5">
+                                <text>[p]Sikerül felkapnod öt Aranytallérodat.[/p]</text>
+                                <add amount="5" to="gold" />
+                                <loseItem id="4034" amount="5" />
+                                <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                <next id="89">Ha otthagyod őket és továbbmész</next>
+                              </result>
+                              <result max="6" min="6">
+                                <text>[p]Sikerül felkapnod hat Aranytallérod.[/p]</text>
+                                <loseItem id="4034" amount="6" />
+                                <add amount="6" to="gold" />
+                                <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                <next id="89">Ha otthagyod őket és továbbmész</next>
+                              </result>
+                            </random>
+                          </have>
+                          <dontHave>
+                            <random>
+                              <result max="1" min="1">
+                                <text>[p]Sikerül felkapnod az egyik Aranytallérodat.[/p]</text>
+                                <add amount="1" to="gold" />
+                                <loseItem id="4034" />
+                                <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                <next id="89">Ha otthagyod őket és továbbmész</next>
+                              </result>
+                              <result max="2" min="2">
+                                <text>[p]Sikerül felkapnod két Aranytallérodat.[/p]</text>
+                                <add amount="2" to="gold" />
+                                <loseItem id="4034" amount="2" />
+                                <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                <next id="89">Ha otthagyod őket és továbbmész</next>
+                              </result>
+                              <result max="3" min="3">
+                                <text>[p]Sikerül felkapnod három Aranytallérodat.[/p]</text>
+                                <add amount="3" to="gold" />
+                                <loseItem id="4034" amount="3" />
+                                <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                <next id="89">Ha otthagyod őket és továbbmész</next>
+                              </result>
+                              <result max="4" min="4">
+                                <text>[p]Sikerül felkapnod négy Aranytallérodat.[/p]</text>
+                                <add amount="4" to="gold" />
+                                <loseItem id="4034" amount="4" />
+                                <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                                <next id="89">Ha otthagyod őket és továbbmész</next>
+                              </result>
+                              <result max="5" min="5">
+                                <text>[p]Sikerül felkapnod öt Aranytallérodat.[/p]</text>
+                                <add amount="5" to="gold" />
+                                <loseItem id="4034" amount="5" />
+                                <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérodat</next>
+                                <next id="89">Ha otthagyod őket és továbbmész</next>
+                              </result>
+                              <result max="6" min="6">
+                                <text>[p]Sikerül felkapnod mind a hat Aranytallérod.[/p]</text>
+                                <loseItem id="4034" amount="6" />
+                                <add amount="6" to="gold" />
+                                <next id="89"></next>
+                              </result>
+                            </random>
+                          </dontHave>
+                        </itemCheck>
+                      </have>
+                      <dontHave>
+                        <random>
+                          <result max="1" min="1">
+                            <text>[p]Sikerül felkapnod az egyik Aranytallérodat.[/p]</text>
+                            <add amount="1" to="gold" />
+                            <loseItem id="4034" />
+                            <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                            <next id="89">Ha otthagyod őket és továbbmész</next>
+                          </result>
+                          <result max="2" min="2">
+                            <text>[p]Sikerül felkapnod két Aranytallérodat.[/p]</text>
+                            <add amount="2" to="gold" />
+                            <loseItem id="4034" amount="2" />
+                            <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                            <next id="89">Ha otthagyod őket és továbbmész</next>
+                          </result>
+                          <result max="3" min="3">
+                            <text>[p]Sikerül felkapnod három Aranytallérodat.[/p]</text>
+                            <add amount="3" to="gold" />
+                            <loseItem id="4034" amount="3" />
+                            <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                            <next id="89">Ha otthagyod őket és továbbmész</next>
+                          </result>
+                          <result max="4" min="4">
+                            <text>[p]Sikerül felkapnod négy Aranytallérodat.[/p]</text>
+                            <add amount="4" to="gold" />
+                            <loseItem id="4034" amount="4" />
+                            <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérodat</next>
+                            <next id="89">Ha otthagyod őket és továbbmész</next>
+                          </result>
+                          <result max="6" min="5">
+                            <text>[p]Sikerül felkapnod mind az öt Aranytallérod.[/p]</text>
+                            <loseItem id="4034" amount="5" />
+                            <add amount="5" to="gold" />
+                            <next id="89"></next>
+                          </result>
+                        </random>
+                      </dontHave>
+                    </itemCheck>
+                  </have>
+                  <dontHave>
+                    <random>
+                      <result max="1" min="1">
+                        <text>[p]Sikerül felkapnod az egyik Aranytallérodat.[/p]</text>
+                        <add amount="1" to="gold" />
+                        <loseItem id="4034" />
+                        <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                        <next id="89">Ha otthagyod őket és továbbmész</next>
+                      </result>
+                      <result max="2" min="2">
+                        <text>[p]Sikerül felkapnod két Aranytallérodat.[/p]</text>
+                        <add amount="2" to="gold" />
+                        <loseItem id="4034" amount="2" />
+                        <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                        <next id="89">Ha otthagyod őket és továbbmész</next>
+                      </result>
+                      <result max="3" min="3">
+                        <text>[p]Sikerül felkapnod három Aranytallérodat.[/p]</text>
+                        <add amount="3" to="gold" />
+                        <loseItem id="4034" amount="3" />
+                        <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérodat</next>
+                        <next id="89">Ha otthagyod őket és továbbmész</next>
+                      </result>
+                      <result max="6" min="4">
+                        <text>[p]Sikerül felkapnod mind a négy Aranytallérod.[/p]</text>
+                        <loseItem id="4034" amount="4" />
+                        <add amount="4" to="gold" />
+                        <next id="89"></next>
+                      </result>
+                    </random>
+                  </dontHave>
+                </itemCheck>
+              </have>
+              <dontHave>
+                <random>
+                  <result max="1" min="1">
+                    <text>[p]Sikerül felkapnod az egyik Aranytallérodat.[/p]</text>
+                    <add amount="1" to="gold" />
+                    <loseItem id="4034" />
+                    <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérokat</next>
+                    <next id="89">Ha otthagyod őket és továbbmész</next>
+                  </result>
+                  <result max="2" min="2">
+                    <text>[p]Sikerül felkapnod két Aranytallérodat.[/p]</text>
+                    <add amount="2" to="gold" />
+                    <loseItem id="4034" amount="2" />
+                    <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérodat</next>
+                    <next id="89">Ha otthagyod őket és továbbmész</next>
+                  </result>
+                  <result max="6" min="3">
+                    <text>[p]Sikerül felkapnod mindhárom Aranytallérod.[/p]</text>
+                    <loseItem id="4034" amount="3" />
+                    <add amount="3" to="gold" />
+                    <next id="89"></next>
+                  </result>
+                </random>
+              </dontHave>
+            </itemCheck>
+          </have>
+          <dontHave>
+            <random>
+              <result max="1" min="1">
+                <text>[p]Sikerül felkapnod az egyik Aranytallérodat.[/p]</text>
+                <add amount="1" to="gold" />
+                <loseItem id="4034" />
+                <next id="277">Ha visszaköveteled a lényektől az általuk ellopott Aranytallérodat</next>
+                <next id="89">Ha otthagyod őket és továbbmész</next>
+              </result>
+              <result max="6" min="2">
+                <text>[p]Sikerül felkapnod mindkét Aranytallérod.[/p]</text>
+                <loseItem id="4034" amount="2" />
+                <add amount="2" to="gold" />
+                <next id="89"></next>
+              </result>
+            </random>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+                [p]Szerencsére sikerül még időben felkapnod az Aranytallérodat.[/p]
+            </text>
+        <add amount="1" to="gold" />
+        <next id="89"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 287 -->
   <!-- 288 -->
   <p id="289">
@@ -3376,10 +3962,18 @@
         <next id="309">Ha inkább karddal küzdesz meg velük</next>
       </have>
       <dontHave>
-        <text>
-            [p]Úgy döntesz, karddal küzdesz meg velük.[/p]
-        </text>
-        <next id="309"></next>
+        <itemCheck type="item" id="4012">
+          <have>
+            <next id="397">Ha Viket próbálod meg felemlegetni</next>
+            <next id="309">Ha karddal küzdesz meg velük</next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Úgy döntesz, karddal küzdesz meg velük.[/p]
+            </text>
+            <next id="309"></next>
+          </dontHave>
+        </itemCheck>
       </dontHave>
     </itemCheck>
   </p>
@@ -3597,7 +4191,14 @@
         <next id="179">Ha megvárod, mi történik veletek</next>
       </have>
       <dontHave>
-        <next id="179"></next>
+        <itemCheck type="item" id="4012">
+          <have>
+            <next id="392"></next>
+          </have>
+          <dontHave>
+            <next id="179"></next>
+          </dontHave>
+        </itemCheck>
       </dontHave>
     </itemCheck>
   </p>
@@ -4101,7 +4702,26 @@
     <add to="stamina" amount="-1" />
     <next id="8"></next>
   </p>
-  <!-- 349 -->
+  <p id="349">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3036">
+      <have>
+        <text>
+            [p]Előveszed a hátizsákodból az Aranyhátú Tükrödet, és varázsolsz vele. A tükröt a teremtmények felé tartod, és amikor képmásuk visszatükröződik benne, pontosan olyan hasonmásaik jelennek meg melletted, mint amilyenek ők maguk. Az eredeti teremtmények döbbenten állnak, s te a saját lényeidet vezényled ellenük. Lehet, hogy nem tudod, de ezek a teremtmények a Vörösszeműek. Szemüket csukva tartják, de amikor szemhéjuk kinyílik, lángnyelvek csapnak ki mögüle és mindent felperzselnek, ami útjukba kerül. Így aztán a harc rövid, de hatásos: amikor a Vörösszeműek egymásra néznek, ki-ki a maga párjára, egymást égetik fel, és holtan zuhannak a földre. Ha elloptak volna tőled némi [span class="takeItem" data-id="gold" data-amount="XX"]Aranyat[/span], azt most visszaszerezheted tőlük, és folytathatod az utadat.[/p]
+        </text>
+        <next id="89"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem alkalmazhatod ezt a varázslatot - rántsd elő a kardodat.[/p]
+        </text>
+        <next id="192"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 350 -->
   <p id="351">
     <text>
@@ -4218,7 +4838,13 @@
     <add amount="-5" to="stamina" />
     <next id="323"></next>
   </p>
-  <!-- 363 -->
+  <p id="363">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Egy halom illúziókincset varázsolsz az utca közepére, és odaígéred a teremtményeknek. Gúnyosan rád mordulnak, és egyikük így kiált: - Te hígagyú barom! Lehet, hogy a mi szemünk csukva van, de azért látunk! A te kincsed haszontalan illúzió csupán! Kapjuk el ezt az ütődött alakot, barátaim! - Egyre közelebb jönnek hozzád. Kardot rántasz.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="192"></next>
+  </p>
   <p id="364">
     <text>
         [p]Vesztesz 5 ÉLETERŐ pontot! Nincs ilyen varázslat. A fegyvereddel kell megküzdened a hasonmásoddal. Döntsd el kettőtök harcát.[/p]
@@ -4737,7 +5363,27 @@
     </itemCheck>
   </p>
   <!-- 421 -->
-  <!-- 422 -->
+  <p id="422">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3027">
+      <have>
+        <text>
+            [p]A földhöz vágod a homokot a teremtmények lábánál, és varázsolsz. A varázslat hatására a lények lába alatt a föld hullámzani kezd, és futóhomokká változik. Elvesztik az egyensúlyukat, elesnek, és a homok fogságában süllyedni kezdenek. Segítségért kiáltanak, de csakhamar elnyeli őket a homok. Sajnos a tőled ellopott Aranytallérok is odavesznek velük együtt.[/p]
+        </text>
+        <loseItem id="3027" />
+        <next id="89"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslatod nem fog működni - ránts kardot.[/p]
+        </text>
+        <next id="192"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="423">
     <text>
         [p]Goblinod elindul a Szobor felé. A hátad mögül ekkor hangos ugatást hallasz, és megfordulsz. Semmi vész, csak egy kutya szaladt át az úton, és megugatta a járókelőket. Visszafordulsz a Szobor felé, és majd elájulsz, amikor meglátod, hogy Goblinod holtan fekszik a szobor lábánál, amely meg sem moccant![/p]
@@ -5399,7 +6045,13 @@
     <add to="stamina" amount="-2" />
     <next id="243"></next>
   </p>
-  <!-- 446 -->
+  <p id="446">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot. Elmondod a varázsigét, és várod, hogy megvilágosodjon előtted, vajon hány aranyat lophattak el a teremtmények, de nem történik semmi. Lehetséges, hogy ezek a lények ellenállnak a varázslatnak? Vagy csupán arról van szó, hogy valami megakadályozza a dolgok helyes menetét? A teremtmények egyre közelednek feléd.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="192"></next>
+  </p>
   <p id="447">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot! Ez a varázslat hatástalan, mert nem rendelkezel az ehhez szükséges tárggyal.[/p]
@@ -5441,12 +6093,12 @@
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
     </text>
     <add amount="-1" to="stamina" />
-    <itemCheck type="item" id="3041">
+    <itemCheck type="item" id="3027">
       <have>
         <text>
             [p]A Lánckészítő lábához veted a homokot, és varázsolsz. A Lánckészítő lába alatt megremeg a föld, és a mester elveszti az egyensúlyát. Futóhomok közepén áll, mely szép lassan elnyeli! Gyorsan leveszi a zakóját, és a futóhomokra teríti, hogy ezzel akadályozza meg a gyors süppedést. Odalépsz hozzá, kihúzod alóla a zakót, és ekkor a mestert elnyeli a homok. Az összes homokodat felhasználtad, s ezért ezt a varázslatot legközelebb csak akkor alkalmazhatod, ha ismét szert teszel némi homokra.[/p]
         </text>
-        <loseItem id="3041" />
+        <loseItem id="3027" />
         <next id="195"></next>
       </have>
       <dontHave>
@@ -5613,7 +6265,26 @@
     <add amount="-5" to="stamina" />
     <next id="290"></next>
   </p>
-  <!-- 463 -->
+  <p id="463">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot![/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3028">
+      <have>
+        <text>
+            [p]Az arcod elé tartod a Fekete Maszkot és varázsolsz. A teremtmények rémülten menekülnek előled. Eldobják az összes [span class="takeItem" data-id="gold" data-amount="XX"]Aranyadat[/span], amit loptak tőled, és iszkolnak, amerre látnak. Nyugodtan folytathatod az utadat.[/p]
+        </text>
+        <next id="89"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Ez a varázslat nem fog működni - kardot kell rántanod.[/p]
+        </text>
+        <next id="192"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="464">
     <text>
         [p class="inlineImage"][img src="resources/sor2/464.jpg" /][/p]
