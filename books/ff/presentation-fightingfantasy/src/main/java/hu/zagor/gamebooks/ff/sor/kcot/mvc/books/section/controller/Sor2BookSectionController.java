@@ -162,6 +162,10 @@ public class Sor2BookSectionController extends SorBookSectionController {
                     itemHandler.addItem(character, "4034", gold);
                 }
             }
+        } else if ("147a".equals(sectionId)) {
+            final String text = paragraph.getData().getText();
+            final String arrowsLeft = String.valueOf(itemHandler.getItems(character, "4036").size());
+            paragraph.getData().setText(text.replace("XX", arrowsLeft));
         }
     }
 
