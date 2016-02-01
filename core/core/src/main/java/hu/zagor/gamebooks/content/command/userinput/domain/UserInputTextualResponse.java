@@ -1,5 +1,7 @@
 package hu.zagor.gamebooks.content.command.userinput.domain;
 
+import java.text.Normalizer;
+import java.text.Normalizer.Form;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -33,7 +35,13 @@ public class UserInputTextualResponse extends UserInputResponse {
     @Override
     public boolean matches(final String answer) {
         Assert.notNull(answer, "The parameter 'answer' cannot be null!");
-        return answer.toLowerCase().equals(response.toLowerCase());
+        final String normalizedAnswer = Normalizer.normalize(sanitize(answer).toLowerCase(), Form.NFD).replaceAll("\\p{Mn}+", "");
+        final String normalizedResponse = Normalizer.normalize(sanitize(response).toLowerCase(), Form.NFD).replaceAll("\\p{Mn}+", "");
+        return normalizedAnswer.equals(normalizedResponse);
+    }
+
+    private String sanitize(final String answer) {
+        return answer.replaceAll("[.,?! -]", "");
     }
 
     @Override

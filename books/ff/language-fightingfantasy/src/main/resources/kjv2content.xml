@@ -1123,7 +1123,9 @@
       </have>
     </itemCheck>
   </p>
-  <!-- 74 -->
+  <p id="74">
+    <empty />
+  </p>
   <p id="75">
     <text>
         [p]Kitárod az ajtót, és fegyveredet készenlétben tartva belépsz. Az ajtó tetején azonban egy folyadékkal teli kis üvegcsét helyezett el valaki, amely az ajtó megmozdításakor lepottyant és épp a fejeden landolt. Megdörzsölöd a fejedet. Az üvegből valamiféle olajos folyadék ömlött szét a hajadon! Amikor megnézed a kezedet, látod, hogy az tele van hajjal! Ismét a fejedhez nyúlsz, és ekkor már egy egész csomó hajat húzol ki! - Úgy kell neked, te hitvány betolakodó - szólal meg kárörvendőn egy hang a kunyhó mélyéről. - Talán majd a kopaszság jó modorra fog tanítani! - Ismét a fejedhez nyúlsz, hogy megdörzsöld, s ekkor döbbenten tapasztalod, hogy teljesen kopasz vagy! Valójában a Kopaszság Főzetének hatása csak rövid ideig tart. Miután megmosod a fejedet, a hajad ismét kinő - de beletelik egy kis idő, mire a fejedet teljes egészében újra borítja a haj![/p]
@@ -1535,7 +1537,7 @@
     <text>
         [p]Figyelmesen hallgatod, mit válaszol a bálvány szája. - A Büszkeség Istene nem más, mint az én fivérem. Fourga a neve, és tudnod kell, hogy közel egy évszázada elvesztette a többi isten bizalmát, és Kharé lakosai sem imádják. - Hasznos-e számodra ez az információ? Most elhagyhatod a templomot.[/p]
     </text>
-    <gatherItem id="4025" />
+    <gatherItem id="4038" />
     <next id="109"></next>
   </p>
   <p id="102">
@@ -1745,7 +1747,30 @@
     <add amount="1" to="luck" />
     <next id="137"></next>
   </p>
-  <!-- 118 -->
+  <p id="118">
+    <text>
+        [p]Kardot rántasz, és a magasból rád támadó Hárpiák felé csapsz vele. A koldus segítségedre siet a botjával, de nem sok hasznát veszed, hiszen vak. Döntsd el a harc kimenetelét.[/p]
+    </text>
+    <fight type="allAtOnceSupported" resolver="supported">
+      <enemy id="30" />
+      <enemy id="31" />
+      <ally id="127" />
+      <win>
+        <loseItem id="4039" amount="2" />
+      </win>
+    </fight>
+    <itemCheck type="enemy" id="127">
+      <have>
+        <next id="207"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Rövid pihenő után folytatod az utadat.[/p]
+        </text>
+        <next id="148"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="119">
     <text>
         [p]A Lánckészítő mester lekap egy láncot a falról. Meglengeti a feje fölött, így közeledik feléd.[/p]
@@ -1810,7 +1835,12 @@
     </text>
     <next id="270"></next>
   </p>
-  <!-- 124 -->
+  <p id="124">
+    <text>
+        [p]Elmondod a varázsigét, és vársz. Végigfut a hideg a hátadon, amikor meghallod a kapu nyikorgását. Ám ahelyett, hogy a tárt kaput látnád magad előtt, egy szellem alakú ködfelhőt pillantasz meg, amely a kapukeret tetején elhelyezett fadobozból száll föl. A szellemalak úgy ugrál a levegőben, akár egy zsinóron rángatott bábu. Kővé dermedve figyeled. Hirtelen rád veti magát, és mielőtt bármit tehetnél, elnyel! Köhögsz, izzadsz, pánikba esel, amikor rájössz, hogy a Kénszellem karmai közé kerültél, melynek mérgező gázai megfojtanak! Nemhiába figyelmeztettek, hogy az Északi Kapunak saját védelmi rendszere van, és avatatlan személy csak élete kockáztatásával vállalkozhat arra, hogy a kaput kinyissa. A te életed most odaveszett…[/p]
+    </text>
+    <death />
+  </p>
   <p id="125">
     <text>
         [p]Amikor fölemeled a fegyveredet, a teremtmény közelebb lép hozzád.[/p]
@@ -1958,7 +1988,9 @@
     <next id="101">Ha azt, hogy mi a neve a Büszkeség Istenének</next>
     <next id="193">Ha azt, hogy miként tudod elkerülni az Északi Kapu őreit</next>
   </p>
-  <!-- 142 -->
+  <p id="142">
+    <empty />
+  </p>
   <p id="143">
     <text>
         [p class="inlineImage"][img src="resources/sor2/143.jpg" /][/p]
@@ -3133,7 +3165,13 @@
     <add amount="12" to="luck" />
     <next id="135"></next>
   </p>
-  <!-- 207 -->
+  <p id="207">
+    <text>
+        [p]- Hogyan hálálhatnám meg ezt neked, idegen? - kérdi a koldus. - Amióta vaksággal sújtottak, azóta kínoznak egyfolytában ezek a gonosz démonok. - Beszélsz hozzá még egy ideig, majd mindketten nagyot sóhajtotok. - Szomorú az én történetem - mondja -, mivel nagy gazdagságból koldusbotra jutottam. Három évvel ezelőtt még én voltam Kharé Hetedik legtehetősebb Főnemese, amikor is a fekete szeműek átka lesújtott rám. - Közbevágsz, és megkérdezed, vajon nem ismeri-e az Északi Kaput nyitó varázsigét. - Már hogyne ismerném - feleli -, hisz engem bíztak meg a varázsige egyik sorának őrzésével. Ha a kikötővárost arra akarod elhagyni, ez talán segíteni fog. Kissé ugyan megkopott az emlékezetem, de ez a sor, ha jól tudom, így hangzott: ,,Kéri… - kezdi, és máris elbizonytalanodik - na, az a büszke, a… a… kegyes Courga.'' A fenébe! Elfelejtettem, ki is volt az a büszke. Valamelyik isten. ,,Kéri valaki s a kegyes Courga.'' Ne haragudj, idegen. Cserbenhagyott az emlékezetem. Nem emlékszem rá, melyik isten volt az. Talán majd megtudod Courga templomában, hisz ott van kissé lejjebb az úton. Ott majd beszélhetsz a Báj Istenével. De ha ezt teszed, az életeddel játszol! Egy dolgot azonban biztosan tudok: a bal szem vezet hozzá. Ennél többet nem tudok mondani. - Megköszönöd a segítségét, és távozni készülsz, de mielőtt elmennél, így szól: - Ha Bakland felé tartasz, ennek talán majd hasznát veszed. Évek óta féltve őrzöm e kincset, de úgy érzem, már soha nem fogom használni - soha nem hagyom már el Kharét -, s ez a tárgy minden bizonnyal segítségedre lesz az utadon. - Átad neked egy [span class="takeItem" data-id="3049" data-amount="1"]kígyómintázatú gyűrűt[/span], amely rögtön az ujjad köré csavarodik. Hite szerint ez a gyűrű megvéd majd a Sárkánykígyóktól. Ez a gyűrű kétségkívül igen értékes. Köszönetet mondasz neki, összeszeded a holmidat, és elindulsz az úton lefelé.[/p]
+    </text>
+    <gatherItem id="4023" />
+    <next id="148"></next>
+  </p>
   <p id="208">
     <text>
         [p]Óvatosan megkerülöd a házat, és megnézed az ablakait. Az egyik ablakon belesve egy dolgozószobát látsz. A falakat könyvekkel megrakott polcok borítják. Minden bizonnyal egy bölcs, egy tudós vagy varázsló lakik itt.[/p]
@@ -3200,7 +3238,12 @@
     <next id="85">Ha elcsened az Aranytallért</next>
     <next id="28">Ha továbbmész utadon</next>
   </p>
-  <!-- 214 -->
+  <p id="214">
+    <text>
+        [p]Lélegzetvisszafojtva várod, vajon helyesen idézted-e a varázsigét. Egyre erősödő nyikorgást hallasz. Csapdát gyanítasz, de félelemre semmi ok: a kapu két szárnya között egy vékony fénycsík jelenik meg! Sikerült kinyitnod a kaput, és utadnak ez a fejezete már-már lezárult![/p]
+    </text>
+    <next id="511"></next>
+  </p>
   <p id="215">
     <text>
         [p]Ha át akarod kutatni a szobát, Szerencsepróbát kell tenned, mert keresés közben minden bizonnyal hozzáérsz majd a láncokhoz, és a zajra felfigyelhet a lánckészítő.[/p]
@@ -3660,7 +3703,9 @@
     <next id="318">Ha szerencsét akarsz próbálni</next>
     <next id="160">Ha valami csalafintaságot érzel a dologban, és nem akarsz szerencsét próbálni, kimész a sátorból és folytatod az utadat</next>
   </p>
-  <!-- 241 -->
+  <p id="241">
+    <empty />
+  </p>
   <p id="242">
     <text>
         [p]Kétségbeesetten próbálsz beszédbe elegyedni velük, de a pipázók túl kábák, és nem tudnak értékes információval szolgálni. Megkérdezed, nem ismernek-e itt a környéken egy tudóst. Bambán merednek egymásra, majd egyikük bólint, és ujjával előremutat az út felé. Nincs értelme folytatni a beszélgetést, így aztán távozol.[/p]
@@ -4026,7 +4071,92 @@
     <next id="250">Ha megpróbálsz lebukni előle az ürülék alá</next>
     <next id="327">Ha képtelen vagy erre</next>
   </p>
-  <!-- 271 -->
+  <p id="271">
+    <text>
+        [p]Elindulsz Kharé városának Északi Kapujához. A kaputól néhány méterre dermedten lecövekelsz, amikor egy fantomhang szólal meg: - Megállj, idegen! - mennydörgi a hang. Körülnézel, de senkit sem látsz a közeledben. A Kapu szól hozzád! - Nem léphetsz át e Kapun, mert varázszár van rajta. Ha nem ismered a nyitóvarázslatot, a következő lépésednél meghalsz![/p]
+    </text>
+    <itemCheck type="items" id="4021 and 4022 and 4023 and 4024 and 4038">
+      <have>
+        <userInput type="text">
+          <label>Mi a varázslat első sora?</label>
+          <result text="Kaput csukó kettős zár">
+            <userInput type="text">
+              <label>Mi a varázslat második sora?</label>
+              <result text="Gólembőrből készült zár">
+                <userInput type="text">
+                  <label>Mi a varázslat harmadik sora?</label>
+                  <result text="Kéri Fourga s a kegyes Courga">
+                    <userInput type="text">
+                      <label>Mi a varázslat negyedik sora?</label>
+                      <result text="Nyílj ki négyre nekem tágra">
+                        <next id="214"></next>
+                      </result>
+                      <resultElse>
+                        <next id="124"></next>
+                      </resultElse>
+                    </userInput>
+                  </result>
+                  <resultElse>
+                    <next id="124"></next>
+                  </resultElse>
+                </userInput>
+              </result>
+              <resultElse>
+                <userInput type="text">
+                  <label>Mi a varázslat harmadik sora?</label>
+                  <result text="">
+                    <next id="124"></next>
+                  </result>
+                  <resultElse>
+                    <userInput type="text">
+                      <label>Mi a varázslat negyedik sora?</label>
+                      <result text="">
+                        <next id="124"></next>
+                      </result>
+                      <resultElse>
+                        <next id="124"></next>
+                      </resultElse>
+                    </userInput>
+                  </resultElse>
+                </userInput>
+              </resultElse>
+            </userInput>
+          </result>
+          <resultElse>
+            <userInput type="text">
+              <label>Mi a varázslat második sora?</label>
+              <result text="">
+                <next id="124"></next>
+              </result>
+              <resultElse>
+                <userInput type="text">
+                  <label>Mi a varázslat harmadik sora?</label>
+                  <result text="">
+                    <next id="124"></next>
+                  </result>
+                  <resultElse>
+                    <userInput type="text">
+                      <label>Mi a varázslat negyedik sora?</label>
+                      <result text="">
+                        <next id="124"></next>
+                      </result>
+                      <resultElse>
+                        <next id="124"></next>
+                      </resultElse>
+                    </userInput>
+                  </resultElse>
+                </userInput>
+              </resultElse>
+            </userInput>
+          </resultElse>
+        </userInput>
+      </have>
+      <dontHave>
+        <text>[p]Nem ismered a kaput nyitó varázslat összes sorát! Újra kell kezdened utadat, de most már pontosabban kell követned azokat a nyomokat, amelyek elvezetnek a varázsige sorainak ismerőihez…[/p]</text>
+        <death />
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 272 -->
   <p id="273">
     <test against="skill">
@@ -6133,7 +6263,28 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 389 -->
+  <p id="389">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot![/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="goldpiece" id="1">
+      <have>
+        <text>
+            [p]A csuklódra helyezel egy Aranytallért, és varázsolsz! Varázslatod hatására az érme láthatatlan pajzzsá változik, amely a harc során megvéd majd. Küzdj meg a teremtményekkel, de ne feledd, hogy ha a pajzs védelme alatt állsz, 2 pontot hozzáadhatsz majd a Támadóerődhöz. A csata után a pajzs és az Aranytallér is eltűnik.[/p]
+        </text>
+        <gatherItem id="4039" amount="2" />
+        <add amount="-1" to="gold" />
+        <next id="118"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Ez a varázslat nem fog működni, válassz valami mást.[/p]
+        </text>
+        <next id="310"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="390">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot! Varázslatod rövid időre mindenfajta csapdától megvéd.[/p]
@@ -6399,7 +6550,9 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 412 -->
+  <p id="412">
+    <empty />
+  </p>
   <p id="413">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal.[/p]
@@ -6498,7 +6651,9 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 421 -->
+  <p id="421">
+    <empty />
+  </p>
   <p id="422">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -6537,7 +6692,7 @@
   </p>
   <p id="425">
     <text>
-        [p]Vesztesz 1 ÉLETERŐ pontot! Varázsolsz, de semmi sem történik. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges Aranyékszerrel. Küzdj meg ellenfeleddel.[/p]
+        [p]Vesztesz 1 ÉLETERŐ pontot! Varázsolsz, de semmi sem történik. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Küzdj meg ellenfeleddel.[/p]
     </text>
     <add to="stamina" amount="-1" />
     <next id="323"></next>
@@ -6677,7 +6832,13 @@
     <add to="stamina" amount="-2" />
     <next id="81"></next>
   </p>
-  <!-- 433 -->
+  <p id="433">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, Amíg a varázslatod hat, elkerülöd a bűvös csapdákat. Küzdj meg a teremtményekkel Ez a varázslat addig él, amíg a küzdelem tart.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="118"></next>
+  </p>
   <p id="434">
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot! Kinyújtod a kezedet a teremtmények felé, és varázsolsz. Mindkét tenyereden egy-egy kis tűzgolyó jelenik meg, és ellenfeleidhez vágod őket. Az egyik Vörösszemű kinyitja a szemét, és a belőle kipattanó lángnyelv felfogja a tűzgolyóidat. A csattanás visszairányítja feléd a tűzgolyókat, és el kell ugranod előlük, nehogy eltaláljanak.[/p]
@@ -7644,7 +7805,50 @@
     <next id="8">Ha meg akarod nézni közelebbről a szobrot</next>
     <next id="137">Ha továbbmész</next>
   </p>
-  <!-- 473 -->
+  <p id="473">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz a Hárpiák ellen, de miközben azok lecsapnak rád, nem tudod, hogy pontosan céloztál-e.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="473a">Ha bízol ügyességedben</next>
+    <next id="473b">Ha inkább megeresztesz egy fohászt Sindlához</next>
+  </p>
+  <p id="473a" display="473">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz a Hárpiák ellen, de miközben azok lecsapnak rád, nem tudod, hogy pontosan céloztál-e.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <random>
+          <result max="3" min="1">
+            <text>
+                [p]Varázslatod telibe kapja az Első Hárpiát, azzal már nem kell megküzdened.[/p]
+            </text>
+            <changeEnemy attribute="stamina" id="30" set="0" />
+          </result>
+          <result max="6" min="4">
+            <text>
+                [p]Varázslatod telibe kapja a Második Hárpiát, azzal már nem kell megküzdened.[/p]
+            </text>
+            <changeEnemy attribute="stamina" id="31" set="0" />
+          </result>
+        </random>
+      </success>
+      <failure>
+        <text>
+            [p]A varázslat célt téveszt. Küzdj meg a Hárpiákkal.[/p]
+        </text>
+      </failure>
+    </test>
+    <next id="118"></next>
+  </p>
+  <p id="473b" display="473">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz a Hárpiák ellen, de miközben azok lecsapnak rád, nem tudod, hogy pontosan céloztál-e.[/p]
+        [p]A varázslat célt téveszt. Küzdj meg a Hárpiákkal.[/p]
+    </text>
+    <next id="118"></next>
+  </p>
   <p id="474">
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot! Fölemeled mindkét kezedet, és ekkor egy-egy izzó tűzgolyó jelenik meg a tenyeredben. Mindkettőt az ajtó zárjához vágod. A hatalmas hő lángra lobbantja az ajtót, és ekkor hátrahúzódsz, mert a tűzre már minden bizonnyal felfigyelnek. Így is történik, két őr rohan oda, és furcsa nyelven karattyolva megpróbálja eloltani a tüzet, de mindhiába. Elrohannak vízért, és ekkor lehetőséged nyílik rá, hogy besurranj az ajtón. Odabent sürgősen rejtekhely után nézel. A kapu túloldalán egy rácsos ablakú házat pillantasz meg a fal mellett, és odafutsz. Belesel az ablakon, és egy öregembert látsz, aki egy fapadon ül.[/p]
@@ -7707,7 +7911,13 @@
     </itemCheck>
     <next id="77a"></next>
   </p>
-  <!-- 480 -->
+  <p id="480">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Mialatt azon igyekszel, hogy varázsolj, az egyik Hárpia lecsap rád, és karmaival felhasítja a karodat. Vesztesz 2 ÉLETERŐ pontot. Küzdj meg velük.[/p]
+    </text>
+    <add to="stamina" amount="-3" />
+    <next id="118"></next>
+  </p>
   <p id="481">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot! Varázsolsz, és várod a jelzést, miként juthatsz ki a háló fogságából. A varázslat működik, de nem túl könnyű szorult helyzetedből kiszabadulni.[/p]
@@ -7762,7 +7972,39 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 485 -->
+  <p id="485">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot![/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3001">
+      <have>
+        <text>
+            [p]Megiszod a Gyógyfőzetet és varázsolsz. Erőd gyorsan visszatér, és sebeid begyógyulnak. ÉLETERŐDET visszaállíthatod a [em]Kezdeti[/em] értékre.[/p]
+        </text>
+        <add amount="24" to="stamina" />
+        <loseItem id="3001" />
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="2001">
+          <have>
+            <text>
+                [p]Megiszod a Bugyabogyószörpöt és varázsolsz. Erőd gyorsan visszatér, és sebeid begyógyulnak. ÉLETERŐDET visszaállíthatod a [em]Kezdeti[/em] értékre.[/p]
+            </text>
+            <add amount="24" to="stamina" />
+            <loseItem id="2001" />
+          </have>
+          <dontHave>
+            <text>
+                [p]Nem alkalmazhatod ezt a varázslatot.[/p]
+            </text>
+            <death />
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <next id="468"></next>
+  </p>
   <p id="486">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot! Varázsolsz, de nem történik semmi. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal.[/p]
@@ -8116,7 +8358,7 @@
   </p>
   <p id="508">
     <text>
-        [p]Vesztesz 1 ÉLETERŐ pontot! Varázsolsz az ellenfeled ellenében, de nem történik semmi! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges Ékszerberakásos Medállal. Mialatt varázsolni próbálsz, ellenfeled rád méri az első csapását. Vesztesz 2 ÉLETERŐ pontot. Fegyvereddel folytasd a harcot.[/p]
+        [p]Vesztesz 1 ÉLETERŐ pontot! Varázsolsz az ellenfeled ellenében, de nem történik semmi! Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Mialatt varázsolni próbálsz, ellenfeled rád méri az első csapását. Vesztesz 2 ÉLETERŐ pontot. Fegyvereddel folytasd a harcot.[/p]
     </text>
     <add amount="-3" to="stamina" />
     <next id="67a"></next>
@@ -8134,5 +8376,14 @@
     </text>
     <add amount="-1" to="stamina" />
     <next id="192"></next>
+  </p>
+  <p id="511">
+    <text>
+        [p]A kapu lassan kinyílik előtted. Túljutottál a szörnyűséges kikötőváros csapdáin, és elérkeztél utad feléhez. A kapu túloldalán Bakland végeláthatatlan vidéke tárul eléd. Baddu-Bak hatalmas síksága lesz küldetésed következő állomása, ahonnan eddigi felbecsülhetetlen értékű tapasztalataid segítségével majd eljutsz az Ilklala tóhoz.[/p]
+        [p]Eszedbe jutnak a Felderítő őrmester szavai, aki így szólt, amikor elhagytad az Előretolt Helyőrséget: - Kharét elhagyva keresztül kell menned az ismeretlen Baklandon. Az a hír járja, hogy Baklandon a nappalokat és az éjszakákat nem a nap szabályozza, hanem valamiféle természetfeletti erők; azt is vésd jól az eszedbe, hogy Kharét elhagyva minden lépésedet figyelni fogják![/p]
+        [p]Fegyvercsörgés zaja zökkent ki álmodozásodból - úgy látszik, az őrök tértek vissza. Még egy utolsó pillantást vetsz a hátad mögött elterülő városra, és átmész a kapun. Sűrű felhők gyülekeznek előtted az égen. Megérkeztél Baklandba…[/p]
+    </text>
+    <loseItem id="4035" />
+    <victory />
   </p>
 </content>
