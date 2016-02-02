@@ -1751,23 +1751,196 @@
     <text>
         [p]Kardot rántasz, és a magasból rád támadó Hárpiák felé csapsz vele. A koldus segítségedre siet a botjával, de nem sok hasznát veszed, hiszen vak. Döntsd el a harc kimenetelét.[/p]
     </text>
-    <fight type="allAtOnceSupported" resolver="supported">
-      <enemy id="30" />
-      <enemy id="31" />
-      <ally id="127" />
-      <win>
-        <loseItem id="4039" amount="2" />
-      </win>
-    </fight>
-    <itemCheck type="enemy" id="127">
+    <itemCheck type="items" id="4061 or 4062 or 4063 or 4064 or 4065 or 4066">
       <have>
-        <next id="207"></next>
+        <itemCheck type="item" id="4061">
+          <have>
+            <fight type="allAtOnceSupported" resolver="supported">
+              <enemy id="30" />
+              <enemy id="31" />
+              <ally id="127" />
+              <ally id="130" />
+              <win>
+                <loseItem id="4039" amount="2" />
+              </win>
+            </fight>
+            <itemCheck type="enemy" id="127">
+              <have>
+                <next id="207"></next>
+              </have>
+              <dontHave>
+                <text>
+                    [p]Rövid pihenő után folytatod az utadat.[/p]
+                </text>
+                <next id="148"></next>
+              </dontHave>
+            </itemCheck>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4062">
+          <have>
+            <fight type="allAtOnceSupported" resolver="supported">
+              <enemy id="30" />
+              <enemy id="31" />
+              <ally id="127" />
+              <ally id="131" />
+              <ally id="132" />
+              <win>
+                <loseItem id="4039" amount="2" />
+              </win>
+            </fight>
+            <itemCheck type="enemy" id="127">
+              <have>
+                <next id="207"></next>
+              </have>
+              <dontHave>
+                <text>
+                    [p]Rövid pihenő után folytatod az utadat.[/p]
+                </text>
+                <next id="148"></next>
+              </dontHave>
+            </itemCheck>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4063">
+          <have>
+            <fight type="allAtOnceSupported" resolver="supported">
+              <enemy id="30" />
+              <enemy id="31" />
+              <ally id="127" />
+              <ally id="131" />
+              <ally id="132" />
+              <ally id="133" />
+              <win>
+                <loseItem id="4039" amount="2" />
+              </win>
+            </fight>
+            <itemCheck type="enemy" id="127">
+              <have>
+                <next id="207"></next>
+              </have>
+              <dontHave>
+                <text>
+                    [p]Rövid pihenő után folytatod az utadat.[/p]
+                </text>
+                <next id="148"></next>
+              </dontHave>
+            </itemCheck>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4064">
+          <have>
+            <fight type="allAtOnceSupported" resolver="supported">
+              <enemy id="30" />
+              <enemy id="31" />
+              <ally id="127" />
+              <ally id="131" />
+              <ally id="132" />
+              <ally id="133" />
+              <ally id="134" />
+              <win>
+                <loseItem id="4039" amount="2" />
+              </win>
+            </fight>
+            <itemCheck type="enemy" id="127">
+              <have>
+                <next id="207"></next>
+              </have>
+              <dontHave>
+                <text>
+                    [p]Rövid pihenő után folytatod az utadat.[/p]
+                </text>
+                <next id="148"></next>
+              </dontHave>
+            </itemCheck>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4065">
+          <have>
+            <fight type="allAtOnceSupported" resolver="supported">
+              <enemy id="30" />
+              <enemy id="31" />
+              <ally id="127" />
+              <ally id="131" />
+              <ally id="132" />
+              <ally id="133" />
+              <ally id="134" />
+              <ally id="135" />
+              <win>
+                <loseItem id="4039" amount="2" />
+              </win>
+            </fight>
+            <itemCheck type="enemy" id="127">
+              <have>
+                <next id="207"></next>
+              </have>
+              <dontHave>
+                <text>
+                    [p]Rövid pihenő után folytatod az utadat.[/p]
+                </text>
+                <next id="148"></next>
+              </dontHave>
+            </itemCheck>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4066">
+          <have>
+            <fight type="allAtOnceSupported" resolver="supported">
+              <enemy id="30" />
+              <enemy id="31" />
+              <ally id="127" />
+              <ally id="131" />
+              <ally id="132" />
+              <ally id="133" />
+              <ally id="134" />
+              <ally id="135" />
+              <ally id="136" />
+              <win>
+                <loseItem id="4039" amount="2" />
+              </win>
+            </fight>
+            <itemCheck type="enemy" id="127">
+              <have>
+                <next id="207"></next>
+              </have>
+              <dontHave>
+                <text>
+                    [p]Rövid pihenő után folytatod az utadat.[/p]
+                </text>
+                <next id="148"></next>
+              </dontHave>
+            </itemCheck>
+          </have>
+          <after>
+            <loseItem id="4061" />
+            <loseItem id="4062" />
+            <loseItem id="4063" />
+            <loseItem id="4064" />
+            <loseItem id="4065" />
+            <loseItem id="4066" />
+          </after>
+        </itemCheck>
       </have>
       <dontHave>
-        <text>
-            [p]Rövid pihenő után folytatod az utadat.[/p]
-        </text>
-        <next id="148"></next>
+        <fight type="allAtOnceSupported" resolver="supported">
+          <enemy id="30" />
+          <enemy id="31" />
+          <ally id="127" />
+          <win>
+            <loseItem id="4039" amount="2" />
+          </win>
+        </fight>
+        <itemCheck type="enemy" id="127">
+          <have>
+            <next id="207"></next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Rövid pihenő után folytatod az utadat.[/p]
+            </text>
+            <next id="148"></next>
+          </dontHave>
+        </itemCheck>
       </dontHave>
     </itemCheck>
   </p>
@@ -5981,7 +6154,62 @@
     <add amount="-5" to="stamina" />
     <next id="67a"></next>
   </p>
-  <!-- 365 -->
+  <p id="365">
+    <itemCheck type="item" id="3201">
+      <have>
+        <text>
+            [p]Előveszed a hátizsákodban lévő Goblinfogakat.[/p]
+        </text>
+        <userInput type="number" min="1" max="6">
+          <label>Hány Goblinfoggal akarsz varázsolni?</label>
+          <result minBound="1" maxBound="1">
+            <text>[p]Vesztesz 1 ÉLETERŐ pontot! A földhöz vágsz 1 fogat, és varázsolsz.[/p]</text>
+            <add amount="-1" to="stamina" />
+            <loseItem id="3201" amount="1" />
+          </result>
+          <result minBound="2" maxBound="2">
+            <text>[p]Vesztesz 2 ÉLETERŐ pontot! A földhöz vágsz 2 fogat, és varázsolsz.[/p]</text>
+            <add amount="-2" to="stamina" />
+            <loseItem id="3201" amount="2" />
+          </result>
+          <result minBound="3" maxBound="3">
+            <text>[p]Vesztesz 3 ÉLETERŐ pontot! A földhöz vágsz 3 fogat, és varázsolsz.[/p]</text>
+            <add amount="-3" to="stamina" />
+            <loseItem id="3201" amount="3" />
+          </result>
+          <result minBound="4" maxBound="4">
+            <text>[p]Vesztesz 4 ÉLETERŐ pontot! A földhöz vágsz 4 fogat, és varázsolsz.[/p]</text>
+            <add amount="-4" to="stamina" />
+            <loseItem id="3201" amount="4" />
+          </result>
+          <result minBound="5" maxBound="5">
+            <text>[p]Vesztesz 5 ÉLETERŐ pontot! A földhöz vágsz 5 fogat, és varázsolsz.[/p]</text>
+            <add amount="-5" to="stamina" />
+            <loseItem id="3201" amount="5" />
+          </result>
+          <result minBound="6" maxBound="6">
+            <text>[p]Vesztesz 6 ÉLETERŐ pontot! A földhöz vágsz 6 fogat, és varázsolsz.[/p]</text>
+            <add amount="-6" to="stamina" />
+            <loseItem id="3201" amount="6" />
+          </result>
+        </userInput>
+        <itemCheck type="item" id="4999">
+          <dontHave>
+            <text>
+                [p]Ezek a fogak pillanatokon belül Goblinokká válnak, akiknek megparancsolod, hogy segítsenek legyőzni a szárnyas teremtményeket. Mindegyik Goblin 5 ÜGYESSÉG és 5 ÉLETERŐ ponttal rendelkezik. Küzdj meg a kellemetlenkedő teremtményekkel. A csata után az életben maradt Goblinok eltűnnek.[/p]
+            </text>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            [p]Vesztesz 1 ÉLETERŐ pontot. Nem alkalmazhatod ezt a varázslatot.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+      </dontHave>
+    </itemCheck>
+    <next id="118"></next>
+  </p>
   <p id="366">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot. Varázsolsz. Vangorn mögött az ajtó kinyílik az utcára. Nem hátrál meg.[/p]
@@ -7735,55 +7963,67 @@
         <text>
             [p]Előveszed a hátizsákodban lévő Goblinfogakat.[/p]
         </text>
-        <userInput type="number" min="1" max="99">
+        <userInput type="number" min="1" max="12">
           <label>Hány Goblinfoggal akarsz varázsolni?</label>
           <result minBound="1" maxBound="1">
             <text>[p]Vesztesz 1 ÉLETERŐ pontot! A földhöz vágsz 1 fogat, és varázsolsz.[/p]</text>
             <add amount="-1" to="stamina" />
+            <loseItem id="3201" amount="1" />
           </result>
           <result minBound="2" maxBound="2">
             <text>[p]Vesztesz 2 ÉLETERŐ pontot! A földhöz vágsz 2 fogat, és varázsolsz.[/p]</text>
             <add amount="-2" to="stamina" />
+            <loseItem id="3201" amount="2" />
           </result>
           <result minBound="3" maxBound="3">
             <text>[p]Vesztesz 3 ÉLETERŐ pontot! A földhöz vágsz 3 fogat, és varázsolsz.[/p]</text>
             <add amount="-3" to="stamina" />
+            <loseItem id="3201" amount="3" />
           </result>
           <result minBound="4" maxBound="4">
             <text>[p]Vesztesz 4 ÉLETERŐ pontot! A földhöz vágsz 4 fogat, és varázsolsz.[/p]</text>
             <add amount="-4" to="stamina" />
+            <loseItem id="3201" amount="4" />
           </result>
           <result minBound="5" maxBound="5">
             <text>[p]Vesztesz 5 ÉLETERŐ pontot! A földhöz vágsz 5 fogat, és varázsolsz.[/p]</text>
             <add amount="-5" to="stamina" />
+            <loseItem id="3201" amount="5" />
           </result>
           <result minBound="6" maxBound="6">
             <text>[p]Vesztesz 6 ÉLETERŐ pontot! A földhöz vágsz 6 fogat, és varázsolsz.[/p]</text>
             <add amount="-6" to="stamina" />
+            <loseItem id="3201" amount="6" />
           </result>
           <result minBound="7" maxBound="7">
             <text>[p]Vesztesz 7 ÉLETERŐ pontot! A földhöz vágsz 7 fogat, és varázsolsz.[/p]</text>
             <add amount="-7" to="stamina" />
+            <loseItem id="3201" amount="7" />
           </result>
           <result minBound="8" maxBound="8">
             <text>[p]Vesztesz 8 ÉLETERŐ pontot! A földhöz vágsz 8 fogat, és varázsolsz.[/p]</text>
             <add amount="-8" to="stamina" />
+            <loseItem id="3201" amount="8" />
           </result>
           <result minBound="9" maxBound="9">
             <text>[p]Vesztesz 9 ÉLETERŐ pontot! A földhöz vágsz 9 fogat, és varázsolsz.[/p]</text>
             <add amount="-9" to="stamina" />
+            <loseItem id="3201" amount="9" />
           </result>
           <result minBound="10" maxBound="10">
             <text>[p]Vesztesz 10 ÉLETERŐ pontot! A földhöz vágsz 10 fogat, és varázsolsz.[/p]</text>
             <add amount="-10" to="stamina" />
+            <loseItem id="3201" amount="10" />
           </result>
           <result minBound="11" maxBound="11">
             <text>[p]Vesztesz 11 ÉLETERŐ pontot! A földhöz vágsz 11 fogat, és varázsolsz.[/p]</text>
             <add amount="-11" to="stamina" />
+            <loseItem id="3201" amount="11" />
           </result>
           <result minBound="12" maxBound="12">
             <text>[p]Vesztesz 12 ÉLETERŐ pontot! A földhöz vágsz 12 fogat, és varázsolsz.[/p]</text>
             <add amount="-12" to="stamina" />
+            <loseItem id="3201" amount="12" />
           </result>
         </userInput>
         <next id="505"></next>
@@ -7857,7 +8097,551 @@
     <next id="169">Ha be akarsz menni a házba, hogy üdvözöld az öreget</next>
     <next id="218">Ha inkább továbbmész innen</next>
   </p>
-  <!-- 475 -->
+  <p id="475">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Néhány Aranytallérnál sokkal értékesebb dolgot ígérsz az őröknek. Benyúlsz a hátizsákodba. Melyik tárgyadat használod a varázsláshoz?[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <itemCheck type="item" id="3001">
+      <have>
+        <next id="275a" pos="1">A gyógyfűfőzetet?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3002">
+      <have>
+        <next id="275a" pos="2">A bambuszfurulyát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3007">
+      <have>
+        <next id="275a" pos="7">A varázskönyv-oldalt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3008">
+      <have>
+        <next id="275a" pos="8">A méhviaszt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3009">
+      <have>
+        <next id="275a" pos="9">A kis medaliont?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3010">
+      <have>
+        <next id="275a" pos="10">A zöld drágaköves láncot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3011">
+      <have>
+        <next id="275a" pos="11">A kulcsot az 54-es számmal?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3012">
+      <have>
+        <next id="275a" pos="12">Az ezüstkulcsot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3013">
+      <have>
+        <next id="275a" pos="13">A borrinbőr csizmát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3014">
+      <have>
+        <next id="275a" pos="14">Egy drágakövet?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3015">
+      <have>
+        <next id="275a" pos="15">A rézkulcsot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3016">
+      <have>
+        <next id="275a" pos="16">A barna poros zacskót?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3017">
+      <have>
+        <next id="275a" pos="17">A ragasztót?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3018">
+      <have>
+        <next id="275a" pos="18">Az orrdugaszt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3019">
+      <have>
+        <next id="275a" pos="19">Egy kavicsot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3020">
+      <have>
+        <next id="275a" pos="20">A karszalagot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3021">
+      <have>
+        <next id="275a" pos="21">A hálót?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3022">
+      <have>
+        <next id="275a" pos="22">A papi sapkát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3023">
+      <have>
+        <next id="275a" pos="23">A szerencse talizmánt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3025">
+      <have>
+        <next id="275a" pos="25">A méreg csuprot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3026">
+      <have>
+        <next id="275a" pos="26">A fakéregesszencia csuprot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3027">
+      <have>
+        <next id="275a" pos="27">A homokot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3028">
+      <have>
+        <next id="275a" pos="28">A fekete maszkot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3029">
+      <have>
+        <next id="275a" pos="29">Az erszényt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3030">
+      <have>
+        <next id="275a" pos="30">A penészes kecskesajtot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3031">
+      <have>
+        <next id="275a" pos="31">A dobódárdát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3032">
+      <have>
+        <next id="275a" pos="32">A csont karperecet?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3034">
+      <have>
+        <next id="275a" pos="34">A zöld hajú parókát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3035">
+      <have>
+        <next id="275a" pos="35">A napékszert?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3036">
+      <have>
+        <next id="275a" pos="36">Az aranyhátú tükröt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3037">
+      <have>
+        <next id="275a" pos="37">Egy pár kesztyűt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3038">
+      <have>
+        <next id="275a" pos="38">A titokzatosság italát?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3039">
+      <have>
+        <next id="275a" pos="39">A porral teli üvegcsét?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3040">
+      <have>
+        <next id="275a" pos="40">A méhviaszt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3042">
+      <have>
+        <next id="275a" pos="42">A páncélkesztyűt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3043">
+      <have>
+        <next id="275a" pos="43">A bőrkesztyűt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3044">
+      <have>
+        <next id="275a" pos="44">A varázsláncot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3045">
+      <have>
+        <next id="275a" pos="45">A papiruszt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3046">
+      <have>
+        <next id="275a" pos="46">Az íjat és nyílvesszőket?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3047">
+      <have>
+        <next id="275a" pos="47">A tűzszerszámot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3048">
+      <have>
+        <next id="275a" pos="48">A kígyómarás elleni szert?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3049">
+      <have>
+        <next id="275a" pos="49">A kígyómintázatú gyűrűt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3050">
+      <have>
+        <next id="275a" pos="50">A bűvös iránytűt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3201">
+      <have>
+        <next id="275a" pos="51">Egy goblinfogat?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3202">
+      <have>
+        <next id="275a" pos="52">Egy majomfogat?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3203">
+      <have>
+        <next id="275a" pos="53">Egy halálkutyafogat?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3204">
+      <have>
+        <next id="275a" pos="54">Egy ragadozómacska fogat?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3205">
+      <have>
+        <next id="275a" pos="55">Egy óriásfogat?</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="475a" display="475">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot! Néhány Aranytallérnál sokkal értékesebb dolgot ígérsz az őröknek. Benyúlsz a hátizsákodba,
+    </text>
+    <itemCheck type="pos" id="1">
+      <have>
+        <text>megfogod a gyógyfűfőzetet,</text>
+        <loseItem id="3001" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="2">
+      <have>
+        <text>megfogod a bambuszfurulyát,</text>
+        <loseItem id="3002" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="7">
+      <have>
+        <text>megfogod a varázskönyv-oldalt,</text>
+        <loseItem id="3007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="8">
+      <have>
+        <text>megfogod a méhviaszt,</text>
+        <loseItem id="3008" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="9">
+      <have>
+        <text>megfogod a kis medaliont,</text>
+        <loseItem id="3009" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="10">
+      <have>
+        <text>megfogod a zöld drágaköves láncot,</text>
+        <loseItem id="3010" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="11">
+      <have>
+        <text>megfogod a kulcsot az 54-es számmal,</text>
+        <loseItem id="3011" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="12">
+      <have>
+        <text>megfogod az ezüstkulcsot,</text>
+        <loseItem id="3012" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="13">
+      <have>
+        <text>megfogod a borrinbőr csizmát,</text>
+        <loseItem id="3013" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="14">
+      <have>
+        <text>megfogsz egy drágakövet,</text>
+        <loseItem id="3014" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="15">
+      <have>
+        <text>megfogod a rézkulcsot,</text>
+        <loseItem id="3015" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="16">
+      <have>
+        <text>megfogod a barna poros zacskót,</text>
+        <loseItem id="3016" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="17">
+      <have>
+        <text>megfogod a ragasztót,</text>
+        <loseItem id="3017" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="18">
+      <have>
+        <text>megfogod az orrdugaszt,</text>
+        <loseItem id="3018" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="19">
+      <have>
+        <text>megfogsz egy kavicsot,</text>
+        <loseItem id="3019" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="20">
+      <have>
+        <text>megfogod a karszalagot,</text>
+        <loseItem id="3020" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="21">
+      <have>
+        <text>megfogod a hálót,</text>
+        <loseItem id="3021" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="22">
+      <have>
+        <text>megfogod a papi sapkát,</text>
+        <loseItem id="3022" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="23">
+      <have>
+        <text>megfogod a szerencse talizmánt,</text>
+        <loseItem id="3023" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="25">
+      <have>
+        <text>megfogod a méreg csuprot,</text>
+        <loseItem id="3025" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="26">
+      <have>
+        <text>megfogod a fakéregesszencia csuprot,</text>
+        <loseItem id="3026" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="27">
+      <have>
+        <text>megfogod a homokot,</text>
+        <loseItem id="3027" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="28">
+      <have>
+        <text>megfogod a fekete maszkot,</text>
+        <loseItem id="3028" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="29">
+      <have>
+        <text>megfogod az erszényt,</text>
+        <loseItem id="3029" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="30">
+      <have>
+        <text>megfogod a penészes kecskesajtot,</text>
+        <loseItem id="3030" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="31">
+      <have>
+        <text>megfogod a dobódárdát,</text>
+        <loseItem id="3031" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="32">
+      <have>
+        <text>megfogod a csont karperecet,</text>
+        <loseItem id="3032" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="34">
+      <have>
+        <text>megfogod a zöld hajú parókát,</text>
+        <loseItem id="3034" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="35">
+      <have>
+        <text>megfogod a napékszert,</text>
+        <loseItem id="3035" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="36">
+      <have>
+        <text>megfogod az aranyhátú tükröt,</text>
+        <loseItem id="3036" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="37">
+      <have>
+        <text>megfogsz egy pár kesztyűt,</text>
+        <loseItem id="3037" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="38">
+      <have>
+        <text>megfogod a titokzatosság italát,</text>
+        <loseItem id="3038" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="39">
+      <have>
+        <text>megfogod a porral teli üvegcsét,</text>
+        <loseItem id="3039" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="40">
+      <have>
+        <text>megfogod a méhviaszt,</text>
+        <loseItem id="3040" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="42">
+      <have>
+        <text>megfogod a páncélkesztyűt,</text>
+        <loseItem id="3042" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="43">
+      <have>
+        <text>megfogod a bőrkesztyűt,</text>
+        <loseItem id="3043" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="44">
+      <have>
+        <text>megfogod a varázsláncot,</text>
+        <loseItem id="3044" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="45">
+      <have>
+        <text>megfogod a papiruszt,</text>
+        <loseItem id="3045" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="46">
+      <have>
+        <text>megfogod az íjat és nyílvesszőket,</text>
+        <loseItem id="3046" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="47">
+      <have>
+        <text>megfogod a tűzszerszámot,</text>
+        <loseItem id="3047" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="48">
+      <have>
+        <text>megfogod a kígyómarás elleni szert,</text>
+        <loseItem id="3048" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="49">
+      <have>
+        <text>megfogod a kígyómintázatú gyűrűt,</text>
+        <loseItem id="3049" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="50">
+      <have>
+        <text>megfogod a bűvös iránytűt,</text>
+        <loseItem id="3050" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="51">
+      <have>
+        <text>megfogsz egy goblinfogat,</text>
+        <loseItem id="3201" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="52">
+      <have>
+        <text>megfogsz egy majomfogat,</text>
+        <loseItem id="3202" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="53">
+      <have>
+        <text>megfogsz egy halálkutyafogat,</text>
+        <loseItem id="3203" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="54">
+      <have>
+        <text>megfogsz egy ragadozómacska fogat,</text>
+        <loseItem id="3204" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="55">
+      <have>
+        <text>megfogsz egy óriásfogat,</text>
+        <loseItem id="3205" />
+      </have>
+      <after>
+        <text>
+            és varázsolsz vele. Amikor kihúzod a hátizsákodból hamis kincsekkel teli kezedet, tágra nyílik a szemük az ámulattól. Felajánlod nekik a ,,kincset'', ha cserébe kiengednek a Kapun. Beleegyeznek, és mohón a hamis kincs után kapnak, majd megosztoznak rajta és zsebre teszik. Átengednek az Északi Kapun. Jó lesz, ha gyorsan szeded a lábad, mert az őrök hamarosan rájönnek, hogy a kincs nem létezik![/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="271"></next>
+  </p>
   <p id="476">
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot! Varázsolsz, és ekkor láthatatlan erőtér alakul ki körülötted. Ez az erőtér csupán a következő választásod idejére nyújt majd védelmet számodra, aztán megszűnik.[/p]
