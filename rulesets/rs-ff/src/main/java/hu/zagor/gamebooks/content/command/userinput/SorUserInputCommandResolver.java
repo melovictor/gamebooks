@@ -30,8 +30,9 @@ public class SorUserInputCommandResolver extends UserInputCommandResolver {
     private void changeMaxEntryValue(final UserInputCommand command, final ResolvationData resolvationData) {
         final CharacterItemHandler itemHandler = resolvationData.getInfo().getCharacterHandler().getItemHandler();
         final List<Item> items = itemHandler.getItems(resolvationData.getCharacter(), "3201");
+        final int currentMax = command.getMax();
         final int count = count(items);
-        command.setMax(count);
+        command.setMax(Math.min(count, currentMax));
     }
 
     private int count(final List<Item> items) {
