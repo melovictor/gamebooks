@@ -1275,6 +1275,7 @@
         [p class="inlineImage"][img src="resources/sor1/73.jpg" /][/p]
         [p]Minél beljebb mész a Fekete Lótuszvirág réten, egyre émelyítőbb az illat. Eufórikus állapotba kerülsz, és ugrándozni, szökdécselni kezdesz. Jann, aki még mindig a válladon ül, ugyancsak mámorban úszik. Teljesen kába vagy. Már nem tudsz megállni, forogni kezd veled a világ, és elterülsz a földön. Bezuhansz a virágok közé, és valami kemény tárgyba ütközöl. Rémülten látod, hogy az nem más, mint egy csontváz! Rémületed azonban nem tart sokáig, mert elveszted az eszméletedet… A Fekete Lótuszvirág édeskés illata mérgező és megfojt. Örök időkre itt fogsz pihenni a fekete halál mezején…[/p]
     </text>
+    <reward id="lotus" />
     <death />
   </p>
   <p id="74">
@@ -1352,6 +1353,7 @@
     <text>
         [p]Megtalálja a varázsklönyv lapját, és ledobja a földre a hátizsákodat. – A könyvem! – kiáltja. – A hiányzó oldal! Miért nem mondtad, hogy nálad van a hiányzó varázslatom? – Kiviharzik a konyhába, és egy csésze itallal tér vissza, amit sietve a szádba önt. Ez egyfajta ellenméreg, mely fokozatosan élettel tölti meg bénult testedet. Gyengéden megpaskol, hogy magadhoz térj.[/p]
     </text>
+    <reward id="spellpage" />
     <loseItem id="3007" />
     <next id="114"></next>
   </p>
@@ -1376,6 +1378,8 @@
     <text>
         [p]A férfi idegesen odacsoszog hozzád, és kezet ráz veled. – Csak nem mágus vagy, idegen? kérdi. – Nem félsz tőlünk? Vagy tán olyan kuruzsló vagy, aki képes kigyógyítani minket a pestisből? – Amikor ezeket az utolsó szavakat kiejti, hátrahőkölsz, de már késő. Egy pestisessel kerültél össze, és mostantól fogva mindennap 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot fogsz veszíteni mindaddig, amíg meg nem halsz, vagy nem találsz olyasvalakit, aki betegségedből kigyógyít. Minden reggel, ébredés után az első dolgod az legyen, hogy levonod magadtól a 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot! A felismerést döbbenten mész ki a kunyhóból, és gyorsan elhagyod a várost.[/p]
     </text>
+    <reward id="plague" />
+    <gatherItem id="5003" />
     <next id="220"></next>
   </p>
   <p id="79a" display="79">
@@ -1456,6 +1460,9 @@
       <dontHave>
         <fight type="single">
           <enemy id="12" />
+          <win>
+            <reward id="woodgolem" />
+          </win>
         </fight>
         <next id="169"></next>
       </dontHave>
@@ -1463,13 +1470,16 @@
   </p>
   <p id="87a" display="87">
     <text>
-        [p]Még egy erszényt is kapsz tőle, melyben [span class="takeItem" data-id="gold" data-amount="7"]7 Aranytallér[/span] lapul. Elégedetten kuncog, majd amikor már éppen távoznál, a válladra teszi a kezét, és megállít. – Alianna azonban csak úgy harc nélkül nem adja oda értékes jutalmát! – mondja, és amikor megfordulsz, látod, hogy a kezével a szék fölött körözve varázsol. A szék recsegni-ropogni kezd, és vadul megmozdul. Fagólemmé változik a szemed előtt, és támadásra készen indul el feléd![/p]
+        [p]Még egy erszényt is kapsz tőle, melyben 7 Aranytallér lapul. Elégedetten kuncog, majd amikor már éppen távoznál, a válladra teszi a kezét, és megállít. – Alianna azonban csak úgy harc nélkül nem adja oda értékes jutalmát! – mondja, és amikor megfordulsz, látod, hogy a kezével a szék fölött körözve varázsol. A szék recsegni-ropogni kezd, és vadul megmozdul. Fagólemmé változik a szemed előtt, és támadásra készen indul el feléd![/p]
     </text>
     <fight type="single">
       <enemy id="12" />
       <anyRound enemy="12" totalCount="4">
         <changeEnemy attribute="skill" id="12" set="8" />
       </anyRound>
+      <win>
+        <reward id="woodgolem" />
+      </win>
     </fight>
     <next id="169"></next>
   </p>
@@ -2345,6 +2355,7 @@
     </itemCheck>
     <itemCheck type="item" id="3002">
       <have>
+        <reward id="bambooflut" />
         <text>
             [p]A furulya bambuszból készült; belefúsz. Vidám dallamot hallat.[/p]
         </text>
@@ -3167,6 +3178,7 @@
     <text>
         [p]Elmondod az asszonynak, milyen volt az öregember, akivel találkoztál, és ekkor felcsillan a szeme. Megkérdezi, nem loptad-e el tőle a Varázslatok Könyvének egyik oldalát, és nagyon megörül, amikor előhúzod azt a hátizsákodból. Vidáman kacarászva kikapja a kezedből.[/p]
     </text>
+    <reward id="spellpage" />
     <loseItem id="3007" />
     <next id="114"></next>
   </p>
@@ -3197,6 +3209,7 @@
     <text>
         [p]Kegyelemért könyörög, és amikor abbahagyod a harcot, igencsak hálás. Miután feltápászkodik és bekötözi sebeit, elmondja, hogy Flankernek hívják, és ,,szakmáját tekintve'' orgyilkos és tolvaj. Mindig kiszemel magának egy-egy utazót, hogy gyakorolja vele a harcot, és azt hitte, könnyen elbánhat veled. Ő is épp Kharéba tárt, és a barátod lesz, amiért megkegyelmeztél neki. Ez a barátság nagy hasznodra lesz majd a kikötőben. Amikor Kharéban leszel, felkeresheted, mert megígéri, hogy segít majd rajtad. Nem tart veled Kharéba, hanem eltűnik az erdő fái között. Igen értékes kapcsolatra tettél itt szert. Nyersz 2 [span class="ffAttribute"]SZERENCSE[/span] pontot.[/p]
     </text>
+    <reward id="flanker" />
     <add amount="2" to="luck" />
     <gatherItem id="4013" />
     <next id="212"></next>
@@ -4125,6 +4138,9 @@
       <anyRound totalCount="4">
         <changeEnemy attribute="skill" id="18" set="12" />
       </anyRound>
+      <win>
+        <reward id="manti" />
+      </win>
     </fight>
     <next id="456"></next>
   </p>
@@ -4234,8 +4250,9 @@
   <p id="233">
     <text>
         [p]Az öregember szeme felcsillan, amikor felmutatod a baltát. – Hol szerezted ezt? – kiált fel. Elmeséled a balta történetét, és ő boldog örömmel veszi át tőled. Meghív egy pofa sörre (2 [span class="ffAttribute"]ÉLETERŐ[/span] pont jár ezért), és határtalan boldogságában mindent el akar neked mondani, hogy segítsen rajtad. – Először is – mondja – el kell menned a Kristály Vízeséshez, melynek vize gyógyító erejű és enyhíti a fájdalmakat. Van egy átjáró, amerre elkerülheted az őrt (nem kell fizetned, ha erre mész). Birritantiból Kharéba Torrepanin keresztül jutsz el. Torrepaniban laknak a Svinnek, akiknek a főnöke minden bizonnyal rá akar majd venni, hogy segíts nekik megtalálni a lányát. A lányt a martalócok ragadták el, és a szörnyűséges Mantikór által őrzött sötét barlangba vitték, ahol majd áldozatot mutatnak be rajta.[/p]
-        [p]Torrepaniból egy nap alatt jutsz el Kharéba. Valójában jó kapcsolatban állok Kharé lakóival. Ha bármi problémád lesz, csak szólj Viknek, a barátomnak, aki nagyhatalmú, befolyásos ember. – Kharéban, bizonyos helyzetekben, VIK lesz az egyik varázsolható lehetőséged. Ha ilyen lehetőséget kapsz, választhatod azért, hogy kihasználd Glandragor kapcsolatait. Glandragor is felajánl neked egy [span class="takeItem" data-id="1001" data-amount="1"]kardot[/span] – egy erős, de közönséges pótkardot –, és búcsúzóul minden ját kíván neked. Nyersz 3 [span class="ffAttribute"]SZERENCSE[/span] pontot, amiért rátaláltál Glandragorra.[/p]
+        [p]Torrepaniból egy nap alatt jutsz el Kharéba. Valójában jó kapcsolatban állok Kharé lakóival. Ha bármi problémád lesz, csak szólj Viknek, a barátomnak, aki nagyhatalmú, befolyásos ember. – Kharéban, bizonyos helyzetekben, VIK lesz az egyik varázsolható lehetőséged, vagy a szöveg felajánlja, hogy megemlítsd a nevét. Ha ilyen lehetőséget kapsz, választhatod azért, hogy kihasználd Glandragor kapcsolatait. Glandragor is felajánl neked egy [span class="takeItem" data-id="1001" data-amount="1"]kardot[/span] – egy erős, de közönséges pótkardot –, és búcsúzóul minden ját kíván neked. Nyersz 3 [span class="ffAttribute"]SZERENCSE[/span] pontot, amiért rátaláltál Glandragorra.[/p]
     </text>
+    <reward id="vic" />
     <add amount="2" to="stamina" />
     <loseItem id="1003" />
     <gatherItem id="4012" />
@@ -5134,6 +5151,9 @@
         </text>
         <fight type="single">
           <enemy id="11" />
+          <win>
+            <reward id="ogre" />
+          </win>
         </fight>
         <next id="15"></next>
       </dontHave>
@@ -5146,6 +5166,9 @@
     </text>
     <fight type="single">
       <enemy id="11" />
+      <win>
+        <reward id="ogre" />
+      </win>
     </fight>
     <next id="15"></next>
   </p>
@@ -6081,6 +6104,7 @@
                 <next id="420">Ha másik varázslattal próbálkozol</next>
               </lose>
               <win>
+                <reward id="manti" />
                 <next id="456"></next>
               </win>
             </fight>
@@ -6100,6 +6124,7 @@
                 <next id="420">Ha másik varázslattal próbálkozol</next>
               </lose>
               <win>
+                <reward id="manti" />
                 <next id="456"></next>
               </win>
             </fight>
@@ -6123,6 +6148,7 @@
                 <next id="420">Ha másik varázslattal próbálkozol</next>
               </lose>
               <win>
+                <reward id="manti" />
                 <next id="456"></next>
               </win>
             </fight>
@@ -6150,6 +6176,7 @@
                 <next id="420">Ha másik varázslattal próbálkozol</next>
               </lose>
               <win>
+                <reward id="manti" />
                 <next id="456"></next>
               </win>
             </fight>
@@ -6181,6 +6208,7 @@
                 <next id="420">Ha másik varázslattal próbálkozol</next>
               </lose>
               <win>
+                <reward id="manti" />
                 <next id="456"></next>
               </win>
             </fight>
@@ -6216,6 +6244,7 @@
                 <next id="420">Ha másik varázslattal próbálkozol</next>
               </lose>
               <win>
+                <reward id="manti" />
                 <next id="456"></next>
               </win>
             </fight>
@@ -6255,6 +6284,7 @@
                 <next id="420">Ha másik varázslattal próbálkozol</next>
               </lose>
               <win>
+                <reward id="manti" />
                 <next id="456"></next>
               </win>
             </fight>
@@ -6298,6 +6328,7 @@
                 <next id="420">Ha másik varázslattal próbálkozol</next>
               </lose>
               <win>
+                <reward id="manti" />
                 <next id="456"></next>
               </win>
             </fight>
@@ -6345,6 +6376,7 @@
                 <next id="420">Ha másik varázslattal próbálkozol</next>
               </lose>
               <win>
+                <reward id="manti" />
                 <next id="456"></next>
               </win>
             </fight>
@@ -6396,6 +6428,7 @@
                 <next id="420">Ha másik varázslattal próbálkozol</next>
               </lose>
               <win>
+                <reward id="manti" />
                 <next id="456"></next>
               </win>
             </fight>
@@ -6451,6 +6484,7 @@
                 <next id="420">Ha másik varázslattal próbálkozol</next>
               </lose>
               <win>
+                <reward id="manti" />
                 <next id="456"></next>
               </win>
             </fight>
@@ -6510,6 +6544,7 @@
                 <next id="420">Ha másik varázslattal próbálkozol</next>
               </lose>
               <win>
+                <reward id="manti" />
                 <next id="456"></next>
               </win>
             </fight>
@@ -6698,6 +6733,7 @@
             <next id="420">Ha másik varázslattal próbálkozol</next>
           </lose>
           <win>
+            <reward id="manti" />
             <next id="456"></next>
           </win>
         </fight>
