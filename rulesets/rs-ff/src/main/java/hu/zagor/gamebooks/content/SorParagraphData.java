@@ -52,4 +52,15 @@ public class SorParagraphData extends FfParagraphData {
         spellModifyAttributes.add(modifyAttribute);
     }
 
+    @Override
+    public void calculateValidEvents(final Paragraph paragraph) {
+        super.calculateValidEvents(paragraph);
+        for (final Choice choice : spellChoices) {
+            final String id = choice.getId();
+            final String choiceText = choice.getText();
+            getLogger().debug("Found spell choice #{}[@{}]: '{}'", id, String.valueOf(choice.getPosition()), choiceText == null ? "" : choiceText);
+            paragraph.addValidMove(id);
+        }
+    }
+
 }

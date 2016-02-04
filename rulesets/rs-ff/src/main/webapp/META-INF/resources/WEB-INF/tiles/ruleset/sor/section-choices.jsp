@@ -6,10 +6,10 @@
     <div id="choiceWrapper" class="${ffChoiceClass}">
         <c:if test="${not empty paragraph.data.spellChoices}">
             <div id="sorSpellContainer">
-                <c:forEach items="${paragraph.data.spellChoices}" var="spell">
+                <c:forEach items="${paragraph.data.spellChoices}" var="spell" varStatus="stat">
 	                <div class="sorSpell">
-		                <c:set var="linkPrefix"><c:if test="${informativeSections}">s-${spell.id}|</c:if></c:set>
-		                <a href="${linkPrefix}${choice.position}">
+		                <c:set var="linkPrefix"><c:if test="${informativeSections}">${spell.id}|</c:if></c:set>
+		                <a href="spl-${linkPrefix}${stat.index}">
 			                ${spell.text}
 			                <c:if test="${!hideChoiceSection}">
 			                    (${spell.display})

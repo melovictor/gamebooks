@@ -269,4 +269,8 @@ public class ParagraphData extends EscapingData implements TrueCloneable, BeanFa
         Assert.notNull(item, "The parameter 'item' cannot be null!");
         unhiddenItems.add(item);
     }
+
+    protected Logger getLogger() {
+        return logger;
+    }
 }

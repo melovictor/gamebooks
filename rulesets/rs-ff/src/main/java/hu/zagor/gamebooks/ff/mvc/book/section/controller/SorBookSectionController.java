@@ -10,8 +10,11 @@ import hu.zagor.gamebooks.mvc.book.section.controller.GenericBookSectionControll
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Generic section handler for Sorcery books.
@@ -28,6 +31,45 @@ public class SorBookSectionController extends FfBookSectionController {
      */
     public SorBookSectionController(final SectionHandlingService sectionHandlingService) {
         super(sectionHandlingService);
+    }
+
+    /**
+     * Handles the spell casting navigation.
+     * @param model the {@link Model} object
+     * @param request the {@link HttpServletRequest} object
+     * @param spellTarget the target location of the spell in the list
+     * @return the book page's name
+     */
+    @RequestMapping(value = "spl-{spellTarget}")
+    public String handleSpellSectionChangeBySpellPosition(final Model model, final HttpServletRequest request, @PathVariable("spellTarget") final String spellTarget) {
+        getLogger().info("Handling spell section switch to position '{}'.", spellTarget);
+        String sectionIdentifier;
+        final int position;
+        final SorParagraphData data = (SorParagraphData) getWrapper(request).getParagraph().getData();
+        final List<Choice> spellChoices = data.getSpellChoices();
+        final Choice choice;
+        if (spellTarget.contains("|")) {
+            final String[] split = spellTarget.split("\\|");
+            sectionIdentifier = split[0];
+            choice = getChoice(spellChoices, sectionIdentifier);
+        } else {
+            position = Integer.valueOf(spellTarget);
+            choice = spellChoices.get(position);
+            sectionIdentifier = choice.getId();
+        }
+        data.getChoices().add(choice);
+        getLogger().info("Handling spell section switch to section '{}'.", sectionIdentifier);
+        return super.handleSection(model, request, "s-" + sectionIdentifier);
+    }
+
+    private Choice getChoice(final List<Choice> spellChoices, final String sectionIdentifier) {
+        Choice selectedChoice = null;
+        for (final Choice choice : spellChoices) {
+            if (sectionIdentifier.equals(choice.getId())) {
+                selectedChoice = choice;
+            }
+        }
+        return selectedChoice;
     }
 
     @Override
