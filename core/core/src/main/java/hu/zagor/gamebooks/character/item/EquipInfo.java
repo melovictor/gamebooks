@@ -1,12 +1,12 @@
 package hu.zagor.gamebooks.character.item;
 
-import java.io.Serializable;
+import hu.zagor.gamebooks.content.TrueCloneable;
 
 /**
  * Bean for storing information about the given item's equipability.
  * @author Tamas_Szekeres
  */
-public class EquipInfo implements Cloneable, Serializable {
+public class EquipInfo implements TrueCloneable {
 
     private boolean equipped;
     private final boolean equippable;

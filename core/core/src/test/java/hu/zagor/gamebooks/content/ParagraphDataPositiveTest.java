@@ -10,19 +10,18 @@ import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommand;
 import hu.zagor.gamebooks.content.command.userinput.UserInputCommand;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
+import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -35,35 +34,21 @@ public class ParagraphDataPositiveTest {
 
     private static final String TEXT_WITH_GATERABLE_ITEMS = "There is [span class=\"takeItem\" data-"
         + "id=\"3002\" data-amount=\"1\"]one gatheredLostItem[/span] and later [span " + "class=\"takeItem\" data-amount=\"6\" data-id=\"3001\"]six others[/span].";
-
-    private ParagraphData underTest;
-    private Paragraph paragraph;
-    private ChoicePositionComparator choiceComparator;
-    private Logger logger;
-    private IMocksControl mockControl;
-    private Choice choiceA;
-    private Choice choiceB;
-    private GatheredLostItem gatheredLostItem;
-    private Command command;
-
-    @BeforeClass
-    public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        logger = mockControl.createMock(Logger.class);
-        paragraph = mockControl.createMock(Paragraph.class);
-        choiceComparator = mockControl.createMock(ChoicePositionComparator.class);
-        gatheredLostItem = mockControl.createMock(GatheredLostItem.class);
-        choiceA = mockControl.createMock(Choice.class);
-        choiceB = mockControl.createMock(Choice.class);
-        command = mockControl.createMock(Command.class);
-    }
+    @UnderTest private ParagraphData underTest;
+    @Mock private Paragraph paragraph;
+    @Mock private ChoicePositionComparator choiceComparator;
+    @Inject private Logger logger;
+    @MockControl private IMocksControl mockControl;
+    @Mock private Choice choiceA;
+    @Mock private Choice choiceB;
+    @Mock private GatheredLostItem gatheredLostItem;
+    @Mock private Command command;
 
     @BeforeMethod
     public void setUpMethod() {
-        underTest = new ParagraphData();
         underTest.setText("");
-        Whitebox.setInternalState(underTest, "logger", logger);
         underTest.setChoices(new DefaultChoiceSet(choiceComparator));
+        underTest.getCommands().clear();
         mockControl.reset();
     }
 
@@ -275,9 +260,13 @@ public class ParagraphDataPositiveTest {
         Assert.assertTrue(underTest.getUnhiddenItems().contains(gatheredLostItem));
     }
 
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
+    public void testGetLoggerShouldReturnLogger() {
+        // GIVEN
+        mockControl.replay();
+        // WHEN
+        final Logger returned = underTest.getLogger();
+        // THEN
+        Assert.assertSame(returned, logger);
     }
 
     private void setUpCalculation() {
@@ -288,4 +277,8 @@ public class ParagraphDataPositiveTest {
         paragraph.addValidItem("3001", 6);
     }
 
+    @AfterMethod
+    public void tearDownMethod() {
+        mockControl.verify();
+    }
 }

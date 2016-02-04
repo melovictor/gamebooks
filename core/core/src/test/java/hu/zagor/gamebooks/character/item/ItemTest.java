@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.character.item;
 
+import org.powermock.reflect.Whitebox;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -93,6 +94,16 @@ public class ItemTest {
         Assert.assertEquals(returned.getEquipInfo().isEquipped(), underTest.getEquipInfo().isEquipped());
     }
 
+    public void testCloneWhenCloningThrowsExceptionShoultReturnNull() {
+        // GIVEN
+        final Item cloningTest = new Item(ID, NAME, ITEM_TYPE);
+        Whitebox.setInternalState(cloningTest, "equipInfo", new CloneFailingEquipInfo());
+        // WHEN
+        final Item returned = cloningTest.clone();
+        // THEN
+        Assert.assertNull(returned);
+    }
+
     public void testEqualsWhenSameIdProvidedShouldReturnTrue() {
         // GIVEN
         // WHEN
@@ -148,6 +159,23 @@ public class ItemTest {
         final int clonedHash = underTest.clone().hashCode();
         // THEN
         Assert.assertEquals(clonedHash, originalHash);
+    }
+
+    public void testToStringShouldReturnFormattedBasicData() {
+        // GIVEN
+        underTest.setAmount(3);
+        // WHEN
+        final String returned = underTest.toString();
+        // THEN
+        Assert.assertEquals(returned, "id: 3001, name: Key, amount: 3");
+    }
+
+    private class CloneFailingEquipInfo extends EquipInfo {
+        @Override
+        public CloneFailingEquipInfo clone() throws CloneNotSupportedException {
+            super.clone();
+            throw new CloneNotSupportedException();
+        }
     }
 
 }

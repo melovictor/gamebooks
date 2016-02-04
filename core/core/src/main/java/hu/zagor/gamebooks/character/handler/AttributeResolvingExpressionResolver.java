@@ -44,7 +44,7 @@ public class AttributeResolvingExpressionResolver implements ExpressionResolver 
                 if (!expression.startsWith("initial")) {
                     int initialValue;
                     try {
-                        initialValue = Integer.valueOf(resolveAttributes("initial" + property.substring(0, 1).toUpperCase() + property.substring(1), character));
+                        initialValue = Integer.valueOf(resolveAttributes("initial" + StringUtils.capitalize(property), character));
                     } catch (final IllegalArgumentException ex) {
                         initialValue = Integer.MAX_VALUE;
                     }

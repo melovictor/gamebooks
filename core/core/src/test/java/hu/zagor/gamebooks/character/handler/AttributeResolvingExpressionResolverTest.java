@@ -30,6 +30,7 @@ public class AttributeResolvingExpressionResolverTest {
         character.setInitialStamina(24);
         character.setSkill(9);
         character.setInitialSkill(12);
+        character.setLuck(993);
         character.getEquipment().clear();
         mockControl.reset();
     }
@@ -181,6 +182,16 @@ public class AttributeResolvingExpressionResolverTest {
         final int returned = underTest.resolveValue(character, "skill");
         // THEN
         Assert.assertEquals(returned, 12);
+    }
+
+    public void testResolveValueWhenValueWithoutInitialValueRequestedShouldReturnActualValueWithoutRestriction() {
+        // GIVEN
+        logger.error("Cannot resolve property '{}'.", "initialLuck");
+        mockControl.replay();
+        // WHEN
+        final int returned = underTest.resolveValue(character, "luck");
+        // THEN
+        Assert.assertEquals(returned, 993);
     }
 
     @AfterMethod
