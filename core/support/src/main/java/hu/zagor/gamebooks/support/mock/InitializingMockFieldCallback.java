@@ -17,6 +17,7 @@ import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.ReflectionUtils.FieldCallback;
+import org.springframework.util.StringUtils;
 
 /**
  * Callback to initialize the mocks in a specific test instance and underTest.
@@ -116,7 +117,7 @@ public class InitializingMockFieldCallback implements FieldCallback {
     }
 
     private boolean setOnUnderTest(final Field field, final Object mock) {
-        final String setterName = "set" + field.getName().substring(0, 1).toUpperCase() + field.getName().substring(1);
+        final String setterName = "set" + StringUtils.capitalize(field.getName());
         Method method = ReflectionUtils.findMethod(underTest.getClass(), setterName, field.getType());
         if (method != null) {
             try {

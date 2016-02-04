@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.ReflectionUtils;
+import org.springframework.util.StringUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -195,7 +196,7 @@ public class DefaultXmlGameStateLoader extends AbstractGameStateHandler implemen
                 field.set(parsed, parsedValue);
                 field.setAccessible(false);
             } else {
-                final String setterName = "set" + field.getName().substring(0, 1).toUpperCase() + field.getName().substring(1);
+                final String setterName = "set" + StringUtils.capitalize(field.getName());
                 final Method setterMethod = ReflectionUtils.findMethod(parsed.getClass(), setterName, parsedValue.getClass());
                 setterMethod.invoke(parsed, parsedValue);
             }
