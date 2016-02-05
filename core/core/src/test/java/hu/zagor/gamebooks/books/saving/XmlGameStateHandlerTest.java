@@ -8,17 +8,18 @@ import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
 import hu.zagor.gamebooks.books.saving.xml.XmlGameStateLoader;
 import hu.zagor.gamebooks.books.saving.xml.XmlGameStateSaver;
 import hu.zagor.gamebooks.directory.DirectoryProvider;
+import hu.zagor.gamebooks.domain.ContinuationData;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import hu.zagor.gamebooks.support.scanner.Scanner;
 import hu.zagor.gamebooks.support.writer.Writer;
-
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
+import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
@@ -40,40 +41,27 @@ public class XmlGameStateHandlerTest {
     private static final int PLAYER_ID = 29;
     private static final String PLAYER_ID_STRING = String.valueOf(PLAYER_ID);
     private static final String XML_CONTENT = "this is supposed to be an xml text";
-    private XmlGameStateHandler underTest;
-    private IMocksControl mockControl;
-    private XmlGameStateLoader gameStateLoader;
-    private XmlGameStateSaver gameStateSaver;
-    private BeanFactory beanFactory;
-    private Logger logger;
-    private Scanner scanner;
+    @UnderTest private XmlGameStateHandler underTest;
+    @MockControl private IMocksControl mockControl;
+    @Inject private XmlGameStateLoader gameStateLoader;
+    @Inject private XmlGameStateSaver gameStateSaver;
+    @Inject private BeanFactory beanFactory;
+    @Inject private Logger logger;
+    @Mock private Scanner scanner;
     private SavedGameContainer savedGameContainer;
-    private File saveFile;
-    private File saveFileDir;
-    private Map<String, Object> savedElements;
-    private Writer writer;
-    private DirectoryProvider directoryProvider;
+    @Mock private File saveFile;
+    @Mock private File saveFileDir;
+    @Instance private Map<String, Object> savedElements;
+    @Mock private Writer writer;
+    @Inject private DirectoryProvider directoryProvider;
+    @Instance private ContinuationData continuationData;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        gameStateLoader = mockControl.createMock(XmlGameStateLoader.class);
-        gameStateSaver = mockControl.createMock(XmlGameStateSaver.class);
-        logger = mockControl.createMock(Logger.class);
-        beanFactory = mockControl.createMock(BeanFactory.class);
         savedGameContainer = new SavedGameContainer(PLAYER_ID, BOOK_ID);
-        saveFile = mockControl.createMock(File.class);
-        saveFileDir = mockControl.createMock(File.class);
-        savedElements = new HashMap<>();
-        scanner = mockControl.createMock(Scanner.class);
-        writer = mockControl.createMock(Writer.class);
-        directoryProvider = mockControl.createMock(DirectoryProvider.class);
-        underTest = new XmlGameStateHandler();
-        underTest.setBeanFactory(beanFactory);
-        Whitebox.setInternalState(underTest, "logger", logger);
-        Whitebox.setInternalState(underTest, "gameStateLoader", gameStateLoader);
-        Whitebox.setInternalState(underTest, "gameStateSaver", gameStateSaver);
-        Whitebox.setInternalState(underTest, "directoryProvider", directoryProvider);
+        continuationData.setContinuationPageName("s-background");
+        continuationData.setPreviousBookId(BOOK_ID - 1);
+        continuationData.setPreviousBookLastSectionId("456");
     }
 
     @BeforeMethod

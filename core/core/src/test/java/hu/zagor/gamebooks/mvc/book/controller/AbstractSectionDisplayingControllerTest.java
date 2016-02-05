@@ -17,6 +17,7 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import org.testng.Assert;
@@ -40,6 +41,7 @@ public class AbstractSectionDisplayingControllerTest {
     private BookInformations info;
     @Instance private ResourceInformation emptyResourceInfo;
     @Instance private ResourceInformation filledResourceInfo;
+    @Inject private ApplicationContext applicationContext;
 
     @UnderTest
     public AbstractSectionDisplayingController underTest() {
@@ -209,6 +211,15 @@ public class AbstractSectionDisplayingControllerTest {
         Assert.assertTrue(descriptor.getCss().contains("ff.css"));
         Assert.assertTrue(descriptor.getCss().contains("ff15.css"));
         Assert.assertEquals(descriptor.getCss().size(), 4);
+    }
+
+    public void testGetApplicationContextShouldReturnApplicationContext() {
+        // GIVEN
+        mockControl.replay();
+        // WHEN
+        final ApplicationContext returned = underTest.getApplicationContext();
+        // THEN
+        Assert.assertSame(returned, applicationContext);
     }
 
     @AfterMethod

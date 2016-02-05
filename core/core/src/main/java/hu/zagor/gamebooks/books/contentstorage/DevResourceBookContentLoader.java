@@ -5,10 +5,8 @@ import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.io.XmlParser;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Map;
 import org.springframework.core.io.Resource;
-import org.w3c.dom.Document;
 
 /**
  * Implementation of {@link BookContentLoader} interface that loads the contents of the file from a classpath resource, and can load content data from the helper file as well.
@@ -29,10 +27,7 @@ public class DevResourceBookContentLoader extends ResourceBookContentLoader {
         final Map<String, Paragraph> paragraphs = super.loadParagraphs(info);
         final Resource[] resources = getApplicationContext().getResources(CLASSPATH + paragraphLocation.replace(".xml", "2.xml"));
         if (resources.length > 0) {
-            try (InputStream inputStream = resources[0].getInputStream()) {
-                final Document xmlFileContent = getXmlParser().getXmlFileContent(inputStream);
-                paragraphs.putAll(info.getContentTransformers().getParagraphTransformer().transformParagraphs(xmlFileContent));
-            }
+            paragraphs.putAll(loadParagraphsFromResource(resources, info));
         }
         return paragraphs;
     }

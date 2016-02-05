@@ -3,12 +3,13 @@ package hu.zagor.gamebooks.content;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
-import org.easymock.EasyMock;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import java.util.List;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -23,18 +24,10 @@ public class ParagraphTest {
     private static final String PARAGRAP_ID = "111";
     private static final String DISPLAY_ID = "32d";
     private Paragraph underTest;
-    private IMocksControl mockControl;
-    private ParagraphData paragraphData;
-    private GatheredLostItem glItem;
-    private Object posCounter;
-
-    @BeforeClass
-    public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        paragraphData = mockControl.createMock(ParagraphData.class);
-        glItem = mockControl.createMock(GatheredLostItem.class);
-        posCounter = mockControl.createMock(ChoicePositionCounter.class);
-    }
+    @MockControl private IMocksControl mockControl;
+    @Mock private ParagraphData paragraphData;
+    @Mock private GatheredLostItem glItem;
+    @Mock private ChoicePositionCounter posCounter;
 
     @BeforeMethod
     public void setUpMethod() {
@@ -256,6 +249,25 @@ public class ParagraphTest {
         underTest.clearValidMoves();
         // THEN
         Assert.assertFalse(underTest.isValidMove(PARAGRAP_ID));
+    }
+
+    public void testAddValidItemWhenAddingValidItemAfterItHasBeenAddedShouldIncreaseAmountOfOriginal() {
+        // GIVEN
+        mockControl.replay();
+        // WHEN
+        underTest.addValidItem(ITEM_ID, 4);
+        underTest.addValidItem(ITEM_ID, 2);
+        // THEN
+        Assert.assertEquals(underTest.getValidItems().get(ITEM_ID).intValue(), 6);
+    }
+
+    public void testGetItemsToProcessShouldReturnProcessItemArray() {
+        // GIVEN
+        mockControl.replay();
+        // WHEN
+        final List<ProcessableItemHolder> returned = underTest.getItemsToProcess();
+        // THEN
+        Assert.assertSame(returned, Whitebox.getInternalState(underTest, "itemsToProcess"));
     }
 
     @AfterMethod

@@ -14,6 +14,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.core.io.Resource;
 import org.springframework.util.Assert;
 import org.w3c.dom.Document;
 
@@ -58,7 +59,14 @@ public class ResourceBookContentLoader implements BookContentLoader, Application
     Map<String, Paragraph> loadParagraphs(final BookInformations info) throws IOException, XmlTransformationException {
         final String paragraphLocation = info.getContents().getParagraphs();
         Map<String, Paragraph> paragraphs = null;
-        try (InputStream inputStream = applicationContext.getResources(CLASSPATH + paragraphLocation)[0].getInputStream()) {
+        final Resource[] resourceToLoad = applicationContext.getResources(CLASSPATH + paragraphLocation);
+        paragraphs = loadParagraphsFromResource(resourceToLoad, info);
+        return paragraphs;
+    }
+
+    Map<String, Paragraph> loadParagraphsFromResource(final Resource[] resourceToLoad, final BookInformations info) throws XmlTransformationException, IOException {
+        Map<String, Paragraph> paragraphs;
+        try (InputStream inputStream = resourceToLoad[0].getInputStream()) {
             final Document xmlFileContent = xmlParser.getXmlFileContent(inputStream);
             paragraphs = info.getContentTransformers().getParagraphTransformer().transformParagraphs(xmlFileContent);
         }

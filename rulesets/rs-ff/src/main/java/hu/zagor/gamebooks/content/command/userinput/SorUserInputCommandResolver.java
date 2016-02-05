@@ -45,7 +45,7 @@ public class SorUserInputCommandResolver extends UserInputCommandResolver {
 
     private boolean askingForGoblinTeeth(final ResolvationData resolvationData) {
         final Long bookId = resolvationData.getInfo().getId() % LAST_VALUE_MODULUS;
-        final String section = resolvationData.getSection();
+        final String section = resolvationData.getParagraph().getId();
         return goblinGeneratorLocations.contains(bookId + "-" + section);
     }
 

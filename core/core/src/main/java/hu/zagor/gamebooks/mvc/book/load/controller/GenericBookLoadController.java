@@ -59,7 +59,7 @@ public abstract class GenericBookLoadController extends AbstractSectionDisplayin
 
         final ContinuationData continuationData = getInfo().getContinuationData();
         if (continuationData == null) {
-            throw new UnsupportedOperationException("Continuation is not supported when continuation information is not provided.");
+            throw new IllegalStateException("Continuation is not supported when continuation information is not provided.");
         }
 
         final HttpSessionWrapper wrapper = getWrapper(request);
@@ -71,7 +71,7 @@ public abstract class GenericBookLoadController extends AbstractSectionDisplayin
 
         final Paragraph paragraph = (Paragraph) container.getElement(ControllerAddresses.PARAGRAPH_STORE_KEY);
         if (!continuationData.getPreviousBookLastSectionId().equals(paragraph.getId())) {
-            throw new UnsupportedOperationException("Continuation is not supported when the character from the previous book is not staying on the finishing section.");
+            throw new IllegalStateException("Continuation is not supported when the character from the previous book is not staying on the finishing section.");
         }
 
         doLoadPrevious(request, response, container);

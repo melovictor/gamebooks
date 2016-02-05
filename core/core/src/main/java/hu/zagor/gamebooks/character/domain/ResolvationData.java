@@ -65,10 +65,6 @@ public class ResolvationData {
         this.position = position;
     }
 
-    public String getSection() {
-        return paragraph.getId();
-    }
-
     public Paragraph getParagraph() {
         return paragraph;
     }

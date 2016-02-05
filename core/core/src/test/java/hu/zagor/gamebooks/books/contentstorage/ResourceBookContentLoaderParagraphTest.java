@@ -13,14 +13,14 @@ import hu.zagor.gamebooks.domain.BookContentFiles;
 import hu.zagor.gamebooks.domain.BookContentTransformers;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.io.XmlParser;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
+import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
@@ -42,36 +42,24 @@ public class ResourceBookContentLoaderParagraphTest {
     private static final Long ID = 5465465486415345L;
     private static final String PARAGRAPH_PATH = "content.xml";
     private ResourceBookContentLoader underTest;
-    private IMocksControl mockControl;
-    private XmlParser xmlParser;
-    private ApplicationContext applicationContext;
-    private Logger logger;
+    @MockControl private IMocksControl mockControl;
+    @Mock private XmlParser xmlParser;
+    @Inject private ApplicationContext applicationContext;
+    @Inject private Logger logger;
     private BookInformations info;
-    private InputStream inputStream;
-    private BookEntryStorage storage;
+    @Mock private InputStream inputStream;
+    @Mock private BookEntryStorage storage;
     private BookContentFiles contentFiles;
     private Resource[] resources;
-    private Resource resource;
-    private Document document;
+    @Mock private Resource resource;
+    @Mock private Document document;
     private BookContentTransformers contentTransformers;
-    private BookParagraphTransformer paragraphTransformer;
-    private Map<String, Paragraph> paragraphs;
+    @Mock private BookParagraphTransformer paragraphTransformer;
+    @Mock private Map<String, Paragraph> paragraphs;
 
-    @SuppressWarnings("unchecked")
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-
-        xmlParser = mockControl.createMock(XmlParser.class);
-        applicationContext = mockControl.createMock(ApplicationContext.class);
-        logger = mockControl.createMock(Logger.class);
-        inputStream = mockControl.createMock(InputStream.class);
-        storage = mockControl.createMock(BookEntryStorage.class);
-        resource = mockControl.createMock(Resource.class);
         resources = new Resource[]{resource};
-        document = mockControl.createMock(Document.class);
-        paragraphTransformer = mockControl.createMock(BookParagraphTransformer.class);
-        paragraphs = mockControl.createMock(Map.class);
 
         contentFiles = new BookContentFiles(PARAGRAPH_PATH, null, null);
         contentTransformers = new BookContentTransformers(paragraphTransformer, null, null);
@@ -82,11 +70,13 @@ public class ResourceBookContentLoaderParagraphTest {
         info.setContentTransformers(contentTransformers);
     }
 
+    @UnderTest
+    public ResourceBookContentLoader underTest() {
+        return new ResourceBookContentLoader(xmlParser);
+    }
+
     @BeforeMethod
     public void setUpMethod() {
-        underTest = new ResourceBookContentLoader(xmlParser);
-        underTest.setApplicationContext(applicationContext);
-        Whitebox.setInternalState(underTest, "logger", logger);
         mockControl.reset();
     }
 
@@ -187,8 +177,7 @@ public class ResourceBookContentLoaderParagraphTest {
         Assert.assertNull(returned);
     }
 
-    public void testLoadBookContentWhenInputStreamCannotBeTransformedAndClosingFailsShouldLogErrorAndReturnNull() throws XmlTransformationException,
-        IOException {
+    public void testLoadBookContentWhenInputStreamCannotBeTransformedAndClosingFailsShouldLogErrorAndReturnNull() throws XmlTransformationException, IOException {
         // GIVEN
         logger.info("Loading content for book '{}'.", TITLE);
 
@@ -209,6 +198,24 @@ public class ResourceBookContentLoaderParagraphTest {
         final BookItemStorage returned = underTest.loadBookContent(info);
         // THEN
         Assert.assertNull(returned);
+    }
+
+    public void testGetXmlParserShouldReturnXmlParser() {
+        // GIVEN
+        mockControl.replay();
+        // WHEN
+        final XmlParser returned = underTest.getXmlParser();
+        // THEN
+        Assert.assertSame(returned, xmlParser);
+    }
+
+    public void testGetApplicationContextShouldReturnApplicationContext() {
+        // GIVEN
+        mockControl.replay();
+        // WHEN
+        final ApplicationContext returned = underTest.getApplicationContext();
+        // THEN
+        Assert.assertSame(returned, applicationContext);
     }
 
     @AfterMethod
