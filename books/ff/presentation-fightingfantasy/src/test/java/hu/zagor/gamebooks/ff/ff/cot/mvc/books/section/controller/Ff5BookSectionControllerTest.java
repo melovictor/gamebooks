@@ -33,7 +33,6 @@ public class Ff5BookSectionControllerTest {
     private Ff5BookSectionController underTest;
     private Model model;
     private HttpSessionWrapper wrapper;
-    private String sectionIdentifier;
     private Paragraph paragraph;
 
     private WhoThrowsHigherService whoThrowsHigher;
@@ -82,16 +81,18 @@ public class Ff5BookSectionControllerTest {
     public void testHandleCustomSectionsWhenSectionIsNotSpecialShouldDoNothing() {
         // GIVEN
         final String sectionId = "66";
+        expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn(sectionId).times(2);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, true);
         // THEN
     }
 
     public void testHandleCustomSectionsWhenSectionIsWhoThrowsHigherTheFirstTimeShouldRegisterFirstAttemptAndPlayWhoThrowsHigher() {
         // GIVEN
         final String sectionId = "206a";
+        expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn(sectionId);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(itemHandler.hasItem(character, "42063")).andReturn(false);
@@ -103,13 +104,14 @@ public class Ff5BookSectionControllerTest {
         whoThrowsHigher.playGame(character, data);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, true);
         // THEN
     }
 
     public void testHandleCustomSectionsWhenSectionIsWhoThrowsHigherTheSecondTimeShouldRegisterSecondAttemptAndPlayWhoThrowsHigher() {
         // GIVEN
         final String sectionId = "206a";
+        expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn(sectionId);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(itemHandler.hasItem(character, "42063")).andReturn(false);
@@ -121,13 +123,14 @@ public class Ff5BookSectionControllerTest {
         whoThrowsHigher.playGame(character, data);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, true);
         // THEN
     }
 
     public void testHandleCustomSectionsWhenSectionIsWhoThrowsHigherTheThirdTimeShouldRegisterThirdAttemptAndPlayWhoThrowsHigher() {
         // GIVEN
         final String sectionId = "206a";
+        expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn(sectionId);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(itemHandler.hasItem(character, "42063")).andReturn(false);
@@ -138,13 +141,14 @@ public class Ff5BookSectionControllerTest {
         whoThrowsHigher.playGame(character, data);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, true);
         // THEN
     }
 
     public void testHandleCustomSectionsWhenSectionIsWhoThrowsHigherTheFourthTimeShouldRegisterFourthAttemptAndPlayWhoThrowsHigher() {
         // GIVEN
         final String sectionId = "206a";
+        expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn(sectionId);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(itemHandler.hasItem(character, "42063")).andReturn(true);
@@ -154,13 +158,14 @@ public class Ff5BookSectionControllerTest {
         whoThrowsHigher.playGame(character, data);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, true);
         // THEN
     }
 
     public void testHandleCustomSectionsWhenSectionIsThrowTheBallShouldPlayBallThrowChallangeGame() {
         // GIVEN
         final String sectionId = "378";
+        expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn(sectionId).times(2);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getParagraph()).andReturn(paragraph);
@@ -168,7 +173,7 @@ public class Ff5BookSectionControllerTest {
         ballThrowChallenge.playGame(character, data);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, true);
         // THEN
     }
 

@@ -7,13 +7,16 @@ import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.player.PlayerUser;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import javax.servlet.http.HttpServletRequest;
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
-import org.springframework.ui.Model;
+import org.springframework.context.ApplicationContext;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -29,38 +32,33 @@ public class GenericBookSectionControllerTest {
 
     private static final String PARAGRAPH_ID = "99";
     private GenericBookSectionController underTest;
-    private BookContentInitializer contentInitializer;
-    private IMocksControl mockControl;
-    private BeanFactory beanFactory;
-    private HttpSessionWrapper wrapper;
-    private HttpServletRequest request;
-    private Paragraph oldParagraph;
+    @Inject private BookContentInitializer contentInitializer;
+    @MockControl private IMocksControl mockControl;
+    @Inject private BeanFactory beanFactory;
+    @Mock private HttpSessionWrapper wrapper;
+    @Mock private HttpServletRequest request;
+    @Mock private Paragraph oldParagraph;
     private PlayerUser player;
     private BookInformations info;
-    private Paragraph newParagraph;
-    private Logger logger;
-    private GameStateHandler gameStateHandler;
+    @Mock private Paragraph newParagraph;
+    @Inject private Logger logger;
+    @Inject private GameStateHandler gameStateHandler;
+    @Inject private ApplicationContext applicationContext;
 
     @BeforeClass
     public void setUpClass() {
-        underTest = new Testing99BookSectionController();
-        mockControl = EasyMock.createStrictControl();
-        contentInitializer = mockControl.createMock(BookContentInitializer.class);
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        wrapper = mockControl.createMock(HttpSessionWrapper.class);
-        request = mockControl.createMock(HttpServletRequest.class);
-        oldParagraph = mockControl.createMock(Paragraph.class);
-        newParagraph = mockControl.createMock(Paragraph.class);
         info = new BookInformations(1L);
         player = new PlayerUser(9, "FireFoX", false);
-        logger = mockControl.createMock(Logger.class);
-        gameStateHandler = mockControl.createMock(GameStateHandler.class);
+    }
 
-        initController(underTest);
+    @UnderTest
+    public GenericBookSectionController underTest() {
+        return new Testing99BookSectionController();
     }
 
     private GenericBookSectionController initController(final GenericBookSectionController controller) {
         controller.setBeanFactory(beanFactory);
+        controller.setApplicationContext(applicationContext);
         Whitebox.setInternalState(controller, "contentInitializer", contentInitializer);
         Whitebox.setInternalState(controller, "logger", logger);
         Whitebox.setInternalState(controller, "gameStateHandler", gameStateHandler);
@@ -110,6 +108,7 @@ public class GenericBookSectionControllerTest {
         // GIVEN
         expect(beanFactory.containsBean("testing99Info")).andReturn(true);
         expect(beanFactory.getBean("testing99Info", BookInformations.class)).andReturn(info);
+        expect(applicationContext.containsBean("testing99PrePostSectionHandler")).andReturn(false);
         mockControl.replay();
         // WHEN
         underTest.init();
@@ -121,6 +120,7 @@ public class GenericBookSectionControllerTest {
         // GIVEN
         expect(beanFactory.containsBean("testing99p3Info")).andReturn(true);
         expect(beanFactory.getBean("testing99p3Info", BookInformations.class)).andReturn(info);
+        expect(applicationContext.containsBean("testing99p3PrePostSectionHandler")).andReturn(false);
         mockControl.replay();
         // WHEN
         final GenericBookSectionController controller = initController(new Testing99p3BookSectionController());
@@ -141,6 +141,7 @@ public class GenericBookSectionControllerTest {
     public void testInitWhenBeanFactoryDoesNotContainInfoBeanShouldLeaveInfoFieldEmpty() {
         // GIVEN
         expect(beanFactory.containsBean("testing99Info")).andReturn(false);
+        expect(applicationContext.containsBean("testing99PrePostSectionHandler")).andReturn(false);
         mockControl.replay();
         // WHEN
         underTest.init();
@@ -150,6 +151,7 @@ public class GenericBookSectionControllerTest {
 
     public void testInitWhenBookIdCannotBeDeterminedShouldSkipInfoInitialization() {
         // GIVEN
+        expect(applicationContext.containsBean("nullPrePostSectionHandler")).andReturn(false);
         mockControl.replay();
         // WHEN
         initController(new _testingBookSectionController()).init();
@@ -181,37 +183,12 @@ public class GenericBookSectionControllerTest {
     }
 
     private class Testing99BookSectionController extends GenericBookSectionController {
-
-        @Override
-        protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
-        }
-
-        @Override
-        protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
-        }
-
     }
 
     private class Testing99p3BookSectionController extends GenericBookSectionController {
-
-        @Override
-        protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
-        }
-
-        @Override
-        protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
-        }
     }
 
     private class _testingBookSectionController extends GenericBookSectionController {
-
-        @Override
-        protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
-        }
-
-        @Override
-        protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
-        }
     }
 
 }

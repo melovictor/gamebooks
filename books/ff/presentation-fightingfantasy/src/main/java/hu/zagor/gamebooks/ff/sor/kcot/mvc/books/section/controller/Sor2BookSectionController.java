@@ -7,13 +7,10 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.item.Item;
-import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.ProcessableItemHolder;
 import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.content.choice.ChoiceSet;
-import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.exception.InvalidStepChoiceException;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
@@ -51,7 +48,6 @@ public class Sor2BookSectionController extends SorBookSectionController {
     private static final int SELF_ENEMY_INITIAL_STAMINA = 99;
     private static final String SELF_ENEMY_ID = "9";
     private static final String FIGHT_WITH_SELF_ID = "67";
-    private static final String DANCER_SECTION_ID = "17";
     private static final String MET_FLANKER_MARKER = "4013";
     @Resource(name = "flankerVisitTargets") private Map<String, String> flankerVisitTargets;
     @Autowired private LocaleProvider localeProvider;
@@ -135,21 +131,15 @@ public class Sor2BookSectionController extends SorBookSectionController {
     }
 
     @Override
-    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
-        super.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        super.handleCustomSectionsPre(model, wrapper, changedSection);
+        final Paragraph paragraph = wrapper.getParagraph();
         final String sectionId = paragraph.getId();
         final SorCharacter character = (SorCharacter) wrapper.getCharacter();
         final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
         final FfUserInteractionHandler interactionHandler = characterHandler.getInteractionHandler();
         final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
-        if (DANCER_SECTION_ID.equals(sectionId)) {
-            final List<ProcessableItemHolder> itemsToProcess = paragraph.getItemsToProcess();
-            if (!itemsToProcess.isEmpty()) {
-                final AttributeTestCommand command = (AttributeTestCommand) itemsToProcess.get(0).getCommand();
-                final int itemCount = getItemCountForDancers(character);
-                command.setAgainst(String.valueOf(itemCount));
-            }
-        } else if (ENTER_VLAD_GAMBLING_HALL.equals(sectionId)) {
+        if (ENTER_VLAD_GAMBLING_HALL.equals(sectionId)) {
             interactionHandler.setInteractionState(character, "goldBeforeGambling", String.valueOf(character.getGold()));
         } else if (LEAVE_VLAD_GAMBLING_HALL.equals(sectionId)) {
             final int currentGold = character.getGold();
@@ -176,8 +166,9 @@ public class Sor2BookSectionController extends SorBookSectionController {
     }
 
     @Override
-    protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
-        super.handleCustomSectionsPost(model, wrapper, sectionIdentifier, paragraph);
+    protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        super.handleCustomSectionsPost(model, wrapper, changedSection);
+        final Paragraph paragraph = wrapper.getParagraph();
         final String sectionId = paragraph.getId();
         if (FIGHT_WITH_SELF_ID.equals(sectionId)) {
             final FfEnemy enemy = (FfEnemy) wrapper.getEnemies().get(SELF_ENEMY_ID);
@@ -242,28 +233,4 @@ public class Sor2BookSectionController extends SorBookSectionController {
         }
     }
 
-    private int getItemCountForDancers(final SorCharacter character) {
-        int count = 0;
-        if (character.getGold() > 0) {
-            count = 1;
-        }
-        final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
-        if (itemHandler.hasItem(character, "2000")) {
-            count++;
-        }
-        for (final Item item : character.getEquipment()) {
-            if (item.getItemType() == ItemType.shadow) {
-                continue;
-            }
-            if (item.getItemType() == ItemType.provision) {
-                if (!"2000".equals(item.getId())) {
-                    count++;
-                }
-            } else if (!"defWpn".equals(item.getId())) {
-                count++;
-            }
-        }
-
-        return count;
-    }
 }

@@ -121,7 +121,7 @@ public class Sor1BookSectionController extends SorBookSectionController {
     }
 
     @Override
-    protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
         final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
         if (itemHandler.hasItem(character, "4006", 1)) {

@@ -68,46 +68,50 @@ public class Ff18BookSectionControllerTest {
 
     public void testHandleCustomSectionsWhenNotSpecialSectionShouldDoNothing() {
         // GIVEN
+        expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("100");
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSectionsPre(model, wrapper, "100", paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, true);
         // THEN
     }
 
     public void testHandleCustomSectionsWhen374ShouldHealHalfStamina() {
         // GIVEN
+        expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("374");
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getStamina()).andReturn(5);
         attributeHandler.handleModification(character, "stamina", 2);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSectionsPre(model, wrapper, "374", paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, true);
         // THEN
     }
 
     public void testHandleCustomSectionsWhen191ShouldHealHalfStamina() {
         // GIVEN
+        expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("191");
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getStamina()).andReturn(5);
         attributeHandler.handleModification(character, "stamina", 2);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSectionsPre(model, wrapper, "191", paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, true);
         // THEN
     }
 
     public void testHandleCustomSectionsWhen78ShouldHealHalfStamina() {
         // GIVEN
+        expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("78");
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getStamina()).andReturn(5);
         attributeHandler.handleModification(character, "stamina", 2);
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSectionsPre(model, wrapper, "78", paragraph);
+        underTest.handleCustomSectionsPre(model, wrapper, true);
         // THEN
     }
 

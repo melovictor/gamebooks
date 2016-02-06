@@ -37,7 +37,8 @@ public class Ff5BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        final Paragraph paragraph = wrapper.getParagraph();
         if (isWhoThrowsHigher(paragraph)) {
             handleWhoThrowsHigher(wrapper);
         } else if (throwTheBall(paragraph)) {

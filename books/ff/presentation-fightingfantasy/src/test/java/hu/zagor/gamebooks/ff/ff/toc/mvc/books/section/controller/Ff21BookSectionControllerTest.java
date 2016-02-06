@@ -76,7 +76,7 @@ public class Ff21BookSectionControllerTest {
         // GIVEN
         mockControl.replay();
         // WHEN
-        new Ff21BookSectionController(sectionHandler).handleCustomSectionsPre(model, wrapper, null, null);
+        new Ff21BookSectionController(sectionHandler).handleCustomSectionsPre(model, wrapper, false);
         // THEN
     }
 
@@ -88,7 +88,7 @@ public class Ff21BookSectionControllerTest {
         final Ff21BookSectionController underTest = new Ff21BookSectionController(sectionHandler);
         Whitebox.setInternalState(underTest, "info", info);
         // WHEN
-        underTest.handleCustomSectionsPre(model, wrapper, "333", null);
+        underTest.handleCustomSectionsPre(model, wrapper, true);
         // THEN
     }
 
@@ -101,7 +101,7 @@ public class Ff21BookSectionControllerTest {
         final Ff21BookSectionController underTest = new Ff21BookSectionController(sectionHandler);
         Whitebox.setInternalState(underTest, "info", info);
         // WHEN
-        underTest.handleCustomSectionsPre(model, wrapper, "333", null);
+        underTest.handleCustomSectionsPre(model, wrapper, true);
         // THEN
     }
 

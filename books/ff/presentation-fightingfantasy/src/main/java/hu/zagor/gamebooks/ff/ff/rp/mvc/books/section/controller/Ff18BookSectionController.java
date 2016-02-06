@@ -31,7 +31,8 @@ public class Ff18BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        final Paragraph paragraph = wrapper.getParagraph();
         final String paragraphId = paragraph.getId();
         if ("374".equals(paragraphId) || "191".equals(paragraphId) || "78".equals(paragraphId)) {
             final FfCharacter character = (FfCharacter) wrapper.getCharacter();

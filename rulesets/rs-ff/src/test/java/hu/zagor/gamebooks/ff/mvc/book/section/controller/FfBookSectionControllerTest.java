@@ -21,6 +21,7 @@ import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
 import hu.zagor.gamebooks.ff.section.FfRuleBookParagraphResolver;
 import hu.zagor.gamebooks.mvc.book.controller.domain.StaticResourceDescriptor;
+import hu.zagor.gamebooks.mvc.book.section.service.CustomPrePostSectionHandler;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.recording.NavigationRecorder;
@@ -80,6 +81,7 @@ public class FfBookSectionControllerTest {
     @Mock private StaticResourceDescriptor staticResourceDescriptor;
     @Mock private Set<String> resourceSet;
     @Instance private ResourceInformation resources;
+    @Instance(inject = true) private Map<String, CustomPrePostSectionHandler> prePostHandlers;
 
     @BeforeClass
     public void setUpClass() {
@@ -157,6 +159,7 @@ public class FfBookSectionControllerTest {
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(oldData.getText()).andReturn("<p>blabla text.</p><a id='#iAmAMarker'></a><p>Blabla other text.</p>");
         oldData.setText("<p>blabla text.</p><p>Blabla other text.</p>");
+        expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(wrapper.getPlayer()).andReturn(player);
         expect(model.addAttribute("hideTopSection", true)).andReturn(model);
         expect(model.addAttribute("hideChoiceSection", true)).andReturn(model);
@@ -175,6 +178,7 @@ public class FfBookSectionControllerTest {
         oldData.setText("Some text without alternate placeholder.");
         expect(oldData.getChoices()).andReturn(choiceSet);
         expect(sectionHandlingService.resolveParagraphId(info, "100a")).andReturn("100");
+        expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(wrapper.setModel(model)).andReturn(model);
         navigationRecorder.recordNavigation(wrapper, null, oldParagraph, oldParagraph);
         expectResources();

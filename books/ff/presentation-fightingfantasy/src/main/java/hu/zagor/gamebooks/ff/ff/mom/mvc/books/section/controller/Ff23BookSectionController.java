@@ -47,7 +47,8 @@ public class Ff23BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        final Paragraph paragraph = wrapper.getParagraph();
         if ("240".equals(paragraph.getId())) {
             paragraph.clearValidMoves();
         }

@@ -37,7 +37,8 @@ public class Wm6BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        final Paragraph paragraph = wrapper.getParagraph();
         if ("95".equals(paragraph.getId())) {
             final Map<String, Enemy> enemies = wrapper.getEnemies();
             resetEnemy(enemies, "1");

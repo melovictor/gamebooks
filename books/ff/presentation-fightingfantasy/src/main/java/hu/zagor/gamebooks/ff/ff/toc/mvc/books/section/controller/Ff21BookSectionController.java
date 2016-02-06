@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.ff.ff.toc.mvc.books.section.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
-import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.FfBookSectionController;
@@ -32,8 +31,8 @@ public class Ff21BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
-        if (sectionIdentifier != null) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        if (changedSection) {
             final FfCharacter character = (FfCharacter) wrapper.getCharacter();
             final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
             if (characterHandler.getParagraphHandler().visitedParagraph(character, "201")) {

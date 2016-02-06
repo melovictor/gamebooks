@@ -42,7 +42,8 @@ public class Ff15BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        final Paragraph paragraph = wrapper.getParagraph();
         final Ff15Character character = (Ff15Character) wrapper.getCharacter();
         final Ff15ShipAttributes shipAttributes = character.getShipAttributes();
 
@@ -60,7 +61,7 @@ public class Ff15BookSectionController extends FfBookSectionController {
             shipAttributes.setShield(shipAttributes.getShield());
             shipAttributes.setWeaponStrength(shipAttributes.getWeaponStrength());
         }
-        super.handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
+        super.handleCustomSectionsPre(model, wrapper, changedSection);
     }
 
 }

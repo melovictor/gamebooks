@@ -40,7 +40,8 @@ public class Ff10BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        final Paragraph paragraph = wrapper.getParagraph();
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
         final String sectionId = paragraph.getId();
         if ("280".equals(sectionId)) {

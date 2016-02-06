@@ -33,7 +33,8 @@ public class Wm5BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        final Paragraph paragraph = wrapper.getParagraph();
         if ("110".equals(paragraph.getId())) {
             final FfEnemy enemy = (FfEnemy) wrapper.getEnemies().get("13");
             final FfCharacter character = (FfCharacter) wrapper.getCharacter();

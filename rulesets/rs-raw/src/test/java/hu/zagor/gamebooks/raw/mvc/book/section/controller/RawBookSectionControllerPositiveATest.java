@@ -19,6 +19,7 @@ import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.mvc.book.controller.domain.StaticResourceDescriptor;
+import hu.zagor.gamebooks.mvc.book.section.service.CustomPrePostSectionHandler;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.raw.character.RawCharacterPageData;
@@ -27,7 +28,6 @@ import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
@@ -79,11 +79,12 @@ public class RawBookSectionControllerPositiveATest {
     private ChoiceSet choicesMixed;
     private ChoiceSet choicesExtra;
     private Choice choiceWithExtra;
-    private Map<String, Enemy> enemies;
+    @Instance private Map<String, Enemy> enemies;
     @Inject private NavigationRecorder navigationRecorder;
     @Mock private Map<String, Object> modelMap;
     @Mock private StaticResourceDescriptor staticResourceDescriptor;
     @Mock private Set<String> resourceSet;
+    @Instance(inject = true) private Map<String, CustomPrePostSectionHandler> prePostHandlers;
 
     @BeforeClass
     public void setUpClass() {
@@ -95,7 +96,6 @@ public class RawBookSectionControllerPositiveATest {
         info.setParagraphResolver(paragraphResolver);
         player.getSettings().setImageTypeOrder("bwFirst");
         oldParagraph.setData(data);
-        enemies = new HashMap<>();
 
         Whitebox.setInternalState(underTest, "info", info);
     }
@@ -134,6 +134,8 @@ public class RawBookSectionControllerPositiveATest {
         expect(newParagraph.getData()).andReturn(data);
         expect(newParagraph.getData()).andReturn(data);
         expect(sectionHandlingService.resolveParagraphId(info, "9")).andReturn("9");
+        expect(wrapper.getParagraph()).andReturn(newParagraph);
+        expect(newParagraph.getId()).andReturn("10");
         expect(wrapper.setModel(model)).andReturn(model);
         navigationRecorder.recordNavigation(wrapper, "s-9", oldParagraph, newParagraph);
         expectResources();
@@ -168,6 +170,8 @@ public class RawBookSectionControllerPositiveATest {
         expect(newParagraph.getData()).andReturn(data);
         expect(newParagraph.getData()).andReturn(data);
         expect(sectionHandlingService.resolveParagraphId(info, "9")).andReturn("9");
+        expect(wrapper.getParagraph()).andReturn(newParagraph);
+        expect(newParagraph.getId()).andReturn("10");
         expect(wrapper.setModel(model)).andReturn(model);
         navigationRecorder.recordNavigation(wrapper, "1", oldParagraph, newParagraph);
         expectResources();
@@ -193,6 +197,8 @@ public class RawBookSectionControllerPositiveATest {
         expect(newParagraph.getData()).andReturn(data);
         expect(newParagraph.getData()).andReturn(data);
         expect(sectionHandlingService.resolveParagraphId(info, "10")).andReturn("10");
+        expect(wrapper.getParagraph()).andReturn(newParagraph);
+        expect(newParagraph.getId()).andReturn("10");
         expect(wrapper.setModel(model)).andReturn(model);
         navigationRecorder.recordNavigation(wrapper, "s-10", oldParagraph, newParagraph);
         expectResources();
@@ -235,6 +241,8 @@ public class RawBookSectionControllerPositiveATest {
     private void setUpNewParagraph() {
         expect(newParagraph.getId()).andReturn("10");
         paragraphHandler.addParagraph(character, "10");
+        expect(wrapper.getParagraph()).andReturn(newParagraph);
+        expect(newParagraph.getId()).andReturn("10");
         expect(wrapper.getPlayer()).andReturn(player);
         expect(newParagraph.getId()).andReturn("10");
     }

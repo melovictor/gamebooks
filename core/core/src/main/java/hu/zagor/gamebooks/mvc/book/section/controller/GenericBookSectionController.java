@@ -5,7 +5,10 @@ import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.mvc.book.controller.AbstractSectionDisplayingController;
+import hu.zagor.gamebooks.mvc.book.section.service.CustomPrePostSectionHandler;
 import hu.zagor.gamebooks.support.logging.LogInject;
+import java.util.Map;
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,18 @@ public abstract class GenericBookSectionController extends AbstractSectionDispla
     @LogInject private Logger logger;
     @Autowired private BookContentInitializer contentInitializer;
     @Autowired private GameStateHandler gameStateHandler;
+    private Map<String, CustomPrePostSectionHandler> prePostHandlers;
+
+    @PostConstruct
+    @Override
+    @SuppressWarnings("unchecked")
+    public void init() {
+        super.init();
+        final String customHandlerName = fetchBookIdByReflection() + "PrePostSectionHandler";
+        if (getApplicationContext().containsBean(customHandlerName)) {
+            prePostHandlers = (Map<String, CustomPrePostSectionHandler>) getApplicationContext().getBean(customHandlerName);
+        }
+    }
 
     /**
      * Loads the paragraph content belonging to the given id.
@@ -40,19 +55,30 @@ public abstract class GenericBookSectionController extends AbstractSectionDispla
      * Does custom section handling in the books before the actual handler flow.
      * @param model the {@link Model}
      * @param wrapper the {@link HttpSessionWrapper}
-     * @param sectionIdentifier the section identifier which was requested by the user
-     * @param paragraph the new {@link Paragraph} object
+     * @param changedSection true if there was a section change, false if we stayed at the same
      */
-    protected abstract void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph);
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        defaultHandleCustomSections(model, wrapper, changedSection, "pre");
+    }
 
     /**
      * Does custom section handling in the books after the actual handler flow.
      * @param model the {@link Model}
      * @param wrapper the {@link HttpSessionWrapper}
-     * @param sectionIdentifier the section identifier which was requested by the user
-     * @param paragraph the new {@link Paragraph} object
+     * @param changedSection true if there was a section change, false if we stayed at the same
      */
-    protected abstract void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph);
+    protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        defaultHandleCustomSections(model, wrapper, changedSection, "post");
+    }
+
+    private void defaultHandleCustomSections(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection, final String postfix) {
+        if (prePostHandlers != null) {
+            final CustomPrePostSectionHandler customSectionHandler = prePostHandlers.get(wrapper.getParagraph().getId() + postfix);
+            if (customSectionHandler != null) {
+                customSectionHandler.handle(model, wrapper, getInfo(), changedSection);
+            }
+        }
+    }
 
     public Logger getLogger() {
         return logger;

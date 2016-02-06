@@ -39,7 +39,6 @@ public class RawBookSectionController extends GenericBookSectionController imple
 
     @Autowired private NavigationRecorder navigationRecorder;
     @Autowired private UserInteractionRecorder interactionRecorder;
-
     private final SectionHandlingService sectionHandlingService;
 
     /**
@@ -79,7 +78,6 @@ public class RawBookSectionController extends GenericBookSectionController imple
         final String title = info.getTitle();
         model.addAttribute("pageTitle", series + " &ndash; " + title);
         addResources(model);
-
         return sectionHandlingService.checkParagraph(model, paragraph, "rawWelcome", info);
     }
 
@@ -111,9 +109,10 @@ public class RawBookSectionController extends GenericBookSectionController imple
             getInfo().getCharacterHandler().getParagraphHandler().addParagraph(wrapper.getCharacter(), paragraph.getId());
         }
 
-        handleCustomSectionsPre(model, wrapper, sectionIdentifier, paragraph);
+        final boolean changedSection = paragraph != previousParagraph;
+        handleCustomSectionsPre(model, wrapper, changedSection);
         final String bookPage = doHandleSection(model, wrapper, paragraph, position);
-        handleCustomSectionsPost(model, wrapper, sectionIdentifier, paragraph);
+        handleCustomSectionsPost(model, wrapper, changedSection);
         wrapper.setModel(model);
         navigationRecorder.recordNavigation(wrapper, sectionIdentifier, previousParagraph, paragraph);
         addResources(model);
@@ -188,14 +187,6 @@ public class RawBookSectionController extends GenericBookSectionController imple
             }
         }
         return choice;
-    }
-
-    @Override
-    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
-    }
-
-    @Override
-    protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
     }
 
     private String doHandleSection(final Model model, final HttpSessionWrapper wrapper, final Paragraph paragraph, final Integer position) {
@@ -281,4 +272,5 @@ public class RawBookSectionController extends GenericBookSectionController imple
     public UserInteractionRecorder getInteractionRecorder() {
         return interactionRecorder;
     }
+
 }

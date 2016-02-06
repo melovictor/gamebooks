@@ -96,20 +96,22 @@ public class Ff23BookSectionControllerTest {
 
     public void testHandleCustomSectionsWhenAtSection240ShouldClearAllValidMoves() {
         // GIVEN
+        expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("240");
         paragraph.clearValidMoves();
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSectionsPost(model, wrapper, "240", paragraph);
+        underTest.handleCustomSectionsPost(model, wrapper, true);
         // THEN
     }
 
     public void testHandleCustomSectionsWhenAtSectionIsNot240ShouldDoNothing() {
         // GIVEN
+        expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("160");
         mockControl.replay();
         // WHEN
-        underTest.handleCustomSectionsPost(model, wrapper, null, paragraph);
+        underTest.handleCustomSectionsPost(model, wrapper, true);
         // THEN
     }
 

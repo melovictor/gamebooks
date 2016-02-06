@@ -37,11 +37,12 @@ public class Pt14BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        final Paragraph paragraph = wrapper.getParagraph();
         final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
         final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
-        if (sectionIdentifier != null && characterHandler.getItemHandler().hasItem(character, "3015")) {
+        if (changedSection && characterHandler.getItemHandler().hasItem(character, "3015")) {
             attributeHandler.handleModification(character, "stamina", -1);
         }
         if ("4".equals(paragraph.getId()) || "184".equals(paragraph.getId())) {

@@ -50,7 +50,8 @@ public class Ff1BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        final Paragraph paragraph = wrapper.getParagraph();
         final String id = paragraph.getId();
         if (OLD_MAN_DICING.equals(id) && hasNoBets(wrapper)) {
             final ItemCheckCommand itemCheckCommand = (ItemCheckCommand) wrapper.getParagraph().getData().getCommands().get(0);

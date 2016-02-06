@@ -73,16 +73,19 @@ public class SorBookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
         final SorCharacter character = (SorCharacter) wrapper.getCharacter();
+        final Paragraph paragraph = wrapper.getParagraph();
         saveCharacterIfNecessary(character, paragraph.getId());
         character.setLastEatenBonus(0);
+        super.handleCustomSectionsPre(model, wrapper, changedSection);
     }
 
     @Override
-    protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
         final SorCharacter character = (SorCharacter) wrapper.getCharacter();
         character.setLuckCookieActive(false);
+        super.handleCustomSectionsPost(model, wrapper, changedSection);
     }
 
     @Override

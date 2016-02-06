@@ -69,7 +69,8 @@ public class Ff2BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final String sectionIdentifier, final Paragraph paragraph) {
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        final Paragraph paragraph = wrapper.getParagraph();
         final Ff2Character character = (Ff2Character) wrapper.getCharacter();
         character.setLastSpellCast(getSpellUsed(paragraph));
 
