@@ -166,6 +166,7 @@ public class AttributeTestCommandResolver extends TypeAwareCommandResolver<Attri
                 }
             }
         }
+        command.setTestSuccess(isSuccessful);
         messages.add(getResultMessage(command, locale, isSuccessful));
         return resultData;
     }

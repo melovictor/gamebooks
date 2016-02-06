@@ -15,19 +15,27 @@ import java.util.Locale;
  */
 public class SorAttributeTestCommandResolver extends AttributeTestCommandResolver {
     private static final int HIGH_LUCK = 15;
-    private static final String LUCK_TALISMAN = "3023";
+    private static final String LUCK_TALISMAN_HIGHER_CHANCE = "3023";
+    private static final String LUCK_TALISMAN_NO_FAILURE_PENALTY = "3051";
 
     @Override
     FfParagraphData getResultParagraphData(final AttributeTestCommand command, final Locale locale, final ResolvationData resolvationData, final List<String> messages) {
         final CharacterItemHandler itemHandler = resolvationData.getCharacterHandler().getItemHandler();
-        if (itemHandler.hasEquippedItem(resolvationData.getCharacter(), LUCK_TALISMAN)) {
-            command.setAdd(command.getAdd() - 1);
-        }
         final SorCharacter character = (SorCharacter) resolvationData.getCharacter();
-        if (character.isLuckCookieActive()) {
-            command.setAgainstNumeric(0);
+        if ("luck".equals(command.getAgainst())) {
+            if (itemHandler.hasEquippedItem(character, LUCK_TALISMAN_HIGHER_CHANCE)) {
+                command.setAdd(command.getAdd() - 1);
+            }
+            if (character.isLuckCookieActive()) {
+                command.setAgainstNumeric(0);
+            }
         }
-        return super.getResultParagraphData(command, locale, resolvationData, messages);
+        final FfParagraphData resultParagraphData = super.getResultParagraphData(command, locale, resolvationData, messages);
+        if (itemHandler.hasEquippedItem(character, LUCK_TALISMAN_NO_FAILURE_PENALTY) && !command.isTestSuccess()) {
+            character.changeLuck(1);
+        }
+
+        return resultParagraphData;
     }
 
     @Override

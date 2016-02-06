@@ -35,6 +35,8 @@ public class AttributeTestCommand extends Command {
     private FfParagraphData failureEven;
     private FfParagraphData failureOdd;
 
+    private boolean testSuccess;
+
     public void setAgainst(final String against) {
         this.against = against;
     }
@@ -189,6 +191,14 @@ public class AttributeTestCommand extends Command {
 
     public void setCompactAgainst(final String compactAgainst) {
         this.compactAgainst = compactAgainst;
+    }
+
+    public boolean isTestSuccess() {
+        return testSuccess;
+    }
+
+    public void setTestSuccess(final boolean testSuccess) {
+        this.testSuccess = testSuccess;
     }
 
 }
