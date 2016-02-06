@@ -18,6 +18,7 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.exception.InvalidStepChoiceException;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.SorBookSectionController;
+import hu.zagor.gamebooks.ff.sor.kcot.mvc.books.section.service.Sor2GnomeHagglingService;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.Sorcery;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
@@ -55,6 +56,7 @@ public class Sor2BookSectionController extends SorBookSectionController {
     @Resource(name = "flankerVisitTargets") private Map<String, String> flankerVisitTargets;
     @Autowired private LocaleProvider localeProvider;
     @Autowired private HierarchicalMessageSource source;
+    @Autowired private Sor2GnomeHagglingService gnomeHagglingService;
 
     /**
      * Constructor expecting the {@link SectionHandlingService} bean.
@@ -144,7 +146,7 @@ public class Sor2BookSectionController extends SorBookSectionController {
             final List<ProcessableItemHolder> itemsToProcess = paragraph.getItemsToProcess();
             if (!itemsToProcess.isEmpty()) {
                 final AttributeTestCommand command = (AttributeTestCommand) itemsToProcess.get(0).getCommand();
-                final int itemCount = getItemCount(character);
+                final int itemCount = getItemCountForDancers(character);
                 command.setAgainst(String.valueOf(itemCount));
             }
         } else if (ENTER_VLAD_GAMBLING_HALL.equals(sectionId)) {
@@ -166,6 +168,10 @@ public class Sor2BookSectionController extends SorBookSectionController {
             final String text = paragraph.getData().getText();
             final String arrowsLeft = String.valueOf(itemHandler.getItems(character, "4036").size());
             paragraph.getData().setText(text.replace("XX", arrowsLeft));
+        } else if ("324".equals(sectionId)) {
+            gnomeHagglingService.setEntryCondition(paragraph, character);
+        } else if ("264a".equals(sectionId)) {
+            gnomeHagglingService.setHagglingCondition(paragraph, character);
         }
     }
 
@@ -236,7 +242,7 @@ public class Sor2BookSectionController extends SorBookSectionController {
         }
     }
 
-    private int getItemCount(final SorCharacter character) {
+    private int getItemCountForDancers(final SorCharacter character) {
         int count = 0;
         if (character.getGold() > 0) {
             count = 1;
