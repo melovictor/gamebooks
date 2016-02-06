@@ -5,6 +5,7 @@
     <input type="hidden" id="currentGold" value="${charEquipments.gold}" />
     <input type="hidden" id="mustHaveGold" value="${marketCommand.mustHaveGold}" />
     <input type="hidden" id="mustBuy" value="${marketCommand.mustBuy}" />
+    <input type="hidden" id="mustSellExactly" value="${marketCommand.mustSellExactly}" />
     <c:if test="${not empty marketCommand.itemsForSale}">
         <h2>
             <c:if test="${not empty marketCommand.saleLabel}">

@@ -4,12 +4,10 @@ import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.content.command.market.domain.MarketElement;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -34,6 +32,7 @@ public class MarketCommand extends Command {
     private int mustBuy;
     private String purchaseLabel;
     private String saleLabel;
+    private int mustSellExactly;
 
     public String getSingleCcyKey() {
         return singleCcyKey;
@@ -159,6 +158,14 @@ public class MarketCommand extends Command {
 
     public void setMustBuy(final int mustBuy) {
         this.mustBuy = mustBuy;
+    }
+
+    public int getMustSellExactly() {
+        return mustSellExactly;
+    }
+
+    public void setMustSellExactly(final int mustSellExactly) {
+        this.mustSellExactly = mustSellExactly;
     }
 
 }

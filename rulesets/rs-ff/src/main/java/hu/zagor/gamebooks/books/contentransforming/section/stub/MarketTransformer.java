@@ -5,9 +5,7 @@ import hu.zagor.gamebooks.books.contentransforming.section.CommandSubTransformer
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.market.MarketCommand;
-
 import java.util.Map;
-
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -27,6 +25,7 @@ public class MarketTransformer extends AbstractStubTransformer {
         command.setSingleCcyKey(extractAttribute(node, "currencySimple", "page.ff.label.market.goldPiece"));
         command.setMultipleCcyKey(extractAttribute(node, "currencyMultiple", "page.ff.label.market.goldPieces"));
         command.setMustHaveGold(extractIntegerAttribute(node, "mustHaveGold", 0));
+        command.setMustSellExactly(extractIntegerAttribute(node, "mustSellExactly", 0));
         command.setMustBuy(extractIntegerAttribute(node, "mustBuy", 0));
         final Integer giveUpAmount = extractIntegerAttribute(node, "mustGiveUp", 0);
         if (giveUpAmount > 0) {

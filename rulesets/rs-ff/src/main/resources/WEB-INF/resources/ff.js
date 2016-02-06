@@ -101,6 +101,8 @@ var market = (function() {
 	var requiredPurchases;
 	var currentGold;
 	var requiredGold;
+	var requiredSalesExactly;
+	var totalSales;
 
 	function init() {
 		var $content = $("#marketContent");
@@ -111,11 +113,13 @@ var market = (function() {
 		}
 
 		totalPurchases = 0;
+		totalSales = 0;
 		requiredPurchases = parseInt($("#mustBuy").val());
 		currentGold = parseInt($("#currentGold").val());
 		requiredGold = parseInt($("#mustHaveGold").val());
-		
-		if (requiredPurchases > totalPurchases || requiredGold > currentGold) {
+		requiredSalesExactly = parseInt($("#mustSellExactly").val());
+
+		if (requiredPurchases > totalPurchases || requiredGold > currentGold || (requiredSalesExactly > 0 && requiredSalesExactly > totalSales)) {
 			$("#marketCommandFinish").hide();
 		}
 	}
@@ -144,6 +148,7 @@ var market = (function() {
 			accept : "application/json; charset=utf-8",
 			dataType : "json",
 			success : function(data) {
+				totalSales++;
 				if (data.giveUpMode && data.giveUpFinished) {
 					close();
 				} else {
@@ -167,18 +172,23 @@ var market = (function() {
 		});
 		if (marketingFinished()) {
 			$("#marketCommandFinish").show();
+		} else if (marketingForceFinished()) {
+			close();
 		}
 		inventory.loadInventory();
 	}
 	
 	function close() {
-		if (marketingFinished()) {
+		if (marketingFinished() || marketingForceFinished()) {
 			form.submit("post", "marketClose", "actionEnd");
 		}
 	}
 	
 	function marketingFinished() {
-		return currentGold >= requiredGold && totalPurchases >= requiredPurchases;
+		return currentGold >= requiredGold && totalPurchases >= requiredPurchases && requiredSalesExactly == 0;
+	}
+	function marketingForceFinished() {
+		return requiredSalesExactly > 0 && requiredSalesExactly == totalSales;
 	}
 	
 	return {

@@ -56,6 +56,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
         expectAttribute("currencySimple");
         expectAttribute("currencyMultiple");
         expectAttribute("mustHaveGold");
+        expectAttribute("mustSellExactly");
         expectAttribute("mustBuy");
         expectAttribute("mustGiveUp");
         expect(node.getChildNodes()).andReturn(nodeList);
@@ -82,6 +83,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
         expectAttribute("currencySimple");
         expectAttribute("currencyMultiple");
         expectAttribute("mustHaveGold", "3");
+        expectAttribute("mustSellExactly", "5");
         expectAttribute("mustBuy", "2");
         expectAttribute("mustGiveUp", "2");
         expect(node.getChildNodes()).andReturn(nodeList);
@@ -97,6 +99,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
         Assert.assertEquals(command.getMustHaveGold(), 3);
         Assert.assertTrue(command.isGiveUpMode());
         Assert.assertEquals(command.getMustBuy(), 2);
+        Assert.assertEquals(command.getMustSellExactly(), 5);
         Assert.assertEquals(command.getGiveUpAmount(), 2);
     }
 
