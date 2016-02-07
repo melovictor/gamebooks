@@ -32,13 +32,13 @@ public class Sor2BookTakeItemController extends SorBookTakeItemController {
         if ("264".equals(sectionId)) {
             final SorCharacter character = (SorCharacter) wrapper.getCharacter();
             final FfUserInteractionHandler interactionHandler = getInfo().getCharacterHandler().getInteractionHandler();
-            String itemList = interactionHandler.getInteractionState(character, "giveUpList");
+            String itemList = interactionHandler.getInteractionState(character, "gnomeHagglingItems");
             if (itemList == null) {
                 itemList = itemId;
             } else {
                 itemList += "," + itemId;
             }
-            interactionHandler.setInteractionState(character, "giveUpList", itemList);
+            interactionHandler.setInteractionState(character, "gnomeHagglingItems", itemList);
             handleMarketSell = new HashMap<>();
             handleMarketSell.put("giveUpMode", false);
             handleMarketSell.put("giveUpFinished", true);

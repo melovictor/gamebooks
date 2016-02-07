@@ -6,10 +6,14 @@ import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
+import hu.zagor.gamebooks.mvc.book.section.service.CustomPrePostSectionHandler;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
@@ -44,11 +48,20 @@ public class GenericBookSectionControllerTest {
     @Inject private Logger logger;
     @Inject private GameStateHandler gameStateHandler;
     @Inject private ApplicationContext applicationContext;
+    @Instance private Map<String, CustomPrePostSectionHandler> prePostHandlers;
+    @Mock private CustomPrePostSectionHandler handlerA;
+    @Mock private CustomPrePostSectionHandler handlerB;
+    @Mock private CustomPrePostSectionHandler handlerC;
+    @Mock private CustomPrePostSectionHandler handlerD;
 
     @BeforeClass
     public void setUpClass() {
         info = new BookInformations(1L);
         player = new PlayerUser(9, "FireFoX", false);
+        prePostHandlers.put("testing99Section11bPreHandler", handlerA);
+        prePostHandlers.put("testing99p3Section99PreHandler", handlerB);
+        prePostHandlers.put("testing99p3Section54aPostHandler", handlerC);
+        prePostHandlers.put("testing99Section53PostHandler", handlerD);
     }
 
     @UnderTest
@@ -104,23 +117,54 @@ public class GenericBookSectionControllerTest {
         Assert.assertSame(returned, newParagraph);
     }
 
-    public void testInitWhenTest99BeanAvailableInSpringContextShouldInitializeInfo() {
+    public void testInitWhenTest99BeanAvailableInSpringContextShouldInitializeInfoWithHandlers() {
         // GIVEN
+        info.setResourceDir("testing99");
         expect(beanFactory.containsBean("testing99Info")).andReturn(true);
         expect(beanFactory.getBean("testing99Info", BookInformations.class)).andReturn(info);
-        expect(applicationContext.containsBean("testing99PrePostSectionHandler")).andReturn(false);
+        expect(applicationContext.getBeansOfType(CustomPrePostSectionHandler.class)).andReturn(prePostHandlers);
         mockControl.replay();
         // WHEN
         underTest.init();
         // THEN
         Assert.assertSame(underTest.getInfo(), info);
+        final Map<String, CustomPrePostSectionHandler> prePostHandlers = Whitebox.getInternalState(underTest, "prePostHandlers");
+        Assert.assertEquals(prePostHandlers.size(), 2);
+        Assert.assertTrue(prePostHandlers.containsKey("11bPre"));
+        Assert.assertTrue(prePostHandlers.containsKey("53Post"));
+        Assert.assertFalse(prePostHandlers.containsKey("99Pre"));
+        Assert.assertFalse(prePostHandlers.containsKey("54aPost"));
+        Assert.assertSame(prePostHandlers.get("11bPre"), handlerA);
+        Assert.assertSame(prePostHandlers.get("53Post"), handlerD);
     }
 
-    public void testInitWhenTest99p3BeanAvailableInSpringContextShouldInitializeInfo() {
+    public void testInitWhenTest99p3BeanAvailableInSpringContextShouldInitializeInfoWithHandlers() {
+        // GIVEN
+        info.setResourceDir("testing99p3");
+        expect(beanFactory.containsBean("testing99p3Info")).andReturn(true);
+        expect(beanFactory.getBean("testing99p3Info", BookInformations.class)).andReturn(info);
+        expect(applicationContext.getBeansOfType(CustomPrePostSectionHandler.class)).andReturn(prePostHandlers);
+        mockControl.replay();
+        // WHEN
+        final GenericBookSectionController controller = initController(new Testing99p3BookSectionController());
+        controller.init();
+        // THEN
+        Assert.assertSame(controller.getInfo(), info);
+        final Map<String, CustomPrePostSectionHandler> prePostHandlers = Whitebox.getInternalState(controller, "prePostHandlers");
+        Assert.assertEquals(prePostHandlers.size(), 2);
+        Assert.assertFalse(prePostHandlers.containsKey("11bPre"));
+        Assert.assertFalse(prePostHandlers.containsKey("53Post"));
+        Assert.assertTrue(prePostHandlers.containsKey("99Pre"));
+        Assert.assertTrue(prePostHandlers.containsKey("54aPost"));
+        Assert.assertSame(prePostHandlers.get("99Pre"), handlerB);
+        Assert.assertSame(prePostHandlers.get("54aPost"), handlerC);
+    }
+
+    public void testInitWhenTest99p3BeanAvailableInSpringContextShouldInitializeInfoWithoutHandlers() {
         // GIVEN
         expect(beanFactory.containsBean("testing99p3Info")).andReturn(true);
         expect(beanFactory.getBean("testing99p3Info", BookInformations.class)).andReturn(info);
-        expect(applicationContext.containsBean("testing99p3PrePostSectionHandler")).andReturn(false);
+        expect(applicationContext.getBeansOfType(CustomPrePostSectionHandler.class)).andReturn(new HashMap<String, CustomPrePostSectionHandler>());
         mockControl.replay();
         // WHEN
         final GenericBookSectionController controller = initController(new Testing99p3BookSectionController());
@@ -141,20 +185,28 @@ public class GenericBookSectionControllerTest {
     public void testInitWhenBeanFactoryDoesNotContainInfoBeanShouldLeaveInfoFieldEmpty() {
         // GIVEN
         expect(beanFactory.containsBean("testing99Info")).andReturn(false);
-        expect(applicationContext.containsBean("testing99PrePostSectionHandler")).andReturn(false);
+        expect(applicationContext.getBeansOfType(CustomPrePostSectionHandler.class)).andReturn(new HashMap<String, CustomPrePostSectionHandler>());
         mockControl.replay();
         // WHEN
-        underTest.init();
+        try {
+            underTest.init();
+            Assert.assertTrue(false);
+        } catch (final IllegalStateException ex) {
+        }
         // THEN
         Assert.assertNull(Whitebox.getInternalState(underTest, "info"));
     }
 
     public void testInitWhenBookIdCannotBeDeterminedShouldSkipInfoInitialization() {
         // GIVEN
-        expect(applicationContext.containsBean("nullPrePostSectionHandler")).andReturn(false);
+        expect(applicationContext.getBeansOfType(CustomPrePostSectionHandler.class)).andReturn(new HashMap<String, CustomPrePostSectionHandler>());
         mockControl.replay();
         // WHEN
-        initController(new _testingBookSectionController()).init();
+        try {
+            initController(new _testingBookSectionController()).init();
+            Assert.assertTrue(false);
+        } catch (final IllegalStateException ex) {
+        }
         // THEN
         Assert.assertNull(Whitebox.getInternalState(underTest, "info"));
     }

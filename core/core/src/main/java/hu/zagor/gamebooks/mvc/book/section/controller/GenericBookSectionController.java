@@ -7,7 +7,11 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.mvc.book.controller.AbstractSectionDisplayingController;
 import hu.zagor.gamebooks.mvc.book.section.service.CustomPrePostSectionHandler;
 import hu.zagor.gamebooks.support.logging.LogInject;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -21,19 +25,25 @@ import org.springframework.util.Assert;
  */
 public abstract class GenericBookSectionController extends AbstractSectionDisplayingController {
 
+    private static final Pattern PRE_POST_KEY_EXTRACTOR = Pattern.compile(".*Section([0-9]+.*(?:Pre|Post))Handler");
     @LogInject private Logger logger;
     @Autowired private BookContentInitializer contentInitializer;
     @Autowired private GameStateHandler gameStateHandler;
-    private Map<String, CustomPrePostSectionHandler> prePostHandlers;
+    private final Map<String, CustomPrePostSectionHandler> prePostHandlers = new HashMap<>();
 
     @PostConstruct
     @Override
-    @SuppressWarnings("unchecked")
     public void init() {
         super.init();
-        final String customHandlerName = fetchBookIdByReflection() + "PrePostSectionHandler";
-        if (getApplicationContext().containsBean(customHandlerName)) {
-            prePostHandlers = (Map<String, CustomPrePostSectionHandler>) getApplicationContext().getBean(customHandlerName);
+        final Map<String, CustomPrePostSectionHandler> beans = getApplicationContext().getBeansOfType(CustomPrePostSectionHandler.class);
+        final String bookId = getInfo().getResourceDir() + "Section";
+        for (final Entry<String, CustomPrePostSectionHandler> beanEntry : beans.entrySet()) {
+            if (beanEntry.getKey().startsWith(bookId)) {
+                final String key = beanEntry.getKey();
+                final Matcher matcher = PRE_POST_KEY_EXTRACTOR.matcher(key);
+                matcher.matches();
+                prePostHandlers.put(matcher.group(1), beanEntry.getValue());
+            }
         }
     }
 
@@ -58,7 +68,7 @@ public abstract class GenericBookSectionController extends AbstractSectionDispla
      * @param changedSection true if there was a section change, false if we stayed at the same
      */
     protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
-        defaultHandleCustomSections(model, wrapper, changedSection, "pre");
+        defaultHandleCustomSections(model, wrapper, changedSection, "Pre");
     }
 
     /**
@@ -68,15 +78,13 @@ public abstract class GenericBookSectionController extends AbstractSectionDispla
      * @param changedSection true if there was a section change, false if we stayed at the same
      */
     protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
-        defaultHandleCustomSections(model, wrapper, changedSection, "post");
+        defaultHandleCustomSections(model, wrapper, changedSection, "Post");
     }
 
     private void defaultHandleCustomSections(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection, final String postfix) {
-        if (prePostHandlers != null) {
-            final CustomPrePostSectionHandler customSectionHandler = prePostHandlers.get(wrapper.getParagraph().getId() + postfix);
-            if (customSectionHandler != null) {
-                customSectionHandler.handle(model, wrapper, getInfo(), changedSection);
-            }
+        final CustomPrePostSectionHandler customSectionHandler = prePostHandlers.get(wrapper.getParagraph().getId() + postfix);
+        if (customSectionHandler != null) {
+            customSectionHandler.handle(model, wrapper, getInfo(), changedSection);
         }
     }
 

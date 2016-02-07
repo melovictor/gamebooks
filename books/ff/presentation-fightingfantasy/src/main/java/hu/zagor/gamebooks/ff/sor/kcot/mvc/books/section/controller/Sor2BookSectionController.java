@@ -3,9 +3,7 @@ package hu.zagor.gamebooks.ff.sor.kcot.mvc.books.section.controller;
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
-import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
@@ -15,7 +13,6 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.exception.InvalidStepChoiceException;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.SorBookSectionController;
-import hu.zagor.gamebooks.ff.sor.kcot.mvc.books.section.service.Sor2GnomeHagglingService;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.Sorcery;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
@@ -42,8 +39,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + Sorcery.KHARE_CITYPORT_OF_TRAPS)
 public class Sor2BookSectionController extends SorBookSectionController {
-    private static final String LEAVE_VLAD_GAMBLING_HALL = "39";
-    private static final String ENTER_VLAD_GAMBLING_HALL = "56";
     private static final int OGRE_WIN_PRICE_RATIO = 3;
     private static final int SELF_ENEMY_INITIAL_STAMINA = 99;
     private static final String SELF_ENEMY_ID = "9";
@@ -52,7 +47,6 @@ public class Sor2BookSectionController extends SorBookSectionController {
     @Resource(name = "flankerVisitTargets") private Map<String, String> flankerVisitTargets;
     @Autowired private LocaleProvider localeProvider;
     @Autowired private HierarchicalMessageSource source;
-    @Autowired private Sor2GnomeHagglingService gnomeHagglingService;
 
     /**
      * Constructor expecting the {@link SectionHandlingService} bean.
@@ -128,41 +122,6 @@ public class Sor2BookSectionController extends SorBookSectionController {
         oldParagraph.addValidMove(targetSectionId);
 
         return handleSection(model, request, "s-" + targetSectionId);
-    }
-
-    @Override
-    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
-        super.handleCustomSectionsPre(model, wrapper, changedSection);
-        final Paragraph paragraph = wrapper.getParagraph();
-        final String sectionId = paragraph.getId();
-        final SorCharacter character = (SorCharacter) wrapper.getCharacter();
-        final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
-        final FfUserInteractionHandler interactionHandler = characterHandler.getInteractionHandler();
-        final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
-        if (ENTER_VLAD_GAMBLING_HALL.equals(sectionId)) {
-            interactionHandler.setInteractionState(character, "goldBeforeGambling", String.valueOf(character.getGold()));
-        } else if (LEAVE_VLAD_GAMBLING_HALL.equals(sectionId)) {
-            final int currentGold = character.getGold();
-            final int previousGold = Integer.valueOf(interactionHandler.getInteractionState(character, "goldBeforeGambling"));
-            if (previousGold < currentGold) {
-                itemHandler.addItem(character, "4031", 1);
-            }
-        } else if ("286".equals(sectionId)) {
-            if (!itemHandler.hasItem(character, "4034")) {
-                final int gold = character.getGold();
-                if (gold > 0) {
-                    itemHandler.addItem(character, "4034", gold);
-                }
-            }
-        } else if ("147a".equals(sectionId)) {
-            final String text = paragraph.getData().getText();
-            final String arrowsLeft = String.valueOf(itemHandler.getItems(character, "4036").size());
-            paragraph.getData().setText(text.replace("XX", arrowsLeft));
-        } else if ("324".equals(sectionId)) {
-            gnomeHagglingService.setEntryCondition(paragraph, character);
-        } else if ("264a".equals(sectionId)) {
-            gnomeHagglingService.setHagglingCondition(paragraph, character);
-        }
     }
 
     @Override

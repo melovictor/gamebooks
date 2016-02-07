@@ -7,7 +7,7 @@
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.hungarian.KalandJatekVarazslat.KHARE_A_CSAPDAK_KIKOTOVAROSA" id="kjv2Id" />
 
   <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="kjv2Info" c:id-ref="kjv2Id" p:coverPath="resources/sor2/cover.jpg" p:resourceDir="sor2"
-    p:contentTransformers-ref="defaultSorContentTransformers" p:paragraphResolver-ref="sorRuleBookParagraphResolverLe" p:locale-ref="huLocale" p:position="2" p:series-ref="kjvTitle" p:title="Kharé &amp;ndash; A Csapdák Kikötővárosa" p:characterHandler-ref="sorCharacterHandler" p:commandResolvers-ref="sorCommandResolvers" p:unfinished="true" p:characterBeanId="sorCharacter" p:characterPageDataBeanId="sorCharacterPageData">
+    p:contentTransformers-ref="defaultSorContentTransformers" p:paragraphResolver-ref="sorRuleBookParagraphResolverLe" p:locale-ref="huLocale" p:position="2" p:series-ref="kjvTitle" p:title="Kharé &amp;ndash; A Csapdák Kikötővárosa" p:characterHandler-ref="sorCharacterHandler" p:commandResolvers-ref="sor2CommandResolvers" p:unfinished="true" p:characterBeanId="sorCharacter" p:characterPageDataBeanId="sorCharacterPageData">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="kjv2enemies.xml" c:items="kjv2items.xml" c:paragraphs="kjv2content.xml" />
     </property>
@@ -44,5 +44,5 @@
       </util:list>
     </property>
   </bean>
-
+  
 </beans>

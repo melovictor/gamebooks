@@ -131,4 +131,8 @@ public class RandomCommandResolver extends TypeAwareCommandResolver<RandomComman
         this.beanFactory = beanFactory;
     }
 
+    RandomNumberGenerator getGenerator() {
+        return generator;
+    }
+
 }
