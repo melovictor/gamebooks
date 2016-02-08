@@ -71,7 +71,12 @@ public class InitializingMockFieldCallback implements FieldCallback {
             if (isCollection(field)) {
                 instance = instantiateCollection(field);
             } else {
-                instance = field.getType().newInstance();
+                final Instance annotation = field.getAnnotation(Instance.class);
+                if (annotation.type() == Object.class) {
+                    instance = field.getType().newInstance();
+                } else {
+                    instance = annotation.type().newInstance();
+                }
             }
             if (instance == null) {
                 throw new IllegalStateException("Couldn't inject any objects into the field " + field.getName() + " with type " + field.getType() + ".");
