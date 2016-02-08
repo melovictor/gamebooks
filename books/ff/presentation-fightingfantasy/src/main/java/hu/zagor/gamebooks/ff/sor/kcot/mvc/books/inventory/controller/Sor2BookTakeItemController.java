@@ -39,6 +39,7 @@ public class Sor2BookTakeItemController extends SorBookTakeItemController {
                 itemList += "," + itemId;
             }
             interactionHandler.setInteractionState(character, "gnomeHagglingItems", itemList);
+            interactionHandler.setInteractionState(character, "gnomeHagglingOriginalItems", itemList);
             handleMarketSell = new HashMap<>();
             handleMarketSell.put("giveUpMode", false);
             handleMarketSell.put("giveUpFinished", true);

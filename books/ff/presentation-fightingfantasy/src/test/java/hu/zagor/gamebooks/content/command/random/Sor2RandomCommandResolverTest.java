@@ -15,6 +15,9 @@ import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
+import hu.zagor.gamebooks.content.choice.Choice;
+import hu.zagor.gamebooks.content.choice.ChoiceSet;
+import hu.zagor.gamebooks.content.choice.DefaultChoiceSet;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
@@ -75,15 +78,14 @@ public class Sor2RandomCommandResolverTest {
     private Item item3004;
     private Item item3005;
     @Mock private Item gnomeItem;
+    @Instance(type = DefaultChoiceSet.class) private ChoiceSet choices;
+    private boolean sectionFlag;
 
     @BeforeClass
     public void setUpClass() {
-        paragraph = new Paragraph("264", "264", 99);
-        paragraph.setData(data);
         info = new BookInformations(1L);
         info.setCharacterHandler(characterHandler);
         characterHandler.setInteractionHandler(interactionHandler);
-        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).build();
         command.setLabel("label");
         command.setDiceConfig("1d6");
         command.getResults().add(randomResult);
@@ -95,10 +97,17 @@ public class Sor2RandomCommandResolverTest {
         item3002 = new Item("3002", "Sand", ItemType.common);
         item3004 = new Item("3004", "Diamond", ItemType.valuable);
         item3005 = new Item("3005", "Luck talisman", ItemType.necklace);
+        data.setChoices(choices);
     }
 
     @BeforeMethod
     public void setUpMethod() {
+        paragraph = new Paragraph(sectionFlag ? "264" : "264c", "264", 99);
+        sectionFlag = !sectionFlag;
+        paragraph.setData(data);
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).build();
+        character.getEquipment().clear();
+        choices.clear();
         mockControl.reset();
     }
 
@@ -258,6 +267,81 @@ public class Sor2RandomCommandResolverTest {
         Assert.assertEquals(dualItemConfig.getMinValue(), 2);
         Assert.assertEquals(dualItemConfig.getDiceNumber(), 2);
         Assert.assertTrue(resultData.getText().contains("(Diamond and Sand)"));
+    }
+
+    public void testDoResolveWhenRolled1SecondTimeAfter1OnGnomeSectionShouldReportUninterestedAndNotRemoveAnything() {
+        // GIVEN
+        resultData.setText("[p]The Gnome doesn't like any of the items you chose and you must give him something else for the Flute.[/p]");
+        final int[] rolledValue = new int[]{1, 1};
+        prepareRandom(rolledValue);
+        expect(interactionHandler.getInteractionState(character, "gnomeHagglingOriginalItems")).andReturn("3001,3002,3005,3004,////");
+        expect(localeProvider.getLocale()).andReturn(locale);
+        expect(messageSource.getMessage("page.sor2.gnomeHaggling.notInterested", null, locale)).andReturn("Gnome not interested");
+        mockControl.replay();
+        // WHEN
+        underTest.doResolve(command, resolvationData);
+        // THEN
+        Assert.assertTrue(resultData.getText().contains("Gnome not interested"));
+        final Choice choice = choices.getChoiceByPosition(0);
+        Assert.assertEquals(choice.getId(), "264d");
+    }
+
+    public void testDoResolveWhenRolled1FirstTimeOnGnomeSectionShouldOfferNonSelectedApplicableItemsForExchange() {
+        // GIVEN
+        resultData.setText("[p]The Gnome doesn't like any of the items you chose and you must give him something else for the Flute.[/p]");
+        final int[] rolledValue = new int[]{1, 1};
+        prepareRandom(rolledValue);
+        expect(interactionHandler.getInteractionState(character, "gnomeHagglingOriginalItems")).andReturn("3001,3002,3005,3004");
+        expect(localeProvider.getLocale()).andReturn(locale);
+        character.getEquipment()
+            .addAll(Arrays.asList(item3001, item3002, item3004, item3005, new Item("2000", "Provision", ItemType.provision), new Item("1001", "Sword", ItemType.weapon1),
+                new Item("1002", "Battle axe", ItemType.weapon2), new Item("3003", "Goblin teeth", ItemType.common), new Item("3010", "Goat cheese", ItemType.common),
+                new Item("5001", "Plague", ItemType.curseSickness), new Item("4102", "we are wizards", ItemType.shadow)));
+        expect(messageSource.getMessage(eq("page.sor2.gnomeHaggling.itemChoice"), aryEq(new Object[]{"Goblin teeth"}), eq(locale))).andReturn("Goblin teeth?");
+        expect(messageSource.getMessage(eq("page.sor2.gnomeHaggling.itemChoice"), aryEq(new Object[]{"Goat cheese"}), eq(locale))).andReturn("Goat cheese?");
+        interactionHandler.setInteractionState(character, "gnomeHagglingOriginalItems", "3001,3002,3005,3004,////");
+        mockControl.replay();
+        // WHEN
+        underTest.doResolve(command, resolvationData);
+        // THEN
+        Assert.assertTrue(resultData.getText().contains("The Gnome doesn't like any of the items you chose and you must give him something else for the Flute"));
+        Assert.assertNull(choices.getChoiceByPosition(2000));
+        Assert.assertNull(choices.getChoiceByPosition(3001));
+        Assert.assertNull(choices.getChoiceByPosition(3002));
+        Assert.assertNull(choices.getChoiceByPosition(3004));
+        Assert.assertNull(choices.getChoiceByPosition(3005));
+        Assert.assertNull(choices.getChoiceByPosition(1001));
+        Assert.assertNull(choices.getChoiceByPosition(1002));
+        Assert.assertNull(choices.getChoiceByPosition(5001));
+        Assert.assertNull(choices.getChoiceByPosition(4102));
+        Choice choice = choices.getChoiceByPosition(3003);
+        Assert.assertEquals(choice.getId(), "264b");
+        choice = choices.getChoiceByPosition(3010);
+        Assert.assertEquals(choice.getId(), "264b");
+        Assert.assertEquals(choices.size(), 2);
+    }
+
+    public void testDoResolveWhenRolled1OnGnomeSectionAndHasNoOtherItemShouldReportUninterested() {
+        // GIVEN
+        resultData.setText("[p]The Gnome doesn't like any of the items you chose and you must give him something else for the Flute.[/p]");
+        final int[] rolledValue = new int[]{1, 1};
+        prepareRandom(rolledValue);
+        expect(interactionHandler.getInteractionState(character, "gnomeHagglingOriginalItems")).andReturn("3001,3002,3005,3004");
+        expect(localeProvider.getLocale()).andReturn(locale);
+        character.getEquipment()
+            .addAll(Arrays.asList(item3001, item3002, item3004, item3005, new Item("2000", "Provision", ItemType.provision), new Item("1001", "Sword", ItemType.weapon1),
+                new Item("1002", "Battle axe", ItemType.weapon2), new Item("5001", "Plague", ItemType.curseSickness),
+                new Item("4102", "we are wizards", ItemType.shadow)));
+        interactionHandler.setInteractionState(character, "gnomeHagglingOriginalItems", "3001,3002,3005,3004,////");
+        expect(messageSource.getMessage("page.sor2.gnomeHaggling.notInterested", null, locale)).andReturn("[p]Gnome not interested.[/p]");
+        mockControl.replay();
+        // WHEN
+        underTest.doResolve(command, resolvationData);
+        // THEN
+        Assert.assertTrue(resultData.getText().contains("Gnome not interested"));
+        Assert.assertEquals(choices.size(), 1);
+        final Choice choice = choices.getChoiceByPosition(0);
+        Assert.assertEquals(choice.getId(), "264d");
     }
 
     private void prepareRandom(final int[] rolledValue) {

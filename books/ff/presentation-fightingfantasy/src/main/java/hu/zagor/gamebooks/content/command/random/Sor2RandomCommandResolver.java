@@ -24,13 +24,12 @@ public class Sor2RandomCommandResolver extends RandomCommandResolver {
     private static final int ROLL_3 = 3;
     private static final int ROLL_4 = 4;
     private static final int ROLL_5 = 5;
-    private static final int ROLL_6 = 6;
 
     @Override
     public List<ParagraphData> doResolve(final RandomCommand command, final ResolvationData resolvationData) {
         final List<ParagraphData> result = super.doResolve(command, resolvationData);
         final Paragraph paragraph = resolvationData.getParagraph();
-        if ("264".equals(paragraph.getId()) && result != null) {
+        if (("264".equals(paragraph.getId()) || "264c".equals(paragraph.getId())) && result != null) {
             final ParagraphData paragraphData = result.get(0);
             String text = paragraphData.getText();
             switch (command.getDiceResult()) {
@@ -49,11 +48,9 @@ public class Sor2RandomCommandResolver extends RandomCommandResolver {
             case ROLL_5:
                 text = simpleItemExchange(text, resolvationData, "4040", command);
                 break;
-            case ROLL_6:
+            default:
                 text = doubleItemExchange(text, resolvationData);
                 break;
-            default:
-                throw new IllegalStateException("Somehow we managed to roll a number on a D6 that is not in the [1-6] interval.");
             }
             paragraphData.setText(text);
         }
@@ -65,12 +62,11 @@ public class Sor2RandomCommandResolver extends RandomCommandResolver {
         String newText = text;
         final Character character = resolvationData.getCharacter();
         final UserInteractionHandler interactionHandler = resolvationData.getInfo().getCharacterHandler().getInteractionHandler();
-        final String heroItems = interactionHandler.getInteractionState(character, "gnomeHagglingItems");
+        final String heroItems = interactionHandler.getInteractionState(character, "gnomeHagglingOriginalItems");
         final Locale locale = getLocaleProvider().getLocale();
         final ParagraphData data = resolvationData.getParagraph().getData();
         if (heroItems.contains("////")) {
-            newText = getMessageSource().getMessage("page.sor2.gnomeHaggling.notInterested", null, locale);
-            data.addChoice(new Choice("2d", null, 0, null));
+            newText = setGnomeNotInterested(locale, data);
         } else {
             for (final Item item : character.getEquipment()) {
                 final ItemType itemType = item.getItemType();
@@ -84,9 +80,17 @@ public class Sor2RandomCommandResolver extends RandomCommandResolver {
                 data.addChoice(new Choice("264b", getMessageSource().getMessage("page.sor2.gnomeHaggling.itemChoice", new Object[]{item.getName()}, locale),
                     Integer.parseInt(item.getId()), null));
             }
-            interactionHandler.setInteractionState(character, "gnomeHagglingItems", heroItems + "////");
+            interactionHandler.setInteractionState(character, "gnomeHagglingOriginalItems", heroItems + ",////");
+            if (data.getChoices().isEmpty()) {
+                newText = setGnomeNotInterested(locale, data);
+            }
         }
         return newText;
+    }
+
+    private String setGnomeNotInterested(final Locale locale, final ParagraphData data) {
+        data.addChoice(new Choice("264d", null, 0, null));
+        return getMessageSource().getMessage("page.sor2.gnomeHaggling.notInterested", null, locale);
     }
 
     private String doubleItemExchange(final String text, final ResolvationData resolvationData) {
