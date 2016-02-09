@@ -13,6 +13,8 @@ import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Specialized random command resolver for Sorcery 2.
@@ -24,6 +26,7 @@ public class Sor2RandomCommandResolver extends RandomCommandResolver {
     private static final int ROLL_3 = 3;
     private static final int ROLL_4 = 4;
     private static final int ROLL_5 = 5;
+    private static final Pattern ROLL_EXTRACTOR = Pattern.compile("[<\\[]p[>\\]].*[<\\[]\\/p[>\\]]");
 
     @Override
     public List<ParagraphData> doResolve(final RandomCommand command, final ResolvationData resolvationData) {
@@ -66,7 +69,7 @@ public class Sor2RandomCommandResolver extends RandomCommandResolver {
         final Locale locale = getLocaleProvider().getLocale();
         final ParagraphData data = resolvationData.getParagraph().getData();
         if (heroItems.contains("////")) {
-            newText = setGnomeNotInterested(locale, data);
+            newText = getRoll(text) + setGnomeNotInterested(locale, data);
         } else {
             for (final Item item : character.getEquipment()) {
                 final ItemType itemType = item.getItemType();
@@ -100,7 +103,7 @@ public class Sor2RandomCommandResolver extends RandomCommandResolver {
         String heroItems = interactionHandler.getInteractionState(character, "gnomeHagglingItems");
         final String[] heroItemArray = heroItems.split(",");
         if (heroItems.contains("++++")) {
-            newText = getMessageSource().getMessage("page.sor2.gnomeHaggling.notInterested", null, getLocaleProvider().getLocale());
+            newText = getRoll(text) + getMessageSource().getMessage("page.sor2.gnomeHaggling.notInterested", null, getLocaleProvider().getLocale());
         } else {
             final DiceConfiguration configuration = new DiceConfiguration(2, 2, 5);
             int[] rolledNumbers;
@@ -131,11 +134,12 @@ public class Sor2RandomCommandResolver extends RandomCommandResolver {
         final CharacterHandler characterHandler = resolvationData.getCharacterHandler();
         final CharacterItemHandler itemHandler = characterHandler.getItemHandler();
         if ("----".equals(selfItemId)) {
-            newText = getMessageSource().getMessage("page.sor2.gnomeHaggling.notInterested", null, getLocaleProvider().getLocale());
+            newText = getRoll(text) + getMessageSource().getMessage("page.sor2.gnomeHaggling.notInterested", null, getLocaleProvider().getLocale());
         } else if ("++++".equals(selfItemId)) {
             itemHandler.addItem(character, gnomeItem, 1);
             final Item addedItem = itemHandler.getItem(character, gnomeItem);
-            newText = getMessageSource().getMessage("page.sor2.gnomeHaggling.freeGiveUp", new Object[]{addedItem.getName()}, getLocaleProvider().getLocale());
+            newText = getRoll(text)
+                + getMessageSource().getMessage("page.sor2.gnomeHaggling.freeGiveUp", new Object[]{addedItem.getName()}, getLocaleProvider().getLocale());
         } else {
             final List<Item> removedItem = itemHandler.removeItem(character, selfItemId, 1);
             itemHandler.addItem(character, gnomeItem, 1);
@@ -147,6 +151,12 @@ public class Sor2RandomCommandResolver extends RandomCommandResolver {
             newText = text.replace("XXX", addedItem.getName()).replace("YYY", removedItem.get(0).getName());
         }
         return newText;
+    }
+
+    private String getRoll(final String text) {
+        final Matcher matcher = ROLL_EXTRACTOR.matcher(text);
+        matcher.find();
+        return matcher.group(0);
     }
 
 }

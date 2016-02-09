@@ -1375,7 +1375,7 @@
     </text>
     <loseItem id="4034" amount="9999" />
     <next id="104">Ha a baloldali elágazáson mennél tovább, a városból kifelé</next>
-    <next id="56">Ha a jobb oldali elágazáson mész tovább és meglátogatod Vlada Játéktermek</next>
+    <next id="56">Ha a jobb oldali elágazáson mész tovább és meglátogatod Vlada Játéktermeit</next>
     <next id="221">Ha viszont a Szobor lábánál lévő edényből csennél egy marék aranyat</next>
   </p>
   <p id="90">
@@ -2642,7 +2642,7 @@
   </p>
   <p id="167">
     <text>
-        [p]Egy [span class="takeItem" data-id="3023" data-amount="1"]Szerencse Talizmánt[/span] kaptál. Mindaddig, amíg ez nálad van, ha Próbára teszed a SZERENCSÉDET, kockadobásodból 1 pontot levonhatsz. Ha már eddig is volt ilyen SZERENCSETALIZMÁNOD, ezt a jutalom pontszámot nem duplázhatod meg, amiért két talizmánod van. Most elhagyhatod a sátrat, és folytathatod az utadat.[/p]
+        [p]Egy [span class="takeItem" data-id="3023" data-amount="1"]Szerencse Talizmánt[/span] kaptál. Mindaddig, amíg ez nálad van, ha Próbára teszed a SZERENCSÉDET, kockadobásodból 1 pontot levonhatsz. Ha már eddig is volt ilyen Szerencse Talizmánod, ezt a jutalom pontszámot nem duplázhatod meg, amiért két talizmánod van. Most elhagyhatod a sátrat, és folytathatod az utadat.[/p]
     </text>
     <next id="160"></next>
   </p>
@@ -4262,7 +4262,7 @@
               [td]Egy zacskó Goblin-fog[/td]
             [/tr]
             [tr]
-              [td]Szerencsetalizmán[/td]
+              [td]Szerencse Talizmán[/td]
               [td]Bűvös Iránytű[/td]
             [/tr]
             [tr]
@@ -4288,6 +4288,7 @@
             <text>
                 [p]A Gnóm belemegy a cserébe, ám a Lépért cserébe két tárgyadat (XXX és YYY) veszi el.[/p]
             </text>
+            <gatherItem id="3053"/>
             <next id="264c">Ha szeretnél még egyet cserélni a Gnómmal</next>
             <next id="264d">Ha inkább elhagynád a kunyhóját</next>
           </result>
@@ -4298,6 +4299,21 @@
   <p id="264c" display="264">
     <text>
         [p]- Jó, jó! - nyüszíti a Gnóm. - Lássuk, miféle üzletet tudunk kötni veled ma! - Az általa felkínált tárgyak listáját a fejezet végén találod. Saját Felszerelési tárgyaid közül négy tárgyat kell kiválasztanod (Aranyat, Élelmiszert vagy fegyvert nem választhatsz).[/p]
+        [p]A Gnóm a következő tárgyakat ajánlja fel cserére:[/p]
+        [table id="gnomeHagglingItems"]
+          [tr]
+            [td]Bambuszfurulya[/td]
+            [td]Egy zacskó Goblin-fog[/td]
+          [/tr]
+          [tr]
+            [td]Szerencse Talizmán[/td]
+            [td]Bűvös Iránytű[/td]
+          [/tr]
+          [tr]
+            [td]Nagy Hátizsák[/td]
+            [td]Lép[/td]
+          [/tr]
+        [/table]
     </text>
     <random>
       <result max="1" min="1">
@@ -4316,6 +4332,7 @@
         <text>
             [p]A Gnóm belemegy a cserébe, ám a Lépért cserébe két tárgyadat (XXX és YYY) veszi el. Ezek után elhagyod a kunyhóját.[/p]
         </text>
+        <gatherItem id="3053"/>
         <next id="264d"></next>
       </result>
     </random>
@@ -4323,290 +4340,304 @@
   <p id="264b" display="264">
     <text>
         [p]- Jó, jó! - nyüszíti a Gnóm. - Lássuk, miféle üzletet tudunk kötni veled ma! - Az általa felkínált tárgyak listáját a fejezet végén találod. Saját Felszerelési tárgyaid közül négy tárgyat kell kiválasztanod (Aranyat, Élelmiszert vagy fegyvert nem választhatsz).[/p]
+        [table id="gnomeHagglingItems"]
+          [tr]
+            [td]Bambuszfurulya[/td]
+            [td]Egy zacskó Goblin-fog[/td]
+          [/tr]
+          [tr]
+            [td]Szerencse Talizmán[/td]
+            [td]Bűvös Iránytű[/td]
+          [/tr]
+          [tr]
+            [td]Nagy Hátizsák[/td]
+            [td]Lép[/td]
+          [/tr]
+        [/table]
     </text>
     <itemCheck type="pos" id="3001">
       <have>
         <loseItem id="3001" />
-        <text>[p]Odaadod a Gnómnak a Gyógyfűfőzetet a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Gyógyfűfőzetet a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3002">
       <have>
         <loseItem id="3002" />
-        <text>[p]Odaadod a Gnómnak a Bambuszfurulyát a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Bambuszfurulyát a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3007">
       <have>
         <loseItem id="3007" />
-        <text>[p]Odaadod a Gnómnak a Varázskönyv-oldalt a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Varázskönyv-oldalt a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3008">
       <have>
         <loseItem id="3008" />
-        <text>[p]Odaadod a Gnómnak a Méhviaszt a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Méhviaszt a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3009">
       <have>
         <loseItem id="3009" />
-        <text>[p]Odaadod a Gnómnak a Kis medaliont a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Kis medaliont a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3010">
       <have>
         <loseItem id="3010" />
-        <text>[p]Odaadod a Gnómnak a Zöld drágaköves láncot a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Zöld drágaköves láncot a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3011">
       <have>
         <loseItem id="3011" />
-        <text>[p]Odaadod a Gnómnak a Kulcsot a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Kulcsot a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3012">
       <have>
         <loseItem id="3012" />
-        <text>[p]Odaadod a Gnómnak az Ezüstkulcsot a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak az Ezüstkulcsot a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3013">
       <have>
         <loseItem id="3013" />
-        <text>[p]Odaadod a Gnómnak a Borrinbőr csizmát a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Borrinbőr csizmát a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3014">
       <have>
         <loseItem id="3014" />
-        <text>[p]Odaadod a Gnómnak a Drágakövet a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Drágakövet a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3015">
       <have>
         <loseItem id="3015" />
-        <text>[p]Odaadod a Gnómnak a Rézkulcsot a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Rézkulcsot a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3016">
       <have>
         <loseItem id="3016" />
-        <text>[p]Odaadod a Gnómnak a Barna poros zacskót a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Barna poros zacskót a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3017">
       <have>
         <loseItem id="3017" />
-        <text>[p]Odaadod a Gnómnak a Ragasztót a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Ragasztót a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3018">
       <have>
         <loseItem id="3018" />
-        <text>[p]Odaadod a Gnómnak az Orrdugaszt a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak az Orrdugaszt a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3019">
       <have>
         <loseItem id="3019" />
-        <text>[p]Odaadsz a Gnómnak egy Kavicsot a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadsz a Gnómnak egy Kavicsot a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3020">
       <have>
         <loseItem id="3020" />
-        <text>[p]Odaadod a Gnómnak a Karszalagot a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Karszalagot a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3021">
       <have>
         <loseItem id="3021" />
-        <text>[p]Odaadod a Gnómnak a Hálót a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Hálót a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3022">
       <have>
         <loseItem id="3022" />
-        <text>[p]Odaadod a Gnómnak a Papi sapkát a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Papi sapkát a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3023">
       <have>
         <loseItem id="3023" />
-        <text>[p]Odaadod a Gnómnak a Szerencse Talizmánt a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Szerencse Talizmánt a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3025">
       <have>
         <loseItem id="3025" />
-        <text>[p]Odaadod a Gnómnak a ,,Méreg'' csuprot a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a ,,Méreg'' csuprot a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3026">
       <have>
         <loseItem id="3026" />
-        <text>[p]Odaadod a Gnómnak a ,,Fakéregesszencia'' csuprot a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a ,,Fakéregesszencia'' csuprot a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3027">
       <have>
         <loseItem id="3027" />
-        <text>[p]Odaadod a Gnómnak a Homokot a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Homokot a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3028">
       <have>
         <loseItem id="3028" />
-        <text>[p]Odaadod a Gnómnak a Fekete Maszkot a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Fekete Maszkot a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3029">
       <have>
         <loseItem id="3029" />
-        <text>[p]Odaadod a Gnómnak az Erszényt a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak az Erszényt a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3030">
       <have>
         <loseItem id="3030" />
-        <text>[p]Odaadod a Gnómnak a Penészes kecskesajtot a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Penészes kecskesajtot a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3031">
       <have>
         <loseItem id="3031" />
-        <text>[p]Odaadod a Gnómnak a Dobódárdát a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Dobódárdát a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3032">
       <have>
         <loseItem id="3032" />
-        <text>[p]Odaadod a Gnómnak a Csont Karperecet a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Csont Karperecet a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3034">
       <have>
         <loseItem id="3034" />
-        <text>[p]Odaadod a Gnómnak a Zöld hajú parókát a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Zöld hajú parókát a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3035">
       <have>
         <loseItem id="3035" />
-        <text>[p]Odaadod a Gnómnak a Napékszert a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Napékszert a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3036">
       <have>
         <loseItem id="3036" />
-        <text>[p]Odaadod a Gnómnak az Aranyhátú Tükröt a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak az Aranyhátú Tükröt a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3037">
       <have>
         <loseItem id="3037" />
-        <text>[p]Odaadod a Gnómnak a pár kesztyűt a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a pár kesztyűt a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3038">
       <have>
         <loseItem id="3038" />
-        <text>[p]Odaadod a Gnómnak a Titokzatosság Italát a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Titokzatosság Italát a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3039">
       <have>
         <loseItem id="3039" />
-        <text>[p]Odaadod a Gnómnak a Porral teli üvegcsét a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Porral teli üvegcsét a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3040">
       <have>
         <loseItem id="3040" />
-        <text>[p]Odaadod a Gnómnak a Méhviaszt a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Méhviaszt a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3042">
       <have>
         <loseItem id="3042" />
-        <text>[p]Odaadod a Gnómnak a Páncélkesztyűt a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Páncélkesztyűt a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3043">
       <have>
         <loseItem id="3043" />
-        <text>[p]Odaadod a Gnómnak a Bőrkesztyűt a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Bőrkesztyűt a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3044">
       <have>
         <loseItem id="3044" />
-        <text>[p]Odaadod a Gnómnak a Varázsláncot a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Varázsláncot a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3045">
       <have>
         <loseItem id="3045" />
-        <text>[p]Odaadod a Gnómnak a Papiruszt a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Papiruszt a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3046">
       <have>
         <loseItem id="3046" />
-        <text>[p]Odaadod a Gnómnak az Íjat és nyílvesszőket a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak az Íjat és nyílvesszőket a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3047">
       <have>
         <loseItem id="3047" />
-        <text>[p]Odaadod a Gnómnak a Tűzszerszámot a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Tűzszerszámot a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3048">
       <have>
         <loseItem id="3048" />
-        <text>[p]Odaadod a Gnómnak a Kígyómarás elleni szert a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Kígyómarás elleni szert a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3049">
       <have>
         <loseItem id="3049" />
-        <text>[p]Odaadod a Gnómnak a Kígyómintázatú gyűrűt a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadod a Gnómnak a Kígyómintázatú gyűrűt a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3201">
       <have>
         <loseItem id="3201" />
-        <text>[p]Odaadsz a Gnómnak egy Goblinfogat a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadsz a Gnómnak egy Goblinfogat a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3202">
       <have>
         <loseItem id="3202" />
-        <text>[p]Odaadsz a Gnómnak egy Majomfogat a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadsz a Gnómnak egy Majomfogat a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3203">
       <have>
         <loseItem id="3203" />
-        <text>[p]Odaadsz a Gnómnak egy Halálkutyafogat a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadsz a Gnómnak egy Halálkutyafogat a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3204">
       <have>
         <loseItem id="3204" />
-        <text>[p]Odaadsz a Gnómnak egy Ragadozómacskafogat a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadsz a Gnómnak egy Ragadozómacskafogat a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
     <itemCheck type="pos" id="3205">
       <have>
         <loseItem id="3205" />
-        <text>[p]Odaadsz a Gnómnak egy Óriásfogat a Lépért cserébe.[/p]</text>
+        <text>[p]Odaadsz a Gnómnak egy Óriásfogat a Bambuszfurulyáért cserébe.[/p]</text>
       </have>
     </itemCheck>
-    <gatherItem id="3053" />
+    <gatherItem id="3054" />
     <itemCheck type="item" id="4047">
       <have>
         <text>
@@ -4635,7 +4666,7 @@
         <itemCheck type="item" id="3051">
           <have>
             <text>
-                [p]Remek szerzemény a Szerencsetalizmán. Amíg nálad van és Próbára teszed a SZERENCSÉDET, de nincs SZERENCSÉD, nem kell levonnod magadtól 1 SZERENCSE pontot.[/p]
+                [p]Remek szerzemény a Szerencse Talizmán. Amíg nálad van és Próbára teszed a SZERENCSÉDET, de nincs SZERENCSÉD, nem kell levonnod magadtól 1 SZERENCSE pontot.[/p]
             </text>
           </have>
         </itemCheck>
@@ -4703,7 +4734,7 @@
             [td]Egy zacskó Goblin-fog[/td]
           [/tr]
           [tr]
-            [td]Szerencsetalizmán[/td]
+            [td]Szerencse Talizmán[/td]
             [td]Bűvös Iránytű[/td]
           [/tr]
           [tr]
