@@ -10,6 +10,7 @@ public class DiceConfiguration {
     private final int minValue;
     private final int maxValue;
     private final boolean adding;
+    private final int addition;
 
     /**
      * Basic constructor.
@@ -22,6 +23,7 @@ public class DiceConfiguration {
         this.minValue = minValue;
         this.maxValue = maxValue;
         adding = true;
+        addition = 0;
     }
 
     /**
@@ -36,6 +38,7 @@ public class DiceConfiguration {
         this.minValue = minValue;
         this.maxValue = maxValue;
         this.adding = adding;
+        addition = adding ? 0 : 1;
     }
 
     public int getDiceNumber() {
@@ -52,6 +55,10 @@ public class DiceConfiguration {
 
     public boolean isAdding() {
         return adding;
+    }
+
+    public int getAddition() {
+        return addition;
     }
 
 }

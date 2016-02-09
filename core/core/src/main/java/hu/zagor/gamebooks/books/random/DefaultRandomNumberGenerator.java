@@ -31,25 +31,26 @@ public class DefaultRandomNumberGenerator implements RandomNumberGenerator, Repl
 
     @Override
     public int[] getRandomNumber(final int dicePiece, final int diceSide, final int addition) {
-        return getRandomNumber(dicePiece, diceSide, addition, true);
+        final int[] randomNumber = getRandomNumber(dicePiece, diceSide, 0, true);
+        randomNumber[0] += addition;
+        return randomNumber;
     }
 
-    @Override
-    public int[] getRandomNumber(final int dicePiece, final int diceSide, final int addition, final boolean adding) {
+    private int[] getRandomNumber(final int dicePiece, final int diceSide, final int additionPerDice, final boolean adding) {
         Assert.isTrue(dicePiece > 0, "The parameter 'dicePiece' must be bigger than zero!");
         Assert.isTrue(diceSide > 0, "The parameter 'diceSide' must be bigger than zero!");
         final int[] results = new int[dicePiece + 1];
 
         if (adding) {
-            results[0] = addition;
+            results[0] = 0;
             for (int i = 0; i < dicePiece; i++) {
-                results[i + 1] = getNextValue(diceSide);
+                results[i + 1] = getNextValue(diceSide) + additionPerDice;
                 results[0] += results[i + 1];
             }
         } else {
             results[0] = 0;
             for (int i = 0; i < dicePiece; i++) {
-                results[i + 1] = getNextValue(diceSide) + addition;
+                results[i + 1] = getNextValue(diceSide) + additionPerDice;
                 results[0] = results[0] * DECIMAL_MUTLIPLIER + results[i + 1];
             }
         }
@@ -69,20 +70,15 @@ public class DefaultRandomNumberGenerator implements RandomNumberGenerator, Repl
 
     @Override
     public int[] getRandomNumber(final DiceConfiguration configuration) {
-        return getRandomNumber(configuration, 0);
+        return getRandomNumber(configuration, configuration.getAddition());
     }
 
     @Override
     public int[] getRandomNumber(final DiceConfiguration configuration, final int addition) {
         final int diceSide = configuration.getMaxValue() - configuration.getMinValue() + 1;
-        final int actualAddition = addition + configuration.getMinValue() - 1;
-        final int[] rolledNumbers = getRandomNumber(configuration.getDiceNumber(), diceSide, actualAddition, configuration.isAdding());
-        if (!configuration.isAdding()) {
-            if (rolledNumbers[0] == 0) {
-                rolledNumbers[0] = (int) Math.pow(diceSide, configuration.getDiceNumber());
-            }
-        }
-
+        final int diceAddition = configuration.getMinValue() - 1;
+        final int[] rolledNumbers = getRandomNumber(configuration.getDiceNumber(), diceSide, diceAddition, configuration.isAdding());
+        rolledNumbers[0] += addition;
         return rolledNumbers;
     }
 

@@ -91,7 +91,7 @@ public class RandomCommandResolver extends TypeAwareCommandResolver<RandomComman
         final List<ParagraphData> responseList = new ArrayList<>();
 
         final DiceConfiguration diceConfiguration = beanFactory.getBean(command.getDiceConfig(), DiceConfiguration.class);
-        final int[] diceResults = generator.getRandomNumber(diceConfiguration);
+        final int[] diceResults = new int[]{6, 6}; // generator.getRandomNumber(diceConfiguration);
         final int diceResult = diceResults[0];
         logger.debug("Random command generated the number '{}'.", diceResult);
 

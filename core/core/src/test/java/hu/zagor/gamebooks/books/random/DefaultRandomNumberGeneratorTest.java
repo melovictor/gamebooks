@@ -266,6 +266,24 @@ public class DefaultRandomNumberGeneratorTest {
         verify(1, 100, resultSet);
     }
 
+    public void testGetRandomNumberWhen2d2To5ConfigurationIsSetUpShouldGenerateNumbersBetweenTwoAndFive() {
+        // GIVEN
+        final DiceConfiguration diceConfiguration = new DiceConfiguration(2, 2, 5);
+        final Set<Integer> resultSetA = new HashSet<>();
+        final Set<Integer> resultSetB = new HashSet<>();
+        expect(environmentDetector.isRecordState()).andReturn(false).times(20000);
+        mockControl.replay();
+        // WHEN
+        for (int i = 0; i < 10000; i++) {
+            final int[] randomNumbers = underTest.getRandomNumber(diceConfiguration);
+            resultSetA.add(randomNumbers[1]);
+            resultSetB.add(randomNumbers[2]);
+        }
+        // THEN
+        verify(2, 5, resultSetA);
+        verify(2, 5, resultSetB);
+    }
+
     private void verify(final int min, final int max, final Set<Integer> resultSet) {
         for (int i = min; i <= max; i++) {
             Assert.assertTrue(resultSet.contains(i), "Result set must contain the number " + i);
