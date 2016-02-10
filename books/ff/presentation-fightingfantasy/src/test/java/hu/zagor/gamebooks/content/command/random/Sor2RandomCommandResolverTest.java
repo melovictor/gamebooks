@@ -344,6 +344,22 @@ public class Sor2RandomCommandResolverTest {
         Assert.assertEquals(choice.getId(), "264d");
     }
 
+    public void testDoResolveWhenSectionIsNotOneOfGnomeShouldDoUsualRandomGeneration() {
+        // GIVEN
+        paragraph = new Paragraph("11", "11", 99);
+        paragraph.setData(data);
+        resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).build();
+
+        final int[] rolledValue = new int[]{3, 3};
+        prepareRandom(rolledValue);
+        mockControl.replay();
+        // WHEN
+        final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
+        // THEN
+        final ParagraphData paragraphData = returned.get(0);
+        Assert.assertSame(paragraphData, resultData);
+    }
+
     private void prepareRandom(final int[] rolledValue) {
         expect(localeProvider.getLocale()).andReturn(locale);
         expect(interactionHandler.hasRandomResult(character)).andReturn(true);
