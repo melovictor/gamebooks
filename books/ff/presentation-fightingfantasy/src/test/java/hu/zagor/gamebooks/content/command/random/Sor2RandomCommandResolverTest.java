@@ -360,6 +360,19 @@ public class Sor2RandomCommandResolverTest {
         Assert.assertSame(paragraphData, resultData);
     }
 
+    public void testDoResolveWhenGnomeSectionButFirstRoundWithoutRollingYetShouldOnlyInitializeRandom() {
+        // GIVEN
+        expect(localeProvider.getLocale()).andReturn(locale);
+        expect(interactionHandler.hasRandomResult(character)).andReturn(false);
+
+        interactionHandler.setRandomResult(character);
+        mockControl.replay();
+        // WHEN
+        final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
+        // THEN
+        Assert.assertNull(returned);
+    }
+
     private void prepareRandom(final int[] rolledValue) {
         expect(localeProvider.getLocale()).andReturn(locale);
         expect(interactionHandler.hasRandomResult(character)).andReturn(true);
