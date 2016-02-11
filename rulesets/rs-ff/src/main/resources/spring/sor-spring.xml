@@ -2,8 +2,7 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
-  <bean parent="ffCharacterHandler" id="sorCharacterHandler" class="hu.zagor.gamebooks.character.handler.FfCharacterHandler" p:characterGenerator-ref="sorCharacterGenerator"
-    p:canEatEverywhere="false" />
+  <bean parent="ffCharacterHandler" id="sorCharacterHandler" class="hu.zagor.gamebooks.character.handler.FfCharacterHandler" p:characterGenerator-ref="sorCharacterGenerator" p:canEatEverywhere="false" />
 
   <bean class="hu.zagor.gamebooks.ff.section.SorRuleBookParagraphDataTransformer" id="sorRuleBookParagraphDataTransformer" parent="ffRuleBookParagraphDataTransformer" p:stubTransformers-ref="sorStubTransformers" />
   <bean class="hu.zagor.gamebooks.books.contentransforming.section.DefaultBookParagraphTransformer" id="sorRuleBookParagraphTransformer" p:paragraphDataTransformer-ref="sorRuleBookParagraphDataTransformer" p:validSectionTags-ref="validSectionTagNames" />
@@ -56,5 +55,14 @@
   </util:set>
 
   <bean class="hu.zagor.gamebooks.ff.sor.mvc.books.section.service.SorBookPreFightHandlingService" name="sor2BookPreFightHandlingService,sor3BookPreFightHandlingService,sor4BookPreFightHandlingService,kjv2BookPreFightHandlingService,kjv3BookPreFightHandlingService,kjv4BookPreFightHandlingService" />
+
+  <util:map key-type="java.lang.Integer" value-type="java.lang.Integer" id="specialGloveRerollChanceTable">
+    <entry key="1" value="10" />
+    <entry key="2" value="8" />
+    <entry key="3" value="5" />
+    <entry key="4" value="2" />
+    <entry key="5" value="0" />
+    <entry key="6" value="0" />
+  </util:map>
 
 </beans>

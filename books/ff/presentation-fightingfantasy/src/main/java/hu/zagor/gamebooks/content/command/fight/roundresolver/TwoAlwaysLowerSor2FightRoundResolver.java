@@ -15,6 +15,8 @@ import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -23,6 +25,12 @@ import org.springframework.stereotype.Component;
  */
 @Component("twoAlwaysLowersor2FightRoundResolver")
 public class TwoAlwaysLowerSor2FightRoundResolver extends SingleFightRoundResolver {
+    @Autowired @Qualifier("sorHeroAttackStrengthRoller") private HeroAttackStrengthRoller heroAttackStrengthRoller;
+
+    @Override
+    int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
+        return heroAttackStrengthRoller.getSelfAttackStrength(character, command, attributeHandler);
+    }
 
     @Override
     public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {

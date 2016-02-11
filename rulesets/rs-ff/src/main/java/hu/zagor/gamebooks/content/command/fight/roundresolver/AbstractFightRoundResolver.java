@@ -180,7 +180,7 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
         final int attackStrengthUsedDices = getHeroUsedDices(character, command);
         final int[] generatedAttackStrength = getGenerator().getRandomNumber(attackStrengthRolledDices);
         if (attackStrengthRolledDices > attackStrengthUsedDices) {
-            filterActialDices(generatedAttackStrength, attackStrengthUsedDices);
+            filterActualDices(generatedAttackStrength, attackStrengthUsedDices);
         }
         generatedAttackStrength[0] += attributeHandler.resolveValue(character, "attackStrength");
         return generatedAttackStrength;
@@ -206,7 +206,7 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
         return command.getAttackStrengthRolledDices();
     }
 
-    private void filterActialDices(final int[] generatedAttackStrength, final int dicesToBeUsed) {
+    private void filterActualDices(final int[] generatedAttackStrength, final int dicesToBeUsed) {
         final List<Integer> thrownValues = new ArrayList<>();
         for (int i = 1; i < generatedAttackStrength.length; i++) {
             thrownValues.add(generatedAttackStrength[i]);
