@@ -6,13 +6,21 @@ import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHan
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
+import hu.zagor.gamebooks.content.SorParagraphData;
+import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand;
+import hu.zagor.gamebooks.content.command.attributetest.SuccessFailureDataContainer;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightOutcome;
+import hu.zagor.gamebooks.content.command.itemcheck.CheckType;
 import hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommand;
+import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
+import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -21,6 +29,8 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class SorMagicChainPreparatorService {
+    @Autowired private MessageSource messageSource;
+    @Autowired private LocaleProvider localeProvider;
 
     /**
      * Preparates the currently active {@link FightCommand} object to handle the retrieval of the chain.
@@ -97,15 +107,78 @@ public class SorMagicChainPreparatorService {
     }
 
     private FfParagraphData getNewWinData() {
-        final FfParagraphData data = new FfParagraphData();
+        final FfParagraphData failedData = createFailedTestData();
+        final SuccessFailureDataContainer failedLuckTest = new SuccessFailureDataContainer(failedData, null);
 
-        final ItemCheckCommand command = new ItemCheckCommand();
-        command.setId("3044");
-        final ParagraphData usedMagicChain = new ParagraphData();
-        usedMagicChain.setText("you can get back your magic chain if you want to");
-        command.setDontHave(usedMagicChain);
-        data.addCommand(command);
+        final AttributeTestCommand secondLuckTest = createSecondLuckTest(failedLuckTest);
+
+        final FfParagraphData successFirstData = new SorParagraphData();
+        successFirstData.addCommand(secondLuckTest);
+
+        final SuccessFailureDataContainer successfulFirstLuckTest = new SuccessFailureDataContainer(successFirstData, null);
+
+        final AttributeTestCommand firstLuckTest = createAttributeTest(failedLuckTest, successfulFirstLuckTest);
+
+        final ItemCheckCommand checkItemCommand = createItemCheckCommand(firstLuckTest);
+
+        final FfParagraphData data = new SorParagraphData();
+        data.addCommand(checkItemCommand);
 
         return data;
+    }
+
+    private ItemCheckCommand createItemCheckCommand(final AttributeTestCommand firstLuckTest) {
+        final ParagraphData usedMagicChain = new SorParagraphData();
+        usedMagicChain.setText(resolveText("page.sor.magicChain.canRetrieve"));
+        usedMagicChain.addCommand(firstLuckTest);
+
+        final ItemCheckCommand checkItemCommand = new ItemCheckCommand();
+        checkItemCommand.setCheckType(CheckType.item);
+        checkItemCommand.setId("3044");
+        checkItemCommand.setAmount(1);
+        checkItemCommand.setDontHave(usedMagicChain);
+        return checkItemCommand;
+    }
+
+    private AttributeTestCommand createSecondLuckTest(final SuccessFailureDataContainer failedLuckTest) {
+        final FfParagraphData successSecondData = createSecondSuccessData();
+        final SuccessFailureDataContainer successfulSecondLuckTest = new SuccessFailureDataContainer(successSecondData, null);
+
+        final AttributeTestCommand secondLuckTest = new AttributeTestCommand();
+        secondLuckTest.setAgainst("luck");
+        secondLuckTest.setConfigurationName("dice2d6");
+        secondLuckTest.getFailure().add(failedLuckTest);
+        secondLuckTest.getSuccess().add(successfulSecondLuckTest);
+        return secondLuckTest;
+    }
+
+    private AttributeTestCommand createAttributeTest(final SuccessFailureDataContainer failedLuckTest, final SuccessFailureDataContainer successfulFirstLuckTest) {
+        final AttributeTestCommand firstLuckTest = new AttributeTestCommand();
+        firstLuckTest.setAgainst("luck");
+        firstLuckTest.setConfigurationName("dice2d6");
+        firstLuckTest.setLabel(resolveText("page.sor.magicChain.firstLuckTestLabel"));
+        firstLuckTest.setCanSkip(true);
+        firstLuckTest.setSkipText(resolveText("page.sor.magicChain.abandonChain"));
+        firstLuckTest.getSuccess().add(successfulFirstLuckTest);
+        firstLuckTest.getFailure().add(failedLuckTest);
+        return firstLuckTest;
+    }
+
+    private FfParagraphData createSecondSuccessData() {
+        final FfParagraphData successSecondData = new SorParagraphData();
+        successSecondData.setText(resolveText("page.sor.magicChain.chainRetrievalSucceeded"));
+        final GatheredLostItem glItem = new GatheredLostItem("3044", 1, 0, false);
+        successSecondData.getGatheredItems().add(glItem);
+        return successSecondData;
+    }
+
+    private FfParagraphData createFailedTestData() {
+        final FfParagraphData failedData = new SorParagraphData();
+        failedData.setText(resolveText("page.sor.magicChain.chainRetrievalFailed"));
+        return failedData;
+    }
+
+    private String resolveText(final String textKey) {
+        return messageSource.getMessage(textKey, null, localeProvider.getLocale());
     }
 }
