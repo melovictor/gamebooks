@@ -34,8 +34,11 @@ public class AttributeTestCommand extends Command {
     private List<SuccessFailureDataContainer> failure = new ArrayList<>();
     private FfParagraphData failureEven;
     private FfParagraphData failureOdd;
+    private FfParagraphData skipped;
 
     private boolean testSuccess;
+    private boolean canSkip;
+    private String skipText;
 
     public void setAgainst(final String against) {
         this.against = against;
@@ -103,6 +106,7 @@ public class AttributeTestCommand extends Command {
 
         cloned.success = cloneList(success);
         cloned.failure = cloneList(failure);
+        cloned.skipped = cloneObject(skipped);
         cloned.failureEven = cloneObject(failureEven);
         cloned.failureOdd = cloneObject(failureOdd);
 
@@ -199,6 +203,30 @@ public class AttributeTestCommand extends Command {
 
     public void setTestSuccess(final boolean testSuccess) {
         this.testSuccess = testSuccess;
+    }
+
+    public boolean isCanSkip() {
+        return canSkip;
+    }
+
+    public void setCanSkip(final boolean canSkip) {
+        this.canSkip = canSkip;
+    }
+
+    public String getSkipText() {
+        return skipText;
+    }
+
+    public void setSkipText(final String skipText) {
+        this.skipText = skipText;
+    }
+
+    public FfParagraphData getSkipped() {
+        return skipped;
+    }
+
+    public void setSkipped(final FfParagraphData skipped) {
+        this.skipped = skipped;
     }
 
 }

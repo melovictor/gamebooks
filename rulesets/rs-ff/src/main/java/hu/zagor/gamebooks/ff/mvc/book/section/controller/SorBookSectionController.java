@@ -6,6 +6,7 @@ import hu.zagor.gamebooks.content.SorParagraphData;
 import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
+import hu.zagor.gamebooks.ff.mvc.book.section.service.SorMagicChainPreparatorService;
 import hu.zagor.gamebooks.mvc.book.section.controller.GenericBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import java.util.List;
@@ -24,6 +25,7 @@ public class SorBookSectionController extends FfBookSectionController {
     private static final String CURSED_CHAINMAIL_GLOVES = "3042";
     private static final int POSITION_FOR_ONES = 10;
     @Autowired private XmlGameStateSaver gameStateSaver;
+    @Autowired private SorMagicChainPreparatorService magicChainService;
 
     /**
      * Basic constructor that expects the spring id of the book's bean and passes it down to the {@link GenericBookSectionController}.
@@ -115,6 +117,12 @@ public class SorBookSectionController extends FfBookSectionController {
         for (final Choice choice : choices) {
             resolveSingleChoiceDisplayName(choice);
         }
+    }
+
+    @Override
+    protected void prepareFight(final HttpSessionWrapper wrapper) {
+        magicChainService.preparateIfNeeded(wrapper, getInfo());
+        super.prepareFight(wrapper);
     }
 
 }

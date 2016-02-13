@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
+import hu.zagor.gamebooks.content.command.attributetest.AttributeTestDecision;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
@@ -33,14 +34,26 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
     }
 
     /**
-     * Handler for attribute test entry points.
+     * Handler for attribute test testing entry points.
      * @param model the data model
      * @param request the request
      * @return the book page's name
      */
-    @RequestMapping(value = PageAddresses.ATTRIBUTE_TEST)
-    public String handleAttributeTest(final Model model, final HttpServletRequest request) {
-        getInteractionRecorder().recordAttributeTest(getWrapper(request));
+    @RequestMapping(value = PageAddresses.ATTRIBUTE_TEST_TESTING)
+    public String handleAttributeTestTesting(final Model model, final HttpServletRequest request) {
+        getInfo().getCharacterHandler().getInteractionHandler().setAttributeTestResult((FfCharacter) getWrapper(request).getCharacter(), AttributeTestDecision.TEST);
+        return super.handleSection(model, request, null);
+    }
+
+    /**
+     * Handler for attribute test skipping entry points.
+     * @param model the data model
+     * @param request the request
+     * @return the book page's name
+     */
+    @RequestMapping(value = PageAddresses.ATTRIBUTE_TEST_TESTING)
+    public String handleAttributeTestSkipping(final Model model, final HttpServletRequest request) {
+        getInfo().getCharacterHandler().getInteractionHandler().setAttributeTestResult((FfCharacter) getWrapper(request).getCharacter(), AttributeTestDecision.SKIP);
         return super.handleSection(model, request, null);
     }
 

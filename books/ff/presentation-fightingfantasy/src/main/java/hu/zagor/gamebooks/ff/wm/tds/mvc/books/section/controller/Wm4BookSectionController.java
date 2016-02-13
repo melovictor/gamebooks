@@ -49,8 +49,8 @@ public class Wm4BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    @RequestMapping(value = PageAddresses.ATTRIBUTE_TEST)
-    public String handleAttributeTest(final Model model, final HttpServletRequest request) {
+    @RequestMapping(value = PageAddresses.ATTRIBUTE_TEST_TESTING)
+    public String handleAttributeTestTesting(final Model model, final HttpServletRequest request) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final Paragraph paragraph = wrapper.getParagraph();
         if (NOMAD_ROBBERY.equals(paragraph.getId())) {

@@ -102,7 +102,21 @@ public class AttributeTestCommandResolver extends TypeAwareCommandResolver<Attri
 
         List<ParagraphData> responseList = null;
         if (interactionHandler.hasAttributeTestResult(character)) {
-            responseList = new ArrayList<>();
+            responseList = handleAttributeTest(command, resolvationData, locale);
+        } else {
+            appendText(rootDataElement, command.getLabel(), false);
+            interactionHandler.setAttributeTestResult(character);
+        }
+        return responseList;
+    }
+
+    private List<ParagraphData> handleAttributeTest(final AttributeTestCommand command, final ResolvationData resolvationData, final Locale locale) {
+        final List<ParagraphData> responseList = new ArrayList<>();
+        final BookInformations info = resolvationData.getInfo();
+        final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) info.getCharacterHandler().getInteractionHandler();
+        final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
+        final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
+        if (interactionHandler.getAttributeTestType(character) == AttributeTestDecision.TEST) {
             final List<String> messages = new ArrayList<String>();
             responseList.add(getResultParagraphData(command, locale, resolvationData, messages));
             appendText(responseList.get(0), messages.get(0), true);
@@ -111,8 +125,7 @@ public class AttributeTestCommandResolver extends TypeAwareCommandResolver<Attri
                 characterHandler.getAttributeHandler().handleModification(character, "luck", -1);
             }
         } else {
-            appendText(rootDataElement, command.getLabel(), false);
-            interactionHandler.setAttributeTestResult(character);
+            responseList.add(command.getSkipped());
         }
         return responseList;
     }

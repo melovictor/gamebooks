@@ -14,6 +14,7 @@ import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.content.choice.ChoicePositionComparator;
 import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.content.choice.DefaultChoiceSet;
+import hu.zagor.gamebooks.content.command.attributetest.AttributeTestDecision;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.domain.ResourceInformation;
@@ -114,11 +115,12 @@ public class FfBookSectionControllerTest {
 
     public void testHandleAttributeTestShouldHandleAttributeTestRequest() {
         expectWrapper();
-        interactionRecorder.recordAttributeTest(wrapper);
+        expect(wrapper.getCharacter()).andReturn(character);
+        interactionHandler.setAttributeTestResult(character, AttributeTestDecision.TEST);
         expectHandleSection();
         mockControl.replay();
         // WHEN
-        final String returned = underTest.handleAttributeTest(model, request);
+        final String returned = underTest.handleAttributeTestTesting(model, request);
         // THEN
         Assert.assertEquals(returned, "done");
     }

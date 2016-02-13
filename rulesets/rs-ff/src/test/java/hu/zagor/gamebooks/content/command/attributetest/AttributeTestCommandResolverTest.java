@@ -198,6 +198,7 @@ public class AttributeTestCommandResolverTest extends FfTextResolvingTest {
         // GIVEN
         expectLocale();
         expect(interactionHandler.hasAttributeTestResult(character)).andReturn(true);
+        expect(interactionHandler.getAttributeTestType(character)).andReturn(AttributeTestDecision.TEST);
         expect(beanFactory.getBean("2d6", DiceConfiguration.class)).andReturn(diceConfiguration);
         expect(generator.getRandomNumber(diceConfiguration, 0)).andReturn(RANDOM_RESULT);
         expect(diceRenderer.render(diceConfiguration, RANDOM_RESULT)).andReturn(DICE_RENDER_RESULT);
@@ -219,6 +220,7 @@ public class AttributeTestCommandResolverTest extends FfTextResolvingTest {
         command.setSuccessType(AttributeTestSuccessType.lower);
         expectLocale();
         expect(interactionHandler.hasAttributeTestResult(character)).andReturn(true);
+        expect(interactionHandler.getAttributeTestType(character)).andReturn(AttributeTestDecision.TEST);
         expect(beanFactory.getBean("2d6", DiceConfiguration.class)).andReturn(diceConfiguration);
         expect(generator.getRandomNumber(diceConfiguration, 0)).andReturn(RANDOM_RESULT);
         expect(diceRenderer.render(diceConfiguration, RANDOM_RESULT)).andReturn(DICE_RENDER_RESULT);
@@ -240,6 +242,7 @@ public class AttributeTestCommandResolverTest extends FfTextResolvingTest {
         command.setAgainst("luck");
         expectLocale();
         expect(interactionHandler.hasAttributeTestResult(character)).andReturn(true);
+        expect(interactionHandler.getAttributeTestType(character)).andReturn(AttributeTestDecision.TEST);
         expect(beanFactory.getBean("2d6", DiceConfiguration.class)).andReturn(diceConfiguration);
         expect(generator.getRandomNumber(diceConfiguration, 0)).andReturn(RANDOM_RESULT);
         expect(diceRenderer.render(diceConfiguration, RANDOM_RESULT)).andReturn(DICE_RENDER_RESULT);

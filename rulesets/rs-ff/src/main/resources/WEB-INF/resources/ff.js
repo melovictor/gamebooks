@@ -48,7 +48,8 @@ var ff = (function() {
 	}
 
 	function attributeTest() {
-		form.submit("post", "attributeTest", "actionEnd");
+		var action = $(this).data("action");
+		form.submit("post", "attributeTest-" + action, "actionEnd");
 	}
 	function random() {
 		form.submit("post", "random", "actionEnd");

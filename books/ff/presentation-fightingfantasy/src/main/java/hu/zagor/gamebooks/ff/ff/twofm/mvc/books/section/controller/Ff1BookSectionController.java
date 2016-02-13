@@ -168,11 +168,11 @@ public class Ff1BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    public String handleAttributeTest(final Model model, final HttpServletRequest request) {
+    public String handleAttributeTestTesting(final Model model, final HttpServletRequest request) {
         final Paragraph paragraph = getWrapper(request).getParagraph();
         final AttributeTestCommand testCommand = (AttributeTestCommand) paragraph.getData().getCommands().get(0);
 
-        final String testResult = super.handleAttributeTest(model, request);
+        final String testResult = super.handleAttributeTestTesting(model, request);
 
         if ("333a".equals(paragraph.getId())) {
             final int result = testCommand.getResult();

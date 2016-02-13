@@ -25,18 +25,26 @@
 
 
   <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.AttributeTestTransformer" id="ffAttributeTestTransformer" p:attributeTestTransformers-ref="ffAttributeTestTransformers" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.attributetest.AttributeTestLabelTransformer" id="attributeTestLabelTransformer" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.attributetest.AttributeTestSuccessTransformer" id="attributeTestSuccessTransformer" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.attributetest.AttributeTestFailureTransformer" id="attributeTestFailureTransformer" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.attributetest.AttributeTestFailureEvenTransformer" id="attributeTestFailureEvenTransformer" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.attributetest.AttributeTestFailureOddTransformer" id="attributeTestFailureOddTransformer" />
 
   <util:map id="ffAttributeTestTransformers">
-    <entry key="label" value-ref="attributeTestLabelTransformer" />
-    <entry key="success" value-ref="attributeTestSuccessTransformer" />
-    <entry key="failure" value-ref="attributeTestFailureTransformer" />
-    <entry key="failureEven" value-ref="attributeTestFailureEvenTransformer" />
-    <entry key="failureOdd" value-ref="attributeTestFailureOddTransformer" />
+    <entry key="label">
+      <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.attributetest.AttributeTestLabelTransformer" />
+    </entry>
+    <entry key="success">
+      <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.attributetest.AttributeTestSuccessTransformer" />
+    </entry>
+    <entry key="failure">
+      <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.attributetest.AttributeTestFailureTransformer" />
+    </entry>
+    <entry key="failureEven">
+      <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.attributetest.AttributeTestFailureEvenTransformer" />
+    </entry>
+    <entry key="failureOdd">
+      <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.attributetest.AttributeTestFailureOddTransformer" />
+    </entry>
+    <entry key="skip">
+      <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.attributetest.AttributeTestSkipTransformer" />
+    </entry>
   </util:map>
 
 

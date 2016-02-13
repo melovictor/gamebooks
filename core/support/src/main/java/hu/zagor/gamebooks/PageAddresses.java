@@ -30,7 +30,8 @@ public final class PageAddresses {
 
     public static final String BOOK_USER_RESPONSE = "userInputResponse";
     public static final String BOOK_GENERATE_CHARACTER = "generate";
-    public static final String ATTRIBUTE_TEST = "attributeTest";
+    public static final String ATTRIBUTE_TEST_TESTING = "attributeTest-test";
+    public static final String ATTRIBUTE_TEST_SKIPPING = "attributeTest-skip";
     public static final String RANDOM = "random";
     public static final String FIGHT = "attack";
     public static final String PRE_FIGHT_ITEM_USAGE = "preFight";
