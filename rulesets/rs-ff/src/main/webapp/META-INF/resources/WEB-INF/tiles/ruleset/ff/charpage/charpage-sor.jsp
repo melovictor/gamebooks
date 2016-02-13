@@ -23,7 +23,7 @@
 			<div class="ffMainAttributeValue" data-attribute-stamina>${charEquipments.stamina}
 				<c:if test="${!charEquipments.usedLibra && !charEquipments.commandActive}">
 					<button data-libra-reset>
-						<spring:message code="page.ff.attribute.reset" />
+						<spring:message code="page.sor.attribute.reset" />
 					</button>
 				</c:if>
 			</div>
@@ -41,7 +41,7 @@
 			<div class="sorCursesFullWidth" data-items="true">
 				<c:if test="${!charEquipments.usedLibra && !charEquipments.commandActive}">
 					<button data-libra-curseremoval>
-						<spring:message code="page.ff.curse.reset" />
+						<spring:message code="page.sor.curse.reset" />
 					</button>
 				</c:if>
 				<span class="ffMainAttribute"><spring:message code="page.sor.curseSickness" /></span>

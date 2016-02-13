@@ -116,6 +116,7 @@ public class FfRuleBookItemTransformerTest extends AbstractTransformerTest {
         expectAttribute("magical");
 
         expectAttribute("preFight");
+        expectAttribute("atFight");
 
         expectAttribute("actions");
         expectAttribute("forceEquip", forceEquip);

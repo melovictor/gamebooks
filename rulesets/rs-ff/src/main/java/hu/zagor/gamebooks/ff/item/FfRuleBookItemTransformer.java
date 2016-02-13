@@ -42,6 +42,7 @@ public class FfRuleBookItemTransformer extends AbstractBookItemTransformer {
         item.setMagical(extractBooleanAttribute(node, "magical", false));
 
         item.setPreFight(extractBooleanAttribute(node, "preFight", false));
+        item.setAtFight(extractBooleanAttribute(node, "atFight", false));
 
         item.setActions(extractIntegerAttribute(node, "actions", 1));
         final boolean forceEquip = extractBooleanAttribute(node, "forceEquip", false);

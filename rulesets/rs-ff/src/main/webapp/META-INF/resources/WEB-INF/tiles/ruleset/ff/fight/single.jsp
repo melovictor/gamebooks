@@ -19,6 +19,16 @@
 		<span data-enemy-stamina>${charEquipments.stamina}</span>
 		<span data-enemy-luck>${charEquipments.luck}</span>
 	</div>
+	<c:forEach var="ally" items="${fightCommand.resolvedAllies}">
+		<div>
+			<span data-enemy-id="0">${ally.name}</span>
+			<span data-enemy-skill>${ally.skill}</span>
+			<c:if test="${showAllyStamina}">
+			   <span data-enemy-stamina>${ally.stamina}</span>
+			</c:if>
+			<span data-enemy-stamina>&nbsp;</span>
+		</div>
+	</c:forEach>
 
 </div>
 <div id="ffEnemyList">
@@ -52,26 +62,36 @@
 </c:if>
 
 <c:if test="${not empty charEquipments.preFightItems && fightCommand.roundNumber == 0 && fightCommand.preFightAvailable}">
-	<div id="preFightItems">
-		<spring:message code="page.ff.label.fight.preFightItems" />
-		<c:forEach items="${charEquipments.preFightItems}" var="item" varStatus="loop">
-			<c:if test="${!item.usedInPreFight}">
-				<span data-item-id="${item.id}">${item.name}</span><c:if test="${!loop.last}">, </c:if>
-			</c:if>
-		</c:forEach>
-	</div>
+    <div id="preFightItems">
+        <spring:message code="page.ff.label.fight.preFightItems" />
+        <c:forEach items="${charEquipments.preFightItems}" var="item" varStatus="loop">
+            <c:if test="${!item.usedInPreFight}">
+                <span data-item-id="${item.id}">${item.name}</span><c:if test="${!loop.last}">, </c:if>
+            </c:if>
+        </c:forEach>
+    </div>
+</c:if>
+<c:if test="${not empty charEquipments.atFightItems && fightCommand.roundNumber > 0}">
+    <div id="preFightItems">
+        <spring:message code="page.ff.label.fight.atFightItems" />
+        <c:forEach items="${charEquipments.atFightItems}" var="item" varStatus="loop">
+            <c:if test="${!item.usedInPreFight}">
+                <span data-item-id="${item.id}">${item.name}</span><c:if test="${!loop.last}">, </c:if>
+            </c:if>
+        </c:forEach>
+    </div>
 </c:if>
 
 <div id="ffAttackButton">
 	<button data-attack="ff">
 		<spring:message code="page.ff.label.fight.attack" />
 	</button>
-	<c:if test="${fightCommand.fleeData.text}">
+	<c:if test="${fightCommand.fleeAllowed}">
 		<button data-flee="ff">
 			<c:if test="${not empty fightCommand.fleeData.text}">
 				${fightCommand.fleeData.text}
 			</c:if>
-			<c:if test="${empty fightCommand.fleeText}">
+			<c:if test="${empty fightCommand.fleeData.text}">
 				<spring:message code="page.ff.label.fight.flee" />
 			</c:if>
 		</button>

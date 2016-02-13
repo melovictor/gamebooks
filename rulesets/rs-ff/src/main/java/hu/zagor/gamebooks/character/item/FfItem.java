@@ -22,6 +22,7 @@ public class FfItem extends Item {
     private boolean magical;
 
     private boolean preFight;
+    private boolean atFight;
     private boolean usedInPreFight;
 
     private int dose;
@@ -213,6 +214,14 @@ public class FfItem extends Item {
 
     public void setGold(final int gold) {
         this.gold = gold;
+    }
+
+    public boolean isAtFight() {
+        return atFight;
+    }
+
+    public void setAtFight(final boolean atFight) {
+        this.atFight = atFight;
     }
 
 }

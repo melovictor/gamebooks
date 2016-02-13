@@ -34,6 +34,7 @@ public class FfCharacterPageData extends RawCharacterPageData {
     private final List<Item> potions = new ArrayList<>();
     private final List<Item> shadows = new ArrayList<>();
     private final List<Item> preFightItems = new ArrayList<>();
+    private final List<Item> atFightItems = new ArrayList<>();
     private final boolean initialized;
     private final int gold;
 
@@ -78,6 +79,8 @@ public class FfCharacterPageData extends RawCharacterPageData {
                     }
                     if (isPreFightItem(item)) {
                         preFightItems.add(item);
+                    } else if (isAtFightItem(item)) {
+                        atFightItems.add(item);
                     }
                 }
             } else {
@@ -103,6 +106,10 @@ public class FfCharacterPageData extends RawCharacterPageData {
 
     private boolean isPreFightItem(final Item item) {
         return ((FfItem) item).isPreFight();
+    }
+
+    private boolean isAtFightItem(final Item item) {
+        return ((FfItem) item).isAtFight();
     }
 
     private void addProvision(final Item item) {
@@ -178,6 +185,10 @@ public class FfCharacterPageData extends RawCharacterPageData {
 
     public List<Item> getPreFightItems() {
         return preFightItems;
+    }
+
+    public List<Item> getAtFightItems() {
+        return atFightItems;
     }
 
 }
