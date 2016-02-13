@@ -51,7 +51,7 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
      * @param request the request
      * @return the book page's name
      */
-    @RequestMapping(value = PageAddresses.ATTRIBUTE_TEST_TESTING)
+    @RequestMapping(value = PageAddresses.ATTRIBUTE_TEST_SKIPPING)
     public String handleAttributeTestSkipping(final Model model, final HttpServletRequest request) {
         getInfo().getCharacterHandler().getInteractionHandler().setAttributeTestResult((FfCharacter) getWrapper(request).getCharacter(), AttributeTestDecision.SKIP);
         return super.handleSection(model, request, null);
