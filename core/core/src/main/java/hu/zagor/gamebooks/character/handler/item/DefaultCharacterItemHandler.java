@@ -226,7 +226,7 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
     public boolean hasItem(final Character character, final String id, final int amount) {
         Assert.notNull(character, CHARACTER_NOT_NULL);
         Assert.notNull(id, ID_NOT_NULL);
-        Assert.isTrue(amount > 0, "The parameter 'id' must be greater than zero!");
+        Assert.isTrue(amount > 0, "The parameter 'amount' must be greater than zero!");
 
         final List<Item> equipment = character.getEquipment();
         int possessedAmount = 0;
