@@ -44,4 +44,5 @@
 
   <bean id="sor2CommandResolvers" c:mapA-ref="sorCommandResolvers" c:mapB-ref="sor2ExtraCommandResolvers" factory-method="merge" class="hu.zagor.gamebooks.support.spring.MapMerger" />
 
+  <bean id="sor2BookPreFightHandlingService" parent="sorBookPreFightHandlingService" />
 </beans>
