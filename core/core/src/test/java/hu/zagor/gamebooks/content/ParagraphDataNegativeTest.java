@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.content;
 
 import hu.zagor.gamebooks.content.choice.ChoicePositionComparator;
 import hu.zagor.gamebooks.content.choice.DefaultChoiceSet;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -46,15 +45,6 @@ public class ParagraphDataNegativeTest {
         mockControl.replay();
         // WHEN
         underTest.calculateValidEvents(null);
-        // THEN throws exception
-    }
-
-    @Test(expectedExceptions = IllegalArgumentException.class)
-    public void testAddChoicesWhenElementSetIsNullShouldThrowException() {
-        // GIVEN
-        mockControl.replay();
-        // WHEN
-        underTest.addChoices(null);
         // THEN throws exception
     }
 

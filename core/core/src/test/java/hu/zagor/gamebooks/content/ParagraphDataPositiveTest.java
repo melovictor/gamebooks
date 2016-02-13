@@ -269,6 +269,16 @@ public class ParagraphDataPositiveTest {
         Assert.assertSame(returned, logger);
     }
 
+    public void testAddChoicesWhenElementSetIsNullShouldDoNothing() {
+        // GIVEN
+        final int originalSize = underTest.getChoices().size();
+        mockControl.replay();
+        // WHEN
+        underTest.addChoices(null);
+        // THEN
+        Assert.assertEquals(underTest.getChoices().size(), originalSize);
+    }
+
     private void setUpCalculation() {
         underTest.setText(TEXT_WITH_GATERABLE_ITEMS);
         logger.debug("Found item {}.", "3002");

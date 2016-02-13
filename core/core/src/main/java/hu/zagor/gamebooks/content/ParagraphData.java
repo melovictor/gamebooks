@@ -162,8 +162,9 @@ public class ParagraphData extends EscapingData implements TrueCloneable, BeanFa
      * @param choices the {@link Choice} beans to add, cannot be null
      */
     public void addChoices(final Set<Choice> choices) {
-        Assert.notNull(choices, "Parameter 'choices' can not be null!");
-        this.choices.addAll(choices);
+        if (choices != null) {
+            this.choices.addAll(choices);
+        }
     }
 
     @Override
