@@ -20,6 +20,7 @@ public final class Series {
     public static final long KALAND_JATEK_KOCKAZAT_ZAGOR_FUZET = BASE + 665 * SERIES_MULTIPLIER;
 
     public static final long KALAND_JATEK_PARODIA = BASE + 612 * SERIES_MULTIPLIER;
+    public static final long KALAND_JATEK_SZERELEM = BASE + 194 * SERIES_MULTIPLIER;
 
     public static final long KALAND_JATEK_VARAZSLAT = BASE + 586 * SERIES_MULTIPLIER;
 
