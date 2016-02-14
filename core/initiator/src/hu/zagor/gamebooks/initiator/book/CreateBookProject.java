@@ -19,18 +19,18 @@ public class CreateBookProject {
 
     private BookBaseData getBaseData() {
 
-        baseData.setSeriesCode("sor"); // ff, pt, wm, fff, sor
-        baseData.setTitleCode("kcot");
-        baseData.setPosition(2);
+        baseData.setSeriesCode("ff"); // ff, pt, wm, fff, sor
+        baseData.setTitleCode("sa");
+        baseData.setPosition(12);
         baseData.setCollectorCode("ff");
         baseData.setCollectorName("fightingfantasy");
         baseData.setRuleset("ff");
         baseData.setHasEnemies(true);
         baseData.setHasInventory(true);
         baseData.setHasItems(true);
-        baseData.setHasMap(true);
+        baseData.setHasMap(false);
         baseData.setMediaProject(true);
-        baseData.setDefaultSkillTestType("L"); // Le: lower or equal; L: lower; if neither, should be empty!
+        baseData.setDefaultSkillTestType("Le"); // Le: lower or equal; L: lower; if neither, should be empty!
         baseData.setCharPageRequired(true);
 
         return baseData;
@@ -49,11 +49,11 @@ public class CreateBookProject {
 
     private BookLangData getSotkHu(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
-        data.setSeriesCode("kjv");
-        data.setPosition(2);
-        data.setBookId("KalandJatekVarazslat.KHARE_A_CSAPDAK_KIKOTOVAROSA");
+        data.setSeriesCode("fh");
+        data.setPosition(1);
+        data.setBookId("FantaziaHarcos.UR_ORGYILKOS");
         data.setLang("hu");
-        data.setTitle("Kharé &nbsp; A Csapdák Kikötővárosa");
+        data.setTitle("Űr-Orgyilkos");
         data.setGeneratable(shouldBeGenerated);
         return data;
     }
@@ -61,9 +61,9 @@ public class CreateBookProject {
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setHidden(true);
-        data.setBookId("Sorcery.KHARE_CITYPORT_OF_TRAPS");
+        data.setBookId("FightingFantasy.SPACE_ASSASSIN");
         data.setLang("en");
-        data.setTitle("Khare &nbsp; Cityport of Traps");
+        data.setTitle("Space Assassin");
         data.setGeneratable(shouldBeGenerated);
         return data;
     }
