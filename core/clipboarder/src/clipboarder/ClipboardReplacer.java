@@ -63,6 +63,7 @@ public class ClipboardReplacer {
                         lastString = clipboardContent;
                         final StringSelection selection = new StringSelection(newContent);
                         clipboard.setContents(selection, selection);
+                        System.exit(0);
                     } else {
                         lastString = clipboardContent;
                     }
