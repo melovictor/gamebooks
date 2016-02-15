@@ -5,6 +5,7 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.ff.sa.character.Ff12Character;
 import hu.zagor.gamebooks.ff.ff.sa.mvc.books.newgame.service.Ff12CharacterGenerator;
+import hu.zagor.gamebooks.ff.ff.sa.mvc.books.newgame.service.Ff12WeaponChoice;
 import hu.zagor.gamebooks.ff.mvc.book.newgame.controller.FfBookNewGameController;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +28,7 @@ public class Ff12BookNewGameController extends FfBookNewGameController {
      */
     @RequestMapping(value = PageAddresses.BOOK_NEW + "/" + PageAddresses.BOOK_GENERATE_CHARACTER + "2")
     @ResponseBody
-    public void handleGenerate2(final HttpServletRequest request, final Object userSelection) {
+    public void handleGenerate2(final HttpServletRequest request, final Ff12WeaponChoice userSelection) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final Ff12Character character = (Ff12Character) wrapper.getCharacter();
         final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();

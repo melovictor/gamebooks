@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 public class Ff12Character extends FfCharacter {
     private int armour;
     private int initialArmour;
+    private int initialWeapons;
 
     public int getArmour() {
         return armour;
@@ -28,6 +29,14 @@ public class Ff12Character extends FfCharacter {
 
     public void setInitialArmour(final int initialArmour) {
         this.initialArmour = initialArmour;
+    }
+
+    public int getInitialWeapons() {
+        return initialWeapons;
+    }
+
+    public void setInitialWeapons(final int initialWeapons) {
+        this.initialWeapons = initialWeapons;
     }
 
 }

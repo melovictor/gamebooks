@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class Ff12CharacterGenerator implements CharacterGenerator {
+    private static final int PRICE_MULTIPLIER = 3;
     private static final int DICE_SIDE = 6;
     private static final int ARMOR_DEFAULT = 6;
 
@@ -33,6 +34,7 @@ public class Ff12CharacterGenerator implements CharacterGenerator {
 
         character.setArmour(armour[0]);
         character.setInitialArmour(armour[0]);
+        character.setInitialWeapons(weapons[0]);
 
         generateCharacter.put("ffArmour", character.getInitialArmour() + superGenerator.getDiceRenderer().render(DICE_SIDE, armour));
         generateCharacter.put("ffWeapons", weapons[0] + superGenerator.getDiceRenderer().render(DICE_SIDE, weapons));
@@ -47,7 +49,28 @@ public class Ff12CharacterGenerator implements CharacterGenerator {
      * @param weapons the weapons and armor selected by the user
      * @param characterHandler the {@link FfCharacterHandler} object
      */
-    public void finalizeCharacter(final Ff12Character character, final Object weapons, final FfCharacterHandler characterHandler) {
+    public void finalizeCharacter(final Ff12Character character, final Ff12WeaponChoice weapons, final FfCharacterHandler characterHandler) {
+        if (isValidSelection(character, weapons)) {
+            addItem(characterHandler, character, "1001", weapons.getLash());
+            addItem(characterHandler, character, "1002", weapons.getBlaster());
+            addItem(characterHandler, character, "3001", weapons.getGrenade());
+            addItem(characterHandler, character, "3002", weapons.getBomb());
+            character.setArmour(character.getArmour() + weapons.getArmour() * 2);
+            character.setInitialArmour(character.getArmour());
+        } else {
+            addItem(characterHandler, character, "1001", 1);
+        }
+    }
+
+    private void addItem(final FfCharacterHandler characterHandler, final Ff12Character character, final String itemId, final int itemAmount) {
+        if (itemAmount > 0) {
+            characterHandler.getItemHandler().addItem(character, itemId, itemAmount);
+        }
+    }
+
+    private boolean isValidSelection(final Ff12Character character, final Ff12WeaponChoice weapons) {
+        return weapons.getLash() + weapons.getArmour() + weapons.getGrenade() + weapons.getBlaster() * PRICE_MULTIPLIER
+            + weapons.getBomb() * PRICE_MULTIPLIER <= character.getInitialWeapons();
     }
 
     @Override

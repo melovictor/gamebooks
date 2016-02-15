@@ -15,8 +15,13 @@ var ff12 = (function() {
 		}
 	}
 	function finalizeCharacter() {
+		$("#electricLash,#assaultBlaster,#gravityBomb,#grenade,#armour").prop("disabled", true);
 		var data = {
-			spells : $("#spellCodes").val().trim()
+			lash : $("#electricLash:checked").length,
+			blaster : $("#assaultBlaster:checked").length,
+			bomb : $("#gravityBomb:checked").length,
+			grenade : parseInt($("#grenade").val()),
+			armour : parseInt($("#armour").val())
 		};
 		$.ajax({
 			url : "new/generate2",
@@ -26,10 +31,8 @@ var ff12 = (function() {
 			contentType : "application/json; charset=utf-8",
 			dataType : "json",
 			complete : function(data) {
-				$("[data-spell] span").unbind("click");
 				$("#choiceWrapper").show();
 				$("[data-generator-button='ff2']").hide();
-				$("#availableSpells").hide();
 				inventory.loadInventory();
 			}
 		});
