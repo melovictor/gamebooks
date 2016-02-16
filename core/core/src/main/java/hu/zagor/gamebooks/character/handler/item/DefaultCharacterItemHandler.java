@@ -67,8 +67,8 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
 
     private boolean canAddItem(final Character character, final Item item) {
         final int backpackSize = character.getBackpackSize();
-        int itemsInBackpack = 0;
-        int itemSize = 0;
+        double itemsInBackpack = 0;
+        double itemSize = 0;
 
         if (itemIsInBackpack(item)) {
             for (final Item ownedItem : character.getEquipment()) {

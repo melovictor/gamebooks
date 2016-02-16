@@ -6,10 +6,8 @@ import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.character.item.WeaponSubType;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import org.slf4j.Logger;
 import org.springframework.util.Assert;
 import org.w3c.dom.Document;
@@ -22,8 +20,7 @@ import org.w3c.dom.NodeList;
  */
 public abstract class AbstractBookItemTransformer extends AbstractTransformer implements BookItemTransformer {
 
-    @LogInject
-    private Logger logger;
+    @LogInject private Logger logger;
 
     @Override
     public Map<String, Item> transformItems(final Document document) throws XmlTransformationException {
@@ -65,7 +62,7 @@ public abstract class AbstractBookItemTransformer extends AbstractTransformer im
         final String name = extractAttribute(node, "name");
         final String type = extractAttribute(node, "type");
         final String subType = extractAttribute(node, "weaponSubType");
-        final int backpackSize = extractIntegerAttribute(node, "backpackSize", 1);
+        final double backpackSize = extractDoubleAttribute(node, "backpackSize", 1.0);
         ItemType itemType;
         WeaponSubType weaponSubType = null;
         try {

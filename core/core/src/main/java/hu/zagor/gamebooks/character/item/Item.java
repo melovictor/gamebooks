@@ -16,7 +16,7 @@ public class Item implements TrueCloneable {
     private int amount = 1;
     private WeaponSubType subType;
     private EquipInfo equipInfo;
-    private int backpackSize = 1;
+    private double backpackSize = 1;
     private String description;
 
     /**
@@ -115,11 +115,11 @@ public class Item implements TrueCloneable {
         this.amount = amount;
     }
 
-    public int getBackpackSize() {
+    public double getBackpackSize() {
         return backpackSize;
     }
 
-    public void setBackpackSize(final int backpackSize) {
+    public void setBackpackSize(final double backpackSize) {
         this.backpackSize = backpackSize;
     }
 

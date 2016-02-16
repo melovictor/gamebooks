@@ -52,6 +52,18 @@ public abstract class AbstractTransformer extends EscapingData implements BeanFa
     }
 
     /**
+     * Extracts a double attribute from the {@link Node}.
+     * @param node the {@link Node} bean from which we want to extract the attribute, cannot be null
+     * @param attributeName the name of the attribute, cannot be null
+     * @param defaultValue the default value to return if the given attribute isn't present
+     * @return the double value of the attribute if it exists or the default value if it doesn't
+     */
+    protected Double extractDoubleAttribute(final Node node, final String attributeName, final Double defaultValue) {
+        final String attribute = extractAttribute(node, attributeName, null);
+        return attribute == null ? defaultValue : Double.valueOf(attribute);
+    }
+
+    /**
      * Extracts a boolean attribute from the {@link Node}.
      * @param node the {@link Node} bean from which we want to extract the attribute, cannot be null
      * @param attributeName the name of the attribute, cannot be null
