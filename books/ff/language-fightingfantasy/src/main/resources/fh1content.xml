@@ -87,7 +87,14 @@
     <next id="77" pos="3">Vagy a jobb oldali nyílást</next>
     <next id="39" pos="4">De megvizsgálhatod a kis hulladékkupacot is</next>
   </p>
-  <!-- 2 -->
+  <p id="2">
+    <text>
+        [p]A folyosó másik végen ismét egy nyílásfedélhez érsz.[/p]
+        [p class="centered"]T MÍNUSZ EGY PERC[/p]
+        [p]Felrántod a fedelet.[/p]
+    </text>
+    <next id="120"></next>
+  </p>
   <p id="3">
     <text>
         [p]A nyílásfedél túlsó oldalán egy kicsiny szobába jutsz. Vastag acélcsövek kígyóznak a padlótól a mennyezetig. Ezek miatt a csövek miatt érezted az előbb azt a meleget. Átmész a szobán, és résnyire kinyitod a továbbvezető tolóajtót. Belesel. Egy nagy, kényelmesen (mármint földönkívüliek számára kényelmesen) berendezett szobát látsz - furcsa díványok, székek és asztalok állnak benne. Zavaró kék fény világítja be a szobát. Odabent két apró rágcsálószerű lényt pillantasz meg, amint éppen egy elektronikus szerkentyűn matatnak valamit: két fossznik. Fehér laboratóriumi köpenyük és az apró orrukra tűzött piciny cvikkerek elárulják, hogy technikusokkal van dolgod. [/p]
@@ -118,12 +125,18 @@
         [p]A gravitációs bombában rejtőző mini fekete lyuk egy mikroszekundum alatt hangtalanul egy tökéletesen kerek nyílást vág a biztonsági ajtóba. A nyílás másik oldalán egy arctalan humanoid robot áll, kezében egy plazmavetővel. Szemmel láthatólag nem nagyon zavarta az iménti hatalmas rombolás. Nyugodtan felemeli fegyverét és rád céloz. Meg kell küzdened vele.[/p]
     </text>
     <loseItem id="3002" />
-    <fight type="shooting">
+    <fight type="shooting" preFight="false">
       <enemy id="1" />
     </fight>
     <next id="300"></next>
   </p>
-  <!-- 21 -->
+  <p id="21">
+    <text>
+        [p]Végigrohansz a folyosón, közben ügyesen kerülgeted  a csöveket és kábeleket. A gépi hang ott zúg a füledben:[/p]
+        [p class="centered"]T MÍNUSZ ÖT PERC[/p]
+    </text>
+    <next id="353"></next>
+  </p>
   <!-- 22 -->
   <!-- 23 -->
   <!-- 24 -->
@@ -134,7 +147,12 @@
   <!-- 29 -->
   <!-- 30 -->
   <!-- 31 -->
-  <!-- 32 -->
+  <p id="32">
+    <text>
+        [p]A biztonsági ajtó felületén semmi nyoma kilincsnek, vagy más nyitószerkezetnek. Mindössze egy kis lyukat fedezel fel mellette a falban.[/p]
+    </text>
+    <next id="155"></next>
+  </p>
   <!-- 33 -->
   <!-- 34 -->
   <!-- 35 -->
@@ -149,8 +167,20 @@
     <next id="141">Elveszed a szerkentyűt?</next>
     <next id="234">Vagy inkább itthagyod ezt az egészet?</next>
   </p>
-  <!-- 40 -->
-  <!-- 41 -->
+  <p id="40">
+    <text>
+        [p]Egy kör alakú szobában találod magad. A szemközti falon egy légzsilip ajtaját pillantod meg. Fölötte vastag, sárga betűs felirat: MENTŐKABIN.[/p]
+    </text>
+    <next id="116">Megpróbálsz beszállni a kabinba?</next>
+    <next id="154">Vagy inkább átkutatod a szobát?</next>
+  </p>
+  <p id="41">
+    <text>
+        [p]Felrántod az ajtót, és tüzet nyitsz a két fossznikra. Azokat teljesen felkészületlenül éri a támadás, így pillanatok alatt lemészárolod őket. Körbenézel a szobában, és észreveszel az egyik monitor mögött egy biztonsági ajtót.[/p]
+    </text>
+    <next id="79">Átmész rajta?</next>
+    <next id="117">Vagy előbb átkutatod a fossznikok holttestét?</next>
+  </p>
   <!-- 42 -->
   <!-- 43 -->
   <!-- 44 -->
@@ -167,7 +197,19 @@
   <!-- 55 -->
   <!-- 56 -->
   <!-- 57 -->
-  <!-- 58 -->
+  <p id="58">
+    <text>
+        [p]Egy kis nehézség árán sikerül kifeszítened a nyílást borító fémlemezt. Talán a karbantartó nyílás rossz tervezése vagy pongyola kivitelezése miatt (most már persze mindegy) egy köteg nagyfeszültségű vezeték dől a nyakadba.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="278"></next>
+      </success>
+      <failure>
+        <next id="93"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 59 -->
   <!-- 60 -->
   <!-- 61 -->
@@ -210,7 +252,23 @@
     <next id="134">Vagy inkább tovább kúszol az alagútban?</next>
   </p>
   <!-- 78 -->
-  <!-- 79 -->
+  <p id="79">
+    <text>
+        [p]Az ajtó áttörhetetlen, és kilincsnek vagy más egyéb nyitóberendezésnek semmi nyoma. Mindössze egy kicsiny lyukat fedezel fel mellette a falban.[/p]
+    </text>
+    <itemCheck type="section" id="117">
+      <have>
+        <text>
+            [p]Úgy döntesz, visszatérsz a szervizalagútba.[/p]
+        </text>
+        <next id="172"></next>
+      </have>
+      <dontHave>
+        <next id="117">Megpróbálod átkutatni az idegen lények holttestét, hátha rájössz az ajtó kinyitásának módjára?</next>
+        <next id="172">Vagy inkább visszatérsz a szervizalagútba?</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 80 -->
   <!-- 81 -->
   <!-- 82 -->
@@ -224,7 +282,13 @@
   <!-- 90 -->
   <!-- 91 -->
   <!-- 92 -->
-  <!-- 93 -->
+  <p id="93">
+    <text>
+        [p]Túl lassú a reakcióidőd! Későn ugrasz hátra, így egy 77 000 voltos vezeték hozzád ér. Szikrák csapnak fel, amint a páncélruhád megpróbálja semlegesíteni a hatalmas energiamennyiséget. Csökkentsd 1-gyel a PÁNCÉLZAT pontjaidat. Ennél a nyílásnál szemmel láthatólag nincs már mit keresni, így a másik karbantartó nyíláshoz fordulsz.[/p]
+    </text>
+    <add amount="-1" to="armour" />
+    <next id="77"></next>
+  </p>
   <!-- 94 -->
   <!-- 95 -->
   <!-- 96 -->
@@ -253,11 +317,34 @@
   <!-- 113 -->
   <!-- 114 -->
   <!-- 115 -->
-  <!-- 116 -->
-  <!-- 117 -->
+  <p id="116">
+    <text>
+        [p]Még egy perced van hátra. Felnyitod a kabin ajtaját és bemászol az alaposan kipárnázott ülésbe. Vadul rácsapsz a kilövőgombra, és a gyomrodban érzed, ahogy a kabin erősen gyorsulva elválik az űrhajótól. Megmenekültél! De a Cyrus elfogásával kapcsolatos terveid dugába dőltek. Amikor a [em]Vandervecken[/em] vakító villanással darabokra robban, a Cyrus által a szülőbolygód számára kitenyésztett halálos vírusok menthetetlenül szétszóródnak a légkörben.[/p]
+    </text>
+    <victory />
+  </p>
+  <p id="117">
+    <text>
+        [p]Átkutatod őket, de semmi érdekeset nem találsz, kivéve a fossznikok nyakában láncon lógó két apró, keskeny hengert. Mindkét henger oldalára piciny betűkkel a BIZ felirat van írva. Elteszed az egyiket.[/p]
+    </text>
+    <itemCheck type="section" id="79">
+      <have>
+        <next id="155"></next>
+      </have>
+      <dontHave>
+        <next id="32">Ha most meg akarod nézni a biztonsági ajtót</next>
+        <next id="172">Ha visszatérnél a szervizalagútba</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 118 -->
   <!-- 119 -->
-  <!-- 120 -->
+  <p id="120">
+    <text>
+        [p]Egy kör alakú szobában találod magad. A szemközti falon egy légzsilip ajtaját pillantod meg, fölötte vastag sárga betűkkel a MENTŐKABIN felirat olvasható. Előreugrasz, és megpróbálod kinyitni a zsilipajtót. A gépi hang könyörtelenül folytatja a visszaszámlálást. 6...5...4...[/p]
+    </text>
+    <next id="154"></next>
+  </p>
   <!-- 121 -->
   <!-- 122 -->
   <!-- 123 -->
@@ -303,8 +390,18 @@
   <!-- 151 -->
   <!-- 152 -->
   <!-- 153 -->
-  <!-- 154 -->
-  <!-- 155 -->
+  <p id="154">
+    <text>
+        [p]Sajnos túl sok időt vesztegettél el. Szirénák zúgnak, miközben a géphang befejezi a visszaszámlálást. A [em]Vandervecken[/em] vakító villanással atomjaira robban szét, veled együtt. Küldetésed gyászos véget ért.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="155">
+    <text>
+        [p]- Aha! - kiáltasz fel. - A fossznik nyakában lógó henger az ajtó kulcsa! - A hengert betolod az ajtó mellett található is lyukba, mire az ajtó halk sziszegéssel a mennyezetbe húzódik.[/p]
+    </text>
+    <next id="98"></next>
+  </p>
   <!-- 156 -->
   <!-- 157 -->
   <!-- 158 -->
@@ -321,7 +418,15 @@
   <!-- 169 -->
   <!-- 170 -->
   <!-- 171 -->
-  <!-- 172 -->
+  <p id="172">
+    <text>
+        [p]A folyosó kanyarogva halad az űrhajó belseje felé. Már egy jó ideje mászhatsz, amikor végül egy elágazáshoz érsz. Balra is és jobbra is egy hasonló alagút indul, míg veled szemben egy kis ajtót látsz, melyre a következő szöveg van írva:[/p]
+        [p class="centered"]VIGYÁZAT![br/]ÉLETVESZÉLY![br/]BELÉPÉS CSAK ENGEDÉLLYEL![/p]
+    </text>
+    <next id="175">Tovább folytathatod az utad a bal oldali alagútban</next>
+    <next id="59">Vagy a jobb oldali alagútban</next>
+    <next id="191">De ha úgy döntesz, be is mehetsz az ajtón</next>
+  </p>
   <!-- 173 -->
   <p id="174">
     <text>
@@ -345,7 +450,14 @@
   <!-- 188 -->
   <!-- 189 -->
   <!-- 190 -->
-  <!-- 191 -->
+  <p id="191">
+    <text>
+        [p]Az ajtó könnyedén nyílik. Szusszanás adja tudtodra, hogy egy kis légnyomáskülönbség volt a folyosó és az ajtó túloldalán fekvő helyiség között. Valószínűleg már régóta nem járt erre senki. Az ajtó egy hosszú, keskeny, alagútszerű szobára nyílik, melynek rikító színt kölcsönöznek a mennyezeten futó vörös világítócsövek. A szemközti falon, egy vibráló neon kereszt közepén egy dobozt látsz.[/p]
+    </text>
+    <next id="342">Megvizsgálod a dobozt?</next>
+    <next id="59">Vagy inkább kimész a szobából, és jobbra fordulsz?</next>
+    <next id="175">Vagy a balra vezető alagútban mászol tovább?</next>
+  </p>
   <!-- 192 -->
   <!-- 193 -->
   <!-- 194 -->
@@ -363,7 +475,9 @@
   <!-- 206 -->
   <!-- 207 -->
   <!-- 208 -->
-  <!-- 209 -->
+  <p id="209">
+    <empty />
+  </p>
   <!-- 210 -->
   <!-- 211 -->
   <!-- 212 -->
@@ -382,7 +496,24 @@
   <!-- 225 -->
   <!-- 226 -->
   <!-- 227 -->
-  <!-- 228 -->
+  <p id="228">
+    <itemCheck type="item" id="3001">
+      <have>
+        <text>
+            [p]Ha akarod, a nyílásfedél fedezékéből elhajíthatsz egy gránátot a robotra.[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [p]Küzdj meg a robottal.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <fight type="shooting">
+      <enemy id="1" />
+    </fight>
+    <next id="264"></next>
+  </p>
   <p id="229">
     <text>
         [p]A folyosó egy kör alakú szobában végződik, melynek közepén egy kar nélküli, háromlábú robot áll. A robot törzséből két elektromos korbács áll ki fenyegetően. Rikácsoló hangon megszólal: - Állj! Ellenőrzési pont.[/p]
@@ -411,7 +542,15 @@
   <!-- 242 -->
   <!-- 243 -->
   <!-- 244 -->
-  <!-- 245 -->
+  <p id="245">
+    <text>
+        [p]Lehúzod a kart - és ezzel egy végzetes áramkört zártál. A vörös fények hirtelen vad sebességgel vibrálni kezdenek, sziréna vijjog fel, és tompa dübörgés hallatszik a hajó gyomrából. Mély, gépi hang szólal meg:[/p]
+        [p class="centered"]REAKTORMAG KINYITVA[br /]VÉGZETES ÜZEMZAVAR T MÍNUSZ KETTŐ PERC MÚLVA[br /]VANDERVECKEN MEGSEMMISÜLÉSE T MÍNUSZ HAT PERC MÚLVA[/p]
+        [p]Rádöbbensz, mit tettél. Végigszáguldasz a szobán és beugrasz a nyílásba, amelyen át bejöttél.[/p]
+    </text>
+    <next id="21">A bal oldali alagútban mész tovább?</next>
+    <next id="281">Vagy a jobb oldaliban?</next>
+  </p>
   <!-- 246 -->
   <!-- 247 -->
   <!-- 248 -->
@@ -429,8 +568,32 @@
   <!-- 260 -->
   <!-- 261 -->
   <!-- 262 -->
-  <!-- 263 -->
-  <!-- 264 -->
+  <p id="263">
+    <text>
+        [p]Ahogy lehúzod a kart, a szoba vörös fényei lassan villogni kezdenek. Mély, fenyegető búgás hallatszik szinkronban a fényekkel. Lélegzetedet visszafojtva figyelsz néhány másodpercig, de semmi egyéb dolog nem történik. A fények és a hang továbbra is lüktetnek.[/p]
+    </text>
+    <next id="245">Meghúzhatod a másik kart is</next>
+    <next id="335">Vagy kimehetsz a szobából</next>
+  </p>
+  <p id="264">
+    <text>
+        [p]A robot összeomlik.
+    </text>
+    <itemCheck type="item" id="1002">
+      <dontHave>
+        <text>
+            Ha akarod, magadhoz veheted a robot [span class="takeItem" data-id="1002" data-amount="1"]plazmavetőjét[/span].
+        </text>
+      </dontHave>
+      <after>
+        <text>
+            Bemászol a szobába. A nagy csendben csak a robot mellkasában égő áramkörök pattogó hangját hallani. Különös, fulladó köhögés hallatszik az első cellából. Melyik cellát vizsgálod meg elsőként?[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="63">Az elsőt, amelyikből a köhögés hallatszik?</next>
+    <next id="318">Vagy a másodikat, ahonnan nem hallani semmit?</next>
+  </p>
   <!-- 265 -->
   <!-- 266 -->
   <!-- 267 -->
@@ -444,10 +607,23 @@
   <!-- 275 -->
   <!-- 276 -->
   <!-- 277 -->
-  <!-- 278 -->
+  <p id="278">
+    <text>
+        [p]Még idejében hátraugrasz, így sikerül elkerülnöd a kicsapó kábeleket, amint szikraesőt szórva a padlóra omlanak A nyílás nyilván nem vezet tovább, ezért megfordulsz, és megvizsgálod a másikat.[/p]
+    </text>
+    <next id="77"></next>
+  </p>
   <!-- 279 -->
   <!-- 280 -->
-  <!-- 281 -->
+  <p id="281">
+    <text>
+        [p]Rohanvást kerülgeted a folyosó oldalán kígyózó csöveket. A hang közben folytatja:[/p]
+        [p class="centered"]VÉGSŐ MEGSEMMISÍTÉS T MÍNUSZ ÖT PERC MÚLVA[/p]
+        [p]A folyosó egy apró nyílásfedélben végződik, amelyet futás közben kétségbeesetten felrántasz. Egy nyolcszögű szobába jutsz, melynek falait padlótól mennyezetig elektronikus áramkörök és egyéb elektronikus eszközök borítják. Szemmel láthatóan nincs más kijárat a szobából, csak az, amelyiken bejöttél.[/p]
+    </text>
+    <next id="317">Megpróbálod átkutatni a szobát, hátha találsz valami rejtett kijáratot?</next>
+    <next id="353">Vagy inkább megfordulsz, és visszarohansz az alagúton a másik irányba?</next>
+  </p>
   <!-- 282 -->
   <!-- 283 -->
   <!-- 284 -->
@@ -465,7 +641,13 @@
   <!-- 296 -->
   <!-- 297 -->
   <!-- 298 -->
-  <!-- 299 -->
+  <p id="299">
+    <text>
+        [p]Ahogy lehúzod a kart, a szoba vörös fényei lassan villogni kezdenek. Mély, fenyegető búgás hallatszik szinkronban a fényekkel. Lélegzetedet visszafojtva figyelsz néhány másodpercig, de semmi egyéb dolog nem történik. A fények és a hang továbbra is lüktetnek.[/p]
+    </text>
+    <next id="245">Meghúzhatod a másik kart is</next>
+    <next id="335">Vagy kimehetsz a szobából</next>
+  </p>
   <p id="300">
     <text>
         [p]Átlépsz az ajtóba robbantott nyíláson, és egy kis helyiségbe jutsz, melyből két apró cella nyílik. A padlón a robot szétlőtt teste füstölög.
@@ -502,7 +684,16 @@
   <!-- 314 -->
   <!-- 315 -->
   <!-- 316 -->
-  <!-- 317 -->
+  <p id="317">
+    <text>
+        [p]Ismét felcsattan a hang:[/p]
+        [p class="centered"]T MÍNUSZ NÉGY PERC[/p]
+        [p]Vadul berontasz a szobába, és kétségbeesetten kutatni kezdesz. A hang ismét megszólal:[/p]
+        [p class="centered"]T MÍNUSZ HÁROM PERC[/p]
+        [p]Úgy döntesz, inkább feladod az értelmetlen kutatást, megfordulsz, és visszarohansz a folyosón a másik irányba.[/p]
+    </text>
+    <next id="2"></next>
+  </p>
   <p id="318">
     <text>
         [p class="inlineImage"][img src="resources/ff12/318.jpg" /][/p]
@@ -521,5 +712,60 @@
         <next id="134">Ha kimész a szobából a szervizalagúton át</next>
       </dontHave>
     </itemCheck>
+  </p>
+  <!-- 319 -->
+  <!-- 320 -->
+  <!-- 321 -->
+  <!-- 322 -->
+  <!-- 323 -->
+  <!-- 324 -->
+  <!-- 325 -->
+  <!-- 326 -->
+  <!-- 327 -->
+  <!-- 328 -->
+  <!-- 329 -->
+  <!-- 330 -->
+  <!-- 331 -->
+  <!-- 332 -->
+  <!-- 333 -->
+  <!-- 334 -->
+  <p id="335">
+    <text>
+        [p]Merre indulsz tovább?[/p]
+    </text>
+    <next id="59">Jobbra?</next>
+    <next id="175">Vagy balra?</next>
+  </p>
+  <!-- 336 -->
+  <!-- 337 -->
+  <!-- 338 -->
+  <!-- 339 -->
+  <!-- 340 -->
+  <!-- 341 -->
+  <p id="342">
+    <text>
+        [p]Keresztülmész a szobán, és kinyitod a dobozt. A dobozban kél nagy, fekete fogantyú fekszik egymás mellett.[/p]
+    </text>
+    <next id="263">Meghúzod a bal oldalit?</next>
+    <next id="299">Meghúzod a jobb oldalit?</next>
+    <next id="335">Vagy inkább kimész a szobából?</next>
+  </p>
+  <!-- 343 -->
+  <!-- 344 -->
+  <!-- 345 -->
+  <!-- 346 -->
+  <!-- 347 -->
+  <!-- 348 -->
+  <!-- 349 -->
+  <!-- 350 -->
+  <!-- 351 -->
+  <!-- 352 -->
+  <p id="353">
+    <text>
+        [p]Rohansz az ismeretlen alagútban. Ismét felcsattan a hang:[/p]
+        [p class="centered"]T MÍNUSZ HÁROM PERC[/p]
+        [p]Az alagút végén ismét egy karbantartó nyíláshoz érsz. Kétségbeesetten felrántod.[/p]
+    </text>
+    <next id="40"></next>
   </p>
 </content>
