@@ -94,9 +94,17 @@ public class UserSettingsController extends LanguageAwareController {
 
     private void updatePlayerSettings(final PlayerUser player, final Map<String, String[]> parameterMap) {
         final PlayerSettings settings = player.getSettings();
+
         for (final Entry<String, String[]> entry : parameterMap.entrySet()) {
             settings.put(entry.getKey(), entry.getValue()[0]);
         }
+
+        for (final Entry<String, String> entry : settings.entrySet()) {
+            if (!parameterMap.containsKey(entry.getKey())) {
+                entry.setValue("false");
+            }
+        }
+
         userSettingsHandler.saveSettings(player);
     }
 

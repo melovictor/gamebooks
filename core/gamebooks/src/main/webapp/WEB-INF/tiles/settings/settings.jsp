@@ -45,19 +45,19 @@
 		</div>
 	</c:if>
 	<div id="settings-container">
-	<c:forEach items="${settings}" var="settingGroup">
-		<c:if test="${!settingGroup.adminOnly || player.admin}">
-			<h3><spring:message code="${settingGroup.groupNameKey}" /></h3>
-			<c:forEach items="${settingGroup.settingEntries}" var="settingItem">
-				<c:choose>
-					<c:when test="${settingItem.settingType == 'checkbox'}">
-						<div class="settings-checkbox">
-							<input type="checkbox" name="${settingItem.settingKey}" data-settings-checkbox id="${settingItem.settingKey}" value="true" ${userSettings[settingItem.settingKey] == 'true' ? "checked='checked'": ""} />
-							<label for="${settingItem.settingKey}">
-								<spring:message code="${settingItem.settingNameKey}" />
-							</label>
-						</div>
-					</c:when>
+		<c:forEach items="${settings}" var="settingGroup">
+			<c:if test="${!settingGroup.adminOnly || player.admin}">
+				<h3><spring:message code="${settingGroup.groupNameKey}" /></h3>
+				<c:forEach items="${settingGroup.settingEntries}" var="settingItem">
+					<c:choose>
+						<c:when test="${settingItem.settingType == 'checkbox'}">
+							<div class="settings-checkbox">
+								<input type="checkbox" name="${settingItem.settingKey}" data-settings-checkbox id="${settingItem.settingKey}" value="true" ${userSettings[settingItem.settingKey] == 'true' ? "checked='checked'": ""} />
+								<label for="${settingItem.settingKey}">
+									<spring:message code="${settingItem.settingNameKey}" />
+								</label>
+							</div>
+						</c:when>
 						<c:when test="${settingItem.settingType == 'radio'}">
 							<div class="settings-radio">
 								<spring:message code="${settingItem.settingNameKey}" />
@@ -94,15 +94,16 @@
 								</div>
 							</div>
 						</c:when>
-					<c:otherwise>
-						I don't know how to render this settings element: ${settingItem.settingNameKey}, ${settingItem.settingType }.
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-		</c:if>
-	</c:forEach>
-	<div class="settings-buttons">
+						<c:otherwise>
+							I don't know how to render this settings element: ${settingItem.settingNameKey}, ${settingItem.settingType }.
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+			</c:if>
+		</c:forEach>
+		<div class="settings-buttons">
 			<input type="submit" value="<spring:message code='page.settings.button.save' text='Save settings' />" />
+		</div>
 	</div>
-	</div>
+	<input type="hidden" name="global.defaultLanguage" value="${userSettings['global.defaultLanguage']}" />
 </form>
