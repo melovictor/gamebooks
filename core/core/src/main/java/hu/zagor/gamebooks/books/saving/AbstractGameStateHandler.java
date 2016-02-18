@@ -82,7 +82,7 @@ public abstract class AbstractGameStateHandler implements GameStateHandler, Bean
     private boolean saveGamePositionIsCorrect(final SavedGameContainer container, final String previousBookLastSectionId) {
         loadGame(container);
         final Paragraph paragraph = (Paragraph) container.getElement(ControllerAddresses.PARAGRAPH_STORE_KEY);
-        return previousBookLastSectionId.equals(paragraph.getId());
+        return paragraph != null && previousBookLastSectionId.equals(paragraph.getId());
     }
 
     @Override
