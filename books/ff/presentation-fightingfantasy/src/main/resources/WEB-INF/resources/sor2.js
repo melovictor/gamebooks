@@ -11,18 +11,18 @@ var sor2 = (function() {
 	}
 	function enableBetValue(step) {
 		var $bet = $("#bet");
-		$bet.removeAttr("disabled");
+		$bet.prop("disabled", false);
 		$bet.val(step);
 		var totalGold = $("[data-attribute-gold]").text();
 		$bet.attr("step", step);
 		$bet.attr("max", totalGold);
-		$("#doBet").removeAttr("disabled");
+		$("#doBet").prop("disabled", false);
 	}
 	function disableBetValue() {
 		var $bet = $("#bet");
-		$bet.attr("disabled", "disabled");
+		$bet.prop("disabled", true);
 		$bet.val(0);
-		$("#doBet").attr("disabled", "disabled");
+		$("#doBet").prop("disabled", true);
 	}
 	function initBetting() {
 		$("#ogre").on("click", enableBetValue3);
@@ -31,7 +31,7 @@ var sor2 = (function() {
 		$("#doBet").on("click", doBet);
 	}
 	function doBet() {
-		$("#doBet,#ogre,#barbarian,#bet,#noone").attr("disabled", "disabled");
+		$("#doBet,#ogre,#barbarian,#bet,#noone").prop("disabled", true);
 		var betValue = $("#bet").val();
 		var participant = 4025 + $("#barbarian:checked").length;
 		$.ajax({
