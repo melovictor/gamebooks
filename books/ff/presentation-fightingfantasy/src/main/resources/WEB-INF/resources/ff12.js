@@ -11,7 +11,7 @@ var ff12 = (function() {
 			$("[data-price=3]").prop("disabled", true);
 			$("#electricLash").prop("checked", true);
 			uncheckableLash();
-			$("[data-generator-button='ff2']").removeAttr("disabled");
+			$("[data-generator-button='ff2']").prop("disabled", false);
 		}
 	}
 	function finalizeCharacter() {
@@ -36,7 +36,7 @@ var ff12 = (function() {
 				inventory.loadInventory();
 			}
 		});
-		$("[data-generator-button='ff2']").attr("disabled", "disabled").show();
+		$("[data-generator-button='ff2']").prop("disabled", true).show();
 	}
 	function uncheckableLash() {
 		$("#electricLash").on("change", function() {
@@ -55,9 +55,9 @@ var ff12 = (function() {
 		var selectedRequiredItems = $("[data-required]:checked");
 		var genButton = $("[data-generator-button='ff2']");
 		if (selectedRequiredItems.length > 0) {
-			genButton.removeAttr("disabled");
+			genButton.prop("disabled", false);
 		} else {
-			genButton.attr("disabled", "disabled");
+			genButton.prop("disabled", true);
 		}
 
 		
@@ -67,12 +67,13 @@ var ff12 = (function() {
 	}
 	function resetLastChange($t, currentCount) {
 		if ($t.attr("type") == "checkbox") {
-			$t.removeAttr("checked");
+			$t.prop("checked", false);
 		} else {
 			var diff = currentCount - maxWeapons;
 			var curVal = parseInt($t.val());
 			$t.val(curVal - diff);
 		}
+		verifyEquipments();
 	}
 
 	
