@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://gamebooks.zagor.hu" version="1.0" xmlns="http://gamebooks.zagor.hu">
+  <xs:element name="enemies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="enemy" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="enemy">
+    <xs:complexType>
+      <xs:attribute name="id" type="xs:string" use="required" />
+      <xs:attribute name="name" type="xs:string" use="required" />
+      <xs:attribute name="skill" type="xs:integer" use="required" />
+      <xs:attribute name="stamina" type="xs:integer" use="required" />
+      <xs:attribute name="staminaDamage" type="xs:integer" default="2" />
+      <xs:attribute name="skillDamage" type="xs:integer" default="0" />
+      <xs:attribute name="weapon" type="xs:string" default="1002" />
+      <xs:attribute name="attackPerRound" type="xs:integer" default="2" />
+
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
