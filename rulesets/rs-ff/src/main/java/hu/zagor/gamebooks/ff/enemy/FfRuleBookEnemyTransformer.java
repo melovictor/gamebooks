@@ -56,8 +56,13 @@ public class FfRuleBookEnemyTransformer extends AbstractTransformer implements B
         return "enemy".equals(childNode.getNodeName());
     }
 
-    private FfEnemy parseEnemy(final Node node) {
-        final FfEnemy enemy = new FfEnemy();
+    /**
+     * Parses a single enemy based on the {@link Node} provided.
+     * @param node the {@link Node} to parse the enemy from
+     * @return the parsed object
+     */
+    protected FfEnemy parseEnemy(final Node node) {
+        final FfEnemy enemy = createEnemyObject();
 
         enemy.setId(extractAttribute(node, "id"));
         enemy.setName(extractAttribute(node, "name"));
@@ -87,5 +92,13 @@ public class FfRuleBookEnemyTransformer extends AbstractTransformer implements B
         enemy.setStartAtRound(extractIntegerAttribute(node, "startAtRound", 1));
 
         return enemy;
+    }
+
+    /**
+     * Returns an empty, appropriate {@link FfEnemy} instance.
+     * @return the {@link FfEnemy} instance to populate
+     */
+    protected FfEnemy createEnemyObject() {
+        return new FfEnemy();
     }
 }
