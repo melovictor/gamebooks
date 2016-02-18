@@ -23,7 +23,7 @@ var ff = (function() {
 		var $defPotion = $("#ffDefaultPotion");
 		var data = baseData ? baseData : {};
 		if ($defPotion) {
-			$defPotion.attr("disabled", "disabled");
+			$defPotion.prop("disabled", true);
 			data.potion = $defPotion.val();
 		}
 		data.other = "else";
@@ -44,7 +44,7 @@ var ff = (function() {
 				$("[data-step='1']").trigger("stepFinished", data);
 			}
 		});
-		$("[data-generator-button]").attr("disabled", "disabled");
+		$("[data-generator-button]").prop("disabled", true);
 	}
 
 	function attributeTest() {

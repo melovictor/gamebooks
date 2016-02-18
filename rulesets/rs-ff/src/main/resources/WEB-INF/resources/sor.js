@@ -1,6 +1,6 @@
 var sor = (function() {
 	function generateCharacter() {
-		$("[name='caste']").attr("disabled", "disabled");
+		$("[name='caste']").prop("disabled", true);
 		ff.sendGenerationRequest(null, {
 			caste : $("[name='caste']:checked").val()
 		});
@@ -11,7 +11,7 @@ var sor = (function() {
 	}
 	
 	function resetAttribute() {
-		$("[data-libra-reset]").attr("disabled", "disabled");
+		$("[data-libra-reset]").prop("disabled", true);
 		$.ajax({
 			url : "libraReset",
 			type : "get",
@@ -25,7 +25,7 @@ var sor = (function() {
 	function startRemoveCurseSickness() {
 		doingRemoval = true;
 		$(".sorCursesFullWidth").addClass("removing");
-		$("[data-libra-curseremoval]").attr("disabled", "disabled");
+		$("[data-libra-curseremoval]").prop("disabled", true);
 	}
 	function removeSpecificCurseSickness() {
 		doingRemoval = false;
