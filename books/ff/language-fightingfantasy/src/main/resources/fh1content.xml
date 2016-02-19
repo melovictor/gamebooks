@@ -367,7 +367,13 @@
     <next id="229">Vagy továbbmész a folyosón?</next>
   </p>
   <!-- 99 -->
-  <!-- 100 -->
+  <p id="100">
+    <text>
+        [p]A folyosó tovább halad az űrhajó belseje felé, végül bal kéz felől ismét egy ajtóhoz érkezel.[/p]
+    </text>
+    <next id="138">Kinyitod az ajtót?</next>
+    <next id="267">Vagy továbbmész a folyosón?</next>
+  </p>
   <!-- 101 -->
   <!-- 102 -->
   <p id="103">
@@ -451,13 +457,22 @@
   </p>
   <!-- 136 -->
   <!-- 137 -->
-  <!-- 138 -->
+  <p id="138">
+    <text>
+        [p]A szobában csillogó, krómozott rudakra felfüggesztett űrruhák sorakoznak. Ahogy átléped a küszöböt, a terem végéből egy tányér nagyságú fekete fémkorong suhan feled szédületes sebességgel. Az utolsó pillanatban lebuksz, de a korong borotvaéles pereme így is levágja a sisakodból kiálló egyik antennát. A korong éles fordulót tesz, és ismét neked ront, ezúttal egyenesen a torkod felé repül. Kénytelen vagy szétlőni.[/p]
+    </text>
+    <fight type="shooting" preFight="false">
+      <enemy id="5" />
+    </fight>
+    <next id="195"></next>
+  </p>
   <!-- 139 -->
   <!-- 140 -->
   <p id="141">
     <text>
         [p]A szerkentyű egy kicsiny fekete négyzet, közepén egy nagy piros gombbal. A belőle kivezető drótok egy hordozható energiatelephez vannak kötve. Amikor megnyomod a gombot, semmi sem történik. Mivel még egy jó pár kis nyúlványt és csatlakozó aljzatot látsz az energiatelepen, úgy ítéled meg, a készülék még nincs teljesen összeállítva. Elteszed a zsákodba. Itthagyod az idegen lényt. Melyik nyílásfedelet vizsgálod meg először?[/p]
     </text>
+    <gatherItem id="3008" />
     <next id="58">A bal oldalit?</next>
     <next id="77">Vagy a jobb oldalit?</next>
   </p>
@@ -571,7 +586,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 195 -->
+  <p id="195">
+    <text>
+        [p]Egy jól irányzott lövéssel apró szilánkokra robbantod a korongot. Körbenézel a szobában. Az űrruhák nem valami hasznosak a számodra, mivel már van neked, de a sor végén találsz egy öltözetet, amelyet azonnal felismersz: harci páncélruha. A ruha könnyű szálú polimerből készült, ez az anyag hihetetlen módon ellenáll mindenféle támadásnak és energianyalábnak. [/p]
+    </text>
+    <next id="231">Ha felveszed a ruhát</next>
+    <next id="267">Ha itthagyod, a bejárati ajtón keresztül elhagyod a szobát, és továbbmész a folyosón</next>
+  </p>
   <!-- 196 -->
   <!-- 197 -->
   <!-- 198 -->
@@ -599,12 +620,17 @@
     <text>
         [p]A harc során a robot minden körben kétszer fog lőni. Mindegyik lövés 2 pontot vesz le az ÉLETERŐDBŐL.[/p]
     </text>
-    <fight type="shooting">
+    <fight type="shooting" preFight="false">
       <enemy id="2" />
     </fight>
     <next id="247"></next>
   </p>
-  <!-- 212 -->
+  <p id="212">
+    <text>
+        [p]Gondosan célzott lövésed azonnal megöli a férfit. A lövés ereje a padlóra lökte a holtestet.[/p]
+    </text>
+    <next id="248"></next>
+  </p>
   <!-- 213 -->
   <!-- 214 -->
   <!-- 215 -->
@@ -646,7 +672,14 @@
     <next id="211">Vagy pedig egyszerűen magtámadod?</next>
   </p>
   <!-- 230 -->
-  <!-- 231 -->
+  <p id="231">
+    <text>
+        [p]Lecseréled az űrruhádat erre a vadonatúj harci páncélruhára - a PÁNCÉLZAT pontjaid ezze 14-re növekedtek. De mivel ez az új ruha vastagabb, és merevebb, mint a régi, egy kicsit esetlenebbül mozogsz benne: az ÜGYESSÉGED 1-gyel csökken. Távozol a szobából, és továbbmész a folyosón.[/p]
+    </text>
+    <add amount="14" to="armour" type="set" />
+    <add amount="-1" to="skill" />
+    <next id="267"></next>
+  </p>
   <!-- 232 -->
   <!-- 233 -->
   <p id="234">
@@ -684,7 +717,12 @@
     <next id="80">Vagy kimész a szemközti ajtón?</next>
     <next id="319">Vagy az oldalsó ajtón?</next>
   </p>
-  <!-- 248 -->
+  <p id="248">
+    <text>
+        [p]Bemászol a nyílásból a szobába, körbenézel, majd nekilátsz átkutatni a technikus holttestét. A szoba tele van olyan kis elektronikus mérőműszerekkel, amelyeket nagy bonyolultságú elektronikus gépek javításánál és karbantartásánál szoktak használni. Egyikük sem tűnik hasznosnak a számodra. Az egyetlen tárgy, ami felkelti az érdeklődésedet, egy apró, keskeny [span class="takeItem" data-id="3004" data-amount="1"]henger[/span], amelyet a technikus a nyakán viselt egy hosszú láncon. Arra gondolván, hogy ez nyilván egy kulcs lesz, odamész a biztonsági ajtóhoz, és beilleszted a hengert az ajtó mellett lévő kis lyukba. Az ajtó kinyílik.[/p]
+    </text>
+    <next id="356"></next>
+  </p>
   <!-- 249 -->
   <!-- 250 -->
   <!-- 251 -->
@@ -726,8 +764,110 @@
     <next id="318">Vagy a másodikat, ahonnan nem hallani semmit?</next>
   </p>
   <!-- 265 -->
-  <!-- 266 -->
-  <!-- 267 -->
+  <p id="266">
+    <text>
+        [p]A nyílás egy szűk szobába vezet, melyben könyvek és apró elektronikus ketyerék hevernek szanaszéjjel. A szoba közepén egy ágy, az ágyon pedig egy fehér overallos férfi hever. Az arcát a tenyerébe temetve hanyatt fekszik, a derekánál egy elektronikus szalag rögzíti az ágyhoz. A szobában teljes csend honol. Úgy tűnik, a férfi nem vett észre téged. A szemközti falból nyíló biztonsági ajtó az egyetlen kijárat a szobából. Mit teszel?[/p]
+    </text>
+    <next id="302">Megtámadod?</next>
+    <next id="320">Fenyegetőleg lépsz fel, hogy kinyerj belőle valamilyen információt?</next>
+    <next id="284">Megszólítod, és barátságosan viselkedsz vele szemben?</next>
+  </p>
+  <p id="267">
+    <text>
+        [p]A folyosó sokáig halad egyenes irányban, majd élesen elfordul. Befordulsz, és egy kör alakú terembe jutsz, ahol is nyolc mini harci robottal találod szemközt magad. Ezek a apró gépek csak 30 centiméter magasak, de fel vannak fegyverezve, és páncélzattal is ellátták őket. Általában négyesével szoktak előfordulni, és olyan területek védelmére használják őket, ahová nagyobb, értékesebb (vagy esetleg gyávább) robotokat nem küldenének. Villámgyorsan visszaugrasz a folyosókanyarulat fedezékébe. A mini robotok gyilkos tűzesővel utánad vetik magukat. Fel kell venned velük a harcot.
+    </text>
+    <itemCheck type="item" id="3002">
+      <have>
+        <itemCheck type="item" id="3001">
+          <have>
+            <text>
+                Ha akarsz, közéjük hajíthatsz egy gránátot.
+            </text>
+          </have>
+          <after>
+            <text>
+                A gravitációs bomba garantáltan elintézi mindnyájukat, ha közéjük akarsz egyet hajítani.[/p]
+            </text>
+          </after>
+        </itemCheck>
+        <next id="267a">Ha a gravitációs bombát akarod használni</next>
+        <next id="267b">Ha harcba bocsátkoznál velük</next>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="3001">
+          <have>
+            <text>
+                Ha akarsz, közéjük hajíthatsz egy gránátot.[/p]
+            </text>
+          </have>
+          <dontHave>
+            <text>
+                [/p]
+            </text>
+          </dontHave>
+        </itemCheck>
+        <fight type="shooting">
+          <enemy id="6" />
+          <enemy id="7" />
+          <enemy id="8" />
+          <enemy id="9" />
+          <enemy id="10" />
+          <enemy id="11" />
+          <enemy id="12" />
+          <enemy id="13" />
+        </fight>
+        <next id="303"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="267a" display="267">
+    <text>
+        [p]A folyosó sokáig halad egyenes irányban, majd élesen elfordul. Befordulsz, és egy kör alakú terembe jutsz, ahol is nyolc mini harci robottal találod szemközt magad. Ezek a apró gépek csak 30 centiméter magasak, de fel vannak fegyverezve, és páncélzattal is ellátták őket. Általában négyesével szoktak előfordulni, és olyan területek védelmére használják őket, ahová nagyobb, értékesebb (vagy esetleg gyávább) robotokat nem küldenének. Villámgyorsan visszaugrasz a folyosókanyarulat fedezékébe. A mini robotok gyilkos tűzesővel utánad vetik magukat. Fel kell venned velük a harcot.
+    </text>
+    <itemCheck type="item" id="3001">
+      <have>
+        <text>
+            Ha akarsz, közéjük hajíthatsz egy gránátot.
+        </text>
+      </have>
+      <after>
+        <text>
+            A gravitációs bomba garantáltan elintézi mindnyájukat, ha közéjük akarsz egyet hajítani.[/p]
+            [p]Felrobbantod a gravitációs bombát, ami azonnal végez ellenfeleiddel.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <loseItem id="3002" />
+    <next id="303"></next>
+  </p>
+  <p id="267b">
+    <text>
+        [p]A folyosó sokáig halad egyenes irányban, majd élesen elfordul. Befordulsz, és egy kör alakú terembe jutsz, ahol is nyolc mini harci robottal találod szemközt magad. Ezek a apró gépek csak 30 centiméter magasak, de fel vannak fegyverezve, és páncélzattal is ellátták őket. Általában négyesével szoktak előfordulni, és olyan területek védelmére használják őket, ahová nagyobb, értékesebb (vagy esetleg gyávább) robotokat nem küldenének. Villámgyorsan visszaugrasz a folyosókanyarulat fedezékébe. A mini robotok gyilkos tűzesővel utánad vetik magukat. Fel kell venned velük a harcot.
+    </text>
+    <itemCheck type="item" id="3001">
+      <have>
+        <text>
+            Ha akarsz, közéjük hajíthatsz egy gránátot.
+        </text>
+      </have>
+      <after>
+        <text>
+            A gravitációs bomba garantáltan elintézi mindnyájukat, ha közéjük akarsz egyet hajítani.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <fight type="shooting">
+      <enemy id="6" />
+      <enemy id="7" />
+      <enemy id="8" />
+      <enemy id="9" />
+      <enemy id="10" />
+      <enemy id="11" />
+      <enemy id="12" />
+      <enemy id="13" />
+    </fight>
+    <next id="303"></next>
+  </p>
   <!-- 268 -->
   <!-- 269 -->
   <!-- 270 -->
@@ -765,7 +905,12 @@
     <next id="385">A zöldet?</next>
     <next id="376">Vagy a pirosat?</next>
   </p>
-  <!-- 284 -->
+  <p id="284">
+    <text>
+        [p]- Khm, khm... - Megköszörülöd a torkodat, és hanyag mozdulattal az ágy szélére támaszkodsz. A férfi villámgyorsan felül, és rád bámul. Nagyon izgatottnak látszik. Elmagyarázod neki, hogy békések a szándékaid. Néhány másodperc múlva a férfi arckifejezése megenyhül. Elmondja, hogy ő az űrhajón a robotok karbantartásáért felelős technikus. Cyrus iránti gyűlölete már az első pillanatban nyilvánvaló. Amikor megkérdezed, hogy miért utálja annyira Cyrust (tekintve, hogy neki dolgozik), elmondja, hogy némi „problémák” voltak a parancsnok robottal a hídon. Ennek a - legújabb típusú - robotnak nyilvánvalóan saját személyisége fejlődött ki, és megtagadja Cyrus parancsait, mivel úgy véli (mármint a robot), hogy a tudós őrült. Cyrus a technikust hibáztatja ezért, és megparancsolta, hogy kapcsolja ki a parancsnok robotot. A technikus azonban ennek az utasításnak egyáltalán nem örül, mivel szerinte ez gyilkosság lenne. - Az a gép él! - magyarázza. - Ha beszél vele, majd meglátja. Tud a saját maga létezéséről. - A beszélgetés után a technikus megmutatja, hogyan lehet a hajón lévő biztonsági ajtókat kinyitni egy kis elektronikus kulcs segítségével. Neked is adja a saját [span class="takeItem" data-id="3004" data-amount="1"]kulcsát[/span]. Kimész a szobából a biztonsági ajtón keresztül.[/p]
+    </text>
+    <next id="356"></next>
+  </p>
   <!-- 285 -->
   <!-- 286 -->
   <!-- 287 -->
@@ -814,7 +959,19 @@
     <add amount="-1" to="armour" />
     <next id="211"></next>
   </p>
-  <!-- 302 -->
+  <p id="302">
+    <text>
+        [p]Felemeled a fegyvered, és gondosan a férfira célzol - aki még mindig csendben és mozdulatlanul fekszik.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="212"></next>
+      </success>
+      <failure>
+        <next id="338"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 303 -->
   <!-- 304 -->
   <!-- 305 -->
@@ -863,12 +1020,17 @@
         [p]Az ajtó hangtalanul oldalt csúszik, és egy nagy laboratóriumot pillantasz meg mögötte. De nincs időd, hogy minden részletet szemügyre végy, mert a mennyezeten lévő egyik résből egy kicsiny ezüst gömb villan elő, és beléd lő egy lézersugarat. 1-gyel csökkent a PÁNCÉLZAT pontjaid száma. Meg kell küzdened a gömbbel.[/p]
     </text>
     <add amount="-1" to="armour" />
-    <fight type="shooting">
+    <fight type="shooting" preFight="false">
       <enemy id="3" />
     </fight>
     <next id="4"></next>
   </p>
-  <!-- 320 -->
+  <p id="320">
+    <text>
+        [p]- Ne mozdulj! - kiáltasz a férfira. Az lassan leengedi a kezét az arca elől, és karikás szemekkel rád bámul. Bemászol a szobába, és követeled, hogy mondja meg, merre vezet az út Cyrushoz. A férfi gúnyosan végigmér. - Menj ki azon az ajtón - közben a biztonsági ajtóra mutat. - Fordulj jobbra, és kövesd a folyosót. - Az ajtóhoz indulsz, de a férfi utánad szól: - Hé, erre szükséged lesz. - Egy apró, keskeny [span class="takeItem" data-id="3004" data-amount="1"]hengert[/span] dob feléd. - Ez az összes biztonsági ajtót nyitja. - Elkapod a kulcsot, az ajtóhoz lépsz, és beleilleszted a hengert az ajtó mellett lévő lyukba. Az ajtó kinyílik.[/p]
+    </text>
+    <next id="356"></next>
+  </p>
   <!-- 321 -->
   <!-- 322 -->
   <!-- 323 -->
@@ -894,7 +1056,15 @@
   <p id="337">
     <empty />
   </p>
-  <!-- 338 -->
+  <p id="338">
+    <text>
+        [p]Ahogy kibiztosítod a fegyveredet, az egyik kapcsoló hangosan kattan egyet. A férfi elkapja a kezeit az arca elől, és megpillantván téged, villámgyorsan lebukik az ágy mögé. A lövésed a falba fúródik. Aztán a sarokban lévő egyik kupacból ő is előhúz egy pisztolyt, és tűzpárbajba bocsátkozik veled.[/p]
+    </text>
+    <fight type="shooting" preFight="false">
+      <enemy id="4" />
+    </fight>
+    <next id="248"></next>
+  </p>
   <!-- 339 -->
   <!-- 340 -->
   <!-- 341 -->
