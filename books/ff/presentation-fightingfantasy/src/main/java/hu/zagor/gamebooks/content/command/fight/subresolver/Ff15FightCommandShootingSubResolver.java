@@ -10,7 +10,6 @@ import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver
 import hu.zagor.gamebooks.content.command.fight.roundresolver.Shooting15FightRoundResolver;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.ff.trok.character.Ff15Character;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +39,6 @@ public class Ff15FightCommandShootingSubResolver extends FightCommandBasicSubRes
         if (FightCommand.ATTACKING.equals(lastFightCommand)) {
             handleAttacking(command, resolvationData, resolveList);
         } else {
-            command.setBattleType("shooting-15");
             command.setOngoing(true);
         }
     }
