@@ -18,6 +18,6 @@
 
   <bean class="hu.zagor.gamebooks.domain.BookContentTransformers" id="ff12ContentTransformers" parent="defaultFfContentTransformers" c:enemyTransformer-ref="ff12RuleBookEnemyTransformer" />
 
-  <bean id="ff12CharacterHandler" parent="ffCharacterHandler" p:characterGenerator-ref="ff12CharacterGenerator" />
+  <bean id="ff12CharacterHandler" parent="ffCharacterHandler" p:characterGenerator-ref="ff12CharacterGenerator" p:attributeHandler-ref="ff12AttributeHandler" />
 
 </beans>
