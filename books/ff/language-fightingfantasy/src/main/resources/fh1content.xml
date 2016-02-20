@@ -124,7 +124,23 @@
     </text>
     <next id="213"></next>
   </p>
-  <!-- 7 -->
+  <p id="7">
+    <test against="stamina" diceConfig="3d6" success="lowerEquals">
+      <success>
+        <text>
+            [p]Sikeresen átúsztál a nyugati partra, de eléggé kimerültél, ezért vesztesz 1 ÉLETERŐ pontot.[/p]
+        </text>
+        <next id="214"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Az erőfeszítéstől vesztesz 1 ÉLETERŐ pontot.[/p]
+        </text>
+        <next id="45"></next>
+      </failure>
+    </test>
+    <add amount="-1" to="stamina" />
+  </p>
   <p id="8">
     <text>
         [p]Sikeresen megmenekültél a növénytől.[/p]
@@ -1532,35 +1548,14 @@
     <test against="stamina" diceConfig="3d6" success="lowerEquals">
       <success>
         <text>
-            [p]Sikeresen átúsztál a nyugati partra, de eléggé kimerültél, ezért vesztesz 1 ÉLETERŐ pontot.[/p]
+            [p]Sikerült átúsznod a folyót.[/p]
         </text>
-        <next id="214"></next>
+        <next id="127"></next>
       </success>
       <failure>
-        <text>
-            [p]Az erőfeszítéstől vesztesz 1 ÉLETERŐ pontot.[/p]
-        </text>
         <next id="45"></next>
       </failure>
     </test>
-    <add amount="-1" to="stamina" />
-  </p>
-  <p id="269">
-    <test against="stamina" diceConfig="3d6" success="lowerEquals">
-      <success>
-        <text>
-            [p]Sikeresen átúsztál a nyugati partra, de eléggé kimerültél, ezért vesztesz 1 ÉLETERŐ pontot.[/p]
-        </text>
-        <next id="214"></next>
-      </success>
-      <failure>
-        <text>
-            [p]Az erőfeszítéstől vesztesz 1 ÉLETERŐ pontot.[/p]
-        </text>
-        <next id="45"></next>
-      </failure>
-    </test>
-    <add amount="-1" to="stamina" />
   </p>
   <p id="270">
     <text>
