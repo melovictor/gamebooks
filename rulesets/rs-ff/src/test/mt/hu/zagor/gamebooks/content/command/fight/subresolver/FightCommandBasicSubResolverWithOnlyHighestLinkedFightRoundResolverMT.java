@@ -53,7 +53,7 @@ import org.testng.annotations.Test;
  * @author Tamas_Szekeres
  */
 @Test
-public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolverIT extends FfItTextResolvingTest {
+public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolverMT extends FfMtTextResolvingTest {
 
     private static final int[] TW25 = new int[]{7, 2, 5};
     private static final int[] TW16 = new int[]{7, 1, 6};

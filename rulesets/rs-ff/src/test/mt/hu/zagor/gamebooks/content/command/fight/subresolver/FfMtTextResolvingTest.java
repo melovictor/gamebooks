@@ -16,7 +16,7 @@ import org.springframework.context.HierarchicalMessageSource;
  * Base test class with text resolvation capabilities.
  * @author Tamas_Szekeres
  */
-public abstract class FfItTextResolvingTest {
+public abstract class FfMtTextResolvingTest {
 
     private final Locale locale = Locale.ENGLISH;
     private HierarchicalMessageSource messageSource;

@@ -79,7 +79,7 @@ import org.testng.annotations.Test;
  * @author Tamas_Szekeres
  */
 @Test
-public class FightCommandBasicSubResolverWithSingleFightRoundResolverIT extends FfItTextResolvingTest {
+public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends FfMtTextResolvingTest {
     private static final String TEXT = "This is the text in the round result.";
     private static final int[] TW16 = new int[]{7, 1, 6};
     private static final int[] TW43 = new int[]{7, 4, 3};
