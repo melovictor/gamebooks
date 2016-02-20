@@ -165,12 +165,39 @@
     </text>
     <next id="201"></next>
   </p>
-  <!-- 12 -->
-  <!-- 13 -->
+  <p id="12">
+    <text>
+        [p]A férfi kitágult szemekkel rád bámul, majd elájul. Gyorsan végigvizsgálod a laboratóriumot, de nem találsz semmi érdekeset. Kimész az ajtón.[/p]
+    </text>
+    <next id="327"></next>
+  </p>
+  <p id="13">
+    <text>
+        [p]A Tharn Hasonmás vereséget szenvedett.[/p]
+    </text>
+    <itemCheck type="section" id="31">
+      <have>
+        <text>
+            [p]Úgy döntesz, elhagyod a termet.[/p]
+        </text>
+        <next id="126"></next>
+      </have>
+      <dontHave>
+        <next id="31">Ha felélesztenéd az első kapszula lakóját is</next>
+        <next id="126">Ha kimész a teremből</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 14 -->
   <!-- 15 -->
   <!-- 16 -->
-  <!-- 17 -->
+  <p id="17">
+    <text>
+        [p]Felajánlod az állkapcsokat a főnöknek. Úgy tűnik, ez a cselekedeted mindenkinek a megelégedésére szolgált. A lények ismét táncolnak egy kicsit, énekelnek is hozzá valamit, minden bizonnyal a te nagylelkűségedről (bár egy kukkot sem értesz a nyelvükből).[/p]
+    </text>
+    <loseItem id="3019" />
+    <next id="368"></next>
+  </p>
   <!-- 18 -->
   <!-- 19 -->
   <p id="20">
@@ -223,7 +250,19 @@
     <next id="78">Dél felé?</next>
     <next id="64">Vagy inkább kelet felé?</next>
   </p>
-  <!-- 27 -->
+  <p id="27">
+    <text>
+        [p]Egy igen sűrű, szövevényes erdőbe jutottál. Irdatlan kúszónövények, vastag fák, érdes liánok kuszasága fogad. talajt páfrányok, apró bokrok és egyéb, nehezen áthatolható növényzet borítja. Nehezebbé válik a haladás.[/p]
+    </text>
+    <random>
+      <odd max="6" min="1">
+        <next id="173"></next>
+      </odd>
+      <even max="6" min="1">
+        <next id="65"></next>
+      </even>
+    </random>
+  </p>
   <!-- 28 -->
   <p id="29">
     <empty />
@@ -236,7 +275,16 @@
     <next id="106">Vagy úgy döntesz, hogy a lény veszélyes, így fenyegetően lépsz fel?</next>
     <next id="144">Vagy inkább megölöd?</next>
   </p>
-  <!-- 31 -->
+  <p id="31">
+    <text>
+        [p class="inlineImage"][img src="resources/ff12/31.jpg" /][/p]
+        [p]Beindítod az élesztő ciklust. Néhány perc múlva mocor-gás hallatszik belülről, majd a kapszula felnyílik. Egy hatalmas, pókszerű lény mászik ki - egy kicsit nagyobb a feje (relatíve), és kisebb a potroha, mint a pókoknak szokott, de ezzel együtt igen félelmetes látványt nyújt.[/p]
+    </text>
+    <next id="69">Megküzdesz vele?</next>
+    <next id="126">Elmenekülsz?</next>
+    <next id="107">Megpróbálsz kommunikálni vele?</next>
+    <next id="183">Vagy inkább átkutatod a zsákodat, hátha valami eszköz kapóra jön?</next>
+  </p>
   <p id="32">
     <text>
         [p]A biztonsági ajtó felületén semmi nyoma kilincsnek, vagy más nyitószerkezetnek. Mindössze egy kis lyukat fedezel fel mellette a falban.[/p]
@@ -245,7 +293,12 @@
   </p>
   <!-- 33 -->
   <!-- 34 -->
-  <!-- 35 -->
+  <p id="35">
+    <text>
+        [p]A főnök elveszi a gyümölcsöt, beleharap, és holtan terül el a földön. A többi lény egy pillanatig döbbenten áll, majd vad visítással a nyakadba ugranak. Apró, tűhegyes dárdáiknak nem tud sokáig ellenállni a páncélzatod. A földre rogysz, és elsötétül előtted a világ. Kalandod csúfos véget ért.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 36 -->
   <!-- 37 -->
   <!-- 38 -->
@@ -359,7 +412,13 @@
     <next id="125">Ha már itt vagy, megpróbálkozhatsz az előbb említett nyílásfedéllel</next>
     <next id="87">Vagy ismét a folyamra bízod magad, átlebegsz a másik rámpához, és megnézed az ottani ajtót</next>
   </p>
-  <!-- 50 -->
+  <p id="50">
+    <text>
+        [p]Egy pár kilométer megtétele után a járda egy hatalmas alumíniumkockába fut bele. A kocka igen furcsa módon a puszta levegőben lebeg. Ahogy közelebb érsz, észre veszed, hogy egy ajtó nyílik a ház méretű kocka oldalán. Nem látod, hogy a járda folytatódik-e a kockán túl.[/p]
+    </text>
+    <next id="88">Bemész az ajtón?</next>
+    <next id="345">Vagy inkább visszafordulsz, és a bal oldali leágazást választod?</next>
+  </p>
   <!-- 51 -->
   <!-- 52 -->
   <!-- 53 -->
@@ -444,7 +503,15 @@
     <next id="158">Délnek?</next>
     <next id="102">Vagy keletnek?</next>
   </p>
-  <!-- 65 -->
+  <p id="65">
+    <text>
+        [p]Egy nagy kúszónövény bukkan fel az egyik fa mögött, és rátekeredik a lábadra. Amikor megállsz, hogy kiszabadítsd magad, egy másik növény mászik rád, ezúttal a nyakad köré. Újabb és újabb liánok tűnnek fel, tekerednek rád, és szorongatnak ellenállhatatlan erővel. Ha nem vágod ki magad, perceken belül megfojtanak! Vadul lövöldözni kezdesz a növényekre. A fojtogató növényzet a harc minden körében 2 ponttal csökkenti az ÉLETERŐDET.[/p]
+    </text>
+    <fight type="shooting" preFight="false">
+      <enemy id="23" />
+    </fight>
+    <next id="173"></next>
+  </p>
   <!-- 66 -->
   <p id="67">
     <empty />
@@ -455,8 +522,32 @@
     </text>
     <next id="163"></next>
   </p>
-  <!-- 69 -->
-  <!-- 70 -->
+  <p id="69">
+    <text>
+        [p]Úgy tűnik, meglepted a szörnyet; nyolc szemével döbbenten néz rád, majd, miután az első találatot elszenvedte, gyorsan visszamászik a kapszulába, és magára csukja az ajtót.[/p]
+    </text>
+    <itemCheck type="section" id="274">
+      <have>
+        <text>
+            [p]Úgy döntesz, elhagyod a termet.[/p]
+        </text>
+        <next id="126"></next>
+      </have>
+      <dontHave>
+        <next id="274">Ha most életre kelted a második kapszula lakóját is</next>
+        <next id="126">Ha inkább elhagyod a termet</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="70">
+    <text>
+        [p]Ezúttal szerencséd volt. A járda egy kicsit bekanyarodik, majd egy masszív, szürke falban ér véget. Úgy látod, a hatalmas szürke fal egészen az idegen tájig nyúlik le. Átmész a járda végén lévő ajtón, és egy szobában találod magad, melynek funkciója azonnal nyilvánvaló: ellenőrzőpont. Két kupola alakú sisakot viselő őr ül egy vezérlőpult előtt. Mindketten fekete egyenruhát viselnek, a hozzá illő szíjakkal, csizmákkal és oldalfegyverekkel. Éppen az Epszilon-Indiről érkező közvetlen telehívással vannak elfoglalva. Mind a tíz ellenőrző monitoron ugyanaz a kép látható: az őrök ugyanis meccset néznek. Egy emberként ugranak talpra, amint belépsz. Tiszta egyenruhájukon megcsillan a monitorok fénye, miközben hivatalos testtartást vesznek fel.[/p]
+        [p]- Ki vagy? - kérdezik gyanakodva.[/p]
+    </text>
+    <next id="108">Harcba bocsátkozol velük?</next>
+    <next id="146">Megpróbálsz kitalálni valami mesét, hogy az űrhajó személyzetéhez tartozol?</next>
+    <next id="184">Vagy végigkutatod a zsákodat, valami alkalmas tárgy után keresvén?</next>
+  </p>
   <!-- 71 -->
   <!-- 72 -->
   <!-- 73 -->
@@ -537,7 +628,14 @@
     </text>
     <next id="11"></next>
   </p>
-  <!-- 88 -->
+  <p id="88">
+    <text>
+        [p class="inlineImage"][img src="resources/ff12/88.jpg" /][/p]
+        [p]Kinyitod az ajtót, és rádöbbensz, hogy a kocka nem más, mint egy alaposan izolált terem, melyben vagy száz kriogenikus alvókapszula sorakozik - nagy fehér burkok, sor sor után, fagyos (szó szerint!) csöndben. Közelebbről megvizsgálod őket, és felfedezed, hogy az összes közül csak két kapszula működik.[/p]
+    </text>
+    <next id="164">Megpróbálod feléleszteni az egyik kapszula lakóját?</next>
+    <next id="126">Vagy inkább itthagyod ezt a vészjósló termet?</next>
+  </p>
   <!-- 89 -->
   <!-- 90 -->
   <!-- 91 -->
@@ -616,9 +714,30 @@
     </text>
     <next id="163"></next>
   </p>
-  <!-- 107 -->
-  <!-- 108 -->
-  <!-- 109 -->
+  <p id="107">
+    <text>
+        [p]Lengetni kezded a karjaidat, és körbeforgatod a szemed, miközben a száddal kattogó rovarszerű (legalábbis te így gondolod) hangokat hallatsz. Aztán gyorsan abbahagyod az egészet, amikor eszedbe jut, hogy a pókok gyakran szoktak rovarokat fogyasztani. A pók közben érdeklődve figyeli a bohóckodásodat. - Nagyon szép - jegyzi meg. Nyilván azt gondolta, hogy ez a néped valamilyen ősi tánca volt.[/p]
+    </text>
+    <next id="145"></next>
+  </p>
+  <p id="108">
+    <text>
+        [p]Az ajtó fedezékében állsz, így módod van egy gránát elhajítására - viszont őket is fedezi az irányítópult, ezért a gránát által okozott sebzésből vonj le 1 pontot (így 0-tól 5 pontig terjedő sebesülést okozhatsz). Ha a gránát nem öli meg őket, minden körben mindketten rád lőnek, míg te csak egy lövést adhatsz le körönként.[/p]
+    </text>
+    <fight type="shooting" preFight="true">
+      <enemy id="20" />
+      <enemy id="21" />
+    </fight>
+    <next id="203"></next>
+  </p>
+  <p id="109">
+    <text>
+        [p class="inlineImage"][img src="resources/ff12/109.jpg" /][/p]
+        [p]Egy folyosóra jutsz, mely egy tágas, kör alakú terembe torkollik. A terem talaját csaknem teljes egészében mély, rezzenéstelen víztükrű tó alkotja. A terem falai mellett mindkét irányban járda fut végig, és egy keskeny, korlát nélküli híd ível át a víz fölött. Mindhárom út onnan indul ki, ahol állsz, és a terem túlsó felén lévő ajtóhoz vezet.[/p]
+    </text>
+    <next id="147">A hídon mész keresztül inkább?</next>
+    <next id="185">Vagy szimpatikusabbnak tartod a járdát?</next>
+  </p>
   <!-- 110 -->
   <!-- 111 -->
   <!-- 112 -->
@@ -720,7 +839,12 @@
     <next id="30">Kinyitod?</next>
     <next id="163">Vagy kúszol tovább az alagútban?</next>
   </p>
-  <!-- 126 -->
+  <p id="126">
+    <text>
+        [p]Csak azon az ajtón tudsz kimenni, amelyiken bejöttél. Kénytelen vagy visszagyalogolni jo pár kilométernyi lebegő járdán a T-elágazásig. Az elágazásnál most a bal oldali utat választod.[/p]
+    </text>
+    <next id="345"></next>
+  </p>
   <p id="127">
     <text>
         [p]Egy füves síkságon vagy. Amerre csak a szem ellát, mindenfelé ugyanez a kép fogad.[/p]
@@ -808,7 +932,7 @@
     <text>
         [p]A szerkentyű egy kicsiny fekete négyzet, közepén egy nagy piros gombbal. A belőle kivezető drótok egy hordozható energiatelephez vannak kötve. Amikor megnyomod a gombot, semmi sem történik. Mivel még egy jó pár kis nyúlványt és csatlakozó aljzatot látsz az energiatelepen, úgy ítéled meg, a készülék még nincs teljesen összeállítva. Elteszed a zsákodba. Itthagyod az idegen lényt. Melyik nyílásfedelet vizsgálod meg először?[/p]
     </text>
-    <gatherItem id="3008" />
+    <gatherItem id="3003" />
     <next id="58">A bal oldalit?</next>
     <next id="77">Vagy a jobb oldalit?</next>
   </p>
@@ -835,10 +959,34 @@
     <add amount="-1" to="skill" />
     <next id="163"></next>
   </p>
-  <!-- 145 -->
-  <!-- 146 -->
+  <p id="145">
+    <text>
+        [p]Beszélgetésbe kezdesz vele, de a pók nem igazán tud hasznos információkkal szolgálni - javarészt csak rovarokról és szülőbolygója, a Ti fáiról beszél. Elmondja a történetét, hogyan fogta el őt Cyrus, hogy valami szörnyű kísérletet végezzen vele. Nagyon hálás neked, amiért megszabadítottad, és cserébe felajánl egy apró [span class="takeItem" data-id="3020" data-amount="1"]zacskót[/span], amelyet ő „négyes számú puhatestűek elleni por’’-nak nevez - ez a Ti bolygón igen népszerű szer.[/p]
+    </text>
+    <itemCheck type="section" id="274">
+      <have>
+        <text>
+            [p]Úgy döntesz, elhagyod a termet.[/p]
+        </text>
+        <next id="126"></next>
+      </have>
+      <dontHave>
+        <next id="274">Ha most életre kelted a második kapszula lakóját is</next>
+        <next id="126">Ha inkább elhagyod a termet</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="146">
+    <text>
+        [p]Lévén biztonsági őrök, akiknek hivatali kötelességük a gyanakvás, nem úgy tűnnek, mint akikre túl nagy hatást gyakorolt volna a viselkedésed. Rád szegezik a plazmavetőiket, és felszólítanak, hogy dobd el a fegyvered.[/p]
+    </text>
+    <next id="239">Teszed, amit parancsolnak?</next>
+    <next id="108">Vagy inkább megküzdesz velük?</next>
+  </p>
   <!-- 147 -->
-  <!-- 148 -->
+  <p id="148">
+    <empty />
+  </p>
   <!-- 149 -->
   <!-- 150 -->
   <!-- 151 -->
@@ -887,7 +1035,16 @@
     <next id="84">Délnek?</next>
     <next id="214">Vagy keletnek?</next>
   </p>
-  <!-- 159 -->
+  <p id="159">
+    <text>
+        [p class="inlineImage"][img src="resources/ff12/159.jpg" /][/p]
+        [p]Egy északi, keleti és nyugati irányban elnyúló füves síkságon vagy. Délre erdőség borítja a látóhatárt. Ahogy keresztülvágsz a síkságon, egy árnyékot pillantasz meg, amint a füvön egyenesen feléd közeledik. Éppen idejében pillantasz fel, hogy észrevedd a hatalmas szárnyas skorpiót, amint előreszegzett faroktüskéjével neked támad. Nincs már idő az elmenekülésre, közelharcban kell megküzdened vele.[/p]
+    </text>
+    <fight type="single" preFight="false">
+      <enemy id="22" />
+    </fight>
+    <next id="397"></next>
+  </p>
   <p id="160">
     <text>
         [p]Egy hatalmas, áthatolhatatlan szakadék keleti partjára érsz. A szakadék észak-déli irányban hasítja ketté a tájat. Odalent a mélységben egy folyót pillantasz meg. Észak és dél felé sík területet látsz, míg mögötted, kelet felé erdőség húzódik. Nyugatra a szakadék másik partját látod.[/p]
@@ -944,13 +1101,27 @@
     </text>
     <next id="201"></next>
   </p>
-  <!-- 164 -->
+  <p id="164">
+    <text>
+        [p]A kapszulák gyakorlatilag megkülönböztethetetlenek egymástól, ám az oldalukon villogó jelzőfények tanúsága szerint a második kapszula lakója egy kicsit magasabb me-tabolikus szintet mutat. Melyik lényt próbálod életre kelteni?[/p]
+    </text>
+    <next id="31">Az első kapszulában lévőt?</next>
+    <next id="274">Vagy a második kapszulában lévőt?</next>
+  </p>
   <!-- 165 -->
   <p id="166">
     <empty />
   </p>
   <!-- 167 -->
-  <!-- 168 -->
+  <p id="168">
+    <text>
+        [p]Merre mész?[/p]
+    </text>
+    <next id="289">Északra?</next>
+    <next id="102">Nyugatra?</next>
+    <next id="83">Délre?</next>
+    <next id="159">Keletre?</next>
+  </p>
   <!-- 169 -->
   <!-- 170 -->
   <!-- 171 -->
@@ -963,7 +1134,15 @@
     <next id="59">Vagy a jobb oldali alagútban</next>
     <next id="191">De ha úgy döntesz, be is mehetsz az ajtón</next>
   </p>
-  <!-- 173 -->
+  <p id="173">
+    <text>
+        [p]Merre tovább?[/p]
+    </text>
+    <next id="83">Északnak mész?</next>
+    <next id="160">Nyugatnak?</next>
+    <next id="104">Délnek?</next>
+    <next id="323">Vagy keletnek?</next>
+  </p>
   <p id="174">
     <text>
         [p]Az ajtón át egy apró konyhába és étkezőbe jutsz. Itt is az emberi szemnek furcsa díszítések és használati tárgyak láthatóak mindenfelé. A főzőlapon található étel ehetetlen és gusztustalan. Szerencsére találsz [span class="takeItem" data-id="2001" data-amount="2"]egy pár energiarudat[/span], amelyet magaddal vihetsz (a felszerelés listádon ezek egyetlen tárgynak számítanak), ha akarsz. Bármikor elfogyaszthatod őket, és akkor 5 ponttal nő az ÉLETERŐD. Sarkon fordulsz, kisétálsz a konyhából és tovább folytatod az utad a folyosón.[/p]
@@ -1006,8 +1185,88 @@
     <empty />
   </p>
   <!-- 182 -->
-  <!-- 183 -->
-  <!-- 184 -->
+  <p id="183">
+    <itemCheck type="items" id="3007 or 3015">
+      <have>
+        <itemCheck type="item" id="3015">
+          <have>
+            <itemCheck type="item" id="3007">
+              <have>
+                <text>
+                    [p]Mit próbálsz meg használni?[/p]
+                </text>
+                <next id="202">A nagy friss rákot?</next>
+                <next id="238">A Földönkívüliekről szóló könyvet?</next>
+              </have>
+              <dontHave>
+                <text>
+                    [p]Megtalálod zsákodban a rák tetemét.[/p]
+                </text>
+                <next id="202"></next>
+              </dontHave>
+            </itemCheck>
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="3007">
+              <have>
+                <text>
+                    [p]Megtalálod zsákodban a Földönkívüliekről szóló könyvet.[/p]
+                </text>
+                <next id="238"></next>
+              </have>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            [p]Átkutatod a hátizsákodat, de nem találsz benne semmi használhatót.[/p]
+        </text>
+        <next id="69">Ha megküzdesz a szörnnyel</next>
+        <next id="126">Ha elfutsz</next>
+        <next id="107">Ha megpróbálsz kommunikálni vele</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="184">
+    <text>
+        [p]Átnézed a hátizsákodat használható tárgyak után
+    </text>
+    <itemCheck type="items" id="3005 or 3013 or 3011 or 3018">
+      <have>
+        <text>
+            kutatva. Mit próbálsz meg felhasználni?[/p]
+        </text>
+        <itemCheck type="item" id="3005">
+          <have>
+            <next id="275" pos="1">Ideggáz spray-t?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3013">
+          <have>
+            <next id="311" pos="2">Egy csomag kártyát?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3011">
+          <have>
+            <next id="347" pos="3">Csapágyas tartályt?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3018">
+          <have>
+            <next id="396" pos="4">Pán-dimenzionális Hazatérítő Készüléket?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            kutatva, azonban nem találsz semmi olyat, ami hasznosnak bizonyulhat ebben a helyzetben.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <next id="108" pos="5">Ha megküzdenél velük</next>
+    <next id="146" pos="6">Ha megpróbálod kidumálni magad</next>
+  </p>
   <!-- 185 -->
   <p id="186">
     <text>
@@ -1094,8 +1353,32 @@
     <next id="237">Megvizsgálod közelebbről is a tavat?</next>
     <next id="309">Vagy inkább az ajtót?</next>
   </p>
-  <!-- 202 -->
-  <!-- 203 -->
+  <p id="202">
+    <text>
+        [p]Előhúzod a rákot, és a pók lábai elé dobod. Az a rákra néz, óvatosan megfordítja az egyik karmával, majd megszólal: - Ó, köszönöm. - Csekély lelkesedéssel fogyasztja el a rákot.[/p]
+    </text>
+    <loseItem id="3007" />
+    <next id="145"></next>
+  </p>
+  <p id="203">
+    <text>
+        [p]Legyőzted az őröket, de az irányító pulton egy vörös lámpa kezd villogni - valószínűleg valakit riaszthattál. Jobb lesz, ha sietsz. A szobából két kijárat nyílik: az egyik egy biztonsági ajtó, a másik egy egyszerű tolóajtó.
+    </text>
+    <itemCheck type="item" id="1002">
+      <dontHave>
+        <text>
+            Ha akarod, magadhoz veheted az egyik őr [span class="takeItem" data-id="1002" data-amount="1"]plazmavetőjét[/span].
+        </text>
+      </dontHave>
+      <after>
+        <text>
+            Melyik ajtón távozol?[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="109">A biztonsági ajtón?</next>
+    <next id="257">Vagy a tolóajtón?</next>
+  </p>
   <!-- 204 -->
   <p id="205">
     <text>
@@ -1209,8 +1492,22 @@
     </random>
     <next id="254"></next>
   </p>
-  <!-- 219 -->
-  <!-- 220 -->
+  <p id="219">
+    <text>
+        [p]Jó pár kilométeren keresztül követed a járdát, míg az egy alumíniumkockában ér véget. A kocka a járdához hasonlóan a levegőben lebeg. Ahogy közelebb érsz, látod, hogy egy ajtó van a kocka oldalában ott, ahol a járda becsatlakozik. Az ajtó mellett egy kétüléses gyorsjáratú sikló parkol.[/p]
+    </text>
+    <next id="395">Belépsz a kockába?</next>
+    <next id="70">Vagy inkább beugrasz a siklóba, visszatérsz a T-elágazáshoz, és a bal oldali ágon mész tovább?</next>
+  </p>
+  <p id="220">
+    <text>
+        [p]Közelharcban kell megküzdened vele.[/p]
+    </text>
+    <fight type="single" preFight="false">
+      <enemy id="8" />
+    </fight>
+    <next id="13"></next>
+  </p>
   <!-- 221 -->
   <!-- 222 -->
   <!-- 223 -->
@@ -1309,7 +1606,12 @@
     <next id="273">Beleereszkedsz a vízbe, hogy közelebbről is megnézd, miféle szerkentyűket látsz?</next>
     <next id="309">Vagy inkább elhagyod a szobát a szemközti falon lévő ajtón keresztül?</next>
   </p>
-  <!-- 238 -->
+  <p id="238">
+    <text>
+        [p]Előhúzod a könyvet a borítójából, és a pókra mutatsz vele. A könyv közli veled, hogy a pók egy Vert a Ti bolygóról, intelligens, és valószínűleg barátságos.[/p]
+    </text>
+    <next id="145"></next>
+  </p>
   <!-- 239 -->
   <!-- 240 -->
   <!-- 241 -->
@@ -1405,10 +1707,66 @@
   </p>
   <!-- 255 -->
   <!-- 256 -->
-  <!-- 257 -->
+  <p id="257">
+    <text>
+        [p]Az ajtó egy kis konyhába nyílik. A levegőt ínycsiklandozó illat tölti meg - egy megivásra váró csésze kávé, mellette pedig néhány friss szendvics.[/p]
+    </text>
+    <next id="293">Itt maradsz enni?</next>
+    <next id="109">Vagy inkább visszamész az ellenőrzőponthoz, és megpróbálkozol a másik ajtóval?</next>
+  </p>
   <!-- 258 -->
   <!-- 259 -->
-  <!-- 260 -->
+  <p id="260">
+    <text>
+        [p]Odaadod az ajándékot a főnöknek, és úgy tűnik, ő is, és az egész törzs is meg van veled elégedve.[/p]
+    </text>
+    <itemCheck type="pos" id="1">
+      <have>
+        <loseItem id="1001" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="2">
+      <have>
+        <loseItem id="1002" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="3">
+      <have>
+        <loseItem id="3001" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="4">
+      <have>
+        <loseItem id="3002" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="5">
+      <have>
+        <loseItem id="3003" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="6">
+      <have>
+        <loseItem id="3009" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="7">
+      <have>
+        <loseItem id="3016" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="8">
+      <have>
+        <loseItem id="3018" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="9">
+      <have>
+        <add amount="-2" to="armour" />
+      </have>
+    </itemCheck>
+    <next id="368"></next>
+  </p>
   <!-- 261 -->
   <!-- 262 -->
   <p id="263">
@@ -1617,8 +1975,67 @@
     </text>
     <next id="102"></next>
   </p>
-  <!-- 274 -->
-  <!-- 275 -->
+  <p id="274">
+    <text>
+        [p]Elindítod az újraélesztő ciklust. Egy pár perc múlva mozgolódás hallatszik belülről, majd a kapszula ajtaja kinyílik, és egy ember mászik ki belőle.[/p]
+    </text>
+    <next id="346">Beszélgetést kezdeményezel a férfivel?</next>
+    <next id="310">Vagy megmarkolod a fegyvered, és ellenségesen lépsz fel, ezzel megijesztvén egy kicsit?</next>
+  </p>
+  <p id="275">
+    <text>
+        [p]Előveszed a gázsprayt, és telefújod a tartalmával a szobát.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <text>[p]Mindkét őr veszít 1 ÉLETERŐ pontot.[/p]</text>
+        <changeEnemy attribute="stamina" id="20" change="-1" />
+        <changeEnemy attribute="stamina" id="21" change="-1" />
+      </result>
+      <result max="2" min="2">
+        <text>[p]Mindkét őr veszít 2 ÉLETERŐ pontot.[/p]</text>
+        <changeEnemy attribute="stamina" id="20" change="-2" />
+        <changeEnemy attribute="stamina" id="21" change="-2" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]Mindkét őr veszít 3 ÉLETERŐ pontot.[/p]</text>
+        <changeEnemy attribute="stamina" id="20" change="-3" />
+        <changeEnemy attribute="stamina" id="21" change="-3" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Mindkét őr veszít 4 ÉLETERŐ pontot.[/p]</text>
+        <changeEnemy attribute="stamina" id="20" change="-4" />
+        <changeEnemy attribute="stamina" id="21" change="-4" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Mindkét őr veszít 5 ÉLETERŐ pontot.[/p]</text>
+        <changeEnemy attribute="stamina" id="20" change="-5" />
+        <changeEnemy attribute="stamina" id="21" change="-5" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Mindkét őr veszít 6 ÉLETERŐ pontot.[/p]</text>
+        <changeEnemy attribute="stamina" id="20" change="-6" />
+        <changeEnemy attribute="stamina" id="21" change="-6" />
+      </result>
+      <after>
+        <text>
+            [p]Az egész flakont elhasználtad - húzd le a felszerelési listádról.[/p]
+        </text>
+        <loseItem id="275" />
+        <itemCheck type="enemy" id="20">
+          <have>
+            <text>
+                [p]Meg kell küzdened velük.[/p]
+            </text>
+            <next id="108"></next>
+          </have>
+          <dontHave>
+            <next id="203"></next>
+          </dontHave>
+        </itemCheck>
+      </after>
+    </random>
+  </p>
   <!-- 276 -->
   <!-- 277 -->
   <p id="278">
@@ -1639,7 +2056,12 @@
     <next id="317">Megpróbálod átkutatni a szobát, hátha találsz valami rejtett kijáratot?</next>
     <next id="353">Vagy inkább megfordulsz, és visszarohansz az alagúton a másik irányba?</next>
   </p>
-  <!-- 282 -->
+  <p id="282">
+    <text>
+        [p]Amint tüzet nyitsz, az idegenek velőtrázó sikítással a földre vetik magukat - és eltűnnek a magas, sűrű fűben. Óvatosan közelítesz a faluhoz, miközben minden gyanúsnak tűnő fűcsomóba és bokorba beleeresztesz egy sorozatot. Ezzel néha vad ordítást váltasz ki, de általában csak a semmibe lövöldözöl. Váratlanul egy csomó lény bukkan ki előtted a fűből, és apró, tűhegyes dárdáik nem hibáznak. A legtöbb dárdát semlegesíti a páncélzatod, de néhányuknak sikerül a húsodig hatolnia. Hátratántorodsz néhány lépést, majd tompa puffanással elzuhansz. Kalandod véget ért.[/p]
+    </text>
+    <death />
+  </p>
   <p id="283">
     <text>
         [p]A robot már csak egy hasznavehetetlen roncs, de közvetlenül ott, ahol az előbb állt, a padlón észreveszel egy biztonsági zárral ellátott ajtót. A harc előtt azért nem láttad, mert a robot lábai eltakarták. Ahogy közelebbről megvizsgálod, három nyitógombot fedezel fel rajta - egy kéket, egy zöldet és egy pirosat. Felébred a kíváncsiságod, és úgy döntesz, hogy megpróbálod kinyitni az ajtót. Melyik gombot nyomod meg elsőként?[/p]
@@ -1738,12 +2160,36 @@
     <next id="125">Megvizsgálod a nyílásfedelet?</next>
     <next id="362">Vagy inkább a rámpát veszed szemügyre?</next>
   </p>
-  <!-- 291 -->
-  <!-- 292 -->
-  <!-- 293 -->
+  <p id="291">
+    <text>
+        [p]Ahogy közelebb érsz, a férfi megmozdul, és szomorú szemekkel néz fel rád. Látszik rajta, hogy sokat szenvedett. - Ki vagy? - kérdi rekedten.[/p]
+    </text>
+    <next id="363">Elmondod, hogy egy orgyilkos vagy, akit Cyrus elfogására küldtek ide?</next>
+    <next id="12">Vagy inkább azt mondod, hogy a [em]Vandervecken[/em] személyzetéhez tartozol?</next>
+  </p>
+  <p id="292">
+    <text>
+        [p class="inlineImage"][img src="resources/ff12/292.jpg" /][/p]
+        [p]A férfi egy darabig állja a fenyegetésedet, majd hirtelen átalakul egy ocsmány denevérszerű lénnyé, és sziszegve rád támad.[/p]
+    </text>
+    <next id="220">Megküzdesz vele?</next>
+    <next id="256">Vagy inkább átkutatod a zsákodat, hátha találsz valami hasznosat?</next>
+  </p>
+  <p id="293">
+    <text>
+        [p]Hátradőlsz, és lazítasz néhány percig. Utána befalod a szendvicseket. Visszanyertél 5 pontot az ÉLETERŐDBŐL. Ily módon felüdülvén, kimész a konyhából, vissza a megkötözött őrökhöz, és megpróbálkozol a másik ajtóval.[/p]
+    </text>
+    <add amount="5" to="stamina" />
+    <next id="109"></next>
+  </p>
   <!-- 294 -->
   <!-- 295 -->
-  <!-- 296 -->
+  <p id="296">
+    <text>
+        [p]A zsákodból előhúzod a készülék másik darabját, magasra tartod, és elkiáltod magad: - Nézzétek, a testvére visszatért! - A lenyűgözött idegenek a földre rogynak és visítozni kezdenek. Az egyik főnök végül feltápászkodik. Jelbeszéddel a tudtára adod, hogy szükséged van a rúd tetejére tűzött másik darabra. Amikor a főnök felfogja, hogy mit is akarsz, int az egyik fiatalabb lénynek, mire az felmászik az oszlopra, és lehozza a fekete négyzetet. A főnök széles mozdulattal neked ajándékozza a készülék másik felét.[/p]
+    </text>
+    <next id="187"></next>
+  </p>
   <!-- 297 -->
   <!-- 298 -->
   <p id="299">
@@ -1885,12 +2331,35 @@
     </fight>
     <next id="344"></next>
   </p>
-  <!-- 309 -->
-  <!-- 310 -->
-  <!-- 311 -->
+  <p id="309">
+    <text>
+        [p]Az ajtó mögött egy levegőben lebegő járdával folytatódik az út. Alant idegen tájképet pillantasz meg. Mérföldekkel lehet lejjebb, mégis még mindig a [em]Vandervecken[/em]en belül. A vékony és nem túl bizalomgerjesztő járda nyílegyenesen nyúlik a messzeségbe. Elindulsz rajta, és végül egy T-elágazáshoz érsz - a járda kettéválik, és két különböző irányba indul tovább. Egyik leágazás sem kecsegtet azzal, hogy belátható távolságon belül véget ér, így menekítvén meg téged a lezuhanás veszélyétől. [/p]
+    </text>
+    <next id="345">A bal oldali járdát választod?</next>
+    <next id="50">Vagy a jobb oldalit?</next>
+  </p>
+  <p id="310">
+    <text>
+        [p]A férfi sértődötten elfordul, és nem szól egy szót sem, csak lebiggyeszti a szája szélét.[/p]
+    </text>
+    <next id="346">Inkább abbahagyod a fenyegetést, és megpróbálsz barátságos lenni?</next>
+    <next id="292">Vagy továbbra is ellenségesen viselkedsz?</next>
+  </p>
+  <p id="311">
+    <text>
+        [p]Előhúzod a kártyapaklit, és megkérdezed az őröket, hogy akarnak-e egyet játszani.[/p]
+    </text>
+    <next id="146"></next>
+  </p>
   <!-- 312 -->
   <!-- 313 -->
-  <!-- 314 -->
+  <p id="314">
+    <text>
+        [p]Átadod a flakont a főnöknek. A főnök alaposan megnézi, forgatja egy darabig a kezei között, majd megnyomja a flakon tetején lévő gombot - és egyenesen szembefújja magát. Egy pillanat múlva holtan hever a földön. A többi idegen lény egy pillanatig dermedten áll, majd egy emberként rád vetik magukat. Tűhegyes dárdáiknak csak egy ideig tud ellenállni a páncélzatod. Lassan a földre tepernek, ahonnan már soha többé nem kelsz fel. Küldetésed kudarcba fulladt.[/p]
+    </text>
+    <loseItem id="3005" />
+    <death />
+  </p>
   <!-- 315 -->
   <!-- 316 -->
   <p id="317">
@@ -1953,8 +2422,29 @@
     <next id="83">Esetleg keletnek?</next>
     <next id="160">Vagy délnek?</next>
   </p>
-  <!-- 323 -->
-  <!-- 324 -->
+  <p id="323">
+    <text>
+        [p]Egy széles, nyílt mezőre érsz, melyet minden irányból erdő vesz körül. Merre mész tovább?[/p]
+    </text>
+    <next id="121">Északnak?</next>
+    <next id="359">Keletnek?</next>
+    <next id="27">Nyugatnak?</next>
+    <next id="115">Vagy délnek?</next>
+  </p>
+  <p id="324">
+    <text>
+        [p class="inlineImage"][img src="resources/ff12/324.jpg" /][/p]
+        [p]Egy hatalmas, nyugodt vizű tó közepén vagy. A tavat körös-körül sziklafalak határolják. Lenézel a vízbe. Egy víz alatti nagy, alaktalan tömeg irányából mintha fém csillant volna. Lemerülsz, hogy megvizsgáld. Egy kicsiny tengeralattjáróra bukkansz, mely szemmel láthatóan működőképes állapotban van, de jelen pillanatban senki sincs a fedélzetén. Hirtelen valami megrántja a sarkadat. Odapillantva rémülten konstatálod, hogy egy ház méretű sok csápú lény markolta meg a csizmádat az egyik csápjával. Egy kagylópolip! A lény lassan, de biztosan csigaházra emlékeztető otthona felé vonszol.[/p]
+    </text>
+    <itemCheck type="section" id="137a">
+      <have>
+        <next id="47"></next>
+      </have>
+      <dontHave>
+        <next id="85"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="325">
     <text>
         [p]Egy kis, erdős völgyben egy falucskára bukkansz, mely körben felállított félgömb alakú vályogkunyhókból áll. A kör közepén egy totemoszlop magasodik. A környéken életnek vagy mozgásnak semmi jele, leszámítva azt a néhány ványadt csirkét, amely a porban kapirgál.[/p]
@@ -1973,7 +2463,12 @@
     </itemCheck>
   </p>
   <!-- 326 -->
-  <!-- 327 -->
+  <p id="327">
+    <text>
+        [p]Elhagyod a termet. Beugrasz az odakint várakozó siklóba, és gyorsan visszacikázol a legutóbbi T-elágazáshoz. Ezúttal a bal oldali irányt választod.[/p]
+    </text>
+    <next id="70"></next>
+  </p>
   <!-- 328 -->
   <!-- 329 -->
   <!-- 330 -->
@@ -1992,8 +2487,16 @@
     <text>
         [p]A lények két méterre tőled hirtelen megtorpannak, oszlop alakzatba rendeződnek, és egy bonyolult lépésekből és mozdulatokból álló táncba kezdenek. Ezenközben egy másik csoport éneklő idegen sétál ki lassan a faluból. A tánc után a falu közepére vezetnek, ahol a totemoszlop előtt egy pár szemmel láthatóan igen fontos pozícióban lévő lény hivatalosan is köszönt téged. A totemoszlop fából készült, de a tetején valami olyasmit pillantasz meg, amit nyilvánvalóan nem ezek a lények készítettek - ez egy apró fekete négyzet, melynek a közepéből egy nagy piros gomb áll ki.[/p]
     </text>
-    <next id="148">Ha megpróbálsz hozzájutni a szerkezethez</next>
-    <next id="350">Ha nem</next>
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="296" pos="1">Ha megpróbálsz hozzájutni a szerkezethez</next>
+      </have>
+      <dontHave>
+        <next id="224" pos="1">Ha megpróbálsz hozzájutni a szerkezethez, és felajánlanál érte valamit cserébe</next>
+        <next id="251" pos="2">Ha figyelmeztetheted a lényéket, hogy a nyilvánvalóan fejlettebb fegyvereiddel hamar fecnikké téped őket, ha sokat fontoskodnak</next>
+      </dontHave>
+    </itemCheck>
+    <next id="350" pos="3">Ha nem</next>
   </p>
   <p id="337">
     <empty />
@@ -2009,7 +2512,16 @@
   </p>
   <!-- 339 -->
   <!-- 340 -->
-  <!-- 341 -->
+  <p id="341">
+    <text>
+        [p]Egy füves síkságon vagy, mely nyugati, déli és keleti irányban nyúlik tovább. Észak felé alacsony hegyeket pillantasz meg. Nem messze tőled, a síkság középpontján egy fából készített építményt veszel észre.[/p]
+    </text>
+    <next id="215">Ha közelebbről is meg akarod vizsgálni</next>
+    <next id="289">Ha nem, mehetsz északnak</next>
+    <next id="102">Nyugatnak</next>
+    <next id="83">Délnek</next>
+    <next id="159">Vagy keletnek</next>
+  </p>
   <p id="342">
     <text>
         [p]Keresztülmész a szobán, és kinyitod a dobozt. A dobozban kél nagy, fekete fogantyú fekszik egymás mellett.[/p]
@@ -2035,12 +2547,101 @@
     <next id="218">Megvizsgálod az istenség maradványait?</next>
     <next id="254">Vagy inkább elhagyod a szobát a túloldali ajtón keresztül?</next>
   </p>
-  <!-- 345 -->
-  <!-- 346 -->
-  <!-- 347 -->
+  <p id="345">
+    <text>
+        [p]A járda sokáig vezet egyenesen, majd ismét egy T-elága-zásban végződik. Magad alatt még mindig ugyanazt az idegen tájat látod, míg a két új leágazás továbbra is a vég nélküli gyaloglás nem túl biztató alternatíváját kínálja. Merre mész?[/p]
+    </text>
+    <next id="70">Balra?</next>
+    <next id="219">Vagy jobbra?</next>
+  </p>
+  <p id="346">
+    <text>
+        [p]Kellemesen elbeszélgettek, de sajnos semmi újat nem sikerül megtudnod. Abban a pillanatban, amikor egy kicsit már nem figyelsz rá, a férfi egy ocsmány denevérszerű lénnyé alakul át, és neked támad. A támadás tökéletesen váratlanul ért, ezért vonj le 1-et a PÁNCÉLZAT pontjaidból.[/p]
+    </text>
+    <add amount="-1" to="armour" />
+    <next id="220"></next>
+  </p>
+  <p id="347">
+    <text>
+        [p]Előhúzod a csapágyakat tartalmazó hengert, és a fejed fölé tartod. - Egy lépést se! Ezzel a bombával mindenkit atomjaira robbantok, ha csak moccanni is merészeltek! -Aztán a nagyobb hatás kedvéért, hangosan felnevetsz. A közveszélyes őrülteket senki sem szereti, különösen ezek a pléhpofák nem. Azonnal szoborrá merevednek. Lefekteted őket, és messze elhajítod a fegyverüket. Utána könnyedén összekötözheted őket, és felpeckelheted a szájukat. A szobának két kijárata van: az egyik egy biztonsági ajtó, a másik egy egyszerű tolóajtó. Melyiket választod?[/p]
+    </text>
+    <next id="109">A biztonsági ajtót?</next>
+    <next id="257">Vagy a tolóajtót?</next>
+  </p>
   <!-- 348 -->
   <!-- 349 -->
-  <!-- 350 -->
+  <p id="350">
+    <text>
+        [p]A lények barátságosnak tűnnek ugyan, de ki tudja, meddig? Mindenesetre úgy döntesz, hogy megerősíted a barátságukat egy megfelelő ajándékkal. [alt]Melyik tárgyadat adod nekik?[/alt][/p]
+    </text>
+    <itemCheck type="items" id="3005 or 3019 or 3017">
+      <have>
+        <itemCheck type="item" id="3005">
+          <have>
+            <next id="314">Az ideggázos sprayt?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3019">
+          <have>
+            <next id="17">A hatalmas ragadozó állkapcsot?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3017">
+          <have>
+            <next id="35">Néhány narancsos-lila színű gyümölcsöt?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="1001">
+          <have>
+            <next id="260" pos="1">Az elektromos korbácsot?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="1002">
+          <have>
+            <next id="260" pos="2">A plazmavetőt?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3001">
+          <have>
+            <next id="260" pos="3">Egy gránátot?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3002">
+          <have>
+            <next id="260" pos="4">Egy gracitációs bombát?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <next id="260" pos="5">A fekete szerkentyűt?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3009">
+          <have>
+            <next id="260" pos="6">Az infravörös látókészüléket?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3016">
+          <have>
+            <next id="260" pos="7">Az android fejet?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3018">
+          <have>
+            <next id="260" pos="8">A pán-dimenzionális hazatérítő készüléket?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="armour" id="2">
+          <have>
+            <next id="260" pos="9">Néhány páncéldarabot?</next>
+          </have>
+        </itemCheck>
+        <next id="361" pos="99" singleChoiceText="Sajnos nincs nálad semmi, amit fel tudnál ajánlani, így inkább gyorsan elhagyod a falut.">Ha semmit nem adnál nekik, és inkább elhagynád a falut</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 351 -->
   <!-- 352 -->
   <p id="353">
@@ -2126,12 +2727,23 @@
     <next id="11">Elhagyod az anti-gravitációs folyamot, és kilépsz a rámpára?</next>
     <next id="49">Vagy inkább sodródsz még egy kicsit?</next>
   </p>
-  <!-- 363 -->
+  <p id="363">
+    <text>
+        [p]A férfi sokat szenvedett szemei felderülnek egy kissé, majd könnyezni kezd. Megpróbálja megsimítani a kezed az egyik csápjával. De úgy látszik, ez a mozdulat felemésztette minden energiáját; a szemei lassan a mennyezetre merednek. Látszik rajta, hogy nemsokára ismét el fog ájulni. De egy utolsó erőfeszítéssel még a következőt suttogja: - Mindig a középsőt, mindig a középsőt válaszd! Miután kinyögte a fenti szavakat, elveszti eszméletét.[/p]
+    </text>
+    <next id="327"></next>
+  </p>
   <!-- 364 -->
   <!-- 365 -->
   <!-- 366 -->
   <!-- 367 -->
-  <!-- 368 -->
+  <p id="368">
+    <text>
+        [p]A lények köréd özönlenek és dél felé vezetnek, közben egy pillanatra sem hagyják abba az éneklést és a táncolást. Néhány kilométernyit mehettek, míg végül, kiérve a hegyek közül, keresztülvágva egy füves síkságon egy folyó partjára épült kikötőhöz értek. A idegenek szemmel láthatóan azt akarják, hogy beülj a mólóhoz kikötött masszív kenuk közül az egyikbe.[/p]
+    </text>
+    <next id="96">Elfogadod az invitálást, és leevezel a folyón?</next>
+    <next id="168">Vagy inkább megköszönöd a kedvességüket, elköszönsz tőlük, és gyalog folytatod tovább az utadat?</next>
+  </p>
   <!-- 369 -->
   <!-- 370 -->
   <!-- 371 -->
@@ -2193,9 +2805,24 @@
     <next id="118"></next>
   </p>
   <!-- 394 -->
-  <!-- 395 -->
+  <p id="395">
+    <text>
+        [p class="inlineImage"][img src="resources/ff12/395.jpg" /][/p]
+        [p]Az ajtón át egy biológiai laboratóriumba jutsz, mely szemmel láthatóan múzeumként is funkcionál. A falakat a padlótól a mennyezetig polcok borítják. A polcokon kis átlátszó falú kockákba zárva Cyrus korábbi szörnyű kísérleteinek melléktermékei láthatók: különféle emberi és nem emberi belső szervek, végtagok. A terem közepén egy nagy műtőasztalt pillantasz meg, körös-körül mindenféle műtőberendezések és gépek. Az asztalon egy magatehetetlen figura fekszik: egy ember, akinek a karjai helyére csápok vannak operálva. A férfit szorosan az ágyhoz szíjazták.[/p]
+    </text>
+    <next id="291">Odalépsz a férfihoz?</next>
+    <next id="327">Vagy inkább itthagyod ezt az egész undorító laboratóriumot?</next>
+  </p>
   <!-- 396 -->
-  <!-- 397 -->
+  <p id="397">
+    <text>
+        [p]Merre tovább?[/p]
+    </text>
+    <next id="142">Északnak mész?</next>
+    <next id="341">Nyugatnak?</next>
+    <next id="121">Délnek?</next>
+    <next id="26">Vagy keletnek?</next>
+  </p>
   <p id="398">
     <text>
         [p]Már jó ideje nyílegyenesen halad a folyosó, amikor egy másik biztonsági ajtót látsz oldalt. Az ajtón felirat:[/p]

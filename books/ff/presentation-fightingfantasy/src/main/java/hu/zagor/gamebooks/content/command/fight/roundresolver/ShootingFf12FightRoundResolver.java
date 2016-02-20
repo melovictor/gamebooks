@@ -33,6 +33,7 @@ import org.springframework.stereotype.Component;
  */
 @Component("shootingff12FightRoundResolver")
 public class ShootingFf12FightRoundResolver implements FightRoundResolver {
+    private static final int STRANGLING_VINE_AUTO_DAMAGE = -2;
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
     @Autowired private DiceResultRenderer renderer;
     @Autowired private LocaleProvider localeProvider;
@@ -44,13 +45,23 @@ public class ShootingFf12FightRoundResolver implements FightRoundResolver {
         final FightRoundResult[] results = new FightRoundResult[command.getResolvedEnemies().size()];
         final FightCommandMessageList messages = command.getMessages();
 
-        preFightMachinations(resolvationData, messages);
         heroShootsAtTargetedEnemy(resolvationData, messages);
+        preFightMachinations(resolvationData, messages);
         enemiesAreShootingAtHero(command, resolvationData);
+        enemiesDoingAutoDamage(messages, resolvationData);
 
         getSelectedEnemy(resolvationData).setActiveWeapon(null);
 
         return results;
+    }
+
+    private void enemiesDoingAutoDamage(final FightCommandMessageList messages, final ResolvationData resolvationData) {
+        final Ff12Enemy enemy = getSelectedEnemy(resolvationData);
+        if ("23".equals(enemy.getId())) {
+            messages.addKey("page.ff12.fight.noArmourHit", enemy.getStamina(), 2);
+            final Ff12Character character = (Ff12Character) resolvationData.getCharacter();
+            character.changeStamina(STRANGLING_VINE_AUTO_DAMAGE);
+        }
     }
 
     private void preFightMachinations(final ResolvationData resolvationData, final FightCommandMessageList messages) {
