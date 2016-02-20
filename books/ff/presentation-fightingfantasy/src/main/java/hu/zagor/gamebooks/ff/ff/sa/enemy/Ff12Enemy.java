@@ -9,6 +9,7 @@ import hu.zagor.gamebooks.character.enemy.FfEnemy;
 public class Ff12Enemy extends FfEnemy {
     private String weapon;
     private int attackPerRound;
+    private DeityWeapon activeWeapon;
 
     public String getWeapon() {
         return weapon;
@@ -25,4 +26,13 @@ public class Ff12Enemy extends FfEnemy {
     public void setAttackPerRound(final int attackPerRound) {
         this.attackPerRound = attackPerRound;
     }
+
+    public DeityWeapon getActiveWeapon() {
+        return activeWeapon;
+    }
+
+    public void setActiveWeapon(final DeityWeapon activeWeapon) {
+        this.activeWeapon = activeWeapon;
+    }
+
 }

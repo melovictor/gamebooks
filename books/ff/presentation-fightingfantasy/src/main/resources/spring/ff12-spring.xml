@@ -4,7 +4,7 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.FightingFantasy.SPACE_ASSASSIN" id="ff12Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff12Info" c:id-ref="ff12Id" p:coverPath="resources/ff12/cover.jpg" p:resourceDir="ff12" p:contentTransformers-ref="ff12ContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="12" p:series-ref="ffTitle" p:title="Space Assassin" p:characterHandler-ref="ff12CharacterHandler" p:commandResolvers-ref="ffCommandResolvers" p:unfinished="true" p:hidden="true" p:characterBeanId="ff12Character" p:characterPageDataBeanId="ff12CharacterPageData">
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff12Info" c:id-ref="ff12Id" p:coverPath="resources/ff12/cover.jpg" p:resourceDir="ff12" p:contentTransformers-ref="ff12ContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="12" p:series-ref="ffTitle" p:title="Space Assassin" p:characterHandler-ref="ff12CharacterHandler" p:commandResolvers-ref="ff12CommandResolvers" p:unfinished="true" p:hidden="true" p:characterBeanId="ff12Character" p:characterPageDataBeanId="ff12CharacterPageData">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="ff12enemies.xml" c:items="ff12items.xml" c:paragraphs="ff12content.xml" />
     </property>
@@ -19,5 +19,48 @@
   <bean class="hu.zagor.gamebooks.domain.BookContentTransformers" id="ff12ContentTransformers" parent="defaultFfContentTransformers" c:enemyTransformer-ref="ff12RuleBookEnemyTransformer" />
 
   <bean id="ff12CharacterHandler" parent="ffCharacterHandler" p:characterGenerator-ref="ff12CharacterGenerator" p:attributeHandler-ref="ff12AttributeHandler" />
+
+  <util:map key-type="java.lang.Integer" value-type="hu.zagor.gamebooks.ff.ff.sa.enemy.DeityWeapon" id="deityWeapons">
+    <entry key="1">
+      <bean class="hu.zagor.gamebooks.ff.ff.sa.enemy.DeityWeapon" c:damage="3" c:nameKeyPostfix="whip" c:skill="10" />
+    </entry>
+    <entry key="2">
+      <bean class="hu.zagor.gamebooks.ff.ff.sa.enemy.DeityWeapon" c:damage="2" c:nameKeyPostfix="bolos" c:skill="9" />
+    </entry>
+    <entry key="3">
+      <bean class="hu.zagor.gamebooks.ff.ff.sa.enemy.DeityWeapon" c:damage="1" c:nameKeyPostfix="spear" c:skill="7" />
+    </entry>
+    <entry key="4">
+      <bean class="hu.zagor.gamebooks.ff.ff.sa.enemy.DeityWeapon" c:damage="2" c:nameKeyPostfix="electricLash" c:skill="8" />
+    </entry>
+    <entry key="5">
+      <bean class="hu.zagor.gamebooks.ff.ff.sa.enemy.DeityWeapon" c:nameKeyPostfix="assaultBlaster" c:skill="6" />
+    </entry>
+    <entry key="6">
+      <bean class="hu.zagor.gamebooks.ff.ff.sa.enemy.DeityWeapon" c:damage="99" c:nameKeyPostfix="disintegrator" c:skill="5" />
+    </entry>
+  </util:map>
+
+  <bean id="ff12CommandResolvers" c:mapA-ref="ffCommandResolvers" factory-method="merge" class="hu.zagor.gamebooks.support.spring.MapMerger">
+    <constructor-arg name="mapB">
+      <util:map key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver">
+        <entry key="hu.zagor.gamebooks.content.command.fight.FightCommand">
+          <bean class="hu.zagor.gamebooks.content.command.fight.FightCommandResolver">
+            <property name="subResolvers">
+              <bean id="ff12FightSubResolvers" c:mapA-ref="fightSubResolvers" factory-method="merge" class="hu.zagor.gamebooks.support.spring.MapMerger">
+                <constructor-arg name="mapB">
+                  <util:map key-type="java.lang.String" value-type="hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResolver">
+                    <entry key="basic">
+                      <bean class="hu.zagor.gamebooks.content.command.fight.subresolver.Ff12FightCommandBasicSubResolver" />
+                    </entry>
+                  </util:map>
+                </constructor-arg>
+              </bean>
+            </property>
+          </bean>
+        </entry>
+      </util:map>
+    </constructor-arg>
+  </bean>
 
 </beans>
