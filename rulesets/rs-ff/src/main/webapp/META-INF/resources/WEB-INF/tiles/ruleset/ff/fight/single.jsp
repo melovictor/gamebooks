@@ -1,24 +1,11 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@taglib tagdir="/WEB-INF/tags" prefix="l" %>
 <c:set var="firstEnemy" value="${empty param.id}" />
 
 <div>
-	<span class="skillTitle">
-		<spring:message code="page.ff.attribute.skill" />
-	</span>
-	<span class="staminaTitle">
-		<spring:message code="page.ff.attribute.stamina" />
-	</span>
-	<span class="luckTitle">
-		<spring:message code="page.ff.attribute.luck" />
-	</span>
-	
-	<div>
-		<span data-enemy-id="0">${user.principal}</span>
-		<span data-enemy-skill>${charEquipments.skill}</span>
-		<span data-enemy-stamina>${charEquipments.stamina}</span>
-		<span data-enemy-luck>${charEquipments.luck}</span>
-	</div>
+    <l:insertTile templateName="${characterRecord}" defaultTemplateName="characterRecord.jsp"/>
 	<c:forEach var="ally" items="${fightCommand.resolvedAllies}">
 		<div>
 			<span data-enemy-id="0">${ally.name}</span>

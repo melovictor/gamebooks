@@ -9,13 +9,14 @@ import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.List;
+import org.springframework.stereotype.Component;
 
 /**
  * Class for resolving the {@link FightCommand} object in the basic mode.
  * @author Tamas_Szekeres
  */
+@Component
 public class FightCommandBasicSubResolver extends AbstractFightCommandSubResolver {
 
     @Override
