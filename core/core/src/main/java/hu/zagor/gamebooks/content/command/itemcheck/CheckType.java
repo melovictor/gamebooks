@@ -18,5 +18,6 @@ public enum CheckType {
     goldpiece,
     value,
     pos,
-    wisdom
+    wisdom,
+    armour
 }
