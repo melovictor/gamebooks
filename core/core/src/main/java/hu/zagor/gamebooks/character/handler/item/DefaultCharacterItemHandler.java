@@ -117,7 +117,10 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
             }
         } else {
             for (int i = 0; i < amount; i++) {
-                removedItems.add(returnSinglePiece(itemId, equipment, unequippedOnly));
+                final Item itemToRemove = returnSinglePiece(itemId, equipment, unequippedOnly);
+                if (itemToRemove != null) {
+                    removedItems.add(itemToRemove);
+                }
             }
         }
 
