@@ -21,5 +21,7 @@ public enum CheckType {
     wisdom,
     fear,
     armour,
-    status
+    status,
+    enemyShield,
+    selfShield
 }

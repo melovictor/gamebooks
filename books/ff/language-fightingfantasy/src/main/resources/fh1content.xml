@@ -151,7 +151,87 @@
     <next id="179">Déli irányba?</next>
     <next id="84">Vagy kelet felé?</next>
   </p>
-  <!-- 9 -->
+  <p id="9">
+    <text>
+        [p]Az ellenséges jármű a legérzékenyebb pontját kínálva feléd megjelenik a látóteredben. A tűz viszonzásának veszélye nélkül lőhetsz.[/p]
+    </text>
+    <test against="skill" success="lower">
+      <success>
+        <text>
+            [p]Eltaláltad az ellenfeledet.[/p]
+        </text>
+        <add amount="-1" to="enemyShield" />
+        <itemCheck type="enemyShield" id="1">
+          <dontHave>
+            <next id="190"></next>
+          </dontHave>
+          <have>
+            <text>
+                [p]Az ellenséges tank megfordul, és egyenesen feléd tart. Adj 1-et a HELYZETEDHEZ.[/p]
+            </text>
+            <add amount="1" to="status" />
+            <itemCheck type="item" id="4064">
+              <have>
+                <next id="391"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4062">
+              <have>
+                <next id="136"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4032">
+              <have>
+                <next id="53"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4081">
+              <have>
+                <next id="313"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4051">
+              <have>
+                <next id="82"></next>
+              </have>
+            </itemCheck>
+          </have>
+        </itemCheck>
+      </success>
+      <failure>
+        <text>
+            [p]Elvétetted az ellenfeledet.[/p]
+            [p]Az ellenséges tank megfordul, és egyenesen feléd tart. Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <add amount="1" to="status" />
+        <itemCheck type="item" id="4064">
+          <have>
+            <next id="391"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4062">
+          <have>
+            <next id="136"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4032">
+          <have>
+            <next id="53"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4081">
+          <have>
+            <next id="313"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4051">
+          <have>
+            <next id="82"></next>
+          </have>
+        </itemCheck>
+      </failure>
+    </test>
+  </p>
   <p id="10">
     <text>
         [p]Az ajtó egy kis hálófülkébe nyílik. A fülkéből balra is és jobbra is egy-egy folyosó indul. Semmilyen nyíl vagy egyéb felirat nem jelzi, hogy melyik irányba kellene menned.[/p]
@@ -250,7 +330,53 @@
     </text>
     <next id="353"></next>
   </p>
-  <!-- 22 -->
+  <p id="22">
+    <text>
+        [p]A járműved az ,,E'' ponton áll, és dél felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4052">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="265">Elmehetsz a ,,H'' pontra úgy, hogy kelet felé nézz</next>
+        <next id="193">Vagy úgy is, hogy nyugat felé nézz</next>
+        <next id="216">Nyugat felé fordulhatsz</next>
+        <next id="386">Vagy kelet felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4052" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="1,2,3,4,8,9,10,11,15,16">
+          <have>
+            <next id="265">Elmehetsz a ,,H'' pontra úgy, hogy kelet felé nézz</next>
+            <next id="193">Vagy úgy is, hogy nyugat felé nézz</next>
+            <next id="216">Nyugat felé fordulhatsz</next>
+            <next id="386">Vagy kelet felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="7">
+          <have>
+            <next id="261"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="6,13,14">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="5,12">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="23">
     <text>
         [p]A padló váratlanul szétnyílik a lábad alatt, és egy keskeny, meredek alagútban csúszni kezdesz lefelé. Még látod, amint a fejed felett ismét összezárul a folyosó padlója. Percekig csúszol tökéletes sötétségben, míg végül fényt pillantasz meg. Egy pillanat, és máris egy idegen bolygó látképe jelenik meg alattad, miközben megállíthatatlanul zuhansz feléje. Furcsa: [em]nagyon[/em] közelinek és meglehetősen fánk alakúnak tűnik - eddigi tudomásod szerint ilyen formájú bolygó nem is létezik. Egyre nagyobb sebességgel zuhansz. Idegen tájakat, lila hegyeket látsz alant. És épp mielőtt hozzávetőlegesen 260 kilométer/órás sebességgel a földbe csapódnál, titokzatos módon valami lefékez, így puhán landolsz. Úgy tűnik, már nem a hajón, hanem egy idegen világon vagy. (Mostantól a négy égtájat használjuk referenciaként.)[/p]
@@ -295,7 +421,67 @@
       </even>
     </random>
   </p>
-  <!-- 28 -->
+  <p id="28">
+    <text>
+        [p]Az ellenséges jármű a legérzékenyebb pontját kínálva feléd megjelenik a látóteredben. A tűz viszonzásának veszélye nélkül lőhetsz.[/p]
+    </text>
+    <test against="skill" success="lower">
+      <success>
+        <text>
+            [p]Eltaláltad az ellenfeledet.[/p]
+        </text>
+        <add amount="-1" to="enemyShield" />
+        <itemCheck type="enemyShield" id="1">
+          <dontHave>
+            <next id="190"></next>
+          </dontHave>
+          <have>
+            <text>
+                [p]Az ellenséges tank balra fordul két háztömbbel odébb, és eltűnik a szemed elől. Adj 1-et a HELYZETEDHEZ.[/p]
+            </text>
+            <add amount="1" to="status" />
+            <itemCheck type="item" id="4073">
+              <have>
+                <next id="355"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4043">
+              <have>
+                <next id="380"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4091">
+              <have>
+                <next id="241"></next>
+              </have>
+            </itemCheck>
+          </have>
+        </itemCheck>
+      </success>
+      <failure>
+        <text>
+            [p]Elvétetted az ellenfeledet.[/p]
+            [p]Az ellenséges tank balra fordul két háztömbbel odébb, és eltűnik a szemed elől. Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <add amount="1" to="status" />
+        <itemCheck type="item" id="4073">
+          <have>
+            <next id="355"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4043">
+          <have>
+            <next id="380"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4091">
+          <have>
+            <next id="241"></next>
+          </have>
+        </itemCheck>
+      </failure>
+    </test>
+  </p>
   <p id="29">
     <empty />
   </p>
@@ -323,7 +509,136 @@
     </text>
     <next id="155"></next>
   </p>
-  <!-- 33 -->
+  <p id="33">
+    <text>
+        [p]Az ellenséges tank lézerágyúját rád szegezve egyenesen feléd rohan, és tüzet nyit.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <text>
+            [p]Szerencséd van, ellenfeled lövése célt téveszt.[/p]
+        </text>
+      </result>
+      <result max="6" min="2">
+        <text>
+            [p]Nincs szerencséd, ellenfeled eltalált. Csökkentsd 1-gyel a PAJZS pontjaidat.[/p]
+        </text>
+        <add amount="-1" to="selfShield" />
+      </result>
+      <after>
+        <itemCheck type="selfShield" id="1">
+          <have>
+            <text>
+                [p]Most visszalőhetsz.[/p]
+            </text>
+            <test against="skill" success="lower">
+              <success>
+                <text>
+                    [p]Eltaláltad az ellenfeledet.[/p]
+                </text>
+                <add amount="-1" to="enemyShield" />
+                <itemCheck type="enemyShield" id="1">
+                  <dontHave>
+                    <next id="190"></next>
+                  </dontHave>
+                  <have>
+                    <text>
+                        [p]Adj 1-et a HELYZETEDHEZ.[/p]
+                    </text>
+                    <add amount="1" to="status" />
+
+                  </have>
+                </itemCheck>
+              </success>
+              <failure>
+                <text>
+                    [p]Elvétetted az ellenfeledet.[/p]
+                    [p]Adj 1-et a HELYZETEDHEZ.[/p]
+                </text>
+                <add amount="1" to="status" />
+                <itemCheck type="item" id="4091">
+                  <have>
+                    <next id="241"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4034">
+                  <have>
+                    <next id="365"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4024">
+                  <have>
+                    <next id="167"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4012">
+                  <have>
+                    <next id="349"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4042">
+                  <have>
+                    <next id="130"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4051">
+                  <have>
+                    <next id="82"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4023">
+                  <have>
+                    <next id="331"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4064">
+                  <have>
+                    <next id="391"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4073">
+                  <have>
+                    <next id="355"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4032">
+                  <have>
+                    <next id="53"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4083">
+                  <have>
+                    <next id="265"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4062">
+                  <have>
+                    <next id="136"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4081">
+                  <have>
+                    <next id="313"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4013">
+                  <have>
+                    <next id="223"></next>
+                  </have>
+                </itemCheck>
+              </failure>
+            </test>
+          </have>
+          <dontHave>
+            <text>
+                [p]Megsemmisült a tankod, és vele együtt te is. Kalandod itt véget ér.[/p]
+            </text>
+            <death />
+          </dontHave>
+        </itemCheck>
+      </after>
+    </random>
+  </p>
   <p id="34">
     <text>
         [p]Az ajtón át egy hosszú és meglehetősen elhanyagolt folyosóra jutsz. Mindent mocsok és korom borít, a világító-testek közül néhány nem működik. A komor hangulat szinte terád is átragad. Végül a folyosó kettéágazik: az egyik ág kezdeténél egy régi, kopott tábla lóg a mennyezetről, ,,VESZÉLYES!'' felirattal, a másik ág pedig jelzés nélkül nyúlik a homályos messzeségbe.[/p]
@@ -483,7 +798,59 @@
     <next id="14"></next>
   </p>
   <!-- 52 -->
-  <!-- 53 -->
+  <p id="53">
+    <text>
+        [p]A járműved a ,,C'' ponton áll, és dél felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4033,4034,4041,4042,4043,4044,4051,4052,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4032">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="136">Elmehetsz az ,,F'' pontra</next>
+        <next id="365">Vagy nyugat felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4032" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="4,5,6,7,8,9,11,12,13,14">
+          <have>
+            <next id="136">Elmehetsz az ,,F'' pontra</next>
+            <next id="365">Vagy nyugat felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="10,11">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="15">
+          <have>
+            <next id="161"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="16">
+          <have>
+            <next id="9"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="1,2">
+          <have>
+            <next id="33"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="3">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="54">
     <text>
         [p]A lények visítozva kirontanak a folyosóra. Éles hangjuk lassan elhalkul, ahogy egyre távolodnak. Belenézel a ládába, és látod, hogy szinte színültig van narancsos-lilás színű gyümölccsel.[/p]
@@ -580,7 +947,305 @@
     </fight>
     <next id="173"></next>
   </p>
-  <!-- 66 -->
+  <p id="66">
+    <text>
+        [p]Rémülten veszed észre, hogy az ellenséges tank éppel feléd tart. Lézerágyúja megvillan.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <text>
+            [p]Szerencséd van, ellenfeled lövése célt téveszt.[/p]
+        </text>
+      </result>
+      <result max="6" min="2">
+        <text>
+            [p]Nincs szerencséd, ellenfeled eltalált. Csökkentsd 1-gyel a PAJZS pontjaidat.[/p]
+        </text>
+        <add amount="-1" to="selfShield" />
+      </result>
+      <after>
+        <itemCheck type="selfShield" id="1">
+          <have>
+            <text>
+                [p]Most visszalőhetsz.[/p]
+            </text>
+            <test against="skill" success="lower">
+              <success>
+                <text>
+                    [p]Eltaláltad az ellenfeledet.[/p]
+                </text>
+                <add amount="-1" to="enemyShield" />
+                <itemCheck type="enemyShield" id="1">
+                  <dontHave>
+                    <next id="190"></next>
+                  </dontHave>
+                  <have>
+                    <text>
+                        [p]Adj 1-et a HELYZETEDHEZ.[/p]
+                    </text>
+                    <add amount="1" to="status" />
+                    <itemCheck type="item" id="4091">
+                      <have>
+                        <next id="241"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4061">
+                      <have>
+                        <next id="110"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4034">
+                      <have>
+                        <next id="365"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4024">
+                      <have>
+                        <next id="167"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4012">
+                      <have>
+                        <next id="349"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4064">
+                      <have>
+                        <next id="391"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4054">
+                      <have>
+                        <next id="216"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4022">
+                      <have>
+                        <next id="91"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4052">
+                      <have>
+                        <next id="22"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4083">
+                      <have>
+                        <next id="265"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4062">
+                      <have>
+                        <next id="136"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4041">
+                      <have>
+                        <next id="374"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4013">
+                      <have>
+                        <next id="223"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4071">
+                      <have>
+                        <next id="73"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4094">
+                      <have>
+                        <next id="277"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4081">
+                      <have>
+                        <next id="313"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4032">
+                      <have>
+                        <next id="53"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4023">
+                      <have>
+                        <next id="331"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4053">
+                      <have>
+                        <next id="386"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4084">
+                      <have>
+                        <next id="193"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4051">
+                      <have>
+                        <next id="82"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4043">
+                      <have>
+                        <next id="380"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4073">
+                      <have>
+                        <next id="355"></next>
+                      </have>
+                    </itemCheck>
+                    <itemCheck type="item" id="4042">
+                      <have>
+                        <next id="130"></next>
+                      </have>
+                    </itemCheck>
+                  </have>
+                </itemCheck>
+              </success>
+              <failure>
+                <text>
+                    [p]Elvétetted az ellenfeledet.[/p]
+                    [p]Adj 1-et a HELYZETEDHEZ.[/p]
+                </text>
+                <add amount="1" to="status" />
+                <itemCheck type="item" id="4091">
+                  <have>
+                    <next id="241"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4061">
+                  <have>
+                    <next id="110"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4034">
+                  <have>
+                    <next id="365"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4024">
+                  <have>
+                    <next id="167"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4012">
+                  <have>
+                    <next id="349"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4064">
+                  <have>
+                    <next id="391"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4054">
+                  <have>
+                    <next id="216"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4022">
+                  <have>
+                    <next id="91"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4052">
+                  <have>
+                    <next id="22"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4083">
+                  <have>
+                    <next id="265"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4062">
+                  <have>
+                    <next id="136"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4041">
+                  <have>
+                    <next id="374"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4013">
+                  <have>
+                    <next id="223"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4071">
+                  <have>
+                    <next id="73"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4094">
+                  <have>
+                    <next id="277"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4081">
+                  <have>
+                    <next id="313"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4032">
+                  <have>
+                    <next id="53"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4023">
+                  <have>
+                    <next id="331"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4053">
+                  <have>
+                    <next id="386"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4084">
+                  <have>
+                    <next id="193"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4051">
+                  <have>
+                    <next id="82"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4043">
+                  <have>
+                    <next id="380"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4073">
+                  <have>
+                    <next id="355"></next>
+                  </have>
+                </itemCheck>
+                <itemCheck type="item" id="4042">
+                  <have>
+                    <next id="130"></next>
+                  </have>
+                </itemCheck>
+              </failure>
+            </test>
+          </have>
+          <dontHave>
+            <text>
+                [p]Megsemmisült a tankod, és vele együtt te is. Kalandod itt véget ér.[/p]
+            </text>
+            <death />
+          </dontHave>
+        </itemCheck>
+      </after>
+    </random>
+  </p>
   <p id="67">
     <empty />
   </p>
@@ -636,7 +1301,49 @@
     </text>
     <death />
   </p>
-  <!-- 73 -->
+  <p id="73">
+    <text>
+        [p]A járműved a ,,G'' ponton áll, és észak felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4053,4054,4061,4062,4063,4064,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4071">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="374">Elmehetsz a ,,D'' pontra</next>
+        <next id="355">Vagy kelet felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4071" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="1,2,3,4,5,6,11,12,13,14,15">
+          <have>
+            <next id="374">Elmehetsz a ,,D'' pontra</next>
+            <next id="355">Vagy kelet felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="7,16">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="9,10">
+          <have>
+            <next id="123"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="8">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="74">
     <text>
         [p]Mivel elég messzire vagy a robotoktól, eldobhatsz egy gránátot - ha van nálad. A robotok egyszerre tüzelnek rád.[/p]
@@ -696,7 +1403,53 @@
     <loseItem id="3001" />
     <next id="62"></next>
   </p>
-  <!-- 82 -->
+  <p id="82">
+    <text>
+        [p]A járműved az ,,E'' ponton áll, és észak felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4052,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4051">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="167">Elmehetsz a ,,B'' pontra úgy, hogy nyugat felé nézz</next>
+        <next id="331">Vagy úgy is, hogy kelet felé nézz</next>
+        <next id="216">Nyugat felé fordulhatsz</next>
+        <next id="386">Vagy kelet felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4051" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="1,2,3,7,8,9,10,15,16">
+          <have>
+            <next id="167">Elmehetsz a ,,B'' pontra úgy, hogy nyugat felé nézz</next>
+            <next id="331">Vagy úgy is, hogy kelet felé nézz</next>
+            <next id="216">Nyugat felé fordulhatsz</next>
+            <next id="386">Vagy kelet felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="4,11">
+          <have>
+            <next id="9"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="5,12">
+          <have>
+            <next id="33"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="6,13,14">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="83">
     <text>
         [p]Egy füves síkságon vagy, mely északi és nyugati irányban nyúlik tovább. Keletre és délre erdőséget látsz.[/p]
@@ -756,7 +1509,56 @@
     </text>
     <death />
   </p>
-  <!-- 91 -->
+  <p id="91">
+    <text>
+        [p]A járműved a ,,B'' ponton áll, és dél felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4022">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="22">Elmehetsz az ,,E'' pontra</next>
+        <next id="167">Nyugat felé fordulhatsz</next>
+        <next id="331">Vagy kelet felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4022" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="1,2,8,9,10,15,16">
+          <have>
+            <next id="22">Elmehetsz az ,,E'' pontra</next>
+            <next id="167">Nyugat felé fordulhatsz</next>
+            <next id="331">Vagy kelet felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="4,5,11,12">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="6,7">
+          <have>
+            <next id="123"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="3,10">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="13,14">
+          <have>
+            <next id="176"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="92">
     <text>
         [p]A mókusszerű lény leül a földönkívüli mellé, és tiszti, dallamos hangon megszólal: - Látod ezt a disznót itt előtted? Ez egy szűkmarkú, humortalan fafej. Melegen javasolt az elpusztítása. - A helyzet magáért beszél.[/p]
@@ -888,7 +1690,49 @@
     <next id="147">A hídon mész keresztül inkább?</next>
     <next id="185">Vagy szimpatikusabbnak tartod a járdát?</next>
   </p>
-  <!-- 110 -->
+  <p id="110">
+    <text>
+        [p]A járműved az ,,F'' ponton áll, és észak felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4053,4054,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4061">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="365">Elmehetsz a ,,C'' pontra</next>
+        <next id="391">Vagy nyugat felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4061" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="4,5,6,7,8,9,10,11,12,13,16">
+          <have>
+            <next id="365">Elmehetsz a ,,C'' pontra</next>
+            <next id="391">Vagy nyugat felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="3">
+          <have>
+            <next id="176"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="1,14">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="2,15">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="111">
     <text>
         [p]A mókusszerű lény leül a földönkívüli elé, majd tiszta, dallamos hangon megszólal: - Hát akkor lássuk, miből is élünk. Először is körvonalazom a posztulátumaimat. Egy: A nagyobb, mint B, ami nagyobb, mint C, és így tovább. Kettő: A négyzet nagyobb, mint B négyzet, ami nagyobb, mint C négyzet, és így tovább. Három: A négyzetgyöke... - A földönkívüli mélyen elmerül a gondolataiba. Szemmel láthatóan egy kicsit nehezen tudja követni a mókusszerű lény sebes beszédét. A Zarkot annyira lekötötte a feladvány, hogy nem is figyel már rád: így gyorsan elosonsz mellette. Megvizsgálod a terem túlsó végében lévő három ajtót.[/p]
@@ -980,7 +1824,97 @@
     <next id="252">Délnek?</next>
     <next id="84">Vagy nyugatra?</next>
   </p>
-  <!-- 123 -->
+  <p id="123">
+    <text>
+        [p]Az ellenséges jármű a legérzékenyebb pontját kínálva feléd megjelenik a látóteredben. A tűz viszonzásának veszélye nélkül lőhetsz.[/p]
+    </text>
+    <test against="skill" success="lower">
+      <success>
+        <text>
+            [p]Eltaláltad az ellenfeledet.[/p]
+        </text>
+        <add amount="-1" to="enemyShield" />
+        <itemCheck type="enemyShield" id="1">
+          <dontHave>
+            <next id="190"></next>
+          </dontHave>
+          <have>
+            <text>
+                [p]Az ellenséges tank jobbra fordul két háztömbbel odébb, és eltűnik a szemed elől. Adj 1-et a HELYZETEDHEZ.[/p]
+            </text>
+            <add amount="1" to="status" />
+            <itemCheck type="item" id="4064">
+              <have>
+                <next id="391"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4024">
+              <have>
+                <next id="167"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4022">
+              <have>
+                <next id="91"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4043">
+              <have>
+                <next id="380"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4094">
+              <have>
+                <next id="277"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4071">
+              <have>
+                <next id="73"></next>
+              </have>
+            </itemCheck>
+          </have>
+        </itemCheck>
+      </success>
+      <failure>
+        <text>
+            [p]Elvétetted az ellenfeledet.[/p]
+            [p]Az ellenséges tank jobbra fordul két háztömbbel odébb, és eltűnik a szemed elől. Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <add amount="1" to="status" />
+        <itemCheck type="item" id="4064">
+          <have>
+            <next id="391"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4024">
+          <have>
+            <next id="167"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4022">
+          <have>
+            <next id="91"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4043">
+          <have>
+            <next id="380"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4094">
+          <have>
+            <next id="277"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4071">
+          <have>
+            <next id="73"></next>
+          </have>
+        </itemCheck>
+      </failure>
+    </test>
+  </p>
   <p id="124">
     <text>
         [p]A mikrohelikopter a földre zuhan, és azonnal lángra lobban. A lángok hamar belekapnak a szomszédos számítógépbe, majd onnan a mellette lévő műszerekbe. Úgy tűnik, hamarosan a szoba egyetlen tomboló lángtengerré változik. Nincs sok időd átkutatni a terepet. Gyorsan körbeszaladsz, és vizsgálgatod a tárgyakat, miközben a hőség egyre elviselhetetlenebbé válik. Végül, félvén attól, hogy esetleg javíthatatlan károsodást szenved az űrruhád, kénytelen vagy kimenekülni azon az ajtón, amelyen bejöttél. Szerencsére azonban sikerült felkapnod [em]két[/em] kis tárgyat azok közül, amelyeket megvizsgáltál. Válassz kettőt az alábbi listáról:[/p]
@@ -1036,7 +1970,44 @@
     </text>
     <death />
   </p>
-  <!-- 130 -->
+  <p id="130">
+    <text>
+        [p]A járműved a ,,D'' ponton áll, és dél felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4043,4044,4051,4052,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4042">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="355">Elmehetsz a ,,G'' pontra</next>
+        <next id="380">Vagy kelet felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4042" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="1,2,3,4,5,6,7,10,11,12,13,14,15,16">
+          <have>
+            <next id="355">Elmehetsz a ,,G'' pontra</next>
+            <next id="380">Vagy kelet felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="9">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="8">
+          <have>
+            <next id="33"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="131">
     <text>
         [p class="inlineImage"][img src="resources/ff12/131.jpg" /][/p]
@@ -1066,7 +2037,54 @@
     </text>
     <next id="175"></next>
   </p>
-  <!-- 136 -->
+  <p id="136">
+    <text>
+        [p]A járműved az ,,F'' ponton áll, és dél felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4053,4054,4061,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4062">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="277">Elmehetsz az ,,I'' pontra</next>
+        <next id="391">Vagy nyugat felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4062" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="3,4,5,6,7,8,9,10,11,12,13">
+          <have>
+            <next id="277">Elmehetsz az ,,I'' pontra</next>
+            <next id="391">Vagy nyugat felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="14">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="16">
+          <have>
+            <next id="9"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="1">
+          <have>
+            <next id="33"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="2,15">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="137">
     <text>
         [p]Az ajtó egy otthonos hangulatot árasztó szobába nyílik. A falakat a padlótól a mennyezetig polcok borítják, rajtuk könyvek, mikrofilmek, újságok százai. A szoba közepén egy asztalon három mikrofilm hever, szemmel láthatólag valakinek oda lettek készítve. Az egyik a puhatestűek idegrendszeréről szól, a másik az idegmérgekről, a harmadik pedig egy robotikai cikk. Valószínűleg mindegyik fontos információkat tartalmaz, de csak az egyik elolvasására van időd. Melyik legyen az?[/p]
@@ -1275,7 +2293,57 @@
     <next id="288">Délnek?</next>
     <next id="27">Vagy inkább keletnek?</next>
   </p>
-  <!-- 161 -->
+  <p id="161">
+    <text>
+        [p]Az ellenséges jármű a legérzékenyebb pontját kínálva feléd megjelenik a látóteredben. A tűz viszonzásának veszélye nélkül lőhetsz.[/p]
+    </text>
+    <test against="skill" success="lower">
+      <success>
+        <text>
+            [p]Eltaláltad az ellenfeledet.[/p]
+        </text>
+        <add amount="-1" to="enemyShield" />
+        <itemCheck type="enemyShield" id="1">
+          <dontHave>
+            <next id="190"></next>
+          </dontHave>
+          <have>
+            <text>
+                [p]Az ellenséges tank elhúz tőled, de két háztömbbel odébb még mindig a szemed előtt marad. Adj 1-et a HELYZETEDHEZ.[/p]
+            </text>
+            <add amount="1" to="status" />
+            <itemCheck type="item" id="4032">
+              <have>
+                <next id="53"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4043">
+              <have>
+                <next id="380"></next>
+              </have>
+            </itemCheck>
+          </have>
+        </itemCheck>
+      </success>
+      <failure>
+        <text>
+            [p]Elvétetted az ellenfeledet.[/p]
+            [p]Az ellenséges tank elhúz tőled, de két háztömbbel odébb még mindig a szemed előtt marad. Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <add amount="1" to="status" />
+        <itemCheck type="item" id="4032">
+          <have>
+            <next id="53"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4043">
+          <have>
+            <next id="380"></next>
+          </have>
+        </itemCheck>
+      </failure>
+    </test>
+  </p>
   <p id="162">
     <text>
         [p]Átvizsgálod a szerzeményeidet.[/p]
@@ -1334,7 +2402,54 @@
   <p id="166">
     <empty />
   </p>
-  <!-- 167 -->
+  <p id="167">
+    <text>
+        [p]A járműved a ,,B'' ponton áll, és nyugat felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4024">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="349">Elmehetsz az ,,A'' pontra</next>
+        <next id="91">Vagy dél felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4024" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="1,2,8,9,13,14,15,16">
+          <have>
+            <next id="349">Elmehetsz az ,,A'' pontra</next>
+            <next id="91">Vagy dél felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="4,5,11,12">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="6,7">
+          <have>
+            <next id="123"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="3">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="10">
+          <have>
+            <next id="33"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="168">
     <text>
         [p]Merre mész?[/p]
@@ -1387,7 +2502,97 @@
     <next id="194">A szemben lévőt?</next>
     <next id="266">Vagy az oldalsót?</next>
   </p>
-  <!-- 176 -->
+  <p id="176">
+    <text>
+        [p]Az ellenséges jármű a legérzékenyebb pontját kínálva feléd megjelenik a látóteredben. A tűz viszonzásának veszélye nélkül lőhetsz.[/p]
+    </text>
+    <test against="skill" success="lower">
+      <success>
+        <text>
+            [p]Eltaláltad az ellenfeledet.[/p]
+        </text>
+        <add amount="-1" to="enemyShield" />
+        <itemCheck type="enemyShield" id="1">
+          <dontHave>
+            <next id="190"></next>
+          </dontHave>
+          <have>
+            <text>
+                [p]Az ellenséges tank balra fordul egy háztömbbel odébb, és eltűnik a szemed elől. Adj 1-et a HELYZETEDHEZ.[/p]
+            </text>
+            <add amount="1" to="status" />
+            <itemCheck type="item" id="4083">
+              <have>
+                <next id="265"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4053">
+              <have>
+                <next id="386"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4022">
+              <have>
+                <next id="91"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4061">
+              <have>
+                <next id="110"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4064">
+              <have>
+                <next id="391"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4034">
+              <have>
+                <next id="365"></next>
+              </have>
+            </itemCheck>
+          </have>
+        </itemCheck>
+      </success>
+      <failure>
+        <text>
+            [p]Elvétetted az ellenfeledet.[/p]
+            [p]Az ellenséges tank balra fordul egy háztömbbel odébb, és eltűnik a szemed elől. Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <add amount="1" to="status" />
+        <itemCheck type="item" id="4083">
+          <have>
+            <next id="265"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4053">
+          <have>
+            <next id="386"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4022">
+          <have>
+            <next id="91"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4061">
+          <have>
+            <next id="110"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4064">
+          <have>
+            <next id="391"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4034">
+          <have>
+            <next id="365"></next>
+          </have>
+        </itemCheck>
+      </failure>
+    </test>
+  </p>
   <p id="177">
     <itemCheck type="items" id="3005 or 3015 or 3018">
       <have>
@@ -1565,9 +2770,144 @@
     <gatherItem id="3018" />
     <next id="368"></next>
   </p>
-  <!-- 188 -->
+  <p id="188">
+    <text>
+        [p]Váratlanul ellenséges találat éri a harcjárművedet. Vonj le egyet a PAJZS pontjaidból.[/p]
+    </text>
+    <add amount="-1" to="selfShield" />
+    <add amount="1" to="status" />
+    <itemCheck type="selfShield" id="1">
+      <have>
+        <text>
+            [p]Nem tudod biztosan, melyik irányból lőttek rád. A tankod előtt mindenesetre nincs senki. Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <itemCheck type="item" id="4052">
+          <have>
+            <next id="22"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4032">
+          <have>
+            <next id="53"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4071">
+          <have>
+            <next id="73"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4022">
+          <have>
+            <next id="91"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4061">
+          <have>
+            <next id="110"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4062">
+          <have>
+            <next id="136"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4024">
+          <have>
+            <next id="167"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4084">
+          <have>
+            <next id="193"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4054">
+          <have>
+            <next id="216"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4013">
+          <have>
+            <next id="223"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4083">
+          <have>
+            <next id="265"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4094">
+          <have>
+            <next id="277"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4081">
+          <have>
+            <next id="313"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4023">
+          <have>
+            <next id="331"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4012">
+          <have>
+            <next id="349"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4034">
+          <have>
+            <next id="365"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4041">
+          <have>
+            <next id="374"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4043">
+          <have>
+            <next id="380"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4053">
+          <have>
+            <next id="386"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4064">
+          <have>
+            <next id="391"></next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            [p]Megsemmisült a tankod, és vele együtt te is. Kalandod itt véget ér.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 189 -->
-  <!-- 190 -->
+  <p id="190">
+    <text>
+        [p]A tankodban kialszanak a fények, és érzed, amint a széked felfelé emelkedik. A fejed fölött tolóajtók nyílnak majd csukódnak be, miután áthaladtál rajtuk. Hirtelen érzed, hogy szabadesésben zuhansz. Az ülésed már nincs a közelben. Pörögve zuhansz, minden irányérzékedet elveszted. Egy fénypontot pillantasz meg, mely egyre gyorsabban növekszik, majd még mielőtt felismerhetnéd, hogy mi is az, mar túljutottál rajta. Egy hosszú, kivilágított, nulla-gravitációs közlekedő csatornába jutottál - ez igen gyors és biztonságos módja az utazásnak. Legalábbis normális körülmények között. De a te esetedben az alagút végén egy emberevő Toroidot pillantasz meg, amint vészes sebességgel közeledik. A Toroid hatalmas, szem nélküli fánkhoz hasonlít. A közepén egy sötét kört pillantasz meg, melyet számos borotvaéles fog keretez - e felé a száj felé száguldasz most.[/p]
+    </text>
+    <add amount="-99" to="status" />
+    <itemCheck type="item" id="3002">
+      <have>
+        <next id="52">Ha elő akarsz kapni egy gravitációs bombát</next>
+        <next id="165">Ha vadul tüzet nyitnál a gyorsan közeledő szájra</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Vadul tüzet nyitsz a gyorsan közeledő szájra.[/p]
+        </text>
+        <next id="165"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="191">
     <text>
         [p]Az ajtó könnyedén nyílik. Szusszanás adja tudtodra, hogy egy kis légnyomáskülönbség volt a folyosó és az ajtó túloldalán fekvő helyiség között. Valószínűleg már régóta nem járt erre senki. Az ajtó egy hosszú, keskeny, alagútszerű szobára nyílik, melynek rikító színt kölcsönöznek a mennyezeten futó vörös világítócsövek. A szemközti falon, egy vibráló neon kereszt közepén egy dobozt látsz.[/p]
@@ -1577,7 +2917,49 @@
     <next id="175">Vagy a balra vezető alagútban mászol tovább?</next>
   </p>
   <!-- 192 -->
-  <!-- 193 -->
+  <p id="193">
+    <text>
+        [p]A járműved a ,,H'' ponton áll, és nyugat felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4084">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="73">Elmehetsz a ,,G'' pontra</next>
+        <next id="313">Vagy észak felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4084" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="1,2,3,4,9,10,11,14,15">
+          <have>
+            <next id="73">Elmehetsz a ,,G'' pontra</next>
+            <next id="313">Vagy észak felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="5,6,12,13,16">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="8">
+          <have>
+            <next id="261"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="7">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="194">
     <text>
         [p]A nyílás egy kör alakú légzsilipre nyűik. A zsilipből két ajtó nyílik - az egyiken a MENEKÜLŐKABIN felirat virít, a másik pedig egy biztonsági ajtó.[/p]
@@ -1776,7 +3158,53 @@
     <next id="83">Délre</next>
     <next id="159">Vagy kelet felé</next>
   </p>
-  <!-- 216 -->
+  <p id="216">
+    <text>
+        [p]A járműved az ,,E'' ponton áll, és nyugat felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4053,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4054">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="374">Elmehetsz a ,,D'' pontra úgy, hogy észak felé nézz</next>
+        <next id="130">Vagy úgy is, hogy dél felé nézz</next>
+        <next id="82">Észak felé fordulhatsz</next>
+        <next id="22">Vagy dél felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4054" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="1,2,3,4,7,8,10,11,15,16">
+          <have>
+            <next id="374">Elmehetsz a ,,D'' pontra úgy, hogy észak felé nézz</next>
+            <next id="130">Vagy úgy is, hogy dél felé nézz</next>
+            <next id="82">Észak felé fordulhatsz</next>
+            <next id="22">Vagy dél felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="5,12">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="9">
+          <have>
+            <next id="261"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="6,13,14">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="217">
     <text>
         [p]Ez bizony az, aminek látszik: erdő. Felhagysz a kutakodással, és inkább folytatod az utadat.[/p]
@@ -1852,7 +3280,54 @@
     <loseItem id="3018" />
     <next id="204"></next>
   </p>
-  <!-- 223 -->
+  <p id="223">
+    <text>
+        [p]A tankod az ,,A'' ponton áll, és keletnek néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4013">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="331">Ha a ,,B'' pontra akarsz menni</next>
+        <next id="349">Ha dél felé akarsz fordulni</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4013" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="1,2,6,7,13,14,15,16">
+          <have>
+            <next id="331">Ha a ,,B'' pontra akarsz menni</next>
+            <next id="349">Ha dél felé akarsz fordulni</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="3,4">
+          <have>
+            <next id="33"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="10">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="5,11,12">
+          <have>
+            <next id="261"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="8,9">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="224">
     <text>
         [p][alt]Mit ajánlasz fel a készülékdarabért cserébe?[/alt][/p]
@@ -2084,7 +3559,49 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 241 -->
+  <p id="241">
+    <text>
+        [p]A járműved az ,,I'' ponton áll, és észak felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4091">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="110">Elmehetsz az ,,F'' pontra</next>
+        <next id="277">Vagy nyugat felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4091" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="4,5,6,7,8,9,10,11,12,13,14">
+          <have>
+            <next id="110">Elmehetsz az ,,F'' pontra</next>
+            <next id="277">Vagy nyugat felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="2,3">
+          <have>
+            <next id="28"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="15">
+          <have>
+            <next id="33"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="1,16">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="242">
     <text>
         [p]Amikor kiveszed a fejet a zsákodból, az a főnökre mosolyog, és megszólal: - Jó napot, uram! Megkínálhatom Önt egy pohár Antaresi Vörössel? - A fej lenyűgözi az idegeneket. Amikor pedig rádöbbennek, hogy [em]ezt[/em] a csodás dolgot adod nekik azért a vacakért a totemoszlop tetején, nem győznek iparkodni, hogy lehozzák a fekete négyzetet a rúd tetejéről. Megkapod a készülékdarabot.[/p]
@@ -2315,7 +3832,117 @@
     </itemCheck>
     <next id="368"></next>
   </p>
-  <!-- 261 -->
+  <p id="261">
+    <text>
+        [p]Az ellenséges jármű a legérzékenyebb pontját kínálva feléd megjelenik a látóteredben. A tűz viszonzásának veszélye nélkül lőhetsz.[/p]
+    </text>
+    <test against="skill" success="lower">
+      <success>
+        <text>
+            [p]Eltaláltad az ellenfeledet.[/p]
+        </text>
+        <add amount="-1" to="enemyShield" />
+        <itemCheck type="enemyShield" id="1">
+          <dontHave>
+            <next id="190"></next>
+          </dontHave>
+          <have>
+            <text>
+                [p]Az ellenséges tank jobbra fordul egy háztömbbel odébb, és eltűnik a szemed elől. Adj 1-et a HELYZETEDHEZ.[/p]
+            </text>
+            <add amount="1" to="status" />
+            <itemCheck type="item" id="4013">
+              <have>
+                <next id="223"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4043">
+              <have>
+                <next id="380"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4041">
+              <have>
+                <next id="374"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4054">
+              <have>
+                <next id="216"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4081">
+              <have>
+                <next id="313"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4084">
+              <have>
+                <next id="193"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4052">
+              <have>
+                <next id="22"></next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4053">
+              <have>
+                <next id="386"></next>
+              </have>
+            </itemCheck>
+          </have>
+        </itemCheck>
+      </success>
+      <failure>
+        <text>
+            [p]Elvétetted az ellenfeledet.[/p]
+            [p]Az ellenséges tank jobbra fordul egy háztömbbel odébb, és eltűnik a szemed elől. Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <add amount="1" to="status" />
+        <itemCheck type="item" id="4013">
+          <have>
+            <next id="223"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4043">
+          <have>
+            <next id="380"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4041">
+          <have>
+            <next id="374"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4054">
+          <have>
+            <next id="216"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4081">
+          <have>
+            <next id="313"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4084">
+          <have>
+            <next id="193"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4052">
+          <have>
+            <next id="22"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4053">
+          <have>
+            <next id="386"></next>
+          </have>
+        </itemCheck>
+      </failure>
+    </test>
+  </p>
   <!-- 262 -->
   <p id="263">
     <text>
@@ -2343,7 +3970,54 @@
     <next id="63">Az elsőt, amelyikből a köhögés hallatszik?</next>
     <next id="318">Vagy a másodikat, ahonnan nem hallani semmit?</next>
   </p>
-  <!-- 265 -->
+  <p id="265">
+    <text>
+        [p]A járműved a ,,H'' ponton áll, és kelet felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4083">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="241">Elmehetsz az ,,I'' pontra</next>
+        <next id="313">Vagy észak felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4083" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="2,3,4,8,9,10,11,14,15">
+          <have>
+            <next id="241">Elmehetsz az ,,I'' pontra</next>
+            <next id="313">Vagy észak felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="5,6,12,13">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="1">
+          <have>
+            <next id="176"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="7">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="16">
+          <have>
+            <next id="33"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="266">
     <text>
         [p class="inlineImage"][img src="resources/ff12/266.jpg" /][/p]
@@ -2606,7 +4280,49 @@
       </even>
     </random>
   </p>
-  <!-- 277 -->
+  <p id="277">
+    <text>
+        [p]A járműved az ,,I'' ponton áll, és nyugat felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093" amount="99" />
+    <itemCheck type="item" id="4094">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="193">Elmehetsz a ,,H'' pontra</next>
+        <next id="241">Vagy észak felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4094" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="4,5,6,7,8,9,10,11,12,13,14">
+          <have>
+            <next id="193">Elmehetsz a ,,H'' pontra</next>
+            <next id="241">Vagy észak felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="7,8">
+          <have>
+            <next id="123"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="1,16">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="15">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="278">
     <text>
         [p]Még idejében hátraugrasz, így sikerül elkerülnöd a kicsapó kábeleket, amint szikraesőt szórva a padlóra omlanak A nyílás nyilván nem vezet tovább, ezért megfordulsz, és megvizsgálod a másikat.[/p]
@@ -3031,7 +4747,61 @@
     </fight>
     <next id="366"></next>
   </p>
-  <!-- 313 -->
+  <p id="313">
+    <text>
+        [p]A járműved a ,,H'' ponton áll, és észak felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4081">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="82">Elmehetsz az ,,E'' pontra</next>
+        <next id="193">Nyugat felé fordulhatsz</next>
+        <next id="265">Vagy kelet felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4081" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="1,2,3,8,9,10,15">
+          <have>
+            <next id="82">Elmehetsz az ,,E'' pontra</next>
+            <next id="193">Nyugat felé fordulhatsz</next>
+            <next id="265">Vagy kelet felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="4,11">
+          <have>
+            <next id="9"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="14">
+          <have>
+            <next id="261"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="16">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="5,6,12,13">
+          <have>
+            <next id="33"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="7">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="314">
     <text>
         [p]Átadod a flakont a főnöknek. A főnök alaposan megnézi, forgatja egy darabig a kezei között, majd megnyomja a flakon tetején lévő gombot - és egyenesen szembefújja magát. Egy pillanat múlva holtan hever a földön. A többi idegen lény egy pillanatig dermedten áll, majd egy emberként rád vetik magukat. Tűhegyes dárdáiknak csak egy ideig tud ellenállni a páncélzatod. Lassan a földre tepernek, ahonnan már soha többé nem kelsz fel. Küldetésed kudarcba fulladt.[/p]
@@ -3205,7 +4975,49 @@
     </random>
     <next id="312"></next>
   </p>
-  <!-- 331 -->
+  <p id="331">
+    <text>
+        [p]A járműved a ,,B'' ponton áll, és kelet felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4023">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="53">Elmehetsz a ,,C'' pontra</next>
+        <next id="91">Vagy dél felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4023" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="1,2,6,7,8,9,13,14,15,16">
+          <have>
+            <next id="53">Elmehetsz a ,,C'' pontra</next>
+            <next id="91">Vagy dél felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="3">
+          <have>
+            <next id="33"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="4,5,11,12">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="10">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 332 -->
   <p id="333">
     <text>
@@ -3324,7 +5136,49 @@
     <loseItem id="3005" />
     <next id="204"></next>
   </p>
-  <!-- 349 -->
+  <p id="349">
+    <text>
+        [p]A járműved az ,,A'' ponton áll, és dél felé néz.[/p]
+    </text>
+    <loseItem id="4011,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4012">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="130">Elmehetsz a ,,D'' pontra</next>
+        <next id="223">Vagy kelet felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4012" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="1,2,5,6,7,11,12,13,14,15,16">
+          <have>
+            <next id="130">Elmehetsz a ,,D'' pontra</next>
+            <next id="223">Vagy kelet felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="3,4">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="10">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="8,9">
+          <have>
+            <next id="33"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="350">
     <text>
         [p]A lények barátságosnak tűnnek ugyan, de ki tudja, meddig? Mindenesetre úgy döntesz, hogy megerősíted a barátságukat egy megfelelő ajándékkal. [alt]Melyik tárgyadat adod nekik?[/alt][/p]
@@ -3418,7 +5272,49 @@
     </text>
     <death />
   </p>
-  <!-- 355 -->
+  <p id="355">
+    <text>
+        [p]A járműved a ,,G'' ponton áll, és kelet felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4053,4054,4061,4062,4063,4064,4071,4072,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4073">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="265">Elmehetsz a ,,H'' pontra</next>
+        <next id="73">Vagy észak felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4073" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="2,3,4,5,6,9,10,11,12,13,14,15">
+          <have>
+            <next id="265">Elmehetsz a ,,H'' pontra</next>
+            <next id="73">Vagy észak felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="1">
+          <have>
+            <next id="28"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="7,16">
+          <have>
+            <next id="33"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="8">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="356">
     <text>
         [p]Az ajtó egy hosszú, kivilágított folyosóra nyílik. Már jó néhány perce mehetsz előre a nyílegyenes folyosón, amikor egy ajtóhoz érsz, amely a bal oldali falból nyílik.[/p]
@@ -3508,7 +5404,54 @@
     </fight>
     <next id="13"></next>
   </p>
-  <!-- 365 -->
+  <p id="365">
+    <text>
+        [p]A járműved a ,,C'' ponton áll, és nyugat felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4041,4042,4043,4044,4051,4052,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4034">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="167">Elmehetsz a ,,B'' pontra</next>
+        <next id="53">Vagy dél felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4034" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="6,7,8,9,11,13,14,15,16">
+          <have>
+            <next id="167">Elmehetsz a ,,B'' pontra</next>
+            <next id="53">Vagy dél felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="4,5,12">
+          <have>
+            <next id="176"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="3">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="10,11">
+          <have>
+            <next id="33"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="1,2">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="366">
     <text>
         [p]A lények holtteste a víz színén marad lebegve. A kijárathoz rohansz.[/p]
@@ -3557,7 +5500,49 @@
     <next id="295">Végignézed a zsákodat, hátha találsz valami megfelelő eszközt?</next>
     <next id="383">Vagy félreteszed a kötelező udvariasságot, és egyszerűen szétlövöd a lényt?</next>
   </p>
-  <!-- 374 -->
+  <p id="374">
+    <text>
+        [p]A járműved a ,,D'' ponton áll, és észak felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4042,4043,4044,4051,4052,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4041">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="223">Elmehetsz az ,,A'' pontra</next>
+        <next id="380">Vagy kelet felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4041" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="1,2,3,4,5,6,7,11,12,13,14,15,16">
+          <have>
+            <next id="223">Elmehetsz az ,,A'' pontra</next>
+            <next id="380">Vagy kelet felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="8">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="10">
+          <have>
+            <next id="261"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="9">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="375">
     <text>
         [p]Ahogy kinyitod az ajtót, kék, elektromos lángok csapnak ki, és borítanak be egy szemvillanás alatt.[/p]
@@ -3657,8 +5642,76 @@
     <next id="388">Te magad kóstolod meg először az egyiket?</next>
     <next id="118a">Vagy nem törődsz a ládával, a mókusforma lényt magaddal viszed, és folytatod az utad a folyosón?</next>
   </p>
-  <!-- 380 -->
-  <!-- 381 -->
+  <p id="380">
+    <text>
+        [p]A járműved a ,,D'' ponton áll, és kelet felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4044,4051,4052,4053,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4043">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="386">Elmehetsz az ,,E'' pontra</next>
+        <next id="374">Észak felé fordulhatsz</next>
+        <next id="130">Vagy dél felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4043" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="1,3,4,5,7,10,11,12,16">
+          <have>
+            <next id="386">Elmehetsz az ,,E'' pontra</next>
+            <next id="374">Észak felé fordulhatsz</next>
+            <next id="130">Vagy dél felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="8">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="6">
+          <have>
+            <next id="261"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="14,15">
+          <have>
+            <next id="123"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="13">
+          <have>
+            <next id="161"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="2">
+          <have>
+            <next id="28"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="9">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="381">
+    <text>
+        [p]Egy sötét, rendetlen szobába jutsz. Mindenféle monitorok, pontosan testre szabott ülések és irányítópultok zsúfolódnak össze szinte minden rendelkezésre álló helyen. Beülsz a szemre legkényelmesebb ülésbe (lehet vagy nyolc-kilenc a szobában) és nekiállsz kideríteni, mire is szolgálnak a műszerfal kapcsolói. Váratlanul kialszanak a fények, az ülésed besüllyed a padlóba, és egy gépi hang szólal meg: - Gratulálok, Ön a „Harcoljunk a végsőkig” utcai harci játékot választotta. Ön egy 4000 Bevawatt-os lézerágyúval felfegyverzett XM3-as Harci Rohamkocsit fog irányítani. Az ellenfele egy 6000 Bevawatt-os lézerágyúval felszerelt US11 Tankelhárító járművet vezet, ez könnyebb, de egyúttal gyorsabb is, mint az Öné. Sok szerencsét! - A fények ismét kigyulladnak. Egy páncélozott rohamkocsi vezérlőpultjánál találod magad. A külvilágra nyíló egyetlen résen néhány háztömböt pillantasz meg. Sajnos a kitekintő rés csak azt engedi látni, ami közvetlenül a tankod előtt van, azt nem, ami oldalt vagy mögötted található.[/p]
+        [p][em]A jármüvek[/em]: Ebben a harcban nem a saját PÁNCÉLZATODAT és ÉLETERŐDET fogod használni, hanem a járművek PAJZSAIT. A te járműved védelmi szintje 5-ös, azaz 5 PAJZS pontja van, míg az ellenfelednek csak 4. A [em]Kalandlapodon[/em] megtalálod a PAJZS pontokat feltüntetve. Minden találat 1-gyel csökkenti az illető jármű PAJZS pontjainak számát. Ha ez az érték 0-ra csökkent, a jármű elpusztult (a vezetőjével együtt). Amikor tüzet nyitsz az ellenfeledre, dobj két kockával. Ha az eredmény [em]kisebb[/em], mint az ÜGYESSÉGED, akkor eltaláltad az ellenséges járművet. Ha az eredmény [em]nagyobb vagy ugyanannyi[/em], mint az ÜGYESSÉGED, akkor mellélőttél.[/p]
+        [p][em]Helyzet[/em]: A HELYZETET használjuk a járművének mozgatásához. A harc közben majd utasításokat fogsz kapni, hogy változtasd meg a saját HELYZETED, és vesd össze bizonyos adott értékekkel - fontos, hogy [em]minden[/em] ezt érintő utasítást betarts. A HELYZET értéke 1-től 16-ig terjedhet; ha elérné a 17-et, állítsd be 1-re. Minden egyes alkalommal, amikor egy új helyre mész, vagy egy új irányba fordulsz a járműveddel, adj 1-et a HELYZETEDHEZ. Most, kezdéskor a HELYZETED nulla. Ez az érték fog majd növekedni (16 fölött pedig újból 1-től kezdődni) a harc során. Ne izgulj, ha elkezded a játékot, minden sokkal érthetőbb lesz.[/p]
+        [p][em]Mozgás[/em]: Feltétlenül szükséges, hogy használd a térképet a harcmezőn elfoglalt pozíciód jelölésére. A mozgás a térképen lévő pontokkal (A, B, C, D, E, F, G, H, I) lesz jelölve. A járművednek állandóan mozognia kell - nem ülhetsz mozdulatlanul egy ponton, hogy megvárd, hogy az ellenséges tank a lézerágyúd elé kerüljön.[/p]
+        [p class="inlineImage"][img src="resources/ff12/playground.jpg" /][/p]
+    </text>
+    <next id="223"></next>
+  </p>
   <p id="382">
     <text>
         [p]A gömbök szétválnak előtted, ahogy lendületesen előrelépsz. Belépsz az ajtón, és egy magas mennyezetű terembe jutsz. Két oldalon a fal mellett a legkülönfélébb lények modelljeit látod alacsony kő talapzatokon. Egymás felé fordulva állnak párosával (egyik a bal falnál, a másik a jobb falnál) - alumíniummadarak, hatlábú acélteknősök, és még ki tudja, miféle lények. Összesen nyolcan vannak. Lassan haladsz előre a teremben. Amint egy vonalba érsz az első párral, azok életre kelnek, és feléd fordulnak.[/p]
@@ -3683,7 +5736,58 @@
     </text>
     <death />
   </p>
-  <!-- 386 -->
+  <p id="386">
+    <text>
+        [p]A járműved az ,,E'' ponton áll, és kelet felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4054,4061,4062,4063,4064,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4053">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="110">Elmehetsz az ,,F'' pontra úgy, hogy északnak fordulsz</next>
+        <next id="136">Vagy úgy, hogy délnek fordulsz</next>
+        <next id="82">Észak felé fordulhatsz</next>
+        <next id="22">Vagy dél felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4053" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="1,3,4,7,8,9,10,11,16">
+          <have>
+            <next id="110">Elmehetsz az ,,F'' pontra úgy, hogy északnak fordulsz</next>
+            <next id="136">Vagy úgy, hogy délnek fordulsz</next>
+            <next id="82">Észak felé fordulhatsz</next>
+            <next id="22">Vagy dél felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="6,13,14">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="5,12">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="2">
+          <have>
+            <next id="176"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="15">
+          <have>
+            <next id="261"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="387">
     <text>
         [p]- Jó - feleli az egyik. - Ja - mondja a másik. Elfordulnak, és a mennyezetre bámulnak. Továbblépsz, és a harmadik páros fordul feléd. - Hé, hé, te bádogfejű! - kiáltja az egyik. - Ez az, hová megyünk, hová megyünk? - kérdi a másik. Mit válaszolsz?[/p]
@@ -3711,7 +5815,66 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 391 -->
+  <p id="391">
+    <text>
+        [p]A járműved az ,,F'' ponton áll, és nyugat felé néz.[/p]
+    </text>
+    <loseItem id="4011,4012,4013,4014,4021,4022,4023,4024,4031,4032,4033,4034,4041,4042,4043,4044,4051,4052,4053,4054,4061,4062,4063,4071,4072,4073,4074,4081,4082,4083,4084,4091,4092,4093,4094" amount="99" />
+    <itemCheck type="item" id="4064">
+      <have>
+        <text>
+            [p]Mit teszel?[/p]
+        </text>
+        <next id="216">Elmehetsz az ,,E'' pontra</next>
+        <next id="110">Észak felé fordulhatsz</next>
+        <next id="136">Vagy dél felé fordulhatsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Adj 1-et a HELYZETEDHEZ.[/p]
+        </text>
+        <gatherItem id="4064" />
+        <add amount="1" to="status" />
+        <itemCheck type="status" id="3,4,5,7,8,10,11,12,16">
+          <have>
+            <next id="216">Elmehetsz az ,,E'' pontra</next>
+            <next id="110">Észak felé fordulhatsz</next>
+            <next id="136">Vagy dél felé fordulhatsz</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="6">
+          <have>
+            <next id="176"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="9">
+          <have>
+            <next id="123"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="13">
+          <have>
+            <next id="9"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="1">
+          <have>
+            <next id="188"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="2,15">
+          <have>
+            <next id="66"></next>
+          </have>
+        </itemCheck>
+        <itemCheck type="status" id="14">
+          <have>
+            <next id="33"></next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="392">
     <text>
         [p]A Zarkot ugyan elpusztítottad, de - őszinte sajnálatodra - a dezintegrátorát olyan különös földönkívüli módon tervezték, hogy hiába nézegeted, forgatod, nem tudsz rájönni, hogyan kellene használni. Úgy döntesz, hogy inkább megvizsgálod a szemközti falon lévő ajtókat.[/p]
