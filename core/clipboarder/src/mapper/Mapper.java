@@ -76,6 +76,7 @@ public class Mapper {
     private static String getMapContent(final String content) {
         String map = "digraph dotOut {";
         final Set<String> connections = new HashSet<>();
+        final Set<String> connectionsToIgnore = new HashSet<>();
         final Set<String> implementedSections = new HashSet<>();
         final Set<String> referencedSections = new HashSet<>();
         final Set<String> gatherItemSections = new HashSet<>();
@@ -89,7 +90,17 @@ public class Mapper {
             while (matcher2.find()) {
                 final String next = matcher2.group(1);
                 referencedSections.add(next);
-                connections.add("\"" + id + "\"->\"" + next + "\";");
+                final String revConnection = "\"" + next + "\"->\"" + id + "\"";
+                final String newConnection = "\"" + id + "\"->\"" + next + "\"";
+                if (!connectionsToIgnore.contains(newConnection)) {
+                    if (connections.contains(revConnection)) {
+                        connections.remove(revConnection);
+                        connections.add(revConnection + "[color=red,arrowtail=normal]");
+                    } else {
+                        connections.add(newConnection);
+                    }
+                    connectionsToIgnore.add(newConnection);
+                }
             }
             if (section.contains("<fight")) {
                 fightSections.add(id);
@@ -106,7 +117,7 @@ public class Mapper {
             map += "\"" + id + "\"[fillcolor=cyan,style=filled];";
         }
         for (final String connection : connections) {
-            map += connection;
+            map += connection + ";";
         }
         for (final String id : fightSections) {
             map += "\"" + id + "\"" + "[shape=diamond];";
