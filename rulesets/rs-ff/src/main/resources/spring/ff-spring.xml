@@ -210,14 +210,18 @@
     <entry key="skill" value-ref="ffItemCheckAttributeCommand" />
     <entry key="stamina" value-ref="ffItemCheckAttributeCommand" />
     <entry key="luck" value-ref="ffItemCheckAttributeCommand" />
-    <entry key="fear" value-ref="ffItemCheckAttributeCommand" />
-    <entry key="wisdom" value-ref="ffItemCheckAttributeCommand" />
-    <entry key="armour" value-ref="ffItemCheckAttributeCommand" />
-    <entry key="faith" value-ref="ffItemCheckAttributeCommand" />
     <entry key="gold" value-ref="ffItemCheckAttributeCommand" />
     <entry key="goldpiece" value-ref="ffItemCheckGoldPiecesCommand" />
     <entry key="value" value-ref="ffItemCheckValueCommand" />
     <entry key="pos" value-ref="ffItemCheckPosCommand" />
+
+    <entry key="fear" value-ref="ffItemCheckAttributeCommand" />
+    <entry key="wisdom" value-ref="ffItemCheckAttributeCommand" />
+    <entry key="armour" value-ref="ffItemCheckAttributeCommand" />
+    <entry key="faith" value-ref="ffItemCheckAttributeCommand" />
+    <entry key="status">
+      <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckAttributeEqualityCommand" />
+    </entry>
   </util:map>
 
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommandResolver" id="ffItemCheckCommandResolver" p:stubCommands-ref="ffItemCheckStubCommands" />

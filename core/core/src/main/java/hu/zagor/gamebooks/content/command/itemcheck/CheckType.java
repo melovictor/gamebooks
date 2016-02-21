@@ -12,12 +12,14 @@ public enum CheckType {
     skill,
     stamina,
     luck,
-    fear,
-    faith,
     gold,
     goldpiece,
     value,
     pos,
+
+    faith,
     wisdom,
-    armour
+    fear,
+    armour,
+    status
 }

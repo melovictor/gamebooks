@@ -15,15 +15,29 @@
 			<span class="ffInitialMainAttribute"><spring:message code="page.ff12.attribute.armour.initial" /> ${charEquipments.initialArmour}</span>
 			<div class="ffMainAttributeValue" data-attribute-armour>${charEquipments.armour}</div>
 		</div>
-		<div class="ffMainAttribute32">
-			<span class="ffMainAttribute"><spring:message code="page.ff.attribute.provision" /></span>
-			<div data-items="true">
-				<c:set var="isFirst" value="true" />
-				<c:forEach var="item" items="${charEquipments.provisions}"><c:if test="${!isFirst}">,</c:if>
-					<c:set var="isFirst" value="false" />
-					<span data-item-id="${item.id}" data-item-provision>${item.amount} x ${item.name}</span></c:forEach>
-			</div>
-		</div>
+        <div class="ffMainAttribute32">
+            <span class="ffMainAttribute"><spring:message code="page.ff.attribute.provision" /></span>
+            <div data-items="true">
+                <c:set var="isFirst" value="true" />
+                <c:forEach var="item" items="${charEquipments.provisions}"><c:if test="${!isFirst}">,</c:if>
+                    <c:set var="isFirst" value="false" />
+                    <span data-item-id="${item.id}" data-item-provision>${item.amount} x ${item.name}</span></c:forEach>
+            </div>
+        </div>
+        <c:if test="${charEquipments.status > 0}">
+            <div class="ffMainAttribute3">
+                <span class="ffMainAttribute"><spring:message code="page.ff12.attribute.status" /></span>
+                <div class="ffMainAttributeValue" data-attribute-armour>${charEquipments.status}</div>
+            </div>
+            <div class="ffMainAttribute3">
+                <span class="ffMainAttribute"><spring:message code="page.ff12.attribute.selfShield" /></span>
+                <div class="ffMainAttributeValue" data-attribute-armour>${charEquipments.selfShield}</div>
+            </div>
+            <div class="ffMainAttribute3">
+                <span class="ffMainAttribute"><spring:message code="page.ff12.attribute.enemyShield" /></span>
+                <div class="ffMainAttributeValue" data-attribute-armour>${charEquipments.enemyShield}</div>
+            </div>
+        </c:if>
 
 
 		<tiles:insertTemplate template="../charpage/eq.jsp" />

@@ -14,6 +14,9 @@ import org.springframework.stereotype.Component;
 public class Ff12CharacterPageData extends FfCharacterPageData {
     private final int armour;
     private final int initialArmour;
+    private final int status;
+    private final int selfShield;
+    private final int enemyShield;
 
     /**
      * Bean for storing data to display on the character page for Fighting Fantasy 12 book.
@@ -24,6 +27,9 @@ public class Ff12CharacterPageData extends FfCharacterPageData {
         super(character, handler);
         armour = character.getArmour();
         initialArmour = character.getInitialArmour();
+        status = character.getStatus();
+        selfShield = character.getSelfShield();
+        enemyShield = character.getEnemyShield();
     }
 
     public int getArmour() {
@@ -32,6 +38,18 @@ public class Ff12CharacterPageData extends FfCharacterPageData {
 
     public int getInitialArmour() {
         return initialArmour;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public int getSelfShield() {
+        return selfShield;
+    }
+
+    public int getEnemyShield() {
+        return enemyShield;
     }
 
 }

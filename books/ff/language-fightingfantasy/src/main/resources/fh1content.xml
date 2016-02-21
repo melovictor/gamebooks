@@ -188,9 +188,41 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 14 -->
-  <!-- 15 -->
-  <!-- 16 -->
+  <p id="14">
+    <text>
+        [p class="inlineImage"][img src="resources/ff12/14.jpg" /][/p]
+        [p]Egy kis séta után egy helyiségbe érsz, melyben tizenhét-tizennyolc kis fekete gömb lebeg. Annyira tökéletesen feketék, hogy lyukaknak látszanak a levegőben. Lassú tempóban keringnek körbe-körbe, de nem érnek hozzá semmihez sem. A helyiség másik végében, a gömbökön túl egy ajtót pillantasz meg.[/p]
+    </text>
+    <itemCheck type="item" id="3018">
+      <have>
+        <next id="128" pos="1">Ha használnád a Pán-dimenzionális Hazatérítő Készüléket</next>
+      </have>
+    </itemCheck>
+    <next id="382" pos="2">Ha nem törődve a gömbökkel, keresztülvágsz a szobán, és kinyitod a szemközti ajtót</next>
+    <next id="90" pos="3">Ha megpróbálsz eljutni az ajtóhoz úgy, hogy igyekszel nem hozzáérni a gömbökhöz</next>
+    <next id="381" pos="4">Ha visszamész abba a szobába, ahonnan jöttél, és megpróbálkozol inkább a bal oldali ajtóval</next>
+    <next id="34" pos="5">Ha visszamész az előző szobába, és átmész a jobb oldali ajtón</next>
+  </p>
+  <p id="15">
+    <text>
+        [p]- Rajta, kérdezz! - mondod. - Hát akkor, válaszolj - kezdi az idegen - Milyen betű következik a sorban: E K H N Ö H H Ny?[/p]
+    </text>
+    <userInput type="text">
+      <label>Melyik a következő betű a sorban?</label>
+      <result text="k">
+        <next id="140"></next>
+      </result>
+      <resultElse>
+        <text>
+            [p]Rosszul válaszoltál, és a lény azon nyomban atomjaidra robbant.[/p]
+        </text>
+        <death />
+      </resultElse>
+    </userInput>
+  </p>
+  <p id="16">
+    <empty />
+  </p>
   <p id="17">
     <text>
         [p]Felajánlod az állkapcsokat a főnöknek. Úgy tűnik, ez a cselekedeted mindenkinek a megelégedésére szolgált. A lények ismét táncolnak egy kicsit, énekelnek is hozzá valamit, minden bizonnyal a te nagylelkűségedről (bár egy kukkot sem értesz a nyelvükből).[/p]
@@ -292,14 +324,26 @@
     <next id="155"></next>
   </p>
   <!-- 33 -->
-  <!-- 34 -->
+  <p id="34">
+    <text>
+        [p]Az ajtón át egy hosszú és meglehetősen elhanyagolt folyosóra jutsz. Mindent mocsok és korom borít, a világító-testek közül néhány nem működik. A komor hangulat szinte terád is átragad. Végül a folyosó kettéágazik: az egyik ág kezdeténél egy régi, kopott tábla lóg a mennyezetről, ,,VESZÉLYES!'' felirattal, a másik ág pedig jelzés nélkül nyúlik a homályos messzeségbe.[/p]
+    </text>
+    <next id="378">A ,,VESZÉLYES!'' feliratú folyosón mész tovább?</next>
+    <next id="44">Vagy inkább a másikon?</next>
+  </p>
   <p id="35">
     <text>
         [p]A főnök elveszi a gyümölcsöt, beleharap, és holtan terül el a földön. A többi lény egy pillanatig döbbenten áll, majd vad visítással a nyakadba ugranak. Apró, tűhegyes dárdáiknak nem tud sokáig ellenállni a páncélzatod. A földre rogysz, és elsötétül előtted a világ. Kalandod csúfos véget ért.[/p]
     </text>
     <death />
   </p>
-  <!-- 36 -->
+  <p id="36">
+    <text>
+        [p]Hogyan akarod kezelni a helyzetet?[/p]
+    </text>
+    <next id="74">Megküzdesz az őrrobotokkal?</next>
+    <next id="150">Vagy inkább felugrasz a mennyezetet alkotó rácsra, és azt fedezékként felhasználva megpróbálod megközelíteni az ajtót?</next>
+  </p>
   <!-- 37 -->
   <!-- 38 -->
   <p id="39">
@@ -350,7 +394,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 44 -->
+  <p id="44">
+    <text>
+        [p]Ahogy előrehaladsz a kanyargó folyosón, egyre kevesebb mennyezeti világítótest működik, így egyre nagyobb sötétben vagy kénytelen gyalogolni. A folyosó egy függőleges aknában végződik. Belekukucskálsz a kör alakú aknába, és észreveszed, hogy létrafokok vannak a falba mélyesztve, melyek felfelé vezetnek. Veled szemben a szemközti falon egy gyűrűforma kapcsolót látsz. Valószínűleg ez lehet az antigravitációs lift indítója.[/p]
+    </text>
+    <next id="86">Meghúzod a gyűrűt?</next>
+    <next id="360">Vagy inkább a létrafokokon mászol fel?</next>
+  </p>
   <p id="45">
     <text>
         [p]Sajnos nincs elég erőd, hogy átúszd a folyót, így az áramlat magával ragad. A folyó alsóbb szakasza felől zúgok hangját hallod. Kétségbeesetten próbálsz partra evickélni, de hiába: a folyó átsodor egy meglehetősen hosszú, köves, sziklás szakaszon, apró vízesések és örvények között. Minden erődet latba veted, de ennek ellenére nem menekülsz meg az éles szikláktól.[/p]
@@ -394,7 +444,13 @@
     </text>
     <next id="8"></next>
   </p>
-  <!-- 47 -->
+  <p id="47">
+    <text>
+        [p]A könyvből szerzett tudásod képessé tesz, hogy minden alkalommal, amikor eltalálod a kagylópolip testét, plusz 1 pontot sebezz rajta (a hagyományos sebzésen kívül).[/p]
+    </text>
+    <changeEnemy attribute="damageAbsorption" id="26" set="-1" />
+    <next id="85"></next>
+  </p>
   <p id="48">
     <text>
         [p class="inlineImage"][img src="resources/ff12/48.jpg" /][/p]
@@ -419,7 +475,13 @@
     <next id="88">Bemész az ajtón?</next>
     <next id="345">Vagy inkább visszafordulsz, és a bal oldali leágazást választod?</next>
   </p>
-  <!-- 51 -->
+  <p id="51">
+    <text>
+        [p]A gravitációs bomba egy szempillantás alatt magába szippantja az ajtót. Amikor a fény visszatér (ugyanis a hatalmas gravitációs tér azt is elnyelte), látod, hogy nemcsak az ajtó, de vele együtt egy jókora darab fal is semmivé vált. Átlépsz a nyíláson.[/p]
+    </text>
+    <loseItem id="3002" />
+    <next id="14"></next>
+  </p>
   <!-- 52 -->
   <!-- 53 -->
   <p id="54">
@@ -429,7 +491,13 @@
     <next id="388">Megkóstolhatod az egyiket</next>
     <next id="118">Vagy hagyhatod őket, és folytathatod az utadat a folyosón</next>
   </p>
-  <!-- 55 -->
+  <p id="55">
+    <text>
+        [p]Felajánlod az állkapcsot a főnöknek. Úgy látszik, ez a cselekedeted mindenki tetszését elnyerte. Amikor azonban kiderül, hogy viszonzásképpen a totemoszlop tetején lévő készülékdarabot kéred, a lények egy szempillantás alatt felmérgesednek. Néhányan vadul feléd rázzák a lándzsáikat - amelyek hegye nem tűnik túl kellemesnek. Úgy döntesz, hogy gyorsan olajra lépsz, mielőtt még rád támadnának.[/p]
+    </text>
+    <loseItem id="3019" />
+    <next id="361"></next>
+  </p>
   <!-- 56 -->
   <!-- 57 -->
   <p id="58">
@@ -548,10 +616,37 @@
     <next id="146">Megpróbálsz kitalálni valami mesét, hogy az űrhajó személyzetéhez tartozol?</next>
     <next id="184">Vagy végigkutatod a zsákodat, valami alkalmas tárgy után keresvén?</next>
   </p>
-  <!-- 71 -->
-  <!-- 72 -->
+  <p id="71">
+    <text>
+        [p]Őszinte sajnálatodra, két kivétellel az összes műlénynek plazmavetőik vannak a mellkasukban, a lábukban, a szárnyuk alatt, és még egyéb valószínűtlen helyeken. Mind rád támadnak! [em]Egyszerre[/em] kell megküzdened velük, azaz egy körben te csak egyet, míg ők hatot lőnek.[/p]
+    </text>
+    <fight type="shooting" preFight="false">
+      <enemy id="32" />
+      <enemy id="33" />
+      <enemy id="34" />
+      <enemy id="35" />
+      <enemy id="36" />
+      <enemy id="37" />
+    </fight>
+    <next id="329"></next>
+  </p>
+  <p id="72">
+    <text>
+        [p]A kör keresztmetszetű alagút meglehetősen szűk. Ahogy kúszol, észreveszed, hogy körülbelül kétméterenként egy gyűrű van a falba erősítve. Ez felkelti az érdeklődésedet, amely azonban nem tarthat sokáig. Észreveszed, hogy időközben kiszivattyúzták a levegőt az alagútból, és a gyűrűk - több száz gyűrű, végig a folyosón - izzani kezdenek. Azonnal felismered a helyzetet - egy müon gyorsítóba másztál be! A gyűrűk élesen felvillannak, és a folyosón végigszáguldó müonok egy szempillantás alatt porrá égetnek. Kalandod itt ért szomorú véget.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 73 -->
-  <!-- 74 -->
+  <p id="74">
+    <text>
+        [p]Mivel elég messzire vagy a robotoktól, eldobhatsz egy gránátot - ha van nálad. A robotok egyszerre tüzelnek rád.[/p]
+    </text>
+    <fight type="shooting" preFight="true">
+      <enemy id="38" />
+      <enemy id="39" />
+    </fight>
+    <next id="351"></next>
+  </p>
   <!-- 75 -->
   <!-- 76 -->
   <p id="77">
@@ -620,8 +715,21 @@
     <next id="306">Délnek?</next>
     <next id="122">Vagy keletnek?</next>
   </p>
-  <!-- 85 -->
-  <!-- 86 -->
+  <p id="85">
+    <text>
+        [p]Kétségbeesett közelharc veszi kezdetét.[/p]
+    </text>
+    <fight type="single" preFight="false">
+      <enemy id="26" />
+    </fight>
+    <next id="182"></next>
+  </p>
+  <p id="86">
+    <text>
+        [p]Amikor meghúzod a gyűrűt, a padló váratlanul szétnyílik alattad, te pedig belezuhansz a mélységbe. Egy csatornán csúszol lefelé, miközben felismered, hogy ez a [em]Vandervecken[/em] egyik szemétkidobó alagútja. Amikor a végére érsz kinyílik előtted egy zsilipajtó, és a légnyomáskülönbség kitaszít a világűrbe. Tehetetlenül lebegve kell várakoznod, ameddig az űrruhádba épített tartályokból ki nem fogy az oxigén.[/p]
+    </text>
+    <death />
+  </p>
   <p id="87">
     <text>
         [p]Ellebegsz a folyosó előtt, és egy kis idő múlva megpillantod a másik rámpát.[/p]
@@ -636,10 +744,26 @@
     <next id="164">Megpróbálod feléleszteni az egyik kapszula lakóját?</next>
     <next id="126">Vagy inkább itthagyod ezt a vészjósló termet?</next>
   </p>
-  <!-- 89 -->
-  <!-- 90 -->
+  <p id="89">
+    <text>
+        [p]- Nana, hapsikám! - mondja az egyik. - De nem ám, haver! - így a másik. Kis fémlemezek csusszannak odébb a testükön, melyek mögül több csövű plazmavetők bukkannak elő. Meg kell küzdened velük.[/p]
+    </text>
+    <next id="71"></next>
+  </p>
+  <p id="90">
+    <text>
+        [p]Lassan előrelépsz. Amikor az egyik gömb közel kerül hozzád, elhajolsz az útjából. A gömb utánad repül. Visszaugrasz, de ezzel csak azt éred el, hogy a többi gömb is megindul feléd. Minden ügyességedet összeszeded, hogy elkerüld az érintkezést, de hiába: az egyik gömb neked ütközik, felrobban, és egy szemvillanás alatt fekete lángokkal borít be. Űrruhád még néhány másodpercig bírja az izzó hőt, majd megadja magát. Küldetésed sikertelen veget ért.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 91 -->
-  <!-- 92 -->
+  <p id="92">
+    <text>
+        [p]A mókusszerű lény leül a földönkívüli mellé, és tiszti, dallamos hangon megszólal: - Látod ezt a disznót itt előtted? Ez egy szűkmarkú, humortalan fafej. Melegen javasolt az elpusztítása. - A helyzet magáért beszél.[/p]
+    </text>
+    <next id="15">Még gyorsan megválaszolhatod a lény kérdését</next>
+    <next id="383">Vagy bátran megküzdhetsz vele</next>
+  </p>
   <p id="93">
     <text>
         [p]Túl lassú a reakcióidőd! Későn ugrasz hátra, így egy 77 000 voltos vezeték hozzád ér. Szikrák csapnak fel, amint a páncélruhád megpróbálja semlegesíteni a hatalmas energiamennyiséget. Csökkentsd 1-gyel a PÁNCÉLZAT pontjaidat. Ennél a nyílásnál szemmel láthatólag nincs már mit keresni, így a másik karbantartó nyíláshoz fordulsz.[/p]
@@ -657,7 +781,18 @@
     <next id="250">Ha a keletire</next>
     <next id="287">Ha megpróbálkozol zúgón való átkeléssel</next>
   </p>
-  <!-- 97 -->
+  <p id="97">
+    <text>
+        [p]A középső ajtót zárva találod. A bal oldali és a jobb oldali ajtók nyitva vannak.[/p]
+    </text>
+    <itemCheck type="item" id="3002">
+      <have>
+        <next id="51" pos="1">Ha gravitációs bombával próbálod meg kirobbantani a középső ajtót</next>
+      </have>
+    </itemCheck>
+    <next id="381" pos="2">Ha a bal oldali ajtón nyitnál be</next>
+    <next id="34" pos="3">Ha a jobb oldalin</next>
+  </p>
   <p id="98">
     <text>
         [p]Az ajtó egy hosszú, jól megvilágított folyosóra nyílik. Körülbelül száz métert tehettél már meg a folyosón, amikor a bal oldali falban egy tolóajtóra bukkansz. A folyosó tovább vezet a távolba.[/p]
@@ -679,7 +814,22 @@
     <next id="138">Kinyitod az ajtót?</next>
     <next id="267">Vagy továbbmész a folyosón?</next>
   </p>
-  <!-- 101 -->
+  <p id="101">
+    <text>
+        [p]Közelharcban kell legyőznöd a bestiát.[/p]
+        [p]A harc során bármikor elszaladhatsz a szörny elől, de ekkor automatikusan 2 ÉLETERŐ pontnyi sebet ejt rajtad.[/p]
+    </text>
+    <fight type="single" preFight="false">
+      <enemy id="25" />
+      <fleeing />
+      <flee>
+        <next id="139"></next>
+      </flee>
+      <win>
+        <next id="196"></next>
+      </win>
+    </fight>
+  </p>
   <p id="102">
     <text>
         [p]Mindenfelé füves síkság, amerre csak ellátsz. Milyen irányba indulsz el?[/p]
@@ -701,7 +851,7 @@
         [p]Egy füves síkságon vagy, mely nyugat felé nyúlik tovább. Északra és keletre erdőket látsz, míg dél felé alacsony hegyek emelkednek ki a talajból.[/p]
     </text>
     <next id="27">Északnak mész?</next>
-    <next id="371">Nyugatnak?</next>
+    <next id="288">Nyugatnak?</next>
     <next id="289">Délnek?</next>
     <next id="115">Vagy keletnek?</next>
   </p>
@@ -739,8 +889,19 @@
     <next id="185">Vagy szimpatikusabbnak tartod a járdát?</next>
   </p>
   <!-- 110 -->
-  <!-- 111 -->
-  <!-- 112 -->
+  <p id="111">
+    <text>
+        [p]A mókusszerű lény leül a földönkívüli elé, majd tiszta, dallamos hangon megszólal: - Hát akkor lássuk, miből is élünk. Először is körvonalazom a posztulátumaimat. Egy: A nagyobb, mint B, ami nagyobb, mint C, és így tovább. Kettő: A négyzet nagyobb, mint B négyzet, ami nagyobb, mint C négyzet, és így tovább. Három: A négyzetgyöke... - A földönkívüli mélyen elmerül a gondolataiba. Szemmel láthatóan egy kicsit nehezen tudja követni a mókusszerű lény sebes beszédét. A Zarkot annyira lekötötte a feladvány, hogy nem is figyel már rád: így gyorsan elosonsz mellette. Megvizsgálod a terem túlsó végében lévő három ajtót.[/p]
+    </text>
+    <next id="97"></next>
+  </p>
+  <p id="112">
+    <text>
+        [p]Az egyik lézersugár átüt a vékony alumíniumlemezen, amelyen állsz, és beléd fúródik. Vonj le 2 pontot az ÉLETERŐDBŐL. Folytatod az utadat tovább a rácsozaton.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="207"></next>
+  </p>
   <!-- 113 -->
   <!-- 114 -->
   <p id="115">
@@ -854,10 +1015,42 @@
     <next id="250">Délnek?</next>
     <next id="341">Vagy keletnek?</next>
   </p>
-  <!-- 128 -->
-  <!-- 129 -->
+  <p id="128">
+    <text>
+        [p]A termet narancssárga fény világítja be. Minden narancssárga színben kezd csillogni, kivéve a gömböket, amik továbbra is tökéletesen feketék maradnak. Egy-egy apró ajtó jelenik meg minden gömb előtt, és elnyeli őket, miután azok átlebegnek a küszöbükön. Másodpercek alatt az összes gömb eltűnik a szobából. Az ajtók utána szétoszlanak, és eltűnnek. Most már könnyedén elérheted a szoba túlsó felét. De még mielőtt elindulnál, a szoba hirtelen eltűnik, te pedig a világűrben lebegve találod magad, ki tudja, a világegyetem melyik pontján. Egy kőtábla úszik az orrod elé. Rajta bevésve a következő felirat olvasható: „Megrendelő számlájára hetvenhét fekete megsemmisítő gömb eliminálva. Tekintettel a megrendelőnek az e szolgáltatást érintő ki nem egyenlített fizetési kötelezettségére, a zálogjog érvényesítéseként a megrendelő saját hatáskörben elteleportálva.”[/p]
+        [p]A tábla továbblebeg, te pedig itt maradsz hátralévő óráidra a semmiben. Küldetésed nem sikerült.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="128a" display="128">
+    <!-- these will have to be wired in!!! -->
+    <text>
+        [p]Mielőtt bármit is tehetnél, hirtelen minden eltűnik, te pedig a világűrben lebegve találod magad, ki tudja, a világegyetem melyik pontján. Egy kőtábla úszik az orrod elé. Rajta bevésve a következő felirat olvasható: „Megrendelő számlájára XYZXYZXYZ eliminálva. Tekintettel a megrendelőnek az e szolgáltatást érintő ki nem egyenlített fizetési kötelezettségére, a zálogjog érvényesítéseként a megrendelő saját hatáskörben elteleportálva.”[/p]
+        [p]A tábla továbblebeg, te pedig itt maradsz hátralévő óráidra a semmiben. Küldetésed nem sikerült.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="129">
+    <text>
+        [p]A mászófolyosó nemsokára egy szélesebb alagútba torkollik. Kimászol belőle, és elindulsz a nagyobb, szélesebb alagútban. Egy kis idő múlva tompa remegésre leszel figyelmes. Letérdelsz, és tenyered a padlóra fekteted, hogy érezd az egyre erősödő vibrációt. Ebben a pillanatban egy nagy sebességű csősikló jármű tűnik fel az alagút kanyarulatában. Még annyi időd van, hogy odafordítsd a tekintetedet, aztán a csővasút háromszáz kilométer/órás sebességgel beléd rohan, és palacsintává lapít.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 130 -->
-  <!-- 131 -->
+  <p id="131">
+    <text>
+        [p class="inlineImage"][img src="resources/ff12/131.jpg" /][/p]
+        [p]Az ajtó egy hosszúkás szobába nyílik. A szemközti falban lévő kijárat előtt két őrrobotot pillantasz meg. Ahogy belépsz a szobába, a robotok azonnal lézersugarakat kezdenek lövöldözni rád. Gyorsan visszaugrasz az ajtó fedezékébe, és gondolkodni kezdesz, hogyan juthatnál át a túlsó ajtón. A két őrrobot erősen páncélozott csészealjszerű burkolattal van bevonva, és egy szemernyi kétséged sincs afelől, hogy ezek a harminc centivel a föld fölött lebegő gépek igen kemény ellenállásra képesek, ha úgy alakulnak a dolgok. Visszanézel a szobába, és észreveszed, hogy a szoba alacsony mennyezete nagylyukú rácsozatból áll.[/p]
+    </text>
+    <itemCheck type="section" id="137c">
+      <have>
+        <next id="169"></next>
+      </have>
+      <dontHave>
+        <next id="36"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 132 -->
   <!-- 133 -->
   <p id="134">
@@ -927,7 +1120,14 @@
     <next id="84">Délnek?</next>
     <next id="214">Vagy keletnek?</next>
   </p>
-  <!-- 140 -->
+  <p id="140">
+    <text>
+        [p]- Rendben van - bólint a lény (miután rájöttél, hogy a K betű a megoldás, hisz nem is lehetne más). - Átmehetsz. - Melyik ajtót választod?[/p]
+    </text>
+    <next id="34">A jobb oldalit?</next>
+    <next id="14">A középsőt?</next>
+    <next id="381">Vagy a bal oldalit?</next>
+  </p>
   <p id="141">
     <text>
         [p]A szerkentyű egy kicsiny fekete négyzet, közepén egy nagy piros gombbal. A belőle kivezető drótok egy hordozható energiatelephez vannak kötve. Amikor megnyomod a gombot, semmi sem történik. Mivel még egy jó pár kis nyúlványt és csatlakozó aljzatot látsz az energiatelepen, úgy ítéled meg, a készülék még nincs teljesen összeállítva. Elteszed a zsákodba. Itthagyod az idegen lényt. Melyik nyílásfedelet vizsgálod meg először?[/p]
@@ -983,12 +1183,34 @@
     <next id="239">Teszed, amit parancsolnak?</next>
     <next id="108">Vagy inkább megküzdesz velük?</next>
   </p>
-  <!-- 147 -->
+  <p id="147">
+    <text>
+        [p]Minden nehézség nélkül átkelsz a hídon. A korlát hiánya nem is olyan zavaró, mint azt elsőre gondoltad volna. Átmész a szemközti ajtón.[/p]
+    </text>
+    <next id="373"></next>
+  </p>
   <p id="148">
     <empty />
   </p>
-  <!-- 149 -->
-  <!-- 150 -->
+  <p id="149">
+    <text>
+        [p]A lény mélyen gondolkodni kezd, és látszik, hogy minden másodperccel egyre jobban belebonyolódik a feladványba. A szemeit vadul forgatva dülöngélni és nyáladzani kezd egy kicsit. Mivel ennyire lekötötte a kérdésed megválaszolása, könnyűszerrel elosonhatsz mellette, és megvizsgálhatod mind a három ajtót a túloldalon.[/p]
+    </text>
+    <next id="97"></next>
+  </p>
+  <p id="150">
+    <text>
+        [p]Felugrasz, elkapod a rácsot, és felhúzod magad a rács fölötti keskeny térségbe. Közben lézersugarak cikáznak körülötted. Meggörnyedve végigrohansz a rácsozaton. A robotok szünet nélkül tüzelnek, és a környék úgy szikrázik körülötted, mintha valami tűzijáték kellős közepébe csöppentél volna.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="207"></next>
+      </success>
+      <failure>
+        <next id="112"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 151 -->
   <!-- 152 -->
   <p id="153">
@@ -1122,7 +1344,16 @@
     <next id="83">Délre?</next>
     <next id="159">Keletre?</next>
   </p>
-  <!-- 169 -->
+  <p id="169">
+    <text>
+        [p]Eszedbe jut, mit írt a könyv a robotoknak erről a típusáról. Ezt a tudásodat felhasználva minden találatnál plusz 1 pontot sebezhetsz rajtuk (már ha úgy gondolod, hogy megküzdesz velük).[/p]
+    </text>
+    <changeEnemy attribute="damageAbsorption" id="38" set="-1" />
+    <changeEnemy attribute="damageAbsorption" id="39" set="-1" />
+    <changeEnemy attribute="damageAbsorption" id="40" set="-1" />
+    <changeEnemy attribute="damageAbsorption" id="41" set="-1" />
+    <next id="36"></next>
+  </p>
   <!-- 170 -->
   <!-- 171 -->
   <p id="172">
@@ -1157,7 +1388,36 @@
     <next id="266">Vagy az oldalsót?</next>
   </p>
   <!-- 176 -->
-  <!-- 177 -->
+  <p id="177">
+    <itemCheck type="items" id="3005 or 3015 or 3018">
+      <have>
+        <text>
+            [p]Átnézed a zsákodat, remélve, hogy találsz benne valami hasznosat. [alt]Mit veszel elő belőle?[/alt][/p]
+        </text>
+        <itemCheck type="item" id="3005">
+          <have>
+            <next id="232" singleChoiceText="A kezedbe kerül az ideggáz spray.">Ideggáz spray-t?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3015">
+          <have>
+            <next id="268" singleChoiceText="A kezedbe kerül a földönkívüliekről szóló könyv.">Földönkívüliekről szóló könyvet?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3018">
+          <have>
+            <next id="304" singleChoiceText="A kezedbe kerül a Pán-dimenzionális Hazatérítő Készülék.">Pán-dimenzionális Hazatérítő Készüléket?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            [p]Átnézed a zsákodat, de nem találsz benne semmi használhatót.[/p]
+        </text>
+        <next id="340"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="178">
     <text>
         [p]Rövid gyaloglás után egy gyors folyású folyó zárja el az utadat.[/p]
@@ -1184,7 +1444,13 @@
   <p id="181">
     <empty />
   </p>
-  <!-- 182 -->
+  <p id="182">
+    <text>
+        [p]Leevickélsz a tengeralattjáróig, és bemászol a légzsilipen. Végre biztonságban vagy! A tengeralattjáróban mindössze egyetlen vezérlési lehetőség van: ez egy kapcsoló, mely a tengeralattjáró tornyában lévő szék karfájára van erősítve. A kapcsoló jelenleg „ki” állapotban látható. Bekapcsolod. A tengeralattjáró megmozdul, és lassan beúszik egy alagútba a tó alján. Az utazás eltart egy ideig, így lehetőséged van egy kicsit pihenni. A régóta áhított pihenés felfrissít - adj 4 pontot az ÉLETERŐDHÖZ. A tengeralattjáró végül egy hatalmas teremben bukkan a felszínre. A terem felét az. a nagy víz foglalja el, amelyből a tengeralattjáró felbukkant, míg a terem másik fele kísértetiesen emlékeztet a [em]Vandervecken[/em] belsejére. Kimászol a tengeralattjáróból a szárazra. Körbenézel. A teremből csak egyetlen kijárat van, úgy döntesz hát, hogy megpróbálkozol vele.[/p]
+    </text>
+    <add amount="4" to="stamina" />
+    <next id="309"></next>
+  </p>
   <p id="183">
     <itemCheck type="items" id="3007 or 3015">
       <have>
@@ -1267,7 +1533,21 @@
     <next id="108" pos="5">Ha megküzdenél velük</next>
     <next id="146" pos="6">Ha megpróbálod kidumálni magad</next>
   </p>
-  <!-- 185 -->
+  <p id="185">
+    <text>
+        [p class="inlineImage"][img src="resources/ff12/185.jpg" /][/p]
+        [p]Úgy félúton járhatsz, amikor a tó felszíne fodrozódni kezd. Meggyorsítod a lépteidet, és rémülten veszed észre, hogy csápok nyúlnak ki a vízből, és nyálkás, zöld kígyóként a lábad körül kezdenek tapogatózni. Körbevesznek, mielőtt még futni kezdtél volna. Dagadt, zöld testű lények emelkednek ki a vízből, szellemszerű szemük sárgán villog, ahogy éhesen erős csőreiket csattogtatják. Mintha csak az ember és a polip keresztezései lennének.[/p]
+    </text>
+    <itemCheck type="item" id="3001">
+      <have>
+        <next id="204" pos="1">Megküzdesz velük?</next>
+      </have>
+      <dontHave>
+        <next id="312" pos="1">Megküzdesz velük?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="240" pos="2">Vagy végignézed a zsákodat valami alkalmasabb eszköz után kutatva?</next>
+  </p>
   <p id="186">
     <text>
         [p]Adsz neki egy darabka gyümölcsöt. A lény mohón beleharap, majd mély hangon, elégedetten dorombol egyet. Miután befejezte az evést, felmászik a válladra, erősen megkapaszkodik a ruhádban, és elalszik. Zsebre vágsz még néhány [span class="takeItem" data-id="3017" data-amount="1"]gyümölcsöt[/span], hátha később jók lesznek valamire. Kimész a szobából, és folytatod az utad a folyosón.[/p]
@@ -1275,7 +1555,16 @@
     <gatherItem id="4001" />
     <next id="118"></next>
   </p>
-  <!-- 187 -->
+  <p id="187">
+    <text>
+        [p]Összeilleszted a két darabot. Egy fekete téglatest lesz belőlük, ennek közepéből áll ki a piros gomb. Amikor a két rész összekapcsolódik, a készülék halkan zümmögni kezd, majd egy felirat gyullad ki a felületén:[/p]
+        [p class="centered"]PÁN-DIMENZIONÁLIS HAZATÉRÍTŐ KÉSZÜLÉK[br /]CSAK VÉGSZÜKSÉG ESETÉN HASZNÁLANDÓ[/p]
+        [p]Elteszed a készüléket (csak egy helyet foglal el a felszereléseid listáján).[/p]
+    </text>
+    <loseItem id="3003" />
+    <gatherItem id="3018" />
+    <next id="368"></next>
+  </p>
   <!-- 188 -->
   <!-- 189 -->
   <!-- 190 -->
@@ -1313,7 +1602,16 @@
     <next id="231">Ha felveszed a ruhát</next>
     <next id="267">Ha itthagyod, a bejárati ajtón keresztül elhagyod a szobát, és továbbmész a folyosón</next>
   </p>
-  <!-- 196 -->
+  <p id="196">
+    <text>
+        [p]A szörny elpusztult, most te vagy a barlang ura. Körbenézel, de semmi érdekeset nem találsz, csak csontokat a sarokban, no meg egy néhai hatalmas ragadozó hatalmas [span class="takeItem" data-id="3019" data-amount="1"]állkapcsát[/span]. Ez utóbbit magaddal viheted, ha akarod. A barlang biztonságában kipihened magad, ezzel 5 pontot visszanyertél elveszett ÉLETERŐDBŐL. Egy idő után mégis menned kell. Merre mész?[/p]
+    </text>
+    <add amount="5" to="stamina" />
+    <next id="64">Északnak?</next>
+    <next id="78">Nyugatnak?</next>
+    <next id="84">Délnek?</next>
+    <next id="214">Vagy keletnek?</next>
+  </p>
   <p id="197">
     <text>
         [p]Nem túl hosszú gyaloglás után egy gyors sodrású folyó állja el az utadat.[/p]
@@ -1379,7 +1677,13 @@
     <next id="109">A biztonsági ajtón?</next>
     <next id="257">Vagy a tolóajtón?</next>
   </p>
-  <!-- 204 -->
+  <p id="204">
+    <text>
+        [p]Hogyan kezdesz bele a csatába?[/p]
+    </text>
+    <next id="276">Ha a tóba hajítasz egy gránátot (kibiztosítva először, természetesen)?</next>
+    <next id="312">Ha nem akarod ezt tenni</next>
+  </p>
   <p id="205">
     <text>
         [p]A második gomb is benyomva marad. Amikor megnyomod a harmadikat, az ajtó csendben oldalt csusszan. Az alatta lévő kis fülkében egy [span class="takeItem" data-id="3002" data-amount="1"]gravitációs bomba[/span] lapul. Kicsit megizzadsz, amikor végiggondolod, mi történt volna, ha rossz sorrendben nyomod meg a gombokat. De a bombát most már biztonságosan magadhoz veheted (írd fel a fegyvereid listájára). Melyik kijáraton távozol a szobából?[/p]
@@ -1387,8 +1691,35 @@
     <next id="80">A szemköztin?</next>
     <next id="319">Vagy az oldalsón?</next>
   </p>
-  <!-- 206 -->
-  <!-- 207 -->
+  <p id="206">
+    <text>
+        [p]Felajánlod a tárgyat a főnöknek. Úgy látszik, ez a cselekedeted mindenki tetszését elnyerte. Amikor azonban kiderül, hogy viszonzásképpen a totemoszlop tetején lévő készülékdarabot kéred, a lények egy szempillantás alatt felmérgesednek. Néhányan vadul feléd rázzák a lándzsáikat -a melyek hegye nem tűnik túl kellemesnek. Úgy döntesz, hogy gyorsan olajra lépsz, mielőtt még rád támadnának.[/p]
+    </text>
+    <itemCheck type="pos" id="42">
+      <have>
+        <loseItem id="1001" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="45">
+      <have>
+        <loseItem id="1002" />
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="47">
+      <have>
+        <add amount="-1" to="armour" />
+      </have>
+    </itemCheck>
+    <next id="361"></next>
+  </p>
+  <p id="207">
+    <text>
+        [p]Elérsz a rácsozaton a szemközti falig. Pontosan az őrrobotok fölött állsz most, akik nagy hévvel olvasztják a fémet körülötted lézersugaraikkal. A két robot között, csak néhány méter távolságra, ott a nyitott ajtó. Mit teszel?[/p]
+    </text>
+    <next id="243">Megpróbálsz leugrani a mennyezetről a két robot közé, és ugyanazzal a lendülettel rögtön kirohanni az ajtón?</next>
+    <next id="279">Harcba bocsátkozol az őrrobotokkal?</next>
+    <next id="315">Megpróbálsz ráugrani az egyik robotra, és gyorsan kikapcsolni, aztán szétlőni a másikat?</next>
+  </p>
   <!-- 208 -->
   <p id="209">
     <empty />
@@ -1508,11 +1839,87 @@
     </fight>
     <next id="13"></next>
   </p>
-  <!-- 221 -->
-  <!-- 222 -->
+  <p id="221">
+    <text>
+        [p]- Tényleg? - kiált fel az egyik. - Na, akkor lassan más munka után kell néznünk - feleli a másik. - Jobb, ha fogjuk a cókmókunkat. - Faképnél hagyod a műlényeket, miközben azok tovább találgatják a lehetséges jövőjüket.[/p]
+    </text>
+    <next id="329"></next>
+  </p>
+  <p id="222">
+    <text>
+        [p]Kezedbe veszed a készüléket, de hirtelen kinyúl egy zöld csáp, kiragadja a kezedből, és behajítja a tó közepébe. Ezek után már nem marad túl sok esélyed a készülék használatára - töröld a felszereléseid közül. Meg kell küzdened a szörnyekkel.[/p]
+    </text>
+    <loseItem id="3018" />
+    <next id="204"></next>
+  </p>
   <!-- 223 -->
-  <!-- 224 -->
-  <!-- 225 -->
+  <p id="224">
+    <text>
+        [p][alt]Mit ajánlasz fel a készülékdarabért cserébe?[/alt][/p]
+    </text>
+    <itemCheck type="items" id="3016 or 3005 or 3019 or 3017">
+      <have>
+        <itemCheck type="item" id="3016">
+          <have>
+            <next id="242" pos="5">Ital-kínáló android fejet?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3005">
+          <have>
+            <next id="314" pos="10">Ideggázos spray-t?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3019">
+          <have>
+            <next id="55" pos="20">Ragadozó-állkapcsot?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3017">
+          <have>
+            <next id="35" pos="30">Néhány narancsos-lila színű gyümölcsöt?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="items" id="1001 or 1002">
+          <have>
+            <itemCheck type="item" id="1001">
+              <have>
+                <next id="206" pos="42">Egy elektromos korbácsot?</next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="1002">
+              <have>
+                <next id="206" pos="45">Egy plazmavetőt?</next>
+              </have>
+            </itemCheck>
+            <itemCheck type="armour" id="1">
+              <have>
+                <next id="206" pos="47">Egy páncéldarabot?</next>
+              </have>
+            </itemCheck>
+          </have>
+          <dontHave>
+            <itemCheck type="armour" id="1">
+              <have>
+                <next id="206" pos="47">Egy páncéldarabot?</next>
+              </have>
+              <dontHave>
+                <next id="361" singleChoiceText="Bárhogy is kutakodsz, nem találsz semmi használhatót a zsákodban. Úgy döntesz, az lesz a legjobb, ha mielőbb távozol innen."></next>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="225">
+    <text>
+        [p]- Ellenőrizd - mondja az egyik. - Rendicsek - feleli a másik. Visszafordulnak a talapzatukon, és a továbbiakban nem vesznek tudomást rólad. Elhaladsz mellettük, és amikor egy sorba érsz a második pár műlénnyel, azok is feléd fordulnak. - A fent fent, a lent meg lent - így az egyik. - Na de tényleg léteznek, vagy csak szellemek? - teszi hozzá a másik. Mit válaszolsz?[/p]
+    </text>
+    <next id="272">Hogy valóban léteznek?</next>
+    <next id="387">Vagy azt, hogy csak szellemek?</next>
+  </p>
   <!-- 226 -->
   <p id="227">
     <text>
@@ -1563,7 +1970,13 @@
     <add amount="-1" to="skill" />
     <next id="267"></next>
   </p>
-  <!-- 232 -->
+  <p id="232">
+    <text>
+        [p]Szembefújod a szörnyet, de az meg sem rezzen. Csökkenő önbizalommal a szeme közé ereszted a flakon egész maradék tartalmát, mire a szörny végre támolyogni kezd, majd összerogy. Szerencse, hogy egy darabban megúsztad a kalandot. A flakon azonban sajnos kiürült - húzd le a felszereléseid listájáról.[/p]
+    </text>
+    <loseItem id="3005" />
+    <next id="196"></next>
+  </p>
   <p id="233">
     <text>
         [p]Egy kis gyaloglás után egy gyors folyású folyó vágja el az utadat.[/p]
@@ -1612,11 +2025,90 @@
     </text>
     <next id="145"></next>
   </p>
-  <!-- 239 -->
-  <!-- 240 -->
+  <p id="239">
+    <text>
+        [p]Fegyveredet a lábad elé helyezed a földre, az őrök legnagyobb megelégedésére. A felszerelésedet a szoba közepére vonszolják, miközben a plazmavetőiket egy pillanatra sem veszik le rólad. Ezek után úgy döntenek, hogy megölnek mint betolakodót. Mit tehetsz ebben a helyzetben? Lebuksz, és a fegyvereid felé ugrasz.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Mindkét Őr egy lövést tud megereszteni feléd, mielőtt elérnéd a fegyvereidet.[/p]
+        </text>
+        <gatherItem id="4002" />
+      </success>
+      <failure>
+        <text>
+            [p]Mindkét Őr két lövést tud megereszteni feléd, mielőtt elérnéd a fegyvereidet.[/p]
+        </text>
+        <gatherItem id="4002" amount="2" />
+      </failure>
+    </test>
+    <fight type="shooting" preFight="false">
+      <enemy id="27" />
+      <enemy id="28" />
+    </fight>
+    <next id="203"></next>
+  </p>
+  <p id="240">
+    <itemCheck type="items" id="3005 or 3018 or 3014 or 3020">
+      <have>
+        <text>
+            [p]Melyik tárgyadat akarod használni?[/p]
+        </text>
+        <itemCheck type="item" id="3005">
+          <have>
+            <next id="348" pos="1">Az Ideggáz spray-t?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3018">
+          <have>
+            <next id="222" pos="1">A Pán-dimenzionális Hazatérítő Készüléket?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3014">
+          <have>
+            <next id="258" pos="1">A tintás üvegcsét?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3020">
+          <have>
+            <next id="394" pos="1">A négyes számú puhatestűek elleni port?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            [p]Semmit nem találsz, amit fel tudnál használni. Meg kell küzdened a lényekkel.[/p]
+        </text>
+        <next id="204"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 241 -->
-  <!-- 242 -->
-  <!-- 243 -->
+  <p id="242">
+    <text>
+        [p]Amikor kiveszed a fejet a zsákodból, az a főnökre mosolyog, és megszólal: - Jó napot, uram! Megkínálhatom Önt egy pohár Antaresi Vörössel? - A fej lenyűgözi az idegeneket. Amikor pedig rádöbbennek, hogy [em]ezt[/em] a csodás dolgot adod nekik azért a vacakért a totemoszlop tetején, nem győznek iparkodni, hogy lehozzák a fekete négyzetet a rúd tetejéről. Megkapod a készülékdarabot.[/p]
+    </text>
+    <loseItem id="3016" />
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="187"></next>
+      </have>
+      <dontHave>
+        <next id="368"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="243">
+    <test against="luck">
+      <success>
+        <next id="297"></next>
+      </success>
+      <failure>
+        <next id="333"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 244 -->
   <p id="245">
     <text>
@@ -1681,7 +2173,12 @@
     <next id="160">Déli irányba fordulsz?</next>
     <next id="322">Vagy inkább nyugatot választod?</next>
   </p>
-  <!-- 251 -->
+  <p id="251">
+    <text>
+        [p]Félrelököd a főnököt és a tanácsadóit, és elindulsz az oszlop felé. A lények abban a pillanatban rád vetik magukat. A kezükben lévő lándzsákat eddig nyilván a ruhájuk alatt rejtegették. A szúrások legtöbbjét kivédi a páncélzatod, de néhány dárda mégis a testedbe hatol. A földre rogysz, és elsötétül előtted a világ. Kalandod véget ért.[/p]
+    </text>
+    <death />
+  </p>
   <p id="252">
     <text>
         [p class="inlineImage"][img src="resources/ff12/252.jpg" /][/p]
@@ -1706,7 +2203,47 @@
     <next id="201"></next>
   </p>
   <!-- 255 -->
-  <!-- 256 -->
+  <p id="256">
+    <itemCheck type="items" id="3015 or 3018">
+      <have>
+        <itemCheck type="item" id="3018">
+          <have>
+            <itemCheck type="item" id="3015">
+              <have>
+                <text>
+                    [p]Átnézed a zsákodat. Mit szeretnél használni belőle?[/p]
+                </text>
+                <next id="364">A Földönkívüliekről szóló könyvet?</next>
+                <next id="328">A Pán-dimenzionális Hazatérítő Készüléket?</next>
+              </have>
+              <dontHave>
+                <text>
+                    [p]Átnézed a zsákodat, és a kezedbe akad a Pán-dimenzionális Hazatérítő Készülék.[/p]
+                </text>
+                <next id="328"></next>
+              </dontHave>
+            </itemCheck>
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="3015">
+              <have>
+                <text>
+                    [p]Átnézed a zsákodat, és a kezedbe akad a Földönkívüliekről szóló könyv.[/p]
+                </text>
+                <next id="364"></next>
+              </have>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            [p]Átkutatod a zsákodat, de nem találsz benne semmi olyat, amit fel tudnál most használni. Meg kell küzdened a lénnyel.[/p]
+        </text>
+        <next id="220"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="257">
     <text>
         [p]Az ajtó egy kis konyhába nyílik. A levegőt ínycsiklandozó illat tölti meg - egy megivásra váró csésze kávé, mellette pedig néhány friss szendvics.[/p]
@@ -1714,8 +2251,19 @@
     <next id="293">Itt maradsz enni?</next>
     <next id="109">Vagy inkább visszamész az ellenőrzőponthoz, és megpróbálkozol a másik ajtóval?</next>
   </p>
-  <!-- 258 -->
-  <!-- 259 -->
+  <p id="258">
+    <text>
+        [p]Kinyitod az üvegcsét, és beleöntöd a tartalmát a vízbe. A tinta fekete felhőként hamar szétterjed a vízben. Úgy tűnik, sikerült rátapintanod a lények érzékeny pontjára, mert fejvesztve (ezen lények esetében ez persze csak képletesen értendő) menekülnek a tintafolt elől. Villámgyorsan a víz alá buknak, és eltűnnek a mélyben. A kijárathoz rohansz.[/p]
+    </text>
+    <loseItem id="3014" />
+    <next id="373"></next>
+  </p>
+  <p id="259">
+    <text>
+        [p]- Micsoda hülye kérdés! - morogja magának, majd felemeli a dezintegrátorát, és célba vesz. Úgy látszik, nincs más választásod, mint harcolni.[/p]
+    </text>
+    <next id="383"></next>
+  </p>
   <p id="260">
     <text>
         [p]Odaadod az ajándékot a főnöknek, és úgy tűnik, ő is, és az egész törzs is meg van veled elégedve.[/p]
@@ -1901,7 +2449,13 @@
     </fight>
     <next id="303"></next>
   </p>
-  <!-- 268 -->
+  <p id="268">
+    <text>
+        [p]A könyvvel a feléd rohanó szörnyre mutatsz, és megnyomsz egy gombot. - Egy Ezerfogú Barlangi Szörny! - sikoltja a kis készülék. - [em]Futás![/em][/p]
+    </text>
+    <next id="139">Elfutsz, ahogy a könyv mondja?</next>
+    <next id="101">Vagy ennek ellenére kitartasz, és férfiasán megküzdesz vele?</next>
+  </p>
   <p id="269">
     <test against="stamina" diceConfig="3d6" success="lowerEquals">
       <success>
@@ -1968,7 +2522,12 @@
     <add amount="-1" to="armour" />
     <next id="307"></next>
   </p>
-  <!-- 272 -->
+  <p id="272">
+    <text>
+        [p]- Ajjajj, aranyoskám! - mondja az egyik. - Micsoda bla-mázs! - teszi hozzá a másik. Kis fémlemezek csusszannak félre a testükön, és többcsövű plazmavetők jelennek meg a résekben. Meg kell küzdened velük.[/p]
+    </text>
+    <next id="71"></next>
+  </p>
   <p id="273">
     <text>
         [p]Belemászol a vízbe, de megcsúszol, és az áramlat a szemközti fal alá sodor. Sokáig utazol a vízzel együtt, hol ennek ütődsz neki, hol annak, és mindvégig totális sötétségben maradsz. Végül egy fénypont tűnik fel előtted, és egyre nő, amint az áramlat közelebb sodor hozzá. Ráeszmélsz, hogy a víz fölfelé visz, és az a fényfolt tulajdonképpen - bár igen furcsa módon - egy égdarabka. Égbolt egy űrhajón belül? De nem kétséges, hogy mit látsz. Áthaladsz a lyukon, és egy sebes folyó közepén találod magad, egy idegen világ ege alatt. Mindkét parton füves síkság terül el. Lassan a part felé evickélsz, és kimászol a szárazra. (Mostantól az égtájakat használjuk referenciaként.)[/p]
@@ -2036,7 +2595,17 @@
       </after>
     </random>
   </p>
-  <!-- 276 -->
+  <p id="276">
+    <loseItem id="3001" />
+    <random>
+      <odd max="6" min="1">
+        <next id="330"></next>
+      </odd>
+      <even max="6" min="1">
+        <next id="294"></next>
+      </even>
+    </random>
+  </p>
   <!-- 277 -->
   <p id="278">
     <text>
@@ -2044,7 +2613,16 @@
     </text>
     <next id="77"></next>
   </p>
-  <!-- 279 -->
+  <p id="279">
+    <text>
+        [p]Mivel a fémrácsozat egy kicsit fedez, a robotok nehezebben találnak el.[/p]
+    </text>
+    <fight type="shooting" preFight="false">
+      <enemy id="40" />
+      <enemy id="41" />
+    </fight>
+    <next id="351"></next>
+  </p>
   <!-- 280 -->
   <p id="281">
     <text>
@@ -2182,15 +2760,98 @@
     <add amount="5" to="stamina" />
     <next id="109"></next>
   </p>
-  <!-- 294 -->
-  <!-- 295 -->
+  <p id="294">
+    <text>
+        [p]Az egyik polipszerű lény a csápjával elkapja a gránátot félúton, és magasra tartja. A gránát felrobban.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <text>[p]Ellenfeleid 1 ÉLETERŐ pontot veszítenek.</text>
+        <changeEnemy attribute="stamina" id="29" change="-1" />
+        <changeEnemy attribute="stamina" id="30" change="-1" />
+      </result>
+      <result max="2" min="2">
+        <text>[p]Ellenfeleid 2 ÉLETERŐ pontot veszítenek.</text>
+        <changeEnemy attribute="stamina" id="29" change="-2" />
+        <changeEnemy attribute="stamina" id="30" change="-2" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]Ellenfeleid 3 ÉLETERŐ pontot veszítenek.</text>
+        <changeEnemy attribute="stamina" id="29" change="-3" />
+        <changeEnemy attribute="stamina" id="30" change="-3" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Ellenfeleid 4 ÉLETERŐ pontot veszítenek.</text>
+        <changeEnemy attribute="stamina" id="29" change="-4" />
+        <changeEnemy attribute="stamina" id="30" change="-4" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Ellenfeleid 5 ÉLETERŐ pontot veszítenek.</text>
+        <changeEnemy attribute="stamina" id="29" change="-5" />
+        <changeEnemy attribute="stamina" id="30" change="-5" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Ellenfeleid 6 ÉLETERŐ pontot veszítenek.</text>
+        <changeEnemy attribute="stamina" id="29" change="-6" />
+        <changeEnemy attribute="stamina" id="30" change="-6" />
+      </result>
+      <after>
+        <text>
+            A robbanás azonban olyan közel volt hozzád, hogy téged sem kímélt. Vonj le 1 pontot a PÁNCÉLZATODBÓL.[/p]
+        </text>
+        <add amount="-1" to="armour" />
+      </after>
+    </random>
+    <next id="312"></next>
+  </p>
+  <p id="295">
+    <itemCheck type="items" id="3018 or 3013 or 3015 or 4001">
+      <have>
+        <text>
+            [p]Átkutatod a hátizsákodat valami használható tárgy után kutatva. Mivel próbálkoznál?[/p]
+        </text>
+        <itemCheck type="item" id="3018">
+          <have>
+            <next id="377">A Pán-dimenzionális Hazatérítő Készülékkel?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3013">
+          <have>
+            <next id="367">Egy csomag kártyával?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3015">
+          <have>
+            <next id="326">A Földöntúliakról szóló könyvvel?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4001">
+          <have>
+            <next id="390">A Cephalo mókussal?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            [p]Átvizsgálod a hátizsákodat, de nem találsz benne semmi olyat, amit fel tudnál itt használni.[/p]
+        </text>
+        <next id="15">Ha megpróbálsz válaszolni a földöntúli kérdésére</next>
+        <next id="383">Ha megküzdesz a teremtménnyel</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="296">
     <text>
         [p]A zsákodból előhúzod a készülék másik darabját, magasra tartod, és elkiáltod magad: - Nézzétek, a testvére visszatért! - A lenyűgözött idegenek a földre rogynak és visítozni kezdenek. Az egyik főnök végül feltápászkodik. Jelbeszéddel a tudtára adod, hogy szükséged van a rúd tetejére tűzött másik darabra. Amikor a főnök felfogja, hogy mit is akarsz, int az egyik fiatalabb lénynek, mire az felmászik az oszlopra, és lehozza a fekete négyzetet. A főnök széles mozdulattal neked ajándékozza a készülék másik felét.[/p]
     </text>
     <next id="187"></next>
   </p>
-  <!-- 297 -->
+  <p id="297">
+    <text>
+        [p]Leugrasz a rácsozatról, elkapsz egy masszívnak tűnő, faltól kiálló csövet, és beugrasz az ajtón. A robotok már hiába tüzelnek utánad. Végre biztonságban vagy![/p]
+    </text>
+    <next id="369"></next>
+  </p>
   <!-- 298 -->
   <p id="299">
     <text>
@@ -2351,7 +3012,25 @@
     </text>
     <next id="146"></next>
   </p>
-  <!-- 312 -->
+  <p id="312">
+    <text>
+        [p]Közelharcban kell megküzdened a polipszerű mutánsokkal.[/p]
+    </text>
+    <itemCheck type="section" id="137a">
+      <have>
+        <text>
+            [p]Mivel olvastad a puhatestűek idegrendszeréről szóló könyvet, ezt a tudásodat felhasználva minden egyes találatnál 1 ponttal többet sebzel a lényeken.[/p]
+        </text>
+        <changeEnemy attribute="damageAbsorption" id="29" set="-1" />
+        <changeEnemy attribute="damageAbsorption" id="30" set="-1" />
+      </have>
+    </itemCheck>
+    <fight type="single" preFight="false">
+      <enemy id="29" />
+      <enemy id="30" />
+    </fight>
+    <next id="366"></next>
+  </p>
   <!-- 313 -->
   <p id="314">
     <text>
@@ -2360,7 +3039,12 @@
     <loseItem id="3005" />
     <death />
   </p>
-  <!-- 315 -->
+  <p id="315">
+    <text>
+        [p]Leugrasz, közben csípőből tüzelsz, mint a cowboyok. Sajnálatos módon azonban a kiszemelt robot oldalt csusszan egy picit, így te keményen a padlóra huppansz kettejük között. Ilyen közelről az őrrobotok sohasem hibáznak. A két irányból érkező lézersugarak először a páncélodat, majd téged tépnek atomokra. Küldetésed sikertelenül véget ért.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 316 -->
   <p id="317">
     <text>
@@ -2462,7 +3146,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 326 -->
+  <p id="326">
+    <text>
+        [p]A könyvből megtudod, hogy a lény egy Zark. Ez egy rendkívül intelligens, ámde meglehetősen barátságtalan faj, akik furcsa módon a legjobban azt szeretik, ha apró, szőrös lényeket ketrecbe zárhatnak, és megpróbálhatják bebizonyítani, hogy [em]ők[/em] (mármint a Zarkok) sokkal intelligensebbek, és határozottan sokkal szórakoztatóbbak mindenféle kis szőrös rágcsálónál. Ha esetleg az ily módon bezárt kis szőrös lények panaszkodni próbálnának, a Zarkok hamar salátává aprítják őket. Azt is megtudod a könyvből, hogy igen sajnálatos, de a Zarkok nem szívelik az unalmat és a szűklátókörűséget. Úgy tűnik, a szemben álló Zark szilárdan eltökélte, hogy ezt be is bizonyítja neked.[/p]
+    </text>
+    <next id="15">Megpróbálsz hát válaszolni a kérdésére?</next>
+    <next id="383">Vagy ezt fölösleges időpocsékolásnak tartod, és inkább szétlövöd ezt az ostoba lényt?</next>
+  </p>
   <p id="327">
     <text>
         [p]Elhagyod a termet. Beugrasz az odakint várakozó siklóba, és gyorsan visszacikázol a legutóbbi T-elágazáshoz. Ezúttal a bal oldali irányt választod.[/p]
@@ -2470,11 +3160,59 @@
     <next id="70"></next>
   </p>
   <!-- 328 -->
-  <!-- 329 -->
-  <!-- 330 -->
+  <p id="329">
+    <text>
+        [p]Odaérsz az utolsó párhoz. Ezek két teljesen egyforma ajtó előtt állnak, és nem mozdulnak. Az egyiknek felnyílik a szeme, és megszólal: - A jobb oldali ajtó kell [em]neked[/em]. - A másik erre rávágja: - Ne hallgass rá! Hazudik. - Az első visszavág: - De csak néha! - Nos, melyik ajtón mész át?[/p]
+    </text>
+    <next id="131">A jobb oldalin?</next>
+    <next id="375">Vagy a bal oldalin?</next>
+  </p>
+  <p id="330">
+    <text>
+        [p]A gránát a tóban landol, és felrobban, vízzel fröcskölve tele az egész termet. A robbanás azonban gyilkos lökéshullámokat keltett a vízben, melyek a másodperc tört része alatt elérték a szörnyeket.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <text>[p]Ellenfeleid 1 ÉLETERŐ pontot veszítenek.[/p]</text>
+        <changeEnemy attribute="stamina" id="29" change="-1" />
+        <changeEnemy attribute="stamina" id="30" change="-1" />
+      </result>
+      <result max="2" min="2">
+        <text>[p]Ellenfeleid 2 ÉLETERŐ pontot veszítenek.[/p]</text>
+        <changeEnemy attribute="stamina" id="29" change="-2" />
+        <changeEnemy attribute="stamina" id="30" change="-2" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]Ellenfeleid 3 ÉLETERŐ pontot veszítenek.[/p]</text>
+        <changeEnemy attribute="stamina" id="29" change="-3" />
+        <changeEnemy attribute="stamina" id="30" change="-3" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Ellenfeleid 4 ÉLETERŐ pontot veszítenek.[/p]</text>
+        <changeEnemy attribute="stamina" id="29" change="-4" />
+        <changeEnemy attribute="stamina" id="30" change="-4" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Ellenfeleid 5 ÉLETERŐ pontot veszítenek.[/p]</text>
+        <changeEnemy attribute="stamina" id="29" change="-5" />
+        <changeEnemy attribute="stamina" id="30" change="-5" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Ellenfeleid 6 ÉLETERŐ pontot veszítenek.[/p]</text>
+        <changeEnemy attribute="stamina" id="29" change="-6" />
+        <changeEnemy attribute="stamina" id="30" change="-6" />
+      </result>
+    </random>
+    <next id="312"></next>
+  </p>
   <!-- 331 -->
   <!-- 332 -->
-  <!-- 333 -->
+  <p id="333">
+    <text>
+        [p]Kiszemelsz magadnak egy falból kiálló csodarabot, amelyben magkapaszkodva majd kilendülhetsz az ajtón. Ám balszerencsédre a cső eltörik, amikor ráugrasz, így a robotok között landolsz a padlón. Az őrrobotok ilyen közelről nem hibáznak. A két irányból érkező lézersugarak először a páncélodat, majd téged bontanak atomokra. Küldetésed balszerencsés véget ért.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 334 -->
   <p id="335">
     <text>
@@ -2510,8 +3248,19 @@
     </fight>
     <next id="248"></next>
   </p>
-  <!-- 339 -->
-  <!-- 340 -->
+  <p id="339">
+    <text>
+        [p]- Naaaa! - csóválja a fejét az egyik. - Ne hamukázz itt nekünk! - vágja rá a másik. Kis fémlemezek csusszannak odébb a testükön, és a nyílásokban többcsövű plazmavetők jelennek meg. Meg kell küzdened velük.[/p]
+    </text>
+    <next id="71"></next>
+  </p>
+  <p id="340">
+    <text>
+        [p]A szörny már majdnem rád vetette magát.[/p]
+    </text>
+    <next id="101">Felveszed vele a harcot?</next>
+    <next id="139">Vagy inkább elmenekülsz?</next>
+  </p>
   <p id="341">
     <text>
         [p]Egy füves síkságon vagy, mely nyugati, déli és keleti irányban nyúlik tovább. Észak felé alacsony hegyeket pillantasz meg. Nem messze tőled, a síkság középpontján egy fából készített építményt veszel észre.[/p]
@@ -2568,7 +3317,13 @@
     <next id="109">A biztonsági ajtót?</next>
     <next id="257">Vagy a tolóajtót?</next>
   </p>
-  <!-- 348 -->
+  <p id="348">
+    <text>
+        [p]A flakon egész tartalmát a lényekre fújod, mindhiába. Csak egy dolgot nyertél vele - egy üres aerosolos flakont. Húzd le az ideggázt a felszereléseid listájáról. Nincs más választásod, szembe kell szállnod a szörnyekkel.[/p]
+    </text>
+    <loseItem id="3005" />
+    <next id="204"></next>
+  </p>
   <!-- 349 -->
   <p id="350">
     <text>
@@ -2642,7 +3397,12 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 351 -->
+  <p id="351">
+    <text>
+        [p]Az őrrobotok füstölgő roncsai a padlón hevernek, égett alkatrészeik szanaszét szóródtak a szobában. Átlépsz rajtuk, és a kijárathoz sétálsz.[/p]
+    </text>
+    <next id="369"></next>
+  </p>
   <!-- 352 -->
   <p id="353">
     <text>
@@ -2710,7 +3470,13 @@
     </test>
     <next id="8"></next>
   </p>
-  <!-- 360 -->
+  <p id="360">
+    <text>
+        [p]Felmászol az aknában, és egy kis szobába jutsz. A szobát szemmel láthatóan (és orral érezhetően) szeméttárolásra használják. A szemét a mennyezetből nyíló csúszdán érkezik ide, és amikor már elég sok felgyülemlett belőle, a felesleg egyszerűen továbbcsúszik azon az aknán, amelyen az imént jöttél fel. Két apró nyílásfedelet veszel észre a falon. Az egyik fölött a „4B GYORSÍTÓ”, a másik fölött a „113-24 CSŐTRANSZPORT” felirat látható. Mindkét nyílás keskeny karbantartó csatornára nyílik. Melyikbe mászol be?[/p]
+    </text>
+    <next id="72">A gyorsító alagútjába?</next>
+    <next id="129">Vagy a csőtranszport alagútjába?</next>
+  </p>
   <p id="361">
     <text>
         [p]Merre tovább?[/p]
@@ -2733,10 +3499,35 @@
     </text>
     <next id="327"></next>
   </p>
-  <!-- 364 -->
+  <p id="364">
+    <text>
+        [p]Rámutatsz a könyvvel, mire a könyv megszólal: - Ez egy Tham Hasonmás. Igen veszélyes dög, de nagyon könnyű megszabadulni tőle ... csak egy véletlenszerűen modulált hangot kell kibocsátani... - Egy igen magas hangú fütyülés hallatszik a könyvből, de ahelyett hogy elűzné a szörnyet, csak még jobban felingerli. Közelharcban kell megküzdened a denevér-lénnyel.[/p]
+    </text>
+    <fight type="single" preFight="false">
+      <enemy id="24" />
+    </fight>
+    <next id="13"></next>
+  </p>
   <!-- 365 -->
-  <!-- 366 -->
-  <!-- 367 -->
+  <p id="366">
+    <text>
+        [p]A lények holtteste a víz színén marad lebegve. A kijárathoz rohansz.[/p]
+    </text>
+    <next id="373"></next>
+  </p>
+  <p id="367">
+    <text>
+        [p]Megkevered a paklit, közben megpróbálsz valami kártyatrükköt kieszelni, amivel leköthetnéd a lény figyelmét. - Ebben a pakliban ötvenkét hagyományos kártyalap Van -kezded hadarni a mondókádat. - Kihúzok két olyan lapot, amely közül az egyik értéke biztosan nagyobb hétnél... - A lény gyanakodva megkérdezi: - Az ász nem kettőt ér, ugye? - Természetesen - feleled könnyedén, majd tovább folytatod a szöveget: - Utána elveszek legalább öt lapot, ezek közül kettőt te választhatsz ki, kettőt én, egyet pedig véletlenszerűen felcsapunk. Ezek után, ha én most kihúzom a pakliban maradt lapok közül a legnagyobbat, és átrakom a másik oldalra ... mi a valószínűsége, hogy valaki eltalálja annak a lapnak az értékét, amely nagyság szerint a tizenkettedik a pakliban lévő második legnagyobb lap mögött?[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="149"></next>
+      </success>
+      <failure>
+        <next id="259"></next>
+      </failure>
+    </test>
+  </p>
   <p id="368">
     <text>
         [p]A lények köréd özönlenek és dél felé vezetnek, közben egy pillanatra sem hagyják abba az éneklést és a táncolást. Néhány kilométernyit mehettek, míg végül, kiérve a hegyek közül, keresztülvágva egy füves síkságon egy folyó partjára épült kikötőhöz értek. A idegenek szemmel láthatóan azt akarják, hogy beülj a mólóhoz kikötött masszív kenuk közül az egyikbe.[/p]
@@ -2746,7 +3537,9 @@
   </p>
   <!-- 369 -->
   <!-- 370 -->
-  <!-- 371 -->
+  <p id="371">
+    <empty />
+  </p>
   <p id="372">
     <text>
         [p]A láda szinte színültig van narancsos-lilás színű gyümölcsökkel. Ahogy egy kicsit beletúrsz az egyik kezeddel a ládába, észreveszed, hogy a mókusszerű lények abbahagyták az ugrándozást, és éhes szemekkel bámulnak rád.[/p]
@@ -2755,9 +3548,93 @@
     <next id="393">Elteszel belőlük néhány darabot?</next>
     <next id="118">Vagy inkább itthagyod ezt a különös szobát, és folytatod az utad a kinti folyosón?</next>
   </p>
-  <!-- 373 -->
+  <p id="373">
+    <text>
+        [p class="inlineImage"][img src="resources/ff12/373.jpg" /][/p]
+        [p]Az ajtón át egy szobába jutsz, ahol egy vad kinézetű, nagy fémlemezekből álló páncélzatot viselő földöntúlival akadsz össze. A lény egy fantasztikus dezintegrátort tart a kezében - egyenesen a mellkasodnak szegezve! A lény háta mögött három nagy kerek ajtót látsz a szemközti falban. - Állj! - kiált rád a lény, és közel álló, apró szemeivel végigmér. - Ha át akarsz menni, meg kell válaszolnod a kérdésemre ... ha elég intelligensnek tartod magad hozzá. - Mit teszel?[/p]
+    </text>
+    <next id="15">Megpróbálsz válaszolni a lény egyelőre még nem ismert kérdésére?</next>
+    <next id="295">Végignézed a zsákodat, hátha találsz valami megfelelő eszközt?</next>
+    <next id="383">Vagy félreteszed a kötelező udvariasságot, és egyszerűen szétlövöd a lényt?</next>
+  </p>
   <!-- 374 -->
-  <!-- 375 -->
+  <p id="375">
+    <text>
+        [p]Ahogy kinyitod az ajtót, kék, elektromos lángok csapnak ki, és borítanak be egy szemvillanás alatt.[/p]
+    </text>
+    <random diceConfig="3d6">
+      <result max="3" min="3">
+        <text>[p]Vesztesz 3 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-3" to="stamina" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Vesztesz 4 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-4" to="stamina" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Vesztesz 5 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-5" to="stamina" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Vesztesz 6 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-6" to="stamina" />
+      </result>
+      <result max="7" min="7">
+        <text>[p]Vesztesz 7 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-7" to="stamina" />
+      </result>
+      <result max="8" min="8">
+        <text>[p]Vesztesz 8 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-8" to="stamina" />
+      </result>
+      <result max="9" min="9">
+        <text>[p]Vesztesz 9 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-9" to="stamina" />
+      </result>
+      <result max="10" min="10">
+        <text>[p]Vesztesz 10 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-10" to="stamina" />
+      </result>
+      <result max="11" min="11">
+        <text>[p]Vesztesz 11 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-11" to="stamina" />
+      </result>
+      <result max="12" min="12">
+        <text>[p]Vesztesz 12 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-12" to="stamina" />
+      </result>
+      <result max="13" min="13">
+        <text>[p]Vesztesz 13 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-13" to="stamina" />
+      </result>
+      <result max="14" min="14">
+        <text>[p]Vesztesz 14 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-14" to="stamina" />
+      </result>
+      <result max="15" min="15">
+        <text>[p]Vesztesz 15 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-15" to="stamina" />
+      </result>
+      <result max="16" min="16">
+        <text>[p]Vesztesz 16 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-16" to="stamina" />
+      </result>
+      <result max="17" min="17">
+        <text>[p]Vesztesz 17 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-17" to="stamina" />
+      </result>
+      <result max="18" min="18">
+        <text>[p]Vesztesz 18 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-18" to="stamina" />
+      </result>
+      <after>
+        <text>
+            [p]Bevágod az ajtót, és bosszúsan a másik ajtóhoz lépsz.[/p]
+        </text>
+        <next id="131"></next>
+      </after>
+    </random>
+  </p>
   <p id="376">
     <text>
         [p]A gomb benyomva marad, és a biztonsági zár kijelzője fehér színnel vibrálni kezd. Melyik gombot nyomod meg másodiknak?[/p]
@@ -2766,7 +3643,12 @@
     <next id="205">Vagy a zöldet?</next>
   </p>
   <!-- 377 -->
-  <!-- 378 -->
+  <p id="378">
+    <text>
+        [p]Félresöpröd a orrod előtt fityegő táblát, és elindulsz a folyosón. Egy szobába jutsz, melyben az összes berendezési tárgy felülete, az összes fal, minden halvány zöld fényben izzik. Furcsa. A falon három nagy repedés, amelyeken keresztül több ezer apró, csillogó fémszemcse ömlött ki a padlóra. Belemarkolsz a szemcsékbe, és szemügyre veszed őket közelebbről is. Felismered őket: ezek apró plutóniumgömböcskék. A félelem jeges karmokkal markol beléd, de már későn: halálos sugárdózist kaptál az alatt a néhány másodperc alatt, amióta a szobában tartózkodsz. A földre roskadsz, és tehetetlenül várod, hogy néhány perc múlva megérkezzen a halál. Küldetésed itt véget ért.[/p]
+    </text>
+    <death />
+  </p>
   <p id="379">
     <text>
         [p]Az egyik mókusforma lényt a sarokba szorítod, majd egy ugrással ráveted magad, és elkapod a grabancát. Egy kicsit nyüszít, de furcsa módon nem próbál menekülni a markodból. Ehelyett kerekre nyílt szemekkel, könyörögve néz rád, és apró mancsait a láda felé nyújtogatja. A ládához lépsz, és latod, hogy szinte színültig van narancsos-lilás színű gyümölccsel. Amikor a lény meglátja a gyümölcsöket, még erőteljesebben nyújtogatja a mancsait, hogy megpróbáljon hozzáférni az ízletes csemegéhez.[/p]
@@ -2777,8 +3659,23 @@
   </p>
   <!-- 380 -->
   <!-- 381 -->
-  <!-- 382 -->
-  <!-- 383 -->
+  <p id="382">
+    <text>
+        [p]A gömbök szétválnak előtted, ahogy lendületesen előrelépsz. Belépsz az ajtón, és egy magas mennyezetű terembe jutsz. Két oldalon a fal mellett a legkülönfélébb lények modelljeit látod alacsony kő talapzatokon. Egymás felé fordulva állnak párosával (egyik a bal falnál, a másik a jobb falnál) - alumíniummadarak, hatlábú acélteknősök, és még ki tudja, miféle lények. Összesen nyolcan vannak. Lassan haladsz előre a teremben. Amint egy vonalba érsz az első párral, azok életre kelnek, és feléd fordulnak.[/p]
+        [p]- A hold vörös, az ég rózsaszín - mondja az egyik. - Melyik a gyorsabb, a fény vagy az idő? - kérdezi a másik. Mit válaszolsz?[/p]
+    </text>
+    <next id="89">Azt, hogy a fény?</next>
+    <next id="225">Vagy azt, hogy az idő?</next>
+  </p>
+  <p id="383">
+    <text>
+        [p]A földöntúli egy dezintegrátorral van felfegyverkezve, amely találat esetén azonnal atomjaidra bont.[/p]
+    </text>
+    <fight type="shooting" preFight="false">
+      <enemy id="31" />
+    </fight>
+    <next id="392"></next>
+  </p>
   <!-- 384 -->
   <p id="385">
     <text>
@@ -2787,7 +3684,13 @@
     <death />
   </p>
   <!-- 386 -->
-  <!-- 387 -->
+  <p id="387">
+    <text>
+        [p]- Jó - feleli az egyik. - Ja - mondja a másik. Elfordulnak, és a mennyezetre bámulnak. Továbblépsz, és a harmadik páros fordul feléd. - Hé, hé, te bádogfejű! - kiáltja az egyik. - Ez az, hová megyünk, hová megyünk? - kérdi a másik. Mit válaszolsz?[/p]
+    </text>
+    <next id="221">Az igazat, hogy megpróbálod megtalálni Cyrust?</next>
+    <next id="339">Vagy hazudsz, és azt mondod, hogy egy technikus vagy, aki a hajó berendezéseit ellenőrzi éppen?</next>
+  </p>
   <p id="388">
     <text>
         [p]Leemeled a sisakod, és beleharapsz az egyik gyümölcsbe. Néhány pillanat múlva elveszted az eszméletedet, és soha többé nem térsz már magadhoz. Küldetésed nem járt sikerrel.[/p]
@@ -2795,16 +3698,39 @@
     <death />
   </p>
   <!-- 389 -->
-  <!-- 390 -->
+  <p id="390">
+    <text>
+        [p]A mókusszerű lény kiugrik a markodból, és a földöntúli felé ugrál.[/p]
+    </text>
+    <itemCheck type="section" id="186">
+      <have>
+        <next id="111"></next>
+      </have>
+      <dontHave>
+        <next id="92"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 391 -->
-  <!-- 392 -->
+  <p id="392">
+    <text>
+        [p]A Zarkot ugyan elpusztítottad, de - őszinte sajnálatodra - a dezintegrátorát olyan különös földönkívüli módon tervezték, hogy hiába nézegeted, forgatod, nem tudsz rájönni, hogyan kellene használni. Úgy döntesz, hogy inkább megvizsgálod a szemközti falon lévő ajtókat.[/p]
+    </text>
+    <next id="97"></next>
+  </p>
   <p id="393">
     <text>
         [p]Kiválasztasz néhány [span class="takeItem" data-id="3017" data-amount="1"]gyümölcsöt[/span], és a zsákodba süllyeszted őket. Mivel a szobában már nincs semmi érdekes, kisétálsz, és folytatod az utad a folyosón.[/p]
     </text>
     <next id="118"></next>
   </p>
-  <!-- 394 -->
+  <p id="394">
+    <text>
+        [p]Feltéped a zacskót, és a tartalmát egyenletesen a lényekre szórod. A lények azonnal becsukják a szemüket, villámgyorsan maguk alá rántják a csápjaikat, és éles hangon rikoltozni kezdenek. Mindketten visszazuhannak a vízbe, és sűrű fekete tintafoltokat eresztve eltűnnek a felszín alatt. Gyorsan a kijárathoz szaladsz.[/p]
+    </text>
+    <loseItem id="3020" />
+    <next id="373"></next>
+  </p>
   <p id="395">
     <text>
         [p class="inlineImage"][img src="resources/ff12/395.jpg" /][/p]

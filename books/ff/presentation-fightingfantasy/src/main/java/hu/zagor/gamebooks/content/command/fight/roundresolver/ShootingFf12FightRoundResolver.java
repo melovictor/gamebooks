@@ -1,11 +1,13 @@
 package hu.zagor.gamebooks.content.command.fight.roundresolver;
 
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
+import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
+import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
@@ -45,7 +47,9 @@ public class ShootingFf12FightRoundResolver implements FightRoundResolver {
         final FightRoundResult[] results = new FightRoundResult[command.getResolvedEnemies().size()];
         final FightCommandMessageList messages = command.getMessages();
 
-        heroShootsAtTargetedEnemy(resolvationData, messages);
+        if (!mustSkipThisRound(resolvationData)) {
+            heroShootsAtTargetedEnemy(resolvationData, messages);
+        }
         preFightMachinations(resolvationData, messages);
         enemiesAreShootingAtHero(command, resolvationData);
         enemiesDoingAutoDamage(messages, resolvationData);
@@ -53,6 +57,12 @@ public class ShootingFf12FightRoundResolver implements FightRoundResolver {
         getSelectedEnemy(resolvationData).setActiveWeapon(null);
 
         return results;
+    }
+
+    private boolean mustSkipThisRound(final ResolvationData resolvationData) {
+        final Character character = resolvationData.getCharacter();
+        final CharacterItemHandler itemHandler = resolvationData.getCharacterHandler().getItemHandler();
+        return !itemHandler.removeItem(character, "4002", 1).isEmpty();
     }
 
     private void enemiesDoingAutoDamage(final FightCommandMessageList messages, final ResolvationData resolvationData) {
@@ -91,7 +101,7 @@ public class ShootingFf12FightRoundResolver implements FightRoundResolver {
             if (isAlive(enemy)) {
                 for (int attackNumber = 0; attackNumber < enemy.getAttackPerRound(); attackNumber++) {
                     if (enemyHitUs(messages, enemy)) {
-                        if (hasArmour(resolvationData)) {
+                        if (hasArmour(resolvationData) && armourEffective(enemy)) {
                             if (armourDeflectedHit(messages, resolvationData)) {
                                 messages.addKey("page.ff12.fight.armourDeflected", enemy.getCommonName());
                             } else {
@@ -112,10 +122,19 @@ public class ShootingFf12FightRoundResolver implements FightRoundResolver {
         }
     }
 
+    private boolean armourEffective(final Ff12Enemy enemy) {
+        boolean armourEffective = !"1003".equals(enemy.getWeapon());
+        final DeityWeapon activeWeapon = enemy.getActiveWeapon();
+        if (activeWeapon != null) {
+            armourEffective = !activeWeapon.isIgnoreArmour();
+        }
+        return armourEffective;
+    }
+
     private void heroShootsAtTargetedEnemy(final ResolvationData resolvationData, final FightCommandMessageList messages) {
         final FfEnemy targetEnemy = getSelectedEnemy(resolvationData);
         if (weHitEnemy(messages, resolvationData, targetEnemy)) {
-            final int damage = calculateDamage(resolvationData);
+            final int damage = calculateDamage(targetEnemy, resolvationData);
             messages.addKey("page.ff12.fight.hitEnemy", targetEnemy.getCommonName(), damage);
             targetEnemy.setStamina(targetEnemy.getStamina() - damage);
         } else {
@@ -123,7 +142,7 @@ public class ShootingFf12FightRoundResolver implements FightRoundResolver {
         }
     }
 
-    private int calculateDamage(final ResolvationData resolvationData) {
+    private int calculateDamage(final FfEnemy targetEnemy, final ResolvationData resolvationData) {
         final Ff12Character character = (Ff12Character) resolvationData.getCharacter();
         final FfCharacterItemHandler itemHandler = (FfCharacterItemHandler) resolvationData.getCharacterHandler().getItemHandler();
         final FfItem equippedWeapon = itemHandler.getEquippedWeapon(character);
@@ -134,7 +153,7 @@ public class ShootingFf12FightRoundResolver implements FightRoundResolver {
             final int[] randomNumber = generator.getRandomNumber(1);
             causedDamage = randomNumber[0];
         }
-        return causedDamage;
+        return Math.max(0, causedDamage - targetEnemy.getDamageAbsorption());
     }
 
     private boolean weHitEnemy(final FightCommandMessageList messages, final ResolvationData resolvationData, final FfEnemy targetEnemy) {
