@@ -1,7 +1,7 @@
 <%@page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
 <h2><span class="attribute">ÜGYESSÉG</span>, <span class="attribute">ÉLETERŐ</span> ÉS <span class="attribute">SZERENCSE</span></h2>
 
-<p>Dobj egy kockával, Adj 6-ot a dobott számhoz, és az összeget írd be a <em>Kalandlap</em> <span class="attribute">ÜGYESSÉG</span> négyzetébe.</p>
+<p>Dobj egy kockával, adj 6-ot a dobott számhoz, és az összeget írd be a <em>Kalandlap</em> <span class="attribute">ÜGYESSÉG</span> négyzetébe.</p>
 <p>Most dobj két kockával, és az eredményhez adjál 12-t; a kapott számot írd be az <span class="attribute">ÉLETERŐ</span> négyzetbe.</p>
 <p>Van egy <span class="attribute">SZERENCSE</span> rovat is. Ehhez egy kockával dobj, és 6-ot adj az eredményhez, majd az összeget írd a <span class="attribute">SZERENCSE</span> rovatba.</p>
 <p>Különböző okok miatt, amelyeket majd részletesen elmagyarázunk, <span class="attribute">ÜGYESSÉG</span>, <span class="attribute">ÉLETERŐ</span> és <span class="attribute">SZERENCSE</span> pontjaid a kalandok során folyamatosan változnak. Pontosan kell vezetned őket, ezért azt tanácsoljuk, hogy kis betűkkel írj a négyzetekbe, vagy tarts kéznél radírt, De soha ne töröld ki <em>Kezdeti</em> pontjaidat, mert, bár további <span class="attribute">ÜGYESSÉG</span>, <span class="attribute">ÉLETERŐ</span> és <span class="attribute">SZERENCSE</span> pontokat szerezhetsz, összegük soha nem haladhatja meg a <em>Kezdeti</em> értéket, kivéve néhány nagyon ritka esetet, amikor a megfelelő oldalon ezt az utasítást kapod.</p>
