@@ -14,7 +14,10 @@
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/zagor.css" />" />
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bze.css" />" />
 <c:forEach var="cssResource" items="${resources.css}">
-	<link type="text/css" rel="stylesheet" href="<c:url value="../resources/${cssResource}" />" />
+    <link type="text/css" rel="stylesheet" href="<c:url value="../resources/${cssResource}" />" />
+</c:forEach>
+<c:forEach var="cssResource" items="${helpDescriptor.resourceInformation.cssResources}">
+    <link type="text/css" rel="stylesheet" href="<c:url value="../book/resources/${cssResource}.css" />" />
 </c:forEach>
 
 <script type="text/javascript" src="<c:url value="/resources/js/jquery.js" />"></script>

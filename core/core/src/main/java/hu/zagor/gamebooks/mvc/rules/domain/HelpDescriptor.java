@@ -1,7 +1,7 @@
 package hu.zagor.gamebooks.mvc.rules.domain;
 
 import hu.zagor.gamebooks.domain.BookInformations;
-
+import hu.zagor.gamebooks.domain.ResourceInformation;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +14,7 @@ public class HelpDescriptor {
     private BookInformations info;
     private List<HelpSection> sections;
     private Map<String, String> params;
+    private ResourceInformation resourceInformation;
 
     public List<HelpSection> getSections() {
         return sections;
@@ -37,6 +38,14 @@ public class HelpDescriptor {
 
     public void setInfo(final BookInformations info) {
         this.info = info;
+    }
+
+    public ResourceInformation getResourceInformation() {
+        return resourceInformation;
+    }
+
+    public void setResourceInformation(final ResourceInformation resourceInformation) {
+        this.resourceInformation = resourceInformation;
     }
 
 }
