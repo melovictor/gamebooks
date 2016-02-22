@@ -16,4 +16,23 @@
     </property>
   </bean>
 
+  <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor" id="fh1Help" p:info-ref="fh1Info" scope="prototype">
+    <property name="sections">
+      <util:list>
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sa" p:jsp="intro" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sa" p:jsp="attribs" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sa" p:jsp="luck" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sa" p:jsp="armour" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sa" p:jsp="weapons" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sa" p:jsp="melee" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sa" p:jsp="shooting" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sa" p:jsp="regainStamina" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sa" p:jsp="equipment" />
+      </util:list>
+    </property>
+    <property name="resourceInformation">
+      <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="ff12" />
+    </property>
+  </bean>
+
 </beans>
