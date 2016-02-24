@@ -35,7 +35,21 @@ public class SaveFileContainer implements Comparable<SaveFileContainer> {
 
     @Override
     public int compareTo(final SaveFileContainer o) {
-        return getUserName().compareTo(o.getUserName());
+        int positioning;
+        if (userName == null) {
+            if (o.userName == null) {
+                positioning = Integer.parseInt(userId) - Integer.parseInt(o.userId);
+            } else {
+                positioning = 1;
+            }
+        } else {
+            if (o.userName == null) {
+                positioning = -1;
+            } else {
+                positioning = userName.compareTo(o.userName);
+            }
+        }
+        return positioning;
     }
 
 }

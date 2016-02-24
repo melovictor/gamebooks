@@ -78,7 +78,10 @@ public class UserLogDisplayController extends AbstractRequestWrappingController 
         if (saveFiles.exists()) {
             for (final File userDir : saveFiles.listFiles()) {
                 if (userDir.isDirectory()) {
-                    savedGames.add(processSavedDirectory(userDir));
+                    final SaveFileContainer processSavedDirectory = processSavedDirectory(userDir);
+                    if (!processSavedDirectory.getSavedFiles().isEmpty()) {
+                        savedGames.add(processSavedDirectory);
+                    }
                 }
 
             }
