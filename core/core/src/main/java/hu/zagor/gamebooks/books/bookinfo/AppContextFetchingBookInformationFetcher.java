@@ -21,11 +21,12 @@ public class AppContextFetchingBookInformationFetcher implements BookInformation
         return getInfoById(Long.parseLong(bookId));
     }
 
-    private BookInformations getInfoById(final Long bookId) {
+    @Override
+    public BookInformations getInfoById(final long bookId) {
         BookInformations found = null;
 
         for (final BookInformations info : applicationContext.getBeansOfType(BookInformations.class).values()) {
-            if (info.getId().equals(bookId)) {
+            if (info.getId() == bookId) {
                 found = info;
                 break;
             }

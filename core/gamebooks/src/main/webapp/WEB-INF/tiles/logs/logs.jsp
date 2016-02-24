@@ -36,11 +36,24 @@
 		</c:forEach>
 	</c:forEach>
 
-	<h1><spring:message code="page.logs.archivedLogs" /></h1>
-	<div id="logArchives">
-		<c:forEach items="${archivedLogFiles}" var="log">
-			<c:url var="logUrl" value="/logs/archive.${log}.zip/zip" />
-			<a href="${logUrl}">${log}</a>
-		</c:forEach>
-	</div>
+</div>
+<div id="saveGameFiles">
+    <c:forEach var="userSavedGames" items="${savedGameFiles}">
+        <h2>${userSavedGames.userName}</h2>
+        <c:forEach var="savedGame" items="${userSavedGames.savedFiles}" varStatus="stat">
+            <c:if test="${stat.index > 0}">
+                <br />
+            </c:if>
+            <a href="savegame/${userSavedGames.userId}/${savedGame.bookId}">${savedGame.bookTitle}</a>
+        </c:forEach>
+    </c:forEach>
+</div>
+
+
+<h1><spring:message code="page.logs.archivedLogs" /></h1>
+<div id="logArchives">
+    <c:forEach items="${archivedLogFiles}" var="log">
+        <c:url var="logUrl" value="/logs/archive.${log}.zip/zip" />
+        <a href="${logUrl}">${log}</a>
+    </c:forEach>
 </div>

@@ -7,10 +7,10 @@ import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.mvc.book.controller.AbstractRequestWrappingController;
 import hu.zagor.gamebooks.mvc.logs.domain.LogFileContainer;
 import hu.zagor.gamebooks.mvc.logs.domain.LogFileData;
+import hu.zagor.gamebooks.mvc.logs.domain.SaveFileContainer;
+import hu.zagor.gamebooks.mvc.logs.domain.SavedFileData;
 import hu.zagor.gamebooks.support.scanner.Scanner;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,8 +18,6 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.io.IOUtils;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -27,16 +25,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Controller for displaying and downloading user log files.
+ * Controller for displaying user log and save files.
  * @author Tamas_Szekeres
  */
 @Controller
 @PreAuthorize("hasAuthority('ADMIN')")
-public class UserLogController extends AbstractRequestWrappingController {
+public class UserLogDisplayController extends AbstractRequestWrappingController {
 
     private static final int BOOK_ID_BOOK = 3;
     private static final int TIMESTAMP_IDX = 2;
@@ -48,6 +45,7 @@ public class UserLogController extends AbstractRequestWrappingController {
 
     private static final Pattern USERNAME = Pattern.compile("User '(.*)' logged in successfully.");
     private static final Map<String, String> USER_NAMES = new HashMap<>();
+    private static final Map<Long, String> BOOK_TITLES = new HashMap<>();
 
     private static final DateTimeFormatter SHORT_FORMAT = DateTimeFormat.forPattern("YYYY. MMMM d.");
     private static final DateTimeFormatter LONG_FORMAT = DateTimeFormat.forPattern("YYYY. MMMM d. HH:mm:ss").withZone(DateTimeZone.forID("Europe/Budapest"));
@@ -74,9 +72,49 @@ public class UserLogController extends AbstractRequestWrappingController {
         model.addAttribute("logFiles", container);
         model.addAttribute("archivedLogFiles", archivedContainer);
 
+        final String saveDir = directoryProvider.getSaveGameDirectory();
+        final File saveFiles = (File) getBeanFactory().getBean("file", saveDir);
+        final Set<SaveFileContainer> savedGames = new TreeSet<>();
+        if (saveFiles.exists()) {
+            for (final File userDir : saveFiles.listFiles()) {
+                if (userDir.isDirectory()) {
+                    savedGames.add(processSavedDirectory(userDir));
+                }
+
+            }
+        }
+        model.addAttribute("savedGameFiles", savedGames);
+
         model.addAttribute("pageTitle", "page.title");
 
         return PageAddresses.LOGS;
+    }
+
+    private SaveFileContainer processSavedDirectory(final File userDir) {
+        final SaveFileContainer container = new SaveFileContainer();
+
+        final String userId = userDir.getName();
+        container.setUserId(userId);
+        container.setUserName(USER_NAMES.get(userId));
+
+        for (final File savedGameFile : userDir.listFiles()) {
+            if (savedGameFile.isFile() && !savedGameFile.getName().endsWith(".properties")) {
+                final SavedFileData data = new SavedFileData();
+                data.setBookId(Long.parseLong(savedGameFile.getName()));
+                data.setBookTitle(resolveBookId(data.getBookId()));
+                container.getSavedFiles().add(data);
+            }
+        }
+
+        return container;
+    }
+
+    private String resolveBookId(final long bookId) {
+        String bookTitle = BOOK_TITLES.get(bookId);
+        if (bookTitle == null) {
+            bookTitle = provideBookTitle(bookId);
+        }
+        return bookTitle;
     }
 
     private void processFile(final LogFileContainer container, final Set<String> archivedContainer, final File file) {
@@ -128,6 +166,18 @@ public class UserLogController extends AbstractRequestWrappingController {
         }
     }
 
+    private String provideBookTitle(final long bookId) {
+        final BookInformations bookInfo = infoFetcher.getInfoById(bookId);
+        final String title;
+        if (bookInfo == null) {
+            title = String.valueOf(bookId);
+        } else {
+            title = bookInfo.getTitle();
+        }
+        BOOK_TITLES.put(bookId, title);
+        return title;
+    }
+
     private String getUsername(final LogFileData logFileData, final String userId) {
         String userName = USER_NAMES.get(userId);
         if (userName == null) {
@@ -152,25 +202,6 @@ public class UserLogController extends AbstractRequestWrappingController {
             username = matcher.group(1);
         }
         return username;
-    }
-
-    /**
-     * Displays the selected log file content.
-     * @param response the {@link HttpServletResponse} bean
-     * @param file the name of the log file to load
-     * @param extension the extension of the file's name
-     * @throws IOException when an {@link IOException} occurs
-     */
-    @RequestMapping(value = PageAddresses.LOGS + "/{file}/{extension}")
-    public void getFile(final HttpServletResponse response, @PathVariable("file") final String file, @PathVariable("extension") final String extension)
-        throws IOException {
-        final File fileLocation = (File) getBeanFactory().getBean("file", directoryProvider.getLogFileDirectory(), file);
-        if ("zip".equals(extension)) {
-            response.setHeader("Content-Disposition", "inline; filename=" + fileLocation.getName());
-        } else {
-            response.setContentType("text/plain; charset=utf-8");
-        }
-        IOUtils.copy(new FileInputStream(fileLocation), response.getOutputStream());
     }
 
 }

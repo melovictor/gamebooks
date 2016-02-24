@@ -15,4 +15,11 @@ public interface BookInformationFetcher {
      */
     BookInformations getInfoById(String bookId);
 
+    /**
+     * Fetches a {@link BookInformations} object by the book's ID.
+     * @param bookId the ID of the book
+     * @return the {@link BookInformations} object
+     */
+    BookInformations getInfoById(long bookId);
+
 }
