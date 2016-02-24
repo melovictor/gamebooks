@@ -123,6 +123,10 @@ public class Item implements TrueCloneable {
         this.backpackSize = backpackSize;
     }
 
+    public void setBackpackSize(final Integer backpackSize) {
+        this.backpackSize = backpackSize;
+    }
+
     public String getDescription() {
         return description;
     }
