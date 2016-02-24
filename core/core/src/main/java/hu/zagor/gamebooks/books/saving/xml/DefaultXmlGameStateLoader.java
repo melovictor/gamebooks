@@ -198,6 +198,10 @@ public class DefaultXmlGameStateLoader extends AbstractGameStateHandler implemen
             } else {
                 final String setterName = "set" + StringUtils.capitalize(field.getName());
                 final Method setterMethod = ReflectionUtils.findMethod(parsed.getClass(), setterName, parsedValue.getClass());
+                if (setterMethod == null) {
+                    getLogger().error("Couldn't find setter method '{}' in class '{}' for type '{}'.", setterName, parsed.getClass(), parsedValue.getClass());
+                    throw new IllegalStateException();
+                }
                 setterMethod.invoke(parsed, parsedValue);
             }
         }
