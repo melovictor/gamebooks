@@ -35,6 +35,7 @@ import org.springframework.stereotype.Component;
  */
 @Component("shootingff12FightRoundResolver")
 public class ShootingFf12FightRoundResolver implements FightRoundResolver {
+    private static final int DISINTEGRATOR_DAMAGE = 24;
     private static final int STRANGLING_VINE_AUTO_DAMAGE = -2;
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
     @Autowired private DiceResultRenderer renderer;
@@ -67,8 +68,8 @@ public class ShootingFf12FightRoundResolver implements FightRoundResolver {
 
     private void enemiesDoingAutoDamage(final FightCommandMessageList messages, final ResolvationData resolvationData) {
         final Ff12Enemy enemy = getSelectedEnemy(resolvationData);
-        if ("23".equals(enemy.getId())) {
-            messages.addKey("page.ff12.fight.noArmourHit", enemy.getStamina(), 2);
+        if ("23".equals(enemy.getId()) && isAlive(enemy)) {
+            messages.addKey("page.ff12.fight.noArmourHit", enemy.getCommonName(), 2);
             final Ff12Character character = (Ff12Character) resolvationData.getCharacter();
             character.changeStamina(STRANGLING_VINE_AUTO_DAMAGE);
         }
@@ -83,7 +84,7 @@ public class ShootingFf12FightRoundResolver implements FightRoundResolver {
             messages.addKey("page.ff12.fight.deityWeaponRoll", weaponId, weaponName);
             selectedEnemy.setSkill(selectedWeapon.getSkill());
             if (selectedWeapon.isVariableDamage()) {
-                selectedEnemy.setWeapon(null);
+                selectedEnemy.setWeapon("1002");
             } else {
                 selectedEnemy.setActiveWeapon(selectedWeapon);
             }
@@ -100,26 +101,34 @@ public class ShootingFf12FightRoundResolver implements FightRoundResolver {
             int enemyDamage = 0;
             if (isAlive(enemy)) {
                 for (int attackNumber = 0; attackNumber < enemy.getAttackPerRound(); attackNumber++) {
-                    if (enemyHitUs(messages, enemy)) {
-                        if (hasArmour(resolvationData) && armourEffective(enemy)) {
-                            if (armourDeflectedHit(messages, resolvationData)) {
-                                messages.addKey("page.ff12.fight.armourDeflected", enemy.getCommonName());
+                    if (isAlive(character, resolvationData)) {
+                        if (enemyHitUs(messages, enemy)) {
+                            if (hasArmour(resolvationData) && armourEffective(enemy)) {
+                                if (armourDeflectedHit(messages, resolvationData)) {
+                                    messages.addKey("page.ff12.fight.armourDeflected", enemy.getCommonName());
+                                } else {
+                                    enemyDamage = calculateDamage(enemy);
+                                    messages.addKey("page.ff12.fight.armourFailed", enemy.getCommonName(), enemyDamage);
+                                }
+                                reduceArmour(resolvationData);
                             } else {
                                 enemyDamage = calculateDamage(enemy);
-                                messages.addKey("page.ff12.fight.armourFailed", enemy.getCommonName(), enemyDamage);
+                                messages.addKey("page.ff12.fight.noArmourHit", enemy.getCommonName(), enemyDamage);
                             }
-                            reduceArmour(resolvationData);
                         } else {
-                            enemyDamage = calculateDamage(enemy);
-                            messages.addKey("page.ff12.fight.noArmourHit", enemy.getCommonName(), enemyDamage);
+                            messages.addKey("page.ff12.fight.missedHero", enemy.getCommonName());
                         }
-                    } else {
-                        messages.addKey("page.ff12.fight.missedHero", enemy.getCommonName());
+                        character.changeStamina(-enemyDamage);
                     }
                 }
             }
-            character.changeStamina(-enemyDamage);
         }
+    }
+
+    private boolean isAlive(final Ff12Character character, final ResolvationData resolvationData) {
+        final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
+        final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
+        return attributeHandler.isAlive(character);
     }
 
     private boolean armourEffective(final Ff12Enemy enemy) {
@@ -192,6 +201,8 @@ public class ShootingFf12FightRoundResolver implements FightRoundResolver {
             final String weapon = enemy.getWeapon();
             if ("1001".equals(weapon)) {
                 enemyDamage = 2;
+            } else if ("1003".equals(weapon)) {
+                enemyDamage = DISINTEGRATOR_DAMAGE;
             } else {
                 final int[] randomNumber = generator.getRandomNumber(1);
                 enemyDamage = randomNumber[0];
