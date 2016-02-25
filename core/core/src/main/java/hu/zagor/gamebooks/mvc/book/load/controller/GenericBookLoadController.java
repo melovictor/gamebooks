@@ -6,6 +6,8 @@ import hu.zagor.gamebooks.books.saving.GameStateHandler;
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.content.Paragraph;
+import hu.zagor.gamebooks.content.choice.Choice;
+import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.ContinuationData;
 import hu.zagor.gamebooks.mvc.book.controller.AbstractSectionDisplayingController;
@@ -75,7 +77,15 @@ public abstract class GenericBookLoadController extends AbstractSectionDisplayin
         }
 
         doLoadPrevious(request, response, container);
+        prepareNextChoice(wrapper, continuationData);
         response.sendRedirect(continuationData.getContinuationPageName());
+    }
+
+    private void prepareNextChoice(final HttpSessionWrapper wrapper, final ContinuationData continuationData) {
+        final Paragraph paragraph = wrapper.getParagraph();
+        final ChoiceSet choices = paragraph.getData().getChoices();
+        choices.add(new Choice(continuationData.getContinuationPageName().substring(2), null, -1, null));
+        paragraph.calculateValidEvents();
     }
 
     /**

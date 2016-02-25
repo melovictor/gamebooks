@@ -1,11 +1,16 @@
 package hu.zagor.gamebooks.mvc.book.load.controller;
 
+import static org.easymock.EasyMock.capture;
 import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.newCapture;
 import hu.zagor.gamebooks.ControllerAddresses;
 import hu.zagor.gamebooks.books.saving.GameStateHandler;
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.content.Paragraph;
+import hu.zagor.gamebooks.content.ParagraphData;
+import hu.zagor.gamebooks.content.choice.Choice;
+import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.ContinuationData;
@@ -17,6 +22,7 @@ import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.easymock.Capture;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
@@ -53,6 +59,9 @@ public class GenericBookLoadControllerTest {
     @Mock private HttpServletResponse response;
     @Instance private ContinuationData continuationData;
     @Mock private Paragraph paragraph;
+    @Mock private ParagraphData data;
+    @Mock private ChoiceSet choices;
+    private Capture<Choice> choice;
 
     @BeforeClass
     public void setUpClass() {
@@ -61,6 +70,7 @@ public class GenericBookLoadControllerTest {
         continuationData.setContinuationPageName("s-background");
         continuationData.setPreviousBookId(BOOK_ID - 1);
         continuationData.setPreviousBookLastSectionId("456");
+        choice = newCapture();
     }
 
     @UnderTest
@@ -146,11 +156,21 @@ public class GenericBookLoadControllerTest {
         expect(container.getElement(ControllerAddresses.PARAGRAPH_STORE_KEY)).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("456");
         logger.debug("called doLoadPrevious");
+        expect(wrapper.getParagraph()).andReturn(paragraph);
+        expect(paragraph.getData()).andReturn(data);
+        expect(data.getChoices()).andReturn(choices);
+        expect(choices.add(capture(choice))).andReturn(true);
+        paragraph.calculateValidEvents();
         response.sendRedirect("s-background");
         mockControl.replay();
         // WHEN
         underTest.handleLoadPrevious(request, response);
-        // THEN throws exception
+        // THEN
+        final Choice capturedChoice = choice.getValue();
+        Assert.assertEquals(capturedChoice.getId(), "background");
+        Assert.assertEquals(capturedChoice.getPosition(), -1);
+        Assert.assertNull(capturedChoice.getText());
+        Assert.assertNull(capturedChoice.getSingleChoiceText());
     }
 
     public void testGetInfoShouldReturnStoredInfo() {
