@@ -1,6 +1,10 @@
 package hu.zagor.gamebooks.mvc.login.domain;
 
+import hu.zagor.gamebooks.player.Reward;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -11,6 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 public class User {
     private int id;
     private String roles;
+    private final List<Reward> reward = new ArrayList<>();
 
     @XmlAttribute
     public int getId() {
@@ -29,4 +34,10 @@ public class User {
     public void setRoles(final String roles) {
         this.roles = roles;
     }
+
+    @XmlElement(type = Reward.class)
+    public List<Reward> getReward() {
+        return reward;
+    }
+
 }
