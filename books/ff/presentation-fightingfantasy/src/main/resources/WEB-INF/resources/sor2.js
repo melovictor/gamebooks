@@ -1,5 +1,6 @@
 var sor2 = (function() {
 	function visitFlanker() {
+		allowNavigation();
 		location.href = "visitFlanker";
 	}
 
