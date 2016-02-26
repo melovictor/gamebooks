@@ -33,13 +33,14 @@ public class ZagorLoginFacade extends AbstractLoginFacade {
 
     @LogInject private Logger logger;
     @Autowired private ServerCommunicator communcator;
+    private String url = "http://zagor.hu/remoteloginxml.php";
 
     @Override
     public Authentication authenticate(final Authentication authentication) throws AuthenticationException {
 
         try {
             final String postData = assemblePostData(authentication);
-            final URLConnection connection = communcator.connect("http://zagor.hu/remoteloginxml.php");
+            final URLConnection connection = communcator.connect(url);
             communcator.sendRequest(connection, postData);
             final Login loginResult = parseResponse(connection);
             return analizeResponse(authentication, loginResult);
@@ -69,13 +70,17 @@ public class ZagorLoginFacade extends AbstractLoginFacade {
 
         final User user = loginResult.getUser();
         final List<GrantedAuthority> authorities = AuthorityUtils.commaSeparatedStringToAuthorityList(user.getRoles());
-        return new PlayerUser(user.getId(), authentication.getPrincipal(), authorities);
+        return new PlayerUser(user.getId(), authentication.getPrincipal(), authorities, user.getReward());
     }
 
     private String assemblePostData(final Authentication authentication) throws IOException {
         String part = communcator.compilePostData("username", authentication.getPrincipal(), null);
         part = communcator.compilePostData("password", authentication.getCredentials(), part);
         return part;
+    }
+
+    public void setUrl(final String url) {
+        this.url = url;
     }
 
 }
