@@ -54,6 +54,7 @@ public class RandomCommandResolverATest extends CoreTextResolvingTest {
     @Inject private DiceResultRenderer diceRenderer;
     @Instance private ParagraphData afterData;
     @Instance private RandomResult overlappingResult;
+    @Instance private RandomResult overlappingNullResult;
     @Instance private ParagraphData overlappingData;
     @Inject private ExpressionResolver expressionResolver;
     private Paragraph paragraph;
@@ -68,6 +69,9 @@ public class RandomCommandResolverATest extends CoreTextResolvingTest {
         overlappingResult.setMax("2");
         overlappingData.setText("<p>Overlapping text.</p>");
         overlappingResult.setParagraphData(overlappingData);
+        overlappingNullResult.setMin("3");
+        overlappingNullResult.setMax("3");
+        overlappingNullResult.setParagraphData(null);
         result.setMin("2");
         result.setMax("3");
         result.setParagraphData(resultData);
@@ -277,6 +281,44 @@ public class RandomCommandResolverATest extends CoreTextResolvingTest {
         Assert.assertEquals(returned.get(0).getText(), "<p>Thrown value: _2_. Total: 2.</p><p>Result data text.</p>");
         Assert.assertSame(returned.get(1), overlappingData);
         Assert.assertSame(returned.get(1).getText(), "<p>Overlapping text.</p>");
+    }
+
+    public void testDoResolveWhenThereIsTwoOverlappingResultMatchingTheResultIntervalWithOneNullShouldReturnAppropriateData() {
+        // GIVEN
+        command.getResults().add(result);
+        command.getResults().add(overlappingNullResult);
+        command.setResultElse(resultElse);
+        command.setLabel("Throw a die.");
+        command.setDiceConfig("dice1d6");
+        expectLocale();
+        expect(interactionHandler.hasRandomResult(character)).andReturn(true);
+        expect(beanFactory.getBean("dice1d6", DiceConfiguration.class)).andReturn(diceConfig);
+        final int[] randomResult = new int[]{3, 3};
+        expect(generator.getRandomNumber(diceConfig)).andReturn(randomResult);
+        logger.debug("Random command generated the number '{}'.", 3);
+        expect(diceRenderer.render(diceConfig, randomResult)).andReturn("_3_");
+        expectTextWoLocale("page.raw.label.random.after", new Object[]{"_3_", 3}, "Thrown value: _3_. Total: 3.");
+        expect(expressionResolver.resolveValue(character, "2")).andReturn(2);
+        expect(expressionResolver.resolveValue(character, "3")).andReturn(3).times(3);
+        mockControl.replay();
+        // WHEN
+        final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
+        // THEN
+        Assert.assertEquals(rootData.getText(), "<p>Initial content.</p>");
+        Assert.assertEquals(command.getDiceResultText(), "_3_");
+        Assert.assertEquals(command.getDiceResult(), 3);
+        Assert.assertSame(command.getDiceResults(), randomResult);
+        Assert.assertSame(returned.get(0), resultData);
+        Assert.assertEquals(returned.get(0).getText(), "<p>Thrown value: _3_. Total: 3.</p><p>Result data text.</p>");
+    }
+
+    public void testGetGeneratorShouldReturnGenerator() {
+        // GIVEN
+        mockControl.replay();
+        // WHEN
+        final RandomNumberGenerator returned = underTest.getGenerator();
+        // THEN
+        Assert.assertSame(returned, generator);
     }
 
     @AfterMethod

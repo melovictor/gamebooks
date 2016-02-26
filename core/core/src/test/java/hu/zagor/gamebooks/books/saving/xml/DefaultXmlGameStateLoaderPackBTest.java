@@ -159,6 +159,25 @@ public class DefaultXmlGameStateLoaderPackBTest {
         Assert.assertSame(loadedMap.get("repeatingFieldWithNumber"), loadedMap.get("fieldWithNumber"));
     }
 
+    public void testLoadWhenInputContainsClassWithNumberAndWithReferencesButFailsToFindSetterWithCorrectParametersShouldReturnNull() {
+        // GIVEN
+        final String input = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "<mainObject class=\"hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper\">"
+            + "<element class=\"java.util.HashMap\" isMap=\"true\">" + "<mapEntry>" + "<key class=\"java.lang.String\">fieldWithNumber</key>"
+            + "<value class=\"hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt\" ref=\"99\">" + "<intField class=\"java.lang.Double\">1535</intField>"
+            + "</value>" + "</mapEntry>" + "<mapEntry>" + "<key class=\"java.lang.String\">otherFieldWithNumber</key>"
+            + "<value class=\"hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt\" ref=\"37\">" + "<intField class=\"java.lang.Integer\">11</intField>"
+            + "</value>" + "</mapEntry>" + "<mapEntry>" + "<key class=\"java.lang.String\">repeatingFieldWithNumber</key>"
+            + "<value class=\"hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt\" ref=\"99\" />" + "</mapEntry>" + "</element>" + "</mainObject>";
+        prepareForCreation(input, 3);
+        logger.error("Couldn't find setter method '{}' in class '{}' for type '{}'.", "setIntField", SimpleClassWithInt.class, Double.class);
+        logger.error(eq("Failed to load saved game, the deserializer threw an exception."), anyObject(IllegalStateException.class));
+        mockControl.replay();
+        // WHEN
+        final Object returned = underTest.load(input);
+        // THEN
+        Assert.assertNull(returned);
+    }
+
     private void verifyClassWithNumber(final Map<String, Serializable> loadedMap, final String key, final int value) {
         Assert.assertTrue(loadedMap.containsKey(key));
         final Serializable serializable = loadedMap.get(key);

@@ -22,7 +22,7 @@ public class BookInformationsTest {
 
     @BeforeClass
     public void setUpClass() {
-        underTest = new BookInformations(1L);
+        underTest = new BookInformations(165432468413L);
     }
 
     public void testSetPositionShouldSetPosition() {
@@ -161,6 +161,14 @@ public class BookInformationsTest {
         underTest.setCharacterPageDataBeanId("ffCharacterPageData");
         // THEN
         Assert.assertEquals(underTest.getCharacterPageDataBeanId(), "ffCharacterPageData");
+    }
+
+    public void testGetSeriesIdShouldReturnSeriesId() {
+        // GIVEN
+        // WHEN
+        final Long returned = underTest.getSeriesId();
+        // THEN
+        Assert.assertEquals(returned.longValue(), 165432468L);
     }
 
 }

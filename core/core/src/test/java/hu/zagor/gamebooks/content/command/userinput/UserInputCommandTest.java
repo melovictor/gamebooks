@@ -110,6 +110,24 @@ public class UserInputCommandTest {
         Assert.assertEquals(returned, "UserInputCommand: " + label);
     }
 
+    public void testGetMinShouldReturnSetValue() {
+        // GIVEN
+        underTest.setMin(1);
+        mockControl.replay();
+        // WHEN
+        final int returned = underTest.getMin();
+        Assert.assertEquals(returned, 1);
+    }
+
+    public void testGetMaxShouldReturnSetValue() {
+        // GIVEN
+        underTest.setMax(7);
+        mockControl.replay();
+        // WHEN
+        final int returned = underTest.getMax();
+        Assert.assertEquals(returned, 7);
+    }
+
     @AfterMethod
     public void tearDownMethod() {
         mockControl.verify();

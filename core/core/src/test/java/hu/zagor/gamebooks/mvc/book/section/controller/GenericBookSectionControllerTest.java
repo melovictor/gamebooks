@@ -21,6 +21,7 @@ import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.ui.Model;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -53,6 +54,7 @@ public class GenericBookSectionControllerTest {
     @Mock private CustomPrePostSectionHandler handlerB;
     @Mock private CustomPrePostSectionHandler handlerC;
     @Mock private CustomPrePostSectionHandler handlerD;
+    @Mock private Model model;
 
     @BeforeClass
     public void setUpClass() {
@@ -81,6 +83,8 @@ public class GenericBookSectionControllerTest {
     @BeforeMethod
     private void setUpMethod() {
         Whitebox.setInternalState(underTest, "info", (Object) null);
+        final Map<String, CustomPrePostSectionHandler> prePostHandlers = Whitebox.getInternalState(underTest, "prePostHandlers");
+        prePostHandlers.clear();
         mockControl.reset();
     }
 
@@ -227,6 +231,54 @@ public class GenericBookSectionControllerTest {
         final GameStateHandler returned = initController(new _testingBookSectionController()).getGameStateHandler();
         // THEN
         Assert.assertSame(returned, gameStateHandler);
+    }
+
+    public void testHandleCustomSectionsPreWhenNoPreHandlerExistsShouldDoNothing() {
+        // GIVEN
+        expect(wrapper.getParagraph()).andReturn(oldParagraph);
+        expect(oldParagraph.getId()).andReturn("15");
+        mockControl.replay();
+        // WHEN
+        underTest.handleCustomSectionsPre(model, wrapper, false);
+        // THEN
+    }
+
+    public void testHandleCustomSectionsPostWhenNoPostHandlerExistsShouldDoNothing() {
+        // GIVEN
+        expect(wrapper.getParagraph()).andReturn(oldParagraph);
+        expect(oldParagraph.getId()).andReturn("15");
+        mockControl.replay();
+        // WHEN
+        underTest.handleCustomSectionsPost(model, wrapper, true);
+        // THEN
+    }
+
+    public void testHandleCustomSectionsPreWhenPreHandlerExistsShouldCallPreHandler() {
+        // GIVEN
+        final Map<String, CustomPrePostSectionHandler> prePostHandlers = Whitebox.getInternalState(underTest, "prePostHandlers");
+        Whitebox.setInternalState(underTest, "info", info);
+        prePostHandlers.put("15Pre", handlerA);
+        expect(wrapper.getParagraph()).andReturn(oldParagraph);
+        expect(oldParagraph.getId()).andReturn("15");
+        handlerA.handle(model, wrapper, info, true);
+        mockControl.replay();
+        // WHEN
+        underTest.handleCustomSectionsPre(model, wrapper, true);
+        // THEN
+    }
+
+    public void testHandleCustomSectionsPostWhenPostHandlerExistsShouldCallPreHandler() {
+        // GIVEN
+        final Map<String, CustomPrePostSectionHandler> prePostHandlers = Whitebox.getInternalState(underTest, "prePostHandlers");
+        Whitebox.setInternalState(underTest, "info", info);
+        prePostHandlers.put("15Post", handlerB);
+        expect(wrapper.getParagraph()).andReturn(oldParagraph);
+        expect(oldParagraph.getId()).andReturn("15");
+        handlerB.handle(model, wrapper, info, false);
+        mockControl.replay();
+        // WHEN
+        underTest.handleCustomSectionsPost(model, wrapper, false);
+        // THEN
     }
 
     @AfterMethod

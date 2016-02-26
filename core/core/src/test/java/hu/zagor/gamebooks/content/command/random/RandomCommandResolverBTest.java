@@ -46,6 +46,7 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
     private BookInformations info;
     @Instance private ParagraphData resultElse;
     @Instance private RandomResult result;
+    @Instance private RandomResult overlappingNullResult;
     @Instance private CharacterHandler characterHandler;
     @Mock private DefaultUserInteractionHandler interactionHandler;
     @Mock private ParagraphData resultData;
@@ -68,6 +69,9 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
         result.setMin("2");
         result.setMax("3");
         result.setParagraphData(resultData);
+        overlappingNullResult.setMin("2");
+        overlappingNullResult.setMax("2");
+        overlappingNullResult.setParagraphData(null);
         info.setCharacterHandler(characterHandler);
         characterHandler.setInteractionHandler(interactionHandler);
         diceConfig = new DiceConfiguration(1, 1, 6);
@@ -96,6 +100,34 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
         expectTextWoLocale("page.raw.label.random.after", new Object[]{"_2_", 2}, "randomAfter");
         expect(expressionResolver.resolveValue(character, "2")).andReturn(2);
         expect(expressionResolver.resolveValue(character, "3")).andReturn(3);
+        expect(resultData.clone()).andReturn(clonedData);
+        mockControl.replay();
+        // WHEN
+        final List<ParagraphData> returned = underTest.resolveSilently(command, resolvationData, messages, locale);
+        // THEN
+        Assert.assertEquals(rootData.getText(), "<p>Initial content.</p>");
+        Assert.assertEquals(command.getDiceResultText(), "_2_");
+        Assert.assertEquals(command.getDiceResult(), 2);
+        Assert.assertSame(command.getDiceResults(), randomResult);
+        Assert.assertSame(returned.get(0), clonedData);
+    }
+
+    public void testResolveSilentlyWhenThereIsResultMatchingTheResultIntervalWithNullDataShouldReturnAppropriateData() throws CloneNotSupportedException {
+        // GIVEN
+        command.getResults().add(result);
+        command.getResults().add(overlappingNullResult);
+        command.setResultElse(resultElse);
+        command.setLabel("Throw a die.");
+        command.setDiceConfig("dice1d6");
+        expect(beanFactory.getBean("dice1d6", DiceConfiguration.class)).andReturn(diceConfig);
+        final int[] randomResult = new int[]{2, 2};
+        expect(generator.getRandomNumber(diceConfig)).andReturn(randomResult);
+        logger.debug("Random command generated the number '{}'.", 2);
+        expect(diceRenderer.render(diceConfig, randomResult)).andReturn("_2_");
+        expectTextWoLocale("page.raw.label.random.after", new Object[]{"_2_", 2}, "randomAfter");
+        expect(expressionResolver.resolveValue(character, "2")).andReturn(2);
+        expect(expressionResolver.resolveValue(character, "3")).andReturn(3);
+        expect(expressionResolver.resolveValue(character, "2")).andReturn(2).times(2);
         expect(resultData.clone()).andReturn(clonedData);
         mockControl.replay();
         // WHEN

@@ -170,6 +170,24 @@ public class ItemTest {
         Assert.assertEquals(returned, "id: 3001, name: Key, amount: 3");
     }
 
+    public void testGetBackpackSizeShouldReturnSetIntValue() {
+        // GIVEN
+        underTest.setBackpackSize(Integer.valueOf(5));
+        // WHEN
+        final double returned = underTest.getBackpackSize();
+        // THEN
+        Assert.assertEquals(returned, 5.0);
+    }
+
+    public void testGetBackpackSizeShouldReturnSetDobleValue() {
+        // GIVEN
+        underTest.setBackpackSize(0.3);
+        // WHEN
+        final double returned = underTest.getBackpackSize();
+        // THEN
+        Assert.assertEquals(returned, 0.3);
+    }
+
     private class CloneFailingEquipInfo extends EquipInfo {
         @Override
         public CloneFailingEquipInfo clone() throws CloneNotSupportedException {

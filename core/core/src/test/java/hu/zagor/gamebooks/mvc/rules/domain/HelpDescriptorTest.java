@@ -1,12 +1,11 @@
 package hu.zagor.gamebooks.mvc.rules.domain;
 
 import hu.zagor.gamebooks.domain.BookInformations;
-
+import hu.zagor.gamebooks.domain.ResourceInformation;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -56,6 +55,16 @@ public class HelpDescriptorTest {
         final BookInformations returned = underTest.getInfo();
         // THEN
         Assert.assertSame(returned, info);
+    }
+
+    public void testGetResourceInformationShouldReturnSetValue() {
+        // GIVEN
+        final ResourceInformation resourceInformation = new ResourceInformation();
+        underTest.setResourceInformation(resourceInformation);
+        // WHEN
+        final ResourceInformation returned = underTest.getResourceInformation();
+        // THEN
+        Assert.assertEquals(returned, resourceInformation);
     }
 
 }

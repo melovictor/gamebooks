@@ -266,6 +266,20 @@ public class DefaultRandomNumberGeneratorTest {
         verify(1, 100, resultSet);
     }
 
+    public void testGetRandomNumberWhen2d10ConfigurationIsSetUpShouldGenerateNumbersBetweenTwoAndTwenty() {
+        // GIVEN
+        final DiceConfiguration diceConfiguration = new DiceConfiguration(2, 1, 10, true);
+        final Set<Integer> resultSet = new HashSet<>();
+        expect(environmentDetector.isRecordState()).andReturn(false).times(20000);
+        mockControl.replay();
+        // WHEN
+        for (int i = 0; i < 10000; i++) {
+            resultSet.add(underTest.getRandomNumber(diceConfiguration)[0]);
+        }
+        // THEN
+        verify(2, 20, resultSet);
+    }
+
     public void testGetRandomNumberWhen2d2To5ConfigurationIsSetUpShouldGenerateNumbersBetweenTwoAndFive() {
         // GIVEN
         final DiceConfiguration diceConfiguration = new DiceConfiguration(2, 2, 5);
