@@ -72,7 +72,6 @@ public class ClasspathImageHandler implements ImageHandler, BeanFactoryAware {
                 try (InputStream resourceInputStream = requestedResource.getInputStream()) {
 
                     final String mimeType = imageTypeDetector.probeContentType(resourceInputStream, outputStream);
-                    logger.debug("Detected mime type for file '{}' was '{}'", requestedResource.getFile().getAbsolutePath(), mimeType);
                     response.addHeader("Content-Type", mimeType);
                     response.setContentLength((int) requestedResource.contentLength());
 
