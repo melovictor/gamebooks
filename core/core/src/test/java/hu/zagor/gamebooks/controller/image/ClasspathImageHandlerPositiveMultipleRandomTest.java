@@ -6,6 +6,7 @@ import hu.zagor.gamebooks.controller.domain.ImageLocation;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.player.PlayerSettings;
 import hu.zagor.gamebooks.player.PlayerUser;
+import hu.zagor.gamebooks.support.imagetype.ImageTypeDetector;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
@@ -67,6 +68,7 @@ public class ClasspathImageHandlerPositiveMultipleRandomTest {
     @Mock private PlayerSettings settings;
     @Mock private URLConnection connection;
     @Inject private LastModificationTimeResolver lastModificationTimeResolver;
+    @Inject private ImageTypeDetector imageTypeDetector;
 
     @BeforeClass
     public void setUpClass() {
@@ -100,13 +102,15 @@ public class ClasspathImageHandlerPositiveMultipleRandomTest {
 
         expect(request.getDateHeader("If-Modified-Since")).andReturn(-1L);
         expect(lastModificationTimeResolver.getLastModified(resource2)).andReturn(999L);
-        expect(resource2.getFilename()).andReturn(FILE);
-        response.addHeader("Content-Type", "image/jpg");
+
+        expect(response.getOutputStream()).andReturn(outputStream);
+        expect(resource2.getInputStream()).andReturn(inputStream);
+
+        expect(imageTypeDetector.probeContentType(inputStream, outputStream)).andReturn("image/jpeg");
+        response.addHeader("Content-Type", "image/jpeg");
         expect(resource2.contentLength()).andReturn(7777L);
         response.setContentLength(7777);
-        expect(response.getOutputStream()).andReturn(outputStream);
 
-        expect(resource2.getInputStream()).andReturn(inputStream);
         expect(ioUtilsWrapper.copy(inputStream, outputStream)).andReturn(1000);
         inputStream.close();
         mockControl.replay();
@@ -134,12 +138,15 @@ public class ClasspathImageHandlerPositiveMultipleRandomTest {
         expect(generator.getRandomNumber(1, 2, -1)).andReturn(new int[]{1});
         expect(request.getDateHeader("If-Modified-Since")).andReturn(1442L);
         expect(lastModificationTimeResolver.getLastModified(resource2)).andReturn(999000L);
-        expect(resource2.getFilename()).andReturn(FILE);
-        response.addHeader("Content-Type", "image/jpg");
-        expect(resource2.contentLength()).andReturn(7777L);
-        response.setContentLength(7777);
+
         expect(response.getOutputStream()).andReturn(outputStream);
         expect(resource2.getInputStream()).andReturn(inputStream);
+        expect(imageTypeDetector.probeContentType(inputStream, outputStream)).andReturn("image/jpeg");
+
+        response.addHeader("Content-Type", "image/jpeg");
+
+        expect(resource2.contentLength()).andReturn(7777L);
+        response.setContentLength(7777);
         expect(ioUtilsWrapper.copy(inputStream, outputStream)).andReturn(1000);
         inputStream.close();
         mockControl.replay();

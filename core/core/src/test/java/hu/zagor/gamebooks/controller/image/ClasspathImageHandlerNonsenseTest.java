@@ -5,6 +5,7 @@ import hu.zagor.gamebooks.controller.domain.ImageLocation;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.player.PlayerSettings;
 import hu.zagor.gamebooks.player.PlayerUser;
+import hu.zagor.gamebooks.support.imagetype.ImageTypeDetector;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
@@ -58,6 +59,7 @@ public class ClasspathImageHandlerNonsenseTest {
     @Mock private PlayerUser player;
     @Mock private PlayerSettings settings;
     @Inject private LastModificationTimeResolver lastModificationTimeResolver;
+    @Inject private ImageTypeDetector imageTypeDetector;
 
     @BeforeClass
     public void setUpClass() {
@@ -89,13 +91,15 @@ public class ClasspathImageHandlerNonsenseTest {
         expect(request.getDateHeader("If-Modified-Since")).andReturn(-1L);
         expect(lastModificationTimeResolver.getLastModified(resource)).andReturn(999L);
         response.addDateHeader("Last-Modified", 999L);
-        expect(resource.getFilename()).andReturn(FILE);
-        response.addHeader("Content-Type", "image/jpg");
+
+        expect(response.getOutputStream()).andReturn(outputStream);
+        expect(resource.getInputStream()).andReturn(null);
+
+        expect(imageTypeDetector.probeContentType(null, outputStream)).andReturn(null);
+        response.addHeader("Content-Type", null);
+
         expect(resource.contentLength()).andReturn(7777L);
         response.setContentLength(7777);
-        expect(response.getOutputStream()).andReturn(outputStream);
-
-        expect(resource.getInputStream()).andReturn(null);
         expect(ioUtilsWrapper.copy((InputStream) null, outputStream)).andReturn(1000);
         mockControl.replay();
         // WHEN

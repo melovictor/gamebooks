@@ -6,6 +6,7 @@ import hu.zagor.gamebooks.controller.domain.ImageLocation;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.player.PlayerSettings;
 import hu.zagor.gamebooks.player.PlayerUser;
+import hu.zagor.gamebooks.support.imagetype.ImageTypeDetector;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
@@ -60,6 +61,7 @@ public class ClasspathImageHandlerNegativeTest {
     @Mock private PlayerUser player;
     @Mock private PlayerSettings settings;
     @Inject private LastModificationTimeResolver lastModificationTimeResolver;
+    @Inject private ImageTypeDetector imageTypeDetector;
 
     @BeforeClass
     public void setUpClass() {
@@ -116,9 +118,15 @@ public class ClasspathImageHandlerNegativeTest {
         logger.debug("Looking in media module.");
         expect(strategy.getImageResourcesFromDir(DIR, FILE)).andReturn(new Resource[]{resource});
 
-        expectResponseHeaderSetup();
-
+        expect(request.getDateHeader("If-Modified-Since")).andReturn(-1L);
+        expect(lastModificationTimeResolver.getLastModified(resource)).andReturn(999L);
+        response.addDateHeader("Last-Modified", 999L);
+        expect(response.getOutputStream()).andReturn(outputStream);
         expect(resource.getInputStream()).andReturn(inputStream);
+        expect(imageTypeDetector.probeContentType(inputStream, outputStream)).andReturn("mime/jpeg");
+        response.addHeader("Content-Type", "mime/jpeg");
+        expect(resource.contentLength()).andReturn(7777L);
+        response.setContentLength(7777);
         expect(ioUtilsWrapper.copy(inputStream, outputStream)).andThrow(new IOException());
         inputStream.close();
         mockControl.replay();
@@ -142,9 +150,15 @@ public class ClasspathImageHandlerNegativeTest {
         logger.debug("Looking in media module.");
         expect(strategy.getImageResourcesFromDir(DIR, FILE)).andReturn(new Resource[]{resource});
 
-        expectResponseHeaderSetup();
-
+        expect(request.getDateHeader("If-Modified-Since")).andReturn(-1L);
+        expect(lastModificationTimeResolver.getLastModified(resource)).andReturn(999L);
+        response.addDateHeader("Last-Modified", 999L);
+        expect(response.getOutputStream()).andReturn(outputStream);
         expect(resource.getInputStream()).andReturn(inputStream);
+        expect(imageTypeDetector.probeContentType(inputStream, outputStream)).andReturn("mime/png");
+        response.addHeader("Content-Type", "mime/png");
+        expect(resource.contentLength()).andReturn(7777L);
+        response.setContentLength(7777);
         expect(ioUtilsWrapper.copy(inputStream, outputStream)).andThrow(new IOException());
         inputStream.close();
         expectLastCall().andThrow(new IOException());
@@ -169,8 +183,10 @@ public class ClasspathImageHandlerNegativeTest {
         logger.debug("Looking in media module.");
         expect(strategy.getImageResourcesFromDir(DIR, FILE)).andReturn(new Resource[]{resource});
 
-        expectResponseHeaderSetup();
-
+        expect(request.getDateHeader("If-Modified-Since")).andReturn(-1L);
+        expect(lastModificationTimeResolver.getLastModified(resource)).andReturn(999L);
+        response.addDateHeader("Last-Modified", 999L);
+        expect(response.getOutputStream()).andReturn(outputStream);
         expect(resource.getInputStream()).andThrow(new IOException());
         mockControl.replay();
         // WHEN
@@ -193,9 +209,15 @@ public class ClasspathImageHandlerNegativeTest {
         logger.debug("Looking in media module.");
         expect(strategy.getImageResourcesFromDir(DIR, FILE)).andReturn(new Resource[]{resource});
 
-        expectResponseHeaderSetup();
-
+        expect(request.getDateHeader("If-Modified-Since")).andReturn(-1L);
+        expect(lastModificationTimeResolver.getLastModified(resource)).andReturn(999L);
+        response.addDateHeader("Last-Modified", 999L);
+        expect(response.getOutputStream()).andReturn(outputStream);
         expect(resource.getInputStream()).andReturn(inputStream);
+        expect(imageTypeDetector.probeContentType(inputStream, outputStream)).andReturn("mime/jpeg");
+        response.addHeader("Content-Type", "mime/jpeg");
+        expect(resource.contentLength()).andReturn(7777L);
+        response.setContentLength(7777);
         expect(ioUtilsWrapper.copy(inputStream, outputStream)).andReturn(1000);
         inputStream.close();
         expectLastCall().andThrow(new IOException());
@@ -220,25 +242,20 @@ public class ClasspathImageHandlerNegativeTest {
         logger.debug("Looking in media module.");
         expect(strategy.getImageResourcesFromDir(DIR, FILE)).andReturn(new Resource[]{resource});
 
-        expectResponseHeaderSetup();
-
+        expect(request.getDateHeader("If-Modified-Since")).andReturn(-1L);
+        expect(lastModificationTimeResolver.getLastModified(resource)).andReturn(999L);
+        response.addDateHeader("Last-Modified", 999L);
+        expect(response.getOutputStream()).andReturn(outputStream);
         expect(resource.getInputStream()).andReturn(null);
+        expect(imageTypeDetector.probeContentType(null, outputStream)).andReturn(null);
+        response.addHeader("Content-Type", null);
+        expect(resource.contentLength()).andReturn(7777L);
+        response.setContentLength(7777);
         expect(ioUtilsWrapper.copy((InputStream) null, outputStream)).andThrow(new IOException());
         mockControl.replay();
         // WHEN
         underTest.handleImage(request, response, imageLocation, false);
         // THEN throws exception
-    }
-
-    private void expectResponseHeaderSetup() throws IOException {
-        expect(request.getDateHeader("If-Modified-Since")).andReturn(-1L);
-        expect(lastModificationTimeResolver.getLastModified(resource)).andReturn(999L);
-        response.addDateHeader("Last-Modified", 999L);
-        expect(resource.getFilename()).andReturn(FILE);
-        response.addHeader("Content-Type", "image/jpg");
-        expect(resource.contentLength()).andReturn(7777L);
-        response.setContentLength(7777);
-        expect(response.getOutputStream()).andReturn(outputStream);
     }
 
     private void getStrategyType() {
