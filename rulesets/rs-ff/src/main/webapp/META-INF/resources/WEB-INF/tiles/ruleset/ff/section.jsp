@@ -1,9 +1,18 @@
+<%@page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <tiles:insertTemplate template="../basic/section-sectionNumber.jsp" />
 
+<c:if test="${earnedRewards > 0}">
+    <input type="hidden" id="rewardPoints" value="${earnedRewards}" />
+    <div id="rewardTotal">
+        <spring:message code="page.ff.attribute.rewards.toDistribute" />
+        <span id="remainingRewardDisplay">${earnedRewards}</span>
+        <button><spring:message code="page.ff.attribute.rewards.save" /></button>
+    </div>
+</c:if>
 <tiles:insertTemplate template="../basic/section-mainContent.jsp" />
 
 <p class="ffSmallImage" id="actionEnd">

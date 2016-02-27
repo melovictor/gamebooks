@@ -16,7 +16,99 @@ var battle = (function() {
 	};
 })();
 
+var rewards = (function() {
+	var rewardPoints;
+	var distributedRewards = {};
 
+	function init() {
+		rewardPoints = parseInt($("#rewardPoints").val());
+	}
+	function allowDistribution() {
+		if (rewardPoints > 0) {
+			generateButtons();
+		}
+	}
+
+	function generateButtons() {
+		var $affectedEntries = $("[data-reward-price]");
+		var renderedButtons = 0;
+		$affectedEntries.each(function(idx, elem) {
+			var $elem = $(elem);
+			var price = parseInt($elem.data("reward-price"));
+			var attribName = $elem.data("attrib-name");
+			if (rewardPoints >= price) {
+				distributedRewards[attribName] = 0;
+				renderIncreaseButton($elem, price, attribName);
+				renderedButtons++;
+			}
+		});
+		if (renderedButtons > 0) {
+			$("#rewardTotal").show();
+		}
+	}
+
+	function verifyButtons() {
+		$(".increaseAttribute").each(function(idx, elem) {
+			var $elem = $(elem);
+			if ($elem.find("div").data("price") > rewardPoints) {
+				$elem.remove();
+			}
+		});
+	}
+
+	function markIncrease() {
+		$t = $(this);
+		var attribs = $t.data("for");
+		var price = $t.data("price");
+		if (rewardPoints >= price) {
+			distributedRewards[attribs] += 1;
+			rewardPoints -= price;
+			var $displaySpan = $("[data-attrib-name='" + attribs + "']");
+			$displaySpan.addClass("rewardAltered");
+			var $bonusDiceSpan = $displaySpan.find("span.bonusDice");
+			if ($bonusDiceSpan.length > 0) {
+				$bonusDiceSpan.removeClass("diced10" + (distributedRewards[attribs] - 1)).addClass("diced10" + distributedRewards[attribs]);
+			} else {
+				$("<span>").attr("class", "bonusDice diced101").insertAfter($displaySpan.find("span:not(.increaseAttribute):last"));
+			}
+			var curValueText = $displaySpan.text();
+			var curValue = parseInt(curValueText);
+			var nextValue = curValue + 1;
+			$displaySpan.contents().first()[0].textContent = nextValue;
+		}
+		$("#remainingRewardDisplay").text(rewardPoints);
+		verifyButtons();
+	}
+	function sendIncreaseRequest() {
+		$("#rewardTotal button").prop("disabled", true);
+		$(".increaseAttribute").remove();
+		$.ajax({
+			url : "new/distributeRewarPoints",
+			data : distributedRewards,
+			accept : "application/json; charset=utf-8",
+			contentType : "application/json; charset=utf-8",
+			dataType : "json",
+			success : function() {
+				inventory.loadInventory();
+				$("#rewardTotal").remove();
+				$(".rewardAltered").removeClass("rewardAltered");
+			}
+		});
+	}
+
+	function renderIncreaseButton($elem, price, attrib) {
+		var $span = $("<span>").addClass("increaseAttribute").appendTo($elem);
+		$("<div>").data("for", attrib).data("price", price).appendTo($span);
+		$span.append("(" + price + ")");
+	}
+
+	return {
+		init : init,
+		allowDistribution : allowDistribution,
+		markIncrease : markIncrease,
+		sendIncreaseRequest : sendIncreaseRequest
+	};
+})();
 
 var ff = (function() {
 	function sendGenerationRequest(event, baseData) {
@@ -41,6 +133,7 @@ var ff = (function() {
 				$("#choiceWrapper").show();
 				$("[data-generator-button], .ffDice").hide();
 				inventory.loadInventory();
+				rewards.allowDistribution();
 				$("[data-step='1']").trigger("stepFinished", data);
 			}
 		});
@@ -202,6 +295,10 @@ var market = (function() {
 
 
 $(function() {
+	$("#ffGamebookContent")
+		.on("click", ".increaseAttribute div", rewards.markIncrease);
+	$("#rewardTotal button").on("click", rewards.sendIncreaseRequest);
+	rewards.init();
 	$("[data-generator-button='ff']").on("click", ff.sendGenerationRequest);
 	$("[data-attribute-test='ff']").on("click", ff.attributeTest);
 	$("[data-random='ff']").on("click", ff.random);
@@ -221,7 +318,5 @@ $(function() {
 		.on("click", "#marketForPurchase [data-id]:not([data-stock='0'])", market.sell)
 		.on("click", "[data-market-close]", market.close);
 	$(".purchaseItem").on("click", ffInventory.purchaseItem);
-	
 	battle.init();
 });
-

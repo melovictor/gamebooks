@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.player;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +25,7 @@ public class PlayerUser extends UsernamePasswordAuthenticationToken {
 
     private final int id;
     private final PlayerSettings settings = new PlayerSettings();
-    private Map<Long, Set<String>> rewards;
+    private final Map<Long, Set<String>> rewards = new HashMap<>();
 
     /**
      * Creates a new {@link PlayerUser} that also acts as the {@link Authentication} object.
@@ -74,6 +75,15 @@ public class PlayerUser extends UsernamePasswordAuthenticationToken {
         return rewards.get(bookId);
     }
 
+    /**
+     * Adds a new reward for a book.
+     * @param bookId the id of the book (or in some cases, the series)
+     * @param rewardId the id of the reward
+     */
+    public void addReward(final long bookId, final String rewardId) {
+        provideSet(bookId).add(rewardId);
+    }
+
     public boolean isAdmin() {
         return getAuthorities().contains(ADMIN);
     }
@@ -88,6 +98,10 @@ public class PlayerUser extends UsernamePasswordAuthenticationToken {
 
     public PlayerSettings getSettings() {
         return settings;
+    }
+
+    public Map<Long, Set<String>> getRewards() {
+        return rewards;
     }
 
 }

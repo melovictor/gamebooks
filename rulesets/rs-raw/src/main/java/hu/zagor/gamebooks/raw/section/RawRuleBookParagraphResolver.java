@@ -109,6 +109,8 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
                 final URLConnection connection = communicator.connect("http://zagor.hu/recordreward.php");
                 communicator.sendRequest(connection, data);
                 communicator.receiveResponse(connection);
+                final Long bookId = resolvationData.getInfo().getId();
+                resolvationData.getPlayerUser().addReward(getRelevantId(reward, bookId), reward.getId());
             } catch (final IOException exception) {
                 logger.error("Failed to send reward data to server.", exception);
             }
@@ -118,13 +120,21 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
     private String assemblePostData(final ResolvationData resolvationData, final Reward reward) throws IOException {
         String part = communicator.compilePostData("userId", resolvationData.getPlayerUser().getId(), null);
         final Long bookId = resolvationData.getInfo().getId();
-        if (reward.isSeriesId()) {
-            final long seriesId = bookId - bookId % Series.SERIES_MULTIPLIER;
-            part = communicator.compilePostData("bookId", seriesId, part);
-        } else {
-            part = communicator.compilePostData("bookId", bookId, part);
-        }
+        final long id = getRelevantId(reward, bookId);
+        part = communicator.compilePostData("bookId", id, part);
         return communicator.compilePostData("rewardId", reward.getId(), part);
+    }
+
+    private long getRelevantId(final Reward reward, final long bookId) {
+        long id;
+
+        if (reward.isSeriesId()) {
+            id = bookId - bookId % Series.SERIES_MULTIPLIER;
+        } else {
+            id = bookId;
+        }
+
+        return id;
     }
 
     /**

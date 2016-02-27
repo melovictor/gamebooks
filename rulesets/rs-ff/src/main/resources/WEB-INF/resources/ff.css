@@ -49,6 +49,7 @@ div.ffMainAttribute4 {
   width: 218px;
   margin-right: 3px;
 }
+
 div.ffMainAttribute32 {
   width: 609px;
 }
@@ -101,8 +102,8 @@ span.skillTitle {
   margin-left: 210px;
 }
 
-span[data-enemy-skill], span[data-enemy-stamina], span[data-enemy-luck],
-  span.staminaTitle, span.skillTitle, span.luckTitle {
+span[data-enemy-skill], span[data-enemy-stamina], span[data-enemy-luck], span.staminaTitle, span.skillTitle,
+  span.luckTitle {
   display: inline-block;
   width: 90px;
   text-align: center;
@@ -112,8 +113,7 @@ span[data-enemy-selected=true] {
   font-weight: bold;
 }
 
-span[data-enemy-selected=false], [data-item-provision], [data-item-potion]
-  {
+span[data-enemy-selected=false], [data-item-provision], [data-item-potion] {
   cursor: pointer;
 }
 
@@ -155,7 +155,7 @@ span[data-enemy-selected=false], [data-item-provision], [data-item-potion]
   cursor: pointer;
 }
 
-[data-items][data-offer-for-replacement] [data-item-id]:not([data-item-removable="false"]) {
+[data-items][data-offer-for-replacement] [data-item-id]:not ([data-item-removable="false"] ) {
   color: rgb(156, 13, 14);
   text-decoration: none;
   font-weight: bold;
@@ -183,7 +183,7 @@ span[data-enemy-selected=false], [data-item-provision], [data-item-potion]
   width: 200px;
 }
 
-#marketContent [data-id]:not([data-stock='0']) span {
+#marketContent [data-id]:not ([data-stock='0'] ) span {
   color: rgb(156, 13, 14);
   text-decoration: none;
   font-weight: bold;
@@ -210,10 +210,10 @@ button[data-market-close] {
   padding-bottom: 5px;
 }
 
-
 div.step {
   display: none;
 }
+
 div.step[data-step="1"] {
   display: block;
 }
@@ -223,4 +223,27 @@ span.purchaseItem {
   text-decoration: none;
   font-weight: bold;
   cursor: pointer;
+}
+
+.increaseAttribute div {
+  display: inline-block;
+  width: 38px;
+  height: 23px;
+  background-image: url(../../resources/img/fancygreen.png);
+  background-position: -5px 23px;
+  background-size: 50px;
+}
+
+.increaseAttribute div:hover {
+  background-position: -6px -13px;
+}
+
+#rewardTotal {
+  display: none;
+}
+.rewardAltered {
+  color: #cc1010;
+}
+.rewardAltered .increaseAttribute {
+  color: black;
 }
