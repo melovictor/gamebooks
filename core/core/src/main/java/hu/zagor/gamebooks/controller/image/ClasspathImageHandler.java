@@ -5,6 +5,7 @@ import hu.zagor.gamebooks.controller.ImageHandler;
 import hu.zagor.gamebooks.controller.domain.ImageLocation;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.player.PlayerSettings;
+import hu.zagor.gamebooks.support.imagetype.ImageTypeDetector;
 import hu.zagor.gamebooks.support.logging.LogInject;
 import hu.zagor.gamebooks.support.stream.IoUtilsWrapper;
 import hu.zagor.gamebooks.support.url.LastModificationTimeResolver;
@@ -16,7 +17,6 @@ import java.util.Map;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
@@ -42,6 +42,7 @@ public class ClasspathImageHandler implements ImageHandler, BeanFactoryAware {
     @Autowired private IoUtilsWrapper ioUtilsWrapper;
     private BeanFactory beanFactory;
     @Autowired private LastModificationTimeResolver lastModificationTimeResolver;
+    @Autowired private ImageTypeDetector imageTypeDetector;
 
     @Override
     public void handleImage(final HttpServletRequest request, final HttpServletResponse response, final ImageLocation imageLocation, final boolean randomImage)
@@ -66,11 +67,15 @@ public class ClasspathImageHandler implements ImageHandler, BeanFactoryAware {
                 if (!randomImage) {
                     response.addDateHeader("Last-Modified", imageLastModified);
                 }
-                response.addHeader("Content-Type", "image/" + FilenameUtils.getExtension(requestedResource.getFilename()));
-                response.setContentLength((int) requestedResource.contentLength());
 
                 final ServletOutputStream outputStream = response.getOutputStream();
                 try (InputStream resourceInputStream = requestedResource.getInputStream()) {
+
+                    final String mimeType = imageTypeDetector.probeContentType(resourceInputStream, outputStream);
+                    logger.debug("Detected mime type for file '{}' was '{}'", requestedResource.getFile().getAbsolutePath(), mimeType);
+                    response.addHeader("Content-Type", mimeType);
+                    response.setContentLength((int) requestedResource.contentLength());
+
                     ioUtilsWrapper.copy(resourceInputStream, outputStream);
                 }
             }
