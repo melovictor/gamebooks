@@ -7,6 +7,7 @@ import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.character.CharacterGenerator;
+import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -18,6 +19,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +31,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author Tamas_Szekeres
  */
 public class FfBookNewGameController extends RawBookNewGameController {
+    @Resource(name = "rewardIdAttribAssociations") private Map<String, String> rewardIdAssociations;
 
     @Override
     public String handleNew(final HttpServletRequest request, final Model model, final Locale locale) {
@@ -38,9 +41,21 @@ public class FfBookNewGameController extends RawBookNewGameController {
         addJsResource(model, "ff");
         addCssResource(model, "ff");
 
-        final Set<String> rewards = getWrapper(request).getPlayer().getRewards().get(getInfo().getId());
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        final Set<String> rewards = wrapper.getPlayer().getRewards().get(getInfo().getId());
         if (rewards != null) {
             model.addAttribute("earnedRewards", rewards.size());
+            final ParagraphData data = wrapper.getParagraph().getData();
+            String text = data.getText();
+
+            final Map<String, Integer> rewardPrices = getRewardPrices();
+            if (rewardPrices != null) {
+                for (final Entry<String, String> entry : rewardIdAssociations.entrySet()) {
+                    text = text.replace("id=\"" + entry.getKey() + "\"",
+                        "id=\"" + entry.getKey() + "\" data-reward-price=\"" + rewardPrices.get(entry.getValue()) + "\" data-attrib-name=\"" + entry.getValue() + "\"");
+                }
+            }
+            data.setText(text);
         }
 
         return "ffSection." + getInfo().getResourceDir();
@@ -106,8 +121,7 @@ public class FfBookNewGameController extends RawBookNewGameController {
         final Set<String> set = player.getRewards().get(bookId);
         final int totalRewards = set == null ? 0 : set.size();
         int chosenRewards = 0;
-        @SuppressWarnings("unchecked")
-        final Map<String, Integer> rewardPrices = getBeanFactory().getBean(getInfo().getResourceDir() + "RewardPrices", Map.class);
+        final Map<String, Integer> rewardPrices = getRewardPrices();
         for (final Entry<String, String> entry : rewardDistribution.entrySet()) {
             final String key = entry.getKey();
             final Integer keyPrice = rewardPrices.get(key);
@@ -117,6 +131,16 @@ public class FfBookNewGameController extends RawBookNewGameController {
         }
 
         return totalRewards >= chosenRewards;
+    }
+
+    @SuppressWarnings("unchecked")
+    private Map<String, Integer> getRewardPrices() {
+        Map<String, Integer> bean = null;
+        final String beanName = getInfo().getResourceDir() + "RewardPrices";
+        if (getApplicationContext().containsBean(beanName)) {
+            bean = getBeanFactory().getBean(beanName, Map.class);
+        }
+        return bean;
     }
 
     /**
