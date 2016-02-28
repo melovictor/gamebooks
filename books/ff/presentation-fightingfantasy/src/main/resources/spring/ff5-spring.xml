@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
-  xmlns:c="http://www.springframework.org/schema/c"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.FightingFantasy.CITY_OF_THIEVES" id="ff5Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff5Info" c:id-ref="ff5Id" p:coverPath="resources/ff5/cover.jpg" p:resourceDir="ff5" p:contentTransformers-ref="defaultFfContentTransformers"
-    p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="5" p:series-ref="ffTitle" p:title="City of Thieves" p:characterHandler-ref="ffCharacterHandler"
-    p:commandResolvers-ref="ff5CommandResolvers" p:hidden="true">
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff5Info" c:id-ref="ff5Id" p:coverPath="resources/ff5/cover.jpg" p:resourceDir="ff5" p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="5" p:series-ref="ffTitle" p:title="City of Thieves" p:characterHandler-ref="ffCharacterHandler" p:commandResolvers-ref="ff5CommandResolvers" p:hidden="true">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="ff5enemies.xml" c:items="ff5items.xml" c:paragraphs="ff5content.xml" />
     </property>
@@ -24,5 +20,10 @@
     <entry key="hu.zagor.gamebooks.content.command.fight.FightCommand" value-ref="ff5FightCommandResolver" />
   </util:map>
 
+  <util:map key-type="java.lang.String" value-type="java.lang.Integer" id="ff5RewardPrices">
+    <entry key="initialSkill,skill" value="3" />
+    <entry key="initialStamina,stamina" value="2" />
+    <entry key="initialLuck,luck" value="3" />
+  </util:map>
 
 </beans>
