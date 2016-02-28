@@ -69,20 +69,6 @@ public class HungarianReplacer implements Replacer {
 
         newContent = lookForStaminaLoss(newContent);
 
-        if (newContent == null) {
-            newContent = removeOpenParenthesis(content);
-        } else {
-            newContent = removeOpenParenthesis(newContent);
-
-        }
-        return newContent;
-    }
-
-    private String removeOpenParenthesis(final String content) {
-        String newContent = null;
-        if (content.endsWith(" (")) {
-            newContent = content.substring(0, content.length() - 2);
-        }
         return newContent;
     }
 

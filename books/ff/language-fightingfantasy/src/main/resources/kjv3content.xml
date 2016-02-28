@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/sor.xsd">
+  <p id="back_cover">
+    <text>[p]Kakhabad zord vidékén át, millió veszéllyel dacolva, félelmetes teremtményekkel csatázva haladsz Mampang felé, hogy visszaszerezd a Főmágustól a Királyok Koronáját. Rettegett ellenfelekkel kerülsz szembe: a Hét Sárkánykígyó les rád, és szélsebesen repül előtted, hogy időben figyelmeztesse érkezésedre gonosz urát. Vajon meg tudod-e ölni őket, mielőtt Mampangba érnek, vagy ők győznek le téged? Erődön, ügyességeden, szerencséden és varázstudományodon múlik, hogy sikerrel jársz-e kalandos utadon…[/p]</text>
+    <next id="generate" />
+  </p>
+  <p id="generate" display="Karakter létrehozása">
+    <text>
+        [p]
+          Kaszt:
+          [input type="radio" name="caste" value="0" checked="checked" id="warriorCaste"] [label for="warriorCaste"]Harcos[/label]
+          [input type="radio" name="caste" value="1" id="wizardCaste"] [label for="wizardCaste"]Varázsló[/label]
+        [/p]
+        [input type="hidden" id="skillValue0" value="6-ot" /]
+        [input type="hidden" id="skillValue1" value="4-et" /]
+        [p][span class="ffAttribute"]Ügyesség[/span]: [span id="ffSkill"]dobj egy kockával és adj [span id="skillAddition"]6-ot[/span] a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Életerő[/span]: [span id="ffStamina"]dobj két kockával és adj 12-t a dobott számhoz[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Szerencse[/span]: [span id="ffLuck"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [button data-generator-button="sor"]Karakter létrehozása[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="A Királyok Koronájának legendája">
+    <text>
+        [p]Sok-sok évszázaddal ezelőtt, a Sötétség Korszakában, amikor a világnak szinte egyetlen pontját sem fedezték még fel, apró civilizációs fészkek léteztek csupán, melyeknek saját kultúrájuk és fajuk volt. Az egyik ilyen régió Kakhabad volt, egy sörét vidék a világ végén.[/p]
+        [p]Bár számos hadvezér megkísérelte, Kakhabadot soha senkinek nem sikerült kormányoznia. A Zanzunu Csúcsokon túli civilizáltabb területekről elűzött gonosz teremtmények tömkelege szivárgott be fokozatosan Kakhabadba, és ez a vidék csakhamar elnyerte a Világvégi Féregverem elnevezést.[/p]
+        [p]Amikor Chalanna, Femphrey nagy reformere megtalálta a Királyok Koronáját, a már felfedezett többi világrészen rend és civilizáció lett úrrá. E korona segítségével Chalanna lett a keleti földrész legnagyobb birodalmának uralkodója. Ennek a varázskoronának misztikus hatalma volt, birtokosát természetfölötti kormányzói és igazságtevői hatalommal ruházta föl. Chalanna azonban nem hódítani akart, hanem Femphreyvel szövetséges, békés városállamokat kívánt létrehozni. Ezért aztán mesés Koronáját bölcsen a szomszédos királyságok uralkodóinak adta át sorban, és annak segítségével ezek a földek is egytől egyig felvirágoztak.[/p]
+        [p]Fontos tervet dolgozott ki. Minden uralkodó négy évre kapja meg a Királyok Koronáját, ezalatt rendet teremt országában, és csatlakozik Femphrey szövetségeseinek egyre nagyobb táborához. A Korona segítségével eleddig Vaskövesd, Lendleland, Gallantana és Brice királyságai virágoztak fel, szinte egyik pillanatról a másikra. Ismeretlen jelenség volt e vidékeken a háborúk minden neme.[/p]
+        [p]Így került a Korona színpompás ceremónia közepette Analand királyának kezébe, és ettől a naptól kezdve Analand óriási fejlődésnek indult. Senki sem tudta, miként képes a Királyok Koronája ily magasra emelni egy nemzetet. Némelyek ezt isteni erőknek tulajdonították, mások az ész erejét emlegették. Egy dolog azonban nem volt kétséges: az eredmény. Minden jól ment Analandban, mígnem leszállt a Fekete Hold éjszakája.[/p]
+        [p]Elsőnek a király vette észre, hogy a Korona eltűnt. Azon a csillagtalan éjszakán a Koronát Xameni Madáremberek ragadták fel, és Kakhabad zord, törvényt nem ismerő vidékein ár Mampang felé röpítették. Baklandról jött a hír, hogy a Koronát Mampang fővarázslójának vitték el, aki arra vágyott, hogy ő lehessen Kakhabad uralkodója. Bár Kakhabad veszélyes vidék volt, ez a hit egymagában sokkal nagyobb veszélyt jelentett a környező királyságokra. Kakhabadban nem léteztek törvények, hadsereg sem volt, az országot belső bajai, viszályai teljesen lefoglalták. A Királyok Koronájának segítségével Kakhabad a Femphreyi Szövetség valamennyi tagjának veszedelmes ellenségévé válhatott volna.[/p]
+        [p]A Királyok Koronájának eltűnése után Analand elvesztette mindazokat a javakat és jótéteményeket, melyeket a korona biztosított neki a két év alatt. A jog, a rend és az erkölcs hanyatlásnak indult. A királyban egyre inkább megrendült népe bizalma. A szomszédos területekről kíváncsian lesték, mi történik a határaikon túli vidékkel. Még olyan hangok is hallatszottak, hogy támadják meg Analandot.[/p]
+        [p]Már csak egyetlenegy remény maradt. Valakinek – minthogy a hadsereg soha nem lesz képes a feladat teljesítésére – el kell mennie Mampangba, és vissza kell szereznie a Királyok Koronáját. Csak akkor szűnik meg az Analandot sújtó árok, ha ez az illető épségben visszatér a Koronával. Önként jelentkeztél erre a feladatra, küldetésed világos. El kell jutnod Kakhabadba, Mampang erődjébe, és meg kell találnod a Koronát![/p]
+    </text>
+    <itemCheck type="item" id="defWpn">
+      <dontHave>
+        <gatherItem id="defWpn" />
+        <gatherItem id="1001" />
+        <gatherItem id="2000" amount="2" />
+        <add amount="20" to="gold" />
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="4101">
+      <dontHave>
+        <gatherItem id="4101" />
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="4103">
+      <dontHave>
+        <itemCheck type="item" id="4104">
+          <dontHave>
+            <gatherItem id="4103" />
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="3049">
+      <have>
+        <next id="130"></next>
+      </have>
+      <dontHave>
+        <next id="1"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="1">
+    <text>
+        [p class="inlineImage"][img src="resources/sor3/1.jpg" /][/p]
+        [p]Sötét viharfelhők borítják el az eget, amikor nekivágsz Bakland zord vidékének. Utadnak ez a szakasza tesz majd csak igazán próbára, hiszen a Baddu-Bak síkság az analandi térképészek előtt is ismeretlen még. Ezt a barbár vidéket nomád törzsek és különböző magányos teremtmények népesítik be. Kevés barátra lelsz majd errefelé.[/p]
+        [p]Meg ne állj utadon, kíméletlenül menj előre. Lépteid zaja a göröngyös úton durván megtöri a környék csöndjét. A Kikötőváros mögötted húzódó falától eltekintve ez a vidék, ameddig csak a szem ellát, teljesen sivár, kopár, élettelen. Ez a tájkép egy óra múlva sem változik, de a hátad mögött a távolból madarak vijjogását hallod. A zaj egyre erősödik, és ekkor meg-állsz. A madarak egyre közelebb kerülnek hozzád.[/p]
+        [p]Hirtelen elborzadsz a gondolatra: lehet, hogy ezek a xameni Madáremberek? Nem, ez lehetetlen, hisz ez a vidék igen messze van az ő hazájuktól. Tán varjak volnának? Nem, a varjak hangja egészen más, nem rikoltoznak így, mint ezek. Hát akkor miféle madarak lehetnek? Szembefordulsz üldözőiddel.[/p]
+        [p]Egyik pillanatról a másikra, szinte a semmiből veti rád magát egy fekete alak! Lehasalsz, és így is csak nagy nehezen sikerül elkerülnöd, hogy kimeresztett karmait a nyakadba mélyessze! Óvatosan megragadod a fegyveredet. A madár átrepül a fejed fölött, és csatlakozik társaihoz. Négy fekete Éjszakai Sólyom kering a fejed fölött, és lecsapni készül rád. [alt]Hogyan küzdesz meg ezekkel a lényekkel?[/alt][/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <next id="258">Ha kardot rántasz ellenük</next>
+        <next id="178">Ha varázsolsz ellenük</next>
+      </have>
+      <dontHave>
+        <next id="258" singleChoiceText="Kardot rántasz a lények ellen."></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 2 -->
+  <!-- 3 -->
+  <!-- 4 -->
+  <!-- 5 -->
+  <!-- 6 -->
+  <!-- 7 -->
+  <!-- 8 -->
+  <!-- 9 -->
+  <!-- 10 -->
+  <!-- 11 -->
+  <!-- 12 -->
+  <!-- 13 -->
+  <!-- 14 -->
+  <!-- 15 -->
+  <!-- 16 -->
+  <!-- 17 -->
+  <!-- 18 -->
+  <!-- 19 -->
+  <!-- 20 -->
+  <!-- 21 -->
+  <!-- 22 -->
+  <!-- 23 -->
+  <!-- 24 -->
+  <!-- 25 -->
+  <!-- 26 -->
+  <!-- 27 -->
+  <!-- 28 -->
+  <!-- 29 -->
+  <!-- 30 -->
+  <!-- 31 -->
+  <!-- 32 -->
+  <!-- 33 -->
+  <!-- 34 -->
+  <!-- 35 -->
+  <!-- 36 -->
+  <!-- 37 -->
+  <!-- 38 -->
+  <!-- 39 -->
+  <!-- 40 -->
+  <!-- 41 -->
+  <!-- 42 -->
+  <!-- 43 -->
+  <!-- 44 -->
+  <!-- 45 -->
+  <!-- 46 -->
+  <!-- 47 -->
+  <!-- 48 -->
+  <!-- 49 -->
+  <!-- 50 -->
+  <!-- 51 -->
+  <!-- 52 -->
+  <!-- 53 -->
+  <!-- 54 -->
+  <!-- 55 -->
+  <!-- 56 -->
+  <!-- 57 -->
+  <!-- 58 -->
+  <!-- 59 -->
+  <!-- 60 -->
+  <!-- 61 -->
+  <!-- 62 -->
+  <!-- 63 -->
+  <!-- 64 -->
+  <!-- 65 -->
+  <!-- 66 -->
+  <!-- 67 -->
+  <!-- 68 -->
+  <!-- 69 -->
+  <!-- 70 -->
+  <!-- 71 -->
+  <!-- 72 -->
+  <!-- 73 -->
+  <!-- 74 -->
+  <!-- 75 -->
+  <!-- 76 -->
+  <!-- 77 -->
+  <!-- 78 -->
+  <!-- 79 -->
+  <!-- 80 -->
+  <!-- 81 -->
+  <!-- 82 -->
+  <!-- 83 -->
+  <!-- 84 -->
+  <!-- 85 -->
+  <!-- 86 -->
+  <!-- 87 -->
+  <!-- 88 -->
+  <!-- 89 -->
+  <!-- 90 -->
+  <!-- 91 -->
+  <!-- 92 -->
+  <!-- 93 -->
+  <!-- 94 -->
+  <!-- 95 -->
+  <!-- 96 -->
+  <!-- 97 -->
+  <!-- 98 -->
+  <!-- 99 -->
+  <!-- 100 -->
+  <!-- 101 -->
+  <!-- 102 -->
+  <!-- 103 -->
+  <!-- 104 -->
+  <!-- 105 -->
+  <!-- 106 -->
+  <!-- 107 -->
+  <!-- 108 -->
+  <!-- 109 -->
+  <!-- 110 -->
+  <!-- 111 -->
+  <!-- 112 -->
+  <!-- 113 -->
+  <!-- 114 -->
+  <!-- 115 -->
+  <!-- 116 -->
+  <!-- 117 -->
+  <!-- 118 -->
+  <!-- 119 -->
+  <!-- 120 -->
+  <!-- 121 -->
+  <!-- 122 -->
+  <!-- 123 -->
+  <!-- 124 -->
+  <!-- 125 -->
+  <!-- 126 -->
+  <!-- 127 -->
+  <!-- 128 -->
+  <!-- 129 -->
+  <p id="130">
+    <text>
+        [p]A Kígyógyűrű, amit kaptál, felbecsülhetetlen értékű lesz utadnak ebben a szakaszában, mert képes legyőzni a Főmágus Sárkánykígyóit. Ha az ujjadon van ez a gyűrű és a Sárkánykígyókkal találkozol, megparancsolhatod nekik, hogy fedjék fel el őtted a számodra fontos titkukat.[/p]
+        [p]Bizonyos fejezetpontok alatt, amikor egy-egy Sárkánykígyóval találkozol (ezek a fejezetpontok mindig 3-mal végződnek), megparancsolhatod a Sárkánykígyónak, hogy tárja fel előtted titkát. Ehhez kattints a szövegben a Sárkánykígyó nevének első előfordulására. Ha ezt meg akarod tenni, emlékezned kell erre az utasításra, mert a fejezetekben erre külön már nem térünk ki, azaz ilyen lehetőséget nem ajánlunk fel.[/p]
+    </text>
+    <next id="1"></next>
+  </p>
+  <!-- 131 -->
+  <!-- 132 -->
+  <!-- 133 -->
+  <!-- 134 -->
+  <!-- 135 -->
+  <!-- 136 -->
+  <!-- 137 -->
+  <!-- 138 -->
+  <!-- 139 -->
+  <!-- 140 -->
+  <!-- 141 -->
+  <!-- 142 -->
+  <!-- 143 -->
+  <!-- 144 -->
+  <!-- 145 -->
+  <!-- 146 -->
+  <!-- 147 -->
+  <!-- 148 -->
+  <!-- 149 -->
+  <!-- 150 -->
+  <!-- 151 -->
+  <!-- 152 -->
+  <!-- 153 -->
+  <!-- 154 -->
+  <!-- 155 -->
+  <!-- 156 -->
+  <!-- 157 -->
+  <!-- 158 -->
+  <!-- 159 -->
+  <!-- 160 -->
+  <!-- 161 -->
+  <!-- 162 -->
+  <!-- 163 -->
+  <!-- 164 -->
+  <!-- 165 -->
+  <!-- 166 -->
+  <!-- 167 -->
+  <!-- 168 -->
+  <!-- 169 -->
+  <!-- 170 -->
+  <!-- 171 -->
+  <!-- 172 -->
+  <!-- 173 -->
+  <!-- 174 -->
+  <!-- 175 -->
+  <!-- 176 -->
+  <!-- 177 -->
+  <p id="178">
+    <text>
+        [p]Melyik varázslatot választod?[/p]
+    </text>
+    <spell name="FAL" id="337" />
+    <spell name="KÖD" id="380" />
+    <spell name="TIV" id="430" />
+    <spell name="FIX" id="463" />
+    <spell name="HOM" id="483" />
+    <next id="258">Ha egyik varázslat sem szimpatikus, és inkább kardot rántanál</next>
+  </p>
+  <!-- 179 -->
+  <!-- 180 -->
+  <!-- 181 -->
+  <!-- 182 -->
+  <!-- 183 -->
+  <!-- 184 -->
+  <!-- 185 -->
+  <!-- 186 -->
+  <!-- 187 -->
+  <!-- 188 -->
+  <!-- 189 -->
+  <!-- 190 -->
+  <!-- 191 -->
+  <!-- 192 -->
+  <!-- 193 -->
+  <!-- 194 -->
+  <!-- 195 -->
+  <!-- 196 -->
+  <!-- 197 -->
+  <!-- 198 -->
+  <!-- 199 -->
+  <!-- 200 -->
+  <!-- 201 -->
+  <!-- 202 -->
+  <!-- 203 -->
+  <!-- 204 -->
+  <!-- 205 -->
+  <!-- 206 -->
+  <!-- 207 -->
+  <!-- 208 -->
+  <!-- 209 -->
+  <!-- 210 -->
+  <!-- 211 -->
+  <!-- 212 -->
+  <!-- 213 -->
+  <!-- 214 -->
+  <!-- 215 -->
+  <!-- 216 -->
+  <!-- 217 -->
+  <!-- 218 -->
+  <!-- 219 -->
+  <!-- 220 -->
+  <!-- 221 -->
+  <!-- 222 -->
+  <!-- 223 -->
+  <!-- 224 -->
+  <!-- 225 -->
+  <!-- 226 -->
+  <!-- 227 -->
+  <!-- 228 -->
+  <!-- 229 -->
+  <!-- 230 -->
+  <!-- 231 -->
+  <!-- 232 -->
+  <!-- 233 -->
+  <!-- 234 -->
+  <!-- 235 -->
+  <!-- 236 -->
+  <!-- 237 -->
+  <!-- 238 -->
+  <!-- 239 -->
+  <!-- 240 -->
+  <!-- 241 -->
+  <!-- 242 -->
+  <!-- 243 -->
+  <!-- 244 -->
+  <!-- 245 -->
+  <!-- 246 -->
+  <!-- 247 -->
+  <!-- 248 -->
+  <!-- 249 -->
+  <!-- 250 -->
+  <!-- 251 -->
+  <!-- 252 -->
+  <!-- 253 -->
+  <!-- 254 -->
+  <!-- 255 -->
+  <!-- 256 -->
+  <!-- 257 -->
+  <p id="258">
+    <text>
+        [p]Kardot rántasz, és várod a teremtmények támadását. A madarak nagy szárnycsapkodások közepette támadóvonalba fejlődnek, és lecsapni készülnek. Mivel igen gyorsan röpülnek, nehéz ellenfelek lesznek. Vívd meg velük a harcot:[/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="1" />
+      <enemy id="2" />
+      <enemy id="3" />
+      <enemy id="4" />
+      <anyRound totalCount="3">
+        <interrupt />
+      </anyRound>
+    </fight>
+    <next id="314"></next>
+  </p>
+  <!-- 259 -->
+  <!-- 260 -->
+  <!-- 261 -->
+  <!-- 262 -->
+  <!-- 263 -->
+  <!-- 264 -->
+  <!-- 265 -->
+  <!-- 266 -->
+  <!-- 267 -->
+  <!-- 268 -->
+  <!-- 269 -->
+  <!-- 270 -->
+  <!-- 271 -->
+  <!-- 272 -->
+  <!-- 273 -->
+  <!-- 274 -->
+  <!-- 275 -->
+  <!-- 276 -->
+  <!-- 277 -->
+  <!-- 278 -->
+  <!-- 279 -->
+  <!-- 280 -->
+  <!-- 281 -->
+  <!-- 282 -->
+  <!-- 283 -->
+  <!-- 284 -->
+  <!-- 285 -->
+  <!-- 286 -->
+  <!-- 287 -->
+  <!-- 288 -->
+  <!-- 289 -->
+  <!-- 290 -->
+  <!-- 291 -->
+  <!-- 292 -->
+  <!-- 293 -->
+  <!-- 294 -->
+  <!-- 295 -->
+  <!-- 296 -->
+  <!-- 297 -->
+  <!-- 298 -->
+  <!-- 299 -->
+  <!-- 300 -->
+  <!-- 301 -->
+  <!-- 302 -->
+  <!-- 303 -->
+  <!-- 304 -->
+  <!-- 305 -->
+  <!-- 306 -->
+  <!-- 307 -->
+  <!-- 308 -->
+  <!-- 309 -->
+  <!-- 310 -->
+  <!-- 311 -->
+  <!-- 312 -->
+  <!-- 313 -->
+  <p id="314">
+    <text>
+        [p]Az Éjszakai Sólymok a fejed fölött köröznek, és újabb támadásra készülnek ellened. Zárt alakzatuk hirtelen felbomlik, és vijjogásuk is megváltozik. Valami megzavarta őket, és szemmel láthatólag ez idézte elő a változást viselkedésükben. Te azonban semmit sem látsz.[/p]
+        [p]A következő pillanatban különös alak ölt testet a madarak gyűrűjében. Egy Aranybóbitás Sas jelenik meg, mely veszedelmes csőrével rátámad a rikoltozó Éjszakai Sólymokra Jók voltak hozzád a szellemek. Az Aranybó-bitás Sasokat Analandban harci madaraknak képezik ki. De mit keres itt ez a hatalmas Sas, távol otthonától? A Sas borotvaéles csőrével az egyik Éjszakai Sólyom testébe váj, míg karmaival egy másik madár tollait tépi meg. A másik két Sólyom villámgyorsan elhúz nyugat felé. Miután elmúlik a veszély, a Sas leszáll melléd a földre. A nyakában egy kis tokban, melyet Analand Királyának pecsétje zár le, üzenetet találsz. Ez áll benne: „Remélem, levelem jó egészségben talál, de kénytelen vagyok egy veszélyre felhívni a figyelmedet. Küldetésedről tudomást szereztek! A mampangi figyelő szemek kilesték tervünket, és híre csakhamar eljut a sötét erődbe. Túl későn fedeztük fel a kémeket, a Fővarázsló leghűségesebb szolgáit, a Hét Sárkánykígyót, akik már úton vannak küldetésed hírével Felső Xamenba. Mostanra már el kellett érniük Baklandot, ahol különválnak, és egyenként folytatják tovább az utat. Ha képes vagy még rá, kutasd fel őket, hisz valahol meg kell majd állniuk, hogy pihenjenek és egyenek. Végezz e teremtményekkel, még mielőtt célba érnének, máskülönben a Főmágus rettenetes fogadtatásban fog részesíteni. Keresd meg Shadrackot, a Remetét, és kérj tanácsot tőle, mert az ő tudománya nélkül teljesen hiábavaló akárcsak egyetlen lépést is tenned Baklandban. Szívünk minden melegével melletted vagyunk.”[/p]
+        [p]Föltekintesz a nagy madárra, mely ezt a számodra igen fontos üzenetet hozta, de az már eltűnt. Miután feladatát teljesítette, minden bizonnyal a láthatatlanság leple alatt visszaröpült Analandba.[/p]
+        [p]Ismét átolvasod az üzenetet, majd elteszed a zubbonyod zsebébe. Az utasítás világos. Ahhoz, hogy küldetésed sikerrel járjon, meg kell találnod és el kell pusztítanod a Főmágus hírnökeit, még mielőtt azok eljutnának jöttöd hírével Mampangba.[/p]
+    </text>
+    <next id="48"></next>
+  </p>
+  <!-- 315 -->
+  <!-- 316 -->
+  <!-- 317 -->
+  <!-- 318 -->
+  <!-- 319 -->
+  <!-- 320 -->
+  <!-- 321 -->
+  <!-- 322 -->
+  <!-- 323 -->
+  <!-- 324 -->
+  <!-- 325 -->
+  <!-- 326 -->
+  <!-- 327 -->
+  <!-- 328 -->
+  <!-- 329 -->
+  <!-- 330 -->
+  <!-- 331 -->
+  <!-- 332 -->
+  <!-- 333 -->
+  <!-- 334 -->
+  <!-- 335 -->
+  <!-- 336 -->
+  <p id="337">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot. Varázslatod hatására mágikus védőfal emelkedik közéd és ellenséged közé. Az Éjszakai Sólymok nem képesek áthatolni ezen a falon, de könnyűszerrel körülrepülik azt. Terved nem tudja megállítani őket.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="258"></next>
+  </p>
+  <!-- 338 -->
+  <!-- 339 -->
+  <!-- 340 -->
+  <!-- 341 -->
+  <!-- 342 -->
+  <!-- 343 -->
+  <!-- 344 -->
+  <!-- 345 -->
+  <!-- 346 -->
+  <!-- 347 -->
+  <!-- 348 -->
+  <!-- 349 -->
+  <!-- 350 -->
+  <!-- 351 -->
+  <!-- 352 -->
+  <!-- 353 -->
+  <!-- 354 -->
+  <!-- 355 -->
+  <!-- 356 -->
+  <!-- 357 -->
+  <!-- 358 -->
+  <!-- 359 -->
+  <!-- 360 -->
+  <!-- 361 -->
+  <!-- 362 -->
+  <!-- 363 -->
+  <!-- 364 -->
+  <!-- 365 -->
+  <!-- 366 -->
+  <!-- 367 -->
+  <!-- 368 -->
+  <!-- 369 -->
+  <!-- 370 -->
+  <!-- 371 -->
+  <!-- 372 -->
+  <!-- 373 -->
+  <!-- 374 -->
+  <!-- 375 -->
+  <!-- 376 -->
+  <!-- 377 -->
+  <!-- 378 -->
+  <!-- 379 -->
+  <p id="380">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Varázsolsz és várod a hatást, de nem történik semmi! Mialatt várod, hogy varázslatod működjön, az egyik Éjszakai Sólyom csőrével belehasít az arcodba. Vonj le magadtól még 1 ÉLETERŐ pontot! Jobb lett volna, ha kardot rántasz, mielőtt a madarak rád támadnak.[/p]
+    </text>
+    <add to="stamina" amount="-3" />
+    <next id="258"></next>
+  </p>
+  <!-- 381 -->
+  <!-- 382 -->
+  <!-- 383 -->
+  <!-- 384 -->
+  <!-- 385 -->
+  <!-- 386 -->
+  <!-- 387 -->
+  <!-- 388 -->
+  <!-- 389 -->
+  <!-- 390 -->
+  <!-- 391 -->
+  <!-- 392 -->
+  <!-- 393 -->
+  <!-- 394 -->
+  <!-- 395 -->
+  <!-- 396 -->
+  <!-- 397 -->
+  <!-- 398 -->
+  <!-- 399 -->
+  <!-- 400 -->
+  <!-- 401 -->
+  <!-- 402 -->
+  <!-- 403 -->
+  <!-- 404 -->
+  <!-- 405 -->
+  <!-- 406 -->
+  <!-- 407 -->
+  <!-- 408 -->
+  <!-- 409 -->
+  <!-- 410 -->
+  <!-- 411 -->
+  <!-- 412 -->
+  <!-- 413 -->
+  <!-- 414 -->
+  <!-- 415 -->
+  <!-- 416 -->
+  <!-- 417 -->
+  <!-- 418 -->
+  <!-- 419 -->
+  <!-- 420 -->
+  <!-- 421 -->
+  <!-- 422 -->
+  <!-- 423 -->
+  <!-- 424 -->
+  <!-- 425 -->
+  <!-- 426 -->
+  <!-- 427 -->
+  <!-- 428 -->
+  <!-- 429 -->
+  <p id="430">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ Pontot. Miközben varázsolsz, a madarak támadásra készülnek. Amikor azonban varázslatod működni kezd, a madarak röptükben megállnak, mintha utasítást várnának. Megparancsolod neki, hogy repüljenek el délre. Megfordulnak a levegőben, és visszarepülnek a Kikötővárosba. Amikor a varázslat hatása megszűnik, a madarak ismét visszatérnek és újra támadnak.[/p]
+    </text>
+    <next id="314"></next>
+  </p>
+  <!-- 431 -->
+  <!-- 432 -->
+  <!-- 433 -->
+  <!-- 434 -->
+  <!-- 435 -->
+  <!-- 436 -->
+  <!-- 437 -->
+  <!-- 438 -->
+  <!-- 439 -->
+  <!-- 440 -->
+  <!-- 441 -->
+  <!-- 442 -->
+  <!-- 443 -->
+  <!-- 444 -->
+  <!-- 445 -->
+  <!-- 446 -->
+  <!-- 447 -->
+  <!-- 448 -->
+  <!-- 449 -->
+  <!-- 450 -->
+  <!-- 451 -->
+  <!-- 452 -->
+  <!-- 453 -->
+  <!-- 454 -->
+  <!-- 455 -->
+  <!-- 456 -->
+  <!-- 457 -->
+  <!-- 458 -->
+  <!-- 459 -->
+  <!-- 460 -->
+  <!-- 461 -->
+  <!-- 462 -->
+  <p id="463">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Amíg arra vársz, hogy varázslatod működjön, két Éjszakai Sólyom rád támad, és éles csőrével végighasítja a bőrödet. Vesztesz újabb 2 ÉLETERŐ pontot.[/p]
+    </text>
+    <add to="stamina" amount="-3" />
+    <next id="258"></next>
+  </p>
+  <!-- 464 -->
+  <!-- 465 -->
+  <!-- 466 -->
+  <!-- 467 -->
+  <!-- 468 -->
+  <!-- 469 -->
+  <!-- 470 -->
+  <!-- 471 -->
+  <!-- 472 -->
+  <!-- 473 -->
+  <!-- 474 -->
+  <!-- 475 -->
+  <!-- 476 -->
+  <!-- 477 -->
+  <!-- 478 -->
+  <!-- 479 -->
+  <!-- 480 -->
+  <!-- 481 -->
+  <!-- 482 -->
+  <p id="483">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.
+    </text>
+    <add amount="-3" to="stamina" />
+    <itemCheck type="item" id="3027">
+      <have>
+        <text>
+            Előveszed a homokot és varázsolsz, de nem mész vele sokra, hisz az Éjszakai Sólymok nem nagyon szoktak futóhomokba veszni.
+        </text>
+        <loseItem id="3027" />
+      </have>
+      <dontHave>
+        <text>
+            Nem alkalmazhatod ezt a varázslatot, mivel nem rendelkezel az ehhez szükséges tárggyal. 
+        </text>
+      </dontHave>
+      <after>
+        <text>
+            Miközben a varázslással vagy elfoglalva, két madár alászáll a magasból, és éles csőrével felhasítja a bőrödet! Újabb 2 ÉLETERŐ pontot vesztesz.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="258"></next>
+  </p>
+</content>

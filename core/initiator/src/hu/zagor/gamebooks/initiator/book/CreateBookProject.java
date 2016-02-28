@@ -19,18 +19,18 @@ public class CreateBookProject {
 
     private BookBaseData getBaseData() {
 
-        baseData.setSeriesCode("ff"); // ff, pt, wm, fff, sor
-        baseData.setTitleCode("sa");
-        baseData.setPosition(12);
+        baseData.setSeriesCode("sor"); // ff, pt, wm, fff, sor
+        baseData.setTitleCode("tss");
+        baseData.setPosition(3);
         baseData.setCollectorCode("ff");
         baseData.setCollectorName("fightingfantasy");
         baseData.setRuleset("ff");
         baseData.setHasEnemies(true);
         baseData.setHasInventory(true);
         baseData.setHasItems(true);
-        baseData.setHasMap(false);
+        baseData.setHasMap(true);
         baseData.setMediaProject(true);
-        baseData.setDefaultSkillTestType("Le"); // Le: lower or equal; L: lower; if neither, should be empty!
+        baseData.setDefaultSkillTestType("L"); // Le: lower or equal; L: lower; if neither, should be empty!
         baseData.setCharPageRequired(true);
 
         return baseData;
@@ -49,11 +49,11 @@ public class CreateBookProject {
 
     private BookLangData getSotkHu(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
-        data.setSeriesCode("fh");
-        data.setPosition(1);
-        data.setBookId("FantaziaHarcos.UR_ORGYILKOS");
+        data.setSeriesCode("kjv");
+        data.setPosition(3);
+        data.setBookId("KalandJatekVarazslat.HET_SARKANYKIGYO");
         data.setLang("hu");
-        data.setTitle("Űr-Orgyilkos");
+        data.setTitle("Hét Sárkánykígyó");
         data.setGeneratable(shouldBeGenerated);
         return data;
     }
@@ -61,9 +61,9 @@ public class CreateBookProject {
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setHidden(true);
-        data.setBookId("FightingFantasy.SPACE_ASSASSIN");
+        data.setBookId("Sorcery.THE_SEVEN_SERPENTS");
         data.setLang("en");
-        data.setTitle("Space Assassin");
+        data.setTitle("The Seven Serpents");
         data.setGeneratable(shouldBeGenerated);
         return data;
     }
