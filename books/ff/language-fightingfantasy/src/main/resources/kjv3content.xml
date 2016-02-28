@@ -37,11 +37,11 @@
         <gatherItem id="1001" />
         <gatherItem id="2000" amount="2" />
         <add amount="20" to="gold" />
-      </dontHave>
-    </itemCheck>
-    <itemCheck type="item" id="4101">
-      <dontHave>
-        <gatherItem id="4101" />
+        <itemCheck type="item" id="4101">
+          <dontHave>
+            <gatherItem id="4101" />
+          </dontHave>
+        </itemCheck>
       </dontHave>
     </itemCheck>
     <itemCheck type="item" id="4103">
@@ -80,7 +80,12 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 2 -->
+  <p id="2">
+    <text>
+        [p]A Kentaurok ügetve indulnak el veled északkelet felé. Vezérük nemsokára megáll, és a távolban kör alakban elhelyezett ekhós szekerek felé mutat. - Odaviszünk a szekértábor közelébe, onnan már egyedül is odatalálsz - mondja. - Tovább nem mehetünk veled, mert azok fel vannak fegyverezve, és bizalmatlanok az idegenekkel szemben. - Ismét ügetésbe fognak, majd a tábortól néhány száz méterre megállnak veled. Te leszállsz a lóról, ők pedig távoznak. Most megközelítheted a szekértábort.[/p]
+    </text>
+    <next id="137"></next>
+  </p>
   <!-- 3 -->
   <!-- 4 -->
   <!-- 5 -->
@@ -113,7 +118,12 @@
   <!-- 32 -->
   <!-- 33 -->
   <!-- 34 -->
-  <!-- 35 -->
+  <p id="35">
+    <text>
+        [p]Az utolsó Kentaur kegyelemért könyörög. Közlöd vele, hogy meghagyod az életét, ha segít küldetésedben. - Nemes idegen - mondja zihálva. - Tudom, hogy a Hét Sárkánykígyót keresed. Ezzel kapcsolatban szeretnék neked felajánlani valamit. Jómagam keveset tudok ezekről a teremtményekről, de az én törzsem egy dolgot biztosan tud róluk: az egyik Sárkánykígyó - a Holdkígyó - egy ponton sebezhető. Képtelen ellenállni a tűz erejének. - Miközben a hallottakon gondolkozol, a Kentaur kihasználja az alkalmat, és elvágtat. Átkutatod a másik két Kentaur testét, és [span class="takeItem" data-id="gold" data-amount="4"]4 Aranytallért[/span] találsz, meg egy zsákocskában némi finom barna [span class="takeItem" data-id="3027" data-amount="1"]homokot[/span]. Néhány perces pihenő után folytatod az utadat.[/p]
+    </text>
+    <next id="273"></next>
+  </p>
   <!-- 36 -->
   <!-- 37 -->
   <!-- 38 -->
@@ -126,7 +136,35 @@
   <!-- 45 -->
   <!-- 46 -->
   <!-- 47 -->
-  <!-- 48 -->
+  <p id="48">
+    <text>
+        [p class="inlineImage"][img src="resources/sor3/48.jpg" /][/p]
+        [p]Órákon át vándorolsz Bakland kopár vidékén, amikor a távolban feltűnik egy magányos kopár fa, s elindulsz felé. Megpihenhetsz itt, és ehetsz az Élelmiszerkészletedből, és ha így teszel, nyersz 
+    </text>
+    <canEat />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            2
+        </text>
+        <changeItem attribute="stamina" id="2000" set="2" />
+      </have>
+      <dontHave>
+        <text>
+            1
+        </text>
+        <changeItem attribute="stamina" id="2000" set="1" />
+      </dontHave>
+      <after>
+        <text>
+             ÉLETERŐ pontot.[/p]
+            [p]Az ágak közül nyugtalanító zajt hallasz. Felnézel, és ekkor valaki a neveden szólít! Fönn a magasban a pucér gallyak egy emberarcot - egy öreg ember arcát formázzák. Ez az arc közli veled az üzenetet, mely így hangzik: „Tudom jól, hogy a Baddu-Bak-i Shadrack után nyomozol. Hogy megtaláld, le kell térned az utadról keletre, a Halfarok Szikla felé. Ott vár rád.” Belekap a szellő a gallyakba, és mire elül, az arc eltűnik![/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="150">Ha keletnek mész tovább, amint azt az arc tanácsolta</next>
+    <next id="94">Ha észak felé folytatod az utadat</next>
+  </p>
   <!-- 49 -->
   <!-- 50 -->
   <!-- 51 -->
@@ -142,13 +180,90 @@
   <!-- 61 -->
   <!-- 62 -->
   <!-- 63 -->
-  <!-- 64 -->
+  <p id="64">
+    <text>
+        [p]A Kentaurok kanyarogva vágtatnak veled a síkságon át, mígnem elértek a hegygerinchez. A vezérük ekkor felszólít, hogy szállj le a lóról. - Itt a hegy túloldalán lakik Manata egy veremben. Nincs kedvünk a kis háziállataival találkozni, épp ezért nem megyünk veled tovább. - Leszállsz a lóról, és köszönetet mondasz nekik, amiért idáig elhoztak. Amikor eltűnnek a szemed elől, elindulsz a hegyen felfelé.[/p]
+    </text>
+    <next id="176"></next>
+  </p>
   <!-- 65 -->
   <!-- 66 -->
   <!-- 67 -->
   <!-- 68 -->
   <!-- 69 -->
-  <!-- 70 -->
+  <p id="70">
+    <text>
+        [p]Amikor előreugrasz, a Kentaurok meghúzzák íjaik húrját, és három nyílvesszőt röpítenek ki rád.[/p]
+    </text>
+    <random>
+      <result max="2" min="1">
+        <text>
+            [p]Az első nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <gatherItem id="4057" />
+      </result>
+      <result max="6" min="3">
+        <text>
+            [p]Az első nyílvessző mellément.[/p]
+        </text>
+      </result>
+    </random>
+    <random>
+      <result max="2" min="1">
+        <text>
+            [p]A második nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <gatherItem id="4058" />
+      </result>
+      <result max="6" min="3">
+        <text>
+            [p]A második nyílvessző mellément.[/p]
+        </text>
+      </result>
+    </random>
+    <random>
+      <result max="2" min="1">
+        <text>
+            [p]A harmadik nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <gatherItem id="4059" />
+      </result>
+      <result max="6" min="3">
+        <text>
+            [p]A harmadik nyílvessző mellément.[/p]
+        </text>
+      </result>
+    </random>
+    <itemCheck type="items" id="(4057 and 4058) or (4057 and 4059) or (4058 and 4059)">
+      <have>
+        <text>
+            [p]Vesztesz további 2 ÜGYESSÉG pontot is a csata idejére.[/p]
+        </text>
+        <gatherItem id="4016" amount="2" />
+      </have>
+      <after>
+        <text>
+            [p]Egyenként küzdj meg a Kentaurokkal az általad választott sorrendben. Ha kettővel végeztél (és még életben vagy), és a harmadikat legalább kétszer megsebezted, megengedheted neki, ha akarod, hogy megadja magát.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <fight type="single">
+      <enemy id="5" />
+      <enemy id="6" />
+      <enemy id="7" />
+      <flee>
+        <loseItem id="4016" amount="2" />
+        <next id="35"></next>
+      </flee>
+      <win>
+        <loseItem id="4016" amount="2" />
+        <next id="154"></next>
+      </win>
+    </fight>
+  </p>
   <!-- 71 -->
   <!-- 72 -->
   <!-- 73 -->
@@ -189,7 +304,13 @@
   <!-- 108 -->
   <!-- 109 -->
   <!-- 110 -->
-  <!-- 111 -->
+  <p id="111">
+    <text>
+        [p]- Gyere csak ide, idegen - szót a vezérük. - Mi baklandi Kentaurok vagyunk. Mi járatban vagy itt, Baddu-Bakban? - Elmondod neki, hogy a Snatta Erdőbe tartasz, és nem akarod bántani őket. Egyikük suttogva mond valamit arról, hogy jó lenne megnézni, miféle értékeid vannak.[/p]
+    </text>
+    <next id="257">Ha nem tágítasz és megvárod, mit tesznek</next>
+    <next id="313">Ha kardot rántasz</next>
+  </p>
   <!-- 112 -->
   <!-- 113 -->
   <!-- 114 -->
@@ -234,11 +355,48 @@
   <!-- 147 -->
   <!-- 148 -->
   <!-- 149 -->
-  <!-- 150 -->
+  <p id="150">
+    <text>
+        [p class="inlineImage"][img src="resources/sor3/150.jpg" /][/p]
+        [p]Kissé távolabb megpillantod a Halfarok Sziklát. Igen találó az elnevezése: a földből kiálló két sziklacsúcs valóban egy félig eltemetett hal farkára emlékeztet. Egy kis barlang előtt tábortűz lobog. Bekiáltasz a barlangba, ahonnan egy öreg ember csoszog elő. Azonnal felismered a faszellem arcát! Ez az öreg csakis Shadrack lehet![/p]
+        [p]-    Már vártalak - mondja üdvözlésképpen az öreg. - Hallottam hírét, miféle vállalkozásra indultál el Kharéból. Nem tudom, vajon ostobaságod vagy bátorságod indított-e arra, hogy nekivágj Bakland zord vidékének, egy dologra azonban figyelmeztetni szeretnélek: Analandból még senkinek sem sikerült élve átvágnia Kakhabadon. Gyere, üljünk le a tűz mellé és beszéljük meg a dolgokat. Elképzelhető, hogy tudok neked segíteni. Előbb azonban szeretném megtudni, mi történik a Kikötővárosban.[/p]
+        [p]Elmeséled neki a külvilág híreit. Étellel kínál, amit elfogyaszthatsz és
+    </text>
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            2
+        </text>
+        <add amount="2" to="stamina" />
+      </have>
+      <dontHave>
+        <text>
+            1
+        </text>
+        <add amount="1" to="stamina" />
+        <gatherItem id="4101" />
+      </dontHave>
+      <after>
+        <text>
+            ÉLETERŐ ponttal jutalmazhatod magad. Kíváncsi vagy, mit tud az öreg a mampangi hírnökökről.[/p]
+            [p]-    Ó, szóval a Hét Sárkánykígyó érdekel - kezdi. - Valóban itt vannak Baklandban, de azt nem tudtam, hogy a te küldetésed hírét vitték el Mampangba. Ha akarod, szívesen elmondom mindazt, amit tudok róluk, hisz ők nem az én barátaim. A legenda szerint úgy tizenkét évvel ezelőtt Mampang Főmágusa egy küzdelemben lekaszabolt egy hatalmas Hidrát, mely Felső Xamen barlangjaiban lakott. Oly félelmetes ellenség volt ez a teremtmény, hogy a Fővarázsló magával vitte annak hét fejét Mampangba, ahol a fekete mágia segítségével hét szárnyas Sárkánykígyóvá változtatta őket. Ezek a Sárkánykígyók a személyes hírnökei lettek, s hogy irántuk érzett bizalmáról tanúbizonyságot tegyen, kinevezte őket istenei mellé, azok pedig viszonzásképpen felhasználták ezeket az undorító kígyókat saját hatalmuk megerősítéséhez, hogy kellőképpen megvédhessék a Főmágust. A Nap erejét használta fel a Napkígyó létrehozásakor, a Hold erejét pedig a Holdkígyó megteremtésekor. A föld, a víz, a tűz és a levegő ereje segített a Főmágusnak a többi négy Sárkánykígyó megalkotásában. Az utolsó, vagyis az Időkígyó lett a legerősebb, a legnagyobb hatalmú. De mindegyik Sárkánykígyó egy ponton sérülékeny. Ha felfedezik ezt a pontját, akkor legyőzhető, de ha nem, egyetlen halandó sem képes erejének ellenállni. A Sárkánykígyók féltve őrzik sebezhetőségük titkát. Én egy dologról tudok: a Levegőkígyó képes rá, hogy testéből kilépve gázfelhővé váljék. Ebben az állapotában azonban meghal, ha nem tud perceken belül visszatérni a testébe. Ha védelem nélküli testét megsemmisíted, maga a teremtmény is elpusztul.[/p]
+            [p]Későre jár. Az éjszakát Shadrack barlangjában töltheted - nyersz 3 ÉLETERŐ pontot. Reggel ismét útra kelhetsz. Mielőtt távoznál, Shadrack megajándékoz egy díszes Viharkürttel, amely segítségedre lesz utad során.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <add amount="3" to="stamina" />
+    <next id="85">Ha most északnak mész tovább</next>
+    <next id="230">Ha visszatérsz a főútra</next>
+  </p>
   <!-- 151 -->
   <!-- 152 -->
   <!-- 153 -->
-  <!-- 154 -->
+  <p id="154">
+    <text>
+        [p]Lepihensz a harc után, s közben átkutatod a Kentaurok holmiját. Találsz [span class="takeItem" data-id="gold" data-amount="4"]4 Aranytallért[/span], egy zsákocskában egy kevés finom barna [span class="takeItem" data-id="3027" data-amount="1"]homokot[/span], meg egy csomó zöld hajat. Amikor jobban megvizsgálod, akkor látod, hogy az egy [span class="takeItem" data-id="3034" data-amount="1"]paróka[/span]. Megtarthatod, amit találtál, és ismét útra kelsz.[/p]
+    </text>
+    <next id="273"></next>
+  </p>
   <!-- 155 -->
   <!-- 156 -->
   <!-- 157 -->
@@ -259,7 +417,72 @@
   <!-- 172 -->
   <!-- 173 -->
   <!-- 174 -->
-  <!-- 175 -->
+  <p id="175">
+    <text>
+        [p]Cselekedeted gyors visszavágásra ösztönzi őket. Veszedelmes közelből három nyílvesszőt röpítenek ki rád.[/p]
+    </text>
+    <random>
+      <result max="3" min="1">
+        <text>
+            [p]Az első nyílvessző eltalál, vesztesz 3 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-3" to="stamina" />
+        <gatherItem id="4048" />
+      </result>
+      <result max="6" min="4">
+        <text>
+            [p]Az első nyílvessző elkerült.[/p]
+        </text>
+      </result>
+    </random>
+    <random>
+      <result max="3" min="1">
+        <text>
+            [p]A második nyílvessző eltalál, vesztesz 3 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-3" to="stamina" />
+        <gatherItem id="4049" />
+      </result>
+      <result max="6" min="4">
+        <text>
+            [p]A második nyílvessző elkerült.[/p]
+        </text>
+      </result>
+    </random>
+    <random>
+      <result max="3" min="1">
+        <text>
+            [p]A harmadik nyílvessző eltalál, vesztesz 3 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-3" to="stamina" />
+        <gatherItem id="4050" />
+      </result>
+      <result max="6" min="4">
+        <text>
+            [p]A harmadik nyílvessző elkerült.[/p]
+        </text>
+      </result>
+    </random>
+    <itemCheck type="items" id="4048 and 4049 and 4050">
+      <have>
+        <text>
+            [p]A három nyílvessző komolyan megsebez.[/p]
+        </text>
+        <next id="325"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Melyik varázslatot akarod elmondani?[/p]
+        </text>
+        <spell name="POR" id="495" />
+        <spell name="ZAV" id="391" />
+        <spell name="ZUH" id="445" />
+        <spell name="NYI" id="476" />
+        <spell name="DEM" id="422" />
+        <next id="70">Ha egyik varázslat sem szimpatikus</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 176 -->
   <!-- 177 -->
   <p id="178">
@@ -324,7 +547,14 @@
   <!-- 227 -->
   <!-- 228 -->
   <!-- 229 -->
-  <!-- 230 -->
+  <p id="230">
+    <text>
+        [p class="inlineImage"][img src="resources/sor3/230.jpg" /][/p]
+        [p]Amint mész az úton, egyszer csak nyugat felől valami mozgásra leszel figyelmes a távolban. Hatalmas porfelhőt kavarva három alak vágtat át szélsebesen a pusztán. Hirtelen irányt változtatnak és feléd száguldanak. Itt nincs hová elrejtőznöd, tehát nem tudsz mást tenni, hagyod őket, hogy tegyék, amit akarnak. Amikor közelebb érnek hozzád, akkor látod, hogy három lovas vágtat feléd. Jobban megnézed őket, és rájössz, hogy ezek nem lovasok, hanem Kentaurok. Gyorsan fontolóra kell venned, miként üdvözlöd őket.[/p]
+    </text>
+    <next id="111">Ha barátságos leszel</next>
+    <next id="313">Ha támadóan lépsz fel</next>
+  </p>
   <!-- 231 -->
   <!-- 232 -->
   <!-- 233 -->
@@ -351,7 +581,13 @@
   <!-- 254 -->
   <!-- 255 -->
   <!-- 256 -->
-  <!-- 257 -->
+  <p id="257">
+    <text>
+        [p]A vezér csöndre inti a többieket. - Pofa be, tökfejek! - parancsolja nekik. - Senki nem olyan bolond, hogy úgy keljen át e síkságon, hogy valamilyen módon ne gondoskodjon a saját védelméről. Varázsló vagy-e, barátom? - Közlöd velük, hogy az vagy, és felajánlod, hogy Szerencsét varázsolsz nekik, ha cserébe segítenek neked. Amikor az ajánlatodat meghallják, tűzbe jönnek, és patájukat a földhöz csapkodva mosolyogva néznek rád: - Hát akkor kössünk üzletet! Miben lehetnénk a szolgálatodra? - Megkéred őket, hogy segítsenek utadon. - Ha akarod, elvihetünk egy darabon a síkságon át, de innen igencsak távol van minden civilizált hely. Északnyugatra lakik Manata, a Kígyóbűvölő, északkeletre pedig még mindig ott van az a karaván, amely Kharéba tart. Mondd meg, hová akarsz menni, és mi elviszünk. Előbb azonban add ide a jutalmunkat! - Motyogsz néhány szót, majd ujjadat megcsóválod feléjük, és közlöd velük, hogy megáldottad őket, szerencséjük lesz. A Kentaurok nem tartoznak a legokosabb lények közé, és büszkén tekintenek egymásra. Mit felelsz, hová vigyenek?[/p]
+    </text>
+    <next id="64">Ha azt kéred, hogy északnyugatra</next>
+    <next id="2">Ha azt kéred, hogy északkeletre</next>
+  </p>
   <p id="258">
     <text>
         [p]Kardot rántasz, és várod a teremtmények támadását. A madarak nagy szárnycsapkodások közepette támadóvonalba fejlődnek, és lecsapni készülnek. Mivel igen gyorsan röpülnek, nehéz ellenfelek lesznek. Vívd meg velük a harcot:[/p]
@@ -421,7 +657,20 @@
   <!-- 310 -->
   <!-- 311 -->
   <!-- 312 -->
-  <!-- 313 -->
+  <p id="313">
+    <text>
+        [p]Amikor fegyvert rántasz ellenük, megmarkolják íjukat, belehelyezik a nyílvesszőjüket, és megcéloznak. Farkasszemet néztek, [alt]és el kell döntened, mit teszel[/alt].[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <next id="175">Ha eldobod a fegyveredet, és gyorsan varázsolsz</next>
+        <next id="70">Ha odapattansz hozzájuk, és megtámadod őket</next>
+      </have>
+      <dontHave>
+        <next id="70" singleChoiceText="majd odapattansz hozzájuk, és megtámadod őket"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="314">
     <text>
         [p]Az Éjszakai Sólymok a fejed fölött köröznek, és újabb támadásra készülnek ellened. Zárt alakzatuk hirtelen felbomlik, és vijjogásuk is megváltozik. Valami megzavarta őket, és szemmel láthatólag ez idézte elő a változást viselkedésükben. Te azonban semmit sem látsz.[/p]
@@ -441,7 +690,13 @@
   <!-- 322 -->
   <!-- 323 -->
   <!-- 324 -->
-  <!-- 325 -->
+  <p id="325">
+    <text>
+        [p]A földre zuhansz, és ekkor a Kentaurok vezére beléd rúg a patájával. Amikor látja, hogy nem tudsz visszavágni, lehajol hozzád, átkutatja a holmidat, és mindent elszed tőled. A Kentaurok azt hiszik, halott vagy, és elvágtatnak. De te nem haltál még meg. Kis pihen ő után összeszeded magad, de minden tárgyadat és élelmedet is elvesztetted.[/p]
+    </text>
+    <loseItem id="1001,1002,1003,1004,1005,1006,1007,2000,2001,2002,2003,3001,3002,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022,3023,3024,3025,3026,3027,3028,3029,3030,3031,3032,3034,3035,3036,3037,3038,3039,3042,3043,3044,3045,3046,3047,3048,3049,3050,3051,3201,3202,3203,3204,3205" amount="999" />
+    <next id="273"></next>
+  </p>
   <!-- 326 -->
   <!-- 327 -->
   <!-- 328 -->
