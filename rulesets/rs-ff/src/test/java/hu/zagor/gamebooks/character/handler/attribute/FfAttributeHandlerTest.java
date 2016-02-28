@@ -206,8 +206,68 @@ public class FfAttributeHandlerTest {
         Assert.assertEquals(character.getStamina(), 3);
     }
 
+    public void testHandleModificationWhenMustHandleComplextPathShouldBeAbleToChangeTheValue() {
+        // GIVEN
+        final TestCharacter character = new TestCharacter();
+        mockControl.replay();
+        // WHEN
+        underTest.handleModification(character, "subThing.a", 4);
+        underTest.handleModification(character, "subThing.b", -2);
+        // THEN
+        Assert.assertEquals(character.getSubThing().getA(), 14);
+        Assert.assertEquals(character.getSubThing().getB(), 9);
+    }
+
+    @Test(expectedExceptions = RuntimeException.class)
+    public void testHandleModificationWhenComplextPathFieldDoesNotExistsShouldThrowException() {
+        // GIVEN
+        final TestCharacter character = new TestCharacter();
+        logger.error("Failed to fetch contents from field '{}' on object type '{}'.", "x",
+            "class hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandlerTest$TestCharacter$SubThing");
+        mockControl.replay();
+        // WHEN
+        underTest.handleModification(character, "subThing.x.a", 4);
+        // THEN throws exception
+    }
+
     @AfterMethod
     public void tearDownMethod() {
         mockControl.verify();
     }
+
+    private class TestCharacter extends FfCharacter {
+        private final SubThing subThing;
+
+        TestCharacter() {
+            subThing = new SubThing();
+            subThing.setA(10);
+            subThing.setB(11);
+        }
+
+        public SubThing getSubThing() {
+            return subThing;
+        }
+
+        private class SubThing {
+            private int a;
+            private int b;
+
+            public int getA() {
+                return a;
+            }
+
+            public void setA(final int a) {
+                this.a = a;
+            }
+
+            public int getB() {
+                return b;
+            }
+
+            public void setB(final int b) {
+                this.b = b;
+            }
+        }
+    }
+
 }
