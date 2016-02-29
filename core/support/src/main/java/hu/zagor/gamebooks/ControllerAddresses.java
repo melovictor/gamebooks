@@ -11,6 +11,7 @@ public final class ControllerAddresses {
     public static final String USER_STORE_KEY = "user";
     public static final String ENEMY_STORE_KEY = "enemies";
     public static final String MODEL_STORE_KEY = "model";
+    public static final String POSITION_STORE_KEY = "position";
 
     private ControllerAddresses() {
     }
