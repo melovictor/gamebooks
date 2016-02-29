@@ -289,6 +289,78 @@
       </win>
     </fight>
   </p>
+  <p id="70a" display="70">
+    <text>
+        [p]Amikor előreugrasz, a Kentaurok meghúzzák íjaik húrját, és két nyílvesszőt röpítenek ki rád.[/p]
+    </text>
+    <random>
+      <result max="2" min="1">
+        <text>
+            [p]Az első nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <gatherItem id="4057" />
+      </result>
+      <result max="6" min="3">
+        <text>
+            [p]Az első nyílvessző mellément.[/p]
+        </text>
+      </result>
+    </random>
+    <random>
+      <result max="2" min="1">
+        <text>
+            [p]A második nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <gatherItem id="4058" />
+      </result>
+      <result max="6" min="3">
+        <text>
+            [p]A második nyílvessző mellément.[/p]
+        </text>
+      </result>
+    </random>
+    <itemCheck type="items" id="(4057 and 4058) or (4057 and 4059) or (4058 and 4059)">
+      <have>
+        <text>
+            [p]Vesztesz további 2 ÜGYESSÉG pontot is a csata idejére.[/p]
+        </text>
+        <gatherItem id="4016" amount="2" />
+      </have>
+      <after>
+        <text>
+            [p]Egyenként küzdj meg a Kentaurokkal az általad választott sorrendben. Ha kettővel végeztél (és még életben vagy), és a harmadikat legalább kétszer megsebezted, megengedheted neki, ha akarod, hogy megadja magát.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <itemCheck type="pos" id="1">
+      <have>
+        <fight type="single">
+          <enemy id="6" />
+          <enemy id="7" />
+        </fight>
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="2">
+      <have>
+        <fight type="single">
+          <enemy id="5" />
+          <enemy id="7" />
+        </fight>
+      </have>
+    </itemCheck>
+    <itemCheck type="pos" id="3">
+      <have>
+        <fight type="single">
+          <enemy id="5" />
+          <enemy id="6" />
+        </fight>
+      </have>
+    </itemCheck>
+    <next id="154">Ha végezni akarsz az utolsó Kentaurral</next>
+    <next id="35">Ha úgy döntesz, hogy megkegyelmezel neki</next>
+  </p>
   <!-- 71 -->
   <!-- 72 -->
   <!-- 73 -->
@@ -1130,7 +1202,36 @@
   </p>
   <!-- 389 -->
   <!-- 390 -->
-  <!-- 391 -->
+  <p id="391">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Varázslatod csak az egyik Kentaurt éri, aki megrázza a fejét és némán néz a többiekre. Most itt a lehetőség a támadásra. Az a Kentaur, akit elvarázsoltál, nem vesz részt a harcban és könnyűszerrel megölheted, miután a másik kettővel végeztél. Melyik Kentaurral nem akarsz megküzdeni?[/p]
+        [div]
+          [span class="skillTitle"]
+              Ügyesség
+          [/span]
+          [span class="staminaTitle"]
+              Életerő
+          [/span]
+        [/div]
+        [div id="ffEnemyList"]
+            [span data-enemy-id="5" data-enemy-name=""]Első Kentaur[/span]
+            [span data-enemy-id="5" data-enemy-skill=""]8[/span]
+            [span data-enemy-id="5" data-enemy-stamina=""]7[/span]
+            [br]
+            [span data-enemy-id="6" data-enemy-name=""]Második Kentaur[/span]
+            [span data-enemy-id="6" data-enemy-skill=""]7[/span]
+            [span data-enemy-id="6" data-enemy-stamina=""]6[/span]
+            [br]
+            [span data-enemy-id="7" data-enemy-name=""]Harmadik Kentaur[/span]
+            [span data-enemy-id="7" data-enemy-skill=""]7[/span]
+            [span data-enemy-id="7" data-enemy-stamina=""]8[/span]
+        [/div]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="70a" pos="1">Az elsővel?</next>
+    <next id="70a" pos="2">A másodikkal?</next>
+    <next id="70a" pos="3">A harmadikkal?</next>
+  </p>
   <!-- 392 -->
   <!-- 393 -->
   <!-- 394 -->
@@ -1288,7 +1389,31 @@
   <!-- 473 -->
   <!-- 474 -->
   <!-- 475 -->
-  <!-- 476 -->
+  <p id="476">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Varázsolsz, és várod a hatást, de semmi sem történik. Varázslatod arra jó, hogy bezárt ajtókat nyisson ki! Időközben az egyik Kentaur egy újabb nyílvesszőt lő ki feléd. [/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <random>
+      <result max="3" min="1">
+        <text>
+            [p]A Kentaur eltalál, és 2 ÉLETERŐ pont kárt tesz benned.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+      </result>
+      <result max="6" min="4">
+        <text>
+            [p]A Kentaur lövése célt téveszt.[/p]
+        </text>
+      </result>
+      <after>
+        <text>
+            [p]Azaz egyetlen megoldás számodra, ha addig támadsz rájuk, amíg ,,újratöltik'' íjaikat.[/p]
+        </text>
+      </after>
+    </random>
+    <next id="70"></next>
+  </p>
   <!-- 477 -->
   <!-- 478 -->
   <!-- 479 -->
