@@ -161,6 +161,7 @@ public class FfBookSectionControllerTest {
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(oldData.getText()).andReturn("<p>blabla text.</p><a id='#iAmAMarker'></a><p>Blabla other text.</p>");
         oldData.setText("<p>blabla text.</p><p>Blabla other text.</p>");
+        expect(wrapper.getPosition()).andReturn(1);
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(wrapper.getPlayer()).andReturn(player);
         expect(model.addAttribute("hideTopSection", true)).andReturn(model);
