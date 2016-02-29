@@ -127,6 +127,7 @@ public class RawBookSectionControllerPositiveBTest {
         expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getEnemies()).andReturn(enemies);
         expect(wrapper.getPlayer()).andReturn(player);
+        expect(wrapper.getPosition()).andReturn(1);
         paragraphResolver.resolve(anyObject(ResolvationData.class), eq(newParagraph));
         newParagraph.calculateValidEvents();
         expectCpDataInsertion();
@@ -173,6 +174,7 @@ public class RawBookSectionControllerPositiveBTest {
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(wrapper.getPlayer()).andReturn(player);
+        wrapper.setPosition(1);
         logger.debug("Handling paragraph {} for book.", id);
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getPlayer()).andReturn(player);

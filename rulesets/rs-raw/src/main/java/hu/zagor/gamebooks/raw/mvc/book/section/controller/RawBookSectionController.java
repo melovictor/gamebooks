@@ -96,15 +96,12 @@ public class RawBookSectionController extends GenericBookSectionController imple
         final Paragraph previousParagraph = wrapper.getParagraph();
 
         final Paragraph paragraph;
-        Integer position = null;
         if (sectionIdentifier == null) {
             paragraph = previousParagraph;
             clearAnchorPoints(paragraph);
-            position = wrapper.getPosition();
         } else {
             final Choice choice = obtainChoice(sectionIdentifier, previousParagraph, wrapper.getPlayer());
-            position = choice.getPosition();
-            wrapper.setPosition(position);
+            wrapper.setPosition(choice.getPosition());
             final String paragraphId = choice.getId();
             getLogger().debug("Handling paragraph {} for book.", paragraphId);
             paragraph = loadSection(paragraphId, request);
@@ -113,7 +110,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
 
         final boolean changedSection = paragraph != previousParagraph;
         handleCustomSectionsPre(model, wrapper, changedSection);
-        final String bookPage = doHandleSection(model, wrapper, paragraph, position);
+        final String bookPage = doHandleSection(model, wrapper, paragraph);
         handleCustomSectionsPost(model, wrapper, changedSection);
         wrapper.setModel(model);
         navigationRecorder.recordNavigation(wrapper, sectionIdentifier, previousParagraph, paragraph);
@@ -191,11 +188,11 @@ public class RawBookSectionController extends GenericBookSectionController imple
         return choice;
     }
 
-    private String doHandleSection(final Model model, final HttpSessionWrapper wrapper, final Paragraph paragraph, final Integer position) {
+    private String doHandleSection(final Model model, final HttpSessionWrapper wrapper, final Paragraph paragraph) {
         final PlayerUser player = wrapper.getPlayer();
         setUpSectionDisplayOptions(paragraph, model, player);
         model.addAttribute("bookInfo", getInfo());
-        return processSectionChange(model, wrapper, paragraph, position);
+        return processSectionChange(model, wrapper, paragraph);
     }
 
     /**
@@ -219,13 +216,12 @@ public class RawBookSectionController extends GenericBookSectionController imple
         interactionHandler.setUserInputTime(character, form.getElapsedTime());
         interactionRecorder.recordUserResponse(wrapper, form.getResponseText(), form.getForcedTime() == 0 ? form.getElapsedTime() : form.getForcedTime());
         addResources(model);
-        return processSectionChange(model, wrapper, paragraph, null);
+        return processSectionChange(model, wrapper, paragraph);
     }
 
-    private String processSectionChange(final Model model, final HttpSessionWrapper wrapper, final Paragraph paragraph, final Integer position) {
+    private String processSectionChange(final Model model, final HttpSessionWrapper wrapper, final Paragraph paragraph) {
         final BookInformations info = getInfo();
-        final ResolvationData resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).usingWrapper(wrapper)
-            .withPosition(position).build();
+        final ResolvationData resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).usingWrapper(wrapper).build();
 
         info.getParagraphResolver().resolve(resolvationData, paragraph);
         paragraph.calculateValidEvents();

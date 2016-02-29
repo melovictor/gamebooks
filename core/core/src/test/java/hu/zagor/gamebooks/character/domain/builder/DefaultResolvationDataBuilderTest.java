@@ -44,6 +44,7 @@ public class DefaultResolvationDataBuilderTest {
         expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getEnemies()).andReturn(enemies);
         expect(wrapper.getPlayer()).andReturn(player);
+        expect(wrapper.getPosition()).andReturn(5);
         mockControl.replay();
         // WHEN
         final ResolvationData returned = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).usingWrapper(wrapper).build();
@@ -51,6 +52,7 @@ public class DefaultResolvationDataBuilderTest {
         Assert.assertSame(returned.getCharacter(), character);
         Assert.assertSame(returned.getEnemies(), enemies);
         Assert.assertSame(returned.getPlayerUser(), player);
+        Assert.assertSame(returned.getPosition(), 5);
     }
 
     @AfterMethod

@@ -123,7 +123,7 @@ public class RawBookSectionControllerPositiveATest {
 
     public void testHandleSectionWhenSectionIsWithIdShouldHandleSectionBasedOnSectionId() {
         // GIVEN
-        prepareForSwitch("9");
+        prepareForSwitch("9", 1);
         setUpNewParagraph();
         setUpModel();
         expectWrapper();
@@ -153,6 +153,7 @@ public class RawBookSectionControllerPositiveATest {
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(wrapper.getPlayer()).andReturn(player);
+        wrapper.setPosition(1);
         logger.debug("Handling paragraph {} for book.", "9");
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getPlayer()).andReturn(player);
@@ -186,7 +187,7 @@ public class RawBookSectionControllerPositiveATest {
     public void testHandleSectionWhenSingleChoiceIsLeftWithSingleChoiceTextShouldIncorporateExtraTextIntoMainBlock() {
         // GIVEN
         data.setChoices(choicesExtra);
-        prepareForSwitch("10");
+        prepareForSwitch("10", 0);
         setUpNewParagraph();
         setUpModel();
         expectWrapper();
@@ -224,11 +225,12 @@ public class RawBookSectionControllerPositiveATest {
         expect(resourceSet.add("raw.css")).andReturn(true);
     }
 
-    private void prepareForSwitch(final String id) {
+    private void prepareForSwitch(final String id, final int pos) {
         logger.debug("Handling choice request '{}' for book.", "s-" + id);
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(wrapper.getPlayer()).andReturn(player);
+        wrapper.setPosition(pos);
         logger.debug("Handling paragraph {} for book.", id);
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getPlayer()).andReturn(player);
@@ -259,6 +261,7 @@ public class RawBookSectionControllerPositiveATest {
         expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getEnemies()).andReturn(enemies);
         expect(wrapper.getPlayer()).andReturn(player);
+        expect(wrapper.getPosition()).andReturn(1);
     }
 
     private void expectCpDataInsertion() {

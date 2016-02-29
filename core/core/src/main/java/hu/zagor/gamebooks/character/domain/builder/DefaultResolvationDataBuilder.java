@@ -58,6 +58,7 @@ public final class DefaultResolvationDataBuilder implements ResolvationDataBuild
         data.setCharacter(wrapper.getCharacter());
         data.setEnemies(wrapper.getEnemies());
         data.setPlayerUser(wrapper.getPlayer());
+        data.setPosition(wrapper.getPosition());
         return this;
     }
 

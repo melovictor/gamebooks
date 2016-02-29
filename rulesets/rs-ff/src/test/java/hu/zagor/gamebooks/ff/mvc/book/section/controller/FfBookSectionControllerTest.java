@@ -161,7 +161,6 @@ public class FfBookSectionControllerTest {
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(oldData.getText()).andReturn("<p>blabla text.</p><a id='#iAmAMarker'></a><p>Blabla other text.</p>");
         oldData.setText("<p>blabla text.</p><p>Blabla other text.</p>");
-        expect(wrapper.getPosition()).andReturn(1);
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(wrapper.getPlayer()).andReturn(player);
         expect(model.addAttribute("hideTopSection", true)).andReturn(model);
@@ -172,6 +171,7 @@ public class FfBookSectionControllerTest {
         expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getEnemies()).andReturn(enemies);
         expect(wrapper.getPlayer()).andReturn(player);
+        expect(wrapper.getPosition()).andReturn(9);
         paragraphResolver.resolve(anyObject(ResolvationData.class), eq(oldParagraph));
         oldData.calculateValidEvents(oldParagraph);
         expectCpDataInsertion();
