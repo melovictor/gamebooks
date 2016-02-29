@@ -99,7 +99,26 @@
   <!-- 13 -->
   <!-- 14 -->
   <!-- 15 -->
-  <!-- 16 -->
+  <p id="16">
+    <text>
+        [p]Lepihensz éjszakára. Nyersz 3 ÉLETERŐ pontot, majd másnap reggel folytatod az utadat.
+    </text>
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            Mivel azonban tegnap egész nap nem ettél egy falatot sem, le kell vonnod magadtól 3 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-3" to="stamina" />
+      </have>
+      <dontHave>
+        <text>
+            [/p]
+        </text>
+        <gatherItem id="4101" />
+      </dontHave>
+    </itemCheck>
+    <next id="230"></next>
+  </p>
   <!-- 17 -->
   <!-- 18 -->
   <!-- 19 -->
@@ -107,7 +126,13 @@
   <!-- 21 -->
   <!-- 22 -->
   <!-- 23 -->
-  <!-- 24 -->
+  <p id="24">
+    <text>
+        [p]A Bogár rejtekhelyéből kivehetsz egy kis [span class="takeItem" data-id="3052" data-amount="1"]kőport[/span]. Ezt követően el kell döntened, merre is menj tovább. Hosszú út áll előtted.[/p]
+    </text>
+    <next id="137">Ha északnyugatnak mész</next>
+    <next id="12">Ha északkeletnek</next>
+  </p>
   <!-- 25 -->
   <!-- 26 -->
   <!-- 27 -->
@@ -278,7 +303,60 @@
   <!-- 82 -->
   <!-- 83 -->
   <!-- 84 -->
-  <!-- 85 -->
+  <p id="85">
+    <text>
+        [p class="inlineImage"][img src="resources/sor3/85.jpg" /][/p]
+        [p]Minden neszre, minden mozgásra figyelve mész át a kopár síkságon. Lábad alatt hirtelen megmozdul a föld! Elveszted az egyensúlyodat és hanyatt esel.[/p]
+    </text>
+    <test against="luck">
+      <failure>
+        <itemCheck type="items" id="2001 or 3001 or 3017 or 3038 or 3039 or 3048">
+          <have>
+            <text>
+                [p]Olyan szerencsétlenül estél, hogy az egyik tárgyad összetört.[/p]
+            </text>
+            <loseItem id="2001,3001,3017,3038,3039,3048" amount="1" />
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="3002">
+              <have>
+                <text>
+                    [p]Olyan szerencsétlenül estél, hogy az egyik tárgyad összetört.[/p]
+                </text>
+                <loseItem id="3002" />
+              </have>
+              <dontHave>
+                <itemCheck type="item" id="3050">
+                  <have>
+                    <text>
+                        [p]Olyan szerencsétlenül estél, hogy az egyik tárgyad összetört.[/p]
+                    </text>
+                    <loseItem id="3050" />
+                  </have>
+                </itemCheck>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </failure>
+    </test>
+    <itemCheck type="item" id="4999">
+      <dontHave>
+        <text>
+            [p]Amikor végre feltápászkodsz, riadtan veszed észre, hogy közvetlenül előtted megnyílik a föld, és előbb két hatalmas ollóban végződő kar nyúlik ki, majd a lyuk kiszélesedik, és egy óriási Baddu-Bogár bújik elő belőle, amely egyenesen feléd tart. [alt]Hogyan küzdesz meg vele?[/alt][/p]
+        </text>
+        <itemCheck type="item" id="4102">
+          <have>
+            <next id="191">Ha varázsolsz</next>
+            <next id="286">Ha fegyverrel vívsz meg vele</next>
+          </have>
+          <dontHave>
+            <next id="286" singleChoiceText="Fegyvert rántasz."></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 86 -->
   <!-- 87 -->
   <!-- 88 -->
@@ -287,7 +365,13 @@
   <!-- 91 -->
   <!-- 92 -->
   <!-- 93 -->
-  <!-- 94 -->
+  <p id="94">
+    <text>
+        [p]Már majdnem egy álló napja gyalogolsz.[/p]
+    </text>
+    <next id="16">Ha lepihensz valahol éjszakára és alszol egy jót</next>
+    <next id="122">Ha inkább ébren maradsz, hátha valami veszély leselkedik rád, és búvóhelyet keresel magadnak</next>
+  </p>
   <!-- 95 -->
   <!-- 96 -->
   <!-- 97 -->
@@ -301,7 +385,27 @@
   <!-- 105 -->
   <!-- 106 -->
   <!-- 107 -->
-  <!-- 108 -->
+  <p id="108">
+    <text>
+        [p]Úgy látod, megsértődik, amikor megtagadtad a kérését, és ismét a szájához emeli a furulyáját.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="SÁP" id="427" />
+        <spell name="TÁN" id="353" />
+        <spell name="TÁV" id="450" />
+        <spell name="CSA" id="408" />
+        <spell name="TIL" id="388" />
+        <next id="248">Ha inkább megvárod, mi történik</next>
+      </have>
+      <dontHave>
+        <next id="248"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 109 -->
   <!-- 110 -->
   <p id="111">
@@ -321,7 +425,27 @@
   <!-- 119 -->
   <!-- 120 -->
   <!-- 121 -->
-  <!-- 122 -->
+  <p id="122">
+    <text>
+        [p]Éjszaka is folytatod az utadat. Vesztesz 2 ÉLETERŐ pontot, amiért alvás nélkül mész
+    </text>
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            tovább, és további 3 ÉLETERŐ pontot, ha semmit sem ettél a tegnapi nap folyamán.[/p]
+        </text>
+        <add amount="-3" to="stamina" />
+      </have>
+      <dontHave>
+        <text>
+            tovább.[/p]
+        </text>
+        <gatherItem id="4101" />
+      </dontHave>
+    </itemCheck>
+    <add to="stamina" amount="-2" />
+    <next id="230"></next>
+  </p>
   <!-- 123 -->
   <!-- 124 -->
   <!-- 125 -->
@@ -483,7 +607,15 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 176 -->
+  <p id="176">
+    <text>
+        [p class="inlineImage"][img src="resources/sor3/176.jpg" /][/p]
+        [p]Egy gödörhöz érsz, melynek mélyéről jajgatást hallasz. Amikor lenézel, egy vézna, sötét bőrű embert pillantasz meg, aki a gödör mélyén ül és furulyázik. Vagy fél tucat kígyó tekereg előtte a levegőben.[/p]
+    </text>
+    <next id="200">Ha lekiabálsz neki</next>
+    <next id="218">Ha fegyvereddel fürgén beugrasz a gödörbe</next>
+    <next id="318">Ha inkább szép csöndben elosonsz innen</next>
+  </p>
   <!-- 177 -->
   <p id="178">
     <text>
@@ -508,7 +640,17 @@
   <!-- 188 -->
   <!-- 189 -->
   <!-- 190 -->
-  <!-- 191 -->
+  <p id="191">
+    <text>
+        [p]Gyorsan döntsd el, melyik varázslatot alkalmazod:[/p]
+    </text>
+    <spell name="KIN" id="370" />
+    <spell name="NÖV" id="440" />
+    <spell name="NAP" id="334" />
+    <spell name="EME" id="488" />
+    <spell name="VAK" id="345" />
+    <next id="286">Ha egyik lehetőség sem szimpatikus, és inkább kardot rántanál</next>
+  </p>
   <!-- 192 -->
   <!-- 193 -->
   <!-- 194 -->
@@ -517,9 +659,44 @@
   <!-- 197 -->
   <!-- 198 -->
   <!-- 199 -->
-  <!-- 200 -->
+  <p id="200">
+    <text>
+        [p]Az ember leteszi a furulyát. - Ssssszzz, csssssss, úgy hallom, csússszómásssszó nővéreimmmmm, hogy valaki sssszzzzólít minket. -Felnéz és int, hogy mássz le hozzá. - Egy látogatóóóóó! Gyere cccssaak, idegen![/p]
+    </text>
+    <next id="301">Ha lemászol a gödörbe</next>
+    <next id="318">Ha inkább otthagyod ezt az embert a kígyóival együtt</next>
+  </p>
   <!-- 201 -->
-  <!-- 202 -->
+  <p id="202">
+    <text>
+        [p]Egyenként támadnak rád a kígyók és beléd mélyesztik a fogukat. Sorban küzdj meg velük.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="10" />
+      <enemy id="11" />
+      <enemy id="12" />
+      <enemy id="13" />
+      <enemy id="14" />
+      <enemy id="15" />
+      <loseRound totalCount="1">
+        <gatherItem id="4067" />
+      </loseRound>
+    </fight>
+    <fight type="single">
+      <enemy id="16" />
+      <anyRound totalCount="5">
+        <interrupt />
+      </anyRound>
+    </fight>
+    <itemCheck type="item" id="16">
+      <have>
+        <next id="312"></next>
+      </have>
+      <dontHave>
+        <next id="260"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 203 -->
   <!-- 204 -->
   <!-- 205 -->
@@ -533,9 +710,87 @@
   <!-- 213 -->
   <!-- 214 -->
   <!-- 215 -->
-  <!-- 216 -->
+  <p id="216">
+    <text>
+        [p]Amint megsebzed a teremtményt, a szájából kis sugárban folyadék fröccsen a lábadra. Égető fájdalmat érzel, és már tudod, hogy a lény nyála szétmarhatja a húsodat. Vesztesz 1 ÉLETERŐ pontot a lábadon esett sérülésért. Folytasd a küzdelmet.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="216a"></next>
+  </p>
+  <p id="216a" display="216">
+    <text>
+        [p]Folytasd a küzdelmet.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="8" />
+      <loseRound enemy="8">
+        <interrupt />
+      </loseRound>
+      <win>
+        <loseItem id="4003" />
+      </win>
+    </fight>
+    <itemCheck type="enemy" id="8">
+      <have>
+        <random>
+          <result max="1" min="1">
+            <text>
+                [p]A bogár nyála az arcodat éri. Vesztesz 3 ÉLETERŐ 
+            </text>
+            <add amount="-3" to="stamina" />
+            <itemCheck type="item" id="4060">
+              <have>
+                <text>
+                    pontot.[/p]
+                </text>
+              </have>
+              <dontHave>
+                <text>
+                    pontot és megvakulsz a bal szemedre.[/p]
+                </text>
+                <gatherItem id="4060" />
+              </dontHave>
+            </itemCheck>
+          </result>
+          <result max="2" min="2">
+            <text>
+                [p]A bogár nyála a kardforgató karodat éri. Vesztesz 2 ÉLETERŐ és 1 UGYESSÉG pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+            <add amount="-1" to="skill" />
+          </result>
+          <result max="3" min="3">
+            <text>
+                [p]A bogár nyála a másik karodat éri. Vesztesz 2 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+          </result>
+          <result max="4" min="4">
+            <text>
+                [p]A bogár nyála a lábadat éri. Vesztesz 1 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-1" to="stamina" />
+          </result>
+          <result max="6" min="5">
+            <text>
+                [p]A bogár nyála nem talált el.[/p]
+            </text>
+          </result>
+        </random>
+        <next id="216a"></next>
+      </have>
+      <dontHave>
+        <next id="24"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 217 -->
-  <!-- 218 -->
+  <p id="218">
+    <text>
+        [p]Hangos ordítással beveted magad a gödörbe, hogy ráijessz a Kígyóbűvölőre. Az azonban, ahelyett hogy megijedne, pergőbb ritmusú dalba kezd. Rémülten veszed észre, hogy a kígyók vadul rád vetik magukat.[/p]
+    </text>
+    <next id="202"></next>
+  </p>
   <!-- 219 -->
   <!-- 220 -->
   <!-- 221 -->
@@ -572,7 +827,12 @@
   <!-- 245 -->
   <!-- 246 -->
   <!-- 247 -->
-  <!-- 248 -->
+  <p id="248">
+    <text>
+        [p]Amikor felhangzik a furulyaszó, szorongásod enyhül. Lágy, nyugodt dallam száll feléd. Teljesen átszellemülten hallgatod a játékát, miközben a szemed kezd lecsukódni. Rájössz, hogy hipnózis alatt állsz! Lefekszel a földre, és ekkor a furulya néhány élesen sípoló hangot ad ki. Kezed hirtelen megváltozik, ujjaidon pikkelyek nőnek! Megdörzsölöd az arcodat, és érzed, hogy a bőröd megkeményedett. Szája mosolyra húzódik, amikor kárörvendve végignéz legújabb áldozatán. Arra ítéltettél, hogy életed végéig a Kígyóbűvölő háziállatkája légy.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 249 -->
   <!-- 250 -->
   <!-- 251 -->
@@ -630,7 +890,18 @@
   <!-- 283 -->
   <!-- 284 -->
   <!-- 285 -->
-  <!-- 286 -->
+  <p id="286">
+    <text>
+        [p]Mindketten harcra készen álltok:[/p]
+    </text>
+    <fight type="single">
+      <enemy id="8" />
+      <winRound enemy="8" totalCount="1">
+        <interrupt />
+      </winRound>
+    </fight>
+    <next id="216"></next>
+  </p>
   <!-- 287 -->
   <!-- 288 -->
   <!-- 289 -->
@@ -645,7 +916,13 @@
   <!-- 298 -->
   <!-- 299 -->
   <!-- 300 -->
-  <!-- 301 -->
+  <p id="301">
+    <text>
+        [p]Bemászol a gödörbe, és beszélsz a Kígyóbűvölővel, aki túlzottan barátságosnak bizonyul, és nem tudod, hogy higgyél-e neki, vagy sem. A kígyók mind téged néznek, de nem mozdulnak. A férfi megkér, hogy mutasd meg neki azokat a tárgyakat, amelyeket utad során szereztél.[/p]
+    </text>
+    <next id="87">Ha kinyitod a hátizsákodat, és megmutatod, mi van benne</next>
+    <next id="108">Ha nem mutatsz neki semmit, ehelyett inkább felőle kezdesz érdeklődni</next>
+  </p>
   <!-- 302 -->
   <!-- 303 -->
   <!-- 304 -->
@@ -656,7 +933,12 @@
   <!-- 309 -->
   <!-- 310 -->
   <!-- 311 -->
-  <!-- 312 -->
+  <p id="312">
+    <text>
+        [p]A férfi behúzódik a gödör egyik sarkába, és furulyáját a szájához illeszti. Ráveted magad, hogy végezz vele, de ekkor valami furcsa érzés kerít hatalmába.[/p]
+    </text>
+    <next id="248"></next>
+  </p>
   <p id="313">
     <text>
         [p]Amikor fegyvert rántasz ellenük, megmarkolják íjukat, belehelyezik a nyílvesszőjüket, és megcéloznak. Farkasszemet néztek, [alt]és el kell döntened, mit teszel[/alt].[/p]
@@ -683,7 +965,12 @@
   <!-- 315 -->
   <!-- 316 -->
   <!-- 317 -->
-  <!-- 318 -->
+  <p id="318">
+    <text>
+        [p]Északnyugat felé folytatod az utadat.[/p]
+    </text>
+    <next id="47"></next>
+  </p>
   <!-- 319 -->
   <!-- 320 -->
   <!-- 321 -->
@@ -705,7 +992,27 @@
   <!-- 331 -->
   <!-- 332 -->
   <!-- 333 -->
-  <!-- 334 -->
+  <p id="334">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3035">
+      <have>
+        <text>
+            [p]Varázslatod hatására a Napékszer vakító fényével egyenesen a Bogár szemébe világít. Addig világítasz a szemébe, amíg az állat meghátrál. Jól sejtetted, ez a föld alatt élő bogár képtelen elviselni a fényt. Visszabújik a lyukba, és eltűnik a föld alatt.[/p]
+        </text>
+        <next id="24"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Vonj le magadtól 3 ÉLETERŐ pontot, mert a Bogár megtámad, mialatt varázsolni próbálsz.[/p]
+        </text>
+        <add amount="-3" to="stamina" />
+        <next id="286"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 335 -->
   <!-- 336 -->
   <p id="337">
@@ -722,7 +1029,13 @@
   <!-- 342 -->
   <!-- 343 -->
   <!-- 344 -->
-  <!-- 345 -->
+  <p id="345">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Varázslatod hatására védetté válsz mindennemű varázslattal szemben. Sajnos igyekezeted hiábavaló volt, mert semmiféle varázslat nincs a közeledben. Időközben a Bogár rád támad, és beléd mar. Újabb 2 ÉLETERŐ pontot vesztesz a sebesülésed miatt. Ránts kardot![/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="286"></next>
+  </p>
   <!-- 346 -->
   <!-- 347 -->
   <!-- 348 -->
@@ -730,7 +1043,25 @@
   <!-- 350 -->
   <!-- 351 -->
   <!-- 352 -->
-  <!-- 353 -->
+  <p id="353">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3002">
+      <have>
+        <text>
+            [p]Elkezdesz játszani a bambuszfurulyán és varázsolsz. A férfi szája mosolyra húzódik. - Ssssszzzóval, kedvesssss hugicccccáim - mondja nevetve. - A mi barátunk ssszzzzintén zenéssssssz! - Nem ezt vártad ettől a varázslattól; úgy látszik, zenéd nincs hatással a férfia. Mivel ez a teremtmény is mesteri fokon játszik a varázsfurulyán, az ő játéka viszont rád hatással van...[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <next id="248"></next>
+  </p>
   <!-- 354 -->
   <!-- 355 -->
   <!-- 356 -->
@@ -747,7 +1078,13 @@
   <!-- 367 -->
   <!-- 368 -->
   <!-- 369 -->
-  <!-- 370 -->
+  <p id="370">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Megbűvölöd a közeli sziklát, amely varázslatod hatására kis halom kinccsé változik. Illúzióvarázslatod a legcsekélyebb hatással sincs a Baddu-Bogárra. Hatalmas karját feléd lendíti, és megtántorodsz. Vesztesz 2 ÉLETERŐ pontot. Úgy döntesz, jobb, ha fegyvereddel küzdesz meg vele.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="286"></next>
+  </p>
   <!-- 371 -->
   <!-- 372 -->
   <!-- 373 -->
@@ -771,7 +1108,26 @@
   <!-- 385 -->
   <!-- 386 -->
   <!-- 387 -->
-  <!-- 388 -->
+  <p id="388">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3002">
+      <have>
+        <text>
+            [p]Felhúzod a csuklódra a Csont Karperecet és varázsolsz. Varázslatoddal azt az illúziót kelted, mintha a Kígyóbűvölő kígyói kimásznának a gödörből, erre a férfi furulyáját eldobva utánuk ered. Ez annyi idejét fogja elrabolni, hogy ezalatt nyugodtan körülnézhetsz a gödörben. Persze nagyon óvatosnak kell lenned, hisz a valódi kígyók mind ott vannak a gödörben.[/p]
+        </text>
+        <next id="260"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik.[/p]
+        </text>
+        <next id="248"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 389 -->
   <!-- 390 -->
   <!-- 391 -->
@@ -791,7 +1147,15 @@
   <!-- 405 -->
   <!-- 406 -->
   <!-- 407 -->
-  <!-- 408 -->
+  <p id="408">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Varázslatod hatására egy vészcsengő szólal meg benned, ami arra int, hogy óvakodj ettől az alaktól. A zenéje ugyanis bűvös zene! Két választásod van: vagy együttműködsz vele, vagy elhagyod ezt a helyet, amilyen gyorsan csak tudod.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="87">Ha együttműködsz vele, felajánlhatod neki, hogy megmutatod, mit rejt a hátizsákod</next>
+    <next id="318">Ha inkább elhagyod ezt a helyet, megteheted, amennyiben gyorsan kimászol ebből a gödörből, és magára hagyod a fickót</next>
+    <next id="248">Azt is megteheted azonban, hogy egyszerűen meghallgatod a játékát</next>
+  </p>
   <!-- 409 -->
   <!-- 410 -->
   <!-- 411 -->
@@ -805,7 +1169,25 @@
   <!-- 419 -->
   <!-- 420 -->
   <!-- 421 -->
-  <!-- 422 -->
+  <p id="422">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Varázsolsz az egyik Kentaur ellen. Ránéz az íjára és azonnal ledobja a földre. Másik két társa hatalmas szemeket mereszt rá, ő pedig üresen bámul bele a világba. Megragadod a kínálkozó alkalmat, és támadsz.[/p]
+        [p]Egyenként küzdj meg a Kentaurokkal. Miután az első kettővel végeztél, a harmadiknak megengedheted, hogy adja meg magát.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="9" />
+      <enemy id="6" />
+      <enemy id="7" />
+      <flee>
+        <loseItem id="4016" amount="2" />
+        <next id="35"></next>
+      </flee>
+      <win>
+        <loseItem id="4016" amount="2" />
+        <next id="154"></next>
+      </win>
+    </fight>
+  </p>
   <!-- 423 -->
   <!-- 424 -->
   <!-- 425 -->
@@ -828,17 +1210,53 @@
   <!-- 437 -->
   <!-- 438 -->
   <!-- 439 -->
-  <!-- 440 -->
+  <p id="440">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Amikor varázslatod hatására hatalmasra nősz, a Bogár megáll. Kétszeres ÜGYESSÉG ponttal támadsz rá.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <gatherItem id="4003" />
+    <next id="286"></next>
+  </p>
   <!-- 441 -->
   <!-- 442 -->
   <!-- 443 -->
   <!-- 444 -->
-  <!-- 445 -->
+  <p id="445">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Varázsolsz, és várod a hatást. Közben egy újabb nyílvesszőt röpítenek ki feléd.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <random>
+      <result max="3" min="1">
+        <text>
+            [p]A Kentaur eltalál, és 2 ÉLETERŐ pont kárt tesz benned.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+      </result>
+      <result max="6" min="4">
+        <text>
+            [p]A Kentaur elvét.[/p]
+        </text>
+      </result>
+      <after>
+        <text>
+            [p]A Kentaurok ismét megfeszítik íjaikat. Ebben a helyzetben már nincs értelme varázsolni! Jobban teszed, ha gyorsan támadsz.[/p]
+        </text>
+      </after>
+    </random>
+  </p>
   <!-- 446 -->
   <!-- 447 -->
   <!-- 448 -->
   <!-- 449 -->
-  <!-- 450 -->
+  <p id="450">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Miközben a varázslással bajlódsz, meghallod a furulyaszót.[/p]
+    </text>
+    <add to="stamina" amount="-1" />
+    <next id="248"></next>
+  </p>
   <!-- 451 -->
   <!-- 452 -->
   <!-- 453 -->
@@ -901,5 +1319,47 @@
       </after>
     </itemCheck>
     <next id="258"></next>
+  </p>
+  <!-- 484 -->
+  <!-- 485 -->
+  <!-- 486 -->
+  <!-- 487 -->
+  <p id="488">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot. Miközben varázsolsz, ujjaddal a teremtmény felé mutatsz, és fényes villámot lövellsz ki rá. A villám ujjbegyedből egyenesen a teremtmény testébe csapódik. A Bogár felüvölt, amikor a villám belécsap, de ahelyett, hogy megölné, csak felbőszíti. Kemény páncélteste nem sérül meg - az állat viszont igen dühös. Küzdj meg a Baddu-Bogárral, de az első Forduló után 4 ponttal növeld a Bogár Támadóerejét, mert igen vadul támad.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <next id="286"></next>
+  </p>
+  <!-- 489 -->
+  <!-- 490 -->
+  <!-- 491 -->
+  <!-- 492 -->
+  <!-- 493 -->
+  <!-- 494 -->
+  <p id="495">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Az egyik Kentaur egy újabb nyílvesszőt lő ki rád.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <random>
+      <result max="3" min="1">
+        <text>
+            [p]A Kentaur eltalál, és 2 ÉLETERŐ pont kárt tesz benned.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+      </result>
+      <result max="6" min="4">
+        <text>
+            [p]A Kentaur elvét.[/p]
+        </text>
+      </result>
+      <after>
+        <text>
+            [p]Gyengécskére sikerült varázslásod után fegyvereddel kell rájuk vetned magad. De siess! Íjaikat máris ,,újratöltik''![/p]
+        </text>
+      </after>
+    </random>
+    <next id="70"></next>
   </p>
 </content>

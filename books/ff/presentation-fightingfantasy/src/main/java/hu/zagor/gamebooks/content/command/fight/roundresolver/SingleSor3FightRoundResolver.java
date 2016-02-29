@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
 @Component("singlesor3FightRoundResolver")
 public class SingleSor3FightRoundResolver implements FightRoundResolver {
 
+    private static final int ANGERED_BADDU_BUG_ATTACK_STRENGTH_BONUS = 4;
     @Autowired @Qualifier("singleFightRoundResolver") private FightRoundResolver superResolver;
     @Autowired private MessageSource source;
     @Autowired private LocaleProvider provider;
@@ -37,6 +38,11 @@ public class SingleSor3FightRoundResolver implements FightRoundResolver {
             fleeData.setSufferDamage(false);
             fleeData.setText(source.getMessage("page.sor3.fight.centaur.flee", null, provider.getLocale()));
             command.setFleeData(fleeData);
+        } else if (command.getEnemies().contains("8")) {
+            final FfEnemy enemy = (FfEnemy) resolvationData.getEnemies().get("8");
+            if (resolvationData.getCharacter().getParagraphs().contains("488")) {
+                enemy.setAttackStrengthBonus(ANGERED_BADDU_BUG_ATTACK_STRENGTH_BONUS);
+            }
         }
 
         return resolveRound;
@@ -45,12 +51,13 @@ public class SingleSor3FightRoundResolver implements FightRoundResolver {
     private boolean centaurReadyToSurrender(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] resolveRound) {
         boolean willigToSurrender = false;
         final List<String> enemies = command.getEnemies();
-        if (enemies.contains("5")) {
+        final String firstId = enemies.contains("5") ? "5" : (enemies.contains("9") ? "9" : null);
+        if (firstId != null) {
             int dead = enemies.size();
             Enemy alive = null;
-            if (!isDead(resolvationData.getEnemies().get("5"))) {
+            if (!isDead(resolvationData.getEnemies().get(firstId))) {
                 dead--;
-                alive = resolvationData.getEnemies().get("5");
+                alive = resolvationData.getEnemies().get(firstId);
             }
             if (!isDead(resolvationData.getEnemies().get("6"))) {
                 dead--;
