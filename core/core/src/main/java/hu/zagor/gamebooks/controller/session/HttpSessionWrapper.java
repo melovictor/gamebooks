@@ -45,6 +45,10 @@ public class HttpSessionWrapper {
         return (Character) session.getAttribute(ControllerAddresses.CHARACTER_STORE_KEY + getBookId());
     }
 
+    public Integer getPosition() {
+        return (Integer) session.getAttribute(ControllerAddresses.POSITION_STORE_KEY + getBookId());
+    }
+
     /**
      * Stores the given {@link Character} bean in the session, then returns it for further use.
      * @param character the {@link Character} to store
@@ -54,6 +58,14 @@ public class HttpSessionWrapper {
         Assert.notNull(character, "The parameter 'character' cannot be null!");
         session.setAttribute(ControllerAddresses.CHARACTER_STORE_KEY + getBookId(), character);
         return character;
+    }
+
+    /**
+     * Stores the last position value bean in the session.
+     * @param position the number to store
+     */
+    public void setPosition(final Integer position) {
+        session.setAttribute(ControllerAddresses.POSITION_STORE_KEY + getBookId(), position);
     }
 
     /**

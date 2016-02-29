@@ -100,9 +100,11 @@ public class RawBookSectionController extends GenericBookSectionController imple
         if (sectionIdentifier == null) {
             paragraph = previousParagraph;
             clearAnchorPoints(paragraph);
+            position = wrapper.getPosition();
         } else {
             final Choice choice = obtainChoice(sectionIdentifier, previousParagraph, wrapper.getPlayer());
             position = choice.getPosition();
+            wrapper.setPosition(position);
             final String paragraphId = choice.getId();
             getLogger().debug("Handling paragraph {} for book.", paragraphId);
             paragraph = loadSection(paragraphId, request);
