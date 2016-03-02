@@ -140,7 +140,30 @@
   <!-- 20 -->
   <!-- 21 -->
   <!-- 22 -->
-  <!-- 23 -->
+  <p id="23">
+    <text>
+        [p]A kút igen régi, és már kiszáradt. Leereszted a mélybe a vödröt, majd felhúzod. Kiemeled a kút szélére, és belenézel - az utolsó pillanatban ugrasz félre, s így sikerül kivédened a vödör alján fészkelő aranykígyó marását! A vödör a kút kávájáról leesik a földre, a kígyó kisiklik belőle, és egyenesen feléd tart.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="EME" id="355" />
+        <spell name="TÉR" id="339" />
+        <spell name="ERŐ" id="397" />
+        <spell name="MEL" id="407" />
+        <spell name="ÁTÉ" id="461" />
+        <next id="52">Ha kardoddal küzdesz meg vele</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Kardot rántasz.[/p]
+        </text>
+        <next id="52"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="24">
     <text>
         [p]A Bogár rejtekhelyéből kivehetsz egy kis [span class="takeItem" data-id="3052" data-amount="1"]kőport[/span]. Ezt követően el kell döntened, merre is menj tovább. Hosszú út áll előtted.[/p]
@@ -149,7 +172,12 @@
     <next id="12">Ha északkeletnek</next>
   </p>
   <!-- 25 -->
-  <!-- 26 -->
+  <p id="26">
+    <text>
+        [p]- Hát ez csak természetes - feleli az Öreg Elf. - Bizonyára elfáradtál a hosszú úton, és már az éjszaka is közeleg. Gyere, elvezetlek az egyik üres szekérhez, ahol nyugodtan lepihenhetsz. - Elvezet egy koszos szekérhez, és egy pokrócot nyom a kezedbe, hogy azzal takarózz be éjszakára.[/p]
+    </text>
+    <next id="125"></next>
+  </p>
   <!-- 27 -->
   <!-- 28 -->
   <!-- 29 -->
@@ -245,7 +273,51 @@
   <!-- 49 -->
   <!-- 50 -->
   <!-- 51 -->
-  <!-- 52 -->
+  <p id="52">
+    <text>
+        [p]Kezdetét veszi a küzdelem.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="22" />
+      <loseRound totalCount="1">
+        <gatherItem id="4068" />
+      </loseRound>
+    </fight>
+    <itemCheck type="item" id="4068">
+      <have>
+        <text>
+            [p]A kígyó marása mérgező.[/p]
+        </text>
+        <random>
+          <result max="1" min="1">
+            <text>[p]Vesztesz további 1 ÉLETERŐ pontot.[/p]</text>
+            <add amount="-1" to="stamina" />
+          </result>
+          <result max="2" min="2">
+            <text>[p]Vesztesz további 2 ÉLETERŐ pontot.[/p]</text>
+            <add amount="-2" to="stamina" />
+          </result>
+          <result max="3" min="3">
+            <text>[p]Vesztesz további 3 ÉLETERŐ pontot.[/p]</text>
+            <add amount="-3" to="stamina" />
+          </result>
+          <result max="4" min="4">
+            <text>[p]Vesztesz további 4 ÉLETERŐ pontot.[/p]</text>
+            <add amount="-4" to="stamina" />
+          </result>
+          <result max="5" min="5">
+            <text>[p]Vesztesz további 5 ÉLETERŐ pontot.[/p]</text>
+            <add amount="-5" to="stamina" />
+          </result>
+          <result max="6" min="6">
+            <text>[p]Vesztesz további 6 ÉLETERŐ pontot.[/p]</text>
+            <add amount="-6" to="stamina" />
+          </result>
+        </random>
+      </have>
+    </itemCheck>
+    <next id="309"></next>
+  </p>
   <!-- 53 -->
   <!-- 54 -->
   <!-- 55 -->
@@ -267,7 +339,25 @@
   <!-- 66 -->
   <!-- 67 -->
   <!-- 68 -->
-  <!-- 69 -->
+  <p id="69">
+    <text>
+        [p]Az öreg Elf feláll és bólint. Ha akarod, elvisz egy üres ekhós szekérhez, amelyben megpihenhetsz az éjszakára, de az ára 3 Aranytallér.[/p]
+    </text>
+    <itemCheck type="gold" id="3">
+      <have>
+        <next id="125">Ha megfizeted a kért összeget, és vele mész a szekérhez</next>
+        <next id="275">Ha nem akarsz ennyit fizetni, visszaülsz közéjük és azt színleled, hogy egyáltalán nem vagy még fáradt, és folytatod velük a beszélgetést</next>
+        <next id="315">Ha megkéred őket, hogy mutassák meg neked árucikkeiket</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Sajnos nincs nálad ennyi pénz, így valami mást kell kitalálnod.[/p]
+        </text>
+        <next id="275">Ha visszaülsz közéjük és azt színleled, hogy egyáltalán nem vagy még fáradt, és folytatod velük a beszélgetést</next>
+        <next id="315">Ha megkéred őket, hogy mutassák meg neked árucikkeiket</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="70">
     <text>
         [p]Amikor előreugrasz, a Kentaurok meghúzzák íjaik húrját, és három nyílvesszőt röpítenek ki rád.[/p]
@@ -817,7 +907,19 @@
     <next id="202"></next>
   </p>
   <!-- 162 -->
-  <!-- 163 -->
+  <p id="163">
+    <text>
+        [p]Az áfonyaleves meleg, laktató, krémszerű, szürkés zöldségleves. Néha furcsa hatással van azokra az emberekre, akik korábban még nem ettek ilyet.[/p]
+    </text>
+    <random>
+      <result max="5" min="1">
+        <next id="231"></next>
+      </result>
+      <result max="6" min="6">
+        <next id="18"></next>
+      </result>
+    </random>
+  </p>
   <!-- 164 -->
   <!-- 165 -->
   <!-- 166 -->
@@ -828,7 +930,12 @@
   <!-- 171 -->
   <!-- 172 -->
   <!-- 173 -->
-  <!-- 174 -->
+  <p id="174">
+    <text>
+        [p]Miközben rohansz, a világ egy szempillantás alatt elsötétül körülötted, mintha csak a napot, akár a gyertyát, valaki elfújta volna. A visító hang lágy sziszegésbe megy át, amint távolodik tőled. Mögötted a magasban a fénylő gömb szintén halványulni kezd. Amint kihuny a fénye, ismét visszatér a nappali világosság. Megállsz, majd elindulsz északnyugat felé, és addig mész, míg valami ismét megállásra nem késztet.[/p]
+    </text>
+    <next id="137"></next>
+  </p>
   <p id="175">
     <text>
         [p]Cselekedeted gyors visszavágásra ösztönzi őket. Veszedelmes közelből három nyílvesszőt röpítenek ki rád.[/p]
@@ -946,7 +1053,30 @@
     <next id="228">Ha elfogadod az ajánlatát</next>
     <next id="108">Ha inkább nem adod neki a csizmát</next>
   </p>
-  <!-- 185 -->
+  <p id="185">
+    <text>
+        [p]Odarohansz a sziklához, és elrejtőzöl az egyik hasadékában az élőholt teremtmény elől. Szemei nyomon követnek, ismét hangosan felkacag, és a magasba emeli előretartott két csontos kezét. Kíváncsian várod, mi történik. A következő percben hatalmas robaj rengeti meg a földet. Pánikba esel! Megmozdultak körülötted a sziklák! Elkeseredetten próbálsz menekülni a sziklákról, de a lábad beakad az egyik résbe. A szikla életre kel! Tehetetlenül nézed, amint a hatalmas Szikladémon felemelkedik a földről és feléd fordul![/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz:[/p]
+        </text>
+        <spell name="KIN" id="478" />
+        <spell name="PÉL" id="372" />
+        <spell name="POR" id="352" />
+        <spell name="EME" id="455" />
+        <spell name="TÜK" id="382" />
+        <next id="268">Ha kardot rántasz, hogy azzal védd magad</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Kardot rántasz, hogy azzal védd magad.[/p]
+        </text>
+        <next id="268"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 186 -->
   <!-- 187 -->
   <!-- 188 -->
@@ -1102,7 +1232,14 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 217 -->
+  <p id="217">
+    <text>
+        [p]Késő délelőtt utad egyre fárasztóbb. Egy emelkedőn mész felfelé, amely természetesen határként húzódik a Baddu-Bak síkság és a Klatta-Bak sztyeppe között. Amikor az út ismét kiegyenesedik, a távolban észreveszel valamit. Nem tudod eldönteni, ember alkotása-e vagy csak a természet fura játéka az az építmény, amely a szemed elé tárul. Amikor közelebb érsz hozzá, akkor látod, hogy mi az, illetve, hogy mi volt az. Kőoszlopokon álló romos épület emelkedik előtted: oszlopai repedezettek, töredezettek. Az oszlopfők tetején lévő faragott díszek arra utalnak, hogy ez valamiféle templom lehetett, melyet annak idején egy kút mellé építettek, de az az idők folyamán kiapadhatott.[/p]
+    </text>
+    <next id="63">Ha meg akarod nézni a romokat</next>
+    <next id="23">Ha meg akarod nézni a kutat</next>
+    <next id="309">Ha inkább továbbmész</next>
+  </p>
   <p id="218">
     <text>
         [p]Hangos ordítással beveted magad a gödörbe, hogy ráijessz a Kígyóbűvölőre. Az azonban, ahelyett hogy megijedne, pergőbb ritmusú dalba kezd. Rémülten veszed észre, hogy a kígyók vadul rád vetik magukat.[/p]
@@ -1164,7 +1301,35 @@
     <next id="111">Ha barátságos leszel</next>
     <next id="313">Ha támadóan lépsz fel</next>
   </p>
-  <!-- 231 -->
+  <p id="231">
+    <text>
+        [p]A leves után egy tálban olvasztott sajtot és kenyeret adnak neked. A szaga undorító! De minden szem rád szegeződik, így kénytelen vagy leerőltetni az ételt a torkodon, amit aztán gyógyfüvekből készült teával öblítesz le. A Gloister furcsa, sajtszerű étel, amely SZERENCSE pontjaidat képes visszaállítani a Kezdeti értékre.
+    </text>
+    <add amount="12" to="luck" />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            Nyersz 2 ÉLETERŐ pontot is.
+        </text>
+        <loseItem id="4101" />
+        <add amount="2" to="stamina" />
+      </have>
+      <dontHave>
+        <text>
+            Nyersz 1 ÉLETERŐ pontot is.
+        </text>
+        <add amount="1" to="stamina" />
+      </dontHave>
+      <after>
+        <text>
+            Az öreg Elf egy újabb csésze gyógyfűteát rendel, és miközben a többiek néznek benneteket, elbeszélgettek. Mit teszel?[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="275">Megpróbálod viccekkel szórakoztatni őket?</next>
+    <next id="69">Közlöd velük, hogy igencsak fáradt vagy és szeretnél lepihenni éjszakára?</next>
+    <next id="315">Megkéred őket, hogy mutassák meg portékáikat, ha valóban kereskedők?</next>
+  </p>
   <!-- 232 -->
   <!-- 233 -->
   <!-- 234 -->
@@ -1299,7 +1464,13 @@
     <next id="85">Ha északkelet felé</next>
   </p>
   <!-- 274 -->
-  <!-- 275 -->
+  <p id="275">
+    <text>
+        [p]Abban reménykedsz, hogy néhány vicctől majd barátságosabbak lesznek. Kedvenc vicceid a Goblin-viccek, mert a Goblinok butasága közismert. Megkérdezed az öreg Elftől, vajon tudja-e, hogy a Goblinok esküvői tortáját miért készítik a Bűzös Borz ganéjából? Az öreg vállat von, erre közlöd a választ: azért, hogy a legyeket távol tartsák a menyasszonytól! Hatalmas röhögés tör ki a sátorban, és az öreg a könnyeit törölgetve megveregeti a hátadat. Elmondasz nekik egy másik viccet is, amely arról szól, hogy egy Goblin miért nem volt képes lebetűzni a nevét - azért, mert sose volt kéznél a tűje, amivel betűzhette volna. Újabb röhögés harsan fel a sátorban. Te vagy a társaság fénypontja, és az Elfek rosszindulatát barátságos mosoly váltja fel. Mit akarsz most tenni?[/p]
+    </text>
+    <next id="198">Ha az üzletükbe szeretnél ellátogatni, és megnézni, Vajon miféle eladnivaló vagy cserélnivaló portékájuk van</next>
+    <next id="26">Ha megkérded tőlük, hogy megpihenhetnél-e náluk éjszakára</next>
+  </p>
   <!-- 276 -->
   <!-- 277 -->
   <!-- 278 -->
@@ -1381,7 +1552,13 @@
   <!-- 306 -->
   <!-- 307 -->
   <!-- 308 -->
-  <!-- 309 -->
+  <p id="309">
+    <text>
+        [p]Innen kétfelé mehetsz tovább.[/p]
+    </text>
+    <next id="149">Ha észak felé indulsz</next>
+    <next id="15">Ha északkeletnek</next>
+  </p>
   <!-- 310 -->
   <!-- 311 -->
   <p id="312">
@@ -1474,7 +1651,30 @@
     <next id="258"></next>
   </p>
   <!-- 338 -->
-  <!-- 339 -->
+  <p id="339">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3034">
+      <have>
+        <text>
+            [p]A fejedre teszed a Zöldhajú Parókát, és varázslás közben beszélsz a kis kígyóhoz. A kígyó azonban nem válaszol neked.
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [p]Ez a varázslat nem fog működni.
+        </text>
+      </dontHave>
+      <after>
+        <text>
+            Jobban teszed, ha kardot rántasz, és azzal küzdesz meg a lénnyel.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="52"></next>
+  </p>
   <!-- 340 -->
   <p id="341">
     <text>
@@ -1506,7 +1706,32 @@
   </p>
   <!-- 350 -->
   <!-- 351 -->
-  <!-- 352 -->
+  <p id="352">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3052">
+      <have>
+        <text>
+            [p]A Démonra szórod a Kőport, és varázsolsz. Mivel a Démon kőből van, ez a varázslatod semmi eredménnyel nem jár.[/p]
+        </text>
+        <loseItem id="3052" />
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem alkalmazhatod ezt a varázslatot.[/p]
+        </text>
+      </dontHave>
+      <after>
+        <text>
+            [p]Vonj le magadtól 2 ÉLETERŐ pontot, mert a Szikladémon következő támadása váratlanul ér. Ránts kardot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+      </after>
+    </itemCheck>
+    <next id="268"></next>
+  </p>
   <p id="353">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -1527,7 +1752,13 @@
     <next id="248"></next>
   </p>
   <!-- 354 -->
-  <!-- 355 -->
+  <p id="355">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot. Varázslatod hatására villám pattan ki az ujjbegyedből és belecsap a kígyóba. Az apró teremtmény menten szétporlad. Most már elhagyhatod ezt a helyet.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="309"></next>
+  </p>
   <!-- 356 -->
   <!-- 357 -->
   <!-- 358 -->
@@ -1575,7 +1806,12 @@
   <!-- 381 -->
   <!-- 382 -->
   <!-- 383 -->
-  <!-- 384 -->
+  <p id="384">
+    <text>
+        [p]A varázslat hat. - Egy pillanat - mondja az öreg Elf. - Nem túl gyakran háborgatnak bennünket látogatók. Mit gondoltok, pártfogásunkba vegyük ezt a vendégünket? - A tömeg helyeslően bólint. - Gyere, idegen, gyere, hadd kínáljunk meg egy kis Áfonyalevessel. Ez az egyik specialitásunk! -Követed a konyhasátorba. Bent a sátorban a szakács eléd teszi a levest.[/p]
+    </text>
+    <next id="163"></next>
+  </p>
   <!-- 385 -->
   <!-- 386 -->
   <!-- 387 -->
@@ -1633,10 +1869,31 @@
   </p>
   <!-- 392 -->
   <!-- 393 -->
-  <!-- 394 -->
+  <p id="394">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot. [/p]
+    </text>
+    <itemCheck type="item" id="3054">
+      <have>
+        <next id="384"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Ez a varázslatod nem fog működni, és követned kell az Öreg Elfet.[/p]
+        </text>
+        <next id="151"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 395 -->
   <!-- 396 -->
-  <!-- 397 -->
+  <p id="397">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot. Varázslatod hatására láthatatlan erőtér vesz körül. A kígyó képtelen ezen áthatolni, és végül továbbkúszik. Most már elhagyhatod ezt a helyet.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="309"></next>
+  </p>
   <!-- 398 -->
   <!-- 399 -->
   <p id="400">
@@ -1670,7 +1927,13 @@
   <!-- 404 -->
   <!-- 405 -->
   <!-- 406 -->
-  <!-- 407 -->
+  <p id="407">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot. Varázslatod hatására egy izzó tűzgolyó gördül neki a kis kígyónak. Csak egy lobbanást látsz, és a kígyó eltűnik, csak szénné égett csontváza marad hátra. Most már elmehetsz innen.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="309"></next>
+  </p>
   <p id="408">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot. Varázslatod hatására egy vészcsengő szólal meg benned, ami arra int, hogy óvakodj ettől az alaktól. A zenéje ugyanis bűvös zene! Két választásod van: vagy együttműködsz vele, vagy elhagyod ezt a helyet, amilyen gyorsan csak tudod.[/p]
@@ -1822,13 +2085,40 @@
   <!-- 452 -->
   <!-- 453 -->
   <!-- 454 -->
-  <!-- 455 -->
+  <p id="455">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot. Varázslatod hatására villám csap ki az ujjbegyedből, és belevágódik a Démonba. Mivel a Démon teste sziklából van, a villám nem tesz kárt benne. Válassz újra.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="185"></next>
+  </p>
   <!-- 456 -->
   <!-- 457 -->
   <!-- 458 -->
   <!-- 459 -->
   <!-- 460 -->
-  <!-- 461 -->
+  <p id="461">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3034">
+      <have>
+        <text>
+            [p]A fejedre teszed a Zöldhajú Parókát, és varázsolsz. Odakiáltasz a kicsiny kígyónak, mire az megáll. - Kétlábú barom! - sziszegi. - Felébresztettél. Menj az utamból, mert megmarlak! - Közlöd vele, hogy nem akarod bántani. - Hagyj békén! - parancsolja. Mit teszel?[/p]
+        </text>
+        <next id="309">Ha békén hagyod</next>
+        <next id="52">Ha rátámadsz</next>
+        <next id="23">Ha valami mást varázsolnál ellene</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Ez a varázslat nem fog működni, kénytelen vagy előrántani a kardodat.[/p]
+        </text>
+        <next id="52"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 462 -->
   <p id="463">
     <text>
@@ -1897,7 +2187,13 @@
     <next id="70"></next>
   </p>
   <!-- 477 -->
-  <!-- 478 -->
+  <p id="478">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Egy halom kincset varázsolsz, de a Szikladémon nem is törődik vele. Kezével megragadja a melledet. Újabb 2 ÉLETERŐ pontot vesztesz. Válassz újra.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="185"></next>
+  </p>
   <!-- 479 -->
   <!-- 480 -->
   <!-- 481 -->
@@ -1985,7 +2281,7 @@
       </have>
       <dontHave>
         <text>
-            [p]Nem történik semmi. A Róka vicsorogva rád veti magát, és 2 ÉLETERŐ pont kárt tesz benned - rántsd elő a kardodat.[/p]
+            [p]Nem történik semmi. A Róka vicsorogva rád veti magát, és 2 ÉLETERŐ pont kárt tesz benned. Rántsd elő a kardodat.[/p]
         </text>
         <next id="256"></next>
       </dontHave>
