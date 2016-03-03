@@ -100,7 +100,14 @@
   <!-- 8 -->
   <!-- 9 -->
   <!-- 10 -->
-  <!-- 11 -->
+  <p id="11">
+    <text>
+        [p]Merre mész tovább?[/p]
+    </text>
+    <next id="47">Északnyugat felé, a hosszú úton?</next>
+    <next id="15">Észak-északnyugat felé?</next>
+    <next id="73">Északkelet felé?</next>
+  </p>
   <p id="12">
     <text>
         [p class="inlineImage"][img src="resources/sor3/12.jpg" /][/p]
@@ -113,7 +120,13 @@
   </p>
   <!-- 13 -->
   <!-- 14 -->
-  <!-- 15 -->
+  <p id="15">
+    <text>
+        [p]Néhány órája már a kietlen sztyeppén vándorolsz. Szél kerekedik, és legnagyobb megdöbbenésedre éppen szembefúj veled, így megnehezíti a haladást. Elbújhatsz egy közeli szikla mögé, ha akarsz, sőt megpihenhetsz és ehetsz is, amíg a szél el nem áll.[/p]
+    </text>
+    <next id="97">Ha meg akarsz itt állni</next>
+    <next id="107">Ha mindenképpen folytatni akarod az utadat</next>
+  </p>
   <p id="16">
     <text>
         [p]Lepihensz éjszakára. Nyersz 3 ÉLETERŐ pontot, majd másnap reggel folytatod az utadat.
@@ -135,7 +148,13 @@
     <next id="230"></next>
   </p>
   <!-- 17 -->
-  <!-- 18 -->
+  <p id="18">
+    <text>
+        [p]Tested meleg és rettenetesen viszket. Az öreg Elf nevetve nézi kínlódásodat. A bőröd tele van vörös foltokkal! - Ne izgulj - mondja kuncogva. - Az ilyesmi néha megesik, ha valaki még soha életében nem evett Áfonyalevest. A foltok azonban gyorsan elmúlnak. - A többi Elf is vele együtt nevet, amiért ilyen kellemetlen helyzetbe kerültél. - Szakács! - kiáltja az öreg. - Mi a véleményed, adjunk a barátunknak 1 Aranytallért kárpótlásul? - A szakács beleegyezik, és átnyújt neked 1 Aranyat.[/p]
+    </text>
+    <add amount="1" to="gold" />
+    <next id="231"></next>
+  </p>
   <!-- 19 -->
   <!-- 20 -->
   <!-- 21 -->
@@ -775,7 +794,32 @@
     <next id="318">Ha inkább kimászol a gödörből</next>
   </p>
   <!-- 143 -->
-  <!-- 144 -->
+  <p id="144">
+    <text>
+        [p]Egész éjjel mész. Titokzatos hangok törik meg a csendet, és örülsz, hogy folytattad utadat. Hajnal felé azonban már olyan álmos vagy, hogy alig vonszolod magad. Vesztesz 2 ÉLETERŐ
+    </text>
+    <add amount="-2" to="stamina" />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            pontot, és további 3-at, mivel egész nap nem ettél semmit.
+        </text>
+        <add amount="-3" to="stamina" />
+      </have>
+      <dontHave>
+        <text>
+            pontot.
+        </text>
+        <gatherItem id="4101" />
+      </dontHave>
+      <after>
+        <text>
+            Folytatod utadat.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="11"></next>
+  </p>
   <!-- 145 -->
   <!-- 146 -->
   <!-- 147 -->
@@ -1099,7 +1143,13 @@
   <!-- 195 -->
   <!-- 196 -->
   <!-- 197 -->
-  <!-- 198 -->
+  <p id="198">
+    <text>
+        [p]Az öreg Elf feláll és felajánlja, hogy elkísér az üzletbe. - Drága barátom - mondja -, évek óta nem hallottunk ehhez fogható jó vicceket. Valójában kereskedők, üzletemberek vagyunk, de amiért ilyen jó kedvre derítettél bennünket, a legjobb ajánlatot kapod tőlünk. - Az árukkal megrakott szekerekhez érve minden árucikket féláron vehetsz meg. A tetejébe az öreg Elftől az egyik tárgyat ajándékba kapod meg.[/p]
+    </text>
+    <gatherItem id="4069" />
+    <next id="315"></next>
+  </p>
   <!-- 199 -->
   <p id="200">
     <text>
@@ -1234,6 +1284,7 @@
   </p>
   <p id="217">
     <text>
+        [p class="inlineImage"][img src="resources/sor3/217.jpg" /][/p]
         [p]Késő délelőtt utad egyre fárasztóbb. Egy emelkedőn mész felfelé, amely természetesen határként húzódik a Baddu-Bak síkság és a Klatta-Bak sztyeppe között. Amikor az út ismét kiegyenesedik, a távolban észreveszel valamit. Nem tudod eldönteni, ember alkotása-e vagy csak a természet fura játéka az az építmény, amely a szemed elé tárul. Amikor közelebb érsz hozzá, akkor látod, hogy mi az, illetve, hogy mi volt az. Kőoszlopokon álló romos épület emelkedik előtted: oszlopai repedezettek, töredezettek. Az oszlopfők tetején lévő faragott díszek arra utalnak, hogy ez valamiféle templom lehetett, melyet annak idején egy kút mellé építettek, de az az idők folyamán kiapadhatott.[/p]
     </text>
     <next id="63">Ha meg akarod nézni a romokat</next>
@@ -1451,7 +1502,13 @@
   <!-- 266 -->
   <!-- 267 -->
   <!-- 268 -->
-  <!-- 269 -->
+  <p id="269">
+    <text>
+        [p]Lassan leszáll az éjszaka. Ideje eldöntened, hogy lepihensz-e, vagy inkább folytatod az utadat Bakland vidékén át.[/p]
+    </text>
+    <next id="237">Ha lepihensz</next>
+    <next id="144">Ha folytatod utadat</next>
+  </p>
   <!-- 270 -->
   <!-- 271 -->
   <!-- 272 -->
@@ -1560,7 +1617,322 @@
     <next id="15">Ha északkeletnek</next>
   </p>
   <!-- 310 -->
-  <!-- 311 -->
+  <p id="311">
+    <text>
+        [p]Miközben a szekér felé követed, gyanúd egyre erősödik. És ekkor megragadod a kínálkozó alkalmat. Beugrasz két szekér közé, és kirohansz a táborból. A Fekete Elfek felordítanak, és utánad lőnek néhány nyilat.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <text>
+            [p]Egy nyílvesszőt lőnek ki rád.[/p]
+        </text>
+        <test against="luck">
+          <success>
+            <text>
+                [p]A nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]A nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+          </failure>
+        </test>
+      </result>
+      <result max="2" min="2">
+        <text>
+            [p]Két nyílvesszőt lőnek ki rád.[/p]
+        </text>
+        <test against="luck">
+          <success>
+            <text>
+                [p]Az első nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]Az első nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+          </failure>
+        </test>
+        <test against="luck">
+          <success>
+            <text>
+                [p]A második nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]A második nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+          </failure>
+        </test>
+      </result>
+      <result max="3" min="3">
+        <text>
+            [p]Két nyílvesszőt lőnek ki rád.[/p]
+        </text>
+        <test against="luck">
+          <success>
+            <text>
+                [p]Az első nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]Az első nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+          </failure>
+        </test>
+        <test against="luck">
+          <success>
+            <text>
+                [p]A második nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]A második nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+          </failure>
+        </test>
+        <test against="luck">
+          <success>
+            <text>
+                [p]A harmadik nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]A harmadik nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+          </failure>
+        </test>
+      </result>
+      <result max="4" min="4">
+        <text>
+            [p]Két nyílvesszőt lőnek ki rád.[/p]
+        </text>
+        <test against="luck">
+          <success>
+            <text>
+                [p]Az első nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]Az első nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+          </failure>
+        </test>
+        <test against="luck">
+          <success>
+            <text>
+                [p]A második nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]A második nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+          </failure>
+        </test>
+        <test against="luck">
+          <success>
+            <text>
+                [p]A harmadik nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]A harmadik nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+          </failure>
+        </test>
+        <test against="luck">
+          <success>
+            <text>
+                [p]A negyedik nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]A negyedik nyílvessző eltalált, de csupán 1 ÉLETERŐ pontot vesztesz, mivel már jócskán eltávolodsz támadóidtól.[/p]
+            </text>
+            <add amount="-1" to="stamina" />
+          </failure>
+        </test>
+      </result>
+      <result max="5" min="5">
+        <text>
+            [p]Két nyílvesszőt lőnek ki rád.[/p]
+        </text>
+        <test against="luck">
+          <success>
+            <text>
+                [p]Az első nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]Az első nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+          </failure>
+        </test>
+        <test against="luck">
+          <success>
+            <text>
+                [p]A második nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]A második nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+          </failure>
+        </test>
+        <test against="luck">
+          <success>
+            <text>
+                [p]A harmadik nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]A harmadik nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+          </failure>
+        </test>
+        <test against="luck">
+          <success>
+            <text>
+                [p]A negyedik nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]A negyedik nyílvessző eltalált, de csupán 1 ÉLETERŐ pontot vesztesz, mivel már jócskán eltávolodsz támadóidtól.[/p]
+            </text>
+            <add amount="-1" to="stamina" />
+          </failure>
+        </test>
+        <test against="luck">
+          <success>
+            <text>
+                [p]Az ötödik nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]Az ötödik nyílvessző eltalált, de csupán 1 ÉLETERŐ pontot vesztesz, mivel már jócskán eltávolodsz támadóidtól.[/p]
+            </text>
+            <add amount="-1" to="stamina" />
+          </failure>
+        </test>
+      </result>
+      <result max="6" min="6">
+        <text>
+            [p]Két nyílvesszőt lőnek ki rád.[/p]
+        </text>
+        <test against="luck">
+          <success>
+            <text>
+                [p]Az első nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]Az első nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+          </failure>
+        </test>
+        <test against="luck">
+          <success>
+            <text>
+                [p]A második nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]A második nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+          </failure>
+        </test>
+        <test against="luck">
+          <success>
+            <text>
+                [p]A harmadik nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]A harmadik nyílvessző eltalált, vesztesz 2 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-2" to="stamina" />
+          </failure>
+        </test>
+        <test against="luck">
+          <success>
+            <text>
+                [p]A negyedik nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]A negyedik nyílvessző eltalált, de csupán 1 ÉLETERŐ pontot vesztesz, mivel már jócskán eltávolodsz támadóidtól.[/p]
+            </text>
+            <add amount="-1" to="stamina" />
+          </failure>
+        </test>
+        <test against="luck">
+          <success>
+            <text>
+                [p]Az ötödik nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]Az ötödik nyílvessző eltalált, de csupán 1 ÉLETERŐ pontot vesztesz, mivel már jócskán eltávolodsz támadóidtól.[/p]
+            </text>
+            <add amount="-1" to="stamina" />
+          </failure>
+        </test>
+        <test against="luck">
+          <success>
+            <text>
+                [p]A hatodik nyílvessző elkerült.[/p]
+            </text>
+          </success>
+          <failure>
+            <text>
+                [p]A hatodik nyílvessző eltalált, de csupán 1 ÉLETERŐ pontot vesztesz, mivel már jócskán eltávolodsz támadóidtól.[/p]
+            </text>
+            <add amount="-1" to="stamina" />
+          </failure>
+        </test>
+      </result>
+      <after>
+        <text>
+            [p]Miután már jó messze vagy tőlük, eldöntheted, hogy merre is menj tovább.[/p]
+        </text>
+      </after>
+    </random>
+    <next id="269"></next>
+  </p>
   <p id="312">
     <text>
         [p]A férfi behúzódik a gödör egyik sarkába, és furulyáját a szájához illeszti. Ráveted magad, hogy végezz vele, de ekkor valami furcsa érzés kerít hatalmába.[/p]
@@ -2087,6 +2459,7 @@
   <!-- 454 -->
   <p id="455">
     <text>
+        [p class="inlineImage"][img src="resources/sor3/455.jpg" /][/p]
         [p]Vesztesz 4 ÉLETERŐ pontot. Varázslatod hatására villám csap ki az ujjbegyedből, és belevágódik a Démonba. Mivel a Démon teste sziklából van, a villám nem tesz kárt benne. Válassz újra.[/p]
     </text>
     <add to="stamina" amount="-4" />
