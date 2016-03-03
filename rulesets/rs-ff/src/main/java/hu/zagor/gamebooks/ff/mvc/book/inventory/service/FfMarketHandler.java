@@ -72,14 +72,14 @@ public class FfMarketHandler implements MarketHandler {
                 toSell.setStock(toSell.getStock() - 1);
                 result.put("successfulTransaction", true);
 
-                if (command.isGiveUpMode()) {
+                if (command.getGiveUpMode() != null) {
                     command.setGiveUpAmount(command.getGiveUpAmount() - 1);
                 }
             }
         }
 
         result.put("gold", character.getGold());
-        result.put("giveUpMode", command.isGiveUpMode());
+        result.put("giveUpMode", command.getGiveUpMode() != null);
         result.put("giveUpFinished", command.getGiveUpAmount() == 0);
 
         return result;

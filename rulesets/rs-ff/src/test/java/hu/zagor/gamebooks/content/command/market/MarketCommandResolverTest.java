@@ -177,7 +177,7 @@ public class MarketCommandResolverTest {
 
     public void testDoResolveWhenInGiveUpModeAndHasNoPurchasableItemsShouldReturnEmptyHandedResponse() {
         // GIVEN
-        command.setGiveUpMode(true);
+        command.setGiveUpMode(GiveUpMode.asMuchAsPossible);
         command.getItemsForSale().add(marketElementA);
         command.getItemsForSale().add(marketElementB);
         command.getItemsForSale().add(marketElementC);
@@ -209,7 +209,7 @@ public class MarketCommandResolverTest {
 
     public void testDoResolveWhenInGiveUpModeAndHasPurchasableItemsShouldReturnNull() {
         // GIVEN
-        command.setGiveUpMode(true);
+        command.setGiveUpMode(GiveUpMode.asMuchAsPossible);
         command.getItemsForSale().add(marketElementA);
         command.getItemsForSale().add(marketElementB);
         command.getItemsForSale().add(marketElementC);

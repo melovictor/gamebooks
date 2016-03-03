@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.ff.mvc.book.inventory.service;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.Item;
+import hu.zagor.gamebooks.content.command.market.GiveUpMode;
 import hu.zagor.gamebooks.content.command.market.MarketCommand;
 import hu.zagor.gamebooks.content.command.market.domain.MarketElement;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -121,7 +122,7 @@ public class FfMarketHandlerTest {
     public void testHandleMarketSellWhenItemIsNotAvailableForSaleAndGiveUpModeStillActiveShouldReturnWithFailedTransactionAndGiveUpModeActive() {
         // GIVEN
         command.getItemsForPurchase().add(itemB);
-        command.setGiveUpMode(true);
+        command.setGiveUpMode(GiveUpMode.asMuchAsPossible);
         command.setGiveUpAmount(1);
         expect(character.getGold()).andReturn(5);
         mockControl.replay();
@@ -138,7 +139,7 @@ public class FfMarketHandlerTest {
     public void testHandleMarketSellWhenCharacterDoesNotOwnItemAndGiveUpModeStillActiveShouldReturnWithFailedTransactionAndGiveUpModeActive() {
         // GIVEN
         command.getItemsForPurchase().add(itemA);
-        command.setGiveUpMode(true);
+        command.setGiveUpMode(GiveUpMode.asMuchAsPossible);
         command.setGiveUpAmount(1);
         expect(itemHandler.hasItem(character, "3001")).andReturn(false);
         expect(character.getGold()).andReturn(5);
@@ -156,7 +157,6 @@ public class FfMarketHandlerTest {
     public void testHandleMarketSellWhenCharacterOwnsItemAndGiveUpModeNotActiveShouldReturnWithSuccessfulTransaction() {
         // GIVEN
         command.getItemsForPurchase().add(itemA);
-        command.setGiveUpMode(false);
         expect(itemHandler.hasItem(character, "3001")).andReturn(true);
         expect(character.getGold()).andReturn(5);
         character.setGold(8);
@@ -176,7 +176,7 @@ public class FfMarketHandlerTest {
     public void testHandleMarketSellWhenCharacterOwnsItemAndGiveUpIsActiveWithOneItemShouldReturnWithSuccessfulTransactionAndGiveUpModeInactive() {
         // GIVEN
         command.getItemsForPurchase().add(itemA);
-        command.setGiveUpMode(true);
+        command.setGiveUpMode(GiveUpMode.asMuchAsPossible);
         command.setGiveUpAmount(1);
         expect(itemHandler.hasItem(character, "3001")).andReturn(true);
         expect(character.getGold()).andReturn(5);
@@ -198,7 +198,7 @@ public class FfMarketHandlerTest {
     public void testHandleMarketSellWhenCharacterOwnsItemAndGiveUpIsActiveWithTwoItemsShouldReturnWithSuccessfulTransactionAndGiveUpModeActive() {
         // GIVEN
         command.getItemsForPurchase().add(itemA);
-        command.setGiveUpMode(true);
+        command.setGiveUpMode(GiveUpMode.asMuchAsPossible);
         command.setGiveUpAmount(2);
         expect(itemHandler.hasItem(character, "3001")).andReturn(true);
         expect(character.getGold()).andReturn(5);

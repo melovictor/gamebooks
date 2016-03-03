@@ -500,7 +500,7 @@
       <xs:element name="random" maxOccurs="unbounded" minOccurs="0" type="randomType" />
       <xs:element name="market">
         <xs:complexType>
-          <xs:sequence>
+          <xs:choice minOccurs="1" maxOccurs="unbounded">
             <xs:element name="saleLabel" minOccurs="0" maxOccurs="1" type="xs:string">
             </xs:element>
             <xs:element name="purchaseLabel" minOccurs="0" maxOccurs="1" type="xs:string">
@@ -539,9 +539,17 @@
                 <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
               </xs:complexType>
             </xs:element>
-          </xs:sequence>
+          </xs:choice>
           <xs:attribute name="mustSellExactly" default="0" use="optional" type="xs:integer" />
           <xs:attribute name="mustGiveUp" default="0" use="optional" type="xs:integer" />
+          <xs:attribute name="mustGiveUpMode" default="asMuchAsPossible" use="optional">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="allOrNothing" />
+                <xs:enumeration value="asMuchAsPossible" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
           <xs:attribute name="mustBuy" default="0" use="optional" type="xs:integer" />
           <xs:attribute name="mustHaveGold" default="0" use="optional" type="xs:integer" />
           <xs:attribute name="currencySingle" use="optional" type="xs:string" default="page.ff.label.market.goldPiece" />

@@ -37,7 +37,7 @@
 	            ${marketCommand.purchaseLabel }
 	        </c:if>
 	        <c:if test="${empty marketCommand.purchaseLabel}">
-	            <spring:message code="${marketCommand.giveUpMode ? 'page.ff.label.market.giveUp' : 'page.ff.label.market.purchase'}" />
+	            <spring:message code="${not empty marketCommand.giveUpMode ? 'page.ff.label.market.giveUp' : 'page.ff.label.market.purchase'}" />
 	        </c:if>
         </h2>
         <div id="marketForPurchase">
@@ -47,7 +47,7 @@
 	                  <div data-id="${item.id}" data-price="${item.price}" data-stock="${item.stock}">
 	                      <span>${item.name}</span>
 	                  </div>
-	                  <c:if test="${!marketCommand.giveUpMode}">
+	                  <c:if test="${empty marketCommand.giveUpMode}">
 		                  <c:if test="${item.price > 0 }">
     		                  ${item.price}
 		                      <spring:message code="${item.price == 1 ? marketCommand.singleCcyKey : marketCommand.multipleCcyKey}" />
@@ -59,7 +59,7 @@
         </div>
     </c:if>
 
-	<c:if test="${!marketCommand.giveUpMode}">
+	<c:if test="${empty marketCommand.giveUpMode}">
 	   <button data-market-close="ff" type="button" id="marketCommandFinish"><spring:message code="page.ff.label.market.finish" /></button>
     </c:if>
 </div>

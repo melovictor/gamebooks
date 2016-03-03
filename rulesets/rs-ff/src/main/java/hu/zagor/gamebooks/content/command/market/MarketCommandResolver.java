@@ -8,7 +8,6 @@ import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.TypeAwareCommandResolver;
 import hu.zagor.gamebooks.content.command.market.domain.MarketElement;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class MarketCommandResolver extends TypeAwareCommandResolver<MarketComman
         } else {
             final int forPurchase = initializeItems(command.getItemsForPurchase(), resolvationData.getCharacter().getEquipment());
             initializeItems(command.getItemsForSale(), characterHandler.getItemHandler());
-            if (command.isGiveUpMode() && forPurchase == 0) {
+            if (notEnoughItemsForForcedGet(command, forPurchase)) {
                 data = new ArrayList<ParagraphData>();
                 data.add(command.getEmptyHanded());
                 command.setGiveUpUnsuccessful(true);
@@ -40,6 +39,11 @@ public class MarketCommandResolver extends TypeAwareCommandResolver<MarketComman
         }
 
         return data;
+    }
+
+    private boolean notEnoughItemsForForcedGet(final MarketCommand command, final int forPurchase) {
+        return (command.getGiveUpMode() == GiveUpMode.asMuchAsPossible && forPurchase == 0)
+            || (command.getGiveUpMode() == GiveUpMode.allOrNothing && forPurchase < command.getGiveUpAmount());
     }
 
     private boolean hasEnoughGold(final FfCharacterHandler characterHandler, final FfCharacter character, final MarketCommand command) {

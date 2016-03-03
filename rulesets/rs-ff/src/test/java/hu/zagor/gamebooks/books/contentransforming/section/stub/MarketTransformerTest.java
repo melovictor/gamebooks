@@ -7,6 +7,7 @@ import hu.zagor.gamebooks.books.AbstractTransformerTest;
 import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTransformer;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
+import hu.zagor.gamebooks.content.command.market.GiveUpMode;
 import hu.zagor.gamebooks.content.command.market.MarketCommand;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -72,7 +73,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
         Assert.assertEquals(command.getMustHaveGold(), 0);
         Assert.assertEquals(command.getGiveUpAmount(), 0);
         Assert.assertEquals(command.getMustBuy(), 0);
-        Assert.assertFalse(command.isGiveUpMode());
+        Assert.assertNull(command.getGiveUpMode());
     }
 
     public void testWhenGiveUpAmountIsSetAndTransformationSucceedsShouldTransformProperly() {
@@ -86,6 +87,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
         expectAttribute("mustSellExactly", "5");
         expectAttribute("mustBuy", "2");
         expectAttribute("mustGiveUp", "2");
+        expectAttribute("mustGiveUpMode");
         expect(node.getChildNodes()).andReturn(nodeList);
         expect(nodeList.getLength()).andReturn(0);
         expect(data.getPositionCounter()).andReturn(counter);
@@ -97,7 +99,36 @@ public class MarketTransformerTest extends AbstractTransformerTest {
         Assert.assertEquals(command.getSingleCcyKey(), "page.ff.label.market.goldPiece");
         Assert.assertEquals(command.getMultipleCcyKey(), "page.ff.label.market.goldPieces");
         Assert.assertEquals(command.getMustHaveGold(), 3);
-        Assert.assertTrue(command.isGiveUpMode());
+        Assert.assertEquals(command.getGiveUpMode(), GiveUpMode.asMuchAsPossible);
+        Assert.assertEquals(command.getMustBuy(), 2);
+        Assert.assertEquals(command.getMustSellExactly(), 5);
+        Assert.assertEquals(command.getGiveUpAmount(), 2);
+    }
+
+    public void testWhenGiveUpAmountAndGiveUpModeAreSetAndTransformationSucceedsShouldTransformProperly() {
+        // GIVEN
+        expect(data.getText()).andReturn("Some text. [div data-market=\"\"][/div]");
+        final Capture<MarketCommand> capture = newCapture();
+        data.addCommand(capture(capture));
+        expectAttribute("currencySimple");
+        expectAttribute("currencyMultiple");
+        expectAttribute("mustHaveGold", "3");
+        expectAttribute("mustSellExactly", "5");
+        expectAttribute("mustBuy", "2");
+        expectAttribute("mustGiveUp", "2");
+        expectAttribute("mustGiveUpMode", "allOrNothing");
+        expect(node.getChildNodes()).andReturn(nodeList);
+        expect(nodeList.getLength()).andReturn(0);
+        expect(data.getPositionCounter()).andReturn(counter);
+        mockControl.replay();
+        // WHEN
+        underTest.doTransform(parent, node, data);
+        // THEN
+        final MarketCommand command = capture.getValue();
+        Assert.assertEquals(command.getSingleCcyKey(), "page.ff.label.market.goldPiece");
+        Assert.assertEquals(command.getMultipleCcyKey(), "page.ff.label.market.goldPieces");
+        Assert.assertEquals(command.getMustHaveGold(), 3);
+        Assert.assertEquals(command.getGiveUpMode(), GiveUpMode.allOrNothing);
         Assert.assertEquals(command.getMustBuy(), 2);
         Assert.assertEquals(command.getMustSellExactly(), 5);
         Assert.assertEquals(command.getGiveUpAmount(), 2);

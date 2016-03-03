@@ -542,6 +542,14 @@
           </xs:sequence>
           <xs:attribute name="mustSellExactly" default="0" use="optional" type="xs:integer" />
           <xs:attribute name="mustGiveUp" default="0" use="optional" type="xs:integer" />
+          <xs:attribute name="mustGiveUpMode" default="asMuchAsPossible" use="optional">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="allOrNothing" />
+                <xs:enumeration value="asMuchAsPossible" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
           <xs:attribute name="mustBuy" default="0" use="optional" type="xs:integer" />
           <xs:attribute name="mustHaveGold" default="0" use="optional" type="xs:integer" />
           <xs:attribute name="currencySingle" use="optional" type="xs:string" default="page.ff.label.market.goldPiece" />

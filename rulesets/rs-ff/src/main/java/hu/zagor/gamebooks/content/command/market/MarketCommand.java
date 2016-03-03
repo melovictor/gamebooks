@@ -25,7 +25,6 @@ public class MarketCommand extends Command {
     private List<MarketElement> itemsForPurchase = new ArrayList<>();
     private FfParagraphData after;
     private FfParagraphData emptyHanded;
-    private boolean giveUpMode;
     private int giveUpAmount;
     private boolean giveUpUnsuccessful;
     private int mustHaveGold;
@@ -33,6 +32,7 @@ public class MarketCommand extends Command {
     private String purchaseLabel;
     private String saleLabel;
     private int mustSellExactly;
+    private GiveUpMode giveUpMode;
 
     public String getSingleCcyKey() {
         return singleCcyKey;
@@ -94,14 +94,6 @@ public class MarketCommand extends Command {
             cloned.itemsForPurchase.add(cloneObject(item));
         }
         return cloned;
-    }
-
-    public boolean isGiveUpMode() {
-        return giveUpMode;
-    }
-
-    public void setGiveUpMode(final boolean giveUpMode) {
-        this.giveUpMode = giveUpMode;
     }
 
     public int getGiveUpAmount() {
@@ -166,6 +158,14 @@ public class MarketCommand extends Command {
 
     public void setMustSellExactly(final int mustSellExactly) {
         this.mustSellExactly = mustSellExactly;
+    }
+
+    public GiveUpMode getGiveUpMode() {
+        return giveUpMode;
+    }
+
+    public void setGiveUpMode(final GiveUpMode giveUpMode) {
+        this.giveUpMode = giveUpMode;
     }
 
 }

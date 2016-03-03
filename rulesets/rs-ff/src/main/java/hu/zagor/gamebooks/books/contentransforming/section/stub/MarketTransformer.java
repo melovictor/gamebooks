@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTran
 import hu.zagor.gamebooks.books.contentransforming.section.CommandSubTransformer;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
+import hu.zagor.gamebooks.content.command.market.GiveUpMode;
 import hu.zagor.gamebooks.content.command.market.MarketCommand;
 import java.util.Map;
 import org.w3c.dom.Node;
@@ -29,7 +30,8 @@ public class MarketTransformer extends AbstractStubTransformer {
         command.setMustBuy(extractIntegerAttribute(node, "mustBuy", 0));
         final Integer giveUpAmount = extractIntegerAttribute(node, "mustGiveUp", 0);
         if (giveUpAmount > 0) {
-            command.setGiveUpMode(true);
+            final String giveUpMode = extractAttribute(node, "mustGiveUpMode", "asMuchAsPossible");
+            command.setGiveUpMode(GiveUpMode.valueOf(giveUpMode));
             command.setGiveUpAmount(giveUpAmount);
         }
 
