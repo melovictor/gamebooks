@@ -25,6 +25,7 @@ public class SorBookPreFightHandlingService extends EnemyDependentFfBookPreFight
     private static final int CHAIN_ENEMY_STAMINA_LIMIT = 4;
     private static final String THROWING_DARTS_ID = "3031";
     private static final String CHAIN_ID = "3044";
+    private static final Object CHAKRAM_ID = "3055";
     @Autowired private DiceResultRenderer renderer;
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
 
@@ -33,12 +34,15 @@ public class SorBookPreFightHandlingService extends EnemyDependentFfBookPreFight
 
     @Override
     public FfItem handlePreFightItemUsage(final FfBookInformations info, final HttpSessionWrapper wrapper, final String itemId) {
+        FfItem usedItem = null;
         if (THROWING_DARTS_ID.equals(itemId)) {
             handleThrowingDarts(info, wrapper);
+        } else if (CHAKRAM_ID.equals("itemId")) {
+            usedItem = handleChakram(info, wrapper);
         } else if (CHAIN_ID.equals(itemId)) {
             handleChainAttack(info, wrapper);
         }
-        return null;
+        return usedItem;
     }
 
     private void handleChainAttack(final FfBookInformations info, final HttpSessionWrapper wrapper) {
@@ -72,6 +76,25 @@ public class SorBookPreFightHandlingService extends EnemyDependentFfBookPreFight
             recordRollResult(rollResult, data, "failure");
             appendText(data, "page.sor.dartMissed", enemy.getCommonName());
         }
+    }
+
+    private FfItem handleChakram(final FfBookInformations info, final HttpSessionWrapper wrapper) {
+        final int[] rollResult = generator.getRandomNumber(2);
+        final ParagraphData data = wrapper.getParagraph().getData();
+        final SorCharacter character = (SorCharacter) wrapper.getCharacter();
+        final FfCharacterHandler characterHandler = info.getCharacterHandler();
+        final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
+        final FfEnemy enemy = getEnemy(wrapper, info);
+        final FfItem item = (FfItem) characterHandler.getItemHandler().getItem(character, THROWING_DARTS_ID);
+        if (attributeHandler.resolveValue(character, "skill") > rollResult[0]) {
+            recordRollResult(rollResult, data, "success");
+            appendText(data, "page.sor.chakramHit", enemy.getCommonName());
+            enemy.setStamina(enemy.getStamina() - 2);
+        } else {
+            recordRollResult(rollResult, data, "failure");
+            appendText(data, "page.sor.chakramMissed", enemy.getCommonName());
+        }
+        return item;
     }
 
     private void recordRollResult(final int[] rollResult, final ParagraphData data, final String result) {
