@@ -45,14 +45,14 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
             Thread.sleep(20);
             checkClipboard();
         } catch (UnsupportedFlavorException | IOException | InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
     public void checkClipboard() throws UnsupportedFlavorException, IOException {
         final Transferable contents = clipboard.getContents(null);
-        if (!contents.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) {
+        Transferable newClipboardContent = null;
+        if (contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
             final Reader clipboardReader = DataFlavor.stringFlavor.getReaderForText(contents);
 
             final Scanner scanner = new Scanner(clipboardReader);
@@ -65,19 +65,18 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
             scanner.close();
             clipboardContent = clipboardContent.replace("¬", "").trim();
             if (!isConverted(clipboardContent) && !isProgramCode(clipboardContent)) {
-                processClipboardContent(clipboardContent);
+                newClipboardContent = processClipboardContent(clipboardContent);
             } else {
                 final String newContent = contentSorter.tryMap(clipboardContent, imageData);
                 if (newContent != null) {
                     clipboardContent = newContent;
-                    final StringSelection selection = new StringSelection(newContent);
-                    clipboard.setContents(selection, this);
+                    clipboard.setContents(new StringSelection(newContent), this);
                     System.exit(0);
                 } else {
-                    clipboard.setContents(contents, this);
+                    newClipboardContent = contents;
                 }
             }
-        } else {
+        } else if (contents.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) {
             @SuppressWarnings("unchecked")
             final List<File> transferData = (List<File>) contents.getTransferData(DataFlavor.javaFileListFlavor);
             imageData = new BookImageData();
@@ -90,9 +89,11 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
                 }
             }
             System.out.println("Image file list initialized");
-            final StringSelection emptyString = new StringSelection("");
-            clipboard.setContents(emptyString, this);
+            newClipboardContent = new StringSelection("");
+        } else {
+            newClipboardContent = contents;
         }
+        clipboard.setContents(newClipboardContent, this);
     }
 
     private boolean isProgramCode(final String clipboardContent) {
@@ -104,10 +105,9 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
         return clipboardContent.contains("[p]") || clipboardContent.contains("[li]");
     }
 
-    private void processClipboardContent(final String content) {
+    private Transferable processClipboardContent(final String content) {
         final String newContent = convertParagraphs(content);
-        final StringSelection selection = new StringSelection(newContent);
-        clipboard.setContents(selection, this);
+        return new StringSelection(newContent);
     }
 
     private String convertParagraphs(final String content) {
