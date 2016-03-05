@@ -202,7 +202,9 @@
   <!-- 29 -->
   <!-- 30 -->
   <!-- 31 -->
-  <!-- 32 -->
+  <p id="32">
+    <empty />
+  </p>
   <!-- 33 -->
   <!-- 34 -->
   <p id="35">
@@ -588,7 +590,15 @@
   <!-- 81 -->
   <!-- 82 -->
   <!-- 83 -->
-  <!-- 84 -->
+  <p id="84">
+    <text>
+        [p]Amikor a Halálszellem észreveszi, hogy a kardodért nyúlsz, velőtrázó üvöltést hallat és rád támad. Küzdj meg vele.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="23" />
+    </fight>
+    <next id="205"></next>
+  </p>
   <p id="85">
     <text>
         [p class="inlineImage"][img src="resources/sor3/85.jpg" /][/p]
@@ -690,7 +700,20 @@
     <death />
   </p>
   <!-- 103 -->
-  <!-- 104 -->
+  <p id="104">
+    <text>
+        [p]Egy Halálkísértet áll előtted. Óvatosan elindulsz felé. Ezek a teremtmények igen nagy hatalommal rendelkező élőholt lények. Még mindig hívogat az ujjával, de amikor a közelébe érsz, két karját széttárva megpróbál megragadni. Gyorsan kell cselekedned. [alt]Mit teszel?[/alt][/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <next id="84">Fegyvert rántasz?</next>
+        <next id="310">Megpróbálsz varázsolni?</next>
+      </have>
+      <dontHave>
+        <next id="84" singleChoiceText="Fegyvert rántasz."></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 105 -->
   <!-- 106 -->
   <!-- 107 -->
@@ -1695,7 +1718,17 @@
     <next id="149">Ha észak felé indulsz</next>
     <next id="15">Ha északkeletnek</next>
   </p>
-  <!-- 310 -->
+  <p id="310">
+    <text>
+        [p]Melyik varázslatot alkalmazod?[/p]
+    </text>
+    <spell name="ALT" id="470" />
+    <spell name="VAR" id="452" />
+    <spell name="FIX" id="433" />
+    <spell name="ZAV" id="487" />
+    <spell name="CSA" id="424" />
+    <next id="84">Ha egyik sem szimpatikus, és fegyvert rántanál</next>
+  </p>
   <p id="311">
     <text>
         [p]Miközben a szekér felé követed, gyanúd egyre erősödik. És ekkor megragadod a kínálkozó alkalmat. Beugrasz két szekér közé, és kirohansz a táborból. A Fekete Elfek felordítanak, és utánad lőnek néhány nyilat.[/p]
@@ -2446,7 +2479,13 @@
     </fight>
   </p>
   <!-- 423 -->
-  <!-- 424 -->
+  <p id="424">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Nyugtalanul várod varázslatod hatását. Az előtted álló Halálszellem nem annyira csapda, mint inkább csak illúzió. Te azonban veszélyt gyanítasz, mégpedig valami nagy aljasságot. Fegyvert rántasz, és megtámadod az előtted álló teremtményt.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="84"></next>
+  </p>
   <!-- 425 -->
   <!-- 426 -->
   <p id="427">
@@ -2472,7 +2511,13 @@
     <add to="stamina" amount="-1" />
     <next id="151"></next>
   </p>
-  <!-- 433 -->
+  <p id="433">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Miközben azon iparkodsz, hogy varázslatod sikerüljön, a Halálszellem feléd csap csontos, hosszú ujjával: Hatalmas pofont kever le neked, és 2 ÉLETERŐ pont veszteség ér emiatt. Gyorsan kardot rántasz.[/p]
+    </text>
+    <add to="stamina" amount="-3" />
+    <next id="84"></next>
+  </p>
   <!-- 434 -->
   <!-- 435 -->
   <!-- 436 -->
@@ -2533,7 +2578,22 @@
     <next id="248"></next>
   </p>
   <!-- 451 -->
-  <!-- 452 -->
+  <p id="452">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Varázsolsz, és várod a hatást. A csillogó fény ismét megjelenik, és beborítja a teremtményt A Halálszellem a fény hatására a szemed láttára ölt más alakot. Egy izmos, kopaszodó férfi jelenik meg a helyében, aki idegesen mosolyogva néz rád. A Halálszellem csak illúzió volt! Most megküzdhetsz a teremtménnyel, vagy megkegyelmezhetsz neki.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <fight type="single">
+      <enemy id="24" />
+      <fleeing sufferDamage="false" text="Megkegyelmezés" />
+      <flee>
+        <next id="72"></next>
+      </flee>
+      <win>
+        <next id="143"></next>
+      </win>
+    </fight>
+  </p>
   <!-- 453 -->
   <!-- 454 -->
   <p id="455">
@@ -2591,7 +2651,13 @@
     <next id="256"></next>
   </p>
   <!-- 469 -->
-  <!-- 470 -->
+  <p id="470">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Miközben azon igyekszel, hogy varázslatod működjön, a Halálszellem feléd lendíti csontos kezét, és egy hatalmas pofont kever le. Vesztesz újabb 2 ÉLETERő pontot. Jobban tetted volna, ha kardot rántasz.[/p]
+    </text>
+    <add to="stamina" amount="-3" />
+    <next id="84"></next>
+  </p>
   <!-- 471 -->
   <p id="472">
     <text>
