@@ -247,7 +247,23 @@
   <!-- 42 -->
   <!-- 43 -->
   <!-- 44 -->
-  <!-- 45 -->
+  <p id="45">
+    <text>
+        [p]A Sárkánykígyó sziszegése valójában gúnyos nevetés. - Mi van, te csenevész emberpalánta! - sziszegi. - Csak nem gondolod, hogy ezzel a kis gombostűvel megsebezhetsz? - Lecsap rád, és a harc kezdetét veszi.[/p]
+    </text>
+    <itemCheck type="pos" id="10">
+      <have>
+        <text>
+            [p]Miközben a varázslással pepecseltél, a Sárkánykígyónak volt ideje egy támadást bevinnie ellened, 2 ÉLETERŐ pontot veszítesz.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+      </have>
+    </itemCheck>
+    <fight type="single">
+      <enemy id="25" />
+    </fight>
+    <next id="62"></next>
+  </p>
   <!-- 46 -->
   <p id="47">
     <text>
@@ -360,7 +376,13 @@
     </text>
     <next id="269"></next>
   </p>
-  <!-- 62 -->
+  <p id="62">
+    <text>
+        [p]A sötétség eloszlik, amint a Sárkánykígyó kileheli a lelkét. A szemed láttára gömbbé zsugorodik össze a földön. Pillanatokkal később nem marad más belőle, mint egy aprócska [span class="takeItem" data-id="3057" data-amount="1"]Kristálygömb[/span], amit, ha akarsz, eltehetsz.[/p]
+    </text>
+    <gatherItem id="4074" />
+    <next id="285"></next>
+  </p>
   <p id="63">
     <text>
         [p]Felmászol az oszlopok tövébe, és figyelmesen megszemléled az építményt. Úgy látod, teljesen elhagyatott. Elkiáltod magad, de válasz nem jön. Az egyik falon néhány hieroglifát fedezel fel, melyeket talán képes leszel megfejteni. Az egyik sarokban a padlóba építve egy rejtekajtót találsz.[/p]
@@ -711,7 +733,19 @@
     <next id="224">Ha lepihensz éjszakára</next>
     <next id="302">Ha pihenés nélkül továbbmész</next>
   </p>
-  <!-- 96 -->
+  <p id="96">
+    <text>
+        [p]Gyorsan kell varázsolnod, mert a Sárkánykígyó támad.[/p]
+    </text>
+    <spell name="VAR" id="413" />
+    <spell name="TÁN" id="405" />
+    <spell name="TIL" id="392" />
+    <spell name="MEL" id="377" />
+    <spell name="KÖD" id="364" />
+    <next id="45" pos="10">Ha inkább kardot rántasz</next>
+    <next id="155" pos="11">Ha tüzet gyújtasz</next>
+    <!-- ha varázsolni próbálsz, a Sárkánykígyó közben megtámadhat - 2 ÉLETERŐ pontot vesztesz, ha a fentiek közül egyik varázslatot sem ismered. -->
+  </p>
   <!-- 97 -->
   <!-- 98 -->
   <!-- 99 -->
@@ -922,6 +956,12 @@
     <next id="259">Ha kezedet feltartva adod tudtukra, hogy szándékod nem ellenséges</next>
     <next id="61">Ha visszafordulsz az úton, és nagy ívben megkerülöd a tábort</next>
   </p>
+  <p id="137a" display="137">
+    <text>
+        [p]Néhány órai gyaloglás után különös látvány késztet megállásra.[/p]
+    </text>
+    <next id="137"></next>
+  </p>
   <!-- 138 -->
   <!-- 139 -->
   <!-- 140 -->
@@ -1121,7 +1161,39 @@
     </text>
     <next id="273"></next>
   </p>
-  <!-- 155 -->
+  <p id="155">
+    <itemCheck type="pos" id="11">
+      <have>
+        <text>
+            [p]Miközben a varázslással pepecseltél, a Sárkánykígyónak volt ideje egy támadást bevinnie ellened, 2 ÉLETERŐ pontot veszítesz.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+      </have>
+      <after>
+        <itemCheck type="item" id="3047">
+          <have>
+            <text>
+                [p]Tüzet csiholsz a tűzszerszámoddal, és azzal támadsz. A Holdkígyó a tűztől fél a legjobban. Ebben az esetben a tűz helyettesíti a fegyveredet.[/p]
+            </text>
+            <gatherItem id="1008" />
+            <fight type="single" forceWeapon="1008">
+              <enemy id="26" />
+              <win>
+                <loseItem id="1008" />
+              </win>
+            </fight>
+            <next id="62"></next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Nincs nálad semmi, amivel tüzet tudnál gyújtani, így kénytelen vagy sima fegyverrel felvenni a küzdelmet a bestia ellen.[/p]
+            </text>
+            <next id="45"></next>
+          </dontHave>
+        </itemCheck>
+      </after>
+    </itemCheck>
+  </p>
   <!-- 156 -->
   <!-- 157 -->
   <!-- 158 -->
@@ -1809,7 +1881,13 @@
   <!-- 282 -->
   <!-- 283 -->
   <!-- 284 -->
-  <!-- 285 -->
+  <p id="285">
+    <text>
+        [p]Merre indulsz tovább?[/p]
+    </text>
+    <next id="170">Vagy északnak folytathatod az utadat</next>
+    <next id="137a">Vagy északnyugatnak</next>
+  </p>
   <p id="286">
     <text>
         [p]Mindketten harcra készen álltok:[/p]
@@ -2426,7 +2504,13 @@
   <!-- 361 -->
   <!-- 362 -->
   <!-- 363 -->
-  <!-- 364 -->
+  <p id="364">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Miután varázsolsz, rájössz, hogy igyekezeted teljesen hiábavaló volt, a varázslat képtelen kifejteni hatását. Miért épp ezt a varázslatot alkalmaztad? A Sárkánykígyó jót derül rajtad, amiért így melléfogtál, és kihasználva a helyzetet, szélsebesen rád támad. Vesztesz 2 ÉLETERŐ pontot. Rántsd elő a kardodat.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="45"></next>
+  </p>
   <!-- 365 -->
   <p id="366">
     <text>
@@ -2473,7 +2557,13 @@
   <!-- 374 -->
   <!-- 375 -->
   <!-- 376 -->
-  <!-- 377 -->
+  <p id="377">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot. Varázslatod hatására egy izzó tűzgolyó terem a tenyeredben. A Holdkígyó kissé hátrébb húzódik, és óvatosan szemléli minden mozdulatodat. Gyorsan hozzávágod a tűzgolyót! A Kígyó elugrik előle, de a tűzgolyó eltalálja. Üvöltve nyúlik ki előtted.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="62"></next>
+  </p>
   <!-- 378 -->
   <!-- 379 -->
   <p id="380">
@@ -2582,7 +2672,25 @@
     <next id="70a" pos="2">A másodikkal?</next>
     <next id="70a" pos="3">A harmadikkal?</next>
   </p>
-  <!-- 392 -->
+  <p id="392">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <itemCheck type="item" id="3032">
+      <have>
+        <text>
+            [p]Ez a varázslat nem képes legyőzni a Holdkígyót. A Holdkígyó rád támad. Vesztesz 2 ÉLETERŐ pontot, ránts kardot.[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem alkalmazhatod ezt a varázslatot. A Holdkígyó rád támad. Vesztesz 2 ÉLETERŐ pontot, ránts kardot.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <next id="45"></next>
+  </p>
   <!-- 393 -->
   <p id="394">
     <text>
@@ -2640,7 +2748,25 @@
   <!-- 402 -->
   <!-- 403 -->
   <!-- 404 -->
-  <!-- 405 -->
+  <p id="405">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <itemCheck type="item" id="3002">
+      <have>
+        <text>
+            [p]Előveszed a Bambuszfurulyádat, belefújsz és varázsolsz. Legnagyobb rémületedre a varázslatod egyáltalán nincs hatással a Sárkánykígyóra, és rád támad. Vesztesz 2 ÉLETERŐ pontot. Ragadd meg a kardodat.[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem alkalmazhatod ezt a varázslatot. A Sárkánykígyó és rád támad. Vesztesz 2 ÉLETERŐ pontot. Ragadd meg a kardodat.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <next id="45"></next>
+  </p>
   <!-- 406 -->
   <p id="407">
     <text>
@@ -2662,7 +2788,13 @@
   <!-- 410 -->
   <!-- 411 -->
   <!-- 412 -->
-  <!-- 413 -->
+  <p id="413">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Varázslatod megvéd mindennemű mágiával szemben. Sajnos azonban a Holdkígyó támadásában semmi varázslat nincs, és lecsap rád. Vesztesz újabb 2 ÉLETERŐ pontot.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="45"></next>
+  </p>
   <!-- 414 -->
   <!-- 415 -->
   <p id="416">
