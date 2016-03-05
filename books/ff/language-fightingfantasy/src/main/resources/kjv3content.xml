@@ -155,7 +155,13 @@
     <add amount="1" to="gold" />
     <next id="231"></next>
   </p>
-  <!-- 19 -->
+  <p id="19">
+    <text>
+        [p]Észrevesznek, amikor a falu közelébe érsz, és egy csomó falusi csoportba verődve nézi, amint közeledsz. Undorító, erős, nyakigláb teremtmények ezek. Állatbőrök vannak rajtuk, és két magas hím súlyos bunkósbotot tart a kezében. Ezek a Klattaemberek. Primitív népek, és a sztyeppéken élnek félnomád életet. Amikor belépsz a falujukba, olyan tekintettel néznek, amit nemigen tudsz megfejteni. Egyfelől mintha félnének tőled, ugyanakkor ravaszul csillog a szemük. Intenek, hogy kövesd őket a tűzhöz, ahol épp nyárson sütnek egy állatot.[/p]
+    </text>
+    <next id="204">Ha elfogadod a meghívásukat</next>
+    <next id="173">Ha inkább továbbmész a falun át az erdő felé</next>
+  </p>
   <!-- 20 -->
   <!-- 21 -->
   <!-- 22 -->
@@ -619,12 +625,44 @@
     </text>
     <next id="143"></next>
   </p>
-  <!-- 73 -->
+  <p id="73">
+    <text>
+        [p]Egyre csak mész és mész a kietlen pusztaságban, és felderítő utadon csak néha-néha állsz meg pihenni. Hirtelen észreveszel valamit a távolban! Hunyorítva próbálod meg kivenni, mi is az, amit látsz és ami határozottan mozog. Amikor kissé közelebb érsz hozzá, már jobban látod a körvonalait. Ez egy aprócska, kétlábú teremtmény; körülbelül feleakkora, mint te vagy, és most elindult feléd. Iszonyatos sebességgel halad![/p]
+    </text>
+    <next id="162">Ha közelebb mész hozzá, hogy megnézd, ki ez vagy mi ez</next>
+    <next id="239">Ha inkább irányt változtatsz és megpróbálod kikerülni</next>
+  </p>
   <!-- 74 -->
   <!-- 75 -->
   <!-- 76 -->
   <!-- 77 -->
-  <!-- 78 -->
+  <p id="78">
+    <text>
+        [p]Eszel majd pihensz egy keveset.
+    </text>
+    <loseItem id="2000" />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            Nyersz 2 ÉLETERŐ pontot.
+        </text>
+        <add amount="2" to="stamina" />
+        <loseItem id="4101" />
+      </have>
+      <dontHave>
+        <text>
+            Nyersz 1 ÉLETERŐ pontot.
+        </text>
+        <add amount="1" to="stamina" />
+      </dontHave>
+      <after>
+        <text>
+            Kis idő múlva összeszedelőzködsz, és továbbmész.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="300"></next>
+  </p>
   <!-- 79 -->
   <p id="80">
     <text>
@@ -821,7 +859,33 @@
     <next id="174">Menekülhetsz északnyugat felé</next>
     <next id="170">Vagy akár nagy ívben megkerülheted ezt a teremtményt, és folytathatod az utadat észak felé</next>
   </p>
-  <!-- 114 -->
+  <p id="114">
+    <text>
+        [p]Pihenhetsz és ehetsz Élelmedből, ha akarsz.[/p]
+    </text>
+    <canEat />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            [p]Ha ennél, 2 ÉLETERŐ pontot nyersz.[/p]
+        </text>
+        <changeItem attribute="stamina" id="2000" set="2" />
+      </have>
+      <dontHave>
+        <text>
+            [p]Ha ennél, 1 ÉLETERŐ pontot nyersz.[/p]
+        </text>
+        <changeItem attribute="stamina" id="2000" set="1" />
+      </dontHave>
+      <after>
+        <text>
+            [p]Merre folytatod az utadat?[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="149">Ha északnyugat felé</next>
+    <next id="283">Ha északnak</next>
+  </p>
   <!-- 115 -->
   <!-- 116 -->
   <!-- 117 -->
@@ -931,7 +995,28 @@
   </p>
   <!-- 123 -->
   <!-- 124 -->
-  <!-- 125 -->
+  <p id="125">
+    <text>
+        [p]A szekér belseje tiszta. Lepihensz, éjszakára. Másnap kora reggel ébredsz. Nyersz 3 ÉLETERŐ pontot, amiért jól kipihented magad.
+    </text>
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            Mivel azonban tegnap egyáltalán nem ettél, 3 ÉLETERŐ pontot vesztesz, mert most éhes vagy. Még mindig nem bízol meg igazán az Elfekben, ezért másnap kora reggel útra kelsz.[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            Még mindig nem bízol meg igazán az Elfekben, ezért másnap kora reggel útra kelsz.[/p]
+        </text>
+        <add amount="3" to="stamina" />
+        <gatherItem id="4101" />
+      </dontHave>
+    </itemCheck>
+    <next id="47">Ha a hosszú északnyugati utat választod</next>
+    <next id="15">Ha észak-északnyugati irányba indulsz tovább</next>
+    <next id="73">Ha északkeletnek mész</next>
+  </p>
   <!-- 126 -->
   <!-- 127 -->
   <!-- 128 -->
@@ -945,7 +1030,13 @@
   </p>
   <!-- 131 -->
   <!-- 132 -->
-  <!-- 133 -->
+  <p id="133">
+    <text>
+        [p]Amikor eléred az erdő szélét, a levegő hűvösebb lesz; közeledik az éjszaka. El kell döntened, vajon letáborozol-e éjszakára itt az erdő szélén, vagy inkább pihenés nélkül továbbmész.[/p]
+    </text>
+    <next id="55">Ha megállsz pihenni és enni</next>
+    <next id="159">Ha éjszaka is folytatod az utadat</next>
+  </p>
   <!-- 134 -->
   <!-- 135 -->
   <!-- 136 -->
@@ -1047,7 +1138,13 @@
   <!-- 146 -->
   <!-- 147 -->
   <!-- 148 -->
-  <!-- 149 -->
+  <p id="149">
+    <text>
+        [p]Az előtted elterülő erdő alig egy órányi járásra van tőled. Baklandi utad a végéhez közeleg, de előbb még keresztül kell menned egy kis falun. Az ágakból, lombokból összetákolt elszórtan álló kunyhók primitív népre vallanak.[/p]
+    </text>
+    <next id="19">Ha be akarsz menni a faluba</next>
+    <next id="283">Ha inkább északkelet felé megkerülöd azt</next>
+  </p>
   <p id="150">
     <text>
         [p class="inlineImage"][img src="resources/sor3/150.jpg" /][/p]
@@ -1104,6 +1201,7 @@
     <text>
         [p]Eszel, és visszanyersz
     </text>
+    <loseItem id="2000" />
     <itemCheck type="item" id="4101">
       <have>
         <text>
@@ -1205,11 +1303,23 @@
     </text>
     <next id="202"></next>
   </p>
-  <!-- 162 -->
+  <p id="162">
+    <text>
+        [p class="inlineImage"][img src="resources/sor3/162.jpg" /][/p]
+        [p]Hagyod, hadd jöjjön közelebb a látogatód. Mikor már elég közel van, látod, hogy ez egy aprócska, gnómszerű teremtmény, melynek sötét a bőre, és undorítóan ronda az arca. Parányi lábacskáival iszonyatos sebességgel közlekedik, miközben kígyó alakúra faragott botjára támaszkodik. Megáll előtted, és egymásra néztek. - Azon tűnődsz magadban, hogy ellenséggel vagy baráttal van-e dolgod. Ezt te döntsd el! - mondja a teremtmény vinnyogó hangon. - Ha „barát” vagyok, add jelét barátságodnak. Adj valamit ajándékba nekem! Ha „ellenség” vagyok, akkor pusztulj a szemem elől! Takarodj innen![/p]
+    </text>
+    <next id="134">Ha barátként fogadod az apró teremtményt</next>
+    <next id="210">Ha ellenségként</next>
+  </p>
   <p id="163">
     <text>
         [p]Az áfonyaleves meleg, laktató, krémszerű, szürkés zöldségleves. Néha furcsa hatással van azokra az emberekre, akik korábban még nem ettek ilyet.[/p]
     </text>
+    <itemCheck type="pos" id="10">
+      <have>
+        <add amount="-6" to="stamina" />
+      </have>
+    </itemCheck>
     <random>
       <result max="5" min="1">
         <next id="231"></next>
@@ -1234,7 +1344,12 @@
   </p>
   <!-- 171 -->
   <!-- 172 -->
-  <!-- 173 -->
+  <p id="173">
+    <text>
+        [p]A teremtmények rettenetesen mérgesnek látszanak, amiért visszautasítottad a vendégszeretetüket. Dühös morgások sorozatát küldik utánad, de egyikük sem állít meg. Valójában sokkal jobban lefoglalja őket a saját vitájuk, semmint hogy veled törődjenek! Otthagyod őket, hadd vitatkozzanak kedvükre. Amikor kimész a faluból, már nincs messze tőled utad következő állomása, a Snatta erdő.[/p]
+    </text>
+    <next id="133"></next>
+  </p>
   <p id="174">
     <text>
         [p]Miközben rohansz, a világ egy szempillantás alatt elsötétül körülötted, mintha csak a napot, akár a gyertyát, valaki elfújta volna. A visító hang lágy sziszegésbe megy át, amint távolodik tőled. Mögötted a magasban a fénylő gömb szintén halványulni kezd. Amint kihuny a fénye, ismét visszatér a nappali világosság. Megállsz, majd elindulsz északnyugat felé, és addig mész, míg valami ismét megállásra nem késztet.[/p]
@@ -1404,7 +1519,13 @@
     <spell name="VAK" id="345" />
     <next id="286">Ha egyik lehetőség sem szimpatikus, és inkább kardot rántanál</next>
   </p>
-  <!-- 192 -->
+  <p id="192">
+    <text>
+        [p]Moraj fut végig a tömegen, és gyanakodva néznek rád. - Lehet, hogy a mi gazdag barátunk nem is olyan gazdag? - teszi fel a kérdést az egyik Elf. -Lehet, hogy a mi ételünk nem elég jó? - mondja a másik. Egyre ellenségesebb a légkör körülötted.[/p]
+    </text>
+    <next id="112">Ha azt mondod nekik, hogy előbb szeretnél körülnézni a táborukban</next>
+    <next id="79">Ha azt mondod, hogy kereskedő vagy és élelemre lenne szükséged, amiért cserébe bármit felajánlasz</next>
+  </p>
   <!-- 193 -->
   <!-- 194 -->
   <!-- 195 -->
@@ -1457,7 +1578,44 @@
     </itemCheck>
   </p>
   <!-- 203 -->
-  <!-- 204 -->
+  <p id="204">
+    <text>
+        [p class="inlineImage"][img src="resources/sor3/204.jpg" /][/p]
+        [p]Odamész velük a tűzhöz, ahol sült vadkanhússal kínálnak. 
+    </text>
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            2 ÉLETERŐ pontot nyersz az ételért.
+        </text>
+        <add amount="2" to="stamina" />
+        <loseItem id="4101" />
+      </have>
+      <dontHave>
+        <text>
+            1 ÉLETERŐ pontot nyersz az ételért.
+        </text>
+        <add amount="1" to="stamina" />
+      </dontHave>
+      <after>
+        <text>
+            Megpróbálsz beszélgetni velük, de a nyelvük igen primitív, ha ezt egyáltalán nyelvnek lehet nevezni. Valami teaszerű löttyel is megkínálnak, hogy azzal öblítsd le az ételt. Épp azon töröd a fejed, vajon mi a csudát akarhatnak tőled, hisz még csak beszélni sem tudtok egymással, amikor a hátatok mögött felhangzó hang, amely a tömeg soraiban síri csöndet vált ki, megadja a választ. Megfordulsz, s ekkor egy jól megtermett, a társainál magasabb és erősebb Klattaembert pillantasz meg. Rád néz és gúnyos mosollyal mély morgó hangot hallat. Kezében bunkósbotot szorongat. Talpra ugrasz, hogy szembeszállj ezzel a bajnokkal. Ezt a harcot neked eszelték ki.[/p]
+        </text>
+        <itemCheck type="item" id="4102">
+          <have>
+            <next id="229">Ha varázserőddel küzdesz ellenfeleddel</next>
+            <next id="280">Ha karddal támadsz rá</next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Kardot rántasz.[/p]
+            </text>
+            <next id="280"></next>
+          </dontHave>
+        </itemCheck>
+      </after>
+    </itemCheck>
+  </p>
   <p id="205">
     <text>
         [p]A megsebzett teremtmény karját leeresztve hátrálni kezd. A csillogó fény ismét beborítja a Halálszellemet. Fölemelkedik a levegőbe és eltűnik. Helyébe egy kopaszodó robusztus termetű férfi lép, aki nagyokat nyögve ápolja sebeit. - Elég! - kiáltja. - Hagyjál! Én nem bántottalak! Miért támadsz rám? - Leesik az állad a látványtól. - Hagyd békén Renfrent. Ő sose bánt senkit. Csak viccel, ennyi az egész. - Te azonban egyáltalán nem találod szórakoztatónak a férfi vicceit.[/p]
@@ -1469,7 +1627,13 @@
   <!-- 207 -->
   <!-- 208 -->
   <!-- 209 -->
-  <!-- 210 -->
+  <p id="210">
+    <text>
+        [p]- Tehát „ellenség” vagyok, ugye? - kiáltja sipító hangon, mielőtt még szóra nyithatnád a szádat. - Akkor tedd, amit mondok! Pusztulj az utamból![/p]
+    </text>
+    <next id="114">Ha félreállsz, és hagyod, hogy a parányi teremtmény elmenjen melletted</next>
+    <next id="181">Ha megsértődsz, amiért ilyen durván rád parancsolt</next>
+  </p>
   <!-- 211 -->
   <!-- 212 -->
   <!-- 213 -->
@@ -1623,7 +1787,17 @@
     <next id="12">Ha arra mész, amerre ő mondja</next>
     <next id="318">Máskülönben mássz ki a gödörből és folytasd az utadat arra, amerre eddig is tartottál</next>
   </p>
-  <!-- 229 -->
+  <p id="229">
+    <text>
+        [p]Melyik varázslatot alkalmazod?[/p]
+    </text>
+    <spell name="DEM" id="340" />
+    <spell name="FEL" id="402" />
+    <spell name="KIN" id="494" />
+    <spell name="GAK" id="420" />
+    <spell name="TIV" id="457" />
+    <next id="280">Ha egyik varázslat sem szimpatikus, és inkább kardot rántanál</next>
+  </p>
   <p id="230">
     <text>
         [p class="inlineImage"][img src="resources/sor3/230.jpg" /][/p]
@@ -1668,8 +1842,19 @@
   <!-- 236 -->
   <!-- 237 -->
   <!-- 238 -->
-  <!-- 239 -->
-  <!-- 240 -->
+  <p id="239">
+    <text>
+        [p]Merre akarod kikerülni a teremtményt?[/p]
+    </text>
+    <next id="149">Ha északnyugat felé mész tovább</next>
+    <next id="283">Ha nagy ívben megkerülöd a teremtményt és észak felé folytatod az utadat</next>
+  </p>
+  <p id="240">
+    <text>
+        [p]Amikor ellépsz a legyőzött bajnokuk holtteste mellől, azonnal érzed, hogy a tömeg hangulata megváltozott. Az egyik teremtmény egy újabb roston sült húsdarabot ajánl fel neked, de te jobbnak látod, ha távozol ebből a faluból, amilyen gyorsan csak lehet. Hátat fordítasz a tömegnek, és elindulsz a falu túlsó vége felé.[/p]
+    </text>
+    <next id="173"></next>
+  </p>
   <!-- 241 -->
   <!-- 242 -->
   <p id="243">
@@ -1876,10 +2061,34 @@
   <!-- 277 -->
   <!-- 278 -->
   <!-- 279 -->
-  <!-- 280 -->
+  <p id="280">
+    <text>
+        [p]Általános zűrzavar támad a tömegben. Igencsak felvillanyozza őket a tény, hogy szemtanúi lehetnek egy ilyen viadalnak. Kezdődjék tehát a harc.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="27" />
+    </fight>
+    <next id="240"></next>
+  </p>
   <!-- 281 -->
   <!-- 282 -->
-  <!-- 283 -->
+  <p id="283">
+    <text>
+        [p]Hosszú baklandi utad a végéhez közeledik. Előtted a távolban azonban feltűnik a Snatta erdő széle. Felmászol egy szikla tetejére, és onnan nézel körül. Az erdő zöld csíkja egészen az Ilklala tó partjáig húzódik, mely mára látóhatár szélét súrolja. A szikla, amelyen állsz, megfelelő hely arra, hogy egyél.[/p]
+    </text>
+    <itemCheck type="item" id="2000">
+      <have>
+        <next id="78">Ha itt akarsz enni</next>
+        <next id="300">Ha nem akarsz az Élelmedből fogyasztani</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Mivel azonban nincs nálad élelem, úgy döntesz, folytatod utadat.[/p]
+        </text>
+        <next id="300"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 284 -->
   <p id="285">
     <text>
@@ -2333,7 +2542,23 @@
   </p>
   <!-- 319 -->
   <!-- 320 -->
-  <!-- 321 -->
+  <p id="321">
+    <text>
+        [p]A konyhasátornál úgy mutatnak be, mint egy gazdag utazót, aki élelmet akar venni. A választék nem túl nagy. 6 Aranytallérért egy tál áfonyalevest, Gloistert és kenyeret, meg egy csésze gyógyteát kapsz.[/p]
+    </text>
+    <itemCheck type="gold" id="6">
+      <have>
+        <next id="163" pos="10">Ha ki akarod fizetni a kért összeget</next>
+        <next id="192" pos="11">Ha nem</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Sajnos nincs ennyi pénzed.[/p]
+        </text>
+        <next id="192"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 322 -->
   <!-- 323 -->
   <!-- 324 -->
@@ -2412,7 +2637,14 @@
     </itemCheck>
     <next id="52"></next>
   </p>
-  <!-- 340 -->
+  <p id="340">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Titokban varázsolsz a Bajnok ellen, és várod a hatást. Már nem olyan vad, a dühe is enyhül, olyannyira, hogy szinte békésnek látszik. A küzdelemnek azonban folytatódnia kell. Vívj meg vele, de varázslatod miatt 3 ponttal csökkentsd az ÜGYESSÉGÉT.[/p]
+    </text>
+    <changeEnemy attribute="skill" id="27" change="-3" />
+    <add to="stamina" amount="-2" />
+    <next id="280"></next>
+  </p>
   <p id="341">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot. Varázslatod megvéd majd minden mágikus csapdától, amit esetleg az Elfek agyaltak ki a számodra.[/p]
@@ -2745,7 +2977,13 @@
     <next id="95"></next>
   </p>
   <!-- 401 -->
-  <!-- 402 -->
+  <p id="402">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot. Nem sokra mész ezzel a varázslattal, mert jelen helyzetben semmi hatása nem lehet. Mindenesetre a Klattabajnokot szörnyen feldühíti, hogy varázsolni próbálsz, és lecsap rád a bunkósbotjával. Az ütés 3 ÉLETERŐ pont sebesülést okoz rajtad. Jobb lesz, ha kardot rántasz.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="280"></next>
+  </p>
   <!-- 403 -->
   <!-- 404 -->
   <p id="405">
@@ -2820,7 +3058,27 @@
   <!-- 417 -->
   <!-- 418 -->
   <!-- 419 -->
-  <!-- 420 -->
+  <p id="420">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3028">
+      <have>
+        <text>
+            [p]Az arcod elé tartod a Fekete Maszkot és varázsolsz! A magas Klattaember ideges lesz, s a következő pillanatban meg már kifejezetten retteg! Sarkon fordul és a többiek pisszegése és füttykoncertje közben bemenekül az egyik kunyhóba. A bámészkodók gyanakodva néznek rád, és úgy döntesz, jobb lesz, ha most távozol innen.[/p]
+        </text>
+        <next id="173"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Ez a varázslat nem fog működni - a Klattaember lecsap rád a bunkósbotjával (vesztesz 2 ÉLETERŐ pontot), vissza kell vágnod neki.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="280"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 421 -->
   <p id="422">
     <text>
@@ -2968,7 +3226,13 @@
     <next id="185"></next>
   </p>
   <!-- 456 -->
-  <!-- 457 -->
+  <p id="457">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot. Nyugodtan varázsolsz, és megparancsolod a Klattaembernek, hogy ne mozduljon a helyéről. Sajnos a terved csődöt mond! Ez a varázslat nincs hatással ellenfeledre! Előrántod a kardodat, és felkészülsz a harcra.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="280"></next>
+  </p>
   <!-- 458 -->
   <!-- 459 -->
   <!-- 460 -->
@@ -3120,7 +3384,13 @@
   <!-- 491 -->
   <!-- 492 -->
   <!-- 493 -->
-  <!-- 494 -->
+  <p id="494">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Varázslatod hatására a közeli szikla kis halom Aranytallérrá változik. Várod, hogy a Klattaemberek észrevegyék. Észre is veszik, de egyáltalán nem érdekli őket! Jobban izgatja a képzeletüket a harc lehetősége, mint az előttük felhalmozott Arany. Varázslatod késlelteti a küzdelmet, és ezért a Klattabajnok dühbe gurul. Meglendíti a bunkósbotját, és jókorát vág vele a melledre. 2 ÉLETERŐ pont sérülést szenvedsz. Most pedig jobb lesz, ha kardot rántasz.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="280"></next>
+  </p>
   <p id="495">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Az egyik Kentaur egy újabb nyílvesszőt lő ki rád.[/p]
