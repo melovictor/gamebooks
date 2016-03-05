@@ -42,10 +42,11 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
     @Override
     public void lostOwnership(final Clipboard clipboard, final Transferable contents) {
         try {
-            Thread.sleep(20);
+            Thread.sleep(30);
             checkClipboard();
         } catch (UnsupportedFlavorException | IOException | InterruptedException e) {
             e.printStackTrace();
+            lostOwnership(clipboard, contents);
         }
     }
 
