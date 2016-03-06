@@ -239,7 +239,31 @@
     <next id="151">Ha követed</next>
     <next id="311">Ha inkább elhagynád ezt a helyet</next>
   </p>
-  <!-- 38 -->
+  <p id="38">
+    <text>
+        [p]Csak az idődet vesztegeted azzal, hogy megpróbálsz beszélni ezekkel a lényekkel. Nyelvük nem egyéb, mint morgások sorozata. Egyikük felkap egy követ és hozzád vágja - 2 ÉLETERŐ pont sebesülést szenvedsz a karodon.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="YOB" id="475" />
+        <spell name="TIL" id="439" />
+        <spell name="GAK" id="456" />
+        <spell name="TÜK" id="344" />
+        <spell name="ANY" id="356" />
+        <next id="188">Ha kardot rántasz ellenük</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Jobb lesz, ha kardot rántasz.[/p]
+        </text>
+        <next id="188"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 39 -->
   <p id="40">
     <text>
@@ -373,7 +397,12 @@
   <!-- 55 -->
   <!-- 56 -->
   <!-- 57 -->
-  <!-- 58 -->
+  <p id="58">
+    <text>
+        [p]Gyorsan a Sárkánykígyó után veted magad, és megpróbálod szemmel követni. Égő fáklyaként kúszik a levegőben, és megvilágítja előtted az utat, de sebessége sokkal nagyobb, mint a tiéd. Szél támad, és megkönnyebbülten tapasztalod, hogy az inkább a Sárkánykígyó ellenében fúj, semmint veled szemben, és így sikerül kissé behoznod a lemaradásodat. A szél fütyül, kavarog, ezért a kezeddel véded arcodat a széllökések ellen. Fogad közt homokszemcsék csikorognak, és ez rossz előjel - a homokvihar kellős közepe felé tartasz! Megállsz, és kezedet ellenzőként a szemed fölé tartva a Sárkánykígyót figyeled, amely mintha alulmaradna a széllel vívott harcban. A következő pillanatban egy újabb, homokkal teli fuvallat érkezik, amit a Sárkánykígyó képtelen kivédeni. Fénye még utoljára csillan egyet, majd a homok teljesen beborítja a testét, s a fény kihuny. Miközben ez történik, a Sárkánykígyó a hátizsákoddal együtt zuhanni kezd lefelé. Te a viharos erejű széllel harcolva megpróbálod elkapni a hátizsákodat, mielőtt még a benne lévő holmik a földhöz csapódva összetörnének. Ide-oda cibálja a hátizsákodat a szél, de sikerül úgy helyezkedned, hogy elkaphasd. Ekkor a Sárkánykígyó váratlanul leszáll a fejedre, és elterülsz a földön.[/p]
+    </text>
+    <next id="287"></next>
+  </p>
   <!-- 59 -->
   <!-- 60 -->
   <p id="61">
@@ -787,7 +816,12 @@
   <!-- 97 -->
   <!-- 98 -->
   <!-- 99 -->
-  <!-- 100 -->
+  <p id="100">
+    <text>
+        [p]Sikerül elkapnod a hátizsákodat. A Sárkánykígyó hatalmas, erős szárnyaival csap egyet-kettőt, és felragad a magasba a hátizsákoddal együtt! Miközben lassan észak felé röpül veled az éjszakában, elkeseredetten igyekszel minél jobban megkapaszkodni. Valószínűleg az Ilklala tó felé visz. Újabb széllöket csapódik neki a Sárkánykígyónak. A szél ezúttal oly erős, hogy kioltja a teremtmény lángjait, és így sikerül megpillantanod annak természetes vörös színű testét. Ez a széllökés már nem tréfa! A szél ide-oda rángat. Szád tele lesz homokkal, és ekkor már tudod, hogy gyanúd nem volt alaptalan. Homokvihar kellős közepébe kerültél! Szorosan lehunyod a szemedet, de érzed, hogy a Sárkánykígyó elkeseredett harcot folytat a széllel. Hirtelen zuhanni kezdesz lefelé, de a teremtménynek ismét sikerül megragadnia, majd ismét kizuhansz a karmai közül, ezúttal azonban sokkal hosszabb ideig zuhansz. A félelem arra kényszerít, hogy kinyisd a szemed. Fölötted a homok kioltja a Sárkánykígyó lángjait, miközben az hatalmas szárnyaival elkeseredetten csapkodva megpróbál a levegőben maradni! Egyre sebesebben zuhansz lefelé! A Sárkánykígyó tüzei kihunynak, és a teremtmény zuhanni kezd utánad a mélybe. Hatalmas huppanással értek földet.[/p]
+    </text>
+    <next id="287"></next>
+  </p>
   <p id="101">
     <text>
         [p]Bent az épületben semmi érdekeset nem találsz.[/p]
@@ -1510,7 +1544,17 @@
   </p>
   <!-- 186 -->
   <!-- 187 -->
-  <!-- 188 -->
+  <p id="188">
+    <text>
+        [p]A Klattaemberek, akikkel a sors összehozott, félelmet nem ismerő, vakmerő társaság. Bandájuk az erőt sokkal nagyobbra értékeli, mint az észt. Kardot rántasz és rájuk támadsz. Mindegyikük azt szeretné, ha ő adná meg neked a halálos döfést; mindannyian egyszerre támadnak.[/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="28" />
+      <enemy id="29" />
+      <enemy id="30" />
+    </fight>
+    <next id="251"></next>
+  </p>
   <!-- 189 -->
   <!-- 190 -->
   <p id="191">
@@ -1781,7 +1825,45 @@
     </itemCheck>
 
   </p>
-  <!-- 225 -->
+  <p id="225">
+    <text>
+        [p]Letáborozol éjszakára.
+    </text>
+    <canEat />
+    <itemCheck type="item" id="2000">
+      <have>
+        <text>
+            Ha akarsz, most ehetsz, és így
+        </text>
+        <itemCheck type="item" id="4101">
+          <have>
+            <text>
+                2
+            </text>
+            <changeItem attribute="stamina" id="2000" set="2" />
+          </have>
+          <dontHave>
+            <text>
+                1
+            </text>
+            <changeItem attribute="stamina" id="2000" set="1" />
+          </dontHave>
+          <after>
+            <text>
+                ÉLETERŐ pontot nyersz. A földön összekuporodva betakarózol és nyugovóra térsz; fárasztó nap volt ez a mai. Tíz perc múlva már mélyen alszol. Álmodból hirtelen felriadsz és talpra szökkensz! Sistergő tűzkarika jelenik meg a fejed fölött a leveg őben. Két éles karmával lecsap és megragadja a hátizsákodat. A Tűzkígyó szárnyaival csapkodva zsákmányával a magasba száll.[/p]
+            </text>
+          </after>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            A földön összekuporodva betakarózol és nyugovóra térsz; fárasztó nap volt ez a mai. Tíz perc múlva már mélyen alszol. Álmodból hirtelen felriadsz és talpra szökkensz! Sistergő tűzkarika jelenik meg a fejed fölött a leveg őben. Két éles karmával lecsap és megragadja a hátizsákodat. A Tűzkígyó szárnyaival csapkodva zsákmányával a magasba száll.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <next id="100">Ha utánaveted magad, és hátizsákodba belecsimpaszkodva mindvégig kitartasz</next>
+    <next id="58">Ha hagyod, hogy a Tűzkígyó elrepüljön zsákmányával, és a földön futva követed</next>
+  </p>
   <!-- 226 -->
   <!-- 227 -->
   <p id="228">
@@ -1884,11 +1966,86 @@
   </p>
   <!-- 249 -->
   <!-- 250 -->
-  <!-- 251 -->
+  <p id="251">
+    <text>
+        [p]Átnézed a Klattaemberek holmiját, de nem lelsz benne semmi hasznosat. Az egyiknél találsz [span class="takeItem" data-id="gold" data-amount="3"]néhány Aranyat[/span] és egy patkánygerincet. A másiknál egy zacskó [span class="takeItem" data-id="3027" data-amount="1"]homokot[/span], amely egy bot végén lóg. Talán valamiféle fegyver lehet. A harmadik nyakában egy amulettet találsz, mely értékes lehet. Az amulett közepén egy csillogó kő, a [span class="takeItem" data-id="3035" data-amount="1"]Napékszer[/span] ragyog természetes fényével. Bármelyiket magaddal viheted. Csak 1 ÉLETERŐ pontot nyersz az éjszakai pihenésért, mert az nem volt zavartalan.
+    </text>
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            Mivel tegnap nem ettél semmit, vesztesz 3 ÉLETERŐ pontot, mivel most nagyon éhes vagy.
+        </text>
+        <add amount="-3" to="stamina" />
+      </have>
+      <dontHave>
+        <gatherItem id="4101" />
+      </dontHave>
+      <after>
+        <text>
+            El kell döntened, merre is menj tovább.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <add amount="1" to="stamina" />
+    <next id="83">Ha északnyugat felé folytatod az utadat</next>
+    <next id="283">Ha észak-északnyugat felé mész tovább</next>
+    <next id="60">Ha egyenesen északnak mész</next>
+  </p>
   <!-- 252 -->
   <!-- 253 -->
   <!-- 254 -->
-  <!-- 255 -->
+  <p id="255">
+    <text>
+        [p]Egész éjjel mész. Ha akarsz, megállhatsz közben enni. Ha így teszel, nyersz
+    </text>
+    <canEat />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+             2
+        </text>
+        <changeItem attribute="stamian" id="2000" set="2" />
+      </have>
+      <dontHave>
+        <text>
+            1
+        </text>
+        <changeItem attribute="stamian" id="2000" set="1" />
+      </dontHave>
+      <after>
+        <text>
+            ÉLETERŐ pontot.
+        </text>
+      </after>
+    </itemCheck>
+    <next id="255a"></next>
+  </p>
+  <p id="255a" display="255">
+    <text>
+        [p]Egész éjjel mész. Ha akarsz, megállhatsz közben enni.[/p]
+        [p]Mivel alvás nélkül vándorolsz, nagyon elfáradtál - vonj le magadtól 2 ÉLETERŐ pontot.
+    </text>
+    <add amount="-2" to="stamina" />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            Mivel egész nap nem ettél semmit, újabb 3 ÉLETERŐ pontot kell levonnod magadtól, mert rettenetesen éhes vagy.
+        </text>
+        <add amount="-3" to="stamina" />
+      </have>
+      <dontHave>
+        <gatherItem id="4101" />
+      </dontHave>
+      <after>
+        <text>
+            Meg kell hagyni, hogy jókora utat tettél meg, és ellenséggel nem találkoztál. Estére elérsz a Klatta-Bak Sztyeppe széléhez. A magasból letekintve a kopár síkságot látod magad előtt; egyetlen olyan pont sincs, amely segítene tájékozódni.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="83">Ha északnyugatnak mész tovább</next>
+    <next id="283">Ha északészaknyugatnak mész</next>
+    <next id="60">Ha északnak tartasz</next>
+  </p>
   <p id="256">
     <text>
         [p]Amikor felállsz, a róka rád vicsorítja a fogát, erre készenlétbe helyezed a fegyveredet. Nagyon éhes, és ölni is kész, hogy csillapítsa az étvágyát. Lángvörös szőre égnek áll a hátán. Küzdj meg vele.[/p]
@@ -2114,7 +2271,26 @@
     </fight>
     <next id="216"></next>
   </p>
-  <!-- 287 -->
+  <p id="287">
+    <text>
+        [p class="inlineImage"][img src="resources/sor3/287.jpg" /][/p]
+        [p]Kinyitod a szemed, és megrázod a fejed. Hol vagy? A földön fekszel, melletted hever a hátizsákod, zubbonyod a fejedre van húzva. Hol a homokvihar? És a Tűzkígyó? Minden olyan, mint amikor lefeküdtél aludni. Lehet, hogy az egész csak rossz álom volt? Ha így van, mitől fáj úgy a fejed, mintha kalapáccsal ütötték volna? Körülnézel, és nagyot ordítva pattansz fel, mert egy hatalmas bunkósbot csap le épp oda, ahol az előbb még a fejed volt. Három izmos kezű, undorító arcú, nyakigláb teremtmény áll fölötted, és rád bámul. Testüket állatbőrök fedik, bunkósbottal és más fegyverekkel vannak felszerelve. Az egyik teremtménynek egy amulett lóg a nyakában.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="YOB" id="475" />
+        <spell name="TIL" id="439" />
+        <spell name="GAK" id="456" />
+        <spell name="TÜK" id="344" />
+        <spell name="ANY" id="356" />
+      </have>
+    </itemCheck>
+    <next id="188">Ha kardot rántasz ellenük</next>
+    <next id="38">Ha megpróbálsz beszélni velük</next>
+  </p>
   <!-- 288 -->
   <!-- 289 -->
   <!-- 290 -->
@@ -3380,39 +3556,39 @@
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot. Miután varázsoltál, a Halálszellem megáll és a fejét ingatja. Némán rád néz, majd feltekint az égre. Most rajtad a sor, hogy támadj. Ránts kardot, és küzdj meg vele. Zavarodottságában most kissé gyengébb.[/p]
     </text>
-    <add amount="-2" to="stamina"/>
-    <changeEnemy attribute="skill" id="23" set="5"/>
+    <add amount="-2" to="stamina" />
+    <changeEnemy attribute="skill" id="23" set="5" />
     <fight type="single">
-    <enemy id="23"/>
-    <afterRound>
-    <random>
-    <result max="4" min="1">
-        <text>
+      <enemy id="23" />
+      <afterRound>
+        <random>
+          <result max="4" min="1">
+            <text>
             [p]Ellenfeled bódultsága még a következő fordulóban is hat.[/p]
         </text>
-    </result>
-    <result max="5" min="5">
-        <text>
+          </result>
+          <result max="5" min="5">
+            <text>
             [p]Ellenfeled bódultsága elmúlik, a következő Fordulótól kezdve már normálisan fog küzdeni ellened.[/p]
         </text>
-        <changeEnemy attribute="skill" id="23" set="9"/>
-        <gatherItem id="4075"/>
-    </result>
-    <result max="6" min="6">
-        <text>
+            <changeEnemy attribute="skill" id="23" set="9" />
+            <gatherItem id="4075" />
+          </result>
+          <result max="6" min="6">
+            <text>
             [p]Ellenfeled bódultsága villámgyorsan elmúlik, a következő Fordulótól kezdve már normálisan fog küzdeni ellened. Ráadásul a meglepetésnek és gyors reakcióinak köszönhetően egy szerencsés csapást is sikerül bevinnie ellened.[/p]
         </text>
-        <changeEnemy attribute="skill" id="23" set="9"/>
-        <add amount="-2" to="stamina"/>
-        <gatherItem id="4075"/>
-    </result>
-    </random>
-    </afterRound>
-    <win>
+            <changeEnemy attribute="skill" id="23" set="9" />
+            <add amount="-2" to="stamina" />
+            <gatherItem id="4075" />
+          </result>
+        </random>
+      </afterRound>
+      <win>
         <text>
             [p]A Halálszellem feladja a küzdelmet és kegyelemért kezd el könyörögni.[/p]
         </text>
-    </win>
+      </win>
     </fight>
     <next id="205"></next>
   </p>
