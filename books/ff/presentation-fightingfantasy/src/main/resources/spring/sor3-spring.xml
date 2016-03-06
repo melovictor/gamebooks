@@ -12,8 +12,12 @@
       <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="true" />
     </property>
     <property name="resources">
-      <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="sor" p:jsResources="sor" />
+      <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="sor" p:jsResources="sor,sor3" />
     </property>
   </bean>
+
+  <util:set value-type="java.lang.String" id="snakeEncounterSections">
+    <value>143</value>
+  </util:set>
 
 </beans>
