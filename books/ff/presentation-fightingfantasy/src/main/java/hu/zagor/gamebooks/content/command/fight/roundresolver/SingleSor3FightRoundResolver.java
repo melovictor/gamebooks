@@ -3,11 +3,13 @@ package hu.zagor.gamebooks.content.command.fight.roundresolver;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
+import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
+import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +22,21 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component("singlesor3FightRoundResolver")
-public class SingleSor3FightRoundResolver implements FightRoundResolver {
+public class SingleSor3FightRoundResolver extends SingleFightRoundResolver {
 
     private static final int ANGERED_BADDU_BUG_ATTACK_STRENGTH_BONUS = 4;
-    @Autowired @Qualifier("singleFightRoundResolver") private FightRoundResolver superResolver;
     @Autowired private MessageSource source;
     @Autowired private LocaleProvider provider;
+    @Autowired @Qualifier("sorHeroAttackStrengthRoller") private HeroAttackStrengthRoller heroAttackStrengthRoller;
+
+    @Override
+    int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
+        return heroAttackStrengthRoller.getSelfAttackStrength(character, command, attributeHandler);
+    }
 
     @Override
     public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
-        final FightRoundResult[] resolveRound = superResolver.resolveRound(command, resolvationData, beforeRoundResult);
+        final FightRoundResult[] resolveRound = super.resolveRound(command, resolvationData, beforeRoundResult);
 
         if (centaurReadyToSurrender(command, resolvationData, resolveRound)) {
             command.setFleeAllowed(true);
@@ -83,7 +90,7 @@ public class SingleSor3FightRoundResolver implements FightRoundResolver {
 
     @Override
     public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
-        superResolver.resolveFlee(command, resolvationData);
+        super.resolveFlee(command, resolvationData);
     }
 
 }

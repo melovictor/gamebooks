@@ -1020,7 +1020,12 @@
   <!-- 126 -->
   <!-- 127 -->
   <!-- 128 -->
-  <!-- 129 -->
+  <p id="129">
+    <text>
+        [p]Fölemeled a gyűrűt, erre a Sárkánykígyó hangosan felszisszen: - Bolond kalandor, csak nem képzeled, hogy a gyűrűd megvéd a haragomtól? Biztos halál vár rád! De a gyűrű miatt fel kell tárnom előtted a titkomat. Négyen őrzik a Mampangi Erőd bejáratát. Ezt az információt azonban semmire sem használhatod, mert soha nem fogsz eljutni a Mampangi Erődbe. - Most pedig küzdj meg a Kígyóval.[/p]
+    </text>
+    <next id="143"></next>
+  </p>
   <p id="130">
     <text>
         [p]A Kígyógyűrű, amit kaptál, felbecsülhetetlen értékű lesz utadnak ebben a szakaszában, mert képes legyőzni a Főmágus Sárkánykígyóit. Ha az ujjadon van ez a gyűrű és a Sárkánykígyókkal találkozol, megparancsolhatod nekik, hogy fedjék fel el őtted a számodra fontos titkukat.[/p]
@@ -3371,7 +3376,46 @@
   <!-- 484 -->
   <!-- 485 -->
   <!-- 486 -->
-  <!-- 487 -->
+  <p id="487">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Miután varázsoltál, a Halálszellem megáll és a fejét ingatja. Némán rád néz, majd feltekint az égre. Most rajtad a sor, hogy támadj. Ránts kardot, és küzdj meg vele. Zavarodottságában most kissé gyengébb.[/p]
+    </text>
+    <add amount="-2" to="stamina"/>
+    <changeEnemy attribute="skill" id="23" set="5"/>
+    <fight type="single">
+    <enemy id="23"/>
+    <afterRound>
+    <random>
+    <result max="4" min="1">
+        <text>
+            [p]Ellenfeled bódultsága még a következő fordulóban is hat.[/p]
+        </text>
+    </result>
+    <result max="5" min="5">
+        <text>
+            [p]Ellenfeled bódultsága elmúlik, a következő Fordulótól kezdve már normálisan fog küzdeni ellened.[/p]
+        </text>
+        <changeEnemy attribute="skill" id="23" set="9"/>
+        <gatherItem id="4075"/>
+    </result>
+    <result max="6" min="6">
+        <text>
+            [p]Ellenfeled bódultsága villámgyorsan elmúlik, a következő Fordulótól kezdve már normálisan fog küzdeni ellened. Ráadásul a meglepetésnek és gyors reakcióinak köszönhetően egy szerencsés csapást is sikerül bevinnie ellened.[/p]
+        </text>
+        <changeEnemy attribute="skill" id="23" set="9"/>
+        <add amount="-2" to="stamina"/>
+        <gatherItem id="4075"/>
+    </result>
+    </random>
+    </afterRound>
+    <win>
+        <text>
+            [p]A Halálszellem feladja a küzdelmet és kegyelemért kezd el könyörögni.[/p]
+        </text>
+    </win>
+    </fight>
+    <next id="205"></next>
+  </p>
   <p id="488">
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot. Miközben varázsolsz, ujjaddal a teremtmény felé mutatsz, és fényes villámot lövellsz ki rá. A villám ujjbegyedből egyenesen a teremtmény testébe csapódik. A Bogár felüvölt, amikor a villám belécsap, de ahelyett, hogy megölné, csak felbőszíti. Kemény páncélteste nem sérül meg - az állat viszont igen dühös. Küzdj meg a Baddu-Bogárral, de az első Forduló után 4 ponttal növeld a Bogár Támadóerejét, mert igen vadul támad.[/p]
