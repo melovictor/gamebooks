@@ -169,7 +169,7 @@ public abstract class AbstractFightCommandSubResolver implements FightCommandSub
             command.setOngoing(true);
             roundEventResolver.resolveRoundEvent(command, resolveList);
             final FightRoundBoundingCommand boundingCommand = command.getAfterBounding();
-            if (boundingCommand != null) {
+            if (boundingCommand != null && !enemyStatusEvaluator.enemiesAreDead(command.getResolvedEnemies(), command.getRoundNumber())) {
                 boundingCommand.setRoundNumber(command.getRoundNumber());
                 final FightCommandMessageList messages = command.getMessages();
                 boundingCommand.setMessages(messages);
