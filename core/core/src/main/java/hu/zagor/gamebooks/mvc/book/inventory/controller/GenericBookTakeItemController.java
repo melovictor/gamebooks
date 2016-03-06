@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.mvc.book.inventory.controller;
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
+import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.controller.BookContentInitializer;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -141,6 +143,22 @@ public class GenericBookTakeItemController extends AbstractRequestWrappingContro
         }
 
         return String.valueOf(totalTook);
+    }
+
+    /**
+     * Method for handling the user dropping a random, discardable item.
+     * @param itemId the id of the item to drop
+     * @param request the {@link HttpServletRequest} bean
+     */
+    @RequestMapping(value = "drop/{itemId}", method = RequestMethod.POST)
+    @ResponseBody
+    public void dropItem(final HttpServletRequest request, @PathVariable("itemId") final String itemId) {
+        final CharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
+        final Character character = getWrapper(request).getCharacter();
+        final Item item = itemHandler.getItem(character, itemId);
+        if (item != null && item.getEquipInfo().isRemovable()) {
+            itemHandler.removeItem(character, itemId, 1);
+        }
     }
 
     public ItemInteractionRecorder getItemInteractionRecorder() {

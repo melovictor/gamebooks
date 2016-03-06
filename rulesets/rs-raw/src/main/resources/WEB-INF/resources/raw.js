@@ -208,6 +208,37 @@ var inventory = (function() {
 		$(selector).show();
 	}
 
+	var droppingInTotal;
+	function prepareSingleDrop() {
+		prepareDrop(1);
+	}
+	function prepareMultiDrop() {
+		prepareDrop(999);
+	}
+	function prepareDrop(itemsToDrop) {
+		droppingInTotal = itemsToDrop;
+		$("#gamebookCharacterPageWrapper").addClass("dropping");
+	}
+	function dropItem() {
+		droppingInTotal--;
+		var itemId = $(this).data("itemId");
+		$.ajax({
+			url : "drop/" + itemId,
+			type : "post",
+			complete : function() {
+				loadInventory();
+			}
+		});
+		
+		if (droppingInTotal <= 0) {
+			finishDrop();
+		}
+	}
+	function finishDrop() {
+		$("#gamebookCharacterPageWrapper").removeClass("dropping");
+	}
+
+	
 	return {
 		loadInventory : loadInventory,
 		takeItem : takeItem,
@@ -220,7 +251,11 @@ var inventory = (function() {
 		changeEquip : changeEquip,
 		consume : consume,
 		replaceItem : replaceItem,
-		replaceItemWith : replaceItemWith
+		replaceItemWith : replaceItemWith,
+		prepareSingleDrop : prepareSingleDrop,
+		prepareMultiDrop : prepareMultiDrop,
+		finishDrop : finishDrop,
+		dropItem : dropItem
 	};
 })();
 
@@ -301,12 +336,19 @@ $(function() {
 	$("#saveGameLink").on("click", gameMenu.saveGame);
 	$("span.takeItem").click(inventory.takeItem);
 	$("span.replaceItem").click(inventory.replaceItem);
-	$("#gamebookCharacterPageWrapper").on("click", "span[data-map]",
-			inventory.displayMap).on("click", "span[data-notes]",
-			inventory.displayNotes);
+	$("#gamebookCharacterPageWrapper")
+		.on("click", "span[data-map]", inventory.displayMap)
+		.on("click", "span[data-notes]", inventory.displayNotes)
+
+		.on("click", "[data-drop-single-item]", inventory.prepareSingleDrop)
+		.on("click", "[data-drop-multiple-items]", inventory.prepareMultiDrop)
+		.on("click", "[data-end-drop]", inventory.finishDrop);
+	$("#main").on("click", "#gamebookCharacterPageWrapper.dropping [data-item-removable='true']", inventory.dropItem);
+
 	$("button[data-notes-save]").click(inventory.saveNotes);
-	$("[data-hidden-character-page]").on("mouseenter", inventory.showInventory)
-			.on("mouseleave", inventory.hideInventory);
+	$("[data-hidden-character-page]")
+		.on("mouseenter", inventory.showInventory)
+		.on("mouseleave", inventory.hideInventory);
 	$("[data-random='raw']").on("click", raw.random);
 	userInput.init();
 	

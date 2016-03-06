@@ -273,3 +273,21 @@ p.centered {
 .ui-widget-content {
     color: #000000;
 }
+
+#ffDropItem [data-end-drop] {
+  display: none;
+}
+.dropping #ffDropItem [data-end-drop] {
+  display: inherit;
+}
+.dropping #ffDropItem [data-drop-single-item],
+.dropping #ffDropItem [data-drop-multiple-items] {
+  display: none;
+}
+
+.dropping [data-item-removable='true'] {
+  color: rgb(156, 13, 14);
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}

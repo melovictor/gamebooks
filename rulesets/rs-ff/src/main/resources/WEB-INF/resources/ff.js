@@ -306,9 +306,9 @@ $(function() {
 	$("[data-flee='ff']").on("click", ff.flee);
 	$("#ffEnemyList").on("click", "[data-enemy-selected='false']", battle.changeSelection);
 	$("#ffMenu")
-		.on("click", "[data-items]:not([data-offer-for-replacement]) [data-item-equippable='true']", inventory.changeEquip)
-		.on("click", "[data-items]:not([data-offer-for-replacement]) [data-item-provision],[data-items]:not([data-offer-for-replacement]) [data-item-potion]", inventory.consume)
-		
+		.on("click", "#gamebookCharacterPageWrapper:not(.dropping) [data-items]:not([data-offer-for-replacement]) [data-item-equippable='true']", inventory.changeEquip)
+		.on("click", "#gamebookCharacterPageWrapper:not(.dropping) [data-items]:not([data-offer-for-replacement]) [data-item-provision],[data-items]:not([data-offer-for-replacement]) [data-item-potion]", inventory.consume)
+
 		.on("click", "[data-items][data-offer-for-replacement] [data-item-id]:not([data-item-removable='false'])", inventory.replaceItemWith);
 	$("#preFightItems")
 		.on("click", "[data-item-id]", ff.useBeforeFight);
