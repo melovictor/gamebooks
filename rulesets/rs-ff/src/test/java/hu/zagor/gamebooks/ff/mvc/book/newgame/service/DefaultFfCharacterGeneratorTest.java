@@ -5,16 +5,14 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.domain.BookContentSpecification;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.Map;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
+import org.easymock.Mock;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -24,32 +22,13 @@ import org.testng.annotations.Test;
 @Test
 public class DefaultFfCharacterGeneratorTest {
 
-    private IMocksControl mockControl;
-    private DefaultFfCharacterGenerator underTest;
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private DefaultFfCharacterGenerator underTest;
 
-    private RandomNumberGenerator rand;
-    private DiceResultRenderer diceRenderer;
-    private FfCharacter character;
-    private BookContentSpecification bookContentSpecification;
-
-    @BeforeClass
-    public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        underTest = new DefaultFfCharacterGenerator();
-        rand = mockControl.createMock(RandomNumberGenerator.class);
-        diceRenderer = mockControl.createMock(DiceResultRenderer.class);
-        bookContentSpecification = new BookContentSpecification();
-
-        character = mockControl.createMock(FfCharacter.class);
-
-        Whitebox.setInternalState(underTest, "rand", rand);
-        Whitebox.setInternalState(underTest, "diceRenderer", diceRenderer);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
-    }
+    @Inject private RandomNumberGenerator rand;
+    @Inject private DiceResultRenderer diceRenderer;
+    @Mock private FfCharacter character;
+    @Instance private BookContentSpecification bookContentSpecification;
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testGenerateCharacterWhenCharacterIsNullShouldThrowException() {
@@ -119,11 +98,6 @@ public class DefaultFfCharacterGeneratorTest {
         final DiceResultRenderer returned = underTest.getDiceRenderer();
         // THEN
         Assert.assertSame(returned, diceRenderer);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

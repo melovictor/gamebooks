@@ -23,7 +23,6 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.ui.Model;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -85,7 +84,6 @@ public class GenericBookSectionControllerTest {
         Whitebox.setInternalState(underTest, "info", (Object) null);
         final Map<String, CustomPrePostSectionHandler> prePostHandlers = Whitebox.getInternalState(underTest, "prePostHandlers");
         prePostHandlers.clear();
-        mockControl.reset();
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
@@ -279,11 +277,6 @@ public class GenericBookSectionControllerTest {
         // WHEN
         underTest.handleCustomSectionsPost(model, wrapper, false);
         // THEN
-    }
-
-    @AfterMethod
-    private void tearDownMethod() {
-        mockControl.verify();
     }
 
     private class Testing99BookSectionController extends GenericBookSectionController {

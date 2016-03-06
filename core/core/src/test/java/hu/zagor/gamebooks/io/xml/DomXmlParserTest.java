@@ -13,8 +13,6 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -33,11 +31,6 @@ public class DomXmlParserTest {
     @Mock private Document document;
     @Mock private InputStream inputStream;
     @Inject private Logger logger;
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
-    }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testGetXmlFileContentWhenInputStreamIsNullShouldThrowException() {
@@ -95,11 +88,6 @@ public class DomXmlParserTest {
         final Document returned = underTest.getXmlFileContent(inputStream);
         // THEN
         Assert.assertNull(returned);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

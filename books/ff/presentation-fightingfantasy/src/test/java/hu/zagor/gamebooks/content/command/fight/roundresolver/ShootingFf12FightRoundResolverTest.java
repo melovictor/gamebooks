@@ -38,7 +38,6 @@ import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.context.MessageSource;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -111,8 +110,6 @@ public class ShootingFf12FightRoundResolverTest {
         enemy.setDamageAbsorption(0);
 
         character.setStamina(15);
-
-        mockControl.reset();
     }
 
     @Test(expectedExceptions = UnsupportedOperationException.class)
@@ -774,11 +771,6 @@ public class ShootingFf12FightRoundResolverTest {
                 return null;
             }
         };
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

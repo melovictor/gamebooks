@@ -21,9 +21,7 @@ import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -54,11 +52,6 @@ public class Ff38BookTakeItemControllerBTest {
         Whitebox.setInternalState(underTest, "info", info);
         characterHandler.setAttributeHandler(attributeHandler);
         characterHandler.setCanEatEverywhere(true);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testDoHandleConsumeItemWhenActivatingLuckSpellWhileDoingLuckTestShouldAllowSpellActivation() {
@@ -233,11 +226,6 @@ public class Ff38BookTakeItemControllerBTest {
 
     private void expectWrapper() {
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

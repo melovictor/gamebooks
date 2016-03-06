@@ -27,9 +27,7 @@ import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -76,11 +74,6 @@ public class GenericBookTakeItemControllerPositiveTest {
         replaceData.setLoseId("1001");
         replaceData.setGatherId("1002");
         replaceData.setAmount(1);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testHandleItemTakeWhenAllItemsTakenShouldRemoveAllItems() {
@@ -194,8 +187,4 @@ public class GenericBookTakeItemControllerPositiveTest {
         Assert.assertSame(returned, itemInteractionRecorder);
     }
 
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
-    }
 }

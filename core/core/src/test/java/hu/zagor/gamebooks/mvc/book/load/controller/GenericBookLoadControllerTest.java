@@ -30,9 +30,7 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.ui.Model;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -92,11 +90,6 @@ public class GenericBookLoadControllerTest {
                 logger.debug("called setUpCharacterHandler");
             }
         };
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testHandleLoadWhenCalledShouldCallAbstractMethod() {
@@ -184,10 +177,5 @@ public class GenericBookLoadControllerTest {
 
     private void expectWrapper() {
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 }

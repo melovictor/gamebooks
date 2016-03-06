@@ -31,7 +31,6 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -82,7 +81,6 @@ public class FightCommandResolverShutdownTest {
 
     @BeforeMethod
     public void setUpMethod() {
-        mockControl.reset();
         forcedWeapon = new FfItem("1001", "Sword", ItemType.weapon1);
         nonForcedWeapon = new FfItem("1002", "Sword", ItemType.weapon1);
 
@@ -221,11 +219,6 @@ public class FightCommandResolverShutdownTest {
         Assert.assertFalse(command.isOngoing());
         Assert.assertSame(returned.getResolveList(), resolveList);
         Assert.assertFalse(forcedWeapon.getEquipInfo().isRemovable());
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
     private class MessageAddingAnswer implements IAnswer<List<ParagraphData>> {

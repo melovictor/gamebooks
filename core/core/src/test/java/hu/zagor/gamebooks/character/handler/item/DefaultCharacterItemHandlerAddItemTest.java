@@ -11,7 +11,6 @@ import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.IMocksControl;
 import org.slf4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -53,7 +52,6 @@ public class DefaultCharacterItemHandlerAddItemTest {
         character = new Character();
         character.setBackpackSize(99);
         normalBackpackItem.setAmount(1);
-        mockControl.reset();
     }
 
     public void testAddItemWhenAnItemIsAddedShouldStoreIt() {
@@ -135,11 +133,6 @@ public class DefaultCharacterItemHandlerAddItemTest {
         underTest.addItem(character, ITEM_ID_C, 1);
         // THEN
         Assert.assertFalse(underTest.hasItem(character, ITEM_ID_C, 2));
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

@@ -15,8 +15,6 @@ import org.easymock.Capture;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -31,11 +29,6 @@ public class SingleFightRoundResolverTest {
     @Instance private FfEnemy enemy;
     @Mock private FightCommand command;
     @Inject private RandomNumberGenerator generator;
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
-    }
 
     public void testGetEnemyAttackStrengthWhenNoRequiredAttackStrengthAndBonusIsSetForEnemyShouldRollAndReturnResult() {
         // GIVEN
@@ -105,11 +98,6 @@ public class SingleFightRoundResolverTest {
         Assert.assertEquals(diceConfiguration.getDiceNumber(), 1);
         Assert.assertEquals(diceConfiguration.getMinValue(), 1);
         Assert.assertEquals(diceConfiguration.getMaxValue(), 1);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

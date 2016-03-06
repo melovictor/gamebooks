@@ -19,9 +19,7 @@ import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -57,11 +55,6 @@ public class XmlGameStateHandlerPreviousGameTest {
         continuationData.setPreviousBookId(BOOK_ID - 1);
         continuationData.setPreviousBookLastSectionId("456");
         savedElements.put(ControllerAddresses.PARAGRAPH_STORE_KEY, paragraph);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testCheckSavedGameWhenNoSavedGameExistsFromPreviousBookShouldReturnFalse() {
@@ -127,11 +120,6 @@ public class XmlGameStateHandlerPreviousGameTest {
         expect(gameStateLoader.load(XML_CONTENT)).andReturn(savedElements);
         logger.info("Successfully finished loading game for user {} for book {}.", PLAYER_ID, BOOK_ID - 1);
         scanner.close();
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

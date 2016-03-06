@@ -17,7 +17,6 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -49,7 +48,6 @@ public class FfAttributeHandlerTest {
         character.getEquipment().clear();
         itemA = new FfItem("10", "itemA", ItemType.valuable);
         itemB = new FfItem("20", "itemB", ItemType.valuable);
-        mockControl.reset();
     }
 
     @Test(expectedExceptions = RuntimeException.class)
@@ -228,11 +226,6 @@ public class FfAttributeHandlerTest {
         // WHEN
         underTest.handleModification(character, "subThing.x.a", 4);
         // THEN throws exception
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
     private class TestCharacter extends FfCharacter {

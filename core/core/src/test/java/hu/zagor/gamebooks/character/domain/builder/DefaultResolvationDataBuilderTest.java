@@ -14,8 +14,6 @@ import java.util.Map;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -34,11 +32,6 @@ public class DefaultResolvationDataBuilderTest {
     @Mock private Map<String, Enemy> enemies;
     @Mock private PlayerUser player;
 
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
-    }
-
     public void testBuildWhenUsingWrapperShouldCopyProperFields() {
         // GIVEN
         expect(wrapper.getCharacter()).andReturn(character);
@@ -53,11 +46,6 @@ public class DefaultResolvationDataBuilderTest {
         Assert.assertSame(returned.getEnemies(), enemies);
         Assert.assertSame(returned.getPlayerUser(), player);
         Assert.assertSame(returned.getPosition(), 5);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

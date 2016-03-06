@@ -20,9 +20,7 @@ import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.Set;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -55,11 +53,6 @@ public class SingleSor2FightRoundResolverTest {
         weedSmokers.add("3");
         weedSmokers.add("4");
         underTest.setWeedSmokers(weedSmokers);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testDamageEnemyWhenWeDidNotSmokeWeedShouldDamageAsUsual() {
@@ -254,11 +247,6 @@ public class SingleSor2FightRoundResolverTest {
         expect(enemy.getName()).andReturn("Orc");
         expect(messages.addKey("page.ff.label.fight.single.successfulAttack", "Orc")).andReturn(true);
         expect(command.isLuckOnHit()).andReturn(false);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

@@ -14,8 +14,6 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.springframework.context.HierarchicalMessageSource;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -33,11 +31,6 @@ public class TigerPieceMoverTest {
     @Inject private RandomNumberGenerator generator;
     @Inject private HierarchicalMessageSource messageSource;
     @Inject private LocaleProvider localeProvider;
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
-    }
 
     public void testGetPositionWhenNoPositionIsSetShouldReturnDefault() {
         // GIVEN
@@ -141,11 +134,6 @@ public class TigerPieceMoverTest {
         // WHEN
         underTest.movePiece(result);
         // THEN
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

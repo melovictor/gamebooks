@@ -19,8 +19,6 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.springframework.ui.Model;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -38,11 +36,6 @@ public class HttpSessionWrapperTest {
     @Mock private Paragraph paragraph;
     @Mock private Model model;
     @Mock private HttpServletRequest request;
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
-    }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testConstructorWhenSessionIsNullShouldThrowException() {
@@ -215,8 +208,4 @@ public class HttpSessionWrapperTest {
         Assert.assertSame(returned, model);
     }
 
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
-    }
 }

@@ -30,7 +30,6 @@ import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -75,7 +74,6 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
     @BeforeMethod
     public void setUpMethod() {
         characterHandler.setCanEatEverywhere(true);
-        mockControl.reset();
     }
 
     public void testHandleItemStateChangeWhenHasStateShouldRequestItemStateChange() {
@@ -252,11 +250,6 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         final Map<String, Object> returned = underTest.handleMarketSell(request, "3001");
         // THEN
         Assert.assertSame(returned, resultMap);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

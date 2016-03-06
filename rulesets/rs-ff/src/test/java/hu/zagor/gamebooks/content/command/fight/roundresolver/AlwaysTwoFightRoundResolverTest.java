@@ -9,7 +9,6 @@ import java.util.List;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -31,7 +30,6 @@ public class AlwaysTwoFightRoundResolverTest {
     @BeforeMethod
     public void setUpMethod() {
         resolvedEnemies = new ArrayList<>();
-        mockControl.reset();
     }
 
     public void testFilterResolvedEnemiesWhenHasMoreThanTwoEnemiesShouldReturnTwo() {
@@ -72,8 +70,4 @@ public class AlwaysTwoFightRoundResolverTest {
         Assert.assertSame(resolvedEnemies.get(0), enemyA);
     }
 
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
-    }
 }

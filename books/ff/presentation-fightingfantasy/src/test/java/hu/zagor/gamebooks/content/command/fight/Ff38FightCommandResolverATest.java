@@ -31,7 +31,6 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -84,7 +83,6 @@ public class Ff38FightCommandResolverATest {
 
     @BeforeMethod
     public void setUpMethod() {
-        mockControl.reset();
         command = new FightCommand();
         Whitebox.setInternalState(command, "messages", messages);
         skull.setStamina(9);
@@ -280,11 +278,6 @@ public class Ff38FightCommandResolverATest {
     private void noWhiteWine() {
         expect(itemHandler.hasItem(character, "4010")).andReturn(false);
         expect(itemHandler.hasItem(character, "4011")).andReturn(false);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

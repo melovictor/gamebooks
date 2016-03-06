@@ -11,9 +11,7 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.springframework.context.ApplicationContext;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -34,11 +32,6 @@ public class AppContextFetchingBookInformationFetcherTest {
     public void setUpClass() {
         bookInformations.put("cyoa1", infoA);
         bookInformations.put("ff35", infoB);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testGetInfoByIdWhenIdIsNotFoundInAppContextShouldReturnNull() {
@@ -63,11 +56,6 @@ public class AppContextFetchingBookInformationFetcherTest {
         final BookInformations returned = underTest.getInfoById("2");
         // THEN
         Assert.assertSame(returned, infoB);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

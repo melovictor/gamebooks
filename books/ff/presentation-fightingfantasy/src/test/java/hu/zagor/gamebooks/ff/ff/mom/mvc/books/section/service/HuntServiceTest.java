@@ -25,9 +25,7 @@ import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.IAnswer;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -58,11 +56,6 @@ public class HuntServiceTest {
         info = new FfBookInformations(3L);
         info.setCharacterHandler(characterHandler);
         characterHandler.setInteractionHandler(interactionHandler);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testPlayRoundWhenOddRoundShouldDogMove() {
@@ -133,11 +126,6 @@ public class HuntServiceTest {
         // WHEN
         underTest.playRound(wrapper, info);
         // THEN
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

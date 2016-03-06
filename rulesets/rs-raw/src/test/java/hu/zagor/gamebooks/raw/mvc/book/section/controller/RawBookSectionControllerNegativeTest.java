@@ -21,7 +21,6 @@ import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.ui.Model;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -76,7 +75,6 @@ public class RawBookSectionControllerNegativeTest {
         choices = new DefaultChoiceSet(new ChoicePositionComparator());
         choices.add(choice);
         data.setChoices(choices);
-        mockControl.reset();
     }
 
     @Test(expectedExceptions = InvalidStepChoiceException.class)
@@ -91,11 +89,6 @@ public class RawBookSectionControllerNegativeTest {
         // WHEN
         underTest.handleSection(model, request, "7");
         // THEN throws exception
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

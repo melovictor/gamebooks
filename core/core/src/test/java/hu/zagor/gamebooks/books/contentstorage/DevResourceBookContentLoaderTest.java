@@ -22,9 +22,7 @@ import org.slf4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 
@@ -72,11 +70,6 @@ public class DevResourceBookContentLoaderTest {
     @UnderTest
     public DevResourceBookContentLoader underTest() {
         return new DevResourceBookContentLoader(xmlParser);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testLoadParagraphsWhenNoAlternateResourceFoundShouldLoadOnlyFromBasicBatch() throws XmlTransformationException, IOException {
@@ -127,11 +120,6 @@ public class DevResourceBookContentLoaderTest {
         final BookItemStorage returned = underTest.loadBookContent(info);
         // THEN
         Assert.assertSame(returned, storage);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

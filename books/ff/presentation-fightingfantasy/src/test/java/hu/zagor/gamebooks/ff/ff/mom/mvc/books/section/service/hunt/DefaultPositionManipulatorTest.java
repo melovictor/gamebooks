@@ -13,8 +13,6 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.springframework.context.HierarchicalMessageSource;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -32,11 +30,6 @@ public class DefaultPositionManipulatorTest {
     @Mock private Character character;
     @Mock private FfUserInteractionHandler interactionHandler;
     @Mock private HuntRoundResult result;
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
-    }
 
     @Test(dataProvider = "cssConvertData")
     public void testCssClassFromPositionWhenRangeProvidedShouldConvertProperly(final String in, final String out) {
@@ -181,11 +174,6 @@ public class DefaultPositionManipulatorTest {
         // WHEN
         underTest.verifyPositions(result, 9);
         // THEN
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

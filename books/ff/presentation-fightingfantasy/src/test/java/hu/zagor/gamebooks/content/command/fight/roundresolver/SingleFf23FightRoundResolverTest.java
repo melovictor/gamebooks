@@ -21,9 +21,7 @@ import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -60,11 +58,6 @@ public class SingleFf23FightRoundResolverTest {
         characterHandler.setInteractionHandler(interactionHandler);
         resolveResult = new FightRoundResult[]{FightRoundResult.WIN};
         characterHandler.setItemHandler(itemHandler);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testResolveFleeShouldCallSuper() {
@@ -174,11 +167,6 @@ public class SingleFf23FightRoundResolverTest {
     @DataProvider(name = "lastTest")
     public Object[][] getEnemyIds() {
         return new Object[][]{{"49", "48"}, {"50", "49"}};
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

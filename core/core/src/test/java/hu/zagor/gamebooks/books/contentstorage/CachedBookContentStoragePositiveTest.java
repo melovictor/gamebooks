@@ -18,7 +18,6 @@ import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -60,7 +59,6 @@ public class CachedBookContentStoragePositiveTest {
     @BeforeMethod
     public void setUpMethod() {
         Whitebox.setInternalState(underTest, "storage", new HashMap<Long, SoftReference<BookItemStorage>>());
-        mockControl.reset();
     }
 
     public void testGetBookEntryWhenStorageDoesNotContainCachedEntryShouldLoadBookContentAndPutInCache() {
@@ -184,11 +182,6 @@ public class CachedBookContentStoragePositiveTest {
         final Enemy returned = underTest.getBookEnemy(bookInfo, ID);
         // THEN
         Assert.assertNull(returned);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

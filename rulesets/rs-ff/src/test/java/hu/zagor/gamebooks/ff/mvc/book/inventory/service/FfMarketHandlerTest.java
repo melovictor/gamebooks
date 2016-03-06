@@ -14,7 +14,6 @@ import java.util.Map;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -41,8 +40,6 @@ public class FfMarketHandlerTest {
         itemA = getMarketElement("3001", 3, 2);
         itemB = getMarketElement("3002", 10, 1);
         itemC = getMarketElement("3003", 5, 0);
-
-        mockControl.reset();
     }
 
     private MarketElement getMarketElement(final String id, final int price, final int stock) {
@@ -215,10 +212,5 @@ public class FfMarketHandlerTest {
         Assert.assertEquals(returned.get("giveUpFinished"), false);
         Assert.assertEquals(itemA.getStock(), 1);
         Assert.assertEquals(command.getGiveUpAmount(), 1);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 }

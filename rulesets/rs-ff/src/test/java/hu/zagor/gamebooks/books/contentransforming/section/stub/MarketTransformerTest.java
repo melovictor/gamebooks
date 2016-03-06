@@ -17,8 +17,6 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -33,11 +31,6 @@ public class MarketTransformerTest extends AbstractTransformerTest {
     @Mock private BookParagraphDataTransformer parent;
     @Mock private FfParagraphData data;
     @Mock private ChoicePositionCounter counter;
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
-    }
 
     @Test(expectedExceptions = IllegalStateException.class)
     public void testWhenParagraphDoesntContainTheMarketMarkerShouldThrowException() {
@@ -132,11 +125,6 @@ public class MarketTransformerTest extends AbstractTransformerTest {
         Assert.assertEquals(command.getMustBuy(), 2);
         Assert.assertEquals(command.getMustSellExactly(), 5);
         Assert.assertEquals(command.getGiveUpAmount(), 2);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

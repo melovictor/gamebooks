@@ -7,8 +7,6 @@ import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import javax.servlet.http.HttpServletRequest;
 import org.easymock.IMocksControl;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -21,11 +19,6 @@ public class Ff23BattleLuckTestParametersTest {
     @MockControl private IMocksControl mockControl;
     @UnderTest private Ff23BattleLuckTestParameters underTest;
     @Inject private HttpServletRequest request;
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
-    }
 
     public void testGetLuckyAttackAdditionWhenFightingAgainstMorganaShouldReturnOne() {
         // GIVEN
@@ -45,11 +38,6 @@ public class Ff23BattleLuckTestParametersTest {
         final int returned = underTest.getLuckyAttackAddition();
         // THEN
         Assert.assertEquals(returned, 2);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

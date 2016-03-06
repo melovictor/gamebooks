@@ -24,9 +24,7 @@ import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -60,11 +58,6 @@ public class Ff18BookTakeItemControllerTest {
         characterHandler.setAttributeHandler(attributeHandler);
         info.setCharacterHandler(characterHandler);
         Whitebox.setInternalState(underTest, "info", info);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testDoHandleItemTakeWhenTakingGenericItemShouldFallbackToDefaultBehaviour() {
@@ -131,8 +124,4 @@ public class Ff18BookTakeItemControllerTest {
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
     }
 
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
-    }
 }

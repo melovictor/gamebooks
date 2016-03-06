@@ -38,7 +38,6 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.ui.Model;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -115,7 +114,6 @@ public class RawBookSectionControllerPositiveBTest {
         choices = new DefaultChoiceSet(new ChoicePositionComparator());
         choices.add(choice);
         data.setChoices(choices);
-        mockControl.reset();
     }
 
     public void testHandleSectionWhenMultipleChoicesAreLeftWithSingleChoiceTextShouldNotIncorporateExtraTextIntoMainBlock() {
@@ -199,11 +197,6 @@ public class RawBookSectionControllerPositiveBTest {
         expect(model.addAttribute("imgTypeOrder", "bwFirst")).andReturn(model);
         expect(model.addAttribute("informativeSections", false)).andReturn(model);
         expect(model.addAttribute("bookInfo", info)).andReturn(model);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

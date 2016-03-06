@@ -15,7 +15,6 @@ import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -42,9 +41,9 @@ public class BookEntryStorageTest {
     @Mock private Item clonedItem;
     @Instance private Enemy enemy;
 
-    private final Map<String, Paragraph> paragraphs = new HashMap<>();
-    private final Map<String, Item> items = new HashMap<>();
-    private final Map<String, Enemy> enemies = new HashMap<>();
+    @Instance private Map<String, Paragraph> paragraphs;
+    @Instance private Map<String, Item> items;
+    @Instance private Map<String, Enemy> enemies;
 
     @BeforeClass
     public void setUpClass() {
@@ -62,7 +61,6 @@ public class BookEntryStorageTest {
 
     @BeforeMethod
     public void setUpMethod() {
-        mockControl.reset();
         Whitebox.setInternalState(underTest, "enemies", enemies);
     }
 
@@ -277,11 +275,6 @@ public class BookEntryStorageTest {
         final String returned = underTest.resolveParagraphId(NONEXISTENT_ELEMENT_ID);
         // THEN
         Assert.assertEquals(returned, NONEXISTENT_ELEMENT_ID);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

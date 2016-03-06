@@ -26,9 +26,7 @@ import java.util.Set;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -75,11 +73,6 @@ public class Sor1BookSectionControllerTest {
     @UnderTest
     public Sor1BookSectionController underTest() {
         return new Sor1BookSectionController(sectionHandler);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
@@ -241,8 +234,4 @@ public class Sor1BookSectionControllerTest {
         // THEN
     }
 
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
-    }
 }

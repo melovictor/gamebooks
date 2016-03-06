@@ -29,9 +29,7 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -105,11 +103,6 @@ public class Ff18FightCommandCustomSubResolverTest {
         outcome.setMax(max);
         outcome.setParagraphData(data);
         return outcome;
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testConstructor() {
@@ -230,11 +223,6 @@ public class Ff18FightCommandCustomSubResolverTest {
         Assert.assertTrue(returned.contains(resultParDataC));
         Assert.assertTrue(returned.contains(resultParDataD));
         Assert.assertEquals(returned.size(), 3);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

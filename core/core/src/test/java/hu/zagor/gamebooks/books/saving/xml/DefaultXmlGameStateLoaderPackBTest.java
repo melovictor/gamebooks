@@ -22,9 +22,7 @@ import org.powermock.reflect.Whitebox;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.xml.sax.InputSource;
 
@@ -46,11 +44,6 @@ public class DefaultXmlGameStateLoaderPackBTest {
     public void setUpClass() {
         builderFactory = DocumentBuilderFactory.newInstance();
         Whitebox.setInternalState(underTest, "builderFactory", builderFactory);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testLoadWhenInputContainsClassWithoutDefaultConstructorShouldReturnNull() {
@@ -198,11 +191,6 @@ public class DefaultXmlGameStateLoaderPackBTest {
         final StringReader stringReader = new StringReader(input);
         expect(beanFactory.getBean("stringReader", input)).andReturn(stringReader);
         expect(beanFactory.getBean("inputSource", stringReader)).andReturn(new InputSource(stringReader));
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

@@ -21,7 +21,6 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -49,7 +48,6 @@ public class ParagraphDataPositiveTest {
         underTest.setText("");
         underTest.setChoices(new DefaultChoiceSet(choiceComparator));
         underTest.getCommands().clear();
-        mockControl.reset();
     }
 
     public void testCalculateValidElementsWhenUnderTestContainsNoChoicesItemsCommandsShouldNotExtractValidMoves() {
@@ -285,10 +283,5 @@ public class ParagraphDataPositiveTest {
         paragraph.addValidItem("3002", 1);
         logger.debug("Found item {}.", "3001");
         paragraph.addValidItem("3001", 6);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 }

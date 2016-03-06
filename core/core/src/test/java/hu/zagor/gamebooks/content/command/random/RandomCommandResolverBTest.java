@@ -25,7 +25,6 @@ import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -83,7 +82,6 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
         rootData.setText("<p>Initial content.</p>");
         resultElse.setText("<p>ResultElse data text.</p>");
         command = new RandomCommand();
-        mockControl.reset();
     }
 
     public void testResolveSilentlyWhenThereIsResultMatchingTheResultIntervalShouldReturnAppropriateData() throws CloneNotSupportedException {
@@ -189,11 +187,6 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
         Assert.assertEquals(command.getDiceResult(), 6);
         Assert.assertSame(command.getDiceResults(), randomResult);
         Assert.assertTrue(returned.isEmpty());
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

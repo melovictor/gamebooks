@@ -11,9 +11,7 @@ import java.util.Arrays;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -49,11 +47,6 @@ public class DefaultDeductionCalculatorTest {
         final FfItem item = new FfItem("gold" + price, "gold " + price + " - " + type, type);
         item.setGold(price);
         return item;
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testCalculateDeductibleElementsWhenSingleItemMatchesPriceShouldReturnSingleItemWithoutExtraGold() {
@@ -154,11 +147,6 @@ public class DefaultDeductionCalculatorTest {
         // THEN
         Assert.assertEquals(calculateDeductibleElements.getGold(), 3);
         Assert.assertTrue(calculateDeductibleElements.getItems().isEmpty());
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

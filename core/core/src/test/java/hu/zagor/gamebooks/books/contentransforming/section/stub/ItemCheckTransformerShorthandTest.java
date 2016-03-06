@@ -25,7 +25,6 @@ import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -66,8 +65,6 @@ public class ItemCheckTransformerShorthandTest extends AbstractTransformerTest {
         itemCheckCommand = new ItemCheckCommand();
         itemCheckCommand.setCheckType(CheckType.item);
         itemCheckCommand.setId(ID);
-
-        mockControl.reset();
     }
 
     public void testTransformWhenShorthandHaveDontHaveIsPresentAndHaveEquippedIsNotYetSetShouldCreateShorthandParagraphData() {
@@ -112,10 +109,5 @@ public class ItemCheckTransformerShorthandTest extends AbstractTransformerTest {
         Assert.assertEquals(choice.getId(), id);
         Assert.assertEquals(choice.getPosition(), position);
         Assert.assertEquals(choice.getText(), null);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 }

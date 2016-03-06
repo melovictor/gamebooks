@@ -8,20 +8,16 @@ import hu.zagor.gamebooks.books.saving.xml.exception.WriterAlreadyOpenedExceptio
 import hu.zagor.gamebooks.books.saving.xml.exception.WriterNotYetClosedException;
 import hu.zagor.gamebooks.books.saving.xml.exception.WriterNotYetOpenedException;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
-
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
-
 import javax.xml.stream.XMLEventFactory;
 import javax.xml.stream.XMLEventWriter;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.EndDocument;
 import javax.xml.stream.events.StartDocument;
-
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -37,23 +33,16 @@ public class DefaultXmlNodeWriterNegativeTest {
     private static final String TYPE = "java.lang.String";
 
     private DefaultXmlNodeWriter underTest;
-    @MockControl
-    private IMocksControl mockControl;
-    @Mock
-    private XMLOutputFactory outputFactory;
-    @Mock
-    private XMLEventFactory eventFactory;
-    @Mock
-    private XMLEventWriter eventWriter;
-    @Mock
-    private StartDocument startDocument;
-    @Mock
-    private EndDocument endDocument;
+    @MockControl private IMocksControl mockControl;
+    @Mock private XMLOutputFactory outputFactory;
+    @Mock private XMLEventFactory eventFactory;
+    @Mock private XMLEventWriter eventWriter;
+    @Mock private StartDocument startDocument;
+    @Mock private EndDocument endDocument;
 
     @BeforeMethod
     public void setUpMethod() {
         underTest = new DefaultXmlNodeWriter(outputFactory, eventFactory);
-        mockControl.reset();
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
@@ -257,11 +246,6 @@ public class DefaultXmlNodeWriterNegativeTest {
         expect(eventFactory.createEndDocument()).andReturn(endDocument);
         eventWriter.add(endDocument);
         eventWriter.close();
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

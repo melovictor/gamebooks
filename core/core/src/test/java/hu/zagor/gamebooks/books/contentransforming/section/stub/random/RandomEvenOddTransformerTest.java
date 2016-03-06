@@ -12,7 +12,6 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -40,7 +39,6 @@ public class RandomEvenOddTransformerTest extends AbstractTransformerTest {
         randomResult3 = new RandomResult();
         randomResult5 = new RandomResult();
         command = new RandomCommand();
-        mockControl.reset();
     }
 
     public void testDoTransformWhenRemainderIsOddShouldParseResultAttributesAndResultItself() {
@@ -107,10 +105,5 @@ public class RandomEvenOddTransformerTest extends AbstractTransformerTest {
         Assert.assertEquals(randomResult5.getMin(), "6");
         Assert.assertEquals(randomResult5.getMax(), "6");
         Assert.assertSame(randomResult5.getParagraphData(), paragraphData);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 }

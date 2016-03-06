@@ -12,8 +12,6 @@ import org.easymock.Capture;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -26,11 +24,6 @@ public class ChangeEnemyTransformerTest extends AbstractTransformerTest {
     @MockControl private IMocksControl mockControl;
     @Mock private FfParagraphData data;
     @Mock private BookParagraphDataTransformer parent;
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
-    }
 
     public void testDoTransformWhenSettingStaminaShouldCreateChangeEnemyCommand() {
         // GIVEN
@@ -70,8 +63,4 @@ public class ChangeEnemyTransformerTest extends AbstractTransformerTest {
         Assert.assertEquals(command.getChangeValue(), "-2");
     }
 
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
-    }
 }

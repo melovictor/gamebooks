@@ -11,7 +11,6 @@ import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.IMocksControl;
 import org.slf4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -45,7 +44,6 @@ public class FfCharacterItemHandlerAddItemATest {
     public void setUpMethod() {
         character = new FfCharacter();
         character.setBackpackSize(99);
-        mockControl.reset();
 
         eSword = new FfItem("1001", "Sword", ItemType.weapon1);
         eSword.getEquipInfo().setEquipped(true);
@@ -280,11 +278,6 @@ public class FfCharacterItemHandlerAddItemATest {
         Assert.assertTrue(character.getEquipment().get(2).getEquipInfo().isEquipped());
         Assert.assertEquals(character.getEquipment().get(3), eBroadsword);
         Assert.assertFalse(character.getEquipment().get(3).getEquipInfo().isEquipped());
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

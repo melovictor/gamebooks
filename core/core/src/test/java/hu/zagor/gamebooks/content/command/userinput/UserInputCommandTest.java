@@ -10,8 +10,6 @@ import java.util.Map;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -26,11 +24,6 @@ public class UserInputCommandTest {
     @UnderTest private UserInputCommand underTest;
     @Mock private UserInputResponse defaultResponse;
     @Mock private UserInputResponse specificResponse;
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
-    }
 
     public void testGetLabelShouldReturnSettedValue() {
         // GIVEN
@@ -126,11 +119,6 @@ public class UserInputCommandTest {
         // WHEN
         final int returned = underTest.getMax();
         Assert.assertEquals(returned, 7);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

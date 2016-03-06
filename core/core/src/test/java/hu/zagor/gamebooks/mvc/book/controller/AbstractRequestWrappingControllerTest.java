@@ -1,6 +1,7 @@
 package hu.zagor.gamebooks.mvc.book.controller;
 
 import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.partialMockBuilder;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -10,8 +11,6 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.springframework.context.ApplicationContext;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -28,13 +27,7 @@ public class AbstractRequestWrappingControllerTest {
 
     @UnderTest
     public AbstractRequestWrappingController underTest() {
-        return new AbstractRequestWrappingController() {
-        };
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
+        return partialMockBuilder(AbstractRequestWrappingController.class).createMock(mockControl);
     }
 
     @Test(expectedExceptions = IllegalStateException.class)
@@ -71,11 +64,6 @@ public class AbstractRequestWrappingControllerTest {
         final BookInformations returned = underTest.getInfo(7L);
         // THEN
         Assert.assertSame(returned, info);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

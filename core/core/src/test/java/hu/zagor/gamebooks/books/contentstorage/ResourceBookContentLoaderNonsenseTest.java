@@ -25,9 +25,7 @@ import org.slf4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 
@@ -81,11 +79,6 @@ public class ResourceBookContentLoaderNonsenseTest {
     @UnderTest
     public ResourceBookContentLoader underTest() {
         return new ResourceBookContentLoader(xmlParser);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testLoadBookContentWhenParagraphInputStreamIsNullAndParserFailsShouldLogErrorAndReturnNull() throws IOException {
@@ -255,8 +248,4 @@ public class ResourceBookContentLoaderNonsenseTest {
         Assert.assertSame(returned, storage);
     }
 
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
-    }
 }

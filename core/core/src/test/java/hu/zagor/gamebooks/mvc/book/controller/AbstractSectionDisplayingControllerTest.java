@@ -21,7 +21,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -60,7 +59,6 @@ public class AbstractSectionDisplayingControllerTest {
     @BeforeMethod
     public void setUpMethod() {
         info.setResources(emptyResourceInfo);
-        mockControl.reset();
     }
 
     public void testSetUpSectionDisplayOptionsWhenParagraphIsBackgroundShouldConfigureModelProperlyWithoutSettingHideTopSection() {
@@ -220,11 +218,6 @@ public class AbstractSectionDisplayingControllerTest {
         final ApplicationContext returned = underTest.getApplicationContext();
         // THEN
         Assert.assertSame(returned, applicationContext);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

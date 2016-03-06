@@ -33,7 +33,6 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.ui.Model;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -92,8 +91,6 @@ public class UserSettingsControllerTest {
         playerSettings.put("default.setting.2", "default.setting.2.value");
 
         settings.clear();
-
-        mockControl.reset();
     }
 
     public void testDisplaySettingsScreenShouldInitializeModelFromDefaultSettingsOverridenByUserSettings() {
@@ -168,11 +165,6 @@ public class UserSettingsControllerTest {
         expect(model.addAttribute("nums10", list10)).andReturn(model);
         expect(model.addAttribute(eq("memoryUsageList"), anyObject(List.class))).andReturn(model);
         return capturer;
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

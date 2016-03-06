@@ -27,7 +27,6 @@ import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.core.io.Resource;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -73,7 +72,6 @@ public class ClasspathImageHandlerNegativeTest {
         final Map<ImageLookupStrategyType, ImageLookupStrategy> lookupStrategies = new HashMap<ImageLookupStrategyType, ImageLookupStrategy>();
         lookupStrategies.put(ImageLookupStrategyType.BW_COLOR, strategy);
         underTest.setLookupStrategies(lookupStrategies);
-        mockControl.reset();
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
@@ -268,8 +266,4 @@ public class ClasspathImageHandlerNegativeTest {
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
     }
 
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
-    }
 }

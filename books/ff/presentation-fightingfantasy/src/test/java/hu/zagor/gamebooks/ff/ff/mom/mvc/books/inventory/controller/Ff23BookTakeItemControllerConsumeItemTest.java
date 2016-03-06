@@ -25,9 +25,7 @@ import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -62,11 +60,6 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
         characterHandler.setCanEatEverywhere(true);
         characterHandler.setItemHandler(itemHandler);
         characterHandler.setAttributeHandler(attributeHandler);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testDoHandleConsumeItemWhenNormalItemShouldConsumeNormally() {
@@ -121,8 +114,4 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
     }
 
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
-    }
 }

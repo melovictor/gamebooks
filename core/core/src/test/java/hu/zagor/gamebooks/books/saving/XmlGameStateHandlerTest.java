@@ -23,9 +23,7 @@ import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -62,11 +60,6 @@ public class XmlGameStateHandlerTest {
         continuationData.setContinuationPageName("s-background");
         continuationData.setPreviousBookId(BOOK_ID - 1);
         continuationData.setPreviousBookLastSectionId("456");
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testGenerateSaveGameContainerShouldReturnSavedGameContainer() {
@@ -278,11 +271,6 @@ public class XmlGameStateHandlerTest {
         final boolean returned = underTest.checkSavedGame(savedGameContainer);
         // THEN
         Assert.assertFalse(returned);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

@@ -18,7 +18,6 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -54,7 +53,6 @@ public class FightCommandRoundEventResolverTest {
     @BeforeMethod
     public void setUpMethod() {
         resolveList.clear();
-        mockControl.reset();
         command = new FightCommand();
         command.setOngoing(true);
         Whitebox.setInternalState(command, "battleStatistics", battleStatistics);
@@ -163,11 +161,6 @@ public class FightCommandRoundEventResolverTest {
         Assert.assertEquals(resolveList.size(), 1);
         Assert.assertSame(resolveList.get(0), data);
         Assert.assertFalse(command.isOngoing());
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

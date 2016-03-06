@@ -39,7 +39,6 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.ui.Model;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -118,7 +117,6 @@ public class RawBookSectionControllerPositiveATest {
         choices = new DefaultChoiceSet(new ChoicePositionComparator());
         choices.add(choice);
         data.setChoices(choices);
-        mockControl.reset();
     }
 
     public void testHandleSectionWhenSectionIsWithIdShouldHandleSectionBasedOnSectionId() {
@@ -268,11 +266,6 @@ public class RawBookSectionControllerPositiveATest {
         expect(wrapper.getCharacter()).andReturn(character);
         expect(beanFactory.getBean("rawCharacterPageData", character)).andReturn(charPageData);
         expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

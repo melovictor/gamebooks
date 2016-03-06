@@ -1,12 +1,10 @@
 package hu.zagor.gamebooks.ff.mvc.book.inventory.controller;
 
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import javax.servlet.http.HttpServletRequest;
-
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.easymock.Mock;
 import org.testng.annotations.Test;
 
 /**
@@ -16,21 +14,9 @@ import org.testng.annotations.Test;
 @Test
 public class FfBookTakeItemControllerNegativeTest {
 
-    private FfBookTakeItemController underTest;
-    private IMocksControl mockControl;
-    private HttpServletRequest request;
-
-    @BeforeClass
-    public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        underTest = new FfBookTakeItemController();
-        request = mockControl.createMock(HttpServletRequest.class);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
-    }
+    @UnderTest private FfBookTakeItemController underTest;
+    @MockControl private IMocksControl mockControl;
+    @Mock private HttpServletRequest request;
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testHandleItemStateChangeWhenItemIdIsNullShouldThrowException() {
@@ -102,11 +88,6 @@ public class FfBookTakeItemControllerNegativeTest {
         // WHEN
         underTest.handleMarketSell(request, "");
         // THEN throws exception
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

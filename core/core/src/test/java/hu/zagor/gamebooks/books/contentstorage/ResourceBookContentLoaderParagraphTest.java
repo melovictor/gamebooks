@@ -25,9 +25,7 @@ import org.slf4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 
@@ -73,11 +71,6 @@ public class ResourceBookContentLoaderParagraphTest {
     @UnderTest
     public ResourceBookContentLoader underTest() {
         return new ResourceBookContentLoader(xmlParser);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testLoadBookContentWhenItemLocationIsNullShouldReadParagraphsOnly() throws XmlTransformationException, IOException {
@@ -216,10 +209,5 @@ public class ResourceBookContentLoaderParagraphTest {
         final ApplicationContext returned = underTest.getApplicationContext();
         // THEN
         Assert.assertSame(returned, applicationContext);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 }

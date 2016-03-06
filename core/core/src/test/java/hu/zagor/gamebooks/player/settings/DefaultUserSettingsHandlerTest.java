@@ -27,7 +27,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -63,8 +62,6 @@ public class DefaultUserSettingsHandlerTest {
         settings.setChoiceSectionDisplayable(false);
         settings.setTopSectionDisplayable(true);
         settings.setImageTypeOrder("bwFirst");
-
-        mockControl.reset();
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
@@ -183,8 +180,4 @@ public class DefaultUserSettingsHandlerTest {
         // THEN
     }
 
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
-    }
 }

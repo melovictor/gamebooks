@@ -10,8 +10,6 @@ import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -27,11 +25,6 @@ public class DefaultSectionTextUpdaterTest {
     @Mock private Paragraph paragraph;
     @Instance private HuntRoundResult result;
     @Mock private ParagraphData data;
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
-    }
 
     public void testUpdateParagraphContentWhenNotFinishedShouldUpdateParagraphText() {
         // GIVEN
@@ -79,11 +72,6 @@ public class DefaultSectionTextUpdaterTest {
         // WHEN
         underTest.updateParagraphContent(paragraph, result);
         // THEN
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

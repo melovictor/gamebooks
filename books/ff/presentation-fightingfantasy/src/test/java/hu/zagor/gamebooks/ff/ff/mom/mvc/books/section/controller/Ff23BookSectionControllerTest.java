@@ -30,9 +30,7 @@ import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.ui.Model;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -78,11 +76,6 @@ public class Ff23BookSectionControllerTest {
     @UnderTest
     public Ff23BookSectionController underTest() {
         return new Ff23BookSectionController(sectionHandlingService);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
@@ -266,8 +259,4 @@ public class Ff23BookSectionControllerTest {
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
     }
 
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
-    }
 }

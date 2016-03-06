@@ -22,9 +22,7 @@ import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -58,11 +56,6 @@ public class GenericBookSaveControllerTest {
     public void setUpClass() {
         info = new BookInformations(BOOK_ID);
         Whitebox.setInternalState(underTest, "info", info);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
@@ -106,11 +99,6 @@ public class GenericBookSaveControllerTest {
         underTest.handleSave(request, S_BOOK_ID);
         // THEN
         Assert.assertTrue(true);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

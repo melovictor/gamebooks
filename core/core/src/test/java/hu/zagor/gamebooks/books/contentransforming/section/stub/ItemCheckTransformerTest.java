@@ -25,7 +25,6 @@ import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.w3c.dom.NodeList;
@@ -70,8 +69,6 @@ public class ItemCheckTransformerTest extends AbstractTransformerTest {
         itemCheckCommand = new ItemCheckCommand();
         itemCheckCommand.setCheckType(CheckType.item);
         itemCheckCommand.setId(ID);
-
-        mockControl.reset();
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
@@ -209,10 +206,5 @@ public class ItemCheckTransformerTest extends AbstractTransformerTest {
         expect(positionCounter.updateAndGetPosition(null)).andReturn(Integer.valueOf(id));
         expect(parent.getParagraphData()).andReturn(paragraph);
         paragraph.addChoice(capture(captured));
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 }

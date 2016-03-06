@@ -12,8 +12,6 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -37,11 +35,6 @@ public class DefaultItemFactoryTest {
         info = new BookInformations(21L);
         info.setTitle("Book title");
         return new DefaultItemFactory(info);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
@@ -93,11 +86,6 @@ public class DefaultItemFactoryTest {
         // WHEN
         underTest.resolveItem(ITEM_ID);
         // THEN throws exception
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

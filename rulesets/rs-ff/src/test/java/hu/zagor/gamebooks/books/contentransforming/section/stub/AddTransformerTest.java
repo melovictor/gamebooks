@@ -12,9 +12,7 @@ import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.springframework.beans.factory.BeanFactory;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -33,11 +31,6 @@ public class AddTransformerTest extends AbstractTransformerTest {
     @BeforeClass
     public void setUpClass() {
         modifyAttrib = new ModifyAttribute("stamina", 9, ModifyAttributeType.change);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testDoTransformShouldAddModifyAttributeElement() {
@@ -64,11 +57,6 @@ public class AddTransformerTest extends AbstractTransformerTest {
         // WHEN
         underTest.doTransform(parent, node, data);
         // THEN throws exception
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

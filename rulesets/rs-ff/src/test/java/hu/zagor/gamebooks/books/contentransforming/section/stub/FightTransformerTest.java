@@ -23,7 +23,6 @@ import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -67,7 +66,6 @@ public class FightTransformerTest extends AbstractTransformerTest {
     @BeforeMethod
     public void setUpMethod() {
         data.getCommands().clear();
-        mockControl.reset();
     }
 
     public void testDoTransformWhenNodeIsSupportedAndForceWeaponIsSetShouldTransformIt() {
@@ -195,11 +193,6 @@ public class FightTransformerTest extends AbstractTransformerTest {
         // WHEN
         underTest.doTransform(parent, node, data);
         // THEN throws exception
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

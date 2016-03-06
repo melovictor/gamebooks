@@ -19,7 +19,6 @@ import java.util.List;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -61,7 +60,6 @@ public class ChangeItemCommandResolverTest {
         command.setNewValue(null);
         item = new FfItem(ITEM_ID, "Sword", ItemType.weapon1);
         itemB = new FfItem(ITEM_ID, "Sword", ItemType.weapon1);
-        mockControl.reset();
     }
 
     public void testDoResolveWhenCharacterDoesNotHaveItemInQuestionShouldDoNothing() {
@@ -112,11 +110,6 @@ public class ChangeItemCommandResolverTest {
         Assert.assertNull(returned);
         Assert.assertEquals(item.getAttackStrength(), 2);
         Assert.assertEquals(itemB.getAttackStrength(), 2);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

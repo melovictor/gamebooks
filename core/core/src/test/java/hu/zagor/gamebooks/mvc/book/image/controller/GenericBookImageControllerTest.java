@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -33,11 +31,6 @@ public class GenericBookImageControllerTest {
     @Mock private HttpServletResponse response;
     @Inject private ImageHandler imageHandler;
     @Mock private ImageLocation imageLocation;
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
-    }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testHandleImageWhenFileIsNullShouldThrowException() throws IOException {
@@ -85,8 +78,4 @@ public class GenericBookImageControllerTest {
         // THEN
     }
 
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
-    }
 }

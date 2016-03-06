@@ -26,7 +26,6 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -68,7 +67,6 @@ public class FfBookTakeItemControllerPositiveNotProvisionTest {
     @BeforeMethod
     public void setUpMethod() {
         characterHandler.setCanEatEverywhere(true);
-        mockControl.reset();
     }
 
     public void testHandleConsumeItemWhenNoEventIsOngoingAndWeAreDrinkingShouldConsumeItem() {
@@ -89,11 +87,6 @@ public class FfBookTakeItemControllerPositiveNotProvisionTest {
         // WHEN
         underTest.handleConsumeItem(request, "2001");
         // THEN
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

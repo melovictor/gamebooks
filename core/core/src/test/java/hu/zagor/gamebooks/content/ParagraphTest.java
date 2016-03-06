@@ -9,7 +9,6 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -33,7 +32,6 @@ public class ParagraphTest {
     public void setUpMethod() {
         underTest = new Paragraph();
         underTest.setData(paragraphData);
-        mockControl.reset();
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
@@ -268,11 +266,6 @@ public class ParagraphTest {
         final List<ProcessableItemHolder> returned = underTest.getItemsToProcess();
         // THEN
         Assert.assertSame(returned, Whitebox.getInternalState(underTest, "itemsToProcess"));
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

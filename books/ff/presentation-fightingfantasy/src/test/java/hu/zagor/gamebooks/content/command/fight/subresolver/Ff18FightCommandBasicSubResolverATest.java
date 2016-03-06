@@ -28,9 +28,7 @@ import java.util.Map;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -70,11 +68,6 @@ public class Ff18FightCommandBasicSubResolverATest {
         resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).withEnemies(enemies)
             .build();
         characterHandler.setItemHandler(itemHandler);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
     }
 
     public void testDoResolveWhenNoFightCommandHasBeenIssuedShouldJustInitialize() {
@@ -269,11 +262,6 @@ public class Ff18FightCommandBasicSubResolverATest {
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
         // THEN
         Assert.assertSame(returned, resolvedList);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

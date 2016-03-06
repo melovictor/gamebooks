@@ -20,8 +20,6 @@ import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -35,11 +33,6 @@ public class DefaultXmlGameStateSaverTest {
     @MockControl private IMocksControl mockControl;
     @Inject private AutowireCapableBeanFactory beanFactory;
     @Mock private DefaultXmlNodeWriter writer;
-
-    @BeforeMethod
-    public void setUpMethod() {
-        mockControl.reset();
-    }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testSaveWhenObjectIsNullShouldThrowException() {
@@ -267,10 +260,5 @@ public class DefaultXmlGameStateSaverTest {
         writer.closeNode("mainObject");
         writer.closeWriter();
         expect(writer.getContent()).andReturn(expected);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 }
