@@ -55,27 +55,30 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
         final List<ProcessableItemHolder> itemsToProcess = paragraph.getItemsToProcess();
         final Character character = resolvationData.getCharacter();
 
-        while (!itemsToProcess.isEmpty() && character.getCommandView() == null) {
+        while (!itemsToProcess.isEmpty()) {
             final ProcessableItemHolder processableItemHolder = itemsToProcess.get(0);
-            if (processableItemHolder.isParagraphDataHolder()) {
-                final ParagraphData paragraphData = processableItemHolder.getParagraphData();
-                if (doBasicExecution) {
-                    executeBasics(resolvationData, paragraphData);
-                } else {
-                    doBasicExecution = true;
-                }
-                resolveBasicCommands(resolvationData, paragraphData);
-                addAll(itemsToProcess, paragraphData.getCommands());
-                handleReward(resolvationData, paragraphData);
-                itemsToProcess.remove(processableItemHolder);
-            } else {
-                final Command command = processableItemHolder.getCommand();
-                final CommandResolveResult resolveResult = resolveComplexCommands(resolvationData, paragraph, command, character);
-                if (resolveResult.isFinished()) {
+            if (character.getCommandView() == null || processableItemHolder.isParagraphDataHolder()) {
+                if (processableItemHolder.isParagraphDataHolder()) {
+                    final ParagraphData paragraphData = processableItemHolder.getParagraphData();
+                    if (doBasicExecution) {
+                        executeBasics(resolvationData, paragraphData);
+                    } else {
+                        doBasicExecution = true;
+                    }
+                    resolveBasicCommands(resolvationData, paragraphData);
+                    addAll(itemsToProcess, paragraphData.getCommands());
+                    handleReward(resolvationData, paragraphData);
                     itemsToProcess.remove(processableItemHolder);
+                } else {
+                    final Command command = processableItemHolder.getCommand();
+                    final CommandResolveResult resolveResult = resolveComplexCommands(resolvationData, paragraph, command, character);
+                    if (resolveResult.isFinished()) {
+                        itemsToProcess.remove(processableItemHolder);
+                    }
                 }
+            } else {
+                break;
             }
-
         }
     }
 
@@ -191,19 +194,21 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
      * @param itemHandler the {@link CharacterItemHandler} object
      */
     protected void loseItems(final ParagraphData subData, final Character character, final CharacterItemHandler itemHandler) {
-        for (final GatheredLostItem item : subData.getLostItems()) {
+        final List<GatheredLostItem> lostItems = subData.getLostItems();
+        for (final GatheredLostItem item : lostItems) {
             logger.debug("Lost item {}", item.getId());
             itemHandler.removeItem(character, item.getId(), item.getAmount());
         }
-        subData.getLostItems().clear();
+        lostItems.clear();
     }
 
     private void gatherItems(final ParagraphData subData, final Character character, final CharacterItemHandler itemHandler) {
-        for (final GatheredLostItem item : subData.getGatheredItems()) {
+        final List<GatheredLostItem> gatheredItems = subData.getGatheredItems();
+        for (final GatheredLostItem item : gatheredItems) {
             logger.debug("Gathered item {}", item.getId());
             itemHandler.addItem(character, item.getId(), item.getAmount());
         }
-        subData.getGatheredItems().clear();
+        gatheredItems.clear();
     }
 
     private CommandResolveResult resolveComplexCommands(final ResolvationData resolvationData, final Paragraph paragraph, final Command command,
