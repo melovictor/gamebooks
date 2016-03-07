@@ -692,7 +692,94 @@
     </itemCheck>
     <next id="300"></next>
   </p>
-  <!-- 79 -->
+  <p id="79">
+    <text>
+        [p]- Ó, egy kereskedő, akárcsak mi magunk, nemdebár? Nos, mi szívesen cserélünk, nem igaz? Lássuk csak, mit tud a barátunk felajánlani nekünk. - Az öreg Elf leül, és kéri, hogy mutasd meg nekik a tárgyaidat. Bármelyik tárgyadat kiválaszthatod (kivéve a fegyveredet), amit élelemre cserélnél, de ekkor kockadobással kell megállapítanod, milyen ügyesen tudsz cserélni.[/p]
+        [div data-market=""][/div]
+    </text>
+    <market mustGiveUp="1">
+      <purchaseLabel>Melyik tárgyadat próbálod meg élelemre cserélni?</purchaseLabel>
+      <purchase price="0" stock="1" id="3001" />
+      <purchase price="0" stock="1" id="3002" />
+      <purchase price="0" stock="1" id="3007" />
+      <purchase price="0" stock="1" id="3008" />
+      <purchase price="0" stock="1" id="3009" />
+      <purchase price="0" stock="1" id="3010" />
+      <purchase price="0" stock="1" id="3011" />
+      <purchase price="0" stock="1" id="3012" />
+      <purchase price="0" stock="1" id="3013" />
+      <purchase price="0" stock="1" id="3014" />
+      <purchase price="0" stock="1" id="3015" />
+      <purchase price="0" stock="1" id="3016" />
+      <purchase price="0" stock="1" id="3017" />
+      <purchase price="0" stock="1" id="3018" />
+      <purchase price="0" stock="1" id="3019" />
+      <purchase price="0" stock="1" id="3020" />
+      <purchase price="0" stock="1" id="3021" />
+      <purchase price="0" stock="1" id="3022" />
+      <purchase price="0" stock="1" id="3023" />
+      <purchase price="0" stock="1" id="3024" />
+      <purchase price="0" stock="1" id="3025" />
+      <purchase price="0" stock="1" id="3026" />
+      <purchase price="0" stock="1" id="3027" />
+      <purchase price="0" stock="1" id="3028" />
+      <purchase price="0" stock="1" id="3029" />
+      <purchase price="0" stock="1" id="3030" />
+      <purchase price="0" stock="1" id="3031" />
+      <purchase price="0" stock="1" id="3032" />
+      <purchase price="0" stock="1" id="3034" />
+      <purchase price="0" stock="1" id="3035" />
+      <purchase price="0" stock="1" id="3036" />
+      <purchase price="0" stock="1" id="3037" />
+      <purchase price="0" stock="1" id="3038" />
+      <purchase price="0" stock="1" id="3039" />
+      <purchase price="0" stock="1" id="3042" />
+      <purchase price="0" stock="1" id="3043" />
+      <purchase price="0" stock="1" id="3044" />
+      <purchase price="0" stock="1" id="3045" />
+      <purchase price="0" stock="1" id="3046" />
+      <purchase price="0" stock="1" id="3047" />
+      <purchase price="0" stock="1" id="3048" />
+      <purchase price="0" stock="1" id="3049" />
+      <purchase price="0" stock="1" id="3050" />
+      <purchase price="0" stock="1" id="3051" />
+      <purchase price="0" stock="1" id="3052" />
+      <purchase price="0" stock="1" id="3053" />
+      <purchase price="0" stock="1" id="3054" />
+      <purchase price="0" stock="1" id="3055" />
+      <purchase price="0" stock="1" id="3056" />
+      <purchase price="0" stock="1" id="3057" />
+      <purchase price="0" stock="1" id="3201" />
+      <purchase price="0" stock="1" id="3202" />
+      <purchase price="0" stock="1" id="3203" />
+      <purchase price="0" stock="1" id="3204" />
+      <purchase price="0" stock="1" id="3205" />
+      <emptyHanded>
+        <text>
+            [p]A hátizsákodat végignézve azonban kénytelen vagy megállapítani, hogy semmit nem tudsz felajánlani az Elfeknek.[/p]
+        </text>
+        <next id="288"></next>
+      </emptyHanded>
+      <after>
+        <test against="skill">
+          <success>
+            <text>
+                [p]Sikerül meggyőznöd őket, hogy ajánlatodat elfogadják, és cserébe élelmet kapj tőlük.[/p]
+            </text>
+            <gatherItem id="2000" />
+            <next id="163"></next>
+          </success>
+          <failure>
+            <text>
+                [p]Nem fogják elfogadni az ajánlatodat, és egy másik tárggyal kell ugyanezt végigjátszanod.[/p]
+            </text>
+            <next id="79">Ha újrapróbálkoznál</next>
+            <next id="288">Ha mégsem cserélnél velük</next>
+          </failure>
+        </test>
+      </after>
+    </market>
+  </p>
   <p id="80">
     <text>
         [p]Húzz ki egy adagot az Élelmedből. A Róka éhesen esik neki az ételnek, fél szemmel azonban figyeli, hogyan hagyod el a sziklát és folytatod utadat.[/p]
@@ -885,7 +972,12 @@
     <next id="257">Ha nem tágítasz és megvárod, mit tesznek</next>
     <next id="313">Ha kardot rántasz</next>
   </p>
-  <!-- 112 -->
+  <p id="112">
+    <text>
+        [p]A morgás csak nem marad abba. Ekkor az öreg Elf odalép hozzád, és így szól: - Jól van, idegen! Lehet, hogy csábítóan hatnak rád a mi árucikkeink, hisz kereskedők vagyunk. Gyere, megmutatjuk, mit tudunk felajánlani neked. Kövess, kérlek! - Kivezet a konyhasátorból és te utánamész.[/p]
+    </text>
+    <next id="315"></next>
+  </p>
   <p id="113">
     <text>
         [p]Merre indulsz?[/p]
@@ -1927,7 +2019,55 @@
   <!-- 234 -->
   <!-- 235 -->
   <!-- 236 -->
-  <!-- 237 -->
+  <p id="237">
+    <text>
+        [p]Letáborozol. Elalvás előtt ehetsz.
+    </text>
+    <canEat />
+    <itemCheck type="item" id="3101">
+      <have>
+        <text>
+            2
+        </text>
+        <changeItem attribute="stamina" id="2000" set="2" />
+      </have>
+      <dontHave>
+        <text>
+            1
+        </text>
+        <changeItem attribute="stamina" id="2000" set="1" />
+      </dontHave>
+      <after>
+        <text>
+            ÉLETERŐ pontot nyersz, ha így teszel.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="237a"></next>
+  </p>
+  <p id="237a" display="237">
+    <text>
+        [p]Letáborozol. Elalvás előtt ehetsz. Lefekszel aludni. Éjszaka állandóan felébredsz valamiféle hangokra, de azért tudsz egy keveset aludni, és hajnalban folytatod utadat. Nyersz 1 ÉLETERŐ pontot, amiért pihentél.
+    </text>
+    <add amount="1" to="stamina" />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            Vonj le 3 ÉLETERŐ pontot, mivel tegnap nem ettél semmit.
+        </text>
+        <add amount="-3" to="stamina" />
+      </have>
+      <dontHave>
+        <gatherItem id="4101" />
+      </dontHave>
+      <after>
+        <text>
+            [/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="11"></next>
+  </p>
   <!-- 238 -->
   <p id="239">
     <text>
@@ -2836,7 +2976,34 @@
   </p>
   <!-- 342 -->
   <!-- 343 -->
-  <!-- 344 -->
+  <p id="344">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3036">
+      <have>
+        <text>
+            [p]A magasba emeled az Aranyhátú Tükröt, és varázsolsz.[/p]
+        </text>
+        <test against="luck">
+          <success>
+            <next id="381"></next>
+          </success>
+          <failure>
+            <next id="365"></next>
+          </failure>
+        </test>
+      </have>
+      <dontHave>
+        <text>
+            [p]A teremtmény megtámad, miközben varázsolni próbálsz - vesztesz 2 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="188"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="345">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot. Varázslatod hatására védetté válsz mindennemű varázslattal szemben. Sajnos igyekezeted hiábavaló volt, mert semmiféle varázslat nincs a közeledben. Időközben a Bogár rád támad, és beléd mar. Újabb 2 ÉLETERŐ pontot vesztesz a sebesülésed miatt. Ránts kardot![/p]
@@ -2909,7 +3076,46 @@
     <add to="stamina" amount="-4" />
     <next id="309"></next>
   </p>
-  <!-- 356 -->
+  <p id="356">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3054">
+      <have>
+        <text>
+            [p]Fölveszed az Aranyékszert és varázsolsz. A teremtmények megállnak és dühük egy-kettőre elszáll. Kíváncsian néznek rád. Bunkósbotjaikat leeresztik és odadörmögnek neked valamit. Nem érted a nyelvüket (ha ezt egyáltalán nyelvnek lehet nevezni), de kézmozdulatokkal valahogy sikerül megértenetek egymást. A teremtmények megfordulnak és távoznak. Most már folytathatod az utadat. Csak 1 ÉLETERŐ pont jutalmat kapsz az éjszakai pihenőért, mert álmodat megzavarták.
+        </text>
+        <add amount="1" to="stamina" />
+        <itemCheck type="item" id="4101">
+          <have>
+            <text>
+                Vonj le magadtól 3 ÉLETERŐ pontot, hiszen tegnap nem ettél semmit.
+            </text>
+            <add amount="-3" to="stamina" />
+          </have>
+          <dontHave>
+            <gatherItem id="4101" />
+          </dontHave>
+          <after>
+            <text>
+                Most összeszedelődzködhetsz és távozhatsz innen.[/p]
+            </text>
+          </after>
+        </itemCheck>
+        <next id="83">Ha északnyugat felé indulsz</next>
+        <next id="283">Ha észak-északnyugat felé mész</next>
+        <next id="60">Ha egyenesen északnak tartasz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Ez a varázslat nem fog működni, és amíg a varázslással bajlódsz, a teremtmények rád támadnak - vesztesz 2 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="188"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 357 -->
   <!-- 358 -->
   <!-- 359 -->
@@ -2924,7 +3130,13 @@
     <add to="stamina" amount="-4" />
     <next id="45"></next>
   </p>
-  <!-- 365 -->
+  <p id="365">
+    <text>
+        [p]Miközben varázsolsz, az egyik teremtmény belevágja a Tükörbe a bunkósbotját, és a Tükör kiesik a kezedből. A földön darabokra törik. Ezt a Tükröt többé már nem használhatod. Hagyd ott, ahol van, és rántsd elő a kardodat.[/p]
+    </text>
+    <loseItem id="3036" />
+    <next id="188"></next>
+  </p>
   <p id="366">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot. Varázsolsz, és a ,,belső hangra'' vársz, amely figyelmeztet, ha netán valami veszély leselkedne rád. Egészen biztos, hogy az Öreg Elf csapdába csal.[/p]
@@ -2986,7 +3198,12 @@
     <add to="stamina" amount="-3" />
     <next id="258"></next>
   </p>
-  <!-- 381 -->
+  <p id="381">
+    <text>
+        [p]Miközben varázsolsz, az egyik teremtmény a Tükörhöz vágja a buzogányát, erre a Tükör kiesik a kezedből és a földre zuhan. Még a lélegzeted is eláll ijedtedben, de szerencsédre a Tükör nem törik szét, és így a legelső adandó alkalommal felveheted majd.[/p]
+    </text>
+    <next id="188"></next>
+  </p>
   <p id="382">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -3325,7 +3542,27 @@
   <!-- 436 -->
   <!-- 437 -->
   <!-- 438 -->
-  <!-- 439 -->
+  <p id="439">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3032">
+      <have>
+        <text>
+            [p]A csuklódra húzod a Csont karperecet és varázsolsz. Most a szemük láttára változol át hatalmas Szarvas Démonná, melynek orrlyukaiból lángnyelvek lövellnek feléjük. Jól gondoltad - ezek a primitív lények nagyon babonásak és átváltozásodat azzal magyarázzák, hogy isteneik elpártoltak tőlük. Megparancsolod nekik, hogy adják át neked a tulajdonukban lévő tárgyakat, és távozzanak. Rettegve teljesítik parancsodat.[/p]
+        </text>
+        <next id="251"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem alkalmazhatod ezt a varázslatot, és amíg a varázslással bajlódsz, a teremtmény rád támad - vesztesz 2 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="188"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="440">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot. Amikor varázslatod hatására hatalmasra nősz, a Bogár megáll. Kétszeres ÜGYESSÉG ponttal támadsz rá.[/p]
@@ -3406,7 +3643,29 @@
     <add to="stamina" amount="-4" />
     <next id="185"></next>
   </p>
-  <!-- 456 -->
+  <p id="456">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3028">
+      <have>
+        <text>
+            [p]Az arcod elé tartod a Fekete Maszkot, és varázsolsz. A varázslat félelemmel tölti el a teremtményeket, s ez előnyt jelent majd a számodra a velük való küzdelemben. Vonj le 2 pontot a teremtmények Támadóerejéből arra az időre, amíg félelmük meg nem szűnik.[/p]
+        </text>
+        <changeEnemy attribute="attackStrengthBonus" id="28" set="-2" />
+        <changeEnemy attribute="attackStrengthBonus" id="29" set="-2" />
+        <changeEnemy attribute="attackStrengthBonus" id="30" set="-2" />
+      </have>
+      <dontHave>
+        <text>
+            [p]Ez a varázslat nem fog működni, és a teremtmény rád támad, amíg a varázslással vagy elfoglalva - vesztesz 2 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+      </dontHave>
+    </itemCheck>
+    <next id="188"></next>
+  </p>
   <p id="457">
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot. Nyugodtan varázsolsz, és megparancsolod a Klattaembernek, hogy ne mozduljon a helyéről. Sajnos a terved csődöt mond! Ez a varázslat nincs hatással ellenfeledre! Előrántod a kardodat, és felkészülsz a harcra.[/p]
@@ -3486,7 +3745,27 @@
   </p>
   <!-- 473 -->
   <!-- 474 -->
-  <!-- 475 -->
+  <p id="475">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3205">
+      <have>
+        <text>
+            [p]A földhöz vágod az Óriásfogat. Éppen varázsolni akarnál, amikor az egyik teremtmény felkapja a fogat a földről és zsebre vágja! Úgy látszik, valami értékes tárgynak hitte. Rántsd elő a kardodat.[/p]
+        </text>
+        <loseItem id="3205" />
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem alkalmazhatod ezt a varázslatot, és amíg a varázslással bajlódsz, az egyik teremtmény lecsap rád - vesztesz 2 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+      </dontHave>
+    </itemCheck>
+    <next id="188"></next>
+  </p>
   <p id="476">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot. Varázsolsz, és várod a hatást, de semmi sem történik. Varázslatod arra jó, hogy bezárt ajtókat nyisson ki! Időközben az egyik Kentaur egy újabb nyílvesszőt lő ki feléd. [/p]
