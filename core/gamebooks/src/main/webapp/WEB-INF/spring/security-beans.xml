@@ -9,6 +9,9 @@
   <bean class="com.google.common.cache.CacheBuilder" factory-method="newBuilder" id="cacheBuilder" />
   <bean id="gamebooksAccessDeniedHandler" class="hu.zagor.gamebooks.security.GamebooksAccessDeniedHandler" />
 
+  <util:map id="authorizationCodeContainer" key-type="java.lang.String" value-type="java.lang.String">
+  </util:map>
+
   <beans profile="dev">
     <bean class="hu.zagor.gamebooks.mvc.login.facade.DummyLoginFacade" id="activeLoginFacade" p:dummyUsers-ref="dummyUserMap" />
     <!--

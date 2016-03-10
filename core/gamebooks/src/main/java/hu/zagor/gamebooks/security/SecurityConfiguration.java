@@ -49,7 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         http.addFilterAfter(new ResourceSkippingCharacterEncodingFilter(), WebAsyncManagerIntegrationFilter.class);
         http.addFilterAfter(new SessionFilter(), WebAsyncManagerIntegrationFilter.class);
-        http.authorizeRequests().antMatchers("/resources/**").permitAll().anyRequest().authenticated();
+        http.authorizeRequests().antMatchers("/resources/**", "/authCode").permitAll().anyRequest().authenticated();
         http.csrf().requireCsrfProtectionMatcher(requestMatcher);
         http.formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccessful", true).failureHandler(loginResultHandler).permitAll();
         http.logout().addLogoutHandler(logoutHandler).logoutSuccessUrl("/login").permitAll();

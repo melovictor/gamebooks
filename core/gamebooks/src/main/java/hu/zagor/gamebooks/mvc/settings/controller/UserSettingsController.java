@@ -14,6 +14,7 @@ import java.lang.management.ManagementFactory;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,7 @@ public class UserSettingsController extends LanguageAwareController {
 
     @LogInject private Logger logger;
 
+    @Resource(name = "authorizationCodeContainer") private Map<String, String> authorizationCodeContainer;
     @Autowired private UserSettingsHandler userSettingsHandler;
     @Autowired private DefaultSettingsHandler defaultSettingsHandler;
     @Autowired private EnvironmentDetector environmentDetector;
@@ -61,6 +63,7 @@ public class UserSettingsController extends LanguageAwareController {
         model.addAttribute("environment", environmentDetector);
         model.addAttribute("nums6", generator6.getThrownResults());
         model.addAttribute("nums10", generator10.getThrownResults());
+        model.addAttribute("authorizationCodeContainer", authorizationCodeContainer);
         if (player.isAdmin() || environmentDetector.isDevelopment()) {
             model.addAttribute("memoryUsageList", ManagementFactory.getMemoryPoolMXBeans());
         }

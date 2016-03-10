@@ -28,6 +28,11 @@
 				</c:forEach>
 			</table>
 		</div>
+		<div id="authTokens">
+		  <c:forEach var="authTokenEntry" items="${authorizationCodeContainer}">
+		      ${authTokenEntry}<br />
+		  </c:forEach>
+		</div>
 	</c:if>
 	<c:if test="${player.admin && environment.development}">
 		<div id="settings-recording">
