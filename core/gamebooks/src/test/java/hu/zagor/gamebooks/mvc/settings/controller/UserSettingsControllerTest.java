@@ -15,6 +15,7 @@ import hu.zagor.gamebooks.player.settings.DefaultSettingsHandler;
 import hu.zagor.gamebooks.player.settings.UserSettingsHandler;
 import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.HashMap;
@@ -65,6 +66,7 @@ public class UserSettingsControllerTest {
     @Inject private DefaultRandomNumberGenerator generator10;
     private List<Integer> list6;
     private List<Integer> list10;
+    @Instance(inject = true) private Map<String, String> authorizationCodeContainer;
 
     @BeforeClass
     public void setUpClass() {
@@ -163,6 +165,7 @@ public class UserSettingsControllerTest {
         expect(model.addAttribute("nums6", list6)).andReturn(model);
         expect(generator10.getThrownResults()).andReturn(list10);
         expect(model.addAttribute("nums10", list10)).andReturn(model);
+        expect(model.addAttribute("authorizationCodeContainer", authorizationCodeContainer)).andReturn(model);
         expect(model.addAttribute(eq("memoryUsageList"), anyObject(List.class))).andReturn(model);
         return capturer;
     }
