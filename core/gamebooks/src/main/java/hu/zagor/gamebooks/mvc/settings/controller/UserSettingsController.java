@@ -63,8 +63,8 @@ public class UserSettingsController extends LanguageAwareController {
         model.addAttribute("environment", environmentDetector);
         model.addAttribute("nums6", generator6.getThrownResults());
         model.addAttribute("nums10", generator10.getThrownResults());
-        model.addAttribute("authorizationCodeContainer", authorizationCodeContainer);
         if (player.isAdmin() || environmentDetector.isDevelopment()) {
+            model.addAttribute("authorizationCodeContainer", authorizationCodeContainer);
             model.addAttribute("memoryUsageList", ManagementFactory.getMemoryPoolMXBeans());
         }
         return "settings";
