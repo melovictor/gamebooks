@@ -21,6 +21,8 @@ import hu.zagor.gamebooks.support.logging.LogInject;
 import java.io.IOException;
 import java.net.URLConnection;
 import java.util.List;
+import java.util.Map;
+import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
@@ -33,6 +35,7 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
 
     @LogInject private Logger logger;
     @Autowired private ServerCommunicator communicator;
+    @Resource(name = "authorizationCodeContainer") private Map<String, String> authorizationCodeContainer;
 
     @Override
     public void resolve(final ResolvationData resolvationData, final Paragraph paragraph) {
@@ -125,6 +128,7 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
         final Long bookId = resolvationData.getInfo().getId();
         final long id = getRelevantId(reward, bookId);
         part = communicator.compilePostData("bookId", id, part);
+        part = communicator.compilePostData("authCode", authorizationCodeContainer.get("reward"), part);
         return communicator.compilePostData("rewardId", reward.getId(), part);
     }
 
