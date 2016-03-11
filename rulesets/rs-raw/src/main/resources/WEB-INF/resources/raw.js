@@ -18,6 +18,7 @@ var inventory = (function() {
 			if (shouldShow || inventoryVisible) {
 				$("#inventory").show();
 			}
+			initTitles();
 		});
 	}
 	
@@ -238,6 +239,15 @@ var inventory = (function() {
 		$("#gamebookCharacterPageWrapper").removeClass("dropping");
 	}
 
+	function initTitles() {
+		$("span[title], div[title]").tooltip({
+			content: function() {
+				return $(this).attr("title");
+			},
+			show: false,
+			hide: false
+		});
+	}
 	
 	return {
 		loadInventory : loadInventory,
@@ -255,7 +265,8 @@ var inventory = (function() {
 		prepareSingleDrop : prepareSingleDrop,
 		prepareMultiDrop : prepareMultiDrop,
 		finishDrop : finishDrop,
-		dropItem : dropItem
+		dropItem : dropItem,
+		initTitles : initTitles
 	};
 })();
 
@@ -355,11 +366,5 @@ $(function() {
 	$("a[href]").on("click", allowNavigation);
 	$("#MainContent a[href]:not([data-no-multi-navigation])").on("click", preventMultipleNavigation);
 	$("#responseText").focus();
-	$("span[title], div[title]").tooltip({
-		content: function() {
-			return $(this).attr("title");
-		},
-		show: false,
-		hide: false
-	});
+	inventory.initTitles();
 });
