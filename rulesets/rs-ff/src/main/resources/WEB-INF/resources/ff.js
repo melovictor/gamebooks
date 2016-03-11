@@ -243,6 +243,9 @@ var market = (function() {
 			dataType : "json",
 			success : function(data) {
 				totalSales++;
+				if (data.text) {
+					$("<p>").html(data.text).insertBefore($("#marketCommandFinish"));
+				}
 				if (data.giveUpMode && data.giveUpFinished) {
 					close();
 				} else {
