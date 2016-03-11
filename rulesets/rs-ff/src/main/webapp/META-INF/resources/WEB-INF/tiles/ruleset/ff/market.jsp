@@ -6,7 +6,7 @@
     <input type="hidden" id="mustHaveGold" value="${marketCommand.mustHaveGold}" />
     <input type="hidden" id="mustBuy" value="${marketCommand.mustBuy}" />
     <input type="hidden" id="mustSellExactly" value="${marketCommand.mustSellExactly}" />
-    <c:if test="${not empty marketCommand.itemsForSale}">
+    <c:if test="${marketCommand.itemsForSaleCount > 0}">
         <h2>
             <c:if test="${not empty marketCommand.saleLabel}">
                 ${marketCommand.saleLabel }
@@ -30,8 +30,7 @@
         </div>
     </c:if>
     
-
-    <c:if test="${not empty marketCommand.itemsForPurchase}">
+    <c:if test="${marketCommand.itemsForPurchaseCount > 0}">
         <h2>
 	        <c:if test="${not empty marketCommand.purchaseLabel}">
 	            ${marketCommand.purchaseLabel }

@@ -58,6 +58,22 @@ public class MarketCommand extends Command {
         return itemsForPurchase;
     }
 
+    public int getItemsForPurchaseCount() {
+        return getTotalCount(itemsForPurchase);
+    }
+
+    public int getItemsForSaleCount() {
+        return getTotalCount(itemsForSale);
+    }
+
+    private int getTotalCount(final List<MarketElement> items) {
+        int total = 0;
+        for (final MarketElement element : items) {
+            total += element.getStock();
+        }
+        return total;
+    }
+
     public FfParagraphData getAfter() {
         return after;
     }
