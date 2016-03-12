@@ -626,7 +626,12 @@
     </text>
     <next id="176"></next>
   </p>
-  <!-- 65 -->
+  <p id="65">
+    <text>
+        [p]Mögötted kitör a vihar. A feltámadt szél hatalmas köveket és földet sodor magával. Szerencsére te a vihartól elég távol vagy, épp sikeresen elkerülted, épp hogy csak meglegyint a szele.[/p]
+    </text>
+    <next id="73"></next>
+  </p>
   <!-- 66 -->
   <!-- 67 -->
   <!-- 68 -->
@@ -982,7 +987,13 @@
     <next id="95"></next>
   </p>
   <!-- 81 -->
-  <!-- 82 -->
+  <p id="82">
+    <text>
+        [p]Otthagyod őket. - Állj! - dörren rád a kísérteties hang. - Egyetlen lépést sem tehetsz északnak![/p]
+    </text>
+    <next id="116">Ha megállsz, ahogy parancsolják, és megvárod, mit mondanak</next>
+    <next id="140">Ha nem törődsz velük és továbbmész</next>
+  </p>
   <p id="83">
     <text>
         [p]Egyre csak mész. A kietlen vidék nem köti le a figyelmedet, de a távolban feltűnik a hatalmas erdő szegélye, ahová épp igyekszel. Ha szerencséd van, még az est leszállta előtt odaérsz. Jeges szél süvít át az ösvényen, és megborzongsz. Nem sokkal kés őbb egy újabb széllökés érkezik, amely majdnem ledönt a lábadról. A fejed fölött sötét felhők gyülekeznek, és mennydörgés zúg végig az égen. Tőled keletre és nyugatra azonban teljesen tiszta az égbolt. Úgy látszik, a vihar kellős közepébe kerültél![/p]
@@ -1489,7 +1500,19 @@
     <death />
   </p>
   <!-- 127 -->
-  <!-- 128 -->
+  <p id="128">
+    <text>
+        [p]Határozott léptekkel mész előre, megpróbálsz elmenekülni a vihar elől.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="65"></next>
+      </success>
+      <failure>
+        <next id="328"></next>
+      </failure>
+    </test>
+  </p>
   <p id="129">
     <text>
         [p]Fölemeled a gyűrűt, erre a Sárkánykígyó hangosan felszisszen: - Bolond kalandor, csak nem képzeled, hogy a gyűrűd megvéd a haragomtól? Biztos halál vár rád! De a gyűrű miatt fel kell tárnom előtted a titkomat. Négyen őrzik a Mampangi Erőd bejáratát. Ezt az információt azonban semmire sem használhatod, mert soha nem fogsz eljutni a Mampangi Erődbe. - Most pedig küzdj meg a Kígyóval.[/p]
@@ -1542,7 +1565,12 @@
   </p>
   <!-- 138 -->
   <!-- 139 -->
-  <!-- 140 -->
+  <p id="140">
+    <text>
+        [p]Jól sejtetted, csak rád akartak ijeszteni. Élettelen testük nem jelent igazi veszélyt a számodra. Mikor már jó pár méterre eltávolodtál tőlük, visszanézel, de mind eltűntek! Továbbmész utad következő állomására, a Snatta Erdőbe.[/p]
+    </text>
+    <next id="133"></next>
+  </p>
   <p id="141">
     <text>
         [p]Köveket és apróbb szikladarabokat sodort magával a vihar. Miközben kezeddel a fejedet védve a hasadékban állsz, elképzelhet ő, hogy megsérülsz a szélfútta törmeléktől.[/p]
@@ -2254,7 +2282,13 @@
     <next id="298">Ha elfogadod az ajánlatát, és mostantól fogva Throffot fogod imádni (ha ezt teszed, soha többé nem hívhatod segítségül Librát), hogy élve kiszabadulj innen</next>
     <next id="238">Ha megtagadod a kérését, még akkor is, ha szembe kell nézned a haragjával</next>
   </p>
-  <!-- 207 -->
+  <p id="207">
+    <text>
+        [p]Kardot rántasz, és határozott léptekkel megindulsz előre. Megkísérelsz átvágni a szellemek gyűrűjén, de amint megmozdulsz, a hang ismét megszólal: - Állj meg, te bolond teremtmény! Ez az utolsó figyelmeztetés, és moccanni sem fogsz többé, ha nem hallgatsz rám![/p]
+    </text>
+    <next id="140">Ha nem törődsz a figyelmeztetéssel és továbbmész</next>
+    <next id="232">Ha úgy gondolod, hogy jobb lesz megállni</next>
+  </p>
   <!-- 208 -->
   <!-- 209 -->
   <p id="210">
@@ -2552,11 +2586,22 @@
     <next id="69">Közlöd velük, hogy igencsak fáradt vagy és szeretnél lepihenni éjszakára?</next>
     <next id="315">Megkéred őket, hogy mutassák meg portékáikat, ha valóban kereskedők?</next>
   </p>
-  <!-- 232 -->
+  <p id="232">
+    <text>
+        [p]- Bölcsen cselekedtél, halandó, nagyon bölcsen. - A kísértet hangja megnyugszik.[/p]
+    </text>
+    <next id="166">Ha most azt kéred tőlük, hogy mondják el neked a varázsdaluk szövegét</next>
+    <next id="323">Ha arra kéred őket, hogy fedjék fel előtted igazi énjüket</next>
+  </p>
   <!-- 233 -->
   <!-- 234 -->
   <!-- 235 -->
-  <!-- 236 -->
+  <p id="236">
+    <text>
+        [p]A hőség egyre nő, ahogy az izzó sziklák áttörik a föld felszínét. Patakzik rólad a veríték, ezért vonj le magadtól 1 ÉLETERŐ pontot. Jobb lesz, ha megpróbálsz kimászni a gödörből.[/p]
+    </text>
+    <next id="211"></next>
+  </p>
   <p id="237">
     <text>
         [p]Letáborozol. Elalvás előtt ehetsz.
@@ -2974,7 +3019,31 @@
     <next id="198">Ha az üzletükbe szeretnél ellátogatni, és megnézni, Vajon miféle eladnivaló vagy cserélnivaló portékájuk van</next>
     <next id="26">Ha megkérded tőlük, hogy megpihenhetnél-e náluk éjszakára</next>
   </p>
-  <!-- 276 -->
+  <p id="276">
+    <text>
+        [p]A hőség egyre elviselhetetlenebb, és kiveri a homlokodat a verejték. Tőled jobbra ismét meghasad a föld, és egy újabb izzó szikla bújik ki alóla, majd balról egy másik is. Már patakzik rólad a víz, és képtelen vagy elviselni a hőséget. Vesztesz 2 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="BAG" id="418" />
+        <spell name="HOM" id="371" />
+        <spell name="ERŐ" id="486" />
+        <spell name="DOK" id="348" />
+        <spell name="FIX" id="406" />
+        <next id="211">Ha úgy döntesz, hogy megpróbálsz kimászni a gödörből</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Úgy döntesz, hogy megpróbálsz kimászni a gödörből.[/p]
+        </text>
+        <next id="211"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 277 -->
   <!-- 278 -->
   <!-- 279 -->
@@ -3795,7 +3864,12 @@
     <next id="143"></next>
   </p>
   <!-- 327 -->
-  <!-- 328 -->
+  <p id="328">
+    <text>
+        [p]Fölötted megdördül az ég, és félelmed beigazolódik. A vihar téged követ! Menedéket keresel, de nem találsz! A vihar perceken belül kitör. Nem tudsz mit tenni, jól összehúzod magadon a ruhádat, és nekivágsz az útnak.[/p]
+    </text>
+    <next id="247"></next>
+  </p>
   <!-- 329 -->
   <!-- 330 -->
   <!-- 331 -->
@@ -3917,7 +3991,42 @@
   </p>
   <!-- 346 -->
   <!-- 347 -->
-  <!-- 348 -->
+  <p id="348">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="items" id="2001 or 3001">
+      <have>
+        <itemCheck type="item" id="3001">
+          <have>
+            <text>
+                [p]Felhajtod a Gyógyfűfőzetet
+            </text>
+            <loseItem id="3001" />
+          </have>
+          <dontHave>
+            <text>
+                [p]Felhajtod a Bugyabogyószörpöt
+            </text>
+            <loseItem id="2001" />
+          </dontHave>
+          <after>
+            <text>
+                és varázsolsz. Varázslatod segítségével teljesen meggyógyulsz, és ÉLETERŐ pontjaidat visszaállíthatod a [em]Kezdeti[/em] értékre. Ezt követően már csak gyorsan ki kell másznod ebből a gödörből.[/p]
+            </text>
+          </after>
+        </itemCheck>
+        <next id="211"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslatnak nincs semmi hatása.[/p]
+        </text>
+        <next id="236"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="349">
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot. Varázslatod hatására egy Tűzgolyó száll fel és a Róka felé röpül. Amikor a tűzgolyó becsapódik az állat testébe, annak szőre lángba borul - de a Róka sértetlen marad! Ránts kardot és küzdj meg vele.[/p]
@@ -4124,7 +4233,27 @@
     <add to="stamina" amount="-4" />
     <next id="286"></next>
   </p>
-  <!-- 371 -->
+  <p id="371">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3027">
+      <have>
+        <text>
+            [p]Rászórod a homokot a forró sziklára és varázsolsz. Varázslatod hatására a szikla körül futóhomok képződik, és a szikla fortyogva, bugyborékolva süllyed a föld alá. Amikor eltűnik a szemed elől, lehetőséged nyílik rá, hogy kimássz a gödörből.[/p]
+        </text>
+        <loseItem id="3027" />
+        <next id="43"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Ez a varázslat nem fog működni.[/p]
+        </text>
+        <next id="236"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="372">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot![/p]
@@ -4458,7 +4587,13 @@
     </itemCheck>
     <next id="45"></next>
   </p>
-  <!-- 406 -->
+  <p id="406">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot. A varázslat teljesen hatástalan. A meleg egyre fokozódik, vonj le magadtól 2 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <next id="236"></next>
+  </p>
   <p id="407">
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot. Varázslatod hatására egy izzó tűzgolyó gördül neki a kis kígyónak. Csak egy lobbanást látsz, és a kígyó eltűnik, csak szénné égett csontváza marad hátra. Most már elmehetsz innen.[/p]
@@ -4528,7 +4663,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 418 -->
+  <p id="418">
+    <text>
+        [p]Vesztesz 5 ÉLETERŐ pontot. Nincs ilyen varázslat.[/p]
+    </text>
+    <add to="stamina" amount="-5" />
+    <next id="236"></next>
+  </p>
   <!-- 419 -->
   <p id="420">
     <text>
@@ -4728,7 +4869,13 @@
     <add to="stamina" amount="-2" />
     <next id="157"></next>
   </p>
-  <!-- 447 -->
+  <p id="447">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Varázsolsz, de nem történik semmi! Ezt a varázslatot nyilvánvalóan nem tudod alkalmazni ebben a helyzetben, és miközben azon fáradozol, hogy varázslatod működjék, a nyakadba zúdul a rengeteg kő. Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="30"></next>
+  </p>
   <!-- 448 -->
   <!-- 449 -->
   <p id="450">
@@ -4755,7 +4902,13 @@
       </win>
     </fight>
   </p>
-  <!-- 453 -->
+  <p id="453">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Ez a varázslat az alázúduló sziklákra nem hat![/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="30"></next>
+  </p>
   <!-- 454 -->
   <p id="455">
     <text>
@@ -4961,7 +5114,27 @@
     </random>
     <next id="70"></next>
   </p>
-  <!-- 477 -->
+  <p id="477">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="goldpiece" id="1">
+      <have>
+        <text>
+            [p]Egy védőpajzsot varázsolsz egy Aranytallérod segítségével, mely megóv a kőzáportól. Ezt a védőpajzsot alkalmazva nem vesztesz egyetlen ÉLETERŐ pontot sem.[/p]
+        </text>
+        <add amount="-1" to="gold" goldOnly="true" />
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem alkalmazhatod ezt a varázslatot, és az alázúduló kövek 2 ÉLETERŐ pont sérülést ejtenek rajtad.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+      </dontHave>
+    </itemCheck>
+    <next id="30"></next>
+  </p>
   <p id="478">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot. Egy halom kincset varázsolsz, de a Szikladémon nem is törődik vele. Kezével megragadja a melledet. Újabb 2 ÉLETERŐ pontot vesztesz. Válassz újra.[/p]
@@ -5020,7 +5193,13 @@
   </p>
   <!-- 484 -->
   <!-- 485 -->
-  <!-- 486 -->
+  <p id="486">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot, Varázslatod hatására láthatatlan erőtér vesz körül, amelyen semmi sem hatolhat át. Sajnos ez az erőtér nem képes megakadályozni azt, hogy ne érezd a lábadhoz közeli sziklák perzselő melegét.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="236"></next>
+  </p>
   <p id="487">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot. Miután varázsoltál, a Halálszellem megáll és a fejét ingatja. Némán rád néz, majd feltekint az égre. Most rajtad a sor, hogy támadj. Ránts kardot, és küzdj meg vele. Zavarodottságában most kissé gyengébb.[/p]
