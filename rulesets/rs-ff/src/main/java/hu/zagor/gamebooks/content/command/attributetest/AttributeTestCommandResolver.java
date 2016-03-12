@@ -66,6 +66,10 @@ public class AttributeTestCommandResolver extends TypeAwareCommandResolver<Attri
             if (resultParagraphData != null) {
                 responseList.add(resultParagraphData.clone());
             }
+            final FfParagraphData after = command.getAfter();
+            if (after != null) {
+                responseList.add(after.clone());
+            }
         } catch (final CloneNotSupportedException e) {
             logger.error("Failed to clone object '{}'.", resultParagraphData);
         }
@@ -119,6 +123,10 @@ public class AttributeTestCommandResolver extends TypeAwareCommandResolver<Attri
         if (interactionHandler.getAttributeTestType(character) == AttributeTestDecision.TEST) {
             final List<String> messages = new ArrayList<String>();
             responseList.add(getResultParagraphData(command, locale, resolvationData, messages));
+            final FfParagraphData after = command.getAfter();
+            if (after != null) {
+                responseList.add(after);
+            }
             appendText(responseList.get(0), messages.get(0), true);
 
             if ("luck".equals(command.getAgainst())) {

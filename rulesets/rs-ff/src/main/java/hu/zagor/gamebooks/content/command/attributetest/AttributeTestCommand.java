@@ -35,6 +35,7 @@ public class AttributeTestCommand extends Command {
     private FfParagraphData failureEven;
     private FfParagraphData failureOdd;
     private FfParagraphData skipped;
+    private FfParagraphData after;
 
     private boolean testSuccess;
     private boolean canSkip;
@@ -106,6 +107,7 @@ public class AttributeTestCommand extends Command {
 
         cloned.success = cloneList(success);
         cloned.failure = cloneList(failure);
+        cloned.after = cloneObject(after);
         cloned.skipped = cloneObject(skipped);
         cloned.failureEven = cloneObject(failureEven);
         cloned.failureOdd = cloneObject(failureOdd);
@@ -227,6 +229,14 @@ public class AttributeTestCommand extends Command {
 
     public void setSkipped(final FfParagraphData skipped) {
         this.skipped = skipped;
+    }
+
+    public FfParagraphData getAfter() {
+        return after;
+    }
+
+    public void setAfter(final FfParagraphData after) {
+        this.after = after;
     }
 
 }
