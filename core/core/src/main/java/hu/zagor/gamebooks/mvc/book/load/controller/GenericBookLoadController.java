@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.ControllerAddresses;
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.books.saving.GameStateHandler;
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
+import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.choice.Choice;
@@ -78,6 +79,8 @@ public abstract class GenericBookLoadController extends AbstractSectionDisplayin
 
         doLoadPrevious(request, response, container);
         prepareNextChoice(wrapper, continuationData);
+        final Character character = (Character) container.getElement(ControllerAddresses.CHARACTER_STORE_KEY);
+        character.getParagraphs().clear();
         response.sendRedirect(continuationData.getContinuationPageName());
     }
 
