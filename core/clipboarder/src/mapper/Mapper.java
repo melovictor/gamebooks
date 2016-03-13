@@ -15,6 +15,7 @@ public class Mapper {
 
     private static final Pattern SECTIONS = Pattern.compile("<p id=\"([a-zA-Z_0-9*]+)\"(.*?)<\\/p>");
     private static final Pattern NAVIGATION = Pattern.compile("<(?:next|spell).*?id=\"([^\"]*)\"");
+    private static final Pattern COLOR = Pattern.compile("color=\"([^\"]+)\"");
 
     public static void main(final String[] args) throws IOException {
         final String root = "c:\\springsource\\eclipsegit\\books";
@@ -74,7 +75,8 @@ public class Mapper {
     }
 
     private static String getMapContent(final String content) {
-        String map = "digraph dotOut {";
+        final StringBuilder map = new StringBuilder("digraph dotOut {");
+        final StringBuilder mapForcedColors = new StringBuilder();
         final Set<String> connections = new HashSet<>();
         final Set<String> connectionsToIgnore = new HashSet<>();
         final Set<String> implementedSections = new HashSet<>();
@@ -86,6 +88,13 @@ public class Mapper {
             final String id = matcher.group(1);
             final String section = matcher.group(2);
             implementedSections.add(id);
+
+            final Matcher colorMatcher = COLOR.matcher(section);
+            if (colorMatcher.find()) {
+                final String color = colorMatcher.group(1);
+                mapForcedColors.append("\"" + id + "\"[fillcolor=" + color + ",style=filled];");
+            }
+
             final Matcher matcher2 = NAVIGATION.matcher(section);
             while (matcher2.find()) {
                 final String next = matcher2.group(1);
@@ -111,19 +120,20 @@ public class Mapper {
         }
         referencedSections.removeAll(implementedSections);
         for (final String id : referencedSections) {
-            map += "\"" + id + "\"[fillcolor=limegreen,style=filled];";
+            map.append("\"" + id + "\"[fillcolor=limegreen,style=filled];");
         }
         for (final String id : gatherItemSections) {
-            map += "\"" + id + "\"[fillcolor=cyan,style=filled];";
+            map.append("\"" + id + "\"[fillcolor=cyan,style=filled];");
         }
         for (final String connection : connections) {
-            map += connection + ";";
+            map.append(connection + ";");
         }
         for (final String id : fightSections) {
-            map += "\"" + id + "\"" + "[shape=diamond];";
+            map.append("\"" + id + "\"" + "[shape=diamond];");
         }
-        map += "}";
-        return map;
+        map.append(mapForcedColors);
+        map.append("}");
+        return map.toString();
     }
 
     private static String getContent(final File xml) throws FileNotFoundException {
