@@ -4,14 +4,18 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
+import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import java.util.List;
+import java.util.Set;
+import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
@@ -28,6 +32,7 @@ public class SingleSor3FightRoundResolver extends SingleFightRoundResolver {
     @Autowired private MessageSource source;
     @Autowired private LocaleProvider provider;
     @Autowired @Qualifier("sorHeroAttackStrengthRoller") private HeroAttackStrengthRoller heroAttackStrengthRoller;
+    @Resource(name = "sor3Snattacats") private Set<String> snattaCat;
 
     @Override
     int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
@@ -50,9 +55,23 @@ public class SingleSor3FightRoundResolver extends SingleFightRoundResolver {
             if (resolvationData.getCharacter().getParagraphs().contains("488")) {
                 enemy.setAttackStrengthBonus(ANGERED_BADDU_BUG_ATTACK_STRENGTH_BONUS);
             }
+        } else if (notLastSnattacatJustDied(command, resolvationData)) {
+            resolvationData.getCharacterHandler().getItemHandler().addItem(resolvationData.getCharacter(), "4008", 2);
         }
 
         return resolveRound;
+    }
+
+    private boolean notLastSnattacatJustDied(final FightCommand command, final ResolvationData resolvationData) {
+        final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) resolvationData.getCharacterHandler().getInteractionHandler();
+        final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
+        final String enemyId = interactionHandler.peekLastFightCommand(character, LastFightCommand.ENEMY_ID);
+        final FfEnemy enemy = (FfEnemy) resolvationData.getEnemies().get(enemyId);
+        return isSnattaCat(enemyId) && isDead(enemy) && command.getResolvedEnemies().size() > 1;
+    }
+
+    private boolean isSnattaCat(final String enemyId) {
+        return snattaCat.contains(enemyId);
     }
 
     private boolean centaurReadyToSurrender(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] resolveRound) {
