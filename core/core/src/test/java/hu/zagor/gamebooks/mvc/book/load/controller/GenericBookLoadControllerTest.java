@@ -6,6 +6,7 @@ import static org.easymock.EasyMock.newCapture;
 import hu.zagor.gamebooks.ControllerAddresses;
 import hu.zagor.gamebooks.books.saving.GameStateHandler;
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
+import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
@@ -20,6 +21,7 @@ import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.easymock.Capture;
@@ -60,6 +62,8 @@ public class GenericBookLoadControllerTest {
     @Mock private ParagraphData data;
     @Mock private ChoiceSet choices;
     private Capture<Choice> choice;
+    @Mock private Character character;
+    @Mock private List<String> paragraphList;
 
     @BeforeClass
     public void setUpClass() {
@@ -154,6 +158,9 @@ public class GenericBookLoadControllerTest {
         expect(data.getChoices()).andReturn(choices);
         expect(choices.add(capture(choice))).andReturn(true);
         paragraph.calculateValidEvents();
+        expect(container.getElement(ControllerAddresses.CHARACTER_STORE_KEY)).andReturn(character);
+        expect(character.getParagraphs()).andReturn(paragraphList);
+        paragraphList.clear();
         response.sendRedirect("s-background");
         mockControl.replay();
         // WHEN
