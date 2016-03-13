@@ -40,6 +40,7 @@ public class FightCommandRoundEventResolverTest {
     @Mock private StatisticsProvider statProvider;
     @Mock private EventStatistics eventStatistics;
     @Mock private FfParagraphData data;
+    @Mock private FfParagraphData clonedData;
     private RoundEvent roundEvent;
     @Instance(inject = true) private Map<FightRoundResult, StatisticsProvider> statProviders;
     @Mock private FightCommandMessageList messages;
@@ -100,29 +101,32 @@ public class FightCommandRoundEventResolverTest {
         // THEN throws exception
     }
 
-    public void testResolveRoundEventWhenSingleRoundEventAvailableOnWhichActingIsRequiredForTotalShouldAddRoundEventDataToResolveList() {
+    public void testResolveRoundEventWhenSingleRoundEventAvailableOnWhichActingIsRequiredForTotalShouldAddRoundEventDataToResolveList()
+        throws CloneNotSupportedException {
         // GIVEN
         roundEvent.setTotalCount(3);
         roundEvent.setSubsequentCount(-1);
         command.getRoundEvents().add(roundEvent);
         expect(statProvider.provideStatistics(stats, roundEvent)).andReturn(eventStatistics);
         expect(eventStatistics.getTotal()).andReturn(3);
-        expect(data.isInterrupt()).andReturn(false);
+        expect(data.clone()).andReturn(clonedData);
+        expect(clonedData.isInterrupt()).andReturn(false);
         messages.switchToPostRoundMessages();
-        expect(data.getText()).andReturn(TEXT);
+        expect(clonedData.getText()).andReturn(TEXT);
         expect(messages.add(TEXT)).andReturn(true);
-        data.setText("");
+        clonedData.setText("");
         messages.switchToRoundMessages();
         mockControl.replay();
         // WHEN
         underTest.resolveRoundEvent(command, resolveList);
         // THEN
         Assert.assertEquals(resolveList.size(), 1);
-        Assert.assertSame(resolveList.get(0), data);
+        Assert.assertSame(resolveList.get(0), clonedData);
         Assert.assertTrue(command.isOngoing());
     }
 
-    public void testResolveRoundEventWhenSingleRoundEventAvailableOnWhichActingIsRequiredForSubsequentShouldAddRoundEventDataToResolveList() {
+    public void testResolveRoundEventWhenSingleRoundEventAvailableOnWhichActingIsRequiredForSubsequentShouldAddRoundEventDataToResolveList()
+        throws CloneNotSupportedException {
         // GIVEN
         roundEvent.setTotalCount(-1);
         roundEvent.setSubsequentCount(2);
@@ -130,22 +134,24 @@ public class FightCommandRoundEventResolverTest {
         expect(statProvider.provideStatistics(stats, roundEvent)).andReturn(eventStatistics);
         expect(eventStatistics.getTotal()).andReturn(3);
         expect(eventStatistics.getSubsequent()).andReturn(2);
-        expect(data.isInterrupt()).andReturn(false);
+        expect(data.clone()).andReturn(clonedData);
+        expect(clonedData.isInterrupt()).andReturn(false);
         messages.switchToPostRoundMessages();
-        expect(data.getText()).andReturn(TEXT);
+        expect(clonedData.getText()).andReturn(TEXT);
         expect(messages.add(TEXT)).andReturn(true);
-        data.setText("");
+        clonedData.setText("");
         messages.switchToRoundMessages();
         mockControl.replay();
         // WHEN
         underTest.resolveRoundEvent(command, resolveList);
         // THEN
         Assert.assertEquals(resolveList.size(), 1);
-        Assert.assertSame(resolveList.get(0), data);
+        Assert.assertSame(resolveList.get(0), clonedData);
         Assert.assertTrue(command.isOngoing());
     }
 
-    public void testResolveRoundEventWhenSingleRoundEventAvailableOnWhichActingIsRequiredForSubsequentAndInterruptsBattleShouldAddRoundEventDataToResolveList() {
+    public void testResolveRoundEventWhenSingleRoundEventAvailableOnWhichActingIsRequiredForSubsequentAndInterruptsBattleShouldAddRoundEventDataToResolveList()
+        throws CloneNotSupportedException {
         // GIVEN
         roundEvent.setTotalCount(-1);
         roundEvent.setSubsequentCount(2);
@@ -153,13 +159,14 @@ public class FightCommandRoundEventResolverTest {
         expect(statProvider.provideStatistics(stats, roundEvent)).andReturn(eventStatistics);
         expect(eventStatistics.getTotal()).andReturn(3);
         expect(eventStatistics.getSubsequent()).andReturn(2);
-        expect(data.isInterrupt()).andReturn(true);
+        expect(data.clone()).andReturn(clonedData);
+        expect(clonedData.isInterrupt()).andReturn(true);
         mockControl.replay();
         // WHEN
         underTest.resolveRoundEvent(command, resolveList);
         // THEN
         Assert.assertEquals(resolveList.size(), 1);
-        Assert.assertSame(resolveList.get(0), data);
+        Assert.assertSame(resolveList.get(0), clonedData);
         Assert.assertFalse(command.isOngoing());
     }
 

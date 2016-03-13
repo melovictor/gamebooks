@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.content.command.fight.subresolver;
 
+import static org.easymock.EasyMock.createMockBuilder;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
@@ -127,9 +128,11 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
     private RoundEvent interruptingWinRound;
     private RoundEvent battleRoundWinEnemyChangingRound;
     private FfParagraphData interruptingWinData;
+    private FfParagraphData interruptingWinDataClone;
     private Map<FightRoundResult, StatisticsProvider> statProviders;
     private StatisticsProvider statProvider;
     private FfParagraphData battleRoundWinEnemyChangingData;
+    private FfParagraphData battleRoundWinEnemyChangingDataClone;
     private ChangeEnemyCommand enemyChangeCommand;
     private FightRoundBoundingCommand afterBoundingSkillTest;
     private AttributeTestCommand test;
@@ -221,8 +224,8 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
 
     @BeforeMethod
     public void setUpMethod() {
-        setUpBusinessLogic();
         mockControl.reset();
+        setUpBusinessLogic();
         Whitebox.setInternalState(this, "messageList", getMessageList());
     }
 
@@ -369,10 +372,14 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
 
         diceConfiguration = new DiceConfiguration(1, 1, 6);
 
-        interruptingWinData = new FfParagraphData();
+        interruptingWinData = createMockBuilder(FfParagraphData.class).withConstructor().addMockedMethod("clone").createMock(mockControl); // new FfParagraphData();
         interruptingWinData.setText("<p>Let's take a break...</p>");
         interruptingWinData.setChoices(choiceSet);
         interruptingWinData.setInterrupt(true);
+        interruptingWinDataClone = new FfParagraphData();
+        interruptingWinDataClone.setChoices(choiceSet);
+        interruptingWinDataClone.setText("<p>Let's take a break...</p>");
+        interruptingWinDataClone.setInterrupt(true);
 
         interruptingWinRound = new RoundEvent();
         interruptingWinRound.setEnemyId("1");
@@ -385,9 +392,12 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
         enemyChangeCommand.setAttribute("stamina");
         enemyChangeCommand.setChangeValue("3");
 
-        battleRoundWinEnemyChangingData = new FfParagraphData();
+        battleRoundWinEnemyChangingData = createMockBuilder(FfParagraphData.class).withConstructor().addMockedMethod("clone").createMock(mockControl);
         battleRoundWinEnemyChangingData.getImmediateCommands().add(enemyChangeCommand);
         battleRoundWinEnemyChangingData.setText(TEXT);
+        battleRoundWinEnemyChangingDataClone = new FfParagraphData();
+        battleRoundWinEnemyChangingDataClone.getImmediateCommands().add(enemyChangeCommand);
+        battleRoundWinEnemyChangingDataClone.setText(TEXT);
 
         battleRoundWinEnemyChangingRound = new RoundEvent();
         battleRoundWinEnemyChangingRound.setEnemyId("1");
@@ -1197,7 +1207,8 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
         Assert.assertFalse((boolean) Whitebox.getInternalState(command, "fleeAllowed"));
     }
 
-    public void testDoResolveWhenInSingleBattleAndInterruptingRoundIsWonAgainstSelectedEnemyExactlyTheRightAmountOfTimesShouldInterruptBattle() {
+    public void testDoResolveWhenInSingleBattleAndInterruptingRoundIsWonAgainstSelectedEnemyExactlyTheRightAmountOfTimesShouldInterruptBattle()
+        throws CloneNotSupportedException {
         // GIVEN
         command.getRoundEvents().add(interruptingWinRound);
         command.getBattleStatistics("1").updateStats(FightRoundResult.WIN);
@@ -1217,11 +1228,12 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
         logger.debug("Attack strength for {}: {}", "Orc", 15);
         logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
+        expect(interruptingWinData.clone()).andReturn(interruptingWinDataClone);
         mockControl.replay();
         // WHEN
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
         // THEN
-        Assert.assertTrue(returned.contains(interruptingWinData));
+        Assert.assertTrue(returned.get(0).equals(interruptingWinDataClone));
         Assert.assertEquals(character.getStamina(), 17);
         Assert.assertEquals(enemy.getStamina(), 3);
         Assert.assertFalse(command.isOngoing());
@@ -1259,7 +1271,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
         Assert.assertFalse((boolean) Whitebox.getInternalState(command, "fleeAllowed"));
     }
 
-    public void testDoResolveWhenInSingleBattleAndTotalRoundEventIsReachedShouldRequestImmediateChangeToEnemy() {
+    public void testDoResolveWhenInSingleBattleAndTotalRoundEventIsReachedShouldRequestImmediateChangeToEnemy() throws CloneNotSupportedException {
         // GIVEN
         command.getRoundEvents().add(this.battleRoundWinEnemyChangingRound);
         command.increaseBattleRound();
@@ -1281,6 +1293,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
         logger.debug("Attack strength for {}: {}", "Orc", 15);
         logger.error("Cannot resolve property '{}'.", "initialBaseStaminaDamage");
         expectText("page.ff.label.fight.single.successfulAttack", new Object[]{"Orc"});
+        expect(battleRoundWinEnemyChangingData.clone()).andReturn(battleRoundWinEnemyChangingDataClone);
 
         final FightCommandMessageList messages = getMessageList();
         messages.switchToPostRoundMessages();
@@ -1291,7 +1304,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
         // WHEN
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
         // THEN
-        Assert.assertTrue(returned.contains(battleRoundWinEnemyChangingData));
+        Assert.assertTrue(returned.contains(battleRoundWinEnemyChangingDataClone));
         Assert.assertEquals(character.getStamina(), 17);
         Assert.assertEquals(enemy.getStamina(), 3);
         Assert.assertTrue(command.isOngoing());

@@ -28,19 +28,29 @@ public class FightCommandRoundEventResolver {
         for (final RoundEvent roundEvent : command.getRoundEvents()) {
             if (shouldActOnEvent(roundEvent, command)) {
                 boolean ongoing = command.isOngoing();
-                ongoing &= !roundEvent.getParagraphData().isInterrupt();
+                final FfParagraphData paragraphData = cloneData(roundEvent.getParagraphData());
+                ongoing &= !paragraphData.isInterrupt();
                 command.setOngoing(ongoing);
-                resolveList.add(roundEvent.getParagraphData());
+                resolveList.add(paragraphData);
                 if (ongoing) {
                     final FightCommandMessageList messages = command.getMessages();
                     messages.switchToPostRoundMessages();
-                    final FfParagraphData paragraphData = roundEvent.getParagraphData();
                     messages.add(paragraphData.getText());
                     paragraphData.setText("");
                     messages.switchToRoundMessages();
                 }
             }
         }
+    }
+
+    private FfParagraphData cloneData(final FfParagraphData paragraphData) {
+        FfParagraphData clone;
+        try {
+            clone = paragraphData.clone();
+        } catch (final CloneNotSupportedException e) {
+            throw new IllegalStateException("Cloning of the paragraph data has failed, this should not have happened!", e);
+        }
+        return clone;
     }
 
     private boolean shouldActOnEvent(final RoundEvent roundEvent, final FightCommand command) {
