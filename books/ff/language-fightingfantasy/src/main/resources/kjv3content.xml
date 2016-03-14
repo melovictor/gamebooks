@@ -94,7 +94,12 @@
     <next id="133">Ha kitartasz elhatározásod mellett, elhagyhatod a környéket</next>
   </p>
   <!-- 4 -->
-  <!-- 5 -->
+  <p id="5">
+    <text>
+        [p]Rá akarod venni, hogy beszéljen neked a Sárkánykígyókról, de úgy látod, hogy kissé vonakodik. Mintha a téma enyhén idegesítené. Végül azért mégis elmond neked néhány dolgot ezekről a Kígyókról. A Tűzkígyó életét csak homokkal lehet kioltani; a Napkígyó nem állhatja a vizet, a Vízkígyó pedig az olajat. Mindaz, amit elmond, igen érdekes, de ennél többet nem szedsz ki belőle. Végül is távozni készülsz.[/p]
+    </text>
+    <next id="324"></next>
+  </p>
   <p id="6">
     <text>
         [p]Balra ugrasz, hogy elkerülj egy újabb repedést. Ugrás közben a kígyó belemar a lábadba, ennek következtében ügyetlenül esel, és megsérül a bokád. Vesztesz 2 ÉLETERŐ pontot. Jobb lesz, ha megszabadulsz ettől az állatkától.[/p]
@@ -224,7 +229,28 @@
     <next id="204">Ha elfogadod a meghívásukat</next>
     <next id="173">Ha inkább továbbmész a falun át az erdő felé</next>
   </p>
-  <!-- 20 -->
+  <p id="20" color="purple">
+    <text>
+        [p]Összeszeded a holmidat, és elhagyod a tisztást. Órákon át haladsz az ösvényen a fák között, míg végül az erdő egyre ritkulni kezd körülötted. Minden valószínűség szerint nemsokára eléred az erdő szélét, és megpillanthatod az Ilklala tó vizét. Kora este van, mire a hatalmas tó partjára érsz. Végigtekintesz a látóhatárig elnyúló sima víztükör hatalmas felületén, és elszomorodsz. Hogyan fogsz átkelni ezen a tavon? Nem látsz sehol egy embert vagy egy csónakot. Leülsz, és azon töröd a fejedet, vajon mitévő légy. Ha akarsz, letáborozhatsz itt éjszakára, és reggel eldöntheted, merre menj tovább. Ha akarsz, ehetsz is. Ha eszel, nyersz[/p]
+    </text>
+    <canEat />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>2</text>
+        <changeItem attribute="stamina" id="2000" set="2" />
+      </have>
+      <dontHave>
+        <text>1</text>
+        <changeItem attribute="stamina" id="2000" set="1" />
+      </dontHave>
+      <after>
+        <text>
+            ÉLETERŐ pontot. Ezt követően lefekhetsz aludni.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="264"></next>
+  </p>
   <!-- 21 -->
   <!-- 22 -->
   <p id="23">
@@ -258,7 +284,31 @@
     <next id="137">Ha északnyugatnak mész</next>
     <next id="12">Ha északkeletnek</next>
   </p>
-  <!-- 25 -->
+  <p id="25">
+    <text>
+        [p class="inlineImage"][img src="resources/sor3/25.jpg" /][/p]
+        [p]Megállsz az úton. A levelek között egy szempárt pillantasz meg. Egy szőrös, bozontos pofájú állat téged néz. Tőle jobbra egy másik szőrös teremtmény les rád. Körülnézel, és az ereidben megfagy a vér! Vagy egy tucat Ragadozó Macska vesz körül! A veled szemben lévő két vadállat becsukja a szemét és eltűnik...[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <next id="74">Ha kardot rántasz</next>
+        <spell name="GOB" id="358" />
+        <spell name="ELT" id="398" />
+        <spell name="GUM" id="451" />
+        <spell name="ERŐ" id="383" />
+        <spell name="TÁV" id="423" />
+      </have>
+      <dontHave>
+        <text>
+            [p]Kardot rántasz.[/p]
+        </text>
+        <next id="74"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="26">
     <text>
         [p]- Hát ez csak természetes - feleli az Öreg Elf. - Bizonyára elfáradtál a hosszú úton, és már az éjszaka is közeleg. Gyere, elvezetlek az egyik üres szekérhez, ahol nyugodtan lepihenhetsz. - Elvezet egy koszos szekérhez, és egy pokrócot nyom a kezedbe, hogy azzal takarózz be éjszakára.[/p]
@@ -283,7 +333,15 @@
     </itemCheck>
   </p>
   <!-- 28 -->
-  <!-- 29 -->
+  <p id="29">
+    <text>
+        [p]Lenyúlsz a fegyveredért. Amint megérinted kardod markolatát, fájdalmas ütést érzel a karodon, és ez arra késztet, hogy sürgősen visszahúzd a kezed. Vesztesz 1 ÉLETERŐ pontot. Nem tudod megállni, hogy fel ne ordíts, erre az asztalnál ülő teremtmény lassan odafordul hozzád. - Úgy! - kiáltja egy vinnyogó hang. - Fenestrának látogatója van, ha nem csalódom! Ki merészel hívatlanul behatolni Fenestra barlangjába? - Bemutatkozol, de óvatosságból nem árulod el neki küldetésed célját. Mit kérsz tőle?[/p]
+    </text>
+    <add to="stamina" amount="-1" />
+    <next id="68">Hogy engedjen elmenni?</next>
+    <next id="317">Hogy beszéljen neked az erdőről?</next>
+    <next id="252">Hogy mondja el, mit tud az Ilklala tóról?</next>
+  </p>
   <p id="30">
     <text>
         [p]A fejedet a kezeddel véded, így rohansz le a lejtőn, miközben csak úgy záporoznak körülötted a kövek.[/p]
@@ -459,7 +517,12 @@
     <gatherItem id="4072" />
     <next id="309"></next>
   </p>
-  <!-- 41 -->
+  <p id="41">
+    <text>
+        [p]Lerohansz az ösvényen. Láthatatlan léptek követnek, majd végül feladják a küzdelmet. Egy tisztásnál megállsz, hogy kifújd magad.[/p]
+    </text>
+    <next id="20"></next>
+  </p>
   <p id="42">
     <text>
         [p]Fegyveredet a fogaid közé szorítod, és felmászol a fára. A vörös kígyó figyelmesen szemlél. Amikor már elég közel vagy hozzá, hirtelen leveti magát a fáról a földre.
@@ -758,7 +821,12 @@
     </test>
   </p>
   <!-- 67 -->
-  <!-- 68 -->
+  <p id="68">
+    <text>
+        [p]- Igen, igen, menned kell, mégpedig gyorsan. Tudnod kell, hogy aki Fenestrát megfenyegeti, azt itt nem nézik jó szemmel. Eredj! - Köszönetet mondasz neki, és elindulsz vissza az ajtó felé. Amikor már kint vagy, ismét az ösvényen folytatod az utadat.[/p]
+    </text>
+    <next id="92"></next>
+  </p>
   <p id="69">
     <text>
         [p]Az öreg Elf feláll és bólint. Ha akarod, elvisz egy üres ekhós szekérhez, amelyben megpihenhetsz az éjszakára, de az ára 3 Aranytallér.[/p]
@@ -1221,7 +1289,14 @@
     <next id="25"></next>
   </p>
   <!-- 91 -->
-  <!-- 92 -->
+  <p id="92">
+    <text>
+        [p]Kissé följebb az ösvény háromfelé ágazik.[/p]
+    </text>
+    <next id="244">Ha a bal oldali ösvényen mész tovább</next>
+    <next id="274">Ha a jobb oldali ösvényen mész tovább</next>
+    <next id="146">Ha egyenesen folytatod utadat</next>
+  </p>
   <p id="93">
     <empty />
   </p>
@@ -1629,7 +1704,13 @@
     <next id="306">Ha az ösvényen folytatod az utadat</next>
   </p>
   <!-- 118 -->
-  <!-- 119 -->
+  <p id="119">
+    <text>
+        [p]Az ösvény kanyarogva vezet át az erdőn. Egy helyütt egy domb mellett visz el, s ekkor egy hang megállásra késztet. Valami azt súgja, hogy óvatosan kerüld meg a dombot. A domb túloldalán egy faajtót találsz. Innen jön a hang, és ez arra utal, hogy valaki vagy valami van odabent.[/p]
+    </text>
+    <next id="171">Ha odalopakodsz az ajtóhoz, hogy megnézd, mi történik benn</next>
+    <next id="92">Ha lábujjhegyen elosonsz előtte, és tovább folytatod az utadat</next>
+  </p>
   <p id="120">
     <text>
         [p]Fölállsz és összeszeded a holmidat, de közben figyelsz, nem hallasz-e gyanús hangokat. Egy valamit tisztán hallasz! Egy halk, rekedt, mély morgást, mely alig néhány méterről jön. De hisz ott nincs semmi! Valami átsüvít a levegőn, majd a karodba csimpaszkodik! Még most sem látsz semmit, egy láthatatlan állat harapott beléd hatalmas állkapcsával. A vér átáztatja a ruhádat. Előrántod a fegyveredet és lecsapsz vele oda, ahol szerinted az állat feje lehet. Támadód felüvölt fájdalmában és elenged. Most már továbbmehetsz az ösvényen, előbb azonban sérülésed miatt vonj le magadtól 3 ÉLETERŐ pontot.[/p]
@@ -1917,7 +1998,15 @@
     <next id="137"></next>
   </p>
   <!-- 138 -->
-  <!-- 139 -->
+  <p id="139">
+    <text>
+        [p]A Medve két lábra áll és elindul feléd. Éles fogai és karmai veszélyes fegyverek. Küzdj meg vele.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="40" />
+    </fight>
+    <next id="20"></next>
+  </p>
   <p id="140">
     <text>
         [p]Jól sejtetted, csak rád akartak ijeszteni. Élettelen testük nem jelent igazi veszélyt a számodra. Mikor már jó pár méterre eltávolodtál tőlük, visszanézel, de mind eltűntek! Továbbmész utad következő állomására, a Snatta Erdőbe.[/p]
@@ -2026,7 +2115,28 @@
     <next id="40">Ha szabadon engeded, ahogy kéri</next>
     <next id="262">Ha ott hagyod</next>
   </p>
-  <!-- 146 -->
+  <p id="146">
+    <text>
+        [p]Egy tisztáshoz érsz, ahol megállhatsz enni és pihenni. Ha enni akarsz az Élelmedből, nyersz
+    </text>
+    <canEat />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>2</text>
+        <changeItem attribute="stamina" id="2000" set="2" />
+      </have>
+      <dontHave>
+        <text>1</text>
+        <changeItem attribute="stamina" id="2000" set="1" />
+      </dontHave>
+      <after>
+        <text>
+            ÉLETERŐ pontot.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="20"></next>
+  </p>
   <!-- 147 -->
   <p id="148">
     <text>
@@ -2280,7 +2390,12 @@
     </itemCheck>
     <next id="13"></next>
   </p>
-  <!-- 160 -->
+  <p id="160">
+    <text>
+        [p]Pihensz egy keveset, majd okosan úgy döntesz, hogy távozol innen, amilyen gyorsan csak tudsz.[/p]
+    </text>
+    <next id="271">Az ösvényen indulsz tovább</next>
+  </p>
   <p id="161">
     <text>
         [p]Amikor meghallja, hogy a Hét Sárkánykígyó felől érdeklődsz, a szeme összeszűkül és fenyegetőn pillant rád. Furulyajátéka egyre pergőbb ritmusban szól, és kígyói feléd kúsznak.[/p]
@@ -2375,7 +2490,25 @@
     <next id="225">Ha megpihensz éjszakára és eszel</next>
     <next id="255">Ha inkább éjjel is folytatod az utadat</next>
   </p>
-  <!-- 171 -->
+  <p id="171">
+    <text>
+        [p]Semmit sem látsz a becsukott ajtón át.[/p]
+    </text>
+    <next id="92">Vagy el kell hagynod ezt a helyet</next>
+    <next id="265">Vagy ki kell nyitnod az ajtót</next>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz is.[/p]
+        </text>
+        <spell name="TEL" id="425" />
+        <spell name="NYI" id="469" />
+        <spell name="POP" id="399" />
+        <spell name="EME" id="409" />
+        <spell name="TÁV" id="354" />
+      </have>
+    </itemCheck>
+  </p>
   <!-- 172 -->
   <p id="173">
     <text>
@@ -2549,7 +2682,12 @@
     </text>
     <death />
   </p>
-  <!-- 187 -->
+  <p id="187">
+    <text>
+        [p]A csata után úgy döntesz, hogy gyorsan elhagyod a helyszínt, hátha még több Ragadozó Macska jön erre a helyre. Az ösvényen mész tovább még néhány percig, amikor elérsz egy alkalmas tisztásra, ahol kissé megpihenhetsz.[/p]
+    </text>
+    <next id="20"></next>
+  </p>
   <p id="188">
     <text>
         [p]A Klattaemberek, akikkel a sors összehozott, félelmet nem ismerő, vakmerő társaság. Bandájuk az erőt sokkal nagyobbra értékeli, mint az észt. Kardot rántasz és rájuk támadsz. Mindegyikük azt szeretné, ha ő adná meg neked a halálos döfést; mindannyian egyszerre támadnak.[/p]
@@ -2586,7 +2724,14 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 190 -->
+  <p id="190">
+    <text>
+        [p class="inlineImage"][img src="resources/sor3/190.jpg" /][/p]
+        [p]Az átjáró végében egy kicsiny szobában egy szál gyertya ég az asztalon. A sötét szobát, mely a benne szétdobált bútorok tanúsága szerint egykor fogadószoba lehetett, ez az egyetlen gyertya világítja meg. Az asztalnál egy nyakigláb ember ül, aki egy állványon álló Üveggömbbe mered, és motyog valamit az orra alatt. Különböző alakok és színek kavarognak a gömb felszínén, de hogy mi ez, azt nem tudod kivenni.[/p]
+    </text>
+    <next id="282">Ha udvariasan megszólítod a teremtményt</next>
+    <next id="29">Ha kardoddal rátámadsz</next>
+  </p>
   <p id="191">
     <text>
         [p]Gyorsan döntsd el, melyik varázslatot alkalmazod:[/p]
@@ -3221,7 +3366,14 @@
     <next id="173"></next>
   </p>
   <!-- 241 -->
-  <!-- 242 -->
+  <p id="242">
+    <text>
+        [p]Lenyúlsz a fegyveredért, de abban a pillanatban, amikor megérinted, valami megüti a kezedet, és kénytelen vagy elrántani onnan! Megrázod fájós kezedet. Vesztesz 1 ÉLETERŐ pontot. Óvatosan még egyszer lenyúlsz. Amint a fegyveredet megérinted, ismét ugyanazt a fájdalmas ütést érzed. Újabb 1 ÉLETERŐ pontot vesztesz. Valamilyen mágikus erő akadályoz meg abban, hogy megragadhasd a fegyveredet![/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="190">Ha ennek tudatában továbbindulsz a folyosón</next>
+    <next id="92">Ha inkább elhagyod ezt a helyet, és folytatod az utadat az ösvényen</next>
+  </p>
   <p id="243">
     <text>
         [p]Elkeseredetten könyörögsz Librához, hogy segítsen rajtad, de hiába vársz a jelre, a segítség csaknem jön. Végtagjaidban már-már elviselhetetlen a fájdalom. Varjúcsoport kering károgva a fejed felett, és a madarak azt várják, mikor fogyaszthatják elkövetkező táplálékukat. Egyikük leszáll a keresztre és csőrével belecsíp a csuklódba. Nincs erőd, hogy védekezz, de kiáltasz egyet, hogy elriaszd. 3 ÉLETERŐ pontot vesztesz, mert erőd egyre fogy. A varjú ismét beléd csíp. Ezúttal már nem kiáltasz. Fejedet a vézna madár felé fordítod, és bátortalanul elmosolyodsz, hiszen a varjú egyáltalán nem akar megenni, hanem csőrével kötelékeidet akarja elvágni! Libra nem hagyott cserben! Egy szempillantás alatt szabaddá válik a kezed, és így meg tudsz kapaszkodni, míg a madár a többi kötelékedtől is megszabadít. Csakhamar szabad vagy, és ekkor a varjú károgva felröppen az égbe. Utolsó erőddel lemászol a keresztről, és a tövében zihálva megpihensz. Nagy árat kell fizetned megpróbáltatásaidért. Bár a Fekete Elfek otthagyták a fegyveredet és a hátizsákodat a kereszt mellett, minden egyebedet elvittek. És egyszer már segítségül hívtad Librát. Még egyszer nem teheted meg, amíg Baklandban vagy. Utadat azonban folytatnod kell.[/p]
@@ -3232,7 +3384,59 @@
     <loseItem id="2000,2001,2002,2003,3001,3002,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022,3023,3024,3025,3026,3027,3028,3029,3030,3031,3032,3034,3035,3036,3037,3038,3039,3042,3043,3044,3045,3046,3047,3048,3049,3050,3051,3052,3053,3201,3202,3203,3204,3205" amount="999" />
     <next id="269"></next>
   </p>
-  <!-- 244 -->
+  <p id="244">
+    <text>
+        [p class="inlineImage"][img src="resources/sor3/244.jpg" /][/p]
+        [p]Az ösvényen továbbmenve egy kis tisztáshoz érsz, ahol megpihenhetsz. Ha enni akarsz az Élelmedből, megteheted, s ekkor nyersz
+    </text>
+    <canEat />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>2</text>
+        <changeItem attribute="stamina" id="2000" set="2" />
+      </have>
+      <dontHave>
+        <text>1</text>
+        <changeItem attribute="stamina" id="2000" set="1" />
+      </dontHave>
+      <after>
+        <text>
+            ÉLETERŐ pontot. Amikor épp távozni készülsz, reccsenést hallasz a hátad mögül, és megfordulsz. A sűrű aljnövényzetben egy hatalmas, lomha Vadmedve csörtet feléd! A teremtmény elállja az utadat, és meg kell küzdened vele, hogy továbbmehess.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="TIV" id="437" />
+        <spell name="HAT" id="415" />
+        <spell name="ÁTÉ" id="361" />
+        <spell name="BUT" id="485" />
+        <spell name="FIX" id="333" />
+        <next id="139">Ha kardot rántasz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Kardot rántasz.[/p]
+        </text>
+        <next id="139"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="244a" display="244">
+    <text>
+        [p]Az ösvényen továbbmenve egy kis tisztáshoz érsz, ahol megpihenhetsz. Ha enni akarsz az Élelmedből, megteheted. Amikor épp távozni készülsz, reccsenést hallasz a hátad mögül, és megfordulsz. A sűrű aljnövényzetben egy hatalmas, lomha Vadmedve csörtet feléd! A teremtmény elállja az utadat, és meg kell küzdened vele, hogy továbbmehess.[/p]
+        [p]Ha akarsz, varázsolhatsz.[/p]
+    </text>
+    <spell name="TIV" id="437" />
+    <spell name="HAT" id="415" />
+    <spell name="ÁTÉ" id="361" />
+    <spell name="BUT" id="485" />
+    <spell name="FIX" id="333" />
+    <next id="139">Ha kardot rántasz</next>
+  </p>
   <!-- 245 -->
   <p id="246">
     <text>
@@ -3321,7 +3525,12 @@
     <next id="283">Ha észak-északnyugat felé mész tovább</next>
     <next id="60">Ha egyenesen északnak mész</next>
   </p>
-  <!-- 252 -->
+  <p id="252">
+    <text>
+        [p]- Te bolond! - mondja gúnyosan. - Csak nem gondolod, hogy segítek rajtad, amikor rám fogtad a fegyveredet? Takarodj a szemem elől, mégpedig gyorsan! Ez az ütés csak kóstoló volt, a java csak most jön! - Izzó parázshoz hasonló szemét rád mereszti, és ekkor úgy döntesz, nem huzakodsz vele tovább, hanem gyorsan kimész az ajtón. Kint rátérsz az eredeti ösvényedre, és folytatod utadat.[/p]
+    </text>
+    <next id="92"></next>
+  </p>
   <!-- 253 -->
   <!-- 254 -->
   <p id="255" color="purple">
@@ -3501,8 +3710,37 @@
     <next id="54">Ha a kardoddal vívsz meg vele</next>
     <next id="66">Ha puszta kézzel</next>
   </p>
-  <!-- 264 -->
-  <!-- 265 -->
+  <p id="264" color="purple">
+    <text>
+        [p]Másnap kora reggel ébredsz.
+    </text>
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            Mivel tegnap egész nap nem ettél semmit, 3 ÉLETERŐ pontot le kell vonnod magadtól, mert rettenetesen éhes vagy.
+        </text>
+        <add amount="-3" to="stamina" />
+      </have>
+      <dontHave>
+        <gatherItem id="4101" />
+      </dontHave>
+      <after>
+        <text>
+            Hogyan akarsz átkelni a tavon?[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="241">Ha a parton mész végig, hátha összeakadsz valakivel</next>
+    <next id="57">Ha elkiáltod magad, hátha valaki meghallja</next>
+    <next id="233">Ha vársz, hátha segít valaki</next>
+  </p>
+  <p id="265">
+    <text>
+        [p]Az ajtó egy sötét átjáróra nyílik. Lemész. A mélyben pislákoló fényt pillantasz meg és hangokat hallasz.[/p]
+    </text>
+    <next id="190">Ha továbbosonsz az átjáró végéig, és megnézed, mi van ott</next>
+    <next id="242">Ha kardot rántasz, és bátran trappolsz előre</next>
+  </p>
   <p id="266">
     <text>
         [p]Előhúzod a tűzszerszámodat, és megpróbálsz tüzet csiholni. A Kígyó zavartan néz a fa tetejéről, szemmel láthatólag érdekli, mit teszel, de sajnos a terved, amit kiagyaltál, egyáltalán nincs hatással rá. A Tűzkígyó rád veti magát a fáról, és meg kell vele küzdened.[/p]
@@ -3716,7 +3954,14 @@
     <next id="240"></next>
   </p>
   <!-- 281 -->
-  <!-- 282 -->
+  <p id="282">
+    <text>
+        [p]Éppen üdvözölni akarnád a teremtményt, amikor egy vinnyogó hang töri meg a csöndet - Jól van, jól van! - mondja. - Ne állj úgy ott, mint egy begyulladt dadogó Fél-Ork! Gyere és ülj le. Még egy kis dolgom van, aztán máris jövök. - Elképzelhető, hogy a női hang valamilyen Elf hangja. A teremtmény az Üveggömbjénél áll, és meredten nézi, majd néhány perc múlva visszaül hozzád, és rád emeli a tekintetét. - Tehát egy látogatóval van dolgom. Ráadásul egy emberrel. Én Fenestra vagyok, az Elf Varázslónő. Nos, arra, hogy én itt vagyok, van magyarázat, hisz itt lakom. De a te otthonod jó messze lehet! Mi az ördögöt keresel ebben az erdőben? - Figyelmesen végighallgatja a történetedet, de küldetésed valódi célját gondosan eltitkolod előle. Két melegen izzó szeme túl nagy az arcához képest, és ez elég zavaróan hat rád. Őszinte érdeklődéssel hallgatja szavaidat. Most feltehetsz neki egy kérdést.[/p]
+    </text>
+    <next id="234">Ha megkérdezed, vajon van-e olyan varázstárgya, amelynek esetleg hasznát vehetnéd</next>
+    <next id="132">Ha megkérdezed, hogyan kelhetnél át a legsikeresebben az Ilklala tavon</next>
+    <next id="5">Ha említést teszel azokról a „különös dolgokról”, amelyek errefelé történnek, hogy ezzel talán a Hét Sárkánykígyóra tereld a szót</next>
+  </p>
   <p id="283">
     <text>
         [p]Hosszú baklandi utad a végéhez közeledik. Előtted a távolban azonban feltűnik a Snatta erdő széle. Felmászol egy szikla tetejére, és onnan nézel körül. Az erdő zöld csíkja egészen az Ilklala tó partjáig húzódik, mely mára látóhatár szélét súrolja. A szikla, amelyen állsz, megfelelő hely arra, hogy egyél.[/p]
@@ -4482,7 +4727,12 @@
     <next id="299"></next>
   </p>
   <!-- 316 -->
-  <!-- 317 -->
+  <p id="317">
+    <text>
+        [p]Fenestra rád mordul: - Csak nem képzeled, hogy egy olyan embernek segítek, aki fegyvert fogott rám? Nem mondok neked semmit. Takarodj innen, mégpedig gyorsan, mielőtt még újabb kóstolót kapsz Fenestra erejéből! - Rád mereszti izzó parázshoz hasonló hatalmas szemét. Úgy döntesz, nem várod meg, hogy megtudd, mit forgat a fejében, hanem kimész az ajtón. Kint rátérsz az ösvényedre, és azon folytatod az utadat.[/p]
+    </text>
+    <next id="92"></next>
+  </p>
   <p id="318">
     <text>
         [p]Északnyugat felé folytatod az utadat.[/p]
@@ -4605,7 +4855,27 @@
   <!-- 330 -->
   <!-- 331 -->
   <!-- 332 -->
-  <!-- 333 -->
+  <p id="333">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3067">
+      <have>
+        <text>
+            [p]A magasba emeled a Tölgyfacsemete botot, és varázsolsz. A Medve azonnal megáll, és megbénul. Most nyugodtan folytathatod az utadat.[/p]
+        </text>
+        <next id="20"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem alkalmazhatod ezt a varázslatot; a Medve megtámad, és 2 ÉLETERŐ pont kárt tesz benned.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="139"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="334">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -4691,7 +4961,28 @@
     <next id="311">Ha menekülésen töröd a fejed</next>
   </p>
   <!-- 342 -->
-  <!-- 343 -->
+  <p id="343">
+    <itemCheck type="item" id="3201" amount="2">
+      <have>
+        <text>
+            [p]Vesztesz 2 ÉLETERŐ pontot.[/p]
+            [p]A földhöz vágsz két Goblin-fogat, és varázsolsz. Két Goblin jelenik meg előtted, akiknek meg parancsolhatod, hogy küzdjenek meg a Ragadozó Macskákkal. Minthogy azonban a Goblinok ellenfelei láthatatlanok, a te teremtményeid pedig iszonyúan buták, a Ragadozó Macskák könnyen elbánnak velük.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <loseItem id="3201" amount="2" />
+        <next id="99">Most vagy kardot rántasz, és te magad küzdesz meg velük</next>
+        <next id="246">Vagy elfutsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+            [p]Varázslatod nem fog működni, és a Ragadozó Macskák két mély sebet ejtenek rajtad - vesztesz 3 ÉLETERŐ pontot. Ránts kardot.[/p]
+        </text>
+        <add amount="-4" to="stamina" />
+        <next id="99"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="344">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -4727,7 +5018,151 @@
     <add to="stamina" amount="-4" />
     <next id="286"></next>
   </p>
-  <!-- 346 -->
+  <p id="346">
+    <itemCheck type="item" id="3201">
+      <have>
+        <text>
+            [p]A teremtett Goblinok segítenek majd kiszabadítani téged a a Fojtóbokor szorításából. Ne feledd, hogy miután megkezdted a kiszabadulási akciót, több Goblint már nem varázsolhatsz. Ezért ajánlatos elegendő Goblint varázsolni, hogy képesek legyenek a bokor fogságából kiszabadítani.[/p]
+        </text>
+        <userInput type="number" min="1" max="5">
+          <label>Hány Goblint akarsz teremteni?</label>
+          <result minBound="1" maxBound="1">
+            <add to="stamina" amount="-1" />
+            <loseItem id="3201" />
+            <text>[p]Vesztesz 1 ÉLETERŐ pontot.[/p]</text>
+            <next id="346a"></next>
+          </result>
+          <result minBound="2" maxBound="2">
+            <add to="stamina" amount="-2" />
+            <loseItem id="3201" amount="2" />
+            <text>[p]Vesztesz 2 ÉLETERŐ pontot.[/p]</text>
+            <next id="346b"></next>
+          </result>
+          <result minBound="3" maxBound="3">
+            <loseItem id="3201" amount="3" />
+            <add to="stamina" amount="-3" />
+            <text>[p]Vesztesz 3 ÉLETERŐ pontot.[/p]</text>
+            <next id="346c"></next>
+          </result>
+          <result minBound="4" maxBound="4">
+            <loseItem id="3201" amount="4" />
+            <add to="stamina" amount="-4" />
+            <text>[p]Vesztesz 4 ÉLETERŐ pontot.[/p]</text>
+            <next id="346d"></next>
+          </result>
+          <result minBound="5" maxBound="5">
+            <loseItem id="3201" amount="5" />
+            <add to="stamina" amount="-5" />
+            <text>[p]Vesztesz 5 ÉLETERŐ pontot.[/p]</text>
+            <next id="346e"></next>
+          </result>
+        </userInput>
+      </have>
+      <dontHave>
+        <text>
+            [p]Vestesz 1 [span class="ffAttribute"]ÉLETERŐ[/span] pontot! Ez a varázslat nem fog működni.[/p]
+        </text>
+        <add to="stamina" amount="-1" />
+        <next id="305"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="346a" display="346">
+    <text>
+        [p]A teremtett Goblinok segítenek majd kiszabadítani téged a a Fojtóbokor szorításából. Ne feledd, hogy miután megkezdted a kiszabadulási akciót, több Goblint már nem varázsolhatsz. Ezért ajánlatos elegendő Goblint varázsolni, hogy képesek legyenek a bokor fogságából kiszabadítani.[/p]
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <test against="4" success="higher" diceConfig="1d6">
+      <label>Dobj egy kockával!</label>
+      <success>
+        <text>
+            [p]A Goblin segítségével kiszabadulsz.[/p]
+          </text>
+        <next id="106"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A Goblin nem tudott rajtad segíteni, a bokor 2 ÉLETERŐ pont kárt tesz benned. Tovább próbálkoztok.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="346a"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="346b" display="346">
+    <text>
+        [p]A teremtett Goblinok segítenek majd kiszabadítani téged a a Fojtóbokor szorításából. Ne feledd, hogy miután megkezdted a kiszabadulási akciót, több Goblint már nem varázsolhatsz. Ezért ajánlatos elegendő Goblint varázsolni, hogy képesek legyenek a bokor fogságából kiszabadítani.[/p]
+        [p]Vesztesz 2 ÉLETERŐ pontot.[/p]
+    </text>
+    <test against="3" success="higher" diceConfig="1d6">
+      <label>Dobj egy kockával!</label>
+      <success>
+        <text>
+            [p]A Goblinok segítségével kiszabadulsz.[/p]
+        </text>
+        <next id="106"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A Goblinok nem tudtak rajtad segíteni, a bokor 2 ÉLETERŐ pont kárt tesz benned. Tovább próbálkoztok.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="346b"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="346c" display="346">
+    <text>
+        [p]A teremtett Goblinok segítenek majd kiszabadítani téged a a Fojtóbokor szorításából. Ne feledd, hogy miután megkezdted a kiszabadulási akciót, több Goblint már nem varázsolhatsz. Ezért ajánlatos elegendő Goblint varázsolni, hogy képesek legyenek a bokor fogságából kiszabadítani.[/p]
+        [p]Vesztesz 3 ÉLETERŐ pontot.[/p]
+    </text>
+    <test against="2" success="higher" diceConfig="1d6">
+      <label>Dobj egy kockával!</label>
+      <success>
+        <text>
+            [p]A Goblinok segítségével kiszabadulsz.[/p]
+        </text>
+        <next id="106"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A Goblinok nem tudtak rajtad segíteni, a bokor 2 ÉLETERŐ pont kárt tesz benned. Tovább próbálkoztok.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="346c"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="346d" display="346">
+    <text>
+        [p]A teremtett Goblinok segítenek majd kiszabadítani téged a a Fojtóbokor szorításából. Ne feledd, hogy miután megkezdted a kiszabadulási akciót, több Goblint már nem varázsolhatsz. Ezért ajánlatos elegendő Goblint varázsolni, hogy képesek legyenek a bokor fogságából kiszabadítani.[/p]
+        [p]Vesztesz 4 ÉLETERŐ pontot.[/p]
+    </text>
+    <test against="1" success="higher" diceConfig="1d6">
+      <label>Dobj egy kockával!</label>
+      <success>
+        <text>
+            [p]A Goblinok segítségével kiszabadulsz.[/p]
+        </text>
+        <next id="106"></next>
+      </success>
+      <failure>
+        <text>
+            [p]A Goblinok nem tudtak rajtad segíteni, a bokor 2 ÉLETERŐ pont kárt tesz benned. Tovább próbálkoztok.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="346d"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="346e" display="346">
+    <text>
+        [p]A teremtett Goblinok segítenek majd kiszabadítani téged a a Fojtóbokor szorításából. Ne feledd, hogy miután megkezdted a kiszabadulási akciót, több Goblint már nem varázsolhatsz. Ezért ajánlatos elegendő Goblint varázsolni, hogy képesek legyenek a bokor fogságából kiszabadítani.[/p]
+        [p]Vesztesz 5 ÉLETERŐ pontot.[/p]
+        [p]A Goblinok segítségével kiszabadulsz.[/p]
+    </text>
+    <next id="106"></next>
+  </p>
   <!-- 347 -->
   <p id="348">
     <text>
@@ -4839,7 +5274,23 @@
     </itemCheck>
     <next id="248"></next>
   </p>
-  <!-- 354 -->
+  <p id="354">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="items" id="3057 or 3060">
+      <have>
+        <next id="492"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem alkalmazhatod ezt a varázslatot.[/p]
+        </text>
+        <next id="171"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="355">
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot. Varázslatod hatására villám pattan ki az ujjbegyedből és belecsap a kígyóba. Az apró teremtmény menten szétporlad. Most már elhagyhatod ezt a helyet.[/p]
@@ -4888,7 +5339,26 @@
     </itemCheck>
   </p>
   <!-- 357 -->
-  <!-- 358 -->
+  <p id="358">
+    <itemCheck type="item" id="3201" amount="2">
+      <have>
+        <text>
+            [p]Vesztesz 2 ÉLETERŐ pontot.[/p]
+            [p]Földhöz vágsz két Goblin-fogat, és varázsolsz. Egy szempillantás alatt két Goblin jelenik meg. Megparancsolod nekik, hogy támadják meg a Ragadozó Macskákat. Sajnos nem látják ellenfeleiket, tehát igyekeztük hiábavaló, és a Ragadozó Macskák könnyen végeznek velük. Kardot kell rántanod és meg kell küzdened a Ragadozó Macskákkal.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <loseItem id="3201" amount="2" />
+      </have>
+      <dontHave>
+        <text>
+            [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+            [p]Varázslatod nem fog működni és miközben varázsolni próbálsz, a Ragadozó Macskák két mély sebet ejtenek a karodon - vesztesz 3 ÉLETERŐ pontot. Ránts kardot.[/p]
+        </text>
+        <add amount="-4" to="stamina" />
+      </dontHave>
+    </itemCheck>
+    <next id="74"></next>
+  </p>
   <p id="359">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -4910,7 +5380,27 @@
     </itemCheck>
   </p>
   <!-- 360 -->
-  <!-- 361 -->
+  <p id="361">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3034">
+      <have>
+        <text>
+            [p]A fejedre teszed Zöldhajú Parókát és varázsolsz, majd ezt követően megkísérelsz szót érteni a Medvével. Egyetlen egy dolgot tudsz csak kiszedni belőle, mégpedig azt, hogy éhes, és enni akar![/p]
+        </text>
+        <next id="244a"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Varázslatod nem fog működni, és a Medve megtámad - vesztesz 2 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="139"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="362">
     <text>
         [p class="inlineImage"][img src="resources/sor3/362.jpg" /][/p]
@@ -5107,7 +5597,41 @@
     </itemCheck>
     <next id="115"></next>
   </p>
-  <!-- 376 -->
+  <p id="376">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3017">
+      <have>
+        <text>
+            [p]Hozzávágod a ragasztót az egyik Ragadozó Macskához és varázsolsz. Ezek a teremtmények azonban láthatatlanok, így a szerencsén múlik, hogy eltalálod-e az egyiket vagy sem.[/p]
+        </text>
+        <test against="luck">
+          <success>
+            <text>
+                [p]Sikerül eltalálnod az egyik közelgő Ragadozó Macskát, és csak hárommal kell megküzdened.[/p]
+            </text>
+            <next id="99h"></next>
+          </success>
+          <failure>
+            <text>
+                [p]Nem sikerül egyik közelgő Ragadozó Macskát sem eltalálnod, így mind a néggyel meg kell küzdened.[/p]
+            </text>
+            <next id="99"></next>
+          </failure>
+        </test>
+        <loseItem id="3017" />
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem alkalmazhatod ezt a varázslatot, és amíg a varázslással bajlódsz, megtámadnak a Ragadozó Macskák - vonj le magadtól 3 ÉLETERŐ pontot.[/p]
+        </text>
+        <add amount="-3" to="stamina" />
+        <next id="99"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="377">
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot. Varázslatod hatására egy izzó tűzgolyó terem a tenyeredben. A Holdkígyó kissé hátrébb húzódik, és óvatosan szemléli minden mozdulatodat. Gyorsan hozzávágod a tűzgolyót! A Kígyó elugrik előle, de a tűzgolyó eltalálja. Üvöltve nyúlik ki előtted.[/p]
@@ -5172,7 +5696,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 383 -->
+  <p id="383">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot. Varázslatod hatására egy láthatatlan védőmező képződik körülötted, amelyen a Ragadozó Macskák képtelenek áthatolni. Végül feladják a küzdelmet, hogy elérjenek, és elhagyják a terepet.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="160"></next>
+  </p>
   <p id="384">
     <text>
         [p]A varázslat hat. - Egy pillanat - mondja az öreg Elf. - Nem túl gyakran háborgatnak bennünket látogatók. Mit gondoltok, pártfogásunkba vegyük ezt a vendégünket? - A tömeg helyeslően bólint. - Gyere, idegen, gyere, hadd kínáljunk meg egy kis Áfonyalevessel. Ez az egyik specialitásunk! -Követed a konyhasátorba. Bent a sátorban a szakács eléd teszi a levest.[/p]
@@ -5312,8 +5842,47 @@
     <add to="stamina" amount="-4" />
     <next id="309"></next>
   </p>
-  <!-- 398 -->
-  <!-- 399 -->
+  <p id="398">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3059">
+      <have>
+        <text>
+            [p]Varázsolsz, és láthatatlanságod leple alatt elhagyhatod a terepet.[/p]
+        </text>
+        <next id="271"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Ez a varázslat nem fog működni; nem válsz láthatatlanná, bár azt hiszed, hogy az vagy. Nézz szembe a Ragadozó Macskákkal, de vonj le magadtól 2 ÜGYESSÉG pontot a harc időtartamára.[/p]
+        </text>
+        <gatherItem id="4016" amount="2" />
+        <next id="74"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="399">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3019">
+      <have>
+        <text>
+            [p]Az ajtóhoz vágsz néhány apró kavicsot, és varázsolsz. Amikor nekicsapódnak az ajtónak, hatalmasat robbannak, de az erős ajtóban nem tesznek kárt.[/p]
+        </text>
+        <loseItem id="3019" />
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem alkalmazhatod ezt a varázslatot.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <next id="171"></next>
+  </p>
   <p id="400">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot. Varázslatod hatására iszonyú bűz támad. A Róka beleszimatol a levegőbe, és amint megérzi a bűzt, rémülten felordít. Farkát behúzva menekül. De a szag téged is ,,orrba támad''.[/p]
@@ -5406,7 +5975,13 @@
     <next id="318">Ha inkább elhagyod ezt a helyet, megteheted, amennyiben gyorsan kimászol ebből a gödörből, és magára hagyod a fickót</next>
     <next id="248">Azt is megteheted azonban, hogy egyszerűen meghallgatod a játékát</next>
   </p>
-  <!-- 409 -->
+  <p id="409">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot. Varázsolsz, és ujjaddal az ajtó felé mutatva egy villámot lövellsz ki a zárra. Az ajtó megremeg, és hangos reccsenéssel kinyílik.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="265"></next>
+  </p>
   <!-- 410 -->
   <p id="411">
     <text>
@@ -5432,7 +6007,13 @@
     <next id="45"></next>
   </p>
   <!-- 414 -->
-  <!-- 415 -->
+  <p id="415">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Varázslatod hatására hat hasonmásod jelenik meg. A Medve megáll, és mindegyik hasonmásodat szemügyre veszi, hogy eldöntse, melyiket támadja meg. Végül választ, és legnagyobb rémületedre téged szemel ki! Ránts kardot és küzdj meg vele.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="139"></next>
+  </p>
   <p id="416">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -5534,7 +6115,27 @@
       </win>
     </fight>
   </p>
-  <!-- 423 -->
+  <p id="423">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="items" id="3057 or 3060">
+      <have>
+        <text>
+            [p]A magasba tartod a Kristálygömböt és varázsolsz. A Kristálygömbben felfedezed önmagad és a feléd közeledő Ragadozó Macskák képmását! Ebből még idejében megtudod, hogy ezek a teremtmények merről támadnak, és így sikerül elkerülnöd őket. Nyugodtan folytathatod az utadat.[/p]
+        </text>
+        <next id="271"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Varázslatod nem fog működni, a Ragadozó Macskák rád támadnak, és 3 ÉLETERŐ pont kárt tesznek benned.[/p]
+        </text>
+        <add amount="-3" to="stamina" />
+        <next id="74"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="424">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot. Nyugtalanul várod varázslatod hatását. Az előtted álló Halálszellem nem annyira csapda, mint inkább csak illúzió. Te azonban veszélyt gyanítasz, mégpedig valami nagy aljasságot. Fegyvert rántasz, és megtámadod az előtted álló teremtményt.[/p]
@@ -5542,7 +6143,25 @@
     <add to="stamina" amount="-2" />
     <next id="84"></next>
   </p>
-  <!-- 425 -->
+  <p id="425">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3022">
+      <have>
+        <text>
+            [p]A fejedre teszed a Kerek Papi Sapkát, varázsolsz, és vársz, miféle információt kapsz erről a helyről. Semmiféle ilyen lelki üzenetet nem kapsz.[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem alkalmazhatod ezt a varázslatot.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <next id="171"></next>
+  </p>
   <!-- 426 -->
   <p id="427">
     <text>
@@ -5660,7 +6279,13 @@
   </p>
   <!-- 435 -->
   <!-- 436 -->
-  <!-- 437 -->
+  <p id="437">
+    <text>
+        [p]Vesztesz 4 ÉLETERŐ pontot. Varázslatod hatására a Medve megáll. Megparancsolod neki, hogy forduljon vissza, amit engedelmesen meg is tesz.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="20"></next>
+  </p>
   <p id="438">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -6011,7 +6636,13 @@
     <add to="stamina" amount="-4" />
     <next id="256"></next>
   </p>
-  <!-- 469 -->
+  <p id="469">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Varázslatod hatására az ajtó kinyílik.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="265"></next>
+  </p>
   <p id="470">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot. Nem alkalmazhatod ezt a varázslatot, mert nem rendelkezel az ehhez szükséges tárggyal. Miközben azon igyekszel, hogy varázslatod működjön, a Halálszellem feléd lendíti csontos kezét, és egy hatalmas pofont kever le. Vesztesz újabb 2 ÉLETERő pontot. Jobban tetted volna, ha kardot rántasz.[/p]
@@ -6210,7 +6841,13 @@
     <next id="258"></next>
   </p>
   <!-- 484 -->
-  <!-- 485 -->
+  <p id="485">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Varázsolsz, de a Medve egyre csak közeledik feléd. Meglendíti a mancsát, és 2 ÉLETERŐ pont kárt tesz a karodban. Ez a varázslat csak azokat a teremtményeket teszi lomhává, ügyetlenné, amelyek valamilyen tárgyat tartanak a kezükben - de egy fegyvertelenül támadó Medvére nincs hatással. Rántsd elő a kardodat.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="139"></next>
+  </p>
   <p id="486">
     <text>
         [p]Vesztesz 4 ÉLETERŐ pontot, Varázslatod hatására láthatatlan erőtér vesz körül, amelyen semmi sem hatolhat át. Sajnos ez az erőtér nem képes megakadályozni azt, hogy ne érezd a lábadhoz közeli sziklák perzselő melegét.[/p]
@@ -6324,7 +6961,12 @@
     <add to="stamina" amount="-2" />
     <next id="263"></next>
   </p>
-  <!-- 492 -->
+  <p id="492">
+    <text>
+        [p]Varázsolsz, és közben belenézel, a Kristálygömbbe. A gömbben egy sötét, föld alatti barlangot látsz, ahol egy asztal mellett egy széken emberszerű alak ül, és a tiédhez hasonló Kristálygömbbe mered! Valami kavarog abban a másik Gömbben, de nem tudod megállapítani, pontosan miféle alakzatokat látsz. Mit jelent ez?[/p]
+    </text>
+    <next id="171"></next>
+  </p>
   <!-- 493 -->
   <p id="494">
     <text>
