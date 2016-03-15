@@ -1,14 +1,21 @@
 package hu.zagor.gamebooks.ff.mvc.book.inventory.controller;
 
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
+import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
+import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.SorParagraphData;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +27,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author Tamas_Szekeres
  */
 public class SorBookTakeItemController extends FfBookTakeItemController {
+    private static final int INITIAL_LUCK = 12;
+    private static final String MEDICINAL_POTION_ID = "2005";
     private static final String HUNGER_MARKER_ID = "4101";
     private static final String LIBRA_HELP_AVAILABLE_MARKER_ID = "4103";
     private static final String BOMBA_ID = "2002";
@@ -28,6 +37,7 @@ public class SorBookTakeItemController extends FfBookTakeItemController {
     private static final int REMOVED_HUNGER_MARKER_COUNT = 10;
 
     @Autowired private HttpServletRequest request;
+    @Resource(name = "sorSicknesses") private Set<String> sicknesses;
 
     @Override
     protected void consumeSelectedItem(final FfCharacter characterObject, final FfItem item) {
@@ -36,11 +46,26 @@ public class SorBookTakeItemController extends FfBookTakeItemController {
             character.setLuckCookieActive(true);
         } else if (item.getItemType() == ItemType.provision) {
             getInfo().getCharacterHandler().getItemHandler().removeItem(character, HUNGER_MARKER_ID, REMOVED_HUNGER_MARKER_COUNT);
+        } else if (MEDICINAL_POTION_ID.equals(item.getId())) {
+            removeRandomSickness(character);
         }
         final SorParagraphData data = (SorParagraphData) getWrapper(request).getParagraph().getData();
         data.setCanEat(false);
         character.setLastEatenBonus(item.getStamina());
         super.consumeSelectedItem(character, item);
+    }
+
+    private void removeRandomSickness(final SorCharacter character) {
+        final List<Item> currentSicknesses = new ArrayList<>();
+        for (final Item item : character.getEquipment()) {
+            if (sicknesses.contains(item.getId())) {
+                currentSicknesses.add(item);
+            }
+        }
+        if (!currentSicknesses.isEmpty()) {
+            Collections.shuffle(currentSicknesses);
+            character.getEquipment().remove(currentSicknesses.get(0));
+        }
     }
 
     /**
@@ -100,5 +125,21 @@ public class SorBookTakeItemController extends FfBookTakeItemController {
         }
         final boolean isLuckCookie = LUCK_COOKIE_ID.equals(item.getId());
         return (super.itemConsumptionAllowed(paragraph, item) && !isBomba) || isBombaAfterEating || isLuckCookie;
+    }
+
+    @Override
+    protected void doHandleItemStateChange(final HttpServletRequest request, final String itemId, final boolean isEquipped) {
+        if ("3072".equals(itemId)) {
+            final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
+            final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
+            final SorCharacter character = (SorCharacter) getWrapper(request).getCharacter();
+            attributeHandler.handleModification(character, "luck", INITIAL_LUCK);
+            final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
+            itemHandler.removeItem(character, "3072", 1);
+            itemHandler.addItem(character, "3073", 1);
+        } else {
+            super.handleItemStateChange(request, itemId, isEquipped);
+        }
+
     }
 }

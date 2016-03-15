@@ -231,7 +231,7 @@
   </p>
   <p id="20" color="purple">
     <text>
-        [p]Összeszeded a holmidat, és elhagyod a tisztást. Órákon át haladsz az ösvényen a fák között, míg végül az erdő egyre ritkulni kezd körülötted. Minden valószínűség szerint nemsokára eléred az erdő szélét, és megpillanthatod az Ilklala tó vizét. Kora este van, mire a hatalmas tó partjára érsz. Végigtekintesz a látóhatárig elnyúló sima víztükör hatalmas felületén, és elszomorodsz. Hogyan fogsz átkelni ezen a tavon? Nem látsz sehol egy embert vagy egy csónakot. Leülsz, és azon töröd a fejedet, vajon mitévő légy. Ha akarsz, letáborozhatsz itt éjszakára, és reggel eldöntheted, merre menj tovább. Ha akarsz, ehetsz is. Ha eszel, nyersz[/p]
+        [p]Összeszeded a holmidat, és elhagyod a tisztást. Órákon át haladsz az ösvényen a fák között, míg végül az erdő egyre ritkulni kezd körülötted. Minden valószínűség szerint nemsokára eléred az erdő szélét, és megpillanthatod az Ilklala tó vizét. Kora este van, mire a hatalmas tó partjára érsz. Végigtekintesz a látóhatárig elnyúló sima víztükör hatalmas felületén, és elszomorodsz. Hogyan fogsz átkelni ezen a tavon? Nem látsz sehol egy embert vagy egy csónakot. Leülsz, és azon töröd a fejedet, vajon mitévő légy. Úgy döntesz, hogy akár le is táborozhatsz itt éjszakára, és reggel majd eldöntheted, merre menj tovább. Ha akarsz, ehetsz is. Ha eszel, nyersz[/p]
     </text>
     <canEat />
     <itemCheck type="item" id="4101">
@@ -248,6 +248,13 @@
             ÉLETERŐ pontot. Ezt követően lefekhetsz aludni.[/p]
         </text>
       </after>
+    </itemCheck>
+    <itemCheck type="item" id="4073">
+      <have>
+        <gatherItem id="5004" />
+        <loseItem id="4073" />
+        <add amount="-3" to="stamina" />
+      </have>
     </itemCheck>
     <next id="264"></next>
   </p>
@@ -741,7 +748,13 @@
     <loseItem id="4103" />
     <next id="106"></next>
   </p>
-  <!-- 57 -->
+  <p id="57">
+    <text>
+        [p]Elkiáltod magad, és vársz. Tíz perc múlva ismét kiáltasz egyet, de válasz nem érkezik. Úgy látod, a környék teljesen elhagyatott.[/p]
+    </text>
+    <next id="241">Ha a parton mész tovább, hátha rábukkansz az életnek valamilyen jelére</next>
+    <next id="233">Ha inkább arra vársz, hátha rád talál valaki</next>
+  </p>
   <p id="58">
     <text>
         [p]Gyorsan a Sárkánykígyó után veted magad, és megpróbálod szemmel követni. Égő fáklyaként kúszik a levegőben, és megvilágítja előtted az utat, de sebessége sokkal nagyobb, mint a tiéd. Szél támad, és megkönnyebbülten tapasztalod, hogy az inkább a Sárkánykígyó ellenében fúj, semmint veled szemben, és így sikerül kissé behoznod a lemaradásodat. A szél fütyül, kavarog, ezért a kezeddel véded arcodat a széllökések ellen. Fogad közt homokszemcsék csikorognak, és ez rossz előjel - a homokvihar kellős közepe felé tartasz! Megállsz, és kezedet ellenzőként a szemed fölé tartva a Sárkánykígyót figyeled, amely mintha alulmaradna a széllel vívott harcban. A következő pillanatban egy újabb, homokkal teli fuvallat érkezik, amit a Sárkánykígyó képtelen kivédeni. Fénye még utoljára csillan egyet, majd a homok teljesen beborítja a testét, s a fény kihuny. Miközben ez történik, a Sárkánykígyó a hátizsákoddal együtt zuhanni kezd lefelé. Te a viharos erejű széllel harcolva megpróbálod elkapni a hátizsákodat, mielőtt még a benne lévő holmik a földhöz csapódva összetörnének. Ide-oda cibálja a hátizsákodat a szél, de sikerül úgy helyezkedned, hogy elkaphasd. Ekkor a Sárkánykígyó váratlanul leszáll a fejedre, és elterülsz a földön.[/p]
@@ -1052,7 +1065,486 @@
     <next id="162">Ha közelebb mész hozzá, hogy megnézd, ki ez vagy mi ez</next>
     <next id="239">Ha inkább irányt változtatsz és megpróbálod kikerülni</next>
   </p>
-  <!-- 74 -->
+  <p id="74">
+    <text>
+        [p]Ezek a lények, ha akarják, láthatatlanná válnak. Amint a harc megkezdődik, mindig láthatatlanná válnak, és mindaddig azok maradnak, amíg a küzdelem tart - 2 pontot le kell vonnod a Támadóerődből, hisz láthatatlan ellenséggel küzdesz. Viszont ha egy Ragadozó Macskát sikerült megsebezned, az annyira elbódul ettől, hogy a következő Forduló idejére már nem tud eléggé koncentrálni, és ismét láthatóvá válik. (Ha nem sérül meg újra, ismét láthatatlanná válik.) Amíg látod az ellenfeledet, a te Támadóerőd teljesen normális lesz.[/p]
+    </text>
+    <itemCheck type="item" id="4077">
+      <have>
+        <random>
+          <result max="1" min="1">
+            <text>
+                [p]Szerencséd van, az egyetlen rád támadó Ragadozó Macska beleragad a ragasztóba, így könnyedén végzel vele.[/p]
+            </text>
+            <next id="160"></next>
+          </result>
+          <result max="2" min="2">
+            <text>
+                [p]Két Ragadozó Macska közeledik feléd, de szerencsére az egyik beleragad a ragasztóba, így csak társával kell megküzdened.[/p]
+            </text>
+            <fight type="single">
+              <enemy id="39" />
+            </fight>
+          </result>
+          <result max="3" min="3">
+            <text>
+                [p]Három Ragadozó Macska közeledik feléd, de szerencsére az egyik beleragad a ragasztóba, így csak két társával kell megküzdened.[/p]
+            </text>
+            <fight type="single" forceOrder="true">
+              <enemy id="35" />
+              <enemy id="36" />
+              <winRound enemy="35" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="36" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <notWinRound subsequentCount="1" enemy="35">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="36">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+            </fight>
+          </result>
+          <result max="4" min="4">
+            <text>
+                [p]Négy Ragadozó Macska közeledik feléd, de szerencsére az egyik beleragad a ragasztóba, így csak három társával kell megküzdened.[/p]
+            </text>
+            <fight type="single" forceOrder="true">
+              <enemy id="35" />
+              <enemy id="36" />
+              <enemy id="37" />
+              <winRound enemy="35" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="36" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="37" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <notWinRound subsequentCount="1" enemy="35">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="36">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="37">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+            </fight>
+          </result>
+          <result max="5" min="5">
+            <text>
+                [p]Öt Ragadozó Macska közeledik feléd, de szerencsére az egyik beleragad a ragasztóba, így csak négy társával kell megküzdened.[/p]
+            </text>
+            <fight type="single" forceOrder="true">
+              <enemy id="35" />
+              <enemy id="36" />
+              <enemy id="37" />
+              <enemy id="38" />
+              <winRound enemy="35" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="36" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="37" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="38" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <notWinRound subsequentCount="1" enemy="35">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="36">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="37">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="38">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+            </fight>
+          </result>
+          <result max="6" min="6">
+            <text>
+                [p]Hat Ragadozó Macska közeledik feléd, de szerencsére az egyik beleragad a ragasztóba, így csak öt társával kell megküzdened.[/p]
+            </text>
+            <fight type="single" forceOrder="true">
+              <enemy id="35" />
+              <enemy id="36" />
+              <enemy id="37" />
+              <enemy id="38" />
+              <enemy id="41" />
+              <winRound enemy="35" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="36" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="37" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="38" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="41" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <notWinRound subsequentCount="1" enemy="35">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="36">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="37">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="38">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="41">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+            </fight>
+          </result>
+        </random>
+      </have>
+      <dontHave>
+        <random>
+          <result max="1" min="1">
+            <text>
+                [p]Egy Ragadozó Macska közeledik feléd.[/p]
+            </text>
+            <fight type="single">
+              <enemy id="39" />
+            </fight>
+          </result>
+          <result max="2" min="2">
+            <text>
+                [p]Két Ragadozó Macska közeledik feléd.[/p]
+            </text>
+            <fight type="single" forceOrder="true">
+              <enemy id="35" />
+              <enemy id="36" />
+              <enemy id="37" />
+              <enemy id="38" />
+              <enemy id="41" />
+              <winRound enemy="35" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="36" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <notWinRound subsequentCount="1" enemy="35">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="36">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+            </fight>
+          </result>
+          <result max="3" min="3">
+            <text>
+                [p]Három Ragadozó Macska közeledik feléd.[/p]
+            </text>
+            <fight type="single" forceOrder="true">
+              <enemy id="35" />
+              <enemy id="36" />
+              <enemy id="37" />
+              <winRound enemy="35" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="36" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="37" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <notWinRound subsequentCount="1" enemy="35">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="36">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="37">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+            </fight>
+          </result>
+          <result max="4" min="4">
+            <text>
+                [p]Négy Ragadozó Macska közeledik feléd.[/p]
+            </text>
+            <fight type="single" forceOrder="true">
+              <enemy id="35" />
+              <enemy id="36" />
+              <enemy id="37" />
+              <enemy id="38" />
+              <winRound enemy="35" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="36" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="37" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="38" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <notWinRound subsequentCount="1" enemy="35">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="36">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="37">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="38">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+            </fight>
+          </result>
+          <result max="5" min="5">
+            <text>
+                [p]Öt Ragadozó Macska közeledik feléd.[/p]
+            </text>
+            <fight type="single" forceOrder="true">
+              <enemy id="35" />
+              <enemy id="36" />
+              <enemy id="37" />
+              <enemy id="38" />
+              <enemy id="41" />
+              <winRound enemy="35" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="36" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="37" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="38" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="41" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <notWinRound subsequentCount="1" enemy="35">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="36">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="37">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="38">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="41">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+            </fight>
+          </result>
+          <result max="6" min="6">
+            <text>
+                [p]Hat Ragadozó Macska közeledik feléd.[/p]
+            </text>
+            <fight type="single" forceOrder="true">
+              <enemy id="35" />
+              <enemy id="36" />
+              <enemy id="37" />
+              <enemy id="38" />
+              <enemy id="41" />
+              <enemy id="42" />
+              <winRound enemy="35" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="36" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="37" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="38" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="41" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <winRound enemy="42" subsequentCount="1">
+                <loseItem id="4008" amount="2" />
+              </winRound>
+              <notWinRound subsequentCount="1" enemy="35">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="36">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="37">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="38">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="41">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+              <notWinRound subsequentCount="1" enemy="42">
+                <itemCheck type="item" id="4008">
+                  <dontHave>
+                    <gatherItem id="4008" amount="2" />
+                  </dontHave>
+                </itemCheck>
+              </notWinRound>
+            </fight>
+          </result>
+        </random>
+      </dontHave>
+      <after>
+        <loseItem id="4016" amount="2" />
+      </after>
+    </itemCheck>
+  </p>
   <!-- 75 -->
   <!-- 76 -->
   <p id="77">
@@ -1964,6 +2456,7 @@
       <have>
         <gatherItem id="4073" />
         <loseItem id="4072" />
+        <add amount="-3" to="stamina" />
       </have>
     </itemCheck>
     <next id="55">Ha megállsz pihenni és enni</next>
@@ -2759,7 +3252,22 @@
     <next id="90">Ha szeretnél valamivel többet tudni a támadódról</next>
   </p>
   <!-- 194 -->
-  <!-- 195 -->
+  <p id="195">
+    <text>
+        [p]A [span class="takeItem" data-id="3072" data-amount="1"]szerencsetalizmán[/span] egy parányi aranykígyót ábrázol, melyet a nyakadba akaszthatsz. Valójában ez egy különösen hasznos tárgy, amely SZERENCSE pontjaidat visszaállítja a Kezdeti értékre - de csak egyetlenegyszer. Most azonnal visszaállíthatod a SZERENCSE pontjaidat, vagy várhatsz, míg úgy érzed, hogy a talizmán nagyobb hasznodra lesz. Ha azonban egyszer már igénybe vetted az erejét, többet nem segít, viszont az értéke 1 Aranytallér.[/p]
+    </text>
+    <itemCheck type="item" id="3071">
+      <have>
+        <next id="221"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Most már el kell hagynod az Elf házát.[/p]
+        </text>
+        <next id="92"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="196">
     <text>
         [p]A Vagdaló Balta varázsfegyver, amely különösen hasznos a Snatta Erdő emberfogó növényei ellen. Segítségével könnyűszerrel kiszabadulhatsz a Fojtóbokor csapdájából.[/p]
@@ -3104,7 +3612,30 @@
     <gatherItem id="4074" />
     <next id="165"></next>
   </p>
-  <!-- 221 -->
+  <p id="221">
+    <text>
+        [p]Ezzel a
+    </text>
+    <itemCheck type="item" id="3071">
+      <have>
+        <text>
+            síppal
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [span class="takeItem" data-id="3071" data-amount="1"]síppal[/span]
+        </text>
+      </dontHave>
+      <after>
+        <text>
+            odahívhatod magadhoz az Ilklala tó révészét. Fenestra elmondja, hogyan működik a síp: - A révész minden reggel végigjárja a partot, és ha belefújsz ebbe a sípba, felfigyel majd rád. - Kora reggel az első dolgod az legyen, hogy belefújsz ebbe a sípba, ha az Ilklala tó partján vagy. Megköszönöd a sípot Fenestrának, és otthonát elhagyva visszatérsz az ösvényre. 3 SZERENCSE pontot nyertél, mert rátaláltál erre a sípra.[/p]
+        </text>
+        <add amount="3" to="luck" />
+      </after>
+    </itemCheck>
+    <next id="92"></next>
+  </p>
   <p id="222">
     <text>
         [p]A Szikladémon a földre zuhan és apró darabokra törik. De harcotokat végignézte egy csuklyás alak.[/p]
@@ -3255,7 +3786,14 @@
     <next id="166">Ha most azt kéred tőlük, hogy mondják el neked a varázsdaluk szövegét</next>
     <next id="323">Ha arra kéred őket, hogy fedjék fel előtted igazi énjüket</next>
   </p>
-  <!-- 233 -->
+  <p id="233">
+    <text>
+        [p]Már legalább egy órája vársz. Leszámítva néhány apró állatkát, mely az erdőből surran ki inni, egy teremtett lélek sincs a közelben.[/p]
+    </text>
+    <next id="241">Ha körülnézel a part mentén, hátha találsz valakit</next>
+    <next id="57">Ha segítségért kiáltasz</next>
+    <next id="304">Ha vársz még egy ideig</next>
+  </p>
   <!-- 234 -->
   <p id="235">
     <text>
@@ -3365,7 +3903,13 @@
     </text>
     <next id="173"></next>
   </p>
-  <!-- 241 -->
+  <p id="241">
+    <text>
+        [p]Már egy fél órája mész a parton nyugatnak de semmit sem találsz. Viszzamész és a másik irányba indulsz el. Most sem találsz olyasmit, ami átsegítene a túlpartra.[/p]
+    </text>
+    <next id="57">Ha kiáltasz egyet, hátha valaki meghallja</next>
+    <next id="233">Ha leülsz és vársz, hátha valamilyen segítség érkezik</next>
+  </p>
   <p id="242">
     <text>
         [p]Lenyúlsz a fegyveredért, de abban a pillanatban, amikor megérinted, valami megüti a kezedet, és kénytelen vagy elrántani onnan! Megrázod fájós kezedet. Vesztesz 1 ÉLETERŐ pontot. Óvatosan még egyszer lenyúlsz. Amint a fegyveredet megérinted, ismét ugyanazt a fájdalmas ütést érzed. Újabb 1 ÉLETERŐ pontot vesztesz. Valamilyen mágikus erő akadályoz meg abban, hogy megragadhasd a fegyveredet![/p]
@@ -3725,14 +4269,24 @@
         <gatherItem id="4101" />
       </dontHave>
       <after>
-        <text>
-            Hogyan akarsz átkelni a tavon?[/p]
-        </text>
+        <itemCheck type="item" id="3071">
+          <have>
+            <text>
+                Előveszed a Fenestrától kapott sípot, és belefújsz.[/p]
+            </text>
+            <next id="199"></next>
+          </have>
+          <dontHave>
+            <text>
+                Hogyan akarsz átkelni a tavon?[/p]
+            </text>
+            <next id="241">Ha a parton mész végig, hátha összeakadsz valakivel</next>
+            <next id="57">Ha elkiáltod magad, hátha valaki meghallja</next>
+            <next id="233">Ha vársz, hátha segít valaki</next>
+          </dontHave>
+        </itemCheck>
       </after>
     </itemCheck>
-    <next id="241">Ha a parton mész végig, hátha összeakadsz valakivel</next>
-    <next id="57">Ha elkiáltod magad, hátha valaki meghallja</next>
-    <next id="233">Ha vársz, hátha segít valaki</next>
   </p>
   <p id="265">
     <text>
@@ -4054,7 +4608,23 @@
     <next id="269"></next>
   </p>
   <!-- 295 -->
-  <!-- 296 -->
+  <p id="296">
+    <text>
+        [p]A [span class="takeItem" data-id="2005" data-amount="1"]gyógykeverék[/span] nem úgy működik, ahogy elképzelted. A kis üvegcsében, melyet a varázslónőtől kaptál, olyan folyadék van, mely nem alkalmas arra, hogy varázsoljanak vele. Mindazonáltal felhasználhatod majd utad során szerzett mindennemű bajod gyógyítására. Nyersz 2 SZERENCSE pontot ezért a szerzeményedért.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <itemCheck type="item" id="3071">
+      <have>
+        <next id="221"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Most már el kell hagynod az Elf házát.[/p]
+        </text>
+        <next id="92"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="297">
     <text>
         [p]Szóról szóra megismétled a kísértetdal szövegét. Néma csönd telepszik a környékre - természetellenes csönd. Vajon ez a különös istenség felfedi-e magát előtted? A felhők szélsebesen vágtatnak az égen, bár most még csak csöndben. A csöndet hirtelen hatalmas dörgés töri meg, és egy villám csap bele a földbe, éppen ott, ahol előzőleg a Hét Lélek volt. Ám azok eltűntek! Fenyegető hangon hívod őket, de így sem vagy képes elrejteni félelmedet. A szellem ismét megszólal, de ezúttal egy gúnyos kacaj csattan fel. A hang ott köröz körülötted, hangosan kacag, majd fokozatosan elhal. Ekkor egy ismerős, lágy női hang szólít meg: -Becsaptak téged! Ezeket a gonosz szellemeket a Főmágus küldte rád, és a csapdájukba kerültél! Naivan háromszor átkoztad el a nevemet a dalukkal. Nem segíthetek abban, ami ezután következik! - Amikor istennőd elhallgat, újra felharsan a kacagás. A kísértet arca ismét megjelenik előtted. Szája gúnyos vigyorra húzódik, s közben az arca dagadni kezd, és pillanatok alatt akkorára nő, mint amekkora te vagy. Egyfolytában vigyorog, és kacagása a füledben cseng. Hiába tapasztod be a füledet a kezeddel, képtelen vagy megszabadulni e hangtól. Az arc már kétszer akkora, mint te vagy, és amikor belenézel mélyen ülő szemébe; hirtelen megragad valami! Egy hosszú, vörös kígyónyelv csap ki a szájon, mely szorosan köréd tekeredve elkap, és beemel a szájába. Elmerülsz a sötétségben...[/p]
@@ -4236,7 +4806,12 @@
     </itemCheck>
   </p>
   <!-- 303 -->
-  <!-- 304 -->
+  <p id="304">
+    <text>
+        [p]Újabb fél óra elmúltával sincs jele egyetlen gondolkodó lénynek sem itt a tóparton. Valójában, ha erre a pontra érsz, az azt jelenti, jó sokáig fogsz még arra várni, hogy átjuss valahogyan az Ilklala tó túlsó partjára. Természetesen át lehet kelni a tavon, de ezt csak akkor teheted meg, ha odahívod a révészt. Ha nem tudod, miképp szólítsd oda magadhoz, akkor innen már nem jutsz tovább.[/p]
+    </text>
+    <death />
+  </p>
   <p id="305">
     <text>
         [p]A Fojtóbokor egyre szorosabban ölel magához. Erőd egyre fogy, és már alig-alig kapsz levegőt. A karodat mozdítani sem bírod, így varázsolni sem tudsz.[/p]
@@ -4792,7 +5367,18 @@
     <add amount="-1" to="skill" />
     <next id="133"></next>
   </p>
-  <!-- 324 -->
+  <p id="324">
+    <text>
+        [p]Mielőtt elmennél, Fenestra egy ajándékot ajánl fel neked. Mit választasz?[/p]
+    </text>
+    <next id="296" pos="1">Gyógyitalt?</next>
+    <next id="195" pos="2">Szerencsetalizmánt?</next>
+    <itemCheck type="item" id="3071">
+      <dontHave>
+        <next id="221" pos="3">Sípot?</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="325">
     <text>
         [p]A földre zuhansz, és ekkor a Kentaurok vezére beléd rúg a patájával. Amikor látja, hogy nem tudsz visszavágni, lehajol hozzád, átkutatja a holmidat, és mindent elszed tőled. A Kentaurok azt hiszik, halott vagy, és elvágtatnak. De te nem haltál még meg. Kis pihen ő után összeszeded magad, de minden tárgyadat és élelmedet is elvesztetted.[/p]
@@ -6430,7 +7016,49 @@
     <add to="stamina" amount="-1" />
     <next id="248"></next>
   </p>
-  <!-- 451 -->
+  <p id="451">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3017">
+      <have>
+        <text>
+            [p]Földhöz vágod a ragasztós üveget, és varázsolsz. Minthogy azonban a Ragadozó Macskák láthatatlanok, ezért csakis a szerencsén múlik, hogy bármelyikük is belelép-e a ragasztódba, vagy sem.[/p]
+        </text>
+        <loseItem id="3017" />
+        <next id="451a">Ha megeresztesz Sindlához egy fohászt</next>
+        <next id="74">Ha nem tartod ezt szükségesnek</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Ez a varázslat nem fog működni, és további 3 ÉLETERŐ pontot vesztesz, mert a Ragadozó Macskák megtámadnak.[/p]
+        </text>
+        <add amount="-3" to="stamina" />
+      </dontHave>
+    </itemCheck>
+    <next id="74"></next>
+  </p>
+  <p id="451a" display="451">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+        [p]Földhöz vágod a ragasztós üveget, és varázsolsz. Minthogy azonban a Ragadozó Macskák láthatatlanok, ezért csakis a szerencsén múlik, hogy bármelyikük is belelép-e a ragasztódba, vagy sem.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Az egyik támadód belelép a ragasztóba, így egy Ragadozó Macskával kevesebbel kell majd megküzdened.[/p]
+        </text>
+        <gatherItem id="4077" />
+      </success>
+      <failure>
+        <text>
+            [p]Mindegyik Ragadozó Macska elkerüli a ragasztódat.[/p]
+        </text>
+      </failure>
+    </test>
+    <next id="74"></next>
+  </p>
   <p id="452">
     <text>
         [p]Vesztesz 2 ÉLETERŐ pontot. Varázsolsz, és várod a hatást. A csillogó fény ismét megjelenik, és beborítja a teremtményt A Halálszellem a fény hatására a szemed láttára ölt más alakot. Egy izmos, kopaszodó férfi jelenik meg a helyében, aki idegesen mosolyogva néz rád. A Halálszellem csak illúzió volt! Most megküzdhetsz a teremtménnyel, vagy megkegyelmezhetsz neki.[/p]

@@ -10,9 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Controller for handling the item taking request to the given book.
@@ -22,10 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + Sorcery.KHARE_CITYPORT_OF_TRAPS)
 public class Sor2BookTakeItemController extends SorBookTakeItemController {
 
-    @RequestMapping(value = PageAddresses.BOOK_MARKET_SELL + "/{id}")
-    @ResponseBody
     @Override
-    public Map<String, Object> handleMarketSell(final HttpServletRequest request, @PathVariable("id") final String itemId) {
+    protected Map<String, Object> doHandleMarketSell(final HttpServletRequest request, final String itemId) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final String sectionId = wrapper.getParagraph().getId();
         Map<String, Object> handleMarketSell;

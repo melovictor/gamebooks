@@ -13,7 +13,7 @@ import hu.zagor.gamebooks.content.command.market.MarketCommand;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
-import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
+import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.SorBookTakeItemController;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.bookids.english.Sorcery;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
@@ -25,9 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Controller for handling the item taking request to the given book.
@@ -35,7 +33,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + Sorcery.THE_SEVEN_SERPENTS)
-public class Sor3BookTakeItemController extends FfBookTakeItemController {
+public class Sor3BookTakeItemController extends SorBookTakeItemController {
 
     private static final int BASE_ITEM_SELLING_PRICE = 3;
 
@@ -44,10 +42,8 @@ public class Sor3BookTakeItemController extends FfBookTakeItemController {
     @Autowired private DiceResultRenderer renderer;
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
 
-    @RequestMapping(value = PageAddresses.BOOK_MARKET_SELL + "/{id}")
-    @ResponseBody
     @Override
-    public Map<String, Object> handleMarketSell(final HttpServletRequest request, @PathVariable("id") final String itemId) {
+    public Map<String, Object> doHandleMarketSell(final HttpServletRequest request, final String itemId) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final Paragraph paragraph = wrapper.getParagraph();
         Map<String, Object> handleMarketSell;

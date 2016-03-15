@@ -86,14 +86,24 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
      * @param request the {@link HttpServletRequest}
      * @param itemId the id of the item to change the state
      * @param isEquipped true if the item has to be equipped, false if it has to be removed
-     * @return null
      */
     @RequestMapping(value = PageAddresses.BOOK_CHANGE_ITEM_EQUIP_STATE + "/{id}/{isEquipped}")
     @ResponseBody
-    public String handleItemStateChange(final HttpServletRequest request, @PathVariable("id") final String itemId, @PathVariable("isEquipped") final boolean isEquipped) {
+    public final void handleItemStateChange(final HttpServletRequest request, @PathVariable("id") final String itemId,
+        @PathVariable("isEquipped") final boolean isEquipped) {
         Assert.notNull(itemId, "The parameter 'itemId' cannot be null!");
         Assert.isTrue(itemId.length() > 0, "The parameter 'itemId' cannot be empty!");
 
+        doHandleItemStateChange(request, itemId, isEquipped);
+    }
+
+    /**
+     * Method for actually handling the changing of the item state.
+     * @param request the {@link HttpServletRequest}
+     * @param itemId the id of the item to change the state
+     * @param isEquipped true if the item has to be equipped, false if it has to be removed
+     */
+    protected void doHandleItemStateChange(final HttpServletRequest request, final String itemId, final boolean isEquipped) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final Paragraph paragraph = wrapper.getParagraph();
 
@@ -105,7 +115,6 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
             characterHandler.getItemHandler().setItemEquipState(character, itemId, isEquipped);
             getItemInteractionRecorder().changeItemEquipState(wrapper, itemId);
         }
-        return null;
     }
 
     /**
@@ -216,10 +225,20 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
      */
     @RequestMapping(value = PageAddresses.BOOK_MARKET_SELL + "/{id}")
     @ResponseBody
-    public Map<String, Object> handleMarketSell(final HttpServletRequest request, @PathVariable("id") final String itemId) {
+    public final Map<String, Object> handleMarketSell(final HttpServletRequest request, @PathVariable("id") final String itemId) {
         Assert.notNull(itemId, "The parameter 'itemId' cannot be null!");
         Assert.isTrue(itemId.length() > 0, "The parameter 'itemId' cannot be empty!");
 
+        return doHandleMarketSell(request, itemId);
+    }
+
+    /**
+     * Method for actually selling an item in the market.
+     * @param request the {@link HttpServletRequest}
+     * @param itemId the id of the item to buy
+     * @return the data about the sale
+     */
+    protected Map<String, Object> doHandleMarketSell(final HttpServletRequest request, final String itemId) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
 
@@ -227,7 +246,6 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
 
         final Map<String, Object> result = marketHandler.handleMarketSell(itemId, character, wrapper.getParagraph().getItemsToProcess().get(0).getCommand(), itemHandler);
         getItemInteractionRecorder().recordItemMarketMovement(wrapper, "Purchase", itemId);
-
         return result;
     }
 
