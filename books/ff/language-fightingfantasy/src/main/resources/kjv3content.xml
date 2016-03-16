@@ -259,7 +259,12 @@
     <next id="264"></next>
   </p>
   <!-- 21 -->
-  <!-- 22 -->
+  <p id="22">
+    <text>
+        [p]Az aprócska teremtmény szája széles mosolyra húzódik: - Hát, hálásan köszönöm az ajándékot - mondja teljesen megváltozott hangon, mely ezúttal egy középkorú nő hangjához hasonlít. - Ami igaz, az igaz, viselkedésed nemes jellemre vall, hisz Kakhabadban senki nem adna ajándékot idegennek. De várj csak! Hadd vegyem le ezt az álruhát. - A szemed láttára változik át aprócska manóból bíborpalástot viselő, sudár termetű nővé. - Engedd meg, hogy bemutatkozzam - mondja. - A nevem Dintainta a Sztyeppékről, bár sokan csak úgy hívnak, hogy a Szélhámos. Tudom, miféle küldetésben jársz errefelé, és én tudok neked segíteni. Éles észről és bátorságról tanúskodik, hogy idáig eljutottál, de figyelmeztetlek, hogy még az eddigieknél is sokkal nagyobb veszedelmek leselkednek rád a továbbiakban. A Mampangi Erődnél óvakodj az Álmatlan Kostól, mert még a te ügyességed sem lesz elegendő ahhoz, hogy megbirkózz az erejével. Csak úgy győzheted le, ha az ő jelenlétében kihúzod ennek az üvegcsének a dugóját. - Ezzel átad neked egy apró [span class="takeItem" data-id="3074" data-amount="1"]kis üveget[/span], és így szól: - Úgy vigyázz erre, mint a szemed fényére, és meg ne engedd senkinek, hogy kiengedje belőle a gázt. Még egy utolsó jó tanács. Nemsokára szembekerülsz majd a Földkígyóval, amelynek rettenetes ereje van, de csak akkor tudja használni, ha a földön áll. Köszönöm az ajándékot, és jó utat. - Dintainta motyog még valamit, majd felölti előző alakját, rád kacsint, és folytatja útját, te pedig továbbmész a saját utadon.[/p]
+    </text>
+    <next id="114"></next>
+  </p>
   <p id="23">
     <text>
         [p]A kút igen régi, és már kiszáradt. Leereszted a mélybe a vödröt, majd felhúzod. Kiemeled a kút szélére, és belenézel - az utolsó pillanatban ugrasz félre, s így sikerül kivédened a vödör alján fészkelő aranykígyó marását! A vödör a kút kávájáról leesik a földre, a kígyó kisiklik belőle, és egyenesen feléd tart.[/p]
@@ -462,7 +467,14 @@
   <p id="32">
     <empty />
   </p>
-  <!-- 33 -->
+  <p id="33">
+    <text>
+        [p]Az apró teremtmény az orra alatt morogva köszönetet mond: - Már van egy ilyenem - jelenti ki. - Mindenesetre köszönöm az ajándékot. Most azonban mennem kell. Viszontlátásra. - Elcsoszog melletted, és arra folytatja az útját, amerről te jöttél. Mit teszel?[/p]
+    </text>
+    <next id="114">Ha vállat vonsz, elköszönsz tőle és az ellenkező irányba indulsz el</next>
+    <next id="254">Ha utána kiáltasz, és valami mást ajánlasz fel neki</next>
+    <next id="327">Ha megharagszol rá, amiért ilyen szemtelen, és móresre tanítod</next>
+  </p>
   <!-- 34 -->
   <p id="35">
     <text>
@@ -553,6 +565,11 @@
         </text>
       </after>
     </itemCheck>
+    <itemCheck type="item" id="3075">
+      <have>
+        <changeEnemy attribute="skill" id="32" change="-2" />
+      </have>
+    </itemCheck>
     <fight type="single">
       <enemy id="32" />
       <win>
@@ -573,7 +590,7 @@
     <text>
         [p]Egy hirtelen szélroham kitépi a kezedből a hátizsákodat, és végiggörgeti a földön. A szél néhányszor megpörgeti, és a zsák kinyílik! Behunyod a szemed, és a hátizsákod után veted magad, hogy összeszedd a tárgyaidat, de ez a feladat nem könnyű. Ahogy megragadsz egy tárgyat, a szél ismét kitépi azt a kezedből, és továbbröpíti. Mégis sikerül mindenedet összeszedned, kivéve a törékeny tárgyaidat és a papírjaidat, melyeket elröpít a szél. Visszabújsz a résbe, és megvárod, amíg a porvihar elül.[/p]
     </text>
-    <loseItem id="3001,3017,3025,3026,3027,3036,3038,3039,3045,3048,3050,3053,3056,3057,3060,3063,3066" amount="99" />
+    <loseItem id="2001,2005,3001,3017,3025,3026,3027,3036,3038,3039,3045,3048,3050,3053,3056,3057,3060,3063,3066,3074" amount="99" />
     <next id="10"></next>
   </p>
   <p id="45">
@@ -660,7 +677,1202 @@
     <next id="94">Ha észak felé folytatod az utadat</next>
   </p>
   <!-- 49 -->
-  <!-- 50 -->
+  <p id="50">
+    <text>
+        [p]Vajon hogyan reagál a teremtmény?[/p]
+    </text>
+    <itemCheck type="section" id="254">
+      <have>
+        <itemCheck type="pos" id="1">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="1009" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="2">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="2001" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="3">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3001" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="4">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3002" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="5">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3007" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="6">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3008" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="7">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3013" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="8">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3014" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="9">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3017" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="10">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3020" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="11">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3022" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="12">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3023" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="13">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3027" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="14">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3028" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="15">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3031" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="16">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3032" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="17">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3034" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="18">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3035" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="19">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3036" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="20">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3038" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="22">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3043" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="23">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3044" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="24">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3046" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="25">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3048" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="26">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3049" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="27">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3050" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="28">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3051" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="29">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3052" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="30">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3053" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="31">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3054" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="32">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3055" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="33">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3057" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="34">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3058" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="35">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3059" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="36">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3060" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="37">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3061" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="38">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="3" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="4">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3064" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="39">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3201" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="40">
+          <have>
+            <random>
+              <result max="2" min="1">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="3">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3205" />
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="pos" id="1">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="1009" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="2">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="2001" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="3">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3001" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="4">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3002" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="5">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3007" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="6">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3008" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="7">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3013" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="8">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3014" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="9">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3017" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="10">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3020" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="11">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3022" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="12">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3023" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="13">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3027" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="14">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3028" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="15">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3031" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="16">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3032" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="17">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3034" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="18">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3035" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="19">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3036" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="20">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3038" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="22">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3043" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="23">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3044" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="24">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3046" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="25">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3048" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="26">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3049" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="27">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3050" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="28">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3051" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="29">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3052" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="30">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3053" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="31">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3054" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="32">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3055" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="33">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3057" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="34">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3058" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="35">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3059" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="36">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3060" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="37">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3061" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="38">
+          <have>
+            <random>
+              <result max="3" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="5" min="4">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3064" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="39">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3201" />
+          </have>
+        </itemCheck>
+        <itemCheck type="pos" id="40">
+          <have>
+            <random>
+              <result max="1" min="1">
+                <next id="33"></next>
+              </result>
+              <result max="4" min="2">
+                <next id="22"></next>
+              </result>
+              <result max="6" min="5">
+                <next id="290"></next>
+              </result>
+            </random>
+            <loseItem id="3205" />
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="51">
     <empty />
   </p>
@@ -714,6 +1926,11 @@
     <text>
         [p]Kezdetét veszi a küzdelem.[/p]
     </text>
+    <itemCheck type="item" id="3075">
+      <have>
+        <changeEnemy attribute="skill" id="31" change="-2" />
+      </have>
+    </itemCheck>
     <fight type="single">
       <enemy id="31" />
     </fight>
@@ -1707,12 +2924,12 @@
     </text>
     <test against="luck">
       <failure>
-        <itemCheck type="items" id="2001 or 3001 or 3017 or 3038 or 3039 or 3048">
+        <itemCheck type="items" id="2001 or 3001 or 3017 or 3038 or 3039 or 3048 or 3074">
           <have>
             <text>
                 [p]Olyan szerencsétlenül estél, hogy az egyik tárgyad összetört.[/p]
             </text>
-            <loseItem id="2001,3001,3017,3038,3039,3048" amount="1" />
+            <loseItem id="2001,3001,3017,3038,3039,3048,3074" amount="1" />
           </have>
           <dontHave>
             <itemCheck type="item" id="3002">
@@ -2462,7 +3679,207 @@
     <next id="55">Ha megállsz pihenni és enni</next>
     <next id="159">Ha éjszaka is folytatod az utadat</next>
   </p>
-  <!-- 134 -->
+  <p id="134">
+    <text>
+        [p]A parányi teremtmény egy ajándékot kér tőled barátságod zálogául. Ha adsz neki valamit, annak valami igazán értékes dolognak kell lennie (nem lehet étel vagy egy semmire sem használható tárgy).[/p]
+    </text>
+    <itemCheck type="item" id="1009">
+      <have>
+        <next id="50" pos="1">Ha neki adod a Vagdaló Baltát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="2001">
+      <have>
+        <next id="50" pos="2">Ha neki adod a Bugyabogyó szörpöt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3001">
+      <have>
+        <next id="50" pos="3">Ha neki adod a Gyógyfűfőzetet</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3002">
+      <have>
+        <next id="50" pos="4">Ha neki adod a Bambuszfurulyát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3007">
+      <have>
+        <next id="50" pos="5">Ha neki adod a Varázskönyv oldalt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3008">
+      <have>
+        <next id="50" pos="6">Ha neki adod a Méhviaszt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3013">
+      <have>
+        <next id="50" pos="7">Ha neki adod a Borrinbőr csizmát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3014">
+      <have>
+        <next id="50" pos="8">Ha neki adod a Drágakövet</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3017">
+      <have>
+        <next id="50" pos="9">Ha neki adod a Ragasztót</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3020">
+      <have>
+        <next id="50" pos="10">Ha neki adod a Ragnar Kardvívótudomány-karszalagot</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3022">
+      <have>
+        <next id="50" pos="11">Ha neki adod a Papi sapkát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3023">
+      <have>
+        <next id="50" pos="12">Ha neki adod a Szerencse Talizmánt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3027">
+      <have>
+        <next id="50" pos="13">Ha neki adod a Homokot</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3028">
+      <have>
+        <next id="50" pos="14">Ha neki adod a Fekete Maszkot</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3031">
+      <have>
+        <next id="50" pos="15">Ha neki adod a Dobódárdát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3032">
+      <have>
+        <next id="50" pos="16">Ha neki adod a Csont Karperecet</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3034">
+      <have>
+        <next id="50" pos="17">Ha neki adod a Zöldhajú parókát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3035">
+      <have>
+        <next id="50" pos="18">Ha neki adod a Napékszert</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3036">
+      <have>
+        <next id="50" pos="19">Ha neki adod az Aranyhátú Tükröt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3038">
+      <have>
+        <next id="50" pos="20">Ha neki adod a Titokzatosság Italát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3043">
+      <have>
+        <next id="50" pos="22">Ha neki adod a Bőrkesztyűt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3044">
+      <have>
+        <next id="50" pos="23">Ha neki adod a Varázsláncot</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3046">
+      <have>
+        <next id="50" pos="24">Ha neki adod az Íjat a Nyílvesszőkkel</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3048">
+      <have>
+        <next id="50" pos="25">Ha neki adod a Kígyómarás elleni szert</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3049">
+      <have>
+        <next id="50" pos="26">Ha neki adod a Kígyómintázatú Gyűrűt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3050">
+      <have>
+        <next id="50" pos="27">Ha neki adod a Bűvös iránytűt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3051">
+      <have>
+        <next id="50" pos="28">Ha neki adod a Szerencsetalizmánt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3052">
+      <have>
+        <next id="50" pos="29">Ha neki adod a Kőport</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3053">
+      <have>
+        <next id="50" pos="30">Ha neki adod a Szenteltvizet</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3054">
+      <have>
+        <next id="50" pos="31">Ha neki adod az Aranyékszert</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3055">
+      <have>
+        <next id="50" pos="32">Ha neki adod a Chakramot</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3057">
+      <have>
+        <next id="50" pos="33">Ha neki adod a Kristálygömböt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3058">
+      <have>
+        <next id="50" pos="34">Ha neki adod a Rézingát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3059">
+      <have>
+        <next id="50" pos="35">Ha neki adod az Igazgyöngy Gyűrűt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3060">
+      <have>
+        <next id="50" pos="36">Ha neki adod a robbanó Kristálygömböt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3061">
+      <have>
+        <next id="50" pos="37">Ha neki adod a Viharkürtöt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3064">
+      <have>
+        <next id="50" pos="38">Ha neki adod a Páncélruhát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3201">
+      <have>
+        <next id="50" pos="39">Ha neki adsz egy Goblinfogat</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3205">
+      <have>
+        <next id="50" pos="40">Ha neki adsz egy Óriásfogat</next>
+      </have>
+    </itemCheck>
+    <next id="210">Ha nem kívánsz vadidegennek értékes ajándékot adni, és megtagadod a kívánságát</next>
+  </p>
   <p id="135">
     <text>
         [p]Előrerohansz, de hirtelen félre kell ugranod, nehogy egy oszlop rád zuhanjon. Nincs szerencséd, egy hatalmas sziklatömb a válladat éri, és újabb 2 ÉLETERŐ pont sebesülést szenvedsz. Remeg az egész épület, és sehol sem látsz kiutat! Csakhamar a tető is rád szakadhat! Gyorsan végig kell gondolnod, miképp szabadulhatsz ki innen. Mit teszel?[/p]
@@ -2636,6 +4053,11 @@
         [p]A homokot a teremtmény elől óvatosan elrejtve, felmászol a fára. Amikor észreveszi, hogy felfelé mászol, leveti magát az ágakról a földre. Gyorsan utánaugrasz, még mielőtt a teremtmény újabb lángokat lövellne rád. A földön farkasszemet néztek egymással, s egymás mozdulatait lesitek. A Sárkánykígyó egy szempillantás alatt lángba borul és kitárja a szárnyait. Ekkor gyorsan rászórod a homokot. A teremtmény felüvölt, amikor a homok beborítja. A lángok kihunynak. A szárnyak eltűnnek. Az a picinyke piros kígyó áll előtted, amely eredetileg követett! Kardot rántasz, hogy végezz vele.[/p]
     </text>
     <loseItem id="148" />
+    <itemCheck type="item" id="3075">
+      <have>
+        <changeEnemy attribute="skill" id="33" change="-2" />
+      </have>
+    </itemCheck>
     <fight type="single">
       <enemy id="33" />
       <win>
@@ -4076,7 +5498,206 @@
     <next id="92"></next>
   </p>
   <!-- 253 -->
-  <!-- 254 -->
+  <p id="254">
+    <text>
+        [p]Utánarohansz, miközben a holmijaid között matatsz, hogy valami mást ajánlj fel neki. Válassz valami mást - ám ennek is értékes tárgynak kell lennie! Mindenesetre az a tény, hogy két tárgyat ajánlottál fel neki, jutalmat érdemel, és a második tárgy esetében sokkal kevésbé lesz kritikus az ajándékoddal szemben.[/p]
+    </text>
+    <itemCheck type="item" id="1009">
+      <have>
+        <next id="50" pos="1">Ha neki adod a Vagdaló Baltát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="2001">
+      <have>
+        <next id="50" pos="2">Ha neki adod a Bugyabogyó szörpöt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3001">
+      <have>
+        <next id="50" pos="3">Ha neki adod a Gyógyfűfőzetet</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3002">
+      <have>
+        <next id="50" pos="4">Ha neki adod a Bambuszfurulyát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3007">
+      <have>
+        <next id="50" pos="5">Ha neki adod a Varázskönyv oldalt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3008">
+      <have>
+        <next id="50" pos="6">Ha neki adod a Méhviaszt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3013">
+      <have>
+        <next id="50" pos="7">Ha neki adod a Borrinbőr csizmát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3014">
+      <have>
+        <next id="50" pos="8">Ha neki adod a Drágakövet</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3017">
+      <have>
+        <next id="50" pos="9">Ha neki adod a Ragasztót</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3020">
+      <have>
+        <next id="50" pos="10">Ha neki adod a Ragnar Kardvívótudomány-karszalagot</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3022">
+      <have>
+        <next id="50" pos="11">Ha neki adod a Papi sapkát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3023">
+      <have>
+        <next id="50" pos="12">Ha neki adod a Szerencse Talizmánt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3027">
+      <have>
+        <next id="50" pos="13">Ha neki adod a Homokot</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3028">
+      <have>
+        <next id="50" pos="14">Ha neki adod a Fekete Maszkot</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3031">
+      <have>
+        <next id="50" pos="15">Ha neki adod a Dobódárdát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3032">
+      <have>
+        <next id="50" pos="16">Ha neki adod a Csont Karperecet</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3034">
+      <have>
+        <next id="50" pos="17">Ha neki adod a Zöldhajú parókát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3035">
+      <have>
+        <next id="50" pos="18">Ha neki adod a Napékszert</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3036">
+      <have>
+        <next id="50" pos="19">Ha neki adod az Aranyhátú Tükröt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3038">
+      <have>
+        <next id="50" pos="20">Ha neki adod a Titokzatosság Italát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3043">
+      <have>
+        <next id="50" pos="22">Ha neki adod a Bőrkesztyűt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3044">
+      <have>
+        <next id="50" pos="23">Ha neki adod a Varázsláncot</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3046">
+      <have>
+        <next id="50" pos="24">Ha neki adod az Íjat a Nyílvesszőkkel</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3048">
+      <have>
+        <next id="50" pos="25">Ha neki adod a Kígyómarás elleni szert</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3049">
+      <have>
+        <next id="50" pos="26">Ha neki adod a Kígyómintázatú Gyűrűt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3050">
+      <have>
+        <next id="50" pos="27">Ha neki adod a Bűvös iránytűt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3051">
+      <have>
+        <next id="50" pos="28">Ha neki adod a Szerencsetalizmánt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3052">
+      <have>
+        <next id="50" pos="29">Ha neki adod a Kőport</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3053">
+      <have>
+        <next id="50" pos="30">Ha neki adod a Szenteltvizet</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3054">
+      <have>
+        <next id="50" pos="31">Ha neki adod az Aranyékszert</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3055">
+      <have>
+        <next id="50" pos="32">Ha neki adod a Chakramot</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3057">
+      <have>
+        <next id="50" pos="33">Ha neki adod a Kristálygömböt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3058">
+      <have>
+        <next id="50" pos="34">Ha neki adod a Rézingát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3059">
+      <have>
+        <next id="50" pos="35">Ha neki adod az Igazgyöngy Gyűrűt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3060">
+      <have>
+        <next id="50" pos="36">Ha neki adod a robbanó Kristálygömböt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3061">
+      <have>
+        <next id="50" pos="37">Ha neki adod a Viharkürtöt</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3064">
+      <have>
+        <next id="50" pos="38">Ha neki adod a Páncélruhát</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3201">
+      <have>
+        <next id="50" pos="39">Ha neki adsz egy Goblinfogat</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3205">
+      <have>
+        <next id="50" pos="40">Ha neki adsz egy Óriásfogat</next>
+      </have>
+    </itemCheck>
+  </p>
   <p id="255" color="purple">
     <text>
         [p]Egész éjjel mész. Ha akarsz, megállhatsz közben enni. Ha így teszel, nyersz
@@ -4299,6 +5920,11 @@
     <text>
         [p]Előhúzod a tűzszerszámodat, és megpróbálsz tüzet csiholni. A Kígyó zavartan néz a fa tetejéről, szemmel láthatólag érdekli, mit teszel, de sajnos a terved, amit kiagyaltál, egyáltalán nincs hatással rá. A Tűzkígyó rád veti magát a fáról, és meg kell vele küzdened.[/p]
     </text>
+    <itemCheck type="item" id="3075">
+      <have>
+        <changeEnemy attribute="skill" id="32" change="-2" />
+      </have>
+    </itemCheck>
     <fight type="single">
       <enemy id="32" />
       <win>
@@ -4597,7 +6223,13 @@
     </itemCheck>
   </p>
   <!-- 289 -->
-  <!-- 290 -->
+  <p id="290">
+    <text>
+        [p]Az aprócska teremtmény szája széles mosolyra húzódik. - Honnan tudtad? - kérdi. - Honnan tudtad, hogy épp egy ilyenre fájt a fogam? - Jól választottál, de valami még sincs itt teljesen rendben. A teremtmény hangja hirtelen megváltozik, és most egy középkorú nő hangján szólal meg. - Egy ilyen jó barátot nem szabad becsapni - mondja, és hirtelen a szemed előtt változik át bíborpalástot viselő sudár nővé. - A nevem Dintainta - kezd bele mondókájába - Dintainta a Sztyeppékről, bár sokan csak úgy hívnak, a Szélhámos. Tudom, miféle küldetésben jársz errefelé, és segíthetek neked. Az a tény, hogy idáig eljutottál, éles észre és bátorságra vall, de figyelmeztetlek, hogy mostantól kezdve az eddigieknél sokkal nagyobb veszedelmek leselkednek rád. A Mampangi Erődnél óvakodj az Álmatlan Kostól, mert még a te ügyességed sem lesz elegendő ahhoz, hogy megbirkózz az erejével. Csak úgy győzheted le, ha az ő jelenlétében kihúzod ennek az üvegcsének a dugóját. - Ezzel átad neked egy apró [span class="takeItem" data-id="3074" data-amount="1"]kis üveget[/span], és így szól: - Úgy vigyázz erre, mint a szemed fényére, és meg ne engedd senkinek, hogy kiengedje belőle a gázt. Még egy utolsó jó tanács: utadon nemsokára szembekerülsz majd a Földkígyóval, amelynek rettentő nagy ereje van, de ezt csak akkor tudja használni, ha a földön áll. Talán ennek az információnak majd hasznát veszed, ha megküzdesz ezzel a teremtménnyel. Végezetül pedig fogadd el tőlem ezt az ajándékot a te ajándékodért cserébe - mondja, és átnyújt neked egy sétabotot. - Ez az én Kígyóbotom, varázsbot, amely megvéd majd a Sárkánykígyókkal szemben. Most pedig el kell búcsúznunk egymástól, mert még napnyugta előtt haza kell érnem. - Hirtelen visszaváltozik ugyanazzá a ronda kis teremtménnyé, akivel eredetileg találkoztál, és útnak indul. Szerencsés találkozás volt ez. (Nyersz 2 SZERENCSE pontot!) Dintainta [span class="takeItem" data-id="3075" data-amount="1"]Kígyóbotja[/span] segítségével csökkentheted a Sárkánykígyók erejét. Amíg ez a bot nálad van, 2 ÜGYESSÉG pontot levonhatsz attól a Sárkánykígyótól, amellyel épp küzdesz. Jegyezd fel magadnak, hogy ezt a botot Tölgyfacsemete ágból faragták, így varázsláshoz is felhasználhatod. A teremtmény eltűnt a távolban, te pedig folytatod az utadat.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <next id="114"></next>
+  </p>
   <!-- 291 -->
   <!-- 292 -->
   <!-- 293 -->
@@ -5318,6 +6950,11 @@
     <text>
         [p]Előveszed Borrinbőr csizmádat a hátizsákodból és nekilátsz, hogy fölhúzd. A Sárkánykígyó fölötted tekereg az ágakon, és téged néz. Mielőtt még belebújnál a csizmádba, leveti magát a fáról, és a testedre tekeredik! Sikerül valahogy leráznod magadról, de meg kell küzdened vele.[/p]
     </text>
+    <itemCheck type="item" id="3075">
+      <have>
+        <changeEnemy attribute="skill" id="32" change="-2" />
+      </have>
+    </itemCheck>
     <fight type="single">
       <enemy id="32" />
       <win>
@@ -5392,7 +7029,13 @@
     </text>
     <next id="143"></next>
   </p>
-  <!-- 327 -->
+  <p id="327">
+    <text>
+        [p]Előrántod a kardodat, és rákiabálsz a hálátlan teremtményre mondván, hogy azonnal adja vissza az ajándékodat. - Sose szoktam visszaadni azt, amit ajándékba kapok - mondja nevetve. - Az ajándék nem ajándék, ha egyszer vissza kell adni! - Megharagszol és rátámadsz a teremtményre. Ekkor az egyik ujjával gyorsan a lábadra mutat, erre a csizmád magától elindul veled, megbotlik, és fejjel előre zuhansz. Homlokodat jól bevered egy kopár sziklába, és elájulsz. Vesztesz 3 ÉLETERŐ pontot. Kis idő múlva magadhoz térsz, de addigra a teremtménynek hűlt helye.[/p]
+    </text>
+    <add to="stamina" amount="-3" />
+    <next id="114"></next>
+  </p>
   <p id="328">
     <text>
         [p]Fölötted megdördül az ég, és félelmed beigazolódik. A vihar téged követ! Menedéket keresel, de nem találsz! A vihar perceken belül kitör. Nem tudsz mit tenni, jól összehúzod magadon a ruhádat, és nekivágsz az útnak.[/p]
@@ -5446,7 +7089,7 @@
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
     </text>
     <add amount="-1" to="stamina" />
-    <itemCheck type="item" id="3067">
+    <itemCheck type="items" id="3067 or 3067">
       <have>
         <text>
             [p]A magasba emeled a Tölgyfacsemete botot, és varázsolsz. A Medve azonnal megáll, és megbénul. Most nyugodtan folytathatod az utadat.[/p]
@@ -6993,7 +8636,7 @@
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
     </text>
     <add amount="-1" to="stamina" />
-    <itemCheck type="item" id="3067">
+    <itemCheck type="items" id="3067 or 3075">
       <have>
         <text>
             [p]Megbénítod a Tölgyfacsemete bottal a Fojtóbokrot arra az időre, amíg kimászol az ágai közül.[/p]
@@ -7328,6 +8971,11 @@
             [p]Iszonyatosan erős vihart varázsolsz a Viharkürttel. Most fegyvereddel megküzdhetsz a Tűzkígyóval. Miközben harcolsz vele, tüze nem tesz kárt benned, és (csak ennek a csatának az időtartamára) 2 ponttal növelheted az ÜGYESSÉGEDET.[/p]
         </text>
         <gatherItem id="4015" amount="2" />
+        <itemCheck type="item" id="3075">
+          <have>
+            <changeEnemy attribute="skill" id="32" change="-2" />
+          </have>
+        </itemCheck>
         <fight type="single">
           <enemy id="32" />
           <win>
@@ -7426,7 +9074,7 @@
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
     </text>
     <add amount="-1" to="stamina" />
-    <itemCheck type="item" id="3067">
+    <itemCheck type="items" id="3067 or 3067">
       <have>
         <text>
             [p]Varázsolsz a Tölgyfacsemete bot segítségével. Varázslatod hatására a sziklák és a kövek mozdulatlanná dermednek a levegőben.[/p]
