@@ -25,7 +25,8 @@ public class SorBookPreFightHandlingService extends EnemyDependentFfBookPreFight
     private static final int CHAIN_ENEMY_STAMINA_LIMIT = 4;
     private static final String THROWING_DARTS_ID = "3031";
     private static final String CHAIN_ID = "3044";
-    private static final Object CHAKRAM_ID = "3055";
+    private static final String CHAKRAM_ID = "3055";
+    private static final String CRYSTAL_BALL = "3060";
     @Autowired private DiceResultRenderer renderer;
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
 
@@ -37,12 +38,40 @@ public class SorBookPreFightHandlingService extends EnemyDependentFfBookPreFight
         FfItem usedItem = null;
         if (THROWING_DARTS_ID.equals(itemId)) {
             handleThrowingDarts(info, wrapper);
-        } else if (CHAKRAM_ID.equals("itemId")) {
+        } else if (CHAKRAM_ID.equals(itemId)) {
             usedItem = handleChakram(info, wrapper);
         } else if (CHAIN_ID.equals(itemId)) {
             handleChainAttack(info, wrapper);
+        } else if (CRYSTAL_BALL.equals(itemId)) {
+            handleCrystalBallThrowing(info, wrapper);
         }
         return usedItem;
+    }
+
+    private void handleCrystalBallThrowing(final FfBookInformations info, final HttpSessionWrapper wrapper) {
+        final int[] rollResult = generator.getRandomNumber(2);
+        final ParagraphData data = wrapper.getParagraph().getData();
+        final SorCharacter character = (SorCharacter) wrapper.getCharacter();
+        final FfCharacterHandler characterHandler = info.getCharacterHandler();
+        final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
+        final FfEnemy enemy = getEnemy(wrapper, info);
+
+        String ballReportPostfix = "";
+        final int[] breakResult = generator.getRandomNumber(1);
+        final String breakRollResult = renderer.render(generator.getDefaultDiceSide(), breakResult);
+        if (breakResult[0] % 2 == 1) {
+            ballReportPostfix = ".broken";
+            characterHandler.getItemHandler().removeItem(character, CRYSTAL_BALL, 1);
+        }
+
+        if (attributeHandler.resolveValue(character, "skill") > rollResult[0]) {
+            recordRollResult(rollResult, data, "success");
+            appendText(data, "page.sor.crystalBallHit" + ballReportPostfix, enemy.getCommonName(), breakRollResult);
+            enemy.setStamina(enemy.getStamina() - 2);
+        } else {
+            recordRollResult(rollResult, data, "failure");
+            appendText(data, "page.sor.crystalBallMissed" + ballReportPostfix, enemy.getCommonName(), breakRollResult);
+        }
     }
 
     private void handleChainAttack(final FfBookInformations info, final HttpSessionWrapper wrapper) {
