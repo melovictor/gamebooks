@@ -47,6 +47,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
         expect(data.getText()).andReturn("Some text. [div data-market=\"\"][/div]");
         final Capture<MarketCommand> capture = newCapture();
         data.addCommand(capture(capture));
+        expectAttribute("moneyAttribute");
         expectAttribute("currencySimple");
         expectAttribute("currencyMultiple");
         expectAttribute("mustHaveGold");
@@ -74,6 +75,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
         expect(data.getText()).andReturn("Some text. [div data-market=\"\"][/div]");
         final Capture<MarketCommand> capture = newCapture();
         data.addCommand(capture(capture));
+        expectAttribute("moneyAttribute");
         expectAttribute("currencySimple");
         expectAttribute("currencyMultiple");
         expectAttribute("mustHaveGold", "3");
@@ -89,6 +91,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
         underTest.doTransform(parent, node, data);
         // THEN
         final MarketCommand command = capture.getValue();
+        Assert.assertEquals(command.getMoneyAttribute(), "gold");
         Assert.assertEquals(command.getSingleCcyKey(), "page.ff.label.market.goldPiece");
         Assert.assertEquals(command.getMultipleCcyKey(), "page.ff.label.market.goldPieces");
         Assert.assertEquals(command.getMustHaveGold(), 3);
@@ -103,6 +106,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
         expect(data.getText()).andReturn("Some text. [div data-market=\"\"][/div]");
         final Capture<MarketCommand> capture = newCapture();
         data.addCommand(capture(capture));
+        expectAttribute("moneyAttribute", "dollars");
         expectAttribute("currencySimple");
         expectAttribute("currencyMultiple");
         expectAttribute("mustHaveGold", "3");
@@ -118,6 +122,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
         underTest.doTransform(parent, node, data);
         // THEN
         final MarketCommand command = capture.getValue();
+        Assert.assertEquals(command.getMoneyAttribute(), "dollars");
         Assert.assertEquals(command.getSingleCcyKey(), "page.ff.label.market.goldPiece");
         Assert.assertEquals(command.getMultipleCcyKey(), "page.ff.label.market.goldPieces");
         Assert.assertEquals(command.getMustHaveGold(), 3);

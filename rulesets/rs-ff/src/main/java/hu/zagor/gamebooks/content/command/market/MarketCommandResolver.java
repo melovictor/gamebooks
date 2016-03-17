@@ -47,7 +47,7 @@ public class MarketCommandResolver extends TypeAwareCommandResolver<MarketComman
     }
 
     private boolean hasEnoughGold(final FfCharacterHandler characterHandler, final FfCharacter character, final MarketCommand command) {
-        return characterHandler.getAttributeHandler().resolveValue(character, "gold") >= command.getMustHaveGold();
+        return characterHandler.getAttributeHandler().resolveValue(character, command.getMoneyAttribute()) >= command.getMustHaveGold();
     }
 
     private int initializeItems(final List<MarketElement> elements, final List<Item> equipment) {

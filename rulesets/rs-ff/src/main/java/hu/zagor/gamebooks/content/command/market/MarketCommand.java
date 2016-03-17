@@ -33,6 +33,7 @@ public class MarketCommand extends Command {
     private String saleLabel;
     private int mustSellExactly;
     private GiveUpMode giveUpMode;
+    private String moneyAttribute;
 
     public String getSingleCcyKey() {
         return singleCcyKey;
@@ -182,6 +183,14 @@ public class MarketCommand extends Command {
 
     public void setGiveUpMode(final GiveUpMode giveUpMode) {
         this.giveUpMode = giveUpMode;
+    }
+
+    public String getMoneyAttribute() {
+        return moneyAttribute;
+    }
+
+    public void setMoneyAttribute(final String moneyAttribute) {
+        this.moneyAttribute = moneyAttribute;
     }
 
 }

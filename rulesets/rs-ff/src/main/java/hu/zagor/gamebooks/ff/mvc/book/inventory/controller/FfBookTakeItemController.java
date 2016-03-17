@@ -208,10 +208,8 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
 
-        final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
-
         final Map<String, Object> result = marketHandler.handleMarketPurchase(itemId, character, wrapper.getParagraph().getItemsToProcess().get(0).getCommand(),
-            itemHandler);
+            getInfo().getCharacterHandler());
         getItemInteractionRecorder().recordItemMarketMovement(wrapper, "Sale", itemId);
 
         return result;
@@ -242,9 +240,8 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
 
-        final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
-
-        final Map<String, Object> result = marketHandler.handleMarketSell(itemId, character, wrapper.getParagraph().getItemsToProcess().get(0).getCommand(), itemHandler);
+        final Map<String, Object> result = marketHandler.handleMarketSell(itemId, character, wrapper.getParagraph().getItemsToProcess().get(0).getCommand(),
+            getInfo().getCharacterHandler());
         getItemInteractionRecorder().recordItemMarketMovement(wrapper, "Purchase", itemId);
         return result;
     }

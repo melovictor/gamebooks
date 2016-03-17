@@ -19,6 +19,7 @@ public class SorCharacterPageData extends FfCharacterPageData {
     private final boolean usedLibra;
     private final List<Item> curses = new ArrayList<>();
     private final boolean commandActive;
+    private int magicItem;
 
     /**
      * Bean for storing data to display on the character page for Fighting Fantasy ruleset.
@@ -50,6 +51,14 @@ public class SorCharacterPageData extends FfCharacterPageData {
 
     public boolean isCommandActive() {
         return commandActive;
+    }
+
+    public int getMagicItem() {
+        return magicItem;
+    }
+
+    public void setMagicItem(final int magicItem) {
+        this.magicItem = magicItem;
     }
 
 }

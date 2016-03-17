@@ -226,7 +226,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         expect(paragraph.getItemsToProcess()).andReturn(holderList);
         expect(holderList.get(0)).andReturn(holder);
         expect(holder.getCommand()).andReturn(marketCommand);
-        expect(marketHandler.handleMarketPurchase("3001", character, marketCommand, itemHandler)).andReturn(resultMap);
+        expect(marketHandler.handleMarketPurchase("3001", character, marketCommand, characterHandler)).andReturn(resultMap);
         itemInteractionRecorder.recordItemMarketMovement(wrapper, "Sale", "3001");
         mockControl.replay();
         // WHEN
@@ -243,7 +243,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         expect(paragraph.getItemsToProcess()).andReturn(holderList);
         expect(holderList.get(0)).andReturn(holder);
         expect(holder.getCommand()).andReturn(marketCommand);
-        expect(marketHandler.handleMarketSell("3001", character, marketCommand, itemHandler)).andReturn(resultMap);
+        expect(marketHandler.handleMarketSell("3001", character, marketCommand, characterHandler)).andReturn(resultMap);
         itemInteractionRecorder.recordItemMarketMovement(wrapper, "Purchase", "3001");
         mockControl.replay();
         // WHEN

@@ -52,7 +52,7 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
         } else if ("315".equals(paragraph.getId())) {
             handleMarketSell = handleMarket315(itemId, wrapper);
         } else {
-            handleMarketSell = super.handleMarketSell(request, itemId);
+            handleMarketSell = super.doHandleMarketSell(request, itemId);
         }
         return handleMarketSell;
     }

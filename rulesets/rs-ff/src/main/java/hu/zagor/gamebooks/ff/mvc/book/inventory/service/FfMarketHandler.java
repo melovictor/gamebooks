@@ -1,6 +1,9 @@
 package hu.zagor.gamebooks.ff.mvc.book.inventory.service;
 
 import hu.zagor.gamebooks.character.Character;
+import hu.zagor.gamebooks.character.handler.CharacterHandler;
+import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
+import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.market.MarketCommand;
@@ -21,7 +24,7 @@ public class FfMarketHandler implements MarketHandler {
 
     @Override
     public Map<String, Object> handleMarketPurchase(final String itemId, final Character characterObject, final Command commandObject,
-        final CharacterItemHandler itemHandler) {
+        final CharacterHandler characterHandler) {
         final FfCharacter character = (FfCharacter) characterObject;
 
         final MarketCommand command = (MarketCommand) commandObject;
@@ -29,17 +32,19 @@ public class FfMarketHandler implements MarketHandler {
         final MarketElement toBuy = fetchItemFromList(itemId, itemsForSale);
         final Map<String, Object> result = new HashMap<>();
         result.put("successfulTransaction", false);
+        final FfCharacterHandler handler = (FfCharacterHandler) characterHandler;
+        final FfAttributeHandler attributeHandler = handler.getAttributeHandler();
         if (toBuy != null) {
-            final int gold = character.getGold();
+            final int gold = attributeHandler.resolveValue(character, command.getMoneyAttribute());
             if (gold >= toBuy.getPrice() && toBuy.getStock() > 0) {
-                character.setGold(gold - toBuy.getPrice());
+                attributeHandler.handleModification(character, command.getMoneyAttribute(), -toBuy.getPrice());
+                final CharacterItemHandler itemHandler = characterHandler.getItemHandler();
                 itemHandler.addItem(character, toBuy.getId(), 1);
                 toBuy.setStock(toBuy.getStock() - 1);
                 result.put("successfulTransaction", true);
             }
         }
-        final int gold = character.getGold();
-        result.put("gold", gold);
+        result.put("gold", attributeHandler.resolveValue(character, command.getMoneyAttribute()));
         return result;
     }
 
@@ -55,7 +60,7 @@ public class FfMarketHandler implements MarketHandler {
 
     @Override
     public Map<String, Object> handleMarketSell(final String itemId, final Character characterObject, final Command commandObject,
-        final CharacterItemHandler itemHandler) {
+        final CharacterHandler characterHandler) {
         final FfCharacter character = (FfCharacter) characterObject;
 
         final MarketCommand command = (MarketCommand) commandObject;
@@ -65,9 +70,14 @@ public class FfMarketHandler implements MarketHandler {
 
         result.put("successfulTransaction", false);
 
+        final FfCharacterHandler handler = (FfCharacterHandler) characterHandler;
+        final FfAttributeHandler attributeHandler = handler.getAttributeHandler();
+
         if (toSell != null) {
+            final CharacterItemHandler itemHandler = characterHandler.getItemHandler();
             if (itemHandler.hasItem(character, toSell.getId())) {
-                character.setGold(character.getGold() + toSell.getPrice());
+                attributeHandler.handleModification(character, command.getMoneyAttribute(), toSell.getPrice());
+
                 itemHandler.removeItem(character, toSell.getId(), 1);
                 toSell.setStock(toSell.getStock() - 1);
                 result.put("successfulTransaction", true);
@@ -78,7 +88,7 @@ public class FfMarketHandler implements MarketHandler {
             }
         }
 
-        result.put("gold", character.getGold());
+        result.put("gold", attributeHandler.resolveValue(character, command.getMoneyAttribute()));
         result.put("giveUpMode", command.getGiveUpMode() != null);
         result.put("giveUpFinished", command.getGiveUpAmount() == 0);
 

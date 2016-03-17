@@ -17,6 +17,7 @@ public class SorCharacter extends FfCharacter {
     private boolean wizard;
     private int lastEatenBonus;
     private boolean luckCookieActive;
+    private int magicItem;
 
     /**
      * Default constructor that prefills the save locations.
@@ -96,5 +97,13 @@ public class SorCharacter extends FfCharacter {
 
     public void setLuckCookieActive(final boolean luckCookieActive) {
         this.luckCookieActive = luckCookieActive;
+    }
+
+    public int getMagicItem() {
+        return magicItem;
+    }
+
+    public void setMagicItem(final int magicItem) {
+        this.magicItem = magicItem;
     }
 }

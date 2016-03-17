@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div id="marketContent">
-    <input type="hidden" id="currentGold" value="${charEquipments.gold}" />
+    <input type="hidden" id="currentGold" value="${charEquipments[marketCommand.moneyAttribute]}" />
     <input type="hidden" id="mustHaveGold" value="${marketCommand.mustHaveGold}" />
     <input type="hidden" id="mustBuy" value="${marketCommand.mustBuy}" />
     <input type="hidden" id="mustSellExactly" value="${marketCommand.mustSellExactly}" />

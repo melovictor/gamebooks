@@ -1,7 +1,7 @@
 package hu.zagor.gamebooks.mvc.book.inventory.service;
 
 import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
+import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.content.command.Command;
 import java.util.Map;
 
@@ -16,19 +16,19 @@ public interface MarketHandler {
      * @param itemId the id of the item
      * @param character the {@link Character}
      * @param command the {@link Command} for the market
-     * @param itemHandler the {@link CharacterItemHandler}
+     * @param characterHandler the {@link CharacterHandler}
      * @return the map containing the result of the purchase
      */
-    Map<String, Object> handleMarketPurchase(String itemId, Character character, Command command, CharacterItemHandler itemHandler);
+    Map<String, Object> handleMarketPurchase(String itemId, Character character, Command command, CharacterHandler characterHandler);
 
     /**
      * Handles the selling of an item to the market.
      * @param itemId the id of the item
      * @param character the {@link Character}
      * @param command the {@link Command} for the market
-     * @param itemHandler the {@link CharacterItemHandler}
+     * @param characterHandler the {@link CharacterHandler}
      * @return the map containing the result of the selling
      */
-    Map<String, Object> handleMarketSell(String itemId, Character character, Command command, CharacterItemHandler itemHandler);
+    Map<String, Object> handleMarketSell(String itemId, Character character, Command command, CharacterHandler characterHandler);
 
 }

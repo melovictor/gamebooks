@@ -17,12 +17,14 @@ import hu.zagor.gamebooks.content.command.market.domain.MarketElement;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.ArrayList;
 import java.util.List;
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -34,16 +36,16 @@ import org.testng.annotations.Test;
 @Test
 public class MarketCommandResolverTest {
 
-    private IMocksControl mockControl;
-    private MarketCommandResolver underTest;
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private MarketCommandResolver underTest;
     private ResolvationData resolvationData;
     private MarketCommand command;
     private BookInformations info;
-    private FfCharacter character;
+    @Mock private FfCharacter character;
     private ParagraphData rootData;
-    private FfCharacterHandler characterHandler;
-    private FfUserInteractionHandler interactionHandler;
-    private FfCharacterItemHandler itemHandler;
+    @Instance private FfCharacterHandler characterHandler;
+    @Mock private FfUserInteractionHandler interactionHandler;
+    @Mock private FfCharacterItemHandler itemHandler;
 
     private MarketElement marketElementA;
     private MarketElement marketElementB;
@@ -57,25 +59,15 @@ public class MarketCommandResolverTest {
     private FfItem marketItemD;
     private FfItem marketItemE;
 
-    private FfParagraphData emptyHanded;
-    private FfParagraphData after;
+    @Mock private FfParagraphData emptyHanded;
+    @Mock private FfParagraphData after;
 
-    private FfAttributeHandler attributeHandler;
+    @Mock private FfAttributeHandler attributeHandler;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
         info = new FfBookInformations(9L);
 
-        emptyHanded = mockControl.createMock(FfParagraphData.class);
-        after = mockControl.createMock(FfParagraphData.class);
-
-        interactionHandler = mockControl.createMock(FfUserInteractionHandler.class);
-        itemHandler = mockControl.createMock(FfCharacterItemHandler.class);
-        character = mockControl.createMock(FfCharacter.class);
-        attributeHandler = mockControl.createMock(FfAttributeHandler.class);
-
-        characterHandler = new FfCharacterHandler();
         characterHandler.setInteractionHandler(interactionHandler);
         characterHandler.setItemHandler(itemHandler);
         characterHandler.setAttributeHandler(attributeHandler);
@@ -89,11 +81,10 @@ public class MarketCommandResolverTest {
 
     @BeforeMethod
     public void setUpMethod() {
-        mockControl.reset();
-        underTest = new MarketCommandResolver();
         command = new MarketCommand();
         command.setEmptyHanded(emptyHanded);
         command.setAfter(after);
+        command.setMoneyAttribute("gold");
 
         marketElementA = getElement("3001", 5, 1);
         marketElementB = getElement("3002", 3, 2);
@@ -286,11 +277,6 @@ public class MarketCommandResolverTest {
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
         // THEN
         Assert.assertSame(returned.get(0), after);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }
