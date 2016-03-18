@@ -197,6 +197,8 @@ var market = (function() {
 	var requiredGold;
 	var requiredSalesExactly;
 	var totalSales;
+	var singleCcy;
+	var multiCcy;
 
 	function init() {
 		var $content = $("#marketContent");
@@ -212,10 +214,25 @@ var market = (function() {
 		currentGold = parseInt($("#currentGold").val());
 		requiredGold = parseInt($("#mustHaveGold").val());
 		requiredSalesExactly = parseInt($("#mustSellExactly").val());
-
+		singleCcy = $("#singleCcy").val();
+		multiCcy = $("#multipleCcy").val();
+		
+		updateCurrentBalance();
+		
 		if (requiredPurchases > totalPurchases || requiredGold > currentGold || (requiredSalesExactly > 0 && requiredSalesExactly > totalSales)) {
 			$("#marketCommandFinish").hide();
 		}
+	}
+	
+	function updateCurrentBalance() {
+		var $balanceField = $("#marketBalanceActual");
+		var balanceText;
+		if (currentGold == 1) {
+			balanceText = singleCcy.replace("{0}", currentGold);
+		} else {
+			balanceText = multiCcy.replace("{0}", currentGold);
+		}
+		$balanceField.text(balanceText);
 	}
 	
 	function buyItem() {
@@ -272,6 +289,7 @@ var market = (function() {
 		} else if (marketingForceFinished()) {
 			close();
 		}
+		updateCurrentBalance();
 		inventory.loadInventory();
 	}
 	

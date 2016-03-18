@@ -24,7 +24,7 @@ public class MarketTransformer extends AbstractStubTransformer {
         final MarketCommand command = new MarketCommand();
         data.addCommand(command);
         command.setMoneyAttribute(extractAttribute(node, "moneyAttribute", "gold"));
-        command.setSingleCcyKey(extractAttribute(node, "currencySimple", "page.ff.label.market.goldPiece"));
+        command.setSingleCcyKey(extractAttribute(node, "currencySingle", "page.ff.label.market.goldPiece"));
         command.setMultipleCcyKey(extractAttribute(node, "currencyMultiple", "page.ff.label.market.goldPieces"));
         command.setMustHaveGold(extractIntegerAttribute(node, "mustHaveGold", 0));
         command.setMustSellExactly(extractIntegerAttribute(node, "mustSellExactly", 0));

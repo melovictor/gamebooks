@@ -2,6 +2,12 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div id="marketContent">
+    <div class="marketBalance">
+        <spring:message code="page.ff.label.market.balance" />
+        <span id="marketBalanceActual"></span>
+    </div>
+    <input type="hidden" id="singleCcy" value="<spring:message code="${marketCommand.singleCcyKey}" />" />
+    <input type="hidden" id="multipleCcy" value="<spring:message code="${marketCommand.multipleCcyKey}" />" />
     <input type="hidden" id="currentGold" value="${charEquipments[marketCommand.moneyAttribute]}" />
     <input type="hidden" id="mustHaveGold" value="${marketCommand.mustHaveGold}" />
     <input type="hidden" id="mustBuy" value="${marketCommand.mustBuy}" />
@@ -22,8 +28,7 @@
                       <span>${item.name}</span>
                   </div>
                   <c:if test="${item.price > 0 }">
-                      ${item.price}
-                    <spring:message code="${item.price == 1 ? marketCommand.singleCcyKey : marketCommand.multipleCcyKey}" />
+                    <spring:message code="${item.price == 1 ? marketCommand.singleCcyKey : marketCommand.multipleCcyKey}" arguments="${item.price}" />
                   </c:if>
               </div>
             </c:forEach>
@@ -48,8 +53,7 @@
 	                  </div>
 	                  <c:if test="${empty marketCommand.giveUpMode}">
 		                  <c:if test="${item.price > 0 }">
-    		                  ${item.price}
-		                      <spring:message code="${item.price == 1 ? marketCommand.singleCcyKey : marketCommand.multipleCcyKey}" />
+		                      <spring:message code="${item.price == 1 ? marketCommand.singleCcyKey : marketCommand.multipleCcyKey}" arguments="${item.price}" />
 	                      </c:if>
 	                  </c:if>
 	              </div>

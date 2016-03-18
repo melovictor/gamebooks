@@ -48,7 +48,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
         final Capture<MarketCommand> capture = newCapture();
         data.addCommand(capture(capture));
         expectAttribute("moneyAttribute");
-        expectAttribute("currencySimple");
+        expectAttribute("currencySingle");
         expectAttribute("currencyMultiple");
         expectAttribute("mustHaveGold");
         expectAttribute("mustSellExactly");
@@ -76,7 +76,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
         final Capture<MarketCommand> capture = newCapture();
         data.addCommand(capture(capture));
         expectAttribute("moneyAttribute");
-        expectAttribute("currencySimple");
+        expectAttribute("currencySingle");
         expectAttribute("currencyMultiple");
         expectAttribute("mustHaveGold", "3");
         expectAttribute("mustSellExactly", "5");
@@ -107,7 +107,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
         final Capture<MarketCommand> capture = newCapture();
         data.addCommand(capture(capture));
         expectAttribute("moneyAttribute", "dollars");
-        expectAttribute("currencySimple");
+        expectAttribute("currencySingle");
         expectAttribute("currencyMultiple");
         expectAttribute("mustHaveGold", "3");
         expectAttribute("mustSellExactly", "5");
