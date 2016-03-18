@@ -4,6 +4,7 @@ import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
+import hu.zagor.gamebooks.character.item.EquipInfo;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
@@ -59,6 +60,8 @@ public class GenericBookTakeItemControllerPositiveTest {
     @Instance private TakeItemData takeData;
     @Instance private ReplaceItemData replaceData;
     @Mock private List<Item> itemList;
+    @Mock private Item item;
+    @Mock private EquipInfo equipInfo;
 
     @BeforeClass
     public void setUpClass() {
@@ -185,6 +188,44 @@ public class GenericBookTakeItemControllerPositiveTest {
         final ItemInteractionRecorder returned = underTest.getItemInteractionRecorder();
         // THEN
         Assert.assertSame(returned, itemInteractionRecorder);
+    }
+
+    public void testDropItemWhenItemDoesNotExistsShouldDoNothing() {
+        // GIVEN
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
+        expect(sessionWrapper.getCharacter()).andReturn(character);
+        expect(itemHandler.getItem(character, "3001")).andReturn(null);
+        mockControl.replay();
+        // WHEN
+        underTest.dropItem(request, "3001");
+        // THEN
+    }
+
+    public void testDropItemWhenItemIsNotRemovableShouldDoNothing() {
+        // GIVEN
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
+        expect(sessionWrapper.getCharacter()).andReturn(character);
+        expect(itemHandler.getItem(character, "3001")).andReturn(item);
+        expect(item.getEquipInfo()).andReturn(equipInfo);
+        expect(equipInfo.isRemovable()).andReturn(false);
+        mockControl.replay();
+        // WHEN
+        underTest.dropItem(request, "3001");
+        // THEN
+    }
+
+    public void testDropItemWhenItemIsRemovableShouldRemoveItem() {
+        // GIVEN
+        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
+        expect(sessionWrapper.getCharacter()).andReturn(character);
+        expect(itemHandler.getItem(character, "3001")).andReturn(item);
+        expect(item.getEquipInfo()).andReturn(equipInfo);
+        expect(equipInfo.isRemovable()).andReturn(true);
+        expect(itemHandler.removeItem(character, "3001", 1)).andReturn(itemList);
+        mockControl.replay();
+        // WHEN
+        underTest.dropItem(request, "3001");
+        // THEN
     }
 
 }

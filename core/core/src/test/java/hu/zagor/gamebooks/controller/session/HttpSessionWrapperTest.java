@@ -128,8 +128,8 @@ public class HttpSessionWrapperTest {
     public void testSetEnemiesWhenEnemiesIsNotNullShouldSetToSessionAndReturnSetEnemies() {
         // GIVEN
         expect(request.getSession()).andReturn(session);
-        final Map<String, Enemy> enemies = new HashMap<String, Enemy>();
         expect(request.getRequestURI()).andReturn(REQUEST_URI);
+        final Map<String, Enemy> enemies = new HashMap<String, Enemy>();
         session.setAttribute(ControllerAddresses.ENEMY_STORE_KEY + BOOK_ID, enemies);
         mockControl.replay();
         // WHEN
@@ -208,4 +208,26 @@ public class HttpSessionWrapperTest {
         Assert.assertSame(returned, model);
     }
 
+    public void testGetPositionShouldReturnStoredValueFromSession() {
+        // GIVEN
+        expect(request.getSession()).andReturn(session);
+        expect(request.getRequestURI()).andReturn(REQUEST_URI);
+        expect(session.getAttribute(ControllerAddresses.POSITION_STORE_KEY + BOOK_ID)).andReturn(99);
+        mockControl.replay();
+        // WHEN
+        final Integer returned = new HttpSessionWrapper(request).getPosition();
+        // THEN
+        Assert.assertEquals(returned.intValue(), 99);
+    }
+
+    public void testSetPositionShouldStoreValueIntoSession() {
+        // GIVEN
+        expect(request.getSession()).andReturn(session);
+        expect(request.getRequestURI()).andReturn(REQUEST_URI);
+        session.setAttribute(ControllerAddresses.POSITION_STORE_KEY + BOOK_ID, 99);
+        mockControl.replay();
+        // WHEN
+        new HttpSessionWrapper(request).setPosition(99);
+        // THEN
+    }
 }
