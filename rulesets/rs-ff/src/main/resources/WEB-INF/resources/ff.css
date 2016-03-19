@@ -166,6 +166,13 @@ span[data-enemy-selected=false], [data-item-provision], [data-item-potion] {
 #marketContent {
   display: none;
 }
+#marketContent .marketPrice {
+  display: inline-block;
+  width: 150px;
+}
+#marketContent .marketStock {
+  display: inline-block;
+}
 
 #marketContent h2 {
   display: inline-block;
@@ -201,6 +208,15 @@ span[data-enemy-selected=false], [data-item-provision], [data-item-potion] {
 
 #marketContent .row:hover {
   background-color: rgba(255, 166, 6, 0.3);
+}
+#marketContent .row:nth-child(3n) {
+  border-bottom: 1px solid #90723D;
+}
+#marketContent .row:last-child {
+  border-bottom-width: 0px;
+}
+#marketContent #marketForSale + h2 {
+  margin-top: 15px;
 }
 
 button[data-market-close] {

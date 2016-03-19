@@ -28,7 +28,14 @@
                       <span>${item.name}</span>
                   </div>
                   <c:if test="${item.price > 0 }">
-                    <spring:message code="${item.price == 1 ? marketCommand.singleCcyKey : marketCommand.multipleCcyKey}" arguments="${item.price}" />
+                    <div class="marketPrice">
+                        <spring:message code="${item.price == 1 ? marketCommand.singleCcyKey : marketCommand.multipleCcyKey}" arguments="${item.price}" />
+                    </div>
+                  </c:if>
+                  <c:if test="${item.stock > 1 }">
+                    <div class="marketStock">
+                        <spring:message code="page.ff.label.market.stock" arguments="${item.stock}" />
+                    </div>
                   </c:if>
               </div>
             </c:forEach>
@@ -53,8 +60,15 @@
 	                  </div>
 	                  <c:if test="${empty marketCommand.giveUpMode}">
 		                  <c:if test="${item.price > 0 }">
-		                      <spring:message code="${item.price == 1 ? marketCommand.singleCcyKey : marketCommand.multipleCcyKey}" arguments="${item.price}" />
+		                      <div class="marketPrice">
+		                          <spring:message code="${item.price == 1 ? marketCommand.singleCcyKey : marketCommand.multipleCcyKey}" arguments="${item.price}" />
+		                      </div>
 	                      </c:if>
+	                  </c:if>
+	                  <c:if test="${item.stock > 1 }">
+	                    <div class="marketStock">
+	                        <spring:message code="page.ff.label.market.stock" arguments="${item.stock}" />
+	                    </div>
 	                  </c:if>
 	              </div>
               </c:if>

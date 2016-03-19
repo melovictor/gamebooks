@@ -245,12 +245,24 @@ var market = (function() {
 			success : function(data) {
 				totalPurchases++;
 				if (data.successfulTransaction) {
-					$elem.attr("data-stock", $elem.attr("data-stock") - 1);
+					updateStock($elem);
 				}
 				updateElements(data);
 			}
 		});
 	}
+	
+	function updateStock($elem) {
+		var newStock =  $elem.attr("data-stock") - 1;
+		var $marketStock = $elem.parent().find(".marketStock");
+		if (newStock == 1) {
+			$marketStock.remove();
+		} else if (newStock > 1) {
+			$marketStock.find(".amount").text(newStock);
+		}
+		$elem.attr("data-stock", $elem.attr("data-stock") - 1);
+	}
+	
 	function sellItem() {
 		var $elem = $(this);
 		$.ajax({
@@ -267,7 +279,7 @@ var market = (function() {
 					close();
 				} else {
 					if (data.successfulTransaction) {
-						$elem.attr("data-stock", $elem.attr("data-stock") - 1);
+						updateStock($elem);
 					}
 					updateElements(data);
 				}
