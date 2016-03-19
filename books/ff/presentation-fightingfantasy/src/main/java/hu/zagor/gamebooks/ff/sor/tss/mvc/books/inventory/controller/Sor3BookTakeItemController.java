@@ -10,6 +10,7 @@ import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand;
 import hu.zagor.gamebooks.content.command.market.MarketCommand;
+import hu.zagor.gamebooks.content.command.market.domain.MarketElement;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
@@ -43,13 +44,44 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
 
     @Override
+    protected Map<String, Object> doHandleMarketBuy(final HttpServletRequest request, final String itemId) {
+        Map<String, Object> result;
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        final Paragraph paragraph = wrapper.getParagraph();
+        final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
+
+        if ("315a".equals(paragraph.getId())) {
+            final Character character = wrapper.getCharacter();
+            if (itemHandler.hasItem(character, "4069")) {
+                final MarketCommand marketCommand = fetchMarketCommand(paragraph);
+                final MarketElement item = getMarketItem(marketCommand.getItemsForSale(), itemId);
+                itemHandler.addItem(character, "gold", item.getPrice());
+                itemHandler.removeItem(character, "4069", 1);
+            }
+        }
+        result = super.doHandleMarketBuy(request, itemId);
+
+        return result;
+    }
+
+    private MarketElement getMarketItem(final List<MarketElement> itemList, final String itemId) {
+        MarketElement found = null;
+        for (final MarketElement element : itemList) {
+            if (itemId.equals(element.getId())) {
+                found = element;
+            }
+        }
+        return found;
+    }
+
+    @Override
     public Map<String, Object> doHandleMarketSell(final HttpServletRequest request, final String itemId) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final Paragraph paragraph = wrapper.getParagraph();
         Map<String, Object> handleMarketSell;
         if ("79".equals(paragraph.getId())) {
             handleMarketSell = handleMarket79(itemId, wrapper);
-        } else if ("315".equals(paragraph.getId())) {
+        } else if ("315".equals(paragraph.getDisplayId())) {
             handleMarketSell = handleMarket315(itemId, wrapper);
         } else {
             handleMarketSell = super.doHandleMarketSell(request, itemId);
@@ -74,6 +106,9 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
                 itemHandler.addItem(character, "gold", BASE_ITEM_SELLING_PRICE + diff);
             }
             itemHandler.removeItem(character, itemId, 1);
+            final MarketCommand marketCommand = fetchMarketCommand(wrapper.getParagraph());
+            final MarketElement marketItem = getMarketItem(marketCommand.getItemsForPurchase(), itemId);
+            marketItem.setStock(marketItem.getStock() - 1);
         }
         handleMarketSell.put("giveUpMode", false);
         handleMarketSell.put("giveUpFinished", true);
@@ -85,7 +120,7 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
     private Map<String, Object> handleMarket79(final String itemId, final HttpSessionWrapper wrapper) {
         final Paragraph paragraph = wrapper.getParagraph();
         Map<String, Object> handleMarketSell;
-        final MarketCommand marketCommand = (MarketCommand) paragraph.getItemsToProcess().get(0).getCommand();
+        final MarketCommand marketCommand = fetchMarketCommand(paragraph);
         final AttributeTestCommand skillCheckCommand = (AttributeTestCommand) marketCommand.getAfter().getCommands().get(0);
         final FfParagraphData data = skillCheckCommand.getSuccess().get(0).getData();
         final List<GatheredLostItem> lostItems = data.getLostItems();
@@ -97,6 +132,10 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
         handleMarketSell.put("giveUpMode", true);
         handleMarketSell.put("giveUpFinished", true);
         return handleMarketSell;
+    }
+
+    private MarketCommand fetchMarketCommand(final Paragraph paragraph) {
+        return (MarketCommand) paragraph.getItemsToProcess().get(0).getCommand();
     }
 
     private int calculateSkillTestDifference(final Map<String, Object> handleMarketSell, final SorCharacter character, final String itemName) {
