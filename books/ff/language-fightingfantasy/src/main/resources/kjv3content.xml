@@ -242,8 +242,15 @@
   </p>
   <p id="20" color="purple">
     <text>
-        [p]Összeszeded a holmidat, és elhagyod a tisztást. Órákon át haladsz az ösvényen a fák között, míg végül az erdő egyre ritkulni kezd körülötted. Minden valószínűség szerint nemsokára eléred az erdő szélét, és megpillanthatod az Ilklala tó vizét. Kora este van, mire a hatalmas tó partjára érsz. Végigtekintesz a látóhatárig elnyúló sima víztükör hatalmas felületén, és elszomorodsz. Hogyan fogsz átkelni ezen a tavon? Nem látsz sehol egy embert vagy egy csónakot. Leülsz, és azon töröd a fejedet, vajon mitévő légy. Úgy döntesz, hogy akár le is táborozhatsz itt éjszakára, és reggel majd eldöntheted, merre menj tovább. Ha akarsz, ehetsz is. Ha eszel, nyersz[/p]
+        [p]Összeszeded a holmidat, és elhagyod a tisztást. Órákon át haladsz az ösvényen a fák között, míg végül az erdő egyre ritkulni kezd körülötted. Minden valószínűség szerint nemsokára eléred az erdő szélét, és megpillanthatod az Ilklala tó vizét. Kora este van, mire a hatalmas tó partjára érsz. Végigtekintesz a látóhatárig elnyúló sima víztükör hatalmas felületén, és elszomorodsz. Hogyan fogsz átkelni ezen a tavon? Nem látsz sehol egy embert vagy egy csónakot. Leülsz, és azon töröd a fejedet, vajon mitévő légy. Úgy döntesz, hogy akár le is táborozhatsz itt éjszakára, és reggel majd eldöntheted, merre menj tovább. Ha akarsz, ehetsz is. Ha eszel, nyersz
     </text>
+    <itemCheck type="item" id="4073">
+      <have>
+        <loseItem id="4073" />
+        <gatherItem id="5004" />
+        <add amount="-3" to="stamina" />
+      </have>
+    </itemCheck>
     <canEat />
     <itemCheck type="item" id="4101">
       <have>
@@ -591,7 +598,7 @@
     </text>
     <next id="53"></next>
   </p>
-  <p id="40" color="red">
+  <p id="40">
     <text>
         [p]Széthasítod a láncokat, és az öreg lassan, hogy a szeme megszokja az erős fényt, elindul a lépcsőn fölfelé. – Ez csodálatos! Azt hittem, már soha nem pillanthatom meg a napfényt. Ó, hogyan hálálhatnám meg ezt neked? A Klattaemberek minden vagyonomtól megfosztottak, de kívánj bármit, megkapod. – Gondolkodsz egy ideig, majd úgy döntesz, hogy a leghasznosabb dolog, amit az öreg adni tud neked, nem más, mint amit Baklandról tud. – Nos, igen, a Hét Sárkánykígyó – kezdi, miután elmeséled neki, mi járatban vagy errefelé. – Elmondom neked, amit tudok róluk, de az nem valami sok. Azt már bizonyára tudod, hogy ezek a Főmágus szolgái. Mindegyikük valamilyen módon sebezhető, de én csak kettőnek ismerem ezt a gyenge pontját. A Holdkígyó képtelen elviselni a tüzet, ez biztos. A Földkígyó pedig minden erejét elveszti, ha nincs kapcsolatban a földdel. Sajnos, csak ennyit tudok róluk. Ez minden.[/p]
         [p]Még egy ideig beszélgettek, majd elbúcsúzol az öregtől, és továbbmész. Sajnos nem tudtad, hogy az öreg cellájában a hideg és a nedvesség megtette a maga káros hatását. Az öreg Sárga Dögvészben szenved, és ezt a kórt most te is megkaptad. Amíg nem találsz valamilyen gyógymódot erre a betegségre, mindennap 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot fogsz veszteni (minden egyes nap végén vond le magadtól). A második nap végén jössz csak rá, hogy beteg vagy, addig nem is gondolsz arra, hogy gyógyítanod kéne magadat, hisz fogalmad sincs a betegségedről. Most hagyd el a templomot.[/p]
@@ -5448,7 +5455,7 @@
     <next id="301">Ha lemászol a gödörbe</next>
     <next id="318">Ha inkább otthagyod ezt az embert a kígyóival együtt</next>
   </p>
-  <p id="201">
+  <p id="201" color="red">
     <text>
         [p]Szervezeted nem túl erős, és merész elhatározásod, hogy nem bújsz el a vihar elől, nem volt okos lépés. Tüsszögni kezdesz. Ha az elkövetkezendő napokban nem kapsz megfelelő kezelést, a tüdőgyulladás úgy elhatalmasodik rajtad, hogy nehéz lesz belőle kikecmeregned. Holnap reggelre már beteg leszel, és ezért le kell vonnod magadtól 2 [span class="ffAttribute"]ÜGYESSÉG[/span] és 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Ezt követően minden reggel 1 [span class="ffAttribute"]ÜGYESSÉG[/span] és 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot vesztesz mindaddig, amíg meg nem gyógyulsz. Mindezek ellenére hősiesen ellenállsz a viharnak, míg az végül elül.[/p]
     </text>
@@ -6790,6 +6797,12 @@
           </dontHave>
         </itemCheck>
       </after>
+    </itemCheck>
+    <itemCheck type="item" id="5006">
+      <have>
+        <add amount="-3" to="stamina" />
+        <add amount="-1" to="skill" />
+      </have>
     </itemCheck>
   </p>
   <p id="265">
