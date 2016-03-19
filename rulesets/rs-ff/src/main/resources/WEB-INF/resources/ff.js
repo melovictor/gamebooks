@@ -217,7 +217,9 @@ var market = (function() {
 		singleCcy = $("#singleCcy").val();
 		multiCcy = $("#multipleCcy").val();
 		
-		updateCurrentBalance();
+		if ($content.length > 0) {
+			updateCurrentBalance();
+		}
 		
 		if (requiredPurchases > totalPurchases || requiredGold > currentGold || (requiredSalesExactly > 0 && requiredSalesExactly > totalSales)) {
 			$("#marketCommandFinish").hide();
