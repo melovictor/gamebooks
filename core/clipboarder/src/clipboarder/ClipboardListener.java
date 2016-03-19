@@ -72,6 +72,7 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
                 if (newContent != null) {
                     clipboardContent = newContent;
                     clipboard.setContents(new StringSelection(newContent), this);
+                    System.out.println("Full-file structure reordered, shutting down.");
                     System.exit(0);
                 } else {
                     newClipboardContent = contents;
