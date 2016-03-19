@@ -42,7 +42,7 @@ public class Sor2BookTakeItemController extends SorBookTakeItemController {
             handleMarketSell.put("successfulTransaction", true);
             handleMarketSell.put("gold", character.getGold());
         } else {
-            handleMarketSell = super.handleMarketSell(request, itemId);
+            handleMarketSell = super.doHandleMarketSell(request, itemId);
         }
         return handleMarketSell;
 
