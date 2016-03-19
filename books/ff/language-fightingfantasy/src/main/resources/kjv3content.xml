@@ -4270,11 +4270,27 @@
   </p>
   <p id="136">
     <text>
-        [p class="inlineImage"][img src="resources/sor3/136.jpg" /][/p]
-        [p]Elrejtőzöl a nádasban és várod a látogatóidat. Néhány perc múlva egy kis csapat undorító, pisze orrú, úszóhártyás kezű Mocsári Goblin jelenik meg a tisztáson és mindegyik megáll. Valamennyien zihálnak, mint akiket üldöznek. Valamit mondanak egymásnak, de nem érted a nyelvüket.[/p]
+        [p]Végül a víz már egészen sekély. Kilépsz a mocsaras partra. Találsz egy alkalmas helyet, ahol pihenhetsz és ehetsz, ha akarsz. Ha meg akarsz állni, hogy egyél, nyersz
     </text>
-    <next id="292">Ha megvárod, amíg elmennek</next>
-    <next id="91">Ha előbújsz rejtekhelyedről és felfeded magad</next>
+    <canEat />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>2</text>
+        <changeItem attribute="stamina" id="2000" set="2" />
+      </have>
+      <dontHave>
+        <text>1</text>
+        <changeItem attribute="stamina" id="2000" set="1" />
+      </dontHave>
+      <after>
+        <text>
+            [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Miközben felszedelőzködsz, hogy továbbmenj, a távolból zajt és kiabálást hallasz – valakik vagy valamik csoportja közeledik feléd.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="182">Ha ott maradsz, ahol vagy, de elrejtőzöl</next>
+    <next id="270">Ha ellenkező irányba menekülsz</next>
+    <next id="316">Ha megvárod, mi történik</next>
   </p>
   <p id="137">
     <text>
@@ -4440,7 +4456,7 @@
     </text>
     <test against="luck">
       <success>
-        <next id="182"></next>
+        <next id="136"></next>
       </success>
       <failure>
         <next id="253"></next>
@@ -4991,27 +5007,11 @@
   </p>
   <p id="182">
     <text>
-        [p]Végül a víz már egészen sekély. Kilépsz a mocsaras partra. Találsz egy alkalmas helyet, ahol pihenhetsz és ehetsz, ha akarsz. Ha meg akarsz állni, hogy egyél, nyersz
+        [p class="inlineImage"][img src="resources/sor3/136.jpg" /][/p]
+        [p]Elrejtőzöl a nádasban és várod a látogatóidat. Néhány perc múlva egy kis csapat undorító, pisze orrú, úszóhártyás kezű Mocsári Goblin jelenik meg a tisztáson és mindegyik megáll. Valamennyien zihálnak, mint akiket üldöznek. Valamit mondanak egymásnak, de nem érted a nyelvüket.[/p]
     </text>
-    <canEat />
-    <itemCheck type="item" id="4101">
-      <have>
-        <text>2</text>
-        <changeItem attribute="stamina" id="2000" set="2" />
-      </have>
-      <dontHave>
-        <text>1</text>
-        <changeItem attribute="stamina" id="2000" set="1" />
-      </dontHave>
-      <after>
-        <text>
-            [span class="ffAttribute"]ÉLETERŐ[/span] pontot. Miközben felszedelőzködsz, hogy továbbmenj, a távolból zajt és kiabálást hallasz – valakik vagy valamik csoportja közeledik feléd.[/p]
-        </text>
-      </after>
-    </itemCheck>
-    <next id="136">Ha ott maradsz, ahol vagy, de elrejtőzöl</next>
-    <next id="270">Ha ellenkező irányba menekülsz</next>
-    <next id="316">Ha megvárod, mi történik</next>
+    <next id="292">Ha megvárod, amíg elmennek</next>
+    <next id="91">Ha előbújsz rejtekhelyedről és felfeded magad</next>
   </p>
   <p id="183">
     <text>
@@ -6372,7 +6372,7 @@
         <add amount="-2" to="stamina" />
       </dontHave>
     </itemCheck>
-    <next id="182"></next>
+    <next id="136"></next>
   </p>
   <p id="254">
     <text>
