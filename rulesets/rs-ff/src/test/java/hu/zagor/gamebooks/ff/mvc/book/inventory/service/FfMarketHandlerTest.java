@@ -66,7 +66,7 @@ public class FfMarketHandlerTest {
     public void testHandleMarketPurchaseWhenItemIsNotForSaleShouldReturnWithFailedTransactionAndOriginalMoney() {
         // GIVEN
         command.getItemsForSale().add(itemB);
-        expect(attributeHandler.resolveValue(character, "gold")).andReturn(10);
+        expect(character.getGold()).andReturn(10);
         mockControl.replay();
         // WHEN
         final Map<String, Object> returned = underTest.handleMarketPurchase("3001", character, command, characterHandler);
@@ -78,7 +78,7 @@ public class FfMarketHandlerTest {
     public void testHandleMarketPurchaseWhenItemIsForSaleButTooExpensiveShouldReturnWithFailedTransactionAndOriginalMoney() {
         // GIVEN
         command.getItemsForSale().add(itemA);
-        expect(attributeHandler.resolveValue(character, "gold")).andReturn(2).times(2);
+        expect(character.getGold()).andReturn(2).times(2);
         mockControl.replay();
         // WHEN
         final Map<String, Object> returned = underTest.handleMarketPurchase("3001", character, command, characterHandler);
@@ -90,7 +90,7 @@ public class FfMarketHandlerTest {
     public void testHandleMarketPurchaseWhenItemIsForSaleButOutOfStockShouldReturnWithFailedTransactionAndOriginalMoney() {
         // GIVEN
         command.getItemsForSale().add(itemC);
-        expect(attributeHandler.resolveValue(character, "gold")).andReturn(5).times(2);
+        expect(character.getGold()).andReturn(5).times(2);
         mockControl.replay();
         // WHEN
         final Map<String, Object> returned = underTest.handleMarketPurchase("3003", character, command, characterHandler);
@@ -102,10 +102,10 @@ public class FfMarketHandlerTest {
     public void testHandleMarketPurchaseWhenItemIsAvailableShouldReturnWithSuccessfulTransaction() {
         // GIVEN
         command.getItemsForSale().add(itemA);
-        expect(attributeHandler.resolveValue(character, "gold")).andReturn(5);
+        expect(character.getGold()).andReturn(5);
         attributeHandler.handleModification(character, "gold", -3);
         expect(itemHandler.addItem(character, "3001", 1)).andReturn(1);
-        expect(attributeHandler.resolveValue(character, "gold")).andReturn(2);
+        expect(character.getGold()).andReturn(2);
         mockControl.replay();
         // WHEN
         final Map<String, Object> returned = underTest.handleMarketPurchase("3001", character, command, characterHandler);
@@ -118,7 +118,7 @@ public class FfMarketHandlerTest {
     public void testHandleMarketSellWhenItemIsNotAvailableForSaleAndNotGiveUpModeShouldReturnWithFailedTransaction() {
         // GIVEN
         command.getItemsForPurchase().add(itemB);
-        expect(attributeHandler.resolveValue(character, "gold")).andReturn(5);
+        expect(character.getGold()).andReturn(5);
         mockControl.replay();
         // WHEN
         final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, characterHandler);
@@ -134,7 +134,7 @@ public class FfMarketHandlerTest {
         command.getItemsForPurchase().add(itemB);
         command.setGiveUpMode(GiveUpMode.asMuchAsPossible);
         command.setGiveUpAmount(1);
-        expect(attributeHandler.resolveValue(character, "gold")).andReturn(5);
+        expect(character.getGold()).andReturn(5);
         mockControl.replay();
         // WHEN
         final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, characterHandler);
@@ -152,7 +152,7 @@ public class FfMarketHandlerTest {
         command.setGiveUpMode(GiveUpMode.asMuchAsPossible);
         command.setGiveUpAmount(1);
         expect(itemHandler.hasItem(character, "3001")).andReturn(false);
-        expect(attributeHandler.resolveValue(character, "gold")).andReturn(5);
+        expect(character.getGold()).andReturn(5);
         mockControl.replay();
         // WHEN
         final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, characterHandler);
@@ -170,7 +170,7 @@ public class FfMarketHandlerTest {
         expect(itemHandler.hasItem(character, "3001")).andReturn(true);
         attributeHandler.handleModification(character, "gold", 3);
         expect(itemHandler.removeItem(character, "3001", 1)).andReturn(itemList);
-        expect(attributeHandler.resolveValue(character, "gold")).andReturn(8);
+        expect(character.getGold()).andReturn(8);
         mockControl.replay();
         // WHEN
         final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, characterHandler);
@@ -190,7 +190,7 @@ public class FfMarketHandlerTest {
         expect(itemHandler.hasItem(character, "3001")).andReturn(true);
         attributeHandler.handleModification(character, "gold", 3);
         expect(itemHandler.removeItem(character, "3001", 1)).andReturn(itemList);
-        expect(attributeHandler.resolveValue(character, "gold")).andReturn(8);
+        expect(character.getGold()).andReturn(8);
         mockControl.replay();
         // WHEN
         final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, characterHandler);
@@ -211,7 +211,7 @@ public class FfMarketHandlerTest {
         expect(itemHandler.hasItem(character, "3001")).andReturn(true);
         attributeHandler.handleModification(character, "gold", 3);
         expect(itemHandler.removeItem(character, "3001", 1)).andReturn(itemList);
-        expect(attributeHandler.resolveValue(character, "gold")).andReturn(8);
+        expect(character.getGold()).andReturn(8);
         mockControl.replay();
         // WHEN
         final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, characterHandler);

@@ -239,7 +239,7 @@ public class MarketCommandResolverTest {
         command.getItemsForPurchase().add(marketElementD);
         command.getItemsForPurchase().add(marketElementE);
         expect(interactionHandler.hasMarketCommand(character)).andReturn(true);
-        expect(attributeHandler.resolveValue(character, "gold")).andReturn(5);
+        expect(character.getGold()).andReturn(5);
         final List<Item> equipmentList = new ArrayList<>();
         equipmentList.add(marketItemA);
         equipmentList.add(marketItemD);
@@ -271,7 +271,7 @@ public class MarketCommandResolverTest {
         command.getItemsForPurchase().add(marketElementD);
         command.getItemsForPurchase().add(marketElementE);
         expect(interactionHandler.hasMarketCommand(character)).andReturn(true);
-        expect(attributeHandler.resolveValue(character, "gold")).andReturn(5);
+        expect(character.getGold()).andReturn(5);
         mockControl.replay();
         // WHEN
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);

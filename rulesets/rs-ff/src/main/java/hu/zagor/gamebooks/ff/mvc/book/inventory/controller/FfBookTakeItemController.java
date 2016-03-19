@@ -201,10 +201,20 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
      */
     @RequestMapping(value = PageAddresses.BOOK_MARKET_BUY + "/{id}")
     @ResponseBody
-    public Map<String, Object> handleMarketBuy(final HttpServletRequest request, @PathVariable("id") final String itemId) {
+    public final Map<String, Object> handleMarketBuy(final HttpServletRequest request, @PathVariable("id") final String itemId) {
         Assert.notNull(itemId, "The parameter 'itemId' cannot be null!");
         Assert.isTrue(itemId.length() > 0, "The parameter 'itemId' cannot be empty!");
 
+        return doHandleMarketBuy(request, itemId);
+    }
+
+    /**
+     * Method for actually buying an item in the market.
+     * @param request the {@link HttpServletRequest}
+     * @param itemId the id of the item to buy
+     * @return the response for taking the item
+     */
+    protected Map<String, Object> doHandleMarketBuy(final HttpServletRequest request, final String itemId) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
 

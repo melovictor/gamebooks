@@ -35,7 +35,7 @@ public class FfMarketHandler implements MarketHandler {
         final FfCharacterHandler handler = (FfCharacterHandler) characterHandler;
         final FfAttributeHandler attributeHandler = handler.getAttributeHandler();
         if (toBuy != null) {
-            final int gold = attributeHandler.resolveValue(character, command.getMoneyAttribute());
+            final int gold = getCurrentGoldAmount(character, command, attributeHandler);
             if (gold >= toBuy.getPrice() && toBuy.getStock() > 0) {
                 attributeHandler.handleModification(character, command.getMoneyAttribute(), -toBuy.getPrice());
                 final CharacterItemHandler itemHandler = characterHandler.getItemHandler();
@@ -44,8 +44,19 @@ public class FfMarketHandler implements MarketHandler {
                 result.put("successfulTransaction", true);
             }
         }
-        result.put("gold", attributeHandler.resolveValue(character, command.getMoneyAttribute()));
+
+        result.put("gold", getCurrentGoldAmount(character, command, attributeHandler));
         return result;
+    }
+
+    private int getCurrentGoldAmount(final FfCharacter character, final MarketCommand command, final FfAttributeHandler attributeHandler) {
+        int resolveValue;
+        if ("gold".equals(command.getMoneyAttribute())) {
+            resolveValue = character.getGold();
+        } else {
+            resolveValue = attributeHandler.resolveValue(character, command.getMoneyAttribute());
+        }
+        return resolveValue;
     }
 
     private MarketElement fetchItemFromList(final String itemId, final List<MarketElement> list) {
@@ -88,7 +99,7 @@ public class FfMarketHandler implements MarketHandler {
             }
         }
 
-        result.put("gold", attributeHandler.resolveValue(character, command.getMoneyAttribute()));
+        result.put("gold", getCurrentGoldAmount(character, command, attributeHandler));
         result.put("giveUpMode", command.getGiveUpMode() != null);
         result.put("giveUpFinished", command.getGiveUpAmount() == 0);
 

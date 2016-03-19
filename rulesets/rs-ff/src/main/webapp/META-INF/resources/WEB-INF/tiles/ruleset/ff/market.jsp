@@ -29,7 +29,7 @@
                   </div>
                   <c:if test="${item.price > 0 }">
                     <div class="marketPrice">
-                        <spring:message code="${item.price == 1 ? marketCommand.singleCcyKey : marketCommand.multipleCcyKey}" arguments="${item.price}" />
+                        <spring:message code="${item.price == 1 ? marketCommand.singleCcyKey : marketCommand.multipleCcyKey}Price" arguments="${item.price}" />
                     </div>
                   </c:if>
                   <c:if test="${item.stock > 1 }">
@@ -61,7 +61,7 @@
 	                  <c:if test="${empty marketCommand.giveUpMode}">
 		                  <c:if test="${item.price > 0 }">
 		                      <div class="marketPrice">
-		                          <spring:message code="${item.price == 1 ? marketCommand.singleCcyKey : marketCommand.multipleCcyKey}" arguments="${item.price}" />
+		                          <spring:message code="${item.price == 1 ? marketCommand.singleCcyKey : marketCommand.multipleCcyKey}Price" arguments="${item.price}" />
 		                      </div>
 	                      </c:if>
 	                  </c:if>
