@@ -2789,7 +2789,13 @@
     </itemCheck>
   </p>
   <!-- 75 -->
-  <!-- 76 -->
+  <p id="76">
+    <text>
+        [p]- Csak annyit mondhatok, hogy az Időkígyó a leggyorsabb a hét közül. Ezt a Sárkánykígyót csak úgy lehet legyőzni, ha egy dalt énekelnek neki. Ezt a dalt azonban én odaadtam a Mocsári Goblinoknak, akik szeretnék maguk megölni ezt a Sárkánykígyót. Ha megtalálod a Goblinokat, ráveheted őket arra, hogy mondjanak le erről a szándékukról. Remélem, valamit segítettem ezzel.[/p]
+    </text>
+    <next id="324">Ha köszönetet mondasz nekik, és indulni készülsz</next>
+    <next id="132">Ha inkább azt tudakolod meg tőle, hogy vajon miképp tudnál átkelni az Ilklala tavon</next>
+  </p>
   <p id="77">
     <text>
         [p]Képtelen vagy megragadni a kardodat, mert a Fojtóbokor ágai egyre szorosabban és szorosabban tekerednek köréd.[/p]
@@ -3690,7 +3696,63 @@
     <next id="1"></next>
   </p>
   <!-- 131 -->
-  <!-- 132 -->
+  <p id="132">
+    <text>
+        [p]Azt szeretnéd tudni, hogyan kelhetnél át az Ilklala tavon? - kérdi. - Átkelhetsz rajta, de csak akkor, ha magadhoz szólítod a révészt. Van egy sípom, ha ebbe belefújsz, megjelenik. Csak 2 Aranytallért kérek ezért a sípért. Vagy bármire elcserélem veled, ami hasznos lehet a számomra. - Bármelyik tárgyadat elcserélheted vele ezért a sípért, de őt kizárólag a varázslás során használható tárgyaid érdeklik. Cserélj vele, ha akarsz.[/p]
+    </text>
+    <itemCheck type="gold" id="2">
+      <have>
+        <next id="324" pos="5">Ha 2 Aranytallért adnál neki</next>
+        <next id="132a" pos="6">Ha az egyik tárgyadat cserélnéd el vele</next>
+        <next id="324" pos="10">Ha nem tartasz igényt a sípra</next>
+      </have>
+      <dontHave>
+        <next id="132a">Ha az egyik tárgyadat cserélnéd el vele</next>
+        <next id="324">Ha nem tartasz igényt a sípra</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="132a" display="132">
+    <text>
+        [p]Azt szeretnéd tudni, hogyan kelhetnél át az Ilklala tavon? - kérdi. - Átkelhetsz rajta, de csak akkor, ha magadhoz szólítod a révészt. Van egy sípom, ha ebbe belefújsz, megjelenik. Csak 2 Aranytallért kérek ezért a sípért. Vagy bármire elcserélem veled, ami hasznos lehet a számomra. - Bármelyik tárgyadat elcserélheted vele ezért a sípért, de őt kizárólag a varázslás során használható tárgyaid érdeklik. Cserélj vele, ha akarsz.[/p]
+    </text>
+    <market mustGiveUp="1">
+      <purchaseLabel>Melyik tárgyadat ajánlod fel Fenestrának a sípért cserébe?</purchaseLabel>
+      <purchase price="0" stock="99" id="3001" />
+      <purchase price="0" stock="99" id="3002" />
+      <purchase price="0" stock="99" id="3008" />
+      <purchase price="0" stock="99" id="3017" />
+      <purchase price="0" stock="99" id="3018" />
+      <purchase price="0" stock="99" id="3019" />
+      <purchase price="0" stock="99" id="3022" />
+      <purchase price="0" stock="99" id="3027" />
+      <purchase price="0" stock="99" id="3028" />
+      <purchase price="0" stock="99" id="3032" />
+      <purchase price="0" stock="99" id="3034" />
+      <purchase price="0" stock="99" id="3035" />
+      <purchase price="0" stock="99" id="3036" />
+      <purchase price="0" stock="99" id="3052" />
+      <purchase price="0" stock="99" id="3054" />
+      <purchase price="0" stock="99" id="3056" />
+      <purchase price="0" stock="99" id="3057" />
+      <purchase price="0" stock="99" id="3058" />
+      <purchase price="0" stock="99" id="3059" />
+      <purchase price="0" stock="99" id="3061" />
+      <purchase price="0" stock="99" id="3067" />
+      <purchase price="0" stock="99" id="3068" />
+      <purchase price="0" stock="99" id="3201" />
+      <purchase price="0" stock="99" id="3205" />
+      <emptyHanded>
+        <text>
+            [p]Átnézed a hátizsákodat, de egyetlen olyan tárgyat sem találsz benne, ami érdekelné Fenestrát.[/p]
+        </text>
+      </emptyHanded>
+      <after>
+        <gatherItem id="3071" />
+      </after>
+    </market>
+    <next id="324"></next>
+  </p>
   <p id="133" color="purple">
     <text>
         [p]Amikor eléred az erdő szélét, a levegő hűvösebb lesz; közeledik az éjszaka. El kell döntened, vajon letáborozol-e éjszakára itt az erdő szélén, vagy inkább pihenés nélkül továbbmész.[/p]
@@ -4590,7 +4652,14 @@
     <next id="114"></next>
   </p>
   <!-- 182 -->
-  <!-- 183 -->
+  <p id="183">
+    <text>
+        [p]Jól kijössz vele, és úgy döntesz, hogy a beszélgetést küldetésedre tereled. A Hét Sárkánykígyó felől kezded faggatni. Hirtelen beléfagy a szó, és tágra nyílt szemmel bámul rád: - Mi közöd a Hét Sárkánykígyóhoz? - kérdi. Vajon elég bátor vagy-e ahhoz, hogy elmondd neki az igazat? Úgy döntesz, hogy óvatos leszel, és azt mondod neki, hallottad, hogy valahol erre vannak ezek a gyalázatos teremtmények, és szeretnéd őket közelebbről megnézni. - Elvezethetlek az egyikhez - mondja -, de elárulok neked egy titkot. Remélem, megbízhatok benned. A Hét Sárkánykígyó nem a barátom, ugyanis akárhányszor ide röpülnek Kakhabadba, itt szállnak le ebben az erdőben, és mindig zűrzavart okoznak. Az az átkozott Vízkígyó az egyik ilyen látogatásuk alkalmával megölte az apámat. Ezt sose fogom neki megbocsátani. Az apám nem tudott arról, mi a Vízkígyó gyengéje; ez ugyanis nem állhatja az olajat. Az olaj és a víz nem keveredik egymással, épp ezért bőséges készletem van belőle, mert bosszút akarok állni az apámért. De hadd mutassam meg neked, mit mond a Kristálygömb - Miután rájössz, hogy jó úton jársz, felfeded Fenestra előtt valódi célodat: meg akarod ölni ezeket a teremtményeket Mikor ezt meghallja, Fenestra elmosolyodik. - Akkor hát vidd magaddal az útra ezt a kis üveg [span class="takeItem" data-id="3078" data-amount="1"]olajat[/span]. Istennőd legyen veled, ha találkozol ezzel a gonosz teremtménnyel. - Átadja az olajjal teli üvegcsét, majd odalép az asztalhoz a Kristálygömbjéhez. Kezével végigsimít rajta, s közben motyog valamit az orra alatt. Ekkor egy alak jelenik meg a Gömbben. Leesik az állad, mert épp az egyik Sárkánykígyó az, akit látsz. - Igen - mondja Fenestra -, ez a Napkígyó, akit sikerült az égből az Eső Varázslattal lecsalogatnom. Felajánlottam neki, hogy segítek neki elrejtőzni, ugyanis a Napkígyó nem állhatja a vizet, ezért belevarázsoltam a Gömbömbe Végül majd idejön a Vízkígyó, hogy a társát megkeresse és akkor én következem. Nézd csak, nyugodtan beszélhetsz ezzel a teremtménnyel, ha akarsz. - Undorodva mélyen belenéz a Gömbbe.[/p]
+    </text>
+    <next id="132">Most tanácsot kérhetsz tőle, hogyan juthatsz át az Ilklala tó túlsó partjára</next>
+    <next id="76">Ha megkérdezed, tud-e még valamit mondani a Sárkánykígyókról</next>
+    <next id="92">Ha távozol és visszamész az ösvényre</next>
+  </p>
   <p id="184">
     <text>
         [p]- Óóóó, csodáááásssss - kiáltja a Kígyóbűvölő. - Manakának tetsssssssssszik ez a cccssssizma. Adddd nekem! - Azt állítja, ha nekiadod a csizmát, értékes információhoz juttat. Megkérdezed, milyen információról van szó. Suttogva csak ennyit felel: - A Hét Sárkánykígyóról.[/p]
@@ -7102,6 +7171,12 @@
     <text>
         [p]Mielőtt elmennél, Fenestra egy ajándékot ajánl fel neked. Mit választasz?[/p]
     </text>
+    <itemCheck type="pos" id="5">
+      <have>
+        <add amount="-2" to="gold" />
+        <gatherItem id="3071" />
+      </have>
+    </itemCheck>
     <next id="296" pos="1">Gyógyitalt?</next>
     <next id="195" pos="2">Szerencsetalizmánt?</next>
     <itemCheck type="item" id="3071">
