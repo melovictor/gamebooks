@@ -31,7 +31,7 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component("singlesor3FightRoundResolver")
-public class SingleSor3FightRoundResolver extends SingleFightRoundResolver {
+public class SingleSor3FightRoundResolver extends SingleSorFightRoundResolver {
 
     private static final int AIR_SERPENT_FORCED_DAMAGE = 3;
     private static final int AIR_SERPENT_BASE_DAMAGE_ABSORPTION = 10;

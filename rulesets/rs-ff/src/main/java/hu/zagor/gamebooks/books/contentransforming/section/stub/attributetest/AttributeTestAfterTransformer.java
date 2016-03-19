@@ -9,7 +9,7 @@ import org.w3c.dom.Node;
 
 /**
  * Transforms the after element inside the attribute test section.
- * @author FireFoX
+ * @author Tamas_Szekeres
  */
 public class AttributeTestAfterTransformer extends AbstractCommandSubTransformer<AttributeTestCommand> {
 

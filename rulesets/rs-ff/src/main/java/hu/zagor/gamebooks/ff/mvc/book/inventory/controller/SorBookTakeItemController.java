@@ -138,7 +138,7 @@ public class SorBookTakeItemController extends FfBookTakeItemController {
             itemHandler.removeItem(character, "3072", 1);
             itemHandler.addItem(character, "3073", 1);
         } else {
-            super.handleItemStateChange(request, itemId, isEquipped);
+            super.doHandleItemStateChange(request, itemId, isEquipped);
         }
 
     }
