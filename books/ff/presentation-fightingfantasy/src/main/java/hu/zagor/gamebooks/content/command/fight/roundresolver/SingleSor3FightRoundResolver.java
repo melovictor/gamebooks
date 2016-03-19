@@ -3,14 +3,19 @@ package hu.zagor.gamebooks.content.command.fight.roundresolver;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
+import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
+import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
+import hu.zagor.gamebooks.character.handler.userinteraction.UserInteractionHandler;
+import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.character.SorCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import java.util.List;
@@ -28,6 +33,9 @@ import org.springframework.stereotype.Component;
 @Component("singlesor3FightRoundResolver")
 public class SingleSor3FightRoundResolver extends SingleFightRoundResolver {
 
+    private static final int AIR_SERPENT_FORCED_DAMAGE = 3;
+    private static final int AIR_SERPENT_BASE_DAMAGE_ABSORPTION = 10;
+    private static final String AIR_SERPENT_ID = "44";
     private static final int ANGERED_BADDU_BUG_ATTACK_STRENGTH_BONUS = 4;
     @Autowired private MessageSource source;
     @Autowired private LocaleProvider provider;
@@ -41,6 +49,10 @@ public class SingleSor3FightRoundResolver extends SingleFightRoundResolver {
 
     @Override
     public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+        if (fightingWithAirSerpent(command)) {
+            prepareAttackDefenseValues(resolvationData);
+        }
+
         final FightRoundResult[] resolveRound = super.resolveRound(command, resolvationData, beforeRoundResult);
 
         if (centaurReadyToSurrender(command, resolvationData, resolveRound)) {
@@ -59,7 +71,45 @@ public class SingleSor3FightRoundResolver extends SingleFightRoundResolver {
             resolvationData.getCharacterHandler().getItemHandler().addItem(resolvationData.getCharacter(), "4008", 2);
         }
 
+        if (fightingWithAirSerpent(command)) {
+            storeSerpentRoundResult(resolveRound[0], resolvationData);
+        }
+
         return resolveRound;
+    }
+
+    private void storeSerpentRoundResult(final FightRoundResult resolveRound, final ResolvationData resolvationData) {
+        final SorCharacter character = (SorCharacter) resolvationData.getCharacter();
+        final UserInteractionHandler interactionHandler = resolvationData.getCharacterHandler().getInteractionHandler();
+        final String lastRoundResult = interactionHandler.getInteractionState(character, "lastRound");
+
+        if (!("WIN".equals(lastRoundResult) && resolveRound == FightRoundResult.WIN)) {
+            interactionHandler.setInteractionState(character, "lastRound", resolveRound.name());
+        }
+    }
+
+    private void prepareAttackDefenseValues(final ResolvationData resolvationData) {
+        final SorCharacter character = (SorCharacter) resolvationData.getCharacter();
+        final CharacterHandler characterHandler = resolvationData.getCharacterHandler();
+        final UserInteractionHandler interactionHandler = characterHandler.getInteractionHandler();
+        final String lastRoundResult = interactionHandler.peekInteractionState(character, "lastRound");
+        final FfEnemy airSerpent = (FfEnemy) resolvationData.getEnemies().get(AIR_SERPENT_ID);
+        if ("WIN".equals(lastRoundResult)) {
+            airSerpent.setStaminaDamage(1);
+            final FfCharacterItemHandler itemHandler = (FfCharacterItemHandler) characterHandler.getItemHandler();
+            final FfItem equippedWeapon = itemHandler.getEquippedWeapon(character);
+            airSerpent.setDamageAbsorption(equippedWeapon.getStaminaDamage() - AIR_SERPENT_FORCED_DAMAGE);
+        } else if ("LOSE".equals(lastRoundResult)) {
+            airSerpent.setStaminaDamage(airSerpent.getStaminaDamage() * 2);
+            airSerpent.setDamageAbsorption(AIR_SERPENT_BASE_DAMAGE_ABSORPTION);
+        } else {
+            airSerpent.setStaminaDamage(1);
+            airSerpent.setDamageAbsorption(AIR_SERPENT_BASE_DAMAGE_ABSORPTION);
+        }
+    }
+
+    private boolean fightingWithAirSerpent(final FightCommand command) {
+        return command.getEnemies().contains(AIR_SERPENT_ID);
     }
 
     private boolean notLastSnattacatJustDied(final FightCommand command, final ResolvationData resolvationData) {
