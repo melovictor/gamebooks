@@ -23,4 +23,4 @@ login.username=gnome # must be present in security-beans.xml
 
 ##turning off tomcat session persistence:
 
-Open context.xml and uncomment the <Manager pathname="" />
+Open context.xml and uncomment the &lt;Manager pathname="" /&gt;
