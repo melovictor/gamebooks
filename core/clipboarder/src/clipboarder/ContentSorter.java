@@ -14,7 +14,7 @@ public class ContentSorter {
     private static final Pattern SECTIONS = Pattern.compile("(<p id=\"([^\"]+)\".*?<\\/p>)", Pattern.DOTALL);
 
     public String tryMap(final String content, final BookImageData imageData) {
-        if (isXml(content) && (isFf(content) || isSorcery(content))) {
+        if (isXml(content) && (isFf(content) || isRaw(content) || isSorcery(content))) {
             try {
                 return sortSections(content, imageData);
             } catch (final Exception ex) {
@@ -32,6 +32,11 @@ public class ContentSorter {
     private boolean isFf(final String content) {
         return content.contains(
             "<content xmlns=\"http://gamebooks.zagor.hu\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd\">");
+    }
+
+    private boolean isRaw(final String content) {
+        return content.contains(
+            "<content xmlns=\"http://gamebooks.zagor.hu\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://gamebooks.zagor.hu http://zagor.hu/xsd/raw.xsd\">");
     }
 
     private boolean isXml(final String content) {

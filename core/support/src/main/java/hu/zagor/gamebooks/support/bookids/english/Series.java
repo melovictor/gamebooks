@@ -27,6 +27,8 @@ public final class Series {
 
     public static final long WARLOCK = BASE + 477 * SERIES_MULTIPLIER;
 
+    public static final long ZORK = BASE + 999 * SERIES_MULTIPLIER;
+
     private Series() {
     }
 }
