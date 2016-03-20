@@ -54,10 +54,10 @@ public class CreateCollectorProject extends AbstractGenerator {
 
         createFile(medDir, ".classpath", getClasspathContent());
         createFile(medDir, ".gitignore", getGitignoreContent());
-        createFile(medDir, ".project", getProjectContent("language", data));
-        createFile(medDir, "pom.xml", getPomContent("language", data, false));
+        createFile(medDir, ".project", getProjectContent("media", data));
+        createFile(medDir, "pom.xml", getPomContent("media", data, false));
 
-        createFile(medDir, ".settings", "org.eclipse.wst.common.component", getWstCommonContent("language", data));
+        createFile(medDir, ".settings", "org.eclipse.wst.common.component", getWstCommonContent("media", data));
         createFile(medDir, ".settings", "org.eclipse.jdt.core.prefs", getJdtCoreContent());
         createFile(medDir, ".settings", "org.eclipse.m2e.core.prefs", getM2eCoreContent());
         createFile(medDir, ".settings", "org.eclipse.wst.validation.prefs", getWstValidationContent());
@@ -73,10 +73,10 @@ public class CreateCollectorProject extends AbstractGenerator {
 
         createFile(langDir, ".classpath", getClasspathContent());
         createFile(langDir, ".gitignore", getGitignoreContent());
-        createFile(langDir, ".project", getProjectContent("media", data));
-        createFile(langDir, "pom.xml", getPomContent("media", data, false));
+        createFile(langDir, ".project", getProjectContent("language", data));
+        createFile(langDir, "pom.xml", getPomContent("language", data, false));
 
-        createFile(langDir, ".settings", "org.eclipse.wst.common.component", getWstCommonContent("media", data));
+        createFile(langDir, ".settings", "org.eclipse.wst.common.component", getWstCommonContent("language", data));
         createFile(langDir, ".settings", "org.eclipse.jdt.core.prefs", getJdtCoreContent());
         createFile(langDir, ".settings", "org.eclipse.m2e.core.prefs", getM2eCoreContent());
         createFile(langDir, ".settings", "org.eclipse.wst.validation.prefs", getWstValidationContent());
