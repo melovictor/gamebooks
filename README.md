@@ -19,3 +19,8 @@ login.username=gnome # must be present in security-beans.xml
 -Drebel.log=debug # for jrebel, and only if you want to hide a lot of useless console logs
 
 -XX:MaxPermSize=256M # if you run into memory issues, this should be good enough for the moment
+
+
+##turning off tomcat session persistence:
+
+Open context.xml and uncomment the <Manager pathname="" />
