@@ -8,7 +8,7 @@ public class CreateBookProject {
     public void create() {
         final List<BookLangData> books = new ArrayList<>();
 
-        books.add(getSotkHu(true));
+        books.add(getSotkHu(false));
         books.add(getSotkEn(true));
         books.add(getSotkPtBr(false));
 
@@ -19,19 +19,19 @@ public class CreateBookProject {
 
     private BookBaseData getBaseData() {
 
-        baseData.setSeriesCode("sor"); // ff, pt, wm, fff, sor
-        baseData.setTitleCode("tss");
-        baseData.setPosition(3);
-        baseData.setCollectorCode("ff");
-        baseData.setCollectorName("fightingfantasy");
-        baseData.setRuleset("ff");
-        baseData.setHasEnemies(true);
-        baseData.setHasInventory(true);
-        baseData.setHasItems(true);
-        baseData.setHasMap(true);
+        baseData.setSeriesCode("z"); // ff, pt, wm, fff, sor
+        baseData.setTitleCode("caq");
+        baseData.setPosition(4);
+        baseData.setCollectorCode("z");
+        baseData.setCollectorName("zork");
+        baseData.setRuleset("raw");
+        baseData.setHasEnemies(false);
+        baseData.setHasInventory(false);
+        baseData.setHasItems(false);
+        baseData.setHasMap(false);
         baseData.setMediaProject(true);
-        baseData.setDefaultSkillTestType("L"); // Le: lower or equal; L: lower; if neither, should be empty!
-        baseData.setCharPageRequired(true);
+        baseData.setDefaultSkillTestType(""); // Le: lower or equal; L: lower; if neither, should be empty!
+        baseData.setCharPageRequired(false);
 
         return baseData;
     }
@@ -60,10 +60,10 @@ public class CreateBookProject {
 
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
-        data.setHidden(true);
-        data.setBookId("Sorcery.THE_SEVEN_SERPENTS");
+        data.setHidden(false);
+        data.setBookId("Zork.CONQUEST_AT_QUENDOR");
         data.setLang("en");
-        data.setTitle("The Seven Serpents");
+        data.setTitle("Conquest at Quendor");
         data.setGeneratable(shouldBeGenerated);
         return data;
     }

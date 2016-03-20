@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.initiator.book;
 
 import hu.zagor.gamebooks.initiator.AbstractGenerator;
-
 import java.io.File;
 import java.util.List;
 
@@ -14,8 +13,8 @@ public class GenerateBookProjectFiles extends AbstractGenerator {
         System.out.println("Verifying abbreviation availability for book(s).");
 
         final File rootPath = new File("c:/springsource/eclipsegit/books/" + baseData.getCollectorCode() + "/presentation-" + baseData.getCollectorName());
-        final File codeDir = new File(rootPath, "src/main/java/hu/zagor/gamebooks/" + baseData.getRuleset() + "/" + baseData.getSeriesCode() + "/"
-            + baseData.getTitleCode() + "/mvc/books/");
+        final File codeDir = new File(rootPath,
+            "src/main/java/hu/zagor/gamebooks/" + baseData.getRuleset() + "/" + baseData.getSeriesCode() + "/" + baseData.getTitleCode() + "/mvc/books/");
         if (codeDir.exists()) {
             System.out.println("Verification failed. No code will be generated.");
         } else {
@@ -35,7 +34,7 @@ public class GenerateBookProjectFiles extends AbstractGenerator {
     private void generateFiles(final BookBaseData baseData, final BookLangData data) {
         langGenerator.generate(baseData, data);
         if (baseData.hasMediaProject()) {
-            medGenerator.generate(baseData);
+            medGenerator.generate(baseData, data);
         }
     }
 
