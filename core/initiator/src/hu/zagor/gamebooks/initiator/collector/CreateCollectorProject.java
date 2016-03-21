@@ -7,12 +7,7 @@ import java.util.Scanner;
 
 public class CreateCollectorProject extends AbstractGenerator {
 
-    public void create() {
-        final CollectorData data = new CollectorData();
-        data.setBookDirName("z");
-        data.setBookSeriesFullName("zork");
-        data.setBasicRuleset("raw");
-
+    public void create(final CollectorData data) {
         try {
             createProjectStructure(data);
             updateSeriesCollector(data.getBookSeriesFullName());
