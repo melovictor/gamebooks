@@ -19,8 +19,8 @@ public class GenerateBookProjectFiles extends AbstractGenerator {
             System.out.println("Verification failed. No code will be generated.");
         } else {
             for (final BookLangData data : books) {
-                System.out.println("Start generating book " + data.getTitle());
                 if (data.isGeneratable()) {
+                    System.out.println("Start generating book " + data.getTitle());
                     data.init(baseData);
                     generateFiles(baseData, data);
                 }
