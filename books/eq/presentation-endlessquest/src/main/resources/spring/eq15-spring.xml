@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.EndlessQuest.UNDER_DRAGONS_WIND" id="eq15Id" />
+
+  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="eq15Info" c:id-ref="eq15Id" p:coverPath="resources/eq15/cover.jpg" p:resourceDir="eq15"
+    p:contentTransformers-ref="defaultRawContentTransformers" p:paragraphResolver-ref="rawRuleBookParagraphResolver" p:locale-ref="enLocale" p:position="15" p:series-ref="eqTitle" p:title="Under Dragon's Wing" p:characterHandler-ref="rawCharacterHandler" p:commandResolvers-ref="rawCommandResolvers">
+    <property name="contents">
+      <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="" c:items="" c:paragraphs="eq15content.xml" />
+    </property>
+    <property name="contentSpecification">
+      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="false" p:mapAvailable="false" />
+    </property>
+  </bean>
+
+</beans>
