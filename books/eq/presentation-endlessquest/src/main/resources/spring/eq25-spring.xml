@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.EndlessQuest.CONAN_THE_OUTLAW" id="eq25Id" />
+
+  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="eq25Info" c:id-ref="eq25Id" p:coverPath="resources/eq25/cover.jpg" p:resourceDir="eq25"
+    p:contentTransformers-ref="defaultRawContentTransformers" p:paragraphResolver-ref="rawRuleBookParagraphResolver" p:locale-ref="enLocale" p:position="25" p:series-ref="eqTitle" p:title="Conan the Outlaw" p:characterHandler-ref="rawCharacterHandler" p:commandResolvers-ref="rawCommandResolvers">
+    <property name="contents">
+      <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="" c:items="" c:paragraphs="eq25content.xml" />
+    </property>
+    <property name="contentSpecification">
+      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="false" p:mapAvailable="true" />
+    </property>
+  </bean>
+
+</beans>

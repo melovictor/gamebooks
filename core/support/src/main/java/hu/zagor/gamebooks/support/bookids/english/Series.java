@@ -13,6 +13,8 @@ public final class Series {
     public static final long CHOOSE_YOUR_OWN_ADVENTURE_REISSUE = BASE + 591 * SERIES_MULTIPLIER;
     public static final long CHOOSE_YOUR_OWN_ADVENTURE_WALT_DISNEY = BASE + 596 * SERIES_MULTIPLIER;
 
+    public static final long ENDLESS_QUEST = BASE + 112 * SERIES_MULTIPLIER;
+
     public static final long FIGHTING_FANTASY = BASE + 828 * SERIES_MULTIPLIER;
     public static final long FIGHTING_FANTAZINE = BASE + 339 * SERIES_MULTIPLIER;
     public static final long SORCERY = BASE + 568 * SERIES_MULTIPLIER;
