@@ -3,8 +3,33 @@
   version="1.0" xmlns="http://gamebooks.zagor.hu">
 
   <xs:complexType name="randomType">
-    <xs:sequence>
-      <xs:element name="result" minOccurs="1" maxOccurs="unbounded">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="label" minOccurs="0" maxOccurs="1" type="xs:string" />
+      <xs:element name="odd" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
+              <xs:complexType></xs:complexType>
+            </xs:element>
+            <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
+          </xs:choice>
+          <xs:attribute name="min" use="required" />
+          <xs:attribute name="max" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="even" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
+              <xs:complexType></xs:complexType>
+            </xs:element>
+            <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
+          </xs:choice>
+          <xs:attribute name="min" use="required" />
+          <xs:attribute name="max" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="result" minOccurs="0" maxOccurs="unbounded">
         <xs:complexType>
           <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
           <xs:attribute name="min" use="required" />
@@ -21,7 +46,7 @@
           <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
         </xs:complexType>
       </xs:element>
-    </xs:sequence>
+    </xs:choice>
     <xs:attribute name="diceConfig" type="xs:string">
       <xs:annotation>
         <xs:documentation>

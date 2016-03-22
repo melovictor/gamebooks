@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://gamebooks.zagor.hu" version="1.0" xmlns="http://gamebooks.zagor.hu">
   <xs:complexType name="randomType">
-    <xs:sequence>
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="label" minOccurs="0" maxOccurs="1" type="xs:string" />
       <xs:element name="odd" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:choice minOccurs="1" maxOccurs="unbounded">
@@ -53,7 +54,7 @@
           <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
         </xs:complexType>
       </xs:element>
-    </xs:sequence>
+    </xs:choice>
     <xs:attribute name="diceConfig" type="xs:string">
       <xs:annotation>
         <xs:documentation>
