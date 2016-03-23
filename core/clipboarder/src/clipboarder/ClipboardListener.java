@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 
 public class ClipboardListener extends Thread implements ClipboardOwner {
     private static final Pattern IMAGE_NAME_PATTERN = Pattern.compile("b-([0-9]+)\\.jpg");
+    private static final Pattern IMAGE_DIR_PATTERN = Pattern.compile("([a-z]+[0-9]+)(?:[a-z]+){0,1}");
     private static final Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 
     private final Replacer hunReplacer = new HungarianReplacer();
@@ -82,7 +83,7 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
             @SuppressWarnings("unchecked")
             final List<File> transferData = (List<File>) contents.getTransferData(DataFlavor.javaFileListFlavor);
             imageData = new BookImageData();
-            imageData.setCode(transferData.get(0).getParentFile().getName());
+            imageData.setCode(calculateLocaleInvariantName(transferData));
             for (final File file : transferData) {
                 final String filename = file.getName();
                 final Matcher matcher = IMAGE_NAME_PATTERN.matcher(filename);
@@ -96,6 +97,17 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
             newClipboardContent = contents;
         }
         clipboard.setContents(newClipboardContent, this);
+    }
+
+    private String calculateLocaleInvariantName(final List<File> transferData) {
+        String name = transferData.get(0).getParentFile().getName();
+
+        final Matcher matcher = IMAGE_DIR_PATTERN.matcher(name);
+        if (matcher.matches()) {
+            name = matcher.group(1);
+        }
+
+        return name;
     }
 
     private boolean isProgramCode(final String clipboardContent) {
