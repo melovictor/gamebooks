@@ -50,8 +50,10 @@ public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
 
             final File codeDir = new File(rootPath,
                 "src/main/java/hu/zagor/gamebooks/" + baseData.getRuleset() + "/" + baseData.getSeriesCode() + "/" + baseData.getTitleCode() + "/mvc/books/");
-            createFile(codeDir, "inventory/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookTakeItemController.java",
-                getTakeItemController(baseData, data));
+            if (baseData.hasItems()) {
+                createFile(codeDir, "inventory/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookTakeItemController.java",
+                    getTakeItemController(baseData, data));
+            }
             createFile(codeDir, "load/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookLoadController.java", getLoadController(baseData, data));
             createFile(codeDir, "newgame/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookNewGameController.java",
                 getNewGameController(baseData, data));
@@ -62,8 +64,10 @@ public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
 
             final File testCodeDir = new File(rootPath,
                 "src/test/java/hu/zagor/gamebooks/" + baseData.getRuleset() + "/" + baseData.getSeriesCode() + "/" + baseData.getTitleCode() + "/mvc/books/");
-            createFile(testCodeDir, "inventory/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookTakeItemControllerTest.java",
-                getTakeItemControllerTest(baseData, data));
+            if (baseData.hasItems()) {
+                createFile(testCodeDir, "inventory/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookTakeItemControllerTest.java",
+                    getTakeItemControllerTest(baseData, data));
+            }
             createFile(testCodeDir, "load/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookLoadControllerTest.java",
                 getLoadControllerTest(baseData, data));
             createFile(testCodeDir, "newgame/controller", data.getSeriesCodeCapital() + data.getPosition() + "BookNewGameControllerTest.java",
