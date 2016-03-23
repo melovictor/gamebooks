@@ -18,10 +18,7 @@ var ff2 = (function() {
 			url : "new/generate2",
 			data : data,
 			type : "get",
-			accept : "application/json; charset=utf-8",
-			contentType : "application/json; charset=utf-8",
-			dataType : "json",
-			complete : function(data) {
+			complete : function() {
 				$("[data-spell] span").unbind("click");
 				$("#choiceWrapper").show();
 				$("[data-generator-button='ff2']").hide();
@@ -50,10 +47,7 @@ var ff2 = (function() {
 				$.ajax({
 					url : "acquireNewSpell/" + spellCode,
 					type : "get",
-					accept : "application/json; charset=utf-8",
-					contentType : "application/json; charset=utf-8",
-					dataType : "json",
-					success : function(data) {
+					success : function() {
 						if (maxSpells <= selectedSpells) {
 							$("[data-spell] span").unbind("click");
 							$("#availableSpells,#selectedSpells").hide();

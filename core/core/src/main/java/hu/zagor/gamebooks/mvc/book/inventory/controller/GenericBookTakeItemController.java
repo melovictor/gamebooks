@@ -40,9 +40,9 @@ public class GenericBookTakeItemController extends AbstractRequestWrappingContro
      * @param data the {@link TakeItemData} containing the incoming parameters
      * @return the amount of items successfully taken
      */
-    @RequestMapping(value = PageAddresses.BOOK_TAKE_ITEM, consumes = "application/json", method = RequestMethod.POST)
+    @RequestMapping(value = PageAddresses.BOOK_TAKE_ITEM, method = RequestMethod.POST)
     @ResponseBody
-    public int handleItemTake(final HttpServletRequest request, @RequestBody final TakeItemData data) {
+    public int handleItemTake(final HttpServletRequest request, final TakeItemData data) {
         Assert.notNull(data.getItemId(), "The parameter 'itemId' cannot be null!");
         Assert.isTrue(data.getItemId().length() > 0, "The parameter 'itemId' cannot be empty!");
         Assert.isTrue(data.getAmount() > 0, "The parameter 'amount' must be positive!");

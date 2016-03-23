@@ -13,8 +13,8 @@ import org.springframework.ui.Model;
 public class TmBookNewGameController extends RawBookNewGameController {
 
     @Override
-    public String handleNew(final HttpServletRequest request, final Model model, final Locale locale) {
-        super.handleNew(request, model, locale);
+    public String doHandleNew(final HttpServletRequest request, final Model model, final Locale locale) {
+        super.doHandleNew(request, model, locale);
         addCssResource(model, "tm");
         return "tmSection";
     }

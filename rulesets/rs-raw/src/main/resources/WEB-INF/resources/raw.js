@@ -93,11 +93,8 @@ var inventory = (function() {
 	function takeItemCall(url, that, amount, data) {
 		$.ajax({
 			url : url,
-			data : JSON.stringify(data),
+			data : data,
 			method : "POST",
-			contentType : "application/json; charset=utf-8",
-			accept : "application/json; charset=utf-8",
-			dataType : "json"
 		}).done(function(totalTaken) {
 			if (amount == totalTaken) {
 				unbind(that);

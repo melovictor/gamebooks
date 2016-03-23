@@ -10,7 +10,6 @@ import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -28,7 +27,7 @@ public class Ff2BookNewGameController extends FfBookNewGameController {
      */
     @RequestMapping(value = PageAddresses.BOOK_NEW + "/" + PageAddresses.BOOK_GENERATE_CHARACTER + "2")
     @ResponseBody
-    public void handleGenerate2(final HttpServletRequest request, @RequestParam("spells") final String spells) {
+    public void handleGenerate2(final HttpServletRequest request, final String spells) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final Ff2Character character = (Ff2Character) wrapper.getCharacter();
         final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();

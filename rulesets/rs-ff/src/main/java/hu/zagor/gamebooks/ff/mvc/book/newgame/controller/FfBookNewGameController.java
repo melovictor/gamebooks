@@ -34,8 +34,8 @@ public class FfBookNewGameController extends RawBookNewGameController {
     @Resource(name = "rewardIdAttribAssociations") private Map<String, String> rewardIdAssociations;
 
     @Override
-    public String handleNew(final HttpServletRequest request, final Model model, final Locale locale) {
-        super.handleNew(request, model, locale);
+    protected String doHandleNew(final HttpServletRequest request, final Model model, final Locale locale) {
+        super.doHandleNew(request, model, locale);
 
         model.addAttribute("ffChoiceClass", "ffChoiceHidden");
         addJsResource(model, "ff");

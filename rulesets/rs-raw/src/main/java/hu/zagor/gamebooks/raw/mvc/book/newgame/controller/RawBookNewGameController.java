@@ -44,7 +44,18 @@ public class RawBookNewGameController extends AbstractNewGameController implemen
      * @return the redirection command
      */
     @RequestMapping(value = PageAddresses.BOOK_NEW)
-    public String handleNew(final HttpServletRequest request, final Model model, final Locale locale) {
+    public final String handleNew(final HttpServletRequest request, final Model model, final Locale locale) {
+        return doHandleNew(request, model, locale);
+    }
+
+    /**
+     * Redirects the reader to the background page.
+     * @param request the {@link HttpServletRequest} object
+     * @param model the model
+     * @param locale the used locale
+     * @return the redirection command
+     */
+    protected String doHandleNew(final HttpServletRequest request, final Model model, final Locale locale) {
         final BookItemStorage storage = contentInitializer.getItemStorage(getInfo());
         final CharacterHandler characterHandler = getInfo().getCharacterHandler();
         final Character c = getCharacter(locale);

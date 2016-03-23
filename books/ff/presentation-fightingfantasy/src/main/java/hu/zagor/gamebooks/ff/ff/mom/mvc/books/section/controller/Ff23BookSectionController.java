@@ -59,7 +59,7 @@ public class Ff23BookSectionController extends FfBookSectionController {
      * @param request the {@link HttpServletRequest} object
      * @return the result of the round
      */
-    @RequestMapping(value = "hunt", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    @RequestMapping(value = "hunt", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public HuntRoundResult handleHuntRound(final HttpServletRequest request) {
         return huntService.playRound(getWrapper(request), getInfo());
@@ -90,7 +90,6 @@ public class Ff23BookSectionController extends FfBookSectionController {
         if (enemies.size() == 2) {
             final BattleStatistics battleStatistics = fightCommand.getBattleStatistics(enemyId);
             if (battleStatistics.getSubsequentWin() > 0) {
-                // This one won't fight the next round
                 enemies.remove(enemyId);
                 final Iterator<FfEnemy> enemiesIterator = resolvedEnemies.iterator();
                 while (enemiesIterator.hasNext()) {
@@ -99,11 +98,6 @@ public class Ff23BookSectionController extends FfBookSectionController {
                         enemiesIterator.remove();
                     }
                 }
-                // for (final FfEnemy enemy : resolvedEnemies) {
-                // if (enemyId.equals(enemy.getId())) {
-                // resolvedEnemies.remove(enemy);
-                // }
-                // }
             }
         }
         if (commands.size() == 1) {

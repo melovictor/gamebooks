@@ -123,9 +123,6 @@ var ff = (function() {
 			url : "new/generate",
 			data : data,
 			type : "get",
-			accept : "application/json; charset=utf-8",
-			contentType : "application/json; charset=utf-8",
-			dataType : "json",
 			success : function(data) {
 				$.each(data, function(key, value) {
 					$("#" + key).html(value);

@@ -27,10 +27,7 @@ var ff12 = (function() {
 			url : "new/generate2",
 			data : data,
 			type : "get",
-			accept : "application/json; charset=utf-8",
-			contentType : "application/json; charset=utf-8",
-			dataType : "json",
-			complete : function(data) {
+			complete : function() {
 				$("#choiceWrapper").show();
 				$("[data-generator-button='ff2']").hide();
 				inventory.loadInventory();
