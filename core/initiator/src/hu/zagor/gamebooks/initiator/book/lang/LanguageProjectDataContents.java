@@ -31,7 +31,7 @@ public class LanguageProjectDataContents {
     }
 
     public static String getSpringFile(final BookBaseData baseData, final BookLangData data) {
-        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n"
+        String content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n"
             + "<beans xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.springframework.org/schema/beans\" xmlns:p=\"http://www.springframework.org/schema/p\"\r\n"
             + "  xmlns:util=\"http://www.springframework.org/schema/util\" xmlns:c=\"http://www.springframework.org/schema/c\"\r\n"
             + "  xsi:schemaLocation=\"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd\r\n"
@@ -43,12 +43,18 @@ public class LanguageProjectDataContents {
             + "    p:contentTransformers-ref=\"default" + baseData.getRulesetCapital() + "ContentTransformers\" p:paragraphResolver-ref=\"" + baseData.getRuleset()
             + "RuleBookParagraphResolver" + baseData.getDefaultSkillTestType() + "\" p:locale-ref=\"" + data.getCompactLang() + "Locale\" p:position=\""
             + data.getActualPosition() + "\" p:series-ref=\"" + data.getSeriesCode() + "Title\" p:title=\"" + data.getTitle() + "\" p:characterHandler-ref=\""
-            + baseData.getRuleset() + "CharacterHandler\" p:commandResolvers-ref=\"" + baseData.getRuleset() + "CommandResolvers\" p:unfinished=\"true\""
-            + (data.isHidden() ? " p:hidden=\"true\"" : "") + ">\r\n" + "    <property name=\"contents\">\r\n"
+            + baseData.getRuleset() + "CharacterHandler\" p:commandResolvers-ref=\"" + baseData.getRuleset() + "CommandResolvers\"";
+
+        if (!data.isFinished()) {
+            content += " p:unfinished=\"true\"";
+        }
+
+        content += (data.isHidden() ? " p:hidden=\"true\"" : "") + ">\r\n" + "    <property name=\"contents\">\r\n"
             + "      <bean class=\"hu.zagor.gamebooks.domain.BookContentFiles\" c:enemies=\"" + data.getEnemiesFileName() + "\" c:items=\"" + data.getItemsFileName()
             + "\" c:paragraphs=\"" + data.getContentFileName() + "\" />\r\n" + "    </property>\r\n" + "    <property name=\"contentSpecification\">\r\n"
             + "      <bean class=\"hu.zagor.gamebooks.domain.BookContentSpecification\" p:inventoryAvailable=\"" + baseData.hasInventory() + "\" p:mapAvailable=\""
             + baseData.hasMap() + "\" />\r\n" + "    </property>\r\n" + "  </bean>\r\n" + "\r\n" + "</beans>\r\n";
+        return content;
     }
 
     public static String getContentFile(final BookBaseData data) {

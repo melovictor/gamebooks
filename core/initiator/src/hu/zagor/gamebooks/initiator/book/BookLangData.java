@@ -16,6 +16,7 @@ public class BookLangData {
 
     private boolean generatable;
     private boolean hidden;
+    private boolean finished;
 
     public String getSeriesCode() {
         return seriesCode;
@@ -148,6 +149,14 @@ public class BookLangData {
 
     public boolean isHidden() {
         return hidden;
+    }
+
+    public boolean isFinished() {
+        return finished;
+    }
+
+    public void setFinished(final boolean finished) {
+        this.finished = finished;
     }
 
 }
