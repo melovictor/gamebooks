@@ -17,13 +17,16 @@ public final class Series {
 
     public static final long FIGHTING_FANTASY = BASE + 828 * SERIES_MULTIPLIER;
     public static final long FIGHTING_FANTAZINE = BASE + 339 * SERIES_MULTIPLIER;
-    public static final long SORCERY = BASE + 568 * SERIES_MULTIPLIER;
+
+    public static final long FIND_YOUR_FATE_JEM = BASE + 920 * SERIES_MULTIPLIER;
 
     public static final long PROTEUS = BASE + 552 * SERIES_MULTIPLIER;
 
     public static final long STAR_CHALLENGE = BASE + 358 * SERIES_MULTIPLIER;
 
     public static final long STORYTRAILS = BASE + 711 * SERIES_MULTIPLIER;
+
+    public static final long SORCERY = BASE + 568 * SERIES_MULTIPLIER;
 
     public static final long TIME_MACHINE = BASE + 966 * SERIES_MULTIPLIER;
 
