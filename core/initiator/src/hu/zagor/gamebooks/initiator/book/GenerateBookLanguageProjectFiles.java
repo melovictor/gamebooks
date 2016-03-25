@@ -24,7 +24,7 @@ public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
 
     public void generate(final BookBaseData baseData) {
         final File charPageLocation = new File("c:/springsource/eclipsegit/books/" + baseData.getCollectorCode() + "/presentation-" + baseData.getCollectorName()
-            + "/src/main/webapp/META-INF/resources/WEB-INF/tiles/ruleset/" + baseData.getCollectorCode() + "/" + baseData.getCollectorCode() + baseData.getPosition());
+            + "/src/main/webapp/META-INF/resources/WEB-INF/tiles/ruleset/" + baseData.getCollectorCode() + "/" + baseData.getSeriesCode() + baseData.getPosition());
         try {
             createFile(charPageLocation, "charpage.jsp", getCharPage());
         } catch (final IOException exception) {
