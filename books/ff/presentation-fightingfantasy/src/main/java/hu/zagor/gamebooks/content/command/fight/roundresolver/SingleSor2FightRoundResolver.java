@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.content.command.fight.roundresolver;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
-import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
@@ -22,7 +21,7 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component("singlesor2FightRoundResolver")
-public class SingleSor2FightRoundResolver extends SingleFightRoundResolver {
+public class SingleSor2FightRoundResolver extends SingleSorFightRoundResolver {
     private static final int CHAIN_MAKER_CRITICAL_STAMINA_VALUE = 5;
     private static final String WE_SMOKED_WEED = "4017";
     private static final int MISSES_ENEMY_3 = 3;
@@ -31,12 +30,6 @@ public class SingleSor2FightRoundResolver extends SingleFightRoundResolver {
     @Resource(name = "sor2WeedSmokerEnemies") private Set<String> weedSmokers;
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
     @Autowired private DiceResultRenderer renderer;
-    @Autowired @Qualifier("sorHeroAttackStrengthRoller") private HeroAttackStrengthRoller heroAttackStrengthRoller;
-
-    @Override
-    int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
-        return heroAttackStrengthRoller.getSelfAttackStrength(character, command, attributeHandler);
-    }
 
     @Override
     protected void damageEnemy(final FightCommand command, final FightDataDto dto) {

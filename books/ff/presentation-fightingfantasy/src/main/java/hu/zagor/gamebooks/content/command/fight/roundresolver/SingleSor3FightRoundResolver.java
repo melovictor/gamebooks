@@ -4,7 +4,6 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
-import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.UserInteractionHandler;
@@ -22,7 +21,6 @@ import java.util.List;
 import java.util.Set;
 import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
@@ -39,13 +37,7 @@ public class SingleSor3FightRoundResolver extends SingleSorFightRoundResolver {
     private static final int ANGERED_BADDU_BUG_ATTACK_STRENGTH_BONUS = 4;
     @Autowired private MessageSource source;
     @Autowired private LocaleProvider provider;
-    @Autowired @Qualifier("sorHeroAttackStrengthRoller") private HeroAttackStrengthRoller heroAttackStrengthRoller;
     @Resource(name = "sor3Snattacats") private Set<String> snattaCat;
-
-    @Override
-    int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
-        return heroAttackStrengthRoller.getSelfAttackStrength(character, command, attributeHandler);
-    }
 
     @Override
     public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
