@@ -34,14 +34,14 @@ public class HungarianReplacer implements Replacer {
         + PARENTHESIS_CHOICE + PARENTHESIS_CHOICE + PARENTHESIS_CHOICE + PARENTHESIS_CHOICE + PARENTHESIS_CHOICE + PARENTHESIS_CHOICE + PARENTHESIS_CHOICE,
         Pattern.DOTALL);
 
-    private final static Pattern LOSING_STAMINA = Pattern.compile("Vesztesz ([0-9]) ÉLETERŐ pontot");
+    private final static Pattern LOSING_STAMINA = Pattern.compile("Vesztesz ([0-9]) (?:ÉLETERŐ|életerő) pontot");
 
     private final Pattern dying = Pattern.compile("([0-9]+)\\.?\\s+(.*Kalandod (?:itt ){0,1}véget ért?\\.)");
 
     private final Pattern choiceOnly = Pattern.compile("([^.]*), lapozz az? ([0-9]+)-r[ace][.!]");
     private final Pattern choiceOnlyPage = Pattern.compile("([^.]*), lapozz az? ([0-9]+)\\. oldalra.");
 
-    private final Pattern enemy = Pattern.compile("(.*)\\s+ÜGYESSÉG\\s+(\\d+)\\s+ÉLETERŐ\\s+(\\d+)");
+    private final Pattern enemy = Pattern.compile("(.*)\\s+(?:ÜGYESSÉG|ügyesség)\\s+(\\d+)\\s+(?:ÉLETERŐ|életerő)\\s+(\\d+)");
 
     @Override
     public String tryMap(final String content) {
