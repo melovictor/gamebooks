@@ -1,0 +1,2227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/sor.xsd">
+  <p id="back_cover">
+    <text>
+        [p]A Mampang erőd zord tornyai ridegen magasodnak a táj fölé. Központjából gyilkos gonoszság szivárog, megfertőzve mindenkit mérges lehelletével. Valahol az erőd mélyén rejtőzik a hírhedt Főmágus, kincseskamrájában a legendás Királyok Koronájával. Minden ügyességedre (kardforgató tudásodra és mágikus képzettségedre egyaránt) szükséged lesz, hogy megálld a helyed az erőd ismeretlen borzalmai ellenében![/p]
+    </text>
+    <next id="generate" />
+  </p>
+  <p id="generate" display="Karakter létrehozása">
+    <text>
+        [p]
+          Kaszt:
+          [input type="radio" name="caste" value="0" checked="checked" id="warriorCaste"] [label for="warriorCaste"]Harcos[/label]
+          [input type="radio" name="caste" value="1" id="wizardCaste"] [label for="wizardCaste"]Varázsló[/label]
+        [/p]
+        [input type="hidden" id="skillValue0" value="6-ot" /]
+        [input type="hidden" id="skillValue1" value="4-et" /]
+        [p][span class="ffAttribute"]Ügyesség[/span]: [span id="ffSkill"]dobj egy kockával és adj [span id="skillAddition"]6-ot[/span] a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Életerő[/span]: [span id="ffStamina"]dobj két kockával és adj 12-t a dobott számhoz[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Szerencse[/span]: [span id="ffLuck"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [button data-generator-button="sor"]Karakter létrehozása[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="A Királyok Koronájának legendája">
+    <text>
+        [p]Sok-sok évszázaddal ezelőtt, a Sötétség Korszakában, amikor a világnak szinte egyetlen pontját sem fedezték még fel, apró civilizációs fészkek léteztek csupán, melyeknek saját kultúrájuk és fajuk volt. Az egyik ilyen régió Kakhabad volt, egy sörét vidék a világ végén.[/p]
+        [p]Bár számos hadvezér megkísérelte, Kakhabadot soha senkinek nem sikerült kormányoznia. A Zanzunu Csúcsokon túli civilizáltabb területekről elűzött gonosz teremtmények tömkelege szivárgott be fokozatosan Kakhabadba, és ez a vidék csakhamar elnyerte a Világvégi Féregverem elnevezést.[/p]
+        [p]Amikor Chalanna, Femphrey nagy reformere megtalálta a Királyok Koronáját, a már felfedezett többi világrészen rend és civilizáció lett úrrá. E korona segítségével Chalanna lett a keleti földrész legnagyobb birodalmának uralkodója. Ennek a varázskoronának misztikus hatalma volt, birtokosát természetfölötti kormányzói és igazságtevői hatalommal ruházta föl. Chalanna azonban nem hódítani akart, hanem Femphreyvel szövetséges, békés városállamokat kívánt létrehozni. Ezért aztán mesés Koronáját bölcsen a szomszédos királyságok uralkodóinak adta át sorban, és annak segítségével ezek a földek is egytől egyig felvirágoztak.[/p]
+        [p]Fontos tervet dolgozott ki. Minden uralkodó négy évre kapja meg a Királyok Koronáját, ezalatt rendet teremt országában, és csatlakozik Femphrey szövetségeseinek egyre nagyobb táborához. A Korona segítségével eleddig Vaskövesd, Lendleland, Gallantana és Brice királyságai virágoztak fel, szinte egyik pillanatról a másikra. Ismeretlen jelenség volt e vidékeken a háborúk minden neme.[/p]
+        [p]Így került a Korona színpompás ceremónia közepette Analand királyának kezébe, és ettől a naptól kezdve Analand óriási fejlődésnek indult. Senki sem tudta, miként képes a Királyok Koronája ily magasra emelni egy nemzetet. Némelyek ezt isteni erőknek tulajdonították, mások az ész erejét emlegették. Egy dolog azonban nem volt kétséges: az eredmény. Minden jól ment Analandban, mígnem leszállt a Fekete Hold éjszakája.[/p]
+        [p]Elsőnek a király vette észre, hogy a Korona eltűnt. Azon a csillagtalan éjszakán a Koronát Xameni Madáremberek ragadták fel, és Kakhabad zord, törvényt nem ismerő vidékein ár Mampang felé röpítették. Baklandról jött a hír, hogy a Koronát Mampang fővarázslójának vitték el, aki arra vágyott, hogy ő lehessen Kakhabad uralkodója. Bár Kakhabad veszélyes vidék volt, ez a hit egymagában sokkal nagyobb veszélyt jelentett a környező királyságokra. Kakhabadban nem léteztek törvények, hadsereg sem volt, az országot belső bajai, viszályai teljesen lefoglalták. A Királyok Koronájának segítségével Kakhabad a Femphreyi Szövetség valamennyi tagjának veszedelmes ellenségévé válhatott volna.[/p]
+        [p]A Királyok Koronájának eltűnése után Analand elvesztette mindazokat a javakat és jótéteményeket, melyeket a korona biztosított neki a két év alatt. A jog, a rend és az erkölcs hanyatlásnak indult. A királyban egyre inkább megrendült népe bizalma. A szomszédos területekről kíváncsian lesték, mi történik a határaikon túli vidékkel. Még olyan hangok is hallatszottak, hogy támadják meg Analandot.[/p]
+        [p]Már csak egyetlenegy remény maradt. Valakinek – minthogy a hadsereg soha nem lesz képes a feladat teljesítésére – el kell mennie Mampangba, és vissza kell szereznie a Királyok Koronáját. Csak akkor szűnik meg az Analandot sújtó árok, ha ez az illető épségben visszatér a Koronával. Önként jelentkeztél erre a feladatra, küldetésed világos. El kell jutnod Kakhabadba, Mampang erődjébe, és meg kell találnod a Koronát![/p]
+    </text>
+    <itemCheck type="item" id="defWpn">
+      <dontHave>
+        <gatherItem id="defWpn" />
+        <gatherItem id="1001" />
+        <gatherItem id="2000" amount="2" />
+        <add amount="20" to="gold" />
+        <itemCheck type="item" id="4101">
+          <dontHave>
+            <gatherItem id="4101" />
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="4103">
+      <dontHave>
+        <itemCheck type="item" id="4104">
+          <dontHave>
+            <gatherItem id="4103" />
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="4078">
+      <have>
+        <next id="237"></next>
+      </have>
+      <dontHave>
+        <next id="1"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="1">
+    <text>
+        [p class="inlineImage"][img src="resources/sor4/1.jpg" /][/p]
+        [p]A Mampang Erőd körvonalai gigantikus karmokként mélyednek az ég kékjébe - ez a kép lebeg szemeid előtt. Bár ez küldetésed végső célja, a távolban feltűnő, zord tornyok láttán egyáltalán nem érzel megkönnyebbülést, hogy elérkeztél utad utolsó állomásához. Az érzés, ami hatalmába kerít, leginkább a hatalmas veszély hűvös érzékelésének érzése. Lassan közeledsz a Zanzunu legfelső csúcsán terpeszkedő, szikrázó felhőkkel övezett, hatalmas fellegvárhoz.[/p]
+        [p]A haladás egyre nehezebbé válik, ahogy az ösvény átvágja magát Alsó Xamenen. A Zanzunu hegy lábának környékét szemmel láthatóan kevés lény járja - az út göröngyös, elhanyagolt. Amint azonban az út agyagos és saras szakaszához ér, patanyomokat veszel észre a földön: már több naposak, az is lehet, hogy több hetesek. [em]De vajon miféle lény hagy ilyen nyomokat?[/em][/p]
+        [p]A napot lassan sötét fellegek takarják el, és rohamosan sötétedik. Vihar van készülőben? A távolról felhangzó, tompa, elnyújtott dübörgés csak megerősíti ezt a gyanúdat. A legjobb lesz, ha felkészülsz a viharra. Már jócskán estefelé jár az idő, így aztán máskülönben is menedékhelyet kellene keresned. A sűrű növényzet között számos olyan hely kínálkozik, amely megvédene az esőtől, de ha aludni is akarsz, egy barlang sokkal biztonságosabb lenne.[/p]
+        [p]Megállsz egy pillanatra, hogy megfontold, merre és milyen menedéket keress magadnak. Az útról letérvén keletre is és nyugatra is igen nehéz a haladás, és nincs olyan hely sem, ahol nyugodtan álomra hajthatnád a fejedet. Nincs mese, tovább kell menned az úton, észak felé. Előrenézel a távolba. Az ösvény néhány száz méter megtétele után egy szikla tövében jobbra fordul. Ha van egy kis szerencséd, a sziklafalban biztosan találsz egy barlangot vagy bemélyedést, ahol lepihenhetsz. Elindulsz hát a szikla felé.[/p]
+        [p]Amikor az útkanyarulatba érsz, azt is látod, mit takar a sziklafal. És jelen pillanatban pontosan erre van szükséged. Nem is egy, hanem mindjárt [em]három[/em] barlangnyílást is felfedezel! A hozzád legközelebb esőnek a legkeskenyebb a bejárata. A középső barlang elég nagynak tűnik ahhoz, hogy tüzet rakj odabent, bár lehet, hogy a barlang mély, ebből következően veszélyes. A harmadik barlang hasonló méretű, de ahogy végignézel az úton látod, hogy a patanyomok ebbe a barlangba vezetnek. Nos, melyik barlangban akarsz lepihenni?[/p]
+    </text>
+    <next id="222">A legkisebb barlangban?</next>
+    <next id="136">A középső barlangban?</next>
+    <next id="534">A leghátsó barlangban?</next>
+  </p>
+  <!-- 2 -->
+  <!-- 3 -->
+  <!-- 4 -->
+  <p id="5">
+    <text>
+        [p]Beszélsz nekik egy keveset az utadról, gondosan ügyelve arra, hogy ne fedd fel annak igazi célját. Lenyűgözve hallgatnak, mivel a Szatírnőkben erős a vágy, hogy más tájakat is meglássanak, illetve halljanak róluk. Állandóan arról beszélnek, milyen utakat terveznek messzi földekre. Sajnos azonban a vágyaik sohasem teljesülnek, mivel csak a magashegységek ritka levegőjét képesek belélegezni. Számukra te valóságos csoda forrása vagy, és folyton nyaggatnak, hogy mesélj még többet a kalandjaidról, merre jártál, és milyen lényekkel találkoztál. Leteszik a fegyvereiket, és hárman elbeszélgettek egy darabig. - Nos, hadd tisztázzuk a dolgokat, utazó. Tény, hogy a mi birodalmunkon haladsz át, de már nem vagy Alsó Xamenben. Ez [em]Felső[/em] Xamen.[/p]
+        [p]-    Ez a hír megdöbbent. Közelebb vagy az Erődhöz, semmint gondolnád! Az Erőd felé pillantasz, de az elrejtőzik a hegyek körül kavargó, sűrű felhőkben. Ha az előbbi hír valóban igaz, az utad szinte a végéhez érkezett. Egy pillanatig elmerengsz, majd ismét arra eszmélsz, hogy a Szatírnők kérdésekkel bombáznak. A nagyobbik feláll.[/p]
+        [p]-    [em]Többet[/em] - mindent - szeretnénk tudni az utadról. Kérlek, tedd meg nekünk azt a szívességet, hogy eljössz a falunkba! A nővéreinknek is hallaniuk kell a kalandjaidat. - Ezt megfontolod. Nem akarsz időt vesztegetni felesleges locsogásra, de lehet, hogy a Szatírnőktől információhoz juthatsz az Erődöt illetően.[/p]
+    </text>
+    <next id="545">Amennyiben elfogadod a meghívást</next>
+    <next id="260">Ha inkább közlöd velük, hogy még az éj leszállta előtt a Mampang Erődhöz kell jutnod, így köszönöd, de inkább továbbmennél</next>
+  </p>
+  <!-- 6 -->
+  <!-- 7 -->
+  <!-- 8 -->
+  <!-- 9 -->
+  <!-- 10 -->
+  <!-- 11 -->
+  <!-- 12 -->
+  <!-- 13 -->
+  <p id="14">
+    <text>
+        [p]Fegyverrel a kézben beljebb merészkedsz a barlangba, szorosan követve a fal vonalát, hogy a hátad fedezve legyen. Nem találsz se rejtett folyosót, se újabb Jib-Jibeket. Az egész barlang három vagy négy méter mély lehet, és hál’ istennek, üres. De amint körbetapogatsz, kezed valami hideget érint. Megragadod a tárgyat, és kiviszed a fényre, hogy megnézhesd, mi is az. Egy piszkos, öreg üveget találtál, melynek kupakja alaposan be van zárva. Az üveg maga sötétbarna színű, így nehéz megállapítani, vajon van-e benne valami. A súlya alapján üresnek mondanád, de ahogy megrázogatod, nagyon halk hangok szűrődnek ki belőle. Megkockáztatod, hogy kinyitod az üveget?[/p]
+    </text>
+    <next id="318">Ha igen</next>
+    <next id="99">Ha nem</next>
+  </p>
+  <!-- 15 -->
+  <!-- 16 -->
+  <!-- 17 -->
+  <!-- 18 -->
+  <!-- 19 -->
+  <!-- 20 -->
+  <!-- 21 -->
+  <!-- 22 -->
+  <!-- 23 -->
+  <p id="24">
+    <text>
+        [p]Beszélsz Colletusnak arról a holttestről, amit a barlangban találtál. - Igen, a Szatírnők! - bólint. - Az egyik furcsa szokásuk, hogy keresnek maguknak egy barlangot, ahol békességben meghalhatnak. A reszkető kór pestisként terjed közöttük. Épp tegnap beszéltem magával Sh’hourival erről a kórról. Tudod, én meg tudom gyógyítani, mert gyógyító erővel vagyok megáldva. Ők megígérték, hogy megvédenek, ha meggyógyítom őket. Természetesen belementem; ha valaki ilyen képességgel van megáldva, nem tarthatja meg önző módon saját magának. Minden beteg és szegény ember rendelkezésére kell állnia. - Megkérdezed, vajon megosztaná-e az erőit veled, hogy meggyógyítja-e azt a kórt, melyet esetleg összeszedtél a barlangban. Colletus bólint. Néhány másodpercig a homlokodon tartja a tenyerét. - Valóban, téged is megfertőzött a kór - közli. - De most már itt van, a kezemben. Meggyógyultál! - Megköszönöd a segítségét; szerencséd volt, hogy találkoztál vele.[/p]
+    </text>
+    <loseItem id="4081" />
+    <next id="103">Ha tovább folytatod a beszélgetést, és az Erődről kérdezgeted</next>
+    <next id="283">Hogyha szent emberként a segítségét kéred</next>
+  </p>
+  <!-- 25 -->
+  <!-- 26 -->
+  <!-- 27 -->
+  <!-- 28 -->
+  <p id="29">
+    <text>
+        [p]- Nocsak, megzavartak volna? - mondja a Szatírnő. - Ki ez? Áh, szóval egy embert hoztál a szórakoztatásomra! - A másik két lény tiltakozni próbál, de a Szatírnő rájuk sem hederít. Őrök érkeznek, és a barlang mélyére hurcolnak, egy nagy verembe. A verem széles ugyan, de nem nagyon mély. Viszont a közepén egy hatalmas és éhes Farkas tanyázik. - Nos nézzük, hogyan tud szórakoztatni minket ez az ember! - kacag a Szatírnő. Csettint egyet az ujjaival, téged pedig belöknek a verembe. Meg kell küzdened a Farkassal![/p]
+    </text>
+    <fight type="single">
+      <enemy id="3" />
+    </fight>
+    <next id="209"></next>
+  </p>
+  <!-- 30 -->
+  <!-- 31 -->
+  <!-- 32 -->
+  <!-- 33 -->
+  <!-- 34 -->
+  <!-- 35 -->
+  <p id="36">
+    <text>
+        [p class="inlineImage"][img src="resources/sor4/36.jpg" /][/p]
+        [p]Továbbmész a hegy oldalába vágott, kanyargó ösvényen. Még két másik óriási fészek mellett haladsz el. Szerencsére semmi nyoma azoknak a lényeknek, akik ekkora fészkekben élnek. A megkönnyebbülés azonban kárászéletű, mert váratlanul egy remegő árnyék vetül előtted az útra. Felnézel, és egy nagy alakot pillantasz meg a levegőben, pontosan a Nap irányában. A lény hatalmas szárnyaival csapkodva tartja fent magát. Kezedből napellenzőt formálsz, hogy pontosabban ki tudd venni a teremtményt.[/p]
+        [p]A teremtmény hatalmas, tollas szárnyú emberre hasonlít. A szája helyén éles, kampó alakú csőr meredezik, kusza, fekete haja vadul lobog a szélben. Kezei és lábai éles, hosszú karmokban végződnek. Meredten bámul téged. Hát persze! Hiszen ez a Madáremberek földje! Ezek a lények a Zanzunu-vidék leghírhedtebb és legjobban gyűlölt lakói. A xameni Madáremberek felelősek elsősorban a küldetésed létéért, hiszen ők voltak azok, akik elrabolták a Királyok Koronáját az analandi királyi palotából! Mit teszel most?[/p]
+    </text>
+    <next id="513">Ha fedezékbe bújsz egy útszéli bokor mögött</next>
+    <next id="338">Ha inkább odaszólsz a lénynek és megpróbálsz beszélni vele</next>
+  </p>
+  <!-- 37 -->
+  <!-- 38 -->
+  <!-- 39 -->
+  <!-- 40 -->
+  <!-- 41 -->
+  <!-- 42 -->
+  <!-- 43 -->
+  <!-- 44 -->
+  <!-- 45 -->
+  <p id="46">
+    <text>
+        [p]Elindulsz a hídon. Néhány méternyit haladtál már, amikor megcsúszol! A lábad átesik a kötélen, és ott lógsz kétségbeesetten kapaszkodva, nehogy a vesztedbe zuhanj. Sikerül végül megtartanod magad, de most el kell döntened, hogy tovább folytatod-e az utadat a hídon, vagy inkább visszafordulsz. Ha tovább akarsz haladni a hídon, dobj két kockával.[/p]
+    </text>
+    <next id="339">Ha [em]úgy[/em] döntesz, hogy visszafordulsz, kikapaszkodhatsz a híd szélére és megpróbálkozol a hegyen fölfelé vezető másik ösvénnyel</next>
+    <next id="46a">Ha továbbmennél</next>
+  </p>
+  <p id="46a" display="46">
+    <text>
+        [p]Elindulsz a hídon. Néhány méternyit haladtál már, amikor megcsúszol! A lábad átesik a kötélen, és ott lógsz kétségbeesetten kapaszkodva, nehogy a vesztedbe zuhanj. Sikerül végül megtartanod magad, de most el kell döntened, hogy tovább folytatod-e az utadat a hídon, vagy inkább visszafordulsz.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="117"></next>
+      </success>
+      <failure>
+        <next id="151"></next>
+      </failure>
+    </test>
+  </p>
+  <!-- 47 -->
+  <!-- 48 -->
+  <!-- 49 -->
+  <!-- 50 -->
+  <!-- 51 -->
+  <!-- 52 -->
+  <!-- 53 -->
+  <!-- 54 -->
+  <!-- 55 -->
+  <!-- 56 -->
+  <!-- 57 -->
+  <!-- 58 -->
+  <p id="59">
+    <text>
+        [p]Az ösvény bekanyarodik egy hatalmas szikla mögött, majd tovább folytatódik. Jelen pillanatban egy kicsit aggaszt a tény, hogy az ösvény az Erődöt rejtő hegy oldalában visz körbe téged. Nemsokára egy hatalmas szakadék állja el a Mampang felé vezető utadat. Valahogy meg kéne találni a módját, hogy átkelj rajta. Egy kicsivel odébb azonban választ találsz a problémádra - egy fahíd ível át a szakadékon.[/p]
+    </text>
+    <next id="183">Ha megpróbálsz átkelni a hídon</next>
+    <next id="257">Hogyha inkább az ösvényen mész tovább</next>
+  </p>
+  <!-- 60 -->
+  <!-- 61 -->
+  <p id="62">
+    <text>
+        [p]A lény teste hideg! A test hátradől a széken, majd lezuhan a földre. Szemmel láthatóan tökéletesen halott. De még egy meglepetés vár rád. A test nem férfié, hanem valamiféle nőé lehetett. Bár nagyjából emberalakja van, a lábai szőrösek, és patákban végződnek. Az arca emberi arc, de furcsa, kecskeszerű vonásokkal, és két szarvval a homlokán.[/p]
+        [p]A sokkból hamar magadhoz térsz, és körbenézel. A barlang üresnek tűnik, és bőven elegendő hely áll rendelkezésre ahhoz, hogy itt letáborozz.[/p]
+    </text>
+    <next id="293">Ha elkészíted a fekhelyedet, és talán eszel is egy keveset</next>
+    <next id="419">Ha inkább megnézed a többi barlangot</next>
+  </p>
+  <!-- 63 -->
+  <!-- 64 -->
+  <!-- 65 -->
+  <!-- 66 -->
+  <!-- 67 -->
+  <!-- 68 -->
+  <!-- 69 -->
+  <!-- 70 -->
+  <!-- 71 -->
+  <!-- 72 -->
+  <!-- 73 -->
+  <!-- 74 -->
+  <!-- 75 -->
+  <!-- 76 -->
+  <!-- 77 -->
+  <!-- 78 -->
+  <!-- 79 -->
+  <!-- 80 -->
+  <!-- 81 -->
+  <!-- 82 -->
+  <!-- 83 -->
+  <!-- 84 -->
+  <!-- 85 -->
+  <!-- 86 -->
+  <p id="87">
+    <empty />
+  </p>
+  <!-- 88 -->
+  <!-- 89 -->
+  <!-- 90 -->
+  <!-- 91 -->
+  <!-- 92 -->
+  <!-- 93 -->
+  <!-- 94 -->
+  <!-- 95 -->
+  <!-- 96 -->
+  <!-- 97 -->
+  <!-- 98 -->
+  <p id="99">
+    <text>
+        [p]Most ehetsz, ha akarsz.
+    </text>
+    <canEat />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>2</text>
+        <changeItem attribute="stamina" id="2000" set="2" />
+      </have>
+      <dontHave>
+        <text>1</text>
+        <changeItem attribute="stamina" id="2000" set="1" />
+      </dontHave>
+      <after>
+        <text>
+            ÉLETERŐ pontot kapsz az étkezéstől. Felkészülsz az éjszakára.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="384"></next>
+  </p>
+  <!-- 100 -->
+  <!-- 101 -->
+  <!-- 102 -->
+  <p id="103">
+    <text>
+        [p]-    Az Erőd? - kérdezi. - Miért? Ugye nem akarod meglátogatni? Mert ha igen, az idők végezetéig átkozott leszel! A gonoszság Mampangban mintha élőlény lenne, mert megfertőz mindenkit, aki akár csak a küszöbéig is merészkedik. Neked nincs ott semmi dolgod. Bánd meg most a bűneidet, és gyere velem, hogy áldozatot mutassunk be Throffnak - a magasnak! Az egyetlen igaz istennek mindenek fölött! A Föld Istennőjének! Küzdj meg Mampang sötét démonjaival, és élj örök igazságban! Most! Bánd meg most bűneidet![/p]
+        [p]Az öregember egyre izgatottabbá válik, te pedig igazán nem akarsz vitába bonyolódni egy fanatikussal. Elmagyarázod neki, hogy te meg akarsz küzdeni a mampangi gonosszal, azzal a céllal hogy vagy legyőzd, vagy belepusztulj a próbálkozásba. Colletus végighallgat, majd megrázza a fejét. - A Mampangban lakozó sötét erőket senki sem győzheti le, csak maguk az istenek - feleli. - Amikor fiatalabb voltam, olyan, mint te, ez volt az én küldetésem az életben. De a mampangi átkozott istenek csúnyán elbántak velem! - Megérinti a szemeit.[/p]
+        [p]-    De annyit érzek, hogy az akaratod szilárd. Nem mondhatok semmit, ami eltántorítana a küldetésedtől, így aztán azzal segítek neked, hogy elmondok egyet s mást arról, ami az Erődben reád vár. Gyere ide, és figyelj! - Szembefordul a Sóhajok Hídjával, és feltartja kezeit. Egy másik híd jelenik meg mellette, az előbbinél sokkal erősebb. - A Sóhajok Hídja nem más, mint illúzió - magyarázza. - Indulj el rajta, és félúton a létrehozó varázslat megszűnik, neked pedig halál a bátorságod jutalma. Ha az elhatározásod valóban olyan szilárd, mint amilyennek mondtad, három dolgot tudok neked ajándékozni, melyek segíthetnek az utadon. Van két varázsitalom. Az első visszaállítja az erődet, míg a másikat az istenek nevében áldottam meg. Harmadik ajándékom pedig egy Papi Sapka, mely szintén hasznodra válhat. És most menj! Cheelah szerencséje legyen veled![/p]
+        [p]Megköszönöd az öreg szent segítségét. Nyilván meghaltál volna, ha a titok ismerete nélkül próbáltál volna átkelni a hídon. Elteszed az ajándékaidat: a [span class="takeItem" data-id="3001" data-amount="1"]Gyógyító Italt[/span], a [span class="takeItem" data-id="3053" data-amount="1"]Szenteltvizet[/span] és a [span class="takeItem" data-id="3022" data-amount="1"]Papi Sapkát[/span]. És érzed, hogy az öreg utolsó szavai sem légből kapott szavak voltak: megnövelheted 1 ponttal a szerencséd [em]Kezdeti[/em] értékét, és visszaállíthatod jelenlegi szerencsédet 8-ra (ha most nagyobb, mint 8, ne változtass rajta). És most átmehetsz az igazi hídon a szakadék másik felére.[/p]
+    </text>
+    <add amount="1" to="initialLuck" />
+    <itemCheck type="luck" id="8">
+      <dontHave>
+        <add amount="8" to="luck" type="set" />
+      </dontHave>
+    </itemCheck>
+    <next id="411"></next>
+  </p>
+  <!-- 104 -->
+  <!-- 105 -->
+  <!-- 106 -->
+  <!-- 107 -->
+  <!-- 108 -->
+  <!-- 109 -->
+  <!-- 110 -->
+  <!-- 111 -->
+  <!-- 112 -->
+  <!-- 113 -->
+  <!-- 114 -->
+  <!-- 115 -->
+  <!-- 116 -->
+  <p id="117">
+    <text>
+        [p]Sikerül megkapaszkodnod, miközben a híd ide-oda leng a súlyod alatt. Megkönnyebbülten fellélegzel, amikor átérsz a túloldalra. Tovább folytatod az utadat.[/p]
+    </text>
+    <next id="380"></next>
+  </p>
+  <!-- 118 -->
+  <!-- 119 -->
+  <!-- 120 -->
+  <!-- 121 -->
+  <!-- 122 -->
+  <p id="123">
+    <text>
+        [p]A szörnyetegnek leckét kell adni. Az ordítása nem ijeszthet el téged attól, hogy a barlangjában töltsd az éjszakát![/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="DOK" id="635" />
+        <spell name="TÁV" id="607" />
+        <spell name="MEN" id="782" />
+        <spell name="ÁTÉ" id="697" />
+        <spell name="TÜK" id="669" />
+        <next id="286">Ha kivont fegyverrel lépsz be a barlangba</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Kivont fegyverrel lépsz be a barlangba.[/p]
+        </text>
+        <next id="286"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 124 -->
+  <!-- 125 -->
+  <!-- 126 -->
+  <!-- 127 -->
+  <!-- 128 -->
+  <!-- 129 -->
+  <!-- 130 -->
+  <!-- 131 -->
+  <!-- 132 -->
+  <!-- 133 -->
+  <!-- 134 -->
+  <!-- 135 -->
+  <p id="136">
+    <text>
+        [p]Odamész a barlang bejáratához, és belesel. A barlangban uralkodó szag ugyan nem túl kellemes, de a hely biztonságosnak tűnik. Az egyetlen dolog, ami egy kicsit aggaszt, hogy nem látod a hátsó falat: akár nagyon mély is lehet a barlang.[/p]
+    </text>
+    <next id="222">Ha inkább a másik két barlang közül próbálod ki az egyiket, és odamennél a legkisebb barlanghoz</next>
+    <next id="534">Hogyha a másik, nagyobb barlanggal próbálkoznál</next>
+    <next id="507">Amennyiben belépsz ebbe</next>
+  </p>
+  <!-- 137 -->
+  <!-- 138 -->
+  <!-- 139 -->
+  <!-- 140 -->
+  <!-- 141 -->
+  <!-- 142 -->
+  <!-- 143 -->
+  <!-- 144 -->
+  <!-- 145 -->
+  <!-- 146 -->
+  <!-- 147 -->
+  <!-- 148 -->
+  <!-- 149 -->
+  <!-- 150 -->
+  <p id="151">
+    <text>
+        [p]Már majdnem átértél a másik oldalra, amikor a lábad ismét megcsúszik. Kétségbeesetten próbálod meg elkapni a kötélhidat, hogy megkapaszkodj. Ezúttal azonban nem vagy ilyen szerencsés. A híd fel-alá hintázik, így mellényúlsz! Ijedtedben sikoltani sem tudsz, amint egyre lejjebb és lejjebb zuhansz, a lenti folyómeder felé. Kalandod itt véget ér - pedig már oly közel jártál célodhoz...[/p]
+    </text>
+    <death />
+  </p>
+  <!-- 152 -->
+  <p id="153">
+    <text>
+        [p]Eszedbe jut az üzenet, és hívni kezded Colletust. Vajon hogy fog festeni ez a titokzatos személy? Ott lesz egyáltalán? Egyáltalán életben van még? Ismét hívod, és nemsokára lépéseket hallasz a sziklán. A szakadék szélétől egy kicsivel odébb, egy alak jelenik meg. Egy öreg, kopasz férfi az, piszkos, hosszú, barna köpenye szolgálatkészen imbolyog utána, ahogy feléd közelít. - Ki szólít? - kérdezi. Először csendben maradsz - eléggé nyilvánvaló, ki szólította a nevén! De amint az öregember közeledik, látod, hogy nem feléd tart, hanem kissé a bal oldalad irányába. Az öreg [em]vak![/em] A szemeit feketére festette. Eszedbe jut a Kristatanli szokás. Ismét megszólalsz, és erre már ő is megleli a helyes irányt. - Nos? - csattan fel. - Ki vagy? És merre tartasz? Mit akarsz egy paptól, akit a feketeszem-átok sújt?[/p]
+    </text>
+    <next id="103" pos="1">Ha Mampang Erődről kérdezed</next>
+    <next id="283" pos="2">Hogyha szent emberi képességeiről akarsz tudni</next>
+    <itemCheck type="item" id="4081">
+      <have>
+        <next id="24" pos="3">Amennyiben megkérdezed tőle, hogy ő, mint szent ember, képes-e gyógyítani</next>
+      </have>
+    </itemCheck>
+  </p>
+  <!-- 154 -->
+  <p id="155">
+    <text>
+        [p]Elmondod, hogy egy Dhumpus nevű szent ember nevelt fel Kharéban, miután az édesanyád elhagyott. Édesanyád Slanggnak, a rosszindulat istenének hitét vette fel, és elsőként azt a feladatot kapta, hogy hagyjon téged meghalni, így bebizonyítva elhivatottságát. Innen származik az, hogy a beszéded keveréke a kikötőváros választékos nyelvének, és a délvidék szűk, célratörő beszédjének. Elmondod, hogy a Mampang Erődbe tartasz, mivel a Főmágus hívatott. A Főmágus nevének említésére a két inkvizítor gyorsan összepillant. Mintha félelem tükröződne szemükben. - Akkor folytasd az utadat, idegen - mondja az egyikük. - Nem akadályozzuk az utadat. Folytasd! - Nyilván félik Mampang erejét, te pedig közölted velük, hogy kapcsolatban állsz az ott lakozó gonosszal. Nem is akadályoznak tovább.[/p]
+    </text>
+    <next id="441"></next>
+  </p>
+  <!-- 156 -->
+  <!-- 157 -->
+  <!-- 158 -->
+  <!-- 159 -->
+  <!-- 160 -->
+  <!-- 161 -->
+  <!-- 162 -->
+  <!-- 163 -->
+  <!-- 164 -->
+  <p id="165">
+    <text>
+        [p]Magadhoz rögzíted a cuccaidat, majd megragadod a kötelet, és még egyszer ellenőrzöd, hogy elég stabilan van-e a fenti sziklához rögzítve. Hátralépsz egy párat, hogy röviden neki tudj futni. Utána nagy levegőt veszel, nekifutsz, és leugrasz a szegélyről. Ezután minden véget ér egy pillanat alatt.[/p]
+        [p]Bár alaposan ellenőrizted a kötelet, az mégsem volt olyan stabil, mint amilyennek elsőre tűnt. Ez a kis csapda azoknak készült, akik - hozzád hasonlóan - ezen az útvonalon akarnának törvénytelenül bejutni a Mampang Erődbe. Miközben a levegőben lengsz, a kötél hirtelen nyúlni kezd, de annyira, hogy mire a túloldalra érsz, rengeteget vesztettél az eredeti magasságodból, és keményen a sziklafalnak csapódsz. Az ütközés erejétől azonnal elveszted az eszméletedet. A mélységbe való zuhanás végez veled, de szerencsére nem vagy eszméletednél, amikor ez megtörténik... Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <!-- 166 -->
+  <!-- 167 -->
+  <!-- 168 -->
+  <p id="169">
+    <itemCheck type="section" id="136">
+      <have>
+        <itemCheck type="section" id="222">
+          <have>
+            <text>
+                [p]Már mindkét másik barlangot kipróbáltad, a legjobb az lesz, ha abban a barlangban telepszel le, amelyikbe éppen most néztél be.[/p]
+            </text>
+            <next id="534"></next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Úgy döntesz, hogy a legkisebb barlangba nézel be.[/p]
+            </text>
+            <next id="222"></next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="222">
+          <have>
+            <text>
+                [p]Úgy döntesz, hogy a középső barlangba nézel be.[/p]
+            </text>
+            <next id="136"></next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Melyik barlangba néznél be most?[/p]
+            </text>
+            <next id="222">Ha a legkisebbe</next>
+            <next id="136">Ha a középsőbe</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 170 -->
+  <!-- 171 -->
+  <!-- 172 -->
+  <!-- 173 -->
+  <p id="174">
+    <text>
+        [p]- Ha egy ideje már hordozod magadban a reszkető kórt, akkor kétségtelen, hogy hamarosan érezni fogod a hatását is - folytatja komoran Sh’houri. - De nincs minden veszve. Nemrég kaptuk a hírt, hogy Colletus, a szent ember képes meggyógyítani e betegséget. És ez a helyzet tragikuma. Ha ezt két nappal ezelőtt tudtuk volna, szegény Sh’himbli még most is élne. Mindenesetre, idegen, őt nem könnyű megtalálni, bár látták a sötét Erőd felé vezető úton. Ha megtalálod Colletust, így szólíthatod magadhoz. - Két tenyerét a szája elé teszi, és fütyülő hangot hallat.[/p]
+        [p]Hogyha Colletus valóban ott van, ahol gondoltad, a következő napon meg is fog jelenni. Sh’houri tovább beszél: - És köszönjük a híreket a nővérünkről. - A Szatírnők meg akarnak ajándékozni valamivel, amiért híreket hoztál nekik. Sh’houri először is a Mampang Erődről beszél neked. - Vigyáznod kell az Erődnél - kezdi -, mert az egy igen kaotikus hely. Tartsd nyitva mindig a szemedet, és ne csak előre nézz, hanem hátra is, ha életben akarsz maradni! Az Erődbe vezető út a két Throben Ajtón keresztül vezet: ezek hatalmas, két-szárnyú ajtók, bár ennél sokkal többet jelentenek a rajtuk áthaladni szándékozók számára. Ne hidd azt, hogy őrizetlenek, mert aki elővigyázatlanul akarja kinyitni őket, az nagyon pórul jár. Egyszerű, vastag, kétszárnyú ajtók, és külsejük eltakarja igazi céljukat. - A Szatírnő észrevette, hogy figyelmesen hallgatod, és nagyon örül annak, hogy hasznos információkat adhatott neked. Amikor felállsz, hogy távozz, odalép egy társához, aki kirohan, és nem sokkal később egy bőrtáskával tér vissza. A táskában számos, hasznosnak tűnő tárgy van. Megengedik, hogy akármit elvigyél ezek közül, de csak úgy, ha mindegyik tárgyért cserébe itt hagyod egy, már meglévő felszerelési tárgyadat (ami nem lehet élelmiszer vagy Arany).[/p]
+    </text>
+    <gatherItem id="4079" />
+    <itemCheck type="item" id="4102">
+      <have>
+        <next id="435"></next>
+      </have>
+      <dontHave>
+        <next id="564"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 175 -->
+  <!-- 176 -->
+  <!-- 177 -->
+  <!-- 178 -->
+  <!-- 179 -->
+  <!-- 180 -->
+  <!-- 181 -->
+  <!-- 182 -->
+  <p id="183">
+    <text>
+        [p]A fahíd meglehetősen erősnek tűnik. De te nem bízol benne, és úgy döntesz, hogy mielőtt átmennél rajta, előbb kipróbálod. Egy lábbal rálépsz a hídra, majd lassan a teljes testsúlyoddal ránehézkedsz, miközben szorosan markolod a kötélkorlátot. Amikor teljes súlyoddal ránehézkedtél a híd deszkáira, furcsa hang szólal meg, mintha magából a hídból jönne: Oooooooohhhhh! Ez a halk nyögés arra késztet, hogy leugorj a hídról. Amint ezt megteszed, a hang elhallgat. Mi volt ez? Ismét rálépsz a hídra, és a sóhajtás megismétlődik. Mész néhány lépést a hídon, és az halkan nyöszörög alattad: Ooohhh! Aaaahhh! Oooohhh! A nyögés ugyan meglehetősen nyugtalanító, de maga a híd elég erősnek bizonyul.[/p]
+    </text>
+    <next id="424" pos="1">Ha megpróbálsz átkelni rajta</next>
+    <next id="323" pos="2">Ha inkább másik módot keresel a szakadékon való átkelésre, és megpróbálnál visszamenni a kötélhez, majd azon átlendülni</next>
+    <next id="257" pos="3">Amennyiben továbbmennél az ösvényen egy kicsit, hátha kínálkozik egy másik megoldás is</next>
+    <itemCheck type="items" id="4079 and 4080">
+      <have>
+        <next id="153" pos="4">Ha Colletust szólítod</next>
+      </have>
+    </itemCheck>
+  </p>
+  <!-- 184 -->
+  <!-- 185 -->
+  <!-- 186 -->
+  <!-- 187 -->
+  <p id="188">
+    <text>
+        [p]Dacosan megállsz, fegyvered a kezedben. Mindenfajta sértéseket vágsz a fejükhöz a családtagjaikat illetően. Azok ketten hamar felmérgesednek. A harcos hangulatot azonban megtöri az egyik lény, aki hangosan felkacag. - Nos, Sh’haarzha, egy belevaló fickóra leltünk most! Gondolod, hogy a nővérek szeretnének találkozni vele? Szerintem igen, nincs igazam? - A másik Szatírnő bólint, majd intenek, hogy kövesd őket a falujukba.[/p]
+    </text>
+    <next id="545">Hogyha velük mész</next>
+    <next id="456">Amennyiben megragadod az alkalmat, és elrohansz előlük, hogy ha leráztad őket, tovább folytathasd a kalandodat</next>
+  </p>
+  <!-- 189 -->
+  <!-- 190 -->
+  <!-- 191 -->
+  <!-- 192 -->
+  <!-- 193 -->
+  <!-- 194 -->
+  <!-- 195 -->
+  <!-- 196 -->
+  <!-- 197 -->
+  <!-- 198 -->
+  <!-- 199 -->
+  <!-- 200 -->
+  <!-- 201 -->
+  <p id="202">
+    <text>
+        [p]Fegyveredet magasra tartva, vad csatakiáltással a lényre rontasz. Az meg sem rezdül! A fegyvered belecsapódik a fejébe, és kettévágja a koponyáját. A lény még mindig nem reagál! Most már egészen biztos lehetsz abban, hogy semmi veszély nem fenyeget. Kinyúlsz, és megérinted a testet.[/p]
+    </text>
+    <next id="62"></next>
+  </p>
+  <!-- 203 -->
+  <p id="204">
+    <text>
+        [p]Megmutatod neki a keményfa dárdát, és elmondod, hogyan jutottál hozzá. - Ah. Sh’houri és a csapata - mosolyog. - Furcsa banda, és néha elég agresszívek, az biztos. A szívük azonban nem gonosz - még ha néha nincsenek is messze tőle! Add ide a dárdát! Ha kívánod, áldást helyezek rá. - Colletus a földre fekteti a fegyvert, és fölé helyezi a tenyerét, hogy megáldja. Mostantól ez a megáldott dárda hasznos segítség lesz a Mampang lényei ellen vívott harcodban. Megköszönöd a férfi segítségét, és a beszélgetést lassan a Mampang Erőd körüli témákra tereled.[/p]
+    </text>
+    <loseItem id="3081" />
+    <gatherItem id="3082" />
+    <next id="103"></next>
+  </p>
+  <!-- 205 -->
+  <!-- 206 -->
+  <!-- 207 -->
+  <!-- 208 -->
+  <p id="209">
+    <text>
+        [p]- Remek harc volt! - jelenti ki Sh’houri, a Szatírnők Királynője, amikor kimászol a veremből. - És most, mi volt az, amit ez az ember el akart mondani nekem?[/p][alt][/alt]
+    </text>
+    <next id="371" singleChoiceText="[p]Úgy döntesz, beszámolsz neki kakhabadi kalandjaidról.[/p]">Ha a kakhabadi kalandjaidról mesélnél neki</next>
+    <itemCheck type="section" id="413">
+      <have>
+        <next id="354" pos="2">Ha Sh’himbliről beszélsz</next>
+      </have>
+    </itemCheck>
+  </p>
+  <!-- 210 -->
+  <!-- 211 -->
+  <!-- 212 -->
+  <!-- 213 -->
+  <!-- 214 -->
+  <!-- 215 -->
+  <!-- 216 -->
+  <!-- 217 -->
+  <!-- 218 -->
+  <!-- 219 -->
+  <!-- 220 -->
+  <!-- 221 -->
+  <p id="222">
+    <text>
+        [p]Odalépsz a kis barlang szájához, és letérdelsz, hogy beless. Bár be tudsz mászni, a bejárat kicsit szűk. Amint a szemed hozzászokik a sötéthez, látod, hogy odabent a barlang szélesebb, és elég hely van bent, hogy kényelmesen eltöltsd az éjszakát. A túloldaláig azonban nem látsz el, ezért nem tudod megállapítani egyértelműen, hogy van-e valaki a túloldalon. Négykézlábra ereszkedsz hát, és bedugod a fejed a nyíláson.[/p]
+        [p]- Oóóóóóúúúúúúú! - Vérfagyasztó üvöltés hasít bele hirtelen a levegőbe, és szinte megsüketülsz belé! Ösztönösen kirántod a fejed, el a veszély közeléből. A hang úgy hangzott, mintha valamiféle kutyától, vagy hasonló állattól származna. Talpra ugrasz, és előrántod a fegyveredet arra az esetre, ha az a valami odabent ki találna jönni. De nem történik semmi. Amikor megnyugodtál, döntened kell.[/p]
+    </text>
+    <next id="123">Hogyha belépsz a barlangba, és szembeszállsz azzal a valamivel odabenn</next>
+    <next id="136">Ha inkább megpróbálkozol a középsővel</next>
+    <next id="534">Amennyiben a távolabbihoz lépnél</next>
+  </p>
+  <!-- 223 -->
+  <!-- 224 -->
+  <!-- 225 -->
+  <!-- 226 -->
+  <!-- 227 -->
+  <p id="228">
+    <text>
+        [p]Felküzdöd maga a kőrakás tetejére, hogy megnézd, mi terül el előtted. Mászás közben azonban a lábad megcsúszik, és alaposan kificamodik a bokád. Vesztesz l életerő pontot. A kőomlás másik felén sokkal szebb látvány fogad, mint amit remélni mertél. A földcsuszamlás éppen ott következett be, ahol a szakadék keskenyebb volt, és a leomló sziklák most erős hidat alkottak, melyen át szabad az út az erődítmény felé. Most már minden probléma nélkül átverekszed magad a túloldalra. Elérkeztél hát Mampangba, utad végső állomásához.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="551"></next>
+  </p>
+  <!-- 229 -->
+  <!-- 230 -->
+  <!-- 231 -->
+  <!-- 232 -->
+  <!-- 233 -->
+  <!-- 234 -->
+  <!-- 235 -->
+  <!-- 236 -->
+  <p id="237">
+    <text>
+        [p]A hét Sárkánykígyó érkezésed hírét vitte a Főmágusnak Mampangba. De mivel elpusztítottad mindegyiket, nemezised nem szerzett tudomást a küldetésedről.[/p]
+    </text>
+    <next id="1"></next>
+  </p>
+  <!-- 238 -->
+  <!-- 239 -->
+  <!-- 240 -->
+  <!-- 241 -->
+  <!-- 242 -->
+  <!-- 243 -->
+  <p id="244">
+    <text>
+        [p]Lassan felemelkedsz a sziklád mögül, közben azonban szemedet egy pillanatra sem veszed le róluk. Elnézést kérsz, amiért beléptél a területükre, és elmondod, hogy nem tudtad, hogy Alsó Xamen ezen része az ő fennhatóságuk alá tartozik. Amint beszélsz, a lények arckifejezése lassan megváltozik, és csodálkozva bámulnak egymásra. - Furcsa módon beszélsz, ember. Nem Kakhabadból való vagy? Még sosem hallottam ilyen különösen beszélni a nyelvet. - Erre mit válaszolsz?[/p]
+    </text>
+    <next id="5">Ha elmondod, hogy délről jöttél, Analandból</next>
+    <next id="155">Amennyiben úgy véled, nem lenne okos dolog ezt az orrukra kötni</next>
+  </p>
+  <!-- 245 -->
+  <!-- 246 -->
+  <!-- 247 -->
+  <!-- 248 -->
+  <!-- 249 -->
+  <!-- 250 -->
+  <!-- 251 -->
+  <!-- 252 -->
+  <!-- 253 -->
+  <!-- 254 -->
+  <!-- 255 -->
+  <!-- 256 -->
+  <p id="257">
+    <text>
+        [p]Továbbmész a hegy oldalában. Körülbelül tíz percet sétálsz. Elkeseredsz, mikor megpillantod a kőomlást, mely két szikla között temette maga alá az utat. Erre nem tudsz továbbmenni, de talán átmászhatsz a kőomláson. Vagy sarkon is fordulhatsz, és megpróbálhatsz valamilyen másik utat találni a hasadékon keresztül.[/p]
+    </text>
+    <next id="228">Ha megpróbálkozol a mászással</next>
+    <next id="323">Ha a lengőkötélhez mennél vissza</next>
+    <next id="59">Hogyha a fahídhoz</next>
+  </p>
+  <!-- 258 -->
+  <!-- 259 -->
+  <!-- 260 -->
+  <!-- 261 -->
+  <!-- 262 -->
+  <!-- 263 -->
+  <!-- 264 -->
+  <!-- 265 -->
+  <!-- 266 -->
+  <!-- 267 -->
+  <p id="268">
+    <text>
+        [p class="inlineImage"][img src="resources/sor4/268.jpg" /][/p]
+        [p]A barlang mélyen nyúlik a sziklás hegyoldalba. Ahogy beljebb haladsz, egyre nagyobb lesz a sötétség és a homály, hiszen csak a barlang bejáratán át beszűrődő halvány fény világítja meg az üreget. Kezeddel követed a bal oldali falat. Lábad véletlenül belerúg valami puhába. Ösztönösen hátraugrasz! Ez nem kő volt - alighanem állatszerűség lehetett! A félelmeid beigazolódnak, ahogy valami mocorogni kezd, majd morgás hallatszik abból az irányból. Váratlanul erős ütés éri a mellkasodat. Káromkodva hátratántorodsz. Éppen a lény és a bejárat között álltál, ezért míg te nem láttad ellenfeledet, a teremtmény végig figyelhette alakod mozgását a kinti fény háttere előtt! Az erős csapás miatt vesztesz 2 életerő pontot.[/p]
+        [p]Visszarohansz a bejárat felé, nyomodban a morgó szörnnyel. Amint az üreg szájának közelébe érsz, a fényben már te is látod, mivel is állsz szemben. A jellegzetes fekete-fehér szőr és a bozontos farok kétséget sem hagy benned afelől, hogy egy hatalmas Bűzös Borz barlangjába törtél be![/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="469" pos="1">Ha kirohansz a barlangból és elmenekülsz a lény elől</next>
+    <next id="490" pos="2">Ha kirántod a fegyvered, és megküzdesz vele</next>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="ALV" id="638" />
+        <spell name="TÜK" id="611" />
+        <spell name="REP" id="686" />
+        <spell name="KIN" id="788" />
+        <spell name="ÁTÉ" id="757" />
+      </have>
+    </itemCheck>
+  </p>
+  <!-- 269 -->
+  <!-- 270 -->
+  <!-- 271 -->
+  <!-- 272 -->
+  <!-- 273 -->
+  <!-- 274 -->
+  <!-- 275 -->
+  <!-- 276 -->
+  <p id="277">
+    <text>
+        [p]-    Jól tetted, hogy elhagytad a barlangot - folytatja Sh’houri különben mostanra már éreznéd a reszkető kór hatását magadon. - A Szatírnők meg akarnak ajándékozni valamivel, amiért híreket hoztál nekik. Sh’houri először is a Mampang Erődről beszél neked.[/p]
+        [p]-    Vigyáznod kell odabenn - kezdi -, mert az egy igen kaotikus hely. Tartsd nyitva mindig a szemedet, és ne csak előre nézz, hanem hátra is, ha életben akarsz maradni! Az Erődön átvezető utat négy Throben Ajtó szegélyezi: ezek hatalmas, kétszárnyú, egyébiránt egyszerű ajtók, melyek kinézetre semmiben nem különböznek a többitől, bár ennél sokkal többet jelentenek a rajtuk áthaladni szándékozók számára. Ne hidd azt, hogy őrizetlenek, mert aki elővigyázatlanul akarja kinyitni őket, az nagyon pórul jár! - A Szatírnő észrevette, hogy figyelmesen hallgatod, és nagyon örül annak, hogy hasznos információkat adhatott neked. Amikor felállsz, hogy távozz, odalép egy társához, aki kirohan, és nem sokkal később egy bőrtáskával tér vissza. A táskában számos, hasznosnak tűnő tárgy van. Megengedik, hogy bármelyiket magaddal vidd, de csak úgy, ha mindegyik tárgyért cserébe itt hagyod egy már meglévő felszerelési tárgyadat (ami nem lehet sem élelmiszer, sem pedig Arany).[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <next id="435"></next>
+      </have>
+      <dontHave>
+        <next id="564"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 278 -->
+  <!-- 279 -->
+  <!-- 280 -->
+  <!-- 281 -->
+  <!-- 282 -->
+  <p id="283">
+    <text>
+        [p]- Ekkora utat tettél meg, csak azért, hogy egy szent emberrel találkozz? - kérdezi. - Hát most találkoztál eggyel. Igazából én vagyok az egyetlen olyan pap ezen a vad környéken, aki még megtartja a törvényeket. Mit tehetek érted? - Úgy tűnik, a férfit egészen lenyűgözte, hogy idáig eljöttél azért, hogy őt megtaláld. Van nálad keményfából készült dárda?[/p]
+    </text>
+    <itemCheck type="item" id="3081">
+      <have>
+        <next id="204"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Megkérdezed a férfitól, tud-e segíteni abban, hogy bejuss a Mampang Erődbe.[/p]
+        </text>
+        <next id="103"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 284 -->
+  <!-- 285 -->
+  <p id="286">
+    <text>
+        [p class="inlineImage"][img src="resources/sor4/286.jpg" /][/p]
+        [p]Amint belépsz a barlangba, az üvöltés folytatódik. Elképesztően hangos. Néhányszor beleszúrsz a sötétbe, hogy a benti lényt figyelmeztesd, de nem találsz el semmit, csak a levegőt döfködöd. Beljebb nyomulsz, miközben vadul hadonászol magad előtt a kardoddal. Néhányszor eltalálod a barlang falát, de amúgy semmi különöset nem tapasztalsz. Az üvöltés hirtelen abbamarad, és érzed, amint valami megérinti a bokádat! Neszezést hallasz. Lenézel, és látod, amint a lábad között átszalad egy kis, szőrös állatka. Nem lehet nagyobb egy fej káposztánál. Idomtalan lábait elképesztő gyorsan szedi, amint a barlang kijárata felé szalad.[/p]
+        [p]Megkönnyebbülten fellélegzel, majd nevetni kezdesz. Ez biztosan egy Jib-Jib volt. Bár most találkoztál először személyesen is egy ilyen lénnyel, az analandi bölcsektől már hallottál róluk korábban. Ezeknek a lényeknek se foguk, se karmuk nincsen, egyetlen fegyverük rettentő hangjuk, mely segítségével el tudják hitetni a potenciális támadóikkal, hogy egy rettentően erős és félelmetes szörnnyel állnak szemközt! Utánanézel az ártalmatlan kis lénynek, amint eltűnik odakint a növények között.[/p]
+        [p]Na, de te eredetileg alvóhelyet kerestél éjszakára. Ez a barlang pedig egész jónak tűnik. A keskeny bejáratot könnyű védeni, és bár az üregben nem tudsz teljesen kiegyenesedni, bőven elég hely van idebenn ahhoz, hogy kényelmesen elférj benne. Még nem derítetted ugyan ki, mennyire mély a barlang, de semmi zörejt nem hallasz a sötétből.[/p]
+    </text>
+    <next id="99">Ha leülsz enni egy kicsit</next>
+    <next id="14">Ha előbb megvizsgálod, vajon tényleg egyedül vagy-e a barlangban</next>
+    <next id="384">Amennyiben egyszerűen lefekszel és elalszol</next>
+  </p>
+  <!-- 287 -->
+  <!-- 288 -->
+  <!-- 289 -->
+  <!-- 290 -->
+  <!-- 291 -->
+  <!-- 292 -->
+  <p id="293">
+    <text>
+        [p]Találsz egy kényelmesnek tűnő alvóhelyet az éjszakára. Most ehetsz, ha akarsz. Amennyiben így teszel,
+    </text>
+    <canEat />
+    <gatherItem id="4081" />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>2</text>
+        <changeItem attribute="stamina" id="2000" set="2" />
+      </have>
+      <dontHave>
+        <text>1</text>
+        <changeItem attribute="stamina" id="2000" set="1" />
+      </dontHave>
+      <after>
+        <text>
+            életerő pontot kapsz. Az éjszaka hamar leszáll, te pedig biztonságos helyről hallgatod a távoli vihar zajait. Nemsokára elnyom az álom.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="384"></next>
+  </p>
+  <!-- 294 -->
+  <!-- 295 -->
+  <!-- 296 -->
+  <!-- 297 -->
+  <p id="298">
+    <text>
+        [p]Követed a kötélhídhoz vezető csapást. A híd elég erősnek tűnik, de amikor rálépsz, veszélyesen lengeni kezd. A legrosszabb a dologban az, hogy ha leesel róla, a mélység akkora, hogy biztosan nem éled túl a zuhanást.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="117"></next>
+      </success>
+      <failure>
+        <next id="46"></next>
+      </failure>
+    </test>
+  </p>
+  <!-- 299 -->
+  <!-- 300 -->
+  <!-- 301 -->
+  <!-- 302 -->
+  <!-- 303 -->
+  <!-- 304 -->
+  <!-- 305 -->
+  <!-- 306 -->
+  <!-- 307 -->
+  <!-- 308 -->
+  <p id="309">
+    <text>
+        [p]Bekiáltasz a barlangba, bárki is legyen odabent. Nincs válasz. Ismét kiáltasz, de megint nem kapsz választ. Ez a fickó vagy teljesen süket, vagy valami furcsa dolog történik itt. Kéznél tartva a fegyveredet, úgy döntesz, hogy ennek utánajársz. Kezeddel megérinted a vállát, de ebben a pillanatban nagyot ugrasz![/p]
+    </text>
+    <next id="62"></next>
+  </p>
+  <!-- 310 -->
+  <!-- 311 -->
+  <!-- 312 -->
+  <!-- 313 -->
+  <!-- 314 -->
+  <!-- 315 -->
+  <!-- 316 -->
+  <!-- 317 -->
+  <p id="318">
+    <text>
+        [p]Óvatosan eltartod magadtól az üveget, majd meghúzod a dugót, ám az azonban alaposan be van nyomva, és nem mozdul. Megpróbálod még egyszer, ezúttal már sikerül is megmozdítanod egy kicsit. Harmadikra pedig tompa pukkanással sikerül kinyitnod.[/p]
+        [p]Belenézel az üvegbe, és egy apró pergamendarabot pillantasz meg benne. Nehézkesen ugyan, de egy kisebb ágdarabbal végül sikerül kipiszkálnod belőle. Kitekered, és elolvasod. Az írás egy számodra ismeretlen nyelven íródott, és hiába találgatsz hosszú perceken át, semmit sem tudsz megfejteni belőle. Ha akarod, magaddal viheted a szöveget, hátha találkozol majd egy olyasvalakivel, aki képes elolvasni, és hajlandó lesz neked is elárulni azt.[/p]
+    </text>
+    <next id="99"></next>
+  </p>
+  <!-- 319 -->
+  <!-- 320 -->
+  <!-- 321 -->
+  <!-- 322 -->
+  <p id="323">
+    <text>
+        [p]Megrángatod a kötelet. Úgy fest, elég erős ahhoz, hogy elbírja a súlyodat.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="TÜV" id="612" />
+        <spell name="MEN" id="785" />
+        <spell name="DOK" id="704" />
+        <spell name="TÜK" id="797" />
+        <spell name="FUJ" id="724" />
+        <next id="165">Ha átlendülsz rajta a szakadék másik oldalára</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Úgy döntesz, átlendülsz rajta a szakadék másik oldalára.[/p]
+        </text>
+        <next id="165"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 324 -->
+  <!-- 325 -->
+  <!-- 326 -->
+  <!-- 327 -->
+  <p id="328">
+    <text>
+        [p]Leülsz és előveszed az ételt a zsákodból. Mielőtt azonban beleharaphatnál jól kiérdemelt vacsorádba, zajt hallasz a barlang mélyéről. Mi volt ez? Ügy hangzott, mintha valami lenne még a barlangban rajtad kívül! Leteszed a vacsorádat, és a kardodért nyúlsz. Nemsokára kiderül az is, kivel közösködsz egy üregen. Egy fekete, szőrös alak emelkedik ki a sötétből. Egy Bűzös Borz! Méghozzá egy éhes Bűzös Borz![/p]
+    </text>
+    <next id="490" pos="1">Ha kardoddal veszed fel ellene a harcot</next>
+    <next id="469" pos="2">Ha eldobod az ételedet és kirohansz a barlangból</next>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="TÜK" id="611" />
+        <spell name="KIN" id="788" />
+        <spell name="ALV" id="638" />
+        <spell name="ÁTÉ" id="757" />
+        <spell name="REP" id="686" />
+      </have>
+    </itemCheck>
+  </p>
+  <!-- 329 -->
+  <!-- 330 -->
+  <!-- 331 -->
+  <!-- 332 -->
+  <!-- 333 -->
+  <!-- 334 -->
+  <!-- 335 -->
+  <!-- 336 -->
+  <!-- 337 -->
+  <p id="338">
+    <text>
+        [p]A Madárember lenéz rád, amint megpróbálsz kedélyesen eltársalogni vele. Szólásra nyitja a csőrét... Válasz helyett azonban éles kiáltás hallatszik, azzal a lény előre nyújtott karmokkal zuhanórepülésbe kezd - egyenesen feléd tart! Oldalra ugrasz, hogy elkerüld a csapását, de így is sikerül belemarnia a válladba és végigszántani húsodon. Vesztesz 2 életerő pontot. Úgy tűnik, ez a Madárember most nem igazán akar beszélgetni.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="ÁTÉ" id="661" />
+        <spell name="MEL" id="598" />
+        <spell name="FIX" id="701" />
+        <spell name="REP" id="778" />
+        <spell name="DEM" id="716" />
+        <next id="450">Ha fegyverrel küzdesz meg vele</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Fegyvert rántasz.[/p]
+        </text>
+        <next id="450"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="339">
+    <text>
+        [p class="inlineImage"][img src="resources/sor4/339.jpg" /][/p]
+        [p]Óvatosan lépkedsz a sziklás ösvényen, mely már annyira meredek, hogy egyes szakaszokon inkább [em]mászol[/em], mint gyalogolsz. Az előrehaladás rettentően fárasztó, így többször meg kell állnod pihenni. Ezzel még nem is lenne nagy probléma, de aggódva veszed észre, hogy a patanyomok ismét megjelentek. De ezúttal egészen frissek, nemrég keletkeztek a vihar után visszamaradt sárban. Hegyi kecskék lehetnek talán?[/p]
+        [p]A távoli Mampang Erőd egyáltalán nem fest úgy, mintha közelebb került volna hozzád, de biztos vagy benne, hogy lassan el fogod érni célodat. Bekanyarodsz egy szikla tövénél, majd megtorpansz, ahogy a következő pillanatban egy dárda elsüvít a fejed mellett és a sziklának csattan. Ösztönösen lebuksz egy szikla mögé. [em]Mi volt ez?[/em] A kérdésedre hamarosan választ kapsz. Két magas lényt pillantasz meg egy kicsit följebb az úton, akik egy-egy dárdát tartanak a kezükben. Hosszú hajuk egészen a derekukig leér. Felsőtestük emberi, ráadásul [em]női![/em] Arcuk - már amennyit látsz belőle - furcsa, emberi és kecskeszerű vonásokat egyaránt tartalmaz, homlokukból pedig két zömök szarv mered elő. Alsó testük csak még jobban megerősítik félig állati eredetüket, lábaik ugyanis szintén kecskére emlékeztetnek és patában végződnek. [em]A patanyomok![/em] Mindketten egy-egy fából készült dárdát tartanak.[/p]
+    </text>
+    <itemCheck type="section" id="62">
+      <have>
+        <next id="378"></next>
+      </have>
+      <dontHave>
+        <next id="522"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 340 -->
+  <!-- 341 -->
+  <!-- 342 -->
+  <!-- 343 -->
+  <!-- 344 -->
+  <!-- 345 -->
+  <p id="346">
+    <text>
+        [p]A lény nagyot üvölt, amint eltalálod. Tesz néhány lépést hátrafelé és magasra emeli a farkát. Utána feléd fordítja a fenekét, és kilövelli azt, ami a Bűzös Borz egyik legfélelmetesebb fegyvere: valami elképesztően büdös, és átható gáz tölti be a kis barlangot. Levegőért kapkodsz és kétségbeesetten küzdesz azzal, hogy benntartsd legutóbbi étkezésed maradványait. A Bűzös Borz ezenközben ismét támadásba lendül. Folytasd a harcot, de úgy, hogy a harc idejére 2-vel lecsökkented az ügyességed. Ha sikerül megsebezned a lényt, elmenekülhetsz előle.[/p]
+    </text>
+    <add amount="-2" to="skill" />
+    <fight type="single">
+      <enemy id="1" />
+      <flee>
+        <next id="469"></next>
+      </flee>
+      <win>
+        <add amount="2" to="skill" />
+        <next id="558"></next>
+      </win>
+    </fight>
+  </p>
+  <!-- 347 -->
+  <!-- 348 -->
+  <!-- 349 -->
+  <p id="350">
+    <text>
+        [p]Lepihensz a fülkében, hogy egyél egy keveset. A mélyedés az egyik út menti szikla oldalába van vájva, ezért az előtted elterülő táj egy részét szemmel tudod tartani belőle. A csapás egy sziklás fennsíkra vezet le, majd ismét felkapaszkodik egy csupasz sziklára az Erőd felé. Mampang kapuját ugyan nem látod, de tornyainak csúcsai rémisztően meredeznek a kövek mögött. Már majdnem célodnál vagy.[/p]
+        [p]Körbenézel pihenőhelyeden. A közelben tűz maradványait látod -valaki már járt itt előtted. A fülke falára pedig tintával egy rövid szöveget festettek. Odalépsz, hogy elolvasd. A figyelmeztető üzenetet a te nyelveden írták. Egy furcsa szimbólum - egy gyémánt, közepében egy kereszttel - vezeti be a szöveget, mely az alábbi:[/p]
+        [p class="handwritten"]Fogadd meg szavaimat! Ne közelíts tovább a Mampang nevű átokhoz! Minden egyes lépés, amit feléje teszel, egy lépés az örök kárhozat felé. Mert én, Colletus, voltam már ott, és visszatértem, így ismerem az igazi természetét. Ha nem fordulsz vissza, a Sóhajok Hídjánál megtalálsz. Mentsd meg a lelkedet, amíg nem késő![/p]
+        [p class="handwritten closing"]Colletus[/p]
+        [p]Nem tudod, mennyire aktuális még az üzenet, de hogy a tartalma kicsit aggasztó, annyi bizonyos. Mindenesetre ha már idáig eljutottál, nem fogod feladni a küldetésedet. Összegyűjtőd a dolgaidat és nekilátsz az előtted álló útnak. 2 életerő pontot kapsz az imént elfogyasztott élelemért. Elindulsz tovább az úton.[/p]
+    </text>
+    <loseItem id="2000" />
+    <gatherItem id="4080" />
+    <add amount="2" to="stamina" />
+    <next id="539"></next>
+  </p>
+  <!-- 351 -->
+  <!-- 352 -->
+  <!-- 353 -->
+  <p id="354">
+    <text>
+        [p]Elmondod Sh’hourinak, hogy találkoztál Sh’himblivel előző nap a barlangban. A nő bólint. - Azt hiszem, mindnyájan erre számítottunk - mondja komoran. - Amikor Sh’himbli legutóbb a faluban járt, már megfertőzte a rettegett reszkető kór. Tudta, mennyire fertőző ez a betegség, ezért bátran eltávozott közülünk, hogy egy elhagyott helyen haljon meg. Ez a mi fajtánk szokása. Köszönöm neked a hírt. Attól tartok azonban, hogy mi nem szolgálhatunk jó hírrel számodra. A reszkető kór ugyanis [em]nagyon[/em] fertőző. Ha az éjszakát abban a barlangban töltötted, egészen biztos vagyok benne, hogy te is megkaptad.[/p]
+    </text>
+    <itemCheck type="item" id="4081">
+      <have>
+        <next id="174"></next>
+      </have>
+      <dontHave>
+        <next id="277"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 355 -->
+  <!-- 356 -->
+  <!-- 357 -->
+  <!-- 358 -->
+  <!-- 359 -->
+  <!-- 360 -->
+  <!-- 361 -->
+  <!-- 362 -->
+  <!-- 363 -->
+  <!-- 364 -->
+  <!-- 365 -->
+  <p id="366">
+    <text>
+        [p]Leülsz a barlang bejárata közelében egy olyan sziklára, amin kívülről nem látszol.[/p]
+    </text>
+    <itemCheck type="item" id="2000">
+      <have>
+        <next id="328">Ha nekiállsz enni</next>
+        <next id="574">Ha éhesen tábort versz, lefekszel és aludni térsz</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Mivel nincs nálad étel, kénytelen leszel éhesen lefeküdni, tábort verni és leheveredni aludni.[/p]
+        </text>
+        <next id="574"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 367 -->
+  <!-- 368 -->
+  <!-- 369 -->
+  <!-- 370 -->
+  <p id="371">
+    <text>
+        [p]Elkezded a történetedet Kharéval, és elmondod, hogyan fogtak el az őrök. A kaput kinyitó varázsige négy sorának keresését a Szatírnő igen izgalmasnak találja, és néhány társa is leül mellé hallgatni az elbeszélésedet. Két teljes órán át mesélsz nekik. Rémült arcokat vágnak, amikor elmondod a hét Sárkánykígyóval megesett kalandjaidat, sajnálkoznak Tek Kramin, az Ilklala tavi hajós halála fölött. Rossz hírét egész Kakhabadban jól ismerték. Amikor végül belefáradsz abba, hogy történeteket mesélj, a Szatírnők csalódottnak tűnnek. - Nem fáraszthatjuk ki a barátunkat - mondja Sh’houri. Elmondod nekik, hogy élvezted a beszélgetést, de most már indulnod kell az Erődbe.[/p]
+        [p]- Nem értem, miért akarsz arra a helyre menni - folytatja Sh’houri. - Törvénytelen és veszélyes hely az. Még az is csoda, hogy egy olyan hatalmas valaki, mint a Főmágus, képes volt eddig túlélni Mampangban. De azt mondják, jól védve van az őt körülvevő fegyelmezetlen csürhétől. Négy erős ajtó állja úját annak, aki be akar jutni a belső várba: a [em]Throben Ajtók[/em]. Csak a Főmágus legmegbízhatóbb szolgái juthatnak át rajtuk. Ha találkozni akarsz vele, vigyázz a Throben Ajtókkal, mert veszélyesek azokra, akik nem ismerik az erejüket. Egyszerű, nehéz, kétszárnyú ajtóknak tűnnek, és semmi sem árulja el, mennyire veszélyesek. - Sh’houri látja, mennyire figyeled a szavait és nagyon örül, hogy tudott segíteni neked. Amikor felállsz, hogy távozz, int egy társának, aki elrohan és egy zsákkal meg egy fa dárdával tér vissza. Mindkettőt feléd nyújtja. - Ez egy remekbe szabott, [span class="takeItem" data-id="3081" data-amount="1"]keményfából készült dárda[/span] - mondja Sh’houri -, ami, úgy hiszem, segítségedre lesz küldetésed során. Ha valahol rá tudsz bukkanni Colletusra, a szent emberre, és rá tudod venni, hogy áldását adja rá, akkor még inkább. Ha sikerül rátalálnod arra a helyre, ahol jelenleg tartózkodik, a következő módszerrel tudod őt magadhoz hívni. - Ekkor két kezéből tölcsért formál a szája előtt és fütyülő hangot hallat. Ha Colletus valóban ott van, a férfi elő fog jönni. Sh’houri tovább beszél. - Colletus megpróbál majd meggyőzni arról, hogy ne menj az Erődbe, mert az egy átkozott, gonosz hely, amit szívből gyűlöl. Mondd akkor el neki, hogy azért mész oda, hogy elpusztítsd a gonoszt, és akkor segíteni fog. Ebben a zsákban pedig van néhány dolog, ami hasznos lehet számodra. De nekünk is csak kevés kincsünk van, ezért arra kell kérnünk, hogy ha választasz valamit a zsákból, akkor tegyél is vissza valamit helyette a saját tárgyaid közül.[/p]
+        [p]A zsákban számos hasznosnak tűnő tárgy van.[/p]
+    </text>
+    <gatherItem id="4079" />
+    <itemCheck type="item" id="4102">
+      <have>
+        <next id="435"></next>
+      </have>
+      <dontHave>
+        <next id="564"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 372 -->
+  <!-- 373 -->
+  <!-- 374 -->
+  <!-- 375 -->
+  <!-- 376 -->
+  <!-- 377 -->
+  <p id="378">
+    <text>
+        [p]Eszedbe jut a barlangban lévő halott lény, és ezek nagyon hasonlítanak rá. Ez a tudásod talán a segítségedre lehet, ha a másik elvesztett társuk volt. De lehet, hogy jobb, ha csöndben maradsz, mert a barlang valamiféle megszentelt hely is lehetett, melyet te óvatlanul megzavartál.[/p]
+    </text>
+    <next id="413">Ha rákiáltasz a támadóidra és elmondod, mivel találkoztál</next>
+    <next id="522">Hogyha inkább tartod a szádat és megvárod, hogyan reagálnak ők</next>
+  </p>
+  <!-- 379 -->
+  <p id="380">
+    <text>
+        [p]Az ösvény felfelé kanyarog a hegyoldalon. Továbbmész rajta, mígnem az eléd táruló látványtól önkéntelenül is megtorpansz. Bal kéz felé, magasan a sziklákon egy furcsa, ágakból, mohából és levelekből készült építményt pillantasz meg. Mintha egy óriási madárfészek lenne egy sziklapárkányon.[/p]
+    </text>
+    <next id="530">Ha felmászol a hegyoldalon, hogy megvizsgáld azt a valamit</next>
+    <next id="36">Ha inkább nem foglalkozol vele és folytatod tovább az utad</next>
+  </p>
+  <!-- 381 -->
+  <!-- 382 -->
+  <!-- 383 -->
+  <p id="384">
+    <text>
+        [p]Éjszaka kitör a vihar, tomboló zajai több alkalommal is felvernek álmodból. Hálás vagy a barlang nyújtotta menedékért. Odakinn csak úgy zuhog, sáros pocsolyák jelennek meg a barlang bejárata előtt. Reggelre azonban eláll az eső és a nap is meg-megjelenik néha az alacsonyan sodródó felhők között. Korán kelsz és felkészülsz az előtted álló napra. Amennyire innen meg tudod ítélni, estére elérheted az Erődöt. 2 életerő pontot kapsz a pihenésért.
+    </text>
+    <add amount="2" to="stamina" />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            Mivel tegnap egész nap nem ettél, 3 életerő pontot le kell vonnod, mert már farkaséhes vagy.
+        </text>
+        <add amount="-3" to="stamina" />
+      </have>
+      <dontHave>
+        <gatherItem id="4101" />
+      </dontHave>
+      <after>
+        <text>
+            Ha akarsz, magaddal vihetsz [span class="takeItem" data-id="3019" data-amount="3"]három kis kavicsot[/span] és egy kevés [span class="takeItem" data-id="3052" data-amount="1"]kőport[/span] a barlangból. De most már ki kell másznod a levegőre és folytatnod kell utadat.[/p]
+        [p]Amint az Alsó Xamen előhegyeire mászol fel, észreveszed, menynyire kevés az állat a környéken. Egyes fajok nyilván elbújnának előled, de itt még csak [em]jelét[/em] sem látod vadállatoknak. Talán a vidék nem túl vendégszerető. Az előrehaladás kétségtelenül egyre fárasztóbb lesz, és késő délelőttre már egészen meredek szakaszhoz érsz. A keskeny ösvény egy idő után kettéágazik. A jobb oldali ág felkanyarog a hegyoldalban, míg a bal oldali ágnál egy keskeny kötélhíd ível át egy szakadékon. Mind a két út abba az irányba vezet nagyjából, amerre az Erőd fekszik. Melyiket választod?[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="339">A jobb oldalit?</next>
+    <next id="298">A bal oldalit?</next>
+  </p>
+  <!-- 385 -->
+  <!-- 386 -->
+  <!-- 387 -->
+  <!-- 388 -->
+  <!-- 389 -->
+  <!-- 390 -->
+  <!-- 391 -->
+  <!-- 392 -->
+  <!-- 393 -->
+  <!-- 394 -->
+  <!-- 395 -->
+  <!-- 396 -->
+  <!-- 397 -->
+  <!-- 398 -->
+  <!-- 399 -->
+  <!-- 400 -->
+  <!-- 401 -->
+  <!-- 402 -->
+  <!-- 403 -->
+  <p id="404">
+    <text>
+        [p]Odalépsz a kis barlang bejáratához és letérdelsz, hogy benézhess. Bár be tudsz mászni, a bejárat kicsit szűk. Amint a szemed hozzászokik a sötéthez, látod, hogy odabent a barlang szélesebb, és elég hely van bent, hogy kényelmesen eltölthesd az éjszakát. Az üreg hátsó oldaláig nem látsz el, ezért nem tudod megítélni, mennyire mély. Négykézlábra ereszkedsz hát és bedugod a fejed a nyíláson.[/p]
+        [p][em]Óóóóóóúúúúúúú![/em] Magas hangú visítás hallatszik hirtelen bentről, szinte megsüketülsz tőle! Ösztönösen kirántod a fejed, el a veszélytől. A hang úgy hangzott, mintha valamiféle kutyától vagy hasonló állattól származna. Talpra ugrasz és előrántod a fegyveredet, arra az esetre, ha az a valami odabent ki találna jönni. De nem történik semmi. Amikor megnyugodtál, döntened kell.[/p]
+    </text>
+    <next id="123">Ha bemész a barlangba és szembeszállsz azzal a valamivel odabent</next>
+    <next id="534">Ha a távolabbi barlanggal próbálkozol inkább</next>
+  </p>
+  <!-- 405 -->
+  <!-- 406 -->
+  <!-- 407 -->
+  <!-- 408 -->
+  <!-- 409 -->
+  <!-- 410 -->
+  <p id="411">
+    <text>
+        [p class="inlineImage"][img src="resources/sor4/411.jpg" /][/p]
+        [p]A híd erős, meg sem kottyan neki a súlyod, amint átmész rajta. Másik végénél az út délre fordul és a hegy pereme mentén folytatódik. Maga az Erőd egy vulkánszerű hegycsúcs belsejébe épült. A peremen belül lapos fennsík található, mely ideális helyszínként szolgál az Erődnek: az építményt körbeölelő sziklák természetes védelmet biztosítanak. Ezen a sziklaperemen csak egyetlen átjáró vezet át. Már csak azt kell megtalálnod![/p]
+        [p]Feltételezed, hogy az ösvény az átjáró felé vezet, ezért elindulsz rajta. Az ég egyre sötétebb lesz, amint a nap lassan lebukik a láthatár mögé. Hosszú, fárasztó napod volt. Végül megpillantod magad előtt azt, amit eddig kerestél. Az ösvény kiszélesedik, majd egybeolvad a környező sziklákkal. Óvatosan lopózol előre, mert biztos vagy benne, hogy a hágót őrzik. Minden egyes lépéssel többet pillantasz meg az átjárón túl feltáruló fennsíkból, és amikor végül eléred annak bejáratát és átnézel rajta, az állad is leesik. Előtted áll a Mampang Erőd![/p]
+        [p]Lenyűgözve bámulod formáit. Csavart vonalú tornyok merednek az ég felé, mintha csak haldokló imát mondanának az istenekhez. Éles sarkok és kimeredő csúcsok tarkítják a falakat, amiken démoni vízköpők szobrai sorakoznak. A látvány maga elegendő ahhoz, hogy rengeteg bátornak mondott katona kedvét elvegye attól, hogy akár egyetlen lépést is tegyen felé - és rád is hasonló hatással van. Amíg be nem jutsz az erődítménybe, 1 ponttal le kell csökkentened az ügyességed. Gyorsan abbahagyod a nézelődést és végiggondolod, hogyan tudnál bejutni. Lehet, hogy vannak őrök a hágóban, de jelenleg egyet sem látsz. Ugyanakkor itt, a nyílt terepen egészen biztos, hogy a bentiek könnyedén megpillanthatnak téged.[/p]
+    </text>
+    <gatherItem id="4082" />
+    <next id="139">Ha óvatosan előrekúszol, vigyázva, hátha őrökkel futsz össze</next>
+    <next id="67">Ha átrohansz gyorsan az átjárón, mielőtt még észrevenne valaki</next>
+  </p>
+  <!-- 412 -->
+  <p id="413">
+    <text>
+        [p]Elmondod a két lénynek, miféle holttestet találtál abban a barlangban, ahol az előző 
+    </text>
+    <itemCheck type="item" id="4081">
+      <have>
+        <text>
+            éjszakádat töltötted.
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            éjszaka jártál.
+        </text>
+      </dontHave>
+      <after>
+        <text>
+            Először izgatottak lesznek, amikor meghallják a híreket, de aztán lehervad a kedvük, mikor közlöd velük, hogy a társuk már halott volt, amikor beléptél. - Ez nem jó hír a számunkra, de nem teljesen váratlan - mondja az egyik lény. - Sh’himbli két nappal ezelőtt tűnt el. A mi fajunknál hagyomány, hogy ha valaki meghalni készül, elvándorol tőlünk és keres egy megfelelő barlangot, ahol kilehelheti a lelkét. Így aztán nem lesz terhére a családjának, és a társai is reménykedhetnek benne, hogy csak eltévedt és egyszer még viszontláthatják. Sh’himbli azonban már jó pár napja súlyos beteg volt. Azt hiszem, mindnyájan tisztában voltunk vele, hogy meg fog halni. De azért köszönjük neked a bizonyosságot. - Meghívnak a falujukba, hogy velük egyél és a többieknek is beszámolj a történtekről.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="545">Ha velük tartasz</next>
+    <next id="441">Ha inkább visszautasítod az ajánlatukat és folytatod utadat</next>
+  </p>
+  <!-- 414 -->
+  <!-- 415 -->
+  <!-- 416 -->
+  <!-- 417 -->
+  <!-- 418 -->
+  <p id="419">
+    <itemCheck type="section" id="136">
+      <have>
+        <itemCheck type="section" id="222">
+          <have>
+            <text>
+                [p]Már mindkét másik barlangot kipróbáltad, a legjobb az lesz, ha abban a barlangban telepszel le, amelyikbe éppen most néztél be.[/p]
+            </text>
+            <next id="293"></next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Úgy döntesz, hogy a legkisebb barlangba nézel be.[/p]
+            </text>
+            <next id="222"></next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="section" id="222">
+          <have>
+            <text>
+                [p]Úgy döntesz, hogy a középső barlangba nézel be.[/p]
+            </text>
+            <next id="136"></next>
+          </have>
+          <dontHave>
+            <text>
+                [p]Melyik barlangba néznél be most?[/p]
+            </text>
+            <next id="222">Ha a legkisebbe</next>
+            <next id="136">Ha a középsőbe</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 420 -->
+  <!-- 421 -->
+  <!-- 422 -->
+  <!-- 423 -->
+  <p id="424">
+    <text>
+        [p]Rálépsz a hídra. Ahogy haladsz előre, a nyögés minden egyes lépésnél megismétlődik. Persze mostanra már megszoktad, így nem zavar különösebben, sőt, egy kicsit még mulattatónak is találod. Ami azt illeti, a helyzet komikuma még segít is egy kicsit megnyugodnod, enélkül ugyanis elég feszült lennél, ha esetleg lenéznél a hídról az alattad húzódó mély szakadékba. A következő pillanatban viszont már [em]tényleg[/em] lefelé nézel és figyeled, amint feléd közeledik! A sóhajtozó híd teljes egészében eltűnt a lábad alól! Még csak emléke sem maradt, te pedig egyre növekvő sebességgel zuhansz a szakadék sziklás feneke felé. Soha nem tudod már meg a Sóhajok Hídjának titkát. Utolsó emléked a nyögő hang, amiből már csak bágyadt, gúnyos kuncogást hallasz...[/p]
+    </text>
+    <death />
+  </p>
+  <!-- 425 -->
+  <!-- 426 -->
+  <!-- 427 -->
+  <!-- 428 -->
+  <!-- 429 -->
+  <!-- 430 -->
+  <!-- 431 -->
+  <!-- 432 -->
+  <!-- 433 -->
+  <!-- 434 -->
+  <!-- 435 -->
+  <!-- 436 -->
+  <!-- 437 -->
+  <!-- 438 -->
+  <!-- 439 -->
+  <!-- 440 -->
+  <p id="441">
+    <text>
+        [p]Az ösvény továbbra is a hegyek felé emelkedik. A távolban a Mampang Erőd sötét tömege percről percre egyre nagyobbá válik, ahogy közelítesz. Estére egészen biztosan oda fogsz érni. Az út melletti sziklában egy kis fülkét találsz.[/p]
+    </text>
+    <itemCheck type="item" id="2000">
+      <have>
+        <next id="350">Ha itt megpihennél és ennél</next>
+        <next id="539">Ha nem akarsz megállni</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Úgy döntesz, nem vesztegeted itt az idődet, és rögtön továbbindulsz.[/p]
+        </text>
+        <next id="539"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 442 -->
+  <!-- 443 -->
+  <!-- 444 -->
+  <!-- 445 -->
+  <!-- 446 -->
+  <!-- 447 -->
+  <!-- 448 -->
+  <!-- 449 -->
+  <p id="450">
+    <text>
+        [p]Menekülésre nincs mód, élethalálharc következik.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="2" />
+    </fight>
+    <next id="543"></next>
+  </p>
+  <!-- 451 -->
+  <!-- 452 -->
+  <!-- 453 -->
+  <!-- 454 -->
+  <!-- 455 -->
+  <p id="456">
+    <text>
+        [p]A két lény felkísér a szikla mellett. Néhány méterrel lemaradva követed őket és a megfelelő alkalomra vársz, hogy meglóghass tőlük.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <text>
+            [p]Sikerül kifognod egy ilyen lehetőséget és visszatérsz az ösvényre.[/p]
+        </text>
+        <next id="441"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Egész idő alatt rajtad tartják a szemüket.[/p]
+        </text>
+        <next id="545"></next>
+      </failure>
+    </test>
+  </p>
+  <!-- 457 -->
+  <!-- 458 -->
+  <!-- 459 -->
+  <!-- 460 -->
+  <!-- 461 -->
+  <!-- 462 -->
+  <!-- 463 -->
+  <!-- 464 -->
+  <!-- 465 -->
+  <!-- 466 -->
+  <!-- 467 -->
+  <!-- 468 -->
+  <p id="469">
+    <text>
+        [p]Kirontasz a barlangból és beveted magad az aljnövényzetbe. Végül megállsz, hogy megtudd, üldöződ még mindig a nyomodban van-e. De a lény nem jött ki a barlangból. Úgy döntesz, inkább a másik két barlang egyikében keresel éjjeli menedéket.[/p]
+    </text>
+    <itemCheck type="pos" id="2">
+      <have>
+        <loseItem id="2000" />
+      </have>
+    </itemCheck>
+    <next id="404">Ha a legkisebb barlanggal próbálkozol</next>
+    <next id="534">Ha a másikkal</next>
+  </p>
+  <!-- 470 -->
+  <!-- 471 -->
+  <!-- 472 -->
+  <!-- 473 -->
+  <!-- 474 -->
+  <!-- 475 -->
+  <!-- 476 -->
+  <p id="477">
+    <text>
+        [p]Felmászol a fészekig és nekiállsz átkutatni. Hirtelen megcsillan valami a napfényben. Egy kis halom gally alól egy gyönyörű, [span class="takeItem" data-id="3036" data-amount="1"]Aranyhátú Tükröt[/span] húzol elő! Gyorsan elrejted a hátizsákodban és körülnézel, van-e itt még más kincs is.[/p]
+        [p]De miközben a kereséssel vagy elfoglalva, nem veszed észre a közelgő veszélyt. Végül azonban az egyre erősödő szárnycsattogás magára vonja a figyelmed és gyorsan hátrafordulsz. A fészek szélén három, hosszú, tollas szárnyú, emberforma lény áll és bámul rád rosszindulatúan. Kusza hajuk vadul lobog a szélben, lábukból erős, éles karmok állnak ki, arcukon félelmetes, horgas csőr meredezik előre. Madáremberek! Magadban csöndesen káromkodsz - rá kellett volna jönnöd. A xameni Madáremberek a leghírhedtebb és legfélelmetesebb lények közé tartoznak a Zanzunu hegyek környékén. Egyikük meglebbenti szárnyát és felröppen. A többiek követik példáját. Mielőtt bármit is tehetnél, a lények a levegőből feléd suhannak. Éles karmaik mélyen belevágnak a húsodba, amint felemelnek a levegőbe, majd hangos kiáltás kíséretében elengednek az út fölött. Ekkora magasságból leesve biztos a halál, a válladban hasogató fájdalom pedig lehetetlenné teszi, hogy a varázslatra koncentrálj. Kalandod itt véget ér...[/p]
+    </text>
+    <death />
+  </p>
+  <!-- 478 -->
+  <!-- 479 -->
+  <!-- 480 -->
+  <!-- 481 -->
+  <!-- 482 -->
+  <!-- 483 -->
+  <!-- 484 -->
+  <!-- 485 -->
+  <!-- 486 -->
+  <!-- 487 -->
+  <!-- 488 -->
+  <!-- 489 -->
+  <p id="490">
+    <text>
+        [p]A Bűzös Borz hátsó lábaira áll és mellső karmaival csapkodva előrelép. Küzdj meg vele![/p]
+        [p]Ha mégsem akarsz megküzdeni a bestiával és inkább elmenekülnél, az [em]első[/em] sikeres támadásod után még megteheted ezt.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="1" />
+      <winRound enemy="1" totalCount="2">
+        <interrupt />
+        <next id="346"></next>
+      </winRound>
+      <flee>
+        <next id="469"></next>
+      </flee>
+    </fight>
+  </p>
+  <!-- 491 -->
+  <!-- 492 -->
+  <!-- 493 -->
+  <!-- 494 -->
+  <!-- 495 -->
+  <!-- 496 -->
+  <!-- 497 -->
+  <!-- 498 -->
+  <!-- 499 -->
+  <!-- 500 -->
+  <!-- 501 -->
+  <!-- 502 -->
+  <!-- 503 -->
+  <!-- 504 -->
+  <!-- 505 -->
+  <!-- 506 -->
+  <p id="507">
+    <text>
+        [p]A barlang igen tágas. Belépsz és körbenézel, hogy megállapítsd, kell-e bármilyen veszélytől tartanod. Úgy tűnik, minden a legnagyobb rendben.[/p]
+    </text>
+    <next id="268">Ha biztos, ami biztos alapon a barlang hátsó, sötét részeit is át akarod vizsgálni</next>
+    <next id="366">Ha letáborozol és esetleg eszel egy keveset</next>
+    <next id="574">Ha csak egyszerűen elnyúlsz és már alszol is</next>
+  </p>
+  <!-- 508 -->
+  <!-- 509 -->
+  <!-- 510 -->
+  <!-- 511 -->
+  <!-- 512 -->
+  <p id="513">
+    <text>
+        [p]Éppen idejében bújtál fedezékbe. A Madárember suhogva lecsap, éles karmai csak centiméterekkel kerülnek el. Ellenfeled nagyot visít, majd ismét felröppen, hogy újabb rohamot indítson. A bokorban rejtőzve persze nem tarthatod magad sokáig. Hirtelen egy gondolat merül fel az agyadban. Meglehet, hogy más Madáremberek is lehetnek a közelben! A legjobb az lenne, ha gyorsan rátámadnál a bestiára és remélnéd, hogy egyik társa sem szúrja ki a harcotokat.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="FIX" id="701" />
+        <spell name="REP" id="778" />
+        <spell name="MEL" id="598" />
+        <spell name="DEM" id="716" />
+        <spell name="ÁTÉ" id="661" />
+        <next id="450">Ha fegyverrel küzdesz ellene</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Fegyvert rántasz.[/p]
+        </text>
+        <next id="450"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 514 -->
+  <!-- 515 -->
+  <!-- 516 -->
+  <!-- 517 -->
+  <!-- 518 -->
+  <!-- 519 -->
+  <!-- 520 -->
+  <!-- 521 -->
+  <p id="522">
+    <text>
+        [p]Az egyik lény odakiált neked. - Lépj előre, kis ember! - vakkantja.[/p]
+        [p]-    Lépj előre, hogy lássunk, te gyönge szívű béka! És mondd csak meg, ki adott engedélyt arra, hogy a Szatírnők birodalmán áthaladj.[/p]
+    </text>
+    <next id="244">Ha teszed, amit parancsol</next>
+    <next id="188">Ha előrántod a fegyveredet és valami hasonló sértőt kiabálsz vissza</next>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="TÜV" id="746" />
+        <spell name="ZAV" id="772" />
+        <spell name="GAK" id="685" />
+        <spell name="TÁN" id="760" />
+        <spell name="CSA" id="620" />
+      </have>
+    </itemCheck>
+  </p>
+  <!-- 523 -->
+  <!-- 524 -->
+  <!-- 525 -->
+  <!-- 526 -->
+  <!-- 527 -->
+  <!-- 528 -->
+  <!-- 529 -->
+  <p id="530">
+    <text>
+        [p]A fészekhez nem vezet fel út. Kénytelen vagy magad felmászni a sziklafalon, ügyelve arra, hogy ne potyogtasd el a felszerelési tárgyaidat. Mászás közben többször is megcsúszik a lábad - ilyenkor a vér is meghűl ereidben -, de csak kisebb kavicsokat rúgsz le a falról. Végül felérsz a sziklapárkányhoz. Ahogy arra számítottál, a fészek leginkább egy hatalmas saséra hasonlít, de mindenfajta rekeszek és lyukak is vannak benne, ahová tárgyakat lehet elrejteni.[/p]
+    </text>
+    <next id="477">Ha megvizsgálod ezeket a rejtekhelyeket</next>
+    <next id="36">Ha úgy véled, először nem a lehetséges kincsre kellene gondolnod, hanem arra, miféle lény élhet ilyen óriási fészekben, és úgy döntesz, hogy most azonnal lelépsz innen, visszamászol az útra és tovább folytatod a kalandozást</next>
+  </p>
+  <!-- 531 -->
+  <!-- 532 -->
+  <!-- 533 -->
+  <p id="534">
+    <text>
+        [p class="inlineImage"][img src="resources/sor4/534.jpg" /][/p]
+        [p]Elővigyázatosan közelíted meg a barlang bejáratát. Megállsz és megvizsgálod, mennyire frissek a patanyomok. Nagy megkönnyebbülésedre elég régieknek tűnnek. De bármiféle lényhez is tartozzanak a nyomok, a be- és kivezető nyomok alapján úgy tippeled, ketten vagy hárman járhattak erre közülük. Belesel a barlangba. Elég mély, de amúgy üres - legalábbis ameddig belátsz. Megragadod a fegyveredet és belépsz a félhomályba.[/p]
+        [p]Alig teszel néhány lépest, mikor megtorpansz! Kicsit beljebb egy kövön egy alak ül a sziklafalnak támaszkodva! A lény emberszerűnek tűnik, ráadásul teljesen meztelen, de nem mozdul. Hosszú, sörényszerű haja végigomlik a hátán, ami szerencsére feléd néz - ellenkező esetben már egészen biztosan észrevett volna.[/p]
+    </text>
+    <next id="309">Ha ráköszönsz, hogy felhívd magadra a lény figyelmét</next>
+    <next id="202">Ha odarohansz és megtámadod, mielőtt még bármit is tehetne</next>
+    <next id="169">Ha egyedül hagyod és inkább valahol máshol keresel menedéket</next>
+  </p>
+  <!-- 535 -->
+  <!-- 536 -->
+  <!-- 537 -->
+  <!-- 538 -->
+  <p id="539">
+    <text>
+        [p]Elindulsz az ösvényen. Egy darabig lefelé vezet, aztán keresztülvág egy sziklás fennsíkon. Egy nagyobb kő mellett befordul, majd egy sziklába vágott, rövid alagúton vezet át. A járat túloldalánál kétfelé ágazik szét. Az ösvény maga egyenesen halad tovább előre. Bal kéz felől egy másik, rövidke ösvény vezet egy kiszögelléshez, ami egy keskeny szakadékra tekint ki, ennek túloldalán, pontosan szemben, pedig egy másik kiugró sziklanyelvet pillantasz meg. A hasadék egy kicsivel szélesebb annál, semmint hogy simán át lehessen ugorni felette, de a szirt fölött egy lengőkötél van fellógatva a sziklára. Valószínűleg a hozzád hasonló, gyalogos utazóknak szánták átkelésre.[/p]
+    </text>
+    <next id="59">Ha az ösvényen mész továbbra is</next>
+    <next id="323">Ha megvizsgálod a kötelet</next>
+  </p>
+  <!-- 540 -->
+  <!-- 541 -->
+  <!-- 542 -->
+  <p id="543">
+    <text>
+        [p]Mikor a Madárember kileheli a lelkét, az ég felé emeli a fejét és megpróbál egy utolsó, segélykérő kiáltást kipréselni magából. Amint rájössz, mi a szándéka, meglendíted kardodat és villámgyorsan átmetszed a gégéjét. A sikoltás tompa, bugyogó hörgésbe fullad. Pihensz néhány percet, majd tovább mész az úton.[/p]
+    </text>
+    <next id="441"></next>
+  </p>
+  <!-- 544 -->
+  <p id="545">
+    <text>
+        [p]Körülbelül húsz percnyi mászás után a két Szatírnő megáll egy kicsit és bevár téged. Kecskeszerű lábaikkal sokkal ügyesebben mozognak ezen a terepen. Kicsit hitetlenkedve néznek rád, amikor végül lihegve utoléred őket. Egyikük előre mutat, hogy te is lásd, hova igyekeztek. A hegyoldalban egy széles sziklakiszögellést látsz, nyilván ez lehet falujuk főtere. Fél tucat Szatírnő figyel titeket a környező barlangok bejárataiból. Kísérőid a szirt mögötti sziklafal közepén tátongó legnagyobb barlangnyílás felé vezetnek.[/p]
+        [p]Amikor az üreg bejáratához értek, a két őrt álló Szatírnő egyike előrelép, egyik kísérőd - név szerint Sh’haarzha - azonban int neki, hogy álljon félre az útból. - Ez egy világutazó nomád. Találkoznia kell Sh’hourival. - Az őr visszatér posztjára, ti pedig beléptek a fáklyákkal alaposan megvilágított barlangba. Számos kisebb járat nyílik a nagy előtérből. Az egyik ilyen nyílásból egy idősebbnek tűnő Szatírnő lép elő.[/p]
+    </text>
+    <next id="371" pos="1">Ha elmondasz neki mindent, amire csak kíváncsi az utazásoddal és a Xamenen kívüli világgal kapcsolatban</next>
+    <itemCheck type="section" id="413">
+      <have>
+        <next id="354" pos="2">Ha Sh’himbliről beszélsz - és tudod is, ki az a Sh’himbli</next>
+      </have>
+    </itemCheck>
+    <next id="29" pos="3">Hogyha megvárod, amíg ő kérdez</next>
+  </p>
+  <!-- 546 -->
+  <!-- 547 -->
+  <!-- 548 -->
+  <!-- 549 -->
+  <!-- 550 -->
+  <!-- 551 -->
+  <!-- 552 -->
+  <!-- 553 -->
+  <!-- 554 -->
+  <!-- 555 -->
+  <!-- 556 -->
+  <!-- 557 -->
+  <p id="558">
+    <text>
+        [p]Amint csapásod hatására a lény eldől, kilépsz a barlangból, hogy szívj egy kis friss levegőt. Pihensz egy keveset, majd visszatérsz a barlangba, hogy befejezd a vacsorádat. A leszálló sötétség lassan arra késztet, hogy megvesd az ágyadat, mielőtt még teljesen besötétedne.[/p]
+    </text>
+    <next id="384"></next>
+  </p>
+  <!-- 559 -->
+  <!-- 560 -->
+  <!-- 561 -->
+  <!-- 562 -->
+  <!-- 563 -->
+  <!-- 564 -->
+  <!-- 565 -->
+  <!-- 566 -->
+  <!-- 567 -->
+  <!-- 568 -->
+  <!-- 569 -->
+  <!-- 570 -->
+  <!-- 571 -->
+  <!-- 572 -->
+  <!-- 573 -->
+  <p id="574">
+    <text>
+        [p]Találsz egy területet, ahol viszonylag puha a talaj - jó hely lenne ez az éjszakai pihenésre. Hátizsákodat párnának használva kényelmesen elhelyezkedsz. A nap eseményei még egyszer átvillannak az agyadon. Fáradtnak érzed magad. Nagy teljesítmény, hogy idáig is eljutottál. A Főmágus szolgái ellen vívott harcok bármikor balul üthettek volna ki, és akkor nem feküdnél itt. Mekkora szerencséd volt idáig! Ezek a gondolatok forognak a fejedben, miközben lassan elnyom az álom.[/p]
+        [p]De a sorsod nem az, hogy nyugodtan töltsd el az éjszakát. Ügy látszik, a barlang igen kedvelt pihenőhely, és egy hatalmas Bűzös Borz már korábban otthonának nyilvánította azt. A lény, miközben éjszakai vadászatán járt, idegen szagot érzett és követni kezdte. Ekkor bukkant rá a behatolóra a vackában. Egy pillanatra még felébredsz, de csak azért, hogy még megpillantsd a Borz félelmetes állkapcsát, amint összezáródik a nyakad körül...[/p]
+    </text>
+    <death />
+  </p>
+  <!-- 575 -->
+  <!-- 576 -->
+  <!-- 577 -->
+  <!-- 578 -->
+  <!-- 579 -->
+  <!-- 580 -->
+  <!-- 581 -->
+  <!-- 582 -->
+  <!-- 583 -->
+  <!-- 584 -->
+  <!-- 585 -->
+  <!-- 586 -->
+  <!-- 587 -->
+  <!-- 588 -->
+  <p id="589">
+    <text>
+        [p]Elmondod a varázslatot és a barlang bejárata felé tartod a tükröt. Ismét felhangzik az üvöltés, amire egy másik felel. Úgy tűnik, vad küzdelem van készülőben! Ekkor azonban [em]valami[/em] elszalad a lábad mellett és kirohan az üregből. A lény egy nagyobb káposzta méretű, tömzsi lábú kis szőrcsomó! Közvetlenül utána egy hasonló lény rohan lélekszakadva. [em]Jib-Jibek![/em] A két apróság nemsokára eltűnik a bokrok között. Bemászol a meglehetősen alacsony barlangba.[/p]
+    </text>
+    <next id="99">Ha nekilátsz a vacsorádnak</next>
+    <next id="14">Hogyha előbb alaposabban átkutatod a barlangot</next>
+    <next id="384">Ha egyszerűen csak lefekszel aludni</next>
+  </p>
+  <!-- 590 -->
+  <!-- 591 -->
+  <!-- 592 -->
+  <!-- 593 -->
+  <!-- 594 -->
+  <!-- 595 -->
+  <!-- 596 -->
+  <!-- 597 -->
+  <p id="598">
+    <text>
+        [p]Vesztesz 4 életerő pontot. A varázslat hatására izzó tűzlabda jelenik meg a kezedben. A Madárember felé hajítod és ahogy az egyre közelebb ér célpontjához, vakító villanással tucatnyi kisebb tűzgolyóvá robban szét! A lény nem tudja röptében elkerülni a halált hozó tüzet, száraz tollai azonnal meggyulladnak. Kétségbeesetten csapkod égő szárnyaival, de hiába. Tompa puffanással zuhan a földre, néhány méternyire tőled.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="543"></next>
+  </p>
+  <!-- 599 -->
+  <!-- 600 -->
+  <!-- 601 -->
+  <!-- 602 -->
+  <!-- 603 -->
+  <!-- 604 -->
+  <!-- 605 -->
+  <!-- 606 -->
+  <p id="607">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="items" id="3057 or 3060">
+      <have>
+        <next id="796"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik.[/p]
+        </text>
+        <next id="123"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 608 -->
+  <!-- 609 -->
+  <!-- 610 -->
+  <p id="611">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3036">
+      <have>
+        <next id="663"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik, és a Bűzös Borz 2 életerő pontot sebez rajtad.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="490"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="612">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3076">
+      <have>
+        <next id="678"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik.[/p]
+        </text>
+        <next id="323"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 613 -->
+  <!-- 614 -->
+  <!-- 615 -->
+  <!-- 616 -->
+  <!-- 617 -->
+  <!-- 618 -->
+  <!-- 619 -->
+  <p id="620">
+    <text>
+        [p]Vesztesz 2 életerő pontot. A lények ámulva nézik, amint elmondod a varázslatot. Vársz, hogy jelet kapj az előre gyanított csapda létezéséről, de semmit sem érzel. A lények egy kicsit türelmetlenek már, sőt az egyik kézbe is veszi a dárdáját.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="244">Ha felemelt kezekkel előrelépsz</next>
+    <next id="188">Ha veszed a bátorságot, és megpróbálsz blöffölni</next>
+  </p>
+  <!-- 621 -->
+  <!-- 622 -->
+  <!-- 623 -->
+  <!-- 624 -->
+  <p id="625">
+    <text>
+        [p]Felteszed a Parókát, és elmondod a varázslatot. Az üvöltés ismét felhangzik a barlang mélyéről, de ezúttal már az értelmét is ki tudod venni. Az a valami odabent védeni próbálja az odúját! Beszélsz hozzá egy kicsit, és hamar rájössz, hogy egy Jib-Jibbel van dolgod. Ezek apró, szőrös kis lények, melyek teljesen ártalmatlanok, ám iszonytató hangjuk van, amivel elriasszák ellenfeleiket. Közlöd a kis lénnyel, hogy az éjszakát a barlangban szándékozod eltölteni. Nemsokára neszezést hallasz, és egy kis szőrpamacs - nem nagyobb egy fej káposztánál - surran ki a barlangból és veti be magát a növények közé. Bemászol a meglehetősen alacsony barlangba.[/p]
+    </text>
+    <itemCheck type="item" id="2000">
+      <have>
+        <next id="99" pos="1">Ha eszel egy keveset</next>
+      </have>
+    </itemCheck>
+    <next id="14" pos="2">Hogyha négykézlábra ereszkedsz, és megvizsgálod a barlang mélyét is</next>
+    <next id="384" pos="3">Amennyiben egyszerűen csak lefekszel és elalszol</next>
+  </p>
+  <!-- 626 -->
+  <!-- 627 -->
+  <!-- 628 -->
+  <!-- 629 -->
+  <!-- 630 -->
+  <!-- 631 -->
+  <!-- 632 -->
+  <!-- 633 -->
+  <!-- 634 -->
+  <p id="635">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="items" id="2001 or 3001">
+      <have>
+        <text>
+            [p]Felhajtod a
+        </text>
+        <itemCheck type="item" id="3001">
+          <have>
+            <text>Gyógyfűfőzetet.</text>
+            <loseItem id="3001" />
+          </have>
+          <dontHave>
+            <text>Bugyabogyó szörpöt.</text>
+            <loseItem id="2001" />
+          </dontHave>
+          <after>
+            <text>
+                A varázslat hatására életerőd a [em]Kezdeti[/em] értékére áll vissza.[/p]
+            </text>
+            <add amount="30" to="stamina" />
+          </after>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <next id="123"></next>
+  </p>
+  <!-- 636 -->
+  <!-- 637 -->
+  <p id="638">
+    <text>
+        [p]Vesztesz 2 életerő pontot. Elmondod a varázslatot, és várod a hatást. A Bűzös Borz megbillen egy pillanatra, majd lassan, nagyon lassan előrelép. Ha meg akarsz küzdeni vele, 3-mal lecsökkentheted majd az ÜGYESSÉGÉT.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <changeEnemy attribute="skill" id="1" change="-3" />
+    <next id="469">Ha kihasználod az alkalmat, és elmenekülsz</next>
+    <next id="490">Hogyha megküzdesz vele</next>
+  </p>
+  <!-- 639 -->
+  <!-- 640 -->
+  <!-- 641 -->
+  <!-- 642 -->
+  <!-- 643 -->
+  <!-- 644 -->
+  <!-- 645 -->
+  <!-- 646 -->
+  <!-- 647 -->
+  <!-- 648 -->
+  <!-- 649 -->
+  <!-- 650 -->
+  <!-- 651 -->
+  <!-- 652 -->
+  <!-- 653 -->
+  <!-- 654 -->
+  <!-- 655 -->
+  <!-- 656 -->
+  <!-- 657 -->
+  <!-- 658 -->
+  <!-- 659 -->
+  <!-- 660 -->
+  <p id="661">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3034">
+      <have>
+        <text>
+            [p]Felteszed a fejedre a Zöldhajú Parókát, és elmondod a varázsigét. Most már képes vagy arra, hogy megértsd a lény beszédét, de ellenfeled sajnos egyáltalán nem akar veled társalogni. Behatoltál a területére! Gyorsan előhúzod fegyvered, még mielőtt újra támadhatna.[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik, és a Madárember kihasználja a kínálkozó lehetőséget; vonj le magadtól 3 életerő pontot.[/p]
+        </text>
+        <add amount="-3" to="stamina" />
+      </dontHave>
+    </itemCheck>
+    <next id="450"></next>
+  </p>
+  <!-- 662 -->
+  <p id="663">
+    <text>
+        [p]Feltartod a Tükröt, és varázsolsz. A lény nagyot üvölt, amint a tükörképe megjelenik vele szemben. De ahelyett, hogy megküzdenének egymással, a Bűzös Borz megfordul, és felemeli a farkát. A tükörképe szintúgy. Két pillanat, és a levegő émelyítő, büdös gázzal telik meg. Ilyen büdöset még soha életedben nem szagoltál - ráadásul mindjárt dupla adagot kaptál! A sarokba rohansz, és heves gyomorgörcsök közepette okádni kezdesz. Vesztesz 4 életerő pontot. Amilyen gyorsan csak tudsz, kirohansz a barlangból.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="469"></next>
+  </p>
+  <!-- 664 -->
+  <!-- 665 -->
+  <!-- 666 -->
+  <!-- 667 -->
+  <!-- 668 -->
+  <p id="669">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3036">
+      <have>
+        <next id="589"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik.[/p]
+        </text>
+        <next id="123"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 670 -->
+  <!-- 671 -->
+  <!-- 672 -->
+  <!-- 673 -->
+  <!-- 674 -->
+  <!-- 675 -->
+  <!-- 676 -->
+  <!-- 677 -->
+  <p id="678">
+    <text>
+        [p]Megiszod az italt, és elmondod a varázslatot. Érzed, amint testeden áthullámzik a hatása. Odalépsz a kötélhez. Megrántod, hogy kipróbáld, mennyire erős. Megnövekedett erőddel azonban elszakítod azt! Itt már nem fogsz átkelni a szakadékon. Kénytelen vagy valami más lehetőséget találni. Továbbmész az ösvényen.[/p]
+    </text>
+    <loseItem id="3076" />
+    <next id="59"></next>
+  </p>
+  <!-- 679 -->
+  <!-- 680 -->
+  <!-- 681 -->
+  <!-- 682 -->
+  <!-- 683 -->
+  <!-- 684 -->
+  <p id="685">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3028">
+      <have>
+        <text>
+            [p]Arcod elé tartod a Fekete Maszkot, és elmondod a varázsigét. A látványtól a vér is meghűl a teremtmények ereiben. Megfordulnak, és bemenekülnek egy nagy szikla mögé. Továbbhaladhatsz.[/p]
+        </text>
+        <next id="441"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik. Ráadásul miközben a haszontalan igével erőlködsz, a Szatírnők újabb dárdát hajítanak feléd, mely átfúrja a lábadat. Vonj le 2 életerő pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="244">Ha előre lépsz, ahogy parancsolták</next>
+        <next id="188">Ha előrántod a fegyveredet és valami sértőt kiabálsz vissza</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="686">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3068">
+      <have>
+        <text>
+            [p]A nyakadba akasztod az Ékkövekkel díszített Medált, és elmondod a varázsigét. Lassan felemelkedsz a levegőbe! Ez szép, de a teremtményt ez nem nagyon érdekli, ráadásul nem emelkedhetsz magasra, mivel a barlang elég alacsony. A lény feléd csap egyik karmos mancsával, és belemar a lábadba. Vesztesz 2 életerő pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="469"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik, és a Bűzös Borz 3 életerő pontot sebez rajtad.[/p]
+        </text>
+        <add amount="-3" to="stamina" />
+        <next id="490"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 687 -->
+  <!-- 688 -->
+  <!-- 689 -->
+  <!-- 690 -->
+  <!-- 691 -->
+  <!-- 692 -->
+  <!-- 693 -->
+  <!-- 694 -->
+  <!-- 695 -->
+  <!-- 696 -->
+  <p id="697">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3034">
+      <have>
+        <next id="625"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik.[/p]
+        </text>
+        <next id="123"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 698 -->
+  <!-- 699 -->
+  <!-- 700 -->
+  <p id="701">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="items" id="3067 or 3075">
+      <have>
+        <text>
+            [p]Feltartod a botodat, és elmondod a varázslatot. Normális esetben a varázslatnak működnie kellene, de a sors úgy akarja, hogy ne legyél szerencsés. A Madárember a varázslat működésbe lépésének pillanatában összecsukja szárnyait, és zuhanni kezd feléd. Varázslatod célt téveszt, és a Madárember máris rád veti magát.[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik, és a Madárember 2 életerő pontot sebez rajtad.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+      </dontHave>
+    </itemCheck>
+    <next id="450"></next>
+  </p>
+  <!-- 702 -->
+  <!-- 703 -->
+  <p id="704">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="items" id="2001 or 3001">
+      <have>
+        <text>
+            [p]Iszol belőle, és elmondod a varázslatot. A
+        </text>
+        <itemCheck type="item" id="3001">
+          <have>
+            <text>
+                Gyógyfűfőzet
+            </text>
+            <loseItem id="3001" />
+          </have>
+          <dontHave>
+            <text>
+                Bugyabogyó szörp
+            </text>
+            <loseItem id="2001" />
+          </dontHave>
+          <after>
+            <text>
+                gyógyerejét megnöveli a mágia. Állítsd vissza életerődet a [em]Kezdeti[/em] értékére.[/p]
+            </text>
+          </after>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <next id="323"></next>
+  </p>
+  <!-- 705 -->
+  <!-- 706 -->
+  <!-- 707 -->
+  <!-- 708 -->
+  <!-- 709 -->
+  <!-- 710 -->
+  <!-- 711 -->
+  <!-- 712 -->
+  <!-- 713 -->
+  <!-- 714 -->
+  <!-- 715 -->
+  <p id="716">
+    <text>
+        [p]Vesztesz 2 életerő pontot. Elmondod a varázslatot, és a Madárember megdermed támadás közben. Rád néz, majd bután körbenéz maga körül. Úgy tűnik, már elment a kedve attól, hogy tovább harcoljon. Ha el tudnád érni, ez lenne a megfelelő alkalom, hogy levágd, de a Madárember a levegőben lebeg, mintha csak gondolkodna, hogy mit csináljon. Végül megfordul, és elrepül. Továbbmehetsz az úton.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="441"></next>
+  </p>
+  <!-- 717 -->
+  <!-- 718 -->
+  <!-- 719 -->
+  <!-- 720 -->
+  <!-- 721 -->
+  <!-- 722 -->
+  <!-- 723 -->
+  <p id="724">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3061">
+      <have>
+        <text>
+            [p]Elmondod a varázslatot, és belefújsz a Viharkürtbe. Hatalmas szélvihar kerekedik, és átlöki a kötelet a szakadék fölött. Amikor a szélvihar elül, a kötél visszalendül hozzád. Elég biztonságosnak tűnik.[/p]
+        </text>
+        <next id="165">Ha most átlendülsz a kötélen a túloldalra</next>
+        <next id="59">Ha inkább továbbmész az ösvényen</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik.[/p]
+        </text>
+        <next id="165"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 725 -->
+  <!-- 726 -->
+  <!-- 727 -->
+  <!-- 728 -->
+  <!-- 729 -->
+  <!-- 730 -->
+  <!-- 731 -->
+  <!-- 732 -->
+  <!-- 733 -->
+  <!-- 734 -->
+  <!-- 735 -->
+  <!-- 736 -->
+  <!-- 737 -->
+  <!-- 738 -->
+  <!-- 739 -->
+  <!-- 740 -->
+  <!-- 741 -->
+  <!-- 742 -->
+  <!-- 743 -->
+  <!-- 744 -->
+  <!-- 745 -->
+  <p id="746">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3076">
+      <have>
+        <text>
+            [p]Felhajtod a Tüzes Vizet, és elmondod a varázslatot. Érzed, amint a mágia ereje végigáramlik a testeden. Felkapsz egy hatalmas sziklát, és a Szatírnők felé hajítod. Bár nem találsz el senkit, azok idegesen pillantgatnak egymásra, és úgy döntenek, ekkora erővel nem szállnak szembe. Hagynak, hogy sértetlenül továbbmenj.[/p]
+        </text>
+        <next id="441"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik. A Szatírnők türelmetlenek lesznek hiábavaló próbálkozásod miatt. Egyikük felkap egy dárdát, és feléd hajítja. Vonj le magadtól 2 életerő pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="522"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 747 -->
+  <!-- 748 -->
+  <!-- 749 -->
+  <!-- 750 -->
+  <!-- 751 -->
+  <!-- 752 -->
+  <!-- 753 -->
+  <!-- 754 -->
+  <!-- 755 -->
+  <!-- 756 -->
+  <p id="757">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3034">
+      <have>
+        <text>
+            [p]Felteszed a Zöldhajú Parókát, és elmondod a varázsigét. Most már képes vagy beszélgetni vele. De ellenfeled nem akar beszélgetni; egyszerűen csak annyit akar, hogy takarodj ki az ő lakóhelyéről![/p]
+        </text>
+        <next id="469">Ha békén hagyod</next>
+        <next id="490">Ha inkább megküzdesz vele</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik, és a lény 2 életerő pontot sebez rajtad.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="490"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 758 -->
+  <!-- 759 -->
+  <p id="760">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3002">
+      <have>
+        <text>
+            [p]Elmondod a varázslatot és játszani kezdesz a Bambuszfurulyán. A hatás komikus. A két Szatírnő egy emberként (illetve egy Szatírnőként) felpattan, és ütemre lépve táncolni kezd! Ügyetlenül lépkednek patás lábaikkal, és nem tudnak megakadályozni abban, hogy továbbsétálj az utadon.[/p]
+        </text>
+        <next id="441"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik. Hasztalan próbálkozásaid felbosszantják a lényeket, és egy elhajított dárda 3 életerő pontot sebez rajtad.[/p]
+        </text>
+        <add amount="-3" to="stamina" />
+        <next id="244">Ha előre lépsz, ahogy parancsolták</next>
+        <next id="188">Ha előrántod a fegyveredet és valami sértőt kiabálsz vissza</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 761 -->
+  <!-- 762 -->
+  <!-- 763 -->
+  <!-- 764 -->
+  <!-- 765 -->
+  <!-- 766 -->
+  <!-- 767 -->
+  <!-- 768 -->
+  <!-- 769 -->
+  <!-- 770 -->
+  <!-- 771 -->
+  <p id="772">
+    <text>
+        [p]Vesztesz 2 életerő pontot. Az egyik lényre koncentrálsz, és elmondod a varázslatot. A Szatírnő megrázza a fejét, és rád, majd a társára bámul. Szemébe vad kifejezés ül ki! A másik Szatírnő kényelmetlenül fészkelődni kezd: nincs ínyére, hogy szembeszálljon egy mágussal. - Azonnal szüntesd meg társamról ezt a varázst! - kiáltja, de hangja inkább ijedt, mint félelmetes. - Utána utadra engedünk. - Ez tisztességes ajánlatnak tűnik, így felszeded a cuccaidat, és elindulsz. Ám az összezavart Szatírnő váratlanul felmarkol néhány kavicsot, és tiszta erejéből feléd hajítja őket. A váratlan zuhanytól 2 életerő pontnyit sebződtél, de amúgy sikerült elhagynod a terepet.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="441"></next>
+  </p>
+  <!-- 773 -->
+  <!-- 774 -->
+  <!-- 775 -->
+  <!-- 776 -->
+  <!-- 777 -->
+  <p id="778">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3068">
+      <have>
+        <text>
+            [p]A nyakadba akasztod az Ékkövekkel díszített Medált, és elmondod a varázslatot. Szinte azonnal a levegőbe emelkedsz. A Madárember megtorpan egy pillanatra, és hitetlenkedve figyeli röptödet. Előrántod fegyveredet, és rátámadsz.[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik. Küzdj meg a Madáremberrel, aki zuhanó repülésben közeledik feléd.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <next id="450"></next>
+  </p>
+  <!-- 779 -->
+  <!-- 780 -->
+  <!-- 781 -->
+  <p id="782">
+    <text>
+        [p]Vesztesz 2 ÉLETERŐ pontot. Elmondod a varázslatot, és várod, hogy a mágia figyelmeztessen a környezetedben lévő csapdákra. Érzed, hogy valami nincs rendjén. Bár biztos vagy benne, hogy veszély leselkedik rád, a varázslat mégsem jelez semmit.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="123"></next>
+  </p>
+  <!-- 783 -->
+  <!-- 784 -->
+  <p id="785">
+    <text>
+        [p]Vesztesz 2 életerő pontot. Elmondod a varázslatot, és vársz, hogy megtudd, biztonságos-e a kötél, vagy sem. Hirtelen furcsa érzés lesz rajtad úrrá. A kötelet tartó kezed elképesztő módon izzani kezd! Először azt hiszed, képzelődsz, de aztán rájössz, hogy a varázslat így akar közölni veled valamit. De mit?[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="165">Ha átlendülsz a kötélen a másik oldalra</next>
+    <next id="59">Ha inkább továbbmész az ösvényen</next>
+  </p>
+  <!-- 786 -->
+  <!-- 787 -->
+  <p id="788">
+    <text>
+        [p]Vesztesz 2 életerő pontot. Előhúzol egy tárgyat a hátizsákodból, és rámondod a varázslatot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <market mustGiveUp="1">
+      <saleLabel>Melyik tárgyadat akarod használni a varázsláshoz?</saleLabel>
+      <sale price="0" stock="1" id="1003" />
+      <sale price="0" stock="1" id="1009" />
+      <sale price="0" stock="1" id="2000" />
+      <sale price="0" stock="1" id="2001" />
+      <sale price="0" stock="1" id="2002" />
+      <sale price="0" stock="1" id="2003" />
+      <sale price="0" stock="1" id="2004" />
+      <sale price="0" stock="1" id="2005" />
+      <sale price="0" stock="1" id="3001" />
+      <sale price="0" stock="1" id="3002" />
+      <sale price="0" stock="1" id="3007" />
+      <sale price="0" stock="1" id="3008" />
+      <sale price="0" stock="1" id="3009" />
+      <sale price="0" stock="1" id="3010" />
+      <sale price="0" stock="1" id="3011" />
+      <sale price="0" stock="1" id="3012" />
+      <sale price="0" stock="1" id="3013" />
+      <sale price="0" stock="1" id="3014" />
+      <sale price="0" stock="1" id="3015" />
+      <sale price="0" stock="1" id="3016" />
+      <sale price="0" stock="1" id="3017" />
+      <sale price="0" stock="1" id="3018" />
+      <sale price="0" stock="1" id="3019" />
+      <sale price="0" stock="1" id="3020" />
+      <sale price="0" stock="1" id="3021" />
+      <sale price="0" stock="1" id="3022" />
+      <sale price="0" stock="1" id="3023" />
+      <sale price="0" stock="1" id="3024" />
+      <sale price="0" stock="1" id="3025" />
+      <sale price="0" stock="1" id="3026" />
+      <sale price="0" stock="1" id="3027" />
+      <sale price="0" stock="1" id="3028" />
+      <sale price="0" stock="1" id="3029" />
+      <sale price="0" stock="1" id="3030" />
+      <sale price="0" stock="1" id="3031" />
+      <sale price="0" stock="1" id="3032" />
+      <sale price="0" stock="1" id="3034" />
+      <sale price="0" stock="1" id="3035" />
+      <sale price="0" stock="1" id="3036" />
+      <sale price="0" stock="1" id="3037" />
+      <sale price="0" stock="1" id="3038" />
+      <sale price="0" stock="1" id="3039" />
+      <sale price="0" stock="1" id="3042" />
+      <sale price="0" stock="1" id="3043" />
+      <sale price="0" stock="1" id="3044" />
+      <sale price="0" stock="1" id="3045" />
+      <sale price="0" stock="1" id="3046" />
+      <sale price="0" stock="1" id="3047" />
+      <sale price="0" stock="1" id="3048" />
+      <sale price="0" stock="1" id="3049" />
+      <sale price="0" stock="1" id="3050" />
+      <sale price="0" stock="1" id="3051" />
+      <sale price="0" stock="1" id="3052" />
+      <sale price="0" stock="1" id="3053" />
+      <sale price="0" stock="1" id="3054" />
+      <sale price="0" stock="1" id="3055" />
+      <sale price="0" stock="1" id="3056" />
+      <sale price="0" stock="1" id="3057" />
+      <sale price="0" stock="1" id="3058" />
+      <sale price="0" stock="1" id="3059" />
+      <sale price="0" stock="1" id="3060" />
+      <sale price="0" stock="1" id="3061" />
+      <sale price="0" stock="1" id="3063" />
+      <sale price="0" stock="1" id="3064" />
+      <sale price="0" stock="1" id="3066" />
+      <sale price="0" stock="1" id="3067" />
+      <sale price="0" stock="1" id="3068" />
+      <sale price="0" stock="1" id="3069" />
+      <sale price="0" stock="1" id="3070" />
+      <sale price="0" stock="1" id="3071" />
+      <sale price="0" stock="1" id="3072" />
+      <sale price="0" stock="1" id="3073" />
+      <sale price="0" stock="1" id="3074" />
+      <sale price="0" stock="1" id="3075" />
+      <sale price="0" stock="1" id="3076" />
+      <sale price="0" stock="1" id="3077" />
+      <sale price="0" stock="1" id="3078" />
+      <sale price="0" stock="1" id="3079" />
+      <sale price="0" stock="1" id="3080" />
+      <sale price="0" stock="1" id="3201" />
+      <sale price="0" stock="1" id="3202" />
+      <sale price="0" stock="1" id="3203" />
+      <sale price="0" stock="1" id="3204" />
+      <sale price="0" stock="1" id="3205" />
+      <after>
+        <text>
+            [p]A tárgy azonnal kis kupac illúzió kinccsé alakul! A Bűzös Borzot azonban nem érdekli az arany csillogása. Azt akarja, hogy hordd el magad a barlangjából! Mancsával nagyot üt a fejedre. Vesztesz 1 életerő pontot.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+      </after>
+    </market>
+    <next id="490">Ha kirántod a fegyveredet, és felveszed a harcot</next>
+    <next id="469">Hogyha kirohansz a barlangból</next>
+  </p>
+  <!-- 789 -->
+  <!-- 790 -->
+  <!-- 791 -->
+  <!-- 792 -->
+  <!-- 793 -->
+  <!-- 794 -->
+  <!-- 795 -->
+  <p id="796">
+    <text>
+        [p]Belemondod a varázslatot a Kristálygömbbe, és vársz a hatásra. A Gömb belsejében terjengő tejszerű felhő örvényleni kezd, és nemsokára kitisztul. Egy kép jelenik meg. Egy keskeny ösvény kanyarog a sziklás hegyoldalban egy szakadék felé. Mit jelenthet ez? Jelen pillanatban nem sokat.[/p]
+    </text>
+    <next id="123"></next>
+  </p>
+  <p id="797">
+    <text>
+        [p]Vesztesz 1 életerő pontot. A varázslatnak jelen helyzetben nincs semmiféle hatása. Mérgelődsz, amiért feleslegesen vesztegetted az életerődet, és odalépsz a kötélhez.[/p]
+    </text>
+    <add to="stamina" amount="-1" />
+    <next id="165"></next>
+  </p>
+</content>

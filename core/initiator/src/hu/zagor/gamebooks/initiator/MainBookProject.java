@@ -15,7 +15,7 @@ public class MainBookProject {
     public void create() {
         final List<BookLangData> books = new ArrayList<>();
 
-        books.add(getSotkHu(false));
+        books.add(getSotkHu(true));
         books.add(getSotkEn(true));
         books.add(getSotkPtBr(false));
 
@@ -26,19 +26,19 @@ public class MainBookProject {
 
     private BookBaseData getBaseData() {
 
-        baseData.setSeriesCode("eq"); // ff, pt, wm, fff, sor
-        baseData.setTitleCode("dod");
-        baseData.setPosition(1);
-        baseData.setCollectorCode("eq");
-        baseData.setCollectorName("endlessquest");
-        baseData.setRuleset("raw");
-        baseData.setHasEnemies(false);
-        baseData.setHasInventory(false);
-        baseData.setHasItems(false);
-        baseData.setHasMap(false);
+        baseData.setSeriesCode("sor"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm
+        baseData.setTitleCode("tcok");
+        baseData.setPosition(4);
+        baseData.setCollectorCode("ff"); // ff, cyoa, z, fyf, eq, tm
+        baseData.setCollectorName("fightingfantasy"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine
+        baseData.setRuleset("ff"); // raw, tm, ff
+        baseData.setHasEnemies(true);
+        baseData.setHasInventory(true);
+        baseData.setHasItems(true);
+        baseData.setHasMap(true);
         baseData.setMediaProject(true);
-        baseData.setDefaultSkillTestType(""); // Le: lower or equal; L: lower; if neither, should be empty!
-        baseData.setCharPageRequired(false);
+        baseData.setDefaultSkillTestType("Le"); // Le: lower or equal; L: lower; if neither, should be empty!
+        baseData.setCharPageRequired(true);
 
         return baseData;
     }
@@ -51,27 +51,30 @@ public class MainBookProject {
         data.setLang("pt_BR");
         data.setTitle("O feiticeiro da montanha de fogo");
         data.setGeneratable(shouldBeGenerated);
+        data.setFinished(false);
         return data;
     }
 
     private BookLangData getSotkHu(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setSeriesCode("kjv");
-        data.setPosition(3);
-        data.setBookId("KalandJatekVarazslat.HET_SARKANYKIGYO");
+        data.setPosition(4);
+        data.setBookId("KalandJatekVarazslat.A_KIRALYOK_KORONAJA");
         data.setLang("hu");
-        data.setTitle("Hét Sárkánykígyó");
+        data.setTitle("A Királyok Koronája");
         data.setGeneratable(shouldBeGenerated);
+        data.setFinished(false);
         return data;
     }
 
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
-        data.setHidden(false);
-        data.setBookId("EndlessQuest.DUNGEON_OF_DREAD");
+        data.setHidden(true);
+        data.setBookId("Sorcery.THE_CROWN_OF_KINGS");
         data.setLang("en");
-        data.setTitle("Dungeon of Dread");
+        data.setTitle("The Crown of Kings");
         data.setGeneratable(shouldBeGenerated);
+        data.setFinished(false);
         return data;
     }
 
