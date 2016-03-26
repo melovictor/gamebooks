@@ -93,7 +93,9 @@
   <!-- 7 -->
   <!-- 8 -->
   <!-- 9 -->
-  <!-- 10 -->
+  <p id="10">
+    <empty />
+  </p>
   <!-- 11 -->
   <!-- 12 -->
   <!-- 13 -->
@@ -211,7 +213,13 @@
   <!-- 64 -->
   <!-- 65 -->
   <!-- 66 -->
-  <!-- 67 -->
+  <p id="67">
+    <text>
+        [p]Végigrohansz az átjárón mielőtt az Erődből egy élesebb szemű őrszem kiszúrna. Rohanás közben két földön fekvő, szolgálat közben alvó őrt pillantasz meg. Mellettük egy üres boroshordó árulkodik az okokról. Az őrök berúgtak![/p]
+    </text>
+    <next id="342">Ha rájuk sem hederítesz, csak továbbrohansz az átjárón</next>
+    <next id="289">Hogyha úgy véled, okosabb levágni őket, mert esetleg fel találnak ébredni, és észrevesznek</next>
+  </p>
   <!-- 68 -->
   <!-- 69 -->
   <!-- 70 -->
@@ -227,7 +235,16 @@
   <!-- 80 -->
   <!-- 81 -->
   <!-- 82 -->
-  <!-- 83 -->
+  <p id="83">
+    <test against="luck">
+      <success>
+        <next id="441"></next>
+      </success>
+      <failure>
+        <next id="314"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 84 -->
   <!-- 85 -->
   <!-- 86 -->
@@ -294,7 +311,48 @@
   <!-- 110 -->
   <!-- 111 -->
   <!-- 112 -->
-  <!-- 113 -->
+  <p id="113">
+    <text>
+        [p]Még nincs teljesen világos, amikor felkelsz, hogy tovább folytasd az utadat. Nem tervezted meg pontosan, hogy hogyan fogsz bejutni az Erődbe, de biztos vagy benne, hogy egyáltalán nem lesz könnyű dolgod. Az éjszakai pihenés 2-vel megnövelte az életerődet.
+    </text>
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            Mivel azonban tegnap semmit nem ettél, 3 életerő pontot le kell vonnod.
+        </text>
+        <add amount="-3" to="stamina" />
+      </have>
+      <dontHave>
+        <gatherItem id="4101" />
+      </dontHave>
+      <after>
+        <text>
+            Összepakolod a cuccaidat, és elindulsz a kapu felé.[/p]
+            [p]Ahogy közelebb érsz, a hatalmas fa kapuszárnyak föléd magasodnak. Kicsit izgulsz, nehogy észrevegyenek, de tudod, hogy amíg a nap fel nem kel teljesen, ez nem nagyon valószínű. Az Erőd éles körvonala a kora reggeli derengő égbolt ellenében ijesztő látvány, és nem tudod leküzdeni a kicsinység és kiszolgáltatottság érzését az Erőd hatalmas tömege mellett.[/p]
+        [p]Odalépsz a kapuba vágott kis ajtóhoz.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="HOM" id="791" />
+        <spell name="NYI" id="643" />
+        <spell name="REP" id="736" />
+        <spell name="ÁTÉ" id="749" />
+        <spell name="ELT" id="667" />
+        <next id="304">Kopogsz rajta, tudván, hogy ezzel felkelted az Őrök figyelmét?</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Bekopogsz, tudván, hogy ezzel felkelted az Őrök figyelmét.[/p]
+        </text>
+        <next id="304"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 114 -->
   <!-- 115 -->
   <!-- 116 -->
@@ -355,7 +413,19 @@
   </p>
   <!-- 137 -->
   <!-- 138 -->
-  <!-- 139 -->
+  <p id="139">
+    <text>
+        [p]Miközben előrehaladsz, figyelemmel tartod a hágó mindkét oldalát, hátha életnek a nyomát fedezed fel. Amikor reszelő hangokat hallasz elölről, megtorpansz. Az átjáró jobb oldalán két, vastag páncélba öltözött őr hever a földön. Nem mozdulnak, nyilván alszanak. Az egyikük egy felfordult boroskancsó nyakát szorongatja a markában. A kancsóból még szivárog egy kis bor. Hiszen ezek részegek! Megpróbálsz ellopózni mellettük.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="342"></next>
+      </success>
+      <failure>
+        <next id="264"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 140 -->
   <!-- 141 -->
   <!-- 142 -->
@@ -363,7 +433,12 @@
   <!-- 144 -->
   <!-- 145 -->
   <!-- 146 -->
-  <!-- 147 -->
+  <p id="147">
+    <text>
+        [p]Libra folytatja: - Néhány rossz hírt is el kell mondanod neked, melyek hatással lehetnek a küldetésed sikerére. Az előző éjszakát ugyanabban a barlangban töltötted, mely a reszkető kór kiinduló helye. - Utána elmondja a kór tüneteit.[/p]
+    </text>
+    <next id="247"></next>
+  </p>
   <!-- 148 -->
   <!-- 149 -->
   <!-- 150 -->
@@ -605,7 +680,17 @@
   </p>
   <!-- 245 -->
   <!-- 246 -->
-  <!-- 247 -->
+  <p id="247">
+    <text>
+        [p]A barlangban talált halott lény egy Szatírnő volt. Egy súlyos, fertőző kórságban pusztult el, melyet te is felszedtél azzal, hogy a barlangban töltötted az éjszakát. Ezt a kellemetlen betegséget reszkető kórnak hívják. Hatása egy nappal azután jelentkezik, hogy megfertőződtél, és amíg nem gyógyítanak ki belőle valahogy, két dologban nyilvánul meg. Egyrészt, mostantól nem nyerhetsz vissza életerő pontot: a betegség megakadályozza a tested megerősödését. Másodszor az agyadra is nyomást gyakorol, és igen nehezen tudsz majd koncentrálni. Mostantól, ha varázsolni akarsz, dobj egy kockával. Képzeld azt, hogy a választható varázslatok balról jobbra meg vannak számozva 1-től 5-ig. Ha a dobott eredmény is ebbe az intervallumba esik, úgy csak azt a varázsigét választhatod, amelyiknek a sorszámát kidobtad. Vagyis amíg az agyadat eltompítja ez a betegség, nem tudsz arra koncentrálni, amire akarsz, és ennek néha kiszámíthatatlan következményei vannak. Ha 6-ost dobsz, akkor ezt a korlátozást figyelmen kívül hagyhatod, és azt az igét választhatod, amelyiket csak szeretnéd. Bölcs dolog lenne mielőbb gyógyírt találnod a reszkető kórra![/p]
+    </text>
+    <itemCheck type="item" id="4081">
+      <have>
+        <gatherItem id="5008" />
+      </have>
+    </itemCheck>
+    <next id="113"></next>
+  </p>
   <!-- 248 -->
   <!-- 249 -->
   <!-- 250 -->
@@ -625,11 +710,30 @@
   </p>
   <!-- 258 -->
   <!-- 259 -->
-  <!-- 260 -->
+  <p id="260">
+    <text>
+        [p]Alaposan meghökkennek, és meg is sértődnek egy kicsit, amiért visszautasítod a vendégszeretetüket. Megpróbálod elmagyarázni nekik, hogy nagyon szorít az idő, és sietned kell küldetésed végrehajtásában, de úgy tűnik, nem hallották meg magyarázatod, csak mérgesen néznek egymásra.[/p]
+    </text>
+    <next id="314">Ha elköszönsz tőlük, és tovább folytatod az utadat</next>
+    <next id="83">Ha Cheelah kezébe helyeznéd a sorsodat</next>
+  </p>
   <!-- 261 -->
   <!-- 262 -->
   <!-- 263 -->
-  <!-- 264 -->
+  <p id="264">
+    <text>
+        [p]A csizmád megcsikordul a padlón, és a zajra az egyik őr horkant egyet, és felébred! Amint meglát téged, azonnal felpattan és hangos üvöltéssel a társát is felkelti. A két férfi lábra áll, és egy kicsit támolyogva szembefordul veled. A bor hatása szemmel láthatóan még nem múlt el teljesen! Az egyikük felveszi a kardját, és feléd indul, míg a másik a falon lógó, hosszú kürt után nyúl. Gyorsan kell cselekedned: és meg kell akadályoznod, hogy a másik alak elérje a kürtöt. A meglepetés, valamint az alkohol a te pártodon áll: ehhez az őrhöz egyetlen csapás is elég lesz.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="4" />
+      <win min="1" max="2">
+        <next id="387"></next>
+      </win>
+      <win min="3" max="9999">
+        <next id="487"></next>
+      </win>
+    </fight>
+  </p>
   <!-- 265 -->
   <!-- 266 -->
   <!-- 267 -->
@@ -713,7 +817,19 @@
   </p>
   <!-- 287 -->
   <!-- 288 -->
-  <!-- 289 -->
+  <p id="289">
+    <test against="luck">
+      <success>
+        <text>
+            [p]Sikerült mindkét őrt megölnöd anélkül, hogy bármelyikük is felébredt volna.[/p]
+        </text>
+        <next id="219"></next>
+      </success>
+      <failure>
+        <next id="264"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 290 -->
   <!-- 291 -->
   <!-- 292 -->
@@ -737,6 +853,17 @@
             életerő pontot kapsz. Az éjszaka hamar leszáll, te pedig biztonságos helyről hallgatod a távoli vihar zajait. Nemsokára elnyom az álom.[/p]
         </text>
       </after>
+    </itemCheck>
+    <itemCheck type="item" id="5004">
+      <have>
+        <add to="stamina" amount="-3" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="5006">
+      <have>
+        <add amount="-3" to="stamina" />
+        <add amount="-1" to="skill" />
+      </have>
     </itemCheck>
     <next id="384"></next>
   </p>
@@ -777,7 +904,76 @@
   <!-- 311 -->
   <!-- 312 -->
   <!-- 313 -->
-  <!-- 314 -->
+  <p id="314">
+    <text>
+        [p]- Állj! - kiáltja az egyik Szatírnő. - Nem távozhatsz, amíg engedélyt nem adunk rá! - Lépteidet vad rohanás váltja fel, immáron futva folytatod az utad az ösvényen. A lények előrántják fadárdáikat, és utánad hajítják, miközben menekülni próbálsz előlük.[/p]
+    </text>
+    <random diceConfig="2d6">
+      <result max="6" min="1" allSame="false">
+        <text>
+            [p]Az első dárda eltalált, és 3 életerő pontot sebzett rajtad.[/p]
+        </text>
+        <add amount="-3" to="stamina" />
+        <random diceConfig="2d6">
+          <result max="6" min="1" allSame="false">
+            <text>
+                [p]A második dárda eltalált, és 3 életerő pontot sebzett rajtad.[/p]
+                [p]A Szatírnők nem követnek tovább, így folytathatod a küldetésed teljesítését.[/p]
+            </text>
+            <add amount="-3" to="stamina" />
+            <next id="441"></next>
+          </result>
+          <result max="12" min="7" allSame="false">
+            <text>
+                [p]A második dárda elvétett.[/p]
+                [p]A Szatírnők nem követnek tovább, így folytathatod a küldetésed teljesítését.[/p]
+            </text>
+            <next id="441"></next>
+          </result>
+          <result min="1" max="12" allSame="true">
+            <text>
+                [p]A dárda pontosan a hátad közepébe fúródik, és azonnal megöl.[/p]
+            </text>
+            <death />
+          </result>
+        </random>
+      </result>
+      <result max="12" min="7" allSame="false">
+        <text>
+            [p]Az első dárda elvétett.[/p]
+        </text>
+        <random diceConfig="2d6">
+          <result max="6" min="1" allSame="false">
+            <text>
+                [p]A második dárda eltalált, és 3 életerő pontot sebzett rajtad.[/p]
+                [p]A Szatírnők nem követnek tovább, így folytathatod a küldetésed teljesítését.[/p]
+            </text>
+            <add amount="-3" to="stamina" />
+            <next id="441"></next>
+          </result>
+          <result max="12" min="7" allSame="false">
+            <text>
+                [p]A második dárda elvétett.[/p]
+                [p]A Szatírnők nem követnek tovább, így folytathatod a küldetésed teljesítését.[/p]
+            </text>
+            <next id="441"></next>
+          </result>
+          <result min="1" max="12" allSame="true">
+            <text>
+                [p]A dárda pontosan a hátad közepébe fúródik, és azonnal megöl.[/p]
+            </text>
+            <death />
+          </result>
+        </random>
+      </result>
+      <result min="1" max="12" allSame="true">
+        <text>
+            [p]A dárda pontosan a hátad közepébe fúródik, és azonnal megöl.[/p]
+        </text>
+        <death />
+      </result>
+    </random>
+  </p>
   <!-- 315 -->
   <!-- 316 -->
   <!-- 317 -->
@@ -890,7 +1086,55 @@
   </p>
   <!-- 340 -->
   <!-- 341 -->
-  <!-- 342 -->
+  <p id="342">
+    <text>
+        [p]Mikor már biztonságba vagy, nyugodtan megtervezed az utad következő szakaszát. Az éjszaka nincs már messze és fáradt is vagy. A legjobb lesz, ha találsz egy jól védett sarkot, ahol lefeküdhetsz és kipihenheted magad. Körbesétálsz, és találsz egy megfelelő barlangot, mely üresnek tűnik.[/p]
+        [p]Elalvás előtt, ha akarsz, ehetsz. Az evéstől
+    </text>
+    <canEat />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>2</text>
+        <changeItem attribute="stamina" id="2000" set="2" />
+      </have>
+      <dontHave>
+        <text>1</text>
+        <changeItem attribute="stamina" id="2000" set="1" />
+      </dontHave>
+      <after>
+        <text>
+            ÉLETERŐ pontot kapsz. Ezután lefekszel és elalszol.[/p]
+            [p]Az álmaid elevenek és ijesztőek. Meglehet, hogy Mampang hat rád ily módon. Éjszaka többször is felriadsz hideg verítékben fürödve. Alig tudsz pihenni, forgolódsz és fészkelődsz egész éjjel.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <itemCheck type="item" id="5004">
+      <have>
+        <add to="stamina" amount="-3" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="5006">
+      <have>
+        <add amount="-3" to="stamina" />
+        <add amount="-1" to="skill" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4104">
+      <have>
+        <itemCheck type="section" id="293">
+          <have>
+            <next id="247"></next>
+          </have>
+          <dontHave>
+            <next id="113"></next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="439"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 343 -->
   <!-- 344 -->
   <!-- 345 -->
@@ -971,7 +1215,12 @@
     </itemCheck>
   </p>
   <!-- 367 -->
-  <!-- 368 -->
+  <p id="368">
+    <text>
+        [p]Teljes erőből rohansz. Előtted egy nagy szikla pihen, mely legalább egy kevés fedezéket tud nyújtani a kőomlás ellen. Előre szaladsz, majd nagyokat zihálva letérdelsz mögé. Fejed fölött a földcsuszamlás egyre erősebbé válik. Kövek röpködnek körülötted, néhány kisebb darab fájdalmasan fejbe és hátba is csap. Hirtelen recsegő hangot hallasz, de már csak annyi időd van, hogy felismerd a veszélyt - semmit nem tudsz tenni az ellen, hogy a sors végezzen veled. A recsegő hang a hatalmas sziklából jön, ami a csuszamlás erejének engedelmeskedve megindul a szakadék irányába. Még sikerül félreugranod, hogy ne rajtad guruljon végig, de ezzel kitetted magad a kőomlásnak. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 369 -->
   <!-- 370 -->
   <p id="371">
@@ -1041,7 +1290,22 @@
   </p>
   <!-- 385 -->
   <!-- 386 -->
-  <!-- 387 -->
+  <p id="387">
+    <text>
+        [p]A következő feladatod, hogy gyorsan levágd a másik Őrt is, aki épp leemeli a kürtöt a falról.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Varázslat elmondására most nincs idő.[/p]
+        </text>
+      </have>
+    </itemCheck>
+    <fight type="single">
+      <enemy id="5" />
+    </fight>
+    <next id="219"></next>
+  </p>
   <!-- 388 -->
   <!-- 389 -->
   <!-- 390 -->
@@ -1054,7 +1318,12 @@
   <!-- 397 -->
   <!-- 398 -->
   <!-- 399 -->
-  <!-- 400 -->
+  <p id="400">
+    <text>
+        [p]Nagyot nyelsz, majd nekifutsz a szakadéknak és elrugaszkodsz a széléről. Jó ugrás volt, de a szakadék olyan széles, hogy azt ember át nem hidalhatja. Ujjaid a sziklafal oldalába marnak, te pedig csak zuhansz, zuhansz, egyenesen a halálodba. Elbuktad küldetésed.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 401 -->
   <!-- 402 -->
   <!-- 403 -->
@@ -1170,11 +1439,49 @@
   <!-- 432 -->
   <!-- 433 -->
   <!-- 434 -->
-  <!-- 435 -->
+  <p id="435">
+    <text>
+        [p]A szemed elkerekedik, amint belenézel a zsákba. Számos olyan tárgyat látsz benne, melyeket a varázslataidhoz tudsz használni! Annyi tárgyat vihetsz el, amennyit csak akarsz, mindössze arra kell ügyelned, hogy mindegyik helyébe adjál valamit a felszerelésedből (pénzt és élelmet nem fogadnak el). Az alábbiakat találod a zsákban:[/p]
+        [table data-replace-excempt="2000,2002" id="satyrExchange"]
+          [tr]
+            [td][span class="replaceItem" data-id="3076" data-amount="1"]Tüzes Víz[/span][/td]
+            [td][span class="replaceItem" data-id="3058" data-amount="1"]Rézinga[/span][/td]
+          [/tr]
+          [tr]
+            [td][span class="replaceItem" data-id="3035" data-amount="1"]Napékszer[/span][/td]
+            [td][span class="replaceItem" data-id="3057" data-amount="1"]Kristálygömb[/span][/td]
+          [/tr]
+          [tr]
+            [td][span class="replaceItem" data-id="3059" data-amount="1"]Igazgyöngy Gyűrű[/span][/td]
+            [td][span class="replaceItem" data-id="3083" data-amount="1"]Narancs Por[/span][/td]
+          [/tr]
+          [tr]
+            [td][span class="replaceItem" data-id="3018" data-amount="1"]Egy pár Orrdugó[/span][/td]
+          [/tr]
+        [/table]
+        [p]Miután végzel a csereberéléssel, távozol a faluból.[/p]
+    </text>
+    <next id="441"></next>
+  </p>
   <!-- 436 -->
   <!-- 437 -->
   <!-- 438 -->
-  <!-- 439 -->
+  <p id="439">
+    <text>
+        [p]Rémálmaid közé azonban szerencsére egy megnyugtató álom keveredik. Istennőd, Libra megnyugtató arca jelenik meg és lágy hangon megszólal.[/p]
+        [p]-    Hűséges követőm, fáradtságos utad vége már elérhető közelségben van. A Mampang Erődön belül rengeteg veszély leselkedik rád, de eddigi tetteid bebizonyították, érdemes vagy a küldetés teljesítésére. Érdeklődéssel, időnként pedig félelemmel a szívemben követtem utadat. Azonban eddigi utad során mindig sikerrel jártál. És ehhez nem kellett sokat segítenem sem.[/p]
+        [p]-    A következő, végső üzenetem van a számodra. Könnyen lehet, hogy ez az utolsó segítség, amelyet számodra nyújthatok, mert az alvilági istenek, melyek Mampangot vigyázzák, annyira erősek, hogy még engem is képesek távol tartani. Az igazat megvallva magam is veszélyben vagyok már csak amiatt is, hogy hozzád beszélek. [em]Nem tudok segíteni rajtad, amíg az Erőd belsejében vagy.[/em][/p]
+        [p]-    Mivel az alvilági istenek védik Mampangot, ezért titkait kevesek ismerik. Egyet azonban elmondhatok: egy emberöltővel ezelőtt egy másik követőmnek sikerült megszöknie egy titkos alagúton át. Felfedezte a jelszót, amivel kinyílik az alagutat lezáró titkos ajtó. Ezt most megsúgom neked. - Istennőd lágyan egy szót suttog halkan a füledbe.[/p]
+    </text>
+    <itemCheck type="section" id="293">
+      <have>
+        <next id="147"></next>
+      </have>
+      <dontHave>
+        <next id="113"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 440 -->
   <p id="441">
     <text>
@@ -1281,7 +1588,15 @@
   <!-- 484 -->
   <!-- 485 -->
   <!-- 486 -->
-  <!-- 487 -->
+  <p id="487">
+    <text>
+        [p]Miközben a társa lefoglal téged, az őr leakasztja a kürtöt a falról és teli tüdőből belefúj. Tekinteted elborul. Riadó! Az erősítést azonnal küldeni fogják! Gyorsan le kell vágnod ezt a másodikat is, és el kell rejtőznöd valahol.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="5" />
+    </fight>
+    <next id="577"></next>
+  </p>
   <!-- 488 -->
   <!-- 489 -->
   <p id="490">
@@ -1312,7 +1627,13 @@
   <!-- 500 -->
   <!-- 501 -->
   <!-- 502 -->
-  <!-- 503 -->
+  <p id="503">
+    <text>
+        [p]A [span class="takeItem" data-id="3084" data-amount="1"]bedugaszolt üveg[/span] felkelti a kíváncsiságodat. Megkérdezed, mi van benne, közben pedig elkezded kihúzni a dugót. - Várj! Ne! - kiáltja Sh’houri. - Nem szabad kiengedned a szellemet! - Gyorsan leteszed az üveget. - Ne félj, barátom - folytatja Sh’houri. - A szellemnek mindig tanácsot kell adnia, és egyáltalán nem ellenséges. Az üvegben egy hozzád hasonló, ámde régóta eltávozott utazó lelke pihen Dzsinn formájában. Hozzánk nem beszél, mivel mi nem az ő fajtája vagyunk. De ha magaddal akarod vinni az üveget, biztos vagyok benne, hogy a szellemtől hasznos tanácsot fogsz kapni a megfelelő pillanatban. Mivel a szellemet mi nem tudjuk használni, fizetség nélkül is elviheted. - A jövőben csak egyetlen egyszer használhatod a Dzsinn segítségét.[/p]
+        [p]Ezután köszönetet mondasz a Szatírnőknek segítségükért és elhagyod a falujukat.[/p]
+    </text>
+    <next id="441"></next>
+  </p>
   <!-- 504 -->
   <!-- 505 -->
   <!-- 506 -->
@@ -1447,7 +1768,26 @@
   <!-- 548 -->
   <!-- 549 -->
   <!-- 550 -->
-  <!-- 551 -->
+  <p id="551">
+    <text>
+        [p class="inlineImage"][img src="resources/sor4/551.jpg" /][/p]
+        [p]Elindulsz a szakadék mellett futó ösvényen, de most már az Erőd felőli oldalon. Hirtelen dübörgő hangot hallasz, úgyhogy gyorsan körbepillantasz. Sem magad előtt, sem pedig a hátad mögött nem látsz semmit, de amikor felnézel, meghűl a vér az ereidben. Magasan fenn a hegyoldalban kövek kezdenek legördülni! Te pedig éppen a kőomlás útjában vagy! Gyorsan el kell döntened, mint tegyél.[/p]
+    </text>
+    <next id="368">Ha rohanni kezdesz, remélvén, hogy még időben kiérsz a veszélyeztetett területről</next>
+    <next id="400">Ha összeszeded minden bátorságodat és átugrasz a szakadék másik oldalára, arra az útra, amelyiken korábban jöttél</next>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Hogyha akarsz, elmondhatsz egy varázslatot - de ha a varázslat nem bizonyul hatékonynak, már nem lesz időd a menekülésre![/p]
+        </text>
+        <spell name="BŰZ" id="624" />
+        <spell name="FUJ" id="731" />
+        <spell name="FÉM" id="654" />
+        <spell name="FAL" id="751" />
+        <spell name="POR" id="617" />
+      </have>
+    </itemCheck>
+  </p>
   <!-- 552 -->
   <!-- 553 -->
   <!-- 554 -->
@@ -1465,7 +1805,13 @@
   <!-- 561 -->
   <!-- 562 -->
   <!-- 563 -->
-  <!-- 564 -->
+  <p id="564">
+    <text>
+        [p data-replace-excempt="2000,2002"]A zsákban számos [span class="replaceItem" data-id="2006" data-amount="4"]gyógyhatású gyümölcs[/span] hever. Legfeljebb négy darabot vehetsz el közülük, de mindegyikért cserébe itt kell hagynod egy-egy tárgyadat (ami nem lehet étel, sem pedig pénz). Minden egyes gyümölcsöt - értelemszerűen - csak egyszer fogyaszthatsz el, de ekkor 4 életerő pontot gyógyít rajtad. Harc kivételével bármikor ehetsz belőlük. Látsz még egy bedugaszolt üveget is.[/p]
+    </text>
+    <next id="503">Ha ezért is szeretnél adni cserébe valamit</next>
+    <next id="441">Ha inkább nem viszed magaddal az üveget, búcsút intesz a Szatírnőknek és továbbindulsz</next>
+  </p>
   <!-- 565 -->
   <!-- 566 -->
   <!-- 567 -->
@@ -1484,7 +1830,13 @@
   </p>
   <!-- 575 -->
   <!-- 576 -->
-  <!-- 577 -->
+  <p id="577">
+    <text>
+        [p]A két őr ugyan holtan fekszik a lábad előtt, mégis igen levert vagy. Sikerült riadót fújniuk! Az Erőd felé pillantasz és elkeseredetten leereszted a fegyvered. A várfal oromzatáról hatalmas, szárnyas lények szállnak feléd. Madáremberek! És túl sokan vannak ahhoz, hogy eredményesen felvehesd ellenük a harcot. Úgy döntesz, a legjobb az lesz, ha elrejtőzöl és visszarohansz a hágóhoz. Ahogy megfordulsz, megremeg a föld és nagy robajjal hatalmas vasrács emelkedik ki előtted a talajból a kapunál! A másik irányba fordulsz, a fennsík felé, de újabb robaj következik. A föld szétválik előtted. Átugrasz a repedésen, de ebben a pillanatban egy másik vasrács vágódik ki a repedésből. Felkiáltasz fájdalmadban, amint az egyik tűhegyes vasrúd átszúrja a lábadat.[/p]
+        [p]Reménytelen jövő elé nézel. Súlyos sebet kaptál, a Madáremberek pedig hamar megérkeznek. Elbuktad a küldetésedet.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 578 -->
   <!-- 579 -->
   <!-- 580 -->
@@ -1586,7 +1938,13 @@
   <!-- 614 -->
   <!-- 615 -->
   <!-- 616 -->
-  <!-- 617 -->
+  <p id="617">
+    <text>
+        [p]Vesztesz 1 életerő pontot. A varázslatnak nincs hatása, mivel nem képes arra, hogy megállítsa a közeledő kőomlást. Vesztesz 2 életerő pontot, mert egy nagyobb darab kő fejbe talált. Úgy döntesz, hogy mégis megkockáztatod, hogy elfuss a lavina elől. Rohanni kezdesz előre az ösvényen.[/p]
+    </text>
+    <add to="stamina" amount="-3" />
+    <next id="368"></next>
+  </p>
   <!-- 618 -->
   <!-- 619 -->
   <p id="620">
@@ -1600,7 +1958,27 @@
   <!-- 621 -->
   <!-- 622 -->
   <!-- 623 -->
-  <!-- 624 -->
+  <p id="624">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot. A varázslat hatására förtelmes bűz kezd terjengem a levegőben.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3018">
+      <have>
+        <text>
+            [p]Az orrdugasznak köszönhetően terád nem hat a bűz. Ezzel együtt nem sok hasznát veszed a varázslatnak, tekintettel arra, hogy a kőomlást ez nem szüntette meg. Az egyetlen menekvés, ha nyakadba veszed a lábad, és rohanni kezdesz.[/p]
+        </text>
+        <next id="368"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Téged is telibe kap a gyomorkavaró szag, és kénytelen vagy elmenekülni - vesztesz 2 életerő pontot.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="400"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="625">
     <text>
         [p]Felteszed a Parókát, és elmondod a varázslatot. Az üvöltés ismét felhangzik a barlang mélyéről, de ezúttal már az értelmét is ki tudod venni. Az a valami odabent védeni próbálja az odúját! Beszélsz hozzá egy kicsit, és hamar rájössz, hogy egy Jib-Jibbel van dolgod. Ezek apró, szőrös kis lények, melyek teljesen ártalmatlanok, ám iszonytató hangjuk van, amivel elriasszák ellenfeleiket. Közlöd a kis lénnyel, hogy az éjszakát a barlangban szándékozod eltölteni. Nemsokára neszezést hallasz, és egy kis szőrpamacs - nem nagyobb egy fej káposztánál - surran ki a barlangból és veti be magát a növények közé. Bemászol a meglehetősen alacsony barlangba.[/p]
@@ -1683,7 +2061,27 @@
   <!-- 651 -->
   <!-- 652 -->
   <!-- 653 -->
-  <!-- 654 -->
+  <p id="654">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3077">
+      <have>
+        <text>
+            [p]Felhúzod az ujjadra a Zöld Fémgyűrűt, és elmondod a varázsigét. Azonnal eltűnsz a helyszínről, és kicsivel odébb jelensz meg újra. A varázslat működön ugyan, de rémülten eszmélsz rá, hogy ezzel csak még közelebb kerültél a kőomlás központjához! Nincs más választásod, kénytelen vagy megpróbálni átugrani a szakadék túloldalára.[/p]
+        </text>
+        <next id="400"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik, és a legördülő kövek 3 életerő pontot sebeznek rajtad.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="368"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 655 -->
   <!-- 656 -->
   <!-- 657 -->
@@ -1947,7 +2345,27 @@
   <!-- 728 -->
   <!-- 729 -->
   <!-- 730 -->
-  <!-- 731 -->
+  <p id="731">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3061">
+      <have>
+        <text>
+            [p]Elmondod a varázslatot, és belefújsz a Viharkürtbe. Elképesztő erejű, viharos szelet fújsz felfelé a kövekkel szemben. Hiába nagy azonban a szél ereje, annyira nem erős, hogy a legördülő, tonnányi súlyú szikladarabokat visszatartsa. Már csak egyetlen menekülési út maradt számodra - ha átugrasz a szakadék túlsó oldalára.[/p]
+        </text>
+        <next id="400"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik, és a lehulló kövek 2 életerő pontot sebeznek rajtad.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="368"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 732 -->
   <!-- 733 -->
   <!-- 734 -->
@@ -1987,7 +2405,13 @@
   <!-- 748 -->
   <!-- 749 -->
   <!-- 750 -->
-  <!-- 751 -->
+  <p id="751">
+    <text>
+        [p]Vesztesz 4 életerő pontot. Elmondod a varázslatot, és egy láthatatlan pajzsot készítesz az ösvény fölé. A leomló kövek megakadnak az erőtérben, és felhalmozódnak egymás fölött. A pajzs megremeg, amint a szikladarabok egyre többen lesznek, ezért úgy döntesz, a legjobb, ha futásnak eredsz, mielőtt az egész a fejedre omolna. Kicsit odébb mész az ösvényen, amikor is egy széles hasadékhoz érkezel a sziklafalban, mely fölölt egy keskeny híd ível át.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="411"></next>
+  </p>
   <!-- 752 -->
   <!-- 753 -->
   <!-- 754 -->
@@ -2106,6 +2530,7 @@
   <p id="788">
     <text>
         [p]Vesztesz 2 életerő pontot. Előhúzol egy tárgyat a hátizsákodból, és rámondod a varázslatot.[/p]
+        [div data-market=""][/div]
     </text>
     <add amount="-2" to="stamina" />
     <market mustGiveUp="1">
