@@ -68,6 +68,9 @@ public abstract class AbstractBookItemTransformer extends AbstractTransformer im
         try {
             itemType = ItemType.valueOf(type);
             createdItem = getItem(id, name, itemType);
+            if ("defWpn".equals(id)) {
+                createdItem.getEquipInfo().setRemovable(false);
+            }
             if (subType != null) {
                 weaponSubType = WeaponSubType.valueOf(subType);
                 createdItem.setSubType(weaponSubType);
