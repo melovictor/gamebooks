@@ -341,7 +341,7 @@ $(function() {
 		.on("click", "#gamebookCharacterPageWrapper:not(.dropping) [data-items]:not([data-offer-for-replacement]) [data-item-equippable='true']", inventory.changeEquip)
 		.on("click", "#gamebookCharacterPageWrapper:not(.dropping) [data-items]:not([data-offer-for-replacement]) [data-item-provision],[data-items]:not([data-offer-for-replacement]) [data-item-potion]", inventory.consume)
 
-		.on("click", "[data-items][data-offer-for-replacement] [data-item-id]:not([data-item-removable='false'])", inventory.replaceItemWith);
+		.on("click", "[data-items][data-offer-for-replacement] [data-item-id]:not([data-item-removable='false']):not([data-not-replace-candidate])", inventory.replaceItemWith);
 	$("#preFightItems")
 		.on("click", "[data-item-id]", ff.useBeforeFight);
 	market.init();

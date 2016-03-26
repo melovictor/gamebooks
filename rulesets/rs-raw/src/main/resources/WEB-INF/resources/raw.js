@@ -57,6 +57,13 @@ var inventory = (function() {
 		showInventory(null, null, true);
 		$itemToGather = $(this);
 		$("[data-items]").attr("data-offer-for-replacement", "");
+		var $exemptions = $itemToGather.closest("[data-replace-excempt]");
+		if ($exemptions.length > 0) {
+			var noReplace = $exemptions.data("replace-excempt").split(",");
+			$(noReplace).each(function(idx, itemId) {
+				$("[data-item-id='" + itemId + "']").attr("data-not-replace-candidate", "");
+			});
+		}
 	}
 	function replaceItemWith() {
 		$("[data-offer-for-replacement]").removeAttr("data-offer-for-replacement");
@@ -75,6 +82,7 @@ var inventory = (function() {
 		inventoryAnimationOngoing = false;
 		takeItemCall("replace", $itemToGather, amount, data);
 		$itemToGather = null;
+		$("[data-not-replace-candidate]").removeAttr("data-not-replace-candidate");
 	}
 	
 	function takeItem(event, url, baseData) {
