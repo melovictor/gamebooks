@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://gamebooks.zagor.hu"
-  version="1.0" xmlns="http://gamebooks.zagor.hu">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://gamebooks.zagor.hu" version="1.0" xmlns="http://gamebooks.zagor.hu">
 
   <xs:complexType name="randomType">
     <xs:choice minOccurs="1" maxOccurs="unbounded">
@@ -13,8 +12,8 @@
             </xs:element>
             <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
           </xs:choice>
-          <xs:attribute name="min" use="required" />
-          <xs:attribute name="max" use="required" />
+          <xs:attribute name="min" use="required" type="xs:string" />
+          <xs:attribute name="max" use="required" type="xs:string" />
         </xs:complexType>
       </xs:element>
       <xs:element name="even" minOccurs="0" maxOccurs="1">
@@ -25,15 +24,16 @@
             </xs:element>
             <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
           </xs:choice>
-          <xs:attribute name="min" use="required" />
-          <xs:attribute name="max" use="required" />
+          <xs:attribute name="min" use="required" type="xs:string" />
+          <xs:attribute name="max" use="required" type="xs:string" />
         </xs:complexType>
       </xs:element>
       <xs:element name="result" minOccurs="0" maxOccurs="unbounded">
         <xs:complexType>
           <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
-          <xs:attribute name="min" use="required" />
-          <xs:attribute name="max" use="required" />
+          <xs:attribute name="min" use="required" type="xs:string" />
+          <xs:attribute name="max" use="required" type="xs:string" />
+          <xs:attribute name="allSame" use="optional" type="xs:boolean" />
         </xs:complexType>
       </xs:element>
       <xs:element name="resultElse" minOccurs="0" maxOccurs="1">

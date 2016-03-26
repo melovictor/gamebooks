@@ -15,6 +15,7 @@ public class RandomResult implements Cloneable {
     private String min;
     private String max;
     private ParagraphData paragraphData;
+    private Boolean allSame;
 
     public ParagraphData getParagraphData() {
         return paragraphData;
@@ -47,6 +48,14 @@ public class RandomResult implements Cloneable {
 
     public void setMax(final String max) {
         this.max = max;
+    }
+
+    public Boolean isAllSame() {
+        return allSame;
+    }
+
+    public void setAllSame(final boolean allSame) {
+        this.allSame = allSame;
     }
 
 }

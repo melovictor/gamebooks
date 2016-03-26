@@ -104,7 +104,7 @@ public class RandomCommandResolver extends TypeAwareCommandResolver<RandomComman
 
         prepare(messages, command, locale);
         for (final RandomResult result : command.getResults()) {
-            if (expressionResolver.resolveValue(character, result.getMin()) <= diceResult && diceResult <= expressionResolver.resolveValue(character, result.getMax())) {
+            if (resultMatchesDiceRoll(character, diceResults, result)) {
                 responseList.add(result.getParagraphData());
                 foundResult = true;
             }
@@ -120,6 +120,31 @@ public class RandomCommandResolver extends TypeAwareCommandResolver<RandomComman
         }
 
         return responseList;
+    }
+
+    private boolean resultMatchesDiceRoll(final Character character, final int[] diceResults, final RandomResult result) {
+        return lowerRangeMatches(character, diceResults, result) && higherRangeMatches(character, diceResults, result) && diceSamenessMatches(diceResults, result);
+    }
+
+    private boolean diceSamenessMatches(final int[] diceResults, final RandomResult result) {
+        return result.isAllSame() == null || (result.isAllSame() && rolledDices(diceResults, true)) || (!result.isAllSame() && !rolledDices(diceResults, true));
+    }
+
+    private boolean higherRangeMatches(final Character character, final int[] diceResults, final RandomResult result) {
+        return diceResults[0] <= expressionResolver.resolveValue(character, result.getMax());
+    }
+
+    private boolean lowerRangeMatches(final Character character, final int[] diceResults, final RandomResult result) {
+        return expressionResolver.resolveValue(character, result.getMin()) <= diceResults[0];
+    }
+
+    private boolean rolledDices(final int[] diceResults, final boolean shouldBeSame) {
+        boolean rollsAreTheSame = true;
+        final int roll = diceResults[1];
+        for (int i = 2; i < diceResults.length; i++) {
+            rollsAreTheSame &= roll == diceResults[i];
+        }
+        return rollsAreTheSame == shouldBeSame;
     }
 
     private void prepare(final List<String> messages, final RandomCommand command, final Locale locale) {

@@ -21,6 +21,10 @@ public class RandomResultTransformer extends AbstractCommandSubTransformer<Rando
 
         randomResult.setMin(extractAttribute(node, "min"));
         randomResult.setMax(extractAttribute(node, "max"));
+        final String allSame = extractAttribute(node, "allSame");
+        if (allSame != null) {
+            randomResult.setAllSame(Boolean.parseBoolean(allSame));
+        }
 
         final ParagraphData paragraphData = parent.parseParagraphData(positionCounter, node);
         randomResult.setParagraphData(paragraphData);

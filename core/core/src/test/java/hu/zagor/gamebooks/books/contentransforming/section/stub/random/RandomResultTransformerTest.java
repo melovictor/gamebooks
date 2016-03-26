@@ -63,6 +63,7 @@ public class RandomResultTransformerTest extends AbstractTransformerTest {
         expect(beanFactory.getBean(RandomResult.class)).andReturn(randomResult);
         expectAttribute("min", "1");
         expectAttribute("max", "3");
+        expectAttribute("allSame");
         expect(parent.parseParagraphData(positionCounter, node)).andReturn(paragraphData);
         mockControl.replay();
         // WHEN
@@ -71,6 +72,7 @@ public class RandomResultTransformerTest extends AbstractTransformerTest {
         Assert.assertSame(command.getResults().get(0), randomResult);
         Assert.assertEquals(randomResult.getMin(), "1");
         Assert.assertEquals(randomResult.getMax(), "3");
+        Assert.assertNull(randomResult.isAllSame());
         Assert.assertSame(randomResult.getParagraphData(), paragraphData);
     }
 
