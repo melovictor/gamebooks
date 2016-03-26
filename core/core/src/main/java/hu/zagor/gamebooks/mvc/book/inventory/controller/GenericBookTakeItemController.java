@@ -19,7 +19,6 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,6 +47,24 @@ public class GenericBookTakeItemController extends AbstractRequestWrappingContro
         Assert.isTrue(data.getAmount() > 0, "The parameter 'amount' must be positive!");
 
         return doHandleItemTake(request, data.getItemId(), data.getAmount());
+    }
+
+    /**
+     * Method for handling the replacement of items through the displayed text.
+     * @param request the http request
+     * @param data the {@link ReplaceItemData} object containing the incoming parameters
+     * @return the amount of items successfully taken
+     */
+    @RequestMapping(value = PageAddresses.BOOK_REPLACE_ITEM, method = RequestMethod.POST)
+    @ResponseBody
+    public final String handleItemReplace(final HttpServletRequest request, final ReplaceItemData data) {
+        Assert.notNull(data.getLoseId(), "The parameter 'oldItemId' cannot be null!");
+        Assert.isTrue(!data.getLoseId().isEmpty(), "The parameter 'newItemId' cannot be empty!");
+        Assert.notNull(data.getGatherId(), "The parameter 'itemId' cannot be null!");
+        Assert.isTrue(!data.getGatherId().isEmpty(), "The parameter 'newItemId' cannot be empty!");
+        Assert.isTrue(data.getAmount() > 0, "The parameter 'amount' must be positive!");
+
+        return doHandleItemReplace(request, data.getLoseId(), data.getGatherId(), data.getAmount());
     }
 
     /**
@@ -92,24 +109,6 @@ public class GenericBookTakeItemController extends AbstractRequestWrappingContro
         final PlayerUser player = wrapper.getPlayer();
         final Paragraph paragraph = wrapper.getParagraph();
         contentInitializer.validateItem(glItem, player, paragraph, getInfo());
-    }
-
-    /**
-     * Method for handling the replacement of items through the displayed text.
-     * @param request the http request
-     * @param data the {@link ReplaceItemData} object containing the incoming parameters
-     * @return the amount of items successfully taken
-     */
-    @RequestMapping(value = PageAddresses.BOOK_REPLACE_ITEM, consumes = "application/json", method = RequestMethod.POST)
-    @ResponseBody
-    public final String handleItemReplace(final HttpServletRequest request, @RequestBody final ReplaceItemData data) {
-        Assert.notNull(data.getLoseId(), "The parameter 'oldItemId' cannot be null!");
-        Assert.isTrue(!data.getLoseId().isEmpty(), "The parameter 'newItemId' cannot be empty!");
-        Assert.notNull(data.getGatherId(), "The parameter 'itemId' cannot be null!");
-        Assert.isTrue(!data.getGatherId().isEmpty(), "The parameter 'newItemId' cannot be empty!");
-        Assert.isTrue(data.getAmount() > 0, "The parameter 'amount' must be positive!");
-
-        return doHandleItemReplace(request, data.getLoseId(), data.getGatherId(), data.getAmount());
     }
 
     /**

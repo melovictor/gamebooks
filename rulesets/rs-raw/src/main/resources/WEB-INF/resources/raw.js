@@ -94,7 +94,7 @@ var inventory = (function() {
 		$.ajax({
 			url : url,
 			data : data,
-			method : "POST",
+			method : "POST"
 		}).done(function(totalTaken) {
 			if (amount == totalTaken) {
 				unbind(that);
