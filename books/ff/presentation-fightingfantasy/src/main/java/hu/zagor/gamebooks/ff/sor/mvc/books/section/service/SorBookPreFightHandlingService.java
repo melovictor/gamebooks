@@ -27,6 +27,8 @@ public class SorBookPreFightHandlingService extends EnemyDependentFfBookPreFight
     private static final String CHAIN_ID = "3044";
     private static final String CHAKRAM_ID = "3055";
     private static final String CRYSTAL_BALL = "3060";
+    private static final String ROCKS_ID = "3019a";
+    private static final String ROCKS_NORMAL_ID = "3019";
     @Autowired private DiceResultRenderer renderer;
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
 
@@ -38,6 +40,8 @@ public class SorBookPreFightHandlingService extends EnemyDependentFfBookPreFight
         FfItem usedItem = null;
         if (THROWING_DARTS_ID.equals(itemId)) {
             handleThrowingDarts(info, wrapper);
+        } else if (ROCKS_ID.equals(itemId)) {
+            handleRocks(info, wrapper);
         } else if (CHAKRAM_ID.equals(itemId)) {
             usedItem = handleChakram(info, wrapper);
         } else if (CHAIN_ID.equals(itemId)) {
@@ -46,6 +50,25 @@ public class SorBookPreFightHandlingService extends EnemyDependentFfBookPreFight
             handleCrystalBallThrowing(info, wrapper);
         }
         return usedItem;
+    }
+
+    private void handleRocks(final FfBookInformations info, final HttpSessionWrapper wrapper) {
+        final int[] rollResult = generator.getRandomNumber(2);
+        final ParagraphData data = wrapper.getParagraph().getData();
+        final SorCharacter character = (SorCharacter) wrapper.getCharacter();
+        final FfCharacterHandler characterHandler = info.getCharacterHandler();
+        final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
+        final FfEnemy enemy = getEnemy(wrapper, info);
+        characterHandler.getItemHandler().removeItem(character, ROCKS_ID, 1);
+        characterHandler.getItemHandler().removeItem(character, ROCKS_NORMAL_ID, 1);
+        if (attributeHandler.resolveValue(character, "skill") > rollResult[0]) {
+            recordRollResult(rollResult, data, "success");
+            appendText(data, "page.sor.rockHit", enemy.getCommonName());
+            enemy.setStamina(enemy.getStamina() - 1);
+        } else {
+            recordRollResult(rollResult, data, "failure");
+            appendText(data, "page.sor.rockMissed", enemy.getCommonName());
+        }
     }
 
     private void handleCrystalBallThrowing(final FfBookInformations info, final HttpSessionWrapper wrapper) {

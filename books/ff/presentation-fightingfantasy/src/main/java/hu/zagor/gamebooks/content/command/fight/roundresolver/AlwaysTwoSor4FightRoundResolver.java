@@ -7,13 +7,14 @@ import hu.zagor.gamebooks.content.command.fight.roundresolver.service.SorDamageR
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 /**
- * All at once fight round resolver for Sor.
+ * Sor-specific fight round resolver for fighting always two bad guys.
  * @author Tamas_Szekeres
  */
-public class AllAtOnceSorFightRoundResolver extends AllAtOnceFightRoundResolver {
-
+@Component("alwaysTwosor4FightRoundResolver")
+public class AlwaysTwoSor4FightRoundResolver extends AlwaysTwoFightRoundResolver {
     @Autowired private SorDamageReducingArmourService damageReducingArmourService;
     @Autowired @Qualifier("sorHeroAttackStrengthRoller") private HeroAttackStrengthRoller heroAttackStrengthRoller;
 
