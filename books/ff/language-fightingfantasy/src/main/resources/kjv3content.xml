@@ -194,6 +194,7 @@
     <text>
         [p]Előveszed az olajjal teli üveget, és várod, hogy a Sárkánykígyó támadjon. Köröz egy-kettőt a levegőben, majd lecsap rád. Gyorsan lehajolsz, és amikor a Sárkánykígyó a fejed fölé ér, rárázod az üveg tartalmát. Elámulsz a csodálkozástól, amikor az olaj hatását látod. Mielőtt még a teremtmény egy szót is szólhatna, az olaj apró, ártalmatlan vízcseppekre bontja a testét, mely esőként hullik a tóba. Sikerült legyőznöd a Vízkígyót.[/p]
     </text>
+    <loseItem id="3078" />
     <next id="75"></next>
   </p>
   <p id="15">
@@ -3144,6 +3145,7 @@
         [p]Minden neszre, minden mozgásra figyelve mész át a kopár síkságon. Lábad alatt hirtelen megmozdul a föld! Elveszted az egyensúlyodat és hanyatt esel.[/p]
     </text>
     <test against="luck">
+      <success></success>
       <failure>
         <itemCheck type="items" id="2001 or 3001 or 3017 or 3038 or 3039 or 3048 or 3074">
           <have>
@@ -3174,9 +3176,7 @@
           </dontHave>
         </itemCheck>
       </failure>
-    </test>
-    <itemCheck type="item" id="4999">
-      <dontHave>
+      <after>
         <text>
             [p]Amikor végre feltápászkodsz, riadtan veszed észre, hogy közvetlenül előtted megnyílik a föld, és előbb két hatalmas ollóban végződő kar nyúlik ki, majd a lyuk kiszélesedik, és egy óriási Baddu-Bogár bújik elő belőle, amely egyenesen feléd tart. [alt]Hogyan küzdesz meg vele?[/alt][/p]
         </text>
@@ -3189,8 +3189,8 @@
             <next id="286" singleChoiceText="Fegyvert rántasz."></next>
           </dontHave>
         </itemCheck>
-      </dontHave>
-    </itemCheck>
+      </after>
+    </test>
   </p>
   <p id="86">
     <empty />
@@ -5802,7 +5802,7 @@
   </p>
   <p id="222">
     <text>
-        [p]A Szikladémon a földre zuhan és apró darabokra törik. De harcotokat végignézte egy csuklyás alak.[/p]
+        [p]A Szikladémon a földre zuhan és apró darabokra törik. De harcotokat végignézte a csuklyás alak is.[/p]
     </text>
     <loseItem id="4008" amount="2" />
     <next id="104">Ha közelebb mész ehhez az alakhoz</next>

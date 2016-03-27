@@ -114,7 +114,7 @@ public class SorBookPreFightHandlingService extends EnemyDependentFfBookPreFight
         final FfCharacterHandler characterHandler = info.getCharacterHandler();
         final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
         final FfEnemy enemy = getEnemy(wrapper, info);
-        final FfItem item = (FfItem) characterHandler.getItemHandler().getItem(character, THROWING_DARTS_ID);
+        final FfItem item = (FfItem) characterHandler.getItemHandler().getItem(character, CHAKRAM_ID);
         if (attributeHandler.resolveValue(character, "skill") > rollResult[0]) {
             recordRollResult(rollResult, data, "success");
             appendText(data, "page.sor.chakramHit", enemy.getCommonName());
