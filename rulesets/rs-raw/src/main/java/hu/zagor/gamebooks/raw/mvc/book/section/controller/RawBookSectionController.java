@@ -169,7 +169,13 @@ public class RawBookSectionController extends GenericBookSectionController imple
             final String[] sectionPieces = sectionIdentifier.substring(2).split("\\|");
             final String sectionId = sectionPieces[0];
             final ChoiceSet choices = previousParagraph.getData().getChoices();
-            choice = choices.getChoiceById(sectionId);
+
+            if (sectionPieces.length == 2) {
+                final int pos = Integer.parseInt(sectionPieces[1]);
+                choice = choices.getChoiceByPosition(pos);
+            } else {
+                choice = choices.getChoiceById(sectionId);
+            }
             if (choice == null) {
                 if (!player.isTester()) {
                     getLogger().debug("Player tried to navigate to illegal section {}.", sectionId);
