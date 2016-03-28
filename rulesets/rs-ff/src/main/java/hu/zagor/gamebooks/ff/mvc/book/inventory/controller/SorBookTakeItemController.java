@@ -27,13 +27,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author Tamas_Szekeres
  */
 public class SorBookTakeItemController extends FfBookTakeItemController {
-    private static final int INITIAL_LUCK = 12;
+    private static final int INITIAL_LUCK = 20;
     private static final String MEDICINAL_POTION_ID = "2005";
     private static final String HUNGER_MARKER_ID = "4101";
     private static final String LIBRA_HELP_AVAILABLE_MARKER_ID = "4103";
     private static final String BOMBA_ID = "2002";
     private static final String LUCK_COOKIE_ID = "2003";
-    private static final int MAX_AMOUNT_OF_ATTRIBUTE_RESET = 24;
+    private static final int MAX_AMOUNT_OF_ATTRIBUTE_RESET = 30;
     private static final int REMOVED_HUNGER_MARKER_COUNT = 10;
 
     @Autowired private HttpServletRequest request;
@@ -137,6 +137,14 @@ public class SorBookTakeItemController extends FfBookTakeItemController {
             final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
             itemHandler.removeItem(character, "3072", 1);
             itemHandler.addItem(character, "3073", 1);
+        } else if ("3086".equals(itemId)) {
+            final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
+            final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
+            final SorCharacter character = (SorCharacter) getWrapper(request).getCharacter();
+            attributeHandler.handleModification(character, "initialLuck", 1);
+            attributeHandler.handleModification(character, "luck", INITIAL_LUCK);
+            final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
+            itemHandler.removeItem(character, "3086", 1);
         } else {
             super.doHandleItemStateChange(request, itemId, isEquipped);
         }
