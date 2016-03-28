@@ -2434,7 +2434,7 @@
         <changeEnemy attribute="staminaDamage" id="20" set="5" />
       </dontHave>
     </itemCheck>
-    <fight type="single">
+    <fight type="single" preFight="false">
       <enemy id="20" />
       <anyRound totalCount="1">
         <interrupt />
@@ -2452,7 +2452,7 @@
         </itemCheck>
         <changeEnemy attribute="stamina" id="20" change="-1" />
         <changeEnemy attribute="skill" id="20" change="-1" />
-        <fight type="single">
+        <fight type="single" preFight="false">
           <enemy id="20" />
           <winRound enemy="20" totalCount="1">
             <interrupt />
@@ -5684,7 +5684,7 @@
     <text>
         [p]Folytasd a küzdelmet.[/p]
     </text>
-    <fight type="single">
+    <fight type="single" preFight="false">
       <enemy id="8" />
       <loseRound enemy="8">
         <interrupt />
@@ -6667,12 +6667,12 @@
     <text>
         [p]Kardot rántasz, és várod a teremtmények támadását. A madarak nagy szárnycsapkodások közepette támadóvonalba fejlődnek, és lecsapni készülnek. Mivel igen gyorsan röpülnek, nehéz ellenfelek lesznek. Vívd meg velük a harcot.[/p]
     </text>
-    <fight type="allAtOnce">
+    <fight type="allAtOnce" forceOrder="true">
       <enemy id="1" />
       <enemy id="2" />
       <enemy id="3" />
       <enemy id="4" />
-      <anyRound totalCount="12">
+      <anyRound enemy="4" totalCount="3">
         <interrupt />
       </anyRound>
     </fight>
