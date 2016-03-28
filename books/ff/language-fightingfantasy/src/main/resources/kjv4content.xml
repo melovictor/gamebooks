@@ -954,7 +954,13 @@
   <!-- 161 -->
   <!-- 162 -->
   <!-- 163 -->
-  <!-- 164 -->
+  <p id="164">
+    <text>
+        [p]Az őrök csalódottak. Felajánlják, hogy kölcsönadnak neked 2 Aranytallért, ha megszorulnál, de ha győzöl, a nyereményedből 4 Aranyat kell majd visszafizetned nekik.[/p]
+    </text>
+    <next id="481">Ha belemész ebbe</next>
+    <next id="397">Ha nem érdekel a dolog</next>
+  </p>
   <p id="165">
     <text>
         [p]Magadhoz rögzíted a cuccaidat, majd megragadod a kötelet, és még egyszer ellenőrzöd, hogy elég stabilan van-e a fenti sziklához rögzítve. Hátralépsz egy párat, hogy röviden neki tudj futni. Utána nagy levegőt veszel, nekifutsz, és leugrasz a szegélyről. Ezután minden véget ér egy pillanat alatt.[/p]
@@ -2086,7 +2092,12 @@
     </fight>
   </p>
   <!-- 347 -->
-  <!-- 348 -->
+  <p id="348">
+    <text>
+        [p]Leszeded a lakat maradékát és felnyitod a kaloda tetejét. A széles orrú férfi nyakát és a csuklóját dörzsölgetve hátralép. Megköszöni neked a segítségedet, de a legjobban azzal van elfoglalva, nehogy valaki is észrevegye szökését. Ujjával egy csapat őrre mutat, akik a fal tövében valamiféle játékot játszanak. Abba az irányba fordítod a fejedet. Ebben a pillanatban ütést érzel a tarkódon és elveszted az eszméletedet.[/p]
+    </text>
+    <next id="418"></next>
+  </p>
   <!-- 349 -->
   <p id="350">
     <text>
@@ -2136,7 +2147,27 @@
   <!-- 359 -->
   <!-- 360 -->
   <!-- 361 -->
-  <!-- 362 -->
+  <p id="362">
+    <text>
+        [p]Megvizsgálod a kalodát lezáró lakatot. Elég erősnek tűnik, de úgy véled, egy jó erős ütéssel le tudnád szedni.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="TÁV" id="645" />
+        <spell name="TÜV" id="700" />
+        <spell name="TIL" id="729" />
+        <spell name="DOK" id="768" />
+        <spell name="EME" id="674" />
+        <next id="505">Ha fegyvereddel próbálod meg összetörni a zárat</next>
+      </have>
+      <dontHave>
+        <next id="505"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 363 -->
   <p id="364">
     <text>
@@ -2279,7 +2310,19 @@
   <!-- 390 -->
   <!-- 391 -->
   <!-- 392 -->
-  <!-- 393 -->
+  <p id="393">
+    <text>
+        [p]Amint közelebb érsz a kalodához, látod, hogy valakit fogva tart. Egy nyomorult, emberszerű lény feje és kezei lógnak ki a lyukakból. Ahogy odalépsz hozzá, a férfi rád tekint. Most már azt is látod, hogy igen izmos a fickó, és nagyon kócos. Keskeny szemeiből, széles orrából és magas homlokából úgy véled, az ember valamilyen alfaja lehet. - Csúfolódj csak rajtam, amennyit akarsz - mondja. - Nem tudsz semmi olyat mondani nekem, amire két nap átokverte kaloda meg ne tanított volna. Hát sose lesz már vége a büntetésemnek? Könyörgöm: kímélj meg a szidalmaidtól és inkább adj valamit ennem. - Megállsz egy pillanatra, hogy elgondolkozz szavain. Ez a lény túl választékosan beszél a kinézetéhez képest.[/p]
+    </text>
+    <itemCheck type="item" id="2000">
+      <have>
+        <next id="408" pos="0">Ha adsz neki némi élelmet, ahogyan kérte</next>
+      </have>
+    </itemCheck>
+    <next id="362" pos="1">Ha felajánlod neki, hogy levered a lakatot a kalodáról és szabadon engeded</next>
+    <next id="485" pos="2">Hogyha itt hagyod inkább a szerencsétlen nyomorultat és tovább folytatod az utad</next>
+    <next id="431" pos="3">Amennyiben megállsz és gúnyolódsz vele egy kicsit</next>
+  </p>
   <!-- 394 -->
   <!-- 395 -->
   <p id="396">
@@ -2319,7 +2362,19 @@
   <!-- 405 -->
   <!-- 406 -->
   <!-- 407 -->
-  <!-- 408 -->
+  <p id="408">
+    <text>
+        [p]Kinyitod a hátizsákodat és előhúzol egy adag élelmet, hogy odaajándékozd a szerencsétlen lénynek. A fickó szemei egészen elkerekednek, amint meglátja az ételt. - Aaah, köszönet, idegen - mondja. - Jelen pillanatban még a lelkemet is eladnám egy falásnyi kenyérért. Remélem, te azért nem szabsz ilyen magas árat! - Elmosolyodsz, miközben feldarabolod az ételt és apránként a szájába helyezed. Vonj le 1 adag élelmet a Kalandlapodról.[/p]
+    </text>
+    <loseItem id="2000" />
+    <next id="555" pos="0">Ha most elbeszélgetnél vele</next>
+    <next id="444" pos="1">Ha az élelemért cserébe információt követelsz tőle</next>
+    <itemCheck type="item" id="2000">
+      <have>
+        <next id="520" pos="2">Hogyha te is leülnél mellé falatozni</next>
+      </have>
+    </itemCheck>
+  </p>
   <!-- 409 -->
   <!-- 410 -->
   <p id="411">
@@ -2375,7 +2430,12 @@
     <next id="493" pos="4">Hogyha inkább a vele szemközt lévővel</next>
   </p>
   <!-- 417 -->
-  <!-- 418 -->
+  <p id="418">
+    <text>
+        [p]Amikor visszanyered az eszméletedet, kétségbeesetten veszed észre, hogy egy kalodába vagy bezárva! Az eltört zárat úgy feszítették be a reteszbe, hogy megszoruljon és ne tudd kifeszíteni. Megpróbálkozol ugyan ezzel, de végül be kell látnod, nem tudsz magadtól kiszabadulni. A korábban még a kalodában senyvedő ember most ott áll előtted. - Sajnálom, barátom, hogy ezt kellett tennem veled - mondja. - De tudod, a túlélésnek ez az egyetlen módja. Időre van szükségem, hogy ki tudjak szabadulni innét, és ha a kalodát üresen találnák, máris a nyakamon lennének az őrök. Ezen kívül némi felszerelésre is szükségem lesz az utam során. A hátizsákod és tartalma bizonyára igen hasznosnak bizonyul majd. - Tehetetlenül szemléled, amint szerzeményeiddel együtt távozik. A gazember csak azt nem mondta el neked, hogy három nap kalodára ítélték, melynek letelte után ki fogják végezni árulásért. A következő nap rajtad hajtják végre az ítéletét.[/p]
+    </text>
+    <death />
+  </p>
   <p id="419">
     <itemCheck type="section" id="136">
       <have>
@@ -2414,7 +2474,20 @@
     </itemCheck>
   </p>
   <!-- 420 -->
-  <!-- 421 -->
+  <p id="421">
+    <text>
+        [p]Csatlakozol az őrökhöz, akik elmondják, hogyan kell játszani ezt a játékot, amik ők csak „Tízes”-nek neveznek. A játékosok egyesével dobónyilakat dobnak a táblára, ami fekete és fehér mezőkre van osztva. Ezek mindegyikébe egy-egy számot írtak. Ha a dobónyíl egy fekete mezőbe csapódik, a rajta lévő számot hozzá kell adni a pontszámhoz, ha fehér mezőt talál el, az ottani számot le kell vonni belőle. Nincs mindegyik játékosnak külön pontszáma, egyetlen közös ponttal játszanak, és a játékosok dobásai ezt a pontszámot módosítják folyamatosan. Az a játékos, akinek a dobása után az érték pontosan 10 vagy -10 lesz, megnyeri a játékot. Mondani sem kell, hogy a játék szerencsejáték. Mindenki 2 Aranytallért tesz be a játék elején és a győztes elviszi az egészet.[/p]
+    </text>
+    <itemCheck type="goldpiece" id="2">
+      <have>
+        <next id="481">Ha szeretnél játszani</next>
+        <next id="164">Ha nem akarsz beszállni</next>
+      </have>
+      <dontHave>
+        <next id="164"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 422 -->
   <!-- 423 -->
   <p id="424">
@@ -2523,7 +2596,13 @@
   </p>
   <!-- 442 -->
   <!-- 443 -->
-  <!-- 444 -->
+  <p id="444">
+    <text>
+        [p]- Én... én nem - dadogja. - Nem mondhatom el, amit tudni akarsz. Úgyis a könnyen eljáró szám miatt kerültem ebbe a helyzetbe. Nem akarok már több bajt. - Ragaszkodsz hozzá, hogy beszéljen, és egy kicsit mintha engedne. - Talán szabadabban beszélhetnék, ha kiszabadítanál ebből a kalodából. Tudnál nekem segíteni? - kérdezi.[/p]
+    </text>
+    <next id="362">Ha felajánlod neki, hogy kiszabadítod</next>
+    <next id="485">Ha úgy véled, most biztosabb helyen van</next>
+  </p>
   <!-- 445 -->
   <p id="446">
     <text>
@@ -2629,7 +2708,30 @@
     </itemCheck>
   </p>
   <!-- 460 -->
-  <!-- 461 -->
+  <p id="461">
+    <text>
+        [p]Odalépsz a csoporthoz és megkérdezed, mit játszanak. Azok hárman meghívnak, hogy szállj be te is. Aztán az egyikük megrökönyödve rád bámul, majd hangosan felkiált. - Várjatok! Ez az analandi! Őrá figyelmeztettek minket! Most elkapjuk a szemétládát! Gyorsan! - A három fickó felpattan és előrántja fegyverét.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Gyorsnak kell lenned, de talán van még arra időd, hogy elmondj egy varázslatot.[/p]
+        </text>
+        <next id="449">Ha te is a fegyveredet használod ellenük</next>
+        <spell name="KÖD" id="613" />
+        <spell name="MEN" id="711" />
+        <spell name="PÉL" id="732" />
+        <spell name="TEL" id="670" />
+        <spell name="POP" id="784" />
+      </have>
+      <dontHave>
+        <text>
+            [p]Fegyvert rántasz.[/p]
+        </text>
+        <next id="449"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 462 -->
   <!-- 463 -->
   <!-- 464 -->
@@ -2707,7 +2809,13 @@
   <!-- 482 -->
   <!-- 483 -->
   <!-- 484 -->
-  <!-- 485 -->
+  <p id="485">
+    <text>
+        [p]Otthagyod a kalodát és továbbmész. Előtted négy őr álldogál egy kupacban a fal mellett. Néha egyikük hátralép és valamit a falnak dob. A többiek erősen figyelnek és bíztatólag morognak egymás között, néha még nagyokat is kacagnak. Ha inkább elkerülnéd őket, így itt kell hagynod a falat, ki kell sétálnod az udvarra és közel kell menned az ott heverő nagy halom rongyhoz.[/p]
+    </text>
+    <next id="532">Ha odamész a csoporthoz</next>
+    <next id="233">Ha inkább a rongyhalmot közelíted meg</next>
+  </p>
   <!-- 486 -->
   <p id="487">
     <text>
@@ -2898,12 +3006,13 @@
     <text>
         [p]Ahogy közelebb érsz, látod, hogy a csoport valamilyen társasjátékkal vannak elfoglalva. Eltűnődsz azon, vajon nem hívod-e ki magad ellen a sorsot azzal, hogy nyílegyenesen odasétálsz az őrökhöz, de még ha így is lenne, ha most hirtelen irányt változtatnál, az is biztosan gyanút keltene. A lények egyelőre nem vettek észre. A játék abból áll, hogy dobónyilakat hajigálnak egy falra erősített táblára. Amikor odaérsz, az egyik férfi éppen távozni készülődik, miközben a többiek megpróbálják rávenni, hogy maradjon még egy kicsit. Az őr azonban hajthatatlan. Amikor a társai meglátnak téged, intenek, hogy szállj be helyette a játékba.[/p]
     </text>
-    <next id="461" pos="1">Ha odamész hozzájuk, hogy megtudd, miféle játékot játszanak</next>
     <itemCheck type="item" id="4078">
       <have>
+        <next id="421">Ha odamész hozzájuk, hogy megtudd, miféle játékot játszanak</next>
         <next id="254" pos="2">Ha inkább közlöd velük, hogy sürgős dolgod van és nem érsz rá játszani</next>
       </have>
       <dontHave>
+        <next id="461">Ha odamész hozzájuk, hogy megtudd, miféle játékot játszanak</next>
         <next id="294" pos="2">Ha inkább közlöd velük, hogy sürgős dolgod van és nem érsz rá játszani</next>
       </dontHave>
     </itemCheck>
@@ -3035,7 +3144,13 @@
     </itemCheck>
   </p>
   <!-- 554 -->
-  <!-- 555 -->
+  <p id="555">
+    <text>
+        [p]Letérdelsz a kaloda mellé és segítesz neki enni. Közben megkérdezed, miért zárták ide. - Nem az én hibám volt - sóhajtja. - Az az átkozott nyelvem már megint eljárt. Ha néhány korsóval már megittam, néha nem is tudom, miket beszélek. Nem ez az első alkalom, hogy a lepcses szám bajt hozott a fejemre. - Egy pillanatra elgondolkodsz azon, egyáltalán ki fogsz-e tudni húzni valamilyen hasznos információt a fickóból. - És mi van veled? - kérdezi. - Velem ellentétben te biztosan nem Mampangból való vagy. Mi hozott ide az Erődbe? Te is a Főmágus hadárusa vagy? - Aztán hirtelen elhallgat, mintha rádöbbent volna, hogy túl sokat mondott. Hiába biztatod, többet nem hajlandó beszélni.[/p]
+    </text>
+    <next id="362">Ha megpróbálod beszédre ösztökélni azzal, hogy felajánlod neki a szabadságát</next>
+    <next id="444">Ha megpróbálod megfenyegetni, hogy mondjon többet a Főmágus „hadárusairól”</next>
+  </p>
   <p id="556">
     <text>
         [p]Amilyen halkan csak tudsz, leugrasz és megfordulsz, hogy besurranj az ajtón. [em]Aáááááá![/em] Nagyot ugrasz ijedtedben, amint egy állig felfegyverzett, páncélos őrrel találod szemközt magad! A fickó is hasonlóképpen meglepődik és nagyot üvölt. Négy alak vesz körbe pillanatok alatt. Nincs menekvés, meg kell küzdened velük.[/p]
@@ -3304,6 +3419,7 @@
     <add amount="-1" to="stamina" />
     <itemCheck type="item" id="3076">
       <have>
+        <loseItem id="3076" />
         <next id="678"></next>
       </have>
       <dontHave>
@@ -3543,7 +3659,23 @@
     <next id="304"></next>
   </p>
   <!-- 644 -->
-  <!-- 645 -->
+  <p id="645">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="items" id="3057 or 3060">
+      <have>
+        <next id="792"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik.[/p]
+        </text>
+        <next id="362"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 646 -->
   <!-- 647 -->
   <!-- 648 -->
@@ -3736,7 +3868,13 @@
   </p>
   <!-- 672 -->
   <!-- 673 -->
-  <!-- 674 -->
+  <p id="674">
+    <text>
+        [p]Vesztesz 4 életerő pontot. Elmondod a varázslatot és az ujjadból kilövellő villámnyaláb darabokra zúzza a zárat.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="348"></next>
+  </p>
   <!-- 675 -->
   <!-- 676 -->
   <!-- 677 -->
@@ -3858,7 +3996,27 @@
     <add to="stamina" amount="-4" />
     <next id="110"></next>
   </p>
-  <!-- 700 -->
+  <p id="700">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3076">
+      <have>
+        <text>
+            [p]Megiszod a Tüzes Vizet, és elmondod a varázslatot. Érzed, amint az erő végighullámzik a testeden. Amikor már teljesen fel vagy töltődve, megfogod a lakatot, és megcsavarod. Az kettéroppan a kezedben.[/p]
+        </text>
+        <loseItem id="3076" />
+        <next id="348"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik. Meg kell próbálnod széttörni a zárat.[/p]
+        </text>
+        <next id="505"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="701">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -4012,7 +4170,25 @@
     <next id="510"></next>
   </p>
   <!-- 728 -->
-  <!-- 729 -->
+  <p id="729">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3032">
+      <have>
+        <text>
+            [p]A varázslat működik ugyan, de nincs áldásos hatása. Hiába csinálsz egy olyan illúziót, mintha a lény kiszabadult volna a kalodából, a hatás hamar szertefoszlik, amikor mozdulni próbál, és rájön, hogy a kezei és a nyaka továbbra sem szabad.[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <next id="362"></next>
+  </p>
   <!-- 730 -->
   <p id="731">
     <text>
@@ -4165,6 +4341,7 @@
         <text>
             [p]Felhajtod a Tüzes Vizet, és elmondod a varázslatot. Érzed, amint a mágia ereje végigáramlik a testeden. Felkapsz egy hatalmas sziklát, és a Szatírnők felé hajítod. Bár nem találsz el senkit, azok idegesen pillantgatnak egymásra, és úgy döntenek, ekkora erővel nem szállnak szembe. Hagynak, hogy sértetlenül továbbmenj.[/p]
         </text>
+        <loseItem id="3076" />
         <next id="441"></next>
       </have>
       <dontHave>
@@ -4700,7 +4877,12 @@
     </itemCheck>
     <next id="304"></next>
   </p>
-  <!-- 792 -->
+  <p id="792">
+    <text>
+        [p]Belemondod a varázslatot a Kristálygömbbe, és vársz a hatásra. A Gömb belsejében terjengő tejszerű felhő örvényleni kezd, majd nemsokára kitisztul. Egy kép jelenik meg. Egy hosszú alsóneműbe öltözött öregember áll egy szobában az ajtó mögött. Szemmel láthatóan arra vár, hogy valaki belépjen a helyiségbe. Egy rézedényt tart a kezében, magasan a feje fölé emelve, hogy lesújtson vele a belépő fejére. Mit jelenthet ez? Jelent egyáltalán valamit? Ettől még nem fogod tudni széttörni a kaloda zárját.[/p]
+    </text>
+    <next id="362"></next>
+  </p>
   <p id="793">
     <text>
         [p]Vesztesz 2 életerő pontot. A varázslat hatása azonnal jelentkezik. Minden mágia ellen védve vagy. Sajnos azonban a Fekete Elfek nem használnak mágiát.[/p]
