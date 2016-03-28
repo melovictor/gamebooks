@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
 /**
- * Post section handler for SOR3.
+ * Post section handler for SOR4.
  * @author Tamas_Szekeres
  */
 @Component
-public class Sor3Section775PostHandler extends FfCustomPrePostSectionHandler {
+public class Sor4Section775PostHandler extends FfCustomPrePostSectionHandler {
 
     @Override
     public void handle(final Model model, final HttpSessionWrapper wrapper, final FfBookInformations info, final boolean changedSection) {
