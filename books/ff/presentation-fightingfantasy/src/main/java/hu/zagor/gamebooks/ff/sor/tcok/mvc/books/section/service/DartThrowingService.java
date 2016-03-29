@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.ff.sor.tcok.mvc.books.section.service;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
+import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
@@ -19,6 +20,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class DartThrowingService {
+    private static final int END_GAME_CHOICE_POS = 2;
+    private static final int PLAY_AGAIN_CHOICE_POS = 1;
+    private static final int EMPTY_CHOICE_POS = 3;
     private static final int TOTAL_PLAYERS = 4;
     private static final int PRIZE = 8;
     private static final int WIN_AMOUNT = 10;
@@ -63,7 +67,29 @@ public class DartThrowingService {
             result.setGold(character.getGold());
         }
 
+        updateTexts(wrapper, result, round);
+
         return result;
+    }
+
+    private void updateTexts(final HttpSessionWrapper wrapper, final DartThrowingResult result, final int round) {
+        final ParagraphData data = wrapper.getParagraph().getData();
+        String text = data.getText();
+
+        text = text.replaceAll("<span id=\"currentScore\">-{0,1}[0-9]+<\\/span>", "<span id=\"currentScore\">" + result.getNewTotal() + "</span>");
+        text = text.replaceAll("<input type=\"hidden\" id=\"nextThrowerId\" value=\"[0-3]\" \\/>",
+            "<input type=\"hidden\" id=\"nextThrowerId\" value=\"" + ((round + 1) % TOTAL_PLAYERS) + "\" \\/>");
+        if (result.isWinner()) {
+            text = text.replaceAll("<button id=\"sor4TenUpTrigger\">[^<]+</button>", "");
+            if (result.getGold() < 2) {
+                data.getChoices().removeByPosition(PLAY_AGAIN_CHOICE_POS);
+                data.getChoices().removeByPosition(END_GAME_CHOICE_POS);
+            } else {
+                data.getChoices().removeByPosition(EMPTY_CHOICE_POS);
+            }
+        }
+
+        data.setText(text);
     }
 
     private int getRound(final Character character, final FfUserInteractionHandler interactionHandler) {

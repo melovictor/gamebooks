@@ -10,9 +10,13 @@ var sor4 = (function() {
 	}
 	
 	function init() {
-		// TODO: save and reload both on FE and BE side
+		var nextThrower = $("#nextThrowerId").val();
+		$(".nextThrower:eq(" + nextThrower + ")").show();
 		if ($("#sor4TenUpTrigger").length > 0) {
-			$("#choiceWrapper").hide();
+			var currentScore = parseInt($("#currentScore").text());
+			if (currentScore != 10 && currentScore != -10) {
+				$("#choiceWrapper").hide();
+			}
 		}
 	}
 	function throwDart() {
