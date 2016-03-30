@@ -136,10 +136,21 @@
     <next id="318">Ha igen</next>
     <next id="99">Ha nem</next>
   </p>
-  <!-- 15 -->
+  <p id="15">
+    <text>
+        [p]Felállsz a szobában, fegyverrel a kézben. A zaj az ajtó felé halad, és a hátadon végigfut a hideg, amikor egy sötét, otromba alak körvonalait pillantod meg az ajtónyílásban. Bármi is legyen az, az ajtót mindenesetre elzárta! A következő hang egy furcsa, pendülő hang, olyan, mint amikor kilőnek egy nyilat. A következő pedig egy sikoly - a te sikolyod! Valami átfúrta a karod. Megragadod a nyelét, és kirántod a húsodból. A markolat nem egy nyílvesszőé, ahogy elsőre feltételezted volna, hanem egy hosszú tüske markolata - olyan, mintha egy óriássün tüskéje lenne. Amint ezen gondolkozol, újabb pendülés, majd újabb sikoltás hallatszik, amint a következő tüske a lábadba áll. A harmadik pendülés eredménye már egy sokkal pontosabb lövés. A tüske a torkodat fúrja át. Ezúttal nem hallatszik sikoltás, csak egy tompa, gurgulázó hörgés. Kalandod itt véget ért.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 16 -->
   <!-- 17 -->
-  <!-- 18 -->
+  <p id="18">
+    <text>
+        [p]- Akkor indulj - feleli, és félreáll, hogy beléphess a szobába. Kinyitod az ajtót. Egy rövid folyosóra jutsz, mely egy másik ajtóban végződik. Kinyitod ezt a másik ajtót is. A mögötte lévő szoba meglehetősen gusztustalan látványt nyújt. Törött fatárgyak, fegyverek, csontok és üvegek hevernek szanaszéjjel a padlón, és vastag kocsonya borít mindent. A sarokban egy otromba külsejű, hólyagos bőrű lény pihen. Ijesztő pofája közepéből rövid, ormányszerű képződmény nyúlik ki. Jöttödre felrezzen, és lassan feltápászkodik. Két ajtó vezet tovább a szobából; az egyik pontosan szemben, a másik bal kéz felől. A lény közben már lábra állt; körülbelül akkora lehet, mint egy medve. Egyik kezét a füléhez tartja, mintha nem hallaná, hogy mit mondasz. De te eddig semmit sem szóltál.[/p]
+    </text>
+    <next id="515">Ha nem törődsz a lénnyel, és az ajtókhoz rohansz</next>
+    <next id="480">Hogyha megállsz, és beszélsz vele</next>
+  </p>
   <!-- 19 -->
   <!-- 20 -->
   <!-- 21 -->
@@ -687,7 +698,30 @@
     <next id="340"></next>
   </p>
   <!-- 111 -->
-  <!-- 112 -->
+  <p id="112">
+    <text>
+        [p]Fejjel előre berepülsz a sötétségbe. Kemény, szalmával teleszórt talajra érkezel. Körülnézel, de a koromsötétben nem látsz semmit. Egy hang azonban megüti a füledet. A szoba egyik sarkából neszezés és kaparászás hallatszik, mintha valaki egy köteg száraz gallyat vonszolna a padlón.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="ALV" id="682" />
+        <spell name="HAT" id="594" />
+        <spell name="POR" id="672" />
+        <spell name="TIV" id="783" />
+        <spell name="TIL" id="644" />
+        <next id="15">Ha megragadod fegyvered</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Fegyvert ragadsz.[/p]
+        </text>
+        <next id="15"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="113">
     <text>
         [p]Még nincs teljesen világos, amikor felkelsz, hogy tovább folytasd az utadat. Nem tervezted meg pontosan, hogy hogyan fogsz bejutni az Erődbe, de biztos vagy benne, hogy egyáltalán nem lesz könnyű dolgod. Az éjszakai pihenés 2-vel megnövelte az életerődet.
@@ -1294,7 +1328,25 @@
     <next id="342"></next>
   </p>
   <!-- 220 -->
-  <!-- 221 -->
+  <p id="221">
+    <text>
+        [p]A kis teremtmény félreáll, te pedig kinyitod az ajtót. Egy rövid folyosóra jutsz, mely egy ajtóban végződik, ami azonban zárva van.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="PÉL" id="630" />
+        <spell name="ÁTÉ" id="795" />
+        <spell name="NYI" id="702" />
+        <spell name="EME" id="662" />
+        <spell name="TÉR" id="750" />
+      </have>
+    </itemCheck>
+    <next id="53">Ha be akarod törni</next>
+    <next id="18">Ha inkább nem erre mész, hanem visszafordulsz, közlöd a kis lénynyel, hogy a rossz ajtót választottad, és inkább a másikon akarsz átmenni</next>
+  </p>
   <p id="222">
     <text>
         [p]Odalépsz a kis barlang szájához, és letérdelsz, hogy beless. Bár be tudsz mászni, a bejárat kicsit szűk. Amint a szemed hozzászokik a sötéthez, látod, hogy odabent a barlang szélesebb, és elég hely van bent, hogy kényelmesen eltöltsd az éjszakát. A túloldaláig azonban nem látsz el, ezért nem tudod megállapítani egyértelműen, hogy van-e valaki a túloldalon. Négykézlábra ereszkedsz hát, és bedugod a fejed a nyíláson.[/p]
@@ -2298,7 +2350,12 @@
     <next id="298">A bal oldalit?</next>
   </p>
   <!-- 385 -->
-  <!-- 386 -->
+  <p id="386">
+    <text>
+        [p]A lény lassan, feltartott kézzel előrelép, mintha azt akarná jelezni, hogy nem kíván ártani neked. Megállsz előtte pár méterre és felé fordítod a füled, hogy halld, mit mond. A bestia beszélni kezd. Most már néhány szót is ki tudsz venni abból, amit mond - de ahogy közben lélegzik, leheletét is megérzed. A szájszaga elviselhetetlen! Köhögni és öklendezni kezdesz. A lélegzete olyan, mintha mérges gáz lenne! És ami azt illeti, a Mucalyt lehelete [em]valóban[/em] egyfajta méreg, te pedig épp most szívtál be belőle egy lélegzetnyit - ami már halálos adag. Holtan rogysz a földre, a lény lábai előtt.[/p]
+    </text>
+    <death />
+  </p>
   <p id="387">
     <text>
         [p]A következő feladatod, hogy gyorsan levágd a másik Őrt is, aki épp leemeli a kürtöt a falról.[/p]
@@ -2700,7 +2757,14 @@
     </fight>
     <next id="543"></next>
   </p>
-  <!-- 451 -->
+  <p id="451">
+    <text>
+        [p]Szembeszegülsz az erővel, de hasztalan. Előre repülsz és nekiütközöl a fémoszlopnak. Vesztesz 2 életerő pontot. Gyorsan rájössz, mi folyik itt: a rúd egy hatalmas mágnes, közepén egy mágneses kővel. És sajnos minden tárgyaddal együtt te is a mezejébe kerültél. A kezedet és lábadat könnyedén tudod mozgatni, de minden fémet tartalmazó felszerelésed szilárdan hozzátapad az oszlophoz. Lehetséges, hogy az őrök ezzel kutatják át az idegeneket, akik esetleg mágia segítségével rejtik el fegyvereiket. Csak egyetlen módja van annak, hogy elszabadulj az oszloptól, mégpedig hogy itt hagyod az összes olyan tárgyadat, ami fémet tartalmaz. Nekilátsz ennek. Ha nem maradt fegyvered, 3-mal kell csökkentened minden harcban az ügyességed, egészen addig, amíg másikat nem találsz helyette. Ezután a kis közjáték után odalépsz a kettős faajtóhoz.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <loseItem id="1001,1002,1003,1004,1005,1006,1007,1009,3009,3010,3011,3012,3015,3020,3023,3031,3035,3036,3042,3044,3046,3047,3049,3050,3051,3054,3055,3058,3059,3061,3064,3068,3072,3073,3077,3085,3086" amount="999" />
+    <next id="397"></next>
+  </p>
   <!-- 452 -->
   <p id="453">
     <text>
@@ -2839,7 +2903,21 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 475 -->
+  <p id="475">
+    <text>
+        [p]Küzdj meg a lénnyel![/p]
+    </text>
+    <fight type="single">
+      <enemy id="24" />
+      <loseRound enemy="24" totalCount="3">
+        <interrupt />
+        <next id="576"></next>
+      </loseRound>
+      <win>
+        <next id="443"></next>
+      </win>
+    </fight>
+  </p>
   <!-- 476 -->
   <p id="477">
     <text>
@@ -2850,7 +2928,13 @@
   </p>
   <!-- 478 -->
   <!-- 479 -->
-  <!-- 480 -->
+  <p id="480">
+    <text>
+        [p]Felemeled a kezed és üdvözlöd a lényt. Az rád bámul, majd a füléhez emeli a kezét. Mintha nem hallana rendesen. Elüvöltöd ugyanazt, amit az előbb mondtál, mire a bestia megtorpan. Úgy fest, most már meghallott. De vagy dilis egy kicsit, vagy teljesen süket, mert másodszorra akkorát üvöltöttél, amekkorát csak tudtál. A lény valami hangot hallat, de nem érted igazán. Oldalra fordítod a fejed. Ez egészen úgy hangzott, mintha egy [em]értelmes mondat[/em] lett volna, nem pedig egyszerű állati hang. Ha a lény tud beszélni, akkor nagyon sajnálod, hogy ilyen szerencsétlen testbe bezárva kell eltöltenie az életét. A szájából ismét halk hangok jönnek elő, de még mindig nem elég hangosak ahhoz, hogy megértsd, mit mond. A teremtmény feléd mozdul, mintha csak közelebb akarna menni hozzád, hogy a füledbe súghassa, amit akar.[/p]
+    </text>
+    <next id="386">Ha megengeded, hogy közelebb jöjjön</next>
+    <next id="515">Ha figyelmezteted, hogy tartsa a távolságot, miközben te átvágsz a szobán</next>
+  </p>
   <p id="481">
     <text>
         [div class="sor4TenUpProcession"]
@@ -3089,11 +3173,40 @@
     </itemCheck>
   </p>
   <!-- 514 -->
-  <!-- 515 -->
+  <p id="515">
+    <text>
+        [p]Ahogy előrelépsz, a lény is feléd mozdul.Valószínűleg nem tetszik neki a modorod, mert az egyik hatalmas, hólyagos karjával feléd nyúl, csakhogy beledöngöljön a padlóba.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="TÜK" id="744" />
+        <spell name="ZAV" id="609" />
+        <spell name="ALV" id="715" />
+        <spell name="TÉR" id="780" />
+        <spell name="BŰZ" id="665" />
+        <next id="475">Ha karddal harcolsz ellene</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Fegyvert rántasz.[/p]
+        </text>
+        <next id="475"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 516 -->
   <!-- 517 -->
   <!-- 518 -->
-  <!-- 519 -->
+  <p id="519">
+    <text>
+        [p]Elindulsz a fal mellett az udvar sarka felé. Egy apró faajtóhoz érsz. Óvatosan kinyitod, ám az hirtelen kivágódik! Egy apró, tömzsi lény jelenik meg, és megkérdezi, mit keresel errefelé. - Nos? - kérdi. - Mit akarsz idebenn? Lefogadom, hogy a Mucalytokat jöttél kínozni, mi? Hát akkor gyere! No mi van, csak nem inába szállt a bátorságod? Nem fog harapni, ne aggódj! Ott lesz balra! Igyekezz! - Közlöd vele, hogy nem áll szándékodban „a Mucalytokat kínozni”. A lény felvonja a szemöldökét. - Nem? Throffra, akkor meg mi a fenét keresel itt? A Tüskésekkel nem akarhatsz találkozni. Akkor [em]mit[/em] akarsz? - A lény mögött egy kis szobát látsz, melyből két másik ajtó nyílik.[/p]
+    </text>
+    <next id="18">Ha azt mondod, hogy a bal oldali ajtón akarsz átmenni</next>
+    <next id="221">Ha azt, hogy a jobb oldalin, és jobban teszi, ha nem próbál az utadba állni</next>
+  </p>
   <p id="520">
     <text>
         [p]Leülsz mellé és te is enni kezdesz. Az evéstől
@@ -3184,7 +3297,12 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 533 -->
+  <p id="533">
+    <text>
+        [p]Remélve, hogy bármi is legyen a szobában, az nem fogja tudni megállapítani, melyikőtök a valódi, előhúzod a fegyveredet, hátha szükség lesz rá. Vajon bejön a trükköd?[/p]
+    </text>
+    <next id="15"></next>
+  </p>
   <p id="534">
     <text>
         [p class="inlineImage"][img src="resources/sor4/534.jpg" /][/p]
@@ -3411,7 +3529,12 @@
     <death />
   </p>
   <!-- 575 -->
-  <!-- 576 -->
+  <p id="576">
+    <text>
+        [p]Miközben legutóbbi sebedet ápolod a Mucalyt hozzád hajol. Arca elé emeli az ormányát és rád lehel. A bűz elviselhetetlen! Köhögni és öklendezni kezdesz, és még nem is tudod, hogy ezek utolsó lélegzetvételeid. A Mucalytek lehelete ugyanis halálos méreg mindenki számára, aki nem a saját fajából való. A lény arcára mosolyszerű kifejezés ül, miközben te a földre rogysz.[/p]
+    </text>
+    <death />
+  </p>
   <p id="577">
     <text>
         [p]A két őr ugyan holtan fekszik a lábad előtt, mégis igen levert vagy. Sikerült riadót fújniuk! Az Erőd felé pillantasz és elkeseredetten leereszted a fegyvered. A várfal oromzatáról hatalmas, szárnyas lények szállnak feléd. Madáremberek! És túl sokan vannak ahhoz, hogy eredményesen felvehesd ellenük a harcot. Úgy döntesz, a legjobb az lesz, ha elrejtőzöl és visszarohansz a hágóhoz. Ahogy megfordulsz, megremeg a föld és nagy robajjal hatalmas vasrács emelkedik ki előtted a talajból a kapunál! A másik irányba fordulsz, a fennsík felé, de újabb robaj következik. A föld szétválik előtted. Átugrasz a repedésen, de ebben a pillanatban egy másik vasrács vágódik ki a repedésből. Felkiáltasz fájdalmadban, amint az egyik tűhegyes vasrúd átszúrja a lábadat.[/p]
@@ -3424,7 +3547,12 @@
   <!-- 580 -->
   <!-- 581 -->
   <!-- 582 -->
-  <!-- 583 -->
+  <p id="583">
+    <text>
+        [p]A kaparászó hang elhallgat. Hirtelen pattanásszerű hangot hallasz és valami keresztülsüvít a levegőn. Nem tudod ugyan pontosan, mi történt, és túl sötét van ahhoz, hogy rendesen láss. De az biztos, hogy nem érzed magad itt biztonságban. Úgy döntesz, hogy öt illúziómásolatod takarása alatt elindulsz az ajtó felé. Biztonságban eléred a bejáratot. Közben még kétszer hallod a fenti hangot és most már egészen bizonyos vagy benne, hogy [em]valami[/em] lő rád. Bezárod az ajtót magad mögött, visszasétálsz az előző szobába, és kinyitod a másik ajtót.[/p]
+    </text>
+    <next id="18"></next>
+  </p>
   <p id="584">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -3505,7 +3633,20 @@
   <!-- 591 -->
   <!-- 592 -->
   <!-- 593 -->
-  <!-- 594 -->
+  <p id="594">
+    <text>
+        [p]Vesztesz 2 életerő pontot. Elmondod a varázslatot és öt hasonmásod jelenik meg körülötted.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <random>
+      <result max="6" min="6">
+        <next id="533"></next>
+      </result>
+      <result max="5" min="1">
+        <next id="583"></next>
+      </result>
+    </random>
+  </p>
   <!-- 595 -->
   <p id="596">
     <text>
@@ -3870,7 +4011,13 @@
     <add to="stamina" amount="-2" />
     <next id="304"></next>
   </p>
-  <!-- 644 -->
+  <p id="644">
+    <text>
+        [p]Vesztesz 1 életerő pontot. A varázslatnak nincs hatása. Még abban sem vagy biztos, láthatatlan ellenfelednek vajon van-e egyáltalán agya, melyre az illúzió hathatna! A biztonság kedvéért úgy döntesz, hogy előrántod a fegyveredet.[/p]
+    </text>
+    <add to="stamina" amount="-1" />
+    <next id="15"></next>
+  </p>
   <p id="645">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -3908,7 +4055,44 @@
   <!-- 650 -->
   <!-- 651 -->
   <!-- 652 -->
-  <!-- 653 -->
+  <p id="653">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="items" id="3001 or 2001">
+      <have>
+        <text>
+            [p]Megiszod a
+        </text>
+        <itemCheck type="item" id="3001">
+          <have>
+            <text>
+                Gyógyfűfőzetet,
+            </text>
+            <loseItem id="3001" />
+          </have>
+          <dontHave>
+            <text>
+                Bugyabogyószörpöt,
+            </text>
+            <loseItem id="2001" />
+          </dontHave>
+          <after>
+            <text>
+                miközben elmondod a varázsigét. A hatás azonnali. Visszaállíthatod életerődet a [em]Kezdeti[/em] értékére.[/p]
+            </text>
+          </after>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <next id="502"></next>
+  </p>
   <p id="654">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -4083,7 +4267,14 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 672 -->
+  <p id="672">
+    <text>
+        [p]Vesztesz 1 életerő pontot. A varázslatnak nincs hatása, mivel nincs ellenfeled, aki ellen használhatnád azt! Vagy legalábbis egyet sem látsz. Úgy döntesz, inkább előrántod a fegyveredet.[/p]
+    </text>
+    <loseItem id="3052" />
+    <add to="stamina" amount="-1" />
+    <next id="15"></next>
+  </p>
   <!-- 673 -->
   <p id="674">
     <text>
@@ -4106,7 +4297,13 @@
   <!-- 679 -->
   <!-- 680 -->
   <!-- 681 -->
-  <!-- 682 -->
+  <p id="682">
+    <text>
+        [p]Vesztesz 2 életerő pontot. Kétségbeesetten varázsolsz a vaksötétben. Mivel képtelen vagy konkrét célpontot választani, a hatás elmarad. Előhúzod a fegyveredet.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="15"></next>
+  </p>
   <!-- 683 -->
   <!-- 684 -->
   <p id="685">
@@ -4255,7 +4452,13 @@
     </itemCheck>
     <next id="450"></next>
   </p>
-  <!-- 702 -->
+  <p id="702">
+    <text>
+        [p]Vesztesz 2 életerő pontot. A zárt ajtóra koncentrálsz. Amikor végigmondtád a varázslatot, halk kattanás hallatszik a zárból. Az ajtó egy sötét szobába nyílik, mielőtt azonban bármit is tehetnél, váratlanul előrezuhansz! Nem vetted észre a rövidke, két fokú lépcsőt a küszöbnél.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="112"></next>
+  </p>
   <!-- 703 -->
   <p id="704">
     <text>
@@ -4317,7 +4520,22 @@
   <!-- 712 -->
   <!-- 713 -->
   <!-- 714 -->
-  <!-- 715 -->
+  <p id="715">
+    <text>
+        [p]Vesztesz 2 életerő pontot. Elmondod a varázslatot a lényre, és vársz a hatásra. De ellenfeled már amúgy is lassú volt, így fogalmad sincs, vajon működött-e a varázslatod, vagy sem. A valóságban persze hatással volt a lényre. Előrántod a kardodat, és felkészülsz a harcra.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <fight type="single">
+      <enemy id="25" />
+      <loseRound enemy="24" totalCount="3">
+        <interrupt />
+        <next id="576"></next>
+      </loseRound>
+      <win>
+        <next id="443"></next>
+      </win>
+    </fight>
+  </p>
   <p id="716">
     <text>
         [p]Vesztesz 2 életerő pontot. Elmondod a varázslatot, és a Madárember megdermed támadás közben. Rád néz, majd bután körbenéz maga körül. Úgy tűnik, már elment a kedve attól, hogy tovább harcoljon. Ha el tudnád érni, ez lenne a megfelelő alkalom, hogy levágd, de a Madárember a levegőben lebeg, mintha csak gondolkodna, hogy mit csináljon. Végül megfordul, és elrepül. Továbbmehetsz az úton.[/p]
@@ -4912,7 +5130,13 @@
     <add amount="-2" to="stamina" />
     <next id="123"></next>
   </p>
-  <!-- 783 -->
+  <p id="783">
+    <text>
+        [p]Vesztesz 4 életerő pontot. Nem tudván teljes bizonyossággal, miféle lénnyel állsz szemközt, úgy döntesz, hogy egy erős varázslatot mondasz el. Amint a varázslat hatása elkezdődik, a motoszkálás abbamarad. Elindulsz nagyjából abba az irányba, ahonnan korábban a motoszkálást hallottad. De a sötétben váratlanul egy szúrós bokornak mész neki! Vagy bokor volt ez egyáltalán? De bármi is volt, az biztos, hogy alaposan megszúrt - vesztesz 2 életerő pontot. Úgy döntesz, nem próbálkozol tovább, hanem gyorsan távozol a szobából. Visszaindulsz a bejárati szoba felé, és megpróbálkozol a másik útvonallal.[/p]
+    </text>
+    <add to="stamina" amount="-6" />
+    <next id="18"></next>
+  </p>
   <p id="784">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
