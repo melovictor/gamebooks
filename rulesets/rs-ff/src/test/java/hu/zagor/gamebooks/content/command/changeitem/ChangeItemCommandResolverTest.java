@@ -97,6 +97,45 @@ public class ChangeItemCommandResolverTest {
         Assert.assertEquals(item.getAttackStrength(), 2);
     }
 
+    public void testDoResolveWhenChangedAmountIsSetWithPrePlusSignShouldChangeFieldByAmount() {
+        // GIVEN
+        command.setChangeValue("+1");
+        item.setAttackStrength(3);
+        expect(itemHandler.getItems(character, ITEM_ID)).andReturn(Arrays.asList((Item) item));
+        mockControl.replay();
+        // WHEN
+        final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
+        // THEN
+        Assert.assertNull(returned);
+        Assert.assertEquals(item.getAttackStrength(), 4);
+    }
+
+    public void testDoResolveWhenChangedAmountIsSetWithMultiplicationShouldMultiplyFieldWithAmount() {
+        // GIVEN
+        command.setChangeValue("*2");
+        item.setAttackStrength(3);
+        expect(itemHandler.getItems(character, ITEM_ID)).andReturn(Arrays.asList((Item) item));
+        mockControl.replay();
+        // WHEN
+        final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
+        // THEN
+        Assert.assertNull(returned);
+        Assert.assertEquals(item.getAttackStrength(), 6);
+    }
+
+    public void testDoResolveWhenChangedAmountIsSetWithDivisionShouldDivideFieldByAmountRoundingDown() {
+        // GIVEN
+        command.setChangeValue("/2");
+        item.setAttackStrength(3);
+        expect(itemHandler.getItems(character, ITEM_ID)).andReturn(Arrays.asList((Item) item));
+        mockControl.replay();
+        // WHEN
+        final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
+        // THEN
+        Assert.assertNull(returned);
+        Assert.assertEquals(item.getAttackStrength(), 1);
+    }
+
     public void testDoResolveWhenChangedAmountIsSetForMultipleItemsShouldChangeFieldByAmountForAllItems() {
         // GIVEN
         command.setChangeValue("-1");
