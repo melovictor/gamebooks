@@ -348,7 +348,29 @@
   </p>
   <!-- 51 -->
   <!-- 52 -->
-  <!-- 53 -->
+  <p id="53">
+    <test against="skill">
+      <success>
+        <text>
+            [p]Az ajtó kicsapódik.
+        </text>
+        <next id="112"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Az ajtó szilárdan csukva marad.
+        </text>
+        <next id="53">Ha újra próbálkozol</next>
+        <next id="18">Ha visszamész a bejárati szobához, és megpróbálkozol a másik ajtóval, mondván, hogy tévedtél</next>
+      </failure>
+      <after>
+        <text>
+            Le kell vonnod 1 életerő pontot a szerzett zúzódások miatt.[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+      </after>
+    </test>
+  </p>
   <!-- 54 -->
   <!-- 55 -->
   <!-- 56 -->
