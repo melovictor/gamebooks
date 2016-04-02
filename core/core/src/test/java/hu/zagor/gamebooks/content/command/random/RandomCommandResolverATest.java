@@ -43,9 +43,13 @@ public class RandomCommandResolverATest extends CoreTextResolvingTest {
     private BookInformations info;
     @Instance private ParagraphData resultElse;
     @Instance private RandomResult result;
+    @Instance private RandomResult resultAllSame;
+    @Instance private RandomResult resultAllDifferent;
     @Instance private CharacterHandler characterHandler;
     @Mock private DefaultUserInteractionHandler interactionHandler;
     @Instance private ParagraphData resultData;
+    @Instance private ParagraphData resultAllSameData;
+    @Instance private ParagraphData resultAllDifferentData;
     @Inject private BeanFactory beanFactory;
     private DiceConfiguration diceConfig;
     @Inject private RandomNumberGenerator generator;
@@ -75,15 +79,29 @@ public class RandomCommandResolverATest extends CoreTextResolvingTest {
         result.setMax("3");
         result.setParagraphData(resultData);
         resultData.setBeanFactory(beanFactory);
+        resultAllSameData.setBeanFactory(beanFactory);
+        resultAllDifferentData.setBeanFactory(beanFactory);
         info.setCharacterHandler(characterHandler);
         characterHandler.setInteractionHandler(interactionHandler);
         diceConfig = new DiceConfiguration(1, 1, 6);
+
+        resultAllSame.setMin("5");
+        resultAllSame.setMax("7");
+        resultAllSame.setParagraphData(resultAllSameData);
+        resultAllSame.setAllSame(true);
+
+        resultAllDifferent.setMin("5");
+        resultAllDifferent.setMax("7");
+        resultAllDifferent.setParagraphData(resultAllDifferentData);
+        resultAllDifferent.setAllSame(false);
     }
 
     @BeforeMethod
     public void setUpMethod() {
         rootData.setText("<p>Initial content.</p>");
         resultData.setText("<p>Result data text.</p>");
+        resultAllSameData.setText("<p>Result all same data text.</p>");
+        resultAllDifferentData.setText("<p>Result all different data text.</p>");
         afterData.setText("<p>After data text.</p>");
         resultElse.setText("<p>ResultElse data text.</p>");
         command = new RandomCommand();
@@ -308,6 +326,68 @@ public class RandomCommandResolverATest extends CoreTextResolvingTest {
         Assert.assertSame(command.getDiceResults(), randomResult);
         Assert.assertSame(returned.get(0), resultData);
         Assert.assertEquals(returned.get(0).getText(), "<p>Thrown value: _3_. Total: 3.</p><p>Result data text.</p>");
+    }
+
+    public void testDoResolveWhenDicesAreTheSameShouldProcessProperResult() {
+        // GIVEN
+        command.getResults().add(resultAllSame);
+        command.getResults().add(resultAllDifferent);
+        command.setResultElse(resultElse);
+        command.setLabel("Throw a die.");
+        command.setDiceConfig("dice2d6");
+        expectLocale();
+        expect(interactionHandler.hasRandomResult(character)).andReturn(true);
+        expect(beanFactory.getBean("dice2d6", DiceConfiguration.class)).andReturn(diceConfig);
+        final int[] randomResult = new int[]{6, 3, 3};
+        expect(generator.getRandomNumber(diceConfig)).andReturn(randomResult);
+        logger.debug("Random command generated the number '{}'.", 6);
+        expect(diceRenderer.render(diceConfig, randomResult)).andReturn("_6_");
+        expectTextWoLocale("page.raw.label.random.after", new Object[]{"_6_", 6}, "Thrown value: _6_. Total: 6.");
+        expect(expressionResolver.resolveValue(character, "5")).andReturn(5);
+        expect(expressionResolver.resolveValue(character, "7")).andReturn(7);
+        expect(expressionResolver.resolveValue(character, "5")).andReturn(5);
+        expect(expressionResolver.resolveValue(character, "7")).andReturn(7);
+        mockControl.replay();
+        // WHEN
+        final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
+        // THEN
+        Assert.assertEquals(rootData.getText(), "<p>Initial content.</p>");
+        Assert.assertEquals(command.getDiceResultText(), "_6_");
+        Assert.assertEquals(command.getDiceResult(), 6);
+        Assert.assertSame(command.getDiceResults(), randomResult);
+        Assert.assertSame(returned.get(0), resultAllSameData);
+        Assert.assertEquals(returned.get(0).getText(), "<p>Thrown value: _6_. Total: 6.</p><p>Result all same data text.</p>");
+    }
+
+    public void testDoResolveWhenDicesAreDifferentShouldProcessProperResult() {
+        // GIVEN
+        command.getResults().add(resultAllSame);
+        command.getResults().add(resultAllDifferent);
+        command.setResultElse(resultElse);
+        command.setLabel("Throw a die.");
+        command.setDiceConfig("dice2d6");
+        expectLocale();
+        expect(interactionHandler.hasRandomResult(character)).andReturn(true);
+        expect(beanFactory.getBean("dice2d6", DiceConfiguration.class)).andReturn(diceConfig);
+        final int[] randomResult = new int[]{6, 2, 4};
+        expect(generator.getRandomNumber(diceConfig)).andReturn(randomResult);
+        logger.debug("Random command generated the number '{}'.", 6);
+        expect(diceRenderer.render(diceConfig, randomResult)).andReturn("_6_");
+        expectTextWoLocale("page.raw.label.random.after", new Object[]{"_6_", 6}, "Thrown value: _6_. Total: 6.");
+        expect(expressionResolver.resolveValue(character, "5")).andReturn(5);
+        expect(expressionResolver.resolveValue(character, "7")).andReturn(7);
+        expect(expressionResolver.resolveValue(character, "5")).andReturn(5);
+        expect(expressionResolver.resolveValue(character, "7")).andReturn(7);
+        mockControl.replay();
+        // WHEN
+        final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
+        // THEN
+        Assert.assertEquals(rootData.getText(), "<p>Initial content.</p>");
+        Assert.assertEquals(command.getDiceResultText(), "_6_");
+        Assert.assertEquals(command.getDiceResult(), 6);
+        Assert.assertSame(command.getDiceResults(), randomResult);
+        Assert.assertSame(returned.get(0), resultAllDifferentData);
+        Assert.assertEquals(returned.get(0).getText(), "<p>Thrown value: _6_. Total: 6.</p><p>Result all different data text.</p>");
     }
 
     public void testGetGeneratorShouldReturnGenerator() {

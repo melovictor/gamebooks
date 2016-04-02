@@ -19,7 +19,6 @@ import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.List;
-import java.util.Locale;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.slf4j.Logger;
@@ -55,7 +54,6 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
     @Inject private Logger logger;
     @Inject private DiceResultRenderer diceRenderer;
     @Mock private ParagraphData clonedData;
-    private Locale locale;
     @Instance private List<String> messages;
     @Inject private ExpressionResolver expressionResolver;
 
@@ -74,7 +72,6 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
         info.setCharacterHandler(characterHandler);
         characterHandler.setInteractionHandler(interactionHandler);
         diceConfig = new DiceConfiguration(1, 1, 6);
-        locale = Locale.ENGLISH;
     }
 
     @BeforeMethod
@@ -101,7 +98,7 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
         expect(resultData.clone()).andReturn(clonedData);
         mockControl.replay();
         // WHEN
-        final List<ParagraphData> returned = underTest.resolveSilently(command, resolvationData, messages, locale);
+        final List<ParagraphData> returned = underTest.resolveSilently(command, resolvationData, messages, getLocale());
         // THEN
         Assert.assertEquals(rootData.getText(), "<p>Initial content.</p>");
         Assert.assertEquals(command.getDiceResultText(), "_2_");
@@ -129,7 +126,7 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
         expect(resultData.clone()).andReturn(clonedData);
         mockControl.replay();
         // WHEN
-        final List<ParagraphData> returned = underTest.resolveSilently(command, resolvationData, messages, locale);
+        final List<ParagraphData> returned = underTest.resolveSilently(command, resolvationData, messages, getLocale());
         // THEN
         Assert.assertEquals(rootData.getText(), "<p>Initial content.</p>");
         Assert.assertEquals(command.getDiceResultText(), "_2_");
@@ -156,7 +153,7 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
         logger.error("Failed to clone object '{}'.", resultData);
         mockControl.replay();
         // WHEN
-        final List<ParagraphData> returned = underTest.resolveSilently(command, resolvationData, messages, locale);
+        final List<ParagraphData> returned = underTest.resolveSilently(command, resolvationData, messages, getLocale());
         // THEN
         Assert.assertEquals(rootData.getText(), "<p>Initial content.</p>");
         Assert.assertEquals(command.getDiceResultText(), "_2_");
@@ -180,7 +177,7 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
         expect(expressionResolver.resolveValue(character, "3")).andReturn(3);
         mockControl.replay();
         // WHEN
-        final List<ParagraphData> returned = underTest.resolveSilently(command, resolvationData, messages, locale);
+        final List<ParagraphData> returned = underTest.resolveSilently(command, resolvationData, messages, getLocale());
         // THEN
         Assert.assertEquals(rootData.getText(), "<p>Initial content.</p>");
         Assert.assertEquals(command.getDiceResultText(), "_6_");

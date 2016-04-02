@@ -58,7 +58,7 @@ public class RandomResultTransformerTest extends AbstractTransformerTest {
         command = new RandomCommand();
     }
 
-    public void testDoTransformShouldParseResultAttributesAndResultItself() {
+    public void testDoTransformWhenHasNoAllSameShouldParseResultAttributesAndResultItself() {
         // GIVEN
         expect(beanFactory.getBean(RandomResult.class)).andReturn(randomResult);
         expectAttribute("min", "1");
@@ -73,6 +73,24 @@ public class RandomResultTransformerTest extends AbstractTransformerTest {
         Assert.assertEquals(randomResult.getMin(), "1");
         Assert.assertEquals(randomResult.getMax(), "3");
         Assert.assertNull(randomResult.isAllSame());
+        Assert.assertSame(randomResult.getParagraphData(), paragraphData);
+    }
+
+    public void testDoTransformWhenHasAllSameShouldParseResultAttributesAndResultItself() {
+        // GIVEN
+        expect(beanFactory.getBean(RandomResult.class)).andReturn(randomResult);
+        expectAttribute("min", "1");
+        expectAttribute("max", "3");
+        expectAttribute("allSame", "true");
+        expect(parent.parseParagraphData(positionCounter, node)).andReturn(paragraphData);
+        mockControl.replay();
+        // WHEN
+        underTest.doTransform(parent, node, command, positionCounter);
+        // THEN
+        Assert.assertSame(command.getResults().get(0), randomResult);
+        Assert.assertEquals(randomResult.getMin(), "1");
+        Assert.assertEquals(randomResult.getMax(), "3");
+        Assert.assertTrue(randomResult.isAllSame());
         Assert.assertSame(randomResult.getParagraphData(), paragraphData);
     }
 
