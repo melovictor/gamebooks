@@ -11,6 +11,7 @@ public final class LastFightCommand {
     public static final String LUCK_ON_OTHER = "luckOnOther";
 
     private LastFightCommand() {
+        throw new UnsupportedOperationException();
     }
 
 }

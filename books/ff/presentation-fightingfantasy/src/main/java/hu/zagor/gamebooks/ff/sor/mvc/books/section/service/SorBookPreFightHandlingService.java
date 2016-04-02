@@ -11,11 +11,12 @@ import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.section.service.EnemyDependentFfBookPreFightHandlingService;
 import hu.zagor.gamebooks.ff.mvc.book.section.service.FfBookPreFightHandlingService;
+import hu.zagor.gamebooks.ff.sor.mvc.books.section.service.domain.SorBookPreFightItemInformation;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.HierarchicalMessageSource;
+import org.springframework.context.MessageSource;
 
 /**
  * Implementation of the {@link FfBookPreFightHandlingService} interface for the Sorcery books.
@@ -32,7 +33,7 @@ public class SorBookPreFightHandlingService extends EnemyDependentFfBookPreFight
     @Autowired private DiceResultRenderer renderer;
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
 
-    @Autowired private HierarchicalMessageSource messageSource;
+    @Autowired private MessageSource messageSource;
     @Autowired private LocaleProvider localeProvider;
 
     @Override
@@ -52,51 +53,6 @@ public class SorBookPreFightHandlingService extends EnemyDependentFfBookPreFight
         return usedItem;
     }
 
-    private void handleRocks(final FfBookInformations info, final HttpSessionWrapper wrapper) {
-        final int[] rollResult = generator.getRandomNumber(2);
-        final ParagraphData data = wrapper.getParagraph().getData();
-        final SorCharacter character = (SorCharacter) wrapper.getCharacter();
-        final FfCharacterHandler characterHandler = info.getCharacterHandler();
-        final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
-        final FfEnemy enemy = getEnemy(wrapper, info);
-        characterHandler.getItemHandler().removeItem(character, ROCKS_ID, 1);
-        characterHandler.getItemHandler().removeItem(character, ROCKS_NORMAL_ID, 1);
-        if (attributeHandler.resolveValue(character, "skill") > rollResult[0]) {
-            recordRollResult(rollResult, data, "success");
-            appendText(data, "page.sor.rockHit", enemy.getCommonName());
-            enemy.setStamina(enemy.getStamina() - 1);
-        } else {
-            recordRollResult(rollResult, data, "failure");
-            appendText(data, "page.sor.rockMissed", enemy.getCommonName());
-        }
-    }
-
-    private void handleCrystalBallThrowing(final FfBookInformations info, final HttpSessionWrapper wrapper) {
-        final int[] rollResult = generator.getRandomNumber(2);
-        final ParagraphData data = wrapper.getParagraph().getData();
-        final SorCharacter character = (SorCharacter) wrapper.getCharacter();
-        final FfCharacterHandler characterHandler = info.getCharacterHandler();
-        final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
-        final FfEnemy enemy = getEnemy(wrapper, info);
-
-        String ballReportPostfix = "";
-        final int[] breakResult = generator.getRandomNumber(1);
-        final String breakRollResult = renderer.render(generator.getDefaultDiceSide(), breakResult);
-        if (breakResult[0] % 2 == 1) {
-            ballReportPostfix = ".broken";
-            characterHandler.getItemHandler().removeItem(character, CRYSTAL_BALL, 1);
-        }
-
-        if (attributeHandler.resolveValue(character, "skill") > rollResult[0]) {
-            recordRollResult(rollResult, data, "success");
-            appendText(data, "page.sor.crystalBallHit" + ballReportPostfix, enemy.getCommonName(), breakRollResult);
-            enemy.setStamina(enemy.getStamina() - 2);
-        } else {
-            recordRollResult(rollResult, data, "failure");
-            appendText(data, "page.sor.crystalBallMissed" + ballReportPostfix, enemy.getCommonName(), breakRollResult);
-        }
-    }
-
     private void handleChainAttack(final FfBookInformations info, final HttpSessionWrapper wrapper) {
         final FfEnemy enemy = getEnemy(wrapper, info);
         String messageKey;
@@ -108,43 +64,61 @@ public class SorBookPreFightHandlingService extends EnemyDependentFfBookPreFight
             messageKey = "page.sor.magicChain.enemyTooStrong";
         }
         final ParagraphData data = wrapper.getParagraph().getData();
-        final String message = messageSource.getMessage(messageKey, new Object[]{enemy.getCommonName()}, localeProvider.getLocale());
-        data.setText(data.getText() + message);
+        appendText(data, messageKey, enemy.getCommonName());
     }
 
     private void handleThrowingDarts(final FfBookInformations info, final HttpSessionWrapper wrapper) {
-        final int[] rollResult = generator.getRandomNumber(2);
-        final ParagraphData data = wrapper.getParagraph().getData();
-        final SorCharacter character = (SorCharacter) wrapper.getCharacter();
-        final FfCharacterHandler characterHandler = info.getCharacterHandler();
-        final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
-        final FfEnemy enemy = getEnemy(wrapper, info);
-        characterHandler.getItemHandler().removeItem(character, THROWING_DARTS_ID, 1);
-        if (attributeHandler.resolveValue(character, "skill") > rollResult[0]) {
-            recordRollResult(rollResult, data, "success");
-            appendText(data, "page.sor.dartHit", enemy.getCommonName());
-            enemy.setStamina(enemy.getStamina() - 2);
-        } else {
-            recordRollResult(rollResult, data, "failure");
-            appendText(data, "page.sor.dartMissed", enemy.getCommonName());
-        }
+        doSkillTest(new SorBookPreFightItemInformation(THROWING_DARTS_ID, "dart", false, false), info, wrapper);
     }
 
     private FfItem handleChakram(final FfBookInformations info, final HttpSessionWrapper wrapper) {
+        return doSkillTest(new SorBookPreFightItemInformation(CHAKRAM_ID, "chakram", true, false), info, wrapper);
+    }
+
+    private void handleRocks(final FfBookInformations info, final HttpSessionWrapper wrapper) {
+        doSkillTest(new SorBookPreFightItemInformation(ROCKS_ID, "rock", false, false), info, wrapper);
+
+        final FfCharacterHandler characterHandler = info.getCharacterHandler();
+        final SorCharacter character = (SorCharacter) wrapper.getCharacter();
+        characterHandler.getItemHandler().removeItem(character, ROCKS_NORMAL_ID, 1);
+    }
+
+    private void handleCrystalBallThrowing(final FfBookInformations info, final HttpSessionWrapper wrapper) {
+        doSkillTest(new SorBookPreFightItemInformation(CRYSTAL_BALL, "crystalBall", true, true), info, wrapper);
+    }
+
+    private FfItem doSkillTest(final SorBookPreFightItemInformation itemInfo, final FfBookInformations info, final HttpSessionWrapper wrapper) {
         final int[] rollResult = generator.getRandomNumber(2);
         final ParagraphData data = wrapper.getParagraph().getData();
         final SorCharacter character = (SorCharacter) wrapper.getCharacter();
         final FfCharacterHandler characterHandler = info.getCharacterHandler();
         final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
         final FfEnemy enemy = getEnemy(wrapper, info);
-        final FfItem item = (FfItem) characterHandler.getItemHandler().getItem(character, CHAKRAM_ID);
+        FfItem item = null;
+        if (itemInfo.isReusable()) {
+            item = (FfItem) characterHandler.getItemHandler().getItem(character, itemInfo.getItemId());
+        } else {
+            characterHandler.getItemHandler().removeItem(character, itemInfo.getItemId(), 1);
+        }
+
+        String breakingPostfix = "";
+        String breakRollResult = "";
+        if (itemInfo.isBreakable()) {
+            final int[] breakResult = generator.getRandomNumber(1);
+            breakRollResult = renderer.render(generator.getDefaultDiceSide(), breakResult);
+            if (breakResult[0] % 2 == 1) {
+                breakingPostfix = ".broken";
+                characterHandler.getItemHandler().removeItem(character, itemInfo.getItemId(), 1);
+            }
+        }
+
         if (attributeHandler.resolveValue(character, "skill") > rollResult[0]) {
             recordRollResult(rollResult, data, "success");
-            appendText(data, "page.sor.chakramHit", enemy.getCommonName());
+            appendText(data, "page.sor." + itemInfo.getTextResource() + "Hit" + breakingPostfix, enemy.getCommonName(), breakRollResult);
             enemy.setStamina(enemy.getStamina() - 2);
         } else {
             recordRollResult(rollResult, data, "failure");
-            appendText(data, "page.sor.chakramMissed", enemy.getCommonName());
+            appendText(data, "page.sor." + itemInfo.getTextResource() + "Missed" + breakingPostfix, enemy.getCommonName(), breakRollResult);
         }
         return item;
     }

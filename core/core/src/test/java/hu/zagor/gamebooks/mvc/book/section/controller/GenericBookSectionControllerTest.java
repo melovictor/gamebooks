@@ -192,7 +192,7 @@ public class GenericBookSectionControllerTest {
         // WHEN
         try {
             underTest.init();
-            Assert.assertTrue(false);
+            Assert.fail();
         } catch (final IllegalStateException ex) {
         }
         // THEN
@@ -206,7 +206,7 @@ public class GenericBookSectionControllerTest {
         // WHEN
         try {
             initController(new _testingBookSectionController()).init();
-            Assert.assertTrue(false);
+            Assert.fail();
         } catch (final IllegalStateException ex) {
         }
         // THEN
