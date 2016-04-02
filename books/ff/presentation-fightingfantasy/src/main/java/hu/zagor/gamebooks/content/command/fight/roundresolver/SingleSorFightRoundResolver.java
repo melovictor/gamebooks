@@ -8,12 +8,14 @@ import hu.zagor.gamebooks.content.command.fight.roundresolver.service.SorDamageR
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 /**
  * Implementation of the {@link FightRoundResult} interface for resolving single fight rounds in SOR.
  * @author Tamas_Szekeres
  */
-public abstract class SingleSorFightRoundResolver extends SingleFightRoundResolver {
+@Component("singleSorFightRoundResolver")
+public class SingleSorFightRoundResolver extends SingleFightRoundResolver {
 
     @Autowired private SorDamageReducingArmourService damageReducingArmourService;
     @Autowired @Qualifier("sorHeroAttackStrengthRoller") private HeroAttackStrengthRoller heroAttackStrengthRoller;
@@ -23,7 +25,6 @@ public abstract class SingleSorFightRoundResolver extends SingleFightRoundResolv
         damageReducingArmourService.setUpDamageProtection(dto);
         super.damageSelf(dto);
     }
-
 
     @Override
     int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {

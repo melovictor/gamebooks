@@ -18,6 +18,7 @@ import hu.zagor.gamebooks.ff.character.SorCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component("singlesor3FightRoundResolver")
-public class SingleSor3FightRoundResolver extends SingleSorFightRoundResolver {
+public class SingleSor3FightRoundResolver extends SingleFightRoundResolver {
 
     private static final int AIR_SERPENT_FORCED_DAMAGE = 3;
     private static final int AIR_SERPENT_BASE_DAMAGE_ABSORPTION = 10;
@@ -45,7 +46,7 @@ public class SingleSor3FightRoundResolver extends SingleSorFightRoundResolver {
             prepareAttackDefenseValues(resolvationData);
         }
 
-        final FightRoundResult[] resolveRound = super.resolveRound(command, resolvationData, beforeRoundResult);
+        final FightRoundResult[] resolveRound = superResolveRound(command, resolvationData, beforeRoundResult);
 
         if (centaurReadyToSurrender(command, resolvationData, resolveRound)) {
             command.setFleeAllowed(true);
@@ -55,19 +56,21 @@ public class SingleSor3FightRoundResolver extends SingleSorFightRoundResolver {
             fleeData.setText(source.getMessage("page.sor3.fight.centaur.flee", null, provider.getLocale()));
             command.setFleeData(fleeData);
         } else if (command.getEnemies().contains("8")) {
-            final FfEnemy enemy = (FfEnemy) resolvationData.getEnemies().get("8");
             if (resolvationData.getCharacter().getParagraphs().contains("488")) {
+                final FfEnemy enemy = (FfEnemy) resolvationData.getEnemies().get("8");
                 enemy.setAttackStrengthBonus(ANGERED_BADDU_BUG_ATTACK_STRENGTH_BONUS);
             }
         } else if (notLastSnattacatJustDied(command, resolvationData)) {
             resolvationData.getCharacterHandler().getItemHandler().addItem(resolvationData.getCharacter(), "4008", 2);
-        }
-
-        if (fightingWithAirSerpent(command)) {
+        } else if (fightingWithAirSerpent(command)) {
             storeSerpentRoundResult(resolveRound[0], resolvationData);
         }
 
         return resolveRound;
+    }
+
+    FightRoundResult[] superResolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+        return super.resolveRound(command, resolvationData, beforeRoundResult);
     }
 
     private void storeSerpentRoundResult(final FightRoundResult resolveRound, final ResolvationData resolvationData) {
@@ -123,17 +126,18 @@ public class SingleSor3FightRoundResolver extends SingleSorFightRoundResolver {
         if (firstId != null) {
             int dead = enemies.size();
             Enemy alive = null;
-            if (!isDead(resolvationData.getEnemies().get(firstId))) {
+            final Map<String, Enemy> enemyMap = resolvationData.getEnemies();
+            if (!isDead(enemyMap.get(firstId))) {
                 dead--;
-                alive = resolvationData.getEnemies().get(firstId);
+                alive = enemyMap.get(firstId);
             }
-            if (!isDead(resolvationData.getEnemies().get("6"))) {
+            if (!isDead(enemyMap.get("6"))) {
                 dead--;
-                alive = resolvationData.getEnemies().get("6");
+                alive = enemyMap.get("6");
             }
-            if (!isDead(resolvationData.getEnemies().get("7"))) {
+            if (!isDead(enemyMap.get("7"))) {
                 dead--;
-                alive = resolvationData.getEnemies().get("7");
+                alive = enemyMap.get("7");
             }
             if (dead == 2 && alive != null) {
                 final String enemyId = alive.getId();

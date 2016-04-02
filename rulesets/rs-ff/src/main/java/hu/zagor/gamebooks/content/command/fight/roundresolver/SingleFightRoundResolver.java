@@ -14,6 +14,7 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import java.util.List;
 import org.springframework.stereotype.Component;
 
@@ -33,7 +34,7 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
-        final String enemyId = characterHandler.getInteractionHandler().peekLastFightCommand(character, "enemyId");
+        final String enemyId = characterHandler.getInteractionHandler().peekLastFightCommand(character, LastFightCommand.ENEMY_ID);
         for (int enemyIdx = 0; enemyIdx < enemies.size(); enemyIdx++) {
             final FfEnemy enemy = enemies.get(enemyIdx);
             final FightDataDto dto = new FightDataDto(enemy, messages, resolvationData, command.getUsableWeaponTypes());
@@ -109,7 +110,7 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
     protected void resolveTieMessage(final FightDataDto dto) {
         final FfEnemy enemy = dto.getEnemy();
         final FightCommandMessageList messages = dto.getMessages();
-        messages.addKey("page.ff.label.fight.single.tied", new Object[]{enemy.getName()});
+        messages.addKey("page.ff.label.fight.single.tied", enemy.getName());
     }
 
     /**
