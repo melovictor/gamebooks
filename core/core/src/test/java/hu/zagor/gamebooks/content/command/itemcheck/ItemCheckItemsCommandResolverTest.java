@@ -25,7 +25,7 @@ import org.testng.annotations.Test;
  * @author Tamas_Szekeres
  */
 @Test
-public class ItemCheckItemsCommandTest {
+public class ItemCheckItemsCommandResolverTest {
 
     private ItemCheckItemsCommandResolver underTest;
     private IMocksControl mockControl;

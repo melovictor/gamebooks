@@ -199,33 +199,33 @@
   <bean class="hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommandResolver" id="changeEnemyCommandResolver" />
   <bean class="hu.zagor.gamebooks.content.command.changeitem.ChangeItemCommandResolver" id="changeItemCommandResolver" />
 
-  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckAttributeCommand" id="ffItemCheckAttributeCommand" />
-  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckGoldPiecesCommand" id="ffItemCheckGoldPiecesCommand" />
-  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckValueCommand" id="ffItemCheckValueCommand" />
-  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckPosCommand" id="ffItemCheckPosCommand" />
-  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckEnemyCommand" id="ffItemCheckEnemyCommand" />
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckAttributeCommandResolver" id="ffItemCheckAttributeCommandResolver" />
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckGoldPiecesCommandResolver" id="ffItemCheckGoldPiecesCommandResolver" />
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckValueCommandResolver" id="ffItemCheckValueCommandResolver" />
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckPosCommandResolver" id="ffItemCheckPosCommandResolver" />
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckEnemyCommandResolver" id="ffItemCheckEnemyCommandResolver" />
 
   <util:map id="ffItemCheckStubCommands" key-type="hu.zagor.gamebooks.content.command.itemcheck.CheckType" value-type="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckStubCommand">
-    <entry key="section" value-ref="itemCheckSectionCommand" />
-    <entry key="item" value-ref="itemCheckItemCommand" />
-    <entry key="items" value-ref="itemCheckItemsCommand" />
-    <entry key="enemy" value-ref="ffItemCheckEnemyCommand" />
-    <entry key="skill" value-ref="ffItemCheckAttributeCommand" />
-    <entry key="stamina" value-ref="ffItemCheckAttributeCommand" />
-    <entry key="luck" value-ref="ffItemCheckAttributeCommand" />
-    <entry key="gold" value-ref="ffItemCheckAttributeCommand" />
-    <entry key="goldpiece" value-ref="ffItemCheckGoldPiecesCommand" />
-    <entry key="value" value-ref="ffItemCheckValueCommand" />
-    <entry key="pos" value-ref="ffItemCheckPosCommand" />
+    <entry key="section" value-ref="itemCheckSectionCommandResolver" />
+    <entry key="item" value-ref="itemCheckItemCommandResolver" />
+    <entry key="items" value-ref="itemCheckItemsCommandResolver" />
+    <entry key="enemy" value-ref="ffItemCheckEnemyCommandResolver" />
+    <entry key="skill" value-ref="ffItemCheckAttributeCommandResolver" />
+    <entry key="stamina" value-ref="ffItemCheckAttributeCommandResolver" />
+    <entry key="luck" value-ref="ffItemCheckAttributeCommandResolver" />
+    <entry key="gold" value-ref="ffItemCheckAttributeCommandResolver" />
+    <entry key="goldpiece" value-ref="ffItemCheckGoldPiecesCommandResolver" />
+    <entry key="value" value-ref="ffItemCheckValueCommandResolver" />
+    <entry key="pos" value-ref="ffItemCheckPosCommandResolver" />
 
-    <entry key="fear" value-ref="ffItemCheckAttributeCommand" />
-    <entry key="wisdom" value-ref="ffItemCheckAttributeCommand" />
-    <entry key="armour" value-ref="ffItemCheckAttributeCommand" />
-    <entry key="faith" value-ref="ffItemCheckAttributeCommand" />
-    <entry key="selfShield" value-ref="ffItemCheckAttributeCommand" />
-    <entry key="enemyShield" value-ref="ffItemCheckAttributeCommand" />
+    <entry key="fear" value-ref="ffItemCheckAttributeCommandResolver" />
+    <entry key="wisdom" value-ref="ffItemCheckAttributeCommandResolver" />
+    <entry key="armour" value-ref="ffItemCheckAttributeCommandResolver" />
+    <entry key="faith" value-ref="ffItemCheckAttributeCommandResolver" />
+    <entry key="selfShield" value-ref="ffItemCheckAttributeCommandResolver" />
+    <entry key="enemyShield" value-ref="ffItemCheckAttributeCommandResolver" />
     <entry key="status">
-      <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckAttributeEqualityCommand" />
+      <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckAttributeEqualityCommandResolver" />
     </entry>
   </util:map>
 

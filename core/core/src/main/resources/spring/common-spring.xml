@@ -77,14 +77,14 @@
   </util:list>
 
 
-  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckItemCommand" id="itemCheckItemCommand" />
-  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckItemsCommand" id="itemCheckItemsCommand" />
-  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckSectionCommand" id="itemCheckSectionCommand" />
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckItemCommandResolver" id="itemCheckItemCommandResolver" />
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckItemsCommandResolver" id="itemCheckItemsCommandResolver" />
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckSectionCommandResolver" id="itemCheckSectionCommandResolver" />
 
   <util:map id="itemCheckStubCommands" key-type="hu.zagor.gamebooks.content.command.itemcheck.CheckType" value-type="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckStubCommand">
-    <entry key="section" value-ref="itemCheckSectionCommand" />
-    <entry key="item" value-ref="itemCheckItemCommand" />
-    <entry key="items" value-ref="itemCheckItemsCommand" />
+    <entry key="section" value-ref="itemCheckSectionCommandResolver" />
+    <entry key="item" value-ref="itemCheckItemCommandResolver" />
+    <entry key="items" value-ref="itemCheckItemsCommandResolver" />
   </util:map>
 
   <bean abstract="true" id="abstractBookParagraphDataTransformer">

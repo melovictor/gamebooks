@@ -22,7 +22,7 @@ import org.testng.annotations.Test;
  * @author Tamas_Szekeres
  */
 @Test
-public class ItemCheckSectionCommandTest {
+public class ItemCheckSectionCommandResolverTest {
 
     private static final String ID = "3001";
     private ItemCheckSectionCommandResolver underTest;
