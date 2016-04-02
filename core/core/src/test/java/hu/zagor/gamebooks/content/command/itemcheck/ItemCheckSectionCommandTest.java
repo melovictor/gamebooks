@@ -18,14 +18,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- * Unit test for class {@link ItemCheckSectionCommand}.
+ * Unit test for class {@link ItemCheckSectionCommandResolver}.
  * @author Tamas_Szekeres
  */
 @Test
 public class ItemCheckSectionCommandTest {
 
     private static final String ID = "3001";
-    private ItemCheckSectionCommand underTest;
+    private ItemCheckSectionCommandResolver underTest;
     private IMocksControl mockControl;
     private Character character;
     private ItemCheckCommand parent;
@@ -51,7 +51,7 @@ public class ItemCheckSectionCommandTest {
 
     @BeforeMethod
     public void setUpMethod() {
-        underTest = new ItemCheckSectionCommand();
+        underTest = new ItemCheckSectionCommandResolver();
         character = new Character();
         mockControl.reset();
     }

@@ -9,7 +9,7 @@ import hu.zagor.gamebooks.content.ParagraphData;
  * Class for resolving an item-type {@link ItemCheckCommand}.
  * @author Tamas_Szekeres
  */
-public class ItemCheckItemCommand implements ItemCheckStubCommand {
+public class ItemCheckItemCommandResolver implements ItemCheckStubCommandResolver {
 
     @Override
     public ParagraphData resolve(final ItemCheckCommand parent, final ResolvationData resolvationData) {

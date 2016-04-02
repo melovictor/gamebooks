@@ -12,7 +12,7 @@ import org.mvel2.MVEL;
  * Class for resolving an item-type {@link ItemCheckCommand}.
  * @author Tamas_Szekeres
  */
-public class ItemCheckItemsCommand implements ItemCheckStubCommand {
+public class ItemCheckItemsCommandResolver implements ItemCheckStubCommandResolver {
 
     @Override
     public ParagraphData resolve(final ItemCheckCommand parent, final ResolvationData resolvationData) {

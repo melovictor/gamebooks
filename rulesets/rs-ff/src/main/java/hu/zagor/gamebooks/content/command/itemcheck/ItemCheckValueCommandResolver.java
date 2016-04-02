@@ -10,7 +10,7 @@ import java.util.Iterator;
  * Class for resolving a value-type {@link ItemCheckCommand}.
  * @author Tamas_Szekeres
  */
-public class ItemCheckValueCommand extends ItemCheckAttributeCommand {
+public class ItemCheckValueCommandResolver extends ItemCheckAttributeCommandResolver {
 
     @Override
     protected int getAttributeValue(final FfCharacter character, final FfCharacterHandler characterHandler, final String attribute) {

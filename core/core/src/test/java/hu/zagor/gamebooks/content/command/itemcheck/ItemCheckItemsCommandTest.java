@@ -21,13 +21,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- * Unit test for class {@link ItemCheckItemsCommand}.
+ * Unit test for class {@link ItemCheckItemsCommandResolver}.
  * @author Tamas_Szekeres
  */
 @Test
 public class ItemCheckItemsCommandTest {
 
-    private ItemCheckItemsCommand underTest;
+    private ItemCheckItemsCommandResolver underTest;
     private IMocksControl mockControl;
     private ItemCheckCommand parent;
     private Character character;
@@ -41,7 +41,7 @@ public class ItemCheckItemsCommandTest {
     @BeforeClass
     public void setUpClass() {
         mockControl = EasyMock.createStrictControl();
-        underTest = new ItemCheckItemsCommand();
+        underTest = new ItemCheckItemsCommandResolver();
         character = mockControl.createMock(Character.class);
         characterHandler = new CharacterHandler();
         parent = new ItemCheckCommand();

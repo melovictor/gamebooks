@@ -17,7 +17,7 @@ import org.springframework.util.Assert;
  */
 public class ItemCheckCommandResolver extends TypeAwareCommandResolver<ItemCheckCommand> {
 
-    private Map<CheckType, ItemCheckStubCommand> stubCommands;
+    private Map<CheckType, ItemCheckStubCommandResolver> stubCommands;
 
     @Override
     protected CommandResolveResult doResolveWithResolver(final ItemCheckCommand command, final ResolvationData resolvationData) {
@@ -34,7 +34,7 @@ public class ItemCheckCommandResolver extends TypeAwareCommandResolver<ItemCheck
         Assert.state(command.getCheckType() != null, "The field 'stubCommands' must be set!");
 
         ParagraphData toResolve;
-        final ItemCheckStubCommand stubCommand = stubCommands.get(command.getCheckType());
+        final ItemCheckStubCommandResolver stubCommand = stubCommands.get(command.getCheckType());
         if (stubCommand != null) {
             toResolve = stubCommand.resolve(command, resolvationData);
         } else {
@@ -51,7 +51,7 @@ public class ItemCheckCommandResolver extends TypeAwareCommandResolver<ItemCheck
         return result;
     }
 
-    public void setStubCommands(final Map<CheckType, ItemCheckStubCommand> stubCommands) {
+    public void setStubCommands(final Map<CheckType, ItemCheckStubCommandResolver> stubCommands) {
         this.stubCommands = stubCommands;
     }
 

@@ -10,7 +10,7 @@ import hu.zagor.gamebooks.ff.character.FfCharacter;
  * Class for resolving an attribute-type {@link ItemCheckCommand}.
  * @author Tamas_Szekeres
  */
-public class ItemCheckAttributeCommand implements ItemCheckStubCommand {
+public class ItemCheckAttributeCommandResolver implements ItemCheckStubCommandResolver {
 
     @Override
     public ParagraphData resolve(final ItemCheckCommand parent, final ResolvationData resolvationData) {

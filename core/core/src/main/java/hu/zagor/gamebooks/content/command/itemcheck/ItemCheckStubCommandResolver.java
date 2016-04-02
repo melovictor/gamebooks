@@ -7,7 +7,7 @@ import hu.zagor.gamebooks.content.ParagraphData;
  * Interface for stub commands for {@link ItemCheckCommand}.
  * @author Tamas_Szekeres
  */
-public interface ItemCheckStubCommand {
+public interface ItemCheckStubCommandResolver {
 
     /**
      * Resolves a {@link ParagraphData} for a certain check-type.

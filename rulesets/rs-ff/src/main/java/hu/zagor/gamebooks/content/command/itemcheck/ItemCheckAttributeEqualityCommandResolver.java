@@ -11,7 +11,7 @@ import java.util.List;
  * Class for resolving an attribute-type {@link ItemCheckCommand} where we expect equality, instead of greater-than-or-equal-to.
  * @author Tamas_Szekeres
  */
-public class ItemCheckAttributeEqualityCommand extends ItemCheckAttributeCommand {
+public class ItemCheckAttributeEqualityCommandResolver extends ItemCheckAttributeCommandResolver {
 
     @Override
     public ParagraphData resolve(final ItemCheckCommand parent, final ResolvationData resolvationData) {

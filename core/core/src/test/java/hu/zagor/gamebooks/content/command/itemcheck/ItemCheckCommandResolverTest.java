@@ -35,8 +35,8 @@ public class ItemCheckCommandResolverTest {
     private Paragraph paragraph;
     private ParagraphData resolvedData;
     private ParagraphData afterData;
-    private Map<CheckType, ItemCheckStubCommand> stubCommands;
-    private ItemCheckStubCommand itemCheckStubCommand;
+    private Map<CheckType, ItemCheckStubCommandResolver> stubCommands;
+    private ItemCheckStubCommandResolver itemCheckStubCommand;
     private CharacterHandler characterHandler;
     private ResolvationData resolvationData;
     private BookInformations info;
@@ -51,7 +51,7 @@ public class ItemCheckCommandResolverTest {
         paragraph.setData(rootDataElement);
         resolvedData = mockControl.createMock(ParagraphData.class);
         afterData = mockControl.createMock(ParagraphData.class);
-        itemCheckStubCommand = mockControl.createMock(ItemCheckStubCommand.class);
+        itemCheckStubCommand = mockControl.createMock(ItemCheckStubCommandResolver.class);
 
         characterHandler = new CharacterHandler();
         info = new BookInformations(11L);

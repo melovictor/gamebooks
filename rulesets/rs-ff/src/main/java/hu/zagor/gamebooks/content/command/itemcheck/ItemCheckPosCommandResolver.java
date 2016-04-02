@@ -7,7 +7,7 @@ import hu.zagor.gamebooks.content.ParagraphData;
  * Class for resolving a choice position-type {@link ItemCheckCommand}.
  * @author Tamas_Szekeres
  */
-public class ItemCheckPosCommand extends ItemCheckAttributeCommand {
+public class ItemCheckPosCommandResolver extends ItemCheckAttributeCommandResolver {
 
     @Override
     public ParagraphData resolve(final ItemCheckCommand parent, final ResolvationData resolvationData) {
