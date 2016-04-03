@@ -9,12 +9,17 @@
                 <c:forEach items="${paragraph.data.spellChoices}" var="spell" varStatus="stat">
 	                <div class="sorSpell">
 		                <c:set var="linkPrefix"><c:if test="${informativeSections}">${spell.id}|</c:if></c:set>
-		                <a href="spl-${linkPrefix}${stat.index}">
-			                ${spell.text}
-			                <c:if test="${!hideChoiceSection}">
-			                    (${spell.display})
-			                </c:if>
-		                </a>
+		                <c:if test="${spell.id > 0}">
+	                        <a href="spl-${linkPrefix}${stat.index}">
+	                            ${spell.text}
+	                            <c:if test="${!hideChoiceSection}">
+	                                (${spell.display})
+	                            </c:if>
+	                        </a>
+		                </c:if>
+		                <c:if test="${spell.id == -1}">
+                            ${spell.text}
+		                </c:if>
                     </div>
                 </c:forEach>
             </div>

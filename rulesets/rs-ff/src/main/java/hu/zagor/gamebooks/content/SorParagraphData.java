@@ -12,15 +12,11 @@ import org.springframework.util.Assert;
  */
 public class SorParagraphData extends FfParagraphData {
 
-    private List<Choice> spellChoices = new ArrayList<>();
+    private final List<Choice> spellChoices = new ArrayList<>();
     private final List<ModifyAttribute> spellModifyAttributes = new ArrayList<>();
 
     public List<Choice> getSpellChoices() {
         return spellChoices;
-    }
-
-    public void setSpellChoices(final List<Choice> spellChoices) {
-        this.spellChoices = spellChoices;
     }
 
     /**
