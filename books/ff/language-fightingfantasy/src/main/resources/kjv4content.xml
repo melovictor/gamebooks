@@ -77,7 +77,15 @@
     <next id="136">A középső barlangban?</next>
     <next id="534">A leghátsó barlangban?</next>
   </p>
-  <!-- 2 -->
+  <p id="2">
+    <text>
+        [p]A következő lépésnél beléd nyilall a fájdalom! Sajnos hozzáértél egy borotvaéles pengéhez, és az felvágta a lábadat. Vesztesz 1 életerő pontot. A következő néhány lépésedet az alábbiak közül választhatod.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="349">349</next>
+    <next id="180">180</next>
+    <next id="249">249</next>
+  </p>
   <p id="3">
     <text>
         [p]Kiválasztasz egy üveget, melyen a „Táns Húsgombócok” felirat díszeleg. Szádba teszel egy falatot. A neve ellenére az étel meglepően finom! A Hobgoblinhoz fordulsz, hogy megkérdezd, hogyan készítette, de az a szolgáinak osztogat parancsokat, és nem figyel rád. Melegség árad szét benned, miközben érzed, hogy a sebeid begyógyulnak, és izmaidba visszaköltözik az erő. A furcsa ételnek egészen különleges hatása van. Visszaállíthatod az ügyesség és életerő pontjaidat a [em]Kezdeti[/em] értékükre![/p]
@@ -164,7 +172,9 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 13 -->
+  <p id="13">
+    <empty />
+  </p>
   <p id="14">
     <text>
         [p]Fegyverrel a kézben beljebb merészkedsz a barlangba, szorosan követve a fal vonalát, hogy a hátad fedezve legyen. Nem találsz se rejtett folyosót, se újabb Jib-Jibeket. Az egész barlang három vagy négy méter mély lehet, és hál’ istennek, üres. De amint körbetapogatsz, kezed valami hideget érint. Megragadod a tárgyat, és kiviszed a fényre, hogy megnézhesd, mi is az. Egy piszkos, öreg üveget találtál, melynek kupakja alaposan be van zárva. Az üveg maga sötétbarna színű, így nehéz megállapítani, vajon van-e benne valami. A súlya alapján üresnek mondanád, de ahogy megrázogatod, nagyon halk hangok szűrődnek ki belőle. Megkockáztatod, hogy kinyitod az üveget?[/p]
@@ -324,11 +334,31 @@
     </text>
     <next id="538"></next>
   </p>
-  <!-- 33 -->
+  <p id="33">
+    <text>
+        [p]Megkönnyebbülten fellélegzel, amint a sötétből egy jól megvilágított szobába jutsz. A szemeidet annyira bántja a hirtelen fény, hogy be kell csuknod őket néhány pillanatra, amíg hozzá nem szoknak az új fényviszonyokhoz. Megkönnyebbülésedben sietősen belépsz az ajtón, de ezúttal túl gyors voltál. Az óvatosság nem ártott volna ebben az esetben.[/p]
+        [p]Amint belépsz a fényes szobába, kezek ragadják meg a csuklódat! Őrök! Fogságba estél! A két őrszem büszke zsákmányára, és a bal oldali falban lévő két ajtó felé vezetnek téged. Gurgulázó hangjuk szinte remeg az izgatottságtól, amint keresztüllöknek az egyik ajtón, hogy megmutassanak a kapitányuknak.[/p]
+        [p]Cartoum, az őrkapitány egy papírokkal borított fa íróasztal mögött ül. Némileg meglepve veszed tudomásul, hogy nem olyan szörnyember, mint a többi őr. Magas, vékony testalkatú, vállaira hosszú haj omlik. Bár ember, annyit elsőre látsz rajta, hogy nem Analandról való. Valószínűleg Kakhabad keleti vidékeiről származhat.[/p]
+    </text>
+    <itemCheck type="item" id="4078">
+      <have>
+        <next id="468" pos="0">Ha szembefordulsz a kapitánnyal, hogy megtudd, mit akar mondani</next>
+      </have>
+      <dontHave>
+        <next id="508" pos="0">Ha szembefordulsz a kapitánnyal, hogy megtudd, mit akar mondani</next>
+      </dontHave>
+    </itemCheck>
+    <next id="154" pos="1">Hogyha inkább megpróbálsz kitörni az őrök markából, mielőtt az ajtót még becsuknák mögötted</next>
+  </p>
   <p id="34">
     <empty />
   </p>
-  <!-- 35 -->
+  <p id="35">
+    <text>
+        [p]A kapitány elhiszi a történetedet. El fog kísérni a Főmágushoz, hogy személyesen adhasd át az üzenetedet. Az őrök elengedik a karodat, és a kapitánnyal együtt kisétálnak a szobából. Átvágnak a világos termen, és a túloldalon lévő nagy ajtó felé tartanak.[/p]
+    </text>
+    <next id="301"></next>
+  </p>
   <p id="36">
     <text>
         [p class="inlineImage"][img src="resources/sor4/36.jpg" /][/p]
@@ -339,7 +369,13 @@
     <next id="338">Ha inkább odaszólsz a lénynek és megpróbálsz beszélni vele</next>
   </p>
   <!-- 37 -->
-  <!-- 38 -->
+  <p id="38">
+    <text>
+        [p]Előhúzod a gyertyát a hátizsákodból, és koncentrálsz. Hirtelen reszkető kis láng jelenik meg a kanóc végén - éppen időben, mert az ajtó nagy dörrenéssel becsapódik mögötted! Egyedül maradtál a szobában, csak a gyertyád világít be egy kis területet. Váratlanul azonban a lélegzeted is eláll, amikor lenézel a padlóra! Szabálytalan időközönként éles pengék meredeznek a padló fadeszkáiból! Tökéletes egyensúlyérzékre van szükség ahhoz, hogy átvágj ezen a halálos labirintuson. Vajon képes leszel-e rá? Mi lesz a következő lépésed?[/p]
+    </text>
+    <next id="288">288</next>
+    <next id="367">367</next>
+  </p>
   <p id="39">
     <text>
         [p]Legyengült állapotodban sokkal kisebb az ellenálló képességed, mint annak előtte. Az efféle piszkos étel elfogyasztása nem éppen a legbölcsebb lépés volt a részedről. Érzed, amint a gyomrod kavarogni kezd. Kimented magad a vendéglátódnál, és gyorsan félrevonulsz. Vesztesz 2 életerő pontot a gyomorcsikarás miatt.[/p]
@@ -408,7 +444,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 43 -->
+  <p id="43">
+    <text>
+        [p]- Üzenet a Főmágusnak? - kérdezi. - Cartoun vagyok, a Főmágus őrkapitánya. Ne etess ezekkel a buta történetekkel. Azért jöttél, hogy felkutasd a vezetőnket, így van?[/p]
+    </text>
+    <next id="122">Ha beismered, hogy azért jöttél, hogy elpusztítsd Mampangot</next>
+    <next id="243">Ha tovább folytatod a hazudozást</next>
+  </p>
   <p id="44">
     <text>
         [p]A szoba mocskos és dísztelen. Mindössze egy asztalt és két széket látsz, és azokon sincs semmi különleges. Az asztalnak azonban van egy fiókja. Kinyitod, és egyetlen, nagy [span class="takeItem" data-id="3089" data-amount="1"]kulcsot[/span] találsz benne, mely egymagában függ egy kulcskarikán. Ha akarod, ezt magaddal viheted. Távozol a szobából. Az árkádsor végénél álló kétszárnyú ajtónak erős zárja van, így reméled, hogy ez a kulcs nyitja majd. Behallgatózol az ajtón, és miután nem hallasz semmit, megpróbálkozol a kulcscsal. A kulcs jó! Elfordítod a zárnyelvet, és résnyire kinyitod az ajtót, hogy benézhess rajta.[/p]
@@ -485,8 +527,30 @@
       </failure>
     </test>
   </p>
-  <!-- 51 -->
-  <!-- 52 -->
+  <p id="51">
+    <text>
+        [p]Átkutatod a padlót, de semmi érdekeset nem találsz. A lábadhoz gurított üveg kis mennyiségű étolajat tartalmaz - valószínűleg ezt itta a lény, és ettől lett olyan zsíros és ragacsos a szoba padlója. Ha akarod, elteheted az 
+    </text>
+    <itemCheck type="totalItems" id="11">
+      <have>
+        <text>
+            [span class="replaceItem" data-id="3078" data-amount="1"]olajos üveget[/span], de cserébe az egyik tárgyadat itt kell hagynod. Ezek után távozol a szobából.[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [span class="takeItem" data-id="3078" data-amount="1"]olajos üveget[/span]. Ezek után távozol a szobából.[/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <next id="96"></next>
+  </p>
+  <p id="52">
+    <text>
+        [p]Végre! A fal egyik részénél egy titkos ajtó körvonalait tapintod ki! Kinyitod az ajtót.[/p]
+    </text>
+    <next id="33"></next>
+  </p>
   <p id="53">
     <test against="skill">
       <success>
@@ -667,7 +731,13 @@
     <next id="493" pos="3">Hogyha elsétálsz az árkádsoron lévő ajtóhoz</next>
   </p>
   <!-- 71 -->
-  <!-- 72 -->
+  <p id="72">
+    <text>
+        [p]Előhúzod a gyertyát a hátizsákodból, és koncentrálsz. Hirtelen reszkető, kis láng jelenik meg a kanóc végén - éppen időben, mert az ajtó nagy dörrenéssel becsapódik mögötted! Egyedül maradtál a szobában, csak a gyertyád világít be egy kis területet. Váratlanul azonban a lélegzeted is eláll, amikor lenézel a padlóra! Szabálytalan időközönként éles pengék meredeznek a padló fadeszkáiból! Tökéletes egyensúlyérzékre van szükség ahhoz, hogy átvágj ezen a halálos labirintuson. Vajon képes leszel-e rá? Mi lesz a következő lépésed?[/p]
+    </text>
+    <next id="87">87</next>
+    <next id="239">239</next>
+  </p>
   <p id="73">
     <text>
         [p class="inlineImage"][img src="resources/sor4/73.jpg" /][/p]
@@ -690,7 +760,12 @@
     <next id="333"></next>
   </p>
   <!-- 75 -->
-  <!-- 76 -->
+  <p id="76">
+    <text>
+        [p]- Bah! - feleli. - Három Aranytallér? Hát az fejenként csak egy. És különben is, ha már egyszer ide fáradtál, minden Aranyadat el fogom venni! Vigyétek el ezt a nyomorult Fél-Orkot! - Az őrök durván megragadnak, és belöknek az ajtón - de csak azután, hogy elvették a pénzes zacskódat, és odaadták azt a kapitányuknak. Az életed hátralévő részét Mampang börtönében kell eltöltened. Amely idő szerencsére nem túlságosan hosszú...[/p]
+    </text>
+    <death />
+  </p>
   <p id="77">
     <text>
         [p]Felállsz, hogy távozz az asztaltól, amikor egy hang a neveden szólít. -  Ne siess annyira, barátom. Engedd, hogy beszéljek veled! - A hang ismerősen cseng. Körülnézel, de senkit sem látsz. Ám a levegőben fokozatosan egy figura jelenik meg. A szellemalak ismerősnek tűnik, de csak akkor ismered fel véglegesen, amikor már teljesen kialakult. Shadrack! Megkérded tőle, mit keres itt. - Elfelejtetted az erőmet? -   nevet. Visszaemlékszel az arcra a fában. - Ott lehetek, ahol akarok, és amikor akarok. De a most megtett távolság nagyobb, mint amekkorát valaha is megtettem, és ez fárasztó. Csak rövid ideig maradok itt. Sok veszélyt túléltél, és bebizonyítottad, hogy a királyságod érdemes bajnoka vagy. Én személy szerint azt kívánom, hogy sikerrel járj, de tudnod kell, hogy még számos veszély áll előtted. Ki kell nyitnod a Throben Ajtókat, és az ő titkukat a Főmágus legravaszabb szolgái őrzik: Valignya, a zsugori, Naggamante, a kínzómester és még egy másik személy, akiről nem tudom, hogy kicsoda. Kevés szövetségesed van. De keresd Schinn Szamaritánusait, akik hozzád hasonlóan a Főmágus hatalomvágyának végét akarják látni.[/p]
@@ -751,7 +826,12 @@
     <next id="70"></next>
   </p>
   <p id="87">
-    <empty />
+    <text>
+        [p]Lassan araszolsz előre a szobában. A következő lépéseidet az alábbiak közül választhatod.[/p]
+    </text>
+    <next id="488">488</next>
+    <next id="341">341</next>
+    <next id="359">359</next>
   </p>
   <p id="88">
     <text>
@@ -928,7 +1008,15 @@
     </itemCheck>
     <next id="384"></next>
   </p>
-  <!-- 100 -->
+  <p id="100">
+    <text>
+        [p]Lassan araszolsz előre a szobában. A következő lépésedet az alábbiak közül választhatod ki.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="52">52</next>
+    <next id="227">227</next>
+    <next id="2">2</next>
+  </p>
   <p id="101">
     <text>
         [p]Átmész a folyosón, és keresztülvágsz a Mucalytok szobáján. A következő folyosó végénél lévő ajtó a bejárati terembe nyílik. Az alacsony, zömök teremtmény, aki beengedett, már nincs itt. Kinyitod az udvarra nyíló ajtót, és kilépsz rajta. Az út szabad a nagy, kettős ajtóig. A fal mellett el is indulsz feléje.[/p]
@@ -1205,7 +1293,12 @@
     <next id="57">Amennyiben visszahátrálsz, és megpróbálsz elindulni másfelé</next>
     <next id="12">Hogyha vársz, mi fog most történni</next>
   </p>
-  <!-- 122 -->
+  <p id="122">
+    <text>
+        [p]Büszke kijelentésed inkább bátorságról, mint intelligenciáról tanúskodik. Nem vagy abban a helyzetben, hogy különösebb fenyegetést jelents a számukra! A kapitány és az őrök hangosan felkacagnak. - Vigyétek ezt a nyomorult Fél-Orkot a pincékbe! - parancsolja a kapitány. Az őrök pedig teljesítik a parancsot. Fogságban kell letöltened életed hátralévő idejét. Szerencsére ez nem olyan túl sok... Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="123">
     <text>
         [p]A szörnyetegnek leckét kell adni. Az ordítása nem ijeszthet el téged attól, hogy a barlangjában töltsd az éjszakát![/p]
@@ -1270,7 +1363,12 @@
     <next id="493">Ha a jobb oldali ajtón át</next>
     <next id="253">Hogyha a kétszárnyú, nagy kapun át</next>
   </p>
-  <!-- 130 -->
+  <p id="130">
+    <text>
+        [p]Leírod a csizmákat a kapitánynak, és megígéred, hogy nekiadod őket, ha elenged. Egy darabig úgy tűnik, érdekli az ajánlat, de aztán csettint egyel az ujjával. Az őrök megragadnak, és átlöknek az ajtón, miután megszabadítottak hátizsákodtól és pénzes erszényedtől. Ezeket később a kapitány kapja meg. Végül is, miért engedne szabadon cserébe a csizmákért, amikor így is elveheti őket? A Mampang Erőd börtönében úgysem vennéd hasznát, hiszen innen életed végéig nem fogsz kiszabadulni. Ez azonban szerencsére nincsen túl messze. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="131">
     <text>
         [p]Még egyszer megpróbálnak rávenni, hogy fogadd el tanácsukat és vedd fel a köpenyt, de te hajthatatlan maradsz. Egyikük mérgesen felcsattan: - Csak vesztegetjük az időnket. Győzzük meg ezt a nyomorult embert a magunk módján![/p]
@@ -1436,7 +1534,27 @@
     <next id="536">Kikéred magadnak, hogy sértegetni merészeltek?</next>
     <next id="335">Megpróbálsz kirohanni a szobából?</next>
   </p>
-  <!-- 145 -->
+  <p id="145">
+    <text>
+        [p]Az őrök azon nyomban rád ugranak. Egyszerre küzdj meg velük![/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="33" />
+      <enemy id="34" />
+      <win>
+        <text>
+            [p]Most, hogy megölted őket, sorra kerítheted a kapitányt is.[/p]
+        </text>
+        <fight type="single">
+          <enemy id="35" />
+          <win>
+            <next id="347">Ha meg akarod kímélni a Kapitány életét</next>
+            <next id="391">Ha tovább akarsz harcolni vele</next>
+          </win>
+        </fight>
+      </win>
+    </fight>
+  </p>
   <p id="146">
     <text>
         [p]Egy könnycsepp jelenik meg a kövér férfi szeme sarkában, amikor megadod a kegyelemdöfést kedvenc háziállatának. - Ez felesleges volt! - hüppögi. - Hashi! Mit tettél vele?! - Szembefordulsz a férfival. Odalépsz hozzá, és megragadod a torkát. Felbérelt harcos vagy, aki nem szokta megkímélni az ellenfelei életét. Követeled, hogy mondja meg, hogyan juthatsz be a toronyba. Közlöd, hogy van néhány elintézendő dolgod odabent, és megígéred, hogy visszatérsz, ha ismét fel akarna bérelni. - Ám legyen - sóhajt a férfi. - Ahhoz, hogy bejuss a toronyba, lépj az ajtó elé, és suttogd bele a jelszót a zárba: „Alaralaramalana”. Az ajtó magától ki fog nyílni. És most eressz el! - Elengeded a férfit, és távozol a szobából.[/p]
@@ -1461,7 +1579,38 @@
     <next id="327">Tristan?</next>
     <next id="457">Nem tudom?</next>
   </p>
-  <!-- 150 -->
+  <p id="150">
+    <text>
+        [p]A felirat az ajtón felkelti az érdeklődésedet: „Az éjszaka kamrája.” Megtorpansz egy pillanatra, mielőtt benyitnál. Mit tartogathat az Éjszaka kamrája? Éjszakai lényeket? Altatógázt? Csak egyetlen módja van, hogy ezt megtudd. Lenyomod a kilincset.[/p]
+        [p]Az ajtó kinyílik, és látod, hogy odabent tökéletes a sötétség. Egyetlen fénysugár sem jön ki a szobából. Még a külső fények sem tudnak behatolni a szobába.[/p]
+    </text>
+    <itemCheck type="items" id="3090 or 3091">
+      <have>
+        <itemCheck type="item" id="3090">
+          <have>
+            <itemCheck type="item" id="3091">
+              <have>
+                <next id="38">Ha a vérgyertyával akarsz világítani</next>
+                <next id="72">Ha a közönséges viaszgyertyával</next>
+                <next id="308">Ha egyikkel sem</next>
+              </have>
+              <dontHave>
+                <next id="72">Ha meggyújtod a viaszgyertyát</next>
+                <next id="308">Ha nem</next>
+              </dontHave>
+            </itemCheck>
+          </have>
+          <dontHave>
+            <next id="38">Ha meggyújtod a vérgyertyát</next>
+            <next id="308">Ha nem</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="308"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="151">
     <text>
         [p]Már majdnem átértél a másik oldalra, amikor a lábad ismét megcsúszik. Kétségbeesetten próbálod meg elkapni a kötélhidat, hogy megkapaszkodj. Ezúttal azonban nem vagy ilyen szerencsés. A híd fel-alá hintázik, így mellényúlsz! Ijedtedben sikoltani sem tudsz, amint egyre lejjebb és lejjebb zuhansz, a lenti folyómeder felé. Kalandod itt véget ér - pedig már oly közel jártál célodhoz...[/p]
@@ -1481,7 +1630,16 @@
       </have>
     </itemCheck>
   </p>
-  <!-- 154 -->
+  <p id="154">
+    <test against="luck">
+      <success>
+        <next id="412"></next>
+      </success>
+      <failure>
+        <next id="529"></next>
+      </failure>
+    </test>
+  </p>
   <p id="155">
     <text>
         [p]Elmondod, hogy egy Dhumpus nevű szent ember nevelt fel Kharéban, miután az édesanyád elhagyott. Édesanyád Slanggnak, a rosszindulat istenének hitét vette fel, és elsőként azt a feladatot kapta, hogy hagyjon téged meghalni, így bebizonyítva elhivatottságát. Innen származik az, hogy a beszéded keveréke a kikötőváros választékos nyelvének, és a délvidék szűk, célratörő beszédjének. Elmondod, hogy a Mampang Erődbe tartasz, mivel a Főmágus hívatott. A Főmágus nevének említésére a két inkvizítor gyorsan összepillant. Mintha félelem tükröződne szemükben. - Akkor folytasd az utadat, idegen - mondja az egyikük. - Nem akadályozzuk az utadat. Folytasd! - Nyilván félik Mampang erejét, te pedig közölted velük, hogy kapcsolatban állsz az ott lakozó gonosszal. Nem is akadályoznak tovább.[/p]
@@ -1692,7 +1850,15 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 175 -->
+  <p id="175">
+    <text>
+        [p]Óvatosan araszolsz előre a szobában. A következő lépéseid az alábbiak lehetnek.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="349">349</next>
+    <next id="554">554</next>
+    <next id="2">2</next>
+  </p>
   <p id="176">
     <text>
         [p]Ahogy közelebb mész a kétszárnyú ajtóhoz, árgus szemekkel figyelsz minden különösnek tűnő dologra. Az ajtó túloldaláról a lakók reggeli zsivaja hallatszik ki, amint az előttük álló napra készülnek fel. Arról a folyosóról azonban, amelyiken állsz, semmilyen hang nem hallatszik. Megfogod a hatalmas rézkilincset, és lenyomod. Az ajtó zárva van. Átnézel a két ajtószárny közötti keskeny résen, és látod, hogy egy vastag keresztléc tartja zárva az ajtót. Ügy tűnik, ha lenne megfelelő kulcsod, ki tudnád erről az oldalról is nyitni. Mivel azonban nincs kulcsod, más utat kell találnod.[/p]
@@ -1722,7 +1888,15 @@
     <next id="422">Ha észreveteted magad</next>
     <next id="437">Hogyha inkább megpróbálsz észrevétlenül átlopakodni a konyhán</next>
   </p>
-  <!-- 180 -->
+  <p id="180">
+    <text>
+        [p]A következő lépésnél beléd nyilall a fájdalom! Sajnos hozzáértél egy borotvaéles pengéhez, és az felvágta a lábadat. Vesztesz 1 életerő pontot. A következő néhány lépésedet az alábbiak közül választhatod.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="249">249</next>
+    <next id="227">227</next>
+    <next id="349">349</next>
+  </p>
   <p id="181">
     <text>
         [p]- Szóval ez az arrogáns féreg visszautasítja a segítségünket, mi? - csattan fel mérgesen a Felderítő. - Akkor mutassuk meg neki, miféle veszélyekkel kell szembenéznie itt, Mampangban! - Megsértetted a Felderítőket.[/p]
@@ -1890,7 +2064,19 @@
     <next id="527">Hogyha előnyt kovácsolsz a zavarukból, elnézést kérsz a betolakodásért, és kijelented távozó szándékodat</next>
     <next id="429">Amennyiben inkább elnézést kérsz, amiért megbántottad őket, és tovább folytatod a beszélgetést</next>
   </p>
-  <!-- 201 -->
+  <p id="201">
+    <text>
+        [p]A kapitány érdeklődve hallgatja a történetedet, de még nincs meggyőződve arról, hogy igazat beszélsz-e, vagy hazudsz. Mennyire jó a meggyőző képességed?[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="35"></next>
+      </success>
+      <failure>
+        <next id="423"></next>
+      </failure>
+    </test>
+  </p>
   <p id="202">
     <text>
         [p]Fegyveredet magasra tartva, vad csatakiáltással a lényre rontasz. Az meg sem rezdül! A fegyvered belecsapódik a fejébe, és kettévágja a koponyáját. A lény még mindig nem reagál! Most már egészen biztos lehetsz abban, hogy semmi veszély nem fenyeget. Kinyúlsz, és megérinted a testet.[/p]
@@ -2081,7 +2267,14 @@
     <next id="136">Ha inkább megpróbálkozol a középsővel</next>
     <next id="534">Amennyiben a távolabbihoz lépnél</next>
   </p>
-  <!-- 223 -->
+  <p id="223">
+    <text>
+        [p]Ahogy az árnyékok előre-hátra libegnek a szobában, megbillensz. Az egyik penge felhasítja a bokádat. Vesztesz 1 életerő pontot. A következő lépéseid az alábbiak közül lehetnek.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="367">367</next>
+    <next id="484">484</next>
+  </p>
   <!-- 224 -->
   <p id="225">
     <text>
@@ -2108,7 +2301,15 @@
     </market>
     <next id="310"></next>
   </p>
-  <!-- 227 -->
+  <p id="227">
+    <text>
+        [p]A következő lépésnél beléd nyilall a fájdalom! Sajnos hozzáértél egy borotvaéles pengéhez, és az felvágta a lábadat. Vesztesz 1 életerő pontot. A következő néhány lépésedet az alábbiak közül választhatod.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="349">349</next>
+    <next id="410">410</next>
+    <next id="249">249</next>
+  </p>
   <p id="228">
     <text>
         [p]Felküzdöd maga a kőrakás tetejére, hogy megnézd, mi terül el előtted. Mászás közben azonban a lábad megcsúszik, és alaposan kificamodik a bokád. Vesztesz l életerő pontot. A kőomlás másik felén sokkal szebb látvány fogad, mint amit remélni mertél. A földcsuszamlás éppen ott következett be, ahol a szakadék keskenyebb volt, és a leomló sziklák most erős hidat alkottak, melyen át szabad az út az erődítmény felé. Most már minden probléma nélkül átverekszed magad a túloldalra. Elérkeztél hát Mampangba, utad végső állomásához.[/p]
@@ -2130,7 +2331,66 @@
     </text>
     <next id="282"></next>
   </p>
-  <!-- 232 -->
+  <p id="232">
+    <text>
+        [p][alt]Mit ajánlasz fel a kapitánynak?[/alt][/p]
+    </text>
+    <itemCheck type="gold" id="3">
+      <have>
+        <itemCheck type="item" id="3013">
+          <have>
+            <itemCheck type="item" id="3009">
+              <have>
+                <next id="76">Ha 3 Aranytallért</next>
+                <next id="290">Ha a kis medaliont</next>
+                <next id="130">Ha a Borrinbőr csizmát</next>
+              </have>
+              <dontHave>
+                <next id="76">Ha 3 Aranytallért</next>
+                <next id="130">Ha a Borrinbőr csizmát</next>
+              </dontHave>
+            </itemCheck>
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="3009">
+              <have>
+                <next id="76">Ha 3 Aranytallért</next>
+                <next id="290">Ha a kis medaliont</next>
+              </have>
+              <dontHave>
+                <next id="76" singleChoiceText="Úgy döntesz, 3 Aranytallért próbálsz meg felajánlani a kapitánynak."></next>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="3013">
+          <have>
+            <itemCheck type="item" id="3009">
+              <have>
+                <next id="290">Ha a kis medaliont</next>
+                <next id="130">Ha a Borrinbőr csizmát</next>
+              </have>
+              <dontHave>
+                <next id="130" singleChoiceText="Úgy döntesz, a Borrinbőr csizmát próbálod meg felajánlani a kapitánynak."></next>
+              </dontHave>
+            </itemCheck>
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="3009">
+              <have>
+                <next id="290" singleChoiceText="Úgy döntesz, a kis medaliont próbálod meg felajánlani a kapitánynak."></next>
+              </have>
+              <dontHave>
+                <next id="385"></next>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="233">
     <text>
         [p class="inlineImage"][img src="resources/sor4/233.jpg" /][/p]
@@ -2174,7 +2434,14 @@
     </text>
     <death />
   </p>
-  <!-- 239 -->
+  <p id="239">
+    <text>
+        [p]Óvatosan lépkedsz a pengék között. A remegő gyertyafény megnehezíti az egyensúly tartását, de a következő néhány lépésedet biztonságban teszed meg. A következő lépéseidet az alábbiak közül választhatod.[/p]
+    </text>
+    <next id="262">262</next>
+    <next id="359">359</next>
+    <next id="488">488</next>
+  </p>
   <p id="240">
     <text>
         [p]Visszaemlékezvén, mit ígértél Javinne-nak, körülnézel, és megkeresed az öreg koldusasszonyt. A nő időközben átkelt az udvaron a másik oldalon lévő nagy, kétszárnyú kapuhoz. Begyűjtesz a testekről pár bizonyítékot, mellyel alátámaszthatod majd az állításodat, és hozzászaladsz. Az öregasszony nagyon megörül a híreidnek: csukott szemeiből apró könnycseppek szivárognak elő. - Nem is tudod, mit jelent nekem, hogy megszabadultam a kínzóimtól - hüppögi. - Nagyon boldoggá tettél most egy öregasszonyt, és ezért megkapod a jutalmadat is. Tedd el ezt a [span class="takeItem" data-id="3086" data-amount="1"]függőt[/span]! Nekem ugyan nem sokat használt, de szerencsével van megáldva. - Amikor először nyakadba akasztod az ékszert, megnövelheted 1 ponttal a szerencséd [em]Kezdeti[/em] értékét, és az éppen aktuális szerencse pontjaidat is visszaállíthatod erre az új értékre.[/p]
@@ -2191,7 +2458,30 @@
     <next id="125">Kristatantiból?</next>
     <next id="149">Kharéból?</next>
   </p>
-  <!-- 243 -->
+  <p id="243">
+    <text>
+        [p]A kapitány feldühödik. Int a két, karodat erősen tartó őrnek, akik arccal előre durván az asztalra löknek. Te azonban egész ügyes vagy. Ahogy előre tántorodsz, hátrarúgsz, és pontosan gyomorszájon találod a két fickót! Azok kétrét görnyednek, és elengedik a karodat![/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="ANY" id="747" />
+        <spell name="TÁV" id="722" />
+        <spell name="ZAV" id="679" />
+        <spell name="FÉM" id="593" />
+        <spell name="TÁN" id="642" />
+        <next id="145">Ha most előrántod a fegyveredet, és felkészülsz a harcra</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Előrántod a fegyveredet és felkészülsz a harcra.[/p]
+        </text>
+        <next id="145"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="244">
     <text>
         [p]Lassan felemelkedsz a sziklád mögül, közben azonban szemedet egy pillanatra sem veszed le róluk. Elnézést kérsz, amiért beléptél a területükre, és elmondod, hogy nem tudtad, hogy Alsó Xamen ezen része az ő fennhatóságuk alá tartozik. Amint beszélsz, a lények arckifejezése lassan megváltozik, és csodálkozva bámulnak egymásra. - Furcsa módon beszélsz, ember. Nem Kakhabadból való vagy? Még sosem hallottam ilyen különösen beszélni a nyelvet. - Erre mit válaszolsz?[/p]
@@ -2225,7 +2515,15 @@
     </text>
     <next id="182"></next>
   </p>
-  <!-- 249 -->
+  <p id="249">
+    <text>
+        [p]A következő lépésnél beléd nyilall a fájdalom! Sajnos hozzáértél az egyik borotvaéles pengéhez, és az felvágta a lábadat. Vesztesz 1 életerő pontot. A következő néhány lépésedet az alábbiak közül választhatod.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="175">175</next>
+    <next id="227">227</next>
+    <next id="410">410</next>
+  </p>
   <!-- 250 -->
   <p id="251">
     <text>
@@ -2262,7 +2560,13 @@
     </text>
     <next id="397"></next>
   </p>
-  <!-- 255 -->
+  <p id="255">
+    <text>
+        [p]Mielőtt bármit is tehetnél, a szobor már rád is veti magát! Erősen belefejel a gyomrodba, és a mögötted lévő falnak taszít. Vesztesz 2 életerő pontot. Gyorsan feltápászkodsz és összeszeded magad, a lény ugyanis ismét feléd fordul, és felkészül az újabb rohamra.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="58"></next>
+  </p>
   <p id="256">
     <text>
         [p]Azonnal gyanakodni kezdesz, hogy egy ilyen fontosnak tűnő ajtót tárva-nyitva találsz. Az átjárás ugyan biztonságosnak tűnik, de mi van, ha valójában egy csapdába sétálsz bele? Felveszel egy fa rudat, mely az előtérben hevert. A bottal megérinted az ajtót. Semmi nem történik. Kicsit jobban kitárod vele az ajtószárnyat, és akkor észreveszed a csapdát. Hatalmas lángcsóva csap fel a földből a túloldalon, és kénytelen vagy a szemed elé kapni a kezedet! Az út közvetlenül az izzó lángok közé vezet! Elkeseredsz. Úgy tűnik, erre nem lehet átmenni.[/p]
@@ -2308,7 +2612,14 @@
     <gatherItem id="4078" />
     <next id="448"></next>
   </p>
-  <!-- 262 -->
+  <p id="262">
+    <text>
+        [p]Centinként araszolsz előre a szobában. A következő néhány lépésed az alábbi lehet.[/p]
+    </text>
+    <next id="87">87</next>
+    <next id="488">488</next>
+    <next id="52">52</next>
+  </p>
   <p id="263">
     <text>
         [p]Kimész a szobából, és egy folyosóra jutsz. Eltűnődsz azon, vajon a zűrzavar riasztotta-e azt a zömök kis lényt, aki beengedett, de aztán eszedbe jut, amit a Mucalytok „kínzásáról” mondott. Lehet, hogy az ilyesféle dolgok meglehetősen mindennaposak errefelé. Ahol most állsz, két lehetőség kínálkozik a továbbhaladásra. Bal kéz felől egy ajtó nélküli, üres szobát látsz - az üres azt jelenti, hogy egy asztalon és egy széken kívül nincs benne semmi más. Úgy tűnik, ez a hely megfelelő lenne arra, hogy megpihenj egy kicsit, és elfogyassz némi élelmet. Csupán a bejárati nyílásban lévő felemelt vasrács nyugtalanít egy kicsit. Veled szemben egy másik ajtót látsz, melyen az alábbi felirat virít: „Belépés csak azoknak, akik megfizetik az árát”. Nos, merre indulsz?[/p]
@@ -2368,7 +2679,19 @@
     </itemCheck>
   </p>
   <!-- 269 -->
-  <!-- 270 -->
+  <p id="270">
+    <text>
+        [p]Az Ogre korbácsát csattogtatva előrébb nyomul. Hát erre gondolt, amikor sportolni akart! A másik kezével felkap egy fejszét. Küzdj meg vele:[/p]
+        [p]Ellenfeled a harc közben folyton azzal próbálkozik, hogy elkapjon a korbácsával. Minden egyes Kör előtt dobj egy kockával a számára. Ha 1-est dobsz, akkor a korbáccsal körbetekert, így a következő három körben 3-mal le kell majd csökkentened ügyesség pontjaidat, ennyi ideig tart ugyanis, amíg kiverekszed magad a fegyver szorításából.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="32" />
+      <win>
+        <loseItem id="4097" />
+      </win>
+    </fight>
+    <next id="230"></next>
+  </p>
   <p id="271">
     <text>
         [p]Úgy tűnik, elfogadják a magyarázatodat, bár abban nem teljesen biztosak, hogy igazat mondtál-e vagy sem. - Nos, még ha ez is az igazság - mondja a Vörösszemű -, azt biztosan tudom, hogy van egy olyan szokás Kristatantiban, mely ellen biztosan nem fogsz fellázadni. A te fajtád rajong a söréért. Részeges disznók vagytok, az a helyzet. Na, akkor biztosan jól jön ez itt! - Előhúz egy flaska sört a zsebéből, és megkínál vele.[/p]
@@ -2537,7 +2860,13 @@
     <next id="8">Ha visszautasítod az ajánlatát</next>
     <next id="217">Ha éhes vagy, és leülnél, hogy egyél vele</next>
   </p>
-  <!-- 288 -->
+  <p id="288">
+    <text>
+        [p]Óvatosan lépkedsz a pengék között. A remegő gyertyafényben csak homályos foltokat látsz a teremből, de a következő néhány lépésedet biztonságban teszed meg. A következő lépéseidet az alábbiak közül választhatod.[/p]
+    </text>
+    <next id="440">440</next>
+    <next id="352">352</next>
+  </p>
   <p id="289">
     <test against="luck">
       <success>
@@ -2551,7 +2880,13 @@
       </failure>
     </test>
   </p>
-  <!-- 290 -->
+  <p id="290">
+    <text>
+        [p]Megemlíted neki a medált, és leírod a belsejébe festett arcképet. A kapitánynak leesik az álla. - Mutasd csak meg! - követeli. Sikerül rávenned, hogy vegye le kezedről a bilincset. Benyúlsz a zsákodba, hogy kihalászd az ékszert. Rájössz, mennyire fontos ez a medál, ezért gyorsan kiötlesz egy történetet, hogyan jutottál hozzá: elmondásod szerint egy gyönyörű asszonytól kaptad Kharéban, aki utasított, hogy add át Cartoum kapitánynak, és mondd el neki, mennyire szereti. A férfi szeme sarkában egy könnycsepp jelenik meg. Gyorsan int az őröknek, hogy távozzanak, mert négyszemközt szeretne veled beszélni. Tovább mondod a történetet, és a kapitány figyelmesen lesi minden szavadat. Megígéri, hogy segít neked, cserébe azért, hogy elhoztad neki a medált. Előhúz a zsebéből egy [span class="takeItem" data-id="3095" data-amount="1"]kulcsot[/span], melynek fejébe a 17-es számot vésték, és átadja neked. Ez képes kinyitni számodra a következő Throben Ajtót, mely a Főmágus tornyának tövében áll. Udvariasan elköszönsz a kapitánytól, és magára hagyod, hogy nyugodtan sóvároghasson elveszett szerelme után.[/p]
+    </text>
+    <loseItem id="3009" />
+    <next id="463"></next>
+  </p>
   <p id="291">
     <text>
         [p]Elmondod nekik, hogy épp az ilyen kristatanti szokások ellen lázadtál fel, amikor úgy döntöttél, hogy elhagyod a faludat.[/p]
@@ -2678,7 +3013,12 @@
     <next id="332"></next>
   </p>
   <!-- 300 -->
-  <!-- 301 -->
+  <p id="301">
+    <text>
+        [p]Amint a férfi kinyitná az ajtót, egy őr odahívja magához. A szoba közepénél találkoznak, és vad sugdolózásba kezdenek. Nyilván valami vészhelyzet van. A kapitány visszatér hozzád. - A mutánsok azok - mondja. - Ronda egy bagázs, és egy kicsit kicsúsztak a dolgok a kezeink közül. Most azonnal el kell mennem. De tessék, itt van a [span class="takeItem" data-id="3095" data-amount="1"]kulcs[/span], amely kinyitja a Főmágus tornyának lábánál lévő Throben Ajtót! Add oda neki, mielőtt elmennél! - A kapitány elsiet. A kulcs oldalába a 17-es szám van vésve. Most már beléphetsz az előtted álló szobába.[/p]
+    </text>
+    <next id="580"></next>
+  </p>
   <p id="302">
     <text>
         [p]Hangjában undorral beszél az ellenségeiről. - Azok a pokolfajzat [em]Felderítő-szörnyek![/em] - mondja -, vagy hogy a csudába hívják őket. Vékonyak, mint egy fiatal facsemete, és akkora szemük van, mint egy Bomba-gyümölcs! Valahonnan délről jöttek. Senki nem tudja, miért éppen Mampangot kellett otthonuknak választaniuk, de hát itt telepedtek meg. Szerintem elűzték őket a saját földjükről, merthogy bajkeverő társaság, az biztos. És megingathatatlanul hűségesek a Főmágushoz. Azt beszélik, a férfi analandi földeket ígért nekik, a Shamutanti domboktól délre, ha segítenek neki sötét üzelmeinek valóra váltásában. Én persze egyetlen könnyet sem ejtenék, ha mindnyájukat kiirtaná mondjuk egy jópofa fertőző betegség, mivel a balesetem óta abban lelik az örömüket, hogy állandóan engem kínoznak.[/p]
@@ -2727,7 +3067,14 @@
     <next id="253" pos="3">Ha távozol innen és visszaosonsz az árkádsorra, ahol az előtted álló nagy, kétszárnyú ajtóval próbálsz szerencsét</next>
     <next id="493" pos="4">Hogyha inkább a vele szemközt lévővel</next>
   </p>
-  <!-- 308 -->
+  <p id="308">
+    <text>
+        [p]Belépsz a feketeségbe. Lábad szilárd talajon nyugszik. A hátad mögül nyikorgó hang hallatszik, majd hangos csattanás, amint az ajtó becsapódik. Semmit sem látsz a sötétben! Kénytelen vagy vakon végigbotorkálni a szobán, és egy másik kijáratot keresni. A következő néhány lépésedet az alábbiak közül választhatod.[/p]
+    </text>
+    <next id="175">175</next>
+    <next id="227">227</next>
+    <next id="410">410</next>
+  </p>
   <p id="309">
     <text>
         [p]Bekiáltasz a barlangba, bárki is legyen odabent. Nincs válasz. Ismét kiáltasz, de megint nem kapsz választ. Ez a fickó vagy teljesen süket, vagy valami furcsa dolog történik itt. Kéznél tartva a fegyveredet, úgy döntesz, hogy ennek utánajársz. Kezeddel megérinted a vállát, de ebben a pillanatban nagyot ugrasz![/p]
@@ -2962,7 +3309,12 @@
       </have>
     </itemCheck>
   </p>
-  <!-- 329 -->
+  <p id="329">
+    <text>
+        [p]Egy szemvillanás alatt félreugrasz. A lény elszáguld melletted, és hatalmas csattanással felkenődik a márványfalra. Az ütés elég nagy volt ahhoz, hogy egy páncélos Trollal is végezzen. Ellenfelednek azonban meg sem kottyan. Megfordul, és ismét célba vesz.[/p]
+    </text>
+    <next id="58"></next>
+  </p>
   <p id="330">
     <text>
         [p]Odaállsz az ajtóhoz, és hallgatózol, remélve, hogy aki az előbb felállt, nem készül elhagyni a szobát. - ... Varack hallott valamit az éjjeli őrségről - mondja egy reszelős hang. - ... Schinn Szamaritánusai! Ő legalábbis rájuk gyanakszik. De én nem vagyok benne olyan biztos. Azok az átkozott Szamaritánusok! Ez nem az ő stílusuk. Nekik nincs szükségük arra, hogy aggódjanak az őrök miatt. Legalábbis addig nem, amíg azokat fel nem szerelik íjakkal, az biztos. De még így is aggasztó a dolog. Tucatnyi átkozott Madárember nyüzsög errefelé. És honnan tudhatnánk, melyikben lehet megbízni? Ha rajtam múlna, én mindegyiket kinyírnám. No, mindegy, megyek és ellenőrzöm a kaput. Azt hiszem, az ifjú Hyanginak igaza volt; én is hallottam a kopogást.[/p]
@@ -3083,7 +3435,14 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 341 -->
+  <p id="341">
+    <text>
+        [p]Izzadtságcseppek jelennek meg a homlokodon. Az előrehaladás nehéz, mert a remegő gyertya fényében az árnyak oda-vissza suhannak a szobában. De egyelőre sikerült elkerülnöd a pengéket. A következő néhány lépésedet az alábbiak közül választhatod.[/p]
+    </text>
+    <next id="262">262</next>
+    <next id="239">239</next>
+    <next id="52">52</next>
+  </p>
   <p id="342">
     <text>
         [p]Mikor már biztonságba vagy, nyugodtan megtervezed az utad következő szakaszát. Az éjszaka nincs már messze és fáradt is vagy. A legjobb lesz, ha találsz egy jól védett sarkot, ahol lefeküdhetsz és kipihenheted magad. Körbesétálsz, és találsz egy megfelelő barlangot, mely üresnek tűnik.[/p]
@@ -3179,14 +3538,27 @@
       </win>
     </fight>
   </p>
-  <!-- 347 -->
+  <p id="347">
+    <text>
+        [p]A kapitány megköszöni nagylelkűségedet és megígéri, hogy megjutalmaz azért, mert megkímélted az életét. Az íróasztalához lép és kihúzza a fiókot. Te türelmesen vársz a jutalomra. De az ajándék nem egészen olyan, amilyenre számítottál. A fiókból a kapitány ugyanis egy már előre felajzott, kis kézi számszeríjat húz elő. Egy pendülés, egy szisszenés és a nyílvessző remegve megáll a mellkasodban. És hogy biztos legyen a dolog, a hegyére kent, gyorsan ható méreg azonnal működésbe kezd. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="348">
     <text>
         [p]Leszeded a lakat maradékát és felnyitod a kaloda tetejét. A széles orrú férfi nyakát és a csuklóját dörzsölgetve hátralép. Megköszöni neked a segítségedet, de a legjobban azzal van elfoglalva, nehogy valaki is észrevegye szökését. Ujjával egy csapat őrre mutat, akik a fal tövében valamiféle játékot játszanak. Abba az irányba fordítod a fejedet. Ebben a pillanatban ütést érzel a tarkódon és elveszted az eszméletedet.[/p]
     </text>
     <next id="418"></next>
   </p>
-  <!-- 349 -->
+  <p id="349">
+    <text>
+        [p]A következő lépésnél beléd nyilall a fájdalom! Sajnos hozzáértél egy borotvaéles pengéhez, és az felvágta a lábadat. Vesztesz 1 életerő pontot. A következő néhány lépésedet az alábbiak közül választhatod.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="410">410</next>
+    <next id="227">227</next>
+    <next id="249">249</next>
+  </p>
   <p id="350">
     <text>
         [p]Lepihensz a fülkében, hogy egyél egy keveset. A mélyedés az egyik út menti szikla oldalába van vájva, ezért az előtted elterülő táj egy részét szemmel tudod tartani belőle. A csapás egy sziklás fennsíkra vezet le, majd ismét felkapaszkodik egy csupasz sziklára az Erőd felé. Mampang kapuját ugyan nem látod, de tornyainak csúcsai rémisztően meredeznek a kövek mögött. Már majdnem célodnál vagy.[/p]
@@ -3201,7 +3573,14 @@
     <next id="539"></next>
   </p>
   <!-- 351 -->
-  <!-- 352 -->
+  <p id="352">
+    <text>
+        [p]Idegesen lépkedsz lábujjhegyen a pengék között. A remegő gyertyafény bizonytalan árnyékokat vet a falra, megnehezítvén ezzel a haladást. Az egyik alkalommal, amikor a fény megremeg, a lábad véletlenül hozzáér az egyik pengéhez. Az éles penge felhasítja a vádlidat, te pedig megbillensz. Kétségbeesetten hadonászol, hogy visszanyerd az egyensúlyod. Vesztesz 1 életerő pontot. A következő néhány lépesedet az alábbiak közül választhatod.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="223">223</next>
+    <next id="484">484</next>
+  </p>
   <p id="353">
     <text>
         [p]A nő egyik kezét a homlokodra, a másikat a nyakad hátsó részére helyezi és koncentrálni kezd. - Ez jó, nagyon jó - mosolyog. - A hozzád hasonlók nem tartoznak ide. Neked itt küldetésed van, bár nem tudom, mi lehet az. De nagy megnyugvás számomra a tudat, hogy nem veszélyeztettem Schinn Szamaritánusainak ügyét azzal, hogy megemlítettem a nevüket. - Van valami rontásod vagy betegséged?[/p]
@@ -3232,7 +3611,14 @@
   <!-- 356 -->
   <!-- 357 -->
   <!-- 358 -->
-  <!-- 359 -->
+  <p id="359">
+    <text>
+        [p]A szoba mintha hullámozna a remegő gyertyafényben, de ez csak a remegő árnyak játéka. Sikerül megtartanod az egyensúlyodat és biztonságban teszel egy újabb lépést. A következőt az alábbiak közül választhatod.[/p]
+    </text>
+    <next id="52">52</next>
+    <next id="488">488</next>
+    <next id="262">262</next>
+  </p>
   <p id="360">
     <text>
         [p]Előhúzod a fegyveredet és gyorsan lecsapsz vele a lényre. Az felüvölt fájdalmában és a földre roskad. Nem hiszel a szemeidnek! Az ütésed erős volt ugyan, de annyira nem, hogy egyetlen csapással leteríts egy ilyen kemény ellenfelet. A földön fekvő alak nem mozdul. Lehajolsz hozzá és megvizsgálod. Márpedig ez [em]halott![/em] Egyetlen ütéssel leszámoltál vele! Átkutatod a ruháit, de csak [span class="takeItem" data-id="gold" data-amount="4"]4 Aranytallért[/span] találsz nála. El kell döntened, melyik úton mész tovább.[/p]
@@ -3316,7 +3702,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 367 -->
+  <p id="367">
+    <text>
+        [p]A szoba mintha hullámozna a remegő gyertyafényben, de ez csak a futkározó árnyak játéka. Sikerül megtartanod az egyensúlyodat és egy újabb lépést tenned sérülés nélkül. A következőt az alábbiak közül választhatod.[/p]
+    </text>
+    <next id="440">440</next>
+    <next id="223">223</next>
+  </p>
   <p id="368">
     <text>
         [p]Teljes erőből rohansz. Előtted egy nagy szikla pihen, mely legalább egy kevés fedezéket tud nyújtani a kőomlás ellen. Előre szaladsz, majd nagyokat zihálva letérdelsz mögé. Fejed fölött a földcsuszamlás egyre erősebbé válik. Kövek röpködnek körülötted, néhány kisebb darab fájdalmasan fejbe és hátba is csap. Hirtelen recsegő hangot hallasz, de már csak annyi időd van, hogy felismerd a veszélyt - semmit nem tudsz tenni az ellen, hogy a sors végezzen veled. A recsegő hang a hatalmas sziklából jön, ami a csuszamlás erejének engedelmeskedve megindul a szakadék irányába. Még sikerül félreugranod, hogy ne rajtad guruljon végig, de ezzel kitetted magad a kőomlásnak. Kalandod itt véget ér.[/p]
@@ -3396,7 +3788,6 @@
   <!-- 374 -->
   <p id="375">
     <text>
-        [p class="inlineImage"][img src="resources/sor4/375.jpg" /][/p]
         [p]A Hobgoblin ismét feléd fordul, hogy lássa, mi az ábra. Amint megpillantja az üveget a kezedben, sikoltozni kezd! - Ó, nem, nem! - sikítja. - Ne [em]azt[/em] az üveget! Bármit, csak azt ne! - Elmondod neki, hogy a Táns Húsgolyók igazán ízletesek, és csak az ő szakácsművészetét dicsérik. - Nem, nem! Nem érted! - magyarázza. - Azok nem Táns Húsgolyók. Nézd! - Az üvegcsén lévő címke félig el van szakadva, és az eleje lelóg. Amikor az asszonyság visszahajtja a kérdéses darabkát, teljesen elsápadsz. Az üvegben, amiből eszegettél, valójában „[em]Mutáns[/em] Húsgolyók” vannak![/p]
         [p]A Mutáns Húsgolyókat eredetileg egy throbeni gyógyszerész dolgozta ki, aki szövetséget kötött egy lázadó bríciai herceggel. Amikor kiderült, mi a Húsgolyók hatása, hódító célokra kezdték felhasználni. Ezek a hatásos kis golyók ízletesek, de halálosak. Szörnyű mutációkat indítanak be azokban, akik esznek belőlük. A bríciai herceg ily módon kitenyésztett, szörnyű mutánsok segítségével akarta megszerezni magának a trónt. És te épp most ettél ezekből a golyókból egy jókora adaggal! Lassan elkezdesz átalakulni. Mi fog történni? A hatás megjósolhatatlan, általában káros, néha végzetes, de időnként hasznos is lehet.[/p]
     </text>
@@ -3508,7 +3899,12 @@
     <next id="339">A jobb oldalit?</next>
     <next id="298">A bal oldalit?</next>
   </p>
-  <!-- 385 -->
+  <p id="385">
+    <text>
+        [p]A kapitány megpróbál kihallgatni, de te makacsul tartod a szád és semmit sem mondasz. A férfi végül belefárad a dologba és int az őröknek, hogy kísérjenek le a kazamatákba. Úgy gondolja, Naggamante majd megoldja a nyelvedet. Küldetésed véget ér. Senki nem menekülhet Mampang fogdáiból.[/p]
+    </text>
+    <death />
+  </p>
   <p id="386">
     <text>
         [p]A lény lassan, feltartott kézzel előrelép, mintha azt akarná jelezni, hogy nem kíván ártani neked. Megállsz előtte pár méterre és felé fordítod a füled, hogy halld, mit mond. A bestia beszélni kezd. Most már néhány szót is ki tudsz venni abból, amit mond - de ahogy közben lélegzik, leheletét is megérzed. A szájszaga elviselhetetlen! Köhögni és öklendezni kezdesz. A lélegzete olyan, mintha mérges gáz lenne! És ami azt illeti, a Mucalyt lehelete [em]valóban[/em] egyfajta méreg, te pedig épp most szívtál be belőle egy lélegzetnyit - ami már halálos adag. Holtan rogysz a földre, a lény lábai előtt.[/p]
@@ -3547,7 +3943,27 @@
     <next id="6">Ha úgy döntesz, hogy követed az utasításait</next>
     <next id="573">Ha inkább nem fogadod meg a tanácsát és megpróbálkozol azzal az ajtóval, mely a szobája bejárati ajtajával szomszédos</next>
   </p>
-  <!-- 391 -->
+  <p id="391">
+    <text>
+        [p]Nagyon bölcsen úgy döntesz, hogy a kapitány még mindig túl erős ahhoz, hogy elengedd.[/p]
+    </text>
+    <changeEnemy attribute="fleeAtStamina" id="35" set="3" />
+    <fight type="single">
+      <enemy id="35" />
+    </fight>
+    <next id="445">Ha úgy döntesz, hogy megkíméled az életét</next>
+    <next id="391a">Ha úgy döntesz, hogy addig vered, ameddig van benne élet</next>
+  </p>
+  <p id="391a" display="391">
+    <text>
+        [p]Nagyon bölcsen úgy döntesz, hogy a kapitány még mindig túl erős ahhoz, hogy elengedd.[/p]
+    </text>
+    <changeEnemy attribute="fleeAtStamina" id="35" set="0" />
+    <fight type="single">
+      <enemy id="35" />
+    </fight>
+    <next id="463"></next>
+  </p>
   <p id="392">
     <text>
         [p]Odalépsz a nagy, kétszárnyú ajtóhoz.[alt][/alt][/p]
@@ -3634,7 +4050,12 @@
     </itemCheck>
   </p>
   <!-- 398 -->
-  <!-- 399 -->
+  <p id="399">
+    <text>
+        [p]A lángok belenyalnak a ruhádba, az elviselhetetlen hőség égetni kezdi a testedet. De átláttál az illúzión. Amint továbbhaladsz a lángok között, lassan a hatásuk is elenyészik. A lángok hidegek. Nem érzed a tűz hőjét. A pokol túloldalán egy másik ajtót látsz, amihez kényelmesen odasétálsz.[/p]
+    </text>
+    <next id="150"></next>
+  </p>
   <p id="400">
     <text>
         [p]Nagyot nyelsz, majd nekifutsz a szakadéknak és elrugaszkodsz a széléről. Jó ugrás volt, de a szakadék olyan széles, hogy azt ember át nem hidalhatja. Ujjaid a sziklafal oldalába marnak, te pedig csak zuhansz, zuhansz, egyenesen a halálodba. Elbuktad küldetésed.[/p]
@@ -3692,7 +4113,14 @@
     <gatherItem id="4093" />
     <next id="448"></next>
   </p>
-  <!-- 410 -->
+  <p id="410">
+    <text>
+        [p]Lassan araszolsz előre a szobában. A következő néhány lépésedet az alábbiak közül választhatod.[/p]
+    </text>
+    <next id="180">180</next>
+    <next id="2">2</next>
+    <next id="175">175</next>
+  </p>
   <p id="411">
     <text>
         [p class="inlineImage"][img src="resources/sor4/411.jpg" /][/p]
@@ -3704,7 +4132,13 @@
     <next id="139">Ha óvatosan előrekúszol, vigyázva, hátha őrökkel futsz össze</next>
     <next id="67">Ha átrohansz gyorsan az átjárón, mielőtt még észrevenne valaki</next>
   </p>
-  <!-- 412 -->
+  <p id="412">
+    <text>
+        [p]Kiverekeded magad foglyul ejtőid karmából és megfordulsz, hogy kirohanj a szobából. A kapitány magas hangon néhány parancsot kiált és azonnal rádöbbensz, mennyire hiábavaló volt az előbbi akciód. Két újabb őr jelenik meg az ajtóban, és ahogy átrohannál köztük, öklükkel a gyomrodba vágnak. Kétrét görnyedsz a fájdalomtól és a padlóra rogysz. Vesztesz 2 életerő pontot. Megragadnak és visszavisznek a kapitány elé.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="508"></next>
+  </p>
   <p id="413">
     <text>
         [p]Elmondod a két lénynek, miféle holttestet találtál abban a barlangban, ahol az előző 
@@ -3816,7 +4250,12 @@
     <next id="26">Ha éhes vagy és ezért kérsz tőle valamit enni</next>
     <next id="448">Hogyha közlöd vele, hogy az őröknek nemsokára enniük kell, majd távozol a konyhából</next>
   </p>
-  <!-- 423 -->
+  <p id="423">
+    <text>
+        [p]A kapitány nem hiszi el a történetedet és elkezd kérdéseket feltenni.[/p]
+    </text>
+    <next id="385"></next>
+  </p>
   <p id="424">
     <text>
         [p]Rálépsz a hídra. Ahogy haladsz előre, a nyögés minden egyes lépésnél megismétlődik. Persze mostanra már megszoktad, így nem zavar különösebben, sőt, egy kicsit még mulattatónak is találod. Ami azt illeti, a helyzet komikuma még segít is egy kicsit megnyugodnod, enélkül ugyanis elég feszült lennél, ha esetleg lenéznél a hídról az alattad húzódó mély szakadékba. A következő pillanatban viszont már [em]tényleg[/em] lefelé nézel és figyeled, amint feléd közeledik! A sóhajtozó híd teljes egészében eltűnt a lábad alól! Még csak emléke sem maradt, te pedig egyre növekvő sebességgel zuhansz a szakadék sziklás feneke felé. Soha nem tudod már meg a Sóhajok Hídjának titkát. Utolsó emléked a nyögő hang, amiből már csak bágyadt, gúnyos kuncogást hallasz...[/p]
@@ -3942,7 +4381,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 440 -->
+  <p id="440">
+    <text>
+        [p]Izzadtságcseppek jelennek meg a homlokodon. Az előrehaladás nehéz, mert a remegő gyertyafényben folyamatosan remegnek a szobát betöltő árnyak. De egyelőre sikerült elkerülnöd a pengéket. A következő néhány lépésedet az alábbiak közül választhatod.[/p]
+    </text>
+    <next id="223">223</next>
+    <next id="484">484</next>
+  </p>
   <p id="441">
     <text>
         [p]Az ösvény továbbra is a hegyek felé emelkedik. A távolban a Mampang Erőd sötét tömege percről percre egyre nagyobbá válik, ahogy közelítesz. Estére egészen biztosan oda fogsz érni. Az út melletti sziklában egy kis fülkét találsz.[/p]
@@ -4016,7 +4461,12 @@
     <next id="362">Ha felajánlod neki, hogy kiszabadítod</next>
     <next id="485">Ha úgy véled, most biztosabb helyen van</next>
   </p>
-  <!-- 445 -->
+  <p id="445">
+    <text>
+        [p]A kapitány hálás, amiért megkegyelmeztél neki. Közlöd vele, hogy azért ne örüljön annyira, mert ha nem segít neked, itt helyben megölöd. - Az én életem már nem sokat ér - sóhajtja. - Hagytam, hogy megszökj, és a Főmágus kegyetlen úr. Az egyetlen reményem az, ha sikerrel jársz a küldetésedben. - Előhúz egy [span class="takeItem" data-id="3095" data-amount="1"]kulcsot[/span] a zsebéből, melyre a 17-es számot vésték. - Ez a kulcs nyitja a Főmágus tornyának tövénél álló Throben Ajtót. Enélkül nem tudnál bejutni a lakóhelyére. - Elveszed a kulcsot, a kapitányt pedig a székéhez kötözöd. Nem engedheted meg magadnak, hogy próbára tedd irántad való hűségét és urától való félelmét.[/p]
+    </text>
+    <next id="463"></next>
+  </p>
   <p id="446">
     <text>
         [p class="inlineImage"][img src="resources/sor4/446.jpg" /][/p]
@@ -4213,7 +4663,12 @@
     </fight>
     <next id="365"></next>
   </p>
-  <!-- 463 -->
+  <p id="463">
+    <text>
+        [p]Elhagyod a szobát és átsétálsz a világos termen a túlsó végén lévő ajtóhoz. Amikor odaérsz, benyitsz rajta.[/p]
+    </text>
+    <next id="580"></next>
+  </p>
   <p id="464">
     <text>
         [p class="inlineImage"][img src="resources/sor4/464.jpg" /][/p]
@@ -4240,7 +4695,15 @@
     <next id="393">Ha inkább bal kéz felé kanyarodsz el, egy kaloda felé</next>
     <next id="109">Ha a csoportot balról kerülöd meg, annak ellenére, hogy ezzel közel kerülsz egy másik csapat lényhez</next>
   </p>
-  <!-- 468 -->
+  <p id="468">
+    <text>
+        [p class="inlineImage"][img src="resources/sor4/375.jpg" /][/p]
+        [p]A kapitány kíváncsi tekintettel néz rád. Őt is meglepte, hogy ennyire hasonlítotok egymásra. Pár másodpercig farkasszemet néztek, majd körbepillantasz a szobában. A kapitány végül leül, és megszólít. - Nos, kicsoda vagy? - kérdezi. - Egy behatoló? Vagy jogos megbízásod szólít ennyire mélyen az Erődbe? Nos? Elvitte a cica a nyelvedet? - Mit felelsz a kapitánynak?[/p]
+    </text>
+    <next id="201">Ha azt mondod, üzenetet hoztál a Főmágusnak</next>
+    <next id="122">Ha azt, hogy azért vagy itt, hogy elpusztítsd az Erődben fészkelő gonoszt</next>
+    <next id="232">Hogyha inkább megpróbálod megvesztegetni valamivel a hátizsákodból</next>
+  </p>
   <p id="469">
     <text>
         [p]Kirontasz a barlangból és beveted magad az aljnövényzetbe. Végül megállsz, hogy megtudd, üldöződ még mindig a nyomodban van-e. De a lény nem jött ki a barlangból. Úgy döntesz, inkább a másik két barlang egyikében keresel éjjeli menedéket.[/p]
@@ -4390,7 +4853,13 @@
     </text>
     <death />
   </p>
-  <!-- 484 -->
+  <p id="484">
+    <text>
+        [p]Egy váratlan légfuvallat meglebegteti a gyertya lángját. A szoba elsötétül, majd egy pillanatra ismét világosodni kezd, amint a láng a kialvás ellen küzd. Éppen lépés közben vagy, amikor ez történik és a remegő fényben már nem tudod pontosan megállapítani, hova kellene tenned a lábadat. Éppen rálépsz az egyik pengére. Nagyot üvöltesz és ösztönösen visszarántod a lábadat, de eközben elveszted az egyensúlyodat és hátraesel, egyenesen bele vagy egy tucatnyi másik pengébe.[/p]
+        [p]Ez volt az utolsó lépés kalandod során. Amikor a gyertya végül leesik össze-vissza vagdosott és kivérzett testedre, a láng mintha még erősebben világítana, mintha csak szerencsétlenségedből kapna új erőre. A vérgyertya nem csak a készítésekor használt fő alkotórészéről kapta a nevét, sokkal inkább az áldozatainak vére utáni vágyódásáról.[/p]
+    </text>
+    <death />
+  </p>
   <p id="485">
     <text>
         [p]Otthagyod a kalodát és továbbmész. Előtted négy őr álldogál egy kupacban a fal mellett. Néha egyikük hátralép és valamit a falnak dob. A többiek erősen figyelnek és bíztatólag morognak egymás között, néha még nagyokat is kacagnak. Ha inkább elkerülnéd őket, így itt kell hagynod a falat, ki kell sétálnod az udvarra és közel kell menned az ott heverő nagy halom rongyhoz.[/p]
@@ -4408,7 +4877,13 @@
     </fight>
     <next id="577"></next>
   </p>
-  <!-- 488 -->
+  <p id="488">
+    <text>
+        [p]Óvatosan araszolsz előre a szobában. A következő néhány lépésedet az alábbiak közül választhatod.[/p]
+    </text>
+    <next id="52">52</next>
+    <next id="341">341</next>
+  </p>
   <p id="489">
     <text>
         [p]- Ó, igen. És valami mást is érzek idebenn. Valami bűnös dolgot, ami mintha belülről tartana fogva. Valamit, amin Javinne tud segíteni. -Ismét koncentrálni kezd és érzed, ahogy a keze felmelegszik. A betegség kiszáll a testedből és az ő kezébe árad át. Javinne veleszületett gyógyító képessége megtisztított téged.[/p]
@@ -4551,7 +5026,27 @@
     </text>
     <next id="441"></next>
   </p>
-  <!-- 504 -->
+  <p id="504">
+    <text>
+        [p]Alig öt lépést teszel a szobában, amikor hirtelen megtorpansz! Lehet, hogy csak a furcsán beeső fény teszi, de meg mernél rá [em]esküdni[/em], hogy a szoba közepén lévő alak megmozdult! Ekkor megnyikordul valami, ami csak megerősíti a gyanúdat. A szobor lassan életre kel! Amint előre lépdelsz, feléd fordul talapzatán. Két újabb lépést teszel, mire a szobor lábai megmozdulnak és lelép a talapzatról a földre. Van valami természetellenes a mozgásában. Abnormálisan gyorsak a mozdulatai. Bár a tömege hatalmas, mégis alig egy másodperc kellett neki ahhoz, hogy elhagyja az emelvényét. Ezután mindenféle figyelmeztetés nélkül neked ront![/p]
+        [p]Lehajtja a fejét és elképesztő sebességgel rohan egyenesen feléd. A lábait szinte nem is látod, olyan gyorsan mozognak![/p]
+    </text>
+    <itemCheck type="section" id="681">
+      <have>
+        <next id="329"></next>
+      </have>
+      <dontHave>
+        <test against="luck">
+          <success>
+            <next id="329"></next>
+          </success>
+          <failure>
+            <next id="255"></next>
+          </failure>
+        </test>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="505">
     <test against="skill">
       <success>
@@ -4602,7 +5097,15 @@
     <next id="366">Ha letáborozol és esetleg eszel egy keveset</next>
     <next id="574">Ha csak egyszerűen elnyúlsz és már alszol is</next>
   </p>
-  <!-- 508 -->
+  <p id="508">
+    <text>
+        [p class="inlineImage"][img src="resources/sor4/375.jpg" /][/p]
+        [p]-    Az analandi! - kiált fel a kapitány magas hangon. - Jó munkát végeztetek. Erről jelentést teszek az urunknak. - A két őr büszkén kihúzza magát és valamit morognak egymás között. A kapitány mélyen a szemedbe néz, majd visszaül az íróasztalához. - Előbb azonban -   szólal meg - ki kell kérdeznünk a foglyunkat. - Miközben a kapitány téged méreget, gyorsan körbenézel a szobában. A kapitány a szándékaid felől kezd kérdezősködni.[/p]
+    </text>
+    <next id="43">Ha azt feleled, hogy személyes üzenetet hoztál a Főmágusnak</next>
+    <next id="122">Ha azt, hogy el akarod pusztítani az Erődben lakó gonoszt</next>
+    <next id="232">Hogyha vesztegetésképp megpróbálsz valamit felajánlani a kapitánynak a hátizsákodból</next>
+  </p>
   <p id="509">
     <text>
         [p]Amint hozzáérsz a fejszéhez, halk zizegés hallatszik és valami elképesztő erő ragad meg és lök az oszlop felé.[/p]
@@ -4827,7 +5330,12 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 529 -->
+  <p id="529">
+    <text>
+        [p]Hiába küzdesz, semmi eredménye nincs. Az őrök szilárdan fogva tartanak. Amikor a szorítás fájni kezd, feladod a reménytelen dulakodást és szembenézel a kapitánnyal.[/p]
+    </text>
+    <next id="508"></next>
+  </p>
   <p id="530">
     <text>
         [p]A fészekhez nem vezet fel út. Kénytelen vagy magad felmászni a sziklafalon, ügyelve arra, hogy ne potyogtasd el a felszerelési tárgyaidat. Mászás közben többször is megcsúszik a lábad - ilyenkor a vér is meghűl ereidben -, de csak kisebb kavicsokat rúgsz le a falról. Végül felérsz a sziklapárkányhoz. Ahogy arra számítottál, a fészek leginkább egy hatalmas saséra hasonlít, de mindenfajta rekeszek és lyukak is vannak benne, ahová tárgyakat lehet elrejteni.[/p]
@@ -5024,7 +5532,15 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 554 -->
+  <p id="554">
+    <text>
+        [p]Lassan araszolsz előre a szobában. A következő néhány lépésedet az alábbiak közül választhatod.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="249">249</next>
+    <next id="227">227</next>
+    <next id="100">100</next>
+  </p>
   <p id="555">
     <text>
         [p]Letérdelsz a kaloda mellé és segítesz neki enni. Közben megkérdezed, miért zárták ide. - Nem az én hibám volt - sóhajtja. - Az az átkozott nyelvem már megint eljárt. Ha néhány korsóval már megittam, néha nem is tudom, miket beszélek. Nem ez az első alkalom, hogy a lepcses szám bajt hozott a fejemre. - Egy pillanatra elgondolkodsz azon, egyáltalán ki fogsz-e tudni húzni valamilyen hasznos információt a fickóból. - És mi van veled? - kérdezi. - Velem ellentétben te biztosan nem Mampangból való vagy. Mi hozott ide az Erődbe? Te is a Főmágus hadárusa vagy? - Aztán hirtelen elhallgat, mintha rádöbbent volna, hogy túl sokat mondott. Hiába biztatod, többet nem hajlandó beszélni.[/p]
@@ -5191,7 +5707,12 @@
     </text>
     <next id="12"></next>
   </p>
-  <!-- 571 -->
+  <p id="571">
+    <text>
+        [p]Átrohansz a szobán az ajtóhoz. Futásod sebessége elárulja hogy félsz, ezért a Goblinok akcióba lendülnek. Egyikük feláll és elindul feléd. Ennek a lénynek a karjai különböző méretűek; a jobb oldali elképesztően vastag és izmos. Ezt az ellentétet a lábai is tükrözik, ugyanis a balnak kétszer akkora az átmérője, mint a jobbnak. Közvetlenül eléd áll és kivicsorítja a fogait.[/p]
+    </text>
+    <next id="332"></next>
+  </p>
   <p id="572">
     <text>
         [p]Csöndesen leugrasz a földre és az őrökre pillantasz. Azok még mindig az átjáró vizslatásával vannak elfoglalva. Tiszta a levegő. Hangtalanul besurransz az ajtón át, az Erődbe.[/p]
@@ -5234,7 +5755,32 @@
     <next id="82">Ha közlöd velük, hogy igenis érdekel a Korona és megkérdezed, miért érdekli ez őket</next>
   </p>
   <!-- 579 -->
-  <!-- 580 -->
+  <p id="580">
+    <text>
+        [p class="inlineImage"][img src="resources/sor4/580.jpg" /][/p]
+        [p]Az ajtó egy hatalmas terembe nyílik. A szoba szélein árkádsor fut körbe. Fali tartókba tűzött fáklyák világítják be remegő fénnyel a teret. A falakat és a padlót is márvány borítja. A terem másik falán egy hatalmas, kétszárnyú ajtót pillantasz meg.[/p]
+        [p]Bár senkit sem látsz, a terem közepén álló hatalmas valami felkelti az érdeklődésedet. Egy márványszobrot látsz egy talapzaton, ami éppen feléd néz. A félhomály miatt csak a formáját tudod nagyjából kivenni. Körülbelül akkora lehet, mint egy bozontos kutya vagy talán egy birka. Ettől eltekintve azonban semmi sincs a helyiségben.[/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <text>
+            [p]Ha akarsz, varázsolhatsz.[/p]
+        </text>
+        <spell name="NAP" id="705" />
+        <spell name="ZUH" id="595" />
+        <spell name="DEM" id="659" />
+        <spell name="HOM" id="719" />
+        <spell name="POR" id="771" />
+        <next id="504">Ha óvatosan lépkedve elindulsz a kétszárnyú ajtó felé</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Óvatosan lépkedve elindulsz a kétszárnyú ajtó felé.[/p]
+        </text>
+        <next id="504"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 581 -->
   <!-- 582 -->
   <p id="583">
@@ -5342,7 +5888,27 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 593 -->
+  <p id="593">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3077">
+      <have>
+        <text>
+            [p]Felhúzod az ujjadra a Zöld Fémgyűrűt és felhasználod a varázslatot arra, hogy máshol jelenj meg. A kapitány és az őrök őszinte csodálkozására eltűnsz a szobából és éppen az ajtó előtt bukkansz fel újra. A fickók teljesen megzavarodva átkutatják utánad a szobát, időt hagyva ezzel a menekülésre.[/p]
+        </text>
+        <next id="463"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik és 2 életerő pontot vesztesz az őrök támadása következtében.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="145"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="594">
     <text>
         [p]Vesztesz 2 életerő pontot. Elmondod a varázslatot és öt hasonmásod jelenik meg körülötted.[/p]
@@ -5357,7 +5923,13 @@
       </result>
     </random>
   </p>
-  <!-- 595 -->
+  <p id="595">
+    <text>
+        [p]Vesztesz 2 életerő pontot. Most már védve vagy a magasból lezuhanás ellen. Ha a szobában vannak vermek, nem lesz semmi bajod.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="504"></next>
+  </p>
   <p id="596">
     <text>
         [p]Vesztesz 4 életerő pontot. Végigmondod a varázslatot és ujjaddal a zárra mutatsz. Hatalmas villámnyaláb kapja telibe a zárat - de még csak meg sem perzseli![/p]
@@ -5509,7 +6081,13 @@
     <add to="stamina" amount="-3" />
     <next id="386"></next>
   </p>
-  <!-- 610 -->
+  <p id="610">
+    <text>
+        [p]Szádhoz emeled a Furulyát, és játszani kezdesz. Mielőtt azonban egyetlen hang is kijönne a hangszerből, a kapitány kiüti azt a kezedből, és az őrök rád támadnak. Küzdj meg velük. A harc közben egyikük sajnos rálép a hangszeredre, mely ettől több darabra törik, így le kell húznod a [em]Kalandlapodról[/em].[/p]
+    </text>
+    <loseItem id="3002" />
+    <next id="610"></next>
+  </p>
   <p id="611">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -5651,7 +6229,24 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 622 -->
+  <p id="622">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3056">
+      <have>
+        <text>
+            [p]Felszívsz egy keveset a Sárga Porból, és elkezdesz varázsolni. Nemsokára érzed, amint a mágia hatása végighullámzik a testeden, és úgy véled, lábaid még a szélnél is sebesebben tudnának futni! Átszáguldasz a szobán a távoli ajtó felé. A teremben azonban mindenfelé Goblinok állnak. Semerre sem látsz szabad utat. Átesel egy furcsa kinézetű, hatalmas karokkal rendelkező teremtményen.[/p]
+        </text>
+        <loseItem id="3056" />
+        <next id="332"></next>
+      </have>
+      <dontHave>
+        <next id="571"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 623 -->
   <p id="624">
     <text>
@@ -5748,8 +6343,20 @@
     <next id="344">Ha megpróbálod lenyomni a kilincset</next>
     <next id="397">Ha nem akarod ezt megkockáztatni</next>
   </p>
-  <!-- 633 -->
-  <!-- 634 -->
+  <p id="633">
+    <text>
+        [p]Vesztesz 2 életerő pontot. Kiválasztasz valamit a felszereléseid közül, amire rámondod a varázslatot - a tárgy abban a pillanatban csillogó kincskupaccá válik. Felajánlod ezeket a lénynek. De úgy tűnik, nem érdekli a dolog, bár kétségeid támadnak afelől, hogy egyáltalán látja-e azt, amit feléje nyújtasz. A fej irányából halk hangokat hallat. Talán mégis látta a kincset.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="516">Ha feladod a kinccsel való próbálkozást</next>
+    <next id="405">Hogyha meghallgatod, amit mondani akar</next>
+  </p>
+  <p id="634">
+    <text>
+        [p]Az őrök megragadnak, de a kapitány utasítja őket, hogy engedjenek el. A varázslat működik! - Nagyobb tisztelettel kell bánnunk egy ilyen nemes ellenféllel - mondja a férfi. - Őrség, távozhattok! - Azok eleresztenek, vállat vonnak, majd kisétálnak a szobából. A kapitány feléd fordul. - Elnézésedet kell kérnem a durva bánásmód miatt - kezdi. Te félbeszakítod, és közlöd vele, hogy nincs most időd az udvariaskodásra: el kell jutnod valahogy a belső toronyba. A férfi bólint, és felajánlja, hogy elkísér. Ez kellemetlen ugyan, de talán még hasznodra válhat. Kisétáltok a szobából, és a terem távolabbik oldalán lévő, nagyobb ajtó felé indultok.[/p]
+    </text>
+    <next id="301"></next>
+  </p>
   <p id="635">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -5862,7 +6469,24 @@
     <add to="stamina" amount="-4" />
     <next id="453"></next>
   </p>
-  <!-- 642 -->
+  <p id="642">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3002">
+      <have>
+        <next id="610"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik, és az őrök 2 életerő pontot sebeznek rajtad.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="145"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="643">
     <text>
         [p]Vesztesz 2 életerő pontot. A kapura koncentrálsz, és elmondod a varázslatot. Semmi nem történik. A Mampang Erőd kapuja elég erős ahhoz, hogy ezzel a varázslattal ne lehessen kinyitni.[/p]
@@ -5931,7 +6555,71 @@
     <next id="206">Amennyiben a másik ajtóval próbálkoznál meg</next>
   </p>
   <!-- 650 -->
-  <!-- 651 -->
+  <p id="651">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3019">
+      <have>
+        <text>
+            [p]Elmondod a varázslatot a kavicsaidra. Egyenként az Ogre felé hajíthatod ezeket a kis kavicsokat.[/p]
+        </text>
+        <next id="651a"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik, csak az idődet vesztegeted a próbálkozással.[/p]
+        </text>
+        <next id="452"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="651a" display="651">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+        [p]Elmondod a varázslatot a kavicsaidra. Egyenként az Ogre felé hajíthatod ezeket a kis kavicsokat.[/p]
+    </text>
+    <loseItem id="3019" />
+    <test against="skill">
+      <success>
+        <text>
+            [p]Eltaláltad az Ogrét, és sikerül 1 ÉLETERŐ pontos sebet ejtened rajta.[/p]
+        </text>
+        <changeEnemy attribute="stamina" id="32" change="-1" />
+      </success>
+      <failure>
+        <text>
+            [p]Elvétetted az Ogrét.[/p]
+        </text>
+        <gatherItem id="4095" />
+      </failure>
+      <after>
+        <itemCheck type="item" id="4095" amount="2">
+          <have>
+            <text>
+                [p]A lény annyira közel kerül hozzád, hogy már nem hajigálhatsz tovább.[/p]
+            </text>
+            <next id="270"></next>
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="3019">
+              <have>
+                <next id="651a">Ha újabb kavicsot vágnál az Ogréhoz</next>
+                <next id="270">Ha fegyvert rántanál</next>
+              </have>
+              <dontHave>
+                <text>
+                    [p]Elfogytak a köveid, így kénytelen vagy megküzdeni az Ogréval.[/p]
+                </text>
+                <next id="270"></next>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </after>
+    </test>
+  </p>
   <p id="652">
     <text>
         [p]Vesztesz 2 életerő pontot. Hátizsákodba nyúlsz, és előhúzol belőle egy tárgyat.[/p]
@@ -6120,7 +6808,13 @@
     <next id="110"></next>
   </p>
   <!-- 658 -->
-  <!-- 659 -->
+  <p id="659">
+    <text>
+        [p]Vesztesz 2 életerő pontot. A szoba középpontja felé irányítod a mágikus erőket. A teremben minden élőlényt demoralizál a varázslat, így sokkal könnyebb lesz harcolnod ellenük.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="504"></next>
+  </p>
   <p id="660">
     <text>
         [p]Vesztesz 4 életerő pontot. A varázslat hatásaként láthatatlan pajzs formálódik körülötted, melynek védelmében gond nélkül át tudsz haladni a Vörösszeműek között, akik kardjai hatástalanul pattannak le a láthatatlan erőtérről. Miután a fegyvereik használhatatlanok, a lények kinyitják szemüket, és izzó hősugarakat lövellnek feléd, de ezek sem képesek áthatolni rajta. Látva, hogy mennyire könnyen tudod magad megvédeni, úgy döntenek, inkább békében hagynak.[/p]
@@ -6345,8 +7039,78 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 676 -->
-  <!-- 677 -->
+  <p id="676">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3019">
+      <have>
+        <text>
+            [p]Elmondod a varázslatot a kavicsaidra. Egyenként az Ogre felé hajíthatod ezeket a kis kavicsokat.[/p]
+        </text>
+        <next id="676a"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik, csak az idődet vesztegeted a próbálkozással.[/p]
+        </text>
+        <next id="557"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="676a" display="676">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+        [p]Elmondod a varázslatot a kavicsaidra. Egyenként az Ogre felé hajíthatod ezeket a kis kavicsokat.[/p]
+    </text>
+    <loseItem id="3019" />
+    <test against="skill">
+      <success>
+        <text>
+            [p]Eltaláltad az Ogrét, és sikerül 1 ÉLETERŐ pontos sebet ejtened rajta.[/p]
+        </text>
+        <changeEnemy attribute="stamina" id="32" change="-1" />
+      </success>
+      <failure>
+        <text>
+            [p]Elvétetted az Ogrét.[/p]
+        </text>
+        <gatherItem id="4095" />
+      </failure>
+      <after>
+        <itemCheck type="item" id="4095" amount="2">
+          <have>
+            <text>
+                [p]A lény annyira közel kerül hozzád, hogy már nem hajigálhatsz tovább.[/p]
+            </text>
+            <next id="270"></next>
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="3019">
+              <have>
+                <next id="676a">Ha újabb kavicsot vágnál az Ogréhoz</next>
+                <next id="270">Ha fegyvert rántanál</next>
+              </have>
+              <dontHave>
+                <text>
+                    [p]Elfogytak a köveid, így kénytelen vagy megküzdeni az Ogréval.[/p]
+                </text>
+                <next id="270"></next>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </after>
+    </test>
+  </p>
+  <p id="677">
+    <text>
+        [p]Vesztesz 2 életerő pontot. Elmondod a varázslatot. A Goblinok érdeklődve figyelik, mit csinálsz. Váratlanul sötétbe borul az egész szoba! Szerencsétlen teremtmények nem értik, mi történhetett, és ordítozva, visítva, egymást taszigálva rohangálni kezdenek összevissza a helyiségben. Te közben kényelmesen eléred a terem túloldalán lévő ajtót. Néhányszor beléd botlottak ugyan a lények, de amúgy sértetlenül evickéltél át köztük.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="426"></next>
+  </p>
   <p id="678">
     <text>
         [p]Megiszod az italt, és elmondod a varázslatot. Érzed, amint testeden áthullámzik a hatása. Odalépsz a kötélhez. Megrántod, hogy kipróbáld, mennyire erős. Megnövekedett erőddel azonban elszakítod azt! Itt már nem fogsz átkelni a szakadékon. Kénytelen vagy valami más lehetőséget találni. Továbbmész az ösvényen.[/p]
@@ -6354,7 +7118,14 @@
     <loseItem id="3076" />
     <next id="59"></next>
   </p>
-  <!-- 679 -->
+  <p id="679">
+    <text>
+        [p]Vesztesz 2 életerő pontot. A varázslatot rámondod az Első Őrre. A hatás azonnali. Küzdj meg a másik kettővel. Támadásod áldozata az egész harc során zavarodottan fog állni, és nem vesz részt a csatában.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <changeEnemy attribute="stamina" id="33" set="0" />
+    <next id="145"></next>
+  </p>
   <p id="680">
     <text>
         [p]Belebámulsz a Kristálygömbbe. - Mi az? - kérdezi a kövér férfi. Egyelőre nem figyelsz rá; a Gömbben kitisztul a kép. Egy sötét szobát látsz, melyet egyedül egy gyertya világít meg, amit valaki a kezében tart. A padlóba éles pengéket helyeztek. Úgy tűnik, a jelenetet a figura szemein keresztül figyeled. Az előre vezető út igen veszedelmes, de látod, amint a gyertyahordó óvatosan egyensúlyozva átjut a szoba túloldalán lévő ajtóhoz. Aztán eltűnik a kép. A kövér ember ismét követeli, hogy áruld el neki, mit csináltál. Visszahelyezed a Kristálygömböt a hátizsákodba. Ez túl értékes kincs ahhoz, hogy csak úgy kiadd a kezedből![/p]
@@ -6362,7 +7133,12 @@
     <next id="66">Ha felajánlasz neki valami mást a hátizsákodból</next>
     <next id="205">Ha előrántod a fegyveredet, és rátámadsz a férfira</next>
   </p>
-  <!-- 681 -->
+  <p id="681">
+    <text>
+        [p]A szobor lábai elé szórod a homokot, és elmondod a varázslatot. Egy kis tócsányi futóhomok jelenik meg a földön. A csapda azonban csak lelassította ellenfeledet, és nem tartóztatta fel teljesen.[/p]
+    </text>
+    <next id="504"></next>
+  </p>
   <p id="682">
     <text>
         [p]Vesztesz 2 életerő pontot. Kétségbeesetten varázsolsz a vaksötétben. Mivel képtelen vagy konkrét célpontot választani, a hatás elmarad. Előhúzod a fegyveredet.[/p]
@@ -6371,7 +7147,12 @@
     <next id="15"></next>
   </p>
   <!-- 683 -->
-  <!-- 684 -->
+  <p id="684">
+    <text>
+        [p]Megérzed a Goblin gondolatait, de azok zavarosak, és értelmetlenek. Egy értelmi fogyatékos teremtmény kusza agyát próbáltad meg olvasni! Semmit nem sikerül megtudnod. Elindulsz, hogy átvágj a szobán.[/p]
+    </text>
+    <next id="56"></next>
+  </p>
   <p id="685">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -6501,7 +7282,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 698 -->
+  <p id="698">
+    <text>
+        [p]Vesztesz 1 életerő pontot. A varázslatnak nincs hatása, mivel a Goblinok túl ostobák ahhoz, hogy illúzióval hatni lehessen rájuk. A szoba közepén álló egyik lény közel lép hozzád, miközben te a varázslatoddal bajlódsz. Elég torz teremtmény. Jobb karja rettentően izmos, bal karja azonban igen vékonyka. Lábaival is hasonló a helyzet, csak éppen fordítva: a bal kétszer akkora, mint a jobb. Először azt gondolod, legalább őt érdekli az illúziód. De tévedsz. Kivillantja fogait, és neked ront.[/p]
+    </text>
+    <add to="stamina" amount="-1" />
+    <next id="332"></next>
+  </p>
   <p id="699">
     <text>
         [p]Vesztesz 2 életerő pontot. Elmondod a varázslatot, és előrelépsz, hogy megküzdj a Felderítőkkel. A mágikus támadások ellen védve vagy ugyan, de sajnos ezek a lények egyáltalán nem használnak varázslatot! Egyikük váratlanul megüt téged. Vesztesz 2 életerő pontot.[/p]
@@ -6596,7 +7383,26 @@
     </itemCheck>
     <next id="323"></next>
   </p>
-  <!-- 705 -->
+  <p id="705">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3035">
+      <have>
+        <text>
+            [p]A varázslat hatására a Napékszer vakítóan ragyogni kezd, és bevilágítja a szobát. Azonban semmi értékeset nem látsz.[/p]
+        </text>
+        <next id="504"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik.[/p]
+        </text>
+        <next id="580"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 706 -->
   <p id="707">
     <text>
@@ -6695,7 +7501,24 @@
     <changeEnemy attribute="stamina" id="8" set="0" />
     <next id="40"></next>
   </p>
-  <!-- 719 -->
+  <p id="719">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3027">
+      <have>
+        <loseItem id="3027" />
+        <next id="681"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik.[/p]
+        </text>
+        <next id="580"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="720">
     <text>
         [p]Vesztesz 2 életerő pontot. Varázslatodnak megvan a hatása. A Vörösszem mozgása drasztikusan lelassul. Mintha csak álomban mozogna. A másik kettő észrevette, hogy társuk mágia hatása alá került, és ezért azonnal reagálnak. A legerősebb fegyvereiket vetik be ellened. Kinyitják szemüket, és izzó hősugarak lövellnek feléd, mielőtt még bármi mást is csinálhatnál. Az utolsó emléked saját égő húsod szaga. Kalandod itt véget ér.[/p]
@@ -6704,7 +7527,13 @@
     <death />
   </p>
   <!-- 721 -->
-  <!-- 722 -->
+  <p id="722">
+    <text>
+        [p]Vesztesz 1 életerő pontot. Nincs elég időd a varázslásra. Az őrök ismét megragadnak. Sikerül egy pillanatra kiverekedned magad, de csak annyi időd van, hogy felkapd a fegyveredet.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="145"></next>
+  </p>
   <p id="723">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -6774,7 +7603,26 @@
     </itemCheck>
     <next id="510"></next>
   </p>
-  <!-- 728 -->
+  <p id="728">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3022">
+      <have>
+        <text>
+            [p]Felteszed a fejedre a papi sapkát és elmondod a varázslatot az egyik Goblinra koncentrálva.[/p]
+        </text>
+        <next id="684"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik, így kénytelen vagy sietve keresztülvágni a szobán.[/p]
+        </text>
+        <next id="571"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="729">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -7035,7 +7883,26 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 747 -->
+  <p id="747">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3054">
+      <have>
+        <text>
+            [p]Gyorsan elmondod a varázslatot a kapitányra.[/p]
+        </text>
+        <next id="634"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik.[/p]
+        </text>
+        <next id="145"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 748 -->
   <p id="749">
     <text>
@@ -7248,7 +8115,13 @@
     <next id="205">Ha átugrasz az asztalon, és megtámadod</next>
     <next id="66">Hogyha inkább felajánlasz neki valamit a hátizsákodból</next>
   </p>
-  <!-- 764 -->
+  <p id="764">
+    <text>
+        [p class="inlineImage"][img src="resources/sor4/764.jpg" /][/p]
+        [p]Belemondod a varázslatot a Napékszer kövébe. Az először halványan világítani kezd, majd hirtelen vakító ragyogás robban ki belőle, amely bevilágítja az egész szobát. A Goblinok szőrös, vonagló kupacokban vergődnek a padlón, és megpróbálják eltakarni szemüket a gyilkos fény elől. Kényelmesen átvághatsz a szobán a szemközti falban lévő ajtóhoz.[/p]
+    </text>
+    <next id="426"></next>
+  </p>
   <p id="765">
     <text>
         [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
@@ -7345,7 +8218,27 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 771 -->
+  <p id="771">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3052">
+      <have>
+        <text>
+            [p]Körülnézel, kire szórhatnád rá a Kőport azzal a céllal, hogy kőszoborrá változtasd...[/p]
+        </text>
+        <loseItem id="3052" />
+        <next id="504"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik.[/p]
+        </text>
+        <next id="580"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="772">
     <text>
         [p]Vesztesz 2 életerő pontot. Az egyik lényre koncentrálsz, és elmondod a varázslatot. A Szatírnő megrázza a fejét, és rád, majd a társára bámul. Szemébe vad kifejezés ül ki! A másik Szatírnő kényelmetlenül fészkelődni kezd: nincs ínyére, hogy szembeszálljon egy mágussal. - Azonnal szüntesd meg társamról ezt a varázst! - kiáltja, de hangja inkább ijedt, mint félelmetes. - Utána utadra engedünk. - Ez tisztességes ajánlatnak tűnik, így felszeded a cuccaidat, és elindulsz. Ám az összezavart Szatírnő váratlanul felmarkol néhány kavicsot, és tiszta erejéből feléd hajítja őket. A váratlan zuhanytól 2 életerő pontnyit sebződtél, de amúgy sikerült elhagynod a terepet.[/p]
@@ -7802,7 +8695,71 @@
     <add to="stamina" amount="-2" />
     <next id="510"></next>
   </p>
-  <!-- 794 -->
+  <p id="794">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3019">
+      <have>
+        <text>
+            [p]Elmondod a varázslatot a kavicsaidra. Egyenként az Ogre felé hajíthatod ezeket a kis kavicsokat.[/p]
+        </text>
+        <next id="794a"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik, csak az idődet vesztegeted a próbálkozással.[/p]
+        </text>
+        <next id="251"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="794a" display="794">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+        [p]Elmondod a varázslatot a kavicsaidra. Egyenként az Ogre felé hajíthatod ezeket a kis kavicsokat.[/p]
+    </text>
+    <loseItem id="3019" />
+    <test against="skill">
+      <success>
+        <text>
+            [p]Eltaláltad az Ogrét, és sikerül 1 ÉLETERŐ pontos sebet ejtened rajta.[/p]
+        </text>
+        <changeEnemy attribute="stamina" id="32" change="-1" />
+      </success>
+      <failure>
+        <text>
+            [p]Elvétetted az Ogrét.[/p]
+        </text>
+        <gatherItem id="4095" />
+      </failure>
+      <after>
+        <itemCheck type="item" id="4095" amount="2">
+          <have>
+            <text>
+                [p]A lény annyira közel kerül hozzád, hogy már nem hajigálhatsz tovább.[/p]
+            </text>
+            <next id="270"></next>
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="3019">
+              <have>
+                <next id="794a">Ha újabb kavicsot vágnál az Ogréhoz</next>
+                <next id="270">Ha fegyvert rántanál</next>
+              </have>
+              <dontHave>
+                <text>
+                    [p]Elfogytak a köveid, így kénytelen vagy megküzdeni az Ogréval.[/p]
+                </text>
+                <next id="270"></next>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </after>
+    </test>
+  </p>
   <p id="795">
     <text>
         [p]Vesztesz 1 életerő pontot. A varázslatnak nincs hatása, mivel senki sincs a környéken, aki meghallana.[/p]
@@ -7822,5 +8779,23 @@
     </text>
     <add to="stamina" amount="-1" />
     <next id="165"></next>
+  </p>
+  <!-- 798 -->
+  <p id="799">
+    <text>
+        [p]Vesztesz 1 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <itemCheck type="item" id="3035">
+      <have>
+        <next id="764"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A varázslat nem működik, így magadnak kell valahogy utat törni a Goblinok között.[/p]
+        </text>
+        <next id="56"></next>
+      </dontHave>
+    </itemCheck>
   </p>
 </content>
