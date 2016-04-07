@@ -9,6 +9,7 @@ public enum CheckType {
     enemy,
     item,
     items,
+    totalItems,
     skill,
     stamina,
     luck,

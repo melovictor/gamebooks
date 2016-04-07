@@ -3,13 +3,11 @@ package hu.zagor.gamebooks.content.command.itemcheck;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.ParagraphData;
-
 import java.util.List;
-
 import org.mvel2.MVEL;
 
 /**
- * Class for resolving an item-type {@link ItemCheckCommand}.
+ * Class for resolving an items-type {@link ItemCheckCommand}.
  * @author Tamas_Szekeres
  */
 public class ItemCheckItemsCommandResolver implements ItemCheckStubCommandResolver {
