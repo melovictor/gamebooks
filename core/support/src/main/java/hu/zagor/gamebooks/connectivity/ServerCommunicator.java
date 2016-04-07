@@ -42,4 +42,10 @@ public interface ServerCommunicator {
      * @throws IOException when there is a problem with the communication
      */
     String receiveResponse(URLConnection conenction) throws IOException;
+
+    /**
+     * Method to connect to a URL in an async manner. No data can be passed, and the response is ignored.
+     * @param url the URL to connect to
+     */
+    void connectAsync(String url);
 }

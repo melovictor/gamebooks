@@ -7,7 +7,8 @@ import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
-
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -55,9 +56,9 @@ public class ZagorServerCommunicator implements ServerCommunicator, BeanFactoryA
     }
 
     @Override
-    public String receiveResponse(final URLConnection conenction) throws IOException {
+    public String receiveResponse(final URLConnection connection) throws IOException {
         String response;
-        try (BufferedReader rd = new BufferedReader(new InputStreamReader(conenction.getInputStream()))) {
+        try (BufferedReader rd = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
             response = rd.readLine();
         }
         return response;
@@ -66,6 +67,23 @@ public class ZagorServerCommunicator implements ServerCommunicator, BeanFactoryA
     @Override
     public void setBeanFactory(final BeanFactory beanFactory) throws BeansException {
         this.beanFactory = beanFactory;
+    }
+
+    @Override
+    public void connectAsync(final String url) {
+        final ExecutorService executor = Executors.newFixedThreadPool(1);
+        executor.submit(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    final URLConnection connection = connect(url);
+                    sendRequest(connection, "");
+                    receiveResponse(connection);
+                } catch (final IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
     }
 
 }

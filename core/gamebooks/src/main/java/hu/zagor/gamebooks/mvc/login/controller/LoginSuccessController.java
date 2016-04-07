@@ -4,7 +4,6 @@ import hu.zagor.gamebooks.ControllerAddresses;
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.mdc.MdcHandler;
 import hu.zagor.gamebooks.mvc.login.service.LoginAttemptOverviewService;
-import hu.zagor.gamebooks.mvc.login.service.RewardAuthorizationSetupService;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.player.settings.DefaultSettingsHandler;
 import hu.zagor.gamebooks.player.settings.UserSettingsHandler;
@@ -36,7 +35,6 @@ public class LoginSuccessController {
     @Autowired private DefaultSettingsHandler defaultSettingsHandler;
     @Autowired private UserSettingsHandler userSettingsHandler;
     @Autowired private LoginAttemptOverviewService loginAttemptService;
-    @Autowired(required = false) private RewardAuthorizationSetupService authorizationSetupService;
 
     /**
      * Handles the successful login.
@@ -55,9 +53,6 @@ public class LoginSuccessController {
         } else {
             loginAttemptService.loginSucceeded(ipAddress);
             initializeUserSession(request, response);
-            if (authorizationSetupService != null) {
-                authorizationSetupService.setUpRewardAuthorizations();
-            }
         }
     }
 
