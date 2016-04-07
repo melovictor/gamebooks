@@ -41,11 +41,11 @@
 
   <beans profile="dev">
     <bean class="hu.zagor.gamebooks.support.environment.DevelopmentEnvironmentDetector" />
-    <bean class="hu.zagor.gamebooks.mvc.login.controller.service.AppLocationBasedVersionNumberProvider" />
+    <bean class="hu.zagor.gamebooks.mvc.login.service.AppLocationBasedVersionNumberProvider" />
   </beans>
   <beans profile="!dev">
     <bean class="hu.zagor.gamebooks.support.environment.ProductionEnvironmentDetector" />
-    <bean class="hu.zagor.gamebooks.mvc.login.controller.service.WarVersionNumberProvider" />
+    <bean class="hu.zagor.gamebooks.mvc.login.service.WarVersionNumberProvider" />
   </beans>
 
 </beans>

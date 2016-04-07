@@ -1,4 +1,4 @@
-package hu.zagor.gamebooks.mvc.login.controller.service;
+package hu.zagor.gamebooks.mvc.login.service;
 
 /**
  * Interface for acquiring the current version number.
