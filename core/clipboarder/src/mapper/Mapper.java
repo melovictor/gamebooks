@@ -34,7 +34,8 @@ public class Mapper {
                         final File xmlDir = new File(bookDir, content);
                         if (xmlDir.isDirectory()) {
                             for (final File contentFile : xmlDir.listFiles()) {
-                                if (contentFile.getName().endsWith("content.xml") && contentFile.lastModified() > lastWeek) {
+                                if (contentFile.getName().endsWith("content.xml")
+                                    && (contentFileNew(lastWeek, contentFile) || contentsExtensionNew(lastWeek, contentFile))) {
                                     createMap(contentFile);
                                 }
                             }
@@ -43,6 +44,16 @@ public class Mapper {
                 }
             }
         }
+    }
+
+    private static boolean contentsExtensionNew(final long lastWeek, final File contentFile) {
+        final String content2Name = contentFile.getAbsolutePath().replace("content.xml", "content2.xml");
+        final File content2File = new File(content2Name);
+        return content2File.lastModified() > lastWeek;
+    }
+
+    private static boolean contentFileNew(final long lastWeek, final File contentFile) {
+        return contentFile.lastModified() > lastWeek;
     }
 
     private static void createMap(final File xml) throws IOException {
