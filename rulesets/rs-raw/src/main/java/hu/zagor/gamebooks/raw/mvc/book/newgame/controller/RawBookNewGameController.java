@@ -22,7 +22,6 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,7 +67,7 @@ public class RawBookNewGameController extends AbstractNewGameController implemen
         final PlayerUser player = wrapper.getPlayer();
         final Paragraph paragraph = contentInitializer.loadSection(getStarterParagraph().getValue(), player, wrapper.getParagraph(), getInfo());
         wrapper.setParagraph(paragraph);
-        wrapper.getParagraph().calculateValidEvents();
+        paragraph.calculateValidEvents();
 
         final BookContentSpecification contentSpecification = getInfo().getContentSpecification();
 
@@ -135,7 +134,6 @@ public class RawBookNewGameController extends AbstractNewGameController implemen
 
     @Override
     public Character getCharacter(final Locale locale) {
-        Assert.notNull(locale, "The parameter 'locale' cannot be null!");
         return (Character) getBeanFactory().getBean(getInfo().getCharacterBeanId());
     }
 

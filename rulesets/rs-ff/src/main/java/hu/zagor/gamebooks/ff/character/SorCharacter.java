@@ -26,12 +26,15 @@ public class SorCharacter extends FfCharacter {
         characterSaveLocations.put("1-1", null); // 407
         characterSaveLocations.put("1-195", null); // 229
 
+        characterSaveLocations.put("2-1", null);
         characterSaveLocations.put("2-110", null); // 518
         characterSaveLocations.put("2-254", null); // 500
 
+        characterSaveLocations.put("3-1", null);
         characterSaveLocations.put("3-48", null); // 733
         characterSaveLocations.put("3-136", null); // 579
 
+        characterSaveLocations.put("4-1", null);
         characterSaveLocations.put("4-539", null); // 30
         characterSaveLocations.put("4-102", null); // 75
         characterSaveLocations.put("4-321", null); // 631

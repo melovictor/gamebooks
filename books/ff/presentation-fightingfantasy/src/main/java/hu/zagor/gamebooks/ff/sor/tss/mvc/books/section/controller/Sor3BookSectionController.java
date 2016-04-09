@@ -8,7 +8,7 @@ import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.exception.InvalidStepChoiceException;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.FfBookSectionController;
+import hu.zagor.gamebooks.ff.mvc.book.section.controller.SorBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.Sorcery;
 import java.util.Set;
@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + Sorcery.THE_SEVEN_SERPENTS)
-public class Sor3BookSectionController extends FfBookSectionController {
+public class Sor3BookSectionController extends SorBookSectionController {
     private static final String SNAKE_RING = "3049";
     @Resource(name = "snakeEncounterSections") private Set<String> snakeEncounterSections;
 

@@ -24,7 +24,12 @@
                 </c:forEach>
             </div>
         </c:if>
-        <tiles:insertTemplate template="../basic/section-choices.jsp" />
+        <c:if test="${paragraph.data.spellJump}">
+            <tiles:insertTemplate template="section-choices-spelljump.jsp" />
+        </c:if>
+        <c:if test="${!paragraph.data.spellJump}">
+            <tiles:insertTemplate template="../basic/section-choices.jsp" />
+        </c:if>
     </div>
 </c:if>
 <c:if test="${ffChoiceHidden}">

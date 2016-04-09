@@ -20,6 +20,19 @@ public class SorParagraphData extends FfParagraphData {
     }
 
     /**
+     * Determines whether this section is going to perform a spell jumping or not.
+     * @return true if it's going to be a spelljump, false otherwise
+     */
+    public boolean isSpellJump() {
+        final Choice choice = getChoices().getChoiceByPosition(0);
+        String text = null;
+        if (choice != null) {
+            text = choice.getId();
+        }
+        return text != null && text.startsWith("spellJump");
+    }
+
+    /**
      * Adds a new spell choice to the list of choices.
      * @param choice the new {@link Choice} object
      */
