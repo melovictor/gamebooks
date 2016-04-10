@@ -11,7 +11,6 @@ import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver
 import hu.zagor.gamebooks.content.command.fight.subresolver.domain.LuckTestSettings;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,7 +68,7 @@ public class FightCommandSupportedSubResolver extends FightCommandBasicSubResolv
     @Override
     void executeBattle(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         command.setKeepOpen(true);
-        final FightRoundResolver roundResolver = getBeanFactory().getBean(command.getBattleType() + "FightRoundResolver", FightRoundResolver.class);
+        final FightRoundResolver roundResolver = getRoundResolver(command, resolvationData.getInfo().getResourceDir());
         final FightRoundResult[] roundResults = roundResolver.resolveRound(command, resolvationData, beforeRoundResult);
         updateBattleStatistics(command, roundResults);
         final LuckTestSettings luckTestSettings = prepareAllyLuckTest(command);
@@ -82,4 +81,14 @@ public class FightCommandSupportedSubResolver extends FightCommandBasicSubResolv
         prepareAllyLuckTest(command, luckTestSettings);
     }
 
+    private FightRoundResolver getRoundResolver(final FightCommand command, final String resDir) {
+        final String specificName = command.getBattleType() + resDir + "FightRoundResolver";
+        FightRoundResolver roundResolver;
+        if (getBeanFactory().containsBean(specificName)) {
+            roundResolver = getBeanFactory().getBean(specificName, FightRoundResolver.class);
+        } else {
+            roundResolver = getBeanFactory().getBean(command.getBattleType() + "FightRoundResolver", FightRoundResolver.class);
+        }
+        return roundResolver;
+    }
 }
