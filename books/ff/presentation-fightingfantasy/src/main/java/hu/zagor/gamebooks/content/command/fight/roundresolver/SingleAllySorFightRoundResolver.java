@@ -9,11 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
- * Abstract extension of the {@link SingleFightRoundResolver} class for resolving single fight rounds in SOR.
+ * Abstract extension of the {@link SingleFightRoundResolver} class for resolving single ally fight rounds in SOR.
  * @author Tamas_Szekeres
  */
-public abstract class SingleSorFightRoundResolver extends SingleFightRoundResolver {
-
+public abstract class SingleAllySorFightRoundResolver extends SingleAllyFightRoundResolver {
     @Autowired private SorDamageReducingArmourService damageReducingArmourService;
     @Autowired @Qualifier("sorHeroAttackStrengthRoller") private HeroAttackStrengthRoller heroAttackStrengthRoller;
 
@@ -27,5 +26,4 @@ public abstract class SingleSorFightRoundResolver extends SingleFightRoundResolv
     int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
         return heroAttackStrengthRoller.getSelfAttackStrength(character, command, attributeHandler);
     }
-
 }
