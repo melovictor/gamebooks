@@ -77,6 +77,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         expectAttribute("attackStrengthRolledDices");
         expectAttribute("attackStrengthUsedDices");
         expectAttribute("recoverDamage");
+        expectAttribute("allyStaminaVisible", "true");
         expectAttribute("usableWeaponTypes");
         expectAttribute("forceWeapon", "1001");
         expectAttribute("preFight");
@@ -101,6 +102,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         Assert.assertTrue(command.getUsableWeaponTypes().contains(ItemType.weapon1));
         Assert.assertTrue(command.getUsableWeaponTypes().contains(ItemType.weapon2));
         Assert.assertTrue(command.isPreFightAvailable());
+        Assert.assertTrue(command.isAllyStaminaVisible());
     }
 
     public void testDoTransformWhenFightTypeIsShootingShouldAutoGenerateShootingWeaponType() {
@@ -112,6 +114,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         expectAttribute("attackStrengthRolledDices");
         expectAttribute("attackStrengthUsedDices");
         expectAttribute("recoverDamage");
+        expectAttribute("allyStaminaVisible");
         expectAttribute("usableWeaponTypes");
         expectAttribute("forceWeapon");
         expectAttribute("preFight", "false");
@@ -145,6 +148,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         expectAttribute("attackStrengthRolledDices", "3");
         expectAttribute("attackStrengthUsedDices", "3");
         expectAttribute("recoverDamage");
+        expectAttribute("allyStaminaVisible");
         expectAttribute("usableWeaponTypes");
         expectAttribute("forceWeapon");
         expectAttribute("preFight");
@@ -168,6 +172,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         Assert.assertTrue(command.getUsableWeaponTypes().contains(ItemType.weapon1));
         Assert.assertTrue(command.getUsableWeaponTypes().contains(ItemType.weapon2));
         Assert.assertTrue(command.isPreFightAvailable());
+        Assert.assertFalse(command.isAllyStaminaVisible());
     }
 
     @Test(expectedExceptions = UnsupportedOperationException.class)
@@ -180,6 +185,7 @@ public class FightTransformerTest extends AbstractTransformerTest {
         expectAttribute("attackStrengthRolledDices");
         expectAttribute("attackStrengthUsedDices");
         expectAttribute("recoverDamage");
+        expectAttribute("allyStaminaVisible");
         expectAttribute("usableWeaponTypes");
         expectAttribute("forceWeapon");
         expectAttribute("preFight");

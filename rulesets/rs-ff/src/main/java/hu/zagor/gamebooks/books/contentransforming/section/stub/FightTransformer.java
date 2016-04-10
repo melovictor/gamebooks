@@ -38,6 +38,7 @@ public class FightTransformer extends AbstractStubTransformer {
         fightCommand.setAttackStrengthRolledDices(extractIntegerAttribute(node, "attackStrengthRolledDices", 2));
         fightCommand.setAttackStrengthUsedDices(extractIntegerAttribute(node, "attackStrengthUsedDices", 2));
         fightCommand.setRecoverDamage(extractBooleanAttribute(node, "recoverDamage", false));
+        fightCommand.setAllyStaminaVisible(extractBooleanAttribute(node, "allyStaminaVisible", false));
         fightCommand.setUsableWeaponTypes(
             toWeaponTypes(extractAttribute(node, "usableWeaponTypes", "shooting".equals(fightCommand.getBattleType()) ? "shooting" : "weapon1,weapon2").split(",")));
         final String forceWeapon = extractAttribute(node, "forceWeapon");

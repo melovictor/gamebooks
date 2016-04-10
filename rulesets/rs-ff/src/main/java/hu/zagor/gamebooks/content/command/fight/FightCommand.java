@@ -75,6 +75,8 @@ public class FightCommand extends Command {
 
     @Autowired private FightCommandMessageList messages;
 
+    private boolean allyStaminaVisible;
+
     @Override
     public FightCommand clone() throws CloneNotSupportedException {
         final FightCommand cloned = (FightCommand) super.clone();
@@ -370,6 +372,14 @@ public class FightCommand extends Command {
 
     public boolean isFleeAllowed() {
         return fleeAllowed;
+    }
+
+    public boolean isAllyStaminaVisible() {
+        return allyStaminaVisible;
+    }
+
+    public void setAllyStaminaVisible(final boolean allyStaminaVisible) {
+        this.allyStaminaVisible = allyStaminaVisible;
     }
 
 }
