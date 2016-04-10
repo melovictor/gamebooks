@@ -11,6 +11,8 @@ import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDt
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
+import java.util.Set;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,8 +21,8 @@ import org.springframework.stereotype.Component;
  */
 @Component("singleAllysor4FightRoundResolver")
 public class SingleAllySor4FightRoundResolver extends SingleAllySorFightRoundResolver {
-    private static final int FIRST_RED_EYE_ID = 108;
     private static final int ENEMY_ALLY_RED_EYE_SHIFT = 108 - 19;
+    @Resource(name = "sor4RedEyeAllies") private Set<String> redEyeAllies;
 
     @Override
     public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
@@ -53,22 +55,22 @@ public class SingleAllySor4FightRoundResolver extends SingleAllySorFightRoundRes
     }
 
     private String getEnemyId(final FfAllyCharacter character) {
-        final int allyId = getAllyId(character);
+        final int allyId = Integer.valueOf(getAllyId(character));
         return String.valueOf(allyId - ENEMY_ALLY_RED_EYE_SHIFT);
     }
 
     private boolean isRedEyeAlly(final Character character) {
         boolean isRedEye = false;
         if (character instanceof FfAllyCharacter) {
-            isRedEye = getAllyId(character) >= FIRST_RED_EYE_ID;
+            isRedEye = redEyeAllies.contains(getAllyId(character));
         }
         return isRedEye;
     }
 
-    private int getAllyId(final Character character) {
+    private String getAllyId(final Character character) {
         final FfAllyCharacter allyCharacter = (FfAllyCharacter) character;
         final FfEnemy allyEnemy = allyCharacter.getAlly();
-        return Integer.parseInt(allyEnemy.getId());
+        return allyEnemy.getId();
     }
 
     @Override
