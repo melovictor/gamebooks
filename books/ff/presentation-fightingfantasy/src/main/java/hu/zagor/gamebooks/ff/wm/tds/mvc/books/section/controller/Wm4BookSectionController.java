@@ -49,7 +49,6 @@ public class Wm4BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    @RequestMapping(value = PageAddresses.ATTRIBUTE_TEST_TESTING)
     protected String doHandleAttributeTestTesting(final Model model, final HttpServletRequest request) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final Paragraph paragraph = wrapper.getParagraph();
