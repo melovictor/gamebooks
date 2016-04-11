@@ -8,11 +8,13 @@ import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
+import hu.zagor.gamebooks.content.command.fight.roundresolver.service.Sor4RedEyeRetaliationStrikeService;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import java.util.Set;
 import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -23,6 +25,7 @@ import org.springframework.stereotype.Component;
 public class SingleAllySor4FightRoundResolver extends SingleAllySorFightRoundResolver {
     private static final int ENEMY_ALLY_RED_EYE_SHIFT = 108 - 19;
     @Resource(name = "sor4RedEyeAllies") private Set<String> redEyeAllies;
+    @Autowired private Sor4RedEyeRetaliationStrikeService retaliationHandler;
 
     @Override
     public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
@@ -83,6 +86,22 @@ public class SingleAllySor4FightRoundResolver extends SingleAllySorFightRoundRes
             damageSelf(dto);
         } else {
             dto.getMessages().addKey("page.ff.label.fight.single.failedAttack.ally", new Object[]{dto.getEnemy().getName(), character.getName()});
+        }
+    }
+
+    @Override
+    protected void damageEnemy(final FightCommand command, final FightDataDto dto) {
+        super.damageEnemy(command, dto);
+        if (retaliationHandler.needToRetaliate(dto)) {
+            retaliationHandler.calculateRetaliationStrike(dto);
+        }
+    }
+
+    @Override
+    protected void damageSelf(final FightDataDto dto) {
+        super.damageSelf(dto);
+        if (retaliationHandler.needToRetaliate(dto)) {
+            retaliationHandler.calculateInverseRetaliationStrike(dto);
         }
     }
 

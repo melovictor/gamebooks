@@ -6,6 +6,7 @@ import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
+import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import java.util.Set;
@@ -15,7 +16,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
- * Service for handling the Red Eyes' retaliation eye openings. TODO: must do retaliation when red eye fights red eye!
+ * Service for handling the Red Eyes' retaliation eye openings.
  * @author Tamas_Szekeres
  */
 @Component
@@ -41,27 +42,56 @@ public class Sor4RedEyeRetaliationStrikeService {
     }
 
     /**
+     * Executes a reverse retaliation strike, where an ally Red Eye tries to burn an enemy one.
+     * @param dto the {@link FightDataDto} object
+     */
+    public void calculateInverseRetaliationStrike(final FightDataDto dto) {
+        if (redEyeHitRedEye(dto)) {
+            causeInverseDamage(dto);
+        }
+    }
+
+    /**
      * Decides whether a retaliation strike is necessary. For it to be necessary, the enemy must be alive and a Red Eye.
      * @param dto the {@link FightDataDto} object
-     * @param enemy the current enemy we are facing
      * @return true if retaliation is necessary, false otherwise
      */
-    public boolean needToRetaliate(final FightDataDto dto, final FfEnemy enemy) {
-        return enemy.getStamina() > 0 && isRedEye(dto);
+    public boolean needToRetaliate(final FightDataDto dto) {
+        final FfEnemy enemy = dto.getEnemy();
+        final int heroStamina = dto.getCharacterHandler().getAttributeHandler().resolveValue(dto.getCharacter(), "stamina");
+        return enemy.getStamina() > 0 && heroStamina > 0 && isRedEye(enemy);
     }
 
     private boolean firstHitFromRedEye(final FightDataDto dto) {
         return dto.getCharacterHandler().getInteractionHandler().getLastFightCommand(dto.getCharacter(), "beenHitByRedEye") == null;
     }
 
+    private boolean redEyeHitRedEye(final FightDataDto dto) {
+        final int[] randomNumber = generator.getRandomNumber(1);
+        final String targetRollText = diceResultRenderer.render(generator.getDefaultDiceSide(), randomNumber);
+        final int target = getTargetValue(dto);
+
+        final String enemyName = dto.getEnemy().getName();
+        if (target <= randomNumber[0]) {
+            dto.getMessages().addKey("page.sor4.fight.redeye.eyeTargeting.inverse.hit", targetRollText, randomNumber[0], enemyName);
+        } else {
+            dto.getMessages().addKey("page.sor4.fight.redeye.eyeTargeting.inverse.missed", targetRollText, randomNumber[0], enemyName);
+        }
+        return target <= randomNumber[0];
+    }
+
     private boolean redEyeHitCharacter(final FightDataDto dto) {
         final int[] randomNumber = generator.getRandomNumber(1);
         final String targetRollText = diceResultRenderer.render(generator.getDefaultDiceSide(), randomNumber);
         final int target = getTargetValue(dto);
+
+        final FfCharacter character = dto.getCharacter();
+        final String allyPostfix = character instanceof FfAllyCharacter ? ".ally" : "";
+        final String allyName = character.getName();
         if (target <= randomNumber[0]) {
-            dto.getMessages().addKey("page.sor4.fight.redeye.eyeTargeting.hit", targetRollText, randomNumber[0]);
+            dto.getMessages().addKey("page.sor4.fight.redeye.eyeTargeting" + allyPostfix + ".hit", targetRollText, randomNumber[0], allyName);
         } else {
-            dto.getMessages().addKey("page.sor4.fight.redeye.eyeTargeting.missed", targetRollText, randomNumber[0]);
+            dto.getMessages().addKey("page.sor4.fight.redeye.eyeTargeting" + allyPostfix + ".missed", targetRollText, randomNumber[0], allyName);
         }
         return target <= randomNumber[0];
     }
@@ -69,26 +99,36 @@ public class Sor4RedEyeRetaliationStrikeService {
     private int getTargetValue(final FightDataDto dto) {
         final FfUserInteractionHandler interactionHandler = dto.getCharacterHandler().getInteractionHandler();
         final FfCharacter character = dto.getCharacter();
-        final String id = dto.getEnemy().getId();
-        final String burnAttempt = interactionHandler.getLastFightCommand(character, "redEyeBurnAttempt" + id);
+        int lastBurnAttempt = 0;
         int targetValue = INITIAL_TARGET_VALUE;
-        int lastBurnAttempt;
-        if (burnAttempt == null) {
-            lastBurnAttempt = 0;
-        } else {
-            lastBurnAttempt = Integer.parseInt(burnAttempt);
+        final String id = dto.getEnemy().getId();
+        if (!(character instanceof FfAllyCharacter)) {
+            final String burnAttempt = interactionHandler.getLastFightCommand(character, "redEyeBurnAttempt" + id);
+            if (burnAttempt != null) {
+                lastBurnAttempt = Integer.parseInt(burnAttempt);
+            }
         }
         targetValue -= lastBurnAttempt;
         interactionHandler.setFightCommand(character, "redEyeBurnAttempt" + id, String.valueOf(lastBurnAttempt + 1));
         return targetValue;
     }
 
+    private void causeInverseDamage(final FightDataDto dto) {
+        final int damage = generator.getRandomNumber(1)[0];
+        final FightCommandMessageList messages = dto.getMessages();
+        final FfEnemy enemy = dto.getEnemy();
+        messages.addKey("page.sor4.fight.redeye.hitWithEye.inverse", dto.getCharacter().getName(), damage, enemy.getCommonName());
+        enemy.setStamina(enemy.getStamina() - damage);
+    }
+
     private void causeDamage(final FightDataDto dto) {
         final int damage = generator.getRandomNumber(1)[0];
         final FightCommandMessageList messages = dto.getMessages();
-        messages.addKey("page.sor4.fight.redeye.hitWithEye", dto.getEnemy().getCommonName(), damage);
-        dto.getCharacter().changeStamina(-damage);
-        dto.getCharacterHandler().getInteractionHandler().setFightCommand(dto.getCharacter(), "beenHitByRedEye", "");
+        final FfCharacter character = dto.getCharacter();
+        final String keyPostfix = character instanceof FfAllyCharacter ? ".ally" : "";
+        messages.addKey("page.sor4.fight.redeye.hitWithEye" + keyPostfix, dto.getEnemy().getCommonName(), damage, character.getName());
+        character.changeStamina(-damage);
+        dto.getCharacterHandler().getInteractionHandler().setFightCommand(character, "beenHitByRedEye", "");
     }
 
     private void killCharacter(final FightDataDto dto) {
@@ -98,7 +138,8 @@ public class Sor4RedEyeRetaliationStrikeService {
         dto.getMessages().addKey("page.sor4.fight.redeye.killWithEye", dto.getEnemy().getCommonName());
     }
 
-    private boolean isRedEye(final FightDataDto dto) {
-        return redEyes.contains(dto.getEnemy().getId());
+    private boolean isRedEye(final FfEnemy enemy) {
+        return redEyes.contains(enemy.getId());
     }
+
 }

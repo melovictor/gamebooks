@@ -27,7 +27,7 @@ public class AllAtOnceSor4FightRoundResolver extends AllAtOnceSorFightRoundResol
         if (enemy.getStamina() <= 0 && isSightmaster(enemy) && underSpell(dto)) {
             command.getRoundEvents().get(0).getParagraphData().setInterrupt(true);
         }
-        if (retaliationHandler.needToRetaliate(dto, enemy)) {
+        if (retaliationHandler.needToRetaliate(dto)) {
             retaliationHandler.calculateRetaliationStrike(dto);
         }
     }

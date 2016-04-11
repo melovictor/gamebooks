@@ -5,8 +5,10 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
+import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
+import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.service.Sor4RedEyeRetaliationStrikeService;
@@ -43,13 +45,32 @@ public class SingleSupportedSor4FightRoundResolver extends SingleSupportedFightR
 
     @Override
     public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
-        final Character character = resolvationData.getCharacter();
+        final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final boolean redEyeAlly = isRedEyeAlly(character);
+        FfEnemy redEyeEnemy = null;
         if (redEyeAlly) {
-            selectProperEnemy(resolvationData);
+            redEyeEnemy = selectProperEnemy(resolvationData);
         }
 
-        final FightRoundResult[] resolveRound = super.resolveRound(command, resolvationData, beforeRoundResult);
+        FightRoundResult[] resolveRound;
+        if (redEyeAlly) {
+            if (redEyeHasMirrorEnemy(redEyeEnemy)) {
+                resolveRound = super.resolveRound(command, resolvationData, beforeRoundResult);
+            } else {
+                resolveRound = new FightRoundResult[]{FightRoundResult.IDLE};
+            }
+        } else {
+            resolveRound = super.resolveRound(command, resolvationData, beforeRoundResult);
+
+            final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) resolvationData.getCharacterHandler().getInteractionHandler();
+            final String selectedEnemyId = interactionHandler.getLastFightCommand(character, LastFightCommand.ENEMY_ID);
+            for (final FfEnemy enemy : command.getResolvedEnemies()) {
+                if (!redEyeHasMirrorEnemy(enemy) && !selectedEnemyId.equals(enemy.getId())) {
+                    interactionHandler.setFightCommand(character, LastFightCommand.ENEMY_ID, enemy.getId());
+                    super.resolveRound(command, resolvationData, beforeRoundResult);
+                }
+            }
+        }
 
         if (redEyeAlly) {
             final FfAllyCharacter allyCharacter = (FfAllyCharacter) character;
@@ -64,18 +85,18 @@ public class SingleSupportedSor4FightRoundResolver extends SingleSupportedFightR
     }
 
     @Override
-    protected void damageSelf(final FightDataDto dto) {
-        // TODO: in red eye-red eye fights, enemies must damage each other
-        if (dto.getCharacter() instanceof SorCharacter && redEyeHasMirrorEnemy(dto)) {
-            dto.getMessages().add("Hero missed red eye.");
+    protected void resolveDefeatMessage(final FightDataDto dto) {
+        final FfCharacter character = dto.getCharacter();
+        final FightCommandMessageList messages = dto.getMessages();
+        if (character instanceof FfAllyCharacter) {
+            messages.addKey("page.ff.label.fight.single.failedDefense.ally", new Object[]{dto.getEnemy().getName(), character.getName()});
         } else {
-            damageReducingArmourService.setUpDamageProtection(dto);
-            super.damageSelf(dto);
+            messages.addKey("page.ff.label.fight.single.failedDefense", dto.getEnemy().getName());
         }
     }
 
-    private boolean redEyeHasMirrorEnemy(final FightDataDto dto) {
-        final int enemyId = Integer.valueOf(dto.getEnemy().getId());
+    private boolean redEyeHasMirrorEnemy(final FfEnemy enemy) {
+        final int enemyId = Integer.valueOf(enemy.getId());
         final int mirrorId = enemyId + ENEMY_ALLY_RED_EYE_SHIFT;
         final FfEnemy ally = getEnemy(mirrorId);
         return ally.getStamina() > 0;
@@ -90,12 +111,13 @@ public class SingleSupportedSor4FightRoundResolver extends SingleSupportedFightR
         return (HttpSessionWrapper) beanFactory.getBean("httpSessionWrapper", request);
     }
 
-    private void selectProperEnemy(final ResolvationData resolvationData) {
+    private FfEnemy selectProperEnemy(final ResolvationData resolvationData) {
         final FfAllyCharacter character = (FfAllyCharacter) resolvationData.getCharacter();
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final String enemyId = getEnemyId(character);
 
         characterHandler.getInteractionHandler().setFightCommand(character, LastFightCommand.ENEMY_ID, enemyId);
+        return (FfEnemy) resolvationData.getEnemies().get(enemyId);
     }
 
     private String getEnemyId(final FfAllyCharacter character) {
@@ -120,14 +142,22 @@ public class SingleSupportedSor4FightRoundResolver extends SingleSupportedFightR
     @Override
     protected void damageEnemy(final FightCommand command, final FightDataDto dto) {
         super.damageEnemy(command, dto);
-        final FfEnemy enemy = dto.getEnemy();
-        if (retaliationHandler.needToRetaliate(dto, enemy) && isHeroAttacker(dto)) {
+        if (retaliationHandler.needToRetaliate(dto)) {
             retaliationHandler.calculateRetaliationStrike(dto);
         }
     }
 
-    private boolean isHeroAttacker(final FightDataDto dto) {
-        return dto.getCharacter() instanceof SorCharacter;
+    @Override
+    protected void damageSelf(final FightDataDto dto) {
+        if (dto.getCharacter() instanceof SorCharacter && redEyeHasMirrorEnemy(dto.getEnemy())) {
+            dto.getMessages().addKey("page.ff.label.fight.single.failedAttack", dto.getEnemy().getName());
+        } else {
+            damageReducingArmourService.setUpDamageProtection(dto);
+            super.damageSelf(dto);
+            if (isRedEyeAlly(dto.getCharacter())) {
+                retaliationHandler.calculateInverseRetaliationStrike(dto);
+            }
+        }
     }
 
     @Override
