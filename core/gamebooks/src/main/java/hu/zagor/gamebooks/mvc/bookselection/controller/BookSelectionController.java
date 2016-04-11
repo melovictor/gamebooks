@@ -1,34 +1,29 @@
 package hu.zagor.gamebooks.mvc.bookselection.controller;
 
-import java.util.Locale;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import hu.zagor.gamebooks.ControllerAddresses;
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.mvc.bookselection.facade.BookListFacade;
 import hu.zagor.gamebooks.mvc.generic.controller.LanguageAwareController;
 import hu.zagor.gamebooks.support.logging.LogInject;
+import java.util.Locale;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Controller for handling the book selection page.
  * @author Tamas_Szekeres
  */
 @Controller
-public class BookSelectionController extends LanguageAwareController {
+public final class BookSelectionController extends LanguageAwareController {
 
-    @Autowired
-    private BookListFacade bookListFacade;
-    @LogInject
-    private Logger logger;
+    @Autowired private BookListFacade bookListFacade;
+    @LogInject private Logger logger;
 
     /**
      * Method for putting together the book selection screen.

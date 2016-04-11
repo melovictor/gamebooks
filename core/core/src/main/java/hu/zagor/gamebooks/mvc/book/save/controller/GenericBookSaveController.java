@@ -7,9 +7,7 @@ import hu.zagor.gamebooks.books.saving.GameStateHandler;
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.mvc.book.controller.AbstractRequestWrappingController;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -24,10 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class GenericBookSaveController extends AbstractRequestWrappingController {
 
-    @Autowired
-    private GameStateHandler gameStateHandler;
-    @Autowired
-    private BookInformationFetcher fetcher;
+    @Autowired private GameStateHandler gameStateHandler;
+    @Autowired private BookInformationFetcher fetcher;
 
     /**
      * Handles the saving of the current game state.
@@ -36,7 +32,7 @@ public class GenericBookSaveController extends AbstractRequestWrappingController
      */
     @RequestMapping(value = PageAddresses.BOOK_PAGE + "/{bookId}/s/" + PageAddresses.BOOK_SAVE)
     @ResponseBody
-    public void handleSave(final HttpServletRequest request, @PathVariable("bookId") final String bookId) {
+    public final void handleSave(final HttpServletRequest request, @PathVariable("bookId") final String bookId) {
         Assert.notNull(request, "The parameter 'request' cannot be null!");
         Assert.notNull(bookId, "The parameter 'bookId' cannot be null!");
 

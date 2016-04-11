@@ -34,7 +34,7 @@ public class GenericBookImageController extends AbstractRequestWrappingControlle
      * @throws IOException when an I/O error occurs
      */
     @RequestMapping(value = "{file}")
-    public void handleImage(final HttpServletRequest request, final HttpServletResponse response, @PathVariable("dir") final String dir,
+    public final void handleImage(final HttpServletRequest request, final HttpServletResponse response, @PathVariable("dir") final String dir,
         @PathVariable("file") final String file, final Locale locale) throws IOException {
         Assert.notNull(dir, "The parameter 'dir' cannot be null!");
         Assert.isTrue(dir.length() > 0, "The parameter 'dir' cannot be empty!");

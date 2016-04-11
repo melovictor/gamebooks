@@ -38,7 +38,7 @@ public abstract class GenericBookLoadController extends AbstractSectionDisplayin
      * @return the appropriate view
      */
     @RequestMapping(value = PageAddresses.BOOK_LOAD)
-    public String handleLoad(final Model model, final HttpServletRequest request) {
+    public final String handleLoad(final Model model, final HttpServletRequest request) {
         logger.debug("GenericBookLoadController.load");
         final HttpSessionWrapper wrapper = getWrapper(request);
 
@@ -57,7 +57,7 @@ public abstract class GenericBookLoadController extends AbstractSectionDisplayin
      * @throws IOException occurs if the redirection fails
      */
     @RequestMapping(value = PageAddresses.BOOK_LOAD_PREVIOUS)
-    public void handleLoadPrevious(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
+    public final void handleLoadPrevious(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         logger.debug("GenericBookLoadController.loadPrevious");
 
         final ContinuationData continuationData = getInfo().getContinuationData();

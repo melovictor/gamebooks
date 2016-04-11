@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/{bookId}/resources/{dir}")
-public class FfBookImageController extends AbstractRequestWrappingController {
+public final class FfBookImageController extends AbstractRequestWrappingController {
 
     @Autowired private ImageHandler imageHandler;
 

@@ -74,7 +74,7 @@ public class SorBookTakeItemController extends FfBookTakeItemController {
      */
     @RequestMapping("libraReset")
     @ResponseBody
-    public void handleLibraReset(final HttpServletRequest request) {
+    public final void handleLibraReset(final HttpServletRequest request) {
         final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
         final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
         final HttpSessionWrapper wrapper = getWrapper(request);
@@ -94,7 +94,7 @@ public class SorBookTakeItemController extends FfBookTakeItemController {
      */
     @RequestMapping("libraRemoveCurse/{curseId}")
     @ResponseBody
-    public void handleLibraRemoveCurse(final HttpServletRequest request, @PathVariable("curseId") final String curseId) {
+    public final void handleLibraRemoveCurse(final HttpServletRequest request, @PathVariable("curseId") final String curseId) {
         final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
         final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
         final HttpSessionWrapper wrapper = getWrapper(request);

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @Lazy(false)
-public class AuthorizationCodeUpdateController {
+final class AuthorizationCodeUpdateController {
     @LogInject private Logger logger;
     @Resource(name = "authorizationCodeContainer") private Map<String, String> authorizationCodeContainer;
 

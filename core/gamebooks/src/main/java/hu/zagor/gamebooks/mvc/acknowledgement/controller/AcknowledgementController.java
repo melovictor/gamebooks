@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Tamas_Szekeres
  */
 @Controller
-public class AcknowledgementController {
+public final class AcknowledgementController {
 
     @Resource(name = "helpers") private Collection<String> users;
 

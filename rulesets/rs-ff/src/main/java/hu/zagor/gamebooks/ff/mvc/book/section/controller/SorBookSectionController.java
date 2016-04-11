@@ -43,7 +43,8 @@ public class SorBookSectionController extends FfBookSectionController {
      * @return the book page's name
      */
     @RequestMapping(value = "spl-{spellTarget}")
-    public String handleSpellSectionChangeBySpellPosition(final Model model, final HttpServletRequest request, @PathVariable("spellTarget") final String spellTarget) {
+    public final String handleSpellSectionChangeBySpellPosition(final Model model, final HttpServletRequest request,
+        @PathVariable("spellTarget") final String spellTarget) {
         getLogger().info("Handling spell section switch to position '{}'.", spellTarget);
         String sectionIdentifier;
         final int position;

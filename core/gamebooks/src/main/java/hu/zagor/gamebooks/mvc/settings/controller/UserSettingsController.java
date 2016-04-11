@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author Tamas_Szekeres
  */
 @Controller
-public class UserSettingsController extends LanguageAwareController {
+public final class UserSettingsController extends LanguageAwareController {
 
     @LogInject private Logger logger;
 

@@ -57,10 +57,9 @@ public class RawBookSectionController extends GenericBookSectionController imple
      * @return the book page's name
      */
     @RequestMapping(value = PageAddresses.BOOK_WELCOME)
-    public String handleWelcome(final Model model, final HttpServletRequest request) {
+    public final String handleWelcome(final Model model, final HttpServletRequest request) {
         getLogger().debug("Handling welcome page for book.");
-        final HttpSessionWrapper wrapper = getWrapper(request);
-        final PlayerUser player = wrapper.getPlayer();
+        final PlayerUser player = getWrapper(request).getPlayer();
         final BookInformations info = getInfo();
         sectionHandlingService.initModel(model, player, info);
         final Paragraph paragraph = loadSection(BookParagraphConstants.BACK_COVER.getValue(), request);
@@ -74,9 +73,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
         model.addAttribute("isWelcomeScreen", true);
         model.addAttribute("haveRules", getBeanFactory().containsBean(info.getHelpBeanId()));
 
-        final String series = info.getSeries();
-        final String title = info.getTitle();
-        model.addAttribute("pageTitle", series + " &ndash; " + title);
+        model.addAttribute("pageTitle", info.getSeries() + " &ndash; " + info.getTitle());
         addResources(model);
         return sectionHandlingService.checkParagraph(model, paragraph, "rawWelcome", info);
     }
@@ -89,7 +86,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
      * @return the book page's name
      */
     @RequestMapping(value = "{position}", method = RequestMethod.GET)
-    public String handleSection(final Model model, final HttpServletRequest request, @PathVariable("position") final String sectionIdentifier) {
+    public final String handleSection(final Model model, final HttpServletRequest request, @PathVariable("position") final String sectionIdentifier) {
         getLogger().debug("Handling choice request '{}' for book.", sectionIdentifier);
 
         final HttpSessionWrapper wrapper = getWrapper(request);
@@ -210,11 +207,22 @@ public class RawBookSectionController extends GenericBookSectionController imple
      * @throws UnsupportedEncodingException occurs when the webapp is installed on a very strange system
      */
     @RequestMapping(value = PageAddresses.BOOK_USER_RESPONSE)
-    public String handleUserInput(final UserInputResponseForm form, final Model model, final HttpServletRequest request) throws UnsupportedEncodingException {
+    public final String handleUserInput(final UserInputResponseForm form, final Model model, final HttpServletRequest request) throws UnsupportedEncodingException {
+        return doHandleUserInput(form, model, request);
+    }
+
+    /**
+     * Actually handles the user's response when receiving user input.
+     * @param form the bean containing the user's response
+     * @param model the data model
+     * @param request the request
+     * @return the book page's name
+     * @throws UnsupportedEncodingException occurs when the webapp is installed on a very strange system
+     */
+    protected String doHandleUserInput(final UserInputResponseForm form, final Model model, final HttpServletRequest request) throws UnsupportedEncodingException {
         request.setCharacterEncoding("utf-8");
         getLogger().debug("Received answer from user: '{}'.", form.getResponseText());
         final HttpSessionWrapper wrapper = getWrapper(request);
-        final Paragraph paragraph = wrapper.getParagraph();
         final Character character = wrapper.getCharacter();
         character.setCommandView(null);
         final DefaultUserInteractionHandler interactionHandler = (DefaultUserInteractionHandler) getInfo().getCharacterHandler().getInteractionHandler();
@@ -222,7 +230,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
         interactionHandler.setUserInputTime(character, form.getElapsedTime());
         interactionRecorder.recordUserResponse(wrapper, form.getResponseText(), form.getForcedTime() == 0 ? form.getElapsedTime() : form.getForcedTime());
         addResources(model);
-        return processSectionChange(model, wrapper, paragraph);
+        return processSectionChange(model, wrapper, wrapper.getParagraph());
     }
 
     private String processSectionChange(final Model model, final HttpSessionWrapper wrapper, final Paragraph paragraph) {
@@ -263,7 +271,17 @@ public class RawBookSectionController extends GenericBookSectionController imple
      * @return the book page's name
      */
     @RequestMapping(value = PageAddresses.RANDOM)
-    public String handleRandom(final Model model, final HttpServletRequest request) {
+    public final String handleRandom(final Model model, final HttpServletRequest request) {
+        return doHandleRandom(model, request);
+    }
+
+    /**
+     * Handler for the actual random implementation.
+     * @param model the data model
+     * @param request the request
+     * @return the book page's name
+     */
+    protected String doHandleRandom(final Model model, final HttpServletRequest request) {
         interactionRecorder.recordRandomRoll(getWrapper(request));
         return handleSection(model, request, null);
     }

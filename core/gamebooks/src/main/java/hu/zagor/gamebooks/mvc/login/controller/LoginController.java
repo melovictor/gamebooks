@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Tamas_Szekeres
  */
 @Controller
-public class LoginController {
+public final class LoginController {
 
     private static final int GUEST_SESSION_TTL = 5 * 60;
     private static final int USER_SESSION_TTL = 4 * 60 * 60;

@@ -89,12 +89,12 @@ public class Ff1BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    public String handleRandom(final Model model, final HttpServletRequest request) {
+    protected String doHandleRandom(final Model model, final HttpServletRequest request) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final RandomCommand command = (RandomCommand) wrapper.getParagraph().getData().getCommands().get(0);
         final String paragraphId = getParagraphId(wrapper);
 
-        final String rollResult = super.handleRandom(model, request);
+        final String rollResult = super.doHandleRandom(model, request);
 
         if (OLD_MAN_DICING.equals(paragraphId)) {
             if (isFirst(wrapper)) {
@@ -144,14 +144,14 @@ public class Ff1BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    public String handleUserInput(final UserInputResponseForm form, final Model model, final HttpServletRequest request) throws UnsupportedEncodingException {
+    protected String doHandleUserInput(final UserInputResponseForm form, final Model model, final HttpServletRequest request) throws UnsupportedEncodingException {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final String paragraphId = getParagraphId(wrapper);
         if (OLD_MAN_DICING.equals(paragraphId)) {
             storeBetAmount(wrapper, form);
         }
 
-        return super.handleUserInput(form, model, request);
+        return super.doHandleUserInput(form, model, request);
     }
 
     private void storeBetAmount(final HttpSessionWrapper wrapper, final UserInputResponseForm form) {
@@ -168,11 +168,11 @@ public class Ff1BookSectionController extends FfBookSectionController {
     }
 
     @Override
-    public String handleAttributeTestTesting(final Model model, final HttpServletRequest request) {
+    protected String doHandleAttributeTestTesting(final Model model, final HttpServletRequest request) {
         final Paragraph paragraph = getWrapper(request).getParagraph();
         final AttributeTestCommand testCommand = (AttributeTestCommand) paragraph.getData().getCommands().get(0);
 
-        final String testResult = super.handleAttributeTestTesting(model, request);
+        final String testResult = super.doHandleAttributeTestTesting(model, request);
 
         if ("333a".equals(paragraph.getId())) {
             final int result = testCommand.getResult();

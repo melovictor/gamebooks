@@ -41,7 +41,7 @@ public class GenericBookTakeItemController extends AbstractRequestWrappingContro
      */
     @RequestMapping(value = PageAddresses.BOOK_TAKE_ITEM, method = RequestMethod.POST)
     @ResponseBody
-    public int handleItemTake(final HttpServletRequest request, final TakeItemData data) {
+    public final int handleItemTake(final HttpServletRequest request, final TakeItemData data) {
         Assert.notNull(data.getItemId(), "The parameter 'itemId' cannot be null!");
         Assert.isTrue(data.getItemId().length() > 0, "The parameter 'itemId' cannot be empty!");
         Assert.isTrue(data.getAmount() > 0, "The parameter 'amount' must be positive!");
@@ -151,7 +151,7 @@ public class GenericBookTakeItemController extends AbstractRequestWrappingContro
      */
     @RequestMapping(value = "drop/{itemId}", method = RequestMethod.POST)
     @ResponseBody
-    public void dropItem(final HttpServletRequest request, @PathVariable("itemId") final String itemId) {
+    public final void dropItem(final HttpServletRequest request, @PathVariable("itemId") final String itemId) {
         final CharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
         final Character character = getWrapper(request).getCharacter();
         final Item item = itemHandler.getItem(character, itemId);

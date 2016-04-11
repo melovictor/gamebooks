@@ -98,7 +98,8 @@ public class RawBookNewGameController extends AbstractNewGameController implemen
      * @return the redirection command
      */
     @RequestMapping(value = PageAddresses.BOOK_NEW + "-{randomInit}")
-    public String handleNewWithRandomInit(final HttpServletRequest request, final Model model, final Locale locale, @PathVariable("randomInit") final String randomInit) {
+    public final String handleNewWithRandomInit(final HttpServletRequest request, final Model model, final Locale locale,
+        @PathVariable("randomInit") final String randomInit) {
         final String[] delimitedListToStringArray = StringUtils.delimitedListToStringArray(randomInit, ",");
         final List<Integer> intValues = new ArrayList<>();
         for (final String value : delimitedListToStringArray) {

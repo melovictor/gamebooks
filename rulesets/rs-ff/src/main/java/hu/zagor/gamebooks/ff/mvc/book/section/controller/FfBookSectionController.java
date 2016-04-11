@@ -40,7 +40,17 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
      * @return the book page's name
      */
     @RequestMapping(value = PageAddresses.ATTRIBUTE_TEST_TESTING)
-    public String handleAttributeTestTesting(final Model model, final HttpServletRequest request) {
+    public final String handleAttributeTestTesting(final Model model, final HttpServletRequest request) {
+        return doHandleAttributeTestTesting(model, request);
+    }
+
+    /**
+     * Handler for actually executing the attribute test.
+     * @param model the data model
+     * @param request the request
+     * @return the book page's name
+     */
+    protected String doHandleAttributeTestTesting(final Model model, final HttpServletRequest request) {
         getInfo().getCharacterHandler().getInteractionHandler().setAttributeTestResult((FfCharacter) getWrapper(request).getCharacter(), AttributeTestDecision.TEST);
         return super.handleSection(model, request, null);
     }
@@ -52,7 +62,7 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
      * @return the book page's name
      */
     @RequestMapping(value = PageAddresses.ATTRIBUTE_TEST_SKIPPING)
-    public String handleAttributeTestSkipping(final Model model, final HttpServletRequest request) {
+    public final String handleAttributeTestSkipping(final Model model, final HttpServletRequest request) {
         getInfo().getCharacterHandler().getInteractionHandler().setAttributeTestResult((FfCharacter) getWrapper(request).getCharacter(), AttributeTestDecision.SKIP);
         return super.handleSection(model, request, null);
     }
@@ -68,8 +78,8 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
      * @return the book page's name
      */
     @RequestMapping(value = PageAddresses.FIGHT)
-    public String handleFight(final Model model, final HttpServletRequest request, @RequestParam("id") final String enemyId, @RequestParam("hit") final Boolean luckOnHit,
-        @RequestParam("def") final Boolean luckOnDefense, @RequestParam("oth") final Boolean luckOnOther) {
+    public final String handleFight(final Model model, final HttpServletRequest request, @RequestParam("id") final String enemyId,
+        @RequestParam("hit") final Boolean luckOnHit, @RequestParam("def") final Boolean luckOnDefense, @RequestParam("oth") final Boolean luckOnOther) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         handleBeforeFight(wrapper, enemyId);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
@@ -116,7 +126,7 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
      * @return the book page's name
      */
     @RequestMapping(value = PageAddresses.FLEE)
-    public String handleFlee(final Model model, final HttpServletRequest request) {
+    public final String handleFlee(final Model model, final HttpServletRequest request) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
 
@@ -132,7 +142,7 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
      * @return the book page's name
      */
     @RequestMapping(value = PageAddresses.BOOK_MARKET_CLOSE)
-    public String handleMarketClose(final Model model, final HttpServletRequest request) {
+    public final String handleMarketClose(final Model model, final HttpServletRequest request) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
 
@@ -163,7 +173,7 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
      * @return the book page's name
      */
     @RequestMapping(value = PageAddresses.PRE_FIGHT_ITEM_USAGE)
-    public String preFightHandler(final Model model, final HttpServletRequest request, @RequestParam("id") final String itemId,
+    public final String preFightHandler(final Model model, final HttpServletRequest request, @RequestParam("id") final String itemId,
         @RequestParam("enemyId") final String enemyId) {
         final FfBookInformations info = getInfo();
         final HttpSessionWrapper wrapper = getWrapper(request);

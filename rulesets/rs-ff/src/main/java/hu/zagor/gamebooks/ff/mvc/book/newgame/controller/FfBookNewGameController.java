@@ -81,7 +81,16 @@ public class FfBookNewGameController extends RawBookNewGameController {
      */
     @RequestMapping(value = PageAddresses.BOOK_NEW + "/" + PageAddresses.BOOK_GENERATE_CHARACTER, produces = "application/json")
     @ResponseBody
-    public Map<String, Object> generateCharacter(final HttpServletRequest request) {
+    public final Map<String, Object> generateCharacter(final HttpServletRequest request) {
+        return doGenerateCharacter(request);
+    }
+
+    /**
+     * Handles the actual generation of the new character.
+     * @param request the {@link HttpServletRequest} object
+     * @return the compiled object
+     */
+    protected Map<String, Object> doGenerateCharacter(final HttpServletRequest request) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
         final CharacterGenerator characterGenerator = getInfo().getCharacterHandler().getCharacterGenerator();
@@ -100,7 +109,7 @@ public class FfBookNewGameController extends RawBookNewGameController {
      */
     @RequestMapping(value = PageAddresses.BOOK_NEW + "/distributeRewarPoints", produces = "application/json")
     @ResponseBody
-    public Map<String, Object> distributeRewardPoints(final HttpServletRequest request, @RequestParam final Map<String, String> rewardDistribution) {
+    public final Map<String, Object> distributeRewardPoints(final HttpServletRequest request, @RequestParam final Map<String, String> rewardDistribution) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final PlayerUser player = wrapper.getPlayer();
         if (validDistribution(player, rewardDistribution)) {

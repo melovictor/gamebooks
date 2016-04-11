@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 public class SorBookNewGameController extends FfBookNewGameController {
     @Override
-    public Map<String, Object> generateCharacter(final HttpServletRequest request) {
-        final Map<String, Object> results = super.generateCharacter(request);
+    protected Map<String, Object> doGenerateCharacter(final HttpServletRequest request) {
+        final Map<String, Object> results = super.doGenerateCharacter(request);
         final SorCharacter character = (SorCharacter) getWrapper(request).getCharacter();
         if (character.isWizard()) {
             getInfo().getCharacterHandler().getItemHandler().addItem(character, "4102", 1);
@@ -38,7 +38,7 @@ public class SorBookNewGameController extends FfBookNewGameController {
      * @throws IOException if an input or output exception occurs
      */
     @RequestMapping("spellJump-{section}")
-    public void handleSpellJumpThroughBooks(final HttpServletRequest request, final HttpServletResponse response, final Model model,
+    public final void handleSpellJumpThroughBooks(final HttpServletRequest request, final HttpServletResponse response, final Model model,
         @PathVariable("section") final int sectionId) throws IOException {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final Character character = wrapper.getCharacter();

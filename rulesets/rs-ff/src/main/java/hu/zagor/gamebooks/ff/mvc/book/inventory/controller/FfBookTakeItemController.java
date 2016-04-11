@@ -42,7 +42,7 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
      */
     @RequestMapping(value = PageAddresses.BOOK_PURCHASE_ITEM, consumes = "application/json", method = RequestMethod.POST)
     @ResponseBody
-    public int handleItemTake(final HttpServletRequest request, @RequestBody final TakePurchaseItemData data) {
+    public final int handleItemTake(final HttpServletRequest request, @RequestBody final TakePurchaseItemData data) {
         final FfCharacter character = (FfCharacter) getWrapper(request).getCharacter();
         int takeItemResult;
         if (data.getPrice() > 0 && character.getGold() < data.getPrice()) {
@@ -125,7 +125,7 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
      */
     @RequestMapping(value = PageAddresses.BOOK_CONSUME_ITEM + "/{id}")
     @ResponseBody
-    public String handleConsumeItem(final HttpServletRequest request, @PathVariable("id") final String itemId) {
+    public final String handleConsumeItem(final HttpServletRequest request, @PathVariable("id") final String itemId) {
         Assert.notNull(itemId, "The parameter 'itemId' cannot be null!");
         Assert.isTrue(itemId.length() > 0, "The parameter 'itemId' cannot be empty!");
 
