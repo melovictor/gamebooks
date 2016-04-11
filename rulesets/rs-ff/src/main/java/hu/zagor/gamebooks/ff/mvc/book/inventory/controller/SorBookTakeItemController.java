@@ -52,7 +52,14 @@ public class SorBookTakeItemController extends FfBookTakeItemController {
         final SorParagraphData data = (SorParagraphData) getWrapper(request).getParagraph().getData();
         data.setCanEat(false);
         character.setLastEatenBonus(item.getStamina());
+        if (hasShakingDisease(characterObject)) {
+            item.setStamina(0);
+        }
         super.consumeSelectedItem(character, item);
+    }
+
+    private boolean hasShakingDisease(final FfCharacter character) {
+        return getInfo().getCharacterHandler().getItemHandler().hasItem(character, "5008");
     }
 
     private void removeRandomSickness(final SorCharacter character) {
@@ -118,13 +125,15 @@ public class SorBookTakeItemController extends FfBookTakeItemController {
     @Override
     protected boolean itemConsumptionAllowed(final Paragraph paragraph, final FfItem item) {
         final SorCharacter character = (SorCharacter) getWrapper(request).getCharacter();
-        final boolean isBomba = BOMBA_ID.equals(item.getId());
+        final String itemId = item.getId();
+        final boolean isBomba = BOMBA_ID.equals(itemId);
         final boolean isBombaAfterEating = isBomba && character.getLastEatenBonus() > 0;
         if (isBombaAfterEating) {
             item.setStamina(character.getLastEatenBonus());
         }
-        final boolean isLuckCookie = LUCK_COOKIE_ID.equals(item.getId());
-        return (super.itemConsumptionAllowed(paragraph, item) && !isBomba) || isBombaAfterEating || isLuckCookie;
+        final boolean isLuckCookie = LUCK_COOKIE_ID.equals(itemId);
+        final boolean isHealingFruit = "2006".equals(itemId);
+        return (super.itemConsumptionAllowed(paragraph, item) && !isBomba) || isBombaAfterEating || isLuckCookie || isHealingFruit;
     }
 
     @Override
