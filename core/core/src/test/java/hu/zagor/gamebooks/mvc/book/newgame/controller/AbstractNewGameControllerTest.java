@@ -1,9 +1,9 @@
 package hu.zagor.gamebooks.mvc.book.newgame.controller;
 
 import hu.zagor.gamebooks.character.Character;
-
+import hu.zagor.gamebooks.character.handler.CharacterHandler;
+import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import java.util.Locale;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -35,6 +35,10 @@ public class AbstractNewGameControllerTest {
         @Override
         public Character getCharacter(final Locale locale) {
             return null;
+        }
+
+        @Override
+        protected void setUpCharacterHandler(final HttpSessionWrapper wrapper, final CharacterHandler characterHandler) {
         }
 
     }

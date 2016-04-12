@@ -109,13 +109,8 @@ public class RawBookNewGameController extends AbstractNewGameController implemen
         return handleNew(request, model, locale);
     }
 
-    /**
-     * Method for setting up the {@link CharacterHandler} bean for the current run.
-     * @param wrapper the {@link HttpSessionWrapper} object
-     * @param characterHandler the {@link CharacterHandler} to set up
-     */
+    @Override
     protected void setUpCharacterHandler(final HttpSessionWrapper wrapper, final CharacterHandler characterHandler) {
-        wrapper.getClass();
         final DefaultItemFactory itemFactory = (DefaultItemFactory) getBeanFactory().getBean("defaultItemFactory", getInfo());
         characterHandler.getItemHandler().setItemFactory(itemFactory);
     }

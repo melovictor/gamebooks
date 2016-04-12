@@ -26,7 +26,7 @@ public class ItemCheckTotalItemsCommandResolver implements ItemCheckStubCommandR
         return toResolve;
     }
 
-    private int countActualItems(final List<Item> equipment) {
+    int countActualItems(final List<Item> equipment) {
         int count = 0;
 
         for (final Item item : equipment) {
