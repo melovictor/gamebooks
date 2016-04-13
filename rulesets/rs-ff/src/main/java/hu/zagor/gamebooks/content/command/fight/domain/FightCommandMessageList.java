@@ -1,14 +1,12 @@
 package hu.zagor.gamebooks.content.command.fight.domain;
 
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Locale;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.HierarchicalMessageSource;
 import org.springframework.context.annotation.Scope;
@@ -33,10 +31,8 @@ public class FightCommandMessageList implements List<String> {
 
     private List<String> selectedMessages;
 
-    @Autowired
-    private LocaleProvider localeProvider;
-    @Autowired
-    private HierarchicalMessageSource messageSource;
+    @Autowired private LocaleProvider localeProvider;
+    @Autowired private HierarchicalMessageSource messageSource;
 
     /**
      * Creates a new {@link FightCommandMessageList} object, defaulting on the round messages.
@@ -58,7 +54,7 @@ public class FightCommandMessageList implements List<String> {
      * @param key the message key
      * @param args the arguments
      */
-    public void setRoundMessage(final String key, final Object[] args) {
+    public void setRoundMessage(final String key, final Object... args) {
         Assert.state(localeProvider != null, "A locale provider has to be specified for text key resolvation.");
         Assert.state(messageSource != null, "A message source has to be specified for text key resolvation.");
         final Locale locale = localeProvider.getLocale();
@@ -71,7 +67,7 @@ public class FightCommandMessageList implements List<String> {
      * @param roundNumber the number of the current round
      */
     public void setRoundMessage(final int roundNumber) {
-        setRoundMessage("page.ff.label.fight.round", new Object[]{roundNumber});
+        setRoundMessage("page.ff.label.fight.round", roundNumber);
     }
 
     /**
@@ -145,15 +141,8 @@ public class FightCommandMessageList implements List<String> {
 
     @Override
     public boolean add(final String e) {
-        ensureIndexCorrectness();
-        selectedMessages.add(index, e);
+        selectedMessages.add(index++, e);
         return true;
-    }
-
-    private void ensureIndexCorrectness() {
-        if (index > selectedMessages.size()) {
-            index = selectedMessages.size();
-        }
     }
 
     /**
@@ -177,7 +166,6 @@ public class FightCommandMessageList implements List<String> {
         Assert.state(localeProvider != null, "A locale provider has to be specified for text key resolvation.");
         Assert.state(messageSource != null, "A message source has to be specified for text key resolvation.");
         final Locale locale = localeProvider.getLocale();
-        ensureIndexCorrectness();
         selectedMessages.add(index++, messageSource.getMessage(key, args, locale));
         return true;
     }
@@ -219,6 +207,7 @@ public class FightCommandMessageList implements List<String> {
         postRoundMessages.clear();
         roundMessages.clear();
         roundMessage = null;
+        switchToRoundMessages();
     }
 
     @Override
@@ -234,6 +223,7 @@ public class FightCommandMessageList implements List<String> {
     @Override
     public void add(final int index, final String element) {
         selectedMessages.add(index, element);
+        this.index++;
     }
 
     @Override
