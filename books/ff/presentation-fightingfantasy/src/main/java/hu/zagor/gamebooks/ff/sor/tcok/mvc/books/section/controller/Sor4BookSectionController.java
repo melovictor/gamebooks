@@ -95,12 +95,12 @@ public class Sor4BookSectionController extends SorBookSectionController {
         final SorCharacter reloadedCharacter = reloadCharacter(currentCharacter, targetSection, "2-1", "2-254", "3-1", "3-48", "4-1");
 
         final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
+        if (itemHandler.hasItem(currentCharacter, "4098")) {
+            itemHandler.addItem(reloadedCharacter, "4098", 1);
+        }
         if (bookNumber == CURRENT_BOOK) {
             if (currentCharacter.getParagraphs().contains("334")) {
                 itemHandler.removeItem(reloadedCharacter, "3084", 1);
-            }
-            if (itemHandler.hasItem(currentCharacter, "4098")) {
-                itemHandler.addItem(reloadedCharacter, "4098", 1);
             }
             wrapper.setCharacter(reloadedCharacter);
             enableJumpToSection(wrapper.getParagraph(), sectionNumber);
