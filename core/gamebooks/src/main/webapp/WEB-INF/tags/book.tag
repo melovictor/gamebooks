@@ -1,12 +1,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://zagor.hu/utilfunctions" prefix="util" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@tag body-content="empty" language="java" pageEncoding="UTF-8"%>
 <%@attribute name="item" required="true" type="hu.zagor.gamebooks.mvc.bookselection.domain.BookData" %>
 
 <div class="bookItem">
-	<util:urlEncode value="${item.series}" var="itemSeries" />
-	<util:urlEncode value="${item.title}" var="itemTitle" />
 	<c:url value="book/${item.id}/welcome" var="bookUrl" />
 	<c:url value="book/${item.id}/${item.coverPath}" var="coverUrl" />
 
