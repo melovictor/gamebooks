@@ -15,7 +15,7 @@ public class MainBookProject {
     public void create() {
         final List<BookLangData> books = new ArrayList<>();
 
-        books.add(getSotkHu(true));
+        books.add(getSotkHu(false));
         books.add(getSotkEn(true));
         books.add(getSotkPtBr(false));
 
@@ -26,19 +26,19 @@ public class MainBookProject {
 
     private BookBaseData getBaseData() {
 
-        baseData.setSeriesCode("sor"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm
-        baseData.setTitleCode("tcok");
-        baseData.setPosition(4);
-        baseData.setCollectorCode("ff"); // ff, cyoa, z, fyf, eq, tm
-        baseData.setCollectorName("fightingfantasy"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine
-        baseData.setRuleset("ff"); // raw, tm, ff
-        baseData.setHasEnemies(true);
-        baseData.setHasInventory(true);
-        baseData.setHasItems(true);
-        baseData.setHasMap(true);
+        baseData.setSeriesCode("gyg"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm
+        baseData.setTitleCode("tcotcc");
+        baseData.setPosition(8);
+        baseData.setCollectorCode("gyg"); // ff, cyoa, z, fyf, gyg, eq, tm
+        baseData.setCollectorName("giveyourselfgoosebumps"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine
+        baseData.setRuleset("raw"); // raw, tm, ff
+        baseData.setHasEnemies(false);
+        baseData.setHasInventory(false);
+        baseData.setHasItems(false);
+        baseData.setHasMap(false);
         baseData.setMediaProject(true);
-        baseData.setDefaultSkillTestType("Le"); // Le: lower or equal; L: lower; if neither, should be empty!
-        baseData.setCharPageRequired(true);
+        baseData.setDefaultSkillTestType(""); // Le: lower or equal; L: lower; if neither, should be empty!
+        baseData.setCharPageRequired(false);
 
         return baseData;
     }
@@ -69,10 +69,10 @@ public class MainBookProject {
 
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
-        data.setHidden(true);
-        data.setBookId("Sorcery.THE_CROWN_OF_KINGS");
+        data.setHidden(false);
+        data.setBookId("GiveYourselfGoosebumps.THE_CURSE_OF_THE_CREEPING_COFFIN");
         data.setLang("en");
-        data.setTitle("The Crown of Kings");
+        data.setTitle("The Curse of the Creeping Coffin");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;

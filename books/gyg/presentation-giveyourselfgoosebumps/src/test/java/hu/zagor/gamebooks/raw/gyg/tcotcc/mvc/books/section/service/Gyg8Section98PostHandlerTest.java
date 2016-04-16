@@ -1,4 +1,4 @@
-package hu.zagor.gamebooks.raw.gyg.ttyd.mvc.books.section.service;
+package hu.zagor.gamebooks.raw.gyg.tcotcc.mvc.books.section.service;
 
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.content.Paragraph;
@@ -16,39 +16,39 @@ import org.springframework.beans.factory.BeanFactory;
 import org.testng.annotations.Test;
 
 /**
- * Unit test for class {@link Gyg2Section15PostHandler}.
+ * Unit test for class {@link Gyg8Section98PostHandler}.
  * @author Tamas_Szekeres
  */
 @Test
-public class Gyg2Section15PostHandlerTest {
+public class Gyg8Section98PostHandlerTest {
 
     @MockControl private IMocksControl mockControl;
-    @UnderTest private Gyg2Section15PostHandler underTest;
+    @UnderTest private Gyg8Section98PostHandler underTest;
     @Inject private BeanFactory beanFactory;
     @Mock private HttpSessionWrapper wrapper;
-    private final DateTime evenDayDateTime = new DateTime(2000, 1, 10, 0, 0);
-    private final DateTime oddDayDateTime = new DateTime(2000, 1, 13, 0, 0);
+    private final DateTime fridayDateTime = new DateTime(2016, 4, 15, 0, 0);
+    private final DateTime nonFridayDateTime = new DateTime(2016, 4, 13, 0, 0);
     @Mock private Paragraph paragraph;
     @Mock private ParagraphData data;
     @Mock private ChoiceSet choices;
     @Mock private Choice choice;
 
-    public void testHandleWhenEvenDayShouldRemoveZeroPosChoice() {
+    public void testHandleWhenDayIsFridayShouldRemoveSecondChoice() {
         // GIVEN
-        expect(beanFactory.getBean("gygCurrentDateTime", DateTime.class)).andReturn(evenDayDateTime);
+        expect(beanFactory.getBean("gygCurrentDateTime", DateTime.class)).andReturn(fridayDateTime);
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(data);
         expect(data.getChoices()).andReturn(choices);
-        expect(choices.removeByPosition(0)).andReturn(choice);
+        expect(choices.removeByPosition(2)).andReturn(choice);
         mockControl.replay();
         // WHEN
         underTest.handle(null, wrapper, null, true);
         // THEN
     }
 
-    public void testHandleWhenOddDayShouldRemoveOnePosChoice() {
+    public void testHandleWhenDayIsNotFridayShouldRemoveFirstChoice() {
         // GIVEN
-        expect(beanFactory.getBean("gygCurrentDateTime", DateTime.class)).andReturn(oddDayDateTime);
+        expect(beanFactory.getBean("gygCurrentDateTime", DateTime.class)).andReturn(nonFridayDateTime);
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(data);
         expect(data.getChoices()).andReturn(choices);

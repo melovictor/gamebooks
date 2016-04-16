@@ -13,16 +13,4 @@
     </property>
   </bean>
 
-  <bean class="org.joda.time.DateTime" id="gyg2CurrentDateTime" scope="prototype">
-    <constructor-arg>
-      <bean class="org.joda.time.DateTimeZone" factory-method="forTimeZone">
-        <constructor-arg>
-          <bean class="java.util.TimeZone" factory-method="getTimeZone">
-            <constructor-arg value="Europe/Budapest" />
-          </bean>
-        </constructor-arg>
-      </bean>
-    </constructor-arg>
-  </bean>
-
 </beans>
