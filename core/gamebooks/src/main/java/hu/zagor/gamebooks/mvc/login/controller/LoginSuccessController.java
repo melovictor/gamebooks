@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Tamas_Szekeres
  */
 @Controller
-public final class LoginSuccessController {
+public class LoginSuccessController {
 
     private static final int USER_SESSION_TTL = 4 * 60 * 60;
 

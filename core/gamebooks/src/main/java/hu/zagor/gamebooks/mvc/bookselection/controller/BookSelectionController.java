@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Tamas_Szekeres
  */
 @Controller
-public final class BookSelectionController extends LanguageAwareController {
+public class BookSelectionController extends LanguageAwareController {
 
     @Autowired private BookListFacade bookListFacade;
     @LogInject private Logger logger;

@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author Tamas_Szekeres
  */
 @Controller
-public final class RulesController extends LanguageAwareController {
+public class RulesController extends LanguageAwareController {
 
     @LogInject private Logger logger;
     @Autowired private LocaleProvider localeProvider;

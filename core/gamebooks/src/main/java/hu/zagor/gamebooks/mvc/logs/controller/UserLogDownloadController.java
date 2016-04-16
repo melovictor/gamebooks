@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @PreAuthorize("hasAuthority('ADMIN')")
-public final class UserLogDownloadController extends AbstractRequestWrappingController {
+public class UserLogDownloadController extends AbstractRequestWrappingController {
     @Autowired private DirectoryProvider directoryProvider;
 
     /**

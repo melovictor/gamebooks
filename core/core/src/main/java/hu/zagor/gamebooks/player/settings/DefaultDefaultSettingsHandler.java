@@ -2,13 +2,10 @@ package hu.zagor.gamebooks.player.settings;
 
 import hu.zagor.gamebooks.mvc.settings.domain.SettingGroup;
 import hu.zagor.gamebooks.mvc.settings.service.SettingDefaultValueExtractor;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.SortedSet;
-
 import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,12 +16,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class DefaultDefaultSettingsHandler implements DefaultSettingsHandler {
 
-    @Autowired
-    private SettingGroup[] settingGroups;
-    @Resource(name = "orderedSettingSet")
-    private SortedSet<SettingGroup> orderedSettingGroup;
-    @Autowired
-    private SettingDefaultValueExtractor defaultValueExtractor;
+    @Autowired private SettingGroup[] settingGroups;
+    @Resource(name = "orderedSettingSet") private SortedSet<SettingGroup> orderedSettingGroup;
+    @Autowired private SettingDefaultValueExtractor defaultValueExtractor;
 
     private final Map<String, String> defaultSettings = new HashMap<>();
 

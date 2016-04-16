@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Tamas_Szekeres
  */
 @Controller
-public final class BasicController {
+public class BasicController {
 
     /**
      * Redirects the user from the welcome screen to login.

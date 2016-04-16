@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author Tamas_Szekeres
  */
 @Controller
-public final class GenericBookInventoryController extends AbstractRequestWrappingController {
+public class GenericBookInventoryController extends AbstractRequestWrappingController {
 
     @Autowired @Qualifier("rawSectionHandlingService") private SectionHandlingService sectionHandlingService;
     @Resource(name = "inventoryControllerMap") private Map<Long, String> inventoryControllerIdBeanNameMap;
