@@ -6,7 +6,7 @@ package hu.zagor.gamebooks.support.bookids.english;
  */
 public final class Warlock {
 
-    public static final long BASE = Series.WARLOCK;
+    private static final long BASE = Series.WARLOCK;
 
     public static final String TITLE = "Warlock";
 

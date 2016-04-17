@@ -6,7 +6,7 @@ package hu.zagor.gamebooks.support.bookids.english;
  */
 public final class Proteus {
 
-    public static final long BASE = Series.PROTEUS;
+    private static final long BASE = Series.PROTEUS;
 
     public static final String TITLE = "Proteus";
 

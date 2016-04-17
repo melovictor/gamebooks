@@ -8,4 +8,6 @@ public class FindYourFateJem {
 
     public static final long JEWELS_IN_THE_DARK = BASE + 1;
 
+    public static final long THE_SECRET_OF_RAINBOX_ISLAND = BASE + 3;
+
 }

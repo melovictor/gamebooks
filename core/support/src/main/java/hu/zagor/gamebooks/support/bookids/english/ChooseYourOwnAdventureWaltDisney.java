@@ -6,7 +6,7 @@ package hu.zagor.gamebooks.support.bookids.english;
  */
 public final class ChooseYourOwnAdventureWaltDisney {
 
-    public static final long BASE = Series.CHOOSE_YOUR_OWN_ADVENTURE_WALT_DISNEY;
+    private static final long BASE = Series.CHOOSE_YOUR_OWN_ADVENTURE_WALT_DISNEY;
 
     public static final String TITLE = "Choose Your Own Adventure – Walt Disney";
 

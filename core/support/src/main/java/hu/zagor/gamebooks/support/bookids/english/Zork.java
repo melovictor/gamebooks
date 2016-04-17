@@ -1,7 +1,7 @@
 package hu.zagor.gamebooks.support.bookids.english;
 
 public final class Zork {
-    public static final long BASE = Series.ZORK;
+    private static final long BASE = Series.ZORK;
 
     public static final String TITLE = "Zork";
 
