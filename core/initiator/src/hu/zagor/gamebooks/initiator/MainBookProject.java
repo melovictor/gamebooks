@@ -26,11 +26,11 @@ public class MainBookProject {
 
     private BookBaseData getBaseData() {
 
-        baseData.setSeriesCode("gyg"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm
-        baseData.setTitleCode("tcotcc");
-        baseData.setPosition(8);
-        baseData.setCollectorCode("gyg"); // ff, cyoa, z, fyf, gyg, eq, tm
-        baseData.setCollectorName("giveyourselfgoosebumps"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine
+        baseData.setSeriesCode("cyoa"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm
+        baseData.setTitleCode("tljon");
+        baseData.setPosition(10);
+        baseData.setCollectorCode("cyoa"); // ff, cyoa, z, fyf, gyg, eq, tm
+        baseData.setCollectorName("chooseyourownadventure"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine
         baseData.setRuleset("raw"); // raw, tm, ff
         baseData.setHasEnemies(false);
         baseData.setHasInventory(false);
@@ -70,9 +70,9 @@ public class MainBookProject {
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setHidden(false);
-        data.setBookId("GiveYourselfGoosebumps.THE_CURSE_OF_THE_CREEPING_COFFIN");
+        data.setBookId("ChooseYourOwnAdventure.THE_LOST_JEWELS_OF_NABOOTI");
         data.setLang("en");
-        data.setTitle("The Curse of the Creeping Coffin");
+        data.setTitle("The Lost Jewels of Nabooti");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;
