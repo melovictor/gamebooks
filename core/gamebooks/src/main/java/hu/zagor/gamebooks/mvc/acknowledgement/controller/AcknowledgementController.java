@@ -1,7 +1,8 @@
 package hu.zagor.gamebooks.mvc.acknowledgement.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
-import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AcknowledgementController {
 
-    @Resource(name = "helpers") private Collection<String> users;
+    @Resource(name = "acknowledgementPeople") private Map<String, List<String>> acknowledgementPeople;
 
     /**
      * Displays the acknowledgement page.
@@ -23,7 +24,7 @@ public class AcknowledgementController {
      */
     @RequestMapping(PageAddresses.ACKNOWLEDGEMENT)
     public String display(final Model model) {
-        model.addAttribute("users", users);
+        model.addAttribute("users", acknowledgementPeople);
         return "acknowledgement";
     }
 

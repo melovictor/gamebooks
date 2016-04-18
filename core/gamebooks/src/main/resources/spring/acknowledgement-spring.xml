@@ -2,34 +2,50 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
-  <util:list id="helpers" value-type="java.lang.String">
-    <value>Acéltestvér</value>
-    <value>Anry</value>
-    <value>árnyfarkas</value>
+  <util:map id="acknowledgementPeople" key-type="java.lang.String" value-type="java.lang.List">
+    <entry key="design">
+      <util:list value-type="java.lang.String">
+        <value>NEOX</value>
+        <value>runner</value>
+      </util:list>
+    </entry>
+    <entry key="hosting">
+      <util:list value-type="java.lang.String">
+        <value>cheoppy</value>
+      </util:list>
+    </entry>
+    <entry key="dev">
+      <util:list value-type="java.lang.String">
+        <value>FireFoX</value>
+      </util:list>
+    </entry>
+    <entry key="translator">
+      <util:list value-type="java.lang.String">
+        <value>Jester</value>
+        <value>vdom</value>
+      </util:list>
+    </entry>
+    <entry key="content">
+      <util:list value-type="java.lang.String">
+        <value>runner</value>
+      </util:list>
+    </entry>
+    <entry key="playtest">
+      <util:list value-type="java.lang.String">
+        <value>Acéltestvér</value>
+        <value>Anry</value>
+        <value>árnyfarkas</value>
+        <value>Cyborg 17</value>
+        <value>Droviat</value>
+        <value>Ekrator</value>
+        <value>etheleazostor</value>
+        <value>Jégvarázsló</value>
+        <value>Laca11</value>
+        <value>twillight</value>
+      </util:list>
+    </entry>
 
-    <value>cheoppy</value>
-    <value>Cyborg 17</value>
-
-    <value>Droviat</value>
-
-    <value>Ekrator</value>
-    <value>etheleazostor</value>
-
-    <value>FireFoX</value>
-
-    <value>Jégvarázsló</value>
-
-    <value>Laca11</value>
-
-    <value>NEOX</value>
-
-    <value>runner</value>
-
-    <value>twillight</value>
-
-    <value>vdom</value>
- 
-  </util:list>
+  </util:map>
 
 </beans>
 
