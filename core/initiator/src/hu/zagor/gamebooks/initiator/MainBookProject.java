@@ -15,8 +15,8 @@ public class MainBookProject {
     public void create() {
         final List<BookLangData> books = new ArrayList<>();
 
-        books.add(getSotkHu(false));
         books.add(getSotkEn(true));
+        books.add(getSotkHu(true));
         books.add(getSotkPtBr(false));
 
         new GenerateBookProjectFiles().generateBookProjectFiles(getBaseData(), books);
@@ -26,19 +26,19 @@ public class MainBookProject {
 
     private BookBaseData getBaseData() {
 
-        baseData.setSeriesCode("cyoa"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm
-        baseData.setTitleCode("tljon");
-        baseData.setPosition(10);
-        baseData.setCollectorCode("cyoa"); // ff, cyoa, z, fyf, gyg, eq, tm
-        baseData.setCollectorName("chooseyourownadventure"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine
-        baseData.setRuleset("raw"); // raw, tm, ff
-        baseData.setHasEnemies(false);
-        baseData.setHasInventory(false);
-        baseData.setHasItems(false);
-        baseData.setHasMap(false);
+        baseData.setSeriesCode("ff"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm
+        baseData.setTitleCode("b");
+        baseData.setPosition(60);
+        baseData.setCollectorCode("ff"); // ff, cyoa, z, fyf, gyg, eq, tm
+        baseData.setCollectorName("fightingfantasy"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine
+        baseData.setRuleset("ff"); // raw, tm, ff
+        baseData.setHasEnemies(true);
+        baseData.setHasInventory(true);
+        baseData.setHasItems(true);
+        baseData.setHasMap(true);
         baseData.setMediaProject(true);
-        baseData.setDefaultSkillTestType(""); // Le: lower or equal; L: lower; if neither, should be empty!
-        baseData.setCharPageRequired(false);
+        baseData.setDefaultSkillTestType("Le"); // Le: lower or equal; L: lower; if neither, should be empty!
+        baseData.setCharPageRequired(true);
 
         return baseData;
     }
@@ -57,11 +57,11 @@ public class MainBookProject {
 
     private BookLangData getSotkHu(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
-        data.setSeriesCode("kjv");
+        data.setSeriesCode("kjkz");
         data.setPosition(4);
-        data.setBookId("KalandJatekVarazslat.A_KIRALYOK_KORONAJA");
+        data.setBookId("KalandJatekKockazatZagor.VERESCSONT");
         data.setLang("hu");
-        data.setTitle("A Királyok Koronája");
+        data.setTitle("Vérescsont");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;
@@ -69,10 +69,10 @@ public class MainBookProject {
 
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
-        data.setHidden(false);
-        data.setBookId("ChooseYourOwnAdventure.THE_LOST_JEWELS_OF_NABOOTI");
+        data.setHidden(true);
+        data.setBookId("FightingFantasy.BLOODBONES");
         data.setLang("en");
-        data.setTitle("The Lost Jewels of Nabooti");
+        data.setTitle("Bloodbones");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;
