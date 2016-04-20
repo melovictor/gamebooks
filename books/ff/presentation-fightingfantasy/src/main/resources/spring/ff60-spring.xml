@@ -13,4 +13,20 @@
     </property>
   </bean>
 
+  <bean class="hu.zagor.gamebooks.content.command.fight.roundresolver.SingleFf60FightRoundResolver" id="singleff60FightRoundResolver">
+    <property name="ogreRandomCommand">
+      <bean class="hu.zagor.gamebooks.content.command.random.RandomCommand" id="ogreRandomCommand" p:diceConfig="dice1d6">
+        <property name="results">
+          <util:list>
+            <bean class="hu.zagor.gamebooks.content.command.random.RandomResult" p:min="6" p:max="6">
+              <property name="paragraphData">
+                <bean class="hu.zagor.gamebooks.content.FfParagraphData" />
+              </property>
+            </bean>
+          </util:list>
+        </property>
+      </bean>
+    </property>
+  </bean>
+
 </beans>

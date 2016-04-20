@@ -171,8 +171,10 @@ public class ParagraphData extends EscapingData implements TrueCloneable, BeanFa
     public ParagraphData clone() throws CloneNotSupportedException {
         final ParagraphData cloned = (ParagraphData) super.clone();
         cloned.choices = beanFactory.getBean(ChoiceSet.class);
-        for (final Choice choice : choices) {
-            cloned.addChoice(choice.clone());
+        if (choices != null) {
+            for (final Choice choice : choices) {
+                cloned.addChoice(choice.clone());
+            }
         }
         cloned.commands = new CommandList();
         for (final Command command : commands) {

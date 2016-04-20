@@ -3,12 +3,10 @@ package hu.zagor.gamebooks.content.command.random;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.CommandView;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -125,6 +123,10 @@ public class RandomCommand extends Command {
 
     public void setAfter(final ParagraphData after) {
         this.after = after;
+    }
+
+    public void setResults(final List<RandomResult> results) {
+        this.results = results;
     }
 
 }
