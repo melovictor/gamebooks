@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.character;
 import hu.zagor.gamebooks.character.domain.Note;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.command.CommandView;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +18,7 @@ public class Character implements Serializable {
     private final List<String> paragraphs;
     private final List<Item> equipment;
     private final List<Item> hiddenEquipment;
+    private final List<String> codeWords;
     private int backpackSize;
 
     private final Map<String, String> userInteraction;
@@ -33,6 +33,7 @@ public class Character implements Serializable {
         equipment = new ArrayList<>();
         userInteraction = new HashMap<>();
         hiddenEquipment = new ArrayList<>();
+        codeWords = new ArrayList<>();
         notes = new Note();
     }
 
@@ -81,6 +82,10 @@ public class Character implements Serializable {
 
     public void setBackpackSize(final int backpackSize) {
         this.backpackSize = backpackSize;
+    }
+
+    public List<String> getCodeWords() {
+        return codeWords;
     }
 
 }

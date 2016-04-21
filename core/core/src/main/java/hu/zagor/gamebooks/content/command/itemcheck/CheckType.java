@@ -17,6 +17,7 @@ public enum CheckType {
     goldpiece,
     value,
     pos,
+    codeword,
 
     faith,
     wisdom,

@@ -81,12 +81,14 @@
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckItemsCommandResolver" id="itemCheckItemsCommandResolver" />
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckSectionCommandResolver" id="itemCheckSectionCommandResolver" />
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckTotalItemsCommandResolver" id="itemCheckTotalItemsCommandResolver" />
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCodewordCommandResolver" id="itemCheckCodewordCommandResolver" />
 
   <util:map id="itemCheckStubCommands" key-type="hu.zagor.gamebooks.content.command.itemcheck.CheckType" value-type="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckStubCommand">
     <entry key="section" value-ref="itemCheckSectionCommandResolver" />
     <entry key="item" value-ref="itemCheckItemCommandResolver" />
     <entry key="items" value-ref="itemCheckItemsCommandResolver" />
     <entry key="totalItems" value-ref="itemCheckTotalItemsCommandResolver" />
+    <entry key="codeword" value-ref="itemCheckCodewordCommandResolver" />
   </util:map>
 
   <bean abstract="true" id="abstractBookParagraphDataTransformer">
