@@ -126,6 +126,7 @@
         [p]Hány Aranytallért ajánlasz fel?[/p]
     </text>
     <userInput type="number" min="1" max="23">
+      <label>Hány Aranytallért ajánlasz fel adományként?</label>
       <result minBound="1" maxBound="1">
         <add amount="-1" to="gold" />
       </result>
@@ -247,7 +248,9 @@
   <!-- 48 -->
   <!-- 49 -->
   <!-- 50 -->
-  <!-- 51 -->
+  <p id="51">
+    <empty />
+  </p>
   <!-- 52 -->
   <!-- 53 -->
   <!-- 54 -->
@@ -676,7 +679,14 @@
         <next id="103" pos="4">Meglátogatod magát Montargo kormányzót?</next>
       </dontHave>
     </itemCheck>
-    <next id="51" pos="5" singleChoiceText="Úgy érzed, végeztél az információszerzéssel, így elindulsz megkeresni a kalózok titkos bázisát.">Ha elindulsz megkeresni a kalózok titkos bázisát</next>
+    <itemCheck type="codeword" id="veszély">
+      <have>
+        <next id="310" pos="5" singleChoiceText="Úgy érzed, végeztél az információszerzéssel, így elindulsz megkeresni a kalózok titkos bázisát.">Ha elindulsz megkeresni a kalózok titkos bázisát</next>
+      </have>
+      <dontHave>
+        <next id="287" pos="5" singleChoiceText="Úgy érzed, végeztél az információszerzéssel, így elindulsz megkeresni a kalózok titkos bázisát.">Ha elindulsz megkeresni a kalózok titkos bázisát</next>
+      </dontHave>
+    </itemCheck>
   </p>
   <!-- 335 -->
   <!-- 336 -->
