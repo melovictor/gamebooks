@@ -1,6 +1,5 @@
 package hu.zagor.gamebooks.character.handler.attribute;
 
-import hu.zagor.gamebooks.character.handler.ExpressionResolver;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute;
@@ -20,8 +19,7 @@ import org.springframework.util.ReflectionUtils;
  * Class for handling the attributes of a Fighting Fantasy character.
  * @author Tamas_Szekeres
  */
-public class FfAttributeHandler {
-    @Autowired private ExpressionResolver expressionResolver;
+public class FfAttributeHandler extends DefaultAttributeHandler {
     @LogInject private Logger logger;
     @Autowired private DeductionCalculator deductionCalculator;
 
@@ -152,16 +150,6 @@ public class FfAttributeHandler {
         if (character.getGold() < 0) {
             character.setGold(0);
         }
-    }
-
-    /**
-     * Resolves a string expression using the provided characters' properties.
-     * @param character the {@link FfCharacter} whose properties should be used
-     * @param against the expression to be resolved
-     * @return the resolved value
-     */
-    public int resolveValue(final FfCharacter character, final String against) {
-        return expressionResolver.resolveValue(character, against);
     }
 
     /**

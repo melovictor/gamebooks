@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.character.handler;
 
+import hu.zagor.gamebooks.character.handler.attribute.AttributeHandler;
 import hu.zagor.gamebooks.character.handler.character.CharacterGenerator;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.paragraph.CharacterParagraphHandler;
@@ -15,6 +16,7 @@ public class CharacterHandler {
     private CharacterParagraphHandler paragraphHandler;
     private CharacterGenerator characterGenerator;
     private UserInteractionHandler interactionHandler;
+    private AttributeHandler attributeHandler;
 
     public CharacterItemHandler getItemHandler() {
         return itemHandler;
@@ -46,6 +48,14 @@ public class CharacterHandler {
 
     public void setInteractionHandler(final UserInteractionHandler interactionHandler) {
         this.interactionHandler = interactionHandler;
+    }
+
+    public AttributeHandler getAttributeHandler() {
+        return attributeHandler;
+    }
+
+    public void setAttributeHandler(final AttributeHandler attributeHandler) {
+        this.attributeHandler = attributeHandler;
     }
 
 }

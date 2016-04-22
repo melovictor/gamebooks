@@ -13,7 +13,6 @@ import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHan
 public class FfCharacterHandler extends CharacterHandler {
 
     private BattleLuckTestParameters battleLuckTestParameters;
-    private FfAttributeHandler attributeHandler;
     private FfEnemyHandler enemyHandler;
     private boolean canEatEverywhere = true;
 
@@ -35,12 +34,9 @@ public class FfCharacterHandler extends CharacterHandler {
         this.battleLuckTestParameters = battleLuckTestParameters;
     }
 
+    @Override
     public FfAttributeHandler getAttributeHandler() {
-        return attributeHandler;
-    }
-
-    public void setAttributeHandler(final FfAttributeHandler attributeHandler) {
-        this.attributeHandler = attributeHandler;
+        return (FfAttributeHandler) super.getAttributeHandler();
     }
 
     public boolean isCanEatEverywhere() {
