@@ -158,6 +158,7 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
         handleUnhide(character, subData.getUnhiddenItems());
         gatherItems(subData, character, itemHandler);
         loseItems(subData, character, itemHandler);
+        character.getCodeWords().addAll(subData.getCodewords());
     }
 
     private void handleHide(final Character character, final List<GatheredLostItem> itemsToMove, final CharacterItemHandler itemHandler) {

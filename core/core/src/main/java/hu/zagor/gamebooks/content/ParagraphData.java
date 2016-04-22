@@ -43,6 +43,7 @@ public class ParagraphData extends EscapingData implements TrueCloneable, BeanFa
     private List<GatheredLostItem> lostItems = new ArrayList<>();
     private List<GatheredLostItem> hiddenItems = new ArrayList<>();
     private List<GatheredLostItem> unhiddenItems = new ArrayList<>();
+    private final List<String> codewords = new ArrayList<>();
     private Reward reward;
 
     private BeanFactory beanFactory;
@@ -184,6 +185,7 @@ public class ParagraphData extends EscapingData implements TrueCloneable, BeanFa
         cloned.lostItems = cloneGliList(lostItems);
         cloned.hiddenItems = cloneGliList(hiddenItems);
         cloned.unhiddenItems = cloneGliList(unhiddenItems);
+        cloned.codewords.addAll(codewords);
 
         return cloned;
     }
@@ -275,5 +277,9 @@ public class ParagraphData extends EscapingData implements TrueCloneable, BeanFa
 
     protected Logger getLogger() {
         return logger;
+    }
+
+    public List<String> getCodewords() {
+        return codewords;
     }
 }
