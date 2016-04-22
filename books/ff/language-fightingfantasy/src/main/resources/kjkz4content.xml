@@ -211,7 +211,12 @@
   <!-- 16 -->
   <!-- 17 -->
   <!-- 18 -->
-  <!-- 19 -->
+  <p id="19">
+    <text>
+        [p]- Rendben. Ha ezt akarod, hát meg is kapod - jelenti ki Snide, majd magadra hagy. Aznap éjjel senki sem jön a celládhoz, így esélyed sincs, hogy valami ügyes csellel kikerülj a csávából, az ajtó pedig sajnos túlságosan masszív ahhoz, hogy betörhesd. Ám amíg azon kell ügyködnöd, hogy kijuss a tömlöcből, jócskán lecsúszol arról, hogy megállíthasd a Fekete Koponya kalózait. A kíméletlen igazságtalanságnak köszönhetően már nem teljesítheted a küldetésedet. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 20 -->
   <!-- 21 -->
   <!-- 22 -->
@@ -251,7 +256,45 @@
   <p id="51">
     <empty />
   </p>
-  <!-- 52 -->
+  <p id="52">
+    <text>
+        [p]Válassz egy helyet, ahol eddig még nem jártál! Melyik lesz az?[/p]
+    </text>
+    <itemCheck type="section" id="67">
+      <dontHave>
+        <next id="67" pos="1">A dokkok?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="146">
+      <dontHave>
+        <next id="146" pos="2">A romos világítótorony?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="129">
+      <dontHave>
+        <next id="129" pos="3">A fogadók és kocsmák?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="355">
+      <dontHave>
+        <next id="355" pos="4">A csatornarendszer?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="83">
+      <dontHave>
+        <next id="83" pos="5">A temető?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="315">
+      <dontHave>
+        <itemCheck type="section" id="181">
+          <dontHave>
+            <next id="181" pos="6">A Templom negyed?</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 53 -->
   <!-- 54 -->
   <!-- 55 -->
@@ -266,7 +309,19 @@
   <!-- 64 -->
   <!-- 65 -->
   <!-- 66 -->
-  <!-- 67 -->
+  <p id="67">
+    <text>
+        [p]Ilyenkor éjnek idején csendesek a dokkok. Úgy gondolod, hogy amennyiben a kalózok búvóhelye valahol erre van, akkor a bejáratot a kikötőfalnál kellene elkezdeni keresni. Leereszkedsz a famólóra, és keresgélni kezdesz. Dubb. Mi volt az? Dubb. Már megint! Tökéletesen csendben maradsz, s hegyezed a füledet, hogy meghalld a legapróbb neszt is. Aztán deszkákon végighúzott lánc zörgését ismered fel, egészen közel hozzád. Huss! Egy óriási vasmacska röppen elő a sűrű ködből, és lapos ívben éppen feléd suhan.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="321"></next>
+      </success>
+      <failure>
+        <next id="185"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 68 -->
   <!-- 69 -->
   <!-- 70 -->
@@ -328,7 +383,39 @@
   <!-- 111 -->
   <!-- 112 -->
   <!-- 113 -->
-  <!-- 114 -->
+  <p id="114">
+    <text>
+        [p]Lecsúszol a lejtőn, jó néhány karcolást és zúzódást szerezve.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <text>[p]Vesztesz 1 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-1" to="stamina" />
+      </result>
+      <result max="2" min="2">
+        <text>[p]Vesztesz 2 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-2" to="stamina" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]Vesztesz 3 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-3" to="stamina" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Vesztesz 4 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-4" to="stamina" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Vesztesz 5 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-5" to="stamina" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Vesztesz 6 ÉLETERŐ és 1 ÜGYESSÉG pontot.[/p]</text>
+        <add amount="-6" to="stamina" />
+        <add amount="-1" to="skill" />
+      </result>
+    </random>
+    <next id="219"></next>
+  </p>
   <!-- 115 -->
   <!-- 116 -->
   <!-- 117 -->
@@ -384,7 +471,13 @@
     </fight>
   </p>
   <!-- 136 -->
-  <!-- 137 -->
+  <p id="137">
+    <text>
+        [p]Gyorsan az út szélére húzod a Hívek testét, mielőtt még bárki is felfedezné őket. A két férfinál semmi sincsen, leszámítva szent tőreiket, melyek ébenfa markolatát emberi koponya formájúra faragták. Jobb kézfejükön ott vigyorog az immáron oly ismerős fekete halálfej. A Hívek valószínűleg áldozatot kerestek, akit kivégezhettek volna a vérszomjas Quezkari nagyobb dicsőségére - vagy pedig éppen rád vadásztak! Mindenesetre jelenlétük leginkább arra utal, hogy a kalózok rejtekhelye, vagy legalábbis Quezkari temploma itt van a közelben.[/p]
+    </text>
+    <next id="396">Ha errefelé folytatnád a keresést</next>
+    <next id="52">Ha inkább máshol néznél körül, mivel nem szeretnél további Beavatottak karjaiba fútni</next>
+  </p>
   <!-- 138 -->
   <!-- 139 -->
   <!-- 140 -->
@@ -393,7 +486,13 @@
   <!-- 143 -->
   <!-- 144 -->
   <!-- 145 -->
-  <!-- 146 -->
+  <p id="146">
+    <text>
+        [p]Észrevétlenül hagyod el a várost a Kakhabad-kapun át, és elindulsz a sötétségen át a Mallan-fok felé. A hold a teljesen felhőtlen égboltnak köszönhetően megvilágítja az omladozó épületet, mely egykor, becsületesebb és nyugodalmasabb időkben a kikötő világítótornya volt. Viszont nem a holdé az egyetlen látható fényforrás! A romoknál, a sziklafal pereméhez egészen közel, pislogó világosságot fedezel fel.[/p]
+    </text>
+    <next id="184">Ha megvizsgálnád a fényt</next>
+    <next id="220">Ha inkább a világítótoronyhoz mennél</next>
+  </p>
   <!-- 147 -->
   <!-- 148 -->
   <!-- 149 -->
@@ -433,10 +532,46 @@
   <!-- 178 -->
   <!-- 179 -->
   <!-- 180 -->
-  <!-- 181 -->
+  <p id="181">
+    <text>
+        [p]Aggasztó csend üli meg a Templom negyed utcáit, elbizonytalanító légkört teremtve ezzel. Macskaként surransz végig az utcákon, ám hirtelen két figura lep meg, éppen előtted lépvén ki az árnyékból. Fekete ruhájukban, kezükben szakrális tőrrel, a Hívők feléd közelítenek. Kardot rántva felkészülsz az ütközetre. Küzdj meg egyszerre mindkettővel![/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="8" />
+      <enemy id="9" />
+      <anyRound totalCount="10">
+        <interrupt />
+      </anyRound>
+    </fight>
+    <itemCheck type="enemy" id="8">
+      <have>
+        <next id="264"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="enemy" id="8">
+          <have>
+            <next id="264"></next>
+          </have>
+          <dontHave>
+            <next id="137"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 182 -->
   <!-- 183 -->
-  <!-- 184 -->
+  <p id="184">
+    <text>
+        [p]Miközben óvatosan osonsz a sziklafal pereme felé, észreveszed, hogy a fény egy lámpásból jön, melyet egy nőszemély tart a kezében, aki a tengert fürkészi két társával - egy férfival és egy malacképű Ember-Orkkal - egyetemben. Pillantásuk irányát követve egy masszív vitorlást fedezel fel, mely éppen a partot szegélyező veszélyes, éles sziklák felé tart. A fény a végzetébe vezeti a hajót! Ezek hárman minden bizonnyal hajóroncs-fosztogatók, akik szándékosan, saját hasznukra futtatják zátonyra a hajókat, hogy megszerezzék a partra sodródó rakományt. Meg kell állítanod őket, különben újabb hajó fog áldozatukul esni. Szerencsére még nem figyeltek fel jelenlétedre. Kardot rántva rárontasz a legközelebbi zsiványra, és sikerül is megsebesítened, még mielőtt egyáltalán esélye lett volna védekezni. Egyszerre küzdj meg a Vandálokkal![/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="5" />
+      <enemy id="6" />
+      <enemy id="7" />
+    </fight>
+    <next id="369"></next>
+  </p>
   <!-- 185 -->
   <!-- 186 -->
   <p id="187">
@@ -496,7 +631,13 @@
   <!-- 216 -->
   <!-- 217 -->
   <!-- 218 -->
-  <!-- 219 -->
+  <p id="219">
+    <text>
+        [p]Az üreg széléhez érve már látod, hogy csupán egy keskeny perem fut néhány méternyire a robajló hullámok felett, és vezet be a homályos mélységbe.[/p]
+    </text>
+    <next id="354">Ha továbbmennél</next>
+    <next id="322">Ha inkább hagyod az egészet, és visszatérsz a sziklacsúcsra</next>
+  </p>
   <!-- 220 -->
   <!-- 221 -->
   <!-- 222 -->
@@ -513,12 +654,45 @@
   <!-- 233 -->
   <!-- 234 -->
   <!-- 235 -->
-  <!-- 236 -->
+  <p id="236">
+    <text>
+        [p]Miután alulmaradtál az őrökkel szemben, semmi perc alatt egy büdös zárkában találod magad, a végsőkig kimerültén. (Írj fel 1 órát!) Aztán egy szigorú arcú férfi tűnik fel a cellaajtó vasrácsánál. Ő pedig nem más, mint a Városi Őrség vezetője, Snide kapitány. - Élvezed az itt tartózkodást? - kérdezi egy gúnyos vigyorral. - No jó, legyen mondjuk teszem azt 10 Aranytallér, és felőlem mehetsz is tovább a dolgod után.[/p]
+    </text>
+    <add amount="1" to="time" />
+    <itemCheck type="gold" id="10">
+      <have>
+        <next id="254">Hogyha kifizeted a szadista kapitánynak a kenőpénzt</next>
+        <next id="19">Ha inkább vársz, és felkészülsz, hogy elmenekülj, amint tiszta lesz a terep</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Mivel nincs nálad ennyi pénz, kénytelen vagy visszautasítani a lehetőséget.[/p]
+        </text>
+        <next id="19"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 237 -->
   <!-- 238 -->
   <!-- 239 -->
   <!-- 240 -->
-  <!-- 241 -->
+  <p id="241">
+    <text>
+        [p]A város sugárútjain és mellékutcáiban cikázva valahogyan sikerül elkerülnöd, hogy elkapjanak. (Írj fel 1 órát!)[/p]
+    </text>
+    <add amount="1" to="time" />
+    <!-- how much time does it take to become dark exactly? -->
+    <itemCheck type="attribute" id="time" amount="8">
+      <have>
+        <!-- if it's already dark -->
+        <next id="52"></next>
+      </have>
+      <dontHave>
+        <!-- if it's still not dark -->
+        <next id="334"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 242 -->
   <!-- 243 -->
   <!-- 244 -->
@@ -541,7 +715,12 @@
   <!-- 261 -->
   <!-- 262 -->
   <!-- 263 -->
-  <!-- 264 -->
+  <p id="264">
+    <text>
+        [p]Amíg küzdőtök, még több Hívő érkezik az egyik sarok mögül, és nem telik sok időbe, hogy megfékezzenek. Egy hirtelen, fájdalmas ütés a tarkódra, és minden sötétségbe borul...[/p]
+    </text>
+    <next id="158"></next>
+  </p>
   <!-- 265 -->
   <!-- 266 -->
   <!-- 267 -->
@@ -593,8 +772,58 @@
   <!-- 306 -->
   <!-- 307 -->
   <!-- 308 -->
-  <!-- 309 -->
-  <!-- 310 -->
+  <p id="309">
+    <text>
+        [p]Sós ízű tengeri szél fújdogál mögötted, amint visszaballagsz a Rákok Kikötőjébe, hogy újfent a városban folytasd a kutakodást a kalózok után. (Jegyezz fel 1 eltelt órát!) Most hová mennél?[/p]
+    </text>
+    <add amount="1" to="time" />
+    <itemCheck type="section" id="67">
+      <dontHave>
+        <next id="67" pos="1">A dokkokhoz?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="129">
+      <dontHave>
+        <next id="129" pos="3">A fogadók és kocsmák felé?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="355">
+      <dontHave>
+        <next id="355" pos="4">Le a csatornákba?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="83">
+      <dontHave>
+        <next id="83" pos="5">A temetőbe?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="315">
+      <dontHave>
+        <itemCheck type="section" id="181">
+          <dontHave>
+            <next id="181" pos="6">A Templom negyedbe?</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="310">
+    <text>
+        [p]Miközben haladsz előre a kikötőváros utcáin, az a nyugtalanító érzés fog el, hogy követnek. Lehetséges volna, hogy a Fekete Koponya hívei már a nyomodban vannak? Egy sarkon befordulva máris megkapod a választ. Egy csapatnyi egyenruhás katona állja utad, a Városi Őrség kapitányának vezetésével. Mögötted további fegyveresek tűnnek fel a sötét utcákon, így aztán teljesen körbe vagy véve. A szigorú arcú Snide kapitány előlép, majd közli veled: - Őrizetbe veszlek a nyugalom megzavarásáért. - De hát ez nevetséges! Mégis mit követtél el a Városi Őrség ellen? Minden, amit tettél, csupán annyi volt, hogy segíteni akartál Vaskövesd és a Rákok Kikötője népén. - No persze - teszi hozzá Snide -, némi csekély fizetség, teszem azt tíz Arany, lehetővé tenné, hogy szabadon folytasd tovább a dolgodat. - Bizony, nagyon úgy tűnik, hogy ennek a városnak a vezetése aztán tényleg a velejéig korrupt![/p]
+    </text>
+    <itemCheck type="gold" id="10">
+      <have>
+        <next id="163">Ha ki akarod fizetni Snide-nak ezt a tetemes összeget szabad elvonulásod fejében</next>
+        <next id="236">Máskülönben</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nincs ennyi pénzed, így kénytelen vagy nemet mondani az ajánlatra.[/p]
+        </text>
+        <next id="236"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 311 -->
   <!-- 312 -->
   <!-- 313 -->
@@ -622,7 +851,17 @@
   <!-- 319 -->
   <!-- 320 -->
   <!-- 321 -->
-  <!-- 322 -->
+  <p id="322">
+    <text>
+        [p]Sikerül felkapaszkodnod a kőszirt tetejére, anélkül, hogy bármi egyéb megzavarna, és megfontolod, mit is tegyél az elkövetkezendőkben.[alt][/alt][/p]
+    </text>
+    <itemCheck type="section" id="296">
+      <dontHave>
+        <next id="296" pos="1">Ha átkutatod a világítótornyot, és még nem kerítettél volna sort rá</next>
+      </dontHave>
+    </itemCheck>
+    <next id="309" pos="2" singleChoiceText=" Végül úgy döntesz, hogy elhagyod a Mallan-fokot.">Ha netán elhagynád a Mallan-fokot</next>
+  </p>
   <!-- 323 -->
   <!-- 324 -->
   <!-- 325 -->
@@ -679,7 +918,7 @@
         <next id="103" pos="4">Meglátogatod magát Montargo kormányzót?</next>
       </dontHave>
     </itemCheck>
-    <itemCheck type="codeword" id="veszély">
+    <itemCheck type="codeword" id="Veszély">
       <have>
         <next id="310" pos="5" singleChoiceText="Úgy érzed, végeztél az információszerzéssel, így elindulsz megkeresni a kalózok titkos bázisát.">Ha elindulsz megkeresni a kalózok titkos bázisát</next>
       </have>
@@ -725,5 +964,83 @@
         <next id="6">Ha megpróbálsz elmenekülni</next>
       </win>
     </fight>
+  </p>
+  <!-- 358 -->
+  <!-- 359 -->
+  <!-- 360 -->
+  <!-- 361 -->
+  <!-- 362 -->
+  <!-- 363 -->
+  <!-- 364 -->
+  <!-- 365 -->
+  <!-- 366 -->
+  <!-- 367 -->
+  <!-- 368 -->
+  <p id="369">
+    <text>
+        [p]A fény ellobban, és a vitorlás, melyet a hajóroncs-rablók zátonyra akartak futtatni a sziklákon, még éppen időben fordul meg, vissza a nyílt tengerre (jegyezd fel a [em]Jószerencse[/em] szót a [em]Kalandlapodra[/em]). A vandálok testének átvizsgálásakor összesen 5 Aranyérmét és egy Csontváz Kulcsot találsz. Amint azon morfondírozol, mi is legyen a következő lépésed, magasan fekvő kilátóhelyedről felfedezel egy méretes barlangnyílást épp a part vonalában, ahol a sziklák a tengerbe érnek. Ez volna talán a kalózok rejtekhelye? Mit teszel?[/p]
+    </text>
+    <codeword name="Jószerencse" />
+    <next id="391">Lemászol a sziklán a barlanghoz?</next>
+    <next id="296">Visszatérsz a világítótoronyhoz, és jobban átvizsgálod?</next>
+    <next id="309">Elhagyod a Mallan-fokot?</next>
+  </p>
+  <!-- 370 -->
+  <!-- 371 -->
+  <!-- 372 -->
+  <!-- 373 -->
+  <!-- 374 -->
+  <!-- 375 -->
+  <!-- 376 -->
+  <!-- 377 -->
+  <!-- 378 -->
+  <!-- 379 -->
+  <!-- 380 -->
+  <!-- 381 -->
+  <!-- 382 -->
+  <!-- 383 -->
+  <!-- 384 -->
+  <!-- 385 -->
+  <!-- 386 -->
+  <!-- 387 -->
+  <!-- 388 -->
+  <!-- 389 -->
+  <!-- 390 -->
+  <p id="391">
+    <text>
+        [p]Sötétben, ráadásul a felcsapó hullámoktól állandóan nedves sziklákon leereszkedésed eléggé veszélyes.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <test against="luck">
+          <success>
+            <test against="luck">
+              <success>
+                <next id="219"></next>
+              </success>
+              <failure>
+                <next id="114"></next>
+              </failure>
+            </test>
+          </success>
+          <failure>
+            <next id="114"></next>
+          </failure>
+        </test>
+      </success>
+      <failure>
+        <next id="114"></next>
+      </failure>
+    </test>
+  </p>
+  <!-- 392 -->
+  <!-- 393 -->
+  <!-- 394 -->
+  <!-- 395 -->
+  <p id="396">
+    <text>
+        [p]Befordulva egy sarkon, fájdalmas tűszúrást érzel a nyakad hátsó részén. Mikor odanyúlsz, egy aprócska nyilat rántasz ki a bőrödből. A hegye valamilyen sötét folyadéktól foltos - méreee...[/p]
+    </text>
+    <next id="158"></next>
   </p>
 </content>
