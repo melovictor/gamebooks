@@ -23,12 +23,12 @@ public class Ff15FightCommandShootingSubResolver extends FightCommandBasicSubRes
     public List<ParagraphData> doResolve(final FightCommand command, final ResolvationData resolvationData) {
         command.setLuckTestAllowed(false);
         final List<ParagraphData> resolveList = new ArrayList<>();
-        resolveBattlingParties(command, resolvationData);
+        resolveBattlingParties(command, resolvationData, null);
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         command.setOngoing(true);
         resolveBattleRound(command, resolvationData, resolveList);
         characterHandler.getAttributeHandler().sanityCheck((FfCharacter) resolvationData.getCharacter());
-        resolveBattlingParties(command, resolvationData);
+        resolveBattlingParties(command, resolvationData, resolveList);
         return resolveList;
     }
 

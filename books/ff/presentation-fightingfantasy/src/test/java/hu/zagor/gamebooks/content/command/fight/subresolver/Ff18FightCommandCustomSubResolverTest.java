@@ -1,6 +1,9 @@
 package hu.zagor.gamebooks.content.command.fight.subresolver;
 
+import static org.easymock.EasyMock.capture;
+import static org.easymock.EasyMock.eq;
 import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.newCapture;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.Enemy;
@@ -24,12 +27,14 @@ import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import org.easymock.Capture;
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -68,6 +73,7 @@ public class Ff18FightCommandCustomSubResolverTest {
     private FightOutcome outcomeC;
     private FightOutcome outcomeD;
     private FightOutcome outcomeE;
+    private Capture<List<ParagraphData>> resolveList;
 
     @BeforeClass
     public void setUpClass() {
@@ -97,6 +103,11 @@ public class Ff18FightCommandCustomSubResolverTest {
         return EasyMock.createMockBuilder(Ff18FightCommandCustomSubResolver.class).addMockedMethods("prepareLuckTest", "resolveBattlingParties").createMock(mockControl);
     }
 
+    @BeforeMethod
+    public void setUpMethod() {
+        resolveList = newCapture();
+    }
+
     private FightOutcome getOutcome(final int min, final int max, final FfParagraphData data) {
         final FightOutcome outcome = new FightOutcome();
         outcome.setMin(min);
@@ -116,24 +127,25 @@ public class Ff18FightCommandCustomSubResolverTest {
     public void testDoResolveWhenNotAttackingYetShouldJustSetBattleTypeToCustom() {
         // GIVEN
         underTest.prepareLuckTest(command, character, interactionHandler);
-        underTest.resolveBattlingParties(command, resolvationData);
+        underTest.resolveBattlingParties(command, resolvationData, null);
         command.setOngoing(true);
         expect(interactionHandler.getLastFightCommand(character)).andReturn(null);
         command.setBattleType("custom-18");
         command.setOngoing(true);
         attributeHandler.sanityCheck(character);
-        underTest.resolveBattlingParties(command, resolvationData);
+        underTest.resolveBattlingParties(eq(command), eq(resolvationData), capture(resolveList));
         mockControl.replay();
         // WHEN
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
         // THEN
         Assert.assertTrue(returned.isEmpty());
+        Assert.assertSame(resolveList.getValue(), returned);
     }
 
     public void testDoResolveWhenAttackingAndBattleNotFinishedShouldCallFightRoundResolverAndContinueBattling() {
         // GIVEN
         underTest.prepareLuckTest(command, character, interactionHandler);
-        underTest.resolveBattlingParties(command, resolvationData);
+        underTest.resolveBattlingParties(command, resolvationData, null);
         command.setOngoing(true);
         expect(interactionHandler.getLastFightCommand(character)).andReturn("attacking");
 
@@ -152,18 +164,19 @@ public class Ff18FightCommandCustomSubResolverTest {
         command.setKeepOpen(true);
 
         attributeHandler.sanityCheck(character);
-        underTest.resolveBattlingParties(command, resolvationData);
+        underTest.resolveBattlingParties(eq(command), eq(resolvationData), capture(resolveList));
         mockControl.replay();
         // WHEN
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
         // THEN
         Assert.assertTrue(returned.isEmpty());
+        Assert.assertSame(resolveList.getValue(), returned);
     }
 
     public void testDoResolveWhenAttackingAndWeDieShouldCallFightRoundResolverAndFinishBattling() {
         // GIVEN
         underTest.prepareLuckTest(command, character, interactionHandler);
-        underTest.resolveBattlingParties(command, resolvationData);
+        underTest.resolveBattlingParties(command, resolvationData, null);
         command.setOngoing(true);
         expect(interactionHandler.getLastFightCommand(character)).andReturn("attacking");
 
@@ -182,19 +195,20 @@ public class Ff18FightCommandCustomSubResolverTest {
         expect(command.getLose()).andReturn(resultParDataA);
 
         attributeHandler.sanityCheck(character);
-        underTest.resolveBattlingParties(command, resolvationData);
+        underTest.resolveBattlingParties(eq(command), eq(resolvationData), capture(resolveList));
         mockControl.replay();
         // WHEN
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
         // THEN
         Assert.assertTrue(returned.contains(resultParDataA));
         Assert.assertEquals(returned.size(), 1);
+        Assert.assertSame(resolveList.getValue(), returned);
     }
 
     public void testDoResolveWhenAttackingAndAllEnemiesAreDeadShouldCallFightRoundResolverAndFinishBattling() {
         // GIVEN
         underTest.prepareLuckTest(command, character, interactionHandler);
-        underTest.resolveBattlingParties(command, resolvationData);
+        underTest.resolveBattlingParties(command, resolvationData, null);
         command.setOngoing(true);
         expect(interactionHandler.getLastFightCommand(character)).andReturn("attacking");
 
@@ -214,7 +228,7 @@ public class Ff18FightCommandCustomSubResolverTest {
         expect(command.getWin()).andReturn(wins);
 
         attributeHandler.sanityCheck(character);
-        underTest.resolveBattlingParties(command, resolvationData);
+        underTest.resolveBattlingParties(eq(command), eq(resolvationData), capture(resolveList));
         mockControl.replay();
         // WHEN
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
@@ -223,6 +237,7 @@ public class Ff18FightCommandCustomSubResolverTest {
         Assert.assertTrue(returned.contains(resultParDataC));
         Assert.assertTrue(returned.contains(resultParDataD));
         Assert.assertEquals(returned.size(), 3);
+        Assert.assertSame(resolveList.getValue(), returned);
     }
 
 }

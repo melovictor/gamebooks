@@ -44,7 +44,7 @@ public abstract class AbstractFightCommandSubResolver implements FightCommandSub
     @Override
     public List<ParagraphData> doResolve(final FightCommand command, final ResolvationData resolvationData) {
         final List<ParagraphData> resolveList = new ArrayList<>();
-        resolveBattlingParties(command, resolvationData);
+        resolveBattlingParties(command, resolvationData, null);
         final FfCharacter battlingCharacter = resolveCharacter(command, resolvationData);
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         if (!isAlive(battlingCharacter, characterHandler)) {
@@ -61,7 +61,7 @@ public abstract class AbstractFightCommandSubResolver implements FightCommandSub
             command.setFleeAllowed(command.getRoundNumber() >= command.getFleeData().getAfterRound());
         }
         characterHandler.getAttributeHandler().sanityCheck(battlingCharacter);
-        resolveBattlingParties(command, resolvationData);
+        resolveBattlingParties(command, resolvationData, resolveList);
         return resolveList;
     }
 
@@ -69,11 +69,17 @@ public abstract class AbstractFightCommandSubResolver implements FightCommandSub
      * Method to initialize the {@link FightCommand}.
      * @param command the {@link FightCommand} to initialize
      * @param resolvationData the {@link ResolvationData} to use for the initialization
+     * @param resolveList the list of {@link ParagraphData} to be resolved afterwards or null if it is not relevant yet
      */
-    protected void resolveBattlingParties(final FightCommand command, final ResolvationData resolvationData) {
-        final List<FfEnemy> enemies = collectEnemies(command.getRoundNumber() + 1, command.getEnemies(), resolvationData.getEnemies());
-        command.getResolvedEnemies().clear();
-        command.getResolvedEnemies().addAll(enemies);
+    protected void resolveBattlingParties(final FightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
+        if (command.isOngoing()) {
+            final List<FfEnemy> enemies = collectEnemies(command.getRoundNumber() + 1, command.getEnemies(), resolvationData.getEnemies());
+            command.getResolvedEnemies().clear();
+            command.getResolvedEnemies().addAll(enemies);
+            if (resolveList != null && command.getResolvedEnemies().isEmpty()) {
+                winBattle(command, resolveList, resolvationData.getEnemies());
+            }
+        }
     }
 
     /**

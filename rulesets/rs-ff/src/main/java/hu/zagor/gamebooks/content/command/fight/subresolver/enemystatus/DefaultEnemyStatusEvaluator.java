@@ -23,7 +23,7 @@ public class DefaultEnemyStatusEvaluator implements EnemyStatusEvaluator {
     }
 
     private boolean enemyFled(final int roundNumber, final FfEnemy enemy) {
-        return enemy.getStamina() <= enemy.getFleeAtStamina() || enemy.getFleeAtRound() <= roundNumber;
+        return enemy.getStamina() <= enemy.getFleeAtStamina() || enemy.getFleeAtRound() < roundNumber;
     }
 
     @Override

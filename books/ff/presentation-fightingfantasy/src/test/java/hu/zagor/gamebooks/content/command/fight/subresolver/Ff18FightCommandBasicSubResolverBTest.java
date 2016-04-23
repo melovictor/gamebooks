@@ -57,7 +57,6 @@ public class Ff18FightCommandBasicSubResolverBTest {
     private DiceResultRenderer renderer;
     private FightCommandMessageList messageList;
     private FfEnemy enemy;
-    private List<FfEnemy> resolvedEnemies;
     private List<String> proficientEnemies;
 
     @BeforeClass
@@ -94,7 +93,6 @@ public class Ff18FightCommandBasicSubResolverBTest {
 
     @SuppressWarnings("unchecked")
     private void setUpClassUnchecked() {
-        resolvedEnemies = mockControl.createMock(List.class);
         resolvedList = mockControl.createMock(List.class);
         enemies = mockControl.createMock(HashMap.class);
     }
@@ -156,10 +154,7 @@ public class Ff18FightCommandBasicSubResolverBTest {
         expect(generator.getDefaultDiceSide()).andReturn(6);
         expect(renderer.render(6, randomRoll)).andReturn("The rolled number is 3.");
         expect(messageList.addKey("page.ff18.fight.suddenDeath.roll", "The rolled number is 3.", 3)).andReturn(true);
-        superResolver.resolveBattlingParties(command, resolvationData);
-        expect(command.getResolvedEnemies()).andReturn(resolvedEnemies);
-        expect(resolvedEnemies.isEmpty()).andReturn(false);
-
+        superResolver.resolveBattlingParties(command, resolvationData, resolvedList);
         mockControl.replay();
         // WHEN
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
@@ -195,9 +190,7 @@ public class Ff18FightCommandBasicSubResolverBTest {
         expect(messageList.addKey("page.ff18.fight.suddenDeath.roll", "The rolled number is 6.", 6)).andReturn(true);
         enemy.setStamina(0);
         expect(messageList.addKey("page.ff18.fight.suddenDeath.enemy", "Arcadian")).andReturn(true);
-        superResolver.resolveBattlingParties(command, resolvationData);
-        expect(command.getResolvedEnemies()).andReturn(resolvedEnemies);
-        expect(resolvedEnemies.isEmpty()).andReturn(false);
+        superResolver.resolveBattlingParties(command, resolvationData, resolvedList);
         mockControl.replay();
         // WHEN
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);
@@ -233,10 +226,7 @@ public class Ff18FightCommandBasicSubResolverBTest {
         expect(messageList.addKey("page.ff18.fight.suddenDeath.roll", "The rolled number is 6.", 6)).andReturn(true);
         enemy.setStamina(0);
         expect(messageList.addKey("page.ff18.fight.suddenDeath.enemy", "Arcadian")).andReturn(true);
-        superResolver.resolveBattlingParties(command, resolvationData);
-        expect(command.getResolvedEnemies()).andReturn(resolvedEnemies);
-        expect(resolvedEnemies.isEmpty()).andReturn(true);
-        superResolver.winBattle(command, resolvedList, enemies);
+        superResolver.resolveBattlingParties(command, resolvationData, resolvedList);
         mockControl.replay();
         // WHEN
         final List<ParagraphData> returned = underTest.doResolve(command, resolvationData);

@@ -143,6 +143,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         command.getWin().add(outcome);
         command.setLose(lose);
         command.setFlee(flee);
+        command.setOngoing(true);
 
         rootData = new FfParagraphData();
         rootData.setBeanFactory(beanFactory);

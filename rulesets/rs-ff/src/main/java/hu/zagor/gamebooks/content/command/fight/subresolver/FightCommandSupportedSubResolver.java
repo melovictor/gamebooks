@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
+import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
@@ -48,8 +49,8 @@ public class FightCommandSupportedSubResolver extends FightCommandBasicSubResolv
     }
 
     @Override
-    protected void resolveBattlingParties(final FightCommand command, final ResolvationData resolvationData) {
-        super.resolveBattlingParties(command, resolvationData);
+    protected void resolveBattlingParties(final FightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
+        super.resolveBattlingParties(command, resolvationData, resolveList);
         final List<FfEnemy> allies = collectEnemies(command.getRoundNumber(), command.getAllies(), resolvationData.getEnemies());
         final List<FfAllyCharacter> resolvedAllies = new ArrayList<>();
         for (final FfEnemy ally : allies) {

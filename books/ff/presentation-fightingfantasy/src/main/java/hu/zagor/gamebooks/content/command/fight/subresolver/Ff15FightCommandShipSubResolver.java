@@ -10,7 +10,6 @@ import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver
 import hu.zagor.gamebooks.content.command.fight.roundresolver.Ship15FightRoundResolver;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.ff.trok.character.Ff15Character;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,12 +22,12 @@ public class Ff15FightCommandShipSubResolver extends FightCommandBasicSubResolve
     @Override
     public List<ParagraphData> doResolve(final FightCommand command, final ResolvationData resolvationData) {
         final List<ParagraphData> resolveList = new ArrayList<>();
-        resolveBattlingParties(command, resolvationData);
+        resolveBattlingParties(command, resolvationData, null);
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         command.setOngoing(true);
         resolveBattleRound(command, resolvationData, resolveList);
         characterHandler.getAttributeHandler().sanityCheck((FfCharacter) resolvationData.getCharacter());
-        resolveBattlingParties(command, resolvationData);
+        resolveBattlingParties(command, resolvationData, resolveList);
         return resolveList;
     }
 

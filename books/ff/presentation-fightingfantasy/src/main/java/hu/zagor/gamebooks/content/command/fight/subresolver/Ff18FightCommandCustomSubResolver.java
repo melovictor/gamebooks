@@ -10,7 +10,6 @@ import hu.zagor.gamebooks.content.command.fight.FightOutcome;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.Custom18FightRoundResolver;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,11 +26,11 @@ public class Ff18FightCommandCustomSubResolver extends FightCommandBasicSubResol
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         prepareLuckTest(command, character, characterHandler.getInteractionHandler());
-        resolveBattlingParties(command, resolvationData);
+        resolveBattlingParties(command, resolvationData, null);
         command.setOngoing(true);
         resolveBattleRound(command, resolvationData, resolveList);
         characterHandler.getAttributeHandler().sanityCheck(character);
-        resolveBattlingParties(command, resolvationData);
+        resolveBattlingParties(command, resolvationData, resolveList);
         return resolveList;
     }
 

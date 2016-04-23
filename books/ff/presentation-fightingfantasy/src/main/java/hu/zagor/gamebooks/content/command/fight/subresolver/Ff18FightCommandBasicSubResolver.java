@@ -1,10 +1,5 @@
 package hu.zagor.gamebooks.content.command.fight.subresolver;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
@@ -17,6 +12,9 @@ import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
  * FF18-specific decorator of {@link FightCommandBasicSubResolver}.
@@ -27,14 +25,9 @@ public class Ff18FightCommandBasicSubResolver implements FightCommandSubResolver
     private static final int DIRTY_TRICK = 3;
     private static final int SUDDEN_KILL_ROLL = 6;
     private List<String> proficientEnemies;
-    @Autowired
-    @Qualifier("d6RandomGenerator")
-    private RandomNumberGenerator generator;
-    @Autowired
-    private DiceResultRenderer renderer;
-    @Autowired
-    @Qualifier("fightCommandBasicSubResolver")
-    private FightCommandBasicSubResolver superResolver;
+    @Autowired @Qualifier("d6RandomGenerator") private RandomNumberGenerator generator;
+    @Autowired private DiceResultRenderer renderer;
+    @Autowired @Qualifier("fightCommandBasicSubResolver") private FightCommandBasicSubResolver superResolver;
 
     @Override
     public List<ParagraphData> doResolve(final FightCommand command, final ResolvationData resolvationData) {
@@ -51,10 +44,7 @@ public class Ff18FightCommandBasicSubResolver implements FightCommandSubResolver
             if (fightWithFist(resolvationData) && enemyAlive(resolvationData)) {
                 if (wonLastRound(command, resolvationData)) {
                     tryKillEnemy(command.getMessages(), resolvationData);
-                    superResolver.resolveBattlingParties(command, resolvationData);
-                    if (command.getResolvedEnemies().isEmpty()) {
-                        superResolver.winBattle(command, doResolve, resolvationData.getEnemies());
-                    }
+                    superResolver.resolveBattlingParties(command, resolvationData, doResolve);
                 } else if (lostLastRound(command, resolvationData) && enemyProficientFighter(resolvationData)) {
                     tryKillHero(command.getMessages(), resolvationData);
                 }
