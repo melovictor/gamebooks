@@ -224,7 +224,12 @@
   <!-- 24 -->
   <!-- 25 -->
   <!-- 26 -->
-  <!-- 27 -->
+  <p id="27">
+    <text>
+        [p]Még mielőtt egyáltalán elérhetnéd a Holtak Kapuját, baljós alakok sora tűnik elő a sötétből, s hamarosan kalózok és Hívők gyűrűjében találod magad. Hamar föléd kerekednek, majd egy ütés a fejedre, és már ártalmatlanná is tettek.[/p]
+    </text>
+    <next id="158"></next>
+  </p>
   <!-- 28 -->
   <!-- 29 -->
   <!-- 30 -->
@@ -248,7 +253,21 @@
   <!-- 43 -->
   <!-- 44 -->
   <!-- 45 -->
-  <!-- 46 -->
+  <p id="46">
+    <text>
+        [p]A polip a kedvenc taktikáját alkalmazza, mellyel ki tudja szorítani az életet áldozatából: egyszerűen erős végtagjainak ölelésébe fon. Veszítesz még 1 további életerő pontot. Míg a bestia bilincsszerű szorításában tart, minden egyes Harci Körben le kell vonnod plusz 1-1 életerő pontot, egészen addig, amíg egy Harci Kör megnyerésével ki nem szabadítod magad.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <changeEnemy attribute="staminaAutoDamage" id="12" set="1" />
+    <fight type="single">
+      <enemy id="12" />
+      <winRound enemy="12">
+        <changeEnemy attribute="staminaAutoDamage" id="12" set="0" />
+        <add amount="1" to="stamina" />
+      </winRound>
+    </fight>
+    <next id="73"></next>
+  </p>
   <!-- 47 -->
   <!-- 48 -->
   <!-- 49 -->
@@ -294,6 +313,11 @@
         </itemCheck>
       </dontHave>
     </itemCheck>
+    <itemCheck type="pos" id="11">
+      <have>
+        <add amount="1" to="time" />
+      </have>
+    </itemCheck>
   </p>
   <!-- 53 -->
   <!-- 54 -->
@@ -327,7 +351,12 @@
   <!-- 70 -->
   <!-- 71 -->
   <!-- 72 -->
-  <!-- 73 -->
+  <p id="73">
+    <text>
+        [p]A polip alámerül, undorító vére bíborszínűre festi a vizet körülötte. Úgy érzed, most már biztonságban átkutathatod a barlangot. így is teszel, ám nagy csalódásodra egyetlen másik kivezető járatot sem találsz. A kalózok búvóhelye nyilvánvalóan nem itt van.[/p]
+    </text>
+    <next id="350"></next>
+  </p>
   <p id="74">
     <text>
         [p]A kalózok szöges bunkóikat suhogtatva szállnak harcba ellened.[/p]
@@ -352,7 +381,89 @@
   <!-- 80 -->
   <!-- 81 -->
   <!-- 82 -->
-  <!-- 83 -->
+  <p id="83">
+    <text>
+        [p]Amennyire lehetséges, megpróbálsz az árnyékos ajtónyílások rejtekében maradni, míg fürgén osonsz előre a Tetem utcán a Holtak Kapuja felé.[/p]
+    </text>
+    <itemCheck type="codeword" id="Átkozott">
+      <have>
+        <itemCheck type="codeword" id="Szamár">
+          <have>
+            <itemCheck type="codeword" id="Horgony">
+              <have>
+                <next id="27"></next>
+              </have>
+              <dontHave>
+                <itemCheck type="codeword" id="Kalóz">
+                  <have>
+                    <next id="27"></next>
+                  </have>
+                  <dontHave>
+                    <next id="40"></next>
+                  </dontHave>
+                </itemCheck>
+              </dontHave>
+            </itemCheck>
+          </have>
+          <dontHave>
+            <itemCheck type="codeword" id="Horgony">
+              <have>
+                <itemCheck type="codeword" id="Kalóz">
+                  <have>
+                    <next id="27"></next>
+                  </have>
+                  <dontHave>
+                    <next id="40"></next>
+                  </dontHave>
+                </itemCheck>
+              </have>
+              <dontHave>
+                <next id="40"></next>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="codeword" id="Szamár">
+          <have>
+            <itemCheck type="codeword" id="Horgony">
+              <have>
+                <itemCheck type="codeword" id="Kalóz">
+                  <have>
+                    <next id="27"></next>
+                  </have>
+                  <dontHave>
+                    <next id="40"></next>
+                  </dontHave>
+                </itemCheck>
+              </have>
+              <dontHave>
+                <next id="40"></next>
+              </dontHave>
+            </itemCheck>
+          </have>
+          <dontHave>
+            <itemCheck type="codeword" id="Horgony">
+              <have>
+                <next id="40"></next>
+              </have>
+              <dontHave>
+                <itemCheck type="codeword" id="Kalóz">
+                  <have>
+                    <next id="40"></next>
+                  </have>
+                  <dontHave>
+                    <next id="119"></next>
+                  </dontHave>
+                </itemCheck>
+              </dontHave>
+            </itemCheck>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 84 -->
   <!-- 85 -->
   <!-- 86 -->
@@ -512,7 +623,24 @@
   </p>
   <!-- 159 -->
   <!-- 160 -->
-  <!-- 161 -->
+  <p id="161">
+    <text>
+        [p]Elkerülve csapásaidat a két csáp csúszós szorításába fon. Semmit sem tehetsz, mikor berántanak a víz alá. Odalent, a kavargó homályon át megpillantod az Óriáspolipot, aki ezt az üreget választotta otthonául. Csattogó, csőrszerű szája felé ránt. Kétségbeesett küszködéssel végül sikerül szabaddá tenned a kardforgató karodat, bár a lény egyik csápja még mindig szorosan rád van csavarodva. Küzdened kell az életedért.[/p]
+        [p]Amíg az Óriáspolippal harcolsz a víz alatt, 1 ponttal csökkentened kell Támadóerődet.[/p]
+    </text>
+    <gatherItem id="4001" />
+    <fight type="single">
+      <enemy id="11" />
+    </fight>
+    <itemCheck type="enemy" id="11">
+      <have>
+        <next id="190"></next>
+      </have>
+      <dontHave>
+        <next id="379"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 162 -->
   <!-- 163 -->
   <!-- 164 -->
@@ -586,7 +714,12 @@
   </p>
   <!-- 188 -->
   <!-- 189 -->
-  <!-- 190 -->
+  <p id="190">
+    <text>
+        [p]Elszántan küzdesz az Óriáspolippal a hullámok alatt, ám végül tüdődből kifogy a levegő. Még mindig a felszín alatt rekedve, levegőér kapsz, ám ekkor tüdőd megtelik a sós vízzel. Akár a mélybe rántva halsz meg, akár az Óriáspolip fog előbb felfalni, az eredmény ugyanaz. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 191 -->
   <!-- 192 -->
   <!-- 193 -->
@@ -638,7 +771,14 @@
     <next id="354">Ha továbbmennél</next>
     <next id="322">Ha inkább hagyod az egészet, és visszatérsz a sziklacsúcsra</next>
   </p>
-  <!-- 220 -->
+  <p id="220">
+    <text>
+        [p]Meglepődve fedezel fel egy masszív ajtót a torony talapzatában. Valószínű ez az egyetlen befelé vezető út. Megpróbálod a lehető legcsendesebben kinyitni, azonban azt tapasztalod, hogy be van zárva. Most mi a szándékod?[/p]
+    </text>
+    <next id="326">Megkísérted betörni az ajtót?</next>
+    <next id="184">Megvizsgálod a táncoló fényt?</next>
+    <next id="52" pos="11">Elhagyod a világítótornyot (írj fel 1 órát), és másfelé kutatsz a kalózok után?</next>
+  </p>
   <!-- 221 -->
   <!-- 222 -->
   <!-- 223 -->
@@ -743,7 +883,21 @@
   <!-- 277 -->
   <!-- 278 -->
   <!-- 279 -->
-  <!-- 280 -->
+  <p id="280">
+    <text>
+        [p]A barlang belsejében levő víz most zubogni kezd, és egy iszonyatos, szürkészöld szörnyszülött emelkedik ki belőle. Szívókorongos csápjaival feléd nyúlva az Oriáspolip arra készül, hogy berántson csattogó, csőrszerű szájába, és felfaljon. Ismételten harcolnod kell az életedért.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="12" />
+      <loseRound subsequentCount="2">
+        <interrupt />
+        <next id="46"></next>
+      </loseRound>
+      <win>
+        <next id="73"></next>
+      </win>
+    </fight>
+  </p>
   <!-- 281 -->
   <!-- 282 -->
   <!-- 283 -->
@@ -759,7 +913,21 @@
   <!-- 293 -->
   <!-- 294 -->
   <!-- 295 -->
-  <!-- 296 -->
+  <p id="296">
+    <text>
+        [p]A világítótorony masszív ajtaja be van zárva, ám a Csontváz Kulcsot használva behatolsz az omladozó épületbe. Amiket odabenn találsz, az valószínűleg a Hajópusztítók tanyája lehetett. Egy vélhetően asztalként funkcionáló hordó körül számos láda van, az egyik sarokban hálózsákok. A hordó tetején [span class="takeItem" data-id="3005" data-amount="1"]gyertya[/span], [span class="takeItem" data-id="3006" data-amount="1"]két kocka[/span], [span class="takeItem" data-id="2000" data-amount="3"]3 étkezésre elegendő Élelem[/span] és egy részben elégett levél. Felemelve az égett papírdarabot, kibogarászod, amit lehet:[/p]
+        [p class="handwritten"]megváltozott. Ezentúl már nem „Leviatán”, hanem „Lábszárcsont”. Ezt a levelet semmisítsétek meg! Ha találkoznátok a szaglászóval, tegyétek, amit kell! A szokásos időben találkozunk[/p]
+        [p]A levél többi része nincsen meg. Ez aztán az értékes nyom! Nyersz 1 szerencse pontot. Miután elvetted, amit még akartál, egy csapóajtót fedezel fel a szoba egy másik sarkában. Mit teszel?[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="338" pos="0">Kinyitod a csapóajtót?</next>
+    <itemCheck type="section" id="391">
+      <dontHave>
+        <next id="391" pos="1">Visszatérsz a sziklához, hogy felderítsd a barlangot?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="309" pos="2">Elhagyod a Mallan-fokot?</next>
+  </p>
   <!-- 297 -->
   <!-- 298 -->
   <!-- 299 -->
@@ -865,7 +1033,17 @@
   <!-- 323 -->
   <!-- 324 -->
   <!-- 325 -->
-  <!-- 326 -->
+  <p id="326">
+    <text>
+        [p]Nagyot rúgsz az ajtóba, de ezzel mindössze annyit érsz el, hogy leszakítod a reteszeket, és felhívod magadra a zsiványok figyelmét, akik éppen most gyújtottak fényt, hogy a tengert járó hajókat ennek a partszakasznak a nyaktörő szikláira csalogassák. A vandálok késekkel és furkósbotokkal támadnak rád. Egyszerre küzdj meg valamennyiükkel.[/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="5" />
+      <enemy id="6" />
+      <enemy id="7" />
+    </fight>
+    <next id="369"></next>
+  </p>
   <!-- 327 -->
   <p id="328">
     <text>
@@ -930,7 +1108,18 @@
   <!-- 335 -->
   <!-- 336 -->
   <!-- 337 -->
-  <!-- 338 -->
+  <p id="338">
+    <text>
+        [p]Félrehúzván a reteszeket felemeled a csapóajtót, és felfedezed, hogy egy rémült, kiéheztetett macska van itt, egy sekély kis gödörbe zárva. Az állat félelmében és dühében kiugrik a gödörből, jól megharap és még a húsodat is végiggereblyézi a karmaival (vesztesz 2 életerő pontot), mielőtt kimenekülne az éjszakába. Kétség sem fér hozzá, hogy a vandálok mindenféle kínzás vagy éppen valami fogadás okán tartották fogva a szerencsétlen állatot.[alt][/alt][/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <itemCheck type="section" id="391">
+      <dontHave>
+        <next id="391" pos="0">Ha most viszont leereszkednél a sziklafalon a barlangnyíláshoz</next>
+      </dontHave>
+    </itemCheck>
+    <next id="309" pos="1" singleChoiceText=" Ezek után elhagyod a világítótornyot és az egész Mallan-fokot is">Ha inkább elhagynád a világítótornyot, és egyúttal az egész Mallan-fokot is</next>
+  </p>
   <!-- 339 -->
   <!-- 340 -->
   <!-- 341 -->
@@ -942,11 +1131,35 @@
   <!-- 347 -->
   <!-- 348 -->
   <!-- 349 -->
-  <!-- 350 -->
+  <p id="350">
+    <text>
+        [p]Elhagyván a Polip üregét, sikerül felkapaszkodnod a sziklafalon anélkül, hogy bármi bántódás érne. Mi lesz a következő lépésed?[alt][/alt][/p]
+    </text>
+    <itemCheck type="section" id="296">
+      <dontHave>
+        <next id="296" pos="0">Ha felkeresed a világítótornyot, és eddig még nem tetted</next>
+      </dontHave>
+    </itemCheck>
+    <next id="309" pos="1" singleChoiceText=" Úgy döntesz, távozol a Mallan-fokról.">Ha távozol a Mallan-fokról</next>
+  </p>
   <!-- 351 -->
   <!-- 352 -->
   <!-- 353 -->
-  <!-- 354 -->
+  <p id="354">
+    <text>
+        [p]Minden lépésedre ügyelve nyomulsz előre az árnyak közt. Az üregben levő víz egyszerre tajtékzani kezd, és két nyálkás, szívókorongos csáp csapódik ki a tengerből, és feléd nyúl. Sietve kardot rántasz, és felkészülsz, hogy megvédd magad.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="10" />
+      <loseRound subsequentCount="2" enemy="10">
+        <interrupt />
+        <next id="161"></next>
+      </loseRound>
+      <win>
+        <next id="280"></next>
+      </win>
+    </fight>
+  </p>
   <!-- 355 -->
   <!-- 356 -->
   <p id="357">
@@ -978,7 +1191,7 @@
   <!-- 368 -->
   <p id="369">
     <text>
-        [p]A fény ellobban, és a vitorlás, melyet a hajóroncs-rablók zátonyra akartak futtatni a sziklákon, még éppen időben fordul meg, vissza a nyílt tengerre (jegyezd fel a [em]Jószerencse[/em] szót a [em]Kalandlapodra[/em]). A vandálok testének átvizsgálásakor összesen 5 Aranyérmét és egy Csontváz Kulcsot találsz. Amint azon morfondírozol, mi is legyen a következő lépésed, magasan fekvő kilátóhelyedről felfedezel egy méretes barlangnyílást épp a part vonalában, ahol a sziklák a tengerbe érnek. Ez volna talán a kalózok rejtekhelye? Mit teszel?[/p]
+        [p]A fény ellobban, és a vitorlás, melyet a hajóroncs-rablók zátonyra akartak futtatni a sziklákon, még éppen időben fordul meg, vissza a nyílt tengerre (jegyezd fel a [em]Jószerencse[/em] szót a [em]Kalandlapodra[/em]). A vandálok testének átvizsgálásakor összesen [span class="takeItem" data-id="gold" data-amount="5"]5 Aranyérmét[/span] és egy [span class="takeItem" data-id="3004" data-amount="1"]Csontváz Kulcsot[/span] találsz. Amint azon morfondírozol, mi is legyen a következő lépésed, magasan fekvő kilátóhelyedről felfedezel egy méretes barlangnyílást épp a part vonalában, ahol a sziklák a tengerbe érnek. Ez volna talán a kalózok rejtekhelye? Mit teszel?[/p]
     </text>
     <codeword name="Jószerencse" />
     <next id="391">Lemászol a sziklán a barlanghoz?</next>
@@ -994,7 +1207,13 @@
   <!-- 376 -->
   <!-- 377 -->
   <!-- 378 -->
-  <!-- 379 -->
+  <p id="379">
+    <text>
+        [p]Hihetetlen, de sikerült elpusztítanod a teremtményt tulajdon víz alatti birodalmában (nyersz 1 szerencse pontot). Kikapaszkodsz a vízből, és engedélyezel magadnak pár percet, hogy visszanyerd a lélegzeted. Ezután bízva benne, hogy immár biztonságban vagy, felderíted a barlangot. Ám nagy csalódásodra nem vezet kifelé másik járat. A kalózok búvóhelye nyilvánvalóan nem itt van.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="350"></next>
+  </p>
   <!-- 380 -->
   <!-- 381 -->
   <!-- 382 -->
