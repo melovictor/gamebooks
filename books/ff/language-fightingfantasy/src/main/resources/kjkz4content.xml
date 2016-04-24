@@ -100,7 +100,19 @@
     <next id="74">Keményen megveted a lábad, és felkészülsz a harcra?</next>
   </p>
   <!-- 2 -->
-  <!-- 3 -->
+  <p id="3">
+    <text>
+        [p]A Trollnál nincsen semmi, ami számodra hasznos lehetne. Otthagyod hát a koszos vízben heverő testet, és nekilátsz, hogy keress valami kivezető utat ebből a bűzlő barlangból.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="171"></next>
+      </success>
+      <failure>
+        <next id="193"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 4 -->
   <!-- 5 -->
   <p id="6">
@@ -120,7 +132,20 @@
   <!-- 10 -->
   <!-- 11 -->
   <!-- 12 -->
-  <!-- 13 -->
+  <p id="13">
+    <text>
+        [p]Az alagút egy bezárt ajtónál ér véget, mely mögül mintha valami nagyméretű teremtmény mozgásának neszezését hallanád. Emellett még átható, pézsmaszerű állati szagot is lehet érezni. Merészen kinyitod az ajtót. Az odabent fogva tartott bestia azonnal feléd kapja a fejét. Úgy néz ki, mint valami óriási macskaféle. A bundája lángvörös, mancsai óriásiak, és gerincéből tüskék merednek ki. A háta mögött pedig több kígyó-szerű farkat látsz tekeregni, melyek mindegyike horgas fullánkban végződik. Ez aztán szó szerint kilencfarkú macska! Ha tényleg rá akarsz akadni a Fekete Koponya kalózaira, valahogy túl kell jutnod a dögön.[/p]
+    </text>
+    <itemCheck type="item" id="2000">
+      <have>
+        <next id="78">Ha megtámadod a kardoddal</next>
+        <next id="162">Ha inkább csak eltávolítanád az útból, mondjuk azzal, hogy odavetsz neki némi ételt</next>
+      </have>
+      <dontHave>
+        <next id="78"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="14">
     <text>
         [p]Hány Aranytallért ajánlasz fel?[/p]
@@ -247,7 +272,21 @@
   <!-- 37 -->
   <!-- 38 -->
   <!-- 39 -->
-  <!-- 40 -->
+  <p id="40">
+    <text>
+        [p]A kapuhoz közeledve, a szemed sarkából mintha mozgást látnál egy sötét sikátorban. Hirtelen két alak lép ki eléd az utcára. Egyikük egy nyurga figura, kezében éles szablyával, nyaka körül meg akasztófa-hu-rokkal. A másik viszont egy kimondottan csinos khuli származású nő, copfba kötött hosszú, fényes fekete hajjal, finom bőrpáncélban, és egy keskeny pengéjű karddal. Az elsőt nyomban felismered az utad során hallott történetek alapján: a hírhedt kalóz, Akasztófa Silas. Kísérője pedig Wu-Lin, egy zsoldos, aki nem sokkal Cinnabar halála előtt csatlakozott a kalózvezér bandájához. Mindketten viselik a Fekete Koponya kalózainak jelét. - Lám-lám. Itt vagyunk a Holtak Kapujánál - kuncog fel Akasztófa Silas. - És hamarosan eggyel több tetem lesz a Tetem utcán. - Wu-Lin nem szól semmit, viszont csillogó pengéjét a magasba tartva feléd közelít. Egyszerre küzdj meg mindkettejükkel![/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="15" />
+      <enemy id="16" />
+      <win>
+        <text>
+            [p]Mivel nem kívánsz másokkal is összefutni Cinnabar bandájából, így kisietsz a városból.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="119"></next>
+  </p>
   <!-- 41 -->
   <!-- 42 -->
   <!-- 43 -->
@@ -464,7 +503,12 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 84 -->
+  <p id="84">
+    <text>
+        [p]Merészen kimondod a szót: „Leviatán”.[/p]
+    </text>
+    <next id="269"></next>
+  </p>
   <!-- 85 -->
   <!-- 86 -->
   <!-- 87 -->
@@ -531,7 +575,21 @@
   <!-- 116 -->
   <!-- 117 -->
   <!-- 118 -->
-  <!-- 119 -->
+  <p id="119">
+    <text>
+        [p]A temető rögtön a városfal külső oldalánál fekszik. Oszlopos bejáratát nyugtalanító szobrok díszítik, és a köd csak fokozza az egész hely baljós hangulatát. A nyirkos sírkövek és kripták között lassan osonva váratlanul ág reccsenését hallod valahonnan balról, melytől csaknem kiugrasz a bőrödből. Megpördülsz, és biztos vagy benne, hogy láttál valamit eltűnni az egyik vicsorgó szobor mögött. Nem vagy egyedül a temetőben. Valami más is kóborol itt a sötétség leple alatt. Egy kripta sarkát megkerülve két, tengerésznek tűnő férfit pillantasz meg, akik éppen távolodnak tőled a ködben, miközben egy súlyos ládát cipelnek. Hova mehetnek? S mire készülnek?[/p]
+    </text>
+    <itemCheck type="item" id="3007">
+      <have>
+        <next id="175"></next>
+      </have>
+      <dontHave>
+        <next id="312">Követed a két férfit, hogy meglásd, merre mennek?</next>
+        <next id="284">Meglepetésszerűen rájuk támadsz?</next>
+        <next id="52" pos="11">Nem foglalkozol velük, és inkább elhagyod a temetőt, hogy máshol keresgélj (Írj fel 1 órát)?</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 120 -->
   <!-- 121 -->
   <!-- 122 -->
@@ -607,7 +665,14 @@
   <!-- 147 -->
   <!-- 148 -->
   <!-- 149 -->
-  <!-- 150 -->
+  <p id="150">
+    <text>
+        [p]A hagyomány úgy mondja, hogy hajdanán a kalózok megöltek egyet maguk közül azon a helyen, ahol elrejtették kincseiket, vagy amely helyet egyszerűen csak titokban akartak tartani. így az halála után szellemként őrködhetett szünet nélkül. Valószínűleg Cinnabar is hasonló dolgot művelt itt. Bizakodva mondod ki a jelszót: - Lábszárcsont. - Ezután visz-szafojtott lélegzettel várod, hogy mi lesz Lámpás Jack reakciója.[/p]
+        [p]- Átmeheeeetsz... - sóhajtja a szellemkalóz, majd a földbe süllyed a lábad előtt. Neked sem kell kétszer mondani, már tovább is sietsz a folyosón. Az út egy lépcsősornál ér véget, mely levezet a temető alá. Egy rövidke járat végénél egy T-elágazáshoz érkezel.[/p]
+    </text>
+    <next id="221">Ha balra mész tovább</next>
+    <next id="13">Ha inkább jobbra fordulsz</next>
+  </p>
   <!-- 151 -->
   <!-- 152 -->
   <!-- 153 -->
@@ -650,7 +715,13 @@
   <!-- 168 -->
   <!-- 169 -->
   <!-- 170 -->
-  <!-- 171 -->
+  <p id="171">
+    <text>
+        [p]Végül egy elrozsdásodott vaslétrához érsz, melyet az alagút egyik falának támasztottak, és ami egy csatornafedélhez vezet. Kimászva a feletted húzódó utcára, elégedetten egy nagyot lélegzel a friss tengeri levegőből, hogy végre megszabadultál a csatorna elképesztő bűzétől. Írj fel 1 órát.[/p]
+    </text>
+    <add amount="1" to="time" />
+    <next id="52"></next>
+  </p>
   <!-- 172 -->
   <!-- 173 -->
   <!-- 174 -->
@@ -700,7 +771,13 @@
     </fight>
     <next id="369"></next>
   </p>
-  <!-- 185 -->
+  <p id="185">
+    <text>
+        [p]Durr! A súlyos vashorgony oldalba vág, és az ütés ereje a földhöz csap (veszítesz 3 életerő pontot). Amint tekintetedet a ködbe mélyeszted, egy feléd közeledő, árnyékba burkolózó figurát veszel észre. Kétségbeesetten próbálkozol előrántani a fegyvered.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <next id="231"></next>
+  </p>
   <!-- 186 -->
   <p id="187">
     <text>
@@ -722,13 +799,33 @@
   </p>
   <!-- 191 -->
   <!-- 192 -->
-  <!-- 193 -->
+  <p id="193">
+    <text>
+        [p]Amint vonszolod magad előre az alagutak nyálkás mocskában, egy roppant nagy, kígyószerű lény tör elő a szennyes víz alól. A Csatornakígyó legalább öt méteres lehet, gusztustalan zöldesszürke színekben játszik. Azonnal rád támad.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="14" />
+      <win>
+        <text>
+            [p]Addig mész, míg végül ki nem jutsz a csatornából. Írj fel 2 órát.[/p]
+        </text>
+        <add amount="2" to="time" />
+      </win>
+    </fight>
+    <next id="52"></next>
+  </p>
   <!-- 194 -->
   <!-- 195 -->
   <!-- 196 -->
   <!-- 197 -->
   <!-- 198 -->
-  <!-- 199 -->
+  <p id="199">
+    <text>
+        [p]Felfedezel egy érdekes, nyolcoldalú [span class="takeItem" data-id="3008" data-amount="1"]Kék Ékkövet[/span], egy selyembéléses ládikában (írd fel a Kalandlapodra). Befejezvén a keresést, úgy döntesz, ideje utánanézni, mi is folyik itt valójában, így elindulsz a másik irányba, keresztül a T-elágazáson. Írj fel 1 órát.[/p]
+    </text>
+    <add amount="1" to="time" />
+    <next id="13"></next>
+  </p>
   <!-- 200 -->
   <!-- 201 -->
   <!-- 202 -->
@@ -779,7 +876,13 @@
     <next id="184">Megvizsgálod a táncoló fényt?</next>
     <next id="52" pos="11">Elhagyod a világítótornyot (írj fel 1 órát), és másfelé kutatsz a kalózok után?</next>
   </p>
-  <!-- 221 -->
+  <p id="221">
+    <text>
+        [p]Miközben a kalózok tartózkodási helyét keresed, felfedezel egy sor gyűléstermet, raktárhelyiséget és alvókamrát, de minden kong az ürességtől.[/p]
+    </text>
+    <next id="305">Ha maradsz, hogy aprólékosabb kutatást végezz</next>
+    <next id="13">Ha inkább visszatérnél a T-elágazáshoz, és követnéd az alagutat az ellenkező irányba</next>
+  </p>
   <!-- 222 -->
   <!-- 223 -->
   <!-- 224 -->
@@ -838,12 +941,46 @@
   <!-- 244 -->
   <!-- 245 -->
   <!-- 246 -->
-  <!-- 247 -->
+  <p id="247">
+    <text>
+        [p]A csempészek végül megállnak egy mohával és repkénnyel sűrűn benőtt, régi sírbolt előtt. Betolják a gránitajtót, és eltűnnek odabenn. Vársz még néhány percet, mielőtt meggyújtanád a lámpásodat, ezután te magad is áthaladsz a bejáraton. (Írj fel 1 órát!) Lámpád fénye egy kis folyosót világít meg, mely bevezet a homályba. Amint átléped a küszöböt, egy másik fényforrás bukkan fel a járat túlsó végén, és megindul feléd. Egy öregember kísértete suhan végig az alagúton; szemgödrei mély üregek, körmei alatt a sír földjének mocska. Az izzó jelenés félelemmel tölt el, és még a vér is meghűl benned, mikor meglátod, hogy a kezében tartott lámpás egy emberi koponya. A Rákok Kikötőjében mesélt legendákból már tudod, hogy ez a jelenés csakis Lámpás Jack szelleme lehet. A rémség nem támad rád, mindössze megáll néhány méternyire előtted. Állkapcsa lenyaklik, és mindössze egyetlen szót képez: - Jelszóóó...[/p]
+    </text>
+    <add amount="1" to="time" />
+    <itemCheck type="section" id="296">
+      <have>
+        <userInput type="text">
+          <label>Mi a jelszó?</label>
+          <result text="lábszárcsont">
+            <next id="150"></next>
+          </result>
+          <result text="leviatán">
+            <next id="84"></next>
+          </result>
+          <resultElse>
+            <next id="269"></next>
+          </resultElse>
+        </userInput>
+      </have>
+      <dontHave>
+        <text>
+            [p]Pechedre nem ismered a jelszót.[/p]
+        </text>
+        <next id="269"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 248 -->
   <!-- 249 -->
   <!-- 250 -->
   <!-- 251 -->
-  <!-- 252 -->
+  <p id="252">
+    <text>
+        [p]Miközben kutakodsz, megmar egy mérges Vöröshátú Pók (vesztesz 3 életerő pontot). Befejezvén a keresést, úgy döntesz, ideje utánanézni, mi is folyik itt valójában, így elindulsz a másik irányba, keresztül a T-elágazáson. Írj fel 1 órát.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <add amount="1" to="time" />
+    <next id="13"></next>
+  </p>
   <!-- 253 -->
   <!-- 254 -->
   <!-- 255 -->
@@ -865,7 +1002,12 @@
   <!-- 266 -->
   <!-- 267 -->
   <!-- 268 -->
-  <!-- 269 -->
+  <p id="269">
+    <text>
+        [p]- Behatoló! - ordítja a kalóz-szellem, és egy éktelen visítással feléd röppen. Előrántod fegyvered, de minden alkalommal, mikor a rémségbe döfsz, a pengéd egyszerűen áthatol rajta, míg te sajnos megérzed, amint a jelenés karmai késként hasítanak a húsodba. Nincs esélyed a szellemmel szemben. Kellemetlen halál vár rád. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="270">
     <text>
         [p]Megtorpansz, míg próbálod eldönteni, melyik bölcscsel is tanácskozz. A hosszú szakállú férfi bő, narancsszínű köntöst visel, és egy vasszögekkel kivert deszkán üldögél, amelyik nyilván nem lehet valami kényelmes. A második látnok, aki a Sors Mestereként reklámozza magát, teljesen kopasz, és szürke ruháját misztikus jelképek borítják. Azt csak most veszed észre, hogy vak. Az utolsó tetőtől talpig rongyokba van bugyolálva, és egy pakli kártya fekszik előtte. És nem szól semmit. Az egyetlen módja, hogy megtudj bármit is a jósoktól az, ha 2 Aranyat adományozol nekik. Melyiküket választod?[/p]
@@ -901,7 +1043,16 @@
   <!-- 281 -->
   <!-- 282 -->
   <!-- 283 -->
-  <!-- 284 -->
+  <p id="284">
+    <text>
+        [p]Meghallván téged a két csempész lehajítja a ládát, majd mindketten előrántják szablyáikat az övükből. Egyszerre kell megküzdened velük.[/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="17" />
+      <enemy id="18" />
+    </fight>
+    <next id="373"></next>
+  </p>
   <!-- 285 -->
   <!-- 286 -->
   <!-- 287 -->
@@ -936,7 +1087,19 @@
   <!-- 302 -->
   <!-- 303 -->
   <!-- 304 -->
-  <!-- 305 -->
+  <p id="305">
+    <text>
+        [p]Első feltételezésed, hogy a szoba lakatlan, beigazolódni látszik. Most, hogy semmi sem akadályoz, nyugodtan nekiláthatsz, hogy alaposabban átvizsgáld a helyiséget. Áttúrva a ládákat és feltört dobozokat, egy [span class="takeItem" data-id="1001" data-amount="1"]kardot[/span] találsz, [span class="takeItem" data-id="2000" data-amount="5"]5 étkezésre elegendő Élelmet[/span], és összesen [span class="takeItem" data-id="gold" data-amount="10"]10 Aranyat[/span].[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="199"></next>
+      </success>
+      <failure>
+        <next id="252"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 306 -->
   <!-- 307 -->
   <!-- 308 -->
@@ -993,7 +1156,19 @@
     </itemCheck>
   </p>
   <!-- 311 -->
-  <!-- 312 -->
+  <p id="312">
+    <text>
+        [p]Tovább követed a két gyanús fickót, akik egyáltalán nincsenek tudatában a jelenlétednek.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="247"></next>
+      </success>
+      <failure>
+        <next id="284"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 313 -->
   <!-- 314 -->
   <p id="315">
@@ -1018,7 +1193,12 @@
   <!-- 318 -->
   <!-- 319 -->
   <!-- 320 -->
-  <!-- 321 -->
+  <p id="321">
+    <text>
+        [p]A vasmacska csupán egy hajszállal kerüli el a mellkasodat. Szemedet a ködbe mélyesztve egy feléd közeledő, homályos alakot veszel ki. Fegyvert rántva felkészülsz a harcra.[/p]
+    </text>
+    <next id="231"></next>
+  </p>
   <p id="322">
     <text>
         [p]Sikerül felkapaszkodnod a kőszirt tetejére, anélkül, hogy bármi egyéb megzavarna, és megfontolod, mit is tegyél az elkövetkezendőkben.[alt][/alt][/p]
@@ -1160,7 +1340,21 @@
       </win>
     </fight>
   </p>
-  <!-- 355 -->
+  <p id="355">
+    <text>
+        [p]A kikötő csatornái egy nyíláson keresztül, a városfalon, a nyílt tengerbe ömlenek. Lámpásod fényénél belépsz a csatornába. Egyik bűzlő járatot követve a másik után bolyongsz az útvesztőben, jelét sem találva rejtett támaszpontnak vagy akár a gazfickók bármiféle tevékenységének. (Írj fel 1 órát!) Egyre csak küzdve magad előre a sötétben és nedvességben, lassacskán locsogó neszekre leszel figyelmes a hátad mögül. Megtorpansz, és hátrafordulsz, hogy szembenézhess azzal, ami követ, bármi légyen is az. Az árnyékból egy rút, görnyedt tartású humanoid bontakozik ki, lelógó karjában durván faragott bunkóval. Amint észrevesz téged, a Troll egészen izgalomba jön. - Egy hallcos! Éppen az, amire Gunknak szüksége van, hogy megtölthesse a hasát! - Még a nyál is csorog az agyarairól, amint Gunk, a Csatorna Troll megemeli a bunkóját, hogy bezúzhassa a koponyádat.[/p]
+        [p]Amíg Gunkkal küzdesz, csökkentened kell Támadóerődet 1-gyel, a csatornák bűzének gyomorkavaró hatása miatt.[/p]
+    </text>
+    <add amount="1" to="time" />
+    <gatherItem id="4001" />
+    <fight type="single">
+      <enemy id="13" />
+      <win>
+        <loseItem id="4001" />
+      </win>
+    </fight>
+    <next id="3"></next>
+  </p>
   <!-- 356 -->
   <p id="357">
     <text>
@@ -1201,7 +1395,13 @@
   <!-- 370 -->
   <!-- 371 -->
   <!-- 372 -->
-  <!-- 373 -->
+  <p id="373">
+    <text>
+        [p]A csempészek halottak, te pedig belesel a ládába. Telis-tele van hamis pénzekkel, maguknál a haramiáknál pedig [span class="takeItem" data-id="gold" data-amount="4"]4 Aranytallért[/span] találsz. Bár olyan alaposan keresgélsz, amennyire csak lehet ebben a ködben és sötétben, ám képtelen vagy kideríteni, merre is tarthattak a gazfickók. Mivel itt már nincs dolgod, elhagyod a temetőt. Írj fel 1 órát.[/p]
+    </text>
+    <add amount="1" to="time" />
+    <next id="52"></next>
+  </p>
   <!-- 374 -->
   <!-- 375 -->
   <!-- 376 -->
