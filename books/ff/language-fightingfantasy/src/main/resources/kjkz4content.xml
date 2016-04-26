@@ -522,7 +522,16 @@
   <!-- 95 -->
   <!-- 96 -->
   <!-- 97 -->
-  <!-- 98 -->
+  <p id="98">
+    <text>
+        [p]Beledobálod a pénzt az edénykéjébe, azonban a jövendőmondó továbbra is néma marad. Anélkül, hogy felnézne, megfordítja a pakli legtetején levő kártyát. Egy fekete koponya van ráfestve! Érzed, amint ereidben megfagy a vér, és valamilyen gonosz jelenlét nehezedik rád. Riadt dühvei rántasz kardot, és az előtted kuporgó alakra sújtasz. Csapásodra a figura helyén csupán egy nagy kupac rongy marad - semmi nyoma, hogy valaha is élő ember lett volna! (Vesztesz 2 szerencse pontot, és jegyezd fel a [em]Kalandlapodra[/em] az [em]Átkozott[/em] szót!) Pánikszerű gyorsasággal fordulsz sarkon, és keresztülrohansz a Templom negyeden. Csupán akkor állsz meg, mikor már jó néhány utcát tudhatsz magad és a jósok közt. írj fel 1 órát.[/p]
+    </text>
+    <add amount="-2" to="luck" />
+    <add amount="1" to="time" />
+    <codeword name="Átkozott" />
+    <add amount="-2" to="gold" />
+    <next id="334"></next>
+  </p>
   <!-- 99 -->
   <!-- 100 -->
   <!-- 101 -->
@@ -736,7 +745,30 @@
   <!-- 164 -->
   <!-- 165 -->
   <!-- 166 -->
-  <!-- 167 -->
+  <p id="167">
+    <text>
+        [p]A tálkába hulló érmék csendülésére a vak férfi feléd fordítja a fejét. - Üdv néked, útitársam az élet útján - hangzik a szívélyes köszöntés. - Add a kezed, és elmondom neked, mi vár ezen az ismeretlen szigeten; a jövőben. -Valamelyest bizonytalanul nyújtod oda a tenyered a látnoknak, aki először a levegőbe kap, de aztán kemény szorításába fogja a kézfejedet. - Ahhh -leheli, - egy bátor lélek, aki az igazságért és a rendért viaskodik. Cheelah mosolya ragyogjon szándékaid felett! A Szerencse és az Esély vezéreljen utadon. Minden jót neked! - Ez minden, amit kapsz 2 Aranyért? A Sors Mestere elengedi a kezedet, és nem mond semmi többet.[/p]
+    </text>
+    <add amount="-2" to="gold" />
+    <itemCheck type="gold" id="2">
+      <have>
+        <itemCheck type="section" id="393">
+          <dontHave>
+            <next id="393" pos="0">Ha most a szakállas gurunak adnál némi adományt</next>
+          </dontHave>
+        </itemCheck>
+        <next id="98" pos="1">Ha a néma jövendőmondót szólítod meg 2 Aranytallérért cserébe</next>
+        <next id="334" pos="11">Ha viszont inkább továbbmennél a magad útján (írj fel 1 órát)</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Továbbmész a magad útján. Írj fel 1 órát.[/p]
+        </text>
+        <add amount="1" to="time" />
+        <next id="334"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 168 -->
   <!-- 169 -->
   <!-- 170 -->
@@ -1621,7 +1653,31 @@
     </test>
   </p>
   <!-- 392 -->
-  <!-- 393 -->
+  <p id="393">
+    <text>
+        [p]-    Á, igen - mosolyog a guru, boldogan elfogadva a pénzed (húzz le 2 Aranytallért a [em]Kalandlapodról[/em]) -, te vagy az átok megtörője, aki megszabadít minket a gonosztól, az igazság keresője, a rossz megjavítója. - Valahogy az az érzésed, hogy a bölcs őszintén szól.[/p]
+        [p]-    Légy óvatos, bosszúálló, mert vizes sír vár rád a Rákollók közt, és az alsó alagutak nem tartogatnak mást, csupán halált. Kutasd fel a jelzőfényt, és a tiltott ösvényen járó asszonyt. - Elámulsz, majd fontolóra veszed, hogyan tovább.[/p]
+    </text>
+    <add amount="-2" to="gold" />
+    <itemCheck type="gold" id="2">
+      <have>
+        <itemCheck type="section" id="167">
+          <dontHave>
+            <next id="167" pos="0">Ha újabb 2 Aranyért beszélni szeretnél a vak jóssal</next>
+          </dontHave>
+        </itemCheck>
+        <next id="98" pos="1">Ha 2 Aranytallérért a néma jövendőmondót szólítod meg</next>
+        <next id="334" pos="11">Ha inkább elhagynád a Templom negyedet (jegyezz fel 1 órát)</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Úgy döntesz, elhagyod a Templom negyedet. Jegyezz fel 1 órát.[/p]
+        </text>
+        <add amount="1" to="time" />
+        <next id="334"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 394 -->
   <!-- 395 -->
   <p id="396">
