@@ -129,17 +129,16 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
         Assert.notNull(itemId, "The parameter 'itemId' cannot be null!");
         Assert.isTrue(itemId.length() > 0, "The parameter 'itemId' cannot be empty!");
 
-        return doHandleConsumeItem(request, itemId);
+        return doHandleConsumeItem(getWrapper(request), itemId);
     }
 
     /**
      * Method for actually consuming an item (provision or potion).
-     * @param request the {@link HttpServletRequest}
+     * @param wrapper the {@link HttpSessionWrapper} object
      * @param itemId the id of the item to change the state
      * @return usually nothing
      */
-    protected String doHandleConsumeItem(final HttpServletRequest request, final String itemId) {
-        final HttpSessionWrapper wrapper = getWrapper(request);
+    protected String doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
         getItemInteractionRecorder().recordItemConsumption(wrapper, itemId);
         final Paragraph paragraph = wrapper.getParagraph();
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();

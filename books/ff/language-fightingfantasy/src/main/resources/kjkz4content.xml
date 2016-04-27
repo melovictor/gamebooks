@@ -253,7 +253,12 @@
   </p>
   <!-- 23 -->
   <!-- 24 -->
-  <!-- 25 -->
+  <p id="25">
+    <text>
+        [p]Keresztüllépsz az ajtónyíláson, de túl későn veszed észre, hogy mindkét oldalon megmozdul valami az árnyékban. Egy kemény ütés a tarkódra, és nyomban eszméletedet veszted.[/p]
+    </text>
+    <next id="158"></next>
+  </p>
   <!-- 26 -->
   <p id="27">
     <text>
@@ -294,7 +299,65 @@
     <next id="119"></next>
   </p>
   <!-- 41 -->
-  <!-- 42 -->
+  <p id="42">
+    <text>
+        [p]A Bazár szinte mágnesként vonz magához színes bódéival, no meg távoli vidékeket idéző hangjaival és illataival. Ügyet sem vetsz a selymekre és fűszeres kosarakra, ellenben figyelmedet felkelti egy pazarul díszített bódé, benne számtalan különféle, szokatlan tárgy. Mikor beszélgetsz a boltossal, kiderül, hogy Talizmánárus - azaz egy olyan kereskedő, aki saját állítása szerint mágikus ereklyékkel foglalkozik. Azt azonban meg kell hagyni, hogy némelyik tárgyra pillantva elég nehéz elhinni, hogy ezek bármiféle kapcsolatban állnának az ezoterikus erőkkel. A Talizmánárus által kínált portékákat illetve az árakat az alábbi lista tartalmazza. Ha szeretnéd, akármelyiket megvásárolhatod, de persze csak addig, míg futja a pénzedből.[/p]
+        [div data-market=""][/div]
+    </text>
+    <market>
+      <sale price="7" stock="1" id="3010" />
+      <sale price="5" stock="1" id="3011" />
+      <sale price="9" stock="1" id="3012" />
+      <sale price="8" stock="1" id="3013" />
+      <sale price="6" stock="1" id="3014" />
+      <sale price="4" stock="1" id="3015" />
+      <after>
+        <itemCheck type="item" id="3010">
+          <have>
+            <text>
+            [p]Az egyetlen darab elefántcsontból faragott amulett egy büszke oroszlán fejét mintázza. Eredetileg egy primitív törzsé volt, akik úgy hitték, megvédi birtokosát a vudu sötét hatalmától.[/p]
+        </text>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3011">
+          <have>
+            <text>
+            [p]A karkötő bőrből van, és egy cápa borotvaéles fogai merednek kifelé belőle, mindösszesen harmincnyolc. Elég szokatlan holmi, bár ebben a pillanatban nem úgy tűnik, mintha bármiféle mágikus tulajdonsága volna - mindazonáltal a későbbiekben hasznos lehet.[/p]
+        </text>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3012">
+          <have>
+            <text>
+            [p]A Talizmánárus elmondja neked, hogy az iránytű belsejében levő mágneses kő jelzi a nagy tömegű aranyat - tehát nélkülözhetetlen minden reménybeli kincsvadász számára. Csak miután átadtad a pénzt, akkor tűnődsz el, hogy vajon miért nem használta a Talizmánárus maga az iránytűt, hogy megcsinálja a szerencséjét.[/p]
+        </text>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3013">
+          <have>
+            <text>
+            [p]Csupán egyetlen alkalomra elegendő van az italból, ám mikor megiszod, visszaállítja életerő pontjaidat a Kezdeti értékre, és a következő csatában 2-vel megnövelheted a Támadóerődet.[/p]
+        </text>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3014">
+          <have>
+            <text>
+            [p]A hajfürt az Elvinek néven ismert aprónép egy példányának fejéről származik, akik Kakhabadban, a Shamutanti dombok közt élnek, és a Cselszövő Istent, Logaan nagyurat tisztelik. Mint ilyen, a tincs szerencsét hozhat neked. Ha bármikor azt az utasítást kapod, hogy [em]tedd próbára[/em] szerencséd, ezután minden alkalommal levonhatsz 1-et a dobás eredményéből.[/p]
+        </text>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3015">
+          <have>
+            <text>
+            [p]A Sötétfa Karkötőt úgy faragták, hogy saját farkába harapó kígyót formáz. Felhúzva semmi szokatlant nem érzel - legalábbis ebben pillanatban nem.[/p]
+        </text>
+          </have>
+        </itemCheck>
+      </after>
+    </market>
+    <next id="200"></next>
+  </p>
   <!-- 43 -->
   <!-- 44 -->
   <!-- 45 -->
@@ -363,6 +426,15 @@
         </itemCheck>
       </dontHave>
     </itemCheck>
+    <itemCheck type="item" id="3009">
+      <have>
+        <itemCheck type="section" id="101">
+          <dontHave>
+            <next id="101" pos="7">A Néma Szamár fogadó?</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+    </itemCheck>
     <itemCheck type="pos" id="11">
       <have>
         <add amount="1" to="time" />
@@ -371,11 +443,25 @@
   </p>
   <!-- 53 -->
   <!-- 54 -->
-  <!-- 55 -->
+  <p id="55">
+    <text>
+        [p]Már elegendő időt vesztegettél el itt, tehát úgy dön-tesz, távozol a Néma Szamárból.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="218"></next>
+      </success>
+      <failure>
+        <next id="25"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 56 -->
   <!-- 57 -->
   <!-- 58 -->
-  <!-- 59 -->
+  <p id="59">
+    <empty />
+  </p>
   <!-- 60 -->
   <p id="61">
     <empty />
@@ -547,7 +633,13 @@
   </p>
   <!-- 99 -->
   <!-- 100 -->
-  <!-- 101 -->
+  <p id="101">
+    <text>
+        [p]A Néma Szamár a Karom utca melletti, egyik koszos kis mellékutcájában található. Többen is gyanakvóan vizslatnak, mikor belépsz, ám senki sem próbál az utadba állni. Vigyázva lépdelsz felfelé a nyikorgó falépcsőn, majd az első folyosón álló, legelső ajtó előtt találod magad - 101-es szoba. A kulcs elfordul a zárban, és az ajtót kitárva belépsz a szobába, melynek bútorzata csupán egy asztalból és egy székből áll. Ám amit ott megpillantasz, attól jeges borzongás fut végig a gerinceden. Az asztalon egy feketére festett, színes tollakból álló fejdíszt viselő emberi koponya pihen. A Fekete Koponya! Rossz előjel. Mivel az égvilágon senki sincs itt, minden bizonnyal Cinnabar hívei készítették ide, hogy ezzel hátráltassanak téged. A koponya ígéretes nyom, bár továbbra is nyugtalanít.[/p]
+    </text>
+    <next id="244">Ha magaddal akarod vinni</next>
+    <next id="55">Ha nem szeretnéd</next>
+  </p>
   <!-- 102 -->
   <p id="103">
     <text>
@@ -1036,7 +1128,9 @@
     <next id="287"></next>
   </p>
   <!-- 164 -->
-  <!-- 165 -->
+  <p id="165">
+    <empty />
+  </p>
   <!-- 166 -->
   <p id="167">
     <text>
@@ -1064,7 +1158,9 @@
   </p>
   <!-- 168 -->
   <!-- 169 -->
-  <!-- 170 -->
+  <p id="170">
+    <empty />
+  </p>
   <p id="171">
     <text>
         [p]Végül egy elrozsdásodott vaslétrához érsz, melyet az alagút egyik falának támasztottak, és ami egy csatornafedélhez vezet. Kimászva a feletted húzódó utcára, elégedetten egy nagyot lélegzel a friss tengeri levegőből, hogy végre megszabadultál a csatorna elképesztő bűzétől. Írj fel 1 órát.[/p]
@@ -1213,7 +1309,16 @@
   <!-- 204 -->
   <!-- 205 -->
   <!-- 206 -->
-  <!-- 207 -->
+  <p id="207">
+    <text>
+        [p]Átfurakodva a szerencsejátékosok nyüzsgő tömegén, egyszer csak azt érzed, hogy a kezedbe nyomnak valamit. Sietve körülpillantasz, és úgy véled, mintha egy öregasszony távozna meglehetősen iparkodva a közeledből, de már el is tűnt a kavarodásban. Egy lepecsételt borítékot kaptál. Először is kimész, csak azután töröd fel a viaszpecsétet, és bontod fel a borítékot. Egy levél és egy [span class="takeItem" data-id="3009" data-amount="1"]vaskulcs[/span] van benne. Az üzenet pedig az alábbi:[/p]
+        [p class="handwritten"]Ha eltökélt szándékod, hogy legyőzd a Fekete Koponya kalózait, akkor menj el a Néma Szamár fogadó 101-es szobájába.[/p]
+        [p class="handwritten closing"]Egy jóbarát[/p]
+        [p]A kulcs tehát minden bizonnyal a szobát nyitja a fogadóban. Írj fel 2 órát.[/p]
+    </text>
+    <add amount="2" to="time" />
+    <next id="334"></next>
+  </p>
   <!-- 208 -->
   <p id="209">
     <text>
@@ -1240,7 +1345,23 @@
   <!-- 215 -->
   <!-- 216 -->
   <!-- 217 -->
-  <!-- 218 -->
+  <p id="218">
+    <text>
+        [p]Kezed már épp a kilincsre kulcsolódik, mikor megdermedsz, mert odakintről padlódeszka reccsenését hallod. Van itt valaki - valaki, aki rosszban sántikál? Csak a biztonság kedvéért csendesen előveszed a kardod, és kinyitod az ajtót. De nem lépsz ki. Szinte azon nyomban két fekete ruhás figura szökken az ajtónyílásba, előreszegezett fegyvereikkel. Quezkari két Híve támadott meg, kiknek eltökélt szándéka, hogy megakadályozzanak küldetésed teljesítésében. A keskeny ajtónyílásban egyesével küzdhetsz meg a gonosz szolgáival.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="20" />
+      <enemy id="21" />
+      <win>
+        <text>
+            [p]Gyorsan átkutatod a fanatikusok holttestét, de semmi érdemlegesre nem bukkansz, így sietve elhagyod a kocsmát. Írj fel 1 órát, illetve jegyezd fel [em]Kalandlapodra[/em] a [em]Szamár[/em] szót.[/p]
+        </text>
+        <codeword name="Szamár" />
+        <add amount="1" to="time" />
+      </win>
+    </fight>
+    <next id="287"></next>
+  </p>
   <p id="219">
     <text>
         [p]Az üreg széléhez érve már látod, hogy csupán egy keskeny perem fut néhány méternyire a robajló hullámok felett, és vezet be a homályos mélységbe.[/p]
@@ -1357,7 +1478,14 @@
   </p>
   <!-- 242 -->
   <!-- 243 -->
-  <!-- 244 -->
+  <p id="244">
+    <text>
+        [p]Amint felemeled a koponyát, elönt a félelem és a téboly mindent átható érzése. Szörnyű átok áldozata lettél (vesztesz 2 szerencse és 1 ügyesség pontot). Ösztönösen kiejted a kezedből a koponyát, amely így darabokra törik a padlón.[/p]
+    </text>
+    <add amount="-1" to="skill" />
+    <add amount="-2" to="luck" />
+    <next id="55"></next>
+  </p>
   <!-- 245 -->
   <!-- 246 -->
   <p id="247">
@@ -1556,6 +1684,15 @@
             </itemCheck>
           </dontHave>
         </itemCheck>
+        <itemCheck type="item" id="3009">
+          <have>
+            <itemCheck type="section" id="101">
+              <dontHave>
+                <next id="101" pos="7">A Néma Szamár fogadóban?</next>
+              </dontHave>
+            </itemCheck>
+          </have>
+        </itemCheck>
       </dontHave>
     </itemCheck>
   </p>
@@ -1565,7 +1702,24 @@
   <!-- 291 -->
   <!-- 292 -->
   <!-- 293 -->
-  <!-- 294 -->
+  <p id="294">
+    <text>
+        [p]Calabrius Számológépe egy olyan óriási mechanikus szerkezet, melyet számtalan fogaskerék, kapcsoló és kar alkot. Jellegzetessége egy széles panel öt ablakkal, melyek mögött forgódobok vannak, rajtuk számokkal. A gép mellett ott áll kezelője, egy varázslókinézetű figura, feltevésed szerint maga Calabrius.[/p]
+        [p]-    Lépjetek elő, lépjetek elő! Ki fogadja el Calabrius Számológépének kihívását? Csupán két Arany, ám tízet nyerhetsz! - kiáltja a férfi. Úgy gondolod, hogy a kihívás valamiféle feladványt jelenthet, melyet a gép alkot meg.[/p]
+    </text>
+    <next id="364" pos="1">Ha elfogadod Calabrius kihívását</next>
+    <itemCheck type="section" id="81">
+      <dontHave>
+        <next id="81" pos="2">Ha inkább megnézed a Gondviselés nyilát</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="9">
+      <dontHave>
+        <next id="9" pos="3">Ha a Csodálatos Armarnónál tennél próbát</next>
+      </dontHave>
+    </itemCheck>
+    <next id="207" pos="4">Ha elhagyod a Játékbarlangokat</next>
+  </p>
   <!-- 295 -->
   <p id="296">
     <text>
@@ -1588,9 +1742,19 @@
   <!-- 298 -->
   <!-- 299 -->
   <!-- 300 -->
-  <!-- 301 -->
+  <p id="301">
+    <empty />
+  </p>
   <!-- 302 -->
-  <!-- 303 -->
+  <p id="303">
+    <text>
+        [p]A Játékbarlangok néven ismert hely a városnak a Karomként emlegetett területén található, amely a kikötő legszegényebb és legveszedelmesebb része. Maguk a Játékbarlangok egy hatalmas kőépületben kaptak helyet, melynek roppant nagy tölgyfaajtaját vasszegecsek ékesítik. Ezt a bejáratot két Troll őr vigyázza. Mikor elhaladsz mellettük, gyanús pillantást vetnek rád, és az egyik a maga primitív módján megjegyzi: - Emlékezz, nincs harcolás! - Odabent a pipafű füstjének sűrű felhője üli meg a helyiséget, és tömve van kevéssé bizalomgerjesztő alakokkal. Elvegyülve köztük szemügyre veszed a kínálkozó játék-lehetőségeket. Miután röviden körbenéztél, hármat is felfedezel, ami érdekelhet. Melyiket vizsgálnád meg közelebbről?[/p]
+    </text>
+    <next id="81">A Gondviselés nyilát?</next>
+    <next id="294">Calabrius Számológépét?</next>
+    <next id="9">Csodálatos Armarnót?</next>
+    <next id="207">Ha inkább távozol innen</next>
+  </p>
   <!-- 304 -->
   <p id="305">
     <text>
@@ -1641,6 +1805,15 @@
           </dontHave>
         </itemCheck>
       </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="3009">
+      <have>
+        <itemCheck type="section" id="101">
+          <dontHave>
+            <next id="101" pos="7">A Néma Szamár fogadóba?</next>
+          </dontHave>
+        </itemCheck>
+      </have>
     </itemCheck>
   </p>
   <p id="310">
@@ -1781,12 +1954,21 @@
         <next id="103" pos="4">Meglátogatod magát Montargo kormányzót?</next>
       </dontHave>
     </itemCheck>
+    <itemCheck type="item" id="3009">
+      <have>
+        <itemCheck type="section" id="101">
+          <dontHave>
+            <next id="101" pos="5">Ha felkeresnéd a Néma Szamár fogadót</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+    </itemCheck>
     <itemCheck type="codeword" id="Veszély">
       <have>
-        <next id="310" pos="5" singleChoiceText="Úgy érzed, végeztél az információszerzéssel, így elindulsz megkeresni a kalózok titkos bázisát.">Ha elindulsz megkeresni a kalózok titkos bázisát</next>
+        <next id="310" pos="10" singleChoiceText="Úgy érzed, végeztél az információszerzéssel, így elindulsz megkeresni a kalózok titkos bázisát.">Ha elindulsz megkeresni a kalózok titkos bázisát</next>
       </have>
       <dontHave>
-        <next id="287" pos="5" singleChoiceText="Úgy érzed, végeztél az információszerzéssel, így elindulsz megkeresni a kalózok titkos bázisát.">Ha elindulsz megkeresni a kalózok titkos bázisát</next>
+        <next id="287" pos="10" singleChoiceText="Úgy érzed, végeztél az információszerzéssel, így elindulsz megkeresni a kalózok titkos bázisát.">Ha elindulsz megkeresni a kalózok titkos bázisát</next>
       </dontHave>
     </itemCheck>
   </p>
@@ -1890,7 +2072,13 @@
   <!-- 362 -->
   <!-- 363 -->
   <!-- 364 -->
-  <!-- 365 -->
+  <p id="365">
+    <text>
+        [p]A kikötőváros színpompás piactere a Kereskedőnegyedben fekszik, mely a Garas sikátortól egészen a Pénzkölcsönzők utcájáig húzódik. Jelenleg két lehetőséged van.[/p]
+    </text>
+    <next id="351">Ha valami praktikus felszerelés után nézel a piacon</next>
+    <next id="42">Ha látogatást teszel a Rákok Kikötőjének nyüzsgő Bazárjában, mely telis-tele van egzotikus - és természetesen drága - portékával</next>
+  </p>
   <!-- 366 -->
   <!-- 367 -->
   <!-- 368 -->
@@ -1913,7 +2101,9 @@
     <add amount="1" to="time" />
     <next id="52"></next>
   </p>
-  <!-- 374 -->
+  <p id="374">
+    <empty />
+  </p>
   <!-- 375 -->
   <!-- 376 -->
   <!-- 377 -->
@@ -1996,5 +2186,10 @@
         [p]Befordulva egy sarkon, fájdalmas tűszúrást érzel a nyakad hátsó részén. Mikor odanyúlsz, egy aprócska nyilat rántasz ki a bőrödből. A hegye valamilyen sötét folyadéktól foltos - méreee...[/p]
     </text>
     <next id="158"></next>
+  </p>
+  <!-- 397 -->
+  <!-- 398 -->
+  <p id="399">
+    <empty />
   </p>
 </content>
