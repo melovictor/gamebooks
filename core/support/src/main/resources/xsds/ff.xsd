@@ -516,6 +516,11 @@
       <xs:element name="test" minOccurs="0" maxOccurs="unbounded" type="attributeTestType" />
       <xs:element name="random" maxOccurs="unbounded" minOccurs="0" type="randomType" />
       <xs:element name="market">
+        <xs:annotation>
+          <xs:documentation>
+            A market entry. Must use the [div data-market=""][/div] descriptor in the root text block for it to be able to function properly.
+          </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
           <xs:sequence>
             <xs:element name="saleLabel" minOccurs="0" maxOccurs="1" type="xs:string">
