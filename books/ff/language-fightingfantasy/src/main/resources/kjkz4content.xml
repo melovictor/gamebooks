@@ -244,7 +244,13 @@
   </p>
   <!-- 20 -->
   <!-- 21 -->
-  <!-- 22 -->
+  <p id="22">
+    <text>
+        [p]- Bizonyára csak viccelsz - kacag fel az őr. - De most tágulj innen, mielőtt elfelejtem, hogy ma jó napom van.[/p]
+    </text>
+    <next id="49">Ha kitartasz abbéli szándékod mellett, hogy bejuss az Ó-Erődbe</next>
+    <next id="334" pos="11">Ha vonakodva bár, de odébbállsz (írj fel 1 órát)</next>
+  </p>
   <!-- 23 -->
   <!-- 24 -->
   <!-- 25 -->
@@ -309,7 +315,12 @@
   </p>
   <!-- 47 -->
   <!-- 48 -->
-  <!-- 49 -->
+  <p id="49">
+    <text>
+        [p]Az őr megránt egy láncot, mire csengők kezdenek csörömpölni odabenn, az erőd belsejében. A kapu szinte azonnal feltárul, és nagyon úgy fest, hogy csaknem a fél városi őrség kiront rajta, akik ezután körbevesznek.[/p]
+    </text>
+    <next id="236"></next>
+  </p>
   <!-- 50 -->
   <p id="51">
     <empty />
@@ -366,7 +377,9 @@
   <!-- 58 -->
   <!-- 59 -->
   <!-- 60 -->
-  <!-- 61 -->
+  <p id="61">
+    <empty />
+  </p>
   <!-- 62 -->
   <!-- 63 -->
   <!-- 64 -->
@@ -536,7 +549,287 @@
   <!-- 100 -->
   <!-- 101 -->
   <!-- 102 -->
-  <!-- 103 -->
+  <p id="103">
+    <text>
+        [p]Az Ó-Erőd, a kikötő kormányzójának rezidenciája annak a dombnak a tetején áll, melyre az Óváros nagy része is épült. Felkapaszkodsz a domboldalon, és megérkezel a masszív kőépület elé, mely úgy fest, mintha hetekig tudná állni egy hadsereg ostromát - bár megvan már jó néhány száz éves. Mikor a kapuban álló őrhöz közelítesz, az megkérdezi, mi járatban vagy. Elmondod, hogy meghallgatást kérnél Montargo kormányzótól. - Ó valóban? - vigyorodik el a katona. - Csakhogy én meg nem engedhetek be akárkit. Ez túlmutat az én hatáskörömön.[/p]
+    </text>
+    <itemCheck type="gold" id="1">
+      <have>
+        <next id="103a">Ha megpróbálkoznál megvesztegetni</next>
+        <next id="49">Máskülönben meggyőzhetnéd némi hideg acél segítségével</next>
+        <next id="334" pos="11">Ha a fentebbi megoldások közül egyik sem szimpatikus, akkor viszont távoznod kell (írj fel 1 órát)</next>
+      </have>
+      <dontHave>
+        <next id="49">Ha meggyőzöd némi hideg acél segítségével</next>
+        <next id="334" pos="11">Ha ez nem szimpatikus, és inkább távoznál (írj fel 1 órát)</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="103a">
+    <text>
+        [p]Az Ó-Erőd, a kikötő kormányzójának rezidenciája annak a dombnak a tetején áll, melyre az Óváros nagy része is épült. Felkapaszkodsz a domboldalon, és megérkezel a masszív kőépület elé, mely úgy fest, mintha hetekig tudná állni egy hadsereg ostromát - bár megvan már jó néhány száz éves. Mikor a kapuban álló őrhöz közelítesz, az megkérdezi, mi járatban vagy. Elmondod, hogy meghallgatást kérnél Montargo kormányzótól. - Ó valóban? - vigyorodik el a katona. - Csakhogy én meg nem engedhetek be akárkit. Ez túlmutat az én hatáskörömön.[/p]
+    </text>
+    <userInput type="number" min="1" max="24">
+      <label>Hány Aranytallért ajánlasz fel az Őrnek?</label>
+      <result minBound="1" maxBound="1">
+        <add amount="-1" to="gold" />
+        <next id="22"></next>
+      </result>
+      <result minBound="2" maxBound="2">
+        <add amount="-2" to="gold" />
+        <next id="22"></next>
+      </result>
+      <result minBound="3" maxBound="3">
+        <add amount="-3" to="gold" />
+        <next id="22"></next>
+      </result>
+      <result minBound="4" maxBound="4">
+        <add amount="-4" to="gold" />
+        <next id="22"></next>
+      </result>
+      <result minBound="5" maxBound="5">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-5" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="6" maxBound="6">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-6" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="7" maxBound="7">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-7" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="8" maxBound="8">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-8" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="9" maxBound="9">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-9" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="10" maxBound="10">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-10" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="11" maxBound="11">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-11" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="12" maxBound="12">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-12" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="13" maxBound="13">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-13" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="14" maxBound="14">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-14" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="15" maxBound="15">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-15" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="16" maxBound="16">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-16" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="17" maxBound="17">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-17" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="18" maxBound="18">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-18" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="19" maxBound="19">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-19" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="20" maxBound="20">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-20" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="21" maxBound="21">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-21" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="22" maxBound="22">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-22" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="23" maxBound="23">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-23" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+      <result minBound="24" maxBound="24">
+        <itemCheck type="gold" id="5">
+          <have>
+            <add amount="-24" to="gold" />
+            <next id="195"></next>
+          </have>
+          <dontHave>
+            <add amount="-5" to="gold" />
+            <next id="22"></next>
+          </dontHave>
+        </itemCheck>
+      </result>
+    </userInput>
+    <next id="61"></next>
+  </p>
   <!-- 104 -->
   <p id="105">
     <text>
@@ -781,7 +1074,14 @@
   </p>
   <!-- 172 -->
   <!-- 173 -->
-  <!-- 174 -->
+  <p id="174">
+    <text>
+        [p]Miután kihajítottak az utcára, sértettnek és idegesnek érzed magad. Aztán úgy döntesz, máshol keresgélsz tovább. Írj fel 1 órát, és jegyezd fel [em]Kalandlapodra[/em] a [em]Veszély[/em] szót.[/p]
+    </text>
+    <codeword name="Veszély" />
+    <add amount="1" to="time" />
+    <next id="334"></next>
+  </p>
   <p id="175">
     <text>
         [p]Figyelmes leszel valamire, ami egy frissen ásott sír földjében hever, élesen megcsillanva a holdfényben. Lehajolván felkapod - egy újabb [span class="takeItem" data-id="3007" data-amount="1"]dublon[/span], szintén két fejjel! Crivensnek volt ilyen érméje, aki Cinnabar legénységéhez tartozott. S most itt ez a két fickó, akik éjnek idején, egy kihalt temetőben, egy egész ládát cipeltek, teli ilyenforma pénzekkel. Nyilván kapcsolatban vannak a Fekete Koponya kalózaival! Úgy határozol, hogy követed őket.[/p]
@@ -884,7 +1184,18 @@
     <next id="52"></next>
   </p>
   <!-- 194 -->
-  <!-- 195 -->
+  <p id="195">
+    <text>
+        [p]-    A legnagyobb örömmel megteszem - mosolyog az őr, éltévé az aranyadat, majd kinyitja a kaput. -  Erre - mondja, és bevezet az Ó-Erődbe. Azonnal egy nagy, kettős ajtó előtt találod magad. Az őr kopogtat, majd a „Lépj be” választ hallva szélesre tárja az ajtószárnyakat, beengedve téged Montargo kormányzó fogadószobájába. A hatalmas tölgyfa íróasztal mögötti, magas támlájú széken méltóság-teljes, ám unottnak tűnő férfi ül, rövidre nyírt, sűrű szürke hajjal, katonai parancsnok egyenruhájában.[/p]
+        [p]-    Igen? - kérdezi türelmetlenül. - Lord Montargo, -   kezdesz neki, - azért vagyok itt, hogy informáljalak egy szörnyű veszélyről, mely városod biztonságát fenyegeti. A Fekete Koponya kalózai abban mesterkednek, hogy a vudu gonosz praktikáinak segítségével visszahozzák elvetemült kapitányukat, Cinnabart az életbe.[/p]
+        [p]-    Micsoda badarság! Cinnabart hat hónapja ölte meg Conyn, a tengeri vadász, és a gazfickó teste a tengerbe veszett. Hogyan várhatod hát tőlem, hogy elhiggyem, visszatérhet?[/p]
+        [p]-    Az igazat mondom! - vitatkozol. - Magam láttam a kalózok ténykedéseinek nyomait. Azonnal meg kell tudnunk, hol rejtőznek. Azt akarja, hogy Cinnabar és a hozzá hasonlók veszélybe sodorják a Rákok Kikötőjét?[/p]
+        [p]-    Elég! Nem érdekelnek a vad rémképeid, és nem kell végighallgatnom a paranoiás mesédet! Nincs itt semmilyen veszély, ami a várost fenyegetné! Őrség! -Azonnal négy egyenruhás katona ront a helyiségbe.[/p]
+        [p]-    A vendégem már indul is. - Az őrök közrefognak, és elindulnak veled kifelé.[/p]
+    </text>
+    <next id="236">Ha ellenállnál</next>
+    <next id="174">Ha hagyod, hogy kivezessenek a szobából</next>
+  </p>
   <!-- 196 -->
   <!-- 197 -->
   <!-- 198 -->
