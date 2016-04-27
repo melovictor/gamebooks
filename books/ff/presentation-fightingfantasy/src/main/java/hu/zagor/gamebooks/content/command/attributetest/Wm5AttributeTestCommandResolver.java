@@ -4,7 +4,6 @@ import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.content.FfParagraphData;
-
 import java.util.List;
 import java.util.Locale;
 
@@ -19,7 +18,7 @@ public class Wm5AttributeTestCommandResolver extends AttributeTestCommandResolve
         final Character character = resolvationData.getCharacter();
         final CharacterHandler characterHandler = resolvationData.getCharacterHandler();
 
-        if (characterHandler.getParagraphHandler().visitedParagraph(character, "197")) {
+        if (characterHandler.getParagraphHandler().visitedParagraph(character, "197") && "luck".equals(command.getAgainst())) {
             command.setAdd(command.getAdd() + 1);
         }
 
