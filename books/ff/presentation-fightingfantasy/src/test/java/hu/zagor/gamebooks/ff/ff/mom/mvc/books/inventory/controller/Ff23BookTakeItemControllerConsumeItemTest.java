@@ -18,7 +18,6 @@ import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
@@ -37,7 +36,6 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
 
     @MockControl private IMocksControl mockControl;
     @UnderTest private Ff23BookTakeItemController underTest;
-    @Mock private HttpServletRequest request;
     @Mock private HttpSession session;
     @Inject private BeanFactory beanFactory;
     @Mock private HttpSessionWrapper wrapper;
@@ -65,7 +63,6 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
     public void testDoHandleConsumeItemWhenNormalItemShouldConsumeNormally() {
         // GIVEN
         final String itemId = "2002";
-        expectWrapper();
         itemInteractionRecorder.recordItemConsumption(wrapper, itemId);
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
@@ -79,7 +76,7 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
         itemHandler.consumeItem(character, itemId, attributeHandler);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(request, itemId);
+        final String returned = underTest.doHandleConsumeItem(wrapper, itemId);
         // THEN
         Assert.assertNull(returned);
     }
@@ -87,10 +84,8 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
     public void testDoHandleConsumeItemWhenProvisionShouldRemoveNotEatenFlagAndConsumeNormally() {
         // GIVEN
         final String itemId = "2000";
-        expectWrapper();
         expect(wrapper.getCharacter()).andReturn(character);
         expect(itemHandler.removeItem(character, "4002", 10)).andReturn(itemList);
-        expectWrapper();
         itemInteractionRecorder.recordItemConsumption(wrapper, itemId);
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
@@ -105,13 +100,9 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
         itemHandler.consumeItem(character, itemId, attributeHandler);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(request, itemId);
+        final String returned = underTest.doHandleConsumeItem(wrapper, itemId);
         // THEN
         Assert.assertNull(returned);
-    }
-
-    private void expectWrapper() {
-        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
     }
 
 }

@@ -9,11 +9,7 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -43,8 +39,7 @@ public class Ff38BookTakeItemController extends FfBookTakeItemController {
     private static final String HEYDRICH_REGENERATES = "63";
 
     @Override
-    public String doHandleConsumeItem(final HttpServletRequest request, @PathVariable("id") final String itemId) {
-        final HttpSessionWrapper wrapper = getWrapper(request);
+    public String doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
         final Paragraph paragraph = wrapper.getParagraph();
         final String id = paragraph.getId();
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
@@ -54,10 +49,10 @@ public class Ff38BookTakeItemController extends FfBookTakeItemController {
 
         if (isSpell(itemId)) {
             if (haveTimeForSpell(paragraph) && !hasActiveSpell(character, itemHandler)) {
-                response = handleSpell(request, itemId, character, characterHandler, itemHandler);
+                response = handleSpell(wrapper, itemId, character, characterHandler);
             }
         } else if (!GHOST_IN_ROOM.equals(id) && canEatWhileHeydrichRegenerates(id, itemId, character, itemHandler)) {
-            super.doHandleConsumeItem(request, itemId);
+            super.doHandleConsumeItem(wrapper, itemId);
         }
 
         return response;
@@ -83,26 +78,24 @@ public class Ff38BookTakeItemController extends FfBookTakeItemController {
         return canEatNow;
     }
 
-    private String handleSpell(final HttpServletRequest request, final String itemId, final FfCharacter character, final FfCharacterHandler characterHandler,
-        final CharacterItemHandler itemHandler) {
+    private String handleSpell(final HttpSessionWrapper wrapper, final String itemId, final FfCharacter character, final FfCharacterHandler characterHandler) {
         String response = null;
-        if (isFighting(request)) {
-            response = handleFightingSpell(itemId, character, itemHandler);
+        if (isFighting(wrapper)) {
+            response = handleFightingSpell(itemId, character, characterHandler.getItemHandler());
         } else {
-            handleNonFightingSpell(itemId, character, characterHandler, itemHandler);
+            handleNonFightingSpell(itemId, character, characterHandler);
         }
         return response;
     }
 
-    private void handleNonFightingSpell(final String itemId, final FfCharacter character, final FfCharacterHandler characterHandler,
-        final CharacterItemHandler itemHandler) {
+    private void handleNonFightingSpell(final String itemId, final FfCharacter character, final FfCharacterHandler characterHandler) {
         if (LUCK_SPELL.equals(itemId)) {
             character.changeLuck(LUCK_BONUS);
-            itemHandler.removeItem(character, itemId, 1);
+            characterHandler.getItemHandler().removeItem(character, itemId, 1);
         } else if (TRUE_HEALING.equals(itemId)) {
             final int additionalStamina = characterHandler.getAttributeHandler().resolveValue(character, "initialStamina") / 2;
             character.changeStamina(additionalStamina);
-            itemHandler.removeItem(character, itemId, 1);
+            characterHandler.getItemHandler().removeItem(character, itemId, 1);
         }
     }
 
@@ -128,8 +121,7 @@ public class Ff38BookTakeItemController extends FfBookTakeItemController {
         return itemHandler.hasItem(character, JANDOR_ARROW_ACTIVE) || itemHandler.hasItem(character, STRONG_HIT_ACTIVE) || itemHandler.hasItem(character, BASH_ACTIVE);
     }
 
-    private boolean isFighting(final HttpServletRequest request) {
-        final HttpSessionWrapper wrapper = getWrapper(request);
+    private boolean isFighting(final HttpSessionWrapper wrapper) {
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
         final CommandView commandView = character.getCommandView();
         return commandView != null && commandView.getViewName().startsWith("ffFight");

@@ -9,11 +9,8 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
-
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -35,13 +32,13 @@ public class Ff23BookTakeItemController extends FfBookTakeItemController {
     private static final String PROVISION = "2000";
 
     @Override
-    protected String doHandleConsumeItem(final HttpServletRequest request, final String itemId) {
+    protected String doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
         if (PROVISION.equals(itemId)) {
-            final Character character = getWrapper(request).getCharacter();
+            final Character character = wrapper.getCharacter();
             final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
             itemHandler.removeItem(character, NOT_EATEN_FLAG, AMOUNT);
         }
-        return super.doHandleConsumeItem(request, itemId);
+        return super.doHandleConsumeItem(wrapper, itemId);
     }
 
     @Override

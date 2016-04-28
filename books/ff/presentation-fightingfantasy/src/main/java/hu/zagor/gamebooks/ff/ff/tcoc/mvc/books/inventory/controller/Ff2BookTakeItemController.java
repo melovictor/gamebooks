@@ -11,12 +11,9 @@ import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.ff.tcoc.character.Ff2Character;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
-
 import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,10 +31,8 @@ public class Ff2BookTakeItemController extends FfBookTakeItemController {
     private static final String MAGIC_SWORD_ID = "1002";
     private static final String SPELL_POTION_ID = "2001";
 
-    @Resource(name = "ff2SpellIds")
-    private List<String> spells;
-    @Resource(name = "ff2RestorationSpellIds")
-    private List<String> resettingSpells;
+    @Resource(name = "ff2SpellIds") private List<String> spells;
+    @Resource(name = "ff2RestorationSpellIds") private List<String> resettingSpells;
 
     @Override
     protected int doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
@@ -48,24 +43,23 @@ public class Ff2BookTakeItemController extends FfBookTakeItemController {
     }
 
     @Override
-    protected String doHandleConsumeItem(final HttpServletRequest request, final String itemId) {
+    protected String doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
         String response;
         if (isSpell(itemId)) {
-            if (isResettingSpell(itemId) && !isFighting(request)) {
-                handleSpell(itemId, request);
+            if (isResettingSpell(itemId) && !isFighting(wrapper)) {
+                handleSpell(itemId, wrapper);
             }
             response = null;
         } else {
-            if (SPELL_POTION_ID.equals(itemId) && !isFighting(request)) {
-                drinkPotion(request);
+            if (SPELL_POTION_ID.equals(itemId) && !isFighting(wrapper)) {
+                drinkPotion(wrapper);
             }
-            response = super.doHandleConsumeItem(request, itemId);
+            response = super.doHandleConsumeItem(wrapper, itemId);
         }
         return response;
     }
 
-    private void drinkPotion(final HttpServletRequest request) {
-        final HttpSessionWrapper wrapper = getWrapper(request);
+    private void drinkPotion(final HttpSessionWrapper wrapper) {
         final Ff2Character character = (Ff2Character) wrapper.getCharacter();
         final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
         final FfCharacterItemHandler itemHandler = characterHandler.getItemHandler();
@@ -80,8 +74,7 @@ public class Ff2BookTakeItemController extends FfBookTakeItemController {
         getInfo().getCharacterHandler().getItemHandler().removeItem(character, NORMAL_SWORD_ID, 1);
     }
 
-    private void handleSpell(final String spellId, final HttpServletRequest request) {
-        final HttpSessionWrapper wrapper = getWrapper(request);
+    private void handleSpell(final String spellId, final HttpSessionWrapper wrapper) {
         final Ff2Character character = (Ff2Character) wrapper.getCharacter();
         final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
         final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
@@ -91,8 +84,7 @@ public class Ff2BookTakeItemController extends FfBookTakeItemController {
         character.setLastSpellCast(spellId);
     }
 
-    private boolean isFighting(final HttpServletRequest request) {
-        final HttpSessionWrapper wrapper = getWrapper(request);
+    private boolean isFighting(final HttpSessionWrapper wrapper) {
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
         final CommandView commandView = character.getCommandView();
         return commandView != null && commandView.getViewName().startsWith("ffFight");

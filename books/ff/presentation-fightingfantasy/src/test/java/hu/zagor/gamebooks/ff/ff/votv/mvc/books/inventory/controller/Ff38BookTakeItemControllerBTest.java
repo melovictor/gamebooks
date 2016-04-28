@@ -15,7 +15,6 @@ import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
@@ -33,7 +32,6 @@ public class Ff38BookTakeItemControllerBTest {
     @UnderTest private Ff38BookTakeItemController underTest;
     @MockControl private IMocksControl mockControl;
     @Inject private BeanFactory beanFactory;
-    @Mock private HttpServletRequest request;
     @Mock private HttpSessionWrapper wrapper;
     @Mock private Paragraph paragraph;
     @Mock private FfCharacter character;
@@ -57,7 +55,6 @@ public class Ff38BookTakeItemControllerBTest {
     public void testDoHandleConsumeItemWhenActivatingLuckSpellWhileDoingLuckTestShouldAllowSpellActivation() {
         // GIVEN
         final String item = "4216";
-        expectWrapper();
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("100");
         expect(wrapper.getCharacter()).andReturn(character);
@@ -66,7 +63,6 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.hasItem(character, "4014")).andReturn(false);
         expect(itemHandler.hasItem(character, "4013")).andReturn(false);
         expect(itemHandler.hasItem(character, "4015")).andReturn(false);
-        expectWrapper();
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(commandView);
         expect(commandView.getViewName()).andReturn("ffAttributeTest");
@@ -74,7 +70,7 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(request, item);
+        final String returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
         Assert.assertNull(returned);
     }
@@ -82,7 +78,6 @@ public class Ff38BookTakeItemControllerBTest {
     public void testDoHandleConsumeItemWhenActivatingLuckSpellWhileFightingShouldNotAllowSpellActivation() {
         // GIVEN
         final String item = "4216";
-        expectWrapper();
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("100");
         expect(wrapper.getCharacter()).andReturn(character);
@@ -91,13 +86,12 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.hasItem(character, "4014")).andReturn(false);
         expect(itemHandler.hasItem(character, "4013")).andReturn(false);
         expect(itemHandler.hasItem(character, "4015")).andReturn(false);
-        expectWrapper();
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(commandView);
         expect(commandView.getViewName()).andReturn("ffFightSingle");
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(request, item);
+        final String returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
         Assert.assertNull(returned);
     }
@@ -105,7 +99,6 @@ public class Ff38BookTakeItemControllerBTest {
     public void testDoHandleConsumeItemWhenActivatingHealingSpellWhileNotFightingShouldAllowSpellActivation() {
         // GIVEN
         final String item = "4218";
-        expectWrapper();
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("100");
         expect(wrapper.getCharacter()).andReturn(character);
@@ -114,7 +107,6 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.hasItem(character, "4014")).andReturn(false);
         expect(itemHandler.hasItem(character, "4013")).andReturn(false);
         expect(itemHandler.hasItem(character, "4015")).andReturn(false);
-        expectWrapper();
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(null);
         expect(attributeHandler.resolveValue(character, "initialStamina")).andReturn(20);
@@ -122,7 +114,7 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(request, item);
+        final String returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
         Assert.assertNull(returned);
     }
@@ -130,7 +122,6 @@ public class Ff38BookTakeItemControllerBTest {
     public void testDoHandleConsumeItemWhenActivatingForcefieldSpellWhileNotFightingShouldDoNothing() {
         // GIVEN
         final String item = "4213";
-        expectWrapper();
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("100");
         expect(wrapper.getCharacter()).andReturn(character);
@@ -139,12 +130,11 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.hasItem(character, "4014")).andReturn(false);
         expect(itemHandler.hasItem(character, "4013")).andReturn(false);
         expect(itemHandler.hasItem(character, "4015")).andReturn(false);
-        expectWrapper();
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(null);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(request, item);
+        final String returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
         Assert.assertNull(returned);
     }
@@ -152,7 +142,6 @@ public class Ff38BookTakeItemControllerBTest {
     public void testDoHandleConsumeItemWhenActivatingStrongHitSpellWhileFightingShouldAllowSpellActivation() {
         // GIVEN
         final String item = "4214";
-        expectWrapper();
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("100");
         expect(wrapper.getCharacter()).andReturn(character);
@@ -161,7 +150,6 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.hasItem(character, "4014")).andReturn(false);
         expect(itemHandler.hasItem(character, "4013")).andReturn(false);
         expect(itemHandler.hasItem(character, "4015")).andReturn(false);
-        expectWrapper();
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(commandView);
         expect(commandView.getViewName()).andReturn("ffFightSingle");
@@ -169,7 +157,7 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(request, item);
+        final String returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
         Assert.assertEquals(returned, "#ffAttackButton button");
     }
@@ -177,7 +165,6 @@ public class Ff38BookTakeItemControllerBTest {
     public void testDoHandleConsumeItemWhenActivatingJandorArrowSpellWhileFightingShouldAllowSpellActivation() {
         // GIVEN
         final String item = "4215";
-        expectWrapper();
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("100");
         expect(wrapper.getCharacter()).andReturn(character);
@@ -186,7 +173,6 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.hasItem(character, "4014")).andReturn(false);
         expect(itemHandler.hasItem(character, "4013")).andReturn(false);
         expect(itemHandler.hasItem(character, "4015")).andReturn(false);
-        expectWrapper();
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(commandView);
         expect(commandView.getViewName()).andReturn("ffFightSingle");
@@ -194,7 +180,7 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(request, item);
+        final String returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
         Assert.assertEquals(returned, "#ffAttackButton button");
     }
@@ -202,7 +188,6 @@ public class Ff38BookTakeItemControllerBTest {
     public void testDoHandleConsumeItemWhenActivatingBashSpellWhileFightingShouldAllowSpellActivation() {
         // GIVEN
         final String item = "4217";
-        expectWrapper();
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("100");
         expect(wrapper.getCharacter()).andReturn(character);
@@ -211,7 +196,6 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.hasItem(character, "4014")).andReturn(false);
         expect(itemHandler.hasItem(character, "4013")).andReturn(false);
         expect(itemHandler.hasItem(character, "4015")).andReturn(false);
-        expectWrapper();
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(commandView);
         expect(commandView.getViewName()).andReturn("ffFightSingle");
@@ -219,13 +203,9 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(request, item);
+        final String returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
         Assert.assertEquals(returned, "#ffAttackButton button");
-    }
-
-    private void expectWrapper() {
-        expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
     }
 
 }
