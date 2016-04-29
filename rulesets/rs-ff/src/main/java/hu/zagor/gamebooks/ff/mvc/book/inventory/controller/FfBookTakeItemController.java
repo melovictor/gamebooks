@@ -20,8 +20,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,9 +40,9 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
      * @param data the {@link TakePurchaseItemData} containing the incoming parameters
      * @return the amount of items successfully taken
      */
-    @RequestMapping(value = PageAddresses.BOOK_PURCHASE_ITEM, consumes = "application/json", method = RequestMethod.POST)
+    @RequestMapping(value = PageAddresses.BOOK_PURCHASE_ITEM, method = RequestMethod.POST)
     @ResponseBody
-    public final int handleItemTake(final HttpServletRequest request, @RequestBody final TakePurchaseItemData data) {
+    public final int handleItemTake(final HttpServletRequest request, @ModelAttribute final TakePurchaseItemData data) {
         final FfCharacter character = (FfCharacter) getWrapper(request).getCharacter();
         int takeItemResult;
         if (data.getPrice() > 0 && character.getGold() < data.getPrice()) {

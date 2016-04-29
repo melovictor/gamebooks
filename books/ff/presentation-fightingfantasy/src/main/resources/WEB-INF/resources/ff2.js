@@ -112,10 +112,7 @@ var ff2 = (function() {
 			$.ajax({
 				url : "sixPick",
 				type : "POST",
-				contentType : "application/json",
-				accept : "application/json",
-				dataType : 'json',
-				data : JSON.stringify(payload),
+				data : payload,
 				success : function(response) {
 					if (response.status == 0) {
 						totalGold = response.newGold;

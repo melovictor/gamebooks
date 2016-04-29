@@ -74,9 +74,9 @@ var inventory = (function() {
 		}
 		var loseId = $(this).data("item-id");
 		var data = {
-				loseId : loseId,
-				gatherId : gatherId,
-				amount : amount
+			loseId : loseId,
+			gatherId : gatherId,
+			amount : amount
 		}
 		
 		inventoryAnimationOngoing = false;

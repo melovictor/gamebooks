@@ -22,7 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -54,9 +54,9 @@ public class Ff2BookSectionController extends FfBookSectionController {
      * @param bets the bets the user did
      * @return the response to the page
      */
-    @RequestMapping(value = "sixPick", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    @RequestMapping(value = "sixPick", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
-    public SixPickResult playSixPickRound(final HttpServletRequest request, @RequestBody final SixPickBets bets) {
+    public SixPickResult playSixPickRound(final HttpServletRequest request, @ModelAttribute final SixPickBets bets) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final Paragraph paragraph = wrapper.getParagraph();
         final String sectionId = paragraph.getId();
