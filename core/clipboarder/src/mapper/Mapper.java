@@ -164,6 +164,7 @@ public class Mapper {
         final File secondPart = new File(xml.getAbsolutePath().replace(".xml", "2.xml"));
         if (secondPart.exists()) {
             secondPartContent = getContent(secondPart);
+            secondPartContent = secondPartContent.replaceAll("(<p id=\"[^\"]+\"(?: display=\"[^\"]+\"){0,1})>", "$1 color=\"pink\">");
         }
         return secondPartContent;
     }
