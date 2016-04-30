@@ -128,9 +128,36 @@
   </p>
   <!-- 7 -->
   <!-- 8 -->
-  <!-- 9 -->
+  <p id="9">
+    <text>
+        [p]Egy zászló alatt, melyen élénk színekkel felfestve olvasható a neve, ott pihen a Csodálatos Armarno. A férfi lendlelandinek néz ki, legalábbis a sárgás bőre, ferde szeme, és hosszú, vékonyka bajusza alapján. Három játékkártyával bűvészkedik, és ezzel kíváncsi nézelődők egész kis csapatát köti le. A kártyák közül kettő fekete, egy pedig fehér, s úgy tűnik, a játék lényege az, hogy a férfi összekeverve, képpel lefelé maga elé fekteti a kis asztalon a három lapot, és el kell találni, melyik közülük a fehér. Ha játszani szeretnél, 2 Aranyat kell tétként befizetned, hogy elnyerd a lehetséges díjat, mely 10 Arany. Jelenleg nem úgy fest, mintha bárki is különösebb sikerrel tudna kiállni Armarno ellen.[alt][/alt][/p]
+    </text>
+    <itemCheck type="gold" id="2">
+      <have>
+        <next id="32" pos="1">Ha játszani akarsz</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="section" id="81">
+      <dontHave>
+        <next id="81" pos="2">Ha nem akarsz játszani, és inkább átmennél a Gondviselés nyilához</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="294">
+      <dontHave>
+        <next id="294" pos="3">Ha Calabrius Számológépe érdekelne</next>
+      </dontHave>
+    </itemCheck>
+    <next id="207" pos="4" singleChoiceText=" Nincs ennyi pénzed, és a többi játékot is megnézted már, így inkább elhagyod a Játékbarlangokat">Ha inkább elhagyod a Játékbarlangokat</next>
+  </p>
   <!-- 10 -->
-  <!-- 11 -->
+  <p id="11">
+    <text>
+        [p]A vén javasasszony elmagyarázza, hogy amennyiben beszélni akar a szellemekkel a jövődet illetően, fel kell ajánlanod valamennyit a tulajdon véredből.[/p]
+    </text>
+    <next id="160">Ha beleegyezel</next>
+    <next id="179">Ha nem, akkor megkérheted Madame Galbót, hogy gyógyítsa meg sérüléseidet</next>
+    <next id="261">Vagy esetleg készítsen neked valami kotyvalékot, mely hasznodra lehet küldetésed során</next>
+  </p>
   <!-- 12 -->
   <p id="13">
     <text>
@@ -233,8 +260,63 @@
     <next id="209"></next>
   </p>
   <!-- 15 -->
-  <!-- 16 -->
-  <!-- 17 -->
+  <p id="16">
+    <text>
+        [p]Mindenképpen szeretnéd elkerülni, hogy felhívd magadra bizonyos körök figyelmét, illetve abban bízol, hogy ha a kalózok rejtekhelye utáni kutatásoddal vársz az éj leszálltáig, talán kevesebbeknek szúr szemet ténykedésed. Írj fel 2 órát! Hol kezded meg a keresést?[/p]
+    </text>
+    <add amount="2" to="time" />
+    <gatherItem id="4004" />
+    <itemCheck type="section" id="67">
+      <dontHave>
+        <next id="67" pos="1">A dokkok környékén?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="146">
+      <dontHave>
+        <next id="146" pos="2">A romos világítótoronynál, a várostól délkeletre levő sziklaszirten?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="129">
+      <dontHave>
+        <next id="129" pos="3">A városi kocsmákban és fogadókban?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="355">
+      <dontHave>
+        <next id="355" pos="4">A kikötő alatti csatornákban?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="83">
+      <dontHave>
+        <next id="83" pos="5">A városfalon kívül elterülő temetőben?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="315">
+      <dontHave>
+        <itemCheck type="section" id="181">
+          <dontHave>
+            <next id="181" pos="6">A Templom negyedben?</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="3009">
+      <have>
+        <itemCheck type="section" id="101">
+          <dontHave>
+            <next id="101" pos="7">A Néma Szamár fogadóban?</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="17">
+    <text>
+        [p]Elhaladsz egy régi térképekkel és tekercsekkel teli kirakat előtt, és egyszerre eszedbe jut a Játékbarlangokban elcsípett rejtélyes üzenet a Csont-szigetről. Megtorpansz, és közelebbről is szemügyre veszed az üzletet. A mutatós kirakat felett festett cégér lóg: „Mundi Pelago - Térképész. Pontos és elegáns térképek illetve atlaszok”. Na igen, egy térképkészítő biztosan a legjobb megoldás volna, ha egy sziget felől kellene érdeklődnöd.[/p]
+    </text>
+    <next id="288">Ha belépsz a boltba</next>
+    <next id="334">Ha inkább továbbmész</next>
+  </p>
   <!-- 18 -->
   <p id="19">
     <text>
@@ -270,7 +352,19 @@
   <!-- 29 -->
   <!-- 30 -->
   <!-- 31 -->
-  <!-- 32 -->
+  <p id="32">
+    <text>
+        [p]Nem kell sokáig várnod ahhoz, hogy te kerülj sorra. (Húzz le 2 Aranyat a [em]Kalandlapodról[/em]!) Egészen közel hajolva figyeled, amint a férfi felmutatja a fehér kártyalapot, ezután mindhármat képpel lefelé, az asztalra helyezi. Hihetetlen gyorsasággal kezdi őket kevergetni, ám te végig a fehérre összpontosítasz. Mikor végül befejezi, magabiztosan rámutatsz arra a lapra, melyről szilárd meggyőződésed, hogy az a fehér. Armarno mosolyogva fordítja fel, és mutatja, hogy fekete! Az a sanda gyanúd támad, hogy nem tisztességes játékot játszik.[/p]
+    </text>
+    <add amount="-2" to="gold" />
+    <next id="258" pos="1">Ha csalással vádolod</next>
+    <itemCheck type="gold" id="2">
+      <have>
+        <next id="118" pos="2">Ha játszol még egyet, csak hogy biztosra menj</next>
+      </have>
+    </itemCheck>
+    <next id="223" pos="3">Ha távoznál innen</next>
+  </p>
   <p id="33">
     <text>
         [p]Úgy rohansz, mintha az ördögök kergetnének. Befordulsz egy sarkon, s egyenesen Cinnabar egy csapatnyi kalózába futsz. Azonnal legyűrnek. Kapsz egy kemény ütést a tarkódra, és rögtön eszméletedet veszted...[/p]
@@ -354,9 +448,17 @@
         </text>
           </have>
         </itemCheck>
+        <itemCheck type="item" id="3010">
+          <have>
+            <next id="227"></next>
+          </have>
+          <dontHave>
+            <next id="351">Most valami praktikus felszerelés után nézhetsz a piacon</next>
+            <next id="111">Ha inkább odébbállsz innen, hogy folytasd a küldetésed</next>
+          </dontHave>
+        </itemCheck>
       </after>
     </market>
-    <next id="200"></next>
   </p>
   <!-- 43 -->
   <!-- 44 -->
@@ -468,7 +570,13 @@
   </p>
   <!-- 62 -->
   <!-- 63 -->
-  <!-- 64 -->
+  <p id="64">
+    <text>
+        [p]Falába dacára az öregember egészen fürgén mozog, és még mielőtt fülön csíphetnéd, eltűnik egy sarok mögött. Mikor te magad is a sarokhoz érsz, hirtelen rossz érzésed támad azzal kapcsolatban, amit tenni készülsz.[/p]
+    </text>
+    <next id="282">Ha mégis követnéd a kalózt</next>
+    <next id="266">Ha inkább visszamész oda, amerről jöttél</next>
+  </p>
   <!-- 65 -->
   <!-- 66 -->
   <p id="67">
@@ -517,7 +625,23 @@
   <!-- 78 -->
   <!-- 79 -->
   <!-- 80 -->
-  <!-- 81 -->
+  <p id="81">
+    <text>
+        [p]A Gondviselés nyila népszerű szerencsejáték a Játék-barlangokban. Egy nagy korongról van szó, melyet tizenkét, feliratos körcikkre osztottak, és a közepére pedig egy pörgethető nyilat rögzítettek. Ha játszani akarsz, 2 Aranyat kell befizetned, viszont a lehetséges nyeremény 10 Arany.[/p]
+    </text>
+    <itemCheck type="gold" id="2">
+      <have>
+        <next id="346">Ha játszanál</next>
+        <next id="260">Ha nem, akkor viszont tovább kell állnod</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Mivel nincs ennyi pénzed, kénytelen vagy továbbállni.[/p]
+        </text>
+        <next id="260"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 82 -->
   <p id="83">
     <text>
@@ -632,7 +756,23 @@
     <next id="334"></next>
   </p>
   <!-- 99 -->
-  <!-- 100 -->
+  <p id="100">
+    <text>
+        [p]Madame Galbo kunyhója szerény kis házacska a csendes Mandragóra-sikátorban, bár van valami idegesítő az ajtóra szegezett, döglött madárból készített totemben. Hármat koppantasz, amire egy károgó „Lépj be!” a válasz. Kinyitod az ajtót. Igazi vajákos-paradicsomban találod magad; az alacsony mennyezetgerendákról gyógynövénycsokrok lógnak, és a szobát teljesen betölti a cserepekbe ültetett virágok átható illata. A párás levegő és a rengeteg zöld olyan érzéssel tölt el, mintha valamiféle trópusi dzsungelben volnál. Egy zsúfolt asztal mögött ráncos, sötét bőrű nő ül, sűrű, csigákba göndörödő fekete hajjal - Madame Galbo. A vajákos asszony éppen azzal foglalatoskodik, hogy feltörjön valamit egy mozsárban. Amint belépsz a házikóba, hangos rikoltás hallatszik, és hirtelen egy nagy fekete kakas röppen odébb a lábad elől. - Ne aggódj Rabab miatt! - int Madame Galbo a familiárisa felé. - Mit tehetek érted? - Úgy érzed, megbízhatsz benne, így mesélsz neki a Fekete Koponya kalózai utáni kutatásodról. - A Sötét Hatalom híveinek számos álarcuk van, és temérdek kelepcét állítanak, hogy elveszejtsék az óvatlanokat. Ha éppen velük kerültél szembe, akkor szükséged lesz a segítségemre, mert ismerem a vudu módszereket, és tudok mit tenni ellenük. Viszont a közreműködésnek ára van - négy Arany.[/p]
+    </text>
+    <itemCheck type="gold" id="4">
+      <have>
+        <next id="382">Ha ki akarod fizetni a bölcs asszony segítségéért cserébe</next>
+        <next id="239">Ellenkező esetben el kell hagynod Madame Galbo kunyhóját, és máshol kutatni a megoldás után, hogyan is tudnád legyőzni Cinnabar híveit</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Sajnos nincs nálad ennyi pénz, így kénytelen vagy visszautasítani a nő segítségét. Elhagyod Madame Galbo kunyhóját, és máshol kutatsz tovább a megoldás után, hogyan is tudnád legyőzni Cinnabar híveit.[/p]
+        </text>
+        <next id="239"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="101">
     <text>
         [p]A Néma Szamár a Karom utca melletti, egyik koszos kis mellékutcájában található. Többen is gyanakvóan vizslatnak, mikor belépsz, ám senki sem próbál az utadba állni. Vigyázva lépdelsz felfelé a nyikorgó falépcsőn, majd az első folyosón álló, legelső ajtó előtt találod magad - 101-es szoba. A kulcs elfordul a zárban, és az ajtót kitárva belépsz a szobába, melynek bútorzata csupán egy asztalból és egy székből áll. Ám amit ott megpillantasz, attól jeges borzongás fut végig a gerinceden. Az asztalon egy feketére festett, színes tollakból álló fejdíszt viselő emberi koponya pihen. A Fekete Koponya! Rossz előjel. Mivel az égvilágon senki sincs itt, minden bizonnyal Cinnabar hívei készítették ide, hogy ezzel hátráltassanak téged. A koponya ígéretes nyom, bár továbbra is nyugtalanít.[/p]
@@ -939,9 +1079,32 @@
   <!-- 106 -->
   <!-- 107 -->
   <!-- 108 -->
-  <!-- 109 -->
+  <p id="109">
+    <text>
+        [p]Miközben könyököddel törsz utat magadnak a nyüzsgő tömegben, a ricsajon keresztül meghallasz egy durván suttogó, mély hangot: - A [em]Szuka[/em] éjfélkor kihajózik a Csont-sziget felé. - Körülnézve két gazember-külsejű alakot pillantasz meg, akik éppen elválnak egymástól, majd továbbmennek a maguk útján. Jelenleg nem tudod követni őket, ám a [em]Szuka[/em] Cinnabar hajójának neve, és mi a helyzet ezzel a szigettel? Ez az óvatlan beszélgetés fontos nyom lehet! (Jegyezd fel [em]Kalandlapodra[/em] a [em]Sziget[/em] szót!)[alt][/alt][/p]
+    </text>
+    <codeword name="Sziget" />
+    <itemCheck type="section" id="294">
+      <dontHave>
+        <next id="294" pos="1">Ha most Calabrius Számológépéhez mennél</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="9">
+      <dontHave>
+        <next id="9" pos="2">Ha inkább Csodálatos Armarnót keresnéd fel</next>
+      </dontHave>
+    </itemCheck>
+    <next id="207" pos="3" singleChoiceText=" Úgy döntesz, távozol a Játékbarlangokból">Amennyiben távozni szeretnél a Játékbarlangokból</next>
+  </p>
   <!-- 110 -->
-  <!-- 111 -->
+  <p id="111">
+    <text>
+        [p]Jegyezz fel 1 órát! Miközben a piactól távolodva lassan végigsétálsz a Kereskedők utcáján, egy nem igazán becsületes kinézetű fickóra figyelsz fel a Kérelmezők utcájának sarkán. Az idős férfi vékony, már-már girhes, az arcán néhány napos borosta. Az egyik szemén szemkötő, a jobb térde meg falábban folytatódik, és hosszú kabátot illetve háromszögletű kalapot visel. A vállán egy majom csimpaszkodik, szintén kabátkába öltöztetve. Amint elhaladsz a kalóz mellett, elkapod a pillantását, ő pedig rád kacsintva int egyet, majd megfordul, és elbiceg a sikátorban.[/p]
+    </text>
+    <add amount="1" to="time" />
+    <next id="64">Ha követni akarod</next>
+    <next id="143">Ha inkább továbbmész a dolgod után</next>
+  </p>
   <!-- 112 -->
   <!-- 113 -->
   <p id="114">
@@ -980,7 +1143,15 @@
   <!-- 115 -->
   <!-- 116 -->
   <!-- 117 -->
-  <!-- 118 -->
+  <p id="118">
+    <text>
+        [p]Húzz le újabb 2 Aranyat! Ezúttal biztos vagy benne, hogy a jó kártyát választottad - ám mikor Armarno felfordítja azt, az ismét fekete! Meggyőződésed, hogy átver![/p]
+    </text>
+    <add amount="-2" to="gold" />
+    <next id="258">Ha megvádolod a csalót</next>
+    <next id="223">Ha itt hagyod ezt az asztalt</next>
+    <next id="207">Ha viszont inkább egyszerűen távozol a Játékbarlangokból</next>
+  </p>
   <p id="119">
     <text>
         [p]A temető rögtön a városfal külső oldalánál fekszik. Oszlopos bejáratát nyugtalanító szobrok díszítik, és a köd csak fokozza az egész hely baljós hangulatát. A nyirkos sírkövek és kripták között lassan osonva váratlanul ág reccsenését hallod valahonnan balról, melytől csaknem kiugrasz a bőrödből. Megpördülsz, és biztos vagy benne, hogy láttál valamit eltűnni az egyik vicsorgó szobor mögött. Nem vagy egyedül a temetőben. Valami más is kóborol itt a sötétség leple alatt. Egy kripta sarkát megkerülve két, tengerésznek tűnő férfit pillantasz meg, akik éppen távolodnak tőled a ködben, miközben egy súlyos ládát cipelnek. Hova mehetnek? S mire készülnek?[/p]
@@ -997,12 +1168,40 @@
     </itemCheck>
   </p>
   <!-- 120 -->
-  <!-- 121 -->
+  <p id="121">
+    <text>
+        [p]- Helyes. Gratulálok - mondja Calabrius erőltetett mosollyal, és vonakodva nyújtja át a [span class="takeItem" data-id="gold" data-amount="10"]10 Aranyat[/span] tartalmazó zacskót (írd fel a [em]Kalandlapodra[/em], és adj 1-et szerencse pontjaidhoz). Megnövekedett önbizalommal mész tovább.[alt][/alt][/p]
+    </text>
+    <add amount="1" to="luck" />
+    <itemCheck type="section" id="81">
+      <dontHave>
+        <next id="81" pos="1">Ha most odalépsz a Gondviselés nyilához</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="9">
+      <dontHave>
+        <next id="9" pos="2">Ha a Csodálatos Armarnót néznéd meg</next>
+      </dontHave>
+    </itemCheck>
+    <next id="207" pos="3" singleChoiceText=" Úgy döntesz, elhagyod a Játékbarlangokat is.">Ha elhagynád a Játékbarlangokat</next>
+  </p>
   <!-- 122 -->
   <!-- 123 -->
   <!-- 124 -->
   <!-- 125 -->
-  <!-- 126 -->
+  <p id="126">
+    <text>
+        [p]Ellenfeleid a földre hanyatlanak, te pedig megfordulsz, hogy leszámolj az alattomos kalózzal. A vén zsivány már menekülőre is fogta, és a tőle telhető sebességgel biceg előre a sikátorban. Utánarohansz, ám meghallván, hogy közeledsz, a férfi megpördül, és elhajít egy tőrt.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="173"></next>
+      </success>
+      <failure>
+        <next id="213"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 127 -->
   <!-- 128 -->
   <p id="129">
@@ -1058,7 +1257,20 @@
   <!-- 140 -->
   <!-- 141 -->
   <!-- 142 -->
-  <!-- 143 -->
+  <p id="143">
+    <text>
+        [p]Ügyet sem vetvén a kalózra, elhagyod a Rákok Kikötőjének piacát (jegyezd fel [em]Kalandlapodra[/em] a [em]Kalóz[/em] szót).[/p]
+    </text>
+    <codeword name="Kalóz" />
+    <itemCheck type="codeword" id="Sziget">
+      <have>
+        <next id="17"></next>
+      </have>
+      <dontHave>
+        <next id="334"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 144 -->
   <!-- 145 -->
   <p id="146">
@@ -1084,7 +1296,13 @@
   <!-- 153 -->
   <!-- 154 -->
   <!-- 155 -->
-  <!-- 156 -->
+  <p id="156">
+    <text>
+        [p]Miután zsebre vágta a két Aranyat (húzd le a [em]Kalandlapodról[/em]), Mundji egy bőrkötéses könyvet emel le egy polcról, és sebesen belelapoz. - A, igen. íme, itt van -    jelenti ki, megállva egy különleges oldalnál. - Ez a legendás Mariin kapitány hajónaplójának másolata, melyet a [em]Fickándozó Delfinnel[/em] tett felfedezőútjai alatt írt. Számos utazásának egyikén, melyekről ebben a naplóban ír, mint azt elbeszéli, elhaladtak egy kannibálok lakta trópusi sziget mellett, melynek neve Csont-sziget. Nincs róla térkép, de azt mondja, hogy 650 kilométernyire keletre fekszik a Rákok Kikötőjétől. Attól tartok, ez minden, amit mondhatok neked -    fejezi be a törpe. - Ha valaha is eljutnál oda, esetleg készíthetnél nekem néhány vázlatot, hogy magam rajzolhassak térképet róla. - Megköszönöd Mundi Pelagonak a segítségét, majd továbbmész a magad útján.[/p]
+    </text>
+    <add amount="-2" to="gold" />
+    <next id="334"></next>
+  </p>
   <!-- 157 -->
   <p id="158">
     <text>
@@ -1100,7 +1318,15 @@
     <add amount="1" to="time" />
     <next id="52"></next>
   </p>
-  <!-- 160 -->
+  <p id="160">
+    <text>
+        [p]Kinyújtod a karod, hogy Madame Galbo egy kicsiny késsel megvághasson egy eret, és véredet felfoghassa egy edénykében (vesztesz 3 életerő pontot). Mikor már többé-kevésbé úgy érzed, hogy elveszted az eszméletedet, hallod, hogy az öregasszony közli veled, végzett. Még kábán figyeled, amint Madame Galbo felmelegíti a vért egy kis lángnyelv felett, egy másik folyadékkal együtt, melynek erős kénes szaga van. Ködfelhők formálódnak feletted a levegőben, majd szellemszerű arcok bukkannak fel közöttük. A vajákos asszony most csukott szemmel ül, lágyan dülöngélve jobbra-balra. - Szellemek - szólal meg, - mit tartogat a jövő a bosszúállónak? Mondjátok el nekünk![/p]
+        [p]Nyomasztó, susogó sóhajtozás tölti meg a levegőt, és a Madam Galbo által megidézett szellemek elkezdenek beszélni: - A Csontok Szigete... Az az a hely, ahova el kell mennie... A varázstudó könyvei őrzik a kulcsot... A maszkokban van a hatalom... A bálvány szíve... Eljő a Sötétség Szelleme... - Majd a hangok elhalkulnak.[/p]
+        [p]Madame Galbo a szellemidézés végeztével elég elgyötörtnek látszik, így inkább búcsút veszel tőle, és elhagyod a kunyhót.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <next id="239"></next>
+  </p>
   <p id="161">
     <text>
         [p]Elkerülve csapásaidat a két csáp csúszós szorításába fon. Semmit sem tehetsz, mikor berántanak a víz alá. Odalent, a kavargó homályon át megpillantod az Óriáspolipot, aki ezt az üreget választotta otthonául. Csattogó, csőrszerű szája felé ránt. Kétségbeesett küszködéssel végül sikerül szabaddá tenned a kardforgató karodat, bár a lény egyik csápja még mindig szorosan rád van csavarodva. Küzdened kell az életedért.[/p]
@@ -1169,7 +1395,12 @@
     <next id="52"></next>
   </p>
   <!-- 172 -->
-  <!-- 173 -->
+  <p id="173">
+    <text>
+        [p]Éppen időben buksz le, hogy elkerüld a feléd repülő tőrt. Aztán az öreg kalózra rontasz.[/p]
+    </text>
+    <next id="318"></next>
+  </p>
   <p id="174">
     <text>
         [p]Miután kihajítottak az utcára, sértettnek és idegesnek érzed magad. Aztán úgy döntesz, máshol keresgélsz tovább. Írj fel 1 órát, és jegyezd fel [em]Kalandlapodra[/em] a [em]Veszély[/em] szót.[/p]
@@ -1194,7 +1425,15 @@
   <!-- 176 -->
   <!-- 177 -->
   <!-- 178 -->
-  <!-- 179 -->
+  <p id="179">
+    <text>
+        [p]Madame Galbo összepréselt gyógyfüveket helyez a sebeidre, melyek percek alatt összehúzódnak és begyógyulnak! (Állítsd vissza ÉLETERŐ és ÜGYESSÉG pontjaidat a [em]Kezdeti[/em] értékre, és írj fel 2 szerencse pontot!) - Most pedig menned kell! - utasít az öregasszony.[/p]
+    </text>
+    <add amount="30" to="stamina" />
+    <add amount="30" to="skill" />
+    <add amount="2" to="luck" />
+    <next id="239"></next>
+  </p>
   <!-- 180 -->
   <p id="181">
     <text>
@@ -1302,7 +1541,9 @@
     <add amount="1" to="time" />
     <next id="13"></next>
   </p>
-  <!-- 200 -->
+  <p id="200">
+    <empty />
+  </p>
   <!-- 201 -->
   <!-- 202 -->
   <!-- 203 -->
@@ -1340,7 +1581,13 @@
   <!-- 210 -->
   <!-- 211 -->
   <!-- 212 -->
-  <!-- 213 -->
+  <p id="213">
+    <text>
+        [p]A tőr a válladba mélyed (vesztesz 2 életerő pontot).[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="318"></next>
+  </p>
   <!-- 214 -->
   <!-- 215 -->
   <!-- 216 -->
@@ -1385,11 +1632,33 @@
     <next id="13">Ha inkább visszatérnél a T-elágazáshoz, és követnéd az alagutat az ellenkező irányba</next>
   </p>
   <!-- 222 -->
-  <!-- 223 -->
+  <p id="223">
+    <text>
+        [p][alt]Mit teszel?[/alt][/p]
+    </text>
+    <itemCheck type="section" id="81">
+      <dontHave>
+        <next id="81" pos="1">Ha most megnéznéd a Gondviselés nyilát</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="294">
+      <dontHave>
+        <next id="294" pos="2">Ha Calabrius Számológépe érdekelne</next>
+      </dontHave>
+    </itemCheck>
+    <next id="207" pos="3" singleChoiceText="Úgy döntesz, hogy elhagyod a Játékbarlangokat.">Ha elhagynád a Játékbarlangokat</next>
+  </p>
   <!-- 224 -->
   <!-- 225 -->
   <!-- 226 -->
-  <!-- 227 -->
+  <p id="227">
+    <text>
+        [p]- Ha a vudu miatt nyugtalankodsz, akkor ajánlom, keresd fel Madame Galbót - mondja a talizmánárus, és elirányít az asszony kunyhójához a Mandragóra-sikátorba.[/p]
+    </text>
+    <gatherItem id="4005" />
+    <next id="351">Ha most azonnal praktikus felszerelés után nézel a piacon</next>
+    <next id="111">Ha inkább folytatod tovább a küldetésed</next>
+  </p>
   <!-- 228 -->
   <!-- 229 -->
   <!-- 230 -->
@@ -1460,7 +1729,55 @@
   </p>
   <!-- 237 -->
   <!-- 238 -->
-  <!-- 239 -->
+  <p id="239">
+    <text>
+        [p]Írj fel 1 órát! Miután elhagyod a Mandragóra-sikátort, eldöntheted, hogy merre kezdd el keresni a kalózok rejtekhelyét. Hol kezded?[/p]
+    </text>
+    <add amount="1" to="time" />
+    <itemCheck type="section" id="315">
+      <dontHave>
+        <itemCheck type="section" id="181">
+          <dontHave>
+            <next id="181">A Templom negyedben?</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="129">
+      <dontHave>
+        <next id="129">A Rákok Kikötőjének fogadóiban és kocsmáiban?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="146">
+      <dontHave>
+        <next id="146">A romos világítótoronynál?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="67">
+      <dontHave>
+        <next id="67">A dokkoknál?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="355">
+      <dontHave>
+        <next id="355">A város alatti csatornákban?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="83">
+      <dontHave>
+        <next id="83">A temetőben?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="3009">
+      <have>
+        <itemCheck type="section" id="101">
+          <dontHave>
+            <next id="101" pos="7">A Néma Szamár fogadóban?</next>
+          </dontHave>
+        </itemCheck>
+      </have>
+    </itemCheck>
+  </p>
   <!-- 240 -->
   <p id="241">
     <text>
@@ -1558,10 +1875,44 @@
   <!-- 255 -->
   <!-- 256 -->
   <!-- 257 -->
-  <!-- 258 -->
+  <p id="258">
+    <text>
+        [p]-    Te csalással vádolsz? - kiáltozik felháborodottan Armarno. - Soha életemben nem ért még ilyen sértés. Csak mert a kezem gyorsabb, mint a te szemed! -   Felpaprikázódsz a szélhámos szavain, s talpra ugrasz, de ezzel a mozdulatoddal az asztalt is sikerül felborítanod. A három kártyalap a padlóra hullik - és valamennyi fekete! Armarno tehát a tenyerébe kellett, hogy rejtse a fehéret! Végig igazad volt! Átkokat szórva próbálod előhúzni a kardod, de a válladra nehezedő, erős kar megállít. Egy Troll durva hangja morran a füledbe. - Mondtam. Itt nincs harcolás. - Mielőtt meggátolhatnád őket, a két Troll elkobozza a fegyvered, és közrefog. Aztán kihajítanak az utcára, büszkeséged romjaival egyetemben. Kard nélkül a Támadóerődet 3-mal kell csökkentened, míg másik fegyvert nem találsz. Magadban dörmögve távozol, hogy máshol kutass tovább. Írj fel 2 órát.[/p]
+    </text>
+    <loseItem id="1001" />
+    <add amount="2" to="time" />
+    <next id="334"></next>
+  </p>
   <!-- 259 -->
-  <!-- 260 -->
-  <!-- 261 -->
+  <p id="260">
+    <test against="luck">
+      <success>
+        <next id="109"></next>
+      </success>
+      <failure>
+        <text>
+            [alt][/alt]
+        </text>
+        <itemCheck type="section" id="294">
+          <dontHave>
+            <next id="294" pos="1">Ha nem, akkor átmehetsz Calabrius Számológépéhez</next>
+          </dontHave>
+        </itemCheck>
+        <itemCheck type="section" id="9">
+          <dontHave>
+            <next id="9" pos="2">Esetleg meglátogathatod a Csodálatos Armarnót</next>
+          </dontHave>
+        </itemCheck>
+        <next id="207" pos="3" singleChoiceText="[p]Úgy döntesz, elhagyod a Játékbarlangokat.[p]">De el is hagyhatod a Játékbarlangokat</next>
+      </failure>
+    </test>
+  </p>
+  <p id="261">
+    <text>
+        [p]Madame Galbo kiválaszt néhányat az asztalon álló korsók közül, majd végül háromféle anyagból készít keveréket egy apró mozsárban. - Kísértetfű magvai, porított emberi csontok és szárított Baziliszkusz-vér keveréke tökéletes védelmet nyújt azon szerencsétlen egyedek ellen, akiket visszahoztak a halálból, hogy Zombiként járják e világot. - Az öreg javasasszony végül átnyújtja neked a kész, por alakú keveréket egy lezárt kulacsban. Madame Galbo elmagyarázza, hogy ez a mennyiség 4 használatra elegendő. Minden olyan csatában használhatod a [span class="takeItem" data-id="3020" data-amount="4"]Zombi Port[/span], mikor Zombikkal kell összecsapnod. Ha a por segítségéhez folyamodsz, az vissza fogja szorítani ezeknek az élőholt lényeknek egyikét, ami annyit jelent, hogy az összecsapás eredményének meghatározásánál úgy tekintheted, mintha megölted volna. Jegyezd fel új szerzeményedet a [em]Kalandlapodra[/em].[/p]
+    </text>
+    <next id="239"></next>
+  </p>
   <!-- 262 -->
   <!-- 263 -->
   <p id="264">
@@ -1571,7 +1922,16 @@
     <next id="158"></next>
   </p>
   <!-- 265 -->
-  <!-- 266 -->
+  <p id="266">
+    <text>
+        [p]Megperdülsz, és szemtől szembe kerülsz két feketeruhás alakkal, kiknek arcát csuklya rejti. Nehéz harci botokkal a kezükben, a Hívők most feléd közelednek. Egyszerre kell megküzdened mindkettővel.[/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="22" />
+      <enemy id="23" />
+    </fight>
+    <next id="126"></next>
+  </p>
   <!-- 267 -->
   <!-- 268 -->
   <p id="269">
@@ -1620,7 +1980,12 @@
     </fight>
   </p>
   <!-- 281 -->
-  <!-- 282 -->
+  <p id="282">
+    <text>
+        [p]Befordulsz a sarkon, és szemtől szembe kerülsz a vénemberrel. - Oly’an nagyon kedves tőled, hogy csatlakozó’ hozzánk. - vigyorog a kalóz. - Ahogy mondani szokják, az öreg Crivens mindig megkapja a maga emberét. - Váratlanul egy suhanó hangot hallasz, aztán sajgó ütést érzel a fejed hátsó részén. Azonnal elveszíted az eszméleted.[/p]
+    </text>
+    <next id="158"></next>
+  </p>
   <!-- 283 -->
   <p id="284">
     <text>
@@ -1641,10 +2006,14 @@
     <gatherItem id="4004" />
     <itemCheck type="item" id="4005">
       <have>
-        <text>
-            [p]Úgy érzed, itt az ideje, hogy elmenj a Mandragóra-sikátorba.[/p]
-        </text>
-        <next id="9999"></next>
+        <itemCheck type="section" id="100">
+          <dontHave>
+            <text>
+                [p]Úgy érzed, itt az ideje, hogy elmenj a Mandragóra-sikátorba.[/p]
+            </text>
+            <next id="100"></next>
+          </dontHave>
+        </itemCheck>
       </have>
       <dontHave>
         <text>
@@ -1696,7 +2065,23 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 288 -->
+  <p id="288">
+    <text>
+        [p]Az ajtó felett megszólal egy csengő, amikor belépsz a helyiségbe, mely nem látszik többnek egy takaros, kedvesen ódivatú műhelynél. Bekeretezett térképek lógnak a falakon, egy elfoglalt Törpe pedig éppen egy tengerészeti atlasz fölé hajol munkaasztalánál. Érkezésedre felpillant, és megkérdezi, segítségedre lehet-e valamiben. Arról érdeklődsz, vajon hallott-e esetleg a Csont-szigetről. - Hmm. Nem vagyok biztos benne. Tudod, az emlékezetem már nem olyan jó - mondja a törpe, ám különös csillanást veszel észre a szemében.[/p]
+    </text>
+    <itemCheck type="gold" id="2">
+      <have>
+        <next id="156">Ha kipróbálod, mi történik, ha néhány Arannyal frissíted fel a memóriáját</next>
+        <next id="334">Ha inkább itt hagyod a térképészt</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Úgy döntesz, itt hagyod a térképészt.[/p]
+        </text>
+        <next id="334"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 289 -->
   <!-- 290 -->
   <!-- 291 -->
@@ -1868,7 +2253,30 @@
   </p>
   <!-- 316 -->
   <!-- 317 -->
-  <!-- 318 -->
+  <p id="318">
+    <text>
+        [p]A kalóz hosszú kést ránt elő, hogy védje magát. - Még nem kaptad el az öreg Crivenst - köp egy hegyeset. - Gyere csak közelebb, hadd nyiszáljam el a gigádat! -Nem foglalkozva a vénember fenyegetőzésével, ismét harcba szállsz.[/p]
+        [p]Miközben gazdájával harcolsz, a majmocska mindent megtesz, hogy a lehető legjobban akadályozzon; rád csimpaszkodik, harapdál. Ennek eredményeképpen a csata során csökkentsd 1 ponttal Támadóerődet, illetve minden Harci Körben dobj egy kockával! Ha az eredmény páros, vesztesz 1 életerő pontot, mivel a majom megharapott.[/p]
+    </text>
+    <gatherItem id="4001" />
+    <fight type="single">
+      <enemy id="24" />
+      <afterRound>
+        <random>
+          <even max="6" min="1">
+            <text>
+                [p]A majmocska harapása miatt vesztesz 1 ÉLETERŐ pontot.[/p]
+            </text>
+            <add amount="-1" to="stamina" />
+          </even>
+        </random>
+      </afterRound>
+      <win>
+        <loseItem id="4001" />
+      </win>
+    </fight>
+    <next id="377"></next>
+  </p>
   <!-- 319 -->
   <!-- 320 -->
   <p id="321">
@@ -2000,7 +2408,524 @@
   <!-- 343 -->
   <!-- 344 -->
   <!-- 345 -->
-  <!-- 346 -->
+  <p id="346">
+    <text>
+        [p class="inlineImage"][img src="resources/ff60/346.jpg" /][/p]
+        [p]Fizetsz 2 Aranyat (húzd le a [em]Kalandlapodról[/em]), és odalépsz a táblához. Háromszor forgathatsz, és ezzel a három forgatással 10 vagy több pontot kell elérned ahhoz, hogy nyerj.[/p]
+    </text>
+    <add amount="0" to="arrowRound" type="set" />
+    <add amount="0" to="arrowScore" type="set" />
+    <add amount="-2" to="gold" />
+    <random>
+      <result max="1" min="1">
+        <next id="346g"></next>
+      </result>
+      <result max="2" min="2">
+        <next id="346h"></next>
+      </result>
+      <result max="3" min="3">
+        <next id="346i"></next>
+      </result>
+      <result max="4" min="4">
+        <next id="346j"></next>
+      </result>
+      <result max="5" min="5">
+        <next id="346k"></next>
+      </result>
+      <result max="6" min="6">
+        <next id="346l"></next>
+      </result>
+    </random>
+  </p>
+  <p id="346a" display="346">
+    <text>
+        [p class="inlineImage"][img src="resources/ff60/346.jpg" /][/p]
+        [p]%d. kör. 3 pontot kapsz. Az összpontszámod jelenleg %d.[/p]
+    </text>
+    <add amount="1" to="arrowRound" />
+    <add amount="3" to="arrowScore" />
+    <itemCheck type="attribute" id="arrowScore" amount="10">
+      <have>
+        <next id="346n"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="attribute" id="arrowRound" amount="3">
+          <have>
+            <next id="346m"></next>
+          </have>
+          <dontHave>
+            <random>
+              <result max="1" min="1">
+                <next id="346h"></next>
+              </result>
+              <result max="2" min="2">
+                <next id="346i"></next>
+              </result>
+              <result max="3" min="3">
+                <next id="346j"></next>
+              </result>
+              <result max="4" min="4">
+                <next id="346k"></next>
+              </result>
+              <result max="5" min="5">
+                <next id="346l"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="346a"></next>
+              </result>
+            </random>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="346b" display="346">
+    <text>
+        [p class="inlineImage"][img src="resources/ff60/346.jpg" /][/p]
+        [p]%d. kör. Nem kapsz egy pontot sem. Az összpontszámod jelenleg %d.[/p]
+    </text>
+    <add amount="1" to="arrowRound" />
+    <itemCheck type="attribute" id="arrowRound" amount="3">
+      <have>
+        <next id="346m"></next>
+      </have>
+      <dontHave>
+        <random>
+          <result max="1" min="1">
+            <next id="346i"></next>
+          </result>
+          <result max="2" min="2">
+            <next id="346j"></next>
+          </result>
+          <result max="3" min="3">
+            <next id="346k"></next>
+          </result>
+          <result max="4" min="4">
+            <next id="346l"></next>
+          </result>
+          <result max="5" min="5">
+            <next id="346a"></next>
+          </result>
+          <result max="6" min="6">
+            <next id="346b"></next>
+          </result>
+        </random>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="346c" display="346">
+    <text>
+        [p class="inlineImage"][img src="resources/ff60/346.jpg" /][/p]
+        [p]%d. kör. 2 pontot kapsz. Az összpontszámod jelenleg %d.[/p]
+    </text>
+    <add amount="1" to="arrowRound" />
+    <add amount="2" to="arrowScore" />
+    <itemCheck type="attribute" id="arrowScore" amount="10">
+      <have>
+        <next id="346n"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="attribute" id="arrowRound" amount="3">
+          <have>
+            <next id="346m"></next>
+          </have>
+          <dontHave>
+            <random>
+              <result max="1" min="1">
+                <next id="346j"></next>
+              </result>
+              <result max="2" min="2">
+                <next id="346k"></next>
+              </result>
+              <result max="3" min="3">
+                <next id="346l"></next>
+              </result>
+              <result max="4" min="4">
+                <next id="346a"></next>
+              </result>
+              <result max="5" min="5">
+                <next id="346b"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="346c"></next>
+              </result>
+            </random>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="346d" display="346">
+    <text>
+        [p class="inlineImage"][img src="resources/ff60/346.jpg" /][/p]
+        [p]%d. kör. Kihagysz egy pörgetést. Az összpontszámod jelenleg %d.[/p]
+    </text>
+    <add amount="2" to="arrowRound" />
+    <itemCheck type="attribute" id="arrowRound" amount="3">
+      <have>
+        <next id="346m"></next>
+      </have>
+      <dontHave>
+        <random>
+          <result max="1" min="1">
+            <next id="346k"></next>
+          </result>
+          <result max="2" min="2">
+            <next id="346l"></next>
+          </result>
+          <result max="3" min="3">
+            <next id="346a"></next>
+          </result>
+          <result max="4" min="4">
+            <next id="346b"></next>
+          </result>
+          <result max="5" min="5">
+            <next id="346c"></next>
+          </result>
+          <result max="6" min="6">
+            <next id="346d"></next>
+          </result>
+        </random>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="346e" display="346">
+    <text>
+        [p class="inlineImage"][img src="resources/ff60/346.jpg" /][/p]
+        [p]%d. kör. 5 pontot vesztesz. Az összpontszámod jelenleg %d.[/p]
+    </text>
+    <add amount="1" to="arrowRound" />
+    <add amount="-5" to="arrowScore" />
+    <itemCheck type="attribute" id="arrowScore" amount="10">
+      <have>
+        <next id="346n"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="attribute" id="arrowRound" amount="3">
+          <have>
+            <next id="346m"></next>
+          </have>
+          <dontHave>
+            <random>
+              <result max="1" min="1">
+                <next id="346l"></next>
+              </result>
+              <result max="2" min="2">
+                <next id="346a"></next>
+              </result>
+              <result max="3" min="3">
+                <next id="346b"></next>
+              </result>
+              <result max="4" min="4">
+                <next id="346c"></next>
+              </result>
+              <result max="5" min="5">
+                <next id="346d"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="346e"></next>
+              </result>
+            </random>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="346f" display="346">
+    <text>
+        [p class="inlineImage"][img src="resources/ff60/346.jpg" /][/p]
+        [p]%d. kör. 5 pontot kapsz. Az összpontszámod jelenleg %d.[/p]
+    </text>
+    <add amount="1" to="arrowRound" />
+    <add amount="5" to="arrowScore" />
+    <itemCheck type="attribute" id="arrowScore" amount="10">
+      <have>
+        <next id="346n"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="attribute" id="arrowRound" amount="3">
+          <have>
+            <next id="346m"></next>
+          </have>
+          <dontHave>
+            <random>
+              <result max="1" min="1">
+                <next id="346a"></next>
+              </result>
+              <result max="2" min="2">
+                <next id="346b"></next>
+              </result>
+              <result max="3" min="3">
+                <next id="346c"></next>
+              </result>
+              <result max="4" min="4">
+                <next id="346d"></next>
+              </result>
+              <result max="5" min="5">
+                <next id="346e"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="346f"></next>
+              </result>
+            </random>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="346g" display="346">
+    <text>
+        [p class="inlineImage"][img src="resources/ff60/346.jpg" /][/p]
+        [p]%d. kör. 1 pontot kapsz. Az összpontszámod jelenleg %d.[/p]
+    </text>
+    <add amount="1" to="arrowRound" />
+    <add amount="1" to="arrowScore" />
+    <itemCheck type="attribute" id="arrowScore" amount="10">
+      <have>
+        <next id="346n"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="attribute" id="arrowRound" amount="3">
+          <have>
+            <next id="346m"></next>
+          </have>
+          <dontHave>
+            <random>
+              <result max="1" min="1">
+                <next id="346b"></next>
+              </result>
+              <result max="2" min="2">
+                <next id="346c"></next>
+              </result>
+              <result max="3" min="3">
+                <next id="346d"></next>
+              </result>
+              <result max="4" min="4">
+                <next id="346e"></next>
+              </result>
+              <result max="5" min="5">
+                <next id="346f"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="346g"></next>
+              </result>
+            </random>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="346h" display="346">
+    <text>
+        [p class="inlineImage"][img src="resources/ff60/346.jpg" /][/p]
+        [p]%d. kör. Kihagysz egy pörgetést. Az összpontszámod jelenleg %d.[/p]
+    </text>
+    <add amount="2" to="arrowRound" />
+    <itemCheck type="attribute" id="arrowRound" amount="3">
+      <have>
+        <next id="346m"></next>
+      </have>
+      <dontHave>
+        <random>
+          <result max="1" min="1">
+            <next id="346c"></next>
+          </result>
+          <result max="2" min="2">
+            <next id="346d"></next>
+          </result>
+          <result max="3" min="3">
+            <next id="346e"></next>
+          </result>
+          <result max="4" min="4">
+            <next id="346f"></next>
+          </result>
+          <result max="5" min="5">
+            <next id="346g"></next>
+          </result>
+          <result max="6" min="6">
+            <next id="346h"></next>
+          </result>
+        </random>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="346i" display="346">
+    <text>
+        [p class="inlineImage"][img src="resources/ff60/346.jpg" /][/p]
+        [p]%d. kör. 4 pontot kapsz. Az összpontszámod jelenleg %d.[/p]
+    </text>
+    <add amount="1" to="arrowRound" />
+    <add amount="4" to="arrowScore" />
+    <itemCheck type="attribute" id="arrowScore" amount="10">
+      <have>
+        <next id="346n"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="attribute" id="arrowRound" amount="3">
+          <have>
+            <next id="346m"></next>
+          </have>
+          <dontHave>
+            <random>
+              <result max="1" min="1">
+                <next id="346d"></next>
+              </result>
+              <result max="2" min="2">
+                <next id="346e"></next>
+              </result>
+              <result max="3" min="3">
+                <next id="346f"></next>
+              </result>
+              <result max="4" min="4">
+                <next id="346g"></next>
+              </result>
+              <result max="5" min="5">
+                <next id="346h"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="346i"></next>
+              </result>
+            </random>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="346j" display="346">
+    <text>
+        [p class="inlineImage"][img src="resources/ff60/346.jpg" /][/p]
+        [p]%d. kör. Elveszted minden pontod. Az összpontszámod jelenleg %d.[/p]
+    </text>
+    <add amount="1" to="arrowRound" />
+    <add amount="0" to="arrowScore" type="set" />
+    <itemCheck type="attribute" id="arrowRound" amount="3">
+      <have>
+        <next id="346m"></next>
+      </have>
+      <dontHave>
+        <random>
+          <result max="1" min="1">
+            <next id="346e"></next>
+          </result>
+          <result max="2" min="2">
+            <next id="346f"></next>
+          </result>
+          <result max="3" min="3">
+            <next id="346g"></next>
+          </result>
+          <result max="4" min="4">
+            <next id="346h"></next>
+          </result>
+          <result max="5" min="5">
+            <next id="346i"></next>
+          </result>
+          <result max="6" min="6">
+            <next id="346j"></next>
+          </result>
+        </random>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="346k" display="346">
+    <text>
+        [p class="inlineImage"][img src="resources/ff60/346.jpg" /][/p]
+        [p]%d. kör. Megduplázódnak a pontjaid. Az összpontszámod jelenleg %d.[/p]
+    </text>
+    <add amount="1" to="arrowRound" />
+    <itemCheck type="attribute" id="arrowScore" amount="10">
+      <have>
+        <next id="346n"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="attribute" id="arrowRound" amount="3">
+          <have>
+            <next id="346m"></next>
+          </have>
+          <dontHave>
+            <random>
+              <result max="1" min="1">
+                <next id="346f"></next>
+              </result>
+              <result max="2" min="2">
+                <next id="346g"></next>
+              </result>
+              <result max="3" min="3">
+                <next id="346h"></next>
+              </result>
+              <result max="4" min="4">
+                <next id="346i"></next>
+              </result>
+              <result max="5" min="5">
+                <next id="346j"></next>
+              </result>
+              <result max="6" min="6">
+                <next id="346k"></next>
+              </result>
+            </random>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="346l" display="346">
+    <text>
+        [p class="inlineImage"][img src="resources/ff60/346.jpg" /][/p]
+        [p]%d. kör. 3 pontot vesztesz. Az összpontszámod jelenleg %d.[/p]
+    </text>
+    <add amount="-3" to="arrowScore" />
+    <itemCheck type="attribute" id="arrowRound" amount="3">
+      <have>
+        <next id="346m"></next>
+      </have>
+      <dontHave>
+        <random>
+          <result max="1" min="1">
+            <next id="346e"></next>
+          </result>
+          <result max="2" min="2">
+            <next id="346f"></next>
+          </result>
+          <result max="3" min="3">
+            <next id="346g"></next>
+          </result>
+          <result max="4" min="4">
+            <next id="346h"></next>
+          </result>
+          <result max="5" min="5">
+            <next id="346i"></next>
+          </result>
+          <result max="6" min="6">
+            <next id="346j"></next>
+          </result>
+        </random>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="346m" display="346">
+    <text>
+        [p class="inlineImage"][img src="resources/ff60/346.jpg" /][/p]
+        [p]Nem sikerült három forgatásból elérned 10 pontot.[/p]
+    </text>
+    <itemCheck type="gold" id="2">
+      <have>
+        <next id="346">Ha ismét meg akarsz próbálkozni ezzel a játékkal</next>
+        <next id="260">Ha befejezed a játékot</next>
+      </have>
+      <dontHave>
+        <text>
+             [p]Mivel nincs több pénzed, befejezed a játékot.[/p]
+        </text>
+        <next id="260"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="346n" display="346">
+    <text>
+        [p class="inlineImage"][img src="resources/ff60/346.jpg" /][/p]
+        [p]Sikerült 10 pontot elérned, nyertél! Elteszed a 10 Aranytallért, és befejezed a játékot.[/p]
+    </text>
+    <next id="260"></next>
+  </p>
   <!-- 347 -->
   <!-- 348 -->
   <!-- 349 -->
@@ -2015,7 +2940,25 @@
     </itemCheck>
     <next id="309" pos="1" singleChoiceText=" Úgy döntesz, távozol a Mallan-fokról.">Ha távozol a Mallan-fokról</next>
   </p>
-  <!-- 351 -->
+  <p id="351">
+    <text>
+        [p]A számos bódé környékén szemlélődve találsz néhány tárgyat, mely hasznos lehet számodra küldetésed során. Bármennyit megvehetsz a listán szereplő áruk közül, ameddig csak a pénzedből futja. (A megfelelő Aranymennyiséget mindig húzd le a [em]Kalandlapodról[/em]!)[/p]
+        [p]A Késsel semmiféle bonusz nem jár, ez csupán egy más fajta fegyver. A Dobótőrt bármely ellenfél ellen használhatod a viadal kezdete előtt. Ehhez [em]tedd próbára[/em] ügyességed, és ha sikerrel jártál, levonhatsz 2 pontot ellenfeled életerejéből. Ha megnyered a harcot, visszaszerezheted az elhajított tőrt. A Láncing 1-gyel csökkenti ellenfeleid Támadóerejét, ám amíg viseled, minden alkalommal hozzá kell adnod 1-et az összeghez, mikor [em]próbára teszed[/em] ügyességed. A Grog igen lelkesítő hatású innivaló, 4 életerő pontot nyersz a megivásával; illetve a soron következő csatában 1-gyel megnövelheted Támadóerődet (de csupán ennek az egyetlen harcnak az idejére). Az ellenszérum különféle mérgezések és fertőzések kezelésére alkalmas, és három használatra elegendő. És van még itt három Gázgömb, melyekben mintha valami füst kavarogna. A Gázgömböt harc előtt használhatod: egyszerűen össze kell törni a padlón, az ellenfél előtt, akit erre köd burkol be, összezavarván érzékeit; ennek eredményeképpen 2-vel csökkentheted Támadóerejét. Azonban a Gázgömbnek semmi hatása Élőholtakra, Démonokra vagy bármely mágikus teremtményekre.[/p]
+        [div data-market=""][/div]
+    </text>
+    <market>
+      <sale price="1" stock="1" id="3016" />
+      <sale price="1" stock="20" id="2000" />
+      <sale price="8" stock="1" id="1002" />
+      <sale price="3" stock="1" id="3017" />
+      <sale price="6" stock="1" id="3018" />
+      <sale price="3" stock="1" id="2001" />
+      <sale price="4" stock="1" id="2002" />
+      <sale price="6" stock="3" id="3019" />
+    </market>
+    <next id="42">Mikor végeztél a vásárlással, körülnézhetsz a Bazárban, egzotikus holmik után kutatva</next>
+    <next id="111">Vagy itt hagyhatod a piacot</next>
+  </p>
   <!-- 352 -->
   <!-- 353 -->
   <p id="354">
@@ -2071,7 +3014,36 @@
   <!-- 361 -->
   <!-- 362 -->
   <!-- 363 -->
-  <!-- 364 -->
+  <p id="364">
+    <text>
+        [p]-    Á, egy versenyző! - kiált fel Calabrius. - Lépj hát előre, ne félj! Nos, hol van a pénzed? - Átadsz neki 2 Aranytallért (húzd le a [em]Kalandlapodról[/em]). Calabrius a hatalmas számoló-gépezet oldalához lép, és meghúz egy kart. Sok kattogó hang hallatszik, és a számokkal borított hengerek nagy sebességgel forogni kezdenek. Majd fokozatosan, egyik a másik után megáll a maga ablaka mögött. Az utolsó pedig üres marad. A panelek tehát most az alábbi módon festenek:[/p]
+        [p class="centered"]1    9   25  57  -[/p]
+        [p]-    A Számoló Masina megalkotta fúrfangos feladványát. Ez a gépezet még Vaskövesd legnagyobb elméit is képes zavarba ejteni. Ki tudod találni, mi lehet a sorozat következő száma?[/p]
+    </text>
+    <add amount="-2" to="gold" />
+    <userInput type="number" min="1" max="400">
+      <label>Mi a következő szám?</label>
+      <result minBound="121" maxBound="121">
+        <next id="121"></next>
+      </result>
+      <resultElse>
+        <text>
+            [p]Rossz választ adtál, ott kell hagynod Calabrius Számológépét.[alt][/alt][/p]
+        </text>
+        <itemCheck type="section" id="81">
+          <dontHave>
+            <next id="81" pos="1">Ha ezután szemügyre veszed a Gondviselés nyilát</next>
+          </dontHave>
+        </itemCheck>
+        <itemCheck type="section" id="9">
+          <dontHave>
+            <next id="9" pos="2">Ha a Csodálatos Armarnót látogatod meg</next>
+          </dontHave>
+        </itemCheck>
+        <next id="207" pos="3" singleChoiceText=" Úgy döntesz, elhagyod a Játékbarlangokat is.">Ha inkább elhagyod a Játékbarlangokat</next>
+      </resultElse>
+    </userInput>
+  </p>
   <p id="365">
     <text>
         [p]A kikötőváros színpompás piactere a Kereskedőnegyedben fekszik, mely a Garas sikátortól egészen a Pénzkölcsönzők utcájáig húzódik. Jelenleg két lehetőséged van.[/p]
@@ -2106,7 +3078,19 @@
   </p>
   <!-- 375 -->
   <!-- 376 -->
-  <!-- 377 -->
+  <p id="377">
+    <text>
+        [p]Miután Crivens majma elszökdécsel, hamarjában átvizsgálod támadóid testét, akik valamennyien ott viselik a Fekete Koponya jelét a jobb kézfejükön. A Hívőknél nincs semmi, viszont az öreg kalóz már egészen más eset... Crivensnél találsz egy erszényt, benne [span class="takeItem" data-id="gold" data-amount="6"]6 Arannyal[/span] és egy igencsak szokatlan érmével. Csaknem kétszer akkora, mint egy Aranyérme, egyik oldalán egy rák képével - ez egy dublon. Megfordítod, és csodálkozva fedezed fel, hogy a másik felére is egy rák alakját nyomták. Dublonokat már jó kétszáz éve nem vertek itt a Rákok Kikötőjében, ezért aztán valószínűleg igen ritka, és nagy értéket képvisel. Bár a kezedben tartott érme gyaníthatóan nem hivatalos, hiszen két „feje” van. Mindebből csak arra tudsz következtetni, hogy valaki megpróbált saját dublont verni, kétségtelenül pénzszerzés céljából. Írd fel a [span class="takeItem" data-id="3007" data-amount="1"]Rák Dublont[/span] a [em]Kalandlapodra[/em]. Elveheted Crivens [span class="takeItem" data-id="3017" data-amount="1"]dobótőrét[/span] is, ha akarod. Ha így teszel, használhatod ellenfeleid ellen, mielőtt megküzdenél velük. Ehhez [em]tedd próbára[/em] ügyességed! Ha sikeres vagy, 2-vel csökkentheted az életerő pontjukat. A csata után pedig visszaveheted a tőrt. Dregg szólt arról, hogy Crivens Cinnabar régi legénységének tagja volt, így nyilván tudják, hogy a nyomukban vagy. A jövőben igen óvatosnak kell lenned, nehogy még jobban felhívd magadra a figyelmüket. Iparkodva, bár most már elővigyázatosan, újra nekivágsz, és elhagyod a piacot.[/p]
+    </text>
+    <itemCheck type="codeword" id="Sziget">
+      <have>
+        <next id="17"></next>
+      </have>
+      <dontHave>
+        <next id="334"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 378 -->
   <p id="379">
     <text>
@@ -2117,7 +3101,15 @@
   </p>
   <!-- 380 -->
   <!-- 381 -->
-  <!-- 382 -->
+  <p id="382">
+    <text>
+        [p]Kissé bizonytalanul nyújtod át a 4 Aranytallért (húzd le a [em]Kalandlapodról[/em]). - Ülj le, és pihentesd megfáradt lábaidat - szól Madame Galbo suttogó hangon, te pedig készséggel engedelmeskedsz. - Quezkari követőit keresed, mert attól félsz, hogy visszahozzák kalóznagyurukat az életbe? - Bólintással nyugtázod a bölcs asszony szavait. - Félelmed jogos, mivel beszéltem a szellemekkel. S éppen most, a Fekete Koponya hívei és Cinnabar véráldozatot mutatnak be a halálistennek, hogy az feltámassza a Fosztogatót, aki ezáltal folytathatja rémuralmát Titán tizenkét tengerén. Egy bajnoknak, mint amilyen te vagy, kell megállítania őket, mert a vudu útját járják. A vudu varázslat a vad, érintetlen helyek mágiája. A dzsungel mágiája, kezdetleges és zabolátlan. Primitív, bestiális és sötét. Ha Cinnabar visszatér, sebezhetetlen lesz, és az egész várost vérszomjas mestere rabszolgájává teszi. Háromféle segítség közül egyet nyújthatok számodra, mivel nem maradhatsz itt sokáig - és az idő rövid.[/p]
+    </text>
+    <add amount="-4" to="gold" />
+    <next id="11">Azt szeretnéd, hogy belenézzek a jövődbe, és ezzel segítsek neked?</next>
+    <next id="179">Vagy gyógyítsam be a sebeidet?</next>
+    <next id="261">Esetleg készítsek neked egy keveréket, melynek hasznát veheted küldetésed során?</next>
+  </p>
   <!-- 383 -->
   <!-- 384 -->
   <!-- 385 -->

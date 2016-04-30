@@ -4,7 +4,7 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.FightingFantasy.BLOODBONES" id="ff60Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff60Info" c:id-ref="ff60Id" p:coverPath="resources/ff60/cover.jpg" p:resourceDir="ff60" p:characterBeanId="ff60Character" p:characterPageDataBeanId="ff60CharacterPageData" p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="60" p:series-ref="ffTitle" p:title="Bloodbones" p:characterHandler-ref="ffCharacterHandler" p:commandResolvers-ref="ff60CommandResolvers" p:unfinished="true" p:hidden="true">
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff60Info" c:id-ref="ff60Id" p:coverPath="resources/ff60/cover.jpg" p:resourceDir="ff60" p:characterBeanId="ff60Character" p:characterPageDataBeanId="ff60CharacterPageData" p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="60" p:series-ref="ffTitle" p:title="Bloodbones" p:characterHandler-ref="ff60CharacterHandler" p:commandResolvers-ref="ff60CommandResolvers" p:unfinished="true" p:hidden="true">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="ff60enemies.xml" c:items="ff60items.xml" c:paragraphs="ff60content.xml" />
     </property>
@@ -12,6 +12,8 @@
       <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="true" />
     </property>
   </bean>
+  
+  <bean id="ff60CharacterHandler" parent="ffCharacterHandler" p:attributeHandler-ref="ff60AttributeHandler" />
 
   <bean class="hu.zagor.gamebooks.content.command.fight.roundresolver.SingleFf60FightRoundResolver" id="singleff60FightRoundResolver">
     <property name="ogreRandomCommand">

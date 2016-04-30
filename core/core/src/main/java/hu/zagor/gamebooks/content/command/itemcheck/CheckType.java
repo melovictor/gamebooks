@@ -26,5 +26,7 @@ public enum CheckType {
     armour,
     status,
     enemyShield,
-    selfShield
+    selfShield,
+    arrowScore,
+    arrowRound
 }

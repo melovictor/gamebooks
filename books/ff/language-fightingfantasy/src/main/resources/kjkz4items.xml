@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <items xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff-items.xsd">
-  <item id="defWpn" name="Ököl" type="weapon1" weaponSubType="weakBlunt" staminaDamage="2" />
+  <item id="defWpn" name="Ököl" type="weapon1" weaponSubType="weakBlunt" staminaDamage="2" addToAttackStrength="-3" />
   <item name="Kard" id="1001" type="weapon1" forceEquip="true" weaponSubType="edged" staminaDamage="2" />
+  <item type="weapon1" id="1002" name="Kés" weaponSubType="edged" staminaDamage="2" />
 
 
-  <item name="Élelmiszer" id="2000" type="provision" addToStamina="4" actions="2" />
+  <item name="Élelmiszer" id="2000" type="provision" addToStamina="4" />
+  <!-- +1 AS after drinking it for the next battle -->
+  <item type="common" id="2001" name="Egy flaska Grog" addToStamina="4" description="4 [span class='ffAttribute']életerő[/span] pontot nyersz a megivásával; illetve a soron következő csatában 1-gyel megnövelheted Támadóerődet." />
+  <item type="potion" id="2002" name="Ellenszérum" dose="1" description="Az ellenszérum különféle mérgezések és fertőzések kezelésére alkalmas." />
 
 
   <item name="Bőrpáncél" id="3001" type="armour" forceEquip="true" />
@@ -24,6 +28,16 @@
   <item type="common" id="3014" name="Elvin Hajfürt" />
   <item type="bracelet" id="3015" name="Faragott Sötétfa Karkötő" />
 
+  <item type="common" id="3016" name="Kötél" />
+  <!-- implement prefight -->
+  <item type="common" id="3017" name="Dobótőr" preFight="true" />
+  <!-- -1 from enemy AS, +1 to skill test rolls -->
+  <item type="common" id="3018" name="Láncing" description="A Láncing 1-gyel csökkenti ellenfeleid Támadóerejét, ám amíg viseled, minden alkalommal hozzá kell adnod 1-et az összeghez, mikor [em]próbára teszed[/em] [span class='ffAttribute']ügyességed[/span]." />
+  <!-- -2 AS from enemy when used, only against normal ones though -->
+  <item type="common" id="3019" name="Gázgömb" preFight="true" description="A Gázgömböt harc előtt használhatod: egyszerűen össze kell törni a padlón, az ellenfél előtt, akit erre köd burkol be, összezavarván érzékeit; ennek eredményeképpen 2-vel csökkentheted Támadóerejét. Azonban a Gázgömbnek semmi hatása Élőholtakra, Démonokra vagy bármely mágikus teremtményekre." />
+  <!-- not sure if pre-fight or not... -->
+  <item type="common" id="3020" name="Zombi Por" preFight="true" />
+
 
 
   <!-- This AS bonus is automatically removed at the end of all battles -->
@@ -33,7 +47,7 @@
   <item type="shadow" id="4003" name="Crossbone -- password" />
   <item type="shadow" id="4004" name="Nighttime" />
   <!-- what? -->
-  <item type="shadow" id="4005" name="Go to mandrake alley" />
+  <item type="shadow" id="4005" name="Go to mandrake alley -- 100" />
 
 
 </items>
