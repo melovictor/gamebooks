@@ -79,6 +79,9 @@ public class DefaultBookContentInitializer implements BookContentInitializer, Be
         Assert.notNull(info, INFO_NOT_NULL);
 
         final Paragraph paragraph = storage.getBookParagraph(info, paragraphId);
+        if (paragraph == null) {
+            throw new IllegalStateException("We received a null paragraph from the book storage for paragraph ID '" + paragraphId + "'. Something is very wrong!");
+        }
         markParagraphImages(paragraph, player.getSettings().getImageTypeOrder());
         try {
             checkNewParagraphValidity(previousParagraph, paragraphId);
