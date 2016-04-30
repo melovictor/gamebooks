@@ -50,7 +50,7 @@ public class FightCommand extends Command {
     private final List<FfAllyCharacter> resolvedAllies = new ArrayList<>();
     private Map<String, BattleStatistics> battleStatistics = new HashMap<>();
 
-    private boolean ongoing;
+    private boolean ongoing = true;
     private boolean luckOnHit;
     private boolean luckOnDefense;
     private boolean luckTestAllowed = true;
