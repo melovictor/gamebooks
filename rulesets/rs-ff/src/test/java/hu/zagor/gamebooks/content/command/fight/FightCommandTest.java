@@ -7,11 +7,9 @@ import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -123,6 +121,7 @@ public class FightCommandTest extends AbstractCommandTest {
 
     public void testGetCommandViewWhenBattleIsFinishedShouldReturnViewWithoutTheChoicesHidden() {
         // GIVEN
+        underTest.setOngoing(false);
         underTest.setBattleType("Single");
         mockControl.replay();
         // WHEN

@@ -33,6 +33,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import com.google.common.collect.Sets;
 
 /**
  * Unit test for class {@link RawRuleBookParagraphResolver}.
@@ -131,6 +132,7 @@ public class RawRuleBookParagraphResolverTest {
         expect(newParagraphData.getUnhiddenItems()).andReturn(new ArrayList<GatheredLostItem>());
         expect(newParagraphData.getGatheredItems()).andReturn(new ArrayList<GatheredLostItem>());
         expect(newParagraphData.getLostItems()).andReturn(new ArrayList<GatheredLostItem>());
+        expect(newParagraphData.getCodewords()).andReturn(Arrays.asList("ship", "crivens"));
         expect(newParagraphData.getCommands()).andReturn(new CommandList());
         expect(newParagraphData.getReward()).andReturn(null);
 
@@ -139,6 +141,7 @@ public class RawRuleBookParagraphResolverTest {
         underTest.resolve(resolvationData, paragraph);
         // THEN
         Assert.assertEquals(processableItemList, Arrays.asList(fightCommandHolder, paragraphDataHolder));
+        Assert.assertEquals(character.getCodeWords(), Sets.newHashSet("ship", "crivens"));
     }
 
 }
