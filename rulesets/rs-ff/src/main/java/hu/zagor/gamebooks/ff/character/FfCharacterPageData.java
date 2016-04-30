@@ -40,6 +40,7 @@ public class FfCharacterPageData extends RawCharacterPageData {
 
     private final FfAttributeHandler attributeHandler;
     private final FfCharacter character;
+    private final List<String> codewords;
 
     /**
      * Bean for storing data to display on the character page for Fighting Fantasy ruleset.
@@ -60,6 +61,7 @@ public class FfCharacterPageData extends RawCharacterPageData {
         stamina = attributeHandler.resolveValue(character, "stamina");
         luck = attributeHandler.resolveValue(character, "luck");
         gold = character.getGold();
+        codewords = new ArrayList<>(character.getCodeWords());
 
         sortOutEquipments(character);
     }
@@ -189,6 +191,10 @@ public class FfCharacterPageData extends RawCharacterPageData {
 
     public List<Item> getAtFightItems() {
         return atFightItems;
+    }
+
+    public List<String> getCodewords() {
+        return codewords;
     }
 
 }

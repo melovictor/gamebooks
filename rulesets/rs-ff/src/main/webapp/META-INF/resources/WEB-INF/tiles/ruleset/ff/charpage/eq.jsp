@@ -18,6 +18,11 @@
 	         [<spring:message code="page.ff.attribute.provision.doses" arguments="${item.dose}" />]</c:if></span></c:forEach>
     </c:if>
 
+    <c:if test="${not empty charEquipments.codewords}">
+        <span class="ffMainAttribute ffCodewords"><spring:message code="page.ff.codewords" /></span>
+        <c:forEach items="${charEquipments.codewords}" var="codeword" varStatus="stat">${codeword}<c:if test="${!stat.last}">,</c:if></c:forEach>
+    </c:if>
+
     <div id="ffDropItem">
         <span data-drop-single-item><spring:message code="page.raw.label.dropItem" /></span>
         <span data-drop-multiple-items><spring:message code="page.raw.label.dropItems" /></span>
