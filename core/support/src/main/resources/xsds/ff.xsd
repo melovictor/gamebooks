@@ -181,6 +181,80 @@
   </xs:complexType>
 
 
+  <xs:simpleType name="AnyValuePattern">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-z][a-zA-Z]*" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="AddDefaultValues">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="stamina" />
+      <xs:enumeration value="skill" />
+      <xs:enumeration value="luck" />
+      <xs:enumeration value="initialSkill" />
+      <xs:enumeration value="initialStamina" />
+      <xs:enumeration value="initialLuck" />
+      <xs:enumeration value="gold" />
+      <xs:enumeration value="faith" />
+      <xs:enumeration value="fear" />
+      <xs:enumeration value="stoneSkin" />
+      <xs:enumeration value="wisdom" />
+      <xs:enumeration value="damageProtection" />
+      <xs:enumeration value="armour" />
+      <xs:enumeration value="status" />
+      <xs:enumeration value="selfShield" />
+      <xs:enumeration value="enemyShield" />
+      <xs:enumeration value="time" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ItemCheckDefaultValues">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="item" />
+      <xs:enumeration value="items" />
+      <xs:enumeration value="totalItems" />
+      <xs:enumeration value="enemy" />
+      <xs:enumeration value="section" />
+      <xs:enumeration value="codeword" />
+      <xs:enumeration value="attribute" />
+      <xs:enumeration value="skill" />
+      <xs:enumeration value="stamina" />
+      <xs:enumeration value="luck" />
+      <xs:enumeration value="armour" />
+      <xs:enumeration value="status" />
+
+      <xs:enumeration value="gold">
+        <xs:annotation>
+          <xs:documentation>
+            This is the total amount of wealth we possess with regard to purchasing items. This is the total of currency and currency-substituting valuables.
+            Since most of the time there are no currency-substituting items in the game, this is usually the same as "goldpiece".
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="goldpiece">
+        <xs:annotation>
+          <xs:documentation>
+            This is the hard currency we have. Only the coins themselves, nothing else. No items that can be sold, no items that are treated the same way as currencies.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="value">
+        <xs:annotation>
+          <xs:documentation>
+            This is the total value of items we have. This includes hard cash, cash-substituting valuables and items that can be sold for a given price.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fear" />
+      <xs:enumeration value="faith" />
+      <xs:enumeration value="pos" />
+      <xs:enumeration value="wisdom" />
+      <xs:enumeration value="selfShield" />
+      <xs:enumeration value="enemyShield" />
+    </xs:restriction>
+  </xs:simpleType>
+
+
   <xs:element name="content">
     <xs:complexType>
       <xs:choice>
@@ -357,48 +431,7 @@
           </xs:sequence>
           <xs:attribute name="type" use="required">
             <xs:simpleType>
-              <xs:restriction base="xs:string">
-                <xs:enumeration value="item" />
-                <xs:enumeration value="items" />
-                <xs:enumeration value="totalItems" />
-                <xs:enumeration value="enemy" />
-                <xs:enumeration value="section" />
-                <xs:enumeration value="codeword" />
-                <xs:enumeration value="attribute" />
-                <xs:enumeration value="skill" />
-                <xs:enumeration value="stamina" />
-                <xs:enumeration value="luck" />
-                <xs:enumeration value="armour" />
-                <xs:enumeration value="status" />
-                <xs:enumeration value="gold">
-                  <xs:annotation>
-                    <xs:documentation>
-                      This is the total amount of wealth we possess with regard to purchasing items. This is the total of currency and currency-substituting valuables.
-                      Since most of the time there are no currency-substituting items in the game, this is usually the same as "goldpiece".
-                    </xs:documentation>
-                  </xs:annotation>
-                </xs:enumeration>
-                <xs:enumeration value="goldpiece">
-                  <xs:annotation>
-                    <xs:documentation>
-                      This is the hard currency we have. Only the coins themselves, nothing else. No items that can be sold, no items that are treated the same way as currencies.
-                    </xs:documentation>
-                  </xs:annotation>
-                </xs:enumeration>
-                <xs:enumeration value="value">
-                  <xs:annotation>
-                    <xs:documentation>
-                      This is the total value of items we have. This includes hard cash, cash-substituting valuables and items that can be sold for a given price.
-                    </xs:documentation>
-                  </xs:annotation>
-                </xs:enumeration>
-                <xs:enumeration value="fear" />
-                <xs:enumeration value="faith" />
-                <xs:enumeration value="pos" />
-                <xs:enumeration value="wisdom" />
-                <xs:enumeration value="selfShield" />
-                <xs:enumeration value="enemyShield" />
-              </xs:restriction>
+              <xs:union memberTypes="ItemCheckDefaultValues AnyValuePattern" />
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="id" type="xs:string" use="required" />
@@ -416,25 +449,7 @@
         <xs:complexType>
           <xs:attribute name="to" use="required">
             <xs:simpleType>
-              <xs:restriction base="xs:string">
-                <xs:enumeration value="stamina" />
-                <xs:enumeration value="skill" />
-                <xs:enumeration value="luck" />
-                <xs:enumeration value="initialSkill" />
-                <xs:enumeration value="initialStamina" />
-                <xs:enumeration value="initialLuck" />
-                <xs:enumeration value="gold" />
-                <xs:enumeration value="faith" />
-                <xs:enumeration value="fear" />
-                <xs:enumeration value="stoneSkin" />
-                <xs:enumeration value="wisdom" />
-                <xs:enumeration value="damageProtection" />
-                <xs:enumeration value="armour" />
-                <xs:enumeration value="status" />
-                <xs:enumeration value="selfShield" />
-                <xs:enumeration value="enemyShield" />
-                <xs:enumeration value="time" />
-              </xs:restriction>
+              <xs:union memberTypes="AddDefaultValues AnyValuePattern" />
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="amount" type="xs:integer" use="required" />
