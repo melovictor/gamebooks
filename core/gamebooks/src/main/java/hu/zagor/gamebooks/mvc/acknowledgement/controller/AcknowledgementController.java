@@ -25,6 +25,7 @@ public class AcknowledgementController {
     @RequestMapping(PageAddresses.ACKNOWLEDGEMENT)
     public String display(final Model model) {
         model.addAttribute("users", acknowledgementPeople);
+        model.addAttribute("pageTitle", "page.title");
         return "acknowledgement";
     }
 
