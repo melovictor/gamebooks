@@ -14,6 +14,7 @@ public class Ff60Character extends FfCharacter {
     private int time;
     private int arrowScore;
     private int arrowRound;
+    private int nineTailDamage;
 
     public int getTime() {
         return time;
@@ -37,6 +38,14 @@ public class Ff60Character extends FfCharacter {
 
     public void setArrowRound(final int arrowRound) {
         this.arrowRound = arrowRound;
+    }
+
+    public int getNineTailDamage() {
+        return nineTailDamage;
+    }
+
+    public void setNineTailDamage(final int nineTailDamage) {
+        this.nineTailDamage = nineTailDamage;
     }
 
 }
