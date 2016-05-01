@@ -165,9 +165,37 @@ public class FightCommandMessageList implements List<String> {
     public boolean addKey(final String key, final Object... args) {
         Assert.state(localeProvider != null, "A locale provider has to be specified for text key resolvation.");
         Assert.state(messageSource != null, "A message source has to be specified for text key resolvation.");
-        final Locale locale = localeProvider.getLocale();
-        selectedMessages.add(index++, messageSource.getMessage(key, args, locale));
+        final String resolvedMessage = resolveKey(key, args);
+        selectedMessages.add(index++, resolvedMessage);
         return true;
+    }
+
+    /**
+     * Adds a text key with arguments that needs to be resolved.
+     * @param index the index at which the message is to be inserted
+     * @param key the key to be resolved
+     * @param args the arguments
+     * @return <code>true</code>
+     */
+    public boolean addKey(final int index, final String key, final Object... args) {
+        Assert.state(localeProvider != null, "A locale provider has to be specified for text key resolvation.");
+        Assert.state(messageSource != null, "A message source has to be specified for text key resolvation.");
+        final String resolvedMessage = resolveKey(key, args);
+        selectedMessages.add(index, resolvedMessage);
+        this.index++;
+        return true;
+    }
+
+    /**
+     * Resolves a text key for further use.
+     * @param key the key to resolve
+     * @param args optional arguments to use for the resolvation
+     * @return the resolved text
+     */
+    public String resolveKey(final String key, final Object... args) {
+        final Locale locale = localeProvider.getLocale();
+        final String resolvedMessage = messageSource.getMessage(key, args, locale);
+        return resolvedMessage;
     }
 
     @Override
