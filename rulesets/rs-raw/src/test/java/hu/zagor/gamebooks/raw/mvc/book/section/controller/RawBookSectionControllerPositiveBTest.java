@@ -50,7 +50,9 @@ import org.testng.annotations.Test;
 public class RawBookSectionControllerPositiveBTest {
 
     private static final String DEFAULT_TEXT = "<p>This is some sample text.</p><p>This is text. <alt>This is to be replaced.</alt> End of text.</p>";
+    private static final String DEFAULT_TEXT_EMPTY_ALT = "<p>This is some sample text.</p><p>This is text. <alt />End of text.</p>";
     private static final String DEFAULT_TEXT_WITHOUT_ALT = "<p>This is some sample text.</p><p>This is text. This is to be replaced. End of text.</p>";
+    private static final String DEFAULT_TEXT_WITHOUT_EMPTY_ALT = "<p>This is some sample text.</p><p>This is text. End of text.</p>";
 
     private RawBookSectionController underTest;
     @MockControl private IMocksControl mockControl;
@@ -103,7 +105,6 @@ public class RawBookSectionControllerPositiveBTest {
 
     @BeforeMethod
     public void setUpMethod() {
-        data.setText(DEFAULT_TEXT);
         choiceWithExtra = new Choice("10", null, 0, "Extra text.");
         choice = new Choice("9", null, 1, null);
         choicesMixed = new DefaultChoiceSet(new ChoicePositionComparator());
@@ -118,6 +119,7 @@ public class RawBookSectionControllerPositiveBTest {
 
     public void testHandleSectionWhenMultipleChoicesAreLeftWithSingleChoiceTextShouldNotIncorporateExtraTextIntoMainBlock() {
         // GIVEN
+        data.setText(DEFAULT_TEXT);
         data.setChoices(choicesMixed);
         prepareForSwitch("9");
         setUpNewParagraph();
@@ -145,6 +147,39 @@ public class RawBookSectionControllerPositiveBTest {
         final String returned = underTest.handleSection(model, request, "s-9");
         // THEN
         Assert.assertEquals(data.getText(), DEFAULT_TEXT_WITHOUT_ALT);
+        Assert.assertEquals(returned, "done");
+    }
+
+    public void testHandleSectionWhenMultipleChoicesAreLeftWithSingleChoiceTextWithEmptyAltShouldNotIncorporateExtraTextIntoMainBlock() {
+        // GIVEN
+        data.setText(DEFAULT_TEXT_EMPTY_ALT);
+        data.setChoices(choicesMixed);
+        prepareForSwitch("9");
+        setUpNewParagraph();
+        setUpModel();
+        expect(wrapper.getCharacter()).andReturn(character);
+        expect(wrapper.getEnemies()).andReturn(enemies);
+        expect(wrapper.getPlayer()).andReturn(player);
+        expect(wrapper.getPosition()).andReturn(1);
+        paragraphResolver.resolve(anyObject(ResolvationData.class), eq(newParagraph));
+        newParagraph.calculateValidEvents();
+        expectCpDataInsertion();
+        expect(sectionHandlingService.handleSection(model, wrapper, newParagraph, info)).andReturn("done");
+        expect(newParagraph.getData()).andReturn(data);
+        expect(newParagraph.getData()).andReturn(data);
+        expect(sectionHandlingService.resolveParagraphId(info, "10")).andReturn("10");
+        expect(sectionHandlingService.resolveParagraphId(info, "9")).andReturn("9");
+        expect(wrapper.getParagraph()).andReturn(newParagraph);
+        expect(newParagraph.getId()).andReturn("10");
+        expect(wrapper.setModel(model)).andReturn(model);
+        navigationRecorder.recordNavigation(wrapper, "s-9", oldParagraph, newParagraph);
+        expectResources();
+        expectCpDataInsertion();
+        mockControl.replay();
+        // WHEN
+        final String returned = underTest.handleSection(model, request, "s-9");
+        // THEN
+        Assert.assertEquals(data.getText(), DEFAULT_TEXT_WITHOUT_EMPTY_ALT);
         Assert.assertEquals(returned, "done");
     }
 

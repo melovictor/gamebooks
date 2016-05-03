@@ -52,6 +52,8 @@ public class RawBookSectionControllerPositiveATest {
 
     private static final String DEFAULT_TEXT = "<p>This is some sample text.</p><p>This is text. <alt>This is to be replaced.</alt> End of text.</p>";
     private static final String REPLACED_TEXT = "<p>This is some sample text.</p><p>This is text. Extra text. End of text.</p>";
+    private static final String DEFAULT_TEXT_EMPTY_ALT = "<p>This is some sample text.</p><p>This is text. End of text.<alt /></p>";
+    private static final String REPLACED_TEXT_EMPTY_ALT = "<p>This is some sample text.</p><p>This is text. End of text.Extra text.</p>";
 
     private RawBookSectionController underTest;
     @MockControl private IMocksControl mockControl;
@@ -207,6 +209,35 @@ public class RawBookSectionControllerPositiveATest {
         final String returned = underTest.handleSection(model, request, "s-10");
         // THEN
         Assert.assertEquals(data.getText(), REPLACED_TEXT);
+        Assert.assertEquals(returned, "done");
+    }
+
+    public void testHandleSectionWhenSingleChoiceIsLeftWithSingleChoiceTextWithEmptyAltShouldIncorporateExtraTextIntoMainBlock() {
+        // GIVEN
+        data.setText(DEFAULT_TEXT_EMPTY_ALT);
+        data.setChoices(choicesExtra);
+        prepareForSwitch("10", 0);
+        setUpNewParagraph();
+        setUpModel();
+        expectWrapper();
+        paragraphResolver.resolve(anyObject(ResolvationData.class), eq(newParagraph));
+        newParagraph.calculateValidEvents();
+        expectCpDataInsertion();
+        expect(sectionHandlingService.handleSection(model, wrapper, newParagraph, info)).andReturn("done");
+        expect(newParagraph.getData()).andReturn(data);
+        expect(newParagraph.getData()).andReturn(data);
+        expect(sectionHandlingService.resolveParagraphId(info, "10")).andReturn("10");
+        expect(wrapper.getParagraph()).andReturn(newParagraph);
+        expect(newParagraph.getId()).andReturn("10");
+        expect(wrapper.setModel(model)).andReturn(model);
+        navigationRecorder.recordNavigation(wrapper, "s-10", oldParagraph, newParagraph);
+        expectResources();
+        expectCpDataInsertion();
+        mockControl.replay();
+        // WHEN
+        final String returned = underTest.handleSection(model, request, "s-10");
+        // THEN
+        Assert.assertEquals(data.getText(), REPLACED_TEXT_EMPTY_ALT);
         Assert.assertEquals(returned, "done");
     }
 

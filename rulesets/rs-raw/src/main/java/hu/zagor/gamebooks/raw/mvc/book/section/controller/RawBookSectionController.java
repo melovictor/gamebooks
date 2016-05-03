@@ -260,7 +260,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
             replacementText = "$1";
         }
         String text = data.getText();
-        text = text.replaceAll("<alt>([^<]*)<\\/alt>", replacementText);
+        text = text.replaceAll("<alt(?:\\s*\\/>|>([^<]*)<\\/alt>)", replacementText);
         data.setText(text);
     }
 
