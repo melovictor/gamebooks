@@ -9,6 +9,7 @@ import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHan
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.SilentCapableResolver;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FightOutcome;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
@@ -18,6 +19,7 @@ import hu.zagor.gamebooks.ff.ff.b.character.Ff60Character;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -42,6 +44,16 @@ public class SingleFf60FightRoundResolver implements FightRoundResolver {
     public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final FfEnemy enemy = getEnemy(resolvationData);
 
+        final int[] ninetailAttackRoll = handlePreFight(command, enemy);
+
+        final FightRoundResult[] results = decorated.resolveRound(command, resolvationData, beforeRoundResult);
+
+        handlePostFight(command, resolvationData, ninetailAttackRoll, results);
+
+        return results;
+    }
+
+    private int[] handlePreFight(final FightCommand command, final FfEnemy enemy) {
         int[] ninetailAttackRoll = null;
         if (enemyIsNintail(enemy)) {
             ninetailAttackRoll = determineFutureTailAttackRoll();
@@ -52,8 +64,11 @@ public class SingleFf60FightRoundResolver implements FightRoundResolver {
                 command.getResolvedEnemies().get(0).setStaminaDamage(2);
             }
         }
+        return ninetailAttackRoll;
+    }
 
-        final FightRoundResult[] results = decorated.resolveRound(command, resolvationData, beforeRoundResult);
+    private void handlePostFight(final FightCommand command, final ResolvationData resolvationData, final int[] ninetailAttackRoll, final FightRoundResult[] results) {
+        final FfEnemy enemy = getEnemy(resolvationData);
 
         if (enemyIsOgre(enemy)) {
             handleOgre(command, resolvationData, results);
@@ -61,9 +76,33 @@ public class SingleFf60FightRoundResolver implements FightRoundResolver {
             handleHookMan(command, resolvationData);
         } else if (enemyIsNintail(enemy) && results[0] == FightRoundResult.LOSE) {
             handleNinetail(command, resolvationData, ninetailAttackRoll);
+        } else if (enemyIsChiller(enemy) && command.getRoundNumber() % 2 == 0) {
+            resolvationData.getCharacterHandler().getItemHandler().addItem(resolvationData.getCharacter(), "4001", 1);
+        } else if (enemyIsLeechVine(enemy) && doubleAttackStrength(command)) {
+            handleLeechVine(command, enemy);
         }
+    }
 
-        return results;
+    private boolean doubleAttackStrength(final FightCommand command) {
+        final Map<String, Integer> attackStrengths = command.getAttackStrengths();
+        return attackStrengths.get("h_d1_38") == attackStrengths.get("h_d2_38");
+    }
+
+    private void handleLeechVine(final FightCommand command, final FfEnemy enemy) {
+        final List<FightOutcome> win = command.getWin();
+        win.clear();
+        final FightOutcome outcome = new FightOutcome();
+        outcome.setParagraphData(command.getFlee());
+        win.add(outcome);
+        enemy.setStamina(0);
+    }
+
+    private boolean enemyIsLeechVine(final FfEnemy enemy) {
+        return "38".equals(enemy.getId());
+    }
+
+    private boolean enemyIsChiller(final FfEnemy enemy) {
+        return "37".equals(enemy.getId());
     }
 
     private int[] determineFutureTailAttackRoll() {

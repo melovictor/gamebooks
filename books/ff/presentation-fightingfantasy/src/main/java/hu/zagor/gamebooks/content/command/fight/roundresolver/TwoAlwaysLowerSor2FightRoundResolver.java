@@ -56,7 +56,7 @@ public class TwoAlwaysLowerSor2FightRoundResolver extends SingleFightRoundResolv
         final Map<String, int[]> enemiesAttackStrengthValues = getEnemiesAttackValues(enemies, command);
         final int selfAttackStrength = attributeHandler.resolveValue(character, "skill") + selfAttackStrengthValues[0];
         final Map<String, Integer> enemiesAttackStrength = getEnemiesAttackStrengths(enemies, enemiesAttackStrengthValues);
-        recordAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
+        recordHeroAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
         recordAttachStrength(messages, enemies, enemiesAttackStrengthValues, enemiesAttackStrength);
 
         final String selectedEnemyId = getSelectedEnemyId(resolvationData);
@@ -148,7 +148,7 @@ public class TwoAlwaysLowerSor2FightRoundResolver extends SingleFightRoundResolv
         for (final FfEnemy enemy : enemies) {
             final int[] enemyAttackStrengthValues = enemiesAttackStrengthValues.get(enemy.getId());
             final int enemyAttackStrength = enemiesAttackStrength.get(enemy.getId());
-            recordAttachStrength(new FightDataDto(enemy, messages, null, null), enemyAttackStrengthValues, enemyAttackStrength);
+            recordEnemyAttachStrength(new FightDataDto(enemy, messages, null, null), enemyAttackStrengthValues, enemyAttackStrength);
         }
     }
 

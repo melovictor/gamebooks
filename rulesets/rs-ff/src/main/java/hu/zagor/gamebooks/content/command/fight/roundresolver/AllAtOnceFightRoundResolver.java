@@ -40,8 +40,8 @@ public class AllAtOnceFightRoundResolver extends SingleFightRoundResolver {
                 final int selfAttackStrength = attributeHandler.resolveValue(character, "skill") + selfAttackStrengthValues[0];
                 final int enemyAttackStrength = enemy.getSkill() + enemyAttackStrengthValues[0];
                 command.getAttackStrengths().put(enemy.getId(), enemyAttackStrength);
-                recordAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
-                recordAttachStrength(dto, enemyAttackStrengthValues, enemyAttackStrength);
+                recordHeroAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
+                recordEnemyAttachStrength(dto, enemyAttackStrengthValues, enemyAttackStrength);
                 if (enemyAttackStrength > selfAttackStrength) {
                     result[i] = FightRoundResult.LOSE;
                     damageSelf(dto);

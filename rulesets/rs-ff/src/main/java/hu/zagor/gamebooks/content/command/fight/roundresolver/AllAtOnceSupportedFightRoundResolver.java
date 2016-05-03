@@ -72,14 +72,14 @@ public class AllAtOnceSupportedFightRoundResolver extends AllAtOnceFightRoundRes
     }
 
     @Override
-    protected void recordAttachStrength(final FightCommandMessageList messages, final int[] selfAttackStrengthValues, final int selfAttackStrength,
+    protected void recordHeroAttachStrength(final FightCommandMessageList messages, final int[] selfAttackStrengthValues, final int selfAttackStrength,
         final FfCharacter character) {
         if (character instanceof FfAllyCharacter) {
             final String renderedDice = getDiceResultRenderer().render(6, selfAttackStrengthValues);
             messages.addKey("page.ff.label.fight.single.attackStrength.ally", new Object[]{renderedDice, selfAttackStrength, character.getName()});
             getLogger().debug("Attack strength for self: {}", selfAttackStrength);
         } else {
-            super.recordAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
+            super.recordHeroAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
         }
     }
 }

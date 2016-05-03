@@ -16,6 +16,7 @@ import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDt
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Component;
 
 /**
@@ -46,9 +47,10 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
                     final int[] enemyAttackStrengthValues = getEnemyAttackStrength(enemy, command);
                     final int selfAttackStrength = attributeHandler.resolveValue(character, "skill") + selfAttackStrengthValues[0];
                     final int enemyAttackStrength = enemy.getSkill() + enemyAttackStrengthValues[0];
-                    command.getAttackStrengths().put(enemy.getId(), enemyAttackStrength);
-                    recordAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
-                    recordAttachStrength(dto, enemyAttackStrengthValues, enemyAttackStrength);
+                    storeHeroAttackStrength(command, enemy, selfAttackStrength, selfAttackStrengthValues);
+                    storeEnemyAttackStrength(command, enemy, enemyAttackStrength, enemyAttackStrengthValues);
+                    recordHeroAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
+                    recordEnemyAttachStrength(dto, enemyAttackStrengthValues, enemyAttackStrength);
                     if (enemyAttackStrength == selfAttackStrength) {
                         doTieFight(command, result, enemyIdx, dto);
                     } else if (enemyAttackStrength > selfAttackStrength) {
@@ -64,6 +66,21 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
             autoDamageSelf(dto);
         }
         return result;
+    }
+
+    private void storeHeroAttackStrength(final FightCommand command, final FfEnemy enemy, final int selfAttackStrength, final int[] selfAttackStrengthValues) {
+        command.getAttackStrengths().put("h_" + enemy.getId(), selfAttackStrength);
+        for (int i = 1; i < selfAttackStrengthValues.length; i++) {
+            command.getAttackStrengths().put("h_d" + i + "_" + enemy.getId(), selfAttackStrengthValues[i]);
+        }
+    }
+
+    private void storeEnemyAttackStrength(final FightCommand command, final FfEnemy enemy, final int enemyAttackStrength, final int[] enemyAttackStrengthValues) {
+        final Map<String, Integer> attackStrengths = command.getAttackStrengths();
+        attackStrengths.put(enemy.getId(), enemyAttackStrength);
+        for (int i = 1; i < enemyAttackStrengthValues.length; i++) {
+            attackStrengths.put("d" + i + "_" + enemy.getId(), enemyAttackStrengthValues[i]);
+        }
     }
 
     void doWinFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
@@ -236,7 +253,7 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
     }
 
     @Override
-    protected void recordAttachStrength(final FightCommandMessageList messages, final int[] selfAttackStrengthValues, final int selfAttackStrength,
+    protected void recordHeroAttachStrength(final FightCommandMessageList messages, final int[] selfAttackStrengthValues, final int selfAttackStrength,
         final FfCharacter character) {
         final String renderedDice = getDiceResultRenderer().render(6, selfAttackStrengthValues);
         messages.addKey("page.ff.label.fight.single.attackStrength.self", new Object[]{renderedDice, selfAttackStrength});

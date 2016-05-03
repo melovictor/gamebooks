@@ -46,7 +46,7 @@ public class SingleAllyFightRoundResolver extends SingleFightRoundResolver {
     }
 
     @Override
-    protected void recordAttachStrength(final FightCommandMessageList messages, final int[] selfAttackStrengthValues, final int selfAttackStrength,
+    protected void recordHeroAttachStrength(final FightCommandMessageList messages, final int[] selfAttackStrengthValues, final int selfAttackStrength,
         final FfCharacter character) {
         final String renderedDice = getDiceResultRenderer().render(6, selfAttackStrengthValues);
         messages.addKey("page.ff.label.fight.single.attackStrength.ally", new Object[]{renderedDice, selfAttackStrength, getName(character)});

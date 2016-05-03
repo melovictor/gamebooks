@@ -37,7 +37,7 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
      * @param selfAttackStrength the combined attack strength for the hero
      * @param character the {@link FfCharacter}
      */
-    protected abstract void recordAttachStrength(final FightCommandMessageList messages, final int[] selfAttackStrengthValues, final int selfAttackStrength,
+    protected abstract void recordHeroAttachStrength(final FightCommandMessageList messages, final int[] selfAttackStrengthValues, final int selfAttackStrength,
         final FfCharacter character);
 
     /**
@@ -46,7 +46,7 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
      * @param enemyAttackStrengthValues the thrown values for this specific enemy
      * @param enemyAttackStrength the total attack strength for this specific enemy
      */
-    protected void recordAttachStrength(final FightDataDto dto, final int[] enemyAttackStrengthValues, final int enemyAttackStrength) {
+    protected void recordEnemyAttachStrength(final FightDataDto dto, final int[] enemyAttackStrengthValues, final int enemyAttackStrength) {
         final FightCommandMessageList messages = dto.getMessages();
         final FfEnemy enemy = dto.getEnemy();
 

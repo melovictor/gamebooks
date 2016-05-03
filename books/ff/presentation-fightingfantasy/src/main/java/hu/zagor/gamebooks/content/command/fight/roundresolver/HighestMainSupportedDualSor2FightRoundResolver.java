@@ -50,8 +50,8 @@ public class HighestMainSupportedDualSor2FightRoundResolver extends SingleSuppor
         final int allyEnemyAttackStrength = allyEnemyAttackStrengthValues[0] + allyEnemy.getSkill();
 
         final FightCommandMessageList messages = command.getMessages();
-        recordAttachStrength(messages, allyAttackStrengthValues, allyAttackStrength, ally);
-        recordAttachStrength(new FightDataDto(allyEnemy, messages, null, null), allyEnemyAttackStrengthValues, allyEnemyAttackStrength);
+        recordHeroAttachStrength(messages, allyAttackStrengthValues, allyAttackStrength, ally);
+        recordEnemyAttachStrength(new FightDataDto(allyEnemy, messages, null, null), allyEnemyAttackStrengthValues, allyEnemyAttackStrength);
 
         if (allyAttackStrength > allyEnemyAttackStrength) {
             // ally hits

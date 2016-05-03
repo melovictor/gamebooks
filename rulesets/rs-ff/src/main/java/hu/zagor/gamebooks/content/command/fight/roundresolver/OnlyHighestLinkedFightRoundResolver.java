@@ -44,7 +44,7 @@ public class OnlyHighestLinkedFightRoundResolver extends AbstractFightRoundResol
         final Map<String, int[]> enemiesAttackStrengthValues = getEnemiesAttackValues(enemies, command);
         final int selfAttackStrength = attributeHandler.resolveValue(character, "skill") + selfAttackStrengthValues[0];
         final Map<String, Integer> enemiesAttackStrength = getEnemiesAttackStrengths(enemies, enemiesAttackStrengthValues);
-        recordAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
+        recordHeroAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
         recordAttachStrength(messages, enemies, enemiesAttackStrengthValues, enemiesAttackStrength);
         final FightRoundResult roundResult = calculateBattleResult(selfAttackStrength, enemiesAttackStrength, result);
 
@@ -86,7 +86,7 @@ public class OnlyHighestLinkedFightRoundResolver extends AbstractFightRoundResol
         for (final FfEnemy enemy : enemies) {
             final int[] enemyAttackStrengthValues = enemiesAttackStrengthValues.get(enemy.getId());
             final int enemyAttackStrength = enemiesAttackStrength.get(enemy.getId());
-            recordAttachStrength(new FightDataDto(enemy, messages, null, null), enemyAttackStrengthValues, enemyAttackStrength);
+            recordEnemyAttachStrength(new FightDataDto(enemy, messages, null, null), enemyAttackStrengthValues, enemyAttackStrength);
         }
     }
 
@@ -170,7 +170,7 @@ public class OnlyHighestLinkedFightRoundResolver extends AbstractFightRoundResol
     }
 
     @Override
-    protected void recordAttachStrength(final FightCommandMessageList messages, final int[] selfAttackStrengthValues, final int selfAttackStrength,
+    protected void recordHeroAttachStrength(final FightCommandMessageList messages, final int[] selfAttackStrengthValues, final int selfAttackStrength,
         final FfCharacter character) {
         final String renderedDice = getDiceResultRenderer().render(6, selfAttackStrengthValues);
         messages.addKey("page.ff.label.fight.single.attackStrength.self", new Object[]{renderedDice, selfAttackStrength});

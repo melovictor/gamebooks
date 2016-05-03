@@ -48,9 +48,9 @@ public class HighestMainSupportedSingleSor2FightRoundResolver extends SingleSupp
         final int enemyAttackStrength = enemyAttackStrengthValues[0] + enemy.getSkill();
 
         final FightCommandMessageList messages = command.getMessages();
-        recordAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
-        recordAttachStrength(messages, allyAttackStrengthValues, allyAttackStrength, ally);
-        recordAttachStrength(new FightDataDto(enemy, messages, null, null), enemyAttackStrengthValues, enemyAttackStrength);
+        recordHeroAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
+        recordHeroAttachStrength(messages, allyAttackStrengthValues, allyAttackStrength, ally);
+        recordEnemyAttachStrength(new FightDataDto(enemy, messages, null, null), enemyAttackStrengthValues, enemyAttackStrength);
 
         if (selfAttackStrength >= allyAttackStrength) {
 
