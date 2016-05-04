@@ -953,7 +953,21 @@
     </text>
     <death />
   </p>
-  <!-- 86 -->
+  <p id="86">
+    <text>
+        [p]Miközben utat vágsz magadnak a sűrű aljnövényzeten át, nem éppen bölcsen, megbolygatod az érzékeny kúszónövény-kacsok szőnyegét az Óriás Kancsóka kelyhe körül. Hirtelen egy erős inda csapódik ki a dzsungelból, és azon kapod magad, hogy az életedért küzdesz a húsevő növény ellen.[/p]
+    </text>
+    <fight type="single">
+    <enemy id="40"/>
+    <loseRound enemy="40" subsequentCount="3">
+    <interrupt/>
+    <next id="383"></next>
+    </loseRound>
+    <win>
+    <next id="343"></next>
+    </win>
+    </fight>
+  </p>
   <p id="87">
     <text>
         [p]Mivel fölkészületlenül ért, nem tudod elkerülni a Boszorkánymester mágiájának hatását: ezért elméd ösz-szekuszálódik, majd a férfi kihasználván zavart állapotodat rád támad, botját használva fegyverként.[/p]
@@ -3685,7 +3699,13 @@
     <next id="168"></next>
   </p>
   <!-- 342 -->
-  <!-- 343 -->
+  <p id="343">
+    <text>
+        [p]Miután elszakítod magad a Kancsóka egyetlen részétől, melyet fegyverként használhat ellened, már képes vagy, hogy végezz a ragadozó növény maradékával, kardoddal metszve fel a savval teli kelyhet (nyersz 1 szerencse pontot). Az Óriás Kancsóka gyökerei közt megtalálod azt, ami az előző étkezéséből megmaradt. Összesen [span class="takeItem" data-id="gold" data-amount="7"]7 Aranyra[/span] bukkansz, egy [span class="takeItem" data-id="3025" data-amount="1"]zöld jáde Majom Totemre[/span] és végül még egy rozsdás [span class="takeItem" data-id="1002" data-amount="1"]késre[/span]. Elrakhatod bármelyiket, aztán pedig továbbmész a dzsungel zöld mélye felé.[/p]
+    </text>
+    <add amount="1" to="luck"/>
+    <!-- block -->
+  </p>
   <p id="344">
     <text>
         [p]A Behemót elképesztő mennyiségű tengervizet nyel be, melyben ott a [em]Jószerencse[/em] roncsa, legénysége és te magad is. Az óriási hal gyomrának mélyén végzed. Kalandod itt véget ér.[/p]
@@ -4475,7 +4495,12 @@
     <next id="179">Vagy gyógyítsam be a sebeidet?</next>
     <next id="261">Esetleg készítsek neked egy keveréket, melynek hasznát veheted küldetésed során?</next>
   </p>
-  <!-- 383 -->
+  <p id="383">
+    <text>
+        [p]Az indának sikerül köréd tekerednie, és mielőtt bármit is tehetnél annak érdekében, hogy kiszabadulj, már be is vonszol a Kancsóka kelyhébe. A kehely erős növényi savval van tele, mely arra szolgál, hogy az élőlény megemészthesse táplálékát - és most a soron következő étkezés te leszel. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 384 -->
   <p id="385">
     <text>
