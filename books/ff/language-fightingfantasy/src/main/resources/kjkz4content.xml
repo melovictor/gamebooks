@@ -475,7 +475,19 @@
     <next id="285"></next>
   </p>
   <!-- 36 -->
-  <!-- 37 -->
+  <p id="37">
+    <text>
+        [p]Susogást hallasz az előtted álló fa levelei közül, és váratlanul arra eszmélsz, hogy egy sárga, keskeny pupillájú szempárral nézel farkasszemet. Megállsz, és meredt tekintettel figyeled, amint egy szögletes, zöld arc emelkedik ki a növények közül. Egy kicsiny humanoid áll veled szemben, szemei olyanok, akár egy macskáé, végtagjai soványak, ágacska-szemek. Kezdetleges papagájtoll-fejdíszt és fűszoknyát visel, egyik kezében egy gerelyt tart. Az apróság oldalra dönti a fejét, szélesen rád mosolyog, majd feléd nyújtja a szabad kezét. Hogyan reagálsz?[/p]
+    </text>
+    <itemCheck type="item" id="2000">
+      <have>
+        <next id="348" pos="1">Ételt adsz neki?</next>
+      </have>
+    </itemCheck>
+    <next id="122" pos="2">Felkínálsz neki egy tárgyat a hátizsákodból?</next>
+    <next id="307" pos="3">Megtámadod?</next>
+    <next id="384" pos="4">Nem foglalkozol vele, és továbbmész?</next>
+  </p>
   <p id="38">
     <text>
         [p]A fogak fűrészes élét a kötélhez dörzsölve már át tudod vágni azt. Még azelőtt sikerül kiszabadulnod, hogy a gödörben levő víz ellepné a fejedet is. Kikapaszkodsz a veremből, mely csaknem a sírod lett, majd a közelben lehajítva megtalálod a hátizsákodat és a kardodat - szerencsédre semmi sem tűnt el (nyersz 1 szerencse pontot). Ezután habozás nélkül a kalózok után sietsz. Nem sokkal később egy hatalmas, természet alkotta barlang szélén találod magad, melyben a tenger egy széles öblöt formál. A barlang távolabbi végében egy nyílást látsz, mely elég széles ahhoz, hogy egy gálya átférhessen rajta. S hogy biztosan elég, azt a víz szélénél felhúzott mólónál lehorgonyzott galleon igazolja. A vitorláson a kalózhajókra jellemző koponyás-lábszárcsontos zászló lobog, és mély felindulással fedezed fel, hogy oromdísze pedig egy a hajóorrhoz kötözött csontváz. Még mielőtt meglátnád az oldalára festett „Szuka” feliratot, azelőtt tudod, hogy ez Cinnabar hajója, melyről mindenki úgy tudta, elsüllyedt. A fedélzeten ott nyüzsögnek a Fekete Koponya kalózai, és úgy veszed észre, a mólón nem maradt senki - tehát a [em]Szuka[/em] kifutni készül. A barlang árnyai közt megbújva figyeled, amint a horgony felemelkedik, és Cinnabar vitorlása elindul a nyílt tenger irányába. Aztán megpillantod az egyetlen lehetséges utat, hogyan tudnád megakadályozni azt, hogy prédád elmenekülhessen előled. A hajó oldalán nyitva maradt egy ablak, és egy összecsomózott kötél csüng le a fedélzetről, éppen a közelében. Gyorsan végigszáguldasz a mólón, és mivel továbbra sem szúrtak ki, ezért háborítatlanul felfüggeszkedhetsz a kötélre, lecsusszanhatsz rajta, majd bemászhatsz az ablakon.[/p]
@@ -679,7 +691,24 @@
       </have>
     </itemCheck>
   </p>
-  <!-- 53 -->
+  <p id="53">
+    <text>
+        [p]Hirtelen megmozdul előtted az őserdő, és egy hatalmas, gyíkszerű test tűnik elő a zöld háttérből. Az Óriás Kaméleon rád néz furcsa, ide-oda forgó szemeivel, és szaggatott mozgással feléd indul. A hátán egy szintén kaméleonhoz hasonlító humanoid ül, kezében egy rövid dárdával. A gigantikus gyík felsziszeg, pikkelyei meg különféle élénk színekben pompáznak - biztos jeleként annak, hogy ideges, és támadni fog. Ismét az életedért kell harcolnod.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="54" />
+      <flee>
+        <next id="133"></next>
+      </flee>
+      <win>
+        <text>
+            [p]A gyíkon lovagló Kaméleonita beveti magát a dzsungelbe, és színváltoztató bőre szinte lehetetlenné teszi, hogy felismerjék. Jegyezd fel [em]Kalandlapodra[/em] az [em]Elmenekült[/em] szót.[/p]
+        </text>
+        <codeword name="Elmenekült" />
+        <!-- block -->
+      </win>
+    </fight>
+  </p>
   <p id="54">
     <text>
         [p]Több órán keresztül taposod a vizet, de egyetlen hajó sem bukkan fel. Aztán kimerülsz, és elnyel a tenger. Kalandod itt véget ér.[/p]
@@ -812,7 +841,16 @@
     <next id="26" pos="2">Lemész a fedélközbe?</next>
     <next id="153" pos="3">Vagy elhagyod a [em]Hableányt[/em]?</next>
   </p>
-  <!-- 77 -->
+  <p id="77">
+    <text>
+        [p]Figyeled, amint a két szörnyeteg üti-veri egymást. Játszd le a harcot a majom és a gyík között![/p]
+    </text>
+    <fight type="singleAlly" resolver="ally">
+      <enemy id="41" />
+      <ally id="42" />
+    </fight>
+    <next id="205"></next>
+  </p>
   <p id="78">
     <text>
         [p]A mutáns egy hangos morranás kíséretében feléd ugrik. Nincsen más lehetőséged, mint megküzdeni vele.[/p]
@@ -958,14 +996,14 @@
         [p]Miközben utat vágsz magadnak a sűrű aljnövényzeten át, nem éppen bölcsen, megbolygatod az érzékeny kúszónövény-kacsok szőnyegét az Óriás Kancsóka kelyhe körül. Hirtelen egy erős inda csapódik ki a dzsungelból, és azon kapod magad, hogy az életedért küzdesz a húsevő növény ellen.[/p]
     </text>
     <fight type="single">
-    <enemy id="40"/>
-    <loseRound enemy="40" subsequentCount="3">
-    <interrupt/>
-    <next id="383"></next>
-    </loseRound>
-    <win>
-    <next id="343"></next>
-    </win>
+      <enemy id="40" />
+      <loseRound enemy="40" subsequentCount="3">
+        <interrupt />
+        <next id="383"></next>
+      </loseRound>
+      <win>
+        <next id="343"></next>
+      </win>
     </fight>
   </p>
   <p id="87">
@@ -995,7 +1033,12 @@
   <!-- 91 -->
   <!-- 92 -->
   <!-- 93 -->
-  <!-- 94 -->
+  <p id="94">
+    <text>
+        [p]Amint elinalsz a dzsungelben, az Óriásmajom bőgő ordítása lassan elhalkul mögötted.[/p]
+    </text>
+    <!-- block -->
+  </p>
   <p id="95">
     <text>
         [p]Látván, hogy kardot rántasz, a teremtmény dühöngő őrültté válik. Kivicsorítja a fogait, és morogva rád ront: - Balinac öl! - Nincs más választásod, mint megküzdeni a primitív Balinac-kal.[/p]
@@ -1501,7 +1544,68 @@
     </itemCheck>
     <next id="207" pos="3" singleChoiceText=" Úgy döntesz, elhagyod a Játékbarlangokat is.">Ha elhagynád a Játékbarlangokat</next>
   </p>
-  <!-- 122 -->
+  <p id="122">
+    <text>
+        [p]Melyik tárgyadat adod oda a lénynek?[/p]
+        [div data-market=""][/div]
+    </text>
+    <market mustGiveUp="1">
+      <purchase price="0" stock="1" id="1002" />
+      <purchase price="0" stock="1" id="1003" />
+      <purchase price="0" stock="1" id="2001" />
+      <purchase price="0" stock="1" id="2002" />
+      <purchase price="0" stock="1" id="2003" />
+      <purchase price="0" stock="1" id="2004" />
+      <purchase price="0" stock="1" id="2005" />
+      <purchase price="0" stock="1" id="2006" />
+      <purchase price="0" stock="1" id="3001" />
+      <purchase price="0" stock="1" id="3002" />
+      <purchase price="0" stock="1" id="3003" />
+      <purchase price="0" stock="1" id="3004" />
+      <purchase price="0" stock="1" id="3005" />
+      <purchase price="0" stock="1" id="3006" />
+      <purchase price="0" stock="1" id="3007" />
+      <purchase price="0" stock="1" id="3008" />
+      <purchase price="0" stock="1" id="3009" />
+      <purchase price="0" stock="1" id="3010" />
+      <purchase price="0" stock="1" id="3011" />
+      <purchase price="0" stock="1" id="3012" />
+      <purchase price="0" stock="1" id="3013" />
+      <purchase price="0" stock="1" id="3014" />
+      <purchase price="0" stock="1" id="3015" />
+      <purchase price="0" stock="1" id="3016" />
+      <purchase price="0" stock="1" id="3017" />
+      <purchase price="0" stock="1" id="3018" />
+      <purchase price="0" stock="1" id="3019" />
+      <purchase price="0" stock="1" id="3020" />
+      <purchase price="0" stock="1" id="3021" />
+      <purchase price="0" stock="1" id="3022" />
+      <purchase price="0" stock="1" id="3023" />
+      <purchase price="0" stock="1" id="3024" />
+      <purchase price="0" stock="1" id="3025" />
+      <purchase price="0" stock="1" id="3026" />
+      <purchase price="0" stock="1" id="3027" />
+      <purchase price="0" stock="1" id="3028" />
+      <purchase price="0" stock="1" id="3029" />
+      <purchase price="0" stock="1" id="3030" />
+      <purchase price="0" stock="1" id="3031" />
+      <purchase price="0" stock="1" id="3032" />
+      <purchase price="0" stock="1" id="3033" />
+      <purchase price="0" stock="1" id="3034" />
+      <purchase price="0" stock="1" id="3035" />
+      <purchase price="0" stock="1" id="3036" />
+      <purchase price="0" stock="1" id="3037" />
+      <purchase price="0" stock="1" id="3038" />
+      <purchase price="0" stock="1" id="3039" />
+      <after>
+        <text>
+            [p]A teremtmény kíváncsian szemléli az ajándékot, ide-oda forgatja a kezében. Majd rád pillant ragyogó szemeivel, elvigyorodik, aztán mond valamit saját csicsergő nyelvén, melyből egy kukkot sem értesz. Ezután a kiszámíthatatlan kis lény éppolyan hirtelen tűnik el a dzsungelben az új szerzeményével együtt, mint ahogyan felbukkant. Az Őserdei Manóval találkoztál az imént, és az ajándékért cserébe áldást bocsátott rád az előbb (nyersz 2 szerencse pontot).[/p]
+        </text>
+        <add amount="2" to="luck" />
+      </after>
+    </market>
+    <!-- block -->
+  </p>
   <!-- 123 -->
   <!-- 124 -->
   <p id="125">
@@ -1559,7 +1663,14 @@
     </text>
     <death />
   </p>
-  <!-- 133 -->
+  <p id="133">
+    <text>
+        [p]A Kaméleon gusztustalan nyelve, amely majdnem olyan hosszú, mint maga az állat, egy szörnyűséges, szörcsögő hang kíséretében kivágódik, egyenesen téged véve célba. A ragadós szerv a szorításában tart, és mikor a Kaméleon visszahúzza nyelvét, téged is a szájához cibál. A szörnyeteg rögtön beléd harap, és eléggé komolyan megsebesít (vesztesz 4 életerő és 1 ügyesség pontot). Folytasd a harcot.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <add amount="-1" to="skill" />
+    <next id="53"></next>
+  </p>
   <p id="134">
     <text>
         [p]Az íróasztal fiókjai be vannak zárva, s mivel semmi jele a kulcsnak, megpróbálod felfeszíteni az egyiket. Végül sikerül is feltörnöd, ám ezzel egy időben egy penge is elővillan az asztalból, és csúnyán megvágja a csuklódat (vesztesz 2 életerő pontot és 1 ügyesség pontot). Miután sikerül elállítanod a vérzést, átfutod a fiók tartalmát. Minden, amit találsz, csupán néhány papír Cinnabar Rákok kikötője-béli rejtekhelyének vázlataival. Ezekkel most semmire sem mész.[alt/][/p]
@@ -1638,7 +1749,21 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 144 -->
+  <p id="144">
+    <text>
+        [p]Éppen az utolsó másodpercben vetődsz félre, és így elkerülöd a selyemszálat. Miután távolról indított támadása nem járt sikerrel, a Scarachna leereszkedik a fákról, és feléd közelít, csáprágóival vagy a farkával próbálván megsebesíteni.[/p]
+        [p]Valahányszor ellenfeled eltalál, dobj egy kockával. Ha az eredmény 6, a Pók-skorpió beléd mélyeszti fullánkját, fertőző mérgét egyenesen a véráramodba fecskendezve (ezzel 6 életerő pontot veszítesz a szokásos 2 helyett). Ha még életben vagy, a méregtől szédelegve kell tovább folytatnod a küzdelmet a Scarachna ellen.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="55" />
+      <flee>
+        <next id="380"></next>
+      </flee>
+      <win>
+        <next id="293"></next>
+      </win>
+    </fight>
+  </p>
   <p id="145">
     <text>
         [p]Egy törött ládikóban egy üvegnyi [span class="takeItem" data-id="2004" data-amount="1"]rumot[/span] találsz, tökéletesen épen, még be is van dugaszolva. A rum megivásával 4 életerő pontot nyersz.[/p]
@@ -2230,7 +2355,15 @@
   </p>
   <!-- 196 -->
   <!-- 197 -->
-  <!-- 198 -->
+  <p id="198">
+    <text>
+        [p]A folyondáron átgázolva egy tisztásra bukkansz ki, ahol titáni küzdelem zajlik. Éppen az orrod előtt az őserdő két gigászi szörnyetege - egy hatalmas szürke majom és egy alattomos húsevő gyík - harcolnak a felségterületükért. Az Óriásmajom ormótlan ökle a Szörnyűséges Gyík pikkelyes bőrét ütlegeli, míg a hüllő halálos állkapcsa a majom irányába csattan. Most, hogy egyszerre a dolgok közepébe csöppentél, mit teszel?[/p]
+    </text>
+    <next id="215">A majom oldalára állsz a gyík ellenében?</next>
+    <next id="337">A gyík pártján kapcsolódsz be a küzdelembe?</next>
+    <next id="304">Megpróbálsz elsurranni a két bestia mellett anélkül, hogy belekeverednél a harcukba?</next>
+    <next id="77">Megvárod a harc kimenetelét?</next>
+  </p>
   <p id="199">
     <text>
         [p]Felfedezel egy érdekes, nyolcoldalú [span class="takeItem" data-id="3008" data-amount="1"]Kék Ékkövet[/span], egy selyembéléses ládikában (írd fel a Kalandlapodra). Befejezvén a keresést, úgy döntesz, ideje utánanézni, mi is folyik itt valójában, így elindulsz a másik irányba, keresztül a T-elágazáson. Írj fel 1 órát.[/p]
@@ -2269,7 +2402,19 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 205 -->
+  <p id="205">
+    <text>
+        [p]Az egyik dzsungelbéli szörnyeteg halálával most már csak a másikkal kell összecsapnod, aki újfent arra készül, hogy megvédje területét.[/p]
+    </text>
+    <itemCheck type="enemy" id="10">
+      <have>
+        <next id="330"></next>
+      </have>
+      <dontHave>
+        <next id="278"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 206 -->
   <p id="207">
     <text>
@@ -2322,7 +2467,13 @@
     <next id="318"></next>
   </p>
   <!-- 214 -->
-  <!-- 215 -->
+  <p id="215">
+    <text>
+        [p]Így, hogy te is bekapcsolódtál a harcba, most már egyértelmű, hogy az Óriásmajom oldalán van az erőfölény. S végül a majom hatalmas öklének végső csapásától a gyík a földre hanyatlik - vagy ájultan, vagy holtan. A majom fürkészőn mered rád fekete gombszemeivel. Ezután hátsó lábaira emelkedve elbődül, és verni kezdi a mellkasát.[/p]
+    </text>
+    <next id="330">Ha felkészülsz, hogy megvédd magad</next>
+    <next id="94">Ha inkább elmenekülsz</next>
+  </p>
   <!-- 216 -->
   <p id="217">
     <text>
@@ -2424,7 +2575,16 @@
     <next id="111">Ha inkább folytatod tovább a küldetésed</next>
   </p>
   <!-- 228 -->
-  <!-- 229 -->
+  <p id="229">
+    <text>
+        [p]A férfi és a Sáska közé szökkenve előreszegezed a kardod. A szörnyűséges rovar mellső lábait csapásra emelve és csáprágóit csattogtatva lendül támadásba.[/p]
+        [p]A Sáskát páncélszerű kitin borítja, ezért minden csapással csupán 1-et tudsz sebezni rajta a szokásos 2 életerő pont helyett. Ha a Szerencsédet használnád a csatában, akkor sikeres próba esetén 2, sikertelennél pedig nulla az okozott sebzés.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="53" />
+    </fight>
+    <next id="368"></next>
+  </p>
   <!-- 230 -->
   <p id="231">
     <text>
@@ -2634,7 +2794,20 @@
     <add amount="-2" to="luck" />
     <next id="55"></next>
   </p>
-  <!-- 245 -->
+  <p id="245">
+    <text>
+        [p]Mozgásra leszel figyelmes a bozótban, éppen előtted, és egy igen magas futómadár bukkan ki az ösvényre. Az állatnak fejsze formájú csőre van. Felsipítva már támad is, megpróbálván beléd csípni, vagy megrúgni hatalmas, karmos lábaival.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="43" />
+      <win>
+        <text>
+            [p]Eltűnődsz, miféle meglepetéseket tartogathat még a sziget állatvilága; majd továbbindulsz a forró dzsungelben.[/p]
+        </text>
+      </win>
+    </fight>
+    <!-- block -->
+  </p>
   <p id="246">
     <text>
         [p]A lény megragadja az ajándékot, körbeszimatolja, ezután behajítja a tengerbe (húzd le ezt a tárgyat a [em]Kalandlapodról[/em]). Majd ismét morogni kezd.[/p]
@@ -2867,7 +3040,68 @@
     <next id="287"></next>
   </p>
   <!-- 255 -->
-  <!-- 256 -->
+  <p id="256">
+    <text>
+        [p]A víz nem ér feljebb a derekadnál. Már félúton jársz, éppen a sodrás közepén, mikor a víz kavarogni és bugyogni kezd körülötted. Apró, éles fogak harapását érzed (vesztesz 2 életerő pontot), és amint lenézel a vízbe, egy csapatnyi piranhát látsz, akik úgy döntöttek, te leszel a soron következő étkezés.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <random>
+      <result max="1" min="1">
+        <text>
+            [p]Hét Piranha támad rád, és mindegyiknek 1 ÉLETERŐ pontja van.[/p]
+        </text>
+        <fight type="single">
+          <enemy id="47" />
+        </fight>
+      </result>
+      <result max="2" min="2">
+        <text>
+            [p]Nyolc Piranha támad rád, és mindegyiknek 1 ÉLETERŐ pontja van.[/p]
+        </text>
+        <fight type="single">
+          <enemy id="48" />
+        </fight>
+      </result>
+      <result max="3" min="3">
+        <text>
+            [p]Kilenc Piranha támad rád, és mindegyiknek 1 ÉLETERŐ pontja van.[/p]
+        </text>
+        <fight type="single">
+          <enemy id="49" />
+        </fight>
+      </result>
+      <result max="4" min="4">
+        <text>
+            [p]Tíz Piranha támad rád, és mindegyiknek 1 ÉLETERŐ pontja van.[/p]
+        </text>
+        <fight type="single">
+          <enemy id="50" />
+        </fight>
+      </result>
+      <result max="5" min="5">
+        <text>
+            [p]Tizenegy Piranha támad rád, és mindegyiknek 1 ÉLETERŐ pontja van.[/p]
+        </text>
+        <fight type="single">
+          <enemy id="51" />
+        </fight>
+      </result>
+      <result max="6" min="6">
+        <text>
+            [p]Tizenkét Piranha támad rád, és mindegyiknek 1 ÉLETERŐ pontja van.[/p]
+        </text>
+        <fight type="single">
+          <enemy id="52" />
+        </fight>
+      </result>
+      <after>
+        <text>
+            [p]Befejezed az átkelést a folyón, és kimászol a túlsó parton.[/p]
+        </text>
+      </after>
+    </random>
+    <!-- block -->
+  </p>
   <p id="257">
     <text>
         [p]Miközben a vizet taposod, egy hajót veszel észre a távolban. Hevesen kalimpálni kezdesz a karoddal, és sikerül is magadra vonnod a legénység figyelmét. A tengerészek rögtön irányt változtatnak, hogy ki tudjanak menteni. A hajó melléd ér, és a fedélzetre húznak. Szerencsére viaszosvászon hátizsákodban épségben maradt minden Élelmed és az összes holmid. Jóvágású férfi érkezik az üdvözlésedre, napbarnított arcának egyik oldalán hosszú sebhely. - Köszöntelek a [em]Jószerencsén[/em] - szólal meg. - Én vagyok a hajó kapitánya, és mindemellett hivatásos fejvadász. A nevem Conyn.[/p]
@@ -3009,7 +3243,20 @@
   <!-- 275 -->
   <!-- 276 -->
   <!-- 277 -->
-  <!-- 278 -->
+  <p id="278">
+    <text>
+        [p]Alighogy a majom holtan terül el a tisztáson, a Szörnyűséges Gyík egy agresszív morgással már feléd is fordul.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="42" />
+      <win>
+        <text>
+            [p]Magad mögött hagyod a két, óriási lény tetemét, és továbbmész utadon.[/p]
+        </text>
+      </win>
+    </fight>
+    <!-- block -->
+  </p>
   <!-- 279 -->
   <p id="280">
     <text>
@@ -3286,7 +3533,19 @@
     <next id="9">Csodálatos Armarnót?</next>
     <next id="207">Ha inkább távozol innen</next>
   </p>
-  <!-- 304 -->
+  <p id="304">
+    <text>
+        [p]A két harcoló szörnyeteg elállja a tisztásról kifelé vezető utat. Míg küzdenek, megpróbálhatsz elsurranni mellettük, anélkül, hogy magadra vonnád a figyelmüket.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="342"></next>
+      </success>
+      <failure>
+        <next id="386"></next>
+      </failure>
+    </test>
+  </p>
   <p id="305">
     <text>
         [p]Első feltételezésed, hogy a szoba lakatlan, beigazolódni látszik. Most, hogy semmi sem akadályoz, nyugodtan nekiláthatsz, hogy alaposabban átvizsgáld a helyiséget. Áttúrva a ládákat és feltört dobozokat, egy [span class="takeItem" data-id="1001" data-amount="1"]kardot[/span] találsz, [span class="takeItem" data-id="2000" data-amount="5"]5 étkezésre elegendő Élelmet[/span], és összesen [span class="takeItem" data-id="gold" data-amount="10"]10 Aranyat[/span].[/p]
@@ -3301,7 +3560,14 @@
     </test>
   </p>
   <!-- 306 -->
-  <!-- 307 -->
+  <p id="307">
+    <text>
+        [p]Kardot rántasz, és a fecsegő teremtmény felé döfsz. Az Őserdei Manó rád sziszeg, és áttöri a védelmedet borotvaéles gerelyével, amelyet a Nyílméreg-béka váladéka borít (vesztesz 3 életerő pontot). Mielőtt egyáltalán harcba szállhatnál a lénnyel, annak ismét nyoma vész a környező zöld növényzetben (miközben tovább karattyol érthetetlen nyelvén), éppolyan hirtelen, ahogy az imént felbukkant. Amikor megsebesített, a Nyüzsgő még egy átkot is bocsátott rád (vesztesz 1 szerencse pontot).[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <add amount="-1" to="luck" />
+    <!-- block -->
+  </p>
   <!-- 308 -->
   <p id="309">
     <text>
@@ -3457,7 +3723,20 @@
     <next id="377"></next>
   </p>
   <!-- 319 -->
-  <!-- 320 -->
+  <p id="320">
+    <text>
+        [p]Egy tisztás széléhez érve egy bennszülöttet pillantasz meg, aki éppen egy torz formájú Óriás Imádkozó Sáskával küzd. A törzsi harcos szemmel láthatóan nem jelent kihívást a rovar számára, kétségtelen, hogy segítségre szorul - de mit is hallottál a helybeliekről?[/p]
+    </text>
+    <next id="229">Ha a bennszülött segítségére sietsz</next>
+    <next id="320a">Ha inkább nem akarsz belekeveredni</next>
+  </p>
+  <p id="320a" display="320">
+    <text>
+        [p]Egy tisztás széléhez érve egy bennszülöttet pillantasz meg, aki éppen egy torz formájú Óriás Imádkozó Sáskával küzd. A törzsi harcos szemmel láthatóan nem jelent kihívást a rovar számára, kétségtelen, hogy segítségre szorul - de mit is hallottál a helybeliekről?[/p]
+        [p]Nem akarsz belekeveredni a küzdelembe, ezért inkább úgy döntesz, hogy továbbmész.[/p]
+    </text>
+    <!-- block -->
+  </p>
   <p id="321">
     <text>
         [p]A vasmacska csupán egy hajszállal kerüli el a mellkasodat. Szemedet a ködbe mélyesztve egy feléd közeledő, homályos alakot veszel ki. Fegyvert rántva felkészülsz a harcra.[/p]
@@ -3557,9 +3836,28 @@
     <next id="16">Persze fel is hagyhatsz a további hírek utáni kereséssel, és helyette a kalózok rejtekhelyének nyomába eredhetsz</next>
   </p>
   <!-- 329 -->
-  <!-- 330 -->
+  <p id="330">
+    <text>
+        [p]Kivicsorítva tompa, sárga agyarait, és dühében visítva az Óriásmajom készen áll rá, hogy ismét megvédje a területét.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="41" />
+      <win>
+        <text>
+            [p]Folytatod tovább az utadat az erdőn át.[/p]
+        </text>
+      </win>
+    </fight>
+    <!-- block -->
+  </p>
   <!-- 331 -->
-  <!-- 332 -->
+  <p id="332">
+    <text>
+        [p]Miközben törtetsz a dzsungelén át, egy gyors sodrású folyóhoz érsz.[/p]
+    </text>
+    <next id="256">Ha folytatva az utadat megpróbálsz átgázolni rajta</next>
+    <next id="347">Ha inkább más módot keresel, hogy keresztüljuss</next>
+  </p>
   <p id="333">
     <text>
         [p]Egy hatalmas csarnok hátsó részében találod magad, mely tömve van fekete ruhákba öltözött Hívőkkel és keményen skorbutosnak látszó kalózokkal! Egy nagy halom láda mögé lebukva, felfedezel egy irdatlan nagy, groteszk szobrot a terem ellentétes oldalán. A figura teste emberi csontvázat idéz, idomtalanul nagy, halálfejszerű koponyával. A vigyorgó koponyát tollas fejdísz keretezi, két kezében pedig egy-egy égő fáklyát tart. Ez a szobor egészen biztosan a gonosz vudu halálisten, Quezkari képmása! A bálvány előtt egy férfi áll, akit azon nyomban felismersz. Még mindig a nemesemberre valló, finom, aranysujtásos, bíborvörös kabátját viseli, és a nagy, háromszögletű kalapot, bár húsa most beteges zöldesszürke színű, és a bőrén tátongó résekből és üregekből váladék szivárog. A kalózúr egykor fényes fekete haja meg szakálla most csupán kusza bozont, és kénsárga szemei vadul merednek elő a sötétárnyékos üregükből. Cinnabar! Akkor hát igaz volt a szóbeszéd: Mirel, a Vörös tényleg megtalálta a kapitánya testét. Quezkari Híveinek közreműködésével és az ő démoni, tiltott praktikáival a haramiavezér visszatérhetett az életbe. A kalózúr éppen a tömegnek szónokol. - Fekete Koponya kalózai, ma éjjel elhajózunk a Csont-szigetre. Ott hajtattatik végre a rituálé, mely teljessé teszi feltámadásomat. Azután már legyőzhetetlenül, és Quezkari hatalmával közösen visszatérhetünk ebbe a féregverembe, és beteljesítjük bosszúnkat. A Rákok Kikötője a miénk lesz! - Hatalmas, egyetértő éljenzés csap fel Quezkari összegyűlt híveinek soraiból, és benned megfagy a vér. Mert hiszen nem vagy oda a kikötővárosért, ám ha Cinnabar meghódítja azt, a partvidéken egyetlen törvénytisztelő város sem lesz többé biztonságban a csempészektől, kalózoktól, és hasonló gazemberektől. A kapitányt mindenképpen meg kell állítani![/p]
@@ -3631,7 +3929,12 @@
   </p>
   <!-- 335 -->
   <!-- 336 -->
-  <!-- 337 -->
+  <p id="337">
+    <text>
+        [p]Veled az oldalán a gyíkféle már felül tud kerekedni az Óriásmajmon.[/p]
+    </text>
+    <next id="278"></next>
+  </p>
   <p id="338">
     <text>
         [p]Félrehúzván a reteszeket felemeled a csapóajtót, és felfedezed, hogy egy rémült, kiéheztetett macska van itt, egy sekély kis gödörbe zárva. Az állat félelmében és dühében kiugrik a gödörből, jól megharap és még a húsodat is végiggereblyézi a karmaival (vesztesz 2 életerő pontot), mielőtt kimenekülne az éjszakába. Kétség sem fér hozzá, hogy a vandálok mindenféle kínzás vagy éppen valami fogadás okán tartották fogva a szerencsétlen állatot.[alt][/alt][/p]
@@ -3698,12 +4001,17 @@
     </text>
     <next id="168"></next>
   </p>
-  <!-- 342 -->
+  <p id="342">
+    <text>
+        [p]Hihetetlen, de sikerül elkerülnöd, hogy bármi bajod essen, mikor a majom és a gyík egymást csapdosta, lökdöste és ütögette. Most már a tisztás szemközti oldalán folytatod tovább az utadat.[/p]
+    </text>
+    <!-- block -->
+  </p>
   <p id="343">
     <text>
         [p]Miután elszakítod magad a Kancsóka egyetlen részétől, melyet fegyverként használhat ellened, már képes vagy, hogy végezz a ragadozó növény maradékával, kardoddal metszve fel a savval teli kelyhet (nyersz 1 szerencse pontot). Az Óriás Kancsóka gyökerei közt megtalálod azt, ami az előző étkezéséből megmaradt. Összesen [span class="takeItem" data-id="gold" data-amount="7"]7 Aranyra[/span] bukkansz, egy [span class="takeItem" data-id="3025" data-amount="1"]zöld jáde Majom Totemre[/span] és végül még egy rozsdás [span class="takeItem" data-id="1002" data-amount="1"]késre[/span]. Elrakhatod bármelyiket, aztán pedig továbbmész a dzsungel zöld mélye felé.[/p]
     </text>
-    <add amount="1" to="luck"/>
+    <add amount="1" to="luck" />
     <!-- block -->
   </p>
   <p id="344">
@@ -4231,8 +4539,22 @@
     </text>
     <next id="260"></next>
   </p>
-  <!-- 347 -->
-  <!-- 348 -->
+  <p id="347">
+    <text>
+        [p]Beletelik némi időbe, míg egy másik utat találsz a folyón keresztül, egy kidőlt, kúszónövényekkel borított fatörzsön keresztül. Tested hamarosan érezni kezdi a dzsungelbéli vándorlásod fáradalmait (veszítesz 1 életerő pontot).[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="192"></next>
+  </p>
+  <p id="348">
+    <text>
+        [p]Húzz le egy adagot az Élelmiszerkészletedből. A lény elmarja tőled az ételt, és egyszeriben befalja. Aztán pimasz módon ismét kinyújtja a markát. Mit teszel?[/p]
+    </text>
+    <loseItem id="2000" />
+    <next id="122">Adsz neki valamit a hátizsákodból?</next>
+    <next id="307">Megtámadod?</next>
+    <next id="384">Nem foglalkozol vele, és továbbmész utadon?</next>
+  </p>
   <p id="349">
     <text>
         [p]Nincs szükséged sok időre, hogy felfedezd, a földgömb üreges és nyitható. Egy szövetzsákra bukkansz benne, amely [span class="takeItem" data-id="gold" data-amount="24"]24 Aranyat[/span] és egy [span class="takeItem" data-id="3024" data-amount="1"]gyémánt nyakláncot[/span] rejt.[alt][/alt][/p]
@@ -4429,7 +4751,13 @@
     </itemCheck>
   </p>
   <!-- 367 -->
-  <!-- 368 -->
+  <p id="368">
+    <text>
+        [p]A bennszülött igazán ékesszólóan mond köszönetét élete megmentéséért, és egy [span class="takeItem" data-id="2000" data-amount="1"]Nauk Gyümölcsöt[/span] ad át neked (1 Elelmiszeradaggal egyenértékű), mielőtt sietve eltűnne az őserdőben (jegyezd fel [em]Kalandlapodra[/em] a [em]Sáska[/em] szót).[/p]
+    </text>
+    <codeword name="Sáska" />
+    <!-- block -->
+  </p>
   <p id="369">
     <text>
         [p]A fény ellobban, és a vitorlás, melyet a hajóroncs-rablók zátonyra akartak futtatni a sziklákon, még éppen időben fordul meg, vissza a nyílt tengerre (jegyezd fel a [em]Jószerencse[/em] szót a [em]Kalandlapodra[/em]). A vandálok testének átvizsgálásakor összesen [span class="takeItem" data-id="gold" data-amount="5"]5 Aranyérmét[/span] és egy [span class="takeItem" data-id="3004" data-amount="1"]Csontváz Kulcsot[/span] találsz. Amint azon morfondírozol, mi is legyen a következő lépésed, magasan fekvő kilátóhelyedről felfedezel egy méretes barlangnyílást épp a part vonalában, ahol a sziklák a tengerbe érnek. Ez volna talán a kalózok rejtekhelye? Mit teszel?[/p]
@@ -4449,7 +4777,36 @@
       </failure>
     </test>
   </p>
-  <!-- 371 -->
+  <p id="371">
+    <text>
+        [p]Machetékkel vágva át magukat a dzsungelen, három kalóz lép ki az aljnövényzetből éppen a te ösvényedre. Az első gondosan nyírt szakállat visel, mellén pedig keresztbefutó széles övét. A másodiknak csúf sebhely fut le a feje tetejétől egészen a mellkasáig, az utolsó pedig úgy fest, mint egy ember méretű majom.[/p]
+        [p]-    Ez a szaglászó! - kiáltja Hajóvonta Jack, szemmel láthatóan meglepve, hogy még mindig életben vagy.[/p]
+        [p]-    Támadás! - A fák közt harcolva képes vagy rá, hogy egyenként küzdj meg Cinnabar tengeri haramiáival.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="44" />
+      <enemy id="45" />
+      <enemy id="46" />
+      <win>
+        <text>
+            [p]A kalózok testének átkutatásával [span class="takeItem" data-id="gold" data-amount="8"]8 Aranynyal[/span] és egy [span class="takeItem" data-id="2006" data-amount="1"]kis üveg rummal[/span] (megivásával 2 életerő pontot nyersz) leszel gazdagabb.
+        </text>
+        <itemCheck type="item" id="1001">
+          <dontHave>
+            <text>
+                Egyikük [span class="takeItem" data-id="1001" data-amount="1"]kardját[/span] szintén magadhoz veheted.
+            </text>
+          </dontHave>
+          <after>
+            <text>
+                [/p]
+            </text>
+          </after>
+        </itemCheck>
+      </win>
+    </fight>
+    <!-- block -->
+  </p>
   <!-- 372 -->
   <p id="373">
     <text>
@@ -4484,7 +4841,9 @@
     <add amount="1" to="luck" />
     <next id="350"></next>
   </p>
-  <!-- 380 -->
+  <p id="380">
+    <empty />
+  </p>
   <!-- 381 -->
   <p id="382">
     <text>
@@ -4501,7 +4860,14 @@
     </text>
     <death />
   </p>
-  <!-- 384 -->
+  <p id="384">
+    <text>
+        [p]A teremtmény nem méltányolja, hogy kutyába sem veszed, egyúttal hadarni kezd valamit saját, primitív nyelvén, de nem támad rád. Így ismét nekivágsz a dzsungelnek. Azonban mikor távozol, anélkül, hogy észrevennéd, a rosszindulatú Őserdei Manó ellop a zsákodból egy tárgyat és élelmiszerkészleted egy darabját.[/p]
+    </text>
+    <loseItem id="2000" />
+    <loseItem id="1002,1003,2001,2002,2003,2004,2005,2006,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022,3023,3024,3025,3026,3027,3028,3029,3030,3031,3032,3033,3034,3035,3036,3037,3038,3039,3040" amount="1" />
+    <!-- block -->
+  </p>
   <p id="385">
     <text>
         [p]Utat vágva magadnak a fülledt dzsungelén keresztül, csalóka biztonságérzet kerít hatalmába. Lassanként érzékeled, hogy valami mozgolódik feletted a fákon. Megborzongsz, mikor felpillantasz a lombsátorba. Odafenn, nyolc lábával az ágakon függeszkedve, egy hatalmas vörös pókot veszel észre, melynek háta fölé skorpiófarok görbül, a végén egy jókora tüskével. A Pók-skorpió hibrid azon nyomban rád is spriccel valamilyen ragadós, selyemszerű anyagot a szájából.[/p]
@@ -4515,7 +4881,13 @@
       </failure>
     </test>
   </p>
-  <!-- 386 -->
+  <p id="386">
+    <text>
+        [p]Mikor megpróbálsz elhaladni mellettük, a gyík rád csap ostorszerű farkával, és közben a majom is a válladra sújt (vesztesz 4 életerő pontot). Most már a tisztás másik oldalán folytatod tovább az utadat.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <!-- block -->
+  </p>
   <p id="387">
     <text>
         [p]Conyn hajójának néhány darabja még mindig kiemelkedik a hullámok alól. Miközben a víz színén hánykódó törmelék közt kutakodsz, egy mentőcsónak széthasadt törzse alá érsz, és egy ott rejtőzködő angolna jól beléd mar (vesztesz 2 életerő pontot). Keresgélésed további része teljesen eredmény nélküli, így fel is hagysz vele.[/p]

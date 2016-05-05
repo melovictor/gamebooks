@@ -14,9 +14,12 @@ public class Ff60AttributeHandler extends FfAttributeHandler {
     @Override
     public void sanityCheck(final FfCharacter character) {
         super.sanityCheck(character);
-        final Ff60Character chr = (Ff60Character) character;
-        if (chr.getArrowScore() < 0) {
-            chr.setArrowScore(0);
+
+        if (character instanceof Ff60Character) {
+            final Ff60Character chr = (Ff60Character) character;
+            if (chr.getArrowScore() < 0) {
+                chr.setArrowScore(0);
+            }
         }
     }
 }

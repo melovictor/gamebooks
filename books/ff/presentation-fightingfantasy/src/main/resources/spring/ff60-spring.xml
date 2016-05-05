@@ -13,7 +13,7 @@
     </property>
   </bean>
   
-  <bean id="ff60CharacterHandler" parent="ffCharacterHandler" p:attributeHandler-ref="ff60AttributeHandler" p:characterGenerator-ref="ff60CharacterGenerator" />
+  <bean id="ff60CharacterHandler" parent="ffCharacterHandler" p:attributeHandler-ref="ff60AttributeHandler" p:characterGenerator-ref="ff60CharacterGenerator" p:battleLuckTestParameters="ff60BattleLuckTestParameters" />
 
   <bean class="hu.zagor.gamebooks.content.command.fight.roundresolver.SingleFf60FightRoundResolver" id="singleff60FightRoundResolver">
     <property name="ogreRandomCommand">
