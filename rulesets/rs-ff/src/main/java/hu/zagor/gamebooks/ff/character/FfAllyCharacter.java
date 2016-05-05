@@ -8,7 +8,6 @@ import hu.zagor.gamebooks.character.enemy.FfEnemy;
  */
 public class FfAllyCharacter extends FfCharacter {
 
-    private String name;
     private final FfEnemy ally;
 
     /**
@@ -63,11 +62,7 @@ public class FfAllyCharacter extends FfCharacter {
 
     @Override
     public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
+        return ally.getName();
     }
 
     @Override

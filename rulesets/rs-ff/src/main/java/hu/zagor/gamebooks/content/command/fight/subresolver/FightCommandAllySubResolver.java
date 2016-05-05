@@ -55,7 +55,6 @@ public class FightCommandAllySubResolver extends AbstractFightCommandSubResolver
         final List<FfAllyCharacter> resolvedAllies = new ArrayList<>();
         for (final FfEnemy ally : allies) {
             final FfAllyCharacter allyCharacter = new FfAllyCharacter(ally);
-            allyCharacter.setName(ally.getName());
             allyCharacter.getUserInteraction().putAll(resolvationData.getCharacter().getUserInteraction());
             final FfCharacterItemHandler itemHandler = (FfCharacterItemHandler) resolvationData.getCharacterHandler().getItemHandler();
             itemHandler.addItem(allyCharacter, "allyWeapon", 1);

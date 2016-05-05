@@ -21,35 +21,42 @@ public class SingleAllyFightRoundResolver extends SingleFightRoundResolver {
     protected void resolveTieMessage(final FightDataDto dto) {
         final FightCommandMessageList messages = dto.getMessages();
         final FfEnemy enemy = dto.getEnemy();
-        final FfCharacter character = dto.getCharacter();
-        messages.addKey("page.ff.label.fight.single.tied.ally", new Object[]{enemy.getName(), getName(character)});
+        final FfEnemy ally = getAlly(dto);
+        messages.addKey("page.ff.label.fight.single.tied.ally", new Object[]{enemy.getName(), ally.getName()});
     }
 
-    private String getName(final FfCharacter character) {
-        return ((FfAllyCharacter) character).getName();
+    private FfEnemy getAlly(final FightDataDto dto) {
+        final FfAllyCharacter ally = (FfAllyCharacter) dto.getCharacter();
+        return ally.getAlly();
+    }
+
+    private FfEnemy getAlly(final FfCharacter character) {
+        final FfAllyCharacter ally = (FfAllyCharacter) character;
+        return ally.getAlly();
     }
 
     @Override
     protected void resolveDefeatMessage(final FightDataDto dto) {
         final FightCommandMessageList messages = dto.getMessages();
         final FfEnemy enemy = dto.getEnemy();
-        final FfCharacter character = dto.getCharacter();
-        messages.addKey("page.ff.label.fight.single.failedDefense.ally", new Object[]{enemy.getName(), getName(character)});
+        final FfEnemy ally = getAlly(dto);
+        messages.addKey("page.ff.label.fight.single.failedDefense.ally", new Object[]{enemy.getName(), ally.getName()});
     }
 
     @Override
     protected void resolveVictoryMessage(final FightDataDto dto) {
         final FightCommandMessageList messages = dto.getMessages();
         final FfEnemy enemy = dto.getEnemy();
-        final FfCharacter character = dto.getCharacter();
-        messages.addKey("page.ff.label.fight.single.successfulAttack.ally", new Object[]{enemy.getName(), getName(character)});
+        final FfEnemy ally = getAlly(dto);
+        messages.addKey("page.ff.label.fight.single.successfulAttack.ally", new Object[]{enemy.getName(), ally.getName()});
     }
 
     @Override
     protected void recordHeroAttachStrength(final FightCommandMessageList messages, final int[] selfAttackStrengthValues, final int selfAttackStrength,
         final FfCharacter character) {
         final String renderedDice = getDiceResultRenderer().render(6, selfAttackStrengthValues);
-        messages.addKey("page.ff.label.fight.single.attackStrength.ally", new Object[]{renderedDice, selfAttackStrength, getName(character)});
+        final FfEnemy ally = getAlly(character);
+        messages.addKey("page.ff.label.fight.single.attackStrength.ally", new Object[]{renderedDice, selfAttackStrength, ally.getName()});
         getLogger().debug("Attack strength for ally: {}", selfAttackStrength);
     }
 
