@@ -16,10 +16,8 @@ import hu.zagor.gamebooks.content.command.fight.subresolver.domain.LuckTestSetti
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -27,21 +25,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * FF2 implementation of custom battle.
  * @author Tamas_Szekeres
  */
-
 public class Ff2FightCommandCustomSubResolver extends FightCommandSupportedSubResolver {
 
-    @Autowired
-    @Qualifier("d6")
-    private RandomNumberGenerator generator;
-    @Autowired
-    private DiceResultRenderer diceResultRenderer;
-    @Autowired
-    @Qualifier("singleFightRoundResolver")
-    private SingleFightRoundResolver superSingleResolver;
+    @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
+    @Autowired private DiceResultRenderer diceResultRenderer;
+    @Autowired @Qualifier("singleFightRoundResolver") private SingleFightRoundResolver superSingleResolver;
 
-    @Autowired
-    @Qualifier("singleAllyFightRoundResolver")
-    private SingleAllyFightRoundResolver superAlliedResolver;
+    @Autowired @Qualifier("singleAllyFightRoundResolver") private SingleAllyFightRoundResolver superAlliedResolver;
 
     @Override
     public List<ParagraphData> doResolve(final FightCommand command, final ResolvationData resolvationData) {

@@ -32,10 +32,13 @@ public class Ff60BookTakeItemController extends FfBookTakeItemController {
     private void handleAntivenom(final HttpSessionWrapper wrapper) {
         final Ff60Character character = (Ff60Character) wrapper.getCharacter();
         final String paragraphId = wrapper.getParagraph().getId();
-        if ("235".equals(paragraphId) && character.getNineTailDamage() > 0) {
+        if ("235".equals(paragraphId)) {
             final int half = character.getNineTailDamage() / 2;
             character.changeStamina(half);
             character.setNineTailDamage(0);
+        } else if ("293".equals(paragraphId)) {
+            character.changeStamina(character.getScarachnaPoison());
+            character.setScarachnaPoison(0);
         }
     }
 

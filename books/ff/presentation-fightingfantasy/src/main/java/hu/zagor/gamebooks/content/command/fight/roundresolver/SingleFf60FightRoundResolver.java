@@ -29,6 +29,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
  */
 public class SingleFf60FightRoundResolver implements FightRoundResolver {
     private static final int SCARACHNA_EXTRA_DAMAGE = -4;
+    private static final int SCARACHNA_POISON_DAMAGE_RESTORABLE = 3;
     private static final int SCARACHNA_CRITICAL = 6;
     private static final int CHAMELEON_CRITICAL_ATTACK_STRENGTH = 20;
     private static final int WEAPON_ROLL_POSITION = 3;
@@ -100,8 +101,9 @@ public class SingleFf60FightRoundResolver implements FightRoundResolver {
 
         if (rollResult == SCARACHNA_CRITICAL) {
             messages.addKey("page.ff60.fight.scarachna.poison");
-            final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
+            final Ff60Character character = (Ff60Character) resolvationData.getCharacter();
             character.changeStamina(SCARACHNA_EXTRA_DAMAGE);
+            character.setScarachnaPoison(character.getScarachnaPoison() + SCARACHNA_POISON_DAMAGE_RESTORABLE);
         }
 
     }
