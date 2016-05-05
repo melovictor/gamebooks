@@ -38,6 +38,7 @@ public class FfEnemy extends Enemy {
     private String alterId;
     private FfEnemy alterEgo;
     private int startAtRound;
+    private boolean indifferentAlly;
 
     public int getSkill() {
         return skill;
@@ -244,6 +245,14 @@ public class FfEnemy extends Enemy {
 
     public void setAttackStrengthDices(final int attackStrengthDices) {
         this.attackStrengthDices = attackStrengthDices;
+    }
+
+    public boolean isIndifferentAlly() {
+        return indifferentAlly;
+    }
+
+    public void setIndifferentAlly(final boolean indifferentAlly) {
+        this.indifferentAlly = indifferentAlly;
     }
 
 }

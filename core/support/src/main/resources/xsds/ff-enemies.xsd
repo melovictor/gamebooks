@@ -28,6 +28,15 @@
       <xs:attribute name="fleeAtStamina" type="xs:integer" default="0" />
       <xs:attribute name="fleeAtRound" type="xs:integer" />
       <xs:attribute name="same" type="xs:string" />
+      <xs:attribute name="indifferentAlly" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>
+            Setting this property to true will order the ally fight round resolver to generate netural fight report text.
+            Instead of 'your ally' and 'your ally's enemy' statements it will simply inform about foes fighting with
+            each other.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
 
       <xs:attribute name="attackStrength" type="xs:integer">
         <xs:annotation>

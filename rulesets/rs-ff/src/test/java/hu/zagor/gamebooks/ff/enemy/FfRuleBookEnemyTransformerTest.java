@@ -94,6 +94,7 @@ public class FfRuleBookEnemyTransformerTest extends AbstractTransformerTest {
         expectAttribute("fleeAtRound");
         expectAttribute("same");
         expectAttribute("startAtRound");
+        expectAttribute("indifferentAlly");
     }
 
 }

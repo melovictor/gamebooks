@@ -90,6 +90,7 @@ public class FfRuleBookEnemyTransformer extends AbstractTransformer implements B
         enemy.setFleeAtRound(extractIntegerAttribute(node, "fleeAtRound", Integer.MAX_VALUE));
         enemy.setAlterId(extractAttribute(node, "same"));
         enemy.setStartAtRound(extractIntegerAttribute(node, "startAtRound", 1));
+        enemy.setIndifferentAlly(extractBooleanAttribute(node, "indifferentAlly", false));
 
         return enemy;
     }

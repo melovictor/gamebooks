@@ -22,7 +22,7 @@ public class SingleAllyFightRoundResolver extends SingleFightRoundResolver {
         final FightCommandMessageList messages = dto.getMessages();
         final FfEnemy enemy = dto.getEnemy();
         final FfEnemy ally = getAlly(dto);
-        messages.addKey("page.ff.label.fight.single.tied.ally", new Object[]{enemy.getName(), ally.getName()});
+        messages.addKey("page.ff.label.fight.single.tied.ally" + (ally.isIndifferentAlly() ? ".indifferent" : ""), new Object[]{enemy.getName(), ally.getName()});
     }
 
     private FfEnemy getAlly(final FightDataDto dto) {
@@ -40,7 +40,8 @@ public class SingleAllyFightRoundResolver extends SingleFightRoundResolver {
         final FightCommandMessageList messages = dto.getMessages();
         final FfEnemy enemy = dto.getEnemy();
         final FfEnemy ally = getAlly(dto);
-        messages.addKey("page.ff.label.fight.single.failedDefense.ally", new Object[]{enemy.getName(), ally.getName()});
+        messages.addKey("page.ff.label.fight.single.failedDefense.ally" + (ally.isIndifferentAlly() ? ".indifferent" : ""),
+            new Object[]{enemy.getName(), ally.getName()});
     }
 
     @Override
@@ -48,7 +49,8 @@ public class SingleAllyFightRoundResolver extends SingleFightRoundResolver {
         final FightCommandMessageList messages = dto.getMessages();
         final FfEnemy enemy = dto.getEnemy();
         final FfEnemy ally = getAlly(dto);
-        messages.addKey("page.ff.label.fight.single.successfulAttack.ally", new Object[]{enemy.getName(), ally.getName()});
+        messages.addKey("page.ff.label.fight.single.successfulAttack.ally" + (ally.isIndifferentAlly() ? ".indifferent" : ""),
+            new Object[]{enemy.getName(), ally.getName()});
     }
 
     @Override
@@ -56,8 +58,21 @@ public class SingleAllyFightRoundResolver extends SingleFightRoundResolver {
         final FfCharacter character) {
         final String renderedDice = getDiceResultRenderer().render(6, selfAttackStrengthValues);
         final FfEnemy ally = getAlly(character);
-        messages.addKey("page.ff.label.fight.single.attackStrength.ally", new Object[]{renderedDice, selfAttackStrength, ally.getName()});
+        messages.addKey("page.ff.label.fight.single.attackStrength.ally" + (ally.isIndifferentAlly() ? ".indifferent" : ""),
+            new Object[]{renderedDice, selfAttackStrength, ally.getName()});
         getLogger().debug("Attack strength for ally: {}", selfAttackStrength);
+    }
+
+    @Override
+    protected void recordEnemyAttachStrength(final FightDataDto dto, final int[] enemyAttackStrengthValues, final int enemyAttackStrength) {
+        final FightCommandMessageList messages = dto.getMessages();
+        final FfEnemy enemy = dto.getEnemy();
+
+        final String renderedDice = getDiceResultRenderer().render(6, enemyAttackStrengthValues);
+        final FfEnemy ally = getAlly(dto);
+        messages.addKey("page.ff.label.fight.single.attackStrength.enemy" + (ally.isIndifferentAlly() ? ".indifferent" : ""),
+            new Object[]{enemy.getName(), renderedDice, enemyAttackStrength});
+        getLogger().debug("Attack strength for {}: {}", enemy.getName(), enemyAttackStrength);
     }
 
     @Override
@@ -68,7 +83,9 @@ public class SingleAllyFightRoundResolver extends SingleFightRoundResolver {
         if (firstAlly == character) {
             super.doLoseFight(command, result, enemyIdx, dto);
         } else {
-            dto.getMessages().addKey("page.ff.label.fight.single.failedAttack.ally", new Object[]{dto.getEnemy().getName(), character.getName()});
+            final FfEnemy ally = getAlly(dto);
+            dto.getMessages().addKey("page.ff.label.fight.single.failedAttack.ally" + (ally.isIndifferentAlly() ? ".indifferent" : ""),
+                new Object[]{dto.getEnemy().getName(), ally.getName()});
         }
     }
 

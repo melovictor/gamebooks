@@ -1,8 +1,9 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="firstEnemy" value="true" />
+<c:set var="indifferentFight" value="${fightCommand.resolvedAllies[0].ally.indifferentAlly}" />
 
-<div id="ffEnemyList">
+<div id="ffEnemyList" class="${indifferentFight ? 'ffAllyIndifferent' : ''}">
     <span class="skillTitle">
         <spring:message code="page.ff.attribute.skill" />
     </span>
@@ -17,8 +18,10 @@
 	        <span data-enemy-stamina>${ally.stamina}</span>
 	    </div>
     </c:forEach>
-    <c:forEach var="enemy" items="${fightCommand.resolvedEnemies}">
-        <br />
+    <c:forEach var="enemy" items="${fightCommand.resolvedEnemies}" varStatus="status">
+        <c:if test="${!status.first || !indifferentFight}">
+            <br />
+        </c:if>
         <c:if test="${enemy.stamina > 0}">
            <span data-enemy-id="${enemy.id}" data-enemy-name data-enemy-selected="${firstEnemy}">${enemy.name}</span>
         </c:if>
