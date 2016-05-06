@@ -36,7 +36,7 @@ public class SorRuleBookParagraphResolver extends FfRuleBookParagraphResolver {
         final SorParagraphData sorSubData = (SorParagraphData) subData;
         final List<Choice> spellChoices = sorSubData.getSpellChoices();
         if (!spellChoices.isEmpty()) {
-            if (!hasShakingDisease(resolvationData.getCharacter(), resolvationData.getCharacterHandler())) {
+            if (hasShakingDisease(resolvationData.getCharacter(), resolvationData.getCharacterHandler())) {
                 filterSpellChoices(spellChoices);
             }
             rootDataElement.addSpellChoices(spellChoices);
@@ -45,9 +45,10 @@ public class SorRuleBookParagraphResolver extends FfRuleBookParagraphResolver {
 
     private void filterSpellChoices(final List<Choice> spellChoices) {
         final int spellFilterResult = generator.getRandomNumber(1)[0];
-        if (spellFilterResult <= spellChoices.size()) {
+        int spellChoiceAmount = spellChoices.size();
+        if (spellFilterResult <= spellChoiceAmount) {
             final Set<String> symbols = new HashSet<>();
-            for (int i = 0; i < spellChoices.size(); i++) {
+            for (int i = 0; i < spellChoiceAmount; i++) {
                 if (spellFilterResult - 1 != i) {
                     final Choice newChoice = new Choice("-1", getUniqueRandomSymbol(symbols), -1, null);
                     spellChoices.set(i, newChoice);
