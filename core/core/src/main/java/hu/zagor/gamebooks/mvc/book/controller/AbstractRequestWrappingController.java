@@ -5,6 +5,7 @@ import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.ResourceInformation;
 import hu.zagor.gamebooks.mvc.book.controller.domain.StaticResourceDescriptor;
 import java.util.Collection;
+import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -145,10 +146,11 @@ public abstract class AbstractRequestWrappingController implements BeanFactoryAw
     }
 
     private StaticResourceDescriptor getDescriptor(final Model model) {
-        StaticResourceDescriptor staticResourceDescriptor = (StaticResourceDescriptor) model.asMap().get("resources");
+        final Map<String, Object> modelAsMap = model.asMap();
+        StaticResourceDescriptor staticResourceDescriptor = (StaticResourceDescriptor) modelAsMap.get("resources");
         if (staticResourceDescriptor == null) {
             staticResourceDescriptor = beanFactory.getBean(StaticResourceDescriptor.class);
-            model.addAttribute("resources", staticResourceDescriptor);
+            modelAsMap.put("resources", staticResourceDescriptor);
         }
         return staticResourceDescriptor;
     }

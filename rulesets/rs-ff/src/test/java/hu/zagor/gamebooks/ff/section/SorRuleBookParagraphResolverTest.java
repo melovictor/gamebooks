@@ -27,7 +27,6 @@ import org.easymock.Mock;
 import org.springframework.context.MessageSource;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -60,11 +59,6 @@ public class SorRuleBookParagraphResolverTest {
         resolvationData.setParagraph(paragraph);
         resolvationData.setCharacter(character);
         resolvationData.setInfo(info);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-
     }
 
     public void testExecuteBasicsWhenDoesNotHaveSpellsShouldDoNothing() {

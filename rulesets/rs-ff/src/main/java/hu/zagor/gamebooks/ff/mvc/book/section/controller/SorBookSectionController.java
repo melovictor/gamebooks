@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Tamas_Szekeres
  */
 public class SorBookSectionController extends FfBookSectionController {
+    private static final int SPELL_POSITION = 999;
     private static final String CURSED_CHAINMAIL_GLOVES = "3042";
     private static final int POSITION_FOR_ONES = 10;
     @Autowired private XmlGameStateSaver gameStateSaver;
@@ -45,7 +46,7 @@ public class SorBookSectionController extends FfBookSectionController {
     @RequestMapping(value = "spl-{spellTarget}")
     public final String handleSpellSectionChangeBySpellPosition(final Model model, final HttpServletRequest request,
         @PathVariable("spellTarget") final String spellTarget) {
-        getLogger().info("Handling spell section switch to position '{}'.", spellTarget);
+        getLogger().info("Handling spell section switch to position 'spl-{}'.", spellTarget);
         String sectionIdentifier;
         final int position;
         final SorParagraphData data = (SorParagraphData) getWrapper(request).getParagraph().getData();
@@ -60,7 +61,7 @@ public class SorBookSectionController extends FfBookSectionController {
             choice = spellChoices.get(position);
             sectionIdentifier = choice.getId();
         }
-        data.getChoices().add(choice);
+        data.getChoices().add(new Choice(sectionIdentifier, choice.getText(), SPELL_POSITION, null));
         getLogger().info("Handling spell section switch to section '{}'.", sectionIdentifier);
         return super.handleSection(model, request, "s-" + sectionIdentifier);
     }
