@@ -2,17 +2,21 @@ package hu.zagor.gamebooks.ff.ff.b.mvc.books.section.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.Character;
+import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
+import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.ff.b.character.Ff60Character;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.FfBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Controller for handling the section changes in the given book.
@@ -21,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + FightingFantasy.BLOODBONES)
 public class Ff60BookSectionController extends FfBookSectionController {
+    private static final int LUCK_BONUS = 3;
+    private static final int SPELL_CAST_COST = -2;
     private static final int ATTACK_STRENGTH_BONUS_AMOUNT = 10;
     private static final String FIGHT_END_DISAPPEARING_ATTACK_STRENGTH_BONUS = "4000";
 
@@ -51,6 +57,40 @@ public class Ff60BookSectionController extends FfBookSectionController {
             final Ff60Character character = (Ff60Character) wrapper.getCharacter();
             final String resolvedText = String.format(templateText, character.getArrowRound(), character.getArrowScore());
             paragraph.getData().setText(resolvedText);
+        }
+    }
+
+    /**
+     * Handler for the skill spell.
+     * @param request the {@link HttpServletRequest}
+     */
+    @RequestMapping("skillSpell")
+    @ResponseBody
+    public void handleSkillSpell(final HttpServletRequest request) {
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        final FfCharacter character = (FfCharacter) wrapper.getCharacter();
+        final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
+        if (itemHandler.hasItem(character, "4008")) {
+            character.changeStamina(SPELL_CAST_COST);
+            if (!itemHandler.hasItem(character, "4016")) {
+                itemHandler.addItem(character, "4016", 1);
+            }
+        }
+    }
+
+    /**
+     * Handler for the luck spell.
+     * @param request the {@link HttpServletRequest}
+     */
+    @RequestMapping("luckSpell")
+    @ResponseBody
+    public void handleLuckSpell(final HttpServletRequest request) {
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        final FfCharacter character = (FfCharacter) wrapper.getCharacter();
+        final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
+        if (itemHandler.hasItem(character, "4007")) {
+            character.changeStamina(SPELL_CAST_COST);
+            character.changeLuck(LUCK_BONUS);
         }
     }
 }

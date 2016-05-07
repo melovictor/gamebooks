@@ -9,7 +9,7 @@
 		<spring:message code="page.menu.ff.adventureSheet" />
 	</h1>
 	<div id="inventory">
-		<tiles:insertTemplate template="../charpage/ssl3.jsp" />
+		<tiles:insertTemplate template="ssl.jsp" />
 		<tiles:insertTemplate template="../charpage/gpp.jsp">
 			<tiles:putAttribute name="width" value="4" type="string" />
 		</tiles:insertTemplate>

@@ -79,20 +79,31 @@ public class FfCharacterPageData extends RawCharacterPageData {
                     if (isWeapon(item)) {
                         foundAlternateWeapon = true;
                     }
-                    if (isPreFightItem(item)) {
-                        preFightItems.add(item);
-                    } else if (isAtFightItem(item)) {
-                        atFightItems.add(item);
-                    }
+                    assignVisibleItems(item);
                 }
             } else {
-                if (item.getItemType() == ItemType.shadow) {
-                    shadows.add(item);
-                }
+                assignInvisibleItems(item);
             }
         }
         if (!foundAlternateWeapon && defaultWeapon != null) {
             items.add(defaultWeapon);
+        }
+    }
+
+    private void assignVisibleItems(final Item item) {
+        if (isPreFightItem(item)) {
+            preFightItems.add(item);
+        } else if (isAtFightItem(item)) {
+            atFightItems.add(item);
+        }
+    }
+
+    private void assignInvisibleItems(final Item item) {
+        if (item.getItemType() == ItemType.shadow) {
+            shadows.add(item);
+        }
+        if (isPreFightItem(item)) {
+            preFightItems.add(item);
         }
     }
 
@@ -196,5 +207,4 @@ public class FfCharacterPageData extends RawCharacterPageData {
     public List<String> getCodewords() {
         return codewords;
     }
-
 }

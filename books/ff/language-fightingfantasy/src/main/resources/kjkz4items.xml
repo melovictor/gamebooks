@@ -31,16 +31,12 @@
   <item type="necklace" id="3010" name="Elefántcsont Oroszlán amulett" />
   <item type="bracelet" id="3011" name="Cápafog Karkötő" />
   <item type="common" id="3012" name="Mágikus Iránytű" />
-  <item type="common" id="3014" name="Elvin Hajfürt" />
+  <item type="common" id="3014" name="Elvin Hajfürt" description="Szerencsepróba során 1-gyel lecsökkentheted a dobott értéket." />
   <item type="bracelet" id="3015" name="Faragott Sötétfa Karkötő" />
   <item type="common" id="3016" name="Kötél" />
-  <!-- implement prefight -->
   <item type="common" id="3017" name="Dobótőr" preFight="true" />
-  <!-- -1 from enemy AS, +1 to skill test rolls -->
   <item type="common" id="3018" name="Láncing" description="A Láncing 1-gyel csökkenti ellenfeleid Támadóerejét, ám amíg viseled, minden alkalommal hozzá kell adnod 1-et az összeghez, mikor [em]próbára teszed[/em] [span class='ffAttribute']ügyességed[/span]." />
-  <!-- -2 AS from enemy when used, only against normal ones though -->
-  <item type="common" id="3019" name="Gázgömb" preFight="true" description="A Gázgömböt harc előtt használhatod: egyszerűen össze kell törni a padlón, az ellenfél előtt, akit erre köd burkol be, összezavarván érzékeit; ennek eredményeképpen 2-vel csökkentheted Támadóerejét. Azonban a Gázgömbnek semmi hatása Élőholtakra, Démonokra vagy bármely mágikus teremtményekre." />
-  <!-- not sure if pre-fight or not... -->
+  <item type="common" id="3019" name="Gázgömb" preFight="true" description="A Gázgömböt harc előtt használhatod: egyszerűen össze kell törni a padlón, az ellenfél előtt, akit erre köd burkol be, összezavarván érzékeit; ennek eredményeképpen 2-vel csökkentheted [span class='ffAttribute']ügyességét[/span] Azonban a Gázgömbnek semmi hatása Élőholtakra, Démonokra vagy bármely mágikus teremtményekre." />
   <item type="common" id="3020" name="Zombi Por" preFight="true" />
   <item type="necklace" id="3021" name="Krokodil Amulett" />
   <item type="common" id="3022" name="Csontváz Ereklye" />
@@ -48,7 +44,6 @@
   <item type="necklace" id="3024" name="Gyémánt Nyaklánc" />
   <item type="common" id="3025" name="Zöld Jáde Majom Totem" />
   <item type="bracelet" id="3026" name="Fehértollú Csuklópánt" />
-  <!-- skill test, -2 stamina -->
   <item type="common" id="3027" name="Bolarang" preFight="true" />
   <item type="necklace" id="3028" name="Skorpió Talizmán" />
   <item type="common" id="3029" name="Fétis" />
@@ -56,7 +51,6 @@
 
 
 
-  <!-- This AS bonus is automatically removed at the end of all battles -->
   <item type="shadow" id="4000" name="+1 Attack Strength" addToAttackStrength="1" />
   <item type="shadow" id="4001" name="-1 Attack Strength" addToAttackStrength="-1" />
   <item type="shadow" id="4002" name="Leviathan -- password" />
@@ -65,19 +59,20 @@
   <item type="shadow" id="4005" name="Go to mandrake alley -- 100" />
   <item type="shadow" id="4006" name="Where is the ship going? use at 257; South - East" />
 
-  <!-- add button to use it -->
   <item type="shadow" id="4007" name="Luck spell" description="+3 luck" />
-  <!-- add button to use it -->
-  <item type="shadow" id="4008" name="Skill spell" description="auto success on skill test" />
+  <item type="shadow" id="4008" name="Skill spell" description="auto success on next skill test" />
   <!-- could this be treated as a pre-fight item? -->
-  <item type="shadow" id="4009" name="Voodoo spell" description="kill 1-3 zombies" />
-  <item type="shadow" id="4010" name="Insect spell" description="kill insects" />
+  <item type="shadow" id="4009" name="Vudu-Hárítás" description="kill 1-3 zombies" preFight="true" />
+  <!-- could this be treated as a pre-fight item? -->
+  <item type="shadow" id="4010" name="Insect spell" description="kill insects" preFight="true" />
 
   <item type="shadow" id="4011" name="Giant Mosquito bit us" />
+  <!-- must implement this -->
   <item type="shadow" id="4012" name="Secret of the masked zombies: attack with -2 AS, -2 stamina, -3 skill if successful" />
   <item type="shadow" id="4013" name="Code: +2 -2 +2 -2" />
   <item type="shadow" id="4014" name="-1 skill until in the temple" addToSkill="-1" />
   <item type="shadow" id="4015" name="-2 AS" addToAttackStrength="-2" />
+  <item type="shadow" id="4016" name="Skill spell is active"/>
 
   <item type="shadow" id="4279" name="to 397" />
   <item type="shadow" id="4293" name="to 164" />

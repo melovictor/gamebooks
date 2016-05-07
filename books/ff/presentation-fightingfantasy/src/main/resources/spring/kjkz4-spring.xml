@@ -4,13 +4,12 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.hungarian.KalandJatekKockazatZagor.VERESCSONT" id="kjkz4Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="kjkz4Info" c:id-ref="kjkz4Id" p:coverPath="resources/ff60/cover.jpg" p:resourceDir="ff60" p:characterBeanId="ff60Character" p:characterPageDataBeanId="ff60CharacterPageData" p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="huLocale" p:position="4" p:series-ref="kjkzTitle" p:title="Vérescsont" p:characterHandler-ref="ff60CharacterHandler" p:commandResolvers-ref="ff60CommandResolvers" p:unfinished="true">
+  <bean parent="ff60Info" class="hu.zagor.gamebooks.domain.FfBookInformations" id="kjkz4Info" c:id-ref="kjkz4Id" p:locale-ref="huLocale" p:position="4" p:series-ref="kjkzTitle" p:title="Vérescsont" p:unfinished="true" p:hidden="false">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="kjkz4enemies.xml" c:items="kjkz4items.xml" c:paragraphs="kjkz4content.xml" />
     </property>
-    <property name="contentSpecification">
-      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="true" />
-    </property>
   </bean>
+
+  <alias name="ff60BookPreFightHandlingService" alias="kjkz4BookPreFightHandlingService"/>
 
 </beans>
