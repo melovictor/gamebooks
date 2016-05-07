@@ -10,6 +10,7 @@ import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
 import hu.zagor.gamebooks.content.command.fight.stat.StatisticsProvider;
 import java.util.List;
 import java.util.Map;
+import org.springframework.util.StringUtils;
 
 /**
  * Class for resolving round events after a round of battle has been fought.
@@ -35,8 +36,11 @@ public class FightCommandRoundEventResolver {
                 if (ongoing) {
                     final FightCommandMessageList messages = command.getMessages();
                     messages.switchToPostRoundMessages();
-                    messages.add(paragraphData.getText());
-                    paragraphData.setText("");
+                    final String text = paragraphData.getText();
+                    if (!StringUtils.isEmpty(text)) {
+                        messages.add(text);
+                        paragraphData.setText("");
+                    }
                     messages.switchToRoundMessages();
                 }
             }
