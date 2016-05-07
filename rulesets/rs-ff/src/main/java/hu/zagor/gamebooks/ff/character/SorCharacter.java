@@ -17,6 +17,9 @@ public class SorCharacter extends FfCharacter {
     private boolean wizard;
     private int lastEatenBonus;
     private boolean luckCookieActive;
+    /**
+     * An alternative "currency" for making purchases with Fenestra.
+     */
     private int magicItem;
 
     /**

@@ -44,9 +44,11 @@ public class Sor2BookSectionController extends SorBookSectionController {
     private static final String SELF_ENEMY_ID = "9";
     private static final String FIGHT_WITH_SELF_ID = "67";
     private static final String MET_FLANKER_MARKER = "4013";
+    private static final String MET_VIK_MARKER = "4012";
     @Resource(name = "flankerVisitTargets") private Map<String, String> flankerVisitTargets;
     @Autowired private LocaleProvider localeProvider;
     @Autowired private HierarchicalMessageSource source;
+    @Resource(name = "vikVisitTargets") private Map<String, String> vikVisitTargets;
 
     /**
      * Constructor expecting the {@link SectionHandlingService} bean.
@@ -119,6 +121,38 @@ public class Sor2BookSectionController extends SorBookSectionController {
         final ChoiceSet choices = oldParagraph.getData().getChoices();
         final Choice flanker = new Choice(targetSectionId, "", 99, null);
         choices.add(flanker);
+        oldParagraph.addValidMove(targetSectionId);
+
+        return handleSection(model, request, "s-" + targetSectionId);
+    }
+
+    /**
+     * Handles the jumps for visiting Vik.
+     * @param model the {@link Model} object
+     * @param request the {@link HttpServletRequest} object
+     * @return the book page's name
+     */
+    @RequestMapping(value = "visitVik", method = RequestMethod.GET)
+    public String handleVikJumps(final Model model, final HttpServletRequest request) {
+        final HttpSessionWrapper wrapper = getWrapper(request);
+
+        final Paragraph oldParagraph = wrapper.getParagraph();
+        final String currentSectionId = oldParagraph.getId();
+
+        final Character character = wrapper.getCharacter();
+        final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
+        if (!itemHandler.hasItem(character, MET_VIK_MARKER)) {
+            throw new InvalidStepChoiceException("You cannot meet Vik if you never met him among the Shamutanti Hills.", currentSectionId);
+        }
+        final String targetSectionId = vikVisitTargets.get(currentSectionId);
+
+        if (targetSectionId == null) {
+            throw new InvalidStepChoiceException("You cannot meet Vik at your current position.", currentSectionId);
+        }
+
+        final ChoiceSet choices = oldParagraph.getData().getChoices();
+        final Choice vik = new Choice(targetSectionId, "", 99, null);
+        choices.add(vik);
         oldParagraph.addValidMove(targetSectionId);
 
         return handleSection(model, request, "s-" + targetSectionId);

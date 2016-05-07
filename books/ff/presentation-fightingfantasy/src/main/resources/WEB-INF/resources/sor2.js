@@ -1,4 +1,18 @@
 var sor2 = (function() {
+	function init() {
+		initBetting();
+		initVikSpell();
+	}
+	
+	function initVikSpell() {
+		$(".sorSpell span[data-spell-name='VIK']").click(visitVik);
+	}
+	
+	function visitVik() {
+		allowNavigation();
+		location.href = "visitVik";
+	}
+	
 	function visitFlanker() {
 		allowNavigation();
 		location.href = "visitFlanker";
@@ -51,12 +65,12 @@ var sor2 = (function() {
 
 	return {
 		visitFlanker : visitFlanker,
-		initBetting : initBetting
+		init : init
 	};
 })();
 
 
 $(function() {
 	$("[data-assassin]").on("click", sor2.visitFlanker);
-	sor2.initBetting();
+	sor2.init();
 });

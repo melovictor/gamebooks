@@ -20,6 +20,8 @@ public class SorCharacterPageData extends FfCharacterPageData {
     private final List<Item> curses = new ArrayList<>();
     private final boolean commandActive;
     private int magicItem;
+    private final boolean wizard;
+    private boolean vikKnown;
 
     /**
      * Bean for storing data to display on the character page for Fighting Fantasy ruleset.
@@ -39,6 +41,8 @@ public class SorCharacterPageData extends FfCharacterPageData {
             }
         }
         commandActive = character.getCommandView() != null && character.getCommandView().getViewName().startsWith("sorFight");
+        wizard = character.isWizard();
+        vikKnown = handler.getItemHandler().hasItem(character, "4012");
     }
 
     public boolean isUsedLibra() {
@@ -59,6 +63,14 @@ public class SorCharacterPageData extends FfCharacterPageData {
 
     public void setMagicItem(final int magicItem) {
         this.magicItem = magicItem;
+    }
+
+    public boolean isWizard() {
+        return wizard;
+    }
+
+    public boolean isVikKnown() {
+        return vikKnown;
     }
 
 }
