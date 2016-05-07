@@ -205,7 +205,14 @@
     <next id="388">A gyöngyért nyúlsz?</next>
     <next id="188">Nyomban elhagyod a templomot?</next>
   </p>
-  <!-- 8 -->
+  <p id="8">
+    <text>
+        [p]A holmi, melyre bukkantál, valójában egy Szellem Ékkő, melynek ereje abban áll, hogy elszívja az Éteri Sík lakóinak nem evilági energiáját. Ha majd végül szembekerülsz Quezkarival, csökkentheted 3 ponttal az ügyességét, 6 ponttal az életerejét, magadnak pedig felírhatsz majd 1 szerencse pontot. Most viszont az Ős-Szellem dühösen sziszegve rád támad.[/p]
+    </text>
+    <changeEnemy attribute="stamina" id="98" change="-6" />
+    <changeEnemy attribute="skill" id="98" change="-3" />
+    <next id="177"></next>
+  </p>
   <p id="9">
     <text>
         [p]Egy zászló alatt, melyen élénk színekkel felfestve olvasható a neve, ott pihen a Csodálatos Armarno. A férfi lendlelandinek néz ki, legalábbis a sárgás bőre, ferde szeme, és hosszú, vékonyka bajusza alapján. Három játékkártyával bűvészkedik, és ezzel kíváncsi nézelődők egész kis csapatát köti le. A kártyák közül kettő fekete, egy pedig fehér, s úgy tűnik, a játék lényege az, hogy a férfi összekeverve, képpel lefelé maga elé fekteti a kis asztalon a három lapot, és el kell találni, melyik közülük a fehér. Ha játszani szeretnél, 2 Aranyat kell tétként befizetned, hogy elnyerd a lehetséges díjat, mely 10 Arany. Jelenleg nem úgy fest, mintha bárki is különösebb sikerrel tudna kiállni Armarno ellen.[alt][/alt][/p]
@@ -359,7 +366,15 @@
     <add amount="2" to="luck" />
     <next id="209"></next>
   </p>
-  <!-- 15 -->
+  <p id="15">
+    <text>
+        [p]Velyarde kapitány egy csinos, jólöltözött kalózzal bonyolódik közelharcba, míg neked egy gorilla-testfelépítésű, harci baltát markoló férfival kell kiállnod. Hobbes, a [em]Szuka[/em] első tisztje számtalan tengeri csata veteránja.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="95" />
+    </fight>
+    <next id="298"></next>
+  </p>
   <p id="16">
     <text>
         [p]Mindenképpen szeretnéd elkerülni, hogy felhívd magadra bizonyos körök figyelmét, illetve abban bízol, hogy ha a kalózok rejtekhelye utáni kutatásoddal vársz az éj leszálltáig, talán kevesebbeknek szúr szemet ténykedésed. Írj fel 2 órát! Hol kezded meg a keresést?[/p]
@@ -1499,7 +1514,38 @@
     <add amount="-2" to="gold" />
     <next id="334"></next>
   </p>
-  <!-- 99 -->
+  <p id="99">
+    <text>
+        [p]- Éjhalál, most segíts! - kiáltod, és a csontpenge lángba borul. Quezkari visítva támadásba lendül. A vudu halálisten jelenleg csupán egy hatalmas, gonoszszellem - azon lelkek megtestesülése, kiket Ramatu zombivá változtatott, illetve akiket Cinnabar ölt meg.[/p]
+    </text>
+    <itemCheck type="item" id="3026">
+    <haveEquipped>
+        <text>
+            [p]Az Usai nép bátorsága veled lesz a harcban (növeld meg 1-gyel a Támadóerődet).[/p]
+        </text>
+        <gatherItem id="4000"/>
+    </haveEquipped>
+    </itemCheck>
+    <itemCheck type="item" id="3010">
+    <have>
+        <text>
+            [p]Minden alkalommal, amikor Quezkari sebzést okoz, sötét hatalmának köszönhetően 3 életerő pontot szív el tőled.[/p]
+        </text>
+    </have>
+    <haveEquipped>
+    <changeEnemy attribute="staminaDamage" id="98" set="2"/>
+    </haveEquipped>
+    <dontHave>
+        <text>
+            [p]Minden alkalommal, amikor Quezkari sebzést okoz, sötét hatalmának köszönhetően 3 életerő pontot szív el tőled.[/p]
+        </text>
+    </dontHave>
+    </itemCheck>
+    <fight type="single">
+    <enemy id="98"/>
+    </fight>
+    <next id="400"></next>
+  </p>
   <p id="100">
     <text>
         [p]Madame Galbo kunyhója szerény kis házacska a csendes Mandragóra-sikátorban, bár van valami idegesítő az ajtóra szegezett, döglött madárból készített totemben. Hármat koppantasz, amire egy károgó „Lépj be!” a válasz. Kinyitod az ajtót. Igazi vajákos-paradicsomban találod magad; az alacsony mennyezetgerendákról gyógynövénycsokrok lógnak, és a szobát teljesen betölti a cserepekbe ültetett virágok átható illata. A párás levegő és a rengeteg zöld olyan érzéssel tölt el, mintha valamiféle trópusi dzsungelben volnál. Egy zsúfolt asztal mögött ráncos, sötét bőrű nő ül, sűrű, csigákba göndörödő fekete hajjal - Madame Galbo. A vajákos asszony éppen azzal foglalatoskodik, hogy feltörjön valamit egy mozsárban. Amint belépsz a házikóba, hangos rikoltás hallatszik, és hirtelen egy nagy fekete kakas röppen odébb a lábad elől. - Ne aggódj Rabab miatt! - int Madame Galbo a familiárisa felé. - Mit tehetek érted? - Úgy érzed, megbízhatsz benne, így mesélsz neki a Fekete Koponya kalózai utáni kutatásodról. - A Sötét Hatalom híveinek számos álarcuk van, és temérdek kelepcét állítanak, hogy elveszejtsék az óvatlanokat. Ha éppen velük kerültél szembe, akkor szükséged lesz a segítségemre, mert ismerem a vudu módszereket, és tudok mit tenni ellenük. Viszont a közreműködésnek ára van - négy Arany.[/p]
@@ -1524,7 +1570,14 @@
     <next id="244">Ha magaddal akarod vinni</next>
     <next id="55">Ha nem szeretnéd</next>
   </p>
-  <!-- 102 -->
+  <p id="102">
+    <text>
+        [p]Az ütés a lábadon talál el. Megbotlasz, és elvágódsz a deszkapalánkon. Veszítesz 2 életerő pontot, és mikor majd elkövetkezik a csata első Harci Köre, csökkentsd 2-vel a Támadóerődet, míg megpróbálsz ismét talpra állni.[/p]
+    </text>
+    <gatherItem id="4015" />
+    <add amount="-2" to="stamina" />
+    <next id="182"></next>
+  </p>
   <p id="103">
     <text>
         [p]Az Ó-Erőd, a kikötő kormányzójának rezidenciája annak a dombnak a tetején áll, melyre az Óváros nagy része is épült. Felkapaszkodsz a domboldalon, és megérkezel a masszív kőépület elé, mely úgy fest, mintha hetekig tudná állni egy hadsereg ostromát - bár megvan már jó néhány száz éves. Mikor a kapuban álló őrhöz közelítesz, az megkérdezi, mi járatban vagy. Elmondod, hogy meghallgatást kérnél Montargo kormányzótól. - Ó valóban? - vigyorodik el a katona. - Csakhogy én meg nem engedhetek be akárkit. Ez túlmutat az én hatáskörömön.[/p]
@@ -1826,7 +1879,13 @@
       </failure>
     </test>
   </p>
-  <!-- 106 -->
+  <p id="106">
+    <text>
+        [p]Megrázod a botot a nem evilági lény felé, de semmi eredmény. Ám Quezkari feléd csap karmos kezével (vesztesz 2 életerő pontot). Nincs más lehetőséged, mint kardoddal visszavágni.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="177"></next>
+  </p>
   <p id="107">
     <text>
         [p]Képtelen vagy menekülni, így igencsak lassú és kínkeserves halálra számíthatsz Cinnabar szadista kínzómesterének keze révén. Kudarcot vallottál küldetéseden. Kalandod itt véget ér.[/p]
@@ -2126,7 +2185,12 @@
     </text>
     <death />
   </p>
-  <!-- 124 -->
+  <p id="124">
+    <text>
+        [p]Cinnabar feléd szúr. Nem fordítasz kellő figyelmet a védelmedre, így nem tudod hárítani a döfést. Riadt döbbenettel érzed a hideg acélt, amely a szívedbe mélyed. Kalandod és életed itt ér véget, családod gyilkosának keze által.[/p]
+    </text>
+    <death />
+  </p>
   <p id="125">
     <text>
         [p]Amint beérsz a dzsungelben, mintha teljesen más világba csöppennél. A fák koronája alatt mindenütt zöldes félhomály uralkodik, körülötted pedig idegen hangok és illatok vannak. Elbágyasztó, fojtogató hőség üli meg az őserdőt, komolyan megnehezítve a haladást.[/p]
@@ -2160,7 +2224,13 @@
       </failure>
     </test>
   </p>
-  <!-- 128 -->
+  <p id="128">
+    <text>
+        [p]A lángoló golyó a fedélzet felé zuhan, és mielőtt még kitérhetnél az htjából, az egyenesen neked csapódik. Az égés okozta fájó kíntól összegörnyedsz (vesztesz 5 életerő pontot). Látván, hogy még egy hasonló lövedék közelít a hajóhoz, fedezékbe húzódsz az árboc mögött.[/p]
+    </text>
+    <add amount="-5" to="stamina" />
+    <next id="232"></next>
+  </p>
   <p id="129">
     <text>
         [p]Felkeresel néhányat a város leghírhedtebb ivói közül, többek közt a Macska és Csótányt, Angar Lázadását és a Kagyló Fogadót. Azonban nyomozásoddal pont azoknak a figyelmét kelted fel, akikét a legkevésbé szeretted volna. Éppen csak elhagysz egy újabb füstös kocsmát, mikor váratlanul szemközt találod magad egy csapatnyi kalózzal és feketeruhás hívővel - valamennyien Quezkari követői. Végeláthatatlan kérdezősködéseddel elárultad magad. Felismervén, hogy mekkora veszély is fenyeget most Cinnabar csatlósainak részéről, már futásnak is eredsz, hiszen jóval többen vannak, mint amennyivel becsületes harcban elbánhatnál.[/p]
@@ -2188,7 +2258,15 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 131 -->
+  <p id="131">
+    <text>
+        [p]Egy élőholt tengerész zuhan a lábaid elé, akit egy magas, tetőtől talpig tüskés páncélba öltözött alak buzogánya terített le. A szótlan Káoszbajnok azért csatlakozott Cinnabar legénységéhez, hogy a lehető legjobban szolgálhassa sötét mesterét azzal, hogy terjeszti a gonoszságot szerte Vaskövesd földjén.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="96" />
+    </fight>
+    <next id="298"></next>
+  </p>
   <p id="132">
     <text>
         [p]Habár elszántan küzdesz, hogy kiszabadítsd magad, végül nem jársz sikerrel. A dagálynak köszönhetően perceken belül a fejed fölé ér a tengervíz szintje az üregben, néhány további perc múlva pedig megfulladsz. Kalandod itt, ezzel a vízzel teli sírban ér véget.[/p]
@@ -2248,7 +2326,14 @@
       </win>
     </fight>
   </p>
-  <!-- 136 -->
+  <p id="136">
+    <text>
+        [p]Amikor felemeled a bálnacsont figurát, úgy érzed, mintha megsűrűsödne körülötted a levegő, a fény pedig elhalványulna, akárha felhők sodródnának a napkorong elé. Quezkari mintha egyik pillanatról a másikra növekedett volna valamennyit. Azzal, hogy most használtad a Csontváz Ereklyét, elősegítetted tökéletesebb megtestesülését ezen a Síkon. (Mikor majd megküzdesz Quezkarival, ne felejtsd el megnövelni 1 ponttal az ügyességét és 3 ponttal az életerejét!) Most pedig húzd elő a kardodat, mielőtt még a nem evilági szellem neked rontana.[/p]
+    </text>
+    <changeEnemy attribute="stamina" id="98" change="3" />
+    <changeEnemy attribute="skill" id="98" change="1" />
+    <next id="177"></next>
+  </p>
   <p id="137">
     <text>
         [p]Gyorsan az út szélére húzod a Hívek testét, mielőtt még bárki is felfedezné őket. A két férfinál semmi sincsen, leszámítva szent tőreiket, melyek ébenfa markolatát emberi koponya formájúra faragták. Jobb kézfejükön ott vigyorog az immáron oly ismerős fekete halálfej. A Hívek valószínűleg áldozatot kerestek, akit kivégezhettek volna a vérszomjas Quezkari nagyobb dicsőségére - vagy pedig éppen rád vadásztak! Mindenesetre jelenlétük leginkább arra utal, hogy a kalózok rejtekhelye, vagy legalábbis Quezkari temploma itt van a közelben.[/p]
@@ -2262,7 +2347,24 @@
     </text>
     <death />
   </p>
-  <!-- 139 -->
+  <p id="139">
+    <text>
+        [p]Mikor kardot rántasz Ramatu ellen, ő erre varázslattal válaszol.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="93" />
+      <anyRound totalCount="3">
+        <text>
+            [p]A Főpap innentől kezdve a Sikoltó Tőrt használja. A tőr ijesztő sikolya miatt a küzdelem végéig csökkentsd 1-gyel a Támadóerődet.[/p] 
+        </text>
+        <gatherItem id="4001" />
+      </anyRound>
+      <win>
+        <loseItem id="4001" />
+      </win>
+    </fight>
+    <next id="7"></next>
+  </p>
   <p id="140">
     <text>
         [p]Emberpróbáló munka, ám húsz perc alatt sikerül eltakarítanod egy halomnyi követ a barlangnyílásból, és rést nyitnod az odakint húzódó folyosóra. Éppen próbálod átszuszakolni magad rajta, mikor az alagút ingatag mennyezete ismét megindul, jó néhány tonna szikla és föld alá temetve téged. Kalandod itt véget ér.[/p]
@@ -2380,7 +2482,19 @@
     <next id="201">Ha arra rohannál</next>
     <next id="45">Ha inkább maradsz és harcolsz</next>
   </p>
-  <!-- 152 -->
+  <p id="152">
+    <text>
+        [p]Cinnabar a fedélzetre zuhan; legyőzted végre. De mi ez? A sebei összeforrnak ámuló szemeid előtt, és a kalózvezér ismét talpra ugrik, látszólag sértetlenül. - Hát nem érted? - kérdezi gúnyosan. - A szertartás bevégeztetett. Teljesen sebezhetetlen vagyok. És legyőzhetetlen leszek. Tudod, miért? - Cinnabar úgy beszél, mintha csak dicsekedne. - Mert a szívem nincs már a testemben.[/p]
+    </text>
+    <itemCheck type="item" id="3029">
+      <have>
+        <next id="398"></next>
+      </have>
+      <dontHave>
+        <next id="124"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="153">
     <text>
         [p]Miközben a [em]Jószerencse[/em] eltávolodik a [em]Hableánytól[/em], hosszasan figyeled, ahogy a szellemhajó lassan kezd semmivé fakulni, a zöld ködöt pedig szétfújja a szél. Ezzel egy időben az ég ismét kitisztul. Majd váratlanul kiáltás harsan az árbóckosárból: - Conyn kapitány! Galleon jobb felől![/p]
@@ -2656,7 +2770,58 @@
     </text>
     <death />
   </p>
-  <!-- 177 -->
+  <p id="177">
+    <itemCheck type="item" id="1004">
+      <have>
+        <itemCheck type="section" id="277">
+          <have>
+            <userInput type="text">
+            <label>Mi a csontkard neve, mellyel felébresztheted a benne szunnyadó hatalmat?</label>
+            <result text="Éjhalál">
+            <next id="99"></next>
+            </result>
+            <resultElse>
+            <next id="345"></next>
+            </resultElse>
+            </userInput>
+          </have>
+          <dontHave>
+            <text>
+                [p]Előhúzod a fegyvered és felkészülsz az összecsapásra.[/p]
+            </text>
+        <next id="345"></next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <haveEquipped>
+        <itemCheck type="section" id="277">
+          <have>
+            <userInput type="text">
+            <label>Mi a csontkard neve, mellyel felébresztheted a benne szunnyadó hatalmat?</label>
+            <result text="Éjhalál">
+            <next id="99"></next>
+            </result>
+            <resultElse>
+            <next id="345"></next>
+            </resultElse>
+            </userInput>
+          </have>
+          <dontHave>
+            <text>
+                [p]Előhúzod a fegyvered és felkészülsz az összecsapásra.[/p]
+            </text>
+        <next id="345"></next>
+          </dontHave>
+        </itemCheck>
+      </haveEquipped>
+      <dontHave>
+        <text>
+            [p]Előhúzod a fegyvered és felkészülsz az összecsapásra.[/p]
+        </text>
+        <next id="345"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="178">
     <text>
         [p]Felhajtván a „Sors Forrázata” italt ugyanaz a hatás következik be, mintha Szerencseitalt ittál volna. (Adj 1-et szerencse pontjaid Kendert Értékéhez, és állítsd is vissza őket erre az értékre!)[/p]
@@ -2708,14 +2873,40 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 182 -->
+  <p id="182">
+    <text>
+        [p]Az ördögi Cinnabar egy csillogó szablyát ránt elő, és üvöltve neked támad. Ugyanebben a pillanatban a kalózvezér papagája felreppen gazdája válláról. - Ez az, Jezabel - kacag Cinnabar -, csak a szemét![/p]
+        [p]A zavaró madár miatt 1 ponttal kell csökkentened Támadóerődet a csata idejére. Minden Harci Körben dobj egy kockával! Ha az eredmény 5 vagy 6, akkor Jezabel lecsap rád, és karmaival 1 életerő pontnyi sebzést okoz.[/p]
+    </text>
+    <gatherItem id="4001" />
+    <fight type="single">
+      <enemy id="97" />
+      <afterRound>
+        <random>
+          <result max="6" min="5">
+            <text>
+                [p]A papagáj lecsap rád, és karmaival 1 életerő pontnyi sebzést okoz.[/p]
+            </text>
+            <add amount="-1" to="stamina" />
+          </result>
+        </random>
+      </afterRound>
+      <anyRound totalCount="1">
+        <loseItem id="4015" />
+      </anyRound>
+      <win>
+        <loseItem id="4001" />
+      </win>
+    </fight>
+    <next id="152"></next>
+  </p>
   <p id="183">
     <text>
         [p]Mit ajánlasz fel a lénynek?[/p]
     </text>
     <itemCheck type="item" id="2000">
       <have>
-        <next id="222" pos="1">Amennyiben felajánlasz a lénynek némi élelmet</next>
+        <next id="222" pos="1">Némi élelmet</next>
       </have>
     </itemCheck>
     <itemCheck type="item" id="2001">
@@ -2728,7 +2919,6 @@
         <next id="268" pos="3">Ha egy flaska rumot adnál neki</next>
       </have>
     </itemCheck>
-    <!-- this must be extended with all the possible items... -->
     <itemCheck type="items" id="1001 and 1002">
       <have>
         <next id="246" pos="4">Ha a kést adnád neki</next>
@@ -3317,7 +3507,19 @@
     <add amount="-2" to="stamina" />
     <next id="318"></next>
   </p>
-  <!-- 214 -->
+  <p id="214">
+    <text>
+        [p]A harcolók tömege egy pillanatra szétválik, és akit végig kerestél, most ott áll előtted. Átküzdöd magad a csatlósai közt, és végre szemtől-szembe kerülsz Cinnabarral, magával a jó öreg Vérescsonttal. De már nem az az élőholt rémség, akivel még a Rákok Kikötője alatti járatokban találkoztál - immár ismét az az elegáns, jóvágású kalózúr, aki halála előtt volt. Egy tigrisugrással átvetődsz a fedélzeten, hogy elérd Cinnabart, ám az még ebben a pillanatban felemel egy kis kézi nyílpuskát, és tüzel vele.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="375"></next>
+      </success>
+      <failure>
+        <next id="102"></next>
+      </failure>
+    </test>
+  </p>
   <p id="215">
     <text>
         [p]Így, hogy te is bekapcsolódtál a harcba, most már egyértelmű, hogy az Óriásmajom oldalán van az erőfölény. S végül a majom hatalmas öklének végső csapásától a gyík a földre hanyatlik - vagy ájultan, vagy holtan. A majom fürkészőn mered rád fekete gombszemeivel. Ezután hátsó lábaira emelkedve elbődül, és verni kezdi a mellkasát.[/p]
@@ -3565,7 +3767,22 @@
       </win>
     </fight>
   </p>
-  <!-- 232 -->
+  <p id="232">
+    <text>
+        [p]A tűzlabda a fedélzetbe csapódik, lyukat ütve a korhadt padlózatba. Azonban a fantomgálya csak tovább suhan előre, a [em]Szuka[/em] nem tudja kicselezni Velyarde-ot. Mielőtt a kalózok észbe kaphatnának, a [em]Hableány[/em] legénysége - és a nyomukban jómagad is - átszáll a galleonra. Azon nyomban heves küzdelem bontakozik ki, amint az élőhalott tengerészek bosszúszomjasan rávetik magukat Cinnabar bandájára.[/p]
+    </text>
+    <random>
+      <result max="2" min="1">
+        <next id="15"></next>
+      </result>
+      <result max="4" min="3">
+        <next id="131"></next>
+      </result>
+      <result max="6" min="5">
+        <next id="298"></next>
+      </result>
+    </random>
+  </p>
   <p id="233">
     <text>
         [p][alt]Válassz, merre mész tovább?[/alt][/p]
@@ -4503,7 +4720,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 286 -->
+  <p id="286">
+    <text>
+        [p]Magasra emeled a zöld jáde-szobrocskát, ám semmi sem történik. Quezkari feléd suhint egyik karjával (vesztesz 2 életerő pontot). Nincs más választásod, a kardoddal kell visszavágnod.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="177"></next>
+  </p>
   <p id="287">
     <text>
         [p]Már leszállt az éj, mikor nekilátsz, hogy felkutasd a kalózok titkos búvóhelyét. De legalább ilyen tájt valószínűleg keveseknek tűnhet fel ténykedésed.[/p]
@@ -4738,7 +4961,16 @@
     <add amount="1" to="skill" />
     <next id="168"></next>
   </p>
-  <!-- 298 -->
+  <p id="298">
+    <text>
+        [p]-    Légy átkozott! - kiáltja rád egy vörös hajú asszony, éppen eléd szökkenve. Az igen heves vérmérsékletű nőszemélyben azonnal felismered Mirelt, a Vöröst, Cinnabar másodkapitányát. Ő volt, aki megtalálta a kalózvezér holttestét és visszahozta erre a világra. -  Neked köszönhetem, hogy enyém lett ez itt, - köp egyet, majd felemeli a jobb kézfeje helyén hordott kampót. - De most tízszeresen megfizetsz a bűnödért.[/p]
+        [p]Mirel, a Vörös ügyes kardforgató.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="94" />
+    </fight>
+    <next id="214"></next>
+  </p>
   <p id="299">
     <text>
         [p]Egyik pillanatról a másikra lázasnak érzed magad és reszketsz. A szúnyog minden bizonnyal valamilyen gyors lefolyású, és könnyen elképzelhető, hogy halálos maláriafertőzést hordozhatott.[/p]
@@ -4786,7 +5018,12 @@
   <p id="301">
     <empty />
   </p>
-  <!-- 302 -->
+  <p id="302">
+    <text>
+        [p]Felmutatod a talizmánt a nem evilági szellemnek, és úgy tűnik, mintha Quezkari egy pillanatra habozna. Aztán egy kígyószerű szisszenés kíséretében neked ront. Nincs más választásod, minthogy a kardoddal viszonzod a támadást.[/p]
+    </text>
+    <next id="177"></next>
+  </p>
   <p id="303">
     <text>
         [p]A Játékbarlangok néven ismert hely a városnak a Karomként emlegetett területén található, amely a kikötő legszegényebb és legveszedelmesebb része. Maguk a Játékbarlangok egy hatalmas kőépületben kaptak helyet, melynek roppant nagy tölgyfaajtaját vasszegecsek ékesítik. Ezt a bejáratot két Troll őr vigyázza. Mikor elhaladsz mellettük, gyanús pillantást vetnek rád, és az egyik a maga primitív módján megjegyzi: - Emlékezz, nincs harcolás! - Odabent a pipafű füstjének sűrű felhője üli meg a helyiséget, és tömve van kevéssé bizalomgerjesztő alakokkal. Elvegyülve köztük szemügyre veszed a kínálkozó játék-lehetőségeket. Miután röviden körbenéztél, hármat is felfedezel, ami érdekelhet. Melyiket vizsgálnád meg közelebbről?[/p]
@@ -5502,7 +5739,12 @@
     </text>
     <death />
   </p>
-  <!-- 345 -->
+  <p id="345">
+    <text>
+        [p]Quezkari tulajdonképpen egy nagyhatalmú gonosz szellem, és mint ilyen, nem-mágikus fegyverekkel sebezhetetlen. Bár derekasan kitartasz az őrjöngő teremtménnyel szemben, támadásai végül mégis elgyengítenek, és csatlakozol a Quezkari áldozatául esett többi lélekhez az örök kárhozatban. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="346">
     <text>
         [p class="inlineImage"][img src="resources/ff60/346.jpg" /][/p]
@@ -6088,7 +6330,20 @@
     <next id="42">Mikor végeztél a vásárlással, körülnézhetsz a Bazárban, egzotikus holmik után kutatva</next>
     <next id="111">Vagy itt hagyhatod a piacot</next>
   </p>
-  <!-- 352 -->
+  <p id="352">
+    <text>
+        [p]Összerogysz a homokos parton. Olyan közel, és mégis annyira... De mi volt ez a zaj? Úgy hangzott, mint a szél zúgása a vitorlák között, de itt még csak szellő sem rezdül. Felpillantva látod, amint a lagúnába éppen most siklik be egy ütött-kopott, viharvert hajó -  a [em]Hableányt[/em]. Amint hallótávolságba érnek, Velyarde kapitányt kiabál le a fedélzetről: - Ne aggódj, barátom. Cinnabar még nem fogott ki rajtunk. Gyere hát, csatlakozz hozzánk![/p]
+        [p]Szempillantás alatt a fedélzeten vagy, és a [em]Hableány[/em] ismét elindul. A szellemhajó elképesztő nagy sebességgel halad, csaknem repül a hullámok felett a [em]Szuka[/em] nyomában. Az utazás alatt Velyarde elmagyarázza, miért is kell legénységének a Földi Síkon maradnia. -    Cinnabar kalózai voltak azok, akik lemészárolták a legénységemet velem együtt, örökre elátkozva ezzel valamennyiünket. Most itt az alkalom a bosszúra és a kozmikus rend helyreállítására. - A nyílt óceánon rövidesen látótávolságba kerül a kalózok galleonja. Miközben figyelsz, egy tökéletesen becélzott lángoló lövedék röppen a [em]Szukáról[/em] a [em]Hableány[/em] felé.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="232"></next>
+      </success>
+      <failure>
+        <next id="128"></next>
+      </failure>
+    </test>
+  </p>
   <p id="353">
     <text>
         [p]Az ajtót kinyitva vacogtatóan hideg kabinba lépsz. Jégcsapok csüngenek a gerendákról, leheleted ködként gomolyog a fagyos levegőben. Majd a szoba lakója máris támadásba lendül! Meghatározhatatlan, füstszerű emberi alak veti rád magát odabentről, és próbál megragadni fagyott kezeivel. Kardot rántasz, hogy védd magad, míg a kísértetszerű teremtmény szüntelenül nyögdécsel. - Hideeeg! Olyan hideeeg![/p]
@@ -6226,7 +6481,37 @@
       </emptyHanded>
     </market>
   </p>
-  <!-- 361 -->
+  <p id="361">
+    <text>
+        [p][alt]Mit fogsz választani?[/alt][/p]
+    </text>
+    <itemCheck type="item" id="3008">
+      <have>
+        <next id="8" pos="1">A Kék Ékkövet?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3022">
+      <have>
+        <next id="136" pos="2">A Csontváz Ereklyét?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3023">
+      <have>
+        <next id="106" pos="3">A Boszorkánymester Botját?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3025">
+      <have>
+        <next id="286" pos="4">A Majom Totemet?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3028">
+      <have>
+        <next id="302" pos="5">A Skorpió Talizmánt?</next>
+      </have>
+    </itemCheck>
+    <next id="177" pos="6" singleChoiceText="Átvizsgálod a hátizsákodat, de nem találsz benne semmi olyasmit, aminek hasznát tudnád itt venni. Kénytelen vagy kardot rántani.">Ha a fentiek egyike sem szimpatikus, és inkább kardot rántanál</next>
+  </p>
   <p id="362">
     <text>
         [p]A bútorzatnak azt a néhány darabját, mely még megmaradt idebenn a kabinban, zúzmara szegélyezi, és jégkristályok borítják a kicsiny, lepecsételt hajóablak belső oldalát is. Amint kutakodni kezdesz a szobában, ismét meghallod a kísértet hangját. - Hagyd eeel e helyeeet! - sikoltja. Megborzongsz ijedtedben, és jeges vizet érzel lefelé csurogni a gerinceden; még a vér is megfagy az ereidben (vesztesz 1 szerencse és 1 ügyesség pontot). Rémülten menekülsz ki a szellemjárta kabinból.[/p]
@@ -6442,7 +6727,12 @@
   <p id="374">
     <empty />
   </p>
-  <!-- 375 -->
+  <p id="375">
+    <text>
+        [p]Kicselezed a csapást, és felkészülsz a harcra.[/p]
+    </text>
+    <next id="182"></next>
+  </p>
   <p id="376">
     <text>
         [p]A kristály egy fényvillanás kíséretében szétrobban, sziklarepeszeket szórva mindenütt a szobában, melyek közül néhány eltalál.[/p]
@@ -6742,8 +7032,25 @@
     <next id="274">Ha bemész a faluba</next>
     <next id="164">Ha inkább elkerülöd, majd a dzsungelben táborozol le éjszakára</next>
   </p>
-  <!-- 398 -->
+  <p id="398">
+    <text>
+        [p]Lehetséges volna? Hirtelen előrántod a zsákodból a kicsi, fintorgó bálványt, és Cinnabar reakcióját látva azonnal tudod, hogy feltételezésed helytálló volt; a szíve ott lapul a vudu halálisten szobrocskájának belsejében! - Mit akarsz azzal? - zihál rémülten a kalózúr. - Figyelj! Megadok neked bármit, amit csak kívánsz; aranyat, ékszereket, akár még a Rákok Kikötőjét is, ha úgy kívánod. Csak kímélj meg! - Cinnabar végezetül olyan nyúlszívű nyomorultnak mutatkozik, amilyen valójában. Azonban az egyetlen, amivel tartozik neked a családod lemészárlásáért, az a halála! A padlóhoz vágva feltöröd a bábut, és kardod hegyével keresztüldöföd Cinnabar szívét. A kalózúr velőtrázó ordítással hanyatlik el előtted. Húsa rögtön oszladozni kezd, zöldesszürke masszaként mállva le porladó csontjairól. Nemsokára nem marad más belőle, csupán a ruhái. A Vérescsont néven ismert mészáros végre valóban halott. Nyersz 1 szerencse pontot.[/p]
+        [p]Váratlanul sűrű, fekete füst tör elő a szétzúzott szobor darabkái közül. Felfelé tekereg, majd lassan iszonytató formává áll össze; Cinnabar hatalmának igazi forrása ölt most alakot. Ahol a kalóz elzuhant, most egy fonnyadt, csontváztestű, bizarr teremtmény magasodik, idomtalan, koponyaszerű fején tollas fejdísszel. Szolgája halálával Quezkari maga jött el, hogy elpusztítson![/p]
+    </text>
+    <loseItem id="3029" />
+    <add amount="1" to="luck" />
+    <next id="361">Ha felhasználnál valamit ez ellen a borzalom ellen</next>
+    <next id="177">Ha megtámadod a kardoddal</next>
+  </p>
   <p id="399">
     <empty />
+  </p>
+  <p id="400">
+    <text>
+        [p]Kegyetlen csapásodra Quezkari sebesen bomló teste lángokba borul. Körbenézve látod, hogy a vezérüket vesztett kalózok - látván az „istenük” pusztulását -zavarodottan rohangálnak fel-alá, majd a [em]Hableány[/em] halhatatlan legénysége immár szinte felülkerekedett rajtuk. Utána a figyelmedet ismét Quezkari tetemére fordítod, melyről a lángok éppen most kezdenek átterjedni a fedélzetre, majd pedig a [em]Szuka[/em] árbocára is. - Siess, barátom! - kiált Velyarde. - Itt már végeztünk.[/p]
+        [p]Miután Velyarde legénységének a maradékával elmenekülsz a kalózhajóról, immár a szellemvitorlás fedélzetéről, biztos távolságból kíséred figyelemmel, ahogyan a galleon elhamvad a lángokban, majd a hullámok alá merül. Hála neked, a kegyetlen kalóz-nagyúr, Cinnabar elpusztíttatott, ördögi mesterével, Quezkarival egyetemben, és már a Fekete Koponya kalózai sincsenek többé. Hazád biztonságban van.[/p]
+        [p]Miközben a nap lefelé süllyed a horizonton, fénylő narancsszínre festve a Nyugati-óceánt, te eközben gondolataiba mélyedve bámulod a határtalan vizet. Tűnődésedből Velyarde riaszt fel, amint csatlakozik hozzád a korlátnál. - Amiért megszabadítottál minket végtelen kínszenvedésünkből, tehetünk-e neked még egy utolsó szolgálatot azzal, hogy mielőtt végre elhagyjuk ezen világot, eljuttatunk téged valamelyik kikötőbe? - kérdezi. - Igen - feleled. - Kagylópartra. Vigyetek haza![/p]
+    </text>
+    <victory/>
   </p>
 </content>
