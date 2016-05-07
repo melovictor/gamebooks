@@ -1,4 +1,4 @@
-package hu.zagor.gamebooks.ff.ff.b.mvc.books.section.service;
+package hu.zagor.gamebooks.ff.ff.b.mvc.books.section.service.section;
 
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
