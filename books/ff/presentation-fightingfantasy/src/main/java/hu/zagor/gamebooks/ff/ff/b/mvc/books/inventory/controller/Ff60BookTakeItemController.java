@@ -36,7 +36,7 @@ public class Ff60BookTakeItemController extends FfBookTakeItemController {
             final int half = character.getNineTailDamage() / 2;
             character.changeStamina(half);
             character.setNineTailDamage(0);
-        } else if ("293".equals(paragraphId)) {
+        } else if ("293".equals(paragraphId) || "201".equals(paragraphId)) {
             character.changeStamina(character.getScarachnaPoison());
             character.setScarachnaPoison(0);
         }

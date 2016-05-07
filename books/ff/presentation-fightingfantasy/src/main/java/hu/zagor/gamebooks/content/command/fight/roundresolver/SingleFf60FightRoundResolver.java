@@ -87,14 +87,26 @@ public class SingleFf60FightRoundResolver implements FightRoundResolver {
             triggerFleeing(command, enemy);
         } else if (chameleonCriticalHit(command, results, enemy)) {
             triggerFleeing(command, enemy);
-        } else if (scarachnaWon(results, enemy)) {
-            handlePostFightScarachna(command, resolvationData);
+        } else if (enemyIsScarachna(enemy)) {
+            if (enemyWon(results)) {
+                handlePostFightScarachna(command, resolvationData);
+            }
+        } else if (enemyIsSnakes(enemy)) {
+            handleSnakes(resolvationData);
         }
+    }
+
+    private void handleSnakes(final ResolvationData resolvationData) {
+        final Ff60Character character = (Ff60Character) resolvationData.getCharacter();
+        character.setScarachnaPoison(character.getScarachnaPoison() + 2);
+    }
+
+    private boolean enemyIsSnakes(final FfEnemy enemy) {
+        return "92".equals(enemy.getId());
     }
 
     private void handlePostFightScarachna(final FightCommand command, final ResolvationData resolvationData) {
         final int[] randomNumber = generator.getRandomNumber(1);
-
         final FightCommandMessageList messages = command.getMessages();
         final int rollResult = randomNumber[0];
         messages.addKey("page.ff.label.random.after", renderer.render(generator.getDefaultDiceSide(), randomNumber), rollResult);
@@ -108,12 +120,12 @@ public class SingleFf60FightRoundResolver implements FightRoundResolver {
 
     }
 
-    private boolean scarachnaWon(final FightRoundResult[] results, final FfEnemy enemy) {
-        return enemyIsScarachna(enemy) && results[0] == FightRoundResult.LOSE;
+    private boolean enemyWon(final FightRoundResult[] results) {
+        return results[0] == FightRoundResult.LOSE;
     }
 
     private boolean enemyIsScarachna(final FfEnemy enemy) {
-        return "55".equals(enemy.getId());
+        return "55".equals(enemy.getId()) || "87".equals(enemy.getId());
     }
 
     private boolean chameleonCriticalHit(final FightCommand command, final FightRoundResult[] results, final FfEnemy enemy) {
