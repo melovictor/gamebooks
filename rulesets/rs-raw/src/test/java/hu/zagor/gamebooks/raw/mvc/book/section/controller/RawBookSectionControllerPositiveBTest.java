@@ -193,7 +193,7 @@ public class RawBookSectionControllerPositiveBTest {
         expect(model.asMap()).andReturn(modelMap);
         expect(modelMap.get("resources")).andReturn(null);
         expect(beanFactory.getBean(StaticResourceDescriptor.class)).andReturn(staticResourceDescriptor);
-        expect(model.addAttribute("resources", staticResourceDescriptor)).andReturn(model);
+        expect(modelMap.put("resources", staticResourceDescriptor)).andReturn(null);
         expect(staticResourceDescriptor.getJs()).andReturn(resourceSet);
         expect(resourceSet.add("raw.js")).andReturn(true);
         expect(model.asMap()).andReturn(modelMap);

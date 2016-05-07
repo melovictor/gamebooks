@@ -129,7 +129,7 @@ public class AbstractSectionDisplayingControllerTest {
         expect(model.asMap()).andReturn(modelMap);
         expect(modelMap.get("resources")).andReturn(null);
         expect(beanFactory.getBean(StaticResourceDescriptor.class)).andReturn(descriptor);
-        expect(model.addAttribute("resources", descriptor)).andReturn(model);
+        expect(modelMap.put("resources", descriptor)).andReturn(null);
         mockControl.replay();
         // WHEN
         underTest.addJsResource(model, "bze");
@@ -156,7 +156,7 @@ public class AbstractSectionDisplayingControllerTest {
         expect(model.asMap()).andReturn(modelMap);
         expect(modelMap.get("resources")).andReturn(null);
         expect(beanFactory.getBean(StaticResourceDescriptor.class)).andReturn(descriptor);
-        expect(model.addAttribute("resources", descriptor)).andReturn(model);
+        expect(modelMap.put("resources", descriptor)).andReturn(null);
         mockControl.replay();
         // WHEN
         underTest.addJsResource(model, "bze");
@@ -183,7 +183,7 @@ public class AbstractSectionDisplayingControllerTest {
         expect(model.asMap()).andReturn(modelMap);
         expect(modelMap.get("resources")).andReturn(null);
         expect(beanFactory.getBean(StaticResourceDescriptor.class)).andReturn(descriptor);
-        expect(model.addAttribute("resources", descriptor)).andReturn(model);
+        expect(modelMap.put("resources", descriptor)).andReturn(null);
         mockControl.replay();
         // WHEN
         underTest.addJsResource(model, "bze");
