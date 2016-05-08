@@ -5,7 +5,7 @@
 <c:set var="firstEnemy" value="${empty param.id}" />
 
 <div>
-    <l:insertTile templateName="${characterRecord}" defaultTemplateName="characterRecord.jsp"/>
+	<l:insertTile templateName="${characterRecord}" defaultTemplateName="characterRecord.jsp"/>
 	<c:forEach var="ally" items="${fightCommand.resolvedAllies}">
 		<div>
 			<span data-enemy-id="0">${ally.name}</span>
@@ -49,24 +49,22 @@
 </c:if>
 
 <c:if test="${not empty charEquipments.preFightItems && fightCommand.roundNumber == 0 && fightCommand.preFightAvailable}">
-    <div id="preFightItems">
-        <spring:message code="page.ff.label.fight.preFightItems" />
-        <c:forEach items="${charEquipments.preFightItems}" var="item" varStatus="loop">
-            <c:if test="${!item.usedInPreFight}">
-                <span data-item-id="${item.id}">${item.name}</span><c:if test="${!loop.last}">, </c:if>
-            </c:if>
-        </c:forEach>
-    </div>
+	<div id="preFightItems">
+		<spring:message code="page.ff.label.fight.preFightItems" />
+		<c:forEach items="${charEquipments.preFightItems}" var="item" varStatus="loop">
+			<span data-item-id="${item.id}">${item.name}</span><c:if test="${!loop.last}">, </c:if>
+		</c:forEach>
+	</div>
 </c:if>
 <c:if test="${not empty charEquipments.atFightItems && fightCommand.roundNumber > 0}">
-    <div id="preFightItems">
-        <spring:message code="page.ff.label.fight.atFightItems" />
-        <c:forEach items="${charEquipments.atFightItems}" var="item" varStatus="loop">
-            <c:if test="${!item.usedInPreFight}">
-                <span data-item-id="${item.id}">${item.name}</span><c:if test="${!loop.last}">, </c:if>
-            </c:if>
-        </c:forEach>
-    </div>
+	<div id="preFightItems">
+		<spring:message code="page.ff.label.fight.atFightItems" />
+		<c:forEach items="${charEquipments.atFightItems}" var="item" varStatus="loop">
+			<c:if test="${!item.usedInPreFight}">
+				<span data-item-id="${item.id}">${item.name}</span><c:if test="${!loop.last}">, </c:if>
+			</c:if>
+		</c:forEach>
+	</div>
 </c:if>
 
 <div id="ffAttackButton">
