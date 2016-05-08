@@ -118,7 +118,8 @@ public class FfCharacterPageData extends RawCharacterPageData {
     }
 
     private boolean isPreFightItem(final Item item) {
-        return ((FfItem) item).isPreFight();
+        final FfItem ffItem = (FfItem) item;
+        return ffItem.isPreFight() && !ffItem.isUsedInPreFight();
     }
 
     private boolean isAtFightItem(final Item item) {
