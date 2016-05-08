@@ -56,22 +56,31 @@
 
   <bean class="hu.zagor.gamebooks.ff.ff.b.mvc.books.section.service.Ff60BookPreFightHandlingService" id="ff60BookPreFightHandlingService" />
 
-  <util:map key-type="java.lang.String" id="ff60PreFightEffectivenessVerification">
-    <entry key="3020">
+  <util:set value-type="java.lang.String" id="ff60ZombieList">
+    <value>63</value>
+    <value>64</value>
+    <value>65</value>
+    <value>78</value>
+    <value>79</value>
+    <value>80</value>
+    <value>81</value>
+    <value>82</value>
+    <value>83</value>
+    <value>84</value>
+    <value>88</value>
+    <value>89</value>
+    <value>90</value>
+  </util:set>
+
+  <util:map key-type="java.lang.String" id="ff60AttackEffectivenessVerification">
+    <entry key="3020" value-ref="ff60ZombieList" />
+    <entry key="4009" value-ref="ff60ZombieList" />
+    <entry key="4010">
       <util:set value-type="java.lang.String">
-        <value>63</value>
-        <value>64</value>
-        <value>65</value>
-        <value>78</value>
-        <value>79</value>
-        <value>80</value>
-        <value>81</value>
-        <value>82</value>
-        <value>83</value>
-        <value>84</value>
-        <value>88</value>
-        <value>89</value>
-        <value>90</value>
+        <value>56</value>
+        <value>59</value>
+        <value>60</value>
+        <value>61</value>
       </util:set>
     </entry>
     <entry key="3019">
@@ -143,6 +152,31 @@
         <value>93</value>
         <value>94</value>
         <value>95</value>
+      </util:set>
+    </entry>
+    <entry key="1004">
+      <util:set value-type="java.lang.String">
+        <value>36</value>
+        <value>37</value>
+        <value>63</value>
+        <value>64</value>
+        <value>65</value>
+        <value>69</value>
+        <value>70</value>
+        <value>76</value>
+        <value>78</value>
+        <value>79</value>
+        <value>80</value>
+        <value>81</value>
+        <value>82</value>
+        <value>83</value>
+        <value>84</value>
+        <value>88</value>
+        <value>89</value>
+        <value>90</value>
+        <value>96</value>
+        <value>97</value>
+        <value>98</value>
       </util:set>
     </entry>
   </util:map>

@@ -4,14 +4,17 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
+import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.ParagraphData;
+import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.section.service.EnemyDependentFfBookPreFightHandlingService;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.annotation.Resource;
@@ -28,13 +31,16 @@ public class Ff60BookPreFightHandlingService extends EnemyDependentFfBookPreFigh
     private static final String THROWING_KNIFE = "3017";
     private static final String ZOMBIE_DUST = "3020";
     private static final String GAS_GLOBE = "3019";
+    private static final String VOODOO_DEFENSE = "4009";
+    private static final int SPELL_COST = -2;
+    private static final String INSECT_DEFENSE = "4010";
 
     @Autowired private DiceResultRenderer renderer;
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
     @Autowired private MessageSource messageSource;
     @Autowired private LocaleProvider localeProvider;
 
-    @Resource(name = "ff60PreFightEffectivenessVerification") private Map<String, Set<String>> effectivenessVerification;
+    @Resource(name = "ff60AttackEffectivenessVerification") private Map<String, Set<String>> effectivenessVerification;
 
     @Override
     public FfItem handlePreFightItemUsage(final FfBookInformations info, final HttpSessionWrapper wrapper, final String itemId) {
@@ -48,9 +54,67 @@ public class Ff60BookPreFightHandlingService extends EnemyDependentFfBookPreFigh
             handleZombieDust(info, wrapper);
         } else if (GAS_GLOBE.equals(itemId)) {
             handleGasGlobe(info, wrapper);
+        } else if (VOODOO_DEFENSE.equals(itemId)) {
+            usedItem = handleVoodooDefense(info, wrapper);
+        } else if (INSECT_DEFENSE.equals(itemId)) {
+            usedItem = handleInsectDefense(info, wrapper);
         }
 
         return usedItem;
+    }
+
+    private FfItem handleVoodooDefense(final FfBookInformations info, final HttpSessionWrapper wrapper) {
+        final FfCharacter character = (FfCharacter) wrapper.getCharacter();
+        character.changeStamina(SPELL_COST);
+        final FfCharacterItemHandler itemHandler = info.getCharacterHandler().getItemHandler();
+        final FfItem item = (FfItem) itemHandler.getItem(character, VOODOO_DEFENSE);
+        if (item != null) {
+            final ParagraphData data = wrapper.getParagraph().getData();
+            final int[] randomNumber = generator.getRandomNumber(1);
+            final int maxEnemiesKilled = (randomNumber[0] + 1) / 2;
+            final int enemiesKilled = killEnemies(wrapper, maxEnemiesKilled, effectivenessVerification.get(VOODOO_DEFENSE));
+            final String diceText = renderer.render(generator.getDefaultDiceSide(), randomNumber);
+            appendText(data, "page.ff.label.random.after", diceText, randomNumber[0]);
+            appendText(data, "page.ff60.fight.voodoo", enemiesKilled);
+        }
+
+        return item;
+    }
+
+    private FfItem handleInsectDefense(final FfBookInformations info, final HttpSessionWrapper wrapper) {
+        final FfCharacter character = (FfCharacter) wrapper.getCharacter();
+        character.changeStamina(SPELL_COST);
+        final FfCharacterItemHandler itemHandler = info.getCharacterHandler().getItemHandler();
+        final FfItem item = (FfItem) itemHandler.getItem(character, INSECT_DEFENSE);
+        if (item != null) {
+            final ParagraphData data = wrapper.getParagraph().getData();
+            final int[] randomNumber = generator.getRandomNumber(1);
+            final int maxEnemiesKilled = (randomNumber[0] + 1) / 2;
+            killEnemies(wrapper, maxEnemiesKilled, effectivenessVerification.get(INSECT_DEFENSE));
+            final String diceText = renderer.render(generator.getDefaultDiceSide(), randomNumber);
+            appendText(data, "page.ff.label.random.after", diceText, randomNumber[0]);
+            appendText(data, "page.ff60.fight.insect");
+        }
+
+        return item;
+    }
+
+    private int killEnemies(final HttpSessionWrapper wrapper, final int maxEnemiesKilled, final Set<String> effectiveAgainst) {
+        final FightCommand command = (FightCommand) wrapper.getParagraph().getItemsToProcess().get(0).getCommand();
+        final List<String> enemies = command.getEnemies();
+        int killed = 0;
+        for (final String enemyId : enemies) {
+            if (killed < maxEnemiesKilled) {
+                if (effectiveAgainst.contains(enemyId)) {
+                    final FfEnemy enemy = (FfEnemy) wrapper.getEnemies().get(enemyId);
+                    if (enemy.getStamina() > 0) {
+                        enemy.setStamina(0);
+                        killed++;
+                    }
+                }
+            }
+        }
+        return killed;
     }
 
     private void handleGasGlobe(final FfBookInformations info, final HttpSessionWrapper wrapper) {

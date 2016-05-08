@@ -476,12 +476,8 @@
     <text>
         [p]Mikor megpillantja a felemelt csontkardot, Zyteea felkiált: - Éjhalál, most segíts! - A penge nyomban mágikus tűzzel izzik fel! Rácsapsz vele a rémségre, mire az fájdalmas vonyítást hallat, majd leejti a bennszülöttet, és feléd fordul. Habozás nélkül rátámadsz a megidézett vudu szellemre.[/p]
     </text>
-    <changeItem attribute="skill" id="1004" set="1" />
     <fight type="single" forceWeapon="1004">
       <enemy id="70" />
-      <win>
-        <changeItem attribute="skill" id="1004" set="0" />
-      </win>
     </fight>
     <next id="277"></next>
   </p>
@@ -3876,9 +3872,6 @@
         <interrupt />
         <next id="336"></next>
       </loseRound>
-      <anyRound totalCount="12">
-        <interrupt />
-      </anyRound>
     </fight>
     <next id="30"></next>
   </p>
@@ -5066,9 +5059,6 @@
     <gatherItem id="1004" />
     <fight type="single" forceWeapon="1004">
       <enemy id="69" />
-      <win>
-        <changeItem attribute="skill" id="1004" set="0" />
-      </win>
     </fight>
     <next id="251"></next>
   </p>
