@@ -1523,30 +1523,30 @@
         [p]– Éjhalál, most segíts! – kiáltod, és a csontpenge lángba borul. Quezkari visítva támadásba lendül. A vudu halálisten jelenleg csupán egy hatalmas, gonoszszellem – azon lelkek megtestesülése, kiket Ramatu zombivá változtatott, illetve akiket Cinnabar ölt meg.[/p]
     </text>
     <itemCheck type="item" id="3026">
-    <haveEquipped>
+      <haveEquipped>
         <text>
             [p]Az Usai nép bátorsága veled lesz a harcban (növeld meg 1-gyel a Támadóerődet).[/p]
         </text>
-        <gatherItem id="4000"/>
-    </haveEquipped>
+        <gatherItem id="4000" />
+      </haveEquipped>
     </itemCheck>
     <itemCheck type="item" id="3010">
-    <have>
+      <have>
         <text>
             [p]Minden alkalommal, amikor Quezkari sebzést okoz, sötét hatalmának köszönhetően 3 [span class='ffAttribute']életerő[/span] pontot szív el tőled.[/p]
         </text>
-    </have>
-    <haveEquipped>
-    <changeEnemy attribute="staminaDamage" id="98" set="2"/>
-    </haveEquipped>
-    <dontHave>
+      </have>
+      <haveEquipped>
+        <changeEnemy attribute="staminaDamage" id="98" set="2" />
+      </haveEquipped>
+      <dontHave>
         <text>
             [p]Minden alkalommal, amikor Quezkari sebzést okoz, sötét hatalmának köszönhetően 3 [span class='ffAttribute']életerő[/span] pontot szív el tőled.[/p]
         </text>
-    </dontHave>
+      </dontHave>
     </itemCheck>
     <fight type="single">
-    <enemy id="98"/>
+      <enemy id="98" />
     </fight>
     <next id="400"></next>
   </p>
@@ -2786,20 +2786,20 @@
         <itemCheck type="section" id="277">
           <have>
             <userInput type="text">
-            <label>Mi a csontkard neve, mellyel felébresztheted a benne szunnyadó hatalmat?</label>
-            <result text="Éjhalál">
-            <next id="99"></next>
-            </result>
-            <resultElse>
-            <next id="345"></next>
-            </resultElse>
+              <label>Mi a csontkard neve, mellyel felébresztheted a benne szunnyadó hatalmat?</label>
+              <result text="Éjhalál">
+                <next id="99"></next>
+              </result>
+              <resultElse>
+                <next id="345"></next>
+              </resultElse>
             </userInput>
           </have>
           <dontHave>
             <text>
                 [p]Előhúzod a fegyvered és felkészülsz az összecsapásra.[/p]
             </text>
-        <next id="345"></next>
+            <next id="345"></next>
           </dontHave>
         </itemCheck>
       </have>
@@ -2807,20 +2807,20 @@
         <itemCheck type="section" id="277">
           <have>
             <userInput type="text">
-            <label>Mi a csontkard neve, mellyel felébresztheted a benne szunnyadó hatalmat?</label>
-            <result text="Éjhalál">
-            <next id="99"></next>
-            </result>
-            <resultElse>
-            <next id="345"></next>
-            </resultElse>
+              <label>Mi a csontkard neve, mellyel felébresztheted a benne szunnyadó hatalmat?</label>
+              <result text="Éjhalál">
+                <next id="99"></next>
+              </result>
+              <resultElse>
+                <next id="345"></next>
+              </resultElse>
             </userInput>
           </have>
           <dontHave>
             <text>
                 [p]Előhúzod a fegyvered és felkészülsz az összecsapásra.[/p]
             </text>
-        <next id="345"></next>
+            <next id="345"></next>
           </dontHave>
         </itemCheck>
       </haveEquipped>
@@ -3699,10 +3699,21 @@
     <text>
         [p]Az evező rudakkal felfegyverzett Maszkos Zombik veszélyes ellenfelek.[/p]
     </text>
-    <fight type="allAtOnce">
-      <enemy id="83" />
-      <enemy id="84" />
-    </fight>
+    <itemCheck type="item" id="4012">
+      <have>
+        <fight type="allAtOnce">
+          <enemy id="83" />
+          <enemy id="84" />
+          <specialAttack text="Maszktépés" id="maskTearing" />
+        </fight>
+      </have>
+      <dontHave>
+        <fight type="allAtOnce">
+          <enemy id="83" />
+          <enemy id="84" />
+        </fight>
+      </dontHave>
+    </itemCheck>
     <next id="291"></next>
   </p>
   <p id="227">
@@ -3886,12 +3897,15 @@
       <enemy id="88" />
       <enemy id="89" />
       <enemy id="90" />
+      <specialAttack text="Maszktépés" id="maskTearing" />
       <loseRound subsequentCount="2" enemy="87">
         <interrupt />
         <next id="336"></next>
       </loseRound>
+      <win>
+        <next id="30"></next>
+      </win>
     </fight>
-    <next id="30"></next>
   </p>
   <p id="238">
     <text>
@@ -7070,6 +7084,6 @@
         [p]Miután Velyarde legénységének a maradékával elmenekülsz a kalózhajóról, immár a szellemvitorlás fedélzetéről, biztos távolságból kíséred figyelemmel, ahogyan a galleon elhamvad a lángokban, majd a hullámok alá merül. Hála neked, a kegyetlen kalóz-nagyúr, Cinnabar elpusztíttatott, ördögi mesterével, Quezkarival egyetemben, és már a Fekete Koponya kalózai sincsenek többé. Hazád biztonságban van.[/p]
         [p]Miközben a nap lefelé süllyed a horizonton, fénylő narancsszínre festve a Nyugati-óceánt, te eközben gondolataiba mélyedve bámulod a határtalan vizet. Tűnődésedből Velyarde riaszt fel, amint csatlakozik hozzád a korlátnál. – Amiért megszabadítottál minket végtelen kínszenvedésünkből, tehetünk-e neked még egy utolsó szolgálatot azzal, hogy mielőtt végre elhagyjuk ezen világot, eljuttatunk téged valamelyik kikötőbe? – kérdezi. – Igen – feleled. – Kagylópartra. Vigyetek haza![/p]
     </text>
-    <victory/>
+    <victory />
   </p>
 </content>
