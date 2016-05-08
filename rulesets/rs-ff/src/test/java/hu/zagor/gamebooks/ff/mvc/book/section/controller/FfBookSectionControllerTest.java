@@ -20,6 +20,7 @@ import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.domain.ResourceInformation;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
+import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.FightCommandForm;
 import hu.zagor.gamebooks.ff.section.FfRuleBookParagraphResolver;
 import hu.zagor.gamebooks.mvc.book.controller.domain.StaticResourceDescriptor;
 import hu.zagor.gamebooks.mvc.book.section.service.CustomPrePostSectionHandler;
@@ -81,6 +82,7 @@ public class FfBookSectionControllerTest {
     @Mock private Set<String> resourceSet;
     @Instance private ResourceInformation resources;
     @Instance(inject = true) private Map<String, CustomPrePostSectionHandler> prePostHandlers;
+    @Instance private FightCommandForm form;
 
     @BeforeClass
     public void setUpClass() {
@@ -137,6 +139,7 @@ public class FfBookSectionControllerTest {
         interactionHandler.setFightCommand(character, "luckOnHit", LUCK_ON_HIT.toString());
         interactionHandler.setFightCommand(character, "luckOnDefense", LUCK_ON_DEFENSE.toString());
         interactionHandler.setFightCommand(character, "luckOnOther", "false");
+        interactionHandler.setFightCommand(character, "special", null);
         interactionRecorder.prepareFightCommand(wrapper, LUCK_ON_HIT, LUCK_ON_DEFENSE, false);
         interactionRecorder.recordFightCommand(wrapper, ENEMY_ID);
         expectHandleSection();
@@ -144,7 +147,11 @@ public class FfBookSectionControllerTest {
         expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
         mockControl.replay();
         // WHEN
-        underTest.handleFight(model, request, ENEMY_ID, LUCK_ON_HIT, LUCK_ON_DEFENSE, false);
+        form.setId(ENEMY_ID);
+        form.setHit(LUCK_ON_HIT);
+        form.setDef(LUCK_ON_DEFENSE);
+        form.setOth(false);
+        underTest.handleFight(model, request, form);
         // THEN
     }
 

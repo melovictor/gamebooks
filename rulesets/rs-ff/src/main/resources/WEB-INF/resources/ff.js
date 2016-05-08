@@ -152,7 +152,8 @@ var ff = (function() {
 		var hit = $("#luckOnEnemyHit").is(":checked");
 		var def = $("#luckOnSelfHit").is(":checked");
 		var oth = $("#luckOnOther").is(":checked");
-		form.submit("post", "attack?id=" + enemyId + "&hit=" + hit + "&def=" + def + "&oth=" + oth, "ffEnemyList");
+		var special = $(this).data("special-id");
+		form.submit("post", "attack?id=" + enemyId + "&hit=" + hit + "&def=" + def + "&oth=" + oth + "&special=" + special, "ffEnemyList");
 	}
 	function useBeforeFight() {
 		var itemId = $(this).data("item-id");
@@ -334,7 +335,7 @@ $(function() {
 	$("[data-generator-button='ff']").on("click", ff.sendGenerationRequest);
 	$("[data-attribute-test='ff']").on("click", ff.attributeTest);
 	$("[data-random='ff']").on("click", ff.random);
-	$("[data-attack='ff']").on("click", ff.attack);
+	$("[data-attack='ff'],[data-special-id]").on("click", ff.attack);
 	$("[data-flee='ff']").on("click", ff.flee);
 	$("#ffEnemyList").on("click", "[data-enemy-selected='false']", battle.changeSelection);
 	$("#ffMenu")

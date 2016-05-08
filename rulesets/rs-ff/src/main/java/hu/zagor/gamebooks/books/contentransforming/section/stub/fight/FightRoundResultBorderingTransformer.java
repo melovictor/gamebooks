@@ -6,11 +6,10 @@ import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
-
 import org.w3c.dom.Node;
 
 /**
- * Transforms the loseRound element inside the fight section.
+ * Abstract class to help transforming the round bordering elements inside the fight section.
  * @author Tamas_Szekeres
  */
 public abstract class FightRoundResultBorderingTransformer extends AbstractCommandSubTransformer<FightCommand> {

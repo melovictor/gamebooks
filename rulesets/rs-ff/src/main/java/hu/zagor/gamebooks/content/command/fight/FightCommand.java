@@ -76,6 +76,7 @@ public class FightCommand extends Command {
     @Autowired private FightCommandMessageList messages;
 
     private boolean allyStaminaVisible;
+    private List<FfSpecialAttack> specialAttacks = new ArrayList<>();
 
     @Override
     public FightCommand clone() throws CloneNotSupportedException {
@@ -100,6 +101,10 @@ public class FightCommand extends Command {
         cloned.afterBounding = cloneObject(afterBounding);
         cloned.beforeBounding = cloneObject(beforeBounding);
         cloned.usableWeaponTypes = new ArrayList<ItemType>(usableWeaponTypes);
+        cloned.specialAttacks = new ArrayList<>();
+        for (final FfSpecialAttack attack : specialAttacks) {
+            cloned.specialAttacks.add(attack.clone());
+        }
         return cloned;
     }
 
@@ -380,6 +385,10 @@ public class FightCommand extends Command {
 
     public void setAllyStaminaVisible(final boolean allyStaminaVisible) {
         this.allyStaminaVisible = allyStaminaVisible;
+    }
+
+    public List<FfSpecialAttack> getSpecialAttacks() {
+        return specialAttacks;
     }
 
 }

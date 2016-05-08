@@ -727,6 +727,12 @@
                 </xs:attribute>
               </xs:complexType>
             </xs:element>
+            <xs:element name="specialAttack" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:attribute name="text" use="required" type="xs:string" />
+                <xs:attribute name="id" use="required" type="xs:string" />
+              </xs:complexType>
+            </xs:element>
           </xs:choice>
           <xs:attribute name="forceWeapon" use="optional" type="xs:string" />
           <xs:attribute name="attackStrengthRolledDices" use="optional" type="xs:integer" default="2" />

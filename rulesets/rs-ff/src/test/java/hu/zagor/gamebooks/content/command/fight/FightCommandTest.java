@@ -46,6 +46,8 @@ public class FightCommandTest extends AbstractCommandTest {
     private FightRoundBoundingCommand beforeBoundingCloned;
     private Map<String, BattleStatistics> battleStatisticsMap;
     private FightOutcome outcome;
+    private FfSpecialAttack specialAttack;
+    private FfSpecialAttack specialAttackCloned;
 
     @BeforeClass
     public void setUpClass() {
@@ -68,6 +70,8 @@ public class FightCommandTest extends AbstractCommandTest {
         beforeBoundingCloned = mockControl.createMock(FightRoundBoundingCommand.class);
         battleStatisticsMap = new HashMap<String, BattleStatistics>();
         battleStatisticsMap.put("29", battleStatistics);
+        specialAttack = mockControl.createMock(FfSpecialAttack.class);
+        specialAttackCloned = mockControl.createMock(FfSpecialAttack.class);
     }
 
     @BeforeMethod
@@ -144,6 +148,7 @@ public class FightCommandTest extends AbstractCommandTest {
         underTest.setFleeData(fleeData);
         underTest.setLose(lose);
         underTest.getRoundEvents().add(roundEvent);
+        underTest.getSpecialAttacks().add(specialAttack);
         Whitebox.setInternalState(underTest, "battleStatistics", battleStatisticsMap);
 
         expectTc(win, winCloned);
@@ -154,6 +159,7 @@ public class FightCommandTest extends AbstractCommandTest {
         expectTc(battleStatistics, battleStatisticsCloned);
         expectTc(afterBounding, afterBoundingCloned);
         expectTc(beforeBounding, beforeBoundingCloned);
+        expectTc(specialAttack, specialAttackCloned);
         mockControl.replay();
         // WHEN
         final FightCommand returned = underTest.clone();
@@ -164,6 +170,7 @@ public class FightCommandTest extends AbstractCommandTest {
         Assert.assertSame(returned.getAfterBounding(), afterBoundingCloned);
         Assert.assertSame(returned.getBeforeBounding(), beforeBoundingCloned);
         Assert.assertSame(returned.getBattleStatistics("29"), battleStatisticsCloned);
+        Assert.assertSame(returned.getSpecialAttacks().get(0), specialAttackCloned);
         Assert.assertNotSame(returned, underTest);
     }
 

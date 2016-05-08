@@ -52,34 +52,53 @@
   </util:map>
 
 
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.FightTransformer" id="ffFightTransformer" p:fightTransformers-ref="ffFightTransformers" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightEnemyTransformer" id="fightEnemyTransformer" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightAllyTransformer" id="fightAllyTransformer" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightWinTransformer" id="fightWinTransformer" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightFleeTransformer" id="fightFleeTransformer" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightFleeingTransformer" id="fightFleeingTransformer" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightLoseRoundTransformer" id="fightLoseRoundTransformer" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightNotWinRoundTransformer" id="fightNotWinRoundTransformer" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightAnyRoundTransformer" id="fightAnyRoundTransformer" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightWinRoundTransformer" id="fightWinRoundTransformer" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightLoseTransformer" id="fightLoseTransformer" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightAfterRoundTransformer" id="fightAfterRoundTransformer" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightBeforeRoundTransformer" id="fightBeforeRoundTransformer" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.FightTransformer" id="ffFightTransformer">
+    <property name="fightTransformers">
+      <util:map>
+        <entry key="enemy">
+          <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightEnemyTransformer" />
+        </entry>
+        <entry key="ally">
+          <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightAllyTransformer" />
+        </entry>
+        <entry key="win">
+          <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightWinTransformer" />
+        </entry>
+        <entry key="flee">
+          <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightFleeTransformer" />
+        </entry>
+        <entry key="fleeing">
+          <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightFleeingTransformer" />
+        </entry>
+        <entry key="lose">
+          <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightLoseTransformer" />
+        </entry>
+        <entry key="notWinRound">
+          <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightNotWinRoundTransformer" />
+        </entry>
+        <entry key="anyRound">
+          <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightAnyRoundTransformer" />
+        </entry>
+        <entry key="loseRound">
+          <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightLoseRoundTransformer" />
+        </entry>
+        <entry key="winRound">
+          <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightWinRoundTransformer" />
+        </entry>
+        <entry key="afterRound">
+          <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightAfterRoundTransformer" />
+        </entry>
+        <entry key="beforeRound">
+          <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightBeforeRoundTransformer" />
+        </entry>
+        <entry key="specialAttack">
+          <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightSpecialAttackTransformer" />
+        </entry>
+      </util:map>
+    </property>
+  </bean>
 
-  <util:map id="ffFightTransformers">
-    <entry key="enemy" value-ref="fightEnemyTransformer" />
-    <entry key="ally" value-ref="fightAllyTransformer" />
-    <entry key="win" value-ref="fightWinTransformer" />
-    <entry key="flee" value-ref="fightFleeTransformer" />
-    <entry key="fleeing" value-ref="fightFleeingTransformer" />
-    <entry key="lose" value-ref="fightLoseTransformer" />
-    <entry key="notWinRound" value-ref="fightNotWinRoundTransformer" />
-    <entry key="anyRound" value-ref="fightAnyRoundTransformer" />
-    <entry key="loseRound" value-ref="fightLoseRoundTransformer" />
-    <entry key="winRound" value-ref="fightWinRoundTransformer" />
-    <entry key="afterRound" value-ref="fightAfterRoundTransformer" />
-    <entry key="beforeRound" value-ref="fightBeforeRoundTransformer" />
-  </util:map>
+
 
   <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.market.MarketSaleLabelTransformer" id="marketSaleLabelTransformer" />
   <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.market.MarketPurchaseLabelTransformer" id="marketPurchaseLabelTransformer" />

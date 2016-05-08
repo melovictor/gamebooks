@@ -10,12 +10,14 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
+import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.FightCommandForm;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import hu.zagor.gamebooks.ff.mvc.book.section.service.FfBookPreFightHandlingService;
 import hu.zagor.gamebooks.mvc.book.section.controller.GenericBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -71,32 +73,29 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
      * Handler for fight entry points.
      * @param model the data model
      * @param request the request
-     * @param enemyId the id of the enemy to fight
-     * @param luckOnHit should a luck test be executed on successful attack
-     * @param luckOnDefense should a luck test be executed on a failed defense
-     * @param luckOnOther should a luck test be executed on other attacks (eg. when there is an extra attack at the beginning of the round)
+     * @param form the form containing all incoming data
      * @return the book page's name
      */
     @RequestMapping(value = PageAddresses.FIGHT)
-    public final String handleFight(final Model model, final HttpServletRequest request, @RequestParam("id") final String enemyId,
-        @RequestParam("hit") final Boolean luckOnHit, @RequestParam("def") final Boolean luckOnDefense, @RequestParam("oth") final Boolean luckOnOther) {
+    public final String handleFight(final Model model, final HttpServletRequest request, @ModelAttribute final FightCommandForm form) {
         final HttpSessionWrapper wrapper = getWrapper(request);
-        handleBeforeFight(wrapper, enemyId);
+        handleBeforeFight(wrapper, form.getId());
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
 
         final FfUserInteractionHandler interactionHandler = getInfo().getCharacterHandler().getInteractionHandler();
 
         prepareFight(wrapper);
-        interactionHandler.setFightCommand(character, LastFightCommand.ENEMY_ID, enemyId);
-        interactionHandler.setFightCommand(character, LastFightCommand.LUCK_ON_HIT, luckOnHit.toString());
-        interactionHandler.setFightCommand(character, LastFightCommand.LUCK_ON_DEFENSE, luckOnDefense.toString());
-        interactionHandler.setFightCommand(character, LastFightCommand.LUCK_ON_OTHER, luckOnOther.toString());
-        getInteractionRecorder().prepareFightCommand(wrapper, luckOnHit, luckOnDefense, luckOnOther);
-        getInteractionRecorder().recordFightCommand(wrapper, enemyId);
+        interactionHandler.setFightCommand(character, LastFightCommand.ENEMY_ID, form.getId());
+        interactionHandler.setFightCommand(character, LastFightCommand.LUCK_ON_HIT, form.isHit().toString());
+        interactionHandler.setFightCommand(character, LastFightCommand.LUCK_ON_DEFENSE, form.isDef().toString());
+        interactionHandler.setFightCommand(character, LastFightCommand.LUCK_ON_OTHER, form.isOth().toString());
+        interactionHandler.setFightCommand(character, LastFightCommand.SPECIAL, form.getSpecial());
+        getInteractionRecorder().prepareFightCommand(wrapper, form.isHit(), form.isDef(), form.isOth());
+        getInteractionRecorder().recordFightCommand(wrapper, form.getId());
 
         final String handleSection = super.handleSection(model, request, null);
 
-        handleAfterFight(wrapper, enemyId);
+        handleAfterFight(wrapper, form.getId());
         model.addAttribute("charEquipments", getCharacterPageData(character));
 
         return handleSection;

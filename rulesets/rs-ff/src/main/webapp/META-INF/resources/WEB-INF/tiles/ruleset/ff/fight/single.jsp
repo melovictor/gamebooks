@@ -81,6 +81,11 @@
 			</c:if>
 		</button>
 	</c:if>
+	<c:forEach items="${fightCommand.specialAttacks}" var="special">
+		<button data-special-id="${special.id}">
+			${special.text}
+		</button>
+	</c:forEach>
 </div>
 
 <c:if test="${!environmentDetector.seleniumTesting}">
