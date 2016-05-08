@@ -21,13 +21,12 @@ public abstract class BasicBeforeAfterRoundEnemyHandler<T> implements CustomBefo
     @Autowired private DiceResultRenderer renderer;
 
     @Override
-    public boolean shouldExecutePreHandler(final FightCommand command) {
+    public boolean shouldExecutePreHandler(final FightCommand command, final T data) {
         return false;
     }
 
     @Override
-    public T executePreHandler(final FightCommand command) {
-        return null;
+    public void executePreHandler(final FightCommand command, final T data) {
     }
 
     @Override

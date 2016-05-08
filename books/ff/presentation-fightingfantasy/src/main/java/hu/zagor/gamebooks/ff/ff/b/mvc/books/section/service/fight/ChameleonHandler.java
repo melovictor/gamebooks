@@ -14,7 +14,8 @@ public class ChameleonHandler extends Ff60BeforeAfterRoundEnemyHandler {
     private static final int CHAMELEON_CRITICAL_ATTACK_STRENGTH = 20;
 
     @Override
-    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results) {
+    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+        final EnemyPrePostFightDataContainer data) {
         return results[0] == FightRoundResult.LOSE && highAttackStrength(command);
     }
 

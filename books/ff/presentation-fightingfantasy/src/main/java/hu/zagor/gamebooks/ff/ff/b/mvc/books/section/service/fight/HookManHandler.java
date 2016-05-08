@@ -16,7 +16,8 @@ public class HookManHandler extends Ff60BeforeAfterRoundEnemyHandler {
     private static final int HOOK_MAN_EXTRA_HIT = 4;
 
     @Override
-    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results) {
+    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+        final EnemyPrePostFightDataContainer data) {
         return results[0] == FightRoundResult.LOSE;
     }
 

@@ -12,7 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ChillerHandler extends Ff60BeforeAfterRoundEnemyHandler {
     @Override
-    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results) {
+    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+        final EnemyPrePostFightDataContainer data) {
         return command.getRoundNumber() % 2 == 0;
     }
 

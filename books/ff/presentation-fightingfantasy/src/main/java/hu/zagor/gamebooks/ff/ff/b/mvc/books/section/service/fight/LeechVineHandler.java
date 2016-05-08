@@ -14,7 +14,8 @@ import org.springframework.stereotype.Component;
 public class LeechVineHandler extends Ff60BeforeAfterRoundEnemyHandler {
 
     @Override
-    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results) {
+    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+        final EnemyPrePostFightDataContainer data) {
         final Map<String, Integer> attackStrengths = command.getAttackStrengths();
         return attackStrengths.get("h_d1_38") == attackStrengths.get("h_d2_38");
     }

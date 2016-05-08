@@ -37,4 +37,8 @@ public class SingleFf60FightRoundResolver extends MapBasedFfCustomEnemyHandlingS
         return Ff60BeforeAfterRoundEnemyHandler.class;
     }
 
+    @Override
+    protected EnemyPrePostFightDataContainer getDataBean() {
+        return new EnemyPrePostFightDataContainer();
+    }
 }

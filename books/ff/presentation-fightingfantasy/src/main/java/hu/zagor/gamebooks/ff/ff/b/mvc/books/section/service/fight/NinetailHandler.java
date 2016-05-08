@@ -22,13 +22,12 @@ public class NinetailHandler extends Ff60BeforeAfterRoundEnemyHandler {
     private static final int WEAPON_ROLL_POSITION = 3;
 
     @Override
-    public boolean shouldExecutePreHandler(final FightCommand command) {
+    public boolean shouldExecutePreHandler(final FightCommand command, final EnemyPrePostFightDataContainer data) {
         return true;
     }
 
     @Override
-    public EnemyPrePostFightDataContainer executePreHandler(final FightCommand command) {
-        final EnemyPrePostFightDataContainer result = new EnemyPrePostFightDataContainer();
+    public void executePreHandler(final FightCommand command, final EnemyPrePostFightDataContainer data) {
         int[] preFightRoll;
         preFightRoll = determineFutureTailAttackRoll();
         if (tailWillHitUs(preFightRoll)) {
@@ -37,12 +36,12 @@ public class NinetailHandler extends Ff60BeforeAfterRoundEnemyHandler {
         } else {
             command.getResolvedEnemies().get(0).setStaminaDamage(2);
         }
-        result.setPreFightRoll(preFightRoll);
-        return result;
+        data.setPreFightRoll(preFightRoll);
     }
 
     @Override
-    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results) {
+    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+        final EnemyPrePostFightDataContainer data) {
         return results[0] == FightRoundResult.LOSE;
     }
 

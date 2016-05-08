@@ -13,7 +13,8 @@ import java.util.List;
  */
 public abstract class Ff60BeforeAfterRoundEnemyHandler extends BasicBeforeAfterRoundEnemyHandler<EnemyPrePostFightDataContainer> {
     @Override
-    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results) {
+    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+        final EnemyPrePostFightDataContainer data) {
         return true;
     }
 

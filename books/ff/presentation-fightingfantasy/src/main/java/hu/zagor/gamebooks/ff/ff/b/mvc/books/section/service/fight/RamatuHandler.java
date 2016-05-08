@@ -21,7 +21,8 @@ public class RamatuHandler extends Ff60BeforeAfterRoundEnemyHandler {
     private static final int RAMATU_NORMAL_DAMAGE_ROUND = 4;
 
     @Override
-    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results) {
+    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+        final EnemyPrePostFightDataContainer data) {
         return command.getRoundNumber() < RAMATU_NORMAL_DAMAGE_ROUND && results[0] == FightRoundResult.LOSE;
     }
 

@@ -5,6 +5,8 @@ import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
+import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.CustomBeforeAfterRoundEnemyHandler;
+import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.MapBasedFfCustomEnemyHandlingSingleFightRoundResolver;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,7 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component("allAtOnceff60FightRoundResolver")
-public class AllAtOnceFf60FightRoundResolver implements FightRoundResolver {
+public class AllAtOnceFf60FightRoundResolver extends MapBasedFfCustomEnemyHandlingSingleFightRoundResolver<EnemyPrePostFightDataContainer> implements FightRoundResolver {
     @Autowired @Qualifier("allAtOnceFightRoundResolver") private FightRoundResolver decorated;
 
     @Override
@@ -30,7 +32,9 @@ public class AllAtOnceFf60FightRoundResolver implements FightRoundResolver {
             removedEnemy = resolvedEnemies.remove(resolvedEnemies.size() - 1);
         }
 
+        final EnemyPrePostFightDataContainer data = executePreRoundActions(command, resolvationData);
         final FightRoundResult[] resolveRound = decorated.resolveRound(command, resolvationData, beforeRoundResult);
+        executePostRoundActions(command, resolvationData, resolveRound, data);
 
         if (removedEnemy != null) {
             resolvedEnemies.add(removedEnemy);
@@ -44,4 +48,13 @@ public class AllAtOnceFf60FightRoundResolver implements FightRoundResolver {
         decorated.resolveFlee(command, resolvationData);
     }
 
+    @Override
+    protected Class<? extends CustomBeforeAfterRoundEnemyHandler<EnemyPrePostFightDataContainer>> getType() {
+        return Ff60BeforeAfterRoundEnemyHandler.class;
+    }
+
+    @Override
+    protected EnemyPrePostFightDataContainer getDataBean() {
+        return new EnemyPrePostFightDataContainer();
+    }
 }

@@ -18,7 +18,7 @@ import org.springframework.context.ApplicationContextAware;
  * @author Tamas_Szekeres
  * @param <T> the type which will contain the data that was compiled during the pre-fight phase
  */
-public abstract class MapBasedFfCustomEnemyHandlingSingleFightRoundResolver<T> implements ApplicationContextAware {
+public abstract class MapBasedFfCustomEnemyHandlingSingleFightRoundResolver<T extends BasicEnemyPrePostFightDataContainer> implements ApplicationContextAware {
     private Map<String, CustomBeforeAfterRoundEnemyHandler<T>> enemyHandlers;
     private ApplicationContext applicationContext;
 
@@ -43,12 +43,15 @@ public abstract class MapBasedFfCustomEnemyHandlingSingleFightRoundResolver<T> i
      * @return the data that was compiled during the pre-fight phase
      */
     protected T executePreRoundActions(final FightCommand command, final ResolvationData resolvationData) {
-        final FfEnemy enemy = getEnemy(resolvationData);
-        final CustomBeforeAfterRoundEnemyHandler<T> handler = enemyHandlers.get(enemy.getId());
-        T data = null;
-        if (handler != null) {
-            if (handler.shouldExecutePreHandler(command)) {
-                data = handler.executePreHandler(command);
+        final T data = getDataBean();
+        data.setPrimaryEnemy(getSelectedEnemy(resolvationData).getId());
+
+        for (final FfEnemy enemy : command.getResolvedEnemies()) {
+            final CustomBeforeAfterRoundEnemyHandler<T> handler = enemyHandlers.get(enemy.getId());
+            if (handler != null) {
+                if (handler.shouldExecutePreHandler(command, data)) {
+                    handler.executePreHandler(command, data);
+                }
             }
         }
         return data;
@@ -62,14 +65,14 @@ public abstract class MapBasedFfCustomEnemyHandlingSingleFightRoundResolver<T> i
      * @param data the data that was compiled during the pre-fight phase
      */
     protected void executePostRoundActions(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results, final T data) {
-        final FfEnemy enemy = getEnemy(resolvationData);
-        final CustomBeforeAfterRoundEnemyHandler<T> handler = enemyHandlers.get(enemy.getId());
-        if (handler != null) {
-            if (handler.shouldExecutePostHandler(command, resolvationData, results)) {
-                handler.executePostHandler(command, resolvationData, results, data);
+        for (final FfEnemy enemy : command.getResolvedEnemies()) {
+            final CustomBeforeAfterRoundEnemyHandler<T> handler = enemyHandlers.get(enemy.getId());
+            if (handler != null) {
+                if (handler.shouldExecutePostHandler(command, resolvationData, results, data)) {
+                    handler.executePostHandler(command, resolvationData, results, data);
+                }
             }
         }
-
     }
 
     /**
@@ -77,7 +80,7 @@ public abstract class MapBasedFfCustomEnemyHandlingSingleFightRoundResolver<T> i
      * @param resolvationData the {@link ResolvationData} object
      * @return the resolved enemy
      */
-    protected FfEnemy getEnemy(final ResolvationData resolvationData) {
+    protected FfEnemy getSelectedEnemy(final ResolvationData resolvationData) {
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) resolvationData.getCharacterHandler().getInteractionHandler();
         final String enemyId = interactionHandler.peekLastFightCommand(character, LastFightCommand.ENEMY_ID);
@@ -94,4 +97,10 @@ public abstract class MapBasedFfCustomEnemyHandlingSingleFightRoundResolver<T> i
     public void setApplicationContext(final ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
+
+    /**
+     * Returns an empty databean for further use in the process.
+     * @return an empty T databean
+     */
+    protected abstract T getDataBean();
 }
