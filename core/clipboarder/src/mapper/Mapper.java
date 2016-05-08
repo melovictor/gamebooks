@@ -5,9 +5,13 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,6 +20,7 @@ public class Mapper {
     private static final Pattern SECTIONS = Pattern.compile("<p id=\"([a-zA-Z_0-9*]+)\"(.*?)<\\/p>");
     private static final Pattern NAVIGATION = Pattern.compile("<(?:next|spell).*?id=\"([^\"]*)\"");
     private static final Pattern COLOR = Pattern.compile("color=\"([^\"]+)\"");
+    private static final Pattern ENEMIES = Pattern.compile("enemy id=\"([0-9]+)\"");
 
     public static void main(final String[] args) throws IOException {
         final String root = "c:\\springsource\\eclipsegit\\books";
@@ -94,6 +99,7 @@ public class Mapper {
         final Set<String> referencedSections = new HashSet<>();
         final Set<String> gatherItemSections = new HashSet<>();
         final Set<String> fightSections = new HashSet<>();
+        final Map<String, Set<String>> enemies = new HashMap<>();
         final Matcher matcher = SECTIONS.matcher(content);
         while (matcher.find()) {
             final String id = matcher.group(1);
@@ -124,6 +130,12 @@ public class Mapper {
             }
             if (section.contains("<fight")) {
                 fightSections.add(id);
+                final Set<String> enemySet = new TreeSet<>();
+                final Matcher enemyMatcher = ENEMIES.matcher(section);
+                while (enemyMatcher.find()) {
+                    enemySet.add(enemyMatcher.group(1));
+                }
+                enemies.put(id, enemySet);
             }
             if (section.contains("<gatherItem") || section.contains("takeItem")) {
                 gatherItemSections.add(id);
@@ -141,6 +153,20 @@ public class Mapper {
         }
         for (final String id : fightSections) {
             map.append("\"" + id + "\"" + "[shape=diamond];");
+        }
+        for (final Entry<String, Set<String>> enemyEntry : enemies.entrySet()) {
+            map.append("\"" + enemyEntry.getKey() + "\" -> \"" + enemyEntry.getKey() + "enemies\" [dir=back];");
+            map.append("\"" + enemyEntry.getKey() + "enemies\" [ shape=\"record\" label = \"enemies|{");
+            boolean first = true;
+            for (final String enemyId : enemyEntry.getValue()) {
+                if (first) {
+                    first = false;
+                } else {
+                    map.append("|");
+                }
+                map.append(enemyId);
+            }
+            map.append("}\" ]");
         }
         map.append(mapForcedColors);
         map.append("}");
