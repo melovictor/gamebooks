@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.ff.ff.b.mvc.books.section.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
-import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
@@ -40,10 +39,26 @@ public class Ff60BookSectionController extends FfBookSectionController {
     }
 
     @Override
+    protected void handleBeforeFight(final HttpSessionWrapper wrapper, final String enemyId) {
+        final Ff60Character character = (Ff60Character) wrapper.getCharacter();
+        character.setDamageInLastFight(character.getDamageInLastFight() + character.getStamina());
+    }
+
+    @Override
     protected void handleAfterFight(final HttpSessionWrapper wrapper, final String enemyId) {
-        final Character character = wrapper.getCharacter();
+        final Ff60Character character = (Ff60Character) wrapper.getCharacter();
+        character.setDamageInLastFight(character.getDamageInLastFight() - character.getStamina());
         if (character.getCommandView() == null) {
             getInfo().getCharacterHandler().getItemHandler().removeItem(character, FIGHT_END_DISAPPEARING_ATTACK_STRENGTH_BONUS, ATTACK_STRENGTH_BONUS_AMOUNT);
+        }
+    }
+
+    @Override
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        super.handleCustomSectionsPre(model, wrapper, changedSection);
+        if (changedSection) {
+            final Ff60Character character = (Ff60Character) wrapper.getCharacter();
+            character.setDamageInLastFight(0);
         }
     }
 

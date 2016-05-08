@@ -24,9 +24,17 @@ public class Ff60BookTakeItemController extends FfBookTakeItemController {
             getInfo().getCharacterHandler().getItemHandler().addItem(wrapper.getCharacter(), "4000", 1);
         } else if ("2002".equals(itemId)) {
             handleAntivenom(wrapper);
+        } else if ("2005".equals(itemId)) {
+            handleTigerpalmLeaves(wrapper);
         }
 
         return super.doHandleConsumeItem(wrapper, itemId);
+    }
+
+    private void handleTigerpalmLeaves(final HttpSessionWrapper wrapper) {
+        final Ff60Character character = (Ff60Character) wrapper.getCharacter();
+        character.changeStamina(character.getDamageInLastFight() / 2);
+        character.setDamageInLastFight(0);
     }
 
     private void handleAntivenom(final HttpSessionWrapper wrapper) {

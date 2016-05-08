@@ -16,6 +16,7 @@ public class Ff60Character extends FfCharacter {
     private int arrowRound;
     private int nineTailDamage;
     private int scarachnaPoison;
+    private int damageInLastFight;
 
     public int getTime() {
         return time;
@@ -55,6 +56,14 @@ public class Ff60Character extends FfCharacter {
 
     public void setScarachnaPoison(final int scarachnaPoison) {
         this.scarachnaPoison = scarachnaPoison;
+    }
+
+    public int getDamageInLastFight() {
+        return damageInLastFight;
+    }
+
+    public void setDamageInLastFight(final int damageInLastFight) {
+        this.damageInLastFight = damageInLastFight;
     }
 
 }
