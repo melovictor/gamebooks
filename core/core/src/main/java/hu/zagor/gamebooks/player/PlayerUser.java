@@ -79,9 +79,10 @@ public class PlayerUser extends UsernamePasswordAuthenticationToken {
      * Adds a new reward for a book.
      * @param bookId the id of the book (or in some cases, the series)
      * @param rewardId the id of the reward
+     * @return true if the user didn't previously had this reward, false otherwise
      */
-    public void addReward(final long bookId, final String rewardId) {
-        provideSet(bookId).add(rewardId);
+    public boolean addReward(final long bookId, final String rewardId) {
+        return provideSet(bookId).add(rewardId);
     }
 
     public boolean isAdmin() {

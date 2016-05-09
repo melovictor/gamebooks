@@ -28,6 +28,29 @@ var menu = (function() {
 	};
 })();
 
+var newRewards = (function() {
+	function init() {
+		setTimeout(showNextBox, 250);
+	}
+	function showNextBox() {
+		var $rewardBoxes = $(".mainRewardBox");
+		if ($rewardBoxes.length > 0) {
+			var $nextBox = $($rewardBoxes[0]);
+			$nextBox.fadeIn("slow");
+			setTimeout(function() {
+				$nextBox.fadeOut("slow", function() {
+					$nextBox.remove();
+					showNextBox();
+				});
+			}, 3000);
+		}
+	}
+	
+	return {
+		init : init
+	};
+})();
+
 $(function() {
 	$("#languageSelectionOptions li").on("click", function() {
 		menu.updateLanguage($(this));
@@ -35,4 +58,5 @@ $(function() {
 	menu.updateSelection();
 	$("#adventurerName").focus();
 	$("#logout").on("click", menu.logout);
+	newRewards.init();
 });

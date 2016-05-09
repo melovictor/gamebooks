@@ -26,6 +26,7 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
+import org.springframework.util.StringUtils;
 
 /**
  * Implementation of the {@link BookParagraphResolver} for the raw ruleset.
@@ -111,12 +112,18 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
             try {
                 logger.info("Fetching reward '{}' for book '{}' for player '{}'.", reward.getId(), resolvationData.getInfo().getTitle(),
                     resolvationData.getPlayerUser().getPrincipal());
-                final String data = assemblePostData(resolvationData, reward);
-                final URLConnection connection = communicator.connect("http://zagor.hu/recordreward.php");
-                communicator.sendRequest(connection, data);
-                communicator.receiveResponse(connection);
                 final Long bookId = resolvationData.getInfo().getId();
-                resolvationData.getPlayerUser().addReward(getRelevantId(reward, bookId), reward.getId());
+                final boolean newReward = resolvationData.getPlayerUser().addReward(getRelevantId(reward, bookId), reward.getId());
+
+                if (newReward) {
+                    final String data = assemblePostData(resolvationData, reward);
+                    final URLConnection connection = communicator.connect("http://zagor.hu/recordreward.php");
+                    communicator.sendRequest(connection, data);
+                    final String url = communicator.receiveResponse(connection);
+                    if (!StringUtils.isEmpty(url)) {
+                        resolvationData.getParagraph().getRewards().add(url);
+                    }
+                }
             } catch (final IOException exception) {
                 logger.error("Failed to send reward data to server.", exception);
             }

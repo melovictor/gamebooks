@@ -14,10 +14,10 @@
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/zagor.css" />" />
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bze.css" />" />
 <c:forEach var="cssResource" items="${resources.css}">
-    <link type="text/css" rel="stylesheet" href="<c:url value="../resources/${cssResource}" />" />
+	<link type="text/css" rel="stylesheet" href="<c:url value="../resources/${cssResource}" />" />
 </c:forEach>
 <c:forEach var="cssResource" items="${helpDescriptor.resourceInformation.cssResources}">
-    <link type="text/css" rel="stylesheet" href="<c:url value="../book/resources/${cssResource}.css" />" />
+	<link type="text/css" rel="stylesheet" href="<c:url value="../book/resources/${cssResource}.css" />" />
 </c:forEach>
 
 <script type="text/javascript" src="<c:url value="/resources/js/jquery.js" />"></script>
@@ -31,6 +31,13 @@
 <title><spring:message code="${pageTitle}" text="${pageTitle}" /></title>
 </head>
 <body>
+	<c:forEach items="${paragraph.rewards}" var="rewardUrl">
+		<div class="mainRewardBox">
+			<img alt="new reward" src="${rewardUrl}" /><br />
+			<spring:message code="page.book.newReward" />
+		</div>
+	</c:forEach>
+
 	<table id="BodyTable">
 		<col width="auto" />
 		<col width="29px" />
@@ -51,7 +58,7 @@
 			<td id="BalCsik"></td>
 			<td id="MainContent">
 				<div id="main">
-				    <tiles:insertAttribute name="page.content" />
+					<tiles:insertAttribute name="page.content" />
 				</div>
 			</td>
 			<td id="JobbCsik"></td>

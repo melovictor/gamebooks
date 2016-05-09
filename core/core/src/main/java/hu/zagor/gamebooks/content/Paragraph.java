@@ -26,6 +26,7 @@ public class Paragraph extends EscapingData implements TrueCloneable {
 
     private final List<String> validMoves;
     private final Map<String, Integer> validItems;
+    private final List<String> rewards;
 
     private final List<ProcessableItemHolder> itemsToProcess = new ArrayList<>();
 
@@ -34,6 +35,7 @@ public class Paragraph extends EscapingData implements TrueCloneable {
     Paragraph() {
         validMoves = new ArrayList<>();
         validItems = new HashMap<>();
+        rewards = new ArrayList<>();
     }
 
     /**
@@ -166,6 +168,10 @@ public class Paragraph extends EscapingData implements TrueCloneable {
 
     public List<ProcessableItemHolder> getItemsToProcess() {
         return itemsToProcess;
+    }
+
+    public List<String> getRewards() {
+        return rewards;
     }
 
 }
