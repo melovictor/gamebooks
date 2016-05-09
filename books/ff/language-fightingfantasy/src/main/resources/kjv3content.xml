@@ -395,8 +395,19 @@
     <text>
         [p]A fejedet a kezeddel véded, így rohansz le a lejtőn, miközben csak úgy záporoznak körülötted a kövek.[/p]
     </text>
-    <next id="30b">Ha Cheelahhoz fohászkodnál segítségért</next>
-    <next id="30a">Ha nem</next>
+    <itemCheck type="item" id="4300">
+      <have>
+        <text>
+            [p]A varázspajzsnak köszönhetően nem esik bántódásod, az alázúduló kövek azonban megnehezítik számodra a haladást, és egyensúlyodat elvesztve elterülsz a földön.[/p]
+        </text>
+        <loseItem id="4300" />
+        <next id="98"></next>
+      </have>
+      <dontHave>
+        <next id="30b">Ha Cheelahhoz fohászkodnál segítségért</next>
+        <next id="30a">Ha nem</next>
+      </dontHave>
+    </itemCheck>
   </p>
   <p id="30b" display="30">
     <text>
@@ -10803,6 +10814,7 @@
             [p]Egy védőpajzsot varázsolsz egy Aranytallérod segítségével, mely megóv a kőzáportól. Ezt a védőpajzsot alkalmazva nem vesztesz egyetlen [span class="ffAttribute"]ÉLETERŐ[/span] pontot sem.[/p]
         </text>
         <add amount="-1" to="gold" goldOnly="true" />
+        <gatherItem id="4300" />
       </have>
       <dontHave>
         <text>

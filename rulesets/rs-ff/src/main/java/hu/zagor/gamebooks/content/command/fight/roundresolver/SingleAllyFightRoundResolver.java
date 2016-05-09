@@ -1,6 +1,7 @@
 package hu.zagor.gamebooks.content.command.fight.roundresolver;
 
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
+import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
@@ -16,6 +17,16 @@ import org.springframework.stereotype.Component;
  */
 @Component("singleAllyFightRoundResolver")
 public class SingleAllyFightRoundResolver extends SingleFightRoundResolver {
+
+    @Override
+    protected void damageEnemy(final FightCommand command, final FightDataDto dto) {
+        final FfItem selectedWeapon = dto.getSelectedWeapon();
+        final FfAllyCharacter character = (FfAllyCharacter) dto.getCharacter();
+        final FfEnemy ally = character.getAlly();
+        selectedWeapon.setStaminaDamage(ally.getStaminaDamage());
+
+        super.damageEnemy(command, dto);
+    }
 
     @Override
     protected void resolveTieMessage(final FightDataDto dto) {
