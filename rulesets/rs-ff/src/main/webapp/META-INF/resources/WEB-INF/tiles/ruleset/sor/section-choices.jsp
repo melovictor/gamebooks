@@ -9,7 +9,7 @@
 				<c:forEach items="${paragraph.data.spellChoices}" var="spell" varStatus="stat">
 					<div class="sorSpell">
 						<c:set var="linkPrefix"><c:if test="${informativeSections}">${spell.id}|</c:if></c:set>
-						<c:if test="${spell.id > 0 && charEquipments.wizard}">
+						<c:if test="${spell.id != '-1' && charEquipments.wizard}">
 							<a href="spl-${linkPrefix}${stat.index}">
 								${spell.text}
 								<c:if test="${!hideChoiceSection}">
@@ -17,7 +17,7 @@
 								</c:if>
 							</a>
 						</c:if>
-						<c:if test="${spell.id == -1 || !charEquipments.wizard}">
+						<c:if test="${spell.id == '-1' || !charEquipments.wizard}">
 							<c:if test="${charEquipments.vikKnown}">
 								<span data-spell-name="${spell.text}">${spell.text}</span>
 							</c:if>
