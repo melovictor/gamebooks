@@ -27,6 +27,7 @@ public class ParagraphTest {
     @Mock private ParagraphData paragraphData;
     @Mock private GatheredLostItem glItem;
     @Mock private ChoicePositionCounter posCounter;
+    @Mock private ProcessableItemHolder itemHolder;
 
     @BeforeMethod
     public void setUpMethod() {
@@ -104,16 +105,18 @@ public class ParagraphTest {
         Assert.assertEquals((int) underTest.getValidItems().get(ITEM_ID), 2);
     }
 
-    public void testCloneShoulcCloneParagraphData() throws CloneNotSupportedException {
+    public void testCloneShouldCloneParagraphData() throws CloneNotSupportedException {
         // GIVEN
         final ParagraphData clonedData = mockControl.createMock(ParagraphData.class);
         underTest.setData(paragraphData);
+        underTest.getItemsToProcess().add(itemHolder);
         expect(paragraphData.clone()).andReturn(clonedData);
         mockControl.replay();
         // WHEN
         final Paragraph returned = underTest.clone();
         // THEN
         Assert.assertSame(returned.getData(), clonedData);
+        Assert.assertTrue(underTest.getItemsToProcess().isEmpty());
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)

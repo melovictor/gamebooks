@@ -60,6 +60,7 @@ public class Paragraph extends EscapingData implements TrueCloneable {
     public Paragraph clone() throws CloneNotSupportedException {
         final Paragraph cloned = (Paragraph) super.clone();
         cloned.data = data.clone();
+        itemsToProcess.clear();
         return cloned;
     }
 

@@ -12,8 +12,24 @@ import org.springframework.util.Assert;
  */
 public class SorParagraphData extends FfParagraphData {
 
-    private final List<Choice> spellChoices = new ArrayList<>();
-    private final List<ModifyAttribute> spellModifyAttributes = new ArrayList<>();
+    private List<Choice> spellChoices = new ArrayList<>();
+    private List<ModifyAttribute> spellModifyAttributes = new ArrayList<>();
+
+    @Override
+    public SorParagraphData clone() throws CloneNotSupportedException {
+        final SorParagraphData clone = (SorParagraphData) super.clone();
+
+        clone.spellChoices = new ArrayList<>();
+        for (final Choice choice : spellChoices) {
+            clone.spellChoices.add(choice.clone());
+        }
+        clone.spellModifyAttributes = new ArrayList<>();
+        for (final ModifyAttribute attribute : spellModifyAttributes) {
+            clone.spellModifyAttributes.add(attribute.clone());
+        }
+
+        return clone;
+    }
 
     public List<Choice> getSpellChoices() {
         return spellChoices;
