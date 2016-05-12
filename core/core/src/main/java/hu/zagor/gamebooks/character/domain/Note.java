@@ -1,12 +1,13 @@
 package hu.zagor.gamebooks.character.domain;
 
 import hu.zagor.gamebooks.character.Character;
+import hu.zagor.gamebooks.content.TrueCloneable;
 
 /**
  * Class for handling notes for the {@link Character}.
  * @author Tamas_Szekeres
  */
-public class Note {
+public class Note implements TrueCloneable {
 
     private String note = "";
 
@@ -23,4 +24,8 @@ public class Note {
         return note;
     }
 
+    @Override
+    public Note clone() throws CloneNotSupportedException {
+        return (Note) super.clone();
+    }
 }

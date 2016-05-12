@@ -75,7 +75,7 @@ public class DefaultXmlGameStateSaverTest {
         writer.openNode("value");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt");
         logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt");
-        writer.addAttribute("ref", "1");
+        writer.addAttribute("ref", "2");
         logger.debug("Saving field 'intField' with value '1534'.");
         writer.createSimpleNode("intField", "1534", "java.lang.Integer");
         writer.closeNode("value");
@@ -103,7 +103,7 @@ public class DefaultXmlGameStateSaverTest {
         writer.openNode("value");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt");
         logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt");
-        writer.addAttribute("ref", "1");
+        writer.addAttribute("ref", "2");
         logger.debug("Saving field 'intField' with value '1534'.");
         writer.createSimpleNode("intField", "1534", "java.lang.Integer");
         writer.closeNode("value");
@@ -113,8 +113,8 @@ public class DefaultXmlGameStateSaverTest {
         writer.createSimpleNode("key", "otherFieldWithNumber", "java.lang.String");
         writer.openNode("value");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt");
-        logger.debug("Saving class reference 1");
-        writer.addAttribute("ref", "1");
+        logger.debug("Saving class reference 2");
+        writer.addAttribute("ref", "2");
         writer.closeNode("value");
         writer.closeNode("mapEntry");
 
@@ -139,7 +139,7 @@ public class DefaultXmlGameStateSaverTest {
         writer.openNode("value");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithList");
         logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithList");
-        writer.addAttribute("ref", "1");
+        writer.addAttribute("ref", "2");
         logger.debug("Saving field 'elements' with value '[apple, pear]'.");
 
         writer.openNode("elements");
@@ -174,7 +174,7 @@ public class DefaultXmlGameStateSaverTest {
         writer.openNode("value");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithEnum");
         logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithEnum");
-        writer.addAttribute("ref", "1");
+        writer.addAttribute("ref", "2");
         logger.debug("Saving field 'enumField' with value 'KIWI'.");
 
         writer.openNode("enumField");
@@ -208,7 +208,7 @@ public class DefaultXmlGameStateSaverTest {
         writer.openNode("value");
         writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithNull");
         logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithNull");
-        writer.addAttribute("ref", "1");
+        writer.addAttribute("ref", "2");
         logger.debug("Saving field 'nullField' with value 'null'.");
         writer.createSimpleNode("nullField");
         writer.closeNode("value");
@@ -252,6 +252,7 @@ public class DefaultXmlGameStateSaverTest {
         writer.openNode("element");
         writer.addAttribute("class", "java.util.HashMap");
         writer.addAttribute("isMap", "true");
+        writer.addAttribute("ref", "1");
     }
 
     private void expectEndMainObject(final String expected) throws XMLStreamException, UnsupportedEncodingException {

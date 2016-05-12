@@ -110,7 +110,7 @@ public class DefaultXmlGameStateLoader extends AbstractGameStateHandler implemen
                     if (isList) {
                         fieldObject = getList(className, fieldNode, objectCache);
                     } else {
-                        fieldObject = getMap(className, fieldNode, objectCache);
+                        fieldObject = getMap(className, fieldNode, objectCache, ref);
                     }
                 } else {
                     fieldObject = getInstance(getAttributeValue(fieldNode, "class"));
@@ -125,8 +125,11 @@ public class DefaultXmlGameStateLoader extends AbstractGameStateHandler implemen
     }
 
     @SuppressWarnings("unchecked")
-    private Object getMap(final String className, final Node fieldNode, final Map<String, Object> objectCache) throws Exception {
+    private Object getMap(final String className, final Node fieldNode, final Map<String, Object> objectCache, final String ref) throws Exception {
         final Map<Object, Object> map = (Map<Object, Object>) this.getInstance(className);
+        if (ref != null) {
+            objectCache.put(ref, map);
+        }
 
         final NodeList childNodes = fieldNode.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {

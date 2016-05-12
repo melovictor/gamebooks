@@ -17,13 +17,13 @@ import java.util.Set;
  */
 public class Character implements Serializable {
 
-    private final List<String> paragraphs;
-    private final List<Item> equipment;
-    private final List<Item> hiddenEquipment;
-    private final Set<String> codeWords;
+    private List<String> paragraphs;
+    private List<Item> equipment;
+    private List<Item> hiddenEquipment;
+    private Set<String> codeWords;
     private int backpackSize;
 
-    private final Map<String, String> userInteraction;
+    private Map<String, String> userInteraction;
     private CommandView commandView;
     private Note notes;
 
@@ -88,6 +88,30 @@ public class Character implements Serializable {
 
     public Set<String> getCodeWords() {
         return codeWords;
+    }
+
+    public void setParagraphs(final List<String> paragraphs) {
+        this.paragraphs = paragraphs;
+    }
+
+    public void setEquipment(final List<Item> equipment) {
+        this.equipment = equipment;
+    }
+
+    public void setHiddenEquipment(final List<Item> hiddenEquipment) {
+        this.hiddenEquipment = hiddenEquipment;
+    }
+
+    public void setCodeWords(final Set<String> codeWords) {
+        this.codeWords = codeWords;
+    }
+
+    public void setNotes(final Note notes) {
+        this.notes = notes;
+    }
+
+    public void setUserInteraction(final Map<String, String> userInteraction) {
+        this.userInteraction = userInteraction;
     }
 
 }

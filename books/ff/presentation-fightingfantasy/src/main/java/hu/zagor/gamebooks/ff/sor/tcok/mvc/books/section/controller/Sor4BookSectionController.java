@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.ff.sor.tcok.mvc.books.section.controller;
 
 import hu.zagor.gamebooks.ControllerAddresses;
 import hu.zagor.gamebooks.PageAddresses;
-import hu.zagor.gamebooks.books.saving.xml.XmlGameStateLoader;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.content.Paragraph;
@@ -38,7 +37,6 @@ public class Sor4BookSectionController extends SorBookSectionController {
     private static final int WHYDE_RECOGNITION = 210;
     private static final int CURRENT_BOOK = 4;
     @Autowired private DartThrowingService dartThrowingService;
-    @Autowired private XmlGameStateLoader gameStateLoader;
     @Resource(name = "sor4TimeTravelSources") private Set<String> timeTravelSources;
 
     /**
@@ -127,22 +125,13 @@ public class Sor4BookSectionController extends SorBookSectionController {
     }
 
     private SorCharacter reloadCharacter(final SorCharacter currentCharacter, final String... locationCandidates) {
-        final String toReload = fetchCharacterString(currentCharacter, locationCandidates);
-        return convertToCharacter(toReload);
-    }
-
-    private String fetchCharacterString(final SorCharacter currentCharacter, final String... locationCandidates) {
-        final Map<String, String> characterSaveLocations = currentCharacter.getCharacterSaveLocations();
-        String toReload;
+        final Map<String, SorCharacter> characterSaveLocations = currentCharacter.getCharacterSaveLocations();
+        SorCharacter reloaded;
         int i = 0;
         do {
-            toReload = characterSaveLocations.get(locationCandidates[i++]);
-        } while (toReload == null);
-        return toReload;
-    }
-
-    private SorCharacter convertToCharacter(final String toReload) {
-        return (SorCharacter) gameStateLoader.load(toReload);
+            reloaded = characterSaveLocations.get(locationCandidates[i++]);
+        } while (reloaded == null);
+        return reloaded;
     }
 
 }

@@ -1,6 +1,7 @@
 package hu.zagor.gamebooks.books.saving.xml;
 
 import hu.zagor.gamebooks.books.saving.xml.domain.SavedGameMapWrapper;
+import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.support.logging.LogInject;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.AccessibleObject;
@@ -8,7 +9,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +36,7 @@ public class DefaultXmlGameStateSaver extends AbstractGameStateHandler implement
         String content = null;
         try {
             final XmlNodeWriter writer = getBeanFactory().getBean(DefaultXmlNodeWriter.class);
-            final Map<Object, Integer> objectCache = new HashMap<>();
+            final List<Object> objectCache = new ArrayList<>();
 
             saveFields(writer, new SavedGameMapWrapper(object), "mainObject", objectCache);
 
@@ -48,18 +48,18 @@ public class DefaultXmlGameStateSaver extends AbstractGameStateHandler implement
         return content;
     }
 
-    private void saveFields(final XmlNodeWriter writer, final Object object, final String objectName, final Map<Object, Integer> objectCache)
+    private void saveFields(final XmlNodeWriter writer, final Object object, final String objectName, final List<Object> objectCache)
         throws XMLStreamException, IllegalAccessException {
         final Class<?> clazz = object.getClass();
         writer.openNode(objectName);
         writer.addAttribute(CLASS, clazz.getName());
-        if (objectCache.containsKey(object)) {
-            final Integer ref = objectCache.get(object);
+        Integer ref = getRefByKey(objectCache, object);
+        if (ref != null) {
             getLogger().debug("Saving class reference " + ref);
             writer.addAttribute("ref", ref.toString());
         } else {
-            final Integer ref = objectCache.size();
-            objectCache.put(object, ref);
+            ref = objectCache.size();
+            objectCache.add(object);
             getLogger().debug("Saving class " + clazz.getName());
             writer.addAttribute("ref", ref.toString());
 
@@ -104,7 +104,7 @@ public class DefaultXmlGameStateSaver extends AbstractGameStateHandler implement
         }
     }
 
-    private void saveField(final XmlNodeWriter writer, final String fieldName, final Object fieldValue, final Map<Object, Integer> objectCache)
+    private void saveField(final XmlNodeWriter writer, final String fieldName, final Object fieldValue, final List<Object> objectCache)
         throws IllegalAccessException, XMLStreamException {
         if (fieldValue == null) {
             writer.createSimpleNode(fieldName);
@@ -113,7 +113,7 @@ public class DefaultXmlGameStateSaver extends AbstractGameStateHandler implement
         }
     }
 
-    private void saveNonNullField(final XmlNodeWriter writer, final String fieldName, final Object fieldValue, final Map<Object, Integer> objectCache)
+    private void saveNonNullField(final XmlNodeWriter writer, final String fieldName, final Object fieldValue, final List<Object> objectCache)
         throws XMLStreamException, IllegalAccessException {
         final Class<?> fieldType = fieldValue.getClass();
         if (isSimpleValue(fieldType)) {
@@ -131,15 +131,9 @@ public class DefaultXmlGameStateSaver extends AbstractGameStateHandler implement
             writer.addAttribute(CLASS, fieldType.getName());
 
             if (isList(fieldValue)) {
-                writer.addAttribute("isList", "true");
-                @SuppressWarnings("unchecked")
-                final Collection<Object> collection = (Collection<Object>) fieldValue;
-                saveElements(writer, collection, objectCache);
+                saveListField(writer, fieldValue, objectCache);
             } else {
-                writer.addAttribute("isMap", "true");
-                @SuppressWarnings("unchecked")
-                final Map<Object, Object> map = (Map<Object, Object>) fieldValue;
-                saveElements(writer, map, objectCache);
+                saveMapField(writer, fieldValue, objectCache);
             }
 
             writer.closeNode(fieldName);
@@ -148,11 +142,53 @@ public class DefaultXmlGameStateSaver extends AbstractGameStateHandler implement
         }
     }
 
+    private void saveMapField(final XmlNodeWriter writer, final Object fieldValue, final List<Object> objectCache) throws XMLStreamException, IllegalAccessException {
+        Integer ref = getRefByKey(objectCache, fieldValue);
+        if (ref != null) {
+            getLogger().debug("Saving class reference " + ref);
+            writer.addAttribute("ref", ref.toString());
+        } else {
+            ref = objectCache.size();
+            objectCache.add(fieldValue);
+            writer.addAttribute("isMap", "true");
+            writer.addAttribute("ref", ref.toString());
+            @SuppressWarnings("unchecked")
+            final Map<Object, Object> map = (Map<Object, Object>) fieldValue;
+            saveElements(writer, map, objectCache);
+        }
+    }
+
+    private Integer getRefByKey(final List<Object> objectCache, final Object fieldValue) {
+        Integer key = null;
+        if (fieldValue instanceof Map<?, ?> || fieldValue instanceof Item) {
+            for (int i = 0; i < objectCache.size(); i++) {
+                final Object entry = objectCache.get(i);
+                if (entry == fieldValue) {
+                    key = i;
+                    break;
+                }
+            }
+        } else {
+            key = objectCache.indexOf(fieldValue);
+            if (key == -1) {
+                key = null;
+            }
+        }
+        return key;
+    }
+
+    private void saveListField(final XmlNodeWriter writer, final Object fieldValue, final List<Object> objectCache) throws XMLStreamException, IllegalAccessException {
+        writer.addAttribute("isList", "true");
+        @SuppressWarnings("unchecked")
+        final Collection<Object> collection = (Collection<Object>) fieldValue;
+        saveElements(writer, collection, objectCache);
+    }
+
     private boolean isEnum(final Object fieldValue) {
         return fieldValue instanceof Enum;
     }
 
-    private void saveElements(final XmlNodeWriter writer, final Collection<Object> list, final Map<Object, Integer> objectCache)
+    private void saveElements(final XmlNodeWriter writer, final Collection<Object> list, final List<Object> objectCache)
         throws XMLStreamException, IllegalAccessException {
         final Iterator<Object> iterator = list.iterator();
         while (iterator.hasNext()) {
@@ -161,7 +197,7 @@ public class DefaultXmlGameStateSaver extends AbstractGameStateHandler implement
         }
     }
 
-    private void saveElements(final XmlNodeWriter writer, final Map<Object, Object> map, final Map<Object, Integer> objectCache)
+    private void saveElements(final XmlNodeWriter writer, final Map<Object, Object> map, final List<Object> objectCache)
         throws IllegalAccessException, XMLStreamException {
         final Set<Entry<Object, Object>> entrySet = map.entrySet();
         final Iterator<Entry<Object, Object>> iterator = entrySet.iterator();

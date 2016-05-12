@@ -1,6 +1,5 @@
 package hu.zagor.gamebooks.ff.mvc.book.section.controller;
 
-import hu.zagor.gamebooks.books.saving.xml.XmlGameStateSaver;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.SorParagraphData;
 import hu.zagor.gamebooks.content.choice.Choice;
@@ -25,7 +24,6 @@ public class SorBookSectionController extends FfBookSectionController {
     private static final int SPELL_POSITION = 999;
     private static final String CURSED_CHAINMAIL_GLOVES = "3042";
     private static final int POSITION_FOR_ONES = 10;
-    @Autowired private XmlGameStateSaver gameStateSaver;
     @Autowired private SorMagicChainPreparatorService magicChainService;
 
     /**
@@ -103,10 +101,14 @@ public class SorBookSectionController extends FfBookSectionController {
     private void saveCharacterIfNecessary(final SorCharacter character, final String sectionIdentifier) {
         final String bookNumber = String.valueOf(getInfo().getId() % POSITION_FOR_ONES);
         final String identifier = bookNumber + "-" + sectionIdentifier;
-        final Map<String, String> characterSaveLocations = character.getCharacterSaveLocations();
+        final Map<String, SorCharacter> characterSaveLocations = character.getCharacterSaveLocations();
         if (characterSaveLocations.containsKey(identifier)) {
-            final String savedCharacter = gameStateSaver.save(character);
-            characterSaveLocations.put(identifier, savedCharacter);
+            try {
+                characterSaveLocations.put(identifier, character.clone());
+            } catch (final CloneNotSupportedException ex) {
+                getLogger().error("Failed to create clone from the character for a possible spell return location.");
+                throw new IllegalStateException(ex);
+            }
         }
     }
 

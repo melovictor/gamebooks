@@ -33,6 +33,7 @@ public class SorCharacterGenerator implements CharacterGenerator {
         character.setWizard("1".equals(caste));
 
         if (character.isWizard()) {
+            character.initializeSaveLocations();
             final int[] skill = getRand().getRandomNumber(1, SKILL_DEFAULT_WIZARD);
 
             character.setSkill(skill[0]);

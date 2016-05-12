@@ -196,7 +196,7 @@ public class SorBookSectionControllerTest {
         expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getParagraph()).andReturn(newParagraph);
         expect(newParagraph.getId()).andReturn("479");
-        expect(character.getCharacterSaveLocations()).andReturn(new HashMap<String, String>());
+        expect(character.getCharacterSaveLocations()).andReturn(new HashMap<String, SorCharacter>());
         character.setLastEatenBonus(0);
         expect(wrapper.getParagraph()).andReturn(newParagraph);
         expect(newParagraph.getId()).andReturn("479");
