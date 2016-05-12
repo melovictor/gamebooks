@@ -99,9 +99,6 @@ public class Sor4BookSectionController extends SorBookSectionController {
             itemHandler.addItem(reloadedCharacter, "4098", 1);
         }
         if (bookNumber == CURRENT_BOOK) {
-            if (currentCharacter.getParagraphs().contains("334")) {
-                itemHandler.removeItem(reloadedCharacter, "3084", 1);
-            }
             wrapper.setCharacter(reloadedCharacter);
             enableJumpToSection(wrapper.getParagraph(), sectionNumber);
             response.sendRedirect("../../s-" + sectionNumber);
