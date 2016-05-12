@@ -1,6 +1,7 @@
 package hu.zagor.gamebooks.content;
 
 import hu.zagor.gamebooks.content.choice.Choice;
+import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,10 +41,13 @@ public class SorParagraphData extends FfParagraphData {
      * @return true if it's going to be a spelljump, false otherwise
      */
     public boolean isSpellJump() {
-        final Choice choice = getChoices().iterator().next();
+        final ChoiceSet choices = getChoices();
         String text = null;
-        if (choice != null) {
-            text = choice.getId();
+        if (!choices.isEmpty()) {
+            final Choice choice = choices.iterator().next();
+            if (choice != null) {
+                text = choice.getId();
+            }
         }
         return text != null && text.startsWith("spellJump");
     }
