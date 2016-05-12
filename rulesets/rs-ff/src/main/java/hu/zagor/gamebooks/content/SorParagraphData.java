@@ -40,7 +40,7 @@ public class SorParagraphData extends FfParagraphData {
      * @return true if it's going to be a spelljump, false otherwise
      */
     public boolean isSpellJump() {
-        final Choice choice = getChoices().getChoiceByPosition(0);
+        final Choice choice = getChoices().iterator().next();
         String text = null;
         if (choice != null) {
             text = choice.getId();
