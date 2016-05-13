@@ -4,18 +4,12 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.hungarian.KalandJatekVarazslat.HET_SARKANYKIGYO" id="kjv3Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="kjv3Info" c:id-ref="kjv3Id" p:coverPath="resources/sor3/cover.jpg" p:resourceDir="sor3" p:contentTransformers-ref="defaultSorContentTransformers" p:paragraphResolver-ref="sorRuleBookParagraphResolverL" p:locale-ref="huLocale" p:position="3" p:series-ref="kjvTitle" p:title="Hét Sárkánykígyó" p:characterHandler-ref="sorCharacterHandler" p:commandResolvers-ref="sorCommandResolvers" p:characterBeanId="sorCharacter" p:characterPageDataBeanId="sorCharacterPageData">
+  <bean parent="sor3Info" class="hu.zagor.gamebooks.domain.FfBookInformations" id="kjv3Info" c:id-ref="kjv3Id" p:locale-ref="huLocale" p:series-ref="kjvTitle" p:title="Hét Sárkánykígyó" p:unfinished="false" p:hidden="false">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="kjv3enemies.xml" c:items="kjv3items.xml" c:paragraphs="kjv3content.xml" />
     </property>
-    <property name="contentSpecification">
-      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="true" />
-    </property>
-    <property name="resources">
-      <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="sor" p:jsResources="sor,sor3" />
-    </property>
     <property name="continuationData">
-      <bean class="hu.zagor.gamebooks.domain.ContinuationData" p:previousBookId="990586002" p:previousBookLastSectionId="511" p:continuationPageName="s-background" />
+      <bean class="hu.zagor.gamebooks.domain.ContinuationData" p:currentBookLastSectionId="498" p:previousBookId="990586002" p:nextBookInfo-ref="kjv4Info" p:nextBookId="990586004" p:previousBookLastSectionId="511" p:continuationPageName="s-background" />
     </property>
   </bean>
 

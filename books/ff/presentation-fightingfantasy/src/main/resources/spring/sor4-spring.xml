@@ -11,6 +11,12 @@
     <property name="contentSpecification">
       <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="true" />
     </property>
+    <property name="resources">
+      <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="sor,sor4" p:jsResources="sor,sor4" />
+    </property>
+    <property name="continuationData">
+      <bean class="hu.zagor.gamebooks.domain.ContinuationData" p:previousBookId="990586003" p:previousBookLastSectionId="498" p:continuationPageName="s-background" />
+    </property>
   </bean>
 
   <util:set id="sor4Sightmasters" value-type="java.lang.String">

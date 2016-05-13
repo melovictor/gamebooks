@@ -18,6 +18,7 @@ import hu.zagor.gamebooks.content.choice.DefaultChoiceSet;
 import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
+import hu.zagor.gamebooks.domain.ContinuationData;
 import hu.zagor.gamebooks.mvc.book.controller.domain.StaticResourceDescriptor;
 import hu.zagor.gamebooks.mvc.book.section.service.CustomPrePostSectionHandler;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
@@ -86,11 +87,13 @@ public class RawBookSectionControllerPositiveATest {
     @Mock private StaticResourceDescriptor staticResourceDescriptor;
     @Mock private Set<String> resourceSet;
     @Instance(inject = true) private Map<String, CustomPrePostSectionHandler> prePostHandlers;
+    @Mock private ContinuationData continueData;
 
     @BeforeClass
     public void setUpClass() {
         oldParagraph = new Paragraph("9", null, Integer.MAX_VALUE);
         info = new BookInformations(1L);
+        info.setContinuationData(continueData);
         characterHandler.setParagraphHandler(paragraphHandler);
         info.setCharacterHandler(characterHandler);
         player = new PlayerUser(3, "FireFoX", false);
@@ -140,6 +143,7 @@ public class RawBookSectionControllerPositiveATest {
         navigationRecorder.recordNavigation(wrapper, "s-9", oldParagraph, newParagraph);
         expectResources();
         expectCpDataInsertion();
+        expect(model.addAttribute("cont", continueData)).andReturn(model);
         mockControl.replay();
         // WHEN
         final String returned = underTest.handleSection(model, request, "s-9");
@@ -177,6 +181,7 @@ public class RawBookSectionControllerPositiveATest {
         navigationRecorder.recordNavigation(wrapper, "1", oldParagraph, newParagraph);
         expectResources();
         expectCpDataInsertion();
+        expect(model.addAttribute("cont", continueData)).andReturn(model);
         mockControl.replay();
         // WHEN
         final String returned = underTest.handleSection(model, request, "1");
@@ -204,6 +209,7 @@ public class RawBookSectionControllerPositiveATest {
         navigationRecorder.recordNavigation(wrapper, "s-10", oldParagraph, newParagraph);
         expectResources();
         expectCpDataInsertion();
+        expect(model.addAttribute("cont", continueData)).andReturn(model);
         mockControl.replay();
         // WHEN
         final String returned = underTest.handleSection(model, request, "s-10");
@@ -233,6 +239,7 @@ public class RawBookSectionControllerPositiveATest {
         navigationRecorder.recordNavigation(wrapper, "s-10", oldParagraph, newParagraph);
         expectResources();
         expectCpDataInsertion();
+        expect(model.addAttribute("cont", continueData)).andReturn(model);
         mockControl.replay();
         // WHEN
         final String returned = underTest.handleSection(model, request, "s-10");

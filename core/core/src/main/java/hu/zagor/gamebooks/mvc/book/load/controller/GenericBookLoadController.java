@@ -7,6 +7,7 @@ import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.content.Paragraph;
+import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
@@ -51,7 +52,7 @@ public abstract class GenericBookLoadController extends AbstractSectionDisplayin
     }
 
     /**
-     * Handles the loading of the previous character to start the current adventure with it.
+     * Handles the loading of the character from a saved game of the previous book to start the current adventure with it.
      * @param request the http request
      * @param response the {@link HttpServletResponse}, cannot be null
      * @throws IOException occurs if the redirection fails
@@ -77,18 +78,61 @@ public abstract class GenericBookLoadController extends AbstractSectionDisplayin
             throw new IllegalStateException("Continuation is not supported when the character from the previous book is not staying on the finishing section.");
         }
 
-        doLoadPrevious(request, response, container);
+        doLoadPrevious(wrapper, container);
         prepareNextChoice(wrapper, continuationData);
         final Character character = (Character) container.getElement(ControllerAddresses.CHARACTER_STORE_KEY);
         character.getParagraphs().clear();
         response.sendRedirect(continuationData.getContinuationPageName());
     }
 
+    /**
+     * Handles the loading of the previous character of the previous book from memory to start the current adventure with it.
+     * @param request the http request
+     * @param response the {@link HttpServletResponse}, cannot be null
+     * @throws IOException occurs if the redirection fails
+     */
+    @RequestMapping(value = PageAddresses.BOOK_CONTINUE_PREVIOUS)
+    public void continueWithPrevious(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
+        logger.debug("GenericBookLoadController.continueWithPrevious");
+
+        final ContinuationData continuationData = getInfo().getContinuationData();
+        if (continuationData == null) {
+            throw new IllegalStateException("Continuation is not supported when continuation information is not provided.");
+        }
+
+        final Paragraph paragraph = (Paragraph) request.getSession().getAttribute(ControllerAddresses.PARAGRAPH_STORE_KEY + continuationData.getPreviousBookId());
+        if (!continuationData.getPreviousBookLastSectionId().equals(paragraph.getId())) {
+            throw new IllegalStateException("Continuation is not supported when the character from the previous book is not staying on the finishing section.");
+        }
+
+        final Character character = (Character) request.getSession().getAttribute(ControllerAddresses.CHARACTER_STORE_KEY + continuationData.getPreviousBookId());
+        if (character == null) {
+            throw new IllegalStateException("Couldn't find character for previous book with which continuation would have been possible.");
+        }
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        wrapper.setCharacter(character);
+        character.getParagraphs().clear();
+
+        doContinuePrevious(wrapper);
+        prepareNextChoice(wrapper, continuationData);
+        response.sendRedirect(continuationData.getContinuationPageName());
+    }
+
     private void prepareNextChoice(final HttpSessionWrapper wrapper, final ContinuationData continuationData) {
-        final Paragraph paragraph = wrapper.getParagraph();
+        Paragraph paragraph = wrapper.getParagraph();
+        if (paragraph == null) {
+            paragraph = getDummyParagraph();
+            wrapper.setParagraph(paragraph);
+        }
         final ChoiceSet choices = paragraph.getData().getChoices();
         choices.add(new Choice(continuationData.getContinuationPageName().substring(2), null, -1, null));
         paragraph.calculateValidEvents();
+    }
+
+    private Paragraph getDummyParagraph() {
+        final Paragraph dummy = getBeanFactory().getBean(Paragraph.class);
+        dummy.setData(getBeanFactory().getBean("paragraphData", ParagraphData.class));
+        return dummy;
     }
 
     /**
@@ -101,12 +145,17 @@ public abstract class GenericBookLoadController extends AbstractSectionDisplayin
     protected abstract String doLoad(final Model model, final HttpServletRequest request, final SavedGameContainer savedGameContainer);
 
     /**
-     * Abstract method for the rulesets and books to do custom load handling for continuing a previous book.
-     * @param request the http request, cannot be null
-     * @param response the {@link HttpServletResponse}, cannot be null
+     * Abstract method for the rulesets and books to do custom load handling for continuing a previous book from a saved game.
+     * @param wrapper the {@link HttpSessionWrapper}, cannot be null
      * @param savedGameContainer the container whose content will be saved, cannot be null
      */
-    protected abstract void doLoadPrevious(final HttpServletRequest request, HttpServletResponse response, final SavedGameContainer savedGameContainer);
+    protected abstract void doLoadPrevious(HttpSessionWrapper wrapper, final SavedGameContainer savedGameContainer);
+
+    /**
+     * Abstract method for the rulesets and books to do custom load handling for continuing a previous book from memory.
+     * @param wrapper the {@link HttpSessionWrapper}, cannot be null
+     */
+    protected abstract void doContinuePrevious(HttpSessionWrapper wrapper);
 
     public void setGameStateHandler(final GameStateHandler gameStateHandler) {
         this.gameStateHandler = gameStateHandler;

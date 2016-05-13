@@ -16,6 +16,7 @@ import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.content.choice.DefaultChoiceSet;
 import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
+import hu.zagor.gamebooks.domain.ContinuationData;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
@@ -83,10 +84,12 @@ public class SorBookSectionControllerTest {
     @Mock private SorRuleBookParagraphResolver paragraphResolver;
     @Instance private StaticResourceDescriptor staticResourceDescriptor;
     @Instance private List<Choice> detailedSpellChoices;
+    @Mock private ContinuationData continueData;
 
     @BeforeClass
     public void setUpClass() {
         info = new FfBookInformations(1);
+        info.setContinuationData(continueData);
         info.setCharacterPageDataBeanId("ffCpd");
         Whitebox.setInternalState(underTest, "info", info);
         info.setCharacterHandler(characterHandler);
@@ -128,7 +131,7 @@ public class SorBookSectionControllerTest {
         logger.info("Handling spell section switch to section '{}'.", "479");
 
         expectCommon();
-
+        expect(model.addAttribute("cont", continueData)).andReturn(model);
         mockControl.replay();
         // WHEN
         final String returned = underTest.handleSpellSectionChangeBySpellPosition(model, request, "2");
@@ -157,7 +160,7 @@ public class SorBookSectionControllerTest {
         logger.info("Handling spell section switch to section '{}'.", "479");
 
         expectCommon();
-
+        expect(model.addAttribute("cont", continueData)).andReturn(model);
         mockControl.replay();
         // WHEN
         final String returned = underTest.handleSpellSectionChangeBySpellPosition(model, request, "479|2");

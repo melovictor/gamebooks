@@ -22,6 +22,7 @@ public final class PageAddresses {
     public static final String BOOK_NEW = "new";
     public static final String BOOK_LOAD = "load";
     public static final String BOOK_LOAD_PREVIOUS = "loadPrevious";
+    public static final String BOOK_CONTINUE_PREVIOUS = "continuePrevious";
     public static final String BOOK_MISSING = "missing";
     public static final String BOOK_SAVE = "save";
     public static final String BOOK_TAKE_ITEM = "take";

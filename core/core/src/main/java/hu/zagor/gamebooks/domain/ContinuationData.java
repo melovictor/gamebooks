@@ -6,6 +6,9 @@ package hu.zagor.gamebooks.domain;
  */
 public class ContinuationData {
     private long previousBookId;
+    private long nextBookId;
+    private BookInformations nextBookInfo;
+    private String currentBookLastSectionId;
     private String previousBookLastSectionId;
     private String continuationPageName;
 
@@ -31,6 +34,30 @@ public class ContinuationData {
 
     public void setContinuationPageName(final String continuationPageName) {
         this.continuationPageName = continuationPageName;
+    }
+
+    public String getCurrentBookLastSectionId() {
+        return currentBookLastSectionId;
+    }
+
+    public void setCurrentBookLastSectionId(final String currentBookLastSectionId) {
+        this.currentBookLastSectionId = currentBookLastSectionId;
+    }
+
+    public long getNextBookId() {
+        return nextBookId;
+    }
+
+    public void setNextBookId(final long nextBookId) {
+        this.nextBookId = nextBookId;
+    }
+
+    public BookInformations getNextBookInfo() {
+        return nextBookInfo;
+    }
+
+    public void setNextBookInfo(final BookInformations nextBookInfo) {
+        this.nextBookInfo = nextBookInfo;
     }
 
 }

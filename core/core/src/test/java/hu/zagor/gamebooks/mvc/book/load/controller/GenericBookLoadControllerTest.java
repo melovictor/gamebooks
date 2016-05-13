@@ -85,8 +85,13 @@ public class GenericBookLoadControllerTest {
             }
 
             @Override
-            protected void doLoadPrevious(final HttpServletRequest request, final HttpServletResponse response, final SavedGameContainer savedGameContainer) {
+            protected void doLoadPrevious(final HttpSessionWrapper wrapper, final SavedGameContainer savedGameContainer) {
                 logger.debug("called doLoadPrevious");
+            }
+
+            @Override
+            protected void doContinuePrevious(final HttpSessionWrapper wrapper) {
+                logger.debug("called doContinuePrevious");
             }
 
             @Override

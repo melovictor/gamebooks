@@ -18,7 +18,6 @@ import hu.zagor.gamebooks.raw.character.RawCharacterPageData;
 import hu.zagor.gamebooks.raw.mvc.book.controller.CharacterPageDisplayingController;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
@@ -75,22 +74,25 @@ public class RawBookLoadController extends GenericBookLoadController implements 
     }
 
     @Override
-    protected void doLoadPrevious(final HttpServletRequest request, final HttpServletResponse response, final SavedGameContainer savedGameContainer) {
-        Assert.notNull(request, "The parameter 'request' cannot be null!");
+    protected void doLoadPrevious(final HttpSessionWrapper wrapper, final SavedGameContainer savedGameContainer) {
+        Assert.notNull(wrapper, "The parameter 'wrapper' cannot be null!");
         Assert.notNull(savedGameContainer, "The parameter 'savedGameContainer' cannot be null!");
 
-        final HttpSessionWrapper wrapper = getWrapper(request);
         final Character character = (Character) savedGameContainer.getElement(ControllerAddresses.CHARACTER_STORE_KEY);
+        wrapper.setCharacter(character);
+        doContinuePrevious(wrapper);
+    }
+
+    @Override
+    protected void doContinuePrevious(final HttpSessionWrapper wrapper) {
+        Assert.notNull(wrapper, "The parameter 'wrapper' cannot be null!");
         final Map<String, Enemy> enemies = wrapper.getEnemies();
         enemies.clear();
         final BookInformations info = getInfo();
         final BookItemStorage itemStorage = contentInitializer.getItemStorage(info);
         enemies.putAll(itemStorage.getEnemies());
 
-        final CharacterHandler characterHandler = info.getCharacterHandler();
-
-        setUpCharacterHandler(wrapper, characterHandler);
-        wrapper.setCharacter(character);
+        setUpCharacterHandler(wrapper, info.getCharacterHandler());
     }
 
     @Override

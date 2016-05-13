@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
-  xmlns:c="http://www.springframework.org/schema/c"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.hungarian.KalandJatekVarazslat.A_SHAMUTANTI_DOMBOK" id="kjv1Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="kjv1Info" c:id-ref="kjv1Id" p:coverPath="resources/sor1/cover.jpg" p:resourceDir="sor1"
-    p:contentTransformers-ref="defaultSorContentTransformers" p:paragraphResolver-ref="sor1RuleBookParagraphResolverL" p:locale-ref="huLocale" p:position="1" p:series-ref="kjvTitle"
-    p:title="A Shamutanti dombok" p:characterHandler-ref="sorCharacterHandler" p:commandResolvers-ref="sorCommandResolvers" p:unfinished="false" p:characterBeanId="sorCharacter"
-    p:characterPageDataBeanId="sorCharacterPageData">
+  <bean parent="sor1Info" class="hu.zagor.gamebooks.domain.FfBookInformations" id="kjv1Info" c:id-ref="kjv1Id" p:locale-ref="huLocale" p:series-ref="kjvTitle" p:title="A Shamutanti dombok" p:unfinished="false" p:hidden="false">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="kjv1enemies.xml" c:items="kjv1items.xml" c:paragraphs="kjv1content.xml" />
     </property>
-    <property name="contentSpecification">
-      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="true" />
-    </property>
-    <property name="resources">
-      <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="sor" p:jsResources="sor" />
+    <property name="continuationData">
+      <bean class="hu.zagor.gamebooks.domain.ContinuationData" p:currentBookLastSectionId="456" p:nextBookId="990586002" p:nextBookInfo-ref="kjv2Info" />
     </property>
   </bean>
-  
-  <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor" id="kjv1Help" p:info-ref="kjv1Info"  scope="prototype">
+
+  <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor" id="kjv1Help" p:info-ref="kjv1Info" scope="prototype">
     <property name="sections">
       <util:list>
         <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sor" p:jsp="intro" />

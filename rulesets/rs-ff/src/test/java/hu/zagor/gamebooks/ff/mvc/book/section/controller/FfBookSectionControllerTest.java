@@ -16,6 +16,7 @@ import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.content.choice.DefaultChoiceSet;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestDecision;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
+import hu.zagor.gamebooks.domain.ContinuationData;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.domain.ResourceInformation;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -83,11 +84,13 @@ public class FfBookSectionControllerTest {
     @Instance private ResourceInformation resources;
     @Instance(inject = true) private Map<String, CustomPrePostSectionHandler> prePostHandlers;
     @Instance private FightCommandForm form;
+    @Mock private ContinuationData continueData;
 
     @BeforeClass
     public void setUpClass() {
         oldParagraph = new Paragraph("9", null, Integer.MAX_VALUE);
         info = new FfBookInformations(1L);
+        info.setContinuationData(continueData);
         resources.setCssResources("ff15,tm2");
         resources.setJsResources("ff15");
         info.setResources(resources);
@@ -113,6 +116,7 @@ public class FfBookSectionControllerTest {
         expect(wrapper.getCharacter()).andReturn(character);
         interactionHandler.setAttributeTestResult(character, AttributeTestDecision.TEST);
         expectHandleSection();
+        expect(model.addAttribute("cont", continueData)).andReturn(model);
         mockControl.replay();
         // WHEN
         final String returned = underTest.handleAttributeTestTesting(model, request);
@@ -124,6 +128,7 @@ public class FfBookSectionControllerTest {
         expectWrapper();
         interactionRecorder.recordRandomRoll(wrapper);
         expectHandleSection();
+        expect(model.addAttribute("cont", continueData)).andReturn(model);
         mockControl.replay();
         // WHEN
         final String returned = underTest.handleRandom(model, request);
@@ -143,6 +148,7 @@ public class FfBookSectionControllerTest {
         interactionRecorder.prepareFightCommand(wrapper, LUCK_ON_HIT, LUCK_ON_DEFENSE, false);
         interactionRecorder.recordFightCommand(wrapper, ENEMY_ID);
         expectHandleSection();
+        expect(model.addAttribute("cont", continueData)).andReturn(model);
         expect(beanFactory.getBean("ffCharacterPageData", character, characterHandler)).andReturn(charPageData);
         expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
         mockControl.replay();
