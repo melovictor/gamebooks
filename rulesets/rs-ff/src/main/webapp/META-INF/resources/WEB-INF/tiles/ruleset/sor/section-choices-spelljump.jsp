@@ -6,7 +6,7 @@
 		<c:forEach var="choice" items="${paragraph.data.choices}">
 			<li>
 				<a href="${choice.id}">
-					<spring:message code="book.choice.next" />
+					<spring:message code="page.book.choice.next" />
 				</a>
 			</li>
 		</c:forEach>

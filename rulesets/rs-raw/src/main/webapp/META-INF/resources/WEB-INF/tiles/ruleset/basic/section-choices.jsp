@@ -15,7 +15,7 @@
                                 </c:if>
                         </c:when>
                         <c:otherwise>
-                            <spring:message code="book.choice.next" />
+                            <spring:message code="page.book.choice.next" />
                             <c:if test="${!hideChoiceSection}">
                                 (${choice.display})
                             </c:if>
