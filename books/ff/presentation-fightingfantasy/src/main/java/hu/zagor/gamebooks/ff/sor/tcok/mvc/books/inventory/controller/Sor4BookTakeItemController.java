@@ -23,14 +23,16 @@ public class Sor4BookTakeItemController extends SorBookTakeItemController {
 
     @Override
     protected Map<String, Object> doHandleMarketBuy(final HttpServletRequest request, final String itemId) {
-        final Map<String, Object> doHandleMarketBuy = super.doHandleMarketBuy(request, itemId);
+        final Map<String, Object> purchaseResult = super.doHandleMarketBuy(request, itemId);
 
         final HttpSessionWrapper wrapper = getWrapper(request);
-        final MarketCommand market = (MarketCommand) wrapper.getParagraph().getItemsToProcess().get(0).getCommand();
-        for (final MarketElement element : market.getItemsForSale()) {
-            element.setPrice(priceChange.get(element.getPrice()));
+        if ("226".equals(wrapper.getParagraph().getId())) {
+            final MarketCommand market = (MarketCommand) wrapper.getParagraph().getItemsToProcess().get(0).getCommand();
+            for (final MarketElement element : market.getItemsForSale()) {
+                element.setPrice(priceChange.get(element.getPrice()));
+            }
         }
 
-        return doHandleMarketBuy;
+        return purchaseResult;
     }
 }

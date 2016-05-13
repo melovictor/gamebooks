@@ -581,17 +581,31 @@
     <text>
         [p]Átkutatod a padlót, de semmi érdekeset nem találsz. A lábadhoz gurított üveg kis mennyiségű étolajat tartalmaz – valószínűleg ezt itta a lény, és ettől lett olyan zsíros és ragacsos a szoba padlója. Ha akarod, elteheted az 
     </text>
-    <itemCheck type="totalItems" id="11">
+    <itemCheck type="item" id="4040">
       <have>
         <text>
-            [span class="replaceItem" data-id="3078" data-amount="1"]olajos üveget[/span], de cserébe az egyik tárgyadat itt kell hagynod. Ezek után távozol a szobából.[/p]
+            [span class="takeItem" data-id="3078" data-amount="1"]olajos üveget[/span].
         </text>
       </have>
       <dontHave>
-        <text>
-            [span class="takeItem" data-id="3078" data-amount="1"]olajos üveget[/span]. Ezek után távozol a szobából.[/p]
-        </text>
+        <itemCheck type="totalItems" id="11">
+          <have>
+            <text>
+                [span class="replaceItem" data-id="3078" data-amount="1"]olajos üveget[/span], de cserébe az egyik tárgyadat itt kell hagynod.
+            </text>
+          </have>
+          <dontHave>
+            <text>
+                [span class="takeItem" data-id="3078" data-amount="1"]olajos üveget[/span].
+            </text>
+          </dontHave>
+        </itemCheck>
       </dontHave>
+      <after>
+        <text>
+             Ezek után távozol a szobából.[/p]
+        </text>
+      </after>
     </itemCheck>
     <next id="96"></next>
   </p>
@@ -2858,12 +2872,12 @@
     </text>
     <itemCheck type="goldpiece" id="1">
       <have>
-        <next id="287">Ha elbeszélgetsz vele egy kicsit, de pénzt nem adsz neki</next>
+        <next id="61">Ha odalöksz neki egy Aranytallért, és elbeszélgetsz vele egy kicsit</next>
+        <next id="287">Ha csak beszélgetsz, de pénzt nem adsz neki</next>
         <next id="8">Ha inkább rá se hederítesz, és tovább folytatod az utad az udvaron</next>
       </have>
       <dontHave>
-        <next id="61">Ha odalöksz neki egy Aranytallért, és elbeszélgetsz vele egy kicsit</next>
-        <next id="287">Ha csak beszélgetsz, de pénzt nem adsz neki</next>
+        <next id="287">Ha elbeszélgetsz vele egy kicsit, de pénzt nem adsz neki</next>
         <next id="8">Ha inkább rá se hederítesz, és tovább folytatod az utad az udvaron</next>
       </dontHave>
     </itemCheck>
@@ -7653,7 +7667,7 @@
       </dontHave>
     </itemCheck>
   </p>
-    <p id="631a" display="631">
+  <p id="631a" display="631">
     <text>
         [p]Amilyen gyorsan kezdődött, olyan gyorsan el is múlik a varázslat hatása. Új környezetben találod magad, amikor visszatérsz a földre. A börtöntorony eltűnt, egy hosszú csigalépcsőn állsz – vigyáznod kell, nehogy legurulj, annyira meredek. Kicsit lejjebb, a hátad mögött, egy hatalmas, kétszárnyú ajtó áll, magad előtt pedig, a lépcsősor tetején egy másik, mely hatalmas és elég masszívnak tűnik. Felkapaszkodsz a lépcsőkön, és lenyomod a kilincset. Nyitva van![/p]
     </text>
@@ -10192,7 +10206,7 @@
   </p>
   <p id="759">
     <text>
-        [p]Az Inga lassan leng előre és hátra. Ellenfeled felfigyel a ritmusos mozgásra, és hamarosan elálmosodik. Nyugodtan átkutathatod a szobáját. Úgy fest, az aranyát jól elrejtve tárolja, mivel csak egy 10 Aranytallért tartalmazó kis erszényt találsz az asztalán. Ezeket megtarthatod. Az asztal egyik fiókjában azonban találsz egy könyvet, mely felkelti az érdeklődésedet. Az egyik lapon egy ábrát látsz, melyről felismered, hogy a várudvart ábrázolja. Az udvar végén álló kétszárnyú ajtó mellé az alábbi szó van írva: „Alaralatanalara.” [em]A jelszó![/em] Megjegyzed a szót, becsukod a könyvet és távozol a szobából.[/p]
+        [p]Az Inga lassan leng előre és hátra. Ellenfeled felfigyel a ritmusos mozgásra, és hamarosan elálmosodik. Nyugodtan átkutathatod a szobáját. Úgy fest, az aranyát jól elrejtve tárolja, mivel csak egy [span class="takeItem" data-id="gold" data-amount="10"]10 Aranytallért[/span] tartalmazó kis erszényt találsz az asztalán. Ezeket megtarthatod. Az asztal egyik fiókjában azonban találsz egy könyvet, mely felkelti az érdeklődésedet. Az egyik lapon egy ábrát látsz, melyről felismered, hogy a várudvart ábrázolja. Az udvar végén álló kétszárnyú ajtó mellé az alábbi szó van írva: „Alaralatanalara.” [em]A jelszó![/em] Megjegyzed a szót, becsukod a könyvet és távozol a szobából.[/p]
     </text>
     <gatherItem id="4089" />
     <next id="141"></next>
