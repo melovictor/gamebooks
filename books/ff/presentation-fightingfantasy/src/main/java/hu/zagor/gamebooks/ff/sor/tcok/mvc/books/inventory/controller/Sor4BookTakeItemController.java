@@ -5,6 +5,7 @@ import hu.zagor.gamebooks.content.command.market.MarketCommand;
 import hu.zagor.gamebooks.content.command.market.domain.MarketElement;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.SorBookTakeItemController;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.BuySellResponse;
 import hu.zagor.gamebooks.support.bookids.english.Sorcery;
 import java.util.Map;
 import javax.annotation.Resource;
@@ -22,8 +23,8 @@ public class Sor4BookTakeItemController extends SorBookTakeItemController {
     @Resource(name = "sor4MagicItemsPriceChange") private Map<Integer, Integer> priceChange;
 
     @Override
-    protected Map<String, Object> doHandleMarketBuy(final HttpServletRequest request, final String itemId) {
-        final Map<String, Object> purchaseResult = super.doHandleMarketBuy(request, itemId);
+    protected BuySellResponse doHandleMarketBuy(final HttpServletRequest request, final String itemId) {
+        final BuySellResponse purchaseResult = super.doHandleMarketBuy(request, itemId);
 
         final HttpSessionWrapper wrapper = getWrapper(request);
         if ("226".equals(wrapper.getParagraph().getId())) {

@@ -27,7 +27,7 @@ public class FfCharacterItemHandlerAddItemBTest {
     @UnderTest private FfCharacterItemHandler underTest;
     @MockControl private IMocksControl mockControl;
     private FfCharacter character;
-    @Inject private ItemFactory itemFactory;
+    @Mock private ItemFactory itemFactory;
     @Inject private Logger logger;
     private FfItem eSword;
     private FfItem eBroadsword;

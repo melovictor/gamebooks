@@ -9,10 +9,9 @@ import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.market.MarketCommand;
 import hu.zagor.gamebooks.content.command.market.domain.MarketElement;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.BuySellResponse;
 import hu.zagor.gamebooks.mvc.book.inventory.service.MarketHandler;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.springframework.stereotype.Component;
 
 /**
@@ -23,15 +22,15 @@ import org.springframework.stereotype.Component;
 public class FfMarketHandler implements MarketHandler {
 
     @Override
-    public Map<String, Object> handleMarketPurchase(final String itemId, final Character characterObject, final Command commandObject,
+    public BuySellResponse handleMarketPurchase(final String itemId, final Character characterObject, final Command commandObject,
         final CharacterHandler characterHandler) {
         final FfCharacter character = (FfCharacter) characterObject;
 
         final MarketCommand command = (MarketCommand) commandObject;
         final List<MarketElement> itemsForSale = command.getItemsForSale();
         final MarketElement toBuy = fetchItemFromList(itemId, itemsForSale);
-        final Map<String, Object> result = new HashMap<>();
-        result.put("successfulTransaction", false);
+        final BuySellResponse result = new BuySellResponse();
+        result.setSuccessfulTransaction(false);
         final FfCharacterHandler handler = (FfCharacterHandler) characterHandler;
         final FfAttributeHandler attributeHandler = handler.getAttributeHandler();
         if (toBuy != null) {
@@ -41,11 +40,11 @@ public class FfMarketHandler implements MarketHandler {
                 final CharacterItemHandler itemHandler = characterHandler.getItemHandler();
                 itemHandler.addItem(character, toBuy.getId(), 1);
                 toBuy.setStock(toBuy.getStock() - 1);
-                result.put("successfulTransaction", true);
+                result.setSuccessfulTransaction(true);
             }
         }
 
-        result.put("gold", getCurrentGoldAmount(character, command, attributeHandler));
+        result.setGold(getCurrentGoldAmount(character, command, attributeHandler));
         return result;
     }
 
@@ -70,16 +69,15 @@ public class FfMarketHandler implements MarketHandler {
     }
 
     @Override
-    public Map<String, Object> handleMarketSell(final String itemId, final Character characterObject, final Command commandObject,
-        final CharacterHandler characterHandler) {
+    public BuySellResponse handleMarketSell(final String itemId, final Character characterObject, final Command commandObject, final CharacterHandler characterHandler) {
         final FfCharacter character = (FfCharacter) characterObject;
 
         final MarketCommand command = (MarketCommand) commandObject;
         final List<MarketElement> itemsForPurchase = command.getItemsForPurchase();
         final MarketElement toSell = fetchItemFromList(itemId, itemsForPurchase);
-        final Map<String, Object> result = new HashMap<>();
+        final BuySellResponse result = new BuySellResponse();
 
-        result.put("successfulTransaction", false);
+        result.setSuccessfulTransaction(false);
 
         final FfCharacterHandler handler = (FfCharacterHandler) characterHandler;
         final FfAttributeHandler attributeHandler = handler.getAttributeHandler();
@@ -91,7 +89,7 @@ public class FfMarketHandler implements MarketHandler {
 
                 itemHandler.removeItem(character, toSell.getId(), 1);
                 toSell.setStock(toSell.getStock() - 1);
-                result.put("successfulTransaction", true);
+                result.setSuccessfulTransaction(true);
 
                 if (command.getGiveUpMode() != null) {
                     command.setGiveUpAmount(command.getGiveUpAmount() - 1);
@@ -99,9 +97,9 @@ public class FfMarketHandler implements MarketHandler {
             }
         }
 
-        result.put("gold", getCurrentGoldAmount(character, command, attributeHandler));
-        result.put("giveUpMode", command.getGiveUpMode() != null);
-        result.put("giveUpFinished", command.getGiveUpAmount() == 0);
+        result.setGold(getCurrentGoldAmount(character, command, attributeHandler));
+        result.setGiveUpMode(command.getGiveUpMode() != null);
+        result.setGiveUpFinished(command.getGiveUpAmount() == 0);
 
         return result;
     }

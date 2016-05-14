@@ -15,10 +15,10 @@ import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.SorBookTakeItemController;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.BuySellResponse;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.bookids.english.Sorcery;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -44,8 +44,8 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
 
     @Override
-    protected Map<String, Object> doHandleMarketBuy(final HttpServletRequest request, final String itemId) {
-        Map<String, Object> result;
+    protected BuySellResponse doHandleMarketBuy(final HttpServletRequest request, final String itemId) {
+        BuySellResponse result;
         final HttpSessionWrapper wrapper = getWrapper(request);
         final Paragraph paragraph = wrapper.getParagraph();
         final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
@@ -75,10 +75,10 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
     }
 
     @Override
-    public Map<String, Object> doHandleMarketSell(final HttpServletRequest request, final String itemId) {
+    public BuySellResponse doHandleMarketSell(final HttpServletRequest request, final String itemId) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final Paragraph paragraph = wrapper.getParagraph();
-        Map<String, Object> handleMarketSell;
+        BuySellResponse handleMarketSell;
         if ("79".equals(paragraph.getId())) {
             handleMarketSell = handleMarket79(itemId, wrapper);
         } else if ("315".equals(paragraph.getDisplayId())) {
@@ -89,11 +89,10 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
         return handleMarketSell;
     }
 
-    private Map<String, Object> handleMarket315(final String itemId, final HttpSessionWrapper wrapper) {
-        Map<String, Object> handleMarketSell;
+    private BuySellResponse handleMarket315(final String itemId, final HttpSessionWrapper wrapper) {
+        final BuySellResponse handleMarketSell = new BuySellResponse();
         final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
         final SorCharacter character = (SorCharacter) wrapper.getCharacter();
-        handleMarketSell = new HashMap<>();
 
         final Item item = itemHandler.getItem(character, itemId);
         final int diff = calculateSkillTestDifference(handleMarketSell, character, item.getName());
@@ -110,16 +109,15 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
             final MarketElement marketItem = getMarketItem(marketCommand.getItemsForPurchase(), itemId);
             marketItem.setStock(marketItem.getStock() - 1);
         }
-        handleMarketSell.put("giveUpMode", false);
-        handleMarketSell.put("giveUpFinished", true);
-        handleMarketSell.put("successfulTransaction", true);
-        handleMarketSell.put("gold", character.getGold());
+        handleMarketSell.setGiveUpMode(false);
+        handleMarketSell.setGiveUpFinished(true);
+        handleMarketSell.setSuccessfulTransaction(true);
+        handleMarketSell.setGold(character.getGold());
         return handleMarketSell;
     }
 
-    private Map<String, Object> handleMarket79(final String itemId, final HttpSessionWrapper wrapper) {
+    private BuySellResponse handleMarket79(final String itemId, final HttpSessionWrapper wrapper) {
         final Paragraph paragraph = wrapper.getParagraph();
-        Map<String, Object> handleMarketSell;
         final MarketCommand marketCommand = fetchMarketCommand(paragraph);
         final AttributeTestCommand skillCheckCommand = (AttributeTestCommand) marketCommand.getAfter().getCommands().get(0);
         final FfParagraphData data = skillCheckCommand.getSuccess().get(0).getData();
@@ -128,9 +126,9 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
         lostItems.add(new GatheredLostItem(itemId, 1, 0, false));
         blacklistItem(wrapper.getCharacter(), itemId);
 
-        handleMarketSell = new HashMap<>();
-        handleMarketSell.put("giveUpMode", true);
-        handleMarketSell.put("giveUpFinished", true);
+        final BuySellResponse handleMarketSell = new BuySellResponse();
+        handleMarketSell.setGiveUpMode(true);
+        handleMarketSell.setGiveUpFinished(true);
         return handleMarketSell;
     }
 
@@ -138,7 +136,7 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
         return (MarketCommand) paragraph.getItemsToProcess().get(0).getCommand();
     }
 
-    private int calculateSkillTestDifference(final Map<String, Object> handleMarketSell, final SorCharacter character, final String itemName) {
+    private int calculateSkillTestDifference(final BuySellResponse handleMarketSell, final SorCharacter character, final String itemName) {
         final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
         final int skill = characterHandler.getAttributeHandler().resolveValue(character, "skill");
         final int[] randomNumber = generator.getRandomNumber(2);
@@ -159,7 +157,7 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
         final String newText = messageSource.getMessage("page.ff.label.test.skill.compact", new Object[]{diceRender, randomNumber[0], itemExchangeResult},
             provider.getLocale());
 
-        handleMarketSell.put("text", newText);
+        handleMarketSell.setText(newText);
         return skill - randomNumber[0];
     }
 

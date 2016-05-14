@@ -31,7 +31,7 @@ public class DefaultCharacterItemHandlerRemoveItemTest {
     private static final String ITEM_ID = "3001";
     @UnderTest private DefaultCharacterItemHandler underTest;
     @MockControl private IMocksControl mockControl;
-    @Inject private ItemFactory itemFactory;
+    @Mock private ItemFactory itemFactory;
     private Character character;
     private Item nonEquippableItem;
     private Item equippableEquippedItem;

@@ -16,13 +16,13 @@ import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.service.FfMarketHandler;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.BuySellResponse;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.List;
-import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.easymock.IMocksControl;
@@ -55,7 +55,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
     @Mock private Paragraph paragraph;
     @Mock private FfParagraphData data;
     @Inject private FfMarketHandler marketHandler;
-    @Instance private Map<String, Object> resultMap;
+    @Instance private BuySellResponse resultMap;
     @Mock private FfItem item;
     @Inject private ItemInteractionRecorder itemInteractionRecorder;
     @Mock private MarketCommand marketCommand;
@@ -230,7 +230,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         itemInteractionRecorder.recordItemMarketMovement(wrapper, "Sale", "3001");
         mockControl.replay();
         // WHEN
-        final Map<String, Object> response = underTest.handleMarketBuy(request, "3001");
+        final BuySellResponse response = underTest.handleMarketBuy(request, "3001");
         // THEN
         Assert.assertSame(response, resultMap);
     }
@@ -247,7 +247,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         itemInteractionRecorder.recordItemMarketMovement(wrapper, "Purchase", "3001");
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketSell(request, "3001");
+        final BuySellResponse returned = underTest.handleMarketSell(request, "3001");
         // THEN
         Assert.assertSame(returned, resultMap);
     }

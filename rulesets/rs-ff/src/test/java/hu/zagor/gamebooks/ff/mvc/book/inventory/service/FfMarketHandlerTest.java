@@ -9,11 +9,11 @@ import hu.zagor.gamebooks.content.command.market.GiveUpMode;
 import hu.zagor.gamebooks.content.command.market.MarketCommand;
 import hu.zagor.gamebooks.content.command.market.domain.MarketElement;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.BuySellResponse;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.List;
-import java.util.Map;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.Assert;
@@ -69,10 +69,10 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(10);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketPurchase("3001", character, command, characterHandler);
+        final BuySellResponse returned = underTest.handleMarketPurchase("3001", character, command, characterHandler);
         // THEN
-        Assert.assertEquals(returned.get("successfulTransaction"), false);
-        Assert.assertEquals(returned.get("gold"), 10);
+        Assert.assertEquals(returned.isSuccessfulTransaction(), false);
+        Assert.assertEquals(returned.getGold(), 10);
     }
 
     public void testHandleMarketPurchaseWhenItemIsForSaleButTooExpensiveShouldReturnWithFailedTransactionAndOriginalMoney() {
@@ -81,10 +81,10 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(2).times(2);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketPurchase("3001", character, command, characterHandler);
+        final BuySellResponse returned = underTest.handleMarketPurchase("3001", character, command, characterHandler);
         // THEN
-        Assert.assertEquals(returned.get("successfulTransaction"), false);
-        Assert.assertEquals(returned.get("gold"), 2);
+        Assert.assertEquals(returned.isSuccessfulTransaction(), false);
+        Assert.assertEquals(returned.getGold(), 2);
     }
 
     public void testHandleMarketPurchaseWhenItemIsForSaleButOutOfStockShouldReturnWithFailedTransactionAndOriginalMoney() {
@@ -93,10 +93,10 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(5).times(2);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketPurchase("3003", character, command, characterHandler);
+        final BuySellResponse returned = underTest.handleMarketPurchase("3003", character, command, characterHandler);
         // THEN
-        Assert.assertEquals(returned.get("successfulTransaction"), false);
-        Assert.assertEquals(returned.get("gold"), 5);
+        Assert.assertEquals(returned.isSuccessfulTransaction(), false);
+        Assert.assertEquals(returned.getGold(), 5);
     }
 
     public void testHandleMarketPurchaseWhenItemIsAvailableShouldReturnWithSuccessfulTransaction() {
@@ -108,10 +108,10 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(2);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketPurchase("3001", character, command, characterHandler);
+        final BuySellResponse returned = underTest.handleMarketPurchase("3001", character, command, characterHandler);
         // THEN
-        Assert.assertEquals(returned.get("successfulTransaction"), true);
-        Assert.assertEquals(returned.get("gold"), 2);
+        Assert.assertEquals(returned.isSuccessfulTransaction(), true);
+        Assert.assertEquals(returned.getGold(), 2);
         Assert.assertEquals(itemA.getStock(), 1);
     }
 
@@ -121,12 +121,12 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(5);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, characterHandler);
+        final BuySellResponse returned = underTest.handleMarketSell("3001", character, command, characterHandler);
         // THEN
-        Assert.assertEquals(returned.get("successfulTransaction"), false);
-        Assert.assertEquals(returned.get("gold"), 5);
-        Assert.assertEquals(returned.get("giveUpMode"), false);
-        Assert.assertEquals(returned.get("giveUpFinished"), true);
+        Assert.assertEquals(returned.isSuccessfulTransaction(), false);
+        Assert.assertEquals(returned.getGold(), 5);
+        Assert.assertEquals(returned.isGiveUpMode(), false);
+        Assert.assertEquals(returned.isGiveUpFinished(), true);
     }
 
     public void testHandleMarketSellWhenItemIsNotAvailableForSaleAndGiveUpModeStillActiveShouldReturnWithFailedTransactionAndGiveUpModeActive() {
@@ -137,12 +137,12 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(5);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, characterHandler);
+        final BuySellResponse returned = underTest.handleMarketSell("3001", character, command, characterHandler);
         // THEN
-        Assert.assertEquals(returned.get("successfulTransaction"), false);
-        Assert.assertEquals(returned.get("gold"), 5);
-        Assert.assertEquals(returned.get("giveUpMode"), true);
-        Assert.assertEquals(returned.get("giveUpFinished"), false);
+        Assert.assertEquals(returned.isSuccessfulTransaction(), false);
+        Assert.assertEquals(returned.getGold(), 5);
+        Assert.assertEquals(returned.isGiveUpMode(), true);
+        Assert.assertEquals(returned.isGiveUpFinished(), false);
         Assert.assertEquals(command.getGiveUpAmount(), 1);
     }
 
@@ -155,12 +155,12 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(5);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, characterHandler);
+        final BuySellResponse returned = underTest.handleMarketSell("3001", character, command, characterHandler);
         // THEN
-        Assert.assertEquals(returned.get("successfulTransaction"), false);
-        Assert.assertEquals(returned.get("gold"), 5);
-        Assert.assertEquals(returned.get("giveUpMode"), true);
-        Assert.assertEquals(returned.get("giveUpFinished"), false);
+        Assert.assertEquals(returned.isSuccessfulTransaction(), false);
+        Assert.assertEquals(returned.getGold(), 5);
+        Assert.assertEquals(returned.isGiveUpMode(), true);
+        Assert.assertEquals(returned.isGiveUpFinished(), false);
         Assert.assertEquals(command.getGiveUpAmount(), 1);
     }
 
@@ -173,12 +173,12 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(8);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, characterHandler);
+        final BuySellResponse returned = underTest.handleMarketSell("3001", character, command, characterHandler);
         // THEN
-        Assert.assertEquals(returned.get("successfulTransaction"), true);
-        Assert.assertEquals(returned.get("gold"), 8);
-        Assert.assertEquals(returned.get("giveUpMode"), false);
-        Assert.assertEquals(returned.get("giveUpFinished"), true);
+        Assert.assertEquals(returned.isSuccessfulTransaction(), true);
+        Assert.assertEquals(returned.getGold(), 8);
+        Assert.assertEquals(returned.isGiveUpMode(), false);
+        Assert.assertEquals(returned.isGiveUpFinished(), true);
         Assert.assertEquals(itemA.getStock(), 1);
     }
 
@@ -193,12 +193,12 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(8);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, characterHandler);
+        final BuySellResponse returned = underTest.handleMarketSell("3001", character, command, characterHandler);
         // THEN
-        Assert.assertEquals(returned.get("successfulTransaction"), true);
-        Assert.assertEquals(returned.get("gold"), 8);
-        Assert.assertEquals(returned.get("giveUpMode"), true);
-        Assert.assertEquals(returned.get("giveUpFinished"), true);
+        Assert.assertEquals(returned.isSuccessfulTransaction(), true);
+        Assert.assertEquals(returned.getGold(), 8);
+        Assert.assertEquals(returned.isGiveUpMode(), true);
+        Assert.assertEquals(returned.isGiveUpFinished(), true);
         Assert.assertEquals(itemA.getStock(), 1);
         Assert.assertEquals(command.getGiveUpAmount(), 0);
     }
@@ -214,12 +214,12 @@ public class FfMarketHandlerTest {
         expect(character.getGold()).andReturn(8);
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.handleMarketSell("3001", character, command, characterHandler);
+        final BuySellResponse returned = underTest.handleMarketSell("3001", character, command, characterHandler);
         // THEN
-        Assert.assertEquals(returned.get("successfulTransaction"), true);
-        Assert.assertEquals(returned.get("gold"), 8);
-        Assert.assertEquals(returned.get("giveUpMode"), true);
-        Assert.assertEquals(returned.get("giveUpFinished"), false);
+        Assert.assertEquals(returned.isSuccessfulTransaction(), true);
+        Assert.assertEquals(returned.getGold(), 8);
+        Assert.assertEquals(returned.isGiveUpMode(), true);
+        Assert.assertEquals(returned.isGiveUpFinished(), false);
         Assert.assertEquals(itemA.getStock(), 1);
         Assert.assertEquals(command.getGiveUpAmount(), 1);
     }

@@ -32,7 +32,7 @@ public class DefaultCharacterItemHandlerPositiveTest {
     private static final String ITEM_ID_B = "3002";
     @UnderTest private DefaultCharacterItemHandler underTest;
     @MockControl private IMocksControl mockControl;
-    @Inject private ItemFactory itemFactory;
+    @Mock private ItemFactory itemFactory;
     private Character character;
     private Item nonEquippableItem;
     private Item nonEquippableItemB;
