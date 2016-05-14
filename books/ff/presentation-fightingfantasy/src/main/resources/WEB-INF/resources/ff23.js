@@ -15,6 +15,8 @@ var ff23HuntTrigger = (function() {
 		$.ajax({
 			url : "hunt",
 			type : "POST",
+			accept : "application/json; charset=utf-8",
+			data : {},
 			complete : function(data) {
 				button.prop("disabled", false);
 				var json = data.responseJSON;

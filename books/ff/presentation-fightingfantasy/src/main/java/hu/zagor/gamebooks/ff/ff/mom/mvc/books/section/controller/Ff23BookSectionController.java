@@ -62,6 +62,7 @@ public class Ff23BookSectionController extends FfBookSectionController {
     @RequestMapping(value = "hunt", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public HuntRoundResult handleHuntRound(final HttpServletRequest request) {
+        getLogger().info("Starting to play a hunt round.");
         return huntService.playRound(getWrapper(request), getInfo());
     }
 
