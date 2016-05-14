@@ -1,10 +1,10 @@
 package hu.zagor.gamebooks.mvc.book.controller;
 
+import hu.zagor.gamebooks.books.bookinfo.BookInformationFetcher;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.ResourceInformation;
 import hu.zagor.gamebooks.mvc.book.controller.domain.StaticResourceDescriptor;
-import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.ui.Model;
@@ -28,12 +29,10 @@ import org.springframework.util.StringUtils;
 public abstract class AbstractRequestWrappingController implements BeanFactoryAware, ApplicationContextAware {
 
     private static final Pattern BOOK_ID_GRABBER = Pattern.compile("^([a-z][a-zA-Z0-9]*[0-9]+)");
-
     private BeanFactory beanFactory;
-
     private BookInformations info;
-
     private ApplicationContext applicationContext;
+    @Autowired private BookInformationFetcher bookInformationFetcher;
 
     /**
      * Initialization method that automatically grabs the info bean from the spring container instead of having to push it down every time.
@@ -57,18 +56,11 @@ public abstract class AbstractRequestWrappingController implements BeanFactoryAw
      * @throws IllegalStateException when the bean cannot be derived from the class name
      */
     public BookInformations getInfo(final Long bookId) {
-        final Collection<BookInformations> infos = applicationContext.getBeansOfType(BookInformations.class).values();
-        BookInformations infoById = null;
-        for (final BookInformations info : infos) {
-            if (bookId.equals(info.getId())) {
-                infoById = info;
-                break;
-            }
-        }
-        if (infoById == null) {
+        final BookInformations info = bookInformationFetcher.getInfoById(bookId);
+        if (info == null) {
             throw new IllegalStateException("The current Spring context doesn't contain a BookInformation bean for the requested ID (" + bookId + ").");
         }
-        return infoById;
+        return info;
     }
 
     /**

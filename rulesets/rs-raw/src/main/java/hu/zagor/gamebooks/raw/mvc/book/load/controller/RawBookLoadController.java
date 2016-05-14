@@ -6,7 +6,6 @@ import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
-import hu.zagor.gamebooks.character.item.DefaultItemFactory;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
@@ -91,14 +90,11 @@ public class RawBookLoadController extends GenericBookLoadController implements 
         final BookInformations info = getInfo();
         final BookItemStorage itemStorage = contentInitializer.getItemStorage(info);
         enemies.putAll(itemStorage.getEnemies());
-
         setUpCharacterHandler(wrapper, info.getCharacterHandler());
     }
 
     @Override
-    protected void setUpCharacterHandler(final HttpSessionWrapper wrapper, final CharacterHandler characterHandler) {
-        final DefaultItemFactory itemFactory = (DefaultItemFactory) getBeanFactory().getBean("defaultItemFactory", getInfo());
-        characterHandler.getItemHandler().setItemFactory(itemFactory);
+    protected void setUpCharacterHandler(final HttpSessionWrapper wrapper, final CharacterHandler characterHandlerObject) {
     }
 
     @Override

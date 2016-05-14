@@ -35,15 +35,6 @@ public class DefaultCharacterItemHandlerNegativeTest {
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void testSetItemFactoryWhenItemFactoryIsNullShouldThrowException() {
-        // GIVEN
-        mockControl.replay();
-        // WHEN
-        underTest.setItemFactory(null);
-        // THEN throws exception
-    }
-
-    @Test(expectedExceptions = IllegalArgumentException.class)
     public void testAddEquipmentWhenCharacterIsNullShouldThrowException() {
         // GIVEN
         mockControl.replay();
@@ -166,15 +157,6 @@ public class DefaultCharacterItemHandlerNegativeTest {
         mockControl.replay();
         // WHEN
         underTest.hasItem(null, ITEM_ID);
-        // THEN throws exception
-    }
-
-    @Test(expectedExceptions = IllegalArgumentException.class)
-    public void testSetItemFactoryWhenFactoryIsNullShouldThrowException() {
-        // GIVEN
-        mockControl.replay();
-        // WHEN
-        underTest.setItemFactory(null);
         // THEN throws exception
     }
 

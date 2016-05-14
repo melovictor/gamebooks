@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class MdcInitializerFilter extends AbstractHttpFilter {
 
-    private static final Pattern BOOK_ID_PATTERN = Pattern.compile("\\/gamebooks\\/book\\/([0-9]+)\\/(?!resources)");
+    private static final Pattern BOOK_ID_PATTERN = Pattern.compile("book\\/([0-9]{8,10})\\/(?!resources)");
 
     private final MdcHandler mdcHandler = new DefaultMdcHandler();
 

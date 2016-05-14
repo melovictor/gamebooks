@@ -1,15 +1,19 @@
 package hu.zagor.gamebooks.character.handler.item;
 
 import static org.easymock.EasyMock.expect;
+import hu.zagor.gamebooks.books.bookinfo.BookInformationFetcher;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.ItemFactory;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
+import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -35,6 +39,9 @@ public class DefaultCharacterItemHandlerAddItemTest {
     private Item equippableEquippedItem;
     private Item equippableNonEquippedItem;
     @Inject private Logger logger;
+    @Inject private BookInformationFetcher bookInformationFetcher;
+    @Mock private BookInformations info;
+    @Inject private BeanFactory beanFactory;
 
     @BeforeClass
     public void setUpClass() {
@@ -57,6 +64,8 @@ public class DefaultCharacterItemHandlerAddItemTest {
     public void testAddItemWhenAnItemIsAddedShouldStoreIt() {
         // GIVEN
         logger.debug("Resolving item {} for addition.", ITEM_ID);
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(nonEquippableItem);
         mockControl.replay();
         // WHEN
@@ -71,6 +80,8 @@ public class DefaultCharacterItemHandlerAddItemTest {
         character.getEquipment().add(normalBackpackItem);
         character.getEquipment().add(normalBackpackItem);
         logger.debug("Resolving item {} for addition.", ITEM_ID_C);
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(ITEM_ID_C)).andReturn(normalBackpackItem);
         mockControl.replay();
         // WHEN
@@ -85,6 +96,8 @@ public class DefaultCharacterItemHandlerAddItemTest {
         normalBackpackItem.setAmount(2);
         character.getEquipment().add(normalBackpackItem);
         logger.debug("Resolving item {} for addition.", ITEM_ID_C);
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(ITEM_ID_C)).andReturn(normalBackpackItem);
         mockControl.replay();
         // WHEN
@@ -98,6 +111,8 @@ public class DefaultCharacterItemHandlerAddItemTest {
         character.setBackpackSize(2);
         character.getEquipment().add(normalBackpackItem);
         logger.debug("Resolving item {} for addition.", ITEM_ID_D);
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(ITEM_ID_D)).andReturn(oversizedBackpackItem);
         mockControl.replay();
         // WHEN
@@ -112,6 +127,8 @@ public class DefaultCharacterItemHandlerAddItemTest {
         character.getEquipment().add(normalBackpackItem);
         character.getEquipment().add(equippableEquippedItem);
         logger.debug("Resolving item {} for addition.", ITEM_ID_C);
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(ITEM_ID_C)).andReturn(normalBackpackItem);
         mockControl.replay();
         // WHEN
@@ -127,6 +144,8 @@ public class DefaultCharacterItemHandlerAddItemTest {
         character.getEquipment().add(equippableEquippedItem);
         character.getEquipment().add(equippableNonEquippedItem);
         logger.debug("Resolving item {} for addition.", ITEM_ID_C);
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(ITEM_ID_C)).andReturn(normalBackpackItem);
         mockControl.replay();
         // WHEN

@@ -7,7 +7,6 @@ import hu.zagor.gamebooks.books.random.ReplayingNumberGenerator;
 import hu.zagor.gamebooks.books.saving.GameStateHandler;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
-import hu.zagor.gamebooks.character.item.DefaultItemFactory;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
@@ -111,8 +110,6 @@ public class RawBookNewGameController extends AbstractNewGameController implemen
 
     @Override
     protected void setUpCharacterHandler(final HttpSessionWrapper wrapper, final CharacterHandler characterHandler) {
-        final DefaultItemFactory itemFactory = (DefaultItemFactory) getBeanFactory().getBean("defaultItemFactory", getInfo());
-        characterHandler.getItemHandler().setItemFactory(itemFactory);
     }
 
     @Override

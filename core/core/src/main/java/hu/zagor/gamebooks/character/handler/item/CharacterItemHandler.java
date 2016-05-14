@@ -15,12 +15,6 @@ import java.util.List;
 public interface CharacterItemHandler {
 
     /**
-     * Sets the {@link ItemFactory} instance to be used for this particular {@link Character}.
-     * @param itemFactory the {@link ItemFactory} instance to use
-     */
-    void setItemFactory(final ItemFactory itemFactory);
-
-    /**
      * Adds the equipment item with the given id to the character's stock.
      * @param character the {@link Character} on which we must act
      * @param itemId the id of the equipment to add, cannot be null

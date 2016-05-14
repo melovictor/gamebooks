@@ -2,11 +2,11 @@ package hu.zagor.gamebooks.mvc.book.controller;
 
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.partialMockBuilder;
+import hu.zagor.gamebooks.books.bookinfo.BookInformationFetcher;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-import java.util.HashMap;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.springframework.context.ApplicationContext;
@@ -24,6 +24,7 @@ public class AbstractRequestWrappingControllerTest {
     private AbstractRequestWrappingController underTest;
     @Inject private ApplicationContext applicationContext;
     @Mock private BookInformations info;
+    @Inject private BookInformationFetcher bookInformationFetcher;
 
     @UnderTest
     public AbstractRequestWrappingController underTest() {
@@ -33,15 +34,7 @@ public class AbstractRequestWrappingControllerTest {
     @Test(expectedExceptions = IllegalStateException.class)
     public void testGetInfoWhenCannotFindInfoForBookShouldThrowException() {
         // GIVEN
-        expect(applicationContext.getBeansOfType(BookInformations.class)).andReturn(new HashMap<String, BookInformations>() {
-            {
-                put("a", info);
-                put("b", info);
-                put("c", info);
-                put("d", info);
-            }
-        });
-        expect(info.getId()).andReturn(1L).andReturn(2L).andReturn(3L).andReturn(4L);
+        expect(bookInformationFetcher.getInfoById(7)).andReturn(null);
         mockControl.replay();
         // WHEN
         underTest.getInfo(7L);
@@ -50,15 +43,7 @@ public class AbstractRequestWrappingControllerTest {
 
     public void testGetInfoWhenCanFindInfoForBookShouldReturnIt() {
         // GIVEN
-        expect(applicationContext.getBeansOfType(BookInformations.class)).andReturn(new HashMap<String, BookInformations>() {
-            {
-                put("a", info);
-                put("b", info);
-                put("c", info);
-                put("d", info);
-            }
-        });
-        expect(info.getId()).andReturn(1L).andReturn(7L);
+        expect(bookInformationFetcher.getInfoById(7)).andReturn(info);
         mockControl.replay();
         // WHEN
         final BookInformations returned = underTest.getInfo(7L);

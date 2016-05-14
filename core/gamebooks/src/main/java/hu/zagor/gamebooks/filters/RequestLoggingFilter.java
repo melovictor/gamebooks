@@ -32,7 +32,7 @@ public class RequestLoggingFilter extends AbstractHttpFilter {
 
     private void logRequestInfo(final HttpServletRequest request) {
         final Logger logger = getLogger();
-        logger.info("Requested url: '{}'", request.getRequestURL().toString());
+        logger.info("Requested url: '{}'", request.getRequestURI());
 
         final Enumeration<String> parameterNames = request.getParameterNames();
         while (parameterNames.hasMoreElements()) {

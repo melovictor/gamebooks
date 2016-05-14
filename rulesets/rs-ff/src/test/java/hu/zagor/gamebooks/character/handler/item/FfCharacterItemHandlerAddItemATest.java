@@ -1,15 +1,19 @@
 package hu.zagor.gamebooks.character.handler.item;
 
 import static org.easymock.EasyMock.expect;
+import hu.zagor.gamebooks.books.bookinfo.BookInformationFetcher;
 import hu.zagor.gamebooks.character.ItemFactory;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.ItemType;
+import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -39,6 +43,10 @@ public class FfCharacterItemHandlerAddItemATest {
     private FfItem eRingD;
     private FfItem ecRingE;
     private FfItem eShield;
+
+    @Inject private BeanFactory beanFactory;
+    @Inject private BookInformationFetcher bookInformationFetcher;
+    @Mock private BookInformations info;
 
     @BeforeMethod
     public void setUpMethod() {
@@ -75,6 +83,8 @@ public class FfCharacterItemHandlerAddItemATest {
     public void testAddItemWhenCharacterIsGivenACommonItemShouldBeAddedToTheEquipmentList() {
         // GIVEN
         logger.debug("Resolving item {} for addition.", cDice.getId());
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(cDice.getId())).andReturn(cDice);
         mockControl.replay();
         // WHEN
@@ -88,6 +98,8 @@ public class FfCharacterItemHandlerAddItemATest {
         // GIVEN
         character.getEquipment().add(eSword);
         logger.debug("Resolving item {} for addition.", dDagger.getId());
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(dDagger.getId())).andReturn(dDagger);
         mockControl.replay();
         // WHEN
@@ -105,6 +117,8 @@ public class FfCharacterItemHandlerAddItemATest {
         character.getEquipment().add(cDice);
         character.getEquipment().add(eSword);
         logger.debug("Resolving item {} for addition.", eSpear.getId());
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(eSpear.getId())).andReturn(eSpear);
         mockControl.replay();
         // WHEN
@@ -122,6 +136,8 @@ public class FfCharacterItemHandlerAddItemATest {
         // GIVEN
         character.getEquipment().add(dDagger);
         logger.debug("Resolving item {} for addition.", eSpear.getId());
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(eSpear.getId())).andReturn(eSpear);
         mockControl.replay();
         // WHEN
@@ -138,6 +154,8 @@ public class FfCharacterItemHandlerAddItemATest {
         // GIVEN
         character.getEquipment().add(dDagger);
         logger.debug("Resolving item {} for addition.", dWarhammer.getId());
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(dWarhammer.getId())).andReturn(dWarhammer);
         mockControl.replay();
         // WHEN
@@ -153,6 +171,8 @@ public class FfCharacterItemHandlerAddItemATest {
     public void testAddItemWhenCharacterIsGivenAnUnequippedRingWheHeDoesNotHaveOneShouldRingBeAdded() {
         // GIVEN
         logger.debug("Resolving item {} for addition.", dRingA.getId());
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(dRingA.getId())).andReturn(dRingA);
         mockControl.replay();
         // WHEN
@@ -168,6 +188,8 @@ public class FfCharacterItemHandlerAddItemATest {
         character.getEquipment().add(eRingB);
         character.getEquipment().add(eRingC);
         logger.debug("Resolving item {} for addition.", dRingA.getId());
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(dRingA.getId())).andReturn(dRingA);
         mockControl.replay();
         // WHEN
@@ -187,6 +209,8 @@ public class FfCharacterItemHandlerAddItemATest {
         character.getEquipment().add(eRingB);
         character.getEquipment().add(eRingC);
         logger.debug("Resolving item {} for addition.", eRingD.getId());
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(eRingD.getId())).andReturn(eRingD);
         mockControl.replay();
         // WHEN
@@ -206,6 +230,8 @@ public class FfCharacterItemHandlerAddItemATest {
         character.getEquipment().add(ecRingE);
         character.getEquipment().add(ecRingE);
         logger.debug("Resolving item {} for addition.", eRingD.getId());
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(eRingD.getId())).andReturn(eRingD);
         mockControl.replay();
         // WHEN
@@ -225,6 +251,8 @@ public class FfCharacterItemHandlerAddItemATest {
         character.getEquipment().add(eRingB);
         character.getEquipment().add(ecRingE);
         logger.debug("Resolving item {} for addition.", eRingD.getId());
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(eRingD.getId())).andReturn(eRingD);
         mockControl.replay();
         // WHEN
@@ -244,6 +272,8 @@ public class FfCharacterItemHandlerAddItemATest {
         character.getEquipment().add(eSword);
         character.getEquipment().add(eShield);
         logger.debug("Resolving item {} for addition.", eBroadsword.getId());
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(eBroadsword.getId())).andReturn(eBroadsword);
         mockControl.replay();
         // WHEN
@@ -264,6 +294,8 @@ public class FfCharacterItemHandlerAddItemATest {
         character.getEquipment().add(eShield);
         character.getEquipment().add(eRingC);
         logger.debug("Resolving item {} for addition.", eBroadsword.getId());
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(eBroadsword.getId())).andReturn(eBroadsword);
         mockControl.replay();
         // WHEN

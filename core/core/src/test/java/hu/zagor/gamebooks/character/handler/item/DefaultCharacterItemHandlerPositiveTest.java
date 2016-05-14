@@ -1,20 +1,22 @@
 package hu.zagor.gamebooks.character.handler.item;
 
 import static org.easymock.EasyMock.expect;
+import hu.zagor.gamebooks.books.bookinfo.BookInformationFetcher;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.ItemFactory;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
+import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.Iterator;
 import java.util.List;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
+import org.easymock.Mock;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.BeanFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -37,6 +39,9 @@ public class DefaultCharacterItemHandlerPositiveTest {
     private Item equippableEquippedItem;
     private Item equippableNonEquippedItem;
     @Inject private Logger logger;
+    @Inject private BookInformationFetcher bookInformationFetcher;
+    @Mock private BookInformations info;
+    @Inject private BeanFactory beanFactory;
 
     @BeforeClass
     public void setUpClass() {
@@ -51,12 +56,13 @@ public class DefaultCharacterItemHandlerPositiveTest {
     public void setUpMethod() {
         character = new Character();
         character.setBackpackSize(99);
-        mockControl.reset();
     }
 
     public void testHasItemWhenItemIsNotInEquipmentShouldReturnFalse() {
         // GIVEN
         logger.debug("Resolving item {} for addition.", ITEM_ID);
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(nonEquippableItem);
         mockControl.replay();
         // WHEN
@@ -64,18 +70,6 @@ public class DefaultCharacterItemHandlerPositiveTest {
         final boolean result = underTest.hasItem(character, "3002");
         // THEN
         Assert.assertFalse(result);
-    }
-
-    public void testSetItemFactoryWhenItemFactoryIsAlreadySetShouldReplaceIt() {
-        // GIVEN
-        final ItemFactory factory = mockControl.createMock(ItemFactory.class);
-        Whitebox.setInternalState(underTest, "itemFactory", factory);
-        mockControl.replay();
-        // WHEN
-        final ItemFactory returned = Whitebox.getInternalState(underTest, "itemFactory");
-        // THEN
-        Assert.assertSame(returned, factory);
-        Whitebox.setInternalState(underTest, "itemFactory", itemFactory);
     }
 
     public void testHasEquippedItemWhenIdIsNotAvailableShouldReturnFalse() {
@@ -90,8 +84,12 @@ public class DefaultCharacterItemHandlerPositiveTest {
     public void testHasEquippedItemWhenItemIsEquippableAndNotEquippedShouldReturnFalse() {
         // GIVEN
         logger.debug("Resolving item {} for addition.", ITEM_ID_B);
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(ITEM_ID_B)).andReturn(nonEquippableItemB);
         logger.debug("Resolving item {} for addition.", ITEM_ID);
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(equippableNonEquippedItem);
         mockControl.replay();
         // WHEN
@@ -105,6 +103,8 @@ public class DefaultCharacterItemHandlerPositiveTest {
     public void testHasEquippedItemWhenItemIsEquippableAndIsEquippedShouldReturnTrue() {
         // GIVEN
         logger.debug("Resolving item {} for addition.", ITEM_ID);
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(equippableEquippedItem);
         mockControl.replay();
         // WHEN
@@ -117,6 +117,8 @@ public class DefaultCharacterItemHandlerPositiveTest {
     public void testHasEquippedItemWhenItemIsNotEquippableShouldReturnFalse() {
         // GIVEN
         logger.debug("Resolving item {} for addition.", ITEM_ID);
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(nonEquippableItem);
         mockControl.replay();
         // WHEN
@@ -129,6 +131,8 @@ public class DefaultCharacterItemHandlerPositiveTest {
     public void testHasItemWhenThreeItemsNeededButOnlyTwoAreAvailableShouldReturnFalse() {
         // GIVEN
         logger.debug("Resolving item {} for addition.", ITEM_ID);
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(nonEquippableItem);
         mockControl.replay();
         // WHEN
@@ -141,6 +145,8 @@ public class DefaultCharacterItemHandlerPositiveTest {
     public void testHasItemWhenThreeItemsNeededAndFourAreAvailableShouldReturnTrue() {
         // GIVEN
         logger.debug("Resolving item {} for addition.", ITEM_ID);
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(nonEquippableItem);
         mockControl.replay();
         // WHEN
@@ -153,6 +159,8 @@ public class DefaultCharacterItemHandlerPositiveTest {
     public void testResolveItemShouldResolveItemIdFromFactory() {
         // GIVEN
         logger.debug("Resolving item {} for addition.", ITEM_ID);
+        expect(bookInformationFetcher.getInfoByRequest()).andReturn(info);
+        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
         expect(itemFactory.resolveItem(ITEM_ID)).andReturn(equippableEquippedItem);
         mockControl.replay();
         // WHEN
@@ -225,22 +233,6 @@ public class DefaultCharacterItemHandlerPositiveTest {
         Assert.assertTrue(returned.hasNext());
         Assert.assertSame(returned.next(), equippableEquippedItem);
         Assert.assertFalse(returned.hasNext());
-    }
-
-    public void testSetItemFactoryWhenFactoryIsNotNullShouldLogAndSetItem() {
-        // GIVEN
-        logger.debug("Setting new item factory to DefaultCharacterItemHandler.");
-        final ItemFactory newItemFactory = mockControl.createMock(ItemFactory.class);
-        mockControl.replay();
-        // WHEN
-        underTest.setItemFactory(newItemFactory);
-        // THEN
-        Assert.assertSame(Whitebox.getInternalState(underTest, "itemFactory"), newItemFactory);
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

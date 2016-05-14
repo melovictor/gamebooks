@@ -3,8 +3,6 @@ package hu.zagor.gamebooks.ff.mvc.book.newgame.controller;
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.books.contentstorage.domain.BookParagraphConstants;
 import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.character.handler.CharacterHandler;
-import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.character.CharacterGenerator;
 import hu.zagor.gamebooks.content.ParagraphData;
@@ -59,14 +57,6 @@ public class FfBookNewGameController extends RawBookNewGameController {
         }
 
         return "ffSection." + getInfo().getResourceDir();
-    }
-
-    @Override
-    protected void setUpCharacterHandler(final HttpSessionWrapper wrapper, final CharacterHandler characterHandlerObject) {
-        super.setUpCharacterHandler(wrapper, characterHandlerObject);
-
-        final FfCharacterHandler characterHandler = (FfCharacterHandler) characterHandlerObject;
-        characterHandler.getEnemyHandler().setEnemies(wrapper.getEnemies());
     }
 
     @Override

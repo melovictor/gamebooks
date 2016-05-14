@@ -22,4 +22,10 @@ public interface BookInformationFetcher {
      */
     BookInformations getInfoById(long bookId);
 
+    /**
+     * Fetches a {@link BookInformationFetcher} object using the book's ID that is retrieved from the current request object.
+     * @return the {@link BookInformations} object
+     */
+    BookInformations getInfoByRequest();
+
 }

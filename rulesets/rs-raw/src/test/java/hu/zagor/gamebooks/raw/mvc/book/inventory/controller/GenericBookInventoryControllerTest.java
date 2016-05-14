@@ -1,6 +1,7 @@
 package hu.zagor.gamebooks.raw.mvc.book.inventory.controller;
 
 import static org.easymock.EasyMock.expect;
+import hu.zagor.gamebooks.books.bookinfo.BookInformationFetcher;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
@@ -40,25 +41,20 @@ public class GenericBookInventoryControllerTest {
     @Instance private Character character;
     @Inject private BeanFactory beanFactory;
     @Mock private Model model;
-    private BookInformations infoA;
-    private BookInformations infoB;
+    private BookInformations info;
     @Mock private HttpSession session;
     @Mock private HttpSessionWrapper wrapper;
     @Inject private SectionHandlingService sectionHandlingService;
     @Mock private RawCharacterPageData characterPageData;
     @Inject private ApplicationContext applicationContext;
-    @Instance private Map<String, BookInformations> bookInfos;
     @Instance private Map<Long, String> idBeanMap;
     @Mock private BookInventoryService inventoryService;
+    @Inject private BookInformationFetcher bookInformationFetcher;
 
     @BeforeClass
     public void setUpClass() {
-        infoA = new BookInformations(1000L);
-        infoB = new BookInformations(2000L);
-        bookInfos.put("infoA", infoA);
-        bookInfos.put("infoB", infoB);
         idBeanMap.put(2L, "rawBookInventoryService");
-
+        info = new BookInformations(2000L);
         Whitebox.setInternalState(underTest, "inventoryControllerIdBeanNameMap", idBeanMap);
     }
 
@@ -66,31 +62,20 @@ public class GenericBookInventoryControllerTest {
     public void testHandleInventoryWhenCannotGetInfoShouldThrowException() {
         // GIVEN
         response.setCharacterEncoding("UTF-8");
-        expect(applicationContext.getBeansOfType(BookInformations.class)).andReturn(bookInfos);
+        expect(bookInformationFetcher.getInfoById(3000)).andReturn(null);
         mockControl.replay();
         // WHEN
         underTest.handleInventory(model, request, response, 3000L);
         // THEN throws exception
     }
 
-    @Test(expectedExceptions = IllegalStateException.class)
-    public void testHandleInventoryWhenNoServiceBeanNameSpecifiedShouldThrowException() {
-        // GIVEN
-        response.setCharacterEncoding("UTF-8");
-        expect(applicationContext.getBeansOfType(BookInformations.class)).andReturn(bookInfos);
-        mockControl.replay();
-        // WHEN
-        underTest.handleInventory(model, request, response, 1000L);
-        // THEN throws exception
-    }
-
     public void testHandleInventoryWhenServiceBeanNameIsSpecifiedShouldFetchAndExecuteServiceCall() {
         // GIVEN
         response.setCharacterEncoding("UTF-8");
-        expect(applicationContext.getBeansOfType(BookInformations.class)).andReturn(bookInfos);
+        expect(bookInformationFetcher.getInfoById(2000)).andReturn(info);
         expect(beanFactory.getBean("rawBookInventoryService")).andReturn(inventoryService);
         expectWrapper();
-        expect(inventoryService.handleInventory(model, wrapper, infoB)).andReturn("rawSection");
+        expect(inventoryService.handleInventory(model, wrapper, info)).andReturn("rawSection");
         mockControl.replay();
         // WHEN
         final String returned = underTest.handleInventory(model, request, response, 2000L);

@@ -2,16 +2,11 @@ package hu.zagor.gamebooks.ff.mvc.book.load.controller;
 
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
 import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.character.handler.CharacterHandler;
-import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
-import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
 import hu.zagor.gamebooks.mvc.book.load.controller.GenericBookLoadController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.raw.mvc.book.load.controller.RawBookLoadController;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.ui.Model;
 
 /**
@@ -26,14 +21,6 @@ public class FfBookLoadController extends RawBookLoadController {
      */
     public FfBookLoadController(final SectionHandlingService sectionHandlingService) {
         super(sectionHandlingService);
-    }
-
-    @Override
-    protected void setUpCharacterHandler(final HttpSessionWrapper wrapper, final CharacterHandler characterHandlerObject) {
-        super.setUpCharacterHandler(wrapper, characterHandlerObject);
-
-        final FfCharacterHandler characterHandler = (FfCharacterHandler) characterHandlerObject;
-        characterHandler.getEnemyHandler().setEnemies(wrapper.getEnemies());
     }
 
     @Override

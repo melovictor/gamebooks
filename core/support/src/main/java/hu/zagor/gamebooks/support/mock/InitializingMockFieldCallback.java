@@ -54,7 +54,12 @@ public class InitializingMockFieldCallback implements FieldCallback {
             if (field.isAnnotationPresent(Inject.class)) {
                 final Object mock = injectOnTest(field);
                 if (!setOnUnderTest(field, mock)) {
-                    Whitebox.setInternalState(underTest, field.getName(), mock);
+                    try {
+                        Whitebox.setInternalState(underTest, field.getName(), mock);
+                    } catch (final Exception ex) {
+                        System.out.println("Couldn't inject value for field '" + field.getName() + "' in class '" + underTest.getClass()
+                            + "'. It is extremely likely that this test will fail miserably.");
+                    }
                 }
             } else if (field.isAnnotationPresent(Instance.class)) {
                 final Instance annotation = field.getAnnotation(Instance.class);

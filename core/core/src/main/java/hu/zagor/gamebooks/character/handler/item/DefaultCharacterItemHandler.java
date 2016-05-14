@@ -1,23 +1,29 @@
 package hu.zagor.gamebooks.character.handler.item;
 
+import hu.zagor.gamebooks.books.bookinfo.BookInformationFetcher;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.ItemFactory;
 import hu.zagor.gamebooks.character.item.EquipInfo;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
+import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.support.logging.LogInject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import org.slf4j.Logger;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 /**
  * Interface for doing generic item-related queries in a {@link Character}.
  * @author Tamas_Szekeres
  */
-public class DefaultCharacterItemHandler implements CharacterItemHandler {
+public class DefaultCharacterItemHandler implements CharacterItemHandler, BeanFactoryAware {
 
     private static final String ID_NOT_NULL = "The parameter 'id' cannot be null!";
     private static final String ITEMID_POSITIVE = "The parameter 'amount' must be positive!";
@@ -26,15 +32,9 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
     /**
      * The item factory instance to use for item instance creation.
      */
-    private ItemFactory itemFactory;
     @LogInject private Logger logger;
-
-    @Override
-    public void setItemFactory(final ItemFactory itemFactory) {
-        Assert.notNull(itemFactory);
-        logger.debug("Setting new item factory to DefaultCharacterItemHandler.");
-        this.itemFactory = itemFactory;
-    }
+    private BeanFactory beanFactory;
+    @Autowired private BookInformationFetcher bookInformationFetcher;
 
     @Override
     public int addItem(final Character character, final String itemId, final int amount) {
@@ -43,7 +43,7 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
         Assert.isTrue(amount > 0, ITEMID_POSITIVE);
 
         logger.debug("Resolving item {} for addition.", itemId);
-        final Item resolvedItem = itemFactory.resolveItem(itemId);
+        final Item resolvedItem = getItemFactory().resolveItem(itemId);
         return addItem(character, resolvedItem, amount);
     }
 
@@ -169,7 +169,7 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
     @Override
     public Item resolveItem(final String itemId) {
         logger.debug("Resolving item {} for addition.", itemId);
-        return itemFactory.resolveItem(itemId);
+        return getItemFactory().resolveItem(itemId);
     }
 
     @Override
@@ -248,4 +248,16 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler {
         return character.getEquipment().iterator();
     }
 
+    private ItemFactory getItemFactory() {
+        return (ItemFactory) beanFactory.getBean("defaultItemFactory", getInfo());
+    }
+
+    private BookInformations getInfo() {
+        return bookInformationFetcher.getInfoByRequest();
+    }
+
+    @Override
+    public void setBeanFactory(final BeanFactory beanFactory) throws BeansException {
+        this.beanFactory = beanFactory;
+    }
 }

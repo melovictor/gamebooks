@@ -44,8 +44,6 @@ public class Tm1BookNewGameControllerTest {
 
     public void testSetUpCharacterHandlerShouldCallSuperAndAddStartingItems() {
         // GIVEN
-        expect(beanFactory.getBean("defaultItemFactory", info)).andReturn(itemFactory);
-        itemHandler.setItemFactory(itemFactory);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(itemHandler.addItem(character, "1001", 1)).andReturn(1);
         mockControl.replay();
