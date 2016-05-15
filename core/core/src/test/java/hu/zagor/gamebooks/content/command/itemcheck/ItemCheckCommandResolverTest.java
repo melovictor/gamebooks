@@ -9,13 +9,17 @@ import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CommandResolveResult;
 import hu.zagor.gamebooks.domain.BookInformations;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
+import org.slf4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -28,44 +32,37 @@ import org.testng.annotations.Test;
 public class ItemCheckCommandResolverTest {
 
     private static final CheckType CHECK_TYPE = CheckType.item;
-    private IMocksControl mockControl;
-    private ItemCheckCommandResolver underTest;
-    private Character character;
-    private ParagraphData rootDataElement;
+    @MockControl private IMocksControl mockControl;
+    @UnderTest private ItemCheckCommandResolver underTest;
+    @Instance private Character character;
+    @Mock private ParagraphData rootDataElement;
     private Paragraph paragraph;
-    private ParagraphData resolvedData;
-    private ParagraphData afterData;
+    @Mock private ParagraphData resolvedData;
+    @Mock private ParagraphData afterData;
     private Map<CheckType, ItemCheckStubCommandResolver> stubCommands;
-    private ItemCheckStubCommandResolver itemCheckStubCommand;
-    private CharacterHandler characterHandler;
+    @Mock private ItemCheckStubCommandResolver itemCheckStubCommand;
+    @Instance private CharacterHandler characterHandler;
     private ResolvationData resolvationData;
     private BookInformations info;
     private ItemCheckCommand command;
+    @Inject private Logger logger;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        character = new Character();
-        rootDataElement = mockControl.createMock(ParagraphData.class);
         paragraph = new Paragraph("3", null, 11);
         paragraph.setData(rootDataElement);
-        resolvedData = mockControl.createMock(ParagraphData.class);
-        afterData = mockControl.createMock(ParagraphData.class);
-        itemCheckStubCommand = mockControl.createMock(ItemCheckStubCommandResolver.class);
 
-        characterHandler = new CharacterHandler();
         info = new BookInformations(11L);
         info.setCharacterHandler(characterHandler);
         resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).build();
-        underTest = new ItemCheckCommandResolver();
     }
 
     @BeforeMethod
     public void setUpMethod() {
         command = new ItemCheckCommand();
+        command.setId("3257");
         stubCommands = new HashMap<>();
         stubCommands.put(CHECK_TYPE, itemCheckStubCommand);
-        mockControl.reset();
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
@@ -104,6 +101,7 @@ public class ItemCheckCommandResolverTest {
     public void testResolveWhenUnsupportedCheckTypeShouldThrowException() {
         // GIVEN
         command.setCheckType(CheckType.section);
+        logger.info("Checking availability of {} '{}'.", CheckType.section, "3257");
         underTest.setStubCommands(stubCommands);
         mockControl.replay();
         // WHEN
@@ -114,6 +112,7 @@ public class ItemCheckCommandResolverTest {
     public void testResolveWhenNoAfterAvailableShouldReturnOnlyResolvedData() {
         // GIVEN
         command.setCheckType(CHECK_TYPE);
+        logger.info("Checking availability of {} '{}'.", CHECK_TYPE, "3257");
         underTest.setStubCommands(stubCommands);
         expect(itemCheckStubCommand.resolve(command, resolvationData)).andReturn(resolvedData);
         mockControl.replay();
@@ -129,6 +128,7 @@ public class ItemCheckCommandResolverTest {
     public void testResolveWhenNoAfterAndResolvedDataAvailableShouldReturnEmptyList() {
         // GIVEN
         command.setCheckType(CHECK_TYPE);
+        logger.info("Checking availability of {} '{}'.", CHECK_TYPE, "3257");
         underTest.setStubCommands(stubCommands);
         expect(itemCheckStubCommand.resolve(command, resolvationData)).andReturn(null);
         mockControl.replay();
@@ -143,6 +143,7 @@ public class ItemCheckCommandResolverTest {
     public void testResolveWhenAfterAvailableShouldReturnResolvedAndAfterData() {
         // GIVEN
         command.setCheckType(CHECK_TYPE);
+        logger.info("Checking availability of {} '{}'.", CHECK_TYPE, "3257");
         underTest.setStubCommands(stubCommands);
         expect(itemCheckStubCommand.resolve(command, resolvationData)).andReturn(resolvedData);
         command.setAfter(afterData);
@@ -155,11 +156,6 @@ public class ItemCheckCommandResolverTest {
         Assert.assertSame(resolveList.get(0), resolvedData);
         Assert.assertSame(resolveList.get(1), afterData);
         Assert.assertTrue(returned.isFinished());
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 
 }

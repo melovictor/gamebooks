@@ -4,11 +4,11 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CommandResolveResult;
 import hu.zagor.gamebooks.content.command.TypeAwareCommandResolver;
-
+import hu.zagor.gamebooks.support.logging.LogInject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
+import org.slf4j.Logger;
 import org.springframework.util.Assert;
 
 /**
@@ -16,7 +16,7 @@ import org.springframework.util.Assert;
  * @author Tamas_Szekeres
  */
 public class ItemCheckCommandResolver extends TypeAwareCommandResolver<ItemCheckCommand> {
-
+    @LogInject private Logger logger;
     private Map<CheckType, ItemCheckStubCommandResolver> stubCommands;
 
     @Override
@@ -32,6 +32,7 @@ public class ItemCheckCommandResolver extends TypeAwareCommandResolver<ItemCheck
 
         Assert.state(stubCommands != null, "The field 'stubCommands' must be set!");
         Assert.state(command.getCheckType() != null, "The field 'stubCommands' must be set!");
+        logger.info("Checking availability of {} '{}'.", command.getCheckType(), command.getId());
 
         ParagraphData toResolve;
         final ItemCheckStubCommandResolver stubCommand = stubCommands.get(command.getCheckType());

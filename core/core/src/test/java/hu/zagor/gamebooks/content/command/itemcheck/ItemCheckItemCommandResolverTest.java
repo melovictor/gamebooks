@@ -9,12 +9,15 @@ import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.domain.BookInformations;
-import org.easymock.EasyMock;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.IMocksControl;
+import org.easymock.Mock;
+import org.slf4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -25,24 +28,19 @@ import org.testng.annotations.Test;
 public class ItemCheckItemCommandResolverTest {
 
     private static final String ID = "3001";
-    private ItemCheckItemCommandResolver underTest;
-    private IMocksControl mockControl;
-    private Character character;
-    private ItemCheckCommand parent;
-    private ParagraphData data;
-    private CharacterHandler characterHandler;
-    private CharacterItemHandler itemHandler;
+    @UnderTest private ItemCheckItemCommandResolver underTest;
+    @MockControl private IMocksControl mockControl;
+    @Instance private Character character;
+    @Mock private ItemCheckCommand parent;
+    @Mock private ParagraphData data;
+    @Instance private CharacterHandler characterHandler;
+    @Mock private CharacterItemHandler itemHandler;
     private BookInformations info;
     private Paragraph paragraph;
+    @Inject private Logger logger;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
-        character = new Character();
-        parent = mockControl.createMock(ItemCheckCommand.class);
-        data = mockControl.createMock(ParagraphData.class);
-        characterHandler = new CharacterHandler();
-        itemHandler = mockControl.createMock(CharacterItemHandler.class);
         characterHandler.setItemHandler(itemHandler);
         info = new BookInformations(1L);
         info.setCharacterHandler(characterHandler);
@@ -50,17 +48,12 @@ public class ItemCheckItemCommandResolverTest {
         paragraph.setData(data);
     }
 
-    @BeforeMethod
-    public void setUpMethod() {
-        underTest = new ItemCheckItemCommandResolver();
-        mockControl.reset();
-    }
-
     public void testResolveWhenCharacterHasEquippedItemShouldReturnCommandsHaveEquippedBlock() {
         // GIVEN
         expect(parent.getId()).andReturn(ID);
         expect(parent.getAmount()).andReturn(1);
         expect(itemHandler.hasEquippedItem(character, ID)).andReturn(true);
+        logger.info("Player has single equipped item '{}'.", ID);
         expect(parent.getHaveEquipped()).andReturn(data);
         mockControl.replay();
         // WHEN
@@ -75,6 +68,7 @@ public class ItemCheckItemCommandResolverTest {
         expect(parent.getAmount()).andReturn(1);
         expect(itemHandler.hasEquippedItem(character, ID)).andReturn(false);
         expect(itemHandler.hasItem(character, ID, 1)).andReturn(true);
+        logger.info("Player has item '{}'.", ID);
         expect(parent.getHave()).andReturn(data);
         mockControl.replay();
         // WHEN
@@ -88,6 +82,7 @@ public class ItemCheckItemCommandResolverTest {
         expect(parent.getId()).andReturn(ID);
         expect(parent.getAmount()).andReturn(3);
         expect(itemHandler.hasItem(character, ID, 3)).andReturn(true);
+        logger.info("Player has item '{}'.", ID);
         expect(parent.getHave()).andReturn(data);
         mockControl.replay();
         // WHEN
@@ -102,6 +97,7 @@ public class ItemCheckItemCommandResolverTest {
         expect(parent.getAmount()).andReturn(1);
         expect(itemHandler.hasEquippedItem(character, ID)).andReturn(false);
         expect(itemHandler.hasItem(character, ID, 1)).andReturn(false);
+        logger.info("Player doesn't have item '{}'.", ID);
         expect(parent.getDontHave()).andReturn(data);
         mockControl.replay();
         // WHEN
@@ -113,10 +109,4 @@ public class ItemCheckItemCommandResolverTest {
     private ResolvationData getResolvationData() {
         return DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(info).withCharacter(character).build();
     }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
-    }
-
 }
