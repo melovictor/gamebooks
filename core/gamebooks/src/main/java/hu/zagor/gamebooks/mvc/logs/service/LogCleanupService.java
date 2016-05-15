@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.mvc.logs.service;
 import hu.zagor.gamebooks.directory.DirectoryProvider;
 import hu.zagor.gamebooks.mvc.logs.service.filter.LogFilenameFilter;
 import hu.zagor.gamebooks.support.logging.LogInject;
+import hu.zagor.gamebooks.support.stream.IoUtilsWrapper;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,7 +15,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
-import org.apache.commons.io.IOUtils;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +33,7 @@ public class LogCleanupService {
     @LogInject private Logger logger;
     @Autowired private LogFilenameFilter logFilenameFilter;
     @Autowired private DirectoryProvider directoryProvider;
+    @Autowired private IoUtilsWrapper ioUtilsWrapper;
 
     /**
      * Method that runs every time at 02:10 to zip up all the logs that are older than a week.
@@ -69,12 +70,12 @@ public class LogCleanupService {
     }
 
     private void addToZip(final ZipOutputStream zipFileOutputStream, final File logFile) throws IOException {
-        final FileInputStream fis = new FileInputStream(logFile);
-        final ZipEntry zipEntry = new ZipEntry(logFile.getName());
-        zipFileOutputStream.putNextEntry(zipEntry);
-        IOUtils.copy(fis, zipFileOutputStream);
-        zipFileOutputStream.closeEntry();
-        fis.close();
+        try (final FileInputStream fis = new FileInputStream(logFile)) {
+            final ZipEntry zipEntry = new ZipEntry(logFile.getName());
+            zipFileOutputStream.putNextEntry(zipEntry);
+            ioUtilsWrapper.copy(fis, zipFileOutputStream);
+            zipFileOutputStream.closeEntry();
+        }
     }
 
     private void assignLogsToSlots(final Map<String, Set<File>> logs, final File[] logFiles) {

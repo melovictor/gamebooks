@@ -24,7 +24,7 @@
 				<c:if test="${not empty log.bookId}">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&ndash;
 				</c:if>
-				<a href="${logUrl}">
+				<a href="${logUrl}/view">
 					<c:if test="${empty log.bookId}">
 						${log.loginDateTime}
 					</c:if>
@@ -44,7 +44,7 @@
             <c:if test="${stat.index > 0}">
                 <br />
             </c:if>
-            <a href="savegame/${userSavedGames.userId}/${savedGame.bookId}">${savedGame.bookTitle}</a>
+            <a href="savegame/${userSavedGames.userId}/${savedGame.bookId}/view">${savedGame.bookTitle}</a>
         </c:forEach>
     </c:forEach>
 </div>
