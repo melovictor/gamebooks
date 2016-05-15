@@ -27,6 +27,7 @@ import javax.servlet.http.HttpSession;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.ui.Model;
 import org.testng.Assert;
@@ -66,6 +67,7 @@ public class Ff23BookSectionControllerTest {
     @Mock private BattleStatistics battleStatistics;
     @Mock private FfEnemy enemyB;
     @Mock private Iterator<FfEnemy> iterator;
+    @Inject private Logger logger;
 
     @BeforeClass
     public void setUpClass() {
@@ -110,6 +112,7 @@ public class Ff23BookSectionControllerTest {
 
     public void testHandleHuntRoundWhenCalledShouldCallHuntServiceAndReturnResult() {
         // GIVEN
+        logger.info("Starting to play a hunt round.");
         expectWrapper();
         expect(huntService.playRound(wrapper, info)).andReturn(huntRoundResult);
         mockControl.replay();
