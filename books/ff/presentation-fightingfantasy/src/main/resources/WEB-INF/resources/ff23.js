@@ -16,18 +16,19 @@ var ff23HuntTrigger = (function() {
 			url : "hunt",
 			type : "POST",
 			accept : "application/json; charset=utf-8",
-			data : {},
-			complete : function(data) {
+			data : {
+				"nothing" : "nothing"
+			},
+			success : function(data) {
 				button.prop("disabled", false);
-				var json = data.responseJSON;
-				$("#ff23Tiger").attr("class", convertPosition(json.tigerPosition));
-				$("#ff23Dog").attr("class", convertPosition(json.dogPosition));
-				if (json.huntFinished) {
-					$("#choice li a:not([href$='" + json.nextSectionPos + "'])").parent().remove();
+				$("#ff23Tiger").attr("class", convertPosition(data.tigerPosition));
+				$("#ff23Dog").attr("class", convertPosition(data.dogPosition));
+				if (data.huntFinished) {
+					$("#choice li a:not([href$='" + data.nextSectionPos + "'])").parent().remove();
 					$("#choice").show();
 					$("#ff23HuntTrigger").remove();
 				}
-				report(json.roundMessage);
+				report(data.roundMessage);
 			}
 		});
 	}
