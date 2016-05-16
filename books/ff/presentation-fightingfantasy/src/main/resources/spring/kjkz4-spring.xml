@@ -10,6 +10,36 @@
     </property>
   </bean>
 
-  <alias name="ff60BookPreFightHandlingService" alias="kjkz4BookPreFightHandlingService"/>
+  <alias name="ff60BookPreFightHandlingService" alias="kjkz4BookPreFightHandlingService" />
+
+  <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor" id="kjkz4Help" p:info-ref="kjkz4Info" scope="prototype">
+    <property name="sections">
+      <util:list>
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="intro" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="howToFight" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="ssl" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="battle" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="battleFlow6" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="multiBattleSimple" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="luck" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="luckInBattle" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="resetSsl" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="b" p:jsp="resetSkill" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="resetStamina" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="resetLuck" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="b" p:jsp="time" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="b" p:jsp="equipmentGold" />
+      </util:list>
+    </property>
+    <property name="params">
+      <util:map>
+        <entry key="stdHelp_howToFight" value="Hogyan küzdj meg az alvilág teremtményeivel?" />
+        <entry key="stdHelp_canEatAlways" value="true" />
+        <entry key="stdHelp_hasFood" value="false" />
+        <entry key="stdHelp_hasPotions" value="false" />
+      </util:map>
+    </property>
+  </bean>
+
 
 </beans>
