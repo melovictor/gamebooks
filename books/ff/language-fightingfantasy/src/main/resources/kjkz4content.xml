@@ -1137,6 +1137,7 @@
     <text>
         [p]Kinyitod az ajtót, és a kalózok szentélyében találod magad, melyet sötét istenüknek emeltek. A hely azonban, melyet a csontváztestű Quezkari borzalmas szobra ural, most teljesen üres. Elkéstél! Cinnabar és legénysége már elment, s mivel nem tudod követni őket, feladatodat sem tudod bevégezni. Kalandod itt véget ér.[/p]
     </text>
+    <reward id="missedship" />
     <death />
   </p>
   <p id="71">
@@ -1216,6 +1217,9 @@
       <enemy id="25" />
       <afterRound canUseLuck="true" everyNth="9999999">
       </afterRound>
+      <win>
+        <reward id="ninetail" />
+      </win>
     </fight>
     <next id="235"></next>
   </p>
@@ -1512,6 +1516,7 @@
     <text>
         [p]Beledobálod a pénzt az edénykéjébe, azonban a jövendőmondó továbbra is néma marad. Anélkül, hogy felnézne, megfordítja a pakli legtetején levő kártyát. Egy fekete koponya van ráfestve! Érzed, amint ereidben megfagy a vér, és valamilyen gonosz jelenlét nehezedik rád. Riadt dühvei rántasz kardot, és az előtted kuporgó alakra sújtasz. Csapásodra a figura helyén csupán egy nagy kupac rongy marad – semmi nyoma, hogy valaha is élő ember lett volna! (Vesztesz 2 [span class='ffAttribute']szerencse[/span] pontot, és jegyezd fel a [em]Kalandlapodra[/em] az [em]Átkozott[/em] szót!) Pánikszerű gyorsasággal fordulsz sarkon, és keresztülrohansz a Templom negyeden. Csupán akkor állsz meg, mikor már jó néhány utcát tudhatsz magad és a jósok közt. írj fel 1 órát.[/p]
     </text>
+    <reward id="skullcard" />
     <add amount="-2" to="luck" />
     <add amount="1" to="time" />
     <codeword name="Átkozott" />
@@ -2632,6 +2637,9 @@
     <loseItem id="2000" />
     <fight type="single">
       <enemy id="25" />
+      <win>
+        <reward id="ninetail" />
+      </win>
     </fight>
     <next id="235"></next>
   </p>
@@ -2726,6 +2734,7 @@
         [p]Ha nem mentetted volna meg a bennszülötteket, az ő sorsuk is az lett volna, hogy Zombikká váljanak. A foglyok ezenkívül azt is hallották, mikor a templom Főpapja az egyik alárendeltjével beszélt valami kódról vagy valami hasonló dologról, és a következő szavakat használta: – Vissza kettőt, előre kettőt. Vissza kettőt, előre kettőt. – Nyersz 1 [span class='ffAttribute']szerencse[/span] pontot az információért.[/p]
     </text>
     <add amount="1" to="luck" />
+    <reward id="mask" />
     <gatherItem id="4012" />
     <gatherItem id="4013" />
     <next id="57"></next>
@@ -2881,6 +2890,9 @@
           </dontHave>
         </itemCheck>
       </dontHave>
+      <after>
+        <reward id="monk" />
+      </after>
     </itemCheck>
   </p>
   <p id="182">
@@ -3591,6 +3603,7 @@
       <enemy id="20" />
       <enemy id="21" />
       <win>
+        <reward id="monk" />
         <text>
             [p]Gyorsan átkutatod a fanatikusok holttestét, de semmi érdemlegesre nem bukkansz, így sietve elhagyod a kocsmát. Írj fel 1 órát, illetve jegyezd fel [em]Kalandlapodra[/em] a [em]Szamár[/em] szót.[/p]
         </text>
@@ -3738,6 +3751,9 @@
     </text>
     <fight type="single">
       <enemy id="53" />
+      <win>
+        <reward id="mantis" />
+      </win>
     </fight>
     <next id="368"></next>
   </p>
@@ -3892,25 +3908,45 @@
     <text>
         [p]Még mindig tart a Scarachna elleni csatád, mikor a Maszkos Zombik rajtad ütnek. Három már rád is támad, miközben továbbra is védened kell magad a Pók-skorpióval szemben! Most már négy ellenféllel küzdesz egyszerre.[/p]
     </text>
-    <fight type="allAtOnce">
-      <enemy id="87" />
-      <enemy id="88" />
-      <enemy id="89" />
-      <enemy id="90" />
-      <specialAttack text="Maszktépés" id="maskTearing" />
-      <loseRound subsequentCount="2" enemy="87">
-        <interrupt />
-        <next id="336"></next>
-      </loseRound>
-      <win>
-        <next id="30"></next>
-      </win>
-    </fight>
+    <itemCheck type="item" id="4012">
+      <have>
+        <fight type="allAtOnce">
+          <enemy id="87" />
+          <enemy id="88" />
+          <enemy id="89" />
+          <enemy id="90" />
+          <specialAttack text="Maszktépés" id="maskTearing" />
+          <loseRound subsequentCount="2" enemy="87">
+            <interrupt />
+            <next id="336"></next>
+          </loseRound>
+          <win>
+            <next id="30"></next>
+          </win>
+        </fight>
+      </have>
+      <dontHave>
+        <fight type="allAtOnce">
+          <enemy id="87" />
+          <enemy id="88" />
+          <enemy id="89" />
+          <enemy id="90" />
+          <loseRound subsequentCount="2" enemy="87">
+            <interrupt />
+            <next id="336"></next>
+          </loseRound>
+          <win>
+            <next id="30"></next>
+          </win>
+        </fight>
+      </dontHave>
+    </itemCheck>
   </p>
   <p id="238">
     <text>
         [p]Conyn és matrózai a [em]Jószerencsén[/em] maradnak, míg te átugrod a két hajó közti távolságot, és megérkezel a balvégzetű [em]Hableányra[/em]. Eléggé kihaltnak tűnik, így úgy döntesz, leereszkedsz a fedélközbe, hogy ott vizsgálódj tovább. Végigosonva egy üres folyosón, őrületes visítást hallasz, és a homályból egy hordányi szellempatkány rohan elő, csillogó fogakkal és vörösen izzó szemekkel – és te éppen az útjukban állsz.[/p]
     </text>
+    <reward id="ghostship" />
     <next id="72">Ha elmenekülsz, amíg még van rá esély</next>
     <next id="289">Ha maradsz, ahol vagy</next>
   </p>
@@ -3967,6 +4003,7 @@
     <text>
         [p]Az utolsó pillanatban egyensúlyodat vesztve zuhansz bele, fejjel előre a tíz méter mély verembe, mely tele van csillogó, dárda hosszúságú vastüskékkel. Bizony, Quezkari Templomának csapdáit éppenséggel nem úgy tervezték, hogy bárki is túlélje azokat. Kalandod itt véget ér.[/p]
     </text>
+    <reward id="pittrap" />
     <death />
   </p>
   <p id="241">
@@ -4516,6 +4553,9 @@
     <fight type="allAtOnce">
       <enemy id="22" />
       <enemy id="23" />
+      <win>
+        <reward id="monk" />
+      </win>
     </fight>
     <next id="126"></next>
   </p>
@@ -4971,6 +5011,7 @@
         [p class="handwritten"]megváltozott. Ezentúl már nem „Leviatán”, hanem „Lábszárcsont”. Ezt a levelet semmisítsétek meg! Ha találkoznátok a szaglászóval, tegyétek, amit kell! A szokásos időben találkozunk[/p]
         [p]A levél többi része nincsen meg. Ez aztán az értékes nyom! Nyersz 1 [span class='ffAttribute']szerencse[/span] pontot. Miután elvetted, amit még akartál, egy csapóajtót fedezel fel a szoba egy másik sarkában. Mit teszel?[/p]
     </text>
+    <reward id="crossbones" />
     <gatherItem id="4002" />
     <gatherItem id="4003" />
     <add amount="1" to="luck" />
@@ -5094,6 +5135,7 @@
         [p]Felemelve a fegyvert megállapítod, hogy igen élesre van fenve, és a hosszú, ívelt penge egyik oldalába különös írást martak. Majd olyasféle hangot hallasz, mintha érmék potyognának. Megfordulsz, és a döbbenettől tágra nyílt szemmel meredsz az eléd táruló látványra. Maga a kincshalmaz elevenedett meg, és humanoid formát öltve egyenesen feléd lépdel. Kezedben a csontkarddal furcsa mód ügyesebbnek érzed magad a párviadalban. Növeld meg 1-gyel [span class='ffAttribute']ügyességed[/span] ennek a csatának az idejére. Felbátorodva készülsz neki a varázslattal teremtett Gólem elleni harcnak, aki kitartóan figyel gyöngy-szemeivel.[/p]
     </text>
     <gatherItem id="1004" />
+    <reward id="bonesword" />
     <fight type="single" forceWeapon="1004">
       <enemy id="69" />
     </fight>
