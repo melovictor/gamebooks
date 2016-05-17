@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.FightingFantasy.TALISMAN_OF_DEATH" id="ff11Id" />
+
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff11Info" c:id-ref="ff11Id" p:coverPath="resources/ff11/cover.jpg" p:resourceDir="ff11"
+    p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="11" p:series-ref="ffTitle" p:title="Talisman of Death" p:characterHandler-ref="ffCharacterHandler" p:commandResolvers-ref="ffCommandResolvers" p:unfinished="true" p:hidden="true">
+    <property name="contents">
+      <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="ff11enemies.xml" c:items="ff11items.xml" c:paragraphs="ff11content.xml" />
+    </property>
+    <property name="contentSpecification">
+      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="false" />
+    </property>
+  </bean>
+
+</beans>

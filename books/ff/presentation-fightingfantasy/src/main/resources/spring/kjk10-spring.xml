@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant static-field="hu.zagor.gamebooks.support.bookids.hungarian.KalandJatekKockazat.A_HALALTALIZMAN" id="kjk10Id" />
+
+  <bean parent="ff11Info" class="hu.zagor.gamebooks.domain.FfBookInformations" id="kjk10Info" c:id-ref="kjk10Id" p:locale-ref="huLocale" p:position="10" p:series-ref="kjkTitle" p:title="A Haláltalizmán" p:unfinished="true" p:hidden="false">
+    <property name="contents">
+      <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="kjk10enemies.xml" c:items="kjk10items.xml" c:paragraphs="kjk10content.xml" />
+    </property>
+  </bean>
+
+</beans>
