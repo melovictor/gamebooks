@@ -15,7 +15,7 @@ public class GenerateBookProjectFiles extends AbstractGenerator {
         final File rootPath = new File("c:/springsource/eclipsegit/books/" + baseData.getCollectorCode() + "/presentation-" + baseData.getCollectorName());
         final File codeDir = new File(rootPath,
             "src/main/java/hu/zagor/gamebooks/" + baseData.getRuleset() + "/" + baseData.getSeriesCode() + "/" + baseData.getTitleCode() + "/mvc/books/");
-        if (codeDir.exists()) {
+        if (codeDir.exists() && !baseData.isForceOverride()) {
             System.out.println("Verification failed. No code will be generated.");
         } else {
             for (final BookLangData data : books) {

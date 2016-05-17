@@ -85,23 +85,24 @@ public class GenerateBookLanguageProjectFiles extends AbstractGenerator {
 
     private void generateLanguageProject(final File langRootPath, final BookBaseData baseData, final BookLangData data) {
         final Console console = Console.getConsole();
-        try {
+        if (!data.isHidden()) {
+            try {
+                final File resourceDir = new File(langRootPath, "src/main/resources");
+                createFile(resourceDir, data.getSeriesCode() + data.getPosition() + "content.xml", getContentFile(baseData));
+                if (baseData.hasItems()) {
+                    createFile(resourceDir, data.getSeriesCode() + data.getPosition() + "items.xml", getItemsFile(baseData));
+                }
+                if (baseData.hasEnemies()) {
+                    createFile(resourceDir, data.getSeriesCode() + data.getPosition() + "enemies.xml", getEnemiesFile(baseData));
+                }
 
-            final File resourceDir = new File(langRootPath, "src/main/resources");
-            createFile(resourceDir, data.getSeriesCode() + data.getPosition() + "content.xml", getContentFile(baseData));
-            if (baseData.hasItems()) {
-                createFile(resourceDir, data.getSeriesCode() + data.getPosition() + "items.xml", getItemsFile(baseData));
+                createDir(resourceDir, "messages");
+                createFile(resourceDir, "messages", "messages-" + baseData.getSeriesCode() + baseData.getPosition() + "_" + data.getLang() + ".properties", "");
+
+            } catch (final IOException exception) {
+                console.print("Failed to create all necessary files.");
+                exception.printStackTrace(System.out);
             }
-            if (baseData.hasEnemies()) {
-                createFile(resourceDir, data.getSeriesCode() + data.getPosition() + "enemies.xml", getEnemiesFile(baseData));
-            }
-
-            createDir(resourceDir, "messages");
-            createFile(resourceDir, "messages", "messages-" + baseData.getSeriesCode() + baseData.getPosition() + "_" + data.getLang() + ".properties", "");
-
-        } catch (final IOException exception) {
-            console.print("Failed to create all necessary files.");
-            exception.printStackTrace(System.out);
         }
     }
 

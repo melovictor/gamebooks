@@ -22,20 +22,20 @@ public class MainBookProject {
         new GenerateBookProjectFiles().generateBookProjectFiles(getBaseData(), books);
     }
 
-    final BookBaseData baseData = new BookBaseData();
-
     private BookBaseData getBaseData() {
+        final BookBaseData baseData = new BookBaseData();
 
+        baseData.setMainLanguage("en");
         baseData.setSeriesCode("ff"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm
-        baseData.setTitleCode("b");
-        baseData.setPosition(60);
+        baseData.setTitleCode("tod");
+        baseData.setPosition(11);
         baseData.setCollectorCode("ff"); // ff, cyoa, z, fyf, gyg, eq, tm
         baseData.setCollectorName("fightingfantasy"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine
         baseData.setRuleset("ff"); // raw, tm, ff
         baseData.setHasEnemies(true);
         baseData.setHasInventory(true);
         baseData.setHasItems(true);
-        baseData.setHasMap(true);
+        baseData.setHasMap(false);
         baseData.setMediaProject(true);
         baseData.setDefaultSkillTestType("Le"); // Le: lower or equal; L: lower; if neither, should be empty!
         baseData.setCharPageRequired(true);
@@ -57,11 +57,11 @@ public class MainBookProject {
 
     private BookLangData getSotkHu(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
-        data.setSeriesCode("kjkz");
-        data.setPosition(4);
-        data.setBookId("KalandJatekKockazatZagor.VERESCSONT");
+        data.setSeriesCode("kjk");
+        data.setPosition(10);
+        data.setBookId("KalandJatekKockazat.A_HALALTALIZMAN");
         data.setLang("hu");
-        data.setTitle("Vérescsont");
+        data.setTitle("A Haláltalizmán");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;
@@ -70,9 +70,9 @@ public class MainBookProject {
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setHidden(true);
-        data.setBookId("FightingFantasy.BLOODBONES");
+        data.setBookId("FightingFantasy.TALISMAN_OF_DEATH");
         data.setLang("en");
-        data.setTitle("Bloodbones");
+        data.setTitle("Talisman of Death");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;

@@ -1,7 +1,9 @@
 package hu.zagor.gamebooks.initiator.book;
 
 public class BookBaseData {
+    private boolean forceOverride;
 
+    private String mainLanguage;
     private String seriesCode;
     private String titleCode;
     private String position;
@@ -134,6 +136,23 @@ public class BookBaseData {
 
     public void setCharPageRequired(final boolean charPageRequired) {
         this.charPageRequired = charPageRequired;
+    }
+
+    public boolean isForceOverride() {
+        return forceOverride;
+    }
+
+    @Deprecated
+    public void setForceOverride(final boolean forceOverride) {
+        this.forceOverride = forceOverride;
+    }
+
+    public String getMainLanguage() {
+        return mainLanguage;
+    }
+
+    public void setMainLanguage(final String mainLanguage) {
+        this.mainLanguage = mainLanguage;
     }
 
 }
