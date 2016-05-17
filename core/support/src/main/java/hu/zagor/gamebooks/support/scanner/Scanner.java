@@ -26,10 +26,6 @@ public class Scanner {
         objectInputStream = new ObjectInputStream(inputStream);
     }
 
-    public void useDelimiter(final String paramString) {
-        scanner.useDelimiter(paramString);
-    }
-
     public String next() {
         return scanner.next();
     }
@@ -62,6 +58,10 @@ public class Scanner {
             } catch (final IOException e) {
             }
         }
+    }
+
+    public void forceFullFileLoading() {
+        scanner.useDelimiter("\\Z");
     }
 
 }

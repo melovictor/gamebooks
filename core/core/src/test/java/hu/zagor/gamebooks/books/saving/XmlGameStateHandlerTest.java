@@ -1,7 +1,5 @@
 package hu.zagor.gamebooks.books.saving;
 
-import static org.easymock.EasyMock.aryEq;
-import static org.easymock.EasyMock.eq;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
@@ -90,7 +88,7 @@ public class XmlGameStateHandlerTest {
         expect(beanFactory.getBean("file", saveFileDir, BOOK_ID_STRING)).andReturn(saveFile);
         expect(saveFile.canRead()).andReturn(true);
         expect(beanFactory.getBean("scanner", saveFile, "UTF-8")).andReturn(scanner);
-        scanner.useDelimiter("/z");
+        scanner.forceFullFileLoading();
         expect(scanner.next()).andReturn(XML_CONTENT);
         expect(gameStateLoader.load(XML_CONTENT)).andReturn(savedElements);
         logger.info("Successfully finished loading game for user {} for book {}.", PLAYER_ID, BOOK_ID);
@@ -126,11 +124,11 @@ public class XmlGameStateHandlerTest {
         expect(beanFactory.getBean("file", saveFileDir, BOOK_ID_STRING)).andReturn(saveFile);
         expect(saveFile.canRead()).andReturn(true);
         expect(beanFactory.getBean("scanner", saveFile, "UTF-8")).andReturn(scanner);
-        scanner.useDelimiter("/z");
+        scanner.forceFullFileLoading();
         expect(scanner.next()).andReturn(XML_CONTENT);
         expect(gameStateLoader.load(XML_CONTENT)).andReturn(null);
         expect(saveFile.getAbsolutePath()).andReturn(SAVE_GAME_ROOT);
-        logger.warn(eq("Failed to load game for book '{}' for user '{}' from location '{}'!"), aryEq(new Object[]{BOOK_ID, PLAYER_ID, SAVE_GAME_ROOT}), eq(null));
+        logger.warn("Failed to load game for book '{}' for user '{}' from location '{}'!", BOOK_ID, PLAYER_ID, SAVE_GAME_ROOT);
         scanner.close();
         mockControl.replay();
         // WHEN
@@ -213,7 +211,8 @@ public class XmlGameStateHandlerTest {
         writer.write(XML_CONTENT);
         expectLastCall().andThrow(exception);
         expect(saveFile.getAbsolutePath()).andReturn(SAVE_GAME_ROOT);
-        logger.warn(eq("Failed to save game for book '{}' for user '{}' to location '{}'!"), aryEq(new Object[]{BOOK_ID, PLAYER_ID, SAVE_GAME_ROOT}), eq(exception));
+        logger.warn("Failed to save game for book '{}' for user '{}' to location '{}'!", BOOK_ID, PLAYER_ID, SAVE_GAME_ROOT);
+        logger.warn("Thrown exception was: ", exception);
         writer.close();
         mockControl.replay();
         // WHEN

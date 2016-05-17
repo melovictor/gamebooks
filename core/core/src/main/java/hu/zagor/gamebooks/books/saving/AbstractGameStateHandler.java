@@ -120,8 +120,11 @@ public abstract class AbstractGameStateHandler implements GameStateHandler, Bean
      * @param exception the exception that caused the problem
      */
     protected void reportLoadFailure(final SavedGameContainer container, final File saveFileLocation, final Exception exception) {
-        logger.warn("Failed to load game for book '{}' for user '{}' from location '{}'!",
-            new Object[]{container.getBookId(), container.getUserId(), saveFileLocation.getAbsolutePath()}, exception);
+        logger.warn("Failed to load game for book '{}' for user '{}' from location '{}'!", container.getBookId(), container.getUserId(),
+            saveFileLocation.getAbsolutePath());
+        if (exception != null) {
+            logger.warn("Thrown exception was: ", exception);
+        }
     }
 
     /**
@@ -131,8 +134,11 @@ public abstract class AbstractGameStateHandler implements GameStateHandler, Bean
      * @param exception the exception that caused the problem
      */
     protected void reportSaveFailure(final SavedGameContainer container, final File saveFileLocation, final Exception exception) {
-        logger.warn("Failed to save game for book '{}' for user '{}' to location '{}'!",
-            new Object[]{container.getBookId(), container.getUserId(), saveFileLocation.getAbsolutePath()}, exception);
+        logger.warn("Failed to save game for book '{}' for user '{}' to location '{}'!", container.getBookId(), container.getUserId(),
+            saveFileLocation.getAbsolutePath());
+        if (exception != null) {
+            logger.warn("Thrown exception was: ", exception);
+        }
     }
 
     /**

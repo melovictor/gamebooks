@@ -35,7 +35,7 @@ public class XmlGameStateHandler extends AbstractGameStateHandler {
     @Override
     protected void loadGameFromFile(final SavedGameContainer container, final File saveFileLocation) {
         final Scanner scanner = (Scanner) getBeanFactory().getBean("scanner", saveFileLocation, UTF_8);
-        scanner.useDelimiter("/z");
+        scanner.forceFullFileLoading();
         @SuppressWarnings("unchecked")
         final Map<String, Object> savedElements = (Map<String, Object>) gameStateLoader.load(scanner.next());
         if (savedElements == null) {

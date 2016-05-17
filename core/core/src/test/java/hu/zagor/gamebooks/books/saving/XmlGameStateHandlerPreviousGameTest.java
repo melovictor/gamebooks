@@ -115,7 +115,7 @@ public class XmlGameStateHandlerPreviousGameTest {
         expect(beanFactory.getBean("file", saveFileDir, "11118")).andReturn(saveFile);
         expect(saveFile.canRead()).andReturn(true);
         expect(beanFactory.getBean("scanner", saveFile, "UTF-8")).andReturn(scanner);
-        scanner.useDelimiter("/z");
+        scanner.forceFullFileLoading();
         expect(scanner.next()).andReturn(XML_CONTENT);
         expect(gameStateLoader.load(XML_CONTENT)).andReturn(savedElements);
         logger.info("Successfully finished loading game for user {} for book {}.", PLAYER_ID, BOOK_ID - 1);
