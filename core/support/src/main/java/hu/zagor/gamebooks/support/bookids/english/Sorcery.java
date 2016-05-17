@@ -4,7 +4,7 @@ public class Sorcery {
 
     private static final long BASE = Series.SORCERY;
 
-    public static final String TITLE = "SORCERY";
+    public static final String TITLE = "Sorcery!";
 
     public static final long THE_SORCERY_SPELL_BOOK = BASE + 0;
     public static final long THE_SHAMUTANTI_HILLS = BASE + 1;
