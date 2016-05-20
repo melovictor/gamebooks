@@ -252,7 +252,15 @@
   </p>
   <!-- 76 -->
   <!-- 77 -->
-  <!-- 78 -->
+  <p id="78">
+    <text>
+        [p]Kisvártatva egy tágas helyiségbe visznek. Bent egy feltűnő szépségű, hollófekete hajú nőt látsz. Hosszú, fekete köntöst visel, amely alól csillogó kardmarkolat villan elő. Tartása erős egyéniségről árulkodik. Feláll és üdvözöl. - Hawkana vagyok, Fell-Kyrinla templomának Főpapnője és az Őrség Parancsnoka. Különös történetet adtál elő. - Bólint, mire az őrök megmotoznak. Megpróbálsz ellenállni, de szorosan fognak. Megtalálják az elrejtett Talizmánt, leszakítják a nyakadból és átadják a Főpapnőnek. Azonnal felismeri és boldogan felnevet. Elfordul és megszólal: - Most a templomba megyek! Ezt a bolondot meg dobjátok ki az utcára! - Kilökdösnek, s az őrház ajtaja becsapódik mögötted. Elvesztetted a Talizmánt! Most mihez kezdesz?[/p]
+    </text>
+    <loseItem id="3003" />
+    <next id="357">Visszamész az Őr utcán a Raktár utcába?</next>
+    <next id="303">Befordulsz a Kovács utcába.</next>
+    <next id="264">Elindulsz lefelé a Hét Bűn utcáján?</next>
+  </p>
   <!-- 79 -->
   <!-- 80 -->
   <!-- 81 -->
@@ -265,7 +273,22 @@
   <!-- 88 -->
   <!-- 89 -->
   <!-- 90 -->
-  <!-- 91 -->
+  <p id="91">
+    <text>
+        [p]Mélyen alszol és álmot látsz. A Keresztes Lovag jelenik meg előtted, akivel a Hasadékban találkoztál. Mintha tanácsot akarna adni. A ragyogás, amit a kardján láttál, most őt övezi glóriaként. Arra buzdít, hogy keresd a Tolvajok Klánjának a segítségét, de ugyanakkor megjegyzi: - Bánt, hogy azt kell tanácsolnom, hogy ilyen alakokkal állj össze. A Vörös Sárkány Fogadóban találod őket. Mindenesetre ők segíthetnek visszaszerezni a Talizmánt, Fell-Kyrinla templomából, ahol most van. - Hirtelen az álom már szinte valóságnak tűnik, és a Lovag felkiált: - Ébredj! Ébredj! Komoly veszélyben van az életed! - Felébredsz, körülötted minden csendes. A hold fényében látod, amint párafoszlányok kúsznak be az ajtórésen. Egyszer csak kivágódik az ajtó. Ködtakaró lepi el az istállót és egy nehézpáncélos lovag lép be. Páncélja éjfekete, kezében szöges buzogány. Felcsapja sisakrostélyát, és a hajad égnek áll, mert a sisakban semmit sem látsz. Mintha a poklok tüzét látnád. Kétségbeesetten figyeled, amint fekete buzogányát a magasba emelve rád támad. Meg kell küzdened a Halállovaggal![/p]
+    </text>
+    <fight type="single">
+      <enemy id="10" />
+    </fight>
+    <itemCheck type="item" id="4002">
+      <have>
+        <next id="193"></next>
+      </have>
+      <dontHave>
+        <next id="62"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 92 -->
   <!-- 93 -->
   <!-- 94 -->
@@ -326,7 +349,13 @@
   <!-- 118 -->
   <!-- 119 -->
   <!-- 120 -->
-  <!-- 121 -->
+  <p id="121">
+    <text>
+        [p]Újra elalszol, és csak az istállóba betűző késő délelőtti napsugár ébreszt fel. Nyújtózol egyet és ekkora szalma közt hirtelen valami hideg tárgy akad a kezedbe. Egy [span class="takeItem" data-id="gold" data-amount="1"]aranypénzt[/span] találtál, amit zsebre is teszel, mielőtt elindulnál.[/p]
+    </text>
+    <next id="57">Ha most befordulsz az egyik mellékutcába, amely a Hét Bűn utcájához vezet, és a Vörös Sárkány Fogadó felé veszed az utadat</next>
+    <next id="221">Ha nem akarsz tolvajok közé keveredni, és megpróbálod egymagad visszaszerezni a Talizmánt a templomból</next>
+  </p>
   <!-- 122 -->
   <p id="123">
     <text>
@@ -502,7 +531,13 @@
     <next id="268"></next>
   </p>
   <!-- 192 -->
-  <!-- 193 -->
+  <p id="193">
+    <text>
+        [p]Egyre gyengébb vagy. Rájössz, hogy közel a vég. Hirtelen vakító fényesség állítja meg a Halállovas támadását. Legnagyobb meglepetésedre a Keresztes Lovag áll előtted, ezüstösen csillogó glória övezi. A Halállovag hátrahőköl, arcát eltakarja a kezével. A Lovag Szent Kardja egyetlen suhintásával kettészeli a Halállovagot. Amilyen hirtelen jött, a Keresztes Lovag olyan gyorsan el is tűnik. Támadódnak nyoma sincs, de a [span class="takeItem" data-id="1003" data-amount="1"]Szent Kard[/span] itt maradt, halványan dereng a szalma közt. Fölemeled és rádöbbensz, hogy ezt neked szánták a Halál elleni küzdelemhez. Amint megérinted, sebeid varázslatosan begyógyulnak. Nyersz 6 ÉLETERŐ pontot! Amikor a Szent Kardot használod, mindig kapsz 1 ÜGYESSÉG pontot is.[/p]
+    </text>
+    <add amount="6" to="stamina" />
+    <next id="121"></next>
+  </p>
   <!-- 194 -->
   <!-- 195 -->
   <!-- 196 -->
@@ -631,7 +666,12 @@
   </p>
   <!-- 248 -->
   <!-- 249 -->
-  <!-- 250 -->
+  <p id="250">
+    <text>
+        [p]A nehéz nap után kimerülten megállsz, hogy kifújd magad. A láthatatlan ellenfél támadása készületlenül ért. Körülnézel és csendben hallgatózol, hátha megint megtámad valaki. Az éj leszálltával hálát adsz, mikor egy üres istállót találsz. Bemész és a szalma közé kuporodsz éjszakára.[/p]
+    </text>
+    <next id="91"></next>
+  </p>
   <!-- 251 -->
   <!-- 252 -->
   <p id="253">
@@ -667,7 +707,14 @@
   <!-- 261 -->
   <!-- 262 -->
   <!-- 263 -->
-  <!-- 264 -->
+  <p id="264">
+    <text>
+        [p]Mikor leszáll az est, végigmész a Hét Bűn utcáján, egészen a Vörös Sárkány fogadóig. Egy zömök ember jelenik meg az ajtóban, és kiborít egy vödörnyi mocskosvörös fűrészport. - Sajnálom, zárva vagyunk! - morogja és becsapja az ajtót. Mielőtt bármit is tehetnél, észreveszed, hogy valami megbolygatta a fűrészport. Egymás után lábnyomok tűnnek fel benne, s feléd közelednek. Mit teszel?[/p]
+    </text>
+    <next id="297">Hangosan felkiáltasz, hogy magadra vond a figyelmet?</next>
+    <next id="348">Felmarkolsz egy csomó sarat és a lábnyomokra hajítod?</next>
+    <next id="208">Megvárod, hogy mi fog történni?</next>
+  </p>
   <!-- 265 -->
   <!-- 266 -->
   <p id="267">
@@ -730,7 +777,13 @@
   </p>
   <!-- 294 -->
   <!-- 295 -->
-  <!-- 296 -->
+  <p id="296">
+    <text>
+        [p]Az Ingoványi kapu nevű utcán mész be a városba. A világosszürke kőből épült házak többsége igen nagy. Az utcákon hemzsegnek az emberek; vásárlók, fiatal lányok és fiúk, kezükben könyvek és tekercsek.[/p]
+    </text>
+    <next id="357">Ha a Raktár utcán, az Ingovány kapu folytatásán mész tovább</next>
+    <next id="303">Ha balra fordulsz a Kovács utcára</next>
+  </p>
   <!-- 297 -->
   <!-- 298 -->
   <!-- 299 -->
@@ -815,7 +868,12 @@
   </p>
   <!-- 332 -->
   <!-- 333 -->
-  <!-- 334 -->
+  <p id="334">
+    <text>
+        [p]Az Ingoványi kapu nevű utcán belovagoltok a Tanulás Városába, Szürkecéhekbe. A legtöbb világosszürke kőépület igen nagy. Sokféle embert látsz. Néhány férfi világoskék tógát visel, ezek Tudósok, és professzorok a Tanulás Céheiből. Arrébb fiatal fiúk és lányok sétálnak, kezükben könyvek és tekercsek. Rájössz, hogy így fegyvertelenül nem sokra mennél ezekkel a harcosnőkkel, így hát nincs más választásod, velük kell tartanod.[/p]
+    </text>
+    <next id="351"></next>
+  </p>
   <!-- 335 -->
   <!-- 336 -->
   <!-- 337 -->
@@ -834,10 +892,23 @@
   <!-- 345 -->
   <!-- 346 -->
   <!-- 347 -->
-  <!-- 348 -->
+  <p id="348">
+    <text>
+        [p]A sár, amit odadobtál, egy láthatatlan alakról pereg le. Egy három méter magas, vékony, emberszerű teremtmény alakja rajzolódik ki előtted. Szinte gépiesen tart feléd, és csak akkor döbbensz rá, hogy meg akar támadni, amikor már föléd tornyosul. Meg kell küzdened a Láthatatlan Támadóval![/p]
+    </text>
+    <fight type="single">
+      <enemy id="9" />
+    </fight>
+    <next id="250"></next>
+  </p>
   <!-- 349 -->
   <!-- 350 -->
-  <!-- 351 -->
+  <p id="351">
+    <text>
+        [p]Végigvisznek az Ingoványi kapu utcán, különböző élelmiszer- és fazekasüzletek előtt, azután a nyüzsgő Raktár utcán. Ott jobbra kanyarodtok az Őr utcára és megálltok egy szürke, zömök épület előtt. Ez az őrség épülete. Az őrök leszállnak a lóról és bevezetnek.[/p]
+    </text>
+    <next id="78"></next>
+  </p>
   <!-- 352 -->
   <!-- 353 -->
   <!-- 354 -->
