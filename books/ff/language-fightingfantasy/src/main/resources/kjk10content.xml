@@ -75,7 +75,23 @@
   <!-- 8 -->
   <!-- 9 -->
   <!-- 10 -->
-  <!-- 11 -->
+  <p id="11">
+    <text>
+        [p]Megállsz a söntéspult előtt és már épp megkérdeznéd a csaposról, hogy mit lehet itt inni, amikor meglepetten hallod a saját hangodat. - Tölts valamit, te hájas disznó, mielőtt elhányom magam attól az ocsmány gennyes pofádtól! - A csapos keze a döbbenettől és a haragtól megáll a levegőben. Dühében elfojtott kiáltást hallat, majd megragadja a bunkósbotját, és átveti magát a pulton. Kardot rántva hátralépsz. Szemed már hozzászokott a sötéthez és látod, amint néhány vendég feláll. Még soha nem láttál ilyen gyanús kinézetű gyilkos bandát. Az egyiknek az arcán hosszú forradásnyom húzódik a fülétől az álláig. Meg kell verekedned a csapossal és az egyik gonosztevővel![/p]
+    </text>
+    <fight type="single">
+      <enemy id="15" />
+      <enemy id="16" />
+    </fight>
+    <test against="luck">
+      <success>
+        <next id="200"></next>
+      </success>
+      <failure>
+        <next id="181"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 12 -->
   <p id="13">
     <text>
@@ -126,7 +142,13 @@
     <next id="13"></next>
   </p>
   <!-- 31 -->
-  <!-- 32 -->
+  <p id="32">
+    <text>
+        [p]A réztigris pofáján gonosz vigyor ül. A nyakadba akasztod, remélve, hogy majd védelmet nyújt és szerencsét hoz.[/p]
+    </text>
+    <gatherItem id="3005" />
+    <next id="156"></next>
+  </p>
   <!-- 33 -->
   <!-- 34 -->
   <p id="35">
@@ -170,7 +192,13 @@
   <!-- 44 -->
   <!-- 45 -->
   <!-- 46 -->
-  <!-- 47 -->
+  <p id="47">
+    <text>
+        [p]A dühös ifjú feléd fordul, arcán zavart kifejezés ül. Köszöni, hogy visszaadtad az amulettjét. - Tulajdonképpen nem tudom, min is vesztünk össze - mondja. A szerencse rád fog mosolyogni, amiért ilyen becsületes voltál! Nyersz 1 SZERENCSE pontot. Kisvártatva hallod, amint újra parázs veszekedésbe kezdenek. - Mindig csak bajt keversz! - ordítja az egyik ifjú. Inkább magukra hagyod őket.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="156"></next>
+  </p>
   <!-- 48 -->
   <!-- 49 -->
   <!-- 50 -->
@@ -187,7 +215,14 @@
   <!-- 54 -->
   <!-- 55 -->
   <!-- 56 -->
-  <!-- 57 -->
+  <p id="57">
+    <text>
+        [p]Lekanyarodsz egy mellékutcába, mely a Hét Bűn utcája felé visz. Útközben két kéktógás diák majdnem fellök. Veszekszenek és kisvártatva ölre mennek. Úgy látszik, egyikük nem ért egyet azzal, amit a másik mondott. Viaskodás közben a dühös fiatalember elejt egy apró réztigris amulettet. Mit teszel?[/p]
+    </text>
+    <next id="47">Félbeszakítod a vitájukat, és visszaadod az amulettet?</next>
+    <next id="156">Ügyet sem vetve rájuk továbbmész?</next>
+    <next id="32">Fölveszed az amulettet?</next>
+  </p>
   <!-- 58 -->
   <!-- 59 -->
   <p id="60">
@@ -198,7 +233,13 @@
     <next id="75">Ha megkérded, mi közük hozzá</next>
   </p>
   <!-- 61 -->
-  <!-- 62 -->
+  <p id="62">
+    <text>
+        [p]A Halállovag, hangos páncélcsörömpöléssel térdre rogy, majd eltűnik. A Keresztes Lovag képe jelenik meg előtted. - Ez derék dolog volt! Vitéz harcos vagy, érdemes a küldetésre. Fogd [span class="takeItem" data-id="1003" data-amount="1"]Szent Kardomat[/span], ez majd megsegít, mert én már többé nem tudlak segíteni! - Átadja neked csillogó kardját, és a látomás szertefoszlik. A kard eléggé valódinak látszik, fénye beragyogja az egész istállót. Ahogy megérinted a Lovag ajándékát, sebeid, mintegy varázsütésre, begyógyulnak. Nyersz 6 ÉLETERŐ pontot! Ha majd a Szent Kardod használod, mindig adj hozzá 1-et ÜGYESSÉG pontjaidhoz.[/p]
+    </text>
+    <add amount="6" to="stamina" />
+    <next id="121"></next>
+  </p>
   <p id="63">
     <text>
         [p]Futsz, amilyen gyorsan csak tudsz a sziklás terepen. Majd kiszakad a tüdőd a nagy erőfeszítéstől. Mikor eléred a dombokat, hátrapillantasz és látod, hogy mindkét üldöző csapat egyenlő távolságra van mögötted. Az Elfek északról közelednek egy csapatban, míg az Orkok szétszóródva délről támadnak. Mit teszel?[/p]
@@ -263,11 +304,33 @@
   </p>
   <!-- 79 -->
   <!-- 80 -->
-  <!-- 81 -->
+  <p id="81">
+    <text>
+        [p]- Hazudsz! - sziszegi és mielőtt megmoccannál, beléd mélyeszti a karmait. Jeges zsibbadás árad szét a testedben és úgy érzed, mintha összes erődet elszívták volna. Vesztesz 1 ÜGYESSÉG és 2 ÉLETERŐ pontot! Most meg kell küzdened a Halál Szolgájával! Ha eltalál, minden alkalommal 2 ÉLETERŐ pontot és 1 ÜGYESSÉG pontot vesztesz![/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="skill" />
+    <gatherItem id="4003" />
+    <fight type="single">
+      <enemy id="11" />
+      <loseRound>
+        <gatherItem id="4003" />
+      </loseRound>
+    </fight>
+    <next id="175"></next>
+  </p>
   <!-- 82 -->
   <!-- 83 -->
   <!-- 84 -->
-  <!-- 85 -->
+  <p id="85">
+    <text>
+        [p]Amikor befordulsz az Ezüst utca sarkán, rémülten torpansz meg. A közelből suttogó hangokat hallasz. Hamarosan rájössz, hogy ez csak a szél[/p]
+        [p]csalóka játéka. A szavak egy törött csőből hallatszanak, mely az egyik düledező házat köti össze a csatornával. Három ember beszélget. Beszélgetésükből az derül ki, hogy az Ezüst utcai ékszerészt akarják kirabolni. A boltját innen is tisztán látod. Odaosonsz a házba vezető ócska lépcsőhöz. Mit teszel?[/p]
+    </text>
+    <next id="245">Felmész a lépcsőn?</next>
+    <next id="278">Figyelmezteted az ékszerészt?</next>
+    <next id="243">Ügyet sem vetsz rájuk, és befordulsz a Raktár utcába?</next>
+  </p>
   <!-- 86 -->
   <!-- 87 -->
   <!-- 88 -->
@@ -298,7 +361,18 @@
     </text>
     <next id="142"></next>
   </p>
-  <!-- 96 -->
+  <p id="96">
+    <text>
+        [p]Támadása meglep, és hatalmasat sújtasz rá. A dühtől és a fájdalomtól sziszegve támad rád félelmetes karmaival. Meg kell küzdened a Halál Szolgájával! Amikor eltalál, minden alkalommal elszív egy keveset az életerődből, ezért a szokásos 2 ÉLETERŐ ponton túl még 1 ÜGYESSÉG pontot is veszítesz![/p]
+    </text>
+    <fight type="single">
+      <enemy id="13" />
+      <loseRound>
+        <gatherItem id="4003" />
+      </loseRound>
+    </fight>
+    <next id="175"></next>
+  </p>
   <!-- 97 -->
   <!-- 98 -->
   <!-- 99 -->
@@ -319,7 +393,13 @@
   </p>
   <!-- 102 -->
   <!-- 103 -->
-  <!-- 104 -->
+  <p id="104">
+    <text>
+        [p]Folytatod az utad a Kovács után. Errefelé nincsenek üzletek, az utca néptelen, csupán egy görnyedt, csuklyás, koldus kinézetű alakot látsz. Odamegy hozzád és kiegyenesedik. A csuklyája alatt semmi sincs - arc helyett csupán két izzó széndarabot látsz a sötétben. Ijedtséged rémületbe csap át, amint a kísérteties alak halk, sziszegő hangon megszólal: - Azt hiszed, el tudsz szaladni a Halál elől? Add ide a Talizmánt! - mondja, feléd nyújtja fekete kesztyűs kezét.[/p]
+    </text>
+    <next id="81">Ha azt feleled, hogy a Talizmán már nincs nálad</next>
+    <next id="96">Ha azonnal megtámadod ezt a borzalmas alakot</next>
+  </p>
   <!-- 105 -->
   <!-- 106 -->
   <!-- 107 -->
@@ -345,7 +425,12 @@
   </p>
   <!-- 115 -->
   <!-- 116 -->
-  <!-- 117 -->
+  <p id="117">
+    <text>
+        [p]Kis füves téren vágtok át a Papnővel. A tér túloldalán gyönyörű, emeletes templom áll, tetején csodás függőkert. Miközben beléptek a széles, zöld ajtón a két őr között, fejetek felett tarka tollú madársereg húz el. Virágokkal díszített, hosszú csarnokba értek. Mindketten letérdeltek a gabonával és gyümölcsökkel megrakott oltár előtt. A nő minden élőlényért imádkozik. Néhány percnyi elmélkedés után kézen fog és a csarnok végében lévő kis szobába vezet. Kis asztalán ezüstös páncélinget pillantasz meg. - Mindenek Anyja beszélt nekem a küldetésedről - mondja Lillantha. - Azt kívánja, hogy ezt vidd magaddal. Segítségedre lehet. - Megköszönöd neki és felöltöd a csodálatosan könnyű [span class="takeItem" data-id="3004" data-amount="1"]páncélinget[/span]. Nyilvánvaló, hogy mágikus erejű - nyersz 1 ÜGYESSÉG pontot! - Még valami - teszi hozzá Sietve Lillantha. - Minden vasárnap este, és az azt követő három napon át Mindenek Anyja követői őrzik a kapukat. Ha úgy akarsz elmenni a városból, hogy azt mások ne tudják meg, ezeken a napokon menj. - Köszönetet mondasz neki és a templom békéjét elhagyva visszatérsz a Raktár utca forgatagába.[/p]
+    </text>
+    <next id="130"></next>
+  </p>
   <!-- 118 -->
   <!-- 119 -->
   <!-- 120 -->
@@ -374,7 +459,18 @@
   <!-- 127 -->
   <!-- 128 -->
   <!-- 129 -->
-  <!-- 130 -->
+  <p id="130">
+    <text>
+        [p]Ismét a Raktár utcában sétálsz és látod, hogy az üzletek már zárnak. A hazafelé tartó tömeg hirtelen szétválnak, hogy utat engedjen egy nagy fekete hintónak, amit két fekete kanca húz. A lovak fejét fekete tollbokréta díszíti. A csuklyás kocsis mereven maga elé néz. Oldala lépsz a csatornába, hogy utat adj, de a kocsis megrántja a gyeplőt. A hintó belsejében egy üres fekete koporsót látsz, de a fedelén ezüstös betűkkel a te neved olvasható. A halottaskocsi ajtaja kinyílik és egy elegáns férfi lép ki belőle, kezében ezüst sétapálca. Ruhája a legfinomabb ezüstszaténból készült, vállára cobolyrém simul. Az egyik árus üdvözli, s ő mosolyogva biccent feléje. - Én a Halál követe vagyok, és a Talizmánért jöttem - mondja vészterhes hangon. Miközben védekezni próbálsz, a férfi riasztó átalakuláson megy át, de az emberek ügyet se vetnek rá. Drága szőrméi rongyokká válnak. Megnyerő, kék szemű arca fekete, repedezett koponyává változik, melyből sötét, üres szemgödrök tekintenek rád. Csontvázkezében fényevesztett vívótőrt tart. Rádöbbensz, hogy senki más nem látja ezt az átalakulást, csak te. - Add ide - mondja. Mit teszel?[/p]
+    </text>
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="179" pos="1">Odaadod a Talizmánt?</next>
+      </have>
+    </itemCheck>
+    <next id="271" pos="2">Azonnal megtámadod?</next>
+    <next id="220" pos="3">Letagadod, hogy nálad van?</next>
+  </p>
   <!-- 131 -->
   <!-- 132 -->
   <!-- 133 -->
@@ -397,7 +493,23 @@
   <!-- 136 -->
   <!-- 137 -->
   <!-- 138 -->
-  <!-- 139 -->
+  <p id="139">
+    <text>
+        [p]Odabent egy izmos ember dolgozik az üllőnél, a hátán verejték csillog. Éppen egy kardmarkolatot készít. Az egyik oldalon, a fal mellett lévő polcon sorakoznak a kész kardok. - Válassz egyet! Hét arany lesz - szólal meg anélkül, hogy felnézne.[/p]
+    </text>
+    <itemCheck type="gold" id="7">
+      <have>
+        <next id="160">Ha akarsz, vehetsz egyet</next>
+        <next id="104">Ha akarod, megköszönöd az ajánlatot és továbbmész</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Mivel nincs nálad ennyi pénz, megköszönöd az ajánlatot és továbbmész.[/p]
+        </text>
+        <next id="104"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 140 -->
   <!-- 141 -->
   <p id="142">
@@ -443,7 +555,22 @@
     <loseItem id="1001" />
     <next id="257"></next>
   </p>
-  <!-- 156 -->
+  <p id="156">
+    <text>
+        [p]Kiérsz a Hét Bűn utcájára és nemsokára megtalálod a Vörös Sárkány Fogadót. Lépcső vezet lefelé, és a füstös homályból rekedt nevetés hallatszik. Lemész és elindulsz arra, ahol egy kevéske fényt látsz. A székeket és asztalokat kikerülve a söntéspulthoz mész, amely mögött a jól megtermett fogadás áll.[/p]
+    </text>
+    <itemCheck type="item" id="3005">
+      <have>
+        <next id="3"></next>
+      </have>
+      <haveEquipped>
+        <next id="11"></next>
+      </haveEquipped>
+      <dontHave>
+        <next id="3"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 157 -->
   <!-- 158 -->
   <p id="159">
@@ -466,7 +593,14 @@
       </failure>
     </test>
   </p>
-  <!-- 160 -->
+  <p id="160">
+    <text>
+        [p]Olyan kardot választasz, amelyik jól áll a kezedben. Szépen megmunkált fegyver, hasonló azokhoz, amilyeneket a harcosnők viselnek. Fizetsz és távozol.[/p]
+    </text>
+    <add amount="-7" to="gold" />
+    <gatherItem id="1001" />
+    <next id="104"></next>
+  </p>
   <p id="161">
     <text>
         [p]Mielőtt a vízbe mártanád a karodat, észreveszed, hogy a fűzről lecsöpögő nedv begyógyított egy kis karcolást a csuklódon. Rájössz, hogy gyógyító ereje van és úgy határozol, hogy gyűjtesz még belőle. Egy alkalommal, amikor úgy gondolod, hogy a legnagyobb szükséged van rá, felhasználhatod a [span class="takeItem" data-id="2005" data-amount="1"]Fűz Nedvét[/span], és az 4 ÉLETERŐ pontot fog visszaadni neked. Elindulsz és úgy döntesz, hogy követed a kis folyót nyugat felé, a völgyön át.[/p]
@@ -477,7 +611,13 @@
   <!-- 163 -->
   <!-- 164 -->
   <!-- 165 -->
-  <!-- 166 -->
+  <p id="166">
+    <text>
+        [p]Vidáman mosolyogva érdeklődik Wodeman felől. Elmeséled neki, mi történt a Szent Ligetben. - Akkor téged szívesen látunk a templomban. Én Lillantha vagyok, Mindenek Anyjának, az Élet Forrásának Papnője. Éppen imádkozni indultam. Elkísérnél?[/p]
+    </text>
+    <next id="117">Ha elkíséred</next>
+    <next id="130">Ha elutasítod és azt mondod, hogy neked a magad útját kell járnod</next>
+  </p>
   <!-- 167 -->
   <!-- 168 -->
   <!-- 169 -->
@@ -491,7 +631,25 @@
     <next id="152"></next>
   </p>
   <!-- 174 -->
-  <!-- 175 -->
+  <p id="175">
+    <text>
+        [p]Utolsó csapásod nem ütközik ellenállásba. A szürke köpeny a földre hullik. Minden csendes, csak a szél süvít. Megpihensz és lassan kihevered a megrázkódtatást.
+    </text>
+    <loseItem id="4003" />
+    <itemCheck type="item" id="4003">
+      <have>
+        <text>
+            Egy híján minden elvesztett ÜGYESSÉG pontodat visszakapod.
+        </text>
+      </have>
+      <after>
+        <text>
+            Óvatosan továbbindulsz az Ezüst utca felé.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="85"></next>
+  </p>
   <!-- 176 -->
   <p id="177">
     <text>
@@ -501,9 +659,21 @@
     <next id="147">Ha inkább elbújsz</next>
   </p>
   <!-- 178 -->
-  <!-- 179 -->
+  <p id="179">
+    <text>
+        [p]Gyorsan átadod a Talizmánt a Halál csontváz követének. Ahogy megkapja, látod, hogy átkozott erőt ment belőle. - Te ostoba - mondja gúnyosan. Mély hangja gyűlölettől zeng. Bámulatos gyorsasággal hozzád érinti a Talizmánt. Mintha csak maga a Halál érintett volna meg, a szíved nem ver többé. Semmi sem menthet meg. Küldetésednek itt vége![/p]
+    </text>
+    <loseItem id="3003" />
+    <death />
+  </p>
   <!-- 180 -->
-  <!-- 181 -->
+  <p id="181">
+    <text>
+        [p]A gyilkos megadja magát. Most már bizonyos tisztelettel és csodálattal néznek rád. A csapos igyekszik, hogy ne csináljon nagy ügyet a dologból és így szól: - Igazán nagy harcos vagy, még Tyucsev is emberére akadna benned! - Elmond neked egy történetet Heimdolról, a Hatalmasról. Szavaiból úgy tűnik, hogy Heimdol volt az egyik legerősebb és legkellemetlenebb alak, aki valaha is sört vedelt a Vörös Sárkányban. Egy napon jött egy Tyucsev nevű idegen és elfogadta a kihívást egy szkandermérkőzésre. Heimdol életében először veszített. Dúlt-fúlt és szörnyű bosszút esküdött. Néhány nap múlva Tyucsev visszatért, szándékosan belekötött Heimdolba és két barátjába. A harc elkerülhetetlen volt. Tyucsev mindannyiukat megölte és monogramját Heimdol homlokába karcolta. - Anarchilban, az őrült káosz Istenében hisz. Azóta senki sem mert kikezdeni vele, pedig ide csupa tolvaj és gyilkos jár.[/p]
+    </text>
+    <next id="210">Ha rá akarsz kérdezni, hol van a Tolvajok Klánja</next>
+    <next id="223">Ha inkább a gyilkosok segítségét kéred valamilyen megoldásra váró ügyedben</next>
+  </p>
   <!-- 182 -->
   <!-- 183 -->
   <!-- 184 -->
@@ -548,7 +718,24 @@
     <next id="240">Ha te is lehasalsz</next>
     <next id="224">Ha vársz, mi történik</next>
   </p>
-  <!-- 198 -->
+  <p id="198">
+    <text>
+        [p]- A vadonon át jöttél? Nem találkoztál véletlenül egy emberrel, aki az enyémhez hasonló zöld köntöst visel? A kezében tölgyfa bot van, a fején fagyöngy koszorú. A nevét is elárultas. - Mit válaszolsz?[/p]
+    </text>
+    <itemCheck type="section" id="52">
+      <have>
+        <next id="226">Hogy nem találkoztál vele?</next>
+        <next id="212">Hogy a neve Dwithian volt?</next>
+        <next id="166">Hogy a neve Wodeman volt?</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Elmondod a férfinak, hogy nem találkoztál a kérdéses alakkal.[/p]
+        </text>
+        <next id="226"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="199">
     <text>
         [p]Amikor körülnézel, hogy megbizonyosodj róla, vajon nem volt-e társa, aki a halálát megbosszulná, egy zöld- ruhás alak jelenik meg a tisztás közepén, mintha csak odavarázsolták volna. Egyik kezében tölgyfa bot, a másikban ezüstsarló, a fején fagyöngy koszorú. A botjával koppant egyet és megszólal; - Én a Szent Ligetet őrző Druida vagyok, te pedig megölted a társamat. Hósörényt, akinek a kölykei most árván maradtak. Átkozott legyen a kéz, mely megölte őt! - Érzed, amint kardforgató kezeden remegés fut végig - reszket, mint a nyárfalevél. Vesztesz 1 ÜGYESSÉG pontot a Druida átka miatt.[/p]
@@ -557,7 +744,14 @@
     <next id="177">Ha megtámadod a Druidát, hogy ezzel arra kényszerítsd, hogy oldozza fel az átkot</next>
     <next id="159">Ha inkább nem kockáztatsz és elmész a tisztásról</next>
   </p>
-  <!-- 200 -->
+  <p id="200">
+    <text>
+        [p]Harc közben a réztigris amulett a földre hullik. Most, hogy már nem viseled, rájössz, hogy meg volt átkozva és ezért kötöttél bele a csaposba. Nem is próbálod meg fölvenni. A gyilkos megadja magát. Most már bizonyos tisztelettel és csodálattal néznek rád. A csapos igyekszik, hogy ne csináljon túl nagy ügyet a dologból, és így szól: - Igazán nagy harcos vagy, még Tyucsev is emberére akadna benned! - Elmond neked egy történetet Heimdolról, a Hatalmasról. Szavaiból úgy veszed ki, Heimdol volt az egyik legerősebb és legkellemetlenebb alak, aki valaha is sört vedelt a Vörös Sárkányban. Egy napon jött egy Tyucsev nevű idegen, és elfogadta a kihívását egy szkandermérkőzésre. Heimdol életében először veszített. Dúlt-fúlt és szörnyű bosszút esküdött. Néhány nap múlva Tyucsev visszatért, szándékosan belekötött Heimdolba és két barátjába. A harc elkerülhetetlen volt. Tyucsev mindannyiukat megölte és monogramját Heimdol homlokába karcolta. - Anarchilban, az őrült káosz Istenében hisz. Azóta senki sem mert kikezdeni vele, pedig ide csupa tolvaj és gyilkos jár.[/p]
+    </text>
+    <loseItem id="3005" />
+    <next id="236">Ha meg akarod kérdezni, hol van a Tolvajok Klánja</next>
+    <next id="246">Ha inkább a gyilkosok segítségét kéred egy megoldásra váró ügyben</next>
+  </p>
   <!-- 201 -->
   <!-- 202 -->
   <p id="203">
@@ -577,11 +771,25 @@
   <!-- 205 -->
   <!-- 206 -->
   <!-- 207 -->
-  <!-- 208 -->
+  <p id="208">
+    <text>
+        [p]A léptek egyre közelednek és a fejed fölött, a levegőben megszólal egy hang; - Én egy halott lelke vagyok, és mi megszámlálhatatlanul sokan vagyunk. - Hirtelen szörnyű ütés taszít hátra. Vesztesz 2 ÉLETERŐ pontot! Meg kell küzdened a Láthatatlan Támadóval. Vakon csapkodsz, abban bízva, hogy döféseid sebet ejtenek rajta.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <fight type="single">
+      <enemy id="14" />
+    </fight>
+    <next id="250"></next>
+  </p>
   <!-- 209 -->
   <!-- 210 -->
   <!-- 211 -->
-  <!-- 212 -->
+  <p id="212">
+    <text>
+        [p]- Értem - mondja röviden, megfordul és elmegy. Hamarosan szem elől téveszted a tömegben. Vállat vonsz és továbbmész.[/p]
+    </text>
+    <next id="130"></next>
+  </p>
   <!-- 213 -->
   <p id="214">
     <text>
@@ -599,8 +807,29 @@
     <next id="159"></next>
   </p>
   <!-- 219 -->
-  <!-- 220 -->
-  <!-- 221 -->
+  <p id="220">
+    <text>
+        [p]- Hazudsz! - sziszegi és beléd mártja a kardját, mielőtt megmozdulhatnál. A sebből dermesztő zsibbadás terjed szét a testedben, úgy érzed, mintha életerődet szívná el. Vesztesz 1 ÜGYESSÉG és 2 ÉLETERŐ pontot! Most meg kell küzdened a Halál Követével. Valahányszor eltalál, 1 ÜGYESSÉG pontot is vesztesz az ÉLETERŐ pont veszteség mellett.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="skill" />
+    <gatherItem id="4003" />
+    <fight type="single">
+      <enemy id="12" />
+      <loseRound>
+        <gatherItem id="4003" />
+      </loseRound>
+    </fight>
+    <next id="254"></next>
+  </p>
+  <p id="221">
+    <text>
+        [p]Észreveszed az egyik harcosnőt, akiről tudod, hogy Fell-Kyrinla követője. Azt reméled, hogy a templomba igyekszik, ezért a nyomába eredsz és távolról követed. Végül egy nagy, fehér kőépület elé érsz, amelyet szürke oszlopok szegélyeznek. Lépcsők vezetnek a bejárathoz, ahol két oszlop között egy őr áll. Mit teszel?[/p]
+    </text>
+    <next id="234">Megtámadod az őrt?</next>
+    <next id="202">Azt mondod, hogy fontos üzenetet hoztál a Főpapnőnek?</next>
+    <next id="24">Föladod és elmész a Vörös Sárkány Fogadóba?</next>
+  </p>
   <!-- 222 -->
   <!-- 223 -->
   <p id="224">
@@ -610,7 +839,12 @@
     <next id="296"></next>
   </p>
   <!-- 225 -->
-  <!-- 226 -->
+  <p id="226">
+    <text>
+        [p]- Ó, rég nem kaptunk már hírt felőle. Én Mindenek Anyjának, az Élet Forrásának Papnője vagyok. A Druidák a barátaink. Remélem, jól érzed majd magad Szürkecéhekben. Viszontlátásra, idegen. - Továbbmegy, hamarosan szem elől téveszted a tömegben. Te is folytatod az utat a Raktár utcán.[/p]
+    </text>
+    <next id="130"></next>
+  </p>
   <p id="227">
     <text>
         [p]A lábad elnehezül, mire két domb között elérsz egy völgyet. Egyre lassabban mész, és nem tudod, meddig bírod még. Hátranézel. Megelégedve látod, hogy az Orkok és az Elfek véres harcban csapnak össze. Az Elfek rövid úton elintézik az Orkokat - különös szikrák pattognak a kezükről, amelyekkel azonnal megölik ellenfeleiket. Rájössz, hogy az előny, amelyre szert tettél, rövid életű, továbbmész hát. Átvágsz a dombon, és egy zöldellő, páfrányokkal teli völgybe érsz.[/p]
@@ -641,7 +875,12 @@
   <!-- 233 -->
   <!-- 234 -->
   <!-- 235 -->
-  <!-- 236 -->
+  <p id="236">
+    <text>
+        [p]Meghívnak egy italra, amit el is fogadsz. Egyikük elmondja, hogy a Tolvajok Klánjának bejárata egy csatornanyílás, amely a Kereskedő sorról a csatornába vezet. Ott várnak rád holnap délben.[/p]
+    </text>
+    <next id="169"></next>
+  </p>
   <!-- 237 -->
   <!-- 238 -->
   <!-- 239 -->
@@ -657,7 +896,12 @@
   <!-- 243 -->
   <!-- 244 -->
   <!-- 245 -->
-  <!-- 246 -->
+  <p id="246">
+    <text>
+        [p]Érdekli őket a dolog, és meghívnak egy sörre. Elfogadod, de nem iszol. Közlöd velük, ha segítenek, nagy üzletet csinálhatnak. Megegyeztek, hogy holnap délben találkoztok a Tolvajok Klánjában, amit az álcázott szenesvermen keresztül érhetsz el a Gyertyánfa utcáról. Beszélgetni kezdesz velük.[/p]
+    </text>
+    <next id="169"></next>
+  </p>
   <p id="247">
     <text>
         [p]A lány csodálkozva vonja fel a szemöldökét. Mind a négyen hitetlenkedve néznek rád. Az aranyruhás a fehér köpenyes Paphoz fordul és megkérdezi: - Igaz ez? - Tudod, hogy a történeted igaz, ezért úgy döntesz, megvárod, míg a Pap varázsol. - Ez az igazság, őszinte szívből beszélt. - A pajzsos lány leereszti az íjpuskáját, és a bejárat felé fordítja. - Most mit tegyünk? - kérdi az aranyba öltözött ember. - A kijáratokat elzárták, és nekem mindössze annyi varázserőm maradt, amennyivel csak egyvalakit juttathatok ki. Ezt a harcost talán az istenek küldték, hogy folytassa küldetésünket. - Érzed a belőlük áradó jóakaratot, ezért csendben vársz, hátha segíthetnél nekik.[/p]
@@ -680,7 +924,26 @@
     </text>
     <next id="331"></next>
   </p>
-  <!-- 254 -->
+  <p id="254">
+    <text>
+        [p]Utolsó csapásod nem ütközik ellenállásba. A csontvázból csak egy kis kupac marad a földön. Minden csendes, csak a szél süvít. Megpihensz és lassan kihevered a megrázkódtatást. 
+    </text>
+    <loseItem id="4003" />
+    <itemCheck type="item" id="4003">
+      <have>
+        <text>
+            Egy híján minden elvesztett ÜGYESSÉG pontodat visszakapod.
+        </text>
+      </have>
+      <after>
+        <text>
+            Óvatosan mész tovább a Raktár utcán, aztán ráfordulsz a Könyves sétány nevű fasorra. Két hatalmas, szürke kőépület áll az út két oldalán. Egy csoport kék tógás fiatalember megy be a szemközti házba. Egy ősz öregember vezeti őket, aki halványkék köntöst visel. A közelebbi épületen zászló leng, rajta könyvek és papírtekercsek. Ez lehet a könyvtár, gondolod.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="346">Ha megnézed, milyen információt találhatsz a könyvtárban</next>
+    <next id="279">Ha megvizsgálod a másik épületet, hogy kiderítsd, mit csinálnak ott a fiatalok</next>
+  </p>
   <!-- 255 -->
   <p id="256">
     <text>
@@ -784,13 +1047,28 @@
     <next id="357">Ha a Raktár utcán, az Ingovány kapu folytatásán mész tovább</next>
     <next id="303">Ha balra fordulsz a Kovács utcára</next>
   </p>
-  <!-- 297 -->
+  <p id="297">
+    <text>
+        [p]Az emberek rád se hederítve sietnek tovább. A léptek tovább közelednek, és egy tompa, rekedtes hang szólal meg: - Én a holtak lelke vagyok. Megszámlálhatatlanul sokan vagyunk! - Hirtelen szörnyű ütés taszít hátra. Vesztesz 2 ÉLETERŐ pontot! Meg kell küzdened a Láthatatlan Támadóval.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <fight type="single">
+      <enemy id="14" />
+    </fight>
+    <next id="250"></next>
+  </p>
   <!-- 298 -->
   <!-- 299 -->
   <!-- 300 -->
   <!-- 301 -->
   <!-- 302 -->
-  <!-- 303 -->
+  <p id="303">
+    <text>
+        [p]Végigmész a Kovács utcán. Egy bádogosműhely mellett a páncélkovács műhelyét pillantod meg.[/p]
+    </text>
+    <next id="139">Ha belépsz</next>
+    <next id="104">Ha továbbmész</next>
+  </p>
   <!-- 304 -->
   <!-- 305 -->
   <!-- 306 -->
@@ -914,7 +1192,13 @@
   <!-- 354 -->
   <!-- 355 -->
   <!-- 356 -->
-  <!-- 357 -->
+  <p id="357">
+    <text>
+        [p]A Raktár utcában vagy. Mindenfelé vásárlók nyüzsögnek, de egy nő kelti fel a figyelmedet, aki tűnődve néz rád. Egyenes szálú haja meglehetősen rövidre van nyírva és nem visel ékszereket. Átvág az utcán és halk, de tiszta hangon, udvariasan megszólít: - Azt hiszem, te idegen vagy ebben a városban. Ki vagy és merről jöttél?[/p]
+    </text>
+    <next id="198">Ha elmondod, hogy szent küldetésben jársz és a vadonon át jöttél</next>
+    <next id="130">Ha azt feleled, hogy csak átutazóban vagy itt és gyorsan továbbmész</next>
+  </p>
   <!-- 358 -->
   <p id="359">
     <text>
