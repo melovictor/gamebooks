@@ -45,7 +45,7 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
         try {
             Thread.sleep(30);
             checkClipboard();
-        } catch (UnsupportedFlavorException | IOException | InterruptedException e) {
+        } catch (UnsupportedFlavorException | IllegalStateException | IOException | InterruptedException e) {
             e.printStackTrace();
             lostOwnership(clipboard, contents);
         }
