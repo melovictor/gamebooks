@@ -17,7 +17,7 @@ public class Ff11Section175PostHandler extends FfCustomPrePostSectionHandler {
     @Override
     public void handle(final Model model, final HttpSessionWrapper wrapper, final FfBookInformations info, final boolean changedSection) {
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
-        final int recoverableSkillPoints = info.getCharacterHandler().getItemHandler().getItems(character, "4003").size();
+        final int recoverableSkillPoints = info.getCharacterHandler().getItemHandler().removeItem(character, "4003", Integer.MAX_VALUE).size();
         character.changeSkill(recoverableSkillPoints);
     }
 
