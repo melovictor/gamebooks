@@ -7,7 +7,7 @@ import hu.zagor.gamebooks.ff.character.FfCharacter;
  * Class for resolving an attribute-type {@link ItemCheckCommand}.
  * @author Tamas_Szekeres
  */
-public class ItemCheckGoldPiecesCommandResolver extends ItemCheckAttributeCommandResolver {
+public class ItemCheckGoldPiecesCommandResolver extends ItemCheckFfAttributeCommandResolver {
 
     @Override
     protected int getAttributeValue(final FfCharacter character, final FfCharacterHandler characterHandler, final String attribute) {

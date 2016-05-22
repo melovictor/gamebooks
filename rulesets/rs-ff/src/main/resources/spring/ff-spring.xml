@@ -218,8 +218,7 @@
   <bean class="hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommandResolver" id="changeEnemyCommandResolver" />
   <bean class="hu.zagor.gamebooks.content.command.changeitem.ChangeItemCommandResolver" id="changeItemCommandResolver" />
 
-  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckAttributeCommandResolver" id="ffItemCheckAttributeCommandResolver" />
-  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckGoldPiecesCommandResolver" id="ffItemCheckGoldPiecesCommandResolver" />
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckFfAttributeCommandResolver" id="ffItemCheckAttributeCommandResolver" />
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckValueCommandResolver" id="ffItemCheckValueCommandResolver" />
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckPosCommandResolver" id="ffItemCheckPosCommandResolver" />
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckEnemyCommandResolver" id="ffItemCheckEnemyCommandResolver" />
@@ -234,8 +233,12 @@
     <entry key="skill" value-ref="ffItemCheckAttributeCommandResolver" />
     <entry key="stamina" value-ref="ffItemCheckAttributeCommandResolver" />
     <entry key="luck" value-ref="ffItemCheckAttributeCommandResolver" />
-    <entry key="gold" value-ref="ffItemCheckAttributeCommandResolver" />
-    <entry key="goldpiece" value-ref="ffItemCheckGoldPiecesCommandResolver" />
+    <entry key="gold">
+      <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckGoldCommandResolver" />
+    </entry>
+    <entry key="goldpiece">
+      <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckGoldPiecesCommandResolver" />
+    </entry>
     <entry key="value" value-ref="ffItemCheckValueCommandResolver" />
     <entry key="pos" value-ref="ffItemCheckPosCommandResolver" />
 
