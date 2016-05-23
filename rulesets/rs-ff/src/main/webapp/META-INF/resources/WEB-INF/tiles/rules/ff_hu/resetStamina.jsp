@@ -12,7 +12,7 @@
     <c:if test="${!stdHelp_canEatAlways}">
         Csak olyankor állhatsz meg pihenni és enni, amikor a szöveg erre kifejezetten lehetőséget ad.
     </c:if>
-    Minden étkezés 4 pontot ad <span class="attribute">ÉLETERŐ</span> pontjaidhoz, és 1 ponttal csökkenti Élelmiszer-tartalékodat. A <em>Kalandlapon</em> külön Élelmiszer-készlet négyzet van, hogy feljegyezd, mennyit fogyasztottál. Ne feledd, hogy hosszú utat kell megtenned, ezért bölcsen használd fel élelmiszeredet!</p>
+    Minden étkezés 4 pontot ad <span class="attribute">ÉLETERŐ</span> pontjaidhoz, és 1 ponttal csökkenti Élelmiszer-tartalékodat. A <em>Kalandlapon</em> külön Élelmiszerkészlet négyzet van, hogy feljegyezd, mennyit fogyasztottál. Ne feledd, hogy hosszú utat kell megtenned, ezért bölcsen használd fel élelmiszeredet!</p>
 </c:if>
 <c:if test="${!stdHelp_hasFood}">
     <p>Ellentétben a többi Kaland, Játék, Kockázat könyvvel, most Élelmiszerkészlet nélkül kezded meg kalandjaidat, azonban a játék során lehetőséged lesz rá, hogy különböző módon növeld <span class="attribute">ÉLETERŐDET</span>.</p>
