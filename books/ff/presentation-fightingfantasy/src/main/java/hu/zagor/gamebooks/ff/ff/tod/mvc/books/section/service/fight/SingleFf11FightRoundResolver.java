@@ -1,4 +1,4 @@
-package hu.zagor.gamebooks.ff.ff.b.mvc.books.section.service.fight;
+package hu.zagor.gamebooks.ff.ff.tod.mvc.books.section.service.fight;
 
 import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.BasicAbstractCustomEnemyHandlingFightRoundResolver;
 import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.CustomBeforeAfterRoundEnemyHandler;
@@ -8,16 +8,16 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
- * Single fight round resolver for FF60.
+ * Single fight round resolver for FF11.
  * @author Tamas_Szekeres
  */
-@Component("singleff60FightRoundResolver")
-public class SingleFf60FightRoundResolver extends BasicAbstractCustomEnemyHandlingFightRoundResolver<EnemyPrePostFightDataContainer> {
+@Component("singleff11FightRoundResolver")
+public class SingleFf11FightRoundResolver extends BasicAbstractCustomEnemyHandlingFightRoundResolver<EnemyPrePostFightDataContainer> {
     @Autowired @Qualifier("singleFightRoundResolver") private FightRoundResolver decorated;
 
     @Override
     protected Class<? extends CustomBeforeAfterRoundEnemyHandler<EnemyPrePostFightDataContainer>> getType() {
-        return Ff60BeforeAfterRoundEnemyHandler.class;
+        return Ff11BeforeAfterRoundEnemyHandler.class;
     }
 
     @Override

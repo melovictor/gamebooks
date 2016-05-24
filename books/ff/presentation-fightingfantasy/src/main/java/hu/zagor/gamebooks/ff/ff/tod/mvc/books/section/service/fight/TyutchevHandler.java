@@ -1,9 +1,11 @@
 package hu.zagor.gamebooks.ff.ff.tod.mvc.books.section.service.fight;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
+import java.util.Map;
 import org.springframework.stereotype.Component;
 
 /**
@@ -24,10 +26,11 @@ public class TyutchevHandler extends Ff11BeforeAfterRoundEnemyHandler {
     @Override
     public void executePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
-        final FfEnemy enemy = (FfEnemy) resolvationData.getEnemies().get("18");
+        final Map<String, Enemy> enemies = resolvationData.getEnemies();
+        final FfEnemy enemy = (FfEnemy) enemies.get("18");
         if (enemy.getStamina() <= TYUTCHEV_SURRENDER) {
             killEnemy(enemy);
-            killEnemy(resolvationData.getEnemies().get("19"));
+            killEnemy(enemies.get("19"));
         }
     }
 

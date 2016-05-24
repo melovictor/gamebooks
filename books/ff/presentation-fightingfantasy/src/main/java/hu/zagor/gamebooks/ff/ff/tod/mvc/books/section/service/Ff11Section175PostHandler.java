@@ -14,10 +14,12 @@ import org.springframework.ui.Model;
 @Component
 public class Ff11Section175PostHandler extends FfCustomPrePostSectionHandler {
 
+    private static final int RE_ADD_LOST_SKILL = 20;
+
     @Override
     public void handle(final Model model, final HttpSessionWrapper wrapper, final FfBookInformations info, final boolean changedSection) {
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
-        final int recoverableSkillPoints = info.getCharacterHandler().getItemHandler().removeItem(character, "4003", Integer.MAX_VALUE).size();
+        final int recoverableSkillPoints = info.getCharacterHandler().getItemHandler().removeItem(character, "4003", RE_ADD_LOST_SKILL).size();
         character.changeSkill(recoverableSkillPoints);
     }
 

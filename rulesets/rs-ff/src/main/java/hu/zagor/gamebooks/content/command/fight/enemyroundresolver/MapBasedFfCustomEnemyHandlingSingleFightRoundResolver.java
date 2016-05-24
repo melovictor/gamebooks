@@ -5,6 +5,7 @@ import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
+import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import java.util.HashMap;
@@ -18,7 +19,8 @@ import org.springframework.context.ApplicationContextAware;
  * @author Tamas_Szekeres
  * @param <T> the type which will contain the data that was compiled during the pre-fight phase
  */
-public abstract class MapBasedFfCustomEnemyHandlingSingleFightRoundResolver<T extends BasicEnemyPrePostFightDataContainer> implements ApplicationContextAware {
+public abstract class MapBasedFfCustomEnemyHandlingSingleFightRoundResolver<T extends BasicEnemyPrePostFightDataContainer>
+    implements ApplicationContextAware, FightRoundResolver {
     private Map<String, CustomBeforeAfterRoundEnemyHandler<T>> enemyHandlers;
     private ApplicationContext applicationContext;
 
