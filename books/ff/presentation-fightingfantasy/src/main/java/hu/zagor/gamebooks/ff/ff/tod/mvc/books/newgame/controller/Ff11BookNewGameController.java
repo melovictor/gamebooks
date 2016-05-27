@@ -20,10 +20,7 @@ public class Ff11BookNewGameController extends FfBookNewGameController {
     protected void initializeItems(final Map<String, String[]> parameterMap, final FfCharacter character) {
         super.initializeItems(parameterMap, character);
 
-        if (parameterMap.containsKey("potion")) {
-            final String potionMarkerId = "41" + parameterMap.get("potion")[0].substring(2, 4);
-            getInfo().getCharacterHandler().getItemHandler().addItem(character, potionMarkerId, 1);
-        }
-
+        final String potionMarkerId = "41" + parameterMap.get("potion")[0].substring(2, 4);
+        getInfo().getCharacterHandler().getItemHandler().addItem(character, potionMarkerId, 1);
     }
 }
