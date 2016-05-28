@@ -241,8 +241,9 @@
     </entry>
     <entry key="value" value-ref="ffItemCheckValueCommandResolver" />
     <entry key="pos" value-ref="ffItemCheckPosCommandResolver" />
-
-    <entry key="attribute" value-ref="ffItemCheckAttributeCommandResolver" />
+    <entry key="attribute">
+      <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckAttributeCommandResolver" />
+    </entry>
     <entry key="fear" value-ref="ffItemCheckAttributeCommandResolver" />
     <entry key="wisdom" value-ref="ffItemCheckAttributeCommandResolver" />
     <entry key="armour" value-ref="ffItemCheckAttributeCommandResolver" />
