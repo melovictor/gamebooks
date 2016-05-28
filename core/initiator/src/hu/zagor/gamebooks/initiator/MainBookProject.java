@@ -27,8 +27,8 @@ public class MainBookProject {
 
         baseData.setMainLanguage("en");
         baseData.setSeriesCode("ff"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm
-        baseData.setTitleCode("tod");
-        baseData.setPosition(11);
+        baseData.setTitleCode("tot");
+        baseData.setPosition(14);
         baseData.setCollectorCode("ff"); // ff, cyoa, z, fyf, gyg, eq, tm
         baseData.setCollectorName("fightingfantasy"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine
         baseData.setRuleset("ff"); // raw, tm, ff
@@ -58,10 +58,10 @@ public class MainBookProject {
     private BookLangData getSotkHu(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setSeriesCode("kjk");
-        data.setPosition(10);
-        data.setBookId("KalandJatekKockazat.A_HALALTALIZMAN");
+        data.setPosition(11);
+        data.setBookId("KalandJatekKockazat.A_REMULET_UTVESZTOJE");
         data.setLang("hu");
-        data.setTitle("A Haláltalizmán");
+        data.setTitle("A rémület útvesztője");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;
@@ -70,9 +70,9 @@ public class MainBookProject {
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setHidden(true);
-        data.setBookId("FightingFantasy.TALISMAN_OF_DEATH");
+        data.setBookId("FightingFantasy.TEMPLE_OF_TERROR");
         data.setLang("en");
-        data.setTitle("Talisman of Death");
+        data.setTitle("Temple of Terror");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;
