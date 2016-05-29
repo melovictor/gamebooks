@@ -51,6 +51,7 @@ public abstract class MapBasedFfCustomEnemyHandlingSingleFightRoundResolver<T ex
         for (final FfEnemy enemy : command.getResolvedEnemies()) {
             final CustomBeforeAfterRoundEnemyHandler<T> handler = enemyHandlers.get(enemy.getId());
             if (handler != null) {
+                data.setCurrentEnemy(enemy);
                 if (handler.shouldExecutePreHandler(command, data)) {
                     handler.executePreHandler(command, data);
                 }
@@ -70,6 +71,7 @@ public abstract class MapBasedFfCustomEnemyHandlingSingleFightRoundResolver<T ex
         for (final FfEnemy enemy : command.getResolvedEnemies()) {
             final CustomBeforeAfterRoundEnemyHandler<T> handler = enemyHandlers.get(enemy.getId());
             if (handler != null) {
+                data.setCurrentEnemy(enemy);
                 if (handler.shouldExecutePostHandler(command, resolvationData, results, data)) {
                     handler.executePostHandler(command, resolvationData, results, data);
                 }
