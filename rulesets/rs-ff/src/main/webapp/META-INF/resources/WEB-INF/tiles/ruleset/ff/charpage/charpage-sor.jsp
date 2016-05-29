@@ -14,14 +14,14 @@
 		</c:set>
 		<div class="ffMainAttribute${width}">
 			<span class="ffMainAttribute"><spring:message code="page.ff.attribute.skill" /></span>
-			<span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.skill.initial" /> ${charEquipments.initialSkill}</span>
-			<div class="ffMainAttributeValue" data-attribute-skill>${charEquipments.skill}</div>
+			<span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.skill.initial" /> ${data.initialSkill}</span>
+			<div class="ffMainAttributeValue" data-attribute-skill>${data.skill}</div>
 		</div>
 		<div class="ffMainAttribute${width}">
 			<span class="ffMainAttribute"><spring:message code="page.ff.attribute.stamina" /></span>
-			<span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.stamina.initial" /> ${charEquipments.initialStamina}</span>
-			<div class="ffMainAttributeValue" data-attribute-stamina>${charEquipments.stamina}
-				<c:if test="${!charEquipments.usedLibra && !charEquipments.commandActive}">
+			<span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.stamina.initial" /> ${data.initialStamina}</span>
+			<div class="ffMainAttributeValue" data-attribute-stamina>${data.stamina}
+				<c:if test="${!data.usedLibra && !data.commandActive}">
 					<button data-libra-reset>
 						<spring:message code="page.sor.attribute.reset" />
 					</button>
@@ -30,23 +30,23 @@
 		</div>
 		<div class="ffMainAttribute${width}">
 			<span class="ffMainAttribute"><spring:message code="page.ff.attribute.luck" /></span>
-			<span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.luck.initial" /> ${charEquipments.initialLuck}</span>
-			<div class="ffMainAttributeValue" data-attribute-luck>${charEquipments.luck}</div>
+			<span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.luck.initial" /> ${data.initialLuck}</span>
+			<div class="ffMainAttributeValue" data-attribute-luck>${data.luck}</div>
 		</div>
 
 		<tiles:insertTemplate template="../charpage/gpp.jsp" />
 		<tiles:insertTemplate template="../charpage/eq.jsp" />
 
-		<c:if test="${not empty charEquipments.curses}">
+		<c:if test="${not empty data.curses}">
 			<div class="sorCursesFullWidth" data-items="true">
-				<c:if test="${!charEquipments.usedLibra && !charEquipments.commandActive}">
+				<c:if test="${!data.usedLibra && !data.commandActive}">
 					<button data-libra-curseremoval>
 						<spring:message code="page.sor.curse.reset" />
 					</button>
 				</c:if>
 				<span class="ffMainAttribute"><spring:message code="page.sor.curseSickness" /></span>
 				<c:set var="isFirst" value="true" />
-				<c:forEach var="item" items="${charEquipments.curses}"><c:if test="${!isFirst}">,</c:if>
+				<c:forEach var="item" items="${data.curses}"><c:if test="${!isFirst}">,</c:if>
 					<c:set var="isFirst" value="false" />
 					<span data-item-id="${item.id}" <c:if test="${not empty item.description}"> title="${item.description}"</c:if>>${item.name}</span><!--
 				--></c:forEach>

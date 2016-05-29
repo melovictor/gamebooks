@@ -150,7 +150,7 @@ public class FfBookSectionControllerTest {
         expectHandleSection();
         expect(model.addAttribute("cont", continueData)).andReturn(model);
         expect(beanFactory.getBean("ffCharacterPageData", character, characterHandler)).andReturn(charPageData);
-        expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
+        expect(model.addAttribute("data", charPageData)).andReturn(model);
         mockControl.replay();
         // WHEN
         form.setId(ENEMY_ID);
@@ -197,7 +197,7 @@ public class FfBookSectionControllerTest {
     private void expectCpDataInsertion() {
         expect(wrapper.getCharacter()).andReturn(character);
         expect(beanFactory.getBean("ffCharacterPageData", character, characterHandler)).andReturn(charPageData);
-        expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
+        expect(model.addAttribute("data", charPageData)).andReturn(model);
     }
 
     private void expectResources() {

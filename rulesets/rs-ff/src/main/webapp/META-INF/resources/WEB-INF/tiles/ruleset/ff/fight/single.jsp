@@ -48,18 +48,18 @@
 	</div>
 </c:if>
 
-<c:if test="${not empty charEquipments.preFightItems && fightCommand.roundNumber == 0 && fightCommand.preFightAvailable}">
+<c:if test="${not empty data.preFightItems && fightCommand.roundNumber == 0 && fightCommand.preFightAvailable}">
 	<div id="preFightItems">
 		<spring:message code="page.ff.label.fight.preFightItems" />
-		<c:forEach items="${charEquipments.preFightItems}" var="item" varStatus="loop">
+		<c:forEach items="${data.preFightItems}" var="item" varStatus="loop">
 			<span data-item-id="${item.id}">${item.name}</span><c:if test="${!loop.last}">, </c:if>
 		</c:forEach>
 	</div>
 </c:if>
-<c:if test="${not empty charEquipments.atFightItems && fightCommand.roundNumber > 0}">
+<c:if test="${not empty data.atFightItems && fightCommand.roundNumber > 0}">
 	<div id="preFightItems">
 		<spring:message code="page.ff.label.fight.atFightItems" />
-		<c:forEach items="${charEquipments.atFightItems}" var="item" varStatus="loop">
+		<c:forEach items="${data.atFightItems}" var="item" varStatus="loop">
 			<c:if test="${!item.usedInPreFight}">
 				<span data-item-id="${item.id}">${item.name}</span><c:if test="${!loop.last}">, </c:if>
 			</c:if>

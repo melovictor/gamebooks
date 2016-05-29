@@ -8,7 +8,7 @@
     </div>
     <input type="hidden" id="singleCcy" value="<spring:message code="${marketCommand.singleCcyKey}" />" />
     <input type="hidden" id="multipleCcy" value="<spring:message code="${marketCommand.multipleCcyKey}" />" />
-    <input type="hidden" id="currentGold" value="${charEquipments[marketCommand.moneyAttribute]}" />
+    <input type="hidden" id="currentGold" value="${data[marketCommand.moneyAttribute]}" />
     <input type="hidden" id="mustHaveGold" value="${marketCommand.mustHaveGold}" />
     <input type="hidden" id="mustBuy" value="${marketCommand.mustBuy}" />
     <input type="hidden" id="mustSellExactly" value="${marketCommand.mustSellExactly}" />

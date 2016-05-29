@@ -12,13 +12,13 @@
         <tiles:insertTemplate template="../charpage/ssl3.jsp" />
 		<div class="ffMainAttribute3">
 		    <span class="ffMainAttribute"><spring:message code="page.ff.attribute.gold" /></span>
-		    <div class="ffMainAttributeValue" data-attribute-gold><fmt:formatNumber value="${charEquipments.gold}" groupingUsed="true" /></div>
+		    <div class="ffMainAttributeValue" data-attribute-gold><fmt:formatNumber value="${data.gold}" groupingUsed="true" /></div>
 		</div>
         <div class="ffMainAttribute32">
             <span class="ffMainAttribute"><spring:message code="page.ff2.attribute.spells" /></span>
             <div data-items="true">
                 <c:set var="isFirst" value="true" />
-                <c:forEach var="item" items="${charEquipments.spells}"><c:if test="${!isFirst}">,</c:if>
+                <c:forEach var="item" items="${data.spells}"><c:if test="${!isFirst}">,</c:if>
                     <c:set var="isFirst" value="false" />
                     ${item.amount}&nbsp;x&nbsp;<span data-item-id="${item.id}" data-item-provision>${item.name}</span></c:forEach>
             </div>

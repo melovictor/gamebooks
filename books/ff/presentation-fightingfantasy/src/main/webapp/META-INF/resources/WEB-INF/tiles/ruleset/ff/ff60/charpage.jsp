@@ -17,7 +17,7 @@
 		<div class="ffMainAttribute4">
 			<span class="ffMainAttribute"><spring:message code="page.ff60.attribute.time" /></span>
 			<div class="ffMainAttributeValue" data-attribute-time>
-				<fmt:formatNumber value="${charEquipments.time}" groupingUsed="true" />
+				<fmt:formatNumber value="${data.time}" groupingUsed="true" />
 			</div>
 		</div>
 

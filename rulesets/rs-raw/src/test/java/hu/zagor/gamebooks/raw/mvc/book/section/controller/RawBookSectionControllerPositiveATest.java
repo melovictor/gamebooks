@@ -303,7 +303,7 @@ public class RawBookSectionControllerPositiveATest {
     private void expectCpDataInsertion() {
         expect(wrapper.getCharacter()).andReturn(character);
         expect(beanFactory.getBean("rawCharacterPageData", character)).andReturn(charPageData);
-        expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
+        expect(model.addAttribute("data", charPageData)).andReturn(model);
     }
 
 }

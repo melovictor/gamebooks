@@ -96,7 +96,7 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
         final String handleSection = super.handleSection(model, request, null);
 
         handleAfterFight(wrapper, form.getId());
-        model.addAttribute("charEquipments", getCharacterPageData(character));
+        model.addAttribute("data", getCharacterPageData(character));
 
         return handleSection;
     }

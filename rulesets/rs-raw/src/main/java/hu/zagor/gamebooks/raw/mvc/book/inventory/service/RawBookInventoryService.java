@@ -30,7 +30,7 @@ public class RawBookInventoryService implements BeanFactoryAware, BookInventoryS
         sectionHandlingService.initModel(model, player, info);
 
         final Character c = wrapper.getCharacter();
-        model.addAttribute("charEquipments", getCharacterPageData(c, info));
+        model.addAttribute("data", getCharacterPageData(c, info));
         model.addAttribute("bookInfo", info);
 
         return "rawCharPage";

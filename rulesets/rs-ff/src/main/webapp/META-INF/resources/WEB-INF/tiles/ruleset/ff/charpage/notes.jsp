@@ -7,6 +7,6 @@
     </span>
 </h2>
 <div id="notesDialog" class="popupMap" title="${bookInfo.title}">
-  <textarea id="notes" spellcheck="false">${charEquipments.notes}</textarea>
+  <textarea id="notes" spellcheck="false">${data.notes}</textarea>
   <input type="hidden" value="<spring:message code="page.menu.book.inventory.notes.save" />" id="saveNotesLabel" />
 </div>

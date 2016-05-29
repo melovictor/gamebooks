@@ -8,16 +8,16 @@
 </c:set>
 <div class="ffMainAttribute${width}">
     <span class="ffMainAttribute"><spring:message code="page.ff.attribute.skill" /></span>
-    <span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.skill.initial" /> ${charEquipments.initialSkill}</span>
-    <div class="ffMainAttributeValue" data-attribute-skill>${charEquipments.skill}</div>
+    <span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.skill.initial" /> ${data.initialSkill}</span>
+    <div class="ffMainAttributeValue" data-attribute-skill>${data.skill}</div>
 </div>
 <div class="ffMainAttribute${width}">
     <span class="ffMainAttribute"><spring:message code="page.ff.attribute.stamina" /></span>
-    <span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.stamina.initial" /> ${charEquipments.initialStamina}</span>
-    <div class="ffMainAttributeValue" data-attribute-stamina>${charEquipments.stamina}</div>
+    <span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.stamina.initial" /> ${data.initialStamina}</span>
+    <div class="ffMainAttributeValue" data-attribute-stamina>${data.stamina}</div>
 </div>
 <div class="ffMainAttribute${width}">
     <span class="ffMainAttribute"><spring:message code="page.ff.attribute.luck" /></span>
-    <span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.luck.initial" /> ${charEquipments.initialLuck}</span>
-    <div class="ffMainAttributeValue" data-attribute-luck>${charEquipments.luck}</div>
+    <span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.luck.initial" /> ${data.initialLuck}</span>
+    <div class="ffMainAttributeValue" data-attribute-luck>${data.luck}</div>
 </div>

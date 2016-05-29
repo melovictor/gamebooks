@@ -74,7 +74,7 @@ public class RawBookNewGameController extends AbstractNewGameController implemen
         model.addAttribute("hasMap", contentSpecification.isMapAvailable());
         model.addAttribute("haveSavedGame", gameStateHandler.checkSavedGame(player.getId(), getInfo().getId()));
 
-        model.addAttribute("charEquipments", getCharacterPageData(c));
+        model.addAttribute("data", getCharacterPageData(c));
         model.addAttribute("bookInfo", getInfo());
 
         setUpSectionDisplayOptions(paragraph, model, player);

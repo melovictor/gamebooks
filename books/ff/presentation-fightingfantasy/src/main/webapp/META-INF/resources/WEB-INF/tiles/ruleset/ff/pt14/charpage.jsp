@@ -11,7 +11,7 @@
 
 	<div class="ffMainAttribute4">
 	    <span class="ffMainAttribute"><spring:message code="page.pt14.attribute.wisdom" /></span>
-	    <div class="ffMainAttributeValue" data-attribute-skill>${charEquipments.wisdom}</div>
+	    <div class="ffMainAttributeValue" data-attribute-skill>${data.wisdom}</div>
 	</div>
 
     <tiles:insertTemplate template="../charpage/gpp.jsp" />

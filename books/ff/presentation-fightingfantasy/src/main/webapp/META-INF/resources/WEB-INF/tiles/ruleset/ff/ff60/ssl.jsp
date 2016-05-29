@@ -8,10 +8,10 @@
 </c:set>
 <div class="ffMainAttribute${width}">
 	<span class="ffMainAttribute"><spring:message code="page.ff.attribute.skill" /></span>
-	<span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.skill.initial" /> ${charEquipments.initialSkill}</span>
+	<span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.skill.initial" /> ${data.initialSkill}</span>
     <div class="ffMainAttributeValue" data-attribute-skill>
-        ${charEquipments.skill}
-        <c:if test="${charEquipments.skillSpell}">
+        ${data.skill}
+        <c:if test="${data.skillSpell}">
             <button data-spell-skill>
                 <spring:message code="page.ff60.spell.skill" />
             </button>
@@ -20,16 +20,16 @@
 </div>
 <div class="ffMainAttribute${width}">
 	<span class="ffMainAttribute"><spring:message code="page.ff.attribute.stamina" /></span>
-	<span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.stamina.initial" /> ${charEquipments.initialStamina}</span>
-	<div class="ffMainAttributeValue" data-attribute-stamina>${charEquipments.stamina}</div>
+	<span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.stamina.initial" /> ${data.initialStamina}</span>
+	<div class="ffMainAttributeValue" data-attribute-stamina>${data.stamina}</div>
 </div>
 <div class="ffMainAttribute${width}">
 	<span class="ffMainAttribute"><spring:message code="page.ff.attribute.luck" /></span>
-	<span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.luck.initial" /> ${charEquipments.initialLuck}</span>
+	<span class="ffInitialMainAttribute"><spring:message code="page.ff.attribute.luck.initial" /> ${data.initialLuck}</span>
 
     <div class="ffMainAttributeValue" data-attribute-luck>
-        ${charEquipments.luck}
-        <c:if test="${charEquipments.luckSpell}">
+        ${data.luck}
+        <c:if test="${data.luckSpell}">
             <button data-spell-luck>
                 <spring:message code="page.ff60.spell.luck" />
             </button>

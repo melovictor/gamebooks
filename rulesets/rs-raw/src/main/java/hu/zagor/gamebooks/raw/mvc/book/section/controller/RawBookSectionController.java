@@ -112,7 +112,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
         wrapper.setModel(model);
         navigationRecorder.recordNavigation(wrapper, sectionIdentifier, previousParagraph, paragraph);
         addResources(model);
-        model.addAttribute("charEquipments", getCharacterPageData(wrapper.getCharacter()));
+        model.addAttribute("data", getCharacterPageData(wrapper.getCharacter()));
         model.addAttribute("cont", getInfo().getContinuationData());
         return bookPage;
     }
@@ -240,7 +240,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
 
         info.getParagraphResolver().resolve(resolvationData, paragraph);
         paragraph.calculateValidEvents();
-        model.addAttribute("charEquipments", getCharacterPageData(wrapper.getCharacter()));
+        model.addAttribute("data", getCharacterPageData(wrapper.getCharacter()));
         final String bookPageName = sectionHandlingService.handleSection(model, wrapper, paragraph, getInfo());
         resolveSingleChoice(paragraph.getData());
         resolveChoiceDisplayNames(paragraph);

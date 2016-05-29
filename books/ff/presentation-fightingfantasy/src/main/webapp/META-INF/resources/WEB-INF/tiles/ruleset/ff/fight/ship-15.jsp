@@ -12,8 +12,8 @@
 	
 	<div>
 	    <span data-enemy-id="0">${user.principal}</span>
-	    <span data-enemy-skill>${charEquipments.ship.weaponStrength}</span>
-	    <span data-enemy-stamina>${charEquipments.ship.shield}</span>
+	    <span data-enemy-skill>${data.ship.weaponStrength}</span>
+	    <span data-enemy-stamina>${data.ship.shield}</span>
 	</div>
 
 </div>
@@ -38,7 +38,7 @@
     <button data-attack="ff">
         <spring:message code="page.ff.label.fight.attack" />
     </button>
-    <c:if test="${charEquipments.ship.smartMissile > 0}">
+    <c:if test="${data.ship.smartMissile > 0}">
         <button data-attack="ff-m">
             <spring:message code="page.ff.label.fight.attack.withMissile" />
         </button>

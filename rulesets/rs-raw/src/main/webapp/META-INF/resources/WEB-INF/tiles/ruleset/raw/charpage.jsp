@@ -6,25 +6,25 @@
 			<spring:message code="page.menu.book.inventory" />
 		</h1>
 
-		<c:if test="${not empty charEquipments.equipment}">
+		<c:if test="${not empty data.equipment}">
 			<h2>
 				<spring:message code="page.menu.book.inventory.equipments" />
 			</h2>
 
 			<ul>
-				<c:forEach var="item" items="${charEquipments.equipment}">
+				<c:forEach var="item" items="${data.equipment}">
 					<li>${item}</li>
 				</c:forEach>
 			</ul>
 		</c:if>
 
-		<c:if test="${not empty charEquipments.info}">
+		<c:if test="${not empty data.info}">
 			<h2>
 				<spring:message code="page.menu.book.inventory.information" />
 			</h2>
 	
 			<ul>
-				<c:forEach var="item" items="${charEquipments.info}">
+				<c:forEach var="item" items="${data.info}">
 					<li>${item}</li>
 				</c:forEach>
 			</ul>
@@ -47,7 +47,7 @@
 	    </span>
 	</h2>
 	<div id="notesDialog" class="popupMap" title="${bookInfo.title}">
-	  <textarea id="notes" spellcheck="false">${charEquipments.notes}</textarea>
+	  <textarea id="notes" spellcheck="false">${data.notes}</textarea>
 	  <input type="hidden" value="<spring:message code="page.menu.book.inventory.notes.save" />" id="saveNotesLabel" />
 	</div>
 </div>

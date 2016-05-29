@@ -58,7 +58,7 @@ public class RawBookLoadController extends GenericBookLoadController implements 
         enemies.putAll(savedEnemies);
 
         final CharacterHandler characterHandler = info.getCharacterHandler();
-        model.addAttribute("charEquipments", getCharacterPageData(character));
+        model.addAttribute("data", getCharacterPageData(character));
 
         setUpCharacterHandler(wrapper, characterHandler);
         wrapper.setCharacter(character);

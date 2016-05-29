@@ -227,7 +227,7 @@ public class SorBookSectionControllerTest {
         newParagraph.calculateValidEvents();
         expect(wrapper.getCharacter()).andReturn(character);
         expect(beanFactory.getBean("ffCpd", character, characterHandler)).andReturn(charPageData);
-        expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
+        expect(model.addAttribute("data", charPageData)).andReturn(model);
         expect(sectionHandlingService.handleSection(model, wrapper, newParagraph, info)).andReturn("ffSection");
         expect(newParagraph.getData()).andReturn(data);
         expect(data.getChoices()).andReturn(choices);
@@ -255,7 +255,7 @@ public class SorBookSectionControllerTest {
 
         expect(wrapper.getCharacter()).andReturn(character);
         expect(beanFactory.getBean("ffCpd", character, characterHandler)).andReturn(charPageData);
-        expect(model.addAttribute("charEquipments", charPageData)).andReturn(model);
+        expect(model.addAttribute("data", charPageData)).andReturn(model);
     }
 
 }

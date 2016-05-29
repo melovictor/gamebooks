@@ -15,7 +15,7 @@
 	<div class="ffMainAttribute4">
 		<span class="ffMainAttribute"><spring:message code="page.ff14.attribute.spells" /></span>
 		<div data-items="true">
-		    <c:forEach items="${charEquipments.spells}" var="spell" varStatus="status">
+		    <c:forEach items="${data.spells}" var="spell" varStatus="status">
 		        <c:if test="${!status.first }">, </c:if>
 		        ${spell.name}
 		    </c:forEach>

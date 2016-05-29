@@ -131,7 +131,7 @@ public class Ff1BookSectionController extends FfBookSectionController {
         }
         final String key = "page.ff1.label.oldManDice." + keyPostfix;
         wrapper.getParagraph().getData().appendText("[p]" + key + "[/p]");
-        model.addAttribute("charEquipments", getCharacterPageData(character));
+        model.addAttribute("data", getCharacterPageData(character));
     }
 
     private void storeOurRoll(final HttpSessionWrapper wrapper, final RandomCommand command) {

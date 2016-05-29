@@ -11,8 +11,8 @@
         <tiles:insertTemplate template="../charpage/ssl4.jsp" />
 		<div class="ffMainAttribute4">
 		    <span class="ffMainAttribute"><spring:message code="page.ff10.attribute.fear" /></span>
-		    <span class="ffInitialMainAttribute"><spring:message code="page.ff10.attribute.fear.initial" /> ${charEquipments.initialFear}</span>
-		    <div class="ffMainAttributeValue" data-attribute-fear>${charEquipments.fear}</div>
+		    <span class="ffInitialMainAttribute"><spring:message code="page.ff10.attribute.fear.initial" /> ${data.initialFear}</span>
+		    <div class="ffMainAttributeValue" data-attribute-fear>${data.fear}</div>
 		</div>
 		<tiles:insertTemplate template="../charpage/gpp.jsp" />
 		<tiles:insertTemplate template="../charpage/eq.jsp" />

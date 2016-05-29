@@ -12,7 +12,7 @@
 
 <div>
     <span data-enemy-id="0">${user.principal}</span>
-    <span data-enemy-skill>${charEquipments.skill}</span>
-    <span data-enemy-stamina>${charEquipments.stamina}</span>
-    <span data-enemy-armour>${charEquipments.armour}</span>
+    <span data-enemy-skill>${data.skill}</span>
+    <span data-enemy-stamina>${data.stamina}</span>
+    <span data-enemy-armour>${data.armour}</span>
 </div>

@@ -13,7 +13,7 @@
 
 		<div class="ffMainAttribute4">
 		    <span class="ffMainAttribute"><spring:message code="page.ff18.attribute.moneyUnit" /></span>
-		    <div class="ffMainAttributeValue"><fmt:formatNumber value="${charEquipments.gold}" groupingUsed="true" /></div>
+		    <div class="ffMainAttributeValue"><fmt:formatNumber value="${data.gold}" groupingUsed="true" /></div>
 		</div>
 
         <c:set var="equipmentIncludesPotions" value="true" scope="request" />
