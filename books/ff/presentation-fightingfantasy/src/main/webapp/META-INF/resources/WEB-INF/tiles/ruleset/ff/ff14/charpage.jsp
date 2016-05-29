@@ -15,10 +15,7 @@
 	<div class="ffMainAttribute4">
 		<span class="ffMainAttribute"><spring:message code="page.ff14.attribute.spells" /></span>
 		<div data-items="true">
-		    <c:forEach items="${data.spells}" var="spell" varStatus="status">
-		        <c:if test="${!status.first }">, </c:if>
-		        ${spell.name}
-		    </c:forEach>
+		    <c:forEach items="${data.spells}" var="spell" varStatus="status"><c:if test="${!status.first }">, </c:if><span title="${spell.description}">${spell.name}</span></c:forEach>
 		</div>
 	</div>
 	<tiles:insertTemplate template="../charpage/eq.jsp" />
