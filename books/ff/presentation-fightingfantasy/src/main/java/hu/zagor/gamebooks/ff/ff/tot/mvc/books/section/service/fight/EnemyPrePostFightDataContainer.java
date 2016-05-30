@@ -7,5 +7,13 @@ import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.BasicEnemyPre
  * @author Tamas_Szekeres
  */
 public class EnemyPrePostFightDataContainer extends BasicEnemyPrePostFightDataContainer {
+    private int enemyStamina;
 
+    public int getEnemyStamina() {
+        return enemyStamina;
+    }
+
+    public void setEnemyStamina(final int enemyStamina) {
+        this.enemyStamina = enemyStamina;
+    }
 }

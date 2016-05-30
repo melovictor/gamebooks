@@ -36,6 +36,7 @@
   </p>
   <p id="1">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/1.jpg" /][/p]
         [p]Az öreg Yaztromo korához képest igen fürge. Átkeltek a Vörös folyón, magatok mögött hagyjátok a szántóföldeket, és csakhamar az erdő szélére értek. De Yaztromo nem áll meg. Egy keskeny ösvényen megy tovább a fák sűrűje felé. A fény egyre csökken; bokrok és kusza gyökerek borítják be a kanyargó ösvényt, megnehezítve az előrehaladást. Megkérded Yaztromót, vajon miért nem fél attól, hogy megtámadnak benneteket az erdei szörnyek. Vigyorogva azt válaszolja, hogy varázstudományát jól ismerik és tisztelik errefelé, és senkinek még csak eszébe sem jut Yaztromóval ujjat húzni! Az estét nyugodtan töltitek az erdőben, majd másnap késő délelőtt elértek az Öreg varázsló tornyához. Egy csigalépcsőn követed őt a magasba, a torony tetején lévő szobájába. Körös-körül polcok, szekrények és apró, beépített fülkék szegélyezik a falakat, rajtuk üvegek, kancsók, könyvek, dobozok és mindenféle tárgyak sorakoznak. Yaztromo leroskad öreg tölgyszékére - mostanra már igencsak elfáradt a nagy úttól. Belenyúl a zsebébe, és előveszi aranykeretes kecses szemüvegét. Felhelyezi az orrára, és fölüle rád mereszti a szemét. Kissé nyugtalan leszel ettől az átható pillantástól. Végül megszólal: - Aki le akarja győzni Malbordust, annak értenie kell egy keveset a varázsláshoz. Elég okosnak látszol ahhoz, hogy valamelyest elsajátítsd ezt a tudományt, de nem hinném, hogy van annyi időd, hogy mind a tíz varázslatot megtanuld tőlem. Mellesleg, nem tudom, tisztában vagy-e azzal, milyen kiváltságos helyzetbe kerültél, hogy az én varázstudományomat megismerheted. De a válság az válság! Fátyol rá! Melyik varázslatot tanítsam meg neked? Az Ajtónyitó, Teremtményaltató, Varázsnyíl, Nyelv, Írásjelolvasó, Fény, Tűz, Ugrás, Csapdafelderítő, Vízteremtő varázslatok közül választhatsz.[/p]
     </text>
     <next id="34"></next>
@@ -47,7 +48,13 @@
     <next id="302">Ha közelebbről szeretnéd megnézni ezt a domborművet</next>
     <next id="93">Ha inkább kimész a szemközti ajtón</next>
   </p>
-  <!-- 3 -->
+  <p id="3">
+    <text>
+        [p]Az ajtó egy jól megvilágított újabb folyosóra nyílik, amelyet szemmel láthatólag gyakran használnak.[/p]
+    </text>
+    <next id="320">Ha balra akarsz indulni</next>
+    <next id="358">Ha jobbra akarsz menni</next>
+  </p>
   <p id="4">
     <text>
         [p]A finom, friss víz eloltja szomjadat. Azonnal visszanyered az erődet, mivel a víz különleges erősítőszereket tartalmaz. Nyersz 4 ÉLETERŐ pontot! Álladon még mindig ott csorog a víz, amikor elindulsz, hogy folytasd a keresést.[/p]
@@ -55,7 +62,12 @@
     <add amount="4" to="stamina" />
     <next id="370"></next>
   </p>
-  <!-- 5 -->
+  <p id="5">
+    <text>
+        [p]Elveszed az egyik [span class="takeItem" data-id="1003" data-amount="1"]kést[/span], és beteszed a hátizsákodba. Továbbmész a folyosón, de annak csakhamar vége szakad, és nem marad más hátra, minthogy visszafordulj, és átmenj az aranyeső alatt.[/p]
+    </text>
+    <next id="354"></next>
+  </p>
   <p id="6">
     <text>
         [p]Nem tudod elkerülni, hogy rá ne lépj néhány porceláncsigára. Amint ezt megteszed, a csigák egy tömbbe állnak össze, és csaknem emberi alakká formálódva rád támadnak. Úgy érzed, mintha halálra köveztek volna. Mit teszel?[/p]
@@ -80,9 +92,20 @@
     <add to="stamina" amount="-2" />
     <next id="91"></next>
   </p>
-  <!-- 9 -->
+  <p id="9">
+    <text>
+        [p]Magasba emeled a harci kalapácsot, és rácsapsz vele a Sárkányra. A kalapács azonban lepattan róla, a szobor sértetlen marad. Nem a megfelelő Sárkányt választottad. Hirtelen gyengeség lesz úrrá rajtad, mintha gonosz erők védenék a szobrot. Vesztesz 1 ÜGYESSÉG és 2 ÉLETERŐ pontot! Most melyik Sárkányszobrot választod?[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="skill" />
+    <next id="362">A Csontsárkányt?</next>
+    <next id="231">Az Ezüstsárkányt?</next>
+    <next id="247">Az Aranysárkányt?</next>
+    <next id="279">Az Ébenfa Sárkányt?</next>
+  </p>
   <p id="10">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/10.jpg" /][/p]
         [p]A sivatag vibráló forróságában feléd közeledő alakra leszel figyelmes. Amint közelebb ér hozzád, látod, hogy az egy teveháton utazó férfi.[/p]
     </text>
     <next id="99">Ha beszélni akarsz vele</next>
@@ -131,7 +154,23 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 14 -->
+  <p id="14">
+    <text>
+        [p]A fazékban egy rézgyűrűt találsz, melybe villámot véstek. Mit teszel?[/p]
+    </text>
+    <next id="277" pos="1">Az ujjadra húzod a gyűrűt?</next>
+    <itemCheck type="section" id="156">
+      <dontHave>
+        <next id="156" pos="2">Fölemeled a fekete fazék tetejét?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="183">
+      <dontHave>
+        <next id="183" pos="3">Fölemeled a piros fazék fedelét?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="20" pos="4">Átmész a kamrán a boltíves átjáróhoz?</next>
+  </p>
   <p id="15">
     <text>
         [p]Az éjszakát nyugodtan töltöd, és pirkadatkor pihenten ébredsz. Nyersz 2 ÉLETERŐ pontot! Hátadra veted a hátizsákodat, és ismét útnak indulsz.[/p]
@@ -174,7 +213,13 @@
     <gatherItem id="3030" />
     <next id="263"></next>
   </p>
-  <!-- 20 -->
+  <p id="20">
+    <text>
+        [p]A boltíves átjáró mögött nyíló rendezett folyosó jól meg van világítva. A padlót sem homok, sem por nem borítja, a falakon lévő faragványok és a szobrok teljesen épek. A folyosó csakhamar egy nyitott ajtónál ér véget. Belépsz az üres szobába, amelynek a túlsó végében újabb ajtót látsz, és észreveszel egy csapóajtót a padlón is.[/p]
+    </text>
+    <next id="307">Ha az ajtót akarod kinyitni</next>
+    <next id="397">Ha a csapóajtót választod</next>
+  </p>
   <p id="21">
     <text>
         [p]Az ajtó egy T elágazásra nyílik. Az egyik út az ajtó előtt visz jobbra és balra, a másik pontosan előtted indul előre. Semmi érdekeset nem látsz se jobbra, se balra, ezért egyenesen előre indulsz el.[/p]
@@ -204,6 +249,7 @@
   </p>
   <p id="24">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/24.jpg" /][/p]
         [p]Számodra ismeretlen teremtmény fehérre száradt csontváza mellett haladsz el. Bordacsontjai között a homokban egy fadoboz kiálló csücskét pillantod meg.[/p]
     </text>
     <next id="283">Ha ki akarod ásni a homokból a dobozt, hogy megnézd, mi van benne</next>
@@ -235,7 +281,31 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 27 -->
+  <p id="27">
+    <text>
+        [p]Magad elé tartod a tükröt, de a Szél kifújja a kezedből, és látod, hogy az a földön darabokra törik. Ismét a falhoz csapódsz. Vesztesz 2 ÉLETERŐ pontot! [alt]Mit fogsz most kipróbálni?[/alt][/p]
+    </text>
+    <itemCheck type="item" id="3007">
+      <have>
+        <loseItem id="3007" />
+      </have>
+      <dontHave>
+        <loseItem id="3014" />
+      </dontHave>
+    </itemCheck>
+    <add to="stamina" amount="-2" />
+    <itemCheck type="item" id="3030">
+      <have>
+        <next id="229" pos="2">A Főnixes Faliszőnyeget?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3016">
+      <have>
+        <next id="241" pos="3">Az Ébenfa Maszkot?</next>
+      </have>
+    </itemCheck>
+    <next id="312" pos="4" singleChoiceText="Lázasan keresgélsz a hátizsákodban, de nem találsz benne semmi mást, ami a hasznodra válhatna.">Egyiket sem?</next>
+  </p>
   <p id="28">
     <text>
         [p]Kardodat magasba emelve megpróbálod széthasítani az óriás rovart, miközben az igyekszik beléd döfni a fullánkját. Egyenként küzdj meg a Tűlegyekkel.[/p]
@@ -253,7 +323,12 @@
     </text>
     <next id="59"></next>
   </p>
-  <!-- 30 -->
+  <p id="30">
+    <text>
+        [p]Egy nyúlós, ronda, Vasevőnek nevezett teremtmény zuhant rá a fejedre. Szerencsédre ez a lény csak fémet eszik, és teljesen veszélytelen az emberre, mert húst nem fogyaszt. Levakarod a sűrű zselét a hajadról, de mégis úgy döntesz, hogy elhagyod a pincét. Visszarohansz, felszaladsz a lépcsőn az üres szobába, és kinyitod a másik ajtót.[/p]
+    </text>
+    <next id="307"></next>
+  </p>
   <p id="31">
     <text>
         [p]Több mint egy órája fekszel eszméletlenül a sivatag homokjában.[/p]
@@ -267,7 +342,14 @@
       </failure>
     </test>
   </p>
-  <!-- 32 -->
+  <p id="32">
+    <text>
+        [p]Kimondod a bűvös szavakat (1 ÉLETERŐ pontot vesztesz!), de nem történik semmi. Nem tudtad, hogy az aranyeső megfoszt minden varázserődtől. Vesztesz 1 SZERENCSE pontot! Nincs más választásod, valami mást kell elővenned a hátizsákodból.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <add amount="-1" to="luck" />
+    <next id="115"></next>
+  </p>
   <p id="33">
     <text>
         [p]Kiöntöd a zsák tartalmát, de abban csupán fűszerek és magok vannak. Gyorsan átkutatod a Gyíkember ruháját, és találsz benne egy vaskulcsot, amit a zsebedbe csúsztatsz. Továbbmész, s csakhamar eljutsz egy újabb T elágazáshoz.[/p]
@@ -330,7 +412,16 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 35 -->
+  <p id="35">
+    <text>
+        [p]Fogod a Sárkányokat, és sorban leteszed őket a földre. Azon töprengsz, vajon milyen rejtett erő lakozhat bennük. Melyik Sárkányt akarod elsőnek összetörni?[/p]
+    </text>
+    <next id="87">A Csontsárkányt?</next>
+    <next id="126">Az Ezüstsárkányt?</next>
+    <next id="204">A Kristálysárkányt?</next>
+    <next id="62">Az Aranysárkányt?</next>
+    <next id="324">Az Ébenfa sárkányt?</next>
+  </p>
   <p id="36">
     <text>
         [p]Hátas-sasodon repülve elkiáltod a Varázsnyíl varázsigét (vonj le 2 ÉLETERŐ pontot!). Nyomban egy csillogó nyílvessző pattan ki az egyik ujjad begyéből, és egyenesen a lecsapni készülő Pterodactylus felé tart. A nyílvessző mélyen a hasába fúródik, de nem öli meg. Szélsebesen támad rád.[/p]
@@ -347,6 +438,7 @@
   </p>
   <p id="38">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/38.jpg" /][/p]
         [p]Továbbmész a folyosón, s végül egy nagy terembe ész, melyet a falakra erősített fáklyák világítanak meg. Fönt a magas falakra csodálatosan szép arany kupolaszerű mennyezet borul. A terem közepén jókora bronzszobor áll, egy harcost ábrázol, aki a magasba emeli kalapácsát. Ahhoz, hogy eljuss a terem végében lévő alagút bejáratához, el kell haladnod a szobor mellett.[/p]
     </text>
     <next id="291">Ha a szobor bal oldalán mész el</next>
@@ -398,7 +490,20 @@
     <add amount="-3" to="skill" />
     <next id="117"></next>
   </p>
-  <!-- 44 -->
+  <p id="44">
+    <text>
+        [p]A kissé átlátszó függönyön át észreveszed, amint egy fehér palástos férfi lép be a terembe, serleggel a kezében. Aranycsattal rögzítette fejdíszét, amelyen széttárt szárnyú, a férfi homlokához simuló főnixmadár látható. Amikor a Pap észreveszi a Rabszolgaőrt, térdre veti magát, és fülét a halott ember mellkasára szorítja. Aztán gyorsan végigpillant a termen, és ismét kirohan, anélkül hogy téged észrevenne. Nem vesztegeted tovább az időt, hanem nekiállsz kinyitni az ajtót.[/p]
+    </text>
+    <itemCheck type="item" id="4101">
+      <have>
+        <next id="369">Ha Ajtónyitó varázslatot akarsz alkalmazni</next>
+        <next id="68">Ha a kardoddal akarod lecsapni a lakatot</next>
+      </have>
+      <dontHave>
+        <next id="68"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="45">
     <text>
         [p]Tagbaszakadt ellenfeled egy Kalóz, aki igencsak jó kardforgató. Gyorsan előrántja rövid kardját, miközben a kíváncsi tömeg gyűrűbe zár benneteket.[/p]
@@ -422,7 +527,14 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 47 -->
+  <p id="47">
+    <text>
+        [p class="inlineImage"][img src="resources/ff14/47.jpg" /][/p]
+        [p]Berohansz az ajtón, és egy keresztfolyosóhoz érsz. A folyosó végén, bal kéz felől megpillantod Leeshát, amint épp egy vasajtót próbál meg kinyitni. Jobbról egy Törpe kúszik feléd négykézláb. Arca piros, csupa hólyag. Olyan, mint akit napszúrás ért. Úgy látod, felismer, és ekkor gorombán rád kiált.[/p]
+    </text>
+    <next id="314">Ha továbbra is Leeshát akarod követni</next>
+    <next id="171">Ha beszélni akarsz a Törpével</next>
+  </p>
   <p id="48">
     <text>
         [p]A sas teste megvonaglik a halálos ütéstől. Úgy zuhansz le a hátáról a mélybe, akár egy kő, és a földhöz csapóda meghalsz. Kalandod itt véget ér.[/p]
@@ -464,7 +576,12 @@
       </failure>
     </test>
   </p>
-  <!-- 53 -->
+  <p id="53">
+    <text>
+        [p]Nem vesztegeted az időt azzal, hogy átkutasd a Csontváz Emberek testét, hanem átfutsz a boltíves átjárón egy másik kamrába.[/p]
+    </text>
+    <next id="119"></next>
+  </p>
   <p id="54">
     <text>
         [p]Kimondod a varázsige szavait, és könnyedén átugrasz a falon. Vonj le magadtól 3 ÉLETERŐ pontot! Egy elhagyatott téren landolsz.[/p]
@@ -491,7 +608,12 @@
     </text>
     <next id="46"></next>
   </p>
-  <!-- 57 -->
+  <p id="57">
+    <text>
+        [p]Egy újabb kupac landol a lábad előtt, és erős, csípős szag árad belőle. Úgy döntesz, hogy veszélyes lehet, ha tovább maradsz ebben a sötét pincében, ezért visszamész a lépcsőn, s benyitsz a másik ajtón.[/p]
+    </text>
+    <next id="307"></next>
+  </p>
   <p id="58">
     <text>
         [p]Yaztromo közli veled, hogy a Teremtményaltató varázslattal bármely emberi lényre álmot lehet bocsátani. Megtanítja neked a varázsigét, amit ilyenkor kell elmondanod, és azt is hozzáteszi, hogy ez a varázslat nem veszi majd túlzottan igénybe az energiádat; csupán 1 ÉLETERŐ pontot vesztesz minden esetben, ha ezt alkalmazod.[/p]
@@ -509,6 +631,7 @@
   </p>
   <p id="59">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/59.jpg" /][/p]
         [p]A folyosón egy köpenyes alakot látsz, aki lámpással a kezében megy előtted. Rákiáltasz, de az alak erre még szaporábban szedi a lábát. Utánaeredsz, és már majdnem beéred, amikor megfordul, és megpillantod undorító arcát. Sárga bőr feszül a koponyájára; mélyen ülő szeme vérvörös. Nagy bátorság kell ahhoz, hogy kibírd a Fantom tekintetét. [/p]
     </text>
     <test against="skill">
@@ -533,7 +656,19 @@
     <next id="384">Ha fel akarod venni a karszalagot</next>
     <next id="262">Ha inkább visszamászol a létrán, és elmész az utolsó útkereszteződéshez</next>
   </p>
-  <!-- 62 -->
+  <p id="62">
+    <text>
+        [p]A földön heverő kis szobor ártalmatlannak látszik, de gyanítod, hogy nem lesz könnyű szétzúzni.[/p]
+    </text>
+    <itemCheck type="item" id="3037">
+      <have>
+        <next id="247"></next>
+      </have>
+      <dontHave>
+        <next id="193"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="63">
     <text>
         [p]Az értékes vizet villámgyorsan kihörpinted. Belenézel az üres palackba, és már sajnálod, hogy az egészet kiittad. Nincs más választásod, minthogy továbbmenj, de legalább felfrissültél.[/p]
@@ -586,7 +721,19 @@
     <add amount="-5" to="gold" />
     <next id="102"></next>
   </p>
-  <!-- 68 -->
+  <p id="68">
+    <text>
+        [p class="inlineImage"][img src="resources/ff14/68.jpg" /][/p]
+        [p]Dühösen rácsapsz a zárra, erre az végre enged. Az ajtó egy folyosóra nyílik, amelyen addig mész, míg a végén lévő két ajtóhoz nem érsz. Az egyik ajtón a Nap, a másikon pedig a Hold képét látod. Mindkét kép alatt különös írásjelek vannak. Mit teszel?[/p]
+    </text>
+    <itemCheck type="item" id="4105">
+      <have>
+        <next id="255" pos="1">Írásjelolvasó varázslatot alkalmazol?</next>
+      </have>
+    </itemCheck>
+    <next id="243" pos="2">Benyitsz a Nap jelzésű ajtón?</next>
+    <next id="273" pos="3">Benyitsz a Hold jelzésű ajtón?</next>
+  </p>
   <p id="69">
     <text>
         [p]Belenyúlsz a hátizsákodba, és odaadod a kis csengettyűt a boldog Gnómnak, aki ekkor kinyitja a fémdobozt, egy bíborszínű selyemerszényt vesz elő, és odahajítja neked. Kinyitod az erszényt, és egy ezüst karszalagot találsz benne, rajta hatalmas smaragddal. Felhúzod a karszalagot kardforgató karodra, és elbúcsúzol a Gnómtól.[/p]
@@ -619,7 +766,20 @@
     <next id="142">Ha oda akarsz menni a fákhoz</next>
     <next id="39">Ha inkább dél felé folytatod az utadat</next>
   </p>
-  <!-- 73 -->
+  <p id="73">
+    <text>
+        [p]Leeshát meglepi, hogy bejutottál belső templomába és legyőzted őreit. Felkel díványáról, és kezében egy fénylő, fekete félhold alakú tárgyat tartva elindul feléd.[/p]
+    </text>
+    <itemCheck type="item" id="3032">
+      <have>
+        <next id="219">Ha az Óriási Homokhernyó fogával akarsz megküzdeni vele</next>
+        <next id="282">Ha a kardoddal akarsz rátámadni</next>
+      </have>
+      <dontHave>
+        <next id="282"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="74">
     <text>
         [p]Belépsz az alagútba, és azonnal megérzed, hogy a lábad alatt lejteni kezd a föld. Végül eljutsz egy mélyen fekvő, vízzel elárasztott szobához. A víz egy falra erőtett oroszlánfej szájából zubog. A szemközti falból kis kiugró emelkedik a víz fölé, ahonnan az alagút tovább folytatódik. Vállat vonsz, és belegázolsz a derékig érő zavaros vízbe. Alig teszel meg néhány lépést, amikor egy hosszú, polipszerű csáp nyúlik ki hirtelen a vízből, amely kavarogni kezd, mert a csáphoz tartozó test megérezve az étel szagát, ott köröz már körülötted. Hirtelen egy másik csáp a lábad köré csavarodik, és megpróbál lehúzni a víz alá. Előrántod a kardodat, és csapkodni kezdesz vele.[/p]
@@ -703,6 +863,7 @@
   </p>
   <p id="79">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/79.jpg" /][/p]
         [p]Az ajtó egy gyertyával megvilágított kamrába nyílik, ahol erős dohszag terjeng. A föld tele van törmelékkel - rothadó ételmaradékkal, hajcsomókkal, hamuval, fogakkal és állati ürülékkel. Amikor az ajtó becsukódik mögötted, az előtted lévő ajtó kinyílik, s egy torz, egyszemű mutáns ront be a szobába magasra tartott ezüstrúddal a kezében. Fehér villám pattan ki a botból, és szénné égeti a lábad előtt a padlót. Kint már lenyugodott a nap, és az Éjszaka Réme lopakodó léptekkel, zsákmány után kutatva járja Vatos folyosóit.[/p]
     </text>
     <next id="85">Ha a kardodat akarod használni az undorító teremtmény ellen</next>
@@ -722,7 +883,18 @@
     <add to="stamina" amount="-4" />
     <next id="24"></next>
   </p>
-  <!-- 82 -->
+  <p id="82">
+    <text>
+        [p]Az ékszeres ládikóban egy papírtekercs van. A következő olvasható rajta: „A Halál Küldönce vár!” Végigfut a hideg a hátadon a gondolatra, és darabokra téped a papírt. A ládikót a falhoz vágod dühödben, körülnézel, és eldöntöd, mit is csinálj. Mit teszel?[/p]
+    </text>
+    <next id="143" pos="1">Magadhoz veszel néhány drágakövet?</next>
+    <itemCheck type="section" id="386">
+      <dontHave>
+        <next id="386" pos="2">Elveszed az arany csontváz-szobrocskát?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="3" pos="3">Kimész a szobából a szemközti ajtón?</next>
+  </p>
   <p id="83">
     <text>
         [p]A Gnóm hálás neked, amiért nem ölted meg. Elmondja, hogy sok-sok évvel ezelőtt véletlenül akadt rá Vatosra, és úgy határozott, hogy ott marad. Ő csupán utcaseprő, de boldog. Vatos sokáig elhagyatott volt, de aztán egyre több férfi és mindenféle más teremtmény is itt talált menedéket, és sokan közülük itt is maradtak. Törvény nem létezik Vatosban, nem uralkodik senki sem, bár a leghatalmasabbak mindig elérik céljukat. Az átutazó karavánokat élelemért szokták megtámadni, s a portyákat a Főpapnő és rabszolgái szervezik. Megkérded a Gnómtól, vajon nem hallott-e Malbordusról, de ő megrázza a fejét, és így felel: - Nem sokat törődöm az emberekkel. Csak összeszedem a szemetet és söprögetek. Nincs valami eladnivalód? Sokat adnék egy olyan különös szerkentyűért, amelybe ha belenézel, a dolgok közelebb kerülnek, mint amennyire valójában vannak.[/p]
@@ -743,7 +915,16 @@
     <add to="stamina" amount="-4" />
     <next id="303"></next>
   </p>
-  <!-- 85 -->
+  <p id="85">
+    <text>
+        [p]Az Éjszaka Réme félelmetes ellenfél, és nehéz egy szál karddal legyőzni.[/p]
+        [p]Ha te nyersz egy Fordulót, dobj egy kockával. Ha 1 és 3 között dobsz, nem sebezted meg az Éjszaka Rémének élőholt testét. Ha 4 és 6 között dobsz, akkor a szokásos módon sebezted meg őt. De minden egyes Forduló, amit az Éjszaka Réme nyer, ÉLETERŐDET 2 ponttal, ÜGYESSÉGEDET pedig 1 ponttal csökkenti a fénycsóva életelszívó hatása miatt. Ha az ÜGYESSÉGED 0-ra csökken, kiszáll belőled az élet és meghalsz.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="35" />
+    </fight>
+    <next id="390"></next>
+  </p>
   <p id="86">
     <text>
         [p]Amint mész előre, hirtelen egy bőrerszény hullik le az égből a lábad elé. Kinyitod az erszényt, és egy levélkét találsz benne. Yaztromo írta. „Barátom, rossz hírt kell közölnöm veled. Malbordus előtted jár. De tekints a magasba, és megtalálod a segítséget, amellyel behozhatod lemaradásodat.” Így szól az üzenet. Megfogadod a varázsló utasítását, feltekintesz az égre, és első pillantásra mintha egy újabb Hárpiát látnál, de amikor jobban szemügyre veszed, látod, hogy egy óriás sas cirkál fölötted az égen, majd könnyedén leszáll melléd. A hátára vesz, és máris a levegőben repülsz a Koponyák Sivataga felé. Szerencséd azonban nem túl hosszú életű, ugyanis csakhamar baljós rikácsolás üti meg a füledet. Egy hatalmas Pterodactylus zuhanórepülésben támad rá a sasra.[/p]
@@ -765,7 +946,19 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 87 -->
+  <p id="87">
+    <text>
+        [p]A földön heverő kis szobor ártalmatlannak látszik, de gyanítod, hogy nem lesz könnyű szétzúzni.[/p]
+    </text>
+    <itemCheck type="item" id="3037">
+      <have>
+        <next id="362"></next>
+      </have>
+      <dontHave>
+        <next id="193"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="88">
     <text>
         [p]Az ajtó egy üres szobába nyílik, mindössze két nyitott láda áll a földön. Szokatlanul hideg van benn, és sűrű a félhomály. A sarokban egy agyagserleget találsz, amelynek a belső karimájára egy szívet véstek. Elteszed a [span class="takeItem" data-id="3028" data-amount="1"]serleget[/span] a hátizsákodba, és ugyanarra távozol a szobából, amerre bejöttél, mivel más kijárat nincs. Visszamész a folyosón a legutolsó elágazáshoz.[/p]
@@ -800,6 +993,7 @@
   </p>
   <p id="93">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/93.jpg" /][/p]
         [p]Az ajtó egy nagy csarnokba nyílik; falait kétfelől fegyverek és vértek díszítik. A csarnok végében lévő emelvényen oltár áll, amely előtt három sárga bőrű férfi rendkívül ünnepélyesen ölti fel sötétbarna köntösét. Az egyik észrevesz, és jelt ad a többieknek. Mindhárman felragadnak egy-egy sarlót, és elindulnak feléd.[/p]
     </text>
     <itemCheck type="item" id="3031">
@@ -842,7 +1036,12 @@
     </itemCheck>
     <next id="344" pos="3">Visszamászol az alagútból, kimész a szobából és felmész a folyosón?</next>
   </p>
-  <!-- 96 -->
+  <p id="96">
+    <text>
+        [p]Már épp be akarsz lépni a boltíves átjárón át a mögötte lévő kamrába, amikor a Csontváz Emberek fölkelnek a földről. Alig hiszel a szemednek, amikor látod, hogy lassan közelednek feléd. Kővé dermedve állsz, és képtelen vagy megakadályozni, hogy a melledbe döfjék lándzsájukat. Térdre zuhansz, majd arccal a földre buksz. Kalandod itt véget ér![/p]
+    </text>
+    <death />
+  </p>
   <p id="97">
     <text>
         [p]A sisakot ügyes kezű vaskovács készítette. Kitűnően megvéd. Nyersz 1 ÜGYESSÉG pontot! Elindulsz a folyosón délnek, hogy megkeresd az első Sárkányszobrocskát.[/p]
@@ -988,7 +1187,23 @@
     <next id="332">Ha kifizeted neki a kért összeget és követed az öreget</next>
     <next id="379">Ha inkább magad keresel szállást</next>
   </p>
-  <!-- 103 -->
+  <p id="103">
+    <text>
+        [p]Malbordus észreveszi, hogy varázserejének nem tudsz ellenállni, és elátkozott kardját előrántva magabiztosan közeledik feléd. Kardjának bénító ereje van, és most már csak saját kardforgató tehetséged védhet meg.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="46" />
+      <win>
+        <next id="400"></next>
+      </win>
+      <loseRound subsequentCount="3">
+        <text>
+            [p]Megbénít a gonosz kard, és Malbordus győz. Káosz lesz úrrá egész Allansiában.[/p]
+        </text>
+        <interrupt />
+      </loseRound>
+    </fight>
+  </p>
   <p id="104">
     <text>
         [p]A nyílvessző célba talál, de nem öli meg a Pterodactylust. Vijjogva megfordul, majd ismét lecsap rátok.[/p]
@@ -1012,6 +1227,7 @@
   </p>
   <p id="106">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/106.jpg" /][/p]
         [p]Hirtelen mozgást veszel észre a homokban, és egy nagy, gyíkhoz hasonló állatot pillantasz meg. Amikor odafut hozzád, látod, hogy a feje olyan, mint egy madáré, a szeme meg nagy, sárga, akár a békáké. Ez az állat nem más, mint a szörnyűséges Baziliszkusz. Mit teszel?[/p]
     </text>
     <next id="228" pos="1">Karddal támadsz rá?</next>
@@ -1061,7 +1277,13 @@
     <next id="287">Ha ki akarod nyitni a ládikót</next>
     <next id="140">Ha inkább továbbmész a folyosón déli irányba</next>
   </p>
-  <!-- 112 -->
+  <p id="112">
+    <text>
+        [p]A szőlő éppolyan finom, mint amilyennek látszik. Különleges, gyógyító erejű szőlő ez. Nyersz 4 ÉLETERŐ pontot! Amikor jóllaktál, továbbmész a folyosón.[/p]
+    </text>
+    <add amount="4" to="stamina" />
+    <next id="237"></next>
+  </p>
   <p id="113">
     <text>
         [p]Kardot rántasz, és rárontasz a gyilkos Fekete Elfekre. Egyszerre csak eggyel küzdj meg![/p]
@@ -1084,7 +1306,28 @@
     <add amount="-2" to="stamina" />
     <next id="88"></next>
   </p>
-  <!-- 115 -->
+  <p id="115">
+    <text>
+        [p]A Szél ismét fúj egyet feléd, és a falhoz vág, miközben lázasan kotorászol a hátizsákodban. Vesztesz 2 ÉLETERŐ pontot! [alt]Mit veszel elő a hátizsákodból?[/alt][/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <itemCheck type="items" id="3007 or 3014">
+      <have>
+        <next id="27" pos="1">Egy Tükröt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3030">
+      <have>
+        <next id="229" pos="2">Egy Főnixes Faliszőnyeget?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3016">
+      <have>
+        <next id="241" pos="3">Egy Ébenfa Maszkot?</next>
+      </have>
+    </itemCheck>
+    <next id="312" pos="4" singleChoiceText="Lázasan keresgélsz a hátizsákodban, de nem találsz benne semmi olyat, ami a hasznodra válhatna.">Egyiket sem?</next>
+  </p>
   <p id="116">
     <text>
         [p]A nap egyre csak tűz rád, és nincs hová menekülnöd a sugarai elől a kopár vidéken.[/p]
@@ -1111,7 +1354,16 @@
     <add amount="-6" to="stamina" />
     <next id="168"></next>
   </p>
-  <!-- 119 -->
+  <p id="119">
+    <text>
+        [p class="inlineImage"][img src="resources/ff14/119.jpg" /][/p]
+        [p]Átmész a boltíves átjárón, majd fölsietsz a márvány lépcsősoron, és egy pompásan berendezett terembe jutsz. Magas mennyezetét márványpillérek tartják. A pillérek között gyönyörű, kézzel szőtt piros szőnyeg vezet fel egy újabb lépcsősorhoz, amelynek a tetején atlaszselyem párnákkal teleszórt kanapén egy csodaszép nő fekszik. Ronda, kopasz fejű teremtmény legyezi. Izmos felsőteste akár egy férfié, de az arca beesett, sovány, a szeme tejfehér. Leesha szentélyébe jutottál. A nő elmosolyodik, majd csettint az ujjával, erre vak szolgája döngő léptekkel lemegy a lépcsőn, és rád támad.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="44" />
+    </fight>
+    <next id="73"></next>
+  </p>
   <p id="120">
     <text>
         [p]Levágod a növény tetejét, és látod, hogy az tele van vízzel. Óvatosan, hogy meg ne szúrjanak a tüskék, markodat megmerítve iszol belőle, és felfrissülsz. Amikor már eleget ittál, ismét úrnak indulsz, délnek.[/p]
@@ -1169,7 +1421,19 @@
     <next id="329">Ha fel akarsz mászni a létrán</next>
     <next id="262">Ha inkább visszamész a folyosón, és tovább folytatod az utat az utolsó elágazásig</next>
   </p>
-  <!-- 126 -->
+  <p id="126">
+    <text>
+        [p]A földön heverő kis szobor ártalmatlannak látszik, de gyanítod, hogy nem lesz könnyű szétzúzni.[/p]
+    </text>
+    <itemCheck type="item" id="3037">
+      <have>
+        <next id="231"></next>
+      </have>
+      <dontHave>
+        <next id="193"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="127">
     <text>
         [p]Ledobod a homokba a tüzes medált, és ekkor észreveszed, hogy a tenyereden egy nagy „M” betű fájón égő nyoma rajzolódott ki. Szerencsédre nem a kardforgató kezed sérült meg. Vesztesz 1 ÉLETERŐ pontot! Már tudod, hogy Malbordus valahol előtted jár, ezért aztán amilyen gyorsan csak tudod, folytatod utadat dél felé.[/p]
@@ -1179,6 +1443,7 @@
   </p>
   <p id="128">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/128.jpg" /][/p]
         [p]Az ajtó egy üres szobába nyílik, amelyben csupán egy halom csontot látsz az egyik sarokban. Karmolás nyomait fedezed fel a falakon. Egy lyukból morgást hallasz. Hirtelen kinyílik a mögötted lévő ajtó, és valaki húsos csontokat hajít be a szobába, majd az ajtó ismét becsukódik. A morgás hangos ugatásba csap át, és ekkor hirtelen egy nyálát csorgató Halálkutya ugrik eléd. Azonnal rád támad.[/p]
     </text>
     <fight type="single">
@@ -1198,7 +1463,13 @@
     </text>
     <death />
   </p>
-  <!-- 131 -->
+  <p id="131">
+    <text>
+        [p]Amikor a folyosón az aranyeső mögül erős zajt hallasz, felpattansz. A függöny mögött egy ajtó van, de be van zárva, és nincs időd kinyitni.[/p]
+    </text>
+    <next id="44">Ha el akarsz bújni a függöny mögött</next>
+    <next id="227">Ha vállalod, hogy találkozz azzal, aki bejön a szobába, bárki legyen is az</next>
+  </p>
   <p id="132">
     <text>
         [p]Az alászálló Pterodactylus nem könnyű ellenfél. Pontosan célzol, mielőtt kirepítenéd a nyiladat.[/p]
@@ -1213,7 +1484,13 @@
       </failure>
     </test>
   </p>
-  <!-- 133 -->
+  <p id="133">
+    <text>
+        [p]Éles, maró szag tölti be a levegőt, amikor a Vasevőnek nevezett kocsonyaszerű teremtmény nekiáll, és majszolni kezdi a sisakodat. A földre dobod a sisakot, és visszarohansz, fölszáguldasz a lépcsőn, még mielőtt a kardodat is megenné a lény. Szerencsédre a Vasevőt nem érdekli az emberi hús. Vesztesz 1 ÜGYESSÉG pontot, amiért megfosztottak a sisakodtól. Visszamész az üres szobába, és egy másik ajtóval próbálkozol.[/p]
+    </text>
+    <loseItem id="3020" />
+    <next id="307"></next>
+  </p>
   <p id="134">
     <text>
         [p]Pontosan tudod, milyen veszélyben forog az életed. Becsukod a szemedet, és kardoddal támadsz rá a Baziliszkuszra. De ez a lény más, természetes fegyverrel is rendelkezik - s ez nem más, mint mérgező lehelete! Mivel nem láthatod, merre menekülj, a vadállat könnyű zsákmánya leszel. Csakhamar holtan fekszel arccal a homokban.[/p]
@@ -1241,7 +1518,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 137 -->
+  <p id="137">
+    <text>
+        [p]Az ajtó egy előcsarnokba nyílik. Látod, amint Leesha a túloldalon kimegy egy másik ajtón. Az előcsarnokban egy kutyát ábrázoló bronz istenszobor áll.[/p]
+    </text>
+    <next id="186">Ha megállsz és megvizsgálod az istenszobrot</next>
+    <next id="47">Ha inkább Leesha után mész</next>
+  </p>
   <p id="138">
     <text>
         [p]Előveszed a sárgaréz távcsövet a hátizsákodból, és meglengeted a Gnóm előtt, hogy ingereld egy kicsit. Az örömében kuncogva összedörzsöli két tenyerét. Elrúgja az útból a szőnyeget, és megemeli az egyik utcakőhöz erősített rejtett vaskarikát. A kő felnyílik, és egy kis kamra válik láthatóvá; dugig van olyan tárgyakkal, melyeket a Gnóm hosszú évek alatt halmozott fel. Átkutatod a kamrát, és nem akarsz hinni a szemednek, amikor egy kis [span class="takeItem" data-id="3025" data-amount="1"]Kristálysárkány[/span] akad a kezedbe. Ez az egyik szobor azok közül, amelyeket keresel. Elteszed, és odaadod a távcsövet a Gnómnak. Búcsút mondasz neki, és lemászol a létrán a folyosóra, amelyen visszamész az utolsó elágazáshoz.[/p]
@@ -1254,6 +1537,7 @@
   </p>
   <p id="140">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/140.jpg" /][/p]
         [p]Amint lefelé mész a folyosón, valami lágyan megérinti válladat. Megfordulsz, és ekkor egy szörnyűséges, ijesztő teremtményt pillantasz meg. Vézna testét rongyok borítják. Szemürege és szája sűrű váladékkal van tele, és ettől bugyborékolva szól a hangja. - Halál! - kiáltja a Halál Küldönce, majd eltűnik, de ki tudja, miért‚ mégis tudod, mi történt. A Halál Küldönce szadista gyilkos, aki játékot űz áldozataival. Amint előtted jár, mindig máshol helyezi el a „HALÁL” szó egy-egy betűjét. Ha netán utad során elolvasod a „halál” szó összes betűjét, a Halál Küldönce visszatér hozzád, hogy gyönyörködjön elmúlásodban. Malbordus bérgyilkosa kellemetlen fordulatot jelent a szobrok utáni kutatásban.[/p]
     </text>
     <next id="330"></next>
@@ -1271,7 +1555,19 @@
     <next id="337">Ha inni akarsz a tó vizéből</next>
     <next id="207">Ha nem iszol, hanem inkább folytatod az utadat déli irányba</next>
   </p>
-  <!-- 143 -->
+  <p id="143">
+    <text>
+        [p]Ha a drágaköveket megérinted, tapasztalod, hogy tűzforróak, szinte vörösen izzanak, de ha nem nyúlsz hozzájuk, nem melegítenek.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="252"></next>
+      </success>
+      <failure>
+        <next id="338"></next>
+      </failure>
+    </test>
+  </p>
   <p id="144">
     <text>
         [p]Úgy érzed, mintha időtlen időkig a levegőben csüngenél, amikor hirtelen a gödör túloldalán landolsz. Nem vesztegeted az idődet, hanem egyenesen továbbmész.[/p]
@@ -1311,7 +1607,12 @@
     </text>
     <next id="77"></next>
   </p>
-  <!-- 148 -->
+  <p id="148">
+    <text>
+        [p]Egy rongyos ruhába öltözött vézna alak jelenik meg hirtelen előtted. Gyengeség vesz erőt rajtad, és térdre rogysz; érzed, hogy a Halál Küldönce milyen nagy élvezetet talál halálodban. Már nincs rá módod, hogy megsemmisítsd a Sárkányszobrocskákat, és Malbordus győzedelmeskedik feletted! Küldetésedet nem tudtad teljesíteni, megbuktál.[/p]
+    </text>
+    <death />
+  </p>
   <p id="149">
     <text>
         [p]A küzdelemnek vége; mindkét karodat körülfonják a Homoki Csattogó csápjai. Lassan nagyra tátott szájához emel, és megesz. Kalandod itt véget ér.[/p]
@@ -1333,6 +1634,7 @@
   </p>
   <p id="151">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/151.jpg" /][/p]
         [p]Alig teszel néhány lépést a parton, amikor a homokban több száz porceláncsigából kirakott különös alakzatot veszel észre. A csigák közepéről tengeri madártollakkal díszített lándzsa áll ki. Mit teszel?[/p]
     </text>
     <next id="6" pos="1">Továbbmész a parton?</next>
@@ -1372,7 +1674,23 @@
     <next id="349">Ha ki akarod nyitni a zsákot</next>
     <next id="39">Ha nem nyitod ki a zsák száját, hanem otthagyod a sziklák között és tovább folytatod az utadat délnek</next>
   </p>
-  <!-- 156 -->
+  <p id="156">
+    <text>
+        [p]Az edényben egy összeaszott mancsot találsz, amely akár egy majomé is lehet. Mit teszel?[/p]
+    </text>
+    <next id="318" pos="1">Elteszed a mancsot?</next>
+    <itemCheck type="section" id="14">
+      <dontHave>
+        <next id="14" pos="2">Fölemeled a fehér fazék tetejét?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="183">
+      <dontHave>
+        <next id="183" pos="3">Fölemeled a piros fazék tetejét?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="20" pos="4">Átmész a termen a boltíves átjáróhoz?</next>
+  </p>
   <p id="157">
     <text>
         [p]A folyosó csakhamar egy T elágazásban ér véget.[/p]
@@ -1399,7 +1717,12 @@
       </result>
     </random>
   </p>
-  <!-- 160 -->
+  <p id="160">
+    <text>
+        [p]A szemközti falon hosszú ablaksor húzódik végig. Az egyik ablak nyitva van. Mennydörgést hallasz, és odamész az egyik ablakhoz, hogy kinézz. A nagy fényesség bántja a szemedet. Bár süt a nap, most hirtelen sötét folt takarja el. Hatalmas, fekete Sárkány köröz a fejed felett; hátán gonosz tekintetű ember ül. A Sárkány felordít, és ekkor meghallod Malbordus rosszindulatú nevetését. A Sárkány észak felé röpül veled, és képtelen vagy megállítani. Malbordus káoszseregének élén bevonul majd Allansiába, és a világra mély sötétség borul. Küldetésed nem járt sikerrel, megbuktál![/p]
+    </text>
+    <death />
+  </p>
   <p id="161">
     <text>
         [p]A falfestmény legalább húsz méter hosszú, és egy csatajelenet látható rajta; gaz Orkok korbáccsal ösztönöznek harcra Élőholtakat, akik éppen emberek és Törpék seregét verik vissza. Az Élőholtak vezérének testét fekete palást rejti, hús nélküli, hüllőszerű arca viszont jól látható. Hideg, gonosz zöld szeme fenyegetőn tekint le rád a festményről. Egy ládikót tart a kezében, amely épp beszippantja a csatát vesztett emberek és Törpék királyának a lelkét. Elbűvöl a ládán lévő festmény, és csodálattal szemléled. - Tetszik a művem? - teszi fel valaki a kérdést hirtelen a hátad mögött. Megfordulsz, és egy férfit látsz, aki nyugodtan áll mögötted, festékes tállal kezében, füle mögé dugott ecsettel. Mosolyog, és úgy tűnik, mintha örülne érdeklődésednek. Mit teszel?[/p]
@@ -1425,6 +1748,7 @@
   </p>
   <p id="164">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/164.jpg" /][/p]
         [p]A rekkenő hőségben magad elé bámulva, alig ötszáz méternyire magas kőfalat veszel észre. Különböző alakú kőtornyok és háztetők emelkednek ki mögüle. Amint közelebb érsz, látod, hogy a szélfútta homok teljesen elbarikádozta a bejárathoz vezető utat, s a bejárati ajtót is elzárja. - Vatos! - kiáltja lelked mélyén egy hang.[/p]
     </text>
     <itemCheck type="item" id="4108">
@@ -1484,7 +1808,12 @@
     <next id="335">Balra mész a folyosón?</next>
     <next id="162">Jobbra mész a folyosón?</next>
   </p>
-  <!-- 171 -->
+  <p id="171">
+    <text>
+        [p]Odarohansz a Törpéhez, és megtudod tőle, hogy ő Kőhidafalva küldötte, akit Yaztromo bízott meg. Ő hozta el neked Kőhidafalváról a híres harci kalapácsot, amellyel szét lehet zúzni a Sárkányszobrocskákat. Csak ez a fegyver alkalmas rá, semmi más. A Törpe azt is elmondja, hogy egy Varázsló figyelmeztette: a katakombák bejáratához legközelebb álló Sárkányszobrot kell elsőnek szétzúzni. A Törpe nyelve akadozni kezd, egyre nehezebben beszél, míg végül elterül a földön. Nem tehetsz már semmit a bátor Törpéért, de ha lehet, még eltökéltebben vágyódsz rá, hogy küldetésedet siker koronázza. Megmarkolod a legendás [span class="takeItem" data-id="3037" data-amount="1"]harci kalapácsot[/span], és az átjárón lerohansz a vasajtóhoz, amelyen át Leesha eltűnt a szemed elől.[/p]
+    </text>
+    <next id="314"></next>
+  </p>
   <p id="172">
     <text>
         [p]A Gólem a földre zuhan, és apró darabokra törik. Átléped a köveket, és az alagút bejárata felé indulsz.[/p]
@@ -1517,7 +1846,22 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 176 -->
+  <p id="176">
+    <text>
+        [p]Egy újabb halom zuhan le a mennyezetről, és a fejeden landol.[/p]
+    </text>
+    <itemCheck type="item" id="3020">
+      <have>
+        <next id="30"></next>
+      </have>
+      <dontHave>
+        <next id="30"></next>
+      </dontHave>
+      <haveEquipped>
+        <next id="133"></next>
+      </haveEquipped>
+    </itemCheck>
+  </p>
   <p id="177">
     <text>
         [p]Elrebeged a Tűzvarázslat varázsigéjét, és akkora tüzet varázsolsz, amelynél meg tudsz melegedni. Vesztesz 1 ÉLETERŐ pontot a varázslásért! Korán reggel folytatod az utadat a sivatagban.[/p]
@@ -1572,6 +1916,7 @@
   </p>
   <p id="180">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/180.jpg" /][/p]
         [p]Az öreg varázsló ünnepélyesen rád néz, és így szól: - Most minden perc drága: azonnal útra kell kelned! Nincs kétségem afelől, hogy Malbordus tudomást fog szerezni küldetésedről, és egy-két bérgyilkost utánad küld. Varjam elkísér egészen a Macskahal folyóig. Ott aztán vagy hajóra szállsz és elmész Feketehomok kikötőig, ahonnan vitorlás hajóval folytatod az utat délre, vagy a szárazföldön mész el a Koponyák Sivatagáig. Szörnyű nehéz feladat előtt állsz, de gondolatban veled leszek. - Yaztromo ezek után levezet a csigalépcsőn, és kiléptek a szabadba. Váratlanul éleset füttyent: szinte azonnal egy hatalmas varjú röppen fel a torony tetejéről, és Yaztromo vállára száll. - Kedves varjam - szólal meg Yaztromo - vezesd el a barátunkat a Macskahal folyóig, de vigyázz, légy résen! Nehogy tőrbe csaljanak, az nem lenne jó! - Kezet rázol Yaztromóval, és biztosítod róla, hogy végzel Vatos Sárkányaival, mielőtt Malbordus elérné gonosz célját. Elmosolyodik, és átnyújt neked egy erszényt, melyben [span class="takeItem" data-id="gold" data-amount="25"]25 Aranytallér[/span] lapul. Ekkor Yaztromo megparancsolja a varjúnak, hogy repüljön délre. A varjú elkárogja magát, és felröppen. Gyorsan utánaeredsz, de még sietve búcsút intesz öreg barátodnak. Miközben a hatalmasra nőtt fűben követed a varjút, szinte beleborzongsz a gondolatba, hogy Malbordus bérgyilkosai esetleg a nyomodban vannak. Egyenesen haladtok dél felé, csupán kétszer tértek le az útról, hogy elkerüljétek a veszélyt, amelyre a varjú lesz figyelmes. Három óra múlva elértek a Macskahal folyó partjára, oda, ahol egy függőhíd ível át a vízen. A híd tövében, egy dereglye várakozik a mólóhoz kikötve, és számos rossz arcú pasas zsákokat rak ki belőle.[/p]
     </text>
     <next id="23">Ha át akarsz menni a hídon</next>
@@ -1589,7 +1934,25 @@
     </text>
     <next id="340"></next>
   </p>
-  <!-- 183 -->
+  <p id="183">
+    <text>
+        [p]A fazék üres, de a szerencse ezúttal nem kedvez neked. A fedő alján egy nagy A betűt látsz, melyet a Halál Küldönce irt oda szénnel. Vesztesz 4 ÉLETERŐ és 1 SZERENCSE pontot! A fedőt a földhöz vágod, de már késő. [alt]Mit teszel?[/alt][/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <add amount="-1" to="luck" />
+    <gatherItem id="4003" />
+    <itemCheck type="section" id="14">
+      <dontHave>
+        <next id="14" pos="1">Felemeled a fehér fazék fedelét?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="156">
+      <dontHave>
+        <next id="156" pos="2">Felemeled a fekete fazék fedelét?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="20" pos="3" singleChoiceText="Átvágsz a kamrán a szemközti falból nyíló boltíves átjáróhoz.">Átvágsz a kamrán a szemközti falból nyíló boltíves átjáróhoz?</next>
+  </p>
   <p id="184">
     <text>
         [p]Kimondod Yaztromo varázsigéjét, és abban a percben egy csillogó nyílvessző pattan ki az egyik ujjbegyedből. A nyílvessző elszáll, és mélyen belefúródik a repülő Hárpia mellébe. Azonnal megöli. A madár teste nagy puffanással csapódik a földhöz. Vonj le magadtól 2 ÉLETERŐ pontot a varázslásért. Éberen figyelsz, hátha felbukkan még valamilyen ellenséges teremtmény, de közben továbbmész délnek.[/p]
@@ -1605,7 +1968,12 @@
     <add to="stamina" amount="-4" />
     <next id="190"></next>
   </p>
-  <!-- 186 -->
+  <p id="186">
+    <text>
+        [p]Észreveszed, hogy a bálvány szája csapószerkezettel záródik; rájössz, hogy akkor nyílik ki az alsó állkapocs, ha meghúzod a bal fülét. A kutya szájában egy szobrocskát találsz - a régóta keresett [span class="takeItem" data-id="3036" data-amount="1"]Aranysárkányt[/span]. Gyorsan zsebre vágod, és Leesha nyomába eredsz.[/p]
+    </text>
+    <next id="47"></next>
+  </p>
   <p id="187">
     <text>
         [p]Amikor a hajó süllyedni kezd, a legénység az ágyúk mellől a falépcső felé rohan, amely a fönti fedélzetre vezet. Az őrült zűrzavarban valaki jól kupán vág egy furkósbottal. Eszméletlenül vágódsz végig a fedélzeten, és a süllyedő hajóval együtt merülsz a víz alá.[/p]
@@ -1637,7 +2005,13 @@
     <next id="161">Ha balra akarsz fordulni a freskók irányába</next>
     <next id="40">Ha jobbra mész, a faliszőnyegek felé</next>
   </p>
-  <!-- 191 -->
+  <p id="191">
+    <text>
+        [p]Amikor a folyosó végére érsz, akkor jössz rá, hogy amit láttál, nem csillogó függöny, hanem aranyeső, amely a mennyezeten lévő lyukakból zuhog alá a padlón lévő sekély vályúba. A folyosó, ahol az aranyeső alázúdul, balra kanyarodik, majd onnan egyenesen megy tovább, ameddig a szem ellát.[/p]
+    </text>
+    <next id="249">Ha tovább akarsz menni a folyosón</next>
+    <next id="354">Ha átmész az aranyesőn</next>
+  </p>
   <p id="192">
     <text>
         [p]Egyre csak mész, de már alig vonszolod magad a szomjúságtól. Vesztesz 4 ÉLETERŐ pontot! Már csak az tart életben, hogy legyőzöd Malbordust.[/p]
@@ -1645,7 +2019,12 @@
     <add to="stamina" amount="-4" />
     <next id="377"></next>
   </p>
-  <!-- 193 -->
+  <p id="193">
+    <text>
+        [p]Kardot rántasz, és markolatával rávágsz a Sárkányra. A szobor azonban séretlen marad. Óriási hibát követtél el azzal, hogy a kardodat használtad. Izmaid kezdenek megmerevedni, bőröd a csontjaidra feszül. Lassan egész tested kővé dermed, s már nem vagy más, csupán egy kőszobor. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="194">
     <text>
         [p]Yaztromo közli veled, hogy a Nyelv varázslattal képes leszel bármely teremtmény beszédét megérteni, ha mégoly idegen is az számodra. Megtanítja neked a varázsigét, és azt is megtudod, hogy alkalmazásakor csupán 1 ÉLETERŐ pontot vesztesz.[/p]
@@ -1670,6 +2049,7 @@
   </p>
   <p id="196">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/196.jpg" /][/p]
         [p]Amikor már csak tíz méterre vagy a sátortól, hirtelen fellebben a sátorlap és egy dagadt, szakállas férfi jelenik meg sárga köntösben, ujján díszes aranygyűrűkkel. Nem akar megfenyegetni téged, inkább behív a sátrába. - Idegen - mondja -, úgy látom, elfáradtál. Légy a vendégem! Talán még arra is rábeszéllek, hogy vegyél meg tőlem néhány egzotikus portékát. - Mivel nem látsz semmiféle rád leselkedő veszélyt, belépsz a sátorba, és lekuporodsz egy szőnyegre. A nomád, aki, mint megtudod, az Abjul névre hallgat, étellel-itallal kínál. Erőre kapsz. Nyersz 4 ÉLETERŐ pontot! Abjul később nevetve mondja: - Nos, mit vennél meg tőlem, barátom? - Nagy elragadtatással beszél minden egyes árujáról. Ezek a következők:[/p]
         [div data-market=""][/div]
     </text>
@@ -1702,7 +2082,7 @@
     <text>
         [p]Megrázod a csengettyűt, és örömmel látod, hogy az Éjszaka Réme eldobja botját, majd megpróbálja formátlan mancsaival befogni a fülét. Felordít haláltusájában, majd a földre zuhan. Örömöd azonban rövid életű, mert a fejed fölül recsegést hallasz. Az ezüstbot, amint kiesik tulajdonosa kezéből, valamilyen mágikus erő hatására egy szerkezetet hoz működésbe a mennyezeten, és az fokozatosan rád ereszkedik. Odarohansz, hogy kinyisd valamelyik ajtót, de mindkettő be van zárva, és képtelenség kinyitni, még Yaztromo varázslata sem segít. [alt]Mit teszel?[/alt][/p]
     </text>
-    <next id="290" pos="1" singleChoiceText="Jobb híját felkapod az ezüstbotot.">Felkapod az ezüstbotot?</next>
+    <next id="290" pos="1" singleChoiceText="Jobb híján felkapod az ezüstbotot.">Felkapod az ezüstbotot?</next>
     <itemCheck type="item" id="3015">
       <have>
         <next id="150" pos="2">Megpróbálkozol a kristálykulccsal?</next>
@@ -1755,7 +2135,19 @@
     <next id="45">Ha meg akarsz verekedni a férfival</next>
     <next id="251">Ha dühödet inkább Malbordusnak tartogatod és visszavonulsz a szobádba</next>
   </p>
-  <!-- 204 -->
+  <p id="204">
+    <text>
+        [p]A földön heverő kis szobor ártalmatlannak látszik, de gyanítod, hogy szétzúzása nem lesz egyszerű.[/p]
+    </text>
+    <itemCheck type="item" id="3037">
+      <have>
+        <next id="9"></next>
+      </have>
+      <dontHave>
+        <next id="193"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="205">
     <text>
         [p]Nemsokára egy férfi holttestre bukkansz, mely arccal a homokban fekszik. Vérnyomokat nem találsz, és támadás nyomát sem látod rajta, a férfi mégis halott, pedig egy félig telt vizespalack is van nála. Arcán haláltusa jelei láthatók, mintha valami iszonyú látványban lett volna része. Nincs semmi a férfinál, aminek hasznát vehetnéd, kivéve a [span class="takeItem" data-id="3008" data-amount="1"]vizespalackot[/span], amit beteszel a hátizsákodba, és továbbmész délnek.[/p]
@@ -1764,6 +2156,7 @@
   </p>
   <p id="206">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/206.jpg" /][/p]
         [p]Az ajtó egy szobába nyílik, amely dugig van különféle kínzóeszközökkel. Odabent egy férfi ordít, akit csuklójánál fogva akasztottak föl a mennyezetre erősített lánchoz, kínzója pedig egy csuklyás, meztelen felsőtestű férfi, aki füstölgő, tűzforró vasat tart a kezében, harsányan nevet.[/p]
     </text>
     <next id="328">Ha segíteni akarsz a szerencsétlen fogolynak</next>
@@ -1799,7 +2192,17 @@
     </fight>
     <next id="42"></next>
   </p>
-  <!-- 211 -->
+  <p id="211">
+    <text>
+        [p]A Csontváz Emberek fanatikusak; mindig az utolsó leheletükig harcolnak. Nem lesz könnyű legyőzni őket.[/p]
+        [p]Egyenként küzdj meg velük.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="42" />
+      <enemy id="43" />
+    </fight>
+    <next id="53"></next>
+  </p>
   <p id="212">
     <text>
         [p]A fülkében parányi ezüstdobozt találsz, amelynek a tetejére egy Sárkány képét vésték. Amikor megrázod a dobozt, hallod, hogy valami zörög benne.[/p]
@@ -1832,6 +2235,7 @@
   </p>
   <p id="216">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/216.jpg" /][/p]
         [p]Az ajtó egy raktárba nyílik, amely dugig van vázákkal, urnákkal, szőnyegekkel, dobozokkal, párnákkal és ládákkal. Amikor bemész, az ajtó becsapódik mögötted. Egy izmos, vörös bőrű, fején szarvakat viselő vadállat bújik ki az egyik urnából, és tüzet okád rád. Ez a Sátán, a raktár őre, és meg kell vele küzdened.[/p]
         [p]Foggal és körömmel támad ráadásul, tüzes leheletéért is dobnod kell egy kockával minden egyes Fordulóban. Ha 1-et vagy 2-t dobsz, megéget, és ekkor még 1 pontot le kell vonnod ÉLETERŐDBŐL sebesülésed miatt. Ha 3--6-ot dobsz, elkerülöd a leheletét.[/p]
     </text>
@@ -1870,7 +2274,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 219 -->
+  <p id="219">
+    <text>
+        [p]Leesha arckifejezése hirtelen megváltozik. Magabiztos önelégültségét rémület váltja fel. Mivel csak a közönséges fegyvereknek képes ellenállni, az Óriás Homokhernyó csipkézett szélű foga rá is veszélyes. Amikor fegyveredet megpillantja, a kanapéja mögött lévő ajtón át kimenekül a szentélyéből.[/p]
+    </text>
+    <next id="265">Ha ki akarod nyitni a kanapé mellett álló ládát</next>
+    <next id="137">Ha inkább kirohansz az ajtón és Leesha után eredsz</next>
+  </p>
   <p id="220">
     <text>
         [p]Amikor magadhoz térsz, igen gyenge vagy, de arra a gondolatra, hogy Malbordus már valahol előtted jár, azonnal talpra szökkensz. Elszántan vágsz neki az útnak déli irányba.[/p]
@@ -1884,7 +2294,23 @@
     <add amount="-2" to="stamina" />
     <next id="43"></next>
   </p>
-  <!-- 222 -->
+  <p id="222">
+    <text>
+        [p]A karmok mélyen a húsodba marnak, és kiserken a véred. A majom mancsa meg van átkozva, és az Élőholtak kivételével mindenkiből kiszipolyozza a lelket. Vesztesz 2 ÜGYESSÉG pontot! Kitéped a kezedből a majom mancsát, és visszadobod a fazékba. [alt]Mit teszel?[/alt][/p]
+    </text>
+    <add amount="-2" to="skill" />
+    <itemCheck type="section" id="14">
+      <dontHave>
+        <next id="14" pos="1">Fölemeled a fehér fazék tetejét?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="183">
+      <dontHave>
+        <next id="183" pos="2">Fölemeled a piros fazék tetejét?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="20" pos="3" singleChoiceText="Átmész a kamrán a végében lévő boltíves átjáróhoz.">Átmész a kamrán a végében lévő boltíves átjáróhoz?</next>
+  </p>
   <p id="223">
     <text>
         [p]Yaztromo közli veled, hogy a Fény varázslat segítségével fénnyel áraszthatsz el minden olyan szobát, barlangot vagy területet, melyet akár természetes, akár mágikus sötétség borít. Megtanítja neked a varázsigét, amelyet ilyenkor kell elmondanod, de azt is hozzáteszi, hogy ez a varázslat nem veszi majd túlzottan igénybe az energiádat; csupán 2 ÉLETERŐ pontot vesztesz minden esetben, ha ezt alkalmazod.[/p]
@@ -1900,7 +2326,14 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 224 -->
+  <p id="224">
+    <text>
+        [p]Gyorsan elmondod a Fény varázslat varázsigéjét (vonj le magadtól 2 ÉLETERŐ pontot!), de a varázslat nem működik, s a sötétség csak nem szűnik. Nem tudod, hogy az aranyeső megsemmisítette összes varázserődet.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="348">Ha tovább akarsz botorkálni a sötétben</next>
+    <next id="307">Ha inkább visszamész a lépcsőkön és kinyitod az ajtót</next>
+  </p>
   <p id="225">
     <text>
         [p]A Fantomba döföd a kardodat, de az lepattan róla. Teljesen érzéketlen a közönséges fegyverekkel szemben, és csak nevet szánalmas igyekezeteden, hogy meg akarod ölni. Megragadja a karodat, és azonnal megbénulsz. Vesztesz 4 ÉLETERŐ pontot! Mire újra érezni kezded a végtagjaidat, a Fantom már messze jár. Merev lábakkal indulsz neki az alagútnak, és folytatod a keresést.[/p]
@@ -1921,14 +2354,42 @@
       </failure>
     </test>
   </p>
-  <!-- 227 -->
+  <p id="227">
+    <text>
+        [p class="inlineImage"][img src="resources/ff14/227.jpg" /][/p]
+        [p]A falnak támaszkodsz, és megmarkolod a kardodat. Egy férfi lép be a terembe, fehér köntösben, kezében aranyserleggel. Fején fehér fejdíszt visel, amelyet egy széttárt szárnyú főnixmadarat ábrázoló aranycsat rögzít. Amikor a Pap észreveszi a Rabszolgaőrt, térdre rogy, és fülét a halott férfi mellére tapasztja. Hirtelen felnéz, meglát, és hangosan így szól: - Barrabang Hinpo Garrabang. - Füstfelhő csap fel az aranyserlegből, kövér emberformát ölt. A Pap felszólítja a Szelet, hogy öljön meg. A Szél mindkét orcája kidagad, és hatalmasat fúj rád, akkorát, hogy a falhoz vág. Vesztesz 2 ÉLETERŐ pontot! Karddal nem tudsz nekimenni a Szélnek, valami mással kell rátámadnod, még mielőtt szétzúz.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <itemCheck type="item" id="4107">
+      <have>
+        <next id="32">Ha használni akarod a Tűz varázslatot</next>
+        <next id="115">Ha a hátizsákodból vennél elő valamit, és azzal támadnád meg a Szelet</next>
+      </have>
+      <dontHave>
+        <next id="115"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="228">
     <text>
         [p]Még föl sem tudod emelni a kardodat, máris meghalsz a Baziliszkusz egyetlen átható pillantásától![/p]
     </text>
     <death />
   </p>
-  <!-- 229 -->
+  <p id="229">
+    <text>
+        [p]A Pap azonnal felismeri a faliszőnyeget, és tudja, milyen jelentést hordoz a rajta lévő Főnixmadár. Néhány szót kiált, és a Szél máris visszahúzódik a serlegbe. Azonnal rájössz, hogy lépéselőnyre tettél szert, és elmondod a Papnak, hogy a Rabszolga Őrt azért ölték meg, mert azt tervezte: megöli Leeshát. A Pap elismeri fölényedet, és bocsánatot kér, amiért alaptalanul támadott meg. Meghajol, és az aranyeső alatt kimegy a kamrából. Nem vesztegeted tovább itt az időt, hanem elhúzod a függönyt, hogy kinyisd az ajtót.[/p]
+    </text>
+    <itemCheck type="item" id="4101">
+      <have>
+        <next id="369">Ha Ajtónyitó varázslatot akarsz alkalmazni</next>
+        <next id="68">Ha a kardoddal akarod lecsapni a lakatot</next>
+      </have>
+      <dontHave>
+        <next id="68"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="230">
     <text>
         [p]Vadul úszol a hadihajó felé, és karodat lengetve akarod felhívni magadra a figyelmet. Kötelet dobnak le, és felhúznak a győztes hajó fedélzetére. Legnagyobb meglepetésedre a legénység egytől egyig csupa Törpe. A kapitány kérdéseket tesz fel neked és az elsüllyedt Belladonna kalózainak, akiket szintén a fedélzetre segítettek. Elmondod a kapitánynak, hogy fontos küldetésed van, amellyel Kőhidafalván, a Törpék városában bíztak meg. A kapitány gyanakodva mér végig, és azzal vádol, hogy te is csak egy elvetemült kalóz vagy. - Tehát azt mondod, hogy a feladattal Kőhidafalván bíztak meg? - kérdi. - Ha így van, mondd meg, ki a királyuk?[/p]
@@ -1936,7 +2397,17 @@
     <next id="173">Ha azt feleled, hogy a király neve Gallibrin</next>
     <next id="278">Ha azt válaszolod, hogy a király neve Gillibran</next>
   </p>
-  <!-- 231 -->
+  <p id="231">
+    <text>
+        [p]Fölemeled a harci kalapácsot, és lesújtasz vele a Sárkányra. A kalapács azonban lepattan a szoborról, amely teljesen sértetlen marad. Nem a megfelelő Sárkányszobrot választottad. Hirtelen gyengeség vesz erőt rajtad, mert egy láthatatlan gonosz erő veszi védelmébe a szobrot. Vesztesz 1 ÜGYESSÉG és 2 ÉLETERŐ pontot! Melyik Sárkányszobrot akarnád elpusztítani?[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="skill" />
+    <next id="362">A Csontsárkányt?</next>
+    <next id="9">A Kristálysárkányt?</next>
+    <next id="247">Az Aranysárkányt?</next>
+    <next id="279">Az Ébenfa Sárkányt?</next>
+  </p>
   <p id="232">
     <text>
         [p]Miközben a varázsige szavait mormolod, jókedvűen nézed, ahogy a dühös Gyíkember hirtelen mély álomba merül a földön. Vonj le magadtól 1 ÉLETERŐ pontot a varázslásért.[/p]
@@ -1958,7 +2429,13 @@
     <add amount="1" to="luck" />
     <next id="39"></next>
   </p>
-  <!-- 235 -->
+  <p id="235">
+    <text>
+        [p]Sötét éjszaka van már, s az egész napi kemény munka után fáradt és szomjas vagy. Az egyik asztalon vízzel teli edényt találsz. Egy hajtásra kiiszod a vizet. Túl fáradt vagy ahhoz, hogy továbbmenj, így aztán lepihensz a szoba sarkában lévő puha párnákra.[/p]
+    </text>
+    <next id="267">Ha engedsz a kísértésnek és elalszol</next>
+    <next id="131">Ha inkább fönn maradsz</next>
+  </p>
   <p id="236">
     <text>
         [p]Kétségbeesetten próbálod elkerülni a Tüskés Szem tekintetét, és vakon hadonászol kardoddal a levegőben.[/p]
@@ -1972,7 +2449,23 @@
       </failure>
     </test>
   </p>
-  <!-- 237 -->
+  <p id="237">
+    <text>
+        [p class="inlineImage"][img src="resources/ff14/237.jpg" /][/p]
+        [p]A folyosó egy boltíves átjáró előtt ér véget, melyet fekete függöny takar. A boltív fölött kőből faragott koponya látható. Bár a koponya nem sok jóval kecsegtet, mégis elhúzod a függönyt, és belépsz az átjárón. Egy is kamrába jutsz, amely a szemközti falból ugyancsak egy boltíves kapun át nyíló nagyobb terem első része. Azonnal két embertestű, csontvázfejű teremtménybe botlasz, akik a boltív két oldalán állnak őrt. Mindkettőjük fején szfinxsisak van. Az egyik Csontváz Ember utadat elállva, csikorgó hangon így szól: - Ha nem tudsz megfelelő magyarázattal szolgálni arra vonatkozóan, hogy miért hatoltál be Leesha birodalmába, meghalsz! - Mindketten neked szegezik a dárdájukat. [alt]Mit teszel?[/alt][/p]
+    </text>
+    <itemCheck type="item" id="4102">
+      <have>
+        <next id="371" pos="1">Teremtményaltató varázslatot alkalmazol?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3032">
+      <have>
+        <next id="294" pos="2">A mondod nekik, hogy elhoztad Leeshának az Óriás Homokhernyó fogát?</next>
+      </have>
+    </itemCheck>
+    <next id="211" pos="3" singleChoiceText="Rájuk támadsz a kardoddal.">Rájuk támadsz a kardoddal?</next>
+  </p>
   <p id="238">
     <text>
         [p]Körbejárod a hajót, amíg meg nem találod Gargót. Közli veled, hogy tegnap este az ivóban megölték az egyik tüzérét, és neked kell beállnod helyette. Az lesz a feladatod, hogy a csata idején ágyúgolyókat tölts az ágyúkba. Levisz a fedélzet alá, és megmutatja a függőágyadat. A Belladonna csakhamar kifut a nyílt tengerre, és boldog vagy, hogy végre délnek hajózol. Kora délután az egyik kalóz elkiáltja magát az árbockosárból: - Hajó jobbra! - Hirtelen nagy sürgés-forgás támad a legénység soraiban. A kapitány parancsokat osztogat, és mindenki elfoglalja a harcállását. Miközben azon töprengsz, vajon ki is lehet az ellenséges hajón, te is elfoglalod a helyedet az ágyúdnál. Ekkor rossz hírt közölnek veletek - nem kereskedő-, hanem hadihajó közeledik. Egyszerre csak mindenfelől hatalmas dörrenéseket hallasz: a hadihajó ágyúi lövik a Belladonnát. A kapitány tűzparancsot ad, de már látod, hogy a Belladonna nem veheti fel a harcot a hadihajóval. A heves csatában hajótok süllyedni kezd, és már az életedet próbálod menteni.[/p]
@@ -2015,7 +2508,23 @@
       </win>
     </fight>
   </p>
-  <!-- 241 -->
+  <p id="241">
+    <text>
+        [p]Gyorsan ráhúzod a maszkot az arcodra, hogy elhárítsd magadtól a Szelet. A maszk azonban sajnos nem véd meg, és a Szél a falhoz vág. Vesztesz 2 ÉLETERŐ pontot! [alt]Mit próbálsz ki?[/alt][/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <itemCheck type="items" id="3007 or 3014">
+      <have>
+        <next id="27" pos="1">Egy Tükröt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3030">
+      <have>
+        <next id="229" pos="2">Egy Főnixes Faliszőnyeget?</next>
+      </have>
+    </itemCheck>
+    <next id="312" pos="4" singleChoiceText="Lázasan keresgélsz a hátizsákodban, de nem találsz benne semmi mást, ami a hasznodra válhatna.">Egyiket sem?</next>
+  </p>
   <p id="242">
     <text>
         [p]A Sas megragadja éles karmaival a Pterodactylust, és görbe csőrét belemélyeszti a nyakába. A Pterodactylus halálsikolya egyre halkul, míg végül a hatalmas ragadozó tagjai úgy csapódnak a földhöz, akár egy kő. Jókedvűen gratulálsz a bátor sasnak, miközben az ismét dél felé száll veled. Átrepültök a Fehérvíz folyó fölött, alattatok egyre sivárabb a vidék. Mikor végre eléritek a sivatag peremét, a sas leereszkedik a földre. Már sötétedik, és a sas nem akar berepülni a sivatagba. Leszállsz a hátáról, és rejtekhely után nézel. Egy üreg mellett döntesz, amelyet a porhanyós homokban találsz. Pirkadatkor ébredsz, és szomorúan veszed észre, hogy a sas hazaröpült. Végignézel a tájon, de nem látsz mást, csak puszta homokot. Miközben arra gondolsz, vajon milyen sors vár rád, nekivágsz a hosszú útnak dél felé. Amikor a nap felbukkan az égen, kellemetlen meleged lesz. Délre kiszárad a szád, és iszonyú szomjúság gyötör.[/p]
@@ -2029,7 +2538,11 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 243 -->
+  <p id="243">
+    <text>
+        [p]Az ajtó egy keskeny folyosóra nyílik. A hőség egyre nő, ahogy előremész. Iszonyúan izzadsz, és látod, hogy nem mehetsz tovább. Visszafordulsz, de ekkor lángnyelvek csapnak ki a falból és a padlóból a sziklák repedései közül. Tűzcsapdába kerültél. A Nap képe alatt ez olvasható ki az ajtón lévő hieroglifákból: VÉGZET. A figyelmeztetés valóra vált. Kalandod itt véget ér![/p]
+    </text>
+  </p>
   <p id="244">
     <text>
         [p]Belenyúlsz a zsákodba, hátha találsz benne valamit, amit felhasználhatsz a Fantom ellen[alt]. Mit vágsz hozzá a Fantomhoz?[/alt][/p]
@@ -2062,7 +2575,17 @@
   <p id="246">
     <empty />
   </p>
-  <!-- 247 -->
+  <p id="247">
+    <text>
+        [p]Fölemeled a harci kalapácsot, és lesújtasz vele a Sárkányszoborra. A kalapács azonban lepattan a szoborról, amely sértetlen marad. Nem a megfelelő Sárkányszobrot választottad. Hirtelen gyengeség vesz erőt rajtad, amikor valami láthatatlan gonosz erő megpróbálja megvédeni a szobrot. Vesztesz 1 ÜGYESSÉG és 2 ÉLETERŐ pontot! Melyik Sárkányszobrot próbálód meg szétzúzni?[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="skill" />
+    <next id="362">A Csontsárkányt?</next>
+    <next id="231">Az Ezüstsárkányt?</next>
+    <next id="9">A Kristálysárkányt?</next>
+    <next id="279">Az Ébenfa Sárkányt?</next>
+  </p>
   <p id="248">
     <text>
         [p]Amikor kiejted a szádon az Ajtónyitó varázslat varázsigéjét, az ajtó lassan kinyílik. Vonj le magadtól 2 ÉLETERŐ pontot a varázslásért! Az ajtón belépve kihalt téren találod magad.[/p]
@@ -2070,7 +2593,27 @@
     <add amount="-2" to="stamina" />
     <next id="111"></next>
   </p>
-  <!-- 249 -->
+  <p id="249">
+    <text>
+        [p class="inlineImage"][img src="resources/ff14/249.jpg" /][/p]
+        [p]Amint továbbmész a folyosón, hirtelen mozgást veszel észre a félhomályban. Bőrvértet viselő izmos lény tart feléd. A fáklya fénye két hosszú pengéjű késről verődik vissza, amelyeket a kezében tart. Amikor a fény a fejére vetődik, látod, hogy a bőre zöld és himlőhelyes, a szeme piros, orrlyukai tágak, hatalmas szája tűhegyes fogakkal van tele. Mély torokhangon így szól: - Malbordus lesz a győztes, te pedig meghalsz! - Ezt a Mutáns Ork Gyilkost küldték ellened, hogy megöljön.[/p]
+    </text>
+    <itemCheck type="items" id="1001 and 1002">
+      <dontHave>
+        <text>
+            [p]Hátrányban leszel ezzel a gyakorlott gyilkossal szemben, akinek két hosszú pengéjű kése van. Minden egyes Fordulóban 2 ponttal csökkentsd Támadóerődet.[/p]
+        </text>
+        <gatherItem id="4008" amount="2" />
+      </dontHave>
+    </itemCheck>
+    <fight type="single">
+      <enemy id="41" />
+      <win>
+        <loseItem id="4008" amount="2" />
+      </win>
+    </fight>
+    <next id="5"></next>
+  </p>
   <p id="250">
     <text>
         [p]Egy ajtó mellett visz el az utad. Körös-körül lángok közt vergődő rút teremtmények díszesen faragott kőfiguráit látod.[/p]
@@ -2086,7 +2629,23 @@
     <add amount="-2" to="luck" />
     <next id="238"></next>
   </p>
-  <!-- 252 -->
+  <p id="252">
+    <text>
+        [p]Szerencsédre nem a kardforgató kezedet égetted meg. Vesztesz 1 ÉLETERŐ pontot! Gyorsan visszahúzod a kezedet, és eldöntöd, mit csinálj ezután. [alt]Mit teszel?[/alt][/p]
+    </text>
+    <add to="stamina" amount="-1" />
+    <itemCheck type="section" id="386">
+      <dontHave>
+        <next id="386" pos="1">Elveszed az arany csontváz-szobrocskát?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="82">
+      <dontHave>
+        <next id="82" pos="2">Kinyitod az arany ékszeres ládikót?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="3" pos="3" singleChoiceText="Elhagyod a szobát a szemközti ajtón át.">Elhagyod a szobát a szemközti ajtón át?</next>
+  </p>
   <p id="253">
     <text>
         [p]A Fantom megbénít átható tekintetével, mielőtt elmenekülhetnél az alagúton. Vesztesz 4 ÉLETERŐ pontot! Mire visszatér az erőd, a Fantom már messze jár. Merev lábakkal indulsz tovább az alagútban, és folytatod a keresést.[/p]
@@ -2100,7 +2659,14 @@
     </text>
     <next id="363"></next>
   </p>
-  <!-- 255 -->
+  <p id="255">
+    <text>
+        [p]Kimondod a varázsige szavait (vonj le magadtól 2 ÉLETERŐ pontot!), de nem történik semmi. Nem tudtad, hogy az aranyeső megfoszt minden Varázserődtől. El kell döntened, melyik ajtót nyisd ki.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="243">Ha azt az ajtót akarod kinyitni, amelyen a Nap képe látható</next>
+    <next id="273">Ha azt, amelyiken a Hold képe látható</next>
+  </p>
   <p id="256">
     <text>
         [p]A pergamenen számodra ismeretlen furcsa jelek vannak.[/p]
@@ -2170,6 +2736,7 @@
   </p>
   <p id="262">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/262.jpg" /][/p]
         [p]A folyosó végében lévő sivár szobában két Patkányember nagy hévvel épp egy Goblin tetemét lakmározza. Amint megpillantanak, talpra szökkennek, és kardjukkal rád támadnak.[/p]
     </text>
     <fight type="allAtOnce">
@@ -2200,7 +2767,20 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 265 -->
+  <p id="265">
+    <text>
+        [p]Fölemeled a láda tetejét, és amilyen gyorsan csak tudod, becsukod a szemedet. De már láttad a nagy H betűt, melyet a láda fenekén lévő aranyporba írtak. Vesztesz 4 ÉLETERŐ pontot![/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <itemCheck type="items" id="4003 and 4004 and 4005 and 4006">
+      <have>
+        <next id="148"></next>
+      </have>
+      <dontHave>
+        <next id="304"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="266">
     <text>
         [p]A csápokban fut a Homoki Csattogó két fő idegszála, melyek most működésképtelenné váltak. A teremtmény undorító pofája nyitva marad, és így ki tudod húzni súlyosan sérült lábadat. Vesztesz 4 ÉLETERŐ és 1 ÜGYESSÉG pontot! Miután bekötözöd a lábadat a ruhádból leszakított ronggyal, továbbindulsz délnek.[/p]
@@ -2209,7 +2789,14 @@
     <add amount="-1" to="skill" />
     <next id="106"></next>
   </p>
-  <!-- 267 -->
+  <p id="267">
+    <text>
+        [p]Álmodból hatalmas morajlás hangjai riasztanak fel, melyek a folyosón az aranyeső túloldaláról jönnek. Az álom felfrissített, és azonnal talpra szökkensz a riasztó hangokra. Nyersz 2 ÉLETERŐ pontot! A függöny mögött egy ajtót látsz, de már nincs időd rá, hogy kinyisd.[/p]
+    </text>
+    <add amount="2" to="stamina" />
+    <next id="44">Ha el akarsz bújni a függöny mögött</next>
+    <next id="227">Ha inkább megvárod, akárki legyen is az, aki bejön a kamrába</next>
+  </p>
   <p id="268">
     <text>
         [p]Annak ellenére, hogy a nyitott ajtón át fény szűrődik‚ olyan sötét van, hogy semmit sem látsz, amikor a küszöböt átléped.[/p]
@@ -2241,7 +2828,13 @@
     <next id="83">Ha beszélni akarsz vele</next>
     <next id="61">Ha megölöd</next>
   </p>
-  <!-- 271 -->
+  <p id="271">
+    <text>
+        [p]A lépcsősor tetején egy vastag tölgyfa ajtó van. Lenyomod a kilincset, és meglepetten tapasztalod, hogy az ajtó nincs kulcsra zárva. Még inkább meglepődsz, amikor a városfal mögött lévő ajtót kinyitva a Koponyák Sivatagába jutsz. A napfény bántja a szemedet a labirintus katakombáinak sötétsége után. Lenézel a lábad elé a homokba, és az ajtótól kiindulva a városfal mentén lábnyomokat veszel észre.[/p]
+    </text>
+    <next id="394">Ha követni akarod a lábnyomokat</next>
+    <next id="358">Ha inkább újra lemész a lépcsőn és ellenkező irányba indulsz el a folyosón</next>
+  </p>
   <p id="272">
     <text>
         [p]A harmadik napon végre megpillantod a földet, és az ár a part felé sodor. Szerencsédre egy homokos partszakaszon kötsz ki, és úgy érzed, mintha jókora utat tettél volna meg délnek. Meleg van, kiszáradt a szád. Ahová nézel, végestelen végig csak homokot látsz, egészen a látóhatárig.[/p]
@@ -2255,9 +2848,18 @@
       </failure>
     </test>
   </p>
-  <!-- 273 -->
+  <p id="273">
+    <text>
+        [p]Az ajtó egy keskeny, lejtős folyosóra nyílik, mely egy másik kamrába vezet. A falakat hieroglifák borítják, és egy kőasztalon három agyagfazék áll. Mit teszel?[/p]
+    </text>
+    <next id="14">Fölemeled a fehér fazék fedelét?</next>
+    <next id="156">Fölemeled a fekete fazék fedelét?</next>
+    <next id="183">Fölemeled a piros fazék fedelét?</next>
+    <next id="20">Átmész a kamra túlsó végében lévő boltíves átjáróhoz?</next>
+  </p>
   <p id="274">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/274.jpg" /][/p]
         [p]Két alak közeledik feléd, s végigfut a hideg a hátadon. Sárga csontjaikon csak úgy lötyög a páncélruha. Két Csontváz Harcos csörtet feléd karddal a kezében.[/p]
     </text>
     <fight type="allAtOnce">
@@ -2279,7 +2881,23 @@
     </text>
     <next id="88"></next>
   </p>
-  <!-- 277 -->
+  <p id="277">
+    <text>
+        [p]Nem történik semmi, amikor a gyűrűt az ujjadra húzod. Úgy döntesz, hogy rajta hagyod. [alt]Mit teszel?[/alt][/p]
+    </text>
+    <gatherItem id="3034" />
+    <itemCheck type="section" id="156">
+      <dontHave>
+        <next id="156" pos="1">Fölemeled a fekete fazék fedelét?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="183">
+      <dontHave>
+        <next id="183" pos="2">Fölemeled a piros fazék fedelét?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="20" pos="3" singleChoiceText="Átmész a kamra túlsó végében lévő holtíves átjáróhoz.">Átmész a kamra túlsó végében lévő holtíves átjáróhoz?</next>
+  </p>
   <p id="278">
     <text>
         [p]A kapitány nevetve mondja: - Jól van, idegen, igazat beszélsz, de attól tartok, meg kell magyaráznod még egy-két dolgot! Este a vacsoránál elmondod a kapitánynak és a legénységnek, milyen feladattal bíztak meg, és arról is beszélsz, milyen fontos a küldetésed. A kapitányt szemmel láthatólag mélyen aggasztja a katasztrófa, amely Allansia jólelkű lakóit fenyegeti, és felajánlja, hogy hajóján elvisz a Koponyák Sivatagába. A hadihajó két nap múlva lehorgonyoz, és kitesznek a fehér homokos parton. A hajószakács jóvoltából Élelmiszer-tartalékod ismét tíz étkezésre elegendő. Búcsút intesz a legénységnek, és gyalog folytatod az utadat. Ameddig a szemed ellát, csak homok vesz körül.[/p]
@@ -2293,7 +2911,17 @@
     <next id="327">Ha keletnek akarsz menni a sivatagon át</next>
     <next id="151">Ha inkább délnek mész a part mentén</next>
   </p>
-  <!-- 279 -->
+  <p id="279">
+    <text>
+        [p]Fölemeled a harci kalapácsot, és lesújtasz vele a Sárkányra. A kalapács azonban lepattan a szoborról, amely sértetlen marad. Nem a megfelelő Sárkányszobrot választottad! Hirtelen gyengeség vesz erőt rajtad, amikor valami gonosz erő megpróbálja megvédeni a szobrot. Vesztesz 1 ÜGYESSÉG és 2 ÉLETERŐ pontot! Melyik Sárkányt akarod szétzúzni?[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="skill" />
+    <next id="362">A Csontsárkányt?</next>
+    <next id="231">Az Ezüstsárkányt?</next>
+    <next id="9">A Kristálysárkányt?</next>
+    <next id="247">Az Aranysárkányt?</next>
+  </p>
   <p id="280">
     <text>
         [p]A Fantom átható tekintete ellenére sem veszted el az eszedet. Szélesre tárt karral közeledik feléd, és igyekszik magához ragadni, hogy ezzel is növelje erejét.[/p]
@@ -2307,7 +2935,13 @@
     </text>
     <next id="116"></next>
   </p>
-  <!-- 282 -->
+  <p id="282">
+    <text>
+        [p]Leesha felé döfsz, de kardod láthatatlan akadályba ütközik. Kegyetlen kacagását visszhangozzák a szentély falai, és úgy érzed, mintha a földhöz szögeztek volna. Mozdulni sem bírsz, amikor a kanapé mögött kinyílik egy ajtó, és egy férfi lép be a szentélybe. Arca maga a gonoszság, és ekkor ráébredsz a förtelmes valóságra - ez Malbordus. Csontos ujjaival átkutatja a holmidat, és elveszi az összes Sárkányszobrocskádat. Ezután meghajol Leesha felé, majd ugyanazon az ajtón át, amelyen jött, távozik, és sorsodra hagy. Már nem tehetsz semmit Allansia népéért, már nem tudod megmenteni őket. Malbordus a Sárkányaival visszaröpül a Fekete Erdőbe, és káosz lesz úrrá Allansia földjén. Küldetésed nem járt sikerrel, megbuktál. Kalandod itt véget ér![/p]
+    </text>
+    <loseItem id="3035,3033,3029,3025,3021" amount="10" />
+    <death />
+  </p>
   <p id="283">
     <text>
         [p]A fadobozban egy tükröt meg egy lezárt agyagkorsót találsz. A [span class="takeItem" data-id="3007" data-amount="1"]tükröt[/span] beteszed a hátizsákodba, és azon gondolkodsz, vajon mit is csinálj az agyagkorsóval.[/p]
@@ -2315,7 +2949,52 @@
     <next id="50">Ha széttöröd</next>
     <next id="70">Ha ott hagyod a dobozban és inkább továbbmész</next>
   </p>
-  <!-- 284 -->
+  <p id="284">
+    <text>
+        [p]A Fekete Apostolok elhiszik a történetedet, de azt mondják, nem engedhetik meg neked, hogy te add át az ajándékot Leeshának; majd ők átadják neki a nevedben.[/p]
+        [div data-market=""][/div]
+    </text>
+    <market mustGiveUp="1">
+      <purchaseLabel>Melyik tárgyadat adod át ajándék gyanánt?</purchaseLabel>
+      <purchase price="0" stock="1" id="1002" />
+      <purchase price="0" stock="1" id="3003" />
+      <purchase price="0" stock="1" id="3004" />
+      <purchase price="0" stock="1" id="3005" />
+      <purchase price="0" stock="1" id="3006" />
+      <purchase price="0" stock="1" id="3007" />
+      <purchase price="0" stock="1" id="3008" />
+      <purchase price="0" stock="1" id="3009" />
+      <purchase price="0" stock="1" id="3010" />
+      <purchase price="0" stock="1" id="3011" />
+      <purchase price="0" stock="1" id="3012" />
+      <purchase price="0" stock="1" id="3013" />
+      <purchase price="0" stock="1" id="3014" />
+      <purchase price="0" stock="1" id="3015" />
+      <purchase price="0" stock="1" id="3016" />
+      <purchase price="0" stock="1" id="3017" />
+      <purchase price="0" stock="1" id="3018" />
+      <purchase price="0" stock="1" id="3019" />
+      <purchase price="0" stock="1" id="3020" />
+      <purchase price="0" stock="1" id="3021" />
+      <purchase price="0" stock="1" id="3023" />
+      <purchase price="0" stock="1" id="3024" />
+      <purchase price="0" stock="1" id="3025" />
+      <purchase price="0" stock="1" id="3026" />
+      <purchase price="0" stock="1" id="3027" />
+      <purchase price="0" stock="1" id="3028" />
+      <purchase price="0" stock="1" id="3029" />
+      <purchase price="0" stock="1" id="3030" />
+      <purchase price="0" stock="1" id="3031" />
+      <purchase price="0" stock="1" id="3032" />
+      <purchase price="0" stock="1" id="3033" />
+      <after>
+        <text>
+            [p]Miközben azon kezdenek vitatkozni, vajon melyikük is adja át Leeshának az ajándékot, gyorsan elsurransz mellettük, és szaporán az oltár mögötti átjáró felé indulsz.[/p]
+        </text>
+      </after>
+    </market>
+    <next id="341"></next>
+  </p>
   <p id="285">
     <text>
         [p]Bár a vidék teljesen elhagyatott, meglepetten veszel észre a földön egy fekete foltot. Rothadás szaga terjeng a levegőben, mintha a folt felől áradna. Befogod az orrodat, és odamész, hogy közelebbről megvizsgáld. Ekkor látod, hogy a folt közepén egy bronzmedál fekszik, amelybe egy „M” betűt véstek. Lehet, hogy véletlenül Malbordus ejtette el?[/p]
@@ -2337,7 +3016,23 @@
     <next id="97">Ha a fejedre akarod tenni a sisakot</next>
     <next id="140">Ha inkább nem nyúlsz hozzá és továbbmész délnek a folyosón</next>
   </p>
-  <!-- 288 -->
+  <p id="288">
+    <text>
+        [p class="inlineImage"][img src="resources/ff14/288.jpg" /][/p]
+        [p]Hirtelen egy férfi feje bukkan elő a gödörből: arca, akár az ördögé. A föld fokozatosan emelkedni kezd alatta, míg végül a lába egy vonalba kerül a szoba szintjével. Lassan közeledik feléd, és így szól: - Add ide a Sárkányokat, amelyeket keresek! - Gyorsan hátrálni kezdesz, ugyanis nem tudod, milyen szörnyű hatalma lehet Malbordusnak. Hirtelen tapsol egyet, és ekkor fülsiketítő mennydörgés töri meg a szoba csendjét. Egy villám csapódik be, megrepednek a szoba falai meg a padlója, és kibírhatatlanul fájni kezd a füled.[/p]
+    </text>
+    <itemCheck type="item" id="3034">
+      <haveEquipped>
+        <next id="334"></next>
+      </haveEquipped>
+      <dontHave>
+        <next id="351"></next>
+      </dontHave>
+      <have>
+        <next id="351"></next>
+      </have>
+    </itemCheck>
+  </p>
   <p id="289">
     <text>
         [p]Bár a nap melege kibírhatatlan, fejkendőd megvéd a napszúrástól, és elszántan mész tovább délnek.[/p]
@@ -2373,7 +3068,22 @@
     </fight>
     <next id="172"></next>
   </p>
-  <!-- 292 -->
+  <p id="292">
+    <text>
+        [p]Még idejében ki tudod húzni a kezedet a fazékból, mielőtt a karmok a húsodba vájnának. Visszacsapod a fedőt a fazék tetejére, és [alt]eldöntöd, mit tegyél[/alt].[/p]
+    </text>
+    <itemCheck type="section" id="14">
+      <dontHave>
+        <next id="14" pos="1">Fölemeled a fehér fazék fedelét?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="183">
+      <dontHave>
+        <next id="183" pos="2">Fölemeled a piros fazék tetejét?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="20" pos="3" singleChoiceText="átmész a kamra túlsó végében lévő boltíves átjáróhoz">Átmész a kamra túlsó végében lévő boltíves átjáróhoz?</next>
+  </p>
   <p id="293">
     <text>
         [p]A csata színhelye lassan eltűnik a szemed elől, ahogy az árbocdarabba kapaszkodva tovaúszol. Két napja hányódsz már a tengeren, és egyre gyengülsz.[/p]
@@ -2426,7 +3136,13 @@
     </random>
     <next id="272"></next>
   </p>
-  <!-- 294 -->
+  <p id="294">
+    <text>
+        [p]A hozzád legközelebb álló Csontváz Ember kinyújtja a kezét, és kéri, hogy add oda neki a fogat.[/p]
+    </text>
+    <next id="346">Ha odaadod</next>
+    <next id="211">Ha úgy döntesz, hogy nem bízol meg a Csontváz Emberekben, és inkább megküzdesz velük</next>
+  </p>
   <p id="295">
     <text>
         [p]Amikor megpróbálod lefeszíteni a rácsot a falról, észreveszed, hogy már piszkálta valaki előtted. Egy függőleges és egy vízszintes rudat megjelöltek krétával a rács közepén, s így egy nagy „L” betű olvasható le. A Halál Küldöncének újabb támadása ez. Vesztesz 4 ÉLETERŐ és 1 SZERENCSE pontot! Sikerül benyúlnod a rács mögé, de ott nem találsz semmit, mert az csak egy szellőzőnyílás. Balszerencsédet átkozva továbbmész.[/p]
@@ -2494,6 +3210,7 @@
   </p>
   <p id="302">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/302.jpg" /][/p]
         [p]A fa dombormű igen bonyolult, minden bizonnyal hónapokig tartott, míg elkészült. Megnézed a házakat, és ekkor hirtelen egy hajszálrepedést veszel észre közvetlenül az egyik tető alatt. Rájössz, hogy a tető fölemelhető, és alatta az épület belseje üreges. A szerencse veled van, mert az épület belsejében egy kis faragott [span class="takeItem" data-id="3033" data-amount="1"]Ébenfa Sárkányszobrot[/span] találsz. Mosolyogva vágod zsebre kincsedet, majd kinyitod a szemközti ajtót.[/p]
     </text>
     <next id="93"></next>
@@ -2505,7 +3222,12 @@
     <next id="196">Ha meg akarsz ismerkedni a nomádokkal</next>
     <next id="389">Ha inkább továbbmész délnek</next>
   </p>
-  <!-- 304 -->
+  <p id="304">
+    <text>
+        [p]Megátkozod a Halál Küldöncét, de úgy érzed, megmenekültél gonosz tréfájától. Hirtelen elhatározással berohansz az ajtón, és Leesha után veted magad.[/p]
+    </text>
+    <next id="137"></next>
+  </p>
   <p id="305">
     <text>
         [p]Felnézel az égre, és észreveszed, hogy valami száll feléd. Amint közelebb kerül hozzád, látod, hogy az egy hatalmas ragadozómadár, felsőteste azonban olyan, mint egy nőé. Velőtrázó sikolyt hallat, amit nyomban felismersz. Kétségbeesetten dugod be a füledet a ruhádból leszakított ronggyal, hogy ne halld a félelmetes Hárpia hipnotizáló hangját. Ha tudsz és akarsz is Varázsnyíl varázslatot alkalmazni, lapozz a 184-re.[/p]
@@ -2530,7 +3252,15 @@
     <next id="153">Ha ki akarod nyitni a vasajtót</next>
     <next id="339">Ha meg akarod vizsgálni a villódzó fényeket</next>
   </p>
-  <!-- 307 -->
+  <p id="307">
+    <text>
+        [p]Kinyílik az ajtó, és egy kincsekkel teli szobába lépsz be. Serlegek, szobrocskák, drágakövekkel, ékszerekkel megrakott ládikók, száz meg száz mesébe illő kincs van a szobában. Mit teszel?[/p]
+    </text>
+    <next id="143">Magadhoz veszel néhány drágakövet?</next>
+    <next id="386">Elveszed az arany csontváz-szobrocskát?</next>
+    <next id="82">Kinyitod az arany ékszeres ládikót?</next>
+    <next id="3">Elhagyod a szobát a szemközti ajtón át?</next>
+  </p>
   <p id="308">
     <text>
         [p]Amikor a hajó süllyedni kezd, a legénység az ágyúk mellől a fönti fedélzetre vezető lépcső felé rohan. Te éred el elsőként a lépcsőt, és feljutsz a fedélzetre, mielőtt a hajó elsüllyedne.[/p]
@@ -2586,7 +3316,12 @@
       </lose>
     </fight>
   </p>
-  <!-- 312 -->
+  <p id="312">
+    <text>
+        [p]Képtelen vagy védekezni a Szél ellen, és az a falhoz vág - csontjaid darabokra törnek. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="313">
     <text>
         [p]Hirtelen eszedbe jut, hogy a Baziliszkusz egyetlen pillantása elegendő ahhoz, hogy megöljön.[/p]
@@ -2607,7 +3342,19 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 314 -->
+  <p id="314">
+    <text>
+        [p]Meglököd a vasajtót, és az lassan kinyílik. Boltíves mennyezetű, magas, hideg szobába jutsz. A szoba teljesen jellegtelen, és Leeshát sem látod. Középen azonban egy kör alakú lyukat veszel észre. Érzed, hogy nincs sok időd, ezért úgy döntesz, hogy megnézed, milyen tárgyaid vannak.[/p]
+    </text>
+    <itemCheck type="items" id="3036 and 3033 and 3029 and 3025 and 3021">
+      <have>
+        <next id="35"></next>
+      </have>
+      <dontHave>
+        <next id="160"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="315">
     <text>
         [p]Hamarosan elérkezel egy T elágazáshoz. Amint jobbra nézel, látod, hogy a földet üvegtörmelék borítja, így aztán balra indulsz el a folyosón.[/p]
@@ -2616,6 +3363,7 @@
   </p>
   <p id="316">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/316.jpg" /][/p]
         [p]Csakhamar rájössz, hogy egy faház égő teteje füstöl. Két Fekete Elf a szokásos csuklyás, fekete köpenyben lángoló nyílvesszőket lő ki a házra. Hirtelen egy férfi jelenik meg az ajtóban, aki a gomolygó füstből menekül. Karddal és pajzzsal felfegyverezve két támadója felé rohan. Mielőtt a segítségére siethetnél, két nyílvessző Végez vele. A Fekete Elfek előjönnek rejtekhelyükről, és odamennek halott áldozatukhoz.[/p]
     </text>
     <next id="113">Ha meg akarod támadni a Fekete Elfeket</next>
@@ -2629,7 +3377,19 @@
     <add to="stamina" amount="-4" />
     <next id="190"></next>
   </p>
-  <!-- 318 -->
+  <p id="318">
+    <text>
+        [p]Amikor megérinted a majommancsot, ujjai összerándulnak, és megpróbálják megragadni a kezedet.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="292"></next>
+      </success>
+      <failure>
+        <next id="222"></next>
+      </failure>
+    </test>
+  </p>
   <p id="319">
     <text>
         [p]A Gyöngyszemet a hitvány teremtmény hatalmas szemébe vágod, de az visszapattan róla, és széttörik a kőpadlón. Sietve kardot rántasz.[/p]
@@ -2637,7 +3397,13 @@
     <loseItem id="3018" />
     <next id="236"></next>
   </p>
-  <!-- 320 -->
+  <p id="320">
+    <text>
+        [p]A folyosó egy lépcsősornál ér véget.[/p]
+    </text>
+    <next id="271">Ha fel akarsz menni a lépcsőn</next>
+    <next id="358">Ha inkább visszamész, és ellenkező irányba indulsz el a folyosón</next>
+  </p>
   <p id="321">
     <text>
         [p]Azt mondod a Gnómnak, hogy nincs távcsöved. Csalódottan vakarja meg az állát, és így szól: - Nos, tudod, én valóban nagyon szeretem a bronzot, és ha bármilyen bronzból készült tárgy van nálad, boldogan adnék helyette egy varázs karszalagot, mely a csatában erőt öntene kardforgató karodba.[/p]
@@ -2677,7 +3443,19 @@
     <add amount="-2" to="skill" />
     <next id="159"></next>
   </p>
-  <!-- 324 -->
+  <p id="324">
+    <text>
+        [p]A földön heverő kis szobor ártalmatlannak látszik, de gyanítod, hogy nem lesz könnyű összezúzni.[/p]
+    </text>
+    <itemCheck type="item" id="3037">
+      <have>
+        <next id="279"></next>
+      </have>
+      <dontHave>
+        <next id="193"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="325">
     <text>
         [p]Szerencsére a gödör falában kapaszkodókat találsz; nagy nehezen kimászol. Nem vesztegeted az időt pihenéssel, hanem továbbmész a folyosón.[/p]
@@ -2717,6 +3495,7 @@
   </p>
   <p id="329">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/329.jpg" /][/p]
         [p]Bedugod a fejedet a mennyezetben lévő lyukon, és egy kicsinyke, túlzsúfolt szobát látsz. Egyetlen gyertya világítja meg, amely egy asztal tetején áll. A szoba egyik sarkában rongyos zsákruhában inas öregember guggol. Amint észrevesz, felkap a földről egy farudat. Mit teszel?[/p]
     </text>
     <next id="83">Megszólítod?</next>
@@ -2755,7 +3534,12 @@
     <next id="274">Ha meg akarod nézni, ki az</next>
     <next id="250">Ha inkább megfordulsz és sebesen visszamész az utolsó útkereszteződéshez</next>
   </p>
-  <!-- 334 -->
+  <p id="334">
+    <text>
+        [p]A gyűrűnek, amit a fazékban találtál, varázsereje van, és védelmet nyújt. Már nem érzed a fájdalmat a füledben, és elő tudod rántani hűséges kardodat, hogy megvívd utolsó, elszánt csatádat.[/p]
+    </text>
+    <next id="380"></next>
+  </p>
   <p id="335">
     <text>
         [p]A sivár folyosó élesen jobbra kanyarodik. Körülbelül tíz méter után egy kis fülkét látsz a jobb oldali falban. Benne kis bronz kerubszobor áll, szájából víz csorog egy tálkába.[/p]
@@ -2763,14 +3547,33 @@
     <next id="4">Ha akarsz inni a vízből</next>
     <next id="370">Ha inkább továbbmész a folyosón</next>
   </p>
-  <!-- 336 -->
+  <p id="336">
+    <empty />
+  </p>
   <p id="337">
     <text>
         [p]Ha a madarak alacsonyabban köröznének, láthatnád, hogy dögkeselyűk. A mérgezett tó fölött cirkálva várják a víz újabb áldozatát. Türelmük ismét elnyerte jutalmát...[/p]
     </text>
     <death />
   </p>
-  <!-- 338 -->
+  <p id="338">
+    <text>
+        [p]Kardforgató karod iszonyúan megégett, és kézügyességed már nem a régi. Vesztesz 1 ÉLETERŐ és 2 ÜGYESSÉG pontot! Gyorsan visszahúzod a kezedet, és eldöntöd, mit csinálj. [alt]Mit teszel?[/alt][/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <add amount="-2" to="skill" />
+    <itemCheck type="section" id="386">
+      <dontHave>
+        <next id="386" pos="1">Elveszed az arany csontváz-szobrot?</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="82">
+      <dontHave>
+        <next id="82" pos="2">Kinyitod az aranyládikót?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="3" pos="3" singleChoiceText="A szemközti ajtón át elhagyod a szobát.">A szemközti ajtón át elhagyod a szobát?</next>
+  </p>
   <p id="339">
     <text>
         [p]Ahogy közelebb kerülsz a villódzó fényekhez, észreveszed, hogy azok feléd közelednek. Három szárnyasbogár hangosan zümmögve készül rád támadni. Egyenként küzdj meg az Óriás Tűzlegyekkel.[/p]
@@ -2790,7 +3593,19 @@
     <next id="295">Ha ki akarod nyitni a kardoddal</next>
     <next id="157">Ha inkább továbbmész</next>
   </p>
-  <!-- 341 -->
+  <p id="341">
+    <text>
+        [p class="inlineImage"][img src="resources/ff14/341.jpg" /][/p]
+        [p]A boltíves átjárót szépen megmunkált kőfaragvány szegélyezi. Benézel a folyosóra. A végében csillámló aranyfüggönyt látsz. A falakban beépített kőkarok kardokat markolnak. Kardodat jól megszorítva óvatosan elindulsz a folyosón. Amint elérsz az első kardig, a kőkar életre kel, és rád támad, miközben a másik három kar a sorára várva a levegőt hasítja.[/p]
+    </text>
+    <fight type="single" forceOrder="true">
+      <enemy id="36" />
+      <enemy id="37" />
+      <enemy id="38" />
+      <enemy id="39" />
+    </fight>
+    <next id="191"></next>
+  </p>
   <p id="342">
     <text>
         [p]Yaztromo közli veled, hogy a Csapdafelderítő varázslat figyelmeztetni fog minden előtted álló veszélyes csapdára, bár még így is szükséged lesz némi leleményre. Megtanítja neked a varázsigét, melyet ilyenkor kell elmondanod, és azt is hozzáteszi, hogy minden alkalommal, amikor ezt a varázslatot használod, 2 ÉLETERŐ pontnyi energiát vesztesz.[/p]
@@ -2828,7 +3643,18 @@
     </text>
     <next id="377"></next>
   </p>
-  <!-- 346 -->
+  <p id="346">
+    <text>
+        [p]A Csontváz Ember megragadja a fogat, és hirtelen a földhöz vágja. A fog apró darabokra törik. Kifejezéstelen arcukon mintha megkönnyebbülést látnál, és ekkor elgondolkodsz azon, vajon milyen hibát követtél el. Támadásra kész dárdájukkal neked rontanak.[/p]
+        [p]Küzdj meg velük egyenként.[/p]
+    </text>
+    <loseItem id="3032" />
+    <fight type="single">
+      <enemy id="42" />
+      <enemy id="43" />
+    </fight>
+    <next id="96"></next>
+  </p>
   <p id="347">
     <text>
         [p]Az alagút végül megszakad. Egy kis fülkében magányos gyertya ég, mögötte csillog valami.[/p]
@@ -2836,7 +3662,19 @@
     <next id="212">Ha be akarsz lépni a fülkébe</next>
     <next id="59">Ha inkább visszamész a folyosón és befordulsz jobbra, az alagútrendszer egy másik ágába</next>
   </p>
-  <!-- 348 -->
+  <p id="348">
+    <text>
+        [p]A lépcsősor aljára érsz, és kezedet magad előtt kinyújtva óvatosan elindulsz. Hirtelen loccsanást hallasz, mintha sár zuhant volna a földre.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="57"></next>
+      </success>
+      <failure>
+        <next id="176"></next>
+      </failure>
+    </test>
+  </p>
   <p id="349">
     <text>
         [p]Letekered a zsinórt, és kinyitod a zsák száját. A zsákban egy üveggömböt találsz; belsejében boldogan ugrándozik egy aprócska, hegyes fülű, szárnyas emberke, borsózöld ruhában. Nem hallod a hangját az üvegen át, de rájössz, hogy a Kobold menekülni szeretne a gömbből.[/p]
@@ -2851,7 +3689,13 @@
     <add amount="1" to="luck" />
     <next id="190"></next>
   </p>
-  <!-- 351 -->
+  <p id="351">
+    <text>
+        [p]Betapasztod a füledet, de a fájdalom csak nem múlik. Megtántorodsz, teljesen elveszted tájékozó-dóképességedet és egyensúlyodat. Vesztesz 3 ÜGYESSÉG pontot! Bár vesztes helyzetben vagy, mégis előrántod hűséges kardodat, hogy megvívd utolsó elkeseredett csatádat.[/p]
+    </text>
+    <add amount="-3" to="skill" />
+    <next id="103"></next>
+  </p>
   <p id="352">
     <text>
         [p]A parton ballagva egy pálmacsoporthoz érsz, de egyik fán sem nő kókusz. Körülnézel, és eldöntöd, merre menj tovább.[/p]
@@ -2866,7 +3710,17 @@
     <next id="256">Ha el akarod olvasni, hogy mi van a tekercsen</next>
     <next id="77">Ha inkább azt akarod kinyomozni, hogy ki akarta hozzád vágni az üveget</next>
   </p>
-  <!-- 354 -->
+  <p id="354">
+    <text>
+        [p class="inlineImage"][img src="resources/ff14/354.jpg" /][/p]
+        [p]Bár úgy érzed, hogy az aranyesőtől nedves a bőröd, mégis teljesen száraz maradsz. Belépsz a pompásan berendezett terembe. A falakat freskók és festmények díszítik. A csiszolt, csillogó márványpadlón számos alacsony asztalka áll, és párnák hevernek szanaszét. Egy meztelen felsőtestű, hatalmas termetű kopasz férfi bő selyembugyogóban, szétvetett lábbal áll a terem végében. Mindkét keze görbe kardján pihen. Amint meglát, rád ront. Ő a külső templom Rabszolga Őre.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="40" />
+    </fight>
+    <gatherItem id="4007" />
+    <next id="235"></next>
+  </p>
   <p id="355">
     <text>
         [p]Az életet jelentő víz nélkül egyre gyengülsz; vesztesz 1 ÜGYESSÉG és 4 ÉLETERŐ pontot. Összeszorítod a fogadat, és továbbvonszolod magad a déli nap irányába.[/p]
@@ -2887,7 +3741,13 @@
     </text>
     <next id="108"></next>
   </p>
-  <!-- 358 -->
+  <p id="358">
+    <text>
+        [p]Egy márványtalapzat tetején egy tálat találsz. A tál tele van friss, zamatos szőlővel.[/p]
+    </text>
+    <next id="112">Ha meg akarod enni a szőlőt</next>
+    <next id="237">Ha inkább nem eszel belőle, hanem továbbmész</next>
+  </p>
   <p id="359">
     <text>
         [p]Amilyen gyorsan csak tudsz, elrohansz a partról, de képtelen vagy elmenekülni a Kagylószörny elől. Felbuksz a homokban, és egymás után csapódnak a testedbe a kagylók. Lassan elveszted az eszméletedet, és kalandod a Koponyák Sivatagának szélénél ér véget.[/p]
@@ -2937,7 +3797,12 @@
     </text>
     <next id="340"></next>
   </p>
-  <!-- 362 -->
+  <p id="362">
+    <text>
+        [p]Fölemeled a harci kalapácsot, és lesújtasz vele a Csontsárkányra. Elégedett mosollyal nyugtázod, hogy a szobor apró darabokra törik. Másodszor is a magasba emeled a harci kalapácsot, de ekkor hirtelen mennydörgés rázza meg a gödör mélyét.[/p]
+    </text>
+    <next id="288"></next>
+  </p>
   <p id="363">
     <text>
         [p]Kardot rántasz, és megpróbálod leszúrni a sas félelmetes támadóját. A Pterodactylus azonban túl messze van tőled, így nem tudsz beavatkozni a két repülő teremtmény csatájába. Döntsd el a csatát a sas és a Pterodactylus között.[/p]
@@ -2961,6 +3826,7 @@
   </p>
   <p id="365">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/365.jpg" /][/p]
         [p]Egy füstös szobába lépsz be. A falakat körös-körül alvadt vér borítja. Közvetlenül a fejed fölött egy kötélen kosár lóg. Veled szemben ugyancsak egy ajtót látsz. Jobbra, a falban alacsony boltív van, ahonnan kaparászás hangjait hallod. Hirtelen egy hatalmas, fekete rovar feje bukkan elő a lyukon, majd megjelenik a fejhez tartozó hosszú, soklábú test. Egy Óriás Százlábú bújt elő rejtekhelyéről, hogy beléd marjon.[/p]
     </text>
     <fight type="single">
@@ -2997,14 +3863,27 @@
     </text>
     <death />
   </p>
-  <!-- 369 -->
+  <p id="369">
+    <text>
+        [p]Elmondod a varázsigét (vonj le magadtól 2 ÉLETERŐ pontot!), de nem történik semmi. Nem tudtad, hogy az aranyeső megfoszt összes varázserődtől. Vesztesz 1 SZERENCSE pontot! Nincs más választásod, a kardoddal kell lefeszítened a lakatot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="luck" />
+    <next id="68"></next>
+  </p>
   <p id="370">
     <text>
         [p]A folyosó ismét éles kanyart vesz jobbra, és csakhamar egy újabb T elágazáshoz érsz. A folyosó előtted lévő szakasza üres, nincs rajta semmi érdekes, így aztán úgy döntesz, hogy balra mész tovább.[/p]
     </text>
     <next id="46"></next>
   </p>
-  <!-- 371 -->
+  <p id="371">
+    <text>
+        [p]Elmondod a varázsigét (vesztesz 1 ÉLETERŐ pontot!), de nem történik semmi. Nem tudtad, hogy az aranyeső megfoszt összes varázserődtől. A hozzád legközelebb álló Csontváz Ember dárdájával neked ront. Nincs más választásod, harcolnod kell![/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="211"></next>
+  </p>
   <p id="372">
     <text>
         [p]Összeteszed a két tenyeredet, és vizet varázsolsz. Markod hirtelen vízzel telik meg, és nagyokat kortyolsz a frissítő italból. A délutáni nap könyörtelenül süt, oly erővel, hogy csak úgy perzsel a homok. Két kezedet leereszted, és ekkor megszűnik a víz áramlása. Továbbmész a sivatagon át.[/p]
@@ -3039,6 +3918,7 @@
   </p>
   <p id="377">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/377.jpg" /][/p]
         [p]Miközben egyenesen délnek tartasz, nem sejted, milyen veszély leselkedik rád. Jobb lábad belesüpped a homokba, és éles fájdalmat érzel, mintha valami a húsodat marcangolná. Egy Homoki Csattogó próbál meg bekapni, s ekkor kardodat a homokba döföd. Az állat megrázza magát, a homok lepereg barna testéről, és előbukkan nagyra tátott, borotvaéles fogakkal szegélyezett állkapcsa. Képtelenség átdöfni a bőrét védő vastag páncélját. Néhány pikkelye hirtelen szétnyílik, és két hosszú tapogatócsáp nyúlik ki belőle; téged akarnak elkapni, hogy behúzzanak az állat nagyra tátott szájába. Már nem törődsz fájó lábaddal, hanem megpróbálod levágni a kitartóan támadó csápokat.[/p]
     </text>
     <fight type="allAtOnce">
@@ -3072,7 +3952,15 @@
     <next id="124">Ha felajánlod, hogy veszel neki sört a kiömlött helyett</next>
     <next id="203">Ha inkább ráförmedsz, miért ilyen ügyetlen</next>
   </p>
-  <!-- 380 -->
+  <p id="380">
+    <text>
+        [p]Malbordus észreveszi, hogy nem fog rajtad a varázsereje. Előkapja megátkozott kardját, és rád támad.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="45" />
+    </fight>
+    <next id="400"></next>
+  </p>
   <p id="381">
     <text>
         [p]Elhaladsz a szobor kezében lévő magasra emelt harci kalapács alatt, és az alagút bejárata felé mész.[/p]
@@ -3115,7 +4003,20 @@
     <add amount="-1" to="skill" />
     <next id="26"></next>
   </p>
-  <!-- 386 -->
+  <p id="386">
+    <text>
+        [p]A szobrocska nehéz, és kimondhatatlanul sokat ér. Ha küldetésed szerencsésen végződik, bőséges jutalomban lesz részed általa. Nyersz 1 SZERENCSE pontot! A szobrocskát beteszed a hátizsákodba, és eldöntöd, mit is csinálj.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <gatherItem id="3035" />
+    <next id="143" pos="1">Magadhoz veszel néhány drágakövet?</next>
+    <itemCheck type="section" id="82">
+      <dontHave>
+        <next id="82" pos="2">Kinyitod az arany ékszeres ládikót?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="3" pos="3">Elhagyod a szobát a szemközti ajtón át?</next>
+  </p>
   <p id="387">
     <text>
         [p]Lázasan kutatsz egy olyan tárgy után, amellyel a Tüskés Szemet meg tudnád ölni, [alt]gyorsan kell döntened. Mit választasz?[/alt][/p]
@@ -3146,6 +4047,7 @@
   </p>
   <p id="389">
     <text>
+        [p class="inlineImage"][img src="resources/ff14/389.jpg" /][/p]
         [p]Nem sokkal azután, hogy elhagytad a sátrat, úgy érzed, mintha megremegne a lábad alatt a föld. Hirtelen magasba emelkedik előtted a homok, majd miután hatalmas zuhatagként aláhull, óriási féreg alakja rajzolódik ki előtted. Rémülten veszed észre, hogy éppen egy tüskés fogú Óriás Homokhernyó akar bekapni. A teremtmény legalább húsz méter hosszú, és meg kell küzdened vele.[/p]
     </text>
     <fight type="single">
@@ -3153,7 +4055,22 @@
     </fight>
     <next id="18"></next>
   </p>
-  <!-- 390 -->
+  <p id="390">
+    <text>
+        [p]Amint az Éjszaka Réme a földre zuhan, kiereszti kezéből az ezüstbotot. Hirtelen recsegést hallasz a fejed fölött. A bot, tulajdonosa kezéből kiesve, rejtélyes módon működésbe hoz egy szerkezetet, és a kőmennyezet ereszkedni kezd. Őrült sebességgel pattansz az ajtókhoz, hogy kinyisd őket, de valamilyen varázserő mindkettőt zárva tartja. Még Yaztromo varázsigéje sem tudja kinyitni. [alt]Mit teszel?[/alt][/p]
+    </text>
+    <next id="290" pos="1" singleChoiceText="Jobb híján felkapod az ezüstbotot.">Felkapod az ezüstbotot?</next>
+    <itemCheck type="item" id="3015">
+      <have>
+        <next id="150" pos="2">Megpróbálkozol a kristálykulccsal?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4107">
+      <have>
+        <next id="239" pos="3">Tűz varázslattal próbálsz lyukat égetni az ajtóba?</next>
+      </have>
+    </itemCheck>
+  </p>
   <p id="391">
     <text>
         [p]Yaztromo közli veled, hogy az Írásjelolvasó varázslat használatakor képes leszel rá, hogy elolvass bármilyen rovásírással írt szöveget, illetve mágikus jelet. Megtanítja neked a varázsigét, amelyet ilyenkor kell elmondanod, és azt is hozzáteszi, hogy ez a varázslat nem veszi majd túlzottan igénybe az energiádat; csupán 1 ÉLETERŐ pontot vesztesz minden esetben, ha ezt alkalmazod.[/p]
@@ -3185,7 +4102,12 @@
   <p id="393">
     <empty />
   </p>
-  <!-- 394 -->
+  <p id="394">
+    <text>
+        [p]Az ajtó hangosan becsapódik mögötted, és már ki sem lehet nyitni. Követed a lábnyomokat a várost körülvevő fal mentén. Körülbelül tizenöt perc múlva ráakadsz arra az emberre, akitől a nyomok származnak. Legalább egy napja holtan fekszik, arccal a homokban. Szolgának nézed, s biztos vagy benne, hogy nem ő Malbordus. Nincs nála semmi, ami hasznodra lehetne, így aztán visszarohansz a tölgyfa ajtóhoz. Mivel átmentél az aranyeső alatt, még varázstudományod is hatástalan az ajtóval szemben. A kardoddal kell megpróbálnod kinyitni. Hirtelen egy árnyék suhan el a fejed fölött. Felnézel, és látod, hogy az nem más, mint Malbordus, aki egy hatalmas Sárkány hátán lovagol át éppen az égen. Azért jöttél, hogy legyőzd. A Sárkány felüvölt, és Malbordus gonosz kacagását is hallod. A Sárkány északnak repül már, képtelen vagy megállítani. Malbordus káoszseregének élén lerohanja majd Allansiát, és sötétség borul a világra. Küldetéseden megbuktál![/p]
+    </text>
+    <death />
+  </p>
   <p id="395">
     <text>
         [p]Olyan hideg van, hogy éjjel alig bírsz aludni. Vesztesz 3 ÉLETERŐ pontot! Már régóta fönn vagy, amikor a nap felkel. Örülsz, hogy sugaraival végre felmelegíti a sivatag levegőjét. Amikor már elég világos lesz ahhoz, hogy lásd, merre is menj, ismét elindulsz délnek.[/p]
@@ -3199,7 +4121,18 @@
     </text>
     <next id="91"></next>
   </p>
-  <!-- 397 -->
+  <p id="397">
+    <text>
+        [p]A csapda ajtajától lépcsősor vezet a lenti sötétségbe. Erős dohszag csapja meg az orrodat, és hideg huzat legyinti meg az arcodat. Lemész az egyenetlen lépcsőkön, míg végül a sötétben már semmit sem látsz. Mit teszel?[/p]
+    </text>
+    <itemCheck type="item" id="4106">
+      <have>
+        <next id="224" pos="1">Fény varázslatot alkalmazol?</next>
+      </have>
+    </itemCheck>
+    <next id="348" pos="2">Még lejjebb mész a sötétbe?</next>
+    <next id="307" pos="3">Visszamész a lépcsőn, és kinyitsz egy másik ajtót?</next>
+  </p>
   <p id="398">
     <text>
         [p]Az éjszaka kellős közepén döngő léptek zajára ébredsz. Csaknem telihold van, és fényénél egy hatalmas alakot pillantasz meg, amely feléd tart. Megmarkolod a kardodat, és felkészülsz, hogy megvédd magad a Barlangi Trollal szemben, aki éjszakai vadászata közben figyelt fel rád.[/p]
@@ -3219,5 +4152,11 @@
         [p]Nem tudod kinyitni az ajtót, így aztán megfordulsz, és visszamész a folyosón az utolsó elágazáshoz.[/p]
     </text>
     <next id="250"></next>
+  </p>
+  <p id="400">
+    <text>
+        [p]Malbordusnak vége, és a megmaradt Sárkányszobrok arra várnak, hogy megsemmisítsd őket. Újra és újra felemeled a harci kalapácsot, hogy lesújts rájuk, nehogy ember vagy bármilyen más teremtmény képes legyen bármikor is felhasználni varázserejüket. A Fekete Erdő Fekete Elfjei adott pillanatban meg fogják tudni, hogy vezérüket legyőzték, és visszavonulnak az erdő mélyére. A Rémület Útvesztőjében elszenvedett megpróbáltatásaid megmentették Allansiát. Most már büszkén mehetsz vissza Kőhidafalvára, és visszaadhatod a harci kalapácsot Gillibran királynak. Yaztromo minden bizonnyal megtanít még néhány varázslatra, neked pedig talán módodban lesz elkölteni egy keveset abból a vagyonból, amire utad során tettél szert.[/p]
+    </text>
+    <victory />
   </p>
 </content>
