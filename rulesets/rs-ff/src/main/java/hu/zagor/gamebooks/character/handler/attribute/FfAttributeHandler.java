@@ -162,7 +162,7 @@ public class FfAttributeHandler extends DefaultAttributeHandler {
         if (character instanceof FfAllyCharacter) {
             alive = isAlive((FfAllyCharacter) character);
         } else {
-            alive = resolveValue(character, "stamina") > 0;
+            alive = resolveValue(character, "stamina") > 0 && resolveValue(character, "skill") > 0;
         }
         return alive;
     }

@@ -90,14 +90,26 @@ public class FfAttributeHandlerTest {
         Assert.assertFalse(returned);
     }
 
-    public void testIsAliveWhenExpressionResolverRespondsWithPositiveShouldReturnTrue() {
+    public void testIsAliveWhenStaminaAndSkillResolverRespondsWithPositiveShouldReturnTrue() {
         // GIVEN
         expect(expressionResolver.resolveValue(character, "stamina")).andReturn(6);
+        expect(expressionResolver.resolveValue(character, "skill")).andReturn(7);
         mockControl.replay();
         // WHEN
         final boolean returned = underTest.isAlive(character);
         // THEN
         Assert.assertTrue(returned);
+    }
+
+    public void testIsAliveWhenSkillResolverRespondsWithZeroShouldReturnFalse() {
+        // GIVEN
+        expect(expressionResolver.resolveValue(character, "stamina")).andReturn(6);
+        expect(expressionResolver.resolveValue(character, "skill")).andReturn(0);
+        mockControl.replay();
+        // WHEN
+        final boolean returned = underTest.isAlive(character);
+        // THEN
+        Assert.assertFalse(returned);
     }
 
     public void testIsAliveWhenAllyCharacterHasZeroStaminaShouldReturnFalse() {
