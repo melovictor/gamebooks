@@ -36,7 +36,7 @@ public class FireflyHandler extends Ff14BeforeAfterRoundEnemyHandler {
         if (roll[0] < FIREFLY_DISCHARGE_ATTACK) {
             final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
             character.changeStamina(FIREFLY_EXTRA_DAMAGE);
-            final Enemy enemy = resolvationData.getEnemies().get(data.getPrimaryEnemy());
+            final Enemy enemy = data.getCurrentEnemy();
             messages.addKey("page.ff14.fight.fireflyDischargeDamage", enemy.getName());
         }
 
