@@ -148,10 +148,16 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
 
         if (newContent == null) {
             newContent = "";
+            boolean first = true;
             if (content.contains("\n")) {
                 final Matcher matcher = paragraphPattern.matcher(content);
                 while (matcher.find()) {
-                    newContent += "\t\t[p]" + matcher.group(0) + "[/p]\n";
+                    if (first) {
+                        first = false;
+                        newContent += matcher.group(0);
+                    } else {
+                        newContent += "[/p]\n\t\t[p]" + matcher.group(0);
+                    }
                 }
                 newContent = newContent.trim();
                 newContent = applyFormatting(newContent, rtfContent);
