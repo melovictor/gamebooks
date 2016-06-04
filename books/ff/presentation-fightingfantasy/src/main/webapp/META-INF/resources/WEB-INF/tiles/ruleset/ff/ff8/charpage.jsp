@@ -26,6 +26,7 @@
     </div>
 
     <tiles:insertTemplate template="../charpage/eq.jsp" />
+    <tiles:insertTemplate template="../charpage/shadow.jsp" />
      <h2>
          <span data-map-ff8="mapDialog">
              <spring:message code="page.menu.book.inventory.map" />

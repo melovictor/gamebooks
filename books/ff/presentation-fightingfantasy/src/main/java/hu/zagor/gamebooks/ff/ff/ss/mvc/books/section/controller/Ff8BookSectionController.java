@@ -1,7 +1,10 @@
 package hu.zagor.gamebooks.ff.ff.ss.mvc.books.section.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
+import hu.zagor.gamebooks.content.Paragraph;
+import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
+import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.ff.ss.character.Ff8Character;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.FfBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
@@ -9,6 +12,8 @@ import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -65,5 +71,31 @@ public class Ff8BookSectionController extends FfBookSectionController {
         }
 
         return map;
+    }
+
+    @Override
+    protected String doHandleRandom(final Model model, final HttpServletRequest request) {
+        final String result = super.doHandleRandom(model, request);
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        final Paragraph paragraph = wrapper.getParagraph();
+        if ("44".equals(paragraph.getId())) {
+            final ParagraphData data = paragraph.getData();
+            final String origText = data.getText();
+            final Matcher matcher = Pattern.compile("diced6(\\d)").matcher(origText);
+            int lower = Integer.MAX_VALUE;
+            while (matcher.find()) {
+                lower = Math.min(lower, Integer.parseInt(matcher.group(1)));
+            }
+            data.setText(origText.replace("{}", String.valueOf(lower)));
+            final FfCharacter character = (FfCharacter) wrapper.getCharacter();
+            character.changeStamina(-lower);
+            model.addAttribute("data", getCharacterPageData(wrapper.getCharacter()));
+        }
+        return result;
+    }
+
+    @Override
+    protected void handleAfterFight(final HttpSessionWrapper wrapper, final String enemyId) {
+        getInfo().getCharacterHandler().getItemHandler().removeItem(wrapper.getCharacter(), "4022", 1);
     }
 }
