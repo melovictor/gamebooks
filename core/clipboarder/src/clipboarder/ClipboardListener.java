@@ -59,7 +59,12 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
         Transferable newClipboardContent = null;
         if (contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
             String clipboardContent = readContent(contents, DataFlavor.stringFlavor);
-            String rtfContent = readContent(contents, new DataFlavor("text/rtf"));
+            String rtfContent;
+            try {
+                rtfContent = readContent(contents, new DataFlavor("text/rtf"));
+            } catch (final UnsupportedFlavorException ex) {
+                rtfContent = "";
+            }
             final int indexOf = rtfContent.indexOf("\\pard");
             if (indexOf > -1) {
                 rtfContent = rtfContent.substring(indexOf);
