@@ -169,18 +169,22 @@
 
 
   <bean class="hu.zagor.gamebooks.ff.mvc.book.newgame.service.DefaultFfCharacterGenerator" id="defaultFfCharacterGenerator" />
-  <bean class="hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler" id="ffCharacterItemHandler" />
-  <bean class="hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler" id="ffAttributeHandler" />
-  <bean class="hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler" id="ffUserInteractionHandler" />
-  <bean class="hu.zagor.gamebooks.character.handler.enemy.FfEnemyHandler" id="ffEnemyHandler" />
 
 
   <bean class="hu.zagor.gamebooks.character.handler.FfCharacterHandler" id="ffCharacterHandler" parent="rawCharacterHandler" scope="prototype" p:battleLuckTestParameters-ref="defaultBattleLuckTestParameters">
-    <property name="itemHandler" ref="ffCharacterItemHandler" />
+    <property name="itemHandler">
+      <bean class="hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler" />
+    </property>
     <property name="characterGenerator" ref="defaultFfCharacterGenerator" />
-    <property name="attributeHandler" ref="ffAttributeHandler" />
-    <property name="interactionHandler" ref="ffUserInteractionHandler" />
-    <property name="enemyHandler" ref="ffEnemyHandler" />
+    <property name="attributeHandler">
+      <bean class="hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler" />
+    </property>
+    <property name="interactionHandler">
+      <bean class="hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler" />
+    </property>
+    <property name="enemyHandler">
+      <bean class="hu.zagor.gamebooks.character.handler.enemy.FfEnemyHandler" />
+    </property>
   </bean>
 
   <bean class="hu.zagor.gamebooks.character.handler.luck.BattleLuckTestParameters" name="defaultBattleLuckTestParameters" c:luckyAttackAddition="2" c:luckyDefenseDeduction="1" c:unluckyAttackDeduction="1" c:unluckyDefenseAddition="1" />
