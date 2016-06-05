@@ -29,6 +29,7 @@
     <gatherItem id="1001" />
     <gatherItem id="3001" />
     <gatherItem id="3002" />
+    <add amount="5" to="gold" />
     <next id="1"></next>
   </p>
   <p id="1">
@@ -71,9 +72,38 @@
       </failure>
     </test>
   </p>
-  <!-- 6 -->
-  <!-- 7 -->
-  <!-- 8 -->
+  <p id="6">
+    <text>
+        [p]Visszamész Selator kunyhójába. Vidám tűz lobog a konyhában, és finom étel illata leng a levegőben. Selator szívélyesen üdvözöl, majd felteszi a kérdést: - Hoztál-e nekem bíborszínű bogyót?[/p]
+    </text>
+    <itemCheck type="item" id="3021">
+      <have>
+        <next id="175"></next>
+      </have>
+      <dontHave>
+        <next id="52"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="7">
+    <text>
+        [p]A gonosz varázsló tekintete elsötétedik, és palástjának mintázata baljóslatúan kezd vibrálni. - Nos - szólal meg morogva -‚ ez több, mint a semmi! Add ide, amid van, én pedig 250 Aranytallérral jutalmazlak![/p]
+    </text>
+    <next id="266">Ha elfogadod az ajánlatát</next>
+    <next id="207">Ha emlékezteted, hogy sokkal többet ígért</next>
+  </p>
+  <p id="8">
+    <text>
+        [p]- Nos, ez így nem jó! - közli. - Valaki mást kell keresnem helyetted. Ha maradt még nálad néhány a varázsgolyóimból, adok értük egy kevés gyógyitalt. - Mit teszel?[/p]
+    </text>
+    <itemCheck type="items" id="3101 or 3102 or 3103 or 3104 or 3105 or 3106 or 3107 or 3108 or 3109">
+      <have>
+        <next id="141" pos="1">Eladod maradék varázsgolyódat némi gyógyitalért?</next>
+      </have>
+    </itemCheck>
+    <next id="316" pos="2">Közlöd, hogy mind elhasználtad?</next>
+    <next id="341" pos="3">Megtámadod a Vasöklűt?</next>
+  </p>
   <p id="9">
     <text>
         [p]A Skorpiók Mocsarának déli szélénél állsz. Hála a Rézgyűrűnek, mindig tudni fogod, merre van észak… de ettől függetlenül térképet kell rajzolnod! Elhatározod, hogy bejegyzed azokat az ösvényeket, amelyeken végigmész, illetve azokat a kis tisztásokat, melyekre eljutsz, hogy tudd, merre menj, ha ismét visszatérsz egy adott tisztásra.[/p]
@@ -198,7 +228,7 @@
         <next id="63" pos="1">Az Arany Mágnessel?</next>
       </have>
     </itemCheck>
-    <itemCheck type="items" id="3008 or 3004 or 3011 or 3012 or 3013 or 3014 or 3015 or 3016">
+    <itemCheck type="items" id="3008 or 3004 or 3011 or 3012">
       <have>
         <next id="198" pos="2">Egy másik Mestertől származó Amulettel?</next>
       </have>
@@ -225,8 +255,19 @@
     <loseItem id="3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,1002,1004,3004,3008,3009,3010,3011,3012,3013,3014,3015,3016,3018" amount="100" />
     <next id="179"></next>
   </p>
-  <!-- 18 -->
-  <!-- 19 -->
+  <p id="18">
+    <text>
+        [p]Amikor látják, hogy kivont karddal rájuk rontasz, megrettennek. Mind az öt Útonálló berohan a tisztás szélén lévő erdőbe. Egy pillanatra se állsz meg. Kiabálva keresztülszáguldasz a tisztáson, majd az ösvényen át eljutsz a tisztás másik végébe. Az Útonállók nagyon megdöbbennek, így képtelenek arra gondolni, hogy üldözőbe vegyenek.[/p]
+    </text>
+    <next id="19"></next>
+  </p>
+  <p id="19">
+    <text>
+        [p]Két ösvényen mehetsz tovább a tisztásról. Az észak felé vezető sokkal szélesebb, láthatóan sokan jártak már ezen az úton. Merre mész?[/p]
+    </text>
+    <next id="280">Északnak?</next>
+    <next id="137">Keletnek?</next>
+  </p>
   <p id="20">
     <text>
         [p]A bogyó nagyon finom. Kifejezetten kellemesen érzed magad utána. Nyersz 2 ÉLETERŐ pontot és 1 SZERENCSE pontot. Más figyelemre méltó dolgot itt nem találsz, így továbbmész.[/p]
@@ -586,7 +627,12 @@
     <next id="296">Ha a mocsár felé rohansz</next>
     <next id="5">Ha a falu felé futsz</next>
   </p>
-  <!-- 52 -->
+  <p id="52">
+    <text>
+        [p]Szomorú, de egyetlenegy bogyót sem tudsz adni neki. Elmondod, mi történt veled a mocsárban: Selator arca elkomorodik. - Biztosan megtetted, amit megtehettél - mondja. Minthogy látod, hogy igencsak le van törve, felajánlod neki, hogy visszamész, és ismét megpróbálod, de nem figyel rád. - A veszély túl nagy! - mondja. Mindent megtettél, amit tudtál, de ez kevés volt. Kalandod itt véget ér.[/p]
+    </text>
+    <victory />
+  </p>
   <p id="53">
     <text>
         [p class="inlineImage"][img src="resources/ff8/53.jpg" /][/p]
@@ -607,7 +653,19 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 54 -->
+  <p id="54">
+    <text>
+        [p]Dühében eltorzul az arca, és üvöltözni kezd: - Hogy merészelsz üres kézzel visszajönni?[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="109"></next>
+      </success>
+      <failure>
+        <next id="285"></next>
+      </failure>
+    </test>
+  </p>
   <p id="55">
     <text>
         [p]Óvatosan a fához lépsz. Még mielőtt elérnéd, megcsapja az orrodat az undorító szag, amiből arra következtetsz, hogy valamilyen vadállat búvóhelye lehet itt. Hátrahőkölsz, amikor egy óriási Medve bozontos feje jelenik meg az odú nyílásában.[/p]
@@ -615,8 +673,25 @@
     <next id="390">Ha elfutsz</next>
     <next id="200">Ha megverekszel a Medvével</next>
   </p>
-  <!-- 56 -->
-  <!-- 57 -->
+  <p id="56">
+    <text>
+        [p]Keresztülvágsz a mezőn, és a kanyargós ösvényeken át a falu piactere felé tartasz. Itt áll Vasöklű háza, most is éppolyan, mint amikor utoljára itt jártál. Bekopogsz, és a Goblin-lány nyit ajtót. Elvezet Vasöklű dolgozószobájába. Ott ü selyempalástjába burkolva. - Nos, hogy sikerült a dolog? Elhoztad a térképet a Fűzfaligetbe Vezető utakról? - kérdi dörgő hangon.[/p]
+    </text>
+    <itemCheck type="item" id="4024">
+      <have>
+        <next id="158"></next>
+      </have>
+      <dontHave>
+        <next id="8"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="57">
+    <text>
+        [p]Egyik varázslat sem igazán jó ebben a helyzetben. Előrántod a kardodat, és rátámadsz a gonosz varázslóra.[/p]
+    </text>
+    <next id="124"></next>
+  </p>
   <p id="58">
     <test against="luck">
       <success>
@@ -704,7 +779,33 @@
       </win>
     </fight>
   </p>
-  <!-- 65 -->
+  <p id="65">
+    <text>
+        [p]Az ösvény tekervényes, de megpróbálod pontosan követni. Megkerülöd a hatalmas kagylógombát, melyen aprócska teremtmények lakmároznak, és újabb Tisztáshoz érsz. A 10-es tisztáson vagy! [/p]
+    </text>
+    <loseItem id="4026" />
+    <itemCheck type="item" id="4027">
+      <dontHave>
+        <gatherItem id="4027" />
+      </dontHave>
+    </itemCheck>
+    <gatherItem id="maps-10" />
+    <itemCheck type="item" id="4110">
+      <have>
+        <next id="343"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Hangokat hallasz magad előtt. Óvatosan kinézel a fa mögül. Öt férfit látsz, akikről ruházatuk és durva beszédjük alapján úgy gondolod, nem lehetnek mások, mint Útonállók. Rézgyűrűd hideg marad, ebből tudod, hogy ezek az emberek valójában nem gonoszak. Másfelől azonban jó, ha vigyázol velük. Mit teszel?[/p]
+        </text>
+        <gatherItem id="4110" />
+        <next id="137">Megfordulsz, és visszamész arra, amerre jöttél? </next>
+        <next id="231">Nagyot kiáltva előrántod a kardodat és rájuk támadsz?</next>
+        <next id="387">Varázsolsz egyet a rejtekhelyedről?</next>
+        <next id="163">Bátran előjössz, és üdvözlöd őket?</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="66">
     <text>
         [p class="inlineImage"][img src="resources/ff8/66.jpg" /][/p]
@@ -726,7 +827,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 67 -->
+  <p id="67">
+    <text>
+        [p]Nagyon valószínű, hogy ez valamilyen gyógykeverék. Mind elhasználod, és érzed: erőd visszatér. Nyersz 2 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="2" to="stamina" />
+    <next id="19"></next>
+  </p>
   <p id="68">
     <empty />
   </p>
@@ -833,8 +940,33 @@
     <add amount="3" to="stamina" />
     <next id="47"></next>
   </p>
-  <!-- 78 -->
-  <!-- 79 -->
+  <p id="78">
+    <text>
+        [p]A Görbe Lándzsa igen kellemes, kényelmes fogadó. Egy aranytallért fizetsz a fogadósnak, és felmész a szobádba. Amint leteszed a fejedet a párnára, rögtön elnyom az álom. Másnap frissen ébredsz - nyersz 2 ÉLETERŐ pontot. Amikor már éppen távoznál, a fogadós köszönt. Tudja, hogy keresztülmentél a Skorpiók Mocsarán, és ugyanarra akarsz visszamenni. - Igazán jó harcos lehetsz, ha átmentél a mocsáron… - mondja - és talán nem tartozik rám a dolog… de tudnod kell, hogy van itt a szomszéd utcában egy varázsló, ő eladhat neked néhány varázslatot, ami segítségedre lehet a visszaúton a mocsáron át. - Megköszönve a fogadósnak a jó tanácsot megkérded, hogyan juthatsz el a varázslóhoz, majd távozol.[/p]
+    </text>
+    <add amount="-1" to="gold" />
+    <add amount="2" to="stamina" />
+    <next id="150">Ha elmész a varázslóhoz</next>
+    <next id="343">Ha a déli úton ismét elindulsz vissza a mocsárba</next>
+  </p>
+  <p id="79">
+    <text>
+        [p class="inlineImage"][img src="resources/ff8/79.jpg" /][/p]
+        [p]Megegyeztek, hogy egy párbajjal, melyet csak az első vérig vívtok, tisztességesen eldönthetitek a kérdést. Az Útonállók Vezére feláll veled szemben. Férfiak sereglenek körétek, de nem látszanak árulóknak - inkább csak kíváncsiskodóknak.[/p]
+        [p]Csak addig harcoltok, amíg egyikőtök megsebzi a másikat.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="28" />
+      <loseRound>
+        <next id="128"></next>
+        <interrupt />
+      </loseRound>
+      <winRound enemy="28">
+        <interrupt />
+        <next id="360"></next>
+      </winRound>
+    </fight>
+  </p>
   <p id="80">
     <text>
         [p][alt]Mit varázsolsz a Félelem Virágai ellen?[/alt][/p]
@@ -1088,8 +1220,48 @@
     </text>
     <death />
   </p>
-  <!-- 99 -->
-  <!-- 100 -->
+  <p id="99">
+    <text>
+        [p]Átadod Bakónak az Amuletteket, melyeket életed kockáztatásával szereztél a Skorpiók Mocsarában. Az gúnyos mosollyal veszi át őket. Kimegy a szobából, majd egy kicsi, de nehéz zsákkal tér vissza. Odadobja neked a csörgő pénzérmékkel teli erszényt. - Eredj innen, és ne merj visszajönni. Végeztem veled![/p]
+    </text>
+    <itemCheck type="item" id="3004">
+      <have>
+        <loseItem id="3004" />
+        <add amount="500" to="gold" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3008">
+      <have>
+        <loseItem id="3008" />
+        <add amount="500" to="gold" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3010">
+      <have>
+        <loseItem id="3010" />
+        <add amount="500" to="gold" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3011">
+      <have>
+        <loseItem id="3011" />
+        <add amount="500" to="gold" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3012">
+      <have>
+        <loseItem id="3012" />
+        <add amount="500" to="gold" />
+      </have>
+    </itemCheck>
+    <next id="242"></next>
+  </p>
+  <p id="100">
+    <text>
+        [p]Fáradtan, elcsigázottan távozol Vasöklűtől, és a fogadó felé veszed az utadat. Nem jártál sikerrel küldetésed során, de legalább élve megúsztad. Talán majd egyszer még visszatérsz ide. Most azonban kalandodnak itt vége szakad.[/p]
+    </text>
+    <victory />
+  </p>
   <p id="101">
     <text>
         [p]A híd öreg, de jó karban van.[/p]
@@ -1152,14 +1324,53 @@
     <next id="267">Ha megtámadod a hitszegő Tolvajt, aki tőrt forgat a kezében</next>
     <next id="179">Ha inkább megfordulsz és elfutsz az egyik ösvényen</next>
   </p>
-  <!-- 107 -->
+  <p id="107">
+    <text>
+        [p]Az Átok-varázslatot alkalmazod a hozzád legközelebb álló Útonálló ellen. Felordít, majd összeesik. Társai odarohannak hozzá. Ekkor aztán ők is üvölteni kezdenek, és futva hagyják el a tisztást észak felé. Az Útonálló, aki összeesett - halott. Vonásai eltorzultak, úgy néz ki, mintha súlyos betegségben halt volna meg. Ekkor magadon is érezni kezded az Átok hatását.[/p]
+    </text>
+    <loseItem id="3112" />
+    <random>
+      <result max="1" min="1">
+        <text>[p]Vesztesz 1 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-1" to="stamina" />
+      </result>
+      <result max="2" min="2">
+        <text>[p]Vesztesz 2 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-2" to="stamina" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]Vesztesz 3 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-3" to="stamina" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Vesztesz 4 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-4" to="stamina" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Vesztesz 5 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-5" to="stamina" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Vesztesz 6 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-6" to="stamina" />
+      </result>
+    </random>
+    <next id="19"></next>
+  </p>
   <p id="108">
     <text>
         [p]Ismét azon a tisztáson vagy, ahol a Farkasokkal találkoztál. Nyugalom van mindenütt, nem látsz semmi különöset. A bokor változatlanul ott áll a tisztás közepén; most azonban nincsen rajta egyetlenegy bogyó sem. Nincs itt semmi különös. Elindulsz vissza, délnek, az Óriások tisztása felé.[/p]
     </text>
     <next id="342"></next>
   </p>
-  <!-- 109 -->
+  <p id="109">
+    <text>
+        [p]Morog-dörög, de már látott harcolni, és most nem elég mérges ahhoz, hogy megtámadjon. Mit teszel?[/p]
+    </text>
+    <next id="349">Távozol azzal, amid van?</next>
+    <next id="124">Megtámadod?</next>
+    <next id="256">Varázsolsz egyet?</next>
+  </p>
   <p id="110">
     <text>
         [p]Jól tudod, hogy a Tűz-varázslat az egyetlen varázslat, ami segíthet e rút csúszómászók tömege ellen. Máris varázsolsz. Tűz csap fel körülötted a fűből. Egy ideig terjed, majd kihuny, de a Skorpiók meghátrálásra kényszerültek. Elrohansz a tisztásról, mielőtt újra támadhatnának.[/p]
@@ -1203,7 +1414,12 @@
     </text>
     <next id="234"></next>
   </p>
-  <!-- 116 -->
+  <p id="116">
+    <text>
+        [p]Mindent megteszel, hogy eltereld a figyelmedet az alattad folyó dőzsölés, mulatozás hangjairól, de a lárma egyre csak nő. Jóval éjfél után végre elalszol, de már kora reggel felébredsz az ablakod alatt lévő piac zajaira. Dühösen összeszeded a holmidat, és elindulsz kifelé a városból a déli úton a mocsár irányába.[/p]
+    </text>
+    <next id="343"></next>
+  </p>
   <p id="117">
     <text>
         [p]A Barátság-varázslatot alkalmazod, melyet az Egyszarvú tisztásán találtál. A Kertek Mestere széles mosolyra húzza a száját: - Miben lehetek a szolgálatodra, kedves barátom? - kérdi. A Virág Amulettjét kéred tőle. Leveszi nyakából az Amulettet, és a te nyakadba akasztja. Amikor az Amulett a testedhez ér, megbénulsz! A Mester mélyen a szemedbe néz, és követeli, hogy mondd el neki a teljes igazságot magadról. Engedelmeskedned kell az akaratának. A fejét csóválja, majd így szól: - Nem vagy rossz ember, de gonosz mester szolgálatában állsz. A legtöbb, amit tehetek érted, az az, hogy óva intelek, vigyázz magadra! - Visszaveszi az Amulettjét, és távozik. Ismét visszanyered uralmadat végtagjaid felett, és elindulsz nyugat felé.[/p]
@@ -1317,7 +1533,16 @@
     <next id="225">Ha folytatod ellene a harcot</next>
     <next id="315">Ha inkább elfutsz, amíg mással van elfoglalva</next>
   </p>
-  <!-- 124 -->
+  <p id="124">
+    <text>
+        [p]A gonosz varázsló ugyanolyan mérges, mint te. Előhúzza varázsvesszőjét a palástjából. Amikor harcállását felveszi, a pálca megcsillan és fűrészfogú karddá változik. Izzik, amint megforgatja a levegőben - szerinted biztosan varázskard. Így vagy úgy, ez lesz az utolsó csatád kalandjaid során![/p]
+        [p]Élethalálharc ez; nem futamodhatsz meg![/p]
+    </text>
+    <fight type="single">
+      <enemy id="36" />
+    </fight>
+    <next id="340"></next>
+  </p>
   <p id="125">
     <text>
         [p]Megölted a Ronda Vadállatot. Nagy csatád emlékére levágod néhány sziklakemény [span class="takeItem" data-id="3006" data-amount="1"]karmát[/span]. Bejárod a tisztást, hogy újabb kijáratokat keress, de egyet sem találsz, így hát visszafordulsz azon az ösvényen, amelyen idejöttél s amely kelet felé vezet.[/p]
@@ -1338,7 +1563,49 @@
     <loseItem id="3107" />
     <next id="104"></next>
   </p>
-  <!-- 128 -->
+  <p id="128">
+    <text>
+        [p]Bár tapasztalt harcos vagy, az Útonállók Vezére is jó kardforgató. Kardja élesen a bordáid közé vág. Vesztettél! Ellenfeled sportszerűen gratulál a remek párbajhoz, aztán a földre dobja a köpenyét, és felajánlja, hogy ülj rá és pihenj, majd így szól: - Most pedig beszéljük csak meg, hogy is állunk a fogadásunkkal! Mit is nyertem? - kérdi. Oda kell adnod neki valamelyik varázsgolyódat, drágakövedet vagy bármelyik mágikus erejű tárgyadat![/p]
+    </text>
+    <itemCheck type="items" id="1002 or 1004 or 3007 or 3018 or 3020 or 3021 or 3101 or 3102 or 3103 or 3104 or 3105 or 3106 or 3107 or 3108 or 3109 or 3110 or 3111 or 3112 or 3113">
+      <have>
+        <text>
+            [div data-market=""][/div]
+        </text>
+        <market mustGiveUp="1">
+          <purchaseLabel>Melyik tárgyadat adod oda az Útonállónak?</purchaseLabel>
+          <purchase price="0" stock="1" id="1002" />
+          <purchase price="0" stock="1" id="1004" />
+          <purchase price="0" stock="1" id="3007" />
+          <purchase price="0" stock="1" id="3018" />
+          <purchase price="0" stock="1" id="3020" />
+          <purchase price="0" stock="1" id="3021" />
+          <purchase price="0" stock="1" id="3101" />
+          <purchase price="0" stock="1" id="3102" />
+          <purchase price="0" stock="1" id="3103" />
+          <purchase price="0" stock="1" id="3104" />
+          <purchase price="0" stock="1" id="3105" />
+          <purchase price="0" stock="1" id="3106" />
+          <purchase price="0" stock="1" id="3107" />
+          <purchase price="0" stock="1" id="3108" />
+          <purchase price="0" stock="1" id="3109" />
+          <purchase price="0" stock="1" id="3110" />
+          <purchase price="0" stock="1" id="3111" />
+          <purchase price="0" stock="1" id="3112" />
+          <purchase price="0" stock="1" id="3113" />
+          <after>
+            <text>
+                [p]Barátságosan búcsúztok el egymástól, és folytatod az utadat.[/p]
+            </text>
+          </after>
+        </market>
+      </have>
+      <dontHave>
+        <next id="180"></next>
+      </dontHave>
+    </itemCheck>
+    <next id="19"></next>
+  </p>
   <p id="129">
     <empty />
   </p>
@@ -1466,7 +1733,16 @@
     <next id="335">Visszamész a faluba, és megkeresed Selatort, a jó varázslót?</next>
     <next id="27">Visszamész a faluba, és megkeresed a titokzatos Vasöklűt?</next>
   </p>
-  <!-- 141 -->
+  <p id="141">
+    <text>
+        [p]Az ajánlatot elég elfogadhatónak találod. Benyúlsz a zsákodba, és előveszed belőle a varázsgolyókat, melyeket nem használtál fel. Csönget a cselédlányért, aki egy korty itallal kínál. Felfrissülsz tőle, és a sebeid begyógyulnak. Kalandod itt véget ér. Nem jártál ugyan sikerrel, de sokat tanultál, és talán majd egyszer ismét nekivágsz a mocsárnak![/p]
+    </text>
+    <loseItem id="3101,3102,3103,3104,3105,3106,3107,3108,3109" amount="99" />
+    <add amount="99" to="stamina" />
+    <add amount="99" to="skill" />
+    <add amount="99" to="luck" />
+    <victory />
+  </p>
   <p id="142">
     <text>
         [p]Egy korábbi csata jeleit látod. Az Orkok teteme eltűnt. A tóból egy félméteres Skorpió mereszti rád a szemét, amikor keresztülrohansz a tisztáson.[/p]
@@ -1550,14 +1826,43 @@
       </failure>
     </test>
   </p>
-  <!-- 148 -->
+  <p id="148">
+    <text>
+        [p]Azon töröd a fejedet, vajon melyik varázslattal tudnád becsapni az Útonállókat. Valamennyien ágrólszakadtnak látszanak, ezért úgy gondolod, szívesen megbirkóznának valami jó étellel. Elmosolyodsz, mert eszedbe jutott egy jó ötlet. A tisztás szélére Illúzió-varázslattal kövér disznót varázsolsz, mely az ösvény felé tart. Az útonállók hanyatt-homlok rohanni kezdenek felé, hogy zsákmányul ejtsék. Elfutnak a búvóhelyed mellett - észre sem vesznek! Elneveted magad, és gyorsan átfutsz a tisztáson.[/p]
+    </text>
+    <loseItem id="3106" />
+    <next id="19"></next>
+  </p>
   <p id="149">
     <text>
         [p]A tisztás színpompás madarakkal van tele, de embert nem látsz. Úgy látszik, a Madarak Mesternője elment valahova. Átkutatod a tisztást, de madártollakon kívül semmi egyebet nem találsz.[/p]
     </text>
     <next id="217"></next>
   </p>
-  <!-- 150 -->
+  <p id="150">
+    <text>
+        [p]A városba vezető út mindkét oldalán apró üzletek sorakoznak. Az egyik cégtáblája azonnal magára vonja a figyelmedet: ,,HALICAR - VARÁZSITAL- ÉS VARÁZSLATKERESKEDŐ’’. Bemész az üzletbe. Halicar kedves fiatalembernek látszik. Ő Semleges varázsló, és csakis Semleges varázslatokkal kereskedik. Nincs elég aranytallérod, hogy vásárolj tőle, de néhány, a mocsárban szerzett tárgyad talán érdekelheti. Ezeket leteszed elé az asztalra. Az alább felsorolt tárgyak mindegyikét elcserélheted egy-egy Semleges varázsgolyóra: Ibolyaszínű Drágakő; Aranylánc; bármelyik Mester ezüst Amulettje; Aranymágnes vagy az Egyszarvú Szarva. Halicar csak három varázsgolyót adhat el neked - te döntöd el, melyik három legyen ez. Jelöld be Kalandlapodra a három újonnan szerzett varázsgolyót, és húzd ki a cserébe érte adott tárgyakat. Miután mindezt megtetted, elhagyod az üzletet, és elindulsz délnek, vissza a Skorpiók Mocsarába.[/p]
+        [div data-market=""][/div]
+    </text>
+    <market moneyAttribute="spellItem" currencySingle="page.ff8.label.market.spell" currencyMultiple="page.ff8.label.market.spells">
+      <sale price="1" stock="3" id="3101" />
+      <sale price="1" stock="3" id="3102" />
+      <sale price="1" stock="3" id="3103" />
+      <sale price="1" stock="3" id="3104" />
+      <sale price="1" stock="3" id="3105" />
+      <sale price="1" stock="3" id="3106" />
+      <purchase price="1" stock="1" id="3007" />
+      <purchase price="1" stock="1" id="3020" />
+      <purchase price="1" stock="1" id="3004" />
+      <purchase price="1" stock="1" id="3008" />
+      <purchase price="1" stock="1" id="3010" />
+      <purchase price="1" stock="1" id="3011" />
+      <purchase price="1" stock="1" id="3012" />
+      <purchase price="1" stock="1" id="3009" />
+      <purchase price="1" stock="1" id="3018" />
+    </market>
+    <next id="343"></next>
+  </p>
   <p id="151">
     <text>
         [p]Félreugrasz. Az egyik nyílvessző nem talál el, de a másik megsérti a karodat. Vesztesz 1 ÉLETERŐ pontot. Mit teszel?[/p]
@@ -1662,8 +1967,32 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 158 -->
-  <!-- 159 -->
+  <p id="158">
+    <text>
+        [p]Elmosolyodsz, és kihúzod a zsebedből a darabokra szakadt pergament. Ez az a térkép, melyet oly féltve őriztél az utadon. Jól láthatóan jelölted be rajta az ösvényeket, melyeken végigmentél, és a tisztásokat, ahol harcoltál. Minden lépésed jól követhető rajta. Miközben magyarázol Vasöklűnek, az egyre elégedettebbnek látszik. Végül megveregeti a válladat. Bár erős vagy, mégis megtántorodsz. - Csodálatos! - mondja. - Tökéletes! - Odamegy a fiókos szekrényhez, és kivesz belőle egy [span class="takeItem" data-id="3023" data-amount="1"]smaragdot[/span]. - Legyen ez a jutalmad! - szól nevetve. - Az első karavánom holnap indul. A vendégem lehetsz, ameddig csak akarod… és vagyonomnak egy részét is neked adom, ahogy megígértem. - Hálás köszönetet mondasz neki. Boldogan tapasztalod, hogy a titokzatos Vasöklű tiszteletre méltó férfiú; egyszer talán majd még jobban is megismerheted. Most elégedj még azzal, hogy küldetésed sikeresen befejeződött. - Kalandod itt véget ér![/p]
+    </text>
+    <victory />
+  </p>
+  <p id="159">
+    <text>
+        [p]Érzed, hogy mindent megtettél, amit csak tudtál. Most vissza kell térned pártfogódhoz, és be kell számolnod neki sikeredről vagy kudarcodról.[/p]
+    </text>
+    <itemCheck type="item" id="4001">
+      <have>
+        <next id="6"></next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4002">
+      <have>
+        <next id="226"></next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4003">
+      <have>
+        <next id="56"></next>
+      </have>
+    </itemCheck>
+  </p>
   <p id="160">
     <text>
         [p]Úgy gondolod, hogy a Vadállat jó szövetségesed lesz, ezért a Barátság-varázslatot alkalmazod. Sajnos a Ronda Vadállatnak nincsenek barátai! Rohama nem enyhül, meg kell küzdened vele![/p]
@@ -1691,7 +2020,13 @@
     </itemCheck>
     <next id="62" pos="3">Támadj rá a kardoddal?</next>
   </p>
-  <!-- 163 -->
+  <p id="163">
+    <text>
+        [p]Végigmész az ösvényen, egészen a tisztásig. Meglepődnek, amikor észrevesznek és ez a meglepetés csak nő, amikor foghegyről odaköszönsz nekik, majd elmész mellettük. - Merre tartasz? - kérdik. - Északnak - feleled. Csodálják nyugalmadat. Az Útonállók megszokták, hogy pénzt követeljenek az arra haladóktól, de nem gyilkosok. Bár megtámadhatnának, hiszen öten vannak egy ellen, mégis úgy gondolják, hogy ez nem lesz tisztességes. Végül a vezérük a következőt ajánlja: Vívj vele párbajt! Aki először sebzi meg a másikat, az győz. Ha elsőnek az Útonállók Vezére ejt rajtad sebet, adnod kell neki valamit értékes tárgyaid közül. Ha te sebzed meg elsőnek, akkor embereivel együtt szabad utat enged neked.[/p]
+    </text>
+    <next id="79">Ha elfogadod az ajánlatát</next>
+    <next id="353">Ha nem fogadod el</next>
+  </p>
   <p id="164">
     <text>
         [p]A Rézgyűrű hideg, ebből tudod, hogy a Madarak Mesternője jó varázsló. Elmondod neki, mi járatban vagy, és a segítségét kéred. Vidáman tapsol egyet, és egy pillanatra az az érzésed, hogy egy kislány. - Valóban létezik még Antherica bokor? - kérdi túláradó boldogsággal. Tudja, hogyha küldetésed sikerrel jár, ez segít majd a Jót elterjeszteni mindenütt. Olyan varázsitalt ad neked, amely képes visszaállítani elért pontszámaid egyikének (te választod meg, melyiknek) Kezdeti értékét. Majd arra kér, hogy maradj csöndben. Kitárja a karját, és számtalan kicsiny madár röppen oda hozzá. Valamit mond nekik, majd így szól: - Selatornak igaza volt! Valóban létezik valahol északkeleten egy Antherica bokor. Ha akarod, segíthetek, hogy eljuss oda. - Ajánlatát boldogan elfogadod.[/p]
@@ -1841,7 +2176,12 @@
     <next id="225">Ha megtámadod</next>
     <next id="193">Ha felajánlod neki, hogy közös ügyeteket civilizált emberek módjára tárgyaljátok meg</next>
   </p>
-  <!-- 175 -->
+  <p id="175">
+    <text>
+        [p]Óvatosan belenyúlsz a zsebedbe, és előveszed a csillogó bogyót. - Ó, de gyönyörű! - kiált fel túláradó örömmel az öregember. Kiragadja a kezedből, és mormolni kezdi a varázsigét. Szinte azonnal egy piciny növény dugja ki a fejét a földből, és erős, nagy bokorrá terebélyesedik, olyanná, amilyet a mocsárban láttál. Virágok nyílnak rajta, és bíborszínű bogyók lepik el. Selator ezek közül néhányat azonnal elültet, s látod, hogy szinte azonnal bokorrá nőnek. Ekkor rád néz, és így szól: - Ne haragudj rám! Olyan boldog vagyok, szinte elfelejtettem, hogy itt vagy! Ezek a bokrok szépen növögetnek majd, én pedig postagalambokkal küldök egy halom bogyót varázslótársaimnak. Hála neked, hamarosan mindenkinek lesz Anthericája. Nagy tettet vittél ma véghez! - Gyógyító italkeverékkel és meleg étellel kínál, amit hálásan elfogadsz. A vacsora alatt mindenféle fontos és kevésbé fontos dologról beszélsz. Aztán ismét útnak indulsz. Boldog vagy és jól érzed magad. Igazán kitűnően eleget tettél küldetésednek![/p]
+    </text>
+    <victory />
+  </p>
   <p id="176">
     <text>
         [p]Vérszomjas vadállattal van dolgod! Bőre vastag, körmei hatalmasak. Sokkal gyorsabb, mint te vagy! Nem tudsz menekülni; meg kell küzdened vele![/p]
@@ -1873,7 +2213,12 @@
     <next id="10">Dél felé?</next>
     <next id="118">Kelet felé?</next>
   </p>
-  <!-- 180 -->
+  <p id="180">
+    <text>
+        [p]A Rézgyűrűd az egyetlen értéked. Nem akarod feladni, de érzed, nincs más tisztességes megoldás. Szomorúan húzod le a gyűrűt az ujjadról. Az Útonállók vezére látja, hogy kétségbe vagy esve, és megkérdi, mi bajod. Amikor elmondod, hogy miről van szó, felajánlja, hogy vedd vissza a gyűrűt! - Mivel ilyen őszinte vagy - mondja -‚ disznóság lenne, ha elvenném azt az egyetlen tárgyat, amid megmaradt, és amire olyan nagy szükséged van. - Hátba vereget. Elnyerted az Útonállók bizalmát és barátságát.[/p]
+    </text>
+    <next id="214"></next>
+  </p>
   <p id="181">
     <text>
         [p]Ismét megpillantod a Medvét, és már ő is észrevett téged. Meg kell küzdened vele. Az állat harcra kész.[/p]
@@ -1940,7 +2285,12 @@
     </text>
     <next id="234"></next>
   </p>
-  <!-- 186 -->
+  <p id="186">
+    <text>
+        [p]Megölted a két Zsebtolvajt. Nem húzod az időt azzal, hogy átkutasd a ruhájukat - kardodat visszadugod a hüvelyébe, és amilyen gyorsan csak tudod, elhagyod Fűzfaligetet, mielőtt még nagyobb bajod esne.[/p]
+    </text>
+    <next id="343"></next>
+  </p>
   <p id="187">
     <text>
         [p]Három ösvényen hagyhatod el a tisztást. Melyiket választod?[/p]
@@ -2030,7 +2380,13 @@
     <add amount="99" to="luck" />
     <next id="206"></next>
   </p>
-  <!-- 194 -->
+  <p id="194">
+    <text>
+        [p]Jókedvűen felnevet. - Remek! - mondja. - Tudtam, hogy neked sikerülni fog! Add ide! - Mit teszel? Átadod az Amuletteket, vagy előbb a fizetségedet kéred?[/p]
+    </text>
+    <next id="99">Ha előbb átadod neki az Amuletteket</next>
+    <next id="207">Ha előbb inkább a pénzedet kéred, méghozzá azonnal</next>
+  </p>
   <p id="195">
     <text>
         [p]Az 1-es tisztáson vagy. Tulajdonképpen ez a hely nem egyéb, mint három ösvény találkozási pontja. A talaj ingoványos, nedves, és nagy testű rovarok röpködnek a földet borító pocsolyák fölött.[/p]
@@ -2061,7 +2417,12 @@
     <loseItem id="3110" />
     <next id="146"></next>
   </p>
-  <!-- 199 -->
+  <p id="199">
+    <text>
+        [p]Két Útonálló pihen a tisztáson, mely szemmel láthatóan állandó találkahelyük. Amikor felismernek, mosolyogva intenek neked. Üdvözlöd őket és továbbmész.[/p]
+    </text>
+    <next id="19"></next>
+  </p>
   <p id="200">
     <text>
         [p]Sok vadállatot és szörnyet megöltél már, a Medvétől sem ijedsz meg. Gúnyosan rákiáltasz, és kirántod a kardodat.[/p]
@@ -2189,7 +2550,42 @@
     </market>
     <next id="9"></next>
   </p>
-  <!-- 207 -->
+  <p id="207">
+    <text>
+        [p]Bakó mérgesen néz rád. - Ügyes vagy - mondja. - Szemtelen, de ügyes! - A szemed előtt számol le ötszáz-ötszáz aranyat minden egyes Amulettért. Ez eltart egy ideig! Végül a pénzt belesöpri egy zsákba, és átnyújtja neked.[/p]
+    </text>
+    <itemCheck type="item" id="3004">
+      <have>
+        <loseItem id="3004" />
+        <add amount="500" to="gold" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3008">
+      <have>
+        <loseItem id="3008" />
+        <add amount="500" to="gold" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3010">
+      <have>
+        <loseItem id="3010" />
+        <add amount="500" to="gold" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3011">
+      <have>
+        <loseItem id="3011" />
+        <add amount="500" to="gold" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3012">
+      <have>
+        <loseItem id="3012" />
+        <add amount="500" to="gold" />
+      </have>
+    </itemCheck>
+    <next id="358"></next>
+  </p>
   <p id="208">
     <text>
         [p]Egyre világosabb lesz, ahogy előrehaladsz. A fák koronája közül hirtelen kibukkan a kék ég! Néhány perc múlva egy tisztáshoz érsz, és amikor átmész rajta, látod, hogy a mocsár véget ért! Ha még nem tudod elhagyni a Skorpiók Mocsarát, visszafordulhatsz azon az ösvényen, amelyen ide eljutottál. Addig kell menned, amíg el nem érsz az első tisztásig.[/p]
@@ -2256,7 +2652,13 @@
     </text>
     <next id="267"></next>
   </p>
-  <!-- 214 -->
+  <p id="214">
+    <text>
+        [p]Most, hogy az Útonállók jóindulatúak veled, megkérdezed, hol is vagy tulajdonképpen. Közlik, hogy Fűzfaligettől nem messze, északra. Még hozzáteszik, hogy a város három fogadója közül a Görbe Lándzsa messze a legjobb, ott nyugodtan megbízhatsz a fogadósban. Elbúcsúzol az Útonállóktól, és távozol.[/p]
+    </text>
+    <gatherItem id="4028" />
+    <next id="19"></next>
+  </p>
   <p id="215">
     <text>
         [p]A Farkasok morogva vetik rád magukat. Nincs időd varázsolni. Teljes erőből meglendíted a kardodat, és lekaszabolod az első rád támadó Farkasnak a fejét. Társa óvatosan köröz körülötted. Meg kell küzdened vele.[/p]
@@ -2418,7 +2820,26 @@
     </fight>
     <next id="140"></next>
   </p>
-  <!-- 226 -->
+  <p id="226">
+    <text>
+        [p]A mocsár szélétől egy kőhajításra áll Bakó gonoszságot árasztó vára. Ismét látod a hatalmas vasajtót, mely most is rettenetes, de mintha valahogy megváltozott volna. Reszketve készülsz bekopogni, de az ajtó máris kinyílik. Bakó áll előtted mohón remegve. - Meghoztad? Megszerezted? Hol vannak? - kérdi kezét feléd nyújtva. Mit mondasz neki, mit hoztál?[/p]
+    </text>
+    <itemCheck type="items" id="4030">
+      <have>
+        <itemCheck type="item" id="4030" amount="3">
+          <have>
+            <next id="194"></next>
+          </have>
+          <dontHave>
+            <next id="7"></next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="54"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="227">
     <text>
         [p]Három ösvényen mehetsz tovább a tisztásról. A kelet felé vezető mintha keskenyebb és sötétebb volna, mint a másik kettő. Merre mész?[/p]
@@ -2454,7 +2875,16 @@
     </text>
     <next id="352"></next>
   </p>
-  <!-- 231 -->
+  <p id="231">
+    <test against="luck">
+      <success>
+        <next id="18"></next>
+      </success>
+      <failure>
+        <next id="259"></next>
+      </failure>
+    </test>
+  </p>
   <p id="232">
     <text>
         [p]Óvatosan leszeded a [span class="takeItem" data-id="3021" data-amount="1"]bogyót[/span], és a hátizsákodba teszed.[/p]
@@ -2485,8 +2915,31 @@
     <next id="305">Ha kelet felé mész</next>
     <next id="121">Ha inkább délnek fordulsz</next>
   </p>
-  <!-- 235 -->
-  <!-- 236 -->
+  <p id="235">
+    <text>
+        [p class="inlineImage"][img src="resources/ff8/235.jpg" /][/p]
+        [p]Háttal állsz a nagy fának, úgyhogy egyszerre csak egy Útonálló tud megközelíteni. Habár öten vannak, csak a három legerősebb sorakozik fel ellened.[/p]
+        [p]Mivel beszorítottak a fák közé, nem menekülhetsz előlük.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="28" />
+      <enemy id="29" />
+      <enemy id="30" />
+      <win>
+        <text>
+            [p]A másik két útonálló elmenekül.[/p]
+        </text>
+        <next id="19"></next>
+      </win>
+    </fight>
+  </p>
+  <p id="236">
+    <text>
+        [p]A mocsáron át megtett utad után ez több, mint amennyit el tudsz viselni. Kivont kardodat lengetve lerohansz, és figyelmezteted a lent vigadókat, hogy maradjanak csendben! Kinevetnek. Dühösen mész oda hozzájuk, de ekkor a kocsmáros megragad egy széket, és hátulról ráhúz a karodra, melyből kihullik a kard. Karod megsérül; vesztesz 2 ÜGYESSÉG pontot. Rádöbbensz, hogy nem tudsz mindannyiukkal megküzdeni. Sarkon fordulsz, és visszamész a szobádba.[/p]
+    </text>
+    <add amount="-2" to="skill" />
+    <next id="116"></next>
+  </p>
   <p id="237">
     <text>
         [p]A Hervasztást választod a Víziszörny ellen, de ez a varázslat nem hat rá: a szörny ugyanis állat, nem növény. Küzdj meg vele![/p]
@@ -2520,7 +2973,14 @@
     <add amount="99" to="luck" />
     <next id="206"></next>
   </p>
-  <!-- 242 -->
+  <p id="242">
+    <text>
+        [p]Amint átléped a küszöböt, észreveszed, hogy a zsák nem olyan nehéz, mint volt, amikor kaptad! Több mint az eredeti súlyának felével kevesebb! Azok után, hogy kockára tetted érte az életedet a mocsárban, Bakó becsapott! Mit teszel?[/p]
+    </text>
+    <next id="124">Visszarohansz és rátámadsz?</next>
+    <next id="256">Visszarohansz és varázsolsz egyet?</next>
+    <next id="358">Megelégszel azzal amid van, és távozol?</next>
+  </p>
   <p id="243">
     <text>
         [p]Nincs itt semmi látnivaló, kivéve a Ronda Vadállat hatalmas csontjait és a rajtuk lakmározó rákszerű férgek tömegét. Nem akarsz közelebb menni, inkább elindulsz kelet felé, és elhagyod a tisztást.[/p]
@@ -2540,7 +3000,13 @@
     <loseItem id="3106" />
     <next id="352"></next>
   </p>
-  <!-- 246 -->
+  <p id="246">
+    <text>
+        [p]Átkutatod a halott Útonállók testét. Az egyiknél egy korsóban valamilyen port találsz. Kesernyés gyógynövényszaga van.[/p]
+    </text>
+    <next id="19">Ha nem nyúlsz hozzá, hanem továbbmész</next>
+    <next id="67">Ha egy keveset a sebedre szórsz belőle</next>
+  </p>
   <p id="247">
     <text>
         [p]Figyelmesen körülnézel, de nem találsz semmit, kivéve egy szokatlan formájú bokrot a tisztás közepén. Sűrű, sötétzöld levele van, és fehér virágai. A bokor tetejénél egy nagy, bíborszínű bogyót látsz. Mit teszel?[/p]
@@ -2652,7 +3118,32 @@
     <next id="40">Ha felmész a vár kapujához</next>
     <next id="139">Ha inkább visszafordulsz a faluba</next>
   </p>
-  <!-- 256 -->
+  <p id="256">
+    <text>
+        [p]Bátor vagy - de az is lehet, hogy csak vakmerő -‚ amiért a gonosz varázsló ellen varázsolni akarsz. [alt]Mit varázsolsz?[/alt][/p]
+    </text>
+    <itemCheck type="item" id="3112">
+      <have>
+        <next id="274" pos="1">Átkot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3110">
+      <have>
+        <next id="365" pos="2">Félelmet?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3104">
+      <have>
+        <next id="385" pos="3">Tüzet?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3106">
+      <have>
+        <next id="351" pos="4">Illúziót?</next>
+      </have>
+    </itemCheck>
+    <next id="57" pos="5" singleChoiceText="Sajnos - vagy szerencsére? - egyetlen használható varázslatod sincs.">Egyiket sem?</next>
+  </p>
   <p id="257">
     <test against="skill">
       <success>
@@ -2686,7 +3177,12 @@
     </itemCheck>
     <next id="212" pos="3" singleChoiceText="Másrészről nincs olyan varázslatod, ami ebben a helyzetben hasznos lehetne, úgyhogy ez nem is számít igazán.">Egyiket sem?</next>
   </p>
-  <!-- 259 -->
+  <p id="259">
+    <text>
+        [p]Az Útonállók rémülten pattannak fel, de magukhoz térnek, és szembefordulnak veled. Amikor látják, hogy egyedül vagy, megdühödnek. Káromkodva neked támadnak. Meg kell küzdened velük![/p]
+    </text>
+    <next id="235"></next>
+  </p>
   <p id="260">
     <text>
         [p]Átok-varázslatot alkalmazol a Madarak Mesternője ellen. Egy pillanatra úgy látod, hogy a varázslat nem fog. Ekkor azonban megkeményedik az arca. Átkod rettenetes dolgot művelt vele… Gonosszá változtatta! Dühösen ordítani kezd. Egy intésére sok száz madár röppen fel, és feléd tart. A madarak hirtelen megfordulnak. A Madarak Mesternője legyőzte Átkodat, és visszanyerte eredeti énjét. De már késő! Utolsó pillantásoddal szomorú arcát látod - és meghalsz. Kalandod itt véget ér.[/p]
@@ -2779,7 +3275,13 @@
     </text>
     <next id="348"></next>
   </p>
-  <!-- 266 -->
+  <p id="266">
+    <text>
+        [p]Odadob neked egy [span class="takeItem" data-id="gold" data-amount="250"]zsák aranyat[/span]. Elkapod és sarkon fordulsz. Mogorván mész végig a sötét folyosón az undorító ajtó felé.[/p]
+    </text>
+    <loseItem id="3004,3008,3010,3011,3012" amount="5" />
+    <next id="242"></next>
+  </p>
   <p id="267">
     <text>
         [p]Hallod, amint a Tolvaj dühösen felszisszen, és máris rád veti magát. Csupán egy kés van a kezében, de igen hevesen támad.[/p]
@@ -2878,7 +3380,45 @@
     <next id="335">Ha beszélni akarsz Selatorral, a jó varázslóval</next>
     <next id="27">Ha a titokzatos Vasöklűt szeretnéd inkább megismerni</next>
   </p>
-  <!-- 274 -->
+  <p id="274">
+    <text>
+        [p]Átok-varázslatot alkalmazol a gonosz varázslóval szemben… azt a varázslatot, amit tőle kaptál. Felüvölt és a torkához kap. Valamennyi varázslat közül a saját Átok-varázslata a leghatásosabb ellene! Holtan rogy a földre. Ekkor a varázslatot önmagadon is érezni kezded.[/p]
+    </text>
+    <loseItem id="3112" />
+    <random>
+      <result max="1" min="1">
+        <text>[p]Vesztesz 1 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-1" to="stamina" />
+      </result>
+      <result max="2" min="2">
+        <text>[p]Vesztesz 2 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-2" to="stamina" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]Vesztesz 3 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-3" to="stamina" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Vesztesz 4 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-4" to="stamina" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Vesztesz 5 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-5" to="stamina" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Vesztesz 6 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-6" to="stamina" />
+      </result>
+      <after>
+        <text>
+            [p]Megpróbálod átkutatni titokzatos várát, hátha találsz valamilyen rejtett kincset… A levegő azonban egyre nehezebb, szinte nyomasztó. Gyűrűd még mindig a gonosz jelenlétére figyelmeztet, méghozzá ha lehet, még erőteljesebben, mint eddig. Kénkő szagát érzed a légben.[/p]
+        </text>
+      </after>
+    </random>
+    <next id="375">Ha még néhány percig itt akarsz maradni, hogy megnézd, mit találsz</next>
+    <next id="298">Ha inkább azonnal távozol</next>
+  </p>
   <p id="275">
     <text>
         [p class="inlineImage"][img src="resources/ff8/275.jpg" /][/p]
@@ -2920,7 +3460,13 @@
     <next id="348">Ha most tovább akarsz menni</next>
     <next id="86">Ha itt maradsz és átkutatod a tisztást</next>
   </p>
-  <!-- 278 -->
+  <p id="278">
+    <text>
+        [p]Meg akarod ijeszteni az Útonállókat, de bántani nem akarod őket. Ezért a Félelem-varázslatot alkalmazod. Kiabálva és a kardodat lengetve előlépsz a fák mögül. Az Útonállók halálra rémülnek. Azt hiszik, hogy az őket megtámadó sereghez tartozol, ezért aztán hanyatt-homlok berohannak a tisztást körülvevő erdőbe. Elrejtőznek a mocsárban, amikor elhaladsz mellettük. Nyugodtan mehetsz, nem bántanak.[/p]
+    </text>
+    <loseItem id="3110" />
+    <next id="19"></next>
+  </p>
   <p id="279">
     <text>
         [p]Legnagyobb megdöbbenésedre a félelmetes Kardfák máris újra megnőttek![/p]
@@ -2928,7 +3474,27 @@
     <next id="28">Ha a kardoddal akarsz harcolni ellenük</next>
     <next id="203">Ha inkább varázsolsz egyet</next>
   </p>
-  <!-- 280 -->
+  <p id="280">
+    <text>
+        [p]Az északi ösvényen mész, mely fokozatosan keskenyedni kezd, és a mocsár már nem olyan félelmetes. A lápot lassan erdő váltja fel, és csakhamar egy útjelző táblát veszel észre, melyen ez a felirat látható: FŰZFALIGET FELÉ.[/p]
+    </text>
+    <gatherItem id="maps-e" />
+    <gatherItem id="4024" />
+    <itemCheck type="item" id="4135">
+      <have>
+        <next id="355"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Nem sokkal később emberi hangokat hallasz, és Erdészek csoportjával találkozol. Elkísérnek egészen Fűzfaligetig. Kalandozásaid után csak arra vágyol, hogy találj egy fogadót, ahol végre kialhatod magadat. Az Erdészektől megtudod, hogy három fogadó van Fűzfaligetben. Melyikbe mész?[/p]
+        </text>
+        <gatherItem id="4135" />
+        <next id="395">A Fekete Medvébe?</next>
+        <next id="78">A Görbe Lándzsába?</next>
+        <next id="289">Tankréd Táltos Lovába?</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="281">
     <text>
         [p]Rátámadsz a Mocsári Orkokra. Meghökkennek bátorságod láttán, de elhajítják íjaikat, és előveszik saját fegyvereiket. Szerencsédre nem gyakorlott harcosokkal van dolgod, ugyanis mindannyian egyszerre támadnak rád.[/p]
@@ -2972,7 +3538,13 @@
       </win>
     </fight>
   </p>
-  <!-- 285 -->
+  <p id="285">
+    <text>
+        [p]A gonosz varázsló iszonyúan mérges, és elhatározza, hogy ott helyben megöl. - Készülj a halálra, te szemét patkány! - ordítja. Meglengeti a karját, és varázslattal elgyengít. ÉLETERŐ pontjaidnak a száma a felével csökken! Most vagy harcolsz, vagy meghalsz![/p]
+    </text>
+    <next id="124">Ha a kardoddal akarsz rátámadni</next>
+    <next id="256">Ha a varázsló ellen varázsolni akarsz</next>
+  </p>
   <p id="286">
     <text>
         [p]Hirtelen támad egy ötleted. Majdnem hangosan felnevetsz, de nem akarod megbántani az Óriást. Benyúlsz a hátizsákodba, és előhúzod belőle a Piros Köpenyt. - Ez a te zsebkendőd? - kérded, és átadod neki a köpenyt. Az Óriás boldogan nyúl érte. - Hol találtad meg? - kérdi tőled. Elmondod neki találkozásodat a Tolvajjal. Minden bizonnyal ő volt az, aki ellopta az Óriástól! Az Óriás ismét sírva fakad, de most már örömkönnyeket hullat. Megesküszik, hogy örök életre hű barátod lesz. - Mi járatban vagy erre? - kérdi tőled. - Miben lehetek a segítségedre? Elmondod küldetésed célját. Kinek szolgálsz?[/p]
@@ -2997,7 +3569,23 @@
     <next id="184">Megkérdezed, vajon az Amulettet neked adja-e?</next>
     <next id="130">Varázsolsz egyet?</next>
   </p>
-  <!-- 289 -->
+  <p id="289">
+    <text>
+        [p]Az Erdészek azt mondják, hogy Tankréd Táltos Lova a legolcsóbb a fogadók közül, így hát oda mész. Valóban, fél aranyért kapsz szállást. Felmész a szobádba, és lefekszel. Ahogy a párnára teszed a fejedet, elalszol. Az éjszaka közepén arra ébredsz, hogy az ujjadon lévő Rézgyűrű égeti a kezedet. Gonosz ember jelenlétére figyelmeztet! Kiugrasz az ágyadból, felkapod a kardodat - ekkor egy árny hagyja el a szobádat! Eltorlaszolod az ajtót, és visszafekszel. Másnap reggel pihenten ébredsz 2 ÉLETERŐ pontot nyersz. Körülnézel, és úgy látod, hogy a Tolvaj, aki éjjel megijesztett, ellopott tőled néhány holmit. Elveszted két varázsgolyódat, kincsedet vagy egyéb felszerelési tárgyadat.[/p]
+    </text>
+    <loseItem id="1002,1003,1004,1005,3004,3005,3006,3007,3008,3009,3010,3011,3012,3017,3018,3019,3020,3021,3022,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113" amount="2" />
+    <test against="luck">
+      <success>
+        <next id="150"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Elhagyod a várost a délu úton, és továbbmész a mocsár felé.[/p]
+        </text>
+        <next id="343"></next>
+      </failure>
+    </test>
+  </p>
   <p id="290">
     <text>
         [p class="inlineImage"][img src="resources/ff8/290.jpg" /][/p]
@@ -3087,7 +3675,12 @@
     </text>
     <death />
   </p>
-  <!-- 298 -->
+  <p id="298">
+    <text>
+        [p]Kirohansz a szobából, le a sötét folyosón, ki a szörnyű ajtón át. Hamarosan magad mögött hagyod a gonosz varázsló várát. Emberek és állatok ellen harcoltál, kockára tetted az életedet… és mindezt miért? A gonosz varázsló veszélyes, hálátlan úr. Már tudod: szerencséd volt, hogy ilyen könnyen megmenekültél Bakó karmai közül. De legalább megmentetted az életedet! Tudod: bár küldetésed nem járt sikerrel, mégis nagy szolgálatot tettél a világnak azzal, hogy megszabadítottad a gonosz varázslótól. Elhatározod, hogy legközelebb majd jobban meggondolod, kinek a szolgálatába állsz. Kalandod itt véget ér.[/p]
+    </text>
+    <victory />
+  </p>
   <p id="299">
     <text>
         [p]A Félelem-varázslatot alkalmazod. Talán a félelem visszafordulásra készteti a vadállatot. Sietve varázsolsz. A hatás fantasztikus! A Ronda Vadállat farolva megáll, majd szánalmasan felnyögve átfut a tisztás túloldalára, és elrejtőzik a sziklák mögött.[/p]
@@ -3102,7 +3695,23 @@
     </text>
     <next id="161"></next>
   </p>
-  <!-- 301 -->
+  <p id="301">
+    <text>
+        [p]Két Útonálló pihen a tisztáson, mely valószínűleg megszokott találkozóhelyük. Amikor megpillantanak, felpattannak és támadnak. Mindkettőjükkel meg kell küzdened.[/p]
+        [p]Bármikor elmenekülhetsz.[/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="31" />
+      <enemy id="32" />
+      <fleeing />
+      <flee>
+        <next id="19"></next>
+      </flee>
+      <win>
+        <next id="246"></next>
+      </win>
+    </fight>
+  </p>
   <p id="302">
     <text>
         [p]Kiejted a Farkasok Mesterétől tanult varázsszavakat. A hatalmas szörnyek hízelegni kezdenek neked, és a nyelvüket lógatják. Megvakargatod a fülük tövét, és rájuk parancsolsz: - Feküdj![/p]
@@ -3250,14 +3859,26 @@
       </failure>
     </test>
   </p>
-  <!-- 316 -->
+  <p id="316">
+    <text>
+        [p]Sajnos egyetlenegy varázsgolyód sincs, amit eladhatnál. - Hát ez nagy baj - mondja -‚ szívesen segítenék rajtad, de a gyógyszereim igen drágák, és már így is elég sokat vesztettem ezen az üzleten.[/p]
+    </text>
+    <next id="100">Ha úgy döntesz, hogy most távozol</next>
+    <next id="341">Ha mérgedben rátámadsz Vasöklűre</next>
+  </p>
   <p id="317">
     <text>
         [p]Elmondod, mi járatban vagy. Az Óriás elgondolkodva vakarja meg a fejét. Hallott a magukat Mestereknek nevező varázslókról, de még nem volt velük dolga. Amikor pontosabb leírást adsz a varázslókról, mégis így szól: - Egyszer mintha láttam volna egy gyönyörű kertet a mocsár közepén… tőlünk kissé északnyugatra. De innen nem vezet oda közvetlen ösvény. Lehet, hogy az a tisztás a Kertek Mesterének a tulajdona. - Megköszönöd az információt és továbbmész.[/p]
     </text>
     <next id="161"></next>
   </p>
-  <!-- 318 -->
+  <p id="318">
+    <text>
+        [p]- Talán segíthetnek - gondolod, és Barátság-varázslattal próbálkozol a vezérükkel szemben. Ezután előlépsz és üdvözlöd őket. Néhány Útonálló ki akar fosztani, de a vezérük megállítja őket azzal, hogy tetszik neki a képed. Megkérdi, miben lehetne a segítségedre.[/p]
+    </text>
+    <loseItem id="3107" />
+    <next id="214"></next>
+  </p>
   <p id="319">
     <text>
         [p]Sietve eldöntöd, merre menj. Melyik irányba mész?[/p]
@@ -3356,7 +3977,12 @@
     <next id="315">Megfordulsz és elfutsz?</next>
     <next id="225">Figyelmezteted, hogy ő volt az, aki a harcot kezdeményezte a dolgozószobájában?</next>
   </p>
-  <!-- 327 -->
+  <p id="327">
+    <text>
+        [p]Sokkal veszélyesebb, mint gondoltad. Ki hitte volna, hogy egy ilyen kövér, nevetséges külsejű ember ilyen jó harcos? Megfordulsz, és kiugrasz az ablakon, hogy elmenekülj. De vesztedre lent tömeg vár. Az ugrástól majdnem meghalsz. Mielőtt magadhoz térnél, két megtermett őr hátraköti a kezedet. Árulásod miatt hosszú időt fogsz még eltölteni ebben a sötét birodalomban. Kalandod itt véget ér.[/p]
+    </text>
+    <victory />
+  </p>
   <p id="328">
     <text>
         [p]Az Óriás nem is olyan rossz, mint amilyennek látszik - valami más miatt mérges. A Barátság-varázslatot alkalmazd. Az Óriás megrázza a fejét, majd felnevet, és földre dobja a buzogányát. - Miket is beszélek! - mondja. - Ez nem a te hibád! Ne haragudj, bocsáss meg, valaki feldühített. Mi járatban vagy itt? Ha tudok, segítek neked. - Boldog vagy, hogy varázslatod megkímélt a vérontástól, és elmeséled neki küldetésed célját. Kinek szolgálsz?[/p]
@@ -3476,8 +4102,29 @@
     <next id="384">Ha megpróbálsz felkapaszkodni rá, amikor elúszol alatta</next>
     <next id="313">Ha inkább továbbúszol és megvárod, míg jobb menekülési lehetőséged akad</next>
   </p>
-  <!-- 340 -->
-  <!-- 341 -->
+  <p id="340">
+    <text>
+        [p]Kardod éle mélyen bevágódik a mellébe. Döbbenten néz rád, valamit mondani szeretne, de… meghal. A fűrészfogú kard kihullik a kezéből. Ilyen kardot még nem láttál, kíváncsian emeled föl a földről. Azonnal rádöbbensz, hogy ez egyike a nagy erejű [span class="takeItem" data-id="1002" data-amount="1"]Varázskardoknak[/span], és tulajdonosának jutalma 2 ÜGYESSÉG pont. Nem csoda hát, hogy oly jó harcos volt ellenfeled! Elindulsz, hogy átkutasd a vészjóslóan zord várat, hogy megtudd, milyen kincsek rejlenek benne. A levegő azonban egyre sűrűbb, nyomasztóbb lesz… Gyűrűd még mindig a gonosz jelenlétére figyelmeztet, ha lehet még erőteljesebben, mint korábban! Kénkő szagát érzed.[/p]
+    </text>
+    <next id="375">Ha még maradsz, hogy körülnézz, mit rejt a vár</next>
+    <next id="298">Ha inkább azonnal távozol</next>
+  </p>
+  <p id="341">
+    <text>
+        [p]Felháborít közönyös viselkedése veled szemben, azok után, hogy az életedet kockáztattad érte. Kirántod a kardodat, és megtámadod. Meglepődik, de kivédi első csapásodat. Hatalmas testéhez képest igen fürgén mozog. Íróasztala mögül felkap egy kardot, és azzal védekezik. Gyorsan rájössz, hogy veszélyes ellenfél.[/p]
+        [p]Elállja az ajtót, úgyhogy ha menekülni akarsz, csak az ablakon át távozhatsz.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="35" />
+      <fleeing />
+      <win>
+        <next id="372"></next>
+      </win>
+      <flee>
+        <next id="327"></next>
+      </flee>
+    </fight>
+  </p>
   <p id="342">
     <text>
         [p]Felismered azt a tisztást, ahol a hatalmas Óriással találkoztál.[/p]
@@ -3491,7 +4138,19 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 343 -->
+  <p id="343">
+    <text>
+        [p]Ahhoz a tisztáshoz közeledsz, ahol először találkoztál az Útonállókkal.[/p]
+    </text>
+    <itemCheck type="item" id="4028">
+      <have>
+        <next id="199"></next>
+      </have>
+      <dontHave>
+        <next id="301"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="344">
     <text>
         [p]A Farkasok behúzzák farkukat és vonítani kezdenek, aztán elsomfordálnak.[/p]
@@ -3537,7 +4196,12 @@
     <next id="10">Keletre?</next>
     <next id="204">Nyugatra?</next>
   </p>
-  <!-- 349 -->
+  <p id="349">
+    <text>
+        [p]Vállat vonsz, és kimész a szobából. Végigmész a sötét folyosón, kilépsz a ronda kapun. Előtted van a falu, mögötted a gonosz vára. Harcoltál emberek és állatok ellen, kockára tetted az életedet… És mindezt miért? A gonosz, úgy látszik, veszélyes és hálátlan gazda. Most már tudod, hogy szerencsés vagy, amiért ilyen könnyen megmenekültél Bakó karmai közül. Élsz! Elhatározod, hogy a jövőben jobban megválogatod, kinek a szolgálatába állsz! Kalandod itt véget ér![/p]
+    </text>
+    <death />
+  </p>
   <p id="350">
     <text>
         [p class="inlineImage"][img src="resources/ff8/350.jpg" /][/p]
@@ -3571,21 +4235,41 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 351 -->
+  <p id="351">
+    <text>
+        [p]Félsz Bakó ellen a saját varázslatát alkalmazni: ez veszélyes lehet. Helyette Illúziót varázsolsz - vagy legalábbis megpróbálod. Bakó meglengeti karját, és érzed, hogy a varázslatod kissé bizonytalankodva elhal, még mielőtt alakot öltene. - Nem csapsz be ezekkel a gyerekes trükkökkel! - mondja gúnyosan. - Készülj a halálra, te bolond![/p]
+    </text>
+    <loseItem id="3106" />
+    <next id="124"></next>
+  </p>
   <p id="352">
     <text>
         [p]Az egyetlen ösvény, amely a tisztásról nyílik, nem más, mint amelyiken idejöttél. Elindulsz észak felé, ahol nemrég a Mocsári Orkokkal küzdöttél meg. Megmarkolod a kardodat, hátha ismét szükséged lesz rá.[/p]
     </text>
     <next id="323"></next>
   </p>
-  <!-- 353 -->
+  <p id="353">
+    <text>
+        [p]Durván megsértetted az Útonállókat. Úgy érzik, megfelelő alkalmat adtak rá, hogy bebizonyítsd, milyen is vagy, de te nem jártál el tisztességesen. Most mindegyikükkel meg kell küzdened![/p]
+    </text>
+    <next id="235"></next>
+  </p>
   <p id="354">
     <text>
         [p]Amikor kihúzod a kardodat gonosz ellenfeled testéből, megkönnyebbülten sóhajtasz fel. Körülötted azonban pókok tömege hemzseg. Egyre közelebb és közelebb kerülnek hozzád. Lehajolsz, és leemeled a [span class="takeItem" data-id="3008" data-amount="1"]Pók Amulettet[/span] a tetemről. Ebben a pillanatban egy szikra pattan ki belőle, és lángra lobbantja a Pókok Mesterének tetemét! Rohanva menekülsz. Mögötted a lángok egyre terjednek, és reméled, hogy elpusztítják valamennyi gonosz pókot.[/p]
     </text>
     <next id="165"></next>
   </p>
-  <!-- 355 -->
+  <p id="355">
+    <text>
+        [p]Már ismerős az út Fűzfaliget felé. Ám amikor beérsz a városba, érzed, hogy valami mégis megváltozott. Látod, hogy az emberek mind téged néznek, és kiáltásokat hallasz. Hőstetted híre mindenkihez eljutott. Mohó tekintetek kísérnek, és egyre kényelmetlenebbül érzed magad. Amikor letérsz egy mellékutcába, érzed, hogy valaki követ. Megfordulsz, és észreveszed, hogy két rongyos ZSEBTOLVAJ eredt a nyomodba abban a reményben, hogy ellopja tőled azt a kincset, amit feltehetőleg a mocsárban szereztél. Nincs már időd varázsolni, sőt menekülni sincs hova - meg kell küzdened velük![/p]
+    </text>
+    <fight type="single">
+      <enemy id="33" />
+      <enemy id="34" />
+    </fight>
+    <next id="186"></next>
+  </p>
   <p id="356">
     <text>
         [p]A Víziszörnnyel szemben a Félelem-varázslatot alkalmaztad, de az nem működik. A szörny ugyanis túl buta ahhoz, hogy félelemérzete legyen. Rád támad.[/p]
@@ -3602,7 +4286,12 @@
     <next id="399">Varázsolsz egyet?</next>
     <next id="309">Futva mented az életedet?</next>
   </p>
-  <!-- 358 -->
+  <p id="358">
+    <text>
+        [p]Elteszed a pénzt, amit adott, és távozol. Elgondolkozol azon, vajon helyesen cselekedtél-e? Attól félsz, hogy a pénz, amit kaptál, mocskos, de nem tudsz mit tenni. Legközelebb, ha ilyen vállalkozásba fogsz, majd jobban megválasztod, kinek a szolgálatába állsz! Kalandod itt véget ér![/p]
+    </text>
+    <victory />
+  </p>
   <p id="359">
     <text>
         [p]Nem hiszed, hogy a Békák Mestere nagyon barátságos lenne hozzád, ha tudná küldetésed igazi célját. Ezért aztán kitalálsz egy történetet. - Fang bárójának, Sukumvitnek a szolgálatában állok - kezded. - Ő küldött a Skorpiók Mocsarába, hogy Halállabirintusa számára új vadállatokat keressek. Amikor idejöttem, ebbe a mocsáron túli faluba, valamilyen Mesterekről hallottam, akikről szeretnék többet tudni. Ki vagy, és miért jöttél ide?[/p]
@@ -3616,7 +4305,12 @@
       </failure>
     </test>
   </p>
-  <!-- 360 -->
+  <p id="360">
+    <text>
+        [p]- Jól harcoltál! - kiáltja az Útonállók Vezére, miközben a karjához kap, ahol pengéd belévágott. - Ez jó csata volt! - Egyik társa bekötözi a sebét, míg a másik vízzel kínál a saját kulacsából. Nevetgéltek, viccelődtök, mintha régi barátok volnátok.[/p]
+    </text>
+    <next id="214"></next>
+  </p>
   <p id="361">
     <text>
         [p]A Barátság-varázslatot választottad. A Pókok Mestere egy pillanatra megriad, majd mosolyogva így szól:[/p]
@@ -3658,7 +4352,14 @@
     </text>
     <next id="47"></next>
   </p>
-  <!-- 365 -->
+  <p id="365">
+    <text>
+        [p]Úgy döntesz, hogy a Félelem-varázslat lesz a legjobb ebben a küzdelemben. Máris varázsolsz, de Bakó fölemeli a karját, és abban a pillanatban a varázslat rajtad fog! A félelem vasmarka szorítja össze a szívedet! Vesztesz 1 ÜGYESSÉG pontot![/p]
+    </text>
+    <loseItem id="3110" />
+    <add amount="-1" to="skill" />
+    <next id="124"></next>
+  </p>
   <p id="366">
     <text>
         [p]Legyőzted az Óriást! Átkutatod hatalmas testét, de rézszögekkel kivert buzogányán kívül semmit nem találsz nála. Ez azonban túl nehéz ahhoz, hogy cipeld.[/p]
@@ -3738,7 +4439,12 @@
     </market>
     <next id="9"></next>
   </p>
-  <!-- 372 -->
+  <p id="372">
+    <text>
+        [p]Üvöltést hallasz lentről. A Goblin-cselédlány kiáltozik segítségért: - Őrök! Megöli a Mestert! Segítség! - Míg esélyeidet latolgatod, Vasöklű mögött felpattan az ajtó, és három piros páncélinget viselő őr ront be a szobába lövésre kész íjakkal. Parancsra sem várva máris lőnek! Nyilaik belefúródnak a melledbe, és élettelenül zuhansz a földre. Kalandod itt véget ér![/p]
+    </text>
+    <death />
+  </p>
   <p id="373">
     <test against="luck">
       <success>
@@ -3905,14 +4611,45 @@
     </itemCheck>
     <next id="101"></next>
   </p>
-  <!-- 385 -->
+  <p id="385">
+    <text>
+        [p]Nem nagyon akarsz Bakó ellen az ő varázslataival fellépni - ez eléggé kockázatos lehet. Inkább a Tűz-varázslatot alkalmazod. Hosszú palástja lángra lobban, de Bakó sértetlen marad. Őrült nevetésben tör ki, miközben a lángnyelvek magasra csapnak körülötte.[/p]
+    </text>
+    <loseItem id="3104" />
+    <next id="124"></next>
+  </p>
   <p id="386">
     <text>
         [p]A Tolvaj holtteste előtted fekszik. Nem volt olyan ügyes, mint ahogyan azt magáról hitte! Átvizsgálod a kosarát. Az egyetlen használható dolog, amit találsz, egy [span class="takeItem" data-id="3017" data-amount="1"]Piros Köpeny[/span], melyet magadhoz vehetsz és besorolhatod Felszerelési Tárgyaid közé. Elmajszolsz egy kis sajtot, melyet a kosarából vettél ki, majd tovább folytatod az utadat.[/p]
     </text>
     <next id="179"></next>
   </p>
-  <!-- 387 -->
+  <p id="387">
+    <text>
+        [p][alt]Búvóhelyedről varázsolsz. Mit varázsolsz?[/alt][/p]
+    </text>
+    <itemCheck type="item" id="3112">
+      <have>
+        <next id="107" pos="1">Átkot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3110">
+      <have>
+        <next id="278" pos="2">Félelmet?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3106">
+      <have>
+        <next id="148" pos="3">Illúziót?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3107">
+      <have>
+        <next id="318" pos="4">Barátságot?</next>
+      </have>
+    </itemCheck>
+    <next id="65" pos="5" singleChoiceText="Nincs olyan varázslatod, ami most hasznos lehetne.">Egyiket sem?</next>
+  </p>
   <p id="388">
     <text>
         [p class="inlineImage"][img src="resources/ff8/388.jpg" /][/p]
@@ -3983,7 +4720,17 @@
     <next id="47">Ha el akarod hagyni a tisztást</next>
     <next id="77">Ha iszol a tó vizéből</next>
   </p>
-  <!-- 395 -->
+  <p id="395">
+    <text>
+        [p]Úgy döntesz, hogy a legközelebb lévő fogadóba, a Barna Medvébe mész. Lenn a kocsmában nagy a dínomdánom, de te, miután egy aranytallért fizetsz a fogadósnak, felmész a szobádba. Elaludni azonban nem tudsz, olyan zajt csapnak a mulatozók. Vesztesz 1 ÉLETERŐ pontot! Mit teszel?[/p]
+    </text>
+    <add amount="-1" to="gold" />
+    <add to="stamina" amount="-1" />
+    <next id="116">A fejedre húzod a paplant, és nem törődsz a zajjal?</next>
+    <next id="236">Fogod a kardodat, és lemész, hogy móresre tanítsd őket?</next>
+    <next id="78">Fogod magad és továbbállsz a Görbe Lándzsa fogadóba?</next>
+    <next id="289">Fogod magad és továbbállsz Tankréd Táltos Lovába?</next>
+  </p>
   <p id="396">
     <text>
         [p data-item-choice="storage" data-max-choice="1"]- Fantasztikus! - kiált fel a Kertek Mestere. - Hát lehet, hogy valahol itt a mocsárban még mindig él az Antherica bokor? Éreztem, hogy ez a hely ritka kincset rejt! - mondja, majd elgondolkodik. Mikor kinyitja a szemét, így szól: - A növény, amit keresel, innen keletre van. De nincs olyan ösvény, mely közvetlenül oda vezetne; előbb el kell menned nyugat felé, majd onnan az óramutató járásával ellentétes irányban kell haladnod. - Sok szerencsét kíván neked, és átad egy Varázsgolyót, amely egy Jó varázslatot tartalmaz (te döntöd el, hogy [span class="takeItem" data-id="3107" data-amount="1" data-group="storage"]Barátság[/span], [span class="takeItem" data-id="3108" data-amount="1" data-group="storage"]Növekedés[/span] vagy [span class="takeItem" data-id="3109" data-amount="1" data-group="storage"]Áldás[/span] legyen az). Egyetlen ösvény vezet ki a tisztásról, azon indulsz el nyugati irányba.[/p]
