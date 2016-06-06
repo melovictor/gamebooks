@@ -9,5 +9,41 @@
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="kjk5enemies.xml" c:items="kjk5items.xml" c:paragraphs="kjk5content.xml" />
     </property>
   </bean>
+  
+   <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor" id="kjk5Help" p:info-ref="kjk5Info" scope="prototype">
+    <property name="sections">
+      <util:list>
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="intro" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="howToFight" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="ssl" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="battle" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="battleFlow7" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ss" p:jsp="fleeing" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="multiBattleSimple" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="luck" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="luckInBattle" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="resetSsl" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="resetSkill" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="resetStamina" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="resetLuck" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="equipmentPotions" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ss" p:jsp="spells" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ss" p:jsp="neutralSpells" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ss" p:jsp="goodSpells" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ss" p:jsp="evilSpells" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ss" p:jsp="whenToSpell" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ss" p:jsp="mapping" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ss" p:jsp="advice" />
+      </util:list>
+    </property>
+    <property name="params">
+      <util:map>
+        <entry key="stdHelp_howToFight" value="Hogyan küzdj meg a Skorpiók Mocsarának teremtményeivel?" />
+        <entry key="stdHelp_hasLantern" value="false" />
+        <entry key="stdHelp_hasFood" value="false" />
+        <entry key="stdHelp_hasPotions" value="false" />
+      </util:map>
+    </property>
+  </bean>
 
 </beans>

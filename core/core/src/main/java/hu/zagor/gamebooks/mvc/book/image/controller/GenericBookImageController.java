@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Tamas_Szekeres
  */
 @Controller
-@RequestMapping(value = PageAddresses.BOOK_PAGE + "/{bookId}/resources/{dir}")
+@RequestMapping(value = {PageAddresses.BOOK_PAGE + "/{bookId}/resources/{dir}", "rules/{bookId}/resources/{dir}"})
 public class GenericBookImageController extends AbstractRequestWrappingController {
 
     @Autowired private ImageHandler imageHandler;
