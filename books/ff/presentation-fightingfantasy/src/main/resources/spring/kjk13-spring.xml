@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant static-field="hu.zagor.gamebooks.support.bookids.hungarian.KalandJatekKockazat.A_SZAMURAJ_KARDJA" id="kjk13Id" />
+
+  <bean parent="ff20Info" class="hu.zagor.gamebooks.domain.FfBookInformations" id="kjk13Info" c:id-ref="kjk13Id" p:locale-ref="huLocale" p:position="13" p:series-ref="kjkTitle" p:title="A Szamuráj kardja" p:unfinished="true" p:hidden="false">
+    <property name="contents">
+      <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="kjk13enemies.xml" c:items="kjk13items.xml" c:paragraphs="kjk13content.xml" />
+    </property>
+  </bean>
+
+</beans>

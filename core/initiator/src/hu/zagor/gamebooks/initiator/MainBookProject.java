@@ -27,17 +27,17 @@ public class MainBookProject {
 
         baseData.setMainLanguage("en");
         baseData.setSeriesCode("ff"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm
-        baseData.setTitleCode("ss");
-        baseData.setPosition(8);
+        baseData.setTitleCode("sots");
+        baseData.setPosition(20);
         baseData.setCollectorCode("ff"); // ff, cyoa, z, fyf, gyg, eq, tm
         baseData.setCollectorName("fightingfantasy"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine
         baseData.setRuleset("ff"); // raw, tm, ff
         baseData.setHasEnemies(true);
         baseData.setHasInventory(true);
         baseData.setHasItems(true);
-        baseData.setHasMap(true);
+        baseData.setHasMap(false);
         baseData.setMediaProject(true);
-        baseData.setDefaultSkillTestType("Le"); // Le: lower or equal; L: lower; if neither, should be empty!
+        baseData.setDefaultSkillTestType("L"); // Le: lower or equal; L: lower; if neither, should be empty!
         baseData.setCharPageRequired(true);
 
         return baseData;
@@ -58,10 +58,10 @@ public class MainBookProject {
     private BookLangData getSotkHu(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setSeriesCode("kjk");
-        data.setPosition(5);
-        data.setBookId("KalandJatekKockazat.A_SKORPIOK_MOCSARA");
+        data.setPosition(13);
+        data.setBookId("KalandJatekKockazat.A_SZAMURAJ_KARDJA");
         data.setLang("hu");
-        data.setTitle("A Skorpiók Mocsara");
+        data.setTitle("A Szamuráj kardja");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;
@@ -70,9 +70,9 @@ public class MainBookProject {
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setHidden(true);
-        data.setBookId("FightingFantasy.SCORPION_SWAMP");
+        data.setBookId("FightingFantasy.SWORD_OF_THE_SAMURAI");
         data.setLang("en");
-        data.setTitle("Scorpion Swamp");
+        data.setTitle("Sword of the Samurai");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;
