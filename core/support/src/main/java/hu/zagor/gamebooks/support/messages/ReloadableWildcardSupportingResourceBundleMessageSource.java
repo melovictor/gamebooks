@@ -1,15 +1,13 @@
 package hu.zagor.gamebooks.support.messages;
 
 import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
-
+import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.io.Resource;
@@ -19,7 +17,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
  * Message source that is based on the {@link ReloadableResourceBundleMessageSource} and supports wildcards in it's basenames.
  * @author Tamas_Szekeres
  */
-public class ReloadableWildcardSupportingResourceBundleMessageSource extends ReloadableResourceBundleMessageSource {
+public class ReloadableWildcardSupportingResourceBundleMessageSource extends ReloadableResourceBundleMessageSource implements MessageSource {
 
     private static final String FILE_PREFIX = "file:";
     private static final String CLASSPATH = "classpath:/";
@@ -28,8 +26,8 @@ public class ReloadableWildcardSupportingResourceBundleMessageSource extends Rel
     private static final Pattern FILE_EXTRACT_PATTERN = Pattern.compile("classes/([^_]*)");
 
     private PathMatchingResourcePatternResolver patternResolver;
-    @Autowired
-    private EnvironmentDetector detector;
+    @Autowired private LocaleProvider localeProvider;
+    @Autowired private EnvironmentDetector detector;
 
     /**
      * Constructor that creates a new object with the necessary resolver object inserted and then initializes the basenames by itself.
@@ -93,4 +91,13 @@ public class ReloadableWildcardSupportingResourceBundleMessageSource extends Rel
         this.patternResolver = patternResolver;
     }
 
+    @Override
+    public String getMessage(final String code) {
+        return getMessage(code, null, localeProvider.getLocale());
+    }
+
+    @Override
+    public String getMessage(final String code, final Object... args) {
+        return getMessage(code, args, localeProvider.getLocale());
+    }
 }

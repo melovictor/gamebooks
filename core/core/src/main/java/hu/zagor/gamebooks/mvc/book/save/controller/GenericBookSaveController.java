@@ -7,6 +7,7 @@ import hu.zagor.gamebooks.books.saving.GameStateHandler;
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.mvc.book.controller.AbstractRequestWrappingController;
+import hu.zagor.gamebooks.support.messages.MessageSource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,15 +25,17 @@ public class GenericBookSaveController extends AbstractRequestWrappingController
 
     @Autowired private GameStateHandler gameStateHandler;
     @Autowired private BookInformationFetcher fetcher;
+    @Autowired private MessageSource messageSource;
 
     /**
      * Handles the saving of the current game state.
      * @param request the http request
      * @param bookId the id of the book
+     * @return the message to display to the user about the save being successful
      */
     @RequestMapping(value = PageAddresses.BOOK_PAGE + "/{bookId}/s/" + PageAddresses.BOOK_SAVE)
     @ResponseBody
-    public final void handleSave(final HttpServletRequest request, @PathVariable("bookId") final String bookId) {
+    public final String handleSave(final HttpServletRequest request, @PathVariable("bookId") final String bookId) {
         Assert.notNull(request, "The parameter 'request' cannot be null!");
         Assert.notNull(bookId, "The parameter 'bookId' cannot be null!");
 
@@ -41,6 +44,7 @@ public class GenericBookSaveController extends AbstractRequestWrappingController
         final SavedGameContainer container = gameStateHandler.generateSavedGameContainer(wrapper.getPlayer().getId(), fetcher.getInfoById(bookId).getId());
         doSave(wrapper, container);
         gameStateHandler.saveGame(container);
+        return messageSource.getMessage("page.menu.book.save.successfull");
     }
 
     private void doSave(final HttpSessionWrapper wrapper, final SavedGameContainer container) {

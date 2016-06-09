@@ -338,7 +338,10 @@ var raw = (function() {
 var gameMenu = (function() {
 	function saveGame() {
 		$.ajax({
-			url : "s/save"
+			url : "s/save",
+			success : function(message) {
+				showFeedback(message);
+			}
 		});
 	}
 
