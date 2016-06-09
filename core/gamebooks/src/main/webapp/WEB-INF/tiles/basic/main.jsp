@@ -31,6 +31,8 @@
 <title><spring:message code="${pageTitle}" text="${pageTitle}" /></title>
 </head>
 <body>
+	<div class="feedbackBox">
+	</div>
 	<c:forEach items="${paragraph.rewards}" var="rewardUrl">
 		<div class="mainRewardBox">
 			<img alt="new reward" src="${rewardUrl}" /><br />

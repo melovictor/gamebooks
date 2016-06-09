@@ -28,6 +28,15 @@ var menu = (function() {
 	};
 })();
 
+function showFeedback(text) {
+	var $feedback = $(".feedbackBox");
+	$feedback.text(text);
+	$feedback.fadeIn("slow");
+	setTimeout(function() {
+		$feedback.fadeOut("slow");
+	}, 3000);
+}
+
 var newRewards = (function() {
 	function init() {
 		setTimeout(showNextBox, 250);
