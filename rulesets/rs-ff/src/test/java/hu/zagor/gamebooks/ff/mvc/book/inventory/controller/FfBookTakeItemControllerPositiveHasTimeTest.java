@@ -15,9 +15,11 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.service.FfMarketHandler;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.BuySellResponse;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
+import hu.zagor.gamebooks.support.messages.MessageSource;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -61,6 +63,7 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
     @Mock private MarketCommand marketCommand;
     @Mock private List<ProcessableItemHolder> holderList;
     @Mock private ProcessableItemHolder holder;
+    @Inject private MessageSource messageSource;
 
     @BeforeClass
     public void setUpClass() {
@@ -100,10 +103,12 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         expect(character.getCommandView()).andReturn(commandView);
         expect(itemHandler.getItem(character, "2000")).andReturn(item);
         expect(commandView.getViewName()).andReturn("ffFightSingle").times(2);
+        expect(messageSource.getMessage("page.ff.equipment.eat.notWhileFighting")).andReturn("Cannot eat while fighting");
         mockControl.replay();
         // WHEN
-        underTest.handleConsumeItem(request, "2000");
+        final ConsumeItemResponse returned = underTest.handleConsumeItem(request, "2000");
         // THEN
+        Assert.assertEquals(returned.getMessage(), "Cannot eat while fighting");
     }
 
     public void testHandleConsumeItemWhenLuckTestingAndCanEatEverywhereShouldConsumeItem() {
@@ -165,10 +170,12 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         expect(paragraph.getData()).andReturn(data);
         characterHandler.setCanEatEverywhere(false);
         expect(data.isCanEat()).andReturn(false);
+        expect(messageSource.getMessage("page.ff.equipment.eat.notAllowedEatingHere")).andReturn("Cannot eat here");
         mockControl.replay();
         // WHEN
-        underTest.handleConsumeItem(request, "2000");
+        final ConsumeItemResponse returned = underTest.handleConsumeItem(request, "2000");
         // THEN
+        Assert.assertEquals(returned.getMessage(), "Cannot eat here");
     }
 
     public void testHandleConsumeItemWhenNoViewNameIsAvailableAndCanEatHereShouldConsumeItem() {

@@ -9,6 +9,7 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.ff.ss.character.Ff8Character;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
+import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.BuySellResponse;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
 import java.util.List;
@@ -26,7 +27,7 @@ public class Ff8BookTakeItemController extends FfBookTakeItemController {
     private static final int MAX_SELLABLE_ITEMS = 3;
 
     @Override
-    protected String doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
+    protected ConsumeItemResponse doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
 
         final FfAttributeHandler attributeHandler = getInfo().getCharacterHandler().getAttributeHandler();
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();

@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.ff.b.character.Ff60Character;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
+import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Ff60BookTakeItemController extends FfBookTakeItemController {
 
     @Override
-    protected String doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
+    protected ConsumeItemResponse doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
         if ("3013".equals(itemId)) {
             getInfo().getCharacterHandler().getItemHandler().addItem(wrapper.getCharacter(), "4000", 2);
         } else if ("2001".equals(itemId)) {

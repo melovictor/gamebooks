@@ -13,7 +13,9 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
+import hu.zagor.gamebooks.support.messages.MessageSource;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -24,6 +26,7 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -50,6 +53,7 @@ public class FfBookTakeItemControllerPositiveHasNoTimeTest {
     @Mock private FfParagraphData data;
     @Mock private FfItem item;
     @Inject private ItemInteractionRecorder itemInteractionRecorder;
+    @Inject private MessageSource messageSource;
 
     @BeforeClass
     public void setUpClass() {
@@ -89,10 +93,12 @@ public class FfBookTakeItemControllerPositiveHasNoTimeTest {
         expect(paragraph.getData()).andReturn(data);
         expect(paragraph.getActions()).andReturn(0);
         expect(item.getActions()).andReturn(1);
+        expect(messageSource.getMessage("page.ff.equipment.eat.notEnoughActionPoints")).andReturn("No time to eat");
         mockControl.replay();
         // WHEN
-        underTest.handleConsumeItem(request, "2000");
+        final ConsumeItemResponse returned = underTest.handleConsumeItem(request, "2000");
         // THEN
+        Assert.assertEquals(returned.getMessage(), "No time to eat");
     }
 
 }

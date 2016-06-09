@@ -10,6 +10,7 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.ff.tcoc.character.Ff2Character;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
+import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
 import java.util.List;
 import javax.annotation.Resource;
@@ -43,8 +44,8 @@ public class Ff2BookTakeItemController extends FfBookTakeItemController {
     }
 
     @Override
-    protected String doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
-        String response;
+    protected ConsumeItemResponse doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
+        ConsumeItemResponse response;
         if (isSpell(itemId)) {
             if (isResettingSpell(itemId) && !isFighting(wrapper)) {
                 handleSpell(itemId, wrapper);

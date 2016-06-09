@@ -10,6 +10,7 @@ import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -70,7 +71,7 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, item);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
         Assert.assertNull(returned);
     }
@@ -91,9 +92,10 @@ public class Ff38BookTakeItemControllerBTest {
         expect(commandView.getViewName()).andReturn("ffFightSingle");
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, item);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
-        Assert.assertNull(returned);
+        Assert.assertNull(returned.getOnclick());
+        Assert.assertNull(returned.getMessage());
     }
 
     public void testDoHandleConsumeItemWhenActivatingHealingSpellWhileNotFightingShouldAllowSpellActivation() {
@@ -114,7 +116,7 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, item);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
         Assert.assertNull(returned);
     }
@@ -134,7 +136,7 @@ public class Ff38BookTakeItemControllerBTest {
         expect(character.getCommandView()).andReturn(null);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, item);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
         Assert.assertNull(returned);
     }
@@ -157,9 +159,10 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, item);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
-        Assert.assertEquals(returned, "#ffAttackButton button");
+        Assert.assertEquals(returned.getOnclick(), "#ffAttackButton button");
+        Assert.assertNull(returned.getMessage());
     }
 
     public void testDoHandleConsumeItemWhenActivatingJandorArrowSpellWhileFightingShouldAllowSpellActivation() {
@@ -180,9 +183,10 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, item);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
-        Assert.assertEquals(returned, "#ffAttackButton button");
+        Assert.assertEquals(returned.getOnclick(), "#ffAttackButton button");
+        Assert.assertNull(returned.getMessage());
     }
 
     public void testDoHandleConsumeItemWhenActivatingBashSpellWhileFightingShouldAllowSpellActivation() {
@@ -203,9 +207,10 @@ public class Ff38BookTakeItemControllerBTest {
         expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, item);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
-        Assert.assertEquals(returned, "#ffAttackButton button");
+        Assert.assertEquals(returned.getOnclick(), "#ffAttackButton button");
+        Assert.assertNull(returned.getMessage());
     }
 
 }

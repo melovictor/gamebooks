@@ -12,6 +12,7 @@ import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
@@ -65,7 +66,7 @@ public class Ff38BookTakeItemControllerATest {
         expect(wrapper.getCharacter()).andReturn(character);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, "2000");
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, "2000");
         // THEN
         Assert.assertNull(returned);
     }
@@ -77,7 +78,7 @@ public class Ff38BookTakeItemControllerATest {
         expect(itemHandler.hasItem(character, "4021")).andReturn(true);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, "2000");
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, "2000");
         // THEN
         Assert.assertNull(returned);
     }
@@ -93,7 +94,7 @@ public class Ff38BookTakeItemControllerATest {
         consumeProvision(meal);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, meal);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, meal);
         // THEN
         Assert.assertNull(returned);
     }
@@ -107,7 +108,7 @@ public class Ff38BookTakeItemControllerATest {
         consumePotion(meal);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, meal);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, meal);
         // THEN
         Assert.assertNull(returned);
     }
@@ -121,7 +122,7 @@ public class Ff38BookTakeItemControllerATest {
         consumeProvision(meal);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, meal);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, meal);
         // THEN
         Assert.assertNull(returned);
     }
@@ -135,7 +136,7 @@ public class Ff38BookTakeItemControllerATest {
         expect(paragraph.getActions()).andReturn(0);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, item);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
         Assert.assertNull(returned);
     }
@@ -151,7 +152,7 @@ public class Ff38BookTakeItemControllerATest {
         expect(itemHandler.hasItem(character, "4014")).andReturn(true);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, item);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
         Assert.assertNull(returned);
     }
@@ -168,7 +169,7 @@ public class Ff38BookTakeItemControllerATest {
         expect(itemHandler.hasItem(character, "4013")).andReturn(true);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, item);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
         Assert.assertNull(returned);
     }
@@ -186,7 +187,7 @@ public class Ff38BookTakeItemControllerATest {
         expect(itemHandler.hasItem(character, "4015")).andReturn(true);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, item);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
         Assert.assertNull(returned);
     }
@@ -208,7 +209,7 @@ public class Ff38BookTakeItemControllerATest {
         expect(itemHandler.removeItem(character, item, 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, item);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, item);
         // THEN
         Assert.assertNull(returned);
     }

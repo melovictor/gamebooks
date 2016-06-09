@@ -7,6 +7,7 @@ import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
+import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.support.bookids.english.Warlock;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Wm8BookTakeItemController extends FfBookTakeItemController {
 
     @Override
-    protected String doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
+    protected ConsumeItemResponse doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
         if ("74".equals(wrapper.getParagraph())) {
             final FfCharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
             final Character character = wrapper.getCharacter();

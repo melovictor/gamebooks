@@ -7,6 +7,7 @@ import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.paragraph.CharacterParagraphHandler;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
+import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.support.bookids.english.Warlock;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,7 @@ public class Wm4BookTakeItemController extends FfBookTakeItemController {
     private static final String PROVISION = "2000";
 
     @Override
-    protected String doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
+    protected ConsumeItemResponse doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
 
         if (PROVISION.equals(itemId)) {
             final Character character = wrapper.getCharacter();

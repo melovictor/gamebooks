@@ -8,6 +8,7 @@ import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
+import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,13 +40,13 @@ public class Ff38BookTakeItemController extends FfBookTakeItemController {
     private static final String HEYDRICH_REGENERATES = "63";
 
     @Override
-    public String doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
+    public ConsumeItemResponse doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
         final Paragraph paragraph = wrapper.getParagraph();
         final String id = paragraph.getId();
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
         final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
         final CharacterItemHandler itemHandler = characterHandler.getItemHandler();
-        String response = null;
+        ConsumeItemResponse response = null;
 
         if (isSpell(itemId)) {
             if (haveTimeForSpell(paragraph) && !hasActiveSpell(character, itemHandler)) {
@@ -78,8 +79,9 @@ public class Ff38BookTakeItemController extends FfBookTakeItemController {
         return canEatNow;
     }
 
-    private String handleSpell(final HttpSessionWrapper wrapper, final String itemId, final FfCharacter character, final FfCharacterHandler characterHandler) {
-        String response = null;
+    private ConsumeItemResponse handleSpell(final HttpSessionWrapper wrapper, final String itemId, final FfCharacter character,
+        final FfCharacterHandler characterHandler) {
+        ConsumeItemResponse response = null;
         if (isFighting(wrapper)) {
             response = handleFightingSpell(itemId, character, characterHandler.getItemHandler());
         } else {
@@ -99,20 +101,20 @@ public class Ff38BookTakeItemController extends FfBookTakeItemController {
         }
     }
 
-    private String handleFightingSpell(final String itemId, final FfCharacter character, final CharacterItemHandler itemHandler) {
-        String response = null;
+    private ConsumeItemResponse handleFightingSpell(final String itemId, final FfCharacter character, final CharacterItemHandler itemHandler) {
+        final ConsumeItemResponse response = new ConsumeItemResponse();
         if (STRONG_HIT.equals(itemId)) {
             itemHandler.addItem(character, STRONG_HIT_ACTIVE, 1);
             itemHandler.removeItem(character, itemId, 1);
-            response = "#ffAttackButton button";
+            response.setOnclick("#ffAttackButton button");
         } else if (JANDOR_ARROW.equals(itemId)) {
             itemHandler.addItem(character, JANDOR_ARROW_ACTIVE, 1);
             itemHandler.removeItem(character, itemId, 1);
-            response = "#ffAttackButton button";
+            response.setOnclick("#ffAttackButton button");
         } else if (BASH.equals(itemId)) {
             itemHandler.addItem(character, BASH_ACTIVE, 1);
             itemHandler.removeItem(character, itemId, 1);
-            response = "#ffAttackButton button";
+            response.setOnclick("#ffAttackButton button");
         }
         return response;
     }

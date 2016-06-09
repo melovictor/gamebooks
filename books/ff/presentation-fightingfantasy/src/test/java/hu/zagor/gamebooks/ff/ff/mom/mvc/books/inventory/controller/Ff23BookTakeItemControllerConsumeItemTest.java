@@ -12,6 +12,7 @@ import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
@@ -76,9 +77,10 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
         itemHandler.consumeItem(character, itemId, attributeHandler);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, itemId);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, itemId);
         // THEN
-        Assert.assertNull(returned);
+        Assert.assertNull(returned.getMessage());
+        Assert.assertNull(returned.getOnclick());
     }
 
     public void testDoHandleConsumeItemWhenProvisionShouldRemoveNotEatenFlagAndConsumeNormally() {
@@ -100,9 +102,10 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
         itemHandler.consumeItem(character, itemId, attributeHandler);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.doHandleConsumeItem(wrapper, itemId);
+        final ConsumeItemResponse returned = underTest.doHandleConsumeItem(wrapper, itemId);
         // THEN
-        Assert.assertNull(returned);
+        Assert.assertNull(returned.getMessage());
+        Assert.assertNull(returned.getOnclick());
     }
 
 }

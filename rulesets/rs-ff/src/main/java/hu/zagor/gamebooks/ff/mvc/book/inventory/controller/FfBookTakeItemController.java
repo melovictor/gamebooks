@@ -13,10 +13,12 @@ import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.TakePurchaseItemData;
 import hu.zagor.gamebooks.mvc.book.inventory.controller.GenericBookTakeItemController;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.BuySellResponse;
 import hu.zagor.gamebooks.mvc.book.inventory.service.MarketHandler;
+import hu.zagor.gamebooks.support.messages.MessageSource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
@@ -33,6 +35,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class FfBookTakeItemController extends GenericBookTakeItemController {
 
     @Autowired private MarketHandler marketHandler;
+    @Autowired private MessageSource messageSource;
 
     /**
      * Method for handling the acquiring of items through the displayed text.
@@ -121,11 +124,11 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
      * Method for consuming an item (provision or potion).
      * @param request the {@link HttpServletRequest}
      * @param itemId the id of the item to change the state
-     * @return null
+     * @return an object containing information about the result of the item consumption, can be null
      */
     @RequestMapping(value = PageAddresses.BOOK_CONSUME_ITEM + "/{id}")
     @ResponseBody
-    public final String handleConsumeItem(final HttpServletRequest request, @PathVariable("id") final String itemId) {
+    public final ConsumeItemResponse handleConsumeItem(final HttpServletRequest request, @PathVariable("id") final String itemId) {
         Assert.notNull(itemId, "The parameter 'itemId' cannot be null!");
         Assert.isTrue(itemId.length() > 0, "The parameter 'itemId' cannot be empty!");
 
@@ -136,9 +139,10 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
      * Method for actually consuming an item (provision or potion).
      * @param wrapper the {@link HttpSessionWrapper} object
      * @param itemId the id of the item to change the state
-     * @return usually nothing
+     * @return an object containing information about the result of the item consumption, can be null
      */
-    protected String doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
+    protected ConsumeItemResponse doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
+        String message = null;
         getItemInteractionRecorder().recordItemConsumption(wrapper, itemId);
         final Paragraph paragraph = wrapper.getParagraph();
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
@@ -152,10 +156,18 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
                 if (totalActions >= consumeTime) {
                     paragraph.setActions(totalActions - consumeTime);
                     consumeSelectedItem(character, item);
+                } else {
+                    message = messageSource.getMessage("page.ff.equipment.eat.notEnoughActionPoints");
                 }
+            } else {
+                message = messageSource.getMessage("page.ff.equipment.eat.notAllowedEatingHere");
             }
+        } else {
+            message = messageSource.getMessage("page.ff.equipment.eat.notWhileFighting");
         }
-        return null;
+        final ConsumeItemResponse response = new ConsumeItemResponse();
+        response.setMessage(message);
+        return response;
     }
 
     /**

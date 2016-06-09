@@ -43,8 +43,11 @@ var inventory = (function() {
 		$.ajax({
 			url : "consume/" + itemId
 		}).done(function(result) {
-			if (result) {
-				$(result).click();
+			if (result.message) {
+				showFeedback(result.message);
+			}
+			if (result.onclick) {
+				$(result.onclick).click();
 			} else {
 				loadInventory(true);
 			}
