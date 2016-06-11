@@ -11,10 +11,18 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("prototype")
 public class Ff20Character extends FfCharacter {
+    private static final int NAKED_EXTRA_DAMAGE = -2;
     private static final int INITIAL_HONOR = 3;
 
     private int honor = INITIAL_HONOR;
     private SpecialSkill specialSkill;
+
+    /**
+     * Default constructor setting an initial damage protection that can only be countered by an armour.
+     */
+    public Ff20Character() {
+        setDamageProtection(NAKED_EXTRA_DAMAGE);
+    }
 
     public int getHonor() {
         return honor;

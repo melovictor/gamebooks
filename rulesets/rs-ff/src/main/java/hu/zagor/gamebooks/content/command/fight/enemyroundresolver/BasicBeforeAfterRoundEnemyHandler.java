@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.content.command.fight.enemyroundresolver;
 
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
@@ -19,6 +20,15 @@ import org.springframework.beans.factory.annotation.Qualifier;
 public abstract class BasicBeforeAfterRoundEnemyHandler<T> implements CustomBeforeAfterRoundEnemyHandler<T> {
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
     @Autowired private DiceResultRenderer renderer;
+
+    /**
+     * Kills the provided enemy.
+     * @param enemyObject the enemy to kill
+     */
+    protected void killEnemy(final Enemy enemyObject) {
+        final FfEnemy enemy = (FfEnemy) enemyObject;
+        enemy.setStamina(0);
+    }
 
     @Override
     public boolean shouldExecutePreHandler(final FightCommand command, final T data) {
