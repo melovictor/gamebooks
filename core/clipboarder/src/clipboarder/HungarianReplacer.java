@@ -284,6 +284,6 @@ public class HungarianReplacer implements Replacer {
                 + "        <next id=\"" + matcher.group(6) + "\"></next>\n" + "      </failure>";
             newContent += "\n\t</test>";
         }
-        return newContent;
+        return newContent.replace(" [/p]", "[/p]");
     }
 }
