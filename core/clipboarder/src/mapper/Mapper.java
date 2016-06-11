@@ -84,9 +84,9 @@ public class Mapper {
 
     private static void writeMapFile(final File xml, final String map) throws IOException {
         final File outputFile = new File("d:\\System\\eclipse\\output\\map", xml.getName().replace("xml", "dot"));
-        final FileWriter writer = new FileWriter(outputFile);
-        writer.write(map);
-        writer.close();
+        try (FileWriter writer = new FileWriter(outputFile)) {
+            writer.write(map);
+        }
         System.out.println("Created map " + outputFile.getName());
     }
 
@@ -176,11 +176,11 @@ public class Mapper {
     private static String getContent(final File xml) throws FileNotFoundException {
         String content = "";
         System.out.println("Appending content from " + xml.getName());
-        final Scanner scanner = new Scanner(xml, "utf-8");
-        while (scanner.hasNextLine()) {
-            content += scanner.nextLine();
+        try (Scanner scanner = new Scanner(xml, "utf-8")) {
+            while (scanner.hasNextLine()) {
+                content += scanner.nextLine();
+            }
         }
-        scanner.close();
         content += loadSecondHalf(xml);
         return content;
     }

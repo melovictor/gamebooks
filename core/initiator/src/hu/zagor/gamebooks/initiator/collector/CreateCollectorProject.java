@@ -19,10 +19,11 @@ public class CreateCollectorProject extends AbstractGenerator {
 
     private void updateSeriesCollector(final String collectionName) throws IOException {
         final File pom = new File("c:\\springsource\\eclipsegit\\collector\\series-collector\\pom.xml");
-        final Scanner pomScanner = new Scanner(pom);
-        pomScanner.useDelimiter("/z");
-        String fileContent = pomScanner.next();
-        pomScanner.close();
+        String fileContent;
+        try (Scanner pomScanner = new Scanner(pom)) {
+            pomScanner.useDelimiter("/z");
+            fileContent = pomScanner.next();
+        }
         fileContent = fileContent.replace("</dependencies>",
             "  <dependency>\r\n" + "      <groupId>hu.zagor.gamebooks.books</groupId>\r\n" + "      <artifactId>language-" + collectionName + "</artifactId>\r\n"
                 + "      <version>1.0.0</version>\r\n" + "    </dependency>\r\n" + "    <dependency>\r\n" + "      <groupId>hu.zagor.gamebooks.books</groupId>\r\n"

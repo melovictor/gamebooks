@@ -104,14 +104,12 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
     }
 
     private String readContent(final Transferable contents, final DataFlavor flavorToUse) throws UnsupportedFlavorException, IOException {
-        final Reader clipboardReader = flavorToUse.getReaderForText(contents);
-        final Scanner scanner = new Scanner(clipboardReader);
         String clipboardContent = "";
-        while (scanner.hasNextLine()) {
-            clipboardContent += scanner.nextLine() + "\n";
+        try (Reader clipboardReader = flavorToUse.getReaderForText(contents); Scanner scanner = new Scanner(clipboardReader)) {
+            while (scanner.hasNextLine()) {
+                clipboardContent += scanner.nextLine() + "\n";
+            }
         }
-        scanner.close();
-        clipboardReader.close();
         return clipboardContent.replace("¬", "").trim();
     }
 
