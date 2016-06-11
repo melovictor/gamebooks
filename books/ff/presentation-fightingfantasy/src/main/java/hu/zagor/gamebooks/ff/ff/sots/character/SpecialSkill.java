@@ -5,10 +5,10 @@ package hu.zagor.gamebooks.ff.ff.sots.character;
  * @author Tamas_Szekeres
  */
 public enum SpecialSkill {
-    KJUDZSUTSZU("Kjudzsutszu, íjászat"),
-    DZSADZSUTSZU("Dzsadzsutszu, a kardrántás művészete"),
-    KARUMIDZSUTSZU("Karumidzsutszu, ugrások harc közben"),
-    NITOKENDZSUTSZU("Nitokendzsutszu, harc két karddal");
+    KJUDZSUTSZU("Kjudzsutszu, íjászat"), // 0
+    DZSADZSUTSZU("Dzsadzsutszu, a kardrántás művészete"), // 1
+    KARUMIDZSUTSZU("Karumidzsutszu, ugrások harc közben"), // 2
+    NITOKENDZSUTSZU("Nitokendzsutszu, harc két karddal"); // 3
 
     private String description;
 
