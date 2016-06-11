@@ -49,7 +49,7 @@ public class Ff60BookPreFightHandlingService extends EnemyDependentFfBookPreFigh
         if (BOLORANG.equals(itemId)) {
             usedItem = doSkillTest(BOLORANG, "bolorang", info, wrapper);
         } else if (THROWING_KNIFE.equals(itemId)) {
-            usedItem = doSkillTest(THROWING_KNIFE, "throwkingKnife", info, wrapper);
+            usedItem = doSkillTest(THROWING_KNIFE, "throwingKnife", info, wrapper);
         } else if (ZOMBIE_DUST.equals(itemId)) {
             handleZombieDust(info, wrapper);
         } else if (GAS_GLOBE.equals(itemId)) {
