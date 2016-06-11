@@ -18,8 +18,17 @@ public class ItemCheckAttributeEqualityCommandResolver extends ItemCheckFfAttrib
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         ParagraphData toResolve;
 
-        final String attributeName = parent.getCheckType().toString();
-        final String acceptedValues = parent.getId();
+        String attributeName;
+        String acceptedValues;
+        final CheckType checkType = parent.getCheckType();
+        if (checkType == CheckType.enumAttribute) {
+            attributeName = parent.getId();
+            acceptedValues = String.valueOf(parent.getAmount());
+        } else {
+            attributeName = checkType.toString();
+            acceptedValues = parent.getId();
+        }
+
         final List<String> acceptedList = Arrays.asList(acceptedValues.split(","));
         final int attributeValue = getAttributeValue((FfCharacter) resolvationData.getCharacter(), characterHandler, attributeName);
         if (acceptedList.contains(String.valueOf(attributeValue))) {

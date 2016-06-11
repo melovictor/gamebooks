@@ -75,7 +75,12 @@ public class AttributeResolvingExpressionResolver implements ExpressionResolver 
         final Method getter = ReflectionUtils.findMethod(object.getClass(), "get" + StringUtils.capitalize(property));
         int value = 0;
         if (getter != null) {
-            value = (int) getter.invoke(object);
+            final Object resolved = getter.invoke(object);
+            if (resolved instanceof Enum) {
+                value = ((Enum<?>) resolved).ordinal();
+            } else {
+                value = (int) resolved;
+            }
         } else if (triggerException) {
             throw new NoSuchFieldException();
         }

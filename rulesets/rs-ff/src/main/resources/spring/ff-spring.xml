@@ -227,6 +227,8 @@
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckPosCommandResolver" id="ffItemCheckPosCommandResolver" />
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckEnemyCommandResolver" id="ffItemCheckEnemyCommandResolver" />
 
+  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckAttributeEqualityCommandResolver" id="ffItemCheckAttributeEqualityCommandResolver" />
+
   <util:map id="ffItemCheckStubCommands" key-type="hu.zagor.gamebooks.content.command.itemcheck.CheckType" value-type="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckStubCommand">
     <entry key="section" value-ref="itemCheckSectionCommandResolver" />
     <entry key="codeword" value-ref="itemCheckCodewordCommandResolver" />
@@ -248,15 +250,14 @@
     <entry key="attribute">
       <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckAttributeCommandResolver" />
     </entry>
+    <entry key="enumAttribute" value-ref="ffItemCheckAttributeEqualityCommandResolver" />
     <entry key="fear" value-ref="ffItemCheckAttributeCommandResolver" />
     <entry key="wisdom" value-ref="ffItemCheckAttributeCommandResolver" />
     <entry key="armour" value-ref="ffItemCheckAttributeCommandResolver" />
     <entry key="faith" value-ref="ffItemCheckAttributeCommandResolver" />
     <entry key="selfShield" value-ref="ffItemCheckAttributeCommandResolver" />
     <entry key="enemyShield" value-ref="ffItemCheckAttributeCommandResolver" />
-    <entry key="status">
-      <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckAttributeEqualityCommandResolver" />
-    </entry>
+    <entry key="status" value-ref="ffItemCheckAttributeEqualityCommandResolver" />
   </util:map>
 
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommandResolver" id="ffItemCheckCommandResolver" p:stubCommands-ref="ffItemCheckStubCommands" />

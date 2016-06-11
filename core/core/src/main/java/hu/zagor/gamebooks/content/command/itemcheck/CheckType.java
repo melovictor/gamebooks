@@ -19,6 +19,7 @@ public enum CheckType {
     pos,
     codeword,
     attribute,
+    enumAttribute,
 
     faith,
     wisdom,
