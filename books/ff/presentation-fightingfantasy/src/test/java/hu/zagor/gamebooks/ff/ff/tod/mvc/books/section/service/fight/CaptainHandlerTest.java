@@ -8,6 +8,7 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
+import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.BasicEnemyPrePostFightDataContainer;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
@@ -27,7 +28,7 @@ public class CaptainHandlerTest {
 
     @MockControl private IMocksControl mockControl;
     @UnderTest private CaptainHandler underTest;
-    @Mock private EnemyPrePostFightDataContainer data;
+    @Mock private BasicEnemyPrePostFightDataContainer data;
     private FightRoundResult[] results;
     @Mock private ResolvationData resolvationData;
     @Mock private FightCommand command;

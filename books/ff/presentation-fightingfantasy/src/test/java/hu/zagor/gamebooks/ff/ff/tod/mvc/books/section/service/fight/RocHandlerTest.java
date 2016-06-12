@@ -11,6 +11,7 @@ import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
+import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.BasicEnemyPrePostFightDataContainer;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
@@ -31,7 +32,7 @@ public class RocHandlerTest {
 
     @MockControl private IMocksControl mockControl;
     @UnderTest private RocHandler underTest;
-    @Mock private EnemyPrePostFightDataContainer data;
+    @Mock private BasicEnemyPrePostFightDataContainer data;
     private final FightRoundResult[] results = new FightRoundResult[]{FightRoundResult.WIN};
     @Mock private ResolvationData resolvationData;
     @Mock private FightCommand command;

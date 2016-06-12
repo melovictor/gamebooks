@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.ff.ff.tod.mvc.books.section.service.fight;
 
+import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.BasicEnemyPrePostFightDataContainer;
 import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.CustomBeforeAfterRoundEnemyHandler;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -22,7 +23,7 @@ public class AllAtOnceFf11FightRoundResolverTest {
     public void testGetTypeShouldReturnProperType() {
         // GIVEN
         // WHEN
-        final Class<? extends CustomBeforeAfterRoundEnemyHandler<EnemyPrePostFightDataContainer>> returned = underTest.getType();
+        final Class<? extends CustomBeforeAfterRoundEnemyHandler<BasicEnemyPrePostFightDataContainer>> returned = underTest.getType();
         // THEN
         Assert.assertEquals(returned, Ff11BeforeAfterRoundEnemyHandler.class);
     }
@@ -30,7 +31,7 @@ public class AllAtOnceFf11FightRoundResolverTest {
     public void testGetDataBeanShouldReturnProperBean() {
         // GIVEN
         // WHEN
-        final EnemyPrePostFightDataContainer returned = underTest.getDataBean();
+        final BasicEnemyPrePostFightDataContainer returned = underTest.getDataBean();
         // THEN
         Assert.assertNotNull(returned);
     }

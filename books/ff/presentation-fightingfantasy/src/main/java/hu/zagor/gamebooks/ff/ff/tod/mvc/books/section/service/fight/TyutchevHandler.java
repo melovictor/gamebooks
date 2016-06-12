@@ -5,6 +5,7 @@ import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
+import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.BasicEnemyPrePostFightDataContainer;
 import java.util.Map;
 import org.springframework.stereotype.Component;
 
@@ -19,13 +20,13 @@ public class TyutchevHandler extends Ff11BeforeAfterRoundEnemyHandler {
 
     @Override
     public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
-        final EnemyPrePostFightDataContainer data) {
+        final BasicEnemyPrePostFightDataContainer data) {
         return results[0] == FightRoundResult.WIN;
     }
 
     @Override
     public void executePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
-        final EnemyPrePostFightDataContainer data) {
+        final BasicEnemyPrePostFightDataContainer data) {
         final Map<String, Enemy> enemies = resolvationData.getEnemies();
         final FfEnemy enemy = (FfEnemy) enemies.get("18");
         if (enemy.getStamina() <= TYUTCHEV_SURRENDER) {

@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
+import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.BasicEnemyPrePostFightDataContainer;
 import java.util.Map;
 import org.springframework.stereotype.Component;
 
@@ -17,14 +18,14 @@ public class CaptainHandler extends Ff11BeforeAfterRoundEnemyHandler {
 
     @Override
     public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
-        final EnemyPrePostFightDataContainer data) {
+        final BasicEnemyPrePostFightDataContainer data) {
         return command.getEnemies().contains("7") && command.getAttackStrengths().containsKey("7") && command.getAttackStrengths().get("7") >= CAPTAIN_CRITICAL_HIT_LIMIT
             && results[0] == FightRoundResult.LOSE;
     }
 
     @Override
     public void executePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
-        final EnemyPrePostFightDataContainer data) {
+        final BasicEnemyPrePostFightDataContainer data) {
         final Map<String, Enemy> enemies = resolvationData.getEnemies();
         killEnemy(enemies.get("7"));
         killEnemy(enemies.get("8"));
