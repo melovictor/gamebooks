@@ -24,40 +24,54 @@ public class AllAtOnceFightRoundResolver extends SingleFightRoundResolver {
     public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final List<FfEnemy> enemies = getRoundRelevantEnemies(command);
         final FightRoundResult[] result = new FightRoundResult[enemies.size()];
-        final FightCommandMessageList messages = command.getMessages();
-        final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
-        final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
-        final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
-        final String enemyId = characterHandler.getInteractionHandler().peekLastFightCommand(character, "enemyId");
 
         for (int i = 0; i < enemies.size(); i++) {
             final FfEnemy enemy = enemies.get(i);
             if (enemy.getStamina() > 0) {
-                final FightDataDto dto = new FightDataDto(enemy, messages, resolvationData, command.getUsableWeaponTypes());
-                final boolean isSelectedEnemy = enemy.getId().equals(enemyId);
-                final int[] selfAttackStrengthValues = getSelfAttackStrength(character, command, attributeHandler);
-                final int[] enemyAttackStrengthValues = getEnemyAttackStrength(enemy, command);
-                final int selfAttackStrength = attributeHandler.resolveValue(character, "skill") + selfAttackStrengthValues[0];
-                final int enemyAttackStrength = enemy.getSkill() + enemyAttackStrengthValues[0];
-                command.getAttackStrengths().put(enemy.getId(), enemyAttackStrength);
-                recordHeroAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
-                recordEnemyAttachStrength(dto, enemyAttackStrengthValues, enemyAttackStrength);
-                if (enemyAttackStrength > selfAttackStrength) {
-                    result[i] = FightRoundResult.LOSE;
-                    damageSelf(dto);
-                    handleDefeatLuckTest(command, dto);
-                } else if (enemyAttackStrength < selfAttackStrength && isSelectedEnemy) {
-                    result[i] = FightRoundResult.WIN;
-                    damageEnemy(command, dto);
-                } else {
-                    result[i] = FightRoundResult.TIE;
-                    resolveTieMessage(dto);
-                }
-
-                autoDamageSelf(dto);
+                result[i] = fightSingleEnemy(command, resolvationData, enemy);
             }
         }
         return result;
+    }
+
+    /**
+     * Executes a battle round with a single enemy.
+     * @param command the {@link FightCommand} object
+     * @param resolvationData the {@link ResolvationData} object
+     * @param enemy the {@link FfEnemy} the hero is fighting at the moment
+     * @return the result of this specific round
+     */
+    protected FightRoundResult fightSingleEnemy(final FightCommand command, final ResolvationData resolvationData, final FfEnemy enemy) {
+        FightRoundResult roundResult;
+        final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
+        final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
+        final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
+        final String enemyId = characterHandler.getInteractionHandler().peekLastFightCommand(character, "enemyId");
+        final FightCommandMessageList messages = command.getMessages();
+        final FightDataDto dto = new FightDataDto(enemy, messages, resolvationData, command.getUsableWeaponTypes());
+        final boolean isSelectedEnemy = enemy.getId().equals(enemyId);
+        final int[] selfAttackStrengthValues = getSelfAttackStrength(character, command, attributeHandler);
+        final int[] enemyAttackStrengthValues = getEnemyAttackStrength(enemy, command);
+        final int selfAttackStrength = attributeHandler.resolveValue(character, "skill") + selfAttackStrengthValues[0];
+        final int enemyAttackStrength = enemy.getSkill() + enemyAttackStrengthValues[0];
+        storeHeroAttackStrength(command, enemy, selfAttackStrength, selfAttackStrengthValues);
+        storeEnemyAttackStrength(command, enemy, enemyAttackStrength, enemyAttackStrengthValues);
+        recordHeroAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
+        recordEnemyAttachStrength(dto, enemyAttackStrengthValues, enemyAttackStrength);
+        if (enemyAttackStrength > selfAttackStrength) {
+            roundResult = FightRoundResult.LOSE;
+            damageSelf(dto);
+            handleDefeatLuckTest(command, dto);
+        } else if (enemyAttackStrength < selfAttackStrength && isSelectedEnemy) {
+            roundResult = FightRoundResult.WIN;
+            damageEnemy(command, dto);
+        } else {
+            roundResult = FightRoundResult.TIE;
+            resolveTieMessage(dto);
+        }
+
+        autoDamageSelf(dto);
+        return roundResult;
     }
 
     List<FfEnemy> getRoundRelevantEnemies(final FightCommand command) {

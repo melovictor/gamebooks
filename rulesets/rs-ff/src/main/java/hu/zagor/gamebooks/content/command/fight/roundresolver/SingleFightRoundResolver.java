@@ -68,14 +68,14 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
         return result;
     }
 
-    private void storeHeroAttackStrength(final FightCommand command, final FfEnemy enemy, final int selfAttackStrength, final int[] selfAttackStrengthValues) {
+    void storeHeroAttackStrength(final FightCommand command, final FfEnemy enemy, final int selfAttackStrength, final int[] selfAttackStrengthValues) {
         command.getAttackStrengths().put("h_" + enemy.getId(), selfAttackStrength);
         for (int i = 1; i < selfAttackStrengthValues.length; i++) {
             command.getAttackStrengths().put("h_d" + i + "_" + enemy.getId(), selfAttackStrengthValues[i]);
         }
     }
 
-    private void storeEnemyAttackStrength(final FightCommand command, final FfEnemy enemy, final int enemyAttackStrength, final int[] enemyAttackStrengthValues) {
+    void storeEnemyAttackStrength(final FightCommand command, final FfEnemy enemy, final int enemyAttackStrength, final int[] enemyAttackStrengthValues) {
         final Map<String, Integer> attackStrengths = command.getAttackStrengths();
         attackStrengths.put(enemy.getId(), enemyAttackStrength);
         for (int i = 1; i < enemyAttackStrengthValues.length; i++) {

@@ -57,7 +57,30 @@
     <next id="10">Ha északnyugatnak indulsz el, az Árnyak Erdeje, a Hagakure híd és a Shios’ii hegység felé</next>
     <next id="29">Ha keletnek indulsz a Mizokumo mocsarakon át a gázlóhoz, majd onnan a hegyekbe</next>
   </p>
-  <!-- 2 -->
+  <p id="2">
+    <text>
+        [p]- Nos, emberfajzat, halld az első találós kérdést:[/p]
+        [p class="handwritten"]Finom legény vagyok,[br/]
+        Tű fokán átbújok,[br/]
+        De ha egyszer megharagszom,[br/]
+        Tenger vizét megszalasztom,[br/]
+        Fát tőből kicsavarok,[br/]
+        Ugyan bizony ki vagyok?[/p]
+        [p]A Tatsu mohón lesve a választ, rád mered.[/p]
+    </text>
+    <userInput type="text">
+      <label>Mi a helyes válasz?</label>
+      <result text="szél">
+        <next id="19"></next>
+      </result>
+      <result text="a szél">
+        <next id="19"></next>
+      </result>
+      <resultElse>
+        <next id="26"></next>
+      </resultElse>
+    </userInput>
+  </p>
   <p id="3">
     <text>
         [p]A hozzád legközelebb álló szörny szemében az értelem szikrája villan, amikor megadod magad. Kardod után nyúl, és te átadod neki, hisz még mindig van egy rövid wakizasid. Utasít, hogy vágj át a gázlón. Hosszú kardod, amit elvett tőled, olyan katana, amellyel rendkívül ügyesen bántál. Vonj le magadtól 1 ÜGYESSÉG pontot, mindaddig, amíg nem találsz magadnak egy újabb katanát vagy nem leled meg magát a Daloló Halált. Átmész a gázlón.[/p]
@@ -106,7 +129,54 @@
     <add to="stamina" amount="-2" />
     <next id="195"></next>
   </p>
-  <!-- 8 -->
+  <p id="8">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/8.jpg" /][/p]
+        [p]Lassan kapaszkodsz felfelé a hegyoldalban, amikor hirtelen furcsa, szúró fájdalmat érzel a fejedben, mintha valami belecsípett volna az agyadba. Kénytelen vagy megállni. Amikor felnézel, tekintélyes külsejű alakot pillantasz meg magad előtt. Magas, izmos, emberformájú lény áll előtted, ezüsttel, arannyal díszített pompás palástban. Jóképűnek is mondhatnád, tekintete megnyerő és tiszta - de ez a tiszta tekintet az ördögé! Szeme lila tűzben ég, lényéből erő és rosszindulat árad. Ő a Dai-Oni, vagy más néven a felsőbbrendű démon.[/p]
+        [p]- Nos, halandó, úgy látom, az Árnyak Urának, Ikirunak a birodalmába szeretnél bejutni - mondja dörgő hangon. - Ehhez az kell, hogy legyőzz engem a Síkok közti Lovagi Tornán! - A Dai-Oni mennydörgésszerűen visszhangzó őrült kacagásba kezd, és eltűnik a szemed elől. Hirtelen az űrben találod magad. Amerre nézel, csillagok tömkelegét látod, Oly sokat, hogy szinte beleszédülsz. Néhány perc múlva ajtók tűnnek fel a szemed előtt, s lassan magadhoz térsz az őrületből. Nyolc ajtó vesz körül, melyek egy nyolcszögletű szoba egy-egy falán helyezkednek el. A falak, a mennyezet és a padló teljesen átlátszóak.[/p]
+        [p]Ekkor megszólal a Dai-Oni. Hangja a füledben cseng: - Ez a hely a Középpont. Minden egyes ajtó mögött hatalmas vadállatok rejtőznek, és ezeket kell megnyerned magadnak. Minél többet sikerül, annál jobb. Ha harcolni fogsz, veled lesznek majd és segítenek. Amikor készen állsz, meg kell küzdened velem és szövetségeseimmel a Csata Színhelyén. Élethalálharcot vívunk majd. Ha valamilyen csoda folytán te győzöl, bejutsz a Démonok Vermébe, s ott szembenézhetsz sorsoddal Ikiru hívei között. Akkor hát láss neki! Kívánom, hogy a szerencse soha ne kedvezzen neked, és ezer nyavalya szakadjon rád! - Hangja elhalkul. Nincs más választásod, harcolnod kell a Síkok közti Lovagi Tornán. Minden ajtón egy-egy tábla lóg. Melyik ajtón mész be elsőnek? A következő kiírások közül választhatsz:[/p]
+    </text>
+    <itemCheck type="section" id="30">
+      <dontHave>
+        <next id="30" pos="1">A Legeslegnagyobb Magasság Csúcsa</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="68">
+      <dontHave>
+        <next id="68" pos="2">A Magasabb rangú Sík</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="66">
+      <dontHave>
+        <next id="66" pos="3">A Kimondhatatlanul Nagy Szentség Hegye</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="78">
+      <dontHave>
+        <next id="78" pos="4">Akhon Végtelen Homoksivataga</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="98">
+      <dontHave>
+        <next id="98" pos="5">Az Ősi Iszap Mocsárvidéke</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="110">
+      <dontHave>
+        <next id="110" pos="6">Az Örökkévaló Torony</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="126">
+      <dontHave>
+        <next id="126" pos="7">Az Elvarázsolt Erdő</next>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="section" id="138">
+      <dontHave>
+        <next id="138" pos="8">A Csata Színhelye</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="9">
     <text>
         [p]Vadul csapkodva átverekszed magad a falun, és berohansz a sötét erdőbe. A Rokuro-Kubik, akik túlélték a rájuk mért vad támadást, futni hagynak. Túlélted az Élőholtak Városát. Nyersz 1 SZERENCSE pontot.[/p]
@@ -127,7 +197,13 @@
     </text>
     <next id="15"></next>
   </p>
-  <!-- 12 -->
+  <p id="12">
+    <text>
+        [p]- Úgy, hát eljutottál a Síkok közti Lovagi Tornára, halandó - mondja dörgő hangon a Tatsu. - Gratulálok! Elhatároztam, hogy segítek neked legyőzni a Dai-Onit, mert magam is Örömmel látnám holtan Ikirut, az Árnyak Urát. Amikor majd belépsz a Csata Színhelyére, én is ott leszek, és a te oldaladon fogok harcolni. - Miután mindezt közli veled, felröppen és elszáll. Nem tudsz mit tenni, vissza kell menned az ajtón a csillagok övezte Középpontba.[/p]
+    </text>
+    <gatherItem id="4003" />
+    <next id="8"></next>
+  </p>
   <p id="13">
     <text>
         [p]Egyszerre három, pikkelyes bőrű zöld szörny támad rád úszóhártyás karmaival, megpróbálnak lelökni a földhányás tetejéről. Meg kell küzdened velük.[/p]
@@ -168,14 +244,58 @@
     </text>
     <next id="50"></next>
   </p>
-  <!-- 17 -->
+  <p id="17">
+    <text>
+        [p]Három napig mész a vad vidéken, míg eljutsz a Póklápig. Szinte alig pihensz, mivel nem szeretnéd, ha elfognának Ikirunak, az Árnyak Urának lovas Szamurájai. Amikor elérsz a rettegett Póklápig, hirtelen szokatlanul fagyossá válik a levegő, de azzal biztatod magad, hogy így legalább jó mélyen behatolhatsz Ikiru földjére, még mielőtt az tudomást szerezne jelenlétedről. Jobbra egy macskaköves út vezet fel északnak, a deltáig. Kis idő múlva tavakkal és ingovánnyal szegélyezett gáton haladsz át. Lassan leszáll az éj, és a félhomályban már alig látsz tovább az orrodnál. Végül is egy útkereszteződéshez érsz. A ködös macskaköves út északkeletnek tart. Egy kitaposott földút viszont északnak visz, a „Lélek Forrása” feliratot viselő útjelző tábla mellett. Egy másik gát viszont a párába burkolózó tó partja mentén nyugatnak tart.[/p]
+    </text>
+    <itemCheck type="item" id="3010">
+      <have>
+        <next id="107"></next>
+      </have>
+      <dontHave>
+        <next id="285">Ha északnak indulsz tovább</next>
+        <next id="125">Ha nyugatnak mész</next>
+        <next id="249">Ha pedig északkeletnek</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="18">
     <text>
         [p]Felszáguldasz a lépcsőn, és berontasz egy kis őrszobába. A bent lévő egy szál katona meglepetten néz rád. Felrohansz mellette a palota belseje felé vezető folyosón, de hirtelen felcsendül a riadó. Jókora távolságra vagy tőlük, de nem menekülhetsz Tsietsin palotájából, hiszen üldözőid követnek. Végül elkapnak. Bár hősiesen harcolsz, ők az erősebbek, és végeznek veled.[/p]
     </text>
     <death />
   </p>
-  <!-- 19 -->
+  <p id="19">
+    <text>
+        [p]A Tatsu csalódottnak látszik. - Igen, eltaláltad - mondja -‚ a helyes válasz: „a szél”, emberfajzat. - Majd felderül az arca, szemében kapzsi fény csillan. - Rendben van, de a következő találós kérdést vajon kitalálod-e, éleseszű halandó?[/p]
+        [p class="handwritten"]Nem teheted be a bankba,[br /]
+        Mégis kamat terem rajta.[br /]
+        Amíg tied, nem is tudod,[br /]
+        Milyen kincs a tulajdonod.[br /]
+        Pazarlod, vagy nem pazarlod,[br /]
+        Így is elfogy, úgy is elfogy;[br /]
+        Megöregszel, akkor tudod,[br /]
+        Milyen nagy volt a vagyonod.[/p]
+    </text>
+    <userInput type="text">
+      <label>Mi a helyes válasz?</label>
+      <result text="gyerekkor">
+        <next id="52"></next>
+      </result>
+      <result text="gyermekkor">
+        <next id="52"></next>
+      </result>
+      <result text="a gyerekkor">
+        <next id="52"></next>
+      </result>
+      <result text="a gyermekkor">
+        <next id="52"></next>
+      </result>
+      <resultElse>
+        <next id="26"></next>
+      </resultElse>
+    </userInput>
+  </p>
   <p id="20">
     <text>
         [p]A foglár haragosan dörren rád.[/p]
@@ -189,11 +309,35 @@
       </failure>
     </test>
   </p>
-  <!-- 21 -->
-  <!-- 22 -->
+  <p id="21">
+    <text>
+        [p]A süvítő gömb nevű nyílvessző szélsebesen száguld célpontja, az egyik szörny mellkasa felé, de az éles hang, amit a gömb röptében kibocsát, semmilyen hatással nincs rájuk: egy másik szörny odagereblyéz magához úszóhártyás mancsával, majd, miközben a sziklagátnál megpróbálsz harcolni a fehéren tajtékzó víz ellen, hatalmasat rúg rajtad. Vesztesz 3 ÉLETERŐ pontot! Egyre csúszol lefelé, a teljes megsemmisülésbe, amikor az egyik szörny ismét neked esik. Nem tudod tovább tartani magad, és úgy döntesz, beleugrasz az alattad tajtékzó folyó fehér vizébe.[/p]
+    </text>
+    <loseItem id="3104" />
+    <add to="stamina" amount="-3" />
+    <next id="49"></next>
+  </p>
+  <p id="22">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/22.jpg" /][/p]
+        [p]Eleonóra előbbre lép, és ujjai közül kék villámnyalábot lövell ki Gargantuszra, akinek a villám az arcát éri, és rubinvörös szeme szinte szikrákat vet. Gargantusz iszonyatosat ordít fájdalmában, majd elterül a földön. Élettelen, akár egy bronzszobor.[/p]
+        [p]Eleonóra hozzád fordul, és így szól: - Az adósságomat törlesztettem, és most megyek! Sok szerencsét, harcos! - Int, és eltűnik arra, amerről jött.[/p]
+        [p]A Dai-Oni így szól: - Ügyes voltál, halandó, de most megöllek! - Jókora tüskés vasbuzogányt, egy Tetsubót lengetve közelít feléd.[/p]
+    </text>
+    <loseItem id="4009" />
+    <itemCheck type="item" id="4004">
+      <have>
+        <next id="394">Ha a Ki-Rint küldöd Dai-Oni ellen</next>
+        <next id="292">Ha te magad szállnál vele szembe</next>
+      </have>
+      <dontHave>
+        <next id="292"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="23">
     <text>
-        [p]Wakizasiddal véded a fejedet, miközben egyre hátrálsz a levegőből sisteregve alázúduló tüzes parázsözön elől. Az egyik parázs belekap a zománcozott vértedbe, a másik lecsapja fejedről a sisakot. Csúnyán megégtél, és csaknem agyrázkódást szenvedtél. Vesztesz 5 ÉLETERŐ pontot! Ha még mindig életben vagy, vérfagyasztó, dühödt ordítással meglendíted katanádat, és egyetlen suhintással levágod a tűzmester fejét. A többieket is megtámadnád, de azok mind bemenekültek a közeli erdőbe. Nem törődsz tovább a lángokkal, amelyek majdnem felfaltak. Megvédted a Sógun becsületét, ezért nyersz 1 Becsület pontot, és tovább folytatod az utadat.[/p]
+        [p]Wakizasiddal véded a fejedet, miközben egyre hátrálsz a levegőből sisteregve alázúduló tüzes parázsözön elől. Az egyik parázs belekap a zománcozott vértedbe, a másik lecsapja fejedről a sisakot. Csúnyán megégtél, és csaknem agyrázkódást szenvedtél. Vesztesz 5 ÉLETERŐ pontot! Vérfagyasztó, dühödt ordítással meglendíted katanádat, és egyetlen suhintással levágod a tűzmester fejét. A többieket is megtámadnád, de azok mind bemenekültek a közeli erdőbe. Nem törődsz tovább a lángokkal, amelyek majdnem felfaltak. Megvédted a Sógun becsületét, ezért nyersz 1 Becsület pontot, és tovább folytatod az utadat.[/p]
     </text>
     <add to="stamina" amount="-5" />
     <add amount="1" to="honor" />
@@ -227,8 +371,34 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 26 -->
-  <!-- 27 -->
+  <p id="26">
+    <text>
+        [p]- Nem, te emberfajzat, a válasz nem helyes! - mondja mohón a Tatsu, és vészjósló láng lobban a szemében. - Most felfallak! - Hatalmas ordítással, fogait csattogtatva rád veti magát. Meg kell küzdened vele.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="34" />
+    </fight>
+    <next id="42"></next>
+  </p>
+  <p id="27">
+    <text>
+        [p]Valamilyen csoda folytán elég erőd van hozzá, hogy ellenállj Ikiru démona ördögi hízelgésének. Amint ezt látja, hirtelen eltűnik. Ikiru dühödten sziszegi: - Nem átallottál ellenállni nekem, te hitvány halandó! - Mielőtt odarohanhatnál, hogy magadhoz ragadd a Daloló Halált, Ikiru feláll trónusáról és utánad veti magát, helyesebben a föld fölött odalibben hozzád. Két keze csupa fekete karom. Felkészülsz a csatára, de mielőtt hozzád érne, kitárja a karját, és egy fekete villám pattan ki belőle, mely egyenesen beléd vág. Átka lesújtott rád. Megégsz, és szörnyű sérüléseket szenvedsz. Vesztesz 2 SZERENCSE, 4 ÉLETERŐ és 2 ÜGYESSÉG pontot! Ikiru kezében vörösen izzó rúnajelekkel díszített fekete acélkard villan. Meg kell küzdened vele![/p]
+    </text>
+    <add amount="-2" to="luck" />
+    <add amount="-2" to="skill" />
+    <add amount="-4" to="stamina" />
+    <fight type="single" forceWeapon="1003">
+      <enemy id="68" />
+    </fight>
+    <itemCheck type="item" id="4010">
+      <have>
+        <next id="109"></next>
+      </have>
+      <dontHave>
+        <next id="400"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="28">
     <text>
         [p]Valaki hirtelen elkiáltja magát: - Hé, hát ez meg micsoda? Egy láb a szénakazalban! - Feltörő röhögés kíséri szavait. A szénát elnyalábolják, és lándzsájukat neked szegezve mindannyian ott állnak körülötted. - Úgy, szóval a Sógun bajnoka rejtőzik a szénakazalban, akár egy kondás! - mondja az egyik, kimonót viselő, kegyetlen arcú férfi. - Ieratsu vagyok, Tsietsin nagyúr hadnagya. Szeretettel vár a palotájában! - mondja savanyú képet vágva, majd jelt ad, és az őrök rád vetik magukat. Küzdesz, ahogy csak tudsz, de túl sokan vannak, és nem bírsz a túlerővel.[/p]
@@ -252,7 +422,21 @@
     </text>
     <next id="43"></next>
   </p>
-  <!-- 30 -->
+  <p id="30">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/30.jpg" /][/p]
+        [p]Benyitsz a „Legeslegnagyobb Magasság Csúcsa” elnevezésű ajtón. Tűhegyes sziklacsúcs tetején találod magad, amely belenyúlik a furcsa, sárga színű égbe. Fejed fölött narancssárga nap ragyog. Mélyen alattad sötétvörös a föld. Amerre a szem ellát, ezer és ezer hasonló hegycsúcs erdejét látod, de az a legmagasabb, amelyiken te állsz. Mögötted egy ajtó csüng a levegőben, amely a világból a Középpontba vezet.[/p]
+        [p]Egy folt jelenik meg az égbolton, és egyre nő, amint feléd közeledik. Egy Tatsu ez, vagyis szárnyatlan levegőjáró sárkány. Hatalmas, kígyószerű teste és négy, karmokban végződő lába van. Nem repül, hanem jár a levegőben.[/p]
+    </text>
+    <itemCheck type="section" id="112">
+      <have>
+        <next id="144"></next>
+      </have>
+      <dontHave>
+        <next id="156"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="31">
     <text>
         [p]A szörnyek pikkelyes zöld bőrét bíborvörös vér borítja el, ahol beléjük vágsz a kardoddal‚ és csakhamar rothadó gyümölcsre emlékeztet testük, de mégis úgy látod‚ hogy sebeik nem okoznak nekik különösebb gondot. Egyre több zöld lény ugrik ki a vízből és veti rád magát, s csakhamar bekerítenek. Valószínűleg nem lesz elegendő kardforgató tudományod ahhoz, hogy elbánj velük.[/p]
@@ -267,8 +451,27 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 32 -->
-  <!-- 33 -->
+  <p id="32">
+    <text>
+        [p]Az élőholt harcos vészjósló csöndben küzd ellened. Utolsó ütésed szétzúzza csontvázkarját, erre ugrik egyet, és már nem éred el. Hirtelen teljesen láthatatlanná válik, s csupán a testét körvonalazó piros csík jelzi, merre mozog. Ismét támad. Tovább harcolsz ellene. Vonj le magadtól 2 ÜGYESSÉG pontot, amíg ellenfeled láthatatlan.[/p]
+    </text>
+    <add amount="-2" to="skill" />
+    <changeEnemy attribute="fleeAtStamina" id="35" set="0" />
+    <fight type="single">
+      <enemy id="35" />
+      <winRound enemy="35">
+        <add amount="2" to="skill" />
+        <interrupt />
+      </winRound>
+    </fight>
+    <next id="58"></next>
+  </p>
+  <p id="33">
+    <text>
+        [p]Ahogy a lapályos mocsáron haladva egyre közelebb kerülsz a folyó torkolatához, elered az eső. Teljes erőddel küzdesz a szakadó eső ellen, de csakhamar tetőtől talpig elnyel a sár. Két napon át zuhog, s úgy döntesz, visszafordulsz. A víz szintje egyre emelkedik, és úsznod kell. Amikor már több órája úszol, erőd elhagy, és a vízben leled halálodat.[/p]
+    </text>
+    <death />
+  </p>
   <p id="34">
     <text>
         [p class="inlineImage"][img src="resources/ff20/34.jpg" /][/p]
@@ -284,7 +487,12 @@
     <next id="173">Ha elfutsz</next>
     <next id="183">Ha hátadat egy fa törzsének támasztva harcolsz ellenük</next>
   </p>
-  <!-- 36 -->
+  <p id="36">
+    <text>
+        [p]A Főnix tekintete kifejezéstelenné válik, a szemében égő lángok még lobbannak egyet, majd kihunynak. Élettelenül zuhan eléd. Néhány pillanattal később azonban ismét lángok borítják el testét, de ezúttal a madár a tűz martalékává válik, s csak hamu marad belőle. Ekkor szinte hihetetlen dolog történik. A hamuból egy másik, az előzőnél sokkal kisebb, hasonló madár röppen fel, a magasba tör, és legnagyobb megkönnyebbülésedre boldogan vijjogva eltűnik a szemed elől. Hitetlenkedve állsz egy ideig, elgondolkodsz a látottakon, majd megfordulsz, és kimész az ajtón. Ismét a Középpontban vagy.[/p]
+    </text>
+    <next id="8"></next>
+  </p>
   <p id="37">
     <text>
         [p]E szerencsétlen körülmények között igyekszel annyi tekintélyt szerezni magadnak, amennyit csak tudsz, és megparancsolod a parasztoknak, hagy szabadítsanak ki a csapdából. A faszénégetők egyenként közelítenek meg, mert félnek, hogy talán becsapod őket. Amikor szorongatott helyzetedben megpillantanak, kellemetlenül vigyorogva azon kezdenek tanakodni, mit is tegyenek veled, a csapdába esett Szamurájjal. A legnagyobb sikert az az ötlet aratja, hogy élve égessenek el az egyik faszénégető kemencében. Lehántják a közeli fák kérgét, hogy megkötözzenek.[/p]
@@ -299,7 +507,12 @@
     <add to="stamina" amount="-3" />
     <next id="50"></next>
   </p>
-  <!-- 39 -->
+  <p id="39">
+    <text>
+        [p]A háromágú szigony villás végei a mellkasodon bukkannak elő. A földre zuhansz, és vér önti el a szádat. A Kappák kezébe kerültél, ahonnan nincs menekvés. A folyó mélységes mély fenekére vonszolnak, bár már rég halott vagy.[/p]
+    </text>
+    <death />
+  </p>
   <p id="40">
     <text>
         [p]A foglár továbbmegy, és a többi foglyot is felébreszti. Fekete kenyeret és poshadt vizet ad be nekik a kis kémlelőablakon át. Miután ezzel végzett, azonnal visszatér hozzád, és kinyitja a cellád ajtaját. Ezúttal három katona is van vele.[/p]
@@ -314,7 +527,12 @@
     <add to="stamina" amount="-2" />
     <next id="129"></next>
   </p>
-  <!-- 42 -->
+  <p id="42">
+    <text>
+        [p]A sárkány felfordul és kimúlik. Ekkor szinte hihetetlen dolog történik: a szemed láttára tűnik el a semmibe, mintha soha nem létezett volna. Körülötted az erdő elveszti titokzatos varázserejét. Továbbmész a tisztás túloldalán lévő ösvényen.[/p]
+    </text>
+    <next id="82"></next>
+  </p>
   <p id="43">
     <text>
         [p]A megszokott tisztelet, amit a társadalomban elfoglalt helyeddel vívtál ki magadnak, sajnálatos módon hiányzik az első hegyilakókból, akikkel találkozol. Ezek faszénégetők, a bőrüket sötétszürkére festette a korom. A legfiatalabb felismeri a hátad mögött lengedező zászlót, és gúnyosan így szól: - Nézzétek, barátaim, itt látható a törvénytelen király törvényes bajnoka! Hol van urad kardja? Hol van urad a kardja nélkül? Hasekawa kopasz fejére mondom, már nem Sógun többé! Nincs már urad, ronin vagy! - A ronin nem más, mint olyan Szamuráj, akinek nincs többé ura, és elvesztette az állását. A paraszt egyre csak gyaláz téged, meg a Sógunt. A többi faszénégető nyugalomra inti az ifjút. Megbünteted-e az ifjút?[/p]
@@ -354,9 +572,37 @@
       </failure>
     </test>
   </p>
-  <!-- 47 -->
-  <!-- 48 -->
-  <!-- 49 -->
+  <p id="47">
+    <empty />
+  </p>
+  <p id="48">
+    <text>
+        [p]Az ifjú nő kihívóan néz rád. [alt]Melyik tárgyadat veszed elő?[/alt][/p]
+    </text>
+    <itemCheck type="item" id="3015">
+      <have>
+        <next id="86" pos="1">A kürtöt?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3018">
+      <have>
+        <next id="96" pos="2">A Tudás Vizét?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3008">
+      <have>
+        <next id="114" pos="3">A Zavarodottság Sisakját?</next>
+      </have>
+    </itemCheck>
+    <next id="130" pos="4" singleChoiceText="A hátizsákodat átnézve rájössz, hogy nincs nálad semmi, ami hasznos lehetne ebben a helyzetben">Ha egyiket sem</next>
+  </p>
+  <p id="49">
+    <text>
+        [p]Belevetetted magad az alattad tajtékzó folyóba, és legnagyobb rémületedre azt tapasztalod, hogy a szörnyek a folyó medrét telis-tele szurkálták kihegyezett végű karókkal. Vesztesz 7 ÉLETERŐ pontot! Nagy nehezen kikászálódsz a karók közül, amelyek sok helyen véresre sebezték a testedet, és holtfáradtan úszol a túlpart felé.[/p]
+    </text>
+    <add to="stamina" amount="-7" />
+    <next id="395"></next>
+  </p>
   <p id="50">
     <text>
         [p]A bűz egyre elviselhetetlenebb. Egy hatalmas barlangba jutsz, amelyben halvány fény dereng, de a fény forrását nem látod. Csontok, réti rongyok és rozsdás fegyverek hevernek szanaszét a földön. Ekkor hirtelen megpillantod a fény forrását. Hatalmas, izzó alak közeleg feléd. Irdatlanul nagy fogakkal szegélyezett szája kinyílik, és be akar kapni. Két óriási, kimondhatatlanul sötét, korong nagyságú szeme rád mered - ősi gonoszság tükröződik benne. Szelvényes, csontos testét több száz fürge láb tartja. Ez a piszkos, fehér test bocsátja ki magából a halvány fényt. Ez a teremtmény a Mukade, egy körülbelül négy méter hosszú, óriás százlábú. Hozzád araszol abban a reményben, hogy ma te leszel tápláléka. Ha elsajátítottad a Kjudzsutszu tudományát, és még megvan íjad és nyílvessződ, két nyílvesszőt lőhetsz ki rá, mielőtt rád vetné magát. Ha megnyered a csatát, akkor sem tudod visszaszerezni a nyílvessződet.[/p]
@@ -495,11 +741,57 @@
     </fight>
     <next id="62"></next>
   </p>
-  <!-- 51 -->
-  <!-- 52 -->
-  <!-- 53 -->
-  <!-- 54 -->
-  <!-- 55 -->
+  <p id="51">
+    <text>
+        [p]Látod, amint Ikiru még több árnyalakot gyűjt maga köré, és egyetlen intésére mindannyian rád támadnak. A képlékeny fekete tömeg be akar kebelezni. Egymás után tíz ilyen szörnnyel kell megküzdened. Amikor egyet kiütsz, a Daloló Halál minden alkalommal lüktető fényt bocsát ki magából, és végez vele.[/p]
+    </text>
+    <fight type="single" forceWeapon="1003">
+      <enemy id="58" />
+      <enemy id="59" />
+      <enemy id="60" />
+      <enemy id="61" />
+      <enemy id="62" />
+      <enemy id="63" />
+      <enemy id="64" />
+      <enemy id="65" />
+      <enemy id="66" />
+      <enemy id="67" />
+      <win>
+        <text>
+            [p]Megkerülöd a vermet, és szembefordulsz Ikiru ügyes, fekete arcával.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="121"></next>
+  </p>
+  <p id="52">
+    <text>
+        [p]A Tatsu a meglepetéstől megdermed, és tehetetlen dühvel így szól: - A gyermekkor, igen. Légy átkozott, halandó! - mennydörgi. Egy pillanatig azt hiszed, rád támad, de lecsillapodik. - Becsülettel elnyerted az engedélyt, hát mehetsz, szabad az út! De előtte még hallgass meg. Ha majd ott leszel a Síkok közti Lovagi Tornán, és meg akarod ölni a Dai-Onit, ezekkel a szavakkal hívd segítségül Jizót a Démonok közül: Egy Sura van itt, Ó, Jizo. Jöjj, és hajtsd ítéletedet! - Miután e rejtélyes üzenetet elmondja, felröppen és eltűnik. Helyén egy sárkányt ábrázoló jáde-talizmánt találsz. Felveszed és alaposan megnézed. Ez a [span class="takeItem" data-id="3014" data-amount="1"]Váratlan Körülmények Talizmánja[/span]. Nyersz 2 SZERENCSE pontot! Elindulsz az erdőn át.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <next id="82"></next>
+  </p>
+  <p id="53">
+    <text>
+        [p]Háttal állsz a fehér víznek, és fölemeled nehéz kardodat, de az álnok nyálkán megcsúszol. Elveszted az egyensúlyodat. Kardod átröpül a szörny feje fölött, és az megragad erős karmaival. 4 ÉLETERŐ ponttól foszt meg. A pikkelyes bőrű zöld szörny megragad, és mintha csak rongybaba lennél, behajít a gázló alattatok hömpölygő fehér hab jajba. Legnagyobb szerencsétlenségedre a szörnyek a gázló fenekét teleszurkálták hegyes végű karókkal, melyek felnyársalnak. Vesztesz 4 ÉLETERŐ pontot! Iszonyú kínok közepette kiszabadítod magad a karók fogságából, melyek több helyen is átdöfték a vértedet, és kiúszol a túlpartra.[/p]
+    </text>
+    <add to="stamina" amount="-8" />
+    <next id="395"></next>
+  </p>
+  <p id="54">
+    <text>
+        [p]Végre legyőzted a Dai-Onit, s ott fekszik az Aréna homokos küzdőterén. Az utolsókat rúgja. A szellem-nézősereg eltűnik, az Aréna ismét kihalt. A Dai-Oni fájdalmas hangon így kiált fel: - Te győztél, halandó! Ám a Síkok közti Lovagi Torna szabályai, melyeket az Istenek hoztak, engem béklyóként kötnek. Most megengedem, hogy feltegyél egy kérdést. - Mit kérdezd tőle?[/p]
+    </text>
+    <next id="206">Mi a Daloló Halál titka?</next>
+    <next id="188">Hogyan öljem meg Ikirut, az Árnyak Urát?</next>
+    <next id="150">Segíts, hogy megtaláljam és megölhessem Ikirut</next>
+  </p>
+  <p id="55">
+    <text>
+        [p]A varázsló ismét előre látja lépésedet. - Alighanem az az utolsó próbálkozásod - mondja. - Jól szerepeltél, ifjú Szamuráj! - A papnő remegni kezd, amikor a Tengeri Sárkány tátott szájához és tüskés uszonyához közeledsz. A Sárkány felkapja a fejit, amikor a varázsló ismét eltűnik, majd egy hatalmas forró vízsugár mindkettőtöket elborít. A papnő sikolya még a füledben cseng, amikor elveszted az eszméletedet, és a Tengeri Sárkány egészben lenyel.[/p]
+    </text>
+    <death />
+  </p>
   <p id="56">
     <text>
         [p]A lovas Szamuráj gúnyolódni kezd veled. Így kiált:[/p]
@@ -524,7 +816,29 @@
     </text>
     <death />
   </p>
-  <!-- 58 -->
+  <p id="58">
+    <text>
+        [p]A harcos újra a híd túlsó végében terem. Ismét láthatóvá válik, és furcsa jajveszékelésbe kezd. Rémülten látod, hogy hangjára a véres víz felszínén úszó csontvázak életre kelnek. Hatan közülük a hídra igyekeznek fölmászni.[/p]
+    </text>
+    <itemCheck type="item" id="3004">
+      <have>
+        <itemCheck type="item" id="3105">
+          <have>
+            <next id="192" pos="1">Ha Tsunevara nyílvesszőjével rálőnél az élőholt Szamurájra</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="items" id="3101 or 3102">
+          <have>
+            <next id="164" pos="2">Ha egy közönséges nyílvesszőt lőnél ki a Szamurájra</next>
+          </have>
+        </itemCheck>
+        <next id="242">Ha nem használnád az íjadat</next>
+      </have>
+      <dontHave>
+        <next id="242"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="59">
     <text>
         [p]A faszénégetők, akik talán tízen lehetnek, alacsony, füstölgő fakupacok gyűrűjében állnak, amelyeknek a tetejét frissen vágott tőzeg borítja. A fakupacokból szürke füstcsíkok szállnak a magasba, és eltakarják a fát, melyből a nagy hő hatására faszén lesz. Kicsit távolabb számos, elégetésre váró fadarab hever[/p]
@@ -543,7 +857,14 @@
       </have>
     </itemCheck>
   </p>
-  <!-- 60 -->
+  <p id="60">
+    <text>
+        [p]Kardot rántva így kiáltasz: - Segítened kell, mert ha nem, viselned kell a következményeket! - Arca elfehéredik a rémülettől, de hirtelen rád mutat, és ekkor kék villám pattan ki a kezei közül, és a lábad előtt csapódik be. Az izzó kék villám fájdalmasan hasít beléd. Vesztesz 2 ÉLETERŐ pontot! Amikor feltekintesz, ő már nincs sehol.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="70">Ha meg akarod keresni</next>
+    <next id="8">Ha nem, belépsz az ajtón, és visszamész a Középpontba</next>
+  </p>
   <p id="61">
     <text>
         [p]A gázló közepén lábad megcsúszik a mélyben az alattomos nyálkán, és belepottyansz a tajtékzó, fehér habokba. Szerencsétlenségedre a Kappák - így hívják ugyanis a pikkelyes bőrű zöld lényeket - a gázló fenekén kihegyezett végű karókat helyeztek el. A karók felnyársalnak, és vérted védelme nélkül még csak reményed sincs rá, hogy kiszabadulj a fájdalmas csapdából.[/p]
@@ -559,7 +880,13 @@
     <next id="210">A fejedre teszed a sisakot?</next>
     <next id="222">Nem nyúlsz semmihez, és kimész a barlangból?</next>
   </p>
-  <!-- 63 -->
+  <p id="63">
+    <text>
+        [p]A trónus felé hajítod a kardot. Úgy repül célpontja felé, akár egy nyílvessző. Amikor hozzáér a trónust körülvevő árnyak gyűrűjéhez, szikrázó fény csap ki belőle. A nagy fényességben mindannyian halálra égnek. Megpillantod Ikirut, amint a palástjába burkolódzva ül a trónusán, de egy pillanattal később az Árnyak Ura félreugrik a kard elől, és az a trónusába csapódik, és remegve megáll benne. A Daloló Halált kiengedted a kezed közül, nincs többé. Az erő, amelyet kölcsönzött neked, eltűnt. Vesztesz 4 ÉLETERŐ, 2 ÜGYESSÉG és 2 SZERENCSE pontot! Ikiru talpra szökken, és rekedt, érdes hangon így kiált: Te bolond![/p]
+    </text>
+    <loseItem id="1003" />
+    <next id="260"></next>
+  </p>
   <p id="64">
     <text>
         [p]Elindulsz a Shikomék felé, akik avasvaj-szagot árasztva bárgyún, közönyösen néznek rád. Meglepetésszerűen rajtuk ütsz. Az egyikkel egy pillanat alatt végzel, de a másik félelmében vad ordításba kezd, mire a kastélyt szamurájok és Shikomék tömkelege özönli el, Megpróbálsz elmenekülni, de azonnal észrevesznek, és rád vetik magukat. Foglyul ejtenek, s közben gúnyos megjegyzéseket tesznek a Sógunra és annak bajnokára, azaz rád - szemmel láthatólag pontosan tudják, ki vagy. Belöknek a várbörtön egyik kis cellájába. A foglár egy bivalytermetű pasas, viseltes bőrmellényben, így szól:[/p]
@@ -584,16 +911,63 @@
     <next id="119">Ha katanáddal levágod a lábadat a térded alatt, hogy végre kiszabadulj és megvédhesd magad</next>
     <next id="139">Ha vadul hadonászni kezdesz a kardoddal, abban a reményben, hogy a vadállat nem támad rád</next>
   </p>
-  <!-- 66 -->
-  <!-- 67 -->
-  <!-- 68 -->
+  <p id="66">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/66.jpg" /][/p]
+        [p]Belépsz a „Kimondhatatlanul Nagy Szentség Hegye” elnevezésű ajtón. Egy magas hegycsúcs lábánál állsz - a csúcsra könnyű lesz felkapaszkodnod, de hosszadalmas és fárasztó út előtt állsz. Az életnek semmi jelét sem látod errefelé, így nincs más választásod, fel kell másznod a csúcsra.[/p]
+        [p]Mikor végre felérsz, viszonylag sík vidék tárul a szemed elé. Tátva marad a szád a meglepetéstől, amikor egy pompás termetű, különös teremtmény toppan eléd. Erőt és méltóságot sugároz magából, szeme, mint két tüzes golyó. Teste akár a lóé, feje mint az oroszláné, két hatalmas szárnyát toll borítja. Ez maga a Ki-Rin, az istenek szolgája, bölcs teremtmény, a törvény és a jóság képviselője és harcosa. Egy szempillantás alatt végigmér.[/p]
+    </text>
+    <itemCheck type="attribute" id="honor" amount="5">
+      <have>
+        <next id="340"></next>
+      </have>
+      <dontHave>
+        <next id="352"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="67">
+    <text>
+        [p]A háromágú szigony átütötte a vértedet és eltörte két bordádat. Vesztesz 4 ÉLETERŐ pontot! Rájössz, hogy az előrelátás sokkal fontosabb a merészségnél, és eltűnsz a gázló környékéről.[/p]
+    </text>
+    <add to="stamina" amount="-4" />
+    <next id="335"></next>
+  </p>
+  <p id="68">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/68.jpg" /][/p]
+        [p]Belépsz a „Magasabb rangú Sík” elnevezésű ajtón. Lélegzetelállító síkság terül el előtted, füves, dimbes-dombos sztyeppe, ameddig a szemed ellát. A levegő szokatlanul friss, tiszta. Nem messze tőled különös, primitív kinézetű szarvas szökken tova. Közvetlenül mögötted egy ajtó csüng a levegőben - a Középpontba visszavezető út.[/p]
+        [p]Egyszer csak hatalmas állat jelenik meg előtted: egy óriási kardfogú tigris! Mereven néz, majd felugrik, és vágtázni kezd. Mit teszel?[/p]
+    </text>
+    <itemCheck type="item" id="3013">
+      <have>
+        <next id="214" pos="1">Ha előveszed a Főnixes Rubint</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="items" id="3004 and (3101 or 3102)">
+      <have>
+        <next id="224" pos="2">Ha nyilat röpítesz a tigrisbe</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3015">
+      <have>
+        <next id="234" pos="3">Ha belefújsz a kürtödbe</next>
+      </have>
+    </itemCheck>
+    <next id="8" pos="4">Ha visszalépsz az ajtóból</next>
+  </p>
   <p id="69">
     <text>
         [p]A testetlen, fejek iszonyúan ordítanak és átkozódnak, miközben a fejedhez meg a karodhoz csapódnak. Hiába harcolsz ellenük, az ütésektől megtántorodsz és nem tudsz védekezni. Zavarodban rosszul lépsz, és vagy húsz métert zuhansz a kút hideg vizébe.[/p]
     </text>
     <next id="25"></next>
   </p>
-  <!-- 70 -->
+  <p id="70">
+    <text>
+        [p]Bemész a nő után az erdőbe, de az ösvény egyszer csak nyomtalanul eltűnik a lábad alól. Tanácstalanul nézel körül, de utat semerre sem látsz - eltévedtél. Olyan érzésed van, mintha minden folyton változna, mozogna körülötted. Arra vagy ítélve, hogy örökkön örökké az Elvarázsolt Erdőben vándorolj. Talán majd egy szép napon belebotlasz az ifjú nőbe. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="71">
     <text>
         [p]Egy középkorú asszony az első falubeli, akivel találkozol. Fejét ócska selyemkendő fedi. Úgy látod, búskomorságban szenved, de meghív rozoga faházába, melynek egyik zsaluja szegletében lyukat látsz. Kapsz egy szalmazsákot, amelyen alhatsz, meg egy tál meleg zabkását.[/p]
@@ -614,10 +988,49 @@
       </have>
     </itemCheck>
   </p>
-  <!-- 73 -->
-  <!-- 74 -->
-  <!-- 75 -->
-  <!-- 76 -->
+  <p id="73">
+    <text>
+        [p]Óvatosan lépkedsz a kőgáton, amely alig néhány centire húzódik a víz alatt. A köveket borító zöld nyálka igen veszélyes. Két, pikkelyes bőrű, zöld szörny bukkan fel a zöld mélységből, és fürgén felmászik a kőgátra. Nem sok jót ígérő úszóhártyás karmaik vannak, és szemmel láthatólag nem izgatja őket túlzottan a lábuk alatt lévő csúszós nyálka.[/p]
+    </text>
+    <next id="49" pos="1">Ha beleveted magad az alattad tajtékzó fehér vízbe</next>
+    <next id="105" pos="2">Ha inkább visszafordulsz a gázlótól, és biztonságosabb átkelőt keresel a folyón</next>
+    <itemCheck type="items" id="3004 and 3104">
+      <have>
+        <next id="21" pos="3">Ha megpróbálsz rájuk ijeszteni a süvítő gömb nevű nyílvesszővel</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="74">
+    <text>
+        [p]Végre legyőzted a Dai-Onit, s ott fekszik az Aréna homokos küzdőterén. Az utolsókat rúgja. A szellem-nézősereg eltűnik, az Aréna ismét kihalt. A Dai-Oni fájdalmas hangon így kiált: - Te győztél, halandó! Ám a Síkok közti Lovagi Torna szabályai, melyeket az Istenek hoztak, engem béklyóként kötnek. Most feltehetsz egy kérdést. - A Dai-Oni varázsereje kissé meggyengült, miután vereséget szenvedett. Nyersz 1 ÜGYESSÉG, 1 SZERENCSE vagy 2 ÉLETERŐ pontot, ha küzdelmed során vesztettél volna belőlük. Mit kérdezel a Dai-Onitól?[/p]
+    </text>
+    <next id="206">Mi a Daloló Halál titka?</next>
+    <next id="188">Hogyan öljem meg Ikirut, az Árnyak Urát?</next>
+    <next id="150">Segíts, hogy megtaláljam és megölhessem Ikirut</next>
+  </p>
+  <p id="75">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/75.jpg" /][/p]
+        [p]Ahogy közelebb mész Hammurabinak, a Legyek Urának szobrához, a varázsló ismét megjelenik. A szobor életre kel, s a légy közel hétméteres szárnyai megfeszülnek. Csillogó összetett szeme mintha téged nézne. Iszonyatos zümmögés hallatszik. A varázsló ismét eltűnik, és ekkor a szemedet meg a bőrödet rovarok hada támadja meg. Ezek Hammurabi szolgái, akik a védelmére siettek. Csakhamar szoros gyűrűbe fognak, de ekkor a papnő elbűvölő altatódalba kezd. Ez a Hemzsegő Bogarak Dala. A rovarok elálmosodnak, s fokozatosan lepotyognak köréd a földre. A papnő egyre csak énekel, s látod, amint Hammurabi lágyan ringatózni kezd a dalára. A papnő a Legyek Ura kultuszának hűséges követője. Tisztelettel meghajol Hammurabi előtt, és ekkor megnyílik előtted a szökőkúthoz vezető út.[/p]
+    </text>
+    <next id="95"></next>
+  </p>
+  <p id="76">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/76.jpg" /][/p]
+        [p]Az Aréna falai remegő fénnyel halványodni kezdenek, majd eltűnnek. Helyüket valami más: egy fekete, sötét palota foglalja el. Egy hosszú, fekete márvány oszlopcsarnok végében találod magad. Az izzó szén titokzatos fénnyel parázslik, árnyak cikáznak egymást kergetve a padlón. A csarnok végében hatalmas verem tátong, veszélyes füst kígyózik belőle a magasba. A verem mögött furcsa, fekete kőből vésett trónus emelkedik. Egészen különleges faragások díszítik: apró csúcsok, tornyok, vízköpő sárkányok és más groteszk alakzatok. A trónuson csuklyás alak ül. Úgy látod, mintha meredten nézne valamit maga előtt. A trónus előtt lévő állványon egy nodacsi, egy kétmarkolatú, szépen megmunkált kard hever csillogó aranyhüvelyben. Nem illik ebbe az árnyékkal teli, homályos, ördögi gonoszságot árasztó oszlopcsarnokba elismered benne a Daloló Halált, a Szamuráj Kardját, és nagyot dobban a szíved.[/p]
+        [p]A csuklyás fej egyszer csak meglepetten rád néz. A csuklya alatt a mély, üres sötétségen kívül semmi sincs. Sziszegő hang szólít meg:[/p]
+        [p]- Ki merészeli megzavarni Onikarunak, a Verem Démonának nyugalmát, és magára vonni Ikirunak, az Árnyak Urának haragját?[/p]
+    </text>
+    <itemCheck type="section" id="206">
+      <have>
+        <next id="152"></next>
+      </have>
+      <dontHave>
+        <next id="94"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="77">
     <text>
         [p]Gyorsan elhaladsz a tőzegborította fakupacok, meg a faszénégetők mellett, akik hangosan gúnyolnak, amiért elhagytad a Sógunt és elmenekültél Hachimanból, mert attól féltél, hogy a Sógun megbukik és kegyenceit kivégzik. Igaz, ami igaz, nem is számíthatsz semmi jóra, hiszen nemegyszer a te feladatod volt, hogy megöld urad ellenségeit és az árulókat, amit azok családja soha nem fog neked megbocsátani. Furdal a lelkiismeret, mert nem tudtad megvédeni a Sógun jó hírét. Vonj le magadtól 1 Becsület pontot![/p]
@@ -632,8 +1045,30 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 78 -->
-  <!-- 79 -->
+  <p id="78">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/78.jpg" /][/p]
+        [p]Belépsz az „Akhon Végtelen Homoksivataga” elnevezésű ajtón. Iszonyatos forróság vesz körül, és hirtelen verejtékcseppek ütnek ki a homlokodon. A sárga égbolt alatt, melyen eddig még soha nem látott méretű, óriási nap ragyog, ameddig a szem ellát, hatalmas kiterjedésű sivatag terül el! Akhon végtelen homoksivataga. Mögötted egy ajtó lóg a levegőben - a Középpontba visszavezető út. Hirtelen éles, fülsiketítő sikoltás hallatszik. Különös madár csap le az égből. Hatalmasabb, mint a legnagyobb sas, amit eddig láttál, a szeme vörös tüzű lángban ég, és fémes aranytollazata van. Testét furcsa sárga lángok veszik körül, de csodálatos módon nem tesznek kárt benne. Ez a Főnix.[/p]
+    </text>
+    <itemCheck type="item" id="3013">
+      <have>
+        <next id="348"></next>
+      </have>
+      <dontHave>
+        <next id="360"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="79">
+    <text>
+        [p]Kisvártatva újabb Karolópók támad meg. Épp akkor mászik elő az odújából, amikor egy hosszú lábú vízipók araszol oda hozzád, hogy rád vesse magát. Mindkettőjükkel meg kell küzdened![/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="49" />
+      <enemy id="50" />
+    </fight>
+    <next id="87"></next>
+  </p>
   <p id="80">
     <text>
         [p]A lovas Szamurájon vastag harci vért feszül. A „vértfúró” nyílvesszőt kell használnod ellene. Kétszer lőhetsz rá, mielőtt odaérne hozzád.[/p]
@@ -667,8 +1102,25 @@
     </test>
     <next id="92"></next>
   </p>
-  <!-- 81 -->
-  <!-- 82 -->
+  <p id="81">
+    <text>
+        [p]Folytatod a küzdelmet. Amikor egy akkorát csapsz, hogy az minden normális embert nyugodtan a másvilágra küldene, az ezüst Szamuráj térdre hullik előtted, és fölényedet elismerve életét a kezedbe ajánlja. Nem vagy képes bántani, és megparancsolod, hogy álljon fel. - Bátran, hősiesen küzdöttél - mondja. - A te oldaladon fogok harcolni, ha szükséged lesz rám az Elvarázsolt Kertben.[/p]
+    </text>
+    <next id="185">Ha innen azon az ösvényen indulsz el, amely a papnő és a démon szobrához vezet</next>
+    <next id="165">Ha azon az ösvényen mész, amely Hammurabihoz, a Legyek Urához vezet</next>
+  </p>
+  <p id="82">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/82.jpg" /][/p]
+        [p]Végül kiérsz az Árnyak Erdejéből. Előtted az ösvény úttá szélesedik, mely egy folyón átívelő, ősrégi hídon visz át. Ez a Hiang-Kiang folyó és a Hagakure híd. Mögötte a távolban feltűnnek a Shios’ii hegyek.[/p]
+        [p]Miközben a híd felé tartasz, minden megváltozik körülötted, mintha másik világba léptél volna. Tulajdonképpen minden a régi: a híd, a hegyek, a környező táj, csak az ég sokkal sötétebb. A híd alatt a folyó vize vértől vörös, és csontvázak, koponyák, lábszárcsontok és egyéb végtagok úsznak a felszínén.[/p]
+        [p]Undorító kísértet állja el az utadat, egy Szamuráj harcos, csakhogy már nem él, hanem rég halott. Vigyorgó koponya húzódik meg a sisakja mögött, és mindkét csontkezében egy-egy kardot tart. Koponyákkal díszített, hátához erősített zászlóján ez olvasható: „Gonosz Halál”. Az élőholt harcos nagyot ugrik a levegőbe, és előtted ér földet. Meg kell küzdened vele![/p]
+    </text>
+    <fight type="single">
+      <enemy id="35" />
+    </fight>
+    <next id="32"></next>
+  </p>
   <p id="83">
     <text>
         [p]Abban reménykedve, hogy elkezdheted a csatát, mielőtt a zöld emberek lerántanák a vértedet a sötét mélységbe, átrohansz a kőgáton, mely alig néhány centire húzódik a víz felszíne alatt. Szerencsétlenségedre a gátat borító zöld nyálka igencsak csúszós.[/p]
@@ -709,8 +1161,19 @@
       </failure>
     </test>
   </p>
-  <!-- 86 -->
-  <!-- 87 -->
+  <p id="86">
+    <text>
+        [p]Ajkadhoz illeszted a kürtöt, és hatalmasat fújsz bele. Fülsiketítő hangja hallatán a nő sikítva a füléhez tapasztja két kezét, és berohan az erdőbe.[/p]
+    </text>
+    <next id="70">Ha utánaeredsz</next>
+    <next id="8">Ha nem, bemész az ajtón, és visszatérsz a Középpontba</next>
+  </p>
+  <p id="87">
+    <text>
+        [p]Nincs több pók, mely az utadba állna, és így előbbre mehetsz. Az eső kezd kissé csöndesedni, s a víz színe alól kivillan egy hosszú gát, amely a Pókok Kerítésétől északra tart. A gát elvezet egészen a Shios’ii hegység előhegyeihez, ahol apró csapásokon mész tovább, hogy utadat lerövidítsed. Végül elérsz az egyik magasabb hegyig, elindulsz fölfelé.[/p]
+    </text>
+    <next id="8"></next>
+  </p>
   <p id="88">
     <text>
         [p]Elkapod az őr kardforgató kardját és kicsavarod. Ennek következtében az őr a falhoz csapódik, és eszméletlenül esik össze. Ha akarod, elveheted az egyik [span class="takeItem" data-id="1001" data-amount="1"]kardját[/span], de a fickónak nincs sem wakizasija, sem rövid kardja. A folyosó egy lépcsőfordulónál ér véget. Fölfelé és lefelé is mehetsz.[/p]
@@ -724,8 +1187,15 @@
     </text>
     <death />
   </p>
-  <!-- 90 -->
-  <!-- 91 -->
+  <p id="90">
+    <empty />
+  </p>
+  <p id="91">
+    <text>
+        [p]A barlangban egy gyönyörű nő fekszik egy kőpárkányon. Gonosz fény villan a szemében, amikor meghív, vacsorázz vele... egy kis friss emberhúst. Azt feleled, hogy te tiszteletre méltó Szamuráj vagy, és a közelébe sem mész. A gyönyörű nő a szemed előtt változik ár hatalmas, démoni disznóvá. Ő Nushi, egy olyan szörny, mely fiatal nő képében jelenik meg, és az összes vadállatot odúja köré tudja gyűjteni, hogy óhajait teljesítsék. - Meg kell küzdened a kis háziállataimmal, Szamuráj! - mondja. - Ezt követően fuvolázó hangon elkiáltja magát, és állatai máris a barlang bejárata előtt nyüzsögnek: három óriáspók, egy karolópók, mely csaknem a fejedre lép, egy hatalmas földi pók, meg egy hosszú lábú vízipók. Kettővel még csak-csak elbánnál, de egyszerre hárommal már nem. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="92">
     <text>
         [p]A dárda hegye egyre közelebb ér hozzád.[/p] 
@@ -773,9 +1243,33 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 94 -->
-  <!-- 95 -->
-  <!-- 96 -->
+  <p id="94">
+    <text>
+        [p]Elszántan mész végig a csarnokon, készen arra, hogy megöld Ikirut. A trónuson ülő alak halk, démoni kacagásba kezd. Borsózik tőle a hátad. Kezével jelt ad, erre legnagyobb rémületedre egy árny úszik elő a veremből, és előtted ölt alakot. Emberszerű lény ugyan, de a fején szarvak vannak, és a mancsán hatalmas karmok. Ez maga az Árnydémon, egy részben test, részben légnemű alvilági szörny. Meg kell küzdened vele![/p]
+        [p]Valahányszor eltalálod, dobj két kockával. Ha a kapott szám páros, ellenfeled veszít 2 ÉLETERŐ pontot! Ha a kapott szám páratlan, csapásod nem találja el igazán, csupán anyagtalan testét éri, s ezért csak 1 ÉLETERŐ pontot vonhatsz le tőle.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="56" />
+    </fight>
+    <next id="260"></next>
+  </p>
+  <p id="95">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/95.jpg" /][/p]
+        [p]A Legyek Urának pompásan csillogó testét megkerülve odamész a szökőkúthoz. Egy hatalmas fehér szikla közepéből vastag sugárban ömlik a víz egy márványszegélyű medencébe. Futónövények tükröződnek az alázúduló víz sugarában, ott csillognak-villognak az örök nedvet adó vízben. Az egyik márványlapon, a medence szélén egy ezüstkancsó és egy kehely áll. A víz tiszta, hideg.[/p]
+    </text>
+    <next id="161">Ha inni akarsz a medence vizéből</next>
+    <next id="243">Ha úgy döntesz, hogy megtöltöd vízzel az ezüstkancsót</next>
+  </p>
+  <p id="96">
+    <text>
+        [p]Úgy látod, mintha a nő agyát valami megzavarta volna. Talán a Tudás Vize segít majd kitisztítani az elméjét. Átnyújtod neki az itallal teli üveget, melyet gondolkodás nélkül, közönyös arccal átvesz és egy szuszra kihörpint. Hirtelen megdermed, szemében megpillantod az értelem sugarát.[/p]
+        [p]- Eleonóra vagyok, a boszorkány - szólal meg halk hangon. - Ikiru varázsolt el, és ő zavarta meg az elmémet! Tudok rólad, és küldetésed célját is tudom. A Csata Színhelyén ott leszek melletted, és segíteni foglak - mondja hálás tekintettel. Meghajol előtted, és elhagyja a tisztást. Most pedig az ajtón át vissza kell térned a Középpontba.[/p]
+    </text>
+    <loseItem id="3018" />
+    <gatherItem id="4009" />
+    <next id="8"></next>
+  </p>
   <p id="97">
     <text>
         [p]A gázló közepén megcsúszik a lábad az alattomos iszapban. Már majdnem belezuhansz a tajtékzó fehér habokba, amikor lábaddal megkapaszkodsz egy hatalmas vízikígyóban, visszanyered az egyensúlyodat, és végigmész a túlpartra. Sajnos nem vagy elég fürge, és a kígyóknak sikerül lekapniuk rólad és a vízbe dobniuk a vértedet. Rád támadnak. Az első hárommal csapsz össze. Undorító úszóhártyás karmaik vannak, melyek ahányszor csak megtámadnak, 4 ÉLETERŐ pont veszteséget okoznak majd neked, mivel nem védi vért a testedet.[/p]
@@ -787,7 +1281,15 @@
     </fight>
     <next id="31"></next>
   </p>
-  <!-- 98 -->
+  <p id="98">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/98.jpg" /][/p]
+        [p]Egy alacsony földhányás tetején állsz. Körülötted hatalmas mocsár terül el, bugyborékolva fortyog bűzös iszap és sártenger. Torz alakú fák és növények igyekeznek kiszabadulni fogságukból. Egy ajtó lóg mögötted a levegőben - út vissza a Középpontba.[/p]
+        [p]Hirtelen hatalmas kígyó emelkedik ki előtted a mocsártengerből. Rád emeli fekete gyémánthoz hasonló szemét, és fejét előrehajtva készen áll a támadásra, hogy kettéharapjon.[/p]
+    </text>
+    <next id="246">Ha megvívsz vele</next>
+    <next id="258">Ha inkább valamelyik tárgyadat használod fel ellene</next>
+  </p>
   <p id="99">
     <text>
         [p]Becsület pontjaid végképp elfogytak. Ahogy visszapörgeted az agyadban az eseményeket, attól a pillanattól kezdve, hogy elindultál megkeresni a Daloló Halált, világossá válik előtted, hogy csaknem minden alkalommal tisztességtelenül jártál el. Becsület nélkül semmi sem vagy, életed mit sem ér. Egyetlen becsületes dolgot tehetsz. Szeppukut kell elkövetned, azaz önkezeddel kell véget vetned életednek. Minden bátorságodat összeszeded, és beledőlsz a katanádba. Legalább most az egyszer úgy viselkedtél, mint egy valódi Szamuráj![/p]
@@ -807,8 +1309,15 @@
     <next id="163">Ha rákényszeríted őket, hogy hűségnyilatkozatot tegyenek, mielőtt továbbmennél</next>
     <next id="179">Ha megparancsolod az öregnek, hogy vezessen a falu szentélyébe</next>
   </p>
-  <!-- 102 -->
-  <!-- 103 -->
+  <p id="102">
+    <empty />
+  </p>
+  <p id="103">
+    <text>
+        [p]Egy pillanatra minden elnémul körülötted, ahogy hason fekszel a kőpárkányon, majd hirtelen tompa morajlás hangzik fel a mélyből, és a föld ismét megremeg. Az erős rengés hatására a sziklahegy oldala hangos reccsenéssel széthasad. A barlang nagy robajjal beszakad, és szürke szikladarabok röppennek szanaszét. Ha a barlangban kerestél volna menedéket, most a szikladarabok agyonzúztak volna.[/p]
+    </text>
+    <next id="273"></next>
+  </p>
   <p id="104">
     <text>
         [p]Megfordulsz, és visszamész a főútra. A környék elhagyatott szántóföldjei a védtelen falusiak jajkiáltásaitól zengenek. Vesztesz 1 Becsület pontot szívtelen viselkedésedért.[/p]
@@ -823,14 +1332,35 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 105 -->
+  <p id="105">
+    <text>
+        [p]Nem üldöznek tovább, amikor sietve elhagyod a gázlót. Mivel nincs vérted, nélküle 2 helyett minden alkalommal 4 ÉLETERŐ pontot fogsz veszteni, amikor eltalálnak a harc során. A Sógun bajnokának férfiasabban, bátrabban kellett volna viselkednie. Vérted nélkül kevesebb reményed van rá, hogy siker koronázza küldetésedet és elvesztése miatt szégyent hoztál urad, a Sógun fejére, mert a vértet tőle kaptad. Vonj le magadtól 2 Becsület pontot.[/p]
+    </text>
+    <add amount="-2" to="honor" />
+    <itemCheck type="attribute" id="honor" amount="1">
+      <have>
+        <next id="263"></next>
+      </have>
+      <dontHave>
+        <next id="99"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="106">
     <text>
         [p]Amikor kiértek a völgyből, hatalmas, félelmetes erdő széléhez értek. Az út úgy tűnik el benne, akár a kő a vízben. Azonnal rájössz: ez az Árnyak Erdeje, és keresztül kell mennetek rajta. Moichi halványan elmosolyodik, és így szól: - Mióta a Daloló Halált ellopták, csak rosszat hallottam erről az erdőről, uram! Mit gondol, muszáj nekünk…? - Te bólintasz, és csak ennyit mondasz: - Muszáj, Moichi - és egyenesen elindulsz az erdőbe.[/p]
     </text>
     <next id="124"></next>
   </p>
-  <!-- 107 -->
+  <p id="107">
+    <text>
+        [p]A térkép szerint a bíborpagodába vezető ösvény a párafelhőben lévő tó mentén futó gát mellett visz nyugatra.[/p]
+    </text>
+    <next id="317">Ha megpróbálsz az ösvényen a bíborpagodába menni</next>
+    <next id="285">Ha északnak indulsz tovább</next>
+    <next id="125">Ha nyugatnak mész</next>
+    <next id="249">Ha pedig északkeletnek</next>
+  </p>
   <p id="108">
     <text>
         [p]Egy kis raktárhelyiséghez érsz. Egy ajtó a palota udvarára nyílik, egy másikon pedig be lehet jutni a palotába.[/p]
@@ -838,8 +1368,28 @@
     <next id="158">Ha bemész a palotába, és megkeresed Tsietsint</next>
     <next id="168">Ha magadra öltöd az őr vértjét, akit az imént öltél meg, és ezzel a csellel próbálsz kijutni a palotából a főkapun át</next>
   </p>
-  <!-- 109 -->
-  <!-- 110 -->
+  <p id="109">
+    <text>
+        [p]Ikiru kardjából hirtelen sötét árnynyaláb csap ki, s úgy döfi át a testedet, akár a tű az anyagot. Bárhol ér, kínzóan éget. Hátratántorodsz, és üvöltesz a fájdalomtól, amikor a sötét nyaláb szitává szabdalja a testedet, és kioltja az életedet.[/p]
+        [p]Amikor már halott vagy, testedet a Démonok Vermébe vetik, ahol Ikiru szolgájaként fogsz tovább létezni. Gazdád bármikor szólíthat, ha szüksége lesz rád.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="110">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/110.jpg" /][/p]
+        [p]Belépsz az „Örökkévaló Torony” elnevezésű ajtón. Hirtelen minden megváltozik körülötted. Egy erődítmény tetején állsz, harcosok vesznek körül. A környezet egyfolytában változik, az erdőt síkság váltja fel, a kék ég vörösbe borul, és így tovább. Olyan érzésed van, mintha a Torony egyik helyről a másikra egyik világból egy másikba hajózna át. Előtted egy jól megtermett harcos áll. Szakállas arca harcokban edzett, érett férfira vall. Páncélzata, mely tetőtől talpig beborítja, furcsa és ismeretlen számodra. Mögötte nyolc társa áll, arcukat lehúzott sisakrostély takarja. Vértjük aranyból van, fehér zubbonyukat kék karikák díszítik.[/p]
+        [p]A férfi így szól: - Üdvözöllek az Örökkévaló Toronyban, versenyző. Az Aranyszázad lovagjai vagyunk, és ha azt akarod, hogy segítségedre legyünk a Síkok közti Lovagi Tornán, felelned kell a következő kérdésre. Visszaadod-e nekünk királyunk harci legyezőjét?[/p]
+    </text>
+    <itemCheck type="item" id="3007">
+      <have>
+        <next id="186"></next>
+      </have>
+      <dontHave>
+        <next id="200"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="111">
     <text>
         [p]A legidősebb faszénégető, egy görbe lábú öregember a csontjaiban érzett fájdalomtól nyögve, nehézkesen térdre ereszkedik előtted, és alázatosan bocsánatodért esedezik, amiért a fia megsértett. Miközben felajánlja, hogy elvezet a közeli faluba, ahol biztonságban töltheted az éjszakát, társai mindannyian térdre borulnak előtted. Zord arckifejezésedet látva az öreg arra kér, vidd magaddal a fiát rabszolgának, és tanítsd alázatra, csak meg ne öld.[/p]
@@ -854,8 +1404,19 @@
     </text>
     <next id="2"></next>
   </p>
-  <!-- 113 -->
-  <!-- 114 -->
+  <p id="113">
+    <text>
+        [p]Síri csend vesz körül, a köd még a hatalmas köveket nyaldosó víz hang ját is elnyomja Egyik kőről a másikra ugrálva alig távolodsz el a gáttól, amikor úgy látod, mintha a víz szintje egyszer csak emelkedni kezdene a közeli bazalttömbök között. A vízből hirtelen egy elképesztően nagy vadállat bukkan fel, s az általa felkorbácsolt habok lesodornak téged a kövekről. A Kraken kiemelkedik a vízből, és hatalmas csápjaival, melyek olyan vastagok, mint a tested, elkap, és begyömöszöl kitátott csőrébe. Csak az óriások merik használni az ehhez hasonló, óriás méretű töltéseket, de még ők is hoznak egy-két embert, hogy csillapítsák a Kraken étvágyát.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="114">
+    <text>
+        [p]Előveszed a sisakot. Úgy látod, mintha az ifjú nő valamilyen oknál fogva megzavarodott volna. Talán e sisak segít majd meggyógyítani. Felajánlod neki, hogy tegye a fejére, de összeszűkül a szeme a félelemtől. - Nem! - kiáltja rettegve, majd berohan a fák közé.[/p]
+    </text>
+    <next id="70">Ha utánaeredsz</next>
+    <next id="8">Ha nem, és visszatérsz az ajtón át a Középpontba</next>
+  </p>
   <p id="115">
     <text>
         [p]Apró darabokra zúztad egy csomó helyi vénnek a fejét, de egyre több és több nyüzsög körülötted. Menekülnöd kell.[/p]
@@ -890,8 +1451,15 @@
     </fight>
     <next id="154"></next>
   </p>
-  <!-- 117 -->
-  <!-- 118 -->
+  <p id="117">
+    <text>
+        [p]Kardoddal belehasítasz a vízbe, hogy keresztülvágd a hálót, de a szörny sokkal gyorsabb, mint te vagy. A válladra hajítja a hálót, és leránt a nyálkás, csúszós szikláról, amelyen eddig is elég bizonytalanul billegtél. A kardodat már semmire sem tudod használni a víz alatt, ahol gyűrűbe zárnak a pikkelyes bőrű, zöld szörnyek. Már nem tehetsz semmit. A Kappák karmai közé kerültél, ahonnan nincs menekvés![/p]
+    </text>
+    <death />
+  </p>
+  <p id="118">
+    <empty />
+  </p>
   <p id="119">
     <text>
         [p]Hatalmasat ordítasz, amikor végre sikerül levágnod a lábadat, és kiszabadulsz fogságodból. A fájdalomtól majdnem eszméletedet veszted, s bódultan egy zsineget tekersz érszorítóként a lábad köré, hogy megakadályozd a további vérzést. Vesztesz 7 ÉLETERŐ pontot! Ha túlélted mindezt, az éjszaka hátralévő része iszonyú rettegések közepette telik el, mert a vérszag egy vadállatot csalt oda hozzád. A hajnali fényben rájössz, hogy tévedtél: nem erdei párduc, hanem egy olyan hiéna volt, amelyik a macskahangot utánozza. Teljesen értelmetlenül csonkítottad meg magadat, és most szégyenszemre vissza kell fordulnod, hisz kalandod itt véget ér.[/p]
@@ -916,7 +1484,20 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 121 -->
+  <p id="121">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/121.jpg" /][/p]
+        [p]Ott állsz Ikiru trónja előtt. Ellenfeled úgy emelkedik fel, akár egy árnyék. Benézel csuklyája alá, de csak a nagy űrt látod, a gonoszságot az arcán. Ikiru rád mutat, s ekkor sötét villám pattan ki az ujjai közül, és egyenesen feléd tart.[/p]
+    </text>
+    <itemCheck type="attribute" id="honor" amount="6">
+      <have>
+        <next id="189"></next>
+      </have>
+      <dontHave>
+        <next id="131"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="122">
     <text>
         [p]A lépcső aljában egy nyirkos, sziklába vájt alagutat veszel észre, melynek vége a sötétbe vész.[/p]
@@ -970,8 +1551,22 @@
     </text>
     <next id="112"></next>
   </p>
-  <!-- 125 -->
-  <!-- 126 -->
+  <p id="125">
+    <text>
+        [p]A több kilométer hosszú kőgátat a deltában élt ősi civilizáció építette akkor, amikor e vidéket még nem borította be az örökkévaló köd. Egy idő múlva kanyargós ösvényhez érsz, mely a mocsár felé tart.[/p]
+    </text>
+    <next id="339">Ha ezen az ösvényen mész tovább</next>
+    <next id="387">Ha a kőgáton mész tovább</next>
+  </p>
+  <p id="126">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/126.jpg" /][/p]
+        [p]Benyitsz az „Elvarázsolt Erdő” elnevezésű ajtón, és bemész. Erdei tisztáson találod magad. Olyan néma csönd honol itt, mintha egyetlen erdei élőlény sem lakna erre. Szinte érzed a levegőben a varázslat illatát. Jól tudod, ha elindulnál ebben az erdőben, percek alatt eltévednél benne - lehet, hogy örökre. Mögötted egy ajtó lóg a levegőben, melyen át a Középpontba lehet jutni, s elhatározod, hogy megjegyzed magadnak. Ebben a pillanatban díszes zöld palástban gyönyörű ifjú nő jelenik meg előtted a tisztáson. Szépsége elbűvöl, de tekintete üres, közönyös, amikor rád néz, s ami a legfurcsább: villámhoz hasonló sistergő kék fénynyaláb cikázik két keze között. Arra kéred, mondja meg, ki ő, és megkérdezed, hogy megvéd-e a Dai-Oni ellen.[/p]
+        [p]- Hogy ki vagyok én? - kérdezi vissza. - Azt én már nem tudom. Ami pedig a segítségemet illeti, azt nem könnyű kivívni - mondja, szemöldökét zavartan összehúzva, mint akinek nehezére esik a beszéd.[/p]
+    </text>
+    <next id="60">Ha megtámadod, és rákényszeríted, hogy segítsen neked</next>
+    <next id="48">Ha inkább valamelyik tárgyad segítségével próbálod meg elérni a célodat</next>
+  </p>
   <p id="127">
     <text>
         [p]Miközben a gázló széle felé tartasz, három pikkelyes bőrű zöld alak emelkedik ki a folyó vizéből, és nehézkesen kimászik a partra, éppen ott, ahol vérted egyes darabjait hagytad. Nagyobbak az embernél, fejük furcsán lapos, és járás közben úgy tesznek, mintha valami láthatatlan súlyt egyensúlyoznának a fejük tetején. Amikor megállsz, közvetlenül melletted két újabb szörny bukkan fel a vízből.[/p]
@@ -999,8 +1594,22 @@
     <next id="255">Ha furának találod lapos fejüket, és ez gondolkodóba ejt</next>
     <next id="277">Ha azt a látszatot kelted, hogy valamilyen varázslatot fogsz alkalmazni ellenük</next>
   </p>
-  <!-- 130 -->
-  <!-- 131 -->
+  <p id="130">
+    <text>
+        [p]Úgy látod, mintha a nő agyát valami megzavarta volna, de nem tudod, miképpen lehetne segíteni rajta.[/p]
+    </text>
+    <next id="60">Ha megpróbálod erőszakkal rávenni, hogy segítsen neked</next>
+    <next id="8">Ha nem, és visszamész a hátad mögött lévő ajtón át a Középpontba</next>
+  </p>
+  <p id="131">
+    <text>
+        [p]A villámok beléd vágnak, megperzselnek, megsebesítenek és rontást hoznak rád. Vesztesz 1 ÜGYESSÉG, 1 SZERENCSE és 4 ÉLETERŐ pontot! Megtántorodsz, és Ikiru boldogan szisszen fel. Rövid idő múlva azonban visszanyered eszméletedet, és a Daloló Halált lengetve rárontasz.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <add amount="-1" to="luck" />
+    <add amount="-1" to="skill" />
+    <next id="199"></next>
+  </p>
   <p id="132">
     <text>
         [p]A folyosó elején valaki elkiáltja magát: - Hida, te vagy az? - Ám, amikor nem válaszolsz, az illető halkan káromkodik, és hallod rohanó léptei zaját. A fáklya fényében egy őr jelenik meg, és döbbenten néz rád. - Megszöktél? De hát hogyan…? - kérdezi, de a mondatot nem tudja befejezni, mert közben rátámadsz.[/p]
@@ -1019,7 +1628,9 @@
     </fight>
     <next id="115"></next>
   </p>
-  <!-- 134 -->
+  <p id="134">
+    <empty />
+  </p>
   <p id="135">
     <text>
         [p]Az egyik faszénégető nedves tőzeget ránt elő a közeli faszénégető kemencéből, és hatalmas füstfelhő csap fel a felszított tűzből.[/p]
@@ -1046,8 +1657,69 @@
       </have>
     </itemCheck>
   </p>
-  <!-- 137 -->
-  <!-- 138 -->
+  <p id="137">
+    <text>
+        [p]Ünnepi köntösbe öltözött férfi, az udvari varázsló lép eléd az egyik rózsabokor mögül, és sugárzó arccal köszönt az Elvarázsolt Kertben. Közli veled, hogy csak akkor találsz vissza Hachiman földjére, ha iszol a forrásvízből. - Mindvégig az ösvényeken kell haladnod - teszi hozzá. - Itt a gonosz leselkedik rád, de ha célba érsz, jutalmad nem marad el. - Amint e szavakat kimondja, füstfelhő veszi körül, és eltűnik.[/p]
+    </text>
+    <next id="379">Ha az ezüst Szamuráj felé vezető ösvényt választod</next>
+    <next id="349">Ha azon az ösvényen mész tovább, amelyik a papnő és a démon felé visz</next>
+  </p>
+  <p id="138">
+    <itemCheck type="items" id="4002 or 4003 or 4004 or 4005 or 4006 or 3017 or 4008 or 4009">
+      <have>
+        <text>
+            [p class="inlineImage"][img src="resources/ff20/138.jpg" /][/p]
+        [p]Elhatároztad, hogy szembeszállsz a Dai-Onival és szövetségeseivel. Kinyitod a „Csata Színhelye” elnevezésű ajtót, és belépsz rajta. Hatalmas aréna kellős közepén találod magad, de a lelátók üresek, és úgy érzed, mintha évezredek óta üresek lennének. Amikor megjelensz, a lelátókon szellemszerű lények kelnek életre, elmúlt korok emberei, férfiak és nők egyaránt. Csevegnek, hadonásznak, fogadásokat körnek a harc kimenetelére, mintha egy örökkévalóság óta, még halálukban is erre a pillanatra vártak volna. Az aréna homokos talaján állsz, s szövetségeseid valamennyien felsorakoznak mögötted. Egytől egyig bátorítanak, szavakkal vagy csak némán adják tudtodra segítőkészségüket.[/p]
+            [p]Előtted áll a Dai-Oni - lenyűgöző látvány, bár az arca iszonyú gonoszságot áraszt. Mögötte három szörny sorakozik: a szövetségesei. Az első egy irdatlan nagy, nyálkás, ragyás varangyos békához hasonló lény, amelynek a szája csaknem akkora, mint a feje. A másik egy hatalmas rovar, olyan, mint egy óriás Imádkozó Sáska. Kitinpáncél feszül a testére, rágóit szörnyűségesen csattogtatja. A harmadik egy hatalmas termetű, két méternél magasabb, bronztestű, kecskelábú férfi. Zöld bőrét ragyásra marta az idő. Vörös lánggal égő szeme erőt sugároz.[/p]
+            [p]Dai-Oni tébolyultan kacag fel, és így szól: - Végre eljutottál a Csata Színhelyére, halandó, de élve nem kerülsz ki innen! Ők az én démon barátaim - mutat a mögötte állókra. - Graalsch, kapd be! - kiáltja. Az irdatlan nagy varangyos békához hasonló lény nagyokat ugorva indul el feléd. A szellemtömeg ordítva helyesel.[/p]
+            [p]Szövetségeseid a parancsodat várják. Valahogyan megsejted, hogy az Aréna szabályai szerint egyszerre csak két lény csaphat össze. Kit küldesz a varangy ellen?[/p]
+        </text>
+        <itemCheck type="item" id="4004">
+          <have>
+            <next id="146">A Ki-Rint?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4005">
+          <have>
+            <next id="172">A Kardfogú Tigrist?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4009">
+          <have>
+            <next id="162">Eleonórát, a Boszorkányt?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4008">
+          <have>
+            <next id="184">Az Aranyszázadot?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4006">
+          <have>
+            <next id="194">A Főnixet?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4003">
+          <have>
+            <next id="208">A Tatsut?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3017">
+          <have>
+            <next id="228">A kígyómintás botot?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            [p]Elhatároztad, hogy szembeszállsz a Dai-Onival és szövetségeseivel. Kinyitod a „Csata Színhelye” elnevezésű ajtót, és belépsz rajta. Hatalmas aréna kellős közepén találod magad, de a lelátók üresek, és úgy érzed, mintha évezredek óta üresek lennének. Amikor megjelensz, a lelátókon szellemszerű lények kelnek életre, elmúlt korok emberei, férfiak és nők egyaránt. Csevegnek, hadonásznak, fogadásokat körnek a harc kimenetelére, mintha egy örökkévalóság óta, még halálukban is erre a pillanatra vártak volna. Az aréna homokos talaján állsz egymagadban.[/p]
+            [p]Előtted áll a Dai-Oni - lenyűgöző látvány, bár az arca iszonyú gonoszságot áraszt. Mögötte három szörny sorakozik: a szövetségesei. Az első egy irdatlan nagy, nyálkás, ragyás varangyos békához hasonló lény, amelynek a szája csaknem akkora, mint a feje. A másik egy hatalmas rovar, olyan, mint egy óriás Imádkozó Sáska. Kitinpáncél feszül a testére, rágóit szörnyűségesen csattogtatja. A harmadik egy hatalmas termetű, két méternél magasabb, bronztestű, kecskelábú férfi. Zöld bőrét ragyásra marta az idő. Vörös lánggal égő szeme erőt sugároz.[/p]
+            [p]Dai-Oni tébolyultan kacag fel, és így szól: - Végre eljutottál a Csata Színhelyére, halandó, de élve nem kerülsz ki innen! Ők az én démon barátaim - mutat a mögötte állókra. - Graalsch, kapd be! - kiáltja. Az irdatlan nagy varangyos békához hasonló lény nagyokat ugorva indul el feléd. A szellemtömeg ordítva helyesel.[/p]
+        </text>
+        <next id="254"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="139">
     <text>
         [p]Néhány percnyi heves kardcsörtetés után a vadállat csendben eltűnik, de te nem mersz elaludni, mert arra gondolsz, hátha visszatér. Az álmatlan éjszakáért veszítesz 2 ÉLETERŐ pontot.[/p]
@@ -1089,8 +1761,26 @@
     <next id="108">Ha fölfelé mész</next>
     <next id="122">Ha lefelé</next>
   </p>
-  <!-- 143 -->
-  <!-- 144 -->
+  <p id="143">
+    <text>
+        [p]Végvonaglásában a pók tehetetlenül a hátára fordul. Mögötte ott feszül a hatalmas háló, és tátongó üregeket látsz. Jobb felől egy barlang, a hátad mögött az egyfolytában emelkedő vízszint.[/p]
+    </text>
+    <next id="91">Ha belépsz a barlangba</next>
+    <next id="79">Ha keresztültörsz a pókhálón</next>
+  </p>
+  <p id="144">
+    <text>
+        [p]Ez ugyanaz a Tatsu, akivel az erdőben találkoztál. Felismer, és megáll előtted.[/p]
+    </text>
+    <itemCheck type="section" id="52">
+      <have>
+        <next id="12"></next>
+      </have>
+      <dontHave>
+        <next id="166"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="145">
     <text>
         [p]Menekülés közben észreveszed, hogy a falu elöljárójának a feje elválik a törzsétől, és lebegni kezd, csakúgy, mint minden más fej a faluban. Rémülten ismered fel, hogy ezek a Rokuro-Kubik, akik egyáltalán nem halottak, de a fejük éjszakánként elválik a törzsüktől, és vadászni indul. A repülő fejek feléd tartanak, rettenetes fogcsikorgás hallatszik. Noha már áttörtél a vének gyűrűjén, hamarosan a falubeli fejek tömegével kerülsz szembe. Föl kell venned a harcot velük, mintha egyetlen, sokfejű szörnnyel állnál szemben.[/p]
@@ -1100,7 +1790,52 @@
     </fight>
     <next id="85"></next>
   </p>
-  <!-- 146 -->
+  <p id="146">
+    <text>
+        [p]Megparancsolod a Ki-Rinnek, hogy támadjon. Felröppen, majd lecsap a varangyra, patája szikrákat vet. Graalsch, a varangyhoz hasonló lény, hatalmas szemét a Ki-Rinre mereszti. Szájat hirtelen nagyra tátja, felpattan a levegőbe, és kettéharapja a Ki-Rint, mielőtt az elmenekülhetne előle. A varangy visszaugrik a földre, és elégedetten majszolja a húst. A Dai-Oni vad nevetésben tör ki. Nincs időd siránkozni elvesztése miatt: a varangyhoz hasonló lény most feléd tart.[/p]
+    </text>
+    <loseItem id="4004" />
+    <itemCheck type="items" id="4005 or 4009 or 4008 or 4006 or 4003 or 3017">
+      <have>
+        <text>
+            [p]Melyik szövetségesed küldöd most a varangy ellen?[/p]
+        </text>
+        <itemCheck type="item" id="4005">
+          <have>
+            <next id="172">A Kardfogú Tigrist?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4009">
+          <have>
+            <next id="162">Eleonórát, a Boszorkányt?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4008">
+          <have>
+            <next id="184">Az Aranyszázadot?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4006">
+          <have>
+            <next id="194">A Főnixet?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4003">
+          <have>
+            <next id="208">A Tatsut?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3017">
+          <have>
+            <next id="228">A kígyómintás botot?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="254"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="147">
     <text>
         [p]Úgy teszel, mintha egy ruganyos lépéssel közelebb mennél a parasztokhoz, de izmaid hirtelen megfeszülnek, és legnagyobb megdöbbenésükre hatalmasat ugrasz előre. A legbátrabb épp fel akar ragadni egy dorongot a mellette lévő boksából, de kardod hegye beleáll a tőzegbe, és megakadályozza ebben. A faszénégetők rémülten állnak meg. A legidősebb, egy görbe lábú öregember, a csontjait szaggató fájdalomtól nagyokat nyögve nehézkesen térdre ereszkedik előtted, és alázatosan a bocsánatodért esedezik, amiért a fia megsértett. Felajánlja, hogy elvezet a közeli faluba, ahol biztonságban töltheted az éjszakát. Zord arckifejezésedet látva arra kér, vidd magaddal a fiát rabszolgának, és tanítsd alázatra, csak meg ne öld.[/p]
@@ -1115,8 +1850,30 @@
     <next id="256">Ha megtámadod az őröket</next>
     <next id="180">Ha hagyod, hogy Tsietsin nagyúr elé vezessenek</next>
   </p>
-  <!-- 149 -->
-  <!-- 150 -->
+  <p id="149">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/149.jpg" /][/p]
+        [p]Csupán néhány göcsörtös fa és itt-ott egy-két mély gödör töri meg az esőáztatta föld egyhangúságát. Két, egymástól majdnem tíz méter lévő fa között furcsa háló feszül, és az utadat állja. Egy hatalmas üreg mélyéről hirtelen lapos, kör alakú sziklakő gurul feléd, majd egy óriási karolópók veti rád magát. Magasabb, mint te vagy, és állkapcsa úgy csattog, mint az olló. Meg kell küzdened az életedért.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="48" />
+    </fight>
+    <next id="143"></next>
+  </p>
+  <p id="150">
+    <text>
+        [p]A Dai-Oni gonoszul mosolyog. - Mi sem egyszerűbb ennél, halandó! - mondja, és minden varázserejét összeszedve elrebegi a Szerencse Varázslat varázsigéjét. Nyersz 2 SZERENCSE pontot! - Szükséged lesz a szerencsére, de még az sem lesz elegendő - mondja, és meghal.[/p]
+    </text>
+    <add amount="2" to="luck" />
+    <itemCheck type="section" id="52">
+      <have>
+        <next id="220"></next>
+      </have>
+      <dontHave>
+        <next id="270"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="151">
     <text>
         [p]Wakizasiddal reggel még mindig a csapda fogságában vagy, amikor a hátad mögül kiáltást hallasz. A faszénégetők jöttek vissza. Minden tekintélyedet összeszedve - már amennyire ebben a helyzetben ez lehetséges - megparancsolod nekik, hogy szabadítsanak ki. Meghányják-vetik egymás között, hogy mit csináljanak a fogságba esett Szamurájjal. A legnagyobb sikert az az ötlet aratja, hogy égessenek el élve az egyik faszénégető boksában. Az egyik közeli fát lehántolják, szemmel láthatólag azért, hogy legyen mivel megkötözni téged.[/p]
@@ -1124,7 +1881,20 @@
     <next id="89">Ha elmondod nekik, milyen fontos a küldetésed</next>
     <next id="101">Ha figyelmezteted a faszénégetőket, hogy egy életen át szellemek fogják kísérteni őket, ha megölik a Sógun bajnokát</next>
   </p>
-  <!-- 152 -->
+  <p id="152">
+    <text>
+        [p]Pillanatnyi habozás nélkül elkiáltod magad: - Harmónia! - Hangod úgy zeng, akár a trombitaszó, az árnyak csarnokának nyugodt félhomályában. Ikiru rémülten pattan vissza trónusára. - Nem! - kiáltja reszelős hangon, mintha kréta csikorgott volna egy palatáblán. A sötétben fénycsóva pattan ki a kardból, és Ikiru hirtelen még jobban csuklyája mögé rejti eddig is láthatatlan arcát. A fény olyan hirtelen hunyt ki, amilyen gyorsan felvillant. A Daloló Halál méltóságteljesen emelkedik a levegőbe, és iszonyú gyorsasággal röpül feléd, egyenesen kinyújtott kezedbe, majd, mintha csak üdvözölne, a markodba simul. Szinte abban a pillanatban érzed a hatását: testedet erő járja át, majd kicsattansz az egészségtől. Nyersz 2 SZERENCSE, 2 ÜGYESSÉG és 4 ÉLETERŐ pontot, még akkor is, ha ezek az extra pontok túlszárnyalják a [em]Kezdeti[/em] értékeket. Egy percig mereven állsz, amíg a testedben szétárad az életerő. Ekkor a csuklyás alak egyetlen intésére egy árny úszik elő a veremből, és a szemed láttára kezd alakot ölteni. Emberformájú ugyan, de fején szarvak vannak, és vastag karmokban végződik a mancsa. Ez maga az Árnydémon, egy alvilági lény, amelynek a teste részben anyag, részben köd.[/p]
+    </text>
+    <gatherItem id="1003" />
+    <itemCheck type="attribute" id="honor" amount="5">
+      <have>
+        <next id="274"></next>
+      </have>
+      <dontHave>
+        <next id="174"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="153">
     <text>
         [p]A Rokuro-Kubi koponyájának apró szilánkjai körülötted hevernek. Bár az éjszaka sötét, mégis elég jól látsz ahhoz, hogy elmenekülj az Élőholtak Falujából. Növeld SZERENCSE pontjaid számát 1-gyel, amiért megmenekültél a faluból.[/p]
@@ -1146,8 +1916,19 @@
     <next id="145">Ha rémülten elmenekülsz</next>
     <next id="133">Ha megvárod, míg elhalkul a különös ének, mely előcsalta őket</next>
   </p>
-  <!-- 156 -->
-  <!-- 157 -->
+  <p id="156">
+    <text>
+        [p]A különös teremtmény, vészjósló sárga fénnyel a szemében, lecsap melletted, és nagyra tátott szájából keskeny lángnyelv lövell ki rád. Lehajolsz, de közben elveszted az egyensúlyodat, és lezuhansz a csúcsról. Vesztesz 4 ÉLETERŐ pontot! A Tatsu újabb támadásba lendül. Mivel ebből a helyzetből képtelen vagy harcolni ellene, úgy döntesz, hogy odamész a mögötted csüngő ajtóhoz és visszatérsz a Középpontba.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <next id="8"></next>
+  </p>
+  <p id="157">
+    <text>
+        [p]Tengernyi sok hosszú, vékony sás nő ott, ahova visszamentél. Egy ideig még tudtál haladni közte a mocsárban, de most már végképp elvesztened a tájékozódó képességedet, és fogalmad sincs, merre lehet az ösvény. Rossz irányba mész, és elnyel a mocsár. Minél jobban harcolsz ellene, annál mélyebbre süllyedsz az ingoványban. Ikiru fog uralkodni Hachimanban.[/p]
+    </text>
+    <death />
+  </p>
   <p id="158">
     <text>
         [p class="inlineImage"][img src="resources/ff20/158.jpg" /][/p]
@@ -1178,8 +1959,43 @@
     <next id="180">Ha megvárod, míg Tsietsin elé vezetnek</next>
     <next id="204">Ha megparancsolod Moichinak, hogy engedjen szabadon, és közös erővel támadtok Shikomékra</next>
   </p>
-  <!-- 161 -->
-  <!-- 162 -->
+  <p id="161">
+    <text>
+        [p]Kiszáradt szájjal hajolsz a frissítő vizű medence fölé, és nagyot kortyolsz a Tudás Vizéből. Agyad megvilágosodik. Hirtelen mindenre tudod a választ, mintha te lennél az isten. Fenséges érzés, ezért képtelen vagy megállni, hogyne igyál még többet a vízből. A tudástól egészen megrészegülsz. Mindent tudsz, amit egy alkimistának, az udvar legbölcsebb tudósának és más szakembernek tudnia kell. Tudásszomjad kiolthatatlan, és egyre csak iszol, iszol; s még mindig nem elég: beleveted magad a medencébe, és elmerülsz a tudás vizében, melytől megmámorosodsz, és végül ott leled a halálodat.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="162">
+    <text>
+        [p]Megparancsolod Eleonórának, hogy álljon ki a varangy ellen. Nekilendül, ujjai között kék villám cikázik, de a Varangy Démon iszonyatos gyorsasággal pattan fel, mielőtt a nő bármit is tehetne, majd hatalmas száját nagyra tátva bekapja és lenyeli. Rémülten hátrálsz.[/p]
+    </text>
+    <loseItem id="4009" />
+    <itemCheck type="items" id="4004 or 4006 or 3017">
+      <have>
+        <text>
+            [p]Kit küldesz a Varangy Démon ellen?[/p]
+        </text>
+        <itemCheck type="item" id="4004">
+          <have>
+            <next id="146">A Ki-Rint?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4006">
+          <have>
+            <next id="194">A Főnixet?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3017">
+          <have>
+            <next id="228">A kígyómintás botot?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="254"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="163">
     <text>
         [p]Miután az emberek hűségesküt tesznek, közlöd velük, hogy a Sógun akaratának megfelelően kegyelemben részesíted őket, nem oltod ki az életüket. Növeld Becsület pontjaid számát 1-gyel.[/p]
@@ -1188,9 +2004,43 @@
     <next id="179">Ha megparancsolod az öregnek, hogy vezessen el a falu szentélyébe</next>
     <next id="195">Ha inkább egyedül folytatod az utadat</next>
   </p>
-  <!-- 164 -->
-  <!-- 165 -->
-  <!-- 166 -->
+  <p id="164">
+    <text>
+        [p]A nyílvessző egyenesen beleáll a csontvázba. Hátratántorodik, de más nem történik vele. Újabb nyílvesszőt lősz ki, de az elszáll a két lába, azaz két lábszárcsontja között. A többi csontváz már majdnem felmászott a hídra. Nincs több időd.[/p]
+    </text>
+    <itemCheck type="item" id="3101">
+      <have>
+        <loseItem id="3101" />
+      </have>
+      <dontHave>
+        <loseItem id="3102" />
+      </dontHave>
+      <after>
+        <itemCheck type="item" id="3101">
+          <have>
+            <loseItem id="3101" />
+          </have>
+          <dontHave>
+            <loseItem id="3102" />
+          </dontHave>
+        </itemCheck>
+      </after>
+    </itemCheck>
+    <next id="242"></next>
+  </p>
+  <p id="165">
+    <text>
+        [p]Mielőtt elindulnál a Hammurabi szobrához vezető ösvényen, tanácsot kérsz az ezüst Szamurájtól, de az néma marad, egy szót sem szól. A varázsló ismét előbukkan a levegőből, és a Legyek Urának szobra húszméteres szárnyait meghajlítva rád emeli óriási, csillogó, összetett szemét. Hatalmas zümmögés támad körülötted, és legyek tömkelege támadja meg a szemedet és bőrödet. Hammurabi szolgái jöttek, hogy megvédjék urukat. A legyek egyre sűrűbb tömegben támadnak, már majd megfulladsz tőlük, amikor Hammurabi lecsap rád. Szemmel láthatólag úgy döntött, hogy a fejed finom falat lesz a számára, és már nem állíthatod meg…[/p]
+    </text>
+    <death />
+  </p>
+  <p id="166">
+    <text>
+        [p]A Tatsu mennydörgő hangon így szól: - Azt hitted, megölhetsz, mi? De az én hatalmam sokkal nagyobb, mintsem gondolnád, halandó! - Szemében vészjósló narancssárga fény villan, közelebb röppen hozzád, nagyra tátja a száját, és tüzet okád rád. Lehajolsz, de elveszted az egyensúlyodat, s miközben jól megperzselődsz, lezuhansz a csúcsról. Vesztesz 4 ÉLETERŐ pontot! A Tatsu újabb támadásba lendül. Felméred lehetőségeidet, és úgy döntesz, hogy ebből a helyzetből nincs értelme tovább küzdeni. Kinyitod a hátad mögött a levegőben lógó ajtót, és visszatérsz a Középpontba.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <next id="8"></next>
+  </p>
   <p id="167">
     <text>
         [p]Két perc sem kell hozzá, és megszabadulsz a vértedtől. Minden erődet megfeszítve darabonként kihajigálod a túlsó partra. Legnagyobb meglepetésedre egy pikkelyes bőrű zöld kar emelkedik ki a vízből, és röptében elkapja a mellvértedet, majd óvatosan lehúzza a víz alá. Elvesztetted a mellvértedet.[/p]
@@ -1206,7 +2056,12 @@
     </text>
     <next id="386"></next>
   </p>
-  <!-- 169 -->
+  <p id="169">
+    <text>
+        [p]Tengernyi sok hosszú, vékony sás nő ott, ahová visszamentél. Egy ideig még tudtál haladni közte a mocsárban, de most már végképp elvesztetted a tájékozódó képességedet, és fogalmad sincs, merre lehet az ösvény. Merészen nekivágsz az egyik sássornak, és csakhamar egy esőfüggöny mögött rejtőző alacsony domb tűnik fel előtted. Amikor a talaj emelkedni kezd a lábad alatt, és egyre inkább magad mögött hagyod a vizet, akkor veszed észre, hogy a mocsár összes teremtménye - patkányok, mocsári szalamandrák, Sőt még az óriás sárkánygőte is, mely, Úgy látszik, fél bekapni téged - Ugyanazon az ösvényen menekül a dagály elől, amelyiken te.[/p]
+    </text>
+    <next id="149"></next>
+  </p>
   <p id="170">
     <text>
         [p]Úgy döntesz, hogy a bélfürkész nevű nyílvesszőidet használod, mert ezek a leghatásosabbak. Előveszel egyet, és megcélzod vele a hozzád legközelebb álló Shikomét.[/p]
@@ -1220,10 +2075,65 @@
       </failure>
     </test>
   </p>
-  <!-- 171 -->
-  <!-- 172 -->
-  <!-- 173 -->
-  <!-- 174 -->
+  <p id="171">
+    <text>
+        [p]Az utolsó pillanatban kardoddal a zöld vízbe suhintasz, és átvágod a hálót, majd hihetetlen gyorsasággal ismét döfsz. Kardod hegye beleáll a pikkelyes bőrű zöld szörny arcába, mely bíborvörössé válik, és elmerül a véresen bugyborékoló vízben. A másik tovább halad a gázló vizében, és minden lépésedre ügyelve épphogy sikerül kiérned a túlpartra.[/p]
+    </text>
+    <next id="395"></next>
+  </p>
+  <p id="172">
+    <text>
+        [p]A tigris vészjósló hangon üvöltve nekilendül. A varangyhoz hasonló lény elbizonytalanodik, és hátraugrik. Graalsch, a Varangydémon előreszegett fejjel támad, hatalmas pofáját kitátva a tigris után kap, de az hihetetlen fürgeséggel elugrik előle, és karmokban végződő hatalmas mancsával kettétépi a jajveszékelő varangyot. Miután elvégezte a feladatát, a tigris felszökken a levegőbe, és eltűnik a szemetek elől, mintha egy másik síkra ugrott volna át. A Dai-Oni dühösen felordít majd így kiált: - K’rllk - öld meg ezt az emberfélét! - mire az Imádkozó Sáska Démon rohanvást elindul feléd.[/p]
+    </text>
+    <loseItem id="4005" />
+    <itemCheck type="item" id="4004 or 4008 or 4003">
+      <have>
+        <text>
+            [p]Kit küldesz a Démon ellen?[/p]
+        </text>
+        <itemCheck type="item" id="4004">
+          <have>
+            <next id="278">A Ki-Rint?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4008">
+          <have>
+            <next id="304">Az Aranyszázadot?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4003">
+          <have>
+            <next id="294">A Tatsut?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="266"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="173">
+    <text>
+        [p]Amikor menekülni próbálsz, az egyik pikkelyes bőrű zöld szörny háromágú szigonyt röpít feléd.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="225"></next>
+      </success>
+      <failure>
+        <next id="257"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="174">
+    <text>
+        [p]Le kell győznöd az Árnydémont. Nem úgy fest, mintha a Daloló Halált zavarná, hogy a démon testetlen - ő nemcsak húst aprít, hanem árnyakat is.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="57" />
+    </fight>
+    <next id="212"></next>
+  </p>
   <p id="175">
     <text>
         [p]Az asszony nem válaszol. Megfordulsz és ránézel. Furcsán, zavartan bámul rád. Fogai vacognak a félelemtől, mintha beszélni próbálna, de nem tud. Végül kinyögi: - Menj. Menj el a faluból.[/p]
@@ -1250,7 +2160,7 @@
   </p>
   <p id="178">
     <text>
-        [p]- Ne ölj meg, nagy harcos, ne ölj meg! - rimánkodik Tsietsin. - Ikiru kényszerített rá, hogy a törvényes Sógun ellen forduljak. Bocsáss meg. Mostantól fogva hűséges alattvalója leszek. - Mindez átlátszó hazugság. Amint lenézel rá, csak megvetést és gyűlöletet érzel iránta. Tsietsin szeme ősszeszűkül, arcára ravasz gonoszság ül ki. Jobb keze meglendül, és egy tűhegyes tőrt repít a combodba. Vesztesz 3 ÉLETERŐ pontot. Ha még életben vagy, meglepetten hőkölsz hátra, erre ő kardot ránt. - Légy átkozott, te disznó! - üvölti, és rád támad. Le kell győznöd Tsietsin nagyurat.[/p]
+        [p]- Ne ölj meg, nagy harcos, ne ölj meg! - rimánkodik Tsietsin. - Ikiru kényszerített rá, hogy a törvényes Sógun ellen forduljak. Bocsáss meg. Mostantól fogva hűséges alattvalója leszek. - Mindez átlátszó hazugság. Amint lenézel rá, csak megvetést és gyűlöletet érzel iránta. Tsietsin szeme ősszeszűkül, arcára ravasz gonoszság ül ki. Jobb keze meglendül, és egy tűhegyes tőrt repít a combodba. Vesztesz 3 ÉLETERŐ pontot. Meglepetten hőkölsz hátra, erre ő kardot ránt. - Légy átkozott, te disznó! - üvölti, és rád támad. Le kell győznöd Tsietsin nagyurat.[/p]
     </text>
     <add amount="-3" to="stamina" />
     <fight type="single">
@@ -1270,7 +2180,19 @@
     </text>
     <death />
   </p>
-  <!-- 181 -->
+  <p id="181">
+    <text>
+        [p]A vízszint egyre magasabb lesz, és mind nehezebben tudod követni a mocsaras vidéket átszelő biztonságos ösvényt. Bármikor elvétheted a lépést, és elnyelhet a bűzös mocsár.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="169"></next>
+      </success>
+      <failure>
+        <next id="157"></next>
+      </failure>
+    </test>
+  </p>
   <p id="182">
     <text>
         [p]Szétteríted a vaslegyezőt. Gyönyörű kép bontakozik ki a szemed előtt: egy jelvény, amelyet a legyező lapjaira festettek, s amelyet nem ismersz ugyan fel, de tudod róla, hogy nagyot régi. Fehér alapon kilenc arany nyílvessző mutat egy kék kör belseje felé. Talányosnak véled az egészet, összecsukod a legyezőt, és elteszed a hátizsákodba.[alt /][/p]
@@ -1287,10 +2209,63 @@
     </itemCheck>
     <next id="222" pos="3" singleChoiceText=" Kimész a barlangból.">Ha kimész a barlangból</next>
   </p>
-  <!-- 183 -->
-  <!-- 184 -->
-  <!-- 185 -->
-  <!-- 186 -->
+  <p id="183">
+    <text>
+        [p]Hátadat a fa törzsének támasztva ismét támadásba lendülsz. Elkeseredetten kell küzdened, hogy kivédd a pikkelyes zöld szörnyek halálos csapásait.[/p]
+    </text>
+    <next id="231">Ha egy kénköves trükkel próbálkozol</next>
+    <next id="255">Ha furának találod lapos fejüket, és ez gondolkodóba ejt</next>
+    <next id="277">Ha úgy teszel, mintha valamilyen varázslatot alkalmaznál ellenük</next>
+  </p>
+  <p id="184">
+    <text>
+        [p]Az Aranyszázad Lovagjai hangos csatakiáltást hallatva katonás rendben indulnak rohamra. Egyenes kardjaik és buzogányaik egyszerűen lepattannak a Varangy Démon bőrszerű páncéljáról. Graalsch kegyetlen pontossággal csap le: fejét rendkívül gyorsan mozgatva, percek alatt harapja ketté a lovagokat. Mind elpusztulnak. Döbbenten állsz hihetetlen ereje láttán. Graalsch feléd fordul, és hatalmas ugrásokkal feléd tart.[/p]
+    </text>
+    <loseItem id="4008" />
+    <itemCheck type="item" id="4003 or 4004 or 4005">
+      <have>
+        <text>
+            [p]Melyik szövetségesed választod most?[/p]
+        </text>
+        <itemCheck type="item" id="4003">
+          <have>
+            <next id="208">A Tatsut?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4005">
+          <have>
+            <next id="172">A Kardfogú Tigrist?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4004">
+          <have>
+            <next id="146">A Ki-Rint?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="254"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="185">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/185.jpg" /][/p]
+        [p]Az ezüst Szamuráj eltökélten lépdel melletted a démon és a fogoly papnő ikerszobra felé. A varázsló ismét előbukkan a semmiből, és a szobor - a fekete bőrű, vörös szarvú démon meg a sápadt papnő - életre kel. A papnő a lábad elé veti magát, és térden állva könyörög, hogy mentsd meg őt a Démonok Verméből, de fogvatartója kegyetlenül ránt egyet a láncon, és a nő a földre zuhan. Az ezüst Szamuráj a Régmúlt Idők Csatakiáltását hallatja, és a démont elfogja a rémület. Óriási harc alakul ki kettejük között, de még a démon ördögi hatalma sem ér semmit a cikázó Szamurájjal szemben. A démon elpusztul. A lánc eltűnik, és az ezüst Szamuráj kicsiny ezüstcsomóvá zsugorodik össze. A papnő a kezedbe teszi a kezét. - És most merre, bátor megmentőm? - Merre indulsz?[/p]
+    </text>
+    <next id="55">Ha a Tengeri Sárkány szobra felé mész</next>
+    <next id="75">Ha Hammurabinak, a Legyek Urának a szobra felé indulsz el</next>
+  </p>
+  <p id="186">
+    <text>
+        [p]Előveszed a harci legyezőt. A lovagnak elakad a lélegzete a meglepetéstől. - Hát nálad van! - kiáltja, és térdre borul előtted, amikor átadod neki a legyezőt. Társai követik a példáját.[/p]
+        [p]- Ha majd a Csata Színhelyére érsz, mi is ott leszünk, és segítünk neked a harcban - mondja. - Régóta keressük ezt a csodálatos legyezőt![/p]
+        [p]Hirtelen a Középpontban találod magad, ahol csillagok vesznek körül, és nyolc ajtó.[/p]
+    </text>
+    <gatherItem id="4008" />
+    <loseItem id="3007" />
+    <next id="8"></next>
+  </p>
   <p id="187">
     <text>
         [p]Sietve indulsz el, de most ellenkező irányba, mint amerről a faluba jöttél. Ügy látod, senki sem vette észre, hogy távozol, és mindjárt felszabadultabban lélegzel. Hirtelen megpillantod az öreg faszénégetőt, aki korábban a faluba vezetett. Eddig azt hitted róla, hogy meghalt, hiszen élettelen testét a falu másik végén hagytad, de íme itt van, és rád vigyorog egy fal mögül. Elindulsz felé, de nyomban megállsz, mert látod, hogy a feje elválik a törzsétől, és felröppen a levegőbe. Még egy Rokuro-Kubi! A fej fekete méreggömböket köpköd, amelyek zúgva és füstölve csapódnak az arcodhoz. Elveszíted az eszméletedet. Veszítesz 2 ÉLETERŐ pontot. Harcba kell szállnod a Rokuro-Kubival, miközben az csapongva szálldos a légben.[/p]
@@ -1301,8 +2276,25 @@
     </fight>
     <next id="153"></next>
   </p>
-  <!-- 188 -->
-  <!-- 189 -->
+  <p id="188">
+    <text>
+        [p]A Dai-Oni gonoszul elmosolyodik. Egyszerűen győzd le egy csatában - mondja, és vad kacagásba kezd, de hirtelen elhallgat, s a szemed láttára múlik ki.[/p]
+    </text>
+    <itemCheck type="section" id="52">
+      <have>
+        <next id="220"></next>
+      </have>
+      <dontHave>
+        <next id="270"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="189">
+    <text>
+        [p]A Daloló Halál hirtelen még egyet villan, és a fekete villám eltűnik, kioltja a nagy fényesség. Ikiru hátratántorodik, de a fény olyan gyorsan hunyt ki, amilyen gyorsan felvillant.[/p]
+    </text>
+    <next id="199"></next>
+  </p>
   <p id="190">
     <text>
         [p]Az utolsó holtan zuhan a lábad elé. Számítasz rá, hogy egy másik lép a helyére, de egyik Szamuráj sem mozdul. A falusiak házaikban lapulnak, rémülten és reménykedve szemlélik az eseményeket. Egy-két Szamuráj kényszeredetten elsompolyog. Kardforgató tudományod elijesztette őket. Egyikük így szól: - Valóban a kard nagymestere vagy, és nagy tiszteletet vívtál ki magadnak errefelé. Mivel jól harcoltál, mi most elmegyünk, megkíméljük az életedet. - Szavai udvariasak ugyan, de érzed, hogy nem azért távoznak, mert annyira tisztelnek, hanem inkább azért, mert félnek tőled. Oly gyorsan tűnnek el, amilyen gyorsan csak tudnak, és te túl fáradt vagy ahhoz, hogy kövesd őket. Nyersz egy Becsület pontot, mert szembeszálltál velük és megvédted a falut.[/p]
@@ -1317,7 +2309,14 @@
     <next id="177">Ha el akarod hagyni a házat, miután befejezted a javítást</next>
     <next id="203">Ha eszel, majd lefekszel aludni</next>
   </p>
-  <!-- 192 -->
+  <p id="192">
+    <text>
+        [p]A nyílvessző egyenesen a mellébe fúródik. Az élőholt Szamuráj iszonyút sikolt, és a földre zuhan, ahol a nyílvesszővel együtt elporlad. Csak hamu marad belőlük. Ezt követően valamennyi csontváz visszahúzódik a folyóba, és alámerül a vízbe. A vörös vér eltűnik a folyó felszínéről, és az ég kivilágosodik.[/p]
+        [p]Átsétálsz a hídon, és alaposan átvizsgálod a hamutömeget. Egy elefántcsontból készült kürtöt találsz a hamvak között, amelyet egy kardfogú ezüsttigris képmása díszít. Magadhoz veszed a [span class="takeItem" data-id="3015" data-amount="1"]kürtöt[/span], és továbbsétálsz.[/p]
+    </text>
+    <loseItem id="3105" />
+    <next id="211"></next>
+  </p>
   <p id="193">
     <itemCheck type="items" id="3006 or 3002">
       <have>
@@ -1338,7 +2337,37 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 194 -->
+  <p id="194">
+    <text>
+        [p]Megparancsolod a Főnixnek, hogy támadja meg Graalscht, a Varangy Démont. A Főnix felröppen, és egyenesen a varangyszerű lény felé tart. Furcsa, de a Graalsch meg sem moccan, még akkor sem, amikor a Főnix tüzet okádó testével szinte rászáll. Csak akkor látod, amikor a lángok kialszanak, hogy Graalsch teljesen sértetlen, mintha a tűz egyáltalán nem fogna rajta. A varangyszerű lény hatalmasra tátja a száját, és átharapja a bűvös madár torkát. Egy szempillantással később az egész madár eltűnik a szájában. A Főnix nem létezik többé![/p]
+    </text>
+    <loseItem id="4006" />
+    <itemCheck type="item" id="4004 or 4009 or 3017">
+      <have>
+        <text>
+            [p]Melyik szövetségesed választod most?[/p]
+        </text>
+        <itemCheck type="item" id="4004">
+          <have>
+            <next id="146">A Ki-Rint?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4009">
+          <have>
+            <next id="162">Eleonórát, a Boszorkányt?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3017">
+          <have>
+            <next id="228">A kígyómintás botot?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="254"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="195">
     <text>
         [p class="inlineImage"][img src="resources/ff20/195.jpg" /][/p]
@@ -1355,11 +2384,58 @@
     <next id="210" pos="2">Ha a fejedre teszed a sisakot</next>
     <next id="222" pos="3" singleChoiceText=" Kimész a barlangból.">Ha kimész a barlangból</next>
   </p>
-  <!-- 197 -->
-  <!-- 198 -->
-  <!-- 199 -->
-  <!-- 200 -->
-  <!-- 201 -->
+  <p id="197">
+    <text>
+        [p]Egyetlen hatalmas szökkenéssel sikerült elugranod az Óriás Mormota éles karmai elől a mögötte lévő kőpárkányra.[/p]
+    </text>
+    <next id="265">Ha berohansz a barlangba</next>
+    <next id="259">Ha felmászol a dombtetőre és elmenekülsz</next>
+  </p>
+  <p id="198">
+    <text>
+        [p]A lovagok katonás rendben törnek előre. Gargantusz szemeiből két rubinszerű villám lövell ki és eltalálja az egyik lovagot, aki legalább tíz métert repül a levegőben, majd meghal. A többi lovag nem használja a kardját és a dárdáját; ehelyett köteleket lengetnek. Gargantuszt elkapja a lasszó; kötél tekeredik mindkét karjára és az egyik lábára, de ekkor már két lovag hever holtan. Aztán az életben maradt lovagok valamennyien húznak egyet a köteleken, és Gargantusz lassan előrebukik. Mielőtt végleg a földre zuhanna, kétségbeesetten üvölt egy hatalmasat. Hangja akár a morajló vízesés. Amint földet ér, kialszik a tűz a szemében. Tehetetlenül fekszik, nem más, mint hatalmas bronzszobor. Az Aranyszázad vezére közli veled: - Teljesítettük a kötelességünket, nemes uram, aki a harci legyező tulajdonosa vagy. Isten veled. - A szó szoros értelmében eltűnnek a semmiben. A Dai-Oni így szól: - Jól szerepeltél, halandó, de most megöllek! - Tesz egy lépést előre, kezében hatalmas tüskés vasbuzogányt, egy Tetsubót lóbál.[/p]
+    </text>
+    <loseItem id="4008" />
+    <itemCheck type="item" id="4004">
+      <have>
+        <next id="394">Ha a Ki-Rint küldöd Dai-Oni ellen</next>
+        <next id="292">Ha te magad szállnál vele szembe</next>
+      </have>
+      <dontHave>
+        <next id="292"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="199">
+    <text>
+        [p]Az izzó rúnajelekkel díszített fekete acélkard megvillan Ikiru árnyszerű markában, és összecsaptok egymással - a sötétség a fényességgel. Valahányszor Ikiru talál el, nemcsak ÉLETERŐ pontokat veszítesz az ismert szabályok értelmében, de a rúnajeles kardból kipattanó erő azzal fenyeget, hogy végképp legyőz.[/p]
+    </text>
+    <fight type="single" forceWeapon="1003">
+      <enemy id="69" />
+    </fight>
+    <itemCheck type="item" id="4011">
+      <have>
+        <next id="235"></next>
+      </have>
+      <dontHave>
+        <next id="400"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="200">
+    <text>
+        [p]A lovag arca megnyúlik, amikor látja, hogy fogalmad sincs, miről beszél. - Egy újabb vándor, aki nem hozta el nekünk azt, amire szükségünk van! - morogja. - Menj! Nem segítünk neked! Nyeljen el a Démonok Ura! - Amint ezt kimondja, a Középpontban találod magad. Csillagok vesznek körül, és a nyolc ajtó.[/p]
+    </text>
+    <next id="8"></next>
+  </p>
+  <p id="201">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/201.jpg" /][/p]
+        [p]A zöldes mélység fölött egyensúlyozva óvatosan elindulsz a túlpart felé a gázló szélén. A sziklagát, amelyen lassan, körültekintően haladsz, néhány hüvelyknyivel a folyó felszíne alatt húzódik. A mindent beborító zöld nyálka nagyon csúszós. Egyszerre két alak emelkedik ki méltóságteljesen a mélyből. Testüket zöld pikkelyek borítják, fejük furcsán lapos, és úgy mozognak, mintha valamit egyensúlyoznának rajta. Mancsukat úszóhártya borítja, ujjaik végén pedig hatalmas, veszélyesnek látszó karmok nőttek. Miután kiemelkedtek a vízből, a gázló felé indulnak.[/p]
+    </text>
+    <next id="233">Ha a közelebbibe vágod bele a kardodat</next>
+    <next id="159">Ha megpróbálsz kijutni a partra, mielőtt odaérnek hozzád</next>
+  </p>
   <p id="202">
     <text>
         [p]Az egyik Szamuráj észreveszi társa holttestét, és odakiált a többieknek. Azonnal fedezékbe bújsz de már késő, észrevettek, és három Szamuráj vágtat feléd. Az egyik felismer, és felkiált: - A Sógun, vagyis a volt Sógun bajnoka! Öljük meg a rühes kutyát! - Kardjukat fenyegetően lóbálva egyszerre rontanak rád. Egyszerre kell megküzdened mindegyikkel.[/p]
@@ -1418,12 +2494,59 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 205 -->
-  <!-- 206 -->
+  <p id="205">
+    <text>
+        [p]Minden rendben megy mindaddig, amíg be nem préseled magad a barlangnyíláson. Ekkor hirtelen tompa morajlás hallatszik, és a föld újra megmozdul a lábad alatt. A remegés egyre erősödik, és a fejed fölött hangos csattanást hallasz. Amint fölnézel, látod, hogy több száz tonnányi szikla zuhan feléd. Nincs menekvés: a kövek halálra zúznak.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="206">
+    <text>
+        [p]A Dai-Oni arca eltorzul a dühtől és a fájdalomtól. - Légy átkozott, halandó! - hörgi. - Hogy mi a titok? A Harmónia. Ha ezt a Szót kiejted a Daloló Halál előtt, az életre kel és a kezedbe száll, de csak akkor, ha a szíved nemes. Ikiru épp ezért nem is tudta eddig használni - teszi még hozzá kaján mosollyal. Ezzel a teste meghal.[/p]
+    </text>
+    <itemCheck type="section" id="52">
+      <have>
+        <next id="220"></next>
+      </have>
+      <dontHave>
+        <next id="270"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="207">
     <empty />
   </p>
-  <!-- 208 -->
+  <p id="208">
+    <text>
+        [p]Megparancsolod a Tatsunak, hogy támadjon. A sárkány a levegőbe emelkedik, és Graalsch már harcra készen pattanna fel, amikor a Tatsu mindent elsöprő lángtengert okád rá. Ám amint a lángok kialszanak, a Varangy Démon sértetlenül lép elő. A sárkány meglepetten áll meg egy pillanatra. Ezt a pillanatot használja ki Graalsch: hatalmas ugrással a levegőbe szökken, és tőből leharapja a Tatsu fejét. Az óriás sárkánytest egy szempillantás alatt semmivé foszlik. A Dai-Oni gúnyosan rád mutat, és utasítja a Varangy Démont, hogy támadjon.[/p]
+    </text>
+    <loseItem id="4003" />
+    <itemCheck type="item" id="4004 or 4008 or 4005">
+      <have>
+        <text>
+            [p]Melyik szövetségesed választod most?[/p]
+        </text>
+        <itemCheck type="item" id="4004">
+          <have>
+            <next id="146">A Ki-Rint?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4008">
+          <have>
+            <next id="184">Az Aranyszázadot?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4005">
+          <have>
+            <next id="172">A Kardfogú Tigrist?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="254"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="209">
     <text>
         [p]A ronin már messziről fölfedez, és kezét a katanája markolatán tartva büszkén feléd indul. Ginsei áruló és urad ellensége, ám ugyanakkor páratlan kardvívó.[/p]
@@ -1448,8 +2571,22 @@
     </itemCheck>
     <next id="222" pos="3" singleChoiceText=" Kimész a barlangból.">Vagy kimehetsz a barlangból</next>
   </p>
-  <!-- 211 -->
-  <!-- 212 -->
+  <p id="211">
+    <text>
+        [p]A hegyekhez vezető úton haladsz Ikiru barlangja felé. A nap eseménytelenül telik el, az éjszakát a csillagos ég alatt töltöd. Másnap reggel kipihenten ébredsz. Nyersz 2 ÉLETERŐ pontot. Továbbindulsz, majd letérsz az útról, és csakhamar a Shios’ii hegyek lábához érsz. Keskeny csapás vezet fel az egyik legnagyobb csúcshoz, és úgy döntesz, arra mész.[/p]
+    </text>
+    <add amount="2" to="stamina" />
+    <next id="8"></next>
+  </p>
+  <p id="212">
+    <text>
+        [p]Az Árnydémon elpusztult. Ikiru sziszeg a dühtől és a félelemtől. Sietve magasra emeli a kezét, és különös sikolyt hallat. Árnyalakok emelkednek ki a veremből, és köré sereglenek, mintegy védőfalat alkotva körülötte.[/p]
+    </text>
+    <next id="312">Ha előrelépsz, és a Daloló Halált a verembe hajítod</next>
+    <next id="51">Ha kivárod, mi lesz, bármi történjék is</next>
+    <next id="298">Ha megkerülöd a vermet, és egyenesen átsétálsz az árnyalakokon</next>
+    <next id="63">Ha a Daloló Halált Ikiruba vágod, mint egy lándzsát</next>
+  </p>
   <p id="213">
     <text>
         [p]A tajtékozó fehér víz fölött egyensúlyozva óvatosan elindulsz a túlpart felé, a gázló szélén, a kőgáton, amely néhány hüvelyknyivel a folyó felszíne alatt húzódik. A mindent beborító zöld nyálka nagyon csúszik, igencsak oda kell figyelned, hogyne veszítsd el az egyensúlyodat. Egyszer csak két hitvány, zöld testű, pikkelyes alak emelkedik ki a folyó zöldes mélyéből, és a gázló felé indul. Karmaik között úszóhártya feszül, fejük furcsán lapos.[/p]
@@ -1458,7 +2595,20 @@
     <next id="245">Ha visszafordulsz a gázlóról, és biztonságosabb helyet keresel, ahol átkelhetsz</next>
     <next id="315">Ha megküzdesz velük a gázlón</next>
   </p>
-  <!-- 214 -->
+  <p id="214">
+    <text>
+        [p]Magasra emeled a rubint, az megcsillan a napfényben, de a kardfogú tigris továbbra is feléd rohan, aztán rád veti magát. Meg kell küzdened vele.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="44" />
+      <win>
+        <text>
+            [p]Itt már nincs több keresnivalód, így visszalépsz az ajtón át a Középpontba.[/p]
+        </text>
+        <next id="8"></next>
+      </win>
+    </fight>
+  </p>
   <p id="215">
     <text>
         [p]Csakhamar találsz egy megfelelő deszkát, és beszögezed az ablakot. Így legalább valamivel melegebb lesz a házban. Legnagyobb megrökönyödésedre a hallgatag öregasszony nagyon izgatottá válik, mialatt dolgozol, és vacogni kezd a foga.[/p]
@@ -1475,7 +2625,13 @@
     <loseItem id="3103" />
     <next id="176"></next>
   </p>
-  <!-- 217 -->
+  <p id="217">
+    <text>
+        [p]Az ösvény továbbkanyarog a ködben. Biztos, hogy már jó néhány mérfölddel többet tettél meg, mint amennyit a térkép alján számítani lehetett, és még mindig nem látod a bíborpagodát.[/p]
+    </text>
+    <next id="113">Ha visszafordulsz az óriások útja felé</next>
+    <next id="369">Ha nem</next>
+  </p>
   <p id="218">
     <text>
         [p]A csatazaj felkeltette a többiek figyelmét. Egy csapatnyi Szamuráj és Shikome jelenik meg, és a túlerő hamarosan győzelmet is arat fölöttetek. Moichi a küzdelemben meghalt, téged pedig fogságba ejtenek. Közben egyre-másra gúnyt űznek a Sógunból és bajnokából - szemmel láthatóan tudják, ki vagy. Ráadásul hű csatlósod elvesztése szomorúsággal tölt el.[/p]
@@ -1493,8 +2649,19 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 219 -->
-  <!-- 220 -->
+  <p id="219">
+    <text>
+        [p]A legöregebb faszénégető nemsokára utolér, és hízelegve arra kér, engedd meg, hogy elvihessen egy biztos helyre: ne mondhassák, hogy az ő családja nem adta meg a tiszteletet egy Szamurájnak. Kanyargós ösvényen indultok el, mely Kanshuro völgyei felé vezet, ahol az erdős fennsíkon gyönyörű, békés völgyek húzódnak meg észrevétlenül. Napszálltakor leereszkedtek Tinshu völgyébe, egy festői kis faluba. Mikor az öreghez fordulsz, hogy a falu nevét megkérdezd, az a földre zuhan. Megpróbálod magához téríteni, de a szíve megállt, az öreg meghalt.[/p]
+    </text>
+    <next id="5"></next>
+  </p>
+  <p id="220">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/220.jpg" /][/p]
+        [p]Szörnyű dolog történik. A Dai-Oni testéből egy kísértetalak, egy démoni szellemalak száll fel, anyagtalan karmokkal. Ez egy Shura, vagyis harcos kísértet: a Dai-Oni szelleme eljött hogy bosszút álljon haláláért. Te azonban emlékszel a Tatsu szavaira, és megidézed a Démonok Jizóját: - Egy Shura van itt, ó Jizo - mormolod. - Jöjj és teljesítsd kötelességedet! - Amint az utolsó szót kimondod, egy lény jelenik meg előtted. Ruházatából ítélve harcos szerzetes lehet, kezében pedig egy izzó rúnákkal ékesített botot tart. A puszta látványtól is tisztelettel vegyes félelem tölt el. A Jizo rád se hederít, hanem botjával a szellemalakra sújt. A kísértet egyetlen sikollyal semmivé foszlik. A Jizo, anélkül hogy egyetlen pillantásra is méltatna, szintén eltűnik.[/p]
+    </text>
+    <next id="76"></next>
+  </p>
   <p id="221">
     <text>
         [p]Ginsei fennhangon kihív párbajra, de nem tudja, hol rejtőzöl. Arrébb kúszol, mert látod, hogy igencsak kemény küzdelem lenne vele harcolni. Félelem mar a szívedbe. Nem merted elfogadni urad ellenségének kihívását. Eljátszottad a becsületedet, és úgy érzed, nem vagy érdemes rá hogy a Sógun bajnoka légy. Veszítesz 2 Becsület pontot. Lassan leszáll az éj. Alkalmas helyet keresel az erdőben, ahol álomra hajthatod a fejed.[/p]
@@ -1522,8 +2689,122 @@
     <next id="253">Ha ráparancsolsz, hogy vezessen a faluba</next>
     <next id="195">Ha egyedül mész tovább</next>
   </p>
-  <!-- 224 -->
-  <!-- 225 -->
+  <p id="224">
+    <text>
+        [p]Célzol és lősz.[/p]
+    </text>
+    <itemCheck type="item" id="4101">
+      <have>
+        <next id="224a" pos="1">Ha egy fűzlevelű vesszőt használnál</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4102">
+      <have>
+        <next id="224b" pos="2">Ha egy bélfürkész vesszőt használnál</next>
+      </have>
+    </itemCheck>
+    <next id="224c" pos="3">Ha kardor rántanál</next>
+  </p>
+  <p id="224a" display="224">
+    <text>
+        [p]Célzol és lősz.[/p]
+    </text>
+    <gatherItem id="4000" />
+    <loseItem id="3101" />
+    <test against="skill">
+      <success>
+        <text>
+            [p]A nyílvessző eltalálja a Tigrist, aki 2 ÉLETERŐ pontot veszít.[/p]
+        </text>
+        <changeEnemy attribute="stamina" id="44" change="-2" />
+      </success>
+      <failure>
+        <text>
+            [p]Lövésed célt téveszt, a vessző ártalmatlanul suhan el a Tigris mellett.[/p]
+        </text>
+      </failure>
+      <after>
+        <itemCheck type="item" id="4000" amount="3">
+          <have>
+            <next id="224c"></next>
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="4101">
+              <have>
+                <next id="224a" pos="1">Ha egy fűzlevelű vesszővel ismét rálőnél a Tigrisre</next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4102">
+              <have>
+                <next id="224b" pos="2">Ha most egy bélfürkész vesszőt eresztenél meg a vad felé</next>
+              </have>
+            </itemCheck>
+            <next id="224c" pos="3">Ha kardor rántanál</next>
+          </dontHave>
+        </itemCheck>
+      </after>
+    </test>
+  </p>
+  <p id="224b" display="224">
+    <text>
+        [p]Célzol és lősz.[/p]
+    </text>
+    <gatherItem id="4000" />
+    <loseItem id="3102" />
+    <test against="skill">
+      <success>
+        <text>
+            [p]A nyílvessző eltalálja a Tigrist, aki 3 ÉLETERŐ pontot veszít.[/p]
+        </text>
+        <changeEnemy attribute="stamina" id="44" change="-3" />
+      </success>
+      <failure>
+        <text>
+            [p]Lövésed célt téveszt, a vessző ártalmatlanul suhan el a Tigris mellett.[/p]
+        </text>
+      </failure>
+      <after>
+        <itemCheck type="item" id="4000" amount="3">
+          <have>
+            <next id="224c"></next>
+          </have>
+          <dontHave>
+            <itemCheck type="item" id="4101">
+              <have>
+                <next id="224a" pos="1">Ha most egy fűzlevelű vesszővel lőnél rá a Tigrisre</next>
+              </have>
+            </itemCheck>
+            <itemCheck type="item" id="4102">
+              <have>
+                <next id="224b" pos="2">Ha egy újabb bélfürkész vesszőt eresztenél meg a vad felé</next>
+              </have>
+            </itemCheck>
+            <next id="224c" pos="3">Ha kardor rántanál</next>
+          </dontHave>
+        </itemCheck>
+      </after>
+    </test>
+  </p>
+  <p id="224c" display="224">
+    <text>
+        [p]Meg kell küzdened a Tigrissel, aki mostanra kartávolságra ért hozzád.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="44" />
+      <win>
+        <text>
+            [p]Itt már nincs semmi keresnivalód, ezért visszalépsz az ajtón át a Középpontba.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="8"></next>
+  </p>
+  <p id="225">
+    <text>
+        [p]A szigony egy alacsony ágba fúródik, és te szerencsésen megmenekülsz.[/p]
+    </text>
+    <next id="245"></next>
+  </p>
   <p id="226">
     <text>
         [p]Íjadba illeszted a nyílvesszőt és lősz: a nyílvessző a nyakát üti át. A Szamuráj holtan esik össze. Ezt a nyílvesszőt nem tudod visszaszerezni, ezért húzd ki a Kalandlapodról! [/p]
@@ -1546,8 +2827,44 @@
     <next id="201">Ha a zöldes, mély résznél</next>
     <next id="193">Ha akarod, át is úszhatod a folyót a zuhatag fölött</next>
   </p>
-  <!-- 228 -->
-  <!-- 229 -->
+  <p id="228">
+    <text>
+        [p]A varangy elé veted a kígyómintás botot. A kígyóminta hirtelen életre kel, és Graalsch, a Varangy Démon rémülten hőköl vissza. A kígyó támadásba lendül, erős farkával megragadja a varangyot, és acélos erővel szorítja, miközben éles fogaival bele-belemar. A Varangy Démon vérfagyasztó üvöltést hallat, amint a kígyó kiszorítja belőle a lelket. Amikor ellenfeled végleg elpusztul, a kígyó eltűnik, mintha csak átcsúszott volna egy másik létsíkra, Húzd ki a nevét a Kalandlapodról![/p]
+        [p]A Dai-Oni üvölt dühében. - K’rllk, pusztítsd el ezt az emberfajzatot! - A Sáska Démon előlép.[/p]
+    </text>
+    <loseItem id="4005" />
+    <itemCheck type="item" id="4004 or 4006 or 4009">
+      <have>
+        <text>
+            [p]Kit küldesz a Démon ellen?[/p]
+        </text>
+        <itemCheck type="item" id="4004">
+          <have>
+            <next id="278">A Ki-Rint?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4006">
+          <have>
+            <next id="320">A Főnixet?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4009">
+          <have>
+            <next id="330">Eleonórát, a Boszorkányt?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="266"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="229">
+    <text>
+        [p]A vízszint egyre magasabb és magasabb, de amerre csak nézel, a lápot sás borítja. Kénytelen vagy úszni, és sok kilométernyi úszás után, teljesen kifáradva lassan a víz alá süllyedsz, és a lápban leled a halálodat.[/p]
+    </text>
+    <death />
+  </p>
   <p id="230">
     <text>
         [p]Berohantok a palotába, végigszáguldotok egy hosszú folyosón, és csakhamar eltévedtek a szobák és folyosók útvesztőjében, melyek többsége most üres, csupán a szolgák és rabszolgák teszik dolgukat, akik döbbenten merednek rátok. Amint az egyik sarkon befordultok, az elétek táruló látványtól földbe gyökerezik a lábad. Egyenesen Tsietsin nagyúrba botlottatok, aki egy-egy Szamurájjal az oldalán totyogva közeledik felétek a folyosón. Tsietsin nagy testű, kövér ember: dagadt, párnás pofazacskója, lefittyedő, hatalmas szája van. Két apró malacszemét felháborodottan mereszti rátok. Többrészes kimonó van rajta, fölötte hatalmas, aranylevelekkel díszített palást. Fején büszkén viseli a Sóguni rangot jelképező fejdíszt. Mikor felismer, ijedten zihálva jelt ad a testőreinek, sarkon fordul, és eldübörög. A Szamurájok kardot rántanak, meghajolnak előttetek, és rátok támadnak. Moichi azonnal nekiugrik az egyiknek. Neked a másikkal kell megküzdened.[/p]
@@ -1570,9 +2887,43 @@
     <loseItem id="3102" amount="2" />
     <next id="230"></next>
   </p>
-  <!-- 233 -->
-  <!-- 234 -->
-  <!-- 235 -->
+  <p id="233">
+    <text>
+        [p]Amint kardot rántasz, a pikkelyes zöld szörny sárga szemében gonosz fény csillan, és egy lépést hátrál a mélybe.[/p]
+    </text>
+    <itemCheck type="enumAttribute" id="specialSkill" amount="1">
+      <have>
+        <next id="357"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]A szörny vastag hálót emel ki a víz alól, és megpróbálja elfogni a kardodat, amikor megtámadod.[/p]
+        </text>
+        <test against="skill" add="2">
+          <label>[em]Tedd próbára[/em] [span class="ffAttribute"]ÜGYESSÉGED[/span], és adj kettőt az összeghez, mert a csúszós, nyálkás sziklán nehezen egyensúlyozol.</label>
+          <success>
+            <next id="171"></next>
+          </success>
+          <failure>
+            <next id="117"></next>
+          </failure>
+        </test>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="234">
+    <text>
+        [p]A szádhoz emeled az ősi kürtöt, és belefújsz. Fülsértő hangot ad, amely még sokáig visszhangzik a fennsíkon. A tigris hirtelen megdermed, majd lassan, inkább kíváncsian, mint éhesen, hozzád sétál. Akkora, mint te magad, de nem bánt, csak gyengéden megnyalja az arcodat. Úgy érzed, a tigris azt hiszi, valaki más vagy, talán a kürt eredeti tulajdonosa, de erről már csak a legendák mesélhetnének. Most már tudod, hogy segíteni fog téged a Csata Színhelyén. A tigris természetfelettien intelligens tekintettel követ, mikor átlépsz az ajtón, vissza a Középpontba.[/p]
+    </text>
+    <gatherItem id="4005" />
+    <next id="8"></next>
+  </p>
+  <p id="235">
+    <text>
+        [p]Ikiru felszisszen a fájdalomtól, mikor a Daloló Halál az oldalába vág. A pengéből hirtelen cikázó villám csap Ikiru csuklya mögé rejtett arcába. A fekete rúnakard hatalmas mennydörgés kíséretében eltűnik. Ikiru végleg elpusztult, nyoma sem maradt a teremben.[/p]
+    </text>
+    <next id="400"></next>
+  </p>
   <p id="236">
     <text>
         [p]A lövések pontosak és halálosak. Pillanatok alatt, néma csöndben végeztél a két Shikoméval. Nincs rá idő, hogy a nyílvesszőket visszaszerezd, berohansz a palotába.[/p]
@@ -1580,7 +2931,12 @@
     <loseItem id="3102" amount="2" />
     <next id="158"></next>
   </p>
-  <!-- 237 -->
+  <p id="237">
+    <text>
+        [p]Kényelmesen vágsz át a Hosszú dombokon, és két nap múlva eléred a nagy Hiang-Kiang folyó mellett lévő egyik hűbérbirtok völgyét. Zöldellő dombok között haladsz a folyó felé a környék csak úgy zeng az énekes-rigók csicsergésétől. A folyóhoz egyenes út vezet, melyet kétoldalt fehérre meszelt mérföldkövek szegélyeznek. Úgy döntesz, erre mész tovább.[/p]
+    </text>
+    <next id="227"></next>
+  </p>
   <p id="238">
     <text>
         [p]Előrelépsz, és kardodat kihúzva egyetlen gyors mozdulattal lecsapod az áruló Szamuráj fejét. - Ezt érdemelte, amiért elárulta a Sógunt, és gyújtogatásra, fosztogatásra vetemedett - teszi hozzá a falu elöljárója. A többi falusi ismét köszönetet mond, hogy ilyen bölcsen ítélkeztél, és újabb ajándékot adnak - [span class="takeItem" data-id="gold" data-amount="6"]hat Aranytallért[/span]. Kisebb ünnepség után továbbindulsz utadon.[/p]
@@ -1644,8 +3000,27 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 242 -->
-  <!-- 243 -->
+  <p id="242">
+    <text>
+        [p]Az életre keltett csontvázak lassan felmásznak a hídra.[/p]
+    </text>
+    <itemCheck type="enumAttribute" id="specialSkill" amount="2">
+      <have>
+        <next id="262">Ha megkísérelsz nekifutásból átugrani az élőholt Szamuráj fölött, a túlpartra</next>
+        <next id="358">Ha nem kockáztatod meg az ugrást</next>
+      </have>
+      <dontHave>
+        <next id="358"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="243">
+    <text>
+        [p]Megmeríted az [span class="takeItem" data-id="3018" data-amount="1"]ezüstkancsót[/span] a vízben, aztán lecsukod a fedelét. Töltesz egy keveset a kehelybe, és óvatosan megkóstolod. A Tudás érzése fut át rajtad - egy pillanatig mintha isteni hatalmad lenne. A Tudás Vizéből ittál egy kortyot. Nyersz 1 SZERENCSE pontot, mert megízlelted az istenek tudását. Az Elvarázsolt kert lassan a távolba vész, mint egy látomás, majd végleg eltűnik. Egy hegy lábánál találod magad, amelyre keskeny csapás visz fel. Kétségtelen, hogy a Shios’ii hegyek között vagy, nem messze Ikirutól, így hát gyorsan nekivágsz a meredek útnak.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="8"></next>
+  </p>
   <p id="244">
     <text>
         [p]Az első nyilad az egyik Shikome szemébe fúródik, és azonnal megöli, a másik viszont célt téveszt, és beleáll a várfalba. Az életben maradt őr meglepetésében és félelmében fölüvölt, és riadóztatja a többieket. A palotában pillanatokon belül elszabadul a pokol: mindenfelé Szamurájok és Shikomék kutatnak a merénylő után. Megpróbáltok elmenekülni, de észrevesznek benneteket, és nem telik bele sok idő, legyőz a túlerő. Moichi a küzdelemben meghal, téged pedig fogságba ejtenek. Közben egyre-másra gúnyt űznek a Sógunból és bajnokából - minden kétséget kizáróan tudják, ki vagy. Ráadásul hű csatlósod elvesztése szomorúsággal tölt el. Belöknek a várbörtön egyik cellájába. A foglár, egy bivalytermetű pasas, viseltes bőrmellényben, gúnyosan így szól: - Holnap reggel Tsietsin Sógun elé visznek! - Ezzel rád csapja a nehéz vasveretű tölgyfa ajtót.[/p]
@@ -1667,10 +3042,30 @@
         [p]Gyorsan magad mögött hagyod a gázlót. Nem üldöznek, de neked, mint a Sógun Szamurájának, gondoskodnod kellene az utak és gázlók biztonságosságáról. Nem teljesítetted ezt a kötelességedet, ezért veszítesz 1 Becsület pontot.[/p]
     </text>
     <add amount="-1" to="honor" />
-    <next id="263"></next>
+    <itemCheck type="attribute" id="honor" amount="1">
+      <have>
+        <next id="263"></next>
+      </have>
+      <dontHave>
+        <next id="99"></next>
+      </dontHave>
+    </itemCheck>
   </p>
-  <!-- 246 -->
-  <!-- 247 -->
+  <p id="246">
+    <text>
+        [p]A hatalmas, favastagságú kígyó megpróbálja leharapni a fejedet; Nincs más választásod, meg kell küzdened vele.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="46" />
+    </fight>
+    <next id="272"></next>
+  </p>
+  <p id="247">
+    <text>
+        [p]Az ezüst Szamuráj hangja messze cseng az Elvarázsolt Kertben: - Nincs becsületed, nem vagy Szamuráj! - Nemsokára a démon és a papnő szobrához érsz. A varázsló újra megjelenik, és a két szobor, a fekete bőrű, vörös szarvú démon meg a sápadt papnő életre kel. A nő a lábaid elé veti magát, és térden állva könyörög, hogy mentsd meg őt a Démonok Verméből, de fogvatartója durván megrántja a láncot, és a nő a földre zuhan. Aztán a démon hozzád vágja a láncot, és elmormolja a Kővé-változás varázslat igéit. Kővé dermedsz, és a démon helyébe kerülsz. Ő most már szabad. Kíváncsian nézel a földön fekvő papnőre, aki újból szoborrá vált. Amíg egy bátor utazó be nem téved a vörös pagoda falai közé, nem lehet részed az életben.[/p]
+    </text>
+    <death />
+  </p>
   <p id="248">
     <text>
         [p]Az első nyilad az egyik Shikome szemébe fúródik, és azonnal megöli, a másik viszont célt téveszt, és beleáll a várfalba. Az életben maradt őr meglepetésében és félelmében fölüvölt, és riadóztatja a többieket. A palotában pillanatokon belül elszabadul a pokol: mindenfelé Szamurájok és Shikomék kutatnak a merénylő után. Megpróbálsz elmenekülni, de észrevesznek, és nem telik bele sok idő, legyőz a túlerő. Fogságba ejtenek, közben egyre-másra gúnyt űznek a Sógunból és bajnokából - nyilvánvalóan tudják, ki vagy. Belöknek a várbörtön egyik cellájába. A foglár, egy bivalytermetű pasas, viseltes bőrmellényben, gúnyosan így szót: - Holnap reggel Tsietsin Sógun elé visznek! - Ezzel rád csapja a nehéz, vasveretű tölgyfa ajtót.[/p]
@@ -1688,7 +3083,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 249 -->
+  <p id="249">
+    <text>
+        [p]Egyre jobban lejt az ösvény, amelyen eddig jöttél a Pókláp felé, s már a mocsár vízszintje alatt vezet. A vizet kétoldalt magas agyagfalak fogják vissza. Könnyen haladsz, és úgy gondolod, hamarosan eléred a Hiang-Kiang folyó torkolatának déli oldalát.[/p]
+    </text>
+    <next id="17">Ha visszamész a láp szélére, és másfelé indulsz</next>
+    <next id="33">Ha folytatod az utadat a torkolat felé</next>
+  </p>
   <p id="250">
     <text>
         [p class="inlineImage"][img src="resources/ff20/250.jpg" /][/p]
@@ -1718,7 +3119,12 @@
     </text>
     <next id="5"></next>
   </p>
-  <!-- 254 -->
+  <p id="254">
+    <text>
+        [p]Egyedül kell kiállnod ellene. A varangy előreugrik, és óriási csata alakul ki. Elpusztítod Graalscht, a varangyot, sőt a sáskát is, de a harc végére nagyon legyengülsz. A Bronzember hozzád lép, és cafatokra szaggat a Dai-Oni gúnyos kacaja közepette. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="255">
     <text>
         [p]Nekirontasz az egyik szörnynek, és kardoddal kibillented az egyensúlyából. Nagy adag víz ömlik ki a feje tetején lévő kis medencéből. Kezével a fejéhez kap, és olyan hangot ad, mintha köhögne vagy fuldokolna, majd hirtelen visszaugrik a folyóba. Rádöbbensz, hogy azért van a fejükön a víz, mert annak segítségével lélegeznek. Ettől kezdve úgy támadod meg őket, hogy elveszítsék az egyensúlyukat, és a víz kiloccsanjon. Kénytelenek visszavonulni a folyóba, te pedig fáradtan bár, de győztesen állsz a parton.[/p]
@@ -1740,21 +3146,138 @@
       </win>
     </fight>
   </p>
-  <!-- 257 -->
-  <!-- 258 -->
-  <!-- 259 -->
-  <!-- 260 -->
-  <!-- 261 -->
-  <!-- 262 -->
-  <!-- 263 -->
+  <p id="257">
+    <text>
+        [p]A szigony a hátadba fúródik.[/p]
+    </text>
+    <itemCheck type="item" id="3002">
+      <haveEquipped>
+        <next id="67"></next>
+      </haveEquipped>
+      <have>
+        <itemCheck type="item" id="3006">
+          <haveEquipped>
+            <next id="67"></next>
+          </haveEquipped>
+          <have>
+            <next id="39"></next>
+          </have>
+          <dontHave>
+            <next id="39"></next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="3006">
+          <haveEquipped>
+            <next id="67"></next>
+          </haveEquipped>
+          <have>
+            <next id="39"></next>
+          </have>
+          <dontHave>
+            <next id="39"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="258">
+    <text>
+        [p][alt]Mit teszel?[/alt][/p]
+    </text>
+    <itemCheck type="item" id="3012">
+      <have>
+        <next id="290" pos="1">Ha megérinted a kígyót az aganccsal</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3015">
+      <have>
+        <next id="318" pos="2">Ha belefújsz a kürtbe</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3013">
+      <have>
+        <next id="328" pos="3">Ha megpróbálod felhasználni a Főnix Rubint</next>
+      </have>
+    </itemCheck>
+    <next id="246" pos="4" singleChoiceText="Nem találsz semmi olyat a hátizsákodban, ami hasznos lehetne ebben a helyzetben.">Ha a fentiek közül egyik sem szimpatikus</next>
+  </p>
+  <p id="259">
+    <text>
+        [p]Az Óriás Mormota meglepően gyorsan mozog rövid, de erős lábain, de te előbb érsz a dombtetőre, ahol lélegzetelállító látvány tárul eléd. Az alsó Hiang-Kiang folyó fennsíkja fekszik előtted. A távolban látod hatalmas deltáját a Kumói Póklápban. Csak sejted, hogy a Pókláp arra van, mert ködfelhő takarja. Tudod, hogy ha kerülő úton mennél, heteket vesztegetnél el, ezért egyenesen indulsz el, lefelé a völgybe, magad mögött hagyva az Óriás Mormotát.[/p]
+    </text>
+    <next id="17"></next>
+  </p>
+  <p id="260">
+    <text>
+        [p]A csuklyás alak nem látszik dühösnek: felnevet, és ismét egy mágikus mozdulatot tesz. Újabb alaktalan fekete árny emelkedik ki a veremből, s miközben lassan alakot ölt, rémülten látod, hogy a saját hasonmásod áll előtted, de nem támad rád. Az agyadba férkőzik, és hatalmat ígér; vagyont és hírnevet kínál, csábít, hogy uralkodj, és te írd a történelmet. - Ez mind a tiéd lehet, ha hűséget esküszöl uradnak, Ikirunak - suttogja az agyadban.[/p]
+        [p]Nagyon erős a kísértés, lassan eluralkodik rajtad a hatalomvágy.[/p]
+    </text>
+    <itemCheck type="attribute" id="honor" amount="5">
+      <have>
+        <next id="27"></next>
+      </have>
+      <dontHave>
+        <next id="324"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="261">
+    <text>
+        [p]Az orrod hegyéig is alig látsz a szakadó esőben, ahogy lassan kapaszkodsz fel a domboldalban. A vízszint igen gyorsan emelkedik; minden bizonnyal megfulladtál volna, ha nem ezt az utat választod. Ahogy följebb mászva magad mögött hagyod az egyre áradó vizet, észreveszed hogy a mocsár lakói, a különféle állatok a dombra menekülnek az áradat elől. Patkányokat, szalamandrákat, gőtéket, sőt egy hatalmas sárkánygyíkot is látsz, de ez túl ijedtnek tűnik ahhoz, hogy fontolóra vegye, fölfaljon-e.[/p]
+    </text>
+    <next id="149"></next>
+  </p>
+  <p id="262">
+    <text>
+        [p]Nekifutsz, és a levegőbe szökkensz.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="286"></next>
+      </success>
+      <failure>
+        <next id="334"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="263">
+    <text>
+        [p]Nemsokára újabb veszélyek feledtetik veled a régebbiek emlékét. A felső Hiang-Kiang folyó völgyén túl egy palahegység emelkedik; gerince, mint a fűrész mered az ég felé. Már közel vagy a csúcshoz, amikor remegni kezd a hegy, amelyen állsz. Mintha egész Hachiman kocsonyává vált volna, úgy remeg a földrengéstől. Nem messze szűk barlangnyílást fedezel fel.[/p]
+    </text>
+    <next id="205">Ha bemászol</next>
+    <next id="103">Ha Inkább a földre veted magad ott, ahol vagy</next>
+  </p>
   <p id="264">
     <text>
         [p]Futni hagyod a Szamurájt. A falusiak megköszönik, hogy megmentetted őket, sokan azonban halkan hozzáteszik: - De azért igazán megölhetted volna azt az álnok, becstelen Szamurájt. Rövid ünneplés után továbbindulsz utadon.[/p]
     </text>
     <next id="24"></next>
   </p>
-  <!-- 265 -->
-  <!-- 266 -->
+  <p id="265">
+    <text>
+        [p]A barlang felé rohansz, de az Óriás Mormota elvágja utadat. Meg kell küzdened vele.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="43" />
+      <win>
+        <text>
+            [p]Most már bemehetsz a barlangba.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="355"></next>
+  </p>
+  <p id="266">
+    <text>
+        [p]K’rllk, a Sáska Démon rád ront, mellső lábát csapásra készen a magasba emeli. Meg kell küzdened a Sáska Démonnal. Mivel kitinpáncélja igen kemény, kardod csak 1 ÉLETERŐ pontot sebez rajta, valahányszor eltalálod. (Persze, ha megdobod a SZERENCSÉDET, akkor 2 ÉLETERŐ pontot is sebezhetsz rajta.)[/p]
+    </text>
+    <fight type="single">
+      <enemy id="52" />
+    </fight>
+    <next id="346"></next>
+  </p>
   <p id="267">
     <text>
         [p]Abban a pillanatban, ahogy leteszed a kulcsot, a jobbik szemed megnyugszik. Úgy döntesz, hogy az erdőben keresel egy száraz helyet, ahol letáborozhatsz. Nyersz 1 ÜGYESSÉG pontot![/p]
@@ -1792,11 +3315,47 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 270 -->
-  <!-- 271 -->
-  <!-- 272 -->
-  <!-- 273 -->
-  <!-- 274 -->
+  <p id="270">
+    <text>
+        [p]Rémisztő dolog történik. A Dai-Oni testéből egy kísértetalak, egy démoni szellemalak száll fel, anyagtalan karmokkal. Ez egy Shura, vagyis harcos kísértet! A Dai-Oni szelleme eljött, hogy bosszút álljon a haláláért.[/p]
+        [p]Meg kell küzdened a Shurával! Valahányszor eltalál, ugyanúgy 2 ÉLETERŐ pontot sebez, mint a többi ellenfeled, de ütései nyomán nem nyílnak sebek: az életenergiádat szívja el.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="55" />
+      <win>
+        <text>
+            [p]A Shura egyszerűen köddé válik.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="76"></next>
+  </p>
+  <p id="271">
+    <text>
+        [p]A Hetedik Pecsét Seregének tagjai az első Sógun dicső testőrei voltak. Senki sem hallott róluk azóta, hogy ötszáz éve nem adták meg magukat a tízszeres túlerőnek, és mind egy szálig lemészárolták őket. A mellvért ősi darab, de a minősége kitűnő. Ahogy kifeszíted a sziklák közül, a kalcitvirágok elrepednek, és éktelen csörömpölés közepette szilánkeső hullik a nyakadba. Aztán egy nagyobb szikla is eltalál: veszítesz 3 ÉLETERŐ pontot. Úgy döntesz, jobb, ha minél előbb elhagyod ezt a barlangot.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <next id="375"></next>
+  </p>
+  <p id="272">
+    <text>
+        [p]A kígyó hatalmas teste lassan alámerül az iszapban. Néhány csúszómászó dögevő rögtön elkezdi felfalni a süllyedő hullát. Semmi érdekes nincs már itt, ezért úgy döntesz, visszalépsz az ajtón át a Középpontba.[/p]
+    </text>
+    <next id="8"></next>
+  </p>
+  <p id="273">
+    <text>
+        [p]A szirten hatalmas repedések keletkeztek, és ez megnehezíti számodra a haladást. Végül egy simább részre érsz, és úgy döntesz, itt megpihensz és eszel valamit. Ám amikor a hátizsákodba nyúlsz, a föld újra megmozdul alattad. Itt is látsz a közelben egy barlangot.[/p]
+    </text>
+    <next id="329">Ha berohansz</next>
+    <next id="385">Ha ismét a földre veted magad, és kivárod, mi lesz</next>
+  </p>
+  <p id="274">
+    <text>
+        [p]Az Árnydémon rád veti magát. Két kézzel markolod meg a Daloló Halált, és nagyot sújtasz vele. Ahogy a kard hozzáér, egyetlen fehér villanást látsz. A Démon felüvölt kínjában - egy távoli, elhaló sikoly hallatszik -, és árnyteste apró sötét szilánkokra esik szét, míg végül semmi sem marad belőle.[/p]
+    </text>
+    <next id="212"></next>
+  </p>
   <p id="275">
     <text>
         [p]Ginsei mindkét lábát behajlítva, kardja hegyét a torkodnak irányozva, lassan közeledik feléd. A párbajra készen lépsz felé, de kardodat még nem húzod elő a hüvelyéből. Ginsei meg van győződve róla, hogy előnyösebb helyzetben van, ezért nagyon meglepi, mikor egyetlen villámgyors lendülettel, ahogy a kobra lecsap, előrántod a kardodat, és már támadsz is. Ezzel a vágással bárki másnak levágtad volna a fejét, de Ginsei is nagyon gyors, és az utolsó pillanatban hárítja a támadásodat. Így is súlyosan megsebesítetted a kardforgató kezét, ezért csökken az ÜGYESSÉGE. Vér csurog végig a katanája markolatán. Folytasd a harcot.[/p]
@@ -1821,8 +3380,49 @@
     </text>
     <death />
   </p>
-  <!-- 278 -->
-  <!-- 279 -->
+  <p id="278">
+    <text>
+        [p]A Ki-Rin a levegőbe emelkedik. Patái lángot vetnek. Mikor támadásba lendül, a Sáska Démon mozdulatlanul várja, majd hirtelen előrelendül a feje, és leharapja a Ki-Rin fejét. A fejetlen test semmivé foszlik, mintha sosem létezett volna. A Sáska Démon megáll egy pillanatra, aztán ellened fordul.[/p]
+    </text>
+    <loseItem id="4004" />
+    <itemCheck type="item" id="4003 or 4008 or 4006 or 4009">
+      <have>
+        <text>
+            [p]Kit küldesz a Démon ellen?[/p]
+        </text>
+        <itemCheck type="item" id="4003">
+          <have>
+            <next id="294">A Tatsut?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4008">
+          <have>
+            <next id="304">Az Aranyszázadot?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4006">
+          <have>
+            <next id="320">A Főnixet?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4009">
+          <have>
+            <next id="330">Eleonórát, a Boszorkányt?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="266"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="279">
+    <text>
+        [p]Az ösvény tovább kanyarog, s most már ömlik az eső. Kisvártatva a vízszint gyorsan emelkedni kezd, és nemsokára már térdig érő vízben gázolsz. Az utat nem látod, csak a kétoldalt növő sásból következtetsz, merre vezethet.[/p]
+    </text>
+    <next id="229">Ha továbbmész</next>
+    <next id="181">Ha visszafordulsz, és megkeresed a nemrég elhagyott dombra vezető ösvényt</next>
+  </p>
   <p id="280">
     <text>
         [p]Átlépsz a Shikome őrök holtteste fölött, és bemész a palotába.[/p]
@@ -1895,8 +3495,19 @@
     <next id="84" pos="3">Vagy elindulhatsz előre, azzal, hogy fontos üzenetet hoztál Tsietsin nagyúrnak</next>
     <next id="100" pos="4">Vagy magabiztosan elindulhatsz, tiszteleghetsz nekik, majd, ügyet sem vetve rájuk, beléphetsz a palotába</next>
   </p>
-  <!-- 285 -->
-  <!-- 286 -->
+  <p id="285">
+    <text>
+        [p]Az út, amelyen elindultál, összevissza kanyarog a lápban, míg végül már fogalmad sincs, milyen irányba is mész.[/p]
+    </text>
+    <next id="17">Ha visszatérsz a mocsár szélére, és más úton indulsz tovább</next>
+    <next id="309">Ha kitartóan mész tovább</next>
+  </p>
+  <p id="286">
+    <text>
+        [p]Átrepülsz az élőholt Szamuráj feje fölött, és a talpadra érkezel a túlparton. Az ég hirtelen fényesebb lesz. Hátrafordulsz, és meglepetten látod, hogy nyoma sincs sem a Szamurájnak, sem a csontvázharcosoknak. A folyó tiszta és nyugodt, felszínét szellő borzolja. Nem fecséreled az idődet, inkább továbbindulsz utadon.[/p]
+    </text>
+    <next id="211"></next>
+  </p>
   <p id="287">
     <text>
         [p]Vakon tapogatózva beleütközöl az ajtófélfába, de aztán megérzed a pázsitot a lábad alatt és a szelet az arcodon, ebből tudod, hogy sikerült kijutnod a kunyhóból. Csak néhány bátortalan lépést mertél megkockáztatni, de pár perc múlva az egyik szemed rendbe jön, újra látsz. Fél szemmel azonban nem tudsz jól bánni a karddal, ráadásul az ép szemed is kifordul néha, és ilyenkor gyakorlatilag vak vagy. Veszítesz 2 ÜGYESSÉG pontot.[/p]
@@ -1942,9 +3553,30 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 290 -->
-  <!-- 291 -->
-  <!-- 292 -->
+  <p id="290">
+    <text>
+        [p]A kígyó feléd sújt a fejével, de te félrehajolsz, és rácsapsz az aganccsal. A hatás elképesztő. Mágikus energia száguld át a testeden. A kígyó és az agancs egyetlen kék villanássál eltűnik. Csak egy vékony, fekete [span class="takeItem" data-id="3017" data-amount="1"]fabot[/span] marad a helyükön. Fölemeled, és ahogy hozzáérsz, érzed mágikus erejét. Elteszed a botot. Megfordulsz, és visszalépsz a Középpontba.[/p]
+    </text>
+    <loseItem id="3012" />
+    <gatherItem id="4007" />
+    <next id="8"></next>
+  </p>
+  <p id="291">
+    <text>
+        [p]Kardod lepattan a Szamuráj acélos, ezüst bőréről. Homlokodat kiveri a veríték.[/p]
+    </text>
+    <next id="247">Ha elmenekülsz, és megkeresed az utat, amely a démon és a papnő szobrához vezet</next>
+    <next id="81">Ha méltóságodon alulinak érzed, hogy elfuss</next>
+  </p>
+  <p id="292">
+    <text>
+        [p]Meg kell küzdened a Dai-Onival.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="54" />
+    </fight>
+    <next id="74"></next>
+  </p>
   <p id="293">
     <text>
         [p]Ahogy fenyegetően megindulsz feléjük, néhány parasztnak mába száll a bátorsága, és az erdőbe menekül. Látva, hogy a társaik elfutottak, a többiek is ledobják botjaikat, és megfutamodnak.[/p]
@@ -1952,8 +3584,39 @@
     <next id="195">Ha úgy érzed, ennyi elég ahhoz, hogy megvédd urad jó hírnevét</next>
     <next id="331">Ha móresre akarod tanítani őket</next>
   </p>
-  <!-- 294 -->
-  <!-- 295 -->
+  <p id="294">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/294.jpg" /][/p]
+        [p]A Tatsu a levegőbe emelkedik, és egyenesen K’rllknek ront. Amint a Sáska Démon hátralép, hogy támadjon, a Tatsu elsöprő lángtengert okád rá. A Sáska Démont elbontják a lángok, és pillanatokon belül porrá ég. A Tatsu hozzád fordul: - Ég áldjon, halandó, sok szerencsét. Most mennem kell. - Ezzel elszáll. A kísértetközönség mintha nagyon távolról tapsolna. A Dai-Oni tombol dühében. - Öld meg, Gargantusz, öld meg! - üvölti, erre a hatalmas bronz kecske-ember feléd indul.[/p]
+    </text>
+    <loseItem id="4003" />
+    <itemCheck type="item" id="4008 or 4004">
+      <have>
+        <text>
+            [p]Kit küldesz a Démon ellen?[/p]
+        </text>
+        <itemCheck type="item" id="4004">
+          <have>
+            <next id="382">A Ki-Rint?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4008">
+          <have>
+            <next id="198">Az Aranyszázadot?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="364"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="295">
+    <text>
+        [p]Amikor eléred a dombtetőt, széles panoráma tárul eléd. Az alsó Hiang-Kiang folyó fennsíkja fekszik előtted. A távolban látod hatalmas deltáját a Kumói Póklápnál. Csak sejted, hogy arra van a Pókláp, mert párafelhő takarja. Tudod, hogy kerülő úton csak hetek múlva érnél célba, ezért egyenesen indulsz el, le a völgybe.[/p]
+    </text>
+    <next id="17"></next>
+  </p>
   <p id="296">
     <text>
         [p]Figyelemre sem méltatja fájdalmas nyögéseidet, továbbmegy, felébreszti a többi rabot. Fekete kenyeret és poshadt vizet ad be nekik kis kémlelőablakon át. Kisvártatva visszajön, és kinyitja az ajtót. De ezúttal három katona is van vele.[/p]
@@ -1973,8 +3636,18 @@
     <next id="13" pos="2">Ha ottmaradsz, és megküzdesz velük</next>
     <next id="3" pos="3">Ha megadod magad</next>
   </p>
-  <!-- 298 -->
-  <!-- 299 -->
+  <p id="298">
+    <text>
+        [p]Megkerülöd a vermet, és a Daloló Halált magad előtt tartva elindulsz a trón felé. Ahogy közelebb érsz, az árnyak visszahúzódnak, mert képtelenek szembeszállni a kard hatalmával. Ha bármelyik mégis közel merészkedik hozzá, azonnal köddé válik.[/p]
+    </text>
+    <next id="121"></next>
+  </p>
+  <p id="299">
+    <text>
+        [p]A bíborpagoda belül tiszta, de üres. Csak egy bekeretezett tükör lóg az egyik falon. Megérinted, de mintha a tükör elnyelné a kezedet, aztán téged is. Mielőtt rádöbbennél, mi történt, a legpompásabb kertben találod magad, amit valaha is láttál. Közepén díszes medencét látsz, amelybe kristálytiszta víz folydogál. Arról a helyről, ahol állsz, több kanyargós ösvény vezet a tavacskához, de a színpompás virágokon és kúszónövényeken kívül a szobrok a legérdekesebbek. Összesen öt csodás szobor áll a kertben. Balra az első kőszobor egy ezüst Szamurájt formáz, jobbra az első egy rémes démont ábrázol, aki láncon tartja az előtte térdelő papnőt. A nőszobor csupasz vállán szitakötőt ábrázoló tetoválást látsz. Ezekhez a szobrokhoz külön utak vezetnek, és e szobrok mögött két, még félelmetesebb kőszobor áll. Az egyik kőszobor Hammurabi, a Legyek Ura, egy hatalmas szitakötő képében, a másik pedig a rettegett Tengeri Sárkánygyík, amely úgy áll talapzatán, mintha épp a vízből emelkedne ki.[/p]
+    </text>
+    <next id="137"></next>
+  </p>
   <p id="300">
     <text>
         [p]Bátor döntésedért kapsz 1 Becsület pontot. Moichi megdöbben, mikor közlöd vele elhatározásodat, de aztán így szól: - Nos, uram, ez igen dicső tett lenne. Ismerek egy rejtett hátsó bejáratot a palotába, és tudom a jelszót is. Ott könnyen bejuthatunk, ha elfogadod egy magamfajta egyszerű harcos tanácsát, ó nagyuram! - Ezzel mélyen meghajol. Nem tudod eldönteni, vajon Moichi gúnyt űz-e belőled vagy sem. Mindenesetre követed. Elmosolyodik, és körbevezet a hátsó falhoz, ahol a várfal a Shios’ii hegyek déli lábához ér. Megvárjátok, míg besötétedik, csak aztán közelítitek meg a kaput. Moichi odamegy a várfal egyik részéhez, és kopog rajta. A falon rés nyílik, és a holdfényben csillogó szempár jelenik meg. - Ki az? - kérdi egy suttogó hang. - Én vagyok, Moichi. Most tértünk vissza egy éjjeli őrjáratról Tsietsin nagyúr személyes parancsára. A jelszó „Cseresznyevirág”. Kisvártatva az ajtó kinyílik és ti beléptek. Egyetlen szó nélkül állon vágod a meglepett őrt, aki hangtalanul zuhan a földre.[/p]
@@ -2007,8 +3680,38 @@
     </text>
     <next id="287"></next>
   </p>
-  <!-- 304 -->
-  <!-- 305 -->
+  <p id="304">
+    <text>
+        [p]Az Aranyszázad lovagjai hangos csatakiáltást hallatva, rendben indulnak rohamra. Egyenes kardjaik és buzogányaik azonban nem sok kárt tesznek a Sáska Démon kitinpáncéljában. K’rllk kegyetlen pontossággal csap le: minden egyes villámgyors mozdulatával kettéharap egy-egy lovagot. Perceken belül valamennyi lovag halott. Döbbenten állsz K’rllk hihetetlen ereje láttán. Húzd ki a lovagokat a Kalandlapodról. K’rllk feléd fordul, és lassan elindul.[/p]
+    </text>
+    <loseItem id="4008" />
+    <itemCheck type="item" id="4003 or 4004">
+      <have>
+        <text>
+            [p]Kit küldesz a Démon ellen?[/p]
+        </text>
+        <itemCheck type="item" id="4003">
+          <have>
+            <next id="294">A Tatsut?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4004">
+          <have>
+            <next id="278">A Ki-Rint?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="266"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="305">
+    <text>
+        [p]Elpusztítottad az Óriás Mormotát. Felpróbálod a [span class="takeItem" data-id="3016" data-amount="1"]vértet[/span]. Igen jól illik rád, nyersz 1 ÜGYESSÉG pontot, amikor viseled. Itt már nincs semmi érdekes, így hát továbbmászol a dombtetőre.[/p]
+    </text>
+    <next id="295"></next>
+  </p>
   <p id="306">
     <text>
         [p]Tizenöt főből álló lovagcsapat tűnik fel előttetek az úton, Fényes, kék és zöld zománcozott páncélt viselnek. Egyikük egy zászlót visz, amit nyomban felismersz: ezek Tsietsin nagyúr Szamurájai. Amint megpillantanak, vágtára sarkallják lovaikat. - A Sógun talpnyalója! Kapjuk el! - kiáltja az egyik. Nem tudsz hova menekülni, és nemsokára elérnek. Hősiesen küzdesz, hármat a másvilágra küldesz, és többet megsebesítesz, de a túlerő végül is győzedelmeskedik. Megkötöznek, és egy ló hátára szíjaznak. - Tsietsin nagyúr elégedett lesz ezzel a fogással - mondja az egyik. Abba a nagy palotába visznek, amelyet az úton elhagytatok. A palota udvarára vezetnek, ahol Tsietsin nagyúr Szamuráj csatlósai közül sokan összegyűlnek, hogy gúnyoljanak és kinevessenek. Minden teketória nélkül a várbörtön egyik cellájába vetnek. A foglár, egy bivalytermetű férfi, viseltes bőrmellényben, kárörvendőn vigyorog rád. - Holnap majd Tsietsin Sógun elé visznek! - mondja, és rád csapja a nehéz, vasveretű tölgyfa ajtót.[/p]
@@ -2052,16 +3755,40 @@
     <next id="344">Ha balra indulsz</next>
     <next id="356">Ha jobbra mész</next>
   </p>
-  <!-- 309 -->
+  <p id="309">
+    <text>
+        [p]Újabb fél napi lassú, de kitartó gyaloglás után, mialatt csak elvétve léptél le az ösvényről a sárba, elered az eső. A köd ritkulni kezd, és néhány kilométerre keletre nemsokára egy dombot veszel észre a mocsár közepén. Keskenyebb ösvény vezet a dombhoz.[/p]
+    </text>
+    <next id="261">Ha a domb felé indulsz</next>
+    <next id="279">Ha folytatod utadat a lápon át</next>
+  </p>
   <p id="310">
     <text>
         [p]Kardodat hüvelyébe csúsztatva Tsietsin nagyúr után veted magad. Rövidesen utoléred, és még épp látod, amint eltűnik egy aranydíszes lakkfa ajtó mögött. Követed, és egy tágas, gazdagon díszített terembe jutsz. Az egyik sarokban aranybarnára és feketére festett lakkfa láda áll. Tsietsin a félelemtől remegve éppen kinyit egy rejtekajtót a szoba sarkában, de amikor látja, hogy már nem tudja hatalmas testét áttuszkolni a nyíláson, térdre esik előtted.[/p]
     </text>
     <next id="178"></next>
   </p>
-  <!-- 311 -->
-  <!-- 312 -->
-  <p id="313" color="red">
+  <p id="311">
+    <text>
+        [p]Amikor még néhány pikkelyes zöld szörny emelkedik ki a vízből, és feléd indul, a túlpart közelében fölmászol egy mohos földhányásra.[/p]
+    </text>
+    <itemCheck type="enumAttribute" id="specialSkill" amount="2">
+      <have>
+        <next id="35" pos="1">Ha át akarsz ugrani a fejük fölött a biztonságot jelentő szárazföldre</next>
+      </have>
+    </itemCheck>
+    <next id="13" pos="2">Ha inkább ott maradsz, és megküzdesz velük</next>
+    <next id="3" pos="3">Ha megadod magad</next>
+  </p>
+  <p id="312">
+    <text>
+        [p]Előrelépsz, és a kardot a verembe hajítod. Ikiru felugrik és felsikolt: - Ne! - Hangja, akár a száraz falevelek zörgése. Amint a kard eltűnik a mélyben, a csarnok megrázkódik. Ikiru körül megremegnek az árnyak, és szertefoszlanak. Miközben a trón széthullik, süvöltő szél tör be a terembe, és széttépi Ikirut. Darabjai szétszóródnak, akár a pelyva. A barlang lassan omladozni kezd, a verem is beszakad, maga alá temetve a Daloló Halált. Bár sikerül megmenekülnöd és elpusztítottad Ikirut, a kard örökre elveszett az alvilágban.[/p]
+        [p]Amikor visszatérsz Konichibe, a Sógun köszönetet mond, de súlyos depresszió lesz úrrá rajta. A Daloló Halál nélkül Hachiman államszervezete összeomlik. A lázadó nagyurak hátat fordítanak neki, és barbárok fosztogatnak az országban, nemritkán szövetségre lépve az áruló nagyurakkal. Egy ilyen csatában esel el te is nemzeted védelmében. De minden hiábavaló; Hachiman sötét káoszba süllyed, mert küldetésed nem járt sikerrel.[/p]
+    </text>
+    <loseItem id="1003" />
+    <victory />
+  </p>
+  <p id="313">
     <text>
         [p]Lázasan téped le magadról mellvérted darabjait. A szíjak lassan engednek, és a részek egymás után a mélybe hullnak. Végre a felszínre vergődsz, és mielőtt kimásznál, kardjaidat a partra dobod. Szerencsédre a kút alján átúsztál egy természetes, vízzel teli barlangba, ahol nem sokkal a vízszint fölött egy párkányt találsz. Amikor körbetapogatózol a sötétben, egy alagútra lelsz, amelyben elindulsz. Mellvérted elveszett a föld alatti tó mélyén. Amíg nem találsz egy másik, rád illő páncélt, a fegyverek 4 ÉLETERŐ pontot sebeznek rajtad a szokásos 2 helyett.[/p]
     </text>
@@ -2072,7 +3799,20 @@
   <p id="314">
     <empty />
   </p>
-  <!-- 315 -->
+  <p id="315">
+    <text>
+        [p][alt]Hogyan küzdesz meg a lényekkel?[/alt][/p]
+    </text>
+    <itemCheck type="items" id="3004 and 3104">
+      <have>
+        <next id="21">Ha rájuk akarsz ijeszteni a süvítő gömb nevű nyílvesszővel</next>
+        <next id="53">Ha nagyot suhintsz a kardoddal az első szörnyre, amely rád támad</next>
+      </have>
+      <dontHave>
+        <next id="53" singleChoiceText="Nagyot suhintsz a kardoddal az első szörnyre, amely rád támad."></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="316">
     <text>
         [p]Másnap reggel vékony fénysugár tűz be sötét celládba a kis ablakon át. Arra ébredsz, hogy a foglár zörget a rácson. - Ébredj kutya! - üvölti. - Nemsokára érted jövök, és Tsietsin elé viszlek! - A foglár lassan továbbindul.[/p]
@@ -2080,8 +3820,19 @@
     <next id="20">Ha hangosan felnyögsz, mintha beteg vagy sebesült lennél, hátha az őr bejön, és megtámadhatod</next>
     <next id="40">Ha megvárod, míg visszatér</next>
   </p>
-  <!-- 317 -->
-  <!-- 318 -->
+  <p id="317">
+    <text>
+        [p]A gát hosszú mérföldeken átvezet, egy olyan ősi civilizáció emlékeként, mely itt élt a deltában, mielőtt leszállt volna az örök köd. Kis idő múltán, a térkép szerint, a tópartra vezető utat kell követned, amely azonban elágazik. Az egyik ága hatszögletű bazalt sziklakövekkel burkolt, sarló alakú út, mintha az óriások útja lenne, amely messze a ködbe vész. A másik ága a tőzeglápon át vezet, amit a térkép egy karddal átszúrt koponyával jelöl. A térkép jelölése szerint a pagoda az egyik út végében áll, de nem világos, hogy melyik az az út.[/p]
+    </text>
+    <next id="113">Ha az óriások útján indulsz el</next>
+    <next id="217">Ha a lápon át mész</next>
+  </p>
+  <p id="318">
+    <text>
+        [p]A kürt fülsértő hangja sokáig visszhangzik a bűzlő mocsárban, de a kígyó mintha meg sem hallaná.[/p]
+    </text>
+    <next id="246"></next>
+  </p>
   <p id="319">
     <text>
         [p]A tíz legöregebbnek látszó paraszt körbeüli az elöljáró háza előtt lévő kutat. Mikor odalépsz, tiszteletteljesen utat nyitnak, és maguk közé engednek. A falu elöljárója, akinek a mellét hivatásának rangjelzése díszíti, szívélyesen invitál, hogy maradj velük, amíg az ügyeiket intézik. Aztán mintha ott se lennél, tovább csevegnek a falu dolgairól. Különös, de arról beszélnek, abbahagyják-e a földművelést. A nyugati horizonton vörösen nyugszik le a nap.[/p]
@@ -2089,8 +3840,52 @@
     <next id="11">Ha még napnyugta előtt elhagyod a falut</next>
     <next id="155">Ha megvárod, míg befejezik a tárgyalást</next>
   </p>
-  <!-- 320 -->
-  <!-- 321 -->
+  <p id="320">
+    <text>
+        [p]A Főnix a levegőbe emelkedik, és nekiront a Sáska Démonnak. Az utolsó pillanatban megáll K’rllk veszélyes állkapcsai előtt. Amint a Sáska Démon támadásba lendülne, a Főnix aranyló lángokba borul. A démon már nem tud megállni - egyenesen beveti magát a tűzbe, és azonnal lángra lobban. Elborítja a tűz, és pillanatokon belül porrá ég. A Főnix diadalmasan vijjog egyet, aztán elszáll. A Dai-Oni tombol dühében. - Öld meg! Gargantusz, öld meg! – üvölti, erre a hatalmas bronz kecske-ember feléd indul.[/p]
+    </text>
+    <loseItem id="4006" />
+    <itemCheck type="item" id="4009 or 4004">
+      <have>
+        <text>
+            [p]Kit küldesz a Démon ellen?[/p]
+        </text>
+        <itemCheck type="item" id="4004">
+          <have>
+            <next id="382">A Ki-Rint?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4009">
+          <have>
+            <next id="22">Eleonórát, a Boszorkányt?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="364"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="321">
+    <text>
+        [p]Visszautasítod az ezüst Szamuráj kihívását, aki így szól hozzád: - Becstelen ember vagy, rosszabb, mint az állat, mert az becsület nélkül születik, s így el sem vesztheti a becsületét. Csak gyalázatos halált érdemelsz. - Nem fogadtál el egy becsületes kihívást urad, a Sógun nevében. Veszítesz 2 Becsület pontot! Az ezüst Szamuráj előrelép, hogy végezzen veled. A nap sugara vakítóan csillog a bőrén.[/p]
+    </text>
+    <add amount="-2" to="honor" />
+    <itemCheck type="attribute" id="honor" amount="1">
+      <have>
+        <fight type="single">
+          <enemy id="47" />
+          <winRound enemy="47" totalCount="3">
+            <interrupt />
+          </winRound>
+        </fight>
+        <next id="291"></next>
+      </have>
+      <dontHave>
+        <next id="99"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="322">
     <text>
         [p]Az áruló Tsietsin nagyúr halott. Megvédted a Sógun és Hachiman becsületét. Nyersz 1 Becsület pontot, mert megszabadítottad az országot a gonosz Tsietsin nagyúrtól, és saját palotájában ölted meg. Körbenézel a gazdagon díszített szobában. Leginkább a láda vonja magára a figyelmedet. Gyorsan kinyitod. Találsz benne [span class="takeItem" data-id="gold" data-amount="100"]100 Aranytallért[/span], egy nyílvesszőt és egy gyönyörűen megmunkált [span class="takeItem" data-id="3006" data-amount="1"]Szamurájpáncélt[/span], amely nyilván túl szűk volt az elhízott Tsietsinnek. Felpróbálod a páncélt, és úgy találod, jobb, mint az eddigi, mert különösen könnyű fémből készült. Nyersz 1 ÜGYESSÉG pontot.
@@ -2117,7 +3912,12 @@
     <add amount="-5" to="stamina" />
     <next id="311"></next>
   </p>
-  <!-- 324 -->
+  <p id="324">
+    <text>
+        [p]Engedsz a csábításnak. - Hatalmam és vagyonom lesz - gondolod, miközben féltérdre ereszkedsz Ikiru előtt, és átnyújtod neki a kardodat. - Hű szolgád leszek, ó uram! - A megidézett démon eltűnik, és Ikiru felnevet - hangja akár a száraz falevelek zörgése. - Te bolond - suttogja, és rád parancsol, hogy öld meg magad. Nem tudsz ellenállni az akaratának. Szeppukut követsz el, és iszonyú kínok közt meghalsz.[/p]
+    </text>
+    <death />
+  </p>
   <p id="325">
     <text>
         [p]Mielőtt egy szót szólhatnál, az egyik Kappa egy szigonyt hajít ki a víz alól.[/p]
@@ -2141,9 +3941,45 @@
     <add amount="-1" to="skill" />
     <next id="371"></next>
   </p>
-  <!-- 328 -->
-  <!-- 329 -->
-  <!-- 330 -->
+  <p id="328">
+    <text>
+        [p]Magasra emeled a rubint, de az semmi hatással nincs rá. Továbbra is arra gondol, milyen finom falat leszel a számára.[/p]
+    </text>
+    <next id="246"></next>
+  </p>
+  <p id="329">
+    <text>
+        [p]Amint elered a barlangot, a rengés abbamarad, de úgy döntesz, mégis bemész, hátha ez csak egy sokkal erősebb rengés előzménye volt. Fáklyát gyújtasz, és körülnézel. Mindenütt rózsaszín kalcitvirágok borítják a kicsiny barlang falait, mely olyan, mint egy korallzátony. A kővirágok közt egy csodás zománcozott mellvértet fedezel fel. Kissé poros és dohos de még mindig csillognak rajta a Hetedik Pecsét Seregének arany és kék színei.[/p]
+    </text>
+    <next id="271">Ha elveszed a mellvértet</next>
+    <next id="375">Ha rögtön továbbmész</next>
+  </p>
+  <p id="330">
+    <text>
+        [p]Eleonóra előrelép. A Sáska Démon fölé tornyosul, de a nő összeszorítja a két kezét, és pusztító kék villámot lövell a sáskára. A villám azonban sziporkázva verődik vissza a kitinpáncélról, és elenyészik a levegőben. A Démon gyorsan előrenyújtja a nyakát, beleharap a nőbe, és fölfalja. K’rllk nem habozik, feléd indul.[/p]
+    </text>
+    <loseItem id="4009" />
+    <itemCheck type="item" id="4006 or 4004">
+      <have>
+        <text>
+            [p]Kit küldesz a Démon ellen?[/p]
+        </text>
+        <itemCheck type="item" id="4006">
+          <have>
+            <next id="320">A Főnixet?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4004">
+          <have>
+            <next id="278">A Ki-Rint?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="266"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="331">
     <text>
         [p]Kardodat lóbálva berohansz az erdőbe a szemtelen ifjú után, aki közben kitör a rejtekétől, és átrohan a nyílt tisztáson. Ahogy utánaerednél, egy vascsapda csapódik a lábadra, és szilánkokra zúzza a sípcsontodat. Szorosan tart, akár egy satu. A földre rogysz, és elfojtasz egy nyögést. A csapda vasból van, így előbb halsz szomjan, semmint kiszabadulnál a fogságából. Veszítesz 3 ÉLETERŐ pontot.[/p]
@@ -2158,9 +3994,27 @@
     </text>
     <death />
   </p>
-  <!-- 333 -->
-  <!-- 334 -->
-  <!-- 335 -->
+  <p id="333">
+    <text>
+        [p]A szigony hegye átdöfi a vértedet, és eltöri az egyik bordádat. Elveszítesz 2 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="335">Ha azonnal tovább akarsz állni</next>
+    <next id="361">Ha kihúzod a szigonyt a hátadból, és megpróbálsz ráijeszteni vele a Kappákra</next>
+  </p>
+  <p id="334">
+    <text>
+        [p]Nem sikerült elég magasra ugranod. Az élőholt Szamuráj elkapja a lábadat, és leránt a földre. Azonnal felpattansz, de a csontvázak már körülvettek.[/p]
+    </text>
+    <next id="358"></next>
+  </p>
+  <p id="335">
+    <text>
+        [p]Senki sem üldöz, amint magad mögött hagyod a Kappák gázlóját, de nemsokára új veszélyek feledtetik a régiek emlékét. A felső Hiang-Kiang folyó völgyén túl egy palahegység emelkedik, gerince mint a fűrész mered az ég felé. Közeledsz a csúcshoz, amikor a lábad alatt remegni kezd a hegy. Egész Hachimant úgy rázza a földrengés, mintha kocsonyává vált volna. Nem messze szűk barlangnyílást fedezel fel.[/p]
+    </text>
+    <next id="205">Ha bemászol</next>
+    <next id="103">Ha inkább a földre veted magad ott, ahol vagy</next>
+  </p>
   <p id="336">
     <text>
         [p]Moichi megsebesült, de megölte ellenfelét. Megpihensz egy pillanatra. Moichi boldogan rád vigyorog. - Jó harcos vagy, uram. Dicsőség az oldaladon harcolni - mondja, és mélyen meghajol előtted. - Elég ebből a leplezett gúnyolódásból! - feleled. - Nyomás befelé![/p]
@@ -2171,7 +4025,22 @@
     </fight>
     <next id="354"></next>
   </p>
-  <!-- 337 -->
+  <p id="337">
+    <text>
+        [p]Az Óriás Mormota széles hátával és nyolc rövid lábával olyan, akár egy nagy, mozgó emelvény. A háta közepén lévő rés a szája, melynek szélei kezdenek szétnyílni, hogy bekapjon. Testén körben farkak lógnak, ezek végeit csontgolyók díszítik, mint megannyi élő buzogány. Kardot rántasz, hogy megküzdj vele, de egyensúlyoznod is kell a hátán, ezért erre a harcra vonj le 1 pontot az ÜGYESSÉGEDBŐL![/p]
+    </text>
+    <add amount="-1" to="skill" />
+    <fight type="single">
+      <enemy id="43" />
+      <win>
+        <text>
+            [p]Továbbmész a barlangba.[/p]
+        </text>
+        <add amount="1" to="skill" />
+      </win>
+    </fight>
+    <next id="355"></next>
+  </p>
   <p id="338">
     <text>
         [p]Továbbgyalogolsz. Errefelé már kevésbé művelik a földeket, sokkal több az ugar. Hamarosan két erdő borította domb között haladsz egy sekély völgyben.[/p]
@@ -2185,9 +4054,31 @@
       </failure>
     </test>
   </p>
-  <!-- 339 -->
-  <!-- 340 -->
-  <!-- 341 -->
+  <p id="339">
+    <text>
+        [p]Az ösvény sok más ösvényt keresztezve továbbkanyarog, míg végül teljesen eltévedsz a ködben. Megállsz, hagy tájékozódj, de elkezd esni az eső, és a pára még mindig nem oszlik. Két teljes napon át zuhog, és a vízszint mára fejed fölött van. A Póklápból nincs menekvés. Még hosszú kilométereket úszol, de a végén meghalsz a kimerültségtől.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="340">
+    <text>
+        [p]A Ki-Rin jóságos tekintete békével és nyugalommal tölt el. - A te ügyed igazságos, halandó, és megérdemled, hagy sikerrel járj. Szíved nemes, ezért segíteni fogok neked. Ott leszek a Csata Színhelyén, és melletted fogok harcolni a Dai-Oni és gonosz csatlósai ellen. - Csodálatos hangját élvezettel hallgatod. Éppen köszönetet mondanál, amikor vad üvöltéssel a levegőbe emelkedik, és magadra hagy. Egy ajtó jelenik meg előtted a levegőben. Átlépsz rajta, és újra a Középpontban találod magad: a csillagok és a nyolc ajtó vesz körül.[/p]
+    </text>
+    <gatherItem id="4004" />
+    <next id="8"></next>
+  </p>
+  <p id="341">
+    <text>
+        [p]Az ezüst Szamuráj harcra készen lép előre. Vakítóan csillog a teste a napfényben.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="47" />
+      <winRound enemy="47" totalCount="3">
+        <interrupt />
+      </winRound>
+    </fight>
+    <next id="291"></next>
+  </p>
   <p id="342">
     <text>
         [p]Messze jársz már, mire az őrök észbe kapnak, de amikor meglátják, hogy hova mész, nem üldöznek. Kisvártatva egy fegyverekkel, ruhákkal és hasonlókkal zsúfolt szobába érsz. Megtalálod a kardjaidat, de nincs más kijárat, csak az, amelyen bejöttél. Csapdába estél. Visszarohansz a folyosón, de ott már legalább tíz őr vár rád. Neked rontanak. Hősiesen harcolsz, jó néhányat megölsz közülük a szűk folyosón, de az egyik lándzsa gyomorszájon talál. Holtan esel össze.[/p]
@@ -2217,7 +4108,12 @@
     <add amount="1" to="luck" />
     <next id="397"></next>
   </p>
-  <!-- 346 -->
+  <p id="346">
+    <text>
+        [p]A Sáska Démon fekete vérébe fagyva, holtan fekszik előtted. A Dai-Oni dühödten üvölti: - Gargantusz! Pusztítsd el ezt a halandót! - és a Bronzember elindul feléd.[/p]
+    </text>
+    <next id="364"></next>
+  </p>
   <p id="347">
     <text>
         [p]A faszénégetők látják, hogy sebezhetetlen vagy. Miután az egyiket megölted, a többiek a lábad elé vetik magukat, kegyelemért könyörögve. Közlöd velük, hogy bolondok, ha azt hiszik, árthatnak a Sógun bajnokának. A legöregebb azt mondja, ha megkíméled az életét, elvezet egy faluba, ahol biztonságban töltheted az éjszakát.[/p]
@@ -2225,8 +4121,19 @@
     <next id="179">Ha ráparancsolsz, hogy vezessen a faluba</next>
     <next id="163">Ha rákényszeríted őket, hogy esküdjenek hűséget a Sógunnak</next>
   </p>
-  <!-- 348 -->
-  <!-- 349 -->
+  <p id="348">
+    <text>
+        [p]Amint a Főnix közelebb ér hozzád, furcsa meleget érzel a hátizsákodban. Belenyúlsz, és kiemeled a Főnixes Rubint. Egyre melegebb lesz, és halványvöröses fényt áraszt magából. Ösztönösen a magasba emeled. A Főnix újabb vad vijjogást hallat, és egy pillanatra aranyló lángokba borul, aztán nem messze tőled leszáll a földre. Különös tekintettel néz rád, vörösen izzó szeme meg-megvillan. Egyetlen szó nélkül agyadba vési az üzenetet: - Segítek neked, ó Rubinhordozó. Ott leszek a Csata Színhelyén. - Aztán elszáll. Megfordulsz, és belépsz az ajtón.[/p]
+    </text>
+    <gatherItem id="4006" />
+    <next id="8"></next>
+  </p>
+  <p id="349">
+    <text>
+        [p]A démon és a papnő szobrához érsz. A varázsló újra megjelenik, és a két szobor; a fekete bőrű, vörös szarvú démon meg a sápadt papnő életre kel. A nő a lábaid elé veti magát, és térden állva könyörög, hogy mentsd meg őt a Démonok Vermétől, de fogvatartója durván megrántja a láncot, és a nő a földre zuhan. Aztán a démon hozzád vágja a láncot, és elmormolja a Kővé-változtatás varázslat igéit. Kővé dermedsz, és a helyébe kerülsz, ő pedig most már szabad. Kíváncsian nézel a földön fekvő papnőre, aki újból szoborrá vált. Amíg be nem téved egy bátor utazó a bíborpagoda falai közé, nem lehet részed az életben.[/p]
+    </text>
+    <death />
+  </p>
   <p id="350">
     <text>
         [p]Bátor döntésedért nyersz 1 Becsület pontot. Határozott léptekkel indulsz el Tsietsin nagyúr palotája felé. Amint közelebb érsz, észreveszed a falat őrző katonák fegyvereinek csillogását.[/p]
@@ -2241,7 +4148,12 @@
     </text>
     <next id="179"></next>
   </p>
-  <!-- 352 -->
+  <p id="352">
+    <text>
+        [p]A Ki-Rin rosszallóan néz rád. Mielőtt elszállna, még egy utolsó, megvető pillantást vet rád, majd otthagy a hegy tetején a jeges szélben és esőben. Egy ajtó jelenik meg előtted, és te rögvest kihasználod a lehetőséget, hogy elhagyd ezt a barátságtalan helyet. Visszalépsz a Középpontba. Körülötted a csillagok látszanak, és a nyolc ajtó.[/p]
+    </text>
+    <next id="8"></next>
+  </p>
   <p id="353">
     <text>
         [p]Lázasan téped le magadról a mellvérted darabjait, de a hideg víz teljesen legyengített. Fuldokolsz, és elveszted az eszméletedet. Mire a Rokuro-Kubik odaérnek, hogy puha húsodból lakmározzanak, már megfulladtál.[/p]
@@ -2257,7 +4169,12 @@
     <add amount="-3" to="stamina" />
     <next id="366"></next>
   </p>
-  <!-- 355 -->
+  <p id="355">
+    <text>
+        [p]A fáklya fényénél látod, hogy egy színpompás barlangban állsz; mindenütt rózsaszín kalcitvirágok borítják a falat, mint egy korallzátonyt. A kővirágok között egy csodás páncélt fedezel fel. Kissé poros és dohos, de még mindig csillognak rajta a Hetedik Pecsét Seregének arany és kék színei. A Hetedik Pecsét Seregének tagjai az első Sógun dicső testőrei voltak. Mióta ötszáz évvel ezelőtt nem adták meg magukat a tízszeres túlerőnek, s mind egy szálig lemészárolták őket, senki sem hallott felőlük. A páncél ősrégi, de a minősége kitűnő. A kővirágok csörömpölve törnek le, ahogy kiemeled a [span class="takeItem" data-id="3016" data-amount="1"]páncélt[/span], és elégedetten tapasztalod, hogy pontosan illik rád, és meglepően könnyű. Nyersz 1 ÜGYESSÉG pontot, míg ezt a vértet viseled, hála a benne rejlő varázserőnek. Mivel semmi más figyelemre méltó nincs a barlangban, úgy döntesz, hogy továbbmész és megmászod a gerincet.[/p]
+    </text>
+    <next id="295"></next>
+  </p>
   <p id="356">
     <text>
         [p]Jobbra rohansz a cellaajtók mellett, de nem jutsz tovább a börtönfolyosón. A végében egy nagy, négyzet alakú szobába jutsz. A szoba tele van fegyverekkel, ruhákkal és más effélékkel, legnagyobb örömödre az egyik sarokban felfedezed a saját fegyvereidet. Gyorsan fölkapod őket, és újra egész embernek érzed magad. Nyersz 1 SZERENCSE pontot kardjaid visszaszerzéséért.
@@ -2284,8 +4201,33 @@
     <gatherItem id="1002" />
     <next id="132"></next>
   </p>
-  <!-- 357 -->
-  <!-- 358 -->
+  <p id="357">
+    <text>
+        [p]Egy pillanattal azután, hogy kezed megragadta a katana markolatát, a hozzád legközelebb álló szörny lassan úszni kezd a túlpart felé. A fejetlen test, még mindig a hálót markolva, élettelenül hanyatlik a víz alá. A másik a gázló felé tart, és épp csak annyi időd van, hogy életedet kockáztatva, a csúszós zöld nyalkán egyensúlyozva elérd a túlpartot.[/p]
+    </text>
+    <next id="395"></next>
+  </p>
+  <p id="358">
+    <text>
+        [p]Az élőholt Szamuráj hat csontvázat keltett életre, de egyszerre csak három tud a közeledbe férkőzni. Egyszerre kell megküzdened velük.[/p]
+    </text>
+    <fight type="allAtOnce">
+      <enemy id="36" />
+      <enemy id="37" />
+      <enemy id="38" />
+      <win>
+        <text>
+            [p]Meg kell küzdened a következő hárommal is.[/p]
+        </text>
+        <fight type="allAtOnce">
+          <enemy id="39" />
+          <enemy id="40" />
+          <enemy id="41" />
+        </fight>
+      </win>
+    </fight>
+    <next id="368"></next>
+  </p>
   <p id="359">
     <text>
         [p]Óvatosan kiveszed a ládikát a titkos rekeszből és a szalmával borított padlóra helyezed, aztán a wakizasid hegyével fölfeszíted a zárat, de közben kezeddel a szemedet véded egy esetleges tűzcsapda ellen. A láda kinyílik, és egy kis rugós sárkánybábu pattan ki belőle. Orrlyukaiból gőz csap ki, és narancssárga füst lepi el a fejedet. A füst a szemedbe száll, csípni kezd, hogy a szemed majd kifordul.[/p]
@@ -2293,8 +4235,20 @@
     <next id="327">Ha ledobod a ládát és távozol</next>
     <next id="303">Ha belesel a bábu alá</next>
   </p>
-  <!-- 360 -->
-  <!-- 361 -->
+  <p id="360">
+    <text>
+        [p]A Főnix veszélyesen közel száll el melletted. Hirtelen lángba borul, aranyló tűzlabdává válik, és megperzsel. Veszítesz 2 ÉLETERŐ pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="372">Ha harcolni akarsz a Főnixszel</next>
+    <next id="390">Ha megpróbálsz visszarohanni a mögötted lógó ajtón</next>
+  </p>
+  <p id="361">
+    <text>
+        [p]Rájuk ijesztesz, hogy seregnyi Szamurájt hozol ellenük, akik mindenkit lemészárolnak, ha nem segítenek utadon. A sárga szemek megvillannak, aztán az egyik szörny hirtelen kiemelkedik a vízből, és egy csillogó vörös ékkövet hajít a lábad eléd - Ez a legnagyobb kincsünk - sziszegi. - Most pedig menj utadra. - Az ékkő egy Főnix alakú [span class="takeItem" data-id="3013" data-amount="1"]rubin[/span]. Valóban ritka kincs, egy gazdag kereskedőtől származik, aki valaha megpróbált átkelni a folyón. A Kappák eltűnnek, és te továbbindulsz.[/p]
+    </text>
+    <next id="335"></next>
+  </p>
   <p id="362">
     <text>
         [p]Továbbgyalogolsz. A földet erre kevésbé művelik, sokkal több az ugar. Kis idő múltán két erdő borította domb közt húzódó sekély völgyben visz az utad.[/p]
@@ -2322,7 +4276,30 @@
     </fight>
     <next id="345"></next>
   </p>
-  <!-- 364 -->
+  <p id="364">
+    <text>
+        [p]A szeme fellángol, és két vörös fénycsíkot lövell feléd, amelyeket éppen csak sikerül elkerülnöd. Meg kell küzdened a Gargantusszal, a bronzóriással. Minden harmadik Fordulóban vöröslő villámot lövell a szeméből. Ilyenkor dobj egy kockával. Ha a dobott szám páros, elkerülted a villámot, de ha páratlan, eltalált, és veszítesz 4 ÉLETERŐ pontot.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="53" />
+      <afterRound everyNth="3">
+        <random>
+          <odd max="6" min="1">
+            <text>
+            [p]Eltalált a Gargantusz villáma, vesztesz 4 ÉLETERŐ pontot.[/p]
+        </text>
+            <add amount="-4" to="stamina" />
+          </odd>
+        </random>
+      </afterRound>
+      <win>
+        <text>
+            [p]A Dai-Oni mérgében morogva felkap egy tüskés vasbuzogányt, egy Tetsubót, és elindul feléd.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="292"></next>
+  </p>
   <p id="365">
     <text>
         [p]Első támadód vérbe fagyva fekszik előtted, de a te véred is kicsordult és a zöld gyepre csorog. A parasztok látják, hogy nem vagy sebezhetetlen. Újabb faszénégető támad rád, egy hatalmas, nagy darab ember, akinek a kezében meglendül az egyik boksából kihúzott, égő husáng.[/p]
@@ -2362,9 +4339,35 @@
     <add amount="1" to="honor" />
     <next id="378"></next>
   </p>
-  <!-- 367 -->
-  <!-- 368 -->
-  <!-- 369 -->
+  <p id="367">
+    <text>
+        [p]A szigony egy alacsony faágba áll bele. Kihúzod, és ráijesztesz a Kappákra, amelyek lemerülnek a zöld mélységbe, csak sárgán csillogó szemük látszik ki.[/p]
+    </text>
+    <next id="335">Ha otthagyod őket</next>
+    <next id="361">Ha beszélni akarsz velük</next>
+  </p>
+  <p id="368">
+    <text>
+        [p]A csontvázak szétszórt szilánkjai körülötted hevernek. Az élőholt Szamuráj síri csöndben közelít meg, hogy utoljára küzdjön meg veled.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="42" />
+      <win>
+        <text>
+            [p]A földre zuhan, és lassan szétporlad. Az ég kivilágosodik, és a vörös szín eltűnik a folyóból.[/p]
+            [p]A Szamuráj maradványai közt találsz egy gyönyörűen megmunkált [span class="takeItem" data-id="3015" data-amount="1"]elefántcsont kürtöt[/span], amelynek az oldalát ezüst kardfogú tigris díszíti. Fölemeled, és továbbindulsz.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="211"></next>
+  </p>
+  <p id="369">
+    <text>
+        [p]Kitartásod nem volt hiábavaló. Hihetetlen látvány tárul eléd a ködben. A bíborpagoda fölött mintha megállt volna az idő. Nincs dohszag, korhadás nyomát sem látod, a festés is hibátlan. Amint odaérsz, a vörös kapu kitárul, szinte hív, hogy lépj be.[/p]
+    </text>
+    <next id="299">Ha vállalod a kockázatot, és belépsz</next>
+    <next id="113">Ha inkább visszamész, és az Óriások útjával próbálkozol</next>
+  </p>
   <p id="370">
     <text>
         [p]Elég meggyőzően nyögsz a fájdalomtól, és amikor az egyik katona föléd hajol, hirtelen rátámadsz. Mivel nincs kardod, csakhamar sarokba szorítanak. A dulakodás zajára még több őr rohan be a cellába. Egyikük a lándzsájával keresztülszúrja a mellkasodat. Holtan zuhansz a cella mocskos padlójára.[/p]
@@ -2379,8 +4382,51 @@
     <next id="237">Ha folytatod az utat északnak, a Hosszú dombokon át</next>
     <next id="219">Ha északnyugatnak mész, Kanshuro falvai és völgyei felé</next>
   </p>
-  <!-- 372 -->
-  <!-- 373 -->
+  <p id="372">
+    <text>
+        [p]A Főnix nem a csőrével vagy a karmaival támad, hanem megpróbál elég közel repülni hozzád, hogy megperzselhessen. Valahányszor eltalál, dobj egy kockával, és vonj le 1 pontot a dobott értékből: ennyi ÉLETERŐ pontot sebzett rajtad a tűz. (Ha szerencsés vagy, nem vesztesz ÉLETERŐ pontot!)[/p]
+    </text>
+    <fight type="single">
+      <enemy id="45" />
+    </fight>
+    <next id="36"></next>
+  </p>
+  <p id="373">
+    <text>
+        [p]A szigony hegye a mellkasodba fűződik.[/p]
+    </text>
+    <itemCheck type="item" id="3002">
+      <haveEquipped>
+        <next id="333"></next>
+      </haveEquipped>
+      <have>
+        <itemCheck type="item" id="3006">
+          <haveEquipped>
+            <next id="333"></next>
+          </haveEquipped>
+          <have>
+            <next id="39"></next>
+          </have>
+          <dontHave>
+            <next id="39"></next>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="3006">
+          <haveEquipped>
+            <next id="333"></next>
+          </haveEquipped>
+          <have>
+            <next id="39"></next>
+          </have>
+          <dontHave>
+            <next id="39"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="374">
     <text>
         [p]Úgy közeledsz az úton, mintha te lennél a palota tulajdonosa. A kapuban álló két őr közönyösen néz rád. Közlöd velük, hogy ronin vagy, magányos Szamuráj és szeretnél Tsietsin nagyúrhoz csatlakozni. Bólintanak, az egyik odalép a vastag kapuhoz, bekopog, majd belép. Kisvártatva egy kimonós ember jön ki. - Ieratsu vagyok, Tsietsin nagyúr hadnagya. Gyere velem. - Az ajtóra mutat, és te belépsz a tágas palotaudvarra. Ieratsu hirtelen felkiált. - Ha valóban ronin vagy, miért támadtad meg az embereimet a faluban? Besétáltál a kelepcébe, Sógun bajnokai - Egy csapat harcos rohan ki az udvarra, annyian vannak, mint a patkányok, és szorosan körülfognak. Túl sokan vannak, nem kell hozzá sok idő, legyőznek és elfognak. Belöknek a várbörtön egyik cellájába. A foglár, egy bivalytermetű férfi viseltes bőrmellényben, gúnyosan így szól:[/p]
@@ -2398,7 +4444,15 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 375 -->
+  <p id="375">
+    <text>
+        [p]Amint megfordulsz, hogy kimenj, látod, hagy a bejárat előtt egy hatalmas, mozgó sziklaszerű valami áll. Ez egy Óriás Mormota: akkora, akár egy hatalmas szikla, és nyolc rövid, vaskos lábon jár. A testéből körben farkak lógnak, végükön csontgolyó, mint megannyi élő buzogány. A háta közepén hatalmas rés tátong, ez a szája. Nincs hova bújnod a barlangban, meg kell küzdened veje.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="43" />
+    </fight>
+    <next id="305"></next>
+  </p>
   <p id="376">
     <text>
         [p]Követed Tsietsin nagyúr palotájához vezető utat, amely szántóföldeken visz keresztül, ahol parasztok dolgoznak. A palota tölgyfa kapuja előtt két őr áll, Tsietsin nagyúr katonáinak egyenruhájában. Ahogy közelebb érsz, a kapu kitárul, és egy kimonós ember lép ki rajta, övébe tűzött két karddal. Mélyen meghajol előtted. - Légy üdvözölve, Sógun bajnoka! Ieratsu vagyok, Tsietsin nagyúr hadnagya. Fáradj be! - Amint belépsz a kapun, az becsukódik mögötted. Odabent húsznál is több, felfegyverzett Szamuráj vár. - Sajnos - mondja Ieratsu - Tsietsin nagyúr kikiáltotta magát az új Sógunnak. Kihei Hasekawa sültbolond, és azok is, akik még vele tartanak. - Int a katonáknak, és azok neked rontanak. Hősiesen küzdesz, de túl sokán vannak, és nemsokára felülkerekednek. Belöknek a várbörtön egyik cellájába. A foglár, egy bivalytermetű férfi viseltes bőrmellényben, gúnyosan így szól: - Holnap majd Tsietsin Sógun elé visznek! - ezzel rád csapja a nehéz, vasveretű tölgyfa ajtót. Egyedül maradtál. Elvették a kardjaidat, de jobban sért a katonák gúnyolódása és megalázó elfogatásod. Veszítesz 1 Becsület pontot. Nincs mit tenned, meg kell várnod a reggelt, így hát lefekszel a sarokban álló priccsre és elalszol.[/p]
@@ -2574,7 +4628,14 @@
     </fight>
     <next id="384"></next>
   </p>
-  <!-- 379 -->
+  <p id="379">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/379.jpg" /][/p]
+        [p]Ahogy óvatosan közeledsz az ezüst Szamuráj felé, az udvari varázstó mellette terem, és finom kék port hint rá. - Aha, vállalkozó szellemű barátom, másodjára is találkozunk - mondja, és újra eltűnik egy füstfelhőben. A Szamuráj továbbra is ezüstösen csillog, de most mozog és beszél: - Kihívlak párbajra, urad becsületéért.[/p]
+    </text>
+    <next id="341">Ha elfogadod</next>
+    <next id="321">Ha visszautasítod a kihívást</next>
+  </p>
   <p id="380">
     <text>
         [p]Fájdalmas nyögéseket hallatsz. - Biztosan tegnap sebesült meg - mondja a foglár. Két őr durván felemel, és a talpadra állít. A karjukba rogysz, mintha félholt lennél, erre kivonszolnak a cellából. Sötét cellaajtókat látsz a folyosó mindkét oldalán. Hirtelen felpattansz, és megragadod a közelebb álló őr [span class="takeItem" data-id="1001" data-amount="1"]kardját[/span], mielőtt az bármit is tehetne.[/p]
@@ -2588,7 +4649,32 @@
     </text>
     <next id="227"></next>
   </p>
-  <!-- 382 -->
+  <p id="382">
+    <text>
+        [p]A Ki-Rin a levegőbe szökken, patája lángot vet, és Gargantusz felé száll. Gargantusz rápillant, és két, vörösen izzó villám lövell ki a szeméből. A sugarak eltalálják a Ki-Rint, és azonnal végeznek vele.[/p]
+    </text>
+    <loseItem id="4004" />
+    <itemCheck type="item" id="4008 or 4009">
+      <have>
+        <text>
+            [p]Kit küldesz a Gargantusz ellen?[/p]
+        </text>
+        <itemCheck type="item" id="4009">
+          <have>
+            <next id="22">Eleonórát, a Boszorkányt?</next>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="4008">
+          <have>
+            <next id="198">Az Aranyszázadot?</next>
+          </have>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <next id="364"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="383">
     <text>
         [p]A kis kunyhó belseje tiszta, berendezése egyszerű. Két selyemtekercs-kép lóg a falon. Az egyik Toda nagyurat ábrázolja, a másik meg egy kis falut és egy nagy házat - talán Ginseié lehetett, amikor még Toda kapitánya volt. A képen két gyerek is van; a verandán játszanak, és nagyon hasonlítanak Ginseire. Végighúzod a selymen az ujjadat, és meglepetten fedezel föl mögötte egy titkos rekeszt a falban. A rekeszben egy ládika van, melyre vörös és arany betűkkel a következőt írták: „Óvakodj a sárkány leheletétől!”[/p]
@@ -2605,14 +4691,33 @@
     <next id="210">A fejedre teszed a sisakot?</next>
     <next id="222">Nem nyúlsz semmihez, és kimész a barlangból</next>
   </p>
-  <!-- 385 -->
+  <p id="385">
+    <text>
+        [p class="inlineImage"][img src="resources/ff20/385.jpg" /][/p]
+        [p]A remegés tovább fokozódik, míg maga a szikla is rázkódni kezd körülötted. Későn kapsz észbe, hogy az egy Mormota, vagyis egy hatalmas szörny, amely pontosan úgy néz ki, mint a szikla, amelyen fekszik.[/p]
+    </text>
+    <itemCheck type="enumAttribute" id="specialSkill" amount="2">
+      <have>
+        <next id="197">Ha használni kívánod Karumidzsutszu-ismereteidet</next>
+        <next id="337">Ha nem</next>
+      </have>
+      <dontHave>
+        <next id="337"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="386">
     <text>
         [p]Amikor kiérsz a völgyből, hatalmas területet beborító erdőhöz érsz, Az út elvész benne, mint kő a vízben. Felismered az Árnyak Erdejét. Keresztül kell menned rajta.[/p]
     </text>
     <next id="112"></next>
   </p>
-  <!-- 387 -->
+  <p id="387">
+    <text>
+        [p]Kisvártatva egy ösvényhez érsz, amely a vízpartra vezet, ahol egymáshoz illesztett hatalmas bazalttömbök sorakoznak. Ez az Óriások átkelőhelye. Egyik kőről a másikra ugorva haladsz előre.[/p]
+    </text>
+    <next id="113"></next>
+  </p>
   <p id="388">
     <text>
         [p]Anélkül hogy bárki is meglátna, lopva megkerülöd a palotát, aztán odaugrasz a pontosan egymáshoz illesztett kőtömbökből épült fal tövébe, de sehol sem látsz alkalmas helyet, ahol átmászhatnál rajta.[/p]
@@ -2633,7 +4738,12 @@
     <add amount="1" to="honor" />
     <next id="195"></next>
   </p>
-  <!-- 390 -->
+  <p id="390">
+    <text>
+        [p]Visszarohansz, föltéped az ajtót, berohansz rajta. A Főnix nem állja utadat. Újra a Középpontban vagy, a csillagok és a nyolc ajtó között.[/p]
+    </text>
+    <next id="8"></next>
+  </p>
   <p id="391">
     <text>
         [p]A hatalmas pompás vad alatt megremeg a föld, amikor elterül. Kardoddal levágod fekete agancsának egy darabját. A Fekete Szarvas több tonnát nyom, és túl nagy ahhoz, hogy gyorsan megnyúzd, de a húsából kihasítasz egy nagyobb részt. Növeled [span class="takeItem" data-id="2000" data-amount="2"]2 adaggal Élelmiszerkészletedet[/span]. A levágott [span class="takeItem" data-id="3012" data-amount="1"]agancsot[/span] furcsa, fehér kanyargós csík díszíti: olyan, mint egy csontkígyó. Úgy döntesz, megtartod az agancsdarabot, hátha szerencsét hoz.[/p]
@@ -2654,8 +4764,27 @@
     <next id="335">Ha azonnal elmész, amíg lehet</next>
     <next id="325">Ha megpróbálsz beszélni velük</next>
   </p>
-  <!-- 394 -->
-  <!-- 395 -->
+  <p id="394">
+    <text>
+        [p]A Ki-Rin felszáll, és körözni kezd a Dai-Oni körül. A Dai-Oni felésújt a buzogányával, de a Ki-Rin elugrik előle. Aztán a Ki-Rin kimond egy szót, amelytől a Dai-Oni felsikolt fájdalmában. - Megfosztottál a varázserőmtől, te átkozott bestia! - süvölti. A Ki-Rin feljebb száll, és hozzád fordul: - Ennyit tehetek érted, halandó. A többi már csak rajtad múlik. Sok szerencsét! - Aztán a Ki-Rin eltűnik. A Dai-Oni buzogányát magasra tartva előrelép, de most félelem tükröződik a szemében. Meg kell küzdened vele.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="51" />
+    </fight>
+    <next id="54"></next>
+  </p>
+  <p id="395">
+    <text>
+        [p]A túlpart közelében felmászol egy mohos földhányásra, s ekkor még néhány pikkelyes zöld szörny emelkedik ki a vízből, és feléd indul.[/p]
+    </text>
+    <itemCheck type="enumAttribute" id="specialSkill" amount="2">
+      <have>
+        <next id="35" pos="1">Ha át akarsz ugrani a fejük fölött, a biztonságot jelentő szárazföldre</next>
+      </have>
+    </itemCheck>
+    <next id="13" pos="2">Ha ott maradsz, és megküzdesz velük</next>
+    <next id="3" pos="3">Ha megadod magad</next>
+  </p>
   <p id="396">
     <text>
         [p]Tizenöt főből álló lovascsapat tűnik fel a távolban. Fényes, kékeszöld zománcozott páncélt viselnek egyikük kezében zászló. Fölismered Tsietsin nagyúr Szamurájait. Vezetőjük így üdvözöl - Isten hozott Tsietsin nagyúr földjén. Te a Sógun bajnoka vagy, ugye? Mosolyogva bólintasz. Az egyik hirtelen felkiált. - De Tsietsin nagyúr kikiáltotta magát az új Sógunnak! - Amint ezt kimondja, váratlanul rád vetik magukat. Dicső módon küzdesz, hármat megölsz közülük és néhányat megsebesítesz, de végül győz a túlerő. Megkötöznek, és egy ló hátára szíjaznak. - Tsietsin nagyúr örülni fog ennek a fogásnak! - mondja az egyik. Abba a palotába visznek, amely mellett már egyszer elhaladtál. Bevisznek az udvarra, ahol Tsietsin Szamuráj csatlósai gúnyolódva, nevetgélve fogadnak. Bezárnak a várbörtön egyik cellájába. A foglár, egy bivaly termetű pasas viseltes bőrmellényben, gúnyosan így szól: - Holnap reggel Tsietsin Sógun elé visznek! - Ezzel rád csapja a nehéz, vasveretű tölgyfa ajtót.[/p]
@@ -2697,5 +4826,13 @@
     </text>
     <next id="383">Ha bemész és átkutatod a kunyhót</next>
     <next id="371">Ha táborhelyet keresel az erdőben</next>
+  </p>
+  <p id="400">
+    <text>
+        [p]Az Árnyak Urának fekete csuklyás palástja a földre hullik. Ikiru nincs többé. A sötét csarnok falai megremegnek, Ikiru trónja darabokra törik, és a verem beomlik. Repedések jelennek meg a padlón. Kétségbeesetten keresed a kijáratot, mikor az egyik fal kidől, és mindent eláraszt a napfény. Hunyorogva rohansz ki a nagy fényességből, és a Shios’ii hegyekben találod magad. A hatalmas, ellenséges palota - Ikiru palotája - összeomlik mögötted.[/p]
+        [p]A Shikomék táborának közepén vagy, de rád se hederítenek. Néhányan rémülten merednek a palotára, mások fejvesztetten menekülnek. Kihasználod az alkalmat, és te is elmenekülsz.[/p]
+        [p]Néhány nappal később épségben térsz vissza Konichiba, a fővárosba, ahol a Sógun fogadást ad a tiszteletedre. Most, hogy a Daloló Halál újra az övé, hatalma a régi, és Hachiman urai a zászlaja alá sereglenek, hogy kiűzzék a barbár betolakodókat. Ikiru halálhírére a Shikomék serege szétszéled, többé nem jelentenek veszélyt. Béke és gazdagság vár rád és Hachimanra![/p]
+    </text>
+    <victory />
   </p>
 </content>
