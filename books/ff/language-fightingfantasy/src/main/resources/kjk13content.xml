@@ -635,7 +635,7 @@
     </text>
     <itemCheck type="pos" id="1">
       <have>
-        <test against="skill">
+        <test against="skill" success="lowerEquals">
           <success>
             <text>
                 [p]Lövésed eltalálja a bestiát, ami veszít 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
@@ -651,7 +651,7 @@
         <loseItem id="3101" />
       </have>
       <dontHave>
-        <test against="skill">
+        <test against="skill" success="lowerEquals">
           <success>
             <text>
                 [p]Lövésed eltalálja a bestiát, ami veszít 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
@@ -695,7 +695,7 @@
     </text>
     <itemCheck type="pos" id="1">
       <have>
-        <test against="skill">
+        <test against="skill" success="lowerEquals">
           <success>
             <text>
                 [p]Lövésed eltalálja a bestiát, ami veszít 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
@@ -711,7 +711,7 @@
         <loseItem id="3101" />
       </have>
       <dontHave>
-        <test against="skill">
+        <test against="skill" success="lowerEquals">
           <success>
             <text>
                 [p]Lövésed eltalálja a bestiát, ami veszít 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
@@ -1074,7 +1074,7 @@
         [p]A lovas Szamurájon vastag harci vért feszül. A „vértfúró” nyílvesszőt kell használnod ellene. Kétszer lőhetsz rá, mielőtt odaérne hozzád.[/p]
     </text>
     <loseItem id="3103" amount="2" />
-    <test against="skill" success="lowerEquals">
+    <test against="skill">
       <success>
         <text>
             [p]Nyílvessződ eltalálja a Szamurájt, veszít 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
@@ -1087,7 +1087,7 @@
         </text>
       </failure>
     </test>
-    <test against="skill" success="lowerEquals">
+    <test against="skill">
       <success>
         <text>
             [p]Nyílvessződ eltalálja a Szamurájt, veszít 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
@@ -2471,10 +2471,23 @@
     <text>
         [p]Elveszed a kardjaidat Moichitól, és együtt támadtok a Shikomékra. Azok úgy meglepődnek, hogy két fordulón át képtelenek viszonozni a támadást. Míg Moichi eggyel küzd, neked kettővel kell végezned.[/p]
     </text>
-    <fight type="single">
+    <changeEnemy attribute="attackStrength" id="19" set="8" />
+    <changeEnemy attribute="attackStrength" id="20" set="9" />
+    <fight type="allAtOnce">
       <enemy id="19" />
       <enemy id="20" />
-      <anyRound totalCount="6">
+      <anyRound enemy="19" totalCount="3">
+        <changeEnemy attribute="attackStrength" id="19" set="0" />
+        <changeEnemy attribute="attackStrength" id="20" set="0" />
+      </anyRound>
+      <anyRound enemy="20" totalCount="3">
+        <changeEnemy attribute="attackStrength" id="19" set="0" />
+        <changeEnemy attribute="attackStrength" id="20" set="0" />
+      </anyRound>
+      <anyRound enemy="19" totalCount="6">
+        <interrupt />
+      </anyRound>
+      <anyRound enemy="20" totalCount="6">
         <interrupt />
       </anyRound>
     </fight>
@@ -2711,7 +2724,7 @@
     </text>
     <gatherItem id="4000" />
     <loseItem id="3101" />
-    <test against="skill">
+    <test against="skill" success="lowerEquals">
       <success>
         <text>
             [p]A nyílvessző eltalálja a Tigrist, aki 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot veszít.[/p]
@@ -2751,7 +2764,7 @@
     </text>
     <gatherItem id="4000" />
     <loseItem id="3102" />
-    <test against="skill">
+    <test against="skill" success="lowerEquals">
       <success>
         <text>
             [p]A nyílvessző eltalálja a Tigrist, aki 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot veszít.[/p]
@@ -3668,7 +3681,7 @@
     <text>
         [p]Mindkettőjükkel meg kell küzdened.[/p]
     </text>
-    <fight type="single">
+    <fight type="allAtOnce">
       <enemy id="14" />
       <enemy id="15" />
     </fight>
@@ -4518,7 +4531,7 @@
     </text>
     <itemCheck type="pos" id="1">
       <have>
-        <test against="skill">
+        <test against="skill" success="lowerEquals">
           <success>
             <text>
                 [p]Lövésed eltalálja a bestiát, ami veszít 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
@@ -4534,7 +4547,7 @@
         <loseItem id="3101" />
       </have>
       <dontHave>
-        <test against="skill">
+        <test against="skill" success="lowerEquals">
           <success>
             <text>
                 [p]Lövésed eltalálja a bestiát, ami veszít 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
@@ -4580,7 +4593,7 @@
     </text>
     <itemCheck type="pos" id="1">
       <have>
-        <test against="skill">
+        <test against="skill" success="lowerEquals">
           <success>
             <text>
                 [p]Lövésed eltalálja a bestiát, ami veszít 2 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
@@ -4596,7 +4609,7 @@
         <loseItem id="3101" />
       </have>
       <dontHave>
-        <test against="skill">
+        <test against="skill" success="lowerEquals">
           <success>
             <text>
                 [p]Lövésed eltalálja a bestiát, ami veszít 3 [span class="ffAttribute"]ÉLETERŐ[/span] pontot.[/p]
