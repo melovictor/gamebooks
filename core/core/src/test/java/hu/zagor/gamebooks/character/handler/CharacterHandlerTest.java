@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.character.handler;
 
 import hu.zagor.gamebooks.character.handler.character.CharacterGenerator;
-
 import org.easymock.EasyMock;
 import org.testng.Assert;
 import org.testng.annotations.Test;

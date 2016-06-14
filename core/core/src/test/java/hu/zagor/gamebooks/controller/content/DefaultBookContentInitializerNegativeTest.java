@@ -11,7 +11,6 @@ import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.exception.InvalidGatheredItemException;
 import hu.zagor.gamebooks.exception.InvalidStepChoiceException;
 import hu.zagor.gamebooks.player.PlayerUser;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;

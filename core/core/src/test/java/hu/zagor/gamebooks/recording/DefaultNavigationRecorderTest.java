@@ -12,7 +12,6 @@ import hu.zagor.gamebooks.content.choice.DefaultChoiceSet;
 import hu.zagor.gamebooks.content.commandlist.CommandList;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;

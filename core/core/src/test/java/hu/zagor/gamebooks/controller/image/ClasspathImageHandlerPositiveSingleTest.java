@@ -100,7 +100,6 @@ public class ClasspathImageHandlerPositiveSingleTest {
         // WHEN
         underTest.handleImage(request, response, imageLocation, false);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testHandleImageWhenLookupReturnsLanguageImageShouldCopyItToOutput() throws IOException {
@@ -130,7 +129,6 @@ public class ClasspathImageHandlerPositiveSingleTest {
         // WHEN
         underTest.handleImage(request, response, imageLocation, false);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testHandleImageWhenLookupReturnsMediaImageShouldCopyItToOutput() throws IOException {
@@ -154,7 +152,6 @@ public class ClasspathImageHandlerPositiveSingleTest {
         // WHEN
         underTest.handleImage(request, response, imageLocation, false);
         // THEN
-        Assert.assertTrue(true);
     }
 
     private void expectResponseHeaderSetup(final Resource selectedResource) throws IOException {

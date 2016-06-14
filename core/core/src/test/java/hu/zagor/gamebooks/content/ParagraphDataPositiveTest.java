@@ -56,7 +56,6 @@ public class ParagraphDataPositiveTest {
         // WHEN
         underTest.calculateValidEvents(paragraph);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testCalculateValidElementsWhenUnderTestContainsChoicesShouldExtractThemAsValidMoves() {
@@ -79,7 +78,6 @@ public class ParagraphDataPositiveTest {
         underTest.addChoice(choiceB);
         underTest.calculateValidEvents(paragraph);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testAddChoicesWhenElementSetIsAddedShouldAllElementAppearInChoiceSet() {
@@ -109,7 +107,6 @@ public class ParagraphDataPositiveTest {
         // WHEN
         underTest.calculateValidEvents(paragraph);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testRemoveValidItemWhenSingleItemIsGatheredShouldRemoveLinkFromAroundText() {
@@ -224,7 +221,6 @@ public class ParagraphDataPositiveTest {
         // WHEN
         underTest.calculateValidEvents(paragraph);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testCalculateValidElementsWhenUnderTestContainsUiCommandShouldExtractItsValidCommand() {
@@ -237,7 +233,6 @@ public class ParagraphDataPositiveTest {
         // WHEN
         underTest.calculateValidEvents(paragraph);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testAddHiddenItemsShouldAddItemToHiddenList() {

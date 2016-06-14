@@ -15,7 +15,6 @@ import java.util.Map;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.springframework.beans.factory.BeanFactory;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -126,6 +125,5 @@ public class UserInputTransformerTest extends AbstractTransformerTest {
         // WHEN
         underTest.transform(parent, node, data);
         // THEN
-        Assert.assertTrue(true);
     }
 }

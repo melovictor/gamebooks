@@ -4,12 +4,10 @@ import hu.zagor.gamebooks.mvc.settings.domain.CheckboxSettingEntry;
 import hu.zagor.gamebooks.mvc.settings.domain.RadioSettingEntry;
 import hu.zagor.gamebooks.mvc.settings.domain.SettingEntry;
 import hu.zagor.gamebooks.mvc.settings.domain.SettingGroup;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;

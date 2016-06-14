@@ -7,9 +7,7 @@ import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.content.choice.DefaultChoiceSet;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
-
 import java.util.Iterator;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;

@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.content.commandlist;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommand;
 import hu.zagor.gamebooks.content.command.userinput.UserInputCommand;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

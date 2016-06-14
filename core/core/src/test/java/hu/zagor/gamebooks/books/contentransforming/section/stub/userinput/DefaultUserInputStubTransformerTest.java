@@ -5,16 +5,13 @@ import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTran
 import hu.zagor.gamebooks.books.contentransforming.section.CommandSubTransformer;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.userinput.UserInputCommand;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -113,7 +110,6 @@ public class DefaultUserInputStubTransformerTest {
         // WHEN
         underTest.transform(parent, node, command, positionCounter);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testTransformWhenOneIrrelevantChildNodeIsAvailableShouldDoNothing() {
@@ -126,7 +122,6 @@ public class DefaultUserInputStubTransformerTest {
         // WHEN
         underTest.transform(parent, node, command, positionCounter);
         // THEN
-        Assert.assertTrue(true);
     }
 
     @Test(expectedExceptions = UnsupportedOperationException.class)
@@ -142,7 +137,6 @@ public class DefaultUserInputStubTransformerTest {
         // WHEN
         underTest.transform(parent, node, command, positionCounter);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testTransformWhenRelevantChildNodeHasStubTransformerShouldCallTransformer() {
@@ -158,7 +152,6 @@ public class DefaultUserInputStubTransformerTest {
         // WHEN
         underTest.transform(parent, node, command, positionCounter);
         // THEN
-        Assert.assertTrue(true);
     }
 
     @AfterMethod

@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.content.choice;
 
 import static org.easymock.EasyMock.expect;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;

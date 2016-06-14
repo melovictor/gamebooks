@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.character.handler.paragraph;
 
 import hu.zagor.gamebooks.character.Character;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

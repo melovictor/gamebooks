@@ -16,12 +16,10 @@ import hu.zagor.gamebooks.domain.BookContentFiles;
 import hu.zagor.gamebooks.domain.BookContentTransformers;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.io.XmlParser;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;

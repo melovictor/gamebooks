@@ -3,9 +3,7 @@ package hu.zagor.gamebooks.content.command.random;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CommandView;
-
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;

@@ -5,7 +5,6 @@ import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.Note;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.support.environment.EnvironmentDetector;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;

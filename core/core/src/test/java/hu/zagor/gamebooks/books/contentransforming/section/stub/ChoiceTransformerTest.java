@@ -6,11 +6,9 @@ import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTran
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.springframework.beans.factory.BeanFactory;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -102,7 +100,6 @@ public class ChoiceTransformerTest extends AbstractTransformerTest {
         // WHEN
         underTest.transform(parent, node, data);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testTransformWhenNodeContainsNoTextShouldUpdatePositionParameterInPositionCounterAndHaveDefaultText() throws Exception {
@@ -120,7 +117,6 @@ public class ChoiceTransformerTest extends AbstractTransformerTest {
         // WHEN
         underTest.transform(parent, node, data);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testTransformWhenNodeContainsNoPositionShouldRequestPositionParameterFromPositionCounter() throws Exception {
@@ -137,7 +133,6 @@ public class ChoiceTransformerTest extends AbstractTransformerTest {
         // WHEN
         underTest.transform(parent, node, data);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testTransformWhenNodeContainsEverythingShouldUpdatePositionParameterInPositionCounter() throws Exception {
@@ -155,7 +150,6 @@ public class ChoiceTransformerTest extends AbstractTransformerTest {
         // WHEN
         underTest.transform(parent, node, data);
         // THEN
-        Assert.assertTrue(true);
     }
 
     @AfterMethod

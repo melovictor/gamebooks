@@ -3,11 +3,9 @@ package hu.zagor.gamebooks.player.settings;
 import hu.zagor.gamebooks.mvc.settings.domain.SettingGroup;
 import hu.zagor.gamebooks.mvc.settings.domain.SettingGroupComparator;
 import hu.zagor.gamebooks.mvc.settings.service.SettingDefaultValueExtractor;
-
 import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;

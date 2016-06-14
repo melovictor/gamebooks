@@ -2,10 +2,8 @@ package hu.zagor.gamebooks.character;
 
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.command.CommandView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.powermock.reflect.Whitebox;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;

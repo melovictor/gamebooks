@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.books.saving.xml.input;
 
 import hu.zagor.gamebooks.books.saving.xml.DefaultXmlGameStateSaver;
-
 import java.io.Serializable;
 
 /**

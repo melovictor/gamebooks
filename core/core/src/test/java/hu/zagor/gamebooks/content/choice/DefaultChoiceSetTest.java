@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.content.choice;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
-
 import org.powermock.reflect.Whitebox;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;

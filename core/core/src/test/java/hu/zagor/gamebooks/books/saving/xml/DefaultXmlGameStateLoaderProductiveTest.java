@@ -5,11 +5,8 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.isNull;
 import static org.easymock.EasyMock.startsWith;
 import hu.zagor.gamebooks.support.logging.LoggerInjector;
-
 import java.io.StringReader;
-
 import javax.xml.parsers.DocumentBuilderFactory;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;

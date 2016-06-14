@@ -101,7 +101,6 @@ public class ClasspathImageHandlerPositiveMultipleTest {
         // WHEN
         underTest.handleImage(request, response, imageLocation, false);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testHandleImageWhenLookupReturnsMoreThanOneMediaImageShouldCopyTheFirstOneToOutput() throws IOException {
@@ -125,7 +124,6 @@ public class ClasspathImageHandlerPositiveMultipleTest {
         // WHEN
         underTest.handleImage(request, response, imageLocation, false);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testHandleImageWhenImageIsCoverShouldSearchInLanguageOnlyAndCopyToOutput() throws IOException {
@@ -152,7 +150,6 @@ public class ClasspathImageHandlerPositiveMultipleTest {
         // WHEN
         underTest.handleImage(request, response, imageLocation, false);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testHandleImageWhenImageIsCachedAndNotRandomShouldReturn304() throws IOException {
@@ -179,7 +176,6 @@ public class ClasspathImageHandlerPositiveMultipleTest {
         // WHEN
         underTest.handleImage(request, response, imageLocation, false);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testHandleImageWhenImageIsCachedButExpiredShouldSearchInLanguageOnlyAndCopyToOutput() throws IOException {
@@ -213,7 +209,6 @@ public class ClasspathImageHandlerPositiveMultipleTest {
         // WHEN
         underTest.handleImage(request, response, imageLocation, false);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testCreateImageLocationWhenParametersAreProperlySetShouldCreateProperImageLocation() {

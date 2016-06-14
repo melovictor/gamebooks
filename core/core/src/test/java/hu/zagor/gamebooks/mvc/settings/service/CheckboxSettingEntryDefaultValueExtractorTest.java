@@ -1,10 +1,8 @@
 package hu.zagor.gamebooks.mvc.settings.service;
 
 import hu.zagor.gamebooks.mvc.settings.domain.CheckboxSettingEntry;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;

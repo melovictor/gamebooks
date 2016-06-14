@@ -28,7 +28,6 @@ import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.core.io.Resource;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -115,7 +114,6 @@ public class ClasspathImageHandlerPositiveMultipleRandomTest {
         // WHEN
         underTest.handleImage(request, response, imageLocation, true);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testHandleImageWhenImageIsCachedButNeedRandomShouldSearchInLanguageOnlyAndCopyToOutput() throws IOException {
@@ -151,7 +149,6 @@ public class ClasspathImageHandlerPositiveMultipleRandomTest {
         // WHEN
         underTest.handleImage(request, response, imageLocation, true);
         // THEN
-        Assert.assertTrue(true);
     }
 
     private void getStrategyType() {

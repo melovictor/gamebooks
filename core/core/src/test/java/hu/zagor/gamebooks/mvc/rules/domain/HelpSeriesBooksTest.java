@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.mvc.rules.domain;
 
 import hu.zagor.gamebooks.domain.BookInformations;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

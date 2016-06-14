@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.controller.domain;
 
 import java.util.Locale;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

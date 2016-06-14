@@ -5,7 +5,6 @@ import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTran
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.random.RandomCommand;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;

@@ -13,7 +13,6 @@ import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.domain.BookContentSpecification;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.player.PlayerUser;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -114,7 +113,6 @@ public class DefaultBookContentInitializerPositiveTest {
         // WHEN
         underTest.initModel(model, adminPlayer, info);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testLoadSectionWhenPreviousParagraphNullShouldReturnNewParagraph() {
@@ -194,7 +192,6 @@ public class DefaultBookContentInitializerPositiveTest {
         // WHEN
         underTest.validateItem(glItem, genericPlayer, paragraph, info);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testGetItemStorageWhenInfoNotNullShouldReturnStorage() {

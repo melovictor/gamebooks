@@ -174,7 +174,6 @@ public class ParagraphTest {
         // WHEN
         underTest.calculateValidEvents();
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testCalculateValidEventsWhenValidElementsContainDataShouldClearThemAndRecalculate() {

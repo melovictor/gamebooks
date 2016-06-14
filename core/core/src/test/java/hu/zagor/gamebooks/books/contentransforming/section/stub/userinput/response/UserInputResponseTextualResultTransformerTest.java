@@ -7,11 +7,9 @@ import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.userinput.UserInputCommand;
 import hu.zagor.gamebooks.content.command.userinput.domain.UserInputTextualResponse;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.springframework.beans.factory.BeanFactory;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -108,7 +106,6 @@ public class UserInputResponseTextualResultTransformerTest extends AbstractTrans
         // WHEN
         underTest.transform(parent, node, command, positionCounter);
         // THEN
-        Assert.assertTrue(true);
     }
 
     @AfterMethod

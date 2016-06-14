@@ -2,12 +2,10 @@ package hu.zagor.gamebooks.mvc.settings.service;
 
 import hu.zagor.gamebooks.mvc.settings.domain.RadioSettingEntry;
 import hu.zagor.gamebooks.mvc.settings.domain.SettingEntrySub;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

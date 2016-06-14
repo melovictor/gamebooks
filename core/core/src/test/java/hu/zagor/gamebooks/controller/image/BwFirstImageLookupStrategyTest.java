@@ -1,9 +1,7 @@
 package hu.zagor.gamebooks.controller.image;
 
 import static org.easymock.EasyMock.expect;
-
 import java.io.IOException;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;

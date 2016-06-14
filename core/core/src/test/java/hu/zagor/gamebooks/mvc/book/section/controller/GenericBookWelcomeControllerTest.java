@@ -1,9 +1,7 @@
 package hu.zagor.gamebooks.mvc.book.section.controller;
 
 import static org.easymock.EasyMock.expect;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;

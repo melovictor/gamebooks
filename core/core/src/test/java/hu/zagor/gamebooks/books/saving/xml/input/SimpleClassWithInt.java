@@ -2,9 +2,7 @@ package hu.zagor.gamebooks.books.saving.xml.input;
 
 import hu.zagor.gamebooks.books.saving.xml.DefaultXmlGameStateSaver;
 import hu.zagor.gamebooks.support.logging.LogInject;
-
 import java.io.Serializable;
-
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;

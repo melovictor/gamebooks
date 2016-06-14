@@ -11,6 +11,7 @@ import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.player.PlayerUser;
+import hu.zagor.gamebooks.support.messages.MessageSource;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
@@ -51,6 +52,7 @@ public class GenericBookSaveControllerTest {
     @Inject private BeanFactory beanFactory;
     @Inject private BookInformationFetcher fetcher;
     @Inject private GameStateHandler gameStateHandler;
+    @Inject private MessageSource messageSource;
 
     @BeforeClass
     public void setUpClass() {
@@ -94,11 +96,12 @@ public class GenericBookSaveControllerTest {
         container.addElement(ControllerAddresses.CHARACTER_STORE_KEY, character);
 
         gameStateHandler.saveGame(container);
+        expect(messageSource.getMessage("page.menu.book.save.successfull")).andReturn("Game saved");
         mockControl.replay();
         // WHEN
-        underTest.handleSave(request, S_BOOK_ID);
+        final String returned = underTest.handleSave(request, S_BOOK_ID);
         // THEN
-        Assert.assertTrue(true);
+        Assert.assertEquals(returned, "Game saved");
     }
 
 }

@@ -5,7 +5,6 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
 import hu.zagor.gamebooks.content.ParagraphData;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

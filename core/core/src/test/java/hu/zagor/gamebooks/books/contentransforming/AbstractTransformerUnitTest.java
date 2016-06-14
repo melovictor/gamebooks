@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.books.contentransforming;
 
 import hu.zagor.gamebooks.books.AbstractTransformerTest;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;

@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.books.contentransforming.section.stub;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;

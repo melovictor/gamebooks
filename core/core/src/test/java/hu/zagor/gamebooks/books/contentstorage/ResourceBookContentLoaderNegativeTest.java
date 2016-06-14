@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.books.contentstorage;
 
 import hu.zagor.gamebooks.io.XmlParser;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;

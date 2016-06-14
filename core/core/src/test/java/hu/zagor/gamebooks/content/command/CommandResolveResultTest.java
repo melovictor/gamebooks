@@ -1,10 +1,8 @@
 package hu.zagor.gamebooks.content.command;
 
 import hu.zagor.gamebooks.content.ParagraphData;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

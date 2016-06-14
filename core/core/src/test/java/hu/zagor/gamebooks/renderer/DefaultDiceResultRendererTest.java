@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.renderer;
 
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

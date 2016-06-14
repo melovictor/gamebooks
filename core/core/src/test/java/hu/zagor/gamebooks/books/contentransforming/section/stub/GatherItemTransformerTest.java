@@ -5,11 +5,9 @@ import hu.zagor.gamebooks.books.AbstractTransformerTest;
 import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTransformer;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.springframework.beans.factory.BeanFactory;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -94,7 +92,6 @@ public class GatherItemTransformerTest extends AbstractTransformerTest {
         // WHEN
         underTest.transform(parent, node, data);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testTransformWhenDoseIsSetShouldGatherAndSetInfo() {
@@ -109,7 +106,6 @@ public class GatherItemTransformerTest extends AbstractTransformerTest {
         // WHEN
         underTest.transform(parent, node, data);
         // THEN
-        Assert.assertTrue(true);
     }
 
     public void testTransformWhenAmountIsNotSetShouldGatherAndSetInfoWithOneAmount() {
@@ -126,7 +122,6 @@ public class GatherItemTransformerTest extends AbstractTransformerTest {
         // WHEN
         underTest.transform(parent, node, data);
         // THEN
-        Assert.assertTrue(true);
     }
 
     @AfterMethod
