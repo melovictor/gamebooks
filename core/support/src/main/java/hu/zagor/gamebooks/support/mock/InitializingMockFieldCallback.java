@@ -128,7 +128,7 @@ public class InitializingMockFieldCallback implements FieldCallback {
 
     private boolean setOnUnderTest(final Field field, final Object mock) {
         final String setterName = "set" + StringUtils.capitalize(field.getName());
-        Method method = ReflectionUtils.findMethod(underTest.getClass(), setterName, field.getType());
+        Method method = ReflectionUtils.findMethod(underTest.getClass(), setterName, (Class<?>[]) null);
         if (method != null) {
             try {
                 method.invoke(underTest, mock);
