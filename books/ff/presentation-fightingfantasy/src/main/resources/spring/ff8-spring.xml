@@ -15,12 +15,17 @@
       <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:jsResources="ff8" p:cssResources="ff8" />
     </property>
   </bean>
-  
-  
+
   <bean class="hu.zagor.gamebooks.character.handler.FfCharacterHandler" id="ff8CharacterHandler" parent="ffCharacterHandler" scope="prototype">
     <property name="itemHandler">
       <bean class="hu.zagor.gamebooks.ff.ff.ss.character.handler.item.Ff8CharacterItemHandler" />
     </property>
   </bean>
+
+  <util:map key-type="java.lang.String" value-type="java.lang.Integer" id="ff8RewardPrices">
+    <entry key="initialSkill,skill" value="3" />
+    <entry key="initialStamina,stamina" value="2" />
+    <entry key="initialLuck,luck" value="3" />
+  </util:map>
 
 </beans>
