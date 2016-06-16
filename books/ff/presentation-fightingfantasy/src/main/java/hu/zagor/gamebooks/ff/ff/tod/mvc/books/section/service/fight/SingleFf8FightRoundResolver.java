@@ -23,8 +23,8 @@ public class SingleFf8FightRoundResolver implements FightRoundResolver {
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final int stamina = character.getStamina();
         final FightRoundResult[] roundResult = decorated.resolveRound(command, resolvationData, beforeRoundResult);
-        final int diff = character.getStamina() - stamina;
-        if ("284".equals(resolvationData.getParagraph().getId())) {
+        final int diff = Math.abs(character.getStamina() - stamina);
+        if ("284".equals(resolvationData.getParagraph().getId()) && diff > 0) {
             resolvationData.getCharacterHandler().getItemHandler().addItem(character, "4004", diff);
         }
         return roundResult;

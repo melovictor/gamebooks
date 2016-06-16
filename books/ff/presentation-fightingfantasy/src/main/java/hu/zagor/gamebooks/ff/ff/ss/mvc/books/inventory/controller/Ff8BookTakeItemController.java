@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = PageAddresses.BOOK_PAGE + "/" + FightingFantasy.SCORPION_SWAMP)
 public class Ff8BookTakeItemController extends FfBookTakeItemController {
+    private static final int ATTRIBUTE_REFILL = 99;
     private static final int MAX_SELLABLE_ITEMS = 3;
 
     @Override
@@ -44,6 +45,26 @@ public class Ff8BookTakeItemController extends FfBookTakeItemController {
         }
 
         return super.doHandleConsumeItem(wrapper, itemId);
+    }
+
+    @Override
+    protected int doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
+        final FfCharacter character = (FfCharacter) getWrapper(request).getCharacter();
+        int taken = 1;
+
+        if ("3116".equals(itemId)) {
+            character.changeSkill(ATTRIBUTE_REFILL);
+        } else if ("3115".equals(itemId)) {
+            character.changeStamina(ATTRIBUTE_REFILL);
+        } else if ("3117".equals(itemId)) {
+            character.changeLuck(ATTRIBUTE_REFILL);
+        } else {
+            taken = super.doHandleItemTake(request, itemId, amount);
+        }
+
+        getInfo().getCharacterHandler().getAttributeHandler().sanityCheck(character);
+
+        return taken;
     }
 
     @Override
