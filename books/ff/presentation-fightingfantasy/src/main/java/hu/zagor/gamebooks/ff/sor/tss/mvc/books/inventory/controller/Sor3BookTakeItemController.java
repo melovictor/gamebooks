@@ -24,7 +24,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -39,7 +38,6 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
     private static final int BASE_ITEM_SELLING_PRICE = 3;
 
     @Autowired private LocaleProvider provider;
-    @Autowired private MessageSource messageSource;
     @Autowired private DiceResultRenderer renderer;
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
 
@@ -149,12 +147,12 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
             if (!roundOne(characterHandler.getItemHandler(), character)) {
                 price += skill - randomNumber[0];
             }
-            itemExchangeResult = messageSource.getMessage("page.sor3.market.itemBought", new Object[]{price, itemName}, provider.getLocale());
+            itemExchangeResult = getMessageSource().getMessage("page.sor3.market.itemBought", new Object[]{price, itemName}, provider.getLocale());
         } else {
             // failure
-            itemExchangeResult = messageSource.getMessage("page.sor3.market.itemDismissed", new Object[]{itemName}, provider.getLocale());
+            itemExchangeResult = getMessageSource().getMessage("page.sor3.market.itemDismissed", new Object[]{itemName}, provider.getLocale());
         }
-        final String newText = messageSource.getMessage("page.ff.label.test.skill.compact", new Object[]{diceRender, randomNumber[0], itemExchangeResult},
+        final String newText = getMessageSource().getMessage("page.ff.label.test.skill.compact", new Object[]{diceRender, randomNumber[0], itemExchangeResult},
             provider.getLocale());
 
         handleMarketSell.setText(newText);
