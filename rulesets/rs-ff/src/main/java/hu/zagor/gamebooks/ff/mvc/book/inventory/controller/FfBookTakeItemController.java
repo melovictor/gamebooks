@@ -271,4 +271,8 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
     public FfBookInformations getInfo() {
         return (FfBookInformations) super.getInfo();
     }
+
+    protected MessageSource getMessageSource() {
+        return messageSource;
+    }
 }
