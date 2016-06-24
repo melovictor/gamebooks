@@ -112,6 +112,21 @@ public class Sor3BookTakeItemControllerTest {
         Assert.assertSame(returned, buySellResponse);
     }
 
+    public void testDoHandleBarketBuyWhenBuyingFromTheElvesAndHasNoMarkerShouldTradeAsDefault() {
+        // GIVEN
+        expectWrapper();
+        expect(wrapper.getParagraph()).andReturn(paragraph);
+        expect(paragraph.getId()).andReturn("315a");
+        expect(wrapper.getCharacter()).andReturn(character);
+        expect(itemHandler.hasItem(character, "4069")).andReturn(false);
+        handleDefaultMarketing();
+        mockControl.replay();
+        // WHEN
+        final BuySellResponse returned = underTest.doHandleMarketBuy(request, "3005");
+        // THEN
+        Assert.assertSame(returned, buySellResponse);
+    }
+
     private void handleDefaultMarketing() {
         expectWrapper();
         expect(wrapper.getCharacter()).andReturn(character);
