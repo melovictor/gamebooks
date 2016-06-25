@@ -85,7 +85,7 @@ public class Sor3BookTakeItemControllerTest {
         expectWrapper();
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getId()).andReturn("75");
-        handleDefaultMarketing();
+        handleDefaultSale();
         mockControl.replay();
         // WHEN
         final BuySellResponse returned = underTest.doHandleMarketBuy(request, "3005");
@@ -104,7 +104,7 @@ public class Sor3BookTakeItemControllerTest {
         expect(marketCommand.getItemsForSale()).andReturn(itemsForSale);
         expect(itemHandler.addItem(character, "gold", 4)).andReturn(4);
         expect(itemHandler.removeItem(character, "4069", 1)).andReturn(Arrays.asList(removedItem));
-        handleDefaultMarketing();
+        handleDefaultSale();
         mockControl.replay();
         // WHEN
         final BuySellResponse returned = underTest.doHandleMarketBuy(request, "3005");
@@ -119,7 +119,7 @@ public class Sor3BookTakeItemControllerTest {
         expect(paragraph.getId()).andReturn("315a");
         expect(wrapper.getCharacter()).andReturn(character);
         expect(itemHandler.hasItem(character, "4069")).andReturn(false);
-        handleDefaultMarketing();
+        handleDefaultSale();
         mockControl.replay();
         // WHEN
         final BuySellResponse returned = underTest.doHandleMarketBuy(request, "3005");
@@ -127,7 +127,30 @@ public class Sor3BookTakeItemControllerTest {
         Assert.assertSame(returned, buySellResponse);
     }
 
-    private void handleDefaultMarketing() {
+    public void testDoHandleMarketSellWhenGenericSectionShouldTradeAsDefault() {
+        // GIVEN
+        expectWrapper();
+        expect(wrapper.getParagraph()).andReturn(paragraph);
+        expect(paragraph.getId()).andReturn("59");
+        expect(paragraph.getDisplayId()).andReturn("59");
+        handleDefaultPurchase();
+        mockControl.replay();
+        // WHEN
+        final BuySellResponse returned = underTest.doHandleMarketSell(request, "3005");
+        // THEN
+        Assert.assertSame(returned, buySellResponse);
+    }
+
+    private void handleDefaultPurchase() {
+        expectWrapper();
+        expect(wrapper.getCharacter()).andReturn(character);
+        expect(wrapper.getParagraph()).andReturn(paragraph);
+        expect(paragraph.getItemsToProcess()).andReturn(Arrays.asList(new ProcessableItemHolder(marketCommand)));
+        expect(marketHandler.handleMarketSell("3005", character, marketCommand, characterHandler)).andReturn(buySellResponse);
+        itemInteractionRecorder.recordItemMarketMovement(wrapper, "Purchase", "3005");
+    }
+
+    private void handleDefaultSale() {
         expectWrapper();
         expect(wrapper.getCharacter()).andReturn(character);
         expect(wrapper.getParagraph()).andReturn(paragraph);
