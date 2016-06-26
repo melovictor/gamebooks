@@ -6,7 +6,7 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.ChooseYourOwnAdventure.JOURNEY_UNDER_THE_SEA" id="cyoa2Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="cyoa2Info" c:id-ref="cyoa2Id" p:coverPath="resources/cyoa2/cover.jpg"
+  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="cyoa2Info" c:id-ref="cyoa2Id" p:coverPath="resources/cyoa2/cover.jpg" p:resourceDir="cyoa2"
     p:contentTransformers-ref="defaultRawContentTransformers" p:paragraphResolver-ref="rawRuleBookParagraphResolver" p:locale-ref="enLocale" p:position="2" p:series-ref="cyoaTitle" p:title="Journey Under the Sea" p:characterHandler-ref="rawCharacterHandler">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="" c:items="" c:paragraphs="cyoa2content.xml" />
