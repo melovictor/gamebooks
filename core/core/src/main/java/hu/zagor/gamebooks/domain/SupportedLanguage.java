@@ -48,7 +48,7 @@ public class SupportedLanguage {
     }
 
     public String getFlagCode() {
-        return localeCode + (countryCode == null ? "" : "-" + countryCode);
+        return localeCode + (countryCode == null ? "" : "-" + countryCode.toLowerCase());
     }
 
     public String getLocaleFormat() {

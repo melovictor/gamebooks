@@ -4,6 +4,28 @@ function preventBack(warning) {
 	};
 }
 
+var images = (function() {
+	function init() {
+		var $images = $(".inlineImage[data-img]");
+		var locale = $("html").attr("lang");
+		$images.each(function(idx, elem) {
+			var $e = $(elem);
+			var book = $e.data("book");
+			var img = $e.data("img");
+			var type = $e.data("type");
+			if (!type) {
+				type = "";
+			}
+			var $img = $("<img>").attr("src", "http://zagor.hu/gamebooks/img.php?book=" + book + "&type=" + type + "&img=" + img + "&loc=" + locale);
+			$e.append($img);
+		});
+	}
+
+	return {
+		init : init
+	};
+})();
+
 var menu = (function() {
 	function updateLanguage(newElement) {
 		changeLanguage(newElement.find("img").attr("alt"));
@@ -68,4 +90,5 @@ $(function() {
 	$("#adventurerName").focus();
 	$("#logout").on("click", menu.logout);
 	newRewards.init();
+	images.init();
 });
