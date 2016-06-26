@@ -5,7 +5,9 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.newCapture;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
+import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
+import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
@@ -24,6 +26,7 @@ import hu.zagor.gamebooks.mvc.book.inventory.service.MarketHandler;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
+import hu.zagor.gamebooks.support.messages.MessageSource;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -37,7 +40,6 @@ import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
-import org.springframework.context.MessageSource;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -81,6 +83,9 @@ public class Sor3BookTakeItemControllerTest {
     @Mock private List<GatheredLostItem> lostItems;
     private Capture<GatheredLostItem> newGatherLostItem;
     @Mock private Map<String, String> userInteractions;
+    @Mock private FfItem item;
+    @Mock private FfAttributeHandler attributeHandler;
+    @Instance private MarketElement marketD;
 
     @BeforeClass
     public void setUpClass() {
@@ -95,9 +100,11 @@ public class Sor3BookTakeItemControllerTest {
         marketB.setPrice(4);
         marketC.setId("3006");
         marketC.setPrice(9);
+        marketD.setId("3001");
         skillCommandList.add(skillCommand);
         successContainer = new SuccessFailureDataContainer(successData, null);
         newGatherLostItem = newCapture();
+        characterHandler.setAttributeHandler(attributeHandler);
     }
 
     public void testDoHandleMarketBuyWhenOnRandomSectionDoUsual() {
@@ -185,6 +192,149 @@ public class Sor3BookTakeItemControllerTest {
         // THEN
         Assert.assertTrue(returned.isGiveUpMode());
         Assert.assertTrue(returned.isGiveUpFinished());
+    }
+
+    public void testDoHandleMarketSellWhenSection79ShouldAppendChosenItemAsLostForSuccessInSkillTestAndFinish() {
+        // GIVEN
+        expectWrapper();
+        expect(wrapper.getParagraph()).andReturn(paragraph);
+        expect(paragraph.getId()).andReturn("79");
+        expect(wrapper.getParagraph()).andReturn(paragraph);
+        expectMarketCommand();
+        expect(marketCommand.getAfter()).andReturn(after);
+        expect(after.getCommands()).andReturn(skillCommandList);
+        expect(skillCommand.getSuccess()).andReturn(Arrays.asList(successContainer));
+        expect(successData.getLostItems()).andReturn(lostItems);
+        lostItems.clear();
+        expect(lostItems.add(capture(newGatherLostItem))).andReturn(true);
+        expect(wrapper.getCharacter()).andReturn(character);
+        expect(character.getUserInteraction()).andReturn(userInteractions);
+        expect(userInteractions.get("foodExchangeBlacklistedItems")).andReturn("3001");
+        expect(userInteractions.put("foodExchangeBlacklistedItems", "3001,3005")).andReturn(null);
+
+        mockControl.replay();
+        // WHEN
+        final BuySellResponse returned = underTest.doHandleMarketSell(request, "3005");
+        // THEN
+        Assert.assertTrue(returned.isGiveUpMode());
+        Assert.assertTrue(returned.isGiveUpFinished());
+    }
+
+    public void testDoHandleMarketSellWhenSection315AndElfNotInterestedShouldRemoveItemFromBatch() {
+        // GIVEN
+        expectWrapper();
+        expect(wrapper.getParagraph()).andReturn(paragraph);
+        expect(paragraph.getId()).andReturn("315");
+        expect(paragraph.getDisplayId()).andReturn("315");
+        expect(wrapper.getCharacter()).andReturn(character);
+        expect(itemHandler.getItem(character, "3001")).andReturn(item);
+        expect(item.getName()).andReturn("Rope");
+        expect(attributeHandler.resolveValue(character, "skill")).andReturn(8);
+        final int[] rolled = new int[]{11, 5, 6};
+        expect(generator.getRandomNumber(2)).andReturn(rolled);
+        expect(generator.getDefaultDiceSide()).andReturn(6);
+        expect(renderer.render(6, rolled)).andReturn("[11]");
+        expect(messageSource.getMessage("page.sor3.market.itemDismissed", "Rope")).andReturn("Does not want rope.");
+        expect(messageSource.getMessage("page.ff.label.test.skill.compact", "[11]", 11, "Does not want rope.")).andReturn("Rolled [11]. Does not want rope.");
+        expect(wrapper.getParagraph()).andReturn(paragraph);
+        expectMarketCommand();
+        expect(marketCommand.getItemsForPurchase()).andReturn(Arrays.asList(marketA, marketB, marketC, marketD));
+
+        expect(character.getGold()).andReturn(15);
+
+        marketD.setStock(3);
+        mockControl.replay();
+        // WHEN
+        final BuySellResponse returned = underTest.doHandleMarketSell(request, "3001");
+        // THEN
+        Assert.assertFalse(returned.isGiveUpMode());
+        Assert.assertTrue(returned.isGiveUpFinished());
+        Assert.assertTrue(returned.isSuccessfulTransaction());
+        Assert.assertEquals(returned.getGold(), 15);
+        Assert.assertEquals(returned.getText(), "Rolled [11]. Does not want rope.");
+        Assert.assertEquals(marketD.getStock(), 0);
+    }
+
+    public void testDoHandleMarketSellWhenSection315AndElfInterestedFirstRoundShouldRemoveOneItemFromBatch() {
+        // GIVEN
+        expectWrapper();
+        expect(wrapper.getParagraph()).andReturn(paragraph);
+        expect(paragraph.getId()).andReturn("315");
+        expect(paragraph.getDisplayId()).andReturn("315");
+        expect(wrapper.getCharacter()).andReturn(character);
+        expect(itemHandler.getItem(character, "3001")).andReturn(item);
+        expect(item.getName()).andReturn("Rope");
+        expect(attributeHandler.resolveValue(character, "skill")).andReturn(12);
+        final int[] rolled = new int[]{11, 5, 6};
+        expect(generator.getRandomNumber(2)).andReturn(rolled);
+        expect(generator.getDefaultDiceSide()).andReturn(6);
+        expect(renderer.render(6, rolled)).andReturn("[11]");
+        expect(itemHandler.hasItem(character, "4076")).andReturn(false);
+        expect(messageSource.getMessage("page.sor3.market.itemBought", 3, "Rope")).andReturn("Bought rope for 3.");
+        expect(messageSource.getMessage("page.ff.label.test.skill.compact", "[11]", 11, "Bought rope for 3.")).andReturn("Rolled [11]. Bought rope for 3.");
+        expect(itemHandler.hasItem(character, "4076")).andReturn(false);
+        expect(itemHandler.addItem(character, "4076", 1)).andReturn(1);
+        expect(itemHandler.addItem(character, "gold", 3)).andReturn(3);
+        expect(itemHandler.removeItem(character, "3001", 1)).andReturn(Arrays.asList((Item) item));
+
+        expect(wrapper.getParagraph()).andReturn(paragraph);
+        expectMarketCommand();
+        expect(marketCommand.getItemsForPurchase()).andReturn(Arrays.asList(marketA, marketB, marketC, marketD));
+
+        expect(character.getGold()).andReturn(18);
+
+        marketD.setStock(3);
+        mockControl.replay();
+        // WHEN
+        final BuySellResponse returned = underTest.doHandleMarketSell(request, "3001");
+        // THEN
+        Assert.assertFalse(returned.isGiveUpMode());
+        Assert.assertTrue(returned.isGiveUpFinished());
+        Assert.assertTrue(returned.isSuccessfulTransaction());
+        Assert.assertEquals(returned.getGold(), 18);
+        Assert.assertEquals(returned.getText(), "Rolled [11]. Bought rope for 3.");
+        Assert.assertEquals(marketD.getStock(), 2);
+    }
+
+    public void testDoHandleMarketSellWhenSection315AndElfInterestedSecondRoundShouldRemoveOneItemFromBatch() {
+        // GIVEN
+        expectWrapper();
+        expect(wrapper.getParagraph()).andReturn(paragraph);
+        expect(paragraph.getId()).andReturn("315");
+        expect(paragraph.getDisplayId()).andReturn("315");
+        expect(wrapper.getCharacter()).andReturn(character);
+        expect(itemHandler.getItem(character, "3001")).andReturn(item);
+        expect(item.getName()).andReturn("Rope");
+        expect(attributeHandler.resolveValue(character, "skill")).andReturn(12);
+        final int[] rolled = new int[]{11, 5, 6};
+        expect(generator.getRandomNumber(2)).andReturn(rolled);
+        expect(generator.getDefaultDiceSide()).andReturn(6);
+        expect(renderer.render(6, rolled)).andReturn("[11]");
+        expect(itemHandler.hasItem(character, "4076")).andReturn(true);
+        expect(messageSource.getMessage("page.sor3.market.itemBought", 4, "Rope")).andReturn("Bought rope for 4.");
+        expect(messageSource.getMessage("page.ff.label.test.skill.compact", "[11]", 11, "Bought rope for 4.")).andReturn("Rolled [11]. Bought rope for 4.");
+        expect(itemHandler.hasItem(character, "4076")).andReturn(true);
+        expect(itemHandler.removeItem(character, "4076", 1)).andReturn(Arrays.asList((Item) item));
+        expect(itemHandler.addItem(character, "gold", 4)).andReturn(4);
+        expect(itemHandler.removeItem(character, "3001", 1)).andReturn(Arrays.asList((Item) item));
+
+        expect(wrapper.getParagraph()).andReturn(paragraph);
+        expectMarketCommand();
+        expect(marketCommand.getItemsForPurchase()).andReturn(Arrays.asList(marketA, marketB, marketC, marketD));
+
+        expect(character.getGold()).andReturn(19);
+
+        marketD.setStock(3);
+        mockControl.replay();
+        // WHEN
+        final BuySellResponse returned = underTest.doHandleMarketSell(request, "3001");
+        // THEN
+        Assert.assertFalse(returned.isGiveUpMode());
+        Assert.assertTrue(returned.isGiveUpFinished());
+        Assert.assertTrue(returned.isSuccessfulTransaction());
+        Assert.assertEquals(returned.getGold(), 19);
+        Assert.assertEquals(returned.getText(), "Rolled [11]. Bought rope for 4.");
+        Assert.assertEquals(marketD.getStock(), 2);
     }
 
     private void handleDefaultPurchase() {

@@ -18,7 +18,6 @@ import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.SorBookTakeItemContro
 import hu.zagor.gamebooks.mvc.book.inventory.domain.BuySellResponse;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.bookids.english.Sorcery;
-import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +36,6 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
 
     private static final int BASE_ITEM_SELLING_PRICE = 3;
 
-    @Autowired private LocaleProvider provider;
     @Autowired private DiceResultRenderer renderer;
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
 
@@ -106,6 +104,10 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
             final MarketCommand marketCommand = fetchMarketCommand(wrapper.getParagraph());
             final MarketElement marketItem = getMarketItem(marketCommand.getItemsForPurchase(), itemId);
             marketItem.setStock(marketItem.getStock() - 1);
+        } else {
+            final MarketCommand marketCommand = fetchMarketCommand(wrapper.getParagraph());
+            final MarketElement marketItem = getMarketItem(marketCommand.getItemsForPurchase(), itemId);
+            marketItem.setStock(0);
         }
         handleMarketSell.setGiveUpMode(false);
         handleMarketSell.setGiveUpFinished(true);
@@ -142,18 +144,15 @@ public class Sor3BookTakeItemController extends SorBookTakeItemController {
 
         String itemExchangeResult;
         if (skill >= randomNumber[0]) {
-            // success
             int price = BASE_ITEM_SELLING_PRICE;
             if (!roundOne(characterHandler.getItemHandler(), character)) {
                 price += skill - randomNumber[0];
             }
-            itemExchangeResult = getMessageSource().getMessage("page.sor3.market.itemBought", new Object[]{price, itemName}, provider.getLocale());
+            itemExchangeResult = getMessageSource().getMessage("page.sor3.market.itemBought", price, itemName);
         } else {
-            // failure
-            itemExchangeResult = getMessageSource().getMessage("page.sor3.market.itemDismissed", new Object[]{itemName}, provider.getLocale());
+            itemExchangeResult = getMessageSource().getMessage("page.sor3.market.itemDismissed", itemName);
         }
-        final String newText = getMessageSource().getMessage("page.ff.label.test.skill.compact", new Object[]{diceRender, randomNumber[0], itemExchangeResult},
-            provider.getLocale());
+        final String newText = getMessageSource().getMessage("page.ff.label.test.skill.compact", diceRender, randomNumber[0], itemExchangeResult);
 
         handleMarketSell.setText(newText);
         return skill - randomNumber[0];
