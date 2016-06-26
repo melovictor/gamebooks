@@ -15,10 +15,12 @@ import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.exception.InvalidGatheredItemException;
 import hu.zagor.gamebooks.exception.InvalidStepChoiceException;
 import hu.zagor.gamebooks.player.PlayerUser;
+import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import hu.zagor.gamebooks.support.logging.LogInject;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
 
@@ -34,6 +36,7 @@ public class DefaultBookContentInitializer implements BookContentInitializer, Be
     private final BookContentStorage storage;
     private final GameStateHandler gameStateHandler;
     private BeanFactory beanFactory;
+    @Autowired private LocaleProvider localeProvider;
 
     /**
      * Basic constructor.
@@ -104,6 +107,8 @@ public class DefaultBookContentInitializer implements BookContentInitializer, Be
         final ParagraphData data = paragraph.getData();
         String text = data.getText();
         text = text.replaceAll("(<img[^>]*?src=\"[^\"]*)", "$1?" + imageType);
+        text = text.replaceAll("(<img[^>]+?src=\")resources\\/([a-z]+[0-9]+)+\\/([^.]+)\\.jpg\\?(col|bw)First",
+            "$1http://zagor.hu/gamebooks/img.php?book=$2&type=" + imageType.charAt(0) + "&img=$3&loc=" + localeProvider.getLocale());
         data.setText(text);
     }
 

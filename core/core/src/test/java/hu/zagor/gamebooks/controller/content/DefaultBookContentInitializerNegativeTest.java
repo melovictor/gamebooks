@@ -11,12 +11,16 @@ import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.exception.InvalidGatheredItemException;
 import hu.zagor.gamebooks.exception.InvalidStepChoiceException;
 import hu.zagor.gamebooks.player.PlayerUser;
-import org.easymock.EasyMock;
+import hu.zagor.gamebooks.support.locale.LocaleProvider;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
+import java.util.Locale;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
+import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.springframework.ui.Model;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -33,44 +37,38 @@ public class DefaultBookContentInitializerNegativeTest {
     private static final Integer PLAYER_ID = 233;
     private static final String ITEM_ID = "3001";
     private DefaultBookContentInitializer underTest;
-    private IMocksControl mockControl;
+    @MockControl private IMocksControl mockControl;
     private BookInformations info;
     private PlayerUser genericPlayer;
     private PlayerUser adminPlayer;
-    private GameStateHandler gameStateHandler;
-    private Logger logger;
-    private BookContentStorage storage;
-    private Model model;
-    private Paragraph previousParagraph;
-    private Paragraph paragraph;
-    private GatheredLostItem glItem;
-    private ParagraphData paragraphData;
+    @Mock private GameStateHandler gameStateHandler;
+    @Inject private Logger logger;
+    @Mock private BookContentStorage storage;
+    @Mock private Model model;
+    @Mock private Paragraph previousParagraph;
+    @Mock private Paragraph paragraph;
+    @Mock private GatheredLostItem glItem;
+    @Instance private ParagraphData paragraphData;
+    @Inject private LocaleProvider localeProvider;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
         genericPlayer = new PlayerUser(11, "gnome", false);
-        gameStateHandler = mockControl.createMock(GameStateHandler.class);
-        logger = mockControl.createMock(Logger.class);
-        storage = mockControl.createMock(BookContentStorage.class);
-        model = mockControl.createMock(Model.class);
-        previousParagraph = mockControl.createMock(Paragraph.class);
-        paragraph = mockControl.createMock(Paragraph.class);
-        glItem = mockControl.createMock(GatheredLostItem.class);
-        paragraphData = new ParagraphData();
+        genericPlayer.getSettings().put("global.imageTypeOrder", "bwFirst");
         adminPlayer = new PlayerUser(PLAYER_ID, "FireFoX", true);
         adminPlayer.getSettings().put("global.imageTypeOrder", "bwFirst");
 
         info = new BookInformations(1L);
+    }
 
-        underTest = new DefaultBookContentInitializer(storage, gameStateHandler);
-        Whitebox.setInternalState(underTest, "logger", logger);
+    @UnderTest
+    public DefaultBookContentInitializer underTest() {
+        return new DefaultBookContentInitializer(storage, gameStateHandler);
     }
 
     @BeforeMethod
     public void setUpMethod() {
         paragraphData.setText("sample text with an image: <img src=\"resources/book1/99.jpg\" />");
-        mockControl.reset();
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
@@ -186,6 +184,7 @@ public class DefaultBookContentInitializerNegativeTest {
         // GIVEN
         expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(paragraphData);
+        expect(localeProvider.getLocale()).andReturn(new Locale("en"));
         expect(previousParagraph.isValidMove(PARAGRAPH_ID)).andReturn(false);
         expect(previousParagraph.getId()).andReturn(WELCOME_ID);
         logger.debug("Player tried to navigate to illegal section {}.", PARAGRAPH_ID);
@@ -230,10 +229,5 @@ public class DefaultBookContentInitializerNegativeTest {
         // WHEN
         underTest.validateItem(glItem, adminPlayer, paragraph, info);
         // THEN throws exception
-    }
-
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
     }
 }

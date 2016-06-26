@@ -3,12 +3,12 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:if test="${hasMap}">
-     <h2>
-         <span data-map="mapDialog">
-             <spring:message code="page.menu.book.inventory.map" />
-         </span>
-     </h2>
-     <div id="mapDialog" class="popupMap" title="${bookInfo.title}">
-       <img src="resources/${bookInfo.resourceDir}/${not empty customMapId ? customMapId : 'map' }.jpg" />
-     </div>
+	<h2>
+		<span data-map="mapDialog">
+			<spring:message code="page.menu.book.inventory.map" />
+		</span>
+	</h2>
+	<div id="mapDialog" class="popupMap" title="${bookInfo.title}">
+		<img src="http://zagor.hu/gamebooks/img.php?book=${bookInfo.resourceDir}&img=${not empty customMapId ? customMapId : 'map'}&loc=${bookInfo.locale}" />
+	</div>
 </c:if>

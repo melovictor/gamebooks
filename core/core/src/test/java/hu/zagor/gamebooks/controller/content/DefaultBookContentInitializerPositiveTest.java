@@ -13,14 +13,18 @@ import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.domain.BookContentSpecification;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.player.PlayerUser;
-import org.easymock.EasyMock;
+import hu.zagor.gamebooks.support.locale.LocaleProvider;
+import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
+import hu.zagor.gamebooks.support.mock.annotation.MockControl;
+import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
+import java.util.Locale;
 import org.easymock.IMocksControl;
-import org.powermock.reflect.Whitebox;
+import org.easymock.Mock;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.ui.Model;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -42,44 +46,32 @@ public class DefaultBookContentInitializerPositiveTest {
     private static final Boolean MAP_STATE = false;
     private static final Boolean INVENTORY_STATE = true;
 
-    private BookItemStorage itemStorage;
     private DefaultBookContentInitializer underTest;
-    private IMocksControl mockControl;
+    @MockControl private IMocksControl mockControl;
+    @Mock private BookItemStorage itemStorage;
     private BookInformations info;
     private PlayerUser adminPlayer;
     private PlayerUser genericPlayer;
-    private SavedGameContainer container;
-    private GameStateHandler gameStateHandler;
-    private BeanFactory beanFactory;
-    private Logger logger;
-    private BookContentStorage storage;
-    private Model model;
-    private Paragraph previousParagraph;
-    private Paragraph paragraph;
-    private GatheredLostItem glItem;
-    private BookContentSpecification contentSpecification;
-    private ParagraphData paragraphData;
+    @Mock private SavedGameContainer container;
+    @Mock private GameStateHandler gameStateHandler;
+    @Inject private BeanFactory beanFactory;
+    @Inject private Logger logger;
+    @Mock private BookContentStorage storage;
+    @Mock private Model model;
+    @Mock private Paragraph previousParagraph;
+    @Mock private Paragraph paragraph;
+    @Mock private GatheredLostItem glItem;
+    @Instance private BookContentSpecification contentSpecification;
+    @Instance private ParagraphData paragraphData;
+    @Inject private LocaleProvider localeProvider;
 
     @BeforeClass
     public void setUpClass() {
-        mockControl = EasyMock.createStrictControl();
         adminPlayer = new PlayerUser(PLAYER_ID, "FireFoX", true);
         adminPlayer.getSettings().put("global.imageTypeOrder", "bwFirst");
         genericPlayer = new PlayerUser(11, "gnome", false);
         genericPlayer.getSettings().put("global.imageTypeOrder", "colFirst");
-        container = mockControl.createMock(SavedGameContainer.class);
-        gameStateHandler = mockControl.createMock(GameStateHandler.class);
-        beanFactory = mockControl.createMock(BeanFactory.class);
-        logger = mockControl.createMock(Logger.class);
-        storage = mockControl.createMock(BookContentStorage.class);
-        model = mockControl.createMock(Model.class);
-        previousParagraph = mockControl.createMock(Paragraph.class);
-        paragraph = mockControl.createMock(Paragraph.class);
-        glItem = mockControl.createMock(GatheredLostItem.class);
-        itemStorage = mockControl.createMock(BookItemStorage.class);
-        paragraphData = new ParagraphData();
 
-        contentSpecification = new BookContentSpecification();
         contentSpecification.setInventoryAvailable(INVENTORY_STATE);
         contentSpecification.setMapAvailable(MAP_STATE);
 
@@ -87,16 +79,16 @@ public class DefaultBookContentInitializerPositiveTest {
         info.setSeries(SERIES);
         info.setTitle(TITLE);
         info.setContentSpecification(contentSpecification);
+    }
 
-        underTest = new DefaultBookContentInitializer(storage, gameStateHandler);
-        Whitebox.setInternalState(underTest, "logger", logger);
-        underTest.setBeanFactory(beanFactory);
+    @UnderTest
+    public DefaultBookContentInitializer underTest() {
+        return new DefaultBookContentInitializer(storage, gameStateHandler);
     }
 
     @BeforeMethod
     public void setUpMethod() {
         paragraphData.setText("sample text with an image: <img src=\"resources/book1/99.jpg\" />");
-        mockControl.reset();
     }
 
     public void testInitModelShouldInitializePassedModel() {
@@ -119,6 +111,7 @@ public class DefaultBookContentInitializerPositiveTest {
         // GIVEN
         expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(paragraphData);
+        expect(localeProvider.getLocale()).andReturn(new Locale("en"));
         mockControl.replay();
         // WHEN
         final Paragraph returned = underTest.loadSection(PARAGRAPH_ID, genericPlayer, null, info);
@@ -130,28 +123,57 @@ public class DefaultBookContentInitializerPositiveTest {
         // GIVEN
         expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(paragraphData);
+        expect(localeProvider.getLocale()).andReturn(new Locale("en"));
         mockControl.replay();
         // WHEN
         underTest.loadSection(PARAGRAPH_ID, adminPlayer, null, info);
         // THEN
-        Assert.assertEquals(paragraphData.getText(), "sample text with an image: <img src=\"resources/book1/99.jpg?bwFirst\" />");
+        Assert.assertEquals(paragraphData.getText(), "sample text with an image: <img src=\"http://zagor.hu/gamebooks/img.php?book=book1&type=b&img=99&loc=en\" />");
     }
 
     public void testLoadSectionWhenUserNeedsColorImageShouldRewriteImageInTextWithColorQuery() {
         // GIVEN
         expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(paragraphData);
+        expect(localeProvider.getLocale()).andReturn(new Locale("en"));
         mockControl.replay();
         // WHEN
         underTest.loadSection(PARAGRAPH_ID, genericPlayer, null, info);
         // THEN
-        Assert.assertEquals(paragraphData.getText(), "sample text with an image: <img src=\"resources/book1/99.jpg?colFirst\" />");
+        Assert.assertEquals(paragraphData.getText(), "sample text with an image: <img src=\"http://zagor.hu/gamebooks/img.php?book=book1&type=c&img=99&loc=en\" />");
+    }
+
+    public void testLoadSectionWhenRulesetImageShouldLeaveItAlone() {
+        // GIVEN
+        expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
+        expect(paragraph.getData()).andReturn(paragraphData);
+        expect(localeProvider.getLocale()).andReturn(new Locale("en"));
+        paragraphData.setText("sample text with an image: <img src=\"resources/ff/dice.jpg\" />");
+        mockControl.replay();
+        // WHEN
+        underTest.loadSection(PARAGRAPH_ID, genericPlayer, null, info);
+        // THEN
+        Assert.assertEquals(paragraphData.getText(), "sample text with an image: <img src=\"resources/ff/dice.jpg?colFirst\" />");
+    }
+
+    public void testLoadSectionWhenCoreImageShouldLeaveItAlone() {
+        // GIVEN
+        expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
+        expect(paragraph.getData()).andReturn(paragraphData);
+        expect(localeProvider.getLocale()).andReturn(new Locale("en"));
+        paragraphData.setText("sample text with an image: <img src=\"../resources/dice.jpg\" />");
+        mockControl.replay();
+        // WHEN
+        underTest.loadSection(PARAGRAPH_ID, genericPlayer, null, info);
+        // THEN
+        Assert.assertEquals(paragraphData.getText(), "sample text with an image: <img src=\"../resources/dice.jpg?colFirst\" />");
     }
 
     public void testLoadSectionWhenNextParagraphIsWelcomeShouldReturnNewParagraph() {
         // GIVEN
         expect(storage.getBookParagraph(info, WELCOME_ID)).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(paragraphData);
+        expect(localeProvider.getLocale()).andReturn(new Locale("en"));
         mockControl.replay();
         // WHEN
         final Paragraph returned = underTest.loadSection(WELCOME_ID, genericPlayer, previousParagraph, info);
@@ -163,6 +185,7 @@ public class DefaultBookContentInitializerPositiveTest {
         // GIVEN
         expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(paragraphData);
+        expect(localeProvider.getLocale()).andReturn(new Locale("en"));
         expect(previousParagraph.isValidMove(PARAGRAPH_ID)).andReturn(true);
         mockControl.replay();
         // WHEN
@@ -175,6 +198,7 @@ public class DefaultBookContentInitializerPositiveTest {
         // GIVEN
         expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(paragraphData);
+        expect(localeProvider.getLocale()).andReturn(new Locale("en"));
         expect(previousParagraph.isValidMove(PARAGRAPH_ID)).andReturn(false);
         expect(previousParagraph.getId()).andReturn(WELCOME_ID);
         logger.debug("Player tried to navigate to illegal section {}.", PARAGRAPH_ID);
@@ -204,8 +228,4 @@ public class DefaultBookContentInitializerPositiveTest {
         Assert.assertSame(returned, itemStorage);
     }
 
-    @AfterMethod
-    public void tearDownMethod() {
-        mockControl.verify();
-    }
 }

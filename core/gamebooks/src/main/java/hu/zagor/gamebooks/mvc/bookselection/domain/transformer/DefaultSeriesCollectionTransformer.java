@@ -5,10 +5,8 @@ import hu.zagor.gamebooks.mvc.bookselection.domain.BookData;
 import hu.zagor.gamebooks.mvc.bookselection.domain.SeriesCollection;
 import hu.zagor.gamebooks.mvc.bookselection.domain.SeriesData;
 import hu.zagor.gamebooks.player.PlayerUser;
-
 import java.util.List;
 import java.util.Locale;
-
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
@@ -29,7 +27,8 @@ public class DefaultSeriesCollectionTransformer implements SeriesCollectionTrans
 
         for (final BookInformations bookInformations : bookList) {
             final Locale bookLocale = bookInformations.getLocale();
-            if (bookLocale.getCountry() == locale.getCountry() && bookLocale.getLanguage() == locale.getLanguage() && (!bookInformations.isHidden() || player.isAdmin())) {
+            if (bookLocale.getCountry() == locale.getCountry() && bookLocale.getLanguage() == locale.getLanguage()
+                && (!bookInformations.isHidden() || player.isAdmin())) {
                 addBookToCollection(result, bookInformations);
             }
         }
@@ -54,6 +53,8 @@ public class DefaultSeriesCollectionTransformer implements SeriesCollectionTrans
         data.setSeries(bookInformations.getSeries());
         data.setDisabled(bookInformations.isDisabled() || bookInformations.isHidden());
         data.setUnfinished(bookInformations.isUnfinished());
+        data.setLocale(bookInformations.getLocale());
+        data.setResourceDir(bookInformations.getResourceDir());
 
         return data;
     }

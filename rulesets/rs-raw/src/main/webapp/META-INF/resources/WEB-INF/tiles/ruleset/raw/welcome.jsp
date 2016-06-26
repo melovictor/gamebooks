@@ -2,7 +2,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div id="cover">
-	<img class="bordered" src="${bookInfo.coverPath}" alt="${bookInfo.title}" />
+	<c:url value="http://zagor.hu/gamebooks/img.php?book=${bookInfo.resourceDir}&img=cover&loc=${bookInfo.locale}" var="coverUrl" />
+	<img class="bordered" src="${coverUrl}" alt="${bookInfo.title}" />
 </div>
 
 <div id="backCoverText">${paragraph.data.text}</div>
