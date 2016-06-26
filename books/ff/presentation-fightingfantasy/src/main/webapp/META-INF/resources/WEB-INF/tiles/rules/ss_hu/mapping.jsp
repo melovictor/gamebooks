@@ -15,7 +15,7 @@
 </p>
 
 <p>
-    <img class="centered" src="990162005/resources/ff8/mapsample.jpg" />
+    <img class="centered" src="http://zagor.hu/gamebooks/img.php?book=ff8&type=b&img=mapsample&loc=hu" />
 </p>
 
 <p>Láthatod, hogy a játékos bejegyezte a térképre a tisztásokat, ahol megfordult, és azt is, hogy ott mit talált. Jelölte továbbá az ösvényeket is, amelyeken a tisztásokról továbbment, ezért a későbbiek során tudni fogja, melyik irányba kell haladnia.</p>
