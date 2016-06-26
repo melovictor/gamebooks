@@ -7,12 +7,12 @@
 <tiles:insertTemplate template="../basic/section-mainContent.jsp" />
 
 <c:if test="${not empty paragraph.data.hint}">
-    <p class="inlineImage hoverInfo">
-        <img src="resources/${bookInfo.resourceDir}/logo.jpg?${imgTypeOrder}" />
-        <span class="info">
-           ${paragraph.data.hint}
-        </span>
-    </p>
+	<p class="inlineImage hoverInfo">
+		<img src="http://zagor.hu/gamebooks/img.php?book=${bookInfo.resourceDir}&img=logo&loc=${bookInfo.locale}" />
+		<span class="info">
+			${paragraph.data.hint}
+		</span>
+	</p>
 
 </c:if>
 
