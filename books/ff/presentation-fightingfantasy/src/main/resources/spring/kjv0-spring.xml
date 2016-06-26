@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
-  xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.hungarian.KalandJatekVarazslat.A_VARAZSLATOK_KONYVE" id="kjv0Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="kjv0Info" c:id-ref="kjv0Id" p:coverPath="resources/sor0/cover.jpg" p:resourceDir="sor0"
-    p:contentTransformers-ref="defaultSorContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverL" p:locale-ref="huLocale" p:position="0" p:series-ref="kjvTitle" p:title="A Varázslatok Könyve" p:characterHandler-ref="sorCharacterHandler" p:commandResolvers-ref="sorCommandResolvers" p:characterBeanId="sorCharacter">
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" parent="sor0Info" id="kjv0Info" c:id-ref="kjv0Id" p:locale-ref="huLocale" p:series-ref="kjvTitle" p:title="A Varázslatok Könyve" p:unfinished="false" p:hidden="false">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="" c:items="" c:paragraphs="kjv0content.xml" />
-    </property>
-    <property name="contentSpecification">
-      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="false" p:mapAvailable="false" />
-    </property>
-    <property name="resources">
-    <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="sor" />
     </property>
   </bean>
 
