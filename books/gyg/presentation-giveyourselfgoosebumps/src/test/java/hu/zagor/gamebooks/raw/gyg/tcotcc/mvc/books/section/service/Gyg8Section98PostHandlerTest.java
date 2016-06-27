@@ -12,6 +12,7 @@ import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.joda.time.DateTime;
+import org.joda.time.ReadableDateTime;
 import org.springframework.beans.factory.BeanFactory;
 import org.testng.annotations.Test;
 
@@ -35,7 +36,7 @@ public class Gyg8Section98PostHandlerTest {
 
     public void testHandleWhenDayIsFridayShouldRemoveSecondChoice() {
         // GIVEN
-        expect(beanFactory.getBean("gygCurrentDateTime", DateTime.class)).andReturn(fridayDateTime);
+        expect(beanFactory.getBean("gygCurrentDateTime", ReadableDateTime.class)).andReturn(fridayDateTime);
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(data);
         expect(data.getChoices()).andReturn(choices);
@@ -48,7 +49,7 @@ public class Gyg8Section98PostHandlerTest {
 
     public void testHandleWhenDayIsNotFridayShouldRemoveFirstChoice() {
         // GIVEN
-        expect(beanFactory.getBean("gygCurrentDateTime", DateTime.class)).andReturn(nonFridayDateTime);
+        expect(beanFactory.getBean("gygCurrentDateTime", ReadableDateTime.class)).andReturn(nonFridayDateTime);
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(data);
         expect(data.getChoices()).andReturn(choices);

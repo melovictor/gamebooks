@@ -4,7 +4,7 @@ import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.mvc.book.section.service.CustomPrePostSectionHandler;
-import org.joda.time.DateTime;
+import org.joda.time.ReadableDateTime;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -22,7 +22,7 @@ public class Gyg2Section15PostHandler implements CustomPrePostSectionHandler, Be
 
     @Override
     public void handle(final Model model, final HttpSessionWrapper wrapper, final BookInformations info, final boolean changedSection) {
-        final DateTime dateTime = beanFactory.getBean("gygCurrentDateTime", DateTime.class);
+        final ReadableDateTime dateTime = beanFactory.getBean("gygCurrentDateTime", ReadableDateTime.class);
         final int dayOfMonth = dateTime.getDayOfMonth();
         final ChoiceSet choices = wrapper.getParagraph().getData().getChoices();
         choices.removeByPosition(dayOfMonth % 2);
