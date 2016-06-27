@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.support.mock;
 
+import hu.zagor.gamebooks.support.mock.annotation.Capturing;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import java.lang.reflect.Field;
@@ -12,6 +13,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import org.easymock.Capture;
+import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.powermock.reflect.Whitebox;
@@ -49,6 +52,8 @@ public class InitializingMockFieldCallback implements FieldCallback {
                 injectOnTest(field);
             } else if (field.isAnnotationPresent(Instance.class)) {
                 instantiateOnTest(field);
+            } else if (field.isAnnotationPresent(Capturing.class)) {
+                injectCapture(field);
             }
         } else {
             if (field.isAnnotationPresent(Inject.class)) {
@@ -68,6 +73,13 @@ public class InitializingMockFieldCallback implements FieldCallback {
                 }
             }
         }
+    }
+
+    private void injectCapture(final Field field) {
+        if (field.getType() != Capture.class) {
+            throw new IllegalStateException("The @Capturing annotation can only be used on Capture<?> types.");
+        }
+        Whitebox.setInternalState(testInstance, field.getName(), EasyMock.newCapture());
     }
 
     private void instantiateOnTest(final Field field) throws IllegalAccessException {
