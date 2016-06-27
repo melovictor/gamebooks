@@ -270,4 +270,13 @@ public class ParagraphTest {
         Assert.assertSame(returned, Whitebox.getInternalState(underTest, "itemsToProcess"));
     }
 
+    public void testGetRewardsShouldReturnInnerArray() {
+        // GIVEN
+        mockControl.replay();
+        // WHEN
+        final List<String> returned = underTest.getRewards();
+        // THEN
+        Assert.assertSame(returned, Whitebox.getInternalState(underTest, "rewards"));
+    }
+
 }

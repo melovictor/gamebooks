@@ -194,6 +194,17 @@ public class AttributeResolvingExpressionResolverTest {
         Assert.assertEquals(returned, 993);
     }
 
+    public void testResolveValueWhenResolvingEnumShouldReturnOrdinal() {
+        // GIVEN
+        logger.error("Cannot resolve property '{}'.", "initialSpecialSkill");
+        character.setSpecialSkill(SpecialSkill.CLIMBING);
+        mockControl.replay();
+        // WHEN
+        final int returned = underTest.resolveValue(character, "specialSkill");
+        // THEN
+        Assert.assertEquals(returned, SpecialSkill.CLIMBING.ordinal());
+    }
+
     @AfterMethod
     public void tearDownMethod() {
         mockControl.verify();

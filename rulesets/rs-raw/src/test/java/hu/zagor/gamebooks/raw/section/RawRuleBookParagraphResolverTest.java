@@ -52,7 +52,7 @@ public class RawRuleBookParagraphResolverTest {
     @Mock private ParagraphData data;
     @Instance private Character character;
     private BookInformations info;
-    @Mock private Command fightCommand;
+    @Mock private Command command;
     @Mock private ParagraphData paragraphData;
     @Mock private Map<Class<? extends Command>, CommandResolver> commandResolvers;
     @Mock private CommandResolver fightCommandResolver;
@@ -71,7 +71,7 @@ public class RawRuleBookParagraphResolverTest {
     public void setUpClass() {
         info = new BookInformations(1L);
         info.setCommandResolvers(commandResolvers);
-        fightCommandHolder = new ProcessableItemHolder(fightCommand);
+        fightCommandHolder = new ProcessableItemHolder(command);
         paragraphDataHolder = new ProcessableItemHolder(paragraphData);
         info.setCharacterHandler(characterHandler);
         characterHandler.setItemHandler(itemHandler);
@@ -84,17 +84,17 @@ public class RawRuleBookParagraphResolverTest {
         resolveList.clear();
     }
 
-    public void testResolveWhenFightCommandReturnsWithEmptyListAndUnfinishedShouldStopForNextUserInteraction() {
+    public void testResolveWhenCommandReturnsWithEmptyListAndUnfinishedShouldStopForNextUserInteraction() {
         // GIVEN
         processableItemList.add(fightCommandHolder);
         processableItemList.add(paragraphDataHolder);
 
         expect(paragraph.getItemsToProcess()).andReturn(processableItemList).times(2);
         logger.debug("Executing command {}.", "EasyMock for class hu.zagor.gamebooks.content.command.Command");
-        expect(commandResolvers.get(fightCommand.getClass())).andReturn(fightCommandResolver);
-        expect(fightCommandResolver.resolve(fightCommand, resolvationData)).andReturn(resolveResult);
+        expect(commandResolvers.get(command.getClass())).andReturn(fightCommandResolver);
+        expect(fightCommandResolver.resolve(command, resolvationData)).andReturn(resolveResult);
         expect(resolveResult.isFinished()).andReturn(false);
-        expect(fightCommand.getCommandView("raw")).andReturn(commandView);
+        expect(command.getCommandView("raw")).andReturn(commandView);
         character.setCommandView(commandView);
         expect(paragraph.getItemsToProcess()).andReturn(processableItemList);
         expect(resolveResult.getResolveList()).andReturn(resolveList);
@@ -107,7 +107,7 @@ public class RawRuleBookParagraphResolverTest {
         Assert.assertEquals(processableItemList, Arrays.asList(fightCommandHolder, paragraphDataHolder));
     }
 
-    public void testResolveWhenFightCommandReturnsWithParagraphAndUnfinishedShouldResolveParagraphAndStopForNextUserInteraction() {
+    public void testResolveWhenCommandReturnsWithParagraphAndUnfinishedShouldResolveParagraphAndStopForNextUserInteraction() {
         // GIVEN
         processableItemList.add(fightCommandHolder);
         processableItemList.add(paragraphDataHolder);
@@ -115,10 +115,10 @@ public class RawRuleBookParagraphResolverTest {
 
         expect(paragraph.getItemsToProcess()).andReturn(processableItemList).times(2);
         logger.debug("Executing command {}.", "EasyMock for class hu.zagor.gamebooks.content.command.Command");
-        expect(commandResolvers.get(fightCommand.getClass())).andReturn(fightCommandResolver);
-        expect(fightCommandResolver.resolve(fightCommand, resolvationData)).andReturn(resolveResult);
+        expect(commandResolvers.get(command.getClass())).andReturn(fightCommandResolver);
+        expect(fightCommandResolver.resolve(command, resolvationData)).andReturn(resolveResult);
         expect(resolveResult.isFinished()).andReturn(false);
-        expect(fightCommand.getCommandView("raw")).andReturn(commandView);
+        expect(command.getCommandView("raw")).andReturn(commandView);
         character.setCommandView(commandView);
         expect(paragraph.getItemsToProcess()).andReturn(processableItemList);
         expect(resolveResult.getResolveList()).andReturn(resolveList);

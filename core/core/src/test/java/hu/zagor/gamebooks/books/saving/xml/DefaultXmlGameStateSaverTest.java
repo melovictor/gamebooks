@@ -3,10 +3,13 @@ package hu.zagor.gamebooks.books.saving.xml;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.EasyMock.startsWith;
+import hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithDuplicateObject;
 import hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithEnum;
 import hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithInt;
 import hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithList;
 import hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithNull;
+import hu.zagor.gamebooks.character.item.Item;
+import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
@@ -220,6 +223,153 @@ public class DefaultXmlGameStateSaverTest {
         final String returned = underTest.save(input);
         // THEN
         Assert.assertEquals(returned, expected);
+    }
+
+    public void testSaveWhenInputContainsSimpleClassWithRepeatingObjectsShouldCreateProperXmlOutput() throws UnsupportedEncodingException, XMLStreamException {
+        // GIVEN
+        final Map<String, Serializable> input = new HashMap<String, Serializable>();
+        final SimpleClassWithDuplicateObject value = new SimpleClassWithDuplicateObject();
+        input.put("field", value);
+        final Map<String, SimpleClassWithDuplicateObject> duplicatingMap = new HashMap<>();
+        duplicatingMap.put("a", value);
+        input.put("map", (Serializable) duplicatingMap);
+        input.put("map2", (Serializable) duplicatingMap);
+        final String expected = "response";
+        expectStartMainObject();
+
+        writer.openNode("mapEntry");
+        writer.createSimpleNode("key", "field", "java.lang.String");
+        writer.openNode("value");
+        writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithDuplicateObject");
+        logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithDuplicateObject");
+        writer.addAttribute("ref", "2");
+
+        logger.debug(startsWith("Saving field 'objectA' with value '"));
+        writer.openNode("objectA");
+        writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.ComplexObject");
+        logger.debug("Saving class hu.zagor.gamebooks.books.saving.xml.input.ComplexObject");
+        writer.addAttribute("ref", "3");
+        logger.debug("Saving field 'a' with value '1'.");
+        writer.createSimpleNode("a", "1", "java.lang.Integer");
+        writer.closeNode("objectA");
+
+        logger.debug(startsWith("Saving field 'objectB' with value '"));
+        writer.openNode("objectB");
+        writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.ComplexObject");
+        logger.debug("Saving class reference 3");
+        writer.addAttribute("ref", "3");
+        writer.closeNode("objectB");
+
+        writer.closeNode("value");
+        writer.closeNode("mapEntry");
+
+        writer.openNode("mapEntry");
+        writer.createSimpleNode("key", "map", "java.lang.String");
+        writer.openNode("value");
+        writer.addAttribute("class", "java.util.HashMap");
+        writer.addAttribute("isMap", "true");
+        writer.addAttribute("ref", "4");
+
+        writer.openNode("mapEntry");
+        writer.createSimpleNode("key", "a", "java.lang.String");
+        writer.openNode("value");
+        writer.addAttribute("class", "hu.zagor.gamebooks.books.saving.xml.input.SimpleClassWithDuplicateObject");
+        logger.debug("Saving class reference 2");
+        writer.addAttribute("ref", "2");
+
+        writer.closeNode("value");
+        writer.closeNode("mapEntry");
+
+        writer.closeNode("value");
+        writer.closeNode("mapEntry");
+
+        writer.openNode("mapEntry");
+        writer.createSimpleNode("key", "map2", "java.lang.String");
+        writer.openNode("value");
+        writer.addAttribute("class", "java.util.HashMap");
+        logger.debug("Saving class reference 4");
+        writer.addAttribute("ref", "4");
+        writer.closeNode("value");
+        writer.closeNode("mapEntry");
+
+        expectEndMainObject(expected);
+        mockControl.replay();
+        // WHEN
+        final String returned = underTest.save(input);
+        // THEN
+        Assert.assertEquals(returned, expected);
+    }
+
+    public void testSaveWhenInputContainsSimpleClassWithRepeatingItemsShouldCreateProperXmlOutput() throws UnsupportedEncodingException, XMLStreamException {
+        // GIVEN
+        final Map<String, Serializable> input = new HashMap<String, Serializable>();
+        final Item sword = new Item("1001", "Sword", ItemType.weapon1);
+        input.put("a", sword);
+        input.put("b", sword);
+        final String expected = "response";
+        expectStartMainObject();
+
+        writer.openNode("mapEntry");
+        writer.createSimpleNode("key", "b", "java.lang.String");
+        writer.openNode("value");
+        writer.addAttribute("class", "hu.zagor.gamebooks.character.item.Item");
+        logger.debug("Saving class hu.zagor.gamebooks.character.item.Item");
+        writer.addAttribute("ref", "2");
+
+        save("id", "1001", String.class);
+        save("name", "Sword", String.class);
+        logger.debug("Saving field 'itemType' with value 'weapon1'.");
+        writer.openNode("itemType");
+        writer.addAttribute("class", "hu.zagor.gamebooks.character.item.ItemType");
+        writer.addAttribute("isEnum", "true");
+        writer.addAttribute("value", "weapon1");
+        writer.closeNode("itemType");
+        save("amount", "1", Integer.class);
+        save("subType");
+
+        logger.debug(startsWith("Saving field 'equipInfo' with value '"));
+        writer.openNode("equipInfo");
+        writer.addAttribute("class", "hu.zagor.gamebooks.character.item.EquipInfo");
+        logger.debug("Saving class hu.zagor.gamebooks.character.item.EquipInfo");
+        writer.addAttribute("ref", "3");
+        save("equipped", "false", Boolean.class);
+        save("equippable", "true", Boolean.class);
+        save("removable", "true", Boolean.class);
+        save("consumable", "false", Boolean.class);
+        writer.closeNode("equipInfo");
+        save("backpackSize", "1.0", Double.class);
+        save("description");
+
+        writer.closeNode("value");
+        writer.closeNode("mapEntry");
+
+        writer.openNode("mapEntry");
+        writer.createSimpleNode("key", "a", "java.lang.String");
+
+        writer.openNode("value");
+        writer.addAttribute("class", "hu.zagor.gamebooks.character.item.Item");
+        logger.debug("Saving class reference 2");
+        writer.addAttribute("ref", "2");
+        writer.closeNode("value");
+        writer.closeNode("mapEntry");
+
+        expectEndMainObject(expected);
+        mockControl.replay();
+        // WHEN
+        final String returned = underTest.save(input);
+        // THEN
+        Assert.assertEquals(returned, expected);
+    }
+
+    private void save(final String name) throws XMLStreamException {
+        logger.debug("Saving field '" + name + "' with value 'null'.");
+        writer.createSimpleNode(name);
+    }
+
+    private void save(final String name, final String value, final Class<?> clazz) throws XMLStreamException {
+        logger.debug("Saving field '" + name + "' with value '" + value + "'.");
+        writer.createSimpleNode(name, value, clazz.getName());
+
     }
 
     public void testSaveWhenNodeOpeningFailsShouldLogExceptionAndReturnNull() throws XMLStreamException {

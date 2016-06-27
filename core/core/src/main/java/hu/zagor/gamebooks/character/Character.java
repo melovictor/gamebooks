@@ -2,8 +2,8 @@ package hu.zagor.gamebooks.character;
 
 import hu.zagor.gamebooks.character.domain.Note;
 import hu.zagor.gamebooks.character.item.Item;
+import hu.zagor.gamebooks.content.TrueCloneable;
 import hu.zagor.gamebooks.content.command.CommandView;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -15,7 +15,7 @@ import java.util.Set;
  * The player character.
  * @author Tamas_Szekeres
  */
-public class Character implements Serializable {
+public class Character implements TrueCloneable {
 
     private List<String> paragraphs;
     private List<Item> equipment;
@@ -90,28 +90,25 @@ public class Character implements Serializable {
         return codeWords;
     }
 
-    public void setParagraphs(final List<String> paragraphs) {
-        this.paragraphs = paragraphs;
+    @Override
+    public Character clone() throws CloneNotSupportedException {
+        final Character cloned = (Character) super.clone();
+
+        cloned.equipment = cloneItems(equipment);
+        cloned.hiddenEquipment = cloneItems(hiddenEquipment);
+        cloned.notes = notes.clone();
+        cloned.codeWords = new HashSet<>(codeWords);
+        cloned.paragraphs = new ArrayList<>(paragraphs);
+        cloned.userInteraction = new HashMap<>(userInteraction);
+
+        return cloned;
     }
 
-    public void setEquipment(final List<Item> equipment) {
-        this.equipment = equipment;
+    private List<Item> cloneItems(final List<Item> itemList) {
+        final List<Item> items = new ArrayList<>();
+        for (final Item item : itemList) {
+            items.add(item.clone());
+        }
+        return items;
     }
-
-    public void setHiddenEquipment(final List<Item> hiddenEquipment) {
-        this.hiddenEquipment = hiddenEquipment;
-    }
-
-    public void setCodeWords(final Set<String> codeWords) {
-        this.codeWords = codeWords;
-    }
-
-    public void setNotes(final Note notes) {
-        this.notes = notes;
-    }
-
-    public void setUserInteraction(final Map<String, String> userInteraction) {
-        this.userInteraction = userInteraction;
-    }
-
 }

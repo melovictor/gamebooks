@@ -18,6 +18,7 @@ import hu.zagor.gamebooks.support.logging.LogInject;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -100,12 +101,13 @@ public abstract class GenericBookLoadController extends AbstractSectionDisplayin
             throw new IllegalStateException("Continuation is not supported when continuation information is not provided.");
         }
 
-        final Paragraph paragraph = (Paragraph) request.getSession().getAttribute(ControllerAddresses.PARAGRAPH_STORE_KEY + continuationData.getPreviousBookId());
+        HttpSession session = request.getSession();
+        final Paragraph paragraph = (Paragraph) session.getAttribute(ControllerAddresses.PARAGRAPH_STORE_KEY + continuationData.getPreviousBookId());
         if (!continuationData.getPreviousBookLastSectionId().equals(paragraph.getId())) {
             throw new IllegalStateException("Continuation is not supported when the character from the previous book is not staying on the finishing section.");
         }
 
-        final Character character = (Character) request.getSession().getAttribute(ControllerAddresses.CHARACTER_STORE_KEY + continuationData.getPreviousBookId());
+        final Character character = (Character) session.getAttribute(ControllerAddresses.CHARACTER_STORE_KEY + continuationData.getPreviousBookId());
         if (character == null) {
             throw new IllegalStateException("Couldn't find character for previous book with which continuation would have been possible.");
         }

@@ -1,11 +1,7 @@
 package hu.zagor.gamebooks.ff.character;
 
 import hu.zagor.gamebooks.character.item.Item;
-import hu.zagor.gamebooks.content.TrueCloneable;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -16,7 +12,7 @@ import org.springframework.stereotype.Component;
  */
 @Component("sorCharacter")
 @Scope("prototype")
-public class SorCharacter extends FfCharacter implements TrueCloneable {
+public class SorCharacter extends FfCharacter {
     private final Map<String, SorCharacter> characterSaveLocations = new HashMap<>();
     private boolean wizard;
     private int lastEatenBonus;
@@ -119,23 +115,6 @@ public class SorCharacter extends FfCharacter implements TrueCloneable {
 
     @Override
     public SorCharacter clone() throws CloneNotSupportedException {
-        final SorCharacter cloned = (SorCharacter) super.clone();
-
-        cloned.setEquipment(cloneItems(getEquipment()));
-        cloned.setHiddenEquipment(cloneItems(getHiddenEquipment()));
-        cloned.setNotes(getNotes().clone());
-        cloned.setCodeWords(new HashSet<>(getCodeWords()));
-        cloned.setParagraphs(new ArrayList<>(getParagraphs()));
-        cloned.setUserInteraction(new HashMap<>(getUserInteraction()));
-
-        return cloned;
-    }
-
-    private List<Item> cloneItems(final List<Item> itemList) {
-        final List<Item> items = new ArrayList<>();
-        for (final Item item : itemList) {
-            items.add(item.clone());
-        }
-        return items;
+        return (SorCharacter) super.clone();
     }
 }

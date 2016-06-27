@@ -32,7 +32,7 @@ public class ItemCheckCodewordCommandResolverTest {
     @BeforeClass
     public void setUpClass() {
         resolvationData.setCharacter(character);
-        character.setCodeWords(Sets.newHashSet("ship"));
+        character.getCodeWords().addAll(Sets.newHashSet("ship"));
     }
 
     public void testResolveWhenCharacterHasCodewordShouldReturnHave() {

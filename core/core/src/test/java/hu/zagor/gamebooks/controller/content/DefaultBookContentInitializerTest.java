@@ -37,6 +37,8 @@ import org.testng.annotations.Test;
 public class DefaultBookContentInitializerTest {
 
     private static final String WELCOME_ID = BookParagraphConstants.BACK_COVER.getValue();
+    private static final String GENERATOR_ID = BookParagraphConstants.GENERATE.getValue();
+    private static final String BACKGROUND_ID = BookParagraphConstants.BACKGROUND.getValue();
     private static final String PARAGRAPH_ID = "13";
     private static final String SERIES = "Series";
     private static final String TITLE = "Title";
@@ -344,6 +346,28 @@ public class DefaultBookContentInitializerTest {
         Assert.assertSame(returned, paragraph);
     }
 
+    public void testLoadSectionWhenNextParagraphIsGeneratingShouldReturnNewParagraph() {
+        // GIVEN
+        expect(storage.getBookParagraph(info, GENERATOR_ID)).andReturn(paragraph);
+        expect(paragraph.getData()).andReturn(paragraphData);
+        mockControl.replay();
+        // WHEN
+        final Paragraph returned = underTest.loadSection(GENERATOR_ID, genericPlayer, previousParagraph, info);
+        // THEN
+        Assert.assertSame(returned, paragraph);
+    }
+
+    public void testLoadSectionWhenNextParagraphIsBackgroundShouldReturnNewParagraph() {
+        // GIVEN
+        expect(storage.getBookParagraph(info, BACKGROUND_ID)).andReturn(paragraph);
+        expect(paragraph.getData()).andReturn(paragraphData);
+        mockControl.replay();
+        // WHEN
+        final Paragraph returned = underTest.loadSection(BACKGROUND_ID, genericPlayer, previousParagraph, info);
+        // THEN
+        Assert.assertSame(returned, paragraph);
+    }
+
     public void testLoadSectionWhenNextParagraphIsValidShouldReturnNewParagraph() {
         // GIVEN
         expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
@@ -387,6 +411,16 @@ public class DefaultBookContentInitializerTest {
         final BookItemStorage returned = underTest.getItemStorage(info);
         // THEN
         Assert.assertSame(returned, itemStorage);
+    }
+
+    @Test(expectedExceptions = IllegalStateException.class)
+    public void testLoadSectionWhenLoadingTheSectionFailsShouldThrowException() {
+        // GIVEN
+        expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(null);
+        mockControl.replay();
+        // WHEN
+        underTest.loadSection(PARAGRAPH_ID, genericPlayer, previousParagraph, info);
+        // THEN throws exception
     }
 
 }

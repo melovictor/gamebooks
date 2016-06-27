@@ -12,6 +12,7 @@ public class PreparatedCharacter extends Character {
     private int skill;
     private int initialSkill;
     private int luck;
+    private SpecialSkill specialSkill;
 
     public int getStamina() {
         return stamina;
@@ -51,6 +52,14 @@ public class PreparatedCharacter extends Character {
 
     public void setLuck(final int luck) {
         this.luck = luck;
+    }
+
+    public SpecialSkill getSpecialSkill() {
+        return specialSkill;
+    }
+
+    public void setSpecialSkill(final SpecialSkill specialSkill) {
+        this.specialSkill = specialSkill;
     }
 
 }

@@ -16,6 +16,7 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.ContinuationData;
 import hu.zagor.gamebooks.player.PlayerUser;
+import hu.zagor.gamebooks.support.mock.annotation.Capturing;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -24,6 +25,7 @@ import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.easymock.Capture;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
@@ -61,9 +63,10 @@ public class GenericBookLoadControllerTest {
     @Mock private Paragraph paragraph;
     @Mock private ParagraphData data;
     @Mock private ChoiceSet choices;
-    private Capture<Choice> choice;
+    @Capturing private Capture<Choice> choice;
     @Mock private Character character;
     @Mock private List<String> paragraphList;
+    @Mock private HttpSession session;
 
     @BeforeClass
     public void setUpClass() {
@@ -185,6 +188,86 @@ public class GenericBookLoadControllerTest {
         final BookInformations returned = underTest.getInfo();
         // THEN
         Assert.assertSame(returned, info);
+    }
+
+    @Test(expectedExceptions = IllegalStateException.class)
+    public void testContinueWithPreviousWhenNoContinuationDataIsPreparedShouldThrowException() throws IOException {
+        // GIVEN
+        logger.debug("GenericBookLoadController.continueWithPrevious");
+
+        info.setContinuationData(null);
+        mockControl.replay();
+        // WHEN
+        underTest.continueWithPrevious(request, response);
+        // THEN throws exception
+    }
+
+    @Test(expectedExceptions = IllegalStateException.class)
+    public void testContinueWithPreviousWhenLastBookPositionIsIncorrectShouldThrowException() throws IOException {
+        // GIVEN
+        logger.debug("GenericBookLoadController.continueWithPrevious");
+        expect(request.getSession()).andReturn(session);
+        expect(session.getAttribute("paragraph56453413524563")).andReturn(paragraph);
+        expect(paragraph.getId()).andReturn("54");
+
+        info.setContinuationData(continuationData);
+        mockControl.replay();
+        // WHEN
+        underTest.continueWithPrevious(request, response);
+        // THEN throws exception
+    }
+
+    @Test(expectedExceptions = IllegalStateException.class)
+    public void testContinueWithPreviousWhenPreviousCharacterDoesNotExistsShouldThrowException() throws IOException {
+        // GIVEN
+        logger.debug("GenericBookLoadController.continueWithPrevious");
+        expect(request.getSession()).andReturn(session);
+        expect(session.getAttribute("paragraph56453413524563")).andReturn(paragraph);
+        expect(paragraph.getId()).andReturn("456");
+        expect(session.getAttribute("char56453413524563")).andReturn(null);
+
+        info.setContinuationData(continuationData);
+        mockControl.replay();
+        // WHEN
+        underTest.continueWithPrevious(request, response);
+        // THEN throws exception
+    }
+
+    public void testContinueWithPreviousWhenPreconditionsAreMetShouldContinueAtSpecifiedSection() throws IOException {
+        // GIVEN
+        logger.debug("GenericBookLoadController.continueWithPrevious");
+        expect(request.getSession()).andReturn(session);
+        expect(session.getAttribute("paragraph56453413524563")).andReturn(paragraph);
+        expect(paragraph.getId()).andReturn("456");
+        expect(session.getAttribute("char56453413524563")).andReturn(character);
+        expectWrapper();
+        expect(wrapper.setCharacter(character)).andReturn(character);
+        expect(character.getParagraphs()).andReturn(paragraphList);
+        paragraphList.clear();
+
+        logger.debug("called doContinuePrevious");
+        expect(wrapper.getParagraph()).andReturn(null);
+        expect(beanFactory.getBean(Paragraph.class)).andReturn(paragraph);
+        expect(beanFactory.getBean("paragraphData", ParagraphData.class)).andReturn(data);
+        paragraph.setData(data);
+        expect(wrapper.setParagraph(paragraph)).andReturn(paragraph);
+        expect(paragraph.getData()).andReturn(data);
+        expect(data.getChoices()).andReturn(choices);
+        expect(choices.add(capture(choice))).andReturn(true);
+        paragraph.calculateValidEvents();
+
+        response.sendRedirect("s-background");
+
+        info.setContinuationData(continuationData);
+        mockControl.replay();
+        // WHEN
+        underTest.continueWithPrevious(request, response);
+        // THEN
+        final Choice captured = choice.getValue();
+        Assert.assertEquals(captured.getId(), "background");
+        Assert.assertEquals(captured.getPosition(), -1);
+        Assert.assertEquals(captured.getSingleChoiceText(), null);
+        Assert.assertEquals(captured.getText(), null);
     }
 
     private void expectWrapper() {
