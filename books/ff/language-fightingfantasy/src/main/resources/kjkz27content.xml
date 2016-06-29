@@ -1,11 +1,765 @@
 <?xml version="1.0" encoding="utf-8"?>
 <content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd">
   <p id="back_cover">
-    <text>[p][/p]</text>
-    <next id="background"/>
+    <text>
+        [p class="ffBackCoverTitle"]Könyv és játék az, amit a kezedben tartasz. A főhős TE vagy.[/p]
+        [p]Félelem és rettegés vár rád a Végzet Szigetén! [/p]
+        [p]Mordraneth neve Titán minden lakójának szívében félelmet kelt. [/p]
+        [p]A gonosz mágus rájött, hogyan tudja mágiája segítségével félelemmel elárasztani a vidéket. Elfogta Alsandert, a varázslót, akit ki kell menekítened a szigetről. De vajon az Illúziók Birodalmába is be kell majd hatolnod, hogy saját kezűleg végezhess Mordraneth-tel, és menthesd meg Titánt? [/p]
+        [p]TE döntöd el, mikor melyik utat választod, milyen csellel kerülsz ki a csapdából, melyik teremtménnyel csapsz össze.[/p]
+        [p class="inlineImage" data-img="intro"][/p]
+    </text>
+    <next id="generate" />
   </p>
-  <p id="background" display="">
-    <text>[p][/p]</text>
+  <p id="generate" display="Karakter létrehozása">
+    <text>
+        [p][span class="ffAttribute"]Ügyesség[/span]: [span id="ffSkill"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Életerő[/span]: [span id="ffStamina"]dobj két kockával és adj 12-t a dobott számhoz[img src="resources/ff/dice2.gif" class="ffDice" /].[/span][/p]
+        [p][span class="ffAttribute"]Szerencse[/span]: [span id="ffLuck"]dobj egy kockával és adj 6-ot a dobott számhoz[img src="resources/ff/dice1.gif" class="ffDice" /].[/span][/p]
+        [button data-generator-button="ff"]Karakter létrehozása[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="Háttértörténet">
+    <text>
+        [p]Polluai Vanestin... varázsló. Nem ismered őt, de most magához hívatott. A hírvivői nagyszerű munkát végeztek: mindent elrendeztek; az utazás költségeit, az élelmezésedet, mindent. bármit is akarhat, az biztos, hogy tudja, hogyan kell egy nemes harcossal szemben viselkedni. És most, hogy szemtől szemben állsz a varázslóval gyönyörű otthonában, láthatod, hogy igazán komoly férfi ő, és ami még fontosabb, óriási hatalma és befolyása van. Miután üdvözölt, egyetlen szót ejtett ki csak, hogy elmondja, miért hívott ide: egy nevet.[/p]
+        [p]... Bár senki nem tudja, honnan is érkezett a férfi, a nevet csak titokban emlegetik, és a te füledbe is eljutott már: Mordraneth. Fekete mágus, a trükkök és fortélyok nagymestere, olyan mennyei titkok és igék ismerője, amiket magára valamit is adó varázsló messzire elkerül, a halál hírnöke, hidegvérű gyilkos, aki mosolyog, miközben kivégzi áldozatát. Az Elfek csak félve emlegetik, és egyszer együtt ittál Koponyaszaggatót - a Törpék egyik hírhedt szeszét - egy izmos Törpével, akinek csak egy karja maradt egy Mordraneth-tel való összecsapás után. Nem tudtad pontosan, mire számíts attól az embertől, aki csak ezt a nevet ejtette ki előtted, hogy megnézze, hogyan reagálsz; de amit utána hallasz tőle, azt még álmaidban sem képzelted volna.[/p]
+        [p]A név említésére arcizmod sem rándul; érzéseidet megtartod magadnak, és alaposan végigméred a varázslót. Vanestin erőteljes férfi, magas és izmos, bölcs, ugyanakkor fiatal. Egyáltalán nem olyan, mint ahogy egy varázslót elképzeltél magadnak! Kényelmesen üldögélsz a gazdagon berendezett szobában, és egy igen ízletes bort iszogatsz. Az ablakokon Pollua kikötőjének látványa tárul eléd. A név hallatán felvonod a szemöldöködet, de nem szólsz semmit. Vanestin alaposan végigmér, majd folytatja a mondanivalóját.[/p]
+        [p]-    Természetesen hallottál róla. A Gonoszság és a Káosz szolgája, nagy erejű varázsló, az álnokság mestere. Hogy keresztülhúzzuk a számításait, a te erődre és bátorságodra van szükségünk. Ha elfogadod a küldetést, hálául... - Vanestin ezeknél a szavaknál abbahagyja a járkálást, leül, és a hangja élesebb színezetűre vált.[/p]
+        [p]-    Két héttel ezelőtt Mordraneth szolgái elrabolták Alsandert, a varázslót, aki terveinek mágikus kifürké-szésével foglalkozott. Utoljára eltűnése előtt néhány nappal láttam, és akkor izgatottnak és aggodalmasnak tűnt. Megtudtam tőle, hogy Mordraneth valamilyen módon energiákat áramoltat át a holtak birodalmából a világunkba. Feltétlenül beszélni akart velem, amikor lett volna egy kis szabad ideje, hogy foglalkozzon a problémával. Sajnos azonban, mire érte küldettem, már eltűnt a jegyzeteivel együtt.[/p]
+        [p]-    Mágikus fürkészés segítségével rájöttünk, hol van Alsander, és tudjuk, hogy még él. A feladatod nem olyan reménytelen, mint gondoltad volna, amikor először kimondtam Mordraneth nevét. Nem kérjük, hogy pusztítsd el őt; csak annyit, hogy szabadítsd ki társunkat. - A mágus abbahagyja beszédét, és borral kínál. Egy kicsit csalódott vagy: Mordraneth skalpja a legszebb trófeád lenne! Ezzel persze Vanestin is tisztában van, így gyorsan folytatja a mondókáját.[/p]
+        [p]- Ha megszökteted Alsandert, akkora tudáshoz és hatalomhoz juthatsz általa, hogy utána Mordraneth-tel magával is szembeszállhatsz. Nem tudok másról, aki nálad alkalmasabb lenne a legyőzésére. - Elmosolyodsz a bókon. - Nos, érdekel a dolog? - Nem kell sokáig várni a bólintásodra.[/p]
+        [p]-    Mordraneth megpróbált kijátszani minket, de ez egyszer nem járt sikerrel. A kémeinktől megtudtuk, hogy a gonosz Allansiában van... de arra is rájöttünk, hogy Alsandert máshol tartja fogva. Arra számít, hogy utána indulunk abban a hitben, hogy társunkra is vele együtt rábukkanunk. Nos, nem akarjuk őt kiábrándítani. Egy harcosokkal és mágusokkal megrakott hajó már el is hajózott a kontinens felé. Ez persze csak figyelemelterelő akció, melynek „rendkívüli fontosságától” éppen elegendő információt kiszivárogtattunk a varázsló kémeinek. De te, barátom, te leszel az igazi akció végrehajtója.[/p]
+        [p]-    Mordraneth a Vaskripták mélyén, a Végzet Szigetén rejtette el Alsandert, ami a Sebek Szigetének keleti partvonalától nem messze található. Nem tudom, miért nem ölte meg őt azonnal; de annyit igen, hogy Alsanderre nagy szükségünk van, hogy megtudjuk tőle, mit fedezett fel. Éppen ezért élve kell visszahoznod. Elég jó harcos vagy, és csak egy magányos hős hatolhat át a sziget védelmén feltűnés nélkül. Egy nagyobb sereg feltétlenül magára vonná Mordraneth figyelmét. Mágust odaküldeni pedig igen nagy botorság lenne, hiszen a Vaskriptákon belül semmilyen mágia nem működik, csak az övé. Ezért van szükségünk egy bátor harcosra. Egy kis hajót már fel is szereltünk a számodra: a Viharmadár odakint vár.[/p]
+        [p]- Elfogadod a küldetést? Ha nem, varázserőmmel gondoskodni fogok arról, hogy semmire ne emlékezz az itt elhangzottakból. Nem engedhetjük meg, hogy bármi is kiszivárogjon... - De már mosolyog, mert látja, hogy kezeddel a kardod markolatára ütöttél, mely a küldetés elfogadásának jele. - Arany és dicsőség: mindkettőben bő részed lesz, barátom, ha sikerrel jársz! Igyunk hát rá, de ne túl sokat. A dagály néhány órán belül megérkezik.[/p]
+    </text>
+    <gatherItem id="defWpn" />
+    <gatherItem id="2000" amount="10" />
+    <gatherItem id="1001" />
+    <gatherItem id="3001" />
+    <gatherItem id="3002" />
+    <gatherItem id="3005" />
     <next id="1"></next>
+  </p>
+  <p id="1">
+    <text>
+        [p]Tiszta az égbolt, könnyű keleti szél röpíti a hajótokat. Ezzel a tempóval egy vagy két nap alatt elérhetitek a Végzet Szigetét. Garaethet, a hajó kapitányát jól megfizették, így vámi fog rád addig, amíg be nem fejezed a küldetésedet. Nemsokára sötét viharfelhők kezdenek gyülekezni, és a szél is feltámad. A kapitány kiadja a parancsot, hogy zárják le a fedélzeti nyílásokat, és felkészül az erős hátszélre. Az eső kopogós cseppekkel kezdi verni a fedélzetdeszkákat. Éppen a hajó belsejébe indulsz, amikor kiáltást hallasz: az egyik matróz kinyújtott karral a távolba mutat. Odanézel, és egy hatalmas, fekete madarat pillantasz meg, többméteres szárnyakkal, mely előremereszti félelmetes karmait, és zuhanni kezd - egyenesen feléd![/p]
+    </text>
+    <next id="55">Ha elmenekülsz</next>
+    <next id="127">Ha megveted a lábad, és felveszed vele a harcot</next>
+  </p>
+  <!-- 2 -->
+  <!-- 3 -->
+  <!-- 4 -->
+  <!-- 5 -->
+  <!-- 6 -->
+  <!-- 7 -->
+  <!-- 8 -->
+  <!-- 9 -->
+  <p id="10">
+    <text>
+        [p]Már dél körül járhat az idő, amikor az ösvény lassan elenyészik, és a hegyek igen meredekké válnak. Ez nem lehet a helyes út! Váratlanul tőled balra különös, reszelős hangra leszel figyelmes. - Üdvössszlet! Elvesssztetted az utat? - Megperdülsz, és egy igen nagy, szürke gyíkot pillantasz meg, sárga bőrgallérral a nyaka körül. A lény egy sziklahasadékból bámul rád. Mit teszel?[/p]
+    </text>
+    <next id="360">Megtámadod?</next>
+    <next id="86">Maradsz a helyeden, és ráköszönsz?</next>
+    <next id="54">Visszarohansz délnek?</next>
+  </p>
+  <!-- 11 -->
+  <!-- 12 -->
+  <!-- 13 -->
+  <!-- 14 -->
+  <!-- 15 -->
+  <!-- 16 -->
+  <!-- 17 -->
+  <!-- 18 -->
+  <!-- 19 -->
+  <!-- 20 -->
+  <!-- 21 -->
+  <p id="22">
+    <text>
+        [p]Megszállottként evezel, és a rákot leelőzve éred el a partot. A kimerültségtől vesztesz 2 életerő pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="102"></next>
+  </p>
+  <!-- 23 -->
+  <!-- 24 -->
+  <!-- 25 -->
+  <!-- 26 -->
+  <!-- 27 -->
+  <!-- 28 -->
+  <!-- 29 -->
+  <!-- 30 -->
+  <!-- 31 -->
+  <!-- 32 -->
+  <!-- 33 -->
+  <!-- 34 -->
+  <!-- 35 -->
+  <!-- 36 -->
+  <!-- 37 -->
+  <p id="38">
+    <text>
+        [p]Az út kettéválik.[/p]
+    </text>
+    <next id="238">Ha észak felé, a dombok és a páfrányosok irányába mennél</next>
+    <next id="349">Ha inkább továbbra is nyugat felé tartanál, a meglehetősen jártnak tűnő földúton</next>
+  </p>
+  <p id="39">
+    <text>
+        [p]A Kobold köszönetet rebeg, és viszonzásképpen, amiért megkímélted az életét, átnyújt egy kis zacskót, melyben három apró, [span class="takeItem" data-id="2002" data-amount="3"]Szerencse Port[/span] tartalmazó szelence rejtőzik. Írd fel ezeket a [em]Kalandlapodra[/em]! Mindegyik szelencében finom mágikus por van, melyet, ha a kezedre szórsz, 1 szerencse pontot kapsz vissza (természetesen nem lépheted túl a szerencséd [em]Kezdeti[/em] értékét). Harc kivételével bármikor használhatod ezeket a porokat. A Kobold sűrű bocsánatkérések közepette megígéri, hogy többet nem fog zavarni.[/p]
+        [p]Másnap reggel kipihenten ébredsz. Visszanyersz 2 életerő pontot.[/p]
+    </text>
+    <add amount="2" to="stamina" />
+    <next id="103"></next>
+  </p>
+  <!-- 40 -->
+  <!-- 41 -->
+  <!-- 42 -->
+  <!-- 43 -->
+  <!-- 44 -->
+  <!-- 45 -->
+  <!-- 46 -->
+  <!-- 47 -->
+  <!-- 48 -->
+  <!-- 49 -->
+  <!-- 50 -->
+  <!-- 51 -->
+  <!-- 52 -->
+  <!-- 53 -->
+  <p id="54">
+    <text>
+        [p]Gyorsan visszarohansz dél felé. Eléred a jobbkanyart, és nyugat felé futsz tovább. A sok rohanás azonban kimerített. Vesztesz 2 életerő pontot.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="349"></next>
+  </p>
+  <p id="55">
+    <text>
+        [p]Túl lassú vagy, így nem tudod elkerülni a lecsapó madarat; muszáj lesz megküzdened vele. Ráadásul, ahogy menekülni próbáltál, a bestia sárga-fekete karmai feltépték a bőrt a hátadon. Vesztesz 2 életerő pontot.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="127"></next>
+  </p>
+  <!-- 56 -->
+  <!-- 57 -->
+  <!-- 58 -->
+  <!-- 59 -->
+  <!-- 60 -->
+  <!-- 61 -->
+  <!-- 62 -->
+  <!-- 63 -->
+  <!-- 64 -->
+  <!-- 65 -->
+  <!-- 66 -->
+  <!-- 67 -->
+  <!-- 68 -->
+  <!-- 69 -->
+  <p id="70">
+    <text>
+        [p]Partra húzod a csónakodat - de még alig értél ki a vízből, amikor a kavicsos parton egy mérges Óriást pillantasz meg, ami észak felől rohan feléd. Hatalmas izmai ugrálnak a méregtől, kezeiben - az öklei akkorák, mint a fejed - egy vastag tölgyfa rudat markol. - Megölted Edwinát! - bömböli. Biztosan a kedvenc rákját érti ez alatt. Nyugat felé észreveszel egy ösvényt, de a bestia már egészen közel van; kénytelen vagy megküzdeni vele.[/p]
+    </text>
+    <next id="240"></next>
+  </p>
+  <!-- 71 -->
+  <!-- 72 -->
+  <!-- 73 -->
+  <!-- 74 -->
+  <!-- 75 -->
+  <!-- 76 -->
+  <!-- 77 -->
+  <!-- 78 -->
+  <!-- 79 -->
+  <!-- 80 -->
+  <!-- 81 -->
+  <!-- 82 -->
+  <!-- 83 -->
+  <!-- 84 -->
+  <!-- 85 -->
+  <p id="86">
+    <text>
+        [p]A fura beszédű gyík barátságosnak tűnik. Megkér, hogy segíts rajta. Elmondja, hogy lakik a közelben két Óriás Viharmadár. Ezek a ronda ragadozók állandóan elrabolják az ő tojásait, ő pedig nem képes felmászni a fészkükig, hogy elűzze őket, és visszaszerezze, ami az övé. Megkér, hogy pusztítsd el a madarakat. Cserébe felajánl egy gyönyörű, rózsavörös gyöngyöt! Mit teszel?[/p]
+    </text>
+    <next id="378">Közlöd, hogy már megölted az egyik Viharmadarat?</next>
+    <next id="256">Megígéred, hogy segítesz a gyíknak?</next>
+    <next id="119">Nem segítesz neki?</next>
+  </p>
+  <!-- 87 -->
+  <!-- 88 -->
+  <!-- 89 -->
+  <!-- 90 -->
+  <!-- 91 -->
+  <!-- 92 -->
+  <!-- 93 -->
+  <!-- 94 -->
+  <!-- 95 -->
+  <!-- 96 -->
+  <!-- 97 -->
+  <!-- 98 -->
+  <!-- 99 -->
+  <!-- 100 -->
+  <!-- 101 -->
+  <p id="102">
+    <text>
+        [p]Partra húzod a csónakot, és körülnézel. Nyugat felé egy ösvény vezet a sziget hegyekkel tűzdelt belseje felé, déli irányban pedig egy nagy, fehér sziklafal állja el az utadat. Észak felé köd kavarog, melyből váratlanul egy Óriás bukkan ki. A majdnem 6 méteres lény zöld ruhát visel, a haját csigák házai és kagylók héjai díszítik. Izmos kezében egy hatalmas farudat szorongat. - Üdv, ember! - mennydörgi. Mit teszel?[/p]
+    </text>
+    <next id="240">Megtámadod?</next>
+    <next id="328">Te is köszöntöd őt?</next>
+    <next id="257">Elrohansz nyugat felé?</next>
+  </p>
+  <p id="103">
+    <text>
+        [p]Úgy tűnik, kellemes napnak nézel elébe. A hullámok sustorognak, a tengeri madarak rikoltoznak, a szél lágyan simogatja a bőrödet. Nemsokára egy útkereszteződéshez érsz. Az észak felé vezető út mellett egy rúdra tűzött koponyát pillantasz meg. A délnek tartó ösvény mellé hegyes karóra erősített, véres madártol-lakat látsz. A nyugati csapást nem jelöli semmi. Merre indulsz tovább?[/p]
+    </text>
+    <next id="327">Észak felé?</next>
+    <next id="181">Nyugat felé?</next>
+    <next id="128">Dél felé?</next>
+  </p>
+  <!-- 104 -->
+  <!-- 105 -->
+  <!-- 106 -->
+  <!-- 107 -->
+  <!-- 108 -->
+  <!-- 109 -->
+  <!-- 110 -->
+  <!-- 111 -->
+  <!-- 112 -->
+  <!-- 113 -->
+  <!-- 114 -->
+  <!-- 115 -->
+  <!-- 116 -->
+  <!-- 117 -->
+  <p id="118">
+    <text>
+        [p]Együtt indultok északnak, és nemsokára el is éritek az Óriás barlangját, ami a tengertől nem messze, egy lankás domboldalból nyílik. Belépsz, és körülnézel. A sarokban remek illatú halétel rotyog egy nagy kondérban. Vendéglátód egy igazán hatalmas tállal kínál meg belőle! Jóízűen falatozni kezdesz. Az Óriás közben elmereng, és beszélni kezd. - Ez a hely egyre gonoszabbá kezd válni. Én nem félek, mert tudok magamra vigyázni, de te... neked biztosan valamiféle küldetésed van. - Bólintasz, de nem mondasz semmit. Elhatározod, hogy nem adsz ki semmit magadról. - Nem tudom, ez segít-e neked vagy sem, de talán jelent valamit - mondja, és egy nagy rakás üres kagylóhéj és csigaház alól előhalászik egy ősrégi tekercset. Elolvasod:[/p]
+        [p class="handwritten"]A halál hírnöke fütyül a szélben. A Lélekrabló félelmet csihol az elátkozottak lelkéből, hogy felépítse hajlékát.[/p]
+        [p]Ez bizony nem mond túl sokat a számodra. A tekercs sarkában van még egy öreg dátum, de az írás annyira kopott, hogy nem tudod kiolvasni. Mindössze három számjegyet sikerül nagy nehezen kisilabizálnod: 3, 5, 0, ebben a sorrendben. Az Óriás nagylelkűen neked ajándékozza az [span class="takeItem" data-id="3004" data-amount="1"]Üzenettekercset[/span] (írd fel a [em]Kalandlapodra[/em]). Odakint elered az eső, így a férfi barlangjában töltöd az éjszakát.[/p]
+        [p]Másnap reggel az ég tiszta, és süt a nap; az Óriás jó szerencsét kíván az utadra, és ellát némi [span class="takeItem" data-id="2000" data-amount="3"]sózott hallal[/span] (írj fel 3 adag élelmet a [em]Kalandlapodra[/em]). Nyugatnak indulsz, hogy megkeresd a sziget belseje felé vezető utat.[/p]
+    </text>
+    <next id="257"></next>
+  </p>
+  <p id="119">
+    <text>
+        [p]- Te gyáva féreg, hogy akarssssz így dicősssszéget és megbecülésssszt sssszeresssszni? - sziszegi a gyík megvetően. Átkod mond rád, majd eltűnik. Vesztesz 1 szerencse pontot. Félelemmel a szívedben dél felé menekülsz.[/p]
+    </text>
+    <add amount="-1" to="luck" />
+    <next id="54"></next>
+  </p>
+  <!-- 120 -->
+  <!-- 121 -->
+  <!-- 122 -->
+  <!-- 123 -->
+  <!-- 124 -->
+  <!-- 125 -->
+  <!-- 126 -->
+  <p id="127">
+    <text>
+        [p]Egy Óriás Viharmadárral hozott össze a balszerencséd. A tengerészek messze vannak, a szél, a zuhogó eső és a fedélzeten át-átcsapó hullámok miatt nem tudnak a segítségedre sietni, ezért egyedül kell megküzdened ellenfeleddel.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="1" />
+      <lose>
+        <text>
+            [p]Nem tudsz ellenállni a bestia félelmetes karmainak és erős csőrének, a kalandod véget ér, mielőtt igazából elkezdődhetett volna.[/p]
+        </text>
+      </lose>
+      <win>
+        <itemCheck type="section" id="55">
+          <have>
+            <next id="347"></next>
+          </have>
+          <dontHave>
+            <next id="223"></next>
+          </dontHave>
+        </itemCheck>
+      </win>
+    </fight>
+  </p>
+  <!-- 128 -->
+  <!-- 129 -->
+  <!-- 130 -->
+  <!-- 131 -->
+  <!-- 132 -->
+  <!-- 133 -->
+  <!-- 134 -->
+  <!-- 135 -->
+  <!-- 136 -->
+  <!-- 137 -->
+  <!-- 138 -->
+  <!-- 139 -->
+  <!-- 140 -->
+  <!-- 141 -->
+  <!-- 142 -->
+  <p id="143">
+    <text>
+        [p]Az egyik tengerész egy kis [span class="takeItem" data-id="3003" data-amount="1"]krémes tégelyt[/span] nyújt át. Elmondja, hogy a Végzet Szigetén rengeteg a rovar, ez a kenőcs azonban visszatartja őket. Még egyszer megköszöni a bátorságodat, és reméli, hogy ajándéka segítségedre válik majd. Te is megköszönöd a segítségét, majd magadhoz veszed a felszerelésedet, és felkészülsz a nagy kalandra.[/p]
+    </text>
+    <next id="249"></next>
+  </p>
+  <!-- 144 -->
+  <!-- 145 -->
+  <!-- 146 -->
+  <!-- 147 -->
+  <!-- 148 -->
+  <!-- 149 -->
+  <!-- 150 -->
+  <!-- 151 -->
+  <!-- 152 -->
+  <!-- 153 -->
+  <!-- 154 -->
+  <!-- 155 -->
+  <!-- 156 -->
+  <!-- 157 -->
+  <p id="158">
+    <test against="luck">
+      <success>
+        <next id="239"></next>
+      </success>
+      <failure>
+        <next id="338"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="159">
+    <text>
+        [p]Mindössze egy apró százlábút találsz, mely azonban elég ügyes ahhoz, hogy csáprágóival megcsípjen. Felszisszensz fájdalmadban, és dühösen eltaposod a kis fenevadat, de a mérge annyira erős, hogy 2 életerő pontot veszítesz.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="337"></next>
+  </p>
+  <!-- 160 -->
+  <!-- 161 -->
+  <!-- 162 -->
+  <!-- 163 -->
+  <!-- 164 -->
+  <!-- 165 -->
+  <!-- 166 -->
+  <p id="167">
+    <empty />
+  </p>
+  <!-- 168 -->
+  <!-- 169 -->
+  <!-- 170 -->
+  <!-- 171 -->
+  <!-- 172 -->
+  <!-- 173 -->
+  <!-- 174 -->
+  <!-- 175 -->
+  <!-- 176 -->
+  <!-- 177 -->
+  <!-- 178 -->
+  <!-- 179 -->
+  <!-- 180 -->
+  <!-- 181 -->
+  <p id="182">
+    <text>
+        [p]Nemsokára rálelsz az Óriás domboldalból nyíló barlangjára. Gyorsan körbenézel, és elégedetten állapítod meg, hogy rajtad kívül senki más nem tartózkodik a környéken. Bentről sült hal illata árad! Belépsz. Két étkezésre elegendő halpörköltet találsz (ha akarod, megeheted az [span class="takeItem" data-id="2001" data-amount="1"]egyiket[/span], vagy [span class="takeItem" data-id="2001" data-amount="1"]mindkettőt[/span], de nem áll módodban magaddal vinni őket). Evés és némi pihenés után ismét felkerekedsz. Mit teszel?[/p]
+    </text>
+    <next id="257">Ha visszatérsz a nyugat felé vezető útra</next>
+    <next id="301">Ha előbb még átkutatnád a barlangot</next>
+  </p>
+  <!-- 183 -->
+  <!-- 184 -->
+  <!-- 185 -->
+  <!-- 186 -->
+  <!-- 187 -->
+  <!-- 188 -->
+  <!-- 189 -->
+  <!-- 190 -->
+  <!-- 191 -->
+  <!-- 192 -->
+  <!-- 193 -->
+  <!-- 194 -->
+  <!-- 195 -->
+  <!-- 196 -->
+  <!-- 197 -->
+  <!-- 198 -->
+  <!-- 199 -->
+  <!-- 200 -->
+  <!-- 201 -->
+  <!-- 202 -->
+  <!-- 203 -->
+  <!-- 204 -->
+  <!-- 205 -->
+  <p id="206">
+    <text>
+        [p]Eléred a sziklafalat, és elkezdesz felmászni rajta. Nagyon oda kell figyelned, mert csúszós a felülete, ráadásul azok az átkozott rátapadt mohák is alaposan megnehezítik a kapaszkodást.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <text>
+            [p]Sikerült feljutnod a fészekig.[/p]
+        </text>
+        <next id="368"></next>
+      </success>
+      <failure>
+        <text>
+            [p]Megcsúsztál, és lezuhantál. Vesztesz 2 életerő pontot. Természetesen ismét megpróbálkozhatsz a mászással.[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="206">Ha ismét mászni próbálsz</next>
+        <next id="119">Ha úgy döntesz, hogy mégsem akarsz felmászni, és visszafordulsz dél felé</next>
+      </failure>
+    </test>
+  </p>
+  <p id="207">
+    <text>
+        [p]Meg kell küzdened a Koponyarákkal. Csakhamar rájössz, hogy nem éppen ideális harci pozíció egy labilis csónakban karddal harcolni egy vízi lény ellen! Ennek megfelelően a harc idejére (de [em]csak[/em] a harc idejére!) 2-vel csökkentened kell az ügyességedet.[/p]
+    </text>
+    <add amount="-2" to="skill" />
+    <fight type="single">
+      <enemy id="2" />
+      <win>
+        <text>
+            [p]Sikerült legyőznöd a bestiát, kifújod magad, majd kihalászod a vízből a harc hevében elvesztett evezőket, és kievezel a partra.[/p]
+        </text>
+        <add amount="2" to="skill" />
+      </win>
+    </fight>
+    <next id="70"></next>
+  </p>
+  <!-- 208 -->
+  <!-- 209 -->
+  <!-- 210 -->
+  <!-- 211 -->
+  <!-- 212 -->
+  <!-- 213 -->
+  <!-- 214 -->
+  <!-- 215 -->
+  <!-- 216 -->
+  <!-- 217 -->
+  <!-- 218 -->
+  <!-- 219 -->
+  <!-- 220 -->
+  <!-- 221 -->
+  <!-- 222 -->
+  <p id="223">
+    <text>
+        [p]Garaeth kapitány és emberei gratulálnak hőstettedhez. A hajó raktárából elláthatod magad élelemmel, hogy pótold a Viharmadárral folytatott küzdelemben elveszett életerő pontokat. - Jó munka volt - mondja Garaeth - De ez a találkozás aggaszt. Ezeken a vidékeken a Viharmadarak rendkívül ritkák. Lehet, hogy valaki már tud a jöttödről, és mágiával kényszerítene ide ezt a lényt. - Ez nem túl kellemes gondolat, de lehet benne némi igazság. Éjszaka szerencsére semmi sem zavarja az álmodat, így reggel kipihenten ébredsz. Felkészülsz, hogy partra szállj a Végzet Szigetén.[/p]
+    </text>
+    <add amount="30" to="stamina" />
+    <next id="143"></next>
+  </p>
+  <!-- 224 -->
+  <!-- 225 -->
+  <!-- 226 -->
+  <!-- 227 -->
+  <!-- 228 -->
+  <!-- 229 -->
+  <!-- 230 -->
+  <!-- 231 -->
+  <!-- 232 -->
+  <!-- 233 -->
+  <!-- 234 -->
+  <!-- 235 -->
+  <!-- 236 -->
+  <!-- 237 -->
+  <p id="238">
+    <text>
+        [p]Előrenyomulsz, miközben lassan kezd besötétedni. Az úttól nem messze nyugatra egy domboldalban észreveszel egy kicsiny barlangot. Mivel a szabadban kockázatos lenne eltölteni az éjszakát, úgy döntesz, hogy odabenn keresel menedéket. A barlang üresnek tűnik. Meggyújtod a lámpádat, és körbekémlelsz a homályban. A padlón kövek hevernek szanaszét, de szerencsére a talaj nem túl nedves.[/p]
+    </text>
+    <next id="337">Ha letáborozol, és azonnal lefekszel aludni</next>
+    <next id="159">Ha előbb megvizsgálod a talajt a kövek alatt is</next>
+  </p>
+  <p id="239">
+    <text>
+        [p]Arra ébredsz, hogy a Kobold a hátizsákodban turkál! Mérgesen kinyúlsz, és nyakon csíped. A lény azonnal remegni kezd, és az életéért könyörög, sőt még mágiát is felajánl cserébe, ha elengeded.[/p]
+    </text>
+    <next id="278">Hogyha rendíthetetlen maradsz, és kitöröd a kis tolvaj nyakát</next>
+    <next id="39">Ha inkább megenyhülsz, és megkegyelmeznél neki</next>
+  </p>
+  <p id="240">
+    <text>
+        [p]Mivel ellenfeled egy hatalmas és dühös Tengeri Óriás, most komoly kalamajkába kerültél![/p]
+    </text>
+    <fight type="single">
+      <enemy id="3" />
+    </fight>
+    <next id="257">Ha nyugatnak indulsz tovább az úton</next>
+    <next id="182">Ha az északi irány választod, amerről ellenfeled érkezett</next>
+  </p>
+  <!-- 241 -->
+  <!-- 242 -->
+  <!-- 243 -->
+  <!-- 244 -->
+  <!-- 245 -->
+  <!-- 246 -->
+  <!-- 247 -->
+  <!-- 248 -->
+  <p id="249">
+    <text>
+        [p]Elég sűrű köd gomolyog, de azért még éppen látszik a Végzet Szigete a hajó bal oldalán. Garaeth kapitánytól megtudod, hogy a szigetnek nincs természetes kikötője, így egyedül kell odaevezned egy csónakkal. A matrózok nemsokára leengednek egy mentőcsónakot a hajó oldalán. Bepakolod a felszerelésedet, majd lemászol, és evezni kezdesz. A [em]Viharmadár[/em] lassan eltűnik mögötted a ködben.[/p]
+        [p]Már majdnem partot értél, amikor két hatalmas, szürke rákolló emelkedik ki előtted a vízből, melyeket hamarosan egy zöldes, nyálkás, tengeri hínárral és élősködőkkel borított, iszonytató Koponyarák követi. A szörnyeteg egyenesen a csónakod felé tart! Mit teszel?[/p]
+    </text>
+    <next id="207" pos="1">Megküzdesz vele?</next>
+    <itemCheck type="item" id="2000">
+      <have>
+        <next id="270" pos="2">Ételt dobsz neki?</next>
+      </have>
+    </itemCheck>
+    <next id="22" pos="3">Megpróbálsz gyorsan partra evezni, és elhúzni a csíkot?</next>
+  </p>
+  <!-- 250 -->
+  <!-- 251 -->
+  <!-- 252 -->
+  <!-- 253 -->
+  <!-- 254 -->
+  <!-- 255 -->
+  <p id="256">
+    <text>
+        [p]- A fésssszek itt van fönt, éssssszakkeletre - mondja a gyík. Felnézel, és valóban, egy sziklás kiszögellésen látszik is a széle. Úgy tűnik, senki sincs otthon. A legjobb az lesz, ha felmászol, és majd akkor támadod meg a madarakat, amikor visszatérnek. Nekiveselkedsz a mászásnak.[/p]
+    </text>
+    <next id="206"></next>
+  </p>
+  <p id="257">
+    <text>
+        [p]Nyugat felé indulsz az úton. Ködös, apró szemcsés eső kezd szitálni. Nemsokára tökéletesen átázol, és igen nyomorultul érzed magad. Délben leülsz, hogy pihenj és egyél egy keveset. Amikor azonban belenézel a hátizsákodba, szomorúan kell megállapítanod, hogy a nedvesség az élelmed egy részét tönkretette. Húzz le 2 adag élelmet a [em]Kalandlapodról[/em].[/p]
+    </text>
+    <loseItem id="2000" amount="2" />
+    <next id="38"></next>
+  </p>
+  <!-- 258 -->
+  <!-- 259 -->
+  <!-- 260 -->
+  <!-- 261 -->
+  <!-- 262 -->
+  <!-- 263 -->
+  <!-- 264 -->
+  <!-- 265 -->
+  <!-- 266 -->
+  <!-- 267 -->
+  <!-- 268 -->
+  <!-- 269 -->
+  <p id="270">
+    <text>
+        [p]Ételt dobsz a rák elé. Az utánakap az ollójával, de elvéti, így kénytelen megfordulni, és a tengerben kutatni a süllyedő táplálék után. Ezalatt te biztonságosan partra érsz. Csökkentsd 1-gyel az Élelemkészletedet a [em]Kalandlapodon[/em].[/p]
+    </text>
+    <loseItem id="2000" />
+    <next id="102"></next>
+  </p>
+  <!-- 271 -->
+  <!-- 272 -->
+  <!-- 273 -->
+  <!-- 274 -->
+  <!-- 275 -->
+  <!-- 276 -->
+  <!-- 277 -->
+  <p id="278">
+    <text>
+        [p]Erős kezeiddel megragadod a Koboldot. Ebben a pillanatban eltörik az a kis medál, ami egy vékonyka láncon lóg a nyakán, darabokra törik, és a fénylő fémszilánkok az ujjaidba fúródnak. Vesztesz 1 ügyesség és 2 életerő pontot.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="skill" />
+    <next id="103"></next>
+  </p>
+  <!-- 279 -->
+  <!-- 280 -->
+  <!-- 281 -->
+  <!-- 282 -->
+  <!-- 283 -->
+  <!-- 284 -->
+  <!-- 285 -->
+  <!-- 286 -->
+  <!-- 287 -->
+  <p id="288">
+    <text>
+        [p]Átkutatod a fészket. [span class="takeItem" data-id="gold" data-amount="3"]3 Aranytallér[/span] a zsákmányod (írd fel az összeget a [em]Kalandlapodra[/em]). Óvatosan lemászol a falon, hogy megkapd a gyíktól a megérdemelt jutalmadat.[/p]
+        [p]A teremtmény nagyon elégedett a teljesítményeddel. - Essszer kössszönet! Íme, itt a jutalmad. - Kinyitja egyik pikkelyes tenyerét, és átnyújt egy gyönyörű, 12 Aranytallér értékű [span class="takeItem" data-id="3006" data-amount="1"]rózsavörös gyöngyöt[/span], valamint egy apró, nyakláncon függő [span class="takeItem" data-id="3007" data-amount="1"]Ezüstmedált[/span], melybe egy nyitott tenyér van díszként belevésve. - Nem tudom pontossszan, esssz mire való - mondja a gyík -, de valamiféle mágikussssz védelmet nyújt a gonossssz ellen. Remélem, hasssssssznodra válik majd. - Elveszed a medált, és a nyakadba akasztod (írd fel a [em]Kalandlapodra[/em]). A lény hálájának jeléül még neked ajándékoz egy apró üvegcse [span class="takeItem" data-id="3008" data-amount="1"]varázsitalt[/span] is: ha felhajtod, képes leszel gyorsan futni anélkül, hogy kimerülnél a fáradtságtól. Megköszönöd az ajándékokat, felhörpinted az italt, és sebesen délnek rohansz, hogy aztán nyugatra fordulj a helyes irányba.[/p]
+    </text>
+    <next id="349"></next>
+  </p>
+  <!-- 289 -->
+  <!-- 290 -->
+  <!-- 291 -->
+  <!-- 292 -->
+  <!-- 293 -->
+  <!-- 294 -->
+  <!-- 295 -->
+  <!-- 296 -->
+  <!-- 297 -->
+  <!-- 298 -->
+  <!-- 299 -->
+  <!-- 300 -->
+  <p id="301">
+    <text>
+        [p]Sok szemét - kagylóhéjak, faforgácsok, csigaházak és hasonlók - között [span class="takeItem" data-id="gold" data-amount="5"]5 Aranytallért[/span] találsz egy táskában (írd fel a [em]Kalandlapodra[/em]), továbbá 4 étkezésre elegendő [span class="takeItem" data-id="2000" data-amount="4"]sózott halat[/span], ezeket szintén magaddal viheted. Visszamész délre az úthoz.[/p]
+    </text>
+    <next id="257"></next>
+  </p>
+  <!-- 302 -->
+  <!-- 303 -->
+  <!-- 304 -->
+  <!-- 305 -->
+  <!-- 306 -->
+  <!-- 307 -->
+  <!-- 308 -->
+  <!-- 309 -->
+  <!-- 310 -->
+  <!-- 311 -->
+  <!-- 312 -->
+  <!-- 313 -->
+  <!-- 314 -->
+  <!-- 315 -->
+  <!-- 316 -->
+  <!-- 317 -->
+  <!-- 318 -->
+  <!-- 319 -->
+  <!-- 320 -->
+  <!-- 321 -->
+  <!-- 322 -->
+  <!-- 323 -->
+  <!-- 324 -->
+  <!-- 325 -->
+  <!-- 326 -->
+  <!-- 327 -->
+  <p id="328">
+    <text>
+        [p]- Sajnálom, ami Edwinával történt - mondja a Tengeri Óriás. - Tudod, ma nagyon élénk. Ugye nem sebesített meg? Nagyszerű. - Az Óriás végigtekint a ködös láthatáron. - Esni fog. Kell étel és szállás?[/p]
+    </text>
+    <next id="118">Ha elfogadod a meghívását</next>
+    <next id="257">Ha visszautasítod, és nyugatnak indulsz az úton</next>
+  </p>
+  <!-- 329 -->
+  <!-- 330 -->
+  <!-- 331 -->
+  <!-- 332 -->
+  <!-- 333 -->
+  <!-- 334 -->
+  <!-- 335 -->
+  <!-- 336 -->
+  <p id="337">
+    <text>
+        [p]Mielőtt lefekszel, még egy adag ételt el kell fogyasztanod, ha nem akarsz 2 életerő pontot veszíteni.[/p]
+    </text>
+    <next id="337a">Ha eszel</next>
+    <next id="337b">Ha nem</next>
+  </p>
+  <p id="337a" display="337">
+    <text>
+        [p]Mielőtt lefekszel, még egy adag ételt el kell fogyasztanod, ha nem akarsz 2 életerő pontot veszíteni.[/p]
+        [p]Evés után kihajtod a pokrócodat, és leheveredsz. Odakint sivítva, vadul tombol a vihar, de azért sikerül néhány órácskát alvással töltened. Ennyi elég is ahhoz, hogy kipihenten ébredj.[/p]
+    </text>
+    <loseItem id="2000" />
+    <next id="10"></next>
+  </p>
+  <p id="337b" display="337">
+    <text>
+        [p]Mielőtt lefekszel, még egy adag ételt el kell fogyasztanod, ha nem akarsz 2 életerő pontot veszíteni.[/p]
+        [p]Kihajtod a pokrócodat, és leheveredsz. Odakint sivítva, vadul tombol a vihar, de azért sikerül néhány órácskát alvással töltened. Ennyi elég is ahhoz, hogy kipihenten ébredj.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="10"></next>
+  </p>
+  <p id="338">
+    <text>
+        [p]A Kobold meglopott!
+    </text>
+    <itemCheck type="gold" id="1">
+      <have>
+        <add amount="-5" to="gold" />
+        <itemCheck type="gold" id="6">
+          <have>
+            <text>
+                A lény 5 Aranytallérodat vitte el, és nagylelkűen meghagyta neked a többit.[/p]
+            </text>
+          </have>
+          <dontHave>
+            <text>
+                Minden pénzed eltűnt.[/p]
+            </text>
+          </dontHave>
+        </itemCheck>
+      </have>
+      <dontHave>
+        <text>
+            A rózsavörös gyöngyödnek lába kélt.[/p]
+        </text>
+        <loseItem id="3006" />
+      </dontHave>
+    </itemCheck>
+    <next id="103"></next>
+  </p>
+  <!-- 339 -->
+  <!-- 340 -->
+  <!-- 341 -->
+  <!-- 342 -->
+  <!-- 343 -->
+  <!-- 344 -->
+  <!-- 345 -->
+  <!-- 346 -->
+  <p id="347">
+    <text>
+        [p]A hajó legénysége örül a győzelmednek - de azt is látták, hogy először megpróbáltál elmenekülni. Ennyi elég, hogy sustorgások induljanak el a gyávaságodról. Ha enned kell, hogy pótold az elvesztett életerő pontokat, ezt a saját élelmiszerkészletedből kell megtenned; a matrózok ugyan udvariasak veled, de élelmet nem kapsz tőlük.[/p]
+    </text>
+    <next id="249"></next>
+  </p>
+  <!-- 348 -->
+  <p id="349">
+    <text>
+        [p]Szép távolságot tettél meg az úton. A nap azonban most már lassan a látóhatár mögé ereszkedik, és sehol nem találsz megfelelő, biztonságos, éjszakai nyugvóhelyet. Északon dombok magasodnak, az út kitartóan halad nyugat felé... délre egy apró facsoportot pillantasz meg egy sziklakiszögellésen. Arra indulsz hát, hogy körbenézz. Miközben óvatosan felderíted a csalitost, egy apró, vékonyka arc bújik ki a bokrokból, melyhez hegyes fülek, és egy fekete, éles tekintetű szempár tartozik. - Alvóhelyet keresel? - kérdezi félénken a Fakobold. Te bólintasz, mire a Kobold felrohan az egyik fa törzsén, és valamit motoszkálni kezd odafent. Nemsokára egy kötélhágcsó ereszkedik le a lombkoronából! - Gyere, mássz fel - sürget a vékonyka hang -, odalent farkasok is lehetnek, vagy még csúnyább dolgok.[/p]
+        [p]Amikor felérsz a fa tetejére, a Kobold végigtáncol egy faágon, majd eltűnik szem elől. Te keresel egy biztonságos ágat, majd elszundítasz.[/p]
+    </text>
+    <itemCheck type="gold" id="1">
+      <have>
+        <next id="158"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="3006">
+          <have>
+            <next id="158"></next>
+          </have>
+          <dontHave>
+            <next id="103"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <!-- 350 -->
+  <!-- 351 -->
+  <!-- 352 -->
+  <!-- 353 -->
+  <!-- 354 -->
+  <!-- 355 -->
+  <!-- 356 -->
+  <!-- 357 -->
+  <!-- 358 -->
+  <!-- 359 -->
+  <p id="360">
+    <text>
+        [p]Nekirontasz a gyíknak - mely egyszerűen köddé foszlik, amikor odaérsz! Suttogó hang hallatszik: átkot mond rád, mert olyasvalakit akartál bántani, aki nem ártott neked. Csökkentsd 1-gyel a szerencsédet. Megijedsz az esetleges egyéb, riasztó következményektől, és elrohansz dél felé.[/p]
+    </text>
+    <add amount="-1" to="luck" />
+    <next id="54"></next>
+  </p>
+  <!-- 361 -->
+  <!-- 362 -->
+  <!-- 363 -->
+  <!-- 364 -->
+  <!-- 365 -->
+  <!-- 366 -->
+  <!-- 367 -->
+  <p id="368">
+    <text>
+        [p]Bemászol a fészekbe. Két tojást találsz, és éles szemed arany csillanását is észreveszi a fészek mélyén - ám ekkor az anyamadár suhogva lecsap az égből! A küzdelem elkerülhetetlen.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="4" />
+    </fight>
+    <next id="288"></next>
+  </p>
+  <!-- 369 -->
+  <!-- 370 -->
+  <!-- 371 -->
+  <!-- 372 -->
+  <!-- 373 -->
+  <!-- 374 -->
+  <!-- 375 -->
+  <!-- 376 -->
+  <!-- 377 -->
+  <p id="378">
+    <text>
+        [p]- Jó - feleli a gyík. - Akkor mosssszt már nem lessssz sssszemmi bajod a másszikkal ssszem, ugye? - Erre nem lehet mit válaszolni.[/p]
+    </text>
+    <next id="256"></next>
   </p>
 </content>
