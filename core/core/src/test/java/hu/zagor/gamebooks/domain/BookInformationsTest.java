@@ -33,14 +33,6 @@ public class BookInformationsTest {
         Assert.assertEquals(underTest.getPosition().intValue(), 99);
     }
 
-    public void testSetCoverPathShouldSetCoverPath() {
-        // GIVEN
-        // WHEN
-        underTest.setCoverPath("resources/ff99/cover.jpg");
-        // THEN
-        Assert.assertEquals(underTest.getCoverPath(), "resources/ff99/cover.jpg");
-    }
-
     public void testSetResourceDirShouldSetResourceDir() {
         // GIVEN
         // WHEN

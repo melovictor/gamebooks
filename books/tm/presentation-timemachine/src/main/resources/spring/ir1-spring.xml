@@ -6,7 +6,7 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.hungarian.IdogepRegeny.A_LOVAGOK_TITKA" id="ir1Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="ir1Info" c:id-ref="ir1Id" p:coverPath="resources/tm1/cover.jpg" p:resourceDir="tm1"
+  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="ir1Info" c:id-ref="ir1Id" p:resourceDir="tm1"
     p:contentTransformers-ref="defaultTmContentTransformers" p:paragraphResolver-ref="tmRuleBookParagraphResolver" p:locale-ref="huLocale" p:position="1" p:series-ref="irTitle" p:title="A lovagok titka" p:characterHandler-ref="tmCharacterHandler">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="" c:items="ir1items.xml" c:paragraphs="ir1content.xml" />

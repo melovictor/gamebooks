@@ -6,7 +6,7 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.TimeMachine.SEARCH_FOR_DINOSAURS" id="tm2Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="tm2Info" c:id-ref="tm2Id" p:coverPath="resources/tm2/cover.jpg" p:resourceDir="tm2"
+  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="tm2Info" c:id-ref="tm2Id" p:resourceDir="tm2"
     p:contentTransformers-ref="defaultTmContentTransformers" p:paragraphResolver-ref="tmRuleBookParagraphResolver" p:locale-ref="enLocale" p:position="2" p:series-ref="tmTitle" p:title="Search for Dinosaurs" p:characterHandler-ref="tmCharacterHandler">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="" c:items="tm2items.xml" c:paragraphs="tm2content.xml" />

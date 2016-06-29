@@ -47,7 +47,6 @@ public class DefaultSeriesCollectionTransformer implements SeriesCollectionTrans
     private BookData createBookData(final BookInformations bookInformations) {
         final BookData data = new BookData(bookInformations.getId());
 
-        data.setCoverPath(bookInformations.getCoverPath());
         data.setTitle(bookInformations.getTitle());
         data.setPosition(bookInformations.getPosition());
         data.setSeries(bookInformations.getSeries());

@@ -4,7 +4,7 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.Zork.THE_FORCES_OF_KRILL" id="z1Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="z1Info" c:id-ref="z1Id" p:coverPath="resources/z1/cover.jpg" p:resourceDir="z1" p:contentTransformers-ref="defaultRawContentTransformers" p:paragraphResolver-ref="rawRuleBookParagraphResolver" p:locale-ref="enLocale" p:position="1" p:series-ref="zTitle" p:title="The Forces of Krill" p:characterHandler-ref="rawCharacterHandler" p:commandResolvers-ref="rawCommandResolvers">
+  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="z1Info" c:id-ref="z1Id" p:resourceDir="z1" p:contentTransformers-ref="defaultRawContentTransformers" p:paragraphResolver-ref="rawRuleBookParagraphResolver" p:locale-ref="enLocale" p:position="1" p:series-ref="zTitle" p:title="The Forces of Krill" p:characterHandler-ref="rawCharacterHandler" p:commandResolvers-ref="rawCommandResolvers">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="" c:items="" c:paragraphs="z1content.xml" />
     </property>

@@ -6,7 +6,7 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.StarChallenge.PLANETS_IN_PERIL" id="sc1Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="sc1Info" c:id-ref="sc1Id" p:coverPath="resources/sc1/cover.jpg" p:resourceDir="sc1"
+  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="sc1Info" c:id-ref="sc1Id" p:resourceDir="sc1"
     p:contentTransformers-ref="defaultRawContentTransformers" p:paragraphResolver-ref="rawRuleBookParagraphResolver" p:locale-ref="enLocale" p:position="1" p:series-ref="scTitle" p:title="Planets in Peril" p:characterHandler-ref="rawCharacterHandler" p:commandResolvers-ref="rawCommandResolvers">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="" c:items="" c:paragraphs="sc1content.xml" />

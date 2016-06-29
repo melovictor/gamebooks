@@ -15,7 +15,6 @@ public class BookData implements Comparable<BookData> {
     private String title;
     private Double position;
     private Integer innerPosition;
-    private String coverPath;
     private boolean disabled;
     private boolean unfinished;
     private Locale locale;
@@ -54,16 +53,8 @@ public class BookData implements Comparable<BookData> {
         this.position = position;
     }
 
-    public String getCoverPath() {
-        return coverPath;
-    }
-
     public void setInnerPosition(final Integer innerPosition) {
         this.innerPosition = innerPosition;
-    }
-
-    public void setCoverPath(final String coverLocation) {
-        coverPath = coverLocation;
     }
 
     public Long getId() {

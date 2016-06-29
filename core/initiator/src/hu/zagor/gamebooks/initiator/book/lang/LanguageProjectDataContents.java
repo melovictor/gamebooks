@@ -62,12 +62,12 @@ public class LanguageProjectDataContents {
             + "        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd\">\r\n" + "\r\n"
             + "  <util:constant static-field=\"hu.zagor.gamebooks.support.bookids." + data.getFullLang() + "." + data.getBookId() + "\" id=\"" + data.getSeriesCode()
             + data.getPosition() + "Id\" />\r\n" + "\r\n" + "  <bean class=\"hu.zagor.gamebooks.domain." + baseData.getBookInfoPrefix() + "BookInformations\" id=\""
-            + data.getSeriesCode() + data.getPosition() + "Info\" c:id-ref=\"" + data.getSeriesCode() + data.getPosition() + "Id\" p:coverPath=\"resources/"
-            + baseData.getSeriesCode() + baseData.getPosition() + "/cover.jpg\" p:resourceDir=\"" + baseData.getSeriesCode() + baseData.getPosition() + "\"\r\n"
-            + "    p:contentTransformers-ref=\"default" + baseData.getRulesetCapital() + "ContentTransformers\" p:paragraphResolver-ref=\"" + baseData.getRuleset()
-            + "RuleBookParagraphResolver" + baseData.getDefaultSkillTestType() + "\" p:locale-ref=\"" + data.getCompactLang() + "Locale\" p:position=\""
-            + data.getActualPosition() + "\" p:series-ref=\"" + data.getSeriesCode() + "Title\" p:title=\"" + data.getTitle() + "\" p:characterHandler-ref=\""
-            + baseData.getRuleset() + "CharacterHandler\" p:commandResolvers-ref=\"" + baseData.getRuleset() + "CommandResolvers\"";
+            + data.getSeriesCode() + data.getPosition() + "Info\" c:id-ref=\"" + data.getSeriesCode() + data.getPosition() + "Id\" p:resourceDir=\""
+            + baseData.getSeriesCode() + baseData.getPosition() + "\"\r\n" + "    p:contentTransformers-ref=\"default" + baseData.getRulesetCapital()
+            + "ContentTransformers\" p:paragraphResolver-ref=\"" + baseData.getRuleset() + "RuleBookParagraphResolver" + baseData.getDefaultSkillTestType()
+            + "\" p:locale-ref=\"" + data.getCompactLang() + "Locale\" p:position=\"" + data.getActualPosition() + "\" p:series-ref=\"" + data.getSeriesCode()
+            + "Title\" p:title=\"" + data.getTitle() + "\" p:characterHandler-ref=\"" + baseData.getRuleset() + "CharacterHandler\" p:commandResolvers-ref=\""
+            + baseData.getRuleset() + "CommandResolvers\"";
 
         if (!data.isFinished()) {
             content += " p:unfinished=\"true\"";

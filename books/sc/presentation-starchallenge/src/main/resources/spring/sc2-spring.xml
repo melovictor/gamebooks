@@ -6,7 +6,7 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.StarChallenge.THE_ANDROID_INVASION" id="sc2Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="sc2Info" c:id-ref="sc2Id" p:coverPath="resources/sc2/cover.jpg" p:resourceDir="sc2"
+  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="sc2Info" c:id-ref="sc2Id" p:resourceDir="sc2"
     p:contentTransformers-ref="defaultRawContentTransformers" p:paragraphResolver-ref="rawRuleBookParagraphResolver" p:locale-ref="enLocale" p:position="2" p:series-ref="scTitle" p:title="The Android Invasion" p:characterHandler-ref="rawCharacterHandler" p:commandResolvers-ref="rawCommandResolvers">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="" c:items="" c:paragraphs="sc2content.xml" />

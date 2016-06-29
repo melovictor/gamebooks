@@ -6,7 +6,7 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.ChooseYourOwnAdventure.ESCAPE" id="cyoa20Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="cyoa20Info" c:id-ref="cyoa20Id" p:coverPath="resources/cyoa20/cover.jpg" p:resourceDir="cyoa20"
+  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="cyoa20Info" c:id-ref="cyoa20Id" p:resourceDir="cyoa20"
     p:contentTransformers-ref="defaultRawContentTransformers" p:paragraphResolver-ref="rawRuleBookParagraphResolver" p:locale-ref="enLocale" p:position="20" p:series-ref="cyoaTitle" p:title="Escape" p:characterHandler-ref="rawCharacterHandler" p:commandResolvers-ref="rawCommandResolvers">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="" c:items="" c:paragraphs="cyoa20content.xml" />

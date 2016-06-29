@@ -6,7 +6,7 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.EndlessQuest.DUNGEON_OF_DREAD" id="eq1Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="eq1Info" c:id-ref="eq1Id" p:coverPath="resources/eq1/cover.jpg" p:resourceDir="eq1"
+  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="eq1Info" c:id-ref="eq1Id" p:resourceDir="eq1"
     p:contentTransformers-ref="defaultRawContentTransformers" p:paragraphResolver-ref="rawRuleBookParagraphResolver" p:locale-ref="enLocale" p:position="1" p:series-ref="eqTitle" p:title="Dungeon of Dread" p:characterHandler-ref="rawCharacterHandler" p:commandResolvers-ref="rawCommandResolvers">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="" c:items="" c:paragraphs="eq1content.xml" />

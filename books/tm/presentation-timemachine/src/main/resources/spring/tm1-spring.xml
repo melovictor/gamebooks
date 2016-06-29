@@ -6,7 +6,7 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.TimeMachine.SECRET_OF_THE_KNIGHTS" id="tm1Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="tm1Info" c:id-ref="tm1Id" p:coverPath="resources/tm1/cover.jpg" p:resourceDir="tm1"
+  <bean class="hu.zagor.gamebooks.domain.BookInformations" id="tm1Info" c:id-ref="tm1Id" p:resourceDir="tm1"
     p:contentTransformers-ref="defaultTmContentTransformers" p:paragraphResolver-ref="tmRuleBookParagraphResolver" p:locale-ref="enLocale" p:position="1" p:series-ref="tmTitle" p:title="Secret of the Knights" p:characterHandler-ref="tmCharacterHandler">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="" c:items="tm1items.xml" c:paragraphs="tm1content.xml" />

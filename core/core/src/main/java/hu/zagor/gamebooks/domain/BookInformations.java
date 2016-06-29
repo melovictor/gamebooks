@@ -18,7 +18,6 @@ public class BookInformations implements Comparable<BookInformations> {
     private String title;
     private String series;
     private Double position;
-    private String coverPath;
     private Locale locale;
     private String resourceDir;
     private BookContentFiles contents;
@@ -69,14 +68,6 @@ public class BookInformations implements Comparable<BookInformations> {
 
     public void setPosition(final Double order) {
         position = order;
-    }
-
-    public String getCoverPath() {
-        return coverPath;
-    }
-
-    public void setCoverPath(final String coverPath) {
-        this.coverPath = coverPath;
     }
 
     public Locale getLocale() {
