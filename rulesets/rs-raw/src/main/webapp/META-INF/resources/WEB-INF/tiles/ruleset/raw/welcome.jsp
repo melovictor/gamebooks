@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div id="cover">
-	<c:url value="http://zagor.hu/gamebooks/img.php?book=${bookInfo.resourceDir}&img=cover&loc=${bookInfo.locale}" var="coverUrl" />
+	<c:url value="http://zagor.hu/gamebooks/img.php?book=${bookInfo.resourceDir}&img=${bookInfo.cover}&loc=${bookInfo.locale}" var="coverUrl" />
 	<img class="bordered" src="${coverUrl}" alt="${bookInfo.title}" />
 </div>
 

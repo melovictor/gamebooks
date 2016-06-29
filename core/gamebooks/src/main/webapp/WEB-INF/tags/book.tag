@@ -5,7 +5,7 @@
 
 <div class="bookItem">
 	<c:url value="book/${item.id}/welcome" var="bookUrl" />
-	<c:url value="http://zagor.hu/gamebooks/img.php?book=${item.resourceDir}&img=cover&loc=${item.locale}" var="coverUrl" />
+	<c:url value="http://zagor.hu/gamebooks/img.php?book=${item.resourceDir}&img=${item.cover}&loc=${item.locale}" var="coverUrl" />
 	
 	<c:if test="${!item.disabled || user.admin}">
 		<a href="${bookUrl}" class="booksmallcover" data-bookId="${item.id}">

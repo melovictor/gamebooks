@@ -19,6 +19,7 @@ public class BookData implements Comparable<BookData> {
     private boolean unfinished;
     private Locale locale;
     private String resourceDir;
+    private String cover;
 
     /**
      * Basic constructor that creates a new item with the specified id.
@@ -124,6 +125,14 @@ public class BookData implements Comparable<BookData> {
 
     public void setResourceDir(final String resourceDir) {
         this.resourceDir = resourceDir;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(final String cover) {
+        this.cover = cover;
     }
 
 }

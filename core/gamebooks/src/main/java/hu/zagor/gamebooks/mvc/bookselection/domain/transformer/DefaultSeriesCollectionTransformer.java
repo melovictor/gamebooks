@@ -54,6 +54,7 @@ public class DefaultSeriesCollectionTransformer implements SeriesCollectionTrans
         data.setUnfinished(bookInformations.isUnfinished());
         data.setLocale(bookInformations.getLocale());
         data.setResourceDir(bookInformations.getResourceDir());
+        data.setCover(bookInformations.getCover());
 
         return data;
     }
