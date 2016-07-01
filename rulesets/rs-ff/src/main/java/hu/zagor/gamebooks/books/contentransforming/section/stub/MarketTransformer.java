@@ -20,7 +20,9 @@ public class MarketTransformer extends AbstractStubTransformer {
 
     @Override
     protected void doTransform(final BookParagraphDataTransformer parent, final Node node, final ParagraphData data) {
-        verifyData(data);
+        if (!extractBooleanAttribute(node, "suppressWarning", false)) {
+            verifyData(data);
+        }
         final MarketCommand command = new MarketCommand();
         data.addCommand(command);
         command.setMoneyAttribute(extractAttribute(node, "moneyAttribute", "gold"));

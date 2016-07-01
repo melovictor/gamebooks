@@ -35,6 +35,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
     @Test(expectedExceptions = IllegalStateException.class)
     public void testWhenParagraphDoesntContainTheMarketMarkerShouldThrowException() {
         // GIVEN
+        expectAttribute("suppressWarning");
         expect(data.getText()).andReturn("Some text.");
         mockControl.replay();
         // WHEN
@@ -42,8 +43,48 @@ public class MarketTransformerTest extends AbstractTransformerTest {
         // THEN throws exception
     }
 
+    @Test(expectedExceptions = IllegalStateException.class)
+    public void testWhenParagraphDoesntContainTheMarketMarkerAndSuppressionIsTurnedOffShouldThrowException() {
+        // GIVEN
+        expectAttribute("suppressWarning", "false");
+        expect(data.getText()).andReturn("Some text.");
+        mockControl.replay();
+        // WHEN
+        underTest.doTransform(parent, node, data);
+        // THEN throws exception
+    }
+
+    public void testWhenSupressedWarningAndNoGiveUpAmountIsSetAndTransformationSucceedsShouldTransformProperly() {
+        // GIVEN
+        expectAttribute("suppressWarning", "true");
+        final Capture<MarketCommand> capture = newCapture();
+        data.addCommand(capture(capture));
+        expectAttribute("moneyAttribute");
+        expectAttribute("currencySingle");
+        expectAttribute("currencyMultiple");
+        expectAttribute("mustHaveGold");
+        expectAttribute("mustSellExactly");
+        expectAttribute("mustBuy");
+        expectAttribute("mustGiveUp");
+        expect(node.getChildNodes()).andReturn(nodeList);
+        expect(nodeList.getLength()).andReturn(0);
+        expect(data.getPositionCounter()).andReturn(counter);
+        mockControl.replay();
+        // WHEN
+        underTest.doTransform(parent, node, data);
+        // THEN
+        final MarketCommand command = capture.getValue();
+        Assert.assertEquals(command.getSingleCcyKey(), "page.ff.label.market.goldPiece");
+        Assert.assertEquals(command.getMultipleCcyKey(), "page.ff.label.market.goldPieces");
+        Assert.assertEquals(command.getMustHaveGold(), 0);
+        Assert.assertEquals(command.getGiveUpAmount(), 0);
+        Assert.assertEquals(command.getMustBuy(), 0);
+        Assert.assertNull(command.getGiveUpMode());
+    }
+
     public void testWhenNoGiveUpAmountIsSetAndTransformationSucceedsShouldTransformProperly() {
         // GIVEN
+        expectAttribute("suppressWarning");
         expect(data.getText()).andReturn("Some text. [div data-market=\"\"][/div]");
         final Capture<MarketCommand> capture = newCapture();
         data.addCommand(capture(capture));
@@ -72,6 +113,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
 
     public void testWhenGiveUpAmountIsSetAndTransformationSucceedsShouldTransformProperly() {
         // GIVEN
+        expectAttribute("suppressWarning");
         expect(data.getText()).andReturn("Some text. [div data-market=\"\"][/div]");
         final Capture<MarketCommand> capture = newCapture();
         data.addCommand(capture(capture));
@@ -103,6 +145,7 @@ public class MarketTransformerTest extends AbstractTransformerTest {
 
     public void testWhenGiveUpAmountAndGiveUpModeAreSetAndTransformationSucceedsShouldTransformProperly() {
         // GIVEN
+        expectAttribute("suppressWarning");
         expect(data.getText()).andReturn("Some text. [div data-market=\"\"][/div]");
         final Capture<MarketCommand> capture = newCapture();
         data.addCommand(capture(capture));
