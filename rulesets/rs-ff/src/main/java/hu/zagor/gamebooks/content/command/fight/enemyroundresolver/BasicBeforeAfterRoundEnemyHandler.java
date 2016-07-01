@@ -1,13 +1,10 @@
 package hu.zagor.gamebooks.content.command.fight.enemyroundresolver;
 
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
-import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
-import hu.zagor.gamebooks.ff.character.FfCharacter;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
+import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -39,21 +36,23 @@ public abstract class BasicBeforeAfterRoundEnemyHandler<T> implements CustomBefo
     public void executePreHandler(final FightCommand command, final T data) {
     }
 
+    /**
+     * Rolls the specified number of dices, records the roll and returns the values.
+     * @param dices the number of dices to throw
+     * @param command the {@link FightCommand} object
+     * @return the rolled dices
+     */
+    protected int[] rollRecord(final int dices, final FightCommand command) {
+        final int[] roll = getGenerator().getRandomNumber(dices);
+        final String renderedRoll = getRenderer().render(getGenerator().getDefaultDiceSide(), roll);
+        final FightCommandMessageList messages = command.getMessages();
+        messages.addKey("page.ff.label.random.after", renderedRoll, roll[0]);
+        return roll;
+    }
+
     @Override
     public String[] getEnemyIds() {
         return new String[]{getEnemyId()};
-    }
-
-    /**
-     * Fetches the enemy we are currently fighting.
-     * @param resolvationData the {@link ResolvationData} object
-     * @return the resolved enemy
-     */
-    protected final FfEnemy getEnemy(final ResolvationData resolvationData) {
-        final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
-        final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) resolvationData.getCharacterHandler().getInteractionHandler();
-        final String enemyId = interactionHandler.peekLastFightCommand(character, LastFightCommand.ENEMY_ID);
-        return (FfEnemy) resolvationData.getEnemies().get(enemyId);
     }
 
     /**
