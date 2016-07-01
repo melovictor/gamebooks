@@ -4,9 +4,7 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
-import hu.zagor.gamebooks.character.handler.luck.BattleLuckTestParameters;
-import hu.zagor.gamebooks.character.item.FfItem;
-import hu.zagor.gamebooks.character.item.WeaponSubType;
+import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
@@ -14,6 +12,7 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,12 +20,11 @@ import java.util.Map.Entry;
 import org.springframework.stereotype.Component;
 
 /**
- * Resolver for a single fight round where there are multiple enemies which are linked together somehow (eg. multiple tentacles of the same monster), and so they share a common
- * stamina. Only the party with the highest attack strength will score a blow.
+ * Resolver for a single fight round where there are multiple enemies. Only the party with the highest attack strength will score a blow.
  * @author Tamas_Szekeres
  */
-@Component("onlyHighestLinkedFightRoundResolver")
-public class OnlyHighestLinkedFightRoundResolver extends AbstractFightRoundResolver {
+@Component("onlyHighestFightRoundResolver")
+public class OnlyHighestFightRoundResolver extends SingleFightRoundResolver {
 
     @Override
     public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
@@ -34,11 +32,9 @@ public class OnlyHighestLinkedFightRoundResolver extends AbstractFightRoundResol
         final FightRoundResult[] result = new FightRoundResult[enemies.size()];
         final FightCommandMessageList messages = command.getMessages();
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
-        final FfEnemy referenceEnemy = enemies.get(0);
+        final FfEnemy targetEnemy = getEnemy(enemies, getSelectedEnemyId(resolvationData));
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
-
-        final FightDataDto dto = new FightDataDto(referenceEnemy, messages, resolvationData, command.getUsableWeaponTypes());
 
         final int[] selfAttackStrengthValues = getSelfAttackStrength(character, command, attributeHandler);
         final Map<String, int[]> enemiesAttackStrengthValues = getEnemiesAttackValues(enemies, command);
@@ -49,20 +45,50 @@ public class OnlyHighestLinkedFightRoundResolver extends AbstractFightRoundResol
         final FightRoundResult roundResult = calculateBattleResult(selfAttackStrength, enemiesAttackStrength, result);
 
         if (roundResult == FightRoundResult.TIE) {
-            messages.addKey("page.ff.label.fight.single.tied", new Object[]{referenceEnemy.getCommonName()});
+            messages.addKey("page.ff.label.fight.onlyHighest.tied");
         } else if (roundResult == FightRoundResult.LOSE) {
+            final FfEnemy winningEnemy = getWinningEnemy(enemies, enemiesAttackStrength);
+            final FightDataDto dto = new FightDataDto(winningEnemy, messages, resolvationData, command.getUsableWeaponTypes());
             damageSelf(dto);
             handleDefeatLuckTest(command, dto);
         } else {
-            if (isWeaponEffective(dto)) {
-                damageEnemies(enemies, dto);
-                handleVictoryLuckTest(command, dto, enemies);
-            } else {
-                messages.addKey("page.ff.label.fight.single.successfulAttack.ineffectual", new Object[]{referenceEnemy.getCommonName()});
-            }
+            final FightDataDto dto = new FightDataDto(targetEnemy, messages, resolvationData, command.getUsableWeaponTypes());
+            damageEnemy(command, dto);
         }
 
         return result;
+    }
+
+    private FfEnemy getWinningEnemy(final List<FfEnemy> enemies, final Map<String, Integer> enemiesAttackStrength) {
+        String highestAttackStrengthId = null;
+        int highestAttackStrength = 0;
+
+        for (final Entry<String, Integer> entry : enemiesAttackStrength.entrySet()) {
+            if (highestAttackStrength < entry.getValue()) {
+                highestAttackStrength = entry.getValue();
+                highestAttackStrengthId = entry.getKey();
+            }
+        }
+
+        return getEnemy(enemies, highestAttackStrengthId);
+    }
+
+    private FfEnemy getEnemy(final List<FfEnemy> enemies, final String enemyId) {
+        FfEnemy selected = null;
+
+        for (final FfEnemy enemy : enemies) {
+            if (enemyId.equals(enemy.getId())) {
+                selected = enemy;
+            }
+        }
+
+        return selected;
+    }
+
+    private String getSelectedEnemyId(final ResolvationData resolvationData) {
+        final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) resolvationData.getCharacterHandler().getInteractionHandler();
+        final String enemyId = interactionHandler.getLastFightCommand((FfCharacter) resolvationData.getCharacter(), LastFightCommand.ENEMY_ID);
+        return enemyId;
     }
 
     private Map<String, int[]> getEnemiesAttackValues(final List<FfEnemy> enemies, final FightCommand command) {
@@ -106,55 +132,6 @@ public class OnlyHighestLinkedFightRoundResolver extends AbstractFightRoundResol
         }
 
         return roundResult;
-    }
-
-    private void damageEnemies(final List<FfEnemy> enemies, final FightDataDto dto) {
-        final FfItem selectedWeapon = dto.getSelectedWeapon();
-        final FightCommandMessageList messages = dto.getMessages();
-
-        int weaponStaminaDamage = selectedWeapon.getStaminaDamage();
-        final FfEnemy referenceEnemy = enemies.get(0);
-        weaponStaminaDamage -= referenceEnemy.getDamageAbsorption();
-        if (selectedWeapon.getSubType() == WeaponSubType.edged || selectedWeapon.getSubType() == WeaponSubType.weakBlunt) {
-            weaponStaminaDamage -= referenceEnemy.getDamageAbsorptionEdged();
-        }
-        weaponStaminaDamage = Math.max(weaponStaminaDamage, 0);
-        for (final FfEnemy enemy : enemies) {
-            enemy.setStamina(enemy.getStamina() - weaponStaminaDamage);
-            enemy.setSkill(enemy.getSkill() - selectedWeapon.getSkillDamage());
-        }
-        messages.addKey("page.ff.label.fight.single.successfulAttack", new Object[]{referenceEnemy.getCommonName()});
-    }
-
-    private void handleVictoryLuckTest(final FightCommand command, final FightDataDto dto, final List<FfEnemy> enemies) {
-        if (command.isLuckOnHit()) {
-            final FightCommandMessageList messages = dto.getMessages();
-
-            final FfCharacter character = dto.getCharacter();
-            final FfCharacterHandler characterHandler = dto.getCharacterHandler();
-            final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
-            final BattleLuckTestParameters battleLuckTestParameters = characterHandler.getBattleLuckTestParameters();
-            final int[] luckTestDices = getGenerator().getRandomNumber(2);
-            final int luckTestTotal = luckTestDices[0];
-
-            messages.addKey("page.ff.label.fight.luck.roll", new Object[]{luckTestDices[1], luckTestDices[2], luckTestTotal});
-            final int luck = attributeHandler.resolveValue(character, "luck");
-            int staminaMod;
-            final FfEnemy referenceEnemy = enemies.get(0);
-            if (luckTestTotal <= luck) {
-                getLogger().debug("Successful luck test ({}) while dealing damage.", luckTestTotal);
-                staminaMod = -battleLuckTestParameters.getLuckyAttackAddition();
-                messages.addKey("page.ff.label.fight.luck.attack.success", new Object[]{referenceEnemy.getCommonName()});
-            } else {
-                getLogger().debug("Unsuccessful luck test ({}) while dealing damage.", luckTestTotal);
-                staminaMod = battleLuckTestParameters.getUnluckyAttackDeduction();
-                messages.addKey("page.ff.label.fight.luck.attack.failure", new Object[]{referenceEnemy.getCommonName()});
-            }
-            for (final FfEnemy enemy : enemies) {
-                enemy.setStamina(enemy.getStamina() + staminaMod);
-            }
-            character.changeLuck(-1);
-        }
     }
 
     @Override

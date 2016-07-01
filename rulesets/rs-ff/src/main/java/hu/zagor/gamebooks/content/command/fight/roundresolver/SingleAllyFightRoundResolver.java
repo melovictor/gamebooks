@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Resolver for a single fight round where there is either a single enemy, multiple enemies that must be handled as a single opponent or multiple enemies that must be fought one by
- * one.
+ * one. In this round it's not going to be the hero who fights the single enemy, but one or more allies.
  * @author Tamas_Szekeres
  */
 @Component("singleAllyFightRoundResolver")

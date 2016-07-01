@@ -8,24 +8,19 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.RandomEnemyPickerLine;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
- * Resolver for a single fight round where there is either a single enemy, multiple enemies that must be handled as a single opponent or multiple enemies that must be fought one by
- * one.
+ * Resolver for a single fight round where there are multiple fighting parties and in every round the hero is targeting one of them at random.
  * @author Tamas_Szekeres
  */
 @Component("randomizedAllAtOnceFightRoundResolver")
 public class RandomizedAllAtOnceFightRoundResolver extends AllAtOnceFightRoundResolver {
 
-    @Autowired
-    @Qualifier("d6RandomGenerator")
-    private RandomNumberGenerator generator;
+    @Autowired @Qualifier("d6RandomGenerator") private RandomNumberGenerator generator;
 
     @Override
     public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {

@@ -5,12 +5,11 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import org.springframework.stereotype.Component;
 
 /**
  * Resolver for a single fight round where there is either a single enemy, multiple enemies that must be handled as a single opponent or multiple enemies that must be fought one by
- * one.
+ * one. In this round the hero fights side by side with one or more allies.
  * @author Tamas_Szekeres
  */
 @Component("singleSupportedFightRoundResolver")
