@@ -34,13 +34,22 @@ public class UserInputCommandResolver extends TypeAwareCommandResolver<UserInput
         List<ParagraphData> responseList = null;
 
         command.setOngoing(true);
-        if (userAnswerIsAvailable(answer)) {
+        if (userAnswerIsAvailable(answer) && userAnswerIsValid(command, answer)) {
             final int responseTime = interactionHandler.getUserInputTime(character);
             responseList = new ArrayList<>();
             responseList.addAll(getResultParagraphData(command.getResponses(), answer, responseTime));
             command.setOngoing(false);
         }
         return responseList;
+    }
+
+    private boolean userAnswerIsValid(final UserInputCommand command, final String answer) {
+        boolean valid = true;
+        if ("number".equals(command.getType())) {
+            final int numResponse = Integer.valueOf(answer);
+            valid = command.getMin() <= numResponse && command.getMax() >= numResponse;
+        }
+        return valid;
     }
 
     private List<ParagraphData> getResultParagraphData(final List<UserInputResponse> responses, final String answer, final int responseTime) {
