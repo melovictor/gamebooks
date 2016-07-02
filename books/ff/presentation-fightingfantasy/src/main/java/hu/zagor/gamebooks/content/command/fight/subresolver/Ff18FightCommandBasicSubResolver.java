@@ -11,6 +11,7 @@ import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -159,7 +160,7 @@ public class Ff18FightCommandBasicSubResolver implements FightCommandSubResolver
 
     private String getEnemyId(final ResolvationData resolvationData) {
         final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) resolvationData.getCharacterHandler().getInteractionHandler();
-        return interactionHandler.peekLastFightCommand((FfCharacter) resolvationData.getCharacter(), "enemyId");
+        return interactionHandler.peekLastFightCommand(resolvationData.getCharacter(), LastFightCommand.ENEMY_ID);
     }
 
     private boolean fightCommandIssued(final ResolvationData resolvationData) {

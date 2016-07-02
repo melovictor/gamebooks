@@ -5,7 +5,6 @@ import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHan
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
-import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.ff.b.character.Ff60Character;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import org.springframework.stereotype.Component;
@@ -63,7 +62,7 @@ public class NinetailHandler extends Ff60BeforeAfterRoundEnemyHandler {
 
     private boolean wantToTestLuck(final ResolvationData resolvationData) {
         final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) resolvationData.getCharacterHandler().getInteractionHandler();
-        final String luck = interactionHandler.peekLastFightCommand((FfCharacter) resolvationData.getCharacter(), LastFightCommand.LUCK_ON_OTHER);
+        final String luck = interactionHandler.peekLastFightCommand(resolvationData.getCharacter(), LastFightCommand.LUCK_ON_OTHER);
         return Boolean.parseBoolean(luck);
     }
 

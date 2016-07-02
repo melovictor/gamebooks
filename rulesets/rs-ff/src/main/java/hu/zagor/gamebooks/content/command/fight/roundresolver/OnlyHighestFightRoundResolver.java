@@ -87,7 +87,7 @@ public class OnlyHighestFightRoundResolver extends SingleFightRoundResolver {
 
     private String getSelectedEnemyId(final ResolvationData resolvationData) {
         final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) resolvationData.getCharacterHandler().getInteractionHandler();
-        final String enemyId = interactionHandler.getLastFightCommand((FfCharacter) resolvationData.getCharacter(), LastFightCommand.ENEMY_ID);
+        final String enemyId = interactionHandler.getLastFightCommand(resolvationData.getCharacter(), LastFightCommand.ENEMY_ID);
         return enemyId;
     }
 

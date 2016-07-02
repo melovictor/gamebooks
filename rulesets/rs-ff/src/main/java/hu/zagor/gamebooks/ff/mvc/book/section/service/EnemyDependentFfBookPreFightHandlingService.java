@@ -5,7 +5,6 @@ import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
-import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import java.util.Map;
 
@@ -24,7 +23,7 @@ public abstract class EnemyDependentFfBookPreFightHandlingService implements FfB
     protected FfEnemy getEnemy(final HttpSessionWrapper wrapper, final FfBookInformations info) {
         final Map<String, Enemy> enemies = wrapper.getEnemies();
         final FfUserInteractionHandler interactionHandler = info.getCharacterHandler().getInteractionHandler();
-        final String enemyId = interactionHandler.peekLastFightCommand((FfCharacter) wrapper.getCharacter(), LastFightCommand.ENEMY_ID);
+        final String enemyId = interactionHandler.peekLastFightCommand(wrapper.getCharacter(), LastFightCommand.ENEMY_ID);
         return (FfEnemy) enemies.get(enemyId);
     }
 }

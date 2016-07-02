@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.character.handler.userinteraction;
 
+import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestDecision;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 
@@ -68,20 +69,20 @@ public class FfUserInteractionHandler extends DefaultUserInteractionHandler {
 
     /**
      * Returns the last set state for the fight without destroying the state.
-     * @param character the {@link FfCharacter}
+     * @param character the {@link Character}
      * @return the last state that was set
      */
-    public String peekLastFightCommand(final FfCharacter character) {
+    public String peekLastFightCommand(final Character character) {
         return peekInteractionState(character, FIGHT_COMMAND);
     }
 
     /**
      * Returns the last set state for the fight without destroying the state.
-     * @param character the {@link FfCharacter}
+     * @param character the {@link Character}
      * @param attribute the attribute we wish to peek for the fight command
      * @return the last state that was set
      */
-    public String peekLastFightCommand(final FfCharacter character, final String attribute) {
+    public String peekLastFightCommand(final Character character, final String attribute) {
         return peekInteractionState(character, FIGHT_COMMAND + attribute);
     }
 
@@ -91,17 +92,17 @@ public class FfUserInteractionHandler extends DefaultUserInteractionHandler {
      * @param attribute the attribute we wish to set for the fight command
      * @param state the state to be set
      */
-    public void setFightCommand(final FfCharacter character, final String attribute, final String state) {
+    public void setFightCommand(final Character character, final String attribute, final String state) {
         setInteractionState(character, FIGHT_COMMAND + attribute, state);
     }
 
     /**
      * Returns the last set state for the fight.
-     * @param character the {@link FfCharacter}
+     * @param character the {@link Character}
      * @param attribute the attribute we wish to know about
      * @return the last state that was set
      */
-    public String getLastFightCommand(final FfCharacter character, final String attribute) {
+    public String getLastFightCommand(final Character character, final String attribute) {
         return getInteractionState(character, FIGHT_COMMAND + attribute);
     }
 
