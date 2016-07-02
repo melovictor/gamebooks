@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
- * All at once fight round resolver for FF34.
+ * Single fight round resolver for FF34.
  * @author Tamas_Szekeres
  */
-@Component("onlyHighestff34FightRoundResolver")
-public class OnlyHighestFf34FightRoundResolver extends BasicAbstractCustomEnemyHandlingFightRoundResolver<EnemyPrePostFightDataContainer> {
-    @Autowired @Qualifier("onlyHighestFightRoundResolver") private FightRoundResolver decorated;
+@Component("singleff34FightRoundResolver")
+public class SingleFf34FightRoundResolver extends BasicAbstractCustomEnemyHandlingFightRoundResolver<EnemyPrePostFightDataContainer> {
+    @Autowired @Qualifier("singleFightRoundResolver") private FightRoundResolver decorated;
 
     @Override
     protected Class<? extends CustomBeforeAfterRoundEnemyHandler<EnemyPrePostFightDataContainer>> getType() {
