@@ -8,7 +8,7 @@
 			<div id="sorSpellContainer">
 				<c:forEach items="${paragraph.data.spellChoices}" var="spell" varStatus="stat">
 					<div class="sorSpell">
-						<c:set var="linkPrefix"><c:if test="${informativeSections}">${spell.id}|</c:if></c:set>
+						<c:set var="linkPrefix"><c:if test="${informativeSections}">${spell.id}~</c:if></c:set>
 						<c:if test="${spell.id != '-1' && data.wizard}">
 							<a href="spl-${linkPrefix}${stat.index}">
 								${spell.text}

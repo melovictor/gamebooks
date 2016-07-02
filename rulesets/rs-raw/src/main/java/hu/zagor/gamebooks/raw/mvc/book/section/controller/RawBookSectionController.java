@@ -164,7 +164,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
         Choice choice;
 
         if (sectionIdentifier.startsWith("s-")) {
-            final String[] sectionPieces = sectionIdentifier.substring(2).split("\\|");
+            final String[] sectionPieces = sectionIdentifier.substring(2).split("~");
             final String sectionId = sectionPieces[0];
             final ChoiceSet choices = previousParagraph.getData().getChoices();
 

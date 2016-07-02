@@ -51,7 +51,7 @@ public class SorBookSectionController extends FfBookSectionController {
         final List<Choice> spellChoices = data.getSpellChoices();
         final Choice choice;
         if (spellTarget.contains("|")) {
-            final String[] split = spellTarget.split("\\|");
+            final String[] split = spellTarget.split("~");
             sectionIdentifier = split[0];
             choice = getChoice(spellChoices, sectionIdentifier);
         } else {
