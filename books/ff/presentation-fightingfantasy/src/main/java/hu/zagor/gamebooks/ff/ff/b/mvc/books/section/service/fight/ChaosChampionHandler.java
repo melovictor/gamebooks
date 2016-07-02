@@ -22,7 +22,7 @@ public class ChaosChampionHandler extends Ff60BeforeAfterRoundEnemyHandler {
     public void executePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
         if (results[0] == FightRoundResult.WIN) {
-            checkForLowerDamageCaused(command, resolvationData);
+            checkForLowerDamageCaused(command, data.getCurrentEnemy());
         } else if (results[0] == FightRoundResult.LOSE) {
             checkForHigherDamageSuffered(command, resolvationData);
         }
@@ -45,11 +45,10 @@ public class ChaosChampionHandler extends Ff60BeforeAfterRoundEnemyHandler {
         return roll;
     }
 
-    private void checkForLowerDamageCaused(final FightCommand command, final ResolvationData resolvationData) {
+    private void checkForLowerDamageCaused(final FightCommand command, final FfEnemy enemy) {
         final FightCommandMessageList messages = command.getMessages();
         final int[] roll = getReportRandomRoll(messages);
         if (roll[0] < STRONGER_WEAKER_HIT_LIMIT) {
-            final FfEnemy enemy = getEnemy(resolvationData);
             enemy.setStamina(enemy.getStamina() + 1);
             messages.addKey(ROUND_MESSAGE_LOCATION_WITH_ROLL, "page.ff60.fight.chaoschampion.weakHit");
         }

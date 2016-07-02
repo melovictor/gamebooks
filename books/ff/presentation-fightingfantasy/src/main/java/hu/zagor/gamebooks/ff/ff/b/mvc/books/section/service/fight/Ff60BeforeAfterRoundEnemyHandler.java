@@ -1,6 +1,7 @@
 package hu.zagor.gamebooks.ff.ff.b.mvc.books.section.service.fight;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightOutcome;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
@@ -18,13 +19,13 @@ public abstract class Ff60BeforeAfterRoundEnemyHandler extends BasicBeforeAfterR
         return true;
     }
 
-    void triggerFleeing(final FightCommand command, final ResolvationData resolvationData) {
+    void triggerFleeing(final FightCommand command, final FfEnemy enemy) {
         final List<FightOutcome> win = command.getWin();
         win.clear();
         final FightOutcome outcome = new FightOutcome();
         outcome.setParagraphData(command.getFlee());
         win.add(outcome);
-        getEnemy(resolvationData).setStamina(0);
+        enemy.setStamina(0);
     }
 
 }

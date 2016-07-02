@@ -23,7 +23,7 @@ public class LeechVineHandler extends Ff60BeforeAfterRoundEnemyHandler {
     @Override
     public void executePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
-        triggerFleeing(command, resolvationData);
+        triggerFleeing(command, data.getCurrentEnemy());
     }
 
     @Override
