@@ -44,10 +44,33 @@ public abstract class BasicBeforeAfterRoundEnemyHandler<T> implements CustomBefo
      */
     protected int[] rollRecord(final int dices, final FightCommand command) {
         final int[] roll = getGenerator().getRandomNumber(dices);
+        record(command, roll);
+        return roll;
+    }
+
+    /**
+     * Records a roll value for the player to see.
+     * @param command the {@link FightCommand}
+     * @param roll the rolled values
+     */
+    protected void record(final FightCommand command, final int[] roll) {
+        record(command, roll, null);
+    }
+
+    /**
+     * Records a roll value for the player to see.
+     * @param command the {@link FightCommand}
+     * @param roll the rolled values
+     * @param index the index at which the message should be inserted; use null for insertion at the end
+     */
+    protected void record(final FightCommand command, final int[] roll, final Integer index) {
         final String renderedRoll = getRenderer().render(getGenerator().getDefaultDiceSide(), roll);
         final FightCommandMessageList messages = command.getMessages();
-        messages.addKey("page.ff.label.random.after", renderedRoll, roll[0]);
-        return roll;
+        if (index == null) {
+            messages.addKey("page.ff.label.random.after", renderedRoll, roll[0]);
+        } else {
+            messages.addKey(index, "page.ff.label.random.after", renderedRoll, roll[0]);
+        }
     }
 
     @Override
