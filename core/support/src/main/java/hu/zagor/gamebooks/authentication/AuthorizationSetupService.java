@@ -1,4 +1,4 @@
-package hu.zagor.gamebooks.rewards;
+package hu.zagor.gamebooks.authentication;
 
 import hu.zagor.gamebooks.connectivity.ServerCommunicator;
 import hu.zagor.gamebooks.support.logging.LogInject;
@@ -10,12 +10,12 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 /**
- * Service for pinging to the home server, requesting an authentication notification for the rewards.
+ * Service for pinging to the home server, requesting new authentication codes.
  * @author Tamas_Szekeres
  */
 @Component
 @Profile("!dev")
-public class RewardAuthorizationSetupService implements ApplicationListener<ContextRefreshedEvent> {
+public class AuthorizationSetupService implements ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired private ServerCommunicator communicator;
     @LogInject private Logger logger;
