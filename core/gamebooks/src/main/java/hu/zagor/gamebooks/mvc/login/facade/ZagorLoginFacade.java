@@ -12,6 +12,8 @@ import java.net.SocketTimeoutException;
 import java.net.URLConnection;
 import java.net.UnknownHostException;
 import java.util.List;
+import java.util.Map;
+import javax.annotation.Resource;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -34,6 +36,7 @@ public class ZagorLoginFacade extends AbstractLoginFacade {
     @LogInject private Logger logger;
     @Autowired private ServerCommunicator communcator;
     private String url = "http://zagor.hu/remoteloginxml.php";
+    @Resource(name = "authorizationCodeContainer") private Map<String, String> authorizationCodeContainer;
 
     @Override
     public Authentication authenticate(final Authentication authentication) throws AuthenticationException {
@@ -76,6 +79,7 @@ public class ZagorLoginFacade extends AbstractLoginFacade {
     private String assemblePostData(final Authentication authentication) throws IOException {
         String part = communcator.compilePostData("username", authentication.getPrincipal(), null);
         part = communcator.compilePostData("password", authentication.getCredentials(), part);
+        part = communcator.compilePostData("authCode", authorizationCodeContainer.get("login"), part);
         return part;
     }
 
