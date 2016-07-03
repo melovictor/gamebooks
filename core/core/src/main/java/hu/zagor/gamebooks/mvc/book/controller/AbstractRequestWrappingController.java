@@ -79,7 +79,7 @@ public abstract class AbstractRequestWrappingController implements BeanFactoryAw
     }
 
     /**
-     * Creates a new {@link HttpSessionWrapper} around the {@link HttpSession} extracted from the given {@link HttpServletRequest} bean.
+     * Creates a new {@link HttpSessionWrapper} around the {@link HttpServletRequest} extracted from the given {@link HttpServletRequest} bean.
      * @param request the {@link HttpServletRequest}, cannot be null
      * @return the newly created {@link HttpSessionWrapper} object
      */

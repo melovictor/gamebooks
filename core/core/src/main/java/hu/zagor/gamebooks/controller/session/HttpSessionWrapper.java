@@ -28,7 +28,7 @@ public class HttpSessionWrapper {
     private String bookId;
 
     /**
-     * Creates a new {@link HttpSessionWrapper} around the given {@link HttpSession} bean.
+     * Creates a new {@link HttpSessionWrapper} around the given {@link HttpServletRequest} bean.
      * @param request the bean to wrap, cannot be null
      */
     public HttpSessionWrapper(final HttpServletRequest request) {
