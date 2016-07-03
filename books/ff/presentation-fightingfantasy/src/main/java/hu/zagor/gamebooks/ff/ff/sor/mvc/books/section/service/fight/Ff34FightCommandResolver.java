@@ -7,12 +7,12 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.AttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
-import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.TypeAwareCommandResolver;
+import hu.zagor.gamebooks.content.command.Command;
+import hu.zagor.gamebooks.content.command.CommandResolveResult;
+import hu.zagor.gamebooks.content.command.CommandResolver;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightCommandResolver;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -20,22 +20,22 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * Fight command resolver for FF34.
  * @author Tamas_Szekeres
  */
-public class Ff34FightCommandResolver extends TypeAwareCommandResolver<FightCommand> {
+public class Ff34FightCommandResolver implements CommandResolver {
     @Autowired @Qualifier("fightCommandResolver") private FightCommandResolver decorated;
 
     @Override
-    protected List<ParagraphData> doResolve(final FightCommand command, final ResolvationData resolvationData) {
+    public CommandResolveResult resolve(final Command command, final ResolvationData resolvationData) {
         if (initializationRound(resolvationData)) {
             storeInitialStamina(resolvationData);
         }
 
-        final List<ParagraphData> resolveList = decorated.resolve(command, resolvationData).getResolveList();
+        final CommandResolveResult resolve = decorated.resolve(command, resolvationData);
 
-        if (endOfBattle(command) && hasMagicSword(resolvationData)) {
+        if (endOfBattle((FightCommand) command) && hasMagicSword(resolvationData)) {
             restoreSingleStamina(resolvationData);
         }
 
-        return resolveList;
+        return resolve;
     }
 
     private void restoreSingleStamina(final ResolvationData resolvationData) {

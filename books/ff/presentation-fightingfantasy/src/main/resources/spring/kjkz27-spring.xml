@@ -10,7 +10,9 @@
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="kjkz27enemies.xml" c:items="kjkz27items.xml" c:paragraphs="kjkz27content.xml" />
     </property>
   </bean>
-  
+
   <bean parent="kjkz27Info" class="hu.zagor.gamebooks.domain.FfBookInformations" id="fh10Info" c:id-ref="fh10Id" p:locale-ref="huLocale" p:position="10" p:title="Lopakodó Lelkek" p:series-ref="fhTitle" p:cover="cover2" />
+
+  <alias name="ff34BookPreFightHandlingService" alias="kjkz27BookPreFightHandlingService" />
 
 </beans>

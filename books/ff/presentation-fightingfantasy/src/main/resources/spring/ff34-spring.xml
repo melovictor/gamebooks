@@ -4,7 +4,7 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.FightingFantasy.STEALER_OF_SOULS" id="ff34Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff34Info" c:id-ref="ff34Id" p:resourceDir="ff34" p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="34" p:series-ref="ffTitle" p:title="Stealer of Souls" p:characterHandler-ref="ffCharacterHandler" p:commandResolvers-ref="ff34CommandResolvers" p:unfinished="true" p:hidden="true">
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff34Info" c:id-ref="ff34Id" p:resourceDir="ff34" p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="34" p:series-ref="ffTitle" p:title="Stealer of Souls" p:characterHandler-ref="ffCharacterHandler" p:commandResolvers-ref="ff34CommandResolvers" p:unfinished="true" p:hidden="true" p:characterPageDataBeanId="ff34CharacterPageData">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="ff34enemies.xml" c:items="ff34items.xml" c:paragraphs="ff34content.xml" />
     </property>
@@ -21,6 +21,6 @@
     </entry>
   </util:map>
 
-
+  <bean class="hu.zagor.gamebooks.ff.ff.sos.mvc.books.section.service.fight.Ff34BookPreFightHandlingService" id="ff34BookPreFightHandlingService" />
 
 </beans>
