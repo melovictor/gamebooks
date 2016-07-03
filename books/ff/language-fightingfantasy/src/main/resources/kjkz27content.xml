@@ -288,8 +288,21 @@
     <next id="272">Ha az azúr folyosón</next>
     <next id="77">Ha az okker folyosón</next>
   </p>
-  <!-- 30 -->
-  <!-- 31 -->
+  <p id="30">
+    <text>
+        [p]Mordraneth Tűzgömbje átsüvít a levegőn, és lángba borít, mielőtt meg bevégezhetnéd a saját varázslatod elmondását! A koncentrációd megtört, így nem használhatod újra ezt az igét. Vesztesz 6 életerő pontot. Gyorsan felrohansz a jobb kéz felől eső lépcsősoron, közben azonban Mordraneth nekikészül egy újabb varázslatnak. Már majdnem eléred a kardoddal, de nem vagy elég gyors![/p]
+    </text>
+    <loseItem id="4103" />
+    <add to="stamina" amount="-6" />
+    <next id="351"></next>
+  </p>
+  <p id="31">
+    <text>
+        [p]Nem sikerül időben elérned a folyosót! A Csontvázillúzió eltalál a hátadon. Vesztesz 2 életerő pontot. Ellenséged ezután előtted jelenik meg![/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="397"></next>
+  </p>
   <p id="32">
     <text>
         [p]Keresztülvágsz a hosszú termen, de a hőség borzalmas - néhol még a falban lévő kövek is izzanak! -, és teljesen legyengülsz, mire átérsz. Vesztesz 3 életerő pontot. Végül eléred a narancs folyosót, ahol, szerencsére, már nincs olyan meleg.[/p]
@@ -428,8 +441,21 @@
     </text>
     <next id="396"></next>
   </p>
-  <!-- 46 -->
-  <!-- 47 -->
+  <p id="46">
+    <text>
+        [p]Végre karddal a kézben szembeszállhatsz a gonosz főmágussal! De ellenfeled gyors, és ügyes, a kardot legalább olyan jól forgatja, mint a legjobb harcosok. Zöld szemei villognak a parázstartók halvány fényében - a halál árnyéka tükröződik bennük. De kié? Az övé, vagy a tied?[/p]
+    </text>
+    <changeEnemy attribute="damageAbsorption" id="47" set="0" />
+    <changeEnemy attribute="staminaDamage" id="47" set="2" />
+    <next id="400"></next>
+  </p>
+  <p id="47">
+    <text>
+        [p]A Tűzvédő Gyűrű megóv attól, hogy nagyon megégj, így mindössze csak 1 életerő pontot sebződsz. A fele utat már megtetted fölfelé, amikor látod, hogy ellenfeled ismét támadni készül![/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="351"></next>
+  </p>
   <p id="48">
     <text>
         [p][alt]Mit használsz a patkányok ellen?[/alt][/p]
@@ -592,8 +618,28 @@
     </text>
     <next id="281"></next>
   </p>
-  <!-- 62 -->
-  <!-- 63 -->
+  <p id="62">
+    <text>
+        [p]Felvonszolod magad a fennsíkra. Kétségbeesetten kapaszkodsz a sziklákba, hogy le ne sodorjon a süvítő szél. Nemsokára találsz egy ösvényt. Felállsz, leporolod magad, és elindulsz rajta.[/p]
+    </text>
+    <next id="247"></next>
+  </p>
+  <p id="63">
+    <text>
+        [p]Felrohansz a kőlépcsőkön, de Mordraneth-nek még elég ideje maradt arra, hogy elmondjon egy varázslatot, mielőtt eléred őt. Látod, hogy kinyújtott tenyeréből egy tűzlabda röppen feléd. Nagy robbanás, majd sűrű, barna füst terjed szét a levegőben.[/p]
+    </text>
+    <itemCheck type="item" id="3026">
+      <have>
+        <next id="190"></next>
+      </have>
+      <dontHave>
+        <next id="190"></next>
+      </dontHave>
+      <haveEquipped>
+        <next id="126"></next>
+      </haveEquipped>
+    </itemCheck>
+  </p>
   <p id="64">
     <text>
         [p]A tömjén nincs hatással a patkányseregre. Vesztesz 1 életerő pontot, mivel az állatok megharaptak, amíg a hátizsákodban matattál. Felismered, hogy hibáztál, és kénytelen vagy elrohanni.[/p]
@@ -744,8 +790,21 @@
     </itemCheck>
     <next id="396" pos="3">Rohanni kezdesz, és reménykedsz közben?</next>
   </p>
-  <!-- 78 -->
-  <!-- 79 -->
+  <p id="78">
+    <text>
+        [p]Mielőtt befejezhetnéd a varázslatodat, Mordraneth végigmondja a sajátját. Egy szikrázó, kék villámnyaláb lövell ki kezéből, és fúrja bele magát a mellkasodba. Vesztesz 4 életerő pontot. Természetesen ez megzavart a koncentrálásban, és belesültél az igébe - többet ezt már nem használhatod. Felrohansz az erkélyre.[/p]
+    </text>
+    <loseItem id="4107" />
+    <add to="stamina" amount="-4" />
+    <next id="332">Ha a bal oldali lépcsősort választod</next>
+    <next id="63">Ha a jobb oldalit</next>
+  </p>
+  <p id="79">
+    <text>
+        [p]A pörgő varázskorong sziszegve feléd repül, de váratlanul az ezüst gyűrűd magába szívja, és eltünteti. Az eddig olyan élettelennek és haszontalannak tűnő gyűrű most megmutatta, hogy legalább egyfajta mágia elnyelésére képes - és könnyen lehet, hogy ezzel együtt az életedet is megmentette! Felrohansz a lépcsőkön, hogy megküzdj a varázslóval.[/p]
+    </text>
+    <next id="46"></next>
+  </p>
   <p id="80">
     <text>
         [p]Ennyi patkánnyal egyszerre képtelen vagy megbirkózni; túl sokan vannak. Vesztesz 1 életerő pontot a harapásoktól. Megfordulsz, és elmenekülsz előlük. Végigrohansz a csatornán.[/p]
@@ -916,8 +975,46 @@
     <loseItem id="3011" />
     <next id="152"></next>
   </p>
-  <!-- 94 -->
-  <!-- 95 -->
+  <p id="94">
+    <text>
+        [p]Varázsharcban állsz tehát Mordraneth-tel. Mindketten a Tűzgömb varázslattal akarjátok elpusztítani egymást. A szokott módon állapítsd meg mindkettőtök Támadóerejét (ellenfeled ügyessége 10).[/p]
+    </text>
+    <fight type="single">
+      <enemy id="47" />
+      <winRound enemy="47">
+        <interrupt />
+        <gatherItem id="4005" />
+      </winRound>
+      <loseRound>
+        <interrupt />
+      </loseRound>
+    </fight>
+    <itemCheck type="item" id="4005">
+      <have>
+        <next id="222"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="item" id="3026">
+          <haveEquipped>
+            <next id="297"></next>
+          </haveEquipped>
+          <have>
+            <next id="30"></next>
+          </have>
+          <dontHave>
+            <next id="30"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="95">
+    <text>
+        [p]Ahogy a Csontváz közelebb lép, a medálod fényesen világítani kezd. Kardoddal az élőholt felé suhintasz - mire az tompa puffanással füstté válik ékszered vakító fényében! A varázstárgy nem sokkal később ismét tompává, szürkévé válik, gyanítod, hogy erői kimerültek.[/p]
+    </text>
+    <next id="261">Ha a kék úton mész tovább</next>
+    <next id="150">Ha az ibolya járatot választod inkább</next>
+  </p>
   <p id="96">
     <text>
         [p]Körülnézel, majd magadhoz veszed a Sötét Elfek [span class="takeItem" data-id="gold" data-amount="8"]8 Aranytallérját[/span] (írd fel a [em]Kalandlapodra[/em]). De szebb kincset is találsz. Hatalmas, nedves lapulevelekbe tekerve hat apró, lapos, kalácsszerű valamit találsz. Ez az úgynevezett [span class="takeItem" data-id="2000" data-amount="6"]Elf Kenyér[/span] - egy ilyen kis szelet egy egész ebéd tápértékével ér fel! 6-tal megnövelheted az élelem adagjaid számát a [em]Kalandlapodon[/em]. A fűszerek zsongító illata, a selymek és a többi kincs sejtelmes csillogása nem csábít, mert tudod, hogy ezeket nem bírnád magaddal vinni. A szoba keleti falán egy boltívet látsz, melyen átlépve egy kör alakú kamrába jutsz. Ennek közepén egy talapzat áll, azon pedig fényes, szivárványszerű fénypászmák forognak és kergetőznek. Ez a teleportkészülék, amelyről Alsander beszélt! Mélyet lélegezve belépsz a szikrázó fények közé. A szoba felvillan, majd semmivé foszlik körülötted. Vajon hová érkezel?[/p]
@@ -1020,8 +1117,20 @@
     </text>
     <death />
   </p>
-  <!-- 110 -->
-  <!-- 111 -->
+  <p id="110">
+    <text>
+        [p]Sikerült feljutnod az erkélyre, ráadásul sokkal gyorsabban, mint azt a varázsló gondolta volna. A Sebesség varázslatod semlegesítette a lépcsőkre elhelyezett Lassítás ige hatását. Mordraneth a kardjáért nyúl, de te villámgyors vagy, és lesújtasz rá. Küzdj meg vele, a csata előtt azonban csökkentsd ellenfeled életerejét 2 ponttal.[/p]
+    </text>
+    <changeEnemy attribute="stamina" id="47" change="-2" />
+    <next id="46"></next>
+  </p>
+  <p id="111">
+    <text>
+        [p]Az óriási Sárkány szertefoszlik - ez is csak Mordraneth illúziója volt! Mostanra már fogalmad sincs, mi a valóságos, és mi a szemfényvesztés a körülötted lévő világban - de ez egy akkora nagy, finoman kidolgozott varázslat volt, hogy a gonosz varázsló lakhelye már nem lehet messze... Átvágsz a termen, és végigmész az ibolya folyosón.[/p]
+    </text>
+    <loseItem id="4102" />
+    <next id="150"></next>
+  </p>
   <p id="112">
     <text>
         [p]Ahogy haladsz előre a szürke folyosón, a levegő egyre fagyosabb és nyirkosabb lesz. Rémülten veszed észre, hogy a folyosó mögötted lassan semmivé zsugorodik. Futnod kell, ha nem akarsz azzal együtt köddé veszni. A helyiség színe, amibe érkezel, épp olyan, mint a megsárgult csontoké. A vastag bronz és sárgaréz ajtajú hatalmas családi kriptákon kívül a teremben mindenfelé sírok és koporsók hevernek. A levegő dermesztően hideg, és halk, tompa morgás üti meg a füledet. Rémülten látod, hogy a szemed előtt egy rongyokba burkolt, áttetsző testű szörnyeteg emelkedik ki a kövekből. Karmos mancsaival feléd nyúl, hogy örökre magával rántson a holtak birodalmába. Ez most nem illúzió! Az életedért küzdesz![/p]
@@ -1152,7 +1261,13 @@
     <next id="272">Az azúr folyosó felé rohansz?</next>
     <next id="77">Az okker folyosó felé rohansz?</next>
   </p>
-  <!-- 126 -->
+  <p id="126">
+    <text>
+        [p]A Tűzvédő Gyűrű mágiája csökkentette az égést; mindössze 1 életerő pontot veszítesz. Sikerült feljutnod az erkélyre, így szemtől szembe megküzdhetsz a gonosz varázslóval.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="46"></next>
+  </p>
   <p id="127">
     <text>
         [p]Egy Óriás Viharmadárral hozott össze a balszerencséd. A tengerészek messze vannak, a szél, a zuhogó eső és a fedélzeten át-átcsapó hullámok miatt nem tudnak a segítségedre sietni, ezért egyedül kell megküzdened ellenfeleddel.[/p]
@@ -1233,7 +1348,15 @@
     <next id="188" pos="6">Ha szeretnéd megtanulni ezt a varázslatot</next>
     <next id="188" pos="10">Ha nem</next>
   </p>
-  <!-- 134 -->
+  <p id="134">
+    <text>
+        [p]Jóságos gondolataid visszatükröződnek. Amikor az áldás szavait kimondod, a levegő mintha megenyhülne, és szinte hallod, amint a holtak körülötted lebegő lelkei együttesen megkönnyebbülnek. Visszakapsz 1 ügyesség és 1 szerencse pontot.[/p]
+    </text>
+    <add amount="1" to="skill" />
+    <add amount="1" to="luck" />
+    <next id="319">Ha a levegős, világos folyosón indulsz tovább</next>
+    <next id="247">Ha a sötétbarna, földbe vágott utat követnéd</next>
+  </p>
   <p id="135">
     <text>
         [p]Odasétálsz a kunyhóhoz, és belesel a nyitott ajtón. A törött ablakokon át fény szűrődik be kintről. Odabent egy székhez láncolt alakot pillantasz meg; megpróbálja felemelni a kezét, de nem sikerül neki, és nagyokat nyög az erőlködéstől. Szemmel láthatóan le van gyengülve, és fájdalmai lehetnek. Mit teszel?[/p]
@@ -1352,7 +1475,13 @@
     <loseItem id="3024" />
     <next id="296"></next>
   </p>
-  <!-- 142 -->
+  <p id="142">
+    <text>
+        [p]Kétszeres sebességgel rohansz fel a lépcsőkön. Ez megzavarja a következő varázslat elmondásába belekezdett mágust. Abbahagyja a mormolást, és a kardjáért nyúl; eközben azonban sikerül meglepetésként megütnöd, 2 életerő pontot sebezve rajta. Vívj meg vele, és ne felejtsd el az ott szereplő életerő pontjait 2-vel lecsökkenteni![/p]
+    </text>
+    <changeEnemy attribute="stamina" id="47" change="-2" />
+    <next id="46"></next>
+  </p>
   <p id="143">
     <text>
         [p]Az egyik tengerész egy kis [span class="takeItem" data-id="3003" data-amount="1"]krémes tégelyt[/span] nyújt át. Elmondja, hogy a Végzet Szigetén rengeteg a rovar, ez a kenőcs azonban visszatartja őket. Még egyszer megköszöni a bátorságodat, és reméli, hogy ajándéka segítségedre válik majd. Te is megköszönöd a segítségét, majd magadhoz veszed a felszerelésedet, és felkészülsz a nagy kalandra.[/p]
@@ -1417,8 +1546,74 @@
     </itemCheck>
     <next id="382" pos="3" singleChoiceText="Rohanni kezdesz a sötétben, bár nem tudod, hogy merre mész.">Rohanni kezdesz a sötétben, bár nem tudod, hogy merre mész?</next>
   </p>
-  <!-- 150 -->
-  <!-- 151 -->
+  <p id="150">
+    <text>
+        [p]Az ibolya folyosón nemsokára egy hatalmas, kráterszerű barlangba jutsz. Kövek és pókhálók hevernek mindenfelé; úgy tűnik, mintha lenne egy kijárat a távolban, de egy hatalmas, több méter átmérőjű szikla takarja el. Aztán a szikla megmozdul - de hisz ez nem is szikla! Sárga-fekete, szőrös lábak jelennek meg, egy csontos, fekete fej is felbukkan, szájában pengeéles csáprágókkal. Áttetsző szárnyak zümmögnek a hatalmas Pók hátán, de repülni nem tud, hatalmas, szőrös lábain indul feléd. Érzed, hogy illúzióval van dolgod, de azt is, hogy ez egy egészen kivételes erejű varázslat. Félelem jár át! Vonj le [em]átmenetileg[/em] (azaz csak ennek a harcnak az idejére) 1 ügyesség pontot. A dermesztő félelem 2-vel csökkenti az életerődet.
+    </text>
+    <gatherItem id="4001" />
+    <add amount="-2" to="stamina" />
+    <itemCheck type="item" id="4101">
+      <have>
+        <text>
+            Ha gondolod, van időd elmondani a Félelem Kioltása varázslatot, hogy ellensúlyozd ezeket a levonásokat. Ellenfeled azonban gyorsan közelít.[alt][/alt][/p]
+        </text>
+        <next id="150a" pos="0">Ha elmondanád a Félelem Kioltása varázslatot</next>
+      </have>
+      <dontHave>
+        <text>
+            Ellenfeled gyorsan közelít.[alt][/alt][/p]
+        </text>
+      </dontHave>
+    </itemCheck>
+    <itemCheck type="item" id="4102">
+      <have>
+        <next id="371" pos="1">Amennyiben szeretnéd elmondani az Illúzió Kioltása varázslatot</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3022">
+      <haveEquipped>
+        <next id="198" pos="2" singleChoiceText=" Kardot rántasz a szörny ellen.">Ha inkább a kardodat használnád a szörny ellen</next>
+      </haveEquipped>
+      <have>
+        <next id="394" pos="2" singleChoiceText=" Kardot rántasz a szörny ellen.">Ha inkább a kardodat használnád a szörny ellen</next>
+      </have>
+      <dontHave>
+        <next id="394" pos="2" singleChoiceText=" Kardot rántasz a szörny ellen.">Ha inkább a kardodat használnád a szörny ellen</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="150a" display="150">
+    <text>
+        [p]Az ibolya folyosón nemsokára egy hatalmas, kráterszerű barlangba jutsz. Kövek és pókhálók hevernek mindenfelé; úgy tűnik, mintha lenne egy kijárat a távolban, de egy hatalmas, több méter átmérőjű szikla takarja el. Aztán a szikla megmozdul - de hisz ez nem is szikla! Sárga-fekete, szőrös lábak jelennek meg, egy csontos, fekete fej is felbukkan, szájában pengeéles csáprágókkal. Áttetsző szárnyak zümmögnek a hatalmas Pók hátán, de repülni nem tud, hatalmas, szőrös lábain indul feléd. Érzed, hogy illúzióval van dolgod, de azt is, hogy ez egy egészen kivételes erejű varázslat. Félelem jár át! Vonj le [em]átmenetileg[/em] (azaz csak ennek a harcnak az idejére) 1 ügyesség pontot. A dermesztő félelem 2-vel csökkenti az életerődet. Ha gondolod, van időd elmondani a Félelem Kioltása varázslatot, hogy ellensúlyozd ezeket a levonásokat. Ellenfeled azonban gyorsan közelít.[/p]
+        [p]A varázslat hatására elmúlik félelmed, és visszanyered az elvesztett ÜGYESSÉG és ÉLETERŐ pontokat.[alt][/alt][/p]
+    </text>
+    <loseItem id="4101" />
+    <loseItem id="4001" />
+    <add amount="2" to="stamina" />
+    <itemCheck type="item" id="4102">
+      <have>
+        <next id="371" pos="1">Amennyiben szeretnéd elmondani az Illúzió Kioltása varázslatot is</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3022">
+      <haveEquipped>
+        <next id="198" pos="2" singleChoiceText=" Kardot rántasz a szörny ellen.">Ha inkább a kardodat használnád a szörny ellen</next>
+      </haveEquipped>
+      <have>
+        <next id="394" pos="2" singleChoiceText=" Kardot rántasz a szörny ellen.">Ha inkább a kardodat használnád a szörny ellen</next>
+      </have>
+      <dontHave>
+        <next id="394" pos="2" singleChoiceText=" Kardot rántasz a szörny ellen.">Ha inkább a kardodat használnád a szörny ellen</next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="151">
+    <text>
+        [p]Elhúzod a fojtogató csápokat a torkodról, de a fulladozás miatt így is veszítesz 3 életerő pontot. Végül felérsz az erkélyre, és szemtől szembe küzdhetsz meg a varázslóval.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <next id="46"></next>
+  </p>
   <p id="152">
     <text>
         [p]A folyosó kettéágazik a csatorna végénél.[/p]
@@ -1583,7 +1778,7 @@
   </p>
   <p id="166">
     <text>
-        [p]A tűzgömb egy szempillantás alatt izzó lángokkal és fojtogató füsttel vesz körül! Vesztesz 6 életerő pontot. Ha még életben vagy, felrohansz az erkélyre, hogy leszámolj Mordraneth-tel.[/p]
+        [p]A tűzgömb egy szempillantás alatt izzó lángokkal és fojtogató füsttel vesz körül! Vesztesz 6 életerő pontot. Felrohansz az erkélyre, hogy leszámolj Mordraneth-tel.[/p]
     </text>
     <add to="stamina" amount="-6" />
     <next id="110"></next>
@@ -1638,8 +1833,12 @@
     </text>
     <death />
   </p>
-  <!-- 174 -->
-  <!-- 175 -->
+  <p id="174">
+    <empty />
+  </p>
+  <p id="175">
+    <empty />
+  </p>
   <p id="176">
     <text>
         [p]A Szerencse varázslat segítségével visszanyerhetsz az elvesztett szerencse pontjaidból. Harcon kívül bármikor elmondhatod a varázslatot: eredményeképpen 3-mal megnövelheted a szerencse pontjaid számát (a [em]Kezdeti[/em] értéket persze nem haladhatod meg).[/p]
@@ -1869,7 +2068,13 @@
     <next id="125">A szivárványszínű járaton?</next>
     <next id="307">A sárgászöld folyosón?</next>
   </p>
-  <!-- 190 -->
+  <p id="190">
+    <text>
+        [p]Mordraneth gonoszul felkacag, amint Tűzgömb varázslata eltalál, és 6 életerő pontnyit éget rajtad. Minden erődet összeszeded, és felrohansz a lépcsőkön, hogy kardod hegyére tűzd ezt a gonosz mágust. Nemsokára felérsz az erkélyre![/p]
+    </text>
+    <add amount="-6" to="stamina" />
+    <next id="46"></next>
+  </p>
   <p id="191">
     <text>
         [p]Rövid időre megpillantasz egy fakunyhót a fák között - de a figyelmedet eltereli a közelből jövő, csattogó fémek hangja! Meghúzódsz, és figyelsz. Nemsokára két Hobgoblin jelenik meg a kunyhó felől. Vadul harcolnak egymással! Mit teszel?[/p]
@@ -1930,8 +2135,23 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 198 -->
-  <!-- 199 -->
+  <p id="198">
+    <text>
+        [p]Amint a Pók közelebb ér, egy Fénypálca jelenik meg köztetek a levegőben, melyet egy vékony fonál köt össze a fejpántoddal. A lény megtorpan. Ebben a pillanatban a pálca villámgyorsan forogni kezd, és valóságos fényörvénybe burkolja a megrémült szörnyet. Néhány másodperc múlva csak néhány sötét, büdös füstpamacs marad utána.[/p]
+    </text>
+    <loseItem id="4001" />
+    <next id="269"></next>
+  </p>
+  <p id="199">
+    <text>
+        [p]Sikeresen elmondtad a Sebesség varázslatot, de amint befejezted a kántálást, Mordraneth saját mágiája is készen van. Egy fényes villám cikázik át a levegőn, és megégeti a mellkasodat: vesztesz 4 életerő pontot. De most már annyira gyorsan mozogsz, hogy ha közelharcra kerül a sor, Mordraneth sokkal nehezebben fog eltalálni.[/p]
+    </text>
+    <loseItem id="4107" />
+    <add amount="-4" to="stamina" />
+    <changeEnemy attribute="skill" id="47" change="-2" />
+    <next id="384">Ha a bal oldali lépcsősoron rohannál fel az erkélyre</next>
+    <next id="142">Ha inkább a jobb oldalit választod</next>
+  </p>
   <p id="200">
     <text>
         [p]A Félelem Kioltása varázslat megkeményítette a szívedet, így a suttogások és a kiáltozás nem zavarnak többé. Óvatosan megválasztod a lépteidet, nehogy valami csapdára lépj. Nemsokára halvány színes alagútbejáratokat pillantasz meg.[/p]
@@ -2148,7 +2368,13 @@
     <next id="188" pos="7">Ha szeretnéd megtanulni ezt a varázslatot</next>
     <next id="188" pos="10">Ha nem</next>
   </p>
-  <!-- 214 -->
+  <p id="214">
+    <text>
+        [p]Amint megtámadod a Sárkányt, az szertefoszlik! Harsány kacagás visszhangzik végig a hatalmas termen. - Nos, bátor vagy, azt meg kell hagyni. De bolond is vagy, fiacskám! Azt hiszem, most már nemsokára itt az ideje, hogy személyesen is találkozzunk, nem gondolod? Elég volt ezekből a trükkökből és illúziókból; a [em]te[/em] lelked lesz az az alapanyag, mellyel tovább folytathatom a munkámat. És most, fiacskám, gyere végig a folyosón![/p]
+        [p]Mordraneth! A szíved a torkodban dobog, amikor ráeszmélsz, hogy a végső harc már csak másodpercekre van - vagy ez is csak egy illúzió volt? Mindenesetre nincs más választásod, mint előrelépni. Végighaladsz az ibolya folyosón.[/p]
+    </text>
+    <next id="150"></next>
+  </p>
   <p id="215">
     <text>
         [p]Óvatosan körülnézel, és észreveszel egy hajszálvékony madzagot, amely a padló felett néhány centiméternyire húzódik, keresztben az ajtó előtt. Óvatosan átlépsz rajta, vigyázva, nehogy elszakítsd. Felnézel, és egy hatalmas súlyt pillantasz meg a plafonon. Ha óvatlanul elszakítottad volna a madzagot, a súly kilapított volna! Odalépsz az öreghez, és eloldozod.[/p]
@@ -2368,7 +2594,14 @@
     <next id="272">Ha az azúr folyosón mész tovább</next>
     <next id="77">Ha az okker folyosót választod</next>
   </p>
-  <!-- 222 -->
+  <p id="222">
+    <text>
+        [p]A Tűzgömb izzó lángcsóvákba burkolja Mordraneth-et, mielőtt még végigmondhatta volna saját varázslatát. Jegyezd fel, hogy ha közelharcra kerül sor, Mordraneth életerő pontjait 6-tal csökkentette ez a gyilkos tűz. Felrohansz a jobb oldali lépcsősoron, hogy elkaphasd a gonosz mágust, mielőtt végigmondhatna egy újabb varázslatot. Ez majdnem sikerül is...[/p]
+    </text>
+    <loseItem id="4103" />
+    <changeEnemy attribute="stamina" id="47" change="-6" />
+    <next id="351"></next>
+  </p>
   <p id="223">
     <text>
         [p]Garaeth kapitány és emberei gratulálnak hőstettedhez. A hajó raktárából elláthatod magad élelemmel, hogy pótold a Viharmadárral folytatott küzdelemben elveszett életerő pontokat. - Jó munka volt - mondja Garaeth - De ez a találkozás aggaszt. Ezeken a vidékeken a Viharmadarak rendkívül ritkák. Lehet, hogy valaki már tud a jöttödről, és mágiával kényszerítene ide ezt a lényt. - Ez nem túl kellemes gondolat, de lehet benne némi igazság. Éjszaka szerencsére semmi sem zavarja az álmodat, így reggel kipihenten ébredsz. Felkészülsz, hogy partra szállj a Végzet Szigetén.[/p]
@@ -2423,8 +2656,22 @@
     <next id="362">A sárga folyosón?</next>
     <next id="149">A fekete folyosón?</next>
   </p>
-  <!-- 230 -->
-  <!-- 231 -->
+  <p id="230">
+    <text>
+        [p]A Csontvázillúzió előrelép, hogy végezzen veled. Meg kell küzdened vele![/p]
+    </text>
+    <fight type="single">
+      <enemy id="45" />
+    </fight>
+    <next id="381"></next>
+  </p>
+  <p id="231">
+    <text>
+        [p]A Tűzvédő Gyűrű megvéd, hogy ne nagyon égj meg. A hatalmas tűzgömb mindössze 1 ÉLETERŐ pontot sebez így rajtad. Felrohansz az erkélyre.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="110"></next>
+  </p>
   <p id="232">
     <text>
         [p]A toll nem használ a megvadult patkányok hordája ellen. Amíg a tollal bíbelődtél, 1 életerő pontot vesztettél a harapásoktól. Felismerve a tévedésedet úgy döntesz, hogy gyorsan elhúzod innen a csíkot.[/p]
@@ -2530,7 +2777,29 @@
       </failure>
     </test>
   </p>
-  <!-- 244 -->
+  <p id="244">
+    <text>
+        [p]Te és Mordraneth is egyaránt varázsolni kezdtek. Határozd meg mindkettőtök Támadóerejét (Mordraneth ügyessége 10).[/p]
+    </text>
+    <fight type="single">
+      <enemy id="47" />
+      <winRound enemy="47">
+        <interrupt />
+        <gatherItem id="4005" />
+      </winRound>
+      <loseRound>
+        <interrupt />
+      </loseRound>
+    </fight>
+    <itemCheck type="item" id="4005">
+      <have>
+        <next id="199"></next>
+      </have>
+      <dontHave>
+        <next id="78"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="245">
     <text>
         [p]Követed a folyosót, míg egy újabb ajtóhoz nem érsz. Résnyire nyitva van, ezért belesel a mögötte lévő terembe. A szoba közepén egy abrosszal leterített, nagy tölgyfaasztal áll. Gyönyörű porcelán és ezüst evőeszközöket, tányérokat, kristálypoharakat és kupákat látsz. Friss, ropogós kenyerek, húsok, gyümölcsök hevernek dísztálakban, étkezésre készen. Mivel nincs jele, hogy más is tartózkodna a szobában, óvatosan belépsz. Két másik ajtó vezet innen tovább, az egyik a keleti, a másik a nyugati falon nyílik. Mit teszel?[/p]
@@ -2559,7 +2828,24 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 247 -->
+  <p id="247">
+    <text>
+        [p]Követed a kanyargós folyosót, míg végül egy ajtóhoz érsz. Az nehezen nyílik, de végül sikerül benyomnod. Egy négyzet alakú, egyszerű, kőfalú terembe jutsz. Az egyik falnál egy férfi szobra áll, míg az azzal szemközt lévőn két folyosó bejárata tátong; az egyik kék, a másik ibolya színű. Amint belépsz a szobába, sárga füst kezd el szivárogni a szobor szájából. A füstpamacsok nemsokára egy sárgás, csontvázszerű figurává állnak össze. A szellemalak feléd lebeg, és kinyújtja kampós karmait, hogy átvágja a torkodat! Mit teszel?[/p]
+    </text>
+    <itemCheck type="item" id="3007">
+      <haveEquipped>
+        <next id="95" pos="1">Megküzdesz a Csontvázillúzióval?</next>
+      </haveEquipped>
+      <have>
+        <next id="230" pos="1">Megküzdesz a Csontvázillúzióval?</next>
+      </have>
+      <dontHave>
+        <next id="230" pos="1">Megküzdesz a Csontvázillúzióval?</next>
+      </dontHave>
+    </itemCheck>
+    <next id="361" pos="2">A kék folyosó felé rohansz?</next>
+    <next id="31" pos="3">Az ibolya folyosó felé rohansz?</next>
+  </p>
   <p id="248">
     <text>
         [p]Az ajtót kinyitva egy rendetlen, egyszerű bútorzatú szobába jutsz. Az asztalnál egy vörös hajú fiatalember ül. Amint belépsz, a férfi hátradől székében, és egy tőrt kezd el pörgetni a tenyerén. - Igazán kopoghattál volna. - mondja megvetően, és egy gombbal kezd játszadozni tengerkék zubbonyán. Nem tesz ellenséges mozdulatokat, de szemmel láthatóan válaszra vár! Mit teszel?[/p]
@@ -2595,7 +2881,19 @@
     <add amount="-2" to="stamina" />
     <next id="152"></next>
   </p>
-  <!-- 252 -->
+  <p id="252">
+    <text>
+        [p]A varázskorong váratlanul a nyakad köré tekeredik, és fojtogatni kezd![/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="151"></next>
+      </success>
+      <failure>
+        <next id="308"></next>
+      </failure>
+    </test>
+  </p>
   <p id="253">
     <text>
         [p]Továbbmész kelet felé, míg végül a folyosó délnek fordul. Néhány méterrel odébb azonban hatalmas, vastag, savas füstfal zárja el a folyosót, ami túl sűrű és fojtogató ahhoz, hogy át tudj haladni rajta. Visszafordulsz. Kelet felé haladsz a folyosón, míg az végül északnak fordul. A járat egy napfényes terembe torkollik. Semmi gyanúsat nem látsz, így hát belépsz a gallyakkal és kövekkel felszórt padlójú helyiségbe.[/p]
@@ -2667,7 +2965,18 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 261 -->
+  <p id="261">
+    <text>
+        [p]A kék folyosó egyre meredekebben kezd lejteni, végül egy hatalmas, trapéz alakú terembe torkollik. A helyiség túlsó végében felsejlik egy kijárat, de a figyelmedet leginkább a csarnok közepén terpeszkedő, iszonytató Kék Sárkány vonja magára! Az őshüllő felemeli irtóztató fejét, kitátott szájában vastag villámnyalábok kezdenek sercegni. Ez a szörny egészen borzalmas, és igen valószínűtlen, hogy egy ilyen helyen éljen. Illúziónak [em]kell[/em] lennie... Mit teszel?[/p]
+    </text>
+    <next id="214" pos="1">Kirántod a kardodat, és nekirontasz a Sárkánynak?</next>
+    <itemCheck type="item" id="4102">
+      <have>
+        <next id="111" pos="2">Elmondasz egy Illúzió Kioltása varázslatot?</next>
+      </have>
+    </itemCheck>
+    <next id="341" pos="3">Visszarohansz a folyosón?</next>
+  </p>
   <p id="262">
     <text>
         [p]Kinyitod az ajtót, és egy szétvert szobába jutsz. Egy asztal hever fejjel lefelé a padlón, a polcok darabokban, söröskancsók miszlikjei a földön, sörtócsák, széttépett papírdarabok itt-ott. A szoba közepén két Ork harcol egymással elkeseredetten. Amint belépsz, mindkettő feléd kiált, hogy segíts neki. Mit teszel?[/p]
@@ -2759,7 +3068,23 @@
     </text>
     <next id="366"></next>
   </p>
-  <!-- 269 -->
+  <p id="269">
+    <text>
+        [p]Végigbotorkálsz a köves padlójú termen, majd átmész egy folyosón. Kőlépcsők vezetnek fel egy jól megvilágított csarnokba - valószínűleg ez lesz Mordraneth lakosztálya. Egy hatalmas, palotaszerű terembe jutsz. A mennyezetet szépen faragott oszlopok tartják, míg a fényt számtalan izzó parázstartó szolgáltatja. A terem távoli, túlsó felében egy erkélyt pillantasz meg, kétoldalt felvezető lépcsőkkel. Az erkélyen pedig maga a gonosz Mordraneth áll. Magas termetét hosszú, fekete köpeny takarja. Csillogó kristálypor hull kezeiről a földre, miközben halkan maga elé mormol - varázslattal akar megsemmisíteni téged! Mit teszel?[/p]
+    </text>
+    <itemCheck type="item" id="4107">
+      <have>
+        <next id="244">Elmondasz egy Sebesség varázslatot?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4103">
+      <have>
+        <next id="94">Elmondasz egy Tűzgömb varázslatot?</next>
+      </have>
+    </itemCheck>
+    <next id="332">Felrohansz a baloldali lépcsősoron?</next>
+    <next id="63">Felrohansz a jobboldali lépcsősoron?</next>
+  </p>
   <p id="270">
     <text>
         [p]Ételt dobsz a rák elé. Az utánakap az ollójával, de elvéti, így kénytelen megfordulni, és a tengerben kutatni a süllyedő táplálék után. Ezalatt te biztonságosan partra érsz. Csökkentsd 1-gyel az Élelemkészletedet a [em]Kalandlapodon[/em].[/p]
@@ -3037,7 +3362,14 @@
     </fight>
     <next id="15"></next>
   </p>
-  <!-- 297 -->
+  <p id="297">
+    <text>
+        [p]Mordraneth Tűzgömbje sziszegve feléd repül, és lángba borít. Ez megzavar a saját varázslatod elmondásában, azt többé már nem tudod használni. Szerencsére a Tűzvédő Gyűrű megóvott a lángoktól, így csak 1 életerő pontot veszítesz. Felrohansz a bal oldali lépcsősoron, hogy kardélre hányd a gonosz varázslót, mielőtt az még egy varázslatot befejezhetne - de nem vagy elég gyors![/p]
+    </text>
+    <loseItem id="4103" />
+    <add amount="-1" to="stamina" />
+    <next id="351"></next>
+  </p>
   <p id="298a" display="298">
     <text>
         [p]Varázslatod hatástalannak bizonyul, a falak gyorsan közelítenek![/p]
@@ -3216,8 +3548,24 @@
     <next id="173" pos="3">Átrohansz a szobán az okker folyosó felé?</next>
     <next id="109" pos="4">Átrohansz a szobán az azúr folyosó fele?</next>
   </p>
-  <!-- 308 -->
-  <!-- 309 -->
+  <p id="308">
+    <text>
+        [p]A korong szorosan a nyakad köré tekeredik, és fojtogatni kezd! Érzed, amint a gonosz mágus az elmédet fürkészi, hogy kiderítse, mitől félsz, mitől rettegsz - és hogy ezeket felhasználja ellened. A rémképek, legnagyobb félelmeid megjelennek lelki szemeid előtt, lassan felerősödnek, és az őrületbe kergetnek. Dicsőséget kerestél, de csak szörnyű halált találtál. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="309">
+    <text>
+        [p]Jelenlegi felszereléseddel nem tudsz felmászni a szikla tetejére. Megtarthatod a kardodat, a bőrpáncélodat, valamint gyűrűidet és fejpántodat, ha vannak nálad ilyenek. Minden mást el kell dobnod. Húzz le minden más tárgyat és tulajdont a Kalandlapodról! Ezzel a könnyített felszereléssel sikerül felmásznod a szikla tetejére.[/p]
+    </text>
+    <itemCheck type="item" id="1002">
+      <have>
+        <loseItem id="1001" />
+      </have>
+    </itemCheck>
+    <loseItem id="2000,2002,2003,2004,2006,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3024,3025,3027,3028" amount="99" />
+    <next id="62"></next>
+  </p>
   <p id="310">
     <text>
         [p]Egyszerre kell megküzdened a két bennszülöttel. Ha valamelyikük eltalál a lándzsájával, dobj egy kockával! Ha az eredmény 4-6, még 1 extra életerő pontot le kell vonnod, a bennszülöttek fegyverének hegyére kent természetes méregtől.[/p]
@@ -3324,7 +3672,13 @@
     <add to="stamina" amount="-1" />
     <next id="251"></next>
   </p>
-  <!-- 318 -->
+  <p id="318">
+    <text>
+        [p]Mordraneth kajánul felröhög, amint a Tűzgömb beléd csapódik, és lángba borít. A fájdalom szinte elviselhetetlen. Vesztesz 6 életerő pontot. Vadul felrohansz a folyosón, hogy megismertesd a gonosz mágussal kardod hideg pengéjét![/p]
+    </text>
+    <add to="stamina" amount="-6" />
+    <next id="351"></next>
+  </p>
   <p id="319">
     <text>
         [p]Óvatosan nyomulsz előre, de mögötted váratlanul erős szél támad, amitől kis híján majdnem előrebuksz. Sikerül ugyan talpon maradnod, de érzed, hogy a léglöket egyre erősebb lesz! Nem sokáig tudsz lábon maradni, a süvítő orkán hamarosan magával sodor, hogy darabokra zúzza testedet az alanti sziklákon! Kétségbeesetten próbálsz egy biztos pontot találni. Végül elkapsz egy sziklakiszögellést, amiben sikerül megkapaszkodnod, de ez akkorát ránt karodon, hogy vesztesz 2 életerő pontot. A puszta életedért markolod a kőnyúlványt, miközben azért is küzdesz, hogy el ne uralkodjon rajtad a féktelen pánik érzése, hiszen tudod, hogy akkor mindennek vége.[/p]
@@ -3488,9 +3842,31 @@
     <next id="145">Ha megvizsgálod közelebbről is</next>
     <next id="156">Ha inkább továbbmész dél felé</next>
   </p>
-  <!-- 331 -->
-  <!-- 332 -->
-  <p id="333">
+  <p id="331">
+    <text>
+        [p]A fagyos folyosó egy ősi kriptába vezet. A csupasz kőpadlón százával hevernek a temetetlen csontvázak, fölöttük szikrázó jégkristályok függnek a plafonról. A bejárattól nem messze két folyosó vezet tovább. Mit teszel?[/p]
+    </text>
+    <next id="319">A világosabb, levegősebb folyosón mész tovább?</next>
+    <next id="247">A sötétebb földfolyosón mész tovább?</next>
+    <next id="134">Maradsz, és imát mondasz az itt elhaltak lelkéért?</next>
+  </p>
+  <p id="332">
+    <text>
+        [p]Ahogy felrohansz a lépcsőkön, érzed, hogy valamiféle mágikus erő lelassítja a mozgásodat, mintha derékig vízben kellene gázolnod! Összeszorítod hát a fogadat, és teljes erővel nyomulsz felfelé. De éppen amikor felérsz a lépcső tetejére, látod, hogy Mordraneth kezéből egy füstölgő golyóbis röppen ki - és pillanatok múlva elborítanak a Tűzgömb varázslat izzó lángcsóvái.[/p]
+    </text>
+    <itemCheck type="item" id="3026">
+      <have>
+        <next id="318"></next>
+      </have>
+      <dontHave>
+        <next id="318"></next>
+      </dontHave>
+      <haveEquipped>
+        <next id="47"></next>
+      </haveEquipped>
+    </itemCheck>
+  </p>
+  <p id="333" color="red">
     <text>
         [p]Az ajtó mögötti folyosó dél felé vezet. A falakra erősített tartókba tűzött fáklyák halvány fénybe burkolják az alagút kőfalait. A járat nemsokára keletnek fordul, a kanyarban azonban, a nyugati falban egy sima, jellegtelen faajtót látsz. Belesel a keleti folyosóba, de nem látod a végét.[/p]
     </text>
@@ -3502,7 +3878,7 @@
         <next id="171" pos="1">Ha kinyitod az ajtót</next>
       </dontHave>
     </itemCheck>
-    <next id="114" pos="2">Hogyha inkább elindulsz kelet felé a folyosón</next>
+    <next id="364" pos="2">Hogyha inkább elindulsz kelet felé a folyosón</next>
   </p>
   <p id="334">
     <text>
@@ -3609,7 +3985,12 @@
       </failure>
     </test>
   </p>
-  <!-- 341 -->
+  <p id="341">
+    <text>
+        [p]A folyosón sistergő villámnyaláb süt végig, és csapódik beléd. Felüvöltesz a szinte elviselhetetlen fájdalomtól. Érzed saját, égő húsod bűzét. A padlóra roskadsz, és haláltusád közepette hirtelen megérzed, amint Mordraneth mágiája lassan, de ellenállhatatlanul kivonja elmédből az ezen a szörnyű helyen megélt minden borzalom és ijedelem emlékét. A villámnyaláb égetően fájt, de számodra csak most fog kezdődni az igazi szenvedés időszaka. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="342">
     <text>
         [p]Amint legyőzöd a Sast, az illúzió azonnal szertefoszlik, és azon kapod magad, hogy a földön heversz, és karjaiddal az üres levegőt csépeled! Mély hangú, vérfagyasztó kacagás reszketteti meg a levegőt. - Légy üdvözölve a birodalmamban! Bár nem hiszem, hogy sokáig fogsz itt tartózkodni. - Körbenézel, de nem látsz senkit. Egy barna folyosó közepén találod magad. Az egyik irányba a járat feketére vált, a másik irányba pedig kis idő múlva zöldre.[/p]
@@ -3692,7 +4073,22 @@
     </text>
     <next id="181"></next>
   </p>
-  <!-- 351 -->
+  <p id="351">
+    <text>
+        [p]Még nem éred el Mordraneth-et, ellenfeled azonban befejezi varázslatát. Egy pörgő, forgó, fekete korong jelenik meg a feje fölött, majd nekilendül, és egyenesen a torkodnak tart![/p]
+    </text>
+    <itemCheck type="item" id="3023">
+      <have>
+        <next id="252"></next>
+      </have>
+      <haveEquipped>
+        <next id="79"></next>
+      </haveEquipped>
+      <dontHave>
+        <next id="252"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="352">
     <text>
         [p]A patkányok hirtelen semmivé foszlanak! A távoli fény felé igyekszel tovább.[/p]
@@ -3773,7 +4169,13 @@
     <add amount="-1" to="luck" />
     <next id="54"></next>
   </p>
-  <!-- 361 -->
+  <p id="361">
+    <text>
+        [p]Nem sikerült! A Csontvázillúzió hatalmasat ütött a hátadra. Vesztesz 2 életerő pontot. Ellenfeled ezután előtted bukkan fel![/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="397"></next>
+  </p>
   <p id="362">
     <text>
         [p]Éppen félúton jársz, amikor valami váratlanul megragad, és felemel a földről. A mennyezet semmivé foszlik, és sárgás felhők között lebegve találod magad. Egy iszonytatóan nagy Sas száguld feléd, hogy végezzen veled. Ez egészen biztosan illúzió, de az érzékeid azt mondják, hogy valóság, és látod is a madár karmain és a csőrén száradó vérfoltokat. Nincs mese, meg kell küzdened vele, de a harc idejére (és ne feledd, hogy [em]csak[/em] a harc idejére, átmenetileg) 2-vel kisebb lesz az ügyességed. Nem csoda, hiszen nem könnyű a súlytalanság állapotában küzdeni olyasvalakinek, aki ahhoz szokott, hogy szilárd talaj legyen a lába alatt.[/p]
@@ -3797,7 +4199,13 @@
     </fight>
     <next id="65"></next>
   </p>
-  <!-- 364 -->
+  <p id="364">
+    <text>
+        [p]A kelet felé vezető folyosót egy fekete és egy borostyán kereszttel megjelölt ajtó zárja le.[/p]
+    </text>
+    <next id="393">Ha kinyitod az ajtót</next>
+    <next id="34">Hogyha inkább visszamész nyugatra, és megvizsgálod azt az ajtót, amelyet már az előbb is észrevettél, szemben a keleti folyosókanyarral</next>
+  </p>
   <p id="365">
     <text>
         [p]Amint közelebb mész a zsákutcához, a „fal” a végén hirtelen semmivé foszlik, és egy hatalmas, nyolclábú, sárga bogárrá alakul át. Lábain hatalmas karmok me-redeznek, állkapcsából kiálló iszonytató csáprágóiból sav csöpög a padlóra. A rovar hangtalanul feléd iramodik, mielőtt akár egy lépést is tehetnél.[/p]
@@ -3858,7 +4266,13 @@
     <next id="107">Ha kinyitod az ajtót</next>
     <next id="245">Ha inkább a déli ajtóval próbálkoznál</next>
   </p>
-  <!-- 371 -->
+  <p id="371">
+    <text>
+        [p]Végigmondod a varázslatodat, és a pók magas hangon visítva meghátrál - de utána ismét előrenyomul, mintha mi sem történt volna. Az illúzió annyira erős, hogy nem tudtad elpusztítani, csak meggyengíteni. Most kénytelen vagy megküzdeni vele. Ne feledd, hogy varázslatoddal már sikerült egy komoly csapást bevinned, így a harc előtt 4-gyel lecsökkenheted majd az életerejét.[/p]
+    </text>
+    <changeEnemy attribute="skill" id="46" change="-4" />
+    <next id="175"></next>
+  </p>
   <p id="372">
     <text>
         [p][alt]Melyik varázslatot használnád?[/alt][/p]
@@ -3956,7 +4370,13 @@
     </fight>
     <next id="65"></next>
   </p>
-  <!-- 381 -->
+  <p id="381">
+    <text>
+        [p]Merre mész?[/p]
+    </text>
+    <next id="261">Ha a kék folyosón mész tovább</next>
+    <next id="150">Ha az ibolya színűt választod</next>
+  </p>
   <p id="382">
     <text>
         [p]Vadul, ész nélkül rohansz, és egy szürke folyosón kötsz ki. Mivel szinte minden tagod reszket a félelemtől, vesztesz 1 ügyesség pontot. Ne feledd azonban, hogy ez a levonás csak [em]átmeneti[/em], és a következő harc után ismét visszaállíthatod ezt a pontot. Az erőlködéstől és a sokktól vesztesz 2 életerő pontot is.[/p]
@@ -3973,7 +4393,22 @@
     <next id="76">Ha megtámadod a Félogrét</next>
     <next id="108">Ha előbb segítesz az öregembernek</next>
   </p>
-  <!-- 384 -->
+  <p id="384">
+    <text>
+        [p]A lépcsősort mágia védi, mely arra hivatott, hogy lelassítsa a feljövők mozgását. Ha nem mondtad volna el a Sebesség varázslatot, iszonyú sokáig tartana, amíg felvergődnél Mordranethhez. Ennek ellenére ellenfelednek még van ideje egy varázslat végigmondására. A varázsló sárgás port dob a levegőbe, majd kinyújtott kezéből izzó tűzgömb röppent feléd.[/p]
+    </text>
+    <itemCheck type="item" id="3026">
+      <have>
+        <next id="166"></next>
+      </have>
+      <haveEquipped>
+        <next id="231"></next>
+      </haveEquipped>
+      <dontHave>
+        <next id="166"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="385">
     <text>
         [p]Belépsz a terembe. Észak felé magas, sziklás fala van a teremnek, és magasan a fejed fölött egy iszonytató madár ül egy kiszögellésen. Amikor belépsz, a bestia valami véres masszát tépked éppen a csőrével (undorodva veszed ki egy emberi mellkas maradványait). Maga a madár nem túl nagy, de hosszú, ívesen hajlított csőre pengeéles. Amint meglát téged, felrikolt, és vértől csöpögő csőrével és karmaival neked ront.[/p]
@@ -4072,7 +4507,18 @@
     </fight>
     <next id="202"></next>
   </p>
-  <!-- 394 -->
+  <p id="394">
+    <text>
+        [p]Egy Pók-illúzióval küzdesz, és tudod, ha a kardod nem bizonyul erősnek, kalandod itt ér csúfos véget![/p]
+    </text>
+    <fight type="single">
+      <enemy id="46" />
+      <win>
+        <loseItem id="4001" />
+      </win>
+    </fight>
+    <next id="269"></next>
+  </p>
   <p id="395">
     <text>
         [p]A folyosó zöld színe lassan ciánszínbe megy át, míg végül gyönyörű, tiszta királykék falak között gyalogolsz már. A folyosó mintha a végtelenségbe nyúlna... - Bele fogsz pusztulni a kimerültségbe - jelenti ki hátborzongató bizonyossággal egy valahonnan felcsattanó szellemhang -, de az is lehet, hogy a vég ennél hamarabb is megérkezik. - Váratlanul víz csobogását hallod, és rémülten látod, hogy hatalmas víztömeg száguld feléd a folyosón! Megfordulsz, hogy elmenekülj, de ez inkább reflex, semmint ésszerű tevékenység. Az áradat szinte azonnal utolér, lever a lábadról, és könnyű tollpiheként magával sodor. Küzdesz egy darabig a megfulladás ellen, de aztán érzed, amint a lélegzetvétel ősi ösztöne felülkerekedik rajtad, és éltető levegő helyett víz tolul a tüdődbe.[/p]
@@ -4085,7 +4531,9 @@
     </text>
     <death />
   </p>
-  <!-- 397 -->
+  <p id="397">
+    <empty />
+  </p>
   <p id="398">
     <text>
         [p]A figura kezei közé fogja a fejedet, te pedig érzed, amint energiája átáramlik beléd. Visszakapsz 1 ügyesség, 1 szerencse és 4 életerő pontot. A szerencse pontjaid (de csakis a szerencse pontjaid) ezzel a Kezdeti értékük fölé is emelkedhetnek. Az alak azonban úgy látszik, minden energiáját átpumpálta beléd, mert lassan elhalványul, majd eltűnik. Egyik társa csöndesen megjegyzi: - Most már békességben van. Feláldozta a lelkét, hogy erőt adjon neked a gonosz varázsló ellen. Ne hozz szégyent az emlékére! - Új remény tölt el, amint továbbhaladsz. Melyik utat választod?[/p]
@@ -4102,5 +4550,11 @@
         [p]Amint megpróbálod felfeszíteni a láda fedelét, egy apró penge csapódik fel a padlóban lévő egyik repedésből... a doboz másik oldalán! Ez meleg volt! De a csapda elsült, most már nyugodtan megnézheted, mit rejt a ládikó.[/p]
     </text>
     <next id="246"></next>
+  </p>
+  <p id="400">
+    <text>
+        [p]Amint Mordraneth a lábad elé hanyatlik, hatalmas, megkönnyebbült sóhajt hallasz magad körül. Mintha többszázezer megkínzott lélek sóhajtana, mert megmenekült a vég nélküli szenvedés börtönéből. Körülötted színek villannak fel, majd halványulnak el lassan, és a gonosz varázsló illúzióinak elmúlásával nem marad más hátra, mint a csupasz barlang, amelybe egykoron beköltözött. Az erkély mögött a fal is semmivé foszlott, és egy folyosót fedett fel, mely felfelé, a szabad levegőre, a tiszta ég alá vezet - melyen túl mintha még a sós víz illatát is éreznéd. Végigsétálsz rajta, és egy kiálló sziklafennsíkra érsz. Alant a tenger ostromolja a sziklákat. Garaeth kapitány valahol errefelé vár rád, hogy visszavigyen Polluába, hogy elhalmozzanak a téged megillető örömódákkal, kincsekkel és megbecsüléssel. Utoljára még hüvelyébe lököd a kardodat, és könnyedén lépdelve elindulsz a partra vezető lejtős ösvényen.[/p]
+    </text>
+    <victory />
   </p>
 </content>
