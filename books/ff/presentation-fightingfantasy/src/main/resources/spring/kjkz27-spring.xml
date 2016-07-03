@@ -14,5 +14,40 @@
   <bean parent="kjkz27Info" class="hu.zagor.gamebooks.domain.FfBookInformations" id="fh10Info" c:id-ref="fh10Id" p:locale-ref="huLocale" p:position="10" p:title="Lopakodó Lelkek" p:series-ref="fhTitle" p:cover="cover2" />
 
   <alias name="ff34BookPreFightHandlingService" alias="kjkz27BookPreFightHandlingService" />
+  
+  <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor" id="fh10Help" p:info-ref="fh10Info" parent="kjkz27Help" />
+
+  <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor" id="kjkz27Help" p:info-ref="kjkz27Info">
+    <property name="sections">
+      <util:list>
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="intro" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="howToFight" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="ssl" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sos" p:jsp="spells" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="battle" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="battleFlow7" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="fleeing" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sos" p:jsp="multiBattleOnlyHighest" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="luck" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="luckInBattle" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="resetSsl" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="resetSkill" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="resetStamina" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="resetLuck" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="equipmentPotions" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sos" p:jsp="advice" />
+      </util:list>
+    </property>
+    <property name="params">
+      <util:map>
+        <entry key="stdHelp_howToFight" value="Hogyan küzdj meg az alvilág teremtményeivel?" />
+        <entry key="stdHelp_hasPotions" value="false" />
+        <entry key="stdHelp_hasFood" value="true" />
+        <entry key="stdHelp_canEatAlways" value="true" />
+        <entry key="stdHelp_foodAmount" value="tíz" />
+        <entry key="stdHelp_hasLantern" value="true" />
+      </util:map>
+    </property>
+  </bean>
 
 </beans>
