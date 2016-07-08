@@ -8,6 +8,7 @@ import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
+import hu.zagor.gamebooks.content.ProcessableItemHolder;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.commandlist.CommandList;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
@@ -74,9 +75,7 @@ public class Ff23BookPreFightHandlingServiceTest {
         // GIVEN
         enemies.put("1", enemy);
         expect(wrapper.getParagraph()).andReturn(paragraph);
-        expect(paragraph.getData()).andReturn(data);
-        expect(data.getCommands()).andReturn(commands);
-        expect(commands.get(0)).andReturn(command);
+        expect(paragraph.getItemsToProcess()).andReturn(Arrays.asList(new ProcessableItemHolder(command)));
         expect(wrapper.getEnemies()).andReturn(enemies);
         expect(command.getEnemies()).andReturn(Arrays.asList(new String[]{"1"}));
         expect(enemy.getSkill()).andReturn(6);
@@ -96,9 +95,7 @@ public class Ff23BookPreFightHandlingServiceTest {
         hornResistantEnemies.add("1");
         enemies.put("1", enemy);
         expect(wrapper.getParagraph()).andReturn(paragraph);
-        expect(paragraph.getData()).andReturn(data);
-        expect(data.getCommands()).andReturn(commands);
-        expect(commands.get(0)).andReturn(command);
+        expect(paragraph.getItemsToProcess()).andReturn(Arrays.asList(new ProcessableItemHolder(command)));
         expect(wrapper.getEnemies()).andReturn(enemies);
         expect(command.getEnemies()).andReturn(Arrays.asList(new String[]{"1"}));
         expect(info.getCharacterHandler()).andReturn(characterHandler);
