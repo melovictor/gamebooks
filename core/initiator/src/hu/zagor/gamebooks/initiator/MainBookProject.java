@@ -27,8 +27,8 @@ public class MainBookProject {
 
         baseData.setMainLanguage("en");
         baseData.setSeriesCode("ff"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm
-        baseData.setTitleCode("sos");
-        baseData.setPosition(34);
+        baseData.setTitleCode("aod");
+        baseData.setPosition(36);
         baseData.setCollectorCode("ff"); // ff, cyoa, z, fyf, gyg, eq, tm
         baseData.setCollectorName("fightingfantasy"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine
         baseData.setRuleset("ff"); // raw, tm, ff
@@ -58,10 +58,10 @@ public class MainBookProject {
     private BookLangData getSotkHu(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setSeriesCode("kjkz");
-        data.setPosition(27);
-        data.setBookId("KalandJatekKockazatZagor.LELEKRABLO");
+        data.setPosition(26);
+        data.setBookId("KalandJatekKockazatZagor.A_HALAL_SEREGEI");
         data.setLang("hu");
-        data.setTitle("Lélekrabló");
+        data.setTitle("A Halál Seregei");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;
@@ -70,9 +70,9 @@ public class MainBookProject {
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setHidden(true);
-        data.setBookId("FightingFantasy.STEALER_OF_SOULS");
+        data.setBookId("FightingFantasy.ARMIES_OF_DEATH");
         data.setLang("en");
-        data.setTitle("Stealer of Souls");
+        data.setTitle("Armies of Death");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;

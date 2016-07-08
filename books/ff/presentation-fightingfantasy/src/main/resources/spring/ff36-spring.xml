@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.FightingFantasy.ARMIES_OF_DEATH" id="ff36Id" />
+
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff36Info" c:id-ref="ff36Id" p:resourceDir="ff36" p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="36" p:series-ref="ffTitle" p:title="Armies of Death" p:characterHandler-ref="ffCharacterHandler" p:commandResolvers-ref="ffCommandResolvers" p:unfinished="true" p:hidden="true" p:characterBeanId="ff36Character" p:characterPageDataBeanId="ff36CharacterPageData">
+    <property name="contents">
+      <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="ff36enemies.xml" c:items="ff36items.xml" c:paragraphs="ff36content.xml" />
+    </property>
+    <property name="contentSpecification">
+      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="true" />
+    </property>
+  </bean>
+
+</beans>
