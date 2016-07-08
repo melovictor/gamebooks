@@ -40,7 +40,7 @@ public class Ff34BookPreFightHandlingService extends EnemyDependentFfBookPreFigh
     }
 
     private void reduceEnemySkill(final HttpSessionWrapper wrapper) {
-        final FightCommand command = (FightCommand) wrapper.getParagraph().getData().getCommands().get(0);
+        final FightCommand command = (FightCommand) wrapper.getParagraph().getItemsToProcess().get(0).getCommand();
         final Map<String, Enemy> enemies = wrapper.getEnemies();
         for (final String enemyId : command.getEnemies()) {
             final FfEnemy enemy = (FfEnemy) enemies.get(enemyId);
