@@ -115,7 +115,7 @@ public class FfAttributeHandler extends DefaultAttributeHandler {
         try {
             final Field field = ReflectionUtils.findField(object.getClass(), attribute);
             if (field == null) {
-                throw new NoSuchFieldException();
+                throw new NoSuchFieldException("Couldn't find field '" + attribute + "' on object '" + object + "'.");
             }
             field.setAccessible(true);
             if (type == ModifyAttributeType.change) {
