@@ -12,6 +12,8 @@ public class ArmyLossesContainer {
     private int knights;
     private int wilders;
     private int northerns;
+    private int marauders;
+    private int whiteKnights;
 
     public int getWarriors() {
         return warriors;
@@ -59,5 +61,21 @@ public class ArmyLossesContainer {
 
     public void setNortherns(final int northerns) {
         this.northerns = northerns;
+    }
+
+    public int getMarauders() {
+        return marauders;
+    }
+
+    public void setMarauders(final int marauders) {
+        this.marauders = marauders;
+    }
+
+    public int getWhiteKnights() {
+        return whiteKnights;
+    }
+
+    public void setWhiteKnights(final int whiteKnights) {
+        this.whiteKnights = whiteKnights;
     }
 }

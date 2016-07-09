@@ -13,6 +13,7 @@ import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver;
 import hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResolver;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
+import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.ff.aod.character.Ff36Character;
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +38,7 @@ public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolve
         final CharacterHandler characterHandler = resolvationData.getCharacterHandler();
         final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) characterHandler.getInteractionHandler();
         final Ff36Character character = (Ff36Character) resolvationData.getCharacter();
-        final String order = interactionHandler.peekLastFightCommand(character);
+        final String order = interactionHandler.getLastFightCommand(character);
         if (order == null) {
             setUpOwnFightParty(command, resolvationData);
         } else if (FightCommand.ATTACKING.equals(order)) {
@@ -62,7 +63,7 @@ public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolve
                 if (command.getResolvedAllies().size() == 2) {
                     command.setOngoing(false);
                     result = Arrays.asList((ParagraphData) command.getWin().get(0).getParagraphData());
-                    removeDeadSoldiers(command.getResolvedAllies().get(0), -command.getResolvedAllies().get(1).getStamina());
+                    removeDeadSoldiers(command, resolvationData);
                 } else {
                     command.setBattleType("custom36SelectDead");
                 }
@@ -83,14 +84,18 @@ public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolve
             final String[] toLose = loseOrder.split("=");
             final FfAttributeHandler attributeHandler = (FfAttributeHandler) characterHandler.getAttributeHandler();
             attributeHandler.handleModification(character, toLose[0], -Integer.parseInt(toLose[1]));
-
         }
         command.setOngoing(false);
         result = Arrays.asList((ParagraphData) command.getWin().get(0).getParagraphData());
         return result;
     }
 
-    private void removeDeadSoldiers(final FfAllyCharacter ally, final int amount) {
+    private void removeDeadSoldiers(final FightCommand command, final ResolvationData resolvationData) {
+        final FfEnemy ally = (FfEnemy) resolvationData.getEnemies().get(command.getAllies().get(0));
+        final int amount = -command.getResolvedAllies().get(1).getStamina();
+
+        final FfAttributeHandler attributeHandler = (FfAttributeHandler) resolvationData.getCharacterHandler().getAttributeHandler();
+        attributeHandler.handleModification((FfCharacter) resolvationData.getCharacter(), ally.getName(), -amount);
         ally.setStamina(ally.getStamina() - amount);
     }
 
@@ -163,6 +168,8 @@ public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolve
         addSquadron(allies, "knights", character.getKnights());
         addSquadron(allies, "wilders", character.getWilders());
         addSquadron(allies, "northerns", character.getNortherns());
+        addSquadron(allies, "marauders", character.getMarauders());
+        addSquadron(allies, "whiteKnights", character.getWhiteKnights());
     }
 
     private void addSquadron(final List<FfAllyCharacter> allies, final String name, final int amount) {

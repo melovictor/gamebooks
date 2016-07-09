@@ -30,6 +30,8 @@ public class Ff36CharacterPageData extends FfCharacterPageData {
         addArmyEntry("knights", character.getKnights());
         addArmyEntry("wilders", character.getWilders());
         addArmyEntry("northerns", character.getNortherns());
+        addArmyEntry("marauders", character.getMarauders());
+        addArmyEntry("whiteKnights", character.getWhiteKnights());
     }
 
     private void addArmyEntry(final String name, final int amount) {
