@@ -29,7 +29,6 @@
     <gatherItem id="defWpn" />
     <gatherItem id="1001" />
     <gatherItem id="3001" />
-    <gatherItem id="3002" />
     <add amount="700" to="gold" />
     <add amount="100" to="warriors" />
     <add amount="50" to="dwarves" />
@@ -45,34 +44,122 @@
     <next id="225">Ha inkább tovább folytatjátok a menetelést</next>
   </p>
   <!-- 2 -->
-  <!-- 3 -->
+  <p id="3">
+    <text>
+        [p]- Nincs kedvem beszélgetni - mondja éles hangon a tolvaj. - Pofa be, és húzz el innen.[/p]
+    </text>
+    <next id="18">Ha teszed, amit mond, és odamész ahhoz az asztalhoz, ahol a három csavargó ül</next>
+    <next id="152">Ha inkább tovább beszélgetsz</next>
+  </p>
   <!-- 4 -->
-  <!-- 5 -->
+  <p id="5">
+    <text>
+        [p]A hátizsák telibe találja a célpontját. A kard csilingelve a földre pottyan. Az megkönnyebbülten fellélegez, amikor elvágod a köteleit. - Köszönöm - hálálkodik -, köszönöm, hogy megmentetted az életemet. - Aztán lehúz egy gyűrűt az ujjáról, és feléd nyújtja: - Fogadd ezt hálám jeléül. Jó szerencsét hoz.[/p]
+    </text>
+    <next id="270">Ha elfogadod a gyűrűt</next>
+    <next id="211">Ha inkább udvariasan visszautasítod, visszaszerzed a hátizsákodat, és kimész az embereidhez</next>
+  </p>
   <!-- 6 -->
-  <!-- 7 -->
+  <p id="7">
+    <text>
+        [p]A veszteségeitek nagyobbak, mint gondoltad volna. Tíz harcos és tíz Elf halt meg a [em]Repülő Tukán[/em] fedélzetén, valamint öt Törpe és tizenöt lovag fulladt a vízbe, mert lehúzta őket a páncélzatuk. Vesztesz 1 szerencse pontot. A túlélők örülnek, hogy ismét szilárd talajt éreznek a lábaik alatt, és már alig várják, hogy maguk mögött tudják a folyót. Úgy döntesz, nekivágtok az útnak, remélvén, hogy másnapra sikerül elérnetek Zengist.[/p]
+    </text>
+    <add amount="-10" to="warriors" />
+    <add amount="-10" to="elves" />
+    <add amount="-5" to="dwarves" />
+    <add amount="-15" to="knights" />
+    <add amount="-1" to="luck" />
+    <next id="366"></next>
+  </p>
   <!-- 8 -->
-  <!-- 9 -->
+  <p id="9">
+    <text>
+        [p]A nyilak eltévesztik a gyorsan emelkedő lényt, a Vivern és lovasa hamarosan apró pöttyé válnak az égbolt keleti határán. Attól tartva, hogy Agglax esetleg újabb merénylőket küld, úgy döntesz, hogy tovább folytatjátok a menetelést Karom felé, de most már szorosabb alakzatban.[/p]
+    </text>
+    <next id="220"></next>
+  </p>
   <!-- 10 -->
   <!-- 11 -->
-  <!-- 12 -->
+  <p id="12">
+    <text>
+        [p]Nem sokkal éjfél után valami megzavarja az álmodat. Világos, teliholdas éjszaka van. Alig mozdítva fejedet balra, majd jobbra nézel. A hajó közepe táján lekötözött hordók mellett egy árnyék mozog. A hídon nem látod az őrszemet, ezért izmaid azonnal riadókészültségbe helyezkednek. Felveszed a kardodat, és guggolva a hordókhoz lopódzol. Szemed sarkából hirtelen csillanást látsz, mintha megtörne valamin a hold fénye, és a különös tárgy feléd röppen. Ösztönösen lebuksz.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="246"></next>
+      </success>
+      <failure>
+        <next id="267"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 13 -->
   <!-- 14 -->
   <!-- 15 -->
-  <!-- 16 -->
+  <p id="16">
+    <text>
+        [p]Az őrnek is sikerül megszabadulnia a támadójától, és megköszöni, hogy riadóztattad. Felhívod a figyelmét, hogy a jövőben a szárazföldet és a folyót is tartsa szemmel. A többi őr nem jelent semmi gyanúsat, így visszafekszel aludni. Másnap korán reggel keltek, remélvén, hogy estére eléritek Zengist. Egy órányi menetelés után egy öregemberrel találkoztok, aki az ellenkező irányba igyekszik. - Te vagy az, aki le akar számolni Agglax-szal, igaz? - kérdezi bátran. Bólintasz. - Helyes! - vágja rá. - Akkor azt javaslom, hogy ha eléritek azt a helyet, ahol a folyó kétfelé válik, kövessétek az északi ágat, amíg el nem éritek Karom falut. Arrafelé rengeteg Domblakó Vadember lakik, akik szívesen csatlakoznának a seregetekhez. - Megköszönöd az öregember segítségét, majd továbbindulsz kelet felé. Egy óra múlva eléritek az elágazást, amiről a férfi beszélt.[/p]
+    </text>
+    <next id="350">Ha a kisebb, északi ágai követed</next>
+    <next id="49">Ha inkább átkeltek a mellékágon, és a főágat követitek tovább kelet felé</next>
+  </p>
   <!-- 17 -->
-  <!-- 18 -->
+  <p id="18">
+    <text>
+        [p]Leülsz a három csavargó mellé. Azok bemutatkoznak: Enk, Laz és Jip. Megkérdezik, mit csinálsz Zengisben.[/p]
+    </text>
+    <next id="395">Ha mesélsz nekik a küldetésedről</next>
+    <next id="35">Ha azt mondod, hogy az unokafivéredet akarod meglátogatni Zengisben</next>
+  </p>
   <!-- 19 -->
   <!-- 20 -->
-  <!-- 21 -->
+  <p id="21">
+    <text>
+        [p]Mielőtt a Folyami Rablók közel érhetnének a hajótokhoz, újabb tűzlabda hagyja el a katapultot.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="159"></next>
+      </success>
+      <failure>
+        <next id="74"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 22 -->
   <!-- 23 -->
-  <!-- 24 -->
+  <p id="24">
+    <text>
+        [p]A Goblin kibillen a nyeregből, és nyakát töri, amint a földre zuhan. Átkutatod a holttestet. Egy íjhúrt, és öt nyílhegyet találsz nála. Ennek nem veszed sok hasznát, de tovább kutatva a zsebeiben találsz még egy [span class="takeItem" data-id="3005" data-amount="1"]csont függőt[/span], melybe a 8-as számot vésték. Ha akarod, ezt magadhoz veheted. Utána visszatérsz a sereghez, és ismét kiadod a menetparancsot Karom felé.[/p]
+    </text>
+    <next id="220"></next>
+  </p>
   <!-- 25 -->
-  <!-- 26 -->
+  <p id="26">
+    <text>
+        [p]Úgy döntesz, hogy megkíméled a csapos életét. Hagyod, hogy odabicegjen a társaihoz, és azok ellássák a sebeit. Aztán a tömeg felé fordulsz, és hangosan beszélni kezdesz: - Bátor harcosokat keresek, akik csatlakoznak a seregemhez, hogy leszámoljunk az Allansiára halált hozó Árnydémonnal. 10 Aranytallért fizetek, de csak a legjobb harcosokra tartok igényt. Fél óra múlva tizenöt újabb harcossal gyarapszik a sereged; és közlöd a frissen toborzottakkal, hogy jelentkezzenek Lexonnál a zsoldjukért és felszerelésükért (vonj le 150 Aranyat a [em]Kalandlapodról[/em]). Miután senki mást nem látsz, aki érdekes alaknak tűnne, úgy döntesz, hogy távozol a Fekete Sárkányból. Körbenézel, mit lehet még Zengisben találni.[/p]
+    </text>
+    <add amount="-150" to="gold" />
+    <add amount="15" to="warriors" />
+    <next id="382"></next>
+  </p>
   <!-- 27 -->
-  <!-- 28 -->
+  <p id="28">
+    <text>
+        [p]Tíz Elf tart veled az erdőben teendő, izgalmasnak ígérkező sétádra. Karddal a kézben lopakodtok előre egyik fától a másikig. A segélykiáltások egyre közelebbről hallatszanak. Nemsokára két, fára fellógatott faketrecet pillantasz meg. Az egyikből két emberi kar nyúlik ki. Körbenézel, és odébb újabb ketreceket látsz. Megszámolod őket: összesen tizenegyen vannak, és valószínűleg mindegyikben van egy ember.[/p]
+    </text>
+    <next id="182">Ha tudatod jelenléted a pórul jártakkal</next>
+    <next id="143">Ha inkább csöndesen visszalopakodtok a sereghez</next>
+  </p>
   <!-- 29 -->
-  <!-- 30 -->
+  <p id="30">
+    <text>
+        [p]100 Aranyat fizetsz az északi emberek vezetőjének, és utasítod őket, hogy szálljanak fel a hajóra. Amikor ismét úton vagytok, a vezetőjük odalép hozzád. Acélkék szemének kényelmetlen, éles tekintetétől eltekintve úgy érzed, megbízhatsz benne. - A nevem Laas - mondja barátságos mosollyal. - Megengeded, hogy megajándékozzalak?[/p]
+    </text>
+    <add amount="-100" to="gold" />
+    <next id="358">Ha elfogadod a felajánlását</next>
+    <next id="390">Ha inkább udvariasan visszautasítod</next>
+  </p>
   <!-- 31 -->
   <!-- 32 -->
   <p id="33">
@@ -80,37 +167,101 @@
         [p]Látod, hogy sokan átverekszik magukat a mocsáron, hogy segítsenek rajtad. Mindenfelől megtámadják a Lápi Csontszaggatót, de a lény kemény bőrét nehéz átszúrni, és te sem tudsz mást tenni, mint védeni a saját életedet. Rájössz, hogy a hasát kellene megtámadnod, talán ott puhább a bőr. Amikor a bestia balra fordul, hogy felvegye a harcot néhány Törpével, megragadod az alkalmat, és előrelendülsz.[/p]
     </text>
     <test against="skill">
-    <success>
-    <next id="392"></next>
-    </success>
-    <failure>
-    <next id="256"></next>
-    </failure>
+      <success>
+        <next id="392"></next>
+      </success>
+      <failure>
+        <next id="256"></next>
+      </failure>
     </test>
   </p>
   <!-- 34 -->
-  <!-- 35 -->
+  <p id="35">
+    <text>
+        [p]- Ez furcsa - mondja Enk. - Egy csomó ember jön Zengisbe, hogy a rokonait látogassa meg. Senkinek sincs errefelé komoly dolga; no nem mintha nem hinnénk neked, pusztán csak megjegyeztem. Hol lakik az unokafivéred? Talán útba igazíthatnánk. - Mit felelsz?[/p]
+    </text>
+    <next id="92">Azt, hogy a Szemét utcában?</next>
+    <next id="223">Közlöd velük, hogy nem tartozik rájuk?</next>
+    <next id="311">Hogy más dolgod van, és menned kell?</next>
+  </p>
   <!-- 36 -->
-  <!-- 37 -->
+  <p id="37">
+    <text>
+        [p]Követed Barnock kapitányt, és seregeddel együtt levonultok a kikötőbe, ahol a [em]Repülő Tukán[/em] várakozik. A hajó is legalább olyan öreg, mint a kapitánya, és hasonlóan rossz állapotban van. Ez persze nem lep meg, hiszen a kikötőben csak ritkán látni ennél jobb lélekvesztőket. Utasítod az embereidet, hogy szálljanak fel a fedélzetre, majd kifizeted az 50 Aranytallért Barnock kapitánynak (vond le az összeget a [em]Kalandlapodról[/em]). A férfi parancsokat kezd osztogatni, te pedig csöndesen figyeled a matrózokat, amint felhúzzák a horgonyt, vitorlát bontanak, és lassan útnak indítják az öreg dereglyét. Húsz perc múlva Fang eltűnik a látóteredből, ahol a hajó követi a folyó kanyarulatait. A katonáid hangulata remek, még a Törpék és Elfek is elfeledkeznek a köztük lévő hagyományosan rossz viszonyról, és jóízűeket beszélgetnek és nevetgélnek együtt. Katonáidat egyesíti a vágy, hogy leszámoljanak az Allansiát fenyegető Árnydémonnal. A korlátnál egy csapat harcos áll, és mereven figyelik a vizet. Hirtelen az egyikük felordít, és felfelé mutat a folyón: - Nézzétek! Egy hordó úszik felénk! - A mutatott irányba nézel, és egy hatalmas, lezárt hordót pillantasz meg, amint enyhén bukdácsolva közeledik a vízben.[/p]
+    </text>
+    <add amount="-50" to="gold" />
+    <next id="145">Ha utasítasz valakit, hogy ugorjon a vízbe, és vonszolja a hajóhoz a hordót</next>
+    <next id="346">Ha inkább megállás nélkül továbbhajóztok</next>
+  </p>
   <!-- 38 -->
   <!-- 39 -->
-  <!-- 40 -->
+  <p id="40">
+    <text>
+        [p]Közlöd a csapossal, hogy sem időd, sem kedved nincs arra, hogy részegeknek való trükkökkel szórakoztasd a vendégeit. Azért vagy itt, hogy bátor harcosokat toborozz Agglax, az Árnydémon ellen. A csapos sötét, dús szempillái megremegnek egy picit, majd hirtelen nagyon érdeklődve fordul feléd. - Hát akkor miért nem ezzel kezdted? - kérdezi, és széles vigyor ömlik el az arcán. - Ismerem a város legjobb harcosait. Néhányan most itt is ülnek! - Fél óra múlva tizenöt újabb harcossal gyarapszik a sereg; és közlöd a frissen toborzottakkal, hogy jelentkezzenek Lexonnál a zsoldjukért és felszerelésükért (vonj le 150 Aranyat a [em]Kalandlapodról[/em]). Végül kezet rázol a nagydarab csapossal, és távozol a Fekete Sárkányból. Körbenézel, mit lehet még Zengisben találni.[/p]
+    </text>
+    <add amount="-150" to="gold" />
+    <add amount="15" to="warriors" />
+    <next id="382"></next>
+  </p>
   <!-- 41 -->
   <!-- 42 -->
-  <!-- 43 -->
+  <p id="43">
+    <text>
+        [p]Mostanra már számos katonád felébredt. Egyikük sem sérült meg, az őrtől eltekintve, akinek alaposan megfájdult a feje, miután hátulról meglegyintette egy kicsit az éjjeli látogató. Még egy emberrel megerősíted az őrséget, majd visszafeküdtök aludni. Hajnalban Barnock kapitány kiadja a parancsot a vitorlabontásra. Tovább hajóztok felfelé a folyón.[/p]
+    </text>
+    <next id="188"></next>
+  </p>
   <!-- 44 -->
   <!-- 45 -->
   <!-- 46 -->
   <!-- 47 -->
   <!-- 48 -->
-  <!-- 49 -->
+  <p id="49">
+    <text>
+        [p]A nap hátralévő része incidens nélkül telik el. Amikor a nap lehanyatlik a láthatáron, utasítást adsz a táborverésre. Egy megfelelően védhető helyen letáboroztok, körülbelül tizenhat kilométernyire Zengistől. Nyúlpörköltet vacsoráztok, majd evés után ledőlsz, hogy átgondold a nap eseményeit, de hamar álomba merülsz.[/p]
+    </text>
+    <itemCheck type="item" id="3003">
+      <have>
+        <next id="279"></next>
+      </have>
+      <haveEquipped>
+        <next id="128"></next>
+      </haveEquipped>
+      <dontHave>
+        <next id="279"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 50 -->
   <!-- 51 -->
-  <!-- 52 -->
+  <p id="52">
+    <text>
+        [p]Két perccel később egy öreg faépület ajtaja fölött billegő, repedezett fatáblát pillantasz meg, melyen egy durván rajzolt sárkány, és a „Fekete Sárkány” felirat díszeleg. A kocsmából kiáltozás és nevetés hangjai hallatszanak. Úgy döntesz, belépsz az ajtón. Felmész néhány öreg kőlépcsőn, és benyomod a vastag tölgyfaajtót. Bár odakint világos van, a terem apró, mocskos ablakai nem sok fényt engednek be, ezért a helyiséget gyertyák világítják meg. Az ajtóból jól látod, hogy nagy odabent a nyüzsgés, bár egyik vendég sem tűnik túl bizalomgerjesztőnek. A sötét sarkokban köpenyes-csuklyás csavargók beszélgetnek egymás közt, részeg tolvajok ülnek a szoba közepén, és belekötnek mindenkibe, aki csak elmegy mellettük. Ezt leggyakrabban a felszolgálólányokkal teszik meg, akiknek így alaposan kijut a durva kezekből, és az alkoholszagú, rosszízű tréfákból. Végignézel az asztalokon, hogy hová lenne érdemes leülnöd. Mit választasz?[/p]
+    </text>
+    <next id="197">A bárpulthoz ülsz?</next>
+    <next id="378">Leülsz egy részeg tolvajhoz?</next>
+    <next id="18">Leülsz három csavargóhoz?</next>
+  </p>
   <!-- 53 -->
-  <!-- 54 -->
+  <p id="54">
+    <text>
+        [p]Fél óra sem telik el az almaevés után, néhány katona rosszul lesz - téged is beleértve. Vesztesz 2 életerő és 1 ügyesség pontot! Az embereid állapota is egyre romlik. Ketten szinte azonnal meghalnak, de mire a nap eltelik, összesen öt a halálos áldozatok száma. Vesztesz 1 szerencse pontot, és jegyezd fel az emberveszteséget a [em]Kalandlapodra[/em]! Megbánod a korábbi nagylelkű döntésedet, és elhatározod, hogy a jövőben nem hagyod, hogy bármi is eltérítsen eredeti célodtól.[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <add amount="-1" to="skill" />
+    <add amount="-1" to="luck" />
+    <add amount="-5" to="warriors" />
+    <next id="209"></next>
+  </p>
   <!-- 55 -->
-  <!-- 56 -->
+  <p id="56">
+    <text>
+        [p]Nem vagy biztos benne, hogy jól döntesz akkor, amikor megbízol a csavargókban, mindenesetre átadod nekik a 100 Aranytallért. Laz előhúz egy térképet a köpenyéből, és az asztalra teríti. A lap közepén Zengis látható, tőle délre pedig a Karn nevű falu van felrajzolva. Tovább délkeletre fekszik a Csillagkő Barlang. Zengistől keletre az Ördögerdő terül el, a Kok folyó elágazásától szinte egészen a térkép széléig. Laz elővesz egy fekete ceruzát, és egy nagy keresztet rajzol vele a térképre, az Ördögerdő keleti szélére.[/p]
+        [p]- Itt találkozhatsz vele. - mondja. Összehajtogatod a [span class="takeItem" data-id="3010" data-amount="1"]térképet[/span], és elteszed a ruhád egyik zsebébe. - És csak akkor van reményed leszámolni Agglaxszal, ha meglátogatod az Orákulumot - suttogja Jip. - Hogy szóba áll-e majd veled, az más kérdés. Az attól függ, hogy milyen kedvében találod, és hogy milyen ajándékot viszel neki. Az Orákulumot a Csillagkő Barlangban találod. - Megköszönöd az információkat a csavargóknak, majd elhagyod a kocsmát, hogy körbenézz Zengisben, közben pedig eltöprengesz, vajon ki is lehet ez a titokzatos ember.[/p]
+    </text>
+    <add amount="-100" to="gold" />
+    <next id="382"></next>
+  </p>
   <!-- 57 -->
   <p id="58">
     <text>
@@ -120,20 +271,77 @@
   </p>
   <!-- 59 -->
   <!-- 60 -->
-  <!-- 61 -->
+  <p id="61">
+    <text>
+        [p]Megrázod a fejed, és kis híján elveszted az egyensúlyodat. Hallod, amint a csapos hatalmasat kacag mögötted. Lezöttyensz a legközelebbi székre. Vesztesz 1 életerő pontot![/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <random>
+      <result max="3" min="1">
+        <text>
+            [p]Egy részeg tolvaj asztalához ültél le.[/p]
+        </text>
+        <next id="378"></next>
+      </result>
+      <result max="6" min="4">
+        <text>
+            [p]Három csavargót „választottál” asztaltársaságnak.[/p]
+        </text>
+        <next id="18"></next>
+      </result>
+    </random>
+  </p>
   <!-- 62 -->
   <!-- 63 -->
-  <!-- 64 -->
+  <p id="64">
+    <text>
+        [p]Az őrök felszólítanak, hogy állj meg, de te tiszta erőből futsz tovább, remélvén, hogy találsz egy kocsmát, ahová beronthatsz.[/p]
+    </text>
+    <next id="52"></next>
+  </p>
   <!-- 65 -->
   <!-- 66 -->
-  <!-- 67 -->
+  <p id="67">
+    <text>
+        [p]A mozgékony Domblakó Vadember villámgyorsan felszökken a levegőbe, és mielőtt reagálhatnál, két lábbal beléd rúg. A támadás erejétől a földre zuhansz. Arccal előre esel le, és máris éles fájdalom nyilall a válladba, amint karjaidat szorosan hátracsavarja ellenfeled. Megpróbálsz küzdeni egy kicsit, de ettől csak még jobban fájnak a karjaid, ezért megadod magad Vinének.[/p]
+    </text>
+    <next id="213"></next>
+  </p>
   <!-- 68 -->
-  <!-- 69 -->
+  <p id="69">
+    <text>
+        [p]Tíz harcosod áldozatul esik a Szigonylegyeknek. Testük ideális otthonul szolgál majd a később kikelő nyüveknek. A rovarok végül elrepülnek, te pedig leverten visszavezeted embereidet a hajóra. Vesztesz 1 szerencse pontot! Barnock kapitány látja, hogy nem vagy olyan hangulatban, hogy kellemesen elcsevegj vele, így kiadja a parancsot embereinek a továbbhajózásra.[/p]
+    </text>
+    <add amount="-10" to="warriors" />
+    <add amount="-1" to="luck" />
+    <next id="188"></next>
+  </p>
   <!-- 70 -->
-  <!-- 71 -->
+  <p id="71">
+    <text>
+        [p]A csapos csodálkozva néz rád, majd elővesz egy fadorongot a pult alól. Kiront a bárpult mögül, nagyot kiáltva: - Majd én megtanítom ezt a tacskót! - Félrelököd a székedet, és előrántod a kardod, hogy szembefordulj a nagydarab férfival. Az ivó vendégei egy pillanat alatt megtisztítják a terem közepét, hogy szabad teret engedjenek a küzdőknek. - Verd puhára, Hájas! - kiáltja egy hang a tömegből. - Igyekezz, Hájas, még egy sört akarok inni! - süvölti egy másik. Aztán elkezdődik a harc.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="6" />
+      <winRound enemy="6" totalCount="3">
+        <interrupt />
+        <next id="26"></next>
+      </winRound>
+      <loseRound enemy="6" totalCount="3">
+        <interrupt />
+        <next id="227"></next>
+      </loseRound>
+    </fight>
+  </p>
   <!-- 72 -->
   <!-- 73 -->
-  <!-- 74 -->
+  <p id="74">
+    <text>
+        [p]A tűzlabda telibe találja a főárbocot. Az recsegve lezuhan, és halálra zúzza öt emberedet. Két Törpe előrerohan, és nedves pokrócokkal hamar eloltják a kezdődő tüzet.[/p]
+    </text>
+    <add amount="-5" to="warriors" />
+    <next id="192"></next>
+  </p>
   <!-- 75 -->
   <!-- 76 -->
   <p id="77">
@@ -144,38 +352,128 @@
     <next id="205">Bedobod a hátizsákodat, és elütöd vele a kardot?</next>
     <next id="320">Itt hagyod az Elfet, és továbbmész?</next>
   </p>
-  <!-- 78 -->
+  <p id="78">
+    <text>
+        [p]Gyorsan végigosonsz az utcán, mielőtt még valaki másnak is felkeltenéd a figyelmét. Hirtelen arra leszel figyelmes, hogy valami kényelmetlenül nyomja a ruhádat, és eszedbe jut a bőrzacskó. Előhúzod, és kioldod a madzagját. Amikor azonban kirázod a tartalmát a tenyeredbe, riadtan veszed észre, hogy egy skorpió pottyant ki belőle.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="253"></next>
+      </success>
+      <failure>
+        <next id="240"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 79 -->
-  <!-- 80 -->
+  <p id="80">
+    <text>
+        [p]A dongó tétovázik egy pillanatig, majd továbbsiet az általad kiválasztott lekvár felé. Kapsz 1 szerencse pontot. A férfi kiakasztja ruhájából a melltűjét, és kifejezéstelen arccal, szó nélkül átadja neked. A [span class="takeItem" data-id="3009" data-amount="1"]bross[/span] gyönyörű darab, melyet egy tűzokádó, vörös sárkány domborműve díszít. Megfordítod, és látod, hogy a melltű hátsó felébe a 89-es számot vésték. Megjegyzed ezt a számot, majd feltűzöd az ékszert a ruhádra.[/p]
+    </text>
+    <next id="3">Ha megkérdezed a tolvaj nevét</next>
+    <next id="18">Ha inkább felállsz az asztaltól, és átülsz egy másikhoz, a három csavargó mellé</next>
+  </p>
   <!-- 81 -->
   <!-- 82 -->
-  <!-- 83 -->
+  <p id="83">
+    <text>
+        [p]Öt harcosod áldozatul esik a Szigonylegyeknek, Testük ideális otthonul szolgál majd a később kikelő nyüveknek. A rovarok végül elrepülnek, te pedig leverten visszavezeted embereidet a hajóra. Vesztesz 1 szerencse pontot! Barnock kapitány látja, hogy gyorsan el akarsz tűnni erről az átkozott helyről, ezért kiadja a parancsot embereinek a továbbhajózásra.[/p]
+    </text>
+    <add amount="-5" to="warriors" />
+    <add amount="-1" to="luck" />
+    <next id="188"></next>
+  </p>
   <!-- 84 -->
   <!-- 85 -->
-  <!-- 86 -->
+  <p id="86">
+    <text>
+        [p]Amint kirántjátok a kardjaitokat, tizenöt Domblakó Vadember bukkan fel szinte a semmiből. Állatbőrökbe öltözött, bunkókkal és fejszékkel felfegyverkezett, hosszúlábú ellenfeleitek szilaj rohamot intéznek a sereged ellen. Meg kell vívnod a csatát.[/p]
+    </text>
+    <fight type="custom36" resolver="custom">
+      <ally id="203" />
+      <enemy id="102" />
+      <win>
+        <next id="340"></next>
+      </win>
+    </fight>
+  </p>
   <!-- 87 -->
   <!-- 88 -->
   <!-- 89 -->
-  <!-- 90 -->
+  <p id="90">
+    <text>
+        [p]Sikerül megragadnod a kardot anélkül, hogy beindítottad volna a csapdát. Az Elf megkönnyebbülten fellélegez, amikor elvágod a szíjait. - Köszönöm - rebegi. - Köszönöm, hogy megmentetted az életemet. -Utána lehúz egy gyűrűt az ujjáról, és feléd nyújtja. - Fogadd el ezt, hálám jeléül. Szerencsét hoz.[/p]
+    </text>
+    <next id="270">Ha elfogadod a gyűrűt</next>
+    <next id="211">Ha inkább udvariasan visszautasítod, és távozol, hogy csatlakozz az embereidhez</next>
+  </p>
   <!-- 91 -->
-  <!-- 92 -->
+  <p id="92">
+    <text>
+        [p]- Szemét utca? - kérdezi Enk. - Hiszen az éppen ott van, ahol én lakom. Elkísérünk addig. - Hirtelenjében nem jut eszedbe semmilyen mentség, ezért kényszeredetten beleegyezel. Kisétáltok a kocsmából, öt percig haladtok egy utcán, majd bekanyarodtok jobbra, egy szűk sikátorba. Ott a három férfi hirtelen megáll, körbevesznek, és előhúzzák a tőreiket. - Szemét utca! Zengisben nincs is Szemét utca - közli Enk megvetően. - Kapjuk el a fickót, fiúk; azok a zsebek sok aranyat rejtegethetnek! - Előrántod a kardodat, hogy védd magad. Külön-külön küzdj meg velük![/p]
+    </text>
+    <fight type="single">
+      <enemy id="8" />
+      <enemy id="9" />
+      <enemy id="10" />
+    </fight>
+    <next id="133"></next>
+  </p>
   <!-- 93 -->
-  <!-- 94 -->
+  <p id="94">
+    <text>
+        [p]A harcos hagyja, hogy a férfit hátára vegye a folyó. Visszaúszik a hajóra, és folytathatjátok az utat.[/p]
+    </text>
+    <next id="234"></next>
+  </p>
   <!-- 95 -->
   <!-- 96 -->
-  <!-- 97 -->
+  <p id="97">
+    <text>
+        [p]A tűzlabda elemészt, és meghalsz, mielőtt a sereged ideérne. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 98 -->
   <!-- 99 -->
   <!-- 100 -->
-  <!-- 101 -->
+  <p id="101">
+    <text>
+        [p]Miközben elveszed a fejszéjét, kiszúrsz az övén egy kis bőrzacskót. De mielőtt kinyithatnád, két városi őrt látsz közeledni.[/p]
+    </text>
+    <next id="281">Ha kinyitod a zacskót, megkockáztatva ezzel, hogy esetleg elfognak</next>
+    <next id="64">Ha inkább az egyetlen aranygyűrűvel a zsebedben elmenekülsz a helyszínről</next>
+  </p>
   <!-- 102 -->
   <!-- 103 -->
-  <!-- 104 -->
+  <p id="104">
+    <text>
+        [p]Visszatérsz a rád váró sereghez, és tíz perc múlva már ismét úton vagytok. Egy alkalmas helyen átkeltek a folyón, majd délkeleti irányba fordultok, Zengis felé.[/p]
+    </text>
+    <next id="49"></next>
+  </p>
   <!-- 105 -->
   <!-- 106 -->
-  <!-- 107 -->
+  <p id="107">
+    <text>
+        [p]A hordó nagy loccsanással csapódik a vízbe. Nemsokára a folyó kisodorja a látóteretekből.[/p]
+    </text>
+    <next id="209"></next>
+  </p>
   <!-- 108 -->
-  <!-- 109 -->
+  <p id="109">
+    <text>
+        [p]Két nyíl találja telibe a célpontot. Az egyik a Vivern puha hasába, a másik a Goblin hátába fúródik. A lovas előrecsuklik a nyeregben, de a bestia sebe ellenére is tovább emelkedik az ég felé.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="24"></next>
+      </success>
+      <failure>
+        <next id="135"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 110 -->
   <!-- 111 -->
   <!-- 112 -->
@@ -189,185 +487,597 @@
     <next id="295">Ha továbbmeneteltek kelet felé</next>
   </p>
   <!-- 116 -->
-  <!-- 117 -->
+  <p id="117">
+    <text>
+        [p]Döbbenten figyeled a Domblakó Vadember lábainak hűlt helyét, miközben ellenfeled villámgyorsan rád veti magát. Mielőtt felfognád, mi is történik, érzed, amint a karjaidat fájdalmasan hátracsavarják. Megpróbálod kiszabadítani magad, de minél jobban vergődsz, annál jobban fáj a karod, így abbahagyod a reménytelen küzdelmet.[/p]
+    </text>
+    <next id="213"></next>
+  </p>
   <!-- 118 -->
-  <!-- 119 -->
+  <p id="119">
+    <text>
+        [p]Egy harcos a vízbe veti magát, és odaúszik a farönkhöz. - Halott - kiabálja. - Egy Ork kés áll ki a hasából. A nyakában egy láncon egy arany kulcs lóg. Elvegyem?[/p]
+    </text>
+    <next id="318">Ha kell a kulcs</next>
+    <next id="94">Ha inkább hagyod a halottat a kulccsal együtt</next>
+  </p>
   <!-- 120 -->
   <!-- 121 -->
   <!-- 122 -->
-  <!-- 123 -->
+  <p id="123">
+    <text>
+        [p]A Goblin a Vivernre esik rá. Bár alaposan összetörte magát, és nyüszít a fájdalomtól - valószínűnek tartod, hogy eltört egy-két bordája -, legalább életben van, így ki tudod kérdezni. Odalépsz az orgyilkoshoz, és keményen megkérdezed tőle, mit tud Agglaxról. De a bestia egyszerűen köp egyet, majd mellbe szúrja saját magát. Itt már nincs mit tenni. Úgy döntesz, hogy átkutatod a zsebeit. Egy íjhúrt, öt nyílhegyet és egy [span class="takeItem" data-id="3004" data-amount="1"]arany függőt[/span] találsz nála, ez utóbbiba a 10-es számot vésték. Ha akarod, megtarthatod az ékszert. Kiadod a parancsot, hogy meneteljetek tovább Karom felé.[/p]
+    </text>
+    <next id="220"></next>
+  </p>
   <!-- 124 -->
   <!-- 125 -->
-  <!-- 126 -->
+  <p id="126">
+    <text>
+        [p]Miközben elrohansz, nem veszed észre, hogy a fejszés férfi célba vesz, és elhajítja fegyverét.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="371"></next>
+      </success>
+      <failure>
+        <next id="302"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 127 -->
-  <!-- 128 -->
+  <p id="128">
+    <text>
+        [p]Számodra ez az éjszaka életed leghosszabb éjszakájának bizonyul: ugyanis soha nem virrad már rád a hajnal. Amint a hold felkel, az amulett tested hője hatására életre kel, a bogár belerágja magát a nyakadba, és szétmarcangolja a légcsövedet. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 129 -->
   <!-- 130 -->
-  <!-- 131 -->
+  <p id="131">
+    <text>
+        [p]A lángoló golyóbis becsapódik a fedélzeten, és megöli öt katonádat. A többiek még idejében eloltják a tüzet.[/p]
+    </text>
+    <add amount="-5" to="warriors" />
+    <next id="21"></next>
+  </p>
   <!-- 132 -->
-  <!-- 133 -->
+  <p id="133">
+    <text>
+        [p]Gyorsan átkutatod a csavargók zsebeit, és [span class="takeItem" data-id="10" data-amount="gold"]10 Aranytallért[/span], meg egy zöld, szagtalan folyadékot tartalmazó üvegcsét találsz.[/p]
+    </text>
+    <next id="264">Ha megiszod a folyadékot</next>
+    <next id="382">Ha inkább itt hagyod az üveget, elteszed az aranyakat, és visszatérsz az utcára, hogy folytasd Zengis felderítését</next>
+  </p>
   <!-- 134 -->
-  <!-- 135 -->
+  <p id="135">
+    <text>
+        [p]A Goblinnak sikerül a nyeregben maradnia, és a Vivern hamarosan eltűnik a keleti látóhatáron. Félve attól, hogy Agglax újabb merénylőket küld ki, kiadod a parancsot, hogy szorosabb alakzatban vonuljon a sereg Karom felé.[/p]
+    </text>
+    <next id="220"></next>
+  </p>
   <!-- 136 -->
   <!-- 137 -->
   <!-- 138 -->
-  <!-- 139 -->
+  <p id="139">
+    <text>
+        [p]Mire a [em]Repülő Tukán[/em] megfordul, és ismét felgyorsul, a kalózhajó már 200 méternyire megközelített benneteket. A távolság gyorsan csökken, és nemsokára a fedélzetre zuhansz a két hajó összeütközése által keltett hatalmas lökés hatására.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="384"></next>
+      </success>
+      <failure>
+        <next id="215"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 140 -->
   <!-- 141 -->
   <!-- 142 -->
-  <!-- 143 -->
+  <p id="143">
+    <text>
+        [p]Már majdnem kiértetek az erdőből, amikor vad harci kiáltásokat hallotok. Tizenöt, kardokkal, csatabárdokkal és harci kalapácsokkal felfegyverzett Ork rohan felétek a fák között. Vívd meg a csatát.[/p]
+    </text>
+    <itemCheck type="section" id="182">
+      <have>
+        <fight type="custom36" resolver="custom">
+          <ally id="201" />
+          <ally id="202" />
+          <enemy id="101" />
+          <win>
+            <next id="242"></next>
+          </win>
+        </fight>
+      </have>
+      <dontHave>
+        <fight type="custom36" resolver="custom">
+          <ally id="201" />
+          <enemy id="101" />
+          <win>
+            <next id="242"></next>
+          </win>
+        </fight>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 144 -->
-  <!-- 145 -->
+  <p id="145">
+    <text>
+        [p]Egy harcos levetkőzik derékig, beugrik a folyóba, és odaúszik a hordóhoz. Ledobnak neki egy kötelet, melyet a hordó köré köt, hogy fel lehessen húzni a fedélzetre. Az emberek izgatott moraja közepette leemelitek a fedelét. Ám az izgalom hamar alábbhagy, amikor kiderül, hogy csupán almával van tele félig.[/p]
+    </text>
+    <next id="329">Ha kiosztasz néhányat az embereknek</next>
+    <next id="107">Ha inkább visszahajítod a zsákmányt a vízbe</next>
+  </p>
   <!-- 146 -->
-  <!-- 147 -->
+  <p id="147">
+    <text>
+        [p]Hátraugrasz, és a nyíl remegve, pár centire a lábadtól a földbe csapódik. A Vivern átsuhan az égen. A katonák hozzád rohannak, hogy megnézzék, megsérültél-e. Rájuk kiáltasz, hogy szedjék le a merénylődet, de mire célba vehetnék, a lény már túl messze repül. Kiadod a parancsot a továbbvonulásra, és közben eltűnődsz, vajon Agglax küldte-e a Goblint, hogy leszámoljon veled.[/p]
+    </text>
+    <next id="220"></next>
+  </p>
   <!-- 148 -->
   <!-- 149 -->
-  <!-- 150 -->
+  <p id="150">
+    <text>
+        [p]A Fejszés Férfi hátralép, és kétkezes fejszéjét nyolcas alakban pörgeti teste előtt, ezzel védve magát.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="3" />
+    </fight>
+    <next id="101"></next>
+  </p>
   <!-- 151 -->
-  <!-- 152 -->
+  <p id="152">
+    <text>
+        [p]- Azt mondtam, tűnés! - mordul fel a tolvaj. Hátralöki a székét, és feláll. - Te most vagy süket, vagy hülye vagy! Talán ezt megérted! - kiáltja dühösen, és előrántja a kardját. Te is hasonlóképpen teszel.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="7" />
+    </fight>
+    <next id="276"></next>
+  </p>
   <!-- 153 -->
   <p id="154">
     <text>
         [p]Átrohansz a padlódeszkákon, és a kardért nyúlsz.[/p]
     </text>
-     <test against="luck">
-     <success>
-     <next id="90"></next>
-     </success>
-     <failure>
-     <next id="387"></next>
-     </failure>
-     </test>
+    <test against="luck">
+      <success>
+        <next id="90"></next>
+      </success>
+      <failure>
+        <next id="387"></next>
+      </failure>
+    </test>
   </p>
   <!-- 155 -->
   <!-- 156 -->
-  <!-- 157 -->
+  <p id="157">
+    <text>
+        [p]A látásod egyre torzabbá válik, és érzed, hogy igen rosszul vagy. Megpróbálsz odatántorogni a legközelebbi asztalhoz, de nem éred el, és a földre roskadsz. Amikor magadhoz térsz, egy szeméthalom tetején fekszel, egy sötét sikátorban. A fejed hasogat a fájdalomtól, és a szeméthalomból felszálló bűz hányingert okoz. 
+    </text>
+    <itemCheck type="items" id="3004 or 3005 or 3006">
+      <have>
+        <text>
+            A kardod szerencsére még megvan, de ékszer már nincs nálad - a Fekete Sárkány tolvajai mind elvitték (húzd le a tárgyakat a [em]Kalandlapodról[/em]).
+        </text>
+        <loseItem id="3004,3005,3006" amount="10" />
+      </have>
+      <dontHave>
+        <text>
+            A kardod szerencsére még megvan.
+        </text>
+      </dontHave>
+      <after>
+        <text>
+            Vesztesz 1 szerencse pontot! Átkozódsz döntésed miatt, hogy ellátogass Zengisbe, majd lassan feltápászkodsz, és kitántorogsz a sikátorból.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <add amount="-1" to="luck" />
+    <next id="382"></next>
+  </p>
   <!-- 158 -->
-  <!-- 159 -->
+  <p id="159">
+    <text>
+        [p]A tűzlabda hangos loccsanással és sistergéssel a folyóba csapódik a hajótok mellett.[/p]
+    </text>
+    <next id="192"></next>
+  </p>
   <!-- 160 -->
-  <!-- 161 -->
+  <p id="161">
+    <text>
+        [p]Kezet rázol a férfival, visszaülsz a székedre, és várod, hogy egy légy arra repüljön. Nem kell sokat várni. Egy hatalmas dongó száll le az asztalra, és elindul a lekvárok felé.[/p]
+    </text>
+    <random>
+      <result max="3" min="1">
+        <next id="231"></next>
+      </result>
+      <result max="6" min="4">
+        <next id="80"></next>
+      </result>
+    </random>
+  </p>
   <!-- 162 -->
-  <!-- 163 -->
+  <p id="163">
+    <text>
+        [p]Az egyik őr bólint, majd megszólal: - Igen, láttam a sereget, amint Zengis mellett tábort vertek. A kalandozó biztosan igazat mond. Nos, most elengedünk, de azt javasoljuk, ne kerülj még egyszer kalamajkába. - Megkönnyebbülten fellélegzel, és biztosítod az őröket, hogy csak új katonákat áll szándékodban toborozni.[/p]
+    </text>
+    <next id="78"></next>
+  </p>
   <!-- 164 -->
   <!-- 165 -->
   <!-- 166 -->
-  <!-- 167 -->
+  <p id="167">
+    <text>
+        [p]Az ajtó zárva van, így kénytelen vagy kardod pengéjével felfeszíteni. Némi erőlködés után az ajtó nagy reccsenéssel enged. Mögötte egy kis kamrát látsz, melynek közepén egy hatalmas, rozsdás vasláda hever. Ennek fedelén durva betűkkel írva az alábbi felirat díszeleg: „KINYITNI TILOS. UNMOU TULAJDONA.”.[/p]
+    </text>
+    <next id="229">Ha ennek ellenére kinyitod a ládát</next>
+    <next id="399">Ha inkább tiszteletben tartod a tulajdonos rendelkezését, itt hagyod a ládát, és továbbmész</next>
+  </p>
   <!-- 168 -->
   <!-- 169 -->
-  <!-- 170 -->
+  <p id="170">
+    <text>
+        [p]Éles fájdalom nyilall végig a karodon a háromágú szigony ejtette sebből. Vesztesz 2 életerő pontot! Összeszorítod a fogaidat, és kihúzod válladból a beléállt fegyvert. Egy vékonyka alak rohan ki a hordók mögül, átveti magát a hajókorláton, és alig hallható csobbanással a vízbe ugrik. Odarohansz, és figyeled a folyó felszínét, de semmi sem bukkan fel. Bárki vagy bármi legyen is a támadód, biztos, hogy nagyon jól úszik víz alatt. A hordókhoz sétálsz, és megvizsgálod a nedves, úszóhártyás nyomokat. Valószínűleg egy Halember lehetett az.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <test against="luck">
+      <success>
+        <next id="43"></next>
+      </success>
+      <failure>
+        <next id="375"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 171 -->
-  <!-- 172 -->
+  <p id="172">
+    <text>
+        [p]A szádhoz emeled a korsót, és egyetlen hajtással megiszod a bűzös italt. - Poshadt víz! - kiáltod hangosan a csaposnak, és a pultra vágod a korsót. A férfi gúnyosan mosolyog.[/p]
+    </text>
+    <next id="249">Én fizetem az italodat, ha ezt másodszor is meg tudod csinálni - Ha elfogadod a kihívást</next>
+    <next id="40">Ha inkább nem vesztegeted itt tovább az idődet</next>
+  </p>
   <!-- 173 -->
   <!-- 174 -->
-  <!-- 175 -->
+  <p id="175">
+    <text>
+        [p]Már késő délutánra jár az idő, amikor megpillantjátok Zengis tornyait és háztetejeit. Barnock kapitány megkönnyebbültnek látszik egy kicsit, tudatában annak, hogy nemsokára biztonságban lesz a város kikötőjében. Mielőtt partra szállnátok, az egyik lovagot, név szerint Lexont kinevezed a helyettesednek, és megbízod, hogy vezesse az embereket egy megfelelő táborhelyre Zengis mellett. Nem akarod, hogy bajba kerüljenek a városban, és azt sem, hogy a katonák a kocsmákban dorbézoljanak: szükségük van az éjszakai pihenésre, mert másnap reggel ismét útnak indultok. Közlöd vele, hogy az éjszakát a településen töltöd, remélve, hogy újabb embereket tudsz toborozni, esetleg újabb pletykákat és híreket hallasz Agglaxról, az Árnydémonról. Miközben embereid lemasíroznak a hajóhídon, búcsút intesz Barnock kapitánynak. Átmész a város főkapuján, és úgy döntesz, meglátogatod a legközelebbi kocsmát, mint a legbiztosabb helyet, ahol harcosokat és híreket is találhatsz. Miközben az öreg házak között sétálsz, váratlanul egy aranygyűrűt pillantasz meg az út szélén.[/p]
+    </text>
+    <next id="292">Ha felveszed</next>
+    <next id="52">Ha inkább továbbmész kocsma után kutatva</next>
+  </p>
   <!-- 176 -->
   <!-- 177 -->
   <!-- 178 -->
-  <!-- 179 -->
+  <p id="179">
+    <text>
+        [p]Fél óra sem telik el az almaevés után, néhány katona rosszul lesz - téged is beleértve. Vesztesz 4 életerő és 1 ügyesség pontot! Az embereid állapota is egyre romlik. Ketten szinte azonnal meghalnak, de mire a nap eltelik, összesen tizenöt a halálos áldozatok száma. Vesztesz 2 szerencse pontot. Jegyezd fel az emberveszteséget a [em]Kalandlapodra[/em]! Megbánod korábbi bőkezűségedet, és elhatározod, hogy a jövőben nem hagyod, hogy bármi is eltérítsen küldetésed céljától.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <add amount="-1" to="skill" />
+    <add amount="-2" to="luck" />
+    <add amount="-15" to="warriors" />
+    <next id="209"></next>
+  </p>
   <!-- 180 -->
   <!-- 181 -->
-  <!-- 182 -->
+  <p id="182">
+    <text>
+        [p]Kilépsz a fa mögül, így a ketrecekbe zárt emberek megpillanthatnak. - Szabadíts ki! Szabadíts ki minket gyorsan, mielőtt az Orkok visszajönnének! - kiabálja az egyik férfi. - Két nappal ezelőtt az íjászaik lenyilaztak minket. Tizenketten meghaltak, a többiek megsebesültek. Úgy hallottuk, egy sereg gyülekezik, hogy leszámoljon az Árnydémonnal, ezért keletre indultunk, hogy csatlakozzunk hozzájuk. - Érzed, hogy a férfi igazat beszél, ezért utasítod az Elfeket, hogy vágják le a ketreceket a fákról. Tíz fáradt, elgyötört embert szabadítotok ki, a tizenegyedik belehalt a sérüléseibe. Az életben maradottak meglepődnek, amikor megtudják, hogy te vagy az Agglax ellen indult sereg parancsnoka, de utána örömmel csatlakoznak hozzád. Ellátjátok őket fegyverrel, étellel és itallal.[/p]
+    </text>
+    <add amount="10" to="warriors" />
+    <next id="143"></next>
+  </p>
   <!-- 183 -->
   <!-- 184 -->
   <p id="185">
     <text>
         [p]Váratlanul hatalmas sikoltás hasít a levegőbe: az egyik harcosod üvöltött, és aztán a többiek is kiáltozni kezdenek. - Óriás Tűzhangyák! - hallatszik a kiáltás. A sereged egyik részén váratlanul óriási nyüzsgés támad: az emberek felugrálnak, a földet kezdik tapodni, és vadul söprögetik a ruhájukat és páncélzatukat. Megparancsolod, hogy mindenki azonnal hagyja el a füves terepet, de mire ismét összeállnak a folyóparton, öt harcos hiányzik közülük. Visszamész a fűbe, és öt holttestet látsz, melyeket vastag rétegben borítanak a mérgező, vörös hangyák. Semmit sem tehetsz már értük, így visszamész a többiekhez, és elmondod a rossz hírt. Utána útnak indultok, bár érthetően nem túl jó kedvvel.[/p]
     </text>
-    <add amount="-5" to="warrior"/>
+    <add amount="-5" to="warrior" />
     <next id="274"></next>
   </p>
   <!-- 186 -->
   <!-- 187 -->
-  <!-- 188 -->
+  <p id="188">
+    <text>
+        [p]Két óra elteltével a hajóút kellemes nyugalmát egy kiáltás szakítja félbe: - Folyami Kalózok! Folyami Kalózok! - Barnock kapitány előveszi messzelátóját, belenéz, majd dühöngve káromkodni kezd. A folyó sodrásának irányából egy hajó közelít teljes sebességgel. Átadja neked is a messzelátót, így te is megtudhatod, mi okozta az iménti dührohamot. A kalózhajó az északi népek stílusában épült, igen erős konstrukció, orrán hatalmas, vasból készült orrtőkével, melyet szemmel láthatóan arra terveztek, hogy beszakítsák vele áldozataik hajójának az oldalát. A hajó oldalából két evezősor nyúlik ki, ezzel is gyorsítva annak mozgását - a [em]Repülő Tukán[/em] nyilvánvalóan nem veheti fel vele a versenyt. Barnock kapitány idegesen tördelni kezdi a kezét, és fogalma sincs, mihez kezdjetek. Mit teszel?[/p]
+    </text>
+    <next id="277">Utasítod, hogy vonja fel a megadást jelző zászlót?</next>
+    <next id="353">Az északi part felé irányítod a [em]Repülő Tukánt?[/em]</next>
+    <next id="139">Megfordítod a [em]Repülő Tukánt[/em], és megpróbáljátok lehagyni üldözőiteket?</next>
+  </p>
   <!-- 189 -->
   <!-- 190 -->
   <!-- 191 -->
-  <!-- 192 -->
+  <p id="192">
+    <text>
+        [p]A Folyami Rablók nyilván nem tudták, hogy ennyi katona lesz a hajótok fedélzetén, különben nem támadtak volna meg benneteket húsz emberrel. Amikor a közeletekbe érnek, már nem indítanak több tűzlabdát. Elgondolkodsz azon, mi legyen a következő teendő.[/p]
+    </text>
+    <next id="380">Ha parancsot adsz az Elfeknek, hogy árasszák el nyilakkal a haramiákat</next>
+    <next id="258">Ha inkább megvárod, amíg a támadók átszállnak a hajótok fedélzetére</next>
+  </p>
   <!-- 193 -->
-  <!-- 194 -->
+  <p id="194">
+    <text>
+        [p]A fürge lábú Domblakó Vadembernek igen jó reflexei vannak. Amikor a lábaira veted magad, felugrik a levegőbe.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="373"></next>
+      </success>
+      <failure>
+        <next id="117"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 195 -->
   <!-- 196 -->
-  <!-- 197 -->
+  <p id="197">
+    <text>
+        [p]Átfurakodsz az asztalok között, majd leülsz egy magas székbe a bárpult végén. A csapos nagydarab, ocsmány fickó - ha azt mondaná, hogy az apja egy Ogre volt, habozás nélkül elhinnéd neki. - Mivel akarod mérgezni magad? - mordul rád. - Egy korsó almalével - feleled. - Almalé! - kacag fel a csapos. - Almalé! Ha! A kis taknyos almalevet akar! És ha nincs almalevünk, akkor bizonyára megteszi a tej is, he? - Hatalmas pocakja csak úgy reng a kacagástól. A kocsma vendégei feléd fordulnak, hogy lássák, kit is ugrat a pultos. - Hát, akkor rossz helyre jöttél - folytatja. -   Mi csak Ördögsört szolgálunk fel itt. Gondolod, meg tudnál inni belőle egy kupicával?[/p]
+    </text>
+    <next id="172">Ha elfogadod a kihívást</next>
+    <next id="71">Ha továbbra is ragaszkodsz az almaléhez, és azt is közlöd a fickóval, hogy legközelebb válogassa meg a szavait</next>
+  </p>
   <!-- 198 -->
   <p id="199">
     <text>
         [p]Fárasztó dolog az előrehaladás a bűzös mocsárban. A sötétbarna víz egészen a térdedig ér, lábad pedig állandóan beleragad az alatta lévő, fekete, cuppogós masszába. Félúton tarthattok, amikor látod, hogy a víz színén úszkáló növények mozgolódni, és emelkedni kezdenek. Egy idomtalan, fekete tömeg jelenik meg alattuk. Egy óriási lény tör fel a felszínre, vastag, barázdált bőréről zöld növények csüngenek. Fején nem látsz szemet, annál inkább egy hatalmas, vérvörös színű tűhegyes fogakból álló állkapcsot. A lény feléd csúszik, maga alá szorítva, és vízbe fojtva öt harcosodat (húzd le őket a [em]Kalandlapodról[/em]). A szörnyűséges Lápi Csontszaggató már majdnem hozzád ért. Kénytelen vagy előrántani a kardodat, és küzdeni az életedért.[/p]
     </text>
-    <add amount="-5" to="warrior"/>
+    <add amount="-5" to="warriors" />
     <fight type="single">
-    <enemy id="1"/>
-    <anyRound enemy="1" totalCount="5">
-    <interrupt/>
-    </anyRound>
+      <enemy id="1" />
+      <anyRound enemy="1" totalCount="5">
+        <interrupt />
+      </anyRound>
     </fight>
     <next id="33"></next>
   </p>
   <!-- 200 -->
   <!-- 201 -->
   <!-- 202 -->
-  <!-- 203 -->
+  <p id="203">
+    <text>
+        [p]Kicsit később Barnock kapitány odasétál hozzád, és megszólal: - Nemsokára horgonyt vetünk éjszakára. A hajón akartok aludni, vagy éjszakára inkább partra szálltok?[/p]
+    </text>
+    <next id="12">Ha úgy döntesz, hogy a lélekvesztőn töltitek az estét</next>
+    <next id="337">Ha inkább partra szálltok, hogy a kinti, hosszú fűben kényelmesebben aludhassatok</next>
+  </p>
   <!-- 204 -->
-  <!-- 205 -->
+  <p id="205">
+    <text>
+        [p]Gondosan célzol, majd a kardnak dobod a hátizsákodat, remélve, hogy sikerül leverni a földre.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="5"></next>
+      </success>
+      <failure>
+        <next id="306"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 206 -->
-  <!-- 207 -->
+  <p id="207">
+    <text>
+        [p]Villámgyorsan félreugrassz, így csak a bal lábadat égette meg a tűzlabda. Vesztesz 2 életerő pontot! Oldalt gurulsz, és megpróbálsz felállni, de ebben a pillanatban a Goblin kilő rád egy nyílvesszőt.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <random>
+      <result max="1" min="1">
+        <next id="304"></next>
+      </result>
+      <result max="4" min="2">
+        <next id="344"></next>
+      </result>
+      <result max="5" min="5">
+        <next id="147"></next>
+      </result>
+      <result max="6" min="6">
+        <next id="283"></next>
+      </result>
+    </random>
+  </p>
   <!-- 208 -->
-  <!-- 209 -->
+  <p id="209">
+    <text>
+        [p]Amint a hajótok befordul a folyókanyarulatban, hirtelen megtámadnak benneteket. Egy hatalmas tűzlabda száguld felétek a levegőben. Egy fából készült katapult van felállítva a folyó déli partján, onnan lőttek rátok. A golyóbis fedezéke alatt húsz Folyami Rabló ugrik félbevágott fatörzs-kenujára, és evezni kezdenek a [em]Repülő Tukán[/em] felé.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="286"></next>
+      </success>
+      <failure>
+        <next id="131"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 210 -->
-  <!-- 211 -->
+  <p id="211">
+    <text>
+        [p]Tovább folytatjátok az utat a mocsár szélén. Egy óra elteltével már magatok mögött is hagytátok a lápot.[/p]
+    </text>
+    <next id="115"></next>
+  </p>
   <!-- 212 -->
-  <!-- 213 -->
+  <p id="213">
+    <text>
+        [p]Becsületes ember lévén tartod a szavadat, és otthagyod tíz katonádat, hogy a Domblakó Vadembereknél dolgozzanak. Amikor egyedül távozol a faluból, és búcsút intesz az embereidnek, arra gondolsz, hogy így talán megmentetted őket az Agglax undorító teremtményei ellen vívott csatában való kínkeserves haláltól. De lelked mélyén érzed, inkább meghaltak volna érted a csatában. Nem tudsz megszabadulni az érzéstől, hogy cserbenhagytad őket. Vesztesz 2 szerencse pontot! De megpróbálod elhessegetni a sötét gondolataidat, és gyorsan visszatérsz a rád váró sereghez. Fél óra múlva már átkeltek a folyón, és tovább meneteltek délkeleti irányba, Zengis felé.[/p]
+    </text>
+    <add amount="-2" to="luck" />
+    <add amount="-10" to="warriors" />
+    <next id="49"></next>
+  </p>
   <!-- 214 -->
-  <!-- 215 -->
+  <p id="215">
+    <text>
+        [p]A fejed fölötti vitorlázaton elpattan egy csigasort tartó kötél, amint a kalózhajó hatalmas recsegéssel belefúródik a [em]Repülő Tukán[/em] oldalába. A lezuhanó csigák átszakítják a fedélzetet, és közben téged is kiütnek. Elsötétül előtted a világ. Amikor magadhoz térsz, egy hosszú evezőrúd mellet találod magad, odaláncolva egy fapadhoz. A [em]Repülő Tukán[/em] elsüllyedt, te pedig a kalózhajó gályarabjaként vagy kénytelen eltölteni életed hátralévő részét. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 216 -->
   <!-- 217 -->
   <!-- 218 -->
   <!-- 219 -->
-  <!-- 220 -->
+  <p id="220">
+    <text>
+        [p]Délutánra a láthatáron feltűnnek a Jégujj-hegység keletről nyugatra húzódó hegyláncai. A kék ég előtt élesen kirajzolódó hegyek közül füst száll fel. Az Elfek éles szemükkel azt is látják, hogy a füstöt egy kis falu kunyhóinak kéményei eregetik. Feltételezed, hogy ez lehet Karom. Úgy döntesz, hogy mindössze tíz emberrel mész be, hogy a Domblakó Vademberek lássák, nem akarsz ártani nekik. Húsz perccel később meg is érkeztek a faluba, de az teljesen kihalt: egyetlen lelket sem lehet látni. Csak a kéményekből felszálló füst tanúskodik arról, hogy lehetnek emberek a közelben. A település harminc kis kunyhóból áll, melyek egy nagyobb házikó - gyűlésterem, esetleg templom - körül helyezkednek el körben. Kiáltasz, de nem kapsz választ. Végigfut a hátadon a hideg, amikor arra gondolsz, ez csapda is lehet.[/p]
+    </text>
+    <next id="261">Ha ismét kiáltasz</next>
+    <next id="86">Ha inkább utasítod az embereidet, hogy vonják ki a kardjaikat</next>
+  </p>
   <!-- 221 -->
   <!-- 222 -->
-  <!-- 223 -->
+  <p id="223">
+    <text>
+        [p]- Elnézést a kérdésért! - mondja Enk. A többiek is felháborodottnak tűnnek. Sértett kifejezéseik arra késztetnek, hogy elgondolkozz azon, vajon valóban olyan kemény csavargók-e, mint amilyennek mutatják magukat. Átvillan az agyadon a gondolat, hogy el kéne mondanod az igazi küldetésedet, ahelyett, hogy mindenféle hazugsággal etetnéd őket, mert lehetséges, hogy még a segítségedre is lehetnek. De vajon megbízhatsz-e bennük?[/p]
+    </text>
+    <next id="395">Ha mégis elmondod az igazi történetedet</next>
+    <next id="311">Ha inkább közlöd velük, hogy intéznéd a magad dolgát</next>
+  </p>
   <!-- 224 -->
   <p id="225">
     <text>
         [p]Átgondolod Barnock kapitány ajánlatát, és úgy döntesz, hogy inkább gyalog vonultok kelet felé, mert így nagyobb az esélye annak, hogy újabb katonákat toborozz. Felkerekedtek hát, és elindultok a Kok folyó mentén keletnek. Az első nap eseménytelenül telik el. Késő délután megálltok, és kiadod a parancsot a katonáknak, hogy verjenek tábort a térdig érő fűben.[/p]
     </text>
     <test against="luck">
-    <success>
-    <next id="58"></next>
-    </success>
-    <failure>
-    <next id="185"></next>
-    </failure>
+      <success>
+        <next id="58"></next>
+      </success>
+      <failure>
+        <next id="185"></next>
+      </failure>
     </test>
   </p>
   <!-- 226 -->
-  <!-- 227 -->
+  <p id="227">
+    <text>
+        [p]A csapos harmadik csapása a halántékodon talál el. Elveszted az eszméletedet. Amikor magadhoz térsz, egy szeméthalom tetején fekszel, egy sötét sikátorban. A fejed hasogat a fájdalomtól, és a szeméthalomból felszálló bűz hányingert okoz.
+    </text>
+    <itemCheck type="items" id="3004 or 3005 or 3006">
+      <have>
+        <text>
+            A kardod szerencsére még megvan, de ékszer már nincs nálad - a Fekete Sárkány tolvajai kiraboltak (húzd le a [em]Kalandlapodról[/em]).
+        </text>
+        <loseItem id="3004,3005,3006" amount="10" />
+      </have>
+      <dontHave>
+        <text>
+            A kardod szerencsére még megvan.
+        </text>
+      </dontHave>
+      <after>
+        <text>
+            Vesztesz 1 szerencse pontot! Magadban csöndesen káromkodva lassan feltápászkodsz, és kitántorogsz a sikátorból.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <add amount="-1" to="luck" />
+    <next id="382"></next>
+  </p>
   <!-- 228 -->
-  <!-- 229 -->
+  <p id="229">
+    <text>
+        [p]Felnyitod a láda tetejét, és belenézel. A doboz egy Unmou nevű Goblin holmijaival van tele. Egy Goblin nyelven írott, egy évvel ezelőtti napló elmeséli, milyen csatákban és kalandokban vett részt a korábbi tulajdonos. Ezt onnan tudod, hogy van a katonáid között egy Törpe, aki ismeri a nyelvet - miután két évet töltött rabszolgaként egy bányában -, ő olvassa fel neked a naplót. Az utolsó néhány, eléggé aggasztó mondat így hangzik: - Száz pofát verek be, ha beállok a seregbe! Onthatjuk a vért, Agglax fizeti a bért. Gyilkolunk örömmel, csak bírjuk körömmel. - Sajnos semmilyen utalást nem találsz arra, hol csatlakozott Unmou az Árnydémon seregéhez. A holmija egy pokrócból, egy fogakkal teli bőrzacskóból, két agyagedényből, egy pár bőrszandálból, egy sárgaréz orrkarikából, egy söröskorsóból, egy kagylókkal teli tasakból, két patkánykoponyából, egy faszoborból és egy láncon függő, [span class="takeItem" data-id="3003" data-amount="1"]bogarat formázó rézamulettből[/span] áll. Ezek közül az amulett az egyetlen, amelyik felkelti az érdeklődésedet. Döntsd el, hogy fel akarod-e akasztani a nyakadba, vagy sem! Utána ismét északnak veszitek az útirányt.[/p]
+    </text>
+    <next id="399"></next>
+  </p>
   <!-- 230 -->
-  <!-- 231 -->
+  <p id="231">
+    <text>
+        [p]A dongó tétovázik egy darabig, majd elindul a tolvaj lekvárja felé. Elvesztetted a tétet. Vesztesz 1 szerencse pontot és 50 Aranytallért! A férfi kifejezéstelen arccal bezsebeli a pénzt.[/p]
+    </text>
+    <add amount="-1" to="luck" />
+    <add amount="-50" to="gold" />
+    <next id="3">Ha megkérdezed tőle, hogy hívják</next>
+    <next id="18">Ha inkább felállsz az asztalától, és átülsz a három csavargóhoz</next>
+  </p>
   <!-- 232 -->
   <!-- 233 -->
-  <!-- 234 -->
+  <p id="234">
+    <text>
+        [p]Néhány kilométerrel feljebb egy csatakos hajú, szakállas férfit pillantotok meg az északi folyóparton. Az állatbőrökbe öltözött alak vadul integet nektek, hogy álljatok meg.[/p]
+    </text>
+    <next id="298">Ha odahajóztok a férfihoz, hogy kiderítsétek, kiféle-miféle</next>
+    <next id="203">Ha inkább továbbhajóztok</next>
+  </p>
   <!-- 235 -->
   <!-- 236 -->
-  <!-- 237 -->
+  <p id="237">
+    <text>
+        [p]Mielőtt Vine magához térhetne, hátraszorítod a karjait. Egyre fokozod a szorítást, míg végül felüvölt: - Feladom! - Elengeded a karját, és felsegíted a földről. Ellenfeled megforgatja a vállait, és így szól: - Idegen, te igazán nagy bajnok vagy. Tizenöt Domblakó Vadember áll a rendelkezésedre. - Húsz perc alatt új katonáid felszerelkeznek, és készen állnak az útra. Jókedvűen, hogy a kitérő hasznosnak bizonyult, visszatértek a várakozó sereghez.[/p]
+    </text>
+    <add amount="15" to="wilders" />
+    <next id="104"></next>
+  </p>
   <!-- 238 -->
   <!-- 239 -->
-  <!-- 240 -->
+  <p id="240">
+    <text>
+        [p]A skorpió előrelendíti farkát, és beléd ereszti méregtüskéjét. A méreg gyorsan hat, és nemsokára szédülni és izzadni kezdesz. Vesztesz 4 életerő és 1 ügyesség pontot! Betámolyogsz egy sikátorba, hogy ott lefeküdj pihenni egy kicsit néhány hordó mögé.[/p]
+        [p]Kis idő elteltével a méreg hatása elmúlik, így már képes vagy talpra állni, és tovább folytatni a küldetésedet. Elindulsz, hogy keress egy kocsmát.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <add amount="-1" to="skill" />
+    <next id="52"></next>
+  </p>
   <!-- 241 -->
-  <!-- 242 -->
-  <!-- 243 -->
+  <p id="242">
+    <text>
+        [p]Átkutatod az Orkok felszerelését, és némi fegyvert, no meg [span class="takeItem" data-id="gold" data-amount="10"]10 Aranytallért[/span] találsz. A fegyvereket szétosztjátok, majd kisétáltok az erdőből, hogy csatlakozzatok a várakozó sereghez.[/p]
+    </text>
+    <next id="295"></next>
+  </p>
+  <p id="243">
+    <text>
+        [p]Miközben levágod az Elf köteleit, az hüppögve hálálkodik. - Köszönöm. Köszönöm, hogy megmentetted az életemet. Jártas vagyok a mentális erők használatában, és azt reméltem, hogy tudok kreálni egy védőpajzsot, amely felfogja a kardot, de nem tudtam biztosan, hogy elég erősre fog-e sikerülni. Jobb lett volna, ha valami kevésbé végzetesen kezdem el a gyakorlást, de a foglyul ejtőim nem adták meg rá az esélyt. - Az Elf lehúz egy gyűrűt az ujjáról, és feléd nyújtja: - Fogadd el ezt hálám jeléül! Jó szerencsét hoz![/p]
+    </text>
+    <next id="270">Ha elfogadod a gyűrűt</next>
+    <next id="211">Ha inkább udvariasan visszautasítod, visszaszerzed a hátizsákodat, és kimész az embereidhez</next>
+  </p>
   <!-- 244 -->
   <!-- 245 -->
-  <!-- 246 -->
+  <p id="246">
+    <text>
+        [p]Egy ezüst szigony zúg el a fejed fölött, és áll meg remegve egy árbocban. Egy cingár alak rohan ki a hordók mögül, átveti magát a hajókorláton, és alig hallható csobbanással beugrik a folyóba. Odarohansz, és figyeled a felszínt, de semmi sem bukkan fel. Bárki is legyen a támadód, biztos, hogy nagyon jól úszik víz alatt. A hordókhoz sétálsz, és megvizsgálod a nedves, úszóhártyás kéznyomokat. Valószínűleg egy Halember lehetett az.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="43"></next>
+      </success>
+      <failure>
+        <next id="375"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 247 -->
   <!-- 248 -->
-  <!-- 249 -->
+  <p id="249">
+    <text>
+        [p]Nagy önbizalommal nézed, amint a csapos újra megtölti a korsódat. Szádhoz emeled, és másodszorra is egyetlen hajtással megiszod az Ördögsört. Azonban amikor felállsz, hogy odasétálj az egyik asztalhoz, hirtelen tótágast áll előtted a kocsma. Ráadásul mindent kettőnek látsz.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="61"></next>
+      </success>
+      <failure>
+        <next id="157"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 250 -->
   <!-- 251 -->
   <!-- 252 -->
-  <!-- 253 -->
+  <p id="253">
+    <text>
+        [p]A skorpió nem szúr meg, te pedig gyorsan lerázod a kezedről. Végigjátszod magadban mindazt a kalamajkát, amin Zengisben átmentél, és úgy döntesz, hogy a jövőben nem hagyod magad eltéríteni a célodtól, hogy találj egy kocsmát.[/p]
+    </text>
+    <next id="52"></next>
+  </p>
   <!-- 254 -->
   <!-- 255 -->
   <p id="256">
@@ -377,20 +1087,64 @@
     <death />
   </p>
   <!-- 257 -->
-  <!-- 258 -->
+  <p id="258">
+    <text>
+        [p]Utasítod az embereidet, hogy álljanak hátrébb a korláttól, hogy ne ijesszék el a Folyami Rablókat. Csáklyák röpülnek fel a hajóra, és a hozzájuk erősített köteleken vadul kiáltozva felmásznak a támadók. Amikor felérnek a fedélzetre, hirtelen húsz Elf íjász megfeszített íjával találják szemközt magukat. Tízet sikerül harc nélkül foglyul ejtenetek, mielőtt a társaik rádöbbennek, mi is a helyzet valójában. A többiek visszaugranak a folyóba, és a farönkjeikhez úszva elmenekülnek. Felajánlod a banditáknak a választást: vagy beállnak a seregedbe, vagy örök életükre Barnock kapitány gályarabjaiként fognak szolgálni. Elég könnyű a választás, a szorult helyzetben lévő fickók hamar úgy döntenek, hogy csatlakoznak hozzád. Elveszed a vezetőjüktől a [span class="takeItem" data-id="3002" data-amount="1"]pajzsát[/span], és a karodra húzod (1-gyel növeld meg az ügyességedet). Az emberek jókedvűek, hogy nőtt az Agglax elleni sereg (kapsz 1 szerencse pontot), így vidáman hajóztok tovább.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <add amount="10" to="warriors" />
+    <next id="309"></next>
+  </p>
   <!-- 259 -->
   <!-- 260 -->
-  <!-- 261 -->
+  <p id="261">
+    <text>
+        [p]Másodszor is kiáltasz, és hangosan kijelented, hogy békével jöttetek, és embereket kerestek az Agglax elleni harchoz. Hirtelen egy hosszú hajú, állati bőrökbe öltözött férfi ugrik le az egyik kunyhó tetejéről, tőled mintegy tízméternyire. - Vine vagyok, a Domblakó Vademberek vezetője. Csatlakozni akarunk a seregedhez, és nem kérünk fizetségül aranyat. De be kell bizonyítanod nekünk, hogy igazi vezető vagy. Meg kell birkóznod velem. Ha győzöl, én és a tizennégy legjobb emberem a szolgálatodba állunk. Ha veszítesz, akkor nem kapsz senkit, és bár te magad távozhatsz, a tíz katonád itt marad, és egy hónapig nekünk dolgozik.[/p]
+    </text>
+    <next id="307">Ha megbirkózol Vinével</next>
+    <next id="86">Ha inkább parancsot adsz az embereidnek, hogy vonják ki kardjaikat, azzal a céllal, hogy megmutassátok Vinének, most nincs időtök a javaslataira</next>
+  </p>
   <!-- 262 -->
   <!-- 263 -->
-  <!-- 264 -->
+  <p id="264">
+    <text>
+        [p]Lenyeled a folyadékot, és vársz, hogy történjen valami. Először csak a kezeid kezdenek el reszketni, majd mind a négy végtagod érzéketlenné válik. A kardodat nehéznek érzed, és elfog a vágy, hogy leülj egy kicsit pihenni. A Gyengeség Italából ittál. Vesztesz 2 ügyesség, 3 életerő és 1 szerencse pontot! Ez ellen nincs mit tenni, így leverten elteszed az Aranytallérjaidat, és visszatántorogsz az utcára, hogy tovább ismerkedj Zengisszel.[/p]
+    </text>
+    <add amount="-2" to="skill" />
+    <add amount="-3" to="stamina" />
+    <add amount="-1" to="luck" />
+    <next id="382"></next>
+  </p>
   <!-- 265 -->
   <!-- 266 -->
-  <!-- 267 -->
+  <p id="267">
+    <text>
+        [p]Reakcióid túl lassúak, így az ezüst szigony eltalál.[/p]
+    </text>
+    <random>
+      <result max="3" min="1">
+        <next id="397"></next>
+      </result>
+      <result max="6" min="4">
+        <next id="170"></next>
+      </result>
+    </random>
+  </p>
   <!-- 268 -->
   <!-- 269 -->
-  <!-- 270 -->
-  <!-- 271 -->
+  <p id="270">
+    <text>
+        [p]Elveszed a gyűrűt, és felhúzod a kisujjadra, mivel a többire nem megy rá. Az Elf hirtelen kacagni kezd, méghozzá igen kárörvendően. Elkezdi húzogatni a füleit, majd rémülten veszed észre, hogy lehúzza a bőrt az arcáról. Az Elfmaszk alól egy gonosz, zöld, eres szemű koponya tűnik elő. A nő a földre dobja a maszkot, és tátott szájjal elindul feléd. Megpróbálod előrántani a kardodat, de képtelen vagy megmozdulni. Tehetetlen iszonyattal figyeled, amint a Szélhámos Boszorkány kitátja fogas száját, és marcangolni kezdi a torkodat. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="271">
+    <text>
+        [p]Amikor a börtönbe szállítanak, a börtönőr figyelmesen végigmér, miközben elfogóid elmagyarázzák, miért is kerültél ide. - Hagyjátok menni a kalandozót - szólal meg váratlanul a börtönőr, mindannyiótok őszinte meglepetésére. - Én is hallottam az Agglaxról szóló híreket, a Zengisen kívül táborozó sereget pedig saját szemeimmel láttam. - Az őrök zavartan félreállnak, és utat engednek neked. Kisietsz a börtönből, és úgy döntesz, hogy betérsz abba a kocsmába, amelyet még az idekísérésed során vettél észre. Kapsz 1 szerencse pontot.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="78"></next>
+  </p>
   <!-- 272 -->
   <!-- 273 -->
   <p id="274">
@@ -401,71 +1155,278 @@
     <next id="342">Ha inkább a hosszabb utat választjátok, ami megkerüli az ingoványt</next>
   </p>
   <!-- 275 -->
-  <!-- 276 -->
-  <!-- 277 -->
+  <p id="276">
+    <text>
+        [p]Az emberek, akik látták a verekedést a kocsmában, nem nagyon elégedettek az eredménnyel. Úgy döntesz, hogy gyorsan kirohansz az ajtón, mielőtt kitör a balhé. Kirontasz az utcára, bevágod magad mögött a kocsma ajtaját, és meg sem állsz egy jó darabig.[/p]
+    </text>
+    <next id="382"></next>
+  </p>
+  <p id="277">
+    <text>
+        [p]A kalózokat nem érdeklik a megadást jelző zászlók, és nem a könyörületességükről híresek. A kalózhajó teljes sebességgel belefúródik a [em]Repülő Tukán[/em] oldalába. Az ütközés ereje leterít a lábadról.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="384"></next>
+      </success>
+      <failure>
+        <next id="215"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 278 -->
-  <!-- 279 -->
+  <p id="279">
+    <text>
+        [p]Reggel tiszta, kék ég köszönt, mintha az időjárás nem lenne tudatában az Allansiát fenyegető veszélynek. A sereg nemsokára ismét menetelni kezd, és egy óra múlva már meg is pillantjátok magatok előtt Zengis tornyait. Kiválasztasz egy nagydarab, keménykötésű fickót, bizonyos Lexont, és megteszed helyettesednek. Utasítod őt, hogy vezesse az embereket egy megfelelő táborhelyre Zengis mellett. Nem akarod, hogy bajba kerüljenek a városban, és azt sem, hogy a katonák a kocsmákban dorbézoljanak, mert szükségük van az éjszakai pihenésre. Közlöd Lexonnal, hogy az éjszakát a városban töltöd, hátha újabb embereket tudsz toborozni, vagy újabb pletykákat és híreket hallasz Agglaxról, az Árnydémonról. Megígéred neki, hogy másnap délig visszatérsz. Belépsz a város főkapuján. Ügy döntesz, meglátogatod a legközelebbi kocsmát, gondolván, hogy ott biztosan találsz embereket és híreket is. Miközben az öreg házak között sétálsz, váratlanul egy aranygyűrűt pillantasz meg az út szélén.[/p]
+    </text>
+    <next id="292">Ha felveszed</next>
+    <next id="52">Ha inkább továbbmész a kocsma felé</next>
+  </p>
   <!-- 280 -->
-  <!-- 281 -->
+  <p id="281">
+    <text>
+        [p]Levágod az erszényt a Fejszés Férfi övéről, és gyorsan a ruhádba rejted. Az őrök közben odaérnek, és a mellednek szegezik a dárdáikat. Megkérdezik, mit keresel errefelé. Beszámolsz nekik a küldetésedről, és elmeséled, hogyan próbált meg a fickó kirabolni téged. A katonák egymásra néznek, láthatóan nem tudván, hogy higgyenek-e neked, vagy sem.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="163"></next>
+      </success>
+      <failure>
+        <next id="324"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 282 -->
-  <!-- 283 -->
+  <p id="283">
+    <text>
+        [p]Hátraugrasz, így a nyílvessző centiméterekkel ugyan, de eltéveszt, és a földbe fúródik a lábad előtt. Hat gyorskezű íjász előrántja fegyverét, megpróbálja lelőni a Vivernt és a Goblint, amint azok menekülőre fogják.[/p]
+    </text>
+    <random>
+      <result max="2" min="1">
+        <next id="109"></next>
+      </result>
+      <result max="5" min="3">
+        <next id="9"></next>
+      </result>
+      <result max="6" min="6">
+        <next id="326"></next>
+      </result>
+    </random>
+  </p>
   <!-- 284 -->
   <!-- 285 -->
-  <!-- 286 -->
+  <p id="286">
+    <text>
+        [p]A tűzlabda elsüvít két árboc között, és ártalmatlanul sisteregve a folyóban köt ki.[/p]
+    </text>
+    <next id="21"></next>
+  </p>
   <!-- 287 -->
   <!-- 288 -->
-  <!-- 289 -->
+  <p id="289">
+    <text>
+        [p]Hamar odaértek a Vivern és a Goblin testéhez, de sajnos már mindketten halottak. Átkutatod a holttestet. Egy íjhúrt és öt nyílhegyet találsz nála. Ennek nem veszed sok hasznát. Utána visszatérsz a sereghez, és ismét kiadod a menetparancsot Karom felé, ezúttal azonban szorosabb alakzatban, attól tartva, hogy Agglax esetleg más kémeket is küld majd.[/p]
+    </text>
+    <next id="220"></next>
+  </p>
   <!-- 290 -->
   <!-- 291 -->
-  <!-- 292 -->
+  <p id="292">
+    <text>
+        [p]Megvizsgálod a gyűrűt, és látod, hogy a 45-ös számot vésték bele. Hirtelen valaki megütögeti a válladat. Megfordulsz, és egy nagydarab, kopasz férfit pillantasz meg, aki mérgesen néz rád. Bal fülétől a jobb arca közepéig hosszú sebhely húzódik végig a fején. Duzzadó izmai ugrálnak bőrmellénye alatt, és vállán átvetve egy hatalmas csatabárdot tart fenyegetően. Lábához egy hajítófejsze van erősítve. Ujját az orrod elé tartja, és megszólal: - Az az én gyűrűm, idegen. Add ide, vagy meghalsz! - Nyilvánvaló, hogy hazudik, hiszen vaskos ujjaira nem is férne fel a törékeny kis ékszer. Mit leszel?[/p]
+    </text>
+    <gatherItem id="3006" />
+    <next id="333">Odaadod neki a gyűrűt?</next>
+    <next id="126">Végigrohansz az utcán?</next>
+    <next id="150">Megküzdesz a Fejszés Férfival?</next>
+  </p>
   <!-- 293 -->
   <!-- 294 -->
-  <!-- 295 -->
+  <p id="295">
+    <text>
+        [p]A nap hátralévő része eseménytelenül telik el; amint sötétedik, kinéztek egy megfelelő táborhelyet. Hamarosan találtok is egy remek területet a folyó mellet. A katonák tüzeket gyújtanak, és nekiállnak vaddisznót sütni. A hosszú menetelés után mindenki jó étvággyal eszik. Éjszakára hat őrt állítasz, majd te magad is lefekszel aludni. Egy bagoly huhogására ébredsz az éjszaka kellős közepén. A telihold bevilágítja a terepet. Mivel úgy érzed, nem tudsz aludni, elhatározod, hogy ellenőrzöd a strázsákat. Elindulsz kelet felé a folyóparton. Nemsokára megpillantod az egyik őr dárdás körvonalát az éjszakai ég előtt. Mielőtt azonban elérhetnéd, mozgást észlelsz a folyó felől - két alakot látsz némán kimászni a vízből. Gyorsan elrejtőznek az árnyékban, és elindulnak az embered felé. Észreveszed, hogy szigonyt tartanak a kezükben, ami a Halemberek hagyományos fegyvere! Odakiáltasz az őrnek, aztán rohansz, hogy segíts neki. Futás közben látod, hogy a támadóknak csillogó, pikkelyes bőrűk és nagy fejük van, így semmi kétség sem férhet ahhoz, hogy tényleg Halemberek. Odarohansz az egyikhez, és harcba bocsátkozol vele, míg a másikat a katonád veszi kezelésbe.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="2" />
+    </fight>
+    <next id="16"></next>
+  </p>
   <!-- 296 -->
   <!-- 297 -->
-  <!-- 298 -->
+  <p id="298">
+    <text>
+        [p]Az északi parthoz vitorláztok, hogy megtudjátok, mit akar a rongyos ember. Amint közel értek, kilenc másik férfi emelkedik ki a bokrok közül, de a fegyvereiket nem veszik elő. Az, aki integetett, átkiabál hozzátok: - Üdv, idegen! Én és északi társaim hallottunk nemes küldetésedről, és csatlakozni szeretnénk hozzátok. Fejenként 10 Aranytallérért a végsőkig harcolni fogunk.[/p]
+    </text>
+    <next id="30">Ha felfogadod őket</next>
+    <next id="203">Ha inkább visszautasítod az ajánlatukat, és nélkülük hajóztok tovább</next>
+  </p>
   <!-- 299 -->
   <!-- 300 -->
   <!-- 301 -->
-  <!-- 302 -->
+  <p id="302">
+    <text>
+        [p]A fejsze telibe találja a combodat - vesztesz 2 életerő pontot! Képtelen vagy tovább rohanni, így összeszorított fogakkal kihúzod a fegyvert a lábadból, majd szembefordulsz a közeledő férfival. Az rád horkan, majd nyolcasokat leírva a levegőben, pörgetni kezdi maga körül csatabárdját. Muszáj megküzdened vele.[/p]
+        [p]A harc idejére 1-gyel csökkentsd az ügyességed a lábsebed miatt.[/p]
+    </text>
+    <add amount="-1" to="skill" />
+    <add amount="-2" to="stamina" />
+    <fight type="single">
+      <enemy id="3" />
+      <win>
+        <add amount="1" to="skill" />
+      </win>
+    </fight>
+    <next id="101"></next>
+  </p>
   <!-- 303 -->
-  <!-- 304 -->
+  <p id="304">
+    <text>
+        [p]Ilyen közelről a Goblin nem hibázik. Nyílvesszője pontosan a mellkasod közepét találja el. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 305 -->
-  <!-- 306 -->
-  <!-- 307 -->
+  <p id="306">
+    <text>
+        [p]Az elhajított hátizsák éppen csak elzúg a penge mellett, és tompa puffanással a szoba távoli sarkában landol. Sajnos azonban rossz helyen, ugyanis az egyik padlódeszka felpattan, és mozgásba lép a kardot elengedő mechanizmus. A fegyver az Elfre zuhan, de legnagyobb meglepetésedre egyszerűen csak lepattan a hasáról! - Oldozz el! - könyörög az Elf -, és mindent megmagyarázok.[/p]
+    </text>
+    <next id="243">Ha kioldozod</next>
+    <next id="320">Ha inkább magára hagyod ezt a furcsa lényt, visszaszerzed a hátizsákodat, és csatlakozol az odakint váró embereidhez</next>
+  </p>
+  <p id="307">
+    <text>
+        [p]Amint leoldod a kardodat, a semmiből hirtelen előtűnnek Vine társai is, és körétek állnak. A te embereid is elvegyülnek közöttük, és hangosan biztatnak téged. Ellenfeled oldalra nyújtott kezekkel kicsit előre hajol, és végigmér. Oldalra lép, úgy tesz, mintha rád akarná vetni magát, majd folytatja a lassú sétát az emberekből álló gyűrűben. Te is követed az ő mozgását. Megpróbálsz laza maradni, közben azon gondolkozol, vajon ő teszi-e meg az első lépést.[/p]
+    </text>
+    <next id="194">Ha magadhoz ragadod a kezdeményezést, és ráveted magad Vine lábaira</next>
+    <next id="67">Ha inkább megvárod, amíg ellenfeled csinál valamit</next>
+  </p>
   <!-- 308 -->
-  <!-- 309 -->
+  <p id="309">
+    <text>
+        [p]Újabb órát hajóztok különösebb esemény nélkül, amikor is az egyik embered egy fatörzset vesz észre a vízben, amin egy ember fekszik arccal lefelé, teljesen mozdulatlanul. Végtagjai belelógnak a vízbe.[/p]
+    </text>
+    <next id="119">Ha úgy döntesz, hogy megmentitek a férfit</next>
+    <next id="234">Ha inkább nem szakítjátok meg emiatt az utat</next>
+  </p>
   <!-- 310 -->
-  <!-- 311 -->
+  <p id="311">
+    <text>
+        [p]Mivel nem akarsz további, felesleges beszélgetésbe bonyolódni, felállsz, és közlöd a csavargókkal, hogy pontosan tudod, merre lakik az unokafivéred, és most azonnal indulsz is. Válaszra nem várva sarkon fordulsz, és távozol a kocsmából, hogy körbenézz még egy kicsit Zengisben.[/p]
+    </text>
+    <next id="382"></next>
+  </p>
   <!-- 312 -->
-  <!-- 313 -->
+  <p id="313">
+    <text>
+        [p]A veszteségeitek nagyok, de lehettek volna nagyobbak is. Öt harcos és öt Elf hever holtan a [em]Repülő Tukán[/em] fedélzetén, míg öt Törpe és öt lovag fulladt a vízbe páncéljának súlya miatt. A túlélők megnyugodni látszanak, hogy ismét szilárd talajt éreznek a lábuk alatt, és szemmel láthatóan jobban örülnek, hogy szárazföldi meneteléssel folytatjátok utatokat. Azonnal útnak indítod a sereget, remélvén, hogy másnapra már eléritek Zengist.[/p]
+    </text>
+    <add amount="-5" to="warriors" />
+    <add amount="-5" to="elves" />
+    <add amount="-5" to="dwarves" />
+    <add amount="-5" to="knights" />
+    <next id="366"></next>
+  </p>
   <!-- 314 -->
   <!-- 315 -->
   <!-- 316 -->
   <!-- 317 -->
-  <!-- 318 -->
+  <p id="318">
+    <text>
+        [p]A harcos leakasztja a halott nyakából a kulcsot, és hagyja a farönköt, had sodorja tovább a folyó. Az embered ezután visszaúszik a hajóhoz, felkapaszkodik a fedélzetre, és átadja neked a [span class="takeItem" data-id="3007" data-amount="1"]zsákmányt[/span]. A kulcsba a 222-es számot vésték. Megjegyzed magadnak a számot, és a zsebedbe csúsztatod a kulcsot. Barnock kapitány kiadja a parancsot embereinek a továbbvitorlázásra.[/p]
+    </text>
+    <next id="234"></next>
+  </p>
   <!-- 319 -->
-  <!-- 320 -->
+  <p id="320">
+    <text>
+        [p]Miközben becsukod az ajtót, hallod, amint az Elf hangosan elátkoz, amiért magára hagytad. Vesztesz 2 szerencse pontot! De meggyőzöd magad, hogy jelenleg a legfontosabb a küldetésed, elsősorban azt kell sikerre vinned, és nem szabad hagynod eltéríteni magad tőle.[/p]
+    </text>
+    <add amount="-2" to="luck" />
+    <next id="211"></next>
+  </p>
   <!-- 321 -->
-  <!-- 322 -->
+  <p id="322">
+    <text>
+        [p]Átadod a 10 Aranytallért Laznak, aki előhúz egy térképet a köpenyéből, és az asztalra teríti. A papírlap közepén Zengis látható, attól délre pedig egy Karn nevű falu van felrajzolva. Tovább délkeletre fekszik a Csillagkő Barlang. A várostól keletre az Ördögerdő terül el, a Kok folyó elágazásától szinte egészen a térkép széléig. Laz elővesz egy fekete ceruzát, és egy nagy keresztet rajzol vele a térképre, az Ördögerdő keleti szélére. - Itt találkozhatsz vele. - mondja. Összehajtogatod a [span class="takeItem" data-id="3010" data-amount="1"]térképet[/span], és elteszed a ruhád egyik zsebébe. Megköszönöd az információkat a csavargóknak, majd elhagyod a kocsmát, hogy körbenézz Zengisben.[/p]
+    </text>
+    <add amount="-10" to="gold" />
+    <next id="382"></next>
+  </p>
   <!-- 323 -->
-  <!-- 324 -->
+  <p id="324">
+    <text>
+        [p]Az őrök úgy döntenek, hogy hazudsz, és közlik veled, hogy le vagy tartóztatva.[/p]
+    </text>
+    <next id="271">Ha hagyod, hogy a börtönbe vezessenek</next>
+    <next id="363">Ha inkább ellenállsz, és megküzdesz velük</next>
+  </p>
   <!-- 325 -->
-  <!-- 326 -->
+  <p id="326">
+    <text>
+        [p]Mind a hat nyílvessző eltalálja a Vivernt, ami a Goblin kiáltásaitól kísérve a földre zuhan.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="123"></next>
+      </success>
+      <failure>
+        <next id="289"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 327 -->
   <!-- 328 -->
-  <!-- 329 -->
+  <p id="329">
+    <text>
+        [p]Fangban bárki megmondhatja, hogy a Kok folyón gyakran úsznak lefelé hordók. Havonta legalább egyszer megesik ilyesmi, és a lakosok korábbi keserű tapasztalataikból okulva megtanulták, hogy a legjobb békén hagyni ezeket. A hordókat egy őrült Banya hajigálja a folyóba, miután megmérgezte a bele tett almákat.[/p]
+    </text>
+    <random>
+      <result max="2" min="1">
+        <next id="179"></next>
+      </result>
+      <result max="4" min="3">
+        <next id="367"></next>
+      </result>
+      <result max="6" min="5">
+        <next id="54"></next>
+      </result>
+    </random>
+  </p>
   <!-- 330 -->
   <!-- 331 -->
   <!-- 332 -->
-  <!-- 333 -->
+  <p id="333">
+    <text>
+        [p]A Fejszés Férfi kirántja a gyűrűt a kezedből, elégedetten horkant egyet, majd megfordul, és elsétál. Te a másik irányba indulsz el, hogy találj egy kocsmát.[/p]
+    </text>
+    <loseItem id="3006" />
+    <next id="52"></next>
+  </p>
   <!-- 334 -->
   <!-- 335 -->
   <!-- 336 -->
-  <!-- 337 -->
+  <p id="337">
+    <text>
+        [p]Az éjszaka eseménytelenül telik el, de a hajnal első sugarai hangos zümmögéssel érkeznek. Egy hatalmas felhőnyi Szigonylégy csap le az ébredező katonákra. Az embereid jobb híján pajzsaikkal igyekeznek elhárítani a kis lények mérges csípéseit.[/p]
+    </text>
+    <random>
+      <result max="3" min="1">
+        <next id="69"></next>
+      </result>
+      <result max="6" min="4">
+        <next id="83"></next>
+      </result>
+    </random>
+  </p>
   <!-- 338 -->
   <!-- 339 -->
-  <!-- 340 -->
+  <p id="340">
+    <text>
+        [p]A halott ember nem jó harcos, és káromkodsz magadban, amiért feleslegesen jöttetek Karomba. Vesztesz 1 szerencse pontot! Nem vesztegeted tovább az idődet, inkább visszatérsz a seregedhez. Délnek vonultok, amíg egy megfelelő gázlót nem találtok a folyón. Átkeltek a vízen, majd délkeletnek vonultok, Zengis irányába.[/p]
+    </text>
+    <add amount="-1" to="luck" />
+    <next id="49"></next>
+  </p>
   <!-- 341 -->
   <p id="342">
     <text>
@@ -475,58 +1436,239 @@
     <next id="211">Ha inkább továbbmentek</next>
   </p>
   <!-- 343 -->
-  <!-- 344 -->
+  <p id="344">
+    <text>
+        [p]Megpróbálsz hátraugrani, de a nyílvessző átfúrja a válladat. Vesztesz 2 életerő pontot! A katonáid odarohannak hozzád, hogy segítsenek, ezenközben a Goblin a magasba kormányozza a Vivernt. A sebeidet hamar bekötözik, te pedig úgy döntesz, további késlekedés nélkül továbbindultok. Elgondolkozol azon, vajon Agglaxtól jött-e ez a kis „ajándék”.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="220"></next>
+  </p>
   <!-- 345 -->
-  <!-- 346 -->
+  <p id="346">
+    <text>
+        [p]A hordó továbbúszik. Egy darabig eltűnődsz rajta, vajon mi lehetett benne.[/p]
+    </text>
+    <next id="209"></next>
+  </p>
   <!-- 347 -->
-  <!-- 348 -->
+  <p id="348">
+    <text>
+        [p]A férfi lassan feléd fordítja a fejét, és mély hangon megkérdezi: - Miféle fogadást? - Két lekvárfoltra mutatsz az asztalon. Közlöd vele, hogy kiválaszthatja magának az egyiket, és a tiéd lesz a másik. Utána addig vártok, amíg a kocsmában rajzó rovarok közül az egyik leszáll, és rámászik valamelyikre. Akinek a lekvárjára mászik rá először egy bogár, az a győztes. A férfi morog egyet, majd megkérdezi: - És mi a tét? -Azt feleled: - Tíz Aranytallér a részemről, és ruhádon lévő arany melltű a részedről. - A férfi megcsóválja a fejét: - Akkor legyen 50 Aranytallér.[/p]
+    </text>
+    <next id="161">Ha elfogadod a megemelt tétet</next>
+    <next id="3">Ha inkább legyintesz egyet, hogy nem is olyan lényeges a fogadás, és inkább megkérdezed a férfitől, mi a neve</next>
+  </p>
   <!-- 349 -->
-  <!-- 350 -->
+  <p id="350">
+    <text>
+        [p]A sodrással ellentétes irányban vonultok a folyóparton. Hat öreg tölgyfa mellett haladtok el. Az egyik már régóta halott lehet, de a törzséből egy ajtó nyílik.[/p]
+    </text>
+    <next id="167">Ha kíváncsi vagy, és benyitsz rajta</next>
+    <next id="399">Hogyha inkább tovább haladtok Karom felé</next>
+  </p>
   <!-- 351 -->
   <!-- 352 -->
-  <!-- 353 -->
+  <p id="353">
+    <text>
+        [p]Barnock kapitánynak jóval az előtt sikerül parthoz vezetnie a [em]Repülő Tukánt[/em], hogy a kalózok a közeletekbe érnének. Katonáid gyorsan kiugrálnak a partra. Sebtében felállítod az Elf íjászokat, és utasítod őket, hogy csak parancsra lőjenek. Amikor a kalózhajó már elég közel ért, átkiáltasz a kapitánynak, hogy felesleges megrohamoznia a [em]Repülő Tukánt[/em], minthogy annak fedélzetén semmit sem fog találni. Ha a kincset akarja, szálljon partra, és küzdjön meg érte. Látod, amint a kapitány látcsövön végignéz az embereiden, és elmosolyodsz, amikor arra gondolsz, milyen képet vág, amikor rádöbben, hogy ez nem a szokásos, könnyű kis rablás lesz, amihez hozzászokott. A terved beválik. A kalózkapitány új parancsokat kiált az embereinek, mire a támadó hajó lassan megfordul, és nemsokára eltűnik a folyókanyarulatban. Kapsz 1 szerencse pontot! Barnock kapitány hangos éljenzésbe kezd, de aztán elhatalmasodik rajta a köhögés, és valakinek hátba kell veregetnie. Félóra múlva minden felszerelés és katona ismét a [em]Repülő Tukán[/em] fedélzetén van, és folytatjátok az utat Zengisbe.[/p]
+    </text>
+    <add amount="1" to="luck" />
+    <next id="175"></next>
+  </p>
   <!-- 354 -->
-  <!-- 355 -->
+  <p id="355">
+    <text>
+        [p]Vine képzett birkózó, és sikerül kiverekednie magát a szorításodból. Mielőtt rájönnél, mi is történik, hirtelen szerepet cseréltek, és most te vagy az, akit szorongatnak, ellenfeled hátracsavarja a karjaidat. Megpróbálod kiszabadítani magad, de csak még fájdalmasabb szorítás lesz az eredménye. A végén nincs más választásod, mint feladni a harcot.[/p]
+    </text>
+    <next id="213"></next>
+  </p>
   <!-- 356 -->
   <!-- 357 -->
-  <!-- 358 -->
+  <p id="358">
+    <text>
+        [p]Laas benyúl a szőrméi közé, és előhúz egy bőrzsinórra akasztott görbe fogat. - Ez egy Jeti foga - mondja büszkén. - Ha magadon viseled, egyetlen Vérfarkas vagy más vérbestia sem mer majd megtámadni. Azt kívánom, hogy viseld, mivel kész vagy életedet áldozni Allansiáért. - Engeded, hogy a férfi a nyakadba akassza a talizmánt. Miközben felfelé hajóztok a folyón, elmondasz neki mindent, amit csak tudsz az Árnydémonról.[/p]
+    </text>
+    <gatherItem id="3008" />
+    <next id="203"></next>
+  </p>
   <!-- 359 -->
-  <!-- 360 -->
+  <p id="360">
+    <text>
+        [p]Villámgyorsan oldalra ugrasz. A tűzlabda pont ott csapódik a földbe, ahol az imént álltál. Éppen akkor tápászkodsz fel, amikor a Goblin elsüti számszeríját, és a nyílvessző gyorsan suhan feléd.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <next id="304"></next>
+      </result>
+      <result max="4" min="2">
+        <next id="344"></next>
+      </result>
+      <result max="5" min="5">
+        <next id="147"></next>
+      </result>
+      <result max="6" min="6">
+        <next id="283"></next>
+      </result>
+    </random>
+  </p>
   <!-- 361 -->
   <!-- 362 -->
-  <!-- 363 -->
+  <p id="363">
+    <text>
+        [p]Az őrök láncinget és sisakot viselnek. Mindegyiküknél pajzs és lándzsa van. Egyesével küzdj meg velük![/p]
+    </text>
+    <fight type="single">
+      <enemy id="4" />
+      <enemy id="5" />
+    </fight>
+    <next id="78"></next>
+  </p>
   <!-- 364 -->
   <!-- 365 -->
-  <!-- 366 -->
-  <!-- 367 -->
+  <p id="366">
+    <text>
+        [p]A nap hátralévő része eseménytelenül telik el. Amikor szürkülni kezd, kiadod a parancsot a táborverésre. Az embereid komorak, és alig váltanak egy-két szót a tábortűz mellett. Miután kijelölted az éjszakai őröket, senki sem vesztegeti az idejét, azonnal aludni térnek.[/p]
+    </text>
+    <next id="279"></next>
+  </p>
+  <p id="367">
+    <text>
+        [p]Fél óra sem telik el az almaevés után, néhány katona rosszul lesz - téged is beleértve. Vesztesz 3 életerő és 1 ügyesség pontot! Az embereid állapota is egyre romlik. Ketten szinte azonnal meghalnak, de mire a nap eltelik, összesen tíz a halálos áldozatok száma. Vesztesz 1 szerencse pontot, és jegyezd fel az emberveszteséget a [em]Kalandlapodra[/em]! Megbánod nagylelkű döntésedet, hogy almával etesd az embereidet, és elhatározod, hogy a jövőben nem hagyod, hogy bármi is eltérítsen küldetésed teljesítésétől.[/p]
+    </text>
+    <add amount="-3" to="stamina" />
+    <add amount="-1" to="skill" />
+    <add amount="-1" to="luck" />
+    <add amount="-10" to="warriors" />
+    <next id="209"></next>
+  </p>
   <!-- 368 -->
   <!-- 369 -->
   <!-- 370 -->
-  <!-- 371 -->
+  <p id="371">
+    <text>
+        [p]A fejsze elsüvít a fejed mellett, és zörögve végigcsúszik előtted az utcaköveken. Megállsz egy pillanatra, hogy felvedd, aztán lihegve továbbrohansz. A Fejszés Férfi messze lemarad mögötted.[/p]
+    </text>
+    <next id="52"></next>
+  </p>
   <!-- 372 -->
-  <!-- 373 -->
+  <p id="373">
+    <text>
+        [p]Éppen sikerül elkapnod Vine bal bokáját, amikor megpróbál elugrani előled. Lerántod ellenfeledet a földre. Fölébe kerekedsz, és igyekszel hátracsavarni a karjait.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="237"></next>
+      </success>
+      <failure>
+        <next id="355"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 374 -->
-  <!-- 375 -->
+  <p id="375">
+    <text>
+        [p]Mostanra már sokan felébredtek, de öt harcosod továbbra is fekve marad a földön. Nekik az éjszakai rabló elvágta a torkukat, és az ujjaikról is levágta a gyűrűiket. Ha csak egy kicsivel korábban ébredsz föl, megelőzhető lett volna a vérontás. Az őr fájós fejét tapogatja, mivel hátulról leütötték. Az éjszaka hátralévő részére megkettőzöd az őrséget. Hajnalban Barnock kapitány kiadja a parancsot a vitorlák felvonására.[/p]
+    </text>
+    <add amount="-5" to="warriors" />
+    <next id="188"></next>
+  </p>
   <!-- 376 -->
   <!-- 377 -->
-  <!-- 378 -->
+  <p id="378">
+    <text>
+        [p]Leülsz a férfi mellé, és udvariasan köszöntöd. Asztaltársad sötétbarna bőrpáncélt visel fekete ruházata fölött. Arcának semleges kifejezése egy pillanatra sem változik meg, nem is reagál az üdvözlésedre. Szemeit mereven az ajtón tartja, miközben a szájához emeli korsóját, és nagyot húz az italából. Mit teszel?[/p]
+    </text>
+    <next id="3">Megkérdezed, mi a neve?</next>
+    <next id="18">Átülsz a csavargókhoz?</next>
+    <next id="348">Kihívod egy fogadásra?</next>
+  </p>
   <!-- 379 -->
-  <!-- 380 -->
+  <p id="380">
+    <text>
+        [p]Az Elfek felsorakoznak a hajó oldalán, és tüzet nyitnak a meglepődött Rablókra. Halálos pontossággal céloznak. Az első sorozat nyolc támadót megöl. A többiek rádöbbennek, hogy öngyilkos dolog lenne tovább folytatni a rohamot, ezért megfordítják csónakjaikat, és gyorsan visszaeveznek a partra. Az emberek éljenzése közepette tovább folytatjátok az utat a folyón fölfelé.[/p]
+    </text>
+    <next id="309"></next>
+  </p>
   <!-- 381 -->
-  <!-- 382 -->
+  <p id="382">
+    <text>
+        [p]Elhaladsz néhány régimódi faház mellett, és egy furcsa üzletet pillantasz meg. A kirakatban semmi más nincsen, csak némi szalma és egy nyitott madárkalitka. Az ajtón megkopott, barna felirat hirdeti, hogy: „Állatok - természetesek és természetfelettiek.”[/p]
+    </text>
+    <next id="112">Ha belépsz az állatüzletbe</next>
+    <next id="218">Ha inkább továbbmész az utcán</next>
+  </p>
   <!-- 383 -->
-  <!-- 384 -->
+  <p id="384">
+    <text>
+        [p]A fejed fölötti vitorlázaton elpattan egy csigasort tartó kötél, amint a kalózhajó recsegve belefúródik a [em]Repülő Tukán[/em] oldalába. A lezuhanó csigák átszakítják a fedélzetet, és kis híján téged is telibe találnak. A hajókorláthoz rohansz, és lenézel. Rémülten látod, hogy a fapalánkok beszakadtak, és hatalmas lék nyílt a hajótok oldalán, melyen át víz áramlik be. Nincs vesztegetnivaló idő, a lélekvesztő gyorsan süllyed. Utasítod az embereidet, hogy ugráljanak le a hajóról, és ússzanak ki az északi partra. Amikor te is beugrasz a vízbe, Barnock kapitány és az emberei rémülten kiáltozni kezdenek. A folyó nem túl mély. Visszanézel, és látod, amint a kalózok elözönlik a félig elmerült hajót. Néhány perc múlva ismét a parton állsz, és összeszámolod, mit vesztettél ezzel a kis incidenssel.[/p]
+    </text>
+    <random>
+      <result max="3" min="1">
+        <next id="7"></next>
+      </result>
+      <result max="6" min="4">
+        <next id="313"></next>
+      </result>
+    </random>
+  </p>
   <!-- 385 -->
   <!-- 386 -->
-  <!-- 387 -->
+  <p id="387">
+    <text>
+        [p]Sajnos rossz helyre lépsz, az egyik padlódeszka felpattan, és mozgásba lép a pengét elengedő mechanizmus. A kard az Elfre zuhan, de legnagyobb meglepetésedre egyszerűen csak lepattan a hasáról! - Oldozz el! - könyörög a nő -, és mindent megmagyarázok.[/p]
+    </text>
+    <next id="243">Ha kioldozod</next>
+    <next id="320">Ha inkább magára hagyod ezt a furcsa lényt, és csatlakozol az odakint váró embereidhez</next>
+  </p>
   <!-- 388 -->
   <!-- 389 -->
-  <!-- 390 -->
+  <p id="390">
+    <text>
+        [p]Laas sértődöttnek tűnik. Elfordul, és odasétál az embereihez. Néhány perc múlva visszatér hozzád, és megszólal: - Itt van a 100 Aranytallérod. Nem csatlakozunk hozzád, mert megsértettél minket. - Nem tudsz mit tenni, így hagyod, hogy az északiak távozzanak. Vesztesz 1 szerencse pontot! Nem túl jó hangulatban folytatjátok tovább az utat a folyón.[/p]
+    </text>
+    <add amount="100" to="gold" />
+    <add amount="-10" to="northerns" />
+    <add amount="-1" to="luck" />
+    <next id="203"></next>
+  </p>
   <!-- 391 -->
   <p id="392">
     <text>
         [p]Kardod hegye belemélyed a puha, sárga húsba. Sűrű, zöld lé folyik a sebből, amint a Lápi Csontszaggató vad fájdalmában őrülten csapkodni kezd testével. Hátraugrasz, és megpróbálod elkerülni azt, hogy agyonnyomjon a vakon vergődő iszonyú tömeg. Néhány másodperc vonaglás után a bestia lassan visszasüpped a fekete posványba. Továbbmentek a mocsárban, és szerencsésen eléritek a túlsó végét. Ezzel együtt mérges vagy, amiért öt emberedet feleslegesen elvesztetted.[/p]
     </text>
     <next id="115"></next>
+  </p>
+  <!-- 393 -->
+  <!-- 394 -->
+  <p id="395">
+    <text>
+        [p]A csavargók hirtelen felélénkülnek, amikor meghallják, hogy fizetsz az Agglaxról adott információért cserébe. - Tudjuk, hol állította fel a seregét, és ezt meg is tudjuk neked mutatni egy térképen - mondja Laz, aranyat szimatolva. - De - folytatja, és sajnálkozó mosoly jelenik meg az arcán - a legfontosabb az, hogy tudjuk, hogyan tudunk segíteni abban, hogy legyőzd az Árnydémont. 10 Aranytallérért megmutatjuk, hol találod meg a fő seregét. Újabb 90 Aranytallérért azt is elmondjuk, hogyan tudod meggyengíteni őt.[/p]
+    </text>
+    <next id="322">Ha 10 Aranytallért fizetsz a csavargóknak</next>
+    <next id="56">Ha 100-at</next>
+  </p>
+  <!-- 396 -->
+  <p id="397">
+    <text>
+        [p]Gurgulázó hörgést hallatsz, amint a szigony átfúrja a torkodat. Egyetlen Halember elég volt, hogy végezzen veled. Most már nincs senki, aki megállíthatná Agglaxot. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <!-- 398 -->
+  <p id="399">
+    <text>
+        [p]Egy óra elteltével egy hang csattan fel: - Nézzétek! A keleti égen! Egy repülő lény, lovassal! - Felnézel, és egy gyíkszerű, nagy, bőrszárnyakkal rendelkező lényt pillantasz meg - egy Vivern az, hátán egy íjjal felfegyverkezett Goblinnal. A lovas felemeli az íját, és célba vesz téged. Ebben a pillanatban a repülő szörnyeteg is kitátja a száját, és egy tűzgömböt köp feléd.[/p]
+    </text>
+    <random>
+      <result max="1" min="1">
+        <next id="97"></next>
+      </result>
+      <result max="5" min="2">
+        <next id="207"></next>
+      </result>
+      <result max="6" min="6">
+        <next id="360"></next>
+      </result>
+    </random>
   </p>
 </content>

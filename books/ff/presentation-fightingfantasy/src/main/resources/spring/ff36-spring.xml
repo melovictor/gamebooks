@@ -4,13 +4,59 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.FightingFantasy.ARMIES_OF_DEATH" id="ff36Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff36Info" c:id-ref="ff36Id" p:resourceDir="ff36" p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="36" p:series-ref="ffTitle" p:title="Armies of Death" p:characterHandler-ref="ffCharacterHandler" p:commandResolvers-ref="ffCommandResolvers" p:unfinished="true" p:hidden="true" p:characterBeanId="ff36Character" p:characterPageDataBeanId="ff36CharacterPageData">
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff36Info" c:id-ref="ff36Id" p:resourceDir="ff36" p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="36" p:series-ref="ffTitle" p:title="Armies of Death" p:characterHandler-ref="ffCharacterHandler" p:commandResolvers-ref="ff36CommandResolvers" p:unfinished="true" p:hidden="true" p:characterBeanId="ff36Character" p:characterPageDataBeanId="ff36CharacterPageData">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="ff36enemies.xml" c:items="ff36items.xml" c:paragraphs="ff36content.xml" />
     </property>
     <property name="contentSpecification">
       <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="true" />
     </property>
+    <property name="resources">
+      <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="ff36" p:jsResources="ff36" />
+    </property>
   </bean>
+
+
+
+
+  <util:map id="ff36ExtraCommandResolvers" key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver">
+    <entry key="hu.zagor.gamebooks.content.command.fight.FightCommand">
+      <bean class="hu.zagor.gamebooks.content.command.fight.FightCommandResolver" id="ff36FightCommandResolver">
+        <property name="subResolvers">
+          <util:map key-type="java.lang.String" value-type="hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResolver">
+            <entry key="basic" value-ref="fightCommandBasicSubResolver" />
+            <entry key="custom">
+              <bean class="hu.zagor.gamebooks.ff.ff.aod.mvc.books.section.service.fight.Ff36FightCommandCustomSubResolver" />
+            </entry>
+          </util:map>
+        </property>
+      </bean>
+    </entry>
+  </util:map>
+
+  <bean id="ff36CommandResolvers" c:mapA-ref="ffCommandResolvers" c:mapB-ref="ff36ExtraCommandResolvers" factory-method="merge" class="hu.zagor.gamebooks.support.spring.MapMerger" />
+
+
+  <util:map id="ff36BattleRoundResults" key-type="java.lang.Integer" value-type="hu.zagor.gamebooks.ff.ff.aod.mvc.books.section.service.fight.BattleRoundResult">
+    <entry key="1">
+      <bean class="hu.zagor.gamebooks.ff.ff.aod.mvc.books.section.service.fight.BattleRoundResult" p:selfStrong="-5" p:egal="-10" p:selfWeak="-15" />
+    </entry>
+    <entry key="2">
+      <bean class="hu.zagor.gamebooks.ff.ff.aod.mvc.books.section.service.fight.BattleRoundResult" p:selfStrong="5" p:egal="-5" p:selfWeak="-10" />
+    </entry>
+    <entry key="3">
+      <bean class="hu.zagor.gamebooks.ff.ff.aod.mvc.books.section.service.fight.BattleRoundResult" p:selfStrong="5" p:egal="-5" p:selfWeak="-5" />
+    </entry>
+    <entry key="4">
+      <bean class="hu.zagor.gamebooks.ff.ff.aod.mvc.books.section.service.fight.BattleRoundResult" p:selfStrong="5" p:egal="5" p:selfWeak="-5" />
+    </entry>
+    <entry key="5">
+      <bean class="hu.zagor.gamebooks.ff.ff.aod.mvc.books.section.service.fight.BattleRoundResult" p:selfStrong="10" p:egal="5" p:selfWeak="5" />
+    </entry>
+    <entry key="6">
+      <bean class="hu.zagor.gamebooks.ff.ff.aod.mvc.books.section.service.fight.BattleRoundResult" p:selfStrong="15" p:egal="10" p:selfWeak="5" />
+    </entry>
+  </util:map>
+
 
 </beans>

@@ -23,16 +23,18 @@ public class Ff36CharacterPageData extends FfCharacterPageData {
      */
     public Ff36CharacterPageData(final Ff36Character character, final FfCharacterHandler handler) {
         super(character, handler);
-
-        addArmyEntry(character, "warriors", character.getWarriors());
-        addArmyEntry(character, "dwarves", character.getDwarves());
-        addArmyEntry(character, "elves", character.getElves());
-        addArmyEntry(character, "knights", character.getKnights());
+        // TODO: extend when new squadron is added
+        addArmyEntry("warriors", character.getWarriors());
+        addArmyEntry("dwarves", character.getDwarves());
+        addArmyEntry("elves", character.getElves());
+        addArmyEntry("knights", character.getKnights());
+        addArmyEntry("wilders", character.getWilders());
+        addArmyEntry("northerns", character.getNortherns());
     }
 
-    private void addArmyEntry(final Ff36Character character, final String name, final int amount) {
+    private void addArmyEntry(final String name, final int amount) {
         if (amount > 0) {
-            army.add(new ArmyEntry(name, character.getWarriors()));
+            army.add(new ArmyEntry(name, amount));
         }
     }
 

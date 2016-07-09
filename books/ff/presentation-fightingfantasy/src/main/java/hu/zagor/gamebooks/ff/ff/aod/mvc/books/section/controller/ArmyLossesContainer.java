@@ -1,16 +1,10 @@
-package hu.zagor.gamebooks.ff.ff.aod.character;
-
-import hu.zagor.gamebooks.ff.character.FfCharacter;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+package hu.zagor.gamebooks.ff.ff.aod.mvc.books.section.controller;
 
 /**
- * Character object for FF36.
+ * Bean for storing user input.
  * @author Tamas_Szekeres
  */
-@Component("ff36Character")
-@Scope("prototype")
-public class Ff36Character extends FfCharacter {
+public class ArmyLossesContainer {
     // TODO: extend when new squadron is added
     private int warriors;
     private int dwarves;
@@ -66,5 +60,4 @@ public class Ff36Character extends FfCharacter {
     public void setNortherns(final int northerns) {
         this.northerns = northerns;
     }
-
 }
