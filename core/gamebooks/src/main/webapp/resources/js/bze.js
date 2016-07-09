@@ -59,9 +59,10 @@ function showFeedback(text) {
 	}, 3000);
 }
 
-var newRewards = (function() {
+var bookRewards = (function() {
 	function init() {
 		setTimeout(showNextBox, 250);
+		loadExistingRewards();
 	}
 	function showNextBox() {
 		var $rewardBoxes = $(".mainRewardBox");
@@ -74,6 +75,34 @@ var newRewards = (function() {
 					showNextBox();
 				});
 			}, 3000);
+		}
+	}
+	function loadExistingRewards() {
+		var $container = $("#gamebookRewards");
+		var bookId = $("#bookId").val();
+		var userId = $("#userId").val();
+		if ($container.length > 0) {
+			$.ajax({
+				url : "http://zagor.hu/getrewards.php?bookId=" + bookId + "&userId=" + userId,
+				data : {
+					bookId : bookId,
+					userId : userId
+				},
+				type : "post",
+				success : function(response) {
+					var $earned = $("<div>");
+					var $unearned = $("<div>");
+					$(response).each(function(idx, elem) {
+						if (elem.rewardCode) {
+							$earned.append($("<img src='http://zagor.hu/img/reward/" + elem.rewardImage + "' />"));
+						} else {
+							$unearned.append($("<img src='http://zagor.hu/img/reward/placeholder/" + elem.placeholder + "' />"));
+						}
+					});
+					$container.append($earned);
+					$container.append($unearned);
+				}
+			});
 		}
 	}
 	
@@ -89,6 +118,6 @@ $(function() {
 	menu.updateSelection();
 	$("#adventurerName").focus();
 	$("#logout").on("click", menu.logout);
-	newRewards.init();
+	bookRewards.init();
 	images.init();
 });
