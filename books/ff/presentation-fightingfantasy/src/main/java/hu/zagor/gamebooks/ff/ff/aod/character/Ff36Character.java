@@ -1,8 +1,10 @@
 package hu.zagor.gamebooks.ff.ff.aod.character;
 
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import java.lang.reflect.Field;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ReflectionUtils;
 
 /**
  * Character object for FF36.
@@ -11,7 +13,6 @@ import org.springframework.stereotype.Component;
 @Component("ff36Character")
 @Scope("prototype")
 public class Ff36Character extends FfCharacter {
-    // TODO: extend when new squadron is added
     private int warriors;
     private int dwarves;
     private int elves;
@@ -20,6 +21,47 @@ public class Ff36Character extends FfCharacter {
     private int northerns;
     private int marauders;
     private int whiteKnights;
+
+    private int selfPie;
+    private int pieEaterPie;
+
+    public int getArmy() {
+        return warriors + dwarves + elves + knights + wilders + northerns + marauders + whiteKnights;
+    }
+
+    /**
+     * Makes changes so the new army size will equal to what is required.
+     * @param army the new size of the army
+     */
+    public void setArmy(final int army) {
+        final int currentSize = getArmy();
+        int diff = currentSize - army;
+
+        diff = deduct(diff, "warriors");
+        diff = deduct(diff, "dwarves");
+        diff = deduct(diff, "elves");
+        diff = deduct(diff, "knights");
+        diff = deduct(diff, "wilders");
+        diff = deduct(diff, "northerns");
+        diff = deduct(diff, "marauders");
+        diff = deduct(diff, "whiteKnights");
+    }
+
+    private int deduct(final int toDeduct, final String attribute) {
+        int diff = toDeduct;
+        final Field field = ReflectionUtils.findField(this.getClass(), attribute);
+        field.setAccessible(true);
+        final int curAmount = (int) ReflectionUtils.getField(field, this);
+        if (curAmount > diff) {
+            ReflectionUtils.setField(field, this, curAmount - diff);
+            diff = 0;
+        } else {
+            diff -= curAmount;
+            ReflectionUtils.setField(field, this, 0);
+        }
+        field.setAccessible(false);
+        return diff;
+    }
 
     public int getWarriors() {
         return warriors;
@@ -83,6 +125,22 @@ public class Ff36Character extends FfCharacter {
 
     public void setWhiteKnights(final int whiteKnights) {
         this.whiteKnights = whiteKnights;
+    }
+
+    public int getSelfPie() {
+        return selfPie;
+    }
+
+    public void setSelfPie(final int selfPie) {
+        this.selfPie = selfPie;
+    }
+
+    public int getPieEaterPie() {
+        return pieEaterPie;
+    }
+
+    public void setPieEaterPie(final int pieEaterPie) {
+        this.pieEaterPie = pieEaterPie;
     }
 
 }

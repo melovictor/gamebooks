@@ -23,7 +23,6 @@ public class Ff36CharacterPageData extends FfCharacterPageData {
      */
     public Ff36CharacterPageData(final Ff36Character character, final FfCharacterHandler handler) {
         super(character, handler);
-        // TODO: extend when new squadron is added
         addArmyEntry("warriors", character.getWarriors());
         addArmyEntry("dwarves", character.getDwarves());
         addArmyEntry("elves", character.getElves());

@@ -43,7 +43,19 @@
     <next id="37">Ha úgy döntesz, hogy a [em]Repülő Tukánnal[/em] utaztok</next>
     <next id="225">Ha inkább tovább folytatjátok a menetelést</next>
   </p>
-  <!-- 2 -->
+  <p id="2">
+    <text>
+        [p]A fejed fölé tartod a pajzsod, és elkezdesz fölfelé mászni. Hallod, amint a Blog az ágak között motoszkál, hogy célba tudjon venni. Egy kézzel eléggé nehézkes a mászás, és az egyik ágon hirtelen elveszted a kapaszkodót.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="396"></next>
+      </success>
+      <failure>
+        <next id="140"></next>
+      </failure>
+    </test>
+  </p>
   <p id="3">
     <text>
         [p]- Nincs kedvem beszélgetni - mondja éles hangon a tolvaj. - Pofa be, és húzz el innen.[/p]
@@ -197,8 +209,296 @@
       </failure>
     </test>
   </p>
-  <!-- 13 -->
-  <!-- 14 -->
+  <p id="13">
+    <text>
+        [p]Fém csattan fémen, ahogy a két sereg összecsap. A harc igen heves, és bár az ellenfél nagy túlerőben van, mégis sikerül egy kis teret nyernetek. A harc közepén hirtelen egy hatalmas lénnyel, a Trollok legvadabb és legerősebb fajának egy képviselőjével kerülsz szembe.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="27" />
+    </fight>
+    <next id="142"></next>
+  </p>
+  <p id="14">
+    <text>
+        [p]Te vagy az egyetlen kihívó, senki más nem akart szembeszállni a Nagyhasú Emberrel. A Törpe közli veled, hogy a nyeremény 100 Aranytallér. Ennyi pénzt kap az, akinek sikerül legyőznie a férfit. A beugró ára 10 Aranytallér. Befizeted a pénzt, majd leülsz az asztalhoz, és vársz a bajnokra. A tömeg éljenezve szétválik, utat engedve a hatalmas embernek. A férfit két szakácsruhába öltözött Törpe kíséri, mindkettejük kezében egy fémtálca, melyen egy-egy hatalmas, gőzölgő pite tornyosul. A Nagyhasú Ember leül az asztalhoz, és elhelyezi hatalmas tömegét a recsegő székben. Mindkettőtök elé letesznek egy-egy tálcát. Hal és puding illata csapja meg az orrodat. Egy-egy fakanalat kaptok, majd a Törpe elkiáltja magát: - Vigyázz! Kész! Rajt! - Belemeríted a kanalad a süteménybe, és enni kezdesz.[/p]
+    </text>
+    <add amount="-10" to="gold" />
+    <itemCheck type="skill" id="1">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="2">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="3">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="4">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="5">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="6">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="7">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="8">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="9">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="10">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="11">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="12">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="13">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="14">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="15">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="16">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <random diceConfig="1d6">
+      <result max="1" min="1">
+        <add amount="1" to="selfPie" />
+      </result>
+      <result max="2" min="2">
+        <add amount="2" to="selfPie" />
+      </result>
+      <result max="3" min="3">
+        <add amount="3" to="selfPie" />
+      </result>
+      <result max="4" min="4">
+        <add amount="4" to="selfPie" />
+      </result>
+      <result max="5" min="5">
+        <add amount="5" to="selfPie" />
+      </result>
+      <result max="6" min="6">
+        <add amount="6" to="selfPie" />
+      </result>
+    </random>
+    <itemCheck type="attribute" id="selfPie" amount="40">
+      <have>
+        <next id="60" />
+      </have>
+      <dontHave>
+        <random diceConfig="1d6">
+          <result max="1" min="1">
+            <add amount="14" to="pieEaterPie" />
+          </result>
+          <result max="2" min="2">
+            <add amount="15" to="pieEaterPie" />
+          </result>
+          <result max="3" min="3">
+            <add amount="16" to="pieEaterPie" />
+          </result>
+          <result max="4" min="4">
+            <add amount="17" to="pieEaterPie" />
+          </result>
+          <result max="5" min="5">
+            <add amount="18" to="pieEaterPie" />
+          </result>
+          <result max="6" min="6">
+            <add amount="19" to="pieEaterPie" />
+          </result>
+        </random>
+        <itemCheck type="attribute" id="pieEaterPie" amount="40">
+          <have>
+            <next id="388" />
+          </have>
+          <dontHave>
+            <next id="14a" />
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="14a" display="14">
+    <text>
+        [p]Te vagy az egyetlen kihívó, senki más nem akart szembeszállni a Nagyhasú Emberrel. A Törpe közli veled, hogy a nyeremény 100 Aranytallér. Ennyi pénzt kap az, akinek sikerül legyőznie a férfit. A beugró ára 10 Aranytallér. Befizeted a pénzt, majd leülsz az asztalhoz, és vársz a bajnokra. A tömeg éljenezve szétválik, utat engedve a hatalmas embernek. A férfit két szakácsruhába öltözött Törpe kíséri, mindkettejük kezében egy fémtálca, melyen egy-egy hatalmas, gőzölgő pite tornyosul. A Nagyhasú Ember leül az asztalhoz, és elhelyezi hatalmas tömegét a recsegő székben. Mindkettőtök elé letesznek egy-egy tálcát. Hal és puding illata csapja meg az orrodat. Egy-egy fakanalat kaptok, majd a Törpe elkiáltja magát: - Vigyázz! Kész! Rajt! - Belemeríted a kanalad a süteménybe, és enni kezdesz.[/p]
+    </text>
+    <itemCheck type="skill" id="1">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="2">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="3">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="4">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="5">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="6">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="7">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="8">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="9">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="10">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="11">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="12">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="13">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="14">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="15">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <itemCheck type="skill" id="16">
+      <have>
+        <add amount="1" to="selfPie" />
+      </have>
+    </itemCheck>
+    <random diceConfig="1d6">
+      <result max="1" min="1">
+        <add amount="1" to="selfPie" />
+      </result>
+      <result max="2" min="2">
+        <add amount="2" to="selfPie" />
+      </result>
+      <result max="3" min="3">
+        <add amount="3" to="selfPie" />
+      </result>
+      <result max="4" min="4">
+        <add amount="4" to="selfPie" />
+      </result>
+      <result max="5" min="5">
+        <add amount="5" to="selfPie" />
+      </result>
+      <result max="6" min="6">
+        <add amount="6" to="selfPie" />
+      </result>
+    </random>
+    <itemCheck type="attribute" id="selfPie" amount="40">
+      <have>
+        <next id="60" />
+      </have>
+      <dontHave>
+        <random diceConfig="1d6">
+          <result max="1" min="1">
+            <add amount="14" to="pieEaterPie" />
+          </result>
+          <result max="2" min="2">
+            <add amount="15" to="pieEaterPie" />
+          </result>
+          <result max="3" min="3">
+            <add amount="16" to="pieEaterPie" />
+          </result>
+          <result max="4" min="4">
+            <add amount="17" to="pieEaterPie" />
+          </result>
+          <result max="5" min="5">
+            <add amount="18" to="pieEaterPie" />
+          </result>
+          <result max="6" min="6">
+            <add amount="19" to="pieEaterPie" />
+          </result>
+        </random>
+        <itemCheck type="attribute" id="pieEaterPie" amount="40">
+          <have>
+            <next id="388" />
+          </have>
+          <dontHave>
+            <next id="14a" />
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="15">
     <text>
         [p]Ahogy a bokrok között átnézel, egy kis barlangot veszel észre, nem messze az úttól.[/p]
@@ -226,7 +526,313 @@
     <next id="395">Ha mesélsz nekik a küldetésedről</next>
     <next id="35">Ha azt mondod, hogy az unokafivéredet akarod meglátogatni Zengisben</next>
   </p>
-  <!-- 19 -->
+  <p id="19">
+    <text>
+        [p]A lány elmosolyodik, majd átadja a nyereményedet. -  És a keményen dolgozó lánynak adott borravaló? -    kérdezi.[/p]
+    </text>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="4007">
+      <have>
+        <add amount="2" to="gold" />
+        <loseItem id="4007" />
+      </have>
+    </itemCheck>
+    <next id="347">Ha odadobsz neki 1 Aranytallért</next>
+    <next id="212">Ha inkább azonnal elhagyod a játéktermet</next>
+  </p>
   <p id="20">
     <text>
         [p]- Nagyszerű! - csattan fel az Orákulum hangja, amint előveszed a vázát a hátizsákodból. - Most egy kérdést teszek fel, de a sorsra bízom, mennyire legyen nehéz. Hadd vessek kockát.[/p]
@@ -263,7 +869,12 @@
     </fight>
     <next id="361"></next>
   </p>
-  <!-- 23 -->
+  <p id="23">
+    <text>
+        [p]Az elhajított kő ilyen közelről halálos fegyver. Oldalról találja el a fejed, és nagy reccsenéssel azonnal betöri a koponyádat. A földre zuhansz az Allansiáér elesett többi bátor harcos holtteste közé. Látván halálodat, embereid bátorsága elszáll, így Agglax könnyedén győzedelmeskedhet. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="24">
     <text>
         [p]A Goblin kibillen a nyeregből, és nyakát töri, amint a földre zuhan. Átkutatod a holttestet. Egy íjhúrt, és öt nyílhegyet találsz nála. Ennek nem veszed sok hasznát, de tovább kutatva a zsebeiben találsz még egy [span class="takeItem" data-id="3005" data-amount="1"]csont függőt[/span], melybe a 8-as számot vésték. Ha akarod, ezt magadhoz veheted. Utána visszatérsz a sereghez, és ismét kiadod a menetparancsot Karom felé.[/p]
@@ -298,7 +909,12 @@
     <next id="182">Ha tudatod jelenléted a pórul jártakkal</next>
     <next id="143">Ha inkább csöndesen visszalopakodtok a sereghez</next>
   </p>
-  <!-- 29 -->
+  <p id="29">
+    <text>
+        [p]Embereid halálát egyetlen gyors karddöféssel bosszulod meg. Utasítod a harcosokat, hogy térjenek vissza az útra. Tovább meneteltek.[/p]
+    </text>
+    <next id="130"></next>
+  </p>
   <p id="30">
     <text>
         [p]100 Aranyat fizetsz az északi emberek vezetőjének, és utasítod őket, hogy szálljanak fel a hajóra. Amikor ismét úton vagytok, a vezetőjük odalép hozzád. Acélkék szemének kényelmetlen, éles tekintetétől eltekintve úgy érzed, megbízhatsz benne. - A nevem Laas - mondja barátságos mosollyal. - Megengeded, hogy megajándékozzalak?[/p]
@@ -368,7 +984,15 @@
     <next id="266">Ha továbbmentek a település irányába</next>
     <next id="331">Ha inkább délkelet felé fordultok</next>
   </p>
-  <!-- 39 -->
+  <p id="39">
+    <text>
+        [p]Agglax visszazuhan a székébe, amikor megpillantja kezedben a Fénykristályt. Karjával eltakarja az arcát, majd váratlanul leugrik székéből, és elmenekül. Futás közben még odasziszeg valamit egy csapat, feketébe öltözött elit testőrnek. Egyikük eléd áll, hogy fedezze ura menekülését. Görbe kardját két kézzel a feje fölé emeli. Gonosz vigyorából tudod, hogy a fickó mindenre elszánt, még az életét is hajlandó lenne feláldozni, hogy megvédje az urát. - Tanaka San azt mondja, pusztulj! - kiáltja, majd előreugrik, hogy végezzen veled.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="33" />
+    </fight>
+    <next id="254"></next>
+  </p>
   <p id="40">
     <text>
         [p]Közlöd a csapossal, hogy sem időd, sem kedved nincs arra, hogy részegeknek való trükkökkel szórakoztasd a vendégeit. Azért vagy itt, hogy bátor harcosokat toborozz Agglax, az Árnydémon ellen. A csapos sötét, dús szempillái megremegnek egy picit, majd hirtelen nagyon érdeklődve fordul feléd. - Hát akkor miért nem ezzel kezdted? - kérdezi, és széles vigyor ömlik el az arcán. - Ismerem a város legjobb harcosait. Néhányan most itt is ülnek! - Fél óra múlva tizenöt újabb harcossal gyarapszik a sereg; és közlöd a frissen toborzottakkal, hogy jelentkezzenek Lexonnál a zsoldjukért és felszerelésükért (vonj le 150 Aranyat a [em]Kalandlapodról[/em]). Végül kezet rázol a nagydarab csapossal, és távozol a Fekete Sárkányból. Körbenézel, mit lehet még Zengisben találni.[/p]
@@ -441,7 +1065,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 45 -->
+  <p id="45">
+    <text>
+        [p]A gyűrű tökéletesen ráillik az ujjra. Ámulva nézed, amint az ökölbe szorított kéz lassan kinyílik. A kőtenyér közepén pedig egy szikrázóan gyönyörű kristály fekszik. A király szája váratlanul kinyílik, és egy hang csattan fel: - Neked adom a [span class="takeItem" data-id="3023" data-amount="1"]Fénykristályt[/span]! - Izgatottan elrakod a kristályt, és visszarohansz az embereidhez. Megmutatod nekik a kincset, majd kiadod a menetparancsot. Továbbmeneteltek az úton.[/p]
+    </text>
+    <loseItem id="3006" />
+    <next id="130"></next>
+  </p>
   <p id="46">
     <text>
         [p]A kulcs elfordul a nyílásban. Halk kattanás hallatszik. Utána sziszegő hangot hallasz. Mielőtt ráeszmélnél, mi is történik, a nyílásból kiszökő mérgező gáz megtette a maga hatását. A torkodhoz kapsz, amint a halálos méreg lassan hatni kezd. A földre rogysz, és nem mozdulsz többé. Kalandod itt véget ér.[/p]
@@ -511,7 +1141,7 @@
     <add amount="-2" to="stamina" />
     <add amount="-1" to="skill" />
     <add amount="-1" to="luck" />
-    <add amount="-5" to="warriors" />
+    <add amount="-5" to="army" />
     <next id="209"></next>
   </p>
   <p id="55">
@@ -541,8 +1171,20 @@
     </text>
     <next id="274"></next>
   </p>
-  <!-- 59 -->
-  <!-- 60 -->
+  <p id="59">
+    <text>
+        [p]Embereid egyre fogyatkoznak, és ettől teljesen elszáll a harci kedvük. Már csak méterekre vannak az ellenséges vonalaktól, amikor megfordulnak, és fejvesztve menekülni kezdenek. Rájuk üvöltesz, hogy harcoljanak, de minden hiába. Aztán kezek ragadnak meg, és nemsokára láncba verve vezetnek Agglax elé, hogy lassú kínhalál legyen a büntetésed. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="60">
+    <text>
+        [p]A tömeg döbbent csendben szemléli, amint győzelmed jeléül az üres tányérba ejted a kanaladat. A Nagyhasú Ember - szája még tele van süteménnyel - dühösen lesöpri a tányérját az asztalról. A Törpe hitetlenkedve, a fejét rázva nyújtja át a 100 Aranytallért tartalmazó erszényt.[/p]
+    </text>
+    <add amount="100" to="gold" />
+    <next id="165">Ha felállsz az asztalra, beszédet mondasz Agglaxról, és közlöd, hogy a most nyert 100 Aranyat hajlandó vagy odaadni tíz kemény harcosnak, ha csatlakoznak a seregedhez</next>
+    <next id="95">Ha inkább távozol a nyereményeddel</next>
+  </p>
   <p id="61">
     <text>
         [p]Megrázod a fejed, és kis híján elveszted az egyensúlyodat. Hallod, amint a csapos hatalmasat kacag mögötted. Lezöttyensz a legközelebbi székre. Vesztesz 1 életerő pontot![/p]
@@ -563,7 +1205,19 @@
       </result>
     </random>
   </p>
-  <!-- 62 -->
+  <p id="62">
+    <text>
+        [p]Egy másik Goblin is észreveszi, amint a verekedő harcos felé közelítesz. Felismeri, hogy te vagy a vezető, ezért gondosan céloz számszeríjával, majd meghúzza a ravaszt.[/p]
+    </text>
+    <itemCheck type="attribute" id="marauders" amount="1">
+      <have>
+        <next id="153"></next>
+      </have>
+      <dontHave>
+        <next id="339"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="63">
     <text>
         [p]Az ajtó egy egyszerűen berendezett szobába nyílik. A helyiség közepén két férfi gyakorolja a harcot fakardokkal. Hét társuk körben áll, és figyel. A terem távolabbi végében egy bőrpáncélba öltözött, szőke nő áll, és tanácsokat kiabál a küzdőknek. - Állj! - kiáltja hirtelen. - Pihenjetek egyet, amíg megtudom, mit akar most érkezett barátunk. - Odalép hozzád, és bemutatkozik. - Max vagyok, ezek pedig itt az embereim. Csatlakozni akarsz, vagy fel akarod bérelni őket? - Azt feleled, hogy az utóbbiban vagy érdekelt. - Az én fiaim a legjobbak. 200 Arany, és viheted is mind a tízünket. - Mit teszel?[/p]
@@ -622,7 +1276,7 @@
     <text>
         [p]A Vérfarkas észreveszi a nyakadban lógó talizmánt, és abban a pillanatban megmerevedik félelmében. Te egyszerűen odalépsz hozzá, és egyetlen vágással elintézed. Az őr viszont meghalt. Az éjszaka hátralévő része eseménytelenül telik el. Reggel felkerekedtek, és kiértek az erdőből egy síkságra.[/p]
     </text>
-    <add amount="-1" to="warriors" />
+    <add amount="-1" to="army" />
     <next id="323"></next>
   </p>
   <p id="71">
@@ -647,12 +1301,18 @@
     </text>
     <next id="284"></next>
   </p>
-  <!-- 73 -->
+  <p id="73">
+    <text>
+        [p]Felemeled pajzstartó karod, hogy védekezz a feléd repülő lövedék ellen. A Blog megfordul, és beveti magát a bokrok közé.[/p]
+    </text>
+    <next id="171">Ha üldözőbe veszed</next>
+    <next id="130">Ha inkább visszaparancsolod az embereidet az útra, hogy tovább folytassátok a menetelést</next>
+  </p>
   <p id="74">
     <text>
         [p]A tűzlabda telibe találja a főárbocot. Az recsegve lezuhan, és halálra zúzza öt emberedet. Két Törpe előrerohan, és nedves pokrócokkal hamar eloltják a kezdődő tüzet.[/p]
     </text>
-    <add amount="-5" to="warriors" />
+    <add amount="-5" to="army" />
     <next id="192"></next>
   </p>
   <p id="75">
@@ -778,7 +1438,12 @@
       </failure>
     </test>
   </p>
-  <!-- 79 -->
+  <p id="79">
+    <text>
+        [p]Agglax megérzi, hogy bajba kerültél, és felkészül a végső győzelemre.[/p]
+    </text>
+    <next id="301"></next>
+  </p>
   <p id="80">
     <text>
         [p]A dongó tétovázik egy pillanatig, majd továbbsiet az általad kiválasztott lekvár felé. Kapsz 1 szerencse pontot. A férfi kiakasztja ruhájából a melltűjét, és kifejezéstelen arccal, szó nélkül átadja neked. A [span class="takeItem" data-id="3009" data-amount="1"]bross[/span] gyönyörű darab, melyet egy tűzokádó, vörös sárkány domborműve díszít. Megfordítod, és látod, hogy a melltű hátsó felébe a 89-es számot vésték. Megjegyzed ezt a számot, majd feltűzöd az ékszert a ruhádra.[/p]
@@ -792,7 +1457,12 @@
     </text>
     <next id="376"></next>
   </p>
-  <!-- 82 -->
+  <p id="82">
+    <text>
+        [p]Kardod egyetlen, gyors csapásával megbosszulod katonáid halálát. Lemászol a fáról, és utasítást adsz a seregnek, hogy térjenek vissza az útra, és folytassák tovább a menetelést.[/p]
+    </text>
+    <next id="130"></next>
+  </p>
   <p id="83">
     <text>
         [p]Öt harcosod áldozatul esik a Szigonylegyeknek, Testük ideális otthonul szolgál majd a később kikelő nyüveknek. A rovarok végül elrepülnek, te pedig leverten visszavezeted embereidet a hajóra. Vesztesz 1 szerencse pontot! Barnock kapitány látja, hogy gyorsan el akarsz tűnni erről az átkozott helyről, ezért kiadja a parancsot embereinek a továbbhajózásra.[/p]
@@ -872,7 +1542,13 @@
     <next id="270">Ha elfogadod a gyűrűt</next>
     <next id="211">Ha inkább udvariasan visszautasítod, és távozol, hogy csatlakozz az embereidhez</next>
   </p>
-  <!-- 91 -->
+  <p id="91">
+    <text>
+        [p]A Törpéid bátran küzdenek a Káoszharcosok ellen, de az ellenfél túlereje jelentős. A hős Törpék egy tapodtat sem hátrálnak, míg végül már csak ketten maradnak. De ők is egymásnak vetik a hátukat, és folytatják a küzdelmet a fanatikus ellenséggel. Aztán az egyikük elhullik egy szöges buzogány csapásától, a másikat pedig hátba szúrják. Füledbe hasít a Káoszharcosok ocsmány diadalkiáltása. Új parancsokat osztogatsz, arra számítván, hogy ellenfeleid ismét támadni fognak, de azok egyszerűen megfordulnak, és visszavonulnak a saját seregükhöz. Úgy döntesz, a legjobb védekezés a támadás, ezért utasítod a seregedet, hogy támadják meg a Trollokat.[/p]
+    </text>
+    <add amount="0" to="dwarves" type="set" />
+    <next id="178"></next>
+  </p>
   <p id="92">
     <text>
         [p]- Szemét utca? - kérdezi Enk. - Hiszen az éppen ott van, ahol én lakom. Elkísérünk addig. - Hirtelenjében nem jut eszedbe semmilyen mentség, ezért kényszeredetten beleegyezel. Kisétáltok a kocsmából, öt percig haladtok egy utcán, majd bekanyarodtok jobbra, egy szűk sikátorba. Ott a három férfi hirtelen megáll, körbevesznek, és előhúzzák a tőreiket. - Szemét utca! Zengisben nincs is Szemét utca - közli Enk megvetően. - Kapjuk el a fickót, fiúk; azok a zsebek sok aranyat rejtegethetnek! - Előrántod a kardodat, hogy védd magad. Külön-külön küzdj meg velük![/p]
@@ -904,7 +1580,13 @@
     <next id="352">Ha beljebb mész, hogy megvizsgáld azokat</next>
     <next id="177">Ha inkább továbbmész az utcán</next>
   </p>
-  <!-- 96 -->
+  <p id="96">
+    <text>
+        [p]A szakadék összeszűkül egy helyen. Itt egy hatalmas kőlap lett beszorítva, híd gyanánt.[/p]
+    </text>
+    <next id="138">Ha átküldőd a seregedet a kőhídon</next>
+    <next id="310">Ha inkább továbbmeneteltek</next>
+  </p>
   <p id="97">
     <text>
         [p]A tűzlabda elemészt, és meghalsz, mielőtt a sereged ideérne. Kalandod itt véget ér.[/p]
@@ -938,10 +1620,245 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 100 -->
+  <p id="100">
+    <text>
+        [p]Egy zsúfolt szobába lépsz be. Mindenfelé játékasztalok és szerencsekerekek vannak bent, körülöttük izgatott emberek próbálnak szerencsét. Egy lány egy hatalmas, számozott cikkelyekre osztott szerencsekereket pörget. Hatalmas üdvrivalgás és csalódott morgás csap fel, amikor a kerék végül a 33-as számnál áll meg. Körbenézel a kártyaasztaloknál is, de végül úgy döntesz, hogy egy Magas-Alacsony nevű játékot próbálsz ki. A szabályok igen egyszerűek. Dobnod kell két kockával, de mielőtt dobsz, meg kell tippelned, mi lesz a dobás eredménye: magas (8--12), vagy alacsony (2--6). A 7-es mindig veszít. A játékvezető lánytól azt is megtudod, hogy legfeljebb 50 Aranyat tehetsz meg, és ha nyersz, a téted dupláját kapod vissza. Csak egyszer játszhatsz.[/p]
+    </text>
+    <userInput type="number" min="1" max="50">
+      <label>Mennyi pénzt teszel fel?</label>
+      <result minBound="1" maxBound="1">
+        <gatherItem id="4007" amount="1" />
+        <add to="gold" amount="-1" />
+      </result>
+      <result minBound="2" maxBound="2">
+        <gatherItem id="4007" amount="2" />
+        <add to="gold" amount="-2" />
+      </result>
+      <result minBound="3" maxBound="3">
+        <gatherItem id="4007" amount="3" />
+        <add to="gold" amount="-3" />
+      </result>
+      <result minBound="4" maxBound="4">
+        <gatherItem id="4007" amount="4" />
+        <add to="gold" amount="-4" />
+      </result>
+      <result minBound="5" maxBound="5">
+        <gatherItem id="4007" amount="5" />
+        <add to="gold" amount="-5" />
+      </result>
+      <result minBound="6" maxBound="6">
+        <gatherItem id="4007" amount="6" />
+        <add to="gold" amount="-6" />
+      </result>
+      <result minBound="7" maxBound="7">
+        <gatherItem id="4007" amount="7" />
+        <add to="gold" amount="-7" />
+      </result>
+      <result minBound="8" maxBound="8">
+        <gatherItem id="4007" amount="8" />
+        <add to="gold" amount="-8" />
+      </result>
+      <result minBound="9" maxBound="9">
+        <gatherItem id="4007" amount="9" />
+        <add to="gold" amount="-9" />
+      </result>
+      <result minBound="10" maxBound="10">
+        <gatherItem id="4007" amount="10" />
+        <add to="gold" amount="-10" />
+      </result>
+      <result minBound="11" maxBound="11">
+        <gatherItem id="4007" amount="11" />
+        <add to="gold" amount="-11" />
+      </result>
+      <result minBound="12" maxBound="12">
+        <gatherItem id="4007" amount="12" />
+        <add to="gold" amount="-12" />
+      </result>
+      <result minBound="13" maxBound="13">
+        <gatherItem id="4007" amount="13" />
+        <add to="gold" amount="-13" />
+      </result>
+      <result minBound="14" maxBound="14">
+        <gatherItem id="4007" amount="14" />
+        <add to="gold" amount="-14" />
+      </result>
+      <result minBound="15" maxBound="15">
+        <gatherItem id="4007" amount="15" />
+        <add to="gold" amount="-15" />
+      </result>
+      <result minBound="16" maxBound="16">
+        <gatherItem id="4007" amount="16" />
+        <add to="gold" amount="-16" />
+      </result>
+      <result minBound="17" maxBound="17">
+        <gatherItem id="4007" amount="17" />
+        <add to="gold" amount="-17" />
+      </result>
+      <result minBound="18" maxBound="18">
+        <gatherItem id="4007" amount="18" />
+        <add to="gold" amount="-18" />
+      </result>
+      <result minBound="19" maxBound="19">
+        <gatherItem id="4007" amount="19" />
+        <add to="gold" amount="-19" />
+      </result>
+      <result minBound="20" maxBound="20">
+        <gatherItem id="4007" amount="20" />
+        <add to="gold" amount="-20" />
+      </result>
+      <result minBound="21" maxBound="21">
+        <gatherItem id="4007" amount="21" />
+        <add to="gold" amount="-21" />
+      </result>
+      <result minBound="22" maxBound="22">
+        <gatherItem id="4007" amount="22" />
+        <add to="gold" amount="-22" />
+      </result>
+      <result minBound="23" maxBound="23">
+        <gatherItem id="4007" amount="23" />
+        <add to="gold" amount="-23" />
+      </result>
+      <result minBound="24" maxBound="24">
+        <gatherItem id="4007" amount="24" />
+        <add to="gold" amount="-24" />
+      </result>
+      <result minBound="25" maxBound="25">
+        <gatherItem id="4007" amount="25" />
+        <add to="gold" amount="-25" />
+      </result>
+      <result minBound="26" maxBound="26">
+        <gatherItem id="4007" amount="26" />
+        <add to="gold" amount="-26" />
+      </result>
+      <result minBound="27" maxBound="27">
+        <gatherItem id="4007" amount="27" />
+        <add to="gold" amount="-27" />
+      </result>
+      <result minBound="28" maxBound="28">
+        <gatherItem id="4007" amount="28" />
+        <add to="gold" amount="-28" />
+      </result>
+      <result minBound="29" maxBound="29">
+        <gatherItem id="4007" amount="29" />
+        <add to="gold" amount="-29" />
+      </result>
+      <result minBound="30" maxBound="30">
+        <gatherItem id="4007" amount="30" />
+        <add to="gold" amount="-30" />
+      </result>
+      <result minBound="31" maxBound="31">
+        <gatherItem id="4007" amount="31" />
+        <add to="gold" amount="-31" />
+      </result>
+      <result minBound="32" maxBound="32">
+        <gatherItem id="4007" amount="32" />
+        <add to="gold" amount="-32" />
+      </result>
+      <result minBound="33" maxBound="33">
+        <gatherItem id="4007" amount="33" />
+        <add to="gold" amount="-33" />
+      </result>
+      <result minBound="34" maxBound="34">
+        <gatherItem id="4007" amount="34" />
+        <add to="gold" amount="-34" />
+      </result>
+      <result minBound="35" maxBound="35">
+        <gatherItem id="4007" amount="35" />
+        <add to="gold" amount="-35" />
+      </result>
+      <result minBound="36" maxBound="36">
+        <gatherItem id="4007" amount="36" />
+        <add to="gold" amount="-36" />
+      </result>
+      <result minBound="37" maxBound="37">
+        <gatherItem id="4007" amount="37" />
+        <add to="gold" amount="-37" />
+      </result>
+      <result minBound="38" maxBound="38">
+        <gatherItem id="4007" amount="38" />
+        <add to="gold" amount="-38" />
+      </result>
+      <result minBound="39" maxBound="39">
+        <gatherItem id="4007" amount="39" />
+        <add to="gold" amount="-39" />
+      </result>
+      <result minBound="40" maxBound="40">
+        <gatherItem id="4007" amount="40" />
+        <add to="gold" amount="-40" />
+      </result>
+      <result minBound="41" maxBound="41">
+        <gatherItem id="4007" amount="41" />
+        <add to="gold" amount="-41" />
+      </result>
+      <result minBound="42" maxBound="42">
+        <gatherItem id="4007" amount="42" />
+        <add to="gold" amount="-42" />
+      </result>
+      <result minBound="43" maxBound="43">
+        <gatherItem id="4007" amount="43" />
+        <add to="gold" amount="-43" />
+      </result>
+      <result minBound="44" maxBound="44">
+        <gatherItem id="4007" amount="44" />
+        <add to="gold" amount="-44" />
+      </result>
+      <result minBound="45" maxBound="45">
+        <gatherItem id="4007" amount="45" />
+        <add to="gold" amount="-45" />
+      </result>
+      <result minBound="46" maxBound="46">
+        <gatherItem id="4007" amount="46" />
+        <add to="gold" amount="-46" />
+      </result>
+      <result minBound="47" maxBound="47">
+        <gatherItem id="4007" amount="47" />
+        <add to="gold" amount="-47" />
+      </result>
+      <result minBound="48" maxBound="48">
+        <gatherItem id="4007" amount="48" />
+        <add to="gold" amount="-48" />
+      </result>
+      <result minBound="49" maxBound="49">
+        <gatherItem id="4007" amount="49" />
+        <add to="gold" amount="-49" />
+      </result>
+      <result minBound="50" maxBound="50">
+        <gatherItem id="4007" amount="50" />
+        <add to="gold" amount="-50" />
+      </result>
+    </userInput>
+    <next id="100a">Ha magasra tippelsz</next>
+    <next id="100b">Ha alacsonyra</next>
+  </p>
+  <p id="100a" display="100">
+    <text>
+        [p]Egy zsúfolt szobába lépsz be. Mindenfelé játékasztalok és szerencsekerekek vannak bent, körülöttük izgatott emberek próbálnak szerencsét. Egy lány egy hatalmas, számozott cikkelyekre osztott szerencsekereket pörget. Hatalmas üdvrivalgás és csalódott morgás csap fel, amikor a kerék végül a 33-as számnál áll meg. Körbenézel a kártyaasztaloknál is, de végül úgy döntesz, hogy egy Magas-Alacsony nevű játékot próbálsz ki. A szabályok igen egyszerűek. Dobnod kell két kockával, de mielőtt dobsz, meg kell tippelned, mi lesz a dobás eredménye: magas (8--12), vagy alacsony (2--6). A 7-es mindig veszít. A játékvezető lánytól azt is megtudod, hogy legfeljebb 50 Aranyat tehetsz meg, és ha nyersz, a téted dupláját kapod vissza. Csak egyszer játszhatsz.[/p]
+    </text>
+    <random diceConfig="2d6">
+      <result max="7" min="2">
+        <next id="173"></next>
+      </result>
+      <result max="12" min="8">
+        <next id="19"></next>
+      </result>
+    </random>
+  </p>
+  <p id="100b" display="100">
+    <text>
+        [p]Egy zsúfolt szobába lépsz be. Mindenfelé játékasztalok és szerencsekerekek vannak bent, körülöttük izgatott emberek próbálnak szerencsét. Egy lány egy hatalmas, számozott cikkelyekre osztott szerencsekereket pörget. Hatalmas üdvrivalgás és csalódott morgás csap fel, amikor a kerék végül a 33-as számnál áll meg. Körbenézel a kártyaasztaloknál is, de végül úgy döntesz, hogy egy Magas-Alacsony nevű játékot próbálsz ki. A szabályok igen egyszerűek. Dobnod kell két kockával, de mielőtt dobsz, meg kell tippelned, mi lesz a dobás eredménye: magas (8--12), vagy alacsony (2--6). A 7-es mindig veszít. A játékvezető lánytól azt is megtudod, hogy legfeljebb 50 Aranyat tehetsz meg, és ha nyersz, a téted dupláját kapod vissza. Csak egyszer játszhatsz.[/p]
+    </text>
+    <random diceConfig="2d6">
+      <result max="6" min="2">
+        <next id="19"></next>
+      </result>
+      <result max="12" min="7">
+        <next id="173"></next>
+      </result>
+    </random>
+  </p>
   <p id="101">
     <text>
-        [p]Miközben elveszed a fejszéjét, kiszúrsz az övén egy kis bőrzacskót. De mielőtt kinyithatnád, két városi őrt látsz közeledni.[/p]
+        [p]Miközben elveszed a [span class="takeItem" data-id="3022" data-amount="1"]fejszéjét[/span], kiszúrsz az övén egy kis bőrzacskót. De mielőtt kinyithatnád, két városi őrt látsz közeledni.[/p]
     </text>
     <next id="281">Ha kinyitod a zacskót, megkockáztatva ezzel, hogy esetleg elfognak</next>
     <next id="64">Ha inkább az egyetlen aranygyűrűvel a zsebedben elmenekülsz a helyszínről</next>
@@ -970,7 +1887,14 @@
     </text>
     <death />
   </p>
-  <!-- 106 -->
+  <p id="106">
+    <text>
+        [p]Negyven bátor katonád fekszik holtan a csatatéren (húzd le őket a [em]Kalandlapodról[/em]). A Trollok szemből próbálják visszaszorítani a túlélőket, míg oldalról Goblinok és Orkok támadnak könyörtelenül. Néhányuk annyira megrészegült a kardok csattogásától, hogy őrült üvöltözéssel egymás között verekednek. Jobbra egy harcost látsz, akit két oldalról két Goblin támad meg éppen. Balra egy másik harcost a földre bunkóz egy hatalmas Dombi Troll.[/p]
+    </text>
+    <add amount="-40" to="army" />
+    <next id="269">Ha a bal kéz felőli harcos segítségére sietsz</next>
+    <next id="62">Ha a jobb oldalin segítesz</next>
+  </p>
   <p id="107">
     <text>
         [p]A hordó nagy loccsanással csapódik a vízbe. Nemsokára a folyó kisodorja a látóteretekből.[/p]
@@ -1056,7 +1980,12 @@
     </text>
     <next id="213"></next>
   </p>
-  <!-- 118 -->
+  <p id="118">
+    <text>
+        [p]A Fehér Lovagok, magasra tartva lángoló kardjaikat levágják a hatalmas túlerőben lévő Káoszharcosokat. Amikor a csapatuk fele elesett, a katonák megfordulnak, és fejvesztve menekülni kezdenek. Magadhoz ragadva a kezdeményezést, utasítod a sereged többi részét, hogy csatlakozzanak a Lovagokhoz, és támadják meg az ellenséges Trollokat.[/p]
+    </text>
+    <next id="178"></next>
+  </p>
   <p id="119">
     <text>
         [p]Egy harcos a vízbe veti magát, és odaúszik a farönkhöz. - Halott - kiabálja. - Egy Ork kés áll ki a hasából. A nyakában egy láncon egy arany kulcs lóg. Elvegyem?[/p]
@@ -1080,7 +2009,19 @@
     <next id="46">Ha a 46-ossal tennél próbát</next>
     <next id="17">Ha inkább visszasétálsz az elágazáshoz, és megpróbálkozol a másik folyosóval</next>
   </p>
-  <!-- 122 -->
+  <p id="122">
+    <text>
+        [p]Teli hassal lassabbak a reakcióid. Hirtelen éles fájdalmat érzel, amint beléd szúrnak egy tőrt.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="190"></next>
+      </success>
+      <failure>
+        <next id="272"></next>
+      </failure>
+    </test>
+  </p>
   <p id="123">
     <text>
         [p]A Goblin a Vivernre esik rá. Bár alaposan összetörte magát, és nyüszít a fájdalomtól - valószínűnek tartod, hogy eltört egy-két bordája -, legalább életben van, így ki tudod kérdezni. Odalépsz az orgyilkoshoz, és keményen megkérdezed tőle, mit tud Agglaxról. De a bestia egyszerűen köp egyet, majd mellbe szúrja saját magát. Itt már nincs mit tenni. Úgy döntesz, hogy átkutatod a zsebeit. Egy íjhúrt, öt nyílhegyet és egy [span class="takeItem" data-id="3004" data-amount="1"]arany függőt[/span] találsz nála, ez utóbbiba a 10-es számot vésték. Ha akarod, megtarthatod az ékszert. Kiadod a parancsot, hogy meneteljetek tovább Karom felé.[/p]
@@ -1091,7 +2032,7 @@
     <text>
         [p]Közlöd Maxszal, hogy keresse meg Lexont Zengis határában, tőle majd megkapja a 200 Aranytallért (húzd le az összeget a Kalandlapodról). - Nem bánod meg, hogy felfogadtál minket - mondja búcsúzóul a nő. Nézed, amint az embereivel elvonul, majd kifordulsz az utcára.[/p]
     </text>
-    <add amount="10" to="warriors" />
+    <add amount="10" to="marauders" />
     <add amount="-200" to="gold" />
     <next id="314"></next>
   </p>
@@ -1133,12 +2074,17 @@
     </text>
     <death />
   </p>
-  <!-- 130 -->
+  <p id="130">
+    <text>
+        [p]Az ösvény lassan elenyészik, ahogy az erdő fái megritkulnak. Fenyőfák között haladtok, a lehullott tűlevelek puha ágyán könnyű a járás. Ismét kelet felé fordultok.[/p]
+    </text>
+    <next id="114"></next>
+  </p>
   <p id="131">
     <text>
         [p]A lángoló golyóbis becsapódik a fedélzeten, és megöli öt katonádat. A többiek még idejében eloltják a tüzet.[/p]
     </text>
-    <add amount="-5" to="warriors" />
+    <add amount="-5" to="army" />
     <next id="21"></next>
   </p>
   <p id="132">
@@ -1201,7 +2147,12 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 138 -->
+  <p id="138">
+    <text>
+        [p]Tíz harcos már biztonságban átkelt a hídon, amikor te következel. Éppen félúton járhatsz, amikor a szerkezet megremeg, oldalra billen, a hídon tartózkodó emberek pedig - veled együtt - a mély szakadékba zuhannak. Eséseteket ötven méterrel később a sziklás talaj állítja meg, és azonnal szörnyet haltok. A kőlap valójában egy Sziklaszörny volt, amit Agglax egyik szolgája állított ide csapdának.[/p]
+    </text>
+    <death />
+  </p>
   <p id="139">
     <text>
         [p]Mire a [em]Repülő Tukán[/em] megfordul, és ismét felgyorsul, a kalózhajó már 200 méternyire megközelített benneteket. A távolság gyorsan csökken, és nemsokára a fedélzetre zuhansz a két hajó összeütközése által keltett hatalmas lökés hatására.[/p]
@@ -1215,7 +2166,12 @@
       </failure>
     </test>
   </p>
-  <!-- 140 -->
+  <p id="140">
+    <text>
+        [p]Kapaszkodó után kapsz, de a biztonságot jelentő ágak túl messze vannak. Hátrazuhansz, és öt méterrel később keményen a földre érkezel. Az ütés erejétől kábultan, sajgó tagokkal látod, amint a Blog újabb nyilacskát helyez fúvócsövébe, majd céloz, és tüzel. A lövés talál, és nemsokára a kis bestia vacsorájaként vagy kénytelen életedet befejezni. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="141">
     <text>
         [p]Egy magtárszerű épülethez érsz. Hatalmas faajtó nyílik az oldalán, mely előtt egy férfi áll. Odabentről kiáltozások és üdvrivalgások szűrődnek ki. Odalépsz a bejárathoz, de az alak elállja az utadat. - Piteevő verseny - morogja a bajsza alatt. - Öt Aranytallér a beugró, és aztán összemérheted az evési tudásodat a Nagyhasú Emberrel, ha úgy hiszed, le tudod győzni. Ez persze eddig még senkinek sem sikerült, hogy őszinte legyek.[/p]
@@ -1223,7 +2179,15 @@
     <next id="217">Ha megfizeted a belépti díjat, és megnézed a versenyt</next>
     <next id="95">Ha inkább továbbmész</next>
   </p>
-  <!-- 142 -->
+  <p id="142">
+    <text>
+        [p]Az öldöklő csata tovább folytatódik, de még mindig nincs jele Agglaxnak. Éppen kihúzod véres kardodat egy leterített Dombi Troll teteméből, amikor egy nehéz páncélba öltözött Hegyi Ork ront neked.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="28" />
+    </fight>
+    <next id="208"></next>
+  </p>
   <p id="143">
     <text>
         [p]Már majdnem kiértetek az erdőből, amikor vad harci kiáltásokat hallotok. Tizenöt, kardokkal, csatabárdokkal és harci kalapácsokkal felfegyverzett Ork rohan felétek a fák között. Vívd meg a csatát.[/p]
@@ -1288,7 +2252,12 @@
     </text>
     <next id="220"></next>
   </p>
-  <!-- 148 -->
+  <p id="148">
+    <text>
+        [p]A lovagok kirántják kardjaikat. Most látod csak, hogy a fegyverek pengéjét fehér lángnyelvek nyalogatják! Szemmel láthatóan nem törődnek azzal, hogy jókora túlerőben vagytok, az öt fehér ló meglódul, és szilaj rohamot intéz a katonáid ellen. Kényelmetlenül feszengve látod, amint átvágják magukat a soraitokon, miközben a katonáid még csak meg sem tudják sebezni őket. Az egyik lovag feléd fordítja a lovát. Védekezően felemeled kardodat, de a lángoló, fehér karddal való találkozáskor pengéd apró darabokra törik szét. Ellenfeled ismét lecsap, és pengéje úgy vágja át páncélodat, mint kés a vajat. Kalandod itt, az Ívelt Híd mellett véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="149">
     <text>
         [p]Az utca egyenesen halad tovább, és nemsokára ismét Zengis főkapujánál találod magad. Eszedbe jut, mit ígértél Lexonnak, így elindulsz, hogy visszatérj a rád váró sereghez.[/p]
@@ -1319,7 +2288,17 @@
     </fight>
     <next id="276"></next>
   </p>
-  <!-- 153 -->
+  <p id="153">
+    <text>
+        [p]Max, a harcosnő épp akkor pillantja meg a Goblint, amint az célba vesz téged a számszeríjával. Abban a pillanatban, hogy a fegyver elsül, a nő rád veti magát, és ellök a suhogva közeledő nyílvessző útjából. A földre zuhansz, és amikor felkelsz, látod, hogy Max-et érte a lövés: mellkasából kiáll a vessző. Felizzik benned a harag, és bosszúszomjasan, kivont karddal a Goblinokra veted magad, akik még mindig a harcossal küzdenek. Egyenként küzdj meg velük.[/p]
+    </text>
+    <add amount="-1" to="marauders" />
+    <fight type="single">
+      <enemy id="31" />
+      <enemy id="32" />
+    </fight>
+    <next id="379"></next>
+  </p>
   <p id="154">
     <text>
         [p]Átrohansz a padlódeszkákon, és a kardért nyúlsz.[/p]
@@ -1426,7 +2405,19 @@
     </text>
     <next id="278"></next>
   </p>
-  <!-- 165 -->
+  <p id="165">
+    <text>
+        [p]A tömeg feszülten figyel, amint a küldetésedről beszélsz; te azonban nem tudsz róla, hogy Agglax egyik kéme is közöttük van. Hirtelen egy kés röppen feléd valahonnan az emberhad közepéből; épphogy megpillantod a szemed sarkából.[/p]
+    </text>
+    <test against="skill">
+      <success>
+        <next id="293"></next>
+      </success>
+      <failure>
+        <next id="122"></next>
+      </failure>
+    </test>
+  </p>
   <p id="166">
     <text>
         [p]Az alagút egy hatalmas barlangba nyílik, majd a szemközti falban tovább folytatódik. A terem közepén azonban egy hatalmas, hüllőszerű, kétfejű lény áll. Éppen egy döglött kígyó bőrét nyúzza le a tőrével, majd miután ezzel megvan, mindkét fejével beleharap áldozatába. Felfegyverzett, kétfejű hüllő és kígyóevés: ez csak egyfajta lény lehet - egy Calacorm! Lassan előre araszolsz a barlangban, kezed a kardod markolatán. A bestia mindkét feje egyszerre kezd beszélni, így egy kicsit nehéz megérteni, hogy mit mondanak. Szerencsére az egyik abbahagyja egy darabig, hogy harapjon egyet a kígyóból, így a másik beszéde érthetővé válik. - A kijárási engedélyen pecsétnek és aláírásnak kell lennie - szól hozzád kihívóan. Odalök eléd egy darab pergament, és rád üvölt: - A pecsétedet! Gyerünk, ide a pecséttel![/p]
@@ -1460,7 +2451,12 @@
       </failure>
     </test>
   </p>
-  <!-- 169 -->
+  <p id="169">
+    <text>
+        [p]Belerúgsz a hátrakötött kezű Blogba, ami eliszkol a sűrű aljnövényzeten át, majd az embereidnek kiáltasz, hogy ideje visszatérni az útra, és továbbmenni.[/p]
+    </text>
+    <next id="130"></next>
+  </p>
   <p id="170">
     <text>
         [p]Éles fájdalom nyilall végig a karodon a háromágú szigony ejtette sebből. Vesztesz 2 életerő pontot! Összeszorítod a fogaidat, és kihúzod válladból a beléállt fegyvert. Egy vékonyka alak rohan ki a hordók mögül, átveti magát a hajókorláton, és alig hallható csobbanással a vízbe ugrik. Odarohansz, és figyeled a folyó felszínét, de semmi sem bukkan fel. Bárki vagy bármi legyen is a támadód, biztos, hogy nagyon jól úszik víz alatt. A hordókhoz sétálsz, és megvizsgálod a nedves, úszóhártyás nyomokat. Valószínűleg egy Halember lehetett az.[/p]
@@ -1475,7 +2471,18 @@
       </failure>
     </test>
   </p>
-  <!-- 171 -->
+  <p id="171">
+    <text>
+        [p]A vékonyka lény villámgyorsan cikázik az aljnövényzetben, majd felrohan egy fára. Mit teszel?[/p]
+    </text>
+    <next id="2" pos="1">Felmászol te is?</next>
+    <itemCheck type="item" id="3022">
+      <have>
+        <next id="257" pos="2">Kivágod a fát?</next>
+      </have>
+    </itemCheck>
+    <next id="130" pos="3">Visszahívod az embereidet az útra, és tovább meneteltek?</next>
+  </p>
   <p id="172">
     <text>
         [p]A szádhoz emeled a korsót, és egyetlen hajtással megiszod a bűzös italt. - Poshadt víz! - kiáltod hangosan a csaposnak, és a pultra vágod a korsót. A férfi gúnyosan mosolyog.[/p]
@@ -1483,8 +2490,19 @@
     <next id="249">Én fizetem az italodat, ha ezt másodszor is meg tudod csinálni - Ha elfogadod a kihívást</next>
     <next id="40">Ha inkább nem vesztegeted itt tovább az idődet</next>
   </p>
-  <!-- 173 -->
-  <!-- 174 -->
+  <p id="173">
+    <text>
+        [p]- Semmi baj - feleli a lány. - Gyere vissza később még egy menetre. - Morogsz valamit válaszul, és úgy döntesz, távozol a játékteremből. Visszatérsz a fogadóba.[/p]
+    </text>
+    <next id="50"></next>
+  </p>
+  <p id="174">
+    <text>
+        [p]- Helyes - feleli vidáman a lovag. - És most áruld el, miért vonultok át ezen a gonosz erdőn? - Elmondod nekik, hogy Agglax elpusztítása a feladatod. Azt felelik, hogy nagy megtiszteltetésnek vennék, ha csatlakozhatnának a seregedhez, te pedig gondolkodás nélkül belemész ebbe. Azt is elmondják, hogy ismernek egy gyors és biztonságos kivezető utat az erdőből. Elindultok hát, a lovagokkal az élen. Átkeltek a hídon, és estére eléritek az erdő keleti szélét. Úgy döntesz, még a fák között letáboroztok. Felnézel a csillagos, éjszakai égre, mely végre ismét látható a ritkuló lombkoronán át. Telihold van. Úgy döntesz, megkettőzöd az őrséget, mivel aggódsz, hogy esetleg vérbestiák csaphatnak le rátok.[/p]
+    </text>
+    <add amount="5" to="whiteKnights" />
+    <next id="278"></next>
+  </p>
   <p id="175">
     <text>
         [p]Már késő délutánra jár az idő, amikor megpillantjátok Zengis tornyait és háztetejeit. Barnock kapitány megkönnyebbültnek látszik egy kicsit, tudatában annak, hogy nemsokára biztonságban lesz a város kikötőjében. Mielőtt partra szállnátok, az egyik lovagot, név szerint Lexont kinevezed a helyettesednek, és megbízod, hogy vezesse az embereket egy megfelelő táborhelyre Zengis mellett. Nem akarod, hogy bajba kerüljenek a városban, és azt sem, hogy a katonák a kocsmákban dorbézoljanak: szükségük van az éjszakai pihenésre, mert másnap reggel ismét útnak indultok. Közlöd vele, hogy az éjszakát a településen töltöd, remélve, hogy újabb embereket tudsz toborozni, esetleg újabb pletykákat és híreket hallasz Agglaxról, az Árnydémonról. Miközben embereid lemasíroznak a hajóhídon, búcsút intesz Barnock kapitánynak. Átmész a város főkapuján, és úgy döntesz, meglátogatod a legközelebbi kocsmát, mint a legbiztosabb helyet, ahol harcosokat és híreket is találhatsz. Miközben az öreg házak között sétálsz, váratlanul egy aranygyűrűt pillantasz meg az út szélén.[/p]
@@ -1511,7 +2529,198 @@
     <next id="63">Ha belépsz az épületbe</next>
     <next id="314">Ha inkább befordulsz balra a sarkon</next>
   </p>
-  <!-- 178 -->
+  <p id="178">
+    <text>
+        [p]Ahogy közelebb értek a Trollok vonalához, azok hirtelen szétnyílnak, hogy teret engedjenek egy csapat Goblinnak. Az üvöltöző kis bestiák négy, kerekeken guruló faszerkezetet tolnak előre. Tekinteted elborul, amikor meglátod, hogy azok hatalmas katapultok, melyekről hegyes, masszív dárdákat lehet sorozatban kilőni. De visszafordulni már nem lehet, ezért intesz az embereidnek, hogy minél hamarabb el kell érnetek a hadigépezeteket. Amikor lőtávolon belülre értek, hallod, amint kiadják a tűzparancsot, és máris dárdák kötegei repülnek felétek.[/p]
+    </text>
+    <random diceConfig="4d6">
+      <result max="4" min="4">
+        <text>[p]4 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-4" to="army" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]5 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-5" to="army" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]6 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-6" to="army" />
+      </result>
+      <result max="7" min="7">
+        <text>[p]7 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-7" to="army" />
+      </result>
+      <result max="8" min="8">
+        <text>[p]8 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-8" to="army" />
+      </result>
+      <result max="9" min="9">
+        <text>[p]9 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-9" to="army" />
+      </result>
+      <result max="10" min="10">
+        <text>[p]10 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-10" to="army" />
+      </result>
+      <result max="11" min="11">
+        <text>[p]11 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-11" to="army" />
+      </result>
+      <result max="12" min="12">
+        <text>[p]12 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-12" to="army" />
+      </result>
+      <result max="13" min="13">
+        <text>[p]13 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-13" to="army" />
+      </result>
+      <result max="14" min="14">
+        <text>[p]14 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-14" to="army" />
+      </result>
+      <result max="15" min="15">
+        <text>[p]15 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-15" to="army" />
+      </result>
+      <result max="16" min="16">
+        <text>[p]16 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-16" to="army" />
+      </result>
+      <result max="17" min="17">
+        <text>[p]17 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-17" to="army" />
+      </result>
+      <result max="18" min="18">
+        <text>[p]18 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-18" to="army" />
+      </result>
+      <result max="19" min="19">
+        <text>[p]19 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-19" to="army" />
+      </result>
+      <result max="10" min="10">
+        <text>[p]10 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-10" to="army" />
+      </result>
+      <result max="11" min="11">
+        <text>[p]11 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-11" to="army" />
+      </result>
+      <result max="12" min="12">
+        <text>[p]12 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-12" to="army" />
+      </result>
+      <result max="13" min="13">
+        <text>[p]13 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-13" to="army" />
+      </result>
+      <result max="14" min="14">
+        <text>[p]14 embered esett áldozatul a halálos sorozatnak![/p]</text>
+        <add amount="-14" to="army" />
+      </result>
+      <after>
+        <text>
+            [p]A sereg tovább rohan előre. Még mindig ötvenméternyire vagytok az ellenségtől, amikor a második sorozatot látva megtorpannak a katonáid. Érzed, ahogy sebesen csökkenni kezd a morál, ezért a sereg élére állsz, hogy személyesen vezesd őket a harcba. Amikor már csak húszméternyire vagytok az ellenség frontvonalától, újabb sorozat zizzen a levegőbe.[/p]
+        </text>
+        <random diceConfig="4d6">
+          <result max="4" min="4">
+            <text>[p]4 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-4" to="army" />
+          </result>
+          <result max="5" min="5">
+            <text>[p]5 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-5" to="army" />
+          </result>
+          <result max="6" min="6">
+            <text>[p]6 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-6" to="army" />
+          </result>
+          <result max="7" min="7">
+            <text>[p]7 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-7" to="army" />
+          </result>
+          <result max="8" min="8">
+            <text>[p]8 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-8" to="army" />
+          </result>
+          <result max="9" min="9">
+            <text>[p]9 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-9" to="army" />
+          </result>
+          <result max="10" min="10">
+            <text>[p]10 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-10" to="army" />
+          </result>
+          <result max="11" min="11">
+            <text>[p]11 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-11" to="army" />
+          </result>
+          <result max="12" min="12">
+            <text>[p]12 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-12" to="army" />
+          </result>
+          <result max="13" min="13">
+            <text>[p]13 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-13" to="army" />
+          </result>
+          <result max="14" min="14">
+            <text>[p]14 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-14" to="army" />
+          </result>
+          <result max="15" min="15">
+            <text>[p]15 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-15" to="army" />
+          </result>
+          <result max="16" min="16">
+            <text>[p]16 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-16" to="army" />
+          </result>
+          <result max="17" min="17">
+            <text>[p]17 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-17" to="army" />
+          </result>
+          <result max="18" min="18">
+            <text>[p]18 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-18" to="army" />
+          </result>
+          <result max="19" min="19">
+            <text>[p]19 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-19" to="army" />
+          </result>
+          <result max="10" min="10">
+            <text>[p]10 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-10" to="army" />
+          </result>
+          <result max="11" min="11">
+            <text>[p]11 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-11" to="army" />
+          </result>
+          <result max="12" min="12">
+            <text>[p]12 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-12" to="army" />
+          </result>
+          <result max="13" min="13">
+            <text>[p]13 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-13" to="army" />
+          </result>
+          <result max="14" min="14">
+            <text>[p]14 embered hullt el ez alkalommal![/p]</text>
+            <add amount="-14" to="army" />
+          </result>
+          <after>
+            <itemCheck type="attribute" id="army" amount="100">
+              <have>
+                <next id="13"></next>
+              </have>
+              <dontHave>
+                <next id="59"></next>
+              </dontHave>
+            </itemCheck>
+          </after>
+        </random>
+      </after>
+    </random>
+  </p>
   <p id="179">
     <text>
         [p]Fél óra sem telik el az almaevés után, néhány katona rosszul lesz - téged is beleértve. Vesztesz 4 életerő és 1 ügyesség pontot! Az embereid állapota is egyre romlik. Ketten szinte azonnal meghalnak, de mire a nap eltelik, összesen tizenöt a halálos áldozatok száma. Vesztesz 2 szerencse pontot. Jegyezd fel az emberveszteséget a [em]Kalandlapodra[/em]! Megbánod korábbi bőkezűségedet, és elhatározod, hogy a jövőben nem hagyod, hogy bármi is eltérítsen küldetésed céljától.[/p]
@@ -1519,7 +2728,7 @@
     <add amount="-4" to="stamina" />
     <add amount="-1" to="skill" />
     <add amount="-2" to="luck" />
-    <add amount="-15" to="warriors" />
+    <add amount="-15" to="army" />
     <next id="209"></next>
   </p>
   <p id="180">
@@ -1573,7 +2782,12 @@
     <add amount="-5" to="warrior" />
     <next id="274"></next>
   </p>
-  <!-- 186 -->
+  <p id="186">
+    <text>
+        [p]Sötétedésre eléritek az erdő keleti szélét. Úgy döntesz, még a fák között letáboroztok. Felnézel a csillagos, éjszakai égre, mely végre ismét látható a ritkuló lombkoronán át. Telihold van. Úgy döntesz, megkettőzöd az őrséget, mivel aggódsz, hogy esetleg vérbestiák csaphatnak le rátok.[/p]
+    </text>
+    <next id="278"></next>
+  </p>
   <p id="187">
     <text>
         [p]Csak egy őrült, vagy ostoba kalandozó támadna meg egy Leprechaunt. Mielőtt még felemelhetnéd a kardodat, a kis bestia valamiféle mágikus port dob az arcodba. Abban a pillanatban megmerevedsz, az egyetlen testrészed, amit még mozgatni vagy képes, az a két szemed. Az érzékszerveid azonban tovább működnek, így kénytelen vagy fél órán át megmerevedve hallgatni, amint a Leprechaun hosszú előadást tart arról, hogy mennyire elítélendő dolog védtelen lényeket bántalmazni. Amikor az előadás véget ér, a lény gondosan átvizsgálja a hátizsákodat.
@@ -1614,8 +2828,21 @@
     <next id="353">Az északi part felé irányítod a [em]Repülő Tukánt?[/em]</next>
     <next id="139">Megfordítod a [em]Repülő Tukánt[/em], és megpróbáljátok lehagyni üldözőiteket?</next>
   </p>
-  <!-- 189 -->
-  <!-- 190 -->
+  <p id="189">
+    <text>
+        [p]Megvonod a válladat, és visszatérsz a katonáidhoz. Kiadod a parancsot a továbbvonulásra.[/p]
+    </text>
+    <next id="130"></next>
+  </p>
+  <p id="190">
+    <text>
+        [p]A tőr a bal oldaladba állt bele, de szerencsére a seb nem súlyos, csak fájdalmas. Vesztesz 2 életerő pontot! A sebedre szorítod a kezed, és közben látod, hogy egy sötét, kámzsás figura válik ki a tömegből, és tűnik el egy ajtóban, mielőtt bárki bármit tehetne. Utasítod az embereket, hogy ne üldözzék, mivel nyilván más merénylőkkel is fogsz még találkozni, mielőtt eléred Agglax seregét. Bekötözöd a sebedet, és 100 Aranytallérért sikerül felbérelned 10 újabb harcost. Utasítod őket, hogy keressék meg Lexont, aki a város mellett táborozik a sereggel. Amikor már te is elég erősnek érzed magad, visszatérsz az utcára.[/p]
+    </text>
+    <add amount="-100" to="gold" />
+    <add to="stamina" amount="-2" />
+    <add amount="10" to="warriors" />
+    <next id="95"></next>
+  </p>
   <p id="191">
     <text>
         [p]Kiszabadítod a Törpéket, akik elmondják, hogyan támadták meg őket az erdőben, amikor drágaköveket rejtő barlangok után kutattak. Hálából, hogy megmentetted az életüket, felajánlják, hogy csatlakoznak a seregedhez a Hobgoblinoktól zsákmányolt fegyverekkel. Átkutatjátok a bestiák holttesteit. Egy [span class="takeItem" data-id="3020" data-amount="1"]arany nyakláncot[/span] és egy dárdára erősített [span class="takeItem" data-id="3021" data-amount="1"]harci zászlót[/span] találtok náluk. A zászlón fehér alapon, arany körben, egy görbe kardot tartó vörös sárkány látható. Elteszed a zsákmányt, majd kiadod a parancsot a tisztáson való átvonulásra.[/p]
@@ -1630,7 +2857,12 @@
     <next id="380">Ha parancsot adsz az Elfeknek, hogy árasszák el nyilakkal a haramiákat</next>
     <next id="258">Ha inkább megvárod, amíg a támadók átszállnak a hajótok fedélzetére</next>
   </p>
-  <!-- 193 -->
+  <p id="193">
+    <text>
+        [p]Az ellenség nyomasztó túlereje még neked és bátor katonáidnak is sok. Két újabb lényt pusztítasz el, ám ekkor egy dárda fúródik bele az oldaladba. Nem te vagy az egyetlen, aki ezen a napon elhull a csatában, mely Agglax győzelmével ér véget. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="194">
     <text>
         [p]A fürge lábú Domblakó Vadembernek igen jó reflexei vannak. Amikor a lábaira veted magad, felugrik a levegőbe.[/p]
@@ -1649,7 +2881,7 @@
         [p]Max remekül viseli a vereséget: gratulál neked, és megdicsér, milyen remekül forgatod a kardot. Közlöd vele, hogy Lexon a sereggel a város falain kívül vár rájuk, ahol megkaphatják a 100 Aranytallér fizetségüket (vond le az összeget a [em]Kalandlapodról[/em]). - Nem fogsz csalódni bennünk - feleli búcsúzóul, majd int embereinek, hogy kövessék. Elindulnak a város mellett táborozó sereg felé. Még nézed őket egy darabig, majd befordulsz az utcasarkon.[/p]
     </text>
     <add amount="-100" to="gold" />
-    <add amount="10" to="warriors" />
+    <add amount="10" to="marauders" />
     <next id="314"></next>
   </p>
   <p id="196">
@@ -1790,7 +3022,22 @@
       </result>
     </random>
   </p>
-  <!-- 208 -->
+  <p id="208">
+    <text>
+        [p]A csatazaj a füledben zakatol, miközben körbenézel, hogy haladnak az embereid.[/p]
+    </text>
+    <random>
+      <result max="2" min="1">
+        <next id="106"></next>
+      </result>
+      <result max="4" min="3">
+        <next id="216"></next>
+      </result>
+      <result max="6" min="5">
+        <next id="356"></next>
+      </result>
+    </random>
+  </p>
   <p id="209">
     <text>
         [p]Amint a hajótok befordul a folyókanyarulatban, hirtelen megtámadnak benneteket. Egy hatalmas tűzlabda száguld felétek a levegőben. Egy fából készült katapult van felállítva a folyó déli partján, onnan lőttek rátok. A golyóbis fedezéke alatt húsz Folyami Rabló ugrik félbevágott fatörzs-kenujára, és evezni kezdenek a [em]Repülő Tukán[/em] felé.[/p]
@@ -1816,7 +3063,21 @@
     </text>
     <next id="115"></next>
   </p>
-  <!-- 212 -->
+  <p id="212">
+    <text>
+        [p]Távozol a játékteremből, és visszamész a fogadóba, de az az érzésed közben, hogy valaki követ. Megfordulsz, és visszanézel, de a sötétben senkit sem látsz. Aztán hirtelen lépések hangját hallod, és egy hatalmas figura jelenik meg előtted. Olyan gyorsan mozog, hogy már majdnem rád veti magát, amikor megpillantod vad, bestiális kinézetű arcát. Egy Ogrét küldtek, hogy szerezze vissza az Aranytallérokat, amit nyertél.[/p]
+        [p]A sötét utcán kell megküzdened a fejszés szörnyeteggel.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="29" />
+      <win>
+        <text>
+            [p]Átkutatod, de a fénytelen éjszakában semmit sem találsz nála. Úgy döntesz, jobb hamar visszatérni a fogadóba.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="50"></next>
+  </p>
   <p id="213">
     <text>
         [p]Becsületes ember lévén tartod a szavadat, és otthagyod tíz katonádat, hogy a Domblakó Vadembereknél dolgozzanak. Amikor egyedül távozol a faluból, és búcsút intesz az embereidnek, arra gondolsz, hogy így talán megmentetted őket az Agglax undorító teremtményei ellen vívott csatában való kínkeserves haláltól. De lelked mélyén érzed, inkább meghaltak volna érted a csatában. Nem tudsz megszabadulni az érzéstől, hogy cserbenhagytad őket. Vesztesz 2 szerencse pontot! De megpróbálod elhessegetni a sötét gondolataidat, és gyorsan visszatérsz a rád váró sereghez. Fél óra múlva már átkeltek a folyón, és tovább meneteltek délkeleti irányba, Zengis felé.[/p]
@@ -1844,7 +3105,14 @@
     </text>
     <death />
   </p>
-  <!-- 216 -->
+  <p id="216">
+    <text>
+        [p]Harminc hős katonád fekszik holtan a csatatéren (húzd le őket a [em]Kalandlapodról[/em]). A Trollok szemből próbálják visszaszorítani a túlélőket, míg oldalról Goblinok és Orkok támadnak könyörtelenül. Néhányuk annyira megrészegült a kardok csattogásától, hogy őrült üvöltözéssel egymás között verekednek. Jobbra egy harcost látsz, akit két oldalról két Goblin támad meg éppen. Balra egy másik katonádat a földbe bunkózza egy hatalmas Dombi Troll.[/p]
+    </text>
+    <add amount="-30" to="army" />
+    <next id="269">Ha a bal kéz felőli harcos segítségére sietsz</next>
+    <next id="62">Ha a jobb oldali védelmére kelsz</next>
+  </p>
   <p id="217">
     <text>
         [p]Belépsz az épületbe, és hatalmas, éljenző tömeg közepén találod magad. Néhányan lábujjhegyen állnak, és a nyakukat nyújtogatják, hogy jobban lássák, mi történik a terem közepén. A szerencsésebbek a falak mellett ácsolt emelvényeken ülve nézik a látványosságot. Átverekszed magad a tömegen, hogy kiderítsd, mi is folyik itt. Egy körkörös fakorlátig jutsz el, melyen belül egy asztalnál két ember ül egymással szemben. Mindketten hatalmas tempóban egy-egy jókora adag pitét zabálnak. A bal kéz felől ülő férfi egyszerűen óriási. Az asztalt félkör alakban kivágták az oldalán, hogy hatalmas hasának helye legyen. Meglehetősen öreg, és tökéletesen kopasz, bal szemén pedig egy monoklit visel. Idomtalan testének kövérségét csak még jobban kiemeli a sötét tornadressz, melyet visel, és amelyen sárga, nagy betűkkel a „NAGYHASÚ” felirat díszeleg. Ellenfele, egy hatalmas testű Ember-Ork, szinte kisgyereknek tűnik mellette. A versenybíró egy Törpe, aki az asztal közepén áll, és árgus szemekkel figyeli, hogy a pitét a versenyzők tényleg megegyék, és ne dobják titokban a padlóra. A Nagyhasú Ember hirtelen félig felemelkedik a székéből, és mindkét kezét a levegőbe löki. A tömeg hangosan éljenezni kezd, hogy a süteményevő újabb győzelmét ünnepelje. A Törpe csendet teremt, majd kihirdeti az eredményt. - Hölgyeim és uraim, a patkány- és fehérrépapite-evő verseny győztese Nagyhasú Ember! - A tömeg ismét tapsolni, és éljenezni kezd. Amikor a zaj lecsillapodik, a Törpe tovább folytatja mondókáját: - Öt perc szünet után Nagyhasú Ember bárkivel hajlandó megmérkőzni hal- és pudingpite-evő versenyben. A kihívók nálam jelentkezzenek![/p]
@@ -4210,7 +5478,12 @@
     </text>
     <death />
   </p>
-  <!-- 236 -->
+  <p id="236">
+    <text>
+        [p]Agglax nevetésre nyitja a száját, de hang helyett dermesztő gázsugár lövell ki a torkából. Egy pillanat alatt kőszoborrá fagysz. A jövőben az Árnydémon trófeáit fogod szaporítani. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="237">
     <text>
         [p]Mielőtt Vine magához térhetne, hátraszorítod a karjait. Egyre fokozod a szorítást, míg végül felüvölt: - Feladom! - Elengeded a karját, és felsegíted a földről. Ellenfeled megforgatja a vállait, és így szól: - Idegen, te igazán nagy bajnok vagy. Tizenöt Domblakó Vadember áll a rendelkezésedre. - Húsz perc alatt új katonáid felszerelkeznek, és készen állnak az útra. Jókedvűen, hogy a kitérő hasznosnak bizonyult, visszatértek a várakozó sereghez.[/p]
@@ -4290,8 +5563,28 @@
       </failure>
     </test>
   </p>
-  <!-- 247 -->
-  <!-- 248 -->
+  <p id="247">
+    <text>
+        [p]Meglazítod egy kicsit a Blog köteleit, és hagyod, hogy lassan előtted sétáljon a bokrok és fák között. Utasítod a vadászcsapat többi tagját, hogy menjenek vissza a sereghez, és várják meg, amíg visszatérsz. A lény meggyorsítja a lépteit, és egy hatalmas, moha borította szoborhoz vezet, mely titokzatosan bújik meg a fák között. Egy ismeretlen királyt ábrázol a faragvány, aki igen furcsa pózban áll: egyik kezét ökölbe szorítva, a másikkal pedig mutatva valamit nyújtja ki előre mindkét karját. Amint előrelépsz, hogy közelebbről is megvizsgáld a szobrot, a Blog felmarkolja az emlékmű háta mögé rejtett tőrét, elvágja a köteleit, majd beveti magát a bokrok közé, és pillanatok alatt eltűnik a szemed elől. Az állatka szökéséből csak annyit veszel észre, hogy megzörrennek a növények, így az üldözésnek nincs értelme. A faragvány azonban igen érdekes: alaposabban megvizsgálva észreveszed, hogy a király kinyújtott kezének egyik ujján egy kis sávban teljesen tiszta a kő; bizonyára egy gyűrűt lehet idehelyezni. Ha van nálad aranygyűrű, és a szoborra akarod húzni, lapozz a belevésett számnak megfelelő lapra.[/p]
+    </text>
+    <itemCheck type="item" id="3006">
+      <have>
+        <next id="45">Ha rá akarod húzni az Aranygyűrűt</next>
+        <next id="189">Ha nem</next>
+      </have>
+      <dontHave>
+        <next id="189"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="248">
+    <text>
+        [p]- Mi vagyunk a Fehér Lovagok, és a rend oldalán harcolunk - jelenti ki Sir Dean hangosan. - Ha bizonyítani akarjátok, hogy ti szintén a rendet szolgáljátok, és érdemesek vagytok a segítségünkre, meg kell válaszolnod a következő kérdést. Yore Nagy Varázslójának iskolájában tanított három éltanuló közül melyik volt egy salamonisi pap gyermeke? Mit válaszolsz?[/p]
+    </text>
+    <next id="174">Yaztromo?</next>
+    <next id="291">Nicodemus?</next>
+    <next id="391">Pen Ty Kora?</next>
+  </p>
   <p id="249">
     <text>
         [p]Nagy önbizalommal nézed, amint a csapos újra megtölti a korsódat. Szádhoz emeled, és másodszorra is egyetlen hajtással megiszod az Ördögsört. Azonban amikor felállsz, hogy odasétálj az egyik asztalhoz, hirtelen tótágast áll előtted a kocsma. Ráadásul mindent kettőnek látsz.[/p]
@@ -4343,7 +5636,27 @@
     </text>
     <next id="52"></next>
   </p>
-  <!-- 254 -->
+  <p id="254">
+    <text>
+        [p]Agglax után rohansz. Ellenfeled ügyetlenül botorkál hosszú köpenyében a halottakkal teleszórt csatamezőn, ezért hamar utoléred. Rákiáltasz, mire ő megáll, megfordul, és merően a szemedbe néz. Most kell elmondanod a kristályt aktiváló kis igét.[/p]
+    </text>
+    <itemCheck type="section" id="89">
+      <have>
+        <userInput type="number" min="1" max="400">
+          <label>Mi a Fénykristályt aktiváló számsor?</label>
+          <result minBound="321" maxBound="321">
+            <next id="321"></next>
+          </result>
+          <resultElse>
+            <next id="79"></next>
+          </resultElse>
+        </userInput>
+      </have>
+      <dontHave>
+        <next id="79"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="255">
     <text>
         [p]- Tulajdonképpen hajlandó vagyok alkudni - mondja Max -, de döntsük el az árat úgy, hogy megküzdünk ezekkel a fakardokkal. Ha elsőnek én találom el a mellkasodat, az ár 300 Aranytallérra emelkedik. Ha te találod el először az enyémet, akkor 100-ra csökken.[/p]
@@ -4372,7 +5685,14 @@
     </text>
     <death />
   </p>
-  <!-- 257 -->
+  <p id="257">
+    <text>
+        [p]Egyik kezeddel a fejed fölé tartod a pajzsot, míg a másikban a fejszével vágni kezded a fát. A Blog rájön, mire készülsz, és megpróbál átugrani egy szomszédos fára. Az ág azonban, amelyet elkapott ugrás közben, eltörik, és a lény tompa puffanással a földre zuhan. Mielőtt magához térne, hátrakötöd a kezét. Kikérdezed a falujáról és Agglaxról, de csak néhány szót ért az emberi nyelvből, ezért a faggatózással nem mész túl sokra. Mit teszel?[/p]
+    </text>
+    <next id="29">Megölöd a Blogot?</next>
+    <next id="247">Elmutogatod neki, hogy kincset akarsz?</next>
+    <next id="169">Elengeded?</next>
+  </p>
   <p id="258">
     <text>
         [p]Utasítod az embereidet, hogy álljanak hátrébb a korláttól, hogy ne ijesszék el a Folyami Rablókat. Csáklyák röpülnek fel a hajóra, és a hozzájuk erősített köteleken vadul kiáltozva felmásznak a támadók. Amikor felérnek a fedélzetre, hirtelen húsz Elf íjász megfeszített íjával találják szemközt magukat. Tízet sikerül harc nélkül foglyul ejtenetek, mielőtt a társaik rádöbbennek, mi is a helyzet valójában. A többiek visszaugranak a folyóba, és a farönkjeikhez úszva elmenekülnek. Felajánlod a banditáknak a választást: vagy beállnak a seregedbe, vagy örök életükre Barnock kapitány gályarabjaiként fognak szolgálni. Elég könnyű a választás, a szorult helyzetben lévő fickók hamar úgy döntenek, hogy csatlakoznak hozzád. Elveszed a vezetőjüktől a [span class="takeItem" data-id="3002" data-amount="1"]pajzsát[/span], és a karodra húzod (1-gyel növeld meg az ügyességedet). Az emberek jókedvűek, hogy nőtt az Agglax elleni sereg (kapsz 1 szerencse pontot), így vidáman hajóztok tovább.[/p]
@@ -4444,7 +5764,22 @@
     <add amount="-1" to="luck" />
     <next id="382"></next>
   </p>
-  <!-- 265 -->
+  <p id="265">
+    <text>
+        [p]Beugrasz a növények közé, és látod, hogy a bokrokban előtted valami megmozdul. Utasítod az embereidet, hogy szóródjanak szét, hogy nehezebb célpontot nyújtsanak, majd rohanni kezdesz a bokor felé. Egy apró, barna bőrű lény ugrik elő a fedezékből, szájában egy rád irányzott fúvócsővel. Kutyaszerű fejéről és az övén lógó koponyákról felismered, hogy egy Bloggal állsz szemben. Mivel ezek a bestiák igencsak szeretnek főtt emberhúst enni, ezért minden törzs gyűlöli és vadássza őket. Egy tizedmásodperccel később már ki is röppen feléd egy mérgezett vessző.[/p]
+    </text>
+    <itemCheck type="item" id="3002">
+      <have>
+        <next id="330"></next>
+      </have>
+      <haveEquipped>
+        <next id="73"></next>
+      </haveEquipped>
+      <dontHave>
+        <next id="330"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="266">
     <text>
         [p]Az est már közelít, amikor Karn feltűnik a láthatáron. A falut jól ismerik az utazók, mivel hosszú kilométerekig ez az utolsó emberlakta település. Körülbelül ötven házból és épületből áll, ezek között számos kocsma, raktár és játékterem van. Elviszed az embereidet egy fogadóba, és meghagyod nekik, hogy egyenek jóízűen, de korán feküdjenek le, mivel másnap reggel már hajnalban indulni akarsz. Úgy döntesz, hogy vacsora után körbesétálsz a faluban.[/p]
@@ -4472,7 +5807,19 @@
     <next id="338">Ha balra mész tovább</next>
     <next id="102">Ha egyenesen</next>
   </p>
-  <!-- 269 -->
+  <p id="269">
+    <text>
+        [p]Egy másik Dombi Troll felemel a földről egy nagy követ, és feléd hajítja, miközben előreugrasz, hogy segíts a harcosodon.[/p]
+    </text>
+    <itemCheck type="attribute" id="northerns" amount="1">
+      <have>
+        <next id="288"></next>
+      </have>
+      <dontHave>
+        <next id="23"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="270">
     <text>
         [p]Elveszed a gyűrűt, és felhúzod a kisujjadra, mivel a többire nem megy rá. Az Elf hirtelen kacagni kezd, méghozzá igen kárörvendően. Elkezdi húzogatni a füleit, majd rémülten veszed észre, hogy lehúzza a bőrt az arcáról. Az Elfmaszk alól egy gonosz, zöld, eres szemű koponya tűnik elő. A nő a földre dobja a maszkot, és tátott szájjal elindul feléd. Megpróbálod előrántani a kardodat, de képtelen vagy megmozdulni. Tehetetlen iszonyattal figyeled, amint a Szélhámos Boszorkány kitátja fogas száját, és marcangolni kezdi a torkodat. Kalandod itt véget ér.[/p]
@@ -4486,7 +5833,12 @@
     <add amount="1" to="luck" />
     <next id="78"></next>
   </p>
-  <!-- 272 -->
+  <p id="272">
+    <text>
+        [p]Levegőér kapkodva az asztalra rogysz. Elveszted az eszméletedet, és a halál is hamar megérkezik. A tömeg közelebb húzódik, hogy lássa, mi történt veled, és senki sem veszi észre az egyik hátsó ajtón kisurranó figurát. Agglax kéme sikerrel járt, ura elégedett lesz vele. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="273">
     <text>
         [p]Óvatosan átlépsz a szájon. Felkészülsz, hogy lángnyelvek söpörnek végig rajtad, esetleg félrecsúszik a padló, de nem történik semmi. Akadálytalanul haladsz tovább. A folyosó hamarosan kettéágazik.[/p]
@@ -4570,7 +5922,13 @@
       </failure>
     </test>
   </p>
-  <!-- 282 -->
+  <p id="282">
+    <text>
+        [p]Hátulról félelmetes sikolyokat hallasz. Kiderül, hogy öt harcosod belezuhant azokba a csapdákba, melyeket nyilván Agglax szolgái ástak ide. Megátkozod az Árnydémont, és továbbmasíroztok. Mire eléritek az erdő keleti szélét, kezd besötétedni. Úgy döntesz, még a fák között letáboroztok. Felnézel a csillagos, éjszakai égre, mely végre ismét látható a ritkuló lombkoronán át. Telihold van. Úgy döntesz, megkettőzöd az őrséget, mivel aggódsz, hogy esetleg vérbestiák csaphatnak le rátok.[/p]
+    </text>
+    <add amount="-5" to="warriors" />
+    <next id="278"></next>
+  </p>
   <p id="283">
     <text>
         [p]Hátraugrasz, így a nyílvessző centiméterekkel ugyan, de eltéveszt, és a földbe fúródik a lábad előtt. Hat gyorskezű íjász előrántja fegyverét, megpróbálja lelőni a Vivernt és a Goblint, amint azok menekülőre fogják.[/p]
@@ -4637,7 +5995,15 @@
     </market>
     <next id="141"></next>
   </p>
-  <!-- 288 -->
+  <p id="288">
+    <text>
+        [p]Laas, az északi meglátja a Dombi Trollt, amint el akarja hajítani a követ. Villámgyorsan előreveti magát, és ellök a repülő szikla útjából. A földre vágódsz. Hátranézel, és látod, amint Laas átölelve tartja még a lábaidat, és szélesen vigyorog. Gyorsan köszönetet mondasz neki, aztán felugrasz, hogy leszámolj a szörnyeteggel, ami még mindig ütlegeli a szerencsétlen harcost.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="30" />
+    </fight>
+    <next id="379"></next>
+  </p>
   <p id="289">
     <text>
         [p]Hamar odaértek a Vivern és a Goblin testéhez, de sajnos már mindketten halottak. Átkutatod a holttestet. Egy íjhúrt és öt nyílhegyet találsz nála. Ennek nem veszed sok hasznát. Utána visszatérsz a sereghez, és ismét kiadod a menetparancsot Karom felé, ezúttal azonban szorosabb alakzatban, attól tartva, hogy Agglax esetleg más kémeket is küld majd.[/p]
@@ -4650,7 +6016,13 @@
     </text>
     <next id="180"></next>
   </p>
-  <!-- 291 -->
+  <p id="291">
+    <text>
+        [p]- Tévedsz - feleli a lovag élesen. - Fordulj vissza oda, ahonnan jöttél![/p]
+    </text>
+    <next id="327">Hogyha visszafordulsz a seregeddel, és délnek vonulsz a szakadék mentén</next>
+    <next id="148">Ha inkább megtámadjátok a lovagokat</next>
+  </p>
   <p id="292">
     <text>
         [p]Megvizsgálod a gyűrűt, és látod, hogy a 45-ös számot vésték bele. Hirtelen valaki megütögeti a válladat. Megfordulsz, és egy nagydarab, kopasz férfit pillantasz meg, aki mérgesen néz rád. Bal fülétől a jobb arca közepéig hosszú sebhely húzódik végig a fején. Duzzadó izmai ugrálnak bőrmellénye alatt, és vállán átvetve egy hatalmas csatabárdot tart fenyegetően. Lábához egy hajítófejsze van erősítve. Ujját az orrod elé tartja, és megszólal: - Az az én gyűrűm, idegen. Add ide, vagy meghalsz! - Nyilvánvaló, hogy hazudik, hiszen vaskos ujjaira nem is férne fel a törékeny kis ékszer. Mit leszel?[/p]
@@ -4660,7 +6032,14 @@
     <next id="126">Végigrohansz az utcán?</next>
     <next id="150">Megküzdesz a Fejszés Férfival?</next>
   </p>
-  <!-- 293 -->
+  <p id="293">
+    <text>
+        [p]Reflexeid villámgyorsak, így ügyesen félrehajolsz a repülő tőr elől. Látod, hogy egy sötét, kámzsás figura válik ki a tömegből, és tűnik el egy ajtóban. Utasítod az embereket, hogy ne üldözzék, mivel nyilván más merénylőkkel is fogsz még találkozni, mielőtt eléred Agglax seregét, így értelmetlen lenne rá pazarolni az idődet. 100 Aranytallérért sikerül felbérelned 10 újabb harcost. Utasítod őket, hogy keressék meg Lexont, aki a város mellett táborozik a sereggel. Amikor végzel a toborzással, visszatérsz az utcára.[/p]
+    </text>
+    <add amount="-100" to="gold" />
+    <add amount="10" to="warriors" />
+    <next id="95"></next>
+  </p>
   <p id="294">
     <text>
         [p]A szövegből nem értesz semmit, így összehajtod a [span class="takeItem" data-id="3018" data-amount="1"]pergament[/span], és berakod a zsebedbe. Továbbmész a folyosón.[/p]
@@ -4729,7 +6108,12 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 301 -->
+  <p id="301">
+    <text>
+        [p]Agglax nevetésre nyitja a száját, de hang helyett dermesztő gázsugár lövell ki a torkából. Egy pillanat alatt kőszoborrá fagysz. A jövőben az Árnydémon trófeáit fogod szaporítani. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="302">
     <text>
         [p]A fejsze telibe találja a combodat - vesztesz 2 életerő pontot! Képtelen vagy tovább rohanni, így összeszorított fogakkal kihúzod a fegyvert a lábadból, majd szembefordulsz a közeledő férfival. Az rád horkan, majd nyolcasokat leírva a levegőben, pörgetni kezdi maga körül csatabárdját. Muszáj megküzdened vele.[/p]
@@ -4791,7 +6175,19 @@
     <next id="119">Ha úgy döntesz, hogy megmentitek a férfit</next>
     <next id="234">Ha inkább nem szakítjátok meg emiatt az utat</next>
   </p>
-  <!-- 310 -->
+  <p id="310">
+    <text>
+        [p]Húsz perc múlva eléritek a szakadék végét, és tovább vonulhattok kelet felé.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="186"></next>
+      </success>
+      <failure>
+        <next id="282"></next>
+      </failure>
+    </test>
+  </p>
   <p id="311">
     <text>
         [p]Mivel nem akarsz további, felesleges beszélgetésbe bonyolódni, felállsz, és közlöd a csavargókkal, hogy pontosan tudod, merre lakik az unokafivéred, és most azonnal indulsz is. Válaszra nem várva sarkon fordulsz, és távozol a kocsmából, hogy körbenézz még egy kicsit Zengisben.[/p]
@@ -4823,9 +6219,97 @@
     <next id="368">Ha itt szállsz meg</next>
     <next id="146">Ha inkább másikat keresel</next>
   </p>
-  <!-- 315 -->
-  <!-- 316 -->
-  <!-- 317 -->
+  <p id="315">
+    <text>
+        [p]Ahogy haladsz előre, az a kellemetlen érzésed támad, hogy titokban követnek. Hirtelen kiáltást hallasz hátulról; körbenézel, és látod, hogy az egyik harcos a földre zuhan. A nyakából egy kis nyílvessző áll ki. Majd szinte rögtön ezután egy másik társa is hasonló sorsra jut. Valahol fúvócsövesek rejtőznek a közelben![/p]
+    </text>
+    <random diceConfig="3d6">
+      <result max="3" min="3">
+        <text>[p]Összesen 5 katonád esik áldozatul a mérgezett fúvócső-lövedékeknek![/p]</text>
+        <add amount="-5" to="army" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Összesen 6 katonád esik áldozatul a mérgezett fúvócső-lövedékeknek![/p]</text>
+        <add amount="-6" to="army" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Összesen 7 katonád esik áldozatul a mérgezett fúvócső-lövedékeknek![/p]</text>
+        <add amount="-7" to="army" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Összesen 8 katonád esik áldozatul a mérgezett fúvócső-lövedékeknek![/p]</text>
+        <add amount="-8" to="army" />
+      </result>
+      <result max="7" min="7">
+        <text>[p]Összesen 9 katonád esik áldozatul a mérgezett fúvócső-lövedékeknek![/p]</text>
+        <add amount="-9" to="army" />
+      </result>
+      <result max="8" min="8">
+        <text>[p]Összesen 10 katonád esik áldozatul a mérgezett fúvócső-lövedékeknek![/p]</text>
+        <add amount="-10" to="army" />
+      </result>
+      <result max="9" min="9">
+        <text>[p]Összesen 11 katonád esik áldozatul a mérgezett fúvócső-lövedékeknek![/p]</text>
+        <add amount="-11" to="army" />
+      </result>
+      <result max="10" min="10">
+        <text>[p]Összesen 12 katonád esik áldozatul a mérgezett fúvócső-lövedékeknek![/p]</text>
+        <add amount="-12" to="army" />
+      </result>
+      <result max="11" min="11">
+        <text>[p]Összesen 13 katonád esik áldozatul a mérgezett fúvócső-lövedékeknek![/p]</text>
+        <add amount="-13" to="army" />
+      </result>
+      <result max="12" min="12">
+        <text>[p]Összesen 14 katonád esik áldozatul a mérgezett fúvócső-lövedékeknek![/p]</text>
+        <add amount="-14" to="army" />
+      </result>
+      <result max="13" min="13">
+        <text>[p]Összesen 15 katonád esik áldozatul a mérgezett fúvócső-lövedékeknek![/p]</text>
+        <add amount="-15" to="army" />
+      </result>
+      <result max="14" min="14">
+        <text>[p]Összesen 16 katonád esik áldozatul a mérgezett fúvócső-lövedékeknek![/p]</text>
+        <add amount="-16" to="army" />
+      </result>
+      <result max="15" min="15">
+        <text>[p]Összesen 17 katonád esik áldozatul a mérgezett fúvócső-lövedékeknek![/p]</text>
+        <add amount="-17" to="army" />
+      </result>
+      <result max="16" min="16">
+        <text>[p]Összesen 18 katonád esik áldozatul a mérgezett fúvócső-lövedékeknek![/p]</text>
+        <add amount="-18" to="army" />
+      </result>
+      <result max="17" min="17">
+        <text>[p]Összesen 19 katonád esik áldozatul a mérgezett fúvócső-lövedékeknek![/p]</text>
+        <add amount="-19" to="army" />
+      </result>
+      <result max="18" min="18">
+        <text>[p]Összesen 20 katonád esik áldozatul a mérgezett fúvócső-lövedékeknek![/p]</text>
+        <add amount="-20" to="army" />
+      </result>
+    </random>
+    <next id="265">Ha kiválasztasz hamarjában tíz harcost, és üldözőbe veszed az aljnövényzetben a támadókat</next>
+    <next id="130">Ha inkább gyorsan elvonultok erről a terepről, mielőtt újabb embereket veszítenétek</next>
+  </p>
+  <p id="316">
+    <text>
+        [p]Miközben a Tűzmanókkal harcoltatok, Agglax erőinek volt idejük az újrarendeződésre. Káoszharcosok vonala indul el felétek, tüskés, fekete vértjeik korábbi győzelmeikkor szerzett trófeákkal vannak díszítve. A fejük fölött lebegő zászlókon stilizált vörös sárkányok hirdetik szövetségüket a gonosz erőkkel. A Káoszharcosok mögött hatalmas, brutális Trollok masíroznak, a szárnyakon pedig Orkok és Goblinok vicsorítják fogaikat. Magának Agglaxnak nyomát sem látod. Az előrenyomuló hadsereg hirtelen megáll, és síri csönd száll a síkságra. Egy apró, púpos hátú Gremlin lép ki az ellenséges harcosok elé, majd táncolni és kántálni kezd. A rituálét éles visítással fejezi be, és a földre veti magát. A Káoszharcosok előreindulnak, és eltapossák a kis lényt. Egyre gyorsabban közelednek, ritmusra dobbantva lábaikkal, ami elég nyugtalanító a katonáid számára. Mindenféle fejszét, dárdát, kardot, szöges bunkót és cséphadarót lengetve, hatalmas harci üvöltéseket hallatva rontanak a soraitokra. A nyilak nem állítják meg őket, ezért el kell döntened, milyen módon veszed fel velük a küzdelmet.[/p]
+    </text>
+    <next id="359">Ha harcba vezeted a lovagjaidat</next>
+    <next id="91">Ha inkább a Törpéket küldöd ellenük, miközben te a többiekkel a csata menetét figyeled</next>
+  </p>
+  <p id="317">
+    <text>
+        [p]A fanatikus Káoszharcosok felmorzsolják a lovagokat, míg végül csak öten maradnak életben. Az oldaladon mély szúrás nyoma látszik, a bal karodat pedig fájdalmasan felhasították a harc közben. Vesztesz 4 életerő pontot! Vértől csöpögő fegyverrel megfordulsz, hogy felvedd a harcot a következő ellenféllel.[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <add amount="5" to="knights" type="set" />
+    <fight type="single">
+      <enemy id="26" />
+    </fight>
+    <next id="351"></next>
+  </p>
   <p id="318">
     <text>
         [p]A harcos leakasztja a halott nyakából a kulcsot, és hagyja a farönköt, had sodorja tovább a folyó. Az embered ezután visszaúszik a hajóhoz, felkapaszkodik a fedélzetre, és átadja neked a [span class="takeItem" data-id="3007" data-amount="1"]zsákmányt[/span]. A kulcsba a 222-es számot vésték. Megjegyzed magadnak a számot, és a zsebedbe csúsztatod a kulcsot. Barnock kapitány kiadja a parancsot embereinek a továbbvitorlázásra.[/p]
@@ -4847,7 +6331,12 @@
     <add amount="-2" to="luck" />
     <next id="211"></next>
   </p>
-  <!-- 321 -->
+  <p id="321">
+    <text>
+        [p]Félelmetes, sikoltó üvöltés tör ki az Árnydémon kitátott szájából. Köpenyéből fehér füst szivárog, amint kínok között vergődve a földre zuhan. Továbbra is üvöltve lassan eltűnik a köpenyéből, míg végül csak a füstölgő vászondarab marad a földön. Agglax távozott a külső síkokra, így soha többé nem lesz képes Allansiát fenyegetni. Győztél![/p]
+    </text>
+    <next id="400"></next>
+  </p>
   <p id="322">
     <text>
         [p]Átadod a 10 Aranytallért Laznak, aki előhúz egy térképet a köpenyéből, és az asztalra teríti. A papírlap közepén Zengis látható, attól délre pedig egy Karn nevű falu van felrajzolva. Tovább délkeletre fekszik a Csillagkő Barlang. A várostól keletre az Ördögerdő terül el, a Kok folyó elágazásától szinte egészen a térkép széléig. Laz elővesz egy fekete ceruzát, és egy nagy keresztet rajzol vele a térképre, az Ördögerdő keleti szélére. - Itt találkozhatsz vele. - mondja. Összehajtogatod a [span class="takeItem" data-id="3010" data-amount="1"]térképet[/span], és elteszed a ruhád egyik zsebébe. Megköszönöd az információkat a csavargóknak, majd elhagyod a kocsmát, hogy körbenézz Zengisben.[/p]
@@ -4932,7 +6421,12 @@
       </result>
     </random>
   </p>
-  <!-- 330 -->
+  <p id="330">
+    <text>
+        [p]A kis nyílvessző belefúródik a válladba. A hegyére kent halálos méreg hamar szétterjed a szervezetedben. A földre roskadsz, majd kiszenvedsz. Azt már nem éred meg, milyen finom vacsorát főznek belőled. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="331">
     <text>
         [p]Késő délutánig meneteltek, csak egyszer álltok meg ebédelni. A sötét leszálltával azonban kénytelenek vagytok táborhelyet keresni. Egy romos kőépülethez értek, mely talán egy kereskedőraktár lehetett régebben. Tüzet raktok, és tizenöt embereddel leülsz, hogy felmelegedjetek. A lángok ropogó hangjain túl kő kőhöz ütődését hallod meg. Villámgyorsan felpattansz, és szólsz az embereidnek is, hogy vonják ki kardjaikat. Ebben a pillanatban tíz Patkányember ront át az ajtón. Vívd meg a csatát![/p]
@@ -4998,7 +6492,12 @@
     <next id="22">Ha segítesz a Törpének</next>
     <next id="149">Ha inkább továbbsétálsz</next>
   </p>
-  <!-- 339 -->
+  <p id="339">
+    <text>
+        [p]Ilyen közelről nem lehet hibázni. A nyílvessző pontosan a nyakadat találja el. A földre rogysz. Embereid - látván halálodat - hamar elvesztik harci kedvüket, így az ellenség győzelme teljes. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="340">
     <text>
         [p]A halott ember nem jó harcos, és káromkodsz magadban, amiért feleslegesen jöttetek Karomba. Vesztesz 1 szerencse pontot! Nem vesztegeted tovább az idődet, inkább visszatérsz a seregedhez. Délnek vonultok, amíg egy megfelelő gázlót nem találtok a folyón. Átkeltek a vízen, majd délkeletnek vonultok, Zengis irányába.[/p]
@@ -5060,7 +6559,13 @@
     </text>
     <next id="209"></next>
   </p>
-  <!-- 347 -->
+  <p id="347">
+    <text>
+        [p]A lány az inge zsebébe csúsztatja az Aranytallért, majd a füledhez hajol. - A tulaj nem szereti a győzteseket, és ha ráadásul egy idegen nyer, azt végképp nem bírja. Én a helyedben távoznék a hátsó ajtón. -Úgy gondolod, igazat beszél, így csöndesen kilopódzol a teremből a hátsó ajtón át. Megpróbálsz végig árnyékban maradni, és úgy visszaérni a kocsmához.[/p]
+    </text>
+    <add amount="-1" to="gold" />
+    <next id="50"></next>
+  </p>
   <p id="348">
     <text>
         [p]A férfi lassan feléd fordítja a fejét, és mély hangon megkérdezi: - Miféle fogadást? - Két lekvárfoltra mutatsz az asztalon. Közlöd vele, hogy kiválaszthatja magának az egyiket, és a tiéd lesz a másik. Utána addig vártok, amíg a kocsmában rajzó rovarok közül az egyik leszáll, és rámászik valamelyikre. Akinek a lekvárjára mászik rá először egy bogár, az a győztes. A férfi morog egyet, majd megkérdezi: - És mi a tét? -Azt feleled: - Tíz Aranytallér a részemről, és ruhádon lévő arany melltű a részedről. - A férfi megcsóválja a fejét: - Akkor legyen 50 Aranytallér.[/p]
@@ -5082,7 +6587,12 @@
     <next id="167">Ha kíváncsi vagy, és benyitsz rajta</next>
     <next id="399">Hogyha inkább tovább haladtok Karom felé</next>
   </p>
-  <!-- 351 -->
+  <p id="351">
+    <text>
+        [p]Reménytelen túlerőben van az ellenség, ezért öt megmaradt lovagoddal visszavonultok a sereg többi részéhez. A füledben a Káoszharcosok diadalmas üvöltözése visszhangzik. Új parancsokat osztogatsz, arra számítván, hogy ellenfeleid folytatják a támadást, de azok egyszerűen megfordulnak, és visszavonulnak a saját seregükhöz. Úgy döntesz, a legjobb védekezés a támadás, ezért utasítod a seregedet, hogy támadják meg a Trollokat.[/p]
+    </text>
+    <next id="178"></next>
+  </p>
   <p id="352">
     <text>
         [p]Végigsétálsz a sikátorban, ahol elhaladsz egy vasrostély mellett is. Ebben a pillanatban a rácsok hirtelen kivágódnak, és a mögüle induló járatból két különösen gusztustalan és ocsmány kinézetű lény mászik elő. Rongyos ruháikról tócsákban csepeg a csatornaszenny. A két Csatornagoblin magasra emeli szöges bunkóját, és neked ront. Egyenként küzdj meg velük![/p]
@@ -5112,7 +6622,14 @@
     </text>
     <next id="213"></next>
   </p>
-  <!-- 356 -->
+  <p id="356">
+    <text>
+        [p]Húsz bátor katonád fekszik holtan a csatatéren (húzd le őket a [em]Kalandlapodról[/em]). A Trollok szemből próbálják visszaszorítani a túlélőket, míg oldalról Goblinok és Orkok támadnak könyörtelenül. Néhányuk annyira megrészegült a kardok csattogásától, hogy őrült üvöltözéssel egymás között verekednek. Jobbra egy harcost látsz, akit két oldalról két Goblin támad meg éppen. Balra egy másik katonádat egy hatalmas Dombi Troll teríti le a földre.[/p]
+    </text>
+    <add amount="-20" to="army" />
+    <next id="269">Ha a bal kéz felőli harcos segítségére sietsz</next>
+    <next id="62">Ha a jobb oldalihoz futsz oda</next>
+  </p>
   <p id="357">
     <text>
         [p]A kocsma meglehetősen kicsi, és nincs is bent sok vendég. A hangulat barátságosnak tűnik, így odalépsz a pulthoz, és megkérdezed a csapost, hogy tud-e ajánlani idegenvezetőt. A csapos egy asztalra mutat az egyik sarokban. - Kérdezd meg Thogot! Ő volt a legjobb. - Odalépsz az asztalhoz, és leülsz a sebhelyes harcos mellé. Elmondod, hogy kísérőre van szükséged. - Hová akarsz menni? - kérdezi Thog mély hangon. Mit felelsz?[/p]
@@ -5127,7 +6644,19 @@
     <gatherItem id="3008" />
     <next id="203"></next>
   </p>
-  <!-- 359 -->
+  <p id="359">
+    <text>
+        [p]A Káoszharcosok kemény ellenfelek, és ráadásul kétszer annyian vannak, mint a lovagjaid.[/p]
+    </text>
+    <itemCheck type="attribute" id="whiteKnights" amount="5">
+      <have>
+        <next id="118"></next>
+      </have>
+      <dontHave>
+        <next id="317"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="360">
     <text>
         [p]Villámgyorsan oldalra ugrasz. A tűzlabda pont ott csapódik a földbe, ahol az imént álltál. Éppen akkor tápászkodsz fel, amikor a Goblin elsüti számszeríját, és a nyílvessző gyorsan suhan feléd.[/p]
@@ -5195,7 +6724,7 @@
     <add amount="-3" to="stamina" />
     <add amount="-1" to="skill" />
     <add amount="-1" to="luck" />
-    <add amount="-10" to="warriors" />
+    <add amount="-10" to="army" />
     <next id="209"></next>
   </p>
   <p id="368">
@@ -5213,7 +6742,14 @@
     <next id="335">Ha megvásárolod a bolhát</next>
     <next id="218">Ha inkább vásárlás nélkül távozol a boltból</next>
   </p>
-  <!-- 370 -->
+  <p id="370">
+    <text>
+        [p]Megragadod a Blogot, és hátrakötöd a kezeit. Kikérdezed a falujáról és Agglaxról, de csak néhány szót ért az emberi nyelvből, ezért a kérdezősködéssel nem mész túl sokra. Mit teszel?[/p]
+    </text>
+    <next id="29">Megölöd?</next>
+    <next id="247">Elmutogatod neki, hogy kincset akarsz?</next>
+    <next id="169">Elengeded?</next>
+  </p>
   <p id="371">
     <text>
         [p]A fejsze elsüvít a fejed mellett, és zörögve végigcsúszik előtted az utcaköveken. Megállsz egy pillanatra, hogy felvedd, aztán lihegve továbbrohansz. A Fejszés Férfi messze lemarad mögötted.[/p]
@@ -5243,7 +6779,7 @@
     <text>
         [p]A Vérfarkas átharapja az őr nyakát, aztán vértől csöpögő fogait villogtatva feléd fordul. Meg kell küzdened vele![/p]
     </text>
-    <add amount="-1" to="warriors" />
+    <add amount="-1" to="army" />
     <fight type="single">
       <enemy id="25" />
       <loseRound enemy="25" totalCount="1">
@@ -5263,7 +6799,7 @@
     <text>
         [p]Mostanra már sokan felébredtek, de öt harcosod továbbra is fekve marad a földön. Nekik az éjszakai rabló elvágta a torkukat, és az ujjaikról is levágta a gyűrűiket. Ha csak egy kicsivel korábban ébredsz föl, megelőzhető lett volna a vérontás. Az őr fájós fejét tapogatja, mivel hátulról leütötték. Az éjszaka hátralévő részére megkettőzöd az őrséget. Hajnalban Barnock kapitány kiadja a parancsot a vitorlák felvonására.[/p]
     </text>
-    <add amount="-5" to="warriors" />
+    <add amount="-5" to="army" />
     <next id="188"></next>
   </p>
   <p id="376">
@@ -5289,7 +6825,13 @@
     <next id="18">Átülsz a csavargókhoz?</next>
     <next id="348">Kihívod egy fogadásra?</next>
   </p>
-  <!-- 379 -->
+  <p id="379">
+    <text>
+        [p]Amint kihúzod a kardodat ellenfeled holttestéből, egy másik lép a helyére.[/p]
+    </text>
+    <next id="193">Ha tovább harcolsz</next>
+    <next id="394">Ha inkább megpróbálod elterelni a figyelmüket úgy, hogy szétszórod az Aranyaidat a csatamezőn</next>
+  </p>
   <p id="380">
     <text>
         [p]Az Elfek felsorakoznak a hajó oldalán, és tüzet nyitnak a meglepődött Rablókra. Halálos pontossággal céloznak. Az első sorozat nyolc támadót megöl. A többiek rádöbbennek, hogy öngyilkos dolog lenne tovább folytatni a rohamot, ezért megfordítják csónakjaikat, és gyorsan visszaeveznek a partra. Az emberek éljenzése közepette tovább folytatjátok az utat a folyón fölfelé.[/p]
@@ -5339,7 +6881,7 @@
             Közlöd vele, hogy keresse meg Lexont Zengis határában, tőle majd megkapja a 300 Aranytallért (vond le az összeget a [em]Kalandlapodról[/em]). - Nem bánod meg, hogy felfogadtál minket - mondja búcsúzóul Max. Nézed, amint az embereivel elvonul, majd kifordulsz az utcára.[/p]
         </text>
         <add amount="-300" to="gold" />
-        <add amount="10" to="warriors" />
+        <add amount="10" to="marauders" />
       </have>
       <dontHave>
         <text>
@@ -5349,7 +6891,17 @@
     </itemCheck>
     <next id="314"></next>
   </p>
-  <!-- 386 -->
+  <p id="386">
+    <text>
+        [p]Vívd meg a harcot az ötven Tűzmanó ellen![/p]
+    </text>
+    <fight type="custom36" resolver="custom">
+      <enemy id="107" />
+      <win>
+        <next id="316"></next>
+      </win>
+    </fight>
+  </p>
   <p id="387">
     <text>
         [p]Sajnos rossz helyre lépsz, az egyik padlódeszka felpattan, és mozgásba lép a pengét elengedő mechanizmus. A kard az Elfre zuhan, de legnagyobb meglepetésedre egyszerűen csak lepattan a hasáról! - Oldozz el! - könyörög a nő -, és mindent megmagyarázok.[/p]
@@ -5357,7 +6909,13 @@
     <next id="243">Ha kioldozod</next>
     <next id="320">Ha inkább magára hagyod ezt a furcsa lényt, és csatlakozol az odakint váró embereidhez</next>
   </p>
-  <!-- 388 -->
+  <p id="388">
+    <text>
+        [p]A tömeg vadul éljenez, amint Nagyhasú Ember learatja a következő győzelmét. Most már ismerős a mód, ahogy mindkét öklét a levegőbe lendíti, és elégedetten üvölt egyet. Nem vesztegeted tovább az idődet. Felállsz, és távozol. A gusztustalan süteménytől egy kicsit émelyeg a gyomrod - úgy érzed magad, mint egy felfúvódott Vérvad. Vesztesz 1 életerő pontot! Kilépsz az utcára.[/p]
+    </text>
+    <add to="stamina" amount="-1" />
+    <next id="95"></next>
+  </p>
   <p id="389">
     <text>
         [p]Szemmel tartod a tisztást, miközben körbesétálsz, hogy visszatalálj az ösvényre az aljnövényzetben.[/p]
@@ -5380,7 +6938,13 @@
     <add amount="-1" to="luck" />
     <next id="203"></next>
   </p>
-  <!-- 391 -->
+  <p id="391">
+    <text>
+        [p]- Tévedsz - feleli a lovag élesen. - Fordulj vissza oda, ahonnan jöttél![/p]
+    </text>
+    <next id="327">Ha visszafordulsz a seregeddel, és délnek vonulsz a szakadék mentén</next>
+    <next id="148">Hogyha inkább megtámadjátok a lovagokat</next>
+  </p>
   <p id="392">
     <text>
         [p]Kardod hegye belemélyed a puha, sárga húsba. Sűrű, zöld lé folyik a sebből, amint a Lápi Csontszaggató vad fájdalmában őrülten csapkodni kezd testével. Hátraugrasz, és megpróbálod elkerülni azt, hogy agyonnyomjon a vakon vergődő iszonyú tömeg. Néhány másodperc vonaglás után a bestia lassan visszasüpped a fekete posványba. Továbbmentek a mocsárban, és szerencsésen eléritek a túlsó végét. Ezzel együtt mérges vagy, amiért öt emberedet feleslegesen elvesztetted.[/p]
@@ -5400,7 +6964,22 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 394 -->
+  <p id="394">
+    <text>
+        [p]Az Aranytallérok valóságos esőként hullanak a földre. Az ellenség sorai szinte azonnal felbomlanak, amint a Trollok és Goblinok egymást taposva tülekednek az imádott kincsért. A csatáról pillanatok alatt elfeledkeznek, és a legnagyobb gondjuk az, hogy minél több érmét zsákmányoljanak, akár társaik lemészárlásának árán is. Megragadod az alkalmat, és áttörsz a rendezetlen sorokon. És nemsokára megpillantod a Démont, akit kerestél. Egy rémisztő karmokkal dekorált trónon ül Agglax, melyet négy ocsmány Zombi tart a vállán, és látszólag a legkevésbé sem érdekli, hogy egyre közelebb jutsz hozzá. Az Árnydémonnak csak csupasz koponyafeje, és sárga karmai látszanak ki fekete köpenye alól. A látványtól végigfut hátadon a hideg. Gyanús, hogy ellenfeled ennyire nyugodt, és egyből megérzed, hogy itt valami nincs rendben. [alt]Mit teszel?[/alt][/p]
+    </text>
+    <itemCheck type="items" id="3004 or 3005">
+      <have>
+        <next id="236" pos="1">Egy függőt használsz?</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="item" id="3023">
+      <have>
+        <next id="39" pos="2">Egy kristályt használsz?</next>
+      </have>
+    </itemCheck>
+    <next id="301" pos="3" singleChoiceText="Előrántod a kardodat és rárontasz.">A kardoddal rontasz rá?</next>
+  </p>
   <p id="395">
     <text>
         [p]A csavargók hirtelen felélénkülnek, amikor meghallják, hogy fizetsz az Agglaxról adott információért cserébe. - Tudjuk, hol állította fel a seregét, és ezt meg is tudjuk neked mutatni egy térképen - mondja Laz, aranyat szimatolva. - De - folytatja, és sajnálkozó mosoly jelenik meg az arcán - a legfontosabb az, hogy tudjuk, hogyan tudunk segíteni abban, hogy legyőzd az Árnydémont. 10 Aranytallérért megmutatjuk, hol találod meg a fő seregét. Újabb 90 Aranytallérért azt is elmondjuk, hogyan tudod meggyengíteni őt.[/p]
@@ -5408,7 +6987,13 @@
     <next id="322">Ha 10 Aranytallért fizetsz a csavargóknak</next>
     <next id="56">Ha 100-at</next>
   </p>
-  <!-- 396 -->
+  <p id="396">
+    <text>
+        [p]Nekizuhansz a fatörzsnek, de gyorsan visszanyered az egyensúlyodat. A Blog egy másik nyilacskát is rád lő, ez azonban ártalmatlanul lepattan a pajzsodról. Megragadod az alkalmat, gyorsan felmászol, és megragadod a bestia bokáját, mielőtt még újratölthetné a fúvócsövét. Keményen megrántod a lábát, mire a lény eldobja fegyverét, hogy két kézzel tudjon kapaszkodni. Rövid huzakodás után ellenfeled végül feladja a küzdelmet, elereszti az ágat, és tompa puffanással a földön landol. Lehajlott fejjel várja, hogy végezz vele.[/p]
+    </text>
+    <next id="82">Ha megölöd a Blogot</next>
+    <next id="370">Ha inkább kivallatod</next>
+  </p>
   <p id="397">
     <text>
         [p]Gurgulázó hörgést hallatsz, amint a szigony átfúrja a torkodat. Egyetlen Halember elég volt, hogy végezzen veled. Most már nincs senki, aki megállíthatná Agglaxot. Kalandod itt véget ér.[/p]
@@ -5439,5 +7024,11 @@
         <next id="360"></next>
       </result>
     </random>
+  </p>
+  <p id="400">
+    <text>
+        [p]Látva Agglax pusztulását, a Halál Seregének harcosai vad pusztításba kezdenek. A különböző törzsek egymásnak esnek, mindnyájan a másikat hibáztatva vezetőjük elestéért. Megpróbálod rávenni őket, hogy adják meg magukat, de rád se hederítenek, annyira belevadultak egymás gyilkolásába. Végül magukra hagyod a Goblinokat, Orkokat, Dombi Trollokat, Zombikat és Elit Harcosokat, hogy kölcsönösen elpusztítsák egymást, te pedig sereged élén dicsőségesen visszavonulsz Fangba, hogy kihirdessétek a győzelmeteket. De vajon meddig tart a béke? Vajon mikor jelenik meg újabb ellenség szeretett Allansiád határain?[/p]
+    </text>
+    <victory />
   </p>
 </content>

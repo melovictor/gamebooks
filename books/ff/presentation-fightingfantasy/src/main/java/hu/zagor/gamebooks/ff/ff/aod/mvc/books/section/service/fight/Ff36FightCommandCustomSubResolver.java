@@ -170,9 +170,8 @@ public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolve
     }
 
     private void setUpTotal(final Ff36Character character, final List<FfAllyCharacter> allies) {
-        // TODO: extend when new squadron is added
         addSquadron(allies, "warriors", character.getWarriors());
-        addSquadron(allies, "dvarwes", character.getDwarves());
+        addSquadron(allies, "dwarves", character.getDwarves());
         addSquadron(allies, "elves", character.getElves());
         addSquadron(allies, "knights", character.getKnights());
         addSquadron(allies, "wilders", character.getWilders());

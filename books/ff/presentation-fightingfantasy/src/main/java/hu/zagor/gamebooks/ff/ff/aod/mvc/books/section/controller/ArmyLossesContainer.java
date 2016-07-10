@@ -5,7 +5,6 @@ package hu.zagor.gamebooks.ff.ff.aod.mvc.books.section.controller;
  * @author Tamas_Szekeres
  */
 public class ArmyLossesContainer {
-    // TODO: extend when new squadron is added
     private int warriors;
     private int dwarves;
     private int elves;

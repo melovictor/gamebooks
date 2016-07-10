@@ -42,7 +42,6 @@ public class Ff36BookSectionController extends FfBookSectionController {
         final FfCharacter character = (FfCharacter) getWrapper(request).getCharacter();
         final FfUserInteractionHandler interactionHandler = getInfo().getCharacterHandler().getInteractionHandler();
         interactionHandler.setFightCommand(character, "finalizing");
-        // TODO: extend when new squadron is added
         interactionHandler.setFightCommand(character, "loseArmy",
             "warriors=" + container.getWarriors() + ";elves=" + container.getElves() + ";dwarves=" + container.getDwarves() + ";knights=" + container.getKnights()
                 + ";wilders=" + container.getWilders() + ";northerns=" + container.getNortherns() + ";marauders=" + container.getMarauders() + ";whiteKnights="
