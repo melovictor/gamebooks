@@ -63,6 +63,7 @@ var bookRewards = (function() {
 	function init() {
 		setTimeout(showNextBox, 250);
 		loadExistingRewards();
+		$("#unearnedGamebookRewards").on("click", "img", showDescription);
 	}
 	function showNextBox() {
 		var $rewardBoxes = $(".mainRewardBox");
@@ -77,33 +78,70 @@ var bookRewards = (function() {
 			}, 3000);
 		}
 	}
+
 	function loadExistingRewards() {
 		var $container = $("#gamebookRewards");
 		var bookId = $("#bookId").val();
 		var userId = $("#userId").val();
 		if ($container.length > 0) {
 			$.ajax({
-				url : "http://zagor.hu/getrewards.php?bookId=" + bookId + "&userId=" + userId,
+				url : "http://zagor.hu/getrewards.php",
 				data : {
 					bookId : bookId,
-					userId : userId
+					userId : userId,
+					fromLocal : "true"
 				},
 				type : "post",
 				success : function(response) {
 					var $earned = $("<div>");
 					var $unearned = $("<div>");
+					var hasEarned = false;
+					var hasUnearned = false;
 					$(response).each(function(idx, elem) {
-						if (elem.rewardCode) {
+						if (elem.rewardImage) {
 							$earned.append($("<img src='http://zagor.hu/img/reward/" + elem.rewardImage + "' />"));
+							hasEarned = true;
 						} else {
-							$unearned.append($("<img src='http://zagor.hu/img/reward/placeholder/" + elem.placeholder + "' />"));
+							$unearned.append($("<img data-desc1=\"" + elem.desc1 + "\" data-desc2=\"" + elem.desc2 + "\" src='http://zagor.hu/img/reward/placeholder/" + elem.placeholder + "' />"));
+							hasUnearned = true;
 						}
 					});
-					$container.append($earned);
-					$container.append($unearned);
+					if (hasEarned) {
+						$("#earnedGamebookRewards").append($earned).show();
+					} else {
+						$("#earnedGamebookRewards").remove();
+					}
+					if (hasUnearned) {
+						$("#unearnedGamebookRewards").append($unearned).show();
+					} else {
+						$("#unearnedGamebookRewards").remove();
+					}
 				}
 			});
 		}
+	}
+	function showDescription(img) {
+		var $img = $(img.target);
+		var $container = fetchContainer();
+		var desc1 = $img.data("desc1");
+		var desc2 = $img.data("desc2");
+		var contText = $container.text();
+		if (desc1 == contText || desc2 == contText) {
+			$container.text(desc2);
+		} else {
+			$("img.selected").removeClass();
+			$container.text(desc1);
+			$img.addClass("selected");
+		}
+		
+	}
+	function fetchContainer() {
+		var $container = $("#unearnedDescription");
+		if ($container.length == 0) {
+			$container = $("<div id='unearnedDescription'>");
+			$("#unearnedGamebookRewards .title").after($container);
+		}
+		return $container;
 	}
 	
 	return {

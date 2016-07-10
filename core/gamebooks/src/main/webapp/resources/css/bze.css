@@ -36,8 +36,33 @@ em {
 #gamebookRewards {
   height: 600px;
   float: right;
-  width: 300px;
-  margin-right: 31px;
+  width: 330px;
+}
+#earnedGamebookRewards, #unearnedGamebookRewards {
+  display: none;
+}
+
+#earnedGamebookRewards .title, #unearnedGamebookRewards .title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+#unearnedGamebookRewards + #earnedGamebookRewards {
+  margin-top: 40px;
+}
+
+#unearnedGamebookRewards img {
+  cursor: pointer;
+}
+#gamebookRewards img {
+  margin: 5px;
+}
+#gamebookRewards img.selected {
+  background-color: rgba(12,255,0,0.3);
+}
+#unearnedDescription {
+  margin: 15px 0px;
+  height: 40px;
 }
 
 #right-out {

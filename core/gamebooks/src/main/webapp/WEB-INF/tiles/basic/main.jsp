@@ -36,7 +36,7 @@
 	<c:forEach items="${paragraph.rewards}" var="rewardUrl">
 		<div class="mainRewardBox">
 			<img alt="new reward" src="${rewardUrl}" /><br />
-			<spring:message code="page.book.newReward" />
+			<spring:message code="page.book.reward.new" />
 		</div>
 	</c:forEach>
 
