@@ -149,7 +149,7 @@ public class SorBookSectionControllerTest {
         // GIVEN
         final Capture<Choice> newSpell = newCapture();
 
-        logger.info("Handling spell section switch to position 'spl-{}'.", "479|2");
+        logger.info("Handling spell section switch to position 'spl-{}'.", "479~2");
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(data);
@@ -163,7 +163,7 @@ public class SorBookSectionControllerTest {
         expect(model.addAttribute("cont", continueData)).andReturn(model);
         mockControl.replay();
         // WHEN
-        final String returned = underTest.handleSpellSectionChangeBySpellPosition(model, request, "479|2");
+        final String returned = underTest.handleSpellSectionChangeBySpellPosition(model, request, "479~2");
         // THEN
         Assert.assertEquals(returned, "ffSection");
         final Choice newChoice = newSpell.getValue();
