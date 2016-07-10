@@ -27,20 +27,17 @@ import org.springframework.beans.factory.annotation.Qualifier;
  */
 public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolver {
 
-    private static final int SCOUT_PARTY_SIZE = 10;
-    private static final int PRISONERS_FREED = 10;
-
     @Autowired @Qualifier("customFf36FightRoundResolver") private FightRoundResolver roundResolver;
 
     @Override
     public List<ParagraphData> doResolve(final FightCommand command, final ResolvationData resolvationData) {
-        List<ParagraphData> result = null;
+        List<ParagraphData> result;
         final CharacterHandler characterHandler = resolvationData.getCharacterHandler();
         final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) characterHandler.getInteractionHandler();
         final Ff36Character character = (Ff36Character) resolvationData.getCharacter();
         final String order = interactionHandler.getLastFightCommand(character);
         if (order == null) {
-            setUpOwnFightParty(command, resolvationData);
+            result = setUpFightParties(command, resolvationData);
         } else if (FightCommand.ATTACKING.equals(order)) {
             result = handleAttacking(command, resolvationData);
         } else {
@@ -125,7 +122,8 @@ public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolve
         return totalAlive <= 0;
     }
 
-    private void setUpOwnFightParty(final FightCommand command, final ResolvationData resolvationData) {
+    private List<ParagraphData> setUpFightParties(final FightCommand command, final ResolvationData resolvationData) {
+        List<ParagraphData> result = null;
         final Ff36Character character = (Ff36Character) resolvationData.getCharacter();
         final List<FfAllyCharacter> allies = command.getResolvedAllies();
 
@@ -136,6 +134,12 @@ public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolve
         }
         allies.add(new Ff36AllyCharacter("losses", 0));
         setUpEnemies(command, resolvationData);
+        if (enemyDead(command.getResolvedEnemies())) {
+            command.setKeepOpen(false);
+            command.setOngoing(false);
+            result = Arrays.asList((ParagraphData) command.getWin().get(0).getParagraphData());
+        }
+        return result;
     }
 
     private void setUpScoutParty(final List<String> allyIds, final ResolvationData resolvationData, final List<FfAllyCharacter> resolvedAllies) {
@@ -154,8 +158,13 @@ public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolve
         final Map<String, Enemy> enemies = resolvationData.getEnemies();
         for (final String enemyId : command.getEnemies()) {
             final FfEnemy enemy = (FfEnemy) enemies.get(enemyId);
-            if (enemy.getStamina() > 0) {
+            final int stamina = enemy.getStamina();
+            if (stamina > 0) {
                 resolvedEnemies.add(enemy);
+                final int initStamina = enemy.getInitialStamina();
+                if (stamina > initStamina) {
+                    enemy.setStamina(initStamina);
+                }
             }
         }
     }
