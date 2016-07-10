@@ -88,8 +88,7 @@ var bookRewards = (function() {
 				url : "http://zagor.hu/getrewards.php",
 				data : {
 					bookId : bookId,
-					userId : userId,
-					fromLocal : "true"
+					userId : userId
 				},
 				type : "post",
 				success : function(response) {
