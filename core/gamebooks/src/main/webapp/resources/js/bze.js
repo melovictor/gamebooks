@@ -63,7 +63,7 @@ var bookRewards = (function() {
 	function init() {
 		setTimeout(showNextBox, 250);
 		loadExistingRewards();
-		$("#unearnedGamebookRewards").on("click", "img", showDescription);
+		$("#unearnedGamebookRewards").on("click", "img:not(.noDescription)", showDescription);
 	}
 	function showNextBox() {
 		var $rewardBoxes = $(".mainRewardBox");
@@ -102,7 +102,14 @@ var bookRewards = (function() {
 							$earned.append($("<img src='http://zagor.hu/img/reward/" + elem.rewardImage + "' />"));
 							hasEarned = true;
 						} else {
-							$unearned.append($("<img data-desc1=\"" + elem.desc1 + "\" data-desc2=\"" + elem.desc2 + "\" src='http://zagor.hu/img/reward/placeholder/" + elem.placeholder + "' />"));
+							var $img = $("<img src='http://zagor.hu/img/reward/placeholder/" + elem.placeholder + "' />");
+							if (elem.desc1 == "") {
+								$img.addClass("noDescription");
+							} else {
+								$img.data("desc1", elem.desc1);
+								$img.data("desc2", elem.desc2);
+							}
+							$unearned.append($img);
 							hasUnearned = true;
 						}
 					});
