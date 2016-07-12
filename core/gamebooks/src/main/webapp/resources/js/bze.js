@@ -98,10 +98,10 @@ var bookRewards = (function() {
 					var hasUnearned = false;
 					$(response).each(function(idx, elem) {
 						if (elem.rewardImage) {
-							$earned.append($("<img src='http://zagor.hu/img/reward/" + elem.rewardImage + "' />"));
+							$earned.append($("<img src='http://zagor.hu/gamebooks/reward/" + elem.rewardImage + "' />"));
 							hasEarned = true;
 						} else {
-							var $img = $("<img src='http://zagor.hu/img/reward/placeholder/" + elem.placeholder + "' />");
+							var $img = $("<img src='http://zagor.hu/gamebooks/reward/placeholder/" + elem.placeholder + "' />");
 							if (elem.desc1 == "") {
 								$img.addClass("noDescription");
 							} else {
