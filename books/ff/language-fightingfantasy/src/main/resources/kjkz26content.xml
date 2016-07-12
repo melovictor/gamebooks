@@ -519,6 +519,7 @@
         [p class="inlineImage"][img src="resources/books/17.jpg" /][/p]
         [p]Befordulsz a sarkon, és egy árnyat pillantasz meg, ami elállja az utadat. Nem látod jól, mi az, de formája alapján egy ember lehet, akinek csuklya takarja a fejét. Amint közelebb lépsz, hogy alaposabban szemügyre vedd a fickót, az hirtelen hátracsapja a csuklyát. Egy női arc tűnik elő, akinek haja helyén számtalan kígyó tekergőzik. Amint belenézel a Medúza vörös szemébe, többé nem vagy képes másfelé nézni. Érzed, amint tagjaid egy szempillantás alatt megmerevednek, és nemsokára nem marad belőled más, mint egy élethűen mintázott kőszobor. Kalandod itt véget ér.[/p]
     </text>
+    <reward id="medusa" />
     <death />
   </p>
   <p id="18">
@@ -1122,6 +1123,7 @@
     <text>
         [p]Senkinél sincs nadragulya. Egy óra elteltével már magas láz rázza a testedet. Az arcodból és karodból szőrszálak kezdenek kinőni. A fejed lassan kezd átalakulni, míg végül félelmetes Farkasemberre kezdesz hasonlítani te is. Az embereid rémülten és tehetetlenül figyelik átváltozásodat, és végül úgy döntenek, hogy megszabadítanak nyomorúságodtól. Halálod azonban egyben az Agglax ellen vezetett sereg végét is jelenti. Az emberek szétoszlanak, és hazatérnek. Kalandod itt véget ér.[/p]
     </text>
+    <reward id="wwolf" />
     <death />
   </p>
   <p id="52">
@@ -1160,6 +1162,7 @@
         [p]Nem vagy biztos benne, hogy jól döntesz akkor, amikor megbízol a csavargókban, mindenesetre átadod nekik a 100 Aranytallért. Laz előhúz egy térképet a köpenyéből, és az asztalra teríti. A lap közepén Zengis látható, tőle délre pedig a Karn nevű falu van felrajzolva. Tovább délkeletre fekszik a Csillagkő Barlang. Zengistől keletre az Ördögerdő terül el, a Kok folyó elágazásától szinte egészen a térkép széléig. Laz elővesz egy fekete ceruzát, és egy nagy keresztet rajzol vele a térképre, az Ördögerdő keleti szélére.[/p]
         [p]– Itt találkozhatsz vele. – mondja. Összehajtogatod a [span class="takeItem" data-id="3010" data-amount="1"]térképet[/span], és elteszed a ruhád egyik zsebébe. – És csak akkor van reményed leszámolni Agglaxszal, ha meglátogatod az Orákulumot – suttogja Jip. – Hogy szóba áll-e majd veled, az más kérdés. Az attól függ, hogy milyen kedvében találod, és hogy milyen ajándékot viszel neki. Az Orákulumot a Csillagkő Barlangban találod. – Megköszönöd az információkat a csavargóknak, majd elhagyod a kocsmát, hogy körbenézz Zengisben, közben pedig eltöprengesz, vajon ki is lehet ez a titokzatos ember.[/p]
     </text>
+    <reward id="map" />
     <add amount="-100" to="gold" />
     <next id="382"></next>
   </p>
@@ -1186,6 +1189,7 @@
     <text>
         [p]A tömeg döbbent csendben szemléli, amint győzelmed jeléül az üres tányérba ejted a kanaladat. A Nagyhasú Ember – szája még tele van süteménnyel – dühösen lesöpri a tányérját az asztalról. A Törpe hitetlenkedve, a fejét rázva nyújtja át a 100 Aranytallért tartalmazó erszényt.[/p]
     </text>
+    <reward id="pie" />
     <add amount="100" to="gold" />
     <next id="165">Ha felállsz az asztalra, beszédet mondasz Agglaxról, és közlöd, hogy a most nyert 100 Aranyat hajlandó vagy odaadni tíz kemény harcosnak, ha csatlakoznak a seregedhez</next>
     <next id="95">Ha inkább távozol a nyereményeddel</next>
@@ -6334,6 +6338,9 @@
     <add amount="5" to="knights" type="set" />
     <fight type="single">
       <enemy id="26" />
+      <win>
+        <reward id="chaosw" />
+      </win>
     </fight>
     <next id="351"></next>
   </p>
@@ -6368,6 +6375,7 @@
     <text>
         [p]Átadod a 10 Aranytallért Laznak, aki előhúz egy térképet a köpenyéből, és az asztalra teríti. A papírlap közepén Zengis látható, attól délre pedig egy Karn nevű falu van felrajzolva. Tovább délkeletre fekszik a Csillagkő Barlang. A várostól keletre az Ördögerdő terül el, a Kok folyó elágazásától szinte egészen a térkép széléig. Laz elővesz egy fekete ceruzát, és egy nagy keresztet rajzol vele a térképre, az Ördögerdő keleti szélére. – Itt találkozhatsz vele. – mondja. Összehajtogatod a [span class="takeItem" data-id="3010" data-amount="1"]térképet[/span], és elteszed a ruhád egyik zsebébe. Megköszönöd az információkat a csavargóknak, majd elhagyod a kocsmát, hogy körbenézz Zengisben.[/p]
     </text>
+    <reward id="map" />
     <add amount="-10" to="gold" />
     <next id="382"></next>
   </p>
@@ -6437,6 +6445,7 @@
     <text>
         [p]Fangban bárki megmondhatja, hogy a Kok folyón gyakran úsznak lefelé hordók. Havonta legalább egyszer megesik ilyesmi, és a lakosok korábbi keserű tapasztalataikból okulva megtanulták, hogy a legjobb békén hagyni ezeket. A hordókat egy őrült Banya hajigálja a folyóba, miután megmérgezte a bele tett almákat.[/p]
     </text>
+    <reward id="apple" />
     <random>
       <result max="2" min="1">
         <next id="179"></next>
@@ -6471,6 +6480,7 @@
     <text>
         [p]Előhalászod a pecsétedet, és belenyomod a forró viaszba, melyet közben a Calacorm csepegtetett a pergamenre. Föléje írod a nevedet. A bestia rád mordul: – Mehetsz! – Te azonnal elindulsz, még mielőtt a lény meggondolhatná magát. Átvágsz a barlangon, és továbbmész a mögötte húzódó alagútban.[/p]
     </text>
+    <reward id="seal" />
     <next id="377"></next>
   </p>
   <p id="333">
@@ -6671,6 +6681,7 @@
     <text>
         [p]Laas benyúl a szőrméi közé, és előhúz egy bőrzsinórra akasztott görbe fogat. – Ez egy Jeti foga – mondja büszkén. – Ha magadon viseled, egyetlen Vérfarkas vagy más vérbestia sem mer majd megtámadni. Azt kívánom, hogy viseld, mivel kész vagy életedet áldozni Allansiáért. – Engeded, hogy a férfi a nyakadba akassza a talizmánt. Miközben felfelé hajóztok a folyón, elmondasz neki mindent, amit csak tudsz az Árnydémonról.[/p]
     </text>
+    <reward id="jetiteeth" />
     <gatherItem id="3008" />
     <next id="203"></next>
   </p>
@@ -7063,6 +7074,14 @@
         [p class="inlineImage"][img src="resources/books/400.jpg" /][/p]
         [p]Látva Agglax pusztulását, a Halál Seregének harcosai vad pusztításba kezdenek. A különböző törzsek egymásnak esnek, mindnyájan a másikat hibáztatva vezetőjük elestéért. Megpróbálod rávenni őket, hogy adják meg magukat, de rád se hederítenek, annyira belevadultak egymás gyilkolásába. Végül magukra hagyod a Goblinokat, Orkokat, Dombi Trollokat, Zombikat és Elit Harcosokat, hogy kölcsönösen elpusztítsák egymást, te pedig sereged élén dicsőségesen visszavonulsz Fangba, hogy kihirdessétek a győzelmeteket. De vajon meddig tart a béke? Vajon mikor jelenik meg újabb ellenség szeretett Allansiád határain?[/p]
     </text>
+    <itemCheck type="item" id="4005">
+      <have>
+        <reward id="agglaxblin" />
+      </have>
+      <dontHave>
+        <reward id="agglax" />
+      </dontHave>
+    </itemCheck>
     <victory />
   </p>
 </content>
