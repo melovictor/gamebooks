@@ -40,7 +40,6 @@ public class ZagorLoginFacade extends AbstractLoginFacade {
 
     @Override
     public Authentication authenticate(final Authentication authentication) throws AuthenticationException {
-
         try {
             final String postData = assemblePostData(authentication);
             final URLConnection connection = communcator.connect(url);
