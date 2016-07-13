@@ -127,6 +127,8 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
             } catch (final IOException exception) {
                 logger.error("Failed to send reward data to server.", exception);
             }
+        } else {
+            resolvationData.getParagraph().getRewards().clear();
         }
     }
 
