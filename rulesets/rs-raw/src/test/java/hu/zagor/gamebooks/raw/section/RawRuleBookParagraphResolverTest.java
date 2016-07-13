@@ -66,6 +66,7 @@ public class RawRuleBookParagraphResolverTest {
     @Mock private ChoiceSet choices;
     @Instance private CharacterHandler characterHandler;
     @Mock private CharacterItemHandler itemHandler;
+    @Mock private List<String> rewardList;
 
     @BeforeClass
     public void setUpClass() {
@@ -135,6 +136,8 @@ public class RawRuleBookParagraphResolverTest {
         expect(newParagraphData.getCodewords()).andReturn(Arrays.asList("ship", "crivens"));
         expect(newParagraphData.getCommands()).andReturn(new CommandList());
         expect(newParagraphData.getReward()).andReturn(null);
+        expect(paragraph.getRewards()).andReturn(rewardList);
+        rewardList.clear();
 
         mockControl.replay();
         // WHEN
