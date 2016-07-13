@@ -93,7 +93,7 @@ public class ContentSorter {
     private String expandWithImageData(final String id, final String section, final BookImageData imageData) {
         String expanded = section;
         if (imageData != null && imageData.getSections() != null && imageData.getSections().contains(id) && !expanded.contains("inlineImage")) {
-            final String imageLink = "[p class=\"inlineImage\"][img src=\"resources/" + imageData.getCode() + "/" + id + ".jpg\" /][/p]";
+            final String imageLink = "[p class=\"inlineImage\" data-img=\"" + id + "\"][/p]";
             expanded = expanded.replaceFirst("\\[p\\]", imageLink + "\r\n        [p]");
         }
         return expanded;
