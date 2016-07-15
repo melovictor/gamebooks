@@ -39,6 +39,10 @@
     <filter-name>RequestLoggingFilter</filter-name>
     <filter-class>hu.zagor.gamebooks.filters.RequestLoggingFilter</filter-class>
   </filter>
+  <filter>
+    <filter-name>ShutdownNotificationEnhancerFilter</filter-name>
+    <filter-class>hu.zagor.gamebooks.filters.ShutdownNotificationEnhancerFilter</filter-class>
+  </filter>
 
 
 
@@ -80,7 +84,12 @@
     <url-pattern>*</url-pattern>
     <dispatcher>REQUEST</dispatcher>
   </filter-mapping>
-
+  <filter-mapping>
+    <filter-name>ShutdownNotificationEnhancerFilter</filter-name>
+    <url-pattern>/login</url-pattern>
+    <url-pattern>/booklist</url-pattern>
+    <url-pattern>/book/*</url-pattern>
+  </filter-mapping>
 
 
 

@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.security;
 
+import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.filters.ResourceSkippingCharacterEncodingFilter;
 import hu.zagor.gamebooks.filters.SessionFilter;
 import hu.zagor.gamebooks.mvc.login.service.LoginResultHandler;
@@ -49,10 +50,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         http.addFilterAfter(new ResourceSkippingCharacterEncodingFilter(), WebAsyncManagerIntegrationFilter.class);
         http.addFilterAfter(new SessionFilter(), WebAsyncManagerIntegrationFilter.class);
-        http.authorizeRequests().antMatchers("/resources/**", "/authCode").permitAll().anyRequest().authenticated();
+        http.authorizeRequests().antMatchers("/resources/**", "/authCode", "/updateImminent").permitAll().anyRequest().authenticated();
         http.csrf().requireCsrfProtectionMatcher(requestMatcher);
-        http.formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccessful", true).failureHandler(loginResultHandler).permitAll();
-        http.logout().addLogoutHandler(logoutHandler).logoutSuccessUrl("/login").permitAll();
+        http.formLogin().loginPage("/" + PageAddresses.LOGIN).defaultSuccessUrl("/loginSuccessful", true).failureHandler(loginResultHandler).permitAll();
+        http.logout().addLogoutHandler(logoutHandler).logoutSuccessUrl("/" + PageAddresses.LOGIN).permitAll();
         http.exceptionHandling().accessDeniedHandler(accessDeniedHandler);
         http.rememberMe().rememberMeServices(rememberMeService).authenticationSuccessHandler(loginResultHandler);
     }
