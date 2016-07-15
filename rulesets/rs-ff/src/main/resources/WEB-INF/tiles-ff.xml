@@ -13,12 +13,13 @@
   <definition name="ffWelcome" extends="ffGamebookContent">
     <put-attribute name="gamebook.content" value="/WEB-INF/tiles/ruleset/ff/welcome.jsp" cascade="true" />
     <put-attribute name="gamebook.charpagebar" value="/WEB-INF/tiles/basic/empty.jsp" cascade="true" />
-    <put-attribute name="page.menu" value="/WEB-INF/tiles/ruleset/raw/menu.jsp" cascade="true"/>
+    <put-attribute name="page.menu" value="/WEB-INF/tiles/ruleset/raw/menu.jsp" cascade="true" />
+    <put-attribute name="gamebook.rewards" value="/WEB-INF/tiles/books/rewards.jsp" cascade="true" />
   </definition>
   <definition name="ffSection.*" extends="ffGamebookContent">
     <put-attribute name="gamebook.content" value="/WEB-INF/tiles/ruleset/ff/section.jsp" cascade="true" />
     <put-attribute name="gamebook.charpagebar" value="/WEB-INF/tiles/ruleset/ff/{1}/charpage.jsp" cascade="true" />
-    <put-attribute name="page.menu" value="/WEB-INF/tiles/ruleset/raw/menu.jsp" cascade="true"/>
+    <put-attribute name="page.menu" value="/WEB-INF/tiles/ruleset/raw/menu.jsp" cascade="true" />
   </definition>
 
   <definition name="ffCharPage.*" template="/WEB-INF/tiles/ruleset/ff/{1}/charpage.jsp" />
