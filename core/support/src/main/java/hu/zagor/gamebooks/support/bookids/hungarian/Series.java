@@ -24,6 +24,8 @@ public final class Series {
 
     public static final long KALAND_JATEK_VARAZSLAT = BASE + 586 * SERIES_MULTIPLIER;
 
+    public static final long MAGANYOS_FARKAS = BASE + 784 * SERIES_MULTIPLIER;
+
     public static final long NYOMKERESO = BASE + 812 * SERIES_MULTIPLIER;
 
     public static final long VALASSZ_KALANDOT_MAGADNAK = BASE + 952 * SERIES_MULTIPLIER;

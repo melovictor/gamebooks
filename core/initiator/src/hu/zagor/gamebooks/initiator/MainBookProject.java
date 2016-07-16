@@ -26,18 +26,18 @@ public class MainBookProject {
         final BookBaseData baseData = new BookBaseData();
 
         baseData.setMainLanguage("en");
-        baseData.setSeriesCode("ff"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm
-        baseData.setTitleCode("aod");
-        baseData.setPosition(36);
-        baseData.setCollectorCode("ff"); // ff, cyoa, z, fyf, gyg, eq, tm
-        baseData.setCollectorName("fightingfantasy"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine
-        baseData.setRuleset("ff"); // raw, tm, ff
+        baseData.setSeriesCode("lw"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm, lw
+        baseData.setTitleCode("fftd");
+        baseData.setPosition(1);
+        baseData.setCollectorCode("lw"); // ff, cyoa, z, fyf, gyg, eq, tm, lw
+        baseData.setCollectorName("lonewolf"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine, lonewolf
+        baseData.setRuleset("lw"); // raw, tm, ff, lw
         baseData.setHasEnemies(true);
         baseData.setHasInventory(true);
         baseData.setHasItems(true);
         baseData.setHasMap(true);
         baseData.setMediaProject(true);
-        baseData.setDefaultSkillTestType("Le"); // Le: lower or equal; L: lower; if neither, should be empty!
+        baseData.setDefaultSkillTestType(""); // Le: lower or equal; L: lower; if neither, should be empty!
         baseData.setCharPageRequired(true);
 
         return baseData;
@@ -57,11 +57,11 @@ public class MainBookProject {
 
     private BookLangData getSotkHu(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
-        data.setSeriesCode("kjkz");
-        data.setPosition(26);
-        data.setBookId("KalandJatekKockazatZagor.A_HALAL_SEREGEI");
+        data.setSeriesCode("mf");
+        data.setPosition(1);
+        data.setBookId("MaganyosFarkas.MENEKULES_A_SOTETSEGBOL");
         data.setLang("hu");
-        data.setTitle("A Halál Seregei");
+        data.setTitle("Menekülés a sötétségből");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;
@@ -70,9 +70,9 @@ public class MainBookProject {
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setHidden(true);
-        data.setBookId("FightingFantasy.ARMIES_OF_DEATH");
+        data.setBookId("LoneWolf.FLIGHT_FROM_THE_DARK");
         data.setLang("en");
-        data.setTitle("Armies of Death");
+        data.setTitle("Flight from the Dark");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;

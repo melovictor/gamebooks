@@ -27,6 +27,8 @@ public final class Series {
 
     public static final long GIVE_YOURSELF_GOOSEBUMPS = BASE + 284 * SERIES_MULTIPLIER;
 
+    public static final long LONE_WOLF = BASE + 520 * SERIES_MULTIPLIER;
+
     public static final long PROTEUS = BASE + 552 * SERIES_MULTIPLIER;
 
     public static final long STAR_CHALLENGE = BASE + 358 * SERIES_MULTIPLIER;
