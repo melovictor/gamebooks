@@ -39,7 +39,7 @@ public class DefaultSeriesCollectionTransformer implements SeriesCollectionTrans
     private void addBookToCollection(final SeriesCollection result, final BookInformations bookInformations) {
         final String seriesName = bookInformations.getSeries();
         final BookData bookData = createBookData(bookInformations);
-        provideSeries(result, seriesName);
+        provideSeries(result, seriesName, bookInformations.getSeriesId());
         final SeriesData seriesData = result.get(seriesName);
         seriesData.addBook(bookData);
     }
@@ -59,9 +59,10 @@ public class DefaultSeriesCollectionTransformer implements SeriesCollectionTrans
         return data;
     }
 
-    private void provideSeries(final SeriesCollection result, final String seriesName) {
+    private void provideSeries(final SeriesCollection result, final String seriesName, final Long seriesId) {
         if (!result.containsKey(seriesName)) {
             final SeriesData seriesData = new SeriesData();
+            seriesData.setId(seriesId);
             seriesData.setName(seriesName);
             result.add(seriesData);
         }

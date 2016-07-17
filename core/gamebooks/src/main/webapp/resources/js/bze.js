@@ -155,6 +155,65 @@ var bookRewards = (function() {
 	};
 })();
 
+var sorting = (function() {
+	var active = false;
+	var initialOrder;
+	
+	function init() {
+		var $toggle = $(".sortToggle");
+		if ($toggle.length > 0) {
+			initialOrder = getCurrentOrder();
+			$toggle.on("click", sorting.toggle);
+		}
+	}
+	
+	function toggle() {
+		$("#main").toggleClass("sortingActive");
+		if (active) {
+			deactivateSorting();
+			var newOrder = getCurrentOrder();
+			if (initialOrder != newOrder) {
+				saveSelection(newOrder);
+			}
+		} else {
+			activateSorting();
+		}
+		active = !active;
+	}
+	
+	function deactivateSorting() {
+		$("#booklist-container").sortable({
+			disabled : true
+		}).enableSelection();
+	}
+	
+	function activateSorting() {
+		$("#booklist-container").sortable({
+			handle : "h2",
+			axis : "y",
+			disabled : false
+		}).disableSelection();
+	}
+	function saveSelection(newOrder) {
+		// TODO: implement saving
+		var lang = $("html").attr("lang");
+	}
+	
+	function getCurrentOrder() {
+		var order = "";
+		$("#booklist-container [data-series-id]").each(function(idx, elem) {
+			var $elem = $(elem);
+			order += $elem.data("seriesId") + " ";
+		});
+		return order;
+	}
+	
+	return {
+		toggle : toggle,
+		init : init
+	}
+})();
+
 $(function() {
 	$("#languageSelectionOptions li").on("click", function() {
 		menu.updateLanguage($(this));
@@ -164,4 +223,5 @@ $(function() {
 	$("#logout").on("click", menu.logout);
 	bookRewards.init();
 	images.init();
+	sorting.init();
 });

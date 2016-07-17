@@ -6,11 +6,11 @@ import java.util.TreeSet;
 /**
  * Bean containing series-specific information.
  * @author Tamas_Szekeres
- *
  */
 public class SeriesData implements Comparable<SeriesData> {
     private String name;
     private final Set<BookData> books = new TreeSet<BookData>();
+    private long id;
 
     public String getName() {
         return name;
@@ -35,6 +35,14 @@ public class SeriesData implements Comparable<SeriesData> {
     @Override
     public int compareTo(final SeriesData other) {
         return name.compareTo(other.name);
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(final long id) {
+        this.id = id;
     }
 
 }
