@@ -2,9 +2,11 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:url var="bookListUrl" value="/booklist" />
 <c:url var="loadGameUrl" value="load" />
-<div id="serverRestart">
-    <spring:message code="page.warning.serverRestart" arguments="${nextUpdateTime}" />
-</div>
+<c:if test="${nextUpdateTime}">
+    <div id="serverRestart">
+        <spring:message code="page.warning.serverRestart" arguments="${nextUpdateTime}" />
+    </div>
+</c:if>
 <c:if test="${empty bookList}">
     <ul>
 	    <li>
