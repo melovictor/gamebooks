@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ServerUpdateNoticeReceivingController {
-    private static final int UPDATE_TIME_MINUTES = 4;
+    private static final int UPDATE_TIME_MINUTES = 14;
     @Autowired private UpdateStatusContainer updateStatusContainer;
 
     /**
