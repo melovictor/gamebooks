@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.ff.item;
 
 import hu.zagor.gamebooks.books.contentransforming.item.AbstractBookItemTransformer;
 import hu.zagor.gamebooks.character.item.FfItem;
-import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import org.w3c.dom.Node;
 
@@ -10,16 +9,15 @@ import org.w3c.dom.Node;
  * Item transformer for Fighting Fantasy ruleset.
  * @author Tamas_Szekeres
  */
-public class FfRuleBookItemTransformer extends AbstractBookItemTransformer {
+public class FfRuleBookItemTransformer extends AbstractBookItemTransformer<FfItem> {
 
     @Override
-    protected Item getItem(final String id, final String name, final ItemType itemType) {
+    protected FfItem getItem(final String id, final String name, final ItemType itemType) {
         return new FfItem(id, fixText(name), itemType);
     }
 
     @Override
-    protected void finishItemCreation(final Item itemObject, final Node node) {
-        final FfItem item = (FfItem) itemObject;
+    protected void finishItemCreation(final FfItem item, final Node node) {
         item.setStaminaDamage(extractIntegerAttribute(node, "staminaDamage", 2));
         item.setSkillDamage(extractIntegerAttribute(node, "skillDamage", 0));
 
@@ -50,6 +48,5 @@ public class FfRuleBookItemTransformer extends AbstractBookItemTransformer {
             item.getEquipInfo().setEquipped(true);
         }
         item.getEquipInfo().setRemovable(extractBooleanAttribute(node, "removable", true));
-        item.setDescription(fixText(extractAttribute(node, "description")));
     }
 }

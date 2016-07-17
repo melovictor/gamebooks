@@ -9,6 +9,7 @@
   <bean class="hu.zagor.gamebooks.character.handler.LwCharacterHandler" id="lwCharacterHandler" parent="rawCharacterHandler" scope="prototype">
   </bean>
 
+  <bean class="hu.zagor.gamebooks.content.LwParagraphData" id="lwParagraphData" scope="prototype" p:choices-ref="defaultChoiceSet" />
 
   <util:map key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver" id="lwCommandResolvers">
   </util:map>
@@ -17,7 +18,18 @@
     <constructor-arg name="paragraphTransformer">
       <bean class="hu.zagor.gamebooks.books.contentransforming.section.DefaultBookParagraphTransformer" p:validSectionTags-ref="validSectionTagNames">
         <property name="paragraphDataTransformer">
-          <bean class="hu.zagor.gamebooks.lw.section.LwRuleBookParagraphDataTransformer" />
+          <bean class="hu.zagor.gamebooks.lw.section.LwRuleBookParagraphDataTransformer">
+            <property name="stubTransformers">
+              <bean factory-bean="stubTransformerMerger" factory-method="merge">
+                <constructor-arg index="0" ref="commonStubTransformers" />
+                <constructor-arg index="1">
+                  <util:map>
+                    <!-- <entry key="add" value-ref="ffAddTransformer" /> <entry key="test" value-ref="ffAttributeTestTransformer" /> <entry key="fight" value-ref="ffFightTransformer" /> <entry key="interrupt" value-ref="ffInterruptTransformer" /> <entry key="changeEnemy" value-ref="ffChangeEnemyTransformer" /> <entry key="changeItem" value-ref="ffChangeItemTransformer" /> <entry key="loseBattleRound" value-ref="ffLoseBattleRoundTransformer" /> <entry key="market" value-ref="ffMarketTransformer" /> <entry key="canEat" value-ref="ffCanEatTransformer" /> -->
+                  </util:map>
+                </constructor-arg>
+              </bean>
+            </property>
+          </bean>
         </property>
       </bean>
     </constructor-arg>

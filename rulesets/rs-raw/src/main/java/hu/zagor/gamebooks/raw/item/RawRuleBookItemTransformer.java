@@ -9,7 +9,7 @@ import org.w3c.dom.Node;
  * Implementation of the {@link AbstractBookItemTransformer} for the raw ruleset.
  * @author Tamas_Szekeres
  */
-public class RawRuleBookItemTransformer extends AbstractBookItemTransformer {
+public class RawRuleBookItemTransformer extends AbstractBookItemTransformer<Item> {
 
     @Override
     protected Item getItem(final String id, final String name, final ItemType itemType) {

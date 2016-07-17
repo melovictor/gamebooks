@@ -17,8 +17,9 @@ import org.w3c.dom.NodeList;
 /**
  * Abstract transformer for items that contains common parts of the transforming process.
  * @author Tamas_Szekeres
+ * @param <T> the exact type of the item to be created
  */
-public abstract class AbstractBookItemTransformer extends AbstractTransformer implements BookItemTransformer {
+public abstract class AbstractBookItemTransformer<T extends Item> extends AbstractTransformer implements BookItemTransformer {
 
     @LogInject private Logger logger;
 
@@ -57,7 +58,7 @@ public abstract class AbstractBookItemTransformer extends AbstractTransformer im
     }
 
     private Item parseItem(final Node node) {
-        Item createdItem = null;
+        T createdItem = null;
         final String id = extractAttribute(node, "id");
         final String name = extractAttribute(node, "name");
         final String type = extractAttribute(node, "type");
@@ -80,6 +81,7 @@ public abstract class AbstractBookItemTransformer extends AbstractTransformer im
             } else {
                 createdItem.setBackpackSize(backpackSize);
             }
+            createdItem.setDescription(fixText(extractAttribute(node, "description")));
             finishItemCreation(createdItem, node);
         } catch (final IllegalArgumentException exception) {
             logger.error("Found item '{}/{}' with unparseable type '{}'!", name, id, type);
@@ -98,12 +100,12 @@ public abstract class AbstractBookItemTransformer extends AbstractTransformer im
      * @param itemType the type of the item
      * @return the instance
      */
-    protected abstract Item getItem(String id, String name, ItemType itemType);
+    protected abstract T getItem(String id, String name, ItemType itemType);
 
     /**
      * Method that will be called after the default attributes has already been read and parsed.
      * @param item the half-finished {@link Item} object
      * @param node the {@link Node}
      */
-    protected abstract void finishItemCreation(Item item, Node node);
+    protected abstract void finishItemCreation(T item, Node node);
 }

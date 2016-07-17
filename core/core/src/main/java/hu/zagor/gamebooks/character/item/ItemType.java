@@ -25,7 +25,8 @@ public enum ItemType {
     potion(false, true),
     gloves(true, 1),
     curseSickness(false),
-    valuable(false);
+    valuable(false),
+    special(false);
 
     static {
         weapon1.disallows = new ItemType[]{weapon2};

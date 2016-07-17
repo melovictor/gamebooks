@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://gamebooks.zagor.hu" version="1.0" xmlns="http://gamebooks.zagor.hu">
+  <xs:element name="items">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="item" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="item">
+    <xs:complexType>
+      <xs:attribute name="id" type="xs:string" use="required" />
+      <xs:attribute name="name" type="xs:string" use="required" />
+
+      <xs:attribute name="type" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="common" />
+            <xs:enumeration value="info" />
+            <xs:enumeration value="shadow" />
+
+            <xs:enumeration value="weapon" />
+            <xs:enumeration value="shield" />
+            <xs:enumeration value="ring" />
+            <xs:enumeration value="necklace" />
+            <xs:enumeration value="boots" />
+            <xs:enumeration value="armour" />
+            <xs:enumeration value="helmet" />
+            <xs:enumeration value="bracelet" />
+            <xs:enumeration value="cloak" />
+            <xs:enumeration value="brooch" />
+            <xs:enumeration value="gloves" />
+
+            <xs:enumeration value="potion" />
+            <xs:enumeration value="provision" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      
+       <xs:attribute name="placement" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="weapon" />
+            <xs:enumeration value="backpack" />
+            <xs:enumeration value="special" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+
+      <xs:attribute name="weaponType">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="fist" />
+            <xs:enumeration value="axe" />
+            <xs:enumeration value="sword" />
+            <xs:enumeration value="shortSword" />
+            <xs:enumeration value="broadSword" />
+            <xs:enumeration value="spear" />
+            <xs:enumeration value="dagger" />
+            <xs:enumeration value="bow" />
+            <xs:enumeration value="mace" />
+            <xs:enumeration value="quarterstaff" />
+            <xs:enumeration value="warhammer" />
+
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+
+
+      <xs:attribute name="backpackSize" type="xs:integer" />
+      <xs:attribute name="combatSkill" type="xs:integer" />
+      <xs:attribute name="endurance" type="xs:integer" />
+
+
+      <xs:attribute name="actions" type="xs:integer" default="1" />
+
+      <xs:attribute name="description" type="xs:string" />
+
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -11,14 +11,15 @@ import org.w3c.dom.Node;
  */
 @Component
 public class Ff12RuleBookEnemyTransformer extends FfRuleBookEnemyTransformer {
-    @Override
-    protected FfEnemy parseEnemy(final Node node) {
-        final Ff12Enemy parsedEnemy = (Ff12Enemy) super.parseEnemy(node);
 
+    @Override
+    protected void finishParsing(final Node node, final FfEnemy enemy) {
+        super.finishParsing(node, enemy);
+
+        final Ff12Enemy parsedEnemy = (Ff12Enemy) enemy;
         parsedEnemy.setWeapon(extractAttribute(node, "weapon", "1002"));
         parsedEnemy.setAttackPerRound(extractIntegerAttribute(node, "attackPerRound", 1));
 
-        return parsedEnemy;
     }
 
     @Override

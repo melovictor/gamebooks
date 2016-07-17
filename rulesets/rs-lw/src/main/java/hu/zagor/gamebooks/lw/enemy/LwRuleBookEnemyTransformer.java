@@ -1,18 +1,22 @@
 package hu.zagor.gamebooks.lw.enemy;
 
-import hu.zagor.gamebooks.books.contentransforming.AbstractTransformer;
-import hu.zagor.gamebooks.books.contentransforming.enemy.BookEnemyTransformer;
-import hu.zagor.gamebooks.books.contentransforming.section.XmlTransformationException;
-import hu.zagor.gamebooks.character.enemy.Enemy;
-import java.util.Map;
-import org.w3c.dom.Document;
+import hu.zagor.gamebooks.books.contentransforming.enemy.AbstractBookEnemyTransformer;
+import hu.zagor.gamebooks.character.enemy.LwEnemy;
+import org.w3c.dom.Node;
 
-public class LwRuleBookEnemyTransformer extends AbstractTransformer implements BookEnemyTransformer {
+public class LwRuleBookEnemyTransformer extends AbstractBookEnemyTransformer<LwEnemy> {
 
     @Override
-    public Map<String, Enemy> transformEnemies(final Document document) throws XmlTransformationException {
-        // TODO Auto-generated method stub
-        return null;
+    protected void finishParsing(final Node node, final LwEnemy enemy) {
+        enemy.setCombatSkill(extractIntegerAttribute(node, "combatSkill"));
+        enemy.setEndurance(extractIntegerAttribute(node, "endurance"));
+        enemy.setMindforce(extractBooleanAttribute(node, "mindforce", false));
+        enemy.setMindshield(extractBooleanAttribute(node, "mindshield", false));
+    }
+
+    @Override
+    protected LwEnemy createEnemyObject() {
+        return new LwEnemy();
     }
 
 }

@@ -87,6 +87,7 @@ public class FfRuleBookItemTransformerTest extends AbstractTransformerTest {
         expectAttribute("type", "shield");
         expectAttribute("weaponSubType");
         expectAttribute("backpackSize");
+        expectAttribute("description");
         expectAttribute("staminaDamage");
         expectAttribute("skillDamage");
         expectAttribute("baseStaminaDamage");
@@ -115,7 +116,6 @@ public class FfRuleBookItemTransformerTest extends AbstractTransformerTest {
         expectAttribute("forceEquip", forceEquip);
 
         expectAttribute("removable");
-        expectAttribute("description");
     }
 
 }

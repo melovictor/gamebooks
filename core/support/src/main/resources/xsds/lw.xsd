@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://gamebooks.zagor.hu" version="1.0" xmlns="http://gamebooks.zagor.hu">
+  <xs:complexType name="randomType">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="label" minOccurs="0" maxOccurs="1" type="xs:string" />
+      <xs:element name="odd" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
+              <xs:complexType></xs:complexType>
+            </xs:element>
+            <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
+          </xs:choice>
+          <xs:attribute name="min" use="required" type="xs:string" />
+          <xs:attribute name="max" use="required" type="xs:string" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="even" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
+              <xs:complexType></xs:complexType>
+            </xs:element>
+            <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
+          </xs:choice>
+          <xs:attribute name="min" use="required" type="xs:string" />
+          <xs:attribute name="max" use="required" type="xs:string" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="result" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
+              <xs:complexType></xs:complexType>
+            </xs:element>
+            <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
+          </xs:choice>
+          <xs:attribute name="min" use="required" type="xs:string" />
+          <xs:attribute name="max" use="required" type="xs:string" />
+          <xs:attribute name="allSame" use="optional" type="xs:boolean" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="resultElse" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
+              <xs:complexType></xs:complexType>
+            </xs:element>
+            <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="after" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+    <xs:attribute name="diceConfig" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          Must be the id of an existing DiceConfiguration bean in the spring application context without the 'dice' prefix. Some common dice configuration postfixes
+          to use are '1d6' and '2d6', but custom ones can be referenced as well. The default is '1d6'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="attributeTestType">
+    <xs:choice minOccurs="1" maxOccurs="3">
+      <xs:element name="label" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string" />
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="success" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
+              <xs:complexType></xs:complexType>
+            </xs:element>
+            <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="failure" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
+              <xs:complexType></xs:complexType>
+            </xs:element>
+            <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
+          </xs:choice>
+          <xs:attribute name="rolled" type="xs:integer" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="failureEven" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
+              <xs:complexType></xs:complexType>
+            </xs:element>
+            <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="failureOdd" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
+              <xs:complexType></xs:complexType>
+            </xs:element>
+            <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="skip" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
+              <xs:complexType></xs:complexType>
+            </xs:element>
+            <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
+          </xs:choice>
+          <xs:attribute name="text" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="after" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+    <xs:attribute name="against" use="required" type="xs:string" />
+    <xs:attribute name="compactAgainst" use="optional" type="xs:string" />
+    <xs:attribute name="add" use="optional" type="xs:integer" />
+    <xs:attribute name="diceConfig" use="optional" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          Must be the id of an existing DiceConfiguration bean in the spring application context without the 'dice' prefix. Some common dice configuration
+          postfixes
+          to use are '1d6' and '2d6', but custom ones can be referenced as well. The default is '2d6'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="success" use="optional" default="lowerEquals">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="lower" />
+          <xs:enumeration value="lowerEquals" />
+          <xs:enumeration value="higher" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="sectionOptions">
+    <xs:choice>
+      <xs:element name="empty" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Defines that the given paragraph is nonexistent in the book.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+    </xs:choice>
+    <xs:attribute name="id" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>Defines the name of the current paragraph.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="display" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>The displayed name of the current paragraph. If omitted, the id will be displayed.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="actions" type="xs:integer" use="optional" default="2147483647" />
+    <xs:attribute name="color" type="xs:string" use="optional" />
+  </xs:complexType>
+
+
+  <xs:simpleType name="AnyValuePattern">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-z][a-zA-Z]*" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="AddDefaultValues">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="stamina" />
+      <xs:enumeration value="skill" />
+      <xs:enumeration value="luck" />
+      <xs:enumeration value="initialSkill" />
+      <xs:enumeration value="initialStamina" />
+      <xs:enumeration value="initialLuck" />
+      <xs:enumeration value="gold" />
+      <xs:enumeration value="faith" />
+      <xs:enumeration value="fear" />
+      <xs:enumeration value="stoneSkin" />
+      <xs:enumeration value="wisdom" />
+      <xs:enumeration value="damageProtection" />
+      <xs:enumeration value="armour" />
+      <xs:enumeration value="status" />
+      <xs:enumeration value="selfShield" />
+      <xs:enumeration value="enemyShield" />
+      <xs:enumeration value="time" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ItemCheckDefaultValues">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="item" />
+      <xs:enumeration value="items" />
+      <xs:enumeration value="totalItems" />
+      <xs:enumeration value="enemy" />
+      <xs:enumeration value="section" />
+      <xs:enumeration value="codeword" />
+      <xs:enumeration value="attribute" />
+      <xs:enumeration value="enumAttribute" />
+      <xs:enumeration value="skill" />
+      <xs:enumeration value="stamina" />
+      <xs:enumeration value="luck" />
+      <xs:enumeration value="armour" />
+      <xs:enumeration value="status" />
+
+      <xs:enumeration value="gold">
+        <xs:annotation>
+          <xs:documentation>
+            This is the total amount of wealth we possess with regard to purchasing items. This is the total of currency and currency-substituting valuables.
+            Since most of the time there are no currency-substituting items in the game, this is usually the same as "goldpiece".
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="goldpiece">
+        <xs:annotation>
+          <xs:documentation>
+            This is the hard currency we have. Only the coins themselves, nothing else. No items that can be sold, no items that are treated the same way as currencies.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="value">
+        <xs:annotation>
+          <xs:documentation>
+            This is the total value of items we have. This includes hard cash, cash-substituting valuables and items that can be sold for a given price.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fear" />
+      <xs:enumeration value="faith" />
+      <xs:enumeration value="pos" />
+      <xs:enumeration value="wisdom" />
+      <xs:enumeration value="selfShield" />
+      <xs:enumeration value="enemyShield" />
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:element name="content">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="p" type="sectionOptions">
+          <xs:annotation>
+            <xs:documentation>Defines a single paragraph of the book.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="s" type="sectionOptions">
+          <xs:annotation>
+            <xs:documentation>Defines a single paragraph of the book.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="section" type="sectionOptions">
+          <xs:annotation>
+            <xs:documentation>Defines a single paragraph of the book.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:group name="descriptionGroup">
+    <xs:choice>
+      <xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Defines the text of the given paragraph.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="reward">
+        <xs:complexType>
+          <xs:attribute name="id" use="required" type="xs:string" />
+          <xs:attribute name="useSeriesId" use="optional" type="xs:boolean" default="false">
+            <xs:annotation>
+              <xs:documentation>
+                Usually the system would send out the book's own ID to the server to register the reward. By setting this property to 'true' one can force the
+                system to send out the ID of the series instead.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="codeword">
+        <xs:complexType>
+          <xs:attribute name="name" use="required" type="xs:string" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="next" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:annotation>
+                <xs:documentation>Defines a continuation target.</xs:documentation>
+              </xs:annotation>
+              <xs:attribute name="id" type="xs:string" use="required">
+                <xs:annotation>
+                  <xs:documentation>Defines the number of the paragraph to turn to.</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+              <xs:attribute name="pos" type="xs:integer" use="optional">
+                <xs:annotation>
+                  <xs:documentation>Defines the position of the given option element in the displayed list.</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+              <xs:attribute name="singleChoiceText" type="xs:string" use="optional">
+                <xs:annotation>
+                  <xs:documentation>An alternate piece of text to be used in the main body of the text when this choice is the only one displayed for the user. The text will be put
+                    at a placeholder location, namely the [alt][/alt] element will be replaced, and all of its contents as well.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="gatherItem" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="id" type="xs:string" use="required"></xs:attribute>
+          <xs:attribute name="amount" type="xs:integer" use="optional"></xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="loseItem" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="id" type="xs:string" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                A comma-separated list of item ids from which a given amount of items are to be lost. As an extreme case it may contain the id of a single item. The
+                amount of items to be lost is specified by the amount attribute.
+                The exact items that are lost are determined by random.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="dose" type="xs:integer" use="optional">
+            <xs:annotation>
+              <xs:documentation>
+                The number of doses to lose from a specific potion. Must be positive or 0 if the amount is set. Since the default value for the amount is 1, that
+                must be set manually!
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="amount" type="xs:integer" use="optional">
+            <xs:annotation>
+              <xs:documentation>
+                The maximal number of items to be lost among the list. If there are multiple items with the same id they can be removed multiple times. Must be
+                positive or 0 if the dose is set.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="unequippedOnly" type="xs:boolean" use="optional" default="false" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="hideItem" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="id" type="xs:string" use="required"></xs:attribute>
+          <xs:attribute name="amount" type="xs:integer" use="optional"></xs:attribute>
+          <xs:attribute name="unequippedOnly" type="xs:boolean" use="optional" default="false" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="unhideItem" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="id" type="xs:string" use="required"></xs:attribute>
+          <xs:attribute name="amount" type="xs:integer" use="optional"></xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="victory" minOccurs="0" maxOccurs="1">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="canEat" minOccurs="0" maxOccurs="1">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="death" minOccurs="0" maxOccurs="1">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="interrupt" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            According to the basic FF ruleset this element only has effect in two cases.
+            <br />
+            Case 1: if it is in a &lt;fight&gt; &lt;beforeRound&gt; &lt;random&gt; &lt;result&gt; element. In
+            that case it interrupts the flow of the battle without playing out the
+            round itself and it also prevents the execution of the other end-of-battle and end-of-round
+            events, like &lt;win&gt;, &lt;lose&gt;, &lt;winRound&gt;, &lt;loseRound&gt;,
+            etc.
+            <br />
+            Case 2: if it is inside a &lt;winRound&gt; element, it also interrupts the battle after executing all other end-of-round events as well.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="itemCheck" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence minOccurs="1" maxOccurs="3">
+            <xs:element name="have" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="haveEquipped" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dontHave" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="after" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="type" use="required">
+            <xs:simpleType>
+              <xs:union memberTypes="ItemCheckDefaultValues AnyValuePattern" />
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="id" type="xs:string" use="required" />
+          <xs:attribute name="amount" type="xs:integer" use="optional">
+            <xs:annotation>
+              <xs:documentation>
+                This attribute only makes sense when checking for item possession. If this value is other than 1 the equip check doesn't take place and so having a
+                &lt;haveEquipped&gt; element is pointless. If it is omitted an amount of 1 should be assumed.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="add" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="to" use="required">
+            <xs:simpleType>
+              <xs:union memberTypes="AddDefaultValues AnyValuePattern" />
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="amount" type="xs:integer" use="required" />
+          <xs:attribute name="type" use="optional" default="change">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="change" />
+                <xs:enumeration value="set" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="goldOnly" type="xs:boolean" use="optional" default="false" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="userInput" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="label" minOccurs="1" maxOccurs="1">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:string" />
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="result" minOccurs="1" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+                <xs:attribute name="text" type="xs:string" />
+                <xs:attribute name="minResponse" type="xs:integer" use="optional" default="0">
+                  <xs:annotation>
+                    <xs:documentation>
+                      The minimum amount of time that must elapse between the load of the page and the submission of the response in order to trigger this specific result.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="maxResponse" type="xs:integer" use="optional" default="2147483647">
+                  <xs:annotation>
+                    <xs:documentation>
+                      The maximum amount of time that can elapse between the load of the page and the submission of the response in order to trigger this specific result.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="minBound" type="xs:integer" use="optional">
+                  <xs:annotation>
+                    <xs:documentation>
+                      The lower bound of the user-providable amount range on which this response must react.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="maxBound" type="xs:integer" use="optional">
+                  <xs:annotation>
+                    <xs:documentation>
+                      The higher bound of the user-providable amount range on which this response must react.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="resultElse" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+                <xs:attribute name="minResponse" type="xs:integer" use="optional" default="0" />
+                <xs:attribute name="maxResponse" type="xs:integer" use="optional" default="2147483647" />
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="type" use="required">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="text" />
+                <xs:enumeration value="number" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="min" use="optional" type="xs:integer" />
+          <xs:attribute name="max" use="optional" type="xs:integer" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="test" minOccurs="0" maxOccurs="unbounded" type="attributeTestType" />
+      <xs:element name="random" maxOccurs="unbounded" minOccurs="0" type="randomType" />
+      <xs:element name="market">
+        <xs:annotation>
+          <xs:documentation>
+            A market entry. Must use the [div data-market=""][/div] descriptor in the root text block for it to be able to function properly.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="saleLabel" minOccurs="0" maxOccurs="1" type="xs:string">
+            </xs:element>
+            <xs:element name="purchaseLabel" minOccurs="0" maxOccurs="1" type="xs:string">
+            </xs:element>
+            <xs:element name="sale" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  These are the items that can be bought by the hero from the seller.
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:attribute name="id" type="xs:string" use="required" />
+                <xs:attribute name="stock" type="xs:integer" use="required" />
+                <xs:attribute name="price" type="xs:integer" use="required" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="purchase" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  These are the items that can be sold by the hero to the seller.
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:attribute name="id" type="xs:string" use="required" />
+                <xs:attribute name="stock" type="xs:integer" use="required" />
+                <xs:attribute name="price" type="xs:integer" use="required" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="after" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="emptyHanded" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="mustSellExactly" default="0" use="optional" type="xs:integer" />
+          <xs:attribute name="mustGiveUp" default="0" use="optional" type="xs:integer" />
+          <xs:attribute name="mustGiveUpMode" default="asMuchAsPossible" use="optional">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="allOrNothing" />
+                <xs:enumeration value="asMuchAsPossible" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="mustBuy" default="0" use="optional" type="xs:integer" />
+          <xs:attribute name="mustHaveGold" default="0" use="optional" type="xs:integer" />
+          <xs:attribute name="currencySingle" use="optional" type="xs:string" default="page.ff.label.market.goldPiece" />
+          <xs:attribute name="currencyMultiple" use="optional" type="xs:string" default="page.ff.label.market.goldPieces" />
+          <xs:attribute name="moneyAttribute" use="optional" type="xs:string" default="gold" />
+          <xs:attribute name="suppressWarning" use="optional" type="xs:boolean" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fight">
+        <xs:complexType>
+          <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="fleeing" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:attribute name="after" type="xs:integer" default="0" />
+                <xs:attribute name="sufferDamage" type="xs:boolean" default="true" />
+                <xs:attribute name="text" type="xs:string" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ally" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:attribute name="id" use="required" type="xs:string" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="enemy" minOccurs="1" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:attribute name="id" use="required" type="xs:string" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="beforeRound" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  This entry is mainly for altering the result of a specific round (eg. we lose it). If it is trying to do anything else, the behaviour must be properly tested to see
+                  if it is working as intended.
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                  <xs:choice>
+                    <xs:element name="random" maxOccurs="unbounded" minOccurs="0" type="randomType" />
+                    <xs:element name="test" maxOccurs="unbounded" minOccurs="0" type="attributeTestType" />
+                  </xs:choice>
+                </xs:sequence>
+                <xs:attribute name="everyNth" use="optional" type="xs:integer" default="1">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Must be a non-zero, positive number to specify in which rounds the actions should be executed. Whenever the division remainder becomes 0, the
+                      action is executed.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="win" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+                <xs:attribute name="min" />
+                <xs:attribute name="max" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="flee" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="lose" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+                <xs:attribute name="autoTriggerRound" type="xs:integer">
+                  <xs:annotation>
+                    <xs:documentation>
+                      The number of fought rounds after which the battle is considered to be lost.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="autoTriggerStamina" type="xs:integer">
+                  <xs:annotation>
+                    <xs:documentation>
+                      The number of STAMINA points for the Hero at or under which the battle is considered to be lost.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="winRound" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+                <xs:attribute name="totalCount" type="xs:integer" />
+                <xs:attribute name="subsequentCount" type="xs:integer" />
+                <xs:attribute name="enemy" type="xs:string" use="required" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="loseRound" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+                <xs:attribute name="totalCount" type="xs:integer" />
+                <xs:attribute name="subsequentCount" type="xs:integer" />
+                <xs:attribute name="enemy" type="xs:string" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="anyRound" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+                <xs:attribute name="totalCount" type="xs:integer" />
+                <xs:attribute name="subsequentCount" type="xs:integer" />
+                <xs:attribute name="enemy" type="xs:string" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="notWinRound" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
+                <xs:attribute name="totalCount" type="xs:integer" />
+                <xs:attribute name="subsequentCount" type="xs:integer" />
+                <xs:attribute name="enemy" type="xs:string" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="afterRound" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                  <xs:choice>
+                    <xs:element name="random" maxOccurs="unbounded" minOccurs="0" type="randomType" />
+                  </xs:choice>
+                </xs:sequence>
+                <xs:attribute name="everyNth" use="optional" type="xs:integer" default="1">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Must be a non-zero, positive number to specify in which rounds the actions should be executed. Whenever the division remainder becomes 0, the
+                      action is executed.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="canUseLuck" use="optional" type="xs:boolean">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Set to true to allow a luck test to reduce (or increase, in case of a failed test) the damage suffered by whatever is happening here. An add
+                      element will be looked for that makes change to stamina, and the value will either be reduced or increased by the amount specified for standard battle luck
+                      tests.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="specialAttack" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:attribute name="text" use="required" type="xs:string" />
+                <xs:attribute name="id" use="required" type="xs:string" />
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+          <xs:attribute name="forceWeapon" use="optional" type="xs:string" />
+          <xs:attribute name="attackStrengthRolledDices" use="optional" type="xs:integer" default="2" />
+          <xs:attribute name="attackStrengthUsedDices" use="optional" type="xs:integer" default="2" />
+          <xs:attribute name="forceOrder" use="optional" type="xs:boolean" default="false">
+            <xs:annotation>
+              <xs:documentation>
+                Force the order in which we must fight the enemies to be the same as the order in which they appear in the list.
+                Default is false.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="type" use="required">
+            <xs:simpleType>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:enumeration value="single" />
+                    <xs:enumeration value="singleSupported" />
+                    <xs:enumeration value="singleAlly" />
+                    <xs:enumeration value="allAtOnce" />
+                    <xs:enumeration value="allAtOnceSupported" />
+                    <xs:enumeration value="randomizedAllAtOnce" />
+                    <xs:enumeration value="alwaysTwo" />
+                    <xs:enumeration value="twoByTwo" />
+                    <xs:enumeration value="onlyHighest" />
+                    <xs:enumeration value="onlyHighestLinked" />
+                    <xs:enumeration value="ship" />
+                    <xs:enumeration value="shooting" />
+                    <xs:enumeration value="custom" />
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[a-z][a-zA-Z0-9]+" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="resolver" use="optional" default="basic">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="basic" />
+                <xs:enumeration value="ally" />
+                <xs:enumeration value="supported" />
+                <xs:enumeration value="ship" />
+                <xs:enumeration value="shooting" />
+                <xs:enumeration value="custom" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="recoverDamage" use="optional" default="false" type="xs:boolean" />
+          <xs:attribute name="preFight" use="optional" default="true" type="xs:boolean" />
+          <xs:attribute name="allyStaminaVisible" use="optional" default="false" type="xs:boolean" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="changeEnemy" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="id" type="xs:string" use="required" />
+          <xs:attribute name="attribute" type="xs:string" use="required" />
+          <xs:attribute name="set" type="xs:integer" use="optional" />
+          <xs:attribute name="change" type="xs:string" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="changeItem" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="id" type="xs:string" use="required" />
+          <xs:attribute name="attribute" type="xs:string" use="required" />
+          <xs:attribute name="set" type="xs:integer" use="optional" />
+          <xs:attribute name="change" type="xs:string" use="optional" />
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:group>
+</xs:schema>

@@ -91,6 +91,8 @@ public class AbstractBookItemTransformerTest extends AbstractTransformerTest {
         expectAttribute("weaponSubType");
         expectAttribute("backpackSize");
         item.setBackpackSize(1);
+        expectAttribute("description");
+        item.setDescription(null);
 
         expect(item.getId()).andReturn(ITEM_ID);
 
@@ -114,6 +116,8 @@ public class AbstractBookItemTransformerTest extends AbstractTransformerTest {
         expect(item.getEquipInfo()).andReturn(equipInfo);
         equipInfo.setRemovable(false);
         item.setBackpackSize(1);
+        expectAttribute("description");
+        item.setDescription(null);
 
         expect(item.getId()).andReturn("defWpn");
 
@@ -136,6 +140,8 @@ public class AbstractBookItemTransformerTest extends AbstractTransformerTest {
         expectAttribute("backpackSize");
         item.setSubType(WeaponSubType.blunt);
         item.setBackpackSize(1);
+        expectAttribute("description");
+        item.setDescription(null);
 
         expect(item.getId()).andReturn(ITEM_ID);
 
@@ -158,6 +164,8 @@ public class AbstractBookItemTransformerTest extends AbstractTransformerTest {
         expectAttribute("weaponSubType");
         expectAttribute("backpackSize");
         item.setBackpackSize(0);
+        expectAttribute("description");
+        item.setDescription(null);
 
         expect(item.getId()).andReturn(ITEM_ID);
 
@@ -180,6 +188,8 @@ public class AbstractBookItemTransformerTest extends AbstractTransformerTest {
         expectAttribute("weaponSubType");
         expectAttribute("backpackSize", "2");
         item.setBackpackSize(2);
+        expectAttribute("description");
+        item.setDescription(null);
 
         expect(item.getId()).andReturn(ITEM_ID);
 
@@ -221,6 +231,8 @@ public class AbstractBookItemTransformerTest extends AbstractTransformerTest {
         expectAttribute("weaponSubType");
         expectAttribute("backpackSize");
         item.setBackpackSize(1);
+        expectAttribute("description");
+        item.setDescription(null);
 
         expect(item.getId()).andReturn(ITEM_ID);
 
@@ -233,6 +245,8 @@ public class AbstractBookItemTransformerTest extends AbstractTransformerTest {
         expectAttribute("weaponSubType");
         expectAttribute("backpackSize");
         item.setBackpackSize(1);
+        expectAttribute("description");
+        item.setDescription(null);
 
         expect(item.getId()).andReturn(ITEM_ID);
 
@@ -253,7 +267,7 @@ public class AbstractBookItemTransformerTest extends AbstractTransformerTest {
         expect(node.getNodeName()).andReturn("item");
     }
 
-    private class TestTransformer extends AbstractBookItemTransformer {
+    private class TestTransformer extends AbstractBookItemTransformer<Item> {
 
         @Override
         protected Item getItem(final String id, final String name, final ItemType itemType) {

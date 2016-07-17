@@ -165,17 +165,13 @@
   <bean class="hu.zagor.gamebooks.domain.BookContentTransformers" id="defaultFfContentTransformers" c:paragraphTransformer-ref="ffRuleBookParagraphTransformer" c:itemTransformer-ref="ffRuleBookItemTransformer" c:enemyTransformer-ref="ffRuleBookEnemyTransformer" />
 
 
-  <bean class="hu.zagor.gamebooks.ff.mvc.book.section.service.FfBookSectionHandlingService" id="ffSectionHandlingService" />
-
-
-  <bean class="hu.zagor.gamebooks.ff.mvc.book.newgame.service.DefaultFfCharacterGenerator" id="defaultFfCharacterGenerator" />
-
-
   <bean class="hu.zagor.gamebooks.character.handler.FfCharacterHandler" id="ffCharacterHandler" parent="rawCharacterHandler" scope="prototype" p:battleLuckTestParameters-ref="defaultBattleLuckTestParameters">
     <property name="itemHandler">
       <bean class="hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler" />
     </property>
-    <property name="characterGenerator" ref="defaultFfCharacterGenerator" />
+    <property name="characterGenerator">
+      <ref bean="defaultFfCharacterGenerator" />
+    </property>
     <property name="attributeHandler">
       <bean class="hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler" />
     </property>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="lwGamebookContent" extends="main">
+    <put-attribute name="page.content" value="/WEB-INF/tiles/ruleset/lw/gamebook.jsp" cascade="true" />
+    <put-attribute name="gamebook.command" value="" cascade="true" />
+  </definition>
+
+  <definition name="lwWelcome" extends="lwGamebookContent">
+    <put-attribute name="gamebook.content" value="/WEB-INF/tiles/ruleset/lw/welcome.jsp" cascade="true" />
+    <put-attribute name="gamebook.charpagebar" value="/WEB-INF/tiles/basic/empty.jsp" cascade="true" />
+    <put-attribute name="page.menu" value="/WEB-INF/tiles/ruleset/raw/menu.jsp" cascade="true" />
+    <put-attribute name="gamebook.rewards" value="/WEB-INF/tiles/books/rewards.jsp" cascade="true" />
+  </definition>
+  <definition name="lwSection.*" extends="lwGamebookContent">
+    <put-attribute name="gamebook.content" value="/WEB-INF/tiles/ruleset/lw/section.jsp" cascade="true" />
+    <put-attribute name="gamebook.charpagebar" value="/WEB-INF/tiles/ruleset/lw/{1}/charpage.jsp" cascade="true" />
+    <put-attribute name="page.menu" value="/WEB-INF/tiles/ruleset/raw/menu.jsp" cascade="true" />
+  </definition>
+
+  <definition name="lwCharPage.*" template="/WEB-INF/tiles/ruleset/lw/{1}/charpage.jsp" />
+
+  <definition name="lwUserInputCommand.*" extends="lwSection.{1}">
+    <put-attribute name="gamebook.command" value="/WEB-INF/tiles/ruleset/lw/userInput.jsp" cascade="true" />
+  </definition>
+
+  <definition name="lwAttributeTest.*" extends="lwSection.{1}">
+    <put-attribute name="gamebook.command" value="/WEB-INF/tiles/ruleset/lw/attributeTest.jsp" cascade="true" />
+  </definition>
+
+  <definition name="lwRandom.*" extends="lwSection.{1}">
+    <put-attribute name="gamebook.command" value="/WEB-INF/tiles/ruleset/lw/random.jsp" cascade="true" />
+  </definition>
+
+  <definition name="lwFight*.*" extends="lwSection.{2}">
+    <put-attribute name="gamebook.command" value="/WEB-INF/tiles/ruleset/lw/fight/{1}.jsp" cascade="true" />
+  </definition>
+
+  <definition name="lwMarket.*" extends="lwSection.{1}">
+    <put-attribute name="gamebook.command" value="/WEB-INF/tiles/ruleset/lw/market.jsp" cascade="true" />
+  </definition>
+
+  <definition name="sor*.*" extends="lw{1}.{2}" />
+
+</tiles-definitions>
