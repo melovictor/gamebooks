@@ -14,8 +14,6 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 public class FfCharacter extends Character {
 
-    private boolean initialized;
-
     private int skill;
     private int stamina;
     private int luck;
@@ -84,14 +82,6 @@ public class FfCharacter extends Character {
 
     public void setGold(final int gold) {
         this.gold = gold;
-    }
-
-    public boolean isInitialized() {
-        return initialized;
-    }
-
-    public void setInitialized(final boolean initialized) {
-        this.initialized = initialized;
     }
 
     /**

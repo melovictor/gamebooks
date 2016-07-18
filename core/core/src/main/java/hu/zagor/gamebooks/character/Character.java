@@ -23,6 +23,8 @@ public class Character implements TrueCloneable {
     private Set<String> codeWords;
     private int backpackSize;
 
+    private boolean initialized;
+
     private Map<String, String> userInteraction;
     private CommandView commandView;
     private Note notes;
@@ -110,5 +112,13 @@ public class Character implements TrueCloneable {
             items.add(item.clone());
         }
         return items;
+    }
+
+    public boolean isInitialized() {
+        return initialized;
+    }
+
+    public void setInitialized(final boolean initialized) {
+        this.initialized = initialized;
     }
 }

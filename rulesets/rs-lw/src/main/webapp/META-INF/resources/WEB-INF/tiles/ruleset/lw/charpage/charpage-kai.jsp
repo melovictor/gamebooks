@@ -1,0 +1,1 @@
+kai character page, to be completed.

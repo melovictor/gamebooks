@@ -13,7 +13,8 @@ public class LwCharacter extends Character {
     private int enduranceLostInCombat;
 
     private Rank rank;
-    private Money money;
+    private Money money = new Money();
+    private KaiDisciplines kaiDisciplines = new KaiDisciplines();
 
     public int getCombatSkill() {
         return combatSkill;
@@ -61,6 +62,14 @@ public class LwCharacter extends Character {
 
     public void setMoney(final Money money) {
         this.money = money;
+    }
+
+    public KaiDisciplines getKaiDisciplines() {
+        return kaiDisciplines;
+    }
+
+    public void setKaiDisciplines(final KaiDisciplines kaiDisciplines) {
+        this.kaiDisciplines = kaiDisciplines;
     }
 
 }

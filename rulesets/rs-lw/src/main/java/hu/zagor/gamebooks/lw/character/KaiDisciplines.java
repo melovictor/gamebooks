@@ -11,7 +11,7 @@ public class KaiDisciplines {
     private boolean animalKinship;
     private boolean mindOverMatter;
 
-    private WeaponSkill weaponSkill;
+    private WeaponSkill weaponSkill = new WeaponSkill();
 
     public boolean isCamouflage() {
         return camouflage;
