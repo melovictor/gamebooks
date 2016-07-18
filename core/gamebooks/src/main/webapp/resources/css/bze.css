@@ -115,20 +115,21 @@ div.bookItem+h2 {
   margin: 0 270px 0 270px;
 }
 
-#booklist-container hr {
-  padding: 15px 0 0;
-  margin: 0;
-  border: 0;
-  color: transparent;
-  clear: both;
-  visibility: hidden;
+#booklist-container h2 {
+  padding-bottom: 0;
+}
+
+#booklist-container > div + div {
+  margin-top: 10px;
 }
 
 div.bookItem {
-  float: left;
-  width: 155px;
+  width: 153px;
   text-align: center;
   height: auto;
+  padding-top: 10px;
+  vertical-align: top;
+  display: inline-block;
 }
 
 div.bookItem img {
@@ -497,19 +498,33 @@ dt {
   cursor: pointer;
 }
 
-.sortingActive .bookItem,
-.sortingActive hr {
+.sortingActive .bookItem .bookTitle {
   display: none;
+}
+.sortingActive .bookItem + .bookItem {
+  margin-left: -144px;
+}
+.sortingActive .bookItem + .bookItem + .bookItem + .bookItem + .bookItem + .bookItem + .bookItem + .bookItem + .bookItem + .bookItem + .bookItem {
+  display: none;
+}
+.sortingActive .bookItem {
+  margin-left: 0px;
+  text-align: left;
+}
+.sortingActive .bookItem img {
+  width: auto;
+  height: 100px;
 }
 
 .sortingActive h2 {
   cursor: pointer;
+}
+.sortingActive a {
+  cursor: default;
 }
 
 .ui-sortable-placeholder {
   background-color: rgba(255,0,0,0.3);
   visibility: visible !important;
 }
-
-
 

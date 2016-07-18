@@ -15,13 +15,15 @@
 	<c:if test="${item.disabled && !user.admin}">
 		<img class="bordered disabled" src="${coverUrl}" alt="${item.title}" />
 	</c:if>
-	<c:if test="${item.position != null}">
-		${item.position}.
-	</c:if>
-	${item.title}
-	<c:if test="${item.unfinished}">
-		<em>
-			<spring:message code="page.menu.book.unfinished" />
-		</em>
-	</c:if>
+	<span class="bookTitle">
+		<c:if test="${item.position != null}">
+			${item.position}.
+		</c:if>
+		${item.title}
+		<c:if test="${item.unfinished}">
+			<em>
+				<spring:message code="page.menu.book.unfinished" />
+			</em>
+		</c:if>
+	</span>
 </div>

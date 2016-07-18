@@ -6,10 +6,6 @@
 <div>
 	<h2 data-series-id="${item.id}"><c:out value="${item.name}"/></h2>
 	<c:forEach var="bookItem" items="${item.books}" varStatus="status">
-	    <c:if test="${status.index % 6 == 0 && status.index != 0}">
-	        <hr />
-	    </c:if>
-
 	    <l:book item="${bookItem}"/>
 	</c:forEach>
 </div>

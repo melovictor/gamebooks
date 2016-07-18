@@ -23,7 +23,7 @@ public class DefaultSeriesCollectionTransformer implements SeriesCollectionTrans
         Assert.notEmpty(bookList, "Parameter 'bookList' can not be empty!");
         Assert.notNull(locale, "Parameter 'locale' can not be null!");
 
-        final SeriesCollection result = new SeriesCollection();
+        final SeriesCollection result = new SeriesCollection(player.getSettings().getSeriesOrder(locale.toString()));
 
         for (final BookInformations bookInformations : bookList) {
             final Locale bookLocale = bookInformations.getLocale();
@@ -60,7 +60,7 @@ public class DefaultSeriesCollectionTransformer implements SeriesCollectionTrans
     }
 
     private void provideSeries(final SeriesCollection result, final String seriesName, final Long seriesId) {
-        if (!result.containsKey(seriesName)) {
+        if (!result.contains(seriesName)) {
             final SeriesData seriesData = new SeriesData();
             seriesData.setId(seriesId);
             seriesData.setName(seriesName);

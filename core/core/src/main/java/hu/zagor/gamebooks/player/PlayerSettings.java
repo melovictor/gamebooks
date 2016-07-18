@@ -12,6 +12,7 @@ public class PlayerSettings extends HashMap<String, String> {
     private static final String GLOBAL_IMAGE_TYPE_ORDER = "global.imageTypeOrder";
     private static final String GLOBAL_SECTIONS_VISIBLE_CHOICE = "global.sectionsVisible.choice";
     private static final String GLOBAL_SECTIONS_VISIBLE_TOP = "global.sectionsVisible.top";
+    private static final String SERIES_SORT_ORDER_PREFIX = "series.sortOrder.";
 
     public boolean isTopSectionDisplayable() {
         return Boolean.valueOf(get(GLOBAL_SECTIONS_VISIBLE_TOP));
@@ -71,6 +72,24 @@ public class PlayerSettings extends HashMap<String, String> {
      */
     public void setDefaultLanguage(final String language) {
         put(GLOBAL_DEFAULT_LANGUAGE, language);
+    }
+
+    /**
+     * Returns the series sort order for a specific language.
+     * @param language the language for which the sort order is requested
+     * @return the stored sort order, can be null
+     */
+    public String getSeriesOrder(final String language) {
+        return get(SERIES_SORT_ORDER_PREFIX + language);
+    }
+
+    /**
+     * Saves a specific series sort order for the specified language.
+     * @param language the language for which the sort order is saved
+     * @param order the sort order
+     */
+    public void setSeriesOrder(final String language, final String order) {
+        put(SERIES_SORT_ORDER_PREFIX + language, order);
     }
 
 }

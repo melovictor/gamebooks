@@ -175,10 +175,15 @@ var sorting = (function() {
 			if (initialOrder != newOrder) {
 				saveSelection(newOrder);
 			}
+			$(".bookItem a").off("click", preventBookOpening);
 		} else {
 			activateSorting();
+			$(".bookItem a").on("click", preventBookOpening);
 		}
 		active = !active;
+	}
+	function preventBookOpening(event) {
+		event.preventDefault();
 	}
 	
 	function deactivateSorting() {
@@ -195,8 +200,14 @@ var sorting = (function() {
 		}).disableSelection();
 	}
 	function saveSelection(newOrder) {
-		// TODO: implement saving
 		var lang = $("html").attr("lang");
+		$.ajax({
+			url : "settings/saveBookOrder",
+			data : {
+				language : lang,
+				order : newOrder
+			}
+		});
 	}
 	
 	function getCurrentOrder() {

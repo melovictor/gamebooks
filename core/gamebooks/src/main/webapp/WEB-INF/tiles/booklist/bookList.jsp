@@ -5,7 +5,7 @@
 <div class="sortToggle"></div>
 <div id="booklist-container">
 	<c:forEach var="seriesItem" items="${bookSeriesData}">
-		<l:series item="${seriesItem.value}" />
+		<l:series item="${seriesItem}" />
 	</c:forEach>
 	<br class="clear" />
 </div>

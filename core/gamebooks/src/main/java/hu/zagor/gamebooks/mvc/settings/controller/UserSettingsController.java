@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.books.random.ReplayingNumberGenerator;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.mvc.generic.controller.LanguageAwareController;
+import hu.zagor.gamebooks.mvc.settings.domain.SortOrderForm;
 import hu.zagor.gamebooks.player.PlayerSettings;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.player.settings.DefaultSettingsHandler;
@@ -22,9 +23,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Controller for handling the settings page.
@@ -133,6 +136,21 @@ public class UserSettingsController extends LanguageAwareController {
         default:
         }
         return displaySettingsScreen(model, request);
+    }
+
+    /**
+     * Method for saving the new sorting order provided by the user.
+     * @param request the {@link HttpServletRequest} object
+     * @param form the {@link SortOrderForm} containing the user's input
+     */
+    @RequestMapping(value = PageAddresses.SETTINGS + "/saveBookOrder", method = RequestMethod.GET)
+    @ResponseBody
+    public void saveNewSortOrder(final HttpServletRequest request, @ModelAttribute final SortOrderForm form) {
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        final PlayerUser player = wrapper.getPlayer();
+        final PlayerSettings settings = player.getSettings();
+        settings.setSeriesOrder(form.getLanguage(), form.getOrder().trim());
+        userSettingsHandler.saveSettings(player);
     }
 
 }
