@@ -28,6 +28,7 @@ public class DefaultLwCharacterGenerator implements CharacterGenerator {
     @Autowired @Qualifier("d10") private RandomNumberGenerator rand;
     @Autowired private DiceResultRenderer diceRenderer;
     private Map<String, LwDisciplineMapper> disciplineMapper;
+    private Map<Long, LwEquipmentMapper> equipmentMapper;
 
     @Override
     public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification) {
@@ -50,6 +51,8 @@ public class DefaultLwCharacterGenerator implements CharacterGenerator {
 
         final Map<String, Object> result = new HashMap<>();
         disciplineMapper.get(bookContentSpecification.getLevel()).mapDisciplines(character, result);
+        final int bookId = 1; // must use actual book order; last 2 chars from the ID
+        equipmentMapper.get(bookId).mapEquipments(character, result);
 
         result.put("lwEndurance", endurance[0] + diceRenderer.render(DICE_SIDE, endurance));
         result.put("lwCombatSkill", combatSkill[0] + diceRenderer.render(DICE_SIDE, combatSkill));
