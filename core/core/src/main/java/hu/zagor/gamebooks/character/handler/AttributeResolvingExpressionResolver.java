@@ -82,7 +82,7 @@ public class AttributeResolvingExpressionResolver implements ExpressionResolver 
                 value = (int) resolved;
             }
         } else if (triggerException) {
-            throw new NoSuchFieldException();
+            throw new NoSuchFieldException(property);
         }
         return value;
     }

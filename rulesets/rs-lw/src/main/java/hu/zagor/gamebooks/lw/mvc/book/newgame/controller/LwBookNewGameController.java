@@ -65,8 +65,9 @@ public class LwBookNewGameController extends RawBookNewGameController {
     protected Map<String, Object> doGenerateCharacter(final HttpServletRequest request) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final LwCharacter character = (LwCharacter) wrapper.getCharacter();
-        final CharacterGenerator characterGenerator = getInfo().getCharacterHandler().getCharacterGenerator();
-        final Map<String, Object> result = characterGenerator.generateCharacter(character, getInfo().getContentSpecification());
+        final LwBookInformations info = getInfo();
+        final CharacterGenerator characterGenerator = info.getCharacterHandler().getCharacterGenerator();
+        final Map<String, Object> result = characterGenerator.generateCharacter(character, info.getContentSpecification(), info);
 
         return result;
     }

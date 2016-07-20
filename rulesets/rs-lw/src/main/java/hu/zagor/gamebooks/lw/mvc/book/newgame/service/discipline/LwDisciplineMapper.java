@@ -1,4 +1,4 @@
-package hu.zagor.gamebooks.lw.mvc.book.newgame.service;
+package hu.zagor.gamebooks.lw.mvc.book.newgame.service.discipline;
 
 import hu.zagor.gamebooks.lw.character.LwCharacter;
 import java.util.Map;

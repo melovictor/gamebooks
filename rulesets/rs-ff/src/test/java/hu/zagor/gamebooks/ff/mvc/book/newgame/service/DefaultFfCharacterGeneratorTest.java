@@ -35,7 +35,7 @@ public class DefaultFfCharacterGeneratorTest {
         // GIVEN
         mockControl.replay();
         // WHEN
-        underTest.generateCharacter(null, bookContentSpecification);
+        underTest.generateCharacter(null, bookContentSpecification, null);
         // THEN throws exception
     }
 
@@ -44,7 +44,7 @@ public class DefaultFfCharacterGeneratorTest {
         // GIVEN
         mockControl.replay();
         // WHEN
-        underTest.generateCharacter(character, null);
+        underTest.generateCharacter(character, null, null);
         // THEN throws exception
     }
 
@@ -72,7 +72,7 @@ public class DefaultFfCharacterGeneratorTest {
 
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.generateCharacter(character, bookContentSpecification);
+        final Map<String, Object> returned = underTest.generateCharacter(character, bookContentSpecification, null);
         // THEN
         Assert.assertEquals(returned.get("ffSkill"), "9 render_9:3");
         Assert.assertEquals(returned.get("ffStamina"), "20 render_20:6/2");

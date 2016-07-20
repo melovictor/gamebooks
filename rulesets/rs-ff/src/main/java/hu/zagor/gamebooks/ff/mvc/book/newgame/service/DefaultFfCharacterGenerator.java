@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.character.CharacterGenerator;
 import hu.zagor.gamebooks.domain.BookContentSpecification;
+import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import java.util.HashMap;
@@ -34,7 +35,7 @@ public class DefaultFfCharacterGenerator implements CharacterGenerator {
      * @return details about the generation process
      */
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification) {
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification, final BookInformations info) {
         Assert.notNull(characterObject, "The parameter 'characterObject' cannot be null!");
         Assert.notNull(bookContentSpecification, "The parameter 'bookContentSpecification' cannot be null!");
         final FfCharacter character = (FfCharacter) characterObject;

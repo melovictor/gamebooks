@@ -13,4 +13,49 @@
     </property>
   </bean>
 
+  <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean" p:targetObject-ref="defaultLwCharacterGenerator" p:targetMethod="addEquipmentManager">
+    <property name="arguments">
+      <list>
+        <value type="java.lang.Integer">1</value>
+        <bean class="hu.zagor.gamebooks.lw.lw.fftd.mvc.books.newgame.service.equipment.Lw1EquipmentMapper">
+          <property name="randomItem">
+            <map key-type="java.lang.Integer" value-type="hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.InitialItemDescriptor">
+              <entry key="1">
+                <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.InitialItemDescriptor" p:amount="1" p:itemId="10002" />
+              </entry>
+              <entry key="2">
+                <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.InitialItemDescriptor" p:amount="1" p:itemId="40004" />
+              </entry>
+              <entry key="3">
+                <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.InitialItemDescriptor" p:amount="2" p:itemId="20000" />
+              </entry>
+              <entry key="4">
+                <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.InitialItemDescriptor" p:amount="1" p:itemId="40001" />
+              </entry>
+              <entry key="5">
+                <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.InitialItemDescriptor" p:amount="1" p:itemId="10003" />
+              </entry>
+              <entry key="6">
+                <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.InitialItemDescriptor" p:amount="1" p:itemId="30001" />
+              </entry>
+              <entry key="7">
+                <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.InitialItemDescriptor" p:amount="1" p:itemId="10004" />
+              </entry>
+              <entry key="8">
+                <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.InitialItemDescriptor" p:amount="1" p:itemId="10005" />
+              </entry>
+              <entry key="9">
+                <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.InitialItemDescriptor" p:amount="12" p:itemId="gold" />
+              </entry>
+              <entry key="0">
+                <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.InitialItemDescriptor" p:amount="1" p:itemId="10006" />
+              </entry>
+            </map>
+          </property>
+        </bean>
+      </list>
+    </property>
+  </bean>
+
+
 </beans>

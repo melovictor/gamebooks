@@ -7,11 +7,10 @@ import hu.zagor.gamebooks.character.handler.character.CharacterGenerator;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.domain.BookContentSpecification;
+import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.ff.tcoc.character.Ff2Character;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.util.StringUtils;
@@ -25,13 +24,11 @@ public class Ff2CharacterGenerator implements CharacterGenerator {
     private static final int DICE_SIDE = 6;
     private static final int SPELL_DEFAULT = 6;
 
-    @Autowired
-    @Qualifier("defaultFfCharacterGenerator")
-    private CharacterGenerator superGenerator;
+    @Autowired @Qualifier("defaultFfCharacterGenerator") private CharacterGenerator superGenerator;
 
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification) {
-        final Map<String, Object> generateCharacter = superGenerator.generateCharacter(characterObject, bookContentSpecification);
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification, final BookInformations info) {
+        final Map<String, Object> generateCharacter = superGenerator.generateCharacter(characterObject, bookContentSpecification, info);
 
         final Ff2Character character = (Ff2Character) characterObject;
         final int[] spell = getRand().getRandomNumber(2, SPELL_DEFAULT);

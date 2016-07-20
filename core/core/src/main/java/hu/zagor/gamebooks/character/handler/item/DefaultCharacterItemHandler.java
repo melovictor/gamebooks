@@ -248,7 +248,7 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler, BeanFa
         return character.getEquipment().iterator();
     }
 
-    private ItemFactory getItemFactory() {
+    ItemFactory getItemFactory() {
         return (ItemFactory) beanFactory.getBean("defaultItemFactory", getInfo());
     }
 

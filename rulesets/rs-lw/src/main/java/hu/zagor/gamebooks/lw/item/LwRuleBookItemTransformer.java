@@ -1,6 +1,7 @@
 package hu.zagor.gamebooks.lw.item;
 
 import hu.zagor.gamebooks.books.contentransforming.item.AbstractBookItemTransformer;
+import hu.zagor.gamebooks.character.item.EquipInfo;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.character.item.LwItem;
 import hu.zagor.gamebooks.character.item.Placement;
@@ -22,6 +23,11 @@ public class LwRuleBookItemTransformer extends AbstractBookItemTransformer<LwIte
         final Integer endurance = extractIntegerAttribute(node, "endurance", 0);
         item.setEndurance(endurance);
         item.setInitialEndurance(endurance);
+
+        final EquipInfo equipInfo = item.getEquipInfo();
+        if (equipInfo.isEquippable() && item.getItemType() != ItemType.weapon1) {
+            equipInfo.setEquipped(true);
+        }
     }
 
 }

@@ -83,8 +83,9 @@ public class FfBookNewGameController extends RawBookNewGameController {
     protected Map<String, Object> doGenerateCharacter(final HttpServletRequest request) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
-        final CharacterGenerator characterGenerator = getInfo().getCharacterHandler().getCharacterGenerator();
-        final Map<String, Object> result = characterGenerator.generateCharacter(character, getInfo().getContentSpecification());
+        final FfBookInformations info = getInfo();
+        final CharacterGenerator characterGenerator = info.getCharacterHandler().getCharacterGenerator();
+        final Map<String, Object> result = characterGenerator.generateCharacter(character, info.getContentSpecification(), info);
 
         initializeItems(request.getParameterMap(), character);
 

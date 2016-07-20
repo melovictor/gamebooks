@@ -5,9 +5,7 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.domain.BookContentSpecification;
 import hu.zagor.gamebooks.ff.ff.votv.character.Ff38Character;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -75,7 +73,7 @@ public class Ff38CharacterGeneratorTest {
 
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.generateCharacter(character, bookContentSpecification);
+        final Map<String, Object> returned = underTest.generateCharacter(character, bookContentSpecification, null);
         // THEN
         Assert.assertEquals(returned.get("ffSkill"), "9 render_9:3");
         Assert.assertEquals(returned.get("ffStamina"), "20 render_20:6/2");

@@ -5,8 +5,12 @@ import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.character.CharacterGenerator;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
 import hu.zagor.gamebooks.domain.BookContentSpecification;
+import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.LwBookContentSpecification;
+import hu.zagor.gamebooks.domain.LwBookInformations;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
+import hu.zagor.gamebooks.lw.mvc.book.newgame.service.discipline.LwDisciplineMapper;
+import hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.LwEquipmentMapper;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,22 +29,24 @@ public class DefaultLwCharacterGenerator implements CharacterGenerator {
     private static final int COMBAT_SKILL_DEFAULT = 10;
     private static final int ENDURANCE_DEFAULT = 20;
 
-    @Autowired @Qualifier("d10") private RandomNumberGenerator rand;
+    @Autowired @Qualifier("d10") private RandomNumberGenerator generator;
     @Autowired private DiceResultRenderer diceRenderer;
     private Map<String, LwDisciplineMapper> disciplineMapper;
-    private Map<Long, LwEquipmentMapper> equipmentMapper;
+    private final Map<Integer, LwEquipmentMapper> equipmentMapper = new HashMap<>();
 
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification) {
-        return generateCharacter(characterObject, (LwBookContentSpecification) bookContentSpecification);
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification, final BookInformations info) {
+        return generateCharacter(characterObject, (LwBookContentSpecification) bookContentSpecification, (LwBookInformations) info);
     }
 
-    public Map<String, Object> generateCharacter(final Character characterObject, final LwBookContentSpecification bookContentSpecification) {
+    public Map<String, Object> generateCharacter(final Character characterObject, final LwBookContentSpecification bookContentSpecification,
+        final LwBookInformations info) {
         Assert.notNull(characterObject, "The parameter 'characterObject' cannot be null!");
         Assert.notNull(bookContentSpecification, "The parameter 'bookContentSpecification' cannot be null!");
         final LwCharacter character = (LwCharacter) characterObject;
-        final int[] endurance = rand.getRandomNumber(new DiceConfiguration(1, 0, 9), ENDURANCE_DEFAULT);
-        final int[] combatSkill = rand.getRandomNumber(new DiceConfiguration(1, 0, 9), COMBAT_SKILL_DEFAULT);
+        final DiceConfiguration d10Configuration = new DiceConfiguration(1, 0, 9);
+        final int[] endurance = generator.getRandomNumber(d10Configuration, ENDURANCE_DEFAULT);
+        final int[] combatSkill = generator.getRandomNumber(d10Configuration, COMBAT_SKILL_DEFAULT);
 
         character.setBackpackSize(bookContentSpecification.getCharacterBackpackSize());
         character.setCombatSkill(combatSkill[0]);
@@ -51,8 +57,8 @@ public class DefaultLwCharacterGenerator implements CharacterGenerator {
 
         final Map<String, Object> result = new HashMap<>();
         disciplineMapper.get(bookContentSpecification.getLevel()).mapDisciplines(character, result);
-        final int bookId = 1; // must use actual book order; last 2 chars from the ID
-        equipmentMapper.get(bookId).mapEquipments(character, result);
+        final int bookId = info.getPosition().intValue();
+        equipmentMapper.get(bookId).mapEquipments(character, result, info.getCharacterHandler().getItemHandler());
 
         result.put("lwEndurance", endurance[0] + diceRenderer.render(DICE_SIDE, endurance));
         result.put("lwCombatSkill", combatSkill[0] + diceRenderer.render(DICE_SIDE, combatSkill));
@@ -62,9 +68,13 @@ public class DefaultLwCharacterGenerator implements CharacterGenerator {
         return result;
     }
 
+    public void addEquipmentManager(final int bookId, final LwEquipmentMapper mapper) {
+        equipmentMapper.put(bookId, mapper);
+    }
+
     @Override
     public RandomNumberGenerator getRand() {
-        return rand;
+        return generator;
     }
 
     @Override

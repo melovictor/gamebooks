@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.character.CharacterGenerator;
 import hu.zagor.gamebooks.domain.BookContentSpecification;
+import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.ff.b.character.Ff60Character;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import java.util.Map;
@@ -22,8 +23,8 @@ public class Ff60CharacterGenerator implements CharacterGenerator {
     @Autowired @Qualifier("defaultFfCharacterGenerator") private CharacterGenerator decorated;
 
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification) {
-        final Map<String, Object> result = decorated.generateCharacter(characterObject, bookContentSpecification);
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification, final BookInformations info) {
+        final Map<String, Object> result = decorated.generateCharacter(characterObject, bookContentSpecification, info);
 
         final Ff60Character character = (Ff60Character) characterObject;
         final int[] gold = getRand().getRandomNumber(2, GOLD_DEFAULT);

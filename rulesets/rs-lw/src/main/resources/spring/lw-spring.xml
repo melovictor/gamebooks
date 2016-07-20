@@ -6,22 +6,25 @@
   <util:constant id="lwTitle" static-field="hu.zagor.gamebooks.support.bookids.english.LoneWolf.TITLE" />
   <util:constant id="mfTitle" static-field="hu.zagor.gamebooks.support.bookids.hungarian.MaganyosFarkas.TITLE" />
 
-  <bean class="hu.zagor.gamebooks.character.handler.LwCharacterHandler" id="lwCharacterHandler" parent="rawCharacterHandler" scope="prototype">
+  <bean class="hu.zagor.gamebooks.character.handler.LwCharacterHandler" id="lwCharacterHandler" parent="rawCharacterHandler" p:characterGenerator-ref="defaultLwCharacterGenerator" scope="prototype">
     <property name="attributeHandler">
       <bean class="hu.zagor.gamebooks.character.handler.attribute.LwAttributeHandler" />
     </property>
-    <property name="characterGenerator">
-      <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.DefaultLwCharacterGenerator">
-        <property name="disciplineMapper">
-          <util:map key-type="java.lang.String" value-type="hu.zagor.gamebooks.lw.mvc.book.newgame.service.LwDisciplineMapper">
-            <entry key="kai">
-              <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.LwKaiDisciplineMapper" />
-            </entry>
-          </util:map>
-        </property>
-      </bean>
+    <property name="itemHandler">
+      <bean class="hu.zagor.gamebooks.character.handler.item.LwCharacterItemHandler"></bean>
     </property>
   </bean>
+
+  <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.DefaultLwCharacterGenerator" id="defaultLwCharacterGenerator">
+    <property name="disciplineMapper">
+      <util:map key-type="java.lang.String" value-type="hu.zagor.gamebooks.lw.mvc.book.newgame.service.discipline.LwDisciplineMapper">
+        <entry key="kai">
+          <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.discipline.LwKaiDisciplineMapper" />
+        </entry>
+      </util:map>
+    </property>
+  </bean>
+
 
   <bean class="hu.zagor.gamebooks.content.LwParagraphData" id="lwParagraphData" scope="prototype" p:choices-ref="defaultChoiceSet" />
 
