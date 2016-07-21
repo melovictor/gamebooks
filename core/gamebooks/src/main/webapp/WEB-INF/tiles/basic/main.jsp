@@ -22,7 +22,6 @@
 
 <script type="text/javascript" src="<c:url value="/resources/js/jquery.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-ui.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/jquery.ui.touch-punch.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/rijndael.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/bze.js" />"></script>
 <c:forEach var="jsResource" items="${resources.js}">
