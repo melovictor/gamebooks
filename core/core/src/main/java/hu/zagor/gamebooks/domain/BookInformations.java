@@ -224,4 +224,8 @@ public class BookInformations implements Comparable<BookInformations> {
         this.cover = cover;
     }
 
+    public String getInventoryServiceBeanName() {
+        return "rawBookInventoryService";
+    }
+
 }

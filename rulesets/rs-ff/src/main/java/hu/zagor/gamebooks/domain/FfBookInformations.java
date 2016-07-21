@@ -29,4 +29,9 @@ public class FfBookInformations extends BookInformations {
         return (FfRuleBookParagraphResolver) super.getParagraphResolver();
     }
 
+    @Override
+    public String getInventoryServiceBeanName() {
+        return "ffBookInventoryService";
+    }
+
 }

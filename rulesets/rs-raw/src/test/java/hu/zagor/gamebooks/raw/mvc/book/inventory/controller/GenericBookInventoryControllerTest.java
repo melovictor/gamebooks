@@ -12,13 +12,11 @@ import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
-import org.powermock.reflect.Whitebox;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.ui.Model;
@@ -47,15 +45,12 @@ public class GenericBookInventoryControllerTest {
     @Inject private SectionHandlingService sectionHandlingService;
     @Mock private RawCharacterPageData characterPageData;
     @Inject private ApplicationContext applicationContext;
-    @Instance private Map<Long, String> idBeanMap;
     @Mock private BookInventoryService inventoryService;
     @Inject private BookInformationFetcher bookInformationFetcher;
 
     @BeforeClass
     public void setUpClass() {
-        idBeanMap.put(2L, "rawBookInventoryService");
         info = new BookInformations(2000L);
-        Whitebox.setInternalState(underTest, "inventoryControllerIdBeanNameMap", idBeanMap);
     }
 
     @Test(expectedExceptions = IllegalStateException.class)

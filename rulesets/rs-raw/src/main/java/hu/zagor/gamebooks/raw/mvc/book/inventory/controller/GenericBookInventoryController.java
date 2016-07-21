@@ -6,8 +6,6 @@ import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.mvc.book.controller.AbstractRequestWrappingController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.raw.mvc.book.inventory.service.BookInventoryService;
-import java.util.Map;
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +24,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class GenericBookInventoryController extends AbstractRequestWrappingController {
 
     @Autowired @Qualifier("rawSectionHandlingService") private SectionHandlingService sectionHandlingService;
-    @Resource(name = "inventoryControllerMap") private Map<Long, String> inventoryControllerIdBeanNameMap;
 
     /**
      * Handles the inventory.
@@ -40,10 +37,7 @@ public class GenericBookInventoryController extends AbstractRequestWrappingContr
     public String handleInventory(final Model model, final HttpServletRequest request, final HttpServletResponse response, @PathVariable("bookId") final Long bookId) {
         response.setCharacterEncoding("UTF-8");
         final BookInformations info = getInfo(bookId);
-        final String inventoryServiceBeanName = inventoryControllerIdBeanNameMap.get(info.getSeriesId());
-        if (inventoryServiceBeanName == null) {
-            throw new IllegalStateException("No service bean name is specified for series ID '" + info.getSeriesId() + "'.");
-        }
+        final String inventoryServiceBeanName = info.getInventoryServiceBeanName();
         final BookInventoryService inventoryService = (BookInventoryService) getBeanFactory().getBean(inventoryServiceBeanName);
         return inventoryService.handleInventory(model, getWrapper(request), info);
     }

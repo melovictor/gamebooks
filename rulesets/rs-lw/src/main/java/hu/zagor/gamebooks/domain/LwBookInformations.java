@@ -21,4 +21,9 @@ public class LwBookInformations extends BookInformations {
         return (LwRuleBookParagraphResolver) super.getParagraphResolver();
     }
 
+    @Override
+    public String getInventoryServiceBeanName() {
+        return "lwBookInventoryService";
+    }
+
 }
