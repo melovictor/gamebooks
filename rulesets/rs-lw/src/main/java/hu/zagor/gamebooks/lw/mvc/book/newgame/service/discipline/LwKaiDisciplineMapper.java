@@ -5,7 +5,7 @@ import hu.zagor.gamebooks.content.dice.DiceConfiguration;
 import hu.zagor.gamebooks.lw.character.KaiDisciplines;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
 import hu.zagor.gamebooks.lw.character.Rank;
-import hu.zagor.gamebooks.lw.character.WeaponSkill;
+import hu.zagor.gamebooks.lw.character.Weaponskill;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.messages.MessageSource;
 import java.util.Map;
@@ -36,27 +36,27 @@ public class LwKaiDisciplineMapper implements LwDisciplineMapper {
         kaiDisciplines.setMindOverMatter(checkSelection(parameterMap, "mindOverMatter"));
 
         if (checkSelection(parameterMap, "weaponskill")) {
-            addWeaponSkill(result, kaiDisciplines);
+            addWeaponskill(result, kaiDisciplines);
         }
     }
 
-    private void addWeaponSkill(final Map<String, Object> result, final KaiDisciplines kaiDisciplines) {
-        final WeaponSkill weaponSkill = kaiDisciplines.getWeaponSkill();
+    private void addWeaponskill(final Map<String, Object> result, final KaiDisciplines kaiDisciplines) {
+        final Weaponskill weaponskill = kaiDisciplines.getWeaponskill();
         final DiceConfiguration weaponRollConfig = new DiceConfiguration(1, 0, 9);
         final int[] randomNumber = generator.getRandomNumber(weaponRollConfig);
-        final int weaponSkillRolledValue = randomNumber[0];
-        weaponSkill.setDagger(weaponSkillRolledValue == 0);
-        weaponSkill.setSpear(weaponSkillRolledValue == 1);
-        weaponSkill.setMace(weaponSkillRolledValue == 2);
-        weaponSkill.setShortSword(weaponSkillRolledValue == 3);
-        weaponSkill.setWarhammer(weaponSkillRolledValue == 4);
-        weaponSkill.setSword(weaponSkillRolledValue == 5);
-        weaponSkill.setAxe(weaponSkillRolledValue == 6);
-        weaponSkill.setSword(weaponSkillRolledValue == 7);
-        weaponSkill.setQuarterstaff(weaponSkillRolledValue == 8);
-        weaponSkill.setBroadsword(weaponSkillRolledValue == 9);
-        result.put("weaponSkill",
-            messageSource.getMessage("page.lw.characterGeneration.weaponObtained." + weaponSkillRolledValue, renderer.render(weaponRollConfig, randomNumber)));
+        final int weaponskillRolledValue = randomNumber[0];
+        weaponskill.setDagger(weaponskillRolledValue == 0);
+        weaponskill.setSpear(weaponskillRolledValue == 1);
+        weaponskill.setMace(weaponskillRolledValue == 2);
+        weaponskill.setShortSword(weaponskillRolledValue == 3);
+        weaponskill.setWarhammer(weaponskillRolledValue == 4);
+        weaponskill.setSword(weaponskillRolledValue == 5);
+        weaponskill.setAxe(weaponskillRolledValue == 6);
+        weaponskill.setSword(weaponskillRolledValue == 7);
+        weaponskill.setQuarterstaff(weaponskillRolledValue == 8);
+        weaponskill.setBroadsword(weaponskillRolledValue == 9);
+        result.put("weaponskill",
+            messageSource.getMessage("page.lw.characterGeneration.weaponObtained." + weaponskillRolledValue, renderer.render(weaponRollConfig, randomNumber)));
     }
 
     private boolean checkSelection(final Map<String, String[]> parameterMap, final String discipline) {

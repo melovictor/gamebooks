@@ -16,14 +16,12 @@ import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 /**
  * Default character generator for LW.
  * @author Tamas_Szekeres
  */
-@Component
 public class DefaultLwCharacterGenerator implements CharacterGenerator {
     private static final int DICE_SIDE = 10;
     private static final int COMBAT_SKILL_DEFAULT = 10;

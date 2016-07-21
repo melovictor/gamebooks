@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.character.handler.LwCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.LwAttributeHandler;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.raw.character.RawCharacterPageData;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.context.annotation.Scope;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 public class LwCharacterPageData extends RawCharacterPageData {
     private final LwAttributeHandler attributeHandler;
     private final LwCharacter character;
+    private String weaponskillWeapon;
 
     private final int endurance;
     private final int initialEndurance;
@@ -40,6 +42,29 @@ public class LwCharacterPageData extends RawCharacterPageData {
         initialEndurance = attributeHandler.resolveValue(character, "initialEndurance");
         combatSkill = attributeHandler.resolveValue(character, "combatSkill");
         gold = character.getMoney().getGoldCrowns();
+
+        final Weaponskill weaponskill = character.getKaiDisciplines().getWeaponskill();
+        if (weaponskill.isWeaponskillObtained()) {
+            weaponskillWeapon = obtainLearnedWeaponName(weaponskill);
+        }
+    }
+
+    private String obtainLearnedWeaponName(final Weaponskill weaponskill) {
+        String name = "";
+        for (final Field field : Weaponskill.class.getDeclaredFields()) {
+            if (Boolean.TYPE.isAssignableFrom(field.getType())) {
+                field.setAccessible(true);
+                try {
+                    if ((boolean) field.get(weaponskill)) {
+                        name = field.getName();
+                    }
+                } catch (IllegalArgumentException | IllegalAccessException e) {
+                    throw new IllegalStateException("Couldn't fetch value from weaponskill field.");
+                }
+                field.setAccessible(false);
+            }
+        }
+        return name;
     }
 
     public boolean isAlive() {
@@ -76,6 +101,14 @@ public class LwCharacterPageData extends RawCharacterPageData {
 
     public int getCombatSkill() {
         return combatSkill;
+    }
+
+    public LwCharacter getCharacter() {
+        return character;
+    }
+
+    public String getWeaponskillWeapon() {
+        return weaponskillWeapon;
     }
 
 }

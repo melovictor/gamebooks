@@ -11,7 +11,7 @@ public class KaiDisciplines {
     private boolean animalKinship;
     private boolean mindOverMatter;
 
-    private WeaponSkill weaponSkill = new WeaponSkill();
+    private Weaponskill weaponskill = new Weaponskill();
 
     public boolean isCamouflage() {
         return camouflage;
@@ -85,11 +85,12 @@ public class KaiDisciplines {
         this.mindOverMatter = mindOverMatter;
     }
 
-    public WeaponSkill getWeaponSkill() {
-        return weaponSkill;
+    public Weaponskill getWeaponskill() {
+        return weaponskill;
     }
 
-    public void setWeaponSkill(final WeaponSkill weaponSkill) {
-        this.weaponSkill = weaponSkill;
+    public void setWeaponskill(final Weaponskill weaponskill) {
+        this.weaponskill = weaponskill;
     }
+
 }

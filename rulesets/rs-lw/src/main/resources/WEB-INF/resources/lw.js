@@ -32,8 +32,8 @@ var lwCharGen = (function() {
 				$.each(data, function(key, value) {
 					$("#" + key).html(value);
 				});
-				if (data.weaponSkill) {
-					$(".lwKaiDisciplines").append($("<p>").html(data.weaponSkill));
+				if (data.weaponskill) {
+					$(".lwKaiDisciplines").append($("<p>").html(data.weaponskill));
 				}
 				$("#choiceWrapper").show();
 				$("[data-generator-button], .lwDice").hide();

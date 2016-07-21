@@ -1,6 +1,6 @@
 package hu.zagor.gamebooks.lw.character;
 
-public class WeaponSkill {
+public class Weaponskill {
     private boolean dagger;
     private boolean spear;
     private boolean mace;
@@ -90,6 +90,10 @@ public class WeaponSkill {
 
     public void setBow(final boolean bow) {
         this.bow = bow;
+    }
+
+    public boolean isWeaponskillObtained() {
+        return bow || broadsword || axe || dagger || mace || spear || quarterstaff || shortSword || sword || warhammer;
     }
 
 }
