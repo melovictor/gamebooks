@@ -20,7 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 /**
- * Interface for doing generic item-related queries in a {@link Character}.
+ * Default implementation for doing generic item-related queries in a {@link Character}.
  * @author Tamas_Szekeres
  */
 public class DefaultCharacterItemHandler implements CharacterItemHandler, BeanFactoryAware {

@@ -1,6 +1,11 @@
 package hu.zagor.gamebooks.content;
 
-public class LwParagraphData extends ParagraphData {
+/**
+ * Extended paragraph data for Lone Wolf books.
+ * @author Tamas_Szekeres
+ */
+public class LwParagraphData extends ComplexParagraphData {
+
     private boolean mustEat;
     private boolean canHunt;
 
@@ -20,4 +25,8 @@ public class LwParagraphData extends ParagraphData {
         this.canHunt = canHunt;
     }
 
+    @Override
+    public LwParagraphData clone() throws CloneNotSupportedException {
+        return (LwParagraphData) super.clone();
+    }
 }

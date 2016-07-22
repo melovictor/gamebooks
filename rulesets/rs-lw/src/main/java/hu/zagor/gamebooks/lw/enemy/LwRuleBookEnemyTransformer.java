@@ -4,6 +4,10 @@ import hu.zagor.gamebooks.books.contentransforming.enemy.AbstractBookEnemyTransf
 import hu.zagor.gamebooks.character.enemy.LwEnemy;
 import org.w3c.dom.Node;
 
+/**
+ * Enemy transformer for Lone Wolf ruleset.
+ * @author Tamas_Szekeres
+ */
 public class LwRuleBookEnemyTransformer extends AbstractBookEnemyTransformer<LwEnemy> {
 
     @Override

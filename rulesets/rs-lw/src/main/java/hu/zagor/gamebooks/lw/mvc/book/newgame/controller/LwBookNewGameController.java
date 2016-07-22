@@ -18,6 +18,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * Generic new game handling controller for Lone Wolf books.
+ * @author Tamas_Szekeres
+ */
 public class LwBookNewGameController extends RawBookNewGameController {
 
     @Override

@@ -1,5 +1,9 @@
 package hu.zagor.gamebooks.lw.character;
 
+/**
+ * The list of Kai disciplines that can be nearned by the character.
+ * @author Tamas_Szekeres
+ */
 public class KaiDisciplines {
     private boolean camouflage;
     private boolean hunting;

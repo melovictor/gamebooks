@@ -1,7 +1,7 @@
 package hu.zagor.gamebooks.content.command;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
-import hu.zagor.gamebooks.content.FfParagraphData;
+import hu.zagor.gamebooks.content.ComplexParagraphData;
 import hu.zagor.gamebooks.content.commandlist.CommandList;
 import hu.zagor.gamebooks.support.logging.LogInject;
 import org.slf4j.Logger;
@@ -16,7 +16,7 @@ public class ImmediateCommandExecuter implements CommandExecuter {
     @LogInject private Logger logger;
 
     @Override
-    public void execute(final ResolvationData resolvationData, final FfParagraphData subData) {
+    public void execute(final ResolvationData resolvationData, final ComplexParagraphData subData) {
         if (subData != null) {
             final CommandList immediateCommands = subData.getImmediateCommands();
             if (immediateCommands != null) {

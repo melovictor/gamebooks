@@ -8,6 +8,10 @@ import hu.zagor.gamebooks.lw.character.Money;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Lone Wolf-related implementation for doing ruleset-specific item-related queries in a {@link Character}.
+ * @author Tamas_Szekeres
+ */
 public class LwCharacterItemHandler extends DefaultCharacterItemHandler {
     @Override
     public int addItem(final Character characterObject, final String itemId, final int amount) {
@@ -16,8 +20,7 @@ public class LwCharacterItemHandler extends DefaultCharacterItemHandler {
         final int result;
         if ("gold".equals(itemId)) {
             final Money money = character.getMoney();
-            money.setGoldCrowns(money.getGoldCrowns() + amount);
-            result = amount;
+            result = money.addGoldCrowns(amount);
         } else {
             final Item resolvedItem = getItemFactory().resolveItem(itemId);
             final List<Item> items = getItems(character, resolvedItem.getItemType());

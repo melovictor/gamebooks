@@ -7,6 +7,10 @@ import hu.zagor.gamebooks.character.item.LwItem;
 import hu.zagor.gamebooks.character.item.Placement;
 import org.w3c.dom.Node;
 
+/**
+ * Item transformer for Lone Wolf ruleset.
+ * @author Tamas_Szekeres
+ */
 public class LwRuleBookItemTransformer extends AbstractBookItemTransformer<LwItem> {
 
     @Override

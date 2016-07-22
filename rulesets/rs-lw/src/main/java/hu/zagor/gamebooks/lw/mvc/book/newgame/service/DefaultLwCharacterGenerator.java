@@ -37,7 +37,7 @@ public class DefaultLwCharacterGenerator implements CharacterGenerator {
         return generateCharacter(characterObject, (LwBookContentSpecification) bookContentSpecification, (LwBookInformations) info);
     }
 
-    public Map<String, Object> generateCharacter(final Character characterObject, final LwBookContentSpecification bookContentSpecification,
+    private Map<String, Object> generateCharacter(final Character characterObject, final LwBookContentSpecification bookContentSpecification,
         final LwBookInformations info) {
         Assert.notNull(characterObject, "The parameter 'characterObject' cannot be null!");
         Assert.notNull(bookContentSpecification, "The parameter 'bookContentSpecification' cannot be null!");
@@ -66,6 +66,11 @@ public class DefaultLwCharacterGenerator implements CharacterGenerator {
         return result;
     }
 
+    /**
+     * Adds a new equipment manager that can be used for a specific book.
+     * @param bookId the number of the book for which the equipment manager is added
+     * @param mapper the {@link LwEquipmentMapper} to be used
+     */
     public void addEquipmentManager(final int bookId, final LwEquipmentMapper mapper) {
         equipmentMapper.put(bookId, mapper);
     }

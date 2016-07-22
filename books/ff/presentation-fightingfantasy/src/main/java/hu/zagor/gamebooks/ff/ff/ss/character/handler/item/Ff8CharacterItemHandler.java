@@ -5,7 +5,7 @@ import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.ff.ff.ss.character.Ff8Character;
 
 /**
- * Character handler for FF8.
+ * Character item handler for FF8.
  * @author Tamas_Szekeres
  */
 public class Ff8CharacterItemHandler extends FfCharacterItemHandler {

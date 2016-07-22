@@ -230,6 +230,9 @@ public class RawRuleBookParagraphResolver implements BookParagraphResolver {
         logger.debug("Executing command {}.", command.toString());
 
         final CommandResolver resolver = resolvationData.getInfo().getCommandResolvers().get(command.getClass());
+        if (resolver == null) {
+            throw new IllegalStateException("Resolver missing for command type " + command.getClass());
+        }
 
         final CommandResolveResult resolve = resolver.resolve(command, resolvationData);
         if (!resolve.isFinished()) {

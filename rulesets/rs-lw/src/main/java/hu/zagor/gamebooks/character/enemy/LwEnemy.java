@@ -1,5 +1,9 @@
 package hu.zagor.gamebooks.character.enemy;
 
+/**
+ * Enemy object for the Lone Wolf ruleset.
+ * @author Tamas_Szekeres
+ */
 public class LwEnemy extends Enemy {
     private int combatSkill;
     private int endurance;

@@ -13,6 +13,10 @@ import java.util.List;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+/**
+ * Bean for storing data to display on the character page on the page.
+ * @author Tamas_Szekeres
+ */
 @Component("lwCharacterPageData")
 @Scope("prototype")
 public class LwCharacterPageData extends RawCharacterPageData {

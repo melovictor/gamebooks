@@ -4,6 +4,10 @@ import hu.zagor.gamebooks.character.Character;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+/**
+ * The player character for the LW ruleset.
+ * @author Tamas_Szekeres
+ */
 @Component("lwCharacter")
 @Scope("prototype")
 public class LwCharacter extends Character {

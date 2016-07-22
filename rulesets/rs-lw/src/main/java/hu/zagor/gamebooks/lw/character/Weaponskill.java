@@ -1,5 +1,9 @@
 package hu.zagor.gamebooks.lw.character;
 
+/**
+ * The list of different weapons for which the Weaponskill kai discipline can be learned.
+ * @author Tamas_Szekeres
+ */
 public class Weaponskill {
     private boolean dagger;
     private boolean spear;
@@ -92,8 +96,15 @@ public class Weaponskill {
         this.bow = bow;
     }
 
+    /**
+     * Determines whether the character has already learned to fight with a single weapon or not.
+     * @return true if at least one specific weapon skill has been learned, false if none
+     */
     public boolean isWeaponskillObtained() {
-        return bow || broadsword || axe || dagger || mace || spear || quarterstaff || shortSword || sword || warhammer;
+        final boolean hasSword = broadsword || shortSword || sword;
+        final boolean hasBlunt = mace || warhammer;
+        final boolean hasOther = bow || axe || dagger || spear || quarterstaff;
+        return hasSword || hasBlunt || hasOther;
     }
 
 }

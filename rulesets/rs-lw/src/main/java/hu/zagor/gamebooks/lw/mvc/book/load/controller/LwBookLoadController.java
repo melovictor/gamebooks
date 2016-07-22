@@ -9,6 +9,10 @@ import hu.zagor.gamebooks.raw.mvc.book.load.controller.RawBookLoadController;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 
+/**
+ * Generic load controller for Lone Wolf books.
+ * @author Tamas_Szekeres
+ */
 public class LwBookLoadController extends RawBookLoadController {
 
     /**

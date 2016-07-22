@@ -1,5 +1,9 @@
 package hu.zagor.gamebooks.character.item;
 
+/**
+ * Lone Wolf specific item.
+ * @author Tamas_Szekeres
+ */
 public class LwItem extends Item {
     private int endurance;
     private int initialEndurance;

@@ -29,6 +29,18 @@
   <bean class="hu.zagor.gamebooks.content.LwParagraphData" id="lwParagraphData" scope="prototype" p:choices-ref="defaultChoiceSet" />
 
   <util:map key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver" id="lwCommandResolvers">
+    <entry key="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommand">
+      <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommandResolver">
+        <property name="stubCommands">
+          <util:map key-type="java.lang.String" value-type="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckStubCommand">
+            <entry key="section" value-ref="itemCheckSectionCommandResolver" />
+            <entry key="kai">
+              <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckKaiDisciplineCommandResolver" />
+            </entry>
+          </util:map>
+        </property>
+      </bean>
+    </entry>
   </util:map>
 
   <bean class="hu.zagor.gamebooks.domain.BookContentTransformers" id="defaultLwContentTransformers">
@@ -60,5 +72,6 @@
 
   <bean class="hu.zagor.gamebooks.lw.section.LwRuleBookParagraphResolver" id="lwRuleBookParagraphResolver" />
 
+  <bean class="hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute" scope="prototype" id="lwModifyAttribute" />
 
 </beans>

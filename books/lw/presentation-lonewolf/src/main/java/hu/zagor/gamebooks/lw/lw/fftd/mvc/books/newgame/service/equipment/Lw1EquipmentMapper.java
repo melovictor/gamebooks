@@ -1,7 +1,7 @@
 package hu.zagor.gamebooks.lw.lw.fftd.mvc.books.newgame.service.equipment;
 
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
-import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
+import hu.zagor.gamebooks.character.handler.item.LwCharacterItemHandler;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
 import hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.InitialItemDescriptor;
@@ -25,7 +25,7 @@ public class Lw1EquipmentMapper implements LwEquipmentMapper {
     @Autowired private MessageSource messageSource;
 
     @Override
-    public void mapEquipments(final LwCharacter character, final Map<String, Object> result, final CharacterItemHandler itemHandler) {
+    public void mapEquipments(final LwCharacter character, final Map<String, Object> result, final LwCharacterItemHandler itemHandler) {
         final DiceConfiguration d10Configuration = new DiceConfiguration(1, 0, 9);
         final int[] goldCrowns = generator.getRandomNumber(d10Configuration);
         final int[] equipment = generator.getRandomNumber(d10Configuration);

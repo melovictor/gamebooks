@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
- * Interface for doing generic item-related queries in a {@link Character}.
+ * Fighting Fantasy-related implementation for doing ruleset-specific item-related queries in a {@link Character}.
  * @author Tamas_Szekeres
  */
 public class FfCharacterItemHandler extends DefaultCharacterItemHandler {

@@ -5,6 +5,10 @@ import hu.zagor.gamebooks.content.LwParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 
+/**
+ * Transformer for Lone Wolf books.
+ * @author Tamas_Szekeres
+ */
 public class LwRuleBookParagraphDataTransformer extends AbstractBookParagraphDataTransformer {
 
     @Override

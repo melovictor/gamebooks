@@ -18,6 +18,7 @@ public class MavenInstaller {
         install("/core/core");
 
         install("/rulesets/rs-raw");
+        install("/rulesets/rs-complex");
         installRecursive("/rulesets", 1);
         installRecursive("/books", 2);
         install("/collector/series-collector");

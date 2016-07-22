@@ -1,5 +1,9 @@
 package hu.zagor.gamebooks.domain;
 
+/**
+ * Bean for storing adventure-specific information about the given book like whether it has inventory or map, etc.
+ * @author Tamas_Szekeres
+ */
 public class LwBookContentSpecification extends BookContentSpecification {
     private String level;
 
