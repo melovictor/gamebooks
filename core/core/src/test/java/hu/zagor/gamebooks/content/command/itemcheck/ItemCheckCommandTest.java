@@ -18,7 +18,7 @@ import org.testng.annotations.Test;
 public class ItemCheckCommandTest {
 
     private static final String ID = "3001";
-    private static final CheckType CHECK_TYPE = CheckType.item;
+    private static final String CHECK_TYPE = "item";
     private IMocksControl mockControl;
     private ItemCheckCommand underTest;
 

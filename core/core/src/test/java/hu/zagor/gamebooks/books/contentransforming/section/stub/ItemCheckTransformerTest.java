@@ -9,7 +9,6 @@ import hu.zagor.gamebooks.books.contentransforming.section.CommandSubTransformer
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
-import hu.zagor.gamebooks.content.command.itemcheck.CheckType;
 import hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommand;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -38,7 +37,6 @@ public class ItemCheckTransformerTest extends AbstractTransformerTest {
 
     private static final String IRRELEVANT_NODE = "#text";
     private static final String ID = "3001";
-    private static final String INVALID_TYPE = "bread";
     private static final String VALID_TYPE = "item";
     private static final String UNSUPPORTED_EVENT = "maybeHave";
     private static final String SUPPORTED_EVENT = "have";
@@ -67,7 +65,7 @@ public class ItemCheckTransformerTest extends AbstractTransformerTest {
         underTest.setStubs(stubs);
 
         itemCheckCommand = new ItemCheckCommand();
-        itemCheckCommand.setCheckType(CheckType.item);
+        itemCheckCommand.setCheckType("item");
         itemCheckCommand.setId(ID);
     }
 
@@ -95,20 +93,6 @@ public class ItemCheckTransformerTest extends AbstractTransformerTest {
         mockControl.replay();
         // WHEN
         underTest.transform(parent, node, null);
-        // THEN throws exception
-    }
-
-    @Test(expectedExceptions = IllegalArgumentException.class)
-    public void testTransformWhenCheckTypeIsInvalidShouldThrowException() {
-        // GIVEN
-        expect(data.getPositionCounter()).andReturn(positionCounter);
-        expect(beanFactory.getBean(ItemCheckCommand.class)).andReturn(itemCheckCommand);
-
-        expectAttribute("type", INVALID_TYPE);
-
-        mockControl.replay();
-        // WHEN
-        underTest.transform(parent, node, data);
         // THEN throws exception
     }
 

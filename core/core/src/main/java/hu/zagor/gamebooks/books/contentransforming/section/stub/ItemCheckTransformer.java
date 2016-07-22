@@ -5,11 +5,8 @@ import hu.zagor.gamebooks.books.contentransforming.section.CommandSubTransformer
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
-import hu.zagor.gamebooks.content.command.itemcheck.CheckType;
 import hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommand;
-
 import java.util.Map;
-
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -29,7 +26,7 @@ public class ItemCheckTransformer extends AbstractStubTransformer {
     private ItemCheckCommand parseItemCheck(final BookParagraphDataTransformer parent, final Node node, final ChoicePositionCounter positionCounter) {
         final ItemCheckCommand command = getBeanFactory().getBean(ItemCheckCommand.class);
 
-        command.setCheckType(CheckType.valueOf(extractAttribute(node, "type")));
+        command.setCheckType(extractAttribute(node, "type"));
         command.setId(extractAttribute(node, "id"));
         command.setAmount(extractIntegerAttribute(node, "amount", 1));
         checkHaveAttribute(parent, node, command, positionCounter);

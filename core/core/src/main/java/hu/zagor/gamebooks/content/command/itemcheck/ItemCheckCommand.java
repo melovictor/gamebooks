@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.content.command.itemcheck;
 
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.Command;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class ItemCheckCommand extends Command {
 
     private String id;
-    private CheckType checkType;
+    private String checkType;
     private int amount;
 
     private ParagraphData have;
@@ -41,11 +40,11 @@ public class ItemCheckCommand extends Command {
         this.id = id;
     }
 
-    public CheckType getCheckType() {
+    public String getCheckType() {
         return checkType;
     }
 
-    public void setCheckType(final CheckType checkType) {
+    public void setCheckType(final String checkType) {
         this.checkType = checkType;
     }
 

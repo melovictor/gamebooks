@@ -20,8 +20,8 @@ public class ItemCheckAttributeEqualityCommandResolver extends ItemCheckFfAttrib
 
         String attributeName;
         String acceptedValues;
-        final CheckType checkType = parent.getCheckType();
-        if (checkType == CheckType.enumAttribute) {
+        final String checkType = parent.getCheckType();
+        if ("enumAttribute".equals(checkType)) {
             attributeName = parent.getId();
             acceptedValues = String.valueOf(parent.getAmount());
         } else {

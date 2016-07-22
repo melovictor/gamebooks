@@ -102,7 +102,7 @@
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCodewordCommandResolver" id="itemCheckCodewordCommandResolver" />
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckAttributeCommandResolver" id="itemCheckAttributeCommandResolver" />
 
-  <util:map id="itemCheckStubCommands" key-type="hu.zagor.gamebooks.content.command.itemcheck.CheckType" value-type="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckStubCommand">
+  <util:map id="itemCheckStubCommands" key-type="java.lang.String" value-type="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckStubCommand">
     <entry key="section" value-ref="itemCheckSectionCommandResolver" />
     <entry key="item" value-ref="itemCheckItemCommandResolver" />
     <entry key="items" value-ref="itemCheckItemsCommandResolver" />

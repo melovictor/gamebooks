@@ -31,7 +31,7 @@ import org.testng.annotations.Test;
 @Test
 public class ItemCheckCommandResolverTest {
 
-    private static final CheckType CHECK_TYPE = CheckType.item;
+    private static final String CHECK_TYPE = "item";
     @MockControl private IMocksControl mockControl;
     @UnderTest private ItemCheckCommandResolver underTest;
     @Instance private Character character;
@@ -39,7 +39,7 @@ public class ItemCheckCommandResolverTest {
     private Paragraph paragraph;
     @Mock private ParagraphData resolvedData;
     @Mock private ParagraphData afterData;
-    private Map<CheckType, ItemCheckStubCommandResolver> stubCommands;
+    private Map<String, ItemCheckStubCommandResolver> stubCommands;
     @Mock private ItemCheckStubCommandResolver itemCheckStubCommand;
     @Instance private CharacterHandler characterHandler;
     private ResolvationData resolvationData;
@@ -100,8 +100,8 @@ public class ItemCheckCommandResolverTest {
     @Test(expectedExceptions = UnsupportedOperationException.class)
     public void testResolveWhenUnsupportedCheckTypeShouldThrowException() {
         // GIVEN
-        command.setCheckType(CheckType.section);
-        logger.info("Checking availability of {} '{}'.", CheckType.section, "3257");
+        command.setCheckType("section");
+        logger.info("Checking availability of {} '{}'.", "section", "3257");
         underTest.setStubCommands(stubCommands);
         mockControl.replay();
         // WHEN

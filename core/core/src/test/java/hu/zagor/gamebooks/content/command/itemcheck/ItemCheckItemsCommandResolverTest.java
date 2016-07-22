@@ -49,7 +49,7 @@ public class ItemCheckItemsCommandResolverTest {
         dontHave = new ParagraphData();
         parent.setHave(have);
         parent.setDontHave(dontHave);
-        parent.setCheckType(CheckType.items);
+        parent.setCheckType("items");
         parent.setId("1001 and 1002");
         info = new BookInformations(1L);
         info.setCharacterHandler(characterHandler);

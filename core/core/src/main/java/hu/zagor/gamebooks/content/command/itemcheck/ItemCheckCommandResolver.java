@@ -17,7 +17,7 @@ import org.springframework.util.Assert;
  */
 public class ItemCheckCommandResolver extends TypeAwareCommandResolver<ItemCheckCommand> {
     @LogInject private Logger logger;
-    private Map<CheckType, ItemCheckStubCommandResolver> stubCommands;
+    private Map<String, ItemCheckStubCommandResolver> stubCommands;
 
     @Override
     protected CommandResolveResult doResolveWithResolver(final ItemCheckCommand command, final ResolvationData resolvationData) {
@@ -52,7 +52,7 @@ public class ItemCheckCommandResolver extends TypeAwareCommandResolver<ItemCheck
         return result;
     }
 
-    public void setStubCommands(final Map<CheckType, ItemCheckStubCommandResolver> stubCommands) {
+    public void setStubCommands(final Map<String, ItemCheckStubCommandResolver> stubCommands) {
         this.stubCommands = stubCommands;
     }
 

@@ -17,7 +17,7 @@ public class ItemCheckFfAttributeCommandResolver implements ItemCheckStubCommand
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         ParagraphData toResolve;
 
-        final String attribute = parent.getCheckType().toString();
+        final String attribute = parent.getCheckType();
         if (getAttributeValue((FfCharacter) resolvationData.getCharacter(), characterHandler, attribute) >= Integer.parseInt(parent.getId())) {
             toResolve = parent.getHave();
         } else {

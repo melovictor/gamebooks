@@ -9,7 +9,6 @@ import hu.zagor.gamebooks.books.contentransforming.section.CommandSubTransformer
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
-import hu.zagor.gamebooks.content.command.itemcheck.CheckType;
 import hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommand;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -63,7 +62,7 @@ public class ItemCheckTransformerShorthandTest extends AbstractTransformerTest {
         underTest.setStubs(stubs);
 
         itemCheckCommand = new ItemCheckCommand();
-        itemCheckCommand.setCheckType(CheckType.item);
+        itemCheckCommand.setCheckType("item");
         itemCheckCommand.setId(ID);
     }
 

@@ -45,7 +45,7 @@ public class ItemCheckAttributeEqualityCommandResolverTest {
 
     public void testResolveWhenResolvedEnumValueEqualsAmountShouldReturnHave() {
         // GIVEN
-        expect(parent.getCheckType()).andReturn(CheckType.enumAttribute);
+        expect(parent.getCheckType()).andReturn("enumAttribute");
         expect(parent.getId()).andReturn("specialSkill");
         expect(parent.getAmount()).andReturn(3);
         expect(attributeHandler.resolveValue(character, "specialSkill")).andReturn(3);
@@ -59,7 +59,7 @@ public class ItemCheckAttributeEqualityCommandResolverTest {
 
     public void testResolveWhenResolvedNonEnumValueDoesNotEqualAmountShouldReturnDontHave() {
         // GIVEN
-        expect(parent.getCheckType()).andReturn(CheckType.status);
+        expect(parent.getCheckType()).andReturn("status");
         expect(parent.getId()).andReturn("1,4,5");
         expect(attributeHandler.resolveValue(character, "status")).andReturn(3);
         expect(parent.getDontHave()).andReturn(dontHave);

@@ -11,7 +11,6 @@ import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand;
 import hu.zagor.gamebooks.content.command.attributetest.SuccessFailureDataContainer;
 import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightOutcome;
-import hu.zagor.gamebooks.content.command.itemcheck.CheckType;
 import hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommand;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
@@ -133,7 +132,7 @@ public class SorMagicChainPreparatorService {
         usedMagicChain.addCommand(firstLuckTest);
 
         final ItemCheckCommand checkItemCommand = new ItemCheckCommand();
-        checkItemCommand.setCheckType(CheckType.item);
+        checkItemCommand.setCheckType("item");
         checkItemCommand.setId("3044");
         checkItemCommand.setAmount(1);
         checkItemCommand.setDontHave(usedMagicChain);
