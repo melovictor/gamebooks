@@ -12,21 +12,21 @@ public class HungarianReplacer implements Replacer {
     private static final String CHOICE_B = "(?: (.*)" + TURNTO + "){0,1}";
 
     private final Pattern multiChoiceSectionPattern = Pattern
-        .compile("([0-9]+)\\.\\s+(.*[?!.–]) (.*)" + TURNTO + " (.*)" + TURNTO + "." + CHOICE_B + CHOICE_B + CHOICE_B + CHOICE_B + CHOICE_B, Pattern.DOTALL);
+        .compile("([0-9]+)\\.{0,1}\\s+(.*[?!.–]) (.*)" + TURNTO + " (.*)" + TURNTO + "." + CHOICE_B + CHOICE_B + CHOICE_B + CHOICE_B + CHOICE_B, Pattern.DOTALL);
     private final Pattern singleChoiceLikeMultiSectionPattern = Pattern.compile("([0-9]+)\\.\\s+(.*[?!….–]) (.*)" + TURNTO, Pattern.DOTALL);
     private final Pattern singleSendoffSectionPattern = Pattern.compile("([0-9]+)\\.?\\s+(.*[?!.…–]) " + BIG_TURNTO, Pattern.DOTALL);
     private final Pattern multiChoiceListSectionPattern = Pattern.compile(
-        "([0-9]+)\\.\\s+(.*[?!.:])[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A,
+        "([0-9]+)\\.{0,1}\\s+(.*[?!.:])[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A,
         Pattern.DOTALL | Pattern.COMMENTS);
     private final Pattern multiChoiceListSectionPattern2 = Pattern
-        .compile("([0-9]+)\\.\\s+(.*[?!.:])[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A);
+        .compile("([0-9]+)\\.{0,1}\\s+(.*[?!.:])[\\r\\n]+(.*?)[ \\t]+" + BIG_TURNTO + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A + CHOICE_A);
 
     private final Pattern multiChoiceContinuousSectionPattern = Pattern.compile(
-        "([0-9]+)\\.\\s+(.*?[?!.])\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!](?:\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]){0,1}",
+        "([0-9]+)\\.{0,1}\\s+(.*?[?!.])\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!](?:\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]+)-r[ace][.!]){0,1}",
         Pattern.DOTALL | Pattern.COMMENTS);
 
     private final Pattern mcX = Pattern.compile(
-        "([0-9]*)\\.\\s+(.*?[.?!])\\s+([^.?!]*), lapozz az? ([0-9]*)-r..(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}",
+        "([0-9]*)\\.{0,1}\\s+(.*?[.?!])\\s+([^.?!]*), lapozz az? ([0-9]*)-r..(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}(?:\\s+([^.?!]*), lapozz az? ([0-9]*)-r..){0,1}",
         Pattern.DOTALL);
 
     private static final String PARENTHESIS_CHOICE = "(?:([^(]*)\\(lapozz az? ([0-9]+)-r[ace]\\)[.,?]\\s*){0,1}";
