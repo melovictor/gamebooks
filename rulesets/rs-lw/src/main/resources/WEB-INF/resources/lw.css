@@ -28,7 +28,6 @@
   width: 100% !important;
 }
 
-
 .lwShadowEquipment {
   padding: 5px 5px 30px;
   width: 923px;
@@ -48,7 +47,7 @@
   font-style: italic;
 }
 
-div.lwMainAttribute3, div.lwMainAttribute2 {
+div.lwMainAttribute4, div.lwMainAttribute3, div.lwMainAttribute2 {
   width: 295px;
   display: inline-block;
   border: 2px solid black;
@@ -57,6 +56,10 @@ div.lwMainAttribute3, div.lwMainAttribute2 {
   min-height: 100px;
   float: left;
   margin-right: 5px;
+}
+div.lwMainAttribute4 {
+  width: 218px;
+  margin-right: 3px;
 }
 
 div.lwMainAttribute2 {
@@ -70,8 +73,17 @@ div.lwMainAttributeValue {
   position: relative;
 }
 
+#lwDisciplinesList span {
+  display: block;
+}
 #lwDisciplinesList span[data-available='false'] {
-  color: #776060;
+  /*color: #776060;*/
+  display: none;
 }
 
-
+.lwSlot {
+  border: 1px solid black;
+}
+.lwSlot +.lwSlot {
+  border-top: 0;
+}

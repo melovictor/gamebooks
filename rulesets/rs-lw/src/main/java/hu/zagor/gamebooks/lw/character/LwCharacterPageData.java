@@ -3,6 +3,9 @@ package hu.zagor.gamebooks.lw.character;
 import hu.zagor.gamebooks.character.handler.LwCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.LwAttributeHandler;
 import hu.zagor.gamebooks.character.item.Item;
+import hu.zagor.gamebooks.character.item.ItemType;
+import hu.zagor.gamebooks.character.item.LwItem;
+import hu.zagor.gamebooks.character.item.Placement;
 import hu.zagor.gamebooks.raw.character.RawCharacterPageData;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -21,10 +24,10 @@ public class LwCharacterPageData extends RawCharacterPageData {
     private final int initialEndurance;
     private final int combatSkill;
 
-    private final List<Item> weapons = new ArrayList<>(2);
-    private final List<Item> normalEquipment = new ArrayList<>(8);
-    private final List<Item> specialEquipment = new ArrayList<>();
-    private final List<Item> shadows = new ArrayList<>();
+    private final List<LwItem> weapons = new ArrayList<>(2);
+    private final List<LwItem> normalEquipment = new ArrayList<>(8);
+    private final List<LwItem> specialEquipment = new ArrayList<>();
+    private final List<LwItem> shadows = new ArrayList<>();
     private final int gold;
 
     /**
@@ -46,6 +49,33 @@ public class LwCharacterPageData extends RawCharacterPageData {
         final Weaponskill weaponskill = character.getKaiDisciplines().getWeaponskill();
         if (weaponskill.isWeaponskillObtained()) {
             weaponskillWeapon = obtainLearnedWeaponName(weaponskill);
+        }
+
+        fillItems();
+    }
+
+    private void fillItems() {
+        LwItem defWpn = null;
+
+        for (final Item itemObject : character.getEquipment()) {
+            final LwItem item = (LwItem) itemObject;
+            if ("defWpn".equals(item.getId())) {
+                defWpn = item;
+            } else {
+                if (item.getItemType() == ItemType.shadow) {
+                    shadows.add(item);
+                } else if (item.getPlacement() == Placement.weapon) {
+                    weapons.add(item);
+                } else if (item.getPlacement() == Placement.special) {
+                    specialEquipment.add(item);
+                } else if (item.getPlacement() == Placement.backpack) {
+                    normalEquipment.add(item);
+                }
+            }
+        }
+
+        if (weapons.isEmpty() && defWpn != null) {
+            weapons.add(defWpn);
         }
     }
 
@@ -71,15 +101,15 @@ public class LwCharacterPageData extends RawCharacterPageData {
         return !character.isInitialized() || attributeHandler.isAlive(character);
     }
 
-    public List<Item> getWeapons() {
+    public List<LwItem> getWeapons() {
         return weapons;
     }
 
-    public List<Item> getNormalEquipment() {
+    public List<LwItem> getNormalEquipment() {
         return normalEquipment;
     }
 
-    public List<Item> getSpecialEquipment() {
+    public List<LwItem> getSpecialEquipment() {
         return specialEquipment;
     }
 
@@ -91,7 +121,7 @@ public class LwCharacterPageData extends RawCharacterPageData {
         return initialEndurance;
     }
 
-    public List<Item> getShadows() {
+    public List<LwItem> getShadows() {
         return shadows;
     }
 
