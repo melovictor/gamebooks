@@ -11,14 +11,14 @@ import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
+import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.ff.ff.sa.character.Ff12Character;
 import hu.zagor.gamebooks.ff.ff.sa.enemy.DeityWeapon;
 import hu.zagor.gamebooks.ff.ff.sa.enemy.Ff12Enemy;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import java.util.List;
@@ -34,7 +34,7 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component("shootingff12FightRoundResolver")
-public class ShootingFf12FightRoundResolver implements FightRoundResolver {
+public class ShootingFf12FightRoundResolver implements FfFightRoundResolver {
     private static final int DISINTEGRATOR_DAMAGE = 24;
     private static final int STRANGLING_VINE_AUTO_DAMAGE = -2;
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
@@ -44,7 +44,7 @@ public class ShootingFf12FightRoundResolver implements FightRoundResolver {
     @Resource(name = "deityWeapons") private Map<Integer, DeityWeapon> deityWeapons;
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final FightRoundResult[] results = new FightRoundResult[command.getResolvedEnemies().size()];
         final FightCommandMessageList messages = command.getMessages();
 
@@ -91,7 +91,7 @@ public class ShootingFf12FightRoundResolver implements FightRoundResolver {
         }
     }
 
-    private void enemiesAreShootingAtHero(final FightCommand command, final ResolvationData resolvationData) {
+    private void enemiesAreShootingAtHero(final FfFightCommand command, final ResolvationData resolvationData) {
         final Ff12Character character = (Ff12Character) resolvationData.getCharacter();
         final FightCommandMessageList messages = command.getMessages();
 
@@ -247,7 +247,7 @@ public class ShootingFf12FightRoundResolver implements FightRoundResolver {
     }
 
     @Override
-    public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
+    public void resolveFlee(final FfFightCommand command, final ResolvationData resolvationData) {
         throw new UnsupportedOperationException("Fleeing from battle is not supported in this fight mode.");
     }
 

@@ -4,9 +4,9 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightOutcome;
-import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver;
+import hu.zagor.gamebooks.content.command.fight.roundresolver.FfFightRoundResolver;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.Ship15FightRoundResolver;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.ff.trok.character.Ff15Character;
@@ -20,7 +20,7 @@ import java.util.List;
 public class Ff15FightCommandShipSubResolver extends FightCommandBasicSubResolver {
 
     @Override
-    public List<ParagraphData> doResolve(final FightCommand command, final ResolvationData resolvationData) {
+    public List<ParagraphData> doResolve(final FfFightCommand command, final ResolvationData resolvationData) {
         final List<ParagraphData> resolveList = new ArrayList<>();
         resolveBattlingParties(command, resolvationData, null);
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
@@ -31,11 +31,11 @@ public class Ff15FightCommandShipSubResolver extends FightCommandBasicSubResolve
         return resolveList;
     }
 
-    private void resolveBattleRound(final FightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
+    private void resolveBattleRound(final FfFightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final String lastFightCommand = characterHandler.getInteractionHandler().getLastFightCommand(character);
-        if (FightCommand.ATTACKING.equals(lastFightCommand)) {
+        if (FfFightCommand.ATTACKING.equals(lastFightCommand)) {
             handleAttacking(command, resolvationData, resolveList);
         } else {
             command.setBattleType("ship-15");
@@ -44,11 +44,11 @@ public class Ff15FightCommandShipSubResolver extends FightCommandBasicSubResolve
     }
 
     @Override
-    protected void handleAttacking(final FightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
+    protected void handleAttacking(final FfFightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
         command.increaseBattleRound();
         command.getMessages().setRoundMessage(command.getRoundNumber());
 
-        final FightRoundResolver roundResolver = getBeanFactory().getBean(Ship15FightRoundResolver.class);
+        final FfFightRoundResolver roundResolver = getBeanFactory().getBean(Ship15FightRoundResolver.class);
         roundResolver.resolveRound(command, resolvationData, null);
 
         if (allEnemiesDead(command.getResolvedEnemies())) {

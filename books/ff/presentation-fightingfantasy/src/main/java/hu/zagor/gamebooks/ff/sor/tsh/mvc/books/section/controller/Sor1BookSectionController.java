@@ -6,7 +6,7 @@ import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.Paragraph;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightRoundBoundingCommand;
 import hu.zagor.gamebooks.content.commandlist.CommandList;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
@@ -74,11 +74,11 @@ public class Sor1BookSectionController extends SorBookSectionController {
             final Paragraph paragraph = wrapper.getParagraph();
             final CommandList commands = paragraph.getData().getCommands();
             if (!commands.isEmpty()) {
-                final FightCommand fightCommand = (FightCommand) commands.get(0);
+                final FfFightCommand ffFightCommand = (FfFightCommand) commands.get(0);
                 if (pickedUpHalberd((FfEnemy) wrapper.getEnemies().get(TROLL_ID))) {
-                    stopPickUpAttempt(fightCommand);
-                } else if (roundFive(fightCommand)) {
-                    alwaysTryToPickUpHalberd(fightCommand);
+                    stopPickUpAttempt(ffFightCommand);
+                } else if (roundFive(ffFightCommand)) {
+                    alwaysTryToPickUpHalberd(ffFightCommand);
                 }
             }
         }
@@ -88,16 +88,16 @@ public class Sor1BookSectionController extends SorBookSectionController {
         return enemy.getSkill() == INITIAL_TROLL_SKILL;
     }
 
-    private void stopPickUpAttempt(final FightCommand fightCommand) {
-        fightCommand.setBeforeBounding(null);
+    private void stopPickUpAttempt(final FfFightCommand ffFightCommand) {
+        ffFightCommand.setBeforeBounding(null);
     }
 
-    private void alwaysTryToPickUpHalberd(final FightCommand fightCommand) {
-        final FightRoundBoundingCommand beforeBounding = fightCommand.getBeforeBounding();
+    private void alwaysTryToPickUpHalberd(final FfFightCommand ffFightCommand) {
+        final FightRoundBoundingCommand beforeBounding = ffFightCommand.getBeforeBounding();
         beforeBounding.setNth(1);
     }
 
-    private boolean roundFive(final FightCommand command) {
+    private boolean roundFive(final FfFightCommand command) {
         return command.getRoundNumber() == TROLL_CLUMSINESS_OVER;
     }
 

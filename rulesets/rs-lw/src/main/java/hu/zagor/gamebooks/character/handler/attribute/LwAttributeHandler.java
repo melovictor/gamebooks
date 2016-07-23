@@ -35,7 +35,11 @@ public class LwAttributeHandler extends ComplexAttributeHandler {
         sanityCheck(character);
     }
 
-    private void sanityCheck(final LwCharacter character) {
+    /**
+     * Does a sanity check on the character.
+     * @param character the {@link LwCharacter} to check
+     */
+    public void sanityCheck(final LwCharacter character) {
         if (character.getEndurance() > character.getInitialEndurance()) {
             character.setEndurance(character.getInitialEndurance());
         }

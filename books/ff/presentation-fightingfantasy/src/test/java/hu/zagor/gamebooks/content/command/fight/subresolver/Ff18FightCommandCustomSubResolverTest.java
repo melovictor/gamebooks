@@ -14,7 +14,7 @@ import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHan
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightOutcome;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.Custom18FightRoundResolver;
@@ -47,7 +47,7 @@ public class Ff18FightCommandCustomSubResolverTest {
     private Ff18FightCommandCustomSubResolver underTest;
     @MockControl private IMocksControl mockControl;
     private ResolvationData resolvationData;
-    @Mock private FightCommand command;
+    @Mock private FfFightCommand command;
     private ParagraphData rootData;
     @Mock private FfCharacter character;
     @Mock private Map<String, Enemy> enemies;

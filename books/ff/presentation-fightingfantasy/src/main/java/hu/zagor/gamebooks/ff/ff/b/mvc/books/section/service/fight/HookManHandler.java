@@ -1,7 +1,7 @@
 package hu.zagor.gamebooks.ff.ff.b.mvc.books.section.service.fight;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -16,13 +16,13 @@ public class HookManHandler extends Ff60BeforeAfterRoundEnemyHandler {
     private static final int HOOK_MAN_EXTRA_HIT = 4;
 
     @Override
-    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public boolean shouldExecutePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
         return results[0] == FightRoundResult.LOSE;
     }
 
     @Override
-    public void executePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public void executePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
         final FightCommandMessageList messages = command.getMessages();
         messages.switchToPostRoundMessages();

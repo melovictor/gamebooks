@@ -20,8 +20,8 @@
 
 
   <util:map id="ff36ExtraCommandResolvers" key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver">
-    <entry key="hu.zagor.gamebooks.content.command.fight.FightCommand">
-      <bean class="hu.zagor.gamebooks.content.command.fight.FightCommandResolver" id="ff36FightCommandResolver">
+    <entry key="hu.zagor.gamebooks.content.command.fight.FfFightCommand">
+      <bean class="hu.zagor.gamebooks.content.command.fight.FfFightCommandResolver" id="ff36FightCommandResolver">
         <property name="subResolvers">
           <util:map key-type="java.lang.String" value-type="hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResolver">
             <entry key="basic" value-ref="fightCommandBasicSubResolver" />

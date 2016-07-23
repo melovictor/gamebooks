@@ -2,11 +2,11 @@ package hu.zagor.gamebooks.ff.ff.b.mvc.books.section.service.fight;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
+import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.ff.ff.b.character.Ff60Character;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,12 +21,12 @@ public class NinetailHandler extends Ff60BeforeAfterRoundEnemyHandler {
     private static final int WEAPON_ROLL_POSITION = 3;
 
     @Override
-    public boolean shouldExecutePreHandler(final FightCommand command, final EnemyPrePostFightDataContainer data) {
+    public boolean shouldExecutePreHandler(final FfFightCommand command, final EnemyPrePostFightDataContainer data) {
         return true;
     }
 
     @Override
-    public void executePreHandler(final FightCommand command, final EnemyPrePostFightDataContainer data) {
+    public void executePreHandler(final FfFightCommand command, final EnemyPrePostFightDataContainer data) {
         int[] preFightRoll;
         preFightRoll = determineFutureTailAttackRoll();
         if (tailWillHitUs(preFightRoll)) {
@@ -39,13 +39,13 @@ public class NinetailHandler extends Ff60BeforeAfterRoundEnemyHandler {
     }
 
     @Override
-    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public boolean shouldExecutePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
         return results[0] == FightRoundResult.LOSE;
     }
 
     @Override
-    public void executePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public void executePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
         final FightCommandMessageList messages = command.getMessages();
         if (tailHitsUs(command, data.getPreFightRoll())) {
@@ -66,14 +66,14 @@ public class NinetailHandler extends Ff60BeforeAfterRoundEnemyHandler {
         return Boolean.parseBoolean(luck);
     }
 
-    private boolean tailHitsUs(final FightCommand command, final int[] ninetailAttackRoll) {
+    private boolean tailHitsUs(final FfFightCommand command, final int[] ninetailAttackRoll) {
         final FightCommandMessageList messages = command.getMessages();
         messages.addKey(WEAPON_ROLL_POSITION, "page.ff.label.random.after", getRenderer().render(getGenerator().getDefaultDiceSide(), ninetailAttackRoll),
             ninetailAttackRoll[0]);
         return tailWillHitUs(ninetailAttackRoll);
     }
 
-    private void reportTailHit(final FightCommand command, final ResolvationData resolvationData) {
+    private void reportTailHit(final FfFightCommand command, final ResolvationData resolvationData) {
         final int[] randomNumber = getGenerator().getRandomNumber(1);
 
         final FightCommandMessageList messages = command.getMessages();
@@ -87,11 +87,11 @@ public class NinetailHandler extends Ff60BeforeAfterRoundEnemyHandler {
         command.getMessages().addKey("page.ff60.fight.ninetail.hit", damage);
     }
 
-    private void reportTailMissed(final FightCommand command) {
+    private void reportTailMissed(final FfFightCommand command) {
         command.getMessages().addKey("page.ff60.fight.ninetail.missed");
     }
 
-    private boolean luckTestSucceeds(final FightCommand command, final ResolvationData resolvationData) {
+    private boolean luckTestSucceeds(final FfFightCommand command, final ResolvationData resolvationData) {
         final int[] randomNumber = getGenerator().getRandomNumber(2);
 
         final Ff60Character character = (Ff60Character) resolvationData.getCharacter();

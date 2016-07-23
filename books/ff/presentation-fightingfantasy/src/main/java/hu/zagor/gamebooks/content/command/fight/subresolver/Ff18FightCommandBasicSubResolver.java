@@ -7,11 +7,11 @@ import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
+import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class Ff18FightCommandBasicSubResolver implements FightCommandSubResolver
     @Autowired @Qualifier("fightCommandBasicSubResolver") private FightCommandBasicSubResolver superResolver;
 
     @Override
-    public List<ParagraphData> doResolve(final FightCommand command, final ResolvationData resolvationData) {
+    public List<ParagraphData> doResolve(final FfFightCommand command, final ResolvationData resolvationData) {
         final boolean fightCommandIssued = fightCommandIssued(resolvationData);
 
         if (fightCommandIssued) {
@@ -55,7 +55,7 @@ public class Ff18FightCommandBasicSubResolver implements FightCommandSubResolver
         return doResolve;
     }
 
-    private void handleDirtyTrick(final FightCommand command, final ResolvationData resolvationData) {
+    private void handleDirtyTrick(final FfFightCommand command, final ResolvationData resolvationData) {
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final FfCharacterItemHandler itemHandler = (FfCharacterItemHandler) resolvationData.getCharacterHandler().getItemHandler();
         final String enemyId = getEnemyId(resolvationData);
@@ -144,15 +144,15 @@ public class Ff18FightCommandBasicSubResolver implements FightCommandSubResolver
         return generator.getRandomNumber(1);
     }
 
-    private boolean lostLastRound(final FightCommand command, final ResolvationData resolvationData) {
+    private boolean lostLastRound(final FfFightCommand command, final ResolvationData resolvationData) {
         return fetchBattleStatistics(command, resolvationData).getSubsequentLose() > 0;
     }
 
-    private boolean wonLastRound(final FightCommand command, final ResolvationData resolvationData) {
+    private boolean wonLastRound(final FfFightCommand command, final ResolvationData resolvationData) {
         return fetchBattleStatistics(command, resolvationData).getSubsequentWin() > 0;
     }
 
-    private BattleStatistics fetchBattleStatistics(final FightCommand command, final ResolvationData resolvationData) {
+    private BattleStatistics fetchBattleStatistics(final FfFightCommand command, final ResolvationData resolvationData) {
         final String enemyId = getEnemyId(resolvationData);
         final BattleStatistics battleStatistics = command.getBattleStatistics(enemyId);
         return battleStatistics;

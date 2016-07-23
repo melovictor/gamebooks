@@ -1,9 +1,7 @@
 package hu.zagor.gamebooks.content.command.fight.roundresolver;
 
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-
 import java.util.List;
-
 import org.springframework.stereotype.Component;
 
 /**

@@ -4,9 +4,7 @@ import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.command.AbstractCommandTest;
 import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.content.command.market.domain.MarketElement;
-
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;

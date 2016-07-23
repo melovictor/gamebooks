@@ -2,7 +2,7 @@ package hu.zagor.gamebooks.ff.ff.tot.mvc.books.section.service.fight;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.Enemy;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -19,14 +19,14 @@ public class FireflyHandler extends Ff14BeforeAfterRoundEnemyHandler {
     private static final int FIREFLY_DISCHARGE_ATTACK = 4;
 
     @Override
-    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public boolean shouldExecutePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
         final int index = command.getResolvedEnemies().indexOf(data.getCurrentEnemy());
         return results[index] == FightRoundResult.LOSE;
     }
 
     @Override
-    public void executePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public void executePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
 
         final int[] roll = getGenerator().getRandomNumber(1);

@@ -4,7 +4,7 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
@@ -32,7 +32,7 @@ public class SingleSor2FightRoundResolver extends SingleSorFightRoundResolver {
     @Autowired private DiceResultRenderer renderer;
 
     @Override
-    protected void damageEnemy(final FightCommand command, final FightDataDto dto) {
+    protected void damageEnemy(final FfFightCommand command, final FightDataDto dto) {
         final FfCharacter character = dto.getCharacter();
         final FfCharacterHandler characterHandler = dto.getCharacterHandler();
         if (weSmokedWeed(character, characterHandler)) {
@@ -42,7 +42,7 @@ public class SingleSor2FightRoundResolver extends SingleSorFightRoundResolver {
         }
     }
 
-    private void handleWeedFilledDamageCausing(final FightCommand command, final FightDataDto dto, final FfCharacter character,
+    private void handleWeedFilledDamageCausing(final FfFightCommand command, final FightDataDto dto, final FfCharacter character,
         final FfCharacterHandler characterHandler) {
         final int[] roll = generator.getRandomNumber(1);
         final String diceImage = renderer.render(generator.getDefaultDiceSide(), roll);
@@ -86,7 +86,7 @@ public class SingleSor2FightRoundResolver extends SingleSorFightRoundResolver {
     }
 
     @Override
-    void doTieFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
+    void doTieFight(final FfFightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
         final FfEnemy enemy = dto.getEnemy();
         if ("19".equals(enemy.getId())) {
             final FfCharacter character = dto.getCharacter();

@@ -6,27 +6,27 @@ import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import java.util.List;
 import org.springframework.stereotype.Component;
 
 /**
- * Class for resolving the {@link FightCommand} object in the basic mode.
+ * Class for resolving the {@link FfFightCommand} object in the basic mode.
  * @author Tamas_Szekeres
  */
 @Component
 public class FightCommandBasicSubResolver extends AbstractFightCommandSubResolver {
 
     @Override
-    protected void prepareLuckTest(final FightCommand command, final FfCharacter character, final FfUserInteractionHandler interactionHandler) {
+    protected void prepareLuckTest(final FfFightCommand command, final FfCharacter character, final FfUserInteractionHandler interactionHandler) {
         command.setLuckOnHit(Boolean.valueOf(interactionHandler.getLastFightCommand(character, "luckOnHit")));
         command.setLuckOnDefense(Boolean.valueOf(interactionHandler.getLastFightCommand(character, "luckOnDefense")));
     }
 
     @Override
-    protected FfCharacter resolveCharacter(final FightCommand command, final ResolvationData resolvationData) {
+    protected FfCharacter resolveCharacter(final FfFightCommand command, final ResolvationData resolvationData) {
         return (FfCharacter) resolvationData.getCharacter();
     }
 

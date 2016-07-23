@@ -3,11 +3,11 @@ package hu.zagor.gamebooks.ff.ff.aod.mvc.books.section.service.fight;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
-import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver;
+import hu.zagor.gamebooks.content.command.fight.roundresolver.FfFightRoundResolver;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import java.util.List;
@@ -22,13 +22,13 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component
-public class CustomFf36FightRoundResolver implements FightRoundResolver {
+public class CustomFf36FightRoundResolver implements FfFightRoundResolver {
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
     @Autowired private DiceResultRenderer renderer;
     @Resource(name = "ff36BattleRoundResults") private Map<Integer, BattleRoundResult> battleRoundResults;
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
 
         final FightCommandMessageList messages = command.getMessages();
         command.increaseBattleRound();
@@ -101,7 +101,7 @@ public class CustomFf36FightRoundResolver implements FightRoundResolver {
     }
 
     @Override
-    public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
+    public void resolveFlee(final FfFightCommand command, final ResolvationData resolvationData) {
         throw new UnsupportedOperationException();
     }
 

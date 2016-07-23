@@ -8,9 +8,7 @@ import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
-
 import java.util.Locale;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;

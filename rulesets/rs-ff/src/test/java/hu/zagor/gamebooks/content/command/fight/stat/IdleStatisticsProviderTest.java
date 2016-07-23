@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.content.command.fight.stat;
 import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 import hu.zagor.gamebooks.content.command.fight.domain.EventStatistics;
 import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;

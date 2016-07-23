@@ -14,7 +14,7 @@ import hu.zagor.gamebooks.character.item.WeaponSubType;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.Command;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightRoundBoundingCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
@@ -38,7 +38,7 @@ public class AllAtOnceFf18FightRoundResolverTest {
 
     private AllAtOnceFf18FightRoundResolver underTest;
     private IMocksControl mockControl;
-    private FightCommand command;
+    private FfFightCommand command;
     private FightDataDto dto;
     private FfEnemy enemy;
     private FightCommandMessageList messages;
@@ -60,7 +60,7 @@ public class AllAtOnceFf18FightRoundResolverTest {
         mockControl = EasyMock.createStrictControl();
         setUpClassUnchecked();
         underTest = new AllAtOnceFf18FightRoundResolver();
-        command = mockControl.createMock(FightCommand.class);
+        command = mockControl.createMock(FfFightCommand.class);
         enemy = mockControl.createMock(FfEnemy.class);
         messages = mockControl.createMock(FightCommandMessageList.class);
         character = mockControl.createMock(FfCharacter.class);

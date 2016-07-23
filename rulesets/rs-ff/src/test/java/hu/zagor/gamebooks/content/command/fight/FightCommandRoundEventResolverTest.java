@@ -34,7 +34,7 @@ public class FightCommandRoundEventResolverTest {
     @UnderTest private FightCommandRoundEventResolver underTest;
     @MockControl private IMocksControl mockControl;
     @Instance private List<ParagraphData> resolveList;
-    private FightCommand command;
+    private FfFightCommand command;
     @Mock private BattleStatistics stats;
     @Instance private Map<String, BattleStatistics> battleStatistics;
     @Mock private StatisticsProvider statProvider;
@@ -54,7 +54,7 @@ public class FightCommandRoundEventResolverTest {
     @BeforeMethod
     public void setUpMethod() {
         resolveList.clear();
-        command = new FightCommand();
+        command = new FfFightCommand();
         command.setOngoing(true);
         Whitebox.setInternalState(command, "battleStatistics", battleStatistics);
         Whitebox.setInternalState(command, "messages", messages);

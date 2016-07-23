@@ -5,10 +5,9 @@ import hu.zagor.gamebooks.books.AbstractTransformerTest;
 import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTransformer;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -30,7 +29,7 @@ public class FightWinRoundTransformerTest extends AbstractTransformerTest {
     private IMocksControl mockControl;
     private BeanFactory beanFactory;
     private BookParagraphDataTransformer parent;
-    private FightCommand command;
+    private FfFightCommand command;
     private ChoicePositionCounter positionCounter;
     private RoundEvent roundEvent;
     private FfParagraphData paragraphData;
@@ -43,7 +42,7 @@ public class FightWinRoundTransformerTest extends AbstractTransformerTest {
         beanFactory = mockControl.createMock(BeanFactory.class);
         Whitebox.setInternalState(underTest, "beanFactory", beanFactory);
         parent = mockControl.createMock(BookParagraphDataTransformer.class);
-        command = new FightCommand();
+        command = new FfFightCommand();
         roundEvent = new RoundEvent();
         positionCounter = mockControl.createMock(ChoicePositionCounter.class);
         paragraphData = new FfParagraphData();

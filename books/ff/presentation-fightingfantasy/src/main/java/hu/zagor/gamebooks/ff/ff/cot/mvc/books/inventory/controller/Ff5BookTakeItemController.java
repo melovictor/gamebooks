@@ -4,9 +4,7 @@ import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

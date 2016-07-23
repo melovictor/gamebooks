@@ -3,7 +3,7 @@ package hu.zagor.gamebooks.content.command.fight.roundresolver;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.item.Item;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import java.util.Map;
 import javax.annotation.Resource;
@@ -23,7 +23,7 @@ public class SorHeroAttackStrengthRoller implements HeroAttackStrengthRoller {
     @Autowired @Qualifier("d10") private RandomNumberGenerator generatorD10;
 
     @Override
-    public int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
+    public int[] getSelfAttackStrength(final FfCharacter character, final FfFightCommand command, final FfAttributeHandler attributeHandler) {
         final int[] generatedAttackStrength = generatorD6.getRandomNumber(2);
         if (hasSpecialGloves(character) && hasCriticalStamina(character, attributeHandler) && wantToRerollDice(generatedAttackStrength)) {
             rerollLowestDice(generatedAttackStrength);

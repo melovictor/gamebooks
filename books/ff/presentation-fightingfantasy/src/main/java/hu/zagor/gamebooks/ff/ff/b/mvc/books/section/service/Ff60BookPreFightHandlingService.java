@@ -7,7 +7,7 @@ import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -100,7 +100,7 @@ public class Ff60BookPreFightHandlingService extends EnemyDependentFfBookPreFigh
     }
 
     private int killEnemies(final HttpSessionWrapper wrapper, final int maxEnemiesKilled, final Set<String> effectiveAgainst) {
-        final FightCommand command = (FightCommand) wrapper.getParagraph().getItemsToProcess().get(0).getCommand();
+        final FfFightCommand command = (FfFightCommand) wrapper.getParagraph().getItemsToProcess().get(0).getCommand();
         final List<String> enemies = command.getEnemies();
         int killed = 0;
         for (final String enemyId : enemies) {

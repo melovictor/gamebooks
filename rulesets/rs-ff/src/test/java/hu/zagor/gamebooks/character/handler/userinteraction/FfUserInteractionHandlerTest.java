@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.character.handler.userinteraction;
 
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;

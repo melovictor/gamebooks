@@ -3,7 +3,7 @@ package hu.zagor.gamebooks.content.command.fight.roundresolver;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.RandomEnemyPickerLine;
@@ -23,7 +23,7 @@ public class RandomizedAllAtOnceFightRoundResolver extends AllAtOnceFightRoundRe
     @Autowired @Qualifier("d6RandomGenerator") private RandomNumberGenerator generator;
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final List<String> enemies = command.getEnemies();
         if (enemies.size() > 1) {
             randomizeEnemy(command, resolvationData);
@@ -31,7 +31,7 @@ public class RandomizedAllAtOnceFightRoundResolver extends AllAtOnceFightRoundRe
         return super.resolveRound(command, resolvationData, beforeRoundResult);
     }
 
-    private void randomizeEnemy(final FightCommand command, final ResolvationData resolvationData) {
+    private void randomizeEnemy(final FfFightCommand command, final ResolvationData resolvationData) {
         final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) resolvationData.getCharacterHandler().getInteractionHandler();
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final String lastFightCommand = interactionHandler.peekLastFightCommand(character, "enemyId");

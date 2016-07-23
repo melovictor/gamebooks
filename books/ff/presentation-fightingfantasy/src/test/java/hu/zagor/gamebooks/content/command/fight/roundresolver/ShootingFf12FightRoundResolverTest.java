@@ -13,14 +13,14 @@ import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHan
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.Paragraph;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
+import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.ff.sa.character.Ff12Character;
 import hu.zagor.gamebooks.ff.ff.sa.enemy.DeityWeapon;
 import hu.zagor.gamebooks.ff.ff.sa.enemy.Ff12Enemy;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
@@ -51,7 +51,7 @@ public class ShootingFf12FightRoundResolverTest {
 
     @MockControl private IMocksControl mockControl;
     @UnderTest private ShootingFf12FightRoundResolver underTest;
-    @Instance private FightCommand command;
+    @Instance private FfFightCommand command;
     private ResolvationData resolvationData;
     @Instance private FightBeforeRoundResult beforeRoundResult;
     private Ff12Enemy enemy;

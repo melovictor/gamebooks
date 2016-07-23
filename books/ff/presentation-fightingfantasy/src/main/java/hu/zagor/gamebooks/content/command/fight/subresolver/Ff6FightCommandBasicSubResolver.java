@@ -4,9 +4,8 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
-
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +23,7 @@ public class Ff6FightCommandBasicSubResolver extends FightCommandBasicSubResolve
     private static final String GUARD_DOG_B = "23";
 
     @Override
-    public List<ParagraphData> doResolve(final FightCommand command, final ResolvationData resolvationData) {
+    public List<ParagraphData> doResolve(final FfFightCommand command, final ResolvationData resolvationData) {
         final List<ParagraphData> resolveList = super.doResolve(command, resolvationData);
 
         handleScorpionBattleInterruption(command, resolveList);
@@ -33,7 +32,7 @@ public class Ff6FightCommandBasicSubResolver extends FightCommandBasicSubResolve
         return resolveList;
     }
 
-    private void handleGuardDogFleeOption(final FightCommand command, final ResolvationData resolvationData) {
+    private void handleGuardDogFleeOption(final FfFightCommand command, final ResolvationData resolvationData) {
         final Map<String, Enemy> enemies = resolvationData.getEnemies();
         final FfEnemy dogA = (FfEnemy) enemies.get(GUARD_DOG_A);
         final FfEnemy dogB = (FfEnemy) enemies.get(GUARD_DOG_B);
@@ -48,7 +47,7 @@ public class Ff6FightCommandBasicSubResolver extends FightCommandBasicSubResolve
         }
     }
 
-    private void handleScorpionBattleInterruption(final FightCommand command, final List<ParagraphData> resolveList) {
+    private void handleScorpionBattleInterruption(final FfFightCommand command, final List<ParagraphData> resolveList) {
         final int attackStrengthA = nz(command.getAttackStrengths().get(SCORPION_A));
         final int attackStrengthB = nz(command.getAttackStrengths().get(SCORPION_B));
         if (attackStrengthA >= SCORPION_OVERKILL_AS || attackStrengthB >= SCORPION_OVERKILL_AS) {

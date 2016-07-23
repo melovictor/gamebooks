@@ -8,14 +8,14 @@ import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.UserInteractionHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
+import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +41,7 @@ public class SingleSor3FightRoundResolver extends SingleFightRoundResolver {
     @Resource(name = "sor3Snattacats") private Set<String> snattaCat;
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         if (fightingWithAirSerpent(command)) {
             prepareAttackDefenseValues(resolvationData);
         }
@@ -69,7 +69,7 @@ public class SingleSor3FightRoundResolver extends SingleFightRoundResolver {
         return resolveRound;
     }
 
-    FightRoundResult[] superResolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    FightRoundResult[] superResolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         return super.resolveRound(command, resolvationData, beforeRoundResult);
     }
 
@@ -103,11 +103,11 @@ public class SingleSor3FightRoundResolver extends SingleFightRoundResolver {
         }
     }
 
-    private boolean fightingWithAirSerpent(final FightCommand command) {
+    private boolean fightingWithAirSerpent(final FfFightCommand command) {
         return command.getEnemies().contains(AIR_SERPENT_ID);
     }
 
-    private boolean notLastSnattacatJustDied(final FightCommand command, final ResolvationData resolvationData) {
+    private boolean notLastSnattacatJustDied(final FfFightCommand command, final ResolvationData resolvationData) {
         final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) resolvationData.getCharacterHandler().getInteractionHandler();
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final String enemyId = interactionHandler.peekLastFightCommand(character, LastFightCommand.ENEMY_ID);
@@ -119,7 +119,7 @@ public class SingleSor3FightRoundResolver extends SingleFightRoundResolver {
         return snattaCat.contains(enemyId);
     }
 
-    private boolean centaurReadyToSurrender(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] resolveRound) {
+    private boolean centaurReadyToSurrender(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] resolveRound) {
         boolean willigToSurrender = false;
         final List<String> enemies = command.getEnemies();
         final String firstId = enemies.contains("5") ? "5" : (enemies.contains("9") ? "9" : null);
@@ -154,7 +154,7 @@ public class SingleSor3FightRoundResolver extends SingleFightRoundResolver {
     }
 
     @Override
-    public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
+    public void resolveFlee(final FfFightCommand command, final ResolvationData resolvationData) {
         super.resolveFlee(command, resolvationData);
     }
 

@@ -7,7 +7,7 @@ import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
@@ -34,10 +34,10 @@ public class SingleFf23FightRoundResolverTest {
 
     @MockControl private IMocksControl mockControl;
     @UnderTest private SingleFf23FightRoundResolver underTest;
-    @Inject private FightRoundResolver superResolver;
+    @Inject private FfFightRoundResolver superResolver;
     @Inject private RandomNumberGenerator generator;
     @Inject private DiceResultRenderer renderer;
-    @Mock private FightCommand command;
+    @Mock private FfFightCommand command;
     @Instance private ResolvationData resolvationData;
     @Mock private FightBeforeRoundResult beforeRoundResult;
     @Mock private FfCharacter character;

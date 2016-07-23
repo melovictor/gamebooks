@@ -2,7 +2,7 @@ package hu.zagor.gamebooks.ff.sor.tss.mvc.books.section.service;
 
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.content.ProcessableItemHolder;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
@@ -28,7 +28,7 @@ public class Sor3Section487PostHandler extends FfCustomPrePostSectionHandler {
             if (!itemsToProcess.isEmpty()) {
                 final ProcessableItemHolder processableItemHolder = itemsToProcess.get(0);
                 if (!processableItemHolder.isParagraphDataHolder()) {
-                    final FightCommand command = (FightCommand) processableItemHolder.getCommand();
+                    final FfFightCommand command = (FfFightCommand) processableItemHolder.getCommand();
                     command.setAfterBounding(null);
                 }
             }

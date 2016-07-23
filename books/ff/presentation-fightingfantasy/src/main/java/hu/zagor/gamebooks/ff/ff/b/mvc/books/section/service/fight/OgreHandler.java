@@ -5,7 +5,7 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.SilentCapableResolver;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.random.RandomCommand;
@@ -22,7 +22,7 @@ public class OgreHandler extends Ff60BeforeAfterRoundEnemyHandler {
     private RandomCommand ogreRandomCommand;
 
     @Override
-    public void executePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public void executePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
         final Character character = resolvationData.getCharacter();
         final CharacterItemHandler itemHandler = resolvationData.getCharacterHandler().getItemHandler();

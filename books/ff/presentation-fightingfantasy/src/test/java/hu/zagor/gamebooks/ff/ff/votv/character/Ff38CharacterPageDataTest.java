@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.ff.ff.votv.character;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;

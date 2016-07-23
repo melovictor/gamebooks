@@ -6,7 +6,7 @@ import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.Paragraph;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.ff.sa.character.Ff12Character;
@@ -47,7 +47,7 @@ public class Ff12BookPreFightHandlingService implements FfBookPreFightHandlingSe
 
     private void damageEnemy(final HttpSessionWrapper wrapper, final FfEnemy enemy) {
         final int[] randomNumber = generator.getRandomNumber(1);
-        final FightCommand command = (FightCommand) wrapper.getParagraph().getItemsToProcess().get(0).getCommand();
+        final FfFightCommand command = (FfFightCommand) wrapper.getParagraph().getItemsToProcess().get(0).getCommand();
         command.getMessages().addKey("page.ff12.fight.pre.grenade", randomNumber[0], enemy.getCommonName());
         enemy.setStamina(enemy.getStamina() - randomNumber[0]);
     }
@@ -56,7 +56,7 @@ public class Ff12BookPreFightHandlingService implements FfBookPreFightHandlingSe
         final List<FfEnemy> enemies = new ArrayList<>();
 
         final Map<String, Enemy> enemyList = wrapper.getEnemies();
-        final FightCommand command = (FightCommand) wrapper.getParagraph().getItemsToProcess().get(0).getCommand();
+        final FfFightCommand command = (FfFightCommand) wrapper.getParagraph().getItemsToProcess().get(0).getCommand();
         for (final String enemyId : command.getEnemies()) {
             enemies.add((FfEnemy) enemyList.get(enemyId));
         }

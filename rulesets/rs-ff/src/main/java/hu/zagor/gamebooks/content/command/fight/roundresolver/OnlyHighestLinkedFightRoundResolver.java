@@ -7,7 +7,7 @@ import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.luck.BattleLuckTestParameters;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.WeaponSubType;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
@@ -29,7 +29,7 @@ import org.springframework.stereotype.Component;
 public class OnlyHighestLinkedFightRoundResolver extends AbstractFightRoundResolver {
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final List<FfEnemy> enemies = command.getResolvedEnemies();
         final FightRoundResult[] result = new FightRoundResult[enemies.size()];
         final FightCommandMessageList messages = command.getMessages();
@@ -65,7 +65,7 @@ public class OnlyHighestLinkedFightRoundResolver extends AbstractFightRoundResol
         return result;
     }
 
-    private Map<String, int[]> getEnemiesAttackValues(final List<FfEnemy> enemies, final FightCommand command) {
+    private Map<String, int[]> getEnemiesAttackValues(final List<FfEnemy> enemies, final FfFightCommand command) {
         final Map<String, int[]> enemyAttackValues = new HashMap<>();
         for (final FfEnemy enemy : enemies) {
             enemyAttackValues.put(enemy.getId(), getEnemyAttackStrength(enemy, command));
@@ -126,7 +126,7 @@ public class OnlyHighestLinkedFightRoundResolver extends AbstractFightRoundResol
         messages.addKey("page.ff.label.fight.single.successfulAttack", new Object[]{referenceEnemy.getCommonName()});
     }
 
-    private void handleVictoryLuckTest(final FightCommand command, final FightDataDto dto, final List<FfEnemy> enemies) {
+    private void handleVictoryLuckTest(final FfFightCommand command, final FightDataDto dto, final List<FfEnemy> enemies) {
         if (command.isLuckOnHit()) {
             final FightCommandMessageList messages = dto.getMessages();
 
@@ -158,7 +158,7 @@ public class OnlyHighestLinkedFightRoundResolver extends AbstractFightRoundResol
     }
 
     @Override
-    public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
+    public void resolveFlee(final FfFightCommand command, final ResolvationData resolvationData) {
         final FightCommandMessageList messages = command.getMessages();
         final FightFleeData fleeData = command.getFleeData();
         getFleeTextResourceList(messages, fleeData);

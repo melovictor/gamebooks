@@ -1,9 +1,8 @@
 package hu.zagor.gamebooks.books.contentransforming.section.stub.fight;
 
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightRoundBoundingCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
-
 import org.powermock.reflect.Whitebox;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -20,7 +19,7 @@ public class FightBeforeRoundTransformerTest {
     public void testSetRandomShouldSetRandomToBeforeRandom() {
         // GIVEN
         underTest = new FightBeforeRoundTransformer();
-        final FightCommand command = new FightCommand();
+        final FfFightCommand command = new FfFightCommand();
         final FightCommandMessageList messages = new FightCommandMessageList();
         Whitebox.setInternalState(command, "messages", messages);
         final FightRoundBoundingCommand fightRandom = new FightRoundBoundingCommand(command);

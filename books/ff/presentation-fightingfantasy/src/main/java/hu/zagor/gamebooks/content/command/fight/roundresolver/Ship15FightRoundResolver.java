@@ -4,7 +4,7 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
@@ -12,10 +12,8 @@ import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.ff.trok.character.Ff15Character;
 import hu.zagor.gamebooks.ff.ff.trok.character.domain.Ff15ShipAttributes;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -25,7 +23,7 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component
-public class Ship15FightRoundResolver implements FightRoundResolver {
+public class Ship15FightRoundResolver implements FfFightRoundResolver {
 
     @Autowired
     @Qualifier("d6")
@@ -34,7 +32,7 @@ public class Ship15FightRoundResolver implements FightRoundResolver {
     private DiceResultRenderer diceResultRenderer;
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final Ff15Character character = (Ff15Character) resolvationData.getCharacter();
         final Ff15ShipAttributes ship = character.getShipAttributes();
         final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) resolvationData.getCharacterHandler().getInteractionHandler();
@@ -58,7 +56,7 @@ public class Ship15FightRoundResolver implements FightRoundResolver {
         return null;
     }
 
-    private void sufferReturnFires(final ResolvationData resolvationData, final FightCommand command) {
+    private void sufferReturnFires(final ResolvationData resolvationData, final FfFightCommand command) {
         final Ff15Character character = (Ff15Character) resolvationData.getCharacter();
         final Ff15ShipAttributes ship = character.getShipAttributes();
         final FightCommandMessageList messages = command.getMessages();
@@ -72,11 +70,11 @@ public class Ship15FightRoundResolver implements FightRoundResolver {
     }
 
     @Override
-    public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
+    public void resolveFlee(final FfFightCommand command, final ResolvationData resolvationData) {
         throw new UnsupportedOperationException("Fleeing from battle is not supported in this fight mode.");
     }
 
-    private void attackMainTarget(final ResolvationData resolvationData, final FightCommand command) {
+    private void attackMainTarget(final ResolvationData resolvationData, final FfFightCommand command) {
         final Ff15Character character = (Ff15Character) resolvationData.getCharacter();
         final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) resolvationData.getCharacterHandler().getInteractionHandler();
         final String enemyId = interactionHandler.peekLastFightCommand(character, "enemyId");
@@ -116,7 +114,7 @@ public class Ship15FightRoundResolver implements FightRoundResolver {
         messageList.addKey(resultMessageKey, enemy.getName());
     }
 
-    private void killNonSelectedEnemy(final ResolvationData resolvationData, final FightCommand command) {
+    private void killNonSelectedEnemy(final ResolvationData resolvationData, final FfFightCommand command) {
         final List<FfEnemy> enemies = command.getResolvedEnemies();
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) resolvationData.getCharacterHandler().getInteractionHandler();
@@ -136,11 +134,11 @@ public class Ship15FightRoundResolver implements FightRoundResolver {
         return mainEnemy;
     }
 
-    private boolean mainEnemyKilled(final FightCommand command) {
+    private boolean mainEnemyKilled(final FfFightCommand command) {
         return killEnemy(command, command.getResolvedEnemies().get(0));
     }
 
-    private boolean killEnemy(final FightCommand command, final FfEnemy enemy) {
+    private boolean killEnemy(final FfFightCommand command, final FfEnemy enemy) {
         final FightCommandMessageList messages = command.getMessages();
         if ("25".equals(enemy.getId())) {
             messages.addKey("page.ff.fight.ff15.ship.damagedBySmartMissile");

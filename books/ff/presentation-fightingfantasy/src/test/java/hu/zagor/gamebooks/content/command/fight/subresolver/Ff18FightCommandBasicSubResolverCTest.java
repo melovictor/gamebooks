@@ -12,7 +12,7 @@ import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHan
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.domain.FfBookInformations;
@@ -40,7 +40,7 @@ public class Ff18FightCommandBasicSubResolverCTest {
 
     private Ff18FightCommandBasicSubResolver underTest;
     private IMocksControl mockControl;
-    private FightCommand command;
+    private FfFightCommand command;
     private ResolvationData resolvationData;
     private ParagraphData rootData;
     private FfCharacter character;
@@ -64,7 +64,7 @@ public class Ff18FightCommandBasicSubResolverCTest {
         mockControl = EasyMock.createStrictControl();
         setUpClassUnchecked();
         underTest = new Ff18FightCommandBasicSubResolver();
-        command = mockControl.createMock(FightCommand.class);
+        command = mockControl.createMock(FfFightCommand.class);
         character = mockControl.createMock(FfCharacter.class);
         info = new FfBookInformations(1L);
         characterHandler = new FfCharacterHandler();

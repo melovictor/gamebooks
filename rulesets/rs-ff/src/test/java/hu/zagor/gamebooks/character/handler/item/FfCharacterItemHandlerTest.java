@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.character.handler.item;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;

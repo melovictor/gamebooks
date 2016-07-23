@@ -4,8 +4,8 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CommandExecuter;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightBoundingCommandResolver;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightRoundBoundingCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import java.util.List;
@@ -23,7 +23,7 @@ public class DefaultFightCommandBeforeEventResolver implements FightCommandBefor
     @Autowired private CommandExecuter immediateCommandExecuter;
 
     @Override
-    public FightBeforeRoundResult handleBeforeRoundEvent(final FightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
+    public FightBeforeRoundResult handleBeforeRoundEvent(final FfFightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
         final FightBeforeRoundResult result = new FightBeforeRoundResult();
 
         final FightRoundBoundingCommand fightBoundingCommand = command.getBeforeBounding();

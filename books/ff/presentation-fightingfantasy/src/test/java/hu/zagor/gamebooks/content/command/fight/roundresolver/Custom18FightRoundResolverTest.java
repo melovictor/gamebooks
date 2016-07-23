@@ -10,7 +10,7 @@ import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
@@ -38,7 +38,7 @@ public class Custom18FightRoundResolverTest {
 
     private Custom18FightRoundResolver underTest;
     private IMocksControl mockControl;
-    private FightCommand command;
+    private FfFightCommand command;
     private ResolvationData resolvationData;
     private FightBeforeRoundResult beforeRoundResult;
     private ParagraphData rootData;
@@ -57,7 +57,7 @@ public class Custom18FightRoundResolverTest {
         mockControl = EasyMock.createStrictControl();
         setUpClassUnchecked();
         underTest = new Custom18FightRoundResolver();
-        command = mockControl.createMock(FightCommand.class);
+        command = mockControl.createMock(FfFightCommand.class);
         messageList = mockControl.createMock(FightCommandMessageList.class);
         character = mockControl.createMock(FfCharacter.class);
         final Paragraph paragraph = new Paragraph("3", null, 11);

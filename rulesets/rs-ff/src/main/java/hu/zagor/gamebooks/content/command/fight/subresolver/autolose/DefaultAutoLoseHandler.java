@@ -1,15 +1,17 @@
 package hu.zagor.gamebooks.content.command.fight.subresolver.autolose;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
+import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.subresolver.enemystatus.EnemyStatusEvaluator;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,10 +21,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class DefaultAutoLoseHandler implements AutoLoseHandler {
 
-    @Autowired private EnemyStatusEvaluator enemyStatusEvaluator;
+    @Autowired @Qualifier("ffEnemyStatusEvaluator") private EnemyStatusEvaluator<FfEnemy> enemyStatusEvaluator;
 
     @Override
-    public void checkAutoEvents(final FightCommand command, final List<ParagraphData> resolveList, final ResolvationData resolvationData) {
+    public void checkAutoEvents(final FfFightCommand command, final List<ParagraphData> resolveList, final ResolvationData resolvationData) {
         final int autoLoseAfterRound = command.getAutoLoseRound();
         final int autoLoseStamina = command.getAutoLoseStamina();
         if ((loseBasedOnRound(command, autoLoseAfterRound) && !enemyStatusEvaluator.enemiesAreDead(command.getResolvedEnemies(), command.getRoundNumber()))
@@ -32,7 +34,7 @@ public class DefaultAutoLoseHandler implements AutoLoseHandler {
         }
     }
 
-    private boolean loseBasedOnStamina(final FightCommand command, final ResolvationData resolvationData, final int autoLoseStamina) {
+    private boolean loseBasedOnStamina(final FfFightCommand command, final ResolvationData resolvationData, final int autoLoseStamina) {
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
         final FfCharacter character = getFightingCharacter((FfCharacter) resolvationData.getCharacter(), command.getResolvedAllies());
@@ -53,7 +55,7 @@ public class DefaultAutoLoseHandler implements AutoLoseHandler {
         return fightingCharacter;
     }
 
-    private boolean loseBasedOnRound(final FightCommand command, final int autoLoseAfterRound) {
+    private boolean loseBasedOnRound(final FfFightCommand command, final int autoLoseAfterRound) {
         return autoLoseAfterRound > 0 && command.getRoundNumber() == autoLoseAfterRound;
     }
 

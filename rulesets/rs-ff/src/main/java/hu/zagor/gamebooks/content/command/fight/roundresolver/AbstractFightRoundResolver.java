@@ -6,7 +6,7 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.luck.BattleLuckTestParameters;
 import hu.zagor.gamebooks.character.item.FfItem;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
@@ -96,10 +96,10 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
 
     /**
      * Executes the luck test when the enemy hit the hero.
-     * @param command the {@link FightCommand}
+     * @param command the {@link FfFightCommand}
      * @param dto the {@link FightDataDto} object containing all required beans
      */
-    protected void handleDefeatLuckTest(final FightCommand command, final FightDataDto dto) {
+    protected void handleDefeatLuckTest(final FfFightCommand command, final FightDataDto dto) {
         final FfEnemy enemy = dto.getEnemy();
         final FightCommandMessageList messages = dto.getMessages();
 
@@ -151,7 +151,7 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
     }
 
     @Override
-    public int[] getEnemyAttackStrength(final FfEnemy enemy, final FightCommand command) {
+    public int[] getEnemyAttackStrength(final FfEnemy enemy, final FfFightCommand command) {
         int[] result;
 
         if (enemy.getAttackStrength() > 0) {
@@ -171,11 +171,11 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
     /**
      * Calculates the attack strength for the hero.
      * @param character the {@link FfCharacter} for which the attack strength has to be calculated
-     * @param command the {@link FightCommand} object
+     * @param command the {@link FfFightCommand} object
      * @param attributeHandler the {@link FfAttributeHandler} object
      * @return the calculated attack strength
      */
-    int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
+    int[] getSelfAttackStrength(final FfCharacter character, final FfFightCommand command, final FfAttributeHandler attributeHandler) {
         final int attackStrengthRolledDices = getHeroRolledDices(character, command);
         final int attackStrengthUsedDices = getHeroUsedDices(character, command);
         final int[] generatedAttackStrength = getGenerator().getRandomNumber(attackStrengthRolledDices);
@@ -189,20 +189,20 @@ public abstract class AbstractFightRoundResolver extends TextResolvingFightRound
     /**
      * Returns the number of dices the hero is using for the current round, must be smaller or equal to the number of dices to be rolled.
      * @param character the {@link FfCharacter} object
-     * @param command the {@link FightCommand} object
+     * @param command the {@link FfFightCommand} object
      * @return the number of dices to be used
      */
-    int getHeroUsedDices(final FfCharacter character, final FightCommand command) {
+    int getHeroUsedDices(final FfCharacter character, final FfFightCommand command) {
         return command.getAttackStrengthUsedDices();
     }
 
     /**
      * Returns the number of dices the hero is rolling for the current round, must be bigger or equal to the number of dices to be used.
      * @param character the {@link FfCharacter} object
-     * @param command the {@link FightCommand} object
+     * @param command the {@link FfFightCommand} object
      * @return the number of dices to be rolled
      */
-    int getHeroRolledDices(final FfCharacter character, final FightCommand command) {
+    int getHeroRolledDices(final FfCharacter character, final FfFightCommand command) {
         return command.getAttackStrengthRolledDices();
     }
 

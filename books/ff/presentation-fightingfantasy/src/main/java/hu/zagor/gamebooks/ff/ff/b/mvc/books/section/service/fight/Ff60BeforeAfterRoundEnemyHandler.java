@@ -2,7 +2,7 @@ package hu.zagor.gamebooks.ff.ff.b.mvc.books.section.service.fight;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightOutcome;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.BasicBeforeAfterRoundEnemyHandler;
@@ -14,12 +14,12 @@ import java.util.List;
  */
 public abstract class Ff60BeforeAfterRoundEnemyHandler extends BasicBeforeAfterRoundEnemyHandler<EnemyPrePostFightDataContainer> {
     @Override
-    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public boolean shouldExecutePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
         return true;
     }
 
-    void triggerFleeing(final FightCommand command, final FfEnemy enemy) {
+    void triggerFleeing(final FfFightCommand command, final FfEnemy enemy) {
         final List<FightOutcome> win = command.getWin();
         win.clear();
         final FightOutcome outcome = new FightOutcome();

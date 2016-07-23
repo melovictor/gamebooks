@@ -37,7 +37,7 @@ public class FightBoundingCommandResolverTest {
     private ResolvationData resolvationData;
     private RandomCommandResolver randomResolver;
     private List<ParagraphData> paragraphList;
-    private FightCommand command;
+    private FfFightCommand command;
     private FightCommandMessageList messages;
     private Locale locale;
     private Map<Class<? extends Command>, SilentCapableResolver<? extends Command>> boundingResolvers;
@@ -51,7 +51,7 @@ public class FightBoundingCommandResolverTest {
         resolvationData = DefaultResolvationDataBuilder.builder().withParagraph(paragraph).withBookInformations(null).withCharacter(null).build();
         randomResolver = mockControl.createMock(RandomCommandResolver.class);
         paragraphList = new ArrayList<>();
-        command = new FightCommand();
+        command = new FfFightCommand();
         messages = mockControl.createMock(FightCommandMessageList.class);
         locale = Locale.ENGLISH;
         boundingResolvers = new HashMap<>();

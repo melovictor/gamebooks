@@ -5,12 +5,11 @@ import hu.zagor.gamebooks.books.AbstractTransformerTest;
 import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTransformer;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightRoundBoundingCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.random.RandomCommand;
 import hu.zagor.gamebooks.content.command.userinput.UserInputCommand;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -30,10 +29,10 @@ public class FightAfterRoundTransformerTest extends AbstractTransformerTest {
     private FightAfterRoundTransformer underTest;
     private IMocksControl mockControl;
     private BookParagraphDataTransformer parent;
-    private FightCommand command;
+    private FfFightCommand command;
     private ChoicePositionCounter positionCounter;
     private FfParagraphData paragraphData;
-    private FightCommand fightCommand;
+    private FfFightCommand ffFightCommand;
     private FightCommandMessageList messages;
 
     @BeforeClass
@@ -43,21 +42,21 @@ public class FightAfterRoundTransformerTest extends AbstractTransformerTest {
         init(mockControl);
         parent = mockControl.createMock(BookParagraphDataTransformer.class);
         positionCounter = mockControl.createMock(ChoicePositionCounter.class);
-        fightCommand = new FightCommand();
+        ffFightCommand = new FfFightCommand();
         messages = mockControl.createMock(FightCommandMessageList.class);
-        Whitebox.setInternalState(fightCommand, "messages", messages);
+        Whitebox.setInternalState(ffFightCommand, "messages", messages);
     }
 
     @BeforeMethod
     public void setUpMethod() {
         paragraphData = new FfParagraphData();
-        command = new FightCommand();
+        command = new FfFightCommand();
         mockControl.reset();
     }
 
     public void testSetRandomShouldSetRandomToAfterRandom() {
         // GIVEN
-        final FightRoundBoundingCommand fightRandom = new FightRoundBoundingCommand(fightCommand);
+        final FightRoundBoundingCommand fightRandom = new FightRoundBoundingCommand(ffFightCommand);
         mockControl.replay();
         // WHEN
         underTest.setBounding(command, fightRandom);

@@ -5,7 +5,6 @@ import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import org.springframework.stereotype.Component;
 
 /**

@@ -5,13 +5,13 @@ import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
+import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import java.util.Collection;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
@@ -28,7 +28,7 @@ public class AllAtOnceSor2FightRoundResolver extends AllAtOnceSorFightRoundResol
     @Resource(name = "sor2BodyPartsEnemyIds") private Collection<String> bodyPartsEnemyIds;
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final FfUserInteractionHandler interactionHandler = characterHandler.getInteractionHandler();

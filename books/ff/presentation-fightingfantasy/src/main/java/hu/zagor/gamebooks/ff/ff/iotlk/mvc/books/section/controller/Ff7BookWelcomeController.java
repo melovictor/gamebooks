@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.ff.ff.iotlk.mvc.books.section.controller;
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.mvc.book.section.controller.GenericBookWelcomeController;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

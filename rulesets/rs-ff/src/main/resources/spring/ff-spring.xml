@@ -52,7 +52,7 @@
   </util:map>
 
 
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.FightTransformer" id="ffFightTransformer">
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.FfFightTransformer" id="ffFightTransformer">
     <property name="fightTransformers">
       <util:map>
         <entry key="enemy">
@@ -71,7 +71,7 @@
           <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightFleeingTransformer" />
         </entry>
         <entry key="lose">
-          <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightLoseTransformer" />
+          <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FfFightLoseTransformer" />
         </entry>
         <entry key="notWinRound">
           <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightNotWinRoundTransformer" />
@@ -207,13 +207,6 @@
   <bean class="hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandAllySubResolver" id="fightCommandAllySubResolver" />
   <bean class="hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSupportedSubResolver" id="fightCommandSupportedSubResolver" />
 
-  <util:map key-type="java.lang.String" value-type="hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResolver" id="fightSubResolvers">
-    <entry key="basic" value-ref="fightCommandBasicSubResolver" />
-    <entry key="ally" value-ref="fightCommandAllySubResolver" />
-    <entry key="supported" value-ref="fightCommandSupportedSubResolver" />
-  </util:map>
-
-  <bean class="hu.zagor.gamebooks.content.command.fight.FightCommandResolver" id="fightCommandResolver" p:subResolvers-ref="fightSubResolvers" />
 
   <bean class="hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommandResolver" id="changeEnemyCommandResolver" />
   <bean class="hu.zagor.gamebooks.content.command.changeitem.ChangeItemCommandResolver" id="changeItemCommandResolver" />
@@ -264,7 +257,17 @@
     <entry key="hu.zagor.gamebooks.content.command.userinput.UserInputCommand" value-ref="userInputCommandResolver" />
     <entry key="hu.zagor.gamebooks.content.command.random.RandomCommand" value-ref="randomCommandResolver" />
     <entry key="hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand" value-ref="attributeTestCommandResolver" />
-    <entry key="hu.zagor.gamebooks.content.command.fight.FightCommand" value-ref="fightCommandResolver" />
+    <entry key="hu.zagor.gamebooks.content.command.fight.FfFightCommand">
+      <bean class="hu.zagor.gamebooks.content.command.fight.FfFightCommandResolver">
+        <property name="subResolvers">
+          <util:map key-type="java.lang.String" value-type="hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResolver">
+            <entry key="basic" value-ref="fightCommandBasicSubResolver" />
+            <entry key="ally" value-ref="fightCommandAllySubResolver" />
+            <entry key="supported" value-ref="fightCommandSupportedSubResolver" />
+          </util:map>
+        </property>
+      </bean>
+    </entry>
     <entry key="hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommand" value-ref="changeEnemyCommandResolver" />
     <entry key="hu.zagor.gamebooks.content.command.changeitem.ChangeItemCommand" value-ref="changeItemCommandResolver" />
     <entry key="hu.zagor.gamebooks.content.command.market.MarketCommand" value-ref="marketCommandResolver" />
@@ -289,7 +292,7 @@
     <entry key="ffFear" value="initialFear" />
 
   </util:map>
-  
+
   <bean class="hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute" scope="prototype" id="ffModifyAttribute" />
 
 </beans>

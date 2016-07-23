@@ -5,15 +5,13 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.ff.ff.trok.character.Ff15Character;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -23,7 +21,7 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component
-public class Shooting15FightRoundResolver implements FightRoundResolver {
+public class Shooting15FightRoundResolver implements FfFightRoundResolver {
 
     @Autowired
     @Qualifier("d6")
@@ -32,13 +30,13 @@ public class Shooting15FightRoundResolver implements FightRoundResolver {
     private DiceResultRenderer diceResultRenderer;
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         attackMainTarget(resolvationData, command);
         sufferReturnFires(resolvationData, command);
         return null;
     }
 
-    private void sufferReturnFires(final ResolvationData resolvationData, final FightCommand command) {
+    private void sufferReturnFires(final ResolvationData resolvationData, final FfFightCommand command) {
         final Ff15Character character = (Ff15Character) resolvationData.getCharacter();
         final FightCommandMessageList messages = command.getMessages();
         final List<FfEnemy> enemies = command.getResolvedEnemies();
@@ -51,11 +49,11 @@ public class Shooting15FightRoundResolver implements FightRoundResolver {
     }
 
     @Override
-    public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
+    public void resolveFlee(final FfFightCommand command, final ResolvationData resolvationData) {
         throw new UnsupportedOperationException("Fleeing from battle is not supported in this fight mode.");
     }
 
-    private void attackMainTarget(final ResolvationData resolvationData, final FightCommand command) {
+    private void attackMainTarget(final ResolvationData resolvationData, final FfFightCommand command) {
         final Ff15Character character = (Ff15Character) resolvationData.getCharacter();
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final String enemyId = characterHandler.getInteractionHandler().peekLastFightCommand(character, "enemyId");

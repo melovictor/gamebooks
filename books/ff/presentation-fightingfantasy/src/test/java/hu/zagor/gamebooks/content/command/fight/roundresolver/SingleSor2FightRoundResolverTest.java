@@ -9,7 +9,7 @@ import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.WeaponSubType;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
@@ -38,7 +38,7 @@ public class SingleSor2FightRoundResolverTest {
 
     @MockControl private IMocksControl mockControl;
     @UnderTest private SingleSor2FightRoundResolver underTest;
-    @Mock private FightCommand command;
+    @Mock private FfFightCommand command;
     private FightDataDto dto;
     @Mock private SorCharacter character;
     @Instance private FfCharacterHandler characterHandler;

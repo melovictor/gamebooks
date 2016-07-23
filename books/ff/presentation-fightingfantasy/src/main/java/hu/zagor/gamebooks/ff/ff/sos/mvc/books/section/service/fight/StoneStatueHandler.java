@@ -1,7 +1,7 @@
 package hu.zagor.gamebooks.ff.ff.sos.mvc.books.section.service.fight;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +17,12 @@ public class StoneStatueHandler extends Ff34BeforeAfterRoundEnemyHandler {
     private static final int HIGH_DAMAGE_ABSORPTION = 10;
 
     @Override
-    public boolean shouldExecutePreHandler(final FightCommand command, final EnemyPrePostFightDataContainer data) {
+    public boolean shouldExecutePreHandler(final FfFightCommand command, final EnemyPrePostFightDataContainer data) {
         return true;
     }
 
     @Override
-    public void executePreHandler(final FightCommand command, final EnemyPrePostFightDataContainer data) {
+    public void executePreHandler(final FfFightCommand command, final EnemyPrePostFightDataContainer data) {
         final int[] randomNumber = getGenerator().getRandomNumber(1);
         data.setRoll(randomNumber);
         if (randomNumber[0] < STONE_STATUE_DEFENSE_LIMIT) {
@@ -34,13 +34,13 @@ public class StoneStatueHandler extends Ff34BeforeAfterRoundEnemyHandler {
     }
 
     @Override
-    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public boolean shouldExecutePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
         return results[0] == FightRoundResult.WIN;
     }
 
     @Override
-    public void executePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public void executePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
         final int[] roll = data.getRoll();
         record(command, roll, ROLL_INFO_INSERT_POINT);

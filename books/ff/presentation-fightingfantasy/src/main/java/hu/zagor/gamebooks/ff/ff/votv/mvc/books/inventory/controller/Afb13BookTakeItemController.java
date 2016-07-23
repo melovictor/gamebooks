@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.ff.ff.votv.mvc.books.inventory.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.support.bookids.brazilian.AventurasFantasticas;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

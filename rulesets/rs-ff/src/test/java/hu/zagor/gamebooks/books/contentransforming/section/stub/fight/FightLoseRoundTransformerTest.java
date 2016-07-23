@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.books.contentransforming.section.stub.fight;
 
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

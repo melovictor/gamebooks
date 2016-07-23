@@ -5,13 +5,13 @@ import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
+import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,12 +28,12 @@ public class TwoAlwaysLowerSor2FightRoundResolver extends SingleFightRoundResolv
     @Autowired @Qualifier("sorHeroAttackStrengthRoller") private HeroAttackStrengthRoller heroAttackStrengthRoller;
 
     @Override
-    int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
+    int[] getSelfAttackStrength(final FfCharacter character, final FfFightCommand command, final FfAttributeHandler attributeHandler) {
         return heroAttackStrengthRoller.getSelfAttackStrength(character, command, attributeHandler);
     }
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         FightRoundResult[] resolveRound;
 
         final List<FfEnemy> enemies = command.getResolvedEnemies();
@@ -45,7 +45,7 @@ public class TwoAlwaysLowerSor2FightRoundResolver extends SingleFightRoundResolv
         return resolveRound;
     }
 
-    private FightRoundResult[] resolveRoundWithTwoEnemies(final FightCommand command, final ResolvationData resolvationData, final List<FfEnemy> enemies) {
+    private FightRoundResult[] resolveRoundWithTwoEnemies(final FfFightCommand command, final ResolvationData resolvationData, final List<FfEnemy> enemies) {
         final FightRoundResult[] result = new FightRoundResult[enemies.size()];
         final FightCommandMessageList messages = command.getMessages();
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
@@ -85,7 +85,7 @@ public class TwoAlwaysLowerSor2FightRoundResolver extends SingleFightRoundResolv
         return result;
     }
 
-    private void reportEnemy(final int selfAttackStrength, final int enemyAttackStrength, final FightDataDto dto, final FightCommand command) {
+    private void reportEnemy(final int selfAttackStrength, final int enemyAttackStrength, final FightDataDto dto, final FfFightCommand command) {
         final FfEnemy enemy = dto.getEnemy();
         final FightCommandMessageList messages = dto.getMessages();
         if (selfAttackStrength >= enemyAttackStrength) {
@@ -127,7 +127,7 @@ public class TwoAlwaysLowerSor2FightRoundResolver extends SingleFightRoundResolv
         return interactionHandler.peekLastFightCommand(character, LastFightCommand.ENEMY_ID);
     }
 
-    private Map<String, int[]> getEnemiesAttackValues(final List<FfEnemy> enemies, final FightCommand command) {
+    private Map<String, int[]> getEnemiesAttackValues(final List<FfEnemy> enemies, final FfFightCommand command) {
         final Map<String, int[]> enemyAttackValues = new HashMap<>();
         for (final FfEnemy enemy : enemies) {
             enemyAttackValues.put(enemy.getId(), getEnemyAttackStrength(enemy, command));

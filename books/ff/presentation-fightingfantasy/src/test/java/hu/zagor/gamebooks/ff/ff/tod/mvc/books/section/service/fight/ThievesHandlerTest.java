@@ -4,7 +4,7 @@ import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.BasicEnemyPrePostFightDataContainer;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -27,7 +27,7 @@ public class ThievesHandlerTest {
     @Mock private BasicEnemyPrePostFightDataContainer data;
     private final FightRoundResult[] results = new FightRoundResult[]{FightRoundResult.WIN, FightRoundResult.TIE};
     @Mock private ResolvationData resolvationData;
-    @Mock private FightCommand command;
+    @Mock private FfFightCommand command;
     @Mock private Map<String, Enemy> enemyList;
     @Mock private FfEnemy enemyA;
     @Mock private FfEnemy enemyB;

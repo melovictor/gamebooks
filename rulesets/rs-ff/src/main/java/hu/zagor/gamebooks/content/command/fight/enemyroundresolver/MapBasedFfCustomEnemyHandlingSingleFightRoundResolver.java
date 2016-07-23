@@ -3,11 +3,11 @@ package hu.zagor.gamebooks.content.command.fight.enemyroundresolver;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
+import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
-import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver;
+import hu.zagor.gamebooks.content.command.fight.roundresolver.FfFightRoundResolver;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.PostConstruct;
@@ -20,7 +20,7 @@ import org.springframework.context.ApplicationContextAware;
  * @param <T> the type which will contain the data that was compiled during the pre-fight phase
  */
 public abstract class MapBasedFfCustomEnemyHandlingSingleFightRoundResolver<T extends BasicEnemyPrePostFightDataContainer>
-    implements ApplicationContextAware, FightRoundResolver {
+    implements ApplicationContextAware, FfFightRoundResolver {
     private Map<String, CustomBeforeAfterRoundEnemyHandler<T>> enemyHandlers;
     private ApplicationContext applicationContext;
 
@@ -40,11 +40,11 @@ public abstract class MapBasedFfCustomEnemyHandlingSingleFightRoundResolver<T ex
 
     /**
      * Attempts to execute a pre round action for the current enemy.
-     * @param command the {@link FightCommand}
+     * @param command the {@link FfFightCommand}
      * @param resolvationData the {@link ResolvationData}
      * @return the data that was compiled during the pre-fight phase
      */
-    protected T executePreRoundActions(final FightCommand command, final ResolvationData resolvationData) {
+    protected T executePreRoundActions(final FfFightCommand command, final ResolvationData resolvationData) {
         final T data = getDataBean();
         data.setPrimaryEnemy(getSelectedEnemy(resolvationData).getId());
 
@@ -62,12 +62,12 @@ public abstract class MapBasedFfCustomEnemyHandlingSingleFightRoundResolver<T ex
 
     /**
      * Attempts to execute a post round action for the current enemy.
-     * @param command the {@link FightCommand}
+     * @param command the {@link FfFightCommand}
      * @param resolvationData the {@link ResolvationData}
      * @param results the {@link FightRoundResult} array containing the result for the previous battle round
      * @param data the data that was compiled during the pre-fight phase
      */
-    protected void executePostRoundActions(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results, final T data) {
+    protected void executePostRoundActions(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results, final T data) {
         for (final FfEnemy enemy : command.getResolvedEnemies()) {
             final CustomBeforeAfterRoundEnemyHandler<T> handler = enemyHandlers.get(enemy.getId());
             if (handler != null) {

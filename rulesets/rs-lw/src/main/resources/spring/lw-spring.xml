@@ -13,6 +13,9 @@
     <property name="itemHandler">
       <bean class="hu.zagor.gamebooks.character.handler.item.LwCharacterItemHandler"></bean>
     </property>
+    <property name="interactionHandler">
+      <bean class="hu.zagor.gamebooks.character.handler.userinteraction.LwUserInteractionHandler" />
+    </property>
   </bean>
 
   <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.DefaultLwCharacterGenerator" id="defaultLwCharacterGenerator">
@@ -41,6 +44,8 @@
         </property>
       </bean>
     </entry>
+    <entry key="hu.zagor.gamebooks.content.command.fight.LwFightCommand">
+    </entry>
   </util:map>
 
   <bean class="hu.zagor.gamebooks.domain.BookContentTransformers" id="defaultLwContentTransformers">
@@ -53,7 +58,29 @@
                 <constructor-arg index="0" ref="commonStubTransformers" />
                 <constructor-arg index="1">
                   <util:map>
-                    <!-- <entry key="add" value-ref="ffAddTransformer" /> <entry key="test" value-ref="ffAttributeTestTransformer" /> <entry key="fight" value-ref="ffFightTransformer" /> <entry key="interrupt" value-ref="ffInterruptTransformer" /> <entry key="changeEnemy" value-ref="ffChangeEnemyTransformer" /> <entry key="changeItem" value-ref="ffChangeItemTransformer" /> <entry key="loseBattleRound" value-ref="ffLoseBattleRoundTransformer" /> <entry key="market" value-ref="ffMarketTransformer" /> <entry key="canEat" value-ref="ffCanEatTransformer" /> -->
+                    <entry key="fight">
+                      <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.LwFightTransformer">
+                        <property name="fightTransformers">
+                          <util:map>
+                            <entry key="enemy">
+                              <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightEnemyTransformer" />
+                            </entry>
+                            <entry key="win">
+                              <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightWinTransformer" />
+                            </entry>
+                            <entry key="flee">
+                              <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightFleeTransformer" />
+                            </entry>
+                            <entry key="fleeing">
+                              <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightFleeingTransformer" />
+                            </entry>
+                            <entry key="lose">
+                              <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.fight.FightLoseTransformer" />
+                            </entry>
+                          </util:map>
+                        </property>
+                      </bean>
+                    </entry>
                   </util:map>
                 </constructor-arg>
               </bean>

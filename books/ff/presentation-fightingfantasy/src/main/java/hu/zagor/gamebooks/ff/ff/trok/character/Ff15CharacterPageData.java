@@ -4,7 +4,6 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
 import hu.zagor.gamebooks.ff.ff.trok.character.domain.Ff15ShipAttributes;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

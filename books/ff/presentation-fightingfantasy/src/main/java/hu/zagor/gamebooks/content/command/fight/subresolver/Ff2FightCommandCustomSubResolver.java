@@ -6,7 +6,7 @@ import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
@@ -34,17 +34,17 @@ public class Ff2FightCommandCustomSubResolver extends FightCommandSupportedSubRe
     @Autowired @Qualifier("singleAllyFightRoundResolver") private SingleAllyFightRoundResolver superAlliedResolver;
 
     @Override
-    public List<ParagraphData> doResolve(final FightCommand command, final ResolvationData resolvationData) {
+    public List<ParagraphData> doResolve(final FfFightCommand command, final ResolvationData resolvationData) {
         final List<ParagraphData> resolveList = new ArrayList<>();
         resolveBattleRound(command, resolvationData, resolveList);
         return resolveList;
     }
 
-    private void resolveBattleRound(final FightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
+    private void resolveBattleRound(final FfFightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final String lastFightCommand = characterHandler.getInteractionHandler().peekLastFightCommand(character);
-        if (!FightCommand.ATTACKING.equals(lastFightCommand)) {
+        if (!FfFightCommand.ATTACKING.equals(lastFightCommand)) {
             command.setBattleType("custom2");
             command.setOngoing(true);
         }
@@ -52,7 +52,7 @@ public class Ff2FightCommandCustomSubResolver extends FightCommandSupportedSubRe
     }
 
     @Override
-    void executeBattle(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    void executeBattle(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         command.setKeepOpen(true);
 
         final int[] randomNumber;

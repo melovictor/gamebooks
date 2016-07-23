@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.ff.mvc.book.section.controller.domain;
 
+import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import org.testng.Assert;

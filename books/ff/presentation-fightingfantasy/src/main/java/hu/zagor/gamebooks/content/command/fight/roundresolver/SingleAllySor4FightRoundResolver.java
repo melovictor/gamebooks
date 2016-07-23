@@ -4,14 +4,14 @@ import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
+import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.service.Sor4RedEyeRetaliationStrikeService;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import java.util.Set;
 import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class SingleAllySor4FightRoundResolver extends SingleAllySorFightRoundRes
     @Autowired private Sor4RedEyeRetaliationStrikeService retaliationHandler;
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final Character character = resolvationData.getCharacter();
         final boolean redEyeAlly = isRedEyeAlly(character);
         if (redEyeAlly) {
@@ -77,7 +77,7 @@ public class SingleAllySor4FightRoundResolver extends SingleAllySorFightRoundRes
     }
 
     @Override
-    void doLoseFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
+    void doLoseFight(final FfFightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
         final FfAllyCharacter firstAlly = command.getFirstAlly();
         final FfCharacter character = dto.getCharacter();
 
@@ -90,7 +90,7 @@ public class SingleAllySor4FightRoundResolver extends SingleAllySorFightRoundRes
     }
 
     @Override
-    protected void damageEnemy(final FightCommand command, final FightDataDto dto) {
+    protected void damageEnemy(final FfFightCommand command, final FightDataDto dto) {
         super.damageEnemy(command, dto);
         if (retaliationHandler.needToRetaliate(dto)) {
             retaliationHandler.calculateRetaliationStrike(dto);

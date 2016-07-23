@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.service.hunt;
 
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.HierarchicalMessageSource;

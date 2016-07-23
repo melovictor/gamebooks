@@ -15,7 +15,7 @@ import hu.zagor.gamebooks.character.item.WeaponSubType;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.command.FfTextResolvingTest;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.domain.BookInformations;
@@ -43,7 +43,7 @@ public class OnlyHighestLinkedFightRoundResolverATest extends FfTextResolvingTes
 
     private OnlyHighestLinkedFightRoundResolver underTest;
     private IMocksControl mockControl;
-    private FightCommand command;
+    private FfFightCommand command;
     private ResolvationData resolvationData;
     private List<FfEnemy> enemies;
     private FfEnemy enemyA;
@@ -99,7 +99,7 @@ public class OnlyHighestLinkedFightRoundResolverATest extends FfTextResolvingTes
 
     @BeforeMethod
     public void setUpMethod() {
-        command = new FightCommand();
+        command = new FfFightCommand();
         init(command);
         command.increaseBattleRound();
         command.getResolvedEnemies().addAll(enemies);

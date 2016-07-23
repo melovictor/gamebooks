@@ -1,9 +1,8 @@
 package hu.zagor.gamebooks.content.command.fight.roundresolver;
 
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
-
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,7 +15,7 @@ public class SingleWm8FightRoundResolver extends SingleFightRoundResolver {
     private static final int TORNAKK_STONE_SKIL = 3;
 
     @Override
-    protected void damageEnemy(final FightCommand command, final FightDataDto dto) {
+    protected void damageEnemy(final FfFightCommand command, final FightDataDto dto) {
         if ("2".equals(dto.getEnemy().getId())) {
             final int[] randomNumber = getGenerator().getRandomNumber(1);
             final FightCommandMessageList messages = command.getMessages();

@@ -3,7 +3,7 @@ package hu.zagor.gamebooks.content.command.fight.enemyroundresolver;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,21 +28,21 @@ public abstract class BasicBeforeAfterRoundEnemyHandler<T> implements CustomBefo
     }
 
     @Override
-    public boolean shouldExecutePreHandler(final FightCommand command, final T data) {
+    public boolean shouldExecutePreHandler(final FfFightCommand command, final T data) {
         return false;
     }
 
     @Override
-    public void executePreHandler(final FightCommand command, final T data) {
+    public void executePreHandler(final FfFightCommand command, final T data) {
     }
 
     /**
      * Rolls the specified number of dices, records the roll and returns the values.
      * @param dices the number of dices to throw
-     * @param command the {@link FightCommand} object
+     * @param command the {@link FfFightCommand} object
      * @return the rolled dices
      */
-    protected int[] rollRecord(final int dices, final FightCommand command) {
+    protected int[] rollRecord(final int dices, final FfFightCommand command) {
         final int[] roll = getGenerator().getRandomNumber(dices);
         record(command, roll);
         return roll;
@@ -50,20 +50,20 @@ public abstract class BasicBeforeAfterRoundEnemyHandler<T> implements CustomBefo
 
     /**
      * Records a roll value for the player to see.
-     * @param command the {@link FightCommand}
+     * @param command the {@link FfFightCommand}
      * @param roll the rolled values
      */
-    protected void record(final FightCommand command, final int[] roll) {
+    protected void record(final FfFightCommand command, final int[] roll) {
         record(command, roll, null);
     }
 
     /**
      * Records a roll value for the player to see.
-     * @param command the {@link FightCommand}
+     * @param command the {@link FfFightCommand}
      * @param roll the rolled values
      * @param index the index at which the message should be inserted; use null for insertion at the end
      */
-    protected void record(final FightCommand command, final int[] roll, final Integer index) {
+    protected void record(final FfFightCommand command, final int[] roll, final Integer index) {
         final String renderedRoll = getRenderer().render(getGenerator().getDefaultDiceSide(), roll);
         final FightCommandMessageList messages = command.getMessages();
         if (index == null) {

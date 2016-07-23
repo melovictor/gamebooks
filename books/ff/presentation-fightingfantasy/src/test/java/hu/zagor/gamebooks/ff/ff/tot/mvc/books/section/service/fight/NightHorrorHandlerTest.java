@@ -4,7 +4,7 @@ import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
@@ -27,7 +27,7 @@ public class NightHorrorHandlerTest {
 
     @MockControl private IMocksControl mockControl;
     @UnderTest private NightHorrorHandler underTest;
-    @Mock private FightCommand command;
+    @Mock private FfFightCommand command;
     @Instance private EnemyPrePostFightDataContainer data;
     @Mock private FfEnemy enemy;
     @Mock private ResolvationData resolvationData;

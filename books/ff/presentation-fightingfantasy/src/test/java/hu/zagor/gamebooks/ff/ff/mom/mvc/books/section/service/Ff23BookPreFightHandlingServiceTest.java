@@ -9,7 +9,7 @@ import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.ProcessableItemHolder;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.commandlist.CommandList;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
@@ -42,7 +42,7 @@ public class Ff23BookPreFightHandlingServiceTest {
     @Mock private Paragraph paragraph;
     @Mock private ParagraphData data;
     @Mock private CommandList commands;
-    @Mock private FightCommand command;
+    @Mock private FfFightCommand command;
     @Instance private Map<String, Enemy> enemies;
     @Mock private FfEnemy enemy;
     @Instance(inject = true) private List<String> hornResistantEnemies;

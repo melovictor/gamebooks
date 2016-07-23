@@ -2,10 +2,9 @@ package hu.zagor.gamebooks.content.command.fight.roundresolver;
 
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.service.Ff7SpecialAttackStrengthGenerator;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +19,7 @@ public class SingleFf7FightRoundResolver extends SingleFightRoundResolver {
     private Ff7SpecialAttackStrengthGenerator attackStrengthGenerator;
 
     @Override
-    int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
+    int[] getSelfAttackStrength(final FfCharacter character, final FfFightCommand command, final FfAttributeHandler attributeHandler) {
         int[] selfAttackStrength = attackStrengthGenerator.getSelfAttackStrength(character, command, attributeHandler);
 
         if (selfAttackStrength == null) {
@@ -31,7 +30,7 @@ public class SingleFf7FightRoundResolver extends SingleFightRoundResolver {
     }
 
     @Override
-    public int[] getEnemyAttackStrength(final FfEnemy enemy, final FightCommand command) {
+    public int[] getEnemyAttackStrength(final FfEnemy enemy, final FfFightCommand command) {
         int[] enemyAttackStrength = attackStrengthGenerator.getEnemyAttackStrength(enemy, command);
 
         if (enemyAttackStrength == null) {

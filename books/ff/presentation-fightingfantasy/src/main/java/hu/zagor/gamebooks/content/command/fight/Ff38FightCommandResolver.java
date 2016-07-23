@@ -28,7 +28,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * Custom fight command resolver for FF38.
  * @author Tamas_Szekeres
  */
-public class Ff38FightCommandResolver extends FightCommandResolver {
+public class Ff38FightCommandResolver extends FfFightCommandResolver {
 
     private static final int WEASEL_HIT_LIMIT = 5;
     private static final String HORNED_VAMPIRE_BAT = "34";
@@ -57,7 +57,7 @@ public class Ff38FightCommandResolver extends FightCommandResolver {
 
     @Override
     public CommandResolveResult resolve(final Command commandObject, final ResolvationData resolvationData) {
-        final FightCommand command = (FightCommand) commandObject;
+        final FfFightCommand command = (FfFightCommand) commandObject;
         command.getMessages().clear();
         handleSlowPoison(resolvationData);
         final SpellResult spellResult = handleSpell(command, resolvationData);
@@ -87,7 +87,7 @@ public class Ff38FightCommandResolver extends FightCommandResolver {
         return resolve;
     }
 
-    private CommandResolveResult resolve(final FightCommand command, final ResolvationData resolvationData) {
+    private CommandResolveResult resolve(final FfFightCommand command, final ResolvationData resolvationData) {
         final CommandResolveResult result = new CommandResolveResult();
         final List<ParagraphData> resolveList = doResolve(command, resolvationData);
         result.setResolveList(resolveList);
@@ -95,7 +95,7 @@ public class Ff38FightCommandResolver extends FightCommandResolver {
         return result;
     }
 
-    private void handleKatarina(final CommandResolveResult resolve, final FightCommand command, final ResolvationData resolvationData) {
+    private void handleKatarina(final CommandResolveResult resolve, final FfFightCommand command, final ResolvationData resolvationData) {
         if (KATARINA.equals(command.getEnemies().get(0))) {
             final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
             final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
@@ -106,7 +106,7 @@ public class Ff38FightCommandResolver extends FightCommandResolver {
         }
     }
 
-    private void prepareNightstar(final FightCommand command, final ResolvationData resolvationData, final int change) {
+    private void prepareNightstar(final FfFightCommand command, final ResolvationData resolvationData, final int change) {
         if (command.getEnemies().contains("40")) {
             final Character character = resolvationData.getCharacter();
             final CharacterItemHandler itemHandler = resolvationData.getCharacterHandler().getItemHandler();
@@ -117,7 +117,7 @@ public class Ff38FightCommandResolver extends FightCommandResolver {
         }
     }
 
-    private CommandResolveResult determineSpellResult(final FightCommand command, final ResolvationData resolvationData) {
+    private CommandResolveResult determineSpellResult(final FfFightCommand command, final ResolvationData resolvationData) {
         final CommandResolveResult result = new CommandResolveResult();
         final List<ParagraphData> resolveList = new ArrayList<>();
         if (allEnemiesDead(command, resolvationData)) {
@@ -131,7 +131,7 @@ public class Ff38FightCommandResolver extends FightCommandResolver {
         return result;
     }
 
-    private boolean allEnemiesDead(final FightCommand command, final ResolvationData resolvationData) {
+    private boolean allEnemiesDead(final FfFightCommand command, final ResolvationData resolvationData) {
         boolean allAreDead = true;
         final Map<String, Enemy> enemies = resolvationData.getEnemies();
         for (final String enemyId : command.getEnemies()) {
@@ -141,7 +141,7 @@ public class Ff38FightCommandResolver extends FightCommandResolver {
         return allAreDead;
     }
 
-    private SpellResult handleSpell(final FightCommand command, final ResolvationData resolvationData) {
+    private SpellResult handleSpell(final FfFightCommand command, final ResolvationData resolvationData) {
         final SpellResult result = new SpellResult();
         final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) resolvationData.getCharacterHandler().getInteractionHandler();
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
@@ -200,7 +200,7 @@ public class Ff38FightCommandResolver extends FightCommandResolver {
         enemy.setStamina(enemy.getStamina() - damage);
     }
 
-    private void handleVampireBatWeasel(final FightCommand command, final ResolvationData resolvationData, final CommandResolveResult resolve) {
+    private void handleVampireBatWeasel(final FfFightCommand command, final ResolvationData resolvationData, final CommandResolveResult resolve) {
         final String enemyId = command.getEnemies().get(0);
         if (HORNED_VAMPIRE_BAT.equals(enemyId)) {
             final FightRoundBoundingCommand afterBounding = command.getAfterBounding();
@@ -233,7 +233,7 @@ public class Ff38FightCommandResolver extends FightCommandResolver {
 
     }
 
-    private void handleRegeneratingRing(final FightCommand command, final CommandResolveResult resolve, final ResolvationData resolvationData) {
+    private void handleRegeneratingRing(final FfFightCommand command, final CommandResolveResult resolve, final ResolvationData resolvationData) {
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final CharacterItemHandler itemHandler = characterHandler.getItemHandler();
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();

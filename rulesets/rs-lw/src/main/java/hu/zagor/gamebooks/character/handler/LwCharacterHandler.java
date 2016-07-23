@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.character.handler;
 
 import hu.zagor.gamebooks.character.handler.attribute.LwAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.LwCharacterItemHandler;
+import hu.zagor.gamebooks.character.handler.userinteraction.LwUserInteractionHandler;
 
 /**
  * Lone Wolf-specific {@link CharacterHandler} object.
@@ -17,4 +18,10 @@ public class LwCharacterHandler extends CharacterHandler {
     public LwCharacterItemHandler getItemHandler() {
         return (LwCharacterItemHandler) super.getItemHandler();
     }
+
+    @Override
+    public LwUserInteractionHandler getInteractionHandler() {
+        return (LwUserInteractionHandler) super.getInteractionHandler();
+    }
+
 }

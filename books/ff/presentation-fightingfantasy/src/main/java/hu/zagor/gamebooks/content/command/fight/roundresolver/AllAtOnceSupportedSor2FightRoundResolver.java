@@ -1,7 +1,7 @@
 package hu.zagor.gamebooks.content.command.fight.roundresolver;
 
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,7 +16,7 @@ public class AllAtOnceSupportedSor2FightRoundResolver extends AllAtOnceSupported
     @Autowired @Qualifier("sorHeroAttackStrengthRoller") private HeroAttackStrengthRoller heroAttackStrengthRoller;
 
     @Override
-    int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
+    int[] getSelfAttackStrength(final FfCharacter character, final FfFightCommand command, final FfAttributeHandler attributeHandler) {
         return heroAttackStrengthRoller.getSelfAttackStrength(character, command, attributeHandler);
     }
 }

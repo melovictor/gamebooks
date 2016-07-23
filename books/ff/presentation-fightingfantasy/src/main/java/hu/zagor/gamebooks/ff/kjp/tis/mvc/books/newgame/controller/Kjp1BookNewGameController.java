@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.ff.kjp.tis.mvc.books.newgame.controller;
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.ff.mvc.book.newgame.controller.FfBookNewGameController;
 import hu.zagor.gamebooks.support.bookids.hungarian.KalandJatekParodia;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

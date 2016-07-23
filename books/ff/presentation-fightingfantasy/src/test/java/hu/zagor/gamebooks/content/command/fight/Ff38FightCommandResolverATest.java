@@ -44,7 +44,7 @@ public class Ff38FightCommandResolverATest {
     @MockControl private IMocksControl mockControl;
     @UnderTest private Ff38FightCommandResolver underTest;
     @Inject private RandomNumberGenerator generator;
-    private FightCommand command;
+    private FfFightCommand command;
     private ResolvationData resolvationData;
     @Instance private ParagraphData rootData;
     @Mock private Ff38Character character;
@@ -83,7 +83,7 @@ public class Ff38FightCommandResolverATest {
 
     @BeforeMethod
     public void setUpMethod() {
-        command = new FightCommand();
+        command = new FfFightCommand();
         Whitebox.setInternalState(command, "messages", messages);
         skull.setStamina(9);
         wolf.setStamina(5);

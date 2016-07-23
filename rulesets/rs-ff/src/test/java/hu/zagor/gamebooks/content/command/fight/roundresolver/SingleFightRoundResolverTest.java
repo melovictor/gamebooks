@@ -5,7 +5,7 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.newCapture;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
@@ -27,7 +27,7 @@ public class SingleFightRoundResolverTest {
     @MockControl private IMocksControl mockControl;
     @UnderTest private SingleFightRoundResolver underTest;
     @Instance private FfEnemy enemy;
-    @Mock private FightCommand command;
+    @Mock private FfFightCommand command;
     @Inject private RandomNumberGenerator generator;
 
     public void testGetEnemyAttackStrengthWhenNoRequiredAttackStrengthAndBonusIsSetForEnemyShouldRollAndReturnResult() {

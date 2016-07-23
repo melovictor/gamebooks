@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.service.hunt;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.domain.HuntRoundResult;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -6,7 +6,7 @@ import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 import hu.zagor.gamebooks.content.command.fight.subresolver.enemystatus.EnemyStatusEvaluator;
 import hu.zagor.gamebooks.content.commandlist.CommandList;
@@ -56,14 +56,14 @@ public class Ff23BookSectionControllerTest {
     private FfBookInformations info;
     @Mock private ParagraphData data;
     @Mock private CommandList commands;
-    @Mock private FightCommand fightCommand;
+    @Mock private FfFightCommand ffFightCommand;
     @Mock private FfCharacter character;
     @Mock private List<String> enemies;
     @Mock private List<FfEnemy> resolvedEnemies;
     @Mock private Map<String, Enemy> enemyMap;
     @Mock private FfEnemy enemy;
-    @Inject private EnemyStatusEvaluator enemyStatusEvaluator;
-    @Mock private FightCommand singleFightCommand;
+    @Inject private EnemyStatusEvaluator<FfEnemy> enemyStatusEvaluator;
+    @Mock private FfFightCommand singleFfFightCommand;
     @Mock private BattleStatistics battleStatistics;
     @Mock private FfEnemy enemyB;
     @Mock private Iterator<FfEnemy> iterator;
@@ -136,8 +136,8 @@ public class Ff23BookSectionControllerTest {
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(data);
         expect(data.getCommands()).andReturn(commands);
-        expect(commands.get(0)).andReturn(fightCommand);
-        expect(fightCommand.getEnemies()).andReturn(enemies);
+        expect(commands.get(0)).andReturn(ffFightCommand);
+        expect(ffFightCommand.getEnemies()).andReturn(enemies);
         expect(enemies.remove(0)).andReturn(enemyId);
         expect(enemies.add(enemyId)).andReturn(true);
         mockControl.replay();
@@ -159,9 +159,9 @@ public class Ff23BookSectionControllerTest {
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(data);
         expect(data.getCommands()).andReturn(commands);
-        expect(commands.get(0)).andReturn(fightCommand);
-        expect(fightCommand.getEnemies()).andReturn(enemies);
-        expect(fightCommand.getResolvedEnemies()).andReturn(resolvedEnemies);
+        expect(commands.get(0)).andReturn(ffFightCommand);
+        expect(ffFightCommand.getEnemies()).andReturn(enemies);
+        expect(ffFightCommand.getResolvedEnemies()).andReturn(resolvedEnemies);
         enemies.clear();
         resolvedEnemies.clear();
         expect(wrapper.getEnemies()).andReturn(enemyMap);
@@ -173,9 +173,9 @@ public class Ff23BookSectionControllerTest {
         expect(resolvedEnemies.add(enemyB)).andReturn(true);
         expect(enemies.size()).andReturn(1);
         expect(commands.size()).andReturn(1);
-        expect(commands.get(0)).andReturn(singleFightCommand);
-        expect(fightCommand.getRoundNumber()).andReturn(7);
-        singleFightCommand.increaseBattleRound();
+        expect(commands.get(0)).andReturn(singleFfFightCommand);
+        expect(ffFightCommand.getRoundNumber()).andReturn(7);
+        singleFfFightCommand.increaseBattleRound();
         expectLastCall().times(7);
         mockControl.replay();
         // WHEN
@@ -188,9 +188,9 @@ public class Ff23BookSectionControllerTest {
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(data);
         expect(data.getCommands()).andReturn(commands);
-        expect(commands.get(0)).andReturn(fightCommand);
-        expect(fightCommand.getEnemies()).andReturn(enemies);
-        expect(fightCommand.getResolvedEnemies()).andReturn(resolvedEnemies);
+        expect(commands.get(0)).andReturn(ffFightCommand);
+        expect(ffFightCommand.getEnemies()).andReturn(enemies);
+        expect(ffFightCommand.getResolvedEnemies()).andReturn(resolvedEnemies);
         enemies.clear();
         resolvedEnemies.clear();
         expect(wrapper.getEnemies()).andReturn(enemyMap);
@@ -203,7 +203,7 @@ public class Ff23BookSectionControllerTest {
         expect(enemies.add("45")).andReturn(true);
         expect(resolvedEnemies.add(enemyB)).andReturn(true);
         expect(enemies.size()).andReturn(2);
-        expect(fightCommand.getBattleStatistics("45")).andReturn(battleStatistics);
+        expect(ffFightCommand.getBattleStatistics("45")).andReturn(battleStatistics);
         expect(battleStatistics.getSubsequentWin()).andReturn(0);
         expect(commands.size()).andReturn(2);
         mockControl.replay();
@@ -217,9 +217,9 @@ public class Ff23BookSectionControllerTest {
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(paragraph.getData()).andReturn(data);
         expect(data.getCommands()).andReturn(commands);
-        expect(commands.get(0)).andReturn(fightCommand);
-        expect(fightCommand.getEnemies()).andReturn(enemies);
-        expect(fightCommand.getResolvedEnemies()).andReturn(resolvedEnemies);
+        expect(commands.get(0)).andReturn(ffFightCommand);
+        expect(ffFightCommand.getEnemies()).andReturn(enemies);
+        expect(ffFightCommand.getResolvedEnemies()).andReturn(resolvedEnemies);
         enemies.clear();
         resolvedEnemies.clear();
         expect(wrapper.getEnemies()).andReturn(enemyMap);
@@ -232,7 +232,7 @@ public class Ff23BookSectionControllerTest {
         expect(enemies.add("45")).andReturn(true);
         expect(resolvedEnemies.add(enemyB)).andReturn(true);
         expect(enemies.size()).andReturn(2);
-        expect(fightCommand.getBattleStatistics("45")).andReturn(battleStatistics);
+        expect(ffFightCommand.getBattleStatistics("45")).andReturn(battleStatistics);
         expect(battleStatistics.getSubsequentWin()).andReturn(1);
 
         expect(enemies.remove("45")).andReturn(true);

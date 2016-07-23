@@ -5,7 +5,6 @@ import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTran
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.market.MarketCommand;
 import hu.zagor.gamebooks.content.command.market.domain.MarketElement;
-
 import org.w3c.dom.Node;
 
 /**

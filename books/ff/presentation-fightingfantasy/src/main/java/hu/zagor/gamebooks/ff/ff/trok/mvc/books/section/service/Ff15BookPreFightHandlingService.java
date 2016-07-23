@@ -6,7 +6,7 @@ import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -41,7 +41,7 @@ public class Ff15BookPreFightHandlingService implements FfBookPreFightHandlingSe
 
         final Paragraph paragraph = wrapper.getParagraph();
         final ParagraphData data = paragraph.getData();
-        final FightCommand command = (FightCommand) paragraph.getItemsToProcess().get(0).getCommand();
+        final FfFightCommand command = (FfFightCommand) paragraph.getItemsToProcess().get(0).getCommand();
         for (final FfEnemy enemy : command.getResolvedEnemies()) {
             enemy.setStamina(enemy.getStamina() - totalDamage);
         }

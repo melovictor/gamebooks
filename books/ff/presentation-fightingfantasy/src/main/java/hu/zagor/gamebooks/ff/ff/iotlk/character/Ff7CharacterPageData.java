@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.ff.ff.iotlk.character;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

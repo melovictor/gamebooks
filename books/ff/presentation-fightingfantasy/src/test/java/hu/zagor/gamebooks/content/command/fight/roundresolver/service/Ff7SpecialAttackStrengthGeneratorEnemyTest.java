@@ -4,12 +4,10 @@ import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.Item;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;
@@ -27,7 +25,7 @@ public class Ff7SpecialAttackStrengthGeneratorEnemyTest {
 
     private IMocksControl mockControl;
     private Ff7SpecialAttackStrengthGenerator underTest;
-    private FightCommand command;
+    private FfFightCommand command;
     private List<Item> equipmentList;
     private Item item;
     private List<String> enemyList;
@@ -38,7 +36,7 @@ public class Ff7SpecialAttackStrengthGeneratorEnemyTest {
     public void setUpClass() {
         mockControl = EasyMock.createStrictControl();
         underTest = new Ff7SpecialAttackStrengthGenerator();
-        command = mockControl.createMock(FightCommand.class);
+        command = mockControl.createMock(FfFightCommand.class);
         item = mockControl.createMock(FfItem.class);
         equipmentList = new ArrayList<Item>();
         equipmentList.add(item);

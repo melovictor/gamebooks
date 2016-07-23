@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.books.contentransforming.section.stub;
 import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTransformer;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
-
 import org.w3c.dom.Node;
 
 /**

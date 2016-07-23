@@ -7,10 +7,10 @@ import hu.zagor.gamebooks.character.handler.attribute.AttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
+import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -27,7 +27,7 @@ public class Ff60FightCommandBasicSubResolver extends FightCommandBasicSubResolv
     @Resource(name = "ff60AttackEffectivenessVerification") private Map<String, Set<String>> effectivenessVerification;
 
     @Override
-    protected void handleAttacking(final FightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
+    protected void handleAttacking(final FfFightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
         if (maskedZombieSpecialAttack(resolvationData)) {
             prepareCharacterSpecialAttack(resolvationData);
         }
@@ -70,7 +70,7 @@ public class Ff60FightCommandBasicSubResolver extends FightCommandBasicSubResolv
         return resolvationData.getCharacterHandler().getInteractionHandler().peekInteractionState(resolvationData.getCharacter(), "mz" + enemy.getId()) == null;
     }
 
-    private boolean wonLastRound(final FfEnemy enemy, final FightCommand command) {
+    private boolean wonLastRound(final FfEnemy enemy, final FfFightCommand command) {
         return command.getBattleStatistics(enemy.getId()).getSubsequentWin() > 0;
     }
 
@@ -96,7 +96,7 @@ public class Ff60FightCommandBasicSubResolver extends FightCommandBasicSubResolv
             && itemHandler.hasItem(character, MASKED_ZOMBIE_SPECIAL_ATTACK) && effectivenessVerification.get(MASKED_ZOMBIE_SPECIAL_ATTACK).contains(enemy.getId());
     }
 
-    private void handleJaguar(final FightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
+    private void handleJaguar(final FfFightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final AttributeHandler attributeHandler = resolvationData.getCharacterHandler().getAttributeHandler();
         final int stamina = attributeHandler.resolveValue(character, "stamina");

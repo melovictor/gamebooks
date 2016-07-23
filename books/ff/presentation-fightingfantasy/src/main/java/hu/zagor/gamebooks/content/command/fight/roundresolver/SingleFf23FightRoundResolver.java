@@ -4,13 +4,12 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -20,7 +19,7 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component("singleff23FightRoundResolver")
-public class SingleFf23FightRoundResolver implements FightRoundResolver {
+public class SingleFf23FightRoundResolver implements FfFightRoundResolver {
 
     private static final int DAMAGE_WITHOUT_BRANCH = 2;
     private static final int DAMAGE_WITH_BRANCH = 3;
@@ -28,7 +27,7 @@ public class SingleFf23FightRoundResolver implements FightRoundResolver {
     private static final int ROLL_BURN_SELF_UPPER_LIMIT = 3;
     @Autowired
     @Qualifier("singleFightRoundResolver")
-    private FightRoundResolver superResolver;
+    private FfFightRoundResolver superResolver;
     @Autowired
     @Qualifier("d6")
     private RandomNumberGenerator generator;
@@ -36,7 +35,7 @@ public class SingleFf23FightRoundResolver implements FightRoundResolver {
     private DiceResultRenderer renderer;
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
 
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) resolvationData.getCharacterHandler().getInteractionHandler();
@@ -70,7 +69,7 @@ public class SingleFf23FightRoundResolver implements FightRoundResolver {
     }
 
     @Override
-    public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
+    public void resolveFlee(final FfFightCommand command, final ResolvationData resolvationData) {
         superResolver.resolveFlee(command, resolvationData);
     }
 

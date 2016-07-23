@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.ff.ff.trok.character;
 
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.ff.trok.character.domain.Ff15ShipAttributes;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;

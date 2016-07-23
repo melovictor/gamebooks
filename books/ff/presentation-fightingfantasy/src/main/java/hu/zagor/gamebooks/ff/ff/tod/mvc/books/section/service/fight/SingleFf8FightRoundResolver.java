@@ -1,10 +1,10 @@
 package hu.zagor.gamebooks.ff.ff.tod.mvc.books.section.service.fight;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
-import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver;
+import hu.zagor.gamebooks.content.command.fight.roundresolver.FfFightRoundResolver;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,11 +15,11 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component("singleff8FightRoundResolver")
-public class SingleFf8FightRoundResolver implements FightRoundResolver {
-    @Autowired @Qualifier("singleFightRoundResolver") private FightRoundResolver decorated;
+public class SingleFf8FightRoundResolver implements FfFightRoundResolver {
+    @Autowired @Qualifier("singleFightRoundResolver") private FfFightRoundResolver decorated;
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final int stamina = character.getStamina();
         final FightRoundResult[] roundResult = decorated.resolveRound(command, resolvationData, beforeRoundResult);
@@ -31,7 +31,7 @@ public class SingleFf8FightRoundResolver implements FightRoundResolver {
     }
 
     @Override
-    public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
+    public void resolveFlee(final FfFightCommand command, final ResolvationData resolvationData) {
         decorated.resolveFlee(command, resolvationData);
     }
 

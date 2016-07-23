@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.content.command.fight.domain;
 
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.TrueCloneable;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

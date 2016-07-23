@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.ff.sor.tcok.mvc.books.load.controller;
 
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.annotations.AfterMethod;

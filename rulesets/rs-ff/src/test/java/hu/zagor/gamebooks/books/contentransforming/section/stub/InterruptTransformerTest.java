@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.books.contentransforming.section.stub;
 
 import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTransformer;
 import hu.zagor.gamebooks.content.FfParagraphData;
-
 import org.easymock.EasyMock;
 import org.testng.Assert;
 import org.testng.annotations.Test;

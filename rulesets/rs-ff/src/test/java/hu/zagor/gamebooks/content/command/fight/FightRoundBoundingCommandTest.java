@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.content.command.fight;
 import hu.zagor.gamebooks.content.command.AbstractCommandTest;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.random.RandomCommand;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -24,7 +23,7 @@ public class FightRoundBoundingCommandTest extends AbstractCommandTest {
     private IMocksControl mockControl;
     private RandomCommand randomCloned;
     private RandomCommand random;
-    private FightCommand command;
+    private FfFightCommand command;
     private FightCommandMessageList messages;
 
     @BeforeClass
@@ -33,7 +32,7 @@ public class FightRoundBoundingCommandTest extends AbstractCommandTest {
         random = mockControl.createMock(RandomCommand.class);
         randomCloned = mockControl.createMock(RandomCommand.class);
 
-        command = new FightCommand();
+        command = new FfFightCommand();
         messages = mockControl.createMock(FightCommandMessageList.class);
         Whitebox.setInternalState(command, "messages", messages);
     }

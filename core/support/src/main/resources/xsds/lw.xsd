@@ -606,38 +606,9 @@
                 <xs:attribute name="text" type="xs:string" />
               </xs:complexType>
             </xs:element>
-            <xs:element name="ally" minOccurs="0" maxOccurs="unbounded">
-              <xs:complexType>
-                <xs:attribute name="id" use="required" type="xs:string" />
-              </xs:complexType>
-            </xs:element>
             <xs:element name="enemy" minOccurs="1" maxOccurs="unbounded">
               <xs:complexType>
                 <xs:attribute name="id" use="required" type="xs:string" />
-              </xs:complexType>
-            </xs:element>
-            <xs:element name="beforeRound" minOccurs="0" maxOccurs="1">
-              <xs:annotation>
-                <xs:documentation>
-                  This entry is mainly for altering the result of a specific round (eg. we lose it). If it is trying to do anything else, the behaviour must be properly tested to see
-                  if it is working as intended.
-                </xs:documentation>
-              </xs:annotation>
-              <xs:complexType>
-                <xs:sequence minOccurs="1" maxOccurs="unbounded">
-                  <xs:choice>
-                    <xs:element name="random" maxOccurs="unbounded" minOccurs="0" type="randomType" />
-                    <xs:element name="test" maxOccurs="unbounded" minOccurs="0" type="attributeTestType" />
-                  </xs:choice>
-                </xs:sequence>
-                <xs:attribute name="everyNth" use="optional" type="xs:integer" default="1">
-                  <xs:annotation>
-                    <xs:documentation>
-                      Must be a non-zero, positive number to specify in which rounds the actions should be executed. Whenever the division remainder becomes 0, the
-                      action is executed.
-                    </xs:documentation>
-                  </xs:annotation>
-                </xs:attribute>
               </xs:complexType>
             </xs:element>
             <xs:element name="win" minOccurs="0" maxOccurs="unbounded">
@@ -671,125 +642,7 @@
                 </xs:attribute>
               </xs:complexType>
             </xs:element>
-            <xs:element name="winRound" minOccurs="0" maxOccurs="unbounded">
-              <xs:complexType>
-                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
-                <xs:attribute name="totalCount" type="xs:integer" />
-                <xs:attribute name="subsequentCount" type="xs:integer" />
-                <xs:attribute name="enemy" type="xs:string" use="required" />
-              </xs:complexType>
-            </xs:element>
-            <xs:element name="loseRound" minOccurs="0" maxOccurs="unbounded">
-              <xs:complexType>
-                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
-                <xs:attribute name="totalCount" type="xs:integer" />
-                <xs:attribute name="subsequentCount" type="xs:integer" />
-                <xs:attribute name="enemy" type="xs:string" />
-              </xs:complexType>
-            </xs:element>
-            <xs:element name="anyRound" minOccurs="0" maxOccurs="unbounded">
-              <xs:complexType>
-                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
-                <xs:attribute name="totalCount" type="xs:integer" />
-                <xs:attribute name="subsequentCount" type="xs:integer" />
-                <xs:attribute name="enemy" type="xs:string" />
-              </xs:complexType>
-            </xs:element>
-            <xs:element name="notWinRound" minOccurs="0" maxOccurs="unbounded">
-              <xs:complexType>
-                <xs:group ref="descriptionGroup" minOccurs="1" maxOccurs="unbounded" />
-                <xs:attribute name="totalCount" type="xs:integer" />
-                <xs:attribute name="subsequentCount" type="xs:integer" />
-                <xs:attribute name="enemy" type="xs:string" />
-              </xs:complexType>
-            </xs:element>
-            <xs:element name="afterRound" minOccurs="0" maxOccurs="1">
-              <xs:complexType>
-                <xs:sequence minOccurs="1" maxOccurs="unbounded">
-                  <xs:choice>
-                    <xs:element name="random" maxOccurs="unbounded" minOccurs="0" type="randomType" />
-                  </xs:choice>
-                </xs:sequence>
-                <xs:attribute name="everyNth" use="optional" type="xs:integer" default="1">
-                  <xs:annotation>
-                    <xs:documentation>
-                      Must be a non-zero, positive number to specify in which rounds the actions should be executed. Whenever the division remainder becomes 0, the
-                      action is executed.
-                    </xs:documentation>
-                  </xs:annotation>
-                </xs:attribute>
-                <xs:attribute name="canUseLuck" use="optional" type="xs:boolean">
-                  <xs:annotation>
-                    <xs:documentation>
-                      Set to true to allow a luck test to reduce (or increase, in case of a failed test) the damage suffered by whatever is happening here. An add
-                      element will be looked for that makes change to stamina, and the value will either be reduced or increased by the amount specified for standard battle luck
-                      tests.
-                    </xs:documentation>
-                  </xs:annotation>
-                </xs:attribute>
-              </xs:complexType>
-            </xs:element>
-            <xs:element name="specialAttack" minOccurs="0" maxOccurs="unbounded">
-              <xs:complexType>
-                <xs:attribute name="text" use="required" type="xs:string" />
-                <xs:attribute name="id" use="required" type="xs:string" />
-              </xs:complexType>
-            </xs:element>
           </xs:choice>
-          <xs:attribute name="forceWeapon" use="optional" type="xs:string" />
-          <xs:attribute name="attackStrengthRolledDices" use="optional" type="xs:integer" default="2" />
-          <xs:attribute name="attackStrengthUsedDices" use="optional" type="xs:integer" default="2" />
-          <xs:attribute name="forceOrder" use="optional" type="xs:boolean" default="false">
-            <xs:annotation>
-              <xs:documentation>
-                Force the order in which we must fight the enemies to be the same as the order in which they appear in the list.
-                Default is false.
-              </xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="type" use="required">
-            <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:enumeration value="single" />
-                    <xs:enumeration value="singleSupported" />
-                    <xs:enumeration value="singleAlly" />
-                    <xs:enumeration value="allAtOnce" />
-                    <xs:enumeration value="allAtOnceSupported" />
-                    <xs:enumeration value="randomizedAllAtOnce" />
-                    <xs:enumeration value="alwaysTwo" />
-                    <xs:enumeration value="twoByTwo" />
-                    <xs:enumeration value="onlyHighest" />
-                    <xs:enumeration value="onlyHighestLinked" />
-                    <xs:enumeration value="ship" />
-                    <xs:enumeration value="shooting" />
-                    <xs:enumeration value="custom" />
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[a-z][a-zA-Z0-9]+" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
-            </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="resolver" use="optional" default="basic">
-            <xs:simpleType>
-              <xs:restriction base="xs:string">
-                <xs:enumeration value="basic" />
-                <xs:enumeration value="ally" />
-                <xs:enumeration value="supported" />
-                <xs:enumeration value="ship" />
-                <xs:enumeration value="shooting" />
-                <xs:enumeration value="custom" />
-              </xs:restriction>
-            </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="recoverDamage" use="optional" default="false" type="xs:boolean" />
-          <xs:attribute name="preFight" use="optional" default="true" type="xs:boolean" />
-          <xs:attribute name="allyStaminaVisible" use="optional" default="false" type="xs:boolean" />
         </xs:complexType>
       </xs:element>
       <xs:element name="changeEnemy" minOccurs="0" maxOccurs="unbounded">

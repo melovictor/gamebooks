@@ -2,13 +2,11 @@ package hu.zagor.gamebooks.content.command.fight.roundresolver;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,7 +17,7 @@ import org.springframework.stereotype.Component;
 public class TwoByTwoFightRoundResolver extends AllAtOnceFightRoundResolver {
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final List<FfEnemy> resolvedEnemies = command.getResolvedEnemies();
         final List<FfEnemy> originalEnemies = new ArrayList<FfEnemy>(resolvedEnemies);
 
@@ -49,7 +47,7 @@ public class TwoByTwoFightRoundResolver extends AllAtOnceFightRoundResolver {
     }
 
     @Override
-    List<FfEnemy> getRoundRelevantEnemies(final FightCommand command) {
+    List<FfEnemy> getRoundRelevantEnemies(final FfFightCommand command) {
         final List<FfEnemy> resolvedEnemies = command.getResolvedEnemies();
         final List<String> enemies = command.getEnemies();
 

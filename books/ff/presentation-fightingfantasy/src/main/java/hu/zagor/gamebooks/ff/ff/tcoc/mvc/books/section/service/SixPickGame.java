@@ -8,7 +8,6 @@ import hu.zagor.gamebooks.ff.ff.tcoc.mvc.books.section.domain.SixPickBets;
 import hu.zagor.gamebooks.ff.ff.tcoc.mvc.books.section.domain.SixPickResult;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.HierarchicalMessageSource;

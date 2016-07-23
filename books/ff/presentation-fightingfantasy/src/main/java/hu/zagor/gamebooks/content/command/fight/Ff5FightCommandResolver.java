@@ -8,9 +8,7 @@ import hu.zagor.gamebooks.content.command.CommandResolveResult;
 import hu.zagor.gamebooks.content.command.CommandResolver;
 import hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResolver;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -22,7 +20,7 @@ public class Ff5FightCommandResolver implements CommandResolver {
 
     @Autowired
     @Qualifier("fightCommandResolver")
-    private FightCommandResolver superResolver;
+    private FfFightCommandResolver superResolver;
 
     @Override
     public CommandResolveResult resolve(final Command commandObject, final ResolvationData resolvationData) {

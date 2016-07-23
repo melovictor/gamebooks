@@ -21,11 +21,11 @@
     <entry key="basic" value-ref="ff6FightCommandBasicSubResolver" />
     <entry key="ally" value-ref="fightCommandAllySubResolver" />
   </util:map>
-  <bean class="hu.zagor.gamebooks.content.command.fight.FightCommandResolver" id="ff6FightCommandResolver" p:subResolvers-ref="ff6FightSubResolvers" />
+  <bean class="hu.zagor.gamebooks.content.command.fight.FfFightCommandResolver" id="ff6FightCommandResolver" p:subResolvers-ref="ff6FightSubResolvers" />
 
   <bean id="ff6CommandResolvers" c:mapA-ref="ffCommandResolvers" c:mapB-ref="ff6ExtraCommandResolvers" factory-method="merge" class="hu.zagor.gamebooks.support.spring.MapMerger" />
   <util:map id="ff6ExtraCommandResolvers" key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver">
-    <entry key="hu.zagor.gamebooks.content.command.fight.FightCommand" value-ref="ff6FightCommandResolver" />
+    <entry key="hu.zagor.gamebooks.content.command.fight.FfFightCommand" value-ref="ff6FightCommandResolver" />
   </util:map>
 
   <util:map key-type="java.lang.String" value-type="java.lang.Integer" id="ff6RewardPrices">

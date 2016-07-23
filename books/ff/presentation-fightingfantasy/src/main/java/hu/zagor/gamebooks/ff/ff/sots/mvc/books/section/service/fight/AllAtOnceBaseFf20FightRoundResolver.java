@@ -5,7 +5,7 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.AllAtOnceFightRoundResolver;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
@@ -22,7 +22,7 @@ public class AllAtOnceBaseFf20FightRoundResolver extends AllAtOnceFightRoundReso
     private static final int NITOKENDZSUTSZU_ATTACK_ROLL_LIMIT = 9;
 
     @Override
-    protected FightRoundResult fightSingleEnemy(final FightCommand command, final ResolvationData resolvationData, final FfEnemy enemy) {
+    protected FightRoundResult fightSingleEnemy(final FfFightCommand command, final ResolvationData resolvationData, final FfEnemy enemy) {
         final FightRoundResult fightSingleEnemy = super.fightSingleEnemy(command, resolvationData, enemy);
 
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
@@ -38,7 +38,7 @@ public class AllAtOnceBaseFf20FightRoundResolver extends AllAtOnceFightRoundReso
         return fightSingleEnemy;
     }
 
-    private boolean twoSwordFight(final ResolvationData resolvationData, final FfEnemy selectedEnemy, final FightCommand command) {
+    private boolean twoSwordFight(final ResolvationData resolvationData, final FfEnemy selectedEnemy, final FfFightCommand command) {
         final Character character = resolvationData.getCharacter();
         final CharacterItemHandler itemHandler = resolvationData.getCharacterHandler().getItemHandler();
         final Map<String, Integer> attackStrengths = command.getAttackStrengths();

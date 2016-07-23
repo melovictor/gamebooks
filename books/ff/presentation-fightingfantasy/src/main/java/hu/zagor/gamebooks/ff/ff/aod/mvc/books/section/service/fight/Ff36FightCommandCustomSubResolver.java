@@ -9,8 +9,8 @@ import hu.zagor.gamebooks.character.handler.attribute.AttributeHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
-import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
+import hu.zagor.gamebooks.content.command.fight.roundresolver.FfFightRoundResolver;
 import hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResolver;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -27,10 +27,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
  */
 public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolver {
 
-    @Autowired @Qualifier("customFf36FightRoundResolver") private FightRoundResolver roundResolver;
+    @Autowired @Qualifier("customFf36FightRoundResolver") private FfFightRoundResolver roundResolver;
 
     @Override
-    public List<ParagraphData> doResolve(final FightCommand command, final ResolvationData resolvationData) {
+    public List<ParagraphData> doResolve(final FfFightCommand command, final ResolvationData resolvationData) {
         List<ParagraphData> result;
         final CharacterHandler characterHandler = resolvationData.getCharacterHandler();
         final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) characterHandler.getInteractionHandler();
@@ -38,7 +38,7 @@ public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolve
         final String order = interactionHandler.getLastFightCommand(character);
         if (order == null) {
             result = setUpFightParties(command, resolvationData);
-        } else if (FightCommand.ATTACKING.equals(order)) {
+        } else if (FfFightCommand.ATTACKING.equals(order)) {
             result = handleAttacking(command, resolvationData);
         } else {
             result = handleLosingArmy(command, characterHandler, character);
@@ -47,7 +47,7 @@ public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolve
         return result;
     }
 
-    private List<ParagraphData> handleAttacking(final FightCommand command, final ResolvationData resolvationData) {
+    private List<ParagraphData> handleAttacking(final FfFightCommand command, final ResolvationData resolvationData) {
         List<ParagraphData> result = null;
         roundResolver.resolveRound(command, resolvationData, null);
         if (weAreDead(command.getResolvedAllies())) {
@@ -72,7 +72,7 @@ public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolve
         return result;
     }
 
-    private List<ParagraphData> handleLosingArmy(final FightCommand command, final CharacterHandler characterHandler, final Ff36Character character) {
+    private List<ParagraphData> handleLosingArmy(final FfFightCommand command, final CharacterHandler characterHandler, final Ff36Character character) {
         List<ParagraphData> result;
         final FfUserInteractionHandler interactionHandler = (FfUserInteractionHandler) characterHandler.getInteractionHandler();
         final String fightersToLose = interactionHandler.getLastFightCommand(character, "loseArmy");
@@ -87,7 +87,7 @@ public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolve
         return result;
     }
 
-    private void removeDeadSoldiers(final FightCommand command, final ResolvationData resolvationData) {
+    private void removeDeadSoldiers(final FfFightCommand command, final ResolvationData resolvationData) {
         final FfEnemy ally = (FfEnemy) resolvationData.getEnemies().get(command.getAllies().get(0));
         final int amount = -command.getResolvedAllies().get(1).getStamina();
 
@@ -122,7 +122,7 @@ public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolve
         return totalAlive <= 0;
     }
 
-    private List<ParagraphData> setUpFightParties(final FightCommand command, final ResolvationData resolvationData) {
+    private List<ParagraphData> setUpFightParties(final FfFightCommand command, final ResolvationData resolvationData) {
         List<ParagraphData> result = null;
         final Ff36Character character = (Ff36Character) resolvationData.getCharacter();
         final List<FfAllyCharacter> allies = command.getResolvedAllies();
@@ -153,7 +153,7 @@ public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolve
         }
     }
 
-    private void setUpEnemies(final FightCommand command, final ResolvationData resolvationData) {
+    private void setUpEnemies(final FfFightCommand command, final ResolvationData resolvationData) {
         final List<FfEnemy> resolvedEnemies = command.getResolvedEnemies();
         final Map<String, Enemy> enemies = resolvationData.getEnemies();
         for (final String enemyId : command.getEnemies()) {

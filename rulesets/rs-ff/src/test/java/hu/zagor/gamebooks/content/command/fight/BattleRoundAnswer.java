@@ -7,7 +7,7 @@ import org.easymock.EasyMock;
 import org.easymock.IAnswer;
 
 /**
- * Helper class for testing the {@link FightCommandResolver}.
+ * Helper class for testing the {@link FfFightCommandResolver}.
  * @author Tamas_Szekeres
  */
 public class BattleRoundAnswer implements IAnswer<FightRoundResult[]> {

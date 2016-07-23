@@ -44,8 +44,8 @@
   <bean id="ff12CommandResolvers" c:mapA-ref="ffCommandResolvers" factory-method="merge" class="hu.zagor.gamebooks.support.spring.MapMerger">
     <constructor-arg name="mapB">
       <util:map key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver">
-        <entry key="hu.zagor.gamebooks.content.command.fight.FightCommand">
-          <bean class="hu.zagor.gamebooks.content.command.fight.FightCommandResolver">
+        <entry key="hu.zagor.gamebooks.content.command.fight.FfFightCommand">
+          <bean class="hu.zagor.gamebooks.content.command.fight.FfFightCommandResolver">
             <property name="subResolvers">
               <bean id="ff12FightSubResolvers" c:mapA-ref="fightSubResolvers" factory-method="merge" class="hu.zagor.gamebooks.support.spring.MapMerger">
                 <constructor-arg name="mapB">

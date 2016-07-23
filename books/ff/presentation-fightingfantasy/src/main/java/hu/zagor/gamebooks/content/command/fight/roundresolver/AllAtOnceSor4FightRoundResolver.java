@@ -2,7 +2,7 @@ package hu.zagor.gamebooks.content.command.fight.roundresolver;
 
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.service.Sor4RedEyeRetaliationStrikeService;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -21,7 +21,7 @@ public class AllAtOnceSor4FightRoundResolver extends AllAtOnceSorFightRoundResol
     @Autowired private Sor4RedEyeRetaliationStrikeService retaliationHandler;
 
     @Override
-    protected void damageEnemy(final FightCommand command, final FightDataDto dto) {
+    protected void damageEnemy(final FfFightCommand command, final FightDataDto dto) {
         super.damageEnemy(command, dto);
         final FfEnemy enemy = dto.getEnemy();
         if (enemy.getStamina() <= 0 && isSightmaster(enemy) && underSpell(dto)) {

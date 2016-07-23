@@ -4,15 +4,13 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.item.Item;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -42,11 +40,11 @@ public class Ff7SpecialAttackStrengthGenerator {
     /**
      * Calculates the attack strength for the hero based on the in-book items and other effects that might affect the outcome of a battle round.
      * @param character the {@link FfCharacter} object
-     * @param command the {@link FightCommand} object
+     * @param command the {@link FfFightCommand} object
      * @param attributeHandler the {@link FfAttributeHandler} object
      * @return the calculated attack strength for the hero, or null if it should be calculated automatically
      */
-    public int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
+    public int[] getSelfAttackStrength(final FfCharacter character, final FfFightCommand command, final FfAttributeHandler attributeHandler) {
         int[] selfAttackStrength = null;
 
         if (command.getRoundNumber() == 1) {
@@ -79,7 +77,7 @@ public class Ff7SpecialAttackStrengthGenerator {
         return selfAttackStrength;
     }
 
-    private void addMarker(final FightCommand command, final String marker) {
+    private void addMarker(final FfFightCommand command, final String marker) {
         final RoundEvent e = new RoundEvent();
         e.setEnemyId(marker);
         e.setRoundResult(FightRoundResult.TIE);
@@ -93,10 +91,10 @@ public class Ff7SpecialAttackStrengthGenerator {
     /**
      * Calculates the attack strength for the enemies based on the in-book items and other effects that might affect the outcome of a battle round.
      * @param enemy the {@link FfEnemy} object
-     * @param command the {@link FightCommand} object
+     * @param command the {@link FfFightCommand} object
      * @return the calculated attack strength for the enemy, or null if it should be calculated automatically
      */
-    public int[] getEnemyAttackStrength(final FfEnemy enemy, final FightCommand command) {
+    public int[] getEnemyAttackStrength(final FfEnemy enemy, final FfFightCommand command) {
         int[] enemyAttackStrength = null;
 
         if (command.getRoundNumber() == 1) {
@@ -117,7 +115,7 @@ public class Ff7SpecialAttackStrengthGenerator {
         return enemyAttackStrength;
     }
 
-    private boolean hasMarker(final FightCommand command, final String marker) {
+    private boolean hasMarker(final FfFightCommand command, final String marker) {
         boolean matches = false;
         final List<RoundEvent> roundEvents = command.getRoundEvents();
         for (final RoundEvent event : roundEvents) {

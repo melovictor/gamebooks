@@ -43,7 +43,7 @@ public class Ff38FightCommandResolverDTest {
     private IMocksControl mockControl;
     private Ff38FightCommandResolver underTest;
     private RandomNumberGenerator generator;
-    private FightCommand command;
+    private FfFightCommand command;
     private ResolvationData resolvationData;
     private ParagraphData rootData;
     private Ff38Character character;
@@ -108,7 +108,7 @@ public class Ff38FightCommandResolverDTest {
     @BeforeMethod
     public void setUpMethod() {
         mockControl.reset();
-        command = new FightCommand();
+        command = new FfFightCommand();
         Whitebox.setInternalState(command, "messages", messages);
         wolf.setStamina(5);
         heydrich.setStamina(21);

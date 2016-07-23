@@ -8,10 +8,9 @@ import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.ItemType;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import java.util.List;
 
 /**
@@ -60,7 +59,7 @@ public class FightDataDto {
     }
 
     /**
-     * Gets the selected weapon using the {@link CharacterItemHandler} from the weapon types specified as usable by the {@link FightCommand}.
+     * Gets the selected weapon using the {@link CharacterItemHandler} from the weapon types specified as usable by the {@link FfFightCommand}.
      * @return the {@link FfItem} for the currently selected weapon
      */
     public FfItem getSelectedWeapon() {

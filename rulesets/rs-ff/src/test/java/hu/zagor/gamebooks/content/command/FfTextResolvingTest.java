@@ -3,7 +3,7 @@ package hu.zagor.gamebooks.content.command;
 import static org.easymock.EasyMock.aryEq;
 import static org.easymock.EasyMock.eq;
 import static org.easymock.EasyMock.expect;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import java.util.Locale;
@@ -37,7 +37,7 @@ public abstract class FfTextResolvingTest {
         }
     }
 
-    public void init(final FightCommand command) {
+    public void init(final FfFightCommand command) {
         Whitebox.setInternalState(command, "messages", messageList);
     }
 

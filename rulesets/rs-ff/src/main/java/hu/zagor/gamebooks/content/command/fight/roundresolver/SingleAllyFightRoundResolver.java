@@ -2,7 +2,7 @@ package hu.zagor.gamebooks.content.command.fight.roundresolver;
 
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.item.FfItem;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 public class SingleAllyFightRoundResolver extends SingleFightRoundResolver {
 
     @Override
-    protected void damageEnemy(final FightCommand command, final FightDataDto dto) {
+    protected void damageEnemy(final FfFightCommand command, final FightDataDto dto) {
         final FfItem selectedWeapon = dto.getSelectedWeapon();
         final FfAllyCharacter character = (FfAllyCharacter) dto.getCharacter();
         final FfEnemy ally = character.getAlly();
@@ -87,7 +87,7 @@ public class SingleAllyFightRoundResolver extends SingleFightRoundResolver {
     }
 
     @Override
-    void doLoseFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
+    void doLoseFight(final FfFightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
         final FfAllyCharacter firstAlly = command.getFirstAlly();
         final FfCharacter character = dto.getCharacter();
 
@@ -101,13 +101,13 @@ public class SingleAllyFightRoundResolver extends SingleFightRoundResolver {
     }
 
     @Override
-    int getHeroRolledDices(final FfCharacter characterObject, final FightCommand command) {
+    int getHeroRolledDices(final FfCharacter characterObject, final FfFightCommand command) {
         final FfAllyCharacter character = (FfAllyCharacter) characterObject;
         return character.getAttackStrengthDices();
     }
 
     @Override
-    int getHeroUsedDices(final FfCharacter characterObject, final FightCommand command) {
+    int getHeroUsedDices(final FfCharacter characterObject, final FfFightCommand command) {
         final FfAllyCharacter character = (FfAllyCharacter) characterObject;
         return character.getAttackStrengthDices();
     }

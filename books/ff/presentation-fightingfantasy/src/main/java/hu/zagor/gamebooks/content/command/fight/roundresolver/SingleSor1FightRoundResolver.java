@@ -3,7 +3,7 @@ package hu.zagor.gamebooks.content.command.fight.roundresolver;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component("singlesor1FightRoundResolver")
-public class SingleSor1FightRoundResolver implements FightRoundResolver {
+public class SingleSor1FightRoundResolver implements FfFightRoundResolver {
     private static final int EXTRA_DAMAGE_OVER_SUCCESSFUL_LUCK_TEST = -1;
     private static final int EXTRA_DAMAGE_OVER_FAILED_LUCK_TEST = -3;
     private static final int LUCK_TEST_RESULT_POSITION = 4;
@@ -30,7 +30,7 @@ public class SingleSor1FightRoundResolver implements FightRoundResolver {
     @Autowired @Qualifier("d6") private RandomNumberGenerator generator;
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final FightRoundResult[] roundResult = superResolver.resolveRound(command, resolvationData, beforeRoundResult);
 
         if (isManticore(command) && weLost(roundResult)) {
@@ -40,7 +40,7 @@ public class SingleSor1FightRoundResolver implements FightRoundResolver {
         return roundResult;
     }
 
-    private void rollForHigherDamage(final FightCommand command, final ResolvationData resolvationData) {
+    private void rollForHigherDamage(final FfFightCommand command, final ResolvationData resolvationData) {
         final int[] rolledNumbers = generator.getRandomNumber(1);
         final String rolledDice = renderer.render(generator.getDefaultDiceSide(), rolledNumbers);
         final FightCommandMessageList messages = command.getMessages();
@@ -56,7 +56,7 @@ public class SingleSor1FightRoundResolver implements FightRoundResolver {
         }
     }
 
-    private void alterLuckTestHighDamageResult(final FightCommand command, final ResolvationData resolvationData, final FightCommandMessageList messages) {
+    private void alterLuckTestHighDamageResult(final FfFightCommand command, final ResolvationData resolvationData, final FightCommandMessageList messages) {
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         if (luckTestWasSuccessful(command, messages)) {
             ensureDeductionOfNormalDamageWithMessage(character, messages);
@@ -65,7 +65,7 @@ public class SingleSor1FightRoundResolver implements FightRoundResolver {
         }
     }
 
-    private boolean luckTestWasSuccessful(final FightCommand command, final FightCommandMessageList messages) {
+    private boolean luckTestWasSuccessful(final FfFightCommand command, final FightCommandMessageList messages) {
         messages.remove(LUCK_TEST_RESULT_POSITION);
         return command.getLuckOnDefenseResult();
     }
@@ -89,13 +89,13 @@ public class SingleSor1FightRoundResolver implements FightRoundResolver {
         return roundResult[0] == FightRoundResult.LOSE;
     }
 
-    private boolean isManticore(final FightCommand command) {
+    private boolean isManticore(final FfFightCommand command) {
         final FfEnemy enemy = command.getResolvedEnemies().get(0);
         return MANTICORE_ID.equals(enemy.getId());
     }
 
     @Override
-    public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
+    public void resolveFlee(final FfFightCommand command, final ResolvationData resolvationData) {
         superResolver.resolveFlee(command, resolvationData);
     }
 

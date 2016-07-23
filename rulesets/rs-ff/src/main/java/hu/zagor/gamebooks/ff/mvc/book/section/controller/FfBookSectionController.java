@@ -5,13 +5,13 @@ import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestDecision;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
+import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
 import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.FightCommandForm;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import hu.zagor.gamebooks.ff.mvc.book.section.service.FfBookPreFightHandlingService;
 import hu.zagor.gamebooks.mvc.book.section.controller.GenericBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
@@ -115,7 +115,7 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
      */
     protected void prepareFight(final HttpSessionWrapper wrapper) {
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
-        getInfo().getCharacterHandler().getInteractionHandler().setFightCommand(character, FightCommand.ATTACKING);
+        getInfo().getCharacterHandler().getInteractionHandler().setFightCommand(character, FfFightCommand.ATTACKING);
     }
 
     /**
@@ -129,7 +129,7 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
 
-        getInfo().getCharacterHandler().getInteractionHandler().setFightCommand(character, FightCommand.FLEEING);
+        getInfo().getCharacterHandler().getInteractionHandler().setFightCommand(character, FfFightCommand.FLEEING);
 
         return super.handleSection(model, request, null);
     }

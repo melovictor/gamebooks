@@ -6,7 +6,7 @@ import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.BasicEnemyPrePostFightDataContainer;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -31,7 +31,7 @@ public class CaptainHandlerTest {
     @Mock private BasicEnemyPrePostFightDataContainer data;
     private FightRoundResult[] results;
     @Mock private ResolvationData resolvationData;
-    @Mock private FightCommand command;
+    @Mock private FfFightCommand command;
     @Mock private FfEnemy captain;
     @Mock private FfEnemy elvira;
     @Mock private FfCharacterHandler characterHandler;

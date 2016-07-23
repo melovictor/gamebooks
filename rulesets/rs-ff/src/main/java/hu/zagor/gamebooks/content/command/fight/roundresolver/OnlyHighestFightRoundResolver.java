@@ -5,14 +5,14 @@ import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
+import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +27,7 @@ import org.springframework.stereotype.Component;
 public class OnlyHighestFightRoundResolver extends SingleFightRoundResolver {
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final List<FfEnemy> enemies = command.getResolvedEnemies();
         final FightRoundResult[] result = new FightRoundResult[enemies.size()];
         final FightCommandMessageList messages = command.getMessages();
@@ -91,7 +91,7 @@ public class OnlyHighestFightRoundResolver extends SingleFightRoundResolver {
         return enemyId;
     }
 
-    private Map<String, int[]> getEnemiesAttackValues(final List<FfEnemy> enemies, final FightCommand command) {
+    private Map<String, int[]> getEnemiesAttackValues(final List<FfEnemy> enemies, final FfFightCommand command) {
         final Map<String, int[]> enemyAttackValues = new HashMap<>();
         for (final FfEnemy enemy : enemies) {
             enemyAttackValues.put(enemy.getId(), getEnemyAttackStrength(enemy, command));
@@ -135,7 +135,7 @@ public class OnlyHighestFightRoundResolver extends SingleFightRoundResolver {
     }
 
     @Override
-    public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
+    public void resolveFlee(final FfFightCommand command, final ResolvationData resolvationData) {
         final FightCommandMessageList messages = command.getMessages();
         final FightFleeData fleeData = command.getFleeData();
         getFleeTextResourceList(messages, fleeData);

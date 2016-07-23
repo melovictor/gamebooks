@@ -3,14 +3,13 @@ package hu.zagor.gamebooks.content.command.fight.roundresolver;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -20,7 +19,7 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component
-public class Custom18FightRoundResolver implements FightRoundResolver {
+public class Custom18FightRoundResolver implements FfFightRoundResolver {
 
     private static final int HERO_WINS = 7;
     private static final int DAMAGE = 2;
@@ -34,7 +33,7 @@ public class Custom18FightRoundResolver implements FightRoundResolver {
     private SingleFightRoundResolver superResolver;
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final int[] thrownResult = generator.getRandomNumber(2);
         final FightRoundResult[] result = new FightRoundResult[1];
 
@@ -60,7 +59,7 @@ public class Custom18FightRoundResolver implements FightRoundResolver {
     }
 
     @Override
-    public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
+    public void resolveFlee(final FfFightCommand command, final ResolvationData resolvationData) {
         superResolver.resolveFlee(command, resolvationData);
     }
 

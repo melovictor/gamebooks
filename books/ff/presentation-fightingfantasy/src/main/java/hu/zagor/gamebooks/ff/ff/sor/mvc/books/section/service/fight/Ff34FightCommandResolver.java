@@ -10,8 +10,8 @@ import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHan
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.CommandResolveResult;
 import hu.zagor.gamebooks.content.command.CommandResolver;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
-import hu.zagor.gamebooks.content.command.fight.FightCommandResolver;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommandResolver;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * @author Tamas_Szekeres
  */
 public class Ff34FightCommandResolver implements CommandResolver {
-    @Autowired @Qualifier("fightCommandResolver") private FightCommandResolver decorated;
+    @Autowired @Qualifier("fightCommandResolver") private FfFightCommandResolver decorated;
 
     @Override
     public CommandResolveResult resolve(final Command command, final ResolvationData resolvationData) {
@@ -31,7 +31,7 @@ public class Ff34FightCommandResolver implements CommandResolver {
 
         final CommandResolveResult resolve = decorated.resolve(command, resolvationData);
 
-        if (endOfBattle((FightCommand) command) && hasMagicSword(resolvationData)) {
+        if (endOfBattle((FfFightCommand) command) && hasMagicSword(resolvationData)) {
             restoreSingleStamina(resolvationData);
         }
 
@@ -51,7 +51,7 @@ public class Ff34FightCommandResolver implements CommandResolver {
         return itemHandler.hasEquippedItem(resolvationData.getCharacter(), "1002");
     }
 
-    private boolean endOfBattle(final FightCommand command) {
+    private boolean endOfBattle(final FfFightCommand command) {
         return !command.isOngoing();
     }
 

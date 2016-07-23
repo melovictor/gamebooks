@@ -8,7 +8,7 @@ import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.BasicEnemyPrePostFightDataContainer;
@@ -35,7 +35,7 @@ public class MonkHandlerTest {
     @Mock private BasicEnemyPrePostFightDataContainer data;
     private final FightRoundResult[] results = new FightRoundResult[]{FightRoundResult.WIN};
     @Mock private ResolvationData resolvationData;
-    @Mock private FightCommand command;
+    @Mock private FfFightCommand command;
     @Mock private Map<String, Enemy> enemyList;
     @Mock private FfEnemy enemy;
 

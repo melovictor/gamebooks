@@ -6,16 +6,14 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.ff.ff.trok.character.Ff15Character;
 import hu.zagor.gamebooks.ff.ff.trok.character.domain.Ff15ShipAttributes;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -37,7 +35,7 @@ public class Ship15FightRoundResolverBTest {
     private RandomNumberGenerator generator;
     private DiceResultRenderer renderer;
     private ResolvationData resolvationData;
-    private FightCommand command;
+    private FfFightCommand command;
     private Ff15Character character;
     private Ff15ShipAttributes ship;
     private FfCharacterHandler characterHandler;
@@ -61,7 +59,7 @@ public class Ship15FightRoundResolverBTest {
         interactionHandler = mockControl.createMock(FfUserInteractionHandler.class);
         messages = mockControl.createMock(FightCommandMessageList.class);
         failedAttackResults = new int[]{11, 5, 6};
-        command = mockControl.createMock(FightCommand.class);
+        command = mockControl.createMock(FfFightCommand.class);
         shipA = new FfEnemy();
         shipB = new FfEnemy();
         resolvedEnemies = new ArrayList<>();

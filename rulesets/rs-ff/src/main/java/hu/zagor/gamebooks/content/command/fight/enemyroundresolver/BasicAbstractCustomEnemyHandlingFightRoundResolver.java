@@ -1,10 +1,10 @@
 package hu.zagor.gamebooks.content.command.fight.enemyroundresolver;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
-import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver;
+import hu.zagor.gamebooks.content.command.fight.roundresolver.FfFightRoundResolver;
 import java.lang.reflect.Field;
 import org.springframework.util.ReflectionUtils;
 
@@ -17,7 +17,7 @@ public abstract class BasicAbstractCustomEnemyHandlingFightRoundResolver<T exten
     extends MapBasedFfCustomEnemyHandlingSingleFightRoundResolver<T> {
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final T data = executePreRoundActions(command, resolvationData);
         final FightRoundResult[] roundResult = getDecorated().resolveRound(command, resolvationData, beforeRoundResult);
         executePostRoundActions(command, resolvationData, roundResult, data);
@@ -26,18 +26,18 @@ public abstract class BasicAbstractCustomEnemyHandlingFightRoundResolver<T exten
     }
 
     @Override
-    public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
+    public void resolveFlee(final FfFightCommand command, final ResolvationData resolvationData) {
         getDecorated().resolveFlee(command, resolvationData);
     }
 
     /**
-     * Returns the {@link FightRoundResolver} object to be decorated.
+     * Returns the {@link FfFightRoundResolver} object to be decorated.
      * @return the object to be decorated
      */
-    protected FightRoundResolver getDecorated() {
+    protected FfFightRoundResolver getDecorated() {
         final Field field = ReflectionUtils.findField(getClass(), "decorated");
         ReflectionUtils.makeAccessible(field);
-        return (FightRoundResolver) ReflectionUtils.getField(field, this);
+        return (FfFightRoundResolver) ReflectionUtils.getField(field, this);
     }
 
 }

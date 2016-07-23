@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.ff.wm.tds.mvc.books.section.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.support.bookids.hungarian.KalandJatekKockazatZagorJatekfuzetek;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

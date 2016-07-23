@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.content.command.fight.domain;
 
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.content.FfParagraphData;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.Assert;

@@ -13,7 +13,7 @@ import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.domain.FfBookInformations;
@@ -39,7 +39,7 @@ import org.testng.annotations.Test;
 public class Ff18FightCommandBasicSubResolverATest {
     @UnderTest private Ff18FightCommandBasicSubResolver underTest;
     @MockControl private IMocksControl mockControl;
-    @Mock private FightCommand command;
+    @Mock private FfFightCommand command;
     private ResolvationData resolvationData;
     private ParagraphData rootData;
     @Mock private FfCharacter character;

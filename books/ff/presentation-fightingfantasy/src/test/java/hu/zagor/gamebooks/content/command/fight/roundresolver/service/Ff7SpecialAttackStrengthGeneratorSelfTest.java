@@ -6,15 +6,13 @@ import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.item.EquipInfo;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.Item;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.powermock.reflect.Whitebox;
@@ -34,7 +32,7 @@ public class Ff7SpecialAttackStrengthGeneratorSelfTest {
     private IMocksControl mockControl;
     private Ff7SpecialAttackStrengthGenerator underTest;
     private FfCharacter character;
-    private FightCommand command;
+    private FfFightCommand command;
     private FfAttributeHandler attributeHandler;
     private List<Item> equipmentList;
     private Item item;
@@ -50,7 +48,7 @@ public class Ff7SpecialAttackStrengthGeneratorSelfTest {
     public void setUpClass() {
         mockControl = EasyMock.createStrictControl();
         underTest = new Ff7SpecialAttackStrengthGenerator();
-        command = mockControl.createMock(FightCommand.class);
+        command = mockControl.createMock(FfFightCommand.class);
         character = mockControl.createMock(FfCharacter.class);
         item = mockControl.createMock(FfItem.class);
         equipmentList = new ArrayList<Item>();

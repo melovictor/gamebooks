@@ -3,7 +3,7 @@ package hu.zagor.gamebooks.content.command.fight.roundresolver;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
@@ -20,10 +20,10 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class AllAtOnceSupportedFightRoundResolver extends AllAtOnceFightRoundResolver {
-    @Autowired @Qualifier("singleSupportedFightRoundResolver") private FightRoundResolver singleSupportedResolver;
+    @Autowired @Qualifier("singleSupportedFightRoundResolver") private FfFightRoundResolver singleSupportedResolver;
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         FightRoundResult[] resolveRound;
         final Character character = resolvationData.getCharacter();
         if (character instanceof FfAllyCharacter) {

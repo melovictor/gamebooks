@@ -1,7 +1,7 @@
 package hu.zagor.gamebooks.content.command.fight.roundresolver;
 
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.service.SorDamageReducingArmourService;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -25,7 +25,7 @@ public class AlwaysTwoSor4FightRoundResolver extends AlwaysTwoFightRoundResolver
     }
 
     @Override
-    int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
+    int[] getSelfAttackStrength(final FfCharacter character, final FfFightCommand command, final FfAttributeHandler attributeHandler) {
         return heroAttackStrengthRoller.getSelfAttackStrength(character, command, attributeHandler);
     }
 

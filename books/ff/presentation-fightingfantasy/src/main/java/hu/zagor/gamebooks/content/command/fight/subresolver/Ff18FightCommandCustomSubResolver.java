@@ -5,10 +5,10 @@ import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightOutcome;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.Custom18FightRoundResolver;
-import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver;
+import hu.zagor.gamebooks.content.command.fight.roundresolver.FfFightRoundResolver;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ import java.util.List;
 public class Ff18FightCommandCustomSubResolver extends FightCommandBasicSubResolver {
 
     @Override
-    public List<ParagraphData> doResolve(final FightCommand command, final ResolvationData resolvationData) {
+    public List<ParagraphData> doResolve(final FfFightCommand command, final ResolvationData resolvationData) {
         final List<ParagraphData> resolveList = new ArrayList<>();
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
@@ -34,11 +34,11 @@ public class Ff18FightCommandCustomSubResolver extends FightCommandBasicSubResol
         return resolveList;
     }
 
-    private void resolveBattleRound(final FightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
+    private void resolveBattleRound(final FfFightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final String lastFightCommand = characterHandler.getInteractionHandler().getLastFightCommand(character);
-        if (FightCommand.ATTACKING.equals(lastFightCommand)) {
+        if (FfFightCommand.ATTACKING.equals(lastFightCommand)) {
             handleAttacking(command, resolvationData, resolveList);
         } else {
             command.setBattleType("custom-18");
@@ -47,11 +47,11 @@ public class Ff18FightCommandCustomSubResolver extends FightCommandBasicSubResol
     }
 
     @Override
-    protected void handleAttacking(final FightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
+    protected void handleAttacking(final FfFightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
         command.increaseBattleRound();
         command.getMessages().setRoundMessage(command.getRoundNumber());
 
-        final FightRoundResolver roundResolver = getBeanFactory().getBean(Custom18FightRoundResolver.class);
+        final FfFightRoundResolver roundResolver = getBeanFactory().getBean(Custom18FightRoundResolver.class);
         roundResolver.resolveRound(command, resolvationData, null);
 
         if (allEnemiesDead(command.getResolvedEnemies())) {
@@ -64,17 +64,17 @@ public class Ff18FightCommandCustomSubResolver extends FightCommandBasicSubResol
 
     }
 
-    private void handleContinuation(final FightCommand command) {
+    private void handleContinuation(final FfFightCommand command) {
         command.setOngoing(true);
         command.setKeepOpen(true);
     }
 
-    private void handleLosing(final FightCommand command, final List<ParagraphData> resolveList) {
+    private void handleLosing(final FfFightCommand command, final List<ParagraphData> resolveList) {
         command.setOngoing(false);
         resolveList.add(command.getLose());
     }
 
-    private void handleWinning(final FightCommand command, final List<ParagraphData> resolveList) {
+    private void handleWinning(final FfFightCommand command, final List<ParagraphData> resolveList) {
         command.setOngoing(false);
         final int roundNumber = command.getRoundNumber();
         for (final FightOutcome outcome : command.getWin()) {

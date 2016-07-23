@@ -2,7 +2,7 @@ package hu.zagor.gamebooks.content.command.fight.roundresolver;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
@@ -17,13 +17,13 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component("highestMainSupportedFightRoundResolver")
-public class HighestMainSupportedSor2FightRoundResolver implements FightRoundResolver {
-    @Autowired @Qualifier("highestMainSupportedSingleSor2FightRoundResolver") private FightRoundResolver oneEnemyResolver;
-    @Autowired @Qualifier("highestMainSupportedDualSor2FightRoundResolver") private FightRoundResolver twoEnemiesResolver;
-    @Autowired @Qualifier("allAtOnceFightRoundResolver") private FightRoundResolver allAtOnceResolver;
+public class HighestMainSupportedSor2FightRoundResolver implements FfFightRoundResolver {
+    @Autowired @Qualifier("highestMainSupportedSingleSor2FightRoundResolver") private FfFightRoundResolver oneEnemyResolver;
+    @Autowired @Qualifier("highestMainSupportedDualSor2FightRoundResolver") private FfFightRoundResolver twoEnemiesResolver;
+    @Autowired @Qualifier("allAtOnceFightRoundResolver") private FfFightRoundResolver allAtOnceResolver;
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         FightRoundResult[] result;
         if (!(resolvationData.getCharacter() instanceof FfAllyCharacter)) {
             if (command.getResolvedAllies().size() == 0) {
@@ -43,7 +43,7 @@ public class HighestMainSupportedSor2FightRoundResolver implements FightRoundRes
     }
 
     @Override
-    public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
+    public void resolveFlee(final FfFightCommand command, final ResolvationData resolvationData) {
         throw new UnsupportedOperationException();
     }
 

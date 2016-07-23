@@ -20,16 +20,16 @@ import hu.zagor.gamebooks.character.item.WeaponSubType;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightBoundingCommandResolver;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightCommandRoundEventResolver;
 import hu.zagor.gamebooks.content.command.fight.FightOutcome;
-import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver;
+import hu.zagor.gamebooks.content.command.fight.roundresolver.FfFightRoundResolver;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.OnlyHighestLinkedFightRoundResolver;
 import hu.zagor.gamebooks.content.command.fight.subresolver.autolose.AutoLoseHandler;
 import hu.zagor.gamebooks.content.command.fight.subresolver.autolose.DefaultAutoLoseHandler;
-import hu.zagor.gamebooks.content.command.fight.subresolver.enemystatus.DefaultEnemyStatusEvaluator;
 import hu.zagor.gamebooks.content.command.fight.subresolver.enemystatus.EnemyStatusEvaluator;
+import hu.zagor.gamebooks.content.command.fight.subresolver.enemystatus.FfEnemyStatusEvaluator;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -65,7 +65,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
     private FightCommandBasicSubResolver underTest;
     private IMocksControl mockControl;
     private BeanFactory beanFactory;
-    private FightCommand command;
+    private FfFightCommand command;
     private ResolvationData resolvationData;
     private FfParagraphData rootData;
     private FfCharacter character;
@@ -77,7 +77,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
     private FfParagraphData win;
     private FfParagraphData lose;
 
-    private FightRoundResolver fightRoundResolver;
+    private FfFightRoundResolver ffFightRoundResolver;
     private Logger logger;
     private RandomNumberGenerator generator;
 
@@ -92,7 +92,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
     private BattleLuckTestParameters battleLuckTestParameters;
     private FightOutcome outcome;
 
-    private EnemyStatusEvaluator enemyStatusEvaluator;
+    private EnemyStatusEvaluator<FfEnemy> enemyStatusEvaluator;
     private AutoLoseHandler autoLoseHandler;
     private DiceResultRenderer diceResultRenderer;
     private ExpressionResolver expressionResolver;
@@ -108,14 +108,14 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         logger = mockControl.createMock(Logger.class);
         generator = mockControl.createMock(RandomNumberGenerator.class);
 
-        fightRoundResolver = new OnlyHighestLinkedFightRoundResolver();
-        init(mockControl, fightRoundResolver);
-        Whitebox.setInternalState(fightRoundResolver, "logger", logger);
-        Whitebox.setInternalState(fightRoundResolver, "generator", generator);
+        ffFightRoundResolver = new OnlyHighestLinkedFightRoundResolver();
+        init(mockControl, ffFightRoundResolver);
+        Whitebox.setInternalState(ffFightRoundResolver, "logger", logger);
+        Whitebox.setInternalState(ffFightRoundResolver, "generator", generator);
 
         underTest = new FightCommandBasicSubResolver();
         underTest.setBeanFactory(beanFactory);
-        enemyStatusEvaluator = new DefaultEnemyStatusEvaluator();
+        enemyStatusEvaluator = new FfEnemyStatusEvaluator();
         autoLoseHandler = new DefaultAutoLoseHandler();
         Whitebox.setInternalState(underTest, "roundEventResolver", roundEventResolver);
         Whitebox.setInternalState(underTest, "fightBoundingCommandResolver", fightBoundingCommandResolver);
@@ -124,7 +124,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         Whitebox.setInternalState(underTest, "autoLoseHandler", autoLoseHandler);
         Whitebox.setInternalState(autoLoseHandler, "enemyStatusEvaluator", enemyStatusEvaluator);
         diceResultRenderer = mockControl.createMock(DiceResultRenderer.class);
-        Whitebox.setInternalState(fightRoundResolver, "diceResultRenderer", diceResultRenderer);
+        Whitebox.setInternalState(ffFightRoundResolver, "diceResultRenderer", diceResultRenderer);
     }
 
     private void setUpBusinessLogic() {
@@ -135,7 +135,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         outcome = new FightOutcome();
         outcome.setParagraphData(win);
 
-        command = new FightCommand();
+        command = new FfFightCommand();
         init(command);
         command.getEnemies().add("1");
         command.getEnemies().add("2");
@@ -189,7 +189,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
         Whitebox.setInternalState(expressionResolver, "logger", logger);
 
         interactionHandler = new FfUserInteractionHandler();
-        interactionHandler.setFightCommand(character, FightCommand.ATTACKING);
+        interactionHandler.setFightCommand(character, FfFightCommand.ATTACKING);
         interactionHandler.setFightCommand(character, "luckOnHit", "false");
         interactionHandler.setFightCommand(character, "luckOnDefense", "false");
         interactionHandler.setFightCommand(character, "enemyId", "1");
@@ -791,7 +791,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
 
     public void testDoResolveWhenInSingleBattleFleeingFromTwoEnemiesShouldBothHitFinalAttack() {
         // GIVEN
-        interactionHandler.setFightCommand(character, FightCommand.FLEEING);
+        interactionHandler.setFightCommand(character, FfFightCommand.FLEEING);
         getRoundResolver();
         expectText("page.ff.label.fight.flee");
         expectText("page.ff.label.fight.single.flee", new Object[]{"Two-Headed Dog"});
@@ -810,7 +810,7 @@ public class FightCommandBasicSubResolverWithOnlyHighestLinkedFightRoundResolver
 
     private void getRoundResolver() {
         expect(beanFactory.containsBean("singleff3FightRoundResolver")).andReturn(true);
-        expect(beanFactory.getBean("singleff3FightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        expect(beanFactory.getBean("singleff3FightRoundResolver", FfFightRoundResolver.class)).andReturn(ffFightRoundResolver);
     }
 
     @AfterMethod

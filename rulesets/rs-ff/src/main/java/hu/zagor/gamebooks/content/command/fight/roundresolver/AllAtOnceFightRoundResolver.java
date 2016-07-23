@@ -4,7 +4,7 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 public class AllAtOnceFightRoundResolver extends SingleFightRoundResolver {
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final List<FfEnemy> enemies = getRoundRelevantEnemies(command);
         final FightRoundResult[] result = new FightRoundResult[enemies.size()];
 
@@ -36,12 +36,12 @@ public class AllAtOnceFightRoundResolver extends SingleFightRoundResolver {
 
     /**
      * Executes a battle round with a single enemy.
-     * @param command the {@link FightCommand} object
+     * @param command the {@link FfFightCommand} object
      * @param resolvationData the {@link ResolvationData} object
      * @param enemy the {@link FfEnemy} the hero is fighting at the moment
      * @return the result of this specific round
      */
-    protected FightRoundResult fightSingleEnemy(final FightCommand command, final ResolvationData resolvationData, final FfEnemy enemy) {
+    protected FightRoundResult fightSingleEnemy(final FfFightCommand command, final ResolvationData resolvationData, final FfEnemy enemy) {
         FightRoundResult roundResult;
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
@@ -74,7 +74,7 @@ public class AllAtOnceFightRoundResolver extends SingleFightRoundResolver {
         return roundResult;
     }
 
-    List<FfEnemy> getRoundRelevantEnemies(final FightCommand command) {
+    List<FfEnemy> getRoundRelevantEnemies(final FfFightCommand command) {
         return command.getResolvedEnemies();
     }
 

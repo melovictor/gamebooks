@@ -32,7 +32,7 @@ public class Ff5FightCommandResolverTest {
 
     private Ff5FightCommandResolver underTest;
     private IMocksControl mockControl;
-    private FightCommandResolver superResolver;
+    private FfFightCommandResolver superResolver;
     private Command commandObject;
     private ResolvationData resolvationData;
     private CommandResolveResult resolveResult;
@@ -48,7 +48,7 @@ public class Ff5FightCommandResolverTest {
     public void setUpClass() {
         mockControl = EasyMock.createStrictControl();
         underTest = new Ff5FightCommandResolver();
-        superResolver = mockControl.createMock(FightCommandResolver.class);
+        superResolver = mockControl.createMock(FfFightCommandResolver.class);
         Whitebox.setInternalState(underTest, "superResolver", superResolver);
         commandObject = mockControl.createMock(Command.class);
         character = mockControl.createMock(FfCharacter.class);

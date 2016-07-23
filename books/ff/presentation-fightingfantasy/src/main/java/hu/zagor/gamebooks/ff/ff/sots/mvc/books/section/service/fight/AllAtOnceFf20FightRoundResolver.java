@@ -4,14 +4,14 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.BasicAbstractCustomEnemyHandlingFightRoundResolver;
 import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.BasicEnemyPrePostFightDataContainer;
 import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.CustomBeforeAfterRoundEnemyHandler;
-import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver;
+import hu.zagor.gamebooks.content.command.fight.roundresolver.FfFightRoundResolver;
 import hu.zagor.gamebooks.ff.ff.sots.character.Ff20Character;
 import hu.zagor.gamebooks.ff.ff.sots.character.SpecialSkill;
 import java.util.List;
@@ -26,10 +26,10 @@ import org.springframework.stereotype.Component;
 @Component("allAtOnceff20FightRoundResolver")
 public class AllAtOnceFf20FightRoundResolver extends BasicAbstractCustomEnemyHandlingFightRoundResolver<BasicEnemyPrePostFightDataContainer> {
     private static final int DZSADZSUTSU_INITIAL_DAMAGE = 3;
-    @Autowired @Qualifier("allAtOnceBaseFf20FightRoundResolver") private FightRoundResolver decorated;
+    @Autowired @Qualifier("allAtOnceBaseFf20FightRoundResolver") private FfFightRoundResolver decorated;
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final Ff20Character character = (Ff20Character) resolvationData.getCharacter();
         final FfEnemy selectedEnemy = getSelectedEnemy(resolvationData);
 
@@ -45,7 +45,7 @@ public class AllAtOnceFf20FightRoundResolver extends BasicAbstractCustomEnemyHan
         return resolveRound;
     }
 
-    private FightRoundResult[] executeFastDraw(final FightCommand command, final FfEnemy selectedEnemy) {
+    private FightRoundResult[] executeFastDraw(final FfFightCommand command, final FfEnemy selectedEnemy) {
         FightRoundResult[] resolveRound;
         final List<FfEnemy> resolvedEnemies = command.getResolvedEnemies();
         resolveRound = new FightRoundResult[resolvedEnemies.size()];
@@ -64,7 +64,7 @@ public class AllAtOnceFf20FightRoundResolver extends BasicAbstractCustomEnemyHan
         return resolveRound;
     }
 
-    private boolean fastDrawRound(final FightCommand command, final Ff20Character character, final FfEnemy selectedEnemy, final FfItem equippedWeapon) {
+    private boolean fastDrawRound(final FfFightCommand command, final Ff20Character character, final FfEnemy selectedEnemy, final FfItem equippedWeapon) {
         return character.getSpecialSkill() == SpecialSkill.DZSADZSUTSZU && command.getRoundNumber() == 1
             && selectedEnemy.getStamina() == selectedEnemy.getInitialStamina() && !"defWpn".equals(equippedWeapon.getId());
     }

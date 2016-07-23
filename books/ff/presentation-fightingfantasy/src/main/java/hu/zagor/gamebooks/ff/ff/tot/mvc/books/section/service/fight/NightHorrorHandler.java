@@ -1,7 +1,7 @@
 package hu.zagor.gamebooks.ff.ff.tot.mvc.books.section.service.fight;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import org.springframework.stereotype.Component;
@@ -16,23 +16,23 @@ public class NightHorrorHandler extends Ff14BeforeAfterRoundEnemyHandler {
     private static final int NIGHT_HORROR_ATTACK_BLOCK = 4;
 
     @Override
-    public boolean shouldExecutePreHandler(final FightCommand command, final EnemyPrePostFightDataContainer data) {
+    public boolean shouldExecutePreHandler(final FfFightCommand command, final EnemyPrePostFightDataContainer data) {
         return true;
     }
 
     @Override
-    public void executePreHandler(final FightCommand command, final EnemyPrePostFightDataContainer data) {
+    public void executePreHandler(final FfFightCommand command, final EnemyPrePostFightDataContainer data) {
         data.setEnemyStamina(data.getCurrentEnemy().getStamina());
     }
 
     @Override
-    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public boolean shouldExecutePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
         return results[0] == FightRoundResult.WIN;
     }
 
     @Override
-    public void executePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public void executePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
         final int[] roll = getGenerator().getRandomNumber(1);
         final String renderedRoll = getRenderer().render(getGenerator().getDefaultDiceSide(), roll);

@@ -32,8 +32,8 @@ import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommandReso
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestSuccessType;
 import hu.zagor.gamebooks.content.command.attributetest.SuccessFailureDataContainer;
 import hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightBoundingCommandResolver;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightCommandRoundEventResolver;
 import hu.zagor.gamebooks.content.command.fight.FightOutcome;
 import hu.zagor.gamebooks.content.command.fight.FightRoundBoundingCommand;
@@ -41,14 +41,14 @@ import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.RoundEvent;
-import hu.zagor.gamebooks.content.command.fight.roundresolver.FightRoundResolver;
+import hu.zagor.gamebooks.content.command.fight.roundresolver.FfFightRoundResolver;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.SingleFightRoundResolver;
 import hu.zagor.gamebooks.content.command.fight.stat.StatisticsProvider;
 import hu.zagor.gamebooks.content.command.fight.stat.WinStatisticsProvider;
 import hu.zagor.gamebooks.content.command.fight.subresolver.autolose.AutoLoseHandler;
 import hu.zagor.gamebooks.content.command.fight.subresolver.autolose.DefaultAutoLoseHandler;
-import hu.zagor.gamebooks.content.command.fight.subresolver.enemystatus.DefaultEnemyStatusEvaluator;
 import hu.zagor.gamebooks.content.command.fight.subresolver.enemystatus.EnemyStatusEvaluator;
+import hu.zagor.gamebooks.content.command.fight.subresolver.enemystatus.FfEnemyStatusEvaluator;
 import hu.zagor.gamebooks.content.command.random.RandomCommand;
 import hu.zagor.gamebooks.content.command.random.RandomCommandResolver;
 import hu.zagor.gamebooks.content.command.random.RandomResult;
@@ -89,7 +89,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
     private FightCommandBasicSubResolver underTest;
     private IMocksControl mockControl;
     private BeanFactory beanFactory;
-    private FightCommand command;
+    private FfFightCommand command;
     private ResolvationData resolvationData;
     private FfParagraphData rootData;
     private FfCharacter character;
@@ -103,7 +103,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
     private FfParagraphData winSooner;
     private FfParagraphData lose;
 
-    private FightRoundResolver fightRoundResolver;
+    private FfFightRoundResolver ffFightRoundResolver;
     private Logger logger;
     private RandomNumberGenerator generator;
 
@@ -155,7 +155,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
     private Map<Class<? extends Command>, SilentCapableResolver<? extends Command>> boundingResolvers;
     private CommandExecuter immediateCommandExecuter;
 
-    private EnemyStatusEvaluator enemyStatusEvaluator;
+    private EnemyStatusEvaluator<FfEnemy> enemyStatusEvaluator;
     private AutoLoseHandler autoLoseHandler;
     private DiceResultRenderer diceResultRenderer;
     private ExpressionResolver expressionResolver;
@@ -187,16 +187,16 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
         statProviders = new HashMap<FightRoundResult, StatisticsProvider>();
         statProviders.put(FightRoundResult.WIN, statProvider);
 
-        fightRoundResolver = new SingleFightRoundResolver();
-        init(mockControl, fightRoundResolver);
+        ffFightRoundResolver = new SingleFightRoundResolver();
+        init(mockControl, ffFightRoundResolver);
         init(mockControl, testResolver);
         init(mockControl, fightBoundingCommandResolver);
-        Whitebox.setInternalState(fightRoundResolver, "logger", logger);
-        Whitebox.setInternalState(fightRoundResolver, "generator", generator);
+        Whitebox.setInternalState(ffFightRoundResolver, "logger", logger);
+        Whitebox.setInternalState(ffFightRoundResolver, "generator", generator);
 
         underTest = new FightCommandBasicSubResolver();
         underTest.setBeanFactory(beanFactory);
-        enemyStatusEvaluator = new DefaultEnemyStatusEvaluator();
+        enemyStatusEvaluator = new FfEnemyStatusEvaluator();
         autoLoseHandler = new DefaultAutoLoseHandler();
         Whitebox.setInternalState(underTest, "roundEventResolver", roundEventResolver);
         roundEventResolver.setStatProviders(statProviders);
@@ -216,7 +216,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
         Whitebox.setInternalState(underTest, "autoLoseHandler", autoLoseHandler);
         Whitebox.setInternalState(autoLoseHandler, "enemyStatusEvaluator", enemyStatusEvaluator);
         diceResultRenderer = mockControl.createMock(DiceResultRenderer.class);
-        Whitebox.setInternalState(fightRoundResolver, "diceResultRenderer", diceResultRenderer);
+        Whitebox.setInternalState(ffFightRoundResolver, "diceResultRenderer", diceResultRenderer);
         immediateCommandExecuter = new ImmediateCommandExecuter();
         Whitebox.setInternalState(immediateCommandExecuter, "logger", logger);
         Whitebox.setInternalState(beforeEventResolver, "immediateCommandExecuter", immediateCommandExecuter);
@@ -247,7 +247,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
         outcome = new FightOutcome();
         outcome.setParagraphData(win);
 
-        command = new FightCommand();
+        command = new FfFightCommand();
         Whitebox.setInternalState(command, "messages", getMessageList());
         command.getEnemies().add("1");
         command.setBattleType("single");
@@ -300,7 +300,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
         Whitebox.setInternalState(randomResolver, "expressionResolver", expressionResolver);
 
         interactionHandler = new FfUserInteractionHandler();
-        interactionHandler.setFightCommand(character, FightCommand.ATTACKING);
+        interactionHandler.setFightCommand(character, FfFightCommand.ATTACKING);
         interactionHandler.setFightCommand(character, "luckOnHit", "false");
         interactionHandler.setFightCommand(character, "luckOnDefense", "false");
         interactionHandler.setFightCommand(character, "enemyId", "1");
@@ -1872,7 +1872,7 @@ public class FightCommandBasicSubResolverWithSingleFightRoundResolverMT extends 
 
     private void getRoundResolver() {
         expect(beanFactory.containsBean("singleff3FightRoundResolver")).andReturn(false);
-        expect(beanFactory.getBean("singleFightRoundResolver", FightRoundResolver.class)).andReturn(fightRoundResolver);
+        expect(beanFactory.getBean("singleFightRoundResolver", FfFightRoundResolver.class)).andReturn(ffFightRoundResolver);
     }
 
     @AfterMethod

@@ -7,14 +7,14 @@ import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
 import hu.zagor.gamebooks.character.handler.luck.BattleLuckTestParameters;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.WeaponSubType;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
+import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.LastFightCommand;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Component;
@@ -28,7 +28,7 @@ import org.springframework.stereotype.Component;
 public class SingleFightRoundResolver extends AbstractFightRoundResolver {
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final List<FfEnemy> enemies = command.getResolvedEnemies();
         final FightRoundResult[] result = new FightRoundResult[enemies.size()];
         final FightCommandMessageList messages = command.getMessages();
@@ -68,14 +68,14 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
         return result;
     }
 
-    void storeHeroAttackStrength(final FightCommand command, final FfEnemy enemy, final int selfAttackStrength, final int[] selfAttackStrengthValues) {
+    void storeHeroAttackStrength(final FfFightCommand command, final FfEnemy enemy, final int selfAttackStrength, final int[] selfAttackStrengthValues) {
         command.getAttackStrengths().put("h_" + enemy.getId(), selfAttackStrength);
         for (int i = 1; i < selfAttackStrengthValues.length; i++) {
             command.getAttackStrengths().put("h_d" + i + "_" + enemy.getId(), selfAttackStrengthValues[i]);
         }
     }
 
-    void storeEnemyAttackStrength(final FightCommand command, final FfEnemy enemy, final int enemyAttackStrength, final int[] enemyAttackStrengthValues) {
+    void storeEnemyAttackStrength(final FfFightCommand command, final FfEnemy enemy, final int enemyAttackStrength, final int[] enemyAttackStrengthValues) {
         final Map<String, Integer> attackStrengths = command.getAttackStrengths();
         attackStrengths.put(enemy.getId(), enemyAttackStrength);
         for (int i = 1; i < enemyAttackStrengthValues.length; i++) {
@@ -83,24 +83,24 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
         }
     }
 
-    void doWinFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
+    void doWinFight(final FfFightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
         result[enemyIdx] = FightRoundResult.WIN;
         damageEnemy(command, dto);
     }
 
     /**
      * Handles the eventuality where both Attack Strengths are the same, and the hero and the enemy tie.
-     * @param command the {@link FightCommand} object
+     * @param command the {@link FfFightCommand} object
      * @param result the {@link FightRoundResult} object
      * @param enemyIdx the index of the enemy in the result array
      * @param dto the {@link FightDataDto}
      */
-    void doTieFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
+    void doTieFight(final FfFightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
         result[enemyIdx] = FightRoundResult.TIE;
         resolveTieMessage(dto);
     }
 
-    void doLoseFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
+    void doLoseFight(final FfFightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
         result[enemyIdx] = FightRoundResult.LOSE;
         if (noStoneSkinAvailable(dto)) {
             damageSelf(dto);
@@ -132,10 +132,10 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
 
     /**
      * Method to handle the enemy receiving a successful hit from the hero.
-     * @param command the {@link FightCommand} object
+     * @param command the {@link FfFightCommand} object
      * @param dto the {@link FightDataDto} object
      */
-    protected void damageEnemy(final FightCommand command, final FightDataDto dto) {
+    protected void damageEnemy(final FfFightCommand command, final FightDataDto dto) {
         final FfEnemy enemy = dto.getEnemy();
         final FightCommandMessageList messages = dto.getMessages();
         if (isWeaponEffective(dto)) {
@@ -209,11 +209,11 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
 
     /**
      * Executes the luck test when the hero hit the enemy.
-     * @param command the {@link FightCommand}
+     * @param command the {@link FfFightCommand}
      * @param dto the {@link FightDataDto} object containing all required beans
      */
 
-    protected void handleVictoryLuckTest(final FightCommand command, final FightDataDto dto) {
+    protected void handleVictoryLuckTest(final FfFightCommand command, final FightDataDto dto) {
         if (command.isLuckOnHit()) {
             final FfEnemy enemy = dto.getEnemy();
             final FightCommandMessageList messages = dto.getMessages();
@@ -242,7 +242,7 @@ public class SingleFightRoundResolver extends AbstractFightRoundResolver {
     }
 
     @Override
-    public void resolveFlee(final FightCommand command, final ResolvationData resolvationData) {
+    public void resolveFlee(final FfFightCommand command, final ResolvationData resolvationData) {
         final FfEnemy enemy = command.getResolvedEnemies().get(0);
         final FightCommandMessageList messages = command.getMessages();
         final FightFleeData fleeData = command.getFleeData();

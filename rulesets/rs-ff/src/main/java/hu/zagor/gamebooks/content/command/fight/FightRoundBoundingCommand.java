@@ -21,10 +21,10 @@ public class FightRoundBoundingCommand extends Command {
     }
 
     /**
-     * Basic constructor that creates a new bounding command with the originating {@link FightCommand} object's {@link FightCommandMessageList} inside.
-     * @param command the {@link FightCommand} object
+     * Basic constructor that creates a new bounding command with the originating {@link FfFightCommand} object's {@link FightCommandMessageList} inside.
+     * @param command the {@link FfFightCommand} object
      */
-    public FightRoundBoundingCommand(final FightCommand command) {
+    public FightRoundBoundingCommand(final FfFightCommand command) {
         this.messages = command.getMessages();
     }
 

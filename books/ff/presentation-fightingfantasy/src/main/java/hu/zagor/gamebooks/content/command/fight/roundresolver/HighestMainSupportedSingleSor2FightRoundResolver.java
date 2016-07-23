@@ -5,7 +5,7 @@ import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.FfAttributeHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
@@ -26,12 +26,12 @@ public class HighestMainSupportedSingleSor2FightRoundResolver extends SingleSupp
     @Autowired @Qualifier("sorHeroAttackStrengthRoller") private HeroAttackStrengthRoller heroAttackStrengthRoller;
 
     @Override
-    int[] getSelfAttackStrength(final FfCharacter character, final FightCommand command, final FfAttributeHandler attributeHandler) {
+    int[] getSelfAttackStrength(final FfCharacter character, final FfFightCommand command, final FfAttributeHandler attributeHandler) {
         return heroAttackStrengthRoller.getSelfAttackStrength(character, command, attributeHandler);
     }
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         final FightRoundResult[] result = new FightRoundResult[1];
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
@@ -68,7 +68,7 @@ public class HighestMainSupportedSingleSor2FightRoundResolver extends SingleSupp
         return result;
     }
 
-    private void heroSubAttacks(final FightCommand command, final ResolvationData resolvationData, final int selfAttackStrength, final int enemyAttackStrength) {
+    private void heroSubAttacks(final FfFightCommand command, final ResolvationData resolvationData, final int selfAttackStrength, final int enemyAttackStrength) {
         final FightRoundResult[] result = new FightRoundResult[1];
         final FightCommandMessageList messages = command.getMessages();
         final FfEnemy enemy = command.getResolvedEnemies().get(0);
@@ -82,13 +82,13 @@ public class HighestMainSupportedSingleSor2FightRoundResolver extends SingleSupp
         }
     }
 
-    private void allySubAttacks(final FightCommand command, final ResolvationData resolvationData, final int allyAttackStrength, final int enemyAttackStrength) {
+    private void allySubAttacks(final FfFightCommand command, final ResolvationData resolvationData, final int allyAttackStrength, final int enemyAttackStrength) {
         final FfAllyCharacter ally = command.getResolvedAllies().get(0);
         final ResolvationData allyResolvationData = DefaultResolvationDataBuilder.builder().usingResolvationData(resolvationData).withCharacter(ally).build();
         heroSubAttacks(command, allyResolvationData, allyAttackStrength, enemyAttackStrength);
     }
 
-    private FightRoundResult mainAttacks(final FightCommand command, final ResolvationData resolvationData, final int selfAttackStrength, final int enemyAttackStrength) {
+    private FightRoundResult mainAttacks(final FfFightCommand command, final ResolvationData resolvationData, final int selfAttackStrength, final int enemyAttackStrength) {
         final FightRoundResult[] result = new FightRoundResult[1];
         final FightCommandMessageList messages = command.getMessages();
         final FfEnemy enemy = command.getResolvedEnemies().get(0);

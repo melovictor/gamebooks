@@ -22,10 +22,10 @@ public class FightCommandRoundEventResolver {
 
     /**
      * Resolves all round events based on the current battle statistics.
-     * @param command the {@link FightCommand} being resolved
+     * @param command the {@link FfFightCommand} being resolved
      * @param resolveList the list of {@link ParagraphData} that has to be resolved afterwards
      */
-    public void resolveRoundEvent(final FightCommand command, final List<ParagraphData> resolveList) {
+    public void resolveRoundEvent(final FfFightCommand command, final List<ParagraphData> resolveList) {
         for (final RoundEvent roundEvent : command.getRoundEvents()) {
             if (shouldActOnEvent(roundEvent, command)) {
                 boolean ongoing = command.isOngoing();
@@ -57,7 +57,7 @@ public class FightCommandRoundEventResolver {
         return clone;
     }
 
-    private boolean shouldActOnEvent(final RoundEvent roundEvent, final FightCommand command) {
+    private boolean shouldActOnEvent(final RoundEvent roundEvent, final FfFightCommand command) {
         final BattleStatistics battleStatistics = command.getBattleStatistics(roundEvent.getEnemyId());
         final StatisticsProvider statisticsProvider = statProviders.get(roundEvent.getRoundResult());
         if (statisticsProvider == null) {

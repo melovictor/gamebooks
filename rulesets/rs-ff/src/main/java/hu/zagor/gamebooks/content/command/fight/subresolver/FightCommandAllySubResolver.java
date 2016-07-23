@@ -11,7 +11,7 @@ import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHan
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CommandExecuter;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.ff.character.FfAllyCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -21,7 +21,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Class for resolving the {@link FightCommand} object in the basic mode.
+ * Class for resolving the {@link FfFightCommand} object in the basic mode.
  * @author Tamas_Szekeres
  */
 public class FightCommandAllySubResolver extends AbstractFightCommandSubResolver {
@@ -29,13 +29,13 @@ public class FightCommandAllySubResolver extends AbstractFightCommandSubResolver
     @Autowired private CommandExecuter immediateCommandExecuter;
 
     @Override
-    protected void prepareLuckTest(final FightCommand command, final FfCharacter character, final FfUserInteractionHandler interactionHandler) {
+    protected void prepareLuckTest(final FfFightCommand command, final FfCharacter character, final FfUserInteractionHandler interactionHandler) {
         command.setLuckOnHit(false);
         command.setLuckOnDefense(false);
     }
 
     @Override
-    protected FfCharacter resolveCharacter(final FightCommand command, final ResolvationData resolvationData) {
+    protected FfCharacter resolveCharacter(final FfFightCommand command, final ResolvationData resolvationData) {
         final FfCharacterHandler characterHandler = (FfCharacterHandler) resolvationData.getCharacterHandler();
         final FfAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
 
@@ -49,7 +49,7 @@ public class FightCommandAllySubResolver extends AbstractFightCommandSubResolver
     }
 
     @Override
-    protected void resolveBattlingParties(final FightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
+    protected void resolveBattlingParties(final FfFightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
         super.resolveBattlingParties(command, resolvationData, resolveList);
         final List<FfEnemy> allies = collectEnemies(command.getRoundNumber(), command.getAllies(), resolvationData.getEnemies());
         final List<FfAllyCharacter> resolvedAllies = new ArrayList<>();
@@ -87,15 +87,15 @@ public class FightCommandAllySubResolver extends AbstractFightCommandSubResolver
         }
 
         boolean isAlive = false;
-        final FightCommand fightCommand = (FightCommand) resolvationData.getParagraph().getItemsToProcess().get(0).getCommand();
-        for (final FfAllyCharacter ally : fightCommand.getResolvedAllies()) {
+        final FfFightCommand ffFightCommand = (FfFightCommand) resolvationData.getParagraph().getItemsToProcess().get(0).getCommand();
+        for (final FfAllyCharacter ally : ffFightCommand.getResolvedAllies()) {
             isAlive |= ally.getStamina() > 0;
         }
         return isAlive;
     }
 
     @Override
-    void executeBattle(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    void executeBattle(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         if (command.getResolvedAllies().size() > 1) {
             for (final FfAllyCharacter ally : command.getResolvedAllies()) {
                 if (isAnyAlive(command.getResolvedEnemies())) {

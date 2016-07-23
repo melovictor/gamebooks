@@ -4,7 +4,6 @@ import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
 import hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.domain.HuntRoundResult;
 import hu.zagor.gamebooks.ff.ff.mom.mvc.books.section.domain.MapPosition;
-
 import org.springframework.stereotype.Component;
 
 /**

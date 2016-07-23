@@ -1,7 +1,7 @@
 package hu.zagor.gamebooks.ff.ff.b.mvc.books.section.service.fight;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import org.springframework.stereotype.Component;
 
@@ -14,17 +14,17 @@ public class ChameleonHandler extends Ff60BeforeAfterRoundEnemyHandler {
     private static final int CHAMELEON_CRITICAL_ATTACK_STRENGTH = 20;
 
     @Override
-    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public boolean shouldExecutePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
         return results[0] == FightRoundResult.LOSE && highAttackStrength(command);
     }
 
-    private boolean highAttackStrength(final FightCommand command) {
+    private boolean highAttackStrength(final FfFightCommand command) {
         return command.getAttackStrengths().get("54") >= CHAMELEON_CRITICAL_ATTACK_STRENGTH;
     }
 
     @Override
-    public void executePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public void executePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
         triggerFleeing(command, data.getCurrentEnemy());
     }

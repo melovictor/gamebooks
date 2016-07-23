@@ -2,8 +2,7 @@ package hu.zagor.gamebooks.content.command.fight.subresolver.autolose;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
-
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import java.util.List;
 
 /**
@@ -14,10 +13,10 @@ public interface AutoLoseHandler {
 
     /**
      * Checks if there are auto-losing conditions that would cause the current battle to be over prematurely.
-     * @param command the {@link FightCommand} object
+     * @param command the {@link FfFightCommand} object
      * @param resolveList the list of {@link ParagraphData} objects for resolvation
      * @param resolvationData the {@link ResolvationData} object
      */
-    void checkAutoEvents(FightCommand command, List<ParagraphData> resolveList, ResolvationData resolvationData);
+    void checkAutoEvents(FfFightCommand command, List<ParagraphData> resolveList, ResolvationData resolvationData);
 
 }

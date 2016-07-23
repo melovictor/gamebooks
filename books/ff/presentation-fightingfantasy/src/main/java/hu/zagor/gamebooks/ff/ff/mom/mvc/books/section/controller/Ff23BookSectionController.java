@@ -4,7 +4,7 @@ import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.content.Paragraph;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
 import hu.zagor.gamebooks.content.command.fight.subresolver.enemystatus.EnemyStatusEvaluator;
 import hu.zagor.gamebooks.content.commandlist.CommandList;
@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class Ff23BookSectionController extends FfBookSectionController {
 
     @Autowired private HuntService huntService;
-    @Autowired private EnemyStatusEvaluator enemyStatusEvaluator;
+    @Autowired @Qualifier("ffEnemyStatusEvaluator") private EnemyStatusEvaluator<FfEnemy> enemyStatusEvaluator;
 
     /**
      * Constructor expecting the {@link SectionHandlingService} bean.
@@ -69,8 +69,8 @@ public class Ff23BookSectionController extends FfBookSectionController {
     @Override
     protected void handleBeforeFight(final HttpSessionWrapper wrapper, final String enemyId) {
         if ("27".equals(enemyId) || "28".equals(enemyId)) {
-            final FightCommand fightCommand = (FightCommand) wrapper.getParagraph().getData().getCommands().get(0);
-            final List<String> enemies = fightCommand.getEnemies();
+            final FfFightCommand ffFightCommand = (FfFightCommand) wrapper.getParagraph().getData().getCommands().get(0);
+            final List<String> enemies = ffFightCommand.getEnemies();
             enemies.add(enemies.remove(0));
         }
     }
@@ -84,12 +84,12 @@ public class Ff23BookSectionController extends FfBookSectionController {
 
     private void handleTribesmanSwitching(final HttpSessionWrapper wrapper, final String enemyId) {
         final CommandList commands = wrapper.getParagraph().getData().getCommands();
-        final FightCommand fightCommand = (FightCommand) commands.get(0);
-        final List<String> enemies = fightCommand.getEnemies();
-        final List<FfEnemy> resolvedEnemies = fightCommand.getResolvedEnemies();
+        final FfFightCommand ffFightCommand = (FfFightCommand) commands.get(0);
+        final List<String> enemies = ffFightCommand.getEnemies();
+        final List<FfEnemy> resolvedEnemies = ffFightCommand.getResolvedEnemies();
         resetEnemies(wrapper, enemies, resolvedEnemies);
         if (enemies.size() == 2) {
-            final BattleStatistics battleStatistics = fightCommand.getBattleStatistics(enemyId);
+            final BattleStatistics battleStatistics = ffFightCommand.getBattleStatistics(enemyId);
             if (battleStatistics.getSubsequentWin() > 0) {
                 enemies.remove(enemyId);
                 final Iterator<FfEnemy> enemiesIterator = resolvedEnemies.iterator();
@@ -102,10 +102,10 @@ public class Ff23BookSectionController extends FfBookSectionController {
             }
         }
         if (commands.size() == 1) {
-            final FightCommand singleFightCommand = (FightCommand) commands.get(0);
-            final int totalRoundsPassed = fightCommand.getRoundNumber();
+            final FfFightCommand singleFfFightCommand = (FfFightCommand) commands.get(0);
+            final int totalRoundsPassed = ffFightCommand.getRoundNumber();
             for (int i = 0; i < totalRoundsPassed; i++) {
-                singleFightCommand.increaseBattleRound();
+                singleFfFightCommand.increaseBattleRound();
             }
         }
     }

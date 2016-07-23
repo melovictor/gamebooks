@@ -2,7 +2,7 @@ package hu.zagor.gamebooks.ff.ff.b.mvc.books.section.service.fight;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.FfEnemy;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
@@ -19,7 +19,7 @@ public class ChaosChampionHandler extends Ff60BeforeAfterRoundEnemyHandler {
     private static final int ROUND_MESSAGE_LOCATION_WITH_ROLL = 4;
 
     @Override
-    public void executePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public void executePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final EnemyPrePostFightDataContainer data) {
         if (results[0] == FightRoundResult.WIN) {
             checkForLowerDamageCaused(command, data.getCurrentEnemy());
@@ -28,7 +28,7 @@ public class ChaosChampionHandler extends Ff60BeforeAfterRoundEnemyHandler {
         }
     }
 
-    private void checkForHigherDamageSuffered(final FightCommand command, final ResolvationData resolvationData) {
+    private void checkForHigherDamageSuffered(final FfFightCommand command, final ResolvationData resolvationData) {
         final FfCharacter character = (FfCharacter) resolvationData.getCharacter();
         final FightCommandMessageList messages = command.getMessages();
         final int[] roll = getReportRandomRoll(messages);
@@ -45,7 +45,7 @@ public class ChaosChampionHandler extends Ff60BeforeAfterRoundEnemyHandler {
         return roll;
     }
 
-    private void checkForLowerDamageCaused(final FightCommand command, final FfEnemy enemy) {
+    private void checkForLowerDamageCaused(final FfFightCommand command, final FfEnemy enemy) {
         final FightCommandMessageList messages = command.getMessages();
         final int[] roll = getReportRandomRoll(messages);
         if (roll[0] < STRONGER_WEAKER_HIT_LIMIT) {

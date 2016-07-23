@@ -43,7 +43,7 @@ public class Ff38FightCommandResolverCTest {
     @MockControl private IMocksControl mockControl;
     @UnderTest private Ff38FightCommandResolver underTest;
     @Inject private RandomNumberGenerator generator;
-    @Instance private FightCommand command;
+    @Instance private FfFightCommand command;
     private ResolvationData resolvationData;
     @Instance private ParagraphData rootData;
     @Mock private Ff38Character character;

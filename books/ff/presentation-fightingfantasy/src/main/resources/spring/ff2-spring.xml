@@ -52,11 +52,11 @@
     </entry>
   </util:map>
   <bean id="ff2FightSubResolvers" c:mapA-ref="fightSubResolvers" c:mapB-ref="ff2FightExtraSubResolvers" factory-method="merge" class="hu.zagor.gamebooks.support.spring.MapMerger" />
-  <bean class="hu.zagor.gamebooks.content.command.fight.FightCommandResolver" id="ff2FightCommandResolver" p:subResolvers-ref="ff2FightSubResolvers" />
+  <bean class="hu.zagor.gamebooks.content.command.fight.FfFightCommandResolver" id="ff2FightCommandResolver" p:subResolvers-ref="ff2FightSubResolvers" />
 
   <bean id="ff2CommandResolvers" c:mapA-ref="ffCommandResolvers" c:mapB-ref="ff2ExtraCommandResolvers" factory-method="merge" class="hu.zagor.gamebooks.support.spring.MapMerger" />
   <util:map id="ff2ExtraCommandResolvers" key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver">
-    <entry key="hu.zagor.gamebooks.content.command.fight.FightCommand" value-ref="ff2FightCommandResolver" />
+    <entry key="hu.zagor.gamebooks.content.command.fight.FfFightCommand" value-ref="ff2FightCommandResolver" />
   </util:map>
 
 

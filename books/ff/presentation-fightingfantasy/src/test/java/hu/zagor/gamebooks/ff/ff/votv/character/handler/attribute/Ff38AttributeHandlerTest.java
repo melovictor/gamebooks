@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.ff.ff.votv.character.handler.attribute;
 
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.ff.votv.character.Ff38Character;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;

@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.ff.pt.isftll.character;
 
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

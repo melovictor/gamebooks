@@ -9,7 +9,7 @@ import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.SorParagraphData;
 import hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand;
 import hu.zagor.gamebooks.content.command.attributetest.SuccessFailureDataContainer;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightOutcome;
 import hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommand;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
@@ -32,14 +32,14 @@ public class SorMagicChainPreparatorService {
     @Autowired private LocaleProvider localeProvider;
 
     /**
-     * Preparates the currently active {@link FightCommand} object to handle the retrieval of the chain.
+     * Preparates the currently active {@link FfFightCommand} object to handle the retrieval of the chain.
      * @param wrapper the {@link HttpSessionWrapper} object
      * @param info the {@link FfBookInformations} object
      */
     public void preparateIfNeeded(final HttpSessionWrapper wrapper, final FfBookInformations info) {
         if (hasMagicChain(wrapper, info)) {
             if (fightNeedsToBePreparated(wrapper) && fightWinNotPreparatedYet(wrapper, info)) {
-                final FightCommand command = extractFightCommand(wrapper);
+                final FfFightCommand command = extractFfFightCommand(wrapper);
 
                 final FfParagraphData newWinData = getNewWinData();
 
@@ -50,11 +50,10 @@ public class SorMagicChainPreparatorService {
                     win.add(outcome);
                 } else {
                     for (final FightOutcome outcome : win) {
-                        final FfParagraphData currentWinData = outcome.getParagraphData();
                         final FfParagraphData selfWinData = getWinDataClone(newWinData);
                         outcome.setParagraphData(selfWinData);
                         final ItemCheckCommand itemCheckCommand = (ItemCheckCommand) selfWinData.getCommands().get(0);
-                        itemCheckCommand.setAfter(currentWinData);
+                        itemCheckCommand.setAfter(outcome.getParagraphData());
                     }
                 }
                 markFightAsPreparated(wrapper, info);
@@ -63,7 +62,7 @@ public class SorMagicChainPreparatorService {
     }
 
     private boolean fightNeedsToBePreparated(final HttpSessionWrapper wrapper) {
-        final FightCommand command = extractFightCommand(wrapper);
+        final FfFightCommand command = extractFfFightCommand(wrapper);
         return !"ally".equals(command.getResolver());
     }
 
@@ -77,8 +76,8 @@ public class SorMagicChainPreparatorService {
         return clone;
     }
 
-    private FightCommand extractFightCommand(final HttpSessionWrapper wrapper) {
-        return (FightCommand) wrapper.getParagraph().getItemsToProcess().get(0).getCommand();
+    private FfFightCommand extractFfFightCommand(final HttpSessionWrapper wrapper) {
+        return (FfFightCommand) wrapper.getParagraph().getItemsToProcess().get(0).getCommand();
     }
 
     private void markFightAsPreparated(final HttpSessionWrapper wrapper, final FfBookInformations info) {

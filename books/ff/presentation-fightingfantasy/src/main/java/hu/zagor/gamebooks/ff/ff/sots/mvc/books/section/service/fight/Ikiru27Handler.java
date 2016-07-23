@@ -2,7 +2,7 @@ package hu.zagor.gamebooks.ff.ff.sots.mvc.books.section.service.fight;
 
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightRoundResult;
 import hu.zagor.gamebooks.content.command.fight.enemyroundresolver.BasicEnemyPrePostFightDataContainer;
@@ -17,13 +17,13 @@ import org.springframework.stereotype.Component;
 public class Ikiru27Handler extends Ff20BeforeAfterRoundEnemyHandler {
 
     @Override
-    public boolean shouldExecutePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public boolean shouldExecutePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final BasicEnemyPrePostFightDataContainer data) {
         return results[0] == FightRoundResult.LOSE;
     }
 
     @Override
-    public void executePostHandler(final FightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
+    public void executePostHandler(final FfFightCommand command, final ResolvationData resolvationData, final FightRoundResult[] results,
         final BasicEnemyPrePostFightDataContainer data) {
         final boolean lucky = testLuck(resolvationData, command);
         if (!lucky) {
@@ -32,7 +32,7 @@ public class Ikiru27Handler extends Ff20BeforeAfterRoundEnemyHandler {
         }
     }
 
-    private boolean testLuck(final ResolvationData resolvationData, final FightCommand command) {
+    private boolean testLuck(final ResolvationData resolvationData, final FfFightCommand command) {
         boolean lucky;
 
         final int[] randomNumber = getGenerator().getRandomNumber(2);

@@ -4,7 +4,7 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightBeforeRoundResult;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
@@ -26,7 +26,7 @@ public class SingleSor4FightRoundResolver extends SingleSorFightRoundResolver {
     @Autowired private DiceResultRenderer renderer;
 
     @Override
-    public FightRoundResult[] resolveRound(final FightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
+    public FightRoundResult[] resolveRound(final FfFightCommand command, final ResolvationData resolvationData, final FightBeforeRoundResult beforeRoundResult) {
         if (fightWithTorturer(command)) {
             handleTorturer(command, resolvationData);
         }
@@ -39,7 +39,7 @@ public class SingleSor4FightRoundResolver extends SingleSorFightRoundResolver {
         return resolveRound;
     }
 
-    private void handleTorturer(final FightCommand command, final ResolvationData resolvationData) {
+    private void handleTorturer(final FfFightCommand command, final ResolvationData resolvationData) {
         if (!alreadyInWhip(resolvationData)) {
             final int[] randomNumber = generator.getRandomNumber(1);
             final String diceRoll = renderer.render(generator.getDefaultDiceSide(), randomNumber);
@@ -73,12 +73,12 @@ public class SingleSor4FightRoundResolver extends SingleSorFightRoundResolver {
         }
     }
 
-    private boolean fightWithTorturer(final FightCommand command) {
+    private boolean fightWithTorturer(final FfFightCommand command) {
         return command.getEnemies().contains("32");
     }
 
     @Override
-    void doWinFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
+    void doWinFight(final FfFightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
         super.doWinFight(command, result, enemyIdx, dto);
 
         if ("1".equals(dto.getEnemy().getId())) {
@@ -90,7 +90,7 @@ public class SingleSor4FightRoundResolver extends SingleSorFightRoundResolver {
     }
 
     @Override
-    void doLoseFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
+    void doLoseFight(final FfFightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
         super.doLoseFight(command, result, enemyIdx, dto);
 
         if ("1".equals(dto.getEnemy().getId())) {
@@ -99,7 +99,7 @@ public class SingleSor4FightRoundResolver extends SingleSorFightRoundResolver {
     }
 
     @Override
-    void doTieFight(final FightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
+    void doTieFight(final FfFightCommand command, final FightRoundResult[] result, final int enemyIdx, final FightDataDto dto) {
         super.doTieFight(command, result, enemyIdx, dto);
 
         if ("1".equals(dto.getEnemy().getId())) {

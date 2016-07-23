@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.fff.sor.tssb.mvc.books.section.controller;
 
 import hu.zagor.gamebooks.ff.sor.tssb.mvc.books.section.controller.Sor0BookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
-
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.testng.annotations.AfterMethod;

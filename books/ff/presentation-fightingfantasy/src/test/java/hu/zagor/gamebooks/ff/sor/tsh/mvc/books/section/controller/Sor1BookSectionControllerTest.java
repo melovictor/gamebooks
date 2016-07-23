@@ -10,7 +10,7 @@ import hu.zagor.gamebooks.character.item.EquipInfo;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
-import hu.zagor.gamebooks.content.command.fight.FightCommand;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.FightRoundBoundingCommand;
 import hu.zagor.gamebooks.content.commandlist.CommandList;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
@@ -58,7 +58,7 @@ public class Sor1BookSectionControllerTest {
     @Mock private Paragraph paragraph;
     @Mock private ParagraphData data;
     @Mock private CommandList commandList;
-    @Mock private FightCommand fightCommand;
+    @Mock private FfFightCommand ffFightCommand;
     @Mock private FightRoundBoundingCommand bounding;
 
     @BeforeClass
@@ -187,11 +187,11 @@ public class Sor1BookSectionControllerTest {
         expect(paragraph.getData()).andReturn(data);
         expect(data.getCommands()).andReturn(commandList);
         expect(commandList.isEmpty()).andReturn(false);
-        expect(commandList.get(0)).andReturn(fightCommand);
+        expect(commandList.get(0)).andReturn(ffFightCommand);
         expect(wrapper.getEnemies()).andReturn(enemies);
         expect(enemies.get(TROLL_ID)).andReturn(enemy);
         expect(enemy.getSkill()).andReturn(4);
-        expect(fightCommand.getRoundNumber()).andReturn(4);
+        expect(ffFightCommand.getRoundNumber()).andReturn(4);
         mockControl.replay();
         // WHEN
         underTest.handleAfterFight(wrapper, TROLL_ID);
@@ -204,12 +204,12 @@ public class Sor1BookSectionControllerTest {
         expect(paragraph.getData()).andReturn(data);
         expect(data.getCommands()).andReturn(commandList);
         expect(commandList.isEmpty()).andReturn(false);
-        expect(commandList.get(0)).andReturn(fightCommand);
+        expect(commandList.get(0)).andReturn(ffFightCommand);
         expect(wrapper.getEnemies()).andReturn(enemies);
         expect(enemies.get(TROLL_ID)).andReturn(enemy);
         expect(enemy.getSkill()).andReturn(4);
-        expect(fightCommand.getRoundNumber()).andReturn(5);
-        expect(fightCommand.getBeforeBounding()).andReturn(bounding);
+        expect(ffFightCommand.getRoundNumber()).andReturn(5);
+        expect(ffFightCommand.getBeforeBounding()).andReturn(bounding);
         bounding.setNth(1);
         mockControl.replay();
         // WHEN
@@ -223,11 +223,11 @@ public class Sor1BookSectionControllerTest {
         expect(paragraph.getData()).andReturn(data);
         expect(data.getCommands()).andReturn(commandList);
         expect(commandList.isEmpty()).andReturn(false);
-        expect(commandList.get(0)).andReturn(fightCommand);
+        expect(commandList.get(0)).andReturn(ffFightCommand);
         expect(wrapper.getEnemies()).andReturn(enemies);
         expect(enemies.get(TROLL_ID)).andReturn(enemy);
         expect(enemy.getSkill()).andReturn(8);
-        fightCommand.setBeforeBounding(null);
+        ffFightCommand.setBeforeBounding(null);
         mockControl.replay();
         // WHEN
         underTest.handleAfterFight(wrapper, TROLL_ID);
