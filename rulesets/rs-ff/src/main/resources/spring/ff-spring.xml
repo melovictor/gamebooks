@@ -257,20 +257,18 @@
     <entry key="hu.zagor.gamebooks.content.command.userinput.UserInputCommand" value-ref="userInputCommandResolver" />
     <entry key="hu.zagor.gamebooks.content.command.random.RandomCommand" value-ref="randomCommandResolver" />
     <entry key="hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand" value-ref="attributeTestCommandResolver" />
-    <entry key="hu.zagor.gamebooks.content.command.fight.FfFightCommand">
-      <bean class="hu.zagor.gamebooks.content.command.fight.FfFightCommandResolver">
-        <property name="subResolvers">
-          <util:map key-type="java.lang.String" value-type="hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResolver">
-            <entry key="basic" value-ref="fightCommandBasicSubResolver" />
-            <entry key="ally" value-ref="fightCommandAllySubResolver" />
-            <entry key="supported" value-ref="fightCommandSupportedSubResolver" />
-          </util:map>
-        </property>
-      </bean>
-    </entry>
+    <entry key="hu.zagor.gamebooks.content.command.fight.FfFightCommand" value-ref="ffFightCommandResolver" />
     <entry key="hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommand" value-ref="changeEnemyCommandResolver" />
     <entry key="hu.zagor.gamebooks.content.command.changeitem.ChangeItemCommand" value-ref="changeItemCommandResolver" />
     <entry key="hu.zagor.gamebooks.content.command.market.MarketCommand" value-ref="marketCommandResolver" />
+  </util:map>
+
+  <bean class="hu.zagor.gamebooks.content.command.fight.FfFightCommandResolver" p:subResolvers-ref="fightSubResolvers" id="ffFightCommandResolver" />
+
+  <util:map key-type="java.lang.String" value-type="hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSubResolver" id="fightSubResolvers">
+    <entry key="basic" value-ref="fightCommandBasicSubResolver" />
+    <entry key="ally" value-ref="fightCommandAllySubResolver" />
+    <entry key="supported" value-ref="fightCommandSupportedSubResolver" />
   </util:map>
 
   <bean class="hu.zagor.gamebooks.content.command.fight.FightBoundingCommandResolver">

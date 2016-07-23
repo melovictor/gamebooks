@@ -1,4 +1,4 @@
-package hu.zagor.gamebooks.content.command.fight;
+package hu.zagor.gamebooks.ff.ff.cot.mvc.books.section.service.fight;
 
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
@@ -11,6 +11,7 @@ import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.CommandResolveResult;
+import hu.zagor.gamebooks.content.command.fight.FfFightCommandResolver;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import java.util.Map;

@@ -14,7 +14,7 @@
   </bean>
 
   <bean id="ff5CommandResolvers" c:mapA-ref="ffCommandResolvers" c:mapB-ref="ff5ExtraCommandResolvers" factory-method="merge" class="hu.zagor.gamebooks.support.spring.MapMerger" />
-  <bean class="hu.zagor.gamebooks.content.command.fight.Ff5FightCommandResolver" id="ff5FightCommandResolver" p:subResolvers-ref="fightSubResolvers" />
+  <bean class="hu.zagor.gamebooks.ff.ff.cot.mvc.books.section.service.fight.Ff5FightCommandResolver" id="ff5FightCommandResolver" p:subResolvers-ref="fightSubResolvers" />
 
   <util:map id="ff5ExtraCommandResolvers" key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver">
     <entry key="hu.zagor.gamebooks.content.command.fight.FfFightCommand" value-ref="ff5FightCommandResolver" />

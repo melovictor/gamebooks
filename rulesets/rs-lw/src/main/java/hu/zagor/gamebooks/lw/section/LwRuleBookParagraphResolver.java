@@ -39,4 +39,8 @@ public class LwRuleBookParagraphResolver extends RawRuleBookParagraphResolver {
         modifyAttributes.clear();
     }
 
+    @Override
+    protected String getRulesetPrefix() {
+        return "lw";
+    }
 }

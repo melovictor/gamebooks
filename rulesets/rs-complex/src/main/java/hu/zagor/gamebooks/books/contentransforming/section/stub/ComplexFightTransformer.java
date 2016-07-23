@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.books.contentransforming.section.stub;
 
 import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTransformer;
 import hu.zagor.gamebooks.books.contentransforming.section.CommandSubTransformer;
+import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.Command;
@@ -13,9 +14,10 @@ import org.w3c.dom.NodeList;
 /**
  * Class for transforming the "fight" elements of a paragraph.
  * @author Tamas_Szekeres
+ * @param <E> the actual {@link Enemy} type used
  * @param <C> the actual {@link ComplexFightCommand} type that's going to be created
  */
-public abstract class ComplexFightTransformer<C extends ComplexFightCommand> extends AbstractStubTransformer {
+public abstract class ComplexFightTransformer<E extends Enemy, C extends ComplexFightCommand<E>> extends AbstractStubTransformer {
 
     private Map<String, CommandSubTransformer<C>> fightTransformers;
 

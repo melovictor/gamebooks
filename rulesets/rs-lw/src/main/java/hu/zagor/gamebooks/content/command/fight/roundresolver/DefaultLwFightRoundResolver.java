@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.content.command.fight.roundresolver;
 
+import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.LwEnemy;
 import hu.zagor.gamebooks.character.handler.LwCharacterHandler;
@@ -7,13 +8,22 @@ import hu.zagor.gamebooks.character.handler.attribute.LwAttributeHandler;
 import hu.zagor.gamebooks.content.command.fight.LwFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
-import hu.zagor.gamebooks.content.command.fight.roundresolver.domain.FightDataDto;
+import hu.zagor.gamebooks.content.dice.DiceConfiguration;
+import hu.zagor.gamebooks.content.modifyattribute.ModifyAttributeType;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+/**
+ * Default fight handler for the Lone Wolf ruleset.
+ * @author Tamas_Szekeres
+ */
 @Component
 public class DefaultLwFightRoundResolver implements LwFightRoundResolver {
+    @Autowired @Qualifier("d10") private RandomNumberGenerator generator;
+    @Autowired private LwDamageResultProvider damageResultProvider;
 
     @Override
     public void resolveRound(final LwFightCommand command, final ResolvationData resolvationData) {
@@ -24,26 +34,39 @@ public class DefaultLwFightRoundResolver implements LwFightRoundResolver {
         final LwAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
 
         final LwEnemy enemy = enemies.get(0);
-        final FightDataDto dto = new FightDataDto(enemy, messages, resolvationData);
 
-        final int selfCommandRatio = attributeHandler.resolveValue(character, "commandSkill") - enemy.getCombatSkill();
+        final int commandRatio = calculateCommandRatio(character, attributeHandler, enemy);
+        final int[] randomNumber = generator.getRandomNumber(new DiceConfiguration(1, 0, 9));
 
-        // final int[] selfAttackStrengthValues = getSelfAttackStrength(character, command, attributeHandler);
-        // final int[] enemyAttackStrengthValues = getEnemyAttackStrength(enemy, command);
-        // final int selfAttackStrength = attributeHandler.resolveValue(character, "skill") + selfAttackStrengthValues[0];
-        // final int enemyAttackStrength = enemy.getSkill() + enemyAttackStrengthValues[0];
-        // storeHeroAttackStrength(command, enemy, selfAttackStrength, selfAttackStrengthValues);
-        // storeEnemyAttackStrength(command, enemy, enemyAttackStrength, enemyAttackStrengthValues);
-        // recordHeroAttachStrength(messages, selfAttackStrengthValues, selfAttackStrength, character);
-        // recordEnemyAttachStrength(dto, enemyAttackStrengthValues, enemyAttackStrength);
-        // if (enemyAttackStrength == selfAttackStrength) {
-        // doTieFight(command, enemyIdx, dto);
-        // } else if (enemyAttackStrength > selfAttackStrength) {
-        // doLoseFight(command, enemyIdx, dto);
-        // } else {
-        // doWinFight(command, enemyIdx, dto);
-        // }
+        final LwDamageResult lwDamageResult = damageResultProvider.getLwDamageResult(commandRatio, randomNumber[0]);
+        if (lwDamageResult.isEnemyKilled()) {
+            enemy.setEndurance(0);
+            messages.add("Enemy killed instantly.");
+            command.setOngoing(false);
+        } else if (lwDamageResult.isLwKilled()) {
+            attributeHandler.handleModification(character, "endurance", 0, ModifyAttributeType.set);
+            messages.add("LW killed instantly.");
+            command.setOngoing(false);
+        } else {
+            attributeHandler.handleModification(character, "endurance", -lwDamageResult.getLwSuffers());
+            enemy.setEndurance(enemy.getEndurance() - lwDamageResult.getEnemySuffers());
+            messages.add("LW hit enemy, enemy hit LW.");
+            if (!attributeHandler.isAlive(character)) {
+                command.setOngoing(false);
+            } else if (enemiesDead(command.getResolvedEnemies())) {
+                command.setOngoing(false);
+            }
+        }
+    }
 
+    private boolean enemiesDead(final List<LwEnemy> resolvedEnemies) {
+        return resolvedEnemies.size() == 1 && resolvedEnemies.get(0).getEndurance() <= 0;
+    }
+
+    private int calculateCommandRatio(final LwCharacter character, final LwAttributeHandler attributeHandler, final LwEnemy enemy) {
+        final int commandRatio = attributeHandler.resolveValue(character, "commandSkill") - enemy.getCombatSkill();
+        // add kai discipline stuff as well...
+        return commandRatio;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package hu.zagor.gamebooks.ff.ff.sor.mvc.books.section.service.fight;
+package hu.zagor.gamebooks.ff.ff.sos.mvc.books.section.service.fight;
 
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * @author Tamas_Szekeres
  */
 public class Ff34FightCommandResolver implements CommandResolver {
-    @Autowired @Qualifier("fightCommandResolver") private FfFightCommandResolver decorated;
+    @Autowired @Qualifier("ffFightCommandResolver") private FfFightCommandResolver decorated;
 
     @Override
     public CommandResolveResult resolve(final Command command, final ResolvationData resolvationData) {

@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.books.contentransforming.section.stub.fight;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.AbstractTransformerTest;
 import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTransformer;
+import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.content.ComplexParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
 import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
@@ -21,7 +22,7 @@ import org.testng.annotations.Test;
 @Test
 public class FfFightLoseTransformerTest extends AbstractTransformerTest {
 
-    private FightLoseTransformer underTest;
+    private FightLoseTransformer<FfEnemy> underTest;
     private IMocksControl mockControl;
     private BookParagraphDataTransformer parent;
     private ChoicePositionCounter positionCounter;

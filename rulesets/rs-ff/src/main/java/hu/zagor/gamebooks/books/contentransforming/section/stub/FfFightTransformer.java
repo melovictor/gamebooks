@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.books.contentransforming.section.stub;
 
+import hu.zagor.gamebooks.character.enemy.FfEnemy;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.WeaponReplacementData;
@@ -13,7 +14,7 @@ import org.w3c.dom.Node;
  * Class for transforming the "fight" elements of a paragraph.
  * @author Tamas_Szekeres
  */
-public class FfFightTransformer extends ComplexFightTransformer<FfFightCommand> {
+public class FfFightTransformer extends ComplexFightTransformer<FfEnemy, FfFightCommand> {
 
     @Override
     void parseRulesetSpecificAttributes(final FfFightCommand ffFightCommand, final Node node) {

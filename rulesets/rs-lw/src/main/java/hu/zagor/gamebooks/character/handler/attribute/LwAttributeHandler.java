@@ -31,8 +31,29 @@ public class LwAttributeHandler extends ComplexAttributeHandler {
         final String attribute = modAttr.getAttribute();
         final int amount = modAttr.getAmount();
         final ModifyAttributeType type = modAttr.getType();
+        handleModification(character, attribute, amount, type);
+    }
+
+    /**
+     * Handles modifications in the attributes of the {@link LwCharacter} object.
+     * @param character the {@link LwCharacter} object to modify
+     * @param attribute the attribute to change
+     * @param amount the amount by which to change the attribute
+     * @param type the type of the change
+     */
+    public void handleModification(final LwCharacter character, final String attribute, final int amount, final ModifyAttributeType type) {
         handleRegularFieldChange(character, attribute, amount, type);
         sanityCheck(character);
+    }
+
+    /**
+     * Handles modifications in the attributes of the {@link LwCharacter} object.
+     * @param character the {@link LwCharacter} object to modify
+     * @param attribute the attribute to change
+     * @param amount the amount by which to change the attribute
+     */
+    public void handleModification(final LwCharacter character, final String attribute, final int amount) {
+        handleModification(character, attribute, amount, ModifyAttributeType.change);
     }
 
     /**
