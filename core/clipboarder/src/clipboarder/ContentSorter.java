@@ -14,7 +14,7 @@ public class ContentSorter {
     private static final Pattern SECTIONS = Pattern.compile("(<p id=\"([^\"]+)\".*?<\\/p>)", Pattern.DOTALL);
 
     public String tryMap(final String content, final BookImageData imageData) {
-        if (isXml(content) && (isFf(content) || isRaw(content) || isSorcery(content))) {
+        if (isXml(content) && (isFf(content) || isRaw(content) || isSorcery(content) || isLw(content))) {
             try {
                 return sortSections(content, imageData);
             } catch (final Exception ex) {
@@ -34,6 +34,11 @@ public class ContentSorter {
             "<content xmlns=\"http://gamebooks.zagor.hu\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://gamebooks.zagor.hu http://zagor.hu/xsd/ff.xsd\">");
     }
 
+    private boolean isLw(final String content) {
+        return content.contains(
+            "<content xmlns=\"http://gamebooks.zagor.hu\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://gamebooks.zagor.hu http://zagor.hu/xsd/lw.xsd\">");
+    }
+
     private boolean isRaw(final String content) {
         return content.contains(
             "<content xmlns=\"http://gamebooks.zagor.hu\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://gamebooks.zagor.hu http://zagor.hu/xsd/raw.xsd\">");
@@ -45,6 +50,9 @@ public class ContentSorter {
 
     private String sortSections(final String content, final BookImageData imageData) {
         final boolean ff = content.contains("ff.xsd");
+        final boolean sor = content.contains("sor.xsd");
+        final boolean lw = content.contains("lw.xsd");
+        final boolean raw = content.contains("raw.xsd");
         final Map<String, String> sections = new HashMap<>();
         final List<String> sectionIds = new ArrayList<>();
 
@@ -72,8 +80,20 @@ public class ContentSorter {
 
         final StringBuilder builder = new StringBuilder();
         builder.append(
-            "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<content xmlns=\"http://gamebooks.zagor.hu\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://gamebooks.zagor.hu http://zagor.hu/xsd/"
-                + (ff ? "ff" : "sor") + ".xsd\">");
+            "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<content xmlns=\"http://gamebooks.zagor.hu\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://gamebooks.zagor.hu http://zagor.hu/xsd/");
+        if (ff) {
+            builder.append("ff");
+        }
+        if (sor) {
+            builder.append("sor");
+        }
+        if (lw) {
+            builder.append("lw");
+        }
+        if (raw) {
+            builder.append("raw");
+        }
+        builder.append(".xsd\">");
 
         appendSection(sections, builder, "back_cover", 1, 0);
         appendSection(sections, builder, "generate", 1, 0);
