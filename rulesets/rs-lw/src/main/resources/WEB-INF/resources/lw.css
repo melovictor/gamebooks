@@ -77,13 +77,24 @@ div.lwMainAttributeValue {
   display: block;
 }
 #lwDisciplinesList span[data-available='false'] {
-  /*color: #776060;*/
   display: none;
 }
 
 .lwSlot {
   border: 1px solid black;
+  padding: 3px;
 }
 .lwSlot +.lwSlot {
   border-top: 0;
 }
+
+.lwSlot[data-equipped]::before {
+  content: "\f046";
+  font-family: "FontAwesome";
+  font-size: 13px;
+  margin-right: 10px;
+}
+.lwSlot[data-equipped="false"]::before {
+  content: "\f096";
+}
+

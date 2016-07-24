@@ -42,6 +42,8 @@
 				<span data-available="${data.character.kaiDisciplines.mindOverMatter}"><spring:message code="page.lw.attribute.kai.mindOverMatter" /></span>
 			</c:if>
 		</div>
+
+
         <div class="lwMainAttribute3">
             <span class="lwMainAttribute"><spring:message code="page.lw.equipment.weapons" /></span>
             <c:forEach var="item" items="${data.weapons}">

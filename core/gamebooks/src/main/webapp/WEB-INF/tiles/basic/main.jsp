@@ -11,6 +11,7 @@
 
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/reset.css" />" />
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/jquery-ui.css" />" />
+<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/font-awesome.min.css" />" />
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/zagor.css" />" />
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bze.css" />" />
 <c:forEach var="cssResource" items="${resources.css}">
