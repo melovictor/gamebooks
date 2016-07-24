@@ -1,16 +1,14 @@
 package hu.zagor.gamebooks.books.saving.domain;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Map;
-
+import java.util.TreeMap;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 /**
- * Bean for storing saved games. This bean contains the userId, the book's id and any other data the book
- * deems as important for saving.
+ * Bean for storing saved games. This bean contains the userId, the book's id and any other data the book deems as important for saving.
  * @author Tamas_Szekeres
  */
 @Component("savedGameContainer")
@@ -20,7 +18,7 @@ public class SavedGameContainer {
     private final Integer userId;
     private final Long bookId;
 
-    private final Map<String, Object> savedElements = new HashMap<>();
+    private final Map<String, Object> savedElements = new TreeMap<>();
 
     /**
      * Basic constructor to create a bean with a proper userId and book id.
@@ -48,8 +46,7 @@ public class SavedGameContainer {
     /**
      * Retrieves a previously saved element using the given key.
      * @param elementKey the key of the element, cannot be null
-     * @return the previously saved element, or null if an element with the given name hasn't been saved
-     * previously
+     * @return the previously saved element, or null if an element with the given name hasn't been saved previously
      */
     public Object getElement(final String elementKey) {
         Assert.notNull(elementKey, "The parameter 'elementKey' cannot be null!");
