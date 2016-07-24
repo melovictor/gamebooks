@@ -22,9 +22,6 @@
   <bean class="hu.zagor.gamebooks.content.FfParagraphData" id="ffParagraphData" scope="prototype" p:choices-ref="defaultChoiceSet" />
 
 
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.AddTransformer" id="ffAddTransformer" />
-
-
   <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.AttributeTestTransformer" id="ffAttributeTestTransformer" p:attributeTestTransformers-ref="ffAttributeTestTransformers" />
 
   <util:map id="ffAttributeTestTransformers">
@@ -123,7 +120,9 @@
   <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.CanEatTransformer" id="ffCanEatTransformer" />
 
   <util:map id="ffExtraTransformers">
-    <entry key="add" value-ref="ffAddTransformer" />
+    <entry key="add">
+      <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.AddTransformer" />
+    </entry>
     <entry key="test" value-ref="ffAttributeTestTransformer" />
     <entry key="fight" value-ref="ffFightTransformer" />
     <entry key="interrupt" value-ref="ffInterruptTransformer" />
@@ -293,7 +292,5 @@
     <entry key="ffFear" value="initialFear" />
 
   </util:map>
-
-  <bean class="hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute" scope="prototype" id="ffModifyAttribute" />
 
 </beans>

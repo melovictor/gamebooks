@@ -64,6 +64,10 @@ public class LwAttributeHandler extends ComplexAttributeHandler {
         if (character.getEndurance() > character.getInitialEndurance()) {
             character.setEndurance(character.getInitialEndurance());
         }
+        final int lostEndurance = character.getInitialEndurance() - character.getEndurance();
+        if (lostEndurance < character.getEnduranceLostInCombat()) {
+            character.setEnduranceLostInCombat(lostEndurance);
+        }
     }
 
 }

@@ -3,6 +3,8 @@ package hu.zagor.gamebooks.lw.mvc.book.section.controller;
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.userinteraction.LwUserInteractionHandler;
+import hu.zagor.gamebooks.content.LwParagraphData;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.command.fight.ComplexFightCommand;
 import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
@@ -29,6 +31,22 @@ public class LwBookSectionController extends RawBookSectionController {
      */
     public LwBookSectionController(final SectionHandlingService sectionHandlingService) {
         super(sectionHandlingService);
+    }
+
+    @Override
+    protected void handleCustomSectionsPost(final Model model, final HttpSessionWrapper wrapper, final boolean changedSection) {
+        super.handleCustomSectionsPost(model, wrapper, changedSection);
+
+        final Paragraph paragraph = wrapper.getParagraph();
+        final LwParagraphData data = (LwParagraphData) paragraph.getData();
+        final LwCharacter character = (LwCharacter) wrapper.getCharacter();
+        if (paragraph.getItemsToProcess().isEmpty() && !data.isFought() && character.getKaiDisciplines().isHealing()) {
+            final int lostInBattle = character.getEnduranceLostInCombat();
+            if (lostInBattle > 0) {
+                character.setEnduranceLostInCombat(lostInBattle - 1);
+                getInfo().getCharacterHandler().getAttributeHandler().handleModification(character, "endurance", 1);
+            }
+        }
     }
 
     @Override

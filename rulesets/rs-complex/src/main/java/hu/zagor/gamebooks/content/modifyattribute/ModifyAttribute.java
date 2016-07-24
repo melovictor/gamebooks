@@ -1,11 +1,15 @@
 package hu.zagor.gamebooks.content.modifyattribute;
 
 import java.io.Serializable;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 /**
  * Bean for storing attribute modification requests.
  * @author Tamas_Szekeres
  */
+@Component("modifyAttribute")
+@Scope("prototype")
 public class ModifyAttribute implements Serializable, Cloneable {
 
     private String attribute;

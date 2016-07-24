@@ -3,7 +3,7 @@ package hu.zagor.gamebooks.books.contentransforming.section.stub;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.AbstractTransformerTest;
 import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphDataTransformer;
-import hu.zagor.gamebooks.content.FfParagraphData;
+import hu.zagor.gamebooks.content.ComplexParagraphData;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttributeType;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
@@ -25,7 +25,7 @@ public class AddTransformerTest extends AbstractTransformerTest {
     @MockControl private IMocksControl mockControl;
     @Inject private BeanFactory beanFactory;
     @Mock private BookParagraphDataTransformer parent;
-    @Mock private FfParagraphData data;
+    @Mock private ComplexParagraphData data;
     private ModifyAttribute modifyAttrib;
 
     @BeforeClass
@@ -40,7 +40,7 @@ public class AddTransformerTest extends AbstractTransformerTest {
         expectAttribute("type");
         expectAttribute("goldOnly");
 
-        expect(beanFactory.getBean("ffModifyAttribute", "stamina", 9, ModifyAttributeType.change, false)).andReturn(modifyAttrib);
+        expect(beanFactory.getBean("modifyAttribute", "stamina", 9, ModifyAttributeType.change, false)).andReturn(modifyAttrib);
         data.addModifyAttributes(modifyAttrib);
 
         mockControl.replay();

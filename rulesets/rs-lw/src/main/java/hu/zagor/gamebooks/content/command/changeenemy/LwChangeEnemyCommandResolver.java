@@ -11,15 +11,7 @@ public class LwChangeEnemyCommandResolver extends AbstractChangeEnemyCommandReso
 
     @Override
     String getEnemyId(final ChangeEnemyCommand command, final ResolvationData resolvationData) {
-        final String id = command.getId();
-
-        // TODO: implement, if and when necessary
-        // if ("activeEnemy".equals(id)) {
-        // final LwCharacter character = (LwCharacter) resolvationData.getCharacter();
-        // final LwCharacterHandler characterHandler = (LwCharacterHandler) resolvationData.getCharacterHandler();
-        // id = characterHandler.getInteractionHandler().peekLastFightCommand(character, "enemyId");
-        // }
-        return id;
+        return command.getId();
     }
 
 }

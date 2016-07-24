@@ -21,6 +21,6 @@ public class AddSpellTransformer extends AbstractStubTransformer {
         Assert.notNull(data, "The parameter 'data' cannot be null!");
         final SorParagraphData sorData = (SorParagraphData) data;
         final int amount = extractIntegerAttribute(node, "amount");
-        sorData.addSpellModifyAttributes((ModifyAttribute) getBeanFactory().getBean("ffModifyAttribute", "stamina", amount, ModifyAttributeType.change));
+        sorData.addSpellModifyAttributes((ModifyAttribute) getBeanFactory().getBean("modifyAttribute", "stamina", amount, ModifyAttributeType.change));
     }
 }

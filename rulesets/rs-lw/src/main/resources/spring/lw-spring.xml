@@ -59,6 +59,9 @@
                 <constructor-arg index="0" ref="commonStubTransformers" />
                 <constructor-arg index="1">
                   <util:map>
+                    <entry key="add">
+                      <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.AddTransformer" />
+                    </entry>
                     <entry key="fight">
                       <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.LwFightTransformer">
                         <property name="fightTransformers">
@@ -107,5 +110,7 @@
     <entry key="backpack" value="8" />
     <entry key="special" value="999999" />
   </util:map>
+
+
 
 </beans>

@@ -31,12 +31,15 @@ public class LwFightCommandResolver extends TypeAwareCommandResolver<LwFightComm
 
     @Override
     protected CommandResolveResult doResolveWithResolver(final LwFightCommand command, final ResolvationData resolvationData) {
+        final LwParagraphData data = (LwParagraphData) resolvationData.getParagraph().getData();
+        data.setFought(true);
         command.getMessages().clear();
         final CommandResolveResult result = new CommandResolveResult();
         final List<ParagraphData> resolveList = doResolve(command, resolvationData);
         result.setResolveList(resolveList);
         result.setFinished(!command.isOngoing());
-        applyBattleMessages(resolvationData.getParagraph().getData(), command);
+        command.setKeepOpen(command.isOngoing());
+        applyBattleMessages(data, command);
         return result;
     }
 

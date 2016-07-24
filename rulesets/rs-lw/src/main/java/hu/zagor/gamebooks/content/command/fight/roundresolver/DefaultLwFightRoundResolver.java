@@ -88,6 +88,7 @@ public class DefaultLwFightRoundResolver implements LwFightRoundResolver {
         messages.addKey(key, lwDamageResult.getLwSuffers(), lwDamageResult.getEnemySuffers(), enemy.getName());
 
         attributeHandler.handleModification(character, "endurance", -lwDamageResult.getLwSuffers());
+        attributeHandler.handleModification(character, "enduranceLostInCombat", lwDamageResult.getLwSuffers());
         if (!fleeing) {
             enemy.setEndurance(enemy.getEndurance() - lwDamageResult.getEnemySuffers());
         }

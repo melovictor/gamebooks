@@ -8,6 +8,7 @@ public class LwParagraphData extends ComplexParagraphData {
 
     private boolean mustEat;
     private boolean canHunt;
+    private boolean fought;
 
     public boolean isMustEat() {
         return mustEat;
@@ -28,5 +29,13 @@ public class LwParagraphData extends ComplexParagraphData {
     @Override
     public LwParagraphData clone() throws CloneNotSupportedException {
         return (LwParagraphData) super.clone();
+    }
+
+    public boolean isFought() {
+        return fought;
+    }
+
+    public void setFought(final boolean fought) {
+        this.fought = fought;
     }
 }
