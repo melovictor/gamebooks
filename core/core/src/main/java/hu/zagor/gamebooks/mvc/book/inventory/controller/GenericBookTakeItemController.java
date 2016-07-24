@@ -12,6 +12,7 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.mvc.book.controller.AbstractRequestWrappingController;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.ReplaceItemData;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemData;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.logging.LogInject;
@@ -38,11 +39,11 @@ public class GenericBookTakeItemController extends AbstractRequestWrappingContro
      * Method for handling the acquiring of items through the displayed text.
      * @param request the http request
      * @param data the {@link TakeItemData} containing the incoming parameters
-     * @return the amount of items successfully taken
+     * @return the bean containing results of the taking
      */
     @RequestMapping(value = PageAddresses.BOOK_TAKE_ITEM, method = RequestMethod.POST)
     @ResponseBody
-    public final int handleItemTake(final HttpServletRequest request, final TakeItemData data) {
+    public final TakeItemResponse handleItemTake(final HttpServletRequest request, final TakeItemData data) {
         Assert.notNull(data.getItemId(), "The parameter 'itemId' cannot be null!");
         Assert.isTrue(data.getItemId().length() > 0, "The parameter 'itemId' cannot be empty!");
         Assert.isTrue(data.getAmount() > 0, "The parameter 'amount' must be positive!");
@@ -73,9 +74,9 @@ public class GenericBookTakeItemController extends AbstractRequestWrappingContro
      * @param request the http request
      * @param itemId the id of the item to take
      * @param amount the amount of the item to take
-     * @return the amount of items successfully taken
+     * @return the bean storing information about the taking
      */
-    protected int doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
+    protected TakeItemResponse doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
         final HttpSessionWrapper wrapper = getWrapper(request);
 
         final GatheredLostItem glItem = getGatheredLostItem(itemId, amount);
@@ -90,7 +91,7 @@ public class GenericBookTakeItemController extends AbstractRequestWrappingContro
         logger.debug("Took {} piece(s) of item {}.", totalTook, itemId);
         itemInteractionRecorder.recordItemTaking(wrapper, itemId);
 
-        return totalTook;
+        return new TakeItemResponse(totalTook);
     }
 
     private GatheredLostItem getGatheredLostItem(final String itemId, final int amount) {

@@ -9,6 +9,7 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -43,32 +44,32 @@ public class Ff23BookTakeItemController extends FfBookTakeItemController {
     }
 
     @Override
-    protected int doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
+    protected TakeItemResponse doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
         final HttpSessionWrapper wrapper = getWrapper(request);
 
         if (FLASK.equals(itemId)) {
             resetProvisions(wrapper);
         }
 
-        int takeItemResult = 0;
+        TakeItemResponse takeItemResult = new TakeItemResponse();
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
         if ("4003".equals(itemId)) {
             if (character.getGold() > 0) {
                 character.setGold(character.getGold() - 1);
                 getInfo().getCharacterHandler().getAttributeHandler().handleModification(character, "stamina", 2);
-                takeItemResult = 1;
+                takeItemResult.setTotalTaken(1);
             }
         } else if ("4006".equals(itemId)) {
             character.changeSkill(MAX_SKILL);
-            takeItemResult = 1;
+            takeItemResult.setTotalTaken(1);
         } else if ("4007".equals(itemId)) {
             character.changeStamina(MAX_STAMINA);
-            takeItemResult = 1;
+            takeItemResult.setTotalTaken(1);
         } else if ("4008".equals(itemId)) {
             character.changeLuck(MAX_LUCK);
-            takeItemResult = 1;
+            takeItemResult.setTotalTaken(1);
         } else if ("gold".equals(itemId) && "304".equals(wrapper.getParagraph().getId())) {
-            takeItemResult = 2;
+            takeItemResult.setTotalTaken(2);
             character.setGold(character.getGold() + 2);
             character.changeStamina(-1);
         } else {

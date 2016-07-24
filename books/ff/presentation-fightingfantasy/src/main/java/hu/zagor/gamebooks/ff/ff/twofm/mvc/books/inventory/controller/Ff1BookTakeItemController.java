@@ -6,6 +6,7 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
@@ -23,8 +24,8 @@ public class Ff1BookTakeItemController extends FfBookTakeItemController {
     private static final int CANDLE_PRICE = 20;
 
     @Override
-    protected int doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
-        int takenAmount;
+    protected TakeItemResponse doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
+        TakeItemResponse takenAmount;
 
         if ("3016".equals(itemId)) {
             final FfCharacter character = (FfCharacter) getWrapper(request).getCharacter();
@@ -32,7 +33,7 @@ public class Ff1BookTakeItemController extends FfBookTakeItemController {
                 takenAmount = super.doHandleItemTake(request, itemId, amount);
                 getInfo().getCharacterHandler().getAttributeHandler().handleModification(character, "gold", -CANDLE_PRICE);
             } else {
-                takenAmount = 0;
+                takenAmount = new TakeItemResponse(0);
             }
         } else {
             if ("gold".equals(itemId) && "313".equals(getWrapper(request).getParagraph().getId())) {

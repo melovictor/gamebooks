@@ -160,4 +160,8 @@ public class RandomCommandResolver extends TypeAwareCommandResolver<RandomComman
         return generator;
     }
 
+    public void setGenerator(final RandomNumberGenerator generator) {
+        this.generator = generator;
+    }
+
 }

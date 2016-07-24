@@ -13,6 +13,7 @@ import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
@@ -75,9 +76,9 @@ public class Ff23BookTakeItemControllerTakeItemTest {
         expectTakeItemNormally("3001");
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, "3001", 1);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, "3001", 1);
         // THEN
-        Assert.assertEquals(returned, 1);
+        Assert.assertEquals(returned.getTotalTaken(), 1);
     }
 
     public void testDoHandleItemTakeWhenWaterFlaskShouldResetProvisionBonusAndTakeItemNormally() {
@@ -90,9 +91,9 @@ public class Ff23BookTakeItemControllerTakeItemTest {
         expectTakeItemNormally("3004");
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, "3004", 1);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, "3004", 1);
         // THEN
-        Assert.assertEquals(returned, 1);
+        Assert.assertEquals(returned.getTotalTaken(), 1);
     }
 
     public void testDoHandleItemTakeWhenBuyingFoodAndHaveMoneyShouldDeductGoldAndIncreaseStamina() {
@@ -104,9 +105,9 @@ public class Ff23BookTakeItemControllerTakeItemTest {
         attributeHandler.handleModification(character, "stamina", 2);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, "4003", 1);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, "4003", 1);
         // THEN
-        Assert.assertEquals(returned, 1);
+        Assert.assertEquals(returned.getTotalTaken(), 1);
     }
 
     public void testDoHandleItemTakeWhenBuyingFoodAndNotHaveMoneyShouldDoNothingAndReturnWithZero() {
@@ -116,9 +117,9 @@ public class Ff23BookTakeItemControllerTakeItemTest {
         expect(character.getGold()).andReturn(0);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, "4003", 1);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, "4003", 1);
         // THEN
-        Assert.assertEquals(returned, 0);
+        Assert.assertEquals(returned.getTotalTaken(), 0);
     }
 
     public void testDoHandleItemTakeWhenResettingSkillShouldResetSkill() {
@@ -128,9 +129,9 @@ public class Ff23BookTakeItemControllerTakeItemTest {
         character.changeSkill(12);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, "4006", 1);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, "4006", 1);
         // THEN
-        Assert.assertEquals(returned, 1);
+        Assert.assertEquals(returned.getTotalTaken(), 1);
     }
 
     public void testDoHandleItemTakeWhenResettingStaminaShouldResetStamina() {
@@ -140,9 +141,9 @@ public class Ff23BookTakeItemControllerTakeItemTest {
         character.changeStamina(24);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, "4007", 1);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, "4007", 1);
         // THEN
-        Assert.assertEquals(returned, 1);
+        Assert.assertEquals(returned.getTotalTaken(), 1);
     }
 
     public void testDoHandleItemTakeWhenResettingLuckShouldResetLuck() {
@@ -152,9 +153,9 @@ public class Ff23BookTakeItemControllerTakeItemTest {
         character.changeLuck(12);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, "4008", 1);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, "4008", 1);
         // THEN
-        Assert.assertEquals(returned, 1);
+        Assert.assertEquals(returned.getTotalTaken(), 1);
     }
 
     public void testDoHandleItemTakeWhenGetchingGoldPiecesAtSection304ShouldTakeGoldDeductStaminaAndReturnWithTwo() {
@@ -168,9 +169,9 @@ public class Ff23BookTakeItemControllerTakeItemTest {
         character.changeStamina(-1);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, "gold", 10);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, "gold", 10);
         // THEN
-        Assert.assertEquals(returned, 2);
+        Assert.assertEquals(returned.getTotalTaken(), 2);
     }
 
     public void testDoHandleItemTakeWhenGetchingGoldPiecesAtSectionsOtherThan304ShouldTakeItemsNormally() {
@@ -182,9 +183,9 @@ public class Ff23BookTakeItemControllerTakeItemTest {
         expectTakeGoldNormally();
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, "gold", 3);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, "gold", 3);
         // THEN
-        Assert.assertEquals(returned, 3);
+        Assert.assertEquals(returned.getTotalTaken(), 3);
     }
 
     private void expectTakeItemNormally(final String itemId) {

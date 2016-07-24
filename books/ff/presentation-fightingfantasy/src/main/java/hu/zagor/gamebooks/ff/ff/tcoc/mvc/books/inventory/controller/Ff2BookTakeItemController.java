@@ -11,6 +11,7 @@ import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.ff.tcoc.character.Ff2Character;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
 import java.util.List;
 import javax.annotation.Resource;
@@ -36,7 +37,7 @@ public class Ff2BookTakeItemController extends FfBookTakeItemController {
     @Resource(name = "ff2RestorationSpellIds") private List<String> resettingSpells;
 
     @Override
-    protected int doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
+    protected TakeItemResponse doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
         if (MAGIC_SWORD_ID.equals(itemId)) {
             dropNormalSword(request);
         }

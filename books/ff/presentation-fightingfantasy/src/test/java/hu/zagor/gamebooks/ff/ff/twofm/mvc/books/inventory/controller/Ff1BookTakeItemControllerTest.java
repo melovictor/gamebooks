@@ -11,6 +11,7 @@ import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import javax.servlet.http.HttpServletRequest;
@@ -114,9 +115,9 @@ public class Ff1BookTakeItemControllerTest {
         paragraph.setActions(9);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, itemId, 1);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, itemId, 1);
         // THEN
-        Assert.assertEquals(returned, 1);
+        Assert.assertEquals(returned.getTotalTaken(), 1);
     }
 
     public void testDoHandleItemTakeWhenTakingBlueCandleAndHaveEnoughMoneyShouldExecuteSuperAndDeductPrice() {
@@ -151,9 +152,9 @@ public class Ff1BookTakeItemControllerTest {
 
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, itemId, 1);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, itemId, 1);
         // THEN
-        Assert.assertEquals(returned, 1);
+        Assert.assertEquals(returned.getTotalTaken(), 1);
     }
 
     public void testDoHandleItemTakeWhenTakingBlueCandleButDoesNotHaveEnoughMoneyShouldDoNothing() {
@@ -164,9 +165,9 @@ public class Ff1BookTakeItemControllerTest {
         expect(character.getGold()).andReturn(15);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, itemId, 1);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, itemId, 1);
         // THEN
-        Assert.assertEquals(returned, 0);
+        Assert.assertEquals(returned.getTotalTaken(), 0);
     }
 
     private void getWrapper() {

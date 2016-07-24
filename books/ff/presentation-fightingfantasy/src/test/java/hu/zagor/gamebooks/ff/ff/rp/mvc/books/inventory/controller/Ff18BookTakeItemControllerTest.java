@@ -11,6 +11,7 @@ import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
@@ -84,9 +85,9 @@ public class Ff18BookTakeItemControllerTest {
         paragraph.setActions(98);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, itemId, amount);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, itemId, amount);
         // THEN
-        Assert.assertEquals(returned, 1);
+        Assert.assertEquals(returned.getTotalTaken(), 1);
     }
 
     public void testDoHandleItemTakeWhenTaking2001ShouldExecuteHealingAndCharging() {
@@ -100,9 +101,9 @@ public class Ff18BookTakeItemControllerTest {
         expect(itemHandler.addItem(character, "4001", 1)).andReturn(1);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, itemId, amount);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, itemId, amount);
         // THEN
-        Assert.assertEquals(returned, 1);
+        Assert.assertEquals(returned.getTotalTaken(), 1);
     }
 
     public void testDoHandleItemTakeWhenTaking2002ShouldExecuteHealingAndCharging() {
@@ -115,9 +116,9 @@ public class Ff18BookTakeItemControllerTest {
         attributeHandler.handleModification(character, "gold", -50);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, itemId, amount);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, itemId, amount);
         // THEN
-        Assert.assertEquals(returned, 1);
+        Assert.assertEquals(returned.getTotalTaken(), 1);
     }
 
     private void expectWrapper() {

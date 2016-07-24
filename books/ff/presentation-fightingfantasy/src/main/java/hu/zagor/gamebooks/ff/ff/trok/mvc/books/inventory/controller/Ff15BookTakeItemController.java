@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
@@ -18,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Ff15BookTakeItemController extends FfBookTakeItemController {
 
     @Override
-    protected int doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
-        final int itemsTaken = super.doHandleItemTake(request, itemId, amount);
+    protected TakeItemResponse doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
+        final TakeItemResponse itemsTaken = super.doHandleItemTake(request, itemId, amount);
 
-        if (itemsTaken > 0 && "1002".equals(itemId)) {
+        if (itemsTaken.getTotalTaken() > 0 && "1002".equals(itemId)) {
             final Character character = getWrapper(request).getCharacter();
             final CharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
             itemHandler.removeItem(character, "1001", 1);

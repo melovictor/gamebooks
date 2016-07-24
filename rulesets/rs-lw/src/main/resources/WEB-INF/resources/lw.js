@@ -75,10 +75,14 @@ var lw = (function() {
 	function flee() {
 		form.submit("post", "flee", "lwEnemyList");
 	}
+	function random() {
+		form.submit("post", "random", "actionEnd");
+	}
 	
 	return {
 		attack : attack,
-		flee : flee
+		flee : flee,
+		random : random
 	};
 })();
 
@@ -90,4 +94,5 @@ $(function() {
 
 	$("[data-attack='lw']").on("click", lw.attack);
 	$("[data-flee='lw']").on("click", lw.flee);
+	$("[data-random='lw']").on("click", lw.random);
 });

@@ -47,6 +47,11 @@
     <entry key="hu.zagor.gamebooks.content.command.fight.LwFightCommand">
       <bean class="hu.zagor.gamebooks.content.command.fight.LwFightCommandResolver" />
     </entry>
+    <entry key="hu.zagor.gamebooks.content.command.random.RandomCommand">
+      <bean class="hu.zagor.gamebooks.content.command.random.RandomCommandResolver">
+        <property name="generator" ref="d10" />
+      </bean>
+    </entry>
   </util:map>
 
   <bean class="hu.zagor.gamebooks.domain.BookContentTransformers" id="defaultLwContentTransformers">
@@ -59,6 +64,9 @@
                 <constructor-arg index="0" ref="commonStubTransformers" />
                 <constructor-arg index="1">
                   <util:map>
+                    <entry key="random">
+                      <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.LwRandomTransformer" p:randomTransformers-ref="rawRandomTransformers" />
+                    </entry>
                     <entry key="add">
                       <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.AddTransformer" />
                     </entry>

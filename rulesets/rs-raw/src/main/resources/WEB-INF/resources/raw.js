@@ -109,11 +109,15 @@ var inventory = (function() {
 			url : url,
 			data : data,
 			method : "POST"
-		}).done(function(totalTaken) {
+		}).done(function(response) {
+			var totalTaken = response.totalTaken;
 			if (amount == totalTaken) {
 				unbind(that);
 			} else {
 				that.data("amount", amount - totalTaken);
+			}
+			if (response.warningMessage) {
+				showFeedback(response.warningMessage);
 			}
 			unbindGroup(that);
 			loadInventory();

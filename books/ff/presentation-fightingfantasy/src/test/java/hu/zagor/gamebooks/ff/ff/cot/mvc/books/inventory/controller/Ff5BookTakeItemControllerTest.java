@@ -10,6 +10,7 @@ import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
@@ -63,9 +64,9 @@ public class Ff5BookTakeItemControllerTest {
         expect(character.getGold()).andReturn(0);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, "3032", 1);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, "3032", 1);
         // THEN
-        Assert.assertEquals(returned, 0);
+        Assert.assertEquals(returned.getTotalTaken(), 0);
     }
 
     public void testDoHandleTakeItemWhenNotTakingColoredCandleShouldGoThroughNormalTakeItemProcess() {
@@ -80,9 +81,9 @@ public class Ff5BookTakeItemControllerTest {
         expect(item.getActions()).andReturn(2);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, itemId, 1);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, itemId, 1);
         // THEN
-        Assert.assertEquals(returned, 0);
+        Assert.assertEquals(returned.getTotalTaken(), 0);
     }
 
     public void testDoHandleTakeItemWhenTakingColoredCandleAndHaveMoneyShouldGoThroughNormalTakeItemProcessAndLoseOneGoldPiece() {
@@ -114,9 +115,9 @@ public class Ff5BookTakeItemControllerTest {
         character.setGold(4);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, itemId, 1);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, itemId, 1);
         // THEN
-        Assert.assertEquals(returned, 0);
+        Assert.assertEquals(returned.getTotalTaken(), 0);
     }
 
     private void expectWrapper() {

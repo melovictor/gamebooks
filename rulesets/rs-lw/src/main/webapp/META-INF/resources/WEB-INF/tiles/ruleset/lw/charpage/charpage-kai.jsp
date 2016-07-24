@@ -29,12 +29,14 @@
 				<span data-available="${data.character.kaiDisciplines.sixthSense}"><spring:message code="page.lw.attribute.kai.sixthSense" /></span>
 				<span data-available="${data.character.kaiDisciplines.tracking}"><spring:message code="page.lw.attribute.kai.tracking" /></span>
 				<span data-available="${data.character.kaiDisciplines.healing}"><spring:message code="page.lw.attribute.kai.healing" /></span>
-				<c:set var="weaponskillName">
-					<spring:message code="page.lw.attribute.kai.weaponskill.title" />
-				</c:set>
-				<c:set var="weaponskillWeapon">
-					<spring:message code="page.lw.attribute.kai.weaponskill.${data.weaponskillWeapon}" />
-				</c:set>
+				<c:if test="${not empty data.weaponskillWeapon}">
+					<c:set var="weaponskillName">
+						<spring:message code="page.lw.attribute.kai.weaponskill.title" />
+					</c:set>
+					<c:set var="weaponskillWeapon">
+						<spring:message code="page.lw.attribute.kai.weaponskill.${data.weaponskillWeapon}" />
+					</c:set>
+				</c:if>
 				<span data-available="${data.character.kaiDisciplines.weaponskill.weaponskillObtained}"><spring:message code="page.lw.attribute.kai.weaponskill" arguments="${weaponskillName},${weaponskillWeapon}" /></span>
 				<span data-available="${data.character.kaiDisciplines.mindshield}"><spring:message code="page.lw.attribute.kai.mindshield" /></span>
 				<span data-available="${data.character.kaiDisciplines.mindblast}"><spring:message code="page.lw.attribute.kai.mindblast" /></span>

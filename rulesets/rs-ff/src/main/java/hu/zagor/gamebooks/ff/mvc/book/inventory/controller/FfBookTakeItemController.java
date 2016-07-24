@@ -16,6 +16,7 @@ import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.TakePurchaseItemData;
 import hu.zagor.gamebooks.mvc.book.inventory.controller.GenericBookTakeItemController;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.BuySellResponse;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.mvc.book.inventory.service.MarketHandler;
 import hu.zagor.gamebooks.support.messages.MessageSource;
 import javax.servlet.http.HttpServletRequest;
@@ -44,21 +45,21 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
      */
     @RequestMapping(value = PageAddresses.BOOK_PURCHASE_ITEM, method = RequestMethod.POST)
     @ResponseBody
-    public final int handleItemTake(final HttpServletRequest request, @ModelAttribute final TakePurchaseItemData data) {
+    public final TakeItemResponse handleItemTake(final HttpServletRequest request, @ModelAttribute final TakePurchaseItemData data) {
         final FfCharacter character = (FfCharacter) getWrapper(request).getCharacter();
-        int takeItemResult;
+        TakeItemResponse takeItemResult;
         if (data.getPrice() > 0 && character.getGold() < data.getPrice()) {
-            takeItemResult = 0;
+            takeItemResult = new TakeItemResponse();
         } else {
             takeItemResult = super.handleItemTake(request, data);
-            character.setGold(character.getGold() - Math.min(takeItemResult, 1) * data.getPrice());
+            character.setGold(character.getGold() - Math.min(takeItemResult.getTotalTaken(), 1) * data.getPrice());
         }
         return takeItemResult;
     }
 
     @Override
-    protected int doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
-        int takenItemAmount = 0;
+    protected TakeItemResponse doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
+        TakeItemResponse takenItemAmount = new TakeItemResponse();
 
         final HttpSessionWrapper wrapper = getWrapper(request);
         final Paragraph paragraph = wrapper.getParagraph();

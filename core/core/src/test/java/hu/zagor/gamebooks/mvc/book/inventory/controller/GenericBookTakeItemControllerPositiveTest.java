@@ -13,6 +13,7 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.ReplaceItemData;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemData;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
@@ -95,9 +96,9 @@ public class GenericBookTakeItemControllerPositiveTest {
         itemInteractionRecorder.recordItemTaking(sessionWrapper, ITEM_ID);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.handleItemTake(request, takeData);
+        final TakeItemResponse returned = underTest.handleItemTake(request, takeData);
         // THEN
-        Assert.assertEquals(returned, AMOUNT);
+        Assert.assertEquals(returned.getTotalTaken(), AMOUNT);
     }
 
     public void testHandleItemTakeWhenNoItemsAreTakenShouldNotRemoveAnyItems() {
@@ -114,9 +115,9 @@ public class GenericBookTakeItemControllerPositiveTest {
         itemInteractionRecorder.recordItemTaking(sessionWrapper, ITEM_ID);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.handleItemTake(request, takeData);
+        final TakeItemResponse returned = underTest.handleItemTake(request, takeData);
         // THEN
-        Assert.assertEquals(returned, 0);
+        Assert.assertEquals(returned.getTotalTaken(), 0);
     }
 
     public void testHandleItemTakeWhenSomeItemsTakenShouldRemoveOnlyTakenItems() {
@@ -135,9 +136,9 @@ public class GenericBookTakeItemControllerPositiveTest {
         itemInteractionRecorder.recordItemTaking(sessionWrapper, ITEM_ID);
         mockControl.replay();
         // WHEN
-        final int returned = underTest.handleItemTake(request, takeData);
+        final TakeItemResponse returned = underTest.handleItemTake(request, takeData);
         // THEN
-        Assert.assertEquals(returned, TAKEN_AMOUNT);
+        Assert.assertEquals(returned.getTotalTaken(), TAKEN_AMOUNT);
     }
 
     public void testHandleItemReplaceWhenCharacterDoesNotHaveReplacementItemShouldReturnZero() {

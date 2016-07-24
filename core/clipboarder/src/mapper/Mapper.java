@@ -24,7 +24,7 @@ public class Mapper {
 
     public static void main(final String[] args) throws IOException {
         final String root = "c:\\springsource\\eclipsegit\\books";
-        final String[] series = new String[]{"cyoa", "ff", "solo", "tm", "sc", "wm", "z", "eq", "fyf", "gyg"};
+        final String[] series = new String[]{"cyoa", "ff", "solo", "tm", "sc", "wm", "z", "eq", "fyf", "gyg", "lw"};
         final String content = "src\\main\\resources";
 
         final GregorianCalendar calendar = new GregorianCalendar();

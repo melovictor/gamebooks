@@ -11,6 +11,7 @@ import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
@@ -90,9 +91,9 @@ public class Ff34BookTakeItemControllerTest {
 
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, provisionId, 1);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, provisionId, 1);
         // THEN
-        Assert.assertEquals(returned, 1);
+        Assert.assertEquals(returned.getTotalTaken(), 1);
     }
 
     public void testDoHandleItemTakeWhenChainmailItemAndSmallInitialSkillShouldTakeAndEnhanceIt() {
@@ -129,9 +130,9 @@ public class Ff34BookTakeItemControllerTest {
 
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, chainmailId, 1);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, chainmailId, 1);
         // THEN
-        Assert.assertEquals(returned, 1);
+        Assert.assertEquals(returned.getTotalTaken(), 1);
     }
 
     public void testDoHandleItemTakeWhenChainmailItemAndHighInitialSkillShouldNotEnhanceIt() {
@@ -166,9 +167,9 @@ public class Ff34BookTakeItemControllerTest {
 
         mockControl.replay();
         // WHEN
-        final int returned = underTest.doHandleItemTake(request, chainmailId, 1);
+        final TakeItemResponse returned = underTest.doHandleItemTake(request, chainmailId, 1);
         // THEN
-        Assert.assertEquals(returned, 1);
+        Assert.assertEquals(returned.getTotalTaken(), 1);
     }
 
     private void expectWrapper() {

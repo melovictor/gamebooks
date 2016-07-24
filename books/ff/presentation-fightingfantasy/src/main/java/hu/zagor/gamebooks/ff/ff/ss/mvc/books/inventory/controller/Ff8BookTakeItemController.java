@@ -11,6 +11,7 @@ import hu.zagor.gamebooks.ff.ff.ss.character.Ff8Character;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.BuySellResponse;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -48,9 +49,9 @@ public class Ff8BookTakeItemController extends FfBookTakeItemController {
     }
 
     @Override
-    protected int doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
+    protected TakeItemResponse doHandleItemTake(final HttpServletRequest request, final String itemId, final int amount) {
         final FfCharacter character = (FfCharacter) getWrapper(request).getCharacter();
-        int taken = 1;
+        TakeItemResponse taken = new TakeItemResponse(1);
 
         if ("3116".equals(itemId)) {
             character.changeSkill(ATTRIBUTE_REFILL);
