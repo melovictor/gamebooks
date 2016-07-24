@@ -11,7 +11,7 @@ import java.util.List;
  * Main bean for resolving an item altering command.
  * @author Tamas_Szekeres
  */
-public class ChangeItemCommandResolver extends AbstractChangeItemCommandResolver<FfCharacter, FfCharacterItemHandler, FfItem> {
+public class FfChangeItemCommandResolver extends AbstractChangeItemCommandResolver<FfCharacter, FfCharacterItemHandler, FfItem> {
 
     @Override
     List<Item> getItemsToChange(final ChangeItemCommand command, final FfCharacter character, final FfCharacterItemHandler itemHandler) {

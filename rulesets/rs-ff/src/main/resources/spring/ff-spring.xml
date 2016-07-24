@@ -208,8 +208,7 @@
   <bean class="hu.zagor.gamebooks.content.command.fight.subresolver.FightCommandSupportedSubResolver" id="fightCommandSupportedSubResolver" />
 
 
-  <bean class="hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommandResolver" id="changeEnemyCommandResolver" />
-  <bean class="hu.zagor.gamebooks.content.command.changeitem.ChangeItemCommandResolver" id="changeItemCommandResolver" />
+
 
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckFfAttributeCommandResolver" id="ffItemCheckAttributeCommandResolver" />
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckValueCommandResolver" id="ffItemCheckValueCommandResolver" />
@@ -258,8 +257,12 @@
     <entry key="hu.zagor.gamebooks.content.command.random.RandomCommand" value-ref="randomCommandResolver" />
     <entry key="hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand" value-ref="attributeTestCommandResolver" />
     <entry key="hu.zagor.gamebooks.content.command.fight.FfFightCommand" value-ref="ffFightCommandResolver" />
-    <entry key="hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommand" value-ref="changeEnemyCommandResolver" />
-    <entry key="hu.zagor.gamebooks.content.command.changeitem.ChangeItemCommand" value-ref="changeItemCommandResolver" />
+    <entry key="hu.zagor.gamebooks.content.command.changeenemy.ChangeEnemyCommand">
+      <bean class="hu.zagor.gamebooks.content.command.changeenemy.FfChangeEnemyCommandResolver" />
+    </entry>
+    <entry key="hu.zagor.gamebooks.content.command.changeitem.ChangeItemCommand">
+      <bean class="hu.zagor.gamebooks.content.command.changeitem.FfChangeItemCommandResolver" />
+    </entry>
     <entry key="hu.zagor.gamebooks.content.command.market.MarketCommand" value-ref="marketCommandResolver" />
   </util:map>
 

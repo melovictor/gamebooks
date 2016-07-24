@@ -43,6 +43,7 @@ public class RawBookNewGameController extends AbstractNewGameController implemen
      */
     @RequestMapping(value = PageAddresses.BOOK_NEW)
     public final String handleNew(final HttpServletRequest request, final Model model, final Locale locale) {
+        model.addAttribute("isNewScreen", true);
         return doHandleNew(request, model, locale);
     }
 

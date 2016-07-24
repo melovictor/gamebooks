@@ -8,6 +8,7 @@ import hu.zagor.gamebooks.character.handler.attribute.LwAttributeHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.LwUserInteractionHandler;
 import hu.zagor.gamebooks.content.LwParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
+import hu.zagor.gamebooks.content.command.CommandResolveResult;
 import hu.zagor.gamebooks.content.command.TypeAwareCommandResolver;
 import hu.zagor.gamebooks.content.command.fight.roundresolver.LwFightRoundResolver;
 import hu.zagor.gamebooks.content.command.fight.subresolver.enemystatus.EnemyStatusEvaluator;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.util.StringUtils;
 
 /**
  * Fight command resolver for Lone Wolf.
@@ -28,11 +30,28 @@ public class LwFightCommandResolver extends TypeAwareCommandResolver<LwFightComm
     @Autowired private LwFightRoundResolver roundResolver;
 
     @Override
-    protected List<ParagraphData> doResolve(final LwFightCommand command, final ResolvationData resolvationData) {
-        return resolveFight(command, resolvationData);
+    protected CommandResolveResult doResolveWithResolver(final LwFightCommand command, final ResolvationData resolvationData) {
+        command.getMessages().clear();
+        final CommandResolveResult result = new CommandResolveResult();
+        final List<ParagraphData> resolveList = doResolve(command, resolvationData);
+        result.setResolveList(resolveList);
+        result.setFinished(!command.isOngoing());
+        applyBattleMessages(resolvationData.getParagraph().getData(), command);
+        return result;
     }
 
-    private List<ParagraphData> resolveFight(final LwFightCommand command, final ResolvationData resolvationData) {
+    private void applyBattleMessages(final ParagraphData rootData, final LwFightCommand command) {
+        final String messages = StringUtils.collectionToDelimitedString(command.getMessages(), "<br />\n");
+        if (!messages.isEmpty()) {
+            final StringBuilder builder = new StringBuilder(rootData.getText() + "<p>");
+            builder.append(messages);
+            builder.append("</p>");
+            rootData.setText(builder.toString());
+        }
+    }
+
+    @Override
+    protected List<ParagraphData> doResolve(final LwFightCommand command, final ResolvationData resolvationData) {
         final List<ParagraphData> resolveList = new ArrayList<>();
         resolveBattlingParties(command, resolvationData, null);
         final LwCharacter battlingCharacter = resolveCharacter(resolvationData);

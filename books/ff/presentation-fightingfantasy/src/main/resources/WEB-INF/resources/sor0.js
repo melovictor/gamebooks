@@ -17,6 +17,6 @@ var sor0 = (function() {
 })();
 
 $(function() {
-	$("#choiceWrapper").removeClass('ffChoiceHidden');
+	$("#choiceWrapper").removeClass('choiceHidden');
 	sor0.init();
 });

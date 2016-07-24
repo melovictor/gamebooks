@@ -244,6 +244,17 @@ public class DefaultCharacterItemHandler implements CharacterItemHandler, BeanFa
     }
 
     @Override
+    public void setItemEquipState(final Character character, final String itemId, final boolean toEquip) {
+        for (final Item item : character.getEquipment()) {
+            final EquipInfo equipInfo = item.getEquipInfo();
+            if (itemId.equals(item.getId()) && equipInfo.isEquipped() != toEquip && (equipInfo.isRemovable() || toEquip)) {
+                equipInfo.setEquipped(toEquip);
+                break;
+            }
+        }
+    }
+
+    @Override
     public Iterator<Item> getItemIterator(final Character character) {
         return character.getEquipment().iterator();
     }

@@ -73,4 +73,36 @@ public class LwCharacterItemHandler extends DefaultCharacterItemHandler {
         this.maxPlacementValues = maxPlacementValues;
     }
 
+    /**
+     * Retrives either the selected weapon, or the first non-default weapon it finds with the character, or the default weapon.
+     * @param character the {@link LwCharacter} whose currently selected weapon must be obtained.
+     * @return the currently selected weapon, marked as equipped
+     */
+    public LwItem getEquippedWeapon(final LwCharacter character) {
+        LwItem defWpn = null;
+        LwItem selWpn = null;
+
+        for (final Item itemObject : character.getEquipment()) {
+            final LwItem item = (LwItem) itemObject;
+            if (item.getPlacement() == Placement.weapon) {
+                if ("defWpn".equals(item.getId())) {
+                    defWpn = item;
+                } else if (item.getEquipInfo().isEquipped()) {
+                    selWpn = item;
+                    break;
+                } else if (selWpn == null) {
+                    selWpn = item;
+                }
+            }
+        }
+
+        if (selWpn == null) {
+            selWpn = defWpn;
+        }
+        if (selWpn != null) {
+            selWpn.getEquipInfo().setEquipped(true);
+        }
+        return selWpn;
+    }
+
 }

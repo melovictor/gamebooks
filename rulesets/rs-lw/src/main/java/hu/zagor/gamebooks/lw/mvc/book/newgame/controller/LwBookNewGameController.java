@@ -28,7 +28,7 @@ public class LwBookNewGameController extends RawBookNewGameController {
     protected String doHandleNew(final HttpServletRequest request, final Model model, final Locale locale) {
         super.doHandleNew(request, model, locale);
 
-        model.addAttribute("lwChoiceClass", "lwChoiceHidden");
+        model.addAttribute("lwChoiceClass", "choiceHidden");
         addJsResource(model, "lw");
         addCssResource(model, "lw");
 

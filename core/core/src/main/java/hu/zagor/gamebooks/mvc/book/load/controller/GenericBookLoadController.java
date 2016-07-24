@@ -101,7 +101,7 @@ public abstract class GenericBookLoadController extends AbstractSectionDisplayin
             throw new IllegalStateException("Continuation is not supported when continuation information is not provided.");
         }
 
-        HttpSession session = request.getSession();
+        final HttpSession session = request.getSession();
         final Paragraph paragraph = (Paragraph) session.getAttribute(ControllerAddresses.PARAGRAPH_STORE_KEY + continuationData.getPreviousBookId());
         if (!continuationData.getPreviousBookLastSectionId().equals(paragraph.getId())) {
             throw new IllegalStateException("Continuation is not supported when the character from the previous book is not staying on the finishing section.");

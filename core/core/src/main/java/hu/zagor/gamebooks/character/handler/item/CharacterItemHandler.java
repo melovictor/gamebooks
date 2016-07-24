@@ -96,4 +96,12 @@ public interface CharacterItemHandler {
      * @return the {@link Iterator} itself
      */
     Iterator<Item> getItemIterator(Character character);
+
+    /**
+     * Changes the equipped state of an item.
+     * @param character the {@link Character} owning the item
+     * @param itemId the id of the item
+     * @param toEquip the new equip state; true if it has to be equipped, false if it has to be removed
+     */
+    void setItemEquipState(Character character, String itemId, boolean toEquip);
 }

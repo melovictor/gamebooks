@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<c:if test="${not ffChoiceHidden && data.alive}">
+<c:if test="${not choiceHidden && data.alive}">
 	<div id="choiceWrapper" class="${ffChoiceClass}">
 		<c:if test="${not empty paragraph.data.spellChoices}">
 			<div id="sorSpellContainer">
@@ -37,7 +37,7 @@
 		</c:if>
 	</div>
 </c:if>
-<c:if test="${ffChoiceHidden}">
+<c:if test="${choiceHidden}">
 	<div id="choiceWrapper" class="${ffChoiceClass}">
 		<div id="choice">
 			<ul></ul>

@@ -16,13 +16,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- * Unit test for class {@link ChangeEnemyCommandResolver}.
+ * Unit test for class {@link FfChangeEnemyCommandResolver}.
  * @author Tamas_Szekeres
  */
 @Test
 public class ChangeEnemyCommandResolverTest {
 
-    private ChangeEnemyCommandResolver underTest;
+    private FfChangeEnemyCommandResolver underTest;
     private IMocksControl mockControl;
     private ChangeEnemyCommand command;
     private ResolvationData resolvationData;
@@ -32,7 +32,7 @@ public class ChangeEnemyCommandResolverTest {
     @BeforeClass
     public void setUpClass() {
         mockControl = EasyMock.createStrictControl();
-        underTest = new ChangeEnemyCommandResolver();
+        underTest = new FfChangeEnemyCommandResolver();
         command = new ChangeEnemyCommand();
         enemies = new HashMap<>();
         enemy = new FfEnemy();

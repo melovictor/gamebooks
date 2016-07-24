@@ -11,7 +11,7 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.FightCommandForm;
+import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.FfFightCommandForm;
 import hu.zagor.gamebooks.ff.mvc.book.section.service.FfBookPreFightHandlingService;
 import hu.zagor.gamebooks.mvc.book.section.controller.GenericBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
@@ -77,7 +77,7 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
      * @return the book page's name
      */
     @RequestMapping(value = PageAddresses.FIGHT)
-    public final String handleFight(final Model model, final HttpServletRequest request, @ModelAttribute final FightCommandForm form) {
+    public final String handleFight(final Model model, final HttpServletRequest request, @ModelAttribute final FfFightCommandForm form) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         handleBeforeFight(wrapper, form.getId());
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();

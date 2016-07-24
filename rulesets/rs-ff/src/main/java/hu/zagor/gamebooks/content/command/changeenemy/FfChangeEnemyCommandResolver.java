@@ -9,7 +9,7 @@ import hu.zagor.gamebooks.ff.character.FfCharacter;
  * Main bean for resolving an enemy altering command.
  * @author Tamas_Szekeres
  */
-public class ChangeEnemyCommandResolver extends AbstractChangeEnemyCommandResolver<FfEnemy> {
+public class FfChangeEnemyCommandResolver extends AbstractChangeEnemyCommandResolver<FfEnemy> {
 
     @Override
     String getEnemyId(final ChangeEnemyCommand command, final ResolvationData resolvationData) {

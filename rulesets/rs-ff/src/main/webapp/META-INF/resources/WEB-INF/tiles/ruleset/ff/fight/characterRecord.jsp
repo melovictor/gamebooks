@@ -1,18 +1,18 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <span class="skillTitle">
-    <spring:message code="page.ff.attribute.skill" />
+	<spring:message code="page.ff.attribute.skill" />
 </span>
 <span class="staminaTitle">
-    <spring:message code="page.ff.attribute.stamina" />
+	<spring:message code="page.ff.attribute.stamina" />
 </span>
 <span class="luckTitle">
-    <spring:message code="page.ff.attribute.luck" />
+	<spring:message code="page.ff.attribute.luck" />
 </span>
 
 <div>
-    <span data-enemy-id="0">${user.principal}</span>
-    <span data-enemy-skill>${data.skill}</span>
-    <span data-enemy-stamina>${data.stamina}</span>
-    <span data-enemy-luck>${data.luck}</span>
+	<span data-enemy-id="0">${user.principal}</span>
+	<span data-enemy-skill>${data.skill}</span>
+	<span data-enemy-stamina>${data.stamina}</span>
+	<span data-enemy-luck>${data.luck}</span>
 </div>

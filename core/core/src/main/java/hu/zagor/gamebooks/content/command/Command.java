@@ -2,7 +2,6 @@ package hu.zagor.gamebooks.content.command;
 
 import hu.zagor.gamebooks.content.EscapingData;
 import hu.zagor.gamebooks.content.TrueCloneable;
-
 import java.util.Map;
 
 /**
@@ -53,7 +52,7 @@ public abstract class Command extends EscapingData implements TrueCloneable {
      * @param model the {@link Map} to be populated by the hiding information
      */
     protected void hideChoices(final Map<String, Object> model) {
-        model.put("ffChoiceHidden", true);
+        model.put("choiceHidden", true);
     }
 
 }

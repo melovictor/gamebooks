@@ -35,7 +35,7 @@ public class FfBookNewGameController extends RawBookNewGameController {
     protected String doHandleNew(final HttpServletRequest request, final Model model, final Locale locale) {
         super.doHandleNew(request, model, locale);
 
-        model.addAttribute("ffChoiceClass", "ffChoiceHidden");
+        model.addAttribute("ffChoiceClass", "choiceHidden");
         addJsResource(model, "ff");
         addCssResource(model, "ff");
 

@@ -67,6 +67,27 @@ var lwCharGen = (function() {
 	};
 })();
 
+var lw = (function() {
+	function attack() {
+		var enemyId = $("[data-enemy-selected='true']").data("enemy-id");
+		form.submit("post", "attack?id=" + enemyId, "lwEnemyList");
+	}
+	function flee() {
+		form.submit("post", "flee", "lwEnemyList");
+	}
+	
+	return {
+		attack : attack,
+		flee : flee
+	};
+})();
+
 $(function() {
 	lwCharGen.init();
-})
+	$("#lwMenu")
+		.on("click", "#gamebookCharacterPageWrapper [data-item-equipped] span:not(.remove)", function($elem) { return $elem.parent(); }, inventory.changeEquip)
+		.on("click", "#gamebookCharacterPageWrapper span.remove", function($elem) { return $elem.parent(); }, inventory.dropItem);
+
+	$("[data-attack='lw']").on("click", lw.attack);
+	$("[data-flee='lw']").on("click", lw.flee);
+});

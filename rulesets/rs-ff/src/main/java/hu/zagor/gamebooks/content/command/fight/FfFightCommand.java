@@ -23,9 +23,6 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 public class FfFightCommand extends ComplexFightCommand<FfEnemy> {
 
-    public static final String FLEEING = "fleeing";
-    public static final String ATTACKING = "attacking";
-
     private List<String> allies = new ArrayList<>();
     private String battleType;
     private int autoLoseRound;

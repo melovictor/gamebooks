@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.ff.mvc.book.inventory.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
-import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
@@ -82,42 +81,6 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
             itemActions = item.getActions();
         }
         return itemActions;
-    }
-
-    /**
-     * Method for handling the changing of item state.
-     * @param request the {@link HttpServletRequest}
-     * @param itemId the id of the item to change the state
-     * @param isEquipped true if the item has to be equipped, false if it has to be removed
-     */
-    @RequestMapping(value = PageAddresses.BOOK_CHANGE_ITEM_EQUIP_STATE + "/{id}/{isEquipped}")
-    @ResponseBody
-    public final void handleItemStateChange(final HttpServletRequest request, @PathVariable("id") final String itemId,
-        @PathVariable("isEquipped") final boolean isEquipped) {
-        Assert.notNull(itemId, "The parameter 'itemId' cannot be null!");
-        Assert.isTrue(itemId.length() > 0, "The parameter 'itemId' cannot be empty!");
-
-        doHandleItemStateChange(request, itemId, isEquipped);
-    }
-
-    /**
-     * Method for actually handling the changing of the item state.
-     * @param request the {@link HttpServletRequest}
-     * @param itemId the id of the item to change the state
-     * @param isEquipped true if the item has to be equipped, false if it has to be removed
-     */
-    protected void doHandleItemStateChange(final HttpServletRequest request, final String itemId, final boolean isEquipped) {
-        final HttpSessionWrapper wrapper = getWrapper(request);
-        final Paragraph paragraph = wrapper.getParagraph();
-
-        final int totalActions = paragraph.getActions();
-        if (totalActions > 0) {
-            paragraph.setActions(totalActions - 1);
-            final Character character = wrapper.getCharacter();
-            final FfCharacterHandler characterHandler = getInfo().getCharacterHandler();
-            characterHandler.getItemHandler().setItemEquipState(character, itemId, isEquipped);
-            getItemInteractionRecorder().changeItemEquipState(wrapper, itemId);
-        }
     }
 
     /**

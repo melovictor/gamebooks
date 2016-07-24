@@ -20,9 +20,8 @@ public class LwRuleBookItemTransformer extends AbstractBookItemTransformer<LwIte
 
     @Override
     protected void finishItemCreation(final LwItem item, final Node node) {
-        final String placement = extractAttribute(node, "placement");
-        item.setPlacement(Placement.valueOf(placement));
-
+        item.setPlacement(Placement.valueOf(extractAttribute(node, "placement")));
+        item.setWeaponType(extractAttribute(node, "weaponType"));
         item.setCombatSkill(extractIntegerAttribute(node, "combatSkill", 0));
         final Integer endurance = extractIntegerAttribute(node, "endurance", 0);
         item.setEndurance(endurance);

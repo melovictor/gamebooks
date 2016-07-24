@@ -67,7 +67,7 @@ public class RandomCommandTest {
         Assert.assertEquals(returned.getViewName(), "rawRandom");
         final Map<String, Object> model = returned.getModel();
         Assert.assertEquals(model.get("random"), underTest);
-        Assert.assertEquals(model.get("ffChoiceHidden"), true);
+        Assert.assertEquals(model.get("choiceHidden"), true);
     }
 
     public void testGetCommandViewWhenResultIsAvailableShouldNotHideChoices() {
@@ -80,7 +80,7 @@ public class RandomCommandTest {
         Assert.assertEquals(returned.getViewName(), "rawRandom");
         final Map<String, Object> model = returned.getModel();
         Assert.assertEquals(model.get("random"), underTest);
-        Assert.assertEquals(model.get("ffChoiceHidden"), null);
+        Assert.assertEquals(model.get("choiceHidden"), null);
     }
 
     public void testCloneWhenAllFieldsAreSetShouldCloneMembers() throws CloneNotSupportedException {

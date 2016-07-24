@@ -4,7 +4,7 @@ package hu.zagor.gamebooks.ff.mvc.book.section.controller.domain;
  * Bean for storing incoming data for a fight.
  * @author Tamas_Szekeres
  */
-public class FightCommandForm {
+public class FfFightCommandForm {
     private String id;
     private Boolean hit;
     private Boolean def;

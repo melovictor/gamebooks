@@ -28,6 +28,9 @@ var inventory = (function() {
 	
 	function changeEquip($event) {
 		var $item = $($event.currentTarget);
+		if ($event.data) {
+			$item = $event.data($item);
+		}
 		var itemId = $item.data("item-id");
 		var currentState = $item.data("item-equipped");
 		$.ajax({
@@ -228,9 +231,13 @@ var inventory = (function() {
 		droppingInTotal = itemsToDrop;
 		$("#gamebookCharacterPageWrapper").addClass("dropping");
 	}
-	function dropItem() {
+	function dropItem($event) {
 		droppingInTotal--;
-		var itemId = $(this).data("itemId");
+		var $elem = $(this);
+		if ($event.data) {
+			$elem = $event.data($elem);
+		}
+		var itemId = $elem.data("itemId");
 		$.ajax({
 			url : "drop/" + itemId,
 			type : "post",

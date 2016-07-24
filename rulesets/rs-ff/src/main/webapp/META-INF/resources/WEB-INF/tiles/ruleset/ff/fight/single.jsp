@@ -11,12 +11,11 @@
 			<span data-enemy-id="0">${ally.name}</span>
 			<span data-enemy-skill>${ally.skill}</span>
 			<c:if test="${showAllyStamina || fightCommand.allyStaminaVisible}">
-			   <span data-enemy-stamina>${ally.stamina}</span>
+				<span data-enemy-stamina>${ally.stamina}</span>
 			</c:if>
 			<span data-enemy-stamina>&nbsp;</span>
 		</div>
 	</c:forEach>
-
 </div>
 <div id="ffEnemyList">
 	<c:set var="forcedOrder" value="${fightCommand.forceOrder}" />

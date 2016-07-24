@@ -67,8 +67,8 @@ public class UserInputCommandTest {
         Assert.assertEquals(model.size(), 2);
         Assert.assertTrue(model.containsKey("command"));
         Assert.assertEquals(model.get("command"), underTest);
-        Assert.assertTrue(model.containsKey("ffChoiceHidden"));
-        Assert.assertEquals(model.get("ffChoiceHidden"), true);
+        Assert.assertTrue(model.containsKey("choiceHidden"));
+        Assert.assertEquals(model.get("choiceHidden"), true);
         Assert.assertEquals(underTest.getType(), "number");
     }
 

@@ -21,7 +21,7 @@ import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.domain.ResourceInformation;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
-import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.FightCommandForm;
+import hu.zagor.gamebooks.ff.mvc.book.section.controller.domain.FfFightCommandForm;
 import hu.zagor.gamebooks.ff.section.FfRuleBookParagraphResolver;
 import hu.zagor.gamebooks.mvc.book.controller.domain.StaticResourceDescriptor;
 import hu.zagor.gamebooks.mvc.book.section.service.CustomPrePostSectionHandler;
@@ -83,7 +83,7 @@ public class FfBookSectionControllerTest {
     @Mock private Set<String> resourceSet;
     @Instance private ResourceInformation resources;
     @Instance(inject = true) private Map<String, CustomPrePostSectionHandler> prePostHandlers;
-    @Instance private FightCommandForm form;
+    @Instance private FfFightCommandForm form;
     @Mock private ContinuationData continueData;
 
     @BeforeClass

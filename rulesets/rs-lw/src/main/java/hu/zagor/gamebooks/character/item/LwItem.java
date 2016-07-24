@@ -9,6 +9,7 @@ public class LwItem extends Item {
     private int initialEndurance;
     private int combatSkill;
     private Placement placement;
+    private String weaponType;
 
     /**
      * Default constructor for the serializer.
@@ -58,6 +59,14 @@ public class LwItem extends Item {
 
     public void setPlacement(final Placement placement) {
         this.placement = placement;
+    }
+
+    public String getWeaponType() {
+        return weaponType;
+    }
+
+    public void setWeaponType(final String weaponType) {
+        this.weaponType = weaponType;
     }
 
 }

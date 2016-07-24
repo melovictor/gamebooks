@@ -112,7 +112,7 @@ public class MarketCommandTest extends AbstractCommandTest {
         Assert.assertEquals(returned.getViewName(), "ffMarket");
         final Map<String, Object> model = returned.getModel();
         Assert.assertSame(model.get("marketCommand"), underTest);
-        Assert.assertEquals(model.get("ffChoiceHidden"), true);
+        Assert.assertEquals(model.get("choiceHidden"), true);
     }
 
     public void testCloneShouldReturnClonedElements() throws CloneNotSupportedException {

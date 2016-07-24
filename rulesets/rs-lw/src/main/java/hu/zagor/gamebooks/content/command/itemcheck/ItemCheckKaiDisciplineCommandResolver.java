@@ -29,7 +29,7 @@ public class ItemCheckKaiDisciplineCommandResolver implements ItemCheckStubComma
                 data = parent.getDontHave();
             }
         } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-            throw new IllegalStateException("Failed to fetch " + checkType + " discipline " + discipline + " state.", e);
+            throw new IllegalArgumentException("Failed to fetch " + checkType + " discipline " + discipline + " state because it doesn't exists.", e);
         }
         return data;
     }

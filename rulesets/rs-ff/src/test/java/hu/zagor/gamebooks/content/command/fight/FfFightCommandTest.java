@@ -120,7 +120,7 @@ public class FfFightCommandTest extends AbstractCommandTest {
         final Map<String, Object> model = returned.getModel();
         Assert.assertEquals(returned.getViewName(), "ffFightSingle");
         Assert.assertSame(model.get("fightCommand"), underTest);
-        Assert.assertEquals(model.get("ffChoiceHidden"), true);
+        Assert.assertEquals(model.get("choiceHidden"), true);
     }
 
     public void testGetCommandViewWhenBattleIsFinishedShouldReturnViewWithoutTheChoicesHidden() {
@@ -134,7 +134,7 @@ public class FfFightCommandTest extends AbstractCommandTest {
         final Map<String, Object> model = returned.getModel();
         Assert.assertEquals(returned.getViewName(), "ffFightSingle");
         Assert.assertSame(model.get("fightCommand"), underTest);
-        Assert.assertFalse(model.containsKey("ffChoiceHidden"));
+        Assert.assertFalse(model.containsKey("choiceHidden"));
     }
 
     public void testCloneWhenAllComplexFieldsAreSetShouldReturnClone() throws CloneNotSupportedException {

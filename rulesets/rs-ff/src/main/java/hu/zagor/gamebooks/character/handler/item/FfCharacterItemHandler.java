@@ -126,15 +126,10 @@ public class FfCharacterItemHandler extends DefaultCharacterItemHandler {
      * @param itemId the id of the item
      * @param toEquip the new equip state; true if it has to be equipped, false if it has to be removed
      */
+    @Override
     public void setItemEquipState(final Character character, final String itemId, final boolean toEquip) {
-        for (final Item item : character.getEquipment()) {
-            final EquipInfo equipInfo = item.getEquipInfo();
-            if (itemId.equals(item.getId()) && equipInfo.isEquipped() != toEquip && (equipInfo.isRemovable() || toEquip)) {
-                equipInfo.setEquipped(toEquip);
-                doEquipSanityCheck(character.getEquipment(), item);
-                break;
-            }
-        }
+        super.setItemEquipState(character, itemId, toEquip);
+        doEquipSanityCheck(character.getEquipment(), getItem(character, itemId));
         getEquippedWeapon((FfCharacter) character);
     }
 

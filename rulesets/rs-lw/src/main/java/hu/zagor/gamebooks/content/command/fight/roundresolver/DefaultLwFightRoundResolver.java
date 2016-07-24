@@ -5,16 +5,23 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.LwEnemy;
 import hu.zagor.gamebooks.character.handler.LwCharacterHandler;
 import hu.zagor.gamebooks.character.handler.attribute.LwAttributeHandler;
+import hu.zagor.gamebooks.character.item.LwItem;
 import hu.zagor.gamebooks.content.command.fight.LwFightCommand;
 import hu.zagor.gamebooks.content.command.fight.domain.FightCommandMessageList;
 import hu.zagor.gamebooks.content.command.fight.domain.FightFleeData;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttributeType;
+import hu.zagor.gamebooks.lw.character.KaiDisciplines;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
+import hu.zagor.gamebooks.lw.character.Weaponskill;
+import hu.zagor.gamebooks.renderer.DiceResultRenderer;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ReflectionUtils;
+import org.springframework.util.StringUtils;
 
 /**
  * Default fight handler for the Lone Wolf ruleset.
@@ -22,40 +29,102 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class DefaultLwFightRoundResolver implements LwFightRoundResolver {
+    @Autowired private DiceResultRenderer renderer;
     @Autowired @Qualifier("d10") private RandomNumberGenerator generator;
     @Autowired private LwDamageResultProvider damageResultProvider;
 
     @Override
     public void resolveRound(final LwFightCommand command, final ResolvationData resolvationData) {
-        final List<LwEnemy> enemies = command.getResolvedEnemies();
+        resolveRound(command, resolvationData, false);
+    }
+
+    private void resolveRound(final LwFightCommand command, final ResolvationData resolvationData, final boolean fleeing) {
         final FightCommandMessageList messages = command.getMessages();
+        final LwCharacterHandler characterHandler = (LwCharacterHandler) resolvationData.getCharacterHandler();
+        final LwCharacter character = (LwCharacter) resolvationData.getCharacter();
+
+        final List<LwEnemy> enemies = command.getResolvedEnemies();
+        final LwEnemy enemy = enemies.get(0);
+
+        final int commandRatio = calculateCommandRatio(character, characterHandler, enemy);
+        final int[] randomNumber = generator.getRandomNumber(new DiceConfiguration(1, 0, 9));
+
+        messages.addKey("page.lw.label.fight.single.combatRatio", commandRatio, renderer.render(generator.getDefaultDiceSide(), randomNumber));
+
+        final LwDamageResult lwDamageResult = damageResultProvider.getLwDamageResult(commandRatio, randomNumber[0]);
+        if (lwDamageResult.isEnemyKilled()) {
+            instantVictory(command, fleeing);
+        } else if (lwDamageResult.isLwKilled()) {
+            instantDeath(command, fleeing, resolvationData);
+        } else {
+            normalDamage(command, fleeing, resolvationData, lwDamageResult);
+        }
+    }
+
+    private void normalDamage(final LwFightCommand command, final boolean fleeing, final ResolvationData resolvationData, final LwDamageResult lwDamageResult) {
+
         final LwCharacterHandler characterHandler = (LwCharacterHandler) resolvationData.getCharacterHandler();
         final LwCharacter character = (LwCharacter) resolvationData.getCharacter();
         final LwAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
 
+        final List<LwEnemy> enemies = command.getResolvedEnemies();
         final LwEnemy enemy = enemies.get(0);
 
-        final int commandRatio = calculateCommandRatio(character, attributeHandler, enemy);
-        final int[] randomNumber = generator.getRandomNumber(new DiceConfiguration(1, 0, 9));
+        final FightCommandMessageList messages = command.getMessages();
 
-        final LwDamageResult lwDamageResult = damageResultProvider.getLwDamageResult(commandRatio, randomNumber[0]);
-        if (lwDamageResult.isEnemyKilled()) {
-            enemy.setEndurance(0);
-            messages.add("Enemy killed instantly.");
-            command.setOngoing(false);
-        } else if (lwDamageResult.isLwKilled()) {
-            attributeHandler.handleModification(character, "endurance", 0, ModifyAttributeType.set);
-            messages.add("LW killed instantly.");
-            command.setOngoing(false);
-        } else {
-            attributeHandler.handleModification(character, "endurance", -lwDamageResult.getLwSuffers());
+        final boolean lwZero = lwDamageResult.getLwSuffers() == 0;
+        final boolean enZero = lwDamageResult.getEnemySuffers() == 0;
+
+        String key = "page.lw.label.fight.single.nonLethal";
+        if (lwZero) {
+            key += ".lw0";
+        } else if (enZero) {
+            key += ".en0";
+        }
+        if (fleeing) {
+            key += ".fleeing";
+        }
+
+        messages.addKey(key, lwDamageResult.getLwSuffers(), lwDamageResult.getEnemySuffers(), enemy.getName());
+
+        attributeHandler.handleModification(character, "endurance", -lwDamageResult.getLwSuffers());
+        if (!fleeing) {
             enemy.setEndurance(enemy.getEndurance() - lwDamageResult.getEnemySuffers());
-            messages.add("LW hit enemy, enemy hit LW.");
-            if (!attributeHandler.isAlive(character)) {
-                command.setOngoing(false);
-            } else if (enemiesDead(command.getResolvedEnemies())) {
-                command.setOngoing(false);
-            }
+        }
+        if (!attributeHandler.isAlive(character)) {
+            command.setOngoing(false);
+        } else if (enemiesDead(command.getResolvedEnemies())) {
+            command.setOngoing(false);
+        }
+    }
+
+    private void instantDeath(final LwFightCommand command, final boolean fleeing, final ResolvationData resolvationData) {
+        final LwCharacterHandler characterHandler = (LwCharacterHandler) resolvationData.getCharacterHandler();
+        final LwCharacter character = (LwCharacter) resolvationData.getCharacter();
+        final LwAttributeHandler attributeHandler = characterHandler.getAttributeHandler();
+
+        final List<LwEnemy> enemies = command.getResolvedEnemies();
+        final LwEnemy enemy = enemies.get(0);
+        final FightCommandMessageList messages = command.getMessages();
+        attributeHandler.handleModification(character, "endurance", 0, ModifyAttributeType.set);
+        command.setOngoing(false);
+        if (fleeing) {
+            messages.addKey("page.lw.label.fight.single.killedDuringFleeing", enemy.getName());
+        } else {
+            messages.addKey("page.lw.label.fight.single.lwKilled", enemy.getName());
+        }
+    }
+
+    private void instantVictory(final LwFightCommand command, final boolean fleeing) {
+        final List<LwEnemy> enemies = command.getResolvedEnemies();
+        final LwEnemy enemy = enemies.get(0);
+        final FightCommandMessageList messages = command.getMessages();
+        if (fleeing) {
+            messages.addKey("page.lw.label.fight.single.fledUnharmed", enemy.getName());
+        } else {
+            enemy.setEndurance(0);
+            command.setOngoing(false);
+            messages.addKey("page.lw.label.fight.single.enemyKilled", enemy.getName());
         }
     }
 
@@ -63,10 +132,28 @@ public class DefaultLwFightRoundResolver implements LwFightRoundResolver {
         return resolvedEnemies.size() == 1 && resolvedEnemies.get(0).getEndurance() <= 0;
     }
 
-    private int calculateCommandRatio(final LwCharacter character, final LwAttributeHandler attributeHandler, final LwEnemy enemy) {
-        final int commandRatio = attributeHandler.resolveValue(character, "commandSkill") - enemy.getCombatSkill();
-        // add kai discipline stuff as well...
+    private int calculateCommandRatio(final LwCharacter character, final LwCharacterHandler characterHandler, final LwEnemy enemy) {
+        int commandRatio = characterHandler.getAttributeHandler().resolveValue(character, "combatSkill") - enemy.getCombatSkill();
+        final LwItem selectedWeapon = characterHandler.getItemHandler().getEquippedWeapon(character);
+        final KaiDisciplines kaiDisciplines = character.getKaiDisciplines();
+        if (hasWeaponSkillFor(kaiDisciplines.getWeaponskill(), selectedWeapon.getWeaponType())) {
+            commandRatio += 2;
+        }
+        if (kaiDisciplines.isMindblast() && !enemy.isMindshield()) {
+            commandRatio += 2;
+        }
+
         return commandRatio;
+    }
+
+    private boolean hasWeaponSkillFor(final Weaponskill weaponskill, final String weaponType) {
+        boolean hasSkill = false;
+        try {
+            hasSkill = (boolean) ReflectionUtils.findMethod(weaponskill.getClass(), "is" + StringUtils.capitalize(weaponType)).invoke(weaponskill);
+        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+            throw new IllegalArgumentException("A weapon is querying about weapon type '" + weaponType + "', which doesn't exists.");
+        }
+        return hasSkill;
     }
 
     @Override
@@ -76,17 +163,17 @@ public class DefaultLwFightRoundResolver implements LwFightRoundResolver {
         final FightFleeData fleeData = command.getFleeData();
         getFleeTextResourceList(messages, fleeData);
         if (fleeData.isSufferDamage()) {
-            fleeFromEnemy((LwCharacter) resolvationData.getCharacter(), enemy, messages);
+            resolveRound(command, resolvationData, true);
+            fleeFromEnemy(enemy, messages);
         }
     }
 
-    private void fleeFromEnemy(final LwCharacter character, final LwEnemy enemy, final FightCommandMessageList messages) {
+    private void fleeFromEnemy(final LwEnemy enemy, final FightCommandMessageList messages) {
         messages.addKey("page.ff.label.fight.single.flee", new Object[]{enemy.getName()});
-        doLoseFightRound(character, messages, enemy);
+        doLoseFightRound(messages, enemy);
     }
 
-    private void doLoseFightRound(final LwCharacter character, final FightCommandMessageList messages, final LwEnemy enemy) {
-        // TODO: damage self
+    private void doLoseFightRound(final FightCommandMessageList messages, final LwEnemy enemy) {
         resolveDefeatMessage(messages, enemy);
     }
 

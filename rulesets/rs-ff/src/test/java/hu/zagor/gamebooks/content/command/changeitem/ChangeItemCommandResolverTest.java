@@ -24,14 +24,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- * Unit test for class {@link ChangeItemCommandResolver}.
+ * Unit test for class {@link FfChangeItemCommandResolver}.
  * @author Tamas_Szekeres
  */
 @Test
 public class ChangeItemCommandResolverTest {
 
     private static final String ITEM_ID = "1005";
-    @UnderTest private ChangeItemCommandResolver underTest;
+    @UnderTest private FfChangeItemCommandResolver underTest;
     @MockControl private IMocksControl mockControl;
     @Instance private ChangeItemCommand command;
     @Instance private ResolvationData resolvationData;
