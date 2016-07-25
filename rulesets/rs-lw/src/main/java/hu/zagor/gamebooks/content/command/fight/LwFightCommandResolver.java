@@ -94,7 +94,6 @@ public class LwFightCommandResolver extends TypeAwareCommandResolver<LwFightComm
     private void handleAttacking(final LwFightCommand command, final ResolvationData resolvationData, final List<ParagraphData> resolveList) {
         command.increaseBattleRound();
         command.getMessages().setRoundMessage(command.getRoundNumber());
-        command.getMessages().switchToPreRoundMessages();
         command.getMessages().switchToRoundMessages();
 
         executeBattle(command, resolvationData);
@@ -187,7 +186,9 @@ public class LwFightCommandResolver extends TypeAwareCommandResolver<LwFightComm
         final List<LwEnemy> enemies = new ArrayList<>();
         for (final String enemyId : enemyIds) {
             final LwEnemy enemy = (LwEnemy) enemyStore.get(enemyId);
-            enemies.add(enemy);
+            if (enemy.getEndurance() > 0) {
+                enemies.add(enemy);
+            }
         }
         return enemies;
     }

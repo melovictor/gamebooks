@@ -134,8 +134,8 @@ public class DefaultLwFightRoundResolver implements LwFightRoundResolver {
     }
 
     private int calculateCommandRatio(final LwCharacter character, final LwCharacterHandler characterHandler, final LwEnemy enemy) {
-        int commandRatio = characterHandler.getAttributeHandler().resolveValue(character, "combatSkill") - enemy.getCombatSkill();
         final LwItem selectedWeapon = characterHandler.getItemHandler().getEquippedWeapon(character);
+        int commandRatio = characterHandler.getAttributeHandler().resolveValue(character, "combatSkill") - enemy.getCombatSkill();
         final KaiDisciplines kaiDisciplines = character.getKaiDisciplines();
         if (hasWeaponSkillFor(kaiDisciplines.getWeaponskill(), selectedWeapon.getWeaponType())) {
             commandRatio += 2;
@@ -159,27 +159,12 @@ public class DefaultLwFightRoundResolver implements LwFightRoundResolver {
 
     @Override
     public void resolveFlee(final LwFightCommand command, final ResolvationData resolvationData) {
-        final LwEnemy enemy = command.getResolvedEnemies().get(0);
         final FightCommandMessageList messages = command.getMessages();
         final FightFleeData fleeData = command.getFleeData();
         getFleeTextResourceList(messages, fleeData);
         if (fleeData.isSufferDamage()) {
             resolveRound(command, resolvationData, true);
-            fleeFromEnemy(enemy, messages);
         }
-    }
-
-    private void fleeFromEnemy(final LwEnemy enemy, final FightCommandMessageList messages) {
-        messages.addKey("page.ff.label.fight.single.flee", new Object[]{enemy.getName()});
-        doLoseFightRound(messages, enemy);
-    }
-
-    private void doLoseFightRound(final FightCommandMessageList messages, final LwEnemy enemy) {
-        resolveDefeatMessage(messages, enemy);
-    }
-
-    private void resolveDefeatMessage(final FightCommandMessageList messages, final LwEnemy enemy) {
-        messages.addKey("page.lw.label.fight.failedDefense", enemy.getName());
     }
 
     private void getFleeTextResourceList(final FightCommandMessageList messages, final FightFleeData fightFleeData) {

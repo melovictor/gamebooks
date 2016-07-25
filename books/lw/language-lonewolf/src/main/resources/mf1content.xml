@@ -17,7 +17,6 @@
         [p][span class="lwAttribute"]Harci Ügyesség[/span]: [span id="lwCombatSkill"]dobj egy kockával és adj 10-et a dobott számhoz[img src="resources/lw/dice10.gif" class="lwDice" /].[/span][/p]
         [p][span class="lwAttribute"]Szívósság[/span]: [span id="lwEndurance"]dobj egy kockával és adj 20-at a dobott számhoz[img src="resources/lw/dice10.gif" class="lwDice" /].[/span][/p]
         [p][span class="lwAttribute"]Aranykoronák[/span]: [span id="lwGoldCrowns"]dobj egy kockával[img src="resources/lw/dice10.gif" class="lwDice" /].[/span][/p]
-
         [h2]Kai Tanok[/h2]
         [p class="lwKaiDisciplines" data-total="5"]
             [input type="checkbox" id="camouflage" /][label for="camouflage"]Álcázás[/label]
@@ -72,15 +71,32 @@
   <!-- 3 -->
   <!-- 4 -->
   <!-- 5 -->
-  <!-- 6 -->
+  <p id="6">
+    <text>
+        [p]A távolból egyre közeledő lódobogást hallasz. Egy fa mögé kuporodsz, és várod, hogy a lovasok közelebb érjenek. A királyi testőrség lovasai azok, őfelsége seregének fehér egyenruhájában.[/p]
+    </text>
+    <next id="183">Ha kiáltani akarsz nekik</next>
+    <next id="200">Ha úgy döntesz, hogy elengeded őket, és folytatod az utadat az erdőn át</next>
+  </p>
   <!-- 7 -->
-  <!-- 8 -->
+  <p id="8">
+    <text>
+        [p]Kai Hatodik érzéked azt súgja, hogy délen vad csata dúl. A józan eszed viszont azt mondja, dél felé a legrövidebb a fővárosba vezető út.[/p]
+    </text>
+    <next id="70"></next>
+  </p>
   <!-- 9 -->
   <!-- 10 -->
   <!-- 11 -->
   <!-- 12 -->
   <!-- 13 -->
-  <!-- 14 -->
+  <p id="14">
+    <text>
+        [p]Egy kis fás domb tetejére érsz, ahol nagy kövekből rakott kört látsz. Hirtelen hangos morgás hangzik föl a bal oldaladon lévő kő mögül.[/p]
+    </text>
+    <next id="43">Ha fegyvert akarsz rántani, és harcra készülsz</next>
+    <next id="106">Ha inkább elkerülöd a bajt, és hanyatt-homlok elfutsz a hegyről</next>
+  </p>
   <!-- 15 -->
   <!-- 16 -->
   <!-- 17 -->
@@ -106,8 +122,20 @@
   <!-- 24 -->
   <!-- 25 -->
   <!-- 26 -->
-  <!-- 27 -->
-  <!-- 28 -->
+  <p id="27">
+    <text>
+        [p]Vagy félórát haladsz az ösvényen, óvatosan föl-föllesve az égre, nehogy ismét támadjon a kraan. Előtted kidőlt, jókora fa zárja el az utat. Amint közelebb érsz, a fatörzs túloldaláról hangokat hallasz.[/p]
+    </text>
+    <next id="250">Ha támadni akarsz</next>
+    <next id="52">Ha inkább meghallgatod, mit mondanak a hangok</next>
+  </p>
+  <p id="28">
+    <text>
+        [p]Néhány száz méter után az ösvény egy másik, észak-déli irányban futó úttal találkozik.[/p]
+    </text>
+    <next id="130">Ha északnak indulnál</next>
+    <next id="147">Ha délnek fordulsz</next>
+  </p>
   <!-- 29 -->
   <!-- 30 -->
   <!-- 31 -->
@@ -115,10 +143,42 @@
   <!-- 33 -->
   <!-- 34 -->
   <!-- 35 -->
-  <!-- 36 -->
+  <p id="36">
+    <text>
+        [p]A vén őrtoronyhoz vezető lajtorja elkorhadt, s amint mászol fölfelé, több foka eltörik.[/p]
+    </text>
+    <random>
+      <result max="4" min="0">
+        <text>
+            [p]Leestél, veszítesz 2 szívóssági pontot.[/p]
+        </text>
+        <add amount="-2" to="endurance" />
+        <next id="140"></next>
+      </result>
+      <result max="9" min="5">
+        <text>
+            [p]Nem esel le.[/p]
+        </text>
+        <next id="323"></next>
+      </result>
+    </random>
+  </p>
   <!-- 37 -->
-  <!-- 38 -->
-  <!-- 39 -->
+  <p id="38">
+    <text>
+        [p]Több mint fél órán át törtetsz előre az erdő sűrű bozótjában. Kis, tiszta patakra bukkansz, ahol megállsz néhány percre, hogy megmosd az arcod, és igyál a friss vízből.[/p]
+        [p]Fölfrissülsz, átkelsz a patakon, és mégy tovább. Rövidesen kis tüzet veszel észre a távolban, amelynek füstje észak felől húzódik feléd.[/p]
+    </text>
+    <next id="128">Ha közelebbről meg akarod nézni a tüzet</next>
+    <next id="347">Ha inkább elkerülöd a füst forrását</next>
+  </p>
+  <p id="39">
+    <text>
+        [p]Néhány másodperc múlva az apró, szőrös pofácskák aggodalmas képpel jelennek meg a fatörzs tetején. Elmondják, hogy ők a kakar-mik, és hogy kraanok vannak mindenütt. Nyugatra fekszik a falujuk maradványa, de nem sok maradt meg belőle. A törzsük többi tagját szeretnék megtalálni, akik az erdőbe menekültek, amikor a „fekete-szárnyak” rájuk támadtak. A hátuk mögé mutatnak az úton, és elbeszélik, hogy az útnak ott vége szakad, de ha folytatod az utad a bozótban előre, egy őrtoronyhoz fogsz érni, ahol az út háromfelé ágazik. Válaszd a keleti ösvényt. Ez vezet a király országútjához, amely a fővárost, Holmgardot köti össze Toran északi kikötőjével.[/p]
+        [p]Köszönetet mondasz a kakarmi törzsnek, és búcsút veszel tőlük.[/p]
+    </text>
+    <next id="228"></next>
+  </p>
   <p id="40">
     <text>
         [p]Szakadatlanul figyeled a kunyhókat, nem látod-e az ellenségjelét, és a fák meg a bokrok rejtekében átvágsz a tisztáson. A túloldalon megtalálod az ösvény folytatását, és minél előbb igyekszel eltávolodni Köderdőtől.[/p]
@@ -127,23 +187,92 @@
   </p>
   <!-- 41 -->
   <!-- 42 -->
-  <!-- 43 -->
+  <p id="43">
+    <text>
+        [p]A szikla mögül nagy, fekete medve jön elő. Lassan feléd indul, a pofája nyitva, a képén düh és fájdalom.[/p]
+        [p]Észreveszed, hogy a medve sülyosan megsebesült a nyakán és a hátán. Meg kell küzdened vele.[/p]
+        [p]Három harci forduló után úgy helyezkedsz, hogy le tudj futni a dombról.[/p]
+    </text>
+    <fight>
+      <enemy id="5" />
+      <fleeing after="3" />
+      <flee>
+        <next id="106"></next>
+      </flee>
+      <win>
+        <next id="195"></next>
+      </win>
+    </fight>
+  </p>
   <!-- 44 -->
   <!-- 45 -->
   <!-- 46 -->
   <!-- 47 -->
-  <!-- 48 -->
+  <p id="48">
+    <text>
+        [p]A Hatodik érzéked azt súgja, hogy ezek a harcosok nem azok, aminek látszanak. Rossz, gonosz aurát érzel körülöttük. Bizonyára a sötét urak szolgálatában állnak.[/p]
+        [p]Gyorsan el kell tűnnöd innen, mielőtt meglátnának.[/p]
+    </text>
+    <next id="243"></next>
+  </p>
   <!-- 49 -->
-  <!-- 50 -->
+  <p id="50">
+    <text>
+        [p]A távolból csatazajt hallasz.[/p]
+    </text>
+    <next id="97">Ha tovább akarsz menni a zaj forrása felé</next>
+    <next id="243">Ha el akarod kerülni a csatát, változtass irányt</next>
+  </p>
   <!-- 51 -->
-  <!-- 52 -->
+  <p id="52">
+    <text>
+        [p]Közelebb érve rájössz, hogy a hangok nem emberi hangok. Inkább röfögésre és vinnyogásra emlékeztetnek.[/p]
+    </text>
+    <itemCheck type="kai" id="animalKinship">
+      <have>
+        <next id="225"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Át kell másznod a fán, és szembe kell nézned azzal, ami a túloldalán lapul, bármi legyen is az.[/p]
+        </text>
+        <next id="250"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 53 -->
   <!-- 54 -->
-  <!-- 55 -->
-  <!-- 56 -->
+  <p id="55">
+    <text>
+        [p]Amint a giak fölugrik éppen, előrerontasz, lecsapsz a fegyvereddel - és sikerül eltaszítanod a szörnyet az ifjú varázsló hátától.[/p]
+        [p]Ráveted magad a.küzdő giakra, és ismételten lesújtasz. Mivel a támadásod ennyire váratlan, a harc időtartamára adj hozzá harci ügyesség pontjaidhoz 4-et, de ne felejtsd el ezt a pontszámot levonni a küzdelem végeztével.[/p]
+    </text>
+    <add amount="4" to="combatSkill" />
+    <fight>
+      <enemy id="2" />
+      <win>
+        <add amount="-4" to="combatSkill" />
+      </win>
+    </fight>
+    <next id="325"></next>
+  </p>
+  <p id="56">
+    <text>
+        [p]A fák fölül nagy, szárnyas lény rikoltását hallod. Egy kraan az, a sötét urak félelmetes szolgája. Gyorsan elrejtőzöl a sűrű aljnövényzetben, amíg a rikoltozás elhal.[/p]
+    </text>
+    <next id="222"></next>
+  </p>
   <!-- 57 -->
   <!-- 58 -->
-  <!-- 59 -->
+  <p id="59">
+    <text>
+        [p]A sötétbe meredve látod, hogy a földbe durva lépcsőiket vájtak, és a barlang szája valójában az alagút bejárata.[/p]
+        [p]Óvatosan lemégy a csúszós lépcsőn, és a lépcső alján egy polcon egy kis ezüstdobozt találsz.[/p]
+    </text>
+    <next id="124">Ha ki akarod nyitni az ezüstdobozt</next>
+    <next id="106">Ha inkább visszamégy a felszínre, és folytatod az utad</next>
+    <next id="211">Ha meg akarod vizsgálni az alagút további részét</next>
+  </p>
   <!-- 60 -->
   <!-- 61 -->
   <!-- 62 -->
@@ -160,14 +289,48 @@
   </p>
   <!-- 68 -->
   <!-- 69 -->
-  <!-- 70 -->
+  <p id="70">
+    <text>
+        [p]Egy kis hídhoz értél. Egy ösvény a patak folyását követi kelet felé. Egy sokkal keskenyebb ösvény viszont eltűnik a sűrű erdőben, dél felé.[/p]
+    </text>
+    <next id="28" pos="1">Ha keletre akarsz menni</next>
+    <next id="157" pos="2">Ha délnek akarsz indulni</next>
+    <itemCheck type="section" id="8">
+      <dontHave>
+        <itemCheck type="kai" id="sixthSense">
+          <have>
+            <next id="8" pos="3">Ha élni kívánsz a Hatodik érzék kai tanával</next>
+          </have>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 71 -->
   <!-- 72 -->
-  <!-- 73 -->
-  <!-- 74 -->
+  <p id="73">
+    <text>
+        [p]Magadra húzod zöld köpenyedet, és beleolvadsz a növényzetbe meg a sziklákba. Óvatosan kilesel az útra, és megdöbbenve látod, hogy egyáltalán nem a király emberei azok.[/p]
+        [p]Drakkarok, a sötét urak talán legkegyetlenebb szolgái. Nyilván a király katonáinak álcázták magukat, hogy ilyen messzire juthassanak az erdőben. Hálát adsz kai tudományodnak, amely megmentette az életedet, és észrevétlenül elosonsz, beljebb az erdőbe.[/p]
+    </text>
+    <next id="243"></next>
+  </p>
+  <p id="74">
+    <text>
+        [p]A kraan és lovasai leszállnak az útra, alig néhány méternyire a rejtekhelyedtől.[/p]
+        [p]A giakok lepattannak a pikkelyes hátról, és döfésre emelt lándzsával feléd indulnak. Észrevették.[/p]
+    </text>
+    <next id="138">Ha vállalod velük a harcot</next>
+    <next id="281">Ha késlekedés nélkül beljebb menekülsz az erdőbe</next>
+  </p>
   <!-- 75 -->
   <!-- 76 -->
-  <!-- 77 -->
+  <p id="77">
+    <text>
+        [p]A hegyi giakok nem szokták meg, hogy áldozatukat erdőn át kövessék, így hamarosan lehagyod őket, míg végül röfögésük és átkozódásuk teljesen elhal.[/p]
+        [p]Amikor megelégedetten megállapítod, hogy föladták az üldözést, megállsz néhány percre, hogy kifújd magad és ellenőrizd a felszerelésed. A lerombolt kolostor emléke még elevenen él benned. Összeszeded csekélyke holmidat, és indulsz tovább.[/p]
+    </text>
+    <next id="19"></next>
+  </p>
   <!-- 78 -->
   <!-- 79 -->
   <!-- 80 -->
@@ -189,11 +352,22 @@
   <!-- 90 -->
   <!-- 91 -->
   <!-- 92 -->
-  <!-- 93 -->
+  <p id="93">
+    <text>
+        [p]Megfordulsz, rohansz a lépcsőhöz, amikor egy hatalmas tömb lezuhan mögötted. A terem, amelyben az imént voltál, most már teljesen el van zárva. Amint kimenekülsz a napfényre, még hátrapillantasz, és egy vén druida torz alakját látod, amint fölemeli a botját. Egy pillanat múlva villámfény lobban a lábadnál. Meg sem állva rohansz lefelé a dombról. Szitkozódsz, de közben áldod a Hatodik érzéket.[/p]
+    </text>
+    <next id="106"></next>
+  </p>
   <!-- 94 -->
   <!-- 95 -->
   <!-- 96 -->
-  <!-- 97 -->
+  <p id="97">
+    <text>
+        [p]Előtted heves ütközet folyik egy kőhídon. Acél pengése, emberi és állati üvöltés visszhangzik az erdőn. A harcolók közepén ott látod Pelathar herceget, a király fiát. Éppen egy hatalmas, szürke Gurgazzal küzd, aki fekete csatabárdot emel pikkelyes feje fölé. Hirtelen a herceg sebesülten a földre rogy - egy fekete nyílvessző talált az oldalába.[/p]
+    </text>
+    <next id="255">Ha meg akarod védeni a sebesült herceget</next>
+    <next id="306">Ha az erdőbe akarsz menekülni</next>
+  </p>
   <!-- 98 -->
   <p id="99">
     <text>
@@ -202,30 +376,83 @@
     <next id="222"></next>
   </p>
   <!-- 100 -->
-  <!-- 101 -->
+  <p id="101">
+    <text>
+        [p]A csatazaj hamarosan elül mögötted, ám a beálló csöndet egy belső hang töri meg a fejedben, amely azzal vádol, hogy gyáva vagy, hogy cserben hagytál egy másik embert. Azzal próbálod megnyugtatni háborgó lelkiismeretedet, hogy a küldetésed sokkal fontosabb, és hogy nem csak az ifjú mágus élete van veszélyben, hanem az összes honfitársad élete függ attól, hogy te élve elérd a fővárost.[/p]
+        [p]Hirtelen giak fegyveresek bukkannak föl a távolban, és neked ismét el kell rejtőznöd. De már késő: észrevették, menekülnöd kell, amilyen gyorsan csak tudsz.[/p]
+    </text>
+    <next id="281"></next>
+  </p>
   <!-- 102 -->
   <!-- 103 -->
   <!-- 104 -->
-  <!-- 105 -->
-  <!-- 106 -->
+  <p id="105">
+    <text>
+        [p]A távolban, egy jókora tölgyfa ágán szénfekete holló ül.[/p]
+    </text>
+    <itemCheck type="kai" id="animalKinship">
+      <have>
+        <next id="298">Ha meg akarod szólítani a madarat</next>
+        <next id="335">Ha nem</next>
+      </have>
+      <dontHave>
+        <next id="335"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="106">
+    <text>
+        [p]Végül egy sebes folyású jéghideg patak partjára érsz. A fehér víz alábucskázik a mohos sziklákon, és eltűnik kelet felé.[/p]
+    </text>
+    <next id="263">Ha követni akarod a patak folyását kelet felé</next>
+    <next id="334">Ha inkább a patak felső folyását deríted föl</next>
+  </p>
   <!-- 107 -->
   <!-- 108 -->
   <!-- 109 -->
-  <!-- 110 -->
+  <p id="110">
+    <text>
+        [p]Gyorsan célzol, és a sziklát teljes erődből a giak fejéhez hajítod, ám legnagyobb rémületedre a szörny elugrik, és a kő ártalmatlanul pottyan a háta mögé. Azonnal kell cselekedned, hogy megmentsd a varázslót.[/p]
+    </text>
+    <next id="55"></next>
+  </p>
   <!-- 111 -->
   <!-- 112 -->
   <!-- 113 -->
   <!-- 114 -->
   <!-- 115 -->
   <!-- 116 -->
-  <!-- 117 -->
+  <p id="117">
+    <text>
+        [p]Az ember súlyosan megsebesült, halálán van.
+    </text>
+    <itemCheck type="kai" id="healing">
+      <have>
+        <text>
+            A Gyógyítás kai tudományát felhasználva enyhítheted a fájdalmait, ám az állapota annyira súlyos, hogy egymagad képtelen vagy meggyógyítani.
+        </text>
+      </have>
+      <after>
+        <text>
+            Hamarosan el is veszíti az eszméletét. Igyekszel minél kényelmesebben elhelyezni egy nagy erdei tölgy alatt, majd a sűrű erdőn át továbbindulsz északkelet felé.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="330"></next>
+  </p>
   <!-- 118 -->
   <!-- 119 -->
   <!-- 120 -->
   <!-- 121 -->
   <!-- 122 -->
   <!-- 123 -->
-  <!-- 124 -->
+  <p id="124">
+    <text>
+        [p]A dobozban [span class="takeItem" data-id="gold" data-amount="15"]15 Aranykoronát[/span] és egy [span class="takeItem" data-id="30003" data-amount="1"]Ezüstkulcsot[/span] találsz.[/p]
+    </text>
+    <next id="211">Alaposabban megvizsgálhatod az alagutat</next>
+    <next id="106">Vagy elhagyhatod a dombot</next>
+  </p>
   <p id="125">
     <text>
         [p]Az ösvény nagy tisztásba torkollik. Furcsa karomnyomokat látsz a földön. Itt egy kraan szállt le. A nyomok számából és a terület nagyságából arra következtetsz, hogy az utóbbi tizenkét órában legalább öt ilyen ocsmány lény szállt le itt.[/p]
@@ -235,11 +462,43 @@
     <next id="214">Ha nyugatra indulsz</next>
   </p>
   <!-- 126 -->
-  <!-- 127 -->
-  <!-- 128 -->
+  <p id="127">
+    <text>
+        [p]Egy órányi gyaloglás után a drakkarok megállnak, mert jókora, pikkelyes lény közeledik az úton. Amint közelebb ér, érzed nyirkos leheletét az arcodon. A szörny fölordít, és erős, úszóhártyás mancsával megragadja a fejedet. Az utolsó nesz, amit hallasz, eltörő csigolyád roppanása.[/p]
+        [p]A küldetésed véget ért.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="128">
+    <text>
+        [p]Óvatosan széthajtod a növényzetet, és megrémülsz az eléd táruló látványtól. A kis tisztáson három giak facölöphöz kötözött egy embert, és éppen meggyújtják a lába köré rakott hulladékfát. A ruhájáról fölismered, hogy a szerencsétlen határjáró kósza, egyike a király azon vitézeinek, akik a nyugati Durncrag hegység mentén őrzik a királyságot. A férfi össze van verve, alig van eszméleténél.[/p]
+    </text>
+    <itemCheck type="kai" id="hunting">
+      <have>
+        <next id="297"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Meg kell támadnod a giakokat, hogy megmentsd a kószát.[/p]
+        </text>
+        <next id="336"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 129 -->
   <!-- 130 -->
-  <!-- 131 -->
+  <p id="131">
+    <text>
+        [p]Vagy negyed mérföldet tettél meg, amikor kiáltozást és lármát hallasz. Közelebb lopakodsz, és megpillantasz egy tisztást, ahol egy ősi erdei templom, Raumas romjait fedezed föl.[/p]
+        [p]Vagy huszonöt-harminc giakból álló horda támadja a romokat minden oldalról. A ledőlt márványoszlopok között számos giak holttest hever, ám a többiek szünet nélkül ostromolják azt, aki a romok között búj ik meg. Hirtelen kék villám csap bele a giakok első sorába, és a páncélos gazfickók csak úgy hullanak szerteszét. Egy, a többieknél magasabb giak, tetőtől talpig fekete páncélban, szidja az embereit, és szöges korbáccsal ösztönzi őket újabb támadásra.[/p]
+        [p]Kivont fegyverrel a tisztás széléhez lopódzol, próbálod kideríteni a sűrű növényzetben megbújva, hogy vajon kik lehetnek a védők. Legnagyobb meglepetésedre azt látod, hogy a romot egyetlen, nálad nem is idősebb fiatalember védi. Fölismered csillagokkal hímzett, égszínkék köpenyét. A torani mágusok céhének ifjú szellemidézője a fiú, amolyan mágusinas.[/p]
+        [p]Öt giak támad lándzsával az ifjú mágusra, aki sietősen visszahúzódik a romok közé. Látod, hogy megfordul, fölemeli a bal kezét, és ujjai hegyéről kék villám csap a vicsorgó giak katonákra. Rejtekhelyedről látod, hogy egy giak megkerüli a templom egyik oszlopát. Hosszú, görbe tőrt tart a szájában, és éppen rá akarja vetni magát a lent álló ifjú varázslóra.[/p]
+    </text>
+    <next id="241">Ha oda akarsz kiáltani a mágusnak, hogy vigyázzon</next>
+    <next id="55">Ha inkább odarohansz, és megtámadod az ugrani készülő giakot</next>
+    <next id="302">Ha fölkapsz egy letört márványdarabot a romokból, és a giak fejéhez vágod</next>
+    <next id="101">Ha inkább megfordulsz, és sorsára hagyva a csatát visszamenekülsz az erdőbe</next>
+  </p>
   <!-- 132 -->
   <!-- 133 -->
   <p id="134">
@@ -252,18 +511,37 @@
   <!-- 135 -->
   <!-- 136 -->
   <!-- 137 -->
-  <!-- 138 -->
+  <p id="138">
+    <text>
+        [p]Előhúzod a fegyvered, és fölkészülsz a harc-ra. Egyenként kell megvívnod a két hegyi giakkal.[/p]
+    </text>
+    <fight>
+      <enemy id="3" />
+      <enemy id="4" />
+    </fight>
+    <next id="291"></next>
+  </p>
   <!-- 139 -->
   <p id="140">
     <text>
         [p]Egy tisztáson vagy, ahol több fát kivágtak, hogy ideiglenes őrtornyot építsenek belőlük. A torony alól három ösvény indul háromfelé.[/p]
     </text>
-    <next id="14">Ha a déli ösvényt választod</next>
-    <next id="252">Ha a keleti úton indulsz el</next>
-    <next id="215">Ha délnyugatnak mégy</next>
-    <next id="36">Ha inkább fölmászol a toronyba</next>
+    <next id="14" pos="1">Ha a déli ösvényt választod</next>
+    <next id="252" pos="2">Ha a keleti úton indulsz el</next>
+    <next id="215" pos="3">Ha délnyugatnak mégy</next>
+    <itemCheck type="section" id="36">
+      <dontHave>
+        <next id="36" pos="4">Ha inkább fölmászol a toronyba</next>
+      </dontHave>
+    </itemCheck>
   </p>
-  <!-- 141 -->
+  <p id="141">
+    <text>
+        [p]A Hatodik érzéked azt súgja, hogy a kolostor ostromlói közül néhányan éppen a két ösvényt kutatják át esetleges túlélők után, de te elkerülheted az ösvényeket, mert át tudsz vágni az erdő aljnövényzetén.[/p]
+    </text>
+    <next id="56">Ha délnek akarsz indulni</next>
+    <next id="333">Ha a sűrűbben benőtt utat választod, amely északkelet felé vezet</next>
+  </p>
   <!-- 142 -->
   <!-- 143 -->
   <!-- 144 -->
@@ -277,25 +555,92 @@
   <!-- 152 -->
   <!-- 153 -->
   <!-- 154 -->
-  <!-- 155 -->
+  <p id="155">
+    <text>
+        [p]Amint közelebb érsz, az emberek abbahagyják a beszélgetést. Látod az arcukról, hogy fölismerték zöld kai köpenyedet. Az egyik ember lassan kezet nyújt, a barátság jeléül.[/p]
+        [p]- Uram - mondja -, azt hallottuk, hogy a kai lovagokat elpusztították. Hála legyen az égnek, hogy nem így van. Már a legrosszabbtól féltünk.[/p]
+        [p]Nem mesélsz nekik a kolostor pusztulásáról, mert torani menekültek, és mindenüket elveszítették. Az immár egyetlen reménységük, hogy a kai urak majd győzelemre vezetik a sereget. Megtudod tőlük, hogy a kikötővárost a levegőből és a tengerről is megtámadták, és a sötét urak seregei hatalmas túlsúlyban voltak a király bátor katonáival szemben. Megnyugtatod őket, hogy Sommerlund nem fog elveszni, és sok szerencsét kívánsz a további útjukhoz.[/p]
+    </text>
+    <next id="70"></next>
+  </p>
   <!-- 156 -->
-  <!-- 157 -->
-  <!-- 158 -->
+  <p id="157">
+    <text>
+        [p]Az erdő ritkulni kezd, végül egy utat pillantasz meg a fákon túl. Az úton nyüzsögnek a délnek tartó emberek. Sokan kézikocsin húzzák maguk után a holmijukat.[/p]
+    </text>
+    <next id="30">Ha oda akarsz menni a menekültekhez, mert talán megtudhatod tőlük, hogy mi történt északon</next>
+    <next id="167">Ha inkább a fák fedezékében folytatod az utadat dél felé</next>
+  </p>
+  <p id="158">
+    <text>
+        [p]Az Ezüstkulcs beleillik a zárba, az ajtó kinyílik. Amint kinyitod, egy fura öregemberrel állsz szemközt. Hirtelen villám csap ki a botjából, egyenesen a melled közepébe. Hat szívóssági pontot veszítesz. Levegőért kapkodva félrelököd az öregembert, és a meredek lépcsőn rohansz ki, a napfényre. A lépcső felénél jársz, amikor újabb villámot lő rád.[/p]
+    </text>
+    <add amount="-6" to="endurance" />
+    <random>
+      <result max="5" min="0">
+        <text>
+            [p]A villám elsüvít melletted, és a fal egy darabját teszi tönkre.[/p]
+        </text>
+      </result>
+      <result max="9" min="6">
+        <text>
+            [p]A villám eltalálta a hátad, és további négy szívóssági pontot veszítesz.[/p]
+        </text>
+        <add amount="-4" to="endurance" />
+      </result>
+      <after>
+        <text>
+            [p]Átkozod a balszerencsédet, de kitámolyogsz a napvilágra. Valóban csak szerencsétlen véletlen volt, hogy fölfedezted a gonosz druidák szektájának titkos templomát. Gyorsan visszatérsz az ösvényre, amely a domb fölött a semmibe tűnik.[/p]
+        </text>
+      </after>
+    </random>
+    <next id="106"></next>
+  </p>
   <!-- 159 -->
   <!-- 160 -->
   <!-- 161 -->
-  <!-- 162 -->
+  <p id="162">
+    <text>
+        [p]Közelebb érsz az emberekhez, és odakiáltasz nekik. Amint szembe fordulnak veled, elhűl a véred, és hevesen verni kezd a szíved, mert álruhát viselő drakkarok azok. Egyszeribe rád rohannak. A földre tepernek, összekötöznek, és maguk után vonszolnak az ösvényen. Elveszik a Hátizsákod és a Fegyvereidet, de a köpenyedet nem kutatják át, és az Aranykoronáidat sem találják meg. Fenyegetően rikácsolnak, és hosszasan ecsetelik, milyen kínzások várnak rád a táborukban.[/p]
+    </text>
+    <itemCheck type="item" id="mindOverMatter">
+      <have>
+        <next id="258"></next>
+      </have>
+      <dontHave>
+        <next id="127"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 163 -->
   <!-- 164 -->
   <!-- 165 -->
   <!-- 166 -->
-  <!-- 167 -->
+  <p id="167">
+    <text>
+        [p]Vagy egy mérföldet tettél meg, amikor egy nagy kő mögül kilógva két lábat pillantasz meg.[/p]
+    </text>
+    <next id="88">Ha közelebbről meg akarod nézni</next>
+    <next id="264">Ha inkább kerülnéd a találkozást a láb tulajdonosával, és folytatnád az utad az erdőben</next>
+  </p>
   <!-- 168 -->
   <!-- 169 -->
   <!-- 170 -->
   <!-- 171 -->
   <!-- 172 -->
-  <!-- 173 -->
+  <p id="173">
+    <text>
+        [p]Amint az ajtóhoz érsz, hallod, hogy egy óriás kőlap alázuhan a mennyezetről. Megfordulsz, és látod, hogy a kijárat el van torlaszolva.[/p]
+    </text>
+    <itemCheck type="item" id="30003">
+      <have>
+        <next id="158"></next>
+      </have>
+      <dontHave>
+        <next id="259"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 174 -->
   <!-- 175 -->
   <!-- 176 -->
@@ -308,8 +653,19 @@
   <!-- 183 -->
   <!-- 184 -->
   <!-- 185 -->
-  <!-- 186 -->
-  <!-- 187 -->
+  <p id="186">
+    <text>
+        [p]A kakarmik eltűnnek a sűrű aljnövényzetben, te pedig hamarosan eltévedsz. Majdnem kétórai gyaloglás után folyóvíz hangját hallod. Elhatározod, hogy közelebbről is megnézed.[/p]
+    </text>
+    <next id="106"></next>
+  </p>
+  <p id="187">
+    <text>
+        [p]Két szőrös pofácska jelenik meg a fatörzs fölött. Mindkét szempár a fegyveredre mered, és a két lény rémülten fölsikolt. Elugranak a fatörzstől, és eltűnnek az erdőben.[/p]
+    </text>
+    <next id="186">Ha követni akarod őket</next>
+    <next id="228">Ha úgy gondolod, hadd fussanak, te mész tovább a magad útján</next>
+  </p>
   <!-- 188 -->
   <!-- 189 -->
   <!-- 190 -->
@@ -317,12 +673,28 @@
   <!-- 192 -->
   <!-- 193 -->
   <!-- 194 -->
-  <!-- 195 -->
+  <p id="195">
+    <text>
+        [p]Letörlöd fegyveredről a medve vérét, és a szikla mögött, ahonnan a medve támadt, egy barlang bejáratát pillantod meg.[/p]
+    </text>
+    <next id="59">Ha jobban meg akarod nézni a barlangot</next>
+    <next id="106">Ha inkább továbbmész</next>
+  </p>
   <!-- 196 -->
   <!-- 197 -->
   <!-- 198 -->
   <!-- 199 -->
-  <!-- 200 -->
+  <p id="200">
+    <text>
+        [p]Közeledik az éjszaka. Az erdő árnyai egyre hosszabbak és sötétebbek. Amint éppen meg akarsz állni pihenni, látod a fákon át, hogy a széles országúton emberek mozognak. A poros útelágazásnál nagy kereskedő-lakókocsit pillantasz meg. Hat jókora ló húzza, és jóval gyorsabban halad az összes többi járgánynál. Ezzel a kocsival érhetnéd el a fővárost a leggyorsabban.[alt /][/p]
+    </text>
+    <next id="78" pos="1" singleChoiceText=" Úgy döntesz, fölugrasz a kocsira.">Ha föl akarsz ugrani a kocsira</next>
+    <itemCheck type="kai" id="camouflage">
+      <have>
+        <next id="168" pos="2">Ha az Álcázás kai tudományával élve akarsz elrejtőzni a kocsi tetején lévő csomagok között</next>
+      </have>
+    </itemCheck>
+  </p>
   <!-- 201 -->
   <!-- 202 -->
   <!-- 203 -->
@@ -333,11 +705,40 @@
   <!-- 208 -->
   <!-- 209 -->
   <!-- 210 -->
-  <!-- 211 -->
+  <p id="211">
+    <text>
+        [p]A homályos folyosó nagy, négyszögletes terembe vezet, amelynek a tülsó felén tölgyfa ajtó van.[/p]
+    </text>
+    <itemCheck type="kai" id="sixthSense">
+      <have>
+        <next id="244"></next>
+      </have>
+      <dontHave>
+        <next id="173" pos="1">Ha oda akarsz menni az ajtóhoz</next>
+        <next id="106" pos="3">Ha inkább visszamégy a felszínre, és folytatod az utadat</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 212 -->
-  <!-- 213 -->
-  <!-- 214 -->
-  <!-- 215 -->
+  <p id="213">
+    <text>
+        [p]Kis híján két órája gázolsz az erdőn át. Egyre valóságosabbnak látszik a gyötrő aggodalom, hogy eltévedtél. A távoli kraan-rikoltásokon kívül semmi jele annak, hogy az erdőnek ebben a részében ellenség lenne. Amint leereszkedsz egy köves dombról, valami furcsát veszel észre az erdőben.[/p]
+    </text>
+    <next id="331"></next>
+  </p>
+  <p id="214">
+    <text>
+        [p]Az ösvény egyre keskenyedik, végül teljesen belevész a sűrű növényzetbe. Erre nem tudsz továbbmenni, ezért vissza kell térned a tisztásra, majd délnek továbbindulnod.[/p]
+    </text>
+    <next id="27"></next>
+  </p>
+  <p id="215">
+    <text>
+        [p]Kis tisztásra érsz. A tisztás közepén valami nagy állat csontvázát látod. Délre kis ösvény indul a messzeségbe.[/p]
+    </text>
+    <next id="346">Ha meg akarod vizsgálni a csontvázat</next>
+    <next id="14">Ha inkább sietsz tovább</next>
+  </p>
   <!-- 216 -->
   <!-- 217 -->
   <!-- 218 -->
@@ -358,10 +759,22 @@
   </p>
   <!-- 223 -->
   <!-- 224 -->
-  <!-- 225 -->
+  <p id="225">
+    <text>
+        [p]Fölismered, hogy ez a kakarmik nyelve. A kakarmik intelligens állatok, amelyek Sommerlund erdeiben élnek, és gondot is viselnek az erdőkre. Ezektől a lényektől nem kell tartanod, mivel igen félénkek és szelídek. Élve az Állat-testvériség tudományával, megszólítod őket különös nyelvükön.[/p]
+    </text>
+    <next id="187">Ha azt mondod: „Ne féljetek, barát vagyok”</next>
+    <next id="39">Ha azt mondod: „Kai úr vagyok, nem akarok ártani nektek. Beszélnem kell veletek”</next>
+  </p>
   <!-- 226 -->
   <!-- 227 -->
-  <!-- 228 -->
+  <p id="228">
+    <text>
+        [p]Az ösvény kelet felé fut tovább, de hamarosan belevész a sűrű aljnövényzetbe.[/p]
+    </text>
+    <next id="140">Ha fegyvereddel átvágva a vegetáción továbbmégy kelet felé</next>
+    <next id="215">Ha inkább dél felé indulsz, mert arra ritkább a növényzet, és aztán igyekszel át az erdőn</next>
+  </p>
   <p id="229">
     <text>
         [p]Egy kraan lebeg fölötted, nagy, fekete szárnya fölkavarja a port. A por a szemedbe meg a szádba kerül, köhögni kezdesz. És a szörny támad.[/p]
@@ -388,16 +801,40 @@
   <!-- 238 -->
   <!-- 239 -->
   <!-- 240 -->
-  <!-- 241 -->
+  <p id="241">
+    <text>
+        [p]A varázsló meghallja a kiáltásodat, és éppen idejében pördül meg, hogy egy villámmal lesújtson a giakra. A szörny fejét elemésztik a lángok, a teste az oszlop tövéhez zuhan. A giak tiszt észrevesz, és fölkiált:[/p]
+        [p]- Ogot... ogot![/p]
+        [p]Rémült emberei gyorsan berohannak a menedéket nyújtó erdőbe.[/p]
+        [p]Az ifjú varázsló megtörli a homlokát, és odalép hozzád. Hálával és barátsággal nyújt kezet.[/p]
+    </text>
+    <next id="349"></next>
+  </p>
   <!-- 242 -->
-  <!-- 243 -->
-  <!-- 244 -->
+  <p id="243">
+    <text>
+        [p]Sietsz az erdőn át, megbotlasz, legurulsz egy meredek lejtőn, és egy rejtett ösvényen kötsz ki odalenn. Az ösvényen egy holttest hever. Egy giak az, a sötét urak egyik undorító és rémületes szolgája. Sok évszázaddal ezelőtt a sötét urak az ő őseikkel építtették Helgedad pokoli városát, amely a Durncrag hegységen túli vulkanikus pusztaságban fekszik. A város építése hosszadalmas és gyötrelmes lidérces álom volt, és csupán a legerősebb giakok élték túl Helgedad hőségét és mérgezett levegőjét. Az előtted heverő lény ezeknek a giak rabszolgáknak a leszármazottja. A fejére mért kardcsapás ölte meg, ám mellette egy [span class="takeItem" data-id="10003" data-amount="1"]Buzogány[/span] hever. Ezt a Fegyvert elveheted, ha akarod. Folytasd az utadat a rejtett ösvényen.[/p]
+    </text>
+    <next id="97"></next>
+  </p>
+  <p id="244">
+    <text>
+        [p]Az érzékeid azt súgják, hogy nem vagy egyedül. Igen nagy veszélyben vagy. Minél előbb térj vissza a felszínre.[/p]
+    </text>
+    <next id="93"></next>
+  </p>
   <!-- 245 -->
   <!-- 246 -->
   <!-- 247 -->
   <!-- 248 -->
   <!-- 249 -->
-  <!-- 250 -->
+  <p id="250">
+    <text>
+        [p]Leugrasz a fatörzsről, és megállsz a két kis szőrös lény előtt. Fölismered, hogy kakarmik, azok az intelligens állatkák, amelyek Sommerlund erdeit lakják és gondozzák. Mielőtt bocsánatot kérhetnél drámai belépődért, a rémült kis jószágok elfutnak az erdőbe.[/p]
+    </text>
+    <next id="186">Ha követni akarod őket</next>
+    <next id="228">Ha tovább akarsz menni</next>
+  </p>
   <!-- 251 -->
   <p id="252">
     <text>
@@ -411,13 +848,39 @@
   <!-- 255 -->
   <!-- 256 -->
   <!-- 257 -->
-  <!-- 258 -->
-  <!-- 259 -->
+  <p id="258">
+    <text>
+        [p]Élve a Telekinézis kai tudományával kioldod a kezeden lévő köteléket. Megvárod a menekülés lehetőségét, aztán amilyen gyorsan csak tudsz, benyargalsz a sűrű aljnövényzetbe. Fekete nyílvesszők süvítenek utánad, ám hamarosan a fák biztonságos sűrűjébe érsz. Elveszítetted a Hátizsákodat és a Fegyvereidet, ám élsz és egészséges vagy. Folytatod utadat az erdőn át.[/p]
+    </text>
+    <loseItem id="10001,10002,10003,10004,10005,10006,10007,10008,10009,20000,30001,30002" amount="20" />
+    <next id="50"></next>
+  </p>
+  <p id="259">
+    <text>
+        [p]A terem egyre hűvösebb lesz. Fokozatosan megérzed a kén szagát a levegőben. A távolból kántálást hallasz. Mintha a barlang másik részéből jönne. A kőfalon lyuk nyílik, és megjelenik egy fekete bot vége. A botból hirtelen kék villám csap ki, és mellen talál.[/p]
+        [p]Amint lassan kiszáll belőled az élet, még látod a fekete köntösű öregembert, aki tőrt szegez a torkodnak.[/p]
+        [p]Életed és küldetésed itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <!-- 260 -->
   <!-- 261 -->
   <!-- 262 -->
-  <!-- 263 -->
-  <!-- 264 -->
+  <p id="263">
+    <text>
+        [p]Óvatosan követed a kelet felé futó patakot. Hirtelen megpillantasz valamit a távolban, amitói megtorpansz.[/p]
+        [p]A sebes sodrású vizet nagy, fekete gátként egy döglött kraan torlaszolja el. Közelebb lopakodsz a sűrű növényzet fedezékében, és most már látod, hogy az állat melléből három nyílvessző áll ki. Az állat teste alá szorulva ott a lovasa is. Egy giak az, a sötét urak undorító és gonosz szolgája. Sok-sok évszázaddal ezelőtt a sötét urak az ő őseikkel építtették Helgedad pokoli városát, amely a Durncrag hegységen túl elterülő vulkanikus pusztaságban fekszik. A város építése hosszadalmas és gyötrelmes lidérces álom volt, és csupán a legerősebb gia-kok élték túl Helgedad hőségét és mérgező levegőjét. Ez a lény ezeknek a giak rabszolgáknak a leszármazottja. És szemlátomást vízbe fulladt. A giak deréktarsolyában [span class="takeItem" data-id="gold" data-amount="3"]3 Aranykorona[/span] van. (Ha akarod, elveheted.)[/p]
+    </text>
+    <next id="70">Ha tovább akarsz menni lefelé a folyón</next>
+    <next id="157">De ott is hagyhatod a vizet, és haladhatsz az erdős dombokon át gyalog is dél felé</next>
+  </p>
+  <p id="264">
+    <text>
+        [p]Nem jutottál messzire, amikor nyugatról csatazajt hallasz.[/p]
+    </text>
+    <next id="97">Ha meg akarod nézni a zaj forrását</next>
+    <next id="6">Ha inkább továbbmész dél felé</next>
+  </p>
   <!-- 265 -->
   <!-- 266 -->
   <p id="267">
@@ -470,28 +933,69 @@
   <!-- 278 -->
   <!-- 279 -->
   <!-- 280 -->
-  <!-- 281 -->
+  <p id="281">
+    <text>
+        [p]Amint rohansz a fák között, a hátad mögött, közelről hallod a giakok szörnyű vartyogását. A fák hamarosan ritkulni kezdenek, és egy sziklás domboldalt látsz magad előtt.[/p]
+    </text>
+    <next id="311">Ha mit sem törődsz a fedezékkel, és elindulsz fölfelé a domboldalon</next>
+    <next id="77">Ha irányt változtatsz, és az erdőben futsz tovább</next>
+  </p>
   <!-- 282 -->
   <!-- 283 -->
   <!-- 284 -->
-  <!-- 285 -->
+  <p id="285">
+    <text>
+        [p]Gyomrot fölfordító csattanással találja el a márvány a giak fejét, és hátulról kettéhasítja. A szörny térdre esik, lassan előredől, a lenti romokra. Örülsz az ügyességednek, és sietsz segíteni az ifjú varázslónak.[/p]
+    </text>
+    <next id="325"></next>
+  </p>
   <!-- 286 -->
   <!-- 287 -->
   <!-- 288 -->
   <!-- 289 -->
-  <!-- 290 -->
+  <p id="290">
+    <text>
+        [p]A hosszú dobozban bőrbe csavart [span class="takeItem" data-id="10004" data-amount="1"]Harci Bot[/span] van. Ha akarod, el veheted ezt a Fegyvert. Becsukod a dobozt, és óvatosan csak a jó fokokra lépve leereszkedsz, vissza a tisztásra.[/p]
+    </text>
+    <next id="140"></next>
+  </p>
   <!-- 291 -->
   <!-- 292 -->
-  <!-- 293 -->
+  <p id="293">
+    <text>
+        [p]Banedon egy intéssel elhagyja a romokat, te pedig folytatod az utad a sűrű erdőn át. Nem sokat haladtál, amikor észreveszed, hogy balról, az aljnövényzetből sárga szempárok lesnek. Hirtelen fekete nyílvessző súrolja a fejed tetejét. Giakok támadnak rád, és tiszta erődből kell futnod, hogy elmenekülj.[/p]
+    </text>
+    <next id="281"></next>
+  </p>
   <!-- 294 -->
   <!-- 295 -->
   <!-- 296 -->
-  <!-- 297 -->
-  <!-- 298 -->
+  <p id="297">
+    <text>
+        [p]Fölhasználva mindazt, amit mestereid a Vadászatról tanítottak neked, észrevétlenül lopakodsz előre a növényzetben. Egy perc sem telik belé, és pontosan az oszlop mögött vagy, ahová a kószát kikötötték, alig néhány lépésnyire tőle. A tűz ég, és jókora füstfelhő öleli körül az áldozatot. A füst elrejt, így előrerohanhatsz a fegyvereddel a kezedben. Egyetlen csapással elvágod a kötelékeit, és magaddal rántod, vissza, a fák menedékébe. Amint csörtettek előre az erdőben, hallod, hogyan kezdenek rikoltozni a giakok, amikor észreveszik, hogy a foglyuk szó szerint füstté vált.[/p]
+    </text>
+    <next id="117"></next>
+  </p>
+  <p id="298">
+    <text>
+        [p]A madár feje lassan megfordul, és átkot mond rád. Egy pillanat múlva már ott sincs, eltűnik a távolban. Megdöbbensz a hallottaktól. Most már tudod, hogy a madárfióka a sötét urak kémje volt, és most nyilván tájékoztatja őket, hogy hol vagy.[/p]
+    </text>
+    <next id="121">Ha tovább akarsz menni eddigi utadon</next>
+    <next id="38">Ha inkább letérsz az ösvényről, és az erdőn át mész tovább</next>
+  </p>
   <!-- 299 -->
   <!-- 300 -->
   <!-- 301 -->
-  <!-- 302 -->
+  <p id="302">
+    <random>
+      <result max="2" min="0">
+        <next id="110"></next>
+      </result>
+      <result max="9" min="3">
+        <next id="285"></next>
+      </result>
+    </random>
+  </p>
   <!-- 303 -->
   <!-- 304 -->
   <p id="305">
@@ -507,11 +1011,29 @@
   <!-- 308 -->
   <!-- 309 -->
   <!-- 310 -->
-  <!-- 311 -->
+  <p id="311">
+    <text>
+        [p]A domboldal meredek, a talaj pedig laza és csúszós. Megkockáztatsz hátrafelé egy pillantást, s azt látod, hogy két giak jön elő az erdőből. Mászni kezdenek utánad. Félúton jársz a csúcs felé, amikor jobbra észreveszel egy barlangot, amelyet szinte teljesen eltakar a leomlott föld.[/p]
+    </text>
+    <itemCheck type="kai" id="camouflage">
+      <have>
+        <next id="324"></next>
+      </have>
+      <dontHave>
+        <next id="279">Ha el akarsz rej tőzni a barlangban</next>
+        <next id="47">Ha elkerülöd a barlangot, és továbbmászol a csúcs felé</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 312 -->
   <!-- 313 -->
   <!-- 314 -->
-  <!-- 315 -->
+  <p id="315">
+    <text>
+        [p]A női ruhákból álló batyuba csavarva ott van egy kis bársonytáska, benne [span class="takeItem" data-id="gold" data-amount="6"]6 Aranykorona[/span] meg egy [span class="takeItem" data-id="30004" data-amount="1"]Illatos Szappan[/span]. Magadhoz veheted ezeket a Tárgyakat, s így folytathatod az utadat.[/p]
+    </text>
+    <next id="213"></next>
+  </p>
   <!-- 316 -->
   <!-- 317 -->
   <!-- 318 -->
@@ -519,19 +1041,77 @@
   <!-- 320 -->
   <!-- 321 -->
   <!-- 322 -->
-  <!-- 323 -->
-  <!-- 324 -->
-  <!-- 325 -->
+  <p id="323">
+    <text>
+        [p]A torony tetejéről minden irányban ellátsz a fák fölött. Észak felé koromfekete füstoszlop tör az égre. A tövénél kis, narancsvörös lángnyelvek lobognak. Kétségbeesetten érted meg, hogy Toran kikötője ég. Délnyugatról csatazajt hoz a szél. Közelről; nem lehet messzebb hét kilométernél.[/p]
+        [p]Az őrtorony padlóján hosszúkás doboz hever.[/p]
+    </text>
+    <next id="290">Ha ki akarod nyitni a dobozt</next>
+    <next id="140">Ha inkább lemászol a toronyból óvatosan, csak a jó fokokra lépve</next>
+  </p>
+  <p id="324">
+    <text>
+        [p]A fejedre borítod a csuklyádat, és elrejtőzöl a barlang száját rejtő szikla mögé. Visszatartod a lélegzeted, és teljesen összegömbölyödve betakarózol zöld köpenyeddel. Néhány perc múlva a giakok átmásznak a peremen, de gonosz, sárga szemük hiába fürkészi a domboldal mélyedéseit.[/p]
+        [p]Átkozódnak ocsmány nyelvükön, majd mászni kezdenek a csúcs felé. Magadban hálát adsz kai mestereidnek, amiért megtanítottak az Álcázás művészetére - ezúttal minden bizonnyal megmentette az életed.[/p]
+    </text>
+    <next id="33">Ha át akarod kutatni a barlangot</next>
+    <next id="248">Ha inkább minél előbb leereszkedsz a dombról, hátha visszajönnek a giakok</next>
+  </p>
+  <p id="325">
+    <text>
+        [p]Amint meglát kilépni téged az erdeiből, a giak vezér fölkiált:[/p]
+        [p]-    Ogot! Ogot![/p]
+        [p]Rémült emberei azonban otthagyják a romokat, és bemenekülnek a biztonságot adó erdőbe.[/p]
+        [p]A giak vezér rázza feléd páncélos öklét:[/p]
+        [p]-    Raneg Rogag OK - Orgadaka Okak Ro-gag Gaj! - és eltűnik.[/p]
+        [p]Végigpillantasz a csatatéren. Legalább tizenöt legyilkolt giak hever Raumas leomlott oszlopai között.[/p]
+        [p]Az ifjú varázsló megtörli a homlokát, és kézfogásra nyújtott kézzel, barátságosan feléd indul.[/p]
+    </text>
+    <next id="349"></next>
+  </p>
   <!-- 326 -->
   <!-- 327 -->
   <!-- 328 -->
   <!-- 329 -->
-  <!-- 330 -->
+  <p id="330">
+    <text>
+        [p]Kimerültén állsz meg pihenni néhány percre egy kidőlt fánál. A törzs alatt jókora batyut veszel észre.[/p]
+    </text>
+    <next id="315">Ha meg akarod nézni, mi van a batyuban</next>
+    <next id="213">Ha inkább nem nyúlsz hozzá, és folytatod az utadat</next>
+  </p>
   <!-- 331 -->
   <!-- 332 -->
-  <!-- 333 -->
-  <!-- 334 -->
-  <!-- 335 -->
+  <p id="333">
+    <text>
+        [p]Vagy fél órádba telt, amíg átvágtad magad a sűrű aljnövényzeten, és ekkor szárnycsapásokra leszel figyelmes magasan a fák fölött. Fölnézel, és éppen csak ki tudod venni az észak felől közeledő kraant. Azoknak a szörnyeknek az egyike, amelyek megtámadták a kolostort, és a hátán két szürke bőrű, hosszú lándzsával fölfegyverzett lény ül.[/p]
+        [p]Hegyi giakok azok, a sötét urak csupa gyűlölet és gonoszság szolgái. Évszázadokkal ezelőtt a sötét urak az ő őseikkel építtették Helgedad pokoli városát, amely a Durncrag-hegységen túl elterülő vulkanikus pusztaságban fekszik. A város építése hosszadalmas és gyötrelmes volt, és csupán a legerősebb giakok élték tői Helgedad hőségét és mérgező levegőjét.[/p]
+        [p]A fák rejtekében mozdulatlanná dermedsz, és meg sem pisszensz, amíg a kraan el nem húz a fejed fölött, s el nem tűnik dél felé. Amikor már biztos vagy benne, hogy messze jár, továbbindulsz az erdődben.[/p]
+    </text>
+    <next id="131"></next>
+  </p>
+  <p id="334">
+    <text>
+        [p]Ahol a patak eltűnik a sziklás domboldalban, látod, hogy odafönn négy katona meg egy tiszt áll a király seregének egyenruhájában.[alt /][/p]
+    </text>
+    <next id="162" pos="1" singleChoiceText=" Odalépsz hozzájuk.">Ha oda akarsz menni hozzájuk</next>
+    <itemCheck type="kai" id="camouflage">
+      <have>
+        <next id="73" pos="2">Ha élsz az Álcázás kai tudományával, és megvárod, amíg elhaladnak</next>
+      </have>
+    </itemCheck>
+    <itemCheck type="kai" id="sixthSense">
+      <have>
+        <next id="48" pos="3">Ha a Hatodik érzék kai tanával kívánsz próbálkozni</next>
+      </have>
+    </itemCheck>
+  </p>
+  <p id="335">
+    <text>
+        [p]Amint közeledsz, a fekete madár fölröppen a fák fölé, és hamarosan eltűnik a szemed elől. Átkutatod a fát, amelyen ült, de nem látsz semmi különöset. Nem akarod vesztegetni a becses időt, inkább továbbindulsz az ösvényen.[/p]
+    </text>
+    <next id="121"></next>
+  </p>
   <!-- 336 -->
   <!-- 337 -->
   <!-- 338 -->
@@ -547,5 +1127,30 @@
     </text>
     <next id="272">Most visszatérhetsz az ösvényre</next>
     <next id="19">Ha inkább a fák fedezékében mész tovább</next>
+  </p>
+  <p id="346">
+    <text>
+        [p]A csontváz bordái közé jó mélyen egy [span class="takeItem" data-id="10005" data-amount="1"]Lándzsa[/span] van bedöfve. Jó állapotban van, és el is viheted, ha akarod, és képes vagy rá. Ezután elhagyod a tisztást.[/p]
+    </text>
+    <next id="14"></next>
+  </p>
+  <!-- 347 -->
+  <!-- 348 -->
+  <p id="349">
+    <text>
+        [p]Ifjú, szőke hajú, ábrándos tekintetű fiatalember. Az arcán kimerültség látszik és a csata fáradtsága, hosszú, égszínkék köntöse pedig arról árulkodik, hogy már régóta élhet a vadonban. Megrázza a kezed, és meghajol.[/p]
+        [p]-    Örök hálám, kai úr. Kis híján elfogyott az erőm. Ha nem siettél volna a segítségemre, bizonyára giak lándzsa hegyén végeztem volna.[/p]
+        [p]Látszik, hogy gyönge, alig áll a lábán. Megfogod a karját, és leülteted a földre dőlt oszlopra, úgy hallgatod végig a mondandóját.[/p]
+        [p]-    A nevem Banedon. A Kristály Csillag Testvériségének legénye vagyok, azaz a torani mágusok céhének növendéke. A céhmesterem küldött a ti kolostorotokba a következő sürgős üzenettel. - Pergamenborítékot húz elő a köntöséből, és átadja neked. - Amint látod, fölnyitottam a borítékot, és az üzenetet elolvastam. Amikor kitört a háború, éppen úton voltam két útitársammal. Egy kraan megtámadott minket, és menekülés közben az erdőben elveszítettük egymást.[/p]
+        [p]A levél figyelmezteti a kai urakat, hogy a sötét urak hatalmas sereget gyűjtöttek a Durncrag vonalán túl. A céhmester sürgeti a kai urakat, hogy halasszák el a Fehmarn ünnepet, és készüljenek a háborúra.[/p]
+        [p]-    Félek, hogy elárultak minket - hajtja le bánatosan a fejét Banedon.[/p]
+        [p]-    A rendünk egyik tagja, Vonatar testvér a Fekete Mágia tiltott tanait tanulmányozta. Tíz nappal ezelőtt megtagadta a Testvériséget, és megölte egyik Idősebb Fivérünket. Aztán nyoma veszett. Azt beszélik, hogy most a sötét urakat segíti.[/p]
+        [p]Elmondod Banedonnak, mi történt a kolostorral, és hogy most éppen a királyt akarod sürgősen figyelmeztetni. Az ifjú mágus némán leakasztja a nyakából arany nyakláncát, és átadja neked. A láncon egy kis Kristály Csillag függ.[/p]
+        [p]-    Ez a Testvériségünk jelképe, s mi ketten valóban testvérek vagyunk ebben a sötét órában. Jó szerencsét hozó talizmán. Oltalmazzon veszélyes utadon.[/p]
+        [p]Köszönetét mondasz, a nyakadba akasztod a láncot úgy, hogy a [span class="takeItem" data-id="40006" data-amount="1"]Kristály Csillag[/span] az ingeden belülre kerüljön.[/p]
+        [p]Banedon búcsút vesz tőled.[/p]
+        [p]-    El kell tűnnünk innen, mert a giakok visszatérhetnek undorító véreik további seregével, hogy elbánjanak velünk. Nekem vissza kell térnem a céhemhez. Búcsút veszek hát tőled, testvér. Az istenek segítsenek az utadon.[/p]
+    </text>
+    <next id="293"></next>
   </p>
 </content>

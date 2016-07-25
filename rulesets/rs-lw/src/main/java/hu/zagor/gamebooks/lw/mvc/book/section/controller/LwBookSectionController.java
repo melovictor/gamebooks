@@ -7,6 +7,7 @@ import hu.zagor.gamebooks.content.LwParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.command.fight.ComplexFightCommand;
 import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
+import hu.zagor.gamebooks.content.command.fight.LwFightCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.LwBookInformations;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
@@ -83,6 +84,22 @@ public class LwBookSectionController extends RawBookSectionController {
         model.addAttribute("data", getCharacterPageData(character));
 
         return handleSection;
+    }
+
+    /**
+     * Handler for fleeing entry points.
+     * @param model the data model
+     * @param request the request
+     * @return the book page's name
+     */
+    @RequestMapping(value = PageAddresses.FLEE)
+    public final String handleFlee(final Model model, final HttpServletRequest request) {
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        final LwCharacter character = (LwCharacter) wrapper.getCharacter();
+
+        getInfo().getCharacterHandler().getInteractionHandler().setFightCommand(character, LwFightCommand.FLEEING);
+
+        return super.handleSection(model, request, null);
     }
 
     @Override

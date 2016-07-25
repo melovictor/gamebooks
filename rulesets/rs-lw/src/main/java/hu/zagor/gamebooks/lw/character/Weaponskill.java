@@ -5,6 +5,7 @@ package hu.zagor.gamebooks.lw.character;
  * @author Tamas_Szekeres
  */
 public class Weaponskill {
+    private final boolean fist = false;
     private boolean dagger;
     private boolean spear;
     private boolean mace;
@@ -105,6 +106,10 @@ public class Weaponskill {
         final boolean hasBlunt = mace || warhammer;
         final boolean hasOther = bow || axe || dagger || spear || quarterstaff;
         return hasSword || hasBlunt || hasOther;
+    }
+
+    public boolean isFist() {
+        return fist;
     }
 
 }
