@@ -19,8 +19,6 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
     private static final Pattern IMAGE_NAME_PATTERN = Pattern.compile("b-([0-9]+)\\.jpg");
     private static final Pattern IMAGE_DIR_PATTERN = Pattern.compile("([a-z]+[0-9]+)(?:[a-z]+){0,1}");
     private static final Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-    private static final Pattern ITALIC_RTF_DETECTION_PATTERN = Pattern.compile("\\{[^ ]*([^}]+)\\}\\s+\\{[^}]+\\\\i\\\\[^ ]+([^}]+)\\}\\s+\\{[^ ]+([^}]+)",
-        Pattern.DOTALL);
 
     private final Replacer hunReplacer = new HungarianReplacer();
     // private final Replacer altHunReplacer = new AlternateHungarianReplacer();
@@ -47,31 +45,21 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
         try {
             Thread.sleep(30);
             checkClipboard();
-        } catch (UnsupportedFlavorException | IllegalStateException | IOException | InterruptedException | ClassNotFoundException e) {
+        } catch (UnsupportedFlavorException | IllegalStateException | IOException | InterruptedException e) {
             e.printStackTrace();
             lostOwnership(clipboard, contents);
         }
     }
 
-    public void checkClipboard() throws UnsupportedFlavorException, IOException, ClassNotFoundException {
+    public void checkClipboard() throws UnsupportedFlavorException, IOException {
         final Transferable contents = clipboard.getContents(null);
 
         Transferable newClipboardContent = null;
         if (contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
             String clipboardContent = readContent(contents, DataFlavor.stringFlavor);
-            String rtfContent;
-            try {
-                rtfContent = readContent(contents, new DataFlavor("text/rtf"));
-            } catch (final UnsupportedFlavorException ex) {
-                rtfContent = "";
-            }
-            final int indexOf = rtfContent.indexOf("\\pard");
-            if (indexOf > -1) {
-                rtfContent = rtfContent.substring(indexOf);
-            }
 
             if (!isConverted(clipboardContent) && !isProgramCode(clipboardContent)) {
-                newClipboardContent = processClipboardContent(clipboardContent, rtfContent);
+                newClipboardContent = processClipboardContent(clipboardContent);
             } else {
                 final String newContent = contentSorter.tryMap(clipboardContent, imageData);
                 if (newContent != null) {
@@ -133,12 +121,12 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
         return clipboardContent.contains("[p]") || clipboardContent.contains("[li]");
     }
 
-    private Transferable processClipboardContent(final String content, final String rtfContent) {
-        final String newContent = convertParagraphs(content, rtfContent);
+    private Transferable processClipboardContent(final String content) {
+        final String newContent = convertParagraphs(content);
         return new StringSelection(newContent);
     }
 
-    private String convertParagraphs(final String content, final String rtfContent) {
+    private String convertParagraphs(final String content) {
         String newContent = null;
 
         newContent = hunReplacer.tryMap(content);
@@ -163,7 +151,6 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
                     }
                 }
                 newContent = newContent.trim();
-                newContent = applyFormatting(newContent, rtfContent);
             } else {
                 newContent = content;
             }
@@ -172,24 +159,6 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
         System.out.println("All targeted conversion failed, fallback on standard conversion:");
         System.out.println(newContent);
         return newContent;
-    }
-
-    private String applyFormatting(final String content, final String rtfContent) {
-        String newContent = content;
-        final Matcher matcher = ITALIC_RTF_DETECTION_PATTERN.matcher(rtfContent);
-        while (matcher.find()) {
-            final String part1 = clear(matcher.group(1));
-            final String part2 = clear(matcher.group(2));
-            final String part3 = clear(matcher.group(3));
-            final String search = part1 + " " + part2 + " " + part3;
-            final String replace = part1 + " [em]" + part2 + "[/em] " + part3;
-            newContent = newContent.replace(search, replace);
-        }
-        return newContent;
-    }
-
-    private String clear(final String group) {
-        return group.trim().replace("\n", "").replaceAll("\\\\'92", "’").replaceAll("\\\\'93", "“").replaceAll("\\\\'94", "”");
     }
 
 }
