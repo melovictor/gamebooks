@@ -83,7 +83,7 @@ public abstract class AbstractRequestWrappingController implements BeanFactoryAw
      * @param request the {@link HttpServletRequest}, cannot be null
      * @return the newly created {@link HttpSessionWrapper} object
      */
-    protected final HttpSessionWrapper getWrapper(final HttpServletRequest request) {
+    protected HttpSessionWrapper getWrapper(final HttpServletRequest request) {
         Assert.notNull(request, "The parameter 'request' cannot be null!");
         return (HttpSessionWrapper) beanFactory.getBean("httpSessionWrapper", request);
     }

@@ -32,11 +32,15 @@
   <bean class="hu.zagor.gamebooks.content.LwParagraphData" id="lwParagraphData" scope="prototype" p:choices-ref="defaultChoiceSet" />
 
   <util:map key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver" id="lwCommandResolvers">
+    <entry key="hu.zagor.gamebooks.content.command.market.MarketCommand">
+      <bean class="hu.zagor.gamebooks.content.command.market.LwMarketCommandResolver" />
+    </entry>
     <entry key="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommand">
       <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommandResolver">
         <property name="stubCommands">
           <util:map key-type="java.lang.String" value-type="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckStubCommand">
             <entry key="section" value-ref="itemCheckSectionCommandResolver" />
+            <entry key="item" value-ref="itemCheckItemCommandResolver" />
             <entry key="kai">
               <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckKaiDisciplineCommandResolver" />
             </entry>
@@ -64,6 +68,12 @@
                 <constructor-arg index="0" ref="commonStubTransformers" />
                 <constructor-arg index="1">
                   <util:map>
+                    <entry key="market">
+                      <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.LwMarketTransformer" p:marketTransformers-ref="complexMarketTransformers" />
+                    </entry>
+                    <entry key="mustEat">
+                      <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.MustEatTransformer" />
+                    </entry>
                     <entry key="random">
                       <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.LwRandomTransformer" p:randomTransformers-ref="rawRandomTransformers" />
                     </entry>

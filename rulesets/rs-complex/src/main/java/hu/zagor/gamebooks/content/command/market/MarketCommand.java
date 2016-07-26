@@ -1,6 +1,6 @@
 package hu.zagor.gamebooks.content.command.market;
 
-import hu.zagor.gamebooks.content.FfParagraphData;
+import hu.zagor.gamebooks.content.ComplexParagraphData;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.content.command.market.domain.MarketElement;
@@ -23,8 +23,8 @@ public class MarketCommand extends Command {
     private String multipleCcyKey;
     private List<MarketElement> itemsForSale = new ArrayList<>();
     private List<MarketElement> itemsForPurchase = new ArrayList<>();
-    private FfParagraphData after;
-    private FfParagraphData emptyHanded;
+    private ComplexParagraphData after;
+    private ComplexParagraphData emptyHanded;
     private int giveUpAmount;
     private boolean giveUpUnsuccessful;
     private int mustHaveGold;
@@ -75,11 +75,11 @@ public class MarketCommand extends Command {
         return total;
     }
 
-    public FfParagraphData getAfter() {
+    public ComplexParagraphData getAfter() {
         return after;
     }
 
-    public void setAfter(final FfParagraphData after) {
+    public void setAfter(final ComplexParagraphData after) {
         this.after = after;
     }
 
@@ -121,11 +121,11 @@ public class MarketCommand extends Command {
         this.giveUpAmount = giveUpAmount;
     }
 
-    public FfParagraphData getEmptyHanded() {
+    public ComplexParagraphData getEmptyHanded() {
         return emptyHanded;
     }
 
-    public void setEmptyHanded(final FfParagraphData emptyHanded) {
+    public void setEmptyHanded(final ComplexParagraphData emptyHanded) {
         this.emptyHanded = emptyHanded;
     }
 

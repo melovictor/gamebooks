@@ -14,7 +14,7 @@ import org.w3c.dom.NodeList;
  * Class for transforming the "market" elements of a paragraph.
  * @author Tamas_Szekeres
  */
-public class MarketTransformer extends AbstractStubTransformer {
+public abstract class ComplexMarketTransformer extends AbstractStubTransformer {
 
     private Map<String, CommandSubTransformer<MarketCommand>> marketTransformers;
 
@@ -26,8 +26,8 @@ public class MarketTransformer extends AbstractStubTransformer {
         final MarketCommand command = new MarketCommand();
         data.addCommand(command);
         command.setMoneyAttribute(extractAttribute(node, "moneyAttribute", "gold"));
-        command.setSingleCcyKey(extractAttribute(node, "currencySingle", "page.ff.label.market.goldPiece"));
-        command.setMultipleCcyKey(extractAttribute(node, "currencyMultiple", "page.ff.label.market.goldPieces"));
+        command.setSingleCcyKey(extractAttribute(node, "currencySingle", getDefaultSingleCcyKey()));
+        command.setMultipleCcyKey(extractAttribute(node, "currencyMultiple", getDefaultMultipleCcyKey()));
         command.setMustHaveGold(extractIntegerAttribute(node, "mustHaveGold", 0));
         command.setMustSellExactly(extractIntegerAttribute(node, "mustSellExactly", 0));
         command.setMustBuy(extractIntegerAttribute(node, "mustBuy", 0));
@@ -53,6 +53,18 @@ public class MarketTransformer extends AbstractStubTransformer {
             }
         }
     }
+
+    /**
+     * Returns the default currency text resource key for multiple coins.
+     * @return the text key
+     */
+    protected abstract String getDefaultMultipleCcyKey();
+
+    /**
+     * Returns the default currency text resource key for single coin.
+     * @return the text key
+     */
+    protected abstract String getDefaultSingleCcyKey();
 
     private void verifyData(final ParagraphData data) {
         if (!hasMarketMarker(data)) {

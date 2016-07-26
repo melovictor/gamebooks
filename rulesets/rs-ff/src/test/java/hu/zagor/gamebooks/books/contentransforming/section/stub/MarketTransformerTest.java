@@ -20,13 +20,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
- * Unit test for class {@link MarketTransformer}.
+ * Unit test for class {@link FfMarketTransformer}.
  * @author Tamas_Szekeres
  */
 @Test
 public class MarketTransformerTest extends AbstractTransformerTest {
     @MockControl private IMocksControl mockControl;
-    @UnderTest private MarketTransformer underTest;
+    @UnderTest private FfMarketTransformer underTest;
     @Inject private BeanFactory beanFactory;
     @Mock private BookParagraphDataTransformer parent;
     @Mock private FfParagraphData data;

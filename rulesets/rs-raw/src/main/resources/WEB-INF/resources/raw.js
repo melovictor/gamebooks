@@ -41,7 +41,11 @@ var inventory = (function() {
 	}
 
 	function consume($event) {
+		debugger;
 		var $item = $($event.currentTarget);
+		if ($event.data) {
+			$item = $event.data($item);
+		}
 		var itemId = $item.data("item-id");
 		$.ajax({
 			url : "consume/" + itemId
@@ -119,7 +123,9 @@ var inventory = (function() {
 			if (response.warningMessage) {
 				showFeedback(response.warningMessage);
 			}
-			unbindGroup(that);
+			if (totalTaken > 0) {
+				unbindGroup(that);
+			}
 			loadInventory();
 		});
 	}

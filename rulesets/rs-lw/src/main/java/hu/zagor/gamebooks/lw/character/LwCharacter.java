@@ -15,10 +15,13 @@ public class LwCharacter extends Character {
     private int endurance;
     private int initialEndurance;
     private int enduranceLostInCombat;
+    private boolean huntEnabled = true;
 
     private Rank rank;
     private Money money = new Money();
     private KaiDisciplines kaiDisciplines = new KaiDisciplines();
+
+    private int oldManExchange;
 
     public int getCombatSkill() {
         return combatSkill;
@@ -74,6 +77,22 @@ public class LwCharacter extends Character {
 
     public void setKaiDisciplines(final KaiDisciplines kaiDisciplines) {
         this.kaiDisciplines = kaiDisciplines;
+    }
+
+    public boolean isHuntEnabled() {
+        return huntEnabled;
+    }
+
+    public void setHuntEnabled(final boolean huntEnabled) {
+        this.huntEnabled = huntEnabled;
+    }
+
+    public int getOldManExchange() {
+        return oldManExchange;
+    }
+
+    public void setOldManExchange(final int oldManExchange) {
+        this.oldManExchange = oldManExchange;
     }
 
 }

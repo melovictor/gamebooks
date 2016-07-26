@@ -59,7 +59,9 @@
 		<div class="lwMainAttribute3">
 			<span class="lwMainAttribute"><spring:message code="page.lw.equipment.normalEquipments" /></span>
 			<c:forEach var="item" items="${data.normalEquipment}">
-				<div class="lwSlot" title="${item.description}" data-item-id="${item.id}">${item.name}<span class="remove">&#xf00d;</span></div>
+				<div class="lwSlot" title="${item.description}" data-item-id="${item.id}" data-item-type="${item.itemType}">
+				<span>${item.name}</span>
+				<span class="remove">&#xf00d;</span></div>
 			</c:forEach>
 		</div>
 		<div class="lwMainAttribute3">

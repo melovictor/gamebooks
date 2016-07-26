@@ -30,14 +30,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- * Unit test for class {@link MarketCommandResolver}.
+ * Unit test for class {@link FfMarketCommandResolver}.
  * @author Tamas_Szekeres
  */
 @Test
-public class MarketCommandResolverTest {
+public class FfMarketCommandResolverTest {
 
     @MockControl private IMocksControl mockControl;
-    @UnderTest private MarketCommandResolver underTest;
+    @UnderTest private FfMarketCommandResolver underTest;
     private ResolvationData resolvationData;
     private MarketCommand command;
     private BookInformations info;

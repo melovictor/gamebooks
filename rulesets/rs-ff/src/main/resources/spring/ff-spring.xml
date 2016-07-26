@@ -103,20 +103,12 @@
   <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.market.MarketPurchaseTransformer" id="marketPurchaseTransformer" />
   <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.market.MarketAfterTransformer" id="marketAfterTransformer" />
   <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.market.MarketEmptyHandedTransformer" id="marketEmptyHandedTransformer" />
-  <util:map id="ffMarketTransformers">
-    <entry key="purchaseLabel" value-ref="marketPurchaseLabelTransformer" />
-    <entry key="saleLabel" value-ref="marketSaleLabelTransformer" />
-    <entry key="after" value-ref="marketAfterTransformer" />
-    <entry key="sale" value-ref="marketSaleTransformer" />
-    <entry key="purchase" value-ref="marketPurchaseTransformer" />
-    <entry key="emptyHanded" value-ref="marketEmptyHandedTransformer" />
-  </util:map>
 
   <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.InterruptTransformer" id="ffInterruptTransformer" />
   <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.ChangeEnemyTransformer" id="ffChangeEnemyTransformer" />
   <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.ChangeItemTransformer" id="ffChangeItemTransformer" />
   <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.LoseBattleRoundTransformer" id="ffLoseBattleRoundTransformer" />
-  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.MarketTransformer" id="ffMarketTransformer" p:marketTransformers-ref="ffMarketTransformers" />
+  <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.FfMarketTransformer" id="ffMarketTransformer" p:marketTransformers-ref="complexMarketTransformers" />
   <bean class="hu.zagor.gamebooks.books.contentransforming.section.stub.CanEatTransformer" id="ffCanEatTransformer" />
 
   <util:map id="ffExtraTransformers">
@@ -248,7 +240,6 @@
   </util:map>
 
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommandResolver" id="ffItemCheckCommandResolver" p:stubCommands-ref="ffItemCheckStubCommands" />
-  <bean class="hu.zagor.gamebooks.content.command.market.MarketCommandResolver" id="marketCommandResolver" />
 
   <util:map key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver" id="ffCommandResolvers">
     <entry key="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckCommand" value-ref="ffItemCheckCommandResolver" />
@@ -262,7 +253,9 @@
     <entry key="hu.zagor.gamebooks.content.command.changeitem.ChangeItemCommand">
       <bean class="hu.zagor.gamebooks.content.command.changeitem.FfChangeItemCommandResolver" />
     </entry>
-    <entry key="hu.zagor.gamebooks.content.command.market.MarketCommand" value-ref="marketCommandResolver" />
+    <entry key="hu.zagor.gamebooks.content.command.market.MarketCommand">
+    <bean class="hu.zagor.gamebooks.content.command.market.FfMarketCommandResolver"/>
+    </entry>
   </util:map>
 
   <bean class="hu.zagor.gamebooks.content.command.fight.FfFightCommandResolver" p:subResolvers-ref="fightSubResolvers" id="ffFightCommandResolver" />

@@ -9,6 +9,7 @@ import hu.zagor.gamebooks.content.command.fight.ComplexFightCommand;
 import hu.zagor.gamebooks.content.command.fight.LastFightCommand;
 import hu.zagor.gamebooks.content.command.fight.LwFightCommand;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
+import hu.zagor.gamebooks.controller.session.LwHttpSessionWrapper;
 import hu.zagor.gamebooks.domain.LwBookInformations;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
 import hu.zagor.gamebooks.lw.character.LwCharacterPageData;
@@ -18,6 +19,7 @@ import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.raw.mvc.book.section.controller.RawBookSectionController;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,12 +28,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Tamas_Szekeres
  */
 public class LwBookSectionController extends RawBookSectionController {
+    private static final int MEAL_MISSOUT_DEDUCTION = -3;
+
     /**
      * Basic constructor that expects the spring id of the book's bean and passes it down to the {@link GenericBookSectionController}.
      * @param sectionHandlingService the {@link SectionHandlingService} to use for handling the section changes
      */
     public LwBookSectionController(final SectionHandlingService sectionHandlingService) {
         super(sectionHandlingService);
+    }
+
+    @Override
+    protected void handleCustomSectionsPre(final Model model, final HttpSessionWrapper wrapperObject, final boolean changedSection) {
+        final LwHttpSessionWrapper wrapper = (LwHttpSessionWrapper) wrapperObject;
+        if (changedSection) {
+            final Paragraph previousParagraph = wrapper.getPreviousParagraph();
+            final LwParagraphData data = (LwParagraphData) previousParagraph.getData();
+            if (data.isMustEat()) {
+                final LwCharacter character = wrapper.getCharacter();
+                if (!character.getKaiDisciplines().isHunting() || !character.isHuntEnabled()) {
+                    getInfo().getCharacterHandler().getAttributeHandler().handleModification(character, "endurance", MEAL_MISSOUT_DEDUCTION);
+                }
+            }
+        }
+
+        super.handleCustomSectionsPre(model, wrapper, changedSection);
+    }
+
+    @Override
+    protected Paragraph loadSection(final String paragraphId, final HttpServletRequest request) {
+        final LwHttpSessionWrapper wrapper = getWrapper(request);
+        final Paragraph paragraph = wrapper.getParagraph();
+        wrapper.setPreviousParagraph(paragraph);
+        return super.loadSection(paragraphId, request);
     }
 
     @Override
@@ -105,5 +134,11 @@ public class LwBookSectionController extends RawBookSectionController {
     @Override
     public LwBookInformations getInfo() {
         return (LwBookInformations) super.getInfo();
+    }
+
+    @Override
+    protected LwHttpSessionWrapper getWrapper(final HttpServletRequest request) {
+        Assert.notNull(request, "The parameter 'request' cannot be null!");
+        return (LwHttpSessionWrapper) getBeanFactory().getBean("lwHttpSessionWrapper", request);
     }
 }

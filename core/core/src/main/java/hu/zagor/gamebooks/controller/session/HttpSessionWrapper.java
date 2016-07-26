@@ -123,11 +123,15 @@ public class HttpSessionWrapper {
         return (Model) session.getAttribute(ControllerAddresses.MODEL_STORE_KEY);
     }
 
-    private String getBookId() {
+    String getBookId() {
         if (bookId == null) {
             bookId = request.getRequestURI().split("/")[BOOK_ID_PART];
         }
         return bookId;
+    }
+
+    HttpSession getSession() {
+        return session;
     }
 
 }

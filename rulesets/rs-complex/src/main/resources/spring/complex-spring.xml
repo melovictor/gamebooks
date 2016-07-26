@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util" xmlns="http://www.springframework.org/schema/beans" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:map id="complexMarketTransformers">
+    <entry key="purchaseLabel" value-ref="marketPurchaseLabelTransformer" />
+    <entry key="saleLabel" value-ref="marketSaleLabelTransformer" />
+    <entry key="after" value-ref="marketAfterTransformer" />
+    <entry key="sale" value-ref="marketSaleTransformer" />
+    <entry key="purchase" value-ref="marketPurchaseTransformer" />
+    <entry key="emptyHanded" value-ref="marketEmptyHandedTransformer" />
+  </util:map>
+
+</beans>
