@@ -89,7 +89,14 @@
   <!-- 10 -->
   <!-- 11 -->
   <!-- 12 -->
-  <!-- 13 -->
+  <p id="13">
+    <text>
+        [p]Az ösvény egy nagy tisztásba torkollik. A tisztás közepén fa áll, amely sokkal nagyobb és termetesebb, mint amilyeneket eddig láttál.[/p]
+        [p]Fölpillantva, vagy huszonöt-harminc lábnyival a föld fölött jól megépített fakunyhót látsz. Hágcsó nem vezet föl, ám a ráncos fakérgen jól föl lehet kapaszkodni.[/p]
+    </text>
+    <next id="307">Ha föl akarsz mászni, és át akarod kutatni a fakunyhót</next>
+    <next id="213">Ha inkább továbbmész</next>
+  </p>
   <p id="14">
     <text>
         [p]Egy kis fás domb tetejére érsz, ahol nagy kövekből rakott kört látsz. Hirtelen hangos morgás hangzik föl a bal oldaladon lévő kő mögül.[/p]
@@ -826,7 +833,13 @@
   <!-- 245 -->
   <!-- 246 -->
   <!-- 247 -->
-  <!-- 248 -->
+  <p id="248">
+    <text>
+        [p]Eléred a domb lábát, és besietsz az erdőbe. Néhány perc múlva régi erdei csapásra bukkansz.[/p]
+    </text>
+    <next id="44">Ha ezen a csapáson észak felé indulsz</next>
+    <next id="300">Ha ezen a csapáson dél felé indulsz</next>
+  </p>
   <!-- 249 -->
   <p id="250">
     <text>
@@ -959,7 +972,14 @@
     </text>
     <next id="140"></next>
   </p>
-  <!-- 291 -->
+  <p id="291">
+    <text>
+        [p]A két giak a lábadnál hever, kitekeredett testükben nincs élet. Gyorsan átkutatod őket. [span class="takeItem" data-id="gold" data-amount="6"]Hat Aranykoronát[/span], két Lándzsát és egy Tőrt találsz.[/p]
+        [p data-item-choice="storage" data-max-choice="1"]Megtarthatod az Aranyat és vagy a [span class="takeItem" data-id="10008" data-amount="1" data-group="storage"]Tőrt[/span], vagy egy [span class="takeItem" data-id="10005" data-amount="1" data-group="storage"]Lándzsát[/span].[/p]
+        [p]A csata közben a kraan elröpült, az út most üres. Fölveszed a Hátizsákodat, és folytatod az utat.[/p]
+    </text>
+    <next id="272"></next>
+  </p>
   <!-- 292 -->
   <p id="293">
     <text>
@@ -984,7 +1004,13 @@
     <next id="38">Ha inkább letérsz az ösvényről, és az erdőn át mész tovább</next>
   </p>
   <!-- 299 -->
-  <!-- 300 -->
+  <p id="300">
+    <text>
+        [p]Több mint egy órán át mész, közben állandóan lesed az eget, nem jön-e kraan. Eddig kétszer vetted észre árulkodó árnyékukat az égen, és gyorsaságod, ügyességed megóvott a foglyul ejtéstől. Már nagyon éhes vagy, el kell fogyasztanod egy adag Élelmet.[/p]
+    </text>
+    <mustEat />
+    <next id="13"></next>
+  </p>
   <!-- 301 -->
   <p id="302">
     <random>
@@ -1007,7 +1033,45 @@
     <next id="105"></next>
   </p>
   <!-- 306 -->
-  <!-- 307 -->
+  <p id="307">
+    <text>
+        [p]Gyorsan és könnyedén fölmászol. A mászás arra a rengeteg fára emlékeztet, amelyeket gyermekként másztál meg Toran vidékén, amikor gyümölcsöt akartál szedni, vagy gyönyörködni akartál Sommerlund szépséges tájaiban.[/p]
+        [p]Kinyitod az ajtót, s a sarokban egy vén remetét pillantasz meg kucorogni. Arcán nagy megkönnyebbülés látszik, amint fölismeri kai köpenyedet. Elmondja neked, hogy a környék tele van giakokkal, s hogy a kunyhója fölött a legutóbbi három órában legalább negyven kraan húzott el. Keletnek tartottak.[/p]
+        [p]Odasiet a szekrényhez, s egy tál friss gyümölccsel tér vissza. Köszönetét mondasz, és a [span class="takeItem" data-id="20000" data-amount="1"]gyümölcsöt[/span] a Hátizsákodba teszed. Egy Étkezésre elegendő. A remete előhoz egy pompás Harci Kalapácsot is, és az ajtó melletti asztalra teszi.[/p]
+        [p]- Neked nagyobb szükséged van rá, kai úr, mint nekem - mondja. - Kérlek, fogadd el ezt a pompás Harci Kalapácsot, ha akarod.[/p]
+        
+    </text>
+    <itemCheck type="item" id="10009">
+      <have>
+        <text>
+            [p]Mivel már van egy ilyen fegyvered, visszautasítod az öreg kedvességét.[/p]
+        </text>
+      </have>
+      <dontHave>
+        <text>
+            [p]Ha akarod, elveheted ezt a Fegyvert, de csak úgy, ha cserében otthagysz egy, a birtokodban lévő másikat, mert a remetének ez az egyetlen fegyvere az ellenség ellen.[/p]
+            [div data-market=""][/div]
+        </text>
+        <market suppressWarning="true" moneyAttribute="oldManExchange" currencySingle="page.lw.label.market.item" currencyMultiple="page.lw.label.market.items">
+          <sale price="1" stock="1" id="10009" />
+          <purchase price="1" stock="1" id="10001" />
+          <purchase price="1" stock="1" id="10002" />
+          <purchase price="1" stock="1" id="10003" />
+          <purchase price="1" stock="1" id="10004" />
+          <purchase price="1" stock="1" id="10005" />
+          <purchase price="1" stock="1" id="10006" />
+          <purchase price="1" stock="1" id="10007" />
+          <purchase price="1" stock="1" id="10008" />
+        </market>
+      </dontHave>
+      <after>
+        <text>
+            [p]Köszönetet mondasz az öregnek, óvatosan lemászol, és folytatod az utadat.[/p]
+        </text>
+      </after>
+    </itemCheck>
+    <next id="213"></next>
+  </p>
   <!-- 308 -->
   <!-- 309 -->
   <!-- 310 -->

@@ -33,6 +33,7 @@ public class LwCharacterPageData extends RawCharacterPageData {
     private final List<LwItem> specialEquipment = new ArrayList<>();
     private final List<LwItem> shadows = new ArrayList<>();
     private final int gold;
+    private int oldManExchange;
 
     /**
      * Bean for storing data to display on the character page for Lone Wolf ruleset.
@@ -143,6 +144,14 @@ public class LwCharacterPageData extends RawCharacterPageData {
 
     public String getWeaponskillWeapon() {
         return weaponskillWeapon;
+    }
+
+    public int getOldManExchange() {
+        return oldManExchange;
+    }
+
+    public void setOldManExchange(final int oldManExchange) {
+        this.oldManExchange = oldManExchange;
     }
 
 }

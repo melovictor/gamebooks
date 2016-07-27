@@ -370,6 +370,143 @@ var gameMenu = (function() {
 	};
 })();
 
+var market = (function() {
+	var totalPurchases;
+	var requiredPurchases;
+	var currentGold;
+	var requiredGold;
+	var requiredSalesExactly;
+	var totalSales;
+	var singleCcy;
+	var multiCcy;
+
+	function init(contentId) {
+		var $content = $("#marketContent");
+		if ($content.length > 0) {
+			var $placeholder = $("[data-market]");
+			$placeholder.append($content);
+			$("#" + contentId).addClass("marketAvailable");
+		}
+
+		totalPurchases = 0;
+		totalSales = 0;
+		requiredPurchases = parseInt($("#mustBuy").val());
+		currentGold = parseInt($("#currentGold").val());
+		requiredGold = parseInt($("#mustHaveGold").val());
+		requiredSalesExactly = parseInt($("#mustSellExactly").val());
+		singleCcy = $("#singleCcy").val();
+		multiCcy = $("#multipleCcy").val();
+		
+		if ($content.length > 0) {
+			updateCurrentBalance();
+		}
+		
+		if (requiredPurchases > totalPurchases || requiredGold > currentGold || (requiredSalesExactly > 0 && requiredSalesExactly > totalSales)) {
+			$("#marketCommandFinish").hide();
+		}
+	}
+	
+	function updateCurrentBalance() {
+		var $balanceField = $("#marketBalanceActual");
+		var balanceText;
+		if (currentGold == 1) {
+			balanceText = singleCcy.replace("{0}", currentGold);
+		} else {
+			balanceText = multiCcy.replace("{0}", currentGold);
+		}
+		$balanceField.text(balanceText);
+	}
+	
+	function buyItem() {
+		var $elem = $(this);
+		$.ajax({
+			url : "buyItem/" + $elem.data("id"),
+			type : "get",
+			accept : "application/json; charset=utf-8",
+			dataType : "json",
+			success : function(data) {
+				totalPurchases++;
+				if (data.successfulTransaction) {
+					updateStock($elem);
+				}
+				updateElements(data);
+			}
+		});
+	}
+	
+	function updateStock($elem) {
+		var newStock =  $elem.attr("data-stock") - 1;
+		var $marketStock = $elem.parent().find(".marketStock");
+		if (newStock == 1) {
+			$marketStock.remove();
+		} else if (newStock > 1) {
+			$marketStock.find(".amount").text(newStock);
+		}
+		$elem.attr("data-stock", $elem.attr("data-stock") - 1);
+	}
+	
+	function sellItem() {
+		var $elem = $(this);
+		$.ajax({
+			url : "sellItem/" + $elem.data("id"),
+			type : "get",
+			accept : "application/json; charset=utf-8",
+			dataType : "json",
+			success : function(data) {
+				totalSales++;
+				if (data.text) {
+					$("<p>").html(data.text).insertBefore($("#marketCommandFinish"));
+				}
+				if (data.giveUpMode && data.giveUpFinished) {
+					close();
+				} else {
+					if (data.successfulTransaction) {
+						updateStock($elem);
+					}
+					updateElements(data);
+				}
+			}
+		});
+	}
+	
+	function updateElements(data) {
+		currentGold = data.gold;
+		
+		$("#marketForSale #row div:not([data-stock='0'])").each(function(idx, elem) {
+			var $elem = $(elem);
+			if ($elem.data("price") > currentGold) {
+				$elem.attr("data-stock", "0");
+			}
+		});
+		if (marketingFinished()) {
+			$("#marketCommandFinish").show();
+		} else if (marketingForceFinished()) {
+			close();
+		}
+		updateCurrentBalance();
+		inventory.loadInventory();
+	}
+	
+	function close() {
+		if (marketingFinished() || marketingForceFinished()) {
+			form.submit("post", "marketClose", "actionEnd");
+		}
+	}
+	
+	function marketingFinished() {
+		return currentGold >= requiredGold && totalPurchases >= requiredPurchases && requiredSalesExactly == 0;
+	}
+	function marketingForceFinished() {
+		return requiredSalesExactly > 0 && requiredSalesExactly == totalSales;
+	}
+	
+	return {
+		init : init,
+		buy : buyItem,
+		sell : sellItem,
+		close : close
+	};
+})();
 
 $(function() {
 	$("#saveGameLink").on("click", gameMenu.saveGame);

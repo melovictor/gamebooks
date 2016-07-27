@@ -21,8 +21,6 @@ public class LwCharacter extends Character {
     private Money money = new Money();
     private KaiDisciplines kaiDisciplines = new KaiDisciplines();
 
-    private int oldManExchange;
-
     public int getCombatSkill() {
         return combatSkill;
     }
@@ -85,14 +83,6 @@ public class LwCharacter extends Character {
 
     public void setHuntEnabled(final boolean huntEnabled) {
         this.huntEnabled = huntEnabled;
-    }
-
-    public int getOldManExchange() {
-        return oldManExchange;
-    }
-
-    public void setOldManExchange(final int oldManExchange) {
-        this.oldManExchange = oldManExchange;
     }
 
 }

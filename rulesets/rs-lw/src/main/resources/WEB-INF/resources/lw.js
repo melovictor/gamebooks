@@ -100,4 +100,9 @@ $(function() {
 	$("[data-attack='lw']").on("click", lw.attack);
 	$("[data-flee='lw']").on("click", lw.flee);
 	$("[data-random='lw']").on("click", lw.random);
+	market.init("lwGamebookContent");
+	$("[data-market]")
+		.on("click", "#marketForSale [data-id]:not([data-stock='0'])", market.buy)
+		.on("click", "#marketForPurchase [data-id]:not([data-stock='0'])", market.sell)
+		.on("click", "[data-market-close]", market.close);
 });
