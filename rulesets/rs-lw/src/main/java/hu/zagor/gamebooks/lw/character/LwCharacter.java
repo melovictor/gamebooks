@@ -16,6 +16,7 @@ public class LwCharacter extends Character {
     private int initialEndurance;
     private int enduranceLostInCombat;
     private boolean huntEnabled = true;
+    private int oldManExchange;
 
     private Rank rank;
     private Money money = new Money();
@@ -83,6 +84,14 @@ public class LwCharacter extends Character {
 
     public void setHuntEnabled(final boolean huntEnabled) {
         this.huntEnabled = huntEnabled;
+    }
+
+    public int getOldManExchange() {
+        return oldManExchange;
+    }
+
+    public void setOldManExchange(final int oldManExchange) {
+        this.oldManExchange = oldManExchange;
     }
 
 }

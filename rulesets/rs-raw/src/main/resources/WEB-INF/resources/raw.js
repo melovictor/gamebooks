@@ -41,7 +41,6 @@ var inventory = (function() {
 	}
 
 	function consume($event) {
-		debugger;
 		var $item = $($event.currentTarget);
 		if ($event.data) {
 			$item = $event.data($item);

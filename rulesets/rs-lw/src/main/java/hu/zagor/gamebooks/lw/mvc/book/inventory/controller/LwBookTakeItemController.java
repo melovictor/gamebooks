@@ -5,18 +5,20 @@ import hu.zagor.gamebooks.character.handler.LwCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.LwCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.character.item.LwItem;
+import hu.zagor.gamebooks.complex.mvc.book.inventory.controller.ComplexBookTakeItemController;
+import hu.zagor.gamebooks.complex.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.content.LwParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.LwBookInformations;
-import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
-import hu.zagor.gamebooks.mvc.book.inventory.controller.GenericBookTakeItemController;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
+import hu.zagor.gamebooks.mvc.book.inventory.service.MarketHandler;
 import hu.zagor.gamebooks.support.messages.MessageSource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +28,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Generic take item controller for Lone Wolf books.
  * @author Tamas_Szekeres
  */
-public class LwBookTakeItemController extends GenericBookTakeItemController {
+public class LwBookTakeItemController extends ComplexBookTakeItemController<LwCharacter> {
+    @Autowired @Qualifier("lwMarketHandler") private MarketHandler<LwCharacter> marketHandler;
     @Autowired private MessageSource messageSource;
 
     @Override
@@ -125,5 +128,15 @@ public class LwBookTakeItemController extends GenericBookTakeItemController {
     @Override
     public LwBookInformations getInfo() {
         return (LwBookInformations) super.getInfo();
+    }
+
+    @Override
+    protected MarketHandler<LwCharacter> getMarketHandler() {
+        return marketHandler;
+    }
+
+    @Override
+    protected LwCharacter getCharacter(final HttpSessionWrapper wrapper) {
+        return (LwCharacter) wrapper.getCharacter();
     }
 }

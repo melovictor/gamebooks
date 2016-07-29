@@ -1,4 +1,4 @@
-package hu.zagor.gamebooks.ff.mvc.book.inventory.domain;
+package hu.zagor.gamebooks.complex.mvc.book.inventory.domain;
 
 /**
  * Bean storing response data for item consumption.

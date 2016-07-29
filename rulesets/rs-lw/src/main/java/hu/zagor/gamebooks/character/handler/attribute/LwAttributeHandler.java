@@ -9,7 +9,7 @@ import org.springframework.util.Assert;
  * Class for handling the attributes of a Lone Wolf character.
  * @author Tamas_Szekeres
  */
-public class LwAttributeHandler extends ComplexAttributeHandler {
+public class LwAttributeHandler extends ComplexAttributeHandler<LwCharacter> {
 
     /**
      * Checks whether the character is still alive.
@@ -41,19 +41,10 @@ public class LwAttributeHandler extends ComplexAttributeHandler {
      * @param amount the amount by which to change the attribute
      * @param type the type of the change
      */
+    @Override
     public void handleModification(final LwCharacter character, final String attribute, final int amount, final ModifyAttributeType type) {
         handleRegularFieldChange(character, attribute, amount, type);
         sanityCheck(character);
-    }
-
-    /**
-     * Handles modifications in the attributes of the {@link LwCharacter} object.
-     * @param character the {@link LwCharacter} object to modify
-     * @param attribute the attribute to change
-     * @param amount the amount by which to change the attribute
-     */
-    public void handleModification(final LwCharacter character, final String attribute, final int amount) {
-        handleModification(character, attribute, amount, ModifyAttributeType.change);
     }
 
     /**

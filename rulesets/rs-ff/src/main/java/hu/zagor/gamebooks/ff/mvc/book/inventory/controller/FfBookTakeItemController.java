@@ -6,21 +6,21 @@ import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.FfItem;
 import hu.zagor.gamebooks.character.item.ItemType;
+import hu.zagor.gamebooks.complex.mvc.book.inventory.controller.ComplexBookTakeItemController;
+import hu.zagor.gamebooks.complex.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.TakePurchaseItemData;
-import hu.zagor.gamebooks.mvc.book.inventory.controller.GenericBookTakeItemController;
-import hu.zagor.gamebooks.mvc.book.inventory.domain.BuySellResponse;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.mvc.book.inventory.service.MarketHandler;
 import hu.zagor.gamebooks.support.messages.MessageSource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,9 +32,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Generic take item controller for Fighting Fantasy books.
  * @author Tamas_Szekeres
  */
-public class FfBookTakeItemController extends GenericBookTakeItemController {
+public class FfBookTakeItemController extends ComplexBookTakeItemController<FfCharacter> {
 
-    @Autowired private MarketHandler marketHandler;
+    @Autowired @Qualifier("ffMarketHandler") private MarketHandler<FfCharacter> marketHandler;
     @Autowired private MessageSource messageSource;
 
     /**
@@ -168,69 +168,6 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
         return commandView == null || commandView.getViewName() == null || !commandView.getViewName().startsWith("ffFight");
     }
 
-    /**
-     * Method for buying an item in the market.
-     * @param request the {@link HttpServletRequest}
-     * @param itemId the id of the item to buy
-     * @return the response for taking the item
-     */
-    @RequestMapping(value = PageAddresses.BOOK_MARKET_BUY + "/{id}")
-    @ResponseBody
-    public final BuySellResponse handleMarketBuy(final HttpServletRequest request, @PathVariable("id") final String itemId) {
-        Assert.notNull(itemId, "The parameter 'itemId' cannot be null!");
-        Assert.isTrue(itemId.length() > 0, "The parameter 'itemId' cannot be empty!");
-
-        return doHandleMarketBuy(request, itemId);
-    }
-
-    /**
-     * Method for actually buying an item in the market.
-     * @param request the {@link HttpServletRequest}
-     * @param itemId the id of the item to buy
-     * @return the response for taking the item
-     */
-    protected BuySellResponse doHandleMarketBuy(final HttpServletRequest request, final String itemId) {
-        final HttpSessionWrapper wrapper = getWrapper(request);
-        final FfCharacter character = (FfCharacter) wrapper.getCharacter();
-
-        final BuySellResponse result = marketHandler.handleMarketPurchase(itemId, character, wrapper.getParagraph().getItemsToProcess().get(0).getCommand(),
-            getInfo().getCharacterHandler());
-        getItemInteractionRecorder().recordItemMarketMovement(wrapper, "Sale", itemId);
-
-        return result;
-    }
-
-    /**
-     * Method for selling an item in the market.
-     * @param request the {@link HttpServletRequest}
-     * @param itemId the id of the item to buy
-     * @return the data about the sale
-     */
-    @RequestMapping(value = PageAddresses.BOOK_MARKET_SELL + "/{id}")
-    @ResponseBody
-    public final BuySellResponse handleMarketSell(final HttpServletRequest request, @PathVariable("id") final String itemId) {
-        Assert.notNull(itemId, "The parameter 'itemId' cannot be null!");
-        Assert.isTrue(itemId.length() > 0, "The parameter 'itemId' cannot be empty!");
-
-        return doHandleMarketSell(request, itemId);
-    }
-
-    /**
-     * Method for actually selling an item in the market.
-     * @param request the {@link HttpServletRequest}
-     * @param itemId the id of the item to buy
-     * @return the data about the sale
-     */
-    protected BuySellResponse doHandleMarketSell(final HttpServletRequest request, final String itemId) {
-        final HttpSessionWrapper wrapper = getWrapper(request);
-        final FfCharacter character = (FfCharacter) wrapper.getCharacter();
-
-        final BuySellResponse result = marketHandler.handleMarketSell(itemId, character, wrapper.getParagraph().getItemsToProcess().get(0).getCommand(),
-            getInfo().getCharacterHandler());
-        getItemInteractionRecorder().recordItemMarketMovement(wrapper, "Purchase", itemId);
-        return result;
-    }
-
     @Override
     public FfBookInformations getInfo() {
         return (FfBookInformations) super.getInfo();
@@ -238,5 +175,15 @@ public class FfBookTakeItemController extends GenericBookTakeItemController {
 
     protected MessageSource getMessageSource() {
         return messageSource;
+    }
+
+    @Override
+    protected MarketHandler<FfCharacter> getMarketHandler() {
+        return marketHandler;
+    }
+
+    @Override
+    protected FfCharacter getCharacter(final HttpSessionWrapper wrapper) {
+        return (FfCharacter) wrapper.getCharacter();
     }
 }

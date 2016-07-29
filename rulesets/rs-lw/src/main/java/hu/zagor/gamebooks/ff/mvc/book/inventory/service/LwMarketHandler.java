@@ -1,7 +1,7 @@
 package hu.zagor.gamebooks.ff.mvc.book.inventory.service;
 
 import hu.zagor.gamebooks.complex.mvc.book.inventory.service.ComplexMarketHandler;
-import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.lw.character.LwCharacter;
 import hu.zagor.gamebooks.mvc.book.inventory.service.MarketHandler;
 import org.springframework.stereotype.Component;
 
@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
  * @author Tamas_Szekeres
  */
 @Component
-public class FfMarketHandler extends ComplexMarketHandler<FfCharacter> {
+public class LwMarketHandler extends ComplexMarketHandler<LwCharacter> {
 
     @Override
-    protected int getGold(final FfCharacter character) {
-        return character.getGold();
+    protected int getGold(final LwCharacter character) {
+        return character.getMoney().getGoldCrowns();
     }
 
 }

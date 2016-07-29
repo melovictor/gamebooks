@@ -1,10 +1,10 @@
 package hu.zagor.gamebooks.ff.ff.b.mvc.books.inventory.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
+import hu.zagor.gamebooks.complex.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.ff.b.character.Ff60Character;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.controller.FfBookTakeItemController;
-import hu.zagor.gamebooks.ff.mvc.book.inventory.domain.ConsumeItemResponse;
 import hu.zagor.gamebooks.support.bookids.english.FightingFantasy;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

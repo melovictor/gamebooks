@@ -14,7 +14,7 @@ import org.springframework.util.Assert;
  * Class for handling the attributes of a Fighting Fantasy character.
  * @author Tamas_Szekeres
  */
-public class FfAttributeHandler extends ComplexAttributeHandler {
+public class FfAttributeHandler extends ComplexAttributeHandler<FfCharacter> {
     @Autowired private DeductionCalculator deductionCalculator;
 
     /**
@@ -41,19 +41,9 @@ public class FfAttributeHandler extends ComplexAttributeHandler {
      * @param character the {@link FfCharacter} on which the modification has to be executed
      * @param attribute the attribute that has to be modified
      * @param amount the amount by which the attribute has to be modified
-     */
-    public void handleModification(final FfCharacter character, final String attribute, final int amount) {
-        handleModification(character, attribute, amount, ModifyAttributeType.change);
-        sanityCheck(character);
-    }
-
-    /**
-     * Executes the modification requested.
-     * @param character the {@link FfCharacter} on which the modification has to be executed
-     * @param attribute the attribute that has to be modified
-     * @param amount the amount by which the attribute has to be modified
      * @param type the modification type
      */
+    @Override
     public void handleModification(final FfCharacter character, final String attribute, final int amount, final ModifyAttributeType type) {
         Assert.notNull(character, "The parameter 'character' cannot be null!");
         Assert.notNull(attribute, "The parameter 'attribute' cannot be null!");

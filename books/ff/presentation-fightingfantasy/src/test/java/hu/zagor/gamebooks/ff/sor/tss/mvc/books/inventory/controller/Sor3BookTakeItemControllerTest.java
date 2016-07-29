@@ -66,7 +66,7 @@ public class Sor3BookTakeItemControllerTest {
     @Instance private FfCharacterHandler characterHandler;
     @Mock private FfCharacterItemHandler itemHandler;
     @Mock private SorCharacter character;
-    @Inject private MarketHandler marketHandler;
+    @Inject private MarketHandler<SorCharacter> marketHandler;
     @Inject private ItemInteractionRecorder itemInteractionRecorder;
     @Mock private MarketCommand marketCommand;
     private BuySellResponse buySellResponse;

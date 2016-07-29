@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.character.handler.attribute;
 
+import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttributeType;
 import hu.zagor.gamebooks.support.logging.LogInject;
 import java.lang.reflect.Field;
@@ -12,9 +13,29 @@ import org.springframework.util.StringUtils;
 /**
  * Attribute handler for the complex rulesets which can alter regular fields on an object.
  * @author Tamas_Szekeres
+ * @param <C> the actual {@link Character} type
  */
-public abstract class ComplexAttributeHandler extends DefaultAttributeHandler {
+public abstract class ComplexAttributeHandler<C extends Character> extends DefaultAttributeHandler {
     @LogInject private Logger logger;
+
+    /**
+     * Handles modifications in the attributes of the {@link Character} object.
+     * @param character the {@link Character} object to modify
+     * @param attribute the attribute to change
+     * @param amount the amount by which to change the attribute
+     */
+    public void handleModification(final C character, final String attribute, final int amount) {
+        handleModification(character, attribute, amount, ModifyAttributeType.change);
+    }
+
+    /**
+     * Handles modifications in the attributes of the {@link Character} object.
+     * @param character the {@link Character} object to modify
+     * @param attribute the attribute to change
+     * @param amount the amount by which to change the attribute
+     * @param type the type of the change
+     */
+    public abstract void handleModification(final C character, final String attribute, final int amount, final ModifyAttributeType type);
 
     void handleRegularFieldChange(final Object character, final String attribute, final int amount, final ModifyAttributeType type) {
         handleRegularFieldChange(character, attribute.split("\\."), amount, type);
