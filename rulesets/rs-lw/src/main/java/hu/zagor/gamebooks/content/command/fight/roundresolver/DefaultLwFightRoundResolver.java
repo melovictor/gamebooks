@@ -143,6 +143,9 @@ public class DefaultLwFightRoundResolver implements LwFightRoundResolver {
         if (kaiDisciplines.isMindblast() && !enemy.isMindshield()) {
             commandRatio += 2;
         }
+        if (enemy.isMindblast() && !kaiDisciplines.isMindshield()) {
+            commandRatio -= 2;
+        }
 
         return commandRatio;
     }

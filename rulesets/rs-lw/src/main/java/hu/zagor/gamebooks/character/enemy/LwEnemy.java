@@ -9,6 +9,7 @@ public class LwEnemy extends Enemy {
     private int endurance;
     private boolean mindforce;
     private boolean mindshield;
+    private boolean mindblast;
 
     public int getCombatSkill() {
         return combatSkill;
@@ -40,6 +41,14 @@ public class LwEnemy extends Enemy {
 
     public void setMindshield(final boolean mindshield) {
         this.mindshield = mindshield;
+    }
+
+    public boolean isMindblast() {
+        return mindblast;
+    }
+
+    public void setMindblast(final boolean mindblast) {
+        this.mindblast = mindblast;
     }
 
 }

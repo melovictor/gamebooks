@@ -6,9 +6,6 @@
       <xs:element name="odd" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:choice minOccurs="1" maxOccurs="unbounded">
-            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
-              <xs:complexType></xs:complexType>
-            </xs:element>
             <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
           </xs:choice>
           <xs:attribute name="min" use="required" type="xs:string" />
@@ -18,9 +15,6 @@
       <xs:element name="even" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:choice minOccurs="1" maxOccurs="unbounded">
-            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
-              <xs:complexType></xs:complexType>
-            </xs:element>
             <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
           </xs:choice>
           <xs:attribute name="min" use="required" type="xs:string" />
@@ -30,9 +24,6 @@
       <xs:element name="result" minOccurs="0" maxOccurs="unbounded">
         <xs:complexType>
           <xs:choice minOccurs="1" maxOccurs="unbounded">
-            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
-              <xs:complexType></xs:complexType>
-            </xs:element>
             <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
           </xs:choice>
           <xs:attribute name="min" use="required" type="xs:string" />
@@ -43,9 +34,6 @@
       <xs:element name="resultElse" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:choice minOccurs="1" maxOccurs="unbounded">
-            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
-              <xs:complexType></xs:complexType>
-            </xs:element>
             <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
           </xs:choice>
         </xs:complexType>
@@ -77,9 +65,6 @@
       <xs:element name="success" minOccurs="1" maxOccurs="1">
         <xs:complexType>
           <xs:choice minOccurs="1" maxOccurs="unbounded">
-            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
-              <xs:complexType></xs:complexType>
-            </xs:element>
             <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
           </xs:choice>
         </xs:complexType>
@@ -87,9 +72,6 @@
       <xs:element name="failure" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:choice minOccurs="1" maxOccurs="unbounded">
-            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
-              <xs:complexType></xs:complexType>
-            </xs:element>
             <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
           </xs:choice>
           <xs:attribute name="rolled" type="xs:integer" use="optional" />
@@ -98,9 +80,6 @@
       <xs:element name="failureEven" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:choice minOccurs="1" maxOccurs="unbounded">
-            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
-              <xs:complexType></xs:complexType>
-            </xs:element>
             <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
           </xs:choice>
         </xs:complexType>
@@ -108,9 +87,6 @@
       <xs:element name="failureOdd" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:choice minOccurs="1" maxOccurs="unbounded">
-            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
-              <xs:complexType></xs:complexType>
-            </xs:element>
             <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
           </xs:choice>
         </xs:complexType>
@@ -118,9 +94,6 @@
       <xs:element name="skip" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:choice minOccurs="1" maxOccurs="unbounded">
-            <xs:element name="loseBattleRound" minOccurs="0" maxOccurs="1">
-              <xs:complexType></xs:complexType>
-            </xs:element>
             <xs:group ref="descriptionGroup" minOccurs="0" maxOccurs="unbounded" />
           </xs:choice>
           <xs:attribute name="text" use="required" />
@@ -203,7 +176,7 @@
       <xs:enumeration value="codeword" />
       <xs:enumeration value="endurance" />
       <xs:enumeration value="combatSkill" />
-      <xs:enumeration value="goldCrown" />
+      <xs:enumeration value="money" />
       <xs:enumeration value="pos" />
       <xs:enumeration value="kai" />
     </xs:restriction>

@@ -131,6 +131,21 @@ public class LwBookSectionController extends RawBookSectionController {
         return super.handleSection(model, request, null);
     }
 
+    /**
+     * Handles the closing of the market.
+     * @param model the data model
+     * @param request the request
+     * @return the book page's name
+     */
+    @RequestMapping(value = PageAddresses.BOOK_MARKET_CLOSE)
+    public final String handleMarketClose(final Model model, final HttpServletRequest request) {
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        final LwCharacter character = (LwCharacter) wrapper.getCharacter();
+
+        getInfo().getCharacterHandler().getInteractionHandler().setMarketCommand(character);
+        return super.handleSection(model, request, null);
+    }
+
     @Override
     public LwBookInformations getInfo() {
         return (LwBookInformations) super.getInfo();

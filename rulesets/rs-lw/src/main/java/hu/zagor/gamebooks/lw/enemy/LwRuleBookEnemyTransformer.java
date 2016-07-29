@@ -15,6 +15,7 @@ public class LwRuleBookEnemyTransformer extends AbstractBookEnemyTransformer<LwE
         enemy.setCombatSkill(extractIntegerAttribute(node, "combatSkill"));
         enemy.setEndurance(extractIntegerAttribute(node, "endurance"));
         enemy.setMindforce(extractBooleanAttribute(node, "mindforce", false));
+        enemy.setMindblast(extractBooleanAttribute(node, "mindblast", false));
         enemy.setMindshield(extractBooleanAttribute(node, "mindshield", false));
     }
 

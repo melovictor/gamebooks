@@ -13,9 +13,27 @@
       <xs:attribute name="name" type="xs:string" use="required" />
       <xs:attribute name="endurance" type="xs:integer" use="required" />
       <xs:attribute name="combatSkill" type="xs:integer" use="required" />
-      <xs:attribute name="mindshield" type="xs:boolean" use="optional" default="false" />
-      <xs:attribute name="mindforce" type="xs:boolean" use="optional" default="false" />
-
+      <xs:attribute name="mindshield" type="xs:boolean" use="optional" default="true">
+        <xs:annotation>
+          <xs:documentation>
+            Protects the enemy from your mindblast, neutralizing it.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="mindforce" type="xs:boolean" use="optional" default="true">
+        <xs:annotation>
+          <xs:documentation>
+            Causes you to lose 2 ENDURANCE points in every round, unless you have the Mindshield kai discipline.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="mindblast" type="xs:boolean" use="optional" default="true">
+        <xs:annotation>
+          <xs:documentation>
+            Causes you to temporarily lose 2 COMBAT SKILL points until the end of the battle, unless you have the Mindshield kai discipline.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
 </xs:schema>

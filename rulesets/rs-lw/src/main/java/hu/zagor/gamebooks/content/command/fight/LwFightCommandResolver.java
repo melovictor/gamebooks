@@ -27,7 +27,7 @@ import org.springframework.util.StringUtils;
  */
 public class LwFightCommandResolver extends TypeAwareCommandResolver<LwFightCommand> {
     @Autowired @Qualifier("lwEnemyStatusEvaluator") private EnemyStatusEvaluator<LwEnemy> enemyStatusEvaluator;
-    @Autowired private LwFightRoundResolver roundResolver;
+    @Autowired @Qualifier("beforeAfterWrappingLwFightRoundResolver") private LwFightRoundResolver roundResolver;
 
     @Override
     protected CommandResolveResult doResolveWithResolver(final LwFightCommand command, final ResolvationData resolvationData) {

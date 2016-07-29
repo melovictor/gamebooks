@@ -40,7 +40,11 @@
         <property name="stubCommands">
           <util:map key-type="java.lang.String" value-type="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckStubCommand">
             <entry key="section" value-ref="itemCheckSectionCommandResolver" />
+            <entry key="money">
+              <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckMoneyCommandResolver" />
+            </entry>
             <entry key="item" value-ref="itemCheckItemCommandResolver" />
+            <entry key="items" value-ref="itemCheckItemsCommandResolver" />
             <entry key="kai">
               <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckKaiDisciplineCommandResolver" />
             </entry>
