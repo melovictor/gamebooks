@@ -3,8 +3,8 @@ package hu.zagor.gamebooks.lw.item;
 import hu.zagor.gamebooks.books.contentransforming.item.AbstractBookItemTransformer;
 import hu.zagor.gamebooks.character.item.EquipInfo;
 import hu.zagor.gamebooks.character.item.ItemType;
-import hu.zagor.gamebooks.character.item.LwItem;
-import hu.zagor.gamebooks.character.item.Placement;
+import hu.zagor.gamebooks.lw.character.item.LwItem;
+import hu.zagor.gamebooks.lw.character.item.Placement;
 import org.w3c.dom.Node;
 
 /**

@@ -1,9 +1,9 @@
 package hu.zagor.gamebooks.lw.lw.fftd.mvc.books.newgame.service.equipment;
 
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
-import hu.zagor.gamebooks.character.handler.item.LwCharacterItemHandler;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
+import hu.zagor.gamebooks.lw.character.handler.item.LwCharacterItemHandler;
 import hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.InitialItemDescriptor;
 import hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.LwEquipmentMapper;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;

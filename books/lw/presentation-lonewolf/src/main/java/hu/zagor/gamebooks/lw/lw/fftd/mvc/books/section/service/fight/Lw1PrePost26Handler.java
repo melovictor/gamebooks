@@ -2,9 +2,9 @@ package hu.zagor.gamebooks.lw.lw.fftd.mvc.books.section.service.fight;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
-import hu.zagor.gamebooks.content.command.fight.LwFightCommand;
-import hu.zagor.gamebooks.content.command.fight.roundresolver.LwPrePostEnemyFightHandler;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
+import hu.zagor.gamebooks.lw.content.command.fight.LwFightCommand;
+import hu.zagor.gamebooks.lw.content.command.fight.roundresolver.LwPrePostEnemyFightHandler;
 import org.springframework.stereotype.Component;
 
 /**

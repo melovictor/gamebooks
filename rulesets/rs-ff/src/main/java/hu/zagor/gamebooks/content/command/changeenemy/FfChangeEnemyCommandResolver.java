@@ -12,7 +12,7 @@ import hu.zagor.gamebooks.ff.character.FfCharacter;
 public class FfChangeEnemyCommandResolver extends AbstractChangeEnemyCommandResolver<FfEnemy> {
 
     @Override
-    String getEnemyId(final ChangeEnemyCommand command, final ResolvationData resolvationData) {
+    protected String getEnemyId(final ChangeEnemyCommand command, final ResolvationData resolvationData) {
         String id = command.getId();
 
         if ("activeEnemy".equals(id)) {

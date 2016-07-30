@@ -41,5 +41,11 @@ public abstract class AbstractChangeEnemyCommandResolver<E extends Enemy> extend
         return null;
     }
 
-    abstract String getEnemyId(final ChangeEnemyCommand command, final ResolvationData resolvationData);
+    /**
+     * Returns the id of the enemy that needs to be altered.
+     * @param command the {@link ChangeEnemyCommand}
+     * @param resolvationData the {@link ResolvationData}
+     * @return the id of the enemy
+     */
+    protected abstract String getEnemyId(final ChangeEnemyCommand command, final ResolvationData resolvationData);
 }

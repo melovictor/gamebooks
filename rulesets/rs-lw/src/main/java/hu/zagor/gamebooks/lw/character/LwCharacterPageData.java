@@ -1,11 +1,11 @@
 package hu.zagor.gamebooks.lw.character;
 
-import hu.zagor.gamebooks.character.handler.LwCharacterHandler;
-import hu.zagor.gamebooks.character.handler.attribute.LwAttributeHandler;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
-import hu.zagor.gamebooks.character.item.LwItem;
-import hu.zagor.gamebooks.character.item.Placement;
+import hu.zagor.gamebooks.lw.character.handler.LwCharacterHandler;
+import hu.zagor.gamebooks.lw.character.handler.attribute.LwAttributeHandler;
+import hu.zagor.gamebooks.lw.character.item.LwItem;
+import hu.zagor.gamebooks.lw.character.item.Placement;
 import hu.zagor.gamebooks.raw.character.RawCharacterPageData;
 import java.lang.reflect.Field;
 import java.util.ArrayList;

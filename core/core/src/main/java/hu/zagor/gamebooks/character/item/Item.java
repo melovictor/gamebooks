@@ -22,7 +22,7 @@ public class Item implements TrueCloneable {
     /**
      * Constructor for the deserializer.
      */
-    Item() {
+    protected Item() {
         id = "";
         name = "";
         itemType = ItemType.common;

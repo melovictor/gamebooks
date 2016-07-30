@@ -1,7 +1,7 @@
 package hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment;
 
-import hu.zagor.gamebooks.character.handler.item.LwCharacterItemHandler;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
+import hu.zagor.gamebooks.lw.character.handler.item.LwCharacterItemHandler;
 import java.util.Map;
 
 /**

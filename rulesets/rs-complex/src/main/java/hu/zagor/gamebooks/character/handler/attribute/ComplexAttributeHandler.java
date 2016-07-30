@@ -37,7 +37,14 @@ public abstract class ComplexAttributeHandler<C extends Character> extends Defau
      */
     public abstract void handleModification(final C character, final String attribute, final int amount, final ModifyAttributeType type);
 
-    void handleRegularFieldChange(final Object character, final String attribute, final int amount, final ModifyAttributeType type) {
+    /**
+     * Executes the changing of a regular field.
+     * @param character the character object the field of which must be changed
+     * @param attribute the field to be changed
+     * @param amount the amount of the change (to which it must be set, or by which it must be modified)
+     * @param type the type of the change (set or modify)
+     */
+    protected void handleRegularFieldChange(final Object character, final String attribute, final int amount, final ModifyAttributeType type) {
         handleRegularFieldChange(character, attribute.split("\\."), amount, type);
     }
 

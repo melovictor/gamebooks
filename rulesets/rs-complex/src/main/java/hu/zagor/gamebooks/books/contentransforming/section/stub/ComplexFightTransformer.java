@@ -49,9 +49,18 @@ public abstract class ComplexFightTransformer<E extends Enemy, C extends Complex
         return fightCommand;
     }
 
-    abstract void parseRulesetSpecificAttributes(C fightCommand, Node node);
+    /**
+     * Does ruleset-specific parsing.
+     * @param fightCommand the {@link ComplexFightCommand} object that needs to be filled out
+     * @param node the {@link Node}
+     */
+    protected abstract void parseRulesetSpecificAttributes(C fightCommand, Node node);
 
-    abstract C getFightCommandBean();
+    /**
+     * Returns an empty fight command bean to be filled.
+     * @return the fight command bean
+     */
+    protected abstract C getFightCommandBean();
 
     public void setFightTransformers(final Map<String, CommandSubTransformer<C>> fightTransformers) {
         this.fightTransformers = fightTransformers;

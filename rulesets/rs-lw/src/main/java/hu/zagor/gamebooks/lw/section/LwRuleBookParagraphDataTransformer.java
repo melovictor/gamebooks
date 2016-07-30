@@ -1,9 +1,9 @@
 package hu.zagor.gamebooks.lw.section;
 
 import hu.zagor.gamebooks.books.contentransforming.section.AbstractBookParagraphDataTransformer;
-import hu.zagor.gamebooks.content.LwParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.choice.ChoicePositionCounter;
+import hu.zagor.gamebooks.lw.content.LwParagraphData;
 
 /**
  * Transformer for Lone Wolf books.

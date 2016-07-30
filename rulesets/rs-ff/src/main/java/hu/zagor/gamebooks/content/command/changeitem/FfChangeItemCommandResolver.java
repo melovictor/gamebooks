@@ -14,7 +14,7 @@ import java.util.List;
 public class FfChangeItemCommandResolver extends AbstractChangeItemCommandResolver<FfCharacter, FfCharacterItemHandler, FfItem> {
 
     @Override
-    List<Item> getItemsToChange(final ChangeItemCommand command, final FfCharacter character, final FfCharacterItemHandler itemHandler) {
+    protected List<Item> getItemsToChange(final ChangeItemCommand command, final FfCharacter character, final FfCharacterItemHandler itemHandler) {
         List<Item> itemsToChange;
         if ("equippedWeapon".equals(command.getId())) {
             itemsToChange = Arrays.asList((Item) itemHandler.getEquippedWeapon(character));

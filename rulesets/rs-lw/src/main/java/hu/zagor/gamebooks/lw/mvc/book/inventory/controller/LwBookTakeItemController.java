@@ -1,18 +1,18 @@
 package hu.zagor.gamebooks.lw.mvc.book.inventory.controller;
 
 import hu.zagor.gamebooks.PageAddresses;
-import hu.zagor.gamebooks.character.handler.LwCharacterHandler;
-import hu.zagor.gamebooks.character.handler.item.LwCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.ItemType;
-import hu.zagor.gamebooks.character.item.LwItem;
 import hu.zagor.gamebooks.complex.mvc.book.inventory.controller.ComplexBookTakeItemController;
 import hu.zagor.gamebooks.complex.mvc.book.inventory.domain.ConsumeItemResponse;
-import hu.zagor.gamebooks.content.LwParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.command.CommandView;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
-import hu.zagor.gamebooks.domain.LwBookInformations;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
+import hu.zagor.gamebooks.lw.character.handler.LwCharacterHandler;
+import hu.zagor.gamebooks.lw.character.handler.item.LwCharacterItemHandler;
+import hu.zagor.gamebooks.lw.character.item.LwItem;
+import hu.zagor.gamebooks.lw.content.LwParagraphData;
+import hu.zagor.gamebooks.lw.domain.LwBookInformations;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.mvc.book.inventory.service.MarketHandler;
 import hu.zagor.gamebooks.support.messages.MessageSource;

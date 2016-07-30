@@ -17,7 +17,7 @@ import org.w3c.dom.Node;
 public class FfFightTransformer extends ComplexFightTransformer<FfEnemy, FfFightCommand> {
 
     @Override
-    void parseRulesetSpecificAttributes(final FfFightCommand ffFightCommand, final Node node) {
+    protected void parseRulesetSpecificAttributes(final FfFightCommand ffFightCommand, final Node node) {
         ffFightCommand.setBattleType(extractAttribute(node, "type"));
         ffFightCommand.setResolver(extractAttribute(node, "resolver", "basic"));
         ffFightCommand.setForceOrder(extractBooleanAttribute(node, "forceOrder", false));
@@ -50,7 +50,7 @@ public class FfFightTransformer extends ComplexFightTransformer<FfEnemy, FfFight
     }
 
     @Override
-    FfFightCommand getFightCommandBean() {
+    protected FfFightCommand getFightCommandBean() {
         return getBeanFactory().getBean(FfFightCommand.class);
     }
 

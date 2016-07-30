@@ -2,12 +2,12 @@ package hu.zagor.gamebooks.lw.section;
 
 import hu.zagor.gamebooks.books.contentransforming.section.BookParagraphResolver;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
-import hu.zagor.gamebooks.character.handler.LwCharacterHandler;
-import hu.zagor.gamebooks.content.LwParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CommandExecuter;
 import hu.zagor.gamebooks.content.modifyattribute.ModifyAttribute;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
+import hu.zagor.gamebooks.lw.character.handler.LwCharacterHandler;
+import hu.zagor.gamebooks.lw.content.LwParagraphData;
 import hu.zagor.gamebooks.raw.section.RawRuleBookParagraphResolver;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

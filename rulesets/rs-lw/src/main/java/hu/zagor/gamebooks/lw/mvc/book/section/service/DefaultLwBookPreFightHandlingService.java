@@ -1,10 +1,10 @@
 package hu.zagor.gamebooks.lw.mvc.book.section.service;
 
 import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.character.handler.item.LwCharacterItemHandler;
-import hu.zagor.gamebooks.character.item.LwItem;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
-import hu.zagor.gamebooks.domain.LwBookInformations;
+import hu.zagor.gamebooks.lw.character.handler.item.LwCharacterItemHandler;
+import hu.zagor.gamebooks.lw.character.item.LwItem;
+import hu.zagor.gamebooks.lw.domain.LwBookInformations;
 import hu.zagor.gamebooks.support.logging.LogInject;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Component;

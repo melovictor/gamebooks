@@ -8,6 +8,7 @@ import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.TypeAwareCommandResolver;
 import java.lang.reflect.Field;
 import java.util.List;
+import javax.swing.plaf.basic.BasicComboBoxUI.ItemHandler;
 import org.mvel2.MVEL;
 import org.springframework.util.ReflectionUtils;
 
@@ -48,6 +49,13 @@ public abstract class AbstractChangeItemCommandResolver<C extends Character, H e
         return null;
     }
 
-    abstract List<Item> getItemsToChange(final ChangeItemCommand command, final C character, final H itemHandler);
+    /**
+     * Returns the list of items that needs to be changed.
+     * @param command the {@link ChangeItemCommand} object
+     * @param character the {@link Character} object
+     * @param itemHandler the {@link ItemHandler} object
+     * @return the list of items
+     */
+    protected abstract List<Item> getItemsToChange(final ChangeItemCommand command, final C character, final H itemHandler);
 
 }

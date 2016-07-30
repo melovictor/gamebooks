@@ -1,7 +1,7 @@
 package hu.zagor.gamebooks.lw.enemy;
 
 import hu.zagor.gamebooks.books.contentransforming.enemy.AbstractBookEnemyTransformer;
-import hu.zagor.gamebooks.character.enemy.LwEnemy;
+import hu.zagor.gamebooks.lw.character.enemy.LwEnemy;
 import org.w3c.dom.Node;
 
 /**
