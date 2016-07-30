@@ -32,6 +32,7 @@ public class LwCharacterPageData extends RawCharacterPageData {
     private final List<LwItem> normalEquipment = new ArrayList<>(8);
     private final List<LwItem> specialEquipment = new ArrayList<>();
     private final List<LwItem> shadows = new ArrayList<>();
+    private final List<LwItem> preFightItems = new ArrayList<>();
     private final int gold;
     private int oldManExchange;
 
@@ -67,6 +68,9 @@ public class LwCharacterPageData extends RawCharacterPageData {
             if ("defWpn".equals(item.getId())) {
                 defWpn = item;
             } else {
+                if (item.isPreFight()) {
+                    preFightItems.add(item);
+                }
                 if (item.getItemType() == ItemType.shadow) {
                     shadows.add(item);
                 } else if (item.getPlacement() == Placement.weapon) {
@@ -152,6 +156,10 @@ public class LwCharacterPageData extends RawCharacterPageData {
 
     public void setOldManExchange(final int oldManExchange) {
         this.oldManExchange = oldManExchange;
+    }
+
+    public List<LwItem> getPreFightItems() {
+        return preFightItems;
     }
 
 }

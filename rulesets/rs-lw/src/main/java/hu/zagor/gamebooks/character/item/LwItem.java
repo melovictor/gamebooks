@@ -10,6 +10,7 @@ public class LwItem extends Item {
     private int combatSkill;
     private Placement placement;
     private String weaponType;
+    private boolean preFight;
 
     /**
      * Default constructor for the serializer.
@@ -67,6 +68,14 @@ public class LwItem extends Item {
 
     public void setWeaponType(final String weaponType) {
         this.weaponType = weaponType;
+    }
+
+    public boolean isPreFight() {
+        return preFight;
+    }
+
+    public void setPreFight(final boolean preFight) {
+        this.preFight = preFight;
     }
 
 }

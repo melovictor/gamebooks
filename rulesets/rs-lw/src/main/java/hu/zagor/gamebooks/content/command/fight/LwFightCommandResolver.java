@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.content.command.fight;
 
+import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.enemy.LwEnemy;
@@ -26,6 +27,7 @@ import org.springframework.util.StringUtils;
  * @author Tamas_Szekeres
  */
 public class LwFightCommandResolver extends TypeAwareCommandResolver<LwFightCommand> {
+    private static final int MAX_ALETHER_BONUS = 99;
     @Autowired @Qualifier("lwEnemyStatusEvaluator") private EnemyStatusEvaluator<LwEnemy> enemyStatusEvaluator;
     @Autowired @Qualifier("beforeAfterWrappingLwFightRoundResolver") private LwFightRoundResolver roundResolver;
 
@@ -40,7 +42,15 @@ public class LwFightCommandResolver extends TypeAwareCommandResolver<LwFightComm
         result.setFinished(!command.isOngoing());
         command.setKeepOpen(command.isOngoing());
         applyBattleMessages(data, command);
+        if (!command.isOngoing()) {
+            removeTempBuffs(resolvationData);
+        }
         return result;
+    }
+
+    private void removeTempBuffs(final ResolvationData resolvationData) {
+        final Character character = resolvationData.getCharacter();
+        resolvationData.getCharacterHandler().getItemHandler().removeItem(character, "50000", MAX_ALETHER_BONUS);
     }
 
     private void applyBattleMessages(final ParagraphData rootData, final LwFightCommand command) {

@@ -14,14 +14,17 @@ import hu.zagor.gamebooks.domain.LwBookInformations;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
 import hu.zagor.gamebooks.lw.character.LwCharacterPageData;
 import hu.zagor.gamebooks.lw.mvc.book.section.domain.LwFightCommandForm;
+import hu.zagor.gamebooks.lw.mvc.book.section.service.LwBookPreFightHandlingService;
 import hu.zagor.gamebooks.mvc.book.section.controller.GenericBookSectionController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.raw.mvc.book.section.controller.RawBookSectionController;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Generic section selection controller for Lone Wolf books.
@@ -29,6 +32,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 public class LwBookSectionController extends RawBookSectionController {
     private static final int MEAL_MISSOUT_DEDUCTION = -3;
+    @Autowired private LwBookPreFightHandlingService preFightService;
 
     /**
      * Basic constructor that expects the spring id of the book's bean and passes it down to the {@link GenericBookSectionController}.
@@ -143,6 +147,19 @@ public class LwBookSectionController extends RawBookSectionController {
         final LwCharacter character = (LwCharacter) wrapper.getCharacter();
 
         getInfo().getCharacterHandler().getInteractionHandler().setMarketCommand(character);
+        return super.handleSection(model, request, null);
+    }
+
+    /**
+     * Entry point for handling usage/consumption of pre-fight items.
+     * @param model the {@link Model} object
+     * @param request the {@link HttpServletRequest} item
+     * @param itemId the id of the item to be used
+     * @return the book page's name
+     */
+    @RequestMapping(value = PageAddresses.PRE_FIGHT_ITEM_USAGE)
+    public final String preFightHandler(final Model model, final HttpServletRequest request, @RequestParam("id") final String itemId) {
+        preFightService.handlePreFightItemUsage(getInfo(), getWrapper(request), itemId);
         return super.handleSection(model, request, null);
     }
 

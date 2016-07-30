@@ -102,8 +102,10 @@ public class LwBookTakeItemController extends ComplexBookTakeItemController<LwCh
 
     private void consumeItem(final LwCharacter character, final LwItem item) {
         final LwCharacterHandler characterHandler = getInfo().getCharacterHandler();
-        characterHandler.getItemHandler().removeItem(character, item.getId(), 1);
+        final LwCharacterItemHandler itemHandler = characterHandler.getItemHandler();
+        itemHandler.removeItem(character, item.getId(), 1);
         characterHandler.getAttributeHandler().handleModification(character, "endurance", item.getEndurance());
+        itemHandler.addItem(character, "50000", item.getCombatSkill());
     }
 
     private boolean isMeal(final LwItem item) {

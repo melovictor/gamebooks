@@ -78,9 +78,14 @@ var lw = (function() {
 	function random() {
 		form.submit("post", "random", "actionEnd");
 	}
+	function useBeforeFight() {
+		var itemId = $(this).data("item-id");
+		form.submit("post", "preFight?id=" + itemId, "ffEnemyList");
+	}
 	
 	return {
 		attack : attack,
+		useBeforeFight : useBeforeFight,
 		flee : flee,
 		random : random
 	};
@@ -105,4 +110,6 @@ $(function() {
 		.on("click", "#marketForSale [data-id]:not([data-stock='0'])", market.buy)
 		.on("click", "#marketForPurchase [data-id]:not([data-stock='0'])", market.sell)
 		.on("click", "[data-market-close]", market.close);
+	$("#preFightItems")
+		.on("click", "[data-item-id]", lw.useBeforeFight);
 });
