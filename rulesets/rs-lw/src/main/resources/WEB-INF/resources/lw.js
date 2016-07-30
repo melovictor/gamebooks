@@ -95,7 +95,7 @@ $(function() {
 	$("#lwMenu")
 		.on("click", "#gamebookCharacterPageWrapper [data-item-equipped] span:not(.remove)", backspan, inventory.changeEquip)
 		.on("click", "#gamebookCharacterPageWrapper span.remove", backspan, inventory.dropItem)
-		.on("click", ".lwSlot[data-item-type='provision'] span, .lwSlot[data-item-type='potion'] span", backspan, inventory.consume);
+		.on("click", ".lwSlot[data-item-type='provision'] span:not(.remove), .lwSlot[data-item-type='potion'] span", backspan, inventory.consume);
 
 	$("[data-attack='lw']").on("click", lw.attack);
 	$("[data-flee='lw']").on("click", lw.flee);

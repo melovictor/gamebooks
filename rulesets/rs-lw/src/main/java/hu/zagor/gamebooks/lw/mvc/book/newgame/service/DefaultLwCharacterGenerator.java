@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.lw.mvc.book.newgame.service;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.character.CharacterGenerator;
+import hu.zagor.gamebooks.character.handler.item.LwCharacterItemHandler;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
 import hu.zagor.gamebooks.domain.BookContentSpecification;
 import hu.zagor.gamebooks.domain.BookInformations;
@@ -56,7 +57,9 @@ public class DefaultLwCharacterGenerator implements CharacterGenerator {
         final Map<String, Object> result = new HashMap<>();
         disciplineMapper.get(bookContentSpecification.getLevel()).mapDisciplines(character, result);
         final int bookId = info.getPosition().intValue();
-        equipmentMapper.get(bookId).mapEquipments(character, result, info.getCharacterHandler().getItemHandler());
+        final LwCharacterItemHandler itemHandler = info.getCharacterHandler().getItemHandler();
+        itemHandler.addItem(characterObject, "40000", 1);
+        equipmentMapper.get(bookId).mapEquipments(character, result, itemHandler);
 
         result.put("lwEndurance", endurance[0] + diceRenderer.render(DICE_SIDE, endurance));
         result.put("lwCombatSkill", combatSkill[0] + diceRenderer.render(DICE_SIDE, combatSkill));

@@ -26,6 +26,7 @@ public enum ItemType {
     gloves(true, 1),
     curseSickness(false),
     valuable(false),
+    backpack(false, 1),
     special(false);
 
     static {

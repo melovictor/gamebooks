@@ -16,6 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ClipboardListener extends Thread implements ClipboardOwner {
+    private static final Pattern EMPTY_P_REMOVING_PATTERN = Pattern.compile("\\[p\\]\\[\\/p\\][\\r\\n \\t]+");
     private static final Pattern IMAGE_NAME_PATTERN = Pattern.compile("b-([0-9]+)\\.jpg");
     private static final Pattern IMAGE_DIR_PATTERN = Pattern.compile("([a-z]+[0-9]+)(?:[a-z]+){0,1}");
     private static final Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -155,6 +156,9 @@ public class ClipboardListener extends Thread implements ClipboardOwner {
                 newContent = content;
             }
         }
+
+        final Matcher matcher = EMPTY_P_REMOVING_PATTERN.matcher(newContent);
+        newContent = matcher.replaceAll("");
 
         System.out.println("All targeted conversion failed, fallback on standard conversion:");
         System.out.println(newContent);

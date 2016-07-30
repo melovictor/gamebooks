@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.character.handler.item;
 
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.item.Item;
+import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.character.item.LwItem;
 import hu.zagor.gamebooks.character.item.Placement;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
@@ -22,24 +23,50 @@ public class LwCharacterItemHandler extends DefaultCharacterItemHandler {
     public int addItem(final Character characterObject, final String itemId, final int amount) {
         final LwCharacter character = (LwCharacter) characterObject;
 
-        final int result;
+        int result = 0;
         if ("gold".equals(itemId)) {
             final Money money = character.getMoney();
             result = money.addGoldCrowns(amount);
         } else {
             final LwItem resolvedItem = (LwItem) getItemFactory().resolveItem(itemId);
-            final List<Item> items = getItems(character, resolvedItem.getPlacement());
-            if (canTakeItem(resolvedItem, items)) {
-                result = super.addItem(character, itemId, amount);
-            } else {
-                result = 0;
+            for (int i = 0; i < amount; i++) {
+                if (resolvedItem.getPlacement() != Placement.backpack || hasBackpack(character)) {
+                    final List<Item> items = getItems(character, resolvedItem.getPlacement());
+                    if (hasPlaceInpackage(resolvedItem, items) && equipStateNotClashing(resolvedItem, items)) {
+                        result += super.addItem(character, resolvedItem, 1);
+                    }
+                }
             }
         }
 
         return result;
     }
 
-    private boolean canTakeItem(final LwItem resolvedItem, final List<Item> items) {
+    private boolean equipStateNotClashing(final LwItem resolvedItem, final List<Item> items) {
+        boolean clash = false;
+
+        if (resolvedItem.getPlacement() == Placement.special) {
+            final ItemType itemType = resolvedItem.getItemType();
+            final int maxEquipped = itemType.getMaxEquipped();
+            if (maxEquipped > 0) {
+                int totalEquipped = 1;
+                for (final Item item : items) {
+                    if (item.getItemType() == itemType) {
+                        totalEquipped++;
+                    }
+                }
+                clash = totalEquipped > maxEquipped;
+            }
+        }
+
+        return !clash;
+    }
+
+    private boolean hasBackpack(final LwCharacter character) {
+        return hasItem(character, "40000");
+    }
+
+    private boolean hasPlaceInpackage(final LwItem resolvedItem, final List<Item> items) {
         boolean canTake;
         final String itemId = resolvedItem.getId();
         if ("defWpn".equals(itemId)) {
