@@ -6,7 +6,7 @@ public final class EndlessQuest {
     public static final String TITLE = "Endless Quest";
 
     public static final long DUNGEON_OF_DREAD = BASE + 1;
-
+    public static final long MOUNTAIN_OF_MIRRORS = BASE + 2;
     public static final long PILLARS_OF_PENTEGARN = BASE + 3;
     public static final long RETURN_TO_BROOKMERE = BASE + 4;
 
