@@ -20,7 +20,7 @@
 			<ul>
 				<c:forEach items="${availableLanguages}" var="language">
 					<li class="<c:if test="${language.localeFormat eq selectedLanguage}">languageSelected</c:if>">
-					   <div class="flag_${language.flagCode}"></div>
+					   <div class="flag_${language.flagCode}" data-lang="${language.flagCode}"></div>
 						${language.selfName}
 					</li>
 				</c:forEach>

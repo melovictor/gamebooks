@@ -28,7 +28,7 @@ var images = (function() {
 
 var menu = (function() {
 	function updateLanguage(newElement) {
-		changeLanguage(newElement.find("img").attr("alt"));
+		changeLanguage(newElement.find("[data-lang]").data("lang"));
 	}
 
 	function changeLanguage(newLang) {
