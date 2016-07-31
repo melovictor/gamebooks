@@ -20,8 +20,7 @@
 			<ul>
 				<c:forEach items="${availableLanguages}" var="language">
 					<li class="<c:if test="${language.localeFormat eq selectedLanguage}">languageSelected</c:if>">
-						<img src="<c:url value="/resources/img/flag/${language.flagCode}.png" />"
-						alt="${language.localeCode}<c:if test="${not empty language.countryCode }">_${language.countryCode}</c:if>" />
+					   <div class="flag_${language.flagCode}"></div>
 						${language.selfName}
 					</li>
 				</c:forEach>
