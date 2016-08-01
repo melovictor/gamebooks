@@ -62,7 +62,7 @@ public class Ff36FightCommandCustomSubResolver implements FightCommandSubResolve
                     result = Arrays.asList((ParagraphData) command.getWin().get(0).getParagraphData());
                     removeDeadSoldiers(command, resolvationData);
                 } else {
-                    command.setBattleType("custom36SelectDead");
+                    command.setBattleType("ff36customSelectDead");
                 }
             } else {
                 command.setOngoing(false);

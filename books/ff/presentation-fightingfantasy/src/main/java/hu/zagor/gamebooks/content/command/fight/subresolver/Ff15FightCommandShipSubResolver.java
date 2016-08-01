@@ -38,7 +38,7 @@ public class Ff15FightCommandShipSubResolver extends FightCommandBasicSubResolve
         if (FfFightCommand.ATTACKING.equals(lastFightCommand)) {
             handleAttacking(command, resolvationData, resolveList);
         } else {
-            command.setBattleType("ship-15");
+            command.setBattleType("ff15ship");
             command.setOngoing(true);
         }
     }

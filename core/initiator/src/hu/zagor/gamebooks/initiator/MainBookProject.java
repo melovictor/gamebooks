@@ -16,7 +16,7 @@ public class MainBookProject {
         final List<BookLangData> books = new ArrayList<>();
 
         books.add(getSotkEn(true));
-        books.add(getSotkHu(false));
+        books.add(getSotkHu(true));
         books.add(getSotkPtBr(false));
 
         new GenerateBookProjectFiles().generateBookProjectFiles(getBaseData(), books);
@@ -26,19 +26,19 @@ public class MainBookProject {
         final BookBaseData baseData = new BookBaseData();
 
         baseData.setMainLanguage("en");
-        baseData.setSeriesCode("eq"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm, lw
-        baseData.setTitleCode("mom");
-        baseData.setPosition(2);
-        baseData.setCollectorCode("eq"); // ff, cyoa, z, fyf, gyg, eq, tm, lw
-        baseData.setCollectorName("endlessquest"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine, lonewolf
-        baseData.setRuleset("raw"); // raw, tm, ff, lw
-        baseData.setHasEnemies(false);
-        baseData.setHasInventory(false);
-        baseData.setHasItems(false);
-        baseData.setHasMap(false);
+        baseData.setSeriesCode("ff"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm, lw
+        baseData.setTitleCode("sob");
+        baseData.setPosition(16);
+        baseData.setCollectorCode("ff"); // ff, cyoa, z, fyf, gyg, eq, tm, lw
+        baseData.setCollectorName("fightingfantasy"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine, lonewolf
+        baseData.setRuleset("ff"); // raw, tm, ff, lw
+        baseData.setHasEnemies(true);
+        baseData.setHasInventory(true);
+        baseData.setHasItems(true);
+        baseData.setHasMap(true);
         baseData.setMediaProject(true);
-        baseData.setDefaultSkillTestType(""); // Le: lower or equal; L: lower; if neither, should be empty!
-        baseData.setCharPageRequired(false);
+        baseData.setDefaultSkillTestType("L"); // Le: lower or equal; L: lower; if neither, should be empty!
+        baseData.setCharPageRequired(true);
 
         return baseData;
     }
@@ -57,11 +57,11 @@ public class MainBookProject {
 
     private BookLangData getSotkHu(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
-        data.setSeriesCode("mf");
-        data.setPosition(1);
-        data.setBookId("MaganyosFarkas.MENEKULES_A_SOTETSEGBOL");
+        data.setSeriesCode("kjk");
+        data.setPosition(7);
+        data.setBookId("KalandJatekKockazat.A_VERTENGEREK");
         data.setLang("hu");
-        data.setTitle("Menekülés a sötétségből");
+        data.setTitle("A Vértengerek");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;
@@ -70,9 +70,9 @@ public class MainBookProject {
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setHidden(true);
-        data.setBookId("EndlessQuest.MOUNTAIN_OF_MIRRORS");
+        data.setBookId("FightingFantasy.SEAS_OF_BLOOD");
         data.setLang("en");
-        data.setTitle("Mountain of Mirrors");
+        data.setTitle("Seas of Blood");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;

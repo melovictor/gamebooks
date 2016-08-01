@@ -8,7 +8,6 @@ import hu.zagor.gamebooks.ff.ff.votv.character.Ff38Character;
  * Attribute handler for FF38.
  * @author Tamas_Szekeres
  */
-
 public class Ff38AttributeHandler extends FfAttributeHandler {
 
     @Override

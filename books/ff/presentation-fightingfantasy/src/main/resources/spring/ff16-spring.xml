@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.FightingFantasy.SEAS_OF_BLOOD" id="ff16Id" />
+
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff16Info" c:id-ref="ff16Id" p:resourceDir="ff16" p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverL" p:locale-ref="enLocale" p:position="16" p:series-ref="ffTitle" p:title="Seas of Blood" p:characterHandler-ref="ff16CharacterHandler" p:commandResolvers-ref="ffCommandResolvers" p:unfinished="true" p:hidden="true" p:characterBeanId="ff16Character" p:characterPageDataBeanId="ff16CharacterPageData">
+    <property name="contents">
+      <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="ff16enemies.xml" c:items="ff16items.xml" c:paragraphs="ff16content.xml" />
+    </property>
+    <property name="contentSpecification">
+      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="true" />
+    </property>
+  </bean>
+
+  <bean class="hu.zagor.gamebooks.character.handler.FfCharacterHandler" parent="ffCharacterHandler" id="ff16CharacterHandler">
+    <property name="characterGenerator">
+      <bean class="hu.zagor.gamebooks.ff.ff.sob.mvc.books.newgame.service.Ff16CharacterGenerator" />
+    </property>
+    <property name="attributeHandler">
+      <bean class="hu.zagor.gamebooks.ff.ff.sob.character.handler.attribute.Ff16AttributeHandler" />
+    </property>
+    <property name="itemHandler">
+      <bean class="hu.zagor.gamebooks.ff.ff.sob.character.handler.item.Ff16CharacterItemHandler" />
+    </property>
+  </bean>
+
+</beans>

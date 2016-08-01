@@ -4,15 +4,15 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <c:if test="${hasInventory || hasMap}">
-    <h1>
-        <spring:message code="page.menu.ff.adventureSheet" />
-    </h1>
-    <div id="inventory">
-       <tiles:insertTemplate template="../charpage/ssl3.jsp" />
-       <tiles:insertTemplate template="../charpage/gpp.jsp" />
-       <tiles:insertTemplate template="../charpage/eq.jsp" />
-       <tiles:insertTemplate template="../charpage/shadow.jsp" />
-       <tiles:insertTemplate template="../charpage/map.jsp" />
-       <tiles:insertTemplate template="../charpage/notes.jsp" />
-    </div>
+	<h1>
+		<spring:message code="page.menu.ff.adventureSheet" />
+	</h1>
+	<div id="inventory">
+		<tiles:insertTemplate template="../charpage/ssl3.jsp" />
+		<tiles:insertTemplate template="../charpage/gpp.jsp" />
+		<tiles:insertTemplate template="../charpage/eq.jsp" />
+		<tiles:insertTemplate template="../charpage/shadow.jsp" />
+		<tiles:insertTemplate template="../charpage/map.jsp" />
+		<tiles:insertTemplate template="../charpage/notes.jsp" />
+	</div>
 </c:if>
