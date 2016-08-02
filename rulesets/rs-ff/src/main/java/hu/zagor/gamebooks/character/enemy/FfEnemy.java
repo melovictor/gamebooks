@@ -20,6 +20,7 @@ public class FfEnemy extends Enemy {
     private int staminaAutoDamage;
     private int staminaDamageWhileInactive;
     private int skillDamage;
+    private int luckDamage;
     private int attackStrength;
     private int attackStrengthBonus;
     private int attackStrengthDices = 2;
@@ -253,6 +254,14 @@ public class FfEnemy extends Enemy {
 
     public void setIndifferentAlly(final boolean indifferentAlly) {
         this.indifferentAlly = indifferentAlly;
+    }
+
+    public int getLuckDamage() {
+        return luckDamage;
+    }
+
+    public void setLuckDamage(final int luckDamage) {
+        this.luckDamage = luckDamage;
     }
 
 }

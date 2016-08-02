@@ -28,8 +28,8 @@
 	    <div class="ffMainAttributeValue" data-attribute-gold><fmt:formatNumber value="${data.gold}" groupingUsed="true" /></div>
 	</div>
     <div class="ffMainAttribute4">
-        <span class="ffMainAttribute"><spring:message code="page.ff16.attribute.slaves" /></span>
-        <div class="ffMainAttributeValue" data-attribute-gold><fmt:formatNumber value="${data.slaves}" groupingUsed="true" /></div>
+        <span class="ffMainAttribute"><spring:message code="page.ff16.attribute.slave" /></span>
+        <div class="ffMainAttributeValue" data-attribute-gold><fmt:formatNumber value="${data.slave}" groupingUsed="true" /></div>
     </div>
 
 	<tiles:insertTemplate template="../charpage/eq.jsp" />

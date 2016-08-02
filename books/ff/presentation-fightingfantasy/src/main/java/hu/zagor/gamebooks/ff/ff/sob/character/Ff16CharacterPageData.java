@@ -17,7 +17,7 @@ public class Ff16CharacterPageData extends FfCharacterPageData {
     private final int initialCrewStrike;
     private final int initialCrewStrength;
     private final int time;
-    private final int slaves;
+    private final int slave;
 
     /**
      * Bean for storing data to display on the character page for Fighting Fantasy 16 book.
@@ -32,7 +32,7 @@ public class Ff16CharacterPageData extends FfCharacterPageData {
         initialCrewStrike = character.getInitialCrewStrike();
         initialCrewStrength = character.getInitialCrewStrength();
         time = character.getTime();
-        slaves = character.getSlaves();
+        slave = character.getSlave();
     }
 
     public int getCrewStrike() {
@@ -47,8 +47,8 @@ public class Ff16CharacterPageData extends FfCharacterPageData {
         return time;
     }
 
-    public int getSlaves() {
-        return slaves;
+    public int getSlave() {
+        return slave;
     }
 
     public int getInitialCrewStrike() {

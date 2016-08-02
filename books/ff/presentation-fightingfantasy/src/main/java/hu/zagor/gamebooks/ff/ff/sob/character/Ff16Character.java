@@ -16,7 +16,7 @@ public class Ff16Character extends FfCharacter {
     private int initialCrewStrike;
     private int initialCrewStrength;
     private int time;
-    private int slaves;
+    private int slave;
 
     public int getCrewStrike() {
         return crewStrike;
@@ -42,12 +42,12 @@ public class Ff16Character extends FfCharacter {
         this.time = time;
     }
 
-    public int getSlaves() {
-        return slaves;
+    public int getSlave() {
+        return slave;
     }
 
-    public void setSlaves(final int slaves) {
-        this.slaves = slaves;
+    public void setSlave(final int slave) {
+        this.slave = slave;
     }
 
     public int getInitialCrewStrike() {

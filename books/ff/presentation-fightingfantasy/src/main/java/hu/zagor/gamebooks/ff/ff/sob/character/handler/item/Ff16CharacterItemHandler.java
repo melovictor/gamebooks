@@ -15,7 +15,7 @@ public class Ff16CharacterItemHandler extends FfCharacterItemHandler {
         if ("slave".equals(itemId)) {
             addedItem = amount;
             final Ff16Character character = (Ff16Character) characterObject;
-            character.setSlaves(character.getSlaves() + amount);
+            character.setSlave(character.getSlave() + amount);
         } else {
             addedItem = super.addItem(characterObject, itemId, amount);
         }
