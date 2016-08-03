@@ -4,7 +4,7 @@
 
   <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.FightingFantasy.SEAS_OF_BLOOD" id="ff16Id" />
 
-  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff16Info" c:id-ref="ff16Id" p:resourceDir="ff16" p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverL" p:locale-ref="enLocale" p:position="16" p:series-ref="ffTitle" p:title="Seas of Blood" p:characterHandler-ref="ff16CharacterHandler" p:commandResolvers-ref="ffCommandResolvers" p:unfinished="true" p:hidden="true" p:characterBeanId="ff16Character" p:characterPageDataBeanId="ff16CharacterPageData">
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff16Info" c:id-ref="ff16Id" p:resourceDir="ff16" p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverL" p:locale-ref="enLocale" p:position="16" p:series-ref="ffTitle" p:title="Seas of Blood" p:characterHandler-ref="ff16CharacterHandler" p:commandResolvers-ref="ff16CommandResolvers" p:unfinished="true" p:hidden="true" p:characterBeanId="ff16Character" p:characterPageDataBeanId="ff16CharacterPageData">
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="ff16enemies.xml" c:items="ff16items.xml" c:paragraphs="ff16content.xml" />
     </property>
@@ -23,6 +23,17 @@
     <property name="itemHandler">
       <bean class="hu.zagor.gamebooks.ff.ff.sob.character.handler.item.Ff16CharacterItemHandler" />
     </property>
+  </bean>
+
+  <bean id="ff16CommandResolvers" factory-method="merge" class="hu.zagor.gamebooks.support.spring.MapMerger">
+    <constructor-arg name="mapA" ref="ffCommandResolvers" />
+    <constructor-arg name="mapB">
+      <util:map key-type="java.lang.Class" value-type="hu.zagor.gamebooks.content.command.CommandResolver">
+        <entry key="hu.zagor.gamebooks.content.command.attributetest.AttributeTestCommand">
+          <bean class="hu.zagor.gamebooks.ff.ff.sob.content.command.attributetest.Ff16AttributeTestCommandResolver" />
+        </entry>
+      </util:map>
+    </constructor-arg>
   </bean>
 
 </beans>

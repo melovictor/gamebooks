@@ -73,7 +73,16 @@
     </text>
     <death />
   </p>
-  <!-- 7 -->
+  <p id="7">
+    <test against="crewStrength">
+      <success>
+        <next id="387"></next>
+      </success>
+      <failure>
+        <next id="356"></next>
+      </failure>
+    </test>
+  </p>
   <p id="8">
     <text>
         [p]Amikor az ajtó felé iramodsz, a szörny hatalmasat csap farkával. A verem oldalához csapódsz. Kalandod itt véget ér.[/p]
@@ -90,7 +99,7 @@
     <text>
         [p]Tovább hajózva elhaladsz a Keleti-partvidék Tűztengernek nevezett kopár, vörös homokdombjai mellett - ez a vidék a terméketlen föld színéről kapta a nevét.[/p]
     </text>
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]Utazási napjaid számát növeld 5-tel a HAJÓNAPLÓDBAN.[/p]
@@ -141,7 +150,14 @@
     <add amount="-1" to="skill" />
     <next id="210"></next>
   </p>
-  <!-- 15 -->
+  <p id="15">
+    <text>
+        [p]A Déli-tengeren hajózva mit teszel?[/p]
+    </text>
+    <next id="301">Shurrupak felé veszed az utadat, hogy a városban eladd a rabszolgáidat, vagy hogy néhány új kalózt toborozz a hajódra?</next>
+    <next id="140">A nagy Kish-deltán mész felfelé, és felhajózol a Holtak Városába?</next>
+    <next id="340">Keresztülhajózol a Déli-tengeren Nippur irányába?</next>
+  </p>
   <p id="16">
     <text>
         [p]Abban a pillanatban, amikor benyomod a gyűrűt, a mennyezet megnyílik, és hatalmas vízsugár ömlik a nyakadba, és a földhöz vág. A bejárati ajtó becsapódik, a kripta rohamosan megtelik vízzel, és elsüllyedsz. Kalandod itt véget ér.[/p]
@@ -154,7 +170,15 @@
     </text>
     <death />
   </p>
-  <!-- 18 -->
+  <p id="18">
+    <text>
+        [p]A szörny hosszú karjának egy gyors mozdulatával vadul visszavág, félrelöki a kezedet, amellyel ütni készülsz; majdnem eltöri. Vesztesz 1 ÉLETERŐ pontot! Amikor hátraugranál, a Küklopsz megragadja a bal karodat, és a levegőbe emel. Mit teszel?[/p]
+    </text>
+    <add to="stamina" amount="-1" />
+    <next id="187">Egy tenyeres ütéssel rávágsz könyöke belső oldalára?</next>
+    <next id="251">Belerúgsz a vállába?</next>
+    <next id="145">Visszakézből a könyökébe vágsz?</next>
+  </p>
   <p id="19">
     <text>
         [p]A Kísértet felgyorsul, amikor a hozzád legközelebb álló két hajó között akarsz átsiklani. Mit teszel?[/p]
@@ -163,7 +187,7 @@
     <next id="275">Ha az utolsó pillanatban elfordulsz, hogy nekimenj az egyik hajó evezőinek és szétroncsold azokat</next>
   </p>
   <p id="20">
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]5 nappal növeld utazásod idejét a HAJÓNAPLÓDBAN.[/p]
@@ -197,7 +221,14 @@
     </text>
     <next id="376"></next>
   </p>
-  <!-- 23 -->
+  <p id="23">
+    <text>
+        [p]Néhány száz métert a homokban tesztek meg, mígnem váratlanul beomlik a part a lábatok alatt, és egy nyálkás testű szörny bukkan elő, mely csápjával megragadja néhány kalózodat, és elindul velük a tenger felé. Vonj le 2 pontot LEGÉNYSÉGED EREJÉBŐL. Félelemtől megrémült embereid követelik, hogy vezesd vissza őket a Kísértet fedélzetére.[/p]
+    </text>
+    <add amount="-2" to="crewStrength" />
+    <next id="86">Ha megparancsolod nekik, hogy folytassák az utat a part mentén</next>
+    <next id="42">Ha azt javasolod, hogy inkább a szárazföld belseje felé menjetek tovább</next>
+  </p>
   <p id="24">
     <text>
         [p]Három napon át várod a faluban az arra vetődő szerencsétlen kereskedőket, hogy búvóhelyedről lecsaphass rájuk, de egy lélek sem jön. Végül türelmed elfogy, és úgy döntesz, nem fecséreled itt tovább az időt, hanem visszamész a Kísértetre, hogy máshol próbálj szerencsét. Miután visszatértél a hajódra, 3 nappal növeld utazásod idejét a HAJÓNAPLÓDBAN.[/p]
@@ -205,11 +236,188 @@
     <add amount="3" to="time" />
     <next id="35"></next>
   </p>
-  <!-- 25 -->
-  <!-- 26 -->
-  <!-- 27 -->
-  <!-- 28 -->
-  <!-- 29 -->
+  <p id="25">
+    <text>
+        [p]Elővigyázatosságod és óvatosságod nem elég. Baljós súrlódást hallasz, és a Kísértet zátonyra fut. A hajó bizonytalanul megáll. Kidobjátok a fedélzetről az összes felesleges holmit, és hosszú rudak segítségével megpróbáljátok visszalökni a hajót a vízre. Nem jártok sikerrel. A víz szintje egyre csökken, és a Kísértet egyre mélyebben süpped bele a homokzátonyba. Reggelre kishi katonák veszik körül a hajótokat, akik a közeli erődítményből vették észre az árbocotokat. Elfognak benneteket, és kalandotok itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="26">
+    <text>
+        [p]Asztalhoz ültök, és élvezettel estek neki a levesnek meg a kenyérnek. Nemsokára valamennyien elálmosodtok. Megdörzsölöd a szemedet, és amint végignézel a hosszú asztalnál ülőkön, szokatlan dolgot veszel észre: kalózaid háziállattá változtak juhokká, kecskékké, disznókká és így tovább. A dolgok ilyetén fordulatán megriadva rikácsolni kezdesz. Rikácsolni? Amikor végignézel magadon, látod, hogy papagájjá változtál. - Gyere, kis gyönyörűségem - mondja a nő, miközben a kezére ültet -‚ gyere, várnak a többiek! - Elvesztetted emberi mivoltodat, kalandod itt véget ért.[/p]
+    </text>
+    <death />
+  </p>
+  <p id="27">
+    <text>
+        [p]Növeld 2 nappal utazási idődet a HAJÓNAPLÓDBAN! Az Ölyv nem más, mint az óceánból kiálló egyetlen hatalmas méretű szikla. A csúcsa a fellegekbe ér, míg az alját sűrű erdő borítja. Nevét egy hatalmas madárfajtáról kapta, amely néha itt költ a magasabb csúcsokon.[/p]
+    </text>
+    <add amount="2" to="time" />
+    <test against="luck">
+      <success>
+        <next id="67"></next>
+      </success>
+      <failure>
+        <next id="92"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="28">
+    <text>
+        [p]Minden olcsó embert megvettek már a Maraddal vívott háborúban, melynek győztese határtalan kincsek birtokába jut. Neked viszont jó, de drága emberek közül kell válogatnod. Minden LEGÉNYSÉGI ERŐ pontért, amit meg akarsz szerezni, 20 Aranytallért kell fizetned.[/p]
+        [div data-market=""][/div]
+    </text>
+    <market>
+      <saleLabel>Felbérelhető emberek</saleLabel>
+      <sale price="20" stock="20" id="3003" />
+      <after>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+      </after>
+    </market>
+    <next id="180"></next>
+  </p>
+  <p id="29">
+    <text>
+        [p]Előreugrasz, és behúzol egyet a Küklopsz bordái közé. Ennek következtében az kettőt szaltózik - vonj le 2 pontot az ÉLETEREJÉBŐL.
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-2" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <text>
+            Előrehajol, és egy horogütéssel úgy fejbe vág, hogy elterülsz a földön - vesztesz 2 ÉLETERŐ pontot. A Küklopsz tér magához előbb, karjaiba vesz, és felemel a magasba. Mit teszel?[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="251">Belerúgsz a vállába?</next>
+        <next id="305">Belerúgsz a hónaljába?</next>
+        <next id="145">Visszakézből ráhúzol a könyökére?</next>
+      </have>
+      <dontHave>
+        <text>
+            [/p]
+        </text>
+        <next id="311"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="30">
     <text>
         [p]Újra hallod a kiáltást; hátborzongatóan zúg végig a hegy lejtőin. Fölfelé mész a szakadékban a hang irányába.[/p]
@@ -225,7 +433,38 @@
     <add amount="-1" to="skill" />
     <next id="210"></next>
   </p>
-  <!-- 32 -->
+  <p id="32">
+    <text>
+        [p]A Kísértettel behajóztok Nippur egyetlen nagy kikötőjébe. Legényeid örülnek, hogy vége az útnak.[/p]
+    </text>
+    <test against="crewStrength">
+      <success>
+        <text>
+            [p]Növeld 4-gyel utazási napjaid számát a HAJÓNAPLÓDBAN.[/p]
+        </text>
+        <add amount="4" to="time" />
+      </success>
+      <failure>
+        <text>
+            [p]Növeld 5-tel utazási napjaid számát a HAJÓNAPLÓDBAN.[/p]
+        </text>
+        <add amount="5" to="time" />
+      </failure>
+      <after>
+        <text>
+            [p]Abdulnak, a Mészárosnak Haveldar nevű hajója már lehorgonyzott az öbölben. Néhányan, akik a hajó fedélzetén maradtak, közlik veletek, hogy Abdul már fölment Nippur egyetlen magas hegycsúcsára, a találkahelyre.[/p]
+        </text>
+      </after>
+    </test>
+    <itemCheck type="attribute" id="time" amount="51">
+      <have>
+        <next id="342"></next>
+      </have>
+      <dontHave>
+        <next id="213"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="33">
     <text>
         [p]A lyuk elég nagy, oldalát tengeri növények és kagylók borítják. A hajó belsejében úszva hozzáérsz valamihez, amiről azt hitted, hogy egy halom rongy, mely hozzátapadt a hajó törzséhez. Az azonban egy sokszínű virághoz hasonlóan kinyílik, és éles fogakat, valamint szívókarokat pillantasz meg. A lény elzárja előled a kijáratot. Pillanatokon belül vissza kell térned a felszínre levegőért. Mit teszel?[/p]
@@ -247,7 +486,26 @@
     <next id="211">De ha akarod, elmehetsz a szomszédos Calah városába, ahol szerencsét próbálhatsz a játékbarlangokban</next>
     <next id="76">Vagy akár elhajózhatsz észak felé, hogy lerohand az Enraki-szigetet</next>
   </p>
-  <!-- 36 -->
+  <p id="36">
+    <text>
+        [p]Amikor felérsz a hegy csúcsára, ott találod Abdult, a Mészáros, aki néhány embere társaságában már vár rád. - Ah! - szól, mikor megérkezel. - Tehát sikerült! Most lássuk, melyikünk a nagyobb gazember! - Odavonszol egy hatalmas ládát. - Kifosztottam Kisht - mondja dicsekedve. - Még egy maradbeli hadihajót is elfogtam. Bizonyítékul itt a kincs! - Felnyitja a láda tetejét, ami arra késztet, hogy te is ugyanezt cselekedd a tiéddel.[/p]
+    </text>
+    <itemCheck type="gold" id="800">
+      <have>
+        <next id="400"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="gold" id="700">
+          <have>
+            <next id="350"></next>
+          </have>
+          <dontHave>
+            <next id="50"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="37">
     <text>
         [p]A vadember felordít, s amikor felé suhintasz, elkapja a karodat, és úgy fejbe vág, hogy elterülsz a földön. Véglegesen vesztesz 2 ÉLETERŐ pontot. Néhány óra múlva kissé magadhoz térsz, és észreveszed, hogy a pénz, amit megtettél, eltűnt.[alt /][/p]
@@ -278,15 +536,32 @@
       </failure>
     </test>
   </p>
-  <!-- 39 -->
-  <!-- 40 -->
+  <p id="39">
+    <text>
+        [p]Egyfolytában azt hajtogatja, hogy enned kell, de amikor engedsz az erőszaknak és a szádhoz emeled a levessel teli tálat, legényeid valamennyien eszméletüket vesztve borulnak az asztalra. Még ennél is aggasztóbb az a változás, amit észreveszel rajtuk - juh, kecske és disznó alakot öltöttek. Eldobod a leveses tálat, odaugrasz a hozzád legközelebb ülő társadhoz, és ébresztgetni kezded. - Röff - csak ennyit tud kinyögni. A boszorkány bemenekült a házba, biztosan azért, mert még mindig emberi formád van. Elindulsz, hogy megkeresd, és eljutsz egy kis előszobába, ahonnan egy nagy díszterem nyílik. Odabent tűz lobog a tűzhelyen. A boszorkánynak nyoma sincs.[/p]
+    </text>
+    <next id="216">Ha bemész a terembe</next>
+    <next id="227">Ha az oldalajtón mész be</next>
+  </p>
+  <p id="40">
+    <text>
+        [p]A Gyíkembereket visszaszorítjátok a környező erdőkbe. Legénységednek sikerül közülük [span class="takeItem" data-id="slave" data-amount="4"]négyet[/span] elfognia, hogy majd rabszolgaként eladjátok őket; ezeket az apró fickókat jó pénzért lehet értékesíteni. Az őserdő csak úgy zeng a bennszülöttek öblös hangú üvöltésétől és a Tok-tok bot ütéseitől. Minden bizonnyal egy nagyobb sereg gyülekezik a közeli rejtekhelyeken újabb támadásra készülve. Visszavonultok a Kíséretre, felszeditek a horgonyt és továbbhajóztok.[/p]
+    </text>
+    <next id="15"></next>
+  </p>
   <p id="41">
     <text>
         [p]Embereid kötelekkel és késekkel mennek neki a marháknak. Egy perc sem telik el, amikor állig felfegyverzett lovas hadsereg tűnik fel a közeli lejtőn, és egyenesen felétek tart. A lovasok megállnak, és egy hírnököt menesztenek hozzátok, aki így szól: - Tudjátok meg, ti oktalan kalózok, hogy megsértettétek Őfelségét a Négy Szél Királyát. Megparancsolom, hogy azonnal hagyjátok el a szigetet, vagy rettenetes következményekkel kell számolnotok.[/p]
     </text>
     <next id="176"></next>
   </p>
-  <!-- 42 -->
+  <p id="42">
+    <text>
+        [p]Jó mélyen behatoltok az őserdőbe, és szembetaláljátok magatokat a legnagyobb és legrondább szörnnyel, akivel eddig találkoztatok. Száz és száz fatörzsláb tart egy hatalmas testet, mely kétszer akkora, mint a Kísértet. A feje viszont - mely jószerével csak egy nagy száj - fogak helyett tele van késekkel. Mit teszel?[/p]
+    </text>
+    <next id="54">Ha elfutsz</next>
+    <next id="70">Ha megküzdesz vele</next>
+  </p>
   <p id="43">
     <text>
         [p]Teljes lendülettel száguld a Kísértet, mindenki készenlétben felfegyverezve áll a fedélzeten - sebesen vágsz át a maradbeli hajórajon a vízbe merülő hajólapátok között manőverezve. Amikor két hajó között próbálsz átsurranni, az egyik gálya megcsáklyázza a Kísértetet, a kiálló csáklyák miatt olyan, akár egy szigonyokkal teli bálna. Legénységednek meg kell küzdenie a gályával.[/p]
@@ -307,7 +582,7 @@
     <text>
         [p]A Kísértettel lefelé hajózol a nyugati partvidék mentén.[/p]
     </text>
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]Növeld 5 nappal utazási idődet a HAJÓNAPLÓBAN.[/p]
@@ -330,7 +605,22 @@
     <next id="223">Továbbhajózol a part mentén az ellenséges Kish városába?</next>
     <next id="66">Behajózol a Beltengerre a Trysta-zátonyok felé, hogy az arra járó hajók között portyázz?</next>
   </p>
-  <!-- 46 -->
+  <p id="46">
+    <text>
+        [p]Karodat behajlítva könyököddel belevágsz a szörny térdhajlatába. Az előretántorodik, elveszti az egyensúlyát, és elesik egy kiálló éles kőben - vonj le tőle 2 ÉLETERŐ pontot.[alt] Mit teszel?[/alt][/p]
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-2" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <next id="266">Belerúgsz a bordáiba?</next>
+        <next id="224">Belerúgsz az ágyékába?</next>
+        <next id="196">Belebokszolsz az állába?</next>
+      </have>
+      <dontHave>
+        <next id="311" singleChoiceText=" "></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="47">
     <text>
         [p]Amikor Kish egyik külvárosába értek, az utcákon egyetlen hivatásos katonát sem láttok. Fedezékben maradva felsorakoztatod legényeidet, és jelt adsz a támadásra. Hatalmas ordítással vetik rá magukat a felkészületlen lakosságra. A városi polgárőrség csak itt-ott bocsátkozik ellentámadásba.[/p]
@@ -576,8 +866,19 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 49 -->
-  <!-- 50 -->
+  <p id="49">
+    <text>
+        [p]Lehorgonyzol a gőzölgő vulkanikus lagúnában, és legényeiddel a partra evezel. Buja növényzettel, egzotikus állatokkal és ezer meg ezer különféle rovarral teli dzsungel szélén álltok.[/p]
+    </text>
+    <next id="151">Ha a sziget közepén lévő hegy magasabb lejtői felé indultok el</next>
+    <next id="184">Ha a sík vidékeken maradtok és a dzsungelt kutatjátok át</next>
+  </p>
+  <p id="50">
+    <text>
+        [p]- Na gyere - mondja Abdul, amikor megnézi a sajátjánál sokkal kisebb aranykupacodat. - Nem is volt ez igazi verseny, és még te nevezed magad kalóznak? - Iszonyatosan kikaptál. Kétség nem fér hozzá: Abdul a legnagyobb kalóz. A fogadást elvesztetted![/p]
+    </text>
+    <death />
+  </p>
   <p id="51">
     <text>
         [p]A Kíséret bénán áll a vízben, mialatt legénységed eredménytelenül kísérletezik a vitorlák helyreállításával. Az egyik hatalmas hadihajó nekiront a Kíséretnek‚ és beszakítja a farát. Legényeiddel a cápákkal teli vízbe zuhansz. Kalandod itt véget ér.[/p]
@@ -598,9 +899,25 @@
     <next id="69">Ha megpróbálod kinyitni az ajtót</next>
     <next id="88">Ha a szobrot nézed meg közelebbről</next>
   </p>
-  <!-- 54 -->
+  <p id="54">
+    <text>
+        [p]Űzött vadként rohantok át az őserdőn, leszaladtok a partra, beugrotok a csónakba, és visszaeveztek a Kísértethez.[/p]
+    </text>
+    <itemCheck type="section" id="386">
+      <have>
+        <text>
+            [p]Úgy döntesz, szerencsét próbálsz a pálmafákkal benőtt szigettel is.[/p]
+        </text>
+        <next id="354"></next>
+      </have>
+      <dontHave>
+        <next id="386">Ha elhajóztok a „rendezettnek” látszó szigetre</next>
+        <next id="354">Ha a pálmafákkal benőtt szigetre mennétek</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="55">
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]Növeld 5 nappal utazásod idejét.[/p]
@@ -636,10 +953,258 @@
     <add amount="-4" to="crewStrength" />
     <next id="123"></next>
   </p>
-  <!-- 59 -->
-  <!-- 60 -->
-  <!-- 61 -->
-  <!-- 62 -->
+  <p id="59">
+    <text>
+        [p]Az üzlet nagyon rosszul megy. A nap végére oly kevés rabszolgát adtál el, hogy a maradékot fejenként 5 Aranyért kell odaadnod egy bizonytalan külsejű rabszolga-kereskedőnek.[/p]
+    </text>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="50" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="50" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="50" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="50" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="50" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="50" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="50" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="50" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="50" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="50" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="5">
+      <have>
+        <add amount="-5" to="slave" />
+        <add amount="25" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="2">
+      <have>
+        <add amount="-2" to="slave" />
+        <add amount="10" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="2">
+      <have>
+        <add amount="-2" to="slave" />
+        <add amount="10" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="1">
+      <have>
+        <add amount="-1" to="slave" />
+        <add amount="5" to="stamina" />
+      </have>
+    </itemCheck>
+    <next id="279"></next>
+  </p>
+  <p id="60">
+    <text>
+        [p]Amikor odaugrasz a Küklopszhoz, az védekezésként a teste elé kapja a karját, így rúgásod azt éri. Veszít 2 ÉLETERŐ pontot.
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-2" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <text>
+            Elkapja a levegőben lévő lábadat, és iszonyatosan megszorítja - vonj le magadtól 2 ÉLETERŐ pontot. Letesz róla, hogy eltörje a lábadat. Ehelyett inkább a bokádnál fogva ragad meg, és le-föl lóbál a levegőben. Mit teszel?[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="235">Belerúgsz a könyökébe?</next>
+        <next id="177">Karateütéssel az ágyékába csapsz?</next>
+        <next id="139">Beleöklözöl a hasába?</next>
+      </have>
+      <dontHave>
+        <text>
+            [/p]
+        </text>
+        <next id="311"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="61">
+    <text>
+        [p]Amint a part felé tartasz, szembetalálkozol néhány legényeddel, akik a többiekkel együtt a szigetet járják abban a reményben, hátha még életben találnak. Visszatértek a Kísértetre, és folytatjátok az utat.[/p]
+    </text>
+    <next id="15"></next>
+  </p>
+  <p id="62">
+    <text>
+        [p]A legtöbb olcsó embert már felvásárolták a különféle shurrupaki előkelőségek, hogy a Maraddal vívott háborúban gályáikon vegyék hasznukat. A szerencse azonban veled van, amikor rábukkansz egy kalózhajó teljes legénységére, akik szerencsejátékokon sok pénzt vesztettek, és ezért elvették a hajójukat. Többségük szívesen áll be közétek. Minden plusz LEGÉNYSÉGI ERŐ pontért 10 Aranytallért kell adnod.[/p]
+        [div data-market=""][/div]
+    </text>
+    <market>
+      <saleLabel>Felbérelhető emberek</saleLabel>
+      <sale price="10" stock="20" id="3003" />
+      <after>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3003">
+          <have>
+            <add amount="1" to="crewStrength" />
+            <loseItem id="3003" />
+          </have>
+        </itemCheck>
+      </after>
+    </market>
+    <next id="180"></next>
+  </p>
   <p id="63">
     <text>
         [p]A folyosóról egy kis előszobába jutsz, ahol egy félelmetes külsejű pap tartózkodik. A teremtmény emberhez hasonlít, bár madárfeje és madárlába van. Sziszegni kezd, amikor meglát, megcsörgeti szent talizmánjait, és ébenfa botját meglengetve rád támad. Támadását ki kell védened. Ahányszor megüt a botjával a csata során, dobj egy kockával. Ha az eredmény 1 vagy 2, annyit vonj le ÉLETERŐDBŐL, amennyit általában ilyenkor szokás; ha az eredmény 3 vagy 4, vonj le 1 ÜGYESSÉG pontot magadtól; ha az eredmény 5 vagy 6, vonj le magadtól 1 SZERENCSE pontot.[/p]
@@ -649,7 +1214,13 @@
     </fight>
     <next id="125"></next>
   </p>
-  <!-- 64 -->
+  <p id="64">
+    <text>
+        [p]A Kísértet alja néhányszor a tenger fenekét súrolja, de a hajód nem feneklik meg. Körülbelül egyórányi hajózás után a folyóhoz érkezel, mely Kish hatalmas védőfalai között hömpölyög. Ezek a védőfalak, amelyeket egymástól egyenlő távolságban magas bástyák szakítanak meg, ötszáz kilométernél is hosszabbak a folyó mindkét oldalán, és körülölelik Kish államot. Amikor a folyó két partján emelkedő bástyák között próbálsz meg áthajózni, hajód orra beleakad egy hatalmas vasláncba, melyet a folyón keresztbe feszítettek ki. Megállásra kényszerültök.[/p]
+    </text>
+    <next id="268">Ha néhány legényedet a partra küldöd, hogy az egyik bástyához erősített láncot kioldják</next>
+    <next id="207">Ha inkább visszahajózol a tengerre</next>
+  </p>
   <p id="65">
     <text>
         [p]Az Elverinek szétszabdalt teste lesüllyed a medence fenekére. A víz elcsendesedik, és ekkor látod, hogy a víz szintje alig fél méterre van a mennyezettől. Tested csupa vér, amikor kimászol a teremből.[/p]
@@ -660,7 +1231,7 @@
     <text>
         [p]A Kísértettel a Trysta-zátonyok felé tartasz.[/p]
     </text>
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]Növeld utazási napjaid számát 4-gyel a HAJÓNAPLÓBAN.[/p]
@@ -682,12 +1253,20 @@
     <next id="103">Ha a viharral elhajózol déli irányba</next>
     <next id="142">Ha észak felé veszed az utadat, hogy ott várd ki a rossz időt</next>
   </p>
-  <!-- 67 -->
+  <p id="67">
+    <text>
+        [p]Hajódra sötét, jól körvonalazható árny vetül, miközben elhajózol a sziget mellett. Felnézel, és egy irdatlan nagy madarat pillantasz meg, amely olyan, mint egy ölyv, csak több százszor nagyobb. Egy ideig a Kísértet felett köröz, majd lecsap rátok. Legényeid fegyvert ragadnak, hogy megvédjék magukat.[/p]
+    </text>
+    <fight type="ff16ship">
+      <enemy id="44" />
+    </fight>
+    <next id="117"></next>
+  </p>
   <p id="68">
     <text>
         [p]Lagash felé hajózol a Keleti-partvidék mentén, és árgus szemekkel figyeled, nem kerül-e az utadba a városba tartó kereskedőhajó. A szerencse azonban nem kedvez neked. A Kísértettel szemben két háromszög alakú piros vitorla tűnik fel a horizonton, és egyenesen feléd tart. Ezek lagashi hadihajók: fedélzetükön csak úgy nyüzsögnek a matrózok, és harci lobogók lengenek a szélben. Oldalra döntöd a Kísértetet, és megpróbálsz elhajózni a támadók elől.[/p]
     </text>
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <next id="87"></next>
       </success>
@@ -709,16 +1288,117 @@
       </failure>
     </test>
   </p>
-  <!-- 70 -->
+  <p id="70">
+    <text>
+        [p]A Szörny felkapja a fejét és kitátja a száját - ekkora mosolyt még soha senki sem látott. Mohó éhség lángol a szemében.[/p]
+    </text>
+    <itemCheck type="item" id="3001">
+      <have>
+        <next id="163"></next>
+      </have>
+      <dontHave>
+        <next id="110"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="71">
     <text>
-        [p]Miután átadtad az aranyat, el-Shazar eléd lök egy engedélyt, amely szabad bejárást biztosít Shurrupakba. Matrózai kihúzzák csáklyáikat, és hagyják szabadon elmenni a Kísértetet.[/p]
+        [p]Miután átadtad az aranyat, el-Shazar eléd lök egy [span class="takeItem" data-id="3009" data-amount="1"]engedélyt[/span], amely szabad bejárást biztosít Shurrupakba. Matrózai kihúzzák csáklyáikat, és hagyják szabadon elmenni a Kísértetet.[/p]
     </text>
     <add amount="-200" to="gold" />
     <next id="301">Ha a csata színterét elhagyva Shurrupak felé veszed az utadat</next>
     <next id="340">Ha a Beltenger közepén áthajózva Nippur felé indulsz el, amilyen gyorsan csak tudsz</next>
   </p>
-  <!-- 72 -->
+  <p id="72">
+    <text>
+        [p]Az üzlet elég élénk, ha nem is túl jó. Egész napi munkával sikerül eladnod az összes foglyodat. Számolni kezdesz, és kiderül, hogy fejenként átlagosan 10 Aranytallért kaptál értük.[/p]
+    </text>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="100" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="100" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="100" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="100" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="100" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="100" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="100" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="100" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="100" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="100" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="5">
+      <have>
+        <add amount="-5" to="slave" />
+        <add amount="50" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="2">
+      <have>
+        <add amount="-2" to="slave" />
+        <add amount="20" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="2">
+      <have>
+        <add amount="-2" to="slave" />
+        <add amount="20" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="1">
+      <have>
+        <add amount="-1" to="slave" />
+        <add amount="10" to="stamina" />
+      </have>
+    </itemCheck>
+    <next id="279"></next>
+  </p>
   <p id="73">
     <text>
         [p]A Batárversenynek a mai napra vége.[/p]
@@ -735,7 +1415,15 @@
     </itemCheck>
     <next id="262" pos="3" singleChoiceText="Elhagyod Calah városát">Ha elhagyod Calah városát</next>
   </p>
-  <!-- 74 -->
+  <p id="74">
+    <text>
+        [p]Oldalra lépsz, és a Küklopsz hatalmas karja felé suhintasz, de nem éred el, mert a szörny elkapja és majdnem teljesen kicsavarja a kezedet. Vesztesz 2 ÉLETERŐ pontot. Elereszti a kezedet, és megragad a bokádnál fogva. Fejjel lefelé lógsz a kezében. Mit teszel?[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <next id="235">Belerúgsz a könyökébe?</next>
+    <next id="122">Térddel mellbe rúgod?</next>
+    <next id="372">Beleöklözöl a bordáiba?</next>
+  </p>
   <p id="75">
     <text>
         [p]- Egy ragadozó Krell amelynek a barlangja e hajó alatt van, ellopta a Só-koponyát - mondja a Tündér. - Ez a mi legdrágább kincsünk, Tenger Apánktól kaptuk, s varázserejével különválasztja a tengerek vizét az édesvizektől. Vissza kell kapnunk e kincset! - A Tündérek varázsitalt adnak neked. Ha megiszod, addig tartózkodhatsz a víz alatt levegővétel nélkül, ameddig csak akarsz. Ezután odavezetnek a Krell barlangjához, mely a roncs alatt van. A barlangba vezető folyosó függőlegesen megy le a tengerfenék mélyébe. Amint befelé úszol, széles, mély lyukakat veszel észre az oldalfalakon. Mit teszel?[/p]
@@ -747,7 +1435,7 @@
     <text>
         [p]A Kísértettel kihajózol a Beltenger vizeire.[/p]
     </text>
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]Növeld 4 nappal utazásod idejét a HAJÓNAPLÓBAN.[/p]
@@ -777,7 +1465,13 @@
     <next id="215">Ha a hírnököt követve odamentek a lovas katonákhoz, majd velük együtt feltehetően a Királyhoz</next>
     <next id="176">Ha inkább visszamentek a hajóra</next>
   </p>
-  <!-- 78 -->
+  <p id="78">
+    <text>
+        [p]Alig teszel meg néhány lépést az alagútban, amikor vagy fél tucat hullába botlasz. A testükön lévő sérülésekből arra következtetsz, hogy valamilyen nagy madár, valószínűleg az Óriás Ölyv sebezte halálra őket.[/p]
+    </text>
+    <next id="229">Ha zsákmány reményében átkutatod a tetemeket</next>
+    <next id="240">Ha inkább továbbmész az alagútban</next>
+  </p>
   <p id="79">
     <text>
         [p]Már három napja rostokolsz legénységeddel a forró, napsütötte Scythera-sivatagban arra várva, hogy végre felbukkanjon egy arra haladó felmálházott karaván, hiszen ez a világnak ebben a szegletében elég megszokott dolog. Növeld utazási napjaid számát 3-mal a HAJÓNAPLÓDBAN. Élelmed és italod fogytán van.[/p]
@@ -807,7 +1501,15 @@
     </fight>
     <next id="397"></next>
   </p>
-  <!-- 82 -->
+  <p id="82">
+    <text>
+        [p]Miközben a Küklopsz megpróbál felállni, odaugrasz hozzá, hogy fejbe vágd. De szerencsétlenségedre észreveszi, amint közeledsz, és beleharap a karodba - vesztesz 1 ÉLETERŐ pontot. A szörny ismét talpon van, és előregörnyedve a karjába akar kapni. Mit teszel?[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="60">Repülőrúgással a rekeszizmába rúgsz?</next>
+    <next id="319">Repülőrúgással a lábába rúgsz?</next>
+    <next id="290">Repülőrúgással fejbe rúgod?</next>
+  </p>
   <p id="83">
     <text>
         [p]Iszonyú erőfeszítések árán legénységednek sikerül visszahelyeznie a fővitorlát a helyére, így a Kísértet elég sebesen haladhat ahhoz, hogy elmeneküljön a hadihajóktól.[/p]
@@ -815,7 +1517,13 @@
     <next id="301">Ha a nyílt tengerre kijutva Shurrupak felé hajózol, hogy ott add el a rabszolgáidat és új kalózokat toborozz a hajódra</next>
     <next id="340">Ha a Déli-tengeren vágsz át, és amilyen gyorsan csak lehet, Nippur felé tartasz</next>
   </p>
-  <!-- 84 -->
+  <p id="84">
+    <text>
+        [p]Miután legyőzted Nestafát, átkutatod szakadt, rongyos ruháját, de nem találsz semmit. Szemmel láthatóan rossz idők jártak rá. Attól félsz, hogy esetleg összeakadsz még néhány régi ellenségeddel, ezért elhagyod a kikötő területét.[/p]
+    </text>
+    <next id="253">Ha a piacra mész embereket keresni</next>
+    <next id="293">Ha a város nyomornegyedébe mész</next>
+  </p>
   <p id="85">
     <text>
         [p]A lépcső nyirkos sötétségbe vezet. A mohos falakról, melyek mindkét oldalon igen közel vannak hozzád, víz csorog. A lábad között is víz folyik a lépcsőkön, ezért nehezen haladsz. Hirtelen egy három méter hosszú Pióca kúszik elő a fejed fölött lévő vackából, és belemar válladba. Őrjöngve rávágsz. Minden egyes Forduló után, ha a Pióca még mindig életben van, 2 ponttal csökken ÉLETERŐ pontjaid száma.[/p]
@@ -825,7 +1533,19 @@
     </fight>
     <next id="162"></next>
   </p>
-  <!-- 86 -->
+  <p id="86">
+    <text>
+        [p]- Mozdulj, te szemét - mondod, miközben görbe kardodat kihúzod a hüvelyéből -‚ vagy nemcsak a szörnyek miatt kell aggódnod! -[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="230"></next>
+      </success>
+      <failure>
+        <next id="182"></next>
+      </failure>
+    </test>
+  </p>
   <p id="87">
     <text>
         [p]Némi ravaszsággal és ügyes navigálással sikerül megszabadulnod az egyik hadihajótól, de a másik csak nem tágít mellőled, és hirtelen csáklya- és nyílvesszőzáport zúdít hajódra. Meg kell küzdened vele.[/p]
@@ -863,8 +1583,24 @@
     <next id="76">Ha visszahajózol a Beltengeren Enraki felé</next>
     <next id="197">Ha a Keleti-part mentén akarsz felfelé hajózni, a Holtak Folyóihoz</next>
   </p>
-  <!-- 91 -->
-  <!-- 92 -->
+  <p id="91">
+    <text>
+        [p]Ütésed teljesen hatástalan, és már az ellentámadást várod. A Küklopsz térdével a melledbe rúg, és a földre zuhansz - vesztesz 2 ÉLETERŐ pontot. Fájdalomtól meggyötört tested fölé hajol, és a karodnál fogva fölemel a levegőbe. Mit teszel?[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="305">A hónaljába rúgsz?</next>
+    <next id="276">A csuklójába harapsz?</next>
+    <next id="187">Ráhúzol a könyöke hátsó részére?</next>
+  </p>
+  <p id="92">
+    <text>
+        [p]Miközben elhajózol a sziget mellett, egy sötét, jól körvonalazható árny vetül a hajódra. Felnézel, és egy irdatlan nagy madarat pillantasz meg, amely ölyvhöz hasonlít, csak több százszor nagyobb. Egy ideig a Kísértet fölött köröz, aztán támad. Lecsap rád, a karmai közé ragad, és a sziget felé röpül veled. Előrántod a kardodat, és megpróbálsz megszabadulni tőle.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="43" />
+    </fight>
+    <next id="124"></next>
+  </p>
   <p id="93">
     <text>
         [p]A teremtmény körülbelül feleakkora, mint a verem, és elég hosszú.[/p]
@@ -872,8 +1608,102 @@
     <next id="352">Ha nekifutásból felugrasz a vadállat hátára, hogy onnan elugorva juss ki a veremből</next>
     <next id="8">Ha futva megkerülöd a szörnyet és kimész azon az ajtón, amelyen ő jött be</next>
   </p>
-  <!-- 94 -->
-  <!-- 95 -->
+  <p id="94">
+    <text>
+        [p]Igazi bolondra találtál, aki hajlandó az összes rabszolgádat megvenni. Az aszott öregember biztosan vak, hogy nem látja, milyen rozzantak és betegek a foglyaid, és azt hiszi, hogy jó vásárt csinált. Darabonként 15 Aranytallért kapsz értük. Szorozd meg a rabszolgák számát tizenöttel, és a kapott számot, mely újabb Aranytallérjaidat jelzi, jelöld a Zsákmány rovatban.[/p]
+    </text>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="150" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="150" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="150" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="150" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="150" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="150" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="150" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="150" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="150" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="150" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="5">
+      <have>
+        <add amount="-5" to="slave" />
+        <add amount="75" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="2">
+      <have>
+        <add amount="-2" to="slave" />
+        <add amount="30" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="2">
+      <have>
+        <add amount="-2" to="slave" />
+        <add amount="30" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="1">
+      <have>
+        <add amount="-1" to="slave" />
+        <add amount="15" to="stamina" />
+      </have>
+    </itemCheck>
+    <next id="279"></next>
+  </p>
+  <p id="95">
+    <text>
+        [p]Görbe kardodat beledöföd a macskába, és megölöd. A többi macska eltűnik. A boszorkány a melléhez kap, és holtan esik össze. Kimész a szobából, és látod, hogy az összes háziállat és egyéb egzotikus madár visszaváltozott emberré. Összeszeded a legényeidet, és visszamentek a Kísértetre, majd Nippur felé hajóztok.[/p]
+    </text>
+    <next id="7"></next>
+  </p>
   <p id="96">
     <text>
         [p]- Nagy kár - mondja el-Shazar -‚ de hát mi soha nem voltunk túl jó barátok! - Jelt ad embereinek, hogy folytassák a Kíséret ostromát. A tengerészek odahúzzák hajódat a gályájuk mellé, majd rárohannak szerencsétlen legényeidre, akiket kegyetlenül lemészárolnak. A Kíséretet elfoglalják, te pedig néhány legényeddel együtt a foglyuk leszel. Kalandod itt véget ér.[/p]
@@ -906,7 +1736,9 @@
     </text>
     <next id="179"></next>
   </p>
-  <!-- 100 -->
+  <p id="100">
+    <empty />
+  </p>
   <p id="101">
     <text>
         [p]Kiütöd a vadembert, és bezsebeled a nyereményedet, aztán elhagyod az arénát.[alt /][/p]
@@ -1293,7 +2125,32 @@
       </win>
     </fight>
   </p>
-  <!-- 108 -->
+  <p id="108">
+    <text>
+        [p]A Kísértet a tenger hullámait szelve a sziget felé tart.[/p]
+    </text>
+    <test against="crewStrength">
+      <success>
+        <text>
+            [p]Utazási napjaid számát növeld 4-gyel a HAJÓNAPLÓDBAN.[/p]
+        </text>
+        <add amount="4" to="time" />
+      </success>
+      <failure>
+        <text>
+            [p]Utazási napjaid számát növeld 5-tel a HAJÓNAPLÓDBAN.[/p]
+        </text>
+        <add amount="5" to="time" />
+      </failure>
+      <after>
+        <text>
+            [p]A víz szemmel láthatóan elcsitul, teljesen sima lesz, amint Kazallu közelébe értek. Kiköttök, és elindultok élelmet és vizet szerezni, hogy feltölthessétek a hajó készletét. Embereidet csoportokra osztva szétküldöd, te pedig a parton várakozva kidolgozod utad utolsó szakaszának tervét. Néhány óra múlva az egyik legényed visszajön, és közli, hogy nem messze egy farmot találtak. Elmész vele a farmra, ahol találkozol a tulajdonossal, egy csodaszép fiatal nővel, aki rengeteg különböző egzotikus madár és háziállat társaságában élve egymaga vezeti a farmot. Amikor megérkeztek, levessel és kenyérrel kínál benneteket. - De boldog vagyok, hogy megismerhetem! - mondja izgatottan. - Megkínálhatom valamivel?[/p]
+        </text>
+      </after>
+    </test>
+    <next id="26">Ha elfogadod az ajánlatát és csatlakozol a legényeidhez</next>
+    <next id="39">Ha nem fogadod el, és csak azt veszed magadhoz, amire a Kísérteten majd szükségetek lesz</next>
+  </p>
   <p id="109">
     <text>
         [p]Amikor elhagyod a Trysta-szigetet, feltűnik egy sötét, vitorla nélküli bárka, és egyenesen a Kíséret felé tart. Fedélzetén csak úgy nyüzsögnek a katonák, és hatalmas lövegek sorakoznak a hajó orránál és tatjánál. Ez a titokzatos bárka, melyet minden kétséget kizáróan varázserő hajt, meg akarja támadni a hajótokat. Amikor a közeletekbe ér, a lövegekből golyózápor zúdul a hajótokra, és összetöri az árbocaitokat. Nincs hova menekülnöd, meg kell küzdened velük![/p]
@@ -1303,7 +2160,15 @@
     </fight>
     <next id="395"></next>
   </p>
-  <!-- 110 -->
+  <p id="110">
+    <text>
+        [p]A vadállat tébolyult dühvel csap le rátok.[/p]
+    </text>
+    <fight type="ff16ship">
+      <enemy id="57" />
+    </fight>
+    <next id="219"></next>
+  </p>
   <p id="111">
     <text>
         [p]Lefelé mentek az ösvényen a hegy oldalában, és csakhamar egy sziklaszirthez értek, melyről leláttok a vár hátsó oldalára. Úgy ítéled meg, hogy a falak itt alacsonyabbak, és azt ajánlod az embereidnek, hogy erről az oldalról támadjátok meg a várat. Innen jól be lehet látni a vár középső részére is, ahol hatalmas fatemplom emelkedik.[/p]
@@ -1311,7 +2176,12 @@
     <next id="149">Ha azonnal megrohanjátok a falnak ezt az alacsony részét</next>
     <next id="285">Ha tüzes nyílvesszőkkel felgyújtjátok a templomot és ezzel zavart okoztok a védők sorában</next>
   </p>
-  <!-- 112 -->
+  <p id="112">
+    <text>
+        [p]Fölkapsz egy kövét, és ledobod a sötét mélységbe a teremtmények mögé. A kő nagy csattanással ér földet. A Trogloditák azonban nem dőlnek be. Észrevesznek, előrántják dárdáikat, és felrohannak a lépcsőn. Kardot rántasz, és elindulsz lefelé, hogy félúton találkozz velük.[/p]
+    </text>
+    <next id="130"></next>
+  </p>
   <p id="113">
     <text>
         [p]Visszatérsz a Kísértetre.[/p]
@@ -1332,9 +2202,35 @@
       </failure>
     </test>
   </p>
-  <!-- 115 -->
-  <!-- 116 -->
-  <!-- 117 -->
+  <p id="115">
+    <text>
+        [p]Mikor már egészen közel vagy a szörnyhöz, hatalmasat vágsz a térdhajlatára. A földre zuhan - vonj le tőle 2 ÉLETERŐ pontot.[alt] Mit teszel, míg a teremtmény a földön elterülve fekszik?[/alt][/p]
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-2" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <next id="361">Föl-le ugrálsz a hátán?</next>
+        <next id="224">Belerúgsz az ágyékába?</next>
+        <next id="82">Fejbe vágod?</next>
+      </have>
+      <dontHave>
+        <next id="311" singleChoiceText=" "></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="116">
+    <text>
+        [p]Az Óriás Homár biztosan kielégíti minden élelmiszerszükségletedet, a közeli patak vize pedig friss ivóvízzel lát el benneteket. Visszatérsz a Kísértetre, elhagyod a Három Nővért, és elindulsz utad utolsó szakaszára Nippurba.[/p]
+    </text>
+    <next id="7"></next>
+  </p>
+  <p id="117">
+    <text>
+        [p]A madár belezuhan a tengerbe, és eltűnik a szemed elől.[/p]
+    </text>
+    <next id="49">Ha kikötsz a szigeten</next>
+    <next id="15">Ha a tengerszoroson át a Déli-tengerre hajózol ki</next>
+  </p>
   <p id="118">
     <text>
         [p]Kezdetét veszi a verseny: a gyíkok elindulnak a Goblin felé. Legnagyobb meglepetésedre egyik favoritod sem győz.[alt /][/p]
@@ -1419,7 +2315,22 @@
     <next id="331">Ha legényeiddel hanyatt-homlok visszarohansz a Kísértetre</next>
     <next id="355">Ha a város utcáin át a Martu-Amurru-hegy erdőségeibe menekültök</next>
   </p>
-  <!-- 122 -->
+  <p id="122">
+    <text>
+        [p]Miközben a Küklopsz ide-oda lóbál a levegőben, szabadon lévő lábaddal sikerül jól megrúgnod. Fájdalmában felordít és a földre dob - vonj le tőle 1 ÉLETERŐ pontot. Nem ütötted meg magad[alt], fölállsz, és szembefordulsz ellenfeleddel. Mit teszel?[/alt][/p]
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-1" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <next id="91">Ráhúzol a vállára?</next>
+        <next id="18">Behúzol egyet a rekeszizmába?</next>
+        <next id="337">Karateütéssel a hónaljába vágsz?</next>
+      </have>
+      <dontHave>
+        <next id="311" singleChoiceText="."></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="123">
     <text>
         [p]A Kísértettel elhajózol Enraki legdélibb csücskétől. A horizont teljesen tiszta, sem hajó, sem egy árva felhő nem látható. Kish és a Keleti-partvidék kereskedelmi főútvonala tőletek délre, Enraki és a Trysta-zátonyok között halad.[/p]
@@ -1429,7 +2340,13 @@
     <next id="211">De ha elég szerencsésnek érzed magad, azt is megteheted, hogy szerencsét próbálsz Calah játékbarlangjaiban</next>
     <next id="197">Vagy elhajózhatsz a Keleti-partvidékre, hogy ott egy kis szárazföldi portyázásra menj</next>
   </p>
-  <!-- 124 -->
+  <p id="124">
+    <text>
+        [p]Az Óriás Ölyv ledob a sziget fölött. Legalább 5 métert röpülsz, majd egy nagy fészekben landolsz, amelyben három hatalmas tojást találsz. A fészek alján egy lyukat fedezel fel, ahonnan keskeny, durva falú alagút vezet tovább.[/p]
+    </text>
+    <next id="78">Ha bemászol a lyukon, még mielőtt az Ölyv (vagy a párja) megtámadna</next>
+    <next id="61">Ha lerohansz a hegyoldalon a lenti erdőkbe</next>
+  </p>
   <p id="125">
     <text>
         [p]Miután legyőzted az Awkmute-ot, elveheted a botját. Mostantól kezdve, ha egyedül küzdesz egy ellenféllel és megsebzed, dobj mindig egy kockával. Ha az eredmény 1 vagy 2, mindig vonj le 1 pontot az ellenfeled ÜGYESSÉGÉBŐL; ha az eredmény 3, 4, 5 vagy 6, akkor vond le a szokásos 2 ÉLETERŐ pontot. Az előszobából két kijárat nyílik: az egyik egy közönséges folyosó, a másik viszont valamiféle kémény, melynek falán durván megmunkált, kiálló fogantyúk vannak.[/p]
@@ -1437,7 +2354,12 @@
     <next id="173">Ha a folyosón indulsz el</next>
     <next id="199">Ha felmászol a kéménybe</next>
   </p>
-  <!-- 126 -->
+  <p id="126">
+    <text>
+        [p]Görbe kardoddal beledöfsz a barna macskába, de nem sebesül meg.[/p]
+    </text>
+    <next id="322"></next>
+  </p>
   <p id="127">
     <text>
         [p]Hogyan akarsz kitörni?[/p]
@@ -1458,7 +2380,18 @@
     <add amount="-6" to="stamina" />
     <next id="179"></next>
   </p>
-  <!-- 130 -->
+  <p id="130">
+    <text>
+        [p]A teremtmények közé rontasz, és görbe kardoddal nagyokat csapsz jobbra-balra.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="46" />
+      <enemy id="47" />
+      <enemy id="48" />
+      <enemy id="49" />
+    </fight>
+    <next id="307"></next>
+  </p>
   <p id="131">
     <text>
         [p]Elkezdődik a verseny; a gyíkok elindulnak a Goblin felé. Többen is szinte egyszerre érnek célba. Döntőbírákat hívnak, hogy eldöntsék, ki a győztes. Wazi Biinre szavaznak.[/p]
@@ -1477,7 +2410,15 @@
     </itemCheck>
     <next id="73"></next>
   </p>
-  <!-- 132 -->
+  <p id="132">
+    <text>
+        [p]Közel lépsz hozzá, és rávágsz a gerincére, de a fájdalom legkisebb jelét sem látod rajta. A Küklopsz megfordul, és hatalmasat rúg a válladba - vesztesz 1 ÉLETERŐ pontot. Megragadod a lábát, és oldalra rántod. A szörny elterül. Mit teszel?[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="361">Föl-le ugrálsz a hátán?</next>
+    <next id="266">Belerúgsz a bordáiba?</next>
+    <next id="82">Fejbe vágod?</next>
+  </p>
   <p id="133">
     <text>
         [p]Néhány óra alatt bejárod a szigetet. Nem találsz semmi érdekeset, és visszamész a Kísértetre.[/p]
@@ -1506,7 +2447,96 @@
     <next id="201">Ha megpróbálod kiszakítani a falból</next>
     <next id="168">Ha nem nyúlsz semmihez és továbbmész a folyosón</next>
   </p>
-  <!-- 137 -->
+  <p id="137">
+    <text>
+        [p]Az az ember, akit megbíztál, hogy adja el a rabszolgáidat, igen tapasztalt rabszolga-kereskedő. Annak ellenére, hogy a piac nem túl jó, mégis sikerül utazástól megfáradt rabszolgáid zömét fejenként 12 Aranytallérért eladnia.[/p]
+    </text>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="120" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="120" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="120" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="120" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="120" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="120" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="120" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="120" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="120" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="120" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="5">
+      <have>
+        <add amount="-5" to="slave" />
+        <add amount="60" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="2">
+      <have>
+        <add amount="-2" to="slave" />
+        <add amount="24" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="2">
+      <have>
+        <add amount="-2" to="slave" />
+        <add amount="24" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="1">
+      <have>
+        <add amount="-1" to="slave" />
+        <add amount="12" to="stamina" />
+      </have>
+    </itemCheck>
+    <next id="279"></next>
+  </p>
   <p id="138">
     <text>
         [p]A hosszú és kanyargós szakadékot hó borítja. Lassan felmászol rajta, s közben egyre közelebbről és egyre hangosabban hallod a sikolyokat. Hirtelen sok-sok hatalmas, bozontos szőrű fehér vadállat bukkan fel a fenti rejtekhelyekről, és egy óriási, hóból, jégből és kövekből gyúrt hógolyót gurítanak le rád.[/p]
@@ -1520,8 +2550,55 @@
       </failure>
     </test>
   </p>
-  <!-- 139 -->
-  <!-- 140 -->
+  <p id="139">
+    <text>
+        [p]Miközben gyomorszájon vágod, beleharap a lábadba. Mindketten felordítotok a fájdalomtól, és a Küklopsz a lábadat eleresztve fejre ejt - mindketten 2 ÉLETERŐ pontot vesztetek.[alt] Remegő lábbal ellenfeled felé fordulsz. Mit teszel?[/alt][/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <changeEnemy attribute="stamina" id="58" change="-2" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <next id="18">Mellbe vágod?</next>
+        <next id="29">Könyököddel belevágsz a bordáiba?</next>
+        <next id="206">Repülőrúgással mellbe rúgod?</next>
+      </have>
+      <dontHave>
+        <next id="311" singleChoiceText=" "></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="140">
+    <text>
+        [p]A Kísértettel a nyugati partok mentén hajózol a Kish-delta felé.[/p]
+    </text>
+    <test against="crewStrength">
+      <success>
+        <text>
+            [p]Növeld 4 nappal utazási idődet a HAJÓNAPLÓDBAN.[/p]
+        </text>
+        <add amount="4" to="time" />
+      </success>
+      <failure>
+        <text>
+            [p]Növeld 5 nappal utazási idődet a HAJÓNAPLÓDBAN.[/p]
+        </text>
+        <add amount="5" to="time" />
+      </failure>
+      <after>
+        <text>
+            [p]A sötétség leple alatt, óvatosan, nehogy zátonyra fussatok az alacsony vízben, felhajóztok a delta egyik ágán.[/p]
+        </text>
+      </after>
+    </test>
+    <test against="luck">
+      <success>
+        <next id="64"></next>
+      </success>
+      <failure>
+        <next id="25"></next>
+      </failure>
+    </test>
+  </p>
   <p id="141">
     <text>
         [p]Legénységed megvadul - gyújtogatnak, feldúlják az egész várost. Nemsokára azonban egy kishi lovas csapat tűnik fel a város szélén, és ellentámadásba lendül. A támadás váratlanul éri a legényeidet, ezért a következő összecsapás előtt csökkentsd le 2 ponttal LEGÉNYSÉGED CSAPÁSÁT.[/p]
@@ -1572,7 +2649,29 @@
     <next id="3">Ha békésen átadod neki a hajódat</next>
     <next id="81">Ha valahogy megpróbálsz harcolva kikeveredni szorult helyzetedből</next>
   </p>
-  <!-- 145 -->
+  <p id="145">
+    <text>
+        [p]Elfordulsz, és teljes erőddel hatalmas ütést mérsz a Küklopsz könyökére - vonj le 2 pontot ÉLETEREJÉBŐL.
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-2" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <text>
+            Megragad, és úgy a földhöz vág, hogy csak úgy nyekkensz - vesztesz 2 ÉLETERŐ pontot. Négykézláb utánakúszol. Mit teszel?[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="132">Könyékkel belevágsz a gerincébe?</next>
+        <next id="46">Könyékkel belevágsz a térdhajlatába?</next>
+        <next id="347">Belebokszolsz a veséjébe?</next>
+      </have>
+      <dontHave>
+        <text>
+            [/p]
+        </text>
+        <next id="311"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="146">
     <text>
         [p]A piacokon nyüzsögnek a farmerok, katonák, hivatalnokok, kereskedők és rabszolgák, de szinte egyetlen tengerész vagy szárazföldi halandó sem óhajtja megtanulni a kalózmesterséget. Csak néhány kóbor lelket találsz, aki hajlandó közétek beállni, bár az áruk igen magas. Minden 20 Aranytallér után, amit kifizetsz, nyersz 1 LEGÉNYSÉGI ERŐ pontot. Az egyik újdonsült kalózodtól megtudod, hogy a közelben van egy igen gazdag, de veszedelmes szentély, amelyet a pestis isteneinek emeltek. Ez a szentély az Assur mellett kanyargó folyó mentén található, a várostól néhány kilométerre.[/p]
@@ -1640,8 +2739,15 @@
     </fight>
     <next id="274"></next>
   </p>
-  <!-- 150 -->
-  <!-- 151 -->
+  <p id="150">
+    <empty />
+  </p>
+  <p id="151">
+    <text>
+        [p]Amint fölfelé másztok a hegycsúcsra, megbotlasz egy hatalmas, fatörzsekből és sziklákból épített fészekben. A fészekben három tojás van, mindegyik ember nagyságú. Ez minden bizonnyal az Óriás Ölyv fészke. A fészek alján egy keskeny, durván kivájt nyíláson át alagút vezet a hegy mélyébe. Mikor felmászol a fészekbe, hogy közelebbről megnézzed, iszonyú szárnycsapkodás hangja üti meg a füledet. Az Ölyv tér vissza a rejtekhelyére! Legényeid, akik kinn állnak az alagút előtt, pánikszerűen elrohannak a dzsungel irányába. Az Ölyv hangos rikácsolással száll le a fészkére. Úgy döntesz, hogy az alagúton mész tovább.[/p]
+    </text>
+    <next id="78"></next>
+  </p>
   <p id="152">
     <text>
         [p]Növeld 1 nappal utazási idődet a HAJÓNAPLÓDBAN. Egy eldugott öbölben vesztegelsz a hajóddal. Legényeiddel partra szállsz, és elindulsz a szárazföld belsejébe a széles, gondosan megművelt földeken át. Egy szarvasmarhacsordához értek, mely nyugodtan legelészik a dús lóherében. Megparancsolod, hogy legényeid vágjanak le néhányat, hogy később legyen mit ennetek.[/p]
@@ -1656,19 +2762,39 @@
     </text>
     <death />
   </p>
-  <!-- 154 -->
+  <p id="154">
+    <text>
+        [p]A kalózok természetesen a kincsüket temették itt el. Kiveszitek a ládát a gödörből, és [span class="takeItem" data-id="112" data-amount="gold"]112 Aranytallért[/span] találtok benne - ezeket add hozzá Zsákmányodhoz. Átkutatjátok a hajójukat, ahol elegendő élelmet és vizet találtok ahhoz, hogy Nippurig kibírjátok az utat. Visszatértek a Kísértetre, és délre hajóztok.[/p]
+    </text>
+    <next id="7"></next>
+  </p>
   <p id="155">
     <text>
         [p]- Aljas kutyák! Egy kalóz sincs köztetek! - mondod, és kardot rántasz. - Aki elsőnek hátat fordít ennek az ígéret földjének, azt keresztüldöföm! - Legényeid egyáltalán nem ijednek meg - annyira nem, hogy egyikük felemeli az íját, és mellbe lő! - Nem fogok meghalni azér, hogy kielégítsem a mohóságodat! - mondja gyilkosod, miközben a földre rogysz. Kalandod itt véget ér.[/p]
     </text>
     <death />
   </p>
-  <!-- 156 -->
+  <p id="156">
+    <text>
+        [p]Amikor a Küklopsz elkap, hatalmas jobbegyenessel beleöklözöl egyetlen szemébe - vonj le tőle 2 ÉLETERŐ pontot. A szörny felordít fájdalmában[alt], és az egyik lábadnál fogva felemel a levegőbe. Fejjel lefelé lógsz a kezében. Mit teszel?[/alt][/p]
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-2" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <next id="139">Beleöklözöl a hasába?</next>
+        <next id="372">Beleöklözöl a bordáiba?</next>
+        <next id="235">Belerúgsz a könyökébe?</next>
+      </have>
+      <dontHave>
+        <next id="311" singleChoiceText=", és elterül a földön."></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="157">
     <text>
         [p]A Kísértettel nyugati irányba hajóztok, a part felé.[/p]
     </text>
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]Növeld utazási napjaid számát 5-tel a HAJÓNAPLÓDBAN.[/p]
@@ -1713,7 +2839,12 @@
     <next id="220">Ha megtámadod ezeket a havasi teremtményeket, mielőtt elkészítenék fegyvereiket</next>
     <next id="244">Ha visszamész a szakadékon az ösvényhez és azon haladsz tovább</next>
   </p>
-  <!-- 161 -->
+  <p id="161">
+    <text>
+        [p]Többször is erősen hozzányomod kardod élét a szikla tövéhez, és apró, kemény lökésekkel kimozdítod a helyéből. A szikla görögve indul el a lépcsőn lefelé. Amikor a Trogloditák meghallják, mi történik, futva indulnak el fölfelé a lépcsőn. Ez jól beleillik a tervedbe, mert így elhagyják a biztonságos oldalfolyosót. Amikor a Trogloditák meglátják a feléjük guruló sziklatömböt, sarkon fordulnak és elmenekülnek. A sziklatömb azonban túl gyors, és összelapítja őket.[/p]
+    </text>
+    <next id="307"></next>
+  </p>
   <p id="162">
     <text>
         [p]A Pióca kizuhan a fészkéből, és a lábad elé hullik. Mikor megnézed a fészkét, látod, hogy az elég széles, és mindkét oldalán durván faragott fogantyúk vannak, amelyek segítségével be lehet mászni az alagútba, és föl lehet kapaszkodni rajta.[/p]
@@ -1721,12 +2852,17 @@
     <next id="183">Ha lefelé mész tovább a lépcsőn</next>
     <next id="199">Ha fölmászol a Pióca fészkébe</next>
   </p>
-  <!-- 163 -->
+  <p id="163">
+    <text>
+        [p]Válladhoz emeled Axillon számszeríját, célzol és lősz. A nyílvessző süvítve száll el, és a szörny két szeme közé fúródik. Vakító kék robbanás következik. A szörny a földre rogy - de feje már nincs. Az őserdő felől távoli ordítást és zajt hallotok, ezért úgy határoztok, hogy visszamentek a Kísértetre.[/p]
+    </text>
+    <next id="219"></next>
+  </p>
   <p id="164">
     <text>
         [p]A zátonyok között hajózva a Trysta-sziget felé igyekszel.[/p]
     </text>
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]Növeld utazási napjaid számát 1-gyel a HAJÓNAPLÓDBAN.[/p]
@@ -1748,8 +2884,40 @@
     </text>
     <next id="179"></next>
   </p>
-  <!-- 166 -->
-  <!-- 167 -->
+  <p id="166">
+    <text>
+        [p]Elfordítod a kormánykereket, és nagy nehezen sikerül elkerülnöd a végzetes összeütközést. Amikor a jéghegy mellett elhaladsz, hirtelen fölszáll a köd, és néhány száz méternyire a távolban hatalmas gályát veszel észre a jéghegybe ágyazva.[/p]
+    </text>
+    <next id="221">Ha lehorgonyzol és hajód egyik csónakján megközelíted a jéghegyet</next>
+    <next id="217">Ha inkább továbbhajózol a jéghegy mellett és délre indulsz</next>
+  </p>
+  <p id="167">
+    <text>
+        [p]A Kísértet a Déli-tengert átszelve, a Három Nővér szigete felé tart.[/p]
+    </text>
+    <test against="crewStrength">
+      <success>
+        <text>
+            [p]Növeld utazási napjaid számát 4-gyel a HAJÓNAPLÓDBAN![/p]
+        </text>
+        <add amount="4" to="time" />
+      </success>
+      <failure>
+        <text>
+            [p]Növeld utazási napjaid számát 5-tel a HAJÓNAPLÓDBAN![/p]
+        </text>
+        <add amount="5" to="time" />
+      </failure>
+      <after>
+        <text>
+            [p]A három szigethez közeledve látod, hogy azok egy csoportban, egymáshoz egészen közel állnak. A hozzád legközelebb eső sziget teljesen sík és rendezett - mindenfelé gondosan művelt gyümölcsöskerteket és zsúpfedeles házakat láttok. A következő sziget valójában kihunyt vulkán, melynek csúcsa több ezer méter magasan nyúlik az ég felé, s lejtőit erdők borítják. A harmadik sziget, az elsőhöz hasonlóan, szintén sík, de ezen pálmafák nőnek és homok borítja. Melyiken akarsz kikötni?[/p]
+        </text>
+      </after>
+    </test>
+    <next id="386">A rendezett szigeten?</next>
+    <next id="369">A vulkánszigeten?</next>
+    <next id="354">A pálmafákkal benőtt szigeten?</next>
+  </p>
   <p id="168">
     <text>
         [p]A folyosó hirtelen véget ér egy nagy, sziklába vájt barlangban. A göröngyös földön ül a Krell, melynek tüskékkel borított páncélját iszonyúan kusza végtagok ölelik körül. Kocsányon lógó szemekkel méreget, miközben egyik ollója egy szikladarabbal játszadozik. - Étel! Étel! - mondja. - Mmm, mmm, étel. Igen, étel! - Lábaival elrugaszkodik, és megtámad.[/p]
@@ -1780,7 +2948,7 @@
     <text>
         [p]A semleges Assur városa felé hajózol, a Kísértet egyenletesen szeli a Beltenger nyugodt vizét.[/p]
     </text>
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]Növeld utazásod napjainak számát 5-tel a HAJÓNAPLÓDBAN.[/p]
@@ -1816,7 +2984,12 @@
       </failure>
     </test>
   </p>
-  <!-- 174 -->
+  <p id="174">
+    <text>
+        [p]Ha egyszer megtámadnak a paraziták, nincs menekvés! Porhüvelyed egy másodperc alatt kiürül, a férgek újabb petéket raknak le benned, és azokat melengetve várják következő, mit sem sejtő áldozatukat. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="175">
     <text>
         [p]A Kísértet túl lassú. A két hadihajó gyorsan átvág a tengeren, és máris közrefogja a hajódat. Nyíl- és hajítócsáklya-zápor alá veszik a Kísértetet. Meg kell küzdened velük.[/p]
@@ -1832,7 +3005,15 @@
     </text>
     <death />
   </p>
-  <!-- 177 -->
+  <p id="177">
+    <text>
+        [p]Miközben fejjel lefelé lógsz a szörny markában, hatalmas ütést mérsz az ágyékára. Sokra nem mész vele, csak a kezed sajdul bele - vesztesz 1 ÉLETERŐ pontot. A Küklopsz azonban ettől úgy megzavarodik, hogy elengedi a lábadat. A földre zuhansz. Fölállsz, és szembefordulsz ellenfeleddel. Mit teszel?[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="18">Mellbe vágod?</next>
+    <next id="337">Visszakézből belevágsz a hónaljába?</next>
+    <next id="29">Könyököddel belevágsz a bordáiba?</next>
+  </p>
   <p id="178">
     <text>
         [p]Megkerülöd a Trysta-sziget déli részét, és a Goth-csatorna felé indulsz. Maradtól néhány kilométerre egy szigetet veszel észre, amelyik egyik térképeden sem szerepel.[/p]
@@ -1848,7 +3029,23 @@
     <next id="190">Ha közelebbről is szemügyre veszed a köveket</next>
     <next id="248">Ha nem nyúlsz semmihez és a hátsó ajtóhoz mész</next>
   </p>
-  <!-- 180 -->
+  <p id="180">
+    <itemCheck type="section" id="371">
+      <have>
+        <text>
+            [p]Ezt követően visszamész a Kísértetre, és elhagyod Shurrupakot.[/p]
+        </text>
+        <next id="238"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Mit teszel most?[/p]
+        </text>
+        <next id="349">Eladhatod a rabszolgáidat</next>
+        <next id="238">Vagy visszamehetsz a Kísértetre, hogy elhagyd Shurrupakot</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="181">
     <text>
         [p]A Keleti-partvidék mentén Lagash felé hajózol, és a hatodik napon megérkezel. A Kísértettel beúszol a Parine folyón a várost védő falakig, és folytatod az utat. Amikor hajód befordul a folyó egyik kanyarulatába, pompás sétahajót pillantasz meg, mely elkeseredetten próbál az árral szemben úszni. A Kísértettel a hajó mellé kerülsz, és hangos kiáltással a kis számú krómsisakos Őrség ellen vezényeled legénységedet.[/p]
@@ -1858,7 +3055,12 @@
     </fight>
     <next id="280"></next>
   </p>
-  <!-- 182 -->
+  <p id="182">
+    <text>
+        [p]- Azt már nem, kapitány! - kiáltják. - Elegünk van azokból a helyekből, ahová elcipelsz bennünket! Visszamegyünk Takba, ott legalább emberek az ellenségeink! - Lerohannak a partra, ellopják a hajó csónakját, és visszatérnek a Kíséretre. Elhajóznak észak felé, téged pedig a szigeten hagynak. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="183">
     <text>
         [p]A lépcsők egy nagy mauzóleumhoz vezetnek. Koporsók, szarkofágok, sőt csupán csak lepellel letakart testek hevernek szanaszét. Végigmész a nyálkás padlón, megállsz egy koporsó előtt, és azon gondolkozol, vajon kinyisd-e vagy sem. Halk nyögés száll végig a csarnokon, amelyet jajgatás követ. Amikor megfordulsz, egy kiváló harcos fehéren fénylő, pompás vértbe öltözött alakját pillantod meg. Látod, hogy rég halott. Fehér ujjával odaint magához, mereven rád néz, és azt suttogja: - Merről… merről… fúj a szél manapság Enrakiban? - A félelemtől bénultan mit válaszolsz neki?[/p]
@@ -1868,7 +3070,15 @@
     <next id="14">Ha azt, hogy nyugatról</next>
     <next id="31">Ha azt, hogy délről</next>
   </p>
-  <!-- 184 -->
+  <p id="184">
+    <text>
+        [p]Néhány órás eredménytelen kóborlás után rengeteg törpe Gyíkember ejt csapdába benneteket. E vérengző lények teste nagyon hasonlít a náluk nagyobb sivataglakó testvéreik testéhez, és rövid dárdákkal meg íjakkal vannak felfegyverezve. Semmit sem szeretnek jobban, mint a friss emberhúst. Embereid kardot rántanak, hogy visszaverjék a támadásukat.[/p]
+    </text>
+    <fight type="ff16ship">
+      <enemy id="50" />
+    </fight>
+    <next id="40"></next>
+  </p>
   <p id="185">
     <text>
         [p]Az út Assurig rövid és eseménytelen - utazásod napjainak a számát növeld 1-gyel a HAJÓNAPLÓDBAN. Miután megérkeztek, egyenesen a piactérre mész, hogy néhány matrózt verbuválj a hajódra kalóznak.[/p]
@@ -1892,7 +3102,29 @@
     </fight>
     <next id="128"></next>
   </p>
-  <!-- 187 -->
+  <p id="187">
+    <text>
+        [p]Megfordulsz a markában, és egy normális körülmények között kartörőnek nevezett ütést mérsz a könyöke alsó részére.
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-1" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <text>
+            A Küklopszot határozottan felidegesíti ez a manőver, és a földre dob - ezzel veszít 1 ÉLETERŐ pontot. Nem ütöd meg magad, gyorsan fölpattansz, és a szörny háta mögé kerülsz. Mit teszel?[/p]
+        </text>
+        <add amount="-1" to="stamina" />
+        <next id="115">Belebokszolsz a lábába?</next>
+        <next id="132">Könyököddel belevágsz a gerincébe?</next>
+        <next id="384">Repülőrúgással a háta közepébe rúgsz?</next>
+      </have>
+      <dontHave>
+        <text>
+            A Küklopsz a földre ejt - veszít 1 ÉLETERŐ pontot. Nem ütöd meg magad, gyorsan fölpattansz.[/p]
+        </text>
+        <next id="311"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="188">
     <text>
         [p]Legénységed zömével partra szállsz, és nekivágtok az erődítmény mögött emelkedő hegynek - utazási idődet növeld 1 nappal a HAJÓNAPLÓDBAN. Végül megfelelő ösvényt találsz, amely erdőkön, bozótos részeken, majd havas vidéken visz fölfelé. Miközben legénységeddel egyre följebb és följebb haladsz az ösvényen, a közeli hegygerincen egyszer csak észreveszel egy páratlan szépségű, II alakú enraki szentélyt; vörösfenyő szerkezete hátborzongatóan nyikorog a szélben.[/p]
@@ -1901,7 +3133,96 @@
     <next id="359">Ha úgy döntesz, hogy az ösvényről letérve odamész és megnézed a szentélyt</next>
     <next id="52">Ha továbbmész az ösvényen</next>
   </p>
-  <!-- 189 -->
+  <p id="189">
+    <text>
+        [p]A piac rossz, és rabszolgáid, akik a hosszú hajóúton belebetegedtek az örökös bezártságba, nincsenek a legjobb állapotban. Miután a rabszolga-kereskedő leszedte a sápot, fejenként 8 Aranytallért kapsz rabszolgáidért.[/p]
+    </text>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="80" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="80" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="80" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="80" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="80" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="80" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="80" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="80" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="80" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="10">
+      <have>
+        <add amount="-10" to="slave" />
+        <add amount="80" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="5">
+      <have>
+        <add amount="-5" to="slave" />
+        <add amount="40" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="2">
+      <have>
+        <add amount="-2" to="slave" />
+        <add amount="16" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="2">
+      <have>
+        <add amount="-2" to="slave" />
+        <add amount="16" to="stamina" />
+      </have>
+    </itemCheck>
+    <itemCheck type="attribute" id="slave" amount="1">
+      <have>
+        <add amount="-1" to="slave" />
+        <add amount="8" to="stamina" />
+      </have>
+    </itemCheck>
+    <next id="279"></next>
+  </p>
   <p id="190">
     <text>
         [p]Letérdelsz, elérsz egy követ, és magad felé görgeted. A kezed váratlanul szürke masszába süpped, és a „kő” hangos szisszenéssel savnyálat lövell a válladra. Vonj le 2 pontot ÉLETERŐDBŐL. A tojás alakú kő tovább sziszeg és köpköd. Rántsd elő a kardodat, és védd magad![/p]
@@ -1916,7 +3237,7 @@
     <text>
         [p]Messze elkerülöd az ellenséges Marad városát.[/p]
     </text>
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]Növeld utazási napjaid számát 4-gyel a HAJÓNAPLÓDBAN.[/p]
@@ -1939,8 +3260,18 @@
     <next id="4">Ha továbbmész a Goth-csatorna felé</next>
     <next id="257">Ha nyugati irányba indulsz az Ölyv felé, a Trysta-sziget déli partjai mellett</next>
   </p>
-  <!-- 192 -->
-  <!-- 193 -->
+  <p id="192">
+    <text>
+        [p]A falu férfi lakóit megölték, az asszonyok és a gyermekek elmenekültek. Legényeid, akik iszonyú haragra gerjedtek, amiért indokolatlanul bezárták őket, felgyújtják a falut. Visszatértek a Kísértetre, mely békésen lehorgonyozva vára part mellett.[/p]
+    </text>
+    <next id="314"></next>
+  </p>
+  <p id="193">
+    <text>
+        [p]A tragédiát már nem lehet elkerülni. A Kíséret nekiütközik a jéghegynek. Árbocai széttörnek, oldala beszakad. Rengeteg víz árasztja el szerencsétlenül járt hajódat, és valamennyien a hullámsírban végzitek. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="194">
     <text>
         [p]Már másnap felbukkan egy karaván. Okkersárga, nyolclábú, hatalmas vadállatok cammognak felétek. A felmálházott állatókat legalább egy tucat Gyíkember kíséri, akik fanyeregben ülnek az állatok hátán, és gyanakodva szemlélik a környéket. Embereiddel együtt elrejtőzöl, hagyod, hogy a konvoj tűzközelbe kerüljön, és akkor támadsz! Amikor legénységed hangos csatakiáltással rájuk tör, a Gyíkemberek előhúzzák és felétek röpítik különböző hajítófegyvereiket. Majd egy méter hosszú nyilaik embereid közé csapódnak. Vonj le 2 pontot LEGÉNYSÉGED EREJÉBŐL! Végül kézitusára kerül sor.[/p]
@@ -1957,13 +3288,33 @@
     </fight>
     <next id="329"></next>
   </p>
-  <!-- 195 -->
-  <!-- 196 -->
+  <p id="195">
+    <text>
+        [p]Ut-Napishtim Sisakja, melyet nyilván hatalmas mágikus erő alkotott, megakadályozza a gonosz Agyevőket abban, hogy tested közelébe jussanak és kárt tegyenek benned. A többi tetemhez nem nyúlsz, továbbmész az alagútban.[/p]
+    </text>
+    <next id="240"></next>
+  </p>
+  <p id="196">
+    <text>
+        [p]Megcélozod a teremtmény fejét, és hatalmas ütéssel állon vágod - vonj le tőle 2 ÉLETERŐ pontot![alt] A Küklopsz a fejét fogva feltápászkodik. Kissé magához tér, és újabb támadásra lendül - feléd rohan, hogy elkapjon. Mit teszel?[/alt][/p]
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-2" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <next id="156">Beleöklözöl a szemébe?</next>
+        <next id="74">Oldalra lépsz, és könyököddel a karjába vágsz?</next>
+        <next id="60">Repülőrúgással a rekeszizmába rúgsz?</next>
+      </have>
+      <dontHave>
+        <next id="311" singleChoiceText=" "></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="197">
     <text>
         [p]Felfelé hajózol a Holtak Folyóihoz.[/p]
     </text>
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]Növeld utazási napjaidat 5-tel a HAJÓNAPLÓDBAN.[/p]
@@ -1986,7 +3337,7 @@
     <next id="226">Ha inkább átvizsgálsz néhány víznyelőt, abban a reményben, hogy elrejtett kincset találsz</next>
   </p>
   <p id="198">
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <next id="277"></next>
       </success>
@@ -2002,7 +3353,9 @@
     <next id="264">Ha a bal oldalin</next>
     <next id="289">Ha a jobb oldalin</next>
   </p>
-  <!-- 200 -->
+  <p id="200">
+    <empty />
+  </p>
   <p id="201">
     <text>
         [p]A szarvánál fogva megragadod a koponyát, és teljes erővel kifelé kezded húzni.[/p]
@@ -2090,9 +3443,14 @@
       </result>
     </random>
   </p>
-  <!-- 203 -->
+  <p id="203">
+    <text>
+        [p]Göbe kardoddal beledöfsz a macskába, de az nem sérül meg.[/p]
+    </text>
+    <next id="322"></next>
+  </p>
   <p id="204">
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]Növeld utazási napjaid számát 3-mal a HAJÓNAPLÓDBAN.[/p]
@@ -2125,8 +3483,29 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 206 -->
-  <!-- 207 -->
+  <p id="206">
+    <text>
+        [p]Nekifutásból fölugrasz, és mellbe rúgod a Küklopszot - vonj le 2 pontot az ÉLETEREJÉBŐL. Apró nyögést hallat, majd [alt]hatalmas mancsával csapkodva hátratántorodik, aztán megragad és a magasba emel. Mit teszel?[/alt][/p]
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-2" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <next id="145">Visszakézből a könyökébe vágsz?</next>
+        <next id="305">A hónaljába rúgsz?</next>
+        <next id="276">A csuklójába harapsz?</next>
+      </have>
+      <dontHave>
+        <next id="311" singleChoiceText="kimúlik."></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="207">
+    <text>
+        [p]Visszatértek a Kish-deltából, és a Déli-tengeren hajóztok.[/p]
+    </text>
+    <next id="108">Ha a Kazallu-szigetre mész élelemért</next>
+    <next id="340">Ha messzire hajózol a kishi partoktól a Beltenger közepe felé</next>
+  </p>
   <p id="208">
     <text>
         [p]Amint a Kísértet megszabadul a gályától, észreveszed, hogy újabb hajóraj közeledik Marad felől.[/p]
@@ -2150,7 +3529,7 @@
     <text>
         [p]Hajóddal Calah felé fordulsz.[/p]
     </text>
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]Növeld utazásod napjainak számát 5-tel a HAJÓNAPLÓDBAN.[/p]
@@ -2180,7 +3559,13 @@
     <next id="302">Ha átugrasz a kereskedőhajó fedélzetére és kifosztod</next>
     <next id="326">Ha ráijesztesz a hajó kapitányára, és megparancsolod, hogy harc nélkül adja át az összes Aranyát</next>
   </p>
-  <!-- 213 -->
+  <p id="213">
+    <text>
+        [p]Néhány legényeddel és összes vagyonoddal partra szállsz, és elindultok Nippur középső hegycsúcsa felé. A hegyre vezető út közepénél egy magas falhoz értek, mely szinte teljesen körülveszi a sziget belsejét. Elindulsz a fal mentén, és hamarosan egy átjáróhoz érsz, melynek mindkét oldalán egy-egy hatalmas szobor áll. A szobrok felemelt keze egy gerendát tart, amely keresztben zárja le az átjárót. A gerendáról tengerészek teste lóg le, lassan lengeti őket a szél. Bő, fekete köntösben összezsugorodott kis teremtmény lép elétek, és így szól: - Tehát eljöttetek, hogy megnézzétek a hegyet! Egyikőtöknek meg kell küzdenie az őrrel, ha valóban meg akarjátok nézni a hegyet! - Vihogva, várakozó pillantással néz rátok.[/p]
+    </text>
+    <next id="298">Ha vállaljátok, hogy megküzdötök az „őrrel”</next>
+    <next id="389">Ha nem veszitek figyelembe ezt a fenyegetést, hanem egyenesen átmentek a nyíláson</next>
+  </p>
   <p id="214">
     <text>
         [p]Az ajtón benyitva egy kis szentélybe jutsz. Középen, egy magas emelvény tetején fekszik a nagy harcos faszobra. Az emelvényre a következő szavakat írták:[/p]
@@ -2198,8 +3583,26 @@
     <next id="260">Ha elmondod az igazat a királynak, utazásod céljáról</next>
     <next id="312">Ha nem</next>
   </p>
-  <!-- 216 -->
-  <!-- 217 -->
+  <p id="216">
+    <text>
+        [p]Amikor belépsz a terembe, hatalmas lángok csapnak fel a tűzből a mennyezetig, és egy nyögés zúg végig a szobán. - Várj - lihegi egy hang -‚ várj! - Belenézel a lángokba, ahol egy sovány, gyíkhoz hasonló lényt pillantasz meg, amely rövid szigonnyal van felfegyverezve, és odaint magához. Csaknem emberi szeme hunyorog, amikor megkérdezi: - Hol találod azt, ami a fönt és a lent között van?[/p]
+    </text>
+    <itemCheck type="item" id="4018">
+      <have>
+        <next id="308"></next>
+      </have>
+      <dontHave>
+        <next id="317"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="217">
+    <text>
+        [p]Eltávolodsz a jéghegytől, és délre hajózol. Élelemre és vízre van szükségetek ahhoz, hogy eljussatok Nippurig.[/p]
+    </text>
+    <next id="108">Az élelmet és az italt beszerezhetitek a Kazallu-szigeten</next>
+    <next id="167">Vagy a Három Nővér-szigeten</next>
+  </p>
   <p id="218">
     <text>
         [p]A kis hálófülke, amelybe benézel, tele van pókhálóval. Egyik sarkában ősrégi emberi csontvázat veszel észre. Foszlott rongyok takarják, és hajdan büszke páncél maradványai. Most rozzantan a kőfalnak támaszkodik. Egyik kezén sok aranygyűrűt veszel észre.[/p]
@@ -2212,7 +3615,20 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 219 -->
+  <p id="219">
+    <itemCheck type="section" id="386">
+      <have>
+        <text>
+            [p]Úgy döntesz, a pálmákkal borított szigeten próbálsz most szerencsét.[/p]
+        </text>
+        <next id="386"></next>
+      </have>
+      <dontHave>
+        <next id="386">Ha elhajózol a „rendezett” szigetre</next>
+        <next id="354">Ha a pálmákkal borított szigetre mennél</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="220">
     <text>
         [p]Amikor embereiddel felmászol a hegyre, a velőtrázó ordítást hallató havasi vadállatok megfordulnak, és eltűnnek a kopár vidék magasabb régióiban. Egy ideig még üldözitek e veszedelmes teremtményeket, de egy újabb hatalmas hógolyó gurul embereid közé, és sokat összelapít közülük. Vonj le 2 pontot LEGÉNYSÉGED EREJÉBŐL. A teremtmények újra eltűnnek a hóban a hegy magasabb részein. Úgy döntesz, hogy visszamentek az erődítmény mögött lévő ösvényhez.[/p]
@@ -2227,7 +3643,13 @@
       </failure>
     </test>
   </p>
-  <!-- 221 -->
+  <p id="221">
+    <text>
+        [p]A jeges parthoz evezel és kikötsz. A gálya körülbelül száz méterre, egy jégvölgy mélyén vesztegel.[/p]
+    </text>
+    <next id="273">Ha elindulsz a jégvölgyben a gálya felé</next>
+    <next id="288">Ha a jéghegy oldalában mászol föl és úgy közelíted meg a gályát</next>
+  </p>
   <p id="222">
     <text>
         [p]Kihúzzátok a Hidra tetemét a vízből, felvágod a hasát, és tengerészek, ocsmány cápák, mindenféle tengeri élőlénynek darabjai fordulnak ki belőle. A vadállat nyelőcsövéből [span class="takeItem" data-id="gold" data-amount="50"]50 Aranytallér[/span] is előkerül, amit hozzáadsz Zsákmányodhoz. Minden egyebet visszaszórsz a tengerbe.[/p]
@@ -2237,7 +3659,7 @@
     <next id="10">Ha a Keleti-partvidék felé tartasz, hogy egy kis szárazföldi portyázásra menj</next>
   </p>
   <p id="223">
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]Növeld 5-tel utazási napjaid számát.[/p]
@@ -2265,7 +3687,15 @@
       </after>
     </test>
   </p>
-  <!-- 224 -->
+  <p id="224">
+    <text>
+        [p]Kihasználod, hogy a Küklopsz elterülve fekszik előtted: odalépsz hozzá, és teljes erőből belerúgsz az ágyékába, de közben a bokád csúnyán kifordul - vesztesz 2 ÉLETERŐ pontot. A szörny szinte meg sem érzi a rúgást; felemelkedik, és ismét támadásra készen rohan feléd, hogy elkapjon. Mit teszel?[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="290">Repülőrúgással fejbe rúgod?</next>
+    <next id="156">Beleöklözöl a szemébe?</next>
+    <next id="74">Oldalra lépsz, és visszakézből a karjába vágsz?</next>
+  </p>
   <p id="225">
     <text>
         [p]Szemben állsz a döbbent apáttal és nem kevésbé döbbent szerzetesével. Kardot rántva rájuk rontasz. A szerzetest leszúrod, még mielőtt védekezhetne, és az apáttal csapsz össze.[/p]
@@ -2284,7 +3714,19 @@
     </fight>
     <next id="147"></next>
   </p>
-  <!-- 227 -->
+  <p id="227">
+    <text>
+        [p]Kinyitod az ajtót, és egy kis szobába jutsz, melyben egyetlen Sárkánygyík tartózkodik. Az undorító kis lény háttal ül, de amikor a szobába lépsz, lassan megfordul.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="278"></next>
+      </success>
+      <failure>
+        <next id="247"></next>
+      </failure>
+    </test>
+  </p>
   <p id="228">
     <text>
         [p]A szobrot könnyen elmozdítod a talapzatáról. Bár nehéz, mégsem okoz különösebb gondot, hogy levidd a lépcsőn és átadd várakozó embereidnek. Visszatérsz Assurba, ahol a bálványt [span class="takeItem" data-id="gold" data-amount="105"]105 Aranytallérért[/span] eladod. Hagyod, hogy a rubint új tulajdonosa találja meg. Visszatérsz a Kísértetre.[/p]
@@ -2292,8 +3734,35 @@
     <next id="45">Ha délnek hajózol a nyugati tengerpart mentén</next>
     <next id="318">Ha délkelet felé hajózol a Beltengerre, kereskedőhajók után kutatva</next>
   </p>
-  <!-- 229 -->
-  <!-- 230 -->
+  <p id="229">
+    <text>
+        [p]Átkutatod a hozzád legközelebb fekvő tetemet, és elborzadsz, amikor annak mellkasából dagadt férgek tömege mászik be a karodba. Vesztesz 2 ÉLETERŐ pontot. Felismered őket: ezek Agyevő paraziták, amelyek átrágják magukat áldozatuk testén és csontján, hogy eljussanak az agyhoz.[/p]
+    </text>
+    <add to="stamina" amount="-2" />
+    <itemCheck type="item" id="3002">
+      <have>
+        <next id="174"></next>
+      </have>
+      <dontHave>
+        <next id="174"></next>
+      </dontHave>
+      <haveEquipped>
+        <next id="195"></next>
+      </haveEquipped>
+    </itemCheck>
+  </p>
+  <p id="230">
+    <text>
+        [p]Vonakodva bár, de legényeid megnyugszanak, és hajlandók folytatni az utat. A part egyik kisebb öblében egy zátonyra futott gályát találtok, amelynek a törzsét az idő és a víz jócskán megtépázta. Átkutatjátok a roncsot, és [span class="takeItem" data-id="gold" data-amount="16"]16 Aranytallért[/span] találtok részben a roncsok között, részben a hajó körül a homokban.[/p]
+    </text>
+    <next id="42" pos="1">Ha a szárazföld belseje felé akarsz menni</next>
+    <itemCheck type="section" id="386">
+      <dontHave>
+        <next id="386" pos="2">Ha visszamész a Kísértetre és elhajózol a „rendezett” szigetre</next>
+      </dontHave>
+    </itemCheck>
+    <next id="354" pos="3">Ha a pálmafákkal borított szigetre mész</next>
+  </p>
   <p id="231">
     <text>
         [p]Néhány kilométerre az erődítménytől lehorgonyzol az öbölben, és legénységeddel elindulsz a part felé. Szinte mindegyikőtöknél csáklya vagy létra van. Amikor odaértek a várhoz, látod, hogy falai legalább negyven méter magasak, a főkapu kemény vasból készült, és kétoldalt egy-egy bástya védi.[/p]
@@ -2308,7 +3777,15 @@
     <add amount="2" to="luck" />
     <next id="168"></next>
   </p>
-  <!-- 233 -->
+  <p id="233">
+    <text>
+        [p]Lemész a shurrupaki kikötő matrózkocsmáihoz. Betérsz az egyikbe, és érzed, hogy valaki jó erősen a válladra csap. Megfordulsz, és azonnal felismered egyik legnagyobb régi ellenséged, Shamit Gawel Nestafát. Ököllel belevág az arcodba, és elterülsz a földön. - Te kutya! - ordítja, és kardot ránt. - Miattad vesztettem el a hajómat, amit saját kezűleg loptam! - Neked ugrik és rád támad.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="52" />
+    </fight>
+    <next id="84"></next>
+  </p>
   <p id="234">
     <text>
         [p]Legényeid lemészárolják a tengerészeket, de [span class="takeItem" data-id="slave" data-amount="10"]tíz embert megtartanak[/span], hogy később Shurrupak rabszolgapiacán eladhassák őket. Az egyre növekvő dagály leemeli a Kísértetet a sziklákról, és elhajózhattok a mélyebb vizek felé.[/p]
@@ -2318,7 +3795,22 @@
     <next id="204">Ha az Ölyv-szigetre mentek</next>
     <next id="191">Ha délkeletnek mentek a Goth-csatorna felé</next>
   </p>
-  <!-- 235 -->
+  <p id="235">
+    <text>
+        [p]Megfordulsz, és éles rúgást mérsz a Küklopsz könyökére. Valószínűleg elrepedt a csontja. Ordítva a földre ejt - vonj le 2 pontot az ÉLETEREJÉBŐL. Talpra állsz[alt], és döbbent ellenfeled felé fordulsz. Mit teszel?[/alt][/p]
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-2" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <next id="91">Behúzol egyet a vállára?</next>
+        <next id="29">Könyököddel belevágsz a bordáiba?</next>
+        <next id="206">Repülőrúgással a mellébe rúgsz?</next>
+      </have>
+      <dontHave>
+        <next id="311" singleChoiceText="."></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="236">
     <text>
         [p]A kockavető barlangban a sors szerencsétlenségedre egy régi hiteleződdel hoz Össze, akit Jiamil el-Fazouknak hívnak. Több ezer Aranytallérral tartozol neki - ezt is szerencsejátékon vesztetted el. - Nocsak, nocsak - mondja el-Fazouk, amint megpillant -‚ fogadni merek, hogy te vagy az Abdul ellenfele. Mondta is, hogy erre tekeregsz! - Ragaszkodik hozzá, hogy játssz vele, mégpedig az az összeg a tét, amivel tartozol neki. - Dobj ezzel a két kockával! - mondja. - Ha 7-et dobsz, megtarthatod a hajódat, ha nem, úgy az az enyém lesz! Ha visszautasítod az ajánlatomat és nem játszol velem, akkor az embereim ölnek meg. - Számos koszos kalóz gyűlik el-Fazouk köré, hogy jelenlétükkel megerősítsék kijelentését. Fogod a két kockát, és dobsz.[/p]
@@ -2346,7 +3838,13 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 238 -->
+  <p id="238">
+    <text>
+        [p]Felhúzod a vitorlákat és felszeded a horgonyt. Hajóddal elindulsz Shurrupak kikötőjéből a Déli-tengerre.[/p]
+    </text>
+    <next id="167">Ha a part mentén hajózol a Három Nővér-sziget felé</next>
+    <next id="378">Ha a nyílt tenger felé veszed az irányt és Nippurba tartasz</next>
+  </p>
   <p id="239">
     <text>
         [p]Amint átmászol e lepusztult hegyek szétmorzsolt kövein, egyszer csak észreveszed egy hatalmas építmény sarokkövét. Legénységed tagjaival kiásatod körülötte a földet meg a sziklákat, és egy ősrégi kőkaput találtok, amely egy betemetett kripta, templom vagy palota bejárata lehetett. Miután elhordjátok a kaput elzáró köveket, keskeny, hosszú alagút tárul elétek, mely éles szögben hatol be a hegy mélyébe.[/p]
@@ -2354,7 +3852,19 @@
     <next id="158">Ha a legjobb embereiddel elindulsz lefelé ezen az alagúton</next>
     <next id="316">Ha ismét eltorlaszolod a kövekkel az alagút bejáratát és folytatod az utadat a hegyen át</next>
   </p>
-  <!-- 240 -->
+  <p id="240">
+    <text>
+        [p]Váratlanul egy hatalmas lény ragadja meg a nyakadat, és fojtogatni kezd. Lesújtasz a kardoddal, erre a vadállat felvisít és elereszt. Amikor megfordulsz, hogy megnézd, nem látsz mást, csak az alagutat. Ekkor a teremtmény újra támad, láthatatlan öklével az arcodba vág. A csata idejére vonj le magadtól 2 ÜGYESSÉG pontot![/p]
+    </text>
+    <add amount="-2" to="skill" />
+    <fight type="single">
+      <win>
+        <add amount="2" to="skill" />
+      </win>
+      <enemy id="45" />
+    </fight>
+    <next id="381"></next>
+  </p>
   <p id="241">
     <text>
         [p]Legénységed néhány tagjának sikerül átvágnia a hadihajó árbocának köteleit, a többiek pedig megszabadítják a Kísértetet a csáklyáktól, s közben visszaverik a matrózok utolsó támadását. Megfordulsz a Kísértettel, a szél belekap a vitorlákba, és máris tovasiklotok a kishi hajót hátrahagyva, amelyen teljes zűrzavar lesz úrrá. Az Assur felé vezető utatokat elvágták, így délkelet felé, fordultok a Beltengeren.[/p]
@@ -2380,9 +3890,21 @@
     </text>
     <next id="111"></next>
   </p>
-  <!-- 245 -->
+  <p id="245">
+    <text>
+        [p]Rövid kérdezősködés és alkudozás után találsz egy rabszolga-kereskedőt, aki hajlandó eladni a rabszolgáidat.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="137"></next>
+      </success>
+      <failure>
+        <next id="189"></next>
+      </failure>
+    </test>
+  </p>
   <p id="246">
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]Növeld utazási napjaid számát 5-tel a HAJÓNAPLÓDBAN.[/p]
@@ -2399,7 +3921,12 @@
     <next id="109" pos="1"></next>
     <next id="178" pos="0"></next>
   </p>
-  <!-- 247 -->
+  <p id="247">
+    <text>
+        [p]Farkasszemet nézel a Sárkánygyíkkal. A szeme összeszűkül és kővé változtat! Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="248">
     <text>
         [p]Az ajtó masszív kőből van; közepén díszesen faragott kőtáblát látsz. A tábla aljában lévő feliratot olyan régies nyelven írták, hogy gondot okoz neked a szöveg megfejtése. Szerinted azt jelenti: „Ahhoz, hogy üdvözöld Ut-Napishtimet, neked kell benyomni (kihúzni?) a kilincset az ajtóba (az ajtóból).” Megfogod a faragott táblát.[/p]
@@ -2414,8 +3941,18 @@
     <next id="399">Ha megtámadod ezt a teremtményt</next>
     <next id="93">Ha más megoldást találsz ki</next>
   </p>
-  <!-- 250 -->
-  <!-- 251 -->
+  <p id="250">
+    <empty />
+  </p>
+  <p id="251">
+    <text>
+        [p]Rúgásod elég rossz szögből érkezik, így csupán súrolja a szörny vállát. Rá se hederít a támadásodra, megforgat a levegőben, és odavág a barlang egyik falához. Szerencsésen esel, így elkerülöd a komoly sérülést - vesztesz 1 ÉLETERŐ pontot. Négykézláb mászva a Küklopsz háta mögé kerülsz. Mit teszel?[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="115">Ököllel belevágsz a térdhajlatába?</next>
+    <next id="347">Ököllel belevágsz a veséjébe?</next>
+    <next id="132">Rávágsz a gerincére?</next>
+  </p>
   <p id="252">
     <text>
         [p]A kereskedőhajó legénysége és utasai elszörnyedve nézik, hogy a Varázsló hogyan provokál téged. Odaugranak hozzá, és lefogják. Kezét vastag kötéllel kötözik össze, és a hajó fedélzetéről a tengerbe taszítják, hogy a cápák martaléka legyen. A kapitány felmászik az árboc kötélzetére, és lekiált neked: - Bocsáss meg, amiért ilyen méltatlan személyt vettünk fel a fedélzetre. Kegyes bocsánatodért esedezünk! - Legénységének tagjai és az utasok lelkesen helyeselnek. Átugrasz a kereskedőhajó fedélzetére, [span class="takeItem" data-id="gold" data-amount="120"]120 Aranytallért[/span] zsákmányolsz, és csupán [span class="takeItem" data-id="slave" data-amount="2"]két rabszolgát[/span] viszel magaddal, mert ilyen kedvesek voltak hozzád. Mielőtt visszatérnél a Kísértet fedélzetére, engedélyt adsz a kereskedőknek a továbbhajózásra.[/p]
@@ -2424,7 +3961,19 @@
     <next id="157">Ha irányt változtatva a nyugati partok felé akarsz menni</next>
     <next id="10">Ha a Keleti-partvidék felé akarsz menni, hogy a szárazföldön portyázz</next>
   </p>
-  <!-- 253 -->
+  <p id="253">
+    <text>
+        [p]A piacon sokféle ember megfordul, így aztán könnyen találsz köztük olyat, akit felvehetsz.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="62"></next>
+      </success>
+      <failure>
+        <next id="28"></next>
+      </failure>
+    </test>
+  </p>
   <p id="254">
     <text>
         [p]Az ajtón benyitva sebtében elhagyott hálószobába jutsz. Ruhák, üres ládák és kegytárgyak hevernek szanaszét a földön és a baldachinos ágyon. Gyorsan átvizsgálod a szobát, és egy kis bőröndöt találsz, amelyet a szoba menekülő lakója felejtett ott, [span class="takeItem" data-id="gold" data-amount="98"]98 Aranytallér[/span] van benne. Hónod alá csapod a ládát, és távozol a szobából.[/p]
@@ -2438,12 +3987,17 @@
     <next id="119">Ha erre mész</next>
     <next id="107">Ha itt maradsz és harcba szállsz a hadihajóval</next>
   </p>
-  <!-- 256 -->
+  <p id="256">
+    <text>
+        [p]Görbe kardoddal beledöfsz a fehér macskába, de nem ejtesz rajta sebet.[/p]
+    </text>
+    <next id="322"></next>
+  </p>
   <p id="257">
     <text>
         [p]Nyugat felé hajózva áthaladsz a Trysta-sziget északi és a Vulkánok szigete déli csücske között.[/p]
     </text>
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]Növeld utazási napjaid számát 3-mal a HAJÓNAPLÓDBAN.[/p]
@@ -2534,7 +4088,7 @@
     <text>
         [p]Már jó ideje biztonságban hajózol, amikor az egyik hadihajóról váratlanul rátok lőnek, és a lövedék eltalálja az árbocodat. Fővitorlád fehér lepedőként terül szét a fedélzeten.[/p]
     </text>
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <next id="83"></next>
       </success>
@@ -2566,8 +4120,36 @@
     <add amount="2" to="luck" />
     <next id="289"></next>
   </p>
-  <!-- 265 -->
-  <!-- 266 -->
+  <p id="265">
+    <text>
+        [p]Minél magasabbra kapaszkodsz, a párkány annál labilisabbá és keskenyebbé válik. Egy kő hirtelen kizuhan a helyéből, te meg lezuhansz a barlang sötét mélyébe.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="365"></next>
+      </success>
+      <failure>
+        <next id="334"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="266">
+    <text>
+        [p]Nekifutásból jó erősen belerúgsz a szörny bordáiba: minden bizonnyal össze is törsz néhányat, de a te lábad is megsérül - vonj le mindkettőtöktől 2-2 ÉLETERŐ pontot.[alt] A Küklopsz nagy nehezen talpra áll, majd újra támad: megpróbál megragadni. Mit teszel?[/alt][/p]
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-2" />
+    <add amount="-2" to="stamina" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <next id="319">Repülőrúgással a lábába rúgsz?</next>
+        <next id="60">Repülőrúgással a rekeszizmába rúgsz?</next>
+        <next id="156">Beleöklözöl a szemébe?</next>
+      </have>
+      <dontHave>
+        <next id="311" singleChoiceText=" "></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="267">
     <text>
         [p]Miután megölted a vadállatot, tovább folytatod az utadat, és magad mögött hagyod a fehéren tajtékzó vizet meg a hadihajókat. Sikeresen túljutottál a zátonyokon, és máris előtted van Trysta szigete.[/p]
@@ -2577,8 +4159,29 @@
     <next id="27">Ha az Ölyvre</next>
     <next id="191">Ha délkelet felé mész a Goth-csatorna irányába</next>
   </p>
-  <!-- 268 -->
-  <!-- 269 -->
+  <p id="268">
+    <text>
+        [p]Legénységed néhány tagja elindul a legközelebbi part felé a hajó egyik csónakjával, és eltűnik a hajnali ködben. Néhány perccel később kiáltás hallatszik, majd lövések dördülnek, és csatazaj tölti meg a levegőt. Tűzjelzést adnak le a legközelebbi bástyáról; kürtök harsognak. Egy perc múlva elül a csatazaj, és egyetlen súlyosan sebesült legényed visszaevez a Kísértethez. - Védekeznek, kapitány! - nyögi ki, és összeesik. Vonj le 2 pontot LEGÉNYSÉGED EREJÉBŐL. Nincs más választásod, vissza kell fordulnod a folyón, és vissza kell menned a tengerre.[/p]
+    </text>
+    <add amount="-2" to="crewStamina" />
+    <next id="207"></next>
+  </p>
+  <p id="269">
+    <text>
+        [p]Keresel egy üres helyet a bazárban, és az arra sétálgató, árut mustrálgató reményteljes vevőid előtt kiállítod foglyaidat.[/p]
+    </text>
+    <random>
+      <result max="2" min="1">
+        <next id="94"></next>
+      </result>
+      <result max="4" min="3">
+        <next id="72"></next>
+      </result>
+      <result max="6" min="5">
+        <next id="59"></next>
+      </result>
+    </random>
+  </p>
   <p id="270">
     <text>
         [p]A Batárversenyeket a rakpart és a város között húzódó homokos részen tartják. A versenypálya egyik végében hatalmas versenygyíkokat sorakoztatnak fel, melyek aztán vágtázva rohannak a túlvégen cölöphöz kötözött Goblin felé. Az a Batár a győztes, amelyik elsőként mélyeszti bele a fogait a szerencsétlen teremtménybe. Húsz indulóból a következő három közül választhatsz egyet: Fazima, Awkspeed és el-Savak. Tetszés szerint 20 Aranytallért, vagy 2 rabszolgát kell tenned az egyikre. [alt /][/p]
@@ -2644,7 +4247,15 @@
       </result>
     </random>
   </p>
-  <!-- 271 -->
+  <p id="271">
+    <text>
+        [p]Alig tettél meg egy rövid útszakaszt, amikor a tengerből egy Óriás Homár bukkan elő, és rohamléptekkel indul el a parton, hogy a jó falat reményében megragadja egyik emberedet. Körülbelül hat méter hosszú testét vastag páncél fedi, és másfél méteres ollók fegyverként használja. Félelmetes ellenség. Legénységed védekezik.[/p]
+    </text>
+    <fight type="ff16ship">
+      <enemy id="54" />
+    </fight>
+    <next id="116"></next>
+  </p>
   <p id="272">
     <text>
         [p]Felvontad a vitorlákat. Merre mész?[/p]
@@ -2652,7 +4263,63 @@
     <next id="318">Ha a Beltenger vizein akarsz portyázni gazdag kereskedőhajókra vadászva</next>
     <next id="10">Ha a Keleti-partvidék felé hajózol déli irányban</next>
   </p>
-  <!-- 273 -->
+  <p id="273">
+    <text>
+        [p]Fölfelé mész a völgy közepén. Már egészen közel jársz a gályához, amikor beszakad a lábad alatt a jég, és egy mély verembe zuhansz.[/p] 
+    </text>
+    <random diceConfig="2d6">
+      <result max="2" min="2">
+        <text>[p]Vesztesz 2 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-2" to="stamina" />
+      </result>
+      <result max="3" min="3">
+        <text>[p]Vesztesz 3 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-3" to="stamina" />
+      </result>
+      <result max="4" min="4">
+        <text>[p]Vesztesz 4 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-4" to="stamina" />
+      </result>
+      <result max="5" min="5">
+        <text>[p]Vesztesz 5 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-5" to="stamina" />
+      </result>
+      <result max="6" min="6">
+        <text>[p]Vesztesz 6 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-6" to="stamina" />
+      </result>
+      <result max="7" min="7">
+        <text>[p]Vesztesz 7 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-7" to="stamina" />
+      </result>
+      <result max="8" min="8">
+        <text>[p]Vesztesz 8 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-8" to="stamina" />
+      </result>
+      <result max="9" min="9">
+        <text>[p]Vesztesz 9 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-9" to="stamina" />
+      </result>
+      <result max="10" min="10">
+        <text>[p]Vesztesz 10 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-10" to="stamina" />
+      </result>
+      <result max="11" min="11">
+        <text>[p]Vesztesz 11 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-11" to="stamina" />
+      </result>
+      <result max="12" min="12">
+        <text>[p]Vesztesz 12 ÉLETERŐ pontot.[/p]</text>
+        <add amount="-12" to="stamina" />
+      </result>
+      <after>
+        <text>
+            [p]Kimászol a veremből, és óvatos léptekkel továbbmész a gálya felé.[/p]
+        </text>
+      </after>
+    </random>
+    <next id="288"></next>
+  </p>
   <p id="274">
     <text>
         [p]Miután a papokat legyőztétek, a lelkesedést kissé eltúlzó legénységed felgyújtja a vár templomát, így a lángok martaléka lesz csaknem minden kincs, amit győztesként zsákmányolhattatok volna. Mégis körülnézel, és [span class="takeItem" data-id="gold" data-amount="85"]85 Aranytallért[/span], valamint [span class="takeItem" data-id="slave" data-amount="10"]10 életben maradt papot[/span] találsz, akiket majd jó pénzért eladsz a rabszolgapiacon. Győztesen térsz vissza a Kísértet fedélzetére, és elhajózol Enraki szigetéről.[/p]
@@ -2672,7 +4339,15 @@
       </failure>
     </test>
   </p>
-  <!-- 276 -->
+  <p id="276">
+    <text>
+        [p]Kissé felemelkedve fogaidat belemélyeszted a Küklopsz vaskos, hámló csuklójába, de beletörik a zápfogad. A szörny meglóbál a levegőben, majd a földhöz vág, és jó nagyot rúg beléd - vesztesz 2 ÉLETERŐ pontot. A szörny azt hiszi, hogy elvesztetted az eszméletedet, ezért egy pillanatra hátat fordít neked. Ekkor nagy nehezen lábra állsz. Mit teszel?[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="46">Könyököddel belevágsz a térdhajlatába?</next>
+    <next id="115">Belebokszolsz a lábába?</next>
+    <next id="384">Repülőrúgással a háta közepébe rúgsz?</next>
+  </p>
   <p id="277">
     <text>
         [p]A Kísértet baleset nélkül evickél át a rendkívül keskeny csatornán, és végül is maga mögött hagyja a fehéren tajtékzó hullámokat és a hadihajókat. Sikeresen kikerülted a zátonyokat, és feltűnik előtted a Trysta-sziget.[/p]
@@ -2682,8 +4357,29 @@
     <next id="27">Ha az Ölyvre</next>
     <next id="191">Ha délkeletre, a Goth-csatorna felé</next>
   </p>
-  <!-- 278 -->
-  <!-- 279 -->
+  <p id="278">
+    <text>
+        [p]Az a tudat, hogy ez egy Sárkánygyík, melynek egyetlen pillantása kővé dermeszt - pánikszerű menekülésre késztet, és kirohansz a szobából. Inkább a díszterembe mész.[/p]
+    </text>
+    <next id="216"></next>
+  </p>
+  <p id="279">
+    <itemCheck type="section" id="371">
+      <have>
+        <text>
+            [p]Ezt követően visszamész a Kísértetre, és elhagyod Shurrupakot.[/p]
+        </text>
+        <next id="238"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Mit teszel most?[/p]
+        </text>
+        <next id="371">Felvehetsz még néhány kalózt a hajódra</next>
+        <next id="238">Vagy visszamehetsz a Kísértetre, hogy elhagyd Shurrupakot</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="280">
     <text>
         [p]Amikor kalózaid lefegyverzik az őröket, a sétahajó legénysége és a vendégek a tengerbe vetik magukat, és úszni kezdenek, mert inkább vállalják, hogy a krokodilok végezzenek velük, semmint hogy a te embereid kezébe kerüljenek. Sűrű, sötét füstfelhő gomolyog a gazdagon díszített hajó belsejéből - menekülő tulajdonosai gyújtották fel. Átugrasz a fedélzetre, hogy megmenthess valamit a kincsből, mielőtt az egész hajó lángba borulna. Amikor lerohansz a hajó füstölgő belsejébe, két zárt ajtót pillantasz meg.[/p]
@@ -2700,7 +4396,13 @@
     <next id="292">Ha kinyitod a szarkofág tetejét</next>
     <next id="358">Ha nem nyúlsz hozzá</next>
   </p>
-  <!-- 282 -->
+  <p id="282">
+    <text>
+        [p]A pálmák között áthaladva váratlan látvány tárul elétek. A sziget közepén egy nagy lagúnát találtok, amelyet a sziget túlsó feléről egy keskeny csatornán lehet megközelíteni. A lagúna közepén lehorgonyozva egy kis kalózhajót láttok. A hajó legénysége nagy igyekezettel éppen eltemet valamit a parton.[/p]
+    </text>
+    <next id="393">Ha megtámadjátok őket</next>
+    <next id="271">Ha visszatértek a partra, hogy élelmet keressetek</next>
+  </p>
   <p id="283">
     <text>
         [p]Az egész napos vad piaci alkudozás után meggyőződhetsz róla, hogy a kalóz életmód folytonos dáridói nem vonzzák a tehetséges és jó erőben lévő férfiak zömét. De a jó szerencse mégis veled van, amikor belebotlasz egy rabszolga-kereskedőbe, akinek nemcsak túl sok, kalózoktól vásárolt rabszolgája van, hanem igen olcsón is adja őket. Minden 10 Aranytallér után, amit kiadsz, 1-gyel növelheted LEGÉNYSÉGED EREJÉNEK pontszámait. Ugyanez a rabszolga-kereskedő mellesleg megjegyzi, hogy Assurtól néhány kilométerre a folyó mentén igen gazdag szentély áll.[/p]
@@ -2836,7 +4538,14 @@
     <next id="318">De elhajózhatsz a Beltengeren délkeleti irányba</next>
     <next id="45">Vagy délre, a nyugati partvidék mentén</next>
   </p>
-  <!-- 284 -->
+  <p id="284">
+    <text>
+        [p]Már csaknem leérsz a lépcsőn, amikor lent fényt látsz. Négy Trogloditát pillantasz meg, akik egy oldalfolyosó felől csoszognak a lépcső felé. Mindannyian lándzsával vannak felfegyverezve, és ketten közülük hatalmas ládát cipelnek. Elrejtőzöl előlük egy nagy szikla mögött. Úgy véled, a láda valami értékes holmit rejt. Mit teszel?[/p]
+    </text>
+    <next id="112">Apró kavicsokat gurítasz le a lépcsőn, hogy eltereld a Trogloditák figyelmét, mielőtt megtámadnád őket?</next>
+    <next id="130">Kardot rántva rájuk rontasz?</next>
+    <next id="161">Kardodat emelőként használva meglódítod a sziklát, amely mögött megbújsz, hogy leguruljon és összelapítsa a Trogloditákat?</next>
+  </p>
   <p id="285">
     <text>
         [p]Kalózaid tüzes nyilakat röpítenek a várra; néhány nyílvessző a templomot éri, mely lángra lobban. Asswr-sel-Dablo szemfüles papjai egy pillanat alatt eloltják a tüzet, sőt megkondítják a harangokat is, és nyilakkal meg lándzsákkal felfegyverezve felsorakoznak az erődítmény falain. Jeladásodra a Kísértet legénysége ordítva rohanja meg a vár alacsony falait. A csata megkezdődik.[/p]
@@ -2846,7 +4555,15 @@
     </fight>
     <next id="274"></next>
   </p>
-  <!-- 286 -->
+  <p id="286">
+    <text>
+        [p]Egyik kalózod észrevesz a kerítésben egy kilazult gerendát. Négyen-öten nekiesnek, és kidöntik. Fegyvereitekkel kilopakodtok a fogságból, és rárohantok a gyanútlan falusiakra. Erős kalózaid nagy zűrzavart okoznak.[/p]
+    </text>
+    <fight type="ff16ship">
+      <enemy id="53" />
+    </fight>
+    <next id="192"></next>
+  </p>
   <p id="287">
     <text>
         [p]Kiűzitek a kishi tengerészeket, és felgyújtjátok a hajójukat. Nincs elég időd rá, hogy átkutasd a lángoló hajót, így csupán rabszolgákat tudsz összeszedni a megmaradt tengerészek közül. Nincsenek sokan, de [span class="takeItem" data-id="slave" data-amount="11"]11 olyan legényt[/span] találsz, akit esetleg eladhatsz.[/p]
@@ -2856,7 +4573,15 @@
     <next id="204">Ha az Ölyvre mész</next>
     <next id="191">Ha délkelet felé tartasz a Goth-csatornához</next>
   </p>
-  <!-- 288 -->
+  <p id="288">
+    <text>
+        [p]Amikor odaérsz a zátonyra futott hajóhoz, felmászol a fedélzetére, és szembetalálod magad egy nagy, bozontos szőrű fehér vadállattal, mely épp a gálya egyik halott matrózát készül felfalni. Rád mordul, és rád vicsorítja agyarát. Megpróbálsz elmenekülni, de a vadállat rád támad, és hatalmas karmokban végződő mancsait feléd lendíti. Kardot rántva védekezel.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="51" />
+    </fight>
+    <next id="320"></next>
+  </p>
   <p id="289">
     <text>
         [p]Az ajtó egy nagy, erősen aládúcolt terembe nyílik, melynek közepén obszidián emelvényen csúf kis szobor áll. A bálvány mindkét oldalán egy-egy oltárszolga áll, a pusztulás urait szolgálók hagyományos krokodilbőrébe burkolva. Fenyegetően feléd lépnek, miközben előrántják hosszú tőrüket. - Az ördögbe is - szólal meg az egyik -‚ meg kell gyorsítanunk az utadat az örök álommezők felé! - Rád támadnak. Egyenként kell velük megküzdened.[/p]
@@ -2867,12 +4592,33 @@
     </fight>
     <next id="388"></next>
   </p>
-  <!-- 290 -->
+  <p id="290">
+    <text>
+        [p]A szörny felé rohansz, felugrasz a levegőbe, és fejbe rúgod. Kissé lehajtja a fejét, így a csizmád széle csak súrolja a koponyáját - vonj le tőle 1 ÉLETERŐ pontot.
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-1" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <text>
+            Viszont sikerül elkapnia a bokádat, és annál fogva meglóbál néhányszor a levegőben. Mit teszel?[/p]
+        </text>
+        <next id="122">Térdeddel mellbe rúgod?</next>
+        <next id="372">Beleöklözöl a bordáiba?</next>
+        <next id="177">Karateütéssel az ágyékába vágsz?</next>
+      </have>
+      <dontHave>
+        <text>
+            [/p]
+        </text>
+        <next id="311"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="291">
     <text>
         [p]A sétahajó belseje olyan, akár egy tüzes kohó, már semmi remény nincs rá, hogy a hajó megmeneküljön. A Kísértet fedélzetére visszatérve látod, hogy legénységed Csupán [span class="takeItem" data-id="slave" data-amount="3"]három foglyot[/span] tudott ejteni a hajó matrózai közül. A Kísértettel megfordulsz, és Lagash mellett elhaladva a Beltenger felé csurogsz a folyón lefelé. Amint elhagyod a folyót, utadat állja egy piros vitorlás hadihajó, mely a város irányából érkezett.[/p]
     </text>
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <next id="90"></next>
       </success>
@@ -2887,7 +4633,329 @@
     </text>
     <next id="358"></next>
   </p>
-  <!-- 293 -->
+  <p id="293">
+    <text>
+        [p]Shurrupak szegényei nagyon szegények, és néhány garasért mindent megtesznek, amit csak kérnek tőlük. Ennek ellenére nem lehet megjósolni, hogy azok, akiket itt megvásárolsz, később milyenek lesznek. Dobj egy kockával minden 50 Aranytallér után, amit ezekért a szerencsétlen emberekért, akik a kalózéletet választják, kifizetsz. A kapott számot add hozzá LEGÉNYSÉGED EREJÉHEZ.[/p]
+        [div data-market=""][/div]
+    </text>
+    <market>
+      <saleLabel>Felbérelhető emberek</saleLabel>
+      <sale price="50" stock="10" id="3008" />
+      <after>
+        <itemCheck type="item" id="3008">
+          <have>
+            <loseItem id="3008" />
+            <random>
+              <result max="1" min="1">
+                <text>[p]A felbérelt embereknek hála 1-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="1" to="crewStrength" />
+              </result>
+              <result max="2" min="2">
+                <text>[p]A felbérelt embereknek hála 2-vel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="2" to="crewStrength" />
+              </result>
+              <result max="3" min="3">
+                <text>[p]A felbérelt embereknek hála 3-mal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="3" to="crewStrength" />
+              </result>
+              <result max="4" min="4">
+                <text>[p]A felbérelt embereknek hála 4-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="4" to="crewStrength" />
+              </result>
+              <result max="5" min="5">
+                <text>[p]A felbérelt embereknek hála 5-tel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="5" to="crewStrength" />
+              </result>
+              <result max="6" min="6">
+                <text>[p]A felbérelt embereknek hála 6-tal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="6" to="crewStrength" />
+              </result>
+            </random>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3008">
+          <have>
+            <loseItem id="3008" />
+            <random>
+              <result max="1" min="1">
+                <text>[p]A felbérelt embereknek hála 1-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="1" to="crewStrength" />
+              </result>
+              <result max="2" min="2">
+                <text>[p]A felbérelt embereknek hála 2-vel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="2" to="crewStrength" />
+              </result>
+              <result max="3" min="3">
+                <text>[p]A felbérelt embereknek hála 3-mal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="3" to="crewStrength" />
+              </result>
+              <result max="4" min="4">
+                <text>[p]A felbérelt embereknek hála 4-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="4" to="crewStrength" />
+              </result>
+              <result max="5" min="5">
+                <text>[p]A felbérelt embereknek hála 5-tel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="5" to="crewStrength" />
+              </result>
+              <result max="6" min="6">
+                <text>[p]A felbérelt embereknek hála 6-tal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="6" to="crewStrength" />
+              </result>
+            </random>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3008">
+          <have>
+            <loseItem id="3008" />
+            <random>
+              <result max="1" min="1">
+                <text>[p]A felbérelt embereknek hála 1-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="1" to="crewStrength" />
+              </result>
+              <result max="2" min="2">
+                <text>[p]A felbérelt embereknek hála 2-vel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="2" to="crewStrength" />
+              </result>
+              <result max="3" min="3">
+                <text>[p]A felbérelt embereknek hála 3-mal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="3" to="crewStrength" />
+              </result>
+              <result max="4" min="4">
+                <text>[p]A felbérelt embereknek hála 4-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="4" to="crewStrength" />
+              </result>
+              <result max="5" min="5">
+                <text>[p]A felbérelt embereknek hála 5-tel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="5" to="crewStrength" />
+              </result>
+              <result max="6" min="6">
+                <text>[p]A felbérelt embereknek hála 6-tal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="6" to="crewStrength" />
+              </result>
+            </random>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3008">
+          <have>
+            <loseItem id="3008" />
+            <random>
+              <result max="1" min="1">
+                <text>[p]A felbérelt embereknek hála 1-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="1" to="crewStrength" />
+              </result>
+              <result max="2" min="2">
+                <text>[p]A felbérelt embereknek hála 2-vel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="2" to="crewStrength" />
+              </result>
+              <result max="3" min="3">
+                <text>[p]A felbérelt embereknek hála 3-mal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="3" to="crewStrength" />
+              </result>
+              <result max="4" min="4">
+                <text>[p]A felbérelt embereknek hála 4-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="4" to="crewStrength" />
+              </result>
+              <result max="5" min="5">
+                <text>[p]A felbérelt embereknek hála 5-tel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="5" to="crewStrength" />
+              </result>
+              <result max="6" min="6">
+                <text>[p]A felbérelt embereknek hála 6-tal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="6" to="crewStrength" />
+              </result>
+            </random>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3008">
+          <have>
+            <loseItem id="3008" />
+            <random>
+              <result max="1" min="1">
+                <text>[p]A felbérelt embereknek hála 1-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="1" to="crewStrength" />
+              </result>
+              <result max="2" min="2">
+                <text>[p]A felbérelt embereknek hála 2-vel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="2" to="crewStrength" />
+              </result>
+              <result max="3" min="3">
+                <text>[p]A felbérelt embereknek hála 3-mal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="3" to="crewStrength" />
+              </result>
+              <result max="4" min="4">
+                <text>[p]A felbérelt embereknek hála 4-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="4" to="crewStrength" />
+              </result>
+              <result max="5" min="5">
+                <text>[p]A felbérelt embereknek hála 5-tel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="5" to="crewStrength" />
+              </result>
+              <result max="6" min="6">
+                <text>[p]A felbérelt embereknek hála 6-tal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="6" to="crewStrength" />
+              </result>
+            </random>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3008">
+          <have>
+            <loseItem id="3008" />
+            <random>
+              <result max="1" min="1">
+                <text>[p]A felbérelt embereknek hála 1-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="1" to="crewStrength" />
+              </result>
+              <result max="2" min="2">
+                <text>[p]A felbérelt embereknek hála 2-vel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="2" to="crewStrength" />
+              </result>
+              <result max="3" min="3">
+                <text>[p]A felbérelt embereknek hála 3-mal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="3" to="crewStrength" />
+              </result>
+              <result max="4" min="4">
+                <text>[p]A felbérelt embereknek hála 4-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="4" to="crewStrength" />
+              </result>
+              <result max="5" min="5">
+                <text>[p]A felbérelt embereknek hála 5-tel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="5" to="crewStrength" />
+              </result>
+              <result max="6" min="6">
+                <text>[p]A felbérelt embereknek hála 6-tal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="6" to="crewStrength" />
+              </result>
+            </random>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3008">
+          <have>
+            <loseItem id="3008" />
+            <random>
+              <result max="1" min="1">
+                <text>[p]A felbérelt embereknek hála 1-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="1" to="crewStrength" />
+              </result>
+              <result max="2" min="2">
+                <text>[p]A felbérelt embereknek hála 2-vel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="2" to="crewStrength" />
+              </result>
+              <result max="3" min="3">
+                <text>[p]A felbérelt embereknek hála 3-mal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="3" to="crewStrength" />
+              </result>
+              <result max="4" min="4">
+                <text>[p]A felbérelt embereknek hála 4-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="4" to="crewStrength" />
+              </result>
+              <result max="5" min="5">
+                <text>[p]A felbérelt embereknek hála 5-tel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="5" to="crewStrength" />
+              </result>
+              <result max="6" min="6">
+                <text>[p]A felbérelt embereknek hála 6-tal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="6" to="crewStrength" />
+              </result>
+            </random>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3008">
+          <have>
+            <loseItem id="3008" />
+            <random>
+              <result max="1" min="1">
+                <text>[p]A felbérelt embereknek hála 1-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="1" to="crewStrength" />
+              </result>
+              <result max="2" min="2">
+                <text>[p]A felbérelt embereknek hála 2-vel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="2" to="crewStrength" />
+              </result>
+              <result max="3" min="3">
+                <text>[p]A felbérelt embereknek hála 3-mal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="3" to="crewStrength" />
+              </result>
+              <result max="4" min="4">
+                <text>[p]A felbérelt embereknek hála 4-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="4" to="crewStrength" />
+              </result>
+              <result max="5" min="5">
+                <text>[p]A felbérelt embereknek hála 5-tel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="5" to="crewStrength" />
+              </result>
+              <result max="6" min="6">
+                <text>[p]A felbérelt embereknek hála 6-tal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="6" to="crewStrength" />
+              </result>
+            </random>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3008">
+          <have>
+            <loseItem id="3008" />
+            <random>
+              <result max="1" min="1">
+                <text>[p]A felbérelt embereknek hála 1-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="1" to="crewStrength" />
+              </result>
+              <result max="2" min="2">
+                <text>[p]A felbérelt embereknek hála 2-vel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="2" to="crewStrength" />
+              </result>
+              <result max="3" min="3">
+                <text>[p]A felbérelt embereknek hála 3-mal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="3" to="crewStrength" />
+              </result>
+              <result max="4" min="4">
+                <text>[p]A felbérelt embereknek hála 4-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="4" to="crewStrength" />
+              </result>
+              <result max="5" min="5">
+                <text>[p]A felbérelt embereknek hála 5-tel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="5" to="crewStrength" />
+              </result>
+              <result max="6" min="6">
+                <text>[p]A felbérelt embereknek hála 6-tal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="6" to="crewStrength" />
+              </result>
+            </random>
+          </have>
+        </itemCheck>
+        <itemCheck type="item" id="3008">
+          <have>
+            <loseItem id="3008" />
+            <random>
+              <result max="1" min="1">
+                <text>[p]A felbérelt embereknek hála 1-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="1" to="crewStrength" />
+              </result>
+              <result max="2" min="2">
+                <text>[p]A felbérelt embereknek hála 2-vel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="2" to="crewStrength" />
+              </result>
+              <result max="3" min="3">
+                <text>[p]A felbérelt embereknek hála 3-mal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="3" to="crewStrength" />
+              </result>
+              <result max="4" min="4">
+                <text>[p]A felbérelt embereknek hála 4-gyel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="4" to="crewStrength" />
+              </result>
+              <result max="5" min="5">
+                <text>[p]A felbérelt embereknek hála 5-tel növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="5" to="crewStrength" />
+              </result>
+              <result max="6" min="6">
+                <text>[p]A felbérelt embereknek hála 6-tal növelheted LEGÉNYSÉGED EREJÉT.[/p]</text>
+                <add amount="6" to="crewStrength" />
+              </result>
+            </random>
+          </have>
+        </itemCheck>
+      </after>
+    </market>
+    <next id="180"></next>
+  </p>
   <p id="294">
     <text>
         [p]Egy kereskedőhajó négyszögletes vitorlája és terebélyes teste bukkan fel a láthatáron. A hatalmas hajó jócskán meg van rakva, és valószínűleg fegyverekkel is bőven el van látva. A Keleti-partvidék felől nyugat felé tart, Kish városába.[/p]
@@ -2895,7 +4963,12 @@
     <next id="391">Ha megtámadod a hajót</next>
     <next id="66">Ha békén hagyod, és inkább tovább kutatsz a tengeren egy kisebb hajó után</next>
   </p>
-  <!-- 295 -->
+  <p id="295">
+    <text>
+        [p]Görbe kardoddal beledöfsz a macskába, de nem ejtesz rajta sebet.[/p]
+    </text>
+    <next id="322"></next>
+  </p>
   <p id="296">
     <text>
         [p]Ahogy közeledsz, a két hajó harapófogóba fog. Az egyiket kikerülöd, de fennakadsz a másik orrdíszén. Sérült hajód kettétörik. Pórul járt legénységeddel együtt a tengerbe zuhansz, ahol a cápák - melyek sohasem maradnak távol a tengeri csatáktól - éhesen gyülekeznek. Kalandod itt véget ér.[/p]
@@ -2915,10 +4988,41 @@
       </failure>
     </test>
   </p>
-  <!-- 298 -->
-  <!-- 299 -->
-  <!-- 300 -->
-  <!-- 301 -->
+  <p id="298">
+    <text>
+        [p]- Gyere erre - szól az idős teremtmény, és egy csapóajtóra mutat az egyik szobor talapzatában. - Menj le itt. Ha visszajössz, átmehettek a hegyen! - Kinyitod a csapóajtót, és lemászol a sötétségbe. Gyéren megvilágított barlangba jutsz, melyben egy Küklopsz vár. A hatalmas egyszemű, ember formájú lény kiragadja a kezedből hüvelyében pihenő kardodat, és fölhajítja a barlang falában lévő fülkébe. - Na - mondja -‚ most megküzdhetünk! - Fegyvertelenül kell vele megvívnod.Döntsd el, miképp küzdesz meg vele.[/p]
+    </text>
+    <next id="206">Mellbe rúgod?</next>
+    <next id="91">A vállába öklözöl?</next>
+    <next id="29">Könyökkel belevágsz a bordái közé?</next>
+  </p>
+  <p id="299">
+    <empty />
+  </p>
+  <p id="300">
+    <empty />
+  </p>
+  <p id="301">
+    <text>
+        [p]Shurrupak szép nagy város, mely szívesen látja a beltengeri kalózokat, akik ezért kizárólag Shurrupak ellenségeit támadják meg.[/p]
+    </text>
+    <test against="crewStrength">
+      <success>
+        <text>
+            [p]Növeld 5 nappal utazási idődet a HAJÓNAPLÓDBAN![/p]
+        </text>
+        <add amount="5" to="time" />
+      </success>
+      <failure>
+        <text>
+            [p]Növeld 6 nappal utazási idődet a HAJÓNAPLÓDBAN![/p]
+        </text>
+        <add amount="6" to="time" />
+      </failure>
+    </test>
+    <next id="349">Ha Shurrupakba megérkezve először a rabszolgáidat adod el</next>
+    <next id="371">Ha előbb újabb kalózokat vásárolsz a hajódra</next>
+  </p>
   <p id="302">
     <text>
         [p]Hajóddal a másik hajó mellé kerültök, és a legénységed hajítócsáklyákkal közel húzza egymáshoz a két hajótestet. Embereid egyetlen ordítással átugranak a másik hajó fedélzetére, ahol szánalmasan kevés matróz sorakozik fel a védelemre.[/p]
@@ -2949,7 +5053,22 @@
     <next id="113">Ha engedsz legényeid unszolásának</next>
     <next id="155">Ha kineveted őket, amiért ilyen gyávák, és megparancsolod nekik, hogy menjenek tovább</next>
   </p>
-  <!-- 305 -->
+  <p id="305">
+    <text>
+        [p]Minden erődet összeszedve meglendíted a lábadat, és a teremtmény hónaljába rúgsz. Az nagyot ordítva elereszt, majd kezét a sérülésére szorítja - vonj le 2 pontot az ÉLETEREJÉBŐL. Nem ütöd meg magad[alt], fürgén a sérült Küklopsz mögé kerülsz. Mit teszel?[/alt][/p]
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-2" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <next id="347">Belebokszolsz veséjébe?</next>
+        <next id="46">Könyököddel belevágsz a térdhajlatába?</next>
+        <next id="384">Repülőrúgásal a háta közepébe rúgsz?</next>
+      </have>
+      <dontHave>
+        <next id="311" singleChoiceText="."></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="306">
     <text>
         [p]Úszó fadarabok tömkelege között hajózol - ezek valószínűleg egy szerencsétlenül járt hajó darabjai. Az úszó hajódeszkák többségét hatalmas fogak törték darabokra. Csak néhány hordót találsz a roncsok között, amit érdemes elkobozni. Az egyikben kitűnő pálinka van, ami nagymértékben növeli legénységed jó hangulatát - növeld LEGÉNYSÉGED EREJÉT 2 ponttal.[/p]
@@ -2959,8 +5078,18 @@
     <next id="157">Ha irányt változtatva a nyugati partok felé indulsz</next>
     <next id="10">Ha a Keleti-partvidék felé mész, hogy ott a szárazföldön portyázz</next>
   </p>
-  <!-- 307 -->
-  <!-- 308 -->
+  <p id="307">
+    <text>
+        [p]Miután legyőzted a Trogloditákat, kinyitod a ládájukat, és pontosan [span class="takeItem" data-id="gold" data-amount="100"]100 Aranytallért[/span] találsz benne. A zsákmányt nehezen cipelve az oldalfolyosón fölfelé indulsz. Pár száz méter után kijutsz a napvilágra. Az Ölyv-sziget erdeiben vagy. Amint a part felé mész, néhány embereddel találkozol, akik a többiekkel együtt a szigetet járták, hogy a nyomodra bukkanjanak. Győztesen térsz meg a Kísértet fedélzetére, és folytatod az utadat.[/p]
+    </text>
+    <next id="15"></next>
+  </p>
+  <p id="308">
+    <text>
+        [p]- Ott a végén, melletted - mondod a gyűrűben lévő drágakőre visszaemlékezve. - Helyes. Továbbmehetsz! - válaszol a Szalamandra, és eltűnik. A lángok kihunynak. Átmész a termen, és kilépsz az ajtón.[/p]
+    </text>
+    <next id="339"></next>
+  </p>
   <p id="309">
     <text>
         [p]A hadihajó túl gyors! Melléd kerül, megcsáklyázza a hajódat, és magához von. A tengerészek már várnak rátok. Meg kell küzdenetek velük.[/p]
@@ -2982,7 +5111,12 @@
     </text>
     <next id="272"></next>
   </p>
-  <!-- 311 -->
+  <p id="311">
+    <text>
+        [p]A Küklopsz eszméletlenül terül el a földön. Győztél. Felmászol a létrán, majd kimész a csapóajtón, ahol szembetalálod magad a bölcs öreg lénnyel, aki leküldött. Vihog, amikor megjelensz, majd átküld egy a falban lévő keskeny résen, és megmutatja, merre kell menned, hogy eljuss Nippur hegyének csúcsára.[/p]
+    </text>
+    <next id="36"></next>
+  </p>
   <p id="312">
     <text>
         [p]A lakoma végeztével a Király búcsút mond neked. Visszatérsz a Kísértetre, és elhagyjátok az öblöt, ahol lehorgonyoztatok.
@@ -3008,7 +5142,13 @@
     <next id="261">Ha szélsebesen elhajózol a hajóraj előtt és a zátonyok felé indulsz</next>
     <next id="237">Ha átvágod a hajóraj vonalát, úgy, mint az előbb tetted</next>
   </p>
-  <!-- 314 -->
+  <p id="314">
+    <text>
+        [p]Melyik szigetet veszed célba?[/p]
+    </text>
+    <next id="369">Ha a vulkanikus szigetre hajóztok</next>
+    <next id="354">Ha a pálmákkal borított szigetre mentek</next>
+  </p>
   <p id="315">
     <text>
         [p]Lehorgonyzol a sziget egyik eldugott kis öblében, kikötsz, és néhány legényeddel elindulsz a parton a harcos papok templomerődítményébe. Nem sokkal a cél előtt, még mielőtt észrevehetnének benneteket, embereidet rejtekhelyükön hagyva, egyedül mész az erődítmény főkapuja felé. Lagashi követnek adod ki magad, és beengednek. Az apát elé vezetnek kihallgatásra. - Ó, fényes Asswr-sel-Dablo nagy tekintélyű apátja, észak vidékeinek igazságot és győzelmet hozó ura, nagybecsű barátodtól hozok üdvözletet és üzenetet számodra! - mondod. - Igen kedves tőled. Foglalj helyet, és teázz velem - válaszolja. Megteszed, amit mond. Kellemesen elbeszélgettek, majd így szólsz: - Tudomásomra jutott, hogy Lagash Wazija támadásra készül fellegvárad ellen, mert urai az adóterhek növelésével fenyegetik. Befolyásos barátaim vannak, ó, uram, és - jó pénzért - el tudnám érni, hogy ne téged támadjon meg - mondod, és meghajolsz előtte. Az apát felsóhajt, majd a szerzetes szolgája fülébe súgja: - Egy megalkuvó! - Megnyom egy gránátkövet a székében. Ekkor megnyílik alattad a föld, és egy mély verembe zuhansz - vesztesz 2 ÉLETERŐ pontot! - Vakmerő kalóz - szól nevetve az apát, aki a verem pereméről néz le rád. - Az ajtók mögött megtudod, hogy mi lesz a sorsod - mondja, és rámutat négy ajtóra a verem négy falában. Mindegyik ajtóra más és más jelet véstek. Melyik ajtón nyitsz be?[/p]
@@ -3026,12 +5166,20 @@
     <next id="325">Ha legénységeddel megtámadod őket</next>
     <next id="336">Ha meg akarsz egyezni velük</next>
   </p>
-  <!-- 317 -->
+  <p id="317">
+    <text>
+        [p]- Bolond! - szól a Szalamander a tűzből kilépve. - Butaságodért halállal fizetsz! - Nagyot kiáltva rád támad tüzes szigonyával. Meg kell küzdened vele.[/p]
+    </text>
+    <fight type="single">
+      <enemy id="56" />
+    </fight>
+    <next id="377"></next>
+  </p>
   <p id="318">
     <text>
         [p]A Kísértet a Beltenger nyugodt vizeit szeli; az őrszem az árbockosárból állandóan szemmel tartja a látóhatárt, nem tűnik-e fel valamilyen hajó.[/p]
     </text>
-    <test against="crewStrength" diceConfig="3d6" success="lower">
+    <test against="crewStrength">
       <success>
         <text>
             [p]Növeld utazási napjaid számát 4-gyel a HAJÓNAPLÓDBAN.[/p]
@@ -3048,8 +5196,27 @@
     <next id="363" pos="1"></next>
     <next id="294" pos="0"></next>
   </p>
-  <!-- 319 -->
-  <!-- 320 -->
+  <p id="319">
+    <text>
+        [p]Amikor odaugrasz a Küklopszhoz, az elugrik előled, és nyitott tenyerével egy horogütést mér a fejedre, amelytől elrepülsz - vesztesz 1 ÉLETERŐ pontot. Amikor földet érsz, a szörny megragad a bokádnál fogva, és felemel a magasba. Miközben fejjel lefelé lógsz, mit teszel?[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <next id="177">Alulról belevágsz az ágyékába?</next>
+    <next id="139">Gyomorszájon vágod?</next>
+    <next id="122">Belerúgsz a mellkasába?</next>
+  </p>
+  <p id="320">
+    <text>
+        [p]A vadállat kimúlt. Nyugodtan átkutatod a hajót. Rengeteg összefagyott ládára bukkansz, de egy [span class="takeItem" data-id="3007" data-amount="1"]aranygyűrűn[/span] kívül, melynek közepén tűzpiros drágakő van, semmiféle kincset nem találsz. A gyűrű egyik oldalába ezt vésték:[/p]
+        [p class="handwritten centered"]Hol találod meg Albionban azt,[br/]
+        ami a lent és a fönt között van?[/p]
+        [p]A gyűrű másik oldalán pedig ott áll a valószínű válasz:[/p]
+        [p class="handwritten centered"]Ott a végén, melletted.[/p]
+        [p]Furcsa. Mivel semmi egyebet nem találsz a hajón, visszatérsz a Kísértetre.[/p]
+    </text>
+    <gatherItem id="4018" />
+    <next id="217"></next>
+  </p>
   <p id="321">
     <text>
         [p]A gyíkokat szabadon engedik! Kiéhezve rohannak a kijelölt útvonalon a halálra ítélt Goblin felé - Awkspeed egy orrhosszal győzi le Fazimát.[/p]
@@ -3079,7 +5246,17 @@
     </itemCheck>
     <next id="262" pos="4">Ha elhagynád Calahot</next>
   </p>
-  <!-- 322 -->
+  <p id="322">
+    <text>
+        [p]A többi macska megáll, amikor megtámadod a társukat, majd rád veti magát. Tűhegyes karmaikkal szétszaggatják a testedet - vesztesz 4 ÉLETERŐ pontot. Melyik macskát támadod meg?[/p]
+    </text>
+    <add amount="-4" to="stamina" />
+    <next id="295">A fekete macskát?</next>
+    <next id="256">A fehér macskát?</next>
+    <next id="203">A vörös macskát?</next>
+    <next id="126">A barna macskát?</next>
+    <next id="95">A szürke macskát?</next>
+  </p>
   <p id="323">
     <text>
         [p]Az Ogre hatalmas ordítással kiüt a ringből, s a nézők közé zuhansz - maradandóan vesztesz 2 ÉLETERŐ pontot. A pénz, amit megtettél, szintén elúszott.[/p]
@@ -3098,7 +5275,19 @@
     </itemCheck>
     <next id="262" pos="4">Ha elhagynád Calahot</next>
   </p>
-  <!-- 324 -->
+  <p id="324">
+    <text>
+        [p]Legénységed zömével partra szállsz. A sziget jómódú népe nagy ünnepléssel fogad. Körültáncolnak benneteket, és a falu közepére vezetnek, ahol nagy lakomával várnak. Amikor megkérdezed a véneket, hogy segítenének-e nektek élelemmel felszerelni a Kísértetet, azok nevetve bólogatnak, és biztosítanak, hogy minden segítséget megkapsz, amit csak akarsz. A lakoma után a szigetlakók borral kínálnak, és táncolni hívnak a pergő dobok zenéjére. Végül mindannyian lerogytok a kimerültségtől. Másnap, miután felébredtek, látjátok, hogy foglyok vagytok, bekerítettek benneteket.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="286"></next>
+      </success>
+      <failure>
+        <next id="345"></next>
+      </failure>
+    </test>
+  </p>
   <p id="325">
     <text>
         [p]Embereid kardot rántanak és támadnak, miközben az Óriások, kezükben a farönkökkel, készenlétben állnak. A csata megkezdődik.[/p]
@@ -3189,7 +5378,12 @@
     </fight>
     <next id="222"></next>
   </p>
-  <!-- 334 -->
+  <p id="334">
+    <text>
+        [p]Éles sziklákra zuhansz, és meghalsz. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="335">
     <text>
         [p]A szárazföld belseje felé haladva azt figyeled, vajon merre lehet az a szentély, amelyről beszéltek - növeld utazási napjaid számát 3-mal a HAJÓNAPLÓDBAN. Végül egy barátságos kis völgyben, sűrű lombok között találsz rá. Tömör kőszerkezete vagy negyven-ötven méter magasra nyúlik. Megkínzott emberek csontvázai díszítik. Legénységed tagjai csak egy nyíllövésnyire merik megközelíteni. Kineveted őket babonás gyávaságuk miatt, és egyedül mész a szentélyhez. Erőltetett közönnyel indulsz fölfelé a lépcsőn. A szentély belseje komor, lehangoló, de legalább egy lélek sincs benne. Előtted hosszú, széles folyosó húzódik, ahonnan meredek, keskeny lépcsősor vezet a szentély mélyébe. Merre indulsz tovább?[/p]
@@ -3205,7 +5399,22 @@
     <next id="366">Ha elfogadod az ajánlatát</next>
     <next id="351">Ha valami mást ajánlasz, például egy farönkkel vívott küzdelmet</next>
   </p>
-  <!-- 337 -->
+  <p id="337">
+    <text>
+        [p]Éles karateütésed után a Küklopsz felordít fájdalmában, és odakap sérült hónaljához - vonj le tőle 1 ÉLETERŐ pontot.[alt] Miután valahogy magához tér, kinyújtja hatalmas mancsait, bal karjával megragad és a levegőbe emel. Mit teszel?[/alt][/p]
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-1" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <next id="276">Beleharapsz a csuklójába?</next>
+        <next id="187">Rácsapsz a könyöke hátsó részére?</next>
+        <next id="251">Belerúgsz a vállába?</next>
+      </have>
+      <dontHave>
+        <next id="311" singleChoiceText=" "></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="338">
     <text>
         [p]- Ó, jaj - kiált a Szellem -‚ ez igazán szörnyű! - Dühös pillantást vet rád, és kezével kétségbeesetten feléd suhint. - Ó, ily rettenetes hírek hordozója, megátkozlak téged! - Vesztesz 2 SZERENCSE és 1 ÜGYESSÉG pontot.[/p]
@@ -3214,15 +5423,45 @@
     <add amount="-2" to="luck" />
     <next id="210"></next>
   </p>
-  <!-- 339 -->
-  <!-- 340 -->
+  <p id="339">
+    <text>
+        [p]Egy hatalmas, üres szobában találod magad, csak a boszorkány áll egy kör közepén a földön. Egyik kezében egy tőrt, másikban egy fekete macskát tart. - Légy átkozott! - mondja. - Miért nem etted meg az ételedet, úgy, mint a többiek? Ezért meg kell hogy öljelek. Olyasmit kell tennem, amihez semmi kedvem sincs. - Ezután feldobja a macskát a levegőbe, és a tőrrel valamiféle jelet ír a levegőbe. A macska hirtelen öt különböző színű macskává változik; az öt macska furcsán lebeg. Támadást színlelve, nyávogva körülötted köröznek. Melyik állatra támadsz rá?[/p]
+    </text>
+    <next id="295">A fekete macskára?</next>
+    <next id="256">A fehér macskára?</next>
+    <next id="203">A vörös macskára?</next>
+    <next id="126">A barna macskára?</next>
+    <next id="95">A szürke macskára?</next>
+  </p>
+  <p id="340">
+    <test against="crewStrength">
+      <success>
+        <text>
+            [p]Növeld utazási napjaid számát 2-vel a HAJÓNAPLÓDBAN.[/p]
+        </text>
+        <add amount="2" to="time" />
+      </success>
+      <failure>
+        <text>
+            [p]Növeld utazási napjaid számát 3-mal a HAJÓNAPLÓDBAN.[/p]
+        </text>
+        <add amount="3" to="time" />
+      </failure>
+    </test>
+    <next id="378"></next>
+  </p>
   <p id="341">
     <text>
         [p]Legénységed nem képes megbirkózni a feladattal, amivel megbíztad őket. A Kíséret ráfut egy kicsi, de veszélyes sziklazátonyra, és a szürke karmok átszakítják a törzsét. Víz árasztja el a hajód belsejét, és a Kíséret elsüllyed! Kalandod itt véget ér.[/p]
     </text>
     <death />
   </p>
-  <!-- 342 -->
+  <p id="342">
+    <text>
+        [p]Abdul legényei egyszersmind azt is közlik veled, hogy mivel 50 napnál többet használtál el arra, hogy eljuss Nippurba - elvesztetted a fogdást, függetlenül attól, mennyi Aranytallérod van. Kalandod itt véget ér, vesztettél.[/p]
+    </text>
+    <death />
+  </p>
   <p id="343">
     <text>
         [p]Ismét meglökitek a faltörő kosokat, és ezúttal a kapu ripityára törve kifordul a sarkából. Embereid hatalmas üdvrivalgással rántják ki görbe kardjaikat, és berontanak az erődítménybe - ahol szembetalálkoznak a mindenre elszánt védőkkel. A csata megkezdődik.[/p]
@@ -3239,7 +5478,12 @@
     <add amount="3" to="time" />
     <next id="272"></next>
   </p>
-  <!-- 345 -->
+  <p id="345">
+    <text>
+        [p]Nincs kiút a ketrecből. Déltájban megjelennek a városi öregek, és közlik veletek, hogy a szigetük szent, így nem engedhetik, hogy bárki is életben maradjon, aki egyszer is látta. Ezér meg kell ölniük benneteket. Ekkor íjakkal felfegyverezve megjelenik a többi szigetlakó is, és tüzet nyit rátok. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="346">
     <text>
         [p]A Huszárok vereséget szenvednek, és a sereg maradékával együtt a part mentén Kish felé menekülnek. Szerencsétlenségedre nekik is eszükbe jut az, ami neked, és kiforgatják a várost minden vagyonából. Így aztán arany helyett csak rabszolgákat tudsz zsákmányolni. Dobj két kockával: annyi rabszolgát szereztél a frissen elszegényedett városlakók sorából, amennyit dobtál.[/p]
@@ -3282,7 +5526,29 @@
     <next id="223">Ha visszatérsz a Kísértetre a zsákmányoddal és továbbhajózol a part mentén Kish felé</next>
     <next id="66">Ha a Beltengeren mész tovább a Trysta-zátonyok felé</next>
   </p>
-  <!-- 347 -->
+  <p id="347">
+    <text>
+        [p]Közel lépsz hozzá, és néhány apró, de hatásos ütést mérsz a veséjére - vonj le 2 pontot ÉLETEREJÉBŐL.
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-2" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <text>
+            A felbőszült szörny fájdalmában megfordul, és irdatlan nagy öklét meglendítve az arcodba csap - vesztesz 2 ÉLETERŐ pontot. Mindketten megtántorodtok, és a Küklopsz összeesik. Mit teszel?[/p]
+        </text>
+        <add amount="-2" to="stamina" />
+        <next id="82">Fejbe vágod?</next>
+        <next id="196">Állon vágod?</next>
+        <next id="266">Belerúgsz a bordáiba?</next>
+      </have>
+      <dontHave>
+        <text>
+            A Küklopsz megtántorodik és összeesik.[/p]
+        </text>
+        <next id="311"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="348">
     <text>
         [p]A gyíkokat szabadon engedik! Kiéhezve rohannak a kijelölt útvonalon a halálra ítélt Goblin felé; Fazima egy-két orrhosszal megelőzi el-Savakot és Awkspeedet.[/p]
@@ -3312,8 +5578,19 @@
     </itemCheck>
     <next id="262" pos="4">Ha elhagynád Calahot</next>
   </p>
-  <!-- 349 -->
-  <!-- 350 -->
+  <p id="349">
+    <text>
+        [p]Néhány legényeddel és az összes rabszolgáddal elindulsz a piacra. Iszonyatos forgatagba kerültök, a Shurrupak és Marad közötti háború eredményeként száz meg száz maradbeli katona esett fogságba - és a legtöbbet ide hozták, hogy rabszolgának adják el őket, tehát a kínálat nagy, de az ár alacsony.[/p]
+    </text>
+    <next id="245">Ha ügynökre bízod rabszolgáid eladását</next>
+    <next id="269">Ha magad próbálod meg eladni őket</next>
+  </p>
+  <p id="350">
+    <text>
+        [p]Aranyhalmaitok látszólag egyformák, ezért nehéz eldönteni, hogy kinek van több Aranytallérja. Leültök, hogy megszámoljátok egymás aranyát, és egy óra elteltével kiderül, hogy Abdulnak valamivel több van, mint neked. Kijelenti, hogy ő a győztes és ő az évszázad kalóza. Elvesztetted a fogadást.[/p]
+    </text>
+    <death />
+  </p>
   <p id="351">
     <text>
         [p]- Legyen hát a farönk - egyezik bele Mog. - Akarod Ogmog farönkjét, vagy van sajátod? - Kölcsönkéred legénységed egyik tagjának botját, majd azt ajánlod az Óriásnak, hogy mindketten álljatok egy-egy homokkőre, amiből ezen a vidéken elég sok van, és onnan próbáljátok egymást megütni. Aki elsőnek üti le a másikat, az győz. Az Óriás így szól: - Mivel te apró teremtmény vagy, megengedem, hogy te üss elsőnek. - Körülbelül két méter távolságban felálltok egymással szemben.[/p]
@@ -3336,7 +5613,13 @@
     </fight>
     <next id="47"></next>
   </p>
-  <!-- 354 -->
+  <p id="354">
+    <text>
+        [p]A part közelében megállsz, és legénységed zömével partra szállsz. A part széles és homokos, de a sziget belsejében elszórtan kókuszpálmákat találtok.[/p]
+    </text>
+    <next id="271">Ha végigmentek a parton</next>
+    <next id="282">Ha a sziget belseje felé indultok</next>
+  </p>
   <p id="355">
     <text>
         [p]Legénységed zöme sikerrel átjut a városon a hegy alacsonyabb lejtőire, ahol a sűrű erdőben a Huszárok már nem tudják követni őket. Kirkuk északi partjai körül körözve látod, hogy a Kísértet elhagyta a várost, és biztos távolságban horgonyzott le. Jelt adsz legényeidnek, hogy életben vagy.[/p]
@@ -3345,7 +5628,12 @@
     <next id="223">Ha visszatérsz a Kísértet fedélzetére és lefelé hajózol Kish irányába</next>
     <next id="66">Ha a Beltengeren mész tovább a Trysta-zátonyok felé</next>
   </p>
-  <!-- 356 -->
+  <p id="356">
+    <text>
+        [p]Egy délről jövő viharba kerülsz, amelyben nagyon nehezen tudsz haladni. Amikor kitisztul az idő, fogalmad sincs, hol jártok. Elindultok arra, amerre szerinted Nippur van, de hiába. Reménytelenül eltévedsz, nem érkezel meg a kitűzött napra, ezér a fogadást is elveszted. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="357">
     <text>
         [p]Mindössze egynapi hajóút választ el Assurtól, amikor a távolban a látóhatáron apró kis foltot veszel észre. Ez először vitorlává, később hajóvá nő - éles orra és háromszög alakú vitorlája egyenesen feléd tart. A központi árbocon harci lobogót lenget a szél. Ez egy kishi hadihajó. Megpróbálsz kitérni előle, de a hadihajónak kedvez a széljárás, és gyorsan a Kísérte oldalába kerül. Csáklyák és nyílvesszők záporoznak a hajódra; a támadásra kész legénység felsorakozik. Meg kell küzdenetek velük.[/p]
@@ -3384,7 +5672,22 @@
     <add amount="-1" to="skill" />
     <next id="228"></next>
   </p>
-  <!-- 361 -->
+  <p id="361">
+    <text>
+        [p]Végigszaladsz a szörny kemény hátán, majd föl-le ugrálsz rajta. A Küklopsz hatalmasakat nyög - vonj le tőle 2 ÉLETERŐ pontot.[alt] A szörny ledob a hátáról, feláll, majd neked ront, hogy elkapjon. Mit teszel?[/alt][/p]
+    </text>
+    <changeEnemy attribute="stamina" id="58" change="-2" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <next id="290">Repülőugrással fejbe rúgod?</next>
+        <next id="319">Repülőrúgással a lábába rúgsz?</next>
+        <next id="74">Félreugrasz, és könyökkel oldalról belevágsz a karjába?</next>
+      </have>
+      <dontHave>
+        <next id="311" singleChoiceText=" "></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="362">
     <text>
         [p]A gyíkok elindulnak a startvonaltól, de a te favoritod félúton megbotlik, és elnyúlik a földön. Elvesztetted a tétedet.[/p]
@@ -3458,7 +5761,12 @@
     <next id="223">Amikor a Kísértet odaér hozzátok, elhajózhatsz a part mentén lefelé, Kish irányába</next>
     <next id="66">Vagy a Trysta-zátonyok felé a Beltengeren</next>
   </p>
-  <!-- 365 -->
+  <p id="365">
+    <text>
+        [p]Lecsúszol a barlang oldalában, útközben kövekbe és sziklákba ütközöl, de elég lassan csúszol, nem sérülsz meg komolyabban. Elég közel kötsz ki ahhoz a lépcsőhöz, amelyen az előbb nem akartál lemenni. Leporolod a ruhádat, és lefelé indulsz a lépcsőn.[/p]
+    </text>
+    <next id="284"></next>
+  </p>
   <p id="366">
     <text>
         [p]Egy kört rajzolnak a földre, és ennek a közepébe álltok Moggal. Az Óriás előrelép, széttárja a karját, majd hatalmas ütést mér a fejedre. Ennek következtében kirepülsz a körből, és átzuhansz a túlvilágra... Kalandod itt véget ér.[/p]
@@ -3478,10 +5786,17 @@
     <text>
         [p]Átadod az Aranyat az embereidnek. Vonj le 100 Aranyat a Zsákmányodból.[/p]
     </text>
+    <gatherItem id="4019" />
     <add amount="-100" to="gold" />
     <next id="312"></next>
   </p>
-  <!-- 369 -->
+  <p id="369">
+    <text>
+        [p]Lehorgonyzol a nyugodt lagúnában, és legényeiddel megközelíted a szigetet, amelyet homokos part ölel körül, míg a parton túli részeket sűrű dzsungel borítja.[/p]
+    </text>
+    <next id="23">Ha a parton mész körbe</next>
+    <next id="42">Ha a dzsungel felé indulsz</next>
+  </p>
   <p id="370">
     <text>
         [p]Egy balhoroggal kiütöd az Ogrét a ringből.[/p]
@@ -3799,8 +6114,23 @@
     </itemCheck>
     <next id="262" pos="4">Ha elhagynád Calahot</next>
   </p>
-  <!-- 371 -->
-  <!-- 372 -->
+  <p id="371">
+    <text>
+        [p]Hol keresel újabb embereket elvesztett kalózaid helyébe?[/p]
+    </text>
+    <next id="233">A dokkokban?</next>
+    <next id="253">A piacon?</next>
+    <next id="293">A város nyomortanyáin és szegénynegyedében?</next>
+  </p>
+  <p id="372">
+    <text>
+        [p]Nekifeszülsz a Küklopsz testének, és megpróbálod magad ellökni, de hiába. A szörnyet még csak fel sem ingerli elkeseredett igyekezeted, meglendít, és a feje fölött átrepítve földhöz vág - vesztesz 2 ÉLETERŐ pontot. Megrázod magad, talpra állsz, és szembefordulsz ellenfeleddel. Mit teszel?[/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <next id="91">Behúzol egyet a vállára?</next>
+    <next id="337">Karateütéssel a hónaljába vágsz?</next>
+    <next id="206">Repülőrúgással mellbe rúgod?</next>
+  </p>
   <p id="373">
     <text>
         [p]Visszavonulás közben rájössz, hogy nem is tudod pontosan, merre menj tovább (hacsak nem lefelé). Keresztülvágtok a szakadékon, és meglepetten látod, hogy mindkét peremen több száz havasi vadállat jelenik meg. Legényeid pánikba esnek, és futva menekülnek, amikor föntről egyre nagyobb sebességgel és egyre több havat görgetve hatalmas jeges lavina kezd lefelé gurulni. Egy újabb lavina az előzőkkel egyesülve mindannyiótokat maga alá temet. Kalandod itt véget ér.[/p]
@@ -3811,6 +6141,7 @@
     <text>
         [p]Miután megölted a Krellt, átkutatod a barlangját, és megtalálod, amit keresel - a Sókoponyát. Visszamész a Tengeri Tündérekhez, és átadod nekik a kincset, melyért hálából meggyorsítják utadat. Visszaúszol a víz felszínére, felmászol a Kísértet fedélzetére és elhajózol. Merre mész?[/p]
     </text>
+    <gatherItem id="4017" />
     <next id="191">Ha délre, Marad felé</next>
     <next id="66">Ha délnyugat felé a Beltengerre, a Trysta-zátonyok felé</next>
   </p>
@@ -3884,16 +6215,45 @@
       </failure>
     </test>
   </p>
-  <!-- 377 -->
-  <!-- 378 -->
-  <!-- 379 -->
+  <p id="377">
+    <text>
+        [p]A Szalamandra egy szemvillanás alatt eltűnik, amikor végzetes csapásod lesújt rá. Most már egyedül mész tovább, és a terem végében lévő ajtón át távozol.[/p]
+    </text>
+    <next id="339"></next>
+  </p>
+  <p id="378">
+    <text>
+        [p]Mélyen behajózol a Beltengerbe, Shurrupaktól délre, Nippur felé tartasz - növeld 2 nappal utazási idődet a HAJÓNAPLÓDBAN! Minél délebbre mész, a tenger annál viharosabbá és az időjárás annál kiszámíthatatlanabbá válik. Egy este, amikor a természetellenes fagyos köd alig egy méterre csökkenti a látótávolságot, fénylő jéghegyet pillantasz meg a tengeren. A Kísértet szélsebesen száguld egy fehér jégtömb felé.[/p]
+    </text>
+    <add amount="2" to="time" />
+    <test against="luck">
+      <success>
+        <next id="166"></next>
+      </success>
+      <failure>
+        <next id="193"></next>
+      </failure>
+    </test>
+  </p>
+  <p id="379">
+    <text>
+        [p]Néhány legényed, aki még mindig azt hiszi, hogy a zsákokban olyan kincsek rejlenek, amelyeket nem akarsz velük megosztani, besurran a kabinodba, amíg a fedélzeten tartózkodsz. A legények megtalálják a zsákot, amelyben a déli szél van, és kinyitják - hogy megnézzék, vajon miér rejtegeted előlük. A déli szél kiszökken a zsákból, üvöltve körbezúg a kabinodban, majd az ablakon át távozik. Bőszen tombol odakint, és az általa kavart vihar észak felé viszi vissza a Kíséretet. Három hétig tombol a viharos szél, és maga előtt tolja a hajódat. Végül elül, és a Kíséret ott köt ki Tak partjai közelében, ahonnan elindultál. Már nincs elég időd arra, hagy ismét elindulj Nippurba. A fogadást elvesztetted! Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="380">
     <text>
         [p]Amikor lenyomod a kilincset, az ajtó kicsapódik. Egy mélyedésből hosszú vastüskék röpülnek ki, és a falhoz szögeznek. Azonnal meghalsz.[/p]
     </text>
     <death />
   </p>
-  <!-- 381 -->
+  <p id="381">
+    <text>
+        [p]A teremtmény abbahagyja a támadást, és te azt hiszed, hogy visszavonult. Továbbmész az alagúton, majd egy sötét barlangba érsz. Durva lépcső vezet le az áthatolhatatlan sötétségbe. A lépcső mellett rozoga párkány húzódik a barlang egyik oldalában, amely szintén a sötétbe vész.[/p]
+    </text>
+    <next id="265">Ha a párkányon mész tovább</next>
+    <next id="284">Ha a lépcsőn mész le</next>
+  </p>
   <p id="382">
     <text>
         [p]Hajód átverekszi magát a hadihajó evezőlapátjai között, de olyan közel kerül a hevesen támadó ellenséges hajókhoz, hogy a shurrupaki tengerészek könnyűszerrel megcsáklyázzák a Kíséretet. Hirtelen megállásra kényszerülve elkeseredetten nézitek, hogyan siklik mellétek egy másik hadihajó. Az ellenséges hajó matrózai átugrálnak a Kíséret fedélzetére, és lesújtanak kalózaidra. Kalandod itt véget ér.[/p]
@@ -3904,10 +6264,27 @@
     <text>
         [p]- Ezért meglakolsz! - szól a Tündér. - Megátkozunk, és megkérjük apánkat, a tengert, hogy vegye körül a hajódat kagylókkal és tengeri növényekkel. Sose fogjon szelet a vitorlád. - Szavait követve hatalmas levegőbuborék tör elő a korhadó hajódeszkák közül, magával ragad, és felvisz az elsüllyedt gályáról a víz felszínére. Felmászol a Kísértet fedélzetére. Merre indulsz tovább?[/p]
     </text>
+    <gatherItem id="4016" />
     <next id="66">Ha a Beltengeren hajózol a Trysta-zátonyok felé</next>
     <next id="191">Ha délnek mész a Keleti-partvidék felé, Marad irányába</next>
   </p>
-  <!-- 384 -->
+  <p id="384">
+    <text>
+        [p]Felugrasz a levegőbe, és hátba rúgod a Küklopszot. A szörny összecsuklik és rád zuhan! Mindketten vesztetek 2 ÉLETERŐ pontot! [alt]Mit teszel, miután kimászol a szörny alól?[/alt][/p]
+    </text>
+    <add amount="-2" to="stamina" />
+    <changeEnemy attribute="stamina" id="58" change="-2" />
+    <itemCheck type="enemy" id="58">
+      <have>
+        <next id="196">Állon vágod?</next>
+        <next id="361">Föl-le ugrálsz a hátán?</next>
+        <next id="224">Ágyékon rúgod?</next>
+      </have>
+      <dontHave>
+        <next id="311" singleChoiceText="Kimálszol a halott szörny alól."></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="385">
     <text>
         [p]A következő fordulóban egy szőrös vadember ellen állsz ki, akit Kish nyugati vidékein fogtak el és képeztek ki gladiátor-rabszolgának. Döntsd el, milyen összegben fogadsz, máris kezdődhet a párviadal.[/p]
@@ -4144,8 +6521,33 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 386 -->
-  <!-- 387 -->
+  <p id="386">
+    <text>
+        [p]A szigethez közeledve látod, hogy több száz szigetlakó dobokat verve és virágkoszorúkat lóbálva fut le a partra. Az emberek bőre világos, és hosszú lenhajukat egyetlen copfba fonva viselik. Szemmel láthatólag igen boldogok, hogy itt vagytok.[/p]
+    </text>
+    <next id="324">Ha partra szálltok és élelmet kértek tőlük</next>
+    <next id="314">Ha egy másik szigetre hajóztok</next>
+  </p>
+  <p id="387">
+    <text>
+        [p]Egy délről érkező viharba kerülsz, amely megnehezíti a haladást, de legénységednek mégis sikerül tartania az eredeti útirányt. Miután a vihar elcsendesedik, a távolban megpillantod a célt - Nippur szigetét.[/p]
+    </text>
+    <itemCheck type="item" id="4019">
+      <have>
+        <next id="32"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="items" id="3005">
+          <have>
+            <next id="379"></next>
+          </have>
+          <dontHave>
+            <next id="32"></next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="388">
     <text>
         [p]Miután legyőzted az oltárszolgákat, odamész a csúf szoborhoz, amely a pusztulás urainak egyikét ábrázolja. Egy stilizált hulla lóg ki csipkés fogazatú csőréből, és számos, rovarlábra hasonlító végtagjával különböző teremtményeket roppant szét. Gyöngyszemével mintha téged figyelne. Amint közelebbről megnézed, látod, hogy a bálvány résnyire nyitott csőrében egy villás nyelv alakú rubinkő van.[/p]
@@ -4153,7 +6555,12 @@
     <next id="360">Ha felnyúlsz, hogy kivedd a rubint</next>
     <next id="228">Ha megpróbálod a szobrot a talapzatról leemelni, hogy kividd várakozó embereidhez</next>
   </p>
-  <!-- 389 -->
+  <p id="389">
+    <text>
+        [p]Amint elhaladsz a szobrok között, beszakad alattad a föld, és legényeiddel együtt a mélybe zuhansz. A döbbenettől tehetetlen vagy. Ekkor valaki kötelet teker a nyakad köré. Megpróbálsz felállni, de ekkor meghúzzák a kötelet, és legényeiddel együtt máris ott lógsz a többi matrózzal a szobrok között. Kalandod itt véget ér.[/p]
+    </text>
+    <death />
+  </p>
   <p id="390">
     <text>
         [p]Átkutatod az apát szobáját, és felfedezel egy ládát, amelyben [span class="takeItem" data-id="gold" data-amount="110"]110 Aranytallért[/span] találsz. Az [span class="takeItem" data-id="1002" data-amount="1"]apát kardja[/span] is értékes kincs, mivel Marad legjobb acéljából kovácsolták; amikor ezt a kardot használod, minden alkalommal 2 ponttal növelheted ÜGYESSÉGEDET. Tovább kutatva észreveszel az apát széke alatt egy csapóajtót, amit felemelsz, és egy lefelé vezető csigalépcsőt pillantasz meg. Lemész, és egy folyosóra érsz, amelyen kijutsz a vár falain túlra. Legényeiddel visszatérsz a Kísértetre. Felszeditek a horgonyt, és továbbhajóztok.[/p]
@@ -4178,7 +6585,15 @@
     <next id="204">Ha az Ölyvre mész</next>
     <next id="191">Ha délkelet felé a Goth-csatornán hajózol tovább</next>
   </p>
-  <!-- 393 -->
+  <p id="393">
+    <text>
+        [p]Fegyvert rántotok, és embereiddel együtt odalopakodtok a mit sem sejtő kalózokhoz. Hangos csatakiáltással rájuk törtök.[/p]
+    </text>
+    <fight type="ff16ship">
+      <enemy id="55" />
+    </fight>
+    <next id="154"></next>
+  </p>
   <p id="394">
     <text>
         [p]Minden erődet összeszedve az Óriás lábához vágod a husángot, de az célt téveszt és a homokkőhöz csapódik. - Haha! - nevet Mog -‚ ezt elvétetted! - Ám a homokkő az Óriás súlyától, no meg a husángod ütésétől darabokra hullik. Mog meglendíti farönkjét, elveszíti az egyensúlyát, és a földre zuhan. - Hát jó - mondja a vállát vonogatva -‚ azt hiszem, te győztél![/p]
@@ -4197,8 +6612,14 @@
         [p]Visszavertétek a rátok támadó hajót, de már nem volt időtök kifosztani. Mivel egyszerű hadihajó volt, nem tartottak rajta aranyat, viszont sikerül szert tenned [span class="takeItem" data-id="slave" data-amount="5"]5 rabszolgára[/span]. Ezenkívül megszerzed a kormányrudat; úgy érzed, valami titokzatos erő mozgatja. Ez a szerzeményed, bár nem működik a Kísérteten, mégis jó hatással van legényeid hangulatára - nyersz 2 SZERENCSE pontot.[/p]
     </text>
     <add amount="2" to="luck" />
-    <next id="27">Ha az Ölyv felé indulsz</next>
-    <next id="178">Ha a Goth-csatorna felé mész</next>
+    <itemCheck type="section" id="257">
+      <have>
+        <next id="27"></next>
+      </have>
+      <dontHave>
+        <next id="178"></next>
+      </dontHave>
+    </itemCheck>
   </p>
   <p id="396">
     <text>
@@ -4233,5 +6654,11 @@
         [p]Meglendíted a kardodat, és fejbe vágod a vadállatot. Kardod pengéje darabokra törik. A teremtmény hatalmasat nyögve rád támad - beléd döfi kemény szarvait, és a verem falához lapít. Kalandod itt véget ér.[/p]
     </text>
     <death />
+  </p>
+  <p id="400">
+    <text>
+        [p]-Tessék - mondod Abdulnak, és felcsapod a ládád fedelét. A benne lévő Arany sokkal több, mint amennyi Abdulnak van. - Én nyertem! Én vagyok a legnagyobb gazember, én vagyok a városok legjelesebb fosztogatója! - Abdul elismerve sikeredet fejet hajt előtted. - Te nyertél![/p]
+    </text>
+    <victory />
   </p>
 </content>
