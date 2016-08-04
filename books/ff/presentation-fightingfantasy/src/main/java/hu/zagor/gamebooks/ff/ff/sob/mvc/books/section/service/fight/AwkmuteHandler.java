@@ -33,10 +33,13 @@ public class AwkmuteHandler extends Ff16BeforeAfterRoundEnemyHandler {
         enemy.setLuckDamage(0);
         if (randomNumber[0] < STAMINA_DAMAGE_BELOW) {
             enemy.setStaminaDamage(2);
-        } else if (randomNumber[0] > LUCK_DAMAGE_ABOVE) {
-            enemy.setLuckDamage(1);
         } else {
-            enemy.setSkillDamage(1);
+            command.setLuckOnDefense(false);
+            if (randomNumber[0] > LUCK_DAMAGE_ABOVE) {
+                enemy.setLuckDamage(1);
+            } else {
+                enemy.setSkillDamage(1);
+            }
         }
     }
 
