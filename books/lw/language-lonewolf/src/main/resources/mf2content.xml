@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content xmlns="http://gamebooks.zagor.hu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gamebooks.zagor.hu http://zagor.hu/xsd/lw.xsd">
+  <p id="back_cover">
+    <text>
+        [p class="lwBackCoverTitle"]Te vagy Magányos Farkas, az utolsó Kai Úr.[/p]
+        [p]Pusztító háború dúl hazádban, a gonosz Sötét Urak már a fővárost ostromolják.[/p]
+        [p]A király és az országod sorsa a TE kezedben van. Az egyetlen dolog, amely megfordíthatja a háború kimenetelét, és megmentheti a királyságot, egy varázserejű fegyver, a Sommerswerd, vagy ahogyan legtöbben ismerik, a Nap kardja. Negyven napod van rá, hogy eljuss Durenor fővárosába, Hammerdalba, és visszatérj a varázserejű fegyverrel a szomszédos állam hajóflottája élén. De vigyázz! Ellenfeleid már a nyomodban vannak, és mindent elkövetnek majd, hogy meghiúsítsák küldetésedet.[/p]
+        [p]Ha sikerrel teljesíted a küldetést, megszerzett tudásodat és tapasztalataidat kamatoztathatod majd a következő kaland során![/p]
+        [p class="inlineImage" data-img="intro"][/p]
+    </text>
+    <next id="generate" />
+  </p>
+  <p id="generate" display="Karakter létrehozása">
+    <text>
+        [p][span class="lwAttribute"]Harci Ügyesség[/span]: [span id="lwCombatSkill"]dobj egy kockával és adj 10-et a dobott számhoz[img src="resources/lw/dice10.gif" class="lwDice" /].[/span][/p]
+        [p][span class="lwAttribute"]Szívósság[/span]: [span id="lwEndurance"]dobj egy kockával és adj 20-at a dobott számhoz[img src="resources/lw/dice10.gif" class="lwDice" /].[/span][/p]
+        [p][span class="lwAttribute"]Aranykoronák[/span]: [span id="lwGoldCrowns"]dobj egy kockával és adj 10-et a dobott számhoz[img src="resources/lw/dice10.gif" class="lwDice" /].[/span][/p]
+        [h2]Kai Tanok[/h2]
+        [p class="lwKaiDisciplines" data-total="5"]
+            [input type="checkbox" id="camouflage" /][label for="camouflage"]Álcázás[/label]
+            [input type="checkbox" id="hunting" /][label for="hunting"]Vadászat[/label]
+            [input type="checkbox" id="sixthSense" /][label for="sixthSense"]Hatodik érzék[/label]
+            [input type="checkbox" id="tracking" /][label for="tracking"]Nyomkövetés[/label]
+            [input type="checkbox" id="healing" /][label for="healing"]Gyógyítás[/label]
+            [input type="checkbox" id="weaponskill" /][label for="weaponskill"]Fegyverforgatás[/label]
+            [input type="checkbox" id="mindshield" /][label for="mindshield"]Elmepajzs[/label]
+            [input type="checkbox" id="mindblast" /][label for="mindblast"]Elmecsapás[/label]
+            [input type="checkbox" id="animalKinship" /][label for="animalKinship"]Állat-testvériség[/label]
+            [input type="checkbox" id="mindOverMatter" /][label for="mindOverMatter"]Telekinézis[/label]
+        [/p]
+        [h2]Kezdeti felszerelés[/h2]
+        [p class="lwStartingEquipment" data-total="2"]
+          [label][input type="checkbox" data-id="10002" data-amount="1" /]Kard[/label]
+          [label][input type="checkbox" data-id="10007" data-amount="1" /]Rövid kard[/label]
+          [label][input type="checkbox" data-id="20000" data-amount="2" /]Két étkezésre elegendő élelem[/label]
+          [label][input type="checkbox" data-id="40001" data-amount="1" /]Páncéling[/label]
+          [label][input type="checkbox" data-id="30001" data-amount="1" /]Gyógyital[/label]
+          [label][input type="checkbox" data-id="10004" data-amount="1" /]Harci bot[/label]
+          [label][input type="checkbox" data-id="10005" data-amount="1" /]Lándzsa[/label]
+          [label][input type="checkbox" data-id="40002" data-amount="1" /]Pajzs[/label]
+          [label][input type="checkbox" data-id="10006" data-amount="1" /]Pallos[/label]
+        [/p]
+        [button data-generator-button="lw" disabled="disabled"]Karakter létrehozása[/button]
+    </text>
+    <next id="background"></next>
+  </p>
+  <p id="background" display="Ez történt eddig…">
+    <text>
+        [p]Sommerlund északi vidékén évszázados hagyomány volt, hogy a hadurak a Kai kolostorába küldték gyermekeiket; a fiatalok ott tanulták meg nemes atyáik harci fogásait és tanait.[/p]
+        [p]Hajdanán, a Fekete Hold idejében a Sötét Urak hadat indítottak Sommerlund ellen. A hosszú és elkeseredett küzdelem vége Sommerlund seregének diadala volt a nagy maakengorgei csatában. Ulnar király és a szövetségesei megverték a Sötét Urak hadait Moytura hágójánál, és visszaszorították őket Maakengorge feneketlen mélységeibe. A leghatalmasabb Sötét Úr Vasha, Ulnar király kardjától esett el, a Sommerswerdtől, azaz a Nap Kardjától. Ekkor a Sötét Urak bosszút esküdtek Sommerlund és Ulnar királyi háza ellen.[/p]
+        [p]Te vagy Magányos Farkas, a Kai urak titkos ismereteinek beavatottja. Két nappal ezelőtt békés országod háborúba keveredett: a Sötét Urak hatalmas hadserege váratlanul betört Sommerlundba, és teljesen elpusztította a Kai kolostort. Fehmarn ünnepén minden Kai úr jelen volt, és mindenkit megöltek, aki ott tartózkodott. Te vagy az egyetlen Kai úr, aki túlélte a mészárlást; megfogadtad, hogy bosszút állsz a csatában elesettekért. Első feladatként értesítetted Sommerlund királyát a veszélyről, a Sötét Urak visszatéréséről, hogy az uralkodó időben mozgósítani tudja az ország haderejét.[/p]
+        [p]Utad a fővárosba tele volt veszélyekkel. Az ellenség már megszállta az ország nagy részét, és a hódítók serege Sommerlund fővárosa, Holmgrad felé indult. Dacára a számos veszélynek, sikerült elérned a fővárosba, és eljutottál a királyi udvarba. Itt meleg fogadtatásban részesültél, dicsérték bátorságod és kitartásod, de a küldetésed még nem ért véget. A Kai Urak halottak, így már csak egy erő maradt, ami megmentheti az embereket a Sötét urak pusztításától: a Nap Kardja.[/p]
+        [p]Vashna legyőzése után ezt a varázsfegyvert a szövetséges Durenor birodalomnak ajándékozták, mint a bizalom és hűség jelképét a két királyság között. Cserébe Alin, Durenor királya egy csodálatos aranygyűrűt adott Sommerlund uralkodójának, melyet Hammerdal Pecsétje néven ismernek szerte a birodalomban. Abban az időben Alin király megfogadta, hogy ha valaha is a homály vetülne Sommerlund egére, birodalma támogatást nyújt majd nyugati szövetségesének.[/p]
+        [p]A király átadta neked [span class="takeItem" data-id="40008" data-amount="1"]Hammerdal Pecsétjét[/span]! A küldetésed az, hogy el kell utaznod Durenorba, és vissza kell hoznod a Nap Kardját. Időközben az ellenség áttört a főváros külső védelmén, és most a városfalakat ostromolja. Miközben D'Val kapitány, a királyi őrség tisztje elvezet a Királyi fegyvertárba, hogy felszerelést biztosítson számodra, az uralkodó búcsúszavai csengenek a füledben:[/p]
+        [p]- Negyven nap, Magányos Farkas! Negyven napig van erőnk ellenállni az ostromnak…[/p]
+    </text>
+    <itemCheck type="item" id="defWpn">
+      <dontHave>
+        <gatherItem id="defWpn" />
+        <gatherItem id="40003" />
+        <gatherItem id="40005" />
+      </dontHave>
+    </itemCheck>
+    <next id="1"></next>
+  </p>
+
+
+
+</content>

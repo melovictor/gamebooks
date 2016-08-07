@@ -127,7 +127,15 @@ public class BookBaseData {
     }
 
     public String getBookInfoPrefix() {
-        return ("ff".equals(seriesCode) || "sor".equals(seriesCode) || "kjp".equals(seriesCode)) ? "Ff" : "";
+        String prefix = "hu.zagor.gamebooks.domain.";
+
+        if ("ff".equals(seriesCode) || "sor".equals(seriesCode) || "kjp".equals(seriesCode)) {
+            prefix = "hu.zagor.gamebooks.domain.Ff";
+        } else if ("lw".equals(seriesCode)) {
+            prefix = "hu.zagor.gamebooks.lw.domain.Lw";
+        }
+
+        return prefix;
     }
 
     public boolean isCharPageRequired() {

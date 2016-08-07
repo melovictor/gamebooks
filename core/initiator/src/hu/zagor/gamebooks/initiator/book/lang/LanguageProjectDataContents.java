@@ -45,13 +45,13 @@ public class LanguageProjectDataContents {
             + "<beans xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.springframework.org/schema/beans\" xmlns:p=\"http://www.springframework.org/schema/p\" xmlns:util=\"http://www.springframework.org/schema/util\" xmlns:c=\"http://www.springframework.org/schema/c\" xsi:schemaLocation=\"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd\r\n"
             + "        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd\">\r\n" + "\r\n"
             + "  <util:constant static-field=\"hu.zagor.gamebooks.support.bookids." + data.getFullLang() + "." + data.getBookId() + "\" id=\"" + data.getSeriesCode()
-            + data.getPosition() + "Id\" />\r\n" + "\r\n" + "  <bean parent=\"" + baseData.getSeriesCode() + baseData.getPosition()
-            + "Info\" class=\"hu.zagor.gamebooks.domain.FfBookInformations\" id=\"" + data.getSeriesCode() + data.getPosition() + "Info\" c:id-ref=\""
-            + data.getSeriesCode() + data.getPosition() + "Id\" p:locale-ref=\"" + data.getCompactLang() + "Locale\" p:position=\"" + data.getActualPosition()
-            + "\" p:series-ref=\"" + data.getSeriesCode() + "Title\" p:title=\"" + data.getTitle() + "\" p:unfinished=\"" + !data.isFinished() + "\" p:hidden=\""
-            + data.isHidden() + "\">\r\n" + "    <property name=\"contents\">\r\n" + "      <bean class=\"hu.zagor.gamebooks.domain.BookContentFiles\" c:enemies=\""
-            + data.getEnemiesFileName() + "\" c:items=\"" + data.getItemsFileName() + "\" c:paragraphs=\"" + data.getContentFileName() + "\" />\r\n"
-            + "    </property>\r\n" + "  </bean>\r\n" + "\r\n" + "</beans>\r\n";
+            + data.getPosition() + "Id\" />\r\n" + "\r\n" + "  <bean parent=\"" + baseData.getSeriesCode() + baseData.getPosition() + "Info\" class=\""
+            + baseData.getBookInfoPrefix() + "BookInformations\" id=\"" + data.getSeriesCode() + data.getPosition() + "Info\" c:id-ref=\"" + data.getSeriesCode()
+            + data.getPosition() + "Id\" p:locale-ref=\"" + data.getCompactLang() + "Locale\" p:position=\"" + data.getActualPosition() + "\" p:series-ref=\""
+            + data.getSeriesCode() + "Title\" p:title=\"" + data.getTitle() + "\" p:unfinished=\"" + !data.isFinished() + "\" p:hidden=\"" + data.isHidden() + "\">\r\n"
+            + "    <property name=\"contents\">\r\n" + "      <bean class=\"hu.zagor.gamebooks.domain.BookContentFiles\" c:enemies=\"" + data.getEnemiesFileName()
+            + "\" c:items=\"" + data.getItemsFileName() + "\" c:paragraphs=\"" + data.getContentFileName() + "\" />\r\n" + "    </property>\r\n" + "  </bean>\r\n"
+            + "\r\n" + "</beans>\r\n";
     }
 
     private static String getMainLanguageSpringFile(final BookBaseData baseData, final BookLangData data) {
@@ -61,9 +61,9 @@ public class LanguageProjectDataContents {
             + "  xsi:schemaLocation=\"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd\r\n"
             + "        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd\">\r\n" + "\r\n"
             + "  <util:constant static-field=\"hu.zagor.gamebooks.support.bookids." + data.getFullLang() + "." + data.getBookId() + "\" id=\"" + data.getSeriesCode()
-            + data.getPosition() + "Id\" />\r\n" + "\r\n" + "  <bean class=\"hu.zagor.gamebooks.domain." + baseData.getBookInfoPrefix() + "BookInformations\" id=\""
-            + data.getSeriesCode() + data.getPosition() + "Info\" c:id-ref=\"" + data.getSeriesCode() + data.getPosition() + "Id\" p:resourceDir=\""
-            + baseData.getSeriesCode() + baseData.getPosition() + "\"\r\n" + "    p:contentTransformers-ref=\"default" + baseData.getRulesetCapital()
+            + data.getPosition() + "Id\" />\r\n" + "\r\n" + "  <bean class=\"" + baseData.getBookInfoPrefix() + "BookInformations\" id=\"" + data.getSeriesCode()
+            + data.getPosition() + "Info\" c:id-ref=\"" + data.getSeriesCode() + data.getPosition() + "Id\" p:resourceDir=\"" + baseData.getSeriesCode()
+            + baseData.getPosition() + "\"\r\n" + "    p:contentTransformers-ref=\"default" + baseData.getRulesetCapital()
             + "ContentTransformers\" p:paragraphResolver-ref=\"" + baseData.getRuleset() + "RuleBookParagraphResolver" + baseData.getDefaultSkillTestType()
             + "\" p:locale-ref=\"" + data.getCompactLang() + "Locale\" p:position=\"" + data.getActualPosition() + "\" p:series-ref=\"" + data.getSeriesCode()
             + "Title\" p:title=\"" + data.getTitle() + "\" p:characterHandler-ref=\"" + baseData.getRuleset() + "CharacterHandler\" p:commandResolvers-ref=\""

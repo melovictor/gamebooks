@@ -174,6 +174,7 @@ var sorting = (function() {
 			var newOrder = getCurrentOrder();
 			if (initialOrder != newOrder) {
 				saveSelection(newOrder);
+				initialOrder = newOrder;
 			}
 			$(".bookItem a").off("click", preventBookOpening);
 		} else {
