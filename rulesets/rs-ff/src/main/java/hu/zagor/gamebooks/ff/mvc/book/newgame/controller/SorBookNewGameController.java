@@ -6,6 +6,7 @@ import hu.zagor.gamebooks.content.choice.Choice;
 import hu.zagor.gamebooks.content.choice.ChoiceSet;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
+import hu.zagor.gamebooks.ff.mvc.book.newgame.domain.FfPotionSelection;
 import java.io.IOException;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -20,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 public class SorBookNewGameController extends FfBookNewGameController {
     @Override
-    protected Map<String, Object> doGenerateCharacter(final HttpServletRequest request) {
-        final Map<String, Object> results = super.doGenerateCharacter(request);
+    protected Map<String, Object> doGenerateCharacter(final HttpServletRequest request, final FfPotionSelection potionSelection) {
+        final Map<String, Object> results = super.doGenerateCharacter(request, potionSelection);
         final SorCharacter character = (SorCharacter) getWrapper(request).getCharacter();
         if (character.isWizard()) {
             getInfo().getCharacterHandler().getItemHandler().addItem(character, "4102", 1);

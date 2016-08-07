@@ -10,6 +10,7 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
+import hu.zagor.gamebooks.ff.mvc.book.newgame.domain.FfPotionSelection;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.raw.mvc.book.newgame.controller.RawBookNewGameController;
 import java.util.HashMap;
@@ -20,6 +21,7 @@ import java.util.Set;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -67,27 +69,29 @@ public class FfBookNewGameController extends RawBookNewGameController {
     /**
      * Handles the generation of the new character.
      * @param request the {@link HttpServletRequest} object
+     * @param potionSelection the selected potion
      * @return the compiled object
      */
     @RequestMapping(value = PageAddresses.BOOK_NEW + "/" + PageAddresses.BOOK_GENERATE_CHARACTER, produces = "application/json")
     @ResponseBody
-    public final Map<String, Object> generateCharacter(final HttpServletRequest request) {
-        return doGenerateCharacter(request);
+    public final Map<String, Object> generateCharacter(final HttpServletRequest request, @ModelAttribute final FfPotionSelection potionSelection) {
+        return doGenerateCharacter(request, potionSelection);
     }
 
     /**
      * Handles the actual generation of the new character.
      * @param request the {@link HttpServletRequest} object
+     * @param potionSelection the selected potion
      * @return the compiled object
      */
-    protected Map<String, Object> doGenerateCharacter(final HttpServletRequest request) {
+    protected Map<String, Object> doGenerateCharacter(final HttpServletRequest request, final FfPotionSelection potionSelection) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
         final FfBookInformations info = getInfo();
         final CharacterGenerator characterGenerator = info.getCharacterHandler().getCharacterGenerator();
-        final Map<String, Object> result = characterGenerator.generateCharacter(character, info);
+        final Map<String, Object> result = characterGenerator.generateCharacter(character, info, null);
 
-        initializeItems(request.getParameterMap(), character);
+        initializeItems(potionSelection, character);
 
         return result;
     }
@@ -145,12 +149,12 @@ public class FfBookNewGameController extends RawBookNewGameController {
 
     /**
      * Method for processing the extra parameters received from the browser. The default implementation simply takes care of the potions.
-     * @param parameterMap the parameters received
+     * @param potionSelection the bean storingthe selected potion
      * @param character the {@link FfCharacter} to initialize
      */
-    protected void initializeItems(final Map<String, String[]> parameterMap, final FfCharacter character) {
-        if (parameterMap.containsKey("potion")) {
-            final String potionId = parameterMap.get("potion")[0];
+    protected void initializeItems(final FfPotionSelection potionSelection, final FfCharacter character) {
+        if (potionSelection.getPotion() != null) {
+            final String potionId = potionSelection.getPotion();
             getInfo().getCharacterHandler().getItemHandler().addItem(character, potionId, 1);
         }
     }

@@ -5,10 +5,11 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
+import hu.zagor.gamebooks.ff.mvc.book.newgame.domain.FfPotionSelection;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
+import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
 import hu.zagor.gamebooks.support.mock.annotation.UnderTest;
-import java.util.Map;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.annotations.Test;
@@ -22,26 +23,24 @@ public class Ff11BookNewGameControllerTest {
 
     @MockControl private IMocksControl mockControl;
     @UnderTest private Ff11BookNewGameController underTest;
-    @Mock private Map<String, String[]> parameterMap;
     @Mock private FfCharacter character;
     @Inject private FfBookInformations info;
     @Mock private FfCharacterHandler characterHandler;
     @Mock private FfCharacterItemHandler itemHandler;
+    @Instance private FfPotionSelection potionSelection;
 
     public void testInitializeItemsShouldAddPotionMarker() {
         // GIVEN
-        expect(parameterMap.containsKey("potion")).andReturn(true);
-        expect(parameterMap.get("potion")).andReturn(new String[]{"2001"});
+        potionSelection.setPotion("2001");
         expect(info.getCharacterHandler()).andReturn(characterHandler);
         expect(characterHandler.getItemHandler()).andReturn(itemHandler);
         expect(itemHandler.addItem(character, "2001", 1)).andReturn(1);
-        expect(parameterMap.get("potion")).andReturn(new String[]{"2001"});
         expect(info.getCharacterHandler()).andReturn(characterHandler);
         expect(characterHandler.getItemHandler()).andReturn(itemHandler);
         expect(itemHandler.addItem(character, "4101", 1)).andReturn(1);
         mockControl.replay();
         // WHEN
-        underTest.initializeItems(parameterMap, character);
+        underTest.initializeItems(potionSelection, character);
         // THEN
     }
 }
