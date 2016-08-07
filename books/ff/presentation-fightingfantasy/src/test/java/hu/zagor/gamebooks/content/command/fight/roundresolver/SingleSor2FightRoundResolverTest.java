@@ -266,6 +266,8 @@ public class SingleSor2FightRoundResolverTest {
         character.changeStamina(-2);
         expect(enemy.getSkillDamage()).andReturn(0);
         character.changeSkill(0);
+        expect(enemy.getLuckDamage()).andReturn(0);
+        character.changeLuck(0);
         expect(enemy.getName()).andReturn("Orc");
         expect(messages.addKey("page.ff.label.fight.single.failedDefense", "Orc")).andReturn(true);
     }

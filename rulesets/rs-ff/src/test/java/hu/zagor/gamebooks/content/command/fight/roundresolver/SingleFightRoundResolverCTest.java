@@ -258,6 +258,7 @@ public class SingleFightRoundResolverCTest extends FfTextResolvingTest {
         expect(attributeHandler.resolveValue(character, "damageProtection")).andReturn(1);
         character.changeStamina(-1);
         character.changeSkill(0);
+        character.changeLuck(0);
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Goblin"});
         expect(generator.getRandomNumber(2)).andReturn(new int[]{11, 5, 6});
         expectText("page.ff.label.fight.luck.roll", new Object[]{5, 6, 11});

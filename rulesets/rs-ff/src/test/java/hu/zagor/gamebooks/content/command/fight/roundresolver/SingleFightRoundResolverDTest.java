@@ -145,6 +145,7 @@ public class SingleFightRoundResolverDTest extends FfTextResolvingTest {
         expect(attributeHandler.resolveValue(character, "damageProtection")).andReturn(0);
         character.changeStamina(-2);
         character.changeSkill(0);
+        character.changeLuck(0);
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Goblin"});
         expect(generator.getRandomNumber(2)).andReturn(new int[]{2, 1, 1});
         expectText("page.ff.label.fight.luck.roll", new Object[]{1, 1, 2});
@@ -183,6 +184,7 @@ public class SingleFightRoundResolverDTest extends FfTextResolvingTest {
         expect(attributeHandler.resolveValue(character, "damageProtection")).andReturn(0);
         character.changeStamina(-2);
         character.changeSkill(0);
+        character.changeLuck(0);
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Goblin"});
         mockControl.replay();
         // WHEN

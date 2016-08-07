@@ -176,6 +176,7 @@ public class OnlyHighestLinkedFightRoundResolverATest extends FfTextResolvingTes
         expect(attributeHandler.resolveValue(character, "damageProtection")).andReturn(0);
         character.changeStamina(-2);
         character.changeSkill(0);
+        character.changeLuck(0);
         expectText("page.ff.label.fight.single.failedDefense", new Object[]{"Two-Headed Dog"});
         mockControl.replay();
         // WHEN
