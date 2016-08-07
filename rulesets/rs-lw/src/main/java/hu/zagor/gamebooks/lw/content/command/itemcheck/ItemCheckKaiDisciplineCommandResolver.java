@@ -10,8 +10,7 @@ import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
 
 /**
- * Item checker that detects whether the player has a specific kai/magnakai/grand master discipline or not. It doesn't work with weaponskills, since it is not a normal kai skill,
- * and is not meant to be used together with that one!
+ * Item checker that detects whether the player has a specific kai/magnakai/grand master discipline or not.
  * @author Tamas_Szekeres
  */
 public class ItemCheckKaiDisciplineCommandResolver implements ItemCheckStubCommandResolver {
@@ -22,16 +21,20 @@ public class ItemCheckKaiDisciplineCommandResolver implements ItemCheckStubComma
         final String discipline = parent.getId();
         final String checkType = parent.getCheckType();
         final LwCharacter character = (LwCharacter) resolvationData.getCharacter();
-        try {
-            final Object disciplines = ReflectionUtils.findMethod(LwCharacter.class, "get" + StringUtils.capitalize(checkType) + "Disciplines").invoke(character);
-            final boolean hasSkill = (boolean) ReflectionUtils.findMethod(disciplines.getClass(), "is" + StringUtils.capitalize(discipline)).invoke(disciplines);
-            if (hasSkill) {
-                data = parent.getHave();
-            } else {
-                data = parent.getDontHave();
+        if ("weaponskill".equals(discipline)) {
+            data = character.getKaiDisciplines().getWeaponskill().isWeaponskillObtained() ? parent.getHave() : parent.getDontHave();
+        } else {
+            try {
+                final Object disciplines = ReflectionUtils.findMethod(LwCharacter.class, "get" + StringUtils.capitalize(checkType) + "Disciplines").invoke(character);
+                final boolean hasSkill = (boolean) ReflectionUtils.findMethod(disciplines.getClass(), "is" + StringUtils.capitalize(discipline)).invoke(disciplines);
+                if (hasSkill) {
+                    data = parent.getHave();
+                } else {
+                    data = parent.getDontHave();
+                }
+            } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+                throw new IllegalArgumentException("Failed to fetch " + checkType + " discipline " + discipline + " state because it doesn't exists.", e);
             }
-        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-            throw new IllegalArgumentException("Failed to fetch " + checkType + " discipline " + discipline + " state because it doesn't exists.", e);
         }
         return data;
     }
