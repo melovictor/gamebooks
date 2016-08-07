@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.ff.ff.hoh.mvc.books.newgame.service;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.character.CharacterGenerator;
-import hu.zagor.gamebooks.domain.BookContentSpecification;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.ff.hoh.character.Ff10Character;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
@@ -23,8 +22,8 @@ public class Ff10CharacterGenerator implements CharacterGenerator {
     @Autowired @Qualifier("defaultFfCharacterGenerator") private CharacterGenerator superGenerator;
 
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification, final BookInformations info) {
-        final Map<String, Object> generateCharacter = superGenerator.generateCharacter(characterObject, bookContentSpecification, info);
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info) {
+        final Map<String, Object> generateCharacter = superGenerator.generateCharacter(characterObject, info);
 
         final Ff10Character character = (Ff10Character) characterObject;
         final int[] fear = superGenerator.getRand().getRandomNumber(1, FEAR_DEFAULT);

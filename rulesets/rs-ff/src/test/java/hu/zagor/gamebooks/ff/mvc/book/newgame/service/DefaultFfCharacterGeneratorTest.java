@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.ff.mvc.book.newgame.service;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.domain.BookContentSpecification;
+import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
@@ -13,6 +14,7 @@ import java.util.Map;
 import org.easymock.IMocksControl;
 import org.easymock.Mock;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 /**
@@ -29,22 +31,37 @@ public class DefaultFfCharacterGeneratorTest {
     @Inject private DiceResultRenderer diceRenderer;
     @Mock private FfCharacter character;
     @Instance private BookContentSpecification bookContentSpecification;
+    private final BookInformations info = new BookInformations(1L);
+
+    @BeforeClass
+    public void setUpClass() {
+        info.setContentSpecification(bookContentSpecification);
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testGenerateCharacterWhenBookInfoIsNullShouldThrowException() {
+        // GIVEN
+        mockControl.replay();
+        // WHEN
+        underTest.generateCharacter(character, null);
+        // THEN throws exception
+    }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testGenerateCharacterWhenCharacterIsNullShouldThrowException() {
         // GIVEN
         mockControl.replay();
         // WHEN
-        underTest.generateCharacter(null, bookContentSpecification, null);
+        underTest.generateCharacter(null, info);
         // THEN throws exception
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void testGenerateCharacterWhenBookContentSpecificationIsNullShouldThrowException() {
+    public void testGenerateCharacterWhenContentSpecificationIsNullShouldThrowException() {
         // GIVEN
         mockControl.replay();
         // WHEN
-        underTest.generateCharacter(character, null, null);
+        underTest.generateCharacter(character, new BookInformations(3L));
         // THEN throws exception
     }
 
@@ -72,7 +89,7 @@ public class DefaultFfCharacterGeneratorTest {
 
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.generateCharacter(character, bookContentSpecification, null);
+        final Map<String, Object> returned = underTest.generateCharacter(character, info);
         // THEN
         Assert.assertEquals(returned.get("ffSkill"), "9 render_9:3");
         Assert.assertEquals(returned.get("ffStamina"), "20 render_20:6/2");

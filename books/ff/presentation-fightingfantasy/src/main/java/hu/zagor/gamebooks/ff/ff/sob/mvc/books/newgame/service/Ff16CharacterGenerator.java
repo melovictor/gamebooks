@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.ff.ff.sob.mvc.books.newgame.service;
 
 import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.domain.BookContentSpecification;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.ff.sob.character.Ff16Character;
 import hu.zagor.gamebooks.ff.mvc.book.newgame.service.DefaultFfCharacterGenerator;
@@ -18,8 +17,8 @@ public class Ff16CharacterGenerator extends DefaultFfCharacterGenerator {
     private static final int DICE_SIDE = 6;
 
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification, final BookInformations info) {
-        final Map<String, Object> generateCharacter = super.generateCharacter(characterObject, bookContentSpecification, info);
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info) {
+        final Map<String, Object> generateCharacter = super.generateCharacter(characterObject, info);
 
         final Ff16Character character = (Ff16Character) characterObject;
 

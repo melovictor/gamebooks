@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.ff.ff.votv.mvc.books.newgame.service;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.domain.BookContentSpecification;
+import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.ff.votv.character.Ff38Character;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import java.util.Map;
@@ -28,6 +29,7 @@ public class Ff38CharacterGeneratorTest {
     private DiceResultRenderer diceRenderer;
     private Ff38Character character;
     private BookContentSpecification bookContentSpecification;
+    private BookInformations info;
 
     @BeforeClass
     public void setUpClass() {
@@ -38,6 +40,8 @@ public class Ff38CharacterGeneratorTest {
         character = mockControl.createMock(Ff38Character.class);
         bookContentSpecification = new BookContentSpecification();
         bookContentSpecification.setCharacterBackpackSize(10);
+        info = new BookInformations(3L);
+        info.setContentSpecification(bookContentSpecification);
         Whitebox.setInternalState(underTest, "rand", rand);
         Whitebox.setInternalState(underTest, "diceRenderer", diceRenderer);
     }
@@ -73,7 +77,7 @@ public class Ff38CharacterGeneratorTest {
 
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.generateCharacter(character, bookContentSpecification, null);
+        final Map<String, Object> returned = underTest.generateCharacter(character, info);
         // THEN
         Assert.assertEquals(returned.get("ffSkill"), "9 render_9:3");
         Assert.assertEquals(returned.get("ffStamina"), "20 render_20:6/2");

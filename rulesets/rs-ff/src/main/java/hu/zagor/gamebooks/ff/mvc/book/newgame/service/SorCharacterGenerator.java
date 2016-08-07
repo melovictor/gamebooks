@@ -3,7 +3,6 @@ package hu.zagor.gamebooks.ff.mvc.book.newgame.service;
 import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.character.CharacterGenerator;
-import hu.zagor.gamebooks.domain.BookContentSpecification;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
@@ -26,8 +25,8 @@ public class SorCharacterGenerator implements CharacterGenerator {
     @Autowired private HttpServletRequest request;
 
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification, final BookInformations info) {
-        final Map<String, Object> result = superGenerator.generateCharacter(characterObject, bookContentSpecification, info);
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info) {
+        final Map<String, Object> result = superGenerator.generateCharacter(characterObject, info);
         final SorCharacter character = (SorCharacter) characterObject;
 
         final String caste = request.getParameterMap().get("caste")[0];

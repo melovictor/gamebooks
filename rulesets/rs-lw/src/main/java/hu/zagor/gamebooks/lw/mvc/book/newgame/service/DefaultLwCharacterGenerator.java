@@ -4,7 +4,6 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.character.CharacterGenerator;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
-import hu.zagor.gamebooks.domain.BookContentSpecification;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
 import hu.zagor.gamebooks.lw.character.handler.item.LwCharacterItemHandler;
@@ -34,8 +33,8 @@ public class DefaultLwCharacterGenerator implements CharacterGenerator {
     private final Map<Integer, LwEquipmentMapper> equipmentMapper = new HashMap<>();
 
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification, final BookInformations info) {
-        return generateCharacter(characterObject, (LwBookContentSpecification) bookContentSpecification, (LwBookInformations) info);
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info) {
+        return generateCharacter(characterObject, (LwBookContentSpecification) info.getContentSpecification(), (LwBookInformations) info);
     }
 
     private Map<String, Object> generateCharacter(final Character characterObject, final LwBookContentSpecification bookContentSpecification,

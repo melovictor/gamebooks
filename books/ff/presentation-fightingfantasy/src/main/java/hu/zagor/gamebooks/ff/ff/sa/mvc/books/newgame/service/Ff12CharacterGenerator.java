@@ -4,7 +4,6 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.character.CharacterGenerator;
-import hu.zagor.gamebooks.domain.BookContentSpecification;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.ff.sa.character.Ff12Character;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
@@ -26,8 +25,8 @@ public class Ff12CharacterGenerator implements CharacterGenerator {
     @Autowired @Qualifier("defaultFfCharacterGenerator") private CharacterGenerator superGenerator;
 
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification, final BookInformations info) {
-        final Map<String, Object> generateCharacter = superGenerator.generateCharacter(characterObject, bookContentSpecification, info);
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info) {
+        final Map<String, Object> generateCharacter = superGenerator.generateCharacter(characterObject, info);
 
         final Ff12Character character = (Ff12Character) characterObject;
         final int[] weapons = superGenerator.getRand().getRandomNumber(1);

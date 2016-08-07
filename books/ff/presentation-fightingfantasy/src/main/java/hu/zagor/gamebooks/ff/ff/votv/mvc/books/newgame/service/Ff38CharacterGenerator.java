@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.ff.ff.votv.mvc.books.newgame.service;
 
 import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.domain.BookContentSpecification;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.ff.votv.character.Ff38Character;
 import hu.zagor.gamebooks.ff.mvc.book.newgame.service.DefaultFfCharacterGenerator;
@@ -17,8 +16,8 @@ public class Ff38CharacterGenerator extends DefaultFfCharacterGenerator {
     private static final int FAITH_DEFAULT = 3;
 
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification, final BookInformations info) {
-        final Map<String, Object> generateCharacter = super.generateCharacter(characterObject, bookContentSpecification, info);
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info) {
+        final Map<String, Object> generateCharacter = super.generateCharacter(characterObject, info);
 
         final Ff38Character character = (Ff38Character) characterObject;
         final int[] faith = getRand().getRandomNumber(1, FAITH_DEFAULT);

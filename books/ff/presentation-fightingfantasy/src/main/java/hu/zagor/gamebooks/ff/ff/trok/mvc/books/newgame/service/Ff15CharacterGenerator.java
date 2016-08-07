@@ -1,7 +1,6 @@
 package hu.zagor.gamebooks.ff.ff.trok.mvc.books.newgame.service;
 
 import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.domain.BookContentSpecification;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.ff.trok.character.Ff15Character;
 import hu.zagor.gamebooks.ff.ff.trok.character.domain.Ff15ShipAttributes;
@@ -18,8 +17,8 @@ public class Ff15CharacterGenerator extends DefaultFfCharacterGenerator {
     private static final int WEAPON_DEFAULT = 6;
 
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification, final BookInformations info) {
-        final Map<String, Object> generateCharacter = super.generateCharacter(characterObject, bookContentSpecification, info);
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info) {
+        final Map<String, Object> generateCharacter = super.generateCharacter(characterObject, info);
 
         final Ff15Character character = (Ff15Character) characterObject;
 

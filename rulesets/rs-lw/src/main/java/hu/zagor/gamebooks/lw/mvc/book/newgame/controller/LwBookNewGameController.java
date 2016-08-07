@@ -9,12 +9,14 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
 import hu.zagor.gamebooks.lw.character.LwCharacterPageData;
 import hu.zagor.gamebooks.lw.domain.LwBookInformations;
+import hu.zagor.gamebooks.lw.mvc.book.newgame.domain.LwCharGenInput;
 import hu.zagor.gamebooks.raw.mvc.book.newgame.controller.RawBookNewGameController;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -53,25 +55,27 @@ public class LwBookNewGameController extends RawBookNewGameController {
     /**
      * Handles the generation of the new character.
      * @param request the {@link HttpServletRequest} object
+     * @param input bean containing all user selections for the character to be generated
      * @return the compiled object
      */
     @RequestMapping(value = PageAddresses.BOOK_NEW + "/" + PageAddresses.BOOK_GENERATE_CHARACTER, produces = "application/json")
     @ResponseBody
-    public final Map<String, Object> generateCharacter(final HttpServletRequest request) {
-        return doGenerateCharacter(request);
+    public final Map<String, Object> generateCharacter(final HttpServletRequest request, @ModelAttribute final LwCharGenInput input) {
+        return doGenerateCharacter(request, input);
     }
 
     /**
      * Handles the actual generation of the new character.
      * @param request the {@link HttpServletRequest} object
+     * @param input bean containing all user selections for the character to be generated
      * @return the compiled object
      */
-    protected Map<String, Object> doGenerateCharacter(final HttpServletRequest request) {
+    protected Map<String, Object> doGenerateCharacter(final HttpServletRequest request, final LwCharGenInput input) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final LwCharacter character = (LwCharacter) wrapper.getCharacter();
         final LwBookInformations info = getInfo();
         final CharacterGenerator characterGenerator = info.getCharacterHandler().getCharacterGenerator();
-        final Map<String, Object> result = characterGenerator.generateCharacter(character, info.getContentSpecification(), info);
+        final Map<String, Object> result = characterGenerator.generateCharacter(character, info/* , input */);
 
         return result;
     }

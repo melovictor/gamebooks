@@ -85,7 +85,7 @@ public class FfBookNewGameController extends RawBookNewGameController {
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
         final FfBookInformations info = getInfo();
         final CharacterGenerator characterGenerator = info.getCharacterHandler().getCharacterGenerator();
-        final Map<String, Object> result = characterGenerator.generateCharacter(character, info.getContentSpecification(), info);
+        final Map<String, Object> result = characterGenerator.generateCharacter(character, info);
 
         initializeItems(request.getParameterMap(), character);
 

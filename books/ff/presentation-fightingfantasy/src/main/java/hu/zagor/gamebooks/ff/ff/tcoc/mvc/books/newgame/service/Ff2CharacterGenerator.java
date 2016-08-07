@@ -6,7 +6,6 @@ import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.character.CharacterGenerator;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.Item;
-import hu.zagor.gamebooks.domain.BookContentSpecification;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.ff.ff.tcoc.character.Ff2Character;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
@@ -27,8 +26,8 @@ public class Ff2CharacterGenerator implements CharacterGenerator {
     @Autowired @Qualifier("defaultFfCharacterGenerator") private CharacterGenerator superGenerator;
 
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification, final BookInformations info) {
-        final Map<String, Object> generateCharacter = superGenerator.generateCharacter(characterObject, bookContentSpecification, info);
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info) {
+        final Map<String, Object> generateCharacter = superGenerator.generateCharacter(characterObject, info);
 
         final Ff2Character character = (Ff2Character) characterObject;
         final int[] spell = getRand().getRandomNumber(2, SPELL_DEFAULT);

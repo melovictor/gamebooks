@@ -35,15 +35,17 @@ public class DefaultFfCharacterGenerator implements CharacterGenerator {
      * @return details about the generation process
      */
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookContentSpecification bookContentSpecification, final BookInformations info) {
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info) {
         Assert.notNull(characterObject, "The parameter 'characterObject' cannot be null!");
-        Assert.notNull(bookContentSpecification, "The parameter 'bookContentSpecification' cannot be null!");
+        Assert.notNull(info, "The parameter 'info' cannot be null!");
+        final BookContentSpecification contentSpecification = info.getContentSpecification();
+        Assert.notNull(contentSpecification, "The parameter 'bookContentSpecification' cannot be null!");
         final FfCharacter character = (FfCharacter) characterObject;
         final int[] skill = rand.getRandomNumber(1, SKILL_DEFAULT);
         final int[] stamina = rand.getRandomNumber(2, STAMINA_DEFAULT);
         final int[] luck = rand.getRandomNumber(1, LUCK_DEFAULT);
 
-        character.setBackpackSize(bookContentSpecification.getCharacterBackpackSize());
+        character.setBackpackSize(contentSpecification.getCharacterBackpackSize());
         character.setSkill(skill[0]);
         character.setInitialSkill(skill[0]);
         character.setStamina(stamina[0]);
