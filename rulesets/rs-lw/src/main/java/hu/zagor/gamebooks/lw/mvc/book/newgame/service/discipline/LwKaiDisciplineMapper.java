@@ -6,10 +6,10 @@ import hu.zagor.gamebooks.lw.character.KaiDisciplines;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
 import hu.zagor.gamebooks.lw.character.Rank;
 import hu.zagor.gamebooks.lw.character.Weaponskill;
+import hu.zagor.gamebooks.lw.mvc.book.newgame.domain.LwCharGenInput;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import hu.zagor.gamebooks.support.messages.MessageSource;
 import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -29,28 +29,26 @@ public class LwKaiDisciplineMapper implements LwDisciplineMapper {
     private static final int QUARTERSTAFF_WEAPONSKILL_ROLL = 8;
     private static final int BROADSWORD_WEAPONSKILL_ROLL = 9;
 
-    @Autowired private HttpServletRequest request;
     @Autowired @Qualifier("d10") private RandomNumberGenerator generator;
     @Autowired private MessageSource messageSource;
     @Autowired private DiceResultRenderer renderer;
 
     @Override
-    public void mapDisciplines(final LwCharacter character, final Map<String, Object> result) {
+    public void mapDisciplines(final LwCharacter character, final Map<String, Object> result, final LwCharGenInput input) {
         character.setRank(Rank.KaiInitiate);
 
-        final Map<String, String[]> parameterMap = request.getParameterMap();
         final KaiDisciplines kaiDisciplines = character.getKaiDisciplines();
-        kaiDisciplines.setCamouflage(checkSelection(parameterMap, "camouflage"));
-        kaiDisciplines.setHunting(checkSelection(parameterMap, "hunting"));
-        kaiDisciplines.setSixthSense(checkSelection(parameterMap, "sixthSense"));
-        kaiDisciplines.setTracking(checkSelection(parameterMap, "tracking"));
-        kaiDisciplines.setHealing(checkSelection(parameterMap, "healing"));
-        kaiDisciplines.setMindshield(checkSelection(parameterMap, "mindshield"));
-        kaiDisciplines.setMindblast(checkSelection(parameterMap, "mindblast"));
-        kaiDisciplines.setAnimalKinship(checkSelection(parameterMap, "animalKinship"));
-        kaiDisciplines.setMindOverMatter(checkSelection(parameterMap, "mindOverMatter"));
+        kaiDisciplines.setCamouflage(input.isCamouflage());
+        kaiDisciplines.setHunting(input.isHunting());
+        kaiDisciplines.setSixthSense(input.isSixthSense());
+        kaiDisciplines.setTracking(input.isTracking());
+        kaiDisciplines.setHealing(input.isHealing());
+        kaiDisciplines.setMindshield(input.isMindshield());
+        kaiDisciplines.setMindblast(input.isMindblast());
+        kaiDisciplines.setAnimalKinship(input.isAnimalKinship());
+        kaiDisciplines.setMindOverMatter(input.isMindOverMatter());
 
-        if (checkSelection(parameterMap, "weaponskill")) {
+        if (input.isWeaponskill()) {
             addWeaponskill(result, kaiDisciplines);
         }
     }
@@ -65,22 +63,11 @@ public class LwKaiDisciplineMapper implements LwDisciplineMapper {
         weaponskill.setMace(weaponskillRolledValue == MACE_WEAPONSKILL_ROLL);
         weaponskill.setShortSword(weaponskillRolledValue == SHORT_SWORD_WEAPONSKILL_ROLL);
         weaponskill.setWarhammer(weaponskillRolledValue == WARHAMMER_WEAPONSKILL_ROLL);
-        weaponskill.setSword(weaponskillRolledValue == SWORD_1_WEAPONSKILL_ROLL);
+        weaponskill.setSword(weaponskillRolledValue == SWORD_1_WEAPONSKILL_ROLL || weaponskillRolledValue == SWORD_2_WEAPONSKILL_ROLL);
         weaponskill.setAxe(weaponskillRolledValue == AXE_WEAPONSKILL_ROLL);
-        weaponskill.setSword(weaponskillRolledValue == SWORD_2_WEAPONSKILL_ROLL);
         weaponskill.setQuarterstaff(weaponskillRolledValue == QUARTERSTAFF_WEAPONSKILL_ROLL);
         weaponskill.setBroadsword(weaponskillRolledValue == BROADSWORD_WEAPONSKILL_ROLL);
         result.put("weaponskill",
             messageSource.getMessage("page.lw.characterGeneration.weaponObtained." + weaponskillRolledValue, renderer.render(weaponRollConfig, randomNumber)));
     }
-
-    private boolean checkSelection(final Map<String, String[]> parameterMap, final String discipline) {
-        boolean selected = false;
-        final String[] userInputs = parameterMap.get(discipline);
-        if (userInputs != null && userInputs.length > 0) {
-            selected = Boolean.parseBoolean(userInputs[0]);
-        }
-        return selected;
-    }
-
 }

@@ -75,7 +75,7 @@ public class LwBookNewGameController extends RawBookNewGameController {
         final LwCharacter character = (LwCharacter) wrapper.getCharacter();
         final LwBookInformations info = getInfo();
         final CharacterGenerator characterGenerator = info.getCharacterHandler().getCharacterGenerator();
-        final Map<String, Object> result = characterGenerator.generateCharacter(character, info/* , input */);
+        final Map<String, Object> result = characterGenerator.generateCharacter(character, info, input);
 
         return result;
     }

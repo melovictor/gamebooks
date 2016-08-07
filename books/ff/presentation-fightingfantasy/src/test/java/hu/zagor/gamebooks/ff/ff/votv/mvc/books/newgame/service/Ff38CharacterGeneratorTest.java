@@ -77,7 +77,7 @@ public class Ff38CharacterGeneratorTest {
 
         mockControl.replay();
         // WHEN
-        final Map<String, Object> returned = underTest.generateCharacter(character, info);
+        final Map<String, Object> returned = underTest.generateCharacter(character, info, null);
         // THEN
         Assert.assertEquals(returned.get("ffSkill"), "9 render_9:3");
         Assert.assertEquals(returned.get("ffStamina"), "20 render_20:6/2");

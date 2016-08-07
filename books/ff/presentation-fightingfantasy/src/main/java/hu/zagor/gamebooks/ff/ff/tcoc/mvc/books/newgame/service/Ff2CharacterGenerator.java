@@ -26,8 +26,8 @@ public class Ff2CharacterGenerator implements CharacterGenerator {
     @Autowired @Qualifier("defaultFfCharacterGenerator") private CharacterGenerator superGenerator;
 
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info) {
-        final Map<String, Object> generateCharacter = superGenerator.generateCharacter(characterObject, info);
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info, final Object generationInput) {
+        final Map<String, Object> generateCharacter = superGenerator.generateCharacter(characterObject, info, generationInput);
 
         final Ff2Character character = (Ff2Character) characterObject;
         final int[] spell = getRand().getRandomNumber(2, SPELL_DEFAULT);

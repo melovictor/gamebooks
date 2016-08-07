@@ -35,7 +35,7 @@ public class DefaultFfCharacterGenerator implements CharacterGenerator {
      * @return details about the generation process
      */
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info) {
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info, final Object generationInput) {
         Assert.notNull(characterObject, "The parameter 'characterObject' cannot be null!");
         Assert.notNull(info, "The parameter 'info' cannot be null!");
         final BookContentSpecification contentSpecification = info.getContentSpecification();

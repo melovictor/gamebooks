@@ -16,9 +16,10 @@ public interface CharacterGenerator {
      * Fills all of the properties of a character based on the book-specific rules.
      * @param characterObject the {@link Character} to fill
      * @param info the {@link BookInformations} object
+     * @param generationInput book- or ruleset-specific object containing user input for the generation, can be null
      * @return detailed information about the generation
      */
-    Map<String, Object> generateCharacter(Character characterObject, BookInformations info);
+    Map<String, Object> generateCharacter(Character characterObject, BookInformations info, Object generationInput);
 
     /**
      * Gives out the random number generator.

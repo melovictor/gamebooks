@@ -17,8 +17,8 @@ public class Ff15CharacterGenerator extends DefaultFfCharacterGenerator {
     private static final int WEAPON_DEFAULT = 6;
 
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info) {
-        final Map<String, Object> generateCharacter = super.generateCharacter(characterObject, info);
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info, final Object generationInput) {
+        final Map<String, Object> generateCharacter = super.generateCharacter(characterObject, info, generationInput);
 
         final Ff15Character character = (Ff15Character) characterObject;
 

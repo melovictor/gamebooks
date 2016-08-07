@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
 import hu.zagor.gamebooks.lw.character.handler.item.LwCharacterItemHandler;
+import hu.zagor.gamebooks.lw.mvc.book.newgame.domain.LwCharGenInput;
 import hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.InitialItemDescriptor;
 import hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.LwEquipmentMapper;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
@@ -25,7 +26,7 @@ public class Lw1EquipmentMapper implements LwEquipmentMapper {
     @Autowired private MessageSource messageSource;
 
     @Override
-    public void mapEquipments(final LwCharacter character, final Map<String, Object> result, final LwCharacterItemHandler itemHandler) {
+    public void mapEquipments(final LwCharacter character, final Map<String, Object> result, final LwCharacterItemHandler itemHandler, final LwCharGenInput input) {
         final DiceConfiguration d10Configuration = new DiceConfiguration(1, 0, 9);
         final int[] goldCrowns = generator.getRandomNumber(d10Configuration);
         final int[] equipment = generator.getRandomNumber(d10Configuration);

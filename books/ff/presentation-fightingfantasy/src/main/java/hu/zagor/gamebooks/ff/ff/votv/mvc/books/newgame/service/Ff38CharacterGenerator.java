@@ -16,8 +16,8 @@ public class Ff38CharacterGenerator extends DefaultFfCharacterGenerator {
     private static final int FAITH_DEFAULT = 3;
 
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info) {
-        final Map<String, Object> generateCharacter = super.generateCharacter(characterObject, info);
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info, final Object generationInput) {
+        final Map<String, Object> generateCharacter = super.generateCharacter(characterObject, info, generationInput);
 
         final Ff38Character character = (Ff38Character) characterObject;
         final int[] faith = getRand().getRandomNumber(1, FAITH_DEFAULT);

@@ -8,7 +8,7 @@ import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
 import hu.zagor.gamebooks.lw.character.handler.item.LwCharacterItemHandler;
 import hu.zagor.gamebooks.lw.domain.LwBookContentSpecification;
-import hu.zagor.gamebooks.lw.domain.LwBookInformations;
+import hu.zagor.gamebooks.lw.mvc.book.newgame.domain.LwCharGenInput;
 import hu.zagor.gamebooks.lw.mvc.book.newgame.service.discipline.LwDisciplineMapper;
 import hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.LwEquipmentMapper;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
@@ -33,13 +33,10 @@ public class DefaultLwCharacterGenerator implements CharacterGenerator {
     private final Map<Integer, LwEquipmentMapper> equipmentMapper = new HashMap<>();
 
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info) {
-        return generateCharacter(characterObject, (LwBookContentSpecification) info.getContentSpecification(), (LwBookInformations) info);
-    }
-
-    private Map<String, Object> generateCharacter(final Character characterObject, final LwBookContentSpecification bookContentSpecification,
-        final LwBookInformations info) {
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info, final Object generationInput) {
+        Assert.notNull(info, "The parameter 'info' cannot be null!");
         Assert.notNull(characterObject, "The parameter 'characterObject' cannot be null!");
+        final LwBookContentSpecification bookContentSpecification = (LwBookContentSpecification) info.getContentSpecification();
         Assert.notNull(bookContentSpecification, "The parameter 'bookContentSpecification' cannot be null!");
         final LwCharacter character = (LwCharacter) characterObject;
         final DiceConfiguration d10Configuration = new DiceConfiguration(1, 0, 9);
@@ -53,12 +50,14 @@ public class DefaultLwCharacterGenerator implements CharacterGenerator {
 
         character.setInitialized(true);
 
+        final LwCharGenInput input = (LwCharGenInput) generationInput;
+
         final Map<String, Object> result = new HashMap<>();
-        disciplineMapper.get(bookContentSpecification.getLevel()).mapDisciplines(character, result);
+        disciplineMapper.get(bookContentSpecification.getLevel()).mapDisciplines(character, result, input);
         final int bookId = info.getPosition().intValue();
-        final LwCharacterItemHandler itemHandler = info.getCharacterHandler().getItemHandler();
+        final LwCharacterItemHandler itemHandler = (LwCharacterItemHandler) info.getCharacterHandler().getItemHandler();
         itemHandler.addItem(characterObject, "40000", 1);
-        equipmentMapper.get(bookId).mapEquipments(character, result, itemHandler);
+        equipmentMapper.get(bookId).mapEquipments(character, result, itemHandler, input);
 
         result.put("lwEndurance", endurance[0] + diceRenderer.render(DICE_SIDE, endurance));
         result.put("lwCombatSkill", combatSkill[0] + diceRenderer.render(DICE_SIDE, combatSkill));

@@ -4,6 +4,8 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.content.dice.DiceConfiguration;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
 import hu.zagor.gamebooks.lw.character.handler.item.LwCharacterItemHandler;
+import hu.zagor.gamebooks.lw.mvc.book.newgame.domain.LwCharGenEquipment;
+import hu.zagor.gamebooks.lw.mvc.book.newgame.domain.LwCharGenInput;
 import hu.zagor.gamebooks.lw.mvc.book.newgame.service.equipment.LwEquipmentMapper;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
 import java.util.Map;
@@ -21,10 +23,14 @@ public class Lw2EquipmentMapper implements LwEquipmentMapper {
     @Autowired private DiceResultRenderer diceRenderer;
 
     @Override
-    public void mapEquipments(final LwCharacter character, final Map<String, Object> result, final LwCharacterItemHandler itemHandler) {
+    public void mapEquipments(final LwCharacter character, final Map<String, Object> result, final LwCharacterItemHandler itemHandler, final LwCharGenInput input) {
         final DiceConfiguration d10Configuration = new DiceConfiguration(1, 0, 9);
         final int[] goldCrowns = generator.getRandomNumber(d10Configuration);
         final int crowns = 10 + goldCrowns[0];
+
+        for (final LwCharGenEquipment equipment : input.getEquipments()) {
+            itemHandler.addItem(character, equipment.getId(), equipment.getAmount());
+        }
 
         result.put("lwGoldCrowns", crowns + diceRenderer.render(DICE_SIDE, goldCrowns));
         result.put("lwGoldCrownsNumeric", crowns);

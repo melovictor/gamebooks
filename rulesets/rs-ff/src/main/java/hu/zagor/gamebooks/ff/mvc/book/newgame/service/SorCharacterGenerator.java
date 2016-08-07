@@ -25,8 +25,8 @@ public class SorCharacterGenerator implements CharacterGenerator {
     @Autowired private HttpServletRequest request;
 
     @Override
-    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info) {
-        final Map<String, Object> result = superGenerator.generateCharacter(characterObject, info);
+    public Map<String, Object> generateCharacter(final Character characterObject, final BookInformations info, final Object generationInput) {
+        final Map<String, Object> result = superGenerator.generateCharacter(characterObject, info, generationInput);
         final SorCharacter character = (SorCharacter) characterObject;
 
         final String caste = request.getParameterMap().get("caste")[0];
