@@ -83,7 +83,40 @@
   <!-- 9 -->
   <!-- 10 -->
   <!-- 11 -->
-  <!-- 12 -->
+  <p id="12">
+    <text>
+        [p]Kelman kapitány kinyitja az üveges szekrényt, és kiveszi belőle a Samor táblát. A gyönyörűen faragott játékfigurák már a helyükön állnak, amikor óvatosan leteszi azt az asztalra.[/p]
+        [p]Miután vonakodva beleegyezel, hogy a tét tíz Aranykorona legyen, megkezdődik a játék.[/p]
+    </text>
+    <itemCheck type="kai" id="sixthSense">
+      <have>
+        <random>
+          <result max="1" min="0">
+            <next id="58"></next>
+          </result>
+          <result max="4" min="2">
+            <next id="167"></next>
+          </result>
+          <result max="9" min="5">
+            <next id="329"></next>
+          </result>
+        </random>
+      </have>
+      <dontHave>
+        <random>
+          <result max="3" min="0">
+            <next id="58"></next>
+          </result>
+          <result max="6" min="4">
+            <next id="167"></next>
+          </result>
+          <result max="9" min="7">
+            <next id="329"></next>
+          </result>
+        </random>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 13 -->
   <!-- 14 -->
   <!-- 15 -->
@@ -183,7 +216,16 @@
   <!-- 55 -->
   <!-- 56 -->
   <!-- 57 -->
-  <!-- 58 -->
+  <p id="58">
+    <text>
+        [p]- Balszerencse, Magányos Farkas. Merész a stratégiád, de azt hiszem most az enyém vagy.[/p]
+        [p]A kapitánynak sikerül a zárókövét átvinnie a táblán, és gyorsan rádöbbensz, hogy a játék elveszett. Gratulálsz a mesteri játékához, majd átadod neki a 10 aranykoronát.[/p]
+        [p]- Egy újabb játékot holnap este? Ne mondja senki, hogy nem vagyok tisztességes ember. – szól a kapitány.[/p]
+        [p]- Talán. – válaszolsz óvatosan. Jó éjt kívánsz a mosolygós kapitánynak, majd visszatérsz a kabinodba.[/p] 
+    </text>
+    <add amount="-10" to="goldCrown" />
+    <next id="197"></next>
+  </p>
   <!-- 59 -->
   <!-- 60 -->
   <!-- 61 -->
@@ -481,7 +523,14 @@
   <!-- 164 -->
   <!-- 165 -->
   <!-- 166 -->
-  <!-- 167 -->
+  <p id="167">
+    <text>
+        [p]- Merész a stratégiád Magányos Farkas, de azt hiszem, most elcsíptelek. - Kelman kapitány diadalmas mosollyal az arcán elmozdítja a zárókövét a te térfeledre. Vidámsága hamarosan elenyészik váratlan lépésed láttán.[/p]
+        [p]- Patthelyzet! – feleled hűvösen. A kapitány hitetlenkedve bámulja a táblát.[/p]
+        [p]- A Kai képességek mindig bámulatba ejtenek – mondja, lassan a fejét vakargatva ellenfeled. Még mindig a Samor táblát bámulja, amikor elköszönsz tőle jó éjt kívánva, és visszatérsz a kabinodba.[/p]
+    </text>
+    <next id="197"></next>
+  </p>
   <!-- 168 -->
   <!-- 169 -->
   <!-- 170 -->
@@ -870,7 +919,43 @@
   <!-- 305 -->
   <!-- 306 -->
   <!-- 307 -->
-  <!-- 308 -->
+  <p id="308">
+    <text>
+        [p]Egy Sprogg nevű tengerész, aki melletted ül, elmagyarázza a „fülkeablakok” játékszabályát. Két gyémánt alakú piros üvegből készült kockára mutat. Mindkettőnek 10 oldala van, és 0-9-ig számozták meg azokat. Minden játékos két kockával dob, és összeadja azok összegét. A legmagasabb érték nyer.[/p]
+        [p]Ha valaki dupla 0-át dob azt kell kiáltani „fülkeablakok!” és az illető automatikusan nyer. Minden játékosnak 3 Aranykoronát kell befizetnie dobásonként, melyet egy kalapba gyűjtenek össze. Két másik játékossal kell most megmérkőznöd.[/p]
+    </text>
+    <itemCheck type="money" id="goldCrowns" amount="3">
+      <have>
+        <next id="308a">Ha játszani akarsz egy kört</next>
+        <next id="197">Ha inkább visszatérnél a kabinodba</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Mivel nincs elég pénzed, úgy döntesz, hogy ideje visszatérned a kabinodba.[/p]
+        </text>
+        <next id="197"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
+  <p id="308a" display="308">
+    <text>
+        [p]Egy Sprogg nevű tengerész, aki melletted ül, elmagyarázza a „fülkeablakok” játékszabályát. Két gyémánt alakú piros üvegből készült kockára mutat. Mindkettőnek 10 oldala van, és 0-9-ig számozták meg azokat. Minden játékos két kockával dob, és összeadja azok összegét. A legmagasabb érték nyer.[/p]
+        [p]Ha valaki dupla 0-át dob azt kell kiáltani „fülkeablakok!” és az illető automatikusan nyer. Minden játékosnak 3 Aranykoronát kell befizetnie dobásonként, melyet egy kalapba gyűjtenek össze. Két másik játékossal kell most megmérkőznöd.[/p]
+        [p]{0}[/p]
+    </text>
+    <itemCheck type="money" id="goldCrowns" amount="3">
+      <have>
+        <next id="308a">Ha játszani akarsz egy újabb kört</next>
+        <next id="197">Ha inkább visszatérnél a kabinodba</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Mivel nincs elég pénzed, úgy döntesz, hogy ideje visszatérned a kabinodba.[/p]
+        </text>
+        <next id="197"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 309 -->
   <!-- 310 -->
   <!-- 311 -->
@@ -934,8 +1019,18 @@
         </text>
       </after>
     </itemCheck>
-    <next id="12">Ha elfogadod a kihívást</next>
-    <next id="197">Ha udvariasan elutasítod a kérését, és inkább jó éjt kívánva visszatérsz a kabinodba aludni</next>
+    <itemCheck type="money" id="goldCrowns" amount="10">
+      <have>
+        <next id="12">Ha elfogadod a kihívást</next>
+        <next id="197">Ha udvariasan elutasítod a kérését, és inkább jó éjt kívánva visszatérsz a kabinodba aludni</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Udvariasan elutasítod a kérését, és inkább jó éjt kívánva visszatérsz a kabinodba aludni.[/p]
+        </text>
+        <next id="197"></next>
+      </dontHave>
+    </itemCheck>
   </p>
   <!-- 322 -->
   <!-- 323 -->
@@ -954,7 +1049,15 @@
   </p>
   <!-- 327 -->
   <!-- 328 -->
-  <!-- 329 -->
+  <p id="329">
+    <text>
+        [p]- Gratulálok Magányos Farkas! Remek játékos vagy! – szól a kapitány, miközben letörli a homlokáról az izzadságot. Benyúl a mellénye zsebébe, és átnyújt neked egy kis erszényt, melyben 10 Aranykorona lapul.[/p]
+        [p] Megköszönöd a játékot, és felajánlod neki a lehetőséget, hogy egy újabb játszma keretében visszanyerhesse a tétet következő este. Fanyar mosollyal fogadja el az ajánlatodat.[/p]
+        [p]Jó éjt kívánva visszatérsz a kabinodba.[/p
+    </text>
+    <add amount="10" to="goldCrown" />
+    <next id="197"></next>
+  </p>
   <!-- 330 -->
   <!-- 331 -->
   <!-- 332 -->
