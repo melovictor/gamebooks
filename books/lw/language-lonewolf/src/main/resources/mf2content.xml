@@ -94,7 +94,25 @@
     <death />
   </p>
   <!-- 9 -->
-  <!-- 10 -->
+  <p id="10">
+    <text>
+        [p]Kifizeted a pénzt, és zsebre vágod a [span class="takeItem" data-id="40009" data-amount="1"]menetjegyet[/span]. A férfi elvezet téged a keleti kapu közelében álló postakocsihoz, mely most még üresen áll. Gyorsan elfoglalod a helyed benne, közel a kör alakú ablakokhoz. Megkönnyebbülten állapítod meg, hogy az ülések kényelmesek, így talán majd nem is tűnik olyan hosszúnak a hét napos utazás Port Bax-ig.[/p]
+        [p]Poggyászodat beteszed az ülés alá, kényelmesen elhelyezkedsz, és elszenderedsz.[/p]
+        [p]Amikor felébredsz, már úton vagytok, és öt másik utast látsz a kocsiban ülni, akik valamennyien Durenor földjére utaznak.[/p]
+    </text>
+    <add amount="-20" to="money.goldCrowns" />
+    <random>
+      <result max="3" min="0">
+        <next id="51"></next>
+      </result>
+      <result max="6" min="4">
+        <next id="195"></next>
+      </result>
+      <result max="9" min="7">
+        <next id="339"></next>
+      </result>
+    </random>
+  </p>
   <!-- 11 -->
   <p id="12">
     <text>
@@ -131,7 +149,12 @@
     </itemCheck>
   </p>
   <!-- 13 -->
-  <!-- 14 -->
+  <p id="14">
+    <text>
+        [p]Amint a verseny elkezdődik, Kai tudományodat latba veted, hogy meggyengítsd ellenfeled koncentrációját. A tengerész homlokán verejtékcseppek jelennek meg, és a szemei fokozatosan összeszűkülnek, majd folyamatosan gyengülni kezd Elmecsapásod hatására. Kevesebb, mint egy perc alatt teljesen öntudatlanul omlik a földre.[/p]
+    </text>
+    <next id="305"></next>
+  </p>
   <!-- 15 -->
   <p id="16">
     <text>
@@ -140,7 +163,15 @@
     <next id="268"></next>
   </p>
   <!-- 17 -->
-  <!-- 18 -->
+  <p id="18">
+    <text>
+        [p]Az előtted lévő utcát teljesen elállják a társzekerek, melyekről árut rakodnak egy kereskedő hajóra. Elindulsz kelet felé az ökörfogat utcán. Baloldalt a Ragadorni kereskedő állomás egy másik bejáratát pillantod meg. Azon túl pedig egy kisebb bolt cégtáblát veszed észre egy ajtó felett.[/p]
+        [p class="inlineImage" data-img="18"][/p]
+    </text>
+    <next id="173">Ha szeretnél bemenni a kereskedő állomásra</next>
+    <next id="266">Ha a fegyverkovács üzletét látogatnád meg</next>
+    <next id="310">Ha folytatod utad kelet felé</next>
+  </p>
   <!-- 19 -->
   <!-- 20 -->
   <!-- 21 -->
@@ -159,7 +190,15 @@
     </random>
   </p>
   <!-- 23 -->
-  <!-- 24 -->
+  <p id="24">
+    <text>
+        [p]Ez a sírhely Killean Hűbérúré, aki Ragadorn uralkodója volt több esztendeig, mígnem három évvel ezelőtt a Vörös Halál nevű ragály elvitte.[/p]
+        [p]Felidézel magadban egy korábbi emléket, amit a kolostor növendéke, bizonyos Sebes Róka mesélt, hogy ebben a városban ez a halálos járvány a lakosság több mint felét kipusztította. Aztán hamarosan Sebes Rókával is végzett a gyilkos kór.[/p]
+    </text>
+    <next id="177">Ha visszatérsz az ivóba</next>
+    <next id="253">Ha elindulsz nyugat felé a Sírkő utcán</next>
+    <next id="319">Ha kelet felé mennél az Őrtorony utcán</next>
+  </p>
   <!-- 25 -->
   <!-- 26 -->
   <p id="27">
@@ -183,7 +222,16 @@
   </p>
   <!-- 30 -->
   <!-- 31 -->
-  <!-- 32 -->
+  <p id="32">
+    <text>
+        [p]Hajnalban hangos kukorékolásra ébredsz. Ragadorn görbe utcáit figyeled a heves esőfüggönyön keresztül, mely most a macskaköves utakat áztatja. Hat napja, hogy elhagytad Holmgradot, de még mindig kétszáz mérföld távolságra vagy Port Bax kikötőjétől.[/p]
+        [p]Egy postakocsi állomás padlásán vagy. Egy csoport zöld ruhát viselő férfi érkezik, hogy kitisztítsa az egyik postakocsit. Miközben őket figyeled, hallod amint az egyikük azt mondja, hogy délután egy órakor egy járat indul innét Port Bax városába, és az út nem kevesebb, mint egy hétig tart majd.[/p]
+        [p]Mivel nagyon éhes vagy, el kell költened egy étkezést, egyébként vesztesz 3 SZÍVÓSSÁG pontot![/p]
+    </text>
+    <mustEat />
+    <next id="136">Most dönthetsz úgy, hogy odamész a kocsisokhoz, és veszel jegyet Port Bax városába</next>
+    <next id="238">Vagy kiosonsz az épületből, és visszatérsz az utcára</next>
+  </p>
   <!-- 33 -->
   <p id="34">
     <text>
@@ -448,7 +496,13 @@
   </p>
   <!-- 102 -->
   <!-- 103 -->
-  <!-- 104 -->
+  <p id="104">
+    <text>
+        [p]A halászok úgy bámulnak rád, mint egy hullára, aki most tért vissza a halálból. Az egyikük felrúgja az asztalt, és kimenekül a fogadó hátsó ajtaján. Társai felugranak a székükről, átugranak az asztal felett, és követik menekülő társukat az éjszakai sötétségbe.[/p]
+    </text>
+    <next id="231">Ha szeretnéd folytatni a hajszát</next>
+    <next id="177">Ha futni hagyod őket</next>
+  </p>
   <!-- 105 -->
   <!-- 106 -->
   <p id="107">
@@ -526,7 +580,12 @@
     <next id="240"></next>
   </p>
   <!-- 120 -->
-  <!-- 121 -->
+  <p id="121">
+    <text>
+        [p]Ahogy végigrohantok az Őrség utcán, eléred a Dorn folyó partját, mely a keleti és a nyugati városrészt választja el egymástól. Tőled balra ott áll a Ragadorni rozsdás vashíd, mely a kikötőváros egyetlen vízi átkelője. Az utcai tolvajok kiáltása visszhangzik a füledben, ezért gyorsan beleveted magad az itt átkelő tömegbe. Szerencsére üldözőid hamar feladják kirablásoddal kapcsolatos terveiket, így háborítatlanul folytathatod utad a szeméttel borított keleti kereskedelmi utcán.[/p]
+    </text>
+    <next id="186"></next>
+  </p>
   <!-- 122 -->
   <!-- 123 -->
   <!-- 124 -->
@@ -537,7 +596,15 @@
     <next id="300"></next>
   </p>
   <!-- 126 -->
-  <!-- 127 -->
+  <p id="127">
+    <text>
+        [p]Hajnalban arra ébredsz, hogy sűrű záporeső áztatja a település macskaköves utcáit.[/p]
+        [p]Hat nap telt el azóta, hogy elhagytad Holmgradot, és el kell fogyasztanod egy adag ételt, vagy vesztesz 3 SZÍVÓSSÁG pontot! Összeszeded a felszerelésed, és elhagyod a szobát. Ahogy lefelé haladsz a rozoga lépcsőn, megpillantod a fogadóst, aki a padlót tisztítja egy felmosóronggyal és egy vödörrel a kezében.[/p]
+    </text>
+    <mustEat />
+    <next id="217">Ha akarod, megkérdezheted tőle, hogyan tudnál gyorsan továbbhaladni Durenor felé</next>
+    <next id="143">Elhagyod a fogadót anélkül, hogy beszélnél vele</next>
+  </p>
   <!-- 128 -->
   <!-- 129 -->
   <!-- 130 -->
@@ -551,7 +618,19 @@
   </p>
   <!-- 134 -->
   <!-- 135 -->
-  <!-- 136 -->
+  <p id="136">
+    <text>
+        [p]- A viteldíj 20 Aranykorona lesz Port Bax városáig. – mondja a kocsis mogorva hangján ragadorni akcentussal.[/p]
+    </text>
+    <itemCheck type="money" id="goldCrowns" amount="20">
+      <have>
+        <next id="10"></next>
+      </have>
+      <dontHave>
+        <next id="238"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 137 -->
   <!-- 138 -->
   <p id="139">
@@ -587,7 +666,14 @@
     <next id="337">Ha inkább a part felé eveznél</next>
   </p>
   <!-- 142 -->
-  <!-- 143 -->
+  <p id="143">
+    <text>
+        [p]Déli irányban haladsz a rakpartot követve. Végül egy kereszteződéshez érsz, mely keleti irányban vezet tovább. A legtöbb üzlet az utcában, ebben a korai órában még zárva van, kivéve egyet jobbra. Az alábbi cégért látod az üzlet felett:[/p]
+        [p class="centered"]Jinelda Koop – Alkimista. Mágikus bájitalok eladása és vétele.[/p]
+    </text>
+    <next id="289">Ha bemennél az üzletbe</next>
+    <next id="186">Ha folytatod az utad</next>
+  </p>
   <!-- 144 -->
   <!-- 145 -->
   <p id="146">
@@ -719,7 +805,13 @@
     </random>
   </p>
   <!-- 176 -->
-  <!-- 177 -->
+  <p id="177">
+    <text>
+        [p]Ahogy visszatérsz a fogadóba, a legtöbb tengerészt a terem közepén lévő asztalnál látod csoportosulni, ahol még tart a szkanderezők versenye.[/p]
+    </text>
+    <next id="276">Ha te is szeretnél beszállni a versenybe</next>
+    <next id="342">Ha a fogadóssal szeretnél beszélni</next>
+  </p>
   <!-- 178 -->
   <!-- 179 -->
   <p id="180">
@@ -729,7 +821,12 @@
     <next id="337"></next>
   </p>
   <!-- 181 -->
-  <!-- 182 -->
+  <p id="182">
+    <text>
+        [p]Éjszakára menedéket kell találnod, vagy azt kockáztatod meg, hogy a városi őrök letartóztassanak. Kai érzékeid azt súgják, hogy a legjobb, amit tehetsz, hogy visszatérsz a fogadóba, és éjszakai szállást kérsz. Egy kellemes éjszakai alvás majd felfrissít, és aztán reggel majd készíthetsz terveket arra vonatkozóan, miképpen juss el Durenorba.[/p]
+    </text>
+    <next id="177"></next>
+  </p>
   <!-- 183 -->
   <p id="184">
     <text>
@@ -741,7 +838,21 @@
     <next id="240"></next>
   </p>
   <!-- 185 -->
-  <!-- 186 -->
+  <p id="186">
+    <text>
+        [p]Egy nagy épület előtt állsz, melyen az alábbi kiírás díszeleg:[/p]
+        [p class="centered"]RAGADORNI ISTÁLLÓK ÉS POSTAÁLLOMÁS[/p]
+        [p]Ez zöld ruhát viselő kocsis ül egy hirdetőtábla mellett, melyen az alábbi szöveg szerepel: ,,Port Bax felé – utazási idő 7 nap''.[/p]
+    </text>
+    <itemCheck type="money" id="goldCrowns" amount="1">
+      <have>
+        <next id="136"></next>
+      </have>
+      <dontHave>
+        <next id="238"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 187 -->
   <p id="188">
     <text>
@@ -758,7 +869,14 @@
     <death />
   </p>
   <!-- 191 -->
-  <!-- 192 -->
+  <p id="192">
+    <text>
+        [p]A részeg matrózok elragadtatással ordítoznak, miközben érmék cserélnek gazdát a fogadás után. Észreveszed, amint ellenfeled odakacsint két csatlósának, azok pedig feléd közelednek. Habozás nélkül felállsz az asztaltól, és olyan keményen ütsz ellenfeled arcába, hogy hátraesik, és nekiütközik két csatlósának. Ott hagyod őket heverni a padlón egy kupacban.[/p]
+        [p]Ahogy eléred a fogadó ajtaját, egy csúnya tengerész előhúzza a kardját, és elállja az utadat. Még mielőtt bármit is tehetne ellened, hangos puffanással térdre esik. Mögötte – némi meglepetésre – a kiszolgáló lány áll, aki kezében egy bunkósbotot tart, és rád mosolyog. Megköszönöd neki tettét, majd rákacsintasz, miközben teljes sebességgel kirohansz az ajtón, és egyenesen a sötét utcák felé veszed az irányt.[/p]
+        [p]Hosszú pecekig rohansz a vak sötétben, mígnem egy istállót és egy postakocsi állomást pillantasz meg a sötétben, épp veled szemben. A dühös tengerészek kiáltása még mindig a füledben cseng, és úgy gondolod, a szénapadláson elrejtőzve nyugalomban eltölthetsz egy éjszakát.[/p]
+    </text>
+    <next id="32"></next>
+  </p>
   <!-- 193 -->
   <p id="194">
     <text>
@@ -801,7 +919,13 @@
     </random>
   </p>
   <!-- 198 -->
-  <!-- 199 -->
+  <p id="199">
+    <text>
+        [p]A fogadós elteszi az erszényébe az érmét, majd ennyit mond gúnyos hangon: - Te is odatalálsz, ha az egyik lábadat a másik elé helyezed, úgy, mint én! - Ezzel odasétál a pult mögé, majd eltűnik a konyhában. Megátkozod a csalót, és megállás nélkül elhagyod a fogadót. Mérgedben, még a piszkos vízzel teli vödröt is felrúgod.[/p]
+    </text>
+    <add amount="-1" to="money.goldCrowns" />
+    <next id="143"></next>
+  </p>
   <!-- 200 -->
   <p id="201">
     <text>
@@ -864,7 +988,23 @@
     <next id="83">Ha folytatnád megkezdett utad a Csípővas utcán</next>
   </p>
   <!-- 216 -->
-  <!-- 217 -->
+  <p id="217">
+    <text>
+        [p]A nagydarab férfi rád néz és cinikus hangon így szól hozzád: - Postakocsi állomás? Ma délután egy járat indul Port Bax városába. Egy Aranykoronáért elmondom, hogyan juthatsz el oda.[/p]
+    </text>
+    <itemCheck type="money" id="goldCrowns" amount="1">
+      <have>
+        <next id="199">Ha kifizeted a fogadósnak a kért összeget</next>
+        <next id="143">Ha inkább azonnal elhagyod a fogadót</next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Miután nincs elég pénzed, úgy döntesz, hogy elhagyod a fogadót.[/p]
+        </text>
+        <next id="143"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 218 -->
   <p id="219">
     <text>
@@ -926,7 +1066,23 @@
   </p>
   <!-- 229 -->
   <!-- 230 -->
-  <!-- 231 -->
+  <p id="231">
+    <text>
+        [p]A hátsó ajtó egy kis térre vezet, melynek közepén egy síremlék áll. A halászok már valamennyien eltűntek a sötét utcán, egyiküket kivéve, aki megcsúszott a nedves macskaköveken, és most ájultan fekszik a csatornában arccal a pocsolyában heverve.[/p]
+        [p]Lábaddal megfordítod és átkutatod a zsebeit. Találsz nála [span class="takeItem" data-id="gold" data-amount="5"]öt Aranykoronát[/span], egy [span class="takeItem" data-id="10008" data-amount="1"]Tőrt[/span] és nagy megkönnyebbülésedre az ujján ott van [span class="takeItem" data-id="40008" data-amount="1"]Hammerdal Pecsétje[/span] is.[/p]
+    </text>
+    <itemCheck type="kai" id="tracking">
+      <have>
+        <next id="182"></next>
+      </have>
+      <dontHave>
+        <next id="177">Ha visszatérsz a fogadóba</next>
+        <next id="24">Ha megvizsgálnád a síremléket</next>
+        <next id="253">Ha elindulsz nyugat felé a sírkő utcán</next>
+        <next id="319">Ha kelet felé mennél az Őrtorony utcán</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 232 -->
   <p id="233">
     <text>
@@ -1024,7 +1180,13 @@
     <next id="194"></next>
   </p>
   <!-- 252 -->
-  <!-- 253 -->
+  <p id="253">
+    <text>
+        [p]Az utca párhuzamosan halad a kikötői fallal, amely egyenesen a Dorn folyóig vezet. A Préda utca vezet déli irányban tovább. Ahogy elhaladsz a kikötői raktárak sora mellett, eljutsz a már ismert térre, melynek közepén ott a kőtábla.[/p]
+    </text>
+    <next id="303">Ha továbbra is délnek haladnál</next>
+    <next id="177">Ha szeretnél visszatérni a fogadóba</next>
+  </p>
   <!-- 254 -->
   <p id="255">
     <text>
@@ -1088,7 +1250,32 @@
   </p>
   <!-- 274 -->
   <!-- 275 -->
-  <!-- 276 -->
+  <p id="276">
+    <text>
+        [p]Egy marcona képű tengerész kihívást intéz minden jelentkezőhöz, aki részt kíván venni a szkander versenyen. Annyira magabiztos a győzelmében, hogy 5 Aranykoronát fizet annak, aki le tudja győzni őt. Ahogy a kiszolgáló lány az asztalhoz közeledik, ezt suttogja a füledbe: 
+        [p]- Légy óvatos idegen, ő egy gonosz ember! Eltöri azok karját, akik vesztenek ellene, és megöli azokat, akik legyőzik őt.[/p]
+        [p]Ahogy elhelyezkedsz ellenfeleddel szemben az asztalnál, a kocsma vendégei fogadásokat kötnek a verseny kimenetelére.[/p]
+    </text>
+    <itemCheck type="kai" id="mindblast">
+      <have>
+        <next id="14"></next>
+      </have>
+      <dontHave>
+        <text>
+            [p]Kemény viadalnak nézel elébe. Küzdj meg a tengerésszel úgy, mintha szabályos csatát vívnál! Ha valamelyikőtök SZÍVÓSSÁG pontja eléri a nullát, az a fél vesztett.[/p]
+        </text>
+        <fight>
+          <enemy id="6" />
+          <win>
+            <next id="305"></next>
+          </win>
+          <lose>
+            <next id="192"></next>
+          </lose>
+        </fight>
+      </dontHave>
+    </itemCheck>
+  </p>
   <!-- 277 -->
   <p id="278">
     <text>
@@ -1150,7 +1337,24 @@
   <!-- 295 -->
   <!-- 296 -->
   <!-- 297 -->
-  <!-- 298 -->
+  <p id="298">
+    <text>
+        [p]Szapora lépteket hallasz közeledni közvetlenül mögötted, és épp időben fordulsz meg ahhoz, hogy megpillantsd három ellenfeledet, amint kivont tőrökkel épp téged készülnek megtámadni. Egyesével küzdj meg velük![/p]
+        [p]A híd felé futva bármikor elmenekülhetsz.[/p]
+    </text>
+    <fight>
+      <enemy id="7" />
+      <enemy id="8" />
+      <enemy id="9" />
+      <fleeing />
+      <flee>
+        <next id="121"></next>
+      </flee>
+      <win>
+        <next id="301"></next>
+      </win>
+    </fight>
+  </p>
   <!-- 299 -->
   <p id="300">
     <text>
@@ -1178,11 +1382,29 @@
       </result>
     </random>
   </p>
-  <!-- 301 -->
+  <p id="301">
+    <text>
+        [p]Átkutatod a holttesteket és találsz [span class="takeItem" data-id="gold" data-amount="3"]3 Aranykoronát[/span], [span class="takeItem" data-id="10008" data-amount="3"]3 Tőrt[/span] és egy [span class="takeItem" data-id="10007" data-amount="1"]Rövid kardot[/span].[/p]
+    </text>
+    <next id="20"></next>
+  </p>
   <!-- 302 -->
-  <!-- 303 -->
+  <p id="303">
+    <text>
+        [p]Rothadó szeméthalmok összevisszasága borítja a vízpart e szakaszát, amely olyan kellemetlen szagot áraszt, hogy a köpenyeddel kell eltakarnod az orrodat és a szádat. Egyenesen balra, a szélben lobogó fáklya fényében egy nyitott ajtót veszel észre. Az ajtó felett egy cégtábla lóg.[/p]
+        [p class="inlineImage" data-img="303"][/p]
+    </text>
+    <next id="173">Ha belépsz a kereskedelmi állomás épületébe</next>
+    <next id="18">Ha folytatod utad délnek az utcán</next>
+  </p>
   <!-- 304 -->
-  <!-- 305 -->
+  <p id="305">
+    <text>
+        [p]Döbbent csend támad, ahogy besöpröd a [span class="takeItem" data-id="gold" data-amount="5"]nyereményed[/span] az asztalról, és éppen távozni készülsz, amikor a fogadó ajtajában egy csúnya tengerész kivont karddal a kezében elállja az utad. Kíváncsian figyeled, mit akar tenni, amikor ellenfeled egy hangos puffanással térdre esik. Mögötte - némi meglepetésre - a kiszolgáló lány áll, aki kezében egy bunkósbotot tart, és rád mosolyog. Megköszönöd neki tettét, majd rákacsintasz, miközben teljes sebességgel kirohansz az ajtón, és egyenesen a sötét utcák felé veszed az irányt.[/p]
+        [p]Hosszú pecekig rohansz a vak sötétben, mígnem egy istállót és egy postakocsi állomást pillantasz meg a sötétben, épp veled szemben. A dühös tengerészek kiáltása még mindig a füledben cseng, és úgy gondolod, a szénapadláson elrejtőzve nyugalomban eltölthetsz egy éjszakát.[/p]
+    </text>
+    <next id="32"></next>
+  </p>
   <!-- 306 -->
   <!-- 307 -->
   <p id="308">
@@ -1223,7 +1445,14 @@
     </itemCheck>
   </p>
   <!-- 309 -->
-  <!-- 310 -->
+  <p id="310">
+    <text>
+        [p]Hamarosan eléred az Ökörfogat utca végét, amelyet egy másik utca keresztez észak-déli irányban. Most már olyan sötét van, hogy az utcatáblákat sem tudod elolvasni. Éjszakára szállást kell találnod. Jobbra fényt látsz, az egyik cégtábla felett.[/p]
+        [p class="centered"]Ragadorni istállók és postakocsi állomás.[/p]
+        [p]Az éj leple alatt beosonsz az oldalsó bejáraton, és az éjszakát biztonságosan töltöd a szénapadláson.[/p]
+    </text>
+    <next id="32"></next>
+  </p>
   <!-- 311 -->
   <p id="312">
     <text>
