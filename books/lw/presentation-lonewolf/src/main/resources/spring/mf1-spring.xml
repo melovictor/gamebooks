@@ -8,10 +8,13 @@
     <property name="contents">
       <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="mf1enemies.xml" c:items="mf1items.xml" c:paragraphs="mf1content.xml" />
     </property>
+    <property name="continuationData">
+      <bean class="hu.zagor.gamebooks.domain.ContinuationData" p:currentBookLastSectionId="350" p:nextBookId="990784002" p:nextBookInfo-ref="mf2Info" />
+    </property>
   </bean>
-  
-  
-    <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor" id="mf1Help" p:info-ref="mf1Info">
+
+
+  <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor" id="mf1Help" p:info-ref="mf1Info">
     <property name="sections">
       <util:list>
         <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="lw" p:jsp="intro" />
@@ -26,9 +29,9 @@
       </util:list>
     </property>
     <property name="resourceInformation">
-    <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="lw" />
+      <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="lw" />
     </property>
   </bean>
-  
+
 
 </beans>
