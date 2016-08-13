@@ -17,6 +17,10 @@ public class Weaponskill {
     private boolean broadsword;
     private boolean bow;
 
+    public boolean isSwords() {
+        return sword || broadsword || shortSword;
+    }
+
     public boolean isDagger() {
         return dagger;
     }

@@ -25,6 +25,7 @@ public class LwRuleBookItemTransformer extends AbstractBookItemTransformer<LwIte
         item.setCombatSkill(extractIntegerAttribute(node, "combatSkill", 0));
         item.setPreFight(extractBooleanAttribute(node, "preFight", false));
         item.setMagical(extractBooleanAttribute(node, "magical", false));
+        item.setUndeadMultiplier(extractIntegerAttribute(node, "undeadMultiplier", 1));
         final Integer endurance = extractIntegerAttribute(node, "endurance", 0);
         item.setEndurance(endurance);
         item.setInitialEndurance(endurance);

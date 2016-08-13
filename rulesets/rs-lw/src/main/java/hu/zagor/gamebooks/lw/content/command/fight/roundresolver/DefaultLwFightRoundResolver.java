@@ -94,6 +94,9 @@ public class DefaultLwFightRoundResolver implements LwFightRoundResolver {
             lwDamageResult.setEnemyKilled(false);
             lwDamageResult.setEnemySuffers(0);
         }
+        if (enemy.isUndead()) {
+            lwDamageResult.setEnemySuffers(lwDamageResult.getEnemySuffers() * equippedWeapon.getUndeadMultiplier());
+        }
     }
 
     private void normalDamage(final LwFightCommand command, final boolean fleeing, final ResolvationData resolvationData, final LwDamageResult lwDamageResult) {

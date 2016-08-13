@@ -15,6 +15,7 @@ public class LwItem extends Item {
     private String weaponType;
     private boolean preFight;
     private boolean magical;
+    private int undeadMultiplier;
 
     /**
      * Default constructor for the serializer.
@@ -88,6 +89,14 @@ public class LwItem extends Item {
 
     public void setMagical(final boolean magical) {
         this.magical = magical;
+    }
+
+    public int getUndeadMultiplier() {
+        return undeadMultiplier;
+    }
+
+    public void setUndeadMultiplier(final int undeadMultiplier) {
+        this.undeadMultiplier = undeadMultiplier;
     }
 
 }

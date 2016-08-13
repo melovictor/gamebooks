@@ -14,6 +14,7 @@ public class LwEnemy extends Enemy {
     private boolean mindblast;
     private boolean killableByNormal;
     private int fleeAtEndurance;
+    private boolean undead;
 
     public int getCombatSkill() {
         return combatSkill;
@@ -69,6 +70,14 @@ public class LwEnemy extends Enemy {
 
     public void setFleeAtEndurance(final int fleeAtEndurance) {
         this.fleeAtEndurance = fleeAtEndurance;
+    }
+
+    public boolean isUndead() {
+        return undead;
+    }
+
+    public void setUndead(final boolean undead) {
+        this.undead = undead;
     }
 
 }

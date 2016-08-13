@@ -101,7 +101,28 @@
     <next id="342">Ha a kocsmárossal szeretnél beszélni</next>
     <next id="276">Ha szeretnél néhány arany koronára szert tenni, részt vehetsz a szkanderezésben is</next>
   </p>
-  <!-- 5 -->
+  <p id="5">
+    <text>
+        [p]Az ajtó kivágódik és egy Helghast ront be rajta fekete kardjával a kezében. Ellenfeledet sikerül meglepned egy váratlan kardcsapással, és szörnyű sebet ejtesz a mellkasán. Rettenetes kiáltást hallat, és bár súlyosan megsebesült, egy szökkenéssel máris rád támad. Ez halálig tartó küzdelem lesz.[/p]
+        [p]Ha a Nap Kardjával küzdesz, mivel ellenfeled élőholt teremtmény, a harcban dupla SZÍVÓSSÁG pont veszteséget okozol neki![/p]
+    </text>
+    <itemCheck type="kai" id="mindblast">
+      <have>
+        <text>
+            [p]Ellenfeled immúnis az Elmecsapásra![/p]
+        </text>
+      </have>
+    </itemCheck>
+    <fight>
+      <enemy id="37" />
+      <win>
+        <text>
+            [p]A nyitott ajtón át elhagyod a hajó rakterét.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="166"></next>
+  </p>
   <p id="6">
     <text>
         [p]A fiú észreveszi, hogy követed őt. Egyszer csak elfordul, és déli irányba kezd szaladni. Üldözőbe veszed, de ő csakhamar eltűnik a vízparton sikátorok és raktárházak labirintusában. Keletnek fordulsz az Ökörfogat utcába, és elsétálsz egy a kereskedő állomás másik bejárata mellett. Nem messze tőle egy kis bolt cégtábláját veszed észre, melyen az alábbi szöveg áll:[/p]
@@ -233,7 +254,29 @@
     </text>
     <next id="268"></next>
   </p>
-  <!-- 17 -->
+  <p id="17">
+    <text>
+        [p]Éppen félig sikerült felhúznod magad a korhadt deszkákon, amikor az ajtó hangos csattanással kivágódik. Egy Helghast rohan sikoltozva feléd. Nem tudsz időben elmenekülni előle, és fekete kardjával szörnyű sebet ejt a lábadon. Vesztesz 5 SZÍVÓSSÁG pontot, és visszazuhansz a raktérbe. Halálig tartó küzdelmet kell vívnod pokoli ellenfeleddel.[/p]
+        [p]Ha a Nap Kardjával küzdesz, mivel ellenfeled élőholt teremtmény, a harcban dupla SZÍVÓSSÁG pont veszteséget okozol neki![/p]
+    </text>
+    <add amount="-5" to="endurance" />
+    <itemCheck type="kai" id="mindblast">
+      <have>
+        <text>
+            [p]A Helghast immúnis az Elmecsapásra![/p]
+        </text>
+      </have>
+    </itemCheck>
+    <fight>
+      <enemy id="38" />
+      <win>
+        <text>
+            [p]A nyitott ajtón át elhagyod a hajó rakterét.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="166"></next>
+  </p>
   <p id="18">
     <text>
         [p]Az előtted lévő utcát teljesen elállják a társzekerek, melyekről árut rakodnak egy kereskedő hajóra. Elindulsz kelet felé az ökörfogat utcán. Baloldalt a Ragadorni kereskedő állomás egy másik bejáratát pillantod meg. Azon túl pedig egy kisebb bolt cégtáblát veszed észre egy ajtó felett.[/p]
@@ -365,7 +408,14 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 26 -->
+  <p id="26">
+    <text>
+        [p]Meredten bámulod a feléd sétáló hulla üres szemgödreit. Bár az arca rút és eltorzult, mégis ráismersz Kelman kapitányra. Tulajdonképpen a [em]Zöld Jogar[/em] fedélzetén vagy, amely elsüllyedt 28 nappal ezelőtt a pusztító viharban, és most egy gonosz varázslat hatására ma reggel kiemelkedett sötét síremlékéből, hogy csatlakozzon a kísértet-bárkák armadájához.[/p]
+        [p]A halott kapitány feléd nyújtja törött karját, és túlvilági hangon könyörög, hogy tedd le a Nap Kardját a hajó fedélzetére és ezzel mentsd meg a lelkét az őt mardosó pokoli kínoktól.[/p]
+    </text>
+    <next id="248">Ha leteszed a fegyvered a hajó fedélzetére</next>
+    <next id="66">Ha harcba szállsz a Zombi-kapitánnyal</next>
+  </p>
   <p id="27">
     <text>
         [p]Több mint három óra hosszán át gyalogolsz a magányos tengerparti úton, míg végül elered az eső. Nagyon fáradt vagy, és úgy döntesz, alszol egy keveset, majd csak hajnalban folytatod az utad. A Kai mesterek elbeszéléseiből tudod, hogy a Sommerlund és Durenor között húzódó vadonban éjszakánként falkákba verődve vadkutyák kóborolnak. Ezt szem előtt tartva úgy döntesz, hogy egy - az út szélénél álló - lombos fán töltöd a mai éjszakát viszonylagos biztonságban.[/p]
@@ -391,7 +441,23 @@
     <add amount="-2" to="endurance" />
     <next id="222"></next>
   </p>
-  <!-- 30 -->
+  <p id="30">
+    <text>
+        [p]Elkorhadt hajódeszkákra esel rá, majd hangos reccsenést követve egyenesen a fedélközbe zuhansz. Ép bőrrel úszod meg a kalandot, de a pusztulás nyomasztó bűze eltömíti az orrlyukaidat. Felállsz, és előhúzod a Nap Kardját. Négy kísérteties zombi tántorog elő a homályból, eltorzult kezeikkel a torkod felé kapnak. Kezeld úgy őket, mintha egy ellenféllel harcolnál.[/p]
+        [p]Ha a Nap Kardjával küzdesz, mivel ellenfeleid élőholt teremtmények, a harcban dupla SZÍVÓSSÁG pont veszteséget okozol nekik![/p]
+    </text>
+    <itemCheck type="kai" id="mindblast">
+      <have>
+        <text>
+            [p]Ellenfeleid immúnisak az Elmecsapásra![/p]
+        </text>
+      </have>
+    </itemCheck>
+    <fight>
+      <enemy id="36" />
+    </fight>
+    <next id="258"></next>
+  </p>
   <p id="31">
     <text>
         [p]Első találkozásod a hadnaggyal nem kis meglepetést okoz neked. Úgy képzelted el őt is, mint egy szolgalelkű öregembert, akár a délvidéken szolgáló összes küldöttet a pestissel sújtott királyi udvarban.  Az előtted álló súlyos páncélinget viselő férfi nem aggastyán, és a legkevésbé sem tűnik alázatosnak. Gyorsan rádöbbensz, hogy Rhygar hadnagy kivételes ember. Apja Sommerlund földjén született, az anyja pedig durenori. Közös gyermekük valóságos élő legendának számít itt a kikötővárosban, hisz ő volt, aki egy évtizeddel ezelőtt győzelemre vitte az egyesített seregeket a Kalte felől betörő havasi barbárok ellen. Bölcs a békében, brutális a háborúban, a Nap Kardja akkoriban nem kerülhetett volna méltóbb kardforgató kezekbe.[/p]
@@ -515,7 +581,22 @@
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 40 -->
+  <p id="40">
+    <text>
+        [p]A sereg összegyűjtése és a durenori flotta felkészülése tizennégy napot vesz igénybe, és ez idő alatt, mint a király megbecsült vendége Hammerdalban tartózkodsz. Minden egyes nap elfog a kétségbeesés, amit a Holmgrad városánál harcoló honfitársaid iránt érzel, és imádkozol, hogy legyen erejük kitartani a Sötét Urak támadásával szemben mindaddig, míg vissza nem térsz.[/p]
+        [p]„Száműzetéseid napjai” lassan telnek, ezért minden nap edzel és meditálsz. Meglátogatod Madin Rendalimot is, aki Magnamund szerte elismert gyógyfüves ember. Valamennyi sebed, melyet eddigi utazásod során szereztél most mind begyógyult. Állítsd vissza SZÍVÓSSÁG pontjaidat a kezdeti értékükre! Valamint kapsz tőle még egy erős [span class="takeItem" data-id="30016" data-amount="1"]Laumspur főzetet[/span] is, amelyet ha megiszol, 5 SZÍVÓSSÁG pontot nyersz vissza.[/p]
+        [p]Tőle tudod meg a szomorú hírt is, miszerint Rhygar hadnagyot holtan találták az erdőben; a Tarnalin alagút bejáratához közel. Egy Helghast végzett vele.[/p]
+    </text>
+    <add amount="50" to="endurance" />
+    <itemCheck type="kai" id="sixthSense">
+      <have>
+        <next id="97"></next>
+      </have>
+      <dontHave>
+        <next id="242"></next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="41">
     <text>
         [p]Szerencsés vagy, a hajó utasai észrevették segélykérő jelzésed, és egyenesen feléd tartanak. Ez egy kis halászhajó, mely Ragadorn kikötőjéből futott ki. A halászok valamennyien durva kinézetűek, de kapsz tőlük meleg takarót és némi ételt is. A kapitányuk azt javasolja, hogy aludj egyet, mert az út a kikötőig két vagy három óra hossza is lesz.[/p]
@@ -529,7 +610,12 @@
     </text>
     <next id="168"></next>
   </p>
-  <!-- 43 -->
+  <p id="43">
+    <text>
+        [p]Széles ívben meglendíted a kardodat, és négy zombit azonnal leterítesz, de alighogy holtan zuhannak a hajódeszkára, a többiek máris előrébb nyomulnak. Túl sokan vannak ahhoz, hogy egyszerre elbánj velük. Az egyetlen lehetőséged, hogy elkerüld a biztos halált, ha azonnal a tengerbe veted magad.[/p]
+    </text>
+    <next id="286"></next>
+  </p>
   <p id="44">
     <text>
         [p]A méreg bekerül a vérkeringésedbe. A karod zsibbadni kezd, és verejtékben úszik a homlokod. Az utolsó hang, amit még hallasz életedben az a szelíd hullámverés és egy keselyű rikoltása a magasból.[/p]
@@ -576,7 +662,14 @@
     </text>
     <next id="268"></next>
   </p>
-  <!-- 49 -->
+  <p id="49">
+    <text>
+        [p]Három teljes napja már, hogy a Holm-öböl felé hajóztok. A durenori flotta vitorláját erős szél dagasztja. Bár a tempótok gyors, az utazásotok alatt rengeteg balszerencse éri a hajóhadat. A vitorlák szétszakadnak, a kötelek titokzatos módon eloldódnak, a faanyag megvetemedik, és a hajókba beszivárog a víz. Az emberek egyre ingerlékenyebbé válnak a szűk helyek miatt, és mindennapossá válnak a párbajok, melyek gyakran halállal végződnek. Az utazás harmadik éjszakáján Lord Axim is közel áll a kétségbeeséshez.[/p]
+        [p]- Soha nem szenvedtem ennyit, mint ezalatt a borzasztó utazás alatt. Még nem szálltunk szembe az ellenséggel, de az embereink fele beteg vagy sérült, és elvesztettük két legkiválóbb hajónkat. A gonosz hold van ránk ilyen balszerencsét hozó hatással. Imádkozom, hogy mire megérkezünk Holmgradba, apadjon el gonosz ereje. Tartok tőle, így is túl gyengék leszünk, hogy megtörjük az ostromot.[/p]
+        [p]Miközben elhangoznak ezek a mondatok, a hajnal első fényei lassan megjelennek a horizonton. Úgy gondolod, hogy ez a látvány majd megkönnyebbülést hoz számotokra, de a flottát körülvevő csendes vizek halálos veszélyt rejtegetnek számotokra.[/p]
+    </text>
+    <next id="100"></next>
+  </p>
   <p id="50">
     <text>
         [p]A pap látván szorult anyagi helyzetedet a nevedben egy újabb Aranykoronát helyez a tányérra, így miután megfizettétek a hídvámot, a postakocsi folytathatja megkezdett útját.[/p]
@@ -801,7 +894,23 @@
     </text>
     <next id="32"></next>
   </p>
-  <!-- 66 -->
+  <p id="66">
+    <text>
+        [p]Ahogy felemeled az izzó pengét, a Zombi-kapitány egy gonoszul csillogó tőrt húz elő rongyos kabátjából. A küzdelem halálig fog tartani![/p]
+        [p]Ha a Nap Kardjával küzdesz, mivel ellenfeled élőholt teremtmény, a harcban dupla SZÍVÓSSÁG pont veszteséget okozol neki![/p]
+    </text>
+    <itemCheck type="kai" id="mindblast">
+      <have>
+        <text>
+            [p]Ellenfeled immúnis az Elmecsapásra![/p]
+        </text>
+      </have>
+    </itemCheck>
+    <fight>
+      <enemy id="41" />
+    </fight>
+    <next id="218"></next>
+  </p>
   <p id="67">
     <text>
         [p]Gyorsan arra a következtetésre jutsz, hogy a szélhámos a kocsma főbejáratán át menekült ki innét, tehát még mindig a kikötő területén tartózkodik vagy annak közelében, a főtéren.[/p]
@@ -876,7 +985,16 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 73 -->
+  <p id="73">
+    <text>
+        [p]A mászás igen nehézkes, mert egyik kezedben a Nap Kardjának izzó markolatát tartod. Végül kitartásodnak hála sikerül megkapaszkodnod az árbockosár peremében, majd átlendíteni az egyik lábad a keskeny peremen. Már éppen támadni készülsz, amikor egy vékonyka hang szinte megdermeszt:[/p]
+        [p]- Milyen elragadtatóan ironikus módja ez a halálnak Magányos Farkas![/p]
+        [p]A varázsló éppen veled szemben áll, bal kezét előrenyújtja a fejed irányába.[/p]
+        [p]- Küldetésed kudarcot vallott Magányos Farkas, mert most meghalsz![/p]
+        [p]Vakító narancssárga lángok csapnak ki a kezéből, melyek egyenesen az arcod felé közelítenek.[/p]
+    </text>
+    <next id="336"></next>
+  </p>
   <p id="74">
     <text>
         [p]Ráteszed a kezeidet a mellkasára, és megpróbálod begyógyítani a nyílt sebeit. Sok vért vesztett, és bár erősen izzad, amikor megtapintod a bőrét, azt mégis hidegnek érzed. Szemei hirtelen felnyílnak és egy rövid kiáltást hallat:[/p]
@@ -945,7 +1063,18 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
     <next id="278">Ha szeretnéd a köpenyedet használni, hogy jelezz a halászhajónak</next>
     <next id="337">Ha inkább a part felé eveznél</next>
   </p>
-  <!-- 79 -->
+  <p id="79">
+    <text>
+        [p]Az erő átjárja a testedet, és teljesen eltompítja érzékeidet, így megszűnik számodra a külvilág. Ösztönösen a fejed fölé emeled a pengét, és amint a napsugarak megcsillannak a fegyver hegyén, vakító fehér fény árasztja el a tróntermet. Ebben a pillanatban a kard megmutatta neked valódi erejét.[/p]
+        [p]Ezt a fegyvert jóval azelőtt kovácsolták, mielőtt Sommerlund és Durenor királyságai megalakultak, és Sötét Urak erre a területre merészkedtek volna. A kard az Istenek korában készült, amikor az égiek megteremtették az embert. Az erőt, mely ebben a csodálatos fegyverben rejtőzött, csak egy Kai úr hívhatta elő, aki ügyesen bánik vele. Ha bárki más forgatná a csatában, erejét elvesztené örökre.[/p]
+        [p]Valahányszor, ha meg kell küzdened valamilyen ellenféllel, a Nap Kardjának hála hozzáadhatsz +8-at a HARCI ÜGYESSÉG pontjaidhoz, illetve +10-et, ha rendelkezel a Fegyverforgatás Kai tudományával, ezen belül is, ha Rövid kard, Kard vagy Pallos használatára képeztek ki![/em]  A kard képes elnyelni mindenféle támadó mágiát, amit a fegyver hordozója ellen használnak. Ha élőholt teremtménnyel kerülnél szembe, például egy Helghasttal, akkor az ellenfeled az okozott sebzés dupláját szenvedi el. Ez az egyetlen fegyver Magnamund földjén, mely elpusztíthatja a Sötét Urakat, ezért is tettek meg mindent annak érdekében, hogy ne szerezhesd meg.[/p]
+        [p]Rádöbbensz, hogy immáron te hordozod azt az erőt, mely megmentheti a két királyságban élő embereket. Lassan a fény elhalványul, és arra leszel figyelmes, hogy Lord Axim a kezét a válladra teszi.[/p]
+        [p]- Gyere Magányos Farkas, még sok dolgot el kell intéznünk, mielőtt visszatérnél Sommerlund földjére.[/p]
+        [p]Visszadugod drágakövekkel díszített hüvelyébe frissen szerzett fegyveredet, és az uralkodó személyi testőrével elhagyjátok a király termét.[/p]
+    </text>
+    <gatherItem id="10011" />
+    <next id="40"></next>
+  </p>
   <p id="80">
     <text>
         [p]A lovag visszateszi a kardhüvelyébe fegyverét, és betessékel az őrtoronyba. Kőlépcsőkön haladtok felfelé, végül egy nagy terembe értek, ahol a kandallóból kellemes meleg árad.[/p]
@@ -1336,7 +1465,12 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
     </text>
     <next id="112"></next>
   </p>
-  <!-- 97 -->
+  <p id="97">
+    <text>
+        [p] A szigorú gyakorlati képzéseid a Nap Kardjával újabb pozitív változást eredményezett. Azt tapasztalod, hogy a Hatodik érzéked sokkal erőteljesebbé vált, mint valaha. Már azelőtt pontosan tudtad, mit akart mondani a gyógyfüves ember, mielőtt közölte volna veled a rossz hírt. Úgy gondolod, ez a Kai tudomány előnyt fog biztosítani számodra, miután visszatérsz Holmgradba.[/p]
+    </text>
+    <next id="152"></next>
+  </p>
   <p id="98">
     <text>
         [p]Kai érzékeid azt súgják, az erdőnek ezen a részén nem fogsz járható ösvényre lelni, mindenesetre egyre közelebb jutsz Port Bax városához. Az előtted lévő erdő olyan sűrű, hogy kénytelen leszel hátrahagyni a lovadat itt az őrtorony közelében.[/p]
@@ -1361,7 +1495,18 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
       </result>
     </random>
   </p>
-  <!-- 100 -->
+  <p id="100">
+    <text>
+        [p]Fátyolszerű tengeri köd képződik az óceán vize felett, a távolban a zátonyairól elhíresült Kirlundin-szigetek partvonala tűnik fel. Különös, sötét körvonalakra figyelsz fel szemből, melyeket a fehér lepelként elterülő köd takar el előletek. Az alakok egyre nagyobbak lesznek, és lassanként bárkák körvonalai bontakoznak ki szemeitek előtt.[/p]
+        [p]- Harcra felkészülni! - Az admirális parancsát visszhangszerűen továbbítják a flotta valamennyi hajóján.[/p]
+        [p]- Mindenki a fedélzetre![/p]
+        [p]Ahogy a fekete hajók közelednek felétek a ködben elborzadsz szörnyű látványuktól. Ezek kísértet-bárkák, olyan hajók, melyek itt süllyedtek el, és melyeknek legénységét megfulladt matrózok alkotják. Felbukkanásuk egy hatalmas idéző varázslatnak köszönhető, és úgy tűnik a harc elkerülhetetlen lesz. A köd hirtelen eloszlik, és csak most veszed észre, hogy a hajók elzárták a Holm-öböl felé vezető utat. A bárkaraj közepén egy vészjósló kinézetű zászlóshajó bukkan fel, mely gyorsan közeledik felétek. Egy hatalmas előreálló öklelő rúd áll ki a fekete színű hajóorrból. Nem tudjátok elkerülni, hogy a [em]Durenort[/em], teljes hosszában fel ne hasítsa. Még hallod az admirális kétségbeesett kiáltását:[/p]
+        [p]- Mindenki hagyja el a hajót![/p]
+        [p]Most látod csak igazán, mekkora az ellenséges flotta, de sok időd nincs ezen elmélkedni, mert a hajótok gyorsan süllyed. Mit teszel?[/p]
+    </text>
+    <next id="30">Átugrasz az ellenséges kísértet-bárkára, hogy megtorold hajótok elsüllyesztését</next>
+    <next id="267">Beleveted magad a tengerbe, és egy másik durenori hajóra próbálsz feljutni</next>
+  </p>
   <p id="101">
     <text>
         [p]Ahogy berontasz a kapitány kabinjába, ő meglepetten néz rád a térképasztala mögül.[/p]
@@ -1412,7 +1557,20 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
     <next id="231">Ha szeretnéd folytatni a hajszát</next>
     <next id="177">Ha futni hagyod őket</next>
   </p>
-  <!-- 105 -->
+  <p id="105">
+    <text>
+        [p]Sajnos a kötelet már csaknem kettévágta egy kardcsapás, és valószínű, hogy nem fogja elbírni a testsúlyodat.[/p]
+[/p]
+    </text>
+    <random>
+      <result max="4" min="0">
+        <next id="286"></next>
+      </result>
+      <result max="9" min="5">
+        <next id="120"></next>
+      </result>
+    </random>
+  </p>
   <p id="106">
     <text>
         [p]A fegyvert bár fémből készítették, mégis olyan könnyű, mintha csak fából lenne. A lándzsa nyelén mágikus rúnákat veszel észre. Ahogy óvatosan eltávolítod a fegyver hegyét a férfi mellkasából, hosszú megkönnyebbült sóhajt hallasz. Épp arra készülsz, hogy megvizsgáld a sebet, amikor égető fájdalom hasít az elmédbe. A támadás olyannyira erős és fájdalmas, hogy a földre roskadsz. Vesztesz 2 SZÍVÓSSÁG pontot![/p]
@@ -1479,7 +1637,13 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 109 -->
+  <p id="109">
+    <text>
+        [p]Hunyorogva a szennyezett víztől látod, ahogyan a vezérhajótok pusztulását okozó kísértet-bárka lángokban áll. Fekete füst önti el a fedélzetet, és narancssárga lángnyelvek emésztik el a rothadt hajótestet.[/p]
+        [p]Hirtelen szárnyak surrogását veszed észre közvetlenül a fejed felett. Megdöbbenve tapasztalod, hogy egy Kraan lebeg feletted, és éles, görbe karmaival próbál elkapni téged. Végül sikerül megragadnia a köpenyedet, és mindketten a levegőbe emelkedtek. A repülés rövid ideig tart. Előhúzod a Nap Kardját, és hasba döföd vele. A lény halálrikoltása közepette elereszt téged, és mindketten zuhanni kezdtek. Imádkozol, hogy biztonságban érj földet.[/p]
+    </text>
+    <next id="120"></next>
+  </p>
   <p id="110">
     <text>
         [p]Az őr nem hisz neked, és kardjával rád ront.[/p]
@@ -1511,7 +1675,13 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
     </text>
     <next id="230"></next>
   </p>
-  <!-- 113 -->
+  <p id="113">
+    <text>
+        [p]Azonnal rádöbbensz, hogy ő Vonotar, az áruló, a Torani Mágusok Céhének renegátja, a fekete mágia mestere. Hatalmas varázserővel rendelkezik, melyet a Sötét Urak biztosítottak számára. Ő volt az a titokzatos ügynök, aki mindent megtett, hogy elpusztítson utazásod közben, és biztosan ő keltette életre a halálos kísértet-bárka flottát. Ha sikerülne elpusztítanod az árulót, mágiája és az általa életre keltett gonosz erők gyorsan megsemmisülnének.[/p]
+    </text>
+    <next id="73">Ha felkapaszkodsz az árbocon, és megküzdesz a mágussal</next>
+    <next id="267">Ha nem akarod kockáztatni az életed, és inkább a tengerbe ugranál</next>
+  </p>
   <p id="114">
     <text>
         [p]Több mint három óra hosszán át sétálsz a magányos tengerparti úton, míg végül beköszönt az éjszaka. A föld lapos, és kopár; életnek semmi jelét nem látod. Végül úgy döntesz, lefekszel pihenni egy terebélyes fa alá közel az országúthoz. Hátizsákod a fejed alá teszed, magadra teríted Kai köpenyedet, és mély álomba merülsz.[/p]
@@ -1632,7 +1802,15 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
     </text>
     <next id="240"></next>
   </p>
-  <!-- 120 -->
+  <p id="120">
+    <text>
+        [p]A szerencse ezúttal veled van, mert biztonságosan landolsz a [em]Kalkarm[/em], nevű durenori hajó fedélzetén. Az itt tartózkodó katonák is kitartóan harcoltak a reménytelennek látszó csatában, visszaszorították az ellenséget, elvágták a kísértet-bárkákról átdobott csáklyákat. A hajót ellepő füstből egy hosszú léptekkel haladó alak bontakozik ki. Lord Axim az, akinek az arca véres, és a pajzsa csúnyán behorpadt.[/p]
+        [p]- Hála az égieknek, hogy életben látlak Magányos Farkas! Keserű küzdelem volt ez, és a veszteségeink nagyok, de bizakodással tölt el, hogy újra magam előtt láthatlak – mondja, és a hajó korlátjához vezet. - Nézd ott oldalt a zászlóshajójuk már lángokban áll![/p]
+        [p]Az óriási füstködön át láthatod, ahogy a hatalmas kísértet-bárka lassan süllyedni kezd, és sűrű fekete füstfelhő száll fel onnét. A [em]Kalkarm[/em] végül is felszabadul, és lassú manőverekkel sikerül elkerülnötök a süllyedő roncshajókat. A szél újra feltámad, belekap a cafatokban lógó vitorlákba, és elfújja a háború füstködét. Lord Axim elrendeli, hogy húzzák fel a Durenor királyságát jelképező címeres lobogót a hajó árbocára, mert mostantól ez lesz a flotta zászlóshajója. Végre megpillanthatod a csata után megmaradt durenori hajókat, és láthatod, amint valamennyi kísértet-bárka visszatér a hullámsírba.[/p]
+        [p]- A varázslat megtört, megnyertük ezt a csatát! – kiáltja Lord Axim. Néhány perc elteltével az utolsó ellenséges hajó is eltűnik a tenger felszínéről.[/p]
+    </text>
+    <next id="225"></next>
+  </p>
   <p id="121">
     <text>
         [p]Ahogy végigrohantok az Őrség utcán, eléred a Dorn folyó partját, mely a keleti és a nyugati városrészt választja el egymástól. Tőled balra ott áll a Ragadorni rozsdás vashíd, mely a kikötőváros egyetlen vízi átkelője. Az utcai tolvajok kiáltása visszhangzik a füledben, ezért gyorsan beleveted magad az itt átkelő tömegbe. Szerencsére üldözőid hamar feladják kirablásoddal kapcsolatos terveiket, így háborítatlanul folytathatod utad a szeméttel borított keleti kereskedelmi utcán.[/p]
@@ -1659,7 +1837,15 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 123 -->
+  <p id="123">
+    <text>
+        [p]Különös erő járja át a testedet. Ösztönösen a fejed fölé emeled a pengét, Amint a napsugarak megcsillannak a fegyver hegyén, vakító fehér fény árasztja el a tróntermet, ami szinte azonnal halványodni kezd. Arra leszel figyelmes, hogy Lord Axim a kezét a válladra teszi.[/p]
+        [p]- Gyere Magányos Farkas, még sok dolgot el kell intéznünk, mielőtt visszatérnél Sommerlund földjére.[/p]
+        [p]Visszadugod drágakövekkel díszített hüvelyébe frissen szerzett fegyveredet, és az uralkodó személyi testőrével elhagyjátok a király termét.[/p]
+    </text>
+    <gatherItem id="10011" />
+    <next id="40"></next>
+  </p>
   <p id="124">
     <text>
         [p]Gyorsan átvizsgálod a zsoldos nő ruháit, de semmiféle bizonyítékot nem találsz arra vonatkozóan, hogy ő akart volna az életedre törni. Mindazonáltal [span class="takeItem" data-id="gold" data-amount="42"]42 Aranykoronát[/span], egy [span class="takeItem" data-id="10007" data-amount="1"]Rövid kardot[/span] és egy [span class="takeItem" data-id="10008" data-amount="1"]Tőrt[/span] találsz nála, melyek közül bármelyiket magadhoz veheted.[/p]
@@ -1689,7 +1875,23 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
     <next id="217">Ha akarod, megkérdezheted tőle, hogyan tudnál gyorsan továbbhaladni Durenor felé</next>
     <next id="143">Elhagyod a fogadót anélkül, hogy beszélnél vele</next>
   </p>
-  <!-- 128 -->
+  <p id="128">
+    <text>
+        [p]Aranyszínű fénnyel izzik fel a Nap Kardja, ahogy azt a fejed fölé emeled, és az ellenségre rontasz. Máris hat zombi vesz körül, akiket kezelj úgy, mintha ez ellenféllel küzdenél.[/p]
+        [p]Ha a Nap Kardjával küzdesz, mivel ellenfeleid élőholt teremtmények, a harcban dupla SZÍVÓSSÁG pont veszteséget okozol nekik![/p]
+    </text>
+    <itemCheck type="kai" id="mindblast">
+      <have>
+        <text>
+            [p]Ellenfeleid immúnisak az Elmecsapásra![/p]
+        </text>
+      </have>
+    </itemCheck>
+    <fight>
+      <enemy id="39" />
+    </fight>
+    <next id="237"></next>
+  </p>
   <p id="129">
     <text>
         [p]Elhaladsz számos kis raktár mellett a vízparton, majd eléred a kikötői falat. Az út élesen jobbra kanyarodik, a Sírkő utcán haladhatsz tovább. Az utca közepén négy felfegyverzett menetelő városi őrt látsz. Ahelyett, hogy bevárnád őket, és esetleg letartóztatnának téged, elbújsz egy sikátorban a jobb oldalon. Az őrök hirtelen megállnak szemben a sikátor bejáratával. Az egyikük oldalra fordítja a fejét, szinte biztos vagy benne, hogy észrevettek. Hátul egy zsúfolt kocsma kis ablaka nyílik. Néhány másodpercnyi tétovázás után a lehető leggyorsabban átmászol az ablakon.[/p]
@@ -1947,7 +2149,25 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
       </result>
     </random>
   </p>
-  <!-- 152 -->
+  <p id="152">
+    <text>
+        [p]Kora reggel, küldetésed megkezdésének harmincharmadik napján Lord Aximmal az oldaladon belovagolsz Port Bax kikötőjébe.[/p]
+        [p]A háborús előkészületek befejeződtek. A durenori hadigályák a kikötőben horgonyoznak, csak arra várnak, hogy útnak indulhassanak Sommerlund felé. Minden hajó fedélzetén sok bátor katona nyüzsög, valamennyien képzett harcosok, akik alig várják, hogy szembenézhessenek a Sötét Urak haderejével. Mindegyikük megesküdött arra, hogy megbosszulja az ostromban elesett szövetségesek halálát, vagy ők is hősi halált halnak.[/p]
+        [p]Te a [em]Durenor[/em] nevű parancsnoki hajón fogsz vitorlázni visszafelé Holmgradba. Ennek a hadihajónak nagy hegyes orra van, és magas árbocai, melyek hatalmat és erőt sugároznak. Lord Axim és te felszálltok a fedélzetre, ahol Calfen admirális, a flotta parancsnoka üdvözöl titeket. Néhány perc elteltével az össze hajó elhagyja a kikötőt.[/p]
+        [p]Egy óra elteltével a Port Bax kupolái már csak apró pontoknak látszanak a horizonton.[/p]
+    </text>
+    <random>
+      <result max="3" min="0">
+        <next id="216"></next>
+      </result>
+      <result max="6" min="4">
+        <next id="49"></next>
+      </result>
+      <result max="9" min="7">
+        <next id="193"></next>
+      </result>
+    </random>
+  </p>
   <p id="153">
     <text>
         [p]Nem törődsz a fiatal zsivány felhívásával, és inkább a kocsma lépcsőjénél lévő kártyajátékosokat figyeled. Észreveszed, hogy az egyikük csal.[/p]
@@ -2095,7 +2315,13 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
     <loseItem id="40008" />
     <next id="186"></next>
   </p>
-  <!-- 166 -->
+  <p id="166">
+    <text>
+        [p]Miután felküzdöd magad a lépcsőkön, az ellenfelektől hemzsegő fedélzeten találod magad. Ádáz harc dúl a hajó körül, a durenori flotta elkeseredetten próbálja visszaverni az ellenséges hajók támadását. Váratlanul egy perzselő tűzgolyó csap ki a kísértet-bárka hátsó fedélzetén lévő árbockosarából, és a tőled alig ötvenméternyire lévő durenori hajó oldalába csapódik. Elborzadva figyeled, ahogy a fedélzeten lévő lángoló öltözékű és égő hajú katonák beleugranak a tengerbe.[/p]
+    </text>
+    <next id="328">Ha felkúszol az árbocon, hogy szembenézz az ott rejtőző ismeretlen veszedelemmel</next>
+    <next id="267">Ha elmenekülsz erről a hajóról, amilyen gyorsan csak tudsz</next>
+  </p>
   <p id="167">
     <text>
         [p]- Merész a stratégiád Magányos Farkas, de azt hiszem, most elcsíptelek. - Kelman kapitány diadalmas mosollyal az arcán elmozdítja a zárókövét a te térfeledre. Vidámsága hamarosan elenyészik váratlan lépésed láttán.[/p]
@@ -2294,7 +2520,26 @@ Sikerül ellopakodnod a kocsi közelében álló őr mellett, és beszállnod, a
     </text>
     <next id="240"></next>
   </p>
-  <!-- 185 -->
+  <p id="185">
+    <text>
+        [p]Ahogy átvágsz a holtestekkel borított bárka fedélzetén, két Drakkar bukkan fel az egyik ajtónyílásnál, és meglepetésszerűen rád támadnak. Egyesével küzdj meg velük![/p]
+        [p]Ha el szeretnéd kerülni a harcot, bármely fordulóban megteheted oly módon, hogy a tengerbe veted magad.[/p]
+    </text>
+    <fight>
+      <enemy id="42" />
+      <enemy id="43" />
+      <fleeing />
+      <flee>
+        <next id="286"></next>
+      </flee>
+      <win>
+        <text>
+            [p]Most már sikeresen át tudsz ugrani a közelben haladó durenori hadihajó fedélzetére.[/p]
+        </text>
+        <next id="120"></next>
+      </win>
+    </fight>
+  </p>
   <p id="186">
     <text>
         [p]Egy nagy épület előtt állsz, melyen az alábbi kiírás díszeleg:[/p]
@@ -2362,7 +2607,14 @@ Sikerül ellopakodnod a kocsi közelében álló őr mellett, és beszállnod, a
     </text>
     <next id="32"></next>
   </p>
-  <!-- 193 -->
+  <p id="193">
+    <text>
+        [p]Az utazásotokat Sommerlundba baljós előjelek kísérik. Koromfekete felhők gyülekeznek a horizonton, és a heves szél könyörtelenül korbácsolja a tenger vad hullámait. Éjjel hatalmas villám hasít bele a sötétségbe borzalmas mennydörgés kíséretében. Iszonytató hangja megremegteti a parancsnoki hajó deszkáit. Számos katona a hajóhad fedélzetén a hegyekben él, és még nem szokott hozzá a tengeri utazáshoz. A harmadik napon nagy részük olyan beteg lesz, hogy képtelen lábra állni. Lord Axim is közel áll a kétségbeeséshez.[/p]
+        [p]- Azért imádkozom, hogy a vihar minél előbb érjen véget. Még ha a flotta meg is érkezik Holmgradba, félek, katonáink túl gyengék lesznek ahhoz, hogy legyűrjék az ellenséget.[/p]
+        [p]Aztán a következő nap hajnalán, mintha csak válasz lenne az imára, a vihar elcsitul. De a tenger nyugodt hullámai újabb halálos veszedelmet tartogatnak számotokra.[/p]
+    </text>
+    <next id="100"></next>
+  </p>
   <p id="194">
     <text>
         [p]Amikor magadhoz térsz, megdöbbenve tapasztalod, hogy egy fa alatt fekszel a móló sekély vizében. Orrlyukaidat ocsmány bűz tölti ki. Ahogy felállsz, a fejed erősen lüktetni kezd, mintha leütöttek volna. Pontosan ez történt! A hátizsákod, az összes pénzed, fegyveredet, és minden speciális felszerelésed (beleértve Hammerdal Pecsétjét is) ellopták a halászok.[/p]
@@ -2490,7 +2742,13 @@ Sikerül ellopakodnod a kocsi közelében álló őr mellett, és beszállnod, a
     </text>
     <next id="268"></next>
   </p>
-  <!-- 204 -->
+  <p id="204">
+    <text>
+        [p]Kai érzékeidnek hála, felismered a varázspálca végén lévő jeleket. A félhold és a kristálycsillag a Torani Mágusok Céhnek azonosítója Észak Sommerlund vidékein. Ez az ember elárulta a céhét, és minden valószínűség szerint ő a felelős a kísértethajók támadásáért is.[/p]
+    </text>
+    <next id="73">Ha felkapaszkodsz az árbocon, és megküzdesz a mágussal</next>
+    <next id="267">Ha nem akarod kockáztatni az életed, és inkább a tengerbe ugranál</next>
+  </p>
   <p id="205a" display="205">
     <text>
         [p]Mélyen alszol, zavartalanul telik el az éjszakád. Hajnalban összeszedet a felszerelésedet, és csatlakozol a többiekhez.[/p]
@@ -2603,7 +2861,14 @@ Sikerül ellopakodnod a kocsi közelében álló őr mellett, és beszállnod, a
     <next id="4">Ha be akarsz ide menni</next>
     <next id="83">Ha folytatnád megkezdett utad a Csípővas utcán</next>
   </p>
-  <!-- 216 -->
+  <p id="216">
+    <text>
+        [p]Három teljes napja már, hogy a Holm-öböl felé hajóztok. A durenori flotta vitorláját erős szél dagasztja. Bár a tempótok gyors, a katonák magabiztossága és harci kedve egyre halványodni látszik; olyan mintha egy láthatatlan vámpír kiszipolyozná. Lord Axim is közel áll a kétségbeeséshez.[/p]
+        [p]- Ez a sötét hangulat, mely a fedélzeten uralkodik bizonyára a Sötét Urak műve. Tudom, hogy nekik meg van hozzá az erejük, hogy az emberek elméjére hatást gyakoroljanak, de ez az átok, ami velünk történik, egy olyan varázslat, ami ellen nem tudunk mit tenni, mindannyiunkat megsemmisít. Azért imádkozom, hogy ez a gonosz mágia minél hamarabb megszűnjön, mert még ha megérkezünk küldetésünk célállomásához, félek, túl gyengék leszünk, hogy megállítsuk az ellenséget.[/p]
+        [p]Mintha csak válasz lenne az imára, a következő hajnalon a fekete átok eloszlik a flotta körül, de most valami sokkal halálosabb veszéllyel kell szembenéznetek.[/p]
+    </text>
+    <next id="100"></next>
+  </p>
   <p id="217">
     <text>
         [p]A nagydarab férfi rád néz és cinikus hangon így szól hozzád: - Postakocsi állomás? Ma délután egy járat indul Port Bax városába. Egy Aranykoronáért elmondom, hogyan juthatsz el oda.[/p]
@@ -2621,7 +2886,13 @@ Sikerül ellopakodnod a kocsi közelében álló őr mellett, és beszállnod, a
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 218 -->
+  <p id="218">
+    <text>
+        [p]Amint végeztél az élőholt kapitánnyal, további hátborzongató arcú élőholt tengerészek közelednek feléd bosszúszomjasan. Hamar bekerítenek. Legalább húszan vannak, és mindannyian rövid karddal valamint baltával vannak felfegyverkezve.[/p]
+    </text>
+    <next id="43">Ha tovább harcolsz</next>
+    <next id="105">Ha megkísérled elkerülni a harcot, oly módon, hogy megragadsz egy kötelet a közeledben, és átlendülsz a közelben várakozó durenori hadihajóra</next>
+  </p>
   <p id="219">
     <text>
         [p]A méreg lassan elkezdi kifejteni a hatását. A sebesült karodat merevnek és hidegnek érzed, és a homlokod verejtékezni kezd. Gyorsan leakasztod a nyakadból a függőt, melyet Banedon adott neked Raumas romjainál. A kristály hegyes végével V alakú vágást ejtesz a karodon, ott ahol a kígyó megmart, és kiszívod a mérget. A medál valóban szerencsét hozott neked, mert így megmenekültél a gyötrelmes haláltól. Vesztesz 3 SZÍVÓSSÁG pontot! Úgy döntesz, az éjszaka hátralévő részét a fa ágain töltöd.[/p]
@@ -2672,7 +2943,15 @@ Sikerül ellopakodnod a kocsi közelében álló őr mellett, és beszállnod, a
     <next id="146">Ha a fedélzeten maradsz, és felkészülten várod a támadást </next>
     <next id="34">Ha szeretnél visszamenni a kabinodba </next>
   </p>
-  <!-- 225 -->
+  <p id="225">
+    <text>
+        [p]Hetven hadihajó hagyta el Port Bax kikötőjét, de közülük csak ötven hajózik be most a Holm-öbölbe. Az ütközet számos bátor ember életét követelte, beleértve Calfen Admirálisét, aki életét vesztette a [em]Durenor[/em] nevű parancsnoki hajón, amikor az elsüllyedt. Annak ellenére, hogy súlyosak voltak a veszteségeitek, nagy győzelmet arattatok a tengeren. Ez a siker lelkesíti a durenori katonákat, új erőt kölcsönöz nekik, melynek segítségével elfeledhetik az út megpróbáltatásait. Az optimizmusuk és az eltökéltségük visszatért, mindannyian türelmetlenül várják, hogy elérjétek Holmgrad városát, és megkezdődjék az ostrom.[/p]
+        [p]Küldetésed harminchetedik napjának alkonyán végre megpillanthatod a sommerlundi főváros tornyait a horizonton. A város még mindig dacosan ellenáll a Sötét urak által irányított hadsereg folyamatos ostromának. Sötétben pislákoló kis tüzek égnek az egész fővárosban. A magabiztos Lord Axim csatlakozik hozzád a hajóorrnál, és így szól:[/p]
+        [p]- A holdtalan ég bennünket segít ezen az éjszakán. Láthatatlanul behajózunk a kikötőbe, és a hajnal első sugarainál szétszórjuk valamennyi hitvány ellenfelünket, mint a viharos szél a lehullott faleveleket.[/p]
+        [p]Ahogy behajózol a durenori flotta élén Holmgrad kikötőjébe, előrántod a Nap Kardját, előkészülsz rá, hogy beteljesítsd végzetedet.[/p]
+    </text>
+    <next id="350"></next>
+  </p>
   <p id="226">
     <text>
         [p]A fogadós barátságtalan hangon beszél Ragadorn lakóiról. Megtudod tőle, hogy a kikötővárost Killean fia, Lachlan uralja. Három évvel ezelőtt került hatalomra, mikor az apja a vörös pestis áldozata lett. A fogadós nem beszél magasztosan a kikötőváros uráról, akit egyszerűen csak a „Tolvajok Hercegének” nevez.[/p]
@@ -2820,7 +3099,23 @@ Sikerül ellopakodnod a kocsi közelében álló őr mellett, és beszállnod, a
     </text>
     <next id="222"></next>
   </p>
-  <!-- 237 -->
+  <p id="237">
+    <text>
+        [p]Halott zombik fekszenek a lábaidnál. A katonák félelme az élőholtaktól puszta gyűlöletté válik. Durenori harci kiáltások kórusa visszhangzik végig a fedélzeten.  Te vezeted a támadást a hajó oldalánál, és úgy vágod le ellenfeleidet, mint kasza az érett búzát. Hirtelen egy fekete köpenyes alak állja el az utad, aki egy elgörbült kardot tart összeaszott kezében. Egy Helghasttal kerültél szembe, akivel halálig tartó harcot kell vívnod.[/p]
+        [p]Ha a Nap Kardjával küzdesz, mivel ellenfeled élőholt teremtmény, a harcban dupla SZÍVÓSSÁG pont veszteséget okozol neki![/p]
+    </text>
+    <itemCheck type="kai" id="mindblast">
+      <have>
+        <text>
+            [p]Ellenfeleid immúnisak az Elmecsapásra![/p]
+        </text>
+      </have>
+    </itemCheck>
+    <fight>
+      <enemy id="40" />
+    </fight>
+    <next id="309"></next>
+  </p>
   <p id="238">
     <text>
         [p]Szemben a postakocsi állomással egy keskeny utcán haladsz tovább, ahol rátalálsz egy házra, mely a szerencsejátékosok cégérét viseli. Talán itt szert tehetnél némi pénzre.[/p]
@@ -3270,7 +3565,13 @@ Előrántja görbe tőrét, és rád támad. A tömeg kört formál körülötte
     </fight>
     <next id="21"></next>
   </p>
-  <!-- 242 -->
+  <p id="242">
+    <text>
+        [p]A Nap Kardjával végzett szigorú gyakorlati képzések hamarosan eredményre vezetnek. Napról napra ismered ki a fegyver csodálatos tulajdonságait, így a kényszerűségből itt eltöltött napok alatt sokat javul kardvívó készséged.[/p]
+        [p]Valahányszor, ha meg kell küzdened valamilyen ellenféllel, a Nap Kardjának hála hozzáadhatsz + 8-at a HARCI ÜGYESSÉG pontjaidhoz, illetve +10-et, ha rendelkezel a Fegyverforgatás Kai tudományával, ezen belül is, ha Rövid kard, Kard vagy Pallos használatára képeztek ki! A kard képes elnyelni mindenféle támadó mágiát, amit a fegyver hordozója ellen használnak, és ha élőholt teremtménnyel kerülnél szembe, például egy Helghasttal, akkor az ellenfeled az okozott sebzés dupláját szenvedi el. Ez az egyetlen fegyver Magnamund földjén, mely elpusztíthatja a Sötét Urakat, ezért is tettek meg mindent annak érdekében, hogy ne szerezhesd meg.[/p]
+    </text>
+    <next id="152"></next>
+  </p>
   <p id="243">
     <text>
         [p]Látva, hogy urukat legyőzték, a Giakok támadása megtörik, és a hajó hátsó része felé vonulnak vissza. Kelman kapitány életben maradt emberei élére állva megrohamozza a vicsorgó teremtményeket, akik inkább belevetik magukat a tengerbe, elkerülve a kardáradatot. Felismerve, hogy a csata elveszett a Kraanok elhagyják az árbocrudat, és visszarepülnek a távoli partvidék felé.[/p]
@@ -3337,7 +3638,13 @@ Előrántja görbe tőrét, és rád támad. A tömeg kört formál körülötte
     </text>
     <death />
   </p>
-  <!-- 248 -->
+  <p id="248">
+    <text>
+        [p]Ahogy leteszed az aranyfényű kardot a fedélzet deszkáira, a zombi-kapitány rád ugrik és lefog. Ereje természetellenes. Ahogy egy tőrt döf a torkodba, az utolsó dolog, amit hallasz életedben, az a szadista nevetése.[/p]
+        [p]Kalandod és életed itt véget ér![/p]
+    </text>
+    <death />
+  </p>
   <p id="249">
     <text>
         [p]A délutáni utazás alatt alkalmad nyílik a többi utassal is pár szót váltani, így megismerkedsz velük.[/p]
@@ -3421,7 +3728,21 @@ Előrántja görbe tőrét, és rád támad. A tömeg kört formál körülötte
     <next id="335">Ha észak felé haladsz tovább a Fekete lovag utcán</next>
     <next id="181">Ha kelet felé indulsz, követve a Bölcsek utcáját</next>
   </p>
-  <!-- 258 -->
+  <p id="258">
+    <text>
+        [p]A hajóból áradó fojtogató bűz lassan elviselhetetlenné válik számodra. Vesztesz 1 SZÍVÓSSÁG pontot! Sürgősen el kell hagynod a rakodóteret vagy megfulladsz![/p]
+    </text>
+    <add amount="-1" to="endurance" />
+    <itemCheck type="kai" id="sixthSense">
+      <have>
+        <next id="272"></next>
+      </have>
+      <dontHave>
+        <next id="17">Ha megpróbálsz felmászni a törött deszkákon</next>
+        <next id="5">Ha egy ajtón keresztül távozol innét, mely veled szemközt van</next>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="259">
     <text>
         [p]A szakadó esőben éppen csak ki tudod venni egy feléd közeledő sötét alak sziluettjét, egy városi őr masírozik éppen feléd. Nem kockáztathatod meg, hogy megállítson, esetleg letartóztasson, így berohansz a hozzád legközelebbi üzletbe.[/p]
@@ -3525,7 +3846,13 @@ Előrántja görbe tőrét, és rád támad. A tömeg kört formál körülötte
     </market>
     <next id="32"></next>
   </p>
-  <!-- 267 -->
+  <p id="267">
+    <text>
+        [p]Ahogy a víz felszínére bukkansz, láthatod, hogy milyen vad harc dúl körülötted. A tengert elborítják a holtestek és fuldoklók sokasága. Harminc métert tehettél meg úszva, amikor tülekedésre leszel figyelmes egy hozzád közeli durenori hadihajó korlátjánál. Elkeseredett harc folyik az itteni katonák és a rájuk támadó zombi-legénység között, akik egy hosszúkás kísértet-bárkáról csáklyázzák meg ezt a hajót. Egyre több élőholt teremtménynek sikerül feljutnia a hadihajó fedélzetére, és tartasz tőle, hogy a megrémült katonák nem tudják őket sokáig feltartani.[/p]
+    </text>
+    <next id="128">Ha a bajbajutott bajtársaid segítségére sietsz</next>
+    <next id="309">Ha inkább a kísértet-bárkára kapaszkodnál fel</next>
+  </p>
   <p id="268">
     <text>
         [p]- Te valóban Kai úr vagy! – mondja a tengerész, de a megdöbbenése hamarosan gúnyos mosollyá változik az arcán. – Vagy inkább mondjam úgy, hogy voltál![/p]
@@ -3576,7 +3903,12 @@ Előrántja görbe tőrét, és rád támad. A tömeg kört formál körülötte
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 272 -->
+  <p id="272">
+    <text>
+        [p]Valaki vagy valami közeledik egyenesen felé az ajtó túloldala felől. Ha felkapaszkodnál a deszkákon, védtelen lennél ellenfeled alulról jövő támadásaival szemben, és nincs is más kiút innét. Egy erős és gonosz lény jelenlétét érzed, ezért hát előrántod a Nap Kardját és felkészülsz a harcra.[/p]
+    </text>
+    <next id="5"></next>
+  </p>
   <p id="273">
     <text>
         [p]Éppen lesújtani készülsz a fegyvereddel, amikor a támadód így kiált fel:[/p]
@@ -3727,7 +4059,12 @@ Előrántja görbe tőrét, és rád támad. A tömeg kört formál körülötte
     </text>
     <next id="312"></next>
   </p>
-  <!-- 286 -->
+  <p id="286">
+    <text>
+        [p]Nagy csobbanással érkezel a vízbe, és gyorsan alámerülsz. Így úszol közel egy percig, hogy elkerüld a zuhanó testeket, és a lehulló égő roncsokat. Amikor fel kell jönnöd a felszínre levegőért, egy futó pillantást vetsz a csata alakulására, és a látvány némi bizakodással tölt el.[/p]
+    </text>
+    <next id="109"></next>
+  </p>
   <p id="287">
     <text>
         [p]A kis sárgaréz zárra összpontosítasz. Néhány másodperc múlva, halk kattanást hallasz, így biztos lehetsz abban, hogy a belső retesz nyitva áll. A ládában sommerlundi királyi pecséttel ellátott tekercset találsz, mely bizalmas utasításokat tartalmaz a durenori küldetésedről. Ahogy visszahelyezed a dobozt a rejtekhelyére, azt tapasztalod, hogy egy halálos csapda volt elrejtve a fedelében. A Kai tanok elsajátítása most megmentette az életedet egy mérgezett tű általi gyors haláltól. Becsukod a fiókokat, és gyorsan elrendezed, hogy minden úgy nézzen ki, mint annak előtte, majd csatlakozol a kapitányhoz a fedélzeten.[/p]
@@ -3997,7 +4334,13 @@ Előrántja görbe tőrét, és rád támad. A tömeg kört formál körülötte
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 309 -->
+  <p id="309">
+    <text>
+        [p]Ahogy előre haladsz a fedélzeten, az ocsmány zombik igyekeznek kitérni az arany fénnyel világító kard elől. Valami furcsát veszel észre ezen a kísértet-bárkán. Nem vagy benne egészen biztos, de olyan ismerősnek tűnik. Váratlanul egy túlvilági hang csattan fel mögötted, és a neveden szólít.[/p]
+        [p]Felemeled a Nap Kardját, és megpördülsz, hogy szembenézz a hang tulajdonosával. A látvány, mely a szemed elé tárul halálos rémülettel tölt el.[/p]
+    </text>
+    <next id="26"></next>
+  </p>
   <p id="310">
     <text>
         [p]Hamarosan eléred az Ökörfogat utca végét, amelyet egy másik utca keresztez észak-déli irányban. Most már olyan sötét van, hogy az utcatáblákat sem tudod elolvasni. Éjszakára szállást kell találnod. Jobbra fényt látsz, az egyik cégtábla felett.[/p]
@@ -4219,7 +4562,27 @@ Előrántja görbe tőrét, és rád támad. A tömeg kört formál körülötte
       </dontHave>
     </itemCheck>
   </p>
-  <!-- 328 -->
+  <p id="328">
+    <text>
+        [p]Két zombi próbál az utadba állni, de a fegyvered egyetlen suhintásával kettészeled őket. Az árboc tövénél észreveszed, hogy az árbockosárban egy vörös köpenyt viselő púpos alak tartózkodik. Egy magas, ívelt fejdíszt visel, amely olyan, mintha valamiféle kígyót jelképezne. Jobb kezében egy fekete varázspálcát tart.[/p]
+    </text>
+    <itemCheck type="item" id="50006">
+      <have>
+        <next id="113"></next>
+      </have>
+      <dontHave>
+        <itemCheck type="kai" id="tracking">
+          <have>
+            <next id="204"></next>
+          </have>
+          <dontHave>
+            <next id="73">Ha szeretnél felmászni az árbocon, hogy megküzdj a púpos alakkal</next>
+            <next id="267">Ha szeretnéd elhagyni a hajót, és inkább a tengerbe ugranál</next>
+          </dontHave>
+        </itemCheck>
+      </dontHave>
+    </itemCheck>
+  </p>
   <p id="329">
     <text>
         [p]- Gratulálok Magányos Farkas! Remek játékos vagy! – szól a kapitány, miközben letörli a homlokáról az izzadságot. Benyúl a mellénye zsebébe, és átnyújt neked egy kis erszényt, melyben 10 Aranykorona lapul.[/p]
@@ -4307,7 +4670,14 @@ Előrántja görbe tőrét, és rád támad. A tömeg kört formál körülötte
     <next id="161">Ha bemész a boltba, és megérdeklődöd, hogyan juthatnál el Durenorba</next>
     <next id="61">Ha inkább folytatod megkezdett utad</next>
   </p>
-  <!-- 336 -->
+  <p id="336">
+    <text>
+        [p]A másodperc tört része alatt a perzselő láng irányt változtatva egyenesen a Nap Kardja felé tart, és a varázsfegyver el is nyeli azt, mint csatorna a vizet. A kard varázsereje megvédelmezi tulajdonosát az ártó mágiától. Ez az erő mentette meg most az életed a biztos haláltól![/p]
+        [p]A varázsló megátkoz téged, majd leveszi fejdíszét, és a lábad elé dobja azt. Egy pillanat elteltével apró láng lobban fel belőle, és zöld fojtogató füst kezd gomolyogni az arcod felé. Savas gázok tömítik el az orrlyukaidat, és a szemedet is csípni kezdik. Kénytelen vagy leugrani a hajó fedélzetére, hogy elkerüld a mérgező gázok hatását. Futólag még megpillantod a gonosz varázsló alakját, aki kétségbeesetten evez egy kis csónakban. Igyekszik minél gyorsabban eltávolodni a zászlóshajó közeléből.[/p]
+    </text>
+    <next id="109">Ha beleveted magad a tengerbe, és úszva követed őt</next>
+    <next id="185">Ha inkább átküzdöd magad a bárka elejére, ahol is a közelben egy durenori hajót látsz</next>
+  </p>
   <p id="337">
     <text>
         [p]Még 50 métert teszel meg így a nyílt tengeren, amikor beesel a hullámok közé, és úszni kezdesz a szárazföld felé. Amikor végül partot érsz, mélyen belevájod ujjaidat a nedves homokba, majd lassan elindulsz felfelé a tengerparton, hogy a dűnék között menedékre lelj. Teljesen kimerültél és nagyon éhes vagy. A pénzedet sikerült ugyan megmentened, és speciális tárgyaidat is, megmaradt a hátizsákod de annak teljes tartalma valamint az összes fegyvered odaveszett a viharban. Végül néhány száz méter megtétele után egy rakás kicsavart fát pillantasz meg, melyek tele vannak lila gyümölccsel.[/p]
@@ -4510,5 +4880,15 @@ Előrántja görbe tőrét, és rád támad. A tömeg kört formál körülötte
     </itemCheck>
     <next id="87">Ha rátámadsz a katonákra</next>
     <next id="284">Ha a megadás jeleként felemeled a kezed, és így közelednél feléjük</next>
+  </p>
+  <p id="350">
+    <text>
+        [p]Holmgrad városa sokat szenvedett elindulásod óta. Akkor még több üzlet és ház állt a rakparton, melyek mostanra már alig tűnnek többnek, mint egy nagy kupac hamu. A Sötét Urak hadserege hajítógépeket állított fel a várfalak körül, melyek lángoló ívű tűzlabdákat lőnek ki a levegőbe, és ezek folyamatosan bevilágítják az éjszakai égboltot, majd akár az eső, úgy záporoznak a városra.  Az emberek legjobb tudásuk szerint próbálják elfojtani a tűzvészt, de valamennyien éhesek és kimerültek, közel állnak ahhoz, hogy megadják magukat. Eleinte, amikor behajóztok a kikötőbe, ellenségnek hisznek benneteket, és kétségbeesett kiáltások hangzanak végig az egész rakparton. De amint az első katonák belépnek a városba a durenori Királyi Haderő lobogójával, a hír a megérkezésedről gyorsan elterjed. Kétségbeesett kiáltások helyett most már kórusban zengik: A Kai Úr visszatért![/p]
+        [p]Most éppen a nagy őrtorony tetején állsz, mely a város főkapuja felett magaslik, és figyeled, ahogy a hajnal első fényei lassan bevilágítják az eget. Ezer és ezer fekete ruhás ellenség vette körül a város falait. Valamennyien összezsúfolódtak a síkságot elborító árkokban, akár a bogarak. A horda közepén egy nagy piros sátrat állítottak fel, melyen szimbólumként egy törött koponya díszeleg. Ez Zagarnának, Kaag urának szimbóluma, aki egyike a helgedadi Sötét Uraknak. Az ő terve volt Holmgrad városának elpusztítása, kérlelhetetlen vágya, hogy seregével győzelmet arasson az Ulnar-ház felett, és leigázhassa Sommerlund földjét.[/p]
+        [p]Győzelme a mai napon sem teljesedhet be! Magasan, a fejed fölé emeled a Nap Kardját, amint a hajnal első sugarai megérintik a hegyét, vakító fehér láng szalad végig a pengén. A varázsfegyver újra teljes erejével téged szolgál. Érzékeid eltompulnak, és tested ösztönösen cselekszik. Leereszted a Nap Kardját, és egyenesen ellenfeleitek vezéri sátrának irányába mutatsz vele. Hatalmas üvöltés hallatszik, ahogy a varázsfegyverből elszabaduló fehér fény útjára indul. A sátor felrobban, és ragyogó fehér lánggal izzó tűzgolyó terül szét a magasban. Hosszú és rettenetes kiáltás hasít a levegőbe. Ez Zagarna, a Sötét Úr utolsó kiáltása volt. A gonosz sereg fővezére nincs többé.[/p]
+        [p]Félelem és pánik uralkodik el az ostromlókon, majd amilyen gyorsan csak tudnak, elmenekülnek a várfal közeléből. A legyőzhetetlennek tartott mesterüket elpusztították, ismét a Nap Kardjának varázsereje sújtott le rájuk. A várvédők és a durenori lovagok bosszúszomjasan rajtaütnek a pánikba esett ellenségen, akik nem tehetnek mást, minthogy vakon menekülnek a Durncrag hegység felé. A győzelem a tiétek! A város - hála neked - megmenekült, és bosszút álltál a legyilkolt Kai szerzetesekért.[/p]
+        [p]De számodra Magányos Farkas a kaland még csak most kezdődik. Újabb kihívások várnak rád a sorozat következő könyvében, melynek címe:[/p]
+        [p][em]Kalte barlangjai[/em][/p]
+    </text>
   </p>
 </content>
