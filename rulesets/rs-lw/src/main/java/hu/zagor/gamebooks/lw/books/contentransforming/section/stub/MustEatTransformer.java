@@ -14,7 +14,9 @@ public class MustEatTransformer extends AbstractStubTransformer {
 
     @Override
     protected void doTransform(final BookParagraphDataTransformer parent, final Node node, final ParagraphData data) {
-        ((LwParagraphData) data).setMustEat(true);
+        final LwParagraphData lwParagraphData = (LwParagraphData) data;
+        lwParagraphData.setCanHunt(extractBooleanAttribute(node, "canHunt", true));
+        lwParagraphData.setMustEat(true);
     }
 
 }

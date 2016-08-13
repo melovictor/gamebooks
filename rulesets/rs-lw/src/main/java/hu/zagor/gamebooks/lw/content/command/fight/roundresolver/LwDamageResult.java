@@ -1,10 +1,12 @@
 package hu.zagor.gamebooks.lw.content.command.fight.roundresolver;
 
+import hu.zagor.gamebooks.content.TrueCloneable;
+
 /**
  * Bean for storing the damage LW and his enemy suffers.
  * @author Tamas_Szekeres
  */
-public class LwDamageResult {
+public class LwDamageResult implements TrueCloneable {
     private int lwSuffers;
     private int enemySuffers;
     private boolean enemyKilled;
@@ -42,4 +44,8 @@ public class LwDamageResult {
         this.lwKilled = lwKilled;
     }
 
+    @Override
+    public LwDamageResult clone() throws CloneNotSupportedException {
+        return (LwDamageResult) super.clone();
+    }
 }

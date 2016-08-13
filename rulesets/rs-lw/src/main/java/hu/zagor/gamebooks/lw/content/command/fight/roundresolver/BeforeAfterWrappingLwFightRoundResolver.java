@@ -3,17 +3,14 @@ package hu.zagor.gamebooks.lw.content.command.fight.roundresolver;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.lw.content.command.fight.LwFightCommand;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
 
 /**
  * Decorator that adds dynamic before-after fighting capabilities.
  * @author Tamas_Szekeres
  */
-@Component
 public class BeforeAfterWrappingLwFightRoundResolver implements LwFightRoundResolver {
-    @Autowired @Qualifier("defaultLwFightRoundResolver") private LwFightRoundResolver decorated;
+    private LwFightRoundResolver decorated;
     @Autowired private ApplicationContext applicationContext;
 
     @Override
@@ -52,6 +49,10 @@ public class BeforeAfterWrappingLwFightRoundResolver implements LwFightRoundReso
     @Override
     public void resolveFlee(final LwFightCommand command, final ResolvationData resolvationData) {
         decorated.resolveFlee(command, resolvationData);
+    }
+
+    public void setDecorated(final LwFightRoundResolver decorated) {
+        this.decorated = decorated;
     }
 
 }

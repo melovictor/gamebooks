@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.content.command.fight;
 
+import hu.zagor.gamebooks.content.CloneFailedException;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.fight.domain.BattleStatistics;
@@ -52,7 +53,7 @@ public class FightCommandRoundEventResolver {
         try {
             clone = paragraphData.clone();
         } catch (final CloneNotSupportedException e) {
-            throw new IllegalStateException("Cloning of the paragraph data has failed, this should not have happened!", e);
+            throw new CloneFailedException(e);
         }
         return clone;
     }

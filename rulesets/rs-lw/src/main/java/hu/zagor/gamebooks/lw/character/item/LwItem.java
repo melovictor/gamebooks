@@ -14,6 +14,7 @@ public class LwItem extends Item {
     private Placement placement;
     private String weaponType;
     private boolean preFight;
+    private boolean magical;
 
     /**
      * Default constructor for the serializer.
@@ -79,6 +80,14 @@ public class LwItem extends Item {
 
     public void setPreFight(final boolean preFight) {
         this.preFight = preFight;
+    }
+
+    public boolean isMagical() {
+        return magical;
+    }
+
+    public void setMagical(final boolean magical) {
+        this.magical = magical;
     }
 
 }

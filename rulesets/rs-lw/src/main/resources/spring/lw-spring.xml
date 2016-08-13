@@ -54,7 +54,19 @@
       </bean>
     </entry>
     <entry key="hu.zagor.gamebooks.lw.content.command.fight.LwFightCommand">
-      <bean class="hu.zagor.gamebooks.lw.content.command.fight.LwFightCommandResolver" />
+      <bean class="hu.zagor.gamebooks.lw.content.command.fight.LwFightCommandResolver">
+        <property name="roundResolver">
+          <bean class="hu.zagor.gamebooks.lw.content.command.fight.roundresolver.BeforeAfterWrappingLwFightRoundResolver">
+            <property name="decorated">
+              <bean class="hu.zagor.gamebooks.lw.content.command.fight.roundresolver.DefaultLwFightRoundResolver">
+                <property name="damageResultProvider">
+                  <bean class="hu.zagor.gamebooks.lw.content.command.fight.roundresolver.DefaultLwDamageResultProvider" />
+                </property>
+              </bean>
+            </property>
+          </bean>
+        </property>
+      </bean>
     </entry>
     <entry key="hu.zagor.gamebooks.content.command.userinput.UserInputCommand" value-ref="userInputCommandResolver" />
     <entry key="hu.zagor.gamebooks.content.command.random.RandomCommand">

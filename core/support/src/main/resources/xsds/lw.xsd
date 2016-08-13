@@ -312,7 +312,9 @@
         <xs:complexType></xs:complexType>
       </xs:element>
       <xs:element name="mustEat" minOccurs="0" maxOccurs="1">
-        <xs:complexType></xs:complexType>
+        <xs:complexType>
+          <xs:attribute name="canHunt" use="optional" default="false" />
+        </xs:complexType>
       </xs:element>
       <xs:element name="death" minOccurs="0" maxOccurs="1">
         <xs:complexType></xs:complexType>

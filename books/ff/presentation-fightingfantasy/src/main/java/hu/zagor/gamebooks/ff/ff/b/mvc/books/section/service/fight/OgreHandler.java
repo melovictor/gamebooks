@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.ff.ff.b.mvc.books.section.service.fight;
 import hu.zagor.gamebooks.character.Character;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.handler.item.CharacterItemHandler;
+import hu.zagor.gamebooks.content.CloneFailedException;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.SilentCapableResolver;
 import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
@@ -38,7 +39,7 @@ public class OgreHandler extends Ff60BeforeAfterRoundEnemyHandler {
                     messages.addKey("page.ff60.fight.ogre.push");
                 }
             } catch (final CloneNotSupportedException ex) {
-                throw new IllegalStateException("Failed to clone random command.", ex);
+                throw new CloneFailedException(ex);
             }
         }
     }

@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.character.item;
 
+import hu.zagor.gamebooks.content.CloneFailedException;
 import org.powermock.reflect.Whitebox;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -94,14 +95,14 @@ public class ItemTest {
         Assert.assertEquals(returned.getEquipInfo().isEquipped(), underTest.getEquipInfo().isEquipped());
     }
 
-    public void testCloneWhenCloningThrowsExceptionShoultReturnNull() {
+    @Test(expectedExceptions = CloneFailedException.class)
+    public void testCloneWhenCloningThrowsExceptionShouldThrowException() {
         // GIVEN
         final Item cloningTest = new Item(ID, NAME, ITEM_TYPE);
         Whitebox.setInternalState(cloningTest, "equipInfo", new CloneFailingEquipInfo());
         // WHEN
-        final Item returned = cloningTest.clone();
-        // THEN
-        Assert.assertNull(returned);
+        cloningTest.clone();
+        // THEN throws exception
     }
 
     public void testEqualsWhenSameIdProvidedShouldReturnTrue() {

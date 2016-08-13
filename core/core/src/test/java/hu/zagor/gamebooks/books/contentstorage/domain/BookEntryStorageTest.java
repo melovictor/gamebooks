@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.books.contentstorage.domain;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.item.Item;
+import hu.zagor.gamebooks.content.CloneFailedException;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
@@ -179,16 +180,16 @@ public class BookEntryStorageTest {
         Assert.assertSame(returned, clonedParagraph);
     }
 
-    public void testGetParagraphWhenParagraphIdExistsButCloningFailsShouldReturnNull() throws CloneNotSupportedException {
+    @Test(expectedExceptions = CloneFailedException.class)
+    public void testGetParagraphWhenParagraphIdExistsButCloningFailsShouldThrowException() throws CloneNotSupportedException {
         // GIVEN
         logger.debug("Fetching {} {} from book {}.", "paragraph", EXISTENT_ELEMENT_ID, BOOK_ID);
         expect(paragraph.clone()).andThrow(new CloneNotSupportedException());
         logger.error("Failed to clone {} '{}' from book '{}'!", "paragraph", EXISTENT_ELEMENT_ID, BOOK_ID);
         mockControl.replay();
         // WHEN
-        final Paragraph returned = underTest.getParagraph(EXISTENT_ELEMENT_ID);
-        // THEN
-        Assert.assertNull(returned);
+        underTest.getParagraph(EXISTENT_ELEMENT_ID);
+        // THEN throws exception
     }
 
     public void testGetParagraphWhenParagraphIdDoesNotExistsShouldReturnNull() {
@@ -242,7 +243,8 @@ public class BookEntryStorageTest {
         Assert.assertSame(returned.get("a"), clonedEnemy);
     }
 
-    public void testGetEnemiesWhenCloneFailsShouldLogErrorAndReturnListWithoutSpecificElement() throws CloneNotSupportedException {
+    @Test(expectedExceptions = CloneFailedException.class)
+    public void testGetEnemiesWhenCloneFailsShouldLogErrorAndThrowException() throws CloneNotSupportedException {
         // GIVEN
         final Map<String, Enemy> enemies = new HashMap<>();
         final Enemy enemy = mockControl.createMock(Enemy.class);
@@ -253,9 +255,8 @@ public class BookEntryStorageTest {
         Whitebox.setInternalState(underTest, "enemies", enemies);
         mockControl.replay();
         // WHEN
-        final Map<String, Enemy> returned = underTest.getEnemies();
-        // THEN
-        Assert.assertEquals(returned.size(), 0);
+        underTest.getEnemies();
+        // THEN throws exception
     }
 
     public void testResolveParagraphIdWhenParagraphExistsShouldReturnResolvedId() {

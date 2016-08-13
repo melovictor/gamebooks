@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.ff.mvc.book.section.service;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.item.FfCharacterItemHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
+import hu.zagor.gamebooks.content.CloneFailedException;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
@@ -71,7 +72,7 @@ public class SorMagicChainPreparatorService {
         try {
             clone = newWinData.clone();
         } catch (final CloneNotSupportedException e) {
-            clone = null;
+            throw new CloneFailedException(e);
         }
         return clone;
     }

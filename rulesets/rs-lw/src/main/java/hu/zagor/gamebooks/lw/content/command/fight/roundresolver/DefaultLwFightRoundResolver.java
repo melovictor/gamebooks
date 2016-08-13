@@ -12,6 +12,7 @@ import hu.zagor.gamebooks.lw.character.Weaponskill;
 import hu.zagor.gamebooks.lw.character.enemy.LwEnemy;
 import hu.zagor.gamebooks.lw.character.handler.LwCharacterHandler;
 import hu.zagor.gamebooks.lw.character.handler.attribute.LwAttributeHandler;
+import hu.zagor.gamebooks.lw.character.handler.item.LwCharacterItemHandler;
 import hu.zagor.gamebooks.lw.character.item.LwItem;
 import hu.zagor.gamebooks.lw.content.command.fight.LwFightCommand;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
@@ -19,7 +20,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -27,11 +27,11 @@ import org.springframework.util.StringUtils;
  * Default fight handler for the Lone Wolf ruleset.
  * @author Tamas_Szekeres
  */
-@Component
 public class DefaultLwFightRoundResolver implements LwFightRoundResolver {
+    private static final int MINDFORCE_DAMAGE = -2;
     @Autowired private DiceResultRenderer renderer;
     @Autowired @Qualifier("d10") private RandomNumberGenerator generator;
-    @Autowired private LwDamageResultProvider damageResultProvider;
+    private LwDamageResultProvider damageResultProvider;
 
     @Override
     public void resolveRound(final LwFightCommand command, final ResolvationData resolvationData) {
@@ -51,13 +51,48 @@ public class DefaultLwFightRoundResolver implements LwFightRoundResolver {
 
         messages.addKey("page.lw.label.fight.single.combatRatio", commandRatio, renderer.render(generator.getDefaultDiceSide(), randomNumber));
 
-        final LwDamageResult lwDamageResult = damageResultProvider.getLwDamageResult(commandRatio, randomNumber[0]);
-        if (lwDamageResult.isEnemyKilled()) {
+        final LwDamageResult lwDamageResult = damageResultProvider.getLwDamageResult(commandRatio, randomNumber[0], enemy, command);
+        final LwCharacterItemHandler itemHandler = (LwCharacterItemHandler) resolvationData.getCharacterHandler().getItemHandler();
+        final LwItem equippedWeapon = itemHandler.getEquippedWeapon(character);
+        changeDamageByWeapon(lwDamageResult, enemy, equippedWeapon);
+
+        if (noDamage(lwDamageResult)) {
+            reportNoDamage(command);
+        } else if (lwDamageResult.isEnemyKilled()) {
             instantVictory(command, fleeing);
         } else if (lwDamageResult.isLwKilled()) {
             instantDeath(command, fleeing, resolvationData);
         } else {
             normalDamage(command, fleeing, resolvationData, lwDamageResult);
+        }
+        if (mindforceAttackActive(character, enemy)) {
+            executeMindforceAttack(command, character, enemy);
+        }
+    }
+
+    private void executeMindforceAttack(final LwFightCommand command, final LwCharacter character, final LwEnemy enemy) {
+        character.changeEndurance(MINDFORCE_DAMAGE);
+        command.getMessages().addKey("page.lw.label.fight.mindforce", enemy.getName());
+    }
+
+    private boolean mindforceAttackActive(final LwCharacter character, final LwEnemy enemy) {
+        return enemy.getEndurance() > 0 && enemy.isMindforce() && !character.getKaiDisciplines().isMindshield();
+    }
+
+    private void reportNoDamage(final LwFightCommand command) {
+        final List<LwEnemy> enemies = command.getResolvedEnemies();
+        final LwEnemy enemy = enemies.get(0);
+        command.getMessages().addKey("page.lw.label.fight.single.noDamage", enemy.getName());
+    }
+
+    private boolean noDamage(final LwDamageResult lwDamageResult) {
+        return !lwDamageResult.isEnemyKilled() && !lwDamageResult.isLwKilled() && lwDamageResult.getEnemySuffers() == 0 && lwDamageResult.getLwSuffers() == 0;
+    }
+
+    private void changeDamageByWeapon(final LwDamageResult lwDamageResult, final LwEnemy enemy, final LwItem equippedWeapon) {
+        if (!enemy.isKillableByNormal() && !equippedWeapon.isMagical()) {
+            lwDamageResult.setEnemyKilled(false);
+            lwDamageResult.setEnemySuffers(0);
         }
     }
 
@@ -177,6 +212,10 @@ public class DefaultLwFightRoundResolver implements LwFightRoundResolver {
         } else {
             messages.add(text + ".");
         }
+    }
+
+    public void setDamageResultProvider(final LwDamageResultProvider damageResultProvider) {
+        this.damageResultProvider = damageResultProvider;
     }
 
 }

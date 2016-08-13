@@ -8,6 +8,7 @@ import hu.zagor.gamebooks.character.domain.builder.DefaultResolvationDataBuilder
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.ExpressionResolver;
 import hu.zagor.gamebooks.character.handler.userinteraction.DefaultUserInteractionHandler;
+import hu.zagor.gamebooks.content.CloneFailedException;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.CoreTextResolvingTest;
@@ -135,7 +136,8 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
         Assert.assertSame(returned.get(0), clonedData);
     }
 
-    public void testResolveSilentlyWhenThereIsResultMatchingTheResultIntervalButCloneFailsShouldReturnAppropriateData() throws CloneNotSupportedException {
+    @Test(expectedExceptions = CloneFailedException.class)
+    public void testResolveSilentlyWhenThereIsResultMatchingTheResultIntervalButCloneFailsShouldThrowException() throws CloneNotSupportedException {
         // GIVEN
         command.getResults().add(result);
         command.setResultElse(resultElse);
@@ -153,13 +155,8 @@ public class RandomCommandResolverBTest extends CoreTextResolvingTest {
         logger.error("Failed to clone object '{}'.", resultData);
         mockControl.replay();
         // WHEN
-        final List<ParagraphData> returned = underTest.resolveSilently(command, resolvationData, messages, getLocale());
-        // THEN
-        Assert.assertEquals(rootData.getText(), "<p>Initial content.</p>");
-        Assert.assertEquals(command.getDiceResultText(), "_2_");
-        Assert.assertEquals(command.getDiceResult(), 2);
-        Assert.assertSame(command.getDiceResults(), randomResult);
-        Assert.assertTrue(returned.isEmpty());
+        underTest.resolveSilently(command, resolvationData, messages, getLocale());
+        // THEN throws exception
     }
 
     public void testResolveSilentlyWhenThereIsNoResutlMatchingTheIntervalAndResultElseIsNullShouldReturnAppropriateData() {

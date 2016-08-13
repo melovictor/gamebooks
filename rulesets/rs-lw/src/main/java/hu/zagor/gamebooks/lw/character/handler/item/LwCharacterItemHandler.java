@@ -1,7 +1,7 @@
 package hu.zagor.gamebooks.lw.character.handler.item;
 
 import hu.zagor.gamebooks.character.Character;
-import hu.zagor.gamebooks.character.handler.item.DefaultCharacterItemHandler;
+import hu.zagor.gamebooks.character.handler.item.ComplexCharacterItemHandler;
 import hu.zagor.gamebooks.character.item.Item;
 import hu.zagor.gamebooks.character.item.ItemType;
 import hu.zagor.gamebooks.lw.character.LwCharacter;
@@ -17,7 +17,7 @@ import javax.annotation.Resource;
  * Lone Wolf-related implementation for doing ruleset-specific item-related queries in a {@link Character}.
  * @author Tamas_Szekeres
  */
-public class LwCharacterItemHandler extends DefaultCharacterItemHandler {
+public class LwCharacterItemHandler extends ComplexCharacterItemHandler {
     @Resource(name = "lwMaxPlacementValues") private Map<Placement, Integer> maxPlacementValues;
 
     @Override
@@ -131,6 +131,13 @@ public class LwCharacterItemHandler extends DefaultCharacterItemHandler {
             selWpn.getEquipInfo().setEquipped(true);
         }
         return selWpn;
+    }
+
+    @Override
+    public void setItemEquipState(final Character character, final String itemId, final boolean toEquip) {
+        super.setItemEquipState(character, itemId, toEquip);
+        doEquipSanityCheck(character.getEquipment(), getItem(character, itemId));
+        getEquippedWeapon((LwCharacter) character);
     }
 
 }

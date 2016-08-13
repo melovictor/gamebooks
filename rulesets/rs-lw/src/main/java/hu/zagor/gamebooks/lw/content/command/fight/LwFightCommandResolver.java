@@ -30,7 +30,7 @@ import org.springframework.util.StringUtils;
 public class LwFightCommandResolver extends TypeAwareCommandResolver<LwFightCommand> {
     private static final int MAX_ALETHER_BONUS = 99;
     @Autowired @Qualifier("lwEnemyStatusEvaluator") private EnemyStatusEvaluator<LwEnemy> enemyStatusEvaluator;
-    @Autowired @Qualifier("beforeAfterWrappingLwFightRoundResolver") private LwFightRoundResolver roundResolver;
+    private LwFightRoundResolver roundResolver;
 
     @Override
     protected CommandResolveResult doResolveWithResolver(final LwFightCommand command, final ResolvationData resolvationData) {
@@ -197,10 +197,18 @@ public class LwFightCommandResolver extends TypeAwareCommandResolver<LwFightComm
         final List<LwEnemy> enemies = new ArrayList<>();
         for (final String enemyId : enemyIds) {
             final LwEnemy enemy = (LwEnemy) enemyStore.get(enemyId);
-            if (enemy.getEndurance() > 0) {
+            if (isAlive(enemy)) {
                 enemies.add(enemy);
             }
         }
         return enemies;
+    }
+
+    private boolean isAlive(final LwEnemy enemy) {
+        return enemy.getEndurance() > enemy.getFleeAtEndurance();
+    }
+
+    public void setRoundResolver(final LwFightRoundResolver roundResolver) {
+        this.roundResolver = roundResolver;
     }
 }

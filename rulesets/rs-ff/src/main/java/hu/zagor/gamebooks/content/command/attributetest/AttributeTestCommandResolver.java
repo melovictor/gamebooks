@@ -4,6 +4,7 @@ import hu.zagor.gamebooks.books.random.RandomNumberGenerator;
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.handler.FfCharacterHandler;
 import hu.zagor.gamebooks.character.handler.userinteraction.FfUserInteractionHandler;
+import hu.zagor.gamebooks.content.CloneFailedException;
 import hu.zagor.gamebooks.content.FfParagraphData;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.Command;
@@ -72,6 +73,7 @@ public class AttributeTestCommandResolver extends TypeAwareCommandResolver<Attri
             }
         } catch (final CloneNotSupportedException e) {
             logger.error("Failed to clone object '{}'.", resultParagraphData);
+            throw new CloneFailedException(e);
         }
 
         if ("luck".equals(command.getAgainst())) {

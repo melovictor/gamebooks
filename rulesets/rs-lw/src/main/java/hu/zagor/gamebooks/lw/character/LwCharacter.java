@@ -22,6 +22,14 @@ public class LwCharacter extends Character {
     private Money money = new Money();
     private KaiDisciplines kaiDisciplines = new KaiDisciplines();
 
+    /**
+     * Changes the endurance by the specified amount.
+     * @param amount the amount by which to change endurance
+     */
+    public void changeEndurance(final int amount) {
+        endurance += amount;
+    }
+
     public int getCombatSkill() {
         return combatSkill;
     }

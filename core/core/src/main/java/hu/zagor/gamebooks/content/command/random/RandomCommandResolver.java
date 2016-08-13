@@ -6,6 +6,7 @@ import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.character.handler.CharacterHandler;
 import hu.zagor.gamebooks.character.handler.ExpressionResolver;
 import hu.zagor.gamebooks.character.handler.userinteraction.DefaultUserInteractionHandler;
+import hu.zagor.gamebooks.content.CloneFailedException;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.command.Command;
 import hu.zagor.gamebooks.content.command.SilentCapableResolver;
@@ -47,6 +48,7 @@ public class RandomCommandResolver extends TypeAwareCommandResolver<RandomComman
                     clonedResponseList.add(data.clone());
                 } catch (final CloneNotSupportedException e) {
                     logger.error("Failed to clone object '{}'.", data);
+                    throw new CloneFailedException(e);
                 }
             }
         }

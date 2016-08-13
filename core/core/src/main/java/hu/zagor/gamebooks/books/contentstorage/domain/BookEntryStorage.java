@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.books.contentstorage.domain;
 import hu.zagor.gamebooks.books.contentstorage.CachedBookContentStorage;
 import hu.zagor.gamebooks.character.enemy.Enemy;
 import hu.zagor.gamebooks.character.item.Item;
+import hu.zagor.gamebooks.content.CloneFailedException;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.TrueCloneable;
 import hu.zagor.gamebooks.support.logging.LogInject;
@@ -73,6 +74,7 @@ public class BookEntryStorage implements BookItemStorage {
                     result = (T) collection.get(id).clone();
                 } catch (final CloneNotSupportedException e) {
                     logger.error("Failed to clone {} '{}' from book '{}'!", name, id, bookId);
+                    throw new CloneFailedException(e);
                 }
             } else {
                 logger.error("Cannot find {} with id '{}' in book '{}'!", name, id, bookId);
@@ -95,6 +97,7 @@ public class BookEntryStorage implements BookItemStorage {
                     cloned.put(entry.getKey(), entry.getValue().clone());
                 } catch (final CloneNotSupportedException e) {
                     logger.error("Failed to clone {} '{}' from book '{}'!", entry.getValue().getName(), entry.getKey(), String.valueOf(bookId));
+                    throw new CloneFailedException(e);
                 }
             }
         }

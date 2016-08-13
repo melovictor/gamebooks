@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.ff.mvc.book.section.controller;
 
+import hu.zagor.gamebooks.content.CloneFailedException;
 import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.content.SorParagraphData;
 import hu.zagor.gamebooks.content.choice.Choice;
@@ -107,7 +108,7 @@ public class SorBookSectionController extends FfBookSectionController {
                 characterSaveLocations.put(identifier, character.clone());
             } catch (final CloneNotSupportedException ex) {
                 getLogger().error("Failed to create clone from the character for a possible spell return location.");
-                throw new IllegalStateException(ex);
+                throw new CloneFailedException(ex);
             }
         }
     }

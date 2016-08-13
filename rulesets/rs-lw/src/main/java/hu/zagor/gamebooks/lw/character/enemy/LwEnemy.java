@@ -12,6 +12,8 @@ public class LwEnemy extends Enemy {
     private boolean mindforce;
     private boolean mindshield;
     private boolean mindblast;
+    private boolean killableByNormal;
+    private int fleeAtEndurance;
 
     public int getCombatSkill() {
         return combatSkill;
@@ -51,6 +53,22 @@ public class LwEnemy extends Enemy {
 
     public void setMindblast(final boolean mindblast) {
         this.mindblast = mindblast;
+    }
+
+    public boolean isKillableByNormal() {
+        return killableByNormal;
+    }
+
+    public void setKillableByNormal(final boolean killableByNormal) {
+        this.killableByNormal = killableByNormal;
+    }
+
+    public int getFleeAtEndurance() {
+        return fleeAtEndurance;
+    }
+
+    public void setFleeAtEndurance(final int fleeAtEndurance) {
+        this.fleeAtEndurance = fleeAtEndurance;
     }
 
 }
