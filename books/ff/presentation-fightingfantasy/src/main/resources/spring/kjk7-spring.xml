@@ -10,4 +10,38 @@
     </property>
   </bean>
 
+  <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor" id="kjk7Help" p:info-ref="kjk7Info">
+    <property name="sections">
+      <util:list>
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sob" p:jsp="intro" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sob" p:jsp="crew" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="howToFight" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="luck" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="luckInBattle" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sob" p:jsp="battle" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="ff" p:jsp="battleFlow7" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sob" p:jsp="shipBattle" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sob" p:jsp="time" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sob" p:jsp="resetStamina" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sob" p:jsp="loot" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="sob" p:jsp="map" />
+      </util:list>
+    </property>
+    <property name="params">
+      <util:map>
+        <entry key="stdHelp_howToFight" value="Saját képességeid jellemzői" />
+        <entry key="stdHelp_hasLantern" value="false" />
+        <entry key="stdHelp_hasFood" value="true" />
+        <entry key="stdHelp_canEatAlways" value="false" />
+        <entry key="stdHelp_foodAmount" value="tíz" />
+        <entry key="stdHelp_potionAmount" value="egy" />
+        <entry key="stdHelp_potionAmountTimes" value="egyszer" />
+        <entry key="stdHelp_hasPotions" value="true" />
+      </util:map>
+    </property>
+    <property name="resourceInformation">
+    <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="ff" />
+    </property>
+  </bean>
+
 </beans>
