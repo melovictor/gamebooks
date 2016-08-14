@@ -1,5 +1,6 @@
 package hu.zagor.gamebooks.mvc.authorization.domain;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 /**
@@ -7,8 +8,8 @@ import javax.validation.constraints.Pattern;
  * @author Tamas_Szekeres
  */
 public class AuthorizationCode {
-    @Pattern(regexp = "[a-z]+") private String type;
-    @Pattern(regexp = "\\{[0-9A-F]{8}\\-[0-9A-F]{4}\\-[0-9A-F]{4}\\-[0-9A-F]{4}\\-[0-9A-F]{12}\\}") private String code;
+    @NotNull @Pattern(regexp = "[a-z]+") private String type;
+    @NotNull @Pattern(regexp = "\\{[0-9A-F]{8}\\-[0-9A-F]{4}\\-[0-9A-F]{4}\\-[0-9A-F]{4}\\-[0-9A-F]{12}\\}") private String code;
 
     public String getType() {
         return type;
