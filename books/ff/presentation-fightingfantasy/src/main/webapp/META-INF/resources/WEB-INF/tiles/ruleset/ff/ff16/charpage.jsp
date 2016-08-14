@@ -10,7 +10,10 @@
 	<tiles:insertTemplate template="../charpage/ssl4.jsp" />
     <div class="ffMainAttribute4">
         <span class="ffMainAttribute"><spring:message code="page.ff16.attribute.time" /></span>
-        <div class="ffMainAttributeValue" data-attribute-gold><fmt:formatNumber value="${data.time}" groupingUsed="true" /></div>
+        <div class="ffMainAttributeValue" data-attribute-gold>
+            <fmt:formatNumber value="${data.time}" groupingUsed="true" />
+            <button id="ff16Resting"><spring:message code="page.ff16.attribute.time.resting" /></button>
+        </div>
     </div>
 
     <div class="ffMainAttribute4">
