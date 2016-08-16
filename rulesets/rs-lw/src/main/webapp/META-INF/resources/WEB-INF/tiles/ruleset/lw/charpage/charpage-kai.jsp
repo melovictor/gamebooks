@@ -2,6 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib tagdir="/WEB-INF/tags" prefix="l" %>
 
 <c:if test="${hasInventory || hasMap}">
 	<h1>
@@ -24,11 +25,11 @@
 		<div class="lwMainAttribute4" id="lwDisciplinesList">
 			<span class="lwMainAttribute"><spring:message code="page.lw.attribute.kaiDisciplines" /></span>
 			<c:if test="${data.character.initialized}">
-				<span data-available="${data.character.kaiDisciplines.camouflage}"><spring:message code="page.lw.attribute.kai.camouflage" /></span>
-				<span data-available="${data.character.kaiDisciplines.hunting}"><spring:message code="page.lw.attribute.kai.hunting" /></span>
-				<span data-available="${data.character.kaiDisciplines.sixthSense}"><spring:message code="page.lw.attribute.kai.sixthSense" /></span>
-				<span data-available="${data.character.kaiDisciplines.tracking}"><spring:message code="page.lw.attribute.kai.tracking" /></span>
-				<span data-available="${data.character.kaiDisciplines.healing}"><spring:message code="page.lw.attribute.kai.healing" /></span>
+                <l:kaiDisc disc="camouflage"/>
+                <l:kaiDisc disc="hunting"/>
+                <l:kaiDisc disc="sixthSense"/>
+                <l:kaiDisc disc="tracking"/>
+                <l:kaiDisc disc="healing"/>
 				<c:if test="${not empty data.weaponskillWeapon}">
 					<c:set var="weaponskillName">
 						<spring:message code="page.lw.attribute.kai.weaponskill.title" />
@@ -37,11 +38,11 @@
 						<spring:message code="page.lw.attribute.kai.weaponskill.${data.weaponskillWeapon}" />
 					</c:set>
 				</c:if>
-				<span data-available="${data.character.kaiDisciplines.weaponskill.weaponskillObtained}"><spring:message code="page.lw.attribute.kai.weaponskill" arguments="${weaponskillName},${weaponskillWeapon}" /></span>
-				<span data-available="${data.character.kaiDisciplines.mindshield}"><spring:message code="page.lw.attribute.kai.mindshield" /></span>
-				<span data-available="${data.character.kaiDisciplines.mindblast}"><spring:message code="page.lw.attribute.kai.mindblast" /></span>
-				<span data-available="${data.character.kaiDisciplines.animalKinship}"><spring:message code="page.lw.attribute.kai.animalKinship" /></span>
-				<span data-available="${data.character.kaiDisciplines.mindOverMatter}"><spring:message code="page.lw.attribute.kai.mindOverMatter" /></span>
+				<span data-id="weaponskill" data-available="${data.character.kaiDisciplines.weaponskill.weaponskillObtained}"><spring:message code="page.lw.attribute.kai.weaponskill" arguments="${weaponskillName},${weaponskillWeapon}" /></span>
+                <l:kaiDisc disc="mindshield"/>
+                <l:kaiDisc disc="mindblast"/>
+                <l:kaiDisc disc="animalKinship"/>
+                <l:kaiDisc disc="mindOverMatter"/>
 			</c:if>
 		</div>
 
@@ -60,14 +61,17 @@
 			<span class="lwMainAttribute"><spring:message code="page.lw.equipment.normalEquipments" /></span>
 			<c:forEach var="item" items="${data.normalEquipment}">
 				<div class="lwSlot" title="${item.description}" data-item-id="${item.id}" data-item-type="${item.itemType}">
-				<span>${item.name}</span>
-				<span class="remove">&#xf00d;</span></div>
+					<span>${item.name}</span>
+					<span class="remove">&#xf00d;</span>
+				</div>
 			</c:forEach>
 		</div>
 		<div class="lwMainAttribute3">
 			<span class="lwMainAttribute"><spring:message code="page.lw.equipment.specialEquipments" /></span>
 			<c:forEach var="item" items="${data.specialEquipment}">
-				<div class="lwSlot" title="${item.description}" data-item-id="${item.id}">${item.name}<span class="remove">&#xf00d;</span></div>
+				<div class="lwSlot" title="${item.description}" data-item-id="${item.id}">
+					${item.name}<span class="remove">&#xf00d;</span>
+				</div>
 			</c:forEach>
 		</div>
 		

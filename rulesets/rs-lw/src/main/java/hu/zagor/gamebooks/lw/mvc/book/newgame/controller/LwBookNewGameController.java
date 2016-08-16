@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.lw.mvc.book.newgame.controller;
 import hu.zagor.gamebooks.PageAddresses;
 import hu.zagor.gamebooks.books.contentstorage.domain.BookParagraphConstants;
 import hu.zagor.gamebooks.character.Character;
+import hu.zagor.gamebooks.character.handler.character.CharacterContinuator;
 import hu.zagor.gamebooks.character.handler.character.CharacterGenerator;
 import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
@@ -76,6 +77,34 @@ public class LwBookNewGameController extends RawBookNewGameController {
         final LwBookInformations info = getInfo();
         final CharacterGenerator characterGenerator = info.getCharacterHandler().getCharacterGenerator();
         final Map<String, Object> result = characterGenerator.generateCharacter(character, info, input);
+
+        return result;
+    }
+
+    /**
+     * Handles the continuation of a character taken over from the previous book.
+     * @param request the {@link HttpServletRequest} object
+     * @param input bean containing all user selections for the character to be continued
+     * @return the compiled object
+     */
+    @RequestMapping(value = PageAddresses.BOOK_NEW + "/continue", produces = "application/json")
+    @ResponseBody
+    public final Map<String, Object> continueCharacter(final HttpServletRequest request, @ModelAttribute final LwCharGenInput input) {
+        return doContinueCharacter(request, input);
+    }
+
+    /**
+     * Handles the actual continuation of the new character.
+     * @param request the {@link HttpServletRequest} object
+     * @param input bean containing all user selections for the character to be continued
+     * @return the compiled object
+     */
+    protected Map<String, Object> doContinueCharacter(final HttpServletRequest request, final LwCharGenInput input) {
+        final HttpSessionWrapper wrapper = getWrapper(request);
+        final LwCharacter character = (LwCharacter) wrapper.getCharacter();
+        final LwBookInformations info = getInfo();
+        final CharacterContinuator characterContinuator = info.getCharacterHandler().getCharacterContinuator();
+        final Map<String, Object> result = characterContinuator.continueCharacter(character, info, input);
 
         return result;
     }

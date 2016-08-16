@@ -15,14 +15,14 @@ public class KaiDisciplines {
     private boolean animalKinship;
     private boolean mindOverMatter;
 
-    private Weaponskill weaponskill = new Weaponskill();
+    private final Weaponskill weaponskill = new Weaponskill();
 
     public boolean isCamouflage() {
         return camouflage;
     }
 
     public void setCamouflage(final boolean camouflage) {
-        this.camouflage = camouflage;
+        this.camouflage = this.camouflage || camouflage;
     }
 
     public boolean isHunting() {
@@ -30,7 +30,7 @@ public class KaiDisciplines {
     }
 
     public void setHunting(final boolean hunting) {
-        this.hunting = hunting;
+        this.hunting = this.hunting || hunting;
     }
 
     public boolean isSixthSense() {
@@ -38,7 +38,7 @@ public class KaiDisciplines {
     }
 
     public void setSixthSense(final boolean sixthSense) {
-        this.sixthSense = sixthSense;
+        this.sixthSense = this.sixthSense || sixthSense;
     }
 
     public boolean isTracking() {
@@ -46,7 +46,7 @@ public class KaiDisciplines {
     }
 
     public void setTracking(final boolean tracking) {
-        this.tracking = tracking;
+        this.tracking = this.tracking || tracking;
     }
 
     public boolean isHealing() {
@@ -54,7 +54,7 @@ public class KaiDisciplines {
     }
 
     public void setHealing(final boolean healing) {
-        this.healing = healing;
+        this.healing = this.healing || healing;
     }
 
     public boolean isMindshield() {
@@ -62,7 +62,7 @@ public class KaiDisciplines {
     }
 
     public void setMindshield(final boolean mindshield) {
-        this.mindshield = mindshield;
+        this.mindshield = this.mindshield || mindshield;
     }
 
     public boolean isMindblast() {
@@ -70,7 +70,7 @@ public class KaiDisciplines {
     }
 
     public void setMindblast(final boolean mindblast) {
-        this.mindblast = mindblast;
+        this.mindblast = this.mindblast || mindblast;
     }
 
     public boolean isAnimalKinship() {
@@ -78,7 +78,7 @@ public class KaiDisciplines {
     }
 
     public void setAnimalKinship(final boolean animalKinship) {
-        this.animalKinship = animalKinship;
+        this.animalKinship = this.animalKinship || animalKinship;
     }
 
     public boolean isMindOverMatter() {
@@ -86,15 +86,10 @@ public class KaiDisciplines {
     }
 
     public void setMindOverMatter(final boolean mindOverMatter) {
-        this.mindOverMatter = mindOverMatter;
+        this.mindOverMatter = this.mindOverMatter || mindOverMatter;
     }
 
     public Weaponskill getWeaponskill() {
         return weaponskill;
     }
-
-    public void setWeaponskill(final Weaponskill weaponskill) {
-        this.weaponskill = weaponskill;
-    }
-
 }

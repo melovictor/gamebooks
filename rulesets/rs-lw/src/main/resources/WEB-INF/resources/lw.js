@@ -1,107 +1,208 @@
-var lwCharGen = (function() {
-	var maxSelectableValues = {};
-	var selectionVerificationStatus = {};
-	
+var lwCharStarter = (function() {
 	function init() {
-		var $genButton = $("[data-generator-button='lw']");
-		if ($genButton.length > 0) {
-			$genButton.on("click", sendGenerationRequest);
+		lwCharGen.init();
+		lwCharCont.init();
+	}
+	
+	var maxSelectableValues = {};
+	var maxSelectableOptional = {};
+	var selectionVerificationStatus = {};
+
+	var selectableHandler = (function() {
+		function calculateMaxSelectables(event) {
+			var group = $(event.target).closest("p").attr("class");
+			var maxSelectable = maxSelectableValues[group];
+			var optional = maxSelectableOptional[group];
+			
+			var totalSelected = $("." + group + " input:checked").length;
+			if (totalSelected > maxSelectable) {
+				$("." + group + " input").prop("checked", false);
+			} else if (totalSelected == maxSelectable) {
+				$("." + group + " input:not(:checked)").prop("disabled", true);
+				selectionVerificationStatus[group] = true;
+				genButton();
+			} else {
+				$("." + group + " input:not(:checked)").prop("disabled", false);
+				selectionVerificationStatus[group] = false || optional;
+				genButton();
+			}
+		}
+
+		function calculateAllMaxSelectables() {
+			$("[data-total]").each(function(idx, elem) {
+				calculateMaxSelectables({ "target" : $(elem) });
+			});
+		}
+
+		
+		function genButton() {
+			var enabled = true;
+			for (var key in selectionVerificationStatus) {
+				enabled &= selectionVerificationStatus[key];
+			};
+			$("button[data-generator-button='lw'],button[data-continue-button='lw']").prop("disabled", !enabled);
+		}
+		
+		function init() {
 			$("[data-total]").each(function(idx, elem) {
 				$e = $(elem);
 				var className = $e.attr("class");
 				var maxSelectable = parseInt($e.data("total"));
 				maxSelectableValues[className] = maxSelectable;
-				selectionVerificationStatus[className] = false;
-				$("." + className + " input").on("change", calculateMaxSelectables);
+				maxSelectableOptional[className] = !!$e.data("optional");
+				selectionVerificationStatus[className] = maxSelectableOptional[className];
+				$("." + className + " input").on("change", selectableHandler.calculateMaxSelectables);
 			});
 		}
-	}
-	
-	function sendGenerationRequest() {
-		calculateAllMaxSelectables();
-		if ($("button[data-generator-button='lw']").prop("disabled")) {
-			return;
+
+		return {
+			calculateMaxSelectables : calculateMaxSelectables,
+			calculateAllMaxSelectables : calculateAllMaxSelectables,
+			init : init
 		}
-		var data = {
-		};
-
-		var $kaiDisciplines = $(".lwKaiDisciplines input");
-		$kaiDisciplines.prop("disabled", true);
-		$kaiDisciplines.each(function(idx, elem) {
-			var $elem = $(elem);
-			data[$elem.attr("id")] = $elem.is(":checked");
-		});
-
-		var $startingEquipment = $(".lwStartingEquipment input");
-		$startingEquipment.prop("disabled", true);
-		var itemArray = {};
-		var count = 0;
-		$startingEquipment.each(function(idx, elem) {
-			var $elem = $(elem);
-			if ($elem.is(":checked")) {
-				data["equipments[" + count + "].id"] = $elem.data("id");
-				data["equipments[" + count + "].amount"] = $elem.data("amount");
-				count++;
-			}
-		});
-		
-		$.ajax({
-			url : "new/generate",
-			data : data,
-			type : "POST",
-			success : function(data) {
-				$.each(data, function(key, value) {
-					$("#" + key).html(value);
+	})();
+	
+	var lwCharCont = (function() {
+		function init() {
+			var $genButton = $("[data-continue-button='lw']");
+			if ($genButton.length > 0) {
+				selectableHandler.init();
+				$genButton.on("click", sendContinuationRequest);
+				$("#lwDisciplinesList span[data-available='true']").each(function(idx, elem) {
+					$elem = $(elem);
+					var disciplineId = $elem.data("id");
+					$("#" + disciplineId + ",label[for='" + disciplineId + "']").remove();
 				});
-				if (data.weaponskill) {
-					$(".lwKaiDisciplines").append($("<p>").html(data.weaponskill));
+				if ($(".lwStartingEquipment").data("safekeeping") == "true") {
+					inventory.showInventory(null, null, true);
+				} else {
+					
 				}
-				$("#choiceWrapper").show();
-				$("[data-generator-button], .lwDice").hide();
-				inventory.loadInventory();
-				$("[data-step='1']").trigger("stepFinished", data);
+				$("#choiceWrapper").hide();
 			}
-		});
-		$("[data-generator-button]").prop("disabled", true);
-	}
-	
-	function calculateAllMaxSelectables() {
-		$("[data-total]").each(function(idx, elem) {
-			calculateMaxSelectables({ "target" : $(elem) });
-		});
-	}
-	
-	function calculateMaxSelectables(event) {
-		var group = $(event.target).closest("p").attr("class");
-		var maxSelectable = maxSelectableValues[group];
-		
-		var totalSelected = $("." + group + " input:checked").length;
-		if (totalSelected > maxSelectable) {
-			$("." + group + " input").prop("checked", false);
-		} else if (totalSelected == maxSelectable) {
-			$("." + group + " input:not(:checked)").prop("disabled", true);
-			selectionVerificationStatus[group] = true;
-			genButton();
-		} else {
-			$("." + group + " input:not(:checked)").prop("disabled", false);
-			selectionVerificationStatus[group] = false;
-			genButton();
 		}
-	}
-	
-	function genButton() {
-		var enabled = true;
-		for (var key in selectionVerificationStatus) {
-			enabled &= selectionVerificationStatus[key];
+		
+		function sendContinuationRequest() {
+			selectableHandler.calculateAllMaxSelectables();
+			if ($("button[data-continue-button='lw']").prop("disabled")) {
+				return;
+			}
+			var data = {
+			};
+			
+			var $kaiDisciplines = $(".lwKaiDisciplines input");
+			$kaiDisciplines.prop("disabled", true);
+			$kaiDisciplines.each(function(idx, elem) {
+				var $elem = $(elem);
+				data[$elem.attr("id")] = $elem.is(":checked");
+			});
+			
+			var $startingEquipment = $(".lwStartingEquipment input");
+			$startingEquipment.prop("disabled", true);
+			var itemArray = {};
+			var count = 0;
+			$startingEquipment.each(function(idx, elem) {
+				var $elem = $(elem);
+				if ($elem.is(":checked")) {
+					data["equipments[" + count + "].id"] = $elem.data("id");
+					data["equipments[" + count + "].amount"] = $elem.data("amount");
+					count++;
+				}
+			});
+			
+			$.ajax({
+				url : "new/continue",
+				data : data,
+				type : "POST",
+				success : function(data) {
+					$.each(data, function(key, value) {
+						$("#" + key).html(value);
+					});
+					if (data.weaponskill) {
+						$(".lwKaiDisciplines").append($("<p>").html(data.weaponskill));
+					}
+					$("#choiceWrapper").show();
+					$("[data-generator-button], .lwDice").hide();
+					inventory.loadInventory();
+					$("[data-step='1']").trigger("stepFinished", data);
+				}
+			});
+			$("[data-continue-button]").prop("disabled", true);
+		}
+		
+		return {
+			init : init
 		};
-		$("button[data-generator-button='lw']").prop("disabled", !enabled);
-	}
+	})();
+	
+	var lwCharGen = (function() {
+		
+		function init() {
+			var $genButton = $("[data-generator-button='lw']");
+			if ($genButton.length > 0) {
+				$genButton.on("click", sendGenerationRequest);
+				selectableHandler.init();
+			}
+		}
+		
+		function sendGenerationRequest() {
+			selectableHandler.calculateAllMaxSelectables();
+			if ($("button[data-generator-button='lw']").prop("disabled")) {
+				return;
+			}
+			var data = {
+			};
+			
+			var $kaiDisciplines = $(".lwKaiDisciplines input");
+			$kaiDisciplines.prop("disabled", true);
+			$kaiDisciplines.each(function(idx, elem) {
+				var $elem = $(elem);
+				data[$elem.attr("id")] = $elem.is(":checked");
+			});
+			
+			var $startingEquipment = $(".lwStartingEquipment input");
+			$startingEquipment.prop("disabled", true);
+			var itemArray = {};
+			var count = 0;
+			$startingEquipment.each(function(idx, elem) {
+				var $elem = $(elem);
+				if ($elem.is(":checked")) {
+					data["equipments[" + count + "].id"] = $elem.data("id");
+					data["equipments[" + count + "].amount"] = $elem.data("amount");
+					count++;
+				}
+			});
+			
+			$.ajax({
+				url : "new/generate",
+				data : data,
+				type : "POST",
+				success : function(data) {
+					$.each(data, function(key, value) {
+						$("#" + key).html(value);
+					});
+					if (data.weaponskill) {
+						$(".lwKaiDisciplines").append($("<p>").html(data.weaponskill));
+					}
+					$("#choiceWrapper").show();
+					$("[data-generator-button], .lwDice").hide();
+					inventory.loadInventory();
+					$("[data-step='1']").trigger("stepFinished", data);
+				}
+			});
+			$("[data-generator-button]").prop("disabled", true);
+		}
 
-
+		return {
+			init : init
+		};
+	})();
+	
 	return {
 		init : init
 	};
 })();
+
 
 var lw = (function() {
 	function attack() {
@@ -132,7 +233,7 @@ $(function() {
 		return $elem.parent();
 	}
 	
-	lwCharGen.init();
+	lwCharStarter.init();
 	$("#lwMenu")
 		.on("click", "#gamebookCharacterPageWrapper [data-item-equipped] span:not(.remove)", backspan, inventory.changeEquip)
 		.on("click", "#gamebookCharacterPageWrapper span.remove", backspan, inventory.dropItem)

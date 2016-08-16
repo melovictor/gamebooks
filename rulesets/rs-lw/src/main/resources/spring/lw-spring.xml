@@ -16,16 +16,21 @@
     <property name="interactionHandler">
       <bean class="hu.zagor.gamebooks.lw.character.handler.userinteraction.LwUserInteractionHandler" />
     </property>
+    <property name="characterContinuator" ref="defaultLwCharacterContinuator" />
+  </bean>
+
+  <util:map key-type="java.lang.String" value-type="hu.zagor.gamebooks.lw.mvc.book.newgame.service.discipline.LwDisciplineMapper" id="lwDisciplineMappers">
+    <entry key="kai">
+      <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.discipline.LwKaiDisciplineMapper" />
+    </entry>
+  </util:map>
+
+  <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.DefaultLwCharacterContinuator" id="defaultLwCharacterContinuator">
+    <property name="disciplineMapper" ref="lwDisciplineMappers" />
   </bean>
 
   <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.DefaultLwCharacterGenerator" id="defaultLwCharacterGenerator">
-    <property name="disciplineMapper">
-      <util:map key-type="java.lang.String" value-type="hu.zagor.gamebooks.lw.mvc.book.newgame.service.discipline.LwDisciplineMapper">
-        <entry key="kai">
-          <bean class="hu.zagor.gamebooks.lw.mvc.book.newgame.service.discipline.LwKaiDisciplineMapper" />
-        </entry>
-      </util:map>
-    </property>
+    <property name="disciplineMapper" ref="lwDisciplineMappers" />
   </bean>
 
 

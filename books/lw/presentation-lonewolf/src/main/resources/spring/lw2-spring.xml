@@ -13,12 +13,20 @@
     </property>
   </bean>
 
+  <bean class="hu.zagor.gamebooks.lw.lw.fotw.mvc.books.newgame.service.equipment.Lw2EquipmentMapper" id="lw2EquipmentMapper" />
   <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean" p:targetObject-ref="defaultLwCharacterGenerator" p:targetMethod="addEquipmentManager">
     <property name="arguments">
       <list>
         <value type="java.lang.Integer">2</value>
-        <bean class="hu.zagor.gamebooks.lw.lw.fotw.mvc.books.newgame.service.equipment.Lw2EquipmentMapper">
-        </bean>
+        <ref bean="lw2EquipmentMapper" />
+      </list>
+    </property>
+  </bean>
+  <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean" p:targetObject-ref="defaultLwCharacterContinuator" p:targetMethod="addEquipmentManager">
+    <property name="arguments">
+      <list>
+        <value type="java.lang.Integer">2</value>
+        <ref bean="lw2EquipmentMapper" />
       </list>
     </property>
   </bean>

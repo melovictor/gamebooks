@@ -18,6 +18,7 @@ public class LwBookInventoryService extends RawBookInventoryService {
     @Override
     public String handleInventory(final Model model, final HttpSessionWrapper wrapper, final BookInformations info) {
         super.handleInventory(model, wrapper, info);
+        model.addAttribute("paragraph", wrapper.getParagraph());
         return "lwCharPage." + info.getResourceDir();
     }
 

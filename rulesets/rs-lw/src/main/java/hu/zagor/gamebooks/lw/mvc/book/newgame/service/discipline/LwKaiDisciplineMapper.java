@@ -35,7 +35,11 @@ public class LwKaiDisciplineMapper implements LwDisciplineMapper {
 
     @Override
     public void mapDisciplines(final LwCharacter character, final Map<String, Object> result, final LwCharGenInput input) {
-        character.setRank(Rank.KaiInitiate);
+        if (character.getRank() == null) {
+            character.setRank(Rank.KaiInitiate);
+        } else {
+            character.setRank(Rank.values()[character.getRank().ordinal() + 1]);
+        }
 
         final KaiDisciplines kaiDisciplines = character.getKaiDisciplines();
         kaiDisciplines.setCamouflage(input.isCamouflage());
