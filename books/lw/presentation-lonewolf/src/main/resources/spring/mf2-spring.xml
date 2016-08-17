@@ -13,5 +13,22 @@
       <bean class="hu.zagor.gamebooks.domain.ContinuationData" p:currentBookLastSectionId="350" p:nextBookId="990784003" p:previousBookLastSectionId="350" p:previousBookId="990784001" p:continuationPageName="s-continue" />
     </property>
   </bean>
+  
+  <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpDescriptor" id="mf2Help" p:info-ref="mf2Info">
+    <property name="sections">
+      <util:list>
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="lw" p:jsp="intro" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="lw" p:jsp="kaiDisciplines" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="lw2" p:jsp="equipment" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="lw" p:jsp="battle" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="lw" p:jsp="kaiLevels" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="lw2" p:jsp="kaiWisdom" />
+        <bean class="hu.zagor.gamebooks.mvc.rules.domain.HelpSection" p:location="lw" p:jsp="combatResultsTable" />
+      </util:list>
+    </property>
+    <property name="resourceInformation">
+      <bean class="hu.zagor.gamebooks.domain.ResourceInformation" p:cssResources="lw" />
+    </property>
+  </bean>
 
 </beans>

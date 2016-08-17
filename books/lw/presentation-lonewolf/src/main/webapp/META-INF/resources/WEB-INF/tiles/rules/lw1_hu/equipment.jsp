@@ -19,7 +19,7 @@
 	<li>Pallos (Fegyverek)</li>
 	<li>Kard (Fegyverek)</li>
 	<li>Sisak (Különleges tárgyak). Ez 2 ponttal növeli <span class="attribute">szívóssági</span> pontjaid számát</li>
-	<li>Két étkezésre elegendő élelmiszer</li>
+	<li>Két étkezésre elegendő élelem</li>
 	<li>Páncéling (Különleges tárgyak). Ez 4 ponttal növeli <span class="attribute">szívóssági</span> pontjaid számát</li>
 	<li>Buzogány (Fegyverek)</li>
 	<li>Gyógyital (a Hátizsákba kerül). Ez 4 pontot adhat hozzá a <span class="attribute">szívóssági</span> pontjaid összegéhez,
