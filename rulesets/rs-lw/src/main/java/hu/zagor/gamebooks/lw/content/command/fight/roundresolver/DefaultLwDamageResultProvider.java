@@ -16,20 +16,21 @@ public class DefaultLwDamageResultProvider implements LwDamageResultProvider {
     @Override
     public LwDamageResult getLwDamageResult(final int commandRatio, final int randomNumber, final LwEnemy enemy, final LwFightCommand command) {
         final String key = commandRatio + "_" + randomNumber;
-        LwDamageResult result;
+        LwDamageResult resultClone;
         try {
-            result = lwDamageResults.get(key).clone();
+            LwDamageResult result = lwDamageResults.get(key);
+            if (result == null) {
+                if (commandRatio < 0) {
+                    result = getLwDamageResult(commandRatio + 1, randomNumber, enemy, command);
+                } else {
+                    result = getLwDamageResult(commandRatio - 1, randomNumber, enemy, command);
+                }
+            }
+            resultClone = result.clone();
         } catch (final CloneNotSupportedException e) {
             throw new CloneFailedException(e);
         }
-        if (result == null) {
-            if (commandRatio < 0) {
-                result = getLwDamageResult(commandRatio + 1, randomNumber, enemy, command);
-            } else {
-                result = getLwDamageResult(commandRatio - 1, randomNumber, enemy, command);
-            }
-        }
-        return result;
+        return resultClone;
     }
 
 }
