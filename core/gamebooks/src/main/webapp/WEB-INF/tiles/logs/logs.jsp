@@ -7,7 +7,7 @@
 
 	<h1><spring:message code="page.logs.baseLog" /></h1>
 	<c:forEach var="log" items="${logFiles.base}">
-		<c:url var="logUrl" value="/logs/log-base${log.timestamp}.log/log" />
+		<c:url var="logUrl" value="/logs/log-base${log.timestamp}.log/log/view" />
 		<a href="${logUrl}">${log.loginDateTime}</a> &ndash; <fmt:formatNumber value="${log.size / 1024}" maxFractionDigits="1" /> kB<br />
 	</c:forEach>
 
