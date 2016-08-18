@@ -38,7 +38,7 @@ public class Lw2EquipmentMapper implements LwEquipmentMapper {
 
         result.put("lwGoldCrowns", crowns + diceRenderer.render(DICE_SIDE, goldCrowns));
         result.put("lwGoldCrownsNumeric", crowns);
-        character.getMoney().setGoldCrowns(crowns);
+        itemHandler.addItem(character, "gold", crowns);
     }
 
 }
