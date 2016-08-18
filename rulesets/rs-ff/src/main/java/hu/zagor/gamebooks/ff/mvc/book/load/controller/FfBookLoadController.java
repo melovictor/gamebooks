@@ -2,6 +2,8 @@ package hu.zagor.gamebooks.ff.mvc.book.load.controller;
 
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
 import hu.zagor.gamebooks.character.Character;
+import hu.zagor.gamebooks.content.FfParagraphData;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.ff.character.FfCharacterPageData;
 import hu.zagor.gamebooks.mvc.book.load.controller.GenericBookLoadController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
@@ -34,4 +36,12 @@ public class FfBookLoadController extends RawBookLoadController {
     public FfCharacterPageData getCharacterPageData(final Character character) {
         return (FfCharacterPageData) getBeanFactory().getBean(getInfo().getCharacterPageDataBeanId(), character, getInfo().getCharacterHandler());
     }
+
+    @Override
+    protected Paragraph getDummyParagraph() {
+        final Paragraph dummy = getBeanFactory().getBean(Paragraph.class);
+        dummy.setData(getBeanFactory().getBean("ffParagraphData", FfParagraphData.class));
+        return dummy;
+    }
+
 }

@@ -2,7 +2,9 @@ package hu.zagor.gamebooks.lw.mvc.book.load.controller;
 
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
 import hu.zagor.gamebooks.character.Character;
+import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.lw.character.LwCharacterPageData;
+import hu.zagor.gamebooks.lw.content.LwParagraphData;
 import hu.zagor.gamebooks.mvc.book.load.controller.GenericBookLoadController;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.raw.mvc.book.load.controller.RawBookLoadController;
@@ -33,6 +35,13 @@ public class LwBookLoadController extends RawBookLoadController {
     @Override
     public LwCharacterPageData getCharacterPageData(final Character character) {
         return (LwCharacterPageData) getBeanFactory().getBean(getInfo().getCharacterPageDataBeanId(), character, getInfo().getCharacterHandler());
+    }
+
+    @Override
+    protected Paragraph getDummyParagraph() {
+        final Paragraph dummy = getBeanFactory().getBean(Paragraph.class);
+        dummy.setData(getBeanFactory().getBean("lwParagraphData", LwParagraphData.class));
+        return dummy;
     }
 
 }

@@ -131,7 +131,11 @@ public abstract class GenericBookLoadController extends AbstractSectionDisplayin
         paragraph.calculateValidEvents();
     }
 
-    private Paragraph getDummyParagraph() {
+    /**
+     * Return an empty, dummy {@link Paragraph} to serve as a starting point for the book switching.
+     * @return a new {@link Paragraph} containing a ruleset-specific {@link ParagraphData} inside
+     */
+    protected Paragraph getDummyParagraph() {
         final Paragraph dummy = getBeanFactory().getBean(Paragraph.class);
         dummy.setData(getBeanFactory().getBean("paragraphData", ParagraphData.class));
         return dummy;
