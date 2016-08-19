@@ -44,7 +44,11 @@ public class LwAttributeHandler extends ComplexAttributeHandler<LwCharacter> {
      */
     @Override
     public void handleModification(final LwCharacter character, final String attribute, final int amount, final ModifyAttributeType type) {
-        handleRegularFieldChange(character, attribute, amount, type);
+        String transformedAttribute = attribute;
+        if ("gold".equals(attribute)) {
+            transformedAttribute = "money.goldCrowns";
+        }
+        handleRegularFieldChange(character, transformedAttribute, amount, type);
         sanityCheck(character);
     }
 
