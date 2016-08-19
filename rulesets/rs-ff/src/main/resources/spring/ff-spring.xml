@@ -203,7 +203,6 @@
 
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckFfAttributeCommandResolver" id="ffItemCheckAttributeCommandResolver" />
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckValueCommandResolver" id="ffItemCheckValueCommandResolver" />
-  <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckPosCommandResolver" id="ffItemCheckPosCommandResolver" />
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckEnemyCommandResolver" id="ffItemCheckEnemyCommandResolver" />
 
   <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckAttributeEqualityCommandResolver" id="ffItemCheckAttributeEqualityCommandResolver" />
@@ -225,7 +224,7 @@
       <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckGoldPiecesCommandResolver" />
     </entry>
     <entry key="value" value-ref="ffItemCheckValueCommandResolver" />
-    <entry key="pos" value-ref="ffItemCheckPosCommandResolver" />
+    <entry key="pos" value-ref="itemCheckPosCommandResolver" />
     <entry key="attribute">
       <bean class="hu.zagor.gamebooks.content.command.itemcheck.ItemCheckAttributeCommandResolver" />
     </entry>
