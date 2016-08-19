@@ -47,7 +47,6 @@ public abstract class ComplexBookTakeItemController<C extends Character> extends
 
         final BuySellResponse result = getMarketHandler().handleMarketPurchase(itemId, character,
             (MarketCommand) wrapper.getParagraph().getItemsToProcess().get(0).getCommand(), getInfo().getCharacterHandler());
-        getItemInteractionRecorder().recordItemMarketMovement(wrapper, "Sale", itemId);
 
         return result;
     }
@@ -79,7 +78,6 @@ public abstract class ComplexBookTakeItemController<C extends Character> extends
 
         final BuySellResponse result = getMarketHandler().handleMarketSell(itemId, character,
             (MarketCommand) wrapper.getParagraph().getItemsToProcess().get(0).getCommand(), getInfo().getCharacterHandler());
-        getItemInteractionRecorder().recordItemMarketMovement(wrapper, "Purchase", itemId);
         return result;
     }
 

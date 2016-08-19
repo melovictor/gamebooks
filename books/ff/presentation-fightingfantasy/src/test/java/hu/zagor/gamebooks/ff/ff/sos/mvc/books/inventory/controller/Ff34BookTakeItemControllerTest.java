@@ -13,7 +13,6 @@ import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.player.PlayerUser;
-import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -49,7 +48,6 @@ public class Ff34BookTakeItemControllerTest {
     @Mock private FfCharacter character;
     @Mock private PlayerUser player;
     @Inject private BookContentInitializer contentInitializer;
-    @Inject private ItemInteractionRecorder itemInteractionRecorder;
     @Inject private Logger logger;
     @Mock private FfAttributeHandler attributeHandler;
 
@@ -85,7 +83,6 @@ public class Ff34BookTakeItemControllerTest {
         expect(wrapper.getParagraph()).andReturn(paragraph);
         paragraph.removeValidItem(provisionId, 1);
         logger.debug("Took {} piece(s) of item {}.", 1, provisionId);
-        itemInteractionRecorder.recordItemTaking(wrapper, provisionId);
 
         paragraph.setActions(9);
 
@@ -119,7 +116,6 @@ public class Ff34BookTakeItemControllerTest {
         expect(wrapper.getParagraph()).andReturn(paragraph);
         paragraph.removeValidItem(chainmailId, 1);
         logger.debug("Took {} piece(s) of item {}.", 1, chainmailId);
-        itemInteractionRecorder.recordItemTaking(wrapper, chainmailId);
 
         paragraph.setActions(9);
 
@@ -158,7 +154,6 @@ public class Ff34BookTakeItemControllerTest {
         expect(wrapper.getParagraph()).andReturn(paragraph);
         paragraph.removeValidItem(chainmailId, 1);
         logger.debug("Took {} piece(s) of item {}.", 1, chainmailId);
-        itemInteractionRecorder.recordItemTaking(wrapper, chainmailId);
 
         paragraph.setActions(9);
 

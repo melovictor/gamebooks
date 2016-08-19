@@ -12,7 +12,6 @@ import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.player.PlayerUser;
-import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -47,7 +46,6 @@ public class Ff5BookTakeItemControllerTest {
     @Mock private GatheredLostItem glItem;
     @Mock private PlayerUser player;
     @Inject private BookContentInitializer contentInitializer;
-    @Inject private ItemInteractionRecorder itemInteractionRecorder;
     @Inject private Logger logger;
 
     @BeforeClass
@@ -108,7 +106,6 @@ public class Ff5BookTakeItemControllerTest {
         expect(wrapper.getParagraph()).andReturn(paragraph);
         paragraph.removeValidItem(itemId, 1);
         logger.debug("Took {} piece(s) of item {}.", 1, itemId);
-        itemInteractionRecorder.recordItemTaking(wrapper, itemId);
 
         paragraph.setActions(98);
         expect(character.getGold()).andReturn(5);

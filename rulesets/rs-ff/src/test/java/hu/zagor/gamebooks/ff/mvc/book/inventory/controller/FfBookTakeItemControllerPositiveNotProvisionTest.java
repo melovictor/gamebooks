@@ -14,7 +14,6 @@ import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.service.FfMarketHandler;
-import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -53,7 +52,6 @@ public class FfBookTakeItemControllerPositiveNotProvisionTest {
     @Inject private FfMarketHandler marketHandler;
     @Instance private Map<String, Object> resultMap;
     @Mock private FfItem item;
-    @Inject private ItemInteractionRecorder itemInteractionRecorder;
 
     @BeforeClass
     public void setUpClass() {
@@ -72,7 +70,6 @@ public class FfBookTakeItemControllerPositiveNotProvisionTest {
     public void testHandleConsumeItemWhenNoEventIsOngoingAndWeAreDrinkingShouldConsumeItem() {
         // GIVEN
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
-        itemInteractionRecorder.recordItemConsumption(wrapper, "2001");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(null);

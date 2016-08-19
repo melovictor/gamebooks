@@ -15,7 +15,6 @@ import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.player.PlayerUser;
-import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -45,7 +44,6 @@ public class Ff23BookTakeItemControllerTakeItemTest {
     @Mock private HttpSession session;
     @Inject private BeanFactory beanFactory;
     @Mock private HttpSessionWrapper wrapper;
-    @Inject private ItemInteractionRecorder itemInteractionRecorder;
     @Mock private Paragraph paragraph;
     @Mock private FfCharacter character;
     private FfBookInformations info;
@@ -205,7 +203,6 @@ public class Ff23BookTakeItemControllerTakeItemTest {
         expect(wrapper.getParagraph()).andReturn(paragraph);
         paragraph.removeValidItem(itemId, 1);
         logger.debug("Took {} piece(s) of item {}.", 1, itemId);
-        itemInteractionRecorder.recordItemTaking(wrapper, itemId);
         paragraph.setActions(9);
     }
 
@@ -226,7 +223,6 @@ public class Ff23BookTakeItemControllerTakeItemTest {
         expect(wrapper.getParagraph()).andReturn(paragraph);
         paragraph.removeValidItem(itemId, amount);
         logger.debug("Took {} piece(s) of item {}.", amount, itemId);
-        itemInteractionRecorder.recordItemTaking(wrapper, itemId);
         paragraph.setActions(9);
     }
 

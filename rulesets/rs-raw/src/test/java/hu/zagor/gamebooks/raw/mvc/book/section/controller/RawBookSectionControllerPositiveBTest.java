@@ -24,7 +24,6 @@ import hu.zagor.gamebooks.mvc.book.section.service.CustomPrePostSectionHandler;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.raw.character.RawCharacterPageData;
-import hu.zagor.gamebooks.recording.NavigationRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -80,7 +79,6 @@ public class RawBookSectionControllerPositiveBTest {
     private ChoiceSet choicesExtra;
     private Choice choiceWithExtra;
     @Instance private Map<String, Enemy> enemies;
-    @Inject private NavigationRecorder navigationRecorder;
     @Mock private Map<String, Object> modelMap;
     @Mock private StaticResourceDescriptor staticResourceDescriptor;
     @Mock private Set<String> resourceSet;
@@ -142,7 +140,6 @@ public class RawBookSectionControllerPositiveBTest {
         expect(wrapper.getParagraph()).andReturn(newParagraph);
         expect(newParagraph.getId()).andReturn("10");
         expect(wrapper.setModel(model)).andReturn(model);
-        navigationRecorder.recordNavigation(wrapper, "s-9", oldParagraph, newParagraph);
         expectResources();
         expectCpDataInsertion();
         expect(model.addAttribute("cont", continueData)).andReturn(model);
@@ -176,7 +173,6 @@ public class RawBookSectionControllerPositiveBTest {
         expect(wrapper.getParagraph()).andReturn(newParagraph);
         expect(newParagraph.getId()).andReturn("10");
         expect(wrapper.setModel(model)).andReturn(model);
-        navigationRecorder.recordNavigation(wrapper, "s-9", oldParagraph, newParagraph);
         expectResources();
         expectCpDataInsertion();
         expect(model.addAttribute("cont", continueData)).andReturn(model);

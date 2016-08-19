@@ -107,7 +107,6 @@ public class FfBookTakeItemController extends ComplexBookTakeItemController<FfCh
      */
     protected ConsumeItemResponse doHandleConsumeItem(final HttpSessionWrapper wrapper, final String itemId) {
         String message = null;
-        getItemInteractionRecorder().recordItemConsumption(wrapper, itemId);
         final Paragraph paragraph = wrapper.getParagraph();
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
         final CommandView commandView = character.getCommandView();

@@ -13,7 +13,6 @@ import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.player.PlayerUser;
-import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import javax.servlet.http.HttpServletRequest;
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
@@ -48,7 +47,6 @@ public class Ff1BookTakeItemControllerTest {
     private BookContentInitializer contentInitializer;
     private FfCharacter character;
     private Logger logger;
-    private ItemInteractionRecorder itemInteractionRecorder;
     private FfAttributeHandler attributeHandler;
 
     @BeforeClass
@@ -73,9 +71,7 @@ public class Ff1BookTakeItemControllerTest {
         Whitebox.setInternalState(underTest, "info", info);
         character = mockControl.createMock(FfCharacter.class);
         logger = mockControl.createMock(Logger.class);
-        itemInteractionRecorder = mockControl.createMock(ItemInteractionRecorder.class);
         Whitebox.setInternalState(underTest, "logger", logger);
-        Whitebox.setInternalState(underTest, "itemInteractionRecorder", itemInteractionRecorder);
         attributeHandler = mockControl.createMock(FfAttributeHandler.class);
         characterHandler.setAttributeHandler(attributeHandler);
     }
@@ -110,7 +106,6 @@ public class Ff1BookTakeItemControllerTest {
         expect(wrapper.getParagraph()).andReturn(paragraph);
         paragraph.removeValidItem(itemId, 1);
         logger.debug("Took {} piece(s) of item {}.", 1, itemId);
-        itemInteractionRecorder.recordItemTaking(wrapper, itemId);
 
         paragraph.setActions(9);
         mockControl.replay();
@@ -144,7 +139,6 @@ public class Ff1BookTakeItemControllerTest {
         expect(wrapper.getParagraph()).andReturn(paragraph);
         paragraph.removeValidItem(itemId, 1);
         logger.debug("Took {} piece(s) of item {}.", 1, itemId);
-        itemInteractionRecorder.recordItemTaking(wrapper, itemId);
 
         paragraph.setActions(9);
 

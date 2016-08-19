@@ -13,7 +13,6 @@ import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -47,7 +46,6 @@ public class Ff38BookTakeItemControllerATest {
     @Mock private FfParagraphData paragraphData;
     @Mock private FfItem item;
     @Mock private FfAttributeHandler attributeHandler;
-    @Inject private ItemInteractionRecorder itemInteractionRecorder;
     @Mock private List<Item> itemList;
 
     @BeforeClass
@@ -236,7 +234,6 @@ public class Ff38BookTakeItemControllerATest {
     }
 
     private void preConsume(final String consumeId) {
-        itemInteractionRecorder.recordItemConsumption(wrapper, consumeId);
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(null);

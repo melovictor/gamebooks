@@ -14,7 +14,6 @@ import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.messages.MessageSource;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
@@ -52,7 +51,6 @@ public class FfBookTakeItemControllerPositiveHasNoTimeTest {
     @Mock private Paragraph paragraph;
     @Mock private FfParagraphData data;
     @Mock private FfItem item;
-    @Inject private ItemInteractionRecorder itemInteractionRecorder;
     @Inject private MessageSource messageSource;
 
     @BeforeClass
@@ -83,7 +81,6 @@ public class FfBookTakeItemControllerPositiveHasNoTimeTest {
     public void testHandleConsumeItemWhenLuckTestingAndCanEatButHasNoTimeShouldNotConsumeItem() {
         // GIVEN
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
-        itemInteractionRecorder.recordItemConsumption(wrapper, "2000");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(commandView);

@@ -14,7 +14,6 @@ import hu.zagor.gamebooks.mvc.book.inventory.domain.ReplaceItemData;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemData;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.player.PlayerUser;
-import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.logging.LogInject;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -32,7 +31,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class GenericBookTakeItemController extends AbstractRequestWrappingController {
 
     @LogInject private Logger logger;
-    @Autowired private ItemInteractionRecorder itemInteractionRecorder;
     @Autowired private BookContentInitializer contentInitializer;
 
     /**
@@ -89,7 +87,6 @@ public class GenericBookTakeItemController extends AbstractRequestWrappingContro
             paragraph.removeValidItem(itemId, totalTook);
         }
         logger.debug("Took {} piece(s) of item {}.", totalTook, itemId);
-        itemInteractionRecorder.recordItemTaking(wrapper, itemId);
 
         return new TakeItemResponse(totalTook);
     }
@@ -123,8 +120,6 @@ public class GenericBookTakeItemController extends AbstractRequestWrappingContro
      */
     protected String doHandleItemReplace(final HttpServletRequest request, final String oldItemId, final String newItemId, final int amount) {
         final HttpSessionWrapper wrapper = getWrapper(request);
-
-        itemInteractionRecorder.recordItemReplacing(wrapper, newItemId, oldItemId);
 
         final GatheredLostItem glNewItem = getGatheredLostItem(newItemId, amount);
 
@@ -194,12 +189,6 @@ public class GenericBookTakeItemController extends AbstractRequestWrappingContro
             final Character character = wrapper.getCharacter();
             final CharacterHandler characterHandler = getInfo().getCharacterHandler();
             characterHandler.getItemHandler().setItemEquipState(character, itemId, isEquipped);
-            getItemInteractionRecorder().changeItemEquipState(wrapper, itemId);
         }
     }
-
-    public ItemInteractionRecorder getItemInteractionRecorder() {
-        return itemInteractionRecorder;
-    }
-
 }

@@ -15,7 +15,6 @@ import hu.zagor.gamebooks.mvc.book.inventory.domain.ReplaceItemData;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemData;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
 import hu.zagor.gamebooks.player.PlayerUser;
-import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -57,7 +56,6 @@ public class GenericBookTakeItemControllerPositiveTest {
     @Instance private Character character;
     @Instance private CharacterHandler characterHandler;
     @Mock private CharacterItemHandler itemHandler;
-    @Inject private ItemInteractionRecorder itemInteractionRecorder;
     @Instance private TakeItemData takeData;
     @Instance private ReplaceItemData replaceData;
     @Mock private List<Item> itemList;
@@ -93,7 +91,6 @@ public class GenericBookTakeItemControllerPositiveTest {
         expect(sessionWrapper.getParagraph()).andReturn(paragraph);
         paragraph.removeValidItem(ITEM_ID, AMOUNT);
         logger.debug("Took {} piece(s) of item {}.", AMOUNT, ITEM_ID);
-        itemInteractionRecorder.recordItemTaking(sessionWrapper, ITEM_ID);
         mockControl.replay();
         // WHEN
         final TakeItemResponse returned = underTest.handleItemTake(request, takeData);
@@ -112,7 +109,6 @@ public class GenericBookTakeItemControllerPositiveTest {
         expect(sessionWrapper.getCharacter()).andReturn(character);
         expect(itemHandler.addItem(character, ITEM_ID, AMOUNT)).andReturn(0);
         logger.debug("Took {} piece(s) of item {}.", 0, ITEM_ID);
-        itemInteractionRecorder.recordItemTaking(sessionWrapper, ITEM_ID);
         mockControl.replay();
         // WHEN
         final TakeItemResponse returned = underTest.handleItemTake(request, takeData);
@@ -133,7 +129,6 @@ public class GenericBookTakeItemControllerPositiveTest {
         expect(sessionWrapper.getParagraph()).andReturn(paragraph);
         paragraph.removeValidItem(ITEM_ID, TAKEN_AMOUNT);
         logger.debug("Took {} piece(s) of item {}.", TAKEN_AMOUNT, ITEM_ID);
-        itemInteractionRecorder.recordItemTaking(sessionWrapper, ITEM_ID);
         mockControl.replay();
         // WHEN
         final TakeItemResponse returned = underTest.handleItemTake(request, takeData);
@@ -144,7 +139,6 @@ public class GenericBookTakeItemControllerPositiveTest {
     public void testHandleItemReplaceWhenCharacterDoesNotHaveReplacementItemShouldReturnZero() {
         // GIVEN
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
-        itemInteractionRecorder.recordItemReplacing(sessionWrapper, "1002", "1001");
         expect(beanFactory.getBean("gatheredLostItem", "1002", 1, 0, false)).andReturn(glItem);
         expect(sessionWrapper.getCharacter()).andReturn(character);
         expect(itemHandler.hasItem(character, "1001")).andReturn(false);
@@ -159,7 +153,6 @@ public class GenericBookTakeItemControllerPositiveTest {
     public void testHandleItemReplaceWhenCharacterHasReplacementItemShouldReturnOne() {
         // GIVEN
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(sessionWrapper);
-        itemInteractionRecorder.recordItemReplacing(sessionWrapper, "1002", "1001");
         expect(beanFactory.getBean("gatheredLostItem", "1002", 1, 0, false)).andReturn(glItem);
         expect(sessionWrapper.getCharacter()).andReturn(character);
         expect(itemHandler.hasItem(character, "1001")).andReturn(true);
@@ -180,15 +173,6 @@ public class GenericBookTakeItemControllerPositiveTest {
         final String returned = underTest.handleItemReplace(request, replaceData);
         // THEN
         Assert.assertEquals(returned, "1");
-    }
-
-    public void testGetItemInteractionRecorderShouldReturnRecorder() {
-        // GIVEN
-        mockControl.replay();
-        // WHEN
-        final ItemInteractionRecorder returned = underTest.getItemInteractionRecorder();
-        // THEN
-        Assert.assertSame(returned, itemInteractionRecorder);
     }
 
     public void testDropItemWhenItemDoesNotExistsShouldDoNothing() {

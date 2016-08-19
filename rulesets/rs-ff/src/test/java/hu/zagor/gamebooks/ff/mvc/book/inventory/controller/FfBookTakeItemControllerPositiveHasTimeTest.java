@@ -18,7 +18,6 @@ import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
 import hu.zagor.gamebooks.ff.mvc.book.inventory.service.FfMarketHandler;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.BuySellResponse;
-import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.messages.MessageSource;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
@@ -59,7 +58,6 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
     @Inject private FfMarketHandler marketHandler;
     @Instance private BuySellResponse resultMap;
     @Mock private FfItem item;
-    @Inject private ItemInteractionRecorder itemInteractionRecorder;
     @Mock private MarketCommand marketCommand;
     @Mock private List<ProcessableItemHolder> holderList;
     @Mock private ProcessableItemHolder holder;
@@ -87,7 +85,6 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         paragraph.setActions(9);
         expect(wrapper.getCharacter()).andReturn(character);
         itemHandler.setItemEquipState(character, "3009", true);
-        itemInteractionRecorder.changeItemEquipState(wrapper, "3009");
         mockControl.replay();
         // WHEN
         underTest.handleItemStateChange(request, "3009", true);
@@ -97,7 +94,6 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
     public void testHandleConsumeItemWhenFightingShouldDoNothing() {
         // GIVEN
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
-        itemInteractionRecorder.recordItemConsumption(wrapper, "2000");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(commandView);
@@ -114,7 +110,6 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
     public void testHandleConsumeItemWhenLuckTestingAndCanEatEverywhereShouldConsumeItem() {
         // GIVEN
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
-        itemInteractionRecorder.recordItemConsumption(wrapper, "2000");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(commandView);
@@ -137,7 +132,6 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         // GIVEN
         characterHandler.setCanEatEverywhere(false);
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
-        itemInteractionRecorder.recordItemConsumption(wrapper, "2000");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(commandView);
@@ -160,7 +154,6 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
     public void testHandleConsumeItemWhenLuckTestingAndCanNotEatHereShouldDoNothing() {
         // GIVEN
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
-        itemInteractionRecorder.recordItemConsumption(wrapper, "2000");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(commandView);
@@ -181,7 +174,6 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
     public void testHandleConsumeItemWhenNoViewNameIsAvailableAndCanEatHereShouldConsumeItem() {
         // GIVEN
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
-        itemInteractionRecorder.recordItemConsumption(wrapper, "2000");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(commandView);
@@ -205,7 +197,6 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
     public void testHandleConsumeItemWhenNoEventIsOngoingAndCanEatHereShouldConsumeItem() {
         // GIVEN
         expect(beanFactory.getBean("httpSessionWrapper", request)).andReturn(wrapper);
-        itemInteractionRecorder.recordItemConsumption(wrapper, "2000");
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(null);
@@ -234,7 +225,6 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         expect(holderList.get(0)).andReturn(holder);
         expect(holder.getCommand()).andReturn(marketCommand);
         expect(marketHandler.handleMarketPurchase("3001", character, marketCommand, characterHandler)).andReturn(resultMap);
-        itemInteractionRecorder.recordItemMarketMovement(wrapper, "Sale", "3001");
         mockControl.replay();
         // WHEN
         final BuySellResponse response = underTest.handleMarketBuy(request, "3001");
@@ -251,7 +241,6 @@ public class FfBookTakeItemControllerPositiveHasTimeTest {
         expect(holderList.get(0)).andReturn(holder);
         expect(holder.getCommand()).andReturn(marketCommand);
         expect(marketHandler.handleMarketSell("3001", character, marketCommand, characterHandler)).andReturn(resultMap);
-        itemInteractionRecorder.recordItemMarketMovement(wrapper, "Purchase", "3001");
         mockControl.replay();
         // WHEN
         final BuySellResponse returned = underTest.handleMarketSell(request, "3001");

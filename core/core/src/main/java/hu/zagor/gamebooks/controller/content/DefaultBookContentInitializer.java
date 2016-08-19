@@ -7,7 +7,6 @@ import hu.zagor.gamebooks.books.contentstorage.domain.BookParagraphConstants;
 import hu.zagor.gamebooks.books.saving.GameStateHandler;
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
 import hu.zagor.gamebooks.content.Paragraph;
-import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.domain.BookContentSpecification;
@@ -82,7 +81,6 @@ public class DefaultBookContentInitializer implements BookContentInitializer, Be
         if (paragraph == null) {
             throw new IllegalStateException("We received a null paragraph from the book storage for paragraph ID '" + paragraphId + "'. Something is very wrong!");
         }
-        markParagraphImages(paragraph, player.getSettings().getImageTypeOrder(), info);
         try {
             checkNewParagraphValidity(previousParagraph, paragraphId);
         } catch (final InvalidStepChoiceException exception) {
@@ -93,21 +91,6 @@ public class DefaultBookContentInitializer implements BookContentInitializer, Be
         }
 
         return paragraph;
-    }
-
-    /**
-     * Marks the image sources with the query of either bw or col so the browser knows when it has to reload it.
-     * @param paragraph the paragraph object
-     * @param imageType the image type name
-     * @param info the {@link BookInformations} object
-     */
-    protected void markParagraphImages(final Paragraph paragraph, final String imageType, final BookInformations info) {
-        final ParagraphData data = paragraph.getData();
-        String text = data.getText();
-        text = text.replaceAll("(<img[^>]*?src=\"[^\"]*)", "$1?" + imageType);
-        text = text.replaceAll("<p class=\"inlineImage\" data-img=\"",
-            "<p class=\"inlineImage\" data-book=\"" + info.getResourceDir() + "\" data-type=\"" + imageType.charAt(0) + "\" data-img=\"");
-        data.setText(text);
     }
 
     @Override

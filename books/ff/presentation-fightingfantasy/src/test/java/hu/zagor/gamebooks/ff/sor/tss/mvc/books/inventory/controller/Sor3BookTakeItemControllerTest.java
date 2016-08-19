@@ -23,9 +23,7 @@ import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.SorCharacter;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.BuySellResponse;
 import hu.zagor.gamebooks.mvc.book.inventory.service.MarketHandler;
-import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.renderer.DiceResultRenderer;
-import hu.zagor.gamebooks.support.locale.LocaleProvider;
 import hu.zagor.gamebooks.support.messages.MessageSource;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
@@ -54,7 +52,6 @@ public class Sor3BookTakeItemControllerTest {
     @MockControl private IMocksControl mockControl;
     @UnderTest private Sor3BookTakeItemController underTest;
 
-    @Inject private LocaleProvider provider;
     @Inject private MessageSource messageSource;
     @Inject private DiceResultRenderer renderer;
     @Inject private RandomNumberGenerator generator;
@@ -67,7 +64,6 @@ public class Sor3BookTakeItemControllerTest {
     @Mock private FfCharacterItemHandler itemHandler;
     @Mock private SorCharacter character;
     @Inject private MarketHandler<SorCharacter> marketHandler;
-    @Inject private ItemInteractionRecorder itemInteractionRecorder;
     @Mock private MarketCommand marketCommand;
     private BuySellResponse buySellResponse;
     @Mock private List<MarketElement> itemsForSale;
@@ -343,7 +339,6 @@ public class Sor3BookTakeItemControllerTest {
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expectMarketCommand();
         expect(marketHandler.handleMarketSell("3005", character, marketCommand, characterHandler)).andReturn(buySellResponse);
-        itemInteractionRecorder.recordItemMarketMovement(wrapper, "Purchase", "3005");
     }
 
     private void expectMarketCommand() {
@@ -356,7 +351,6 @@ public class Sor3BookTakeItemControllerTest {
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expectMarketCommand();
         expect(marketHandler.handleMarketPurchase("3005", character, marketCommand, characterHandler)).andReturn(buySellResponse);
-        itemInteractionRecorder.recordItemMarketMovement(wrapper, "Sale", "3005");
     }
 
     private void expectWrapper() {

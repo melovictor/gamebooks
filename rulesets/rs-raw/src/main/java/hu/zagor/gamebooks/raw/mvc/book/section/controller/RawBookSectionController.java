@@ -20,11 +20,8 @@ import hu.zagor.gamebooks.player.PlayerUser;
 import hu.zagor.gamebooks.raw.character.RawCharacterPageData;
 import hu.zagor.gamebooks.raw.mvc.book.controller.CharacterPageDisplayingController;
 import hu.zagor.gamebooks.raw.mvc.book.section.domain.UserInputResponseForm;
-import hu.zagor.gamebooks.recording.NavigationRecorder;
-import hu.zagor.gamebooks.recording.UserInteractionRecorder;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,9 +33,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author Tamas_Szekeres
  */
 public class RawBookSectionController extends GenericBookSectionController implements CharacterPageDisplayingController {
-
-    @Autowired private NavigationRecorder navigationRecorder;
-    @Autowired private UserInteractionRecorder interactionRecorder;
     private final SectionHandlingService sectionHandlingService;
 
     /**
@@ -109,12 +103,20 @@ public class RawBookSectionController extends GenericBookSectionController imple
         handleCustomSectionsPre(model, wrapper, changedSection);
         final String bookPage = doHandleSection(model, wrapper, paragraph);
         handleCustomSectionsPost(model, wrapper, changedSection);
+        markParagraphImages(paragraph, wrapper.getPlayer().getSettings().getImageTypeOrder());
         wrapper.setModel(model);
-        navigationRecorder.recordNavigation(wrapper, sectionIdentifier, previousParagraph, paragraph);
         addResources(model);
         model.addAttribute("data", getCharacterPageData(wrapper.getCharacter()));
         model.addAttribute("cont", getInfo().getContinuationData());
         return bookPage;
+    }
+
+    private void markParagraphImages(final Paragraph paragraph, final String imageType) {
+        final ParagraphData data = paragraph.getData();
+        String text = data.getText();
+        text = text.replaceAll("(<img[^>]*?src=\"[^\"]*)", "$1?" + imageType).replaceAll("<p class=\"inlineImage\" data-img=\"",
+            "<p class=\"inlineImage\" data-book=\"" + getInfo().getResourceDir() + "\" data-type=\"" + imageType.charAt(0) + "\" data-img=\"");
+        data.setText(text);
     }
 
     /**
@@ -229,7 +231,6 @@ public class RawBookSectionController extends GenericBookSectionController imple
         final DefaultUserInteractionHandler interactionHandler = (DefaultUserInteractionHandler) getInfo().getCharacterHandler().getInteractionHandler();
         interactionHandler.setUserInput(character, form.getResponseText());
         interactionHandler.setUserInputTime(character, form.getElapsedTime());
-        interactionRecorder.recordUserResponse(wrapper, form.getResponseText(), form.getForcedTime() == 0 ? form.getElapsedTime() : form.getForcedTime());
         addResources(model);
         return processSectionChange(model, wrapper, wrapper.getParagraph());
     }
@@ -283,7 +284,6 @@ public class RawBookSectionController extends GenericBookSectionController imple
      * @return the book page's name
      */
     protected String doHandleRandom(final Model model, final HttpServletRequest request) {
-        interactionRecorder.recordRandomRoll(getWrapper(request));
         return handleSection(model, request, null);
     }
 
@@ -291,9 +291,4 @@ public class RawBookSectionController extends GenericBookSectionController imple
     public RawCharacterPageData getCharacterPageData(final Character character) {
         return (RawCharacterPageData) getBeanFactory().getBean(getInfo().getCharacterPageDataBeanId(), character);
     }
-
-    public UserInteractionRecorder getInteractionRecorder() {
-        return interactionRecorder;
-    }
-
 }

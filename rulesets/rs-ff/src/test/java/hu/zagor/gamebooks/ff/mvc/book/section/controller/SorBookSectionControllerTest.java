@@ -26,7 +26,6 @@ import hu.zagor.gamebooks.mvc.book.section.service.CustomPrePostSectionHandler;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.player.PlayerSettings;
 import hu.zagor.gamebooks.player.PlayerUser;
-import hu.zagor.gamebooks.recording.NavigationRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -76,7 +75,6 @@ public class SorBookSectionControllerTest {
     @Mock private SorCharacter character;
     @Mock private Paragraph newParagraph;
     @Inject private BookContentInitializer contentInitializer;
-    @Inject private NavigationRecorder navigationRecorder;
     @Mock private FfCharacterPageData charPageData;
     @Instance(inject = true) private Map<String, CustomPrePostSectionHandler> prePostHandlers;
     @Mock private PlayerSettings settings;
@@ -246,7 +244,6 @@ public class SorBookSectionControllerTest {
         expect(newParagraph.getId()).andReturn("479");
 
         expect(wrapper.setModel(model)).andReturn(model);
-        navigationRecorder.recordNavigation(wrapper, "s-479", paragraph, newParagraph);
 
         final Map<String, Object> map = new HashMap<>();
         expect(model.asMap()).andReturn(map);

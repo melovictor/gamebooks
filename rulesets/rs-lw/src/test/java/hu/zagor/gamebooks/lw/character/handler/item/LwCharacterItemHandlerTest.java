@@ -34,7 +34,7 @@ public class LwCharacterItemHandlerTest {
     @UnderTest private LwCharacterItemHandler underTest;
     @Mock private LwItem item;
     @Mock private LwCharacter character;
-    @Inject private ItemFactory itemFactory;
+    @Mock private ItemFactory itemFactory;
     @Inject private BeanFactory beanFactory;
     @Inject private BookInformationFetcher bookInformationFetcher;
     @Mock private LwBookInformations info;

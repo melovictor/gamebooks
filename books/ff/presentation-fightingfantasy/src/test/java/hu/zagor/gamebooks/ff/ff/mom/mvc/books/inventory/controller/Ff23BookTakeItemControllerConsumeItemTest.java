@@ -13,7 +13,6 @@ import hu.zagor.gamebooks.content.Paragraph;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.FfBookInformations;
 import hu.zagor.gamebooks.ff.character.FfCharacter;
-import hu.zagor.gamebooks.recording.ItemInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -40,7 +39,6 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
     @Mock private HttpSession session;
     @Inject private BeanFactory beanFactory;
     @Mock private HttpSessionWrapper wrapper;
-    @Inject private ItemInteractionRecorder itemInteractionRecorder;
     @Mock private Paragraph paragraph;
     @Mock private FfCharacter character;
     private FfBookInformations info;
@@ -64,7 +62,6 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
     public void testDoHandleConsumeItemWhenNormalItemShouldConsumeNormally() {
         // GIVEN
         final String itemId = "2002";
-        itemInteractionRecorder.recordItemConsumption(wrapper, itemId);
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(null);
@@ -88,7 +85,6 @@ public class Ff23BookTakeItemControllerConsumeItemTest {
         final String itemId = "2000";
         expect(wrapper.getCharacter()).andReturn(character);
         expect(itemHandler.removeItem(character, "4002", 10)).andReturn(itemList);
-        itemInteractionRecorder.recordItemConsumption(wrapper, itemId);
         expect(wrapper.getParagraph()).andReturn(paragraph);
         expect(wrapper.getCharacter()).andReturn(character);
         expect(character.getCommandView()).andReturn(null);

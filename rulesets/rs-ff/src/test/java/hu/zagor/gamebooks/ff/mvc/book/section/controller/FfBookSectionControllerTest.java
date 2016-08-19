@@ -27,8 +27,6 @@ import hu.zagor.gamebooks.mvc.book.controller.domain.StaticResourceDescriptor;
 import hu.zagor.gamebooks.mvc.book.section.service.CustomPrePostSectionHandler;
 import hu.zagor.gamebooks.mvc.book.section.service.SectionHandlingService;
 import hu.zagor.gamebooks.player.PlayerUser;
-import hu.zagor.gamebooks.recording.NavigationRecorder;
-import hu.zagor.gamebooks.recording.UserInteractionRecorder;
 import hu.zagor.gamebooks.support.mock.annotation.Inject;
 import hu.zagor.gamebooks.support.mock.annotation.Instance;
 import hu.zagor.gamebooks.support.mock.annotation.MockControl;
@@ -76,8 +74,6 @@ public class FfBookSectionControllerTest {
     @Instance private Map<String, Enemy> enemies;
     @Mock private FfUserInteractionHandler interactionHandler;
     private ChoiceSet choiceSet;
-    @Inject private UserInteractionRecorder interactionRecorder;
-    @Inject private NavigationRecorder navigationRecorder;
     @Mock private Map<String, Object> modelMap;
     @Mock private StaticResourceDescriptor staticResourceDescriptor;
     @Mock private Set<String> resourceSet;
@@ -126,7 +122,6 @@ public class FfBookSectionControllerTest {
 
     public void testHandleRandomShouldHandleRandomRequest() {
         expectWrapper();
-        interactionRecorder.recordRandomRoll(wrapper);
         expectHandleSection();
         expect(model.addAttribute("cont", continueData)).andReturn(model);
         mockControl.replay();
@@ -145,8 +140,6 @@ public class FfBookSectionControllerTest {
         interactionHandler.setFightCommand(character, "luckOnDefense", LUCK_ON_DEFENSE.toString());
         interactionHandler.setFightCommand(character, "luckOnOther", "false");
         interactionHandler.setFightCommand(character, "special", null);
-        interactionRecorder.prepareFightCommand(wrapper, LUCK_ON_HIT, LUCK_ON_DEFENSE, false);
-        interactionRecorder.recordFightCommand(wrapper, ENEMY_ID);
         expectHandleSection();
         expect(model.addAttribute("cont", continueData)).andReturn(model);
         expect(beanFactory.getBean("ffCharacterPageData", character, characterHandler)).andReturn(charPageData);
@@ -189,7 +182,6 @@ public class FfBookSectionControllerTest {
         expect(sectionHandlingService.resolveParagraphId(info, "100a")).andReturn("100");
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
         expect(wrapper.setModel(model)).andReturn(model);
-        navigationRecorder.recordNavigation(wrapper, null, oldParagraph, oldParagraph);
         expectResources();
         expectCpDataInsertion();
     }

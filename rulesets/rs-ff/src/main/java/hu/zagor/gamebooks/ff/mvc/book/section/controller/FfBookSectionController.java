@@ -90,8 +90,6 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
         interactionHandler.setFightCommand(character, LastFightCommand.LUCK_ON_DEFENSE, form.isDef().toString());
         interactionHandler.setFightCommand(character, LastFightCommand.LUCK_ON_OTHER, form.isOth().toString());
         interactionHandler.setFightCommand(character, LastFightCommand.SPECIAL, form.getSpecial());
-        getInteractionRecorder().prepareFightCommand(wrapper, form.isHit(), form.isDef(), form.isOth());
-        getInteractionRecorder().recordFightCommand(wrapper, form.getId());
 
         final String handleSection = super.handleSection(model, request, null);
 
@@ -144,8 +142,6 @@ public class FfBookSectionController extends AbstractFfBookSectionController {
     public final String handleMarketClose(final Model model, final HttpServletRequest request) {
         final HttpSessionWrapper wrapper = getWrapper(request);
         final FfCharacter character = (FfCharacter) wrapper.getCharacter();
-
-        getInteractionRecorder().recordMarketClosing(wrapper);
 
         getInfo().getCharacterHandler().getInteractionHandler().setMarketCommand(character);
         return super.handleSection(model, request, null);
