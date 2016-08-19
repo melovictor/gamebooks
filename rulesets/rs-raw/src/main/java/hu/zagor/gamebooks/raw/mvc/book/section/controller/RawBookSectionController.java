@@ -69,6 +69,7 @@ public class RawBookSectionController extends GenericBookSectionController imple
 
         model.addAttribute("pageTitle", info.getSeries() + " &ndash; " + info.getTitle());
         addResources(model);
+        markParagraphImages(paragraph, player.getSettings().getImageTypeOrder());
         return sectionHandlingService.checkParagraph(model, paragraph, "rawWelcome", info);
     }
 
@@ -111,10 +112,11 @@ public class RawBookSectionController extends GenericBookSectionController imple
         return bookPage;
     }
 
-    private void markParagraphImages(final Paragraph paragraph, final String imageType) {
+    void markParagraphImages(final Paragraph paragraph, final String imageType) {
         final ParagraphData data = paragraph.getData();
         String text = data.getText();
-        text = text.replaceAll("(<img[^>]*?src=\"[^\"]*)", "$1?" + imageType).replaceAll("<p class=\"inlineImage\" data-img=\"",
+        text = text.replaceAll("(<img[^>]*?src=\"[^\"?]*)\"", "$1?" + imageType + "\"");
+        text = text.replaceAll("<p class=\"inlineImage\" data-img=\"",
             "<p class=\"inlineImage\" data-book=\"" + getInfo().getResourceDir() + "\" data-type=\"" + imageType.charAt(0) + "\" data-img=\"");
         data.setText(text);
     }
