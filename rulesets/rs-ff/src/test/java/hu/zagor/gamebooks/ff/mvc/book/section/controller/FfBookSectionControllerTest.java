@@ -121,7 +121,6 @@ public class FfBookSectionControllerTest {
     }
 
     public void testHandleRandomShouldHandleRandomRequest() {
-        expectWrapper();
         expectHandleSection();
         expect(model.addAttribute("cont", continueData)).andReturn(model);
         mockControl.replay();
@@ -181,6 +180,11 @@ public class FfBookSectionControllerTest {
         expect(oldData.getChoices()).andReturn(choiceSet);
         expect(sectionHandlingService.resolveParagraphId(info, "100a")).andReturn("100");
         expect(wrapper.getParagraph()).andReturn(oldParagraph);
+
+        expect(wrapper.getPlayer()).andReturn(player);
+        expect(oldData.getText()).andReturn("<p>Some text.</p>");
+        oldData.setText("<p>Some text.</p>");
+
         expect(wrapper.setModel(model)).andReturn(model);
         expectResources();
         expectCpDataInsertion();

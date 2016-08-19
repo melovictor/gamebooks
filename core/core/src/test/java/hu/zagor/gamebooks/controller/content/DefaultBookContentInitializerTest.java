@@ -8,7 +8,6 @@ import hu.zagor.gamebooks.books.contentstorage.domain.BookParagraphConstants;
 import hu.zagor.gamebooks.books.saving.GameStateHandler;
 import hu.zagor.gamebooks.books.saving.domain.SavedGameContainer;
 import hu.zagor.gamebooks.content.Paragraph;
-import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.domain.BookContentSpecification;
 import hu.zagor.gamebooks.domain.BookInformations;
@@ -26,7 +25,6 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.ui.Model;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -65,7 +63,6 @@ public class DefaultBookContentInitializerTest {
     @Mock private Paragraph paragraph;
     @Mock private GatheredLostItem glItem;
     @Instance private BookContentSpecification contentSpecification;
-    @Instance private ParagraphData paragraphData;
 
     @BeforeClass
     public void setUpClass() {
@@ -87,12 +84,6 @@ public class DefaultBookContentInitializerTest {
     @UnderTest
     public DefaultBookContentInitializer underTest() {
         return new DefaultBookContentInitializer(storage, gameStateHandler);
-    }
-
-    @BeforeMethod
-    public void setUpMethod() {
-        paragraphData.setText("sample text with an image: <img src=\"resources/book1/99.jpg\" />" + "sample text with an image: <img src=\"../resources/99.jpg\" />"
-            + "sample text with an image: <img src=\"resources/book2/99.png\" />" + "sample text with an image: <p class=\"inlineImage\" data-img=\"intro\"></p>");
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
@@ -207,7 +198,6 @@ public class DefaultBookContentInitializerTest {
     public void testLoadSectionWhenNextParagraphIsNotValidAndUserIsNotAdminShouldThrowException() {
         // GIVEN
         expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
-        expect(paragraph.getData()).andReturn(paragraphData);
         expect(previousParagraph.isValidMove(PARAGRAPH_ID)).andReturn(false);
         expect(previousParagraph.getId()).andReturn(WELCOME_ID);
         logger.debug("Player tried to navigate to illegal section {}.", PARAGRAPH_ID);
@@ -273,7 +263,6 @@ public class DefaultBookContentInitializerTest {
     public void testLoadSectionWhenPreviousParagraphNullShouldReturnNewParagraph() {
         // GIVEN
         expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
-        expect(paragraph.getData()).andReturn(paragraphData);
         mockControl.replay();
         // WHEN
         final Paragraph returned = underTest.loadSection(PARAGRAPH_ID, genericPlayer, null, info);
@@ -281,64 +270,9 @@ public class DefaultBookContentInitializerTest {
         Assert.assertSame(returned, paragraph);
     }
 
-    public void testLoadSectionWhenUserNeedsBwImageShouldRewriteImageInTextWithBwQuery() {
-        // GIVEN
-        expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
-        expect(paragraph.getData()).andReturn(paragraphData);
-        mockControl.replay();
-        // WHEN
-        underTest.loadSection(PARAGRAPH_ID, adminPlayer, null, info);
-        // THEN
-        Assert.assertTrue(paragraphData.getText().contains("sample text with an image: <img src=\"resources/book1/99.jpg?bwFirst\" />"));
-        Assert.assertTrue(paragraphData.getText().contains("sample text with an image: <img src=\"../resources/99.jpg?bwFirst\" />"));
-        Assert.assertTrue(paragraphData.getText().contains("sample text with an image: <img src=\"resources/book2/99.png?bwFirst\" />"));
-        Assert.assertTrue(
-            paragraphData.getText().contains("sample text with an image: <p class=\"inlineImage\" data-book=\"book3\" data-type=\"b\" data-img=\"intro\"></p>"));
-    }
-
-    public void testLoadSectionWhenUserNeedsColorImageShouldRewriteImageInTextWithColorQuery() {
-        // GIVEN
-        expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
-        expect(paragraph.getData()).andReturn(paragraphData);
-        mockControl.replay();
-        // WHEN
-        underTest.loadSection(PARAGRAPH_ID, genericPlayer, null, info);
-        // THEN
-        Assert.assertTrue(paragraphData.getText().contains("sample text with an image: <img src=\"resources/book1/99.jpg?colFirst\" />"));
-        Assert.assertTrue(paragraphData.getText().contains("sample text with an image: <img src=\"../resources/99.jpg?colFirst\" />"));
-        Assert.assertTrue(paragraphData.getText().contains("sample text with an image: <img src=\"resources/book2/99.png?colFirst\" />"));
-        Assert.assertTrue(
-            paragraphData.getText().contains("sample text with an image: <p class=\"inlineImage\" data-book=\"book3\" data-type=\"c\" data-img=\"intro\"></p>"));
-    }
-
-    public void testLoadSectionWhenRulesetImageShouldLeaveItAlone() {
-        // GIVEN
-        expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
-        expect(paragraph.getData()).andReturn(paragraphData);
-        paragraphData.setText("sample text with an image: <img src=\"resources/ff/dice.jpg\" />");
-        mockControl.replay();
-        // WHEN
-        underTest.loadSection(PARAGRAPH_ID, genericPlayer, null, info);
-        // THEN
-        Assert.assertEquals(paragraphData.getText(), "sample text with an image: <img src=\"resources/ff/dice.jpg?colFirst\" />");
-    }
-
-    public void testLoadSectionWhenCoreImageShouldLeaveItAlone() {
-        // GIVEN
-        expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
-        expect(paragraph.getData()).andReturn(paragraphData);
-        paragraphData.setText("sample text with an image: <img src=\"../resources/dice.jpg\" />");
-        mockControl.replay();
-        // WHEN
-        underTest.loadSection(PARAGRAPH_ID, genericPlayer, null, info);
-        // THEN
-        Assert.assertEquals(paragraphData.getText(), "sample text with an image: <img src=\"../resources/dice.jpg?colFirst\" />");
-    }
-
     public void testLoadSectionWhenNextParagraphIsWelcomeShouldReturnNewParagraph() {
         // GIVEN
         expect(storage.getBookParagraph(info, WELCOME_ID)).andReturn(paragraph);
-        expect(paragraph.getData()).andReturn(paragraphData);
         mockControl.replay();
         // WHEN
         final Paragraph returned = underTest.loadSection(WELCOME_ID, genericPlayer, previousParagraph, info);
@@ -349,7 +283,6 @@ public class DefaultBookContentInitializerTest {
     public void testLoadSectionWhenNextParagraphIsGeneratingShouldReturnNewParagraph() {
         // GIVEN
         expect(storage.getBookParagraph(info, GENERATOR_ID)).andReturn(paragraph);
-        expect(paragraph.getData()).andReturn(paragraphData);
         mockControl.replay();
         // WHEN
         final Paragraph returned = underTest.loadSection(GENERATOR_ID, genericPlayer, previousParagraph, info);
@@ -360,7 +293,6 @@ public class DefaultBookContentInitializerTest {
     public void testLoadSectionWhenNextParagraphIsBackgroundShouldReturnNewParagraph() {
         // GIVEN
         expect(storage.getBookParagraph(info, BACKGROUND_ID)).andReturn(paragraph);
-        expect(paragraph.getData()).andReturn(paragraphData);
         mockControl.replay();
         // WHEN
         final Paragraph returned = underTest.loadSection(BACKGROUND_ID, genericPlayer, previousParagraph, info);
@@ -371,7 +303,6 @@ public class DefaultBookContentInitializerTest {
     public void testLoadSectionWhenNextParagraphIsValidShouldReturnNewParagraph() {
         // GIVEN
         expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
-        expect(paragraph.getData()).andReturn(paragraphData);
         expect(previousParagraph.isValidMove(PARAGRAPH_ID)).andReturn(true);
         mockControl.replay();
         // WHEN
@@ -383,7 +314,6 @@ public class DefaultBookContentInitializerTest {
     public void testLoadSectionWhenNextParagraphIsNotValidButUserIsAdminShouldReturnNewParagraph() {
         // GIVEN
         expect(storage.getBookParagraph(info, PARAGRAPH_ID)).andReturn(paragraph);
-        expect(paragraph.getData()).andReturn(paragraphData);
         expect(previousParagraph.isValidMove(PARAGRAPH_ID)).andReturn(false);
         expect(previousParagraph.getId()).andReturn(WELCOME_ID);
         logger.debug("Player tried to navigate to illegal section {}.", PARAGRAPH_ID);

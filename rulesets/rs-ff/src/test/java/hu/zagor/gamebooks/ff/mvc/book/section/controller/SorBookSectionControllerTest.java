@@ -243,6 +243,13 @@ public class SorBookSectionControllerTest {
         expect(wrapper.getParagraph()).andReturn(newParagraph);
         expect(newParagraph.getId()).andReturn("479");
 
+        expect(wrapper.getPlayer()).andReturn(player);
+        expect(player.getSettings()).andReturn(settings);
+        expect(settings.getImageTypeOrder()).andReturn("bwFirst");
+        expect(newParagraph.getData()).andReturn(data);
+        expect(data.getText()).andReturn("<p>Some text.</p>");
+        data.setText("<p>Some text.</p>");
+
         expect(wrapper.setModel(model)).andReturn(model);
 
         final Map<String, Object> map = new HashMap<>();

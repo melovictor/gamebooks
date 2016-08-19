@@ -137,6 +137,8 @@ public class RawBookSectionControllerPositiveATest {
         expect(sectionHandlingService.resolveParagraphId(info, "9")).andReturn("9");
         expect(wrapper.getParagraph()).andReturn(newParagraph);
         expect(newParagraph.getId()).andReturn("10");
+        expect(wrapper.getPlayer()).andReturn(player);
+        expect(newParagraph.getData()).andReturn(data);
         expect(wrapper.setModel(model)).andReturn(model);
         expectResources();
         expectCpDataInsertion();
@@ -174,6 +176,8 @@ public class RawBookSectionControllerPositiveATest {
         expect(sectionHandlingService.resolveParagraphId(info, "9")).andReturn("9");
         expect(wrapper.getParagraph()).andReturn(newParagraph);
         expect(newParagraph.getId()).andReturn("10");
+        expect(wrapper.getPlayer()).andReturn(player);
+        expect(newParagraph.getData()).andReturn(data);
         expect(wrapper.setModel(model)).andReturn(model);
         expectResources();
         expectCpDataInsertion();
@@ -201,6 +205,8 @@ public class RawBookSectionControllerPositiveATest {
         expect(sectionHandlingService.resolveParagraphId(info, "10")).andReturn("10");
         expect(wrapper.getParagraph()).andReturn(newParagraph);
         expect(newParagraph.getId()).andReturn("10");
+        expect(wrapper.getPlayer()).andReturn(player);
+        expect(newParagraph.getData()).andReturn(data);
         expect(wrapper.setModel(model)).andReturn(model);
         expectResources();
         expectCpDataInsertion();
@@ -230,6 +236,8 @@ public class RawBookSectionControllerPositiveATest {
         expect(sectionHandlingService.resolveParagraphId(info, "10")).andReturn("10");
         expect(wrapper.getParagraph()).andReturn(newParagraph);
         expect(newParagraph.getId()).andReturn("10");
+        expect(wrapper.getPlayer()).andReturn(player);
+        expect(newParagraph.getData()).andReturn(data);
         expect(wrapper.setModel(model)).andReturn(model);
         expectResources();
         expectCpDataInsertion();
