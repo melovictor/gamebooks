@@ -281,6 +281,7 @@
         [p]– Ha eléred a Rymerift folyót, kövesd az ösvényt északi irányba, mely egy folyami átkelőhöz vezet. A hidat a király emberei őrzik, és ha a jelszót kérdezik, csak ennyit mondj: Naplemente! Onnét már gyorsan eljuthatsz Port Bax kikötőjébe. Szerencsés utat Magányos Farkas![/p]
         [p]Megköszönöd a bátor harcos útmutatását, majd lovadat hátrahagyva elindulsz a sűrű erdőben.[/p]
     </text>
+    <reward id="sunset" />
     <gatherItem id="50020" />
     <next id="244"></next>
   </p>
@@ -950,6 +951,9 @@
     </itemCheck>
     <fight>
       <enemy id="41" />
+      <win>
+        <reward id="zombiecapt" />
+      </win>
     </fight>
     <next id="218"></next>
   </p>
@@ -1118,6 +1122,7 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
         [p class="inlineImage" data-img="79"][/p]
     </text>
     <gatherItem id="10011" />
+    <reward id="sunsword" />
     <next id="40"></next>
   </p>
   <p id="80">
@@ -1568,6 +1573,7 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
         [p]Búcsút intesz Rhygar hadnagynak, és belépsz az alagútba. Az előtted kanyargó út több mint 30 méter magas, és majdnem ugyanilyen széles is. A Tarnalin alagút átvezet a hegyláncon, és innét már egyenesen a fővárosba juthatsz. Az utat fáklyák hosszú sora világítja meg előtted. Ezen az alagúton békeidőben igen nagy forgalom zajlik, a Port Bax kikötővárosába tartó vagy épp onnan érkező kereskedők gyakran megfordulnak itt, de most az út teljesen kihalt, eltekintve egy előtted fekvő felborult gyümölcsszállító szekértől.[/p]
         [p]Ahogy egyre beljebb haladsz Tarnalin alagútjában, kétségek kezdenek el gyötörni. Vajon a Helghastok érkeztek ide korábban? Közel egy órányi gyaloglás után az út kettéválik előtted.[/p]
     </text>
+    <reward id="rwsword" />
     <itemCheck type="kai" id="tracking">
       <have>
         <next id="325"></next>
@@ -1831,7 +1837,12 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
         [p class="inlineImage" data-img="118"][/p]
         [p]Már fél órája sétálsz az alagútban, amikor egy furcsa kis lényt pillantasz meg az úton parkoló gyümölcsszállító szekéren. Alig hatvan centi magas, és leginkább egy mocsári patkányra hasonlít. Először azt gondolod csak valamiféle alagútlakó rágcsáló, majd amikor alaposabban megfigyeled, rájössz, hogy a lény egy foltozott bőrkabátot visel, és kezében egy kis dárdát markol. Ahogy közelebb érsz hozzá, hirtelen szembefordul veled. Bajuszos orrával beleszagol a levegőbe, és élénk barna szemeivel bámul maga elé a homályba. Meglát téged, és gyors szökellésekkel elillan balra, egy sötét kis alagútba.[/p]
     </text>
-    <loseItem id="10010" />
+    <itemCheck type="item" id="10010">
+      <have>
+        <loseItem id="10010" />
+        <reward id="rwspear" />
+      </have>
+    </itemCheck>
     <itemCheck type="kai" id="animalKinship">
       <have>
         <next id="279"></next>
@@ -1893,6 +1904,7 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
         [p]Visszadugod drágakövekkel díszített hüvelyébe frissen szerzett fegyveredet, és az uralkodó személyi testőrével elhagyjátok a király termét.[/p]
     </text>
     <gatherItem id="10011" />
+    <reward id="sunsword" />
     <next id="40"></next>
   </p>
   <p id="124">
@@ -2081,6 +2093,7 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
     <text>
         [p]A férfi elveszi tőled a pénzt, és átadja a [span class="takeItem" data-id="40011" data-amount="1"]Fehér igazolványt[/span], amely érvényes a következő hét napra. Elköszönsz a férfitől, majd elhagyod az irodát, és a vörös kapu felé indulsz.[/p]
     </text>
+    <reward id="wpass" />
     <add amount="-10" to="money.goldCrowns" />
     <next id="246"></next>
   </p>
@@ -2273,6 +2286,9 @@ Ellenfeleitek valamennyien Helghastok, akik a Sötét Urak kapitányai. Képesek
     </text>
     <fight>
       <enemy id="16" />
+      <win>
+        <reward id="snake" />
+      </win>
     </fight>
     <next id="220"></next>
   </p>
@@ -3853,6 +3869,7 @@ Előrántja görbe tőrét, és rád támad. A tömeg kört formál körülötte
         [p]– Azonnal megkapod a [span class="takeItem" data-id="40012" data-amount="1"]Vörös engedélyt[/span]! – közli.[/p]
         [p]Néhány perc elteltével, már a kezedben is tarthatod azt. Elhagyod az őrtornyot, és habozás nélkül a vörös kapu felé indulsz.[/p]
     </text>
+    <reward id="rpass" />
     <next id="246"></next>
   </p>
   <p id="264">
