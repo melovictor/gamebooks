@@ -248,8 +248,11 @@ var inventory = (function() {
 		}
 		var itemId = $elem.data("itemId");
 		$.ajax({
-			url : "drop/" + itemId,
+			url : "drop",
 			type : "post",
+			data : {
+				itemId : itemId
+			},
 			complete : function() {
 				loadInventory();
 			}

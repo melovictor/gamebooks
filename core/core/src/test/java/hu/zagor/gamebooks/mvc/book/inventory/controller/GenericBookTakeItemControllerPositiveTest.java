@@ -11,6 +11,7 @@ import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.domain.BookInformations;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.DropItemData;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.ReplaceItemData;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemData;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
@@ -61,6 +62,7 @@ public class GenericBookTakeItemControllerPositiveTest {
     @Mock private List<Item> itemList;
     @Mock private Item item;
     @Mock private EquipInfo equipInfo;
+    @Instance private DropItemData dropItem;
 
     @BeforeClass
     public void setUpClass() {
@@ -76,6 +78,8 @@ public class GenericBookTakeItemControllerPositiveTest {
         replaceData.setLoseId("1001");
         replaceData.setGatherId("1002");
         replaceData.setAmount(1);
+
+        dropItem.setItemId("3001");
     }
 
     public void testHandleItemTakeWhenAllItemsTakenShouldRemoveAllItems() {
@@ -182,7 +186,7 @@ public class GenericBookTakeItemControllerPositiveTest {
         expect(itemHandler.getItem(character, "3001")).andReturn(null);
         mockControl.replay();
         // WHEN
-        underTest.dropItem(request, "3001");
+        underTest.dropItem(request, dropItem);
         // THEN
     }
 
@@ -195,7 +199,7 @@ public class GenericBookTakeItemControllerPositiveTest {
         expect(equipInfo.isRemovable()).andReturn(false);
         mockControl.replay();
         // WHEN
-        underTest.dropItem(request, "3001");
+        underTest.dropItem(request, dropItem);
         // THEN
     }
 
@@ -209,7 +213,7 @@ public class GenericBookTakeItemControllerPositiveTest {
         expect(itemHandler.removeItem(character, "3001", 1)).andReturn(itemList);
         mockControl.replay();
         // WHEN
-        underTest.dropItem(request, "3001");
+        underTest.dropItem(request, dropItem);
         // THEN
     }
 

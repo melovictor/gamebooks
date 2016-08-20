@@ -10,6 +10,7 @@ import hu.zagor.gamebooks.content.gathering.GatheredLostItem;
 import hu.zagor.gamebooks.controller.BookContentInitializer;
 import hu.zagor.gamebooks.controller.session.HttpSessionWrapper;
 import hu.zagor.gamebooks.mvc.book.controller.AbstractRequestWrappingController;
+import hu.zagor.gamebooks.mvc.book.inventory.domain.DropItemData;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.ReplaceItemData;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemData;
 import hu.zagor.gamebooks.mvc.book.inventory.domain.TakeItemResponse;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -143,17 +145,17 @@ public class GenericBookTakeItemController extends AbstractRequestWrappingContro
 
     /**
      * Method for handling the user dropping a random, discardable item.
-     * @param itemId the id of the item to drop
+     * @param dropItem the {@link DropItemData} bean containing information about the dropped item
      * @param request the {@link HttpServletRequest} bean
      */
-    @RequestMapping(value = "drop/{itemId}", method = RequestMethod.POST)
+    @RequestMapping(value = "drop", method = RequestMethod.POST)
     @ResponseBody
-    public final void dropItem(final HttpServletRequest request, @PathVariable("itemId") final String itemId) {
+    public final void dropItem(final HttpServletRequest request, @ModelAttribute final DropItemData dropItem) {
         final CharacterItemHandler itemHandler = getInfo().getCharacterHandler().getItemHandler();
         final Character character = getWrapper(request).getCharacter();
-        final Item item = itemHandler.getItem(character, itemId);
+        final Item item = itemHandler.getItem(character, dropItem.getItemId());
         if (item != null && item.getEquipInfo().isRemovable()) {
-            itemHandler.removeItem(character, itemId, 1);
+            itemHandler.removeItem(character, dropItem.getItemId(), 1);
         }
     }
 
