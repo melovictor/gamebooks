@@ -16,7 +16,7 @@ public class MainBookProject {
         final List<BookLangData> books = new ArrayList<>();
 
         books.add(getSotkEn(true));
-        books.add(getSotkHu(true));
+        books.add(getSotkHu(false));
         books.add(getSotkPtBr(false));
 
         new GenerateBookProjectFiles().generateBookProjectFiles(getBaseData(), books);
@@ -26,19 +26,19 @@ public class MainBookProject {
         final BookBaseData baseData = new BookBaseData();
 
         baseData.setMainLanguage("en");
-        baseData.setSeriesCode("lw"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm, lw
-        baseData.setTitleCode("fotw");
-        baseData.setPosition(2);
-        baseData.setCollectorCode("lw"); // ff, cyoa, z, fyf, gyg, eq, tm, lw
-        baseData.setCollectorName("lonewolf"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine, lonewolf
-        baseData.setRuleset("lw"); // raw, tm, ff, lw
-        baseData.setHasEnemies(true);
-        baseData.setHasInventory(true);
-        baseData.setHasItems(true);
-        baseData.setHasMap(true);
+        baseData.setSeriesCode("eq"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm, lw, eq, gyg, fyf
+        baseData.setTitleCode("pop");
+        baseData.setPosition(3);
+        baseData.setCollectorCode("eq"); // ff, cyoa, z, fyf, gyg, eq, tm, lw
+        baseData.setCollectorName("endlessquest"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine, lonewolf
+        baseData.setRuleset("raw"); // raw, tm, ff, lw
+        baseData.setHasEnemies(false);
+        baseData.setHasInventory(false);
+        baseData.setHasItems(false);
+        baseData.setHasMap(false);
         baseData.setMediaProject(true);
         baseData.setDefaultSkillTestType(""); // Le: lower or equal; L: lower; if neither, should be empty!
-        baseData.setCharPageRequired(true);
+        baseData.setCharPageRequired(false);
 
         return baseData;
     }
@@ -69,10 +69,10 @@ public class MainBookProject {
 
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
-        data.setHidden(true);
-        data.setBookId("LoneWolf.FIRE_ON_THE_WATER");
+        data.setHidden(false);
+        data.setBookId("EndlessQuest.PILLARS_OF_PENTEGARN");
         data.setLang("en");
-        data.setTitle("Fire on the Water");
+        data.setTitle("Pillars of Pentegarn");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;
