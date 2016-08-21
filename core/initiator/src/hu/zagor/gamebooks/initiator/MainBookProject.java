@@ -27,8 +27,8 @@ public class MainBookProject {
 
         baseData.setMainLanguage("en");
         baseData.setSeriesCode("eq"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm, lw, eq, gyg, fyf
-        baseData.setTitleCode("pop");
-        baseData.setPosition(3);
+        baseData.setTitleCode("rtb");
+        baseData.setPosition(4);
         baseData.setCollectorCode("eq"); // ff, cyoa, z, fyf, gyg, eq, tm, lw
         baseData.setCollectorName("endlessquest"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine, lonewolf
         baseData.setRuleset("raw"); // raw, tm, ff, lw
@@ -70,9 +70,9 @@ public class MainBookProject {
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
         data.setHidden(false);
-        data.setBookId("EndlessQuest.PILLARS_OF_PENTEGARN");
+        data.setBookId("EndlessQuest.RETURN_TO_BROOKMERE");
         data.setLang("en");
-        data.setTitle("Pillars of Pentegarn");
+        data.setTitle("Return to Brookmere");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;
