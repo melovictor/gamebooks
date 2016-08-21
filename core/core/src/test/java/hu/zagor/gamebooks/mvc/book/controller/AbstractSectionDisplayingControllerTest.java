@@ -3,6 +3,7 @@ package hu.zagor.gamebooks.mvc.book.controller;
 import static org.easymock.EasyMock.expect;
 import hu.zagor.gamebooks.books.contentstorage.domain.BookParagraphConstants;
 import hu.zagor.gamebooks.content.Paragraph;
+import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.domain.BookInformations;
 import hu.zagor.gamebooks.domain.ResourceInformation;
 import hu.zagor.gamebooks.mvc.book.controller.domain.StaticResourceDescriptor;
@@ -41,6 +42,8 @@ public class AbstractSectionDisplayingControllerTest {
     @Instance private ResourceInformation emptyResourceInfo;
     @Instance private ResourceInformation filledResourceInfo;
     @Inject private ApplicationContext applicationContext;
+    @Mock private Paragraph newParagraph;
+    @Instance private ParagraphData data;
 
     @UnderTest
     public AbstractSectionDisplayingController underTest() {
@@ -51,6 +54,7 @@ public class AbstractSectionDisplayingControllerTest {
     @BeforeClass
     public void setUpClass() {
         info = new BookInformations(1L);
+        info.setResourceDir("book3");
         Whitebox.setInternalState(underTest, "info", info);
         filledResourceInfo.setCssResources("raw,ff,ff15");
         filledResourceInfo.setJsResources("raw,ff,ff15");
@@ -218,6 +222,72 @@ public class AbstractSectionDisplayingControllerTest {
         final ApplicationContext returned = underTest.getApplicationContext();
         // THEN
         Assert.assertSame(returned, applicationContext);
+    }
+
+    public void testMarkParagraphImagesWhenCoreImageShouldLeaveItAlone() {
+        // GIVEN
+        expect(newParagraph.getData()).andReturn(data);
+        data.setText("sample text with an image: <img src=\"../resources/dice.jpg\" />");
+        mockControl.replay();
+        // WHEN
+        underTest.markParagraphImages(newParagraph, "colFirst");
+        // THEN
+        Assert.assertEquals(data.getText(), "sample text with an image: <img src=\"../resources/dice.jpg?colFirst\" />");
+    }
+
+    public void testMarkParagraphImagesWhenUserNeedsBwImageShouldRewriteImageInTextWithBwQuery() {
+        // GIVEN
+        expect(newParagraph.getData()).andReturn(data);
+        data.setText("sample text with an image: <img src=\"resources/book1/99.jpg\" />" + "sample text with an image: <img src=\"../resources/99.jpg\" />"
+            + "sample text with an image: <img src=\"resources/book2/99.png\" />" + "sample text with an image: <p class=\"inlineImage\" data-img=\"intro\"></p>");
+        mockControl.replay();
+        // WHEN
+        underTest.markParagraphImages(newParagraph, "bwFirst");
+        // THEN
+        Assert.assertTrue(data.getText().contains("sample text with an image: <img src=\"resources/book1/99.jpg?bwFirst\" />"));
+        Assert.assertTrue(data.getText().contains("sample text with an image: <img src=\"../resources/99.jpg?bwFirst\" />"));
+        Assert.assertTrue(data.getText().contains("sample text with an image: <img src=\"resources/book2/99.png?bwFirst\" />"));
+        Assert.assertTrue(data.getText().contains("sample text with an image: <p class=\"inlineImage\" data-book=\"book3\" data-type=\"b\" data-img=\"intro\"></p>"));
+    }
+
+    public void testMarkParagraphImagesWhenUserImagesRewrittenOnceShouldLeaveThemAlone() {
+        // GIVEN
+        expect(newParagraph.getData()).andReturn(data);
+        final String originalText = "sample text with an image: <img src=\"resources/book1/99.jpg?bwFirst\" />"
+            + "sample text with an image: <img src=\"../resources/99.jpg?bwFirst\" />" + "sample text with an image: <img src=\"resources/book2/99.png?bwFirst\" />"
+            + "sample text with an image: <p class=\"inlineImage\" data-book=\"book3\" data-type=\"b\" data-img=\"intro\"></p>";
+        data.setText(originalText);
+        mockControl.replay();
+        // WHEN
+        underTest.markParagraphImages(newParagraph, "bwFirst");
+        // THEN
+        Assert.assertEquals(data.getText(), originalText);
+    }
+
+    public void testMarkParagraphImagesWhenUserNeedsColorImageShouldRewriteImageInTextWithColorQuery() {
+        // GIVEN
+        expect(newParagraph.getData()).andReturn(data);
+        data.setText("sample text with an image: <img src=\"resources/book1/99.jpg\" />" + "sample text with an image: <img src=\"../resources/99.jpg\" />"
+            + "sample text with an image: <img src=\"resources/book2/99.png\" />" + "sample text with an image: <p class=\"inlineImage\" data-img=\"intro\"></p>");
+        mockControl.replay();
+        // WHEN
+        underTest.markParagraphImages(newParagraph, "colFirst");
+        // THEN
+        Assert.assertTrue(data.getText().contains("sample text with an image: <img src=\"resources/book1/99.jpg?colFirst\" />"));
+        Assert.assertTrue(data.getText().contains("sample text with an image: <img src=\"../resources/99.jpg?colFirst\" />"));
+        Assert.assertTrue(data.getText().contains("sample text with an image: <img src=\"resources/book2/99.png?colFirst\" />"));
+        Assert.assertTrue(data.getText().contains("sample text with an image: <p class=\"inlineImage\" data-book=\"book3\" data-type=\"c\" data-img=\"intro\"></p>"));
+    }
+
+    public void testMarkParagraphImagesWhenRulesetImagesShouldLeaveAlone() {
+        // GIVEN
+        expect(newParagraph.getData()).andReturn(data);
+        data.setText("sample text with an image: <img src=\"resources/ff/dice.jpg\" />");
+        mockControl.replay();
+        // WHEN
+        underTest.markParagraphImages(newParagraph, "colFirst");
+        // THEN
+        Assert.assertEquals(data.getText(), "sample text with an image: <img src=\"resources/ff/dice.jpg?colFirst\" />");
     }
 
 }
