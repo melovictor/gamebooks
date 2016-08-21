@@ -112,15 +112,6 @@ public class RawBookSectionController extends GenericBookSectionController imple
         return bookPage;
     }
 
-    void markParagraphImages(final Paragraph paragraph, final String imageType) {
-        final ParagraphData data = paragraph.getData();
-        String text = data.getText();
-        text = text.replaceAll("(<img[^>]*?src=\"[^\"?]*)\"", "$1?" + imageType + "\"");
-        text = text.replaceAll("<p class=\"inlineImage\" data-img=\"",
-            "<p class=\"inlineImage\" data-book=\"" + getInfo().getResourceDir() + "\" data-type=\"" + imageType.charAt(0) + "\" data-img=\"");
-        data.setText(text);
-    }
-
     /**
      * Adds all required static resource files to the batch.
      * @param model the {@link Model} object

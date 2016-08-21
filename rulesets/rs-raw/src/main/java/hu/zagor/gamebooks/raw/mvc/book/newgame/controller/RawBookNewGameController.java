@@ -85,6 +85,7 @@ public class RawBookNewGameController extends AbstractNewGameController implemen
         model.addAttribute("pageTitle", series + " &ndash; " + title);
         addJsResource(model, "raw");
         addCssResource(model, "raw");
+        markParagraphImages(paragraph, player.getSettings().getImageTypeOrder());
 
         return "rawSection";
     }

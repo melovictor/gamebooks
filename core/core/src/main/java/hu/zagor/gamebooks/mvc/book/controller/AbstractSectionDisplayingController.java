@@ -2,6 +2,7 @@ package hu.zagor.gamebooks.mvc.book.controller;
 
 import hu.zagor.gamebooks.books.contentstorage.domain.BookParagraphConstants;
 import hu.zagor.gamebooks.content.Paragraph;
+import hu.zagor.gamebooks.content.ParagraphData;
 import hu.zagor.gamebooks.player.PlayerSettings;
 import hu.zagor.gamebooks.player.PlayerUser;
 import java.util.Set;
@@ -29,6 +30,20 @@ public abstract class AbstractSectionDisplayingController extends AbstractReques
         model.addAttribute("hideChoiceSection", !settings.isChoiceSectionDisplayable());
         model.addAttribute("imgTypeOrder", settings.getImageTypeOrder());
         model.addAttribute("informativeSections", settings.isInformativeSectionsRequested());
+    }
+
+    /**
+     * Marks images inside the section so they will be displayable from the content provider server.
+     * @param paragraph the current {@link Paragraph} object
+     * @param imageType the type of the image to be displayed first
+     */
+    protected void markParagraphImages(final Paragraph paragraph, final String imageType) {
+        final ParagraphData data = paragraph.getData();
+        String text = data.getText();
+        text = text.replaceAll("(<img[^>]*?src=\"[^\"?]*)\"", "$1?" + imageType + "\"");
+        text = text.replaceAll("<p class=\"inlineImage\" data-img=\"",
+            "<p class=\"inlineImage\" data-book=\"" + getInfo().getResourceDir() + "\" data-type=\"" + imageType.charAt(0) + "\" data-img=\"");
+        data.setText(text);
     }
 
 }
