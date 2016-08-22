@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <util:constant static-field="hu.zagor.gamebooks.support.bookids.english.FightingFantasy.BENEATH_NIGHTMARE_CASTLE" id="ff25Id" />
+
+  <bean class="hu.zagor.gamebooks.domain.FfBookInformations" id="ff25Info" c:id-ref="ff25Id" p:resourceDir="ff25" p:contentTransformers-ref="defaultFfContentTransformers" p:paragraphResolver-ref="ffRuleBookParagraphResolverLe" p:locale-ref="enLocale" p:position="25" p:series-ref="ffTitle" p:title="Beneath Nightmare Castle" p:commandResolvers-ref="ffCommandResolvers" p:unfinished="true" p:hidden="true" p:characterBeanId="ff25Character" p:characterPageDataBeanId="ff25CharacterPageData">
+    <property name="contents">
+      <bean class="hu.zagor.gamebooks.domain.BookContentFiles" c:enemies="ff25enemies.xml" c:items="ff25items.xml" c:paragraphs="ff25content.xml" />
+    </property>
+    <property name="contentSpecification">
+      <bean class="hu.zagor.gamebooks.domain.BookContentSpecification" p:inventoryAvailable="true" p:mapAvailable="false" />
+    </property>
+    <property name="characterHandler">
+      <bean parent="ffCharacterHandler" class="hu.zagor.gamebooks.character.handler.FfCharacterHandler">
+        <property name="attributeHandler">
+          <bean class="hu.zagor.gamebooks.ff.ff.bnc.character.handler.attribute.Ff25AttributeHandler" />
+        </property>
+        <property name="characterGenerator">
+          <bean class="hu.zagor.gamebooks.ff.ff.bnc.mvc.books.newgame.service.Ff25CharacterGenerator" />
+        </property>
+      </bean>
+    </property>
+  </bean>
+
+</beans>

@@ -16,7 +16,7 @@ public class MainBookProject {
         final List<BookLangData> books = new ArrayList<>();
 
         books.add(getSotkEn(true));
-        books.add(getSotkHu(false));
+        books.add(getSotkHu(true));
         books.add(getSotkPtBr(false));
 
         new GenerateBookProjectFiles().generateBookProjectFiles(getBaseData(), books);
@@ -26,19 +26,19 @@ public class MainBookProject {
         final BookBaseData baseData = new BookBaseData();
 
         baseData.setMainLanguage("en");
-        baseData.setSeriesCode("eq"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm, lw, eq, gyg, fyf
-        baseData.setTitleCode("rtb");
-        baseData.setPosition(4);
-        baseData.setCollectorCode("eq"); // ff, cyoa, z, fyf, gyg, eq, tm, lw
-        baseData.setCollectorName("endlessquest"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine, lonewolf
-        baseData.setRuleset("raw"); // raw, tm, ff, lw
-        baseData.setHasEnemies(false);
-        baseData.setHasInventory(false);
-        baseData.setHasItems(false);
+        baseData.setSeriesCode("ff"); // ff, pt, wm, fff, sor, cyoa, cyoar, tm, lw, eq, gyg, fyf
+        baseData.setTitleCode("bnc");
+        baseData.setPosition(25);
+        baseData.setCollectorCode("ff"); // ff, cyoa, z, fyf, gyg, eq, tm, lw
+        baseData.setCollectorName("fightingfantasy"); // fightingfantasy, chooseyourownadventure, endlessquest, timemachine, lonewolf
+        baseData.setRuleset("ff"); // raw, tm, ff, lw
+        baseData.setHasEnemies(true);
+        baseData.setHasInventory(true);
+        baseData.setHasItems(true);
         baseData.setHasMap(false);
         baseData.setMediaProject(true);
-        baseData.setDefaultSkillTestType(""); // Le: lower or equal; L: lower; if neither, should be empty!
-        baseData.setCharPageRequired(false);
+        baseData.setDefaultSkillTestType("Le"); // Le: lower or equal; L: lower; if neither, should be empty!
+        baseData.setCharPageRequired(true);
 
         return baseData;
     }
@@ -57,11 +57,11 @@ public class MainBookProject {
 
     private BookLangData getSotkHu(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
-        data.setSeriesCode("mf");
-        data.setPosition(2);
-        data.setBookId("MaganyosFarkas.LANGOLO_TENGER");
+        data.setSeriesCode("kjkz");
+        data.setPosition(9);
+        data.setBookId("KalandJatekKockazatZagor.A_LIDERCKASTELY_MELYEN");
         data.setLang("hu");
-        data.setTitle("Lángoló tenger");
+        data.setTitle("A Lidérckastély mélyén");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;
@@ -69,10 +69,10 @@ public class MainBookProject {
 
     private BookLangData getSotkEn(final boolean shouldBeGenerated) {
         final BookLangData data = new BookLangData();
-        data.setHidden(false);
-        data.setBookId("EndlessQuest.RETURN_TO_BROOKMERE");
+        data.setHidden(true);
+        data.setBookId("FightingFantasy.BENEATH_NIGHTMARE_CASTLE");
         data.setLang("en");
-        data.setTitle("Return to Brookmere");
+        data.setTitle("Beneath Nightmare Castle");
         data.setGeneratable(shouldBeGenerated);
         data.setFinished(false);
         return data;

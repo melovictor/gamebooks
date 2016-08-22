@@ -1,4 +1,4 @@
-package hu.zagor.gamebooks.ff.ff.tod.mvc.books.section.service.fight;
+package hu.zagor.gamebooks.ff.ff.ss.mvc.books.section.service.fight;
 
 import hu.zagor.gamebooks.character.domain.ResolvationData;
 import hu.zagor.gamebooks.content.command.fight.FfFightCommand;
