@@ -106,7 +106,19 @@
   <!-- 29 -->
   <!-- 30 -->
   <!-- 31 -->
-  <!-- 32 -->
+  <p id="32">
+    <text>
+        [p]Észak felé haladsz a Híd utcán, amíg meg nem pillantod az öreg kőhidat és a folyó túloldalán húzódó párás mezőket. A város ezen részén minden normálisnak látszik. Az árusok az utcára vitték termékeiket, és minden „Friss gyümölcs!”, „Sózott tengeri hal!”, „A varázslatos dél ritkaságai!” és „Kardfenés itt!” kiáltásoktól hangos - többek közt. Városiak tömege sürög-forog a kereskedők bódéi körül, és közben igyekeznek a színes ponyvatetők alá menekülni a szitáló eső elől. Úgy döntesz, hogy keresel egy helyet, ahol élelmet tudnál vásárolni, miközben azonban egy élelmiszerbolt előtt összegyűlt csődületben vegyülsz el, olyan érzésed támad, mintha valaki figyelne vagy követne.[/p]
+    </text>
+    <test against="luck">
+      <success>
+        <next id="390"></next>
+      </success>
+      <failure>
+        <next id="171"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 33 -->
   <!-- 34 -->
   <!-- 35 -->
@@ -158,7 +170,20 @@
   <!-- 51 -->
   <!-- 52 -->
   <!-- 53 -->
-  <!-- 54 -->
+  <p id="54">
+    <text>
+        [p]A nagy, kör alakú teremben állsz és a különös fát figyeled. Bár egyetlen levelet sem látsz rajta, mégis biztos vagy benne, hogy életben van. Erős, fehér ágai kísérteties fénnyel izzanak. - Mássz! - utasít Huw.[/p]
+        [p]Nem látod a fa tetejét. Úgy tűnik, mintha ködbe veszne a kupolás tetőnél. Kapaszkodni kezdesz fölfelé, és egy idő után már semmit nem látsz az alattad lévő szobából, ám még mindig nem érted el a fa tetejét. Erős, csípős szél mar beléd; erősen kapaszkodsz, miközben fehér köd kavarog körülötted. Feljebb, tested kimerült és egyre több tagod fáj; embertelen hangok zúgnak a fejedben. Rendíthetetlenül folytatod a mászást, miközben érzékeidet egyre csak ostromolja az ismeretlen erő. Úgy érzed, mintha tested és tudatod ketté szakítaná valami. Elveszted az eszméletedet.[/p]
+    </text>
+    <test against="willpower + stamina" diceConfig="8d6" success="lower">
+      <success>
+        <next id="298"></next>
+      </success>
+      <failure>
+        <next id="219"></next>
+      </failure>
+    </test>
+  </p>
   <!-- 55 -->
   <!-- 56 -->
   <!-- 57 -->
@@ -415,7 +440,14 @@
   <!-- 168 -->
   <!-- 169 -->
   <!-- 170 -->
-  <!-- 171 -->
+  <p id="171">
+    <text>
+        [p]Két köpenyes harcos álldogál közömbösen egy közeli utcasarkon, egy üres területen. Meglehetősen kilógnak a tömegből - és téged figyelnek.[/p]
+        [p]Feléjük fordulsz és viszonzod a tekintetet. Pár pillanat múlva, egyetlen szó nélkül elsétálnak egy sikátor felé. A történtektől meghökkenve csípőre teszed a kezed - és rádöbbensz, hogy pénzes szütyődnek hűlt helye. Az övedről lógó zsineget valaki elvágta. Sehol sem látod nyomát a tolvajnak, és most már nincs pénzed, hogy élelmet vehess - vagy, ami azt illeti, bármi mást.[/p]
+    </text>
+    <add amount="-10" to="gold" />
+    <next id="149"></next>
+  </p>
   <!-- 172 -->
   <!-- 173 -->
   <!-- 174 -->
@@ -513,7 +545,16 @@
   <!-- 216 -->
   <!-- 217 -->
   <!-- 218 -->
-  <!-- 219 -->
+  <p id="219">
+    <text>
+        [p]A kőpadlón heverve térsz magadhoz, a fa törzsét körülölelve. Minden izmod sajog, ráadásul szörnyen szédülsz is. Az Istenítélet 1 ÉLETERŐ és 1 AKARATERŐ pontodba került.[/p]
+        [p]- Csak a legerősebb és legeltökéltebb állhat meg Oiden színe előtt - dúdolja Huw. - Ismét felmászhatsz a fára, vagy távozhatsz is.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <add amount="-1" to="willpower" />
+    <next id="54">Ha ismét megpróbálkoznál az Istenítélettel</next>
+    <next id="368">Ha úgy érzed, ideje távozni</next>
+  </p>
   <!-- 220 -->
   <!-- 221 -->
   <!-- 222 -->
@@ -654,7 +695,16 @@
   <!-- 295 -->
   <!-- 296 -->
   <!-- 297 -->
-  <!-- 298 -->
+  <p id="298">
+    <text>
+        [p]A kőpadlón heverve térsz magadhoz, a fa törzsét körülölelve. Talpra ugrasz. Elámulsz a testedet átjáró éltető erőn és az elmédet elöntő nyugalmon és bátor céltudatosságon. [em]Kezdeti[/em] ÉLETERŐ és AKARATERŐ pontjaid számához 1-et, míg jelenlegi ÉLETERŐ és AKARATERŐ pontjaidhoz 2-t adhatsz hozzá - ám az új [em]Kezdeti[/em] értékeket természetesen most sem lépheted túl. - Oiden megjutalmazott állhatatosságodért - mondja Huw. - Most távoznod kell, hogy teljesítsd küldetésed.[/p]
+    </text>
+    <add amount="1" to="initialStamina" />
+    <add amount="1" to="initialWillpower" />
+    <add amount="2" to="stamina" />
+    <add amount="2" to="willpower" />
+    <next id="368"></next>
+  </p>
   <!-- 299 -->
   <!-- 300 -->
   <p id="301">
@@ -788,7 +838,12 @@
   <!-- 365 -->
   <!-- 366 -->
   <!-- 367 -->
-  <!-- 368 -->
+  <p id="368">
+    <text>
+        [p]Az öreg pap a templom ajtajához vezet és búcsút int. - Nem sok értelme van tovább halogatnod veszedelmes utadat; valahol Neuburgban rejtőzik egy, a maga korában hatalmas fegyver egy darabkája, és nem lennék meglepve, ha egy ritkaság-kereskedő árui közt találnál rá. A Kereskedők negyede nem más, mint tolvajok bűntanyája. Kerüld el a folyópartot, gusztustalan egy hely. Térj vissza a városközpontba és szállj szembe a várban rád váró veszedelmekkel. Oiden áldása kísérjen utadon.[/p]
+    </text>
+    <next id="108"></next>
+  </p>
   <!-- 369 -->
   <!-- 370 -->
   <!-- 371 -->
@@ -831,7 +886,23 @@
   <!-- 387 -->
   <!-- 388 -->
   <!-- 389 -->
-  <!-- 390 -->
+  <p id="390">
+    <text>
+        [p]Két köpenyes harcos álldogál közömbösen egy közeli utcasarkon, egy üres területen. Nagyon kilógnak a tömegből - és téged figyelnek.[/p]
+        [p]De nincs időd, hogy velük foglalkozz: ahogy lepillantasz, egy kezet veszel észre, ami az övedről lógó pénzes szütyőt próbálja megragadni, és egy másodikat, ami egy rövid, éles kést tart, hogy elnyesse az erszényt tartó zsineget. Megperdülsz, előrántod kardodat és szembe találod magad a tolvajjal. Egy árvának látszó kislány az, nem lehet több kilencnél! Hirtelen nem tudod, mit tegyél, a gyerek azonban rád veti magát. Támadása meglepetésként ér, és a tőr eltalál: vesztesz 1 ÉLETERŐ pontot. Meg kell küzdened vele.[/p]
+    </text>
+    <add amount="-1" to="stamina" />
+    <fight type="single">
+      <enemy id="16" />
+      <win>
+        <text>
+            [p]A lány elmenekül a tömegen át. Ahogy körbe nézel, észreveszed, hogy a két harcos eltűnt.[/p]
+        </text>
+      </win>
+    </fight>
+    <next id="358">Ha követni akarod a lányt</next>
+    <next id="149">Hogyha inkább folytatnád az élelem-keresést</next>
+  </p>
   <!-- 391 -->
   <!-- 392 -->
   <!-- 393 -->
